@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: a5c06d0beeb76193c2b8ddba9413878dbf428819
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071774"
+ms.locfileid: "92116784"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
 
@@ -56,10 +56,11 @@ Existují tři parametry pro každou definici obrázku, které jsou používány
 
 Všechny tři z nich mají jedinečné sady hodnot. Formát je podobný jako při současném zadání vydavatele, nabídky a SKU pro [Azure Marketplace imagí](../articles/virtual-machines/windows/cli-ps-findimage.md) v Azure PowerShell získat nejnovější verzi image na webu Marketplace. Každá definice obrázku musí mít jedinečnou sadu těchto hodnot.
 
-Definice imagí musí definovat následující parametry, které určují typy verzí imagí, které můžou obsahovat:
--   Stav operačního systému – stav operačního systému můžete nastavit na [generalizované nebo specializované](#generalized-and-specialized-images).
-- Operační systém může být buď Windows, nebo Linux.
+Následující parametry určují, které typy verzí imagí můžou obsahovat:
 
+- Stav operačního systému – stav operačního systému můžete nastavit na [generalizované nebo specializované](#generalized-and-specialized-images). Toto pole je vyžadováno.
+- Operační systém může být buď Windows, nebo Linux. Toto pole je vyžadováno.
+-   Technologie Hyper-V – určete, jestli se image vytvořila z virtuálního pevného disku Hyper-V generace 1 nebo generace [2](../articles/virtual-machines/generation-2.md) . Výchozí hodnota je 1. generace.
 
 
 Níže jsou uvedené další parametry, které je možné nastavit v definici image, abyste mohli snadněji sledovat své prostředky:
@@ -71,7 +72,6 @@ Níže jsou uvedené další parametry, které je možné nastavit v definici im
 - Značka – při vytváření definice obrázku můžete přidat značky. Další informace o značkách najdete v tématu [použití značek k uspořádání prostředků](../articles/azure-resource-manager/management/tag-resources.md) .
 - Minimální a maximální doporučení pro vCPU a paměť – Pokud má vaše image doporučení vCPU a paměti, můžete tyto informace připojit k definici image.
 - Nepovolené typy disků – můžete zadat informace o požadavcích na úložiště pro váš virtuální počítač. Pokud například bitová kopie není vhodná pro disky se standardním pevným diskem, přidáte je do seznamu zakázat.
--   Technologie Hyper-V – určete, jestli se image vytvořila z virtuálního pevného disku Hyper-V generace 1 nebo generace [2](../articles/virtual-machines/generation-2.md) . Výchozí hodnota je 1. generace.
 - Informace o plánu nákupu pro Image Marketplace – `-PurchasePlanPublisher` , `-PurchasePlanName` a `-PurchasePlanProduct` . Další informace o nákupních plánech najdete v tématu [Vyhledání obrázků v Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) a [zadání informací o plánu Azure Marketplace nákupu při vytváření obrázků](../articles/virtual-machines/marketplace-images.md).
 
 
@@ -146,8 +146,8 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
-| Sdílená galerie obrázků | Yes                  | Yes          | Yes                  |
-| Definice image     | No                   | Yes          | Yes                  |
+| Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
+| Definice image     | Ne                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 

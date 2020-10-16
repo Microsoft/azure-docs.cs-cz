@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9312094d1d86ea25ebd573e5d14b6d5bd0619cfc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88210217"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108231"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Průběžné doručování pomocí Azure DevOps
 
@@ -256,7 +256,7 @@ K vytvoření kanálu sestavení v Azure použijte `az functionapp devops-pipeli
 
     - Musíte být správce projektu ve službě Azure DevOps.
 
-    - Musíte mít oprávnění k vytvoření osobního přístupového tokenu GitHubu, který má dostatečná oprávnění. Další informace najdete v tématu [požadavky na oprávnění GitHubu Pat.](https://aka.ms/azure-devops-source-repos)
+    - Musíte mít oprávnění k vytvoření osobního přístupového tokenu GitHubu, který má dostatečná oprávnění. Další informace najdete v tématu [požadavky na oprávnění GitHubu Pat.](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
 
     - Musíte mít oprávnění k potvrzení do hlavní větve ve vašem úložišti GitHub, abyste mohli potvrdit automaticky vygenerovaný soubor YAML.
 

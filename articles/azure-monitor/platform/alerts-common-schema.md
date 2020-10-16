@@ -4,12 +4,12 @@ description: Princip běžných schémat výstrah, proč byste ji měli použív
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb182f88a896be436e3981ff4e361010ee2655f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86539478"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108826"
 ---
 # <a name="common-alert-schema"></a>Běžné schéma upozornění
 
@@ -39,7 +39,7 @@ Společné schéma výstrah se primárně projeví v oznámeních výstrah. Ní�
 
 Nové schéma také umožní širší možnosti spotřeby výstrah napříč Azure Portal i Mobilní aplikace Azure v bezprostřední budoucnosti. 
 
-[Přečtěte si další informace o definicích schématu pro Webhooky/Runbooky Logic Apps/Azure Functions/Automation.](https://aka.ms/commonAlertSchemaDefinitions)
+[Přečtěte si další informace o definicích schématu pro Webhooky/Runbooky Logic Apps/Azure Functions/Automation.](./alerts-common-schema-definitions.md)
 
 > [!NOTE]
 > Následující akce nepodporují běžné schéma výstrah: konektor ITSM.
@@ -120,5 +120,5 @@ Například následující text žádosti, který se v REST API pro [Vytvoření
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Běžné definice schémat výstrah pro Webhooky/Logic Apps/Azure Functions/Automation Runbooky.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.](./alerts-common-schema-integrations.md) 
+- [Běžné definice schémat výstrah pro Webhooky/Logic Apps/Azure Functions/Automation Runbooky.](./alerts-common-schema-definitions.md)
+- [Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.](./alerts-common-schema-integrations.md)

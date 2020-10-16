@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: ce2169838faaee8da459f80979fa31318e9d50c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322172"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104865"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce v Azure pomocí Java a Gradle
 
@@ -20,11 +20,11 @@ V tomto článku se dozvíte, jak sestavit a publikovat projekt funkce jazyka Ja
 > [!NOTE]
 > Pokud Gradle není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [vs Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vývoji funkcí pomocí Javy musíte mít nainstalovaný následující software:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks) verze 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) verze 8
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší
 - [Gradle](https://gradle.org/)verze 4,10 a vyšší

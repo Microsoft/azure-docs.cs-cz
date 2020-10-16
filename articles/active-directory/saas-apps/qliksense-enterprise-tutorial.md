@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 5344354c05547d6d2a5e2762c70a97cc4222c464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4995f813bbfe7ef368f83085cdd61ab97fa330e8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552335"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108520"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Kurz: integrace Qlik Sense Enterprise s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Qlik Sense Enterprise s Azure Active D
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -136,7 +136,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
     > [!NOTE]
     > Než nahrajete metadata IdP na server pro rozpoznávání Qlik, je potřeba upravit soubor a odebrat informace, aby se zajistila správná operace mezi Azure AD a serverem pro Qlik rozpoznávání.
 
-    ![QlikSense][qs24]
+    ![Snímek obrazovky ukazuje okno Visual Studio Code se souborem federačních metadat X M L.][qs24]
 
     a. Otevřete FederationMetaData.xml soubor, který jste stáhli z Azure Portal v textovém editoru.
 
@@ -150,19 +150,19 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 3. V QMC klikněte na položku nabídky **virtuální proxy servery** .
 
-    ![QlikSense][qs6]
+    ![Snímek obrazovky se zobrazí virtuální proxy servery vybrané z konfigurace systému.][qs6]
 
 4. V dolní části obrazovky klikněte na tlačítko **vytvořit nové** .
 
-    ![QlikSense][qs7]
+    ![Snímek obrazovky se zobrazí jako možnost vytvořit novou.][qs7]
 
 5. Zobrazí se obrazovka pro úpravu virtuálního proxy serveru.  Na pravé straně obrazovky je nabídka, která usnadňuje zobrazení možností konfigurace.
 
-    ![QlikSense][qs9]
+    ![Snímek obrazovky zobrazuje identifikaci vybranou z vlastností.][qs9]
 
 6. Když je zaškrtnutá možnost nabídky identifikace, zadejte identifikační informace pro konfiguraci virtuálního proxy serveru Azure.
 
-    ![QlikSense][qs8]  
+    ![Snímek obrazovky ukazuje oddíl upravit identifikaci virtuálního proxy serveru, kde můžete zadat hodnoty, které jsou popsány.][qs8]  
 
     a. Pole **Popis** je popisný název pro konfiguraci virtuálního proxy serveru.  Zadejte hodnotu pro popis.
 
@@ -174,7 +174,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 7. Klikněte na možnost nabídky ověřování, aby se zobrazila.  Zobrazí se obrazovka ověřování.
 
-    ![QlikSense][qs10]
+    ![Snímek obrazovky ukazuje oddíl upravit ověřování virtuálního proxy serveru, kde můžete zadat hodnoty, které jsou popsány.][qs10]
 
     a. Rozevírací seznam **režim anonymního přístupu** určuje, jestli můžou anonymní uživatelé přistupovat k Qlik smyslu prostřednictvím virtuálního proxy serveru.  Výchozí možnost není anonymní uživatel.
 
@@ -196,55 +196,55 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 8. Klikněte na možnost nabídky **VYrovnávání zatížení** , aby se zobrazila.  Zobrazí se obrazovka vyrovnávání zatížení.
 
-    ![QlikSense][qs11]
+    ![Snímek obrazovky ukazuje obrazovku pro úpravu virtuálního proxy serveru pro vyrovnávání zatížení, kde můžete vybrat přidat nový uzel serveru.][qs11]
 
 9. Klikněte na tlačítko **Přidat nový uzel serveru** , vyberte uzel modulu nebo uzly Qlik smysl budou odesílat relace pro účely vyrovnávání zatížení a klikněte na tlačítko **Přidat** .
 
-    ![QlikSense][qs12]
+    ![Snímek obrazovky ukazuje tlačítko Přidat uzly serveru pro vyrovnávání zatížení v dialogovém okně, kde můžete přidat servery.][qs12]
 
 10. Klikněte na možnost Upřesnit nabídku a nastavte ji jako viditelnou. Zobrazí se obrazovka Upřesnit.
 
-    ![QlikSense][qs13]
+    ![Snímek obrazovky s pokročilou obrazovkou pro úpravu virtuálního proxy serveru.][qs13]
 
     Seznam povolených hostitelů identifikuje názvy hostitelů, které jsou přijaty při připojování k serveru Qlik Sense.  **Zadejte název hostitele, který budou uživatelé zadávat při připojování k serveru Qlik Sense.** Název hostitele má stejnou hodnotu jako identifikátor URI hostitele SAML bez https://.
 
 11. Klikněte na tlačítko **použít** .
 
-    ![QlikSense][qs14]
+    ![Snímek obrazovky se zobrazí na tlačítku použít.][qs14]
 
 12. Kliknutím na OK potvrďte, že se restartuje zpráva s upozorněním, že jsou stavy proxy spojené s virtuálním proxy serverem.
 
-    ![QlikSense][qs15]
+    ![Snímek obrazovky s potvrzením změn použít změny virtuálního proxy serveru.][qs15]
 
 13. Na pravé straně obrazovky se zobrazí nabídka přidružené položky.  Klikněte na možnost nabídky **proxy** .
 
-    ![QlikSense][qs16]
+    ![Snímek obrazovky zobrazuje proxy servery vybrané z přidružených položek.][qs16]
 
 14. Zobrazí se obrazovka proxy serveru.  Kliknutím na tlačítko **odkaz** v dolní části propojíte proxy server s virtuálním proxy serverem.
 
-    ![QlikSense][qs17]
+    ![Snímek obrazovky se zobrazí v tlačítku odkaz.][qs17]
 
 15. Vyberte uzel proxy, který bude podporovat toto připojení k virtuálnímu proxy serveru, a klikněte na tlačítko **odkaz** .  Po propojování se proxy server zobrazí v části přidružené proxy servery.
 
-    ![QlikSense][qs18]
+    ![Snímek obrazovky ukazuje vybrat služby proxy serveru.][qs18]
   
-    ![QlikSense][qs19]
+    ![Snímek obrazovky zobrazuje přidružené proxy servery v dialogovém okně přidružené položky virtuálního proxy serveru.][qs19]
 
 16. Po asi pěti až deseti sekundách se zobrazí zpráva QMC aktualizace.  Klikněte na tlačítko **aktualizovat qmc** .
 
-    ![QlikSense][qs20]
+    ![Snímek obrazovky se zobrazí zpráva, že vaše relace skončila.][qs20]
 
 17. Po aktualizaci QMC klikněte na položku nabídky **virtuální proxy servery** . Nová položka virtuálního proxy serveru SAML je uvedena v tabulce na obrazovce.  Jediným kliknutím na položku virtuálního proxy serveru.
 
-    ![QlikSense][qs51]
+    ![Snímek obrazovky zobrazuje virtuální proxy servery s jednou položkou.][qs51]
 
 18. V dolní části obrazovky se aktivuje tlačítko Stáhnout metadata SP.  Kliknutím na tlačítko **Stáhnout metadata SP** uložte metadata do souboru.
 
-    ![QlikSense][qs52]
+    ![Snímek obrazovky se zobrazí na tlačítku pro stažení metadat S P.][qs52]
 
 19. Otevřete soubor metadat SP.  Sledujte položku **entityID** a položku **AssertionConsumerService** .  Tyto hodnoty jsou ekvivalentní **identifikátoru**, **přihlašovací adrese URL** a **adrese URL odpovědi** v konfiguraci aplikace Azure AD. Tyto hodnoty vložte v části **Qlik Sense Enterprise doména a adresy URL** v konfiguraci aplikace Azure AD, pokud se neshodují, a pak je nahraďte v průvodci konfigurací aplikace Azure AD.
 
-    ![QlikSense][qs53]
+    ![Snímek obrazovky se zobrazí v editoru prostého textu s EntityDescriptorem, který se zavolal entityID a AssertionConsumerService.][qs53]
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Vytvořit testovacího uživatele Qlik Sense Enterprise
 
@@ -254,7 +254,7 @@ Qlik Sense Enterprise podporuje **zřizování za běhu**, uživatelé se automa
 
 Když na přístupovém panelu vyberete dlaždici Qlik Sense Enterprise, měli byste být automaticky přihlášeni ke Qlik, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

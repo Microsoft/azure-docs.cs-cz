@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399801"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107806"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
-Pokud čtete tento dokument, máte na paměti význam zabezpečení. Je možné, že už máte odpovědnost za zabezpečení vaší organizace. Pokud potřebujete přesvědčit jiné důležité informace o zabezpečení, pošlete jim, abyste si přečetli nejnovější [sestavu Microsoft Security Intelligence](https://go.microsoft.com/fwlink/p/?linkid=2073747).
+Pokud čtete tento dokument, máte na paměti význam zabezpečení. Je možné, že už máte odpovědnost za zabezpečení vaší organizace. Pokud potřebujete přesvědčit jiné důležité informace o zabezpečení, pošlete jim, abyste si přečetli nejnovější [sestavu Microsoft Security Intelligence](https://www.microsoft.com/security/business/security-intelligence-report).
 
 Tento dokument vám pomůže získat bezpečnější stav pomocí možností Azure Active Directory s využitím kontrolního seznamu pěti kroků k naočkování vaší organizace před internetovými útoky.
 

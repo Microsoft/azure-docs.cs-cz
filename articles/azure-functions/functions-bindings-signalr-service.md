@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77523032"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104372"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -36,7 +36,7 @@ Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balí
 [Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
 [core tools]: ./functions-run-local.md
 [Sada rozšíření]: ./functions-bindings-register.md#extension-bundles
-[Aktualizace rozšíření]: ./install-update-binding-extensions-manual.md
+[Aktualizace rozšíření]: ./functions-bindings-register.md
 [Rozšíření nástrojů Azure]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 Podrobnosti o tom, jak nakonfigurovat a používat službu signalizace a Azure Functions společně, najdete v tématu [Azure Functions vývoj a konfigurace pomocí služby Azure Signal Service](../azure-signalr/signalr-concept-serverless-development-config.md).
@@ -56,4 +56,4 @@ Pokud chcete používat poznámky ke službě signalizace ve funkcích Java, mus
 ## <a name="next-steps"></a>Další kroky
 
 - [Vrácení adresy URL koncového bodu služby a přístupového tokenu (vstupní vazba)](./functions-bindings-signalr-service-input.md)
-- [Odeslat zprávy služby Signaler (výstupní vazba)](./functions-bindings-signalr-service-output.md) 
+- [Odeslat zprávy služby Signaler (výstupní vazba)](./functions-bindings-signalr-service-output.md)

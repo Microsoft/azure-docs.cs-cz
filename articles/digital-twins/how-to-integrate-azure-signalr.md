@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0c3d3a050c0b929a3f1042b42006c289ddeb9acb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fd23cab844d40f75aa0034096be1bca897d54ff6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048113"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108350"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure do [služ
 
 Řešení popsané v tomto článku vám umožní doručovat data digitální nespojité do připojených klientů, jako je jediná webová stránka nebo mobilní aplikace. V důsledku toho se klienti aktualizují pomocí metrik a stavu v reálném čase ze zařízení IoT, a to bez nutnosti dotazování serveru nebo odeslání nových požadavků HTTP na aktualizace.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Tady jsou požadavky, které byste měli provést, než budete pokračovat:
 
@@ -195,7 +195,7 @@ V této konzole nemusíte nic dalšího dělat, ale při provádění dalších 
 ### <a name="configure-the-sample-client-web-app"></a>Konfigurace ukázkové klientské webové aplikace
 
 V dalším kroku nastavte **ukázku webové aplikace pro integraci signálu** pomocí těchto kroků:
-1. Pomocí sady Visual Studio nebo jakéhokoli editoru kódu, který jste si vybrali, otevřete složku _**getAzure_Digital_Twins_SignalR_integration_web_app_sample**_ , kterou jste si stáhli v části [*požadavky*](#prerequisites) .
+1. Pomocí sady Visual Studio nebo jakéhokoli editoru kódu, který jste si vybrali, otevřete složku pro _**odAzure_Digital_Twins_SignalR_integration_web_app_sample**_ , kterou jste si stáhli v části [*stažení ukázkových aplikací*](#download-the-sample-applications) .
 
 1. Otevřete soubor *Src/App.js* a nahraďte adresu URL v `HubConnectionBuilder` adrese URL koncového bodu http funkce **Negotiate** , kterou jste předtím uložili:
 

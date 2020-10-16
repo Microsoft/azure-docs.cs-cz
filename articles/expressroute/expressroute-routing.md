@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ddc15e9da3eaa3609b039f2f92e424b9d9449c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569607"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106310"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -258,6 +258,7 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Online Skype pro firmy |12076:5130 |
+| Azure Active Directory |12076:5160 |
 | Jiné online služby Office 365 |12076:5200 |
 
 ## <a name="next-steps"></a>Další kroky

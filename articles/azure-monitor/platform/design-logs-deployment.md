@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21da883867da41e81ed1787faa0ebe0e6dd25d99
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534195"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107874"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení protokolů služby Azure Monitor
 
@@ -64,7 +64,7 @@ Díky řízení přístupu na základě role (RBAC) můžete uživatelům a skup
 
 Data, ke kterým má uživatel přístup, závisí na kombinaci faktorů, které jsou uvedeny v následující tabulce. Jednotlivé jsou popsány v následujících částech.
 
-| Faktor | Description |
+| Faktor | Popis |
 |:---|:---|
 | [Režim přístupu](#access-mode) | Metoda, kterou uživatel používá pro přístup k pracovnímu prostoru.  Definuje rozsah dostupných dat a režim řízení přístupu, který se použije. |
 | [Režim řízení přístupu](#access-control-mode) | Nastavení v pracovním prostoru definující, zda jsou oprávnění použita na úrovni pracovního prostoru nebo prostředku. |
@@ -91,7 +91,7 @@ Uživatelé mají dvě možnosti pro přístup k datům:
     > - Service Fabric
     > - Application Insights
     >
-    > Spuštěním dotazu a kontrolou záznamů, které vás zajímají, můžete otestovat, jestli jsou protokoly správně přidružené ke svým prostředkům. Pokud je ve vlastnosti [_ResourceId](log-standard-properties.md#_resourceid) správné ID prostředku, data jsou k dispozici pro dotazy orientované na prostředky.
+    > Spuštěním dotazu a kontrolou záznamů, které vás zajímají, můžete otestovat, jestli jsou protokoly správně přidružené ke svým prostředkům. Pokud je ve vlastnosti [_ResourceId](./log-standard-columns.md#_resourceid) správné ID prostředku, data jsou k dispozici pro dotazy orientované na prostředky.
 
 Azure Monitor automaticky určuje správný režim v závislosti na kontextu, ze kterého provádíte prohledávání protokolu. Obor je vždy zobrazen v levém horním oddílu Log Analytics.
 
@@ -164,4 +164,3 @@ Při plánování migrace do tohoto modelu Vezměte v úvahu následující skut
 ## <a name="next-steps"></a>Další kroky
 
 Chcete-li implementovat oprávnění zabezpečení a ovládací prvky doporučené v této příručce, přečtěte si téma [Správa přístupu k protokolům](manage-access.md).
-

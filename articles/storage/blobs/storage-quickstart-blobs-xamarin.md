@@ -3,17 +3,17 @@ title: 'Rychlý Start: knihovna úložiště objektů BLOB v Azure V12 – Xamar
 description: V tomto rychlém startu se naučíte používat klientskou knihovnu Azure Blob Storage verze 12 s Xamarin k vytvoření kontejneru a objektu BLOB v úložišti objektů BLOB (objekt). V dalším kroku se dozvíte, jak stáhnout objekt blob do mobilního zařízení a jak zobrazit seznam všech objektů BLOB v kontejneru.
 author: codemillmatt
 ms.author: masoucou
-ms.date: 05/08/2020
+ms.date: 10/09/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 60381d68dc2c1bae5afb2655558e8a35b65c965d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 434f112e78938c94d887423316fccea270059b6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093952"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109013"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 s využitím Xamarin
 

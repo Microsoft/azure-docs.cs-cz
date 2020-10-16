@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 526287feb93052d10428971dfd8f660d4265c831
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: acb4290a90532b38f44a957e33c69f7d2b3f11f8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89071240"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104814"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rychlý Start: Vytvoření první funkce pomocí Kotlin a Maven
 
@@ -24,7 +24,7 @@ Tento článek vás provede použitím nástroje příkazového řádku Maven k 
 
 K vývoji funkcí pomocí Kotlin musíte mít nainstalované následující:
 
-- [Java Developer Kit](https://aka.ms/azure-jdks) verze 8
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) verze 8
 - [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
 - [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší

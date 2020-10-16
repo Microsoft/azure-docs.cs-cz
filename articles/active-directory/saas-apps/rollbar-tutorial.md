@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f3eae2a21c902b49b8e76fcb45e45577231e8b9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528543"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108554"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Kurz: Azure Active Directory integrace s Rollbar
 
@@ -30,7 +30,7 @@ Integrace Rollbar s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Rollbar potřebujete následující položky:
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Rollbar,
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Rollbar a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL: `https://saml.rollbar.com`
 
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Rollbar,
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně Rollbar a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://rollbar.com/<accountname>/saml/login/azure/`
 
@@ -134,15 +134,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Rollbar,
 
 1. Klikněte na **nastavení profilu** v pravém horním rohu a pak klikněte na **Nastavení názvu účtu**.
 
-    ![Konfigurace](./media/rollbar-tutorial/general.png)
+    ![Snímek obrazovky zobrazuje nastavení názvu účtu vybrané z nastavení profilu.](./media/rollbar-tutorial/general.png)
 
 1. V části zabezpečení klikněte na **zprostředkovatel identity** .
 
-    ![Konfigurace](./media/rollbar-tutorial/configure1.png)
+    ![Snímek obrazovky ukazuje poskytovatele identity vybraný v části zabezpečení.](./media/rollbar-tutorial/configure1.png)
 
 1. V části **zprostředkovatel identity SAML** proveďte následující kroky:
 
-    ![Konfigurace](./media/rollbar-tutorial/configure2.png)
+    ![Snímek obrazovky ukazuje poskytovatele identity SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/rollbar-tutorial/configure2.png)
 
     a. V rozevíracím seznamu **zprostředkovatel identity SAML** vyberte **Azure** .
 
@@ -152,7 +152,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Rollbar,
 
 1. Po kliknutí na tlačítko Uložit bude obrazovka vypadat takto:
 
-    ![Konfigurace](./media/rollbar-tutorial/configure3.png)
+    ![Snímek obrazovky zobrazuje výsledky na stránce zprostředkovatele identity SAML.](./media/rollbar-tutorial/configure3.png)
 
     > [!NOTE]
     > Aby bylo možné provést následující krok, je třeba nejprve přidat sami sebe jako uživatele do aplikace Rollbar v Azure.
@@ -233,11 +233,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k Rollbar, musí se zřídit v R
 
 1. Klikněte na **pozvat členy týmu**.
 
-    ![Pozvat lidi](./media/rollbar-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí vybraná možnost pozvat členy týmu.](./media/rollbar-tutorial/user2.png)
 
 1. Do textového pole zadejte jméno uživatele jako **brittasimon \@ contoso.com** a klikněte na **Přidat nebo pozvat**.
 
-    ![Pozvat lidi](./media/rollbar-tutorial/user3.png)
+    ![Snímek obrazovky se zobrazí členové přidat nebo pozvat s poskytnutou adresou.](./media/rollbar-tutorial/user3.png)
 
 1. Uživatel obdrží pozvánku a po přijetí ji vytvoří v systému.
 

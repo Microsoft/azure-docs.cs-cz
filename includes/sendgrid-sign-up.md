@@ -4,12 +4,12 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 4eb1a6f351cdf129611949049f762fe51cac4b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376924"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116691"
 ---
 Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Tyto 25 000 bezplatných měsíčních e-mailů vám umožní přístup k pokročilým vytváření sestav a analýzám a [všem rozhraním API][all APIs] (web, SMTP, Event, Analyze a další). Informace o dalších službách, které SendGrid poskytuje, najdete na stránce [SendGrid Solutions][SendGrid Solutions] (Řešení SendGrid).
 
@@ -69,7 +69,7 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
 ### <a name="to-find-your-sendgrid-credentials"></a>Vyhledání přihlašovacích údajů SendGrid
 1. **Uživatelské jméno** najdete kliknutím na ikonu klíče.
 
-    ! Snímek stránky ContosoSendGrid účtu se zvýrazněnou ikonou klíče.] [klíč]
+    ![Snímek stránky ContosoSendGrid účtu se zvýrazněnou ikonou klíče][key]
 2. Heslo jste si zvolili během nastavení. Pokud chcete provést změny, můžete vybrat **Change password** (Změnit heslo) nebo **Reset password** (Resetovat heslo).
 
 Pokud chcete spravovat nastavení doručitelnosti e-mailů, klikněte na **tlačítko Manage** (Spravovat). Tím se přesměruje na řídicí panel SendGrid.
@@ -90,7 +90,7 @@ Další informace o posílání e-mailů prostřednictvím SendGrid najdete v č
 [api-keys]: ./media/sendgrid-sign-up/api-keys.png
 [general-api-key]: ./media/sendgrid-sign-up/general-api-key.png
 [access]: ./media/sendgrid-sign-up/access.png
-[zkrat]: ./media/sendgrid-sign-up/key.png
+[key]: ./media/sendgrid-sign-up/key.png
 
 <!--Links-->
 

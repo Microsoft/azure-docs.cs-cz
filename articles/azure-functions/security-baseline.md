@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394087"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107517"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Základní hodnoty zabezpečení Azure pro Azure Functions
 
@@ -90,7 +90,7 @@ Kromě toho nakonfigurujte front-end bránu, jako je například firewall webov�
 
 - [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
+- [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
 - [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -545,7 +545,7 @@ K izolaci sítě můžete použít také soukromé koncové body. Privátní kon
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -649,7 +649,7 @@ Kromě toho použijte doporučení z Azure Security Center k zabezpečení vaši
 
 - [Postup přidání průběžného ověřování zabezpečení do kanálu CI/CD](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -727,7 +727,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -1087,7 +1087,7 @@ Pokud používáte spravované klíče zákazníka, ujistěte se, že Soft-Delet
 
 - [Šifrování neaktivních uložených dat ve službě Azure Storage](../storage/common/storage-service-encryption.md)
 
-- [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: Ano
 

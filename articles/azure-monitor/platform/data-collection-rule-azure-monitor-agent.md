@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: aa3225378f921792d1e8ba0442f2c555d095fb9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd29bfafe2d37b6a34031e6962cc27bfff0006c1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968399"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108010"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurace shromažďování dat pro agenta Azure Monitorho (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se mají odeslat. Tento článek popisuje, jak vytvořit pravidlo shromažďování dat pro shromažďování dat z virtuálních počítačů pomocí agenta Azure Monitor.
@@ -64,8 +64,8 @@ Klikněte na **Přidat zdroj dat** a pak **Zkontrolujte + vytvořit** a zkontrol
 ## <a name="createusingrestapi"></a>Vytvoření s použitím REST API
 Podle následujících kroků vytvořte DCR a přidružení pomocí REST API. 
 1.Ručně vytvořte soubor DCR pomocí formátu JSON, který je zobrazený v [ukázkové DCR](data-collection-rule-overview.md#sample-data-collection-rule).
-2.Vytvořte pravidlo pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules/create#examples).
-3.Vytvořte přidružení pro každý virtuální počítač k pravidlu shromažďování dat pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionruleassociations/create#examples).
+2.Vytvořte pravidlo pomocí [REST API](/rest/api/monitor/datacollectionrules/create#examples).
+3.Vytvořte přidružení pro každý virtuální počítač k pravidlu shromažďování dat pomocí [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples).
 
 ## <a name="next-steps"></a>Další kroky
 

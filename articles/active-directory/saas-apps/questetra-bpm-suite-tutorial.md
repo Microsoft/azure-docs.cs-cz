@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 11a6df348ae623ccf75e61bc1abbb5e28c832237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 943aba9c25df6cd279dc651cfad343a6509c069b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548952"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108673"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Kurz: Azure Active Directory integrace se sadou BPM pro Questetra
 
@@ -30,7 +30,7 @@ Integrace Questetra BPM Suite s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se sadou Questetra BPM potřebujete následující položky:
 
@@ -128,11 +128,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí sady Que
 
 2. V nabídce v horní části klikněte na **nastavení systému**. 
    
-    ![Služba Azure AD Single Sign-On][10]
+    ![Snímek obrazovky zobrazuje nastavení systému vybraná z webu společnosti Questetra BPM Suite.][10]
 
 3. Pokud chcete otevřít stránku **SingleSignOnSAML** , klikněte na **SSO (SAML)**. 
    
-    ![Služba Azure AD Single Sign-On][11]
+    ![Snímek obrazovky S vybraným výstupem (SAML) zobrazuje.][11]
 
 4. Na webu společnosti **QUESTETRA BPM Suite** v části **informace o SP** proveďte následující kroky:
 

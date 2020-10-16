@@ -3,15 +3,15 @@ title: Nastavení Multi-Factor Authentication Azure pro virtuální počítače 
 description: Jak nastavit Azure Multi-Factor Authentication pro zvýšení zabezpečení na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e31693eafcf32de1460cfa5b74ae35ffd05b5a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089917"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108979"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Povolení služby Azure Multi-Factor Authentication pro službu Windows Virtual Desktop
 
@@ -24,7 +24,7 @@ Po prvním přihlášení si klient vyžádá vaše uživatelské jméno, heslo 
 
 I když je zapamatování přihlašovacích údajů pohodlné, může také provádět nasazení v podnikových scénářích nebo na osobních zařízeních méně zabezpečená. Pokud chcete chránit své uživatele, musíte se ujistit, že klient uchovává dotaz na přihlašovací údaje pro Azure Multi-Factor Authentication (MFA). V tomto článku se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro virtuální plochu Windows, aby toto nastavení bylo povolené.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je přehled toho, co budete potřebovat k zahájení práce:
 
@@ -64,6 +64,8 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
 
    >[!IMPORTANT]
    > Nevybírejte aplikaci nazvanou Windows Virtual Desktop Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63). Tato aplikace se používá jenom pro načtení uživatelského kanálu a neměla by mít MFA.
+   > 
+   > Pokud používáte virtuální plochu Windows (Classic), pokud zásada podmíněného přístupu zablokuje veškerý přístup a vyloučí jenom ID aplikací virtuálních počítačů s Windows, můžete to opravit přidáním ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07 do zásady. Když nepřidáte toto ID aplikace, zablokuje se zjišťování prostředků virtuálních ploch Windows (Classic) v informačním kanálu.
 
 10. Přejít na **podmínky**  >  **klientské aplikace**a pak vyberte, na kde chcete zásadu použít:
     

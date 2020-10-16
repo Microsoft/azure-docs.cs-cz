@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071155"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108469"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -126,7 +126,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Níže jsou uvedené platné parametry pro volání `Push-OutputBinding` :
 
-| Název | Typ | Pozice | Description |
+| Název | Typ | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
@@ -143,7 +143,7 @@ Podporovány jsou i tyto společné parametry:
 * `PipelineVariable`
 * `OutVariable` 
 
-Další informace najdete v tématu [o CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+Další informace najdete v tématu [o CommonParameters](/powershell/module/microsoft.powershell.core/about/about_commonparameters).
 
 #### <a name="push-outputbinding-example-http-responses"></a>Příklad Push-OutputBinding: odpovědi HTTP
 
@@ -236,7 +236,7 @@ Protokolování funkcí prostředí PowerShell funguje jako běžné protokolov�
 | Chyba | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
 | Informační | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informační | Zapisuje do protokolování na úrovni _informací_ . |
-| Ladit | **`Write-Debug`** |
+| Ladění | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Kromě těchto rutin se vše zapsané do kanálu přesměruje na `Information` úroveň protokolu a zobrazí se s výchozím formátováním PowerShellu.
@@ -470,7 +470,7 @@ Když aktualizujete soubor requirements.psd1, po restartování se nainstalují 
 
 Pomocí následujících nastavení aplikace můžete změnit způsob stažení a instalace spravovaných závislostí. Upgrade vaší aplikace se spouští v rámci nástroje `MDMaxBackgroundUpgradePeriod` a proces upgradu se dokončí přibližně v `MDNewSnapshotCheckPeriod` .
 
-| Nastavení Function App              | Výchozí hodnota             | Description                                         |
+| Nastavení Function App              | Výchozí hodnota             | Popis                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 dnů)     | Každý pracovní proces PowerShellu inicializuje kontrolu upgradů modulů na Galerie prostředí PowerShell spuštění procesu a každé z nich `MDMaxBackgroundUpgradePeriod` . Když je v Galerie prostředí PowerShell k dispozici nová verze modulu, nainstaluje se do systému souborů a zpřístupní se pro pracovní procesy prostředí PowerShell. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale také zvyšuje využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít k zpoždění doručení nových verzí modulu do aplikace. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 hodina)       | Až se v systému souborů nainstalují nové verze modulů, musí se všechny pracovní procesy PowerShellu restartovat. Restartování pracovních procesů PowerShell ovlivní dostupnost vaší aplikace, protože může přerušit aktuální spuštění funkce. Dokud nebudou všechny pracovní procesy prostředí PowerShell restartovány, mohou být vyvolány funkce buď staré, nebo nové verze modulu. Restart všech pracovních procesů PowerShellu se dokončil v rámci `MDNewSnapshotCheckPeriod` . Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se prodloužit i čas, kdy volání funkcí používají buď starou, nebo nové verze modulu, které nejsou deterministické. |
@@ -560,7 +560,7 @@ Existuje několik modelů souběžnosti, které byste mohli prozkoumat v závisl
 
 Tyto proměnné prostředí nastavíte v [nastavení aplikace](functions-app-settings.md) vaší aplikace Function App.
 
-V závislosti na vašem případu použití může Durable Functions významně zlepšit škálovatelnost. Další informace najdete v tématu [Durable Functions vzorech aplikací](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns).
+V závislosti na vašem případu použití může Durable Functions významně zlepšit škálovatelnost. Další informace najdete v tématu [Durable Functions vzorech aplikací](./durable/durable-functions-overview.md?tabs=powershell#application-patterns).
 
 >[!NOTE]
 > Je možné, že se "požadavky zařadí do fronty z důvodu žádného dostupného upozornění prostředí runspace". Upozorňujeme, že se nejedná o chybu. Zpráva oznamuje, že požadavky se zařadí do fronty a budou zpracovány po dokončení předchozích požadavků.

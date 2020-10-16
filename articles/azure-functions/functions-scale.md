@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372659"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108452"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
@@ -168,7 +168,7 @@ az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <f
 
 Existuje mnoho aspektů aplikace Function App, které budou mít vliv na to, jak se bude škálovat, včetně konfigurace hostitele, běhového prostředí a efektivity prostředků.  Další informace najdete v [části věnované škálovatelnosti v článku věnovaném důležitým](functions-best-practices.md#scalability-best-practices)informacím o výkonu. Měli byste taky vědět, jak se připojení chovají, jak se vaše aplikace Function škáluje. Další informace najdete v tématu [Správa připojení v Azure Functions](manage-connections.md).
 
-Další informace o škálování v Pythonu a Node.js Azure Functions najdete v tématu [Příručka pro vývojáře v Pythonu – škálování a souběžnost](functions-reference-python.md#scaling-and-concurrency) a [Azure Functions Node.js příručka pro vývojáře – škálování a souběžnost](functions-reference-node.md#scaling-and-concurrency).
+Další informace o škálování v Pythonu a Node.js Azure Functions najdete v tématu [Příručka pro vývojáře v Pythonu – škálování a souběžnost](functions-reference-python.md#scaling-and-performance) a [Azure Functions Node.js příručka pro vývojáře – škálování a souběžnost](functions-reference-node.md#scaling-and-concurrency).
 
 ### <a name="billing-model"></a>Model fakturace
 

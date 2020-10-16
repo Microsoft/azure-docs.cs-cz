@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9318ce7d73f2d05dde6815a0ded4269510760251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 388c0db11c38f3dcdb9c4452b8d7283b2e811885
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441982"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108690"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Integrace Azure Data Lake Storage Gen1 s dalšími službami Azure
 Azure Data Lake Storage Gen1 lze použít ve spojení s jinými službami Azure a povolit širší škálu scénářů. Následující článek obsahuje seznam služeb, které Data Lake Storage Gen1 lze integrovat s nástrojem.
@@ -51,7 +51,7 @@ Pomocí Power BI můžete importovat data z účtu Data Lake Storage Gen1 a anal
 Data z Data Lake Storage Gen1 můžete zaregistrovat do Azure Data Catalog, aby byla data zjistitelná v celé organizaci. Další informace najdete [v tématu Registrace dat z Data Lake Storage Gen1 v Azure Data Catalog](data-lake-store-with-data-catalog.md).
 
 ## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>Použití Data Lake Storage Gen1 s služba SSIS (SQL Server Integration Services) (SSIS)
-K připojení balíčku SSIS s Data Lake Storage Gen1 můžete použít Správce připojení Data Lake Storage Gen1 v SSIS. Další informace najdete v tématu [použití Data Lake Storage Gen1 s SSIS](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
+K připojení balíčku SSIS s Data Lake Storage Gen1 můžete použít Správce připojení Data Lake Storage Gen1 v SSIS. Další informace najdete v tématu [použití Data Lake Storage Gen1 s SSIS](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 
 ## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>Použití Data Lake Storage Gen1 se službou Azure synapse Analytics
 K načtení dat z Data Lake Storage Gen1 do služby Azure synapse Analytics (dřív SQL Data Warehouse) můžete použít základnu. Další informace najdete v tématu [použití Data Lake Storage Gen1 s analýzou Azure synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
@@ -62,5 +62,4 @@ Pomocí Azure Data Lake Storage Gen1 můžete archivovat a zachytit data přijat
 ## <a name="see-also"></a>Viz také
 * [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Začínáme s Data Lake Storage Gen1 pomocí portálu](data-lake-store-get-started-portal.md)
-* [Začínáme s Data Lake Storage Gen1 pomocí prostředí PowerShell](data-lake-store-get-started-powershell.md)  
-
+* [Začínáme s Data Lake Storage Gen1 pomocí prostředí PowerShell](data-lake-store-get-started-powershell.md)

@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure Proxy aplikací služby AD | Microsoft Docs
+title: Proxy aplikací služby Azure Active Directory nejčastějších dotazech
 description: Přečtěte si odpovědi na nejčastější dotazy k používání služby Azure Proxy aplikací služby AD k publikování interních místních aplikací pro vzdálené uživatele.
 services: active-directory
 author: kenwith
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589159"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104559"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -57,7 +57,7 @@ Doporučení najdete v tématu [Vysoká dostupnost a vyrovnávání zatížení 
 Konektor proxy aplikací provádí ověřování pomocí certifikátů v Azure. Ukončení protokolu TLS (kontrola TLS/HTTPS) ruší tuto metodu ověřování a není podporovaná. Přenos z konektoru do Azure musí obejít všechna zařízení, která provádějí ukončení protokolu TLS.  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>Vyžaduje se TLS 1,2 pro všechna připojení?
-Ano. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
+Yes. Aby služba proxy aplikací poskytovala zákazníkům nejlepší šifrování, omezí přístup jenom na protokoly TLS 1,2. Tyto změny byly postupně nasazeny a platit od 31. srpna 2019. Zajistěte, aby byly všechny kombinace klienta a serveru a prohlížeče a serveru aktualizovány tak, aby používaly protokol TLS 1,2 pro zachování připojení ke službě proxy aplikací. Mezi ně patří klienti, kteří uživatelé používají pro přístup k aplikacím, které jsou publikované prostřednictvím proxy aplikací. Užitečné odkazy a prostředky najdete v tématu Příprava pro [TLS 1,2 v sadě Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) .
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Můžu umístit dopředné proxy zařízení mezi servery konektoru a back-end aplikační server?
 Ano, tento scénář je podporován od verze konektoru 1.5.1526.0. Podívejte [se na téma práce se stávajícími místními proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -83,7 +83,6 @@ Proxy aplikací vyžaduje systém Windows Server 2012 R2 nebo novější. V sou�
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
-
 
 ## <a name="application-configuration"></a>Konfigurace aplikací
 
@@ -124,6 +123,12 @@ Další informace najdete v dokumentu White Paper [Principy omezeného delegová
 ### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>Funguje ověřování NTLM s Azure Proxy aplikací služby AD?
 
 Ověřování NTLM se nedá použít jako metoda předběžného ověřování nebo jednotného přihlašování. Ověřování NTLM se dá použít jenom v případě, že se dá vyjednávat přímo mezi klientem a publikovanou webovou aplikací. Použití ověřování NTLM obvykle způsobí zobrazení výzvy k přihlášení v prohlížeči.
+
+### <a name="can-i-use-the-logon-identity-on-premises-user-principal-name-or-on-premises-sam-account-name-in-a-b2b-iwa-single-sign-on-scenario"></a>Můžu v případě jednotného přihlašování B2B IWA použít identitu přihlášení "místní hlavní název uživatele" nebo "místní název účtu SAM"?
+
+Ne, tato činnost nebude fungovat, protože uživatel typu Host ve službě Azure AD nemá atribut požadovaný žádnou z výše uvedených přihlašovacích identit.
+
+V tomto případě bude k dispozici záložní hodnota "hlavní název uživatele". Pokud chcete získat další informace o scénáři B2B, přečtěte si téma [udělení uživatelů B2B v Azure AD přístup k vašim místním aplikacím](../external-identities/hybrid-cloud-to-on-premises.md).
 
 ## <a name="pass-through-authentication"></a>Předávací ověřování
 
@@ -185,7 +190,7 @@ Funkce (události protokolu, PowerShell a Vzdálená plocha) v centru pro správ
 
 ### <a name="does-using-link-translation-affect-performance"></a>Má použití překladu odkazů vliv na výkon?
 
-Ano. Překlad propojení má vliv na výkon. Služba proxy aplikací vyhledá v aplikaci odkazy na pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL. teprve potom je prezentuje uživateli. 
+Yes. Překlad propojení má vliv na výkon. Služba proxy aplikací vyhledá v aplikaci odkazy na pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL. teprve potom je prezentuje uživateli. 
 
 Pro nejlepší výkon doporučujeme použít stejné interní a externí adresy URL konfigurací [vlastních domén](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain). Pokud není možné používat vlastní domény, můžete zlepšit výkon překladu propojení pomocí rozšíření zabezpečeného přihlašování k aplikacím nebo prohlížeče Microsoft Edge na mobilních zařízeních. Přečtěte si téma [přesměrování pevně zakódované odkazů pro aplikace publikované s Azure proxy aplikací služby AD](application-proxy-configure-hard-coded-link-translation.md).
 
@@ -198,5 +203,5 @@ Tento scénář se nepodporuje přímo. Pro tento scénář máte tyto možnosti
 1. Publikujte adresy URL HTTP i HTTPS jako samostatné aplikace se zástupnými znaky, ale poskytněte každé z nich jinou vlastní doménu. Tato konfigurace bude fungovat, protože má různé externí adresy URL.
 
 2. Publikujte adresu URL HTTPS prostřednictvím aplikace se zástupnými znaky. Publikujte aplikace HTTP samostatně pomocí těchto rutin PowerShellu pro proxy aplikace:
-   - [Správa aplikací proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
-   - [Správa konektoru proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)
+   - [Správa aplikací proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management&preserve-view=true)
+   - [Správa konektoru proxy aplikací](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management&preserve-view=true)

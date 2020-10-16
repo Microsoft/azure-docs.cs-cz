@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a02459f5b92aa7d708c29c737ed9428ed14215a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045682"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108996"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>Instalace nebo odinstalace modulu runtime Azure IoT Edge
 
@@ -24,7 +24,7 @@ Existují dva kroky pro nastavení IoT Edge zařízení. Prvním krokem je insta
 
 V tomto článku jsou uvedené kroky pro instalaci modulu runtime Azure IoT Edge v zařízeních se systémem Linux nebo Windows. U zařízení s Windows máte k dispozici další možnosti použití kontejnerů systému Linux nebo kontejnerů Windows. V současné době jsou kontejnery Windows ve Windows doporučovány pro produkční scénáře. Kontejnery pro Linux ve Windows jsou užitečné pro scénáře vývoje a testování, zejména pokud vyvíjíte na počítači s Windows, abyste mohli nasadit na zařízení se systémem Linux.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Nejnovější informace o tom, které operační systémy se v produkčních scénářích aktuálně podporují, najdete v článku [Azure IoT Edge podporované systémy](support.md#operating-systems) .
 
@@ -83,6 +83,12 @@ IoT Edge s kontejnery pro Linux lze spustit v libovolné verzi systému Windows,
 Azure IoT Edge spoléhá na modul kontejneru, který je kompatibilní s rozhraním [OCI](https://www.opencontainers.org/) . Ujistěte se, že vaše zařízení dokáže podporovat kontejnery.
 
 Pokud instalujete IoT Edge na virtuálním počítači, povolte vnořenou virtualizaci a přidělte alespoň 2 GB paměti. Virtuální počítače generace 2 pro Hyper-V mají ve výchozím nastavení vnořenou virtualizaci povolenou. Pro VMware je k dispozici přepínač pro povolení funkce na vašem virtuálním počítači.
+
+Pokud instalujete IoT Edge na zařízení IoT Core, pomocí následujícího příkazu ve [vzdálené relaci PowerShellu](/windows/iot-core/connect-your-device/powershell) ověřte, jestli jsou kontejnery Windows na vašem zařízení podporované:
+
+```powershell
+Get-Service vmcompute
+```
 
 ---
 
@@ -160,6 +166,9 @@ Pokud verze, kterou chcete nainstalovat, není v seznamu uvedená, postupujte po
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
+>[!TIP]
+>Pro zařízení IoT Core doporučujeme spouštět instalační příkazy pomocí vzdálené relace PowerShellu. Další informace najdete v tématu [použití PowerShellu pro Windows IoT](/windows/iot-core/connect-your-device/powershell).
+
 1. Spusťte PowerShell jako správce.
 
    Použijte relaci AMD64 PowerShellu, ne PowerShell (x86). Pokud si nejste jistí, který typ relace používáte, spusťte následující příkaz:
@@ -186,7 +195,7 @@ Pokud verze, kterou chcete nainstalovat, není v seznamu uvedená, postupujte po
    Deploy-IoTEdge -ContainerOs Linux
    ```
 
-3. V tomto okamžiku může výstup zobrazit výzvu k restartování. Pokud ano, restartujte zařízení nyní.
+3. V tuto chvíli se zařízení IoT Core můžou restartovat automaticky. Zařízení s Windows 10 nebo Windows Server vás můžou vyzvat k restartování. Pokud ano, restartujte zařízení nyní.
 
 Při instalaci IoT Edge na zařízení můžete pomocí dalších parametrů upravit proces, včetně:
 
@@ -321,6 +330,8 @@ Pokud chcete odebrat instalaci IoT Edge ze zařízení s Windows, použijte př�
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
+
+`Uninstall-IoTEdge`Příkaz nefunguje na Windows IoT Core. Pokud chcete odebrat IoT Edge, musíte znovu nasadit image Windows IoT Core.
 
 Další informace o možnostech odinstalace získáte pomocí příkazu `Get-Help Uninstall-IoTEdge -full` .
 

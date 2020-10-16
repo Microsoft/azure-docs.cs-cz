@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6732857e278285071c9d36c629920ad9e67368f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef8a93ebdc5eb389608ef3340b9707bfd040a295
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528535"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105715"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Kurz: Azure Active Directory integrace s RFPIO
 
@@ -30,7 +30,7 @@ Integrace RFPIO s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s RFPIO potřebujete následující položky:
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RFPIO, p
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
 
-    ![Informace o jednotném přihlašování v doméně RFPIO a adresách URL](common/idp-identifier.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor.](common/idp-identifier.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://www.rfpio.com`
 
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RFPIO, p
 
     c. Do textového pole **stav přenosu** zadejte hodnotu řetězce. Pokud chcete získat tuto hodnotu, kontaktujte [tým podpory RFPIO](https://www.rfpio.com/contact/) .
 
-    ![Informace o jednotném přihlašování v doméně RFPIO a adresách URL](common/idp-preintegrated-relay.png)
+    ![Snímek obrazovky se zobrazí nastavení další U R ls.](common/idp-preintegrated-relay.png)
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -138,23 +138,23 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RFPIO, p
 
 1. Klikněte na rozevírací seznam levého dolního rohu.
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app1.png)
+    ![Snímek obrazovky se zobrazí se šipkou dolů v dolní části podokna.](./media/rfpio-tutorial/app1.png)
 
 1. Klikněte na **Nastavení organizace**. 
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app2.png)
+    ![Snímek obrazovky zobrazuje vybraná nastavení organizace.](./media/rfpio-tutorial/app2.png)
 
 1. Klikněte na **funkce & integraci**.
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app4.png)
+    ![Snímek obrazovky zobrazuje funkce a integraci vybrané z nastavení.](./media/rfpio-tutorial/app4.png)
 
 1. V **konfiguraci jednotného přihlašování SAML** klikněte na **Upravit**.
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app3.png)
+    ![Snímek obrazovky ukazuje konfiguraci SAML S S s tlačítkem upravit s názvem.](./media/rfpio-tutorial/app3.png)
 
 1. V této části provedete následující akce:
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app5.png)
+    ![CScreenshot ukazuje konfiguraci SAML s S povoleným protokolem SAML.](./media/rfpio-tutorial/app5.png)
     
     a. Zkopírujte obsah **stažených METADAT XML** a vložte ho do pole **Konfigurace identity** .
 
@@ -223,23 +223,23 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. Klikněte na rozevírací seznam levého dolního rohu.
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app1.png)
+    ![Snímek obrazovky se zobrazí se šipkou dolů v dolní části podokna.](./media/rfpio-tutorial/app1.png)
 
 1. Klikněte na **Nastavení organizace**. 
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app2.png)
+    ![Snímek obrazovky zobrazuje vybraná nastavení organizace.](./media/rfpio-tutorial/app2.png)
 
 1. Klikněte na **Členové týmu**.
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app6.png)
+    ![Snímek obrazovky ukazuje členy týmu vybrané z nastavení.](./media/rfpio-tutorial/app6.png)
 
 1. Klikněte na **přidat členy**.
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app7.png)
+    ![Snímek obrazovky se zobrazí tlačítko přidat členy.](./media/rfpio-tutorial/app7.png)
 
 1. V části **Přidat nové členy** . Proveďte následující akce:
 
-    ![Konfigurace jednoho Sign-On](./media/rfpio-tutorial/app8.png)
+    ![Snímek obrazovky ukazuje přidat nové členy, kde můžete zadat hodnoty, které jsou popsány.](./media/rfpio-tutorial/app8.png)
 
     a. Zadejte **e-mailovou adresu** do pole **zadat jednu e-mailem na řádek** .
 

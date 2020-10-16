@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 10803a16a2ceb84e084070d899b50360446710fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55ab6b339d6cb71bf46340e458bcc93cd73e2ba9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548921"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Kurz: Azure Active Directory integrace s QuickHelp
 
@@ -30,7 +30,7 @@ Integrace QuickHelp s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s QuickHelp potřebujete následující položky:
 
@@ -130,17 +130,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí QuickHel
 
 2. V nabídce v horní části klikněte na **správce**.
    
-    ![Konfigurace jednoho Sign-On][21]
+    ![Snímek obrazovky se zobrazí položka nabídky správce pro pracovní debatu.][21]
 
 3. V nabídce **správce QuickHelp** klikněte na **Nastavení**.
    
-    ![Konfigurace jednoho Sign-On][22]
+    ![Snímek obrazovky zobrazuje nastavení vybraná v nabídce správce QuickHelp.][22]
 
 4. Klikněte na **nastavení ověřování**.
 
 5. Na stránce **nastavení ověřování** proveďte následující kroky.
    
-    ![Konfigurace jednoho Sign-On][23]
+    ![Snímek obrazovky se zobrazí stránka nastavení ověřování, kde můžete zadat hodnoty, které jsou popsány.][23]
    
     a. Jako **Typ jednotného přihlašování**vyberte **WSFederation**.
    

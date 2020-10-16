@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5e15dfec049197fa056cbd55fd839b3eb93be77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b32f16d170df9963960862bc82aef1a4baf13896
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530365"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104440"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro Azure Functions
 
@@ -41,7 +41,7 @@ Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balí
 [Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [Sada rozšíření]: ./functions-bindings-register.md#extension-bundles
-[Aktualizace rozšíření]: ./install-update-binding-extensions-manual.md
+[Aktualizace rozšíření]: ./functions-bindings-register.md
 [Rozšíření nástrojů Azure]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>Functions 1.x

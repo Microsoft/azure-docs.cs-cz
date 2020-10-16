@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat virtuální počítače s GCP
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cd3bf225c6de0401aaa625cf3bb037b3beb58a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bee73c6bbad9eef91e867b55ffde453a4012914
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716549"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108571"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Zjišťování, vyhodnocení a migrace virtuálních počítačů Google Cloud Platform (GCP) do Azure
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte, jak:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci do Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
 
 ## <a name="discover-and-assess"></a>Zjišťování a vyhodnocení
 
@@ -399,7 +399,7 @@ Až ověříte, že migrace testu funguje podle očekávání, můžete migrovat
 **Odpověď:** Tyto změny možná budete muset udělat před migrací virtuálních počítačů s EC2 do Azure:
 
 - Pokud pro zřizování virtuálních počítačů používáte Cloud-init, možná budete chtít zakázat Cloud-init na virtuálním počítači, abyste ho mohli replikovat do Azure. Kroky zřizování, které provádí Cloud-init na virtuálním počítači, možná GCP konkrétní a po migraci do Azure nebudou platné.  
-- Přečtěte si část [požadavky](#prerequisites) a zjistěte, jestli jsou potřebné nějaké změny pro operační systém, který jste
+- Před migrací do Azure si přečtěte část [požadavky](#prerequisites) , abyste zjistili, jestli jsou v operačním systému potřebné nějaké změny.
 - Vždycky doporučujeme před konečnou migrací spustit migraci testu.  
 
 ## <a name="next-steps"></a>Další kroky

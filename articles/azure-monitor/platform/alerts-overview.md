@@ -4,12 +4,12 @@ description: Přehled upozorňování v Azure. Výstrahy, klasické výstrahy a 
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: f58175d105e1dd36d58fbe4d8b68109810797b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317136"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108792"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled upozornění v Microsoft Azure 
 
@@ -84,7 +84,7 @@ Podporovány jsou následující stavy upozornění.
 
 *Stav výstrahy* se liší a nezávisle na *stavu monitorování*. Stav výstrahy je nastaven uživatelem. Stav monitorování je nastaven systémem. Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na *aktivováno*a když se podkladová podmínka, která způsobila výstrahu, neodstraní, stav monitorování se nastaví na *Vyřešeno*. 
 
-Stav výstrahy se nezmění, dokud ji uživatel nezmění. Zjistěte, [Jak změnit stav výstrah a inteligentních skupin](https://aka.ms/managing-alert-smart-group-states).
+Stav výstrahy se nezmění, dokud ji uživatel nezmění. Zjistěte, [Jak změnit stav výstrah a inteligentních skupin](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 
 ## <a name="alerts-experience"></a>Prostředí výstrah 
 Stránka výchozí výstrahy poskytuje souhrn výstrah, které jsou vytvořeny v určitém časovém rozsahu. Zobrazuje celkový počet výstrah pro každou závažnost, se sloupci, které identifikují celkový počet výstrah v jednotlivých stavech pro každou závažnost. Výběrem libovolné závažnosti otevřete stránku [všechny výstrahy](#all-alerts-page) filtrované podle této závažnosti.
@@ -167,7 +167,7 @@ Když vyberete výstrahu, Tato stránka poskytuje podrobnosti o výstraze a umo�
 
 Stránka Podrobnosti výstrahy obsahuje následující části:
 
-| Sekce | Description |
+| Sekce | Popis |
 |:---|:---|
 | Shrnutí | Zobrazí vlastnosti a další důležité informace o výstraze. |
 | Historie | Zobrazí všechny akce podniknuté výstrahou a všechny změny provedené v upozornění. V současné době omezené na změny stavu. |
@@ -181,7 +181,7 @@ Spotřeba a Správa instancí výstrah vyžaduje, aby uživatel měl předdefino
 
 Pro výstrahy generované proti vašemu předplatnému můžete chtít dotazovat programově. Dotazy mohou být vytvářeny s vlastními zobrazeními mimo Azure Portal, nebo k analýze výstrah pro identifikaci vzorců a trendů.
 
-Můžete zadat dotaz na výstrahy vygenerované na základě předplatného, a to buď pomocí [REST API Alert Management](https://aka.ms/alert-management-api) , nebo pomocí [grafu prostředků Azure](../../governance/resource-graph/overview.md) a [REST API pro prostředky](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources).
+Můžete zadat dotaz na výstrahy vygenerované na základě předplatného, a to buď pomocí [REST API Alert Management](/rest/api/monitor/alertsmanagement/alerts) , nebo pomocí [grafu prostředků Azure](../../governance/resource-graph/overview.md) a [REST API pro prostředky](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources).
 
 Graf prostředků REST API pro prostředky vám umožní dotazování na instance výstrah ve velkém měřítku. Diagram prostředků se doporučuje, když budete muset spravovat výstrahy vygenerované v mnoha předplatných. 
 
@@ -200,16 +200,16 @@ Výsledek dotazu na graf prostředku můžete zobrazit také na portálu pomocí
 
 Můžete zadat dotaz na výstrahy pro jejich [důležitá](alerts-common-schema-definitions.md#essentials) pole.
 
-Pomocí [REST API Alert Management](https://aka.ms/alert-management-api) můžete získat další informace o konkrétních výstrahách, včetně jejich [kontextových polí výstrahy](alerts-common-schema-definitions.md#alert-context) .
+Pomocí [REST API Alert Management](/rest/api/monitor/alertsmanagement/alerts) můžete získat další informace o konkrétních výstrahách, včetně jejich [kontextových polí výstrahy](alerts-common-schema-definitions.md#alert-context) .
 
 ## <a name="smart-groups"></a>Inteligentní skupiny
 
-Inteligentní skupiny jsou agregace výstrah na základě algoritmů strojového učení, které mohou pomoci při řešení potíží s omezením hluku výstrah a pomoci. [Přečtěte si další informace o inteligentních skupinách](https://aka.ms/smart-groups) a [o tom, jak spravovat vaše inteligentní skupiny](https://aka.ms/managing-smart-groups).
+Inteligentní skupiny jsou agregace výstrah na základě algoritmů strojového učení, které mohou pomoci při řešení potíží s omezením hluku výstrah a pomoci. [Přečtěte si další informace o inteligentních skupinách](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) a [o tom, jak spravovat vaše inteligentní skupiny](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace o inteligentních skupinách](https://aka.ms/smart-groups)
+- [Další informace o inteligentních skupinách](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [Další informace o skupinách akcí](./action-groups.md)
-- [Správa instancí upozornění v Azure](https://aka.ms/managing-alert-instances)
-- [Správa inteligentních skupin](https://aka.ms/managing-smart-groups)
+- [Správa instancí upozornění v Azure](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Správa inteligentních skupin](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [Další informace o cenách Azure Alerts](https://azure.microsoft.com/pricing/details/monitor/)

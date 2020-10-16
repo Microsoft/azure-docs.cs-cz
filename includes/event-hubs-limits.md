@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 31031462d9904e3554c19f47bc82f87746443693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371715"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92116820"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -47,7 +47,7 @@ V následující tabulce jsou uvedena omezení, která se mohou lišit pro úrov
 ### <a name="dedicated-tier"></a>Vyhrazená úroveň
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
-| Příznak | Omezení |
+| Funkce | Omezení |
 | --- | ---|
 | Šířka pásma |  20 kapacitní jednotky |
 | Obory názvů | 50 za CU |
@@ -64,14 +64,14 @@ V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s m
 ### <a name="schema-registry-limitations"></a>Omezení registru schématu
 
 #### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Omezení, která jsou stejná pro **standardní** a **vyhrazené** úrovně 
-| Příznak | Omezení | 
+| Funkce | Omezení | 
 | --- |  --- | -- |
 | Maximální délka názvu skupiny schémat | 50 |  
 | Maximální délka názvu schématu | 100 |    
 | Velikost v bajtech na schéma | 1 MB |   
 | Počet vlastností na skupinu schémat | 1024 |
 | Velikost v bajtech na klíč vlastnosti skupiny | 256 | 
-| Velikost v bajtech na klíč vlastnosti skupiny | 1024 | 
+| Velikost v bajtech na hodnotu vlastnosti skupiny | 1024 | 
 
 
 #### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Omezení, která jsou odlišná na úrovni **Standard** a **vyhrazené** 

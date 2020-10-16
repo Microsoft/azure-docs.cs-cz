@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 38ccc99de72af8f989cca0fefae2f962fb178f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19deaa7656cc86d534278464dba1041267ef15b0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373364"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105035"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Vytvoření první funkce Azure pomocí Java a IntelliJ
 
@@ -29,7 +29,7 @@ V tomto článku najdete:
 K vývoji funkcí Java a IntelliJ nainstalujte následující software:
 
 + Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-+ [Podporovaná sada Java Development Kit (JDK) v Azure](https://aka.ms/azure-jdks) pro Java 8
++ [Podporovaná sada Java Development Kit (JDK) v Azure](/azure/developer/java/fundamentals/java-jdk-long-term-support) pro Java 8
 + Nainstalované prostředí [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition nebo Community Edition
 + [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
 + [Základní nástroje pro základní funkce](https://github.com/Azure/azure-functions-core-tools)

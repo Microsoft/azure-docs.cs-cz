@@ -4,12 +4,12 @@ description: Jak vybrat z dostupných velikostí virtuálních počítačů pro 
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271303"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107500"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -24,7 +24,7 @@ Pro výběr velikosti virtuálního počítače je k dispozici několik výjimek
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Fondy v konfiguraci virtuálního počítače
 
-Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny velikosti virtuálních počítačů ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). Další informace o podporovaných velikostech a omezeních najdete v následující tabulce.
+Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny velikosti virtuálních počítačů ([Linux](../virtual-machines/sizes.md), [Windows](../virtual-machines/sizes.md)). Další informace o podporovaných velikostech a omezeních najdete v následující tabulce.
 
 | Řada virtuálních počítačů  | Podporované velikosti |
 |------------|---------|

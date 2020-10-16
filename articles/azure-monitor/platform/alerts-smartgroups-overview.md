@@ -4,12 +4,12 @@ description: Inteligentní skupiny jsou agregace výstrah, které vám pomůžou
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: 05b05f8bc079bb3768ac2f1a03593bc9260b41aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77665489"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108775"
 ---
 # <a name="smart-groups"></a>Inteligentní skupiny
 
@@ -33,7 +33,7 @@ Podporovány jsou následující stavy inteligentních skupin.
 | Potvrzeno | Správce zkontroloval tuto inteligentní skupinu a začal na ní pracovat. |
 | Uzavřená | Problém byl vyřešen. Po zavření čipové skupiny ji můžete znovu otevřít změnou do jiného stavu. |
 
-[Zjistěte, jak změnit stav vaší inteligentní skupiny.](https://aka.ms/managing-alert-smart-group-states)
+[Zjistěte, jak změnit stav vaší inteligentní skupiny.](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 
 > [!NOTE]
 >  Změna stavu inteligentní skupiny nemění stav výstrah jednotlivých členů.
@@ -58,7 +58,5 @@ Název inteligentní skupiny je název první výstrahy. Nemůžete vytvořit ne
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa inteligentních skupin](https://aka.ms/managing-smart-groups)
-- [Změna upozornění a stavu inteligentní skupiny](https://aka.ms/managing-alert-smart-group-states)
-
-
+- [Správa inteligentních skupin](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Změna upozornění a stavu inteligentní skupiny](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)

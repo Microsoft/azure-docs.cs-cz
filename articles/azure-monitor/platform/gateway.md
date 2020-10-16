@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 94c668e7ffaff81fed9c2e511bc38239069fa43e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305206"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107772"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Připojení počítačů bez přístupu k Internetu pomocí Log Analytics brány v Azure Monitor
 
@@ -201,12 +201,12 @@ Informace o tom, jak navrhnout a nasadit cluster programu pro vyrovnávání zat
 
     ![Správce vyrovnávání zatížení sítě – přidat hostitele do clusteru: připojit](./media/gateway/nlb03.png) 
 
-### <a name="azure-load-balancer"></a>Azure Load Balancer
+### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 
 Informace o tom, jak navrhnout a nasadit Azure Load Balancer, najdete v tématu [co je Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Pokud chcete nasadit základní nástroj pro vyrovnávání zatížení, postupujte podle kroků uvedených v tomto [rychlém](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) startu s výjimkou kroků uvedených v části **Vytvoření back-endové serverů**.   
 
 > [!NOTE]
-> Konfigurace Azure Load Balancer pomocí **základní skladové**položky (SKU) vyžaduje, aby virtuální počítače Azure patřily do skupiny dostupnosti. Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../virtual-machines/windows/manage-availability.md). Chcete-li přidat existující virtuální počítače do skupiny dostupnosti, přečtěte si téma [nastavení sady dostupnosti virtuálního počítače Azure Resource Manager](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> Konfigurace Azure Load Balancer pomocí **základní skladové**položky (SKU) vyžaduje, aby virtuální počítače Azure patřily do skupiny dostupnosti. Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů s Windows v Azure](../../virtual-machines/manage-availability.md). Chcete-li přidat existující virtuální počítače do skupiny dostupnosti, přečtěte si téma [nastavení sady dostupnosti virtuálního počítače Azure Resource Manager](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
 Po vytvoření nástroje pro vyrovnávání zatížení je třeba vytvořit back-end fond, který distribuuje provoz na jeden nebo více serverů brány. Postupujte podle kroků popsaných v části článek rychlý Start [vytvoření prostředků pro nástroj pro vyrovnávání zatížení](../../load-balancer/quickstart-load-balancer-standard-public-portal.md).  
@@ -389,4 +389,3 @@ Pokud chcete získat nápovědu, vyberte ikonu otazníku v pravém horním rohu 
 ## <a name="next-steps"></a>Další kroky
 
 [Přidejte zdroje dat](./agent-data-sources.md) pro shromažďování dat z připojených zdrojů a data uložte do svého pracovního prostoru Log Analytics.
-
