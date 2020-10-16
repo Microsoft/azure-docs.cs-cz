@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeafe41888163c27f583529bed1998f067e107f
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819385"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107619"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Udělení přístupu k místním aplikacím uživatelům B2B v Azure AD
 
@@ -43,7 +43,7 @@ Aby uživatelé B2B poskytovali přístup k místním aplikacím zabezpečeným 
 - **Autorizace prostřednictvím objektu uživatele B2B v místním adresáři**. Aplikace musí být schopná provádět kontroly přístupu uživatele a udělit přístup ke správným prostředkům. IWA a KCD vyžadují pro dokončení této autorizace objekt uživatele v místní službě Windows Server Active Directory. Jak je popsáno v tématu [jak jednotné přihlašování s KCD funguje](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), vyžaduje proxy aplikace tento objekt uživatele pro zosobnění uživatele a získání tokenu Kerberos do aplikace. 
 
    > [!NOTE]
-   > Když nakonfigurujete Proxy aplikací služby AD Azure, ujistěte se, že **Identita delegovaného přihlášení** je nastavená na **hlavní název uživatele** (výchozí) pro jednotné přihlašování IWA.
+   > Když nakonfigurujete Proxy aplikací služby AD Azure, ujistěte se, že **Identita delegovaného přihlášení** je nastavená na **hlavní název uživatele** (výchozí) v konfiguraci jednotného přihlašování pro integrované ověřování systému Windows (IWA).
 
    Ve scénáři uživatele B2B jsou k dispozici dvě metody, které můžete použít k vytvoření objektů hosta, které jsou nutné k autorizaci v místním adresáři:
 

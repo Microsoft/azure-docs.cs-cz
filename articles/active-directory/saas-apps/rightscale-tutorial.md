@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f071a66fef632afe9e54fecfa253e4604679baa2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553362"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Kurz: Azure Active Directory integrace s RightScale
 
@@ -30,7 +30,7 @@ Integrace RightScale s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s RightScale potřebujete následující položky:
 
@@ -99,11 +99,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RightSca
 
 4. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
 
-    ![Informace o jednotném přihlašování v doméně RightScale a adresách URL](common/preintegrated.png)
+    ![Snímek obrazovky se zobrazí základní konfigurační stránka SAML.](common/preintegrated.png)
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně RightScale a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://login.rightscale.com/`
 
@@ -127,32 +127,31 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RightSca
 
 2. V nabídce v horní části klikněte na kartu **Nastavení** a vyberte **jednotné přihlašování**.
 
-    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![Snímek obrazovky zobrazuje jednu Sign-On vybranou z nastavení.](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
 3. Kliknutím na tlačítko **Nový** přidejte **poskytovatele identity SAML**.
 
-    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![Snímek obrazovky se zobrazí nová tlačítka vybraná pro přidání poskytovatele identity SAML.](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. Do textového pole **Zobrazovaný název**zadejte název vaší společnosti.
 
-    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![Snímek obrazovky ukazuje, kde zadejte zobrazovaný název.](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. Vyberte možnost **povolení jednotného přihlašování iniciované RightScale pomocí nápovědy pro zjišťování** a zadáním **názvu domény** do následujícího textového pole.
 
-    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Snímek obrazovky ukazuje, kde můžete zadat metodu přihlášení.](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. Vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal do **koncového bodu SAML SSO** v RightScale.
 
-    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Snímek obrazovky S informacemi O tom, kde můžete zadat koncový bod SAML S S.](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. Vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal do **EntityId SAML** v RightScale.
 
-    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Snímek obrazovky ukazuje, kde můžete zadat entitu SAML I D.](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. Kliknutím na tlačítko **prohlížeč** Nahrajte certifikát, který jste stáhli z Azure Portal.
 
-
-    ![Konfigurace jednoho Sign-On](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![Snímek obrazovky ukazuje, kde můžete zadat podpisový certifikát SAML.](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. Klikněte na **Uložit**.
 

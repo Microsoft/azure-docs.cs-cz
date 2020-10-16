@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea69f1e634c66bff98462d41f3eeef19f8e15eb0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553610"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním
 
@@ -30,7 +30,7 @@ Integrování hlavního jednotného přihlašování s Azure AD poskytuje násle
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s využitím Procore SSO budete potřebovat následující položky:
 
@@ -121,11 +121,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
 2. V rozevíracím seznamu nástrojů klikněte na **správce** a otevřete stránku nastavení jednotného přihlašování.
 
-    ![Konfigurace jednoho Sign-On](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![Snímek obrazovky s vybraným adresářem zobrazí lokalita hlavní společnosti.](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. Vložte hodnoty do polí, jak je popsáno níže.
 
-    ![Konfigurace jednoho Sign-On](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat osobu.](./media/procoresso-tutorial/procore_setting_admin.png) 
 
     a. Do textového pole **Adresa URL vystavitele jednotného přihlašování** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
 
@@ -195,11 +195,11 @@ Postupujte podle následujících kroků a vytvořte na straně jednotného při
 
 2. V rozevírací nabídce panelu nástrojů klikněte na **adresář** a otevřete stránku adresáře společnosti.
 
-    ![Konfigurace jednoho Sign-On](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![Snímek obrazovky s adresářem hlavní společnosti s adresářem vybraným v sadě nástrojů](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. Klikněte na možnost **Přidat osobu** a otevřete formulář a zadejte příkaz provést následující možnosti –
 
-    ![Konfigurace jednoho Sign-On](./media/procoresso-tutorial/Procore_user_add.png)
+    ![Snímek obrazovky ukazuje, jak přidat osobu do Boylan konstrukce, kde můžete zadat informace o uživateli.](./media/procoresso-tutorial/Procore_user_add.png)
 
     a. Do textového pole **jméno** zadejte jméno uživatele (například **Britta**).
 
@@ -213,11 +213,11 @@ Postupujte podle následujících kroků a vytvořte na straně jednotného při
 
 4. Zkontroluje a aktualizuje podrobnosti pro nově přidaný kontakt.
 
-    ![Konfigurace jednoho Sign-On](./media/procoresso-tutorial/Procore_user_check.png)
+    ![Snímek obrazovky se zobrazí stránka pro úpravy, kde můžete ověřit nastavení uživatele.](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. Klikněte na **Uložit a poslat pozvánku** (Pokud se vyžaduje Pozvánka prostřednictvím e-mailu) nebo **uložte** (uložit přímo), abyste dokončili registraci uživatele.
     
-    ![Konfigurace jednoho Sign-On](./media/procoresso-tutorial/Procore_user_save.png)
+    ![Snímek obrazovky zobrazuje aktuální nastavení projektu, kde můžete ukládat a odesílat pozvánky.](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

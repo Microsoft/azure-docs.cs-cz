@@ -6,22 +6,22 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2653e0b557f7c5c04184628b3266e8f2909130f6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190205"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108282"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Storage Gen1
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
-* **Použití MapReduce ve službě HDInsight**. Další informace najdete v tématu [použití MapReduce v Hadoop ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce) .
-* **Přečtěte si pokyny pro ladění výkonu pro data Lake Storage Gen1**. Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) .
+* **Použití MapReduce ve službě HDInsight**. Další informace najdete v tématu [použití MapReduce v Hadoop ve službě HDInsight](../hdinsight/hadoop/hdinsight-use-mapreduce.md) .
+* **Přečtěte si pokyny pro ladění výkonu pro data Lake Storage Gen1**. Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](./data-lake-store-performance-tuning-guidance.md) .
 
 ## <a name="parameters"></a>Parametry
 

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 08996d7343ccab4c5d6e688b580a8e6e1ca5bceb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377276"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116786"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
@@ -53,7 +53,7 @@ V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vybe
 }
 ```
 
-### <a name="install-active-directory"></a>Nainstalovat službu Active Directory
+### <a name="install-active-directory-nuget-package"></a>Nainstalovat balíček NuGet pro Active Directory
 
 Následující kód používá objekty z balíčku NuGet **Microsoft. IdentityModel. clients. AD** , takže budete muset do svého projektu přidat odkaz na tento balíček.
 

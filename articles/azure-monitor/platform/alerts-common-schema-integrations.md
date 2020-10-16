@@ -4,12 +4,12 @@ description: Naučte se, jak vytvořit aplikaci logiky, která využívá spole�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: a7893f41e3e4cce737853fc168c1931f3bf7b532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eb96248f68923da5ff5223f57fac1bffaf4ed04
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322087"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108877"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak integrovat společné schéma výstrah s Logic Apps
 
@@ -17,10 +17,10 @@ V tomto článku se dozvíte, jak vytvořit aplikaci logiky, která využívá s
 
 ## <a name="overview"></a>Přehled
 
-[Běžné schéma výstrah](https://aka.ms/commonAlertSchemaDocs) poskytuje standardizované a rozšiřitelné schéma JSON napříč všemi různými typy výstrah. Běžné schéma výstrah je nejužitečnější, když se využívají programově – prostřednictvím webhooků, runbooků a Logic Apps. V tomto článku ukážeme, jak může být jediná aplikace logiky vytvořená pro zpracování všech výstrah. Stejné zásady je možné použít i pro další programové metody. Aplikace logiky popsané v tomto článku vytvoří dobře definované proměnné pro [pole "Essential"](alerts-common-schema-definitions.md#essentials)a také popisuje, jak můžete zpracovat logiku specifickou pro [Typ výstrahy](alerts-common-schema-definitions.md#alert-context) .
+[Běžné schéma výstrah](./alerts-common-schema.md) poskytuje standardizované a rozšiřitelné schéma JSON napříč všemi různými typy výstrah. Běžné schéma výstrah je nejužitečnější, když se využívají programově – prostřednictvím webhooků, runbooků a Logic Apps. V tomto článku ukážeme, jak může být jediná aplikace logiky vytvořená pro zpracování všech výstrah. Stejné zásady je možné použít i pro další programové metody. Aplikace logiky popsané v tomto článku vytvoří dobře definované proměnné pro [pole "Essential"](alerts-common-schema-definitions.md#essentials)a také popisuje, jak můžete zpracovat logiku specifickou pro [Typ výstrahy](alerts-common-schema-definitions.md#alert-context) .
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 V tomto článku se předpokládá, že čtenář je známý 
 * Nastavení pravidel upozornění ([metrika](./alerts-metric.md), [protokol](./alerts-log.md), [Protokol aktivit](./alerts-activity-log.md))
@@ -138,5 +138,4 @@ V tomto článku se předpokládá, že čtenář je známý
 ## <a name="next-steps"></a>Další kroky
 
 * [Přečtěte si další informace o skupinách akcí](./action-groups.md).
-* [Přečtěte si další informace o běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
-
+* [Přečtěte si další informace o běžném schématu výstrah](./alerts-common-schema.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723856"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107959"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Pravidla shromažďování dat v Azure Monitor (Preview)
 Pravidla shromažďování dat (DCR) definují data přicházející do Azure Monitor a určují, kam se tato data mají odeslat nebo Uložit. Tento článek obsahuje přehled pravidel shromažďování dat, včetně jejich obsahu a struktury a způsobu, jakým můžete s nimi vytvářet a pracovat s nimi.
@@ -40,7 +40,7 @@ Následující diagram znázorňuje komponenty pravidla shromažďování dat a 
 ### <a name="data-source-types"></a>Typy zdroje dat
 Každý zdroj dat má typ zdroje dat. Každý typ definuje jedinečnou sadu vlastností, které musí být zadány pro každý zdroj dat. Typy zdrojů dat, které jsou aktuálně k dispozici, jsou uvedeny v následující tabulce.
 
-| Typ zdroje dat | Description | 
+| Typ zdroje dat | Popis | 
 |:---|:---|
 | přípona | Zdroj dat založený na rozšíření virtuálních počítačů |
 | Čítače výkonu | Čítače výkonu pro systémy Windows i Linux |
@@ -68,7 +68,7 @@ V následující tabulce jsou uvedené limity, které se aktuálně vztahují na
 V současné době existují dvě dostupné metody pro vytvoření sady DCR:
 
 - [Pomocí Azure Portal](data-collection-rule-azure-monitor-agent.md) vytvořte pravidlo shromažďování dat a přidružit ho k jednomu nebo více virtuálním počítačům.
-- Přímo upravte pravidlo shromažďování dat ve formátu JSON a [odešlete ho pomocí REST API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
+- Přímo upravte pravidlo shromažďování dat ve formátu JSON a [odešlete ho pomocí REST API](/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Pravidlo shromažďování ukázkových dat
 Níže uvedené pravidlo shromažďování ukázkových dat je pro virtuální počítače s agentem pro správu Azure a má následující podrobnosti:

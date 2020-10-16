@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c9cb1d0496fe05c208cfd446a51cbf4ef8e8d4e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190246"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108605"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Vyladění Azure Data Lake Storage Gen1 pro výkon
 
@@ -39,15 +39,15 @@ Síťové připojení mezi zdrojovými daty a Data Lake Storage Gen1 může něk
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurace nástrojů pro přijímání dat pro maximální paralelismus
 
-Po vyřešení kritických bodů hardwaru zdroje a síťového připojení jste připraveni ke konfiguraci nástrojů pro přijímání. Následující tabulka shrnuje nastavení klíče pro několik oblíbených nástrojů pro přijímání a poskytuje podrobné články pro ladění výkonu. Další informace o tom, který nástroj použít pro váš scénář, najdete v tomto [článku](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
+Po vyřešení kritických bodů hardwaru zdroje a síťového připojení jste připraveni ke konfiguraci nástrojů pro přijímání. Následující tabulka shrnuje nastavení klíče pro několik oblíbených nástrojů pro přijímání a poskytuje podrobné články pro ladění výkonu. Další informace o tom, který nástroj použít pro váš scénář, najdete v tomto [článku](./data-lake-store-data-scenarios.md).
 
 | Nástroj          | Nastavení | Další podrobnosti                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | Hodnoty perfilethreadcount, hodnota concurrentfilecount | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Jednotky Azure Data Lake Analytics | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (mapovač) | [Propojit](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| PowerShell       | Hodnoty perfilethreadcount, hodnota concurrentfilecount | [Propojit](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Jednotky Azure Data Lake Analytics | [Propojit](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (mapovač) | [Propojit](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies | [Propojit](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. Size,-m (Mapper) | [Propojit](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | FS. Azure. Block. Size,-m (Mapper) | [Propojit](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Struktura sady dat
 

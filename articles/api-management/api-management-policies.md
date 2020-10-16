@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fe5c13b8c34d29be9a62717215271c10a48e9ac6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 312a496a5acda05a6b04a0bb47abb101f4ffcc8e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076891"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107585"
 ---
 # <a name="api-management-policies"></a>Zásady služby API Management
 V této části najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](api-management-howto-policies.md).
@@ -79,7 +79,7 @@ V této části najdete referenční informace pro následující zásady API Ma
     -   [Transformuje XML pomocí XSLT](api-management-transformation-policies.md#XSLTransform) – aplikuje transformaci XSL na XML v těle žádosti nebo odpovědi.
 - [Zásady integrace Dapr](api-management-dapr-policies.md)
     - [Odeslat požadavek na službu](api-management-dapr-policies.md#invoke) – používá modul runtime Dapr k vyhledání a spolehlivé komunikaci s mikroslužbou Dapr.
-    -  [Odeslat zprávu do publikace a dílčího tématu](api-management-dapr-policies.md#pubsub) – používá modul runtime Dapr k publikování zprávy v tématu publikování/odběr. publikování-odběr zpráv/Readme. MD), kde se dozvíte další informace o zasílání zpráv o publikování a odběrech v Dapr.
+    -  [Odeslat zprávu do tématu Pub/sub](api-management-dapr-policies.md#pubsub) – pomocí modulu runtime Dapr publikuje zprávu do tématu publikovat/odběr.
     -  [Aktivace výstupní vazby](api-management-dapr-policies.md#bind) – používá modul runtime Dapr k vyvolání externího systému prostřednictvím výstupní vazby.
 
 ## <a name="next-steps"></a>Další kroky

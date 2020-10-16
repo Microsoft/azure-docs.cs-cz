@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6e34e0ef9035882a32ff46222686db4a948d7997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85957456"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107466"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Možnosti vykreslování Azure Batch
 
@@ -75,7 +75,7 @@ Příkazový řádek Arnold 2017|kick.exe|ARNOLD_2017_EXEC|
 
 Stejně jako u jiných úloh se různé požadavky na vykreslování a požadavky na výkon pro úlohy a projekty liší.  V Azure je k dispozici velké množství rodin virtuálních počítačů v závislosti na vašich požadavcích – nejnižší náklady, Nejlepší cena/výkon, nejlepší výkon a tak dále.
 Některé aplikace pro vykreslování, jako je například Arnold, jsou založené na procesoru. ostatní, například cykly V-Ray a V Blendu, můžou používat procesory nebo GPU.
-Popis dostupných rodin virtuálních počítačů a velikostí virtuálních počítačů [najdete v tématu typy a velikosti virtuálních](../virtual-machines/windows/sizes.md)počítačů.
+Popis dostupných rodin virtuálních počítačů a velikostí virtuálních počítačů [najdete v tématu typy a velikosti virtuálních](../virtual-machines/sizes.md)počítačů.
 
 ### <a name="low-priority-vms"></a>Virtuální počítače s nízkou prioritou
 

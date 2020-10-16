@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: fe5940083d04c1b5cc60b21834adf609e523e059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48136f8d9172c3674e849e24efca4ae5070f83ab
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666241"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109115"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Pokyny pro vysokou dostupnost a zotavení po havárii pro Data Lake Storage Gen1
 
@@ -21,8 +21,8 @@ Data Lake Storage Gen1 poskytuje místně redundantní úložiště (LRS). Proto
 
 Je důležité, abyste si napravili plán zotavení po havárii. Přečtěte si informace v tomto článku a další materiály, které vám pomůžou vytvořit vlastní plán.
 
-* [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
-* [Technické pokyny k odolnosti Azure](../resiliency/resiliency-technical-guidance.md)
+* [Zotavení po havárii a vysoká dostupnost pro aplikace Azure](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Technické pokyny k odolnosti Azure](/azure/architecture/framework/resiliency/overview)
 
 ### <a name="best-practice-recommendations"></a>Doporučení pro osvědčené postupy
 

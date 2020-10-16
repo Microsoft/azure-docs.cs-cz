@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328849"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107755"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
 
@@ -51,7 +51,7 @@ Zabezpečený export podporuje Helix BMC. Mezi výhody integrace patří:
 
 * **Lepší ověřování**: Azure AD poskytuje bezpečnější ověřování bez časových limitů, které se běžně vyskytují v ITSMC.
 * **Upozornění vyřešená v nástroji ITSM**: výstrahy metrik implementují stavy "Trigger" a "Vyřešeno". Při splnění podmínky je stav výstrahy "aktivováno". Pokud podmínka není splněna, stav výstrahy bude "Vyřešeno". V ITSMC se výstrahy nedají automaticky vyřešit. V případě zabezpečeného exportu převedený stav vyřešen do nástroje ITSM, a proto je automaticky aktualizován.
-* **[Běžné schéma výstrah](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)**: v ITSMC se schéma datové části výstrahy liší v závislosti na typu výstrahy. V zabezpečeném exportu existuje společné schéma pro všechny typy výstrah. Toto společné schéma obsahuje CI pro všechny typy výstrah. Všechny typy výstrah budou moci navazovat svou CI pomocí CMDB.
+* **[Běžné schéma výstrah](./alerts-common-schema.md)**: v ITSMC se schéma datové části výstrahy liší v závislosti na typu výstrahy. V zabezpečeném exportu existuje společné schéma pro všechny typy výstrah. Toto společné schéma obsahuje CI pro všechny typy výstrah. Všechny typy výstrah budou moci navazovat svou CI pomocí CMDB.
 
 Začněte používat nástroj konektoru ITSM s těmito kroky:
 
@@ -63,7 +63,7 @@ Začněte používat nástroj konektoru ITSM s těmito kroky:
 
 Pomocí těchto kroků zaregistrujete aplikaci do služby Azure AD:
 
-1. Postupujte podle kroků v části [Registrace aplikace s platformou Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+1. Postupujte podle kroků v části [Registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md).
 1. V Azure AD vyberte **zveřejnit aplikaci**.
 1. Vyberte **sadu** pro **identifikátor URI ID aplikace**.
 
@@ -75,7 +75,7 @@ Pomocí těchto kroků zaregistrujete aplikaci do služby Azure AD:
 Po registraci vaší aplikace ve službě Azure AD můžete vytvářet pracovní položky v nástroji ITSM založené na výstrahách Azure pomocí akce zabezpečený Webhook ve skupinách akcí.
 
 Skupiny akcí poskytují modulární a opakovaně použitelný způsob aktivace akcí pro výstrahy Azure. V Azure Portal můžete použít skupiny akcí s upozorněními na metriky, výstrahy protokolu aktivit a výstrahy Azure Log Analytics.
-Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups in the Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+Další informace o skupinách akcí naleznete v tématu [Create and Manage Action Groups in the Azure Portal](./action-groups.md).
 
 V prostředí Helix BMC použijte následující postup:
 
@@ -89,7 +89,7 @@ Pokud chcete přidat Webhook k akci, postupujte podle těchto pokynů pro zabezp
 
 1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte **monitor**. Podokno **monitorování** slučuje všechna nastavení monitorování a data v jednom zobrazení.
 1. Vyberte **výstrahy**  >  **Spravovat akce**.
-1. Vyberte [Přidat skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#create-an-action-group-by-using-the-azure-portal)a vyplňte pole.
+1. Vyberte [Přidat skupinu akcí](./action-groups.md#create-an-action-group-by-using-the-azure-portal)a vyplňte pole.
 1. Do pole **název skupiny akcí** zadejte název a zadejte název do pole **krátký název** . Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 1. Vyberte **zabezpečený Webhook**.
 1. Vyberte tyto podrobnosti:
@@ -107,7 +107,7 @@ Pokud chcete přidat Webhook k akci, postupujte podle těchto pokynů pro zabezp
 
 V následujících částech najdete podrobné informace o tom, jak připojit Helix produkt pro řadiče pro správu základní desky a zabezpečený export v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jste splnili následující požadavky:
 
@@ -140,4 +140,4 @@ Ujistěte se, že jste splnili následující požadavky:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření pracovních položek ITSM z výstrah Azure](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)
+* [Vytváření pracovních položek ITSM z výstrah Azure](./itsmc-overview.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bfe1109640f158b92f54b945d314ac65a93ddc
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403547"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107908"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolování času pro příjem dat ve službě Azure Monitor
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.
@@ -57,7 +57,7 @@ Některá řešení neshromažďují svá data z agenta a můžou používat met
 Chcete-li zjistit četnost shromažďování dat, přečtěte si dokumentaci pro každé řešení.
 
 ### <a name="pipeline-process-time"></a>Kanál – čas procesu
-Po ingestování záznamů protokolu do kanálu Azure Monitor (jak je identifikované vlastností [_TimeReceived](log-standard-properties.md#_timereceived) ) se zapisují do dočasného úložiště, které zajistí izolaci tenanta a zajistěte, aby se data neztratila. Tento proces obvykle přidává 5-15 sekund. Některá řešení pro správu implementují těžší algoritmy pro agregaci dat a odvozují přehledy při streamování dat. Například monitorování výkonu sítě agreguje příchozí data v intervalech po dobu tří minut a efektivně přidá latenci na 3 minuty. Dalším procesem, který přidává latenci, je proces, který zpracovává vlastní protokoly. V některých případech může tento proces přidat několik minut latence do protokolů shromažďovaných ze souborů agentem.
+Po ingestování záznamů protokolu do kanálu Azure Monitor (jak je identifikované vlastností [_TimeReceived](./log-standard-columns.md#_timereceived) ) se zapisují do dočasného úložiště, které zajistí izolaci tenanta a zajistěte, aby se data neztratila. Tento proces obvykle přidává 5-15 sekund. Některá řešení pro správu implementují těžší algoritmy pro agregaci dat a odvozují přehledy při streamování dat. Například monitorování výkonu sítě agreguje příchozí data v intervalech po dobu tří minut a efektivně přidá latenci na 3 minuty. Dalším procesem, který přidává latenci, je proces, který zpracovává vlastní protokoly. V některých případech může tento proces přidat několik minut latence do protokolů shromažďovaných ze souborů agentem.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nové zřizování vlastních datových typů
 Když se vytvoří nový typ vlastních dat z [vlastního protokolu](data-sources-custom-logs.md) nebo [rozhraní API kolekce dat](data-collector-api.md), systém vytvoří vyhrazený kontejner úložiště. Jedná se o jednorázovou režii, ke které dochází pouze při prvním výskytu daného datového typu.
@@ -77,8 +77,8 @@ Doba příjmu se může u různých prostředků v různých případech lišit.
 
 | Krok | Vlastnost nebo funkce | Komentáře |
 |:---|:---|:---|
-| Záznam vytvořený ve zdroji dat | [TimeGenerated](log-standard-properties.md#timegenerated-and-timestamp) <br>Pokud zdroj dat tuto hodnotu nenastaví, bude nastaven na stejný čas jako _TimeReceived. |
-| Záznam přijatý Azure Monitor koncový bod pro ingestování | [_TimeReceived](log-standard-properties.md#_timereceived) | |
+| Záznam vytvořený ve zdroji dat | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>Pokud zdroj dat tuto hodnotu nenastaví, bude nastaven na stejný čas jako _TimeReceived. |
+| Záznam přijatý Azure Monitor koncový bod pro ingestování | [_TimeReceived](./log-standard-columns.md#_timereceived) | |
 | Záznam uložený v pracovním prostoru a dostupný pro dotazy | [ingestion_time ()](/azure/kusto/query/ingestiontimefunction) | |
 
 ### <a name="ingestion-latency-delays"></a>Zpoždění latence přijímání
@@ -143,4 +143,3 @@ Heartbeat
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si [smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) pro Azure monitor.
-

@@ -1,6 +1,6 @@
 ---
-title: Práce se stávajícími místními proxy servery a Azure AD | Microsoft Docs
-description: Obsahuje informace o tom, jak pracovat se stávajícími místními proxy servery.
+title: Práce se stávajícími místními proxy servery a Azure Active Directory
+description: Obsahuje informace o tom, jak pracovat se stávajícími místními proxy servery pomocí Azure Active Directory.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,13 +11,12 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2311b905aeeaacb6c445f441d5268d06a150de64
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077505"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107636"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -117,12 +116,12 @@ Povolte přístup k následujícím adresám URL:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Konektor používá tyto adresy URL k ověření certifikátů. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.NET <br> *. msauthimages.net<br>*. msecnd.NET <br> *. msftauth.net<br>*. msftauthimages.NET <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Konektor tyto adresy URL používá během procesu registrace. |
 
-Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET. V takovém případě je potřeba, abyste povolili přístup k [rozsahům IP adres datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
+Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET.
 
 Pokud nemůžete připojení podle plně kvalifikovaného názvu domény a potřebujete místo toho zadat rozsahy IP adres, použijte tyto možnosti:
 
 * Povolí konektoru odchozí přístup ke všem cílům.
-* Povolí konektoru odchozí přístup ke všem [rozsahům IP adres datacentra Azure](https://www.microsoft.com//download/details.aspx?id=41653). Výzvou k použití seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. K zajištění toho, aby se pravidla přístupu aktualizovala, je potřeba umístit proces. Pouze použití podmnožiny IP adres může způsobit přerušení vaší konfigurace.
+* Povolí konektoru odchozí přístup ke všem rozsahům IP adres datacentra Azure. Výzvou k použití seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. K zajištění toho, aby se pravidla přístupu aktualizovala, je potřeba umístit proces. Pouze použití podmnožiny IP adres může způsobit přerušení vaší konfigurace. Pokud si chcete stáhnout nejnovější rozsahy IP adres datového centra Azure, přejděte na [https://download.microsoft.com](https://download.microsoft.com) adresu a vyhledejte "rozsahy IP adres Azure a značky služeb". Ujistěte se, že jste vybrali relevantní Cloud. Například rozsahy IP adres veřejných cloudu najdete v tématu "rozsahy IP adres Azure a značky služeb – veřejný cloud". Cloud US Goverment můžete najít tak, že vyhledáte "rozsahy IP adres Azure a značky služeb – US Goverment Cloud".
 
 #### <a name="proxy-authentication"></a>Ověřování proxy
 

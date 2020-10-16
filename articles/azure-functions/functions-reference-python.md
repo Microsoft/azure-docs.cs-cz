@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642193"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108418"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -295,21 +295,38 @@ V této funkci se hodnota `name` parametru dotazu získá z `params` parametru o
 
 Podobně můžete nastavit `status_code` a `headers` pro zprávu odpovědi v vráceném objektu [HttpResponse] .
 
-## <a name="scaling-and-concurrency"></a>Škálování a souběžnost
+## <a name="scaling-and-performance"></a>Škálování a výkon
 
-Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitele pro Python. Funkce používá předdefinované (neuživatelsky konfigurovatelné) prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Je důležité porozumět tomu, jak vaše funkce fungují a jak tento výkon ovlivňuje způsob, jakým se aplikace Function App škáluje. To je důležité hlavně při navrhování vysoce výkonných aplikací. Následuje několik faktorů, které je třeba vzít v úvahu při navrhování, psaní a konfiguraci aplikací Functions.
 
-Toto chování škálování je dostatečné pro mnoho aplikací. Aplikace s kteroukoli z následujících vlastností se ale nemusí škálovat efektivně:
+### <a name="horizontal-scaling"></a>Horizontální škálování
+Ve výchozím nastavení Azure Functions automaticky monitoruje zatížení aplikace a v případě potřeby vytvoří další instance hostitele pro Python. Funkce využívají předdefinované prahové hodnoty pro různé typy triggerů k rozhodnutí, kdy přidat instance, například stáří zpráv a velikost fronty pro QueueTrigger. Tyto prahové hodnoty se nedají uživatelsky konfigurovat. Další informace najdete v tématu [Jak fungují plány spotřeby a Premium](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-- Aplikace potřebuje zpracovat mnoho souběžných volání.
-- Aplikace zpracovává velký počet vstupně-výstupních událostí.
-- Aplikace je vázaná na vstupně-výstupní operace.
+### <a name="improving-throughput-performance"></a>Zlepšení výkonu propustnosti
 
-V takových případech můžete zvýšit výkon tím, že budete využívat asynchronní vzorce a pomocí více pracovních procesů jazyka.
+Klíčem ke zlepšení výkonu je porozumění způsobu, jakým vaše aplikace používá zdroje a která umožňuje odpovídajícím způsobem nakonfigurovat aplikace Function App.
 
-### <a name="async"></a>Async
+#### <a name="understanding-your-workload"></a>Princip úloh
 
-Vzhledem k tomu, že Python je modul runtime s jedním vláknem, může instance hostitele pro Python zpracovat pouze jedno vyvolání funkce najednou. Pro aplikace, které zpracovávají velký počet vstupně-výstupních událostí a/nebo jsou vázané na vstup/výstup, můžete zvýšit výkon spuštěním asynchronních funkcí.
+Výchozí konfigurace jsou vhodné pro většinu Azure Functionsch aplikací. Můžete ale zvýšit výkon propustnosti vašich aplikací tím, že použijete konfigurace na základě vašeho profilu zatížení. Prvním krokem je pochopení typu úlohy, kterou používáte.
+
+|| Vstupně-výstupní úlohy vázané na vstup/výstup | Zatížení vázané na procesor |
+|--| -- | -- |
+|Vlastnosti aplikace Function App| <ul><li>Aplikace potřebuje zpracovat mnoho souběžných volání.</li> <li> Aplikace zpracovává velký počet vstupně-výstupních událostí, jako jsou síťová volání a čtení a zápisy na disk.</li> </ul>| <ul><li>Aplikace provádí dlouhotrvající výpočty, jako je například změna velikosti obrázku.</li> <li>Aplikace provádí transformaci dat.</li> </ul> |
+|Příklady| <ul><li>Webová rozhraní API</li><ul> | <ul><li>Zpracování dat</li><li> Odvození strojového učení</li><ul>|
+
+ 
+> [!NOTE]
+>  Jako úlohy Real World Functions většinou často nabízí kombinaci vstupně-výstupních operací a procesoru, doporučujeme profilovat úlohy v rámci reálných produkčních zatížení.
+
+
+#### <a name="performance-specific-configurations"></a>Konfigurace specifické pro výkon
+
+Po porozumění profilu úlohy aplikace Function App jsou zde uvedené konfigurace, které můžete použít ke zlepšení výkonu vašich funkcí v propustnosti.
+
+##### <a name="async"></a>Async
+
+Vzhledem k tomu, že [Python je modul runtime s jedním vláknem](https://wiki.python.org/moin/GlobalInterpreterLock), může instance hostitele pro Python zpracovat pouze jedno vyvolání funkce najednou. Pro aplikace, které zpracovávají velký počet vstupně-výstupních událostí a/nebo jsou vázané na vstupně-výstupní operace, můžete výrazně zvýšit výkon spuštěním asynchronních funkcí.
 
 Chcete-li spustit funkci asynchronně, použijte `async def` příkaz, který spustí funkci s [asyncio](https://docs.python.org/3/library/asyncio.html) přímo:
 
@@ -317,6 +334,21 @@ Chcete-li spustit funkci asynchronně, použijte `async def` příkaz, který sp
 async def main():
     await some_nonblocking_socket_io_op()
 ```
+Tady je příklad funkce s triggerem HTTP, který používá klienta http [aiohttp](https://pypi.org/project/aiohttp/) :
+
+```python
+import aiohttp
+
+import azure.functions as func
+
+async def main(req: func.HttpRequest) -> func.HttpResponse:
+    async with aiohttp.ClientSession() as client:
+        async with client.get("PUT_YOUR_URL_HERE") as response:
+            return func.HttpResponse(await response.text())
+
+    return func.HttpResponse(body='NotFound', status_code=404)
+```
+
 
 Funkce bez `async` klíčového slova se spustí automaticky ve fondu vláken asyncio:
 
@@ -327,11 +359,25 @@ def main():
     some_blocking_socket_io()
 ```
 
-### <a name="use-multiple-language-worker-processes"></a>Použít více pracovních procesů jazyka
+Aby bylo možné plně využít výhod spouštění funkcí asynchronně, musí být vstupně-výstupní operace/knihovna, která se používá ve vašem kódu, také implementována i při asynchronním provádění. Používání synchronních vstupně-výstupních operací ve funkcích, které jsou definovány jako asynchronní, **může snížit** celkový výkon.
+
+Tady je několik příkladů klientských knihoven, které mají implementovaný asynchronní vzor:
+- [aiohttp](https://pypi.org/project/aiohttp/) -klient/server HTTP pro asyncio 
+- [Rozhraní API datových proudů](https://docs.python.org/3/library/asyncio-stream.html) – primitivní a asynchronní a nedokončené primitivum připravené pro práci se síťovým připojením
+- Fronta [Janus](https://pypi.org/project/janus/) -asyncio s podporou pro přístup z více vláken pro Python
+- [pyzmq](https://pypi.org/project/pyzmq/) – vazby Pythonu pro ZeroMQ
+ 
+
+##### <a name="use-multiple-language-worker-processes"></a>Použít více pracovních procesů jazyka
 
 Ve výchozím nastavení má každá instance hostitele Functions pracovní proces s jedním jazykem. Počet pracovních procesů na hostitele můžete zvýšit (až 10) pomocí nastavení aplikace [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) . Azure Functions se pak pokusí rovnoměrně distribuovat souběžná volání funkcí mezi tyto pracovní procesy.
 
+U aplikací vázaných na procesor byste měli nastavit, aby počet jazykových pracovních procesů byl stejný nebo vyšší než počet jader, které jsou dostupné na základě aplikace Function App. Další informace najdete v tématu [dostupné skladové položky instance](functions-premium-plan.md#available-instance-skus). 
+
+U aplikací vázaných na vstupně-výstupní operace může být také výhodné zvýšit počet pracovních procesů nad rámec počtu dostupných jader. Pamatujte, že nastavení maximálního počtu pracovních procesů může mít vliv na celkový výkon kvůli zvýšenému počtu požadovaných přepínačů kontextu. 
+
 FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce vytvoří při horizontálním navýšení kapacity aplikace, aby splňovala požadavky.
+
 
 ## <a name="context"></a>Kontext
 

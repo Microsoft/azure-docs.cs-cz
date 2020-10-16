@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d8f51b12c16afbb8a0cf71e99b9b357719db4be
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319040"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108758"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rychlý Start: Vytvoření aplikace TODO pomocí Azure Cosmos DB účtu rozhraní SQL API pomocí Xamarin
 
@@ -68,7 +68,7 @@ Teď naklonujte aplikaci Xamarin SQL API z GitHubu, Projděte si kód, Získejte
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. Otevřete okno terminálu Git, například Git Bash, a pomocí příkazu `cd` přejděte do nové složky, do které chcete nainstalovat ukázkovou aplikaci.
@@ -83,7 +83,7 @@ Teď naklonujte aplikaci Xamarin SQL API z GitHubu, Projděte si kód, Získejte
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
     ```
 
-4. Pak v sadě Visual Studio otevřete soubor ToDoItems.sln ze složky samples/xamarin/ToDoItems.
+4. V aplikaci Visual Studio otevřete **C:\git-samples\azure-Cosmos-DB-SQL-Xamarin-Getting-started\src\ToDoItems.sln** 
 
 ## <a name="obtain-your-api-keys"></a>Získání klíčů rozhraní API
 
@@ -93,15 +93,21 @@ Vraťte se na Azure Portal, kde najdete informace o klíčích rozhraní API, a 
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Aplikace seznamu úkolů Xamarin spuštěná v systému iOS":::
 
-2. V aplikaci Visual Studio 2019 nebo Visual Studio pro Mac otevřete soubor APIKeys.cs ve složce Azure-Cosmos-DB-SQL-Xamarin-Getting-Started/src/ToDoItems. Core/Helper.
+2. V aplikaci Visual Studio otevřete **ToDoItems. Core/helps/APIKeys. cs**.
 
-3. Z portálu zkopírujte hodnotu identifikátoru URI (pomocí tlačítka kopírování) a nastavte ji jako hodnotu proměnné `CosmosEndpointUrl` v souboru APIKeys.cs.
+3. Na webu Azure Portal pomocí tlačítka pro kopírování Zkopírujte hodnotu **identifikátoru URI** a nastavte ji jako hodnotu `CosmosEndpointUrl` proměnné v APIKeys.cs.
 
-    `public static readonly string CosmosEndpointUrl = "";`
+    ```csharp
+    //#error Enter the URL of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
+    ```
 
-4. Potom z portálu zkopírujte hodnotu PRIMÁRNÍHO KLÍČE a nastavte ji jako hodnotu `Cosmos Auth Key` v souboru APIKeys.cs.
+4. Na webu Azure Portal pomocí tlačítka pro kopírování Zkopírujte hodnotu **primárního klíče** a nastavte ji jako hodnotu `Cosmos Auth Key` v APIKeys.cs.
 
-    `public static readonly string CosmosAuthKey = "";`
+    ```csharp
+    //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
+    ```
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 
@@ -113,15 +119,18 @@ Toto řešení ukazuje, jak vytvořit aplikaci seznamu úkolů s využitím rozh
 
 Kód v řešení ToDoItems obsahuje:
 
-* ToDoItems.Core: Toto je projekt .NET Standard obsahující projekt Xamarin.Forms a kód sdílené logiky aplikace, který udržuje položky seznamu úkolů ve službě Azure Cosmos DB.
-* ToDoItems.Android: Tento projekt obsahuje aplikaci pro Android.
-* ToDoItems.iOS: Tento projekt obsahuje aplikaci pro iOS.
+* **ToDoItems. Core**
+   * Toto je .NET Standard projekt, který uchovává projekt Xamarin. Forms a kód logiky sdílené aplikace, který uchovává položky ToDo v rámci Azure Cosmos DB.
+* **ToDoItems. Android**
+  * Tento projekt obsahuje aplikaci pro Android.
+* **ToDoItems. iOS**
+  * Tento projekt obsahuje aplikaci pro iOS.
 
 Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmos DB.
 
 * Do všech projektů je potřeba přidat balíček NuGet [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
-* `ToDoItem`Třída ve složce Azure-DocumentDB-dotnet/Samples/Xamarin/ToDoItems/ToDoItems. Core/Models modeluje dokumenty v kontejneru **Items** , který jste vytvořili výše. Mějte na paměti, že v názvech vlastností se rozlišují malá a velká písmena.
-* Třída `CosmosDBService` ve složce azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services zapouzdřuje komunikaci se službou Azure Cosmos DB.
+* `ToDoItem`Třída ve složce **ToDoItems. Core/Models** modeluje dokumenty v kontejneru **Items** , které jste vytvořili výše. Mějte na paměti, že v názvech vlastností se rozlišují malá a velká písmena.
+* `CosmosDBService`Třída ve složce **ToDoItems. Core/Services** zapouzdřuje komunikaci s Azure Cosmos DB.
 * V třídě `CosmosDBService` je proměnná typu `DocumentClient`. `DocumentClient`Slouží ke konfiguraci a provádění požadavků na účet Azure Cosmos DB a je vytvořena instance:
 
     ```csharp

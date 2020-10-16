@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 1044af94df43e61ae8c0032041bc80a356331f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6d5fafa8d956c296124c5a20f8a087160961da
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022458"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109234"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Operace systému souborů při Data Lake Storage Gen1 pomocí sady .NET SDK
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak provádět operace systému souborů na Data L
 
 Pokyny k provádění operací správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK najdete v tématu [operace správy účtů pro data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Visual Studio 2013 nebo vyšší**. Pokyny v tomto článku používají Visual Studio 2019.
 
@@ -202,7 +202,7 @@ Tady je několik ukázek, které ukazují, jak používat sadu SDK Data Lake Sto
 ## <a name="see-also"></a>Viz také
 
 * [Operace správy účtů při Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Referenční informace k sadě Data Lake Storage Gen1 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Referenční informace k sadě Data Lake Storage Gen1 .NET SDK](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Další kroky
 

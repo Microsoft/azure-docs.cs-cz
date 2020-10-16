@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7085dd601499004a91fc77a9181f0b097d0b543a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446180"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108843"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Vytváření upozornění na metriky pro protokoly v Azure Monitor
 
@@ -62,7 +62,7 @@ Předtím, než bude metrika pro protokoly shromážděná na Log Analytics fung
 
  Výstrahy metriky se dají vytvářet a spravovat pomocí Azure Portal, Správce prostředků šablon, REST API, PowerShellu a rozhraní příkazového řádku Azure CLI. Vzhledem k tomu, že výstrahy metriky pro protokoly, je variantou výstrahy metriky – po dokončení požadovaných součástí se dá pro zadaný Log Analytics pracovní prostor vytvořit upozornění na metriky pro protokoly. Všechny charakteristiky a funkce upozornění na [metriky](./alerts-metric-near-real-time.md) se budou uplatňovat i na výstrahy metriky pro protokoly. včetně schématu datové části, platných omezení kvót a fakturované ceny.
 
-Podrobné informace a ukázky – viz [vytváření a Správa upozornění na metriky](https://aka.ms/createmetricalert). Konkrétně pro výstrahy metrik pro protokoly – postupujte podle pokynů pro správu výstrah metrik a zajistěte následující:
+Podrobné informace a ukázky – viz [vytváření a Správa upozornění na metriky](./alerts-metric.md). Konkrétně pro výstrahy metrik pro protokoly – postupujte podle pokynů pro správu výstrah metrik a zajistěte následující:
 
 - Cíl pro výstrahu metriky je platný *pracovní prostor Log Analytics* .
 - Signál vybraný pro výstrahu metriky pro vybraný *Log Analytics pracovní prostor* je typu **metrika** .
@@ -690,4 +690,3 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 - Přečtěte si další informace o [výstrahách metriky](alerts-metric.md).
 - Přečtěte si informace o [upozorněních protokolu v Azure](./alerts-unified-log.md).
 - Přečtěte si o [výstrahách v Azure](alerts-overview.md).
-

@@ -9,24 +9,24 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: aa13baf7c6fc6d3bb66b97e533da29e4a1a6e73c
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876239"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107568"
 ---
 # <a name="azure-data-studio-dashboards"></a>Řídicí panely Azure Data Studio
 
-[Azure Data Studio](https://aka.ms/azuredatastudio) nabízí podobné možnosti jako u Azure Portal pro zobrazení informací o prostředcích ARC Azure.  Tato zobrazení se nazývají **řídicí panely** a mají rozložení a možnosti, které se podobá tomu, co byste viděli o daném prostředku v Azure Portal, ale získáte flexibilitu v tom, že se tyto informace ve vašem prostředí zobrazí v místním prostředí v případě, že nemáte k dispozici připojení k Azure.
+[Azure Data Studio](/sql/azure-data-studio/what-is) nabízí podobné možnosti jako u Azure Portal pro zobrazení informací o prostředcích ARC Azure.  Tato zobrazení se nazývají **řídicí panely** a mají rozložení a možnosti, které se podobá tomu, co byste viděli o daném prostředku v Azure Portal, ale získáte flexibilitu v tom, že se tyto informace ve vašem prostředí zobrazí v místním prostředí v případě, že nemáte k dispozici připojení k Azure.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="connecting-to-a-data-controller"></a>Připojení k řadiči dat
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-- Stáhnout [Azure Data Studio](https://aka.ms/getazuredatastudio)
+- Stáhnout [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
 - Rozšíření Azure ARC je nainstalované.
 
 ### <a name="determine-the-data-controller-server-api-endpoint-url"></a>Určení adresy URL koncového bodu rozhraní API serveru datového kontroleru

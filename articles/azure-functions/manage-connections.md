@@ -4,12 +4,12 @@ description: Zjistěte, jak se vyhnout problémům s výkonem v Azure Functions 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 7ce933511532fdb1bfb5189e5a900e87f3d83fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213958"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106089"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -103,7 +103,25 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
+Pokud pracujete se službami Functions v3. x, budete potřebovat refernce, abyste mohli Microsoft.Azure.DocumentDB. Core. Přidejte odkaz do kódu:
 
+```cs
+#r "Microsoft.Azure.DocumentDB.Core"
+```
+Vytvořte také soubor s názvem Function. proj pro aktivační událost a přidejte následující obsah:
+
+```cs
+
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.12.0" />
+    </ItemGroup>
+</Project>
+
+```
 ### <a name="cosmosclient-code-example-javascript"></a>Příklad kódu CosmosClient (JavaScript)
 [CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) se připojuje k instanci Azure Cosmos DB. Dokumentace Azure Cosmos DB doporučuje, abyste [pro celou dobu života vaší aplikace používali klienta s jedním Azure Cosmos DB](../cosmos-db/performance-tips.md#sdk-usage). Následující příklad ukazuje jeden vzor pro provedení ve funkci:
 

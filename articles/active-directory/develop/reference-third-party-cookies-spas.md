@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: cc93f4062851f01dd127c108ca60bc240a1940e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87311751"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104576"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Zpracování ITP v Safari a dalších prohlížečích, kde jsou soubory cookie třetích stran blokované
 
@@ -49,7 +49,7 @@ Jednostránkové mají dvě další omezení:
 * [Identifikátor URI pro přesměrování musí být označený jako `spa` typ](v2-oauth2-auth-code-flow.md#redirect-uri-setup-required-for-single-page-apps) . Pokud chcete povolit CORS u koncových bodů přihlášení.
 * Aktualizace tokenů vydaných prostřednictvím toku autorizačního kódu pro `spa` přesměrování identifikátorů URI má 24hodinový čas, nikoli 90 dní.
 
-![Tok kódu pro aplikace SPA](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="Diagram znázorňující tok autorizačního kódu OAuth 2 mezi jednostránkovou aplikací a koncovým bodem služby tokenu zabezpečení." border="false":::
 
 ## <a name="performance-and-ux-implications"></a>Důsledky výkonu a uživatelského rozhraní
 

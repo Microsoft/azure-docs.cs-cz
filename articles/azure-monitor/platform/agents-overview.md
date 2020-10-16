@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/02/2020
-ms.openlocfilehash: ab37fcdb4012394f1c5131a23f7c67063d3d6e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de9623eb0eb14957c1554b7b0f74baa256a15d47
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825763"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108384"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -60,7 +60,7 @@ Agenta Azure Monitor použijte v případě, že potřebujete:
 - Odesílat data do protokolů Azure Monitor a Azure Monitor metriky pro analýzu pomocí Azure Monitor. 
 - Odeslat data do Azure Storage k archivaci.
 - Posílání dat do nástrojů třetích stran pomocí [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md).
-- Spravujte zabezpečení virtuálních počítačů pomocí [Azure Security Center](../../security-center/security-center-intro.md)  nebo [Azure Sentinel](../../sentinel/overview.md). (Není k dispozici ve verzi Preview.)
+- Spravujte zabezpečení virtuálních počítačů pomocí [Azure Security Center](../../security-center/security-center-introduction.md)  nebo [Azure Sentinel](../../sentinel/overview.md). (Není k dispozici ve verzi Preview.)
 
 Mezi omezení agenta Azure Monitor patří:
 
@@ -81,7 +81,7 @@ Agenta Log Analytics použijte v případě, že potřebujete:
 * Shromažďovat protokoly a data o výkonu z virtuálních nebo fyzických počítačů uvnitř nebo mimo Azure. 
 * Odešlete data do pracovního prostoru Log Analytics, abyste mohli využívat funkce podporované [Azure monitor protokoly](data-platform-logs.md) , jako jsou například [dotazy protokolu](../log-query/log-query-overview.md).
 * Použijte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) , které vám umožní monitorovat vaše virtuální počítače ve velkém měřítku a monitorovat jejich procesy a závislosti na dalších prostředcích a externích procesech.  
-* Spravujte zabezpečení virtuálních počítačů pomocí [Azure Security Center](../../security-center/security-center-intro.md)  nebo [Azure Sentinel](../../sentinel/overview.md).
+* Spravujte zabezpečení virtuálních počítačů pomocí [Azure Security Center](../../security-center/security-center-introduction.md)  nebo [Azure Sentinel](../../sentinel/overview.md).
 * Pro zajištění komplexní správy virtuálních počítačů Azure použijte [Azure Automation správu aktualizací](../../automation/update-management/update-mgmt-overview.md), [konfiguraci Azure Automation](../../automation/automation-dsc-overview.md)nebo [Azure Automation Change Tracking a inventarizaci](../../automation/change-tracking.md) .
 * Pomocí různých [řešení](../monitor-reference.md#insights-and-core-solutions) můžete monitorovat konkrétní službu nebo aplikaci.
 
@@ -212,4 +212,3 @@ Další podrobnosti o jednotlivých agentech získáte v následujících verzí
 - [Přehled agenta Log Analytics](log-analytics-agent.md)
 - [Přehled rozšíření Azure Diagnostics](diagnostics-extension-overview.md)
 - [Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md)
-

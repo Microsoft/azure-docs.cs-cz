@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: baf80e3d543bee455dd8dfa5bc09bc5bf43c3453
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3ad0da1f910556c172c519faf953d4075647955
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946832"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109047"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>Vytváření a odstraňování privátních koncových bodů v clusteru Azure Stream Analytics
 
 Úlohy Azure Stream Analytics spuštěné v clusteru můžete propojit se vstupními a výstupními prostředky, které se nacházejí za bránou firewall nebo virtuální sítí Azure. Nejprve v clusteru Stream Analytics vytvoříte privátní koncový bod pro prostředek, jako je centrum událostí Azure nebo služba Azure SQL Database. Pak ve vstupním nebo výstupním prostředku schválíte připojení privátního koncového bodu.
 
-Po schválení připojení budou mít přes privátní koncový bod přístup k prostředku všechny úlohy spuštěné v clusteru Stream Analytics. V tomto článku se dozvíte, jak vytvořit a odstranit privátní koncové body v clusteru Stream Analytics.
+Jakmile připojení schválíte, budou mít všechny úlohy spuštěné v clusteru Stream Analytics k tomuto prostředku přístup prostřednictvím privátního koncového bodu. V tomto článku se dozvíte, jak vytvořit a odstranit privátní koncové body v clusteru Stream Analytics.
 
 ## <a name="create-private-endpoint-in-stream-analytics-cluster"></a>Vytvoření privátního koncového bodu v clusteru Stream Analytics
 
@@ -35,7 +35,7 @@ V této části se dozvíte, jak vytvořit privátní koncový bod ve Stream Ana
    |---|---|
    |Název|Zadejte libovolný název vašeho privátního koncového bodu. Pokud se tento název povede, vytvořte jedinečný název.|
    |Způsob připojení|**V adresáři vyberte připojit k prostředku Azure**.<br><br>Můžete zvolit jeden z vašich prostředků pro bezpečné připojení pomocí privátního koncového bodu nebo se můžete připojit k prostředku jiné osoby pomocí ID prostředku nebo aliasu, který s vámi sdílí.|
-   |Předplatné|Vyberte předplatné.|
+   |Předplatné|Vyberte své předplatné.|
    |Typ prostředku|Vyberte [typ prostředku, který se mapuje k vašemu prostředku](../private-link/private-endpoint-overview.md#private-link-resource).|
    |Prostředek|Vyberte prostředek, ke kterému se chcete připojit pomocí privátního koncového bodu.|
    |Cílový podprostředek|Typ prostředku pro prostředek vybraný výše, ke kterému bude mít přístup váš privátní koncový bod.|

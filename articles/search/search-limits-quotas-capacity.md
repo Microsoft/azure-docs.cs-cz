@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 6c422b9a70f679279d1310444aafb1f9131ff944
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949846"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107823"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
 
@@ -101,19 +101,18 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 > [!NOTE]
 > Jak je uvedeno v [omezeních indexu](#index-limits), indexery taky vyhodnotí horní limit 3000 prvků napříč všemi složitými kolekcemi na dokument počínaje nejnovější verzí rozhraní GA API, která podporuje komplexní typy ( `2019-05-06` ) a vyšší. To znamená, že pokud jste indexer vytvořili s předchozí verzí rozhraní API, nebudete platit od tohoto omezení. Aby se zachovala maximální kompatibilita, indexer, který byl vytvořen s předchozí verzí rozhraní API a který se pak aktualizuje pomocí verze rozhraní API `2019-05-06` nebo novější, bude v omezeních nadále **vyloučený** . Zákazníci by měli mít pozor na nepříznivý dopad na velmi velké komplexní kolekce (jak bylo uvedeno dříve) a důrazně doporučujeme vytvořit nové indexery s nejnovější verzí rozhraní GA API.
 
-### <a name="shared-private-link-resource-limits"></a>Omezení sdíleného prostředku privátního propojení
+## <a name="shared-private-link-resource-limits"></a>Omezení sdíleného prostředku privátního propojení
 
-> [!NOTE]
-> Indexery mají zabezpečený přístup k prostředkům přes soukromé koncové body spravované prostřednictvím [rozhraní API sdíleného privátního propojení](/rest/api/searchmanagement/sharedprivatelinkresources) , jak je popsáno v [tomto průvodci](search-indexer-howto-access-private.md) .
+Indexery mají přístup k dalším prostředkům Azure [prostřednictvím privátních koncových bodů](search-indexer-howto-access-private.md) spravovaných prostřednictvím [rozhraní API prostředků sdíleného privátního propojení](/rest/api/searchmanagement/sharedprivatelinkresources). Tato část popisuje omezení související s touto funkcí.
 
 | Prostředek | Free | Základní | S1 | S2 | S3 | S3 HD | L1 | Paměť
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Podpora indexeru privátního koncového bodu | No | Ano | Ano | Ano | Ano | No | Ano | Ano |
-| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | No | No | No | Ano | Ano | No | Ano | Ano |
+| Podpora indexeru privátního koncového bodu | Ne | Ano | Ano | Ano | Ano | Ne | Ano | Ano |
+| Podpora privátního koncového bodu pro indexery s dovednosti<sup>1</sup> | Ne | Ne | Ne | Ano | Ano | Ne | Ano | Ano |
 | Maximální počet privátních koncových bodů | Není k dispozici | 10 nebo 30 | 100 | 400 | 400 | Není k dispozici | 20 | 20 |
 | Maximální počet různých typů prostředků<sup>2</sup> | Není k dispozici | 4 | 7 | 15 | 15 | Není k dispozici | 4 | 4 |
 
-<sup>1</sup> rozšíření pro obohacení a analýzu obrázků je náročné na výpočetní výkon a spotřebovává neúměrné objemy dostupného výpočetního výkonu, a proto u nižších úrovní služby vyhledávání, které je možné spouštět v privátním prostředí, můžou mít negativní dopad na výkon a stabilitu vyhledávací služby.
+<sup>1</sup> obohacení a analýza obrázků AI jsou výpočty náročné a využívají neúměrné objemy dostupného výpočetního výkonu. Z tohoto důvodu jsou privátní připojení na nižších úrovních zakázaná, aby se předešlo nepříznivému dopadu na výkon a stabilitu vyhledávací služby.
 
 <sup>2</sup> počet různých typů prostředků se vypočítává jako počet jedinečných `groupId` hodnot, které se používají ve všech sdílených prostředcích privátního propojení pro danou vyhledávací službu bez ohledu na stav prostředku.
 

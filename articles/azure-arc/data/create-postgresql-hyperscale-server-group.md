@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317340"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108299"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 
@@ -130,7 +130,7 @@ Například:
 ]
 ```
 
-Pomocí koncového bodu instance PostgreSQL se můžete připojit ke skupině serverů PostgreSQL s vlastním škálováním z oblíbeného nástroje:  [Azure Data Studio](https://aka.ms/getazuredatastudio), [Pgcli](https://www.pgcli.com/) psql, pgAdmin atd.
+Pomocí koncového bodu instance PostgreSQL se můžete připojit ke skupině serverů PostgreSQL s vlastním škálováním z oblíbeného nástroje:  [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), [Pgcli](https://www.pgcli.com/) psql, pgAdmin atd.
 
 Pokud k testování používáte virtuální počítač Azure, postupujte podle následujících pokynů:
 

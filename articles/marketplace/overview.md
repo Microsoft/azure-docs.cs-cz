@@ -3,16 +3,16 @@ title: Co je komerční tržiště Microsoftu?
 description: Přehled výhod a možností pro partnery Microsoftu, kteří uvádějí řešení na komerčním webu Microsoft Marketplace.
 author: mingshen-ms
 ms.author: mingshen
-ms.reviewer: dannyevers
+ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
-ms.date: 10/01/2020
-ms.openlocfilehash: 91ae1ce8cb61a0bbc4907c21f0e5e6b869cedb85
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/15/2020
+ms.openlocfilehash: 0b0f290a5f560fa8f6db109422c8790ecef9698e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654304"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107041"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Co je komerční tržiště Microsoftu?
 
@@ -20,27 +20,47 @@ Microsoft Commercial Marketplace je katalog řešení od našich partnerů nezá
 
 Komerční tržiště je k dispozici ve více než 100 zemích a oblastech a spravujeme daňové platby v mnoha z nich. Pokud obchodujete se zavedeným zákazníkům Microsoftu, měli by vám přidané výhody, včetně komerčních nákupů na webu Marketplace v stávajících smlouvách o koupi Microsoftu, získat konsolidovanou fakturu od Microsoftu.
 
-## <a name="commercial-marketplace-online-stores"></a>Online obchody z komerčního tržiště
+## <a name="commercial-marketplace-online-stores"></a>Online obchody komerčního marketplace
 
 Microsoft Commercial Marketplace má dva online obchody: [Microsoft AppSource](https://appsource.microsoft.com/) a [Azure Marketplace](https://azuremarketplace.microsoft.com/). Microsoft AppSource obsahuje obchodní řešení a Azure Marketplace obsahuje IT řešení. Software a služby komerčního tržiště je také možné najít v produktech Microsoftu, jako jsou Microsoft 365, Dynamics 365, Microsoft Power Platform a Azure. Naše online obchody a prostředí v produktu vykreslí miliony potenciálních zákazníků každý měsíc. Každý online obchod nabízí různé scénáře, abyste měli jistotu, že je vaše řešení nebo služba k dispozici pro správné zákazníky.
 
 Když vytvoříte nabídku komerčního tržiště v partnerském centru, může být uvedená buď v online obchodech, nebo v obou obchodech, a to na základě typu nabídky, kategorií a dalších možností, které vyberete. V případě častého případu, že nabídka je relevantní pro uživatele obou online obchodů, může se zobrazit v obou. Další informace najdete v tématu [Výběr online obchodu](determine-your-listing-type.md#selecting-an-online-store) a [Průvodce pro kupujícího Microsoft AppSource a Azure Marketplace](https://aka.ms/MarketplaceBuyerGuide).
 
-**Microsoft AppSource** je pro obchodní řešení, jako jsou aplikace SaaS (software jako služba), a také aplikace, které se přímo rozšířily do Dynamics 365, Microsoft 365 a Microsoft Power Platform. Konzultační služby AppSource jsou profesionální nabídky služeb, které zákazníkům pomůžou začít s využitím nebo zrychlit používání Dynamics 365 a Power BI.
+### <a name="microsoft-appsource"></a>Microsoft AppSource
+
+[Microsoft AppSource](https://appsource.microsoft.com/) je pro obchodní řešení, jako jsou aplikace SaaS (software jako služba), a také aplikace, které se přímo rozšířily do Dynamics 365, Microsoft 365 a Microsoft Power Platform. Konzultační služby AppSource jsou profesionální nabídky služeb, které zákazníkům pomůžou začít s využitím nebo zrychlit používání Dynamics 365 a Power BI.
 
 Tady je příklad stránky se seznamem nabídek v AppSource:
 
 :::image type="content" source="media/overview/example-appsource.png" alt-text="Ukazuje stránku se seznamem nabídek v Microsoft AppSource.":::
 
-**Azure Marketplace** je pro řešení postavená na platformě Azure a určená pro odborníky na IT a vývojáře. Zahrnuje to i seznam pro konzultační a spravované služby. Azure Marketplace konzultační služby jsou profesionální nabídky služeb, které zákazníkům pomůžou začít s využitím nebo urychlit používání Azure.
+####  <a name="appsource-in-product-experience"></a>Prostředí AppSource v produktu
+
+Zákazníci můžou k AppSourceům přistupovat taky prostřednictvím Microsoft 365, Dynamics 365, Power Platform a Azure. Následující příklad ukazuje, jak přistupovat k AppSource doplňkům z nabídky **soubor** Power BI.
+
+:::image type="content" source="media/overview/power-bi.png" alt-text="Ukazuje stránku se seznamem nabídek v Microsoft AppSource."::: 
+
+Tato možnost otevře okno, kde může zákazník vyhledat Power BI doplňky podle názvu nebo kategorie. 
+
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Ukazuje stránku se seznamem nabídek v Microsoft AppSource."::: 
+
+### <a name="azure-marketplace"></a>Azure Marketplace
+
+[Azure Marketplace](https://azuremarketplace.microsoft.com/) je pro řešení postavená na platformě Azure a určená pro odborníky na IT a vývojáře. Zahrnuje to i seznam pro konzultační a spravované služby. Azure Marketplace konzultační služby jsou profesionální nabídky služeb, které zákazníkům pomůžou začít s využitím nebo urychlit používání Azure.
 
 Tady je příklad stránky se seznamem nabídek v Azure Marketplace:
 
 :::image type="content" source="media/overview/example-marketplace.png" alt-text="Ukazuje stránku se seznamem nabídek v Microsoft AppSource."::: 
 
-Vzhledem k tomu, že Azure Marketplace je postavená na Azure, můžou zákazníci získat přístup k řešením prostřednictvím možnosti **vytvořit prostředek** v [Azure Portal](https://portal.azure.com/).
+#### <a name="azure-marketplace-in-the-azure-portal"></a>Azure Marketplace v Azure Portal
+
+Zákazníci Azure můžou pomocí možnosti **vytvořit prostředek** v [Azure Portal](https://portal.azure.com/)zjišťovat a nasazovat Azure Marketplace řešení.
 
 :::image type="content" source="media/overview/create-resource.png" alt-text="Ukazuje stránku se seznamem nabídek v Microsoft AppSource."::: 
+
+Tato možnost otevře Azure Marketplace v rámci Azure Portal, kde může vyhledat řešení podle názvu nebo podle kategorie.
+
+:::image type="content" source="media/overview/search-portal.png" alt-text="Ukazuje stránku se seznamem nabídek v Microsoft AppSource."::: 
 
 ## <a name="benefits-of-selling-with-microsoft"></a>Výhody prodeje u Microsoftu
 

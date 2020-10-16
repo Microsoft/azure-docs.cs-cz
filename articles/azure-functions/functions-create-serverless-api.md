@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083017"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104746"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Přizpůsobení koncového bodu HTTP v Azure Functions
 
 V tomto článku se dozvíte, jak Azure Functions umožňuje vytvářet vysoce škálovatelná rozhraní API. Azure Functions se dodává s kolekcí integrovaných triggerů HTTP a vazeb, které usnadňují vytváření koncových bodů v nejrůznějších jazycích, včetně Node.js, C# a dalších. V tomto článku budete přizpůsobovat Trigger HTTP, který bude zpracovávat konkrétní akce v návrhu rozhraní API. Také se připravujete pro rostoucí rozhraní API integrací s Proxy služby Azure Functions a nastavením přípravných rozhraní API. Tyto úlohy se provádí na základě funkcí prostředí COMPUTE bez serveru, takže se nemusíte starat o škálování prostředků – stačí se zaměřit na logiku rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
@@ -37,7 +37,7 @@ Ve výchozím nastavení je funkce triggeru protokolu HTTP nakonfigurovaná tak,
 
 1. Použijte nastavení triggeru HTTP, jak je uvedeno v následující tabulce.
 
-    | Pole | Ukázková hodnota | Description |
+    | Pole | Ukázková hodnota | Popis |
     |---|---|---|
     | Šablona trasy | /hello | Určuje, jaká trasa se používá k vyvolání této funkce. |
     | Úroveň autorizace | Anonymní | Volitelné: Zpřístupňuje vaši funkci bez klíče rozhraní API. |
@@ -75,7 +75,7 @@ V další části budete své rozhraní API nakládat prostřednictvím proxy se
 Proxy může odkazovat na libovolný prostředek HTTP, například na:
 - Azure Functions 
 - Aplikace API ve službě [Azure App Service](../app-service/overview.md)
-- Kontejnery Dockeru ve službě [App Service v Linuxu](../app-service/containers/app-service-linux-intro.md)
+- Kontejnery Dockeru ve službě [App Service v Linuxu](../app-service/overview.md#app-service-on-linux)
 - Jakékoli jiné hostované rozhraní API
 
 Další informace o proxy najdete v článku [Práce s Proxy služby Azure Functions].

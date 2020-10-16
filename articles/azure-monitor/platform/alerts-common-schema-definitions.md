@@ -5,16 +5,16 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 2d3da9273651b23a80b0f5e2874581a744caf533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a1851b71ac017349ff131811d946ec2c077440b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330872"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105987"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
-Tento článek popisuje [běžné definice schématu výstrah](https://aka.ms/commonAlertSchemaDocs) pro Azure monitor, včetně těch pro Webhooky, Azure Logic Apps, Azure Functions a Azure Automation Runbooky. 
+Tento článek popisuje [běžné definice schématu výstrah](./alerts-common-schema.md) pro Azure monitor, včetně těch pro Webhooky, Azure Logic Apps, Azure Functions a Azure Automation Runbooky. 
 
 Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a příčinu výstrahy. Tyto instance jsou popsané ve společném schématu v následujících částech:
 * **Essentials**: sada standardizovaných polí společných pro všechny typy výstrah, které popisují, k jakým prostředkům se výstraha používá, spolu s dalšími běžnými metadaty výstrah (například závažnost nebo popis). 
@@ -71,7 +71,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 ## <a name="essentials"></a>Základy
 
-| Pole | Description|
+| Pole | Popis|
 |:---|:---|
 | alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
 | alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
@@ -541,5 +541,5 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [běžném schématu výstrah](https://aka.ms/commonAlertSchemaDocs).
-- Naučte se [, jak vytvořit aplikaci logiky, která používá společné schéma výstrah pro zpracování všech výstrah](./alerts-common-schema-integrations.md). 
+- Přečtěte si další informace o [běžném schématu výstrah](./alerts-common-schema.md).
+- Naučte se [, jak vytvořit aplikaci logiky, která používá společné schéma výstrah pro zpracování všech výstrah](./alerts-common-schema-integrations.md).

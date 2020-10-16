@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99d11f6cffa42aa706a863c3061583eab3f98f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4e23a9d5334af5ebdaab2ef15a5c39f232095
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552247"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108588"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>Kurz: Azure Active Directory integrace s využitím pracovního místa na pracovišti
 
@@ -30,7 +30,7 @@ Integrování pracovního místa na pracovišti pomocí Azure AD poskytuje násl
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s využitím pracovního místa, potřebujete následující položky:
 
@@ -99,11 +99,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím na 
 
 4. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
 
-    ![Vysílat informace o jednotném přihlašování v doméně pracoviště a adresách URL](common/preintegrated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML.](common/preintegrated.png)
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Vysílat informace o jednotném přihlašování v doméně pracoviště a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL:  `https://auth.quantumworkplace.com/Account/Login`
 

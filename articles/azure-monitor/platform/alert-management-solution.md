@@ -6,25 +6,25 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: bd30a840327eaf338aec89c12ff8eb5d87c60c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322393"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108401"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení Alert Management v Azure Log Analytics
 
 ![Ikona Alert Management](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor teď podporuje vylepšené funkce pro [správu výstrah ve velkém měřítku](https://aka.ms/azure-alerts-overview), včetně těch, které vygenerovaly [Nástroje pro monitorování, jako je System Center Operations Manager, Zabbix nebo Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  Azure Monitor teď podporuje vylepšené funkce pro [správu výstrah ve velkém měřítku](./alerts-overview.md), včetně těch, které vygenerovaly [Nástroje pro monitorování, jako je System Center Operations Manager, Zabbix nebo Nagios](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 >  
 
 
 Řešení Alert Management vám pomůže analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy můžou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořených Log Analytics](./alerts-overview.md) nebo [importovaných z Nagios nebo Zabbix](../learn/quick-collect-linux-computer.md). Řešení také importuje výstrahy ze všech [připojených skupin pro správu System Center Operations Manager](./om-agents.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Řešení funguje se všemi záznamy v úložišti Log Analytics s typem **výstrahy**, takže musíte provést jakoukoli konfiguraci, která je nutná ke shromáždění těchto záznamů.
 
 - Pro výstrahy Log Analytics [vytvořte pravidla upozornění](./alerts-overview.md) pro vytváření záznamů výstrah přímo v úložišti.
@@ -45,11 +45,11 @@ Další informace o způsobu, jakým se aktualizují sady pro správu řešení,
 ### <a name="agents"></a>Agenti
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje.
 
-| Připojený zdroj | Podpora | Description |
+| Připojený zdroj | Podpora | Popis |
 |:--- |:--- |:--- |
-| [Agenti systému Windows](agent-windows.md) | No |Přímo agenti Windows negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Windows. |
-| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No |Přímo agenti Linux negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Linux.  Výstrahy Nagios a Zabbix se shromažďují z těch serverů, které vyžadují agenta pro Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](./om-agents.md) |Yes |Výstrahy, které jsou generovány v agentech Operations Manager, jsou doručeny do skupiny pro správu a poté předány do Log Analytics.<br><br>Přímé připojení od agentů Operations Manager k Log Analytics se nevyžaduje. Data výstrah se předávají ze skupiny pro správu do úložiště Log Analytics. |
+| [Agenti systému Windows](agent-windows.md) | Ne |Přímo agenti Windows negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Windows. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne |Přímo agenti Linux negenerují výstrahy.  Výstrahy Log Analytics lze vytvořit z událostí a dat o výkonu shromážděných z agentů systému Linux.  Výstrahy Nagios a Zabbix se shromažďují z těch serverů, které vyžadují agenta pro Linux. |
+| [Skupina pro správu nástroje System Center Operations Manager](./om-agents.md) |Ano |Výstrahy, které jsou generovány v agentech Operations Manager, jsou doručeny do skupiny pro správu a poté předány do Log Analytics.<br><br>Přímé připojení od agentů Operations Manager k Log Analytics se nevyžaduje. Data výstrah se předávají ze skupiny pro správu do úložiště Log Analytics. |
 
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
@@ -106,7 +106,7 @@ Pokud se posunete napravo, řídicí panel obsahuje několik běžných dotazů,
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy výstrah shromážděné tímto řešením: 
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:---|:---|
 | Výstraha &#124;, kde SourceSystem = = "OpsManager" and AlertSeverity = = "Error" a TimeRaised > (24 hodin) |Kritické výstrahy vyvolané během posledních 24 hodin |
 | Výstraha &#124;, kde AlertSeverity = = "Warning" a TimeRaised > před (24 hodin) |Výstrahy upozornění vyvolané během posledních 24 hodin |
@@ -120,4 +120,3 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 ## <a name="next-steps"></a>Další kroky
 * Podrobnosti o generování upozornění ze služby Log Analytics najdete v tématu [Upozornění v Log Analytics](./alerts-overview.md).
-

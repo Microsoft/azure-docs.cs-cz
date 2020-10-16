@@ -3,12 +3,12 @@ title: Vytváření a používání souborů prostředků
 description: Naučte se vytvářet soubory prostředků služby Batch z různých vstupních zdrojů. Tento článek obsahuje několik běžných metod, jak je vytvořit a umístit na virtuální počítač.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 22c0220d08660402bef3fd4aaf0add6adc12a295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a5e9780b4fa0abfec5b736e04d385f14716873
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230938"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109285"
 ---
 # <a name="creating-and-using-resource-files"></a>Vytváření a používání souborů prostředků
 
@@ -61,7 +61,7 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-Alternativou k vygenerování adresy URL SAS je povolit anonymní veřejný přístup pro čtení ke kontejneru a jeho objektům blob v úložišti objektů BLOB v Azure. Díky tomu můžete k těmto prostředkům udělit přístup jen pro čtení bez sdílení klíče účtu a bez vyžadování SAS. Veřejný přístup pro čtení se obvykle používá u scénářů, u kterých chcete, aby byly některé objekty blob vždycky dostupné pro anonymní přístup pro čtení. Pokud tento scénář vyhovuje vašemu řešení, přečtěte si článek [anonymní přístup k](../storage/blobs/storage-manage-access-to-resources.md) objektům blob, kde se dozvíte víc o správě přístupu k datům objektů BLOB.
+Alternativou k vygenerování adresy URL SAS je povolit anonymní veřejný přístup pro čtení ke kontejneru a jeho objektům blob v úložišti objektů BLOB v Azure. Díky tomu můžete k těmto prostředkům udělit přístup jen pro čtení bez sdílení klíče účtu a bez vyžadování SAS. Veřejný přístup pro čtení se obvykle používá u scénářů, u kterých chcete, aby byly některé objekty blob vždycky dostupné pro anonymní přístup pro čtení. Pokud tento scénář vyhovuje vašemu řešení, přečtěte si článek [anonymní přístup k](../storage/blobs/anonymous-read-access-configure.md) objektům blob, kde se dozvíte víc o správě přístupu k datům objektů BLOB.
 
 ### <a name="storage-container-name"></a>Název kontejneru úložiště
 

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: a8fefee3903a9ff5ce9bdd05a0fd5bcf07bc5429
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8e22373f4550b0c65f6ea5c0b62815e32dcbb58
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91408533"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105120"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rychlé zprovoznění: Vytvoření funkce v Azure s využitím Visual Studio Code
 
@@ -65,7 +65,7 @@ Než začnete, ujistěte se, že máte zavedené následující požadavky:
 - [.NET core 3,1](https://www.microsoft.com/net/download) a [.NET Core 2,1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 ::: zone-end
 ::: zone pivot="programming-language-java"
-- [Sada Java Developer Kit](https://aka.ms/azure-jdks), verze 8.
+- [Sada Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), verze 8.
 
 - [Apache Maven](https://maven.apache.org)verze 3,0 nebo vyšší.
 ::: zone-end

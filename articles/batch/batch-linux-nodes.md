@@ -4,12 +4,12 @@ description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech v
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 6cd8a13d67c1ce169e6c9300f7ee017fd3a59d96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cbf7dcb5b0f6f43b4fc5d69127e817dceea650e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146330"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108061"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -25,7 +25,7 @@ Při vytváření fondu výpočetních uzlů ve službě Batch máte dvě možno
 
 **Konfigurace služby Cloud Services** poskytuje *pouze* výpočetní uzly Windows. Dostupné velikosti výpočetních uzlů jsou uvedené v seznamu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md)a dostupné operační systémy jsou uvedené v části [vydání hostovaného operačního systému Azure a v matici kompatibility SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Když vytvoříte fond, který obsahuje uzly Azure Cloud Services, zadáte velikost uzlu a řadu operačních systémů, které jsou popsány v předchozích uvedených článcích. Pro fondy výpočetních uzlů Windows se Cloud Services nejčastěji používá.
 
-**Konfigurace virtuálního počítače** poskytuje pro výpočetní uzly image Linux i Windows. Dostupné velikosti výpočetních uzlů jsou uvedené ve [velikosti pro virtuální počítače v Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) a [velikosti pro virtuální počítače v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Při vytváření fondu, který obsahuje uzly Konfigurace virtuálního počítače, je nutné zadat velikost uzlů, odkaz na bitovou kopii virtuálního počítače a SKU agenta uzlu Batch, které mají být nainstalovány v uzlech.
+**Konfigurace virtuálního počítače** poskytuje pro výpočetní uzly image Linux i Windows. Dostupné velikosti výpočetních uzlů jsou uvedené ve [velikosti pro virtuální počítače v Azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux) a [velikosti pro virtuální počítače v Azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows). Při vytváření fondu, který obsahuje uzly Konfigurace virtuálního počítače, je nutné zadat velikost uzlů, odkaz na bitovou kopii virtuálního počítače a SKU agenta uzlu Batch, které mají být nainstalovány v uzlech.
 
 ### <a name="virtual-machine-image-reference"></a>Odkaz na image virtuálního počítače
 

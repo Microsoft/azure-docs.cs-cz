@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df904e183d3f77751d86d0cefab5423d753f146b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b6f4e50cac2f809172c2525ea9136a63e6bd9066
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979579"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107007"
 ---
-# <a name="access-built-in-metrics"></a>Přístup k vestavěným metrikám
+# <a name="access-built-in-metrics"></a>Přístup k integrovaným metrikám
 
 Komponenty IoT Edge runtime, centra IoT Edge a Agent IoT Edge poskytují integrované metriky ve [formátu Prometheus Exposition](https://prometheus.io/docs/instrumenting/exposition_formats/). Přístup k těmto metrikám můžete vzdáleně sledovat a pochopit stav zařízení IoT Edge.
 
-Od verze 1.0.10 se metriky automaticky zveřejňují na **portu 9600** modulů **edgeHub** a **edgeAgent** ( `http://edgeHub:9600/metrics` a `http://edgeAgent:9600/metics` ). Ve výchozím nastavení nejsou namapované na hostitele.
+Od verze 1.0.10 se metriky automaticky zveřejňují na **portu 9600** modulů **edgeHub** a **edgeAgent** ( `http://edgeHub:9600/metrics` a `http://edgeAgent:9600/metrics` ). Ve výchozím nastavení nejsou namapované na hostitele.
 
 Přístup k metrikám z hostitele vystavení a mapování portu metrik z modulu `createOptions` . Následující příklad mapuje výchozí port metriky na port 9601 na hostiteli:
 
@@ -62,7 +62,7 @@ Quantiles poskytované pro integrované histogramy a souhrnné metriky jsou 0,1,
 
 Modul **edgeHub** generuje následující metriky:
 
-| Název | Dimenze | Popis |
+| Name | Dimenze | Popis |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (zdroj operace)<br> `id` (ID modulu) | Typ: čítač<br> Celkový počet volání prozdvojení |
 | `edgehub_messages_received_total` | `route_output` (výstup odeslaných zpráv)<br> `id` | Typ: čítač<br> Celkový počet zpráv přijatých od klientů |
@@ -85,7 +85,7 @@ Modul **edgeHub** generuje následující metriky:
 
 Modul **edgeAgent** generuje následující metriky:
 
-| Název | Dimenze | Popis |
+| Name | Dimenze | Popis |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | Typ: měřidlo<br> Doba, po kterou byl modul zadán v nasazení a byl ve spuštěném stavu |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | Typ: měřidlo<br> Doba, po kterou byl modul zadán v nasazení |

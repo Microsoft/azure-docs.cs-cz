@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 170f20cbd3405ea6af8aef5650e4dd7ebeaeef7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ac3c0809c08719d77457c59ef311ad43ef99cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458208"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108333"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porovnávání Azure Data Lake Storage Gen1 a Azure Blob Storage
 
@@ -26,12 +26,12 @@ Tabulka v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Az
 | Klíčové koncepty |Data Lake Storage Gen1 účet obsahuje složky, které zase obsahují data uložená jako soubory. |Účet úložiště obsahuje kontejnery, které zase obsahují data ve formě objektů BLOB. |
 | Struktura |Hierarchický systém souborů |Úložiště objektů s plochým oborem názvů |
 | Rozhraní API |REST API přes HTTPS |REST API přes HTTP/HTTPS |
-| Rozhraní API na straně serveru |[REST API kompatibilní WebHDFS](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[REST API Blob Storage Azure](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
-| Klient systému souborů Hadoop |Yes |Yes |
-| Operace s daty – ověřování |Na základě [Azure Active Directory identit](../active-directory/develop/authentication-scenarios.md) |Na základě sdílených tajných klíčů – klíčů pro [přístup k účtu](../storage/common/storage-account-keys-manage.md) a [klíčů sdíleného přístupového podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
+| Rozhraní API na straně serveru |[REST API kompatibilní WebHDFS](/rest/api/datalakestore/) |[REST API Blob Storage Azure](/rest/api/storageservices/Blob-Service-REST-API) |
+| Klient systému souborů Hadoop |Ano |Ano |
+| Operace s daty – ověřování |Na základě [Azure Active Directory identit](../active-directory/develop/authentication-vs-authorization.md) |Na základě sdílených tajných klíčů – klíčů pro [přístup k účtu](../storage/common/storage-account-keys-manage.md) a [klíčů sdíleného přístupového podpisu](../storage/common/storage-sas-overview.md). |
 | Datové operace – protokol ověřování |[OpenID Connect](https://openid.net/connect/). Volání musí obsahovat platný token JWT (JSON web token) vydaný Azure Active Directory.|Algoritmus HMAC (hash-based Message Authentication Code). V rámci požadavku HTTP musí volání obsahovat hash SHA-256 s kódováním base64. |
-| Operace s daty – autorizace |Seznam ACL Access Control.  Seznamy řízení přístupu (ACL) na základě Azure Active Directory identit lze nastavit na úrovni souborů a složek. |Pro autorizaci na úrovni účtu – použijte [přístupové klíče účtu](../storage/common/storage-account-keys-manage.md) .<br>Pro účet, kontejner nebo autorizaci objektu BLOB použijte [klíče pro sdílené přístupové podpisy](../storage/common/storage-dotnet-shared-access-signature-part-1.md) . |
-| Operace s daty – auditování |K dispozici. Informace najdete [tady](data-lake-store-diagnostic-logs.md) . |K dispozici |
+| Operace s daty – autorizace |Seznam ACL Access Control.  Seznamy řízení přístupu (ACL) na základě Azure Active Directory identit lze nastavit na úrovni souborů a složek. |Pro autorizaci na úrovni účtu – použijte [přístupové klíče účtu](../storage/common/storage-account-keys-manage.md) .<br>Pro účet, kontejner nebo autorizaci objektu BLOB použijte [klíče pro sdílené přístupové podpisy](../storage/common/storage-sas-overview.md) . |
+| Operace s daty – auditování |K dispozici. Informace najdete [tady](data-lake-store-diagnostic-logs.md) . |K dispozici. |
 | Data šifrování v klidovém umístění |<ul><li>Transparentní, strana serveru</li> <ul><li>Pomocí klíčů spravovaných službou</li><li>Pomocí klíčů spravovaných zákazníkem ve službě Azure webrecovery</li></ul></ul> |<ul><li>Transparentní, strana serveru</li> <ul><li>Pomocí klíčů spravovaných službou</li><li>Pomocí klíčů spravovaných zákazníkem ve službě Azure webrecovery (Preview)</li></ul><li>Šifrování na straně klienta</li></ul> |
 | Operace správy (například vytvoření účtu) |[Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) pro správu účtů |[Řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) pro správu účtů |
 | Sady SDK pro vývojáře |.NET, Java, Python, Node.js |.NET, Java, Python, Node.js, C++, Ruby, PHP, přejít, Android, iOS |

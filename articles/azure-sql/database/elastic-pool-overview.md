@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 07/28/2020
-ms.openlocfilehash: 7be0b5f2688198da8926f2039f60bf9ba592e2f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330780"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107891"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastické fondy vám pomůžou se správou a škálováním více databází v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ Na následujícím obrázku je příklad databáze, která je většinu doby ne�
 
    ![izolovaná databáze vhodná pro fond](./media/elastic-pool-overview/one-database.png)
 
-Po uvedená pětiminutová období DB1 využívá až 90 jednotek DTU, ale celkové průměrné využití nedosahuje ani pěti jednotek DTU. Pro spuštění této úlohy v izolovaných databázích se vyžaduje výpočetní velikost S3, ale tato akce zachová většinu prostředků nevyužitých během období nízké aktivity.
+Graf znázorňuje využití DTU v průběhu 1 hodiny v časovém intervalu od 12:00 do 1:00, kde má každý datový bod 1 minutu členitost. V 12:10 DB1 špičky až 90 DTU, ale celkové průměrné využití je méně než pět DTU. Pro spuštění této úlohy v izolovaných databázích se vyžaduje výpočetní velikost S3, ale tato akce zachová většinu prostředků nevyužitých během období nízké aktivity.
 
 Fond umožňuje sdílet tyto nevyužité jednotky DTU napříč několika databázemi a snižuje tak počet potřebných jednotek DTU a celkové náklady.
 

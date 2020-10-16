@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497178"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109149"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Šifrování dat v Azure Data Lake Storage Gen1
 
@@ -33,7 +33,7 @@ Data v přenosu (označovaná také jako data v pohybu) se také vždy šifrují
 
 Šifrování pro Data Lake Storage Gen1 je nastaveno při vytváření účtu a ve výchozím nastavení je vždy povoleno. Klíče můžete buď spravovat sami, nebo můžete Data Lake Storage Gen1 jim dovolit, aby je spravovali (Toto je výchozí nastavení).
 
-Další informace najdete v tématu [Začínáme](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Další informace najdete v tématu [Začínáme](./data-lake-store-get-started-portal.md).
 
 ## <a name="how-encryption-works-in-data-lake-storage-gen1"></a>Jak šifrování funguje v Data Lake Storage Gen1
 
@@ -56,7 +56,7 @@ Tady je stručné porovnání možností, které nabízí dva režimy správy hl
 | -------- | -------------------- | --------------------- |
 |Jak se data ukládají?|Před uložením se vždy šifrují.|Před uložením se vždy šifrují.|
 |Kde je uložený hlavní šifrovací klíč?|Key Vault|Key Vault|
-|Jsou nějaké šifrovací klíče uložené v nezašifrované podobě mimo službu Key Vault? |No|No|
+|Jsou nějaké šifrovací klíče uložené v nezašifrované podobě mimo službu Key Vault? |Ne|Ne|
 |Může služba Key Vault načíst hlavní šifrovací klíč?|Ne. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|Ne. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|
 |Kdo je vlastníkem instance služby Key Vault a hlavního šifrovacího klíče?|Služba Data Lake Storage Gen1|Vlastníte instanci služby Key Vault, která patří do vašeho předplatného Azure. Hlavní šifrovací klíč ve službě Key Vault může být spravovaný softwarem nebo hardwarem.|
 |Můžete odvolat přístup k hlavní šifrovací klíč pro službu Data Lake Storage Gen1?|No|Yes. Můžete spravovat seznamy řízení přístupu v Key Vault a odebrat položky řízení přístupu k identitě služby Data Lake Storage Gen1.|
@@ -105,9 +105,9 @@ Následující diagram znázorňuje tyto koncepty:
 
 ## <a name="key-rotation"></a>Obměna klíčů
 
-Pokud používáte klíče spravované zákazníkem, můžete obměňovat klíč MEK. Informace o tom, jak nastavit účet Data Lake Storage Gen1 pomocí klíčů spravovaných zákazníkem, najdete v tématu [Začínáme](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+Pokud používáte klíče spravované zákazníkem, můžete obměňovat klíč MEK. Informace o tom, jak nastavit účet Data Lake Storage Gen1 pomocí klíčů spravovaných zákazníkem, najdete v tématu [Začínáme](./data-lake-store-get-started-portal.md).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Při nastavování účtu Data Lake Storage Gen1 jste se rozhodli používat vlastní klíče. Tuto možnost po vytvoření účtu nejde změnit. Následující postup předpokládá, že používáte klíče spravované zákazníkem (tedy že jste zvolili vlastní klíče ze služby Key Vault).
 
@@ -135,4 +135,4 @@ Všimněte si, že pokud použijete výchozí možnosti šifrování, vaše data
 Tato operace by neměla trvat déle než dvě minuty a nemělo by dojít k žádnému výpadku v důsledku obměny klíče. Po dokončení operace se začne používat nová verze klíče.
 
 > [!IMPORTANT]
-> Po dokončení operace obměny klíče se už k šifrování vašich dat nebude aktivně používat stará verze klíče.  Ve výjimečných případech neočekávaného selhání, které ovlivní dokonce i redundantní kopie vašich dat, se však můžou data obnovit ze zálohy, která stále používá starý klíč. Pokud chcete zajistit dostupnost dat i v těchto výjimečných případech, uchovávejte kopii předchozí verze šifrovacího klíče. Osvědčené postupy pro plánování zotavení po havárii najdete v tématu [pokyny pro zotavení po havárii pro data v Data Lake Storage Gen1](data-lake-store-disaster-recovery-guidance.md) . 
+> Po dokončení operace obměny klíče se už k šifrování vašich dat nebude aktivně používat stará verze klíče.  Ve výjimečných případech neočekávaného selhání, které ovlivní dokonce i redundantní kopie vašich dat, se však můžou data obnovit ze zálohy, která stále používá starý klíč. Pokud chcete zajistit dostupnost dat i v těchto výjimečných případech, uchovávejte kopii předchozí verze šifrovacího klíče. Osvědčené postupy pro plánování zotavení po havárii najdete v tématu [pokyny pro zotavení po havárii pro data v Data Lake Storage Gen1](data-lake-store-disaster-recovery-guidance.md) .

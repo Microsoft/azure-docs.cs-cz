@@ -4,18 +4,18 @@ description: Naučte se používat servery s podporou ARC Azure ke správě serv
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: 881445b19baef4e025cf3bd32dc3b55b2d170ec3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c8d74bcaa7eb0b4adbb5aaf66626b9bfc349d639
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818740"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108894"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
 Servery s podporou ARC Azure umožňují spravovat počítače se systémem Windows a Linux hostované mimo Azure, v podnikové síti nebo v jiném poskytovateli cloudu, podobně jako při správě nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je spravován jako součást skupiny prostředků v rámci předplatného a přináší výhody standardních konstrukcí Azure, jako je například Azure Policy a použití značek. Poskytovatelé služeb, kteří spravují místní infrastrukturu zákazníka, můžou spravovat své hybridní počítače stejným způsobem jako v současnosti s nativními prostředky Azure, a to v rámci více zákaznických prostředí pomocí [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) s využitím Azure ARC.
 
-Aby bylo možné doručovat toto prostředí do vašich hybridních počítačů hostovaných mimo Azure, musí být na každém počítači, který plánujete připojit k Azure, nainstalovaný agent připojeného počítače Azure. Tento agent nedoručuje žádné jiné funkce a nenahrazuje [agenta Azure Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
+Aby bylo možné doručovat toto prostředí do vašich hybridních počítačů hostovaných mimo Azure, musí být na každém počítači, který plánujete připojit k Azure, nainstalovaný agent připojeného počítače Azure. Tento agent nedoručuje žádné jiné funkce a nenahrazuje [agenta Azure Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-introduction.md).
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
@@ -31,7 +31,7 @@ Když počítač připojíte k serverům s podporou ARC Azure, umožní vám pro
 
 - Pomocí [Update Management](../../automation/update-management/update-mgmt-overview.md) v Azure Automation můžete spravovat aktualizace operačního systému pro servery s Windows a Linux. Nejdřív nasaďte roli [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) a pak postupujte podle pokynů a [Povolte Update Management](../../automation/update-management/update-mgmt-enable-portal.md) v počítači, na kterém není Azure Windows nebo Linux.
 
-- Zahrňte servery mimo Azure pro detekci hrozeb a proaktivně monitorujte potenciální bezpečnostní hrozby pomocí [Azure Security Center](../../security-center/security-center-intro.md).
+- Zahrňte servery mimo Azure pro detekci hrozeb a proaktivně monitorujte potenciální bezpečnostní hrozby pomocí [Azure Security Center](../../security-center/security-center-introduction.md).
 
 Data protokolu shromážděná a uložená v Log Analytics pracovním prostoru z hybridního počítače teď obsahují vlastnosti specifické pro daný počítač, jako je ID prostředku. To lze použít pro podporu přístupu k protokolu [kontextu prostředků](../../azure-monitor/platform/design-logs-deployment.md#access-mode) .
 

@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88134475"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108962"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Řešení potíží s klientem vzdálené plochy
 
@@ -83,6 +83,20 @@ Pokud webový klient zachovává výzvy k zadání přihlašovacích údajů, po
 3. Vymazat soubory cookie prohlížeče. Další informace najdete v tématu [odstranění souborů cookie v aplikaci Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
 4. Smažte mezipaměť prohlížeče. Další informace najdete v tématu [vymazání mezipaměti prohlížeče pro prohlížeč](https://binged.it/2RKyfdU).
 5. Otevřete prohlížeč v privátním režimu.
+
+## <a name="windows-client-blocks-windows-virtual-desktop-classic-feed"></a>Klient Windows blokuje informační kanál virtuální plochy systému Windows (Classic)
+
+Pokud informační kanál klienta Windows nebude zobrazovat aplikace virtuální plochy Windows (Classic), postupujte podle těchto pokynů:
+
+1. Ověřte, jestli zásady podmíněného přístupu zahrnují ID aplikací přidružené k virtuální ploše Windows (Classic).
+2. Ověřte, jestli zásady podmíněného přístupu blokují veškerý přístup s výjimkou ID aplikací pro virtuální počítače s Windows (Classic). Pokud ano, budete muset přidat ID aplikace **9cdead84-a844-4324-93f2-b2e6bb768d07** k zásadě, aby klient mohl vyhledat informační kanály.
+
+Pokud v seznamu nemůžete najít ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07, bude nutné zaregistrovat poskytovatele prostředků virtuálního počítače s Windows. Registrace poskytovatele prostředků:
+
+1. Přihlaste se k portálu Azure.
+2. Klikněte na **předplatné**a pak vyberte své předplatné.
+3. V nabídce na levé straně stránky vyberte **poskytovatel prostředků**.
+4. Vyhledejte a vyberte **Microsoft. DesktopVirtualization**a pak vyberte **znovu registrovat**.
 
 ## <a name="next-steps"></a>Další kroky
 

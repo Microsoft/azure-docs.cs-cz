@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66e415cbec3b2e8c834ee02630d7f849ccf3e1e2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548866"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105919"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Kurz: Azure Active Directory integrace s rozpoznáváním
 
@@ -30,7 +30,7 @@ Integrace funkce rozpoznat pomocí Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s rozpoznáváním potřebujete následující položky:
 
@@ -139,15 +139,15 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
 
 2. V pravém horním rohu klikněte na **nabídku**. Přejít na **Správce společnosti**.
    
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![Snímek obrazovky zobrazuje správce společnosti vybraný v nabídce nastavení.](./media/recognize-tutorial/tutorial_recognize_000.png)
 
 3. V levém navigačním podokně klikněte na **Nastavení**.
    
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![Snímek obrazovky zobrazuje nastavení vybraná z navigační stránky.](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. V části **nastavení jednotného přihlašování** proveďte následující kroky.
    
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![Snímek obrazovky ukazuje nastavení S S S, kde můžete zadat hodnoty, které jsou popsány.](./media/recognize-tutorial/tutorial_recognize_002.png)
     
     a. Jako **Povolit jednotné přihlašování**vyberte **zapnuto**.
 
@@ -163,11 +163,11 @@ Pokud chcete konfigurovat jednotné přihlašování Azure AD pomocí rozpoznáv
 
 5. Vedle části **nastavení jednotného přihlašování** zkopírujte adresu URL v části **Adresa URL metadat poskytovatele služby**.
    
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![Snímek obrazovky zobrazuje poznámky, kde můžete kopírovat metadata poskytovatele služeb.](./media/recognize-tutorial/tutorial_recognize_003.png)
 
 6. Otevřete **odkaz metadata URL** v rámci prázdného prohlížeče a Stáhněte si dokument metadat. Pak z tohoto souboru Zkopírujte hodnotu EntityDescriptor (entityID) a vložte ji do textového pole **identifikátoru** v **základní konfiguraci SAML** na Azure Portal.
     
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![Snímek obrazovky se zobrazí textové pole s prostým textem X M L, kde můžete získat entitu I D.](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 

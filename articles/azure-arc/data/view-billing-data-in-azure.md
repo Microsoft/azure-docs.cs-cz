@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5335442c7ffcdca950ba0e9c5f3b6bc9e4be9f63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760302"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108146"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Nahrání fakturačních dat do Azure a jejich zobrazení v Azure Portal
 
@@ -30,7 +30,7 @@ V budoucnu budou existovat dva režimy, ve kterých můžete spustit datové slu
 - **Nepřímo připojeno** – neexistuje žádné přímé připojení k Azure. Data se odesílají do Azure jenom prostřednictvím procesu exportu nebo nahrání. Všechna nasazení datových služeb Azure ARC v tomto režimu fungují ještě dnes ve verzi Preview.
 - **Přímo připojeno** – v tomto režimu bude existovat závislost na službě Kubernetes s povoleným ARC Azure, která poskytuje přímé propojení mezi Azure a clusterem Kubernetes, na kterém běží datové služby s podporou ARC Azure. Tím se povolí více možností a také vám umožní používat Azure Portal a Azure CLI ke správě datových služeb s podporou ARC Azure, stejně jako při správě datových služeb v Azure PaaS.  Tento režim připojení ještě není dostupný ve verzi Preview, ale brzo se připravuje.
 
-Můžete si přečíst další informace o rozdílech mezi [režimy připojení](https://docs.microsoft.com/azure/azure-arc/data/connectivity).
+Můžete si přečíst další informace o rozdílech mezi [režimy připojení](./connectivity.md).
 
 V nepřímém připojeném režimu se fakturovaná data pravidelně exportují z řadiče dat ARC Azure na zabezpečený soubor a pak se nahrály do Azure a zpracovaly.  V nadcházejícím připojeném režimu se fakturační data automaticky odešlou do Azure přibližně 1 hodina, aby se vám v reálném čase zobrazila cena za vaše služby. Proces exportu a nahrávání dat v nepřímém připojeném režimu je také možné automatizovat pomocí skriptů nebo můžeme vytvořit službu, která to provede za vás.
 

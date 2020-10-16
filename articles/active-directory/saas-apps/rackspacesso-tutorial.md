@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: a2c2e7358c32453daf53c40a9322df4fe30642d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 991201429bdc09a03ddc46c5beb9d0f4d6744ed5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548877"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108622"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Kurz: Azure Active Directory integrace s Rackspace SSO
 
@@ -30,7 +30,7 @@ Integrace Rackspace SSO do Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Rackspace SSO budete potřebovat následující položky:
 
@@ -101,11 +101,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
 
     a. Klikněte na **nahrát soubor metadat**.
 
-    ![image](common/upload-metadata.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML s odkazem na soubor s metadaty pro nahrání.](common/upload-metadata.png)
 
     b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Snímek obrazovky se zobrazí dialogové okno, ve kterém můžete vybrat soubor a nahrát ho.](common/browse-upload-metadata.png)
 
     c. Po úspěšném nahrání souboru metadat jsou potřebné adresy URL automaticky naplněny.
 

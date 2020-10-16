@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 56a68fca42bcab7642a5ebad953b59269a4d88a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180639"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107721"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -28,8 +28,8 @@ Nasazení Azure Functions se typicky skládá z těchto prostředků:
 
 | Prostředek                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
-| Aplikace Function App                                                                     | Vyžadováno    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
-| Účet [Azure Storage](../storage/index.yml)                                   | Vyžadováno    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Aplikace Function App                                                                     | Povinné    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
+| Účet [Azure Storage](../storage/index.yml)                                   | Povinné    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Volitelné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |
 | [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |
 
@@ -137,7 +137,7 @@ Prostředek Function App je definován pomocí prostředku typu **Microsoft. Web
 
 Aplikace Function App musí zahrnovat tato nastavení aplikace:
 
-| Název nastavení                 | Description                                                                               | Příklady hodnot                        |
+| Název nastavení                 | Popis                                                                               | Příklady hodnot                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Připojovací řetězec k účtu úložiště, který modul runtime služby Functions používá pro interní zařazení do fronty | Zobrazit [účet úložiště](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Verze modulu runtime Azure Functions                                                | `~2`                                  |
@@ -516,7 +516,7 @@ Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConf
 }
 ```
 
-Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](../app-service/containers/index.yml). Nastavte také `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na `false` , protože obsah vaší aplikace je k dispozici v kontejneru samotném:
+Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](../app-service/index.yml). Nastavte také `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na `false` , protože obsah vaší aplikace je k dispozici v kontejneru samotném:
 
 ```json
 {

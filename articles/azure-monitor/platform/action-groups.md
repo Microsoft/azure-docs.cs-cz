@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 534e78018d19ff496dc4d2b3b54a3d0b3c46cf0f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093748"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92104389"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -67,7 +67,7 @@ V části **Podrobnosti instance**:
 
     c. **Podrobnosti**: na základě vybraného typu oznámení zadejte e-mailovou adresu, telefonní číslo atd.
     
-    d. **Běžné schéma výstrah**: můžete si vybrat, že se má povolit [společné schéma výstrah](https://aka.ms/commonAlertSchemaDocs), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
+    d. **Běžné schéma výstrah**: můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
 
     ![Karta oznámení](./media/action-groups/action-group-2-notifications.png)
     
@@ -83,7 +83,7 @@ V části **Podrobnosti instance**:
 
     c. **Podrobnosti**: na základě typu akce zadejte identifikátor URI Webhooku, aplikaci Azure, připojení ITSM nebo Runbook Automation. Pro akci ITSM zadejte také **pracovní položku** a další pole, které nástroj ITSM vyžaduje.
     
-    d. **Běžné schéma výstrah**: můžete si vybrat, že se má povolit [společné schéma výstrah](https://aka.ms/commonAlertSchemaDocs), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
+    d. **Běžné schéma výstrah**: můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
     
     ![Karta akce](./media/action-groups/action-group-3-actions.png)
 
@@ -321,4 +321,3 @@ Použití **značky služby pro službu Action Service** pomáhá minimalizovat 
 * Přečtěte si další informace o [omezování četnosti](./alerts-rate-limiting.md) výstrah.
 * Získejte [Přehled výstrah protokolu aktivit](./alerts-overview.md)a Naučte se přijímat výstrahy.  
 * Naučte se [konfigurovat výstrahy pokaždé, když se publikuje oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md).
-

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715316"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102149"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -77,14 +77,14 @@ Další informace o shromažďování dat z hostovaného operačního systému v
 > Pokud jste nakonfigurovali metriky hosta k odeslání do Log Analytics pracovního prostoru, zobrazí se metriky pod prostředkem Log Analytics pracovního prostoru a začnou se **zobrazovat data až** po vytvoření pravidla výstrahy, které je monitoruje. Postupujte podle pokynů ke [konfiguraci upozornění na metriku pro protokoly](./alerts-metric-logs.md#configuring-metric-alert-for-logs).
 
 > [!NOTE] 
-> Monitorování metriky hosta pro více virtuálních počítačů s jedním pravidlem výstrahy není aktuálně podporováno v upozorněních metriky. Můžete to dosáhnout pomocí [pravidla upozornění protokolu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log). Chcete-li to provést, zajistěte, aby byly metriky hostů shromažďovány do Log Analyticsho pracovního prostoru, a vytvořte pravidlo upozornění protokolu v pracovním prostoru.
+> Monitorování metriky hosta pro více virtuálních počítačů s jedním pravidlem výstrahy není aktuálně podporováno v upozorněních metriky. Můžete to dosáhnout pomocí [pravidla upozornění protokolu](./alerts-unified-log.md). Chcete-li to provést, zajistěte, aby byly metriky hostů shromažďovány do Log Analyticsho pracovního prostoru, a vytvořte pravidlo upozornění protokolu v pracovním prostoru.
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Nejde najít metriku, na které se má upozornit.
 
-Pokud chcete upozornit na konkrétní metriku, ale nevidíte ji při vytváření pravidla výstrahy, zkontrolujte následující:
-- Pokud u prostředku nevidíte žádné metriky, [Zkontrolujte, jestli je typ prostředku podporovaný pro výstrahy metriky](./alerts-metric-near-real-time.md).
-- Pokud vidíte některé metriky pro daný prostředek, ale nejdou najít konkrétní metriky, zkontrolujte, jestli [je tato metrika k dispozici](./metrics-supported.md), a pokud ano, podívejte se na popis metriky a zkontrolujte, jestli je k dispozici jenom pro konkrétní verze nebo edice prostředku.
-- Pokud metrika není pro prostředek k dispozici, může být k dispozici v protokolech prostředků a lze ji monitorovat pomocí výstrah protokolu. Další informace o tom, jak [shromažďovat a analyzovat protokoly prostředků z prostředku Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs), najdete tady.
+Pokud chcete nastavit upozorňování na konkrétní metriku, ale při vytváření pravidla upozornění se tato metrika nezobrazí, zkontrolujte následující:
+- Pokud pro prostředek nemůžete najít žádné metriky, [zkontrolujte, že je daný typ prostředku pro upozornění na metriky podporovaný](./alerts-metric-near-real-time.md).
+- Pokud se některé metriky prostředku zobrazují, ale nemůžete najít konkrétní metriku, [zkontrolujte, jestli je daná metrika dostupná](./metrics-supported.md). Pokud ano, v popisu metriky zkontrolujte, jestli není dostupná pouze v konkrétních verzích nebo edicích prostředku.
+- Pokud metrika pro prostředek není dostupná, může být k dispozici v protokolech prostředků a umožňovat monitorování pomocí upozornění protokolu. Tady najdete další informace o [shromažďování a analýze protokolů prostředků Azure](../learn/tutorial-resource-logs.md).
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nejde najít dimenzi metriky, na které se má upozornit.
 

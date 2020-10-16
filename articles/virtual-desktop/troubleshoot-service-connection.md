@@ -3,15 +3,15 @@ title: Poradce při potížích s virtuálním počítačem s Windows s připoje
 description: Jak řešit problémy při nastavování připojení služby v prostředí tenanta virtuálních počítačů s Windows
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5eb5602b8330906311df4a0d1f59bc5e5130237e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089900"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108945"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Připojení ke službě virtuální plochy Windows
 
@@ -45,6 +45,13 @@ Uživatel může spustit klienty vzdálené plochy a je schopen ho ověřit, ale
 Tato chyba se obvykle zobrazuje poté, co uživatel přesunul své předplatné z jednoho tenanta Azure AD do jiného. V důsledku toho služba ztratí přehled o přiřazeních uživatelů, protože jsou stále vázány na starý tenant služby Azure AD.
 
 Chcete-li tento problém vyřešit, stačí, když uživatele přiřadíte ke skupinám aplikací.
+
+K tomu může dojít také v případě, že poskytovatel CSP vytvořil předplatné a pak ho přenesl na zákazníka. Pro vyřešení tohoto nového registru poskytovatele prostředků.
+
+1. Přihlaste se k portálu Azure.
+2. Klikněte na **předplatné**a pak vyberte své předplatné.
+3. V nabídce na levé straně stránky vyberte **poskytovatel prostředků**.
+4. Vyhledejte a vyberte **Microsoft. DesktopVirtualization**a pak vyberte **znovu registrovat**.
 
 ## <a name="next-steps"></a>Další kroky
 

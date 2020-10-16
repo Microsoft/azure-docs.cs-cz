@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627719"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108129"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Kurz: transformace a ochrana rozhraní API
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 :::image type="content" source="media/transform-api/api-management-management-console.png" alt-text="Zásady na portálu":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 -   Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 -   Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
@@ -60,7 +60,7 @@ Původní odpověď by měla vypadat nějak takto:
 
 :::image type="content" source="media/transform-api/original-response.png" alt-text="Zásady na portálu":::
 
-Jak vidíte, odpověď obsahuje hlavičky **x-ASPNET-Version**a **x-Power-by** .
+Jak vidíte, odpověď obsahuje hlavičky **x-ASPNET-Version** a **x-Power-by** .
 
 ### <a name="set-the-transformation-policy"></a>Nastavení zásady transformací
 
@@ -70,7 +70,7 @@ Jak vidíte, odpověď obsahuje hlavičky **x-ASPNET-Version**a **x-Power-by** .
    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Zásady na portálu" border="false":::
 
 1. Umístěte kurzor do elementu ** &lt; Outbound &gt; ** a v pravém horním rohu vyberte **Zobrazit fragmenty** .
-1. V pravém okně v části **zásady transformace**vyberte možnost * * nastavit hlavičku HTTP * * dvakrát (pro vložení dvou fragmentů zásad).
+1. V pravém okně v části **zásady transformace**vyberte možnost **nastavit hlavičku HTTP** dvakrát (pro vložení dvou fragmentů zásad).
 
    :::image type="content" source="media/transform-api/transform-api.png" alt-text="Zásady na portálu":::
 
@@ -115,7 +115,7 @@ Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigur
 
 1.  Vyberte **ukázková konferenční rozhraní API**  >  **všechny operace**  >  **Návrh**.
 1.  V části **příchozí zpracování** vyberte ikonu Editor kódu ( **</>** ).
-1.  Umístěte kurzor do prvku ** &lt; příchozí &gt; ** .
+1.  Umístěte kurzor dovnitř elementu ** &lt; vstupu &gt; ** a vyberte **Zobrazit fragmenty kódu** v pravém horním rohu.
 
     :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Zásady na portálu" border="false":::
 

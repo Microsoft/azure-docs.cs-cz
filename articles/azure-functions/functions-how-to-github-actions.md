@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 3f35a8130c834112961f4542883704c2b8dbd08f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 2809fce890e1a7bcc47163c8a5d4c0210d6aa9d4
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999250"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106123"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -44,7 +44,7 @@ Chcete-li stáhnout profil publikování aplikace Function App:
 
 ## <a name="create-a-service-principal-deprecated"></a>Vytvoření instančního objektu (zastaralé)
 =======
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
@@ -912,4 +912,4 @@ jobs:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o integraci Azure a GitHubu](https://docs.microsoft.com/azure/developer/github/)
+> [Další informace o integraci Azure a GitHubu](/azure/developer/github/)

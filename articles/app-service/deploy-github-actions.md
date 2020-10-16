@@ -7,18 +7,18 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 4bb40cc1f5d1ae2563ddd802cd8b7de11427503b
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bdc236c3ba4c70ba44e61457e2bade7df65f3153
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893216"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108044"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
 Začněte s [akcemi GitHubu](https://help.github.com/en/articles/about-github-actions) a Automatizujte pracovní postup a nasaďte ho do [Azure App Service](overview.md) z GitHubu. 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
@@ -30,8 +30,6 @@ Začněte s [akcemi GitHubu](https://help.github.com/en/articles/about-github-ac
     - Python: [Vytvoření aplikace v Pythonu v Azure App Service](quickstart-python.md)
 
 ## <a name="workflow-file-overview"></a>Přehled souboru pracovního postupu
-
-Soubory pracovního postupu Azure App Service mají tři části:
 
 Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
 

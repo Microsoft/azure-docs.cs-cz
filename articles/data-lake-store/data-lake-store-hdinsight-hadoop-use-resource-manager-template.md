@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 2a0471055e4648944aa07d10fef67f5e7235a76b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7283ad4c4c61ecc293a55ffc4cb9626bb28d630
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856919"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108724"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 pomocí šablony Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Tady jsou některé důležité informace pro používání služby HDInsight s 
 
 V tomto článku zřídíme cluster Hadoop s Data Lake Storage Gen1 jako další úložiště. Pokyny k vytvoření clusteru Hadoop s Data Lake Storage Gen1 jako výchozího úložiště najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -84,7 +84,7 @@ Po nakonfigurování clusteru HDInsight můžete spustit testovací úlohy v clu
 
 V této části provedete SSH do clusteru HDInsight Linux a spustíte ukázkový dotaz na podregistr. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) .
 
-Další informace o používání výstupu najdete v tématu [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+Další informace o používání výstupu najdete v tématu [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 1. Po připojení spusťte pomocí následujícího příkazu podregistr CLI:
 
@@ -120,7 +120,7 @@ Jakmile nakonfigurujete cluster HDInsight pro použití Data Lake Storage Gen1, 
 
 V této části provedete SSH do clusteru HDInsight Linux a spustíte příkazy HDFS. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) .
 
-Další informace o používání výstupu najdete v tématu [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+Další informace o používání výstupu najdete v tématu [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Po připojení použijte následující příkaz HDFS systému souborů k vypsání souborů v účtu úložiště pomocí Data Lake Storage Gen1.
 

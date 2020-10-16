@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578508"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106616"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Zaregistrujte data z Azure Data Lake Storage Gen1 Azure Data Catalog
-V tomto článku se naučíte, jak integrovat Azure Data Lake Storage Gen1 s Azure Data Catalog k tomu, aby byla data zjistitelná v rámci organizace tím, že je integruje s Data Catalog. Další informace o katalogu dat najdete v tématu [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Pro pochopení scénářů, ve kterých můžete použít Data Catalog, přečtěte si téma [Azure Data Catalog běžných scénářů](../data-catalog/data-catalog-common-scenarios.md).
+V tomto článku se naučíte, jak integrovat Azure Data Lake Storage Gen1 s Azure Data Catalog k tomu, aby byla data zjistitelná v rámci organizace tím, že je integruje s Data Catalog. Další informace o katalogu dat najdete v tématu [Azure Data Catalog](../data-catalog/overview.md). Pro pochopení scénářů, ve kterých můžete použít Data Catalog, přečtěte si téma [Azure Data Catalog běžných scénářů](../data-catalog/data-catalog-common-scenarios.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).

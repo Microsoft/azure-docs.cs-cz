@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bdbb68e8d8748bc8851720588f8748d788e0cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8539f3f2a5882f12f131c95b0c17efd3acba3cf
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542577"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105171"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Kurz: integrace RingCentral s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat RingCentral s Azure Active Directory (
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -151,19 +151,19 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V horní části klikněte na **nástroje**.
 
-    ![image](./media/ringcentral-tutorial/ringcentral1.png)
+    ![Snímek obrazovky ukazuje nástroje vybrané z webu společnosti RingCentral.](./media/ringcentral-tutorial/ringcentral1.png)
 
 1. Přejděte do **jednotného přihlašování**.
 
-    ![image](./media/ringcentral-tutorial/ringcentral2.png)
+    ![Snímek obrazovky zobrazuje jednu Sign-On vybranou v nabídce nástroje.](./media/ringcentral-tutorial/ringcentral2.png)
 
 1. Na stránce **jednotného přihlašování** v části **Konfigurace jednotného přihlašování** klikněte v **kroku 1** na **Upravit** a proveďte následující kroky:
 
-    ![image](./media/ringcentral-tutorial/ringcentral3.png)
+    ![Snímek obrazovky se zobrazí na stránce konfigurace S S/O, kde můžete vybrat upravit.](./media/ringcentral-tutorial/ringcentral3.png)
 
 1. Na stránce **nastavit jednotné přihlašování** proveďte následující kroky:
 
-    ![image](./media/ringcentral-tutorial/ringcentral4.png)
+    ![Snímek obrazovky se stránkou nastavit jednu Sign-On, kde můžete nahrávat I D P metadat.](./media/ringcentral-tutorial/ringcentral4.png)
 
     a. Klikněte na tlačítko **Procházet** a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
@@ -175,11 +175,11 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     e. V **kroku 2** klikněte na **Stáhnout** a stáhněte **si soubor metadat poskytovatele služby** a nahrajte ho do **základního konfiguračního oddílu SAML** , aby se automaticky vyplnily hodnoty **identifikátoru** **URL pro odpovědi** v Azure Portal.
 
-    ![image](./media/ringcentral-tutorial/ringcentral6.png) 
+    ![Snímek obrazovky se zobrazí na stránce konfigurace S S/O, kde můžete vybrat stáhnout.](./media/ringcentral-tutorial/ringcentral6.png) 
 
     f. Na stejné stránce přejděte k části **povolení jednotného přihlašování** a proveďte následující kroky:
 
-    ![image](./media/ringcentral-tutorial/ringcentral5.png)
+    ![Snímek obrazovky se zobrazí v části povolení S/O, kde můžete konfiguraci dokončit.](./media/ringcentral-tutorial/ringcentral5.png)
 
     * Vyberte možnost **Povolit službu jednotného přihlašování**.
 
