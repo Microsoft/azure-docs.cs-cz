@@ -92,6 +92,10 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: Nasazení VMware Horizonu
           href: azure-vmware-solution-horizon.md
+    - name: Ekosystém VMware
+      items:
+        - name: Řešení zálohování pro virtuální počítače
+          href: ecosystem-back-up-vms.md
 - name: Zdroje a prostředky
   items:
     - name: Řešení potíží

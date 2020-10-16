@@ -168,6 +168,7 @@
         - name: Příprava úlohy a dokončovací úkoly
           href: batch-job-prep-release.md
         - name: Souběžné úlohy uzlu
+          displayName: concurrent
           href: batch-parallel-node-tasks.md
         - name: Závislosti úkolů
           href: batch-task-dependencies.md

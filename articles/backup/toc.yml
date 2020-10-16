@@ -386,7 +386,7 @@
       items:
         - name: Přehled
           href: security-overview.md
-        - name: Řízení přístupu na základě rolí
+        - name: Řízení přístupu na základě role v Azure
           href: backup-rbac-rs-vault.md
         - name: Obnovitelné odstranění
           items:
