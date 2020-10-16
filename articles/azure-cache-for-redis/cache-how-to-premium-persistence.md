@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: fbfd384787d35317a4e45c4f91cf8a3ad4ba5a61
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3e8cef04e0711492b6e76d4c865695ac75e21422
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000010"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125675"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Trvalost dat pro mezipaměť Azure Premium pro Redis
 V tomto článku se dozvíte, jak nakonfigurovat trvalost v mezipaměti Azure Premium pro instanci Redis prostřednictvím Azure Portal. Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. 
@@ -63,7 +63,7 @@ Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravu
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Četnost zálohování** | Rozevírací seznam a výběr intervalu zálohování, volby zahrnují **15 minut**, **30 minut**, **60 minut**, **6 hodin**, **12 hodin**a **24 hodin**. | Tento interval začíná počítat po úspěšném dokončení předchozí operace zálohování a při každém zahájení zálohování. | 
-   | **Účet úložiště** | Rozevírací seznam a vyberte svůj účet úložiště. | Musíte zvolit účet úložiště ve stejné oblasti, ve které je mezipaměť, a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost.  | 
+   | **Účet úložiště** | Rozevírací seznam a vyberte svůj účet úložiště. | Musíte zvolit účet úložiště ve stejné oblasti a předplatném jako mezipaměť a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost.  | 
    | **Klíč úložiště** | Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** . | 
 
     První zálohování se iniciuje po uplynutí intervalu četnosti zálohování.
@@ -72,9 +72,9 @@ Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravu
    
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **První účet úložiště** | Rozevírací seznam a vyberte svůj účet úložiště. | Tento účet úložiště musí být ve stejné oblasti jako mezipaměť a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost. | 
+   | **První účet úložiště** | Rozevírací seznam a vyberte svůj účet úložiště. | Tento účet úložiště musí být ve stejné oblasti a předplatném jako mezipaměť a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost. | 
    | **Klíč prvního úložiště** | Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** . | 
-   | **Druhý účet úložiště** | Volitelné Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Volitelně můžete nakonfigurovat další účet úložiště. Pokud je nakonfigurovaný druhý účet úložiště, zapisují se zápisy do mezipaměti repliky do tohoto druhého účtu úložiště. | 
+   | **Druhý účet úložiště** | Volitelné Rozevírací seznam a vyberte svůj sekundární účet úložiště. | Volitelně můžete nakonfigurovat další účet úložiště. Pokud je nakonfigurovaný druhý účet úložiště, zapisují se zápisy do mezipaměti repliky do tohoto druhého účtu úložiště. | 
    | **Druhý klíč úložiště** | Volitelné Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** . | 
 
     Když je povolená trvalost AOF, operace zápisu do mezipaměti se uloží do určeného účtu úložiště (nebo účtů, pokud jste nakonfigurovali druhý účet úložiště). V případě závažného selhání, které vychází z primární i mezipaměti repliky, se k opětovnému sestavení mezipaměti použije uložený protokol AOF.

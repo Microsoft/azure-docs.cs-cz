@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 10/05/2020
-ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be40cd4a0bef43d81c792fd10508014f5b886fba
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728654"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124182"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -50,7 +50,7 @@ Pro SQL Database lze redundanci úložiště zálohování nakonfigurovat v dob�
 > Redundantní úložiště v zóně je aktuálně dostupné jenom v [určitých oblastech](../../storage/common/storage-redundancy.md#zone-redundant-storage). 
 
 > [!NOTE]
-> Konfigurovatelná redundance úložiště zálohování pro Azure SQL Database je v současnosti dostupná jenom ve verzi Public Preview v oblasti Azure jihovýchodní Asie. Tato funkce ještě není k dispozici pro úroveň škálování. 
+> Konfigurovatelná redundance záložního úložiště pro Azure SQL Database je v současnosti všeobecně dostupná jenom v oblasti Azure jihovýchodní Asie. Tato funkce ještě není k dispozici pro úroveň škálování. 
 
 ### <a name="backup-usage"></a>Využití zálohy
 

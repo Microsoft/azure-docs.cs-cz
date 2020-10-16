@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28232981d007e7be04d520ec46739408d03d90b4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739863"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124009"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Kurz: použití Data Box k importu dat jako spravovaných disků v Azure
 
@@ -38,7 +38,7 @@ Než začnete, ujistěte se, že:
 4. Zkontrolovali jste:
 
     - Podporované [velikosti spravovaných disků v omezeních velikosti objektů Azure](data-box-limits.md#azure-object-size-limits).
-    - [Seznámení se službou Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview). 
+    - [Seznámení se službou Azure Managed disks](../virtual-machines/managed-disks-overview.md). 
 
 5. Kopii zdrojových dat jste zachovali, dokud nepotvrdíte, že Data Box přenesli vaše data do Azure Storage.
 
@@ -183,4 +183,3 @@ V dalším kurzu se dozvíte, jak Data Box odeslat zpět do Microsoftu.
 
 > [!div class="nextstepaction"]
 > [Odeslání Azure Data Boxu do Microsoftu](./data-box-deploy-picked-up.md)
-

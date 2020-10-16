@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080994"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123333"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Vizualizace a analýza dat IoT Central Azure v řídicím panelu Power BI
 
@@ -27,11 +27,11 @@ Použijte řešení Power BI pro Azure IoT Central V3 k vytvoření výkonného 
 - Filtrování dolů na data odesílaná konkrétními zařízeními
 - Zobrazit nejnovější data telemetrie v tabulce
 
-Toto řešení nastaví kanál, který čte data z účtu služby Azure Blob Storage pro [průběžnou datovou export](howto-export-data-blob-storage.md) . Kanál používá ke zpracování a transformaci dat Azure Functions, Azure Data Factory a Azure SQL Database. data můžete vizualizovat a analyzovat v Power BI sestavě, kterou stáhnete jako soubor PBIX. Všechny prostředky se vytvoří ve vašem předplatném Azure, takže můžete jednotlivé komponenty přizpůsobit tak, aby vyhovovaly vašim potřebám.
+Toto řešení nastaví kanál, který čte data z účtu služby Azure Blob Storage pro [průběžnou datovou export](./howto-export-data.md) . Kanál používá ke zpracování a transformaci dat Azure Functions, Azure Data Factory a Azure SQL Database. data můžete vizualizovat a analyzovat v Power BI sestavě, kterou stáhnete jako soubor PBIX. Všechny prostředky se vytvoří ve vašem předplatném Azure, takže můžete jednotlivé komponenty přizpůsobit tak, aby vyhovovaly vašim potřebám.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Nastavení řešení vyžaduje následující zdroje:
 
@@ -43,7 +43,7 @@ Nastavení řešení vyžaduje následující zdroje:
 - Power BI Pro (Pokud chcete řídicí panel sdílet s ostatními).
 
 > [!NOTE]
-> Pokud používáte aplikaci IoT Central verze 2, přečtěte si téma [vizualizace a analýza dat Azure IoT Central na řídicím panelu Power BI](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-connect-powerbi) na webu dokumentace k předchozím verzím.
+> Pokud používáte aplikaci IoT Central verze 2, přečtěte si téma [vizualizace a analýza dat Azure IoT Central na řídicím panelu Power BI](/previous-versions/azure/iot-central/core/howto-connect-powerbi) na webu dokumentace k předchozím verzím.
 
 ## <a name="install"></a>Instalace
 

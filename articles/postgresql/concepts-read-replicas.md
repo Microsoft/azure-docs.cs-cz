@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/10/2020
-ms.openlocfilehash: 124034fc6c999c37c6e79547b062508c957d1bac
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.date: 10/15/2020
+ms.openlocfilehash: 3b660875288db1f16f13d58b1538a876e2ff2666
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939830"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123286"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -43,7 +43,7 @@ Primární server můžete mít v libovolné [Azure Database for PostgreSQL obla
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
 Repliku pro čtení můžete vždy vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází primární server. Jedná se o oblasti univerzální repliky:
 
-Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2, Středozápadní USA.
+Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Jižní Korea, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, Západní USA, západní USA 2 a Středozápadní USA.
 
 ### <a name="paired-regions"></a>Spárované oblasti
 Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení ve spárované oblasti Azure vašeho primárního serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](../best-practices-availability-paired-regions.md).
@@ -145,11 +145,11 @@ Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili p
 
 Když dojde k závažné události havárie, jako je třeba zóna dostupnosti nebo regionální selhání, můžete provést operaci zotavení po havárii tím, že povýšíte svoji repliku pro čtení. Z portálu uživatelského rozhraní můžete přejít na server repliky pro čtení. Pak klikněte na kartu replikace a můžete ji zastavit, aby byla povýšení replikována na nezávislý server. Alternativně můžete pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) zastavit a zvýšit úroveň serveru repliky.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 V této části najdete přehled informací o funkci Replika čtení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Repliky čtení a [logické dekódování](concepts-logical.md) závisí na protokolu Postgres Write předem log (WAL). Tyto dvě funkce vyžadují různé úrovně protokolování z Postgres. Logické dekódování potřebuje vyšší úroveň protokolování než repliky čtení.
 
 Ke konfiguraci správné úrovně protokolování použijte parametr podpory replikace Azure. Podpora replikace Azure má tři možnosti nastavení:

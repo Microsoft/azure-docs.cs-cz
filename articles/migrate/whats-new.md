@@ -4,12 +4,12 @@ description: Seznamte se s novinkami a nejnovějšími aktualizacemi ve službě
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 0552402661397a2a8aa09f989189cc08b46e638e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a36e73496b07df18c61b07df9d90992c0ab399ce
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667074"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124651"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
@@ -17,7 +17,7 @@ ms.locfileid: "91667074"
 
 ## <a name="update-september-2020"></a>Aktualizace (září 2020)
 - Migrace serverů do Zóny dostupnosti se teď podporuje.
-- Migrace virtuálních počítačů a fyzických serverů založených na rozhraní UEFI do virtuálních počítačů Azure generace 2 je teď podporovaná.
+- Migrace virtuálních počítačů založených na rozhraní UEFI a fyzických serverů do virtuálních počítačů Azure generace 2 se teď podporuje. V této verzi Azure Migrate: Nástroj pro migraci serveru neprovede převod z virtuálního počítače 1. generace na virtuální počítač 1. generace během migrace.
 - K dispozici je nový řídicí panel posouzení Power BI Azure Migrate, který vám umožní porovnat náklady napříč různými nastaveními posouzení. Řídicí panel obsahuje nástroj PowerShell, který automaticky vytvoří posouzení, která se připojí k řídicímu panelu Power BI. [Další informace](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
 - Analýza závislostí (bez agenta) se teď dá na virtuálních počítačích 1000 současně spustit současně.
 - Analýza závislostí (bez agentů) se teď dá ve velkém měřítku povolit nebo zakázat pomocí skriptů PowerShellu. [Další informace](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)

@@ -7,21 +7,20 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940765"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125437"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Důvěrné výpočetní uzly ve službě Azure Kubernetes (Public Preview)
 
-[Důvěrné výpočetní prostředí Azure](overview.md) umožňuje chránit citlivá data, když se používají. Základní infrastruktura chrání tato data proti ostatním aplikacím, správcům a poskytovatelům cloudu. 
+[Důvěrné výpočetní prostředí Azure](overview.md) umožňuje chránit citlivá data, když se používají. Základní infrastruktura chrání tato data od ostatních aplikací, správců a poskytovatelů cloudu pomocí zálohovaných kontejnerů důvěryhodných spuštění s využitím hardwaru.
 
 ## <a name="overview"></a>Přehled
 
-Služba Azure Kubernetes Service (AKS) podporuje přidávání [DCsv2 důvěrných výpočetních uzlů](confidential-computing-enclaves.md) do technologie Intel SGX. Tyto uzly spouštějí citlivé úlohy v rámci důvěryhodného spuštění prostředí (TEE) založeného na hardwaru a umožňují tak přidělovat privátní oblasti paměti v případě kódu na úrovni uživatele. Tyto oblasti soukromé paměti se nazývají enclaves. Enclaves jsou určeny k ochraně kódu a dat z procesů spuštěných s vyšším oprávněním. Model spuštění SGX odebere mezilehlé vrstvy hostovaného operačního systému a hypervisoru. Díky tomu můžete spouštět aplikace typu kontejner přímo na CPU a přitom zachovat speciální blok paměti, který je zašifrovaný. 
-
+Služba Azure Kubernetes Service (AKS) podporuje přidávání [DCsv2 důvěrných výpočetních uzlů](confidential-computing-enclaves.md) využívajících technologii Intel SGX. Tyto uzly můžou spouštět citlivé úlohy v rámci důvěryhodného spuštění prostředí (TEE) založeného na hardwaru, protože umožňují přidělovat privátní oblasti paměti pomocí kódu na úrovni uživatele. Tyto oblasti soukromé paměti se nazývají enclaves. Enclaves jsou určeny k ochraně kódu a dat z procesů spuštěných s vyšším oprávněním. Model spuštění SGX odebere mezilehlé vrstvy hostovaného operačního systému, hostitelského operačního systému a hypervisoru. *Hardware založený na modelu spouštění izolovaného kontejneru* umožňuje aplikacím přímé spouštění s využitím procesoru, přičemž se přitom udržuje speciální blok paměti zašifrovaný. Důvěrné výpočetní uzly vám pomůžou s celkovým zabezpečením stav aplikací kontejnerů na AKS a s velkou doplněním strategie pro důkladnou hloubkovou strategii kontejnerů. 
 
 ![Přehled uzlu SGX](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -36,7 +35,7 @@ Služba Azure Kubernetes Service (AKS) podporuje přidávání [DCsv2 důvěrný
 - Pomocník pro ověření identity mimo proc prostřednictvím AKS daemonset
 - Podpora kontejnerů pro Linux prostřednictvím pracovních uzlů virtuálních počítačů Ubuntu 18,04 Gen 2
 
-## <a name="aks-provided-daemon-sets"></a>AKS – poskytnuté sady démonů
+## <a name="aks-provided-daemon-sets-addon"></a>AKS zadané sady démonů (doplněk)
 
 #### <a name="sgx-device-plugin"></a>Modul plug-in zařízení SGX <a id="sgx-plugin"></a>
 

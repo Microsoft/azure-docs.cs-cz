@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873468"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124890"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>Kurz: úpravy a sestavení modulů pro bránu pro video Analytics v reálném čase
 
@@ -21,15 +21,15 @@ V tomto kurzu se dozvíte, jak upravit kód modulu IoT Edge pro moduly LVA (Live
 
 V předchozích kurzech se používají předem připravené image modulů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto kurzu budete potřebovat:
 
 * [Node.js](https://nodejs.org/en/download/) v10 za účelem nebo novější
 * [Visual Studio Code](https://code.visualstudio.com/Download) s nainstalovaným rozšířením [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
 * Modul [Docker](https://www.docker.com/products/docker-desktop)
-* [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) hostovat vaše verze modulů.
-* Účet [Azure Media Services](https://docs.microsoft.com/azure/media-services/) . Pokud jste dokončili předchozí kurzy, můžete znovu použít ten, který jste vytvořili dříve.
+* [Azure Container Registry](../../container-registry/index.yml) hostovat vaše verze modulů.
+* Účet [Azure Media Services](../../media-services/index.yml) . Pokud jste dokončili předchozí kurzy, můžete znovu použít ten, který jste vytvořili dříve.
 
 ## <a name="clone-the-repository"></a>Klonování úložiště
 

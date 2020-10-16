@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80934dca73d7f8a205c62a49c418828cab1820e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408810"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123728"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Monitorování připojení k síti pomocí monitorování připojení (Preview)
 
@@ -143,9 +143,7 @@ Monitory připojení mají následující meze škálování:
 * Maximální počet monitorování připojení na předplatné na oblast: 100
 * Maximální počet testovacích skupin na monitorování připojení: 20
 * Maximální počet zdrojů a cílů na monitorování připojení: 100
-* Maximální počet konfigurací testu na monitorování připojení: 
-    * 20 přes ARMClient
-    * 2 přes Azure Portal
+* Maximální počet konfigurací testu na monitorování připojení: 20
 
 ## <a name="analyze-monitoring-data-and-set-alerts"></a>Analýza dat monitorování a nastavení výstrah
 
@@ -273,7 +271,7 @@ Ve sledováních připojení, které byly vytvořeny před zobrazením připojen
 
 Když použijete metriky, nastavte typ prostředku jako Microsoft. Network/networkWatchers/connectionMonitors.
 
-| Metrika | Zobrazované jméno | Jednotka | Typ agregace | Description | Dimenze |
+| Metrika | Zobrazované jméno | Jednotka | Typ agregace | Popis | Dimenze |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % PROBE selhalo | Procento | Průměr | Procento sond monitorování připojení selhalo. | Žádné dimenze |
 | AverageRoundtripMs | Průměrná doba odezvy (MS) | Milisekund | Průměr | Průměrná doba odezvy sítě pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |

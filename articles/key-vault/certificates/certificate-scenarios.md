@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86224855"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124217"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
@@ -37,7 +37,7 @@ Certifikáty se skládají ze tří vzájemně propojených prostředků společ
 
 **Krok 1** – poskytovatelé certifikační autority (CA)  
 -   Připojování jako správce IT, správce PKI nebo kdokoli, kdo spravuje účty s CAs pro danou společnost (např. Contoso) je předpokladem pro použití Key Vaultch certifikátů.  
-    Následující CA jsou aktuální partneři partnerských služeb s Key Vault:  
+    Následující CA jsou současnými partnerskými poskytovateli s Key Vault. Další informace najdete [tady](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers).   
     -   DigiCert-Key Vault nabízí OV certifikáty TLS/SSL s DigiCert.  
     -   GlobalSign-Key Vault nabízí OV certifikáty TLS/SSL s GlobalSign.  
 

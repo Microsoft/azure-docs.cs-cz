@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471852"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123523"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Nejčastější dotazy týkající se Azure Network Watcher
 Služba [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) poskytuje sadu nástrojů pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network. Tento článek obsahuje odpovědi na běžné dotazy týkající se služby.
@@ -30,7 +30,7 @@ Network Watcher je navržený tak, aby sledoval a opravil stav sítě pro souč�
 
 ### <a name="what-tools-does-network-watcher-provide"></a>Jaké nástroje Network Watcher poskytují?
 Network Watcher poskytuje tři hlavní sady funkcí
-* Sledování
+* Monitorování
   * [Zobrazení topologie](https://docs.microsoft.com/azure/network-watcher/view-network-topology) zobrazuje prostředky ve virtuální síti a vztahy mezi nimi.
   * [Monitor připojení](https://docs.microsoft.com/azure/network-watcher/connection-monitor) umožňuje monitorovat připojení a latenci mezi virtuálním počítačem a jiným síťovým prostředkem.
   * [Nástroj Sledování výkonu sítě](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor) umožňuje monitorovat připojení a latence napříč hybridními síťovými architekturami, okruhy ExpressRoute a koncovými body služby nebo aplikace.  
@@ -80,6 +80,14 @@ Network Watcher pro předplatné, který funguje, je třeba povolit jenom jednou
 
 ### <a name="how-can-i-manage-the-network-watcher-resource"></a>Jak můžu spravovat prostředek Network Watcher? 
 Prostředek Network Watcher představuje back-end službu pro Network Watcher a plně spravuje Azure. Zákazníci je nepotřebují spravovat. Operace, jako je přesun, nejsou u prostředku podporovány. Prostředek je ale [možné odstranit](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
+
+## <a name="service-availability-and-redundancy"></a>Dostupnost služby a redundance 
+
+### <a name="is-the-network-watcher-service-zone-resilient"></a>Je zóna služby Network Watcher odolná proti chybám? 
+Yes. Služba Network Watcher je ve výchozím nastavení odolná proti zónám. 
+
+### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu Network Watcher, aby byla odolná proti zóně? 
+Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. V zóně – odolnost pro Network Watcher prostředky je ve výchozím nastavení dostupná a spravovaná samotnými službami. 
 
 ## <a name="nsg-flow-logs"></a>Protokoly toku NSG
 

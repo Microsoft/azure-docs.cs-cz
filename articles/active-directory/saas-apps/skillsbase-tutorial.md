@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e93827278fb501bc6d857d3cb39f9e0ba24d5d0a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552233"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125077"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Kurz: Azure Active Directory integrace se základem dovedností
 
@@ -30,7 +30,7 @@ Integrace dovedností v rámci Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se základem dovedností potřebujete následující položky:
 
@@ -134,11 +134,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD se základem dov
 
 3. Na stránce **ověřování** vyberte jednu Sign-On jako **SAML 2**.
 
-    ![Jedna](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
+    ![Snímek obrazovky se zobrazí stránka ověřování s protokolem SAML 2, kterou jste vybrali pro přihlášení k webu.](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
 4. Na stránce **ověřování** proveďte následující kroky:
 
-    ![Jedna](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
+    ![Snímek obrazovky se zobrazí stránka ověřování, kde můžete zadat hodnoty, které jsou popsány.](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
     a. Klikněte na tlačítko **aktualizovat metadata IDP** vedle možnosti **stav** a vložte obsah XML metadat, který jste stáhli z Azure Portal v zadaném textovém poli.
 

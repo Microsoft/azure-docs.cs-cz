@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc5bfb7c9cadea7aaa9cdedb2a17943014c6ef59
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445064"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124754"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ Ve výchozím nastavení je redundance záložního úložiště sekundárního 
 > Frekvence transakčního protokolu na primárním počítači může být omezena z důvodů, které nesouvisí s nižší výpočetní velikostí na sekundárním. Tento druh omezování může nastat i v případě, že sekundární má stejnou nebo vyšší výpočetní velikost než primární. Podrobnosti, včetně typů čekání pro různé druhy omezení přenosové rychlosti, najdete v tématu zásady [správného řízení sazeb transakčních protokolů](resource-limits-logical-server.md#transaction-log-rate-governance).
 
 > [!NOTE]
-> Služba Azure SQL Database konfigurovatelný záložní úložiště je v současnosti dostupná jenom ve verzi Public Preview v oblasti Azure jihovýchodní Asie. Pokud je ve verzi Preview vytvořená místně redundantní nebo redundantní záložní záloha v rámci zóny, vytváření sekundární databáze v jiné oblasti Azure se nepodporuje. 
+> Služba Azure SQL Database konfigurovatelný záložní úložiště je v současné době všeobecně dostupná jenom v oblasti Azure jihovýchodní Asie. Když je zdrojová databáze vytvořená pomocí místně redundantní nebo redundance záložního úložiště s redundantní zónou, vytváření sekundární databáze v jiné oblasti Azure se nepodporuje. 
 
 Další informace o SQL Database velikosti výpočetních prostředků najdete v tématu [co jsou SQL Database úrovně služeb](purchasing-models.md).
 

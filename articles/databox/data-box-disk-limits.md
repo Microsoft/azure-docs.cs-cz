@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203523"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124165"
 ---
 # <a name="azure-data-box-disk-limits"></a>Omezení Azure Data Box Disk
 
@@ -35,9 +35,9 @@ Tato část popisuje omezení pro službu Azure Storage Service a požadované z
 
 Nejnovější informace o omezeních služby Azure Storage a osvědčených postupech pro pojmenování sdílených složek, kontejnerů a souborů najdete tady:
 
-- [Pojmenování kontejnerů a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Pojmenování sdílených složek a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Zásady objektů blob bloku a objektů blob stránky](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Pojmenování kontejnerů a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Pojmenování sdílených složek a odkazování na ně](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Zásady objektů blob bloku a objektů blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
 > Pokud existují nějaké soubory nebo adresáře, které překračují omezení služby Azure Storage, nebo nevyhovuje zásadám vytváření názvů souborů Azure nebo objektů blob, pak se tyto soubory nebo adresáře ingestují do Azure Storage prostřednictvím služby data box.
@@ -64,7 +64,7 @@ Tady jsou omezení velikosti dat, která se dají zkopírovat do účtu úloži�
 
 | Typ dat             | Výchozí omezení          |
 |--------------------------|------------------------|
-| objekt blob bloku, objekt blob stránky    | Aktuální informace o těchto omezeních najdete v tématu [cíle škálování služby Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage), [cíle škálování Azure úrovně Standard](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)a [cíl škálování souborů Azure](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets). <br /><br /> Omezení zahrnují data ze všech zdrojů, včetně Data Box Disk.|
+| objekt blob bloku, objekt blob stránky    | Aktuální informace o těchto omezeních najdete v tématu [cíle škálování služby Azure Blob Storage](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage), [cíle škálování Azure úrovně Standard](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)a [cíl škálování souborů Azure](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets). <br /><br /> Omezení zahrnují data ze všech zdrojů, včetně Data Box Disk.|
 
 
 ## <a name="azure-object-size-limits"></a>Omezení velikosti objektů Azure

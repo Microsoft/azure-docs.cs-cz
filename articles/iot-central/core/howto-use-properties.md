@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a750a98c27fd62288993b2203acc2032ccf39d71
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 1cc4f40374fce83589d2dc10a0422b91f5178c0b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999754"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123779"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Použití vlastností v řešení Azure IoT Central
 
@@ -32,10 +32,10 @@ Následující snímek obrazovky ukazuje definici vlastnosti v aplikaci Azure Io
 
 Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti.
 
-| Pole           | Description                                                                                                                                                                                                                        |
+| Pole           | Popis                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Zobrazované jméno    | Zobrazovaný název hodnoty vlastnosti používané na řídicích panelech a formulářích.                                                                                                                                                              |
-| Name            | Název vlastnosti Azure IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, v případě potřeby ale můžete zvolit vlastní hodnotu. Toto pole musí obsahovat alfanumerické znaky.                                                 |
+| Název            | Název vlastnosti Azure IoT Central vygeneruje hodnotu pro toto pole ze zobrazovaného názvu, v případě potřeby ale můžete zvolit vlastní hodnotu. Toto pole musí obsahovat alfanumerické znaky.                                                 |
 | Typ schopnosti | Majetek.                                                                                                                                                                                                                          |
 | Sémantický typ   | Sémantický typ vlastnosti, jako je například teplota, stav nebo událost. Volba sémantického typu Určuje, která z následujících polí je k dispozici.                                                                       |
 | Schéma          | Datový typ vlastnosti, například Double, String nebo Vector. Dostupné možnosti určují sémantický typ. Schéma není k dispozici pro sémantické typy události a stavu.                                               |
@@ -45,7 +45,7 @@ Následující tabulka ukazuje nastavení konfigurace pro schopnost vlastnosti.
 | Jednotka            | Jednotka pro hodnotu vlastnosti, například **mph**, **%** nebo ** &deg; C**.                                                                                                                                                              |
 | Zobrazit jednotku    | Zobrazovací jednotka pro použití na řídicích panelech a formulářích.                                                                                                                                                                                    |
 | Komentář         | Jakékoli komentáře k funkci vlastnosti.                                                                                                                                                                                        |
-| Description     | Popis schopnosti vlastnosti.                                                                                                                                                                                          |
+| Popis     | Popis schopnosti vlastnosti.                                                                                                                                                                                          |
 
 Vlastnosti lze také definovat v rozhraní v šabloně zařízení, jak je znázorněno zde:
 
@@ -152,7 +152,7 @@ Následující kód ukazuje definici typu vlastnosti objektu. Tento objekt má d
 
 Ve výchozím nastavení jsou vlastnosti jen pro čtení. Vlastnosti jen pro čtení znamenají, že aktualizace hodnoty vlastnosti zařízení se aktualizuje do vaší aplikace Azure IoT Central. Vaše aplikace Azure IoT Central nemůže nastavit hodnotu vlastnosti jen pro čtení.
 
-Azure IoT Central k synchronizaci hodnot vlastností mezi zařízením a aplikací Azure IoT Central používá vlákna zařízení. Hodnoty vlastností zařízení používají nedokončené hlášené vlastnosti zařízení. Další informace najdete v tématu [vlákna zařízení](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins).
+Azure IoT Central k synchronizaci hodnot vlastností mezi zařízením a aplikací Azure IoT Central používá vlákna zařízení. Hodnoty vlastností zařízení používají nedokončené hlášené vlastnosti zařízení. Další informace najdete v tématu [vlákna zařízení](../../iot-hub/tutorial-device-twins.md).
 
 Následující fragment kódu z modelu schopností zařízení zobrazuje definici typu vlastnosti jen pro čtení:
 
@@ -242,7 +242,7 @@ Zpráva odpovědi by měla zahrnovat `ac` pole a `av` . Pole `ad` je nepovinné.
 * `av` je číslo verze odesílané do zařízení.
 * `ad` je popis řetězce možností.
 
-| Hodnota | Popisek | Description |
+| Hodnota | Popisek | Popis |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Dokončeno | Operace změny vlastnosti byla úspěšně dokončena. |
 | `'ac': 202` nebo `'ac': 201` | Čekající | Operace změny vlastnosti čeká na vyřízení nebo probíhá. |
@@ -250,7 +250,7 @@ Zpráva odpovědi by měla zahrnovat `ac` pole a `av` . Pole `ad` je nepovinné.
 | `'ac': 5xx` | Chyba | U zařízení došlo k neočekávané chybě při zpracování požadované změny. |
 
 
-Další informace o nevlákenách zařízení najdete v tématu [Konfigurace zařízení z back-endové služby](https://docs.microsoft.com/azure/iot-hub/tutorial-device-twins).
+Další informace o nevlákenách zařízení najdete v tématu [Konfigurace zařízení z back-endové služby](../../iot-hub/tutorial-device-twins.md).
 
 Když operátor nastaví vlastnost s možností zápisu v aplikaci Azure IoT Central, aplikace použije pro odeslání hodnoty do zařízení hodnotu, která je typu vlákna. Zařízení pak odpoví pomocí vlastnosti nedokončené hlášené v zařízení. Když Azure IoT Central obdrží hodnotu hlášené vlastnosti, aktualizuje zobrazení vlastností se stavem **přijato**.
 

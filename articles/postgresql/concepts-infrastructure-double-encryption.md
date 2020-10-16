@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3a3582891ab3d3e4bfb53cbba0c0b2826cba56b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537901"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123350"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Šifrování s dvojitou infrastrukturou Azure Database for PostgreSQL
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL používá pro data šifrování úložiště dat 
 Šifrování s dvojitou přesností přidá druhou vrstvu šifrování pomocí klíčů spravovaných službou. Používá algoritmus FIPS 140-2 ověřený kryptografický modul, ale s jiným šifrovacím algoritmem. Tím je zajištěna další úroveň ochrany vašich dat v klidovém umístění. Klíč používaný v šifrování s dvojitou infrastrukturou je také spravovaný službou Azure Database for PostgreSQL. Šifrování s dvojitou přesností není ve výchozím nastavení povolené, protože další vrstva šifrování může mít vliv na výkon.
 
 > [!NOTE]
-> Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL podporuje cenové úrovně "Pro obecné účely" a "paměťově optimalizovaná".
+> Tato funkce je podporovaná jenom pro cenové úrovně "Pro obecné účely" a "paměťově optimalizované" v Azure Database for PostgreSQL.
 
 Šifrování vrstvy infrastruktury má výhodu, že se implementuje v rámci vrstvy nejbližší zařízení úložiště nebo síťovým vodičům. Azure Database for PostgreSQL implementuje dvě vrstvy šifrování pomocí klíčů spravovaných službou. I když je ve vrstvě služeb stále technicky, je velmi blízko hardwaru, který ukládá neaktivní neaktivní data. Volitelně můžete povolit šifrování dat v klidovém formátu pomocí [spravovaného klíče zákazníka](concepts-data-encryption-postgresql.md) pro zřízený server PostgreSQL.  
 

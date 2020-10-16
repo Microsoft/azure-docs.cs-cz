@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c8143a19d7e18b24e202018698b37e1b2855db4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575295"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125418"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -55,7 +55,7 @@ Než začnete, ujistěte se, že:
 
 #### <a name="install-the-cli-locally"></a>Místní instalace rozhraní příkazového řádku
 
-* Nainstalujte [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) verze 2.0.67 nebo novější. Případně můžete [nainstalovat pomocí MSI](https://aka.ms/installazurecliwindows).
+* Nainstalujte [Azure CLI](/cli/azure/install-azure-cli) verze 2.0.67 nebo novější. Případně můžete [nainstalovat pomocí MSI](https://aka.ms/installazurecliwindows).
 
 **Přihlášení k Azure**
 
@@ -164,13 +164,13 @@ Zobrazí se následující výstup:
     WSManStackVersion              3.0
 ```
 
-Pokud je vaše verze nižší než 6.2.4, musíte upgradovat verzi Windows PowerShellu. Pokud chcete nainstalovat nejnovější verzi Windows PowerShellu, přečtěte si článek [instalace Azure PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7).
+Pokud je vaše verze nižší než 6.2.4, musíte upgradovat verzi Windows PowerShellu. Pokud chcete nainstalovat nejnovější verzi Windows PowerShellu, přečtěte si článek [instalace Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7).
 
 **Nainstalovat Azure PowerShell a Data Box moduly**
 
 Abyste mohli Azure Data Box použít Azure PowerShell, budete muset nainstalovat Azure PowerShell moduly. Instalace modulů Azure PowerShell:
 
-1. Nainstalujte [Azure PowerShell AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+1. Nainstalujte [Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 2. Pak pomocí příkazu nainstalujte AZ. DataBox `Install-Module -Name Az.DataBox` .
 
 ```azurepowershell
@@ -184,7 +184,7 @@ Version              Name                                Repository           De
 
 #### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Otevřete okno příkazového řádku Windows PowerShellu a přihlaste se k Azure pomocí příkazu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) :
+Otevřete okno příkazového řádku Windows PowerShellu a přihlaste se k Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) :
 
 ```azurepowershell
 PS C:\Windows> Connect-AzAccount
@@ -202,7 +202,7 @@ gusp@contoso.com     MySubscription                            aaaaaaaa-aaaa-aaa
 PS C:\Windows\System32>
 ```
 
-Podrobné informace o tom, jak se přihlásit k Azure pomocí Windows PowerShellu, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+Podrobné informace o tom, jak se přihlásit k Azure pomocí Windows PowerShellu, najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 ---
 
@@ -338,7 +338,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
    |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz <string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
-2. V příkazovém řádku příkazu Choice nebo terminálu pomocí [úlohy AZ data box Create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) vytvořte objednávku Azure Data box.
+2. V příkazovém řádku příkazu Choice nebo terminálu pomocí [úlohy AZ data box Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) vytvořte objednávku Azure Data box.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -431,7 +431,7 @@ Pomocí Azure PowerShell seřazení zařízení postupujte podle následujícíc
     $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
    ```
 
-2. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu PowerShellu k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob).
+2. Zapište si nastavení pro Data Box objednávku. Mezi tato nastavení patří vaše osobní/obchodní informace, název předplatného, informace o zařízení a informace o expedici. Tato nastavení budete muset použít jako parametry při spuštění příkazu PowerShellu k vytvoření pořadí Data Box. Následující tabulka ukazuje nastavení parametrů používané pro [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob).
 
     | Nastavení (parametr) | Popis |  Ukázková hodnota |
     |---|---|---|
@@ -452,7 +452,7 @@ Pomocí Azure PowerShell seřazení zařízení postupujte podle následujícíc
     |CompanyName| Název vaší společnosti, pro kterou pracujete.| Contoso, LTD |
     |StorageAccountResourceId [povinné]| Azure Storage ID účtu, ze kterého chcete importovat data.| <AzStorageAccount>. ID |
 
-3. V příkazovém řádku příkazu Choice nebo terminálu použijte příkaz [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) k vytvoření objednávky Azure Data box.
+3. V příkazovém řádku příkazu Choice nebo terminálu použijte příkaz [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob) k vytvoření objednávky Azure Data box.
 
    ```azurepowershell
     PS> $storAcct = Get-AzureStorageAccount -StorageAccountName "mystorageaccount"
@@ -506,7 +506,7 @@ Microsoft potom připraví a odešle vaše zařízení přes místní přepravn�
 
 ### <a name="track-a-single-order"></a>Sledovat jednu objednávku
 
-Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte příkaz [AZ Databox Job show](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
+Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte příkaz [AZ Databox Job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -547,7 +547,7 @@ Pokud chcete získat informace o sledování jednoho existujícího pořadí Azu
 
 ### <a name="list-all-orders"></a>Vypsat všechny objednávky
 
-Pokud jste objednali více zařízení, můžete spuštěním [AZ Databox Job list](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
+Pokud jste objednali více zařízení, můžete spuštěním [AZ Databox Job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
 Příkaz také zobrazuje časová razítka jednotlivých objednávek.
 
 ```azurecli
@@ -590,7 +590,7 @@ V následující tabulce jsou uvedeny informace o parametrech pro `az databox jo
 
 ### <a name="track-a-single-order"></a>Sledovat jednu objednávku
 
-Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte rutinu [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
+Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte rutinu [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
 
 > [!NOTE]
 > `Get-AzDataBoxJob` slouží k zobrazení jedné i vícenásobné objednávky. Rozdílem je, že zadáváte název objednávky pro jednotlivé objednávky.
@@ -623,7 +623,7 @@ Pokud chcete získat informace o sledování jednoho existujícího pořadí Azu
 
 ### <a name="list-all-orders"></a>Vypsat všechny objednávky
 
-Pokud jste objednali více zařízení, můžete spuštěním rutiny [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
+Pokud jste objednali více zařízení, můžete spuštěním rutiny [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
 Příkaz také zobrazuje časová razítka jednotlivých objednávek.
 
 ```azurepowershell
@@ -666,7 +666,7 @@ Zrušení objednávky odstraníte tak, že přejdete na **Přehled** a na panelu
 
 ### <a name="cancel-an-order"></a>Zrušení objednávky
 
-Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job Cancel](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel). Je nutné zadat důvod pro zrušení objednávky.
+Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel). Je nutné zadat důvod pro zrušení objednávky.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -703,7 +703,7 @@ Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job 
 
 ### <a name="delete-an-order"></a>Odstranění objednávky
 
-Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [AZ Databox Job Delete](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) .
+Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [AZ Databox Job Delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) .
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -742,7 +742,7 @@ Tady je příklad příkazu s výstupem:
 
 ### <a name="cancel-an-order"></a>Zrušení objednávky
 
-Chcete-li zrušit Azure Data Box pořadí, spusťte rutinu [stop-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob). Je nutné zadat důvod pro zrušení objednávky.
+Chcete-li zrušit Azure Data Box pořadí, spusťte rutinu [stop-AzDataBoxJob](/powershell/module/az.databox/stop-azdataboxjob). Je nutné zadat důvod pro zrušení objednávky.
 
 ```azurepowershell
 Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
@@ -776,7 +776,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Odstranění objednávky
 
-Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [Remove-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob) .
+Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) .
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

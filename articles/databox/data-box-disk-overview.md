@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 8e9b1faf2521e0698052dd1cdd1253191ae6f8bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea9353ed8c1938fa9b33585a0650b4507c671451
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84187406"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125026"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Co je Azure Data Box Disk?
 
@@ -104,7 +104,7 @@ Další informace najdete v článku, který se věnuje [zabezpečení a ochran�
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Informace o dostupnosti oblastí najdete v [produktech Azure, které jsou dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+Informace o dostupnosti oblastí najdete v [produktech Azure, které jsou dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](../azure-government/documentation-government-welcome.md).
 
 ## <a name="pricing"></a>Ceny
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2477bab244b8864fa9c82b52d5577d42fa47a7e0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588799"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124147"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Obnovení certifikátů Azure Key Vault
 
@@ -25,12 +25,20 @@ Pomocí krátkodobých certifikátů nebo zvýšením frekvence rotace certifik�
 
 Tento článek popisuje, jak obnovit certifikáty Azure Key Vault.
 
-## <a name="get-notified-about-certificate-expirations"></a>Dostávat oznámení o vypršení platnosti certifikátu
-Chcete-li být upozorněni na vypršení platnosti certifikátů, postupujte následovně:
+## <a name="get-notified-about-certificate-expiration"></a>Dostávat oznámení o vypršení platnosti certifikátu
+Pokud chcete dostávat oznámení o událostech životního cyklu certifikátů, musíte přidat kontakt na certifikát. Kontakty certifikátu obsahují kontaktní informace pro odesílání oznámení aktivovaných událostmi životnosti certifikátu. Informace o kontaktech jsou sdíleny pomocí všech certifikátů v trezoru klíčů. Oznámení se pošle všem zadaným kontaktům pro událost pro libovolný certifikát v trezoru klíčů.
 
-Nejdřív přidejte do trezoru klíčů kontakt s certifikátem pomocí rutiny prostředí PowerShell [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0).
+### <a name="steps-to-set-certificate-notifications"></a>Postup nastavení oznámení o certifikátu:
+Nejdřív přidejte do svého trezoru klíčů kontakt s certifikátem. Můžete přidat pomocí rutiny Azure Portal nebo PowerShellu [`Add-AzureKeyVaultCertificateContact`](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) .
 
 Potom nakonfigurujte, kdy chcete být upozorněni na vypršení platnosti certifikátu. Informace o konfiguraci atributů životního cyklu certifikátu najdete v tématu [Konfigurace automatické rotace certifikátů v Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+
+Pokud je zásada certifikátu nastavená na automatické obnovení, pošle se na následující události oznámení.
+
+- Před obnovením certifikátu
+- Po obnovení certifikátu uveďte, jestli se certifikát úspěšně obnovil, nebo jestli došlo k chybě, která vyžaduje ruční obnovení certifikátu.  
+
+  Když se zásada certifikátu, která je nastavená na ruční obnovení (jenom e-mailem), pošle, pošle se oznámení, když se certifikát obnoví.  
 
 V Key Vault existují tři kategorie certifikátů:
 -   Certifikáty, které jsou vytvořené pomocí integrované certifikační autority (CA), jako je DigiCert nebo GlobalSign

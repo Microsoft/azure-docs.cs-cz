@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 517344e0bae0a48dbee04da33d28c8777d7c142d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 43bf91c83f66b05c448e52286b34c51a9fd30a2b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91440253"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124958"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Sestavování řešení pro maloobchod s využitím služby Azure IoT Central
 
@@ -185,4 +185,4 @@ Začněte vytvářet maloobchodní řešení:
 * [Nasazení a procházení šablonou aplikace pro správu inteligentního inventáře](./tutorial-iot-central-smart-inventory-management.md).
 * [Nasaďte a Projděte si šablonu aplikace centra pro mikroplnění](./tutorial-micro-fulfillment-center.md).
 * [Nasaďte a Projděte si šablonu aplikace video Analytics](./tutorial-video-analytics-deploy.md).
-* Další informace o IoT Central najdete v [přehledu IoT Central](../preview/overview-iot-central.md).
+* Další informace o IoT Central najdete v [přehledu IoT Central](../core/overview-iot-central.md).

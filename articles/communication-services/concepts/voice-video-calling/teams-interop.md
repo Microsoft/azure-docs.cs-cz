@@ -9,16 +9,16 @@ ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5035e511b0f3a105a047738fed1c5cc17e88d086
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a7e2240e3f74f82186827ec82bb1aa39a5b93f6c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114626"
+ms.locfileid: "92123830"
 ---
 # <a name="teams-interoperability"></a>Spolupráce týmů
 
-[!INCLUDE [Public Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
 Komunikační služby Azure je možné využít k vytváření vlastních prostředí pro schůzky, která spolupracují s Microsoft Teams. Uživatelé vašich řešení komunikačních služeb můžou komunikovat s týmy v rámci sdílení hlasu, videa a obrazovky.
 
@@ -37,7 +37,7 @@ I když některé týmy vyhovují funkcím, jako je například vystouplý reži
 
 Když se uživatel komunikačních služeb připojí k pracovním postupům, zobrazí se v týmu týmy zobrazované jméno poskytnuté prostřednictvím volající klientské knihovny. Uživatel komunikačních služeb bude jinak považován za anonymního uživatele v týmech. Vaše vlastní aplikace by měla vzít v úvahu ověřování uživatelů a další bezpečnostní opatření k ochraně schůzek týmů. Nezapomeňte na důsledky zabezpečení při povolování anonymních uživatelů při připojování ke schůzkám a pomocí [Průvodce zabezpečením týmů](https://docs.microsoft.com/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings) nakonfigurovat možnosti, které jsou k dispozici pro anonymní uživatele.
 
-Upozorňujeme, že uživatelé komunikačních služeb můžou připojit schůzky plánovaných týmů, pokud jsou v [nastavení schůzky](https://docs.microsoft.com/microsoftteams/meeting-settings-in-teams)povolené anonymní spojení.
+Uživatelé komunikačních služeb mohou připojit schůze plánovaných týmů, pokud jsou v [nastavení schůzky](https://docs.microsoft.com/microsoftteams/meeting-settings-in-teams)povoleny anonymní spojení.
 
 
 

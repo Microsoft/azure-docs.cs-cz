@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4028cb8d4f206a0e62dda1cb130cc55e71831c78
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587952"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123126"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Spotinst
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Spotinst s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -139,7 +139,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Klikněte na **ikonu uživatele** v pravém horním rohu obrazovky a pak klikněte na **Nastavení**.
 
-    ![Nastavení Spotinst](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![Snímek obrazovky zobrazuje nastavení vybraná z ikony uživatele.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
 3. V horní části klikněte na kartu **zabezpečení** a pak vyberte **Zprostředkovatelé identity** a proveďte následující kroky:
 
@@ -161,15 +161,15 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v Spotinst.
 
    b. Klikněte na **ikonu uživatele** v pravém horním rohu obrazovky a pak klikněte na **Nastavení**.
 
-    ![Nastavení Spotinst](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![Snímek obrazovky zobrazuje nastavení vybraná z ikony uživatele.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
     c. Klikněte na **Uživatelé** a vyberte **Přidat uživatele**.
 
-    ![Nastavení Spotinst](./media/spotinst-tutorial/adduser1.png)
+    ![Snímek obrazovky ukazuje přidat uživatele vybraného uživateli.](./media/spotinst-tutorial/adduser1.png)
 
     d. V části Přidat uživatele proveďte následující kroky:
 
-    ![Nastavení Spotinst](./media/spotinst-tutorial/adduser2.png)
+    ![Snímek obrazovky se zobrazí oddíl přidat uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/spotinst-tutorial/adduser2.png)
 
     * Do textového pole **celé jméno** zadejte jméno a příjmení uživatele, jako je **BrittaSimon**.
 

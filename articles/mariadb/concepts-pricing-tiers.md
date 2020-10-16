@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8ac47937650d766a159c53f7390a8f1e355a28c2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5001864bd80917aef6d8631fe2b5097b22afbe03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074800"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125777"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB cenové úrovně
 
@@ -71,7 +71,7 @@ Zvýšili jsme limity úložiště v našich Pro obecné účely a paměťově o
 | IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS| 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!IMPORTANT]
-> Služba large Storage je momentálně ve verzi Public Preview v těchto oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jihovýchod, Kanada – jih, Západní USA 2, Středozápadní USA, Kanada – východ a Kanada – střed.
+> Služba large Storage je v současnosti ve verzi Public Preview v těchto oblastech: Východní USA, Východní USA 2, Brazílie – jih, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jih, Západní USA 2, Středozápadní USA, Kanada – východ. a Kanada – střed.
 >
 > Všechny ostatní oblasti podporují až 4 TB úložiště a až 6000 vstupně-výstupních operací.
 >

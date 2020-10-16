@@ -3,12 +3,12 @@ title: Začínáme se službou Live video Analytics v IoT Edge – Azure
 description: V tomto rychlém startu se dozvíte, jak začít pracovat se službou Live video Analytics na IoT Edge. Naučte se detekovat pohyb v živém streamu videa.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 4975223255cb92c85c3117dbd44a64916054b590
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825928"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125009"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Rychlý Start: Začínáme – Live video Analytics na IoT Edge
 
@@ -18,6 +18,10 @@ Po dokončení kroků nastavení budete moct spustit simulovaný živý datový 
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="Analýza živých videí na základě detekce pohybu":::
+
+Můžete si prohlédnout následující video s podrobnými kroky, jak začít se službou Live video Analytics na IoT Edge:
+
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -37,7 +41,7 @@ Tento kurz vyžaduje následující prostředky Azure:
 * Účet Azure Media Services
 * Virtuální počítač Linux v Azure s nainstalovaným [modulem runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md)
 
-Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Postup je následující:
+Pro tento rychlý Start doporučujeme, abyste k nasazení požadovaných prostředků ve vašem předplatném Azure použili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . To můžete provést pomocí těchto kroků:
 
 1. Přejít na [Azure Cloud Shell](https://shell.azure.com).
 1. Pokud používáte Cloud Shell poprvé, budete vyzváni k výběru předplatného pro vytvoření účtu úložiště a sdílené složky Microsoft Azure souborů. Vyberte **vytvořit úložiště** a vytvořte účet úložiště pro informace o cloud Shell relaci. Tento účet úložiště je oddělený od účtu, který vytvoří skript pro použití s vaším účtem Azure Media Services.
@@ -62,7 +66,7 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
 Tento příkaz nasadí následující moduly do hraničního zařízení, které je v tomto případě virtuálním počítačem se systémem Linux.
 
 * Live video Analytics na IoT Edge (název modulu `lvaEdge` )
-* Simulátor protokolu RTSP (Real-time streaming Protocol) (název modulu `rtspsim` )
+* Simulátor protokolu RTSP (Real-Time streaming Protocol) (název modulu `rtspsim` )
 
 Modul simulátoru RTSP simuluje živý Stream videa pomocí videosouboru, který jste zkopírovali do hraničního zařízení, když jste spustili [skript pro nastavení prostředků Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/edge/setup). 
 

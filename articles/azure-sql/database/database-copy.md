@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67f123472a5fd6060bc4e2de36fb7ac1ea46d356
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443786"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124391"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -29,7 +29,7 @@ Azure SQL Database poskytuje několik metod pro vytvoření kopie existující [
 Kopie databáze je nekonzistentně konzistentní snímek zdrojové databáze k určitému bodu v čase po zahájení žádosti o zkopírování. Pro kopii můžete vybrat stejný server nebo jiný server. Také si můžete zvolit, že chcete zachovat redundanci záloh, úroveň služby a výpočetní velikost zdrojové databáze, nebo použít jinou zálohu úložiště záloh nebo výpočetní velikost v rámci stejné nebo jiné úrovně služby. Po dokončení kopírování se tato kopie bude plně funkční a nezávislá databáze. Přihlašovací jména, uživatele a oprávnění ve zkopírované databázi jsou spravovány nezávisle na zdrojové databázi. Kopie se vytvoří pomocí technologie geografické replikace. Po dokončení počáteční repliky se připojení geografické replikace automaticky ukončí. Všechny požadavky pro používání geografické replikace se vztahují i na operaci kopírování databáze. Podrobnosti najdete v tématu [Aktivní geografická replikace – přehled](active-geo-replication-overview.md) .
 
 > [!NOTE]
-> Služba Azure SQL Database konfigurovatelný záložní úložiště je v současnosti dostupná jenom ve verzi Public Preview v oblasti Azure jihovýchodní Asie. Pokud je ve verzi Preview vytvořená místně redundantní nebo redundance záložního úložiště záloh zóny, kopie databáze na server v jiné oblasti Azure není podporovaná. 
+> Služba Azure SQL Database konfigurovatelný záložní úložiště je v současné době všeobecně dostupná jenom v oblasti Azure jihovýchodní Asie. Pokud je ve verzi Preview vytvořená místně redundantní nebo redundance záložního úložiště záloh zóny, kopie databáze na server v jiné oblasti Azure není podporovaná. 
 
 ## <a name="logins-in-the-database-copy"></a>Přihlašovací údaje v kopii databáze
 

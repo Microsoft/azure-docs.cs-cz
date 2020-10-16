@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 2a40e908677a173862ad715f7024865ff728d0b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053449"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124670"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Řešení potíží souvisejících se Azure Data Box a Azure Data Box Heavy
 
@@ -25,7 +25,7 @@ Informace v tomto článku se nevztahují na objednávky exportu vytvořené pro
 
 Chyby v Data Box a Data Box Heavy jsou shrnuty takto:
 
-| Kategorie chyby *        | Description        | Doporučená akce    |
+| Kategorie chyby *        | Popis        | Doporučená akce    |
 |----------------------------------------------|---------|--------------------------------------|
 | Názvy kontejnerů nebo sdílených složek | Názvy kontejnerů nebo sdílených složek nedodržují pravidla pro pojmenování Azure.  |Stažení seznamů chyb. <br> Přejmenujte kontejnery nebo sdílené složky. [Další informace](#container-or-share-name-errors).  |
 | Omezení velikosti kontejneru nebo sdílení | Celkový objem dat v kontejnerech nebo sdílených složkách překračuje limit Azure.   |Stažení seznamů chyb. <br> Snižte celkový objem dat v kontejneru nebo sdílené složce. [Další informace](#container-or-share-size-limit-errors).|
@@ -56,7 +56,7 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Příklady platných názvů: `my-folder-1` , `my-really-extra-long-folder-111`
     - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
-    Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
@@ -75,7 +75,7 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Příklady platných názvů: `my-folder-1` , `my-really-extra-long-folder-111`
     - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
-    Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
 ### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
@@ -93,7 +93,7 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Příklady platných názvů: `my-folder-1` , `my-really-extra-long-folder-111`
     - Příklady názvů, které nejsou platné: `my-folder_1` , `my` , `--myfolder` , `myfolder--` , `myfolder!`
 
-    Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
     
 ### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
 
@@ -104,7 +104,7 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
 - Na stránce připojit a kopírovat místního webového uživatelského rozhraní si stáhněte a zkontrolujte soubory s chybami a Identifikujte názvy složek s problémy. 
 - Přejmenujte adresář nebo kontejnery, abyste měli jistotu, že jsou kompatibilní se zásadami vytváření názvů Azure.
 
-Další informace najdete v tématu Zásady vytváření názvů Azure pro [adresáře](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   a [kontejnery](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
+Další informace najdete v tématu Zásady vytváření názvů Azure pro [adresáře](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   a [kontejnery](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 ## <a name="container-or-share-size-limit-errors"></a>Počet chyb omezení velikosti kontejneru nebo sdílení
 
@@ -190,7 +190,7 @@ Všechny nekritické chyby týkající se názvů objektů blob, souborů nebo k
 Na stránce **připojit a kopírovat** místního webového uživatelského rozhraní si stáhněte a zkontrolujte soubory chyb.
 Odeberte nebo přejmenujte soubory, aby se odebraly nepodporované znaky.
 
-Další informace najdete v tématu konvence pojmenování Azure pro [názvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
+Další informace najdete v tématu konvence pojmenování Azure pro [názvy objektů BLOB](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
 
 ### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
 
@@ -201,7 +201,7 @@ Další informace najdete v tématu konvence pojmenování Azure pro [názvy obj
 Na stránce **připojit a kopírovat** místního webového uživatelského rozhraní si stáhněte a zkontrolujte soubory chyb.
 Odeberte nebo přejmenujte soubory, aby se odebraly nepodporované znaky.
 
-Další informace najdete v tématu konvence pojmenování Azure pro [názvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
+Další informace najdete v tématu konvence pojmenování Azure pro [názvy objektů BLOB](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
 
 
 ### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
@@ -213,7 +213,7 @@ Další informace najdete v tématu konvence pojmenování Azure pro [názvy obj
 Na stránce **připojit a kopírovat** místního webového uživatelského rozhraní si stáhněte a zkontrolujte soubory chyb.
 Odeberte nebo přejmenujte soubory, aby se odebraly nepodporované znaky.
 
-Další informace najdete v tématu konvence pojmenování Azure pro [názvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
+Další informace najdete v tématu konvence pojmenování Azure pro [názvy objektů BLOB](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names).
 
 
 ### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
@@ -223,7 +223,7 @@ Další informace najdete v tématu konvence pojmenování Azure pro [názvy obj
 **Navrhované řešení:** Objekty blob nebo soubory, které jste zkopírovali, překračují maximální počet segmentů cesty. Segment cesty je řetězec mezi po sobě jdoucími znaky oddělovače, například lomítkem nebo.
 
 - Na stránce **připojit a kopírovat** místního webového uživatelského rozhraní si stáhněte a zkontrolujte soubory chyb.
-- Ujistěte se, že [názvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) odpovídají konvencím názvů Azure.
+- Ujistěte se, že [názvy objektů BLOB](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) odpovídají konvencím názvů Azure.
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
@@ -244,7 +244,7 @@ Další informace najdete v tématu konvence pojmenování Azure pro názvy obje
 **Navrhované řešení:** Jeden z segmentů cesty v objektu BLOB nebo názvu souboru překračuje maximální počet znaků. Segment cesty je řetězec mezi po sobě jdoucími znaky oddělovače, například lomítkem nebo.
 
 - Na stránce **připojit a kopírovat** místního webového uživatelského rozhraní si stáhněte a zkontrolujte soubory chyb.
-- Ujistěte se, že [názvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) odpovídají konvencím názvů Azure.
+- Ujistěte se, že [názvy objektů BLOB](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names) a [názvy souborů](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) odpovídají konvencím názvů Azure.
 
 
 ### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE

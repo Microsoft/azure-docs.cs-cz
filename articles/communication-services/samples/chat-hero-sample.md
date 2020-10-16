@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962985"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124581"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -30,9 +30,9 @@ ms.locfileid: "91962985"
 V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
 
 > [!IMPORTANT]
-> [Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+> [Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 Ukázka obsahuje aplikaci na straně klienta i aplikaci na straně serveru. **Aplikace na straně klienta** je webová aplikace reagující na Redux, která používá architekturu uživatelského rozhraní Fluent společnosti Microsoft. Tato aplikace posílá požadavky na ASP.NET Core **aplikace na straně serveru** , která pomáhá aplikaci na straně klienta připojit se k Azure. 
 
@@ -103,7 +103,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 ## <a name="next-steps"></a>Další kroky
 
 >[!div class="nextstepaction"] 
->[Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+>[Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 Další informace najdete v následujících článcích:
 

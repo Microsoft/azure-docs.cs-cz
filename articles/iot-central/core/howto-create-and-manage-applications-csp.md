@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653345"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123109"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Vytvoření a Správa aplikace Azure IoT Central z portálu CSP
 
@@ -63,7 +63,7 @@ Vzhledem k tomu, že Azure IoT Central obsahuje kontext, který jste získali za
 
 Tenant Azure Active Directory obsahuje identity uživatelů, přihlašovací údaje a další informace o organizaci. K jednomu Azure Active Directory tenantovi může být přidruženo několik předplatných Azure.
 
-Další informace najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).
+Další informace najdete v tématu [Azure Active Directory](../../active-directory/index.yml).
 
 ## <a name="azure-subscription"></a>Předplatné Azure
 
@@ -71,7 +71,7 @@ Předplatné Azure vám umožňuje vytvářet instance služeb Azure. Azure IoT 
 
 Pokud nemáte předplatné Azure, můžete ho vytvořit v partnerském centru Microsoftu. Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
 
-Další informace najdete v tématu [předplatná Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
+Další informace najdete v tématu [předplatná Azure](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing).
 
 ## <a name="location"></a>Umístění
 

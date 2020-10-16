@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86206219"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123558"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
@@ -144,7 +144,7 @@ Data Box může přenášet data na základě oblasti, ve které je služba nasa
 
 - **Dostupnost služby** – při použití data box k importu nebo exportu objednávek můžete získat informace o dostupnosti oblastí, přejít na [produkty Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Funkce exportu v Data Box je aktuálně ve verzi Preview. 
 
-    Pro příkazy import je možné Data Box nasadit také v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). 
+    Pro příkazy import je možné Data Box nasadit také v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](../azure-government/documentation-government-welcome.md). 
 
 - **Cílové účty úložiště** – účty úložiště, které ukládají data, jsou dostupné ve všech oblastech Azure, kde je služba dostupná.
 
@@ -154,7 +154,3 @@ Data Box může přenášet data na základě oblasti, ve které je služba nasa
 - Přečtěte si [systémové požadavky služby Data Box](data-box-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box](data-box-limits.md).
 - Rychle nasaďte [Azure Data Box](data-box-quickstart-portal.md) na webu Azure Portal.
-
-
-
-

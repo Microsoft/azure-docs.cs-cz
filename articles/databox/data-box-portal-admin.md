@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611652"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123711"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
 
@@ -212,7 +212,7 @@ Když se stav zařízení na portálu změní, dostanete upozornění prostředn
 
 Zde jsou stavy pro pořadí importu.
 
-|Stav objednávky |Description |
+|Stav objednávky |Popis |
 |---------|---------|
 |Objednáno     | Došlo k úspěšnému zadání objednávky. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
 |Zpracováno     | Proběhlo zpracování objednávky. Zařízení je připravené k odeslání v datovém centru podle objednávky.         |
@@ -222,8 +222,8 @@ Zde jsou stavy pro pořadí importu.
 |Přijato     | Zařízení bylo přijato a naskenováno v datovém centru Azure. <br> Po kontrole zásilky začne nahrávání dat ze zařízení.      |
 |Kopírování dat     | Probíhá kopírování dat. Sledujte průběh kopírování u vaší objednávky na portálu Azure Portal. <br> Počkejte, dokud se kopírování dat nedokončí. |
 |Dokončeno       |Objednávka se úspěšně dokončila.<br> Než odstraníte data z místních serverů, zkontrolujte, jestli se data objevila v Azure.         |
-|Dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Dokončeno s upozorněními| Kopírování dat se dokončilo, ale data se změnila. Data obsahovala nekritické chyby objektů BLOB nebo souborů, které byly opraveny změnou názvu souboru nebo objektu BLOB. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si úpravy vašich dat. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s upozorněními](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
+|Dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s chybami](./data-box-logs.md#upload-completed-with-errors).   |
+|Dokončeno s upozorněními| Kopírování dat se dokončilo, ale data se změnila. Data obsahovala nekritické chyby objektů BLOB nebo souborů, které byly opraveny změnou názvu souboru nebo objektu BLOB. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si úpravy vašich dat. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s upozorněními](./data-box-logs.md#upload-completed-with-warnings).   |
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste objednávku zrušili, nebo došlo k chybě a objednávku zrušila služba. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
 |Vyčištění | Vymažou se data na discích zařízení. Vyčištění zařízení se považuje za dokončené, jakmile je na webu Azure Portal k dispozici ke stažení historie objednávky.|
 
@@ -231,16 +231,16 @@ Zde jsou stavy pro pořadí importu.
 
 Zde jsou stavy pro export objednávky.
 
-|Stav objednávky |Description |
+|Stav objednávky |Popis |
 |---------|---------|
 |Objednáno     | Objednávka exportu se úspěšně nastavila. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste zrušili objednávku (můžete zrušit pouze před zpracováním objednávky), nebo došlo k chybě a služba zrušila pořadí. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
 |Zpracováno     | Proběhlo zpracování objednávky. Podle vaší objednávky se zařízení připravuje na kopírování dat v datovém centru. Sdílené složky zařízení se vytvářejí.         |
 |Probíhá kopírování dat     | Probíhá kopírování dat ze zadaných účtů Azure Storage do zařízení. Sledujte průběh kopírování u vaší objednávky na portálu Azure Portal. <br> Počkejte, dokud se kopírování dat nedokončí. |
 |Kopírování dokončeno     | Kopírování dat ze zadaných účtů Azure Storage do zařízení bylo dokončeno. Podrobný soubor protokolu (Pokud byla v pořadí povolená možnost) a v účtu úložiště se vytvoří protokol kopírování. Podrobný protokol obsahuje informace o všech souborech (název, cesta, výpočetního kontrolního součtu), které se zkopírují do zařízení. Protokol kopírování obsahuje souhrn procesu kopírování včetně seznamu souborů, které nebylo možné zkopírovat z důvodu chyb.<br> Data účtu úložiště zůstanou tak, jak jsou. |
-|Kopírování dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení stahování s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
-|Kopírování dokončeno s upozorněními| Kopírování dat z účtu Azure Storage bylo dokončeno, ale data obsahovala méně závažné chyby. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si méně závažné chyby. Podívejte [se na příklady kopírování protokolů po dokončení stahování s upozorněními](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
-|Kopírování se nezdařilo s chybami| Kopírování dat z účtu Azure Storage se nezdařilo a pořadí je ukončeno. Zařízení nebude dodány.<br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte se [na příklady kopírování protokolů po stažení se nezdařilo s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Kopírování dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení stahování s chybami](./data-box-logs.md#upload-completed-with-errors).   |
+|Kopírování dokončeno s upozorněními| Kopírování dat z účtu Azure Storage bylo dokončeno, ale data obsahovala méně závažné chyby. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si méně závažné chyby. Podívejte [se na příklady kopírování protokolů po dokončení stahování s upozorněními](./data-box-logs.md#upload-completed-with-warnings).   |
+|Kopírování se nezdařilo s chybami| Kopírování dat z účtu Azure Storage se nezdařilo a pořadí je ukončeno. Zařízení nebude dodány.<br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte se [na příklady kopírování protokolů po stažení se nezdařilo s chybami](./data-box-logs.md#upload-completed-with-errors).   |
 |Odesláno     |Došlo k odeslání objednávky. Zásilku můžete sledovat pomocí ID pro sledování, které je uvedené ve vaší objednávce na portálu.        |
 |Doručeno     |Zásilka byla doručena na adresu uvedenou v objednávce.        |
 |Vyzvednuto     |Zpáteční zásilka byla vyzvednuta a naskenována dopravcem.         |
@@ -254,7 +254,7 @@ Zde jsou stavy pro export objednávky.
 
 Pokud používáte samoobslužné doručování, pak po dokončení kopírování a před přijetím zařízení se zobrazí následující stavy (místo těch, které jsou uvedené v předchozí tabulce):
 
-|Stav objednávky |Description |
+|Stav objednávky |Popis |
 |---------|---------|
 |Připraveno k vyzvednutí v datacentru Azure      |Zařízení je připravené k vyzvednutí v datacentru Azure.        |
 |Vyzvednuto    |Zařízení jste si vybrali.         |
