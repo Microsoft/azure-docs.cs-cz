@@ -1,6 +1,6 @@
 ---
 title: Filtry připojení IP pro Azure IoT DPS | Microsoft Docs
-description: Jak používat filtrování protokolu IP k blokování připojení z konkrétních IP adres do vaší instance Azure IoT DPS. Můžete zablokovat připojení z individuálních nebo rozsahů IP adres.
+description: Tady se dozvíte, jak pomocí filtrování IP blokovat připojení z určitých IP adres k vaší instanci Azure IoT DPS. Můžete zablokovat připojení z jednotlivých IP adres nebo rozsahů IP adres.
 author: wesmc7777
 ms.author: wesmc
 ms.service: iot-dps
@@ -8,79 +8,79 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511938"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Použití filtrů připojení IP pro Azure IoT DPS
 
-Zabezpečení je důležitým aspektem řešení IoT. Někdy musíte explicitně zadat IP adresy, ze kterých se zařízení můžou připojit, jako součást konfigurace zabezpečení. Funkce *filtru IP* pro Azure IoT Hub Device PROVISIONING Service (DPS) umožňuje konfigurovat pravidla pro zamítnutí nebo přijetí provozu z konkrétních adres IPv4.
+Důležitým aspektem každého řešení IoT je zabezpečení. Někdy je potřeba v rámci konfigurace zabezpečení explicitně zadat IP adresy, ze kterých se smějí připojovat zařízení. Funkce *filtru IP* pro službu Azure IoT Hub DPS (Device Provisioning Service) umožňuje nakonfigurovat pravidla pro odmítnutí nebo přijetí přenosů z konkrétních IPv4 adres.
 
 ## <a name="when-to-use"></a>Kdy je použít
 
-Existují dva konkrétní případy použití, kdy je vhodné zablokovat připojení ke koncovému bodu DPS z určitých IP adres:
+Existují dva konkrétní případy použití, kdy je dobré zablokovat připojení ke koncovému bodu DPS z určitých IP adres:
 
-* Vaše DPS by měl přijímat přenosy jenom z určeného rozsahu IP adres a zamítnout všechno ostatní. Používáte například svůj DPS s [trasou Azure Express](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) k vytváření privátních připojení mezi DPS a vašimi zařízeními.
+* Vaše služba DPS by měla přijímat přenosy jenom ze zadaného rozsahu IP adres a všechny ostatní zamítnout. To může být nutné třeba v případě, že pomocí služby DPS v kombinaci s [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) vytváříte privátní připojení mezi službou DPS a zařízeními.
 
-* Je nutné zamítnout provoz z IP adres, které se identifikovaly jako podezřelé správcem DPS.
+* Potřebujete zamítnout přenosy z IP adres, které správce DPS označil za podezřelé.
 
-## <a name="how-filter-rules-are-applied"></a>Jak se používají pravidla filtru
+## <a name="how-filter-rules-are-applied"></a>Způsob uplatňování pravidel filtru
 
-Pravidla filtru IP jsou použita na úrovni instance DPS. Proto se pravidla filtru IP použijí na všechna připojení ze zařízení a back-endové aplikace s využitím jakéhokoli podporovaného protokolu.
+Pravidla filtru IP adres se uplatňují na úrovni instance služby DPS. Tím pádem se pravidla filtru IP adres uplatňují na všechna připojení ze zařízení a back-endových aplikací přes kterýkoli podporovaný protokol.
 
-Jakýkoli pokus o připojení z IP adresy, která odpovídá pravidlu odmítnutí protokolu IP ve vaší instanci DPS, obdrží ne401 autorizovaný kód stavu a popis. Zpráva odpovědi nezmiňuje pravidlo protokolu IP.
+Každý pokus o připojení z IP adresy, která ve vaší instanci služby DPS odpovídá pravidlu odmítnutí IP adresy, dostane odezvu s kódem a popisem stavu 401 Neautorizováno. Zpráva odpovědi neinformuje o pravidle IP adres.
 
 ## <a name="default-setting"></a>Výchozí nastavení
 
-Ve výchozím nastavení je mřížka **filtru IP** na portálu pro DPS prázdná. Toto výchozí nastavení znamená, že vaše DPS přijímá připojení z libovolné IP adresy. Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0.
+Ve výchozím nastavení je mřížka **Filtr IP** na portálu služby DPS prázdná. Toto výchozí nastavení znamená, že služba DPS přijímá připojení ze všech IP adres. Toto výchozí nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0.
 
-![Výchozí nastavení filtru IP adres IoT DPS](./media/iot-dps-ip-filtering/ip-filter-default.png)
+![Výchozí nastavení filtru IP služby IoT DPS](./media/iot-dps-ip-filtering/ip-filter-default.png)
 
-## <a name="add-or-edit-an-ip-filter-rule"></a>Přidat nebo upravit pravidlo filtru IP
+## <a name="add-or-edit-an-ip-filter-rule"></a>Přidání nebo úprava pravidla filtru IP
 
-Pokud chcete přidat pravidlo filtru IP, vyberte **+ Přidat pravidlo filtru IP**.
+Pokud chcete přidat pravidlo filtru IP, vyberte **+ Přidat pravidlo filtru IP adres**.
 
-![Přidání pravidla filtru IP do IoT DPS](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
+![Přidání pravidla filtru IP adres do služby IoT DPS](./media/iot-dps-ip-filtering/ip-filter-add-rule.png)
 
-Po výběru možnosti **Přidat pravidlo filtru protokolu IP**zadejte pole.
+Po výběru možnosti **Přidat pravidlo filtru IP adres** vyplňte zobrazená pole.
 
-![Po výběru možnosti Přidat pravidlo filtru IP](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
+![Po výběru možnosti Přidat pravidlo filtru IP adres](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Zadejte **název** pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jsou přijímány pouze alfanumerické znaky ASCII a 7 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
+* Zadejte **název** pravidla filtru IP adres. Musí se jednat o jedinečný alfanumerický řetězec s délkou do 128 znaků, ve kterém se nerozlišují malá a velká písmena. Přípustné jsou jenom 7bitové alfanumerické znaky ASCII a znaky `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`.
 
-* Zadejte jednu adresu IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 192.168.100.0/22 představuje adresy IPv4 1024 z 192.168.100.0 do 192.168.103.255.
+* Zadejte jednu IPv4 adresu nebo blok IP adres v zápisu CIDR. Například adresa 192.168.100.0/22 v zápisu CIDR odpovídá 1024 IPv4 adresám od 192.168.100.0 do 192.168.103.255.
 
-* Jako **akci** pro pravidlo filtru IP vyberte možnost **povoluje** nebo **zablokovat** .
+* Jako **akci** pravidla filtru IP adres vyberte **Povolit** nebo **Blokovat**.
 
-Po vyplnění polí vyberte **Uložit** a uložte pravidlo. Zobrazí se upozornění oznamující, že probíhá aktualizace.
+Po vyplnění polí pravidlo uložte výběrem položky **Uložit**. Zobrazí se upozornění s informací, že probíhá aktualizace.
 
 ![Oznámení o uložení pravidla filtru IP](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-Možnost **Přidat** je zakázaná, když dosáhnete maximálního počtu 10 pravidel filtru IP.
+Když dosáhnete maximálního počtu 10 pravidel filtru IP adres, možnost **Přidat** už nebude aktivní.
 
-Pokud chcete upravit stávající pravidlo, vyberte data, která chcete změnit, proveďte změnu a pak kliknutím na **Uložit** uložte úpravy.
+Pokud chcete upravit stávající pravidlo, vyberte údaje, které chcete změnit, proveďte změnu a pak úpravy uložte výběrem položky **Uložit**.
 
 > [!NOTE]
-> Odmítání IP adres může ostatním službám Azure zabránit v interakci s instancí DPS.
+> Zamítnutí určitých IP adres může zabránit jiným službám Azure v interakci s danou instancí služby DPS.
 
-## <a name="delete-an-ip-filter-rule"></a>Odstraní pravidlo filtru IP.
+## <a name="delete-an-ip-filter-rule"></a>Odstranění pravidla filtru IP adres
 
-Pokud chcete odstranit pravidlo filtru IP, vyberte na tomto řádku ikonu odpadkového koše a pak vyberte **Uložit**. Pravidlo se odebere a změna se uloží.
+Pokud chcete některé pravidlo filtru IP adres odstranit, vyberte na příslušném řádku ikonu odpadkového koše a pak vyberte možnost **Uložit**. Dané pravidlo se odebere a změna se uloží.
 
-![Odstranění pravidla filtru IP adres IoT DPS](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
+![Odstranění pravidla filtru IP adres služby IoT DPS](./media/iot-dps-ip-filtering/ip-filter-delete-rule.png)
 
 
-## <a name="update-ip-filter-rules-in-code"></a>Aktualizovat pravidla filtru IP v kódu
+## <a name="update-ip-filter-rules-in-code"></a>Aktualizace pravidel filtru IP adres v kódu
 
-Pomocí koncového bodu REST poskytovatele prostředků Azure můžete načítat a upravovat svůj filtr IP DPS. Viz `properties.ipFilterRules` v tématu [Metoda createorupdate](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
+Filtr IP adres služby DPS můžete načíst a upravit pomocí koncového bodu REST poskytovatele prostředků Azure. Projděte si část `properties.ipFilterRules` v tématu o [metodě createorupdate](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
 
-Aktualizace pravidel filtru IP DPS není v současnosti podporovaná pomocí Azure CLI nebo Azure PowerShell, ale dá se s Azure Resource Manager šablony dosáhnout. Pokyny k používání šablon Správce prostředků najdete v tématu [Azure Resource Manager šablon](../azure-resource-manager/templates/overview.md) . Níže uvedené příklady šablon ukazují, jak vytvořit, upravit a odstranit pravidla filtru IP pro DPS.
+V současné době nepodporujeme aktualizaci pravidel filtru IP adres služby DPS v prostředí Azure CLI ani Azure PowerShell, ale můžete ji provést pomocí šablon Azure Resource Manageru. Pokyny k používání šablon Resource Manageru najdete v tématu o šablonách [Azure Resource Manageru](../azure-resource-manager/templates/overview.md). Následující příklady šablon ukazují, jak vytvořit, upravit a odstranit pravidlo filtru IP adres služby DPS.
 
-### <a name="add-an-ip-filter-rule"></a>Přidat pravidlo filtru IP
+### <a name="add-an-ip-filter-rule"></a>Přidání pravidla filtru IP adres
 
-Následující příklad šablony vytvoří nové pravidlo filtru IP s názvem "AllowAll", které přijímá veškerý provoz.
+Následující příklad šablony vytvoří nové pravidlo filtru IP adres s názvem AllowAll, které přijímá všechny přenosy.
 
 ```json
 {
@@ -131,18 +131,18 @@ Následující příklad šablony vytvoří nové pravidlo filtru IP s názvem "
 }
 ```
 
-Aktualizujte atributy pravidla filtru IP pro šablonu na základě vašich požadavků.
+Aktualizujte atributy pravidla filtru IP adres této šablony podle svých požadavků.
 
 | Atribut                | Popis |
 | ------------------------ | ----------- |
-| **FilterName**           | Zadejte název pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jenom znaky ASCII 7 bitů plus {"-", ":", "/", " \' .", "+", "%", "_", "*", "*", "?",!, jsou přijaty tyto "(", ")", ",", "@", ";", "". |
-| **Akce**               | Přijaté hodnoty se **přijímají**   nebo **zamítnou**   jako akce pro pravidlo filtru IP. |
-| **ipMask**               | Zadejte jednu adresu IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 192.168.100.0/22 představuje adresy IPv4 1024 z 192.168.100.0 do 192.168.103.255. |
+| **FilterName**           | Zadejte název pravidla filtru IP adres. Musí se jednat o jedinečný alfanumerický řetězec s délkou do 128 znaků, ve kterém se nerozlišují malá a velká písmena. Přípustné jsou jenom 7bitové alfanumerické znaky ASCII a znaky {-, :, /, \', ., +, %, _, #, *, ?, !, (, ), ,, =, @, ;, '}. |
+| **Akce**               | Jako akci pro pravidlo filtru IP adres můžete zadat hodnotu **Přijmout** nebo **Odmítnout** . |
+| **ipMask**               | Zadejte jednu IPv4 adresu nebo blok IP adres v zápisu CIDR. Například adresa 192.168.100.0/22 v zápisu CIDR odpovídá 1024 IPv4 adresám od 192.168.100.0 do 192.168.103.255. |
 
 
-### <a name="update-an-ip-filter-rule"></a>Aktualizovat pravidlo filtru IP
+### <a name="update-an-ip-filter-rule"></a>Aktualizace pravidla filtru IP adres
 
-Následující příklad šablony aktualizuje pravidlo filtru IP s názvem "AllowAll", které bylo zobrazeno dříve, pro zamítnutí všech přenosů.
+Následující příklad šablony aktualizuje předchozí pravidlo filtru IP adres s názvem AllowAll tak, aby zamítlo veškeré přenosy.
 
 ```json
 { 
@@ -193,9 +193,9 @@ Následující příklad šablony aktualizuje pravidlo filtru IP s názvem "Allo
 }
 ```
 
-### <a name="delete-an-ip-filter-rule"></a>Odstraní pravidlo filtru IP.
+### <a name="delete-an-ip-filter-rule"></a>Odstranění pravidla filtru IP adres
 
-Následující příklad šablony odstraní všechna pravidla filtru IP pro instanci DPS.
+Následující příklad šablony odstraní všechna pravidla filtru IP adres pro danou instanci služby DPS.
 
 ```json
 { 
@@ -241,22 +241,22 @@ Následující příklad šablony odstraní všechna pravidla filtru IP pro inst
 
 
 
-## <a name="ip-filter-rule-evaluation"></a>Vyhodnocení pravidla filtru IP
+## <a name="ip-filter-rule-evaluation"></a>Vyhodnocení pravidel filtru IP adres
 
-Pravidla filtru IP se aplikují v pořadí a první pravidlo, které odpovídá IP adrese, určuje akci přijmout nebo odmítnout.
+Pravidla filtru IP adres se uplatňují jedno pod druhém a akci přijetí nebo odmítnutí určí první pravidlo odpovídající příslušné IP adrese.
 
-Například pokud chcete přijmout adresy v rozsahu 192.168.100.0/22 a odmítnout všechno ostatní, první pravidlo v mřížce by mělo přijmout rozsah adres 192.168.100.0/22. Další pravidlo by mělo odmítnout všechny adresy pomocí rozsahu 0.0.0.0/0.
+Pokud například chcete přijmout adresy v rozsahu 192.168.100.0/22 a všechny ostatní odmítnout, první pravidlo v mřížce by mělo přijmout rozsah adres 192.168.100.0/22. Další pravidlo by mělo pomocí rozsahu 0.0.0.0/0 odmítnout všechny adresy.
 
-Pořadí pravidel filtru IP v mřížce můžete změnit kliknutím na tři svislé tečky na začátku řádku a pomocí přetažení.
+Pořadí pravidel filtru IP adres v mřížce můžete změnit kliknutím na tři svislé tečky na začátku řádku a přetažením.
 
-Pokud chcete uložit nové pořadí pravidel filtru IP, klikněte na **Uložit**.
+Pokud chcete uložit nové pořadí pravidel filtru IP adres, klikněte na **Uložit**.
 
-![Změna pořadí pravidel filtru IP DPS](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
+![Změna pořadí pravidel filtru IP adres služby DPS](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě DPS najdete v těchto tématech:
+Další informace o správě služby DPS najdete v těchto tématech:
 
-* [Principy IP adres IoT DPS](iot-dps-understand-ip-address.md)
-* [Konfigurace DPS pomocí Azure CLI](how-to-manage-dps-with-cli.md)
-* [Řízení přístupu k DPS](how-to-control-access.md)
+* [Principy IP adres služby IoT DPS](iot-dps-understand-ip-address.md)
+* [Konfigurace služby DPS pomocí Azure CLI](how-to-manage-dps-with-cli.md)
+* [Řízení přístupu ke službě DPS](how-to-control-access.md)
