@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c7182205df8d276bece4758d6d4430864883d32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ffac4f19d50d9a386110e1b89f8f147652a2cd
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610638"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132002"
 ---
 # <a name="azure-firewall-dns-settings-preview"></a>Azure Firewall nastavení DNS (Preview)
 
@@ -57,6 +57,7 @@ Pokud chcete nakonfigurovat proxy server DNS, musíte nakonfigurovat nastavení 
 3. V části **servery DNS**vyberte **vlastní** .
 4. Zadejte privátní IP adresu brány firewall.
 5. Vyberte **Uložit**.
+6. Restartujte virtuální počítače, které jsou připojené k virtuální síti, takže se jim přiřadí nové nastavení serveru DNS. Virtuální počítače budou nadále používat aktuální nastavení DNS, dokud nebudou restartováni.
 
 #### <a name="enable-dns-proxy-preview"></a>Povolit proxy server DNS (Preview)
 

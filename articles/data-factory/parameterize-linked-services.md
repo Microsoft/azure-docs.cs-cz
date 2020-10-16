@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 081d19cc845750f1392e2c1a14229a51d0df4cbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1bb523c1b5aa595a714930962bbbe4e7e04de517
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276443"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131390"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
 
@@ -38,6 +38,7 @@ Můžete parametrizovat libovolný typ propojené služby.
 Při vytváření propojené služby na uživatelském rozhraní poskytuje Data Factory integrované prostředí parametrizace pro následující typy konektorů. V okně pro vytvoření nebo úpravu propojené služby můžete najít možnosti pro nové parametry a přidat dynamický obsah.
 
 - Amazon Redshift
+- Amazon S3
 - Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
 - Azure SQL Database

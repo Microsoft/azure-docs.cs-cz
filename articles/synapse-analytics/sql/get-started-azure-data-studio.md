@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78807db19b413bb642e8dcf61e480d6d954b6178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87059566"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132461"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Připojení k synapse SQL pomocí Azure Data Studio (Preview)
 
@@ -94,4 +94,5 @@ Prozkoumejte další způsoby, jak se připojit k synapse SQL:
 - [Power BI](get-started-power-bi-professional.md)
 - [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Sqlcmd](get-started-connect-sqlcmd.md)
- 
+
+Další informace najdete na webu [použití Azure Data Studio k připojení a dotazování dat pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-dw). 

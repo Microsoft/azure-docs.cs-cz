@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae40b9aeed4058ab2082a1d1360558c1c656e1d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88922561"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131764"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -25,7 +25,7 @@ Microsoft Teams na virtuálním počítači s Windows podporuje chat a spoluprá
 
 Díky optimalizaci médií pro Microsoft Teams klient pro stolní počítače s Windows zpracovává zvuk a video místně pro volání a schůzky týmů. Na virtuálním počítači s Windows můžete dál používat Microsoft Teams s ostatními klienty bez optimalizovaného volání a schůzek. Týmy a funkce pro spolupráci jsou podporované na všech platformách. Pokud chcete přesměrovat místní zařízení ve vzdálené relaci, přečtěte si [Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů](#customize-remote-desktop-protocol-properties-for-a-host-pool).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct používat Microsoft Teams na virtuálním počítači s Windows, musíte provést tyto akce:
 
@@ -92,7 +92,7 @@ Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počí
         msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
-        Tím se nainstalují týmy do složky Program Files (x86) v operačním systému 64 a do složky Program Files v 32 operačním systému. V tuto chvíli je instalace zlaté image dokončená. Instalace týmů na počítač se vyžaduje pro netrvalá nastavení.
+        Tím se nainstalují týmy do složky Program Files (x86) v operačním systému 32 a do složky Program Files v 64 operačním systému. V tuto chvíli je instalace zlaté image dokončená. Instalace týmů na počítač se vyžaduje pro netrvalá nastavení.
 
         K dispozici jsou dva příznaky, které mohou být nastaveny při instalaci týmů, **ALLUSER = 1** a **AllUsers = 1**. Je důležité pochopit rozdíl mezi těmito parametry. Parametr **ALLUSER = 1** se používá pouze v prostředích VDI k určení instalace pro jednotlivé počítače. Parametr **AllUsers = 1** lze použít v prostředích mimo VDI a VDI. Když nastavíte tento parametr, teams Machine-Wide Installer se zobrazí v programu a funkcích v Ovládacích panelech a také v aplikacích & funkcí v nastavení systému Windows. Všichni uživatelé s přihlašovacími údaji správce na počítači můžou odinstalovat týmy.
 

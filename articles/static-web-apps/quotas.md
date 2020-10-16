@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6fa70eba5875c32d41fa1cfc8daf9b1cdf8f19df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 915f8675ffda0d70347905d11c7d93975b9d4526
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83599989"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132733"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Kvóty ve službě Azure static Web Apps Preview
 
@@ -26,11 +26,11 @@ Pro Azure static Web Apps ve verzi Preview existují následující kvóty.
 | Zahrnutá šířka pásma          | 100 GB za měsíc |
 | Nadlimitní šířka pásma           | Neaktivní      |
 | Aplikace na předplatné Azure | 10               |
-| Velikost aplikace                    | 100 MB           |
+| Velikost aplikace                    | 250 MB           |
 | Předprodukční prostředí | 1                |
 | Vlastní domény              | 1                |
 | Autorizace<br><br>S vlastními rolemi a pravidly směrování | Max. 25 pozvaných a přiřazených rolí koncovým uživatelům |
-| Azure Functions             | K dispozici        |
+| Azure Functions             | K dispozici.        |
 | SLA                         | Žádné             |
 
 ## <a name="github-storage"></a>Úložiště GitHub

@@ -10,20 +10,20 @@ ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62a6bb807f01fd19a92c3dc4edf797171dd5ebc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8083d42d9ce79bcf31e3875f2ff5d5f06970a7ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713401"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131509"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
 V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
 
-[Referenční informace](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0)  |  Mapování Gen1 na [Gen2](#gen1-gen2-map)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
+[Referenční informace](https://docs.microsoft.com/powershell/module/Az.Storage/)  |  Mapování Gen1 na [Gen2](#gen1-gen2-map)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -39,7 +39,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adr
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   Pokud chcete upgradovat verzi PowerShellu, přečtěte si téma [upgrade existujícího prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) .
+   Pokud chcete upgradovat verzi PowerShellu, přečtěte si téma [upgrade existujícího prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell) .
     
 2. Nainstalujte modul **AZ. Storage** .
 
@@ -47,7 +47,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adr
    Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
-   Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) .
+   Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) .
 
 ## <a name="connect-to-the-account"></a>Připojit k účtu
 
@@ -266,9 +266,9 @@ Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $file
 
 Pomocí `-Force` parametru můžete soubor odebrat bez výzvy.
 
-## <a name="manage-access-permissions"></a>Správa přístupových oprávnění
+## <a name="manage-access-control-lists-acls"></a>Správa seznamů řízení přístupu (ACL)
 
-Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů. Tato oprávnění jsou zachycena v seznamech řízení přístupu (ACL).
+Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů.
 
 > [!NOTE]
 > Pokud k autorizaci příkazů používáte Azure Active Directory (Azure AD), ujistěte se, že je vašemu objektu zabezpečení přiřazená [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).

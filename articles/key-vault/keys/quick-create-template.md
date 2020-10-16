@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 5f8c1436b7e1a4155a99b20ced5c35614f1966f9
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 55641dacf8f7efb18b479dd4b4253787df540341
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128636"
+ms.locfileid: "92132444"
 ---
-# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Rychlý Start: vytvoření trezoru klíčů Azure a klíče pomocí šablony ARM 
+# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Rychlý Start: vytvoření trezoru klíčů Azure a klíče pomocí šablony ARM (Preview)
 
 [Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů, jako jsou klíče, hesla, certifikáty a další tajné kódy. Tento rychlý Start se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření trezoru klíčů a klíče.
 
@@ -210,7 +210,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Trezor klíčů a tajný klíč pomocí šablony ARM a nasazování ověřili. Další informace o Key Vault a Azure Resource Manager najdete dál v článcích níže.
+V tomto rychlém startu jste vytvořili Trezor klíčů a klíč pomocí šablony ARM a nasazování ověřili. Další informace o Key Vault a Azure Resource Manager najdete dál v článcích níže.
 
 - Přečtěte si [přehled Azure Key Vault](../general/overview.md)
 - Další informace o [Azure Resource Manageru](../../azure-resource-manager/management/overview.md)

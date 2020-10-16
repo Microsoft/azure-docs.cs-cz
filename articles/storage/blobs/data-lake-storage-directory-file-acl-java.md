@@ -9,12 +9,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: f3ab2a19179c80765ba69e748b1421caae200fb8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 94696eacd9a75129f493a97bca201ad5ffb3456c
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101235"
+ms.locfileid: "92131560"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java
 
@@ -188,53 +188,6 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
-## <a name="manage-a-directory-acl"></a>Správa seznamu ACL adresáře
-
-Tento příklad načte a potom nastaví seznam řízení přístupu k adresáři s názvem `my-directory` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
-
-> [!NOTE]
-> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
-
-```java
-static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
-
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
-
-    PathAccessControl directoryAccessControl =
-        directoryClient.getAccessControl();
-
-    List<PathAccessControlEntry> pathPermissions = directoryAccessControl.getAccessControlList();
-       
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-             
-    RolePermissions groupPermission = new RolePermissions();
-    groupPermission.setExecutePermission(true).setReadPermission(true);
-  
-    RolePermissions ownerPermission = new RolePermissions();
-    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-  
-    RolePermissions otherPermission = new RolePermissions();
-    otherPermission.setReadPermission(true);
-  
-    PathPermissions permissions = new PathPermissions();
-  
-    permissions.setGroup(groupPermission);
-    permissions.setOwner(ownerPermission);
-    permissions.setOther(otherPermission);
-
-    directoryClient.setPermissions(permissions, null, null);
-
-    pathPermissions = directoryClient.getAccessControl().getAccessControlList();
-     
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-
-}
-
-```
-
-Můžete také získat a nastavit seznam ACL kořenového adresáře kontejneru. Chcete-li získat kořenový adresář, předejte prázdný řetězec ( `""` ) do metody **DataLakeFileSystemClient. getDirectoryClient** .
-
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
 
 Nejprve vytvořte odkaz na soubor v cílovém adresáři vytvořením instance třídy **DataLakeFileClient** . Nahrajte soubor voláním metody **DataLakeFileClient. Append** . Ujistěte se, že jste dokončí nahrávání voláním metody **DataLakeFileClient. FlushAsync** .
@@ -284,53 +237,6 @@ static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
 
     }
 
-```
-
-## <a name="manage-a-file-acl"></a>Správa seznamu ACL souboru
-
-Tento příklad načte a potom nastaví seznam řízení přístupu k souboru s názvem `upload-file.txt` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
-
-> [!NOTE]
-> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
-
-```java
-static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
-
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
-
-    DataLakeFileClient fileClient = 
-        directoryClient.getFileClient("uploaded-file.txt");
-
-    PathAccessControl fileAccessControl =
-        fileClient.getAccessControl();
-
-    List<PathAccessControlEntry> pathPermissions = fileAccessControl.getAccessControlList();
-     
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-           
-    RolePermissions groupPermission = new RolePermissions();
-    groupPermission.setExecutePermission(true).setReadPermission(true);
-
-    RolePermissions ownerPermission = new RolePermissions();
-    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-
-    RolePermissions otherPermission = new RolePermissions();
-    otherPermission.setReadPermission(true);
-
-    PathPermissions permissions = new PathPermissions();
-
-    permissions.setGroup(groupPermission);
-    permissions.setOwner(ownerPermission);
-    permissions.setOther(otherPermission);
-
-    fileClient.setPermissions(permissions, null, null);
-
-    pathPermissions = fileClient.getAccessControl().getAccessControlList();
-   
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-
-}
 ```
 
 ## <a name="download-from-a-directory"></a>Stažení z adresáře
@@ -392,11 +298,112 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 }
 ```
 
+## <a name="manage-access-control-lists-acls"></a>Správa seznamů řízení přístupu (ACL)
+
+Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů.
+
+> [!NOTE]
+> Pokud k autorizaci přístupu používáte Azure Active Directory (Azure AD), ujistěte se, že je vašemu objektu zabezpečení přiřazená [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+### <a name="manage-a-directory-acl"></a>Správa seznamu ACL adresáře
+
+Tento příklad načte a potom nastaví seznam řízení přístupu k adresáři s názvem `my-directory` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
+
+> [!NOTE]
+> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+```java
+static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
+
+    DataLakeDirectoryClient directoryClient =
+        fileSystemClient.getDirectoryClient("my-directory");
+
+    PathAccessControl directoryAccessControl =
+        directoryClient.getAccessControl();
+
+    List<PathAccessControlEntry> pathPermissions = directoryAccessControl.getAccessControlList();
+       
+    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+             
+    RolePermissions groupPermission = new RolePermissions();
+    groupPermission.setExecutePermission(true).setReadPermission(true);
+  
+    RolePermissions ownerPermission = new RolePermissions();
+    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
+  
+    RolePermissions otherPermission = new RolePermissions();
+    otherPermission.setReadPermission(true);
+  
+    PathPermissions permissions = new PathPermissions();
+  
+    permissions.setGroup(groupPermission);
+    permissions.setOwner(ownerPermission);
+    permissions.setOther(otherPermission);
+
+    directoryClient.setPermissions(permissions, null, null);
+
+    pathPermissions = directoryClient.getAccessControl().getAccessControlList();
+     
+    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+
+}
+
+```
+
+Můžete také získat a nastavit seznam ACL kořenového adresáře kontejneru. Chcete-li získat kořenový adresář, předejte prázdný řetězec ( `""` ) do metody **DataLakeFileSystemClient. getDirectoryClient** .
+
+### <a name="manage-a-file-acl"></a>Správa seznamu ACL souboru
+
+Tento příklad načte a potom nastaví seznam řízení přístupu k souboru s názvem `upload-file.txt` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
+
+> [!NOTE]
+> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma  [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+```java
+static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
+
+    DataLakeDirectoryClient directoryClient =
+        fileSystemClient.getDirectoryClient("my-directory");
+
+    DataLakeFileClient fileClient = 
+        directoryClient.getFileClient("uploaded-file.txt");
+
+    PathAccessControl fileAccessControl =
+        fileClient.getAccessControl();
+
+    List<PathAccessControlEntry> pathPermissions = fileAccessControl.getAccessControlList();
+     
+    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+           
+    RolePermissions groupPermission = new RolePermissions();
+    groupPermission.setExecutePermission(true).setReadPermission(true);
+
+    RolePermissions ownerPermission = new RolePermissions();
+    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
+
+    RolePermissions otherPermission = new RolePermissions();
+    otherPermission.setReadPermission(true);
+
+    PathPermissions permissions = new PathPermissions();
+
+    permissions.setGroup(groupPermission);
+    permissions.setOwner(ownerPermission);
+    permissions.setOther(otherPermission);
+
+    fileClient.setPermissions(permissions, null, null);
+
+    pathPermissions = fileClient.getAccessControl().getAccessControlList();
+   
+    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
+
+}
+```
+
 ## <a name="see-also"></a>Viz také
 
 * [Referenční dokumentace k rozhraní API](/java/api/overview/azure/storage-file-datalake-readme)
 * [Balíček (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
-* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
+* [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
 * [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)

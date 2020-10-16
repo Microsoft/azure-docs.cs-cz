@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ddc0dc433a5d8c09c692e6304647fb391694e8c8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993162"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132053"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
 
@@ -26,7 +26,7 @@ Tento článek popisuje kroky pro shromažďování protokolů z Active Director
 Podrobné protokoly aktivit popsané tady by měly být povolené **jenom** během vývoje vlastních zásad.
 
 > [!WARNING]
-> Nepovolujte režim vývoje v produkčním prostředí. Protokoly shromažďují všechny deklarace identity odeslané do a od zprostředkovatelů identity. Jako vývojář se předpokládá zodpovědnost za jakékoli osobní údaje shromážděné v protokolech Application Insights. Tyto podrobné protokoly se shromažďují jenom v případě, že zásady jsou umístěné v **režimu pro vývojáře**.
+> `DeploymentMode` `Developer` V produkčních prostředích nenastavujte na. Protokoly shromažďují všechny deklarace identity odeslané do a od zprostředkovatelů identity. Jako vývojář se předpokládá zodpovědnost za jakékoli osobní údaje shromážděné v protokolech Application Insights. Tyto podrobné protokoly se shromažďují jenom v případě, že zásady jsou umístěné v **režimu pro vývojáře**.
 
 ## <a name="set-up-application-insights"></a>Nastavit Application Insights
 
@@ -58,11 +58,11 @@ Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insight
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
-    * `DeveloperMode="true"` dává ApplicationInsights pokyn k urychlení telemetrie prostřednictvím kanálu zpracování. Vhodné pro vývoj, ale omezení na vysoké objemy.
+    * `DeveloperMode="true"` dává ApplicationInsights pokyn k urychlení telemetrie prostřednictvím kanálu zpracování. Vhodné pro vývoj, ale omezení na vysoké objemy. V produkčním prostředí nastavte `DeveloperMode` na `false` .
     * `ClientEnabled="true"` pošle skript ApplicationInsights na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"` přidáte Application Insights do skriptu stránky a získáte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné**a je nastavené na `false` výchozí hodnotu.
     * `ServerEnabled="true"` odešle existující UserJourneyRecorder JSON jako vlastní událost pro Application Insights.
 
-    Příklad:
+    Například:
 
     ```xml
     <TrustFrameworkPolicy
@@ -94,7 +94,7 @@ Předtím, než budete moci zobrazit nové protokoly v Application Insights, exi
 
 Tady je seznam dotazů, které můžete použít k zobrazení protokolů:
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |---------------------|--------------------|
 `traces` | Zobrazit všechny protokoly vygenerované Azure AD B2C |
 `traces | where timestamp > ago(1d)` | Zobrazit všechny protokoly vygenerované Azure AD B2C za poslední den
@@ -102,6 +102,31 @@ Tady je seznam dotazů, které můžete použít k zobrazení protokolů:
 Položky mohou být dlouhé. Pro lepší vzhled exportujte do sdíleného svazku clusteru.
 
 Další informace o dotazování najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="configure-application-insights-in-production"></a>Konfigurace Application Insights v produkčním prostředí
+
+Pro zlepšení výkonu produkčního prostředí a lepší zkušenosti uživatelů je důležité nakonfigurovat zásady tak, aby ignorovaly neimportované zprávy. Pomocí následující konfigurace pošlete do Application Insights jenom kritické chybové zprávy. 
+
+1. Nastavte `DeploymentMode` atribut [TrustFrameworkPolicy](trustframeworkpolicy.md) na `Production` . 
+
+   ```xml
+   <TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0"
+   TenantId="yourtenant.onmicrosoft.com"
+   PolicyId="B2C_1A_signup_signin"
+   PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_signup_signin"
+   DeploymentMode="Production"
+   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+   ```
+
+1. Nastavte `DeveloperMode` [JourneyInsights](relyingparty.md#journeyinsights) na `false` .
+
+   ```xml
+   <UserJourneyBehaviors>
+     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="false" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+   </UserJourneyBehaviors>
+   ```
+   
+1. Nahrajte a otestujte vaše zásady.
 
 ## <a name="next-steps"></a>Další kroky
 

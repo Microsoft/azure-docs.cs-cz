@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cc49bec71f6c591ca3036592b0949e3fc7cef48e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 466851ce04a047f3edabcf33b45dba9cab0db20e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263772"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132699"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Přehled agenta Azure Monitor (Preview)
 Agent Azure Monitor (AMA) shromažďuje data monitorování z hostovaného operačního systému virtuálních počítačů a doručuje je do Azure Monitor. V tomto článku najdete přehled agenta Azure Monitor, včetně postupu jeho instalace a konfigurace shromažďování dat.
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedeny typy dat, které můžete v současnosti s
 
 Agent Azure Monitor odesílá data do Azure Monitor metrik nebo Log Analytics pracovní prostor podporující protokoly Azure Monitor.
 
-| Zdroj dat | Cíle | Description |
+| Zdroj dat | Cíle | Popis |
 |:---|:---|:---|
 | Výkon        | Azure Monitor metriky<br>Pracovní prostor služby Log Analytics | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Protokoly událostí systému Windows | Pracovní prostor služby Log Analytics | Informace odesílané systému protokolování událostí systému Windows. |
@@ -84,7 +84,7 @@ Agent Azure Monitor odesílá data do Azure Monitor metrik nebo Log Analytics pr
 
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
-Seznam verzí operačních systémů Windows a Linux, které jsou aktuálně podporované agentem Log Analytics, najdete v části [podporované operační systémy](agents-overview.md#supported-operating-systems) .
+Seznam verzí operačních systémů Windows a Linux, které jsou aktuálně podporované agentem Azure Monitor, najdete v části [podporované operační systémy](agents-overview.md#supported-operating-systems) .
 
 
 

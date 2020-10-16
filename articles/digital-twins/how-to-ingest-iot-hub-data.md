@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e53a7f5e76a6161016cbbb6b3566de4cad923f6a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048045"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131492"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -22,7 +22,7 @@ Proces pro ingestování dat do digitálních vláken Azure je nastavení extern
 
 Tento postup popisuje, jak dokumentovat pomocí procesu vytváření funkce Azure, která může ingestovat telemetrii od IoT Hub.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v tomto příkladu, budete muset nastavit následující prostředky jako požadavky:
 * **Centrum IoT**. Pokyny najdete v části *vytvoření IoT Hub* [tohoto IoT Hub rychlé](../iot-hub/quickstart-send-telemetry-cli.md)spuštění.
@@ -242,7 +242,7 @@ Vyberte _vytvořit_ a vytvořte odběr událostí.
 
 ## <a name="send-simulated-iot-data"></a>Odeslat Simulovaná data IoT
 
-Pokud chcete otestovat novou funkci příchozího přenosu dat, použijte simulátor zařízení z [*kurzu: připojení kompletního řešení*](./tutorial-end-to-end.md). Tento kurz se řídí ukázkovým projektem napsaným v jazyce C#. Vzorový kód je umístěný tady: [ukázky digitálních vláken Azure](/samples/azure-samples/digital-twins-samples/digital-twins-samples). V tomto úložišti budete používat projekt **DeviceSimulator** .
+Pokud chcete otestovat novou funkci příchozího přenosu dat, použijte simulátor zařízení z [*kurzu: připojení kompletního řešení*](./tutorial-end-to-end.md). Tento kurz se řídí ukázkovým projektem napsaným v jazyce C#. Vzorový kód je umístěný tady: [Azure Digital dokončí ukázky](/samples/azure-samples/digital-twins-samples/digital-twins-samples). V tomto úložišti budete používat projekt **DeviceSimulator** .
 
 V tomto koncovém kurzu proveďte následující kroky:
 1. [*Zaregistrujte simulované zařízení s IoT Hub*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)

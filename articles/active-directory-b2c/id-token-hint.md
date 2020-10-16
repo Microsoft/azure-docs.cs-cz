@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eca75ac4fefcf7164c247c4da4b58ccf7c03334c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564808"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132070"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definice technického profilu pomocného tokenu ID v Azure Active Directory B2C vlastní zásady
 
@@ -34,7 +34,7 @@ Pomocí id_token_hint Vystavitel tokenu (aplikace předávající strany nebo po
 
 Id_token_hint musí být platný token JWT. V následující tabulce jsou uvedeny deklarace identity, které jsou povinné. Další deklarace identity jsou volitelné.
 
-| Name | Deklarovat | Příklad hodnoty | Description |
+| Název | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifikuje zamýšleného příjemce tokenu. Toto je libovolný řetězec definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a odmítne token, pokud se neshoduje.  |
 | Vystavitel | `iss` |`https://localhost` | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Toto je libovolný identifikátor URI definovaný vystavitelem tokenu. Azure AD B2C ověří tuto hodnotu a odmítne token, pokud se neshoduje.  |
@@ -84,16 +84,16 @@ Následující metadata jsou relevantní při použití symetrického klíče.
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| issuer | Yes | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace tokenu JWT. | 
-| IdTokenAudience | Yes | Identifikuje zamýšleného příjemce tokenu. Musí být identické `aud` s deklarací identity s deklarací tokenu JWT. | 
+| issuer | Ano | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota musí být shodná s `iss` deklarací identity v rámci deklarace tokenu JWT. | 
+| IdTokenAudience | Ano | Identifikuje zamýšleného příjemce tokenu. Musí být identické `aud` s deklarací identity s deklarací tokenu JWT. | 
 
-Následující metadata jsou relevantní při použití symetrického klíče. 
+Následující metadata jsou relevantní při použití asymetrického klíče. 
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MEZIPAMĚŤ| Yes | Adresa URL, která odkazuje na dokument konfigurace vystavitele tokenu, který je také známý jako OpenID dobře známý koncový bod konfigurace.   |
-| issuer | No | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota se dá použít k přepsání hodnoty nakonfigurované v metadatech a musí být identická s `iss` deklarací identity v rámci deklarace tokenu JWT. |  
-| IdTokenAudience | No | Identifikuje zamýšleného příjemce tokenu. Tato hodnota se dá použít k přepsání hodnoty nakonfigurované v metadatech a musí být identická s `aud` deklarací identity v rámci deklarace tokenu JWT. |  
+| MEZIPAMĚŤ| Ano | Adresa URL, která odkazuje na dokument konfigurace vystavitele tokenu, který je také známý jako OpenID dobře známý koncový bod konfigurace.   |
+| issuer | Ne | Identifikuje službu tokenu zabezpečení (Vystavitel tokenů). Tato hodnota se dá použít k přepsání hodnoty nakonfigurované v metadatech a musí být identická s `iss` deklarací identity v rámci deklarace tokenu JWT. |  
+| IdTokenAudience | Ne | Identifikuje zamýšleného příjemce tokenu. Musí být identické `aud` s deklarací identity s deklarací tokenu JWT. |  
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -101,7 +101,7 @@ Při použití symetrického klíče obsahuje element **CryptographicKeys** nás
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Kryptografický klíč, který se používá k ověření podpisu tokenu JWT.|
+| client_secret | Ano | Kryptografický klíč, který se používá k ověření podpisu tokenu JWT.|
 
 
 ## <a name="how-to-guide"></a>Praktičtí průvodci
@@ -219,7 +219,7 @@ Následující technický profil ověří token a extrahuje deklarace. Změňte 
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <!-- <Item Key="IdTokenAudience">your_optional_audience_override</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>

@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 84af781ae58ab45b69d71ebdc22fbced910da246
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074256"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132478"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -589,8 +589,8 @@ Tato funkce je k dispozici pro použití v pravidle zásad, ale liší se od pou
 Následující funkce jsou dostupné jenom v pravidlech zásad:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime `yyyy-MM-ddTHH:mm:ss.fffffffZ` .
-  - **numberOfDaysToAdd**: [required] celočíselný počet dní k přidání.
+  - **DateTime**: [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime "rrrr-MM-DDThh: mm: ss. FFFFFFFZ'
+  - **numberOfDaysToAdd**: [povinné] celé číslo-počet dnů k přidání
 - `field(fieldName)`
   - **FieldName**: [required] řetězec-název [pole](#fields) , které se má načíst
   - Vrátí hodnotu tohoto pole z prostředku, který je vyhodnocován podmínkou if.

@@ -10,20 +10,20 @@ ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6140260b75580270b365e59358d97e0a54c7b4a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22d048b15cc097cd8a24e5ed57bbe4d5a6183e2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503935"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131594"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
-V tomto článku se dozvíte, jak pomocí rozhraní příkazového [řádku Azure Command-Line](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají hierarchický obor názvů. 
+V tomto článku se dozvíte, jak pomocí rozhraní příkazového [řádku Azure Command-Line](https://docs.microsoft.com/cli/azure/) vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají hierarchický obor názvů. 
 
 [Ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-cli-extensions/issues)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -32,14 +32,14 @@ V tomto článku se dozvíte, jak pomocí rozhraní příkazového [řádku Azur
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Ujistěte se, že máte nainstalovanou správnou verzi rozhraní příkazového řádku Azure CLI.
 
-1. Otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)nebo pokud máte rozhraní příkazového řádku Azure místně [nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , otevřete konzolovou aplikaci, například Windows PowerShell.
+1. Otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)nebo pokud máte rozhraní příkazového řádku Azure místně [nainstalované](https://docs.microsoft.com/cli/azure/install-azure-cli) , otevřete konzolovou aplikaci, například Windows PowerShell.
 
 2. Pomocí následujícího příkazu ověřte, že verze rozhraní příkazového řádku Azure, která je nainstalovaná, je `2.6.0` nebo vyšší.
 
    ```azurecli
     az --version
    ```
-   Pokud je vaše verze rozhraní příkazového řádku Azure nižší než `2.6.0` , nainstalujte novější verzi. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Pokud je vaše verze rozhraní příkazového řádku Azure nižší než `2.6.0` , nainstalujte novější verzi. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="connect-to-the-account"></a>Připojit k účtu
 
@@ -216,7 +216,7 @@ Tento příklad odstraní soubor s názvem `my-file.txt`
 az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
 ```
 
-## <a name="manage-permissions"></a>Správa oprávnění
+## <a name="manage-access-control-lists-acls"></a>Správa seznamů řízení přístupu (ACL)
 
 Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů.
 
@@ -273,7 +273,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 
 Následující obrázek ukazuje výstup po nastavení seznamu ACL souboru.
 
-![Získat výstup ACL](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
+![Získat výstup ACL 2](./media/data-lake-storage-directory-file-acl-cli/set-acl-file.png)
 
 V tomto příkladu mají vlastnící uživatel a vlastnící skupina jenom oprávnění ke čtení a zápisu. Všichni ostatní uživatelé mají oprávnění k zápisu a spouštění. Další informace o seznamech řízení přístupu najdete [v tématu řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
@@ -311,7 +311,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ## <a name="see-also"></a>Viz také
 
-* [ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
+* [Ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-cli-extensions/issues)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 

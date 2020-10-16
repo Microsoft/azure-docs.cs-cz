@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 0d6d543e1f7d68f1312b6531b798cf7f9a0cf3b8
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 848894518077ca41d3166570bf0dc39914f1c439
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048504"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131152"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -31,7 +31,7 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si **[ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** hned teď.
 
@@ -39,7 +39,7 @@ Budete také potřebovat **Node.js** na svém počítači. Nejnovější verzi m
 
 Nakonec budete muset stáhnout dvě ukázky, které byste měli použít při rychlém startu:
 * Ukázková aplikace **Průzkumníka aplikace ADT** Tato ukázka obsahuje hlavní aplikaci, kterou používáte v rychlém startu k načtení a prozkoumání scénáře digitálních vláken Azure. Aplikaci získáte tak, že přejdete sem: [Průzkumník digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu do vašeho počítače. Tím se stáhne. Složka ZIP na váš počítač jako _**Azure_Digital_Twins__ADT__explorer.zip**_. Rozbalte složku a extrahujte soubory.
-* **Příklad scénáře digitálních vláken Azure** To zahrnuje předem sestavený graf digitálních vláken Azure, který budete načítat do Průzkumníka služby ADT, abyste mohli pracovat s. Scénář získáte tak, že přejdete sem: [ukázky digitálních vláken Azure](/samples/azure-samples/digital-twins-samples/digital-twins-samples). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu do vašeho počítače. Tím se stáhne. Složka ZIP na váš počítač jako _**Azure_Digital_Twins_samples.zip**_. Rozbalte složku a extrahujte soubory.
+* **Příklad scénáře digitálních vláken Azure** To zahrnuje předem sestavený graf digitálních vláken Azure, který budete načítat do Průzkumníka služby ADT, abyste mohli pracovat s. Pokud chcete scénář získat, přejděte sem: [Azure Digital se dokončí kompletními ukázkami](/samples/azure-samples/digital-twins-samples/digital-twins-samples). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu do vašeho počítače. Tím se stáhne. Složka ZIP na váš počítač jako _**Azure_Digital_Twins_end_to_end_samples.zip**_. Rozbalte složku a extrahujte soubory.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Nastavení digitálních vláken Azure a Průzkumníka služby ADT
 
@@ -118,7 +118,7 @@ Pokud se zobrazí *oprávnění požadované* automaticky otevírané okno od sp
 
 V dalším kroku naimportujete vzorový scénář a graf do nástroje ADT Explorer.
 
-Vzorový scénář je umístěný ve složce stažené a oddálení  _**Azure_Digital_Twins_samples**_ , takže byste měli přejít do složky hned teď.
+Vzorový scénář je umístěný ve složce stažené a oddálení  _**Azure_Digital_Twins_end_to_end_samples**_ , takže byste měli přejít do složky hned teď.
 
 ### <a name="models"></a>Modely
 
@@ -141,7 +141,7 @@ V poli *zobrazení modelu* stiskněte tlačítko nahrát ikonu *modelu* .
 
 :::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
-1. V zobrazeném poli pro výběr souboru přejděte do složky *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp/Models* ve staženém úložišti.
+1. V zobrazeném poli pro výběr souboru přejděte do složky *Azure_Digital_Twins_end_to_end_samples/adtsampleapp/sampleclientapp/Models* ve staženém úložišti.
 2. Vyberte *Room.jszapnuto* a *Floor.js*a stiskněte OK. (Další modely můžete nahrát, pokud chcete, ale nepoužijí se v tomto rychlém startu.)
 3. Použijte místní dialogové okno s výzvou, abyste se přihlásili ke svému účtu Azure.
 
@@ -179,7 +179,7 @@ V poli *zobrazení grafu* stiskněte ikonu *Import grafu* .
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-V poli pro výběr souboru přejděte do složky *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp* a vyberte soubor tabulky _**buildingScenario.xlsx**_ . Tento soubor obsahuje popis ukázkového grafu. Stiskněte OK.
+V poli pro výběr souboru přejděte do složky *Azure_Digital_Twins_end_to_end_samples/adtsampleapp/sampleclientapp* a vyberte soubor tabulky _**buildingScenario.xlsx**_ . Tento soubor obsahuje popis ukázkového grafu. Stiskněte OK.
 
 Po několika sekundách otevře Průzkumník aplikace ADT zobrazení pro *Import* , ve kterém se zobrazí náhled grafu, který se bude načítat.
 
@@ -321,7 +321,7 @@ Pokud máte v úmyslu pokračovat na kurzy digitálních vláken Azure, instance
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (_**Azure_Digital_Twins__ADT__explorer**_ a _**Azure_Digital_Twins_samples**_). Možná bude nutné odstranit verze zip i unzip.
+Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (_**Azure_Digital_Twins__ADT__explorer**_ a _**Azure_Digital_Twins_end_to_end_samples**_). Možná bude nutné odstranit verze zip i unzip.
 
 ## <a name="next-steps"></a>Další kroky 
 

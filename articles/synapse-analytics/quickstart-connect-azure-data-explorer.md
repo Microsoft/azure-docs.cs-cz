@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: připojení služby Azure Průzkumník dat k pracovnímu prostoru synapse'
-description: Jak připojit cluster Azure Průzkumník dat k pracovnímu prostoru synapse pomocí Azure synapse Apache Spark
+title: 'Rychlý Start: připojení Azure Průzkumník dat k pracovnímu prostoru Azure synapse Analytics'
+description: Připojte cluster Azure Průzkumník dat k pracovnímu prostoru Azure synapse Analytics pomocí Apache Spark pro Azure synapse Analytics.
 services: synapse-analytics
 author: manojraheja
 ms.service: synapse-analytics
@@ -9,73 +9,74 @@ ms.subservice: overview
 ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99ccc2f4d7e3adbba704f784025abfdfa8b96f52
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7412e595d3ae0604f57467701852743b737a591a
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090654"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132189"
 ---
-# <a name="connect-to-azure-data-explorer-using-synapse-apache-spark"></a>Připojení k Azure Průzkumník dat pomocí synapse Apache Spark
+# <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>Připojení k Azure Průzkumník dat pomocí Apache Spark pro Azure synapse Analytics
 
-Tento článek popisuje, jak získat přístup k databázím Azure Průzkumník dat ze synapse studia pomocí Apache Spark synapse. 
+Tento článek popisuje, jak získat přístup k databázi Azure Průzkumník dat z synapse studia pomocí Apache Spark pro Azure synapse Analytics.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * [Vytvořte cluster a databázi Azure Průzkumník dat](/azure/data-explorer/create-cluster-database-portal).
-* Existující pracovní prostor synapse nebo vytvořit nový pracovní prostor za tímto [rychlým startem](./quickstart-create-workspace.md) 
-* Existující fond Apache Spark synapse nebo vytvořit nový fond po tomto [rychlém](./quickstart-create-apache-spark-pool-portal.md) startu
-* [Vytvořte aplikaci Azure AD tím, že zřídíte aplikaci Azure AD.](/azure/data-explorer/kusto/management/access-control/how-to-provision-aad-app)
-* Udělte vaší aplikaci Azure AD přístup k databázi po [správě oprávnění azure Průzkumník dat Database](/azure/data-explorer/manage-database-permissions) .
+* Vytvořte si existující pracovní prostor služby Azure synapse Analytics nebo vytvořte nový pracovní prostor podle kroků v části [rychlý Start: vytvoření pracovního prostoru Azure synapse](./quickstart-create-workspace.md).
+* Mít existující fond Apache Spark nebo vytvořit nový fond podle kroků v části [rychlý Start: Vytvoření fondu Apache Spark pomocí Azure Portal](./quickstart-create-apache-spark-pool-portal.md).
+* [Vytvořte aplikaci Azure Active Directory (Azure AD) zřízením aplikace služby Azure AD](/azure/data-explorer/kusto/management/access-control/how-to-provision-aad-app).
+* Pomocí postupu v části [Správa oprávnění k databázi azure Průzkumník dat](/azure/data-explorer/manage-database-permissions)udělte aplikaci Azure AD přístup k vaší databázi.
 
-## <a name="navigate-to-synapse-studio"></a>Přejít na synapse Studio
+## <a name="go-to-synapse-studio"></a>Přejít na synapse Studio
 
-V pracovním prostoru synapse vyberte **Spustit synapse Studio**. Na domovské stránce synapse studia vyberte **data**, která vás zajímají do **Průzkumník objektů dat**.
+V pracovním prostoru Azure synapse vyberte **Spustit synapse Studio**. Na domovské stránce synapse studia vyberte **data** , která chcete přejít na **data Průzkumník objektů**.
 
-## <a name="connect-an-azure-data-explorer-database-to-a-synapse-workspace"></a>Připojení databáze Azure Průzkumník dat k pracovnímu prostoru synapse
+## <a name="connect-an-azure-data-explorer-database-to-an-azure-synapse-workspace"></a>Připojení databáze Azure Průzkumník dat k pracovnímu prostoru Azure synapse
 
-Připojení databáze služby Azure Průzkumník dat k pracovnímu prostoru se provádí prostřednictvím propojené služby. Propojená služba Azure Data prozkoumává umožňuje uživatelům procházet a zkoumat data, číst a zapisovat z Apache Spark pro analýzy Azure synapse a spouštět úlohy integrace v kanálu.
+Připojení databáze Azure Průzkumník dat k pracovnímu prostoru se provádí prostřednictvím propojené služby. S propojenou službou Azure Průzkumník dat můžete procházet a zkoumat data, číst a zapisovat z Apache Spark pro Azure synapse. V kanálu můžete také spouštět úlohy integrace.
 
 V Průzkumník objektů dat postupujte podle těchto kroků a přímo připojte cluster Azure Průzkumník dat:
 
-1. Výběr **+** ikony poblíž dat
-2. Vyberte **připojit** k externím datům
-3. Vyberte **Azure Průzkumník dat (Kusto)**
-5. Vyberte **Pokračovat**.
-6. Pojmenujte propojenou službu. Název se zobrazí v Průzkumník objektů a bude používán synapse dobou běhu pro připojení k databázi. Doporučujeme použít popisný název.
-7. V předplatném vyberte cluster Azure Data Prozkoumejte nebo zadejte identifikátor URI.
-8. Zadejte ID instančního objektu a klíč instančního objektu (zajistěte, aby měl tento instanční objekt přístup k zobrazení v databázi pro operaci čtení a přístup k ingestu pro ingestování dat).
-9. Zadejte název databáze služby Azure Průzkumník dat.
-10. Klikněte na **Test připojení** a ujistěte se, že máte správná oprávnění.
-11. Vyberte **Vytvořit**.
+1. Vyberte **+** ikonu s blízkými **daty**.
+1. Vyberte **připojit** a připojte se k externím datům.
+1. Vyberte **Azure Průzkumník dat (Kusto)**.
+1. Vyberte **Pokračovat**.
+1. Pro pojmenování propojené služby použijte popisný název. Název se zobrazí v datovém Průzkumník objektů a použije se modul runtime Azure Synapse k připojení k databázi.
+1. Z vašeho předplatného vyberte cluster Azure Průzkumník dat, nebo zadejte identifikátor URI.
+1. Zadejte **ID instančního objektu** a **klíč instančního objektu služby**. Zajistěte, aby měl tento instanční objekt přístup k zobrazení v databázi pro operaci čtení a přístup k ingestu pro ingestování dat.
+1. Zadejte název databáze služby Azure Průzkumník dat.
+1. Vyberte **Test připojení** , abyste měli jistotu, že máte správná oprávnění.
+1. Vyberte **Vytvořit**.
 
-    ![Nová propojená služba](./media/quickstart-connect-azure-data-explorer/003-new-linked-service.png)
+    ![Snímek obrazovky, který zobrazuje novou propojenou službu.](./media/quickstart-connect-azure-data-explorer/003-new-linked-service.png)
 
     > [!NOTE]
-    > Volitelné Test Connection neověřuje přístup pro zápis. Ujistěte se, že ID instančního objektu má oprávnění k zápisu do databáze služby Azure Průzkumník dat.
+    > Volitelné **Test připojení** neověřuje přístup pro zápis. Ujistěte se, že ID instančního objektu má oprávnění k zápisu do databáze služby Azure Průzkumník dat.
 
-12. Clustery a databáze Azure Průzkumník dat jsou viditelné na kartě  **propojená** v části Azure Průzkumník dat. 
+1. Clustery a clustery Azure Průzkumník dat se zobrazí na kartě **propojená** v části **Azure Průzkumník dat** .
 
-    ![Procházet clustery](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
+    ![Snímek obrazovky, který ukazuje procházení clusterů.](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
 
-    > [!NOTE] 
-    > V aktuální verzi se databázové objekty naplní na základě oprávnění účtu AAD v databázích Azure Průzkumník dat. Když spustíte Apache Spark poznámkových blocích nebo integrační úlohy, použije se přihlašovací údaje ve službě Link (tj. instanční objekt).
-
+    > [!NOTE]
+    > V aktuální verzi se objekty databáze naplní na základě oprávnění účtu Azure AD v databázích Azure Průzkumník dat. Když spustíte Apache Spark poznámkových blocích nebo integrační úlohy, použije se přihlašovací údaje ve službě propojení (například instanční objekt).
 
 ## <a name="quickly-interact-with-code-generated-actions"></a>Rychlá interakce s akcemi generovanými kódem
 
-* Když kliknete pravým tlačítkem na databázi nebo tabulku, budete mít k dispozici seznam gest, které aktivují ukázkový Poznámkový blok Spark pro čtení dat, zápis dat a streamování dat do Azure Průzkumník dat. 
-    [![Nové ukázkové poznámkové bloky](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png)](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png#lightbox)
+Po kliknutí pravým tlačítkem myši na databázi nebo tabulku se zobrazí seznam ukázkových poznámkových bloků Spark. Vyberte možnost čtení, zápisu nebo streamování dat do Azure Průzkumník dat.
 
-* Tady je příklad čtení dat. Připojit Poznámkový blok ke svojí fondu Spark a spustit [ ![ novou buňku pro čtení poznámkového bloku](./media/quickstart-connect-azure-data-explorer/006-read-data.png)](./media/quickstart-connect-azure-data-explorer/006-read-data.png#lightbox)
+[![Snímek obrazovky zobrazující nové ukázkové poznámkové bloky](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png)](./media/quickstart-connect-azure-data-explorer/005-new-notebook.png#lightbox)
 
-   > [!NOTE] 
-   > První spuštění relace Spark může trvat déle než tři minuty. Další spuštění budou výrazně rychlejší.  
+Tady je příklad čtení dat. Připojte Poznámkový blok k vašemu fondu Spark a spusťte buňku.
 
+[![Snímek obrazovky, který zobrazuje Nový Poznámkový blok pro čtení.](./media/quickstart-connect-azure-data-explorer/006-read-data.png)](./media/quickstart-connect-azure-data-explorer/006-read-data.png#lightbox)
+
+   > [!NOTE]
+   > První spuštění může trvat delší dobu než tři minuty, než se spustí relace Sparku. Další spuštění budou výrazně rychlejší.
 
 ## <a name="limitations"></a>Omezení
-Služba Azure Průzkumník dat Connector se v současné době nepodporuje ve spravované virtuální síti Azure synapse.
 
+Konektor Azure Průzkumník dat se v současnosti nepodporuje u virtuálních sítí spravovaných službou Azure synapse.
 
 ## <a name="next-steps"></a>Další kroky
 

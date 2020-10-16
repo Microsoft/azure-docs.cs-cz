@@ -9,12 +9,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6797a0f0f2d4d655bcdabe732f6b14c8f0f562
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277191"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131203"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Přehled integrace mezi Application Gateway a Azure Security Center
 
@@ -44,7 +44,7 @@ Pokud nemáte existující Application Gateway nebo chcete vytvořit nový, klik
 
 Pokud máte existující Aplikační bránu, můžete ji vybrat v části **použít existující řešení** .
 
-![Stránka pro přidání brány firewall webových aplikací][4]
+![Snímek obrazovky se stránkou firewallu pro přidání webové aplikace V části použít existující řešení je brána Application Gateway viditelná.][4]
 
 Přidání webové aplikace do aplikační brány prostřednictvím Security Center nepřidá prostředek jako člena fondu back-end. To je nutné provést přímo na prostředku služby Application Gateway.
 
@@ -62,7 +62,7 @@ Kliknutím na **propojit aplikaci** otevřete **linku aplikace**. zobrazí se zd
 
 Security Center sleduje aplikace přidané do služby Application Gateway jako chráněný prostředek.  Monitoruje stav tohoto prostředku a zajišťuje jeho ochranu pomocí aplikační brány. Dalším krokem je přidání privátní IP adresy, veřejné IP adresy nebo síťové karty virtuálního počítače do back-endového fondu služby Application Gateway. Až to uděláte, zobrazí se další doporučení k **finalizaci ochrany aplikací** , dokud se prostředek nepřidá.
 
-![Stránka pro přidání brány firewall webových aplikací][5]
+![Snímek stránky finalizace aplikace Ochrana s jednou viditelnou aplikací Text vysvětluje, které kroky je nutné provést k ochraně aplikace.][5]
 
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 

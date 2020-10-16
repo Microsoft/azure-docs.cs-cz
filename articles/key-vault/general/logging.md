@@ -10,27 +10,27 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a51e9a628f67269357d42bd1d3af10c1d86f301a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739778"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131169"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Můžete to udělat tak, že povolíte protokolování pro Azure Key Vault, které ukládá informace v účtu úložiště Azure, který poskytnete. Pro zadaný účet úložiště se automaticky vytvoří nový kontejner s názvem **Insights-logs-auditevent** . Stejný účet úložiště můžete použít pro shromažďování protokolů pro více trezorů klíčů.
+Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Můžete to udělat tak, že povolíte protokolování pro Azure Key Vault, které ukládá informace v účtu úložiště Azure, který poskytnete. Podrobné pokyny k tomuto nastavení najdete v tématu [Jak povolit protokolování Key Vault](howto-logging.md).
 
 Po operaci trezoru klíčů máte přístup k informacím o protokolování 10 minut (nejvíce). Ve většině případů to bude rychlejší.  Správa protokolů v účtu úložiště je pouze na vás:
 
 * Zabezpečte protokoly pomocí standardních metod řízení přístupu Azure a určete, kdo k nim má přístup.
 * Odstraňte protokoly, které už nechcete uchovávat v účtu úložiště.
 
-Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md)). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/). Informace o použití [Azure monitor pro Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview).
+Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/). Informace o použití [Azure monitor pro Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview).
 
 ## <a name="interpret-your-key-vault-logs"></a>Interpretujte svoje protokoly Key Vault
+
+Když povolíte protokolování, pro zadaný účet úložiště se automaticky vytvoří nový kontejner s názvem **Insights-logs-auditevent** . Stejný účet úložiště můžete použít pro shromažďování protokolů pro více trezorů klíčů.
 
 Jednotlivé objekty blob jsou uloženy jako text ve formátu JSON blob. Pojďme se podívat na příklad položky protokolu. 
 
@@ -61,7 +61,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 | Název pole | Popis |
 | --- | --- |
-| **interval** |Datum a čas ve standardu UTC. |
+| **time** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
 | **operationName** |Název operace, jak popisuje následující tabulka. |
 | **operationVersion** |Verze REST API požadovaná klientem |
@@ -122,16 +122,15 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | **CertificateNearExpiryEventGridNotification** |Publikovaná událost poblíž vypršení platnosti certifikátu |
 | **CertificateExpiredEventGridNotification** |Událost vypršení platnosti certifikátu byla publikována. |
 
-## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Použití protokolů Azure Monitor
+## <a name="use-azure-monitor-logs"></a>Použití protokolů Azure Monitoru
 
 K revizi protokolů Key Vault můžete použít řešení Key Vault v protokolech Azure Monitor `AuditEvent` . V protokolech Azure Monitor použijete dotazy protokolu k analýze dat a získání informací, které potřebujete. 
 
 Další informace, včetně postupu nastavení, najdete [v tématu Azure Key Vault v Azure monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
 
-## <a name="next-steps"></a><a id="next"></a>Další kroky
+## <a name="next-steps"></a>Další kroky
 
-Kurz, který používá Azure Key Vault ve webové aplikaci .NET, najdete v tématu [použití Azure Key Vault z webové aplikace](tutorial-net-create-vault-azure-web-app.md).
-
-Programátorské reference najdete v [příručce pro vývojáře Azure Key Vault](developers-guide.md).
-
-Seznam rutin Azure PowerShell 1,0 pro Azure Key Vault najdete v tématu [rutiny Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
+- [Postup povolení protokolování Key Vault](howto-logging.md)
+- Kurz, který používá Azure Key Vault ve webové aplikaci .NET, najdete v tématu [použití Azure Key Vault z webové aplikace](tutorial-net-create-vault-azure-web-app.md).
+- Programátorské reference najdete v [příručce pro vývojáře Azure Key Vault](developers-guide.md).
+- Seznam rutin Azure PowerShell 1,0 pro Azure Key Vault najdete v tématu [rutiny Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).

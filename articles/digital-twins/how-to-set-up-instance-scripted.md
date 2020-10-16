@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e8e26f73aef155e4194ca7a4178827b6a7366fb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047416"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132512"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -28,11 +28,11 @@ Tato verze tohoto článku dokončí tento postup spuštěním [ukázky **skript
 
 ## <a name="prerequisites-download-the-script"></a>Požadavky: Stáhněte si skript
 
-Vzorový skript je napsán v prostředí PowerShell. Je součástí [**ukázek digitálních vláken Azure**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), které si můžete stáhnout do svého počítače tak, že přejdete na tento ukázkový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem.
+Vzorový skript je napsán v prostředí PowerShell. Je součástí [**komplexních ukázek Azure pro digitální vlákna**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), které si můžete stáhnout do svého počítače tak, že přejdete na tento ukázkový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem.
 
-Tím se na váš počítač stáhne ukázkový projekt jako _**Azure_Digital_Twins_samples.zip**_. Přejděte do složky na svém počítači a rozbalte ji, abyste soubory rozbalíte.
+Tím se na váš počítač stáhne ukázkový projekt jako _**Azure_Digital_Twins_end_to_end_samples.zip**_. Přejděte do složky na svém počítači a rozbalte ji, abyste soubory rozbalíte.
 
-Ve složce unzip se skript nasazení nachází v _Azure_Digital_Twins_samples > skripty > **deploy.ps1** _.
+Ve složce unzip se skript nasazení nachází v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1** _.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -55,7 +55,7 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Okno Cloud Shell znázorňující výběr verze prostředí PowerShell":::
 
-    Přejděte na soubor _**deploy.ps1**_ na vašem počítači (v _Azure_Digital_Twins_samples > skripty > **deploy.ps1** _) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
+    Přejděte na soubor _**deploy.ps1**_ na vašem počítači (v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1** _) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
 
 4. Spusťte skript odesláním `./deploy.ps1` příkazu v okně Cloud Shell. (Pokud chcete vložit do Cloud Shell, můžete použít **CTRL + SHIFT + v** v systémech Windows a Linux nebo **Cmd + Shift + v** v MacOS. Můžete také použít nabídku kliknutím pravým tlačítkem myši.)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 31d26769fa3ef49684f8a2eedf6a0691316e742b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 77d9d20f3321aa5bb6c5ea47a3949a82bdd1ad75
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071230"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131237"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-policies.md).
@@ -45,9 +45,7 @@ Použijte `cross-domain` zásady, aby rozhraní API bylo dostupné z klientů za
 
 ```xml
 <cross-domain>
-    <cross-domain>
         <allow-http-request-headers-from domain='*' headers='*' />
-    </cross-domain>
 </cross-domain>
 ```
 
@@ -55,7 +53,7 @@ Použijte `cross-domain` zásady, aby rozhraní API bylo dostupné z klientů za
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikaci souboru zásad pro Adobe více domén](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|
+|mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikaci souboru zásad pro Adobe více domén](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ano|
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -126,21 +124,21 @@ Tento příklad ukazuje, jak podporovat žádosti o předběžné lety, jako jso
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|CORS|Kořenový element.|Yes|Není k dispozici|
-|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins` může obsahovat jeden `origin` prvek, který určuje, že `*` má být povolen libovolný původ, nebo jeden či více `origin` prvků, které obsahují identifikátor URI.|Yes|Není k dispozici|
-|origin (zdroj)|Hodnota může být buď `*` tak, aby povolovala všechny zdroje, nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Yes|Pokud je port v identifikátoru URI vynechán, použije se port 80 pro protokol HTTP a port 443 pro protokol HTTPS.|
-|povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje `method` prvky, které určují podporované příkazy HTTP. Hodnota `*` označuje všechny metody.|No|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
+|CORS|Kořenový element.|Ano|Není k dispozici|
+|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins` může obsahovat jeden `origin` prvek, který určuje, že `*` má být povolen libovolný původ, nebo jeden či více `origin` prvků, které obsahují identifikátor URI.|Ano|Není k dispozici|
+|origin (zdroj)|Hodnota může být buď `*` tak, aby povolovala všechny zdroje, nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Ano|Pokud je port v identifikátoru URI vynechán, použije se port 80 pro protokol HTTP a port 443 pro protokol HTTPS.|
+|povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje `method` prvky, které určují podporované příkazy HTTP. Hodnota `*` označuje všechny metody.|Ne|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
 |method|Určuje příkaz HTTP.|`method`Pokud je oddíl přítomen, je vyžadován alespoň jeden prvek `allowed-methods` .|Není k dispozici|
-|povoleno – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které mohou být zahrnuty v žádosti.|No|Není k dispozici|
-|vystavení – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které budou přístupné pro klienta.|No|Není k dispozici|
+|povoleno – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které mohou být zahrnuty v žádosti.|Ne|Není k dispozici|
+|vystavení – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které budou přístupné pro klienta.|Ne|Není k dispozici|
 |header|Určuje název záhlaví.|`header`V nebo je- `allowed-headers` li oddíl přítomen, je požadován alespoň jeden prvek `expose-headers` .|Není k dispozici|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|povolení – pověření|`Access-Control-Allow-Credentials`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|No|false (nepravda)|
-|Kontrola před výstupem – výsledek – maximum – stáří|`Access-Control-Max-Age`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost uživatelského agenta ukládat do mezipaměti před letem.|No|0|
+|povolení – pověření|`Access-Control-Allow-Credentials`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|Ne|false (nepravda)|
+|Kontrola před výstupem – výsledek – maximum – stáří|`Access-Control-Max-Age`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost uživatelského agenta ukládat do mezipaměti před letem.|Ne|0|
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -171,13 +169,13 @@ Pokud přidáte parametr zpětného volání, `?cb=XXX` vrátí výsledek JSONP 
 
 |Název|Popis|Povinné|
 |----------|-----------------|--------------|
-|JSONP|Kořenový element.|Yes|
+|JSONP|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Povinné|Výchozí|
 |----------|-----------------|--------------|-------------|
-|zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Yes|Není k dispozici|
+|zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Ano|Není k dispozici|
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.

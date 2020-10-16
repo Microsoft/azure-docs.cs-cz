@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327934"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132767"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Kurz: vytvoření zásady WAF na Azure CDN pomocí Azure Portal
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Přidružte ho ke koncovému bodu CDN. Zásady WAF můžete přidružit pouze k koncovým bodům, které jsou hostovány na **Azure CDN Standard od společnosti Microsoft** SKU.
 > * Konfigurace pravidel WAF
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pomocí pokynů v rychlém startu vytvořte profil Azure CDN a koncový bod [: vytvořte Azure CDN profil a koncový bod](../../cdn/cdn-create-new-endpoint.md). 
 
@@ -43,7 +43,7 @@ Nejdřív vytvořte základní zásadu WAF se spravovanými výchozí sadou prav
     | Skupina prostředků          |Vyberte název skupiny prostředků front dveří.|
     | Název zásad             |Zadejte jedinečný název pro zásady WAF.|
 
-   ![Vytvoření zásady WAF](../media/waf-cdn-create-portal/basic.png)
+   :::image type="content" source="../media/waf-cdn-create-portal/basic.png" alt-text="Snímek stránky vytvořit zásadu s použitím revize + vytvoření a hodnot zadaných pro různá nastavení" border="false":::
 
 3. Na kartě **přidružení** na stránce **vytvořit zásadu WAF** vyberte **přidat koncový bod CDN**, zadejte následující nastavení a pak vyberte **Přidat**:
 
@@ -64,7 +64,7 @@ Ve výchozím nastavení jsou zásady WAF v režimu *detekce* při vytváření 
 
 Pokud chcete zobrazit WAF v akci, můžete změnit nastavení režimu z *detekce* na *prevence*. V režimu *prevence* se požadavky, které odpovídají pravidlům definovaným ve výchozí sadě pravidel (DRS), zablokují a přihlásily v protokolech WAF.
 
- ![Změnit režim zásad WAF](../media/waf-cdn-create-portal/policy.png)
+ :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="Snímek stránky vytvořit zásadu s použitím revize + vytvoření a hodnot zadaných pro různá nastavení" border="false":::
 
 ### <a name="custom-rules"></a>Vlastní pravidla
 
@@ -72,17 +72,17 @@ Pokud chcete vytvořit vlastní pravidlo, v části **vlastní pravidla** vybert
 
 Následující snímek obrazovky ukazuje vlastní pravidlo shody k blokování požadavku, pokud řetězec dotazu obsahuje hodnotu **blockme**.
 
-![Přidat vlastní pravidlo shody](../media/waf-cdn-create-portal/custommatch.png)
+:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="Snímek stránky vytvořit zásadu s použitím revize + vytvoření a hodnot zadaných pro různá nastavení" border="false":::
 
 Pravidla omezení přenosové rychlosti vyžadují dvě další pole: **Trvání omezení četnosti** a mezní **hodnota omezení četnosti (požadavky)** , jak je znázorněno v následujícím příkladu:
 
-![Přidat pravidlo omezení četnosti](../media/waf-cdn-create-portal/customrate.png)
+:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="Snímek stránky vytvořit zásadu s použitím revize + vytvoření a hodnot zadaných pro různá nastavení" border="false":::
 
 ### <a name="default-rule-set-drs"></a>Výchozí sada pravidel (DRS)
 
 Ve výchozím nastavení je povolená výchozí sada pravidel spravované v Azure. Pokud chcete v rámci skupiny pravidel zakázat jednotlivá pravidla, rozbalte pravidla v této skupině pravidel, zaškrtněte políčko před číslem pravidla a na kartě výše vyberte **Zakázat** . Chcete-li změnit typy akcí pro jednotlivá pravidla v rámci sady pravidel, zaškrtněte políčko před číslem pravidla a potom vyberte kartu **Akce změny** výše.
 
- ![Změnit sadu pravidel WAF](../media/waf-cdn-create-portal/managed2.png)
+ :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="Snímek stránky vytvořit zásadu s použitím revize + vytvoření a hodnot zadaných pro různá nastavení" border="false":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

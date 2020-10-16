@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/13/2018
+ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6faf9fb3d15709d3897db9a77bf14ebf238e8fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116371"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131747"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace změny hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "87116371"
 
 V Azure Active Directory B2C (Azure AD B2C) můžete uživatelům, kteří jsou přihlášení pomocí místního účtu, povolit změnu hesla, aniž by museli dokázat ověření pomocí e-mailu. Pokud platnost relace vyprší až do doby, kdy uživatel získá tok změny hesla, zobrazí se výzva k opětovnému přihlášení. V tomto článku se dozvíte, jak nakonfigurovat změnu hesla ve [vlastních zásadách](custom-policy-overview.md). Pro toky uživatelů je také možné nakonfigurovat [Samoobslužné resetování hesla](user-flow-self-service-password-reset.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
 
@@ -38,7 +38,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory
         <ClaimType Id="oldPassword">
           <DisplayName>Old Password</DisplayName>
           <DataType>string</DataType>
-          <UserHelpText>Enter password</UserHelpText>
+          <UserHelpText>Enter your old password</UserHelpText>
           <UserInputType>Password</UserInputType>
         </ClaimType>
       </ClaimsSchema>
@@ -179,7 +179,7 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby byl token
 
 1. Otevřete zásadu, kterou jste změnili. Například *B2C_1A_profile_edit_password_change*.
 2. V případě **aplikace**vyberte svou aplikaci, kterou jste předtím zaregistrovali. Pro zobrazení tokenu by se měla zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
-3. Klikněte na **Spustit**. Přihlaste se pomocí acouunt, který jste vytvořili dříve. Nyní byste měli mít možnost změnit heslo.
+3. Klikněte na **Spustit**. Přihlaste se pomocí účtu, který jste vytvořili dříve. Nyní byste měli mít možnost změnit heslo.
 
 ## <a name="next-steps"></a>Další kroky
 

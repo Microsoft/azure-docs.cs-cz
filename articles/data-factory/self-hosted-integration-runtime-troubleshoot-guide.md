@@ -5,14 +5,14 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: abnarain
-ms.openlocfilehash: 1a68263598cb2cba8cc0853f5dd1be7c62dc062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069471"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131296"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -616,6 +616,37 @@ Níže uvedený příklad ukazuje, jak dobrý scénář vypadá.
     ![Pracovní postup handshake protokolu TCP 4](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
 
+### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>Příjem e-mailů k aktualizaci konfigurace sítě, aby bylo možné komunikovat s novými IP adresami
+
+#### <a name="symptoms"></a>Příznaky
+
+Můžete obdržet e-mailové oznámení, které doporučuje aktualizovat konfiguraci sítě tak, aby umožňovalo komunikaci s novými IP adresami pro Azure Data Factory 8. listopadu 2020:
+
+   ![E-mailové oznámení](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+
+#### <a name="resolution"></a>Řešení
+
+Toto oznámení slouží pro **odchozí komunikaci** z vaší **Integration runtime** , která běží **v** místním prostředí nebo ve **virtuální privátní síti Azure** , do služby ADF. Pokud máte například v prostředí Azure VNET v místním prostředí IR nebo Azure-služba SSIS (SQL Server Integration Services) (SSIS) IR, které potřebuje přístup ke službě ADF, budete muset zkontrolovat, jestli je potřeba přidat tento nový rozsah IP adres do pravidel **NSG (Network Security Group)** . Pokud pravidlo odchozího NSG používá značku služby, nebude to mít žádný vliv.
+
+#### <a name="more-details"></a>Další podrobnosti
+
+Tyto nové rozsahy IP adres **mají dopad jenom na pravidla odchozí komunikace** z **místní brány firewall** nebo **virtuální privátní sítě Azure** do služby ADF (viz [Konfigurace brány firewall a nastavení seznamu povolených IP adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) pro referenci), ve scénářích, kde máte místní síť nebo službu Azure Virtual Network, která musí komunikovat se službou ADF.
+
+Pro existující uživatele využívající **Azure VPN**:
+
+1. V privátní síti ověřte všechna odchozí NSG pravidla, ve kterých je nakonfigurované SSIS nebo Azure SSIS. Pokud neexistují žádná odchozí omezení, žádný vliv na ně.
+1. Pokud máte omezení odchozího pravidla, ověřte, zda používáte značku služby nebo ne. Pokud používáte značku služby, nemusíte nic měnit ani přidávat, protože nové rozsahy IP adres se nacházejí v rámci existující značky služby. 
+  
+    ![Kontrolu cíle](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+
+1. Pokud používáte IP adresy přímo v nastavení pravidla, potom zaškrtněte, pokud chcete přidat všechny rozsahy IP adres v rámci [značky služby odkaz ke stažení pro rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres. Do tohoto souboru jsme již umístili nové rozsahy IP adres. Pro nové uživatele: stačí, když v našem dokumentu dodržíte příslušnou konfiguraci IR nebo SSIS IR, abyste mohli nakonfigurovat NSG pravidla.
+
+Pro stávající uživatele, kteří mají SSIS IR nebo místní prostředí IR **v**místním prostředí:
+
+- Ověřte u svého týmu síťové infrastruktury a zjistěte, jestli je potřeba zahrnout nové adresy rozsahu IP adres do komunikace pro odchozí pravidla.
+- Pro pravidla brány firewall založená na názvech plně kvalifikovaného názvu domény se nevyžadují žádné aktualizace, když použijete nastavení dokumentované v [konfiguraci brány firewall a nastavení seznam povolených IP adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway). 
+- Některé místní brány firewall podporují značky služby, pokud použijete aktualizovaný konfigurační soubor značek služeb Azure, nemusíte dělat žádné další změny.
+
 ## <a name="self-hosted-ir-sharing"></a>Sdílení místního prostředí IR
 
 ### <a name="share-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Sdílení prostředí IR v místním prostředí v jiném tenantovi se nepodporuje. 
@@ -635,7 +666,7 @@ Další pomoc při řešení potíží najdete v následujících zdrojích info
 
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Fórum přetečení zásobníku pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)

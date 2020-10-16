@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 95c9b6dee402bc0c2dd2cab8ef3200cfd9213d61
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 4e15ef5256c1552fc8ab7fb9bd84f15bb3433834
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126820"
+ms.locfileid: "92131356"
 ---
 # <a name="device-model-repository"></a>Úložiště modelů zařízení
 
@@ -24,20 +24,20 @@ Zařízení DMR definuje vzor pro ukládání rozhraní DTDL ve struktuře slož
 
 Společnost Microsoft je hostitelem veřejné služby DMR s těmito charakteristikami:
 
-- Spravované modely. Microsoft zkontroluje a schválí všechna dostupná rozhraní pomocí pracovního postupu pro ověření žádosti o přijetí změn (GitHub).
+- Spravované modely. Microsoft zkontroluje a schválí všechna dostupná rozhraní pomocí pracovního postupu ověření žádosti o přijetí změn (PR) GitHubu.
 - Neměnnosti.  Po publikování se rozhraní nedá aktualizovat.
-- Technologie Hyper-Scale. Společnost Microsoft poskytuje veškerou potřebnou infrastrukturu pro vytvoření zabezpečeného a vysoce škálovatelného koncového bodu.
+- Technologie Hyper-Scale. Společnost Microsoft poskytuje požadovanou infrastrukturu pro vytvoření zabezpečeného a škálovatelného koncového bodu, kde můžete publikovat a využívat modely zařízení.
 
 ## <a name="custom-device-model-repository"></a>Vlastní úložiště modelů zařízení
 
-Pokud chcete vytvořit vlastní soubor DMR, můžete použít stejný vzor protokolu DMR na jakémkoli úložném médiu, jako je místní systém souborů nebo vlastní webové servery HTTP. Modely z vlastního DMR můžete načíst stejným způsobem jako z veřejného DMR, a to jednoduše tak, že změníte základní adresu URL používanou pro přístup ke službě DMR.
+Pokud chcete vytvořit vlastní soubor DMR, můžete použít stejný vzor protokolu DMR na jakémkoli úložném médiu, jako je místní systém souborů nebo vlastní webové servery HTTP. Modely zařízení z vlastního zařízení DMR můžete načítat stejným způsobem jako z veřejného DMR, a to jednoduše tak, že změníte základní adresu URL používanou pro přístup ke službě DMR.
 
 > [!NOTE]
-> Nástroje, které slouží k ověření modelů ve veřejném úložišti DMR, se dají znovu použít ve vlastních úložištích.
+> Microsoft poskytuje nástroje pro ověření modelů zařízení ve veřejné službě DMR. Tyto nástroje můžete znovu použít ve vlastních úložištích.
 
 ## <a name="public-models"></a>Veřejné modely
 
-Veřejné digitální zdvojené modely uložené v úložišti modelu jsou k dispozici všem uživatelům, kteří mají využívat a integrovat do svých aplikací. Veřejné modely umožňují otevřenému systému pro sestavovatele zařízení a vývojářům řešení sdílet a znovu používat svoje modely zařízení technologie Plug and Play IoT.
+Modely veřejných zařízení uložené v úložišti modelů jsou k dispozici všem uživatelům, kteří mají ve svých aplikacích využívat a integrovat. Modely veřejných zařízení umožňují otevřenému systému pro sestavovatele zařízení a vývojářům řešení sdílet a znovu používat svoje modely zařízení technologie Plug and Play IoT.
 
 V části [publikování modelu](#publish-a-model) najdete pokyny k publikování modelu v úložišti modelu, aby bylo možné ho zveřejnit.
 
@@ -47,7 +47,7 @@ Všechna rozhraní ve `dtmi` složkách jsou dostupná taky z veřejného koncov
 
 ### <a name="resolve-models"></a>Řešení modelů
 
-Chcete-li programově získat přístup k těmto rozhraním, je nutné převést dtmi na relativní cestu, kterou můžete použít k dotazování veřejného koncového bodu. Následující ukázka kódu ukazuje, jak to provést:
+Chcete-li programově získat přístup k těmto rozhraním, je nutné převést DTMI na relativní cestu, kterou můžete použít k dotazování veřejného koncového bodu. Následující ukázka kódu ukazuje, jak to provést:
 
 Chcete-li převést DTMI na absolutní cestu, používáme `DtmiToPath` funkci s `IsValidDtmi` :
 
@@ -88,14 +88,14 @@ string modelContent = await _httpClient.GetStringAsync(fullyQualifiedPath);
 1. Rozvětvení veřejného úložiště GitHub: [https://github.com/Azure/iot-plugandplay-models](https://github.com/Azure/iot-plugandplay-models) .
 1. Naklonujte rozvětvené úložiště. Volitelně můžete vytvořit novou větev, abyste zachovali změny izolované od `main` větve.
 1. Přidejte nová rozhraní do `dtmi` složky pomocí konvence složka/filename. Prohlédněte si nástroj [Add-model](#add-model) .
-1. Ověřte modely místně pomocí oddílu [skripty k ověření změn](#validate-files) .
+1. Ověřte modely zařízení místně pomocí oddílu [skripty k ověření změn](#validate-files) .
 1. Potvrďte změny místně a vložte je do rozvětvení.
 1. Z větve vytvořte žádost o přijetí změn, která cílí na `main` větev. Viz téma [vytvoření problému nebo dokumentace žádostí o](https://docs.github.com/free-pro-team@latest/desktop/contributing-and-collaborating-using-github-desktop/creating-an-issue-or-pull-request) přijetí změn.
-1. Zkontrolujte [požadavky](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)žádosti o přijetí změn.
+1. Zkontrolujte [požadavky žádosti o](https://github.com/Azure/iot-plugandplay-models/blob/main/pr-reqs.md)přijetí změn.
 
-Žádost o přijetí změn spustí řadu akcí GitHubu, které ověří nová odeslaná rozhraní a zajistěte, aby vaše žádost o přijetí změn splňovala všechny kontroly.
+Žádost o přijetí změn spustí řadu akcí GitHubu, které budou ověřovat nová odeslaná rozhraní, a ujistěte se, že vaše žádost o přijetí změn splňuje všechny kontroly.
 
-Microsoft odpoví na žádost o přijetí změn se všemi kontrolami za tři pracovní dny.
+Microsoft bude reagovat na žádost o přijetí změn se všemi kontrolami tři pracovní dny.
 
 ### <a name="add-model"></a>přidat model
 
@@ -109,7 +109,7 @@ Podívejte se na výstup konzoly pro všechny chybové zprávy.
 
 ### <a name="local-validation"></a>Místní ověřování
 
-Stejné kontroly ověřování můžete spustit místně před odesláním žádosti o přijetí změn, abyste mohli pomáhat s diagnostikou problémů předem.
+Před odesláním žádosti o přijetí změn můžete spustit stejné kontroly ověřování místně, aby bylo možné předem diagnostikovat problémy.
 
 #### <a name="validate-files"></a>ověřit – soubory
 
@@ -125,7 +125,7 @@ Stejné kontroly ověřování můžete spustit místně před odesláním žád
 
 #### <a name="validate-models"></a>ověřit – modely
 
-Můžete spustit [ukázku ověřování DTDL](https://github.com/Azure-Samples/DTDL-Validator) k místnímu ověření vašich modelů.
+Můžete spustit [ukázku ověření DTDL](https://github.com/Azure-Samples/DTDL-Validator) a lokálně ověřit modely zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 

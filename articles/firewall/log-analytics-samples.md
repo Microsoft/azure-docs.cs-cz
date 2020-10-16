@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: 5acbc1f3b8c5519c22105f05219ab2cef5c15892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d4ed76e849385c4edecb7bd97d58087c8e5b4b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023869"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132784"
 ---
 # <a name="azure-monitor-logs-for-azure-firewall"></a>Protokoly Azure Monitor pro Azure Firewall
 
@@ -170,11 +170,11 @@ AzureDiagnostics
 
 Následující ukázky protokolu zobrazují data zahrnutá v záznamu protokolu.
 
-![protokolovat jednu položku](media/log-analytics-samples/log1.png)
+:::image type="content" source="media/log-analytics-samples/log1.png" alt-text="Snímek obrazovky položky protokolu Je viditelné více hodnot, například časové razítko, protokol, číslo portu, akce, kolekce pravidel a pravidlo." border="false":::
 
-![Položka protokolu dvě ](media/log-analytics-samples/log2.png)
+:::image type="content" source="media/log-analytics-samples/log2.png" alt-text="Snímek obrazovky položky protokolu Je viditelné více hodnot, například časové razítko, protokol, číslo portu, akce, kolekce pravidel a pravidlo." border="false":::
 
-![Položka protokolu – tři](media/log-analytics-samples/log3.png)
+:::image type="content" source="media/log-analytics-samples/log3.png" alt-text="Snímek obrazovky položky protokolu Je viditelné více hodnot, například časové razítko, protokol, číslo portu, akce, kolekce pravidel a pravidlo." border="false":::
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Firewall monitorování a diagnostiku najdete v tématu [kurz: monitorování Azure firewall protokolů a metrik](tutorial-diagnostics.md).

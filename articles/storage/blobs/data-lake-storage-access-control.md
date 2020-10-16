@@ -1,84 +1,51 @@
 ---
-title: Přehled řízení přístupu v Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Pochopte, jak řízení přístupu funguje v Azure Data Lake Storage Gen2. Podporují se řízení přístupu na základě role v Azure (Azure RBAC) a seznamy ACL typu POSIX.
+title: Seznamy řízení přístupu v Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Pochopte, jak seznamy řízení přístupu (ACL) typu Standard POSIX fungují v Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 31d67daebf2e15fb11b5ebe30c4f7741a09eed2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 188c30a79074b819c5785cf5560f5843a3fcf6b4
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716109"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131611"
 ---
-# <a name="access-control-in-azure-data-lake-storage-gen2"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen2
+# <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který podporuje řízení přístupu na základě role Azure (Azure RBAC) a seznamy řízení přístupu (ACL) typu POSIX. Tento článek shrnuje základy modelu řízení přístupu pro Data Lake Storage Gen2.
+Azure Data Lake Storage Gen2 implementuje model řízení přístupu, který podporuje řízení přístupu na základě role Azure (Azure RBAC) a seznamy řízení přístupu (ACL) typu POSIX. Tento článek popisuje seznamy řízení přístupu v Data Lake Storage Gen2. Další informace o tom, jak začlenit službu Azure RBAC společně s seznamy ACL a jak ji systém vyhodnocuje k rozhodování o autorizaci, najdete v tématu [model řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md).
 
-<a id="azure-role-based-access-control-rbac"></a>
+<a id="access-control-lists-on-files-and-directories"></a>
 
-## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
+## <a name="about-acls"></a>O seznamech ACL
 
-Azure RBAC používá přiřazení rolí, aby efektivně používala sady oprávnění pro *objekty zabezpečení*. Objekt *zabezpečení* je objekt, který představuje uživatele, skupinu, instanční objekt nebo spravovanou identitu, která je definovaná v Azure Active Directory (AD), která žádá o přístup k prostředkům Azure.
-
-Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například: Azure Storage účty). V případě Azure Storage a následně Azure Data Lake Storage Gen2 tento mechanismus byl rozšířen na prostředek kontejneru (systém souborů).
-
-Informace o tom, jak přiřadit role k objektům zabezpečení v oboru účtu úložiště, najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+K souborům a adresářům můžete přidružit [objekt zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) s úrovní přístupu. Tato přidružení jsou zachycena v *seznamu řízení přístupu (ACL)*. Každý soubor a adresář v účtu úložiště má seznam řízení přístupu. Když se objekt zabezpečení pokusí operaci u souboru nebo adresáře, zkontroluje seznam řízení přístupu (ACL), jestli má tento objekt zabezpečení (uživatel, skupina, instanční objekt nebo spravovaná identita) správnou úroveň oprávnění k provedení operace.
 
 > [!NOTE]
-> Uživatel typu Host nemůže vytvořit přiřazení role.
+> Seznamy ACL platí jenom pro objekty zabezpečení ve stejném tenantovi a nevztahují se na uživatele, kteří používají ověřování pomocí sdíleného klíče nebo sdíleného přístupového podpisu (SAS). Důvodem je skutečnost, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci na základě oprávnění zabezpečení.  
 
-### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Dopad přiřazení rolí na seznam řízení přístupu na úrovni souborů a adresářů
-
-Zatímco použití přiřazení rolí Azure je účinným mechanismem pro řízení přístupových oprávnění, jedná se o velmi hrubý mechanismus vzhledem k seznamům ACL. Nejmenší členitost pro Azure RBAC je na úrovni kontejneru a ta se vyhodnotí s vyšší prioritou než seznamy ACL. Proto pokud přiřadíte roli objektu zabezpečení v oboru kontejneru, má tento objekt zabezpečení úroveň autorizace přidruženou k této roli pro všechny adresáře a soubory v tomto kontejneru bez ohledu na přiřazení seznamu ACL.
-
-Když je objektu zabezpečení uděleno oprávnění k datům RBAC Azure pomocí [předdefinované role](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)nebo prostřednictvím vlastní role, budou tato oprávnění vyhodnocena jako první při autorizaci žádosti. Pokud je požadovaná operace autorizována přiřazeními role Azure objektu zabezpečení, pak se autorizace okamžitě vyřeší a neprovádí se žádné další kontroly seznamu řízení přístupu (ACL). Případně platí, že pokud objekt zabezpečení nemá přiřazení role Azure, nebo se operace požadavku neshoduje s přiřazeným oprávněním, provedou se kontroly seznamů ACL, abyste zjistili, jestli je objekt zabezpečení autorizovaný k provedení požadované operace.
-
-> [!NOTE]
-> Pokud byl objektu zabezpečení přiřazeno přiřazení role úložiště dat objektu BLOB úložiště, pak je objekt zabezpečení považován za *superuživatele* a má plný přístup ke všem následným operacím, včetně nastavení vlastníka adresáře nebo souboru a seznamů ACL pro adresáře a soubory, pro které nejsou vlastníkem. Přístup super uživatele je jediný autorizovaný způsob, jak změnit vlastníka prostředku.
-
-## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>Ověřování sdíleného klíče a sdíleného přístupového podpisu (SAS)
-
-Azure Data Lake Storage Gen2 podporuje sdílené klíče a metody SAS pro ověřování. Charakteristikou těchto metod ověřování je, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci pomocí zabezpečení na základě oprávnění.
-
-V případě sdíleného klíče volající efektivně získává přístup super uživatele, což znamená úplný přístup ke všem operacím na všech prostředcích, včetně nastavení vlastník a změny seznamů ACL.
-
-Tokeny SAS zahrnují povolená oprávnění jako součást tokenu. Oprávnění obsažená v tokenu SAS se efektivně aplikují na všechna autorizační rozhodnutí, ale neprovádějí se žádné další kontroly seznamu ACL.
-
-## <a name="access-control-lists-on-files-and-directories"></a>Seznamy řízení přístupu pro soubory a adresáře
-
-K souborům a adresářům můžete přidružit objekt zabezpečení s úrovní přístupu. Tato přidružení jsou zachycena v *seznamu řízení přístupu (ACL)*. Každý soubor a adresář v účtu úložiště má seznam řízení přístupu.
-
-> [!NOTE]
-> Seznamy ACL se vztahují pouze na objekty zabezpečení ve stejném tenantovi. 
-
-Pokud jste přiřadili roli k objektu zabezpečení na úrovni účtu úložiště, můžete použít seznamy řízení přístupu a udělit tak tomuto objektu zabezpečení vyšší přístup ke konkrétním souborům a adresářům.
-
-Seznam řízení přístupu nemůžete použít k zajištění úrovně přístupu, která je nižší než úroveň udělená přiřazením role. Pokud například přiřadíte roli [Přispěvatel dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) k objektu zabezpečení, nemůžete použít seznamy řízení přístupu, abyste zabránili zápisu tohoto objektu zabezpečení do adresáře.
-
-
-### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Nastavení oprávnění na úrovni souborů a adresářů pomocí seznamů řízení přístupu
+## <a name="how-to-set-acls"></a>Postup nastavení seznamů ACL
 
 Chcete-li nastavit oprávnění na úrovni souborů a adresářů, přečtěte si některé z následujících článků:
 
 | Prostředí | Článek |
 |--------|-----------|
 |Azure Storage Explorer |[Správa adresářů, souborů a seznamů ACL ve službě Azure Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage](data-lake-storage-explorer.md#managing-access)|
-|.NET |[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí .NET](data-lake-storage-directory-file-acl-dotnet.md)|
-|Java|[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java](data-lake-storage-directory-file-acl-java.md)|
-|Python|[Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
-|PowerShell|[Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure CLI|[Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|.NET |[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí .NET](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
+|Java|[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
+|Python|[Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
+|PowerShell|[Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
+|Azure CLI|[Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
 |REST API |[Cesta – aktualizace](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Pokud *je objekt zabezpečení instanční objekt* , je důležité použít ID objektu instančního objektu a nikoli ID objektu související registrace aplikace. Pokud chcete získat ID objektu instančního objektu, otevřete Azure CLI a pak použijte tento příkaz: `az ad sp show --id <Your App ID> --query objectId` . `<Your App ID>`zástupný text nahraďte ID aplikace registrace vaší aplikace.
 
-### <a name="types-of-access-control-lists"></a>Typy seznamů řízení přístupu
+## <a name="types-of-acls"></a>Typy seznamů ACL
 
 Existují dva druhy seznamů řízení přístupu: *přístupové seznamy ACL* a *Výchozí seznamy ACL*.
 
@@ -91,7 +58,7 @@ Přístupové seznamy ACL a výchozí seznamy ACL mají stejnou strukturu.
 > [!NOTE]
 > Změna výchozího seznamu ACL u nadřazeného objektu nemá vliv na seznam ACL přístupu ani na výchozí seznam ACL podřízených položek, které již existují.
 
-### <a name="levels-of-permission"></a>Úrovně oprávnění
+## <a name="levels-of-permission"></a>Úrovně oprávnění
 
 Oprávnění pro objekt kontejneru jsou **čtení**, **zápis**a **spouštění**a lze je použít u souborů a adresářů, jak je znázorněno v následující tabulce:
 
@@ -104,7 +71,7 @@ Oprávnění pro objekt kontejneru jsou **čtení**, **zápis**a **spouštění*
 > [!NOTE]
 > Pokud udělujete oprávnění jenom pomocí seznamů ACL (žádná služba Azure RBAC) a potom udělíte objektu zabezpečení přístup pro čtení nebo zápis do souboru, musíte objektu zabezpečení udělit oprávnění ke **spuštění** kontejneru a ke každé složce v hierarchii složek, které soubor zavede.
 
-#### <a name="short-forms-for-permissions"></a>Zkrácené verze oprávnění
+### <a name="short-forms-for-permissions"></a>Zkrácené verze oprávnění
 
 Zápis **RWX** se používá k označení **Číst + Zapisovat + Provést**. Používá se i zhuštěná číselná verze, která využívá nahrazení **Číst = 4**, **Zapisovat = 2** a **Provést = 1**, přičemž oprávnění je vyjádřeno součtem. Dále je uvedeno několik příkladů.
 
@@ -115,13 +82,17 @@ Zápis **RWX** se používá k označení **Číst + Zapisovat + Provést**. Pou
 | 4            | `R--`        | Číst                   |
 | 0            | `---`        | Žádná oprávnění         |
 
-#### <a name="permissions-inheritance"></a>Dědičnost oprávnění
+### <a name="permissions-inheritance"></a>Dědičnost oprávnění
 
 V modelu stylu POSIX, který používá Data Lake Storage Gen2, jsou oprávnění pro položku uložena na samotné položce. Jinými slovy oprávnění pro položku nelze zdědit z nadřazených položek, pokud jsou oprávnění nastavena po vytvoření podřízené položky. Oprávnění jsou zděděna pouze v případě, že pro nadřazené položky byly nastaveny výchozí oprávnění před vytvořením podřízených položek.
 
-### <a name="common-scenarios-related-to-permissions"></a>Běžné scénáře týkající se oprávnění
+## <a name="common-scenarios-related-to-acl-permissions"></a>Běžné scénáře související s oprávněními ACL
 
-V následující tabulce jsou uvedeny některé běžné scénáře, které vám pomohou pochopit, která oprávnění jsou nutná k provádění určitých operací s účtem úložiště.
+V následující tabulce jsou uvedeny položky seznamu ACL, které jsou potřeba k tomu, aby objekt zabezpečení mohl provádět operace uvedené ve sloupci **operace** . 
+
+Tato tabulka obsahuje sloupec, který představuje jednotlivé úrovně fiktivní hierarchie adresářů. Existuje sloupec pro kořenový adresář kontejneru ( `\` ), podadresář s názvem **Brno**, podadresáře adresáře Brno s názvem **Portland**a textový soubor v adresáři Portland s názvem **Data.txt**. 
+
+> [! IMPORANT] v této tabulce se předpokládá, že používáte **jenom** seznamy ACL bez přiřazení rolí Azure RBAC. Podobnou tabulku, která kombinuje službu Azure RBAC spolu s seznamy ACL, najdete v tématu [Tabulka oprávnění: kombinování služby Azure RBAC a ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
 
 |    Operace             |    /    | Brno | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -136,7 +107,7 @@ V následující tabulce jsou uvedeny některé běžné scénáře, které vám
 > [!NOTE]
 > Oprávnění k zápisu souboru není nutné odstranit, pokud jsou splněny předchozí dvě podmínky.
 
-### <a name="users-and-identities"></a>Uživatelé a identity
+## <a name="users-and-identities"></a>Uživatelé a identity
 
 Každý soubor a adresář má odlišná oprávnění pro tyto identity:
 
@@ -150,7 +121,7 @@ Každý soubor a adresář má odlišná oprávnění pro tyto identity:
 
 Identity uživatelů a skupin jsou identity Azure Active Directory (Azure AD). Takže pokud není uvedeno jinak, může *uživatel*v kontextu Data Lake Storage Gen2 odkazovat na uživatele služby Azure AD, instanční objekt, spravovanou identitu nebo skupinu zabezpečení.
 
-#### <a name="the-owning-user"></a>Vlastnící uživatel
+### <a name="the-owning-user"></a>Vlastnící uživatel
 
 Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastnící uživatel může:
 
@@ -160,16 +131,16 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 > [!NOTE]
 > Vlastnící uživatel *nemůže* měnit vlastnícího uživatele souboru nebo adresáře. Pouze superuživatele můžou změnit vlastnícího uživatele souboru nebo adresáře.
 
-#### <a name="the-owning-group"></a>Vlastnící skupina
+### <a name="the-owning-group"></a>Vlastnící skupina
 
 V seznamech ACL pro POSIX je každý uživatel přidružený k *primární skupině*. Uživatel "Alice" může například patřit do skupiny "finance". Alice může patřit také do více skupin, ale jedna skupina je vždy označena jako jejich primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
 
-##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Přiřazení vlastnící skupiny pro nový soubor nebo adresář
+#### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Přiřazení vlastnící skupiny pro nový soubor nebo adresář
 
 * **Případ 1**: kořenový adresář "/". Tento adresář se vytvoří při vytvoření kontejneru Data Lake Storage Gen2. V takovém případě je vlastnící skupina nastavena na uživatele, který kontejner vytvořil, pokud byl proveden pomocí protokolu OAuth. Pokud je kontejner vytvořený pomocí sdíleného klíče, SAS účtu nebo SAS služby, pak je vlastník a vlastnící skupina nastavená na **$superuser**.
 * **Případ 2** (všechny ostatní případy): při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazeného adresáře.
 
-##### <a name="changing-the-owning-group"></a>Změna vlastnící skupiny
+#### <a name="changing-the-owning-group"></a>Změna vlastnící skupiny
 
 Vlastnící skupinu smí změnit:
 * Všichni superuživatelé.
@@ -178,7 +149,7 @@ Vlastnící skupinu smí změnit:
 > [!NOTE]
 > Vlastnící skupina nemůže změnit seznamy řízení přístupu (ACL) souboru nebo adresáře.  I když je vlastnící skupina nastavená na uživatele, který účet vytvořil v případě kořenového adresáře, výše uvedený **případ 1** , jeden uživatelský účet není platný pro poskytování oprávnění prostřednictvím vlastnící skupiny. Toto oprávnění můžete přiřadit platné skupině uživatelů, pokud nějaká existuje.
 
-### <a name="access-check-algorithm"></a>Algoritmus kontroly přístupu
+## <a name="access-check-algorithm"></a>Algoritmus kontroly přístupu
 
 Následující pseudokódu představuje algoritmus kontroly přístupu pro účty úložiště.
 
@@ -222,29 +193,36 @@ mask = get_mask( path )
 return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-#### <a name="the-mask"></a>Maska
+### <a name="the-mask"></a>Maska
 
 Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro pojmenované uživatele, vlastnící skupinu a pojmenované skupiny.  
 
-> [!NOTE]
-> Pro nový kontejner Data Lake Storage Gen2 je maska pro seznam ACL přístupu kořenového adresáře ("/") standardně 750 pro adresáře a 640 pro soubory. Soubory neobdrží bit X, protože to není podstatné pro soubory v systému pouze v úložišti.
->
-> Maska může být určena pro volání podle volání. To umožňuje různým náročným systémům, jako jsou clustery, mít různé efektivní masky pro jejich souborové operace. Pokud je pro daný požadavek zadána maska, zcela přepíše výchozí masku.
+Pro nový kontejner Data Lake Storage Gen2 je maska pro seznam ACL přístupu kořenového adresáře ("/") standardně **750** pro adresáře a **640** pro soubory. V následující tabulce jsou uvedeny symbolické zápisy těchto úrovní oprávnění.
 
-#### <a name="the-sticky-bit"></a>Bit sticky
+|Entita|Adresáře|Soubory|
+|--|--|--|
+|Vlastnící uživatel|`rwx`|`r-w`|
+|Vlastnící skupina|`r-x`|`r--`|
+|Další|`---`|`---`|
+
+Soubory neobdrží bit X, protože to není podstatné pro soubory v systému pouze v úložišti. 
+
+Maska může být určena pro volání podle volání. To umožňuje různým náročným systémům, jako jsou clustery, mít různé efektivní masky pro jejich souborové operace. Pokud je pro daný požadavek zadána maska, zcela přepíše výchozí masku.
+
+### <a name="the-sticky-bit"></a>Bit sticky
 
 Bit Sticky je pokročilejší funkcí kontejneru POSIX. V kontextu Data Lake Storage Gen2 je nepravděpodobné, že bude potřeba nacházet v rychlém bitu. Pokud je v adresáři zapnutý bit s rychlým nastavením, může být podřízená položka pouze smazána nebo přejmenována vlastníkem uživatele podřízené položky.
 
 Bit Sticky není zobrazený v Azure Portal.
 
-### <a name="default-permissions-on-new-files-and-directories"></a>Výchozí oprávnění pro nové soubory a adresáře
+## <a name="default-permissions-on-new-files-and-directories"></a>Výchozí oprávnění pro nové soubory a adresáře
 
 Když se v existujícím adresáři vytvoří nový soubor nebo adresář, určí výchozí seznam ACL v nadřazeném adresáři:
 
 - Výchozí seznam ACL a přístupový seznam ACL podřízeného adresáře.
 - Přístupový seznam ACL podřízeného souboru (soubory nemají výchozí seznam ACL).
 
-#### <a name="umask"></a>umask
+### <a name="umask"></a>umask
 
 Při vytváření souboru nebo adresáře se umask používá k úpravě způsobu nastavení výchozích seznamů ACL pro podřízenou položku. umask je 9 bitová hodnota v nadřazených adresářích, které obsahují hodnotu RWX pro **vlastnícího uživatele**, **vlastnící skupinu**a **Další**.
 
@@ -276,17 +254,35 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="common-questions-about-acls-in-data-lake-storage-gen2"></a>Běžné otázky týkající se seznamů ACL v Data Lake Storage Gen2
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>Je třeba povolit podporu pro seznamy ACL?
 
 Ne. Řízení přístupu prostřednictvím seznamů ACL je povolené pro účet úložiště, pokud je zapnutá funkce hierarchického oboru názvů (HNS).
 
-Pokud je funkce HNS vypnutá, autorizační pravidla Azure RBAC se pořád použijí.
+Pokud je funkce HNS vypnutá, pravidla autorizace služby Azure Azure RBAC se pořád použijí.
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>Jaký je nejlepší způsob, jak použít seznamy ACL?
 
-Skupiny zabezpečení Azure AD vždycky používejte jako přiřazený objekt zabezpečení v seznamech ACL. Naodporujte příležitosti k přímému přiřazení jednotlivých uživatelů nebo instančních objektů. Pomocí této struktury budete moct přidávat a odebírat uživatele nebo instanční objekty, aniž byste museli znovu použít seznamy ACL pro celou adresářovou strukturu. Místo toho je stačí přidat nebo odebrat z příslušné skupiny zabezpečení Azure AD. Mějte na paměti, že seznamy ACL nejsou zděděné, a proto je nutné znovu použít seznamy ACL pro všechny soubory a podadresáře. 
+[!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-groups.md)] 
+
+### <a name="how-are-azure-rbac-and-acl-permissions-evaluated"></a>Jak se vyhodnocuje oprávnění Azure RBAC a ACL?
+
+Informace o tom, jak systém vyhodnocuje v Azure RBAC a seznamy ACL dohromady a provádí autorizační rozhodnutí pro prostředky účtu úložiště, najdete v tématu [jak se vyhodnocují oprávnění](data-lake-storage-access-control-model.md#how-permissions-are-evaluated).
+
+### <a name="what-are-the-limits-for-azure-rbac-role-assignments-and-acl-entries"></a>Jaká jsou omezení pro přiřazení rolí Azure RBAC a položky seznamu ACL?
+
+V následující tabulce najdete Přehled limitů, které je potřeba vzít v úvahu při používání Azure RBAC ke správě "hrubých" oprávnění (oprávnění, která se vztahují na účty úložiště nebo kontejnery) a používání seznamů ACL ke správě "jemně odstupňovaného" oprávnění (oprávnění, která se vztahují na soubory a adresáře). Použijte skupiny zabezpečení pro přiřazení seznamu ACL. Při použití skupin je méně pravděpodobnější, že bude překročen maximální počet přiřazení rolí na předplatné a maximální počet položek seznamu ACl na soubor nebo adresář. 
+
+[!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-rbac-acl-limits.md)] 
+
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-azure-rbac"></a>Podporuje Data Lake Storage Gen2 dědění Azure RBAC?
+
+Přiřazení rolí Azure je děděné. Přiřazení toku z předplatného, skupiny prostředků a prostředků účtu úložiště dolů do prostředku kontejneru.
+
+### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen2 dědění seznamů ACL?
+
+Výchozí seznamy ACL lze použít k nastavení seznamů ACL pro nové podřízené podadresáře a soubory vytvořené v nadřazeném adresáři. Chcete-li aktualizovat seznamy ACL pro existující podřízené položky, budete muset pro požadovanou hierarchii adresářů přidat, aktualizovat nebo odebrat seznamy ACL rekurzivně. Další informace najdete v tématu [rekurzivní nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2](recursive-access-control-lists.md). 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Která oprávnění jsou nutná k rekurzivnímu odstranění adresáře a jeho obsahu?
 
@@ -330,11 +326,6 @@ Zobrazí se identifikátor OID.
 
 Pokud máte pro instanční objekt správný identifikátor OID, přejděte na stránku Průzkumník služby Storage **spravovat přístup** a přidejte identifikátor OID a přiřaďte příslušná oprávnění identifikátoru objektu. Ujistěte se, že jste vybrali možnost **Uložit**.
 
-### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen2 dědění seznamů ACL?
-
-Přiřazení rolí Azure je děděné. Přiřazení toku z předplatného, skupiny prostředků a prostředků účtu úložiště dolů do prostředku kontejneru.
-
-Seznamy ACL nedědí. Výchozí seznamy ACL je ale možné použít k nastavení seznamů ACL pro podřízené podadresáře a soubory vytvořené v nadřazeném adresáři. 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Kde najdu další informace o modelu řízení přístupu POSIX?
 
@@ -349,4 +340,4 @@ Seznamy ACL nedědí. Výchozí seznamy ACL je ale možné použít k nastavení
 
 ## <a name="see-also"></a>Viz také
 
-* [Přehled Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)
+- [Model řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md)

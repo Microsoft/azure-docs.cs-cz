@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955484"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131186"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v častých intervalech pro analýzu téměř v reálném čase (NRT) Kromě agregace dat výkonu pro dlouhodobé analýzy a generování sestav.
@@ -25,7 +25,7 @@ Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový
 
 V případě čítačů výkonu systému Windows můžete zvolit konkrétní instanci pro každý čítač výkonu. Pro čítače výkonu Linux se instance každého čítače, kterou zvolíte, vztahuje na všechny podřízené čítače nadřazeného čítače. V následující tabulce jsou uvedeny běžné instance dostupné pro čítače výkonu pro systémy Linux a Windows.
 
-| Název instance | Description |
+| Název instance | Popis |
 | --- | --- |
 | \_Celkem |Celkem všech instancí |
 | \* |Všechny instance |
@@ -75,7 +75,7 @@ Každý objekt nebo kategorie metriky výkonu ke shromáždění by měly být d
 
 Parametry v tomto elementu jsou popsány v následující tabulce.
 
-| Parametry | Description |
+| Parametry | Popis |
 |:--|:--|
 | \_název objektu | Název objektu pro kolekci |
 | \_regulární výraz instance |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` Určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_ celkovou instanci, můžete zadat `_Total` . Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)` . |
@@ -156,7 +156,7 @@ Následuje výchozí konfigurace pro metriky výkonu.
 <source>
     type oms_omi
     object_name "Logical Disk"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 5m
 </source>
@@ -164,7 +164,7 @@ Následuje výchozí konfigurace pro metriky výkonu.
 <source>
     type oms_omi
     object_name "Processor"
-    instance_regex ".*
+    instance_regex ".*"
     counter_name_regex ".*"
     interval 30s
 </source>
@@ -203,7 +203,7 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 ## <a name="log-queries-with-performance-records"></a>Dotazy protokolu se záznamy o výkonu
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy o výkonu.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:--- |:--- |
 | Výkon |Všechna data o výkonu |
 | &#124; výkonu, kde Computer = = "MyComputer" |Všechna data o výkonu z konkrétního počítače |

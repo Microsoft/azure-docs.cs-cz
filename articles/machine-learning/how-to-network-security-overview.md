@@ -1,5 +1,5 @@
 ---
-title: Přehled izolace a ochrany osobních údajů virtuální sítě
+title: Přehled izolace a zabezpečení virtuální sítě
 titleSuffix: Azure Machine Learning
 description: Použijte izolovaný Virtual Network Azure s Azure Machine Learning k zabezpečení prostředků pracovních prostorů a výpočetních prostředí.
 services: machine-learning
@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825499"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131934"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -28,7 +28,7 @@ Tady jsou další články v této sérii:
 
 **1. virtuální síť – přehled**  >  [2 Zabezpečte pracovní prostor](how-to-secure-workspace-vnet.md)  >  [3. Zabezpečte školicí prostředí](how-to-secure-training-vnet.md)  >  [4. Zabezpečte prostředí Inferencing](how-to-secure-inferencing-vnet.md)  >  [5. Povolit funkci studia](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte zkušenosti s následujícími tématy:
 + [Virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
