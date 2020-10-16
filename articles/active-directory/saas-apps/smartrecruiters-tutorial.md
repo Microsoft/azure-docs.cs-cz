@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c960a7b509f365ad7fd6b04267cfec6bf41c4e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542560"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Kurz: Azure Active Directory integrace s SmartRecruiters
 
@@ -30,7 +30,7 @@ Integrace SmartRecruiters s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s SmartRecruiters potřebujete následující položky:
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SmartRec
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně SmartRecruiters a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SmartRec
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně SmartRecruiters a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
 
@@ -134,19 +134,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SmartRec
 
 1. Přejít na **Nastavení/správce**.
 
-    ![Konfigurace SmartRecruiters](./media/smartrecruiters-tutorial/configure.png)
+    ![Snímek obrazovky se zobrazí nastavení/správce vybrané z nabídky.](./media/smartrecruiters-tutorial/configure.png)
 
 1. V části **Konfigurace** klikněte na **webové jednotné přihlašování**.
 
-    ![Konfigurace SmartRecruiters](./media/smartrecruiters-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje web S S S vybraným z konfigurace.](./media/smartrecruiters-tutorial/configure1.png)
 
 1. Přepněte **možnost Povolit webové jednotné přihlašování**.
 
-    ![Konfigurace SmartRecruiters](./media/smartrecruiters-tutorial/configure2.png)
+    ![Snímek obrazovky se zobrazí v ovládacím prvku povolit web S O.](./media/smartrecruiters-tutorial/configure2.png)
 
 1. V **konfiguraci zprostředkovatele identity**proveďte následující kroky:
 
-    ![Konfigurace SmartRecruiters](./media/smartrecruiters-tutorial/configure4.png)
+    ![Snímek obrazovky ukazuje konfiguraci zprostředkovatele identity, kde můžete zadat hodnoty, které jsou popsány.](./media/smartrecruiters-tutorial/configure4.png)
 
     a. Do textového pole **Adresa URL poskytovatele identity** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 

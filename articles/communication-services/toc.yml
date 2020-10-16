@@ -34,6 +34,8 @@
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
         - name: Použití klientské knihovny pro hovory
           href: quickstarts/voice-video-calling/calling-client-samples.md
+        - name: Připojení volající aplikace ke schůzce v Teams
+          href: quickstarts/voice-video-calling/get-started-teams-interop.md
 - name: Kurzy
   expanded: false
   items:
@@ -62,6 +64,8 @@
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: Koncepce hlasových hovorů a videohovorů
           href: concepts/voice-video-calling/about-call-types.md
+        - name: Interoperabilita Teams
+          href: concepts/voice-video-calling/teams-interop.md
     - name: Klientská a serverová architektura
       href: concepts/client-and-server-architecture.md
     - name: Toky volání

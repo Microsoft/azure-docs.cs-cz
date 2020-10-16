@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34a9350f830171a137ca3a63ecae2203edec92b2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322445"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127365"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Řešení potíží v případě nezobrazování dat ze zařízení v Azure IoT Central
 
@@ -34,9 +34,9 @@ Tato část vám pomůže určit, jestli se vaše data doIoT Central.
 
 Pokud jste to ještě neudělali, nainstalujte `az cli` Nástroj a `azure-iot` rozšíření.
 
-Informace o tom, jak nainstalovat `az cli` , najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Informace o tom, jak nainstalovat `az cli` , najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Chcete-li [nainstalovat](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) `azure-iot` rozšíření, spusťte následující příkaz:
+Chcete-li [nainstalovat](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation) `azure-iot` rozšíření, spusťte následující příkaz:
 
 ```cmd/bash
 az extension add --name azure-iot
@@ -129,7 +129,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Stav zřizování zařízení | Description | Možné zmírnění |
+| Stav zřizování zařízení | Popis | Možné zmírnění |
 | - | - | - |
 | Zřízené | Žádný okamžitě rozpoznatelný problém. | Není k dispozici |
 | Registrované | Zařízení ještě není připojené k IoT Central. | V protokolech zařízení ověřte problémy s připojením. |
@@ -149,13 +149,13 @@ V následujících tabulkách jsou uvedeny běžné kódy chyb a možné akce, k
 
 Pokud se vám zobrazují problémy související s vaším tokem ověřování:
 
-| Kód chyby | Description | Možné zmírnění |
+| Kód chyby | Popis | Možné zmírnění |
 | - | - | - |
 | 400 | Tělo požadavku není platné. Nelze jej například analyzovat nebo objekt nelze ověřit. | Ujistěte se, že posíláte správné tělo žádosti v rámci toku ověření identity, nebo použijete sadu SDK pro zařízení. |
 | 401 | Autorizační token se nedá ověřit. Například vypršela platnost nebo neplatí pro identifikátor URI žádosti. Tento kód chyby se také vrátí do zařízení jako součást toku ověření čipem TPM. | Ujistěte se, že má vaše zařízení správné přihlašovací údaje. |
 | 404 | Instance služby Device Provisioning nebo prostředek, jako je registrace, neexistuje. | [Zasouborte lístek s zákaznickou podporou](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
 | 412 | `ETag`V žádosti se neshoduje s `ETag` existujícím prostředkem, a to podle RFC7232. | [Zasouborte lístek s zákaznickou podporou](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). |
-| 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | Snižte frekvenci zpráv, rozdělte zodpovědnosti mezi více zařízení. |
+| 429 | Služba omezuje operace. Omezení pro konkrétní služby najdete v tématu [omezení IoT Hub Device Provisioning Service](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | Snižte frekvenci zpráv, rozdělte zodpovědnosti mezi více zařízení. |
 | 500 | Došlo k vnitřní chybě. | Zadáte [lístek s zákaznickou podporou](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , abyste mohli zjistit, jestli vám může pomoci. |
 
 ## <a name="payload-shape-issues"></a>Problémy s tvarem datové části

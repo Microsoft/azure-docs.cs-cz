@@ -49,6 +49,34 @@
           href: active-directory-architecture.md
         - name: Integrace všech vašich aplikací s Azure AD
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Protokoly zřizování a ověřování
+          items:
+            - name: Přehled
+              href: auth-sync-overview.md
+            - name: Ověřování na základě hlaviček
+              href: auth-header-based.md
+            - name: Ověřování pomocí protokolu LDAP
+              href: auth-ldap.md
+            - name: Ověřování OAuth 2.0
+              href: auth-oauth2.md
+            - name: Ověřování Open ID Connect
+              href: auth-oidc.md
+            - name: Ověřování pomocí hesla
+              href: auth-password-based-sso.md
+            - name: Ověřování RADIUS
+              href: auth-radius.md
+            - name: Ověřování brány vzdálené plochy
+              href: auth-remote-desktop-gateway.md
+            - name: Ověřování SAML
+              href: auth-saml.md
+            - name: Ověřování Windows – KCD
+              href: auth-kcd.md
+            - name: Synchronizace adresářů
+              href: sync-directory.md
+            - name: Synchronizace LDAP
+              href: sync-ldap.md
+            - name: Synchronizace SCIM
+              href: sync-scim.md
     - name: Průvodce nasazením
       items:
         - name: 'Nasazení 30, 90 a dál'

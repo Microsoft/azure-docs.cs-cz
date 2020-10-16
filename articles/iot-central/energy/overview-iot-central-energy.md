@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0cc9fd5836371a925be531de773ea9c2e276c0eb
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90970439"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127348"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Sestavování řešení pro energetiku s využitím služby IoT Central 
 
@@ -66,6 +66,6 @@ Po nasazení aplikace se v 1-2 minutách zobrazí Simulovaná data v panelu slun
 ## <a name="next-steps"></a>Další kroky
 Začínáme s vytvářením řešení pro energii:
 * Vytváření šablon aplikací zdarma: [aplikace s inteligentním měřením](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [aplikace slunečního panelu](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* Další informace o [konceptech aplikací monitorování inteligentního měření](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
-* Další informace o [konceptech monitorovacích panelů pro aplikace](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
-* Další informace o [IoT Central platformě](https://docs.microsoft.com/azure/iot-central/)
+* Další informace o [konceptech aplikací monitorování inteligentního měření](./concept-iot-central-smart-meter-app.md)
+* Další informace o [konceptech monitorovacích panelů pro aplikace](./concept-iot-central-solar-panel-app.md)
+* Další informace o [IoT Central platformě](../index.yml)

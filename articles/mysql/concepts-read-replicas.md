@@ -1,17 +1,17 @@
 ---
-title: Čtení replik – Azure Database for MySQL.
+title: Čtení replik – Azure Database for MySQL
 description: 'Přečtěte si o replikách pro čtení v Azure Database for MySQL: výběr oblastí, vytváření replik, připojení k replikám, monitorování replikace a zastavení replikace.'
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/1/2020
-ms.openlocfilehash: 42ca56e33ff0bc8f48c35849480d8094a2be1cb7
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.date: 10/15/2020
+ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876545"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126651"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -38,7 +38,7 @@ Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavn�
 Funkce replika čtení používá asynchronní replikaci MySQL. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
 
 > [!IMPORTANT]
-> Azure Database for MySQL používá protokolování binárního souboru založeného na **řádcích** . V případě, že v tabulce chybí primární klíč, budou prohledány všechny řádky v tabulce pro operace DML. Tím dojde ke zvýšení prodlevy při replikaci. Aby bylo zajištěno, že replika bude schopna uchovat změny ve zdroji, doporučujeme přidat primární klíč na tabulky na zdrojovém serveru před vytvořením serveru repliky nebo opětovným vytvořením serveru repliky, pokud jej již máte.
+> Azure Database for MySQL využívá binární protokolování založené na **řádcích**. Pokud ve vaší tabulce chybí primární klíč, pro operace DML se prohledávají všechny řádky v tabulce. To vede k vyšší prodlevě replikace. Aby se zajistilo, že replika dokáže držet krok se změnami na zdrojovém serveru, obecně doporučujeme před vytvořením serveru repliky nebo opětovným vytvořením serveru repliky, pokud už nějaký máte, přidat do tabulek na zdrojovém serveru primární klíč.
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
 Repliku pro čtení můžete vytvořit v jiné oblasti ze zdrojového serveru. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
@@ -50,7 +50,7 @@ Zdrojový server můžete mít v libovolné [Azure Database for MySQL oblasti](h
 ### <a name="universal-replica-regions"></a>Oblasti univerzální repliky
 Repliku pro čtení můžete vytvořit v některé z následujících oblastí bez ohledu na to, kde se nachází zdrojový server. Mezi podporované oblasti univerzální repliky patří:
 
-Austrálie – východ, Austrálie – jihovýchod, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Korea – jih, střed, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, západní Evropa, Západní USA, západní USA 2, Středozápadní USA.
+Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed USA, Východní Asie, Východní USA, Východní USA 2, Japonsko – východ, Japonsko – západ, Jižní Korea, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, Západní USA, západní USA 2 a Středozápadní USA.
 
 ### <a name="paired-regions"></a>Spárované oblasti
 Kromě oblastí univerzální repliky můžete vytvořit repliku pro čtení v oblasti párování Azure na vašem zdrojovém serveru. Pokud neznáte pár vaší oblasti, můžete získat další informace v [článku spárované oblasti Azure](../best-practices-availability-paired-regions.md).
@@ -178,7 +178,7 @@ Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serv
 
 Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru v hlavní větvi a znovu vytvořte repliky.
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Další
 
 - Identifikátory globálních transakcí (GTID) se nepodporují.
 - Vytvoření repliky repliky není podporováno.

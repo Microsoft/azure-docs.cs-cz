@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873274"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127024"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (virtuální počítač se systémem Linux)
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření virtuálního počítače Azure s nainstalovaným modulem runtime Azure IoT Edge
 > * Připraví IoT Edge instalaci, aby hostoval modul Live video Analytics a připojil se k IoT Central
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste dokončit předchozí [Vytvoření aplikace video Analytics v azure IoT Central](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [Vytvoření analýzy videí v Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md) .
 
@@ -94,7 +94,7 @@ Nasazení nakonfigurovali následující pět modulů IoT Edge ke spuštění:
 
 Nasazení vytvořilo vlastní IoT Edge prostředí s požadovanými moduly pro Live video Analytics. Nasazení aktualizovalo výchozí **config. yaml** , aby se zajistilo, že modul runtime IoT Edge používal službu IoT Device Provisioning pro připojení k IoT Central. Nasazení také vytvořilo soubor s názvem **state.js** ve složce **/Data/Storage** , aby poskytoval další konfigurační data modulům. Další informace najdete v kurzu [vytvoření instance IoT Edge pro video Analytics (Intel NUC)](./tutorial-video-analytics-iot-edge-nuc.md) .
 
-Řešení potíží se zařízením s IoT Edge najdete v tématu [řešení potíží s IoT Edge zařízením](https://docs.microsoft.com/azure/iot-edge/troubleshoot) .
+Řešení potíží se zařízením s IoT Edge najdete v tématu [řešení potíží s IoT Edge zařízením](../../iot-edge/troubleshoot.md) .
 
 ## <a name="use-the-rtsp-simulator"></a>Použití simulátoru RTSP
 

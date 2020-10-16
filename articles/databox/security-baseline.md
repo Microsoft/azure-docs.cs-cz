@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8a1b2192784c26ed17b31be262b22efbf935d84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36d3fdbe05a4fac63415e34aea879a9ef576b725
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225600"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127093"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Základní hodnoty zabezpečení Azure pro Azure Data Box
 
 Základní plán zabezpečení Azure pro Azure Data Box obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
@@ -70,9 +70,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné**materiály: doprovodné materiály: koncové body, které používá Azure Data box, jsou spravovány společností Microsoft. Zodpovídáte za všechny další ovládací prvky, které chcete nasadit do místních systémů.
 
-* [Principy zabezpečení Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Principy zabezpečení Azure Data Box](./data-box-security.md)
 
-* [Informace o portu pro Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-system-requirements#port-requirements)
+* [Informace o portu pro Azure Data Box](./data-box-system-requirements.md#port-requirements)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -120,7 +120,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
@@ -134,7 +134,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné**materiály: odpovídající každý krok v pořadí data box můžete provést několik akcí řízení přístupu k objednávce, Auditovat události, sledovat pořadí a interpretovat různé protokoly, které jsou vygenerovány.
 
-* [Vysvětlení sledování a protokolování událostí pro Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Vysvětlení sledování a protokolování událostí pro Azure Data Box](./data-box-logs.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -144,7 +144,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné**materiály: odpovídající každý krok v pořadí data box můžete provést několik akcí řízení přístupu k objednávce, Auditovat události, sledovat pořadí a interpretovat různé protokoly, které jsou vygenerovány.
 
-* [Vysvětlení sledování a protokolování událostí pro Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Vysvětlení sledování a protokolování událostí pro Azure Data Box](./data-box-logs.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -170,7 +170,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné**materiály: odpovídající každý krok v pořadí data box můžete provést několik akcí řízení přístupu k objednávce, Auditovat události, sledovat pořadí a interpretovat různé protokoly, které jsou vygenerovány.
 
-* [Vysvětlení sledování a protokolování událostí pro Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Vysvětlení sledování a protokolování událostí pro Azure Data Box](./data-box-logs.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -180,7 +180,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné**materiály: odpovídající každý krok v pořadí data box můžete provést několik akcí řízení přístupu k objednávce, Auditovat události, sledovat pořadí a interpretovat různé protokoly, které jsou vygenerovány.
 
-* [Vysvětlení sledování a protokolování událostí pro Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-logs)
+* [Vysvětlení sledování a protokolování událostí pro Azure Data Box](./data-box-logs.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -212,17 +212,17 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
 **Doprovodné**materiály: udržování inventáře uživatelských účtů, které mají přístup pro správu k vašemu Azure Data box. K nakonfigurování řízení přístupu na základě role Azure (Azure RBAC) můžete použít podokno identita a řízení přístupu (IAM) v Azure Portal pro vaše předplatné. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. při prvním vytvoření objednávky můžete určit, kdo má mít přístup k vaší objednávce. Nastavte role Azure v různých oborech, abyste mohli řídit přístup k pořadí Data Box. Role Azure určuje typ přístupu – čtení i zápis, čtení i zápis v podmnožině operací.
 
-* [Porozumění vlastním rolím](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+* [Porozumění vlastním rolím](../role-based-access-control/custom-roles.md)
 
-* [Jak nakonfigurovat službu Azure RBAC pro sešity](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Jak nakonfigurovat službu Azure RBAC pro sešity](../sentinel/quickstart-get-visibility.md)
 
-* [Informace o tom, jak nastavit řízení přístupu v objednávce](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Informace o tom, jak nastavit řízení přístupu v objednávce](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Monitorování Azure Security Center**: ne
 
@@ -245,9 +245,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 - Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 
-* [Použití Azure Security Center k monitorování identity a přístupu (Preview)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Použití Azure Security Center k monitorování identity a přístupu (Preview)](../security-center/security-center-identity-access.md)
 
-* [Jak používat Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Jak používat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -273,9 +273,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 **Pokyny**: použití pracovní stanice s privilegovaným přístupem (privilegovaným přístupem) s povolenou službou Azure Multi-Factor Authentication (MFA) k přihlášení a konfiguraci Azure Data box objednávek.
 
-* [Pracovní stanice s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Pracovní stanice s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Plánování cloudového nasazení Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Plánování cloudového nasazení Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -287,9 +287,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-* [Postup nasazení Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Postup nasazení Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Vysvětlení zjišťování rizik Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -299,7 +299,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup k Azure Portal jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-* [Postup konfigurace pojmenovaných umístění v Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -309,7 +309,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 **Doprovodné**materiály: použití Azure Active Directory (AD) jako centrálního ověřování a systému autorizace, pokud je to možné. Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-* [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -321,9 +321,9 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 U zařízení Data Box to není podporováno v reálném čase. Protokoly si můžete prohlédnout na konci úlohy.
 
-* [Pochopení sestav Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
-* [Jak používat recenze Azure identity Access](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -339,9 +339,9 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 Protokoly služby Azure Data Box nejsou zapsány do pracovního prostoru Log Analytics.
 
-* [Jak integrovat protokoly aktivit Azure do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Jak integrovat protokoly aktivit Azure do Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Postup zprovoznění služby Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -351,11 +351,11 @@ Protokoly služby Azure Data Box nejsou zapsány do pracovního prostoru Log Ana
 
 **Doprovodné**materiály: pro odchylku chování přihlášení k účtu na rovině ovládacího prvku (např. Azure Portal) použijte funkce Azure AD Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-* [Jak zobrazit rizikové přihlášení ke službě Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Jak zobrazit rizikové přihlášení ke službě Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -365,7 +365,7 @@ Protokoly služby Azure Data Box nejsou zapsány do pracovního prostoru Log Ana
 
 **Doprovodné**materiály: Customer Lockbox se v současnosti pro Azure Data box nepodporuje.
 
-* [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -373,7 +373,7 @@ Protokoly služby Azure Data Box nejsou zapsány do pracovního prostoru Log Ana
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
@@ -389,7 +389,7 @@ Protokoly služby Azure Data Box nejsou zapsány do pracovního prostoru Log Ana
 
 Během nahrávání dat do Azure se zařízení Data Box a služba používaná k nahrání dat jsou izolované.
 
-* [Jak začít s Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Jak začít s Azure Data Box](./data-box-quickstart-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -399,7 +399,7 @@ Během nahrávání dat do Azure se zařízení Data Box a služba používaná 
 
 **Doprovodné**materiály: Společnost Microsoft spravuje základní infrastrukturu pro Azure Data box a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat. Pokud je Data Box na zákaznickém webu, dodržujte osvědčené postupy, abyste zajistili, že přenesená citlivá data budou chráněná.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -409,9 +409,9 @@ Během nahrávání dat do Azure se zařízení Data Box a služba používaná 
 
 **Doprovodné**materiály: Společnost Microsoft spravuje základní infrastrukturu pro Azure Data box a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat. Pokud je Data Box na zákaznickém webu, dodržujte osvědčené postupy, abyste zajistili, že přenesená citlivá data budou chráněná.
 
-* [Pochopení migrace dat v Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-faq)
+* [Pochopení migrace dat v Azure Data Box](./data-box-faq.md)
 
-* [Přehled zabezpečení Data Box](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Přehled zabezpečení Data Box](./data-box-security.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -421,7 +421,7 @@ Během nahrávání dat do Azure se zařízení Data Box a služba používaná 
 
 **Doprovodné**materiály: aktuálně není k dispozici; funkce pro identifikaci, klasifikaci a ochranu před únikem informací ještě nejsou pro Azure Data Box k dispozici. Microsoft spravuje základní infrastrukturu pro Azure Data Box a implementuje přísné kontrolní mechanismy, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -431,9 +431,9 @@ Během nahrávání dat do Azure se zařízení Data Box a služba používaná 
 
 **Pokyny**: Ujistěte se, že máte k předplatnému přístup vlastníka nebo přispěvatele, abyste mohli vytvořit objednávku data box. Můžete také definovat Data Box čtenář a Data Box role přispěvatele na úrovni prostředků.
 
-* [Informace o tom, jak začít s Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)
+* [Informace o tom, jak začít s Azure Data Box](./data-box-quickstart-portal.md)
 
-* [Informace o tom, jak nastavit řízení přístupu](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+* [Informace o tom, jak nastavit řízení přístupu](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -443,7 +443,7 @@ Během nahrávání dat do Azure se zařízení Data Box a služba používaná 
 
 **Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Společnost Microsoft spravuje základní infrastrukturu pro Azure Data Box a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Ochrana zákaznických dat Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Ochrana zákaznických dat Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -455,9 +455,9 @@ Během nahrávání dat do Azure se zařízení Data Box a služba používaná 
 
 Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azure Data Box chrání klíč pro odemčení zařízení (označovaný také jako heslo zařízení), který se používá k uzamčení zařízení prostřednictvím šifrovacího klíče. Ve výchozím nastavení je klíč pro odemčení zařízení pro Data Box pro objednávku zašifrovaný pomocí spravovaného klíče společnosti Microsoft. Pro další kontrolu nad klíčem pro odemknutí zařízení můžete také zadat klíč spravovaný zákazníkem. Klíče spravované zákazníkem musí být vytvořeny a uloženy v Azure Key Vault.
 
-* [Pochopení Data Box ochrany dat](https://docs.microsoft.com/azure/databox/data-box-security)
+* [Pochopení Data Box ochrany dat](./data-box-security.md)
 
-* [Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -467,7 +467,7 @@ Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azu
 
 **Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy se změny projeví Azure Data box, i na jiné důležité nebo související prostředky.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -475,7 +475,7 @@ Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azu
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](../security/benchmarks/security-control-vulnerability-management.md)zabezpečení.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
@@ -519,7 +519,7 @@ Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azu
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
@@ -605,7 +605,7 @@ Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azu
 
 **Pokyny**: Nakonfigurujte podmíněný přístup Azure tak, aby uživatelé mohli komunikovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management.
 
-* [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -629,7 +629,7 @@ Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azu
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
@@ -715,7 +715,7 @@ Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azu
 
 **Doprovodné**materiály: klíče spravované zákazníkem musí být vytvořeny a uloženy v Azure Key Vault.
 
-* [Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-customer-managed-encryption-key-portal)
+* [Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box](./data-box-customer-managed-encryption-key-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -725,7 +725,7 @@ Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azu
 
 **Doprovodné**materiály: nepoužitelné; Azure Data Box nevyužije spravované identity.
 
-* [Služby Azure, které podporují spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+* [Služby Azure, které podporují spravované identity](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -743,7 +743,7 @@ Azure Data Box implementuje šifrování AES 256 pro neaktivní data. navíc Azu
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
@@ -773,7 +773,7 @@ Je vaše zodpovědnost za to, že se veškerý obsah nahrává do prostředků A
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
@@ -809,7 +809,7 @@ Je vaše zodpovědnost za to, že se veškerý obsah nahrává do prostředků A
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -831,9 +831,9 @@ Je vaše zodpovědnost za to, že se veškerý obsah nahrává do prostředků A
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
-* [Výstrahy zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Používání značek k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -853,7 +853,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-* [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -863,9 +863,9 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Pokyny**: vyexportujte výstrahy a doporučení pro Azure Security Center pomocí funkce průběžného exportu, které vám pomůžou identifikovat rizika pro prostředky Azure. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
-* [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-* [Jak streamovat výstrahy do Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -875,7 +875,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
 
-* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -883,7 +883,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
@@ -899,5 +899,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

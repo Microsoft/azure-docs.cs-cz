@@ -116,7 +116,7 @@
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-        - name: Zabezpečení prostředků indexeru
+        - name: Přístup k chráněnému obsahu
           href: search-indexer-securing-resources.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md

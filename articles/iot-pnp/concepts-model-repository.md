@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cfdf22ac9b97ff7187bc360efe07cfe16249bd6b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 95c9b6dee402bc0c2dd2cab8ef3200cfd9213d61
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042877"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126820"
 ---
 # <a name="device-model-repository"></a>Úložiště modelů zařízení
 
@@ -30,7 +30,7 @@ Společnost Microsoft je hostitelem veřejné služby DMR s těmito charakterist
 
 ## <a name="custom-device-model-repository"></a>Vlastní úložiště modelů zařízení
 
-Pokud chcete vytvořit vlastní soubor DMR, můžete použít stejný vzor protokolu DMR na jakémkoli úložném médiu, jako je místní systém souborů nebo vlastní webové servery HTTP. Můžete načíst modely z vlastního nástroje DMR stejným způsobem jako z veřejné správy DRM pouhým změnou základní adresy URL používané pro přístup ke službě DMR.
+Pokud chcete vytvořit vlastní soubor DMR, můžete použít stejný vzor protokolu DMR na jakémkoli úložném médiu, jako je místní systém souborů nebo vlastní webové servery HTTP. Modely z vlastního DMR můžete načíst stejným způsobem jako z veřejného DMR, a to jednoduše tak, že změníte základní adresu URL používanou pro přístup ke službě DMR.
 
 > [!NOTE]
 > Nástroje, které slouží k ověření modelů ve veřejném úložišti DMR, se dají znovu použít ve vlastních úložištích.

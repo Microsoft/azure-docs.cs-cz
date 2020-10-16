@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a203bbd65c07d21c7d96b59c57b441748ed5b9a9
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372472"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127554"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Kurz: Azure Active Directory integrace s odkazem na Springer
 
@@ -30,7 +30,7 @@ Integrace Springer odkazů do Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s odkazem na Springer potřebujete následující položky:
 
@@ -97,7 +97,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s odkazem na Spr
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování k doméně a adresám URL propojení Springer](common/idp-relay.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-relay.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL: `https://fsso.springer.com`
 
@@ -109,7 +109,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s odkazem na Spr
 
 5. Pokud chcete nakonfigurovat aplikaci v režimu **SP** iniciované, proveďte následující krok:
 
-    ![Informace o jednotném přihlašování k doméně a adresám URL propojení Springer](common/both-signonurl.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/both-signonurl.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 

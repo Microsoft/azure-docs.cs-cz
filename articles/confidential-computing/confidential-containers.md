@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.service: container-service
-ms.openlocfilehash: 528b843e24e1d63e4822c253b3636ef490e8fe8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35518a90ff3db2b951e0310970afd6d78dd25807
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995837"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122199"
 ---
 # <a name="confidential-containers"></a>Důvěrné kontejnery
 
@@ -67,7 +67,7 @@ Scone nasazení v tajných výpočetních uzlech s AKS jsou plně podporovaná a
 
 ### <a name="anjuna"></a>Anjuna
 
-[Anjuna](https://www.anjuna.io/) poskytuje software platformy SGX, který umožňuje spouštět neupravené kontejnery v AKS. [Tady si můžete](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp)přečíst další informace o **nadcházejících** funkcích a toku uživatele.
+[Anjuna](https://www.anjuna.io/) poskytuje software platformy SGX, který umožňuje spouštět neupravené kontejnery v AKS. Přečtěte si další informace o funkcích a podívejte se na ukázkové aplikace [zde](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp).
 
 Začněte s ukázkovými Redis Cache a [vlastní aplikací v](https://www.anjuna.io/microsoft-azure-confidential-computing-aks-lp) Pythonu
 

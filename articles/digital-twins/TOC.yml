@@ -37,6 +37,8 @@
       href: concepts-route-events.md
     - name: Zabezpečení pro řešení Azure Digital Twins
       href: concepts-security.md
+    - name: Vysoká dostupnost a zotavení po havárii
+      href: concepts-high-availability-disaster-recovery.md
 - name: Návody
   items:
     - name: Nasazení
@@ -199,7 +201,7 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: Ukázka integrace ioT Hubu a DPS
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: Vlastní swaggery pro Azure Digital Twins
+        - name: Vlastní swaggery služby Azure Digital Twins pro konektor Logic Apps
           href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: Ukázka integrace SignalR
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/

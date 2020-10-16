@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9f93457edc4276422eb97b56c90b83ad6a19a65
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545090"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126888"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Orionem SolarWinds
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat SolarWinds Orion s Azure Active Direct
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -144,19 +144,19 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přihlaste se ke službě SolarWinds Orion a vyberte **Nastavení**  ->  **všechna nastavení**.
 
-    ![ Konfigurace SolarWinds Orion ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Snímek obrazovky se zobrazí všechna nastavení vybraná z nastavení.](./media/solarwinds-orion-tutorial/settings.png)
 
 1. V části **uživatelské účty** vyberte **Konfigurace SAML**.
 
-    ![ Konfigurace SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![Snímek obrazovky: zobrazení konfigurace SAML vybrané z uživatelských účtů](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
 1. Klikněte na **Přidat zprostředkovatele identity**.
 
-    ![ Konfigurace SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![Snímek obrazovky ukazuje konfiguraci SAML, kde můžete vybrat přidat poskytovatele IDENTITY.](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
 1. Na stránce **Přidat zprostředkovatele identity** proveďte následující kroky:
 
-    ![ Konfigurace SolarWinds Orion ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![Snímek obrazovky se zobrazí na stránce Přidat poskytovatele identity, kde můžete zadat hodnoty, které jsou popsány.](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
     a. Přejít na kartu **Konfigurace** .
 
@@ -174,25 +174,25 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přihlaste se k webu SolarWinds Orion a vyberte **Nastavení**  ->  **všechna nastavení**.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/settings.png)
+    ![Snímek obrazovky se zobrazí všechna nastavení vybraná z nastavení.](./media/solarwinds-orion-tutorial/settings.png)
 
 1. V části **uživatelské účty** vyberte **Spravovat účty**.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![Snímek obrazovky s vybraným nastavením konfigurace SAML](./media/solarwinds-orion-tutorial/user-accounts.png)
 
 1. Na kartě **jednotlivé účty** klikněte na **Přidat nový účet**.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![Snímek obrazovky ukazuje přidat nový účet vybraný v možnosti spravovat účty.](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. Vyberte typ účtu, který potřebujete vytvořit buď jednotlivé uživatele nebo skupiny SAML.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![Snímek obrazovky ukazuje přidat nový účet, kde můžete vybrat typ účtu.](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  Do textového pole **název ID** zadejte název, který se musí shodovat s uživatelským jménem nebo názvem skupiny přesně stejně jako ve službě Azure AD.
 
 1.  Klikněte na **Další** a potom stránku odešlete.
 
-    ![ SolarWinds Orion vytvořit testovacího uživatele ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![Snímek obrazovky ukazuje přidat nový účet, kde můžete zadat název I D v Azure A D.](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>Test SSO 
 

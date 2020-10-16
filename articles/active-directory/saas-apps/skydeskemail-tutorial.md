@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 71150ea5ba7d6f25b07a9afaa1f1dc60adcb3e24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72aaa1a19ef5a375ec1ee6c2938f64cb37aac139
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518642"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Kurz: Azure Active Directory integrace s SkyDesk e-mailem
 
@@ -30,7 +30,7 @@ Integrace SkyDeskho e-mailu s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s SkyDesk e-mailem, budete potřebovat následující položky:
 
@@ -126,32 +126,32 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí e-mailu 
 
 1. V nabídce v horní části klikněte na **Nastavení**a vyberte **org**.
 
-    ![Konfigurace jednoho Sign-On](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![Snímek obrazovky se zobrazí v nabídce nastavení vybraná možnost org.](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
 1. V levém panelu klikněte na **domény** .
 
-    ![Konfigurace jednoho Sign-On](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![Snímek obrazovky zobrazuje domény vybrané v Ovládacích panelech.](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
 1. Klikněte na **Přidat doménu**.
 
-    ![Konfigurace jednoho Sign-On](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![Snímek obrazovky znázorňující vybranou možnost Přidat doménu.](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. Zadejte název domény a pak ověřte doménu.
 
-    ![Konfigurace jednoho Sign-On](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![Snímek obrazovky se zobrazí karta přidat doménu, kde můžete zadat doménu.](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
 1. Na levém panelu klikněte na **ověřování SAML** .
 
-    ![Konfigurace jednoho Sign-On](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![Snímek obrazovky ukazuje ověřování SAML vybrané z ovládacích panelů.](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. Na stránce **ověřovací** dialog pro SAML proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně Podrobnosti ověřování SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
     > Pokud chcete používat ověřování na základě SAML, měli byste buď ověřit nastavení **adresy URL** v **doméně** nebo portálu. Můžete nastavit adresu URL portálu jedinečným názvem.
 
-    ![Konfigurace jednoho Sign-On](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![Snímek obrazovky ukazuje portál U R L, kde zadáte název.](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
@@ -222,7 +222,7 @@ V této části vytvoříte v e-mailu SkyDesk uživatele s názvem Britta Simon.
 
 V SkyDesk e-mailu klikněte na **přístup uživatelů** na levém panelu a pak zadejte svoje uživatelské jméno.
 
-![Konfigurace jednoho Sign-On](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![Snímek obrazovky zobrazuje uživatelský přístup vybraný z ovládacích panelů.](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > Pokud potřebujete vytvořit hromadné uživatele, musíte se obrátit na [tým podpory e-mailových klientů SkyDesk](https://www.skydesk.jp/apps/support/).

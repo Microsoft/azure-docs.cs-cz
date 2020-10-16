@@ -6,16 +6,19 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 3182f7fa913cd61e6c51ea91be6b46e83a1ab949
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa10b2170024760fe20d6ed037353b12a0a9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540098"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127246"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Porozumění změnám v kořenové CA se mění Azure Database for MariaDB
 
-Azure Database for MariaDB změní kořenový certifikát pro klientskou aplikaci/ovladač, který je povolený s protokolem SSL, použijte pro [připojení k databázovému serveru](concepts-connectivity-architecture.md). Kořenový certifikát, který je aktuálně k dispozici, je v rámci standardní údržby a osvědčených postupů pro zabezpečení nastaven na vypršení platnosti 26. října 2020 (10/26/2020). Tento článek obsahuje podrobné informace o nadcházejících změnách, prostředcích, které budou ovlivněny, a krocích potřebných k tomu, aby vaše aplikace zachovala připojení k vašemu databázovému serveru.
+Azure Database for MariaDB změní kořenový certifikát pro klientskou aplikaci/ovladač, který je povolený s protokolem SSL, použijte pro [připojení k databázovému serveru](concepts-connectivity-architecture.md). Aktuálně dostupný kořenový certifikát má 15. února 2021 (02/15/2021) jako součást standardní údržby a osvědčených postupů zabezpečení. Tento článek obsahuje podrobné informace o nadcházejících změnách, prostředcích, které budou ovlivněny, a krocích potřebných k tomu, aby vaše aplikace zachovala připojení k vašemu databázovému serveru.
+
+>[!NOTE]
+> Na základě zpětné vazby od zákazníků jsme rozšířili vyřazení kořenových certifikátů pro naši stávající kořenovou certifikační autoritu Baltimore od října 26, 2020 do 15. února 2021. Doufáme, že toto rozšíření poskytuje dostatek času vedoucího k tomu, aby naši uživatelé mohli implementovat změny klienta, pokud budou ovlivněny.
 
 ## <a name="what-update-is-going-to-happen"></a>K jaké aktualizaci dojde?
 
@@ -24,12 +27,12 @@ V některých případech aplikace používají k zabezpečenému připojení so
 Podle požadavků na dodržování předpisů v oboru dodavatelé CA začali odvolávat certifikáty certifikační autority pro certifikační autority, které nedodržují předpisy, vyžadují servery k používání certifikátů vydaných kompatibilními certifikačními autoritami a podepisují certifikáty CA z těchto odpovídajících certifikačních autorit Vzhledem k tomu, že Azure Database for MariaDB aktuálně používá jeden z těchto nekompatibilních certifikátů, které klientské aplikace používají k ověření připojení SSL, musíme zajistit, aby byly provedeny vhodné akce (popsané níže), aby se minimalizoval potenciální dopad na servery MariaDB.
 
 
-Nový certifikát se použije od 26. října 2020 (10/26/2020). Pokud při připojování z klienta MySQL použijete ověření certifikační autority nebo úplné ověření certifikátu serveru (sslmode = ověřit-CA nebo sslmode = ověřit-plná), musíte aktualizovat konfiguraci aplikace před 26. října 2020 (10/26/2020).
+Nový certifikát se použije od 15. února 2021 (02/15/2021). Pokud při připojování z klienta MySQL používáte ověření certifikační autority nebo úplné ověřování certifikátu serveru (sslmode = ověřit-CA nebo sslmode = ověřit-plná), musíte aktualizovat konfiguraci aplikace před 15. února 2021 (02/15/2021).
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Návody informace o tom, jestli se má tato databáze týkat?
 
 Všechny aplikace, které používají protokol SSL/TLS a ověřují kořenový certifikát, musí aktualizovat kořenový certifikát. Můžete zjistit, jestli vaše připojení ověřují kořenový certifikát, a to tak, že zkontrolujete připojovací řetězec.
--   Pokud váš připojovací řetězec obsahuje `sslmode=verify-ca` nebo `sslmode=verify-full` , musíte aktualizovat certifikát.
+-   Pokud váš připojovací řetězec obsahuje `sslmode=verify-ca` nebo `sslmode=verify-identity` , musíte aktualizovat certifikát.
 -   Pokud váš připojovací řetězec obsahuje `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` nebo `sslmode=require` , nemusíte aktualizovat certifikáty. 
 -   Pokud v připojovacím řetězci neurčíte sslmode, nemusíte aktualizovat certifikáty.
 
@@ -83,6 +86,9 @@ Pokud používáte certifikát vydaný Azure Database for MariaDB, jak je uveden
 *   Neplatný certifikát nebo odvolaný certifikát
 *   Vypršel časový limit připojení
 
+> [!NOTE]
+> **Baltimore certifikát** prosím neodstraňujte ani neměňte, dokud se neprovede změna certifikátu. Až se změna dokončí, pošle se vám komunikace, po jejímž uplynutí se certifikát Baltimore bezpečně vyřadí. 
+
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. Pokud nepoužíváte protokol SSL/TLS, musím pořád aktualizovat kořenovou certifikační autoritu?
@@ -91,8 +97,8 @@ Pokud nepoužíváte protokol SSL/TLS, nejsou vyžadovány žádné akce.
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. Pokud používám protokol SSL/TLS, je nutné restartovat server databáze a aktualizovat tak kořenovou certifikační autoritu?
 Ne, nemusíte restartovat databázový server, abyste mohli začít používat nový certifikát. Aktualizace certifikátu je změna na straně klienta a příchozí připojení klientů musí použít nový certifikát k zajištění toho, aby se mohli připojit k databázovému serveru.
 
-### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. co se stane, když kořenový certifikát neaktualizujem před 26. října 2020 (10/26/2020)?
-Pokud kořenový certifikát neaktualizujete před 26. října 2020, vaše aplikace, které se připojují přes protokol SSL/TLS, a ověření kořenového certifikátu nebudou moct komunikovat s databázovým serverem MariaDB a aplikace bude mít problémy s připojením k databázovému serveru MariaDB.
+### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-february-15-2021-02152021"></a>3. k tomu, co se stane, když neaktualizujem kořenový certifikát před 15. února 2021 (02/15/2021)?
+Pokud kořenový certifikát neaktualizujete před 15. února 2021 (02/15/2021), vaše aplikace, které se připojují přes protokol SSL/TLS a ověřují pro kořenový certifikát, nebudou moct komunikovat s databázovým serverem MariaDB a aplikace bude mít problémy s připojením k vašemu databázovému serveru MariaDB.
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. Jaký je dopad při použití App Service s Azure Database for MariaDB?
 V případě Azure App Services můžeme mít Azure Database for MariaDB k dispozici dva možné scénáře a závisí na tom, jak používáte protokol SSL s vaší aplikací.
@@ -110,11 +116,11 @@ Pro konektor používající Integration Runtime v místním prostředí, kde ex
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. pro tuto změnu potřebuji naplánovat výpadek údržby databázového serveru?
 Ne. Vzhledem k tomu, že se tato změna provádí jenom na straně klienta, aby se mohla připojit k databázovému serveru, není pro tuto změnu pro databázový server potřeba žádné prostoje údržby.
 
-### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. co když mi pro tuto změnu nezíská plánované výpadky před 26. října 2020 (10/26/2020)?
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. co když mi nejde získat plánované výpadky této změny před 15. února 2021 (02/15/2021)?
 Vzhledem k tomu, že klienti, kteří se používají pro připojení k serveru, musí aktualizovat informace o certifikátu, jak je popsáno [v části Oprava](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), v tomto případě nepotřebujeme v tomto případě výpadek serveru.
 
-### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. když po 26. říjnu 2020 vytvořím nový server, bude to mít dopad na to?
-Pro servery vytvořené po 26. října 2020 (10/26/2020) můžete použít nově vydaný certifikát pro vaše aplikace k připojení pomocí protokolu SSL.
+### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. když po 15. únoru 2021 (02/15/2021) vytvořím nový server, bude to mít vliv?
+Pro servery vytvořené po 15. únoru 2021 (02/15/2021) můžete použít nově vydaný certifikát pro vaše aplikace k připojení pomocí protokolu SSL.
 
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?
 Certifikáty používané službou Azure Database for MariaDB poskytují důvěryhodné certifikační autority (CA). Proto je podpora těchto certifikátů na Azure Database for MariaDB vázaná na podporu těchto certifikátů certifikační autoritou. V takovém případě ale můžou být v těchto předdefinovaných certifikátech nepředvídatelné chyby, které je potřeba vyřešit nejstarší.

@@ -3,12 +3,12 @@ title: Podporované verze clusteru v Azure Service Fabric
 description: Přečtěte si o verzích clusterů v Azure Service Fabric, včetně odkazu na nejnovější verze z blogu týmu Service Fabric.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: e3194a59607563656f6624dabf51e9369e9258ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0d53c704645fdeb1e68898c4cadf8429bcb5645
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843239"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122428"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -39,11 +39,11 @@ V následující tabulce jsou uvedeny verze Service Fabric a jejich koncová dat
 | 6,3. * | 6.1.480.* |Menší nebo rovno verzi 3,2 |31. března 2019  |
 | 6,4. * | 6.2.301.* |Menší nebo rovno verzi 3,3 |15. září 2019 |
 | 6,5. * | 6.4.617.* |Menší nebo rovno verzi 3,4 |Od 1. srpna 2020 |
-| 7.0.466.* | 6.4.664.* |Menší nebo rovno verzi 4,0|Od 1. listopadu 2020  |
-| 7.0.466.* | 6,5. * |Menší nebo rovno verzi 4,0|Od 1. listopadu 2020 |
-| 7.0.470.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |Od 1. listopadu 2020  |
-| 7.0.472.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |Od 1. listopadu 2020  |
-| 7.0.478.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |Od 1. listopadu 2020  |
+| 7.0.466.* | 6.4.664.* |Menší nebo rovno verzi 4,0|31. ledna 2021  |
+| 7.0.466.* | 6,5. * |Menší nebo rovno verzi 4,0|31. ledna 2021 |
+| 7.0.470.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |31. ledna 2021  |
+| 7.0.472.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |31. ledna 2021  |
+| 7.0.478.* | 7.0.466.* |Menší nebo rovno verzi 4,0 |31. ledna 2021  |
 | 7.1.409.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |Aktuální verze, takže bez koncového data |
 | 7.1.417.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |Aktuální verze, takže bez koncového data |
 | 7.1.428.* | 7.0.466.* |Menší nebo rovno verzi 4,1 |Aktuální verze, takže bez koncového data |
@@ -59,11 +59,11 @@ Následující tabulka uvádí podporované operační systémy pro podporované
 | --- | --- |
 | Windows Server 2012 R2 | Všechny verze |
 | Windows Server 2016 | Všechny verze |
-| Windows Server 1709 | 6,0 |
+| Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6,0 |
+| Linux Ubuntu 16,04 | 6.0 |
 | Linux Ubuntu 18,04 | 7.1 |
 
 ## <a name="supported-version-names"></a>Podporované názvy verzí

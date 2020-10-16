@@ -3,12 +3,12 @@ title: Vylepšení provozního excellencyu pomocí Poradce
 description: Využijte Azure Advisor k optimalizaci a vyspělosti vaší provozní kvality vašich předplatných Azure.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 25c470a968f2d31ae1190f765046d593190d697b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 63e88129a7418e82ea13429c33d8735e96616476
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077384"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122615"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Dosažení provozní úrovně pomocí Azure Advisor
 
@@ -53,6 +53,12 @@ Azure Policy je služba v Azure, kterou můžete použít k vytváření, přiř
 **Vynutili *audit virtuálních počítačů, které nepoužívají spravované disky*.**
 
 **Povolení *zdědí značku ze skupin prostředků*.** Tyto zásady při vytvoření nebo aktualizaci jakéhokoli prostředku přidají nebo nahradí zadanou značku a hodnotu z nadřazené skupiny prostředků. Stávající prostředky můžete opravit tak, že aktivujete úlohu nápravy.
+
+Poradce doporučuje několik individuálních zásad Azure, které zákazníkům pomohou dosáhnout provozní kvality, a to přijetím osvědčených postupů. Pokud se zákazník rozhodne přiřadit Doporučené zásady, potlačíme doporučení. Pokud se zákazník rozhodne zásadu odebrat později, bude poradce i nadále potlačit doporučení, protože interpretuje jeho odebrání jako silný signál k následujícím akcím:
+
+1.  Zákazník zásadu odebral, protože navzdory doporučení Poradce pro něj neplatí pro svůj konkrétní případ použití. 
+2.  Zákazník si tyto zásady před přiřazením a odebráním ví a v případě, že ji přiřadí a odebere, a může je znovu přiřadit nebo odebrat podle potřeby bez ohledu na to, jestli se později bude relevantní pro případ použití. Pokud ji zákazník najde v nejlepším zájmu, aby znovu přiřadil stejné zásady, může tak učinit v Azure Policy, aniž by vyžadoval doporučení v Advisoru. Všimněte si, že tato logika se vztahuje konkrétně na doporučení zásad v kategorii provozní kvality. Tato pravidla neplatí pro doporučení zabezpečení.  
+
 
 ## <a name="no-validation-environment-enabled"></a>Není povolené žádné prostředí pro ověřování
 Azure Advisor určuje, že v aktuálním předplatném není povolené prostředí ověřování. Při vytváření fondů hostitelů jste na \" kartě Vlastnosti vybrali možnost Ne \" pro \" prostředí ověřování \" . Aspoň jeden fond hostitelů s povoleným ověřovacím prostředím zajišťuje kontinuitu podnikových služeb prostřednictvím nasazení služby Virtual Desktop systému Windows s dřívější detekcí potenciálních problémů. [Další informace](../virtual-desktop/create-validation-host-pool.md)

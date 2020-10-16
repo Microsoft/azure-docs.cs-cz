@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396854"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127110"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Použití Azure Data Box Heavy k migraci obsahu sdílené složky do SharePointu Online
 
@@ -21,9 +21,9 @@ Pomocí Azure Data Box Heavy a nástroje pro migraci služby SharePoint (SPMT) m
 
 Data Box Microsoft Azure je služba, která umožňuje objednat zařízení od portál Microsoft Azure. Potom můžete zkopírovat terabajty dat ze serverů do zařízení. Po odeslání zpátky do Microsoftu se vaše data zkopírují do Azure. V závislosti na velikosti dat, která chcete přenést, si můžete vybrat z těchto míst:
 
-- [Data box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) s využitím kapacity 35 TB pro malé až střední datové sady na objednávku.
-- Pro středně velké datové sady je [data box](https://docs.microsoft.com/azure/databox/data-box-overview) s využitím kapacity 80 TB na zařízení.
-- [Data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) s využitím kapacity 770 TB na zařízení pro velké datové sady.
+- [Data box disk](./data-box-disk-overview.md) s využitím kapacity 35 TB pro malé až střední datové sady na objednávku.
+- Pro středně velké datové sady je [data box](./data-box-overview.md) s využitím kapacity 80 TB na zařízení.
+- [Data box Heavy](./data-box-heavy-overview.md) s využitím kapacity 770 TB na zařízení pro velké datové sady.
 
 Tento článek se týká zejména používání Data Box Heavy k migraci obsahu sdílené složky do SharePointu Online.
 
@@ -37,7 +37,7 @@ Tento článek se týká zejména používání Data Box Heavy k migraci obsahu 
 
 ### <a name="for-sharepoint-online"></a>Pro SharePoint Online
 
-- Projděte si [minimální požadavky na nástroj pro migraci SharePoint (SPMT)](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+- Projděte si [minimální požadavky na nástroj pro migraci SharePoint (SPMT)](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 
@@ -84,7 +84,7 @@ Pro zajištění nejlepšího výkonu a konektivity doporučujeme vytvořit virt
 3. [Stáhněte si nástroj pro migraci SharePointu](https://spmtreleasescus.blob.core.windows.net/install/default.htm) a nainstalujte ho na virtuální počítač Azure.
 4. Spusťte nástroj pro migraci služby SharePoint. Klikněte na **Přihlásit** se a zadejte uživatelské jméno a heslo pro svůj pracovní nebo školní účet.
 5. Když se zobrazí výzva, **kde jsou vaše data?** vyberte **sdílet soubor**. Zadejte cestu ke sdílené složce Azure, kde se nacházejí vaše data.
-6. Sledujte zbývající výzvy jako normální, včetně vašeho cílového umístění. Další informace najdete [v tématu Jak používat nástroj pro migraci služby SharePoint](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+6. Sledujte zbývající výzvy jako normální, včetně vašeho cílového umístění. Další informace najdete [v tématu Jak používat nástroj pro migraci služby SharePoint](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 > [!IMPORTANT]
 > - Rychlost, s jakou se data ingestují do SharePointu Online, ovlivňují několik faktorů bez ohledu na to, jestli data v Azure už máte. Porozumění těmto faktorům vám pomůže naplánovat a maximalizovat efektivitu migrace.  Další informace najdete na [webu SharePoint Online a na rychlost migrace na OneDrive](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).

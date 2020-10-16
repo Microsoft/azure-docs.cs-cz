@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 763fb82e0725e5a98112af3a79856c3703a5c2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b061a6d3d7d2a6598d8ed7c48428d756db6e97d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77016081"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126271"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Referenční architektura propojeného monitorování odpadů 
 
@@ -33,7 +33,7 @@ Koncepty:
 Pojďme se podívat na klíčové komponenty, které obecně hrají součást v řešení monitorování spotřeby vody.
 
 ## <a name="devices-and-connectivity"></a>Zařízení a připojení 
-Zařízení používaná v otevřených prostředích, jako jsou odpadní přihrádky, se můžou prostřednictvím operátoru sítě třetí strany propojit prostřednictvím sítě WAN (LPWAN) s nízkou spotřebou. U těchto typů zařízení můžete k posílání dat zařízení do vaší aplikace IoT v Azure IoT Central použít [most IoT Central pro zařízení Azure](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) . Alternativně můžete mít brány zařízení, které jsou schopné IP a můžou se přímo připojit k IoT Central.
+Zařízení používaná v otevřených prostředích, jako jsou odpadní přihrádky, se můžou prostřednictvím operátoru sítě třetí strany propojit prostřednictvím sítě WAN (LPWAN) s nízkou spotřebou. U těchto typů zařízení můžete k posílání dat zařízení do vaší aplikace IoT v Azure IoT Central použít [most IoT Central pro zařízení Azure](../core/howto-build-iotc-device-bridge.md) . Alternativně můžete mít brány zařízení, které jsou schopné IP a můžou se přímo připojit k IoT Central.
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central je aplikační platforma IoT, která vám umožní rychle začít pracovat v řešení IoT. Vaše řešení můžete označit, přizpůsobit a integrovat s službami třetích stran.
@@ -51,5 +51,4 @@ Data IoT se dají použít k napájení nejrůznějších podnikových aplikací
 ## <a name="next-steps"></a>Další kroky
 * Zjistěte, jak [vytvořit propojenou správu odpadu](./tutorial-connected-waste-management.md) IoT Central aplikaci.
 * Další informace o [IoT Central státních šablonách](./overview-iot-central-government.md)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) .
-
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .

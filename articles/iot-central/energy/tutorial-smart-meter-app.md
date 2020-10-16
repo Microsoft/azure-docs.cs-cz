@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: bdcfeeede8b16bf9a92a885364e4c8fef7ea5cbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af4940ae6b0dc001667602b8729faaa3a10d19da
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986566"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127127"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Kurz: vytvoření a procházení šablony aplikace pro monitorování inteligentního měření 
 
@@ -29,7 +29,7 @@ Tento kurz vás provede procesem vytvoření aplikace pro monitorování intelig
 
 Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Žádné
 - Doporučuje se předplatné Azure, ale není to nutné.
 
@@ -108,6 +108,6 @@ Pokud se rozhodnete, že tuto aplikaci nebudete používat, odstraňte aplikaci 
 
 Další informace o architektuře aplikací inteligentního měření najdete na 
 > [!div class="nextstepaction"]
-> [článek o konceptu](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
+> [článek o konceptu](./concept-iot-central-smart-meter-app.md)
 * Vytváření šablon aplikací pro inteligentní měření zdarma: [aplikace s inteligentním měřením](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/) .
+* Další informace o IoT Central najdete v tématu [IoT Central Overview](../index.yml) .

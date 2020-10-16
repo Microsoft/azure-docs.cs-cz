@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 5d8f3bc0978cc67edbaee29198c78b41d1d08a32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974426"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126733"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Export dat IoT do cílů cloudu pomocí exportu dat (starší verze)
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak používat funkci exportu dat v Azure IoT Central. 
 > [!Note]
 > Když zapnete export dat, dostanete od tohoto okamžiku pouze data. V současné době nelze data po vypnutí exportu dat načíst. Pokud chcete zachovat více historických dat, zapněte nejdříve export dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte být správce aplikace IoT Central, nebo mít oprávnění k exportu dat.
 
@@ -63,7 +63,7 @@ Pokud zvolíte Service Bus jako cíl exportu, nesmí fronty a témata obsahovat 
 
 Pokud nemáte existující účet úložiště Azure pro export do, postupujte takto:
 
-1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Můžete si přečíst další informace o vytváření nových [účtů úložiště Azure Blob](https://aka.ms/blobdocscreatestorageaccount) nebo [Azure Data Lake Storagech účtů úložiště v2](../../storage/blobs/data-lake-storage-quickstart-create-account.md). Export dat může zapisovat jenom data do účtů úložiště, které podporují objekty blob bloku. Následující seznam uvádí známé kompatibilní typy účtů úložiště:
+1. Vytvořte [nový účet úložiště v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Můžete si přečíst další informace o vytváření nových [účtů úložiště Azure Blob](../../storage/blobs/storage-quickstart-blobs-portal.md) nebo [Azure Data Lake Storagech účtů úložiště v2](../../storage/common/storage-account-create.md). Export dat může zapisovat jenom data do účtů úložiště, které podporují objekty blob bloku. Následující seznam uvádí známé kompatibilní typy účtů úložiště:
 
     |Úroveň výkonu|Typ účtu|
     |-|-|
@@ -156,7 +156,7 @@ Následující příklad ukazuje zprávu přijatou z centra událostí nebo Serv
 
 Tato zpráva neobsahuje ID zařízení odesílajícího zařízení.
 
-K načtení ID zařízení z dat zprávy v Azure Stream Analytics dotazu použijte funkci [GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue) . Příklad najdete v dotazech v tématu věnovaném [rozšiřování Azure IoT Central vlastními pravidly pomocí Stream Analytics, Azure functions a SendGrid](./howto-create-custom-rules.md).
+K načtení ID zařízení z dat zprávy v Azure Stream Analytics dotazu použijte funkci [GetMetadataPropertyValue](/stream-analytics-query/getmetadatapropertyvalue) . Příklad najdete v dotazech v tématu věnovaném [rozšiřování Azure IoT Central vlastními pravidly pomocí Stream Analytics, Azure functions a SendGrid](./howto-create-custom-rules.md).
 
 Pokud chcete načíst ID zařízení v pracovním prostoru Azure Databricks nebo Apache Spark, použijte [systemProperties](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md). Příklad najdete v pracovním prostoru datacihly v tématu [Rozšířené Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks](./howto-create-custom-analytics.md).
 
@@ -557,7 +557,7 @@ Tento ukázkový snímek zobrazuje zprávu, která obsahuje data zařízení a v
 
 Pokud máte v aplikaci ve verzi Preview existující export dat se zapnutými datovými proudy *šablon* *zařízení* a zařízení, aktualizujte svůj export o **30. června 2020**. Tento požadavek platí pro exporty do Azure Blob Storage, Azure Event Hubs a Azure Service Bus.
 
-Od 3. února 2020 budou všechny nové exporty v aplikacích se zapnutými šablonami zařízení a zařízení mít formát dat popsaný výše. Všechny exporty vytvořené před tímto datem zůstanou ve starém formátu dat až do 30. června 2020, kdy se tyto exporty automaticky migrují do nového formátu dat. Nový formát dat odpovídá vlastnostem [zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [vlastnosti zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [cloudové vlastnosti zařízení](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)a objekty [šablon zařízení](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) ve IoT Central veřejném rozhraní API.
+Od 3. února 2020 budou všechny nové exporty v aplikacích se zapnutými šablonami zařízení a zařízení mít formát dat popsaný výše. Všechny exporty vytvořené před tímto datem zůstanou ve starém formátu dat až do 30. června 2020, kdy se tyto exporty automaticky migrují do nového formátu dat. Nový formát dat odpovídá vlastnostem [zařízení](/rest/api/iotcentral/devices/get), [vlastnosti zařízení](/rest/api/iotcentral/devices/getproperties), [cloudové vlastnosti zařízení](/rest/api/iotcentral/devices/getcloudproperties)a objekty [šablon zařízení](/rest/api/iotcentral/devicetemplates/get) ve IoT Central veřejném rozhraní API.
 
 U **zařízení**se jedná o významné rozdíly mezi starým a novým datovým formátem:
 - `@id` v případě odebrání zařízení se `deviceId` přejmenuje na `id` 

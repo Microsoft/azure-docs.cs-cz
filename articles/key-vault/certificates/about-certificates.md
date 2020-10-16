@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88923683"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126769"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informace o certifikátech ve službě Azure Key Vault
 
@@ -103,14 +103,14 @@ Následující tabulka představuje mapování zásad použití klíče x509 na 
 
 |**Příznaky použití klíče x509**|**Operace klíče Key Vault Key**|**Výchozí chování**|
 |----------|--------|--------|
-|DataEncipherment|šifrování, dešifrování| – |
-|DecipherOnly|mohli| –  |
+|DataEncipherment|šifrování, dešifrování| Není k dispozici |
+|DecipherOnly|mohli| Není k dispozici  |
 |DigitalSignature|podepsat, ověřit| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|EncipherOnly|encrypt| – |
-|KeyCertSign|podepsat, ověřit|–|
+|EncipherOnly|encrypt| Není k dispozici |
+|KeyCertSign|podepsat, ověřit|Není k dispozici|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|Nepopiratelnosti odpovědnosti|podepsat, ověřit| – |
-|bit crlsign|podepsat, ověřit| – |
+|Nepopiratelnosti odpovědnosti|podepsat, ověřit| Není k dispozici |
+|bit crlsign|podepsat, ověřit| Není k dispozici |
 
 ## <a name="certificate-issuer"></a>Vystavitel certifikátu
 
@@ -141,42 +141,11 @@ Objekty vystavitele se vytvoří v trezoru a dají se použít jenom u certifik�
 
 ## <a name="certificate-contacts"></a>Kontakty certifikátu
 
-Kontakty certifikátu obsahují kontaktní informace pro odesílání oznámení aktivovaných událostmi životnosti certifikátu. Informace o kontaktech jsou sdíleny pomocí všech certifikátů v trezoru klíčů. Oznámení se pošle všem zadaným kontaktům pro událost pro libovolný certifikát v trezoru klíčů.  
-
-Pokud je zásada certifikátu nastavená na automatické obnovení, pošle se na následující události oznámení.  
-
-- Před obnovením certifikátu
-- Po obnovení certifikátu uveďte, jestli se certifikát úspěšně obnovil, nebo jestli došlo k chybě, která vyžaduje ruční obnovení certifikátu.  
-
-  Když se zásada certifikátu, která je nastavená na ruční obnovení (jenom e-mailem), pošle, pošle se oznámení, když se certifikát obnoví.  
+Kontakty certifikátu obsahují kontaktní informace pro odesílání oznámení aktivovaných událostmi životnosti certifikátu. Informace o kontaktech jsou sdíleny pomocí všech certifikátů v trezoru klíčů. Oznámení se pošle všem zadaným kontaktům pro událost pro libovolný certifikát v trezoru klíčů. Informace o tom, jak nastavit kontakt s certifikátem, najdete [tady](overview-renew-certificate.md#steps-to-set-certificate-notifications) .  
 
 ## <a name="certificate-access-control"></a>Access Control certifikátu
 
- Řízení přístupu k certifikátům zajišťuje služba Key Vault, ve které se certifikáty nacházejí. Zásady řízení přístupu pro certifikáty se liší od zásad řízení přístupu pro klíče a tajné klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro ukládání certifikátů, aby bylo možné zachovat vhodné segmentaci a správu certifikátů.  
-
- Následující oprávnění se dají použít, pro jednotlivé hlavní objekty, v položce řízení přístupu tajných klíčů v trezoru klíčů a pozorně zrcadlí operace povolené u tajného objektu:  
-
-- Oprávnění pro operace správy certifikátů
-  - *získání*: získání aktuální verze certifikátu nebo libovolné verze certifikátu 
-  - *seznam*: vypíše aktuální certifikáty nebo verze certifikátu.  
-  - *aktualizace*: aktualizace certifikátu
-  - *vytvořit*: vytvoření certifikátu Key Vault
-  - *Import*: Import materiálu certifikátů do certifikátu Key Vault
-  - *Odstranit*: odstranit certifikát, jeho zásadu a všechny jeho verze  
-  - *obnovení*: obnovit odstraněný certifikát
-  - *zálohování*: zálohování certifikátu v trezoru klíčů
-  - *obnovení*: obnovení zálohovaného certifikátu do trezoru klíčů
-  - *managecontacts*: Správa kontaktů certifikátů Key Vault  
-  - *manageissuers*: Správa certifikačních autorit/vystavitelů Key Vault
-  - *getissuer*: získání autority nebo vystavitelů certifikátu
-  - *listissuers*: výpis autorit/vystavitelů certifikátů  
-  - *setissuers*: vytvoření nebo aktualizace autorit/vystavitelů certifikátu Key Vault  
-  - *deleteissuers*: odstranění autorit/vystavitelů certifikátu Key Vault  
- 
-- Oprávnění pro privilegované operace
-  - *vyprázdnit*: vyprázdnit (trvale odstranit) odstraněný certifikát
-
-Další informace najdete v referenčních informacích o [operacích certifikátu v REST API Key Vault](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
+ Řízení přístupu k certifikátům zajišťuje služba Key Vault, ve které se certifikáty nacházejí. Zásady řízení přístupu pro certifikáty se liší od zásad řízení přístupu pro klíče a tajné klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro ukládání certifikátů, aby bylo možné zachovat vhodné segmentaci a správu certifikátů.  Další informace o řízení přístupu k certifikátu najdete [tady](certificate-access-control.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

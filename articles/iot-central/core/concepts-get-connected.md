@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714252"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126837"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -185,7 +185,7 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Jednotlivá připojení zařízení založená na registraci
 
-Pro zákazníky připojující zařízení, která mají vlastní ověřovací přihlašovací údaje, použijte jednotlivé registrace. Jednotlivá registrace je záznam pro jedno zařízení, které se smí připojit. Jednotlivé registrace můžou jako mechanismus ověřování použít buď certifikáty na listech X. 509, nebo tokeny SAS (z modulu fyzického nebo virtuální důvěryhodné platformy). ID zařízení (označované také jako ID registrace) v individuální registraci je alfanumerické a malé písmeno a může obsahovat spojovníky. Další informace najdete v tématu [DPS – jednotlivý zápis](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment).
+Pro zákazníky připojující zařízení, která mají vlastní ověřovací přihlašovací údaje, použijte jednotlivé registrace. Jednotlivá registrace je záznam pro jedno zařízení, které se smí připojit. Jednotlivé registrace můžou jako mechanismus ověřování použít buď certifikáty na listech X. 509, nebo tokeny SAS (z modulu fyzického nebo virtuální důvěryhodné platformy). ID zařízení (označované také jako ID registrace) v individuální registraci je alfanumerické a malé písmeno a může obsahovat spojovníky. Další informace najdete v tématu [DPS – jednotlivý zápis](../../iot-dps/concepts-service.md#individual-enrollment).
 
 > [!NOTE]
 > Když vytvoříte jednotlivou registraci zařízení, bude mít přednost před výchozími možnostmi registrace skupin ve vaší aplikaci IoT Central.
@@ -204,7 +204,7 @@ IoT Central podporuje následující mechanismy ověřování identity pro jedno
     > [!TIP]
     > Pro účely testování můžete použít [Nástroje pro sadu SDK zařízení pro zřizování zařízení Azure IoT pro Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) k vygenerování certifikátu podepsaného svým držitelem: `node create_test_cert.js device "mytestdevice"`
 
-- **Ověření identity čipu TPM (Trusted Platform Module):** [Čip TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) je typ modulu hardwarového zabezpečení. Používání čipu TPM je jedním z nejbezpečnější způsobů, jak připojit zařízení. V tomto článku se předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Software emulující čipy TPM je vhodný pro vytváření prototypů nebo testování, ale neposkytuje stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované čipy TPM. Nepoužívejte software čipy TPM v produkčním prostředí. Pokud chcete vytvořit jednotlivou registraci, která používá čip TPM, otevřete stránku **připojení zařízení** , jako způsob připojení vyberte **jednotlivou registraci** a jako mechanismus vytvořte **TPM** . Zadejte ověřovací klíč čipu TPM a uložte informace o připojení zařízení.
+- **Ověření identity čipu TPM (Trusted Platform Module):** [Čip TPM](../../iot-dps/concepts-tpm-attestation.md) je typ modulu hardwarového zabezpečení. Používání čipu TPM je jedním z nejbezpečnější způsobů, jak připojit zařízení. V tomto článku se předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Software emulující čipy TPM je vhodný pro vytváření prototypů nebo testování, ale neposkytuje stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované čipy TPM. Nepoužívejte software čipy TPM v produkčním prostředí. Pokud chcete vytvořit jednotlivou registraci, která používá čip TPM, otevřete stránku **připojení zařízení** , jako způsob připojení vyberte **jednotlivou registraci** a jako mechanismus vytvořte **TPM** . Zadejte ověřovací klíč čipu TPM a uložte informace o připojení zařízení.
 
 ## <a name="automatically-associate-with-a-device-template"></a>Automaticky přidružit k šabloně zařízení
 

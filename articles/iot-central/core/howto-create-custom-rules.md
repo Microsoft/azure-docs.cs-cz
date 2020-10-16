@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 288fb5b552eab2029ea72f73a835fc73d97244b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018179"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126752"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Rozšíření Azure IoT Central o vlastní pravidla s využitím služeb Stream Analytics, Azure Functions a SendGrid
 
-V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Central aplikaci pomocí vlastních pravidel a oznámení. Příklad ukazuje odeslání oznámení do operátoru, když zařízení přestane odesílat telemetrii. Řešení používá [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) dotaz k detekci, kdy zařízení zastavilo odesílání telemetrie. Stream Analytics úloha používá [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) k posílání e-mailů s oznámením pomocí [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
+V této příručce se dozvíte, jak pomocí vývojářů řešení rozšíříte svou IoT Central aplikaci pomocí vlastních pravidel a oznámení. Příklad ukazuje odeslání oznámení do operátoru, když zařízení přestane odesílat telemetrii. Řešení používá [Azure Stream Analytics](../../stream-analytics/index.yml) dotaz k detekci, kdy zařízení zastavilo odesílání telemetrie. Stream Analytics úloha používá [Azure Functions](../../azure-functions/index.yml) k posílání e-mailů s oznámením pomocí [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
 
 V této příručce se dozvíte, jak můžete IoT Central nad rámec toho, co už s vestavěnými pravidly a akcemi udělat.
 
@@ -28,11 +28,11 @@ V této příručce se dozvíte, jak:
 * Vytvořte Stream Analytics dotaz, který zjistí, kdy zařízení zastavilo odesílání dat.
 * Odešlete e-mailové oznámení pomocí služeb Azure Functions a SendGrid.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ### <a name="iot-central-application"></a>IoT Central aplikace
 
@@ -95,7 +95,7 @@ Pomocí [Azure Portal vytvořte aplikaci funkcí](https://portal.azure.com/#crea
 | Plán Hosting | Plán Consumption |
 | Umístění | USA – východ |
 | Zásobník modulu runtime | .NET |
-| Storage | Vytvořit nový |
+| Úložiště | Vytvořit nový |
 
 ### <a name="sendgrid-account"></a>Účet SendGrid
 

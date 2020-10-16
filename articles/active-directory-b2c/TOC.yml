@@ -180,7 +180,7 @@
           href: basic-age-gating.md
         - name: Definování vlastních atributů
           href: user-flow-custom-attributes.md
-        - name: Konektory rozhraní API
+        - name: Konektory rozhraní API (Preview)
           items:
             - name: Přehled
               href: api-connectors-overview.md

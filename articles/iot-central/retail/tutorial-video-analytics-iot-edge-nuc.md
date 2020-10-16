@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: 8d05ab19ff7fee43d91a9620f96699d73bc38a1a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873298"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127041"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (Intel NUC)
 
@@ -33,17 +33,17 @@ V tomto kurzu se naučíte:
 > * Nastavení brány IoT Edge
 > * Připojit k zařízení Intel NUC místní fotoaparát kompatibilní s ONVIF
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Než začnete, měli byste provést předchozí [aplikaci Live video Analytics v azure IoT Central (Yolo V3)](./tutorial-video-analytics-create-app-yolo-v3.md) nebo [vytvořit video Analytics v kurzu Azure IoT Central (OpenVINO &trade; )](tutorial-video-analytics-create-app-openvino.md).
 * Zařízení, jako je Intel NUC, na kterém běží Linux, který může spouštět kontejnery Docker a má dostatečné výpočetní výkon pro spuštění analýzy videí.
-* V zařízení je nainstalovaný a spuštěný [modul runtime IoT Edge](../../iot-edge/how-to-install-iot-edge-linux.md) .
+* V zařízení je nainstalovaný a spuštěný [modul runtime IoT Edge](../../iot-edge/how-to-install-iot-edge.md) .
 * Je možné se připojit k zařízení IoT Edge z počítače s Windows, budete potřebovat [klienta ssh](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) pro výstup nebo ekvivalentní nástroj.
 * Budete také potřebovat předplatné Azure. Pokud předplatné Azure nemáte, můžete si ho na [stránce pro registraci k Azure](https://aka.ms/createazuresubscription)vytvořit zdarma.
 
 ## <a name="configure-the-iot-edge-device"></a>Konfigurace zařízení IoT Edge
 
-Pokud ve svém počítači Intel NUC nemáte nainstalovaný modul runtime IoT Edge, přečtěte si téma [Instalace modulu runtime Azure IoT Edge v pokynech pro systémy Linux založené na Debian](../../iot-edge/how-to-install-iot-edge-linux.md) .
+Pokud ve svém počítači Intel NUC nemáte nainstalovaný modul runtime IoT Edge, přečtěte si téma [Instalace modulu runtime Azure IoT Edge v pokynech pro systémy Linux založené na Debian](../../iot-edge/how-to-install-iot-edge.md) .
 
 Aktualizace modulu runtime IoT Edge:
 

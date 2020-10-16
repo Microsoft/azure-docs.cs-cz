@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 6174d108fd80df9725ca5ef0fb9296dfffaf4a64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10de2a4a00b716656626082a24ecbd56d0fcc3a4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89301936"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127297"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>Rychlý Start: vytvoření veřejné IP adresy pomocí Azure PowerShell
 
 V tomto článku se dozvíte, jak vytvořit prostředek veřejné IP adresy pomocí Azure PowerShell. Další informace o tom, k jakým prostředkům může být přidružen, rozdíl mezi základní a standardní SKU a dalšími souvisejícími informacemi, najdete v tématu [veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses).  V tomto příkladu se zaměříme jenom na adresy IPv4. Další informace o adresách IPv6 najdete v tématu [IPv6 pro virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure PowerShell lokálně nainstalované nebo Azure Cloud Shell
 
@@ -106,7 +106,7 @@ Tento výběr je platný ve všech oblastech a je výchozí volbou pro standardn
 
 # <a name="basic-sku"></a>[**Základní SKU**](#tab/option-create-public-ip-basic)
 
-Použijte [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) k vytvoření základní statické veřejné IP adresy s názvem **myStandardPublicIP** v **myResourceGroup**.  Základní veřejné IP adresy nemají koncept zón dostupnosti.
+Použijte [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) k vytvoření základní statické veřejné IP adresy s názvem **myBasicPublicIP** v **myResourceGroup**.  Základní veřejné IP adresy nemají koncept zón dostupnosti.
 
 ```azurepowershell-interactive
 ## Variables for the command ##

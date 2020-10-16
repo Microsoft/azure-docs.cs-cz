@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6a7784d052a03971fad84c90cdd70cd16b4a872
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88534145"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122564"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Kurz: Azure Active Directory Integration with autopostřikovače
 
@@ -30,7 +30,7 @@ Integrování programu pro automatických přihlášení do Azure AD poskytuje n
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD pomocí programu pro automatické nastavování potřebujete následující položky:
 
@@ -136,11 +136,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí programu pro auto
 
 1. Klikněte na **+ Přidat jednotné přihlašování**.
 
-    ![Jednotné přihlašování](./media/sprinklr-tutorial/ic782909.png "Jeden Sign-Ons")
+    ![Snímek obrazovky se zobrazí na tlačítku Přidat jednotné přihlašování.](./media/sprinklr-tutorial/ic782909.png "Jeden Sign-Ons")
 
 1. Na stránce **jednotného přihlašování** proveďte následující kroky:
 
-    ![Jednotné přihlašování](./media/sprinklr-tutorial/ic782910.png "Jeden Sign-Ons")
+    ![Snímek obrazovky se zobrazí na stránce jednotného přihlašování, kde můžete zadat hodnoty, které jsou popsány.](./media/sprinklr-tutorial/ic782910.png "Jeden Sign-Ons")
 
     a. Do textového pole **název** zadejte název vaší konfigurace (například: *WAADSSOTest*).
 
@@ -225,11 +225,11 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V levém podokně přejdete na **Spravovat \> uživatele klienta** .
 
-    ![Nastavení](./media/sprinklr-tutorial/ic782914.png "Nastavení")
+    ![Snímek obrazovky se zobrazí tlačítko Přidat uživatele v nastavení/uživatelé.](./media/sprinklr-tutorial/ic782914.png "Nastavení")
 
 1. Klikněte na **Add User** (Přidat uživatele).
 
-    ![Nastavení](./media/sprinklr-tutorial/ic782915.png "Nastavení")
+    ![Snímek obrazovky se zobrazí dialogové okno Upravit uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/sprinklr-tutorial/ic782915.png "Nastavení")
 
 1. V dialogovém okně **Upravit uživatele** proveďte následující kroky:
 

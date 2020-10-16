@@ -245,6 +245,12 @@
       href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: Skupiny umístění bezkontaktní komunikace Azure pro optimální latenci sítě s aplikacemi SAP
       href: sap-proximity-placement-scenarios.md
+- name: Platforma SAP BusinessObjects Business Intelligence v Azure
+  items:
+    - name: Průvodce plánováním a implementací platformy SAP BusinessObjects BI v Azure
+      href: businessobjects-deployment-guide.md
+    - name: Průvodce nasazením platformy SAP BusinessObjects BI pro Linux v Azure
+      href: businessobjects-deployment-guide-linux.md
 - name: Integrace Azure AD s aplikacemi SAP
   items:
     - name: Zřizování uživatelů ze SAP SuccessFactors do Active Directory

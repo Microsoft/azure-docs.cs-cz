@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951430"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127195"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Kurz: použití Data Box Heavy k importu dat jako spravovaných disků v Azure
 
@@ -38,7 +38,7 @@ Než začnete, ujistěte se, že:
 4. Zkontrolovali jste:
 
     - Podporované [velikosti spravovaných disků v omezeních velikosti objektů Azure](data-box-heavy-limits.md#azure-object-size-limits).
-    - [Seznámení se službou Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview). 
+    - [Seznámení se službou Azure Managed disks](../virtual-machines/managed-disks-overview.md). 
 
 ## <a name="connect-to-data-box-heavy"></a>Připojení k Data Boxu Heavy
 
@@ -182,4 +182,3 @@ V dalším kurzu se dozvíte, jak Data Box Heavy odeslat zpět do Microsoftu.
 
 > [!div class="nextstepaction"]
 > [Odeslání Azure Data Boxu heavy do Microsoftu](./data-box-heavy-deploy-picked-up.md)
-

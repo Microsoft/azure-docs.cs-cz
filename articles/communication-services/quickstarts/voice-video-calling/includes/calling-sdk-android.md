@@ -4,14 +4,14 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 368c594352b59f7ec6d04b12ca44e0cd492dc907
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082263"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126789"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Nasazený prostředek komunikačních služeb. [Vytvořte prostředek služby Communications](../../create-communication-resource.md).
@@ -141,10 +141,10 @@ call = callAgent.join(context, groupCallContext, joinCallOptions);
 ### <a name="overview"></a>Přehled
 Mobilní nabízená oznámení jsou místní oznámení, která vidíte na mobilních zařízeních. Pro volání se budeme soustředit na nabízená oznámení VoIP (Voice over Internet Protocol). Zaregistruje se na nabízená oznámení, zpracuje nabízená oznámení a pak zruší registraci nabízených oznámení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-K dokončení této části vytvořte účet Firebase a povolte zasílání zpráv v cloudu (FCM). Ujistěte se, že služba Firebase Cloud Messaging je připojená k instanci centra oznámení Azure (ANH). Pokyny najdete v tématu věnovaném [připojení Firebase k Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
-V této části se také předpokládá, že pro sestavení aplikace používáte Android Studio verze 3,6 nebo vyšší.
+Účet Firebase nastavený s povoleným cloudovým zasíláním zpráv (FCM) a službou Firebase Cloud Messaging Service připojenou k instanci centra oznámení Azure. Další informace najdete v tématu [oznámení o komunikačních službách](https://docs.microsoft.com/azure/communication-services/concepts/notifications) .
+Kromě toho kurz předpokládá, že k sestavení aplikace používáte Android Studio verze 3,6 nebo vyšší.
 
 Pro aplikaci pro Android se vyžaduje sada oprávnění, aby bylo možné přijímat zprávy oznámení z Firebase cloudového zasílání zpráv. Do `AndroidManifest.xml` souboru přidejte následující sadu oprávnění hned za *<manifest... >* nebo pod *</application>* značku
 
@@ -195,21 +195,21 @@ Přidejte tento fragment kódu pro načtení tokenu:
                     @Override
                     public void onComplete(@NonNull Task<InstanceIdResult> task) {
                         if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            Log.w("PushNotification", "getInstanceId failed", task.getException());
                             return;
                         }
 
                         // Get new Instance ID token
                         String deviceToken = task.getResult().getToken();
                         // Log
-                        Log.d(TAG, "Device Registration token retrieved successfully");
+                        Log.d("PushNotification", "Device Registration token retrieved successfully");
                     }
                 });
 ```
 Zaregistrujte token registrace zařízení pomocí klientské knihovny volajících služeb pro příchozí nabízená oznámení volání:
 
 ```java
-String deviceRegistrationToken = "some_token";
+String deviceRegistrationToken = "<Device Token from previous section>";
 try {
     callAgent.registerPushNotification(deviceRegistrationToken).get();
 }
@@ -226,16 +226,16 @@ Pokud chcete datovou část získat z Firebase cloudového zasílání zpráv, Z
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
-    private java.util.Map<String, String> pushNotificationMessageData;
+    private java.util.Map<String, String> pushNotificationMessageDataFromFCM;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d("PushNotification", "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
         else {
-            pushNotificationMessageData = serializeDictionaryAsJson(remoteMessage.getData());
+            pushNotificationMessageDataFromFCM = remoteMessage.getData();
         }
     }
 }
@@ -252,10 +252,9 @@ Do tohoto souboru přidejte následující definici služby `AndroidManifest.xml
         </service>
 ```
 
-Jakmile je datová část načtena, může být předána klientské knihovně komunikačních služeb, aby ji bylo možné zpracovat voláním `handlePushNotification` metody v `CallAgent` instanci.
+- Jakmile je datová část načtena, může být předána klientské knihovně *komunikačních služeb* , aby byla zpracována voláním metody *HandlePushNotification* v instanci *CallAgent* . `CallAgent`Instance je vytvořena voláním `createCallAgent(...)` metody `CallClient` třídy.
 
 ```java
-java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
 try {
     callAgent.handlePushNotification(pushNotificationMessageDataFromFCM).get();
 }

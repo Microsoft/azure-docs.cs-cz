@@ -6,16 +6,19 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 976b423822fa667df713382b34d7208cb0e3b002
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b57a1f3dc1f2d86b992ce2480acd9c44df8d1e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540655"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122496"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>Porozumění změnám v kořenové CA změna pro Azure Database for PostgreSQL jeden server
 
-Azure Database for PostgreSQL bude měnit kořenový certifikát pro klientskou aplikaci/ovladač, který je povolený s protokolem SSL, který se používá pro [připojení k databázovému serveru](concepts-connectivity-architecture.md). Kořenový certifikát, který je aktuálně k dispozici, je v rámci standardní údržby a osvědčených postupů pro zabezpečení nastaven na vypršení platnosti 26. října 2020 (10/26/2020). Tento článek obsahuje podrobné informace o nadcházejících změnách, prostředcích, které budou ovlivněny, a krocích potřebných k tomu, aby vaše aplikace zachovala připojení k vašemu databázovému serveru.
+Azure Database for PostgreSQL bude měnit kořenový certifikát pro klientskou aplikaci/ovladač, který je povolený s protokolem SSL, který se používá pro [připojení k databázovému serveru](concepts-connectivity-architecture.md). Aktuálně dostupný kořenový certifikát má 15. února 2021 (02/15/2021) jako součást standardní údržby a osvědčených postupů zabezpečení. Tento článek obsahuje podrobné informace o nadcházejících změnách, prostředcích, které budou ovlivněny, a krocích potřebných k tomu, aby vaše aplikace zachovala připojení k vašemu databázovému serveru.
+
+>[!NOTE]
+> Na základě zpětné vazby od zákazníků jsme rozšířili vyřazení kořenových certifikátů pro naši stávající kořenovou certifikační autoritu Baltimore od října 26, 2020 do 15. února 2021. Doufáme, že toto rozšíření poskytuje dostatek času vedoucího k tomu, aby naši uživatelé mohli implementovat změny klienta, pokud budou ovlivněny.
 
 ## <a name="what-update-is-going-to-happen"></a>K jaké aktualizaci dojde?
 
@@ -23,7 +26,7 @@ V některých případech aplikace používají k zabezpečenému připojení so
 
 Podle požadavků na dodržování předpisů v oboru dodavatelé CA začali odvolávat certifikáty certifikační autority pro certifikační autority, které nedodržují předpisy, vyžadují servery k používání certifikátů vydaných kompatibilními certifikačními autoritami a podepisují certifikáty CA z těchto odpovídajících certifikačních autorit Vzhledem k tomu, že Azure Database for PostgreSQL aktuálně používá jeden z těchto nekompatibilních certifikátů, které klientské aplikace používají k ověření připojení SSL, musíme zajistit, aby byly provedeny vhodné akce (popsané níže), aby se minimalizoval potenciální dopad na servery PostgreSQL.
 
-Nový certifikát se použije od 26. října 2020 (10/26/2020). Pokud při připojování z klienta PostgreSQL použijete ověřování CA nebo úplné ověření certifikátu serveru (sslmode = ověřit-CA nebo sslmode = ověřit-plná), musíte aktualizovat konfiguraci aplikace před 26. října 2020 (10/26/2020).
+Nový certifikát se použije od 15. února 2021 (02/15/2021). Pokud při připojování z klienta PostgreSQL použijete ověřování CA nebo úplné ověření certifikátu serveru (sslmode = ověřit-CA nebo sslmode = ověřit-plná), musíte aktualizovat konfiguraci aplikace před 15. února 2021 (02/15/2021).
 
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Návody informace o tom, jestli se má tato databáze týkat?
 
@@ -84,6 +87,9 @@ Pokud používáte kořenový certifikát Baltimore CyberTrust k ověření při
 *   Neplatný certifikát nebo odvolaný certifikát
 *   Vypršel časový limit připojení
 
+> [!NOTE]
+> **Baltimore certifikát** prosím neodstraňujte ani neměňte, dokud se neprovede změna certifikátu. Až se změna dokončí, pošle se vám komunikace, po jejímž uplynutí se certifikát Baltimore bezpečně vyřadí. 
+
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. Pokud nepoužíváte protokol SSL/TLS, musím pořád aktualizovat kořenovou certifikační autoritu?
@@ -92,8 +98,8 @@ Pokud nepoužíváte protokol SSL/TLS, nejsou vyžadovány žádné akce.
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. Pokud používám protokol SSL/TLS, je nutné restartovat server databáze a aktualizovat tak kořenovou certifikační autoritu?
 Ne, nemusíte restartovat databázový server, abyste mohli začít používat nový certifikát. Jedná se o změnu na straně klienta a příchozí připojení klientů musí použít nový certifikát k zajištění toho, aby se mohli připojit k databázovému serveru.
 
-### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-october-26-2020-10262020"></a>3. co se stane, když kořenový certifikát neaktualizujem před 26. října 2020 (10/26/2020)?
-Pokud kořenový certifikát neaktualizujete před 26. října 2020, vaše aplikace, které se připojují přes protokol SSL/TLS, a ověření kořenového certifikátu nebudou moct komunikovat s databázovým serverem PostgreSQL a aplikace bude mít problémy s připojením k databázovému serveru PostgreSQL.
+### <a name="3-what-will-happen-if-i-do-not-update-the-root-certificate-before-february-15-2021-02152021"></a>3. k tomu, co se stane, když neaktualizujem kořenový certifikát před 15. února 2021 (02/15/2021)?
+Pokud kořenový certifikát neaktualizujete před 15. února 2021 (02/15/2021), vaše aplikace, které se připojují přes protokol SSL/TLS a ověřují pro kořenový certifikát, nebudou moct komunikovat s databázovým serverem PostgreSQL a aplikace bude mít problémy s připojením k vašemu databázovému serveru PostgreSQL.
 
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-postgresql"></a>4. Jaký je dopad při použití App Service s Azure Database for PostgreSQL?
 V případě Azure App Services můžeme mít Azure Database for PostgreSQL k dispozici dva možné scénáře a závisí na tom, jak používáte protokol SSL s vaší aplikací.
@@ -111,11 +117,11 @@ Pro konektor používající Integration Runtime v místním prostředí, kde ex
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. pro tuto změnu potřebuji naplánovat výpadek údržby databázového serveru?
 Ne. Vzhledem k tomu, že se tato změna provádí jenom na straně klienta, aby se mohla připojit k databázovému serveru, není pro tuto změnu pro databázový server potřeba žádné prostoje údržby.
 
-### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-october-26-2020-10262020"></a>8. co když mi pro tuto změnu nezíská plánované výpadky před 26. října 2020 (10/26/2020)?
+### <a name="8--what-if-i-cannot-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. co když mi nejde získat plánované výpadky této změny před 15. února 2021 (02/15/2021)?
 Vzhledem k tomu, že klienti, kteří se používají pro připojení k serveru, musí aktualizovat informace o certifikátu, jak je popsáno [v části Oprava](./concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity), v tomto případě nepotřebujeme v tomto případě výpadek serveru.
 
-### <a name="9-if-i-create-a-new-server-after-october-26-2020-will-i-be-impacted"></a>9. když po 26. říjnu 2020 vytvořím nový server, bude to mít dopad na to?
-Pro servery vytvořené po 26. října 2020 (10/26/2020) můžete použít nově vydaný certifikát pro vaše aplikace k připojení pomocí protokolu SSL.
+### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. když po 15. únoru 2021 (02/15/2021) vytvořím nový server, bude to mít vliv?
+Pro servery vytvořené po 15. únoru 2021 (02/15/2021) můžete použít nově vydaný certifikát pro vaše aplikace k připojení pomocí protokolu SSL.
 
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?
 Certifikáty používané službou Azure Database for PostgreSQL poskytují důvěryhodné certifikační autority (CA). Proto je podpora těchto certifikátů na Azure Database for PostgreSQL vázaná na podporu těchto certifikátů certifikační autoritou. V takovém případě ale můžou být v těchto předdefinovaných certifikátech nepředvídatelné chyby, které je potřeba vyřešit nejstarší.
@@ -129,5 +135,8 @@ Chcete-li ověřit, zda používáte připojení SSL pro připojení k serveru, 
 ### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. je vyžadována akce, pokud již mám v souboru certifikátu DigiCertGlobalRootG2?
 Ne. Pokud soubor certifikátu již má **DigiCertGlobalRootG2**, není nutná žádná akce.
 
-### <a name="14-what-if-i-have-further-questions"></a>14. co když mám další dotazy?
+### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14. co používáte Docker image PgBouncerového vozíku od Microsoftu?
+Nová Image Docker, která podporuje [**Baltimore**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) i [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) , je publikovaná níže [(nejnovější](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar) značka). Tento nový obrázek si můžete vyžádat, abyste se vyhnuli jakémukoli přerušení připojení od 15. února 2021. 
+
+### <a name="15-what-if-i-have-further-questions"></a>15. co když mám další dotazy?
 Pokud máte nějaké otázky, Získejte odpovědi od expertů komunity v [Microsoft Q&A](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com). Pokud máte plán podpory a potřebujete technickou pomoc, [kontaktujte nás](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com) .

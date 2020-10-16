@@ -23,6 +23,10 @@
 - name: Rychlé starty
   expanded: true
   items:
+    - name: Příprava sítě
+      href: quickstart-prepare-network-for-defender-for-iot.md
+    - name: Nasazení senzorů
+      href: quickstart-onboard-sensors.md
     - name: Konfigurace modulu zabezpečení pro Azure RTOS
       href: quickstart-azure-rtos-security-module.md
     - name: Onboarding služby Azure Defender for IoT do IoT Hubu
@@ -63,6 +67,10 @@
       href: concept-pricing.md
 - name: Návody
   items:
+    - name: Zobrazení a správa senzorů
+      href: how-to-deploy-view-sensors.md
+    - name: Nasazení místní konzoly pro správu
+      href: how-to-deploy-management-console-appliance.md
     - name: Práce s modulem zabezpečení pro Azure RTOS
       href: how-to-azure-rtos-security-module.md
     - name: Kterého agenta mám nasadit?
@@ -95,14 +103,16 @@
       href: how-to-investigate-device.md
     - name: Připojení k Azure Sentinelu
       href: how-to-configure-with-sentinel.md
-    - name: Přizpůsobení vašeho řešení
+    - name: Přizpůsobení agenta
       href: how-to-customize-solution.md
 - name: Reference
   items:
     - name: Rozhraní API modulu zabezpečení pro Azure RTOS
       href: azure-rtos-security-module-api.md
-    - name: Nejčastější dotazy
+    - name: Nejčastější dotazy – služba
       href: resources-frequently-asked-questions.md
+    - name: Nejčastější dotazy – agent
+      href: resources-agent-frequently-asked-questions.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: Zdroje a prostředky

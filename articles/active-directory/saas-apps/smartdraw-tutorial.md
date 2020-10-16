@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f99993792c2d5f4300025f26d8409207382553d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b4387252be7e0b76f6e0733d6fd4f95d39e2f0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527598"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125948"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SmartDraw
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat SmartDraw s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -152,11 +152,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V části Správa licence SmartDraw klikněte na **jednotné přihlašování** .
 
-    ![Konfigurace SmartDraw](./media/smartdraw-tutorial/configure01.png)
+    ![Snímek obrazovky se zobrazí v dialogovém okně Správa licence SmartDraw, kde můžete vybrat jednotné přihlašování.](./media/smartdraw-tutorial/configure01.png)
 
 1. Na stránce konfigurace proveďte následující kroky:
 
-    ![Konfigurace SmartDraw](./media/smartdraw-tutorial/configure02.png)
+    ![Snímek obrazovky se zobrazí stránka konfigurace, kde můžete zadat hodnoty, které jsou popsány.](./media/smartdraw-tutorial/configure02.png)
 
     a. Do textového pole **vaše doména (například Acme.com)** zadejte svoji doménu.
 

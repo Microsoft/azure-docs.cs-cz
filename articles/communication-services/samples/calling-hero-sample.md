@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d4c3c8e2f8470d187156f0dd98fab2bd74eb33bc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfb6a7ba10c388cadb19268ee1431fe523a0cfa4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963104"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126322"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Začínáme se skupinou volajícím Hero Sample
 
@@ -30,9 +30,9 @@ Skupina komunikačních služeb Azure, která **volá Hero Sample** , ukazuje, j
 V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
 
 > [!IMPORTANT]
-> [Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
+> [Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 Ukázka obsahuje aplikaci na straně klienta i aplikaci na straně serveru. **Aplikace na straně klienta** je webová aplikace reagující na Redux, která používá architekturu uživatelského rozhraní Fluent společnosti Microsoft. Tato aplikace posílá požadavky na ASP.NET Core **aplikace na straně serveru** , která pomáhá aplikaci na straně klienta připojit se k Azure. 
 
@@ -103,7 +103,7 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 ## <a name="next-steps"></a>Další kroky
 
 >[!div class="nextstepaction"] 
->[Stažení ukázky z GitHubu](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
+>[Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 Další informace najdete v následujících článcích:
 

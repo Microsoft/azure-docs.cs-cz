@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543104"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Kurz: Azure Active Directory integrace s Sequr
 
@@ -30,7 +30,7 @@ Integrace Sequr s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Sequr potřebujete následující položky:
 
@@ -131,15 +131,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Sequr, p
 
 1. V levém navigačním panelu klikněte na **integrace** .
 
-    ![Konfigurace Sequr](./media/sequr-tutorial/configure1.png)
+    ![Snímek obrazovky znázorňuje integraci vybranou z navigačního panelu.](./media/sequr-tutorial/configure1.png)
 
 1. Přejděte dolů k části **jednotné přihlašování** a klikněte na **Spravovat**.
 
-    ![Konfigurace Sequr](./media/sequr-tutorial/configure2.png)
+    ![Snímek obrazovky s vybraným tlačítkem spravovat zobrazí oddíl jednotného přihlašování.](./media/sequr-tutorial/configure2.png)
 
 1. V části **Spravovat jednotné přihlašování** proveďte následující kroky:
 
-    ![Konfigurace Sequr](./media/sequr-tutorial/configure3.png)
+    ![Snímek obrazovky se zobrazí oddíl spravovat jednu Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/sequr-tutorial/configure3.png)
 
     a. Do textového pole **URL s jedním Sign-On URL poskytovatele identity** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 

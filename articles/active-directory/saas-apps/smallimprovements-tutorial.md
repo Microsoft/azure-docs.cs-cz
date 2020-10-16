@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee5927e19dfb6864d7edcde9dceadfd744d7ddbf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525357"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Kurz: Integrace Azure Active Directory s malými vylepšeními
 
@@ -30,7 +30,7 @@ Integrace malých vylepšení s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s malými vylepšeními potřebujete následující položky:
 
@@ -128,15 +128,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s malými vylep�
 
 1. Na hlavní stránce řídicího panelu klikněte na tlačítko **Správa** na levé straně.
 
-    ![Konfigurace jednoho Sign-On](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![Snímek obrazovky se zobrazí vybrané tlačítko pro správu.](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
 1. Klikněte na tlačítko **jednotného přihlašování SAML** z části **integrace** .
 
-    ![Konfigurace jednoho Sign-On](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![Snímek obrazovky ukazuje ikonu SAML S S O vybrané v Integrcích.](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
 1. Na stránce nastavení jednotného přihlašování proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![Snímek obrazovky se zobrazí na stránce S nastavením S S O, kde můžete zadat hodnoty, které jsou popsány.](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
     a. Do textového pole **koncového bodu http** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
@@ -211,15 +211,15 @@ Aby se uživatelé Azure AD mohli přihlašovat k malým vylepšením, musí bý
 
 1. Klikněte na tlačítko **adresář uživatele** v části Správa uživatelů.
 
-    ![Vytvoření testovacího uživatele Azure AD](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
+    ![Snímek obrazovky se zobrazí adresář uživatele vybraný v části Přehled správy.](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
 1. Klikněte na **Přidat uživatele**.
 
-    ![Vytvoření testovacího uživatele Azure AD](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
+    ![Snímek obrazovky se zobrazí tlačítko Přidat uživatele.](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
 1. V dialogovém okně **Přidat uživatele** proveďte následující kroky: 
 
-    ![Vytvoření testovacího uživatele Azure AD](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat uživatele, kde můžete zadat hodnoty, které jsou popsány.](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
     a. Zadejte jméno **uživatele, jako je** například **Britta**.
 

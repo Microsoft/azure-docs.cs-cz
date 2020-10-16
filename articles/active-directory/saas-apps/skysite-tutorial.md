@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c522ae70314a5f9bf691e935f1f171cd66c938b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527974"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122377"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SKYSITE
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat SKYSITE s Azure Active Directory (Azur
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -88,15 +88,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. SKYSITE aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky zobrazuje atributy uživatele s vybranou ikonou pro úpravy.](common/edit-attribute.png)
 
 1. Kromě výše očekává aplikace SKYSITE několik dalších atributů, které se vrátí zpátky v odpovědi SAML. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
     a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
 
-    ![image](./media/skysite-tutorial/config01.png)
+    ![Snímek obrazovky zobrazuje deklarace identity uživatelů s možností přidání nové deklarace identity.](./media/skysite-tutorial/config01.png)
 
-    ![image](./media/skysite-tutorial/config02.png)
+    ![Snímek obrazovky se zobrazí dialogové okno Spravovat deklarace identity uživatelů, kde můžete zadat hodnoty, které jsou popsány.](./media/skysite-tutorial/config02.png)
 
     b. V seznamu přepínačů vyberte **všechny skupiny** .
 
@@ -148,11 +148,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. V pravém horním rohu stránky klikněte na **Nastavení** a potom přejděte na **Nastavení účtu**.
 
-    ![Konfigurace](./media/skysite-tutorial/config03.png)
+    ![Snímek obrazovky se zobrazí nastavení účtu vybrané z nastavení.](./media/skysite-tutorial/config03.png)
 
 5. Přepněte na kartu **jednotného přihlašování (SSO)** , proveďte následující kroky:
 
-    ![Konfigurace](./media/skysite-tutorial/config04.png)
+    ![Snímek obrazovky se zobrazí na kartě jednotného přihlašování, kde můžete zadat hodnoty, které jsou popsány.](./media/skysite-tutorial/config04.png)
 
     a. Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **Adresa URL přístupu uživatele**, kterou jste zkopírovali z karty **vlastnosti** v Azure Portal.
 

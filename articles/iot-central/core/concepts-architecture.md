@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337139"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126169"
 ---
 # <a name="azure-iot-central-architecture"></a>Architektura služby Azure IoT Central
 
@@ -104,7 +104,7 @@ Azure IoT Central používá Azure IoT Hub jako cloudovou bránu, která umožň
 - Správa zařízení.
 - Zabezpečte připojení zařízení.
 
-Další informace o IoT Hub najdete v tématu [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+Další informace o IoT Hub najdete v tématu [Azure IoT Hub](../../iot-hub/index.yml).
 
 Další informace o připojení zařízení v Azure IoT Central najdete v tématu [připojení zařízení](concepts-get-connected.md).
 

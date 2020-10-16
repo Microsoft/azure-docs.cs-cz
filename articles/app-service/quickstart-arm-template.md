@@ -1,38 +1,42 @@
 ---
 title: Vytvoření aplikace App Service pomocí šablony Azure Resource Manager
-description: Vytvořte svou první aplikaci pro Azure App Service v řádu sekund pomocí Azure Resource Manager šablony, což je jedním z mnoha způsobů, jak nasadit do App Service.
+description: Vytvořte svou první aplikaci pro Azure App Service v řádu sekund pomocí Azure Resource Manager šablony (šablony ARM), což je jedním z mnoha způsobů, jak nasadit do App Service.
 author: msangapu-msft
 ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
-ms.date: 05/25/2020
+ms.date: 10/15/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e577616e0976ca050a55c8524e68129545ed1912
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ca8301e9be51279cd9b80791126b41b99d89d6b
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89653568"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127382"
 ---
-# <a name="create-app-service-app-using-an-azure-resource-manager-template"></a>Vytvoření aplikace App Service pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rychlý Start: Vytvoření aplikace App Service pomocí šablony ARM
 
-Začněte s [Azure App Service](overview.md) nasazením aplikace do cloudu pomocí Azure Resource Manager šablony a [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v Cloud Shell. Vzhledem k tomu, že používáte bezplatnou App Service úroveň, nebudete mít k dokončení tohoto rychlého startu žádné náklady.
+Začněte s [Azure App Service](overview.md) nasazením aplikace do cloudu pomocí Azure Resource Manager šablony (šablona ARM) a rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v Cloud Shell. Vzhledem k tomu, že používáte bezplatnou App Service úroveň, nebudete mít k dokončení tohoto rychlého startu žádné náklady.
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+K nasazení na **Linux**použijte následující tlačítko:
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-an-azure-app-service-app"></a>Vytvoření aplikace Azure App Service
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 ::: zone pivot="platform-windows"
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates/). Nasadí App Service plán a App Service aplikace ve Windows. Je kompatibilní s aplikacemi pro .NET Core, .NET Framework, PHP, Node.js a statickými HTML. Informace pro Java najdete v tématu [Vytvoření aplikace Java](app-service-web-get-started-java.md). 
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows). Nasadí App Service plán a App Service aplikace ve Windows. Je kompatibilní s aplikacemi pro .NET Core, .NET Framework, PHP, Node.js a statickými HTML. Informace pro Java najdete v tématu [Vytvoření aplikace Java](app-service-web-get-started-java.md).
 
-[!code-json[<Azure Resource Manager template App Service Windows app>](~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json":::
 
 V šabloně jsou definované dva prostředky Azure:
 
@@ -51,9 +55,9 @@ Tato šablona obsahuje několik parametrů, které jsou předdefinované pro va�
 | relijte    | řetězec  | " "                          | Externí úložiště Git (volitelné) |
 ::: zone-end
 ::: zone pivot="platform-linux"
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates/). Nasadí App Service plán a App Service aplikaci v systému Linux. Je kompatibilní se všemi podporovanými programovacími jazyky na App Service.
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux). Nasadí App Service plán a App Service aplikaci v systému Linux. Je kompatibilní se všemi podporovanými programovacími jazyky na App Service.
 
-[!code-json[<Azure Resource Manager template App Service Linux app>](~/quickstart-templates/101-app-service-docs-linux/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-app-service-docs-linux/azuredeploy.json":::
 
 V šabloně jsou definované dva prostředky Azure:
 
@@ -73,10 +77,9 @@ Tato šablona obsahuje několik parametrů, které jsou předdefinované pro va�
 ---
 ::: zone-end
 
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-### <a name="deploy-the-template"></a>Nasazení šablony
-
-Azure CLI se tady používá k nasazení šablony. Můžete také použít Azure Portal, Azure PowerShell a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-powershell.md). 
+Azure CLI se tady používá k nasazení šablony. Můžete také použít Azure Portal, Azure PowerShell a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-powershell.md).
 
 Následující kód vytvoří skupinu prostředků, plán App Service a webovou aplikaci. Pro vás byla nastavena výchozí Skupina prostředků, plán App Service a umístění. Nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z` , `0-9` a `-` ).
 
@@ -86,11 +89,11 @@ Spusťte následující kód pro nasazení aplikace rozhraní .NET Framework v s
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
 az deployment group create --resource-group myResourceGroup \
---parameters language=".net" sample="true" webAppName="<app-name>" \
+--parameters language=".net" helloWorld="true" webAppName="<app-name>" \
 --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-app-service-docs-windows/azuredeploy.json"
 ::: zone-end
 ::: zone pivot="platform-linux"
-Run the code below to create a Python app on Linux. 
+Run the code below to create a Python app on Linux.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -114,7 +117,6 @@ Pokud chcete nasadit jinou sadu jazyků, aktualizujte je `linuxFxVersion` pomoc�
 
 > [!NOTE]
 > Další [Azure App Service ukázek šablon najdete tady](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites).
-
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e0a11ef72698d749349cce8dd7eff73e5284a86
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575567"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122462"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Kurz: vytvoření objednávky exportu pro Azure Data Box (Preview)
 
@@ -30,7 +30,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před objednáním zařízení dokončete následující požadavky na konfiguraci pro Data Box službu a zařízení.
 
@@ -164,7 +164,7 @@ Pokud vyberete možnost **použít soubor XML**, můžete zadat konkrétní kont
 2. Vyberte **+ kontejner** pro vytvoření kontejneru.
     ![Snímek obrazovky oddílu Containers](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
-3. Na kartě **Nový kontejner** , která se odhlásí od pravé strany Azure Portal přidejte název kontejneru. Název musí být malými písmeny a může obsahovat číslice a pomlčky (-). Pak v rozevíracím seznamu vyberte **úroveň veřejného přístupu** . Doporučujeme vybrat možnost **privátní (neanonymní přístup)** a zabránit tak ostatním uživatelům v přístupu k vašim datům. Další informace o úrovních přístupu kontejneru najdete v tématu [oprávnění k přístupu kontejnerů](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
+3. Na kartě **Nový kontejner** , která se odhlásí od pravé strany Azure Portal přidejte název kontejneru. Název musí být malými písmeny a může obsahovat číslice a pomlčky (-). Pak v rozevíracím seznamu vyberte **úroveň veřejného přístupu** . Doporučujeme vybrat možnost **privátní (neanonymní přístup)** a zabránit tak ostatním uživatelům v přístupu k vašim datům. Další informace o úrovních přístupu kontejneru najdete v tématu [oprávnění k přístupu kontejnerů](../storage/blobs/anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
    ![Snímek obrazovky s kartou nový kontejner zobrazující možnost privátní (bez anonymního přístupu) je vybraná.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
@@ -256,7 +256,7 @@ Mezi důležité body v souvislosti se soubory XML:
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Description |
+   | Volič | Cesta objektu BLOB | Popis |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

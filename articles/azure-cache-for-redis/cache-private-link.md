@@ -5,24 +5,25 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 93a21b627acfb127c98ead465ebeadc8a472bdfd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838649"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122700"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache pro Redis s privátním propojením Azure (Public Preview)
 V tomto článku se dozvíte, jak vytvořit virtuální síť a mezipaměť Azure pro instanci Redis s privátním koncovým bodem pomocí Azure Portal. Naučíte se také, jak přidat privátní koncový bod do existující služby Azure cache pro instanci Redis.
 
 Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě Azure cache pro Redis využívající privátní propojení Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
-> [!NOTE]
+> [!IMPORTANT]
 > Chcete-li použít soukromé koncové body, je nutné, aby byla instance Azure cache for Redis vytvořena po 28. července 2020.
+> V současné době se geografická replikace, pravidla brány firewall, podpora konzoly portálu, více koncových bodů na mezipamětní mezipaměť, trvalost do firewallu a virtuální sítě vložené do mezipaměti nepodporují. 
 >
 >
 
@@ -109,6 +110,23 @@ Chcete-li vytvořit instanci mezipaměti, postupujte podle těchto kroků.
 
 Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled**služby Azure cache pro Redis   . Pokud se **stav**   zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 
     
+> [!IMPORTANT]
+> 
+> K dispozici je `publicNetworkAccess` příznak, který je `Enabled` ve výchozím nastavení nastaven. 
+> Tento příznak slouží k tomu, aby bylo možné volitelně dovolit přístup k mezipaměti veřejného i privátního koncového bodu, pokud je nastaven na hodnotu `Enabled` . Pokud je tato možnost nastavená na `Disabled` , umožní přístup jenom k privátnímu koncovému bodu. Hodnotu můžete nastavit na `Disabled` s následující žádostí o opravu.
+> ```http
+> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
+> {    "properties": {
+>        "publicNetworkAccess":"Disabled"
+>    }
+> }
+> ```
+>
+
+> [!IMPORTANT]
+> 
+> Aby bylo možné se připojit ke clusterované mezipaměti, je `publicNetworkAccess` nutné nastavit na `Disabled` a může to být pouze jedno připojení privátního koncového bodu. 
+>
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>Vytvoření privátního koncového bodu s existující službou Azure cache pro instanci Redis 
 

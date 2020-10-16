@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812433"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127399"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -114,7 +114,7 @@ Sestavujte [vlastní pravidla](tutorial-create-telemetry-rules.md) na základě 
 
 ## <a name="integrate-with-other-services"></a>Integrace s ostatními službami
 
-Jako aplikační platforma IoT Central umožňuje transformovat data IoT do obchodních přehledů, které mají za úkol reagovat. Příklady, jak můžete integrovat IoT Central s obchodními aplikacemi, najdete v tématu [pravidla](./tutorial-create-telemetry-rules.md), [Export dat](./howto-export-data.md)a [veřejné REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/) :
+Jako aplikační platforma IoT Central umožňuje transformovat data IoT do obchodních přehledů, které mají za úkol reagovat. Příklady, jak můžete integrovat IoT Central s obchodními aplikacemi, najdete v tématu [pravidla](./tutorial-create-telemetry-rules.md), [Export dat](./howto-export-data.md)a [veřejné REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) :
 
 ![Jak IoT Central můžou transformovat data IoT](media/overview-iot-central/transform.png)
 

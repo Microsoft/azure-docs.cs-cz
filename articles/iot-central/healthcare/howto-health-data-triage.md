@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497042"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127076"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Kurz: sestavení řídicího panelu poskytovatele Power BI
 
@@ -38,20 +38,20 @@ V tomto kurzu se naučíte:
 > * Streamování dat do Power BI z aplikace logiky
 > * Vytvoření řídicího panelu v reálném čase pro důležité vlastnosti pacienta
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * Šablona aplikace pro monitorování nepřetržitého používání služby Azure IoT Central. Pokud ho ještě nemáte, můžete [šablonu aplikace nasadit](overview-iot-central-healthcare.md)pomocí postupu.
 
-* [Obor názvů a centrum událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)pro Azure Event Hubs.
+* [Obor názvů a centrum událostí](../../event-hubs/event-hubs-create.md)pro Azure Event Hubs.
 
-* Aplikace logiky, ke které chcete získat přístup k centru událostí Chcete-li spustit aplikaci logiky pomocí triggeru Event Hubs služby Azure, budete potřebovat [prázdnou aplikaci logiky](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow).
+* Aplikace logiky, ke které chcete získat přístup k centru událostí Chcete-li spustit aplikaci logiky pomocí triggeru Event Hubs služby Azure, budete potřebovat [prázdnou aplikaci logiky](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Účet služba Power BI. Pokud ho ještě nemáte, můžete [pro služba Power BI vytvořit bezplatný zkušební účet](https://app.powerbi.com/). Pokud jste už Power BI ještě nepoužili, může být užitečné projít [si Začínáme s Power BI](https://docs.microsoft.com/power-bi/service-get-started).
+* Účet služba Power BI. Pokud ho ještě nemáte, můžete [pro služba Power BI vytvořit bezplatný zkušební účet](https://app.powerbi.com/). Pokud jste už Power BI ještě nepoužili, může být užitečné projít [si Začínáme s Power BI](/power-bi/service-get-started).
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Nastavení průběžného exportu dat do Azure Event Hubs
-Nejdřív budete muset nastavit průběžný export dat ze šablony aplikace Azure IoT Central do centra událostí Azure v rámci vašeho předplatného. Můžete to udělat podle kroků v tomto kurzu pro Azure IoT Central pro [Export do Event Hubs](https://docs.microsoft.com/azure/iot-central/core/howto-export-data). Pro účely tohoto kurzu budete muset jenom vyexportovat pro telemetrii.
+Nejdřív budete muset nastavit průběžný export dat ze šablony aplikace Azure IoT Central do centra událostí Azure v rámci vašeho předplatného. Můžete to udělat podle kroků v tomto kurzu pro Azure IoT Central pro [Export do Event Hubs](../core/howto-export-data.md). Pro účely tohoto kurzu budete muset jenom vyexportovat pro telemetrii.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Vytvoření datové sady streamování Power BI
 
@@ -72,10 +72,10 @@ Nejdřív budete muset nastavit průběžný export dat ze šablony aplikace Azu
     >[!div class="mx-imgBorder"] 
     >![Zadat hodnoty datové sady](media/enter-dataset-values.png)
 
-Další informace o datových sadách streamování v Power BI najdete v článku o [streamování v reálném čase v Power BI](https://docs.microsoft.com/power-bi/service-real-time-streaming).
+Další informace o datových sadách streamování v Power BI najdete v článku o [streamování v reálném čase v Power BI](/power-bi/service-real-time-streaming).
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Připojení aplikace logiky k Azure Event Hubs
-Pokud chcete aplikaci logiky připojit k Azure Event Hubs, můžete postupovat podle pokynů popsaných v tomto dokumentu při [posílání událostí pomocí Azure Event Hubs a Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action). Tady je několik navrhovaných parametrů:
+Pokud chcete aplikaci logiky připojit k Azure Event Hubs, můžete postupovat podle pokynů popsaných v tomto dokumentu při [posílání událostí pomocí Azure Event Hubs a Azure Logic Apps](../../connectors/connectors-create-api-azure-event-hubs.md#add-event-hubs-action). Tady je několik navrhovaných parametrů:
 
 |Parametr|Hodnota|
 |---|---|
@@ -91,7 +91,7 @@ Na konci tohoto kroku by měl návrhář aplikace logiky vypadat takto:
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Streamování dat do Power BI z aplikace logiky
 V dalším kroku budete analyzovat data přicházející z centra událostí, abyste je mohli streamovat do Power BIch datových sad, které jste vytvořili dříve.
 
-1. Než to uděláte, budete muset pochopit datovou část JSON, která se posílá ze zařízení do vašeho centra událostí. Můžete to udělat tak, že si prohlédněte toto [ukázkové schéma](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) a upravíte ho tak, aby odpovídalo vašemu schématu, nebo pomocí [Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) zkontrolovat zprávy. Pokud používáte aplikace pro monitorování nepřetržitého pacienta, vaše zprávy budou vypadat takto:
+1. Než to uděláte, budete muset pochopit datovou část JSON, která se posílá ze zařízení do vašeho centra událostí. Můžete to udělat tak, že si prohlédněte toto [ukázkové schéma](../core/howto-export-data.md#telemetry-format) a upravíte ho tak, aby odpovídalo vašemu schématu, nebo pomocí [Průzkumníka Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer) zkontrolovat zprávy. Pokud používáte aplikace pro monitorování nepřetržitého pacienta, vaše zprávy budou vypadat takto:
 
 **Inteligentní telemetrie opravy – nedůležité**
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 613f42905c88da7669881dfcae7ae038341b2434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eeeb421104a09fe164c8bc93e47d7cf254a802e
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548637"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126939"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Kurz: Azure Active Directory integrace s Showpad
 
@@ -30,7 +30,7 @@ Integrace Showpad s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Showpad potřebujete následující položky:
 
@@ -129,15 +129,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Showpad,
 
 1. V nabídce v horní části klikněte na **Nastavení**.
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/showpad-tutorial/tutorial_showpad_001.png)
+    ![Snímek obrazovky zobrazuje nastavení vybraná v nabídce nastavení.](./media/showpad-tutorial/tutorial_showpad_001.png)
 
 1. Přejděte do **jednotného přihlašování** a klikněte na **Povolit**.
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/showpad-tutorial/tutorial_showpad_002.png)
+    ![Snímek obrazovky zobrazuje jednu Sign-On vybranou s možností povolit.](./media/showpad-tutorial/tutorial_showpad_002.png)
 
 1. V dialogovém okně **Přidat službu SAML 2,0** proveďte následující kroky:
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/showpad-tutorial/tutorial_showpad_003.png) 
+    ![Snímek obrazovky se zobrazí dialogové okno Přidat službu SAML 2,0, kde můžete zadat hodnoty, které jsou popsány.](./media/showpad-tutorial/tutorial_showpad_003.png) 
 
     a. Do textového pole **název** zadejte název zprostředkovatele identifikátoru (například: název vaší společnosti).
 

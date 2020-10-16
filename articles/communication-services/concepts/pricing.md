@@ -9,24 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761222"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126186"
 ---
 # <a name="pricing-scenarios"></a>Cenové scénáře
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-<!--
-> [!WARNING]
-> This document is under construction and needs the following items to be addressed:
-> - Looks like other resources point to a /pricing page that is managed by Commerce or Marketing? https://azure.microsoft.com/pricing/details/functions/ Should we? FOLLOWING UP WITH KRISTIN TO FIND THE RIGHT ACS PAGE
--->
 
-Ceny za služby Azure Communication Services jsou založené na modelu průběžných plateb bez jakýchkoli poplatků předem. Budeme vám účtovat jenom vaši spotřebu a používání služeb.
+Ceny za komunikační služby Azure jsou obecně založené na modelu průběžných plateb.
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>Volání hlasu a videa a sdílení obrazovky
 
@@ -84,6 +79,16 @@ Tato zpráva se zobrazí a spustí se konverzace. V mezitím Casey získá hovor
 ## <a name="price"></a>Cena 
 
 Poplatky za telefonní služby se účtují po minutách, zatímco SMS se účtuje na základě jednotlivých zpráv. Ceny se určují podle typu a umístění čísla, které používáte, i cíle volání a SMS zpráv.
+
+### <a name="telephone-number-leasing"></a>Leasing telefonního čísla
+
+Poplatky za telefonní číslo se účtují předem a pak se opakují na základě měsíce na měsíc:
+
+|Typ čísla   |Měsíční poplatek   |
+|--------------|-----------|
+|Místní (USA)     |$1/měsíc        |
+|Bezplatná linka (USA) |$2/mo |
+
 
 ### <a name="telephone-calling"></a>Telefonní volání
 

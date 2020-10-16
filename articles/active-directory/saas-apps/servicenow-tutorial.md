@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f3c5fc8e7ac4e61d44bb6cd54e1690d7c053526
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540209"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127161"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat ServiceNow s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -290,11 +290,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
              > [!NOTE]
              > Pokud test připojení selhává a nebudete moct aktivovat toto připojení, pak ServiceNow nabídne přepínač override. Je nutné zadat **Sys_properties. Vypíšete** stránku s **navigací hledání** a otevře se nová stránka vlastností systému. Tady je nutné vytvořit novou vlastnost s názvem, jako je třeba považovat **. Authenticate. multisso. test. Connection. povinné** s **datovým typem** **true/false** a nastavte **hodnotu** na **false**.
 
-             > ![Obrazovka stránky Výsledky testů](./media/servicenow-tutorial/testconnection-fail.png "Konfigurace jednotného přihlašování")
+             > ![Snímek obrazovky zobrazuje kartu Vlastnosti systému s testovacím připojením, které se vyvolalo.](./media/servicenow-tutorial/testconnection-fail.png "Konfigurace jednotného přihlašování")
         
           1. Po zobrazení výzvy k zadání přihlašovacích údajů je zadejte. Zobrazí se následující stránka. Očekává se chyba **výsledky testů odhlášení SSO** . Ignorujte chybu a vyberte  **aktivovat**.
 
-             ![Obrazovka stránky Výsledky testů](./media/servicenow-tutorial/servicenowactivate.png "Konfigurace jednotného přihlašování")
+             ![Snímek obrazovky s tlačítkem aktivovat zobrazuje Výsledky testů S a O přihlášení a Výsledky testů pro odhlášení S s O.](./media/servicenow-tutorial/servicenowactivate.png "Konfigurace jednotného přihlašování")
   
 1. Pokud chcete nakonfigurovat **ServiceNow** ručně, postupujte takto:
 
@@ -347,11 +347,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
           > [!NOTE]
           > Pokud test připojení selhává a nebudete moct aktivovat toto připojení, pak ServiceNow nabídne přepínač override. Je nutné zadat **Sys_properties. Vypíšete** stránku s **navigací hledání** a otevře se nová stránka vlastností systému. Tady je nutné vytvořit novou vlastnost s názvem, jako je třeba považovat **. Authenticate. multisso. test. Connection. povinné** s **datovým typem** **true/false** a nastavte **hodnotu** na **false**.
 
-          > ![Obrazovka stránky Výsledky testů](./media/servicenow-tutorial/testconnection-fail.png "Konfigurace jednotného přihlašování")
+          > ![Snímek obrazovky zobrazuje kartu Vlastnosti systému s testovacím připojením, které se vyvolalo.](./media/servicenow-tutorial/testconnection-fail.png "Konfigurace jednotného přihlašování")
 
         * Po zobrazení výzvy k zadání přihlašovacích údajů je zadejte. Zobrazí se následující stránka. Očekává se chyba **výsledky testů odhlášení SSO** . Ignorujte chybu a vyberte  **aktivovat**.
 
-          ![Obrazovka stránky Výsledky testů](./media/servicenow-tutorial/servicenowactivate.png "Konfigurace jednotného přihlašování")
+          ![Snímek obrazovky s tlačítkem aktivovat zobrazuje Výsledky testů S a O přihlášení a Výsledky testů pro odhlášení S s O.](./media/servicenow-tutorial/servicenowactivate.png "Konfigurace jednotného přihlašování")
 
 ### <a name="create-servicenow-test-user"></a>Vytvořit testovacího uživatele ServiceNow
 

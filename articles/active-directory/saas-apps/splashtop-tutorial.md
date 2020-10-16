@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 934953437c2d156f220d5b0a1847e16358e3bfb8
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88524545"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126871"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Splashtop
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Splashtop s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -84,7 +84,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Splashtop aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, zatímco **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Aplikace TicketManager očekává, že **NameIdentifier** budou mapovány pomocí **User. mail**, takže potřebujete upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky zobrazuje atributy uživatele s vybranou ikonou pro úpravy.](common/edit-attribute.png)
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -129,31 +129,33 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 V této části budete muset požádat o novou metodu jednotného přihlašování z [webového portálu Splashtop](https://my.splashtop.com/login).
 1. Na webovém portálu Splashtop přejděte na kartu tým **informace o účtu**  /  **Team** , přejděte dolů k části Vyhledání **jednotného přihlašování** . Pak klikněte na **použít u nové metody jednotného přihlašování**.
 
-    ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
+    ![Snímek obrazovky se zobrazí na stránce jednotného přihlašování, kde můžete vybrat použít pro nové metody S S-O.](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
 1. V okně pro použití zadejte **jméno jednotného přihlašování**. Například nový Azure, vyberte **Azure** jako typ IDP a vložte **přihlašovací adresu URL** a **identifikátor Azure AD** zkopírovaný z aplikace Splashtop na Azure Portal.
 
-    ![image](media/splashtop-tutorial/azure-sso-1.png)
+    ![Snímek obrazovky se zobrazí na stránce použít pro s S/O metoda, kde můžete zadat název a další informace.](media/splashtop-tutorial/azure-sso-1.png)
 
 1. V části informace o certifikátu klikněte pravým tlačítkem na soubor certifikátu stažený z aplikace Splashtop na Azure Portal, upravte ho pomocí poznámkového bloku a pak zkopírujte obsah a vložte ho do pole **Stáhnout certifikát (Base64)** .
 
-    ![obrázek ](media/splashtop-tutorial/cert-1.png) obrázku ![ obrázku ](media/splashtop-tutorial/cert-2.png) ![](media/splashtop-tutorial/azure-sso-2.png)
+    ![Snímek obrazovky zobrazující výběr souboru certifikátu a jeho otevření v poznámkovém bloku](media/splashtop-tutorial/cert-1.png)
+    ![Snímek obrazovky zobrazuje obsah souboru certifikátu.](media/splashtop-tutorial/cert-2.png)
+    ![Snímek obrazovky se zobrazí v textovém poli stáhnout certifikát.](media/splashtop-tutorial/azure-sso-2.png)
 
-1. A je to! Klikněte na **Uložit** a Splashtop ověřovací tým jednotného přihlašování vám pošle informace o ověření a pak aktivuje metodu jednotného přihlašování.
+1. A to je vše! Klikněte na **Uložit** a Splashtop ověřovací tým jednotného přihlašování vám pošle informace o ověření a pak aktivuje metodu jednotného přihlašování.
 
 ### <a name="create-splashtop-test-user"></a>Vytvořit testovacího uživatele Splashtop
 
 1. Po aktivaci metody SSO zkontrolujte nově vytvořenou metodu jednotného přihlašování a povolte ji v části **jednotné přihlašování** .
 
-    ![image](media/splashtop-tutorial/enable.png)
+    ![Snímek obrazovky se zobrazí na stránce jednotného přihlašování, kde můžete novou metodu povolit.](media/splashtop-tutorial/enable.png)
 
 1. Pozvěte testovacího uživatele například `B.Simon@contoso.com` k vašemu týmu Splashtop s nově vytvořenou metodou jednotného přihlašování.
 
-    ![image](media/splashtop-tutorial/invite.png)
+    ![Snímek obrazovky se zobrazí stránka pozvat uživatele, kde můžete vybrat novou metodu.](media/splashtop-tutorial/invite.png)
 
 1. Existující účet Splashtop můžete také změnit na účet jednotného přihlašování, viz [pokyny](https://support-splashtopbusiness.splashtop.com/hc/en-us/articles/360038685691-How-to-associate-SSO-method-to-existing-team-admin-member-).
 
-1. A je to! Účet jednotného přihlašování můžete použít k přihlášení k webovému portálu Splashtop nebo obchodní aplikaci Splashtop.
+1. A to je vše! Účet jednotného přihlašování můžete použít k přihlášení k webovému portálu Splashtop nebo obchodní aplikaci Splashtop.
 
 ## <a name="test-sso"></a>Test SSO 
 

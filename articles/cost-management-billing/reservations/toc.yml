@@ -118,6 +118,10 @@
       items:
         - name: Obnovení rezervace
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Řešení potíží
+      items:
+        - name: Žádné opravňující předplatné
+          href: troubleshoot-no-eligible-subscriptions.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Referenční informace
   items:
     - name: Rozhraní REST API pro rezervace

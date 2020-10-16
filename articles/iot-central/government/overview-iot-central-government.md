@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1ed5a64a76d27f87b590573894e34f2560a5c2aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972287"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126562"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Sestavování řešení pro státní správu s využitím služby Azure IoT Central
 
@@ -78,4 +78,4 @@ Začněte s [kurzem pro aplikace pro správu propojených odpadů](./tutorial-co
 * Další informace o [konceptech monitorování kvality vody](./concepts-waterqualitymonitoring-architecture.md)
 * Další informace o [konceptech monitorování spotřeby vody](./concepts-waterconsumptionmonitoring-architecture.md)
 * Další informace o [konceptech správy propojených odpadů](./concepts-connectedwastemanagement-architecture.md)  
-* Informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) . 
+* Informace o IoT Central najdete v tématu [IoT Central Overview](../core/overview-iot-central.md) .

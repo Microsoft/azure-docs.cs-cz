@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99355a88a52e318b231d9032ede770ee0ba5208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3520597ef8c02bc225e6f8a7625e6a961a7e37
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548676"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Kurz: Azure Active Directory integrace s lidstvo
 
@@ -30,7 +30,7 @@ Integrace lidstvo s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s lidstvo potřebujete následující položky:
 
@@ -131,11 +131,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí lidstvo,
     ![Správce](./media/shiftplanning-tutorial/iC786619.png "Správce")
 3. V části **integrace**klikněte na **jednotné přihlašování**.
 
-    ![Jednotné přihlašování](./media/shiftplanning-tutorial/iC786620.png "Jednotné přihlašování")
+    ![Snímek obrazovky zobrazuje jednu Sign-On vybranou z nabídky integrace.](./media/shiftplanning-tutorial/iC786620.png "Jednotné přihlašování")
 
 4. V části **jednotné přihlašování** proveďte následující kroky:
 
-    ![Jednotné přihlašování](./media/shiftplanning-tutorial/iC786905.png "Jednotné přihlašování")
+    ![Snímek obrazovky se zobrazí jedna část Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/shiftplanning-tutorial/iC786905.png "Jednotné přihlašování")
 
     a. Vyberte **povoleno SAML**.
 
