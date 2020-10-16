@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3a0eaeebbc0659b217051c6e98d67803896f2e1
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212710"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102319"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -43,7 +43,7 @@ Azure Virtual WAN umožňuje globální přenosovou architekturu sítě díky to
 
 **Obrázek 2: globální tranzitní síť a virtuální síť WAN**
 
-V architektuře Azure Virtual WAN se virtuální rozbočovače sítě WAN zřídí v oblastech Azure, ke kterým se můžete rozhodnout připojit své větve, virtuální sítě a vzdálené uživatele. Fyzické větve jsou připojené k centru podle úrovně Premium ExpressRoute nebo site-to-VPN, virtuální sítě jsou připojené k rozbočovači podle připojení virtuální sítě a vzdálení uživatelé se můžou přímo připojit k centru pomocí uživatelské sítě VPN (VPN typu Point-to-site). Virtuální síť WAN taky podporuje připojení virtuální sítě mezi oblastmi, kde virtuální síť v jedné oblasti může být připojená k virtuálnímu rozbočovači WAN v jiné oblasti.
+V architektuře Azure Virtual WAN se virtuální rozbočovače sítě WAN zřídí v oblastech Azure, ke kterým se můžete rozhodnout připojit své větve, virtuální sítě a vzdálené uživatele. Fyzické větve jsou připojené k centru podle úrovně Premium nebo Standard ExpressRoute nebo site-to-VPN, virtuální sítě jsou připojené k rozbočovači podle připojení virtuální sítě a vzdálení uživatelé se můžou přímo připojit k centru pomocí uživatelské sítě VPN (VPN typu Point-to-site). Virtuální síť WAN taky podporuje připojení virtuální sítě mezi oblastmi, kde virtuální síť v jedné oblasti může být připojená k virtuálnímu rozbočovači WAN v jiné oblasti.
 
 Virtuální síť WAN můžete vytvořit tak, že vytvoříte jedno virtuální centrum sítě WAN v oblasti s největším počtem paprsků (větví, virtuální sítě, uživatelů) a potom propojíte paprsky, které jsou v jiných oblastech, do centra. Tato možnost je vhodná v případě, že podniková technologie je převážně v jedné oblasti s několika vzdálenými paprsky.  
   
@@ -87,7 +87,7 @@ Větev-to-VNet je primární cesta podporovaná službou Azure Virtual WAN. Tato
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach a virtuální síť WAN
 
-ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. Virtuální síť WAN podporuje připojení okruhu Express Route. Připojení lokality pobočky k virtuální síti WAN pomocí expresní trasy vyžaduje 1) okruh Premium okruh 2), aby byl v Global Reach povolené umístění.
+ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. Virtuální síť WAN podporuje připojení okruhu Express Route. Připojení lokality pobočky k virtuální síti WAN pomocí Express Route vyžaduje 1) okruh úrovně Premium nebo Standard okruh 2), aby byl v umístění s povoleným Global Reach.
 
 ExpressRoute Global Reach je doplňková funkce pro ExpressRoute. Pomocí Global Reach můžete propojit okruhy ExpressRoute dohromady a vytvořit tak soukromou síť mezi místními sítěmi. Větve, které jsou připojené k Azure Virtual WAN pomocí ExpressRoute, vyžadují vzájemnou komunikaci ExpressRoute Global Reach.
 

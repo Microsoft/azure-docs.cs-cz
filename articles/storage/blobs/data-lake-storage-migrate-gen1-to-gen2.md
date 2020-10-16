@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bc6d4a60c3db6b2537a0f300562db1df5e249b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716144"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102638"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrace Azure Data Lake Storage z Gen1 na Gen2
 
@@ -93,7 +93,7 @@ Jakmile budete mít jistotu, že vaše aplikace a úlohy jsou v Gen2 stabilní, 
 
 Tato tabulka porovnává možnosti Gen1 s Gen2.
 
-|Oblast |Gen1   |Gen2 |
+|Plošný |Gen1   |Gen2 |
 |---|---|---|
 |Organizace dat|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora souborů a složek|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora kontejnerů, souborů a složek |
 |Geografická redundance| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
@@ -122,7 +122,7 @@ Pojďme se podrobněji podívat na každý vzor.
  
 ### <a name="lift-and-shift-pattern"></a>Vzorek zvednutí a posunutí
 
-Toto je nejjednodušší vzor.
+Toto je nejjednodušší vzor. 
 
 1. Zastavte všechny zápisy do Gen1.
 
@@ -131,6 +131,8 @@ Toto je nejjednodušší vzor.
 3. Point ingestujte operace a úlohy do Gen2.
 
 4. Vyřaďte z provozu Gen1.
+
+Podívejte se na náš vzorový kód pro vzor výtahu a posunutí v naší [ukázce migrace a posunutí](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Lift%20and%20Shift/README.md).
 
 > [!div class="mx-imgBorder"]
 > ![vzorek zvednutí a posunutí](./media/data-lake-storage-migrate-gen1-to-gen2/lift-and-shift.png)
@@ -153,6 +155,9 @@ Toto je nejjednodušší vzor.
 
 4. Vyřaďte z provozu Gen1.
 
+Podívejte se na náš vzorový kód pro vzor přírůstkové kopírování v naší [ukázce migrace přírůstkového kopírování](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md).
+
+
 > [!div class="mx-imgBorder"]
 > ![Vzor přírůstkového kopírování](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
 
@@ -174,6 +179,8 @@ Toto je nejjednodušší vzor.
 
 4. Zastavte všechny zápisy do Gen1 a potom vyřaďte z provozu Gen1.
 
+Podívejte se na náš vzorový kód pro vzor duálního kanálu v naší [ukázce migrace dvou kanálů](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Dual%20pipeline/README.md).
+
 > [!div class="mx-imgBorder"]
 > ![Vzor duálního kanálu](./media/data-lake-storage-migrate-gen1-to-gen2/dual-pipeline.png)
 
@@ -192,6 +199,8 @@ Toto je nejjednodušší vzor.
 3. Po dokončení všech přesunů zastavte všechny zápisy na Gen1 a vypněte obousměrnou replikaci.
 
 4. Vyřaďte z provozu Gen1.
+
+Podívejte se na náš vzorový kód pro obousměrný způsob synchronizace v [ukázce obousměrné synchronizace migrace](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Bi-directional/README.md).
 
 > [!div class="mx-imgBorder"]
 > ![Obousměrný vzor](./media/data-lake-storage-migrate-gen1-to-gen2/bidirectional-sync.png)

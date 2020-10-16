@@ -1,5 +1,5 @@
 ---
-title: Přidání konektorů API do toků uživatelů
+title: Přidání konektorů rozhraní API do toků uživatelů (Preview)
 description: Nakonfigurujte konektor API, který se má použít v toku uživatele.
 services: active-directory-b2c
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854354"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102268"
 ---
-# <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Přidání konektoru API do toku uživatele pro registraci
+# <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Přidání konektoru rozhraní API k toku registrace uživatele (Preview)
 
 Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejdřív konektor API a pak ho povolte v toku uživatele.
 
@@ -234,12 +234,12 @@ Content-type: application/json
 }
 ```
 
-| Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
+| Parametr                                          | Typ              | Povinné | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| verze                                            | Řetězec            | Yes      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
-| akce                                             | Řetězec            | Yes      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | Hodnoty mohou být uloženy v adresáři, pokud jsou vybrány jako **deklarace pro příjem** v konfiguraci konektoru rozhraní API a **atributy uživatele** pro tok uživatele. Hodnoty mohou být vráceny v tokenu, pokud je vybrána jako **deklarace identity aplikace**.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Vrácená deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Hodnoty se ukládají v adresáři, pokud se vybírají jako **deklarace, aby se přijímaly** v konfiguraci konektoru rozhraní API a **atributu uživatele** pro tok uživatele. Vlastní atributy se v tokenu nedají poslat zpátky. |
+| verze                                            | Řetězec            | Ano      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
+| akce                                             | Řetězec            | Ano      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako **deklarace identity aplikace**.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Ne       | Deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako **deklarace identity aplikace**.  |
 
 ### <a name="example-of-a-blocking-response"></a>Příklad blokující odpovědi
 
@@ -255,17 +255,19 @@ Content-type: application/json
 
 ```
 
-| Parametr   | Typ   | Vyžadováno | Popis                                                                |
+| Parametr   | Typ   | Povinné | Popis                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec | Yes      | Verze rozhraní API.                                                    |
-| akce      | Řetězec | Yes      | Hodnota musí být `ShowBlockPage`                                              |
-| userMessage | Řetězec | Yes      | Zpráva, která se zobrazí uživateli.                                            |
+| verze     | Řetězec | Ano      | Verze rozhraní API.                                                    |
+| akce      | Řetězec | Ano      | Hodnota musí být `ShowBlockPage`                                              |
+| userMessage | Řetězec | Ano      | Zpráva, která se zobrazí uživateli.                                            |
 
 **Činnost koncového uživatele s blokující odezvou**
 
 ![Příklad stránky bloku](./media/add-api-connector/blocking-page-response.png)
 
 ### <a name="example-of-a-validation-error-response"></a>Příklad ověřování – odpověď na chybu
+
+
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -279,12 +281,14 @@ Content-type: application/json
 }
 ```
 
-| Parametr   | Typ    | Vyžadováno | Popis                                                                |
+| Parametr   | Typ    | Povinné | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec  | Yes      | Verze rozhraní API.                                                    |
-| akce      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
-| status      | Integer | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
-| userMessage | Řetězec  | Yes      | Zpráva, která se zobrazí uživateli.                                            |
+| verze     | Řetězec  | Ano      | Verze rozhraní API.                                                    |
+| akce      | Řetězec  | Ano      | Hodnota musí být `ValidationError` .                                           |
+| status      | Integer | Ano      | `400`Pro odpověď ValidationError musí být hodnota.                        |
+| userMessage | Řetězec  | Ano      | Zpráva, která se zobrazí uživateli.                                            |
+
+*Poznámka:* Stavový kód HTTP musí být kromě hodnoty "stav" v těle odpovědi "400".
 
 **Činnost koncového uživatele při ověřování – chybová odezva**
 

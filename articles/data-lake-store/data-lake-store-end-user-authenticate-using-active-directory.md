@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5272f7d580a3f8a68afda9150a1e95c1807eba6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578542"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103777"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
@@ -28,9 +28,9 @@ Azure Data Lake Storage Gen1 používá pro ověřování Azure Active Directory
 
 Obě tyto možnosti mají za následek, že vaše aplikace bude k dispozici s tokenem OAuth 2,0, který se připojí ke každému požadavku, který jste odeslali Data Lake Storage Gen1 nebo Azure Data Lake Analytics.
 
-Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro ověřování koncových uživatelů**. Pokyny týkající se konfigurace aplikací Azure AD pro ověřování služby a služby najdete v tématu [ověřování služby-služba pomocí Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
+Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro ověřování koncových uživatelů**. Pokyny týkající se konfigurace aplikací Azure AD pro ověřování služby a služby najdete v tématu [ověřování služby-služba pomocí Data Lake Storage Gen1 pomocí Azure Active Directory](./data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 * ID vašeho předplatného. Můžete ho načíst z Azure Portal. Například je k dispozici v okně Data Lake Storage Gen1 účet.

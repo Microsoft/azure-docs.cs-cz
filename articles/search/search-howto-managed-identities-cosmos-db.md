@@ -9,18 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: fc12978e59ecc3ebcc58d4070fa057f9a53fda58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275281"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102689"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity
 
 Tato stránka popisuje, jak nastavit připojení indexeru k databázi Azure Cosmos DB pomocí spravované identity namísto zadání přihlašovacích údajů do připojovacího řetězce objektu zdroje dat.
 
 Než se dozvíte víc o této funkci, doporučujeme vám pochopit, co indexer je a jak nastavit indexer pro zdroj dat. Další informace najdete na následujících odkazech:
+
 * [Přehled indexeru](search-indexer-overview.md)
 * [Indexer pro Azure Cosmos DB](search-howto-index-cosmosdb.md)
 
@@ -79,7 +80,7 @@ api-key: [Search service admin key]
 
 Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat následující pole:
 
-| Pole   | Description |
+| Pole   | Popis |
 |---------|-------------|
 | **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
 |**textový**| Povinná hodnota. Musí být `cosmosdb` . |
@@ -143,9 +144,8 @@ Pokud zjistíte, že nemůžete indexovat data z Cosmos DB zvažte následujíc�
 
 1. Pokud jste nedávno provedli použití klíčů účtu Cosmos DB, budete muset počkat až 15 minut, než se v připojovacím řetězci spravované identity dokončí.
 
-1. Zkontrolujte, jestli má účet Cosmos DB omezený přístup pro vybrané sítě. Pokud tomu tak je, přečtěte si téma [přístup k indexerům ke zdrojům dat pomocí funkcí zabezpečení sítě Azure](search-indexer-securing-resources.md).
+1. Zkontrolujte, jestli má účet Cosmos DB omezený přístup pro vybrané sítě. Pokud tomu tak je, přečtěte si informace o [přístupu indexeru k obsahu chráněnému funkcemi zabezpečení sítě Azure](search-indexer-securing-resources.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Cosmos DB indexerech:
 * [Indexer pro Azure Cosmos DB](search-howto-index-cosmosdb.md)

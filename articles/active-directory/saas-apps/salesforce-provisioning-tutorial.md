@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a77fa5702b8ab5728f387eae02cc97f997a406a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e22511717b6a86f9e0cf53986152c4d6bab68780
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273292"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101762"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
 
@@ -77,15 +77,15 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 6. Pokud chcete získat token zabezpečení Salesforce, otevřete novou kartu a přihlaste se ke stejnému účtu správce Salesforce. V pravém horním rohu stránky klikněte na své jméno a pak klikněte na **Nastavení**.
 
-    ![Povolit automatické zřizování uživatelů](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Povolit automatické zřizování uživatelů")
+    ![Snímek obrazovky se zobrazuje vybraný odkaz nastavení.](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Povolit automatické zřizování uživatelů")
 
 7. V levém navigačním podokně klikněte na **osobní informace** a rozbalte související část a potom klikněte na **resetovat můj token zabezpečení**.
   
-    ![Povolit automatické zřizování uživatelů](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Povolit automatické zřizování uživatelů")
+    ![Snímek obrazovky s vybraným osobním údajem resetování tokenu zabezpečení](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Povolit automatické zřizování uživatelů")
 
 8. Na stránce **resetovat token zabezpečení** klikněte na tlačítko **resetovat token zabezpečení** .
 
-    ![Povolit automatické zřizování uživatelů](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Povolit automatické zřizování uživatelů")
+    ![Snímek obrazovky se stránkou s tokenem zabezpečení REST s vysvětlujícím textem a možností resetovat token zabezpečení](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Povolit automatické zřizování uživatelů")
 
 9. Ověřte e-mailové doručené pošty přidružené k tomuto účtu správce. Vyhledejte e-mail z Salesforce.com, který obsahuje nový token zabezpečení.
 
@@ -127,7 +127,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Salesforce vyžaduje, aby se aktualizace e-mailu před změnou schválily ručně. V důsledku toho se může stát, že v protokolech zřizování dojde k aktualizaci e-mailu uživatele na více položkách (dokud se neschválí změna e-mailu).
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

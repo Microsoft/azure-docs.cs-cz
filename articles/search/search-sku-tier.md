@@ -1,23 +1,23 @@
 ---
-title: Výběr cenové úrovně nebo SKU
+title: Výběr cenové úrovně
 titleSuffix: Azure Cognitive Search
-description: 'Azure Kognitivní hledání se dá zřídit v těchto SKU: Free, Basic a Standard a Standard jsou dostupné v různých konfiguracích prostředků a úrovních kapacity.'
+description: 'Azure Kognitivní hledání se dá zřídit v těchto úrovních: Free, Basic a Standard a Standard jsou dostupné v různých konfiguracích prostředků a úrovních kapacity.'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: 0b0ff0abe438b2be3602b10d1c449901ef916901
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 10/14/2020
+ms.openlocfilehash: 0acd0d1d463280cddc8c1f4bb389a056d474ea38
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948081"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92101269"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
-Když vytváříte službu Azure Kognitivní hledání, vytvoří se prostředek na cenové úrovni (nebo SKU), která se pro dobu života služby [vydává](search-create-service-portal.md) . Mezi vrstvy patří optimalizace Free, Basic, Standard a Storage. Optimalizované úložiště Standard a Storage jsou k dispozici v několika konfiguracích a kapacitě.
+Při vytváření služby Azure Kognitivní hledání se [prostředek](search-create-service-portal.md) vytvoří v cenové úrovni, která je pevná pro dobu života služby. Mezi vrstvy patří optimalizace Free, Basic, Standard a Storage. Optimalizované úložiště Standard a Storage jsou k dispozici v několika konfiguracích a kapacitě.
 
 Většina zákazníků začíná na bezplatné úrovni, takže může službu vyhodnotit. Po vyhodnocení je běžné vytvořit druhou službu na jedné z vyšších úrovní vývoje a produkčních nasazení.
 
@@ -27,15 +27,15 @@ Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
 | Funkce | Omezení |
 |---------|-------------|
-| [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD. |
+| [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD.  |
 | [Obohacení AI](search-security-manage-encryption-keys.md) | Běží na bezplatné úrovni, ale nedoporučuje se. |
 | [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) | Není k dispozici na úrovni Free. |
 | [Přístup k bráně firewall protokolu IP](service-configure-firewall.md) | Není k dispozici na úrovni Free. |
-| [Integrace s privátním propojením Azure](service-create-private-endpoint.md) | Není k dispozici na úrovni Free. |
+| [Privátní koncový bod (integrace s privátním odkazem Azure)](service-create-private-endpoint.md) | Pro příchozí připojení k vyhledávací službě není na úrovni Free k dispozici. Pro odchozí připojení prostřednictvím indexerů k jiným prostředkům Azure, které nejsou dostupné na bezplatném nebo S3 HD. Pro indexery, které používají dovednosti, nejsou dostupné na úrovni Free, Basic, S1 nebo S3 HD.|
 
 Většina funkcí je dostupná na všech úrovních, včetně bezplatných funkcí, ale funkce náročné na prostředky nemusí fungovat správně, pokud jim neposkytnete dostatečnou kapacitu. Například [rozšíření AI](cognitive-search-concept-intro.md) má dlouhodobě běžící dovednosti, které vyprší časový limit bezplatné služby, pokud není datová sada malá.
 
-## <a name="tiers-skus"></a>Úrovně (SKU)
+## <a name="tiers"></a>Úrovně
 
 Úrovně se liší:
 
@@ -158,7 +158,7 @@ Chcete-li určit velikost indexu, je třeba [ho sestavit](search-what-is-an-inde
 Pro fulltextové vyhledávání je primární strukturou dat [obrácená struktura indexu](https://en.wikipedia.org/wiki/Inverted_index) , která má jiné charakteristiky než zdrojová data. U převráceného indexu se velikost a složitost určují podle obsahu, nikoli nutně podle množství dat, která do něj zadáte. Velký zdroj dat s vysokou redundancí může mít za následek menší index než menší datová sada, která obsahuje vysoce proměnlivý obsah. Je proto možné pouze odvodit velikost indexu na základě velikosti původní datové sady.
 
 > [!NOTE] 
-> I když odhaduje budoucí potřeby indexů a úložiště, může to vypadat stejně jako v případě vysokého odhadu. Pokud je kapacita vrstvy příliš nízká, budete muset zřídit novou službu na vyšší úrovni a pak [znovu načíst své indexy](search-howto-reindex.md). Neexistuje žádný místní upgrade služby z jedné SKU na jinou.
+> I když odhaduje budoucí potřeby indexů a úložiště, může to vypadat stejně jako v případě vysokého odhadu. Pokud je kapacita vrstvy příliš nízká, budete muset zřídit novou službu na vyšší úrovni a pak [znovu načíst své indexy](search-howto-reindex.md). Neexistuje žádný místní upgrade služby z jedné úrovně na jinou.
 >
 
 ### <a name="estimate-with-the-free-tier"></a>Odhad s úrovní Free

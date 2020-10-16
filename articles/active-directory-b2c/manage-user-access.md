@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2018
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 084284037b02ce02d1e46a61a69d6e60cc89a36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51a66d74750afa6c46dba7fa442477e85effb2d6
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387724"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102047"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -114,7 +114,7 @@ Následující obrázek znázorňuje doporučený tok uživatele:
 
 ![Diagram toku grafu znázorňující doporučený tok uživatelů pro přijetí](./media/manage-user-access/user-flow.png)
 
-Následuje příklad souhlasu s podmínkami použití v deklaraci identity na základě hodnoty DateTime:
+Tady je příklad souhlasu s podmínkami použití v deklaraci identity na základě data. Pokud `extension_termsOfUseConsentDateTime` je deklarace identity starší než `2025-01-15T00:00:00` , vynutí nové přijetí kontrolou `termsOfUseConsentRequired` logické deklarace identity a zobrazením obrazovky s vlastním kontrolním výrazem. 
 
 ```xml
 <ClaimsTransformations>
@@ -128,7 +128,7 @@ Následuje příklad souhlasu s podmínkami použití v deklaraci identity na z�
       <InputClaim ClaimTypeReferenceId="extension_termsOfUseConsentDateTime" TransformationClaimType="termsOfUseConsentDateTime" />
     </InputClaims>
     <InputParameters>
-      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2098-01-30T23:03:45" />
+      <InputParameter Id="termsOfUseTextUpdateDateTime" DataType="dateTime" Value="2025-01-15T00:00:00" />
     </InputParameters>
     <OutputClaims>
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="result" />
@@ -137,7 +137,7 @@ Následuje příklad souhlasu s podmínkami použití v deklaraci identity na z�
 </ClaimsTransformations>
 ```
 
-Tady je příklad souhlasu s podmínkami použití v deklaraci identity na základě verze:
+Následuje příklad souhlasu s podmínkami použití v deklaraci identity na základě verze. Pokud `extension_termsOfUseConsentVersion` se deklarace identity nerovná `V1` , vynutí nové přijetí kontrolou `termsOfUseConsentRequired` logické deklarace identity a zobrazením obrazovky s vlastním kontrolním výrazem.
 
 ```xml
 <ClaimsTransformations>

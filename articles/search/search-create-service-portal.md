@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/05/2020
-ms.openlocfilehash: 3ccc5ab07416f65270a7bd720f1e0884027b1fe7
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057718"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102808"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
@@ -102,9 +102,9 @@ Azure Kognitivní hledání je k dispozici ve většině oblastí. Seznam podpor
 
 Pokud používáte více služeb Azure, vyberte oblast, která je také hostitelem vašich dat nebo aplikační služby. Tím dojde k minimalizaci nebo zrušení poplatků za šířku pásma pro odchozí data (pro odchozí data se neúčtují žádné poplatky, pokud jsou služby ve stejné oblasti).
 
-## <a name="choose-a-pricing-tier-sku"></a>Zvolit cenovou úroveň (SKU)
+## <a name="choose-a-pricing-tier"></a>Výběr cenové úrovně
 
-Služba [Azure kognitivní hledání se teď nabízí v několika cenových úrovních](https://azure.microsoft.com/pricing/details/search/): Free, Basic nebo Standard. Každá úroveň má svou vlastní [kapacitu a limity](search-limits-quotas-capacity.md). Další pokyny získáte v tématu věnovaném [volbě cenové úrovně nebo SKU](search-sku-tier.md).
+Služba Azure Kognitivní hledání se teď nabízí v [několika cenových úrovních](https://azure.microsoft.com/pricing/details/search/): optimalizováno, Basic, Standard nebo Storage. Každá úroveň má svou vlastní [kapacitu a limity](search-limits-quotas-capacity.md). Pokyny najdete v tématu [Volba cenové úrovně](search-sku-tier.md) .
 
 Basic a Standard jsou nejběžnější možnosti pro produkční úlohy, ale většina zákazníků začíná bezplatnou službou. Mezi hlavní rozdíly mezi úrovněmi patří velikost oddílu a rychlost a omezení počtu objektů, které můžete vytvořit.
 

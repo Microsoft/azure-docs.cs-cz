@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848853"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102995"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 |**Smlouva SLA pro dobu provozu**|99,99 %|99,99 %|99,99 %|
 |**Maximální uchovávání záloh**|7 dní|35 dní|35 dní|
 |**Procesor**|Nízká|Nízká, střední, vysoká|Střední, vysoká|
-|**IOPS (přibližná)**\* |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
+|**IOPS (přibližná)**\* |1-4 IOPS na DTU| 1-4 IOPS na DTU | 25 IOPS na DTU|
 |**Latence v/v (přibližná)**|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
 |**Indexování columnstore** |Není k dispozici|S3 a vyšší|Podporováno|
 |**OLTP v paměti**|N/A|N/A|Podporováno|
@@ -114,7 +114,7 @@ Databáze má velikost na základě "faktoru škálování". Faktor škálován�
 
 Zatížení se skládá z devíti typů transakcí, jak je znázorněno v následující tabulce. Každá transakce je navržena k zdůraznění konkrétní sady systémových vlastností v databázovém stroji a na systémovém hardwaru s vysokým kontrastem od ostatních transakcí. Tento přístup usnadňuje vyhodnocení dopadu různých komponent na celkový výkon. Například transakce "Read těžký" vytváří velký počet operací čtení z disku.
 
-| Transaction Type (Typ transakce) | Description |
+| Transaction Type (Typ transakce) | Popis |
 | --- | --- |
 | Přečíst Lite |VYBRALI v paměti; jen pro čtení |
 | Přečíst médium |VYBRALI hlavně v paměti; jen pro čtení |

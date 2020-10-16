@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: ac63846e2679e9b4a51cb26b32415eb81a4b76ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26c7029e710479b8785e06b1d65ff7b5270aeab0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842576"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102927"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
 
@@ -62,7 +62,7 @@ Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následují
 | Apache Livy | Aktivní hlavnímu uzlu | Spark | Umožňuje snadnou interakci s clusterem Spark přes rozhraní REST. |
 
 >[!Note]
-> Clustery HDInsight Balíček zabezpečení podniku (ESP) aktuálně poskytují pouze vysokou dostupnost serveru Ambari.
+> Clustery HDInsight Balíček zabezpečení podniku (ESP) aktuálně poskytují pouze vysokou dostupnost serveru Ambari. Časová osa aplikace Server, server historie úloh a Livy jsou spuštěné jenom na headnode0 a předají se převzetí služeb při selhání headnode1 při Ambari failsover. Databáze časové osy aplikace je také na headnode0 a ne na Ambari SQL serveru.
 
 ### <a name="architecture"></a>Architektura
 

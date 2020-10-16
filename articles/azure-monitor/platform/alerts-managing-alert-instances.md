@@ -4,16 +4,16 @@ description: Správa instancí výstrah napříč Azure
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1910b3b474012365e8117f584379b2b29f8ce3de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82905cba5f391365ada13f4e5df5ad139f4c121e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77667614"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102866"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Správa instancí výstrah pomocí sjednocených výstrah
 
-Díky [jednotnému prostředí upozornění](https://aka.ms/azure-alerts-overview) v Azure monitor uvidíte všechny vaše různé typy výstrah v rámci Azure. To zahrnuje více předplatných v jednom podokně. V tomto článku se dozvíte, jak můžete zobrazit instance výstrah a jak najít konkrétní instance výstrahy pro řešení potíží.
+Díky [jednotnému prostředí upozornění](./alerts-overview.md) v Azure monitor uvidíte všechny vaše různé typy výstrah v rámci Azure. To zahrnuje více předplatných v jednom podokně. V tomto článku se dozvíte, jak můžete zobrazit instance výstrah a jak najít konkrétní instance výstrahy pro řešení potíží.
 
 > [!NOTE]
 > Můžete přistupovat jenom k výstrahám generovaným za posledních 30 dní.
@@ -54,5 +54,4 @@ Kromě filtrů dostupných na předchozí stránce můžete také filtrovat na z
 
 Výběrem libovolné instance výstrahy otevřete stránku **Podrobnosti výstrahy** , která vám umožní zobrazit další podrobnosti o konkrétní instanci výstrahy.   
 
-![Snímek stránky s podrobnostmi výstrahy](media/alerts-managing-alert-instances/alert-details.jpg)  
-
+![Snímek stránky s podrobnostmi výstrahy](media/alerts-managing-alert-instances/alert-details.jpg)

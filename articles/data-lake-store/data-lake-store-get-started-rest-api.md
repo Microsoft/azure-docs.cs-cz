@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fc3f3fb0b6bb67239d6c1952d3e128076ce45aaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13467a51b2a06dbc0ca0ec5eadd139fde8b82ad0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85857181"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103488"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Operace správy účtů u Azure Data Lake Storage Gen1 pomocí REST API
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "85857181"
 
 V tomto článku se dozvíte, jak provádět operace správy účtů na Azure Data Lake Storage Gen1 pomocí REST API. Mezi operace správy účtů patří vytvoření účtu Data Lake Storage Gen1, odstranění účtu Data Lake Storage Gen1 atd. Pokyny k provádění operací systému souborů v Data Lake Storage Gen1 pomocí REST API naleznete v tématu [operace systému souborů v Data Lake Storage Gen1 pomocí REST API](data-lake-store-data-operations-rest-api.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 * **[kudrlinkou](https://curl.haxx.se/)**. V tomto článku se pomocí oblé předvádí způsob, jak REST API volání na účet Data Lake Storage Gen1.
@@ -36,7 +36,7 @@ Ověřování pomocí služby Azure Active Directory můžete provádět dvěma 
 
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Vytvoření účtu Data Lake Storage Gen1
-Tato operace je založená na volání rozhraní REST API, které je definované [tady](https://docs.microsoft.com/rest/api/datalakestore/accounts/create).
+Tato operace je založená na volání rozhraní REST API, které je definované [tady](/rest/api/datalakestore/accounts/create).
 
 Použijte následující příkaz cURL. Nahraďte **\<yourstoragegen1name>** názvem Data Lake Storage Gen1.
 
@@ -57,7 +57,7 @@ Ve výše uvedeném příkazu nahraďte položku \<`REDACTED`\> autorizačním t
 ```
 
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>Odstranit účet Data Lake Storage Gen1
-Tato operace je založená na volání rozhraní REST API, které je definované [tady](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete).
+Tato operace je založená na volání rozhraní REST API, které je definované [tady](/rest/api/datalakestore/accounts/delete).
 
 K odstranění účtu Data Lake Storage Gen1 použijte následující příkaz složeného příkazu. Nahraďte **\<yourstoragegen1name>** názvem vašeho účtu Data Lake Storage Gen1.
 
@@ -77,6 +77,5 @@ HTTP/1.1 200 OK
 * [Operace systému souborů při Data Lake Storage Gen1 pomocí REST API](data-lake-store-data-operations-rest-api.md)
 
 ## <a name="see-also"></a>Viz také
-* [Odkaz na Azure Data Lake Storage Gen1 REST API](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Odkaz na Azure Data Lake Storage Gen1 REST API](/rest/api/datalakestore/)
 * [Open Source aplikace pro velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
-

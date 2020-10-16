@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0cc2c04208c4800a883848896a0f1659e8bf72e9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: d0f8fa313687b3bd45bd95f1c9ea864567821775
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097248"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102353"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB pomocí SQL bez serveru v propojení Azure synapse (Preview)
 
@@ -266,8 +266,10 @@ Seznam možných chyb a akcí při řešení potíží jsou uvedené v následuj
 | --- | --- |
 | Chyby syntaxe:<br/> – Nesprávná syntaxe v blízkosti položky OpenRowset<br/> - `...` není rozpoznaná možnost HROMADNÉho poskytovatele OPENROWSET.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny<br/> -Nepoužívá se jako první parametr ' CosmosDB ',<br/> -Použití řetězcového literálu místo identifikátoru ve třetím parametru<br/> -Nespecifikuje se třetí parametr (název kontejneru). |
 | V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze, klíč není zadaný. <br/> -V připojovacím řetězci existuje možnost, která není rozpoznána.<br/> – Středník `;` je umístěný na konci připojovacího řetězce. |
-| Překlad cesty CosmosDB se nezdařil s chybou "nesprávný účet/název databáze". | Zadaný název účtu nebo název databáze nelze nalézt. |
-| Překlad cesty CosmosDB se nezdařil s chybou: nesprávná tajná hodnota tajného klíče je null nebo prázdná. | Klíč účtu není platný nebo chybí. |
+| Překlad cesty CosmosDB se nezdařil s chybou, nesprávný název účtu nebo nesprávný název databáze. | Zadaný název účtu, název databáze nebo kontejner se nenašel nebo nebylo povolené analytické úložiště o zadané kolekci.|
+| Překlad cesty CosmosDB se nezdařil s chybou "nesprávná tajná hodnota" nebo "tajný klíč má hodnotu null nebo je prázdný". | Klíč účtu není platný nebo chybí. |
+| Sloupec `column name` typu není `type name` kompatibilní s externím datovým typem. `type name` | Zadaný typ sloupce `WITH` klauzule neodpovídá typu v kontejneru Cosmos DB. Zkuste změnit typ sloupce tak, jak je popsán v části [Azure Cosmos DB mapování typu SQL](#azure-cosmos-db-to-sql-type-mappings) nebo `VARCHAR` typ použití. |
+| Sloupec obsahuje `NULL` hodnoty ve všech buňkách. | Pravděpodobnou příčinou je nesprávný název sloupce nebo výraz cesty v `WITH` klauzuli. Název sloupce (nebo výraz cesty za typem sloupce) klauzule v `WITH` klauzuli Cosmos DB Collection se musí shodovat s názvem některé vlastnosti. Porovnávání rozlišuje **velká a malá písmena**  (například `productCode` a `ProductCode` jsou různé vlastnosti). |
 
 Návrhy a problémy můžete nahlásit na [stránce s názory na Azure synapse](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862).
 

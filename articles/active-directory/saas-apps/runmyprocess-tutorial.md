@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: db47849575c097cf56824b623dddbb6e0835d1b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5c641ce9b224aecc3d199427bf27b804f7dd2dd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543597"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102081"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>Kurz: integrace RunMyProcess s Azure Active Directory
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat RunMyProcess s Azure Active Directory 
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -96,11 +96,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V levém navigačním panelu klikněte na **účet** a vyberte **Konfigurace**.
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
+    ![Snímek obrazovky zobrazuje konfiguraci vybranou z účtu.](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
 1. V části **metoda ověřování** proveďte následující kroky:
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
+    ![Snímek obrazovky se zobrazí na kartě metoda ověřování, kde můžete zadat hodnoty, které jsou popsány.](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
     a. Jako **metodu**vyberte **jednotné přihlašování s Samlv2**.
 
@@ -177,7 +177,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici RunMyProcess, měli byste se automaticky přihlásit k RunMyProcess, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

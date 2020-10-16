@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5fd297545e7f07844e28a1f56e724a7f61916bee
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 06c4ac3be0e9d1021e64cf1a34bda94ed02c9982
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057735"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102489"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -174,10 +174,7 @@ Místo toho, pokud chcete provádět změny modelu, jako je například aktualiz
 
 #### <a name="model-versioning"></a>Správa verzí modelů
 
-Pokud chcete vytvořit novou verzi existujícího modelu, začněte s DTDL původního modelu. Aktualizujte pole, která chcete změnit.
-
->[!NOTE]
->Během období Preview bude přechod verze modelu umožňovat pouze přidávání nových polí a neodebírat stávající. Chcete-li odebrat pole, měli byste pouze [vytvořit značku nového modelu](#create-models).
+Pokud chcete vytvořit novou verzi existujícího modelu, začněte s DTDL původního modelu. Aktualizujte, přidejte nebo odeberte pole, která chcete změnit.
 
 Pak tuto položku označte jako novější verzi modelu tak, že aktualizujete `id` pole modelu. Poslední část ID modelu, po `;` ,, představuje číslo modelu. Chcete-li označit, že se jedná o aktualizovanou verzi tohoto modelu, zvyšte číslo na konci `id` hodnoty na libovolné číslo vyšší, než je aktuální číslo verze.
 

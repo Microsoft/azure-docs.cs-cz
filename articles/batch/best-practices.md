@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849485"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102774"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -63,7 +63,7 @@ Když vytváříte fond Azure Batch s použitím konfigurace virtuálního poč�
 
 ### <a name="third-party-images"></a>Image třetích stran
 
-Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure Marketplace. V případě účtů Batch v režimu předplatného uživatele se může zobrazit chyba "přidělení nebylo úspěšné kvůli kontrole způsobilosti nákupu na webu Marketplace" při vytváření fondu s některými imagemi třetích stran. Chcete-li tuto chybu vyřešit, přijměte podmínky stanovené vydavatelem obrázku. Můžete to udělat pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) nebo [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms).
+Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure Marketplace. V případě účtů Batch v režimu předplatného uživatele se může zobrazit chyba "přidělení nebylo úspěšné kvůli kontrole způsobilosti nákupu na webu Marketplace" při vytváření fondu s některými imagemi třetích stran. Chcete-li tuto chybu vyřešit, přijměte podmínky stanovené vydavatelem obrázku. Můžete to udělat pomocí [Azure PowerShell](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) nebo [Azure CLI](/cli/azure/vm/image/terms).
 
 ### <a name="azure-region-dependency"></a>Závislost oblasti Azure
 

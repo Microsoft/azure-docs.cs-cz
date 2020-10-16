@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0df3c6b1851767616111308ad0bacce227ba1a83
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 135e0ccfd9b4681932a9a69df0372aa400933124
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948897"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102570"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -27,7 +27,7 @@ Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomo
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |------------------------------|----------|-------------|---------------|
 | [Identita spravované služby](search-howto-managed-identities-data-sources.md) | Indexery, zabezpečení | Vytvořte identitu pro vyhledávací službu v Azure Active Directory a pak pomocí oprávnění RBAC udělte přístup ke zdrojům dat Azure. Tento přístup eliminuje nutnost zadání přihlašovacích údajů v připojovacím řetězci. <br><br>Další způsob použití identity spravované služby je prostřednictvím [výjimky důvěryhodné služby](search-indexer-howto-access-trusted-service-exception.md) , pokud pravidla protokolu IP nejsou možností. | Všeobecně k dispozici. Přístup k této funkci při použití portálu nebo [Vytvoření zdroje dat (REST)](/rest/api/searchservice/create-data-source) s rozhraním API-Version = 2020-06-30. |
-| [Odchozí požadavky pomocí privátního odkazu](search-indexer-howto-access-private.md) | Indexery, zabezpečení | Vytvoření sdíleného prostředku privátního propojení, který mohou indexery použít při přístupu k prostředkům Azure zabezpečených pomocí privátního propojení Azure. Další informace o všech způsobech, jak zabezpečit připojení indexeru, najdete v tématu zabezpečení [prostředků indexeru pomocí funkcí zabezpečení sítě Azure](search-indexer-securing-resources.md). | Všeobecně k dispozici. Přístup k této funkci při použití portálu nebo [sdíleného prostředku privátního propojení](/rest/api/searchmanagement/sharedprivatelinkresources) s rozhraním API-Version = 2020-08-01. |
+| [Odchozí požadavky pomocí privátního odkazu](search-indexer-howto-access-private.md) | Indexery, zabezpečení | Vytvoření sdíleného prostředku privátního propojení, který mohou indexery použít při přístupu k prostředkům Azure zabezpečených pomocí privátního propojení Azure. Další informace o všech způsobech, kterými můžete zabezpečit připojení indexeru, najdete v tématu [přístup k obsahu chráněnému funkcemi zabezpečení sítě Azure pomocí indexeru](search-indexer-securing-resources.md). | Všeobecně k dispozici. Přístup k této funkci při použití portálu nebo [sdíleného prostředku privátního propojení](/rest/api/searchmanagement/sharedprivatelinkresources) s rozhraním API-Version = 2020-08-01. |
 | [REST API správy (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | REST | Nová stabilní REST API přidává podporu pro vytváření sdílených prostředků privátních propojení. | Všeobecně k dispozici. |
 | [REST API správy (2020-08-01 – Preview)](/rest/api/searchmanagement/management-api-versions) | REST | Přidá prostředek sdíleného privátního propojení pro databáze Azure Functions a Azure SQL pro MySQL. | Verze Public Preview. |
 | [Sada Management .NET SDK 4,0](/dotnet/api/overview/azure/search/management) | .NET SDK | Aktualizace sady Azure SDK pro sadu Management SDK, cílené REST API verze 2020-08-01. | Všeobecně k dispozici. |

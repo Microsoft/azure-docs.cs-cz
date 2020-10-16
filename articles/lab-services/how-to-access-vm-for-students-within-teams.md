@@ -3,12 +3,12 @@ title: Přístup k virtuálnímu počítači (zobrazení student) v Azure Lab z 
 description: Naučte se, jak získat přístup k virtuálnímu počítači (zobrazení studenta) v Azure Lab z týmů.
 ms.topic: article
 ms.date: 10/07/2020
-ms.openlocfilehash: 346f4bcd75356b0466b1eea46e1da74aa2c63784
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c786a8b3fcee57cefb551a61087d4b49ee5e93c0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043441"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102404"
 ---
 # <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>Přístup k virtuálnímu počítači (zobrazení student) v Azure Lab z týmů
 
@@ -16,7 +16,7 @@ Když se v rámci týmů vytvoří testovací prostředí, můžou uživatelé z
 
 ## <a name="view-labs"></a>Zobrazit cvičení
 
-Pokud testovací prostředí ještě není publikované nebo když se po jeho přidání do týmu má spustit synchronizace, podobná zpráva se studentům zobrazí pro studenty. Pokud chcete, aby testovací prostředí bylo ještě Publikováno nebo aby se synchronizace aktivovala po jejich přidání do týmu, podobné zprávy se zobrazí členům týmu.
+Pokud je testovací prostředí ještě Publikováno nebo pokud se má po přidání do týmu spustit synchronizace, podobná zpráva se zobrazí členům týmu.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-access-vm-for-students-within-teams/lab.png" alt-text="Azure Lab Services testovací prostředí":::

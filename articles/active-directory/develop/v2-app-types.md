@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: c468ecb390a3ad321f9fe0619204994dfbf3fbb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04dd0ec7c6d3166e2170001d6ff341d203c0d6b
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256752"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103148"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Typy aplikací pro platformu Microsoft Identity Platform
 
@@ -46,7 +46,7 @@ Mnohé moderní aplikace mají front-end samoobslužnou aplikaci vytvořenou hla
 
 Flowový diagram níže znázorňuje udělení autorizačního kódu OAuth 2,0 (s podrobnostmi o PKCE vynechán), kde aplikace přijímá kód z koncového bodu Microsoft Identity Platform `authorize` a uplatňuje ho pro tokeny a aktualizační tokeny pomocí webových požadavků pro různé weby. Obnovovací token vyprší každých 24 hodin a aplikace musí požádat o jiný kód. Kromě přístupového tokenu, `id_token` který představuje přihlášeného uživatele ke klientské aplikaci, se obvykle také požaduje prostřednictvím stejného toku nebo samostatné žádosti OpenID Connect (tady není zobrazená).
 
-![Tok kódu pro aplikace SPA](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
+:::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="Diagram znázorňující tok autorizačního kódu OAuth 2 mezi jednostránkovou aplikací a koncovým bodem služby tokenu zabezpečení." border="false":::
 
 Pokud se chcete podívat na tento scénář v akci, podívejte se na [kurz: přihlášení uživatelů a volání rozhraní API Microsoft Graph z JavaScript Spa pomocí toku kódu ověřování](tutorial-v2-javascript-auth-code.md).
 
