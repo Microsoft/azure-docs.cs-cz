@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574139"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149277"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených ve službě Azure Data Lake Storage Gen1
-Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Řízení přístupu na základě role (RBAC) a seznamy řízení přístupu (ACL) musí být nastavené tak, aby plně povolovaly přístup k datům pro uživatele a skupiny zabezpečení.
+Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Řízení přístupu na základě role Azure (Azure RBAC) a seznamy řízení přístupu (ACL) musí být nastavené tak, aby plně povolovaly přístup k datům pro uživatele a skupiny zabezpečení.
 
 1. Začněte vytvořením skupin zabezpečení v Azure Active Directory (Azure AD). Tyto skupiny zabezpečení se používají k implementaci řízení přístupu na základě rolí Azure (Azure RBAC) v Azure Portal. Další informace najdete v tématu [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
 2. Přiřaďte skupiny zabezpečení Azure AD k účtu Data Lake Storage Gen1. Tato kontrola řídí přístup k účtu Data Lake Storage Gen1 z portálu a operací správy z portálu nebo rozhraní API.
@@ -29,7 +29,7 @@ Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Ř
 
 Tento článek poskytuje pokyny, jak použít Azure Portal k provedení výše uvedených úloh. Podrobné informace o tom, jak Data Lake Storage Gen1 implementuje zabezpečení na úrovni účtu a dat, najdete v tématu [zabezpečení v Azure Data Lake Storage Gen1](data-lake-store-security-overview.md). Podrobné informace o tom, jak se v Data Lake Storage Gen1 implementují seznamy řízení přístupu (ACL), najdete v tématu [přehled Access Control v Data Lake Storage Gen1](data-lake-store-access-control.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -68,7 +68,7 @@ Když přiřazujete uživatele nebo skupiny zabezpečení k Data Lake Storage Ge
     Pro datové operace určují jednotlivá oprávnění systému souborů, co můžou uživatelé dělat. Proto může uživatel, který má roli Čtenář, zobrazit jenom nastavení správy spojená s tímto účtem, ale může potenciálně číst a zapisovat data na základě oprávnění systému souborů, která jsou jim přiřazená. Data Lake Storage Gen1 oprávnění systému souborů jsou popsána v tématu [přiřazení skupiny zabezpečení jako seznamů ACL do systému souborů Azure Data Lake Storage Gen1](#filepermissions).
 
     > [!IMPORTANT]
-    > Pouze role **vlastníka** automaticky povolí přístup k systému souborů. **Přispěvatel**, **Čtenář**a všechny ostatní role vyžadují seznamy řízení přístupu (ACL), které umožňují přístup ke složkám a souborům na úrovni.  Role **vlastníka** poskytuje oprávnění k souborům a složkám ve výhradním uživateli, která nelze přepsat prostřednictvím seznamů ACL. Další informace o tom, jak zásady RBAC mapují na přístup k datům, najdete v tématu [RBAC pro správu účtů](data-lake-store-security-overview.md#rbac-for-account-management).
+    > Pouze role **vlastníka** automaticky povolí přístup k systému souborů. **Přispěvatel**, **Čtenář**a všechny ostatní role vyžadují seznamy řízení přístupu (ACL), které umožňují přístup ke složkám a souborům na úrovni.  Role **vlastníka** poskytuje oprávnění k souborům a složkám ve výhradním uživateli, která nelze přepsat prostřednictvím seznamů ACL. Další informace o tom, jak zásady Azure RBAC mapují na přístup k datům, najdete v tématu [Azure RBAC pro správu účtů](data-lake-store-security-overview.md#azure-rbac-for-account-management).
 
 4. Pokud chcete přidat skupinu nebo uživatele, která není uvedená v okně **Přidat oprávnění** , můžete je pozvat zadáním jejich e-mailové adresy do textového pole **Vybrat** a pak je vybrat ze seznamu.
    

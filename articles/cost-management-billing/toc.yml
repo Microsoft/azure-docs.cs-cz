@@ -313,7 +313,7 @@
             - name: Velké instance SAP HANA
               href: reservations/prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
             - name: Databáze SQL
-              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+              href: ../azure-sql/database/reserved-capacity-overview.md?toc=%252fazure%252fcost-management-billing%252ftoc.json
             - name: Azure Synapse Analytics
               href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
             - name: Virtuální počítače
@@ -365,9 +365,9 @@
 - name: Referenční informace
   items:
     - name: Rozhraní REST API služby Azure Cost Management
-      href: 'https://docs.microsoft.com/rest/api/cost-management'
+      href: /rest/api/cost-management
     - name: Rozhraní REST API služby Azure Consumption
-      href: 'https://docs.microsoft.com/rest/api/consumption'
+      href: /rest/api/consumption
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.consumption/budgets
     - name: Ukázky rozhraní REST API služby Cost Management
@@ -377,19 +377,19 @@
     - name: Přehled rozhraní API služby Azure Billing
       href: manage/usage-rate-card-overview.md
     - name: Rozhraní REST API služby Azure Billing
-      href: 'https://docs.microsoft.com/rest/api/billing'
+      href: /rest/api/billing
     - name: Přehled rozhraní API služby Azure Consumption
       href: manage/consumption-api-overview.md
     - name: Rozhraní REST API služby Azure Consumption
-      href: 'https://docs.microsoft.com/rest/api/consumption'
+      href: /rest/api/consumption
     - name: Rozhraní REST API služby RateCard
-      href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
+      href: /previous-versions/azure/reference/mt219005(v=azure.100)
     - name: Rozhraní REST API služby Usage
-      href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
+      href: /previous-versions/azure/reference/mt219003(v=azure.100)
     - name: Přehled služby Enterprise Reporting
       href: manage/enterprise-api.md
     - name: Rozhraní REST API služby Enterprise Reporting
-      href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
+      href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Reservations
       items:
         - name: Rozhraní REST API pro rezervace
@@ -493,4 +493,4 @@
         - name: Cloudyn – nejčastější dotazy
           href: cloudyn/cost-mgt-faq.md
         - name: Obraťte se na podporu Cloudyn
-          href: 'https://docs.microsoft.com/azure/cost-management-billing/costs/open-support-request'
+          href: ./costs/open-support-request.md

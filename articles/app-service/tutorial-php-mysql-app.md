@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d9f08840165e7e4cf4d13e9a66cbb59489a2b3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0faf269852418ee8694e5fa51ce8010e57a2c054
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974259"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150208"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Kurz: sestavení aplikace v PHP a MySQL v Azure App Service
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -153,7 +153,7 @@ Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
 ## <a name="create-mysql-in-azure"></a>Vytvoření databáze MySQL v Azure
 
-V tomto kroku vytvoříte v [Azure Database for MySQL](/azure/mysql) databázi MySQL. Později nakonfigurujete aplikaci PHP pro připojení k této databázi.
+V tomto kroku vytvoříte v [Azure Database for MySQL](../mysql/index.yml) databázi MySQL. Později nakonfigurujete aplikaci PHP pro připojení k této databázi.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -163,7 +163,7 @@ V tomto kroku vytvoříte v [Azure Database for MySQL](/azure/mysql) databázi M
 
 V Cloud Shell vytvořte pomocí příkazu Server v Azure Database for MySQL [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest&preserve-view=true#az-mysql-server-create) .
 
-V následujícím příkazu nahraďte zástupný symbol jedinečným názvem serveru *\<mysql-server-name>* , uživatelským jménem *\<admin-user>* a heslem pro *\<admin-password>*  zástupný text. Název serveru se používá jako součást koncového bodu MySQL (`https://<mysql-server-name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Podrobnosti o výběru SKU databáze MySQL DB najdete v tématu [vytvoření serveru Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
+V následujícím příkazu nahraďte zástupný symbol jedinečným názvem serveru *\<mysql-server-name>* , uživatelským jménem *\<admin-user>* a heslem pro *\<admin-password>*  zástupný text. Název serveru se používá jako součást koncového bodu MySQL (`https://<mysql-server-name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Podrobnosti o výběru SKU databáze MySQL DB najdete v tématu [vytvoření serveru Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server).
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1

@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 10/02/2020
-ms.openlocfilehash: d63cec0e0697a15efe7f15be5f6f0daaa6d6a372
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: ac528d1cfb74221a7398e390cedda08df4ea4508
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761511"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151397"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -54,7 +54,7 @@ To je prováděno automaticky službou Sdílení dat Azure, když uživatel při
 
 Uživatel také může mít vlastníka úložiště dat Azure a přidat spravovanou identitu prostředku sdílení dat do úložiště dat Azure ručně. Tuto akci je třeba provést pouze jednou pro každý prostředek sdílení dat.
 
-Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdílení dat, postupujte podle následujících kroků:
+Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdílení dat, postupujte podle následujících kroků.  
 
 1. Přejděte do úložiště dat Azure.
 1. Vyberte **Access Control (IAM)**.
@@ -63,7 +63,9 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
 1. Klikněte na *Uložit*.
 
-Pro zdroje založené na SQL se kromě výše uvedených kroků musí uživatel SQL vytvořit z externího poskytovatele v SQL Database se stejným názvem jako prostředek sdílené složky Azure. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení vašich dat](share-your-data.md) . 
+Další informace o přiřazení rolí najdete [v tématu Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment). Pokud sdílíte data pomocí rozhraní REST API, můžete přiřazení rolí vytvořit pomocí rozhraní API tak, že na [REST API přidáte nebo odeberete přiřazení rolí Azure pomocí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). 
+
+Pro zdroje založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v SQL Database se stejným názvem jako s prostředkem sdílené složky Azure při připojování k SQL Database pomocí ověřování Azure Active Directory. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení z Azure SQL Database nebo synapse Analytics](how-to-share-from-sql.md) . 
 
 ### <a name="data-consumer"></a>Příjemce dat
 Aby bylo možné přijímat data, musí mít spravovaná identita prostředku zdroje dat uživatele udělen přístup k cílovému úložišti dat Azure. Například v případě účtu úložiště má spravovaná identita prostředku sdílení dat přiřazenou roli Přispěvatel dat objektů BLOB úložiště. 
@@ -72,7 +74,7 @@ To je prováděno automaticky službou Sdílení dat Azure, pokud uživatel zad�
 
 Uživatel také může mít vlastníka úložiště dat Azure a přidat spravovanou identitu prostředku sdílení dat do úložiště dat Azure ručně. Tuto akci je třeba provést pouze jednou pro každý prostředek sdílení dat.
 
-Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdílení dat, postupujte podle následujících kroků:
+Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdílení dat, postupujte podle následujících kroků. 
 
 1. Přejděte do úložiště dat Azure.
 1. Vyberte **Access Control (IAM)**.
@@ -81,11 +83,9 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
 1. Klikněte na *Uložit*.
 
-V případě cíle založeného na jazyce SQL musí být kromě výše uvedeného postupu vytvořen uživatel SQL od externího poskytovatele v SQL Database se stejným názvem, jako má prostředek Azure Data Share. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení založené na SQL najdete v kurzu [přijetí a přijetí dat](subscribe-to-data-share.md) . 
+Další informace o přiřazení rolí najdete [v tématu Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment). Pokud přijímáte data pomocí rozhraní REST API, můžete přiřazení rolí vytvořit pomocí rozhraní API tak, že na [REST API přidáte nebo odeberete přiřazení rolí Azure pomocí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). 
 
-Pokud sdílíte data pomocí rozhraní REST API, je potřeba vytvořit Tato přiřazení rolí ručně. 
-
-Další informace o tom, jak přidat přiřazení role, najdete v [této dokumentaci](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment). 
+V případě cíle založeného na jazyce SQL je nutné vytvořit uživatele SQL z externího poskytovatele v SQL Database se stejným názvem jako s prostředkem sdílené složky Azure při připojování k databázi SQL pomocí ověřování Azure Active Directory. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení z Azure SQL Database nebo synapse Analytics](how-to-share-from-sql.md) . 
 
 ## <a name="resource-provider-registration"></a>Registrace poskytovatele prostředků 
 
@@ -102,6 +102,8 @@ Pomocí těchto kroků zaregistrujete poskytovatele prostředků Microsoft. data
 1. Klikněte na **poskytovatelé prostředků**.
 1. Vyhledejte Microsoft. datashare.
 1. Klikněte na **Zaregistrovat**.
+ 
+Další informace o poskytovateli prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
 
 ## <a name="next-steps"></a>Další kroky
 

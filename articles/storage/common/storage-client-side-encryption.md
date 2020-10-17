@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2cf137eae9e026f4854034efe1565dc8f7f0b35d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4e8623ecb351fa99a437de70a9b74a70fb6228cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091657"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151144"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Client-Side šifrování a Azure Key Vault pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -53,7 +53,7 @@ Dešifrování prostřednictvím techniky obálek funguje následujícím způso
 Klientská knihovna pro úložiště používá [algoritmus AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , aby se šifroval data uživatelů. Konkrétně režim [řetězení bloků šifry (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) s AES. Každá služba funguje trochu jinak, takže se na ně podíváme každý z nich.
 
 ### <a name="blobs"></a>Objekty blob
-Klientská knihovna aktuálně podporuje pouze šifrování celých objektů BLOB. Šifrování je konkrétně podporováno, pokud uživatelé používají metody **UploadFrom** nebo metodu **OpenWrite** . V případě souborů ke stažení jsou podporovány obě položky pro stahování dokončených i rozsahů.
+Klientská knihovna aktuálně podporuje pouze šifrování celých objektů BLOB. V případě souborů ke stažení jsou podporovány obě položky pro stahování dokončených i rozsahů.
 
 Při šifrování vygeneruje Klientská knihovna náhodný vektor inicializace (IV) o 16 bajtech, společně s náhodným šifrovacím klíčem obsahu (CEK) 32 bajtů a provede šifrování obálky dat objektů BLOB pomocí těchto informací. Zabalené CEK a některá další šifrovací metadata se pak ukládají jako metadata objektů BLOB společně s šifrovaným objektem BLOB ve službě.
 
@@ -62,9 +62,9 @@ Při šifrování vygeneruje Klientská knihovna náhodný vektor inicializace (
 > 
 > 
 
-Stažení šifrovaného objektu BLOB zahrnuje načtení obsahu celého objektu BLOB s využitím metod **DownloadTo** / **BlobReadStream** pohodlí. Zabalená CEK se nebalí a používá společně s IV (uloženými jako metadata objektů BLOB v tomto případě) k vrácení dešifrovaných dat uživatelům.
+Při stahování celého objektu BLOB se zabalená CEK rozbalí a v tomto případě použije společně s IV (uloženými jako metadata objektů BLOB v tomto případě) k vrácení dešifrovaných dat uživatelům.
 
-Stahování libovolného rozsahu (**DownloadRange** metod) v zašifrovaném objektu BLOB zahrnuje úpravu rozsahu poskytnutého uživateli, aby bylo možné získat malé množství dalších dat, která lze použít k úspěšnému dešifrování požadovaného rozsahu.
+Stahování libovolného rozsahu v zašifrovaném objektu BLOB zahrnuje úpravu rozsahu poskytnutého uživateli, aby bylo možné získat malé množství dalších dat, která lze použít k úspěšnému dešifrování požadovaného rozsahu.
 
 Všechny typy objektů BLOB (objekty blob bloku, objekty blob stránky a doplňovací objekty BLOB) se dají šifrovat nebo dešifrovat pomocí tohoto schématu.
 
@@ -77,9 +77,14 @@ Při šifrování generuje Klientská knihovna náhodnou hodnotu IV z 16 bajtů 
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 ```
 
-Během dešifrování je zabalený klíč extrahován ze zprávy fronty a rozbalením. Rozhraní IV je také extrahováno ze zprávy fronty a použito společně s nezabaleným klíčem k dešifrování dat zprávy ve frontě. Všimněte si, že metadata šifrování jsou malá (pod 500 bajtů), takže pokud se počítá s limitem 64KB pro zprávu fronty, měl by být dopad spravovatelný.
+Během dešifrování je zabalený klíč extrahován ze zprávy fronty a rozbalením. Rozhraní IV je také extrahováno ze zprávy fronty a použito společně s nezabaleným klíčem k dešifrování dat zprávy ve frontě. Všimněte si, že metadata šifrování jsou malá (pod 500 bajtů), takže pokud se počítá s limitem 64KB pro zprávu fronty, měl by být dopad spravovatelný. Všimněte si, že šifrovaná zpráva bude kódována pomocí kódování Base64, jak je znázorněno ve výše uvedeném fragmentu, což také rozbalí velikost odesílané zprávy.
 
 ### <a name="tables"></a>Tabulky
+> [!NOTE]
+> Table service se podporuje jenom v klientské knihovně Azure Storage jenom s verzí 9. x.
+> 
+> 
+
 Klientská knihovna podporuje šifrování vlastností entit pro operace INSERT a nahrazování.
 
 > [!NOTE]
@@ -111,22 +116,34 @@ V dávkových operacích se stejné KEK budou používat ve všech řádcích t�
 ## <a name="azure-key-vault"></a>Azure Key Vault
 Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí Azure Key Vault můžou uživatelé šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat,. Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Další informace najdete v článku [Co je Azure Key Vault](../../key-vault/general/overview.md).
 
-Klientská knihovna pro úložiště používá základní knihovnu Key Vault, aby poskytovala společné rozhraní napříč Azure pro správu klíčů. Uživatelé také získají další výhody použití knihovny rozšíření Key Vault. Knihovna rozšíření poskytuje užitečné funkce kolem jednoduchých a bezproblémového místního a cloudového poskytovatele RSA a také s možností agregace a ukládání do mezipaměti.
+Klientská knihovna pro úložiště používá rozhraní Key Vault v základní knihovně, aby poskytovala společné rozhraní napříč Azure pro správu klíčů. Uživatelé můžou využít Key Vault knihovny pro všechny další výhody, které poskytují, například užitečné funkce kolem jednoduchých a bezproblémového místního a cloudového poskytovatele RSA a také nápovědu k agregaci a ukládání do mezipaměti.
 
 ### <a name="interface-and-dependencies"></a>Rozhraní a závislosti
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+
+Existují dva potřebné balíčky pro integraci Key Vault:
+
+* Azure. Core obsahuje `IKeyEncryptionKey` rozhraní a `IKeyEncryptionKeyResolver` . Klientská knihovna pro úložiště pro .NET už ji definuje jako závislost.
+* Azure. Security. Key trezor. Keys (v4. x) obsahuje klienta Key Vault REST a také kryptografické klienty používané při šifrování na straně klienta.
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 Existují tři Key Vault balíčky:
 
 * Microsoft. Azure. webtrezor. Core obsahuje rozhraní IKey a IKeyResolver. Jedná se o malý balíček bez závislostí. Klientská knihovna pro úložiště pro .NET definuje jako závislost.
-* Microsoft. Azure. webtrezor obsahuje klienta služby Key Vault REST.
-* Microsoft. Azure. webtrezor. Extensions obsahuje kód rozšíření, který zahrnuje implementace kryptografických algoritmů a RSAKey a SymmetricKey. Závisí na oborech názvů základní a trezoru klíčů a poskytuje funkce pro definování agregovaného překladače (když uživatelé chtějí používat víc zprostředkovatelů klíčů) a překladač klíčů pro ukládání do mezipaměti. I když klientská knihovna pro úložiště nezávisí přímo na tomto balíčku, pokud uživatelé chtějí použít Azure Key Vault k ukládání klíčů nebo k používání rozšíření Key Vault ke využívání místních a cloudových zprostředkovatelů kryptografických služeb, bude tento balíček potřebovat.
+* Microsoft. Azure. webtrezor (V3. x) obsahuje klienta služby Key Vault REST.
+* Microsoft. Azure. klíčů trezor. Extensions (V3. x) obsahuje kód rozšíření, který zahrnuje implementace kryptografických algoritmů a RSAKey a SymmetricKey. Závisí na oborech názvů základní a trezoru klíčů a poskytuje funkce pro definování agregovaného překladače (když uživatelé chtějí používat víc zprostředkovatelů klíčů) a překladač klíčů pro ukládání do mezipaměti. I když klientská knihovna pro úložiště nezávisí přímo na tomto balíčku, pokud uživatelé chtějí použít Azure Key Vault k ukládání klíčů nebo k používání rozšíření Key Vault ke využívání místních a cloudových zprostředkovatelů kryptografických služeb, bude tento balíček potřebovat.
+
+Další informace o využití Key Vault v V11 najdete v [ukázkách šifrovacího kódu V11](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
+
+---
 
 Key Vault je navržená pro hlavní klíče s vysokou hodnotou a omezení omezování na Key Vault jsou navržená s ohledem na to. Při provádění šifrování na straně klienta s Key Vault je upřednostňovaným modelem použití symetrických hlavních klíčů uložených jako tajné klíče v Key Vault a v mezipaměti místně. Uživatelé musí provést následující akce:
 
 1. Vytvořte tajný kód offline a nahrajte ho do Key Vault.
 2. Použijte základní identifikátor tajného klíče jako parametr k vyřešení aktuální verze tajného klíče pro šifrování a místní ukládání těchto informací do mezipaměti. Použít CachingKeyResolver pro ukládání do mezipaměti; pro uživatele není očekávána implementace vlastní logiky ukládání do mezipaměti.
 3. Při vytváření zásad šifrování používejte překladač mezipaměti jako vstup.
-
-Další informace o využití Key Vault najdete v [ukázkách šifrovacího kódu](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
 
 ## <a name="best-practices"></a>Osvědčené postupy
 Podpora šifrování je k dispozici pouze v klientské knihovně pro úložiště pro .NET. Windows Phone a prostředí Windows Runtime aktuálně nepodporují šifrování.
@@ -138,45 +155,175 @@ Podpora šifrování je k dispozici pouze v klientské knihovně pro úložišt�
 > * V případě tabulek existuje podobné omezení. Nezapomeňte neaktualizovat šifrované vlastnosti bez aktualizace metadat šifrování.
 > * Pokud nastavíte metadata pro zašifrovaný objekt blob, můžete přepsat metadata týkající se šifrování, která jsou nutná k dešifrování, protože nastavení metadat není aditivní. To platí také pro snímky; Vyhněte se zadávání metadat při vytváření snímku šifrovaného objektu BLOB. Pokud musí být nastavena metadata, nezapomeňte nejprve zavolat metodu **FetchAttributes** a získat aktuální šifrovací metadata a vyhnout se souběžným zápisům při nastavování metadat.
 > * Povolte vlastnost **RequireEncryption** ve výchozích možnostech žádosti pro uživatele, kteří by měli pracovat pouze se zašifrovanými daty. Další informace najdete níže.
-> 
-> 
+>
+>
 
 ## <a name="client-api--interface"></a>Rozhraní API klienta/rozhraní
-Při vytváření objektu EncryptionPolicy můžou uživatelé zadat jenom klíč (implementující IKey), jenom překladač (implementující IKeyResolver) nebo obojí. IKey je základní typ klíče, který je identifikován pomocí identifikátoru klíče a poskytuje logiku pro balení a rozbalení. IKeyResolver se používá k překladu klíče během dešifrovacího procesu. Definuje metodu ResolveKey, která vrací IKey pro daný identifikátor klíče. To umožňuje uživatelům volit mezi několika klíči, které jsou spravovány ve více umístěních.
+Uživatelé můžou poskytovat jenom klíč, jenom překladač nebo obojí. Klíče jsou identifikovány pomocí identifikátoru klíče a poskytují logiku pro zabalení a rozbalení. Překladače se používají k překladu klíče během procesu dešifrování. Definuje metodu Resolve, která vrací klíč s daným identifikátorem klíče. To umožňuje uživatelům volit mezi několika klíči, které jsou spravovány ve více umístěních.
 
 * Pro šifrování se klíč použije vždycky a absence klíče bude mít za následek chybu.
 * Pro dešifrování:
+  * Pokud je klíč zadán a jeho identifikátor odpovídá požadovanému identifikátoru klíče, je tento klíč použit k dešifrování. V opačném případě se překladač vyzkouší. Pokud není k dispozici překladač pro tento pokus, je vyvolána chyba.
   * Překladač klíčů je vyvolán, pokud je zadán pro získání klíče. Pokud je překladač zadán, ale nemá mapování pro identifikátor klíče, je vyvolána chyba.
-  * Pokud není překladač zadán, ale je zadán klíč, použije se klíč, pokud jeho identifikátor odpovídá požadovanému identifikátoru klíče. Pokud identifikátor neodpovídá, je vyvolána chyba.
 
-Příklady kódů v tomto článku ukazují, jak nastavit zásady šifrování a pracovat s šifrovanými daty, ale nemonstrují práci s Azure Key Vault. [Ukázky šifrování](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) na GitHubu ukazují podrobnější scénář pro objekty blob, fronty a tabulky společně s Key Vault integrací.
-
-### <a name="requireencryption-mode"></a>RequireEncryption režim
+### <a name="requireencryption-mode-v11-only"></a>Režim RequireEncryption (jenom V11)
 Uživatelé mohou volitelně povolit režim operace, kde všechna nahraná a stažená soubory musí být zašifrovaná. V tomto režimu se pokusy o nahrání dat bez zásad šifrování nebo stažení dat, která nejsou ve službě zašifrovaná, selžou na klientovi. Toto chování řídí vlastnost **RequireEncryption** objektu možností žádosti. Pokud aplikace zašifruje všechny objekty uložené v Azure Storage, můžete nastavit vlastnost **RequireEncryption** na výchozí možnosti požadavku pro objekt klienta služby. Například nastavte **CloudBlobClient. DefaultRequestOptions. RequireEncryption** na **true** , aby se vyžadovalo šifrování pro všechny operace objektů BLOB provedené prostřednictvím tohoto objektu klienta.
 
 
 ### <a name="blob-service-encryption"></a>Blob service šifrování
+
+
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+Vytvořte objekt **ClientSideEncryptionOptions** a nastavte ho při vytváření klienta pomocí **SpecializedBlobClientOptions**. Nemůžete nastavit možnosti šifrování na základě rozhraní API. Všechny ostatní budou zpracovávány v interní knihovně klienta.
+
+```csharp
+// Your key and key resolver instances, either through KeyVault SDK or an external implementation
+IKeyEncryptionKey key;
+IKeyEncryptionKeyResolver keyResolver;
+
+// Create the encryption options to be used for upload and download.
+ClientSideEncryptionOptions encryptionOptions = new ClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Set the encryption options on the client options
+BlobClientOptions options = new SpecializedBlobClientOptions() { ClientSideEncryption = encryptionOptions };
+
+// Get your blob client with client-side encryption enabled.
+// Client-side encryption options are passed from service to container clients, and container to blob clients.
+// Attempting to construct a BlockBlobClient, PageBlobClient, or AppendBlobClient from a BlobContainerClient
+// with client-side encryption options present will throw, as this functionality is only supported with BlobClient.
+BlobClient blob = new BlobServiceClient(connectionString, options).GetBlobContainerClient("myContainer").GetBlobClient("myBlob");
+
+// Upload the encrypted contents to the blob.
+blob.Upload(stream);
+
+// Download and decrypt the encrypted contents from the blob.
+MemoryStream outputStream = new MemoryStream();
+blob.DownloadTo(outputStream);
+```
+
+**BlobServiceClient** není nutné použít možnosti šifrování. Lze je také předat do konstruktorů **BlobContainerClient** / **BlobClient** , které přijímají objekty **BlobClientOptions** .
+
+Pokud požadovaný objekt **BlobClient** již existuje, ale bez možností šifrování na straně klienta, existuje metoda rozšíření pro vytvoření kopie tohoto objektu s daným **ClientSideEncryptionOptions**. Tato metoda rozšíření zabraňuje režii při vytváření nového objektu **BlobClient** od začátku.
+
+```csharp
+using Azure.Storage.Blobs.Specialized;
+
+// Your existing BlobClient instance and encryption options
+BlobClient plaintextBlob;
+ClientSideEncryptionOptions encryptionOptions;
+
+// Get a copy of plaintextBlob that uses client-side encryption
+BlobClient clientSideEncryptionBlob = plaintextBlob.WithClientSideEncryptionOptions(encryptionOptions);
+```
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 Vytvořte objekt **BlobEncryptionPolicy** a nastavte ho v možnostech žádosti (na rozhraní API nebo na úrovni klienta pomocí **DefaultRequestOptions**). Všechny ostatní budou zpracovávány v interní knihovně klienta.
 
 ```csharp
 // Create the IKey used for encryption.
- RsaKey key = new RsaKey("private:key1" /* key identifier */);
+RsaKey key = new RsaKey("private:key1" /* key identifier */);
 
- // Create the encryption policy to be used for upload and download.
- BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
+// Create the encryption policy to be used for upload and download.
+BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
 
- // Set the encryption policy on the request options.
- BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
+// Set the encryption policy on the request options.
+BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
 
- // Upload the encrypted contents to the blob.
- blob.UploadFromStream(stream, size, null, options, null);
+// Upload the encrypted contents to the blob.
+blob.UploadFromStream(stream, size, null, options, null);
 
- // Download and decrypt the encrypted contents from the blob.
- MemoryStream outputStream = new MemoryStream();
- blob.DownloadToStream(outputStream, null, options, null);
+// Download and decrypt the encrypted contents from the blob.
+MemoryStream outputStream = new MemoryStream();
+blob.DownloadToStream(outputStream, null, options, null);
 ```
 
+---
+
 ### <a name="queue-service-encryption"></a>Služba front šifrování
+# <a name="net-v12"></a>[.NET V12](#tab/dotnet)
+Vytvořte objekt **ClientSideEncryptionOptions** a nastavte ho při vytváření klienta pomocí **SpecializedQueueClientOptions**. Nemůžete nastavit možnosti šifrování na základě rozhraní API. Všechny ostatní budou zpracovávány v interní knihovně klienta.
+
+```csharp
+// Your key and key resolver instances, either through KeyVault SDK or an external implementation
+IKeyEncryptionKey key;
+IKeyEncryptionKeyResolver keyResolver;
+
+// Create the encryption options to be used for upload and download.
+ClientSideEncryptionOptions encryptionOptions = new ClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Set the encryption options on the client options
+QueueClientOptions options = new SpecializedQueueClientOptions() { ClientSideEncryption = encryptionOptions };
+
+// Get your queue client with client-side encryption enabled.
+// Client-side encryption options are passed from service to queue clients.
+QueueClient queue = new QueueServiceClient(connectionString, options).GetQueueClient("myQueue");
+
+// Send an encrypted queue message.
+queue.SendMessage("Hello, World!");
+
+// Download queue messages, decrypting ones that are detected to be encrypted
+QueueMessage[] queue.ReceiveMessages(); 
+```
+
+**QueueServiceClient** není nutné použít možnosti šifrování. Lze je také předat do konstruktorů **QueueClient** , které přijímají objekty **QueueClientOptions** .
+
+Pokud požadovaný objekt **QueueClient** již existuje, ale bez možností šifrování na straně klienta, existuje metoda rozšíření pro vytvoření kopie tohoto objektu s daným **ClientSideEncryptionOptions**. Tato metoda rozšíření zabraňuje režii při vytváření nového objektu **QueueClient** od začátku.
+
+```csharp
+using Azure.Storage.Queues.Specialized;
+
+// Your existing QueueClient instance and encryption options
+QueueClient plaintextQueue;
+ClientSideEncryptionOptions encryptionOptions;
+
+// Get a copy of plaintextQueue that uses client-side encryption
+QueueClient clientSideEncryptionQueue = plaintextQueue.WithClientSideEncryptionOptions(encryptionOptions);
+```
+
+Někteří uživatelé můžou mít fronty, ve kterých se dají úspěšně dešifrovat všechny přijaté zprávy a klíč nebo překladač musí vyvolat. Poslední řádek výše uvedeného příkladu se v tomto případě vyvolá a žádná z přijatých zpráv nebude přístupná. V těchto scénářích lze **QueueClientSideEncryptionOptions** dílčí třídy použít k poskytování možností šifrování klientům. Zpřístupňuje událost **DecryptionFailed** , která se aktivuje pokaždé, když selže dešifrování zprávy fronty, a to za předpokladu, že alespoň jedno vyvolání bylo přidáno k události. Jednotlivé neúspěšné zprávy mohou být zpracovány tímto způsobem a budou vyfiltrovány ze finálního **QueueMessage []** vráceného metodou **ReceiveMessages**.
+
+```csharp
+// Create your encryption options using the sub-class.
+QueueClientSideEncryptionOptions encryptionOptions = new QueueClientSideEncryptionOptions(ClientSideEncryptionVersion.V1_0)
+{
+   KeyEncryptionKey = key,
+   KeyResolver = keyResolver,
+   // string the storage client will use when calling IKeyEncryptionKey.WrapKey()
+   KeyWrapAlgorithm = "some algorithm name"
+};
+
+// Add a handler to the DecryptionFailed event.
+encryptionOptions.DecryptionFailed += (source, args) => {
+   QueueMessage failedMessage = (QueueMessage)source;
+   Exception exceptionThrown = args.Exception;
+   // do something
+};
+
+// Use these options with your client objects.
+QueueClient queue = new QueueClient(connectionString, queueName, new SpecializedQueueClientOptions()
+{
+   ClientSideEncryption = encryptionOptions
+});
+
+// Retrieve 5 messages from the queue.
+// Assume 5 messages come back and one throws during decryption.
+QueueMessage[] messages = queue.ReceiveMessages(maxMessages: 5).Value;
+Debug.Assert(messages.Length == 4)
+```
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 Vytvořte objekt **QueueEncryptionPolicy** a nastavte ho v možnostech žádosti (na rozhraní API nebo na úrovni klienta pomocí **DefaultRequestOptions**). Všechny ostatní budou zpracovávány v interní knihovně klienta.
 
 ```csharp
@@ -194,7 +341,9 @@ Vytvořte objekt **QueueEncryptionPolicy** a nastavte ho v možnostech žádosti
  CloudQueueMessage retrMessage = queue.GetMessage(null, options, null);
 ```
 
-### <a name="table-service-encryption"></a>Table service šifrování
+---
+
+### <a name="table-service-encryption-v11-only"></a>Šifrování Table service (jenom V11)
 Kromě vytváření zásad šifrování a jejich nastavení v možnostech žádosti musíte buď zadat **EncryptionResolver** v **TableRequestOptions**, nebo pro entitu nastavit atribut [EncryptProperty].
 
 #### <a name="using-the-resolver"></a>Použití překladače

@@ -3,12 +3,12 @@ title: Izolace sítě v Azure DevTest Labs
 description: Přečtěte si o izolaci sítě v Azure DevTest Labs.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: fbd2725cd3677e03cadbe0ae1f060b141f5d212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88875770"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149162"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>Izolace sítě v DevTest Labs
 
@@ -57,7 +57,7 @@ Přečtěte si také následující články:
  
    > [!div class="mx-imgBorder"]
    > ![Test společnosti Contoso](./media/network-isolation/contoso-test.png)
-1. V účtu úložiště přejděte na brány firewall a virtuální sítě a ujistěte se, že je zaškrtnuté políčko pro přístup k tomuto účtu úložiště použít důvěryhodné služby Microsoftu. Vzhledem k tomu, že [DevTest Labs je důvěryhodná služba Microsoftu](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services), tato možnost umožní testovacímu prostředí fungovat normálně v izolovaném režimu sítě. 
+1. V účtu úložiště přejděte na brány firewall a virtuální sítě a ujistěte se, že je zaškrtnuté políčko pro přístup k tomuto účtu úložiště použít důvěryhodné služby Microsoftu. Vzhledem k tomu, že [DevTest Labs je důvěryhodná služba Microsoftu](../storage/common/storage-network-security.md#trusted-microsoft-services), tato možnost umožní testovacímu prostředí fungovat normálně v izolovaném režimu sítě. 
 
    > [!div class="mx-imgBorder"]
    > ![Brány firewall pro laboratoř contoso](./media/network-isolation/contoso-lab-firewalls-vnets.png)
@@ -74,7 +74,7 @@ V takovém případě úložiště Azure umožní příchozí připojení z při
 
 Můžete také zvolit automatizaci těchto kroků a nakonfigurovat toto nastavení pro více cvičení. 
 
-[Další informace o správě výchozích pravidel přístupu k síti pro Azure Storage pomocí PowerShellu a rozhraní příkazového řádku](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=/azure/virtual-network/toc.json#powershell)
+[Další informace o správě výchozích pravidel přístupu k síti pro Azure Storage pomocí PowerShellu a rozhraní příkazového řádku](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Při používání testovacího prostředí v izolovaném režimu sítě si pamatujte na to, co je potřeba.
 
@@ -82,7 +82,7 @@ Můžete také zvolit automatizaci těchto kroků a nakonfigurovat toto nastaven
 
 V rámci síťového izolovaného prostředí pro akce, jako je nahrání VHD do účtu úložiště testovacího prostředí pro vytváření vlastních imagí z, bude vlastník testovacího prostředí muset explicitně povolit přístup k účtu úložiště z povoleného koncového bodu. Můžete to udělat tak, že vytvoříte virtuální počítač a účet úložiště testovacího prostředí pro zabezpečený přístup z tohoto virtuálního počítače. 
 
-[Další informace o přístupu k účtu úložiště soukromě z virtuálního počítače](../private-link/create-private-endpoint-storage-portal.md)
+[Další informace o přístupu k účtu úložiště soukromě z virtuálního počítače](../private-link/tutorial-private-endpoint-storage-portal.md)
 
 ### <a name="exporting-usage-data-from-the-lab"></a>Exportují se data o využití z testovacího prostředí. 
 

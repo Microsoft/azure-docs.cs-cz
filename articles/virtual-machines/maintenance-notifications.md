@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: d1705456c316a29aede537e67dee74b6231ff22b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14c7c3deb60c50fe71cf52959e342a3dcf2afc94
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460573"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151561"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Zpracování oznámení o plánované údržbě
 
@@ -25,7 +25,7 @@ Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, v�
 
 Plánovaná údržba, která vyžaduje restart, je naplánována na vlny. Každý vlna má jiný obor (oblasti).
 
-- Wave začíná oznámením pro zákazníky. Ve výchozím nastavení se oznámení odesílají správcům služby a spolusprávcům. Pomocí [upozornění protokolu aktivit](../service-health/alerts-activity-log-service-notifications-portal.md)můžete přidat další příjemce a možnosti zasílání zpráv, jako jsou E-mail, SMS a Webhooky.  
+- Wave začíná oznámením pro zákazníky. Ve výchozím nastavení se oznámení posílá správcům předplatného a spolusprávcům. Pomocí [upozornění protokolu aktivit](../service-health/alerts-activity-log-service-notifications-portal.md)můžete přidat další příjemce a možnosti zasílání zpráv, jako jsou E-mail, SMS a Webhooky.  
 - Jakmile se oznámení dostane, zpřístupní se *samoobslužné okno* . Během tohoto okna se můžete dotazovat na to, které z vašich virtuálních počítačů jsou ovlivněné, a zahájit údržbu na základě vlastních potřeb plánování. Samoobslužné okno je obvykle přibližně 35 dní.
 - Po samoobslužném okně začne *plánované časové období údržby* . V určitém okamžiku v tomto okně Azure plánuje a na virtuálním počítači aplikuje požadovanou údržbu. 
 
@@ -65,7 +65,7 @@ Služba samoobslužná údržba se doporučuje používat v následujících př
 - Mezi dvěma aktualizačními doménami se vyžaduje více než 30 minut času obnovení virtuálního počítače. Chcete-li řídit dobu mezi aktualizačními doménami, je nutné aktivovat údržbu v rámci virtuálních počítačů po jedné aktualizační doméně (UD).
 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 
 **Otázka: Proč potřebujete restartovat virtuální počítače nyní?**
@@ -80,7 +80,7 @@ Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtu�
 
 **Otázka: Návody dostávat oznámení o plánované údržbě?**
 
-**A:** Spustí se naplánovaná údržba Wave tím, že nastaví plán na jednu nebo více oblastí Azure. Brzy se pošle e-mailové oznámení správcům služby (jeden e-mail na předplatné). Další kanály a příjemci pro toto oznámení můžou být nakonfigurované pomocí upozornění protokolu aktivit. V případě, že nasadíte virtuální počítač do oblasti, ve které je plánovaná údržba již naplánována, nebudete dostávat oznámení, ale budete muset kontrolovat stav údržby virtuálního počítače.
+**A:** Spustí se naplánovaná údržba Wave tím, že nastaví plán na jednu nebo více oblastí Azure. Brzy se pošle e-mailové oznámení pro správce předplatného a spolusprávce (jeden e-mail na předplatné). Další kanály a příjemci pro toto oznámení můžou být nakonfigurované pomocí upozornění protokolu aktivit. V případě, že nasadíte virtuální počítač do oblasti, ve které je plánovaná údržba již naplánována, nebudete dostávat oznámení, ale budete muset kontrolovat stav údržby virtuálního počítače.
 
 **Otázka: v portálu, PowerShellu nebo rozhraní příkazového řádku se nezobrazují žádné informace o plánované údržbě. Co je?**
 

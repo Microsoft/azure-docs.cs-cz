@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
 ms.custom: devx-track-java
-ms.openlocfilehash: ab13c9494ee04d112cec93af9efaab43705297bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fac992ba0d6be945fcb3184d27394ff58d98c44c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319516"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151020"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití jazyka Java k vytvoření chatovací místnosti s Azure Functions a službou Signal
 
@@ -69,7 +69,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. Přejmenujte soubor *local.settings.sample.json* na *local.settings.json*.
 
-1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
+1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Soubor uložte.
 
 1. Hlavní soubor obsahující funkce jsou v části *Src/chat/Java/src/Main/Java/com/Function/Functions. Java*:
 
@@ -102,6 +102,6 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 V tomto rychlém startu jste vytvořili a spustili aplikaci bez serveru v reálném čase s využitím Maven. V dalším kroku se dozvíte, jak vytvořit Azure Functions Java od začátku.
 
 > [!div class="nextstepaction"]
-> [Vytvoření první funkce pomocí Java a Maven](../azure-functions/functions-create-first-java-maven.md)
+> [Vytvoření první funkce pomocí Java a Maven](../azure-functions/functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java%252cprogramming-language-java)
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsjava)

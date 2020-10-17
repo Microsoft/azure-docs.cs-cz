@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 9f1b8435f7d51ad586484ddb7e9bbabf9d067926
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996757"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139362"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
@@ -27,38 +27,19 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
 ### <a name="azure-machine-learning-sdk-for-python-v1160"></a>Sada SDK Azure Machine Learning pro Python v 1.16.0
 + **Opravy chyb a vylepšení**
   + **Azure-CLI-ml**
-    + AKSWebservice a AKSEndpoints teď podporují omezení počtu prostředků procesoru a paměti na úrovni pod. Tato volitelná omezení lze definovat prostřednictvím 1. Nastavení `cpu_cores_limit` a `memory_gb_limit` parametry v `AKSEndpoint.deploy_configuration()` metodě a `AKSWebservice.deploy_configuration()` 2. Nastavení `--cpu-cores-limit` a `--memory-gb-limit` příznaky v příslušných voláních rozhraní příkazového řádku 3. Nastavení `cpuLimit` a `memoryInGBLimit` v `containerResourceRequirements` souborech konfigurace nasazení. JSON/. yml Další informace o Kubernetesch prostředcích a omezeních najdete na adrese https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
-  + **azureml-contrib-interpret**
-    + Oprava popisů balíčku způsobující chybu při nahrávání do PyPI pro AzureML-interpretaci, AzureML-vysvětlující-model, AzureML-contrib-interpretace a AzureML-tensorboard
-  + **AzureML-contrib-k8s**
-    + Přidání podpory pro připojení COMPUTE ArcKubernetes
-  + **AzureML-contrib-Mir**
-    + AKSWebservice a AKSEndpoints teď podporují omezení počtu prostředků procesoru a paměti na úrovni pod. Tato volitelná omezení lze definovat prostřednictvím 1. Nastavení `cpu_cores_limit` a `memory_gb_limit` parametry v `AKSEndpoint.deploy_configuration()` metodě a `AKSWebservice.deploy_configuration()` 2. Nastavení `--cpu-cores-limit` a `--memory-gb-limit` příznaky v příslušných voláních rozhraní příkazového řádku 3. Nastavení `cpuLimit` a `memoryInGBLimit` v `containerResourceRequirements` souborech konfigurace nasazení. JSON/. yml Další informace o Kubernetesch prostředcích a omezeních najdete na adrese https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
-  + **AzureML-contrib-Server**
-    + AKSWebservice a AKSEndpoints teď podporují omezení počtu prostředků procesoru a paměti na úrovni pod. Tato volitelná omezení lze definovat prostřednictvím 1. Nastavení `cpu_cores_limit` a `memory_gb_limit` parametry v `AKSEndpoint.deploy_configuration()` metodě a `AKSWebservice.deploy_configuration()` 2. Nastavení `--cpu-cores-limit` a `--memory-gb-limit` příznaky v příslušných voláních rozhraní příkazového řádku 3. Nastavení `cpuLimit` a `memoryInGBLimit` v `containerResourceRequirements` souborech konfigurace nasazení. JSON/. yml Další informace o Kubernetesch prostředcích a omezeních najdete na adrese https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + AKSWebservice a AKSEndpoints teď podporují omezení počtu prostředků procesoru a paměti na úrovni pod. Tato volitelná omezení se dají použít nastavením `--cpu-cores-limit` a `--memory-gb-limit` příznaky v příslušných VOLÁNÍch CLI.
   + **azureml-core**
     + Připnout hlavní verze přímých závislostí AzureML-Core
-    + AKSWebservice a AKSEndpoints teď podporují omezení počtu prostředků procesoru a paměti na úrovni pod. Další informace o Kubernetesch prostředcích a omezeních najdete na adrese https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
+    + AKSWebservice a AKSEndpoints teď podporují omezení počtu prostředků procesoru a paměti na úrovni pod. Další informace o [Kubernetesch prostředcích a omezeních](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits)
     + Aktualizace run.log_table, aby bylo možné zaprotokolovat jednotlivé řádky.
-    + Přidala se statická metoda `Run.get(workspace, run_id)` , která načte běh jenom pomocí metody instance přidané v pracovním prostoru `Workspace.get_run(run_id)` pro načtení běhu v pracovním prostoru.
+    + Přidání statické metody `Run.get(workspace, run_id)` pro načtení běhu pouze pomocí pracovního prostoru 
+    + Přidání metody instance `Workspace.get_run(run_id)` pro načtení běhu v pracovním prostoru
     + Představujeme vlastnost příkazu v konfiguraci spuštění, která umožní uživatelům odeslat příkaz místo argumentů Script &.
-  + **AzureML-dataprep – nativní**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` Oficiální podpora Pythonu 3,8.
-  + **azureml-explain-model**
-    + Oprava popisů balíčku způsobující chybu při nahrávání do PyPI pro AzureML-interpretaci, AzureML-vysvětlující-model, AzureML-contrib-interpretace a AzureML-tensorboard
   + **azureml-interpret**
     + pevné Vysvětlení chování příznaků is_raw klienta v AzureML-interpretace
-    + Oprava popisů balíčku způsobující chybu při nahrávání do PyPI pro AzureML-interpretaci, AzureML-vysvětlující-model, AzureML-contrib-interpretace a AzureML-tensorboard
-  + **azureml-pipeline-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` Oficiální podpora Pythonu 3,8.
   + **AzureML-SDK**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` Oficiální podpora Pythonu 3,8.
-  + **azureml-tensorboard**
-    + Oprava popisů balíčku způsobující chybu při nahrávání do PyPI pro AzureML-interpretaci, AzureML-vysvětlující-model, AzureML-contrib-interpretace a AzureML-tensorboard
-  + **AzureML-vlak**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` Oficiální podpora Pythonu 3,8.
+    + `azureml-sdk` Oficiální podpora Pythonu 3,8.
   + **azureml-train-core**
-    + `azureml-train, azureml-train-core, azureml-sdk, azureml-pipeline-core, azureml-dataprep-native` Oficiální podpora Pythonu 3,8.
     + Přidání prostředí s TensorFlow 2,3
     + Představujeme vlastnost příkazu v konfiguraci spuštění, která umožní uživatelům odeslat příkaz místo argumentů Script &.
   + **azureml-widgets**
@@ -279,7 +260,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Neošetřené výjimky v AutoML nyní ukazují na stránku HTTP známé problémy, kde najdete další informace o chybách.
     + Přidání get_best_child () do AutoMLRun pro načtení nejlepšího podřízeného běhu pro AutoML běh bez stažení přidruženého modelu.
     + Přidaný objekt ModelProxy, který umožňuje spuštění předpovědi nebo předpovědi ve vzdáleném školicím prostředí bez místního stažení modelu.
-  + **AzureML-Pipeline – kroky**
+  + **azureml-pipeline-steps**
     + Přidání `enable_default_model_output` a `enable_default_metrics_output` příznaky do `AutoMLStep` . Tyto příznaky lze použít k povolení nebo zakázání výchozích výstupů.
 
 
@@ -427,7 +408,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Aktualizovali jsme `PipelineDataset` dokumentaci, aby byla jasná, že se jedná o interní třídu.
     + ParallelRunStep aktualizace pro přijetí více hodnot pro jeden argument, například: "--group_column_names", "Sloupec1", "col2", "Col3"
     + Odebral se passthru_automl_config požadavek na použití mezilehlých dat pomocí AutoMLStep v kanálech.
-  + **AzureML-Pipeline – kroky**
+  + **azureml-pipeline-steps**
     + Vylepšení dokumentů balíčku AzureML-Pipeline Step.
     + Odebral se passthru_automl_config požadavek na použití mezilehlých dat pomocí AutoMLStep v kanálech.
   + **azureml-telemetry**
@@ -720,7 +701,7 @@ Teď můžete vytvářet, upravovat a sdílet notebooky a soubory ve strojovém 
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
     
-| Webový nástroj  |     Description  |
+| Webový nástroj  |     Popis  |
 |---|---|
 | Notebooky Azure ML Studio   |     První vytváření obsahu pro soubory poznámkových bloků a podpora všech operací, které jsou dostupné v sadě SDK Azure ML Python SDK. | 
 
@@ -905,7 +886,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + Poznámkový blok kanálu dávky vyhodnocování teď používá ParallelRunStep.
     + Opravili jsme chybu, při které by se PythonScriptStep výsledky, i když se změní seznam argumentů.
     + Přidání možnosti pro nastavení typu Columns při volání metody parse_ * na `PipelineOutputFileDataset`
-  + **AzureML-Pipeline – kroky**
+  + **azureml-pipeline-steps**
     + Přesunuto `AutoMLStep` do `azureml-pipeline-steps` balíčku. Zastaralé v `AutoMLStep` rámci `azureml-train-automl-runtime` .
     + Přidání příkladu dokumentace pro datovou sadu jako PythonScriptStep Input
   + **azureml-tensorboard**
@@ -1015,7 +996,7 @@ Z studia získáte přístup k následujícím webovým nástrojům pro vytvář
     + Aktualizace AzureML-interpretace závisí na interpretu 0.5.0 komunity
   + **azureml-pipeline-core**
     + Opravili jsme chybu, při které by se PythonScriptStep výsledky, i když se změní seznam argumentů.
-  + **AzureML-Pipeline – kroky**
+  + **azureml-pipeline-steps**
     + Přidání příkladu dokumentace pro datovou sadu jako PythonScriptStep Input
   + **azureml-contrib-pipeline-steps**
     + Parametry předané v ParallelRunConfig lze přepsat předáním parametrů kanálu nyní. Jsou podporovány nové parametry kanálu aml_mini_batch_size, aml_error_threshold, aml_logging_level aml_run_invocation_timeout (aml_node_count a aml_process_count_per_node jsou již součástí starší verze).
@@ -1232,7 +1213,7 @@ Z studia můžete provádět výukové, testovací, nasazování a správu Azure
 
 Z studia získáte přístup k následujícím webovým nástrojům pro vytváření obsahu:
 
-| Webový nástroj | Description | 
+| Webový nástroj | Popis | 
 |-|-|-|
 | Virtuální počítač poznámkového bloku (Preview) | Plně spravovaná cloudová pracovní stanice | 
 | [Automatizované Machine Learning](tutorial-first-experiment-automated-ml.md) (Preview) | Neexistují žádné zkušenosti s kódem pro automatizaci vývoje modelů strojového učení. | 
@@ -1531,7 +1512,7 @@ Karta experiment v [novém portálu pracovního prostoru](https://ml.azure.com) 
     + Přidala se vlastnost vysvětlujícího nástroje do MimicWrapper, která umožňuje získat základní MimicExplainer.
   + **azureml-pipeline-core**
     + Přidání poznámkového bloku pro popis modulu, ModuleVersion a ModuleStep
-  + **AzureML-Pipeline – kroky**
+  + **azureml-pipeline-steps**
     + Přidání RScriptStep pro podporu skriptu jazyka R spouštěného prostřednictvím kanálu AML.
     + Pevné parametry metadat při analýze v AzureBatchStep, která způsobila chybovou zprávu "přiřazení pro parametr SubscriptionId není zadáno."
   + **AzureML-vlak – automl**
@@ -1539,7 +1520,7 @@ Karta experiment v [novém portálu pracovního prostoru](https://ml.azure.com) 
     + Přidání zprávy o zastaralosti pro explain_model () a retrieve_model_explanations ()
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Přidal se [Poznámkový blok](https://aka.ms/pl-modulestep) , který popisuje [modul](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module%28class%29), [ModuleVersion a [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep).
-  + **[AzureML-Pipeline – kroky](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
+  + **[azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + Přidání [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) pro podporu skriptu jazyka R spouštěného prostřednictvím kanálu AML.
     + Pevné parametry metadat pro analýzu v [AzureBatchStep, které způsobily chybovou zprávu "přiřazení pro parametr SubscriptionId není zadáno".
   + **[AzureML-vlak – automl](/python/api/azureml-train-automl-runtime/)**
@@ -1804,7 +1785,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Přidání příznaku model_task pro vysvětlení, aby uživatel mohl přepsat výchozí automatickou logiku odvození pro typ modelu.
   + **azureml-mlflow**
     + Opravená chyba v mlflow.azureml.build_image, kde jsou vnořené adresáře ignorovány.
-  + **azureml-pipeline-steps**
+  + **AzureML-Pipeline – kroky**
     + Přidání možnosti spouštět úlohy JAR v existujícím clusteru Azure Databricks.
     + Přidání podpory instance_pool_id a parametrů cluster_log_dbfs_path pro krok DatabricksStep
     + Přidání podpory pro parametry kanálu v kroku DatabricksStep

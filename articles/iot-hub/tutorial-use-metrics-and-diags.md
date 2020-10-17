@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019126"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149196"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
@@ -38,9 +38,9 @@ V tomto kurzu provedete následující úlohy:
 > * Spusťte aplikaci, dokud výstrahy nezačnou aktivovat. 
 > * Podívejte se na výsledky metrik a zkontrolujte protokoly diagnostiky. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 - Nainstalujte [Visual Studio](https://www.visualstudio.com/). 
 
@@ -190,7 +190,7 @@ Teď můžete nastavit některé metriky, které se budou sledovat při posílá
 
 Přejít na centrum na portálu. Klikněte na **skupiny prostředků**, vyberte *ContosoResources*a pak vyberte IoT Hub *ContosoTestHub*. 
 
-IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](/azure/azure-monitor/platform/data-collection#metrics) . je nutné použít [klasické výstrahy](/azure/azure-monitor/platform/alerts-classic.overview).
+IoT Hub ještě neproběhla migrace na [metriky v Azure monitor](../azure-monitor/platform/data-platform.md#metrics) . je nutné použít [klasické výstrahy](../azure-monitor/platform/alerts-classic.overview.md).
 
 1. V části **monitorování**klikněte na **výstrahy** . zobrazí se hlavní obrazovka s výstrahou. 
 
@@ -369,7 +369,7 @@ Klikněte na **Stáhnout** a Stáhněte si ho a otevřete ho. Zobrazí se protok
 
 Pokud chcete odebrat všechny prostředky, které jste vytvořili v tomto kurzu, odstraňte skupinu prostředků. Tato akce odstraní všechny prostředky, které skupina obsahuje. V takovém případě odebrání služby IoT Hub, účtu úložiště a samotné skupiny prostředků. Pokud jste připnuli metriky na řídicí panel, budete je muset odebrat ručně kliknutím na tři tečky v pravém horním rohu každého a výběrem možnosti **Odebrat**.
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete).
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

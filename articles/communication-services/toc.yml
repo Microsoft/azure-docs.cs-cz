@@ -80,6 +80,10 @@
       href: concepts/event-handling.md
     - name: Oznámení
       href: concepts/notifications.md
+    - name: Protokolování a diagnostika
+      href: concepts/logging-and-diagnostics.md
+    - name: Metriky
+      href: concepts/metrics.md
 - name: Ukázky
   items:
     - name: Ukázka pro skupinové hovory

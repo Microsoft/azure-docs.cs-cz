@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e90086be18e344e3061b9e683780f4427b3c15a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192532"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148990"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Vyprázdnit Azure CDN koncový bod
 ## <a name="overview"></a>Přehled
@@ -34,7 +34,7 @@ Osvědčeným postupem je zajistit, aby vaši uživatelé měli vždycky příst
 
 Tento kurz vás provede vymazáním assetů ze všech hraničních uzlů koncového bodu.
 
-## <a name="walkthrough"></a>Názorný postup
+## <a name="walkthrough"></a>Návod
 1. Na webu [Azure Portal](https://portal.azure.com)přejděte do profilu CDN obsahujícího koncový bod, který chcete vyprázdnit.
 2. V okně profilu CDN klikněte na tlačítko vyčistit.
    
@@ -69,7 +69,7 @@ Tento kurz vás provede vymazáním assetů ze všech hraničních uzlů koncov�
     ![Tlačítko vyčistit](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Žádosti o vyprázdnění trvat přibližně 10 minut, než se **Azure CDN od Microsoftu**, přibližně 2 minuty s **Azure CDN z Verizon** (Standard a Premium) a přibližně 10 sekund **Azure CDN z Akamai**.  Azure CDN v daném okamžiku na úrovni profilu dosáhl limitu 50 souběžných žádostí o vyprázdnění. 
+> Žádosti o vyprázdnění trvat přibližně 10 minut, než se **Azure CDN od Microsoftu**, přibližně 2 minuty s **Azure CDN z Verizon** (Standard a Premium) a přibližně 10 sekund **Azure CDN z Akamai**.  Azure CDN v daném okamžiku na úrovni profilu dosáhl limitu 100 souběžných žádostí o vyprázdnění. 
 > 
 > 
 

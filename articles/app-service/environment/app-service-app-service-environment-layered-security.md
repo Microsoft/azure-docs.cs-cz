@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e9a776aad966bb74e22f6d7fb8d66530e4b4db92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab26ad08947a4a9929ae0d41b669160b3d159224
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255192"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150231"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementace vrstvené architektury zabezpečení s App Service prostředími
 Vzhledem k tomu, že prostředí App Service poskytují izolované běhové prostředí nasazené ve virtuální síti, můžou vývojáři vytvořit vrstvenou architekturu zabezpečení, která poskytuje různé úrovně síťového přístupu pro každou fyzickou aplikační vrstvu.
@@ -115,7 +115,7 @@ Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecur
 U NSG, který se používá pro podsíť, se můžou do prostředí "apiase" volat jenom tři App Serviceová prostředí pro odesílání a App Service Environment obsahující back-end rozhraní API.
 
 ## <a name="additional-links-and-information"></a>Další odkazy a informace
-Informace o [skupinách zabezpečení sítě](../../virtual-network/security-overview.md).
+Informace o [skupinách zabezpečení sítě](../../virtual-network/network-security-groups-overview.md).
 
 Principy [odchozích IP adres][NetworkArchitecture] a App Service prostředí.
 

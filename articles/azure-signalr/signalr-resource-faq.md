@@ -7,18 +7,18 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5d6b46e288007bc0bbac53a97b1bdd5e727b8ac8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91405118"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150960"
 ---
 # <a name="azure-signalr-service-faq"></a>Nejčastější dotazy ke službě Azure Signal
 
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Je služba signálu Azure připravená na použití v produkčním prostředí?
 
-Ano, všeobecně dostupná je podpora pro nástroj [ASP.NET Core signaler](https://dotnet.microsoft.com/apps/aspnet/signalr) i [signalizace ASP.NET](https://docs.microsoft.com/aspnet/signalr/overview/getting-started/introduction-to-signalr) .
+Ano, všeobecně dostupná je podpora pro nástroj [ASP.NET Core signaler](https://dotnet.microsoft.com/apps/aspnet/signalr) i [signalizace ASP.NET](/aspnet/signalr/overview/getting-started/introduction-to-signalr) .
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Pokud je k dispozici více aplikačních serverů, jsou klientské zprávy odesílány na všechny servery nebo pouze na jednu z nich?
 
@@ -48,7 +48,7 @@ Ne.
 
 Služba signalizace Azure poskytuje všechny tři přenosy, které ASP.NET Core signál podporuje ve výchozím nastavení. Nedá se nakonfigurovat. Služba signalizace Azure zpracuje připojení a přenosy pro všechna připojení klientů.
 
-Můžete nakonfigurovat přenosy na straně klienta, jak je popsáno v [ASP.NET Core konfigurace signalizace](https://docs.microsoft.com/aspnet/core/signalr/configuration#configure-allowed-transports-1).
+Můžete nakonfigurovat přenosy na straně klienta, jak je popsáno v [ASP.NET Core konfigurace signalizace](/aspnet/core/signalr/configuration#configure-allowed-transports-1).
 
 ## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-shown-in-the-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>Jaký je význam metrik, jako je počet zpráv nebo počet připojení zobrazený v Azure Portal? Jaký druh agregačního typu mám zvolit?
 

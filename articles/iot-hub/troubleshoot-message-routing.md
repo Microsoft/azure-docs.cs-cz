@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: asrastog
-ms.openlocfilehash: 871a4c7d99fc44cf9868f19e41560e6e7a2e22f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84be56ae372f8a902b12c06f9ce93c1f7210dc5b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84793321"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150582"
 ---
 # <a name="troubleshooting-message-routing"></a>Řešení potíží s směrováním zpráv
 
@@ -42,7 +42,7 @@ Všechny [metriky IoT Hub](iot-hub-devguide-endpoints.md) související se směr
 Sledujte [protokoly diagnostiky](iot-hub-monitor-resource-health.md#routes) **tras** , abyste získali další informace o [operacích](#operation-names) směrování a koncových bodů, nebo Identifikujte chyby a relevantní [kód chyby](#common-error-codes) , abyste mohli problém lépe pochopit. Například název operace **RouteEvaluationError** v protokolu indikuje, že trasu nebylo možné vyhodnotit kvůli problému s formátem zprávy. Pomocí tipů pro konkrétní [názvy operací](#operation-names) můžete problém zmírnit. V případě, že událost je protokolována jako chyba, protokol také poskytne další informace o tom, proč selhalo vyhodnocení. Například pokud je název operace **EndpointUnhealthy**, [chybové kódy](#common-error-codes) 403004 značí, že koncový bod nemá dostatek místa.
 
 #### <a name="the-health-of-the-endpoint"></a>Stav koncového bodu
-Pro získání [stavu](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů použijte REST API [získat stav koncového bodu](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) . Rozhraní API pro *zjištění stavu koncového bodu* poskytuje také informace o poslední úspěšné odeslání zprávy do koncového bodu, [poslední známou chybu](#last-known-errors-for-iot-hub-routing-endpoints), poslední známou chybu a čas posledního pokusu o odeslání pro tento koncový bod. Využijte možné zmírnění poskytované pro konkrétní [poslední známou chybu](#last-known-errors-for-iot-hub-routing-endpoints).
+Pro získání [stavu](iot-hub-devguide-endpoints.md#custom-endpoints) koncových bodů použijte REST API [získat stav koncového bodu](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) . Rozhraní API pro *zjištění stavu koncového bodu* poskytuje také informace o poslední úspěšné odeslání zprávy do koncového bodu, [poslední známou chybu](#last-known-errors-for-iot-hub-routing-endpoints), poslední známou chybu a čas posledního pokusu o odeslání pro tento koncový bod. Využijte možné zmírnění poskytované pro konkrétní [poslední známou chybu](#last-known-errors-for-iot-hub-routing-endpoints).
 
 ### <a name="i-suddenly-stopped-getting-messages-at-the-built-in-endpoint"></a>Náhle jsem přestal získávat zprávy na předdefinovaném koncovém bodu
 
@@ -52,9 +52,9 @@ Pokud chcete tento problém vyřešit, analyzujte následující.
 Po vytvoření trasy se data přestanou předávat do integrovaného koncového bodu, pokud se do tohoto koncového bodu nevytvoří trasa. Chcete-li zajistit, aby zprávy pokračovaly v toku s integrovaným koncovým bodem, pokud je přidána nová trasa, nakonfigurujte trasu na koncový bod *události* . 
 
 #### <a name="was-the-fallback-route-disabled"></a>Je záložní trasa zakázaná?
-Záložní trasa pošle všechny zprávy, které nesplňují podmínky pro dotazování na všechny existující trasy, na [integrované Event Hubs](iot-hub-devguide-messages-read-builtin.md) (zprávy/události), které jsou kompatibilní s [Event Hubs](https://docs.microsoft.com/azure/event-hubs/). Pokud je zapnuté směrování zpráv, můžete povolit funkci záložních tras. Pokud neexistují žádné trasy k integrovanému koncovému bodu a je povolena záložní trasa, budou do integrovaného koncového bodu odesílány pouze zprávy, které neodpovídají podmínkám dotazu na trasách. I když se odstraní všechny existující trasy, musí být povolená záložní trasa pro příjem všech dat na integrovaném koncovém bodu.
+Záložní trasa pošle všechny zprávy, které nesplňují podmínky pro dotazování na všechny existující trasy, na [integrované Event Hubs](iot-hub-devguide-messages-read-builtin.md) (zprávy/události), které jsou kompatibilní s [Event Hubs](../event-hubs/index.yml). Pokud je zapnuté směrování zpráv, můžete povolit funkci záložních tras. Pokud neexistují žádné trasy k integrovanému koncovému bodu a je povolena záložní trasa, budou do integrovaného koncového bodu odesílány pouze zprávy, které neodpovídají podmínkám dotazu na trasách. I když se odstraní všechny existující trasy, musí být povolená záložní trasa pro příjem všech dat na integrovaném koncovém bodu.
 
-Záložní cestu můžete povolit nebo zakázat v okně Azure Portal->směrování zpráv. Můžete také použít Azure Resource Manager pro [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) k použití vlastního koncového bodu pro záložní směrování.
+Záložní cestu můžete povolit nebo zakázat v okně Azure Portal->směrování zpráv. Můžete také použít Azure Resource Manager pro [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) k použití vlastního koncového bodu pro záložní směrování.
 
 ## <a name="last-known-errors-for-iot-hub-routing-endpoints"></a>Poslední známé chyby pro koncové body směrování IoT Hub
 

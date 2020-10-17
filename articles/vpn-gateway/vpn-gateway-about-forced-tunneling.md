@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/08/2020
+ms.date: 10/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 94a5459ade634f6a1de029808aa6bad4d16b9a5d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: af4359efb48898c12bb8ee7ffb882448b5012d19
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874625"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151349"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Classic
 
@@ -23,12 +23,12 @@ Vynucené tunelování umožňuje přesměrování nebo „vynucení“ směrov�
 Tento článek vás provede konfigurací vynuceného tunelování pro virtuální sítě vytvořené pomocí modelu nasazení Classic. Vynucené tunelování se dá nakonfigurovat pomocí PowerShellu, ne přes portál. Pokud chcete pro model nasazení Správce prostředků nakonfigurovat vynucené tunelování, vyberte Správce prostředků článek z následujícího rozevíracího seznamu:
 
 > [!div class="op_single_selector"]
-> * [PowerShell – Classic](vpn-gateway-about-forced-tunneling.md)
-> * [PowerShell – Resource Manager](vpn-gateway-forced-tunneling-rm.md)
-> 
+> * [Klasický](vpn-gateway-about-forced-tunneling.md)
+> * [Resource Manager](vpn-gateway-forced-tunneling-rm.md)
 > 
 
 ## <a name="requirements-and-considerations"></a>Požadavky a předpoklady
+
 Vynucené tunelování v Azure se konfiguruje prostřednictvím uživatelsky definovaných tras (UDR) virtuální sítě. Přesměrování provozu do místní lokality se vyjádří jako výchozí trasa k bráně Azure VPN. Následující část uvádí aktuální omezení směrovací tabulky a tras pro Azure Virtual Network:
 
 * Každá podsíť virtuální sítě má vestavěnou systémovou směrovací tabulku. Tabulka směrování systému má následující tři skupiny tras:
@@ -39,32 +39,28 @@ Vynucené tunelování v Azure se konfiguruje prostřednictvím uživatelsky def
 * S vydáním uživatelsky definovaných tras můžete vytvořit směrovací tabulku pro přidání výchozí trasy a potom přidružit směrovací tabulku k vašim virtuálním podsítím, aby bylo možné v těchto podsítích povolit vynucené tunelové propojení.
 * Musíte nastavit výchozí lokalitu mezi místními lokalitami, které jsou připojené k virtuální síti.
 * Vynucené tunelování musí být přidruženo k virtuální síti s bránou VPN s dynamickým směrováním (ne se statickou bránou).
-* Vynucené tunelování ExpressRoute není nakonfigurované prostřednictvím tohoto mechanismu, ale místo toho je povolené inzerováním výchozí trasy prostřednictvím relací partnerských vztahů protokolu BGP ExpressRoute. Další informace najdete v [dokumentaci k ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) .
+* Vynucené tunelování ExpressRoute není nakonfigurované prostřednictvím tohoto mechanismu, ale místo toho je povolené inzerováním výchozí trasy prostřednictvím relací partnerských vztahů protokolu BGP ExpressRoute. Další informace najdete v tématu [co je ExpressRoute?](../expressroute/expressroute-introduction.md).
 
 ## <a name="configuration-overview"></a>Přehled konfigurace
+
 V následujícím příkladu není podsíť front-endu vynucená tunelem. Úlohy v podsíti front-endu mohou nadále přijímat a reagovat na žádosti zákazníků přímo z Internetu. Podsítě střední úrovně a back-end jsou vynucené tunelování. Všechna odchozí připojení z těchto dvou podsítí na Internet se vynutí nebo přesměrují zpátky na místní lokalitu prostřednictvím jednoho z tunelových propojení VPN S2S.
 
 Díky tomu můžete omezit a prozkoumat přístup k Internetu z virtuálních počítačů nebo cloudových služeb v Azure a zároveň pokračovat v povolení vaší vícevrstvé architektury služeb. Vynucené tunelování můžete také použít pro celé virtuální sítě, pokud ve svých virtuálních sítích neexistují žádné úlohy s přístupem k Internetu.
 
 ![Vynucené tunelování](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Předpoklady
+
 Před zahájením konfigurace ověřte, zda máte následující:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 * Nakonfigurovaná virtuální síť. 
 * [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="to-sign-in"></a>Pro přihlášení
-
-1. Otevřete konzolu PowerShellu se zvýšenými právy. Připojte se k účtu pomocí následujícího příkladu:
-
-   ```powershell
-   Add-AzureAccount
-   ```
-
 ## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelování
-Následující postup vám pomůže určit vynucené tunelování pro virtuální síť. Konfigurační kroky odpovídají konfiguračnímu souboru sítě virtuální sítě.
+
+Následující postup vám pomůže určit vynucené tunelování pro virtuální síť. Konfigurační kroky odpovídají konfiguračnímu souboru sítě virtuální sítě.  V tomto příkladu má virtuální síť s více vrstvami tři podsítě: front-end, Midtier a podsítě back-end se čtyřmi připojeními mezi různými místy: DefaultSiteHQ a tři větve.
+
 
 ```xml
 <VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
@@ -104,9 +100,13 @@ Následující postup vám pomůže určit vynucené tunelování pro virtuáln�
     </VirtualNetworkSite>
 ```
 
-V tomto příkladu má virtuální síť s více vrstvami tři podsítě: front-end, Midtier a podsítě back-end se čtyřmi připojeními mezi různými místy: DefaultSiteHQ a tři větve. 
+Následující kroky nastaví jako výchozí připojení k vynucenému tunelování "DefaultSiteHQ" a nakonfigurují podsítě Midtier a back-endu na používání vynuceného tunelování.
 
-Tento postup nastaví jako výchozí připojení k vynucenému tunelování "DefaultSiteHQ" a nakonfiguruje podsítě Midtier a back-endu tak, aby používaly vynucené tunelování.
+1. Otevřete konzolu PowerShellu se zvýšenými právy. Připojte se k účtu pomocí následujícího příkladu:
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 1. Vytvořte směrovací tabulku. Pomocí následující rutiny vytvořte tabulku směrování.
 
@@ -114,7 +114,7 @@ Tento postup nastaví jako výchozí připojení k vynucenému tunelování "Def
    New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
    ```
 
-2. Přidejte výchozí trasu do směrovací tabulky. 
+1. Přidejte výchozí trasu do směrovací tabulky. 
 
    Následující příklad přidá výchozí trasu do směrovací tabulky vytvořené v kroku 1. Všimněte si, že jedinou podporovanou trasou je cílová předpona "0.0.0.0/0" na přesměrování "VPNGateway".
 
@@ -122,7 +122,7 @@ Tento postup nastaví jako výchozí připojení k vynucenému tunelování "Def
    Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
    ```
 
-3. Přidružte směrovací tabulku k podsítím. 
+1. Přidružte směrovací tabulku k podsítím. 
 
    Po vytvoření směrovací tabulky a přidání trasy použijte následující příklad k přidání nebo přidružení směrovací tabulky k podsíti virtuální sítě. V příkladu se přidá směrovací tabulka "MyRouteTable" do Midtier a back-endu podsítí virtuální sítě VNet s více vrstvami.
 
@@ -131,7 +131,7 @@ Tento postup nastaví jako výchozí připojení k vynucenému tunelování "Def
    Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
    ```
 
-4. Přiřaďte výchozí web pro vynucené tunelování. 
+1. Přiřaďte výchozí web pro vynucené tunelování. 
 
    V předchozím kroku ukázkové skripty rutiny vytvořily směrovací tabulku a přidružil tabulku směrování do dvou z podsítí virtuální sítě. Zbývajícím krokem je výběr místní lokality mezi připojeními k více lokalitám virtuální sítě jako výchozí lokalitou nebo tunelem.
 
@@ -141,6 +141,7 @@ Tento postup nastaví jako výchozí připojení k vynucenému tunelování "Def
    ```
 
 ## <a name="additional-powershell-cmdlets"></a>Další rutiny PowerShellu
+
 ### <a name="to-delete-a-route-table"></a>Odstranění směrovací tabulky
 
 ```powershell

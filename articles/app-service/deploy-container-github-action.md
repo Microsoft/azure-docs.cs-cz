@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3a5e319115c124551c05f2ac5aa393ba19596d0d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: d6f66993b0fb7f97c551f4fbcb305111cfb2097e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893352"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150283"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -28,12 +28,12 @@ Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 |**Sestavení** | 1. Vytvořte prostředí. <br /> 2. Sestavte image kontejneru. |
 |**Nasazení** | 1. Nasaďte image kontejneru. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
 - Pracovní kontejner registru a aplikace Azure App Service pro kontejnery. Tento příklad používá Azure Container Registry. 
-    - [Naučte se vytvořit kontejnerovou aplikaci Node.js pomocí Docker, nahrajte image kontejneru do registru a pak nasaďte image do Azure App Service](https://docs.microsoft.com/azure/developer/javascript/tutorial-vscode-docker-node-01)
+    - [Naučte se vytvořit kontejnerovou aplikaci Node.js pomocí Docker, nahrajte image kontejneru do registru a pak nasaďte image do Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
 
 ## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
 

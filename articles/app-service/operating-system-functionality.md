@@ -5,15 +5,15 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080194"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150164"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému na Azure App Service
-Tento článek popisuje běžné funkce operačního systému pro základní hodnoty, které jsou k dispozici pro všechny aplikace pro Windows běžící na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje přístup k souboru, k síti a k registru a diagnostické protokoly a události. 
+Tento článek popisuje běžné funkce operačního systému pro základní hodnoty, které jsou k dispozici pro všechny aplikace pro Windows běžící na [Azure App Service](./overview.md). Tato funkce zahrnuje přístup k souboru, k síti a k registru a diagnostické protokoly a události. 
 
 > [!NOTE] 
 > [Aplikace pro Linux](overview.md#app-service-on-linux) v App Service spustit ve svých vlastních kontejnerech. Není povolený žádný přístup k hostitelskému operačnímu systému, máte ke kontejneru přístup rootem. Stejně tak pro [aplikace spuštěné v kontejnerech Windows](quickstart-custom-container.md?pivots=container-windows)máte k kontejneru přístup pro správu, ale k hostitelskému operačnímu systému nemáte přístup. 
@@ -126,4 +126,3 @@ App Service neposkytuje přístup ke vzdálené ploše pro instance virtuálníc
 ## <a name="more-information"></a>Další informace
 
 [Azure App Service izolovaný prostor (sandbox)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) – nejaktuálnější informace o spouštěcím prostředí App Service. Tuto stránku uchovává přímo vývojový tým App Service.
-

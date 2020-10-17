@@ -8,19 +8,19 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818032"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149105"
 ---
 # <a name="managed-hsm-role-management"></a>Správa rolí pro Managed HSM
 
 > [!NOTE]
 > Key Vault podporuje dva typy prostředků: trezory a spravované HSM. Tento článek se týká **spravovaného modulu HSM**. Pokud se chcete dozvědět, jak spravovat trezor, přečtěte si téma [správa Key Vault pomocí rozhraní příkazového řádku Azure CLI](../general/manage-with-cli2.md).
 
-Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM?](overview.md). Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM?](overview.md). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Tento článek ukazuje, jak spravovat role pro spravovanou rovinu dat HSM. Další informace o spravovaném modelu řízení přístupu HSM najdete v tématu [spravované řízení přístupu HSM](access-control.md).
 
@@ -28,7 +28,7 @@ Aby objekt zabezpečení (například uživatel, instanční objekt, skupina neb
 
 Seznam všech spravovaných rolí modulu HSM a operací, které umožňují, najdete v tématu [vestavěné předdefinované role HSM](built-in-roles.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat příkazy rozhraní příkazového řádku Azure CLI v tomto článku, musíte mít následující položky:
 
@@ -70,7 +70,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 Slouží `az keyvault role assignment list` k vypsání přiřazení rolí.
 
-Všechna přiřazení rolí v oboru/(výchozí, pokud není zadaný žádný obor) pro všechny uživatele (výchozí při zadání--autonabyvatele)
+Všechna přiřazení rolí v oboru/(výchozí, pokud není zadaný žádný obor) pro všechny uživatele (výchozí, pokud se nezadá žádná--nabyvatel)
 
 ```azurecli-interactive
 az keyvault role assignment list --hsm-name ContosoMHSM

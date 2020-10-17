@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 31a3bfbc174ca9c4c46005a26cde65db1ff74b65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49496dbf1355ceee7619d93bcb0676892b7a212d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906914"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150576"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Základní hodnoty zabezpečení Azure pro Azure IoT Hub
 
@@ -33,9 +33,9 @@ Doporučuje se omezit připojení k prostředkům Azure (včetně Azure IoT Hub)
 Nechejte otevřené hardwarové porty ve vašich zařízeních na minimum, aby nedocházelo k nežádoucímu přístupu. Kromě toho mechanismy sestavení pro prevenci nebo detekci fyzické manipulace se zařízením.
 
 - [Podpora virtuálních sítí IoT](virtual-network-support.md)
-- [osvědčené postupy pro velké objemy sítí](https://docs.microsoft.com/azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc#networking)
+- [osvědčené postupy pro velké objemy sítí](../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc#networking)
 - [Přehled privátních odkazů Azure](../private-link/private-link-overview.md)
-- [Skupina zabezpečení sítě Azure](../virtual-network/security-overview.md)
+- [Skupina zabezpečení sítě Azure](../virtual-network/network-security-groups-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -75,7 +75,7 @@ Azure DDoS Protection Basic už je povolená a k dispozici není žádná dalš�
 
 - [Spravovat Azure DDoS Protection Basic](../virtual-network/ddos-protection-overview.md)
 
-- [Ochrana před hrozbami v Azure Security Center](../security-center/threat-protection.md)
+- [Ochrana před hrozbami v Azure Security Center](../security-center/azure-defender.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -138,7 +138,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Doprovodné**materiály: pomocí značek pro síťové prostředky přidružené k nasazení služby Azure IoT Hub můžete logicky uspořádat do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -148,7 +148,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků souvisejících s Azure IoT Hub. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -274,9 +274,9 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 **Pokyny**: řízení přístupu na základě role v Azure (Azure RBAC) umožňuje spravovat přístup ke službě Azure IoT Hub prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI nebo Azure PowerShell, nebo Azure Portal. 
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -296,7 +296,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 Můžete také povolit přístup za běhu k účtům pro správu pomocí Azure AD Privileged Identity Management a Azure Resource Manager.
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -340,7 +340,7 @@ Můžete také povolit přístup za běhu k účtům pro správu pomocí Azure A
 
 **Doprovodné**materiály: použití sestav a monitorování zabezpečení Azure Active Directory k detekci, kdy dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 - [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
@@ -376,9 +376,9 @@ Pro přístup k zařízením a službám používá IoT Hub k ověřování zař
 
 Pokud v prostředí dojde k podezřelé nebo nebezpečné aktivitě, použijte Azure AD Privileged Identity Management (PIM) pro generování protokolů a výstrah.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 - [Jak používat kontroly identity a přístupu v Azure AD](../active-directory/governance/access-reviews-overview.md)
-- [Nasazení Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Nasazení Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -392,7 +392,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 Protokoly diagnostiky uživatele Azure Monitor pro monitorování neautorizovaných pokusů o připojení v kategorii připojení.
 
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Konfigurace diagnostických protokolů pro IoT Hub](iot-hub-monitor-resource-health.md)
 
@@ -404,7 +404,7 @@ Protokoly diagnostiky uživatele Azure Monitor pro monitorování neautorizovan�
 
 **Pokyny**: pomocí Azure AD identity Protectionch funkcí můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
   
-- [ Jak zobrazit rizikové přihlašování Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [ Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
   
 - [ Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
   
@@ -430,7 +430,7 @@ Protokoly diagnostiky uživatele Azure Monitor pro monitorování neautorizovan�
 
 **Doprovodné**materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
  
-- [ Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -440,9 +440,9 @@ Protokoly diagnostiky uživatele Azure Monitor pro monitorování neautorizovan�
 
 **Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím Azure RBAC.
   
-- [ Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
-- [ Vytvoření skupin pro správu](/azure/governance/management-groups/create)
-- [ Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
+- [ Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
+- [ Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -593,7 +593,7 @@ Azure IoT Hub poskytuje šifrování neaktivních a přenášených dat, která 
 
 **Doprovodné**materiály: použití značek u prostředků Azure (ne všechny prostředky podporují značky, ale nejvíc) k logickému uspořádání do taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -603,11 +603,11 @@ Azure IoT Hub poskytuje šifrování neaktivních a přenášených dat, která 
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry tam, kde je to vhodné, k uspořádání a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
   
-- [ Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [ Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
   
-- [ Vytvoření skupin pro správu](/azure/governance/management-groups/create)
+- [ Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
   
-- [ Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -725,7 +725,7 @@ Azure Resource Manager má možnost Exportovat šablonu do JavaScript Object Not
 
 Můžete také použít doporučení z Azure Security Center jako standardní hodnoty konfigurace pro prostředky Azure.
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
@@ -769,8 +769,8 @@ Můžete také použít doporučení z Azure Security Center jako standardní ho
 
 **Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy pro Azure IoT Hub nebo související prostředky, použijte Azure Repos k bezpečnému ukládání a správě kódu.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -830,8 +830,8 @@ Spravované identity používejte společně s Azure Key Vault k zjednodušení 
 - [IoT Hub tokeny zabezpečení](../iot-fundamentals/iot-security-deployment.md#iot-hub-security-tokens)
 - [Jak používat spravované identity pro IoT Hub](virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
 
-- [Vytvoření trezoru klíčů](/azure/key-vault/quick-create-portal)
-- [Jak zajistit Key Vault ověřování pomocí spravované identity](/azure/key-vault/managed-identity)
+- [Vytvoření trezoru klíčů](../key-vault/secrets/quick-create-portal.md)
+- [Jak zajistit Key Vault ověřování pomocí spravované identity](../key-vault/general/assign-access-policy-portal.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -940,7 +940,7 @@ Pravidelně provádějte obnovování dat obsahu v zálohování. Ujistěte se, 
  
  
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
-- [Obnovitelné odstranění pro Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Obnovitelné odstranění pro Azure Blob Storage](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -973,7 +973,7 @@ Pravidelně provádějte obnovování dat obsahu v zálohování. Ujistěte se, 
   
 - [ Výstrahy zabezpečení v Azure Security Center](../security-center/security-center-alerts-overview.md)
   
-- [ Použití značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Použití značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1039,5 +1039,5 @@ Pravidelně provádějte obnovování dat obsahu v zálohování. Ujistěte se, 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

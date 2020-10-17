@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: de1e0e077eacfe4779834c46da7de4d8c4a2c75f
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126651"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151181"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -128,6 +128,26 @@ Jakmile se rozhodnete, že chcete převzít služeb při selhání do repliky,
     
 Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
+## <a name="global-transaction-identifier-gtid"></a>Identifikátor globální transakce (GTID)
+
+Identifikátor globální transakce (GTID) je jedinečný identifikátor vytvořený s každou potvrzenou transakcí na zdrojovém serveru a ve výchozím nastavení je ve Azure Database for MySQL. GTID se podporuje ve verzích 5,7 a 8,0 a jenom na serverech, které podporují úložiště až na 16 TB. Další informace o GTID a o tom, jak se používá v replikaci, najdete v dokumentaci k [replikaci MySQL s GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) .
+
+MySQL podporuje dva typy transakcí: transakce GTID (identifikované s GTID) a anonymní transakce (nemáte přidělený GTID).
+
+Pro konfiguraci GTID jsou k dispozici následující parametry serveru: 
+
+|**Parametr serveru**|**Popis**|**Výchozí hodnota**|**Hodnoty**|
+|--|--|--|--|
+|`gtid_mode`|Určuje, zda se k identifikaci transakcí používají GTIDs. Změny mezi režimy lze provést pouze v jednom kroku ve vzestupném pořadí (např. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`: Transakce nové a replikační replikace musí být anonymní. <br> `OFF_PERMISSIVE`: Nové transakce jsou anonymní. Replikované transakce můžou být buď anonymní, nebo GTID transakce. <br> `ON_PERMISSIVE`: Nové transakce jsou GTID transakcemi. Replikované transakce můžou být buď anonymní, nebo GTID transakce. <br> `ON`: Nové i replikované transakce musí být GTID transakcemi.|
+|`enforce_gtid_consistency`|Vyhodnotí konzistenci GTID tím, že umožňuje provádění pouze těch příkazů, které mohou být zaprotokolovány prostřednictvím bezpečnostních opatření. Aby bylo možné `ON` Povolit replikaci GTID, musí být tato hodnota nastavená na hodnotu. |`OFF`|`OFF`: Všechny transakce můžou porušovat GTID konzistenci.  <br> `ON`: Žádná transakce nemůže narušovat GTID konzistenci. <br> `WARN`: Všechny transakce můžou porušovat konzistenci GTID, ale vygeneruje se upozornění. | 
+
+> [!NOTE]
+> Jakmile je GTID povolené, nejde ho znovu zapnout. Pokud potřebujete GTID vypnout, obraťte se prosím na podporu. 
+
+Pokud chcete povolit GTID a nakonfigurovat chování konzistence, aktualizujte `gtid_mode` `enforce_gtid_consistency` parametry serveru a pomocí [Azure Portal](howto-server-parameters.md), [Azure CLI](howto-configure-server-parameters-using-cli.md)nebo [PowerShellu](howto-configure-server-parameters-using-powershell.md).
+
+Pokud je na zdrojovém serveru povolená možnost GTID ( `gtid_mode` = on), nově vytvořené repliky budou taky mít povolený GTID a budou používat replikaci GTID. Pokud chcete zachovat konzistenci replikace, nemůžete aktualizovat `gtid_mode` na zdrojovém nebo replikačním serveru.
+
 ## <a name="considerations-and-limitations"></a>Důležité informace a omezení
 
 ### <a name="pricing-tiers"></a>Cenové úrovně
@@ -178,9 +198,18 @@ Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serv
 
 Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru v hlavní větvi a znovu vytvořte repliky.
 
+### <a name="gtid"></a>GTID
+
+GTID se podporuje na:
+- MySQL verze 5,7 a 8,0 
+- Servery, které podporují úložiště až na 16 TB. Úplný seznam oblastí, které podporují 16 TB úložiště, najdete v článku o [cenové úrovni](concepts-pricing-tiers.md#storage) . 
+
+GTID je ve výchozím nastavení VYPNUTá. Jakmile je GTID povolené, nejde ho znovu zapnout. Pokud potřebujete GTID vypnout, obraťte se prosím na podporu. 
+
+Pokud je na zdrojovém serveru povolená možnost GTID, budou mít nově vytvořené repliky taky povolený GTID a budou používat replikaci GTID. Pokud chcete zachovat konzistenci replikace, nemůžete aktualizovat `gtid_mode` na zdrojovém nebo replikačním serveru.
+
 ### <a name="other"></a>Další
 
-- Identifikátory globálních transakcí (GTID) se nepodporují.
 - Vytvoření repliky repliky není podporováno.
 - Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .
 - Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.

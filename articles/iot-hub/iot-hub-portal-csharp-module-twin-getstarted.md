@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: a10c8b21da1e4dc08a186ccb6ba6528b7a655943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d16d7a6dbf903ae790015c12e3d34e4a2a553d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022067"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139343"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
 
@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte:
 > Informace o sadách SDK Azure IoT, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Visual Studio
 
@@ -190,4 +190,4 @@ Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další s
 
 * [Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí zálohování .NET a zařízení .NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
 
-* [Začínáme se službou IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Začínáme se službou IoT Edge](../iot-edge/quickstart-linux.md)

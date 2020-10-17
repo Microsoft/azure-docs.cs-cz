@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 949ad4176cc7bf65e07e40323fc72a0a144b53b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327217"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151588"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -31,7 +31,7 @@ LUIS umožňuje tři typy prostředků Azure a jeden jiný prostředek než Azur
 |--|--|--|--|
 |Vytváření prostředku|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Pokud máte v úmyslu vytvářet aplikace LUIS programtically nebo na portálu LUIS, [vytvořte prostředek pro vytváření Luis](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Aby bylo možné propojit prostředky Azure authroring s vaší aplikací, je třeba nejprve [migrovat účet Luis](luis-migration-authoring.md#what-is-migration) . Oprávnění k vytváření prostředků můžete řídit přiřazením osob k [roli Přispěvatel](#contributions-from-other-authors). <br><br> Pro prostředek pro vytváření LUIS je k dispozici jedna vrstva avialable:<br> * **Bezplatný F0 vytváření prostředků** , který vám poskytne nemilion transakcí vytváření a 1000 bezplatné požadavky koncového bodu předpovědi testování měsíčně. |`LUIS.Authoring`|`Cognitive Services`|
 |Prostředek předpovědi| Po publikování aplikace LUIS použijte k vyřízení požadavků na koncový bod předpovědi pro dotazování prostředku nebo klíče předpovědi. Vytvořte LUIS předpověď prostředku předtím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytuje vytváření nebo spouštěcí prostředek. <br><br> Pro prostředek předpovědi jsou avialble dvě úrovně:<br> * **F0 předpověď Free** , který vám dává 10 000 bezplatné požadavky na koncový bod předpovědi měsíčně<br> * **Prostředek předpovědi úrovně Standard S0** , což je placená úroveň. [Další informace o cenách najdete v podrobnostech.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
-|Zdroj počáteční/zkušební verze|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Tato funkce se vytvoří pomocí výchozí, pokud při prvním přihlášení k LUIS TP zvolíte možnost prostředek Starter. Spouštěcí klíč bude ale nakonec zastaralý a všichni LUIS uživatelé budou muset [migrovat své účty](luis-migration-authoring.md#what-is-migration) a propojit své Luis aplikace s prostředky pro vytváření obsahu. Tento prostředek vám neuděluje oprávnění k řízení přístupu na základě role, jako je prostředek pro vytváření. <br><br> Stejně jako u zdrojového prostředku vám počáteční zdroj poskytuje nemilion transakcí vytváření a 1000 požadavků na koncový bod předpovědi bezplatného testování.|-|Nejedná se o prostředek Azure.|
+|Zdroj počáteční/zkušební verze|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Tato funkce se vytvoří pomocí výchozí, pokud při prvním přihlášení k LUIS TP zvolíte možnost prostředek Starter. Spouštěcí klíč bude ale nakonec zastaralý a všichni LUIS uživatelé budou muset [migrovat své účty](luis-migration-authoring.md#what-is-migration) a propojit své Luis aplikace s prostředky pro vytváření obsahu. Tento prostředek vám neuděluje oprávnění k řízení přístupu na základě role Azure, jako je prostředek pro vytváření obsahu. <br><br> Stejně jako u zdrojového prostředku vám počáteční zdroj poskytuje nemilion transakcí vytváření a 1000 požadavků na koncový bod předpovědi bezplatného testování.|-|Nejedná se o prostředek Azure.|
 |[Klíč prostředku více služeb pro službu rozpoznávání](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Požadavky koncového bodu předpovědi dotazu sdílené s LUIS a dalšími podporovanými Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
 
 

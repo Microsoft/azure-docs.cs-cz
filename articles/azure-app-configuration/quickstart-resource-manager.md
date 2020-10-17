@@ -4,24 +4,24 @@ titleSuffix: Azure App Configuration
 description: Naučte se vytvořit úložiště konfigurace aplikace Azure pomocí šablony Azure Resource Manager (šablona ARM).
 author: ZhijunZhao
 ms.author: zhijzhao
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824177"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149006"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Rychlý Start: vytvoření úložiště konfigurace aplikace Azure pomocí šablony ARM
 
 V tomto rychlém startu se dozvíte, jak:
 
-- Nasazení úložiště konfigurace aplikace pomocí šablony ARM
-- Vytvoření hodnot klíčů v App Configuration Storu pomocí šablony ARM
-- Čtení hodnot klíč-hodnota v úložišti konfigurace aplikace ze šablony ARM
+- Nasaďte úložiště konfigurace aplikace pomocí šablony Azure Resource Manager (šablona ARM).
+- Vytvořte klíčové hodnoty v App Configuration Storu pomocí šablony ARM.
+- Načte klíčové hodnoty v úložišti konfigurace aplikace ze šablony ARM.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,14 +35,14 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/). Vytvoří nové úložiště konfigurace aplikace se dvěma hodnotami, které jsou uvnitř. Pak použije `reference` funkci k výstupu hodnot dvou prostředků klíč-hodnota. Čtení hodnoty klíče tímto způsobem umožňuje použití na jiných místech v šabloně.
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/). Vytvoří nové úložiště konfigurace aplikace se dvěma hodnotami, které jsou uvnitř. Pak použije `reference` funkci k výstupu hodnot dvou prostředků klíč-hodnota. Čtení hodnoty klíče tímto způsobem umožňuje použití na jiných místech v šabloně.
 
 Rychlý Start používá `copy` element k vytvoření více instancí prostředku klíčové hodnoty. Další informace o elementu najdete v `copy` tématu [iterace prostředků v šablonách ARM](../azure-resource-manager/templates/copy-resources.md).
 
 > [!IMPORTANT]
 > Tato šablona vyžaduje verzi poskytovatele prostředků konfigurace aplikace `2020-07-01-preview` nebo novější. Tato verze používá `reference` funkci ke čtení hodnot klíč-hodnota. `listKeyValue`Funkce, která byla použita ke čtení hodnot klíče v předchozí verzi, není k dispozici počínaje verzí `2020-07-01-preview` .
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
 
 V šabloně jsou definované dva prostředky Azure:
 
@@ -83,10 +83,10 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Do vyhledávacího pole Azure Portal zadejte **Konfigurace aplikace**. V seznamu vyberte **Konfigurace aplikace** .
 1. Vyberte nově vytvořený prostředek konfigurace aplikace.
-1. V části **operace**klikněte na **Průzkumník konfigurace.**
+1. V části **operace**klikněte na **Průzkumník konfigurace**.
 1. Ověřte, zda existují dvě hodnoty klíč-hodnota.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

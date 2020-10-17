@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327614"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150906"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Kurz: Ověřování služby Azure SignalR s využitím služby Azure Functions
 
@@ -58,7 +58,7 @@ Místně sestavíte a otestujete aplikaci Azure Functions. Tato aplikace bude m�
 
 1. Zadejte následující informace.
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     |---|---|
     | Název prostředku | Jedinečný název instance služby SignalR |
     | Skupina prostředků | Vytvořte novou skupinu prostředků s jedinečným názvem. |
@@ -134,7 +134,7 @@ Při místním spouštění a ladění modulu runtime služby Azure Functions se
 
      ![Získání klíče služby SignalR](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
@@ -254,7 +254,7 @@ Webová aplikace k odesílání zpráv chatu vyžaduje také rozhraní HTTP API.
     * Trasa se změní na `messages` a trigger HTTP se omezí na metodu HTTP **POST**.
     * Přidá výstupní vazbu služby signalizace, která odešle zprávu vrácenou funkcí všem klientům připojeným k centru služby signalizace s názvem `chat` .
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 1. Otevřete soubor **SendMessage/index.js** a prohlédněte si tělo funkce. Následujícím způsobem upravte obsah souboru.
 
@@ -281,7 +281,7 @@ Webová aplikace k odesílání zpráv chatu vyžaduje také rozhraní HTTP API.
 
     Tato funkce může přečíst identitu odesilatele a přijímat v textu zprávy hodnotu *recipient*, která umožňuje soukromě odeslat zprávu jedinému uživateli. Tyto funkce použijete v pozdější části kurzu.
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
 
@@ -295,7 +295,7 @@ Uživatelské rozhraní chatovací aplikace je jednoduchá jednostránková apli
 
 1. Zkopírujte a vložte do něj obsah souboru **[index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/2720a9a565e925db09ef972505e1c5a7a3765be4/docs/demo/chat-with-auth/index.html)**.
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 1. Stisknutím **F5** místně spusťte aplikaci funkcí a připojte k ní ladicí program.
 
@@ -327,7 +327,7 @@ Aplikace Function App běžící v Azure vyžaduje účet Azure Storage. Také b
 
 1. Zadejte následující informace.
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     |---|---|
     | Předplatné | Vyberte předplatné, které obsahuje instanci služby signalizace. |
     | Skupina prostředků | Vyberte stejnou skupinu prostředků. |
@@ -356,13 +356,13 @@ Aplikace Function App běžící v Azure vyžaduje účet Azure Storage. Také b
 
 ### <a name="configure-function-app-for-authentication"></a>Konfigurace ověřování v aplikaci funkcí
 
-Chatovací aplikace zatím funguje anonymně. V Azure k ověření uživatele použijete [ověřování pomocí služby App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization). ID nebo uživatelské jméno ověřeného uživatele je možné předat vazbě *SignalRConnectionInfo*, která vygeneruje informace o připojení ověřeném jako uživatel.
+Chatovací aplikace zatím funguje anonymně. V Azure k ověření uživatele použijete [ověřování pomocí služby App Service](../app-service/overview-authentication-authorization.md). ID nebo uživatelské jméno ověřeného uživatele je možné předat vazbě *SignalRConnectionInfo*, která vygeneruje informace o připojení ověřeném jako uživatel.
 
 Při odesílání zprávy může aplikace určit, jestli se má zpráva odeslat všem připojeným klientům, nebo pouze klientům ověřeným pro daného uživatele.
 
 1. V VS Code otevřete **Negotiate/function.jsna**.
 
-1. Do vlastnosti *userId* vazby *SignalRConnectionInfo* vložte [výraz vazby](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings): `{headers.x-ms-client-principal-name}`. Tím se hodnota vlastnosti nastaví na uživatelské jméno ověřeného uživatele. Atribut by teď měl vypadat takto:
+1. Do vlastnosti *userId* vazby *SignalRConnectionInfo* vložte [výraz vazby](../azure-functions/functions-triggers-bindings.md): `{headers.x-ms-client-principal-name}`. Tím se hodnota vlastnosti nastaví na uživatelské jméno ověřeného uživatele. Atribut by teď měl vypadat takto:
 
     ```json
     {
@@ -374,7 +374,7 @@ Při odesílání zprávy může aplikace určit, jestli se má zpráva odeslat 
     }
     ```
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 
 ### <a name="deploy-function-app-to-azure"></a>Nasazení aplikace Function App do Azure
@@ -431,11 +431,11 @@ Ověřování pomocí služby App Service podporuje ověřování přes Azure Ac
 
 1. Dokončete konfiguraci podle pokynů v dokumentaci vybraného zprostředkovatele přihlašování.
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
-    - [účet Microsoft](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
-    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
+    - [Azure Active Directory](../app-service/configure-authentication-provider-aad.md)
+    - [Facebook](../app-service/configure-authentication-provider-facebook.md)
+    - [Twitter](../app-service/configure-authentication-provider-twitter.md)
+    - [účet Microsoft](../app-service/configure-authentication-provider-microsoft.md)
+    - [Google](../app-service/configure-authentication-provider-google.md)
 
 ### <a name="update-the-web-app"></a>Aktualizace webové aplikace
 
@@ -449,7 +449,7 @@ Ověřování pomocí služby App Service podporuje ověřování přes Azure Ac
 
 1. Pro aplikaci je možné nakonfigurovat ověřování přes Azure Active Directory, Facebook, Twitter, účet Microsoft nebo Google. Nastavením hodnoty `authProvider` vyberte zprostředkovatele ověřování, kterého budete používat.
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ### <a name="deploy-the-web-application-to-blob-storage"></a>Nasazení webové aplikace do úložiště objektů blob
 
@@ -461,7 +461,7 @@ K hostování webové aplikace využijeme funkci statického webu ve službě Az
 
 1. Zadejte tyto hodnoty:
 
-    | Name | Hodnota |
+    | Název | Hodnota |
     |---|---|
     | Předplatné | Vyberte své předplatné. |
     | Účet úložiště | Vyberte účet úložiště, který jste vytvořili dříve. |
@@ -517,4 +517,3 @@ V tomto kurzu jste zjistili, jak používat Azure Functions se službou Azure Si
 > [Sestavování aplikací v reálném čase pomocí Azure Functions](signalr-concept-azure-functions.md)
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/asrs/qsauth)
-

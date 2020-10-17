@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d7b94da2f922e7dba8c165dcf9d1e906855f6dfb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294236"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151239"
 ---
 # <a name="azure-signalr-service-authentication"></a>Ověřování pomocí služby Azure SignalR
 
@@ -41,14 +41,14 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * Účet vytvořený na [GitHubu](https://github.com/)
 * [Git](https://git-scm.com/)
 * [Sada .NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [Nakonfigurovaná služba Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* [Nakonfigurovaná služba Azure Cloud Shell](../cloud-shell/quickstart.md)
 * Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) .
 
 ## <a name="create-an-oauth-app"></a>Vytvoření aplikace OAuth
@@ -59,7 +59,7 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 3. Pro tuto novou aplikaci OAuth použijte následující nastavení a potom klikněte na **Zaregistrovat aplikaci**:
 
-    | Název nastavení | Navrhovaná hodnota | Description |
+    | Název nastavení | Navrhovaná hodnota | Popis |
     | ------------ | --------------- | ----------- |
     | Název aplikace | *Azure SignalR Chat* | Uživatel GitHubu by měl být schopný rozpoznat a důvěřovat aplikaci, se kterou ověřuje.   |
     | Adresa URL domovské stránky | `http://localhost:5000/home` | |
@@ -388,7 +388,7 @@ V této části zapnete reálné ověřování přidáním atributu `Authorize` 
 
 ## <a name="deploy-the-app-to-azure"></a>Nasadit aplikaci do Azure
 
-V této části použijete rozhraní příkazového řádku Azure (CLI) z Azure Cloud Shell k vytvoření nové webové aplikace v [Azure App Service](https://docs.microsoft.com/azure/app-service/) k hostování vaší aplikace ASP.NET v Azure. Tato webová aplikace bude nakonfigurovaná tak, aby využívala místní nasazení z Gitu. Tato webová aplikace bude také nakonfigurovaná s využitím vašeho připojovacího řetězce SignalR, tajných kódů aplikace OAuth GitHubu a uživatele nasazení.
+V této části použijete rozhraní příkazového řádku Azure (CLI) z Azure Cloud Shell k vytvoření nové webové aplikace v [Azure App Service](../app-service/index.yml) k hostování vaší aplikace ASP.NET v Azure. Tato webová aplikace bude nakonfigurovaná tak, aby využívala místní nasazení z Gitu. Tato webová aplikace bude také nakonfigurovaná s využitím vašeho připojovacího řetězce SignalR, tajných kódů aplikace OAuth GitHubu a uživatele nasazení.
 
 Kroky v této části používají rozšíření *signalr* pro rozhraní příkazového řádku Azure. Spuštěním následujícího příkazu nainstalujte rozšíření *signalr* pro Azure CLI:
 

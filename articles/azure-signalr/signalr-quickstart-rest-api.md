@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 13e11bb6064888ac36a2d2801fee3db1e9e9fcba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 85cda8458dca4ce24fed9433af1527f49a2393ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89050501"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150971"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
 
@@ -64,7 +64,7 @@ Můžete také zjistit, jak vygenerovat přístupový token k ověření pomocí
 
 ### <a name="build-the-executable-file"></a>Vytvoření spustitelného souboru
 
-Jako příklad použijeme macOS osx.10.13-x64. K dispozici jsou [reference](https://docs.microsoft.com/dotnet/core/rid-catalog) k vytváření na jiných platformách.
+Jako příklad použijeme macOS osx.10.13-x64. K dispozici jsou [reference](/dotnet/core/rid-catalog) k vytváření na jiných platformách.
 
 ```bash
 cd AzureSignalR-samples/samples/Serverless/
@@ -134,8 +134,8 @@ Následující tabulka uvádí všechny podporované verze rozhraní REST API k 
 
 Verze | Stav rozhraní API | Dveře | Specifikace
 --- | --- | --- | ---
-`1.0-preview` | K dispozici | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
-`1.0` | K dispozici | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+`1.0-preview` | K dispozici. | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | K dispozici. | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
 
 Dostupná rozhraní API pro jednotlivé verze najdete v následujícím seznamu.
 

@@ -7,16 +7,16 @@ author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-reference
-ms.openlocfilehash: bcb7a8e040a8e32a8513e5e0e73d6c124e04563a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66b74fd8fe326666d3c34b59acba383fd4205e17
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816271"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151340"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-iot-hub"></a>Azure Policy předdefinované definice pro Azure IoT Hub
 
-IoT Hub vzorový kód, který ukazuje, jak implementovat běžné scénáře IoT, najdete v [IoT Hub rychlý Start](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-cli). Existují rychlé starty pro více programovacích jazyků, včetně C, Node.js a Pythonu.
+IoT Hub vzorový kód, který ukazuje, jak implementovat běžné scénáře IoT, najdete v [IoT Hub rychlý Start](./quickstart-send-telemetry-cli.md). Existují rychlé starty pro více programovacích jazyků, včetně C, Node.js a Pythonu.
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Azure IoT Hub. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 

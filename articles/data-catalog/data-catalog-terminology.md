@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e636a039302d2ea61c7135bff1fceb4763f25df
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68736294"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151459"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminologie
 
@@ -39,7 +39,7 @@ Strukturální metadata jsou metadata extrahovaná ze zdroje dat, který popisuj
 
 ## <a name="descriptive-metadata"></a>Popisná metadata
 
-Popisná metadata jsou metadata, která popisují účel nebo záměr datového assetu. Uživatelé katalogu obvykle přidávají popisné metadata pomocí portálu Azure Data Catalog, ale je možné je také extrahovat ze zdroje dat během registrace. Například nástroj pro registraci Azure Data Catalog extrahuje popisy z vlastnosti Description v SQL Server Analysis Services a SQL Server Reporting Services a v [MS_Description rozšířené vlastnosti](https://technet.microsoft.com/library/ms190243.aspx) v SQL Server databázích, pokud byly tyto vlastnosti naplněny hodnotami.
+Popisná metadata jsou metadata, která popisují účel nebo záměr datového assetu. Uživatelé katalogu obvykle přidávají popisné metadata pomocí portálu Azure Data Catalog, ale je možné je také extrahovat ze zdroje dat během registrace. Například nástroj pro registraci Azure Data Catalog extrahuje popisy z vlastnosti Description v SQL Server Analysis Services a SQL Server Reporting Services a v [MS_Description rozšířené vlastnosti](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)) v SQL Server databázích, pokud byly tyto vlastnosti naplněny hodnotami.
 
 ## <a name="request-access"></a>Vyžádání přístup
 
@@ -86,4 +86,4 @@ Registrace je Act z extrakce metadat datového assetu ze zdroje dat a jeho zkop�
 
 ## <a name="next-steps"></a>Další kroky
 
-[Rychlý Start: vytvoření Azure Data Catalog](data-catalog-get-started.md) 
+[Rychlý Start: vytvoření Azure Data Catalog](data-catalog-get-started.md)

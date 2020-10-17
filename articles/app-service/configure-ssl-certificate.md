@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420876"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149074"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup při použití tohoto průvodce:
 
@@ -145,8 +145,8 @@ Na stránce **stav Key Vault** klikněte na **úložiště Key Vault** a vytvoř
 | Skupina prostředků | Jako doporučení vyberte stejnou skupinu prostředků jako certifikát App Service. |
 | Umístění | Vyberte stejné umístění jako aplikace App Service. |
 | Cenová úroveň | Informace najdete v tématu informace [o cenách Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/). |
-| Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům trezoru. Později ji můžete nakonfigurovat podle kroků v části [přiřazení zásady přístupu Key Vault](/azure/key-vault/general/assign-access-policy-portal). |
-| Přístup k Virtual Network | Omezte přístup k trezoru na určité virtuální sítě Azure. Později ji můžete nakonfigurovat podle kroků v části [konfigurace Azure Key Vault brány firewall a virtuální sítě](/azure/key-vault/general/network-security) . |
+| Zásady přístupu| Definuje aplikace a povolený přístup k prostředkům trezoru. Později ji můžete nakonfigurovat podle kroků v části [přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md). |
+| Přístup k Virtual Network | Omezte přístup k trezoru na určité virtuální sítě Azure. Později ji můžete nakonfigurovat podle kroků v části [konfigurace Azure Key Vault brány firewall a virtuální sítě](../key-vault/general/network-security.md) . |
 
 Po výběru trezoru zavřete stránku **Key Vault úložiště** . V části **Krok 1: úložiště** by se měla zobrazit zelená značka zaškrtnutí u možnosti úspěch. Nechejte stránku otevřenou pro další krok.
 
@@ -189,7 +189,7 @@ Po dokončení operace se certifikát zobrazí v seznamu **certifikáty privátn
 Pokud používáte Azure Key Vault ke správě certifikátů, můžete importovat certifikát PKCS12 z Key Vault do App Service, pokud [splňuje požadavky](#private-certificate-requirements).
 
 ### <a name="authorize-app-service-to-read-from-the-vault"></a>Autorizovat App Service ke čtení z trezoru
-Ve výchozím nastavení poskytovatel prostředků App Service nemá přístup k Key Vault. Aby bylo možné použít Key Vault pro nasazení certifikátu, je nutné [autorizovat poskytovatele prostředků na přístup k trezoru](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)klíčů. 
+Ve výchozím nastavení poskytovatel prostředků App Service nemá přístup k Key Vault. Aby bylo možné použít Key Vault pro nasazení certifikátu, je nutné [autorizovat poskytovatele prostředků na přístup k trezoru](../key-vault/general/assign-access-policy-cli.md)klíčů. 
 
 `abfa0a7c-a6b6-4736-8310-5855508787cd`  je hlavní název služby poskytovatele prostředků pro App Service a je stejný pro všechna předplatná Azure. V případě Azure Government cloudového prostředí použijte `6a02c803-dafd-4136-b4c3-5a6f318b4714` místo toho jako hlavní název služby poskytovatele prostředků.
 

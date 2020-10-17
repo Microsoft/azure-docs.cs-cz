@@ -4,12 +4,12 @@ description: Jak nakonfigurovat uzly transakcí služby Azure blockchain
 ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: b3a4650977f1ad1a7a6967daa162adc8d2ef7bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50f9b2aa0f5e1a1b1095b6c799ce0706b6e541de
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530382"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150869"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace uzlů transakcí služby Azure blockchain
 
@@ -75,7 +75,7 @@ Udělení řízení přístupu Azure AD ke koncovému bodu:
 
 1. Vyberte **Uložit** a přidejte přiřazení role.
 
-Další informace o řízení přístupu Azure AD najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+Další informace o řízení přístupu Azure AD najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md)
 
 Podrobnosti o tom, jak se připojit pomocí ověřování Azure AD, najdete v tématu [připojení k uzlu pomocí ověřování AAD](configure-aad.md).
 

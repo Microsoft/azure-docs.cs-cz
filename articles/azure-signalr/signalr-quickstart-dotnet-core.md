@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874012"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151011"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rychlý Start: vytvoření chatovací místnosti pomocí služby Signal
 
-Azure SignalR je služba Azure, která vývojářům pomáhá snadno vytvářet webové aplikace s funkcemi v reálném čase. Tato služba byla původně založena na nástroji [Signal pro ASP.NET Core 2,1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1), ale nyní podporuje novější verze.
+Azure SignalR je služba Azure, která vývojářům pomáhá snadno vytvářet webové aplikace s funkcemi v reálném čase. Tato služba byla původně založena na nástroji [Signal pro ASP.NET Core 2,1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1), ale nyní podporuje novější verze.
 
 V tomto článku se dozvíte, jak začít se službou Azure SignalR. V tomto rychlém startu vytvoříte aplikaci Chat pomocí webové aplikace ASP.NET Core MVC. Tato aplikace naváže připojení k vašemu prostředku služby Azure SignalR a umožní tak aktualizace obsahu v reálném čase. Webovou aplikaci budete hostovat místně a připojíte se s více klienty prohlížeče. Každý klient bude moct nabízet aktualizace obsahu do všech ostatních klientů. 
 
@@ -27,7 +27,7 @@ Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSigna
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note-dotnet.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [.NET Core SDK](https://www.microsoft.com/net/download/windows).
 * Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-Sample](https://github.com/aspnet/AzureSignalR-samples) . 
@@ -42,7 +42,7 @@ Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSigna
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
-V této části použijete [rozhraní příkazového řádku .NET Core (CLI)](https://docs.microsoft.com/dotnet/core/tools/) pro vytvoření projektu webové aplikace ASP.NET Core MVC. Výhodou použití .NET Core CLI přes Visual Studio je to, že je k dispozici na platformách Windows, macOS a Linux. 
+V této části použijete [rozhraní příkazového řádku .NET Core (CLI)](/dotnet/core/tools/) pro vytvoření projektu webové aplikace ASP.NET Core MVC. Výhodou použití .NET Core CLI přes Visual Studio je to, že je k dispozici na platformách Windows, macOS a Linux. 
 
 1. Vytvořte složku pro váš projekt. V tomto rychlém startu se používá složka *E:\Testing\chattest* .
 
@@ -56,7 +56,7 @@ V této části použijete [rozhraní příkazového řádku .NET Core (CLI)](ht
 
 ## <a name="add-secret-manager-to-the-project"></a>Přidání nástroje Secret Manager do projektu
 
-V této části přidáte do svého projektu [Nástroj Správce tajných klíčů](https://docs.microsoft.com/aspnet/core/security/app-secrets) . Nástroj Správce tajných klíčů ukládá citlivá data pro vývojovou práci mimo strom projektu. Tento přístup pomáhá zabránit nechtěnému sdílení tajných kódů aplikací ve zdrojovém kódu.
+V této části přidáte do svého projektu [Nástroj Správce tajných klíčů](/aspnet/core/security/app-secrets) . Nástroj Správce tajných klíčů ukládá citlivá data pro vývojovou práci mimo strom projektu. Tento přístup pomáhá zabránit nechtěnému sdílení tajných kódů aplikací ve zdrojovém kódu.
 
 1. Otevřete soubor *.csproj*. Přidejte element `DotNetCliToolReference` zahrnující *Microsoft.Extensions.SecretManager.Tools*. Přidejte také `UserSecretsId` element, jak je znázorněno v následujícím kódu pro *chatovat. csproj*a uložte soubor.
 
@@ -107,12 +107,13 @@ V této části přidáte do svého projektu [Nástroj Správce tajných klíč�
     K tomuto tajnému kódu se dostanete pomocí konfiguračního rozhraní API. Dvojtečka (:) funguje v názvu konfigurace s rozhraním API konfigurace na všech podporovaných platformách. Viz [Konfigurace podle prostředí](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. Otevřete soubor *Startup.cs* a aktualizujte metodu `ConfigureServices` tak, aby používala službu Azure SignalR, a to zavoláním metody `AddSignalR()`:
+4. Otevřete *Startup.cs* a aktualizujte `ConfigureServices` metodu pro použití služby signalizace Azure voláním `AddSignalR()` metod a `AddAzureSignalR()` :
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAzureSignalR();
+        services.AddSignalR()
+                .AddAzureSignalR();
     }
     ```
 
@@ -325,7 +326,7 @@ Pokud je připojení úspěšné, předá se do metody `bindConnectionMessage`, 
 
 ## <a name="add-a-development-runtime-profile"></a>Přidání profilu vývojového modulu runtime
 
-V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další informace najdete v tématu [práce s více prostředími v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/environments).
+V této části přidáte prostředí pro vývoj pro ASP.NET Core. Další informace najdete v tématu [práce s více prostředími v ASP.NET Core](/aspnet/core/fundamentals/environments).
 
 1. Vytvořte ve svém projektu složku s názvem *Properties* .
 

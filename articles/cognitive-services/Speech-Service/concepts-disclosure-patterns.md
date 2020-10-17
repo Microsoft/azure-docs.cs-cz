@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: angle
-ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: shlo
+ms.openlocfilehash: fe4f0cdcdb863582560b0eba3a22e95b93ff858b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74776618"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150945"
 ---
 # <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
 Teď, když jste&#39;i zjistili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro syntetické hlasové prostředí,&#39;s vhodným časem prozkoumat potenciální vzory návrhu.

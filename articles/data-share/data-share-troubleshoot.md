@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/02/2020
-ms.openlocfilehash: 620fe1e693a177123e166220ab94bbd74c4826ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1b61b643ea4b195878a1d12fc1ac4bb7fef23027
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761527"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151373"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Řešení běžných potíží se službou Azure Data Share 
 
@@ -61,12 +61,20 @@ Pokud se jedná o první sdílení nebo příjem dat z úložiště dat Azure, p
 Sdílení založené na SQL vyžaduje další oprávnění. Podrobný seznam požadovaných součástí najdete v tématu [sdílení ze zdrojů SQL](how-to-share-from-sql.md) .
 
 ## <a name="snapshot-failed"></a>Nepodařilo se vytvořit snímek
-Snímek se kvůli nejrůznějším důvodům nezdařil. Podrobnou chybovou zprávu najdete tak, že kliknete na počáteční čas snímku a pak na stav každé datové sady. Níže jsou uvedené důvody, proč se snímek nezdařil:
+Snímek se kvůli nejrůznějším důvodům nezdařil. Podrobnou chybovou zprávu najdete tak, že kliknete na počáteční čas snímku a pak na stav každé datové sady. Níže jsou uvedené běžné důvody, proč se snímek nezdařil:
 
 * Sdílení dat nemá oprávnění ke čtení ze zdrojového úložiště dat nebo k zápisu do cílového úložiště dat. Podrobné požadavky na oprávnění najdete v tématu [role a požadavky](concepts-roles-permissions.md) . Pokud snímek vyberete poprvé, může trvat několik minut, než se prostředku sdílení dat udělí přístup k úložišti dat Azure. Počkejte pár minut a zkuste to znovu.
 * Firewall zablokuje připojení ke zdroji dat nebo cílovému úložišti dat.
 * Sdílená datová sada nebo zdrojové nebo cílové úložiště dat se odstraní.
-* V případě sdílení SQL nejsou datové typy podporovány procesem snímku nebo cílovým úložištěm dat. Podrobnosti najdete [v tématu sdílení ze zdrojů SQL](how-to-share-from-sql.md#supported-data-types) .
+
+V případě zdrojů SQL jsou zde další příčiny selhání snímku. 
+
+* Zdrojový nebo cílový skript SQL, který má udělit oprávnění ke sdílení dat, se nespustí nebo se místo Azure Active Directory ověřování spustí pomocí ověřování SQL.  
+* Zdrojové nebo cílové úložiště dat SQL je pozastaveno.
+* Datové typy SQL nejsou podporovány procesem snímku nebo cílovým úložištěm dat. Podrobnosti najdete [v tématu sdílení ze zdrojů SQL](how-to-share-from-sql.md#supported-data-types) .
+* Zdrojové nebo cílové úložiště dat SQL jsou zamčené jinými procesy. Azure Data Share nepoužívá zámky pro zdrojové a cílové úložiště dat SQL. Stávající zámky na zdrojovém a cílovém úložišti dat SQL však způsobí selhání snímku.
+* Cílová tabulka SQL je odkazována omezením cizího klíče. Pokud v průběhu snímku existuje cílová tabulka se stejným názvem, Azure Data Share ponechá tabulku a vytvoří novou tabulku. Pokud je cílová tabulka SQL odkazována omezením cizího klíče, nelze tabulku vyřadit.
+* Cílový soubor CSV je vygenerovaný, ale data nejde číst v Excelu. K tomu může dojít, pokud zdrojová tabulka SQL obsahuje data, která nemají anglické znaky. V Excelu vyberte kartu načíst data a vyberte soubor CSV, vyberte počátek souboru jako 65001: Unicode (UTF-8) a načtěte data.
 
 ## <a name="next-steps"></a>Další kroky
 

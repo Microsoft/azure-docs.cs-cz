@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3f9064c25581523167918b84a2d0027747e32bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c522ac9e1aedbcdfdb4564d17b506b1b490da0c3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282370"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150395"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -54,21 +54,7 @@ Můžete vytvořit objekt parametru buď ručně, nebo pomocí poskytnuté pomoc
 
 Bez použití vlastních pomocných tříd můžete reprezentovat vlastnosti vlákna v `Dictionary<string, object>` , kde `string` je název vlastnosti a `object` je objekt představující vlastnost a její hodnotu.
 
-```csharp
-// Define the model type for the twin to be created
-Dictionary<string, object> meta = new Dictionary<string, object>()
-{
-    { "$model", "dtmi:com:contoso:Room;1" }
-};
-// Initialize the twin properties
-Dictionary<string, object> twin = new Dictionary<string, object>()
-{
-    { "$metadata", meta },
-    { "Temperature", temperature},
-    { "Humidity", humidity},
-};
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<string, object>>(twin));
-```
+[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
 #### <a name="create-twins-with-the-helper-class"></a>Vytvoření vláken s podpůrnou třídou
 

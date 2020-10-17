@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f33521dd9110d7ba6ee84650345b38c8c6a4950b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81732605"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149136"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Sada SDK pro zařízení Azure IoT pro C – Další informace o IoTHubClient
 
@@ -28,7 +28,7 @@ Předchozí článek popisuje, jak pomocí knihovny **IoTHubClient** odesílat u
 
 Pomocí ukázek sady **IoTHubClient** SDK vyvysvětlíme tato témata. Pokud chcete postup sledovat, přečtěte si téma **iothub \_ Client \_ Sample \_ http** a **iothub \_ \_ Sample \_ AMQP** aplikace, které jsou součástí sady SDK pro zařízení Azure IoT pro jazyk C. všechno popsané v následujících částech je znázorněno v těchto ukázkách.
 
-Můžete najít [**sadu SDK pro zařízení Azure IoT pro**](https://github.com/Azure/azure-iot-sdk-c) úložiště GitHub c a zobrazit podrobnosti o rozhraní API v referenčních informacích k [rozhraní API jazyka c](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+Můžete najít [**sadu SDK pro zařízení Azure IoT pro**](https://github.com/Azure/azure-iot-sdk-c) úložiště GitHub c a zobrazit podrobnosti o rozhraní API v referenčních informacích k [rozhraní API jazyka c](/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-lower-level-apis"></a>Rozhraní API na nižší úrovni
 
@@ -157,7 +157,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 Začneme voláním ** \_ vlastností IoTHubMessage** a předáním popisovače naší zprávy. To, co se vrátí, je odkaz na **mapový \_ popisovač** , který nám umožňuje začít přidávat vlastnosti. Druhý je dosaženo voláním **mapy \_ AddOrUpdate**, která přebírá odkaz na mapový \_ popisovač, název vlastnosti a hodnotu vlastnosti. Pomocí tohoto rozhraní API můžeme přidat tolik vlastností, kolik bychom chtěli.
 
-Když je událost čtena z **Event Hubs**, může příjemce vytvořit výčet vlastností a načíst jejich odpovídající hodnoty. Například v rozhraní .NET to by bylo provedeno přístupem k [kolekci vlastností objektu EventData](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.eventdata.properties.aspx).
+Když je událost čtena z **Event Hubs**, může příjemce vytvořit výčet vlastností a načíst jejich odpovídající hodnoty. Například v rozhraní .NET to by bylo provedeno přístupem k [kolekci vlastností objektu EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata).
 
 V předchozím příkladu připojujeme vlastnosti k události, kterou pošleme do IoT Hub. K zprávám přijatým od IoT Hub lze také připojit vlastnosti. Pokud chceme načíst vlastnosti ze zprávy, můžeme v naší funkci zpětného volání zpráv použít kód, jako je následující:
 
@@ -277,4 +277,4 @@ Tento článek podrobně popisuje chování knihovny **IoTHubClient** , která s
 
 Další informace o vývoji pro IoT Hub najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 
-Další zkoumání možností IoT Hub najdete v tématu [nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+Další zkoumání možností IoT Hub najdete v tématu [nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/quickstart-linux.md).

@@ -6,15 +6,15 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880edff95bb548ec5328c543a542ea5dfcfc362f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86221132"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150290"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizovat obsah z cloudové složky do Azure App Service
-V tomto článku se dozvíte, jak synchronizovat obsah pro [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) z Dropboxu a OneDrivu. 
+V tomto článku se dozvíte, jak synchronizovat obsah pro [Azure App Service](./overview.md) z Dropboxu a OneDrivu. 
 
 Nasazení synchronizace obsahu na vyžádání využívá [modul nasazení App Service Kudu](https://github.com/projectkudu/kudu/wiki). Můžete pracovat s kódem a obsahem vaší aplikace v určené složce cloudu a pak je synchronizovat s App Service pomocí kliknutí na tlačítko. Synchronizace obsahu používá server sestavení Kudu. 
 

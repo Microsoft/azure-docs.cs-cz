@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/02/2020
-ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761919"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150389"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Sdílení a příjem dat ze služeb Azure SQL Database a Azure Synapse Analytics
 
@@ -77,7 +77,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
     | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Name | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
     | | |
 
 1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
@@ -244,7 +244,7 @@ Když sdílíte data ze zdroje SQL, používá se následující mapování SQL 
 | binární |Byte [] |
 | bit |Logická hodnota |
 | char |Řetězec, znak [] |
-| date |DateTime |
+| datum |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
@@ -277,7 +277,23 @@ Když sdílíte data ze zdroje SQL, používá se následující mapování SQL 
 > 1. Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně snímek podporuje přesnost až na 28. Pokud máte data, která vyžadují přesnost větší než 28, zvažte převod na řetězec. 
 > 1.  Pokud sdílíte data z Azure SQL Database do služby Azure synapse Analytics, nejsou podporované všechny datové typy. Podrobnosti najdete [v tabulkách s datovými typy v synapse fondu SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) . 
 
+## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>Always Encrypted SQL nebo maskování dynamických dat
+Služba Azure Data Share v současné době nepodporuje databáze SQL Azure s nakonfigurovaným Always Encrypted. 
+
+Pro zdrojové tabulky SQL s dynamickým maskou dat se data zobrazí na straně příjemce.
+
+## <a name="sql-snapshot-performance"></a>Výkon snímku SQL
+Výkon snímku SQL je ovlivněn řadou faktorů. Vždy se doporučuje provádět vlastní testování výkonu. Níže jsou uvedeny některé příklady faktorů, které mají vliv na výkon.
+
+* Hardwarová konfigurace (například virtuální jádra, paměť, DWU) zdrojového a cílového úložiště dat SQL. 
+* Souběžný přístup ke zdrojovým a cílovým úložištím dat. Pokud sdílíte více tabulek a zobrazení ze stejného úložiště dat SQL nebo pokud do stejného úložiště dat SQL přijmete více tabulek a zobrazení, bude to mít vliv na výkon.   
+* Umístění zdrojových a cílových úložišť dat. 
+
+## <a name="troubleshoot-sql-snapshot-failure"></a>Řešení potíží se selháním snímku SQL
+Nejběžnější příčinou selhání snímku je to, že sdílená data nemají oprávnění ke zdrojovému nebo cílovému úložišti dat. Aby bylo možné udělit oprávnění ke sdílení dat zdrojovému nebo cílovému úložišti dat SQL, je nutné spustit zadaný skript SQL při připojování k databázi SQL pomocí ověřování Azure Active Directory. Pokud chcete vyřešit další selhání snímku SQL, přečtěte si téma [řešení potíží se selháním snímku](data-share-troubleshoot.md#snapshot-failed).
 
 ## <a name="next-steps"></a>Další kroky
-Zjistili jste, jak sdílet a přijímat data z účtu úložiště pomocí služby Azure Data Share. Pokud se chcete dozvědět víc o sdílení z jiných zdrojů dat, pokračujte na [podporovaná úložiště dat](supported-data-stores.md).
+Zjistili jste, jak sdílet a přijímat data ze zdrojů SQL pomocí služby Azure Data Share. Pokud se chcete dozvědět víc o sdílení z jiných zdrojů dat, pokračujte na [podporovaná úložiště dat](supported-data-stores.md).
+
+
 

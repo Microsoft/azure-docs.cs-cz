@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: c19d6d2513d1bf266d10e90dfb1d6fe79c9410d1
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 32f5ae0e06c38f610ae9751d81b7bf77a0ebc050
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993448"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149289"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Jaká jsou řešení pro spouštění Oracle WebLogic Serveru na virtuálních počítačích Azure?
 
-Tato stránka popisuje řešení pro spouštění Oracle WebLogic serveru (WLS) na virtuálních počítačích Azure. Tato řešení jsou společně vyvinutá Oracle a Microsoftem.
+Tato stránka popisuje řešení pro spouštění Oracle WebLogic serveru (WLS) na virtuálních počítačích Azure. Tato řešení jsou společně vyvinutá a podporovaná Oracle a Microsoftem.
 
 Server WLS je předním aplikačním serverem Java, který provozuje nejdůležitější podnikové aplikace v jazyce Java po celém světě. Na serveru WLS je základem middlewaru pro sadu Oracle Software Suite. Oracle a Microsoft se zavazují přispívat zákazníkům ze serveru WLS a pružně spouštět úlohy v Azure jako špičkovou cloudovou platformu.
 
@@ -24,29 +24,29 @@ Server WLS je předním aplikačním serverem Java, který provozuje nejdůleži
 
 :::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="K nasazení WebLogic serveru v Azure můžete použít Azure Portal.":::
 
-Existují čtyři nabídky k dispozici pro splnění různých scénářů: jeden uzel bez serveru pro správu, jeden uzel se serverem pro správu, clusterem a dynamickým clusterem. Nabídky jsou k dispozici bezplatně. Tyto nabídky jsou popsány a propojeny níže.
+Existují čtyři nabídky k dispozici pro splnění různých scénářů: [jeden uzel bez serveru pro správu](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls), [jeden uzel se serverem pro správu](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin), [clusterem](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)a [dynamickým clusterem](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster). Nabídky jsou k dispozici bezplatně. Tyto nabídky jsou popsány a propojeny níže.
 
 _Tyto nabídky jsou vlastními licencemi_. Předpokládají, že už máte příslušné licence pro Oracle a máte řádně licenci na spuštění nabídek v Azure.
 
 Nabízí podporu řady operačních systémů, jazyků Java a serveru WLS prostřednictvím základních imagí (například WebLogic Server 14 a JDK 11 v Oracle Linux 7,6). Tyto základní image jsou k dispozici také na Azure sami. Základní image jsou vhodné pro zákazníky, kteří vyžadují složitá a přizpůsobená nasazení Azure. Aktuální sada základních imagí je k dispozici [zde](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1).
 
-_Pokud vás zajímá, jak úzce pracovat na scénářích migrace pomocí technického týmu, který vyvíjí tyto nabídky, [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) vyberte_ na [stránce Přehled nabídky Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)tlačítko kontaktovat. Správci programu, architekti a technici budou brzy k dispozici a zahájí se uzavírání spolupráce. Možnost spolupracovat na scénáři migrace je zadarmo, zatímco nabídky jsou v rámci aktivního vývoje.
+_Pokud vás zajímá, jak úzce pracovat na scénářích migrace pomocí technického týmu, který vyvíjí tyto nabídky, [CONTACT ME](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) vyberte_ na [stránce Přehled nabídky Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)tlačítko kontaktovat. Správci programu, architekti a technici budou brzy k dispozici a zahájí se uzavírání spolupráce. Možnost spolupracovat na scénáři migrace je zadarmo, zatímco nabídky jsou v rámci aktivního počátečního vývoje.
 
 ## <a name="oracle-weblogic-server-single-node"></a>Jeden uzel Oracle WebLogic Server
 
-Tato nabídka zřídí jeden virtuální počítač a nainstaluje na něj službu WLS. Nevytváří doménu ani nespouští Server pro správu. Nabídka s jedním uzlem je užitečná pro scénáře s vysoce přizpůsobenou konfigurací domény.
+[Tato nabídka](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls) zřídí jeden virtuální počítač a nainstaluje na něj službu WLS. Nevytváří doménu ani nespouští Server pro správu. Nabídka s jedním uzlem je užitečná pro scénáře s vysoce přizpůsobenou konfigurací domény.
 
 ## <a name="oracle-weblogic-server-with-admin-server"></a>Oracle WebLogic Server se serverem pro správu
 
-Tato nabídka zřídí jeden virtuální počítač a nainstaluje na něj službu WLS. Vytvoří doménu a spustí server pro správu. Můžete spravovat doménu a hned začít s nasazením aplikací.
+[Tato nabídka](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin) zřídí jeden virtuální počítač a nainstaluje na něj službu WLS. Vytvoří doménu a spustí server pro správu. Můžete spravovat doménu a hned začít s nasazením aplikací.
 
 ## <a name="oracle-weblogic-server-cluster"></a>Serverový cluster Oracle WebLogic Server
 
-Tato nabídka vytvoří cluster virtuálních počítačů na serveru WLS s vysokou dostupností. Server pro správu a všechny spravované servery jsou spouštěny ve výchozím nastavení. Cluster můžete spravovat a hned začít s aplikacemi s vysokou dostupností.
+[Tato nabídka](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster) vytvoří cluster virtuálních počítačů na serveru WLS s vysokou dostupností. Server pro správu a všechny spravované servery jsou spouštěny ve výchozím nastavení. Cluster můžete spravovat a hned začít s aplikacemi s vysokou dostupností.
 
 ## <a name="oracle-weblogic-server-dynamic-cluster"></a>Dynamický cluster serveru Oracle WebLogic Server
 
-Tato nabídka vytvoří vysoce dostupný a škálovatelný dynamický cluster virtuálních počítačů na serveru WLS. Server pro správu a všechny spravované servery jsou spouštěny ve výchozím nastavení.
+[Tato nabídka](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster) vytvoří vysoce dostupný a škálovatelný dynamický cluster virtuálních počítačů na serveru WLS. Server pro správu a všechny spravované servery jsou spouštěny ve výchozím nastavení.
 
 Řešení umožní široké spektrum architektur pro nasazení připravené pro produkční prostředí s relativním usnadněním. Většinu případů migrace můžete vyhovět co nejefektivnějším způsobem, a to díky tomu, že se zaměříte na vývoj obchodních aplikací.
 

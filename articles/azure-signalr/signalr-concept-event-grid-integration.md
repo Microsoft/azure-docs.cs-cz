@@ -8,20 +8,20 @@ ms.reviewer: zhshang
 ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
-ms.openlocfilehash: 105b40da2a612d2a2e9958eff52bfb786c500bc1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 77c8887ac19c6ce4c7d83734bdd2b44d9213914d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876069"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151119"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Reakce na události služby Azure SignalR Service
 
 Události služby signalizace Azure umožňují aplikacím reagovat na připojení klientů připojená nebo odpojená pomocí moderních architektur bez serveru. Je to bez nutnosti složitosti složitého kódu nebo nákladných a neefektivních služeb cyklického dotazování.  Místo toho se události odesílají prostřednictvím [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) předplatitelům, jako je [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)nebo dokonce i vlastní naslouchací proces http. Pomocí služby Azure Signaler platíte jenom za to, co spotřebováváte.
 
-Události služby signalizace Azure se spolehlivě odesílají službě Event Grid, která poskytuje vašim aplikacím spolehlivé služby doručování prostřednictvím zásad opakovaného pokusů a doručování s nedoručenými zprávami. Další informace najdete v tématu [Event Grid doručování zpráv a zkuste to znovu](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
+Události služby signalizace Azure se spolehlivě odesílají službě Event Grid, která poskytuje vašim aplikacím spolehlivé služby doručování prostřednictvím zásad opakovaného pokusů a doručování s nedoručenými zprávami. Další informace najdete v tématu [Event Grid doručování zpráv a zkuste to znovu](../event-grid/delivery-and-retry.md).
 
-![Model Event Grid](https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png)
+![Model Event Grid](/azure/event-grid/media/overview/functional-model.png)
 
 ## <a name="serverless-state"></a>Stav bez serveru
 Události služby Azure Signal se aktivují jenom v případě, že jsou připojení klientů ve stavu bez serveru. Pokud klient nesměruje na hub Server, přejde do stavu bez serveru. Klasický režim funguje jenom v případě, že se rozbočovač, ke kterému se připojí připojení klienta, nemá server rozbočovače. Jako osvědčený postup se doporučuje režim bez serveru. Další informace o režimu služby najdete v tématu [Jak zvolit režim služby](https://github.com/Azure/azure-signalr/blob/dev/docs/faq.md#what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose).
@@ -29,7 +29,7 @@ Události služby Azure Signal se aktivují jenom v případě, že jsou připoj
 ## <a name="available-azure-signalr-service-events"></a>Dostupné události služby signalizace Azure
 Event Grid používá [odběry událostí](../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. Odběry událostí služby signalizace Azure podporují dva typy událostí:  
 
-|Název události|Description|
+|Název události|Popis|
 |----------|-----------|
 |`Microsoft.SignalRService.ClientConnectionConnected`|Je aktivována, když je připojení klienta připojeno.|
 |`Microsoft.SignalRService.ClientConnectionDisconnected`|Je aktivována, když je připojení klienta odpojeno.|

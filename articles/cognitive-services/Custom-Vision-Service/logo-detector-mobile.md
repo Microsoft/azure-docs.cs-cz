@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98d94e9544e75f762d4532101a92d14106d6a575
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b56824e386709bd330339f1f6acfd2812e040de
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931790"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150921"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
 
@@ -29,9 +29,9 @@ V tomto kurzu se dozvíte, jak:
 > - Připojte svoji aplikaci k Azure Počítačové zpracování obrazu a Custom Vision.
 > - Vytvoření účtu instančního objektu Azure pro nasazení služeb Azure z aplikace
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Úlohy Xamarin pro Visual Studio (viz [instalace Xamarin](https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/windows))
@@ -104,7 +104,7 @@ Potom otevřete soubor *Source\VisualProvision\AppSettings.cs* a naplňte `Compu
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-K nasazení služeb do předplatného Azure vyžaduje aplikace účet instančního objektu Azure. Instanční objekt umožňuje delegovat specifická oprávnění k aplikaci pomocí řízení přístupu na základě rolí. Další informace najdete v tématu [Průvodce instančními objekty služby](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
+K nasazení služeb do předplatného Azure vyžaduje aplikace účet instančního objektu Azure. Instanční objekt umožňuje delegovat specifická oprávnění k aplikaci pomocí řízení přístupu na základě role v Azure. Další informace najdete v tématu [Průvodce instančními objekty služby](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
 
 Instanční objekt můžete vytvořit pomocí Azure Cloud Shell nebo rozhraní příkazového řádku Azure CLI, jak je znázorněno zde. Začněte tím, že se přihlásíte a vyberete předplatné, které chcete použít.
 

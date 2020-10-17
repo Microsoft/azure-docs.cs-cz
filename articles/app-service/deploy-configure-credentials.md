@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 50b3cae00110a64e4d95171822bf1d2a282d2cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715413"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149026"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
+[Azure App Service](./overview.md) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
@@ -96,11 +96,11 @@ Chcete-li zakázat základní přístup k ověřování na portu WebDeploy a na 
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Pokud chcete potvrdit, že se přihlašovací údaje profilu publikování zablokují na webu WebDeploy, zkuste [publikovat webovou aplikaci pomocí sady Visual Studio 2019](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Pokud chcete potvrdit, že se přihlašovací údaje profilu publikování zablokují na webu WebDeploy, zkuste [publikovat webovou aplikaci pomocí sady Visual Studio 2019](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
 
 ### <a name="disable-access-to-the-api"></a>Zakázání přístupu k rozhraní API
 
-Rozhraní API v předchozí části se zavedlo na řízení přístupu na základě role Azure (Azure RBAC), což znamená, že můžete [vytvořit vlastní roli](https://docs.microsoft.com/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role) a přiřadit k ní priveldged uživatele s nižšími nároky, aby nemohly na všech lokalitách povolit základní ověřování. Pokud chcete nakonfigurovat vlastní roli, [postupujte podle těchto pokynů](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
+Rozhraní API v předchozí části se zavedlo na řízení přístupu na základě role Azure (Azure RBAC), což znamená, že můžete [vytvořit vlastní roli](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) a přiřadit k ní priveldged uživatele s nižšími nároky, aby nemohly na všech lokalitách povolit základní ověřování. Pokud chcete nakonfigurovat vlastní roli, [postupujte podle těchto pokynů](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role).
 
 [Azure monitor](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) můžete použít také k auditování všech úspěšných žádostí o ověření a pomocí [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) vynutili tuto konfiguraci pro všechny weby v rámci vašeho předplatného.
 

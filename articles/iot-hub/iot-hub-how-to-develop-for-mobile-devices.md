@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: robinsh
-ms.openlocfilehash: 945b02003a443c04e692fdc06ca5714de362d074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fade17d10189cbe8e775b2a859902f1c2bb004
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883085"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151634"
 ---
 # <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Vývoj pro mobilní zařízení pomocí sad Azure IoT SDK
 
-Věci v Internet věcí se můžou týkat široké škály zařízení s různou schopností: senzory, mikrořadiče, inteligentní zařízení, průmyslové brány a dokonce mobilní zařízení.  Mobilním zařízením může být zařízení IoT, kde odesílá telemetrii ze zařízení do cloudu a spravuje je Cloud.  Může se také jednat o zařízení, na kterém běží aplikace služby back-end, která spravuje jiná zařízení IoT.  V obou případech můžete použít sady [Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) pro vývoj aplikací, které fungují pro mobilní zařízení.  
+Věci v Internet věcí se můžou týkat široké škály zařízení s různou schopností: senzory, mikrořadiče, inteligentní zařízení, průmyslové brány a dokonce mobilní zařízení.  Mobilním zařízením může být zařízení IoT, kde odesílá telemetrii ze zařízení do cloudu a spravuje je Cloud.  Může se také jednat o zařízení, na kterém běží aplikace služby back-end, která spravuje jiná zařízení IoT.  V obou případech můžete použít sady [Azure IoT Hub SDK](./iot-hub-devguide-sdks.md) pro vývoj aplikací, které fungují pro mobilní zařízení.  
 
 ## <a name="develop-for-native-ios-platform"></a>Vývoj pro nativní platformu iOS
 
@@ -52,5 +52,5 @@ Tato dokumentace vás seznámí s postupem vývoje aplikace zařízení nebo apl
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Odkaz na IoT Hub REST API](https://docs.microsoft.com/rest/api/iothub/)
+* [Odkaz na IoT Hub REST API](/rest/api/iothub/)
 * [Zdrojový kód sady SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c)

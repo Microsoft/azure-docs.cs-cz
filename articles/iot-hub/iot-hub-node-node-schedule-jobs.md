@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: 2c5ce219e40117a2b656b7acab6dd68a1d20dffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251928"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151438"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Úlohy plánování a vysílání (Node.js)
 
@@ -49,7 +49,7 @@ Na konci tohoto kurzu máte dvě Node.js aplikace:
 
 * **scheduleJobService.js**, která volá přímou metodu v aplikaci simulovaného zařízení a aktualizuje požadované vlastnosti v zařízení pomocí úlohy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Node.js verze 10.0. x nebo novější. [Příprava vývojového prostředí](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
 
@@ -57,7 +57,7 @@ Na konci tohoto kurzu máte dvě Node.js aplikace:
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto článku používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -300,4 +300,4 @@ V tomto kurzu jste použili úlohu k naplánování přímé metody na zařízen
 
 Pokud chcete pokračovat v seznámení se IoT Hub a způsoby správy zařízení, jako je například vzdálené prostřednictvím aktualizace firmwaru Air, přečtěte si téma [kurz: jak provést aktualizaci firmwaru](tutorial-firmware-update.md).
 
-Pokud chcete pokračovat v seznámení s IoT Hub, přečtěte si téma [Začínáme s Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+Pokud chcete pokračovat v seznámení s IoT Hub, přečtěte si téma [Začínáme s Azure IoT Edge](../iot-edge/quickstart-linux.md).

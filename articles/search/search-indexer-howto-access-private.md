@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: ef8b3865b0914c0d06ff69d20396f1ff368642bc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102723"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150423"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Připojení indexeru prostřednictvím privátního koncového bodu (Azure Kognitivní hledání)
 
@@ -33,7 +33,7 @@ Prostřednictvím REST API správy poskytuje Azure Kognitivní hledání operaci
 
 Připojení privátního koncového bodu k některým prostředkům se dá vytvořit jenom s verzí Preview rozhraní API pro správu vyhledávání ( `2020-08-01-Preview` nebo novější), která je v následující tabulce označená značkou Preview. Prostředky bez příznaku "Preview" lze vytvořit pomocí verze Preview nebo všeobecně dostupné verze rozhraní API ( `2020-08-01` nebo novější).
 
-Níže najdete seznam prostředků Azure, ve kterých je možné vytvořit odchozí privátní koncové body z Azure Kognitivní hledání. `groupId` uvedená v tabulce níže musí být v rozhraní API použita přesně (velká a malá písmena) pro vytvoření sdíleného prostředku privátního propojení.
+Níže najdete seznam prostředků Azure, ve kterých je možné vytvořit odchozí privátní koncové body z Azure Kognitivní hledání. `groupId`Hodnoty uvedené v následující tabulce se musí v rozhraní API použít přesně jako zapsané (velká a malá písmena), aby se vytvořil sdílený prostředek privátního propojení.
 
 | Prostředek Azure | ID skupiny |
 | --- | --- |
@@ -47,7 +47,7 @@ Níže najdete seznam prostředků Azure, ve kterých je možné vytvořit odcho
 
 Seznam prostředků Azure, pro které se podporují odchozí připojení privátních koncových bodů, se taky dá dotázat pomocí [seznamu podporovaného rozhraní API](/rest/api/searchmanagement/privatelinkresources/listsupported).
 
-V tomto článku se k předvedení REST API volání používají kombinace [ARMClient](https://github.com/projectkudu/ARMClient) a [Poster](https://www.postman.com/) .
+Ve zbývající části tohoto článku se k předvedení REST API volání používají kombinace [ARMClient](https://github.com/projectkudu/ARMClient) a [Poster](https://www.postman.com/) .
 
 > [!NOTE]
 > V celém tomto článku Předpokládejme, že název vyhledávací služby je __Contoso-Search__ , který existuje ve skupině prostředků __Contoso__ PŘEDplatného s ID předplatného __00000000-0000-0000-0000-000000000000__. ID prostředku této vyhledávací služby bude `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`

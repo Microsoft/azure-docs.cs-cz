@@ -28,6 +28,7 @@
     - name: Statický web v HTML
       href: quickstart-html.md
     - name: Šablona ARM
+      displayName: Resource Manager
       href: quickstart-arm-template.md
     - name: Vlastní kontejner
       href: quickstart-custom-container.md

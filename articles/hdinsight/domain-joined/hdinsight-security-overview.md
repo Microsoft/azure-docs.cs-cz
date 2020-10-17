@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89292975"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150807"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
 
@@ -82,16 +82,18 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 |  | Zajistěte, aby funkce [šifrování v rámci přenosu](./encryption-in-transit.md) povolila používání protokolu TLS a protokolu IPSec pro komunikaci mezi clustery. | Zákazník |
 |  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md) pro šifrování Azure Storage | Zákazník |
 |  | Řízení přístupu k datům prostřednictvím podpory Azure pomocí [bezpečnostního modulu zákazníka](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Zákazník |
-| Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace ověřování](apache-domain-joined-configure-using-azure-adds.md) | Zákazník |
+| Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace protokolu ESP](apache-domain-joined-configure-using-azure-adds.md) nebo použití [Hib pro ověřování OAuth](identity-broker.md)| Zákazník |
 |  | Konfigurace zásad [autorizace Apache Ranger](apache-domain-joined-run-hive.md) | Zákazník |
 |  | Použití [protokolů Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Zákazník |
 | Zabezpečení operačního systému | Vytváření clusterů s nejnovější zabezpečenou základní imagí | Zákazník |
 |  | Zajistěte, aby byly [opravy operačního systému](../hdinsight-os-patching.md) v pravidelných intervalech | Zákazník |
+|  | Zajištění [CMKho šifrování disků pro virtuální počítače](../disk-encryption.md) | Zákazník |
 | Zabezpečení sítě | Konfigurace [virtuální sítě](../hdinsight-plan-virtual-network-deployment.md) |
-|  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../control-network-traffic.md) | Zákazník |
+|  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../control-network-traffic.md) nebo [privátního odkazu](../hdinsight-private-link.md) | Zákazník |
 |  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall | Zákazník |
-| Virtualizovaná infrastruktura | – | HDInsight (poskytovatel cloudu) |
-| Zabezpečení fyzické infrastruktury | – | HDInsight (poskytovatel cloudu) |
+|  | Konfigurace [šifrování IPSec při přenosu](encryption-in-transit.md) mezi uzly clusteru | Zákazník |
+| Virtualizovaná infrastruktura | Není k dispozici | HDInsight (poskytovatel cloudu) |
+| Zabezpečení fyzické infrastruktury | Není k dispozici | HDInsight (poskytovatel cloudu) |
 
 ## <a name="next-steps"></a>Další kroky
 

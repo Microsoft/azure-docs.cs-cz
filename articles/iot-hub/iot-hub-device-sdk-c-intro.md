@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3acac0c85aa6f3e3725dcf54a646f8ac16250e24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24f1332e940929cff6aeb6a0d5d3c43e28d36f22
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324042"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149168"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Sada SDK pro zařízení Azure IoT pro jazyk C
 
@@ -38,7 +38,7 @@ Tento článek vás seznámí s architekturou sady SDK pro zařízení Azure IoT
 
 ## <a name="sdk-architecture"></a>Architektura sady SDK
 
-Můžete najít [**sadu SDK pro zařízení Azure IoT pro**](https://github.com/Azure/azure-iot-sdk-c) úložiště GitHub c a zobrazit podrobnosti o rozhraní API v referenčních informacích k [rozhraní API jazyka c](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+Můžete najít [**sadu SDK pro zařízení Azure IoT pro**](https://github.com/Azure/azure-iot-sdk-c) úložiště GitHub c a zobrazit podrobnosti o rozhraní API v referenčních informacích k [rozhraní API jazyka c](/azure/iot-hub/iot-c-sdk-ref/).
 
 Nejnovější verzi knihoven najdete v **Hlavní** větvi úložiště:
 
@@ -587,4 +587,4 @@ Další informace o vývoji pro IoT Hub najdete v tématu sady [SDK služby Azur
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/quickstart-linux.md)

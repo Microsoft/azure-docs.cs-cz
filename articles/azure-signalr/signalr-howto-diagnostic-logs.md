@@ -6,22 +6,22 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85132002"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151060"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Protokoly prostředků pro službu Azure Signal Service
 
 Tento kurz popisuje, jaké jsou protokoly prostředků pro službu Azure Signal, jak je nastavit a jak s nimi řešit potíže. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete povolit protokoly prostředků, budete si muset někam uložit data protokolu. V tomto kurzu se používá Azure Storage a Log Analytics.
 
-* [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md) – zachovává protokoly prostředků pro audit zásad, statickou analýzu nebo zálohování.
-* [Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) – flexibilní nástroj pro hledání a analýzu protokolů, který umožňuje analýzu nezpracovaných protokolů generovaných prostředkem Azure.
+* [Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) – zachovává protokoly prostředků pro audit zásad, statickou analýzu nebo zálohování.
+* [Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) – flexibilní nástroj pro hledání a analýzu protokolů, který umožňuje analýzu nezpracovaných protokolů generovaných prostředkem Azure.
 
 ## <a name="set-up-resource-logs-for-an-azure-signalr-service"></a>Nastavení protokolů prostředků pro službu Azure Signal
 
@@ -131,7 +131,7 @@ Sloupce protokolu archivu obsahují prvky uvedené v následující tabulce:
 Název | Popis
 ------- | ------- 
 TimeGenerated | Čas události protokolu
-Collection (Kolekce) | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a `Throttling`
+Kolekce | Kolekce události protokolu Povolené hodnoty jsou: `Connection` `Authorization` a `Throttling`
 OperationName | Název operace události
 Umístění | Umístění služby signalizace Azure
 Úroveň | Úroveň události protokolu
@@ -184,7 +184,7 @@ Pokud obdržíte pro žádosti klientů 401 neautorizovaných prostředků, ově
 
 Pokud zjistíte, že nemůžete navázat připojení klientů ke službě Azure Signal Service, Projděte si protokoly prostředků. Pokud narazíte `Connection count reaches limit` na protokol prostředků, nakonfigurujete příliš mnoho připojení ke službě signalizace, která dosáhla limitu počtu připojení. Zvažte možnost škálování služby Signal. Pokud se setkáte `Message count reaches limit` v protokolu prostředků, znamená to, že použijete úroveň Free a použijete kvótu zpráv. Pokud chcete odesílat další zprávy, zvažte změnu služby signalizace na úroveň Standard, aby se odesílaly další zprávy. Další informace najdete v tématu [ceny služby Azure Signal Service](https://azure.microsoft.com/pricing/details/signalr-service/).
 
-### <a name="get-help"></a>Získání pomoci
+### <a name="get-help"></a>Podpora
 
 Doporučujeme, abyste si nejdřív vypomohli. Většina problémů je způsobená aplikačním serverem nebo problémy se sítí. Podle pokynů [Průvodce odstraňováním potíží s protokolem prostředků](#troubleshooting-with-resource-logs) a průvodcem řešením potíží se [základními](https://github.com/Azure/azure-signalr/blob/dev/docs/tsg.md) příčinami Najděte hlavní příčinu.
 Pokud se problém ještě nedá vyřešit, zvažte otevření problému v GitHubu nebo vytvoření lístku na webu Azure Portal.
