@@ -4,12 +4,12 @@ description: Pochopte, jak služby Azure Container Instances komunikují s orche
 ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
-ms.openlocfilehash: f3f8693d1a9a12e7c35d126ab3e3ca53448e5e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74533662"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148589"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances a orchestrace kontejnerů
 
@@ -54,7 +54,7 @@ Místo horizontálního navýšení kapacity virtuálních počítačů v cluste
 
 Pokud chcete rychle škálovat úlohy aplikace v clusteru AKS ( [Azure Kubernetes Service](../aks/intro-kubernetes.md) ), můžete použít *virtuální uzly* vytvořené dynamicky v Azure Container Instances. Virtuální uzly umožňují síťovou komunikaci mezi lusky, které běží v ACI a v clusteru AKS. 
 
-Virtuální uzly aktuálně podporují instance kontejnerů Linux. Začněte s virtuálními uzly pomocí [Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) nebo [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2047545).
+Virtuální uzly aktuálně podporují instance kontejnerů Linux. Začněte s virtuálními uzly pomocí [Azure CLI](../aks/virtual-nodes-cli.md) nebo [Azure Portal](../aks/virtual-nodes-portal.md).
 
 Virtuální uzly používají open source [Virtual Kubelet][aci-connector-k8s] k napodobení Kubernetes [Kubelet][kubelet-doc] tím, že se registrují jako uzel s neomezenou kapacitou. Virtual Kubelet odešle do Azure Container Instances vytváření [lusků][pod-doc] jako skupiny kontejnerů.
 

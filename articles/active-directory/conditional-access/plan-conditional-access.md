@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/16/2020
 ms.author: baselden
 author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef10f51f058739b0e545d341b77af4313dd9e97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992865"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145276"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -52,7 +52,7 @@ Viz [licenční požadavky na podmíněný přístup](overview.md).
 
 Pokud potřebujete další funkce, budete možná potřebovat i související licence. Další informace najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Funkční tenant Azure AD s povoleným Azure AD Premium nebo zkušební licencí. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -291,11 +291,7 @@ Azure Active Directory umožňuje vytvářet [pojmenovaná umístění](location
 
 ### <a name="plan-your-policy-deployment"></a>Plánování nasazení zásad
 
-Až budou nové zásady připravené pro vaše prostředí, ujistěte se, že jste před vydáním provedli kontrolu všech zásad, aby nedocházelo k nežádoucím výsledkům. V následující dokumentaci najdete informace o důležitých informacích o použití zásad a o tom, jak se vyhnout problémům.
-
-* [Co byste měli vědět](best-practices.md)
-
-* [K čemu byste se měli vyhnout](best-practices.md)
+Až budou nové zásady připravené pro vaše prostředí, ujistěte se, že jste před vydáním provedli kontrolu všech zásad, aby nedocházelo k nežádoucím výsledkům.
 
 ## <a name="common-policies"></a>Běžné zásady
 
@@ -462,10 +458,6 @@ Podmínka umístění zásad certifikační autority umožňuje propojení nasta
 ### <a name="terms-of-use"></a>Podmínky použití
 
 Než budete mít přístup k určitým cloudovým aplikacím ve vašem prostředí, můžete získat souhlas od uživatelů tím, že přijmete Podmínky použití (podmínky použití). Podle tohoto [rychlého startu vytvořte podmínek použití](require-tou.md).
-
-### <a name="classic-policies"></a>Klasické zásady
-
-V [Azure Portal](https://portal.azure.com/)můžete najít zásady certifikační autority v části Azure Active Directory > zabezpečení > podmíněný přístup. Vaše organizace může mít také starší zásady certifikační autority, které nejsou vytvořeny pomocí této stránky. Tyto zásady se označují jako klasické zásady. Doporučujeme [zvážit možnost migrace těchto klasických zásad v Azure Portal](best-practices.md).
 
 ## <a name="troubleshoot-conditional-access"></a>Řešení potíží s podmíněným přístupem
 

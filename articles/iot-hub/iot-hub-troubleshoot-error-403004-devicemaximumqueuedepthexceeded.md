@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: fc5029f26e5d615502925c4def4e2973c118f38d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421066ef30e23a79b26f97939cdfffb5be83afb5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029983"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148242"
 ---
 # <a name="403004-devicemaximumqueuedepthexceeded"></a>403004 DeviceMaximumQueueDepthExceeded
 
@@ -38,4 +38,4 @@ Podporovaným vzorům pro zprávy typu cloud-zařízení pomocí protokolu HTTPS
 
 Alternativně můžete vylepšit logiku na straně zařízení, aby se rychle dokončily, odmítaly nebo vybraly zprávy ve frontě, zkrátila se doba do živého přenosu, nebo zvažte odeslání méně zpráv Viz téma věnované [hodnotě TTL (Time to Live) zpráv ve směru cloud-zařízení](./iot-hub-devguide-messages-c2d.md#message-expiration-time-to-live).
 
-Nakonec zvažte použití [rozhraní API fronty vyprázdnění](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) k pravidelnému vyčištění čekajících zpráv před dosažením limitu.
+Nakonec zvažte použití [rozhraní API fronty vyprázdnění](/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-deletedevice) k pravidelnému vyčištění čekajících zpráv před dosažením limitu.

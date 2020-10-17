@@ -118,12 +118,12 @@
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
                 - name: Ověřování pomocí tokenu vymezeného úložištěm (Preview)
                   href: container-registry-repository-scoped-permissions.md
-            - name: Řízení přístupu na základě role
+            - name: Řízení přístupu na základě role v Azure
               href: container-registry-roles.md
             - name: Důvěryhodnost obsahu
               href: container-registry-content-trust.md
             - name: Kontrola imagí s využitím služby Security Center
-              href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+              href: ../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json
         - name: Registry a další služby Azure
           expanded: false
           items:

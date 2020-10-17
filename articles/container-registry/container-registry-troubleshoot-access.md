@@ -3,12 +3,12 @@ title: Řešení potíží se sítí pomocí registru
 description: Příznaky, příčiny a řešení běžných potíží při přístupu ke službě Azure Container Registry ve virtuální síti nebo za bránou firewall
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743365"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148457"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Řešení potíží se sítí pomocí registru
 
@@ -103,7 +103,7 @@ Související odkazy:
 
 ### <a name="configure-service-access"></a>Konfigurace přístupu ke službě
 
-V současné době Azure Security Center nemůžou provádět [kontrolu ohrožení zabezpečení imagí](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) v registru, který omezuje přístup k privátním koncovým bodům, vybraným podsítím nebo IP adresám. Prostředky následujících služeb navíc nemůžou získat přístup k registru kontejneru s omezeními sítě:
+V současné době Azure Security Center nemůžou provádět [kontrolu ohrožení zabezpečení imagí](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) v registru, který omezuje přístup k privátním koncovým bodům, vybraným podsítím nebo IP adresám. Prostředky následujících služeb navíc nemůžou získat přístup k registru kontejneru s omezeními sítě:
 
 * Azure DevOps Services 
 * Azure Container Instances
@@ -113,7 +113,7 @@ Pokud se vyžaduje přístup nebo integrace těchto služeb Azure s registrem ko
 
 Související odkazy:
 
-* [Azure Container Registry skenování imagí Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry skenování imagí Security Center](../security-center/defender-for-container-registries-introduction.md)
 * Poskytnutí [zpětné vazby](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
 * [Konfigurace pravidel sítě veřejných IP adres](container-registry-access-selected-networks.md)
 * [Připojení soukromě ke službě Azure Container Registry pomocí privátního odkazu Azure](container-registry-private-link.md)
@@ -138,7 +138,5 @@ Pokud se vám problém nevyřeší, přečtěte si následující možnosti.
   * [Řešení potíží s přihlášením k registru](container-registry-troubleshoot-login.md) 
   * [Řešení potíží s výkonem registru](container-registry-troubleshoot-performance.md)
 * Možnosti [podpory komunity](https://azure.microsoft.com/support/community/)
-* [Microsoft – otázky a odpovědi](https://docs.microsoft.com/answers/products/)
+* [Microsoft – otázky a odpovědi](/answers/products/)
 * [Otevření lístku podpory](https://azure.microsoft.com/support/create-ticket/)
-
-

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309485"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151973"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
 Glosář Language Understanding (LUIS) vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS.
@@ -96,7 +96,7 @@ Klasifikátor je model strojového učení, který předpovídá, do jaké kateg
 
 ## <a name="collaborator"></a>Spolupracovník
 
-Spolupracovníci je koncepčně stejné jako [Přispěvatel](#contributor). Spolupracovníka má udělený přístup, když vlastník přidá e-mailovou adresu spolupracovníka do aplikace, která není řízená řízením přístupu na základě role Azure (Azure RBAC). Pokud stále používáte spolupracovníky, měli byste migrovat svůj účet LUIS a pomocí prostředků vytváření LUIS spravovat přispěvatele s RBAC.
+Spolupracovníci je koncepčně stejné jako [Přispěvatel](#contributor). Spolupracovníka má udělený přístup, když vlastník přidá e-mailovou adresu spolupracovníka do aplikace, která není řízená řízením přístupu na základě role Azure (Azure RBAC). Pokud stále používáte spolupracovníky, měli byste migrovat svůj účet LUIS a pomocí prostředků vytváření LUIS spravovat přispěvatele s využitím Azure RBAC.
 
 ## <a name="contributor"></a>Přispěvatel
 

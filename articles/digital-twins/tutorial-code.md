@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 830052237580101d9141bbf812c050430c6269f2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057480"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144574"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -25,7 +25,7 @@ Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžn
 > * Vyčištění prostředků
 > * Další kroky
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se používá příkazový řádek pro nastavení a práci v projektu. Proto můžete použít libovolný editor kódu k procházení cvičení.
 
@@ -320,13 +320,20 @@ Všimněte si, že není vyvolána žádná chyba při druhém vytvoření vlák
 
 V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými podmnožinami a propojit je s **dvojitým grafem**. K reprezentaci celého prostředí se používají [Dvojitá grafu](concepts-twins-graph.md) .
 
-Aby bylo možné vytvářet relace, budete potřebovat `Azure.DigitalTwins.Core.Serialization` obor názvů. Toto jste přidali do projektu výše pomocí tohoto `using` příkazu:
+Pro usnadnění vytváření relací používá tato ukázka kódu `Azure.DigitalTwins.Core.Serialization` obor názvů. Toto jste přidali do projektu výše pomocí tohoto `using` příkazu:
 
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` není vyžadována pro práci s digitálními úkoly a vztahy; je to volitelný obor názvů, který může pomáhat získat data do správného formátu. Mezi další alternativy použití patří:
+>* Zřetězení řetězců pro vytvoření objektu JSON
+>* Použití analyzátoru JSON jako `System.Text.Json` dynamického sestavení objektu JSON
+>* Modelování vlastních typů v jazyce C#, jejich instance a jejich serializace do řetězců
+
 Přidejte do třídy novou statickou metodu `Program` pod `Main` metodou:
+
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
@@ -348,7 +355,8 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Pak přidejte následující kód na konec `Main` metody pro volání `CreateRelationship` kódu:
+Dále přidejte následující kód na konec `Main` metody, pro volání `CreateRelationship` metody a použijte kód, který jste právě napsali:
+
 ```csharp
 // Connect the twins with relationships
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");

@@ -4,12 +4,12 @@ description: Doporučení pro zabezpečení imagí a tajných klíčů pro Azure
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898bdf77bf4b6636e78f5d735fc8650da4fde2b8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922230"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148656"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Požadavky na zabezpečení pro Azure Container Instances
 
@@ -34,7 +34,7 @@ Veřejně dostupná image kontejneru nezaručuje zabezpečení. Image kontejneru
 
 Využijte výhod řešení ke skenování imagí kontejnerů v privátním registru a identifikaci potenciálních ohrožení zabezpečení. Je důležité pochopit hloubku detekce hrozeb, kterou poskytují různá řešení.
 
-Azure Container Registry například volitelně [integruje s Azure Security Center](../security-center/azure-container-registry-integration.md) , aby automaticky kontrolovala všechny image Linux vložené do registru. Integrovaný Qualys skener s Azure Security Center detekuje slabá místa v obrazech, klasifikuje je a poskytuje pokyny k nápravě.
+Azure Container Registry například volitelně [integruje s Azure Security Center](../security-center/defender-for-container-registries-introduction.md) , aby automaticky kontrolovala všechny image Linux vložené do registru. Integrovaný Qualys skener s Azure Security Center detekuje slabá místa v obrazech, klasifikuje je a poskytuje pokyny k nápravě.
 
 K dispozici jsou také řešení pro monitorování zabezpečení a kontrolu imagí, jako je [TwistLock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) a [azurová zabezpečení](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , a to prostřednictvím Azure Marketplace.  
 
@@ -138,7 +138,7 @@ Monitorujte své aktivity prostředků, jako jsou soubory, sítě a další pros
 
 Udržujte přesnou auditový záznam o přístupu pro správu k ekosystému kontejnerů, včetně clusteru Kubernetes, registru kontejnerů a imagí kontejnerů. Tyto protokoly mohou být nezbytné pro účely auditování a budou užitečné jako forenzní legitimace po jakémkoli incidentu zabezpečení. Mezi řešení Azure patří:
 
-* [Integrace služby Azure Kubernetes s Azure Security Center](../security-center/azure-kubernetes-service-integration.md) pro monitorování konfigurace zabezpečení prostředí clusteru a generování doporučení zabezpečení
+* [Integrace služby Azure Kubernetes s Azure Security Center](../security-center/defender-for-kubernetes-introduction.md) pro monitorování konfigurace zabezpečení prostředí clusteru a generování doporučení zabezpečení
 * [Řešení Azure Container monitoring](../azure-monitor/insights/containers.md)
 * Protokoly prostředků pro [Azure Container Instances](container-instances-log-analytics.md) a [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 

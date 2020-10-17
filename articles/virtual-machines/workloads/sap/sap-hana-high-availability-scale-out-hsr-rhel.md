@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/02/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 658470a3c19f8484ac56f6a1d88d23c3d7b4147e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 520a7649942fc5186d32020853b98297ef8b34d7
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978101"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152118"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA systému škálování na více systémů na Red Hat Enterprise Linux 
 
@@ -92,7 +92,7 @@ Než začnete, přečtěte si následující poznámky a dokumenty SAP:
 * [Dokumentace k Azure NetApp Files][anf-azure-doc] 
 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 Jedna z metod, jak dosáhnout vysoké dostupnosti pro Hana s vysokou dostupností pro instalace na více instancí HANA, je konfigurace replikace systému HANA a ochrana řešení pomocí clusteru Pacemaker, aby bylo možné automatické převzetí služeb při selhání. Když dojde k selhání aktivního uzlu, cluster převezme prostředky HANA do druhé lokality.  
 Uvedená konfigurace zobrazuje tři uzly HANA na každé lokalitě, a to i majoritní uzel maker, aby se zabránilo scénáři děleného mozku. Pokyny mohou být upraveny tak, aby zahrnovaly více virtuálních počítačů jako uzly databáze HANA.  
@@ -219,6 +219,9 @@ Pro konfiguraci prezentovanou v tomto dokumentu nasaďte sedm virtuálních poč
       1. Ujistěte se, že jste **povolili plovoucí IP adresu**.
       1. Vyberte **OK**.
 
+   > [!IMPORTANT]
+   > Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.    
+   
    > [!Note]
    > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: baf528e1b4ab7e323b69574729669d09692741cc
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91273258"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148153"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Vytvoření a použití interní Load Balancer App Service Environment 
 
@@ -50,7 +50,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 1. V Azure Portal vyberte **vytvořit prostředek**  >  **Web**  >  **App Service Environment**.
 
-2. Vyberte předplatné.
+2. Vyberte své předplatné.
 
 3. Vyberte nebo vytvořte skupinu prostředků.
 
@@ -158,7 +158,7 @@ INTERNÍHO nástroje služby ASE, které jste provedli dříve, než může 2019
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md

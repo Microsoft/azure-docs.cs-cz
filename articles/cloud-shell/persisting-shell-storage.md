@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 16345ae479be70ffb1eaae95196a43ec99ca1586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470132"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152269"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachovat soubory v Azure Cloud Shell
 Cloud Shell využívá službu Azure File Storage k uchování souborů napříč relacemi. Při počátečním spuštění vás Cloud Shell vyzve k přidružení nové nebo existující sdílené složky, která bude uchovávat soubory napříč relacemi.
@@ -55,7 +55,7 @@ Když se zobrazí výzva k nastavení úložiště, vyberte **Zobrazit upřesňu
 ![Nastavení skupiny prostředků](media/persisting-shell-storage/advanced-storage.png)
 
 ## <a name="securing-storage-access"></a>Zabezpečení přístupu k úložišti
-V případě zabezpečení by měl každý uživatel zřídit vlastní účet úložiště.  Pro řízení přístupu na základě role (RBAC) musí mít uživatelé oprávnění Přispěvatel nebo vyšší na úrovni účtu úložiště.
+V případě zabezpečení by měl každý uživatel zřídit vlastní účet úložiště.  Pro řízení přístupu na základě role Azure (Azure RBAC) musí mít uživatelé oprávnění Přispěvatel nebo vyšší na úrovni účtu úložiště.
 
 Cloud Shell používá ke sdílení souborů Azure v účtu úložiště v rámci zadaného předplatného. Kvůli zděděným oprávněním budou mít uživatelé s dostatečným oprávněním pro přístup k předplatnému přístup ke všem účtům úložiště a sdíleným složkám obsaženým v předplatném.
 
@@ -66,7 +66,7 @@ Pokud chcete zjistit aktuální oblast, kterou můžete spustit `env` v bash, na
 
 Cloud Shell počítače existují v následujících oblastech:
 
-|Oblast|Oblast|
+|Plošný|Oblast|
 |---|---|
 |Amerika|Východní USA, Střed USA – jih Západní USA|
 |Evropa|Severní Evropa, Západní Evropa|
@@ -165,7 +165,7 @@ Sdílenou složku Azure, která je připojená k Cloud Shell, můžete kdykoli o
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-Poznámka: Pokud potřebujete definovat funkci v souboru a zavolat ji z rutin PowerShellu, musí být zahrnut operátor tečka. Například: . .\MyFunctions.ps1
+Poznámka: Pokud potřebujete definovat funkci v souboru a zavolat ji z rutin PowerShellu, musí být zahrnut operátor tečka. Například:. .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>Další kroky
 [Rychlý Start Cloud Shell](quickstart.md) <br>

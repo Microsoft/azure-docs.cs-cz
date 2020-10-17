@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a26581b61a4b99bd11f48a3d431a1bb85148d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3248085a0719628bcf7fe42253156d9652b86cd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393424"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148624"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Základní hodnoty zabezpečení Azure pro Container Instances
 
@@ -73,7 +73,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 * [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
 * [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -143,7 +143,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 * [Pochopení a použití značek služeb](../virtual-network/service-tags-overview.md) 
 
-* [Pochopení a použití skupin zabezpečení aplikací](../virtual-network/security-overview.md#application-security-groups)
+* [Pochopení a použití skupin zabezpečení aplikací](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 * [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md)
 
@@ -159,7 +159,7 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ukázky Azure Policy pro sítě](/azure/governance/policy/samples/#network)
+* [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
 * [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -498,7 +498,7 @@ Označení a verze kontejnerových obrázků, které vám pomůžou při sledov�
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Vytvoření skupin pro správu](../governance/management-groups/create.md)
+* [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -613,7 +613,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 * [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integrace s Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -652,7 +652,7 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 * [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integrace s Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -664,7 +664,7 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 * [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integrace s Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -707,7 +707,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -755,7 +755,7 @@ Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidel
 * [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 * [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
-* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integrace s Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 
 
@@ -789,7 +789,7 @@ Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidel
 
 * [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -825,7 +825,7 @@ Spravujte a zkontrolujte přístup k Azure Container Instances prostředkům pom
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Vytvoření skupin pro správu](../governance/management-groups/create.md)
+* [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md)
 
@@ -900,7 +900,7 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 * [Bezpečnostní doporučení pro monitorování a kontrolu kontejnerů pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integrace s Security Center](../security-center/defender-for-container-registries-introduction.md)
 * [Základní aktualizace obrázků pro úlohy Azure Container Registry](../container-registry/container-registry-tasks-base-images.md)
 
 
@@ -1105,7 +1105,7 @@ Volitelně můžete zálohovat image kontejnerů importem z jednoho registru do 
 
 **Pokyny**: můžete povolit Soft-Delete v Azure Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-* [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 

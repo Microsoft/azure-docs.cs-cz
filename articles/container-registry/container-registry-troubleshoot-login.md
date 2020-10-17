@@ -3,12 +3,12 @@ title: Řešení potíží s přihlášením k registru
 description: Příznaky, příčiny a řešení běžných potíží při přihlašování do služby Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d5071a1e759d26ce43d2eb5d9b8215781d813d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253350"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148448"
 ---
 # <a name="troubleshoot-registry-login"></a>Řešení potíží s přihlášením k registru
 
@@ -95,7 +95,7 @@ Související odkazy:
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>Ověření přihlašovacích údajů má oprávnění pro přístup k registru.
 
-Potvrďte oprávnění registru, která jsou přidružená k přihlašovacím údajům, jako je například `AcrPull` role RBAC pro vyžádání imagí z registru nebo `AcrPush` role pro vložení imagí. 
+Potvrďte oprávnění registru, která jsou přidružená k přihlašovacím údajům, jako je například `AcrPull` role Azure pro vyžádání imagí z registru nebo `AcrPush` role pro vložení imagí. 
 
 Přístup k registru v portálu nebo správě registru pomocí rozhraní příkazového řádku Azure CLI vyžaduje aspoň `Reader` roli k provádění operací Azure Resource Manager.
 
@@ -103,7 +103,7 @@ K přidání nebo odebrání přiřazení rolí musí mít vlastník v rámci p�
 
 Související odkazy:
 
-* [Role a oprávnění RBAC – Azure Container Registry](container-registry-roles.md)
+* [Role a oprávnění Azure – Azure Container Registry](container-registry-roles.md)
 * [Přihlášení s tokenem s oborem úložiště](container-registry-repository-scoped-permissions.md)
 * [Přidání nebo odebrání přiřazení rolí Azure pomocí portálu Azure Portal](../role-based-access-control/role-assignments-portal.md)
 * [Vytvoření aplikace Azure AD a instančního objektu s přístupem k prostředkům pomocí portálu](../active-directory/develop/howto-create-service-principal-portal.md)
@@ -142,7 +142,5 @@ Pokud se vám problém nevyřeší, přečtěte si následující možnosti.
   * [Řešení potíží se sítí pomocí registru](container-registry-troubleshoot-access.md)
   * [Řešení potíží s výkonem registru](container-registry-troubleshoot-performance.md)
 * Možnosti [podpory komunity](https://azure.microsoft.com/support/community/)
-* [Microsoft – otázky a odpovědi](https://docs.microsoft.com/answers/products/)
+* [Microsoft – otázky a odpovědi](/answers/products/)
 * [Otevření lístku podpory](https://azure.microsoft.com/support/create-ticket/) založeného na informacích, které poskytnete, může být spuštění rychlé diagnostiky pro chyby ověřování v registru.
-
-

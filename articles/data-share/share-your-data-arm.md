@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654102"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146144"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Rychlý Start: sdílení dat pomocí šablon Azure Data Share a Správce prostředků
 
@@ -60,7 +60,7 @@ Tato šablona se vytvoří pro účely učení. V praxi obvykle máte nějaká d
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-Je to proto, že se nasazení pokouší vytvořit datovou sadu před dokončením přiřazení RBAC. Navzdory chybové zprávě může být nasazení úspěšné.  Pořád budete moct projít [kontrolou nasazených prostředků](#review-deployed-resources).
+Důvodem je to, že nasazení se snaží vytvořit datovou sadu, aby bylo možné dokončit přiřazení role Azure. Navzdory chybové zprávě může být nasazení úspěšné.  Pořád budete moct projít [kontrolou nasazených prostředků](#review-deployed-resources).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -81,7 +81,7 @@ Je to proto, že se nasazení pokouší vytvořit datovou sadu před dokončení
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Otevřete účet pro sdílení dat, který jste vytvořili.
 1. V nabídce vlevo vyberte **Odeslat sdílené složky**.  V seznamu se zobrazí účet úložiště.
 1. Vyberte účet úložiště.  V části **Podrobnosti**se zobrazí nastavení synchronizace, jak jste nakonfigurovali v šabloně.

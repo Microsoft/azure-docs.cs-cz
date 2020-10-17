@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19c6bf058af62f830c825eef900bff712ba07181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085905"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145405"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -52,7 +52,7 @@ Funkce Azure AD terms of use mají tyto možnosti:
 - Zobrazit protokol aktivity použití pro dodržování předpisů a audit.
 - Vytvářejte a spravujte podmínek použití pomocí [rozhraní Microsoft Graph API](/graph/api/resources/agreement?view=graph-rest-beta) (aktuálně ve verzi Preview).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít a nakonfigurovat používání podmínek Azure AD, musíte mít:
 
@@ -117,7 +117,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
    ![Rozevírací seznam pro podmíněný přístup pro výběr šablony zásad](./media/terms-of-use/conditional-access-templates.png)
 
-   | Šablona | Description |
+   | Šablona | Popis |
    | --- | --- |
    | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásada podmíněného přístupu pro všechny hosty a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete možná muset odhlásit a přihlásit se. |
    | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásada podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete muset odhlásit a přihlásit se. |
@@ -253,12 +253,12 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Jiné |
+> |  | iOS | Android | Windows 10 | Další |
 > | --- | --- | --- | --- | --- |
-> | **Native app** | Yes | Yes | Yes |  |
-> | **Microsoft Edge** | Yes | Yes | Yes |  |
-> | **Internet Explorer** | Yes | Yes | Yes |  |
-> | **Chrome (s příponou)** | Yes | Yes | Yes |  |
+> | **Native app** | Ano | Ano | Ano |  |
+> | **Microsoft Edge** | Ano | Ano | Ano |  |
+> | **Internet Explorer** | Ano | Ano | Ano |  |
+> | **Chrome (s příponou)** | Ano | Ano | Ano |  |
 
 Podmínky použití podle zařízení mají následující omezení:
 
@@ -392,4 +392,3 @@ Odpověď: Podmínky použití využívá následující koncové body pro ově�
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití](require-tou.md)
-- [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md)

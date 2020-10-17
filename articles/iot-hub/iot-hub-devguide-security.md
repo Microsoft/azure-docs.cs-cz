@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: c7ad38dc43280164fc9dbca5d5f2381e613dc1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbe277c7451b02887ec5657b1a183fcd001d134e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281330"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148295"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -454,7 +454,7 @@ Tady jsou hlavní kroky vzoru služby tokenu:
 4. Zařízení/modul používá token přímo ve službě IoT Hub.
 
 > [!NOTE]
-> K vytvoření tokenu ve službě tokenů můžete použít třídu .NET [SharedAccessSignatureBuilder](https://msdn.microsoft.com/library/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder.aspx) nebo [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) třídy Java.
+> K vytvoření tokenu ve službě tokenů můžete použít třídu .NET [SharedAccessSignatureBuilder](/dotnet/api/microsoft.azure.devices.common.security.sharedaccesssignaturebuilder) nebo [IotHubServiceSasToken](/java/api/com.microsoft.azure.sdk.iot.service.auth.iothubservicesastoken) třídy Java.
 
 Služba tokenů může nastavit vypršení platnosti tokenu podle potřeby. Po vypršení platnosti tokenu Server IoT Hub naruší připojení zařízení nebo modulu. Zařízení/modul pak musí od služby tokenu požádat o nový token. Krátká doba vypršení platnosti zvyšuje zatížení zařízení i modulu i služby tokenů.
 

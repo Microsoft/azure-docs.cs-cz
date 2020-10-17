@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88118786"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152001"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Rychlý Start: vytvoření Azure Data Catalog
 
@@ -24,7 +24,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Předpoklady
 
 > [!Note]
-> Z důvodu požadavků na zabezpečení Azure Azure Data Catalog má protokol TLS (enfored Transport Layer Security) 1,2. TLS 1,0 a TLS 1,1 jsou zakázané. Pokud počítač není aktualizovaný pro TLS 1,2, může dojít k chybám při spuštění registračního nástroje. Pokud chcete aktualizovat počítač pro TLS 1,2, přečtěte si téma [Povolení zabezpečení transportní vrstvy (1,2)](https://docs.microsoft.com/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
+> Z důvodu požadavků na zabezpečení Azure Azure Data Catalog má protokol TLS (enfored Transport Layer Security) 1,2. TLS 1,0 a TLS 1,1 jsou zakázané. Pokud počítač není aktualizovaný pro TLS 1,2, může dojít k chybám při spuštění registračního nástroje. Pokud chcete aktualizovat počítač pro TLS 1,2, přečtěte si téma [Povolení zabezpečení transportní vrstvy (1,2)](/mem/configmgr/core/plan-design/security/enable-tls-1-2) .
 
 Abyste mohli začít, musíte mít:
 
@@ -77,7 +77,7 @@ Můžete zřídit pouze jeden katalog dat na organizaci (doména Azure Active Di
 
 10. Rozbalte **Název portálu** a přidejte další text, který se zobrazí v nadpisu portálu.
 
-    ![Azure Data Catalog – název portálu](media/data-catalog-get-started/data-catalog-portal-title.png)
+    ![Název Catalog-Portal dat Azure](media/data-catalog-get-started/data-catalog-portal-title.png)
 
 11. Po dokončení stránky **Nastavení** přejděte na stránku publikování a potom klikněte na **publikovat** .
 

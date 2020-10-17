@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87460996"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148773"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegování registrace uživatelů a předplatného produktu
 
@@ -61,21 +61,19 @@ Nyní je třeba vytvořit **koncový bod delegování**. Je potřeba provést n�
    * Vypočítat hodnotu hash HMAC-SHA512 řetězce na základě parametrů dotazu **ReturnUrl** a **Salt** ([vzorový kód uvedený níže]):
      
      > HMAC (**sůl** + ' \n ' + **ReturnUrl**)
-     > 
-     > 
+
    * Porovná výše vypočítanou hodnotu hash s hodnotou parametru dotazu **SIG** . Pokud se dvě hodnoty hash shodují, přejděte k dalšímu kroku, jinak zakažte požadavek.
 3. Ověřte, že jste obdrželi žádost o přihlášení nebo přihlášení: parametr dotazu **operace** bude nastaven na "Signing" (přihlásit**se).**
 4. Prezentovat uživatele s uživatelským ROZHRANÍm pro přihlášení nebo registraci
 5. Pokud se uživatel přihlásí, musíte pro ně vytvořit odpovídající účet v API Management. [Vytvoří uživatele] s REST APIem API Management. Když to uděláte, ujistěte se, že jste nastavili ID uživatele na stejnou hodnotu jako ve vašem úložišti uživatelů nebo na ID, které můžete sledovat.
 6. Po úspěšném ověření uživatele:
    
-   * [požadavek na token jednotného přihlašování (SSO)] prostřednictvím API Management REST API
+   * [Vyžádání sdíleného přístupového tokenu] přes API Management REST API
    * Přidejte parametr dotazu returnUrl k adrese URL jednotného přihlašování, kterou jste dostali z volání rozhraní API výše:
      
-     > například `https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
-     > 
-     > 
-   * přesměruje uživatele na výše vytvořenou adresu URL.
+     > například `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     
+   * Přesměruje uživatele na výše vytvořenou adresu URL.
 
 Kromě operace **přihlášení** můžete také provádět správu účtů podle předchozích kroků a pomocí jedné z následujících operací:
 
@@ -186,7 +184,7 @@ Další informace o delegování najdete v následujícím videu:
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[požadavek na token jednotného přihlašování (SSO)]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[Vyžádání sdíleného přístupového tokenu]: /rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken
 [Vytvoření uživatele]: /rest/api/apimanagement/2019-12-01/user/createorupdate
 [volání REST API pro odběry]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps

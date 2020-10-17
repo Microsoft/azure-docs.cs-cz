@@ -4,12 +4,12 @@ description: Tento článek poskytuje pokyny pro referenční architekturu pro A
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367746"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144553"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Referenční architektura Azure DevTest Labs pro podniky
 Tento článek popisuje referenční architekturu, která vám může pomáhat s nasazením řešení na základě Azure DevTest Labs v podniku. Zahrnuje následující:
@@ -30,7 +30,7 @@ Toto jsou klíčové prvky referenční architektury:
     - Máte místní data, která se nedají přesunout do cloudu.
     - Upřednostňujete připojení virtuálních počítačů testovacího prostředí k místní doméně.
     - Chcete vynutit veškerý síťový provoz v cloudovém prostředí a z něj prostřednictvím místní brány firewall pro zabezpečení/dodržování předpisů.
-- **Skupiny zabezpečení sítě**: běžný způsob, jak omezit provoz do cloudového prostředí (nebo v cloudovém prostředí) založeného na zdrojové a cílové IP adrese, je použití [skupiny zabezpečení sítě](../virtual-network/security-overview.md). Například chcete v sítích testovacího prostředí, které pocházejí z podnikové sítě, umožňovat pouze provoz.
+- **Skupiny zabezpečení sítě**: běžný způsob, jak omezit provoz do cloudového prostředí (nebo v cloudovém prostředí) založeného na zdrojové a cílové IP adrese, je použití [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md). Například chcete v sítích testovacího prostředí, které pocházejí z podnikové sítě, umožňovat pouze provoz.
 - **Brána vzdálené plochy**: podniky obvykle blokují odchozí připojení ke vzdálené ploše v podnikové bráně firewall. Existuje několik možností, jak povolit připojení ke cloudovém prostředí v DevTest Labs, včetně těchto:
   - Použijte [bránu Vzdálená plocha](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)a povolte statickou IP adresu nástroje pro vyrovnávání zatížení brány.
   - [Nasměrujte veškerý příchozí provoz protokolu RDP](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) prostřednictvím připojení ExpressRoute/site-to-Site VPN. Tato funkce je běžně zvážena v případě, že podniky naplánují nasazení DevTest Labs.
@@ -59,7 +59,7 @@ DevTest Labs má skvělé administrativní uživatelské rozhraní pro práci s 
 
 Je důležité si uvědomit, že DevTest Labs používá základní prostředky Azure, které jsou spravované stejným způsobem: sítě, disky, výpočetní prostředky a tak dále. Například Azure Policy platí pro virtuální počítače, které jsou vytvořeny v testovacím prostředí. Azure Security Center může hlásit dodržování předpisů virtuálních počítačů. A služba Azure Backup může poskytovat pravidelné zálohování pro virtuální počítače v testovacím prostředí.
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 Azure DevTest Labs používá existující prostředky v Azure (výpočty, sítě a tak dále). Proto automaticky přináší výhody funkcí zabezpečení, které jsou součástí platformy. Pokud třeba chcete, aby příchozí připojení ke vzdálené ploše vycházela jenom z podnikové sítě, stačí přidat skupinu zabezpečení sítě do virtuální sítě v bráně Vzdálená plocha. Jediným dalším aspektem zabezpečení je úroveň oprávnění, která udělujete členům týmu, kteří používají cvičení na každodenní bázi. Nejběžnějšími oprávněními jsou [ *vlastník* a *uživatel*](devtest-lab-add-devtest-user.md). Další informace o těchto rolích najdete [v tématu Přidání vlastníků a uživatelů v Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ## <a name="next-steps"></a>Další kroky

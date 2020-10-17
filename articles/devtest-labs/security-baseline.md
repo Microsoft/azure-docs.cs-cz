@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 49b07242068df5d7c46c602140c8b3e1f778e90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398318"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151870"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -264,7 +264,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 **Doprovodné materiály:** Pomocí značek můžete posloužit ke sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-- [Vytváření a používání značek](../azure-resource-manager/resource-group-using-tags.md)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 
@@ -273,10 +273,10 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 **Doprovodné materiály:** Implementujte samostatné odběry nebo skupiny pro správu pro vývoj, testování a produkci. Instance Azure DevTest Labs by se měly oddělit pomocí virtuální sítě/podsítě a vhodně se označit příznakem. 
 
-- [Vytvoření dalších předplatných Azure](../billing/billing-create-subscription.md)
-- [Vytvoření skupin pro správu](../governance/management-groups/create.md)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
 - [Jak nakonfigurovat virtuální síť pro DevTest Labs](devtest-lab-configure-vnet.md)
-- [Vytváření a používání značek](../azure-resource-manager/resource-group-using-tags.md)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 - [Vytváření a používání značek pro DevTest Labs](devtest-lab-add-tag.md)
 
 **Monitorování Azure Security Center:** Momentálně není k dispozici
@@ -380,7 +380,7 @@ Microsoft provádí správu ohrožení zabezpečení na podkladových zdrojích,
 **Doprovodné materiály:** Pomocí Azure Update Management zajistěte, aby byly na virtuálních počítačích s Windows a Linux hostovaných v rámci DevTest Labs nainstalované nejnovější aktualizace zabezpečení. U virtuálních počítačů s Windows ověřte, že je povolená možnost web Windows Update a že se nastaví automatické aktualizace. Toto nastavení není aktuálně k dispozici pro konfiguraci prostřednictvím DevTest Labs, ale správce testovacího prostředí/Správce předplatného může nakonfigurovat toto nastavení u základních výpočetních virtuálních počítačů ve svém předplatném. 
 
 - [Postup konfigurace Update Management pro virtuální počítače v Azure](../automation/update-management/update-mgmt-overview.md)
-- [Porozumění zásadám zabezpečení Azure monitorovaným Security Center](../security-center/security-center-policy-definitions.md)
+- [Porozumění zásadám zabezpečení Azure monitorovaným Security Center](../security-center/policy-reference.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 
@@ -444,7 +444,7 @@ Jako správce předplatného můžete také pomocí řešení Azure Update Manag
 **Doprovodné materiály:** Používejte označení, skupiny pro správu a samostatné odběry, a v případě potřeby samostatné laboratoře, k organizování a sledování laboratorních cvičení a prostředků souvisejících s testovacím prostředím. Proveďte pravidelné sjednocení inventáře a zajistěte rychlou odstranění neautorizovaných prostředků z předplatného.
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
-- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 - [Postup vytvoření testovacího prostředí pomocí DevTest Labs](devtest-lab-create-lab.md)
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 - [Postup konfigurace značek pro testovací prostředí](devtest-lab-add-tag.md)
@@ -517,7 +517,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 
 Viz následující články: 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/not-allowed-resource-types.md)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování Azure Security Center:** Ano
 
@@ -559,7 +559,7 @@ Viz následující články:
 - [Konfigurace služby Virtual Network pro DevTest Labs](devtest-lab-configure-vnet.md)
 - [Přehled Azure Firewall](../firewall/overview.md)
 - [Přehled Firewallu webových aplikací](../web-application-firewall/overview.md)
-- [Přehled zabezpečení sítě](../virtual-network/security-overview.md)
+- [Přehled zabezpečení sítě](../virtual-network/network-security-groups-overview.md)
 - [Přehled služby Azure Virtual Network]()
 - [Uspořádání prostředků s využitím skupin pro správu Azure](../governance/management-groups/overview.md)
 - [Průvodce rozhodováním ohledně předplatného](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -617,7 +617,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou taky spravované a udržované Microsoftem.
 
-- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Přehled konfigurace stavu Azure Automation](../automation/automation-dsc-overview.md)
 - [Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
 - [Postup vytvoření objektu pro vytváření imagí v DevTest Labs](image-factory-create.md)
@@ -629,8 +629,8 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Konfigurace prostředků Azure v zabezpečeném úložišti
 **Doprovodné materiály:** Využijte Azure DevOps k bezpečnému ukládání a správě kódu, jako jsou vlastní zásady Azure, Azure Resource Manager šablony a požadované konfigurační skripty stavu. Pokud chcete získat přístup k prostředkům, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps.
 
-- [Kurz k Azure Repos Git](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [O oprávněních a skupinách](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Kurz k Azure Repos Git](/azure/devops/repos/git/gitworkflow)
+- [O oprávněních a skupinách](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Integrace mezi Azure DevTest Labs a pracovním postupem Azure DevOps](devtest-lab-dev-ops.md)
 
 **Monitorování Azure Security Center:** Nelze použít
@@ -681,7 +681,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: Implementujte automatizované monitorování konfigurace pro operační systémy
 **Doprovodné materiály:** Pomocí Azure Security Center můžete provádět kontroly základní hodnoty pro kontejnery a nastavení Docker.
 
-- [Porozumění doporučení týkajících se kontejnerů Azure Security Center](../security-center/security-center-container-recommendations.md)
+- [Porozumění doporučení týkajících se kontejnerů Azure Security Center](../security-center/container-security.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 
@@ -692,7 +692,7 @@ Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou
 
 - [Konfigurace spravované identity pro nasazení Azure Resource Manager prostředí v DevTest Labs](use-managed-identities-environments.md)
 - [Konfigurace spravované identity pro nasazení virtuálních počítačů v DevTest Labs](enable-managed-identities-lab-vms.md)
-- [Vytvoření trezoru klíčů](../key-vault/quick-create-portal.md)
+- [Vytvoření trezoru klíčů](../key-vault/secrets/quick-create-portal.md)
 - [Ověření Key Vault](../key-vault/general/authentication.md)
 - [Postup přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md)
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 4112e8aae485e229beb16d21e90280750e1465e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7c53d720aef029d79d95cacd558c3bf9d35b4af6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89462662"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148927"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Rychlý Start: nasazení IoT Hub Azure a účtu úložiště pomocí šablony ARM
 
@@ -46,7 +46,7 @@ V této části najdete postup nasazení šablony, vytvoření virtuálního za�
 
     [![Nasazení do Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-iothub-auto-route-messages%2Fazuredeploy.json)
 
-1. Stažení a extrahování [ukázek pro IoT C#](https://docs.microsoft.com/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)
+1. Stažení a extrahování [ukázek pro IoT C#](/samples/azure-samples/azure-iot-samples-csharp/azure-iot-samples-for-csharp-net/)
 
 1. Otevřete okno příkazového řádku a přejdete do složky, ve které zrušíte ukázky pro IoT C#. Vyhledejte složku se souborem ARM-Read-Write. csproj. V tomto příkazovém okně vytvoříte proměnné prostředí. Pokud chcete získat klíče, přihlaste se k [Azure Portal] ( https://portal.azure.com ]. Vyberte **skupiny prostředků** a pak vyberte skupinu prostředků použitou pro tento rychlý Start.
 
@@ -134,4 +134,4 @@ K odebrání prostředků přidaných během tohoto rychlého startu se přihlas
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Kurz: vytvoření a nasazení první šablony ARM](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

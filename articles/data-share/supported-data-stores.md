@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 08/14/2020
-ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: ddd586bf9a88b1246fcf20fc19493f5003bbb530
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259009"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151747"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat ve službě Azure Data Share
 
@@ -28,8 +28,8 @@ Následující tabulka uvádí podporované zdroje dat pro sdílenou složku Azu
 | Azure Blob Storage |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Database |Public Preview | |
-| Azure synapse Analytics (dříve Azure SQL DW) |Public Preview | |
+| Azure SQL Database |Verze Public Preview | |
+| Azure synapse Analytics (dříve Azure SQL DW) |Verze Public Preview | |
 | Průzkumník dat Azure | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Matice podpory úložiště dat

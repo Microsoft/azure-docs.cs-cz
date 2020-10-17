@@ -5,26 +5,45 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a79b046170a5a3f3574895490aa649fd02da082
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5361460f7816dd4a3b2b53deecd9d360f98ad1d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016123"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145368"
 ---
 # <a name="building-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
 Jak je vysvětleno v článku [co je podmíněný přístup](overview.md), zásada podmíněného přístupu je příkaz if-then, který slouží k **přiřazování** a **řízení přístupu**. Zásada podmíněného přístupu přináší signály dohromady, provede rozhodnutí a vynutila zásady organizace.
 
-Jak organizace vytváří tyto zásady? Co je potřeba?
+Jak organizace vytváří tyto zásady? Co je potřeba? Jak se používají?
 
 ![Podmíněný přístup (signály + rozhodnutí + vynucení = zásady)](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
+
+V každém okamžiku se může vztahovat na jednotlivé uživatele víc zásad podmíněného přístupu. V takovém případě musí být splněné všechny zásady, které platí. Pokud například jedna zásada vyžaduje vícefaktorové ověřování (MFA) a jiná vyžaduje vyhovující zařízení, je nutné provést ověřování MFA a použít vyhovující zařízení. Všechna přiřazení jsou logicky **ANDed**. Pokud máte nakonfigurované více než jedno přiřazení, musí být pro aktivaci zásady splněné všechna přiřazení.
+
+Všechny zásady se vynutily ve dvou fázích:
+
+- Fáze 1: shromáždění podrobností relace 
+   - Shromážděte podrobnosti o relaci, jako je síťové umístění a identita zařízení, které budou nezbytné pro vyhodnocení zásad. 
+   - Fáze 1 vyhodnocení zásad probíhá pro povolené zásady a zásady v [režimu pouze sestavy](concept-conditional-access-report-only.md).
+- Fáze 2: vynucení 
+   - Pomocí podrobností o relacích shromážděných ve fázi 1 identifikujte všechny požadavky, které nebyly splněny. 
+   - Pokud máte zásadu, která je nakonfigurovaná tak, aby blokovala přístup, pomocí ovládacího prvku udělení bloku zastavte vynucení a uživatel se zablokuje. 
+   - Uživatel bude vyzván k dokončení dalších požadavků na řízení udělení, které nebyly splněny během fáze 1 v následujícím pořadí, dokud nesplní zásady:  
+      - Ověřování pomocí služby Multi-Factor Authentication 
+      - Schválená klientská aplikace/zásada ochrany aplikací 
+      - Spravované zařízení (s odpovídajícím nebo hybridním připojením k Azure AD) 
+      - Podmínky použití 
+      - Vlastní ovládací prvky  
+   - Jakmile jsou všechny ovládací prvky grantu splněné, použijte ovládací prvky relace (vynutila aplikace, Microsoft Cloud App Security a životnost tokenu). 
+   - Fáze 2 vyhodnocení zásad probíhá u všech povolených zásad. 
 
 ## <a name="assignments"></a>Přiřazení
 

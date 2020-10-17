@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3191552421091bc0a2c4e6855c0271c142af1882
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91356413"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152367"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Spuštění vlastního kontejneru v Azure
 
@@ -31,7 +31,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 - <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalujte Docker for Windows</a>.
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
+- <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalujte Visual Studio 2019</a> s pracovními procesy pro **vývoj ASP.NET a web** a **vývoj pro Azure** . Pokud jste již nainstalovali Visual Studio 2019:
 
     - Nainstalujte nejnovější aktualizace v aplikaci Visual Studio tak, že vyberete **nápovědu**vyhledat  >  **aktualizace**.
@@ -87,7 +87,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 ## <a name="create-a-windows-container-app"></a>Vytvoření aplikace typu kontejner pro Windows
 
-1. Přihlaste se na web [Azure Portal]( https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal]( https://portal.azure.com).
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
@@ -199,7 +199,7 @@ K dokončení tohoto rychlého startu budete potřebovat vhodnou image webové a
 > [!IMPORTANT]
 > Nezapomeňte nastavit možnost uživatel s **oprávněními správce** , aby se **povolil** při vytváření registru kontejneru. Můžete ji také nastavit v části **přístupové klíče** stránky registru v Azure Portal. Toto nastavení se vyžaduje pro App Service přístup.
 
-## <a name="sign-in"></a>Přihlásit se
+## <a name="sign-in"></a>Přihlášení
 
 Dále spusťte VS Code a přihlaste se k účtu Azure pomocí rozšíření App Service. Pokud to chcete provést, vyberte na řádku aktivity logo Azure, přejděte do Průzkumníka **služby App Service** , vyberte možnost **Přihlásit se k Azure** a postupujte podle pokynů.
 

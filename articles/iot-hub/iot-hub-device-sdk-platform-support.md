@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 4081fe8ba97ba2dd27680cf5f0fa60abd59e44a9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072267"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152220"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Podpora platforem sady SDK pro zařízení Azure IoT
 
@@ -74,7 +74,7 @@ Jenom Python verze 3.5.3 nebo novější podporuje asynchronní rozhraní API, d
 | Linux                                | .NET Core 2.1                                              |
 | SKU Windows 10 Desktop a Server   | .NET Core 2,1, .NET Framework 4.5.1 nebo .NET Framework 4,7 |
 
-Sadu .NET SDK je také možné použít s Windows IoT Core s [agentem zařízení Azure](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) nebo [vlastním NTService, který umožňuje komunikaci s aplikacemi UWP pomocí protokolu RPC](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
+Sadu .NET SDK je také možné použít s Windows IoT Core s [agentem zařízení Azure](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) nebo [vlastním NTService, který umožňuje komunikaci s aplikacemi UWP pomocí protokolu RPC](/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
@@ -124,7 +124,7 @@ Pokud nemůžete použít některou ze sad SDK pro IoT Hub zařízení, můžete
 
 ## <a name="support-and-other-resources"></a>Podpora a další zdroje informací
 
-Pokud při používání sad SDK pro zařízení Azure IoT dochází k problémům, existuje několik způsobů, jak najít podporu shrnutou níže. Úplné informace o všech možnostech podpory najdete v tématu [Podpora a možnosti pomoci Azure IoT](https://aka.ms/iothelp). 
+Pokud při používání sad SDK pro zařízení Azure IoT dochází k problémům, existuje několik způsobů, jak najít podporu shrnutou níže. Úplné informace o všech možnostech podpory najdete v tématu [Podpora a možnosti pomoci Azure IoT](../iot-fundamentals/iot-support-help.md). 
 
 **Hlášení chyb** – chyby v sadách SDK zařízení je možné ohlásit na stránce problémy v příslušném projektu GitHubu. Opravy se rychle dostanou z projektu na aktualizace produktů.
 
@@ -138,7 +138,7 @@ Pokud při používání sad SDK pro zařízení Azure IoT dochází k problém�
 
 * [Problémy sady SDK pro Azure IoT Hub Python](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**Technické dotazy** – můžete klást technické dotazy k [Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html) a a [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) pomocí značky *Azure-IoT-SDK*.
+**Technické dotazy** – můžete klást technické dotazy k [Microsoft Q&](/answers/topics/azure-iot-sdk.html) a a [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) pomocí značky *Azure-IoT-SDK*.
 
 **Tým zákaznické podpory Microsoftu** – uživatelé, kteří mají [plán podpory](https://azure.microsoft.com/support/plans/) , můžou tým zákaznické podpory společnosti Microsoft zahájit vytvořením nové žádosti o podporu přímo z [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 

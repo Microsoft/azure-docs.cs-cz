@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91842661"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151804"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
@@ -64,7 +64,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Standardní sloupce v Azure monitor protokolu záznamů](platform/log-standard-columns.md) – aktualizace, které zahrnují aplikace založené na pracovních prostorech.
 - [Omezení služby Azure monitor](service-limits.md) – byla aktualizována omezení pro omezování uživatelských dotazů.
 - [Použití účtů úložiště spravovaných zákazníkem ve Azure monitor přepsané log Analyticsm](platform/private-storage.md) článku.
-- [Zobrazení a analýza dat v Azure Log Analytics](log-query/logs-structure.md) – aktualizace, které zahrnují aplikace založené na pracovních prostorech.
+- [Zobrazení a analýza dat v Azure Log Analytics](./platform/data-platform-logs.md) – aktualizace, které zahrnují aplikace založené na pracovních prostorech.
 
 
 ### <a name="platform-logs"></a>Protokoly platformy
@@ -194,11 +194,11 @@ Nové a aktualizované články z změny struktury Azure Monitor pro virtuální
 - [Připojení počítačů se systémem Linux k Azure Monitor](platform/agent-linux.md)
 - [Povolení Azure Monitor pro hybridní prostředí](insights/vminsights-enable-hybrid.md)
 - [Povolit Azure Monitor pro jeden virtuální počítač nebo sadu škálování virtuálního počítače v Azure Portal](insights/vminsights-enable-portal.md)
-- [Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy](insights/vminsights-enable-at-scale-policy.md)
+- [Povolení Azure Monitor pro virtuální počítače pomocí Azure Policy](./insights/vminsights-enable-policy.md)
 - [Povolit Azure Monitor pro virtuální počítače – přehled](insights/vminsights-enable-overview.md)
 - [Povolení Azure Monitor pro virtuální počítače pomocí prostředí PowerShell](insights/vminsights-enable-powershell.md)
 - [Povolení Azure Monitor pro virtuální počítače pomocí šablon Správce prostředků](insights/vminsights-enable-resource-manager.md)
-- [Povolení Azure Monitor pro virtuální počítače s využitím PowerShellu nebo šablon](insights/vminsights-enable-at-scale-powershell.md)
+- [Povolení Azure Monitor pro virtuální počítače s využitím PowerShellu nebo šablon](./insights/vminsights-enable-powershell.md)
 
 
 ### <a name="visualizations"></a>Vizualizace
@@ -292,7 +292,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 
 - [Azure monitor Nejčastější dotazy](faq.md) – přidané oddíly pro metriky.
 - [Azure monitor uživatelsky řízených](platform/customer-managed-keys.md) změn v přípravě na obecnou dostupnost.
-- [Předdefinované definice zásad pro Azure monitor](samples/policy-samples.md) – nový článek.
+- [Předdefinované definice zásad pro Azure monitor](./samples/policy-reference.md) – nový článek.
 - [Účty úložiště vlastněné zákazníkem pro](platform/private-storage.md) ingestování protokolů – nový článek
 - [Správa využití a nákladů na protokoly Azure monitor](platform/manage-cost-storage.md) – přidaní poměrná fakturace clusteru
 - [Pomocí privátního propojení Azure můžete bezpečně propojit sítě a Azure monitor](platform/private-link-security.md) – nový článek.
@@ -330,8 +330,8 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [výraz App () v Azure Monitorch dotazech protokolu](log-query/app-expression.md)
 - [Rozsah dotazu protokolu v Azure Monitor Log Analytics](log-query/scope.md)
 - [Dotazování napříč prostředky pomocí Azure Monitor](log-query/cross-workspace-query.md)
-- [Standardní vlastnosti v Azure Monitor záznamů protokolu](platform/log-standard-properties.md)
-- [Struktura protokolů Azure Monitor](log-query/logs-structure.md)
+- [Standardní vlastnosti v Azure Monitor záznamů protokolu](./platform/log-standard-columns.md)
+- [Struktura protokolů Azure Monitor](./platform/data-platform-logs.md)
 
 
 
@@ -353,7 +353,7 @@ Nové a aktualizované články z restrukturování a konsolidace obsahu protoko
 - [Vytvoření pracovního prostoru Log Analytics pomocí Azure CLI](learn/quick-create-workspace-cli.md) – Přidání oddílu pro odstraňování potíží
 - [Odstraní a obnoví Azure Log Analytics Workspace](platform/delete-workspace.md) – aktualizované informace o obnovení odstraněného pracovního prostoru.
 - [Funkce v Azure Monitorch dotazech protokolu](log-query/functions.md) – odebraná Poznámka o funkcích, které neobsahují jiné funkce.
-- [Struktura Azure monitor v protokolech](log-query/logs-structure.md) – popis vlastností pro Application Insights tabulku
+- [Struktura Azure monitor v protokolech](./platform/data-platform-logs.md) – popis vlastností pro Application Insights tabulku
 - [Použijte protokol Azure monitor s Azure Logic Apps a](platform/logicapp-flow-connector.md) omezením automatizace, které jste přidali v části.
 - [Pomocí PowerShellu můžete vytvořit a nakonfigurovat Log Analytics pracovní prostor](platform/powershell-workspace-configuration.md) – přidání části řešení potíží.
 
@@ -578,7 +578,7 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
 
 - [Konfigurace Azure monitor pro shromažďování dat agenta kontejnerů](insights/container-insights-agent-config.md) – Přidání podrobností pro upgrade agenta na Azure Red Hat OpenShift a přidání dalších informací k odlišení metod pro upgrade agenta.
-- [Vytvořte výstrahy výkonu pro Azure monitor pro kontejnery](insights/container-insights-alerts.md) – revidované informace a aktualizované kroky pro vytvoření výstrahy pro data o výkonu uložené v pracovním prostoru pomocí výstrah kontextu v pracovním prostoru.
+- [Vytvořte výstrahy výkonu pro Azure monitor pro kontejnery](./insights/container-insights-log-alerts.md) – revidované informace a aktualizované kroky pro vytvoření výstrahy pro data o výkonu uložené v pracovním prostoru pomocí výstrah kontextu v pracovním prostoru.
 - [Monitorování Kubernetes s využitím Azure monitor for Containers](insights/container-insights-analyze.md) – aktualizace článku s přehledem a článku o analýze týkající se podpory clusterů Windows Kubernetes.
 - [Konfigurace clusterů Azure Red Hat OpenShift s využitím Azure monitor for Containers](insights/container-insights-azure-redhat-setup.md) – Přidání podrobností pro upgrade agenta na Azure Red Hat OpenShift a přidání dalších informací k odlišení metod pro upgrade agenta.
 - [Nakonfigurujte hybridní clustery Kubernetes s Azure monitor for Containers](insights/container-insights-hybrid-setup.md) – aktualizováno tak, aby odrážely přidanou podporu pro zabezpečený port: 10250 s cAdvisor Kubelet.
@@ -598,7 +598,7 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 
 - [Správa pracovních prostorů Log Analytics v Azure monitor](platform/manage-access.md) – aktualizace akcí.
 - [Spravujte využití a náklady na protokoly Azure monitor](platform/manage-cost-storage.md) – Přidali jsme do oddílu cenového modelu objasnění při výpočtu objemu dat.
-- [Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat šablonu Log Analytics pracovní prostor](platform/template-workspace-configuration.md) – aktualizovaná šablona s novými cenovými úrovněmi.
+- [Pomocí Azure Resource Manager šablon můžete vytvořit a nakonfigurovat šablonu Log Analytics pracovní prostor](./samples/resource-manager-workspace.md) – aktualizovaná šablona s novými cenovými úrovněmi.
 
 ### <a name="platform-logs"></a>Protokoly platformy
 
@@ -668,9 +668,9 @@ Několik článků bylo aktualizováno v rámci změny struktury obsahu pro prot
 - [Omezení služby Azure Monitor](service-limits.md)
 - [Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics](./platform/activity-log.md)
 - [Shromažďování protokolů aktivit Azure s nastavením diagnostiky (Preview) – Azure Monitor](./platform/activity-log.md)
-- [Shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics napříč klienty Azure](platform/activity-log-collect-tenants.md)
+- [Shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics napříč klienty Azure](./platform/activity-log.md)
 - [Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics](./platform/resource-logs.md#send-to-log-analytics-workspace)
-- [Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků](platform/diagnostic-settings-template.md)
+- [Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků](./samples/resource-manager-diagnostic-settings.md)
 - [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik v Azure](platform/diagnostic-settings.md)
 - [Exportovat protokol aktivit Azure](./platform/activity-log.md#legacy-collection-methods)
 - [Přehled protokolů platformy Azure](platform/platform-logs-overview.md)

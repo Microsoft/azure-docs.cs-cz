@@ -293,7 +293,7 @@
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
                 - name: Šablona Resource Manageru
-                  href: platform/template-workspace-configuration.md
+                  href: ./samples/resource-manager-workspace.md
             - name: Odstranění a obnovení pracovního prostoru
               href: platform/delete-workspace.md
             - name: Správa přístupu

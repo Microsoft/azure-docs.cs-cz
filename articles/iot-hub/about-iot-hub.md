@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87428980"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148828"
 ---
 # <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
 
@@ -40,7 +40,7 @@ IoT Hub poskytuje zabezpečený komunikační kanál, přes který vaše zaříz
 
 * Máte plnou kontrolu nad přístupem zařízení a můžete řídit připojení na úrovni jednotlivých zařízení.
 
-* Služba [IoT Hub Device Provisioning](https://docs.microsoft.com/azure/iot-dps/) automaticky zřizuje zařízení pro správné centrum IoT při jejich prvním spuštění.
+* Služba [IoT Hub Device Provisioning](../iot-dps/index.yml) automaticky zřizuje zařízení pro správné centrum IoT při jejich prvním spuštění.
 
 * Několik typů ověřování podporuje různé možnosti zařízení:
 
@@ -64,13 +64,13 @@ Integrovaná funkce směrování zpráv poskytuje flexibilitu umožňující nas
 
 Službu IoT Hub můžete integrovat s ostatními službami Azure a vytvářet tak ucelená a komplexní řešení. Například můžete použít:
 
-* Službu [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/), která vaší firmě umožní rychle reagovat na kritické události, a to spolehlivým, škálovatelným a zabezpečeným způsobem.
+* Službu [Azure Event Grid](../event-grid/index.yml), která vaší firmě umožní rychle reagovat na kritické události, a to spolehlivým, škálovatelným a zabezpečeným způsobem.
 
-* Službu [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) umožňující automatizaci firemních procesů.
+* Službu [Azure Logic Apps](../logic-apps/index.yml) umožňující automatizaci firemních procesů.
 
 * Službu [Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md) umožňující přidání modelů AI a strojového učení do vašich řešení.
 
-* Službu [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) umožňující spouštění analytických výpočtů v reálném čase s daty streamovanými z vašich zařízení.
+* Službu [Azure Stream Analytics](../stream-analytics/index.yml) umožňující spouštění analytických výpočtů v reálném čase s daty streamovanými z vašich zařízení.
 
 ## <a name="configure-and-control-your-devices"></a>Konfigurace a řízení zařízení
 
@@ -88,7 +88,7 @@ Pomocí sady integrovaných funkcí můžete spravovat zařízení připojená k
 
 ## <a name="connect-your-devices"></a>Připojení zařízení
 
-Pomocí knihoven ze sady [SDK pro zařízení Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) můžete vytvářet aplikace, které se spouští na vašich zařízeních a komunikují se službou IoT Hub. Mezi podporované platformy patří několik distribucí Linuxu, Windows a operační systémy pracující v reálném čase. Mezi podporované jazyky patří:
+Pomocí knihoven ze sady [SDK pro zařízení Azure IoT](./iot-hub-devguide-sdks.md) můžete vytvářet aplikace, které se spouští na vašich zařízeních a komunikují se službou IoT Hub. Mezi podporované platformy patří několik distribucí Linuxu, Windows a operační systémy pracující v reálném čase. Mezi podporované jazyky patří:
 
 * C
 * C#
@@ -108,7 +108,7 @@ Pokud vaše řešení nemůže používat knihovny zařízení, můžou se zař�
 
 Pokud vaše řešení nemůže používat některý z podporovaných protokolů, můžete službu IoT Hub rozšířit o podporu vlastních protokolů:
 
-* Pomocí služby [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) můžete vytvořit hraniční bránu, která bude provádět převody protokolů na hraničních zařízeních.
+* Pomocí služby [Azure IoT Edge](../iot-edge/index.yml) můžete vytvořit hraniční bránu, která bude provádět převody protokolů na hraničních zařízeních.
 
 * [Protokolovou bránu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) můžete přizpůsobit tak, aby prováděla převody protokolů v cloudu.
 

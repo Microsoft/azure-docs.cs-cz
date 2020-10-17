@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c43c8a0b9fdf30b5ce5ae6ecbf123b563099ff6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337938"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148781"
 ---
 # <a name="mxchip-iot-devkit"></a>Sada MXChip IoT DevKit
 
@@ -28,7 +28,7 @@ Tento příklad můžete použít ke sledování informací o MXChip IoT DevKit 
 
 ## <a name="what-you-need"></a>Co budete potřebovat
 
-- Pomocí [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)nastavte vývojové prostředí.
+- Pomocí [průvodce Začínáme](./iot-hub-arduino-iot-devkit-az3166-get-started.md)nastavte vývojové prostředí.
 
 - V okně terminálu GitBash (nebo jiném rozhraní příkazového řádku Git) zadejte následující příkazy:
 
@@ -114,4 +114,4 @@ Zjistili jste, jak:
 - Připojte zařízení IoT DevKit MXChip k akcelerátoru řešení vzdáleného monitorování Azure IoT.
 - Použijte funkci revláken zařízení Azure IoT k určení a kontrole barvy INDIKÁTORu DevKitu RGB.
 
-Tady je doporučený další krok: [Přehled akcelerátoru řešení Azure IoT Remote Monitoring](https://docs.microsoft.com/azure/iot-suite/) .
+Tady je doporučený další krok: [Přehled akcelerátoru řešení Azure IoT Remote Monitoring](/azure/iot-suite/) .

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5a69c35e5c7e33443c3810cad9ab4e21b048328
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337955"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148819"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte, jak spustit ukázkovou aplikaci v DevKit a poslat da
 
 ## <a name="what-you-need"></a>Co budete potřebovat
 
-Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
+Dokončete [průvodce Začínáme](./iot-hub-arduino-iot-devkit-az3166-get-started.md) :
 
 * Připojte DevKit k Wi-Fi
 * Příprava vývojového prostředí
@@ -133,6 +133,6 @@ Pokud narazíte na problémy, přečtěte si [Nejčastější dotazy k sadě IoT
 
 Teď, když jste se seznámili s postupem připojení zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a vizualizaci dat snímačů, tady jsou doporučené další kroky:
 
-* [Přehled akcelerátorů řešení Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Přehled akcelerátorů řešení Azure IoT](/azure/iot-suite/)
 
-* [Sada IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/) 
+* [Sada IoT Developer Kit](https://microsoft.github.io/azure-iot-developer-kit/)

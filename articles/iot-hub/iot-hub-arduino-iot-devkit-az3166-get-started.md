@@ -11,12 +11,12 @@ ms.author: wesmc
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: 0d3afc8d24b95f170bd22b3dc2cf29e7f97e77c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5147d6d7f1bd1fcd43835f6a66196c7642ad4ff
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839550"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151938"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Připojení IoT DevKit AZ3166 k Azure IoT Hub
 
@@ -33,7 +33,7 @@ ms.locfileid: "91839550"
 
 Ještě nemáte DevKit? Vyzkoušejte [simulátor DevKit](https://azure-samples.github.io/iot-devkit-web-simulator/) nebo si [Kupte DevKit](https://aka.ms/iot-devkit-purchase).
 
-Zdrojový kód pro všechny kurzy DevKit můžete najít z [Galerie ukázek kódu](https://docs.microsoft.com/samples/browse/?term=mxchip).
+Zdrojový kód pro všechny kurzy DevKit můžete najít z [Galerie ukázek kódu](/samples/browse/?term=mxchip).
 
 ## <a name="what-you-need"></a>Co budete potřebovat
 
@@ -66,7 +66,7 @@ Chcete-li připojit DevKit k počítači, postupujte podle následujících krok
 
 Rychlý Start používá předem kompilovaný firmware DevKit k odeslání telemetrie do IoT Hub. Než ho spustíte, vytvoříte centrum IoT a zaregistrujete zařízení do centra.
 
-### <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+### <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -267,7 +267,7 @@ Místo zřízení IoT Hub a zařízení Azure z Azure Portal to můžete udělat
 
     ![Vybrat sub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-subscription.png)
 
-1. Pak vyberte nebo vytvořte novou [skupinu prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology).
+1. Pak vyberte nebo vytvořte novou [skupinu prostředků](../azure-resource-manager/management/overview.md#terminology).
 
     ![Výběr skupiny prostředků](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-resource-group.png)
 

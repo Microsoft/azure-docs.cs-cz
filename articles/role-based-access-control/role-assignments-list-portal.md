@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/24/2020
+ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f7d56ecc7fc6bd850fced33c2c1cf20902bb2df4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361833"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151713"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Vypsání přiřazení rolí Azure pomocí Azure Portal
 
@@ -140,14 +140,9 @@ Pokud se blížíte k maximálnímu počtu a pokusíte se přidat další přiř
 
 ![Řízení přístupu – upozornění přidání přiřazení role](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
-## <a name="download-role-assignments-preview"></a>Stáhnout přiřazení rolí (Preview)
+## <a name="download-role-assignments"></a>Stažení přiřazení rolí
 
 Přiřazení rolí si můžete stáhnout v oboru ve formátu CSV nebo JSON. To může být užitečné v případě, že při migraci předplatného potřebujete zkontrolovat seznam v tabulce nebo přebírat inventář.
-
-> [!IMPORTANT]
-> Stažení přiřazení rolí je momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Když si stáhnete přiřazení rolí, měli byste mít na paměti následující kritéria:
 
@@ -163,7 +158,7 @@ Pomocí těchto kroků si můžete stáhnout přiřazení rolí v oboru.
 
 1. Klikněte na **Řízení přístupu (IAM)** .
 
-1. Kliknutím na **Stáhnout přiřazení rolí (Preview)** otevřete podokno pro stažení rolí přiřazení.
+1. Kliknutím na **Stáhnout přiřazení role** otevřete podokno pro stažení rolí přiřazení.
 
     ![Řízení přístupu – stažení přiřazení rolí](./media/role-assignments-list-portal/download-role-assignments.png)
 

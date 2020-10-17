@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f52d1d1c5f264550076688d5e25e110de230eff4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81767025"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152229"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Sada SDK pro zařízení Azure IoT pro C – Další informace o serializátoru
 
@@ -28,7 +28,7 @@ Nakonec článek Přečtěte některá témata, která jsou popsaná v předchoz
 
 Vše popsané v tomto článku je založené na vzorcích sady SDK **serializátoru** . Pokud chcete postup sledovat, přečtěte si téma aplikace **SimpleSample \_ AMQP** a **SimpleSample \_ http** , které jsou součástí sady SDK pro zařízení Azure IoT pro jazyk C.
 
-Můžete najít [**sadu SDK pro zařízení Azure IoT pro**](https://github.com/Azure/azure-iot-sdk-c) úložiště GitHub c a zobrazit podrobnosti o rozhraní API v referenčních informacích k [rozhraní API jazyka c](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
+Můžete najít [**sadu SDK pro zařízení Azure IoT pro**](https://github.com/Azure/azure-iot-sdk-c) úložiště GitHub c a zobrazit podrobnosti o rozhraní API v referenčních informacích k [rozhraní API jazyka c](/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>Modelovací jazyk
 
@@ -65,7 +65,7 @@ To, co se v této ukázce neukazuje, jsou další datové typy, které sada SDK 
 
 V modelech vytvořených pomocí knihovny **serializátoru** jsou podporovány následující datové typy:
 
-| Typ | Description |
+| Typ | Popis |
 | --- | --- |
 | double |číslo s plovoucí desetinnou čárkou typu Double Precision |
 | int |32-bitové celé číslo |
@@ -670,4 +670,4 @@ Tím se také uzavřou série tří částí, jak vyvíjet aplikace pomocí **sa
 
 Další informace o vývoji pro IoT Hub najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 
-Další zkoumání možností IoT Hub najdete v tématu [nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md).
+Další zkoumání možností IoT Hub najdete v tématu [nasazení AI do hraničních zařízení pomocí Azure IoT Edge](../iot-edge/quickstart-linux.md).

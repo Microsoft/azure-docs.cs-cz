@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 49a5fd51a62dd6c90d7b1bac8d99296ddc81287f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: cff39f93f9caddfdbe48788f14b62642a373e2bf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070091"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148183"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Rychlý Start: získání telefonního čísla pomocí Azure Portal
 
@@ -22,7 +22,7 @@ ms.locfileid: "92070091"
 
 Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telefonního čísla.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Aktivní prostředek služby Communication Services.](../create-communication-resource.md)
@@ -35,13 +35,13 @@ Začněte s komunikačními službami Azure pomocí Azure Portal k nákupu telef
 
 ### <a name="getting-new-phone-numbers"></a>Získávání nových telefonních čísel
 
-V nabídce prostředek přejděte na okno telefonní čísla.
+V nabídce prostředek přejděte na okno **telefonní čísla** .
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
-Kliknutím na `Get` tlačítko spusťte průvodce. Průvodce v okně vás provede `Phone numbers` řadou otázek, které vám pomůžou vybrat telefonní číslo, které nejlépe vyhovuje vašemu scénáři. 
+Kliknutím na tlačítko **získat** spusťte průvodce. Průvodce v okně **telefonní čísla** vás provede řadou otázek, které vám pomůžou vybrat telefonní číslo, které nejlépe vyhovuje vašemu scénáři. 
 
-Nejdřív budete muset zvolit, kde se má `Country/region` telefonní číslo zřídit. Po výběru země nebo oblasti budete muset vybrat, `use case` co nejlépe vyhovuje vašim potřebám. 
+Nejdřív budete muset zvolit **zemi nebo oblast** , kde byste chtěli telefonní číslo zřídit. Po výběru země nebo oblasti budete muset vybrat **případ použití** , který nejlépe vyhovuje vašim potřebám. 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
@@ -52,24 +52,24 @@ Konfigurace telefonního čísla je rozdělená do dvou kroků:
 1. Výběr [typu čísla](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
 2. Výběr [číselných funkcí](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)
 
-Můžete vybrat ze dvou typů telefonních čísel: `Geographic` a `Toll-free` . Když vyberete typ čísla, můžete vybrat funkci.
+Můžete si vybrat ze dvou typů telefonních čísel: **geografické**a **bezplatné**. Když vyberete typ čísla, můžete vybrat funkci.
 
-V našem příkladu jsme vybrali `Toll-free` Typ čísla s `Outbound calling` `Inbound and Outbound SMS` funkcemi a.
+V našem příkladu jsme vybrali typ čísla **bez poplatků** s **odchozími voláními** a **příchozími a odchozími funkcemi SMS** .
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
-Tady můžete kliknutím na `Next: Numbers` tlačítko v dolní části stránky přizpůsobit telefonní čísla, která chcete zřídit.
+Tady můžete kliknutím na tlačítko **Další: čísla** v dolní části stránky přizpůsobit telefonní čísla, která chcete zřídit.
 
 ### <a name="customizing-phone-numbers"></a>Přizpůsobení telefonních čísel
 
-Na `Numbers` stránce budete přizpůsobovat telefonní čísla, která byste chtěli zřídit.
+Na stránce **čísla** si přizpůsobíte telefonní čísla, která chcete zřídit.
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
 > [!NOTE]
-> V tomto rychlém startu se zobrazuje `Toll-free` tok přizpůsobení typu čísla. Prostředí může být mírně odlišné, pokud jste zvolili `Geographic` Typ čísla, ale konečný výsledek bude stejný.
+> V tomto rychlém startu se zobrazuje tok vlastního nastavení typu **bezplatného pro telefonní** číslo. Prostředí může být mírně odlišné, pokud jste zvolili typ **zeměpisného** čísla, ale konečný výsledek bude stejný.
 
-Vyberte `Area code` ze seznamu dostupných kódů oblastí a zadejte množství, které chcete zřídit, a potom kliknutím `Search` vyhledejte čísla, která splňují vaše vybrané požadavky. Telefonní čísla, která vyhovují vašim potřebám, se zobrazí spolu s jejich měsíčními náklady.
+V seznamu dostupných kódů oblastí zvolte **směrové číslo** oblasti a zadejte množství, které chcete zřídit, a kliknutím na **Hledat** vyhledejte čísla, která splňují vybrané požadavky. Telefonní čísla, která vyhovují vašim potřebám, se zobrazí spolu s jejich měsíčními náklady.
 
 :::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
@@ -77,7 +77,7 @@ Vyberte `Area code` ze seznamu dostupných kódů oblastí a zadejte množství,
 > Dostupnost závisí na typu čísla, umístění a funkcích, které jste vybrali.
 > Čísla jsou vyhrazena pro krátkou dobu před vypršením platnosti transakce. Pokud vyprší platnost transakce, bude nutné čísla znovu vybrat.
 
-Chcete-li zobrazit souhrn nákupu a umístit objednávku, klikněte na `Next: Summary` tlačítko v dolní části stránky.
+Chcete-li zobrazit souhrn nákupu a umístit objednávku, klikněte na tlačítko **Další: Souhrn** v dolní části stránky.
 
 ### <a name="place-order"></a>Umístit objednávku
 
@@ -86,7 +86,7 @@ Stránka Souhrn zkontroluje typ čísla, funkce, telefonní čísla a celkové m
 > [!NOTE]
 > Uvedené ceny jsou **měsíční periodické poplatky** , které pokrývají náklady na zapůjčení vybraného telefonního čísla. Nezahrnuté v tomto zobrazení jsou **náklady** na průběžné platby, které vznikají při provádění nebo přijímání hovorů. Ceníky jsou [k dispozici zde](../../concepts/pricing.md). Tyto náklady závisí na typu čísla a cílech s názvem. Například cena za minutu pro volání z regionálního čísla Praha k regionálnímu číslu v New Yorku a volání ze stejného čísla do mobilního čísla v ČR se může lišit.
 
-Nakonec klikněte na tlačítko `Place order` v dolní části stránky a potvrďte je.
+Nakonec kliknutím na **umístit objednávku** v dolní části stránky potvrďte.
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
@@ -106,11 +106,11 @@ Pokud chcete spravovat telefonní čísla, vyberte v nabídce okno telefonní č
 
 ### <a name="customizing-phone-numbers"></a>Přizpůsobení telefonních čísel
 
-Na `Numbers` stránce můžete vybrat telefonní číslo a nakonfigurovat ho.
+Na stránce **čísla** můžete vybrat telefonní číslo a nakonfigurovat ho.
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Snímek obrazovky znázorňující hlavní stránku prostředku komunikační služby.":::
 
-Vyberte funkce z dostupných možností a potom kliknutím `Confirm` použijte výběr.
+Vyberte funkce z dostupných možností a potom kliknutím na **Potvrdit** použijte svůj výběr.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

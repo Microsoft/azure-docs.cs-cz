@@ -4,12 +4,12 @@ description: Rychlý úvod k příkazům Batch v rozhraní příkazového řádk
 ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 92d5e60f549855b39185564f7f6d2902b765cf76
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bee25d9b8985f1627a5cfc05bfb336b83be60f74
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055507"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144746"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Správa prostředků služby Batch pomocí Azure CLI
 
@@ -79,7 +79,7 @@ Máte dvě možnosti ověření proti účtu Batch:
     
     Při interaktivním přihlášení k Azure, které je popsáno v předchozí části, jsou vaše přihlašovací údaje uloženy v mezipaměti, takže rozhraní příkazového řádku Azure CLI vás může přihlásit k účtu Batch pomocí stejných přihlašovacích údajů. Pokud se k Azure přihlásíte pomocí instančního objektu, použijí se tyto přihlašovací údaje také k přihlášení k účtu Batch.
 
-    Výhoda služby Azure AD je, že nabízí řízení přístupu na základě role (RBAC). Při řízení přístupu na základě role (RBAC) závisí přístup uživatelů na jejich přiřazené roli, a ne na tom, jestli mají nebo nemají klíče účtu. Místo správy klíčů účtu můžete spravovat role Azure a nechat Azure AD zpracovat přístup a ověřování.  
+    Výhodou Azure AD je, že nabízí řízení přístupu na základě role Azure (Azure RBAC). V případě Azure RBAC závisí přístup uživatelů na jejich přiřazené roli, a ne na tom, jestli mají klíče účtu nebo ne. Místo správy klíčů účtu můžete spravovat role Azure a nechat Azure AD zpracovat přístup a ověřování.  
 
      Pokud se chcete přihlásit k účtu Batch pomocí služby Azure AD, použijte volání příkazu [az batch account login](/cli/azure/batch/account#az-batch-account-login): 
 

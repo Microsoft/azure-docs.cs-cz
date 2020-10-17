@@ -3,12 +3,12 @@ title: Pravidla přístupu brány firewall
 description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall tím, že povolíte přístup k REST APIům a názvům domén koncového bodu dat nebo rozsahům IP adres závislým na službě.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246975"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148515"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
 
@@ -113,7 +113,7 @@ Vyhledejte konkrétní oblast, například **Storage. AustraliaCentral**.
 
 ## <a name="allow-access-by-service-tag"></a>Povolení přístupu podle značky služby
 
-Ve službě Azure Virtual Network použijte pravidla zabezpečení sítě k filtrování provozu z prostředku, jako je například virtuální počítač, do registru kontejneru. Pro zjednodušení vytváření pravidel sítě Azure použijte [značku služby](../virtual-network/security-overview.md#service-tags) **AzureContainerRegistry** . Značka služby představuje skupinu předpon IP adres pro účely přístupu ke službě Azure globálně nebo podle oblasti Azure. Značka je automaticky aktualizována při změně adres. 
+Ve službě Azure Virtual Network použijte pravidla zabezpečení sítě k filtrování provozu z prostředku, jako je například virtuální počítač, do registru kontejneru. Pro zjednodušení vytváření pravidel sítě Azure použijte [značku služby](../virtual-network/network-security-groups-overview.md#service-tags) **AzureContainerRegistry** . Značka služby představuje skupinu předpon IP adres pro účely přístupu ke službě Azure globálně nebo podle oblasti Azure. Značka je automaticky aktualizována při změně adres. 
 
 Můžete například vytvořit pravidlo skupiny zabezpečení odchozí sítě s cílovým **AzureContainerRegistry** , které umožní provoz do služby Azure Container Registry. Pokud chcete přístup ke značce služby udělit jenom v konkrétní oblasti, zadejte oblast v následujícím formátu: **AzureContainerRegistry**. [*název oblasti*].
 
@@ -183,7 +183,7 @@ Pokud potřebujete přístup k Microsoft Container Registry (MCR) z za bránou f
 
 * Další informace o [osvědčených postupech Azure pro zabezpečení sítě](../security/fundamentals/network-best-practices.md)
 
-* Další informace o [skupinách zabezpečení](../virtual-network/security-overview.md) ve službě Azure Virtual Network
+* Další informace o [skupinách zabezpečení](../virtual-network/network-security-groups-overview.md) ve službě Azure Virtual Network
 
 * Další informace o nastavení [privátního odkazu](container-registry-private-link.md) pro registr kontejneru
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: b0dec57a67053c3791e68fb40e28d83d5b97777b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962152"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145254"
 ---
 # <a name="what-is-conditional-access"></a>Co je podmíněný přístup?
 
@@ -84,13 +84,6 @@ Mnoho organizací má [společný přístup, ke kterým může pomáhat zásada 
 - Blokování a udělení přístupu z určitých umístění
 - Blokování rizikových přihlašovacích chování
 - Vyžadování zařízení spravovaných organizací pro konkrétní aplikace
-
-## <a name="customer-case-studies"></a>Zákaznické případové studie
-
-Zjistěte, jak jiné organizace používají podmíněný přístup Azure AD k definování a implementaci automatického rozhodování o řízení přístupu. Následující doporučené příběhy ukazují, jak se tyto požadavky zákazníků splní.
-
-* [Společnost Wipro zabezpečí mobilní produktivitu pomocí nástrojů Microsoft Cloud Security Tools a vylepšuje zapojení zákazníků.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Zásady podmíněného přístupu ve službě Azure AD povolily společnosti sdílet dokumenty, prostředky a aplikace s důvěryhodnými externími entitami---, kdo může používat vlastní přihlašovací údaje---a přitom zachovat kontrolu nad svými vlastními podnikovými daty.
-* [Aramex Delivery s omezeným přístupem – globální logistika a dopravní společnost vytváří Office propojené s cloudem a řešení pro správu identit a přístupu](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en). Zajištění bezpečného přístupu bylo obzvláště obtížné u vzdálených zaměstnanců Aramex. Společnost teď používá podmíněný přístup, aby tyto vzdálené zaměstnance měli přístup k jejich SaaS aplikacím mimo síť. Pravidlo podmíněného přístupu určí, jestli se má vyhodnotit Multi-Factor Authentication a že jenom ta, která mají správný přístup.
 
 ## <a name="license-requirements"></a>Licenční požadavky
 

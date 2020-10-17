@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 3b8ce5b82b7d2022fd7feea1cd9efe8d524ee6a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358283"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148743"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů představuje jednoduchou a efektivní metodu pro zlepšení rychlosti přenosu souborů a zvýšení výkonu načítání stránek tím, že se velikost souboru před odesláním ze serveru zmenší. Komprese souborů může snížit náklady na šířku pásma a zajistit pro uživatele lépe reagující prostředí.
@@ -112,6 +112,8 @@ Tyto profily podporují následující kódování komprese:
 Pokud požadavek podporuje více než jeden typ komprese, má komprese brotli přednost.
 
 Když požadavek na prostředek určuje kompresi gzip a výsledkem požadavku dojde k neúspěšnému přihlášení do mezipaměti, Azure CDN provádí kompresi assetu pomocí metody gzip přímo na serveru POP. Následně bude komprimovaný soubor obsluhován z mezipaměti.
+
+Pokud zdroj pošle komprimovaná data do POP přes CDN pomocí kódování blokového přenosu (CTE), pak se nepodporuje velikosti odpovědí větší než 8MB. 
 
 ### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN z profilů Verizon
 

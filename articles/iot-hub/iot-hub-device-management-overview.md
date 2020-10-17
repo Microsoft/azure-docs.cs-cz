@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 63497553f7cec2edf3c77ba8690dda2b15d104be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324722"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148347"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Přehled správy zařízení ve službě IoT Hub
 
@@ -78,7 +78,7 @@ V každé z těchto pěti fází existuje několik požadavků souvisejících s
   
     *Další čtení*:
     * [Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
-    * [Konfigurace a monitorování škálování zařízení IoT](iot-hub-auto-device-config.md)
+    * [Konfigurace a monitorování škálování zařízení IoT](./iot-hub-automatic-device-management.md)
     * [Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
 
 * **Monitorování:** Monitorování celkového stavu kolekce zařízení a stavu probíhajících operací, přičemž operátoři dostávají upozornění na problémy, které mohou vyžadovat jejich pozornost.  Dvojče zařízení umožní zařízením hlásit jejich provozní podmínky a stav aktualizačních operací v reálném čase. Vytvořte efektivní sestavy řídicího panelu, které budou bezprostředně informovat o problémech na základě dotazů na dvojčata zařízení.
@@ -86,7 +86,7 @@ V každé z těchto pěti fází existuje několik požadavků souvisejících s
     *Další čtení*: 
     * [Jak používat zdvojené vlastnosti zařízení](tutorial-device-twins.md)
     * [IoT Hub dotazovací jazyk pro vlákna, úlohy a směrování zpráv v zařízeních](iot-hub-devguide-query-language.md)
-    * [Konfigurace a monitorování škálování zařízení IoT](iot-hub-auto-device-config.md)
+    * [Konfigurace a monitorování škálování zařízení IoT](./iot-hub-automatic-device-management.md)
     * [Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT](iot-hub-configuration-best-practices.md)
 
 * **Vyřazení**: výměna nebo vyřazení zařízení z provozu po selhání, cyklus upgradu nebo na konci životnosti služby.  Pomocí dvojčete zařízení můžete provést údržbu informací o zařízení, když se nahrazuje fyzické zařízení, nebo jejich archivaci při jeho vyřazení. Pro zabezpečené odvolávání identit zařízení a přihlašovacích údajů používejte registr identit ve službě IoT Hub.

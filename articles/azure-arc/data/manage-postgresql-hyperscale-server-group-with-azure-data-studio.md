@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: fc0ad45f575f9190f15b61acdf476c716b7f1638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a073df78adbf0104d81a96eb92ea427f60e53b01
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936798"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151836"
 ---
 # <a name="use-azure-data-studio-to-manage-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Správa PostgreSQL skupiny serverů s povoleným rozšířením Azure ARC pomocí Azure Data Studio
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak:
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Instalace azdata, Azure Data Studio a Azure CLI](install-client-tools.md)
 - Instalace v Azure Data Studio rozhraní příkazového **řádku Azure Data CLI** a rozšíření **Azure ARC** a **PostgreSQL**
@@ -61,9 +61,8 @@ Zobrazení řídicího panelu PostgreSQL:
 
 Tato funkce obsahuje několik řídicích panelů uvedených na levé straně tohoto podokna:
 
-- **Přehled:** Zobrazí souhrnné informace o vaší instanci, jako je název, ID předplatného Azure, konfigurace, verze databázového stroje, koncové body pro Grafana a Kibana...
+- **Přehled:** Zobrazí souhrnné informace o vaší instanci, jako je název, uživatelské jméno správce PostgreSQL, ID předplatného Azure, konfigurace, verze databázového stroje, koncové body pro Grafana a Kibana...
 - **Připojovací řetězce:** Zobrazí různé připojovací řetězce, které možná budete muset připojit k instanci PostgreSQL, jako je psql, Node.js, PHP, Ruby...
-- **Vlastnosti:** Zobrazí různé vlastnosti, jako je uživatelské jméno správce PostgreSQL, přidružená skupina prostředků pro stínový prostředek...
 - **Diagnostika a řešení problémů:** Je cílová stránka, kde najdete různé prostředky, které vám pomůžou vyřešit potíže s instancí při rozšiřování poznámkových bloků pro řešení potíží.
 - **Nová žádost o podporu:** Je cílová stránka, ze které budete moci požádat o pomoc od našich služeb podpory počínaje oznámením Public Preview.
 

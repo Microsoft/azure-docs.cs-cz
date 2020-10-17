@@ -4,12 +4,12 @@ description: Naučte se používat informace shromážděné ve fázi plánován
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776421"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152022"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
@@ -82,7 +82,7 @@ Postup vytvoření segmentu sítě NSX-T v řešení Azure VMware najdete v kurz
 
 Vraťte se zpět na krok [ověřit inzerovanou síťovou trasu](#verify-network-routes-advertised) . V seznamu se zobrazí další trasy, které představují segmenty sítě, které jste vytvořili v předchozím kroku.  
 
-Pro virtuální počítače přiřadíte segmenty, které jste vytvořili v kroku [ověření inzerované NSX-T segmentu](#verify-advertised-nsx-t-segment) .  
+Pro virtuální počítače přiřadíte segmenty, které jste vytvořili v kroku [Vytvoření segmentu sítě v Azure VMware](#create-a-network-segment-on-azure-vmware-solution) .  
 
 Vzhledem k tomu, že se vyžaduje DNS, určete, jaký server DNS chcete použít.  
 

@@ -92,8 +92,6 @@
       href: terms-of-use.md
     - name: Kontroly četnosti přihlášení a trvalosti prohlížeče
       href: howto-conditional-access-session-lifetime.md
-    - name: Osvědčené postupy
-      href: best-practices.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s přihlášením

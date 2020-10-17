@@ -7,20 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d824c94a2c5751013b78c69ed5abd048c50856b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78673383"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151719"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Vývoj pro platformu Android Platforms pomocí sad SDK Azure IoT
 
-[Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) poskytují podporu první úrovně pro oblíbené platformy, jako jsou Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci našeho závazku o zajištění větší možnosti a flexibility v nasazeních IoT podporuje sada Java SDK také platformu [Androidu](https://developer.android.com/things/) .  Vývojáři můžou využít výhody operačního systému Androidu na straně zařízení a při použití [Azure IoT Hub](about-iot-hub.md) jako centrálního centra zpráv, které se škálují na miliony současně připojených zařízení.
+[Azure IoT Hub SDK](./iot-hub-devguide-sdks.md) poskytují podporu první úrovně pro oblíbené platformy, jako jsou Windows, Linux, OSX, MBED a mobilní platformy, jako je Android a iOS.  V rámci našeho závazku o zajištění větší možnosti a flexibility v nasazeních IoT podporuje sada Java SDK také platformu [Androidu](https://developer.android.com/things/) .  Vývojáři můžou využít výhody operačního systému Androidu na straně zařízení a při použití [Azure IoT Hub](about-iot-hub.md) jako centrálního centra zpráv, které se škálují na miliony současně připojených zařízení.
 
 Tento kurz popisuje kroky pro vytvoření aplikace na straně zařízení v Androidu pomocí sady Azure IoT Java SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Android podporuje hardware s operačním systémem Androidu.  [Dokumentaci k Androidu](https://developer.android.com/things/get-started/kits#flash-at) můžete sledovat v tématu Postup pro Flash Androidu.  Ujistěte se, že zařízení s Androidem je připojené k Internetu se základními periferními zařízeními, jako jsou klávesnice, displeje a připojené myší.  V tomto kurzu se používá Malina Pi 3.
 
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky pro vytvoření aplikace na straně zařízení v Andr
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 

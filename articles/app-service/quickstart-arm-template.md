@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aad41ed1fb270acb38ec599484e137fbe5a6dceb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 173c6ff8bb4bcee7ecc40f9f277fae0e4cb8dd13
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131339"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152351"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rychlý Start: Vytvoření aplikace App Service pomocí šablony ARM
 
-Začněte s [Azure App Service](overview.md) nasazením aplikace do cloudu pomocí Azure Resource Manager šablony (šablona ARM) a rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) v Cloud Shell. Vzhledem k tomu, že používáte bezplatnou App Service úroveň, nebudete mít k dokončení tohoto rychlého startu žádné náklady.
+Začněte s [Azure App Service](overview.md) nasazením aplikace do cloudu pomocí Azure Resource Manager šablony (šablona ARM) a rozhraní příkazového [řádku Azure](/cli/azure/get-started-with-azure-cli) v Cloud Shell. Vzhledem k tomu, že používáte bezplatnou App Service úroveň, nebudete mít k dokončení tohoto rychlého startu žádné náklady.
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,7 +38,7 @@ K nasazení v **systému Windows**použijte následující tlačítko:
 ## <a name="review-the-template"></a>Kontrola šablony
 
 ::: zone pivot="platform-windows"
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows). Nasadí App Service plán a App Service aplikace ve Windows. Je kompatibilní s aplikacemi pro .NET Core, .NET Framework, PHP, Node.js a statickými HTML. Informace pro Java najdete v tématu [Vytvoření aplikace Java](app-service-web-get-started-java.md).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-app-service-docs-windows). Nasadí App Service plán a App Service aplikace ve Windows. Je kompatibilní s aplikacemi pro .NET Core, .NET Framework, PHP, Node.js a statickými HTML. Informace pro Java najdete v tématu [Vytvoření aplikace Java](./quickstart-java.md).
 
 :::code language="json" source="~/quickstart-templates/101-app-service-docs-windows/azuredeploy.json":::
 
@@ -51,8 +51,8 @@ Tato šablona obsahuje několik parametrů, které jsou předdefinované pro va�
 
 | Parametry | Typ    | Výchozí hodnota                | Popis |
 |------------|---------|------------------------------|-------------|
-| webAppName | řetězec  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Název aplikace |
-| location   | řetězec  | "[[resourceName (). Location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Oblast aplikace |
+| webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
+| location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
 | skladové        | řetězec  | Kláves                         | Velikost instance (F1 = Free úrovně) |
 | language   | řetězec  | platformy                       | Sada programovacích jazyků (.NET, php, Node, HTML) |
 | Hell | boolean | Nepravda                        | True = nasadit aplikaci Hello World |
@@ -72,8 +72,8 @@ Tato šablona obsahuje několik parametrů, které jsou předdefinované pro va�
 
 | Parametry | Typ    | Výchozí hodnota                | Popis |
 |------------|---------|------------------------------|-------------|
-| webAppName | řetězec  | "webApp- **[`<uniqueString>`](/azure/azure-resource-manager/templates/template-functions-string#uniquestring)** " | Název aplikace |
-| location   | řetězec  | "[[resourceName (). Location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Oblast aplikace |
+| webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
+| location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
 | skladové        | řetězec  | Kláves                         | Velikost instance (F1 = Free úrovně) |
 | linuxFxVersion   | řetězec  | "DOTNETCORE&#124;3,0        | "&#124; verze zásobníku programovacího jazyka" |
 | relijte    | řetězec  | " "                          | Externí úložiště Git (volitelné) |
@@ -145,7 +145,7 @@ Pokud už je nepotřebujete, [odstraňte skupinu prostředků](../azure-resource
 > [PHP s MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Připojení ke službě Azure SQL Database pomocí jazyka Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Připojení ke službě Azure SQL Database pomocí jazyka Java](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
 
 > [!div class="nextstepaction"]
 > [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)

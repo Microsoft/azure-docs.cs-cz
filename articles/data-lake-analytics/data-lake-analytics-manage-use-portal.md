@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f47e201f0fe6f44eb33916b2b3ed71ef963d5a1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87531205"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148133"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí webu Azure Portal
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -91,9 +91,9 @@ Pokud se k účtu Data Lake Analytics připojí jiné služby Azure, například
 7. Zkontrolujte všechny vybrané změny a pak klikněte na **Spustit**.
 8. Po dokončení průvodce klikněte na **Hotovo**.
 
-## <a name="manage-role-based-access-control"></a>Spravovat Role-Based Access Control
+## <a name="manage-azure-role-based-access-control"></a>Správa řízení přístupu na základě role v Azure
 
-Stejně jako jiné služby Azure můžete použít Role-Based Access Control (RBAC) k řízení interakce uživatelů se službou.
+Stejně jako jiné služby Azure můžete použít řízení přístupu na základě role Azure (Azure RBAC) k řízení interakce uživatelů se službou.
 
 Standardní role Azure mají tyto možnosti:
 * **Vlastník**: může odesílat úlohy, monitorovat úlohy, rušit úlohy od libovolného uživatele a nakonfigurovat účet.

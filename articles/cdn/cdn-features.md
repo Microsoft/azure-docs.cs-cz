@@ -1,30 +1,29 @@
 ---
-title: Porovnání funkcí produktu Azure Content Delivery Network (CDN) | Microsoft Docs
+title: Porovnání funkcí produktu Azure Content Delivery Network (CDN)
 description: Seznamte se s podporovanými funkcemi v jednotlivých produktech Azure Content Delivery Network (CDN).
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: mdgattuso
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8d8b01e8c5f4ea3054e639ecc9dd8b14bbf048b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81260509"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148725"
 ---
-# <a name="compare-azure-cdn-product-features"></a>Porovnání funkcí produktu Azure CDN
+# <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Jaké jsou srovnání mezi Azure CDNmi funkcemi produktu?
 
-Azure Content Delivery Network (CDN) zahrnuje čtyři produkty: **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Akamai**, **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon**. Informace o migraci profilu **Azure CDN Standard od společnosti Verizon** na profil **Azure CDN Premium od společnosti Verizon** najdete v článku [Migrace profilu Azure CDN z úrovně Standard Verizon na úroveň Premium Verizon](cdn-migrate.md). Všimněte si, že když existuje cesta pro upgrade ze Standard Verizon na Premium Verizon, neexistuje žádný mechanismus převodu mezi ostatními produkty v tuto chvíli.
+Azure Content Delivery Network (CDN) zahrnuje čtyři produkty: 
+
+* **Azure CDN Standard od Microsoftu**
+* **Azure CDN Standard z Akamai**
+* **Azure CDN Standard z Verizon**
+* **Azure CDN Premium z Verizon**. 
 
 Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jednotlivých produktech.
 
@@ -75,8 +74,16 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 | [Komprese typů MIME](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Pouze výchozí |Konfigurovatelné |Konfigurovatelné  |Konfigurovatelné  |
 | Kódování komprese  |GZIP, brotli |GZIP |GZIP, Deflate, bzip2, brotili  |GZIP, Deflate, bzip2, brotili  |
 
+## <a name="migration"></a>Migrace
 
+Informace o migraci profilu **Azure CDN Standard od společnosti Verizon** na profil **Azure CDN Premium od společnosti Verizon** najdete v článku [Migrace profilu Azure CDN z úrovně Standard Verizon na úroveň Premium Verizon](cdn-migrate.md). 
 
+> [!NOTE]
+> Existuje cesta pro upgrade ze Standard Verizon na Premium Verizon, ale v současné době neexistuje žádný mechanismus převodu mezi ostatními produkty.
+
+## <a name="next-steps"></a>Další kroky
+
+* Přečtěte si další informace o [Azure CDN](cdn-overview.md).
 
 
 

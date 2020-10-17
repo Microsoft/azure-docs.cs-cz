@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: cc7082744bc43baad2e26d09a83907540cf6a1df
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094071"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152305"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Spravované identity pro službu Azure Signal Service
 
@@ -62,20 +62,20 @@ Služba signalizace Azure je plně spravovaná služba, takže nemůžete pomoc�
     - Obsahovat
     - ID aplikace (klienta) instančního objektu
     - Identifikátor URI ID aplikace instančního objektu
-    - [ID prostředku služby Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication)
+    - [ID prostředku služby Azure](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
     > [!NOTE]
     > Pokud váš přístupový token ověříte ve vaší službě sami, můžete si vybrat libovolný z formátů prostředků. Stačí se ujistit, že hodnota **prostředku** v nastavení **ověřování** a ověřování jsou konzistentní. Pokud pro rovinu dat používáte řízení přístupu na základě role Azure (Azure RBAC), musíte použít prostředek, který poskytovatel služeb požaduje.
 
 ### <a name="validate-access-tokens"></a>Ověřit přístupové tokeny
 
-Token v `Authorization` hlavičce je [přístupový token platformy Microsoft Identity](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validating-tokens).
+Token v `Authorization` hlavičce je [přístupový token platformy Microsoft Identity](../active-directory/develop/access-tokens.md#validating-tokens).
 
 K ověření přístupových tokenů by aplikace měla taky ověřit cílovou skupinu a tokeny podepisování. Tyto hodnoty je nutné ověřit proti hodnotám v dokumentu zjišťování OpenID. Podívejte se například na [verzi dokumentu nezávisle na klientovi](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
-Middleware Azure Active Directory (Azure AD) obsahuje integrované funkce pro ověřování přístupových tokenů. Můžete procházet naše [ukázky](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) a vyhledat je v jazyce podle vašeho výběru.
+Middleware Azure Active Directory (Azure AD) obsahuje integrované funkce pro ověřování přístupových tokenů. Můžete procházet naše [ukázky](../active-directory/develop/sample-v2-code.md) a vyhledat je v jazyce podle vašeho výběru.
 
-Poskytujeme knihovny a ukázky kódu, které ukazují, jak zpracovat ověření tokenu. K dispozici je také několik Open Source knihoven partnerů pro ověření JSON Web Token (JWT). K dispozici je alespoň jedna možnost pro skoro každou platformu a jazyk. Další informace o knihovnách ověřování a ukázkách kódu Azure AD najdete v tématu [knihovny ověřování Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries).
+Poskytujeme knihovny a ukázky kódu, které ukazují, jak zpracovat ověření tokenu. K dispozici je také několik Open Source knihoven partnerů pro ověření JSON Web Token (JWT). K dispozici je alespoň jedna možnost pro skoro každou platformu a jazyk. Další informace o knihovnách ověřování a ukázkách kódu Azure AD najdete v tématu [knihovny ověřování Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: d4a5ad36e9d6d71ad88d0b5c56b6079f34483347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021422"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151681"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Vysoká dostupnost služby IoT Hub a zotavení po havárii
 
-Jako první krok k implementaci odolného řešení IoT, architektům, vývojářům a vlastníkům podnikových aplikací musí definovat cíle pro dobu provozu pro řešení, která vytváří. Tyto cíle lze definovat hlavně na základě konkrétních obchodních cílů pro každý scénář. V tomto kontextu se v článku [technické postupy pro provozní kontinuitu Azure](https://docs.microsoft.com/azure/architecture/resiliency/) popisuje obecné rozhraní, které vám pomůžou zamyslet se na provozní kontinuitu a zotavení po havárii. Dokument pro [zotavení po havárii a vysokou dostupnost pro aplikace Azure](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) poskytuje pokyny pro architekturu pro aplikace Azure, které umožňují dosáhnout vysoké dostupnosti (ha) a zotavení po havárii (Dr).
+Jako první krok k implementaci odolného řešení IoT, architektům, vývojářům a vlastníkům podnikových aplikací musí definovat cíle pro dobu provozu pro řešení, která vytváří. Tyto cíle lze definovat hlavně na základě konkrétních obchodních cílů pro každý scénář. V tomto kontextu se v článku [technické postupy pro provozní kontinuitu Azure](/azure/architecture/resiliency/) popisuje obecné rozhraní, které vám pomůžou zamyslet se na provozní kontinuitu a zotavení po havárii. Dokument pro [zotavení po havárii a vysokou dostupnost pro aplikace Azure](/azure/architecture/reliability/disaster-recovery) poskytuje pokyny pro architekturu pro aplikace Azure, které umožňují dosáhnout vysoké dostupnosti (ha) a zotavení po havárii (Dr).
 
 Tento článek popisuje funkce HA a zotavení po havárii, které nabízí konkrétně služba IoT Hub. Hlavními oblastmi popsanými v tomto článku jsou:
 
@@ -64,7 +64,7 @@ Až se operace převzetí služeb při selhání pro Centrum IoT dokončí, oče
 >
 > - Pokud k připojení vestavěného koncového bodu událostí používáte Azure Functions nebo Azure Stream Analytics, může být nutné provést **restart**. Důvodem je to, že během předchozích posunů převzetí služeb při selhání už nejsou platné.
 >
-> - Při směrování do úložiště doporučujeme vypsat objekty blob nebo soubory a potom je v nich vymezit, aby se zajistilo, že všechny objekty blob nebo soubory budou čteny bez nutnosti vytvářet žádné předpoklady oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. K vytvoření výčtu seznamů objektů BLOB nebo [seznamu adls Gen2 rozhraní API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) pro seznam souborů můžete použít [rozhraní list API blobů](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . Další informace najdete v tématu [Azure Storage jako koncový bod směrování](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
+> - Při směrování do úložiště doporučujeme vypsat objekty blob nebo soubory a potom je v nich vymezit, aby se zajistilo, že všechny objekty blob nebo soubory budou čteny bez nutnosti vytvářet žádné předpoklady oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. K vytvoření výčtu seznamů objektů BLOB nebo [seznamu adls Gen2 rozhraní API](/rest/api/storageservices/datalakestoragegen2/path/list) pro seznam souborů můžete použít [rozhraní list API blobů](/rest/api/storageservices/list-blobs) . Další informace najdete v tématu [Azure Storage jako koncový bod směrování](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 
 ## <a name="microsoft-initiated-failover"></a>Převzetí služeb při selhání iniciované Microsoftem
 
@@ -134,9 +134,9 @@ Tady je souhrn možností HA/DR prezentovaných v tomto článku, které se daj�
 
 | Možnost HA/DR | RTO | RPO | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
 | --- | --- | --- | --- | --- | --- |
-| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|No|Žádné|Žádné|
-| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Yes|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádné|
-| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|No|Vysoké|> 1x náklady 1 centra IoT|
+| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|Ne|Žádné|Žádné|
+| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Ano|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádné|
+| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|Ne|Vysoké|> 1x náklady 1 centra IoT|
 
 ## <a name="next-steps"></a>Další kroky
 
