@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 9d54e6eb84e3269eb95f8d314875474f78536652
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a487e6989792c63aaf5baf9ddb3875df549561a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526421"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143987"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Používání účtů úložiště spravovaných zákazníkem v Azure Monitor Log Analytics
 
@@ -22,7 +22,7 @@ Log Analytics spoléhá na Azure Storage v nejrůznějších scénářích. Toto
 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Ingestování protokolů rozšíření Azure Diagnostics (WAD/LAD)
 Agenti rozšíření Azure Diagnostics (označované také jako WAD a LAD agenti pro systémy Windows a Linux) shromažďují různé protokoly operačního systému a ukládají je do účtu úložiště spravovaného zákazníky. Pak můžete tyto protokoly ingestovat do Log Analytics, abyste je zkontrolovali a analyzovali.
-Jak shromažďovat protokoly rozšíření Azure Diagnostics z účtu úložiště připojte účet úložiště k vašemu pracovnímu prostoru Log Analytics jako zdroj dat úložiště pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-logs#collect-logs-from-azure-storage) nebo zavoláním [rozhraní API služby Storage Insights](https://docs.microsoft.com/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate).
+Jak shromažďovat protokoly rozšíření Azure Diagnostics z účtu úložiště připojte účet úložiště k vašemu pracovnímu prostoru Log Analytics jako zdroj dat úložiště pomocí [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) nebo zavoláním [rozhraní API služby Storage Insights](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate).
 
 Podporované datové typy:
 * Syslog
@@ -40,7 +40,7 @@ V některých případech použití se vyžadují účty úložiště spravovan�
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Použití účtu úložiště spravovaného zákazníkem přes privátní propojení
 ##### <a name="workspace-requirements"></a>Požadavky na pracovní prostor
-Pokud se připojujete k Azure Monitor přes privátní odkaz, agenti Log Analytics můžou odesílat protokoly do pracovních prostorů propojených s vaší sítí přes privátní odkaz. Toto pravidlo vyžaduje, abyste správně nakonfigurovali Azure Monitor objekt oboru privátního propojení (AMPLS), připojili ho k vašim pracovním prostorům a pak připojili AMPLS k síti přes privátní odkaz. Další informace o postupu konfigurace AMPLS najdete v tématu [použití privátního odkazu Azure k bezpečnému připojení sítí k Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security). 
+Pokud se připojujete k Azure Monitor přes privátní odkaz, agenti Log Analytics můžou odesílat protokoly do pracovních prostorů propojených s vaší sítí přes privátní odkaz. Toto pravidlo vyžaduje, abyste správně nakonfigurovali Azure Monitor objekt oboru privátního propojení (AMPLS), připojili ho k vašim pracovním prostorům a pak připojili AMPLS k síti přes privátní odkaz. Další informace o postupu konfigurace AMPLS najdete v tématu [použití privátního odkazu Azure k bezpečnému připojení sítí k Azure monitor](./private-link-security.md). 
 ##### <a name="storage-account-requirements"></a>Požadavky na účet úložiště
 Aby se účet úložiště mohl úspěšně připojit k privátnímu propojení, musí:
 * Musí se nacházet ve vaší virtuální síti nebo v partnerské síti a připojená k virtuální síti prostřednictvím privátního propojení. To umožňuje agentům ve vaší virtuální síti odesílat protokoly do účtu úložiště.
@@ -49,7 +49,7 @@ Aby se účet úložiště mohl úspěšně připojit k privátnímu propojení,
 * Pokud váš pracovní prostor zpracovává provoz z jiných sítí, měli byste nakonfigurovat účet úložiště tak, aby povoloval příchozí provoz pocházející z příslušných sítí nebo Internetu.
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>Propojení účtu úložiště s Log Analytics pracovním prostorem
-Svůj účet úložiště můžete propojit s pracovním prostorem prostřednictvím rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) nebo [REST API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts). Platné hodnoty DataSourceType:
+Svůj účet úložiště můžete propojit s pracovním prostorem prostřednictvím rozhraní příkazového [řádku Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) nebo [REST API](/rest/api/loganalytics/linkedstorageaccounts). Platné hodnoty DataSourceType:
 * CustomLogs – pro použití úložiště pro vlastní protokoly a protokoly IIS během přijímání.
 * AzureWatson – použijte úložiště pro soubory výpisu paměti programu Watson odeslané řešením ASC (Azure Security Center). Další informace o správě uchovávání, nahrazení propojeného účtu úložiště a sledování aktivity účtu úložiště najdete v tématu [Správa propojených účtů úložiště](#managing-linked-storage-accounts). 
 
@@ -61,14 +61,14 @@ Azure Storage šifruje všechna neaktivní neaktivní data v účtu úložiště
 
 ### <a name="how-to-apply-cmk-to-customer-managed-storage-accounts"></a>Jak použít CMK na účty úložiště spravované zákazníkem
 ##### <a name="storage-account-requirements"></a>Požadavky na účet úložiště
-Účet úložiště a trezor klíčů musí být ve stejné oblasti, ale můžou být v různých předplatných. Další informace o Azure Storage šifrování a správě klíčů najdete v části [Azure Storage šifrování pro neaktivní data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Účet úložiště a trezor klíčů musí být ve stejné oblasti, ale můžou být v různých předplatných. Další informace o Azure Storage šifrování a správě klíčů najdete v části [Azure Storage šifrování pro neaktivní data](../../storage/common/storage-service-encryption.md).
 
 ##### <a name="apply-cmk-to-your-storage-accounts"></a>Použití CMK pro vaše účty úložiště
-Pokud chcete nakonfigurovat Azure Storage účet pro použití klíčů spravovaných zákazníkem s Azure Key Vault, použijte [Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal?toc=/azure/storage/blobs/toc.json), [PowerShell](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-powershell?toc=/azure/storage/blobs/toc.json) nebo rozhraní příkazového [řádku](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-cli?toc=/azure/storage/blobs/toc.json). 
+Pokud chcete nakonfigurovat Azure Storage účet pro použití klíčů spravovaných zákazníkem s Azure Key Vault, použijte [Azure Portal](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json), [PowerShell](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) nebo rozhraní příkazového [řádku](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). 
 
 ## <a name="managing-linked-storage-accounts"></a>Správa propojených účtů úložiště
 
-Pokud chcete připojit nebo zrušit propojení účtů úložiště s vaším pracovním prostorem, použijte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage) nebo [REST API](https://docs.microsoft.com/rest/api/loganalytics/linkedstorageaccounts).
+Pokud chcete připojit nebo zrušit propojení účtů úložiště s vaším pracovním prostorem, použijte rozhraní příkazového [řádku Azure](/cli/azure/monitor/log-analytics/workspace/linked-storage) nebo [REST API](/rest/api/loganalytics/linkedstorageaccounts).
 
 ##### <a name="create-or-modify-a-link"></a>Vytvoří nebo upraví odkaz.
 Když propojíte účet úložiště s pracovním prostorem, Log Analytics ho začít používat místo účtu úložiště, který vlastní služba. Můžeš 
@@ -88,7 +88,7 @@ Chcete-li nahradit účet úložiště, který se používá pro přijímání,
 Při používání vlastního účtu úložiště je uchování až po vás. Jinými slovy Log Analytics neodstraní protokoly uložené v privátním úložišti. Místo toho byste měli nastavit zásadu pro zpracování zatížení podle vašich požadavků.
 
 ##### <a name="consider-load"></a>Zvažte načtení
-Účty úložiště mohou zpracovávat určité zatížení požadavků na čtení a zápis před tím, než začnou žádosti o omezení (viz téma [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account) , kde najdete další podrobnosti). Omezení ovlivňuje dobu potřebnou k přijímání protokolů. Pokud je váš účet úložiště přetížený, zaregistrujte si další účet úložiště, abyste mezi nimi mohli zatížení rozložit. Pokud chcete monitorovat kapacitu a výkon svého účtu úložiště, Projděte si jeho [přehledy na Azure Portal]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview).
+Účty úložiště mohou zpracovávat určité zatížení požadavků na čtení a zápis před tím, než začnou žádosti o omezení (viz téma [škálovatelnost a výkonnostní cíle pro úložiště objektů BLOB](../../storage/common/scalability-targets-standard-account.md) , kde najdete další podrobnosti). Omezení ovlivňuje dobu potřebnou k přijímání protokolů. Pokud je váš účet úložiště přetížený, zaregistrujte si další účet úložiště, abyste mezi nimi mohli zatížení rozložit. Pokud chcete monitorovat kapacitu a výkon svého účtu úložiště, Projděte si jeho [přehledy na Azure Portal]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview).
 
 ### <a name="related-charges"></a>Související poplatky
 Účty úložiště se účtují podle objemu uložených dat, typu úložiště a typu redundance. Podrobnosti najdete v tématu [ceny objektů blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs) a [ceny Table Storage](https://azure.microsoft.com/pricing/details/storage/tables).

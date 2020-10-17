@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: 049a7348b803d12b66974bb9a9b50c12059171a2
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: a0349a3fe21bdc0b73252bce1207c9f3b53dc15f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931117"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143728"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat Azure Monitor sešity
 
@@ -109,6 +109,6 @@ Aby nedocházelo k automatickému volání nedůvěryhodných hostitelů při po
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
+* [Začínáme](./workbooks-overview.md#visualizations) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
 * [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
 * [Tipy pro optimalizaci dotazů Log Analytics](../log-query/query-optimization.md)

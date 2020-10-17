@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: c8fc0393e0961b46fbb8031d735f27e9ad785031
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadc976270888499be1ed01040cc4ff00632e8e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60318437"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142270"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurace nahrávání souborů IoT Hub pomocí prostředí PowerShell
 
@@ -27,11 +27,11 @@ K dokončení tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-* [Azure PowerShell rutiny](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* [Azure PowerShell rutiny](/powershell/azure/install-Az-ps).
 
-* Azure IoT Hub. Pokud Centrum IoT nemáte, můžete k vytvoření [služby IoT Hub](iot-hub-create-through-portal.md)použít [rutinu New-AzIoTHub](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) a vytvořit ji pomocí tohoto portálu.
+* Azure IoT Hub. Pokud Centrum IoT nemáte, můžete k vytvoření [služby IoT Hub](iot-hub-create-through-portal.md)použít [rutinu New-AzIoTHub](/powershell/module/az.iothub/new-aziothub) a vytvořit ji pomocí tohoto portálu.
 
-* Účet úložiště Azure. Pokud nemáte účet úložiště Azure, můžete k vytvoření [účtu úložiště](../storage/common/storage-create-storage-account.md) použít [rutiny Azure Storage PowerShellu](https://docs.microsoft.com/powershell/module/az.storage/) nebo použít portál.
+* Účet úložiště Azure. Pokud nemáte účet úložiště Azure, můžete k vytvoření [účtu úložiště](../storage/common/storage-account-create.md) použít [rutiny Azure Storage PowerShellu](/powershell/module/az.storage/) nebo použít portál.
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a nastavte svůj účet Azure.
 
@@ -136,5 +136,5 @@ Pokud chcete získat další informace o správě IoT Hub Azure, postupujte podl
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
 * [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/quickstart-linux.md)
 * [Zabezpečení řešení IoT od základů](../iot-fundamentals/iot-security-ground-up.md)

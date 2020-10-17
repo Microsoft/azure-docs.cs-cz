@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87800496"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143927"
 ---
 # <a name="azure-resource-logs"></a>Protokoly prostředků Azure
 Protokoly prostředků Azure jsou [protokoly platforem](platform-logs-overview.md) , které poskytují přehled o operacích provedených v rámci prostředku Azure. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure. Protokoly prostředků nejsou ve výchozím nastavení shromažďovány. Musíte vytvořit nastavení diagnostiky pro každý prostředek Azure, abyste odesílali své protokoly prostředků do Log Analyticsho pracovního prostoru pro použití s [protokoly Azure monitor](data-platform-logs.md), Azure Event Hubs k posílání mimo Azure nebo Azure Storage k archivaci.
@@ -27,7 +27,7 @@ V tématu [Vytvoření nastavení diagnostiky můžete odesílat protokoly a met
 - Pomocí dotazů protokolu můžete provádět komplexní analýzy a získat podrobné přehledy o datech protokolu.
 - Používejte výstrahy protokolu se složitou logikou výstrah.
 
-[Vytvořte nastavení diagnostiky](diagnostic-settings.md) pro odesílání protokolů prostředků do pracovního prostoru Log Analytics. Tato data jsou uložena v tabulkách, jak je popsáno v [části struktura protokolů Azure monitor](../log-query/logs-structure.md). Tabulky používané v protokolech prostředků závisí na typu kolekce, kterou prostředek používá:
+[Vytvořte nastavení diagnostiky](diagnostic-settings.md) pro odesílání protokolů prostředků do pracovního prostoru Log Analytics. Tato data jsou uložena v tabulkách, jak je popsáno v [části struktura protokolů Azure monitor](./data-platform-logs.md). Tabulky používané v protokolech prostředků závisí na typu kolekce, kterou prostředek používá:
 
 - Diagnostika Azure – všechna zapsaná data jsou do tabulky _AzureDiagnostics_ .
 - Data specifická pro prostředky jsou zapsána do jednotlivých tabulek pro každou kategorii prostředku.

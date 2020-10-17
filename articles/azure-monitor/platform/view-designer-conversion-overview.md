@@ -6,19 +6,19 @@ ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 19fd1d064a3f106d7b770481d1e456c51cf1e166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3179daec361aa287b79c5e9a468908d0ccdd2982
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87759423"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143960"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Průvodce přechodem Azure Monitor návrháře zobrazení na sešity
 [Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Přecházejí na sešity, aby poskytovaly flexibilní plátno pro analýzu dat a vytváření bohatých vizuálních sestav v rámci Azure Portal. Tento článek vám pomůže udělat přechod z návrháře zobrazení do sešitů. 
 
 
 ## <a name="workbooks-overview"></a>Přehled sešitů
-[Sešity](../insights/vminsights-workbooks.md) kombinují text, [dotazy protokolů](../log-query/query-language.md), metriky a parametry do propracovaných interaktivních sestav. Členové týmu, kteří mají stejný přístup k prostředkům Azure, můžou upravovat i sešity.
+[Sešity](../insights/vminsights-workbooks.md) kombinují text, [dotazy protokolů](/azure/data-explorer/kusto/query/), metriky a parametry do propracovaných interaktivních sestav. Členové týmu, kteří mají stejný přístup k prostředkům Azure, můžou upravovat i sešity.
 
 Sešity jsou užitečné pro scénáře, jako například:
 

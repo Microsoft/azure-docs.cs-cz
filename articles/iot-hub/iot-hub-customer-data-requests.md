@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: ebc73c75d9a23a53ac94f28208251dcff83e684a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fdff6e1c29b8484aaea3bb647e2f1738d1889c6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030697"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142234"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Funkce pro žádosti o zákaznických datech pro zařízení Azure IoT Hub
 
@@ -49,4 +49,4 @@ Je také možné provádět operace exportu pro zařízení pomocí rozhraní RE
 
 ## <a name="links-to-additional-documentation"></a>Odkazy na další dokumentaci
 
-Úplná dokumentace pro rozhraní API služby Azure IoT Hub se nachází v [rozhraních API služby IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/configuration).
+Úplná dokumentace pro rozhraní API služby Azure IoT Hub se nachází v [rozhraních API služby IoT Hub](/rest/api/iothub/service/configuration).

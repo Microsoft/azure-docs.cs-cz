@@ -105,7 +105,7 @@
     - name: REST API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
     - name: ASP.NET Core SignalR
-      href: 'https://docs.microsoft.com/aspnet/core/signalr'
+      href: /aspnet/core/signalr
     - name: Protokol služby Azure SignalR
       href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
     - name: Integrované služby Azure Policy
@@ -114,7 +114,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Řešení
-      href: 'https://docs.microsoft.com/azure/architecture/'
+      href: /azure/architecture/
     - name: Příběhy zákazníků
       href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
     - name: Plán služby SignalR
@@ -126,7 +126,7 @@
     - name: Nejčastější dotazy
       href: signalr-resource-faq.md
     - name: Omezení úrovní předplatného služby SignalR Service
-      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Videa

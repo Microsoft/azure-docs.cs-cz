@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: kenchen
-ms.openlocfilehash: 2cdce64b0ff03521a5848e2b4fd6e01431b5cc16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f1ab0440120cb9a96e6c05a4fc1987ead29188
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89514810"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143261"
 ---
 # <a name="service-mode-in-azure-signalr-service"></a>Režim služby ve službě Azure Signal
 
@@ -51,11 +51,11 @@ V tomto režimu není také žádné připojení k serveru (Pokud se pokusíte v
 > [!NOTE]
 > V [sadě SDK pro správu](https://github.com/Azure/azure-signalr/blob/dev/docs/management-sdk-guide.md)služby signaler jsou podporované jak REST API, tak i WebSocket. Pokud používáte jiný jazyk než .NET, můžete také ručně vyvolat rozhraní REST API, která následují tato [specifikace](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md).
 >
-> Pokud používáte Azure Functions, můžete použít [vazby služby signalizace pro Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service) (dále označované jako vazby funkce) a odesílat zprávy jako výstupní vazbu.
+> Pokud používáte Azure Functions, můžete použít [vazby služby signalizace pro Azure Functions](../azure-functions/functions-bindings-signalr-service.md) (dále označované jako vazby funkce) a odesílat zprávy jako výstupní vazbu.
 
 Je taky možné, aby serverová aplikace přijímala zprávy a události připojení od klientů. Služba bude doručovat zprávy a události připojení k předkonfigurovaným koncovým bodům (nazývaným nadřazeným) pomocí webhooků. Porovnání s výchozím režimem není nijak zaručeno, že vytrvalost a požadavky HTTP můžou být méně efektivní než připojení pomocí protokolu WebSocket.
 
-Další informace o tom, jak nakonfigurovat nadřazený datový proud, najdete v tomto [dokumentu](https://docs.microsoft.com/azure/azure-signalr/concept-upstream).
+Další informace o tom, jak nakonfigurovat nadřazený datový proud, najdete v tomto [dokumentu](./concept-upstream.md).
 
 Níže je uvedený diagram, který znázorňuje, jak funguje režim bez serveru:
 

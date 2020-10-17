@@ -7,12 +7,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: b0d16844315ce0adefcac9dc815640d4444df28b
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 27e98ae51cbea654ca0f06979b289a497a5aedf3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932324"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143510"
 ---
 # <a name="workbook-resource-parameters"></a>Parametry prostředku sešitu
 
@@ -111,5 +111,5 @@ Hodnoty z výběrů prostředků můžou pocházet z kontextu sešitu, statické
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
+* [Začínáme](./workbooks-overview.md#visualizations) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
 * [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.
