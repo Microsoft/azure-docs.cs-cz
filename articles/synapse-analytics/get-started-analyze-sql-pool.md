@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: a42157223c0c9a0b326c400388ea2b564e42f7f2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088937"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147561"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analýza dat pomocí vyhrazených fondů SQL
 
@@ -24,6 +24,7 @@ Azure synapse Analytics poskytuje možnost analyzovat data pomocí vyhrazeného 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Načtení dat taxislužby NYC do SQLDB1
 
 1. V synapse studiu přejděte do centra pro **vývoj** a pak vytvořte nový skript SQL.
+1. V části připojení k v tomto skriptu vyberte fond SQLDB1 (vytvořený v [kroku 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) tohoto kurzu).
 1. Zadejte následující kód:
     ```
     CREATE TABLE [dbo].[Trip]

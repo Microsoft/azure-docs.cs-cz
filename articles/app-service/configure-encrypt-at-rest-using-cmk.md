@@ -3,12 +3,12 @@ title: Šifrování zdroje aplikace v klidovém umístění
 description: Naučte se šifrovat data aplikací v Azure Storage a nasazovat je jako soubor balíčku.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62bb1e51bada155b98fe46740662b86b753d44fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978477"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146039"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
 
@@ -22,7 +22,7 @@ ms.locfileid: "90978477"
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu Azure Storage
 
-Nejdřív [vytvořte účet Azure Storage](../storage/common/storage-account-create.md) a [Zašifrujte ho pomocí klíčů spravovaných zákazníkem](../storage/common/encryption-customer-managed-keys.md). Po vytvoření účtu úložiště použijte [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání souborů balíčku.
+Nejdřív [vytvořte účet Azure Storage](../storage/common/storage-account-create.md) a [Zašifrujte ho pomocí klíčů spravovaných zákazníkem](../storage/common/customer-managed-keys-overview.md). Po vytvoření účtu úložiště použijte [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) k nahrání souborů balíčku.
 
 Dále pomocí Průzkumník služby Storage [vygenerujte SAS](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#generate-a-sas-in-storage-explorer). 
 

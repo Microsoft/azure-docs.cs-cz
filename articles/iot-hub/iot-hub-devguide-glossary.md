@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87023462"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147779"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář IoT Hubch podmínek
 
@@ -28,19 +28,19 @@ V tomto článku jsou uvedené některé běžné výrazy používané v IoT Hub
 
 ## <a name="automatic-device-management"></a>Automatická správa zařízení
 
-Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakujících se a složitých úloh správy rozsáhlých loďstva zařízení v celém životním cyklu. Díky automatické správě zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definovat požadovanou konfiguraci a nechat IoT Hub aktualizovat zařízení pokaždé, když vstoupí do rozsahu.  Skládá se z [automatických konfigurací zařízení](iot-hub-auto-device-config.md) a [IoT Edgech automatických nasazení](../iot-edge/how-to-deploy-at-scale.md).
+Automatická správa zařízení v Azure IoT Hub automatizuje mnoho opakujících se a složitých úloh správy rozsáhlých loďstva zařízení v celém životním cyklu. Díky automatické správě zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definovat požadovanou konfiguraci a nechat IoT Hub aktualizovat zařízení pokaždé, když vstoupí do rozsahu.  Skládá se z [automatických konfigurací zařízení](./iot-hub-automatic-device-management.md) a [IoT Edgech automatických nasazení](../iot-edge/how-to-deploy-at-scale.md).
 
 ## <a name="automatic-device-configuration"></a>Automatická konfigurace zařízení
 
-Back-end vašeho řešení může pomocí [automatických konfigurací zařízení](iot-hub-auto-device-config.md) přiřazovat požadované vlastnosti do sady [vláken zařízení](#device-twin) a stav sestav pomocí systémových metrik a vlastních metrik. 
+Back-end vašeho řešení může pomocí [automatických konfigurací zařízení](./iot-hub-automatic-device-management.md) přiřazovat požadované vlastnosti do sady [vláken zařízení](#device-twin) a stav sestav pomocí systémových metrik a vlastních metrik. 
 
 ## <a name="azure-classic-cli"></a>Azure Classic CLI
 
-Rozhraní příkazového [řádku Azure Classic](../cli-install-nodejs.md) je open source založený na prostředí založeném na prostředí pro vytváření a správu prostředků v Microsoft Azure. Tato verze rozhraní příkazového řádku by se měla použít jenom pro nasazení v klasickém prostředí.
+Rozhraní příkazového [řádku Azure Classic](/cli/azure/install-classic-cli) je open source založený na prostředí založeném na prostředí pro vytváření a správu prostředků v Microsoft Azure. Tato verze rozhraní příkazového řádku by se měla použít jenom pro nasazení v klasickém prostředí.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) je open source založený na prostředí založeném na prostředí pro vytváření a správu prostředků v Microsoft Azure.
+Rozhraní příkazového [řádku Azure CLI](/cli/azure/install-az-cli2) je open source založený na prostředí založeném na prostředí pro vytváření a správu prostředků v Microsoft Azure.
 
 ## <a name="azure-iot-device-sdks"></a>Sady SDK pro zařízení Azure IoT
 
@@ -72,7 +72,7 @@ K dispozici jsou sady _SDK služeb_ pro několik jazyků, které umožňují vyt
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 
-[Service Bus](../service-bus/index.md) poskytuje cloudovou komunikaci s podnikovým zasíláním zpráv a přenosnou komunikací, která pomáhá propojit místní řešení s cloudem. Některé IoT Hub kurzy využívají Service Bus [fronty](../service-bus-messaging/service-bus-messaging-overview.md).
+[Service Bus](../service-bus-messaging/index.yml) poskytuje cloudovou komunikaci s podnikovým zasíláním zpráv a přenosnou komunikací, která pomáhá propojit místní řešení s cloudem. Některé IoT Hub kurzy využívají Service Bus [fronty](../service-bus-messaging/service-bus-messaging-overview.md).
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -96,7 +96,7 @@ Odkazuje na zprávy odeslané ze služby IoT Hub na připojené zařízení. Tyt
 
 ## <a name="configuration"></a>Konfigurace
 
-V souvislosti s [automatickou konfigurací zařízení](iot-hub-auto-device-config.md)definuje konfigurace v rámci IoT Hub požadovanou konfiguraci pro sadu zařízení s dvojitou přesností a poskytuje sadu metrik pro hlášení stavu a průběhu.
+V souvislosti s [automatickou konfigurací zařízení](./iot-hub-automatic-device-management.md)definuje konfigurace v rámci IoT Hub požadovanou konfiguraci pro sadu zařízení s dvojitou přesností a poskytuje sadu metrik pro hlášení stavu a průběhu.
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
@@ -164,7 +164,7 @@ Správa zařízení zahrnuje úplný životní cyklus přidružený ke správě 
 
 ## <a name="device-rest-api"></a>REST API zařízení
 
-Pomocí [REST API zařízení](https://docs.microsoft.com/rest/api/iothub/device) ze zařízení můžete odesílat zprávy typu zařízení-Cloud do služby IoT Hub a přijímat zprávy z [cloudu na zařízení](#cloud-to-device) ze služby IoT Hub. Obvykle byste měli použít jednu ze [sad SDK pro zařízení](#azure-iot-device-sdks) vyšší úrovně, jak je znázorněno v kurzech IoT Hub.
+Pomocí [REST API zařízení](/rest/api/iothub/device) ze zařízení můžete odesílat zprávy typu zařízení-Cloud do služby IoT Hub a přijímat zprávy z [cloudu na zařízení](#cloud-to-device) ze služby IoT Hub. Obvykle byste měli použít jednu ze [sad SDK pro zařízení](#azure-iot-device-sdks) vyšší úrovně, jak je znázorněno v kurzech IoT Hub.
 
 ## <a name="device-provisioning"></a>Zřizování zařízení
 
@@ -184,7 +184,7 @@ IoT Hub zpřístupňuje několik [koncových bodů](iot-hub-devguide-endpoints.m
 
 ## <a name="event-hubs-service"></a>Služba Event Hubs
 
-[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) je vysoce škálovatelná služba příchozího přenosu dat, která může ingestovat miliony událostí za sekundu. Služba umožňuje zpracovávat a analyzovat obrovské objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Porovnání se službou IoT Hub najdete v tématu porovnání služeb [azure IoT Hub a azure Event Hubs](iot-hub-compare-event-hubs.md).
+[Event Hubs](../event-hubs/event-hubs-about.md) je vysoce škálovatelná služba příchozího přenosu dat, která může ingestovat miliony událostí za sekundu. Služba umožňuje zpracovávat a analyzovat obrovské objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Porovnání se službou IoT Hub najdete v tématu porovnání služeb [azure IoT Hub a azure Event Hubs](iot-hub-compare-event-hubs.md).
 
 ## <a name="event-hub-compatible-endpoint"></a>Koncový bod kompatibilní s centrem událostí
 
@@ -226,7 +226,7 @@ IoT Hub je plně spravovaná služba Azure, která umožňuje spolehlivou a zabe
 
 ## <a name="iot-hub-resource-rest-api"></a>REST API prostředků IoT Hub
 
-Pomocí [REST API prostředků IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) můžete spravovat centra IoT v [předplatném Azure](#subscription) , které provádí operace, jako je vytváření, aktualizace a odstraňování Center.
+Pomocí [REST API prostředků IoT Hub](/rest/api/iothub/iothubresource) můžete spravovat centra IoT v [předplatném Azure](#subscription) , které provádí operace, jako je vytváření, aktualizace a odstraňování Center.
 
 ## <a name="iot-solution-accelerators"></a>Akcelerátory řešení IoT
 
@@ -304,7 +304,7 @@ SASL PLAIN je protokol, který protokol AMQP používá k přenosu tokenů zabez
 
 ## <a name="service-rest-api"></a>Rozhraní API služby REST
 
-Ke správě svých zařízení můžete použít [REST API služby](https://docs.microsoft.com/rest/api/iothub/service/configuration) z back-endu řešení. Rozhraní API umožňuje načítat a aktualizovat vlastnosti, které jsou v [zařízení](#device-twin) , vyvolat [přímé metody](#direct-method)a plánovat [úlohy](#job). Obvykle byste měli použít jednu ze [sad SDK služby](#azure-iot-service-sdks) vyšší úrovně, jak je znázorněno v kurzech IoT Hub.
+Ke správě svých zařízení můžete použít [REST API služby](/rest/api/iothub/service/configuration) z back-endu řešení. Rozhraní API umožňuje načítat a aktualizovat vlastnosti, které jsou v [zařízení](#device-twin) , vyvolat [přímé metody](#direct-method)a plánovat [úlohy](#job). Obvykle byste měli použít jednu ze [sad SDK služby](#azure-iot-service-sdks) vyšší úrovně, jak je znázorněno v kurzech IoT Hub.
 
 ## <a name="shared-access-signature"></a>Sdílený přístupový podpis
 

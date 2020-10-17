@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak používat komunikační služby Azure
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mikben
-ms.openlocfilehash: fb37dfe9927c02711f4ab1b01cd89247059b27f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f84146a0513d02484f8f84560e04a977fb3ef373
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344693"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145830"
 ---
 # <a name="azure-communication-services-as-an-event-grid-source"></a>Komunikační služby Azure jako zdroj Event Grid
 
@@ -23,7 +23,7 @@ Tento článek poskytuje vlastnosti a schéma pro události služby Azure Commun
 
 ### <a name="available-event-types"></a>Dostupné typy událostí
 
-Event Grid používá [odběry událostí](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) ke směrování zpráv událostí odběratelům. 
+Event Grid používá [odběry událostí](./concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. 
 
 Komunikační služby Azure emitují následující typy událostí:
 
@@ -45,7 +45,7 @@ Komunikační služby Azure emitují následující typy událostí:
 
 ## <a name="event-subjects"></a>Předměty událostí
 
-`subject`Pole všech událostí komunikačních služeb identifikuje uživatele, telefonní číslo nebo entitu, která je cílem události. K povolení jednoduchého [filtrování Event Grid](https://docs.microsoft.com/azure/event-grid/event-filtering)se používají společné předpony.
+`subject`Pole všech událostí komunikačních služeb identifikuje uživatele, telefonní číslo nebo entitu, která je cílem události. K povolení jednoduchého [filtrování Event Grid](./event-filtering.md)se používají společné předpony.
 
 | Předpona subjektu                              | Entita služby komunikace |
 | ------------------------------------------- | ---------------------------- |
@@ -345,6 +345,6 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](https://docs.microsoft.com/azure/event-grid/overview)
-* Úvod do Azure Event Grid konceptů najdete v tématu [Koncepty v Event Grid?](https://docs.microsoft.com/azure/event-grid/concepts)
-* Úvod do Azure Event Grid SystemTopics naleznete v tématu [Systémová témata v Azure Event Grid?](https://docs.microsoft.com/azure/event-grid/system-topics)
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](./overview.md)
+* Úvod do Azure Event Grid konceptů najdete v tématu [Koncepty v Event Grid?](./concepts.md)
+* Úvod do Azure Event Grid SystemTopics naleznete v tématu [Systémová témata v Azure Event Grid?](./system-topics.md)

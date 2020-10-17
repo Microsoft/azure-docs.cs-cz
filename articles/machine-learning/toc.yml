@@ -152,13 +152,31 @@
       href: concept-onnx.md
     - name: Kanály ML
       href: concept-ml-pipelines.md
-    - name: Zabezpečení a připravenost na úrovni podniku
+    - name: Zabezpečení
       items:
         - name: Přehled zabezpečení podniku
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
+    - name: Zodpovědné strojové učení
+      items:
+        - name: Přehled zodpovědného strojového učení
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: Interpretovatelnost modelů
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Spravedlivý přístup v Machine Learningu
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: Rozdílová ochrana soukromí
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
+- name: Návody
+  items:
+    - name: Zabezpečení
+      items:
         - name: Správa identit a přístupu
           items:
             - name: Nastavení ověřování
@@ -212,22 +230,6 @@
         - name: Auditování a správa dodržování předpisů
           href: how-to-integrate-azure-policy.md
           displayName: policy
-    - name: Zodpovědné strojové učení
-      items:
-        - name: Přehled zodpovědného strojového učení
-          displayName: 'responsible,ml'
-          href: concept-responsible-ml.md
-        - name: Interpretovatelnost modelů
-          displayName: explainability
-          href: how-to-machine-learning-interpretability.md
-        - name: Spravedlivý přístup v Machine Learningu
-          displayName: fairness
-          href: concept-fairness-ml.md
-        - name: Rozdílová ochrana soukromí
-          displayName: 'differential,privacy'
-          href: concept-differential-privacy.md
-- name: Návody
-  items:
     - name: Vytváření a správa pracovních prostorů
       items:
         - name: Použití webu Azure Portal

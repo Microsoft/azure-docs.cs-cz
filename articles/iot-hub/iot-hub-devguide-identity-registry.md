@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2f811c504f8871b06805d5578ed2d70c651be25d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 709ebacc66382d75b79cd41edf88cad962dfd7c2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029830"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147714"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
 
@@ -84,7 +84,7 @@ Pomocí asynchronních operací na [koncovém bodu poskytovatele prostředků Io
 
 Další informace o rozhraních API pro import a export najdete v tématu [IoT Hub rozhraní REST API poskytovatele prostředků](/rest/api/iothub/iothubresource). Další informace o spouštění úloh importu a exportu najdete v tématu [Hromadná Správa identit zařízení IoT Hub](iot-hub-bulk-identity-mgmt.md).
 
-Identity zařízení se taky dají exportovat a importovat z IoT Hub přes rozhraní API služby prostřednictvím [REST API](/rest/api/iothub/service/jobs/createimportexportjob) nebo jedné ze [sad SDK služby](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)IoT Hub.
+Identity zařízení se taky dají exportovat a importovat z IoT Hub přes rozhraní API služby prostřednictvím [REST API](/rest/api/iothub/service/jobs/createimportexportjob) nebo jedné ze [sad SDK služby](./iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)IoT Hub.
 
 ## <a name="device-provisioning"></a>Zřizování zařízení
 
@@ -112,7 +112,7 @@ Vlastnosti: vlastnosti systému zprávy jsou předpony s `$` symbolem.
 
 Zpráva oznámení pro zařízení:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 |$content – typ | application/json |
 |$iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -148,7 +148,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 ```
 Zpráva oznámení pro modul:
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 $content – typ | application/json |
 $iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -188,7 +188,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 
 Identity zařízení se reprezentují jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Description |
+| Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
@@ -212,7 +212,7 @@ Identity zařízení se reprezentují jako dokumenty JSON s následujícími vla
 
 Identity modulů jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Description |
+| Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |

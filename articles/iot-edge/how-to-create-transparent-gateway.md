@@ -4,19 +4,19 @@ description: Použít zařízení Azure IoT Edge jako transparentní bránu, kte
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/12/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ae01fc2ef8761305c2096904471ce75b69d1150d
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048402"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147847"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení IoT Edge tak, aby fungovalo jako transparentní brána
 
@@ -31,8 +31,8 @@ Tento článek poskytuje podrobné pokyny ke konfiguraci IoT Edge zařízení pr
 Existují tři obecné kroky k nastavení úspěšného transparentního připojení brány. Tento článek popisuje první krok:
 
 1. **Nakonfigurujte zařízení brány jako server tak, aby se k nim mohli připojit podřízená zařízení bezpečně. Nastavte bránu tak, aby přijímala zprávy ze zařízení pro příjem dat, a směrovat je do správného umístění.**
-2. Vytvořte identitu zařízení pro zařízení pro příjem dat, aby se mohla ověřit pomocí IoT Hub. Nakonfigurujte zařízení pro příjem zpráv, aby odesílala zprávy přes zařízení brány. Další informace najdete v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
-3. Připojte zařízení pro příjem dat k zařízení brány a začněte odesílat zprávy. Další informace najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
+2. Vytvořte identitu zařízení pro zařízení pro příjem dat, aby se mohla ověřit pomocí IoT Hub. Nakonfigurujte zařízení pro příjem zpráv, aby odesílala zprávy přes zařízení brány. Postup najdete v tématu [ověření zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
+3. Připojte zařízení pro příjem dat k zařízení brány a začněte odesílat zprávy. Postup najdete v tématu [připojení zařízení pro příjem dat k bráně Azure IoT Edge](how-to-connect-downstream-device.md).
 
 Aby zařízení fungovalo jako brána, musí se bezpečně připojit ke svým podřízeným zařízením. Azure IoT Edge umožňuje použít infrastrukturu veřejných klíčů (PKI) k nastavení zabezpečených připojení mezi zařízeními. V tomto případě umožníme, aby se pro zařízení s IoT Edge připojila k zařízení, které funguje jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení brány. Tato kontrolu identity zabraňuje zařízením v připojení k potenciálně škodlivým branám.
 
@@ -45,9 +45,11 @@ Můžete vytvořit jakoukoli infrastrukturu certifikátů, která umožňuje dů
 
 Následující kroky vás provedou procesem vytvoření certifikátů a jejich instalací do správných míst v bráně. K vygenerování certifikátů můžete použít libovolný počítač a pak je zkopírovat do zařízení IoT Edge.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Zařízení se systémem Linux nebo Windows s nainstalovaným IoT Edge.
+
+Pokud zařízení nemáte připravené, můžete ho vytvořit na virtuálním počítači Azure. Postupujte podle kroků v části [nasazení prvního IoT Edge modulu do virtuálního počítače se systémem Linux](quickstart-linux.md) a vytvořte IoT Hub, vytvořte virtuální počítač a nakonfigurujte modul runtime IoT Edge. 
 
 ## <a name="set-up-the-device-ca-certificate"></a>Nastavení certifikátu certifikační autority zařízení
 
@@ -68,24 +70,27 @@ Připravte si následující soubory:
 
 V produkčních scénářích byste tyto soubory měli vytvořit s vlastní certifikační autoritou. Pro vývojové a testovací scénáře můžete použít ukázkové certifikáty.
 
-1. Pokud používáte ukázkové certifikáty, použijte k vytvoření souborů následující sadu kroků:
-   1. [Vytvořte certifikát kořenové certifikační autority](how-to-create-test-certificates.md#create-root-ca-certificate). Na konci těchto pokynů budete mít soubor certifikátu kořenové certifikační autority:
-      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+1. Pokud používáte ukázkové certifikáty, postupujte podle pokynů v tématu [Vytvoření ukázkových certifikátů k otestování IoT Edge funkcí zařízení](how-to-create-test-certificates.md) k vytvoření souborů. Na této stránce je třeba provést následující kroky:
 
-   2. [Vytvořte certifikát certifikační autority IoT Edge zařízení](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Na konci těchto pokynů budete mít dva soubory, certifikát certifikační autority zařízení a jeho privátní klíč:
+   1. Začněte tím, že nastavíte skripty pro generování certifikátů na vašem zařízení.
+   2. Vytvořte certifikát kořenové certifikační autority. Na konci těchto pokynů budete mít soubor certifikátu kořenové certifikační autority:
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+   3. Vytvoření certifikátů certifikační autority IoT Edge zařízení. Na konci těchto pokynů budete mít certifikát certifikační autority zařízení a jeho privátní klíč:
       * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem` ani
       * `<path>/private/iot-edge-device-<cert name>.key.pem`
 
-2. Pokud jste tyto soubory vytvořili na jiném počítači, zkopírujte je do zařízení IoT Edge.
+2. Pokud jste certifikáty vytvořili na jiném počítači, zkopírujte je do zařízení IoT Edge.
 
 3. Na zařízení IoT Edge otevřete konfigurační soubor démona zabezpečení.
    * Systému `C:\ProgramData\iotedge\config.yaml`
    * Linux `/etc/iotedge/config.yaml`
 
-4. V souboru vyhledejte část **certifikáty** a zadejte identifikátory URI souborů pro tyto tři soubory jako hodnoty pro následující vlastnosti:
+4. V souboru vyhledejte část **nastavení certifikátu** . Odkomentujte čtyři řádky začínající **certifikáty:** a zadejte identifikátory URI souborů pro tyto tři soubory jako hodnoty pro následující vlastnosti:
    * **device_ca_cert**: certifikát certifikační autority zařízení
    * **device_ca_pk**: privátní klíč certifikační autority zařízení
    * **trusted_ca_certs**: certifikát kořenové certifikační autority
+
+   Ujistěte se, že v **certifikátech** nejsou žádné předchozí prázdné znaky a že ostatní řádky jsou odsazené o dva mezery.
 
 5. Uložte soubor a zavřete ho.
 
@@ -117,7 +122,7 @@ Pokud chcete nasadit modul centra IoT Edge a nakonfigurovat ho pomocí tras pro 
 
 5. Vyberte **Další: trasy**.
 
-6. Na stránce **trasy** se ujistěte, že existuje trasa pro zpracování zpráv přicházejících ze zařízení pro příjem dat. Příklad:
+6. Na stránce **trasy** se ujistěte, že existuje trasa pro zpracování zpráv přicházejících ze zařízení pro příjem dat. Například:
 
    * Trasa, která odesílá všechny zprávy, ať už z modulu, nebo ze zařízení pro příjem dat, na IoT Hub:
        * **Název**: `allMessagesToHub`
@@ -146,14 +151,6 @@ Aby mohl scénář brány fungovat, musí být aspoň jeden z podporovaných pro
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
-
-## <a name="enable-extended-offline-operation"></a>Povolit rozšířenou offline operaci
-
-Od [verze 1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) modulu runtime IoT Edge se zařízení brány a zařízení, která se k němu připojují, dají nakonfigurovat pro rozšířené operace offline.
-
-Díky této funkci se můžou místní moduly nebo zařízení se systémem pro příjem dat podle potřeby znovu ověřit u IoT Edge zařízení a vzájemně komunikovat pomocí zpráv a metod, i když se odpojíte od služby IoT Hub. Další informace najdete v tématu [vysvětlení rozšířených funkcí offline pro IoT Edge zařízení, moduly a podřízená zařízení](offline-capabilities.md).
-
-Chcete-li povolit rozšířené možnosti offline, navažte vztah mezi nadřazenými a podřízenými zařízeními mezi zařízením IoT Edge brány a zařízeními pro příjem dat, která se k němu připojí. Tyto kroky jsou podrobněji vysvětleny v dalším článku této série a [ověřují zařízení pro příjem dat do Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
 ## <a name="next-steps"></a>Další kroky
 

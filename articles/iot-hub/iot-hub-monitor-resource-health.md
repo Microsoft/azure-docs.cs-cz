@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Technical Support'
 - devx-track-csharp
-ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fec74938adea4058041766a5c28c5a5200aa189e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438394"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146550"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá diagnostika potíží
 
@@ -36,7 +36,7 @@ IoT Hub také nabízí vlastní metriky, které vám pomohou pochopit stav svýc
 
 Azure Monitor poskytuje diagnostické informace o prostředcích Azure, což znamená, že můžete sledovat operace, které probíhají v rámci služby IoT Hub.
 
-Další informace o konkrétních metrikách a událostech, které Azure Monitor sleduje, najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md) a [podporovanými službami, schématy a kategoriemi pro diagnostické protokoly Azure](../azure-monitor/platform/diagnostic-logs-schema.md).
+Další informace o konkrétních metrikách a událostech, které Azure Monitor sleduje, najdete v tématu [podporované metriky s Azure monitor](../azure-monitor/platform/metrics-supported.md) a [podporovanými službami, schématy a kategoriemi pro diagnostické protokoly Azure](../azure-monitor/platform/resource-logs-schema.md).
 
 [!INCLUDE [iot-hub-diagnostics-settings](../../includes/iot-hub-diagnostics-settings.md)]
 
@@ -122,7 +122,7 @@ Kategorie operace identity zařízení sleduje chyby, ke kterým dochází při 
 
 #### <a name="routes"></a>Trasy
 
-Kategorie [směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) sleduje chyby, ke kterým došlo během hodnocení směrování zpráv a stavu koncového bodu, jak je uvedeno IoT Hub. Tato kategorie zahrnuje události jako:
+Kategorie [směrování zpráv](./iot-hub-devguide-messages-d2c.md) sleduje chyby, ke kterým došlo během hodnocení směrování zpráv a stavu koncového bodu, jak je uvedeno IoT Hub. Tato kategorie zahrnuje události jako:
 
 * Pravidlo se vyhodnotí jako nedefinované.
 * IoT Hub označí koncový bod jako mrtvý nebo
@@ -352,7 +352,7 @@ IoT Hub zaznamenává tento protokol, když se do IoT Hub dorazí zpráva obsahu
 
 V tomto případě `durationMs` se nepočítá, protože hodiny IoT Hub nemusejí být synchronizované s hodinami zařízení, takže výpočet doby trvání může být zavádějící. `properties`Pro zachycení špičky v latenci v rámci zařízení do cloudu doporučujeme napsat logiku pomocí časových razítek v části.
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | Velikost zprávy typu zařízení-Cloud v bajtech |
 | **deviceId** | Řetězec alfanumerických alfanumerických znaků ASCII | Identita zařízení |
@@ -386,7 +386,7 @@ IoT Hub zaznamenává tento protokol, pokud zpráva obsahující platné vlastno
 
 V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Řetězec | Hodnota true nebo false označuje, zda je v IoT Hub povoleno směrování zpráv. |
 | **parentSpanId** | Řetězec | [Identifikátor rozsahu](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který by byl trasováním zpráv D2C v tomto případě |
@@ -418,7 +418,7 @@ IoT Hub zaznamenává tento protokol, pokud je povoleno [Směrování](iot-hub-d
 
 V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **koncový bod** | Řetězec | Název koncového bodu směrování |
 | **endpointType** | Řetězec | Typ koncového bodu směrování |

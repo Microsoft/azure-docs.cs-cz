@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81680724"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146643"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Vzdálené monitorování a oznámení IoT pomocí Azure Logic Apps připojení ke službě IoT Hub a poštovní schránce
 
@@ -22,7 +22,7 @@ ms.locfileid: "81680724"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) vám může pomáhat při organizování pracovních postupů v místních i cloudových službách, v jednom nebo několika podnicích a v různých protokolech. Aplikace logiky začíná triggerem, který potom následuje jednou nebo více akcí, které lze sekvencovat pomocí integrovaných ovládacích prvků, jako jsou podmínky a iterátory. Tato flexibilita přináší Logic Apps ideální řešení IoT pro scénáře monitorování IoT. Například doručení dat telemetrie ze zařízení do IoT Hubho koncového bodu může iniciovat pracovní postupy Logic Apps, které skladují data v objektu blob Azure Storage, odesílají e-mailové výstrahy, které upozorňují na anomálie v datech, naplánování technici, pokud zařízení hlásí chybu, a tak dále.
+[Azure Logic Apps](../logic-apps/index.yml) vám může pomáhat při organizování pracovních postupů v místních i cloudových službách, v jednom nebo několika podnicích a v různých protokolech. Aplikace logiky začíná triggerem, který potom následuje jednou nebo více akcí, které lze sekvencovat pomocí integrovaných ovládacích prvků, jako jsou podmínky a iterátory. Tato flexibilita přináší Logic Apps ideální řešení IoT pro scénáře monitorování IoT. Například doručení dat telemetrie ze zařízení do IoT Hubho koncového bodu může iniciovat pracovní postupy Logic Apps, které skladují data v objektu blob Azure Storage, odesílají e-mailové výstrahy, které upozorňují na anomálie v datech, naplánování technici, pokud zařízení hlásí chybu, a tak dále.
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
@@ -104,7 +104,7 @@ Vytvořte oboru názvů a frontu Service Bus. Později v tomto tématu vytvoří
 
 ## <a name="add-a-custom-endpoint-and-routing-rule-to-your-iot-hub"></a>Přidání vlastního koncového bodu a pravidla směrování do služby IoT Hub
 
-Přidáním vlastního koncového bodu pro frontu Service Bus do služby IoT Hub a vytvořením pravidla směrování zpráv můžete směrovat zprávy, které obsahují upozornění na teplotu tohoto koncového bodu, kde budou vyzvednuty vaší aplikací logiky. Pravidlo směrování používá dotaz směrování, `temperatureAlert = "true"` k posílání zpráv na základě hodnoty `temperatureAlert` Vlastnosti aplikace nastavené klientským kódem běžícím na zařízení. Další informace najdete v tématu [dotaz na směrování zpráv na základě vlastností zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-properties).
+Přidáním vlastního koncového bodu pro frontu Service Bus do služby IoT Hub a vytvořením pravidla směrování zpráv můžete směrovat zprávy, které obsahují upozornění na teplotu tohoto koncového bodu, kde budou vyzvednuty vaší aplikací logiky. Pravidlo směrování používá dotaz směrování, `temperatureAlert = "true"` k posílání zpráv na základě hodnoty `temperatureAlert` Vlastnosti aplikace nastavené klientským kódem běžícím na zařízení. Další informace najdete v tématu [dotaz na směrování zpráv na základě vlastností zpráv](./iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-properties).
 
 ### <a name="add-a-custom-endpoint"></a>Přidat vlastní koncový bod
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 019a9264beddafbd4585810967551e064592e94d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4fbfbd1d578eb77d50d91413efb9f9fbf28e115f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90602519"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146318"
 ---
 # <a name="whats-new-in-custom-vision"></a>Co je nového v Custom Vision
 
@@ -23,9 +23,9 @@ Zjistěte, co je nového ve službě. Tyto položky můžou být poznámky k ver
 
 ## <a name="july-2020"></a>Červenec 2020
 
-### <a name="role-based-access-control"></a>Řízení přístupu na základě role
+### <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
-* Custom Vision podporuje řízení přístupu na základě role Azure (Azure RBAC), což je autorizační systém pro správu individuálního přístupu k prostředkům Azure. Informace o tom, jak spravovat přístup k vašim Custom Visionm projektům, najdete v tématu [řízení přístupu na základě role](./role-based-access-control.md).
+* Custom Vision podporuje řízení přístupu na základě role Azure (Azure RBAC), což je autorizační systém pro správu individuálního přístupu k prostředkům Azure. Informace o tom, jak spravovat přístup k vašim Custom Visionm projektům, najdete v tématu [řízení přístupu na základě role v Azure](./role-based-access-control.md).
 
 ### <a name="subset-training"></a>Školení podmnožiny
 

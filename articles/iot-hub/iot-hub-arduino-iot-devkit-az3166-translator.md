@@ -9,12 +9,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 412a3e78006d263858ff0e28af52cf11bf44c7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004336"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147871"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Použití IoT DevKit AZ3166 s Azure Functions a Cognitive Services k vytvoření překladatele jazyka
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak pomocí [Azure Cognitive Services](https://azu
 
 K dokončení kroků v tomto kurzu nejdříve proveďte následující úlohy:
 
-* Připravte své DevKit podle kroků v části [připojení IoT DEVKIT AZ3166 do Azure IoT Hub v cloudu](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started).
+* Připravte své DevKit podle kroků v části [připojení IoT DEVKIT AZ3166 do Azure IoT Hub v cloudu](./iot-hub-arduino-iot-devkit-az3166-get-started.md).
 
 ## <a name="create-azure-cognitive-service"></a>Vytvořit službu pro rozpoznávání Azure
 
@@ -152,4 +152,4 @@ Zjistili jste, jak používat službu IoT DevKit jako překladatel pomocí Azure
 Přejděte k ostatním kurzům a Naučte se:
 
 > [!div class="nextstepaction"]
-> [Připojení IoT DevKit AZ3166 k akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring)
+> [Připojení IoT DevKit AZ3166 k akcelerátoru řešení vzdáleného monitorování Azure IoT](./iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)

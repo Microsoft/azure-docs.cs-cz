@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 6a8f39ae5d73bade2c86a7e15efe75956c2aed24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327561"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146669"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>Přidání skupiny příjemců do služby IoT Hub
 
-[Skupiny příjemců](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) poskytují nezávislá zobrazení do datového proudu událostí, který aplikacím a službám Azure umožňuje nezávisle spotřebovat data ze stejného koncového bodu centra událostí. V této části přidáte skupinu příjemců do integrovaného koncového bodu služby IoT Hub, který bude webová aplikace používat pro čtení dat.
+[Skupiny příjemců](../event-hubs/event-hubs-features.md#event-consumers) poskytují nezávislá zobrazení do datového proudu událostí, který aplikacím a službám Azure umožňuje nezávisle spotřebovat data ze stejného koncového bodu centra událostí. V této části přidáte skupinu příjemců do integrovaného koncového bodu služby IoT Hub, který bude webová aplikace používat pro čtení dat.
 
 Spuštěním následujícího příkazu přidejte skupinu příjemců do integrovaného koncového bodu služby IoT Hub:
 
@@ -156,11 +156,11 @@ Měl by se také zobrazit výstup v konzole, ve kterém se zobrazují zprávy, k
 
 ## <a name="host-the-web-app-in-app-service"></a>Hostování webové aplikace v App Service
 
-[Funkce Web Apps v Azure App Service](https://docs.microsoft.com/azure/app-service/overview) poskytuje platformu jako službu (PaaS) pro hostování webových aplikací. Webové aplikace hostované ve službě Azure App Service můžou využívat výkonné funkce Azure, jako je další zabezpečení, Vyrovnávání zatížení a škálovatelnost, a také řešení Azure a partnerská řešení DevOps, jako je průběžné nasazování, Správa balíčků atd. Azure App Service podporuje webové aplikace vyvinuté v mnoha oblíbených jazycích a nasazené v infrastruktuře systému Windows nebo Linux.
+[Funkce Web Apps v Azure App Service](../app-service/overview.md) poskytuje platformu jako službu (PaaS) pro hostování webových aplikací. Webové aplikace hostované ve službě Azure App Service můžou využívat výkonné funkce Azure, jako je další zabezpečení, Vyrovnávání zatížení a škálovatelnost, a také řešení Azure a partnerská řešení DevOps, jako je průběžné nasazování, Správa balíčků atd. Azure App Service podporuje webové aplikace vyvinuté v mnoha oblíbených jazycích a nasazené v infrastruktuře systému Windows nebo Linux.
 
-V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kód pomocí příkazů rozhraní příkazového řádku Azure CLI. Podrobnosti o příkazech, které se používají v dokumentaci [AZ WebApp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) , najdete v části. Než začnete, ujistěte se, že jste dokončili kroky pro [Přidání skupiny prostředků do služby IoT Hub](#add-a-consumer-group-to-your-iot-hub), [získání připojovacího řetězce služby pro službu IoT Hub](#get-a-service-connection-string-for-your-iot-hub)a [Stažení webové aplikace z GitHubu](#download-the-web-app-from-github).
+V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kód pomocí příkazů rozhraní příkazového řádku Azure CLI. Podrobnosti o příkazech, které se používají v dokumentaci [AZ WebApp](/cli/azure/webapp?view=azure-cli-latest) , najdete v části. Než začnete, ujistěte se, že jste dokončili kroky pro [Přidání skupiny prostředků do služby IoT Hub](#add-a-consumer-group-to-your-iot-hub), [získání připojovacího řetězce služby pro službu IoT Hub](#get-a-service-connection-string-for-your-iot-hub)a [Stažení webové aplikace z GitHubu](#download-the-web-app-from-github).
 
-1. [Plán App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) definuje sadu výpočetních prostředků pro aplikaci hostovanou v App Service, která se má spustit. V tomto kurzu používáme pro hostování webové aplikace úroveň vývojář/Free. S úrovní Free se vaše webová aplikace spouští na sdílených prostředcích Windows s jinými aplikacemi App Service, včetně aplikací jiných zákazníků. Azure také nabízí App Service plány pro nasazení webových aplikací do výpočetních prostředků Linux. Pokud již máte plán App Service, který chcete použít, můžete tento krok přeskočit.
+1. [Plán App Service](../app-service/overview-hosting-plans.md) definuje sadu výpočetních prostředků pro aplikaci hostovanou v App Service, která se má spustit. V tomto kurzu používáme pro hostování webové aplikace úroveň vývojář/Free. S úrovní Free se vaše webová aplikace spouští na sdílených prostředcích Windows s jinými aplikacemi App Service, včetně aplikací jiných zákazníků. Azure také nabízí App Service plány pro nasazení webových aplikací do výpočetních prostředků Linux. Pokud již máte plán App Service, který chcete použít, můžete tento krok přeskočit.
 
    Pokud chcete vytvořit plán App Service pomocí bezplatné úrovně Windows, spusťte následující příkaz. Použijte stejnou skupinu prostředků, ve které je vaše centrum IoT. Název plánu služby může obsahovat velká a malá písmena, číslice a spojovníky.
 
@@ -187,7 +187,7 @@ V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kó
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. Chcete-li nasadit kód pro App Service, použijte [přihlašovací údaje pro nasazení na úrovni uživatele](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials). Přihlašovací údaje pro nasazení na úrovni uživatele se liší od vašich přihlašovacích údajů Azure a používají se pro místní nasazení Git a FTP do webové aplikace. Po nastavení jsou platné napříč všemi vašimi aplikacemi App Service ve všech předplatných ve vašem účtu Azure. Pokud jste dříve nastavili přihlašovací údaje pro nasazení na úrovni uživatele, můžete je použít.
+5. Chcete-li nasadit kód pro App Service, použijte [přihlašovací údaje pro nasazení na úrovni uživatele](../app-service/deploy-configure-credentials.md). Přihlašovací údaje pro nasazení na úrovni uživatele se liší od vašich přihlašovacích údajů Azure a používají se pro místní nasazení Git a FTP do webové aplikace. Po nastavení jsou platné napříč všemi vašimi aplikacemi App Service ve všech předplatných ve vašem účtu Azure. Pokud jste dříve nastavili přihlašovací údaje pro nasazení na úrovni uživatele, můžete je použít.
 
    Pokud jste dříve nenastavili přihlašovací údaje pro nasazení na úrovni uživatele nebo si nepamatujete heslo, spusťte následující příkaz. Uživatelské jméno nasazení musí být v rámci Azure jedinečné a nesmí obsahovat symbol @ pro místní nabízená oznámení Git. Po zobrazení výzvy zadejte a potvrďte nové heslo. Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly.
 

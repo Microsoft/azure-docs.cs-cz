@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: připojení k účtu úložiště pomocí privátního koncového bodu Azure'
 titleSuffix: Azure Private Link
-description: Začněte s privátním koncovým bodem Azure a připojovat se k účtu úložiště soukromě.
+description: Začněte s tímto kurzem pomocí privátního koncového bodu Azure a připojovat se k účtu úložiště soukromě.
 author: asudbring
 ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 69bee753c2134b6eebe9c5df0a554c965208ad7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64856d0c9a06f57eb25a0cbc9279d1c09992f0d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91366224"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147592"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Kurz: připojení k účtu úložiště pomocí privátního koncového bodu Azure
 
@@ -26,7 +26,11 @@ V tomto kurzu se naučíte:
 > * Vytvořte účet úložiště s privátním koncovým bodem.
 > * Otestujte připojení k privátnímu koncovému bodu účtu úložiště.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+
+## <a name="prerequisites"></a>Předpoklady
+
+* Předplatné Azure
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -161,7 +165,7 @@ V této části vytvoříte účet úložiště a nakonfigurujete privátní kon
     | Předplatné | Vyberte své předplatné Azure. |
     | Resource Group | Vybrat **myResourceGroup** |
     | Umístění | Vyberte **východní USA** |
-    | Name | Zadejte **myPrivateEndpoint** |
+    | Název | Zadejte **myPrivateEndpoint** |
     | Prostředek úložiště | Ponechte výchozí **objekt BLOB** . |
     | **Sítě** |  |
     | Virtuální síť | Vybrat **myVNet** |

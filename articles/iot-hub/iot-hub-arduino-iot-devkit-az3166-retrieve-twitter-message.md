@@ -10,12 +10,12 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 187e44a40228adb62a1d97f4e0df8a7ad3a7e2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356063"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147902"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Protřepení a protřepávání na vyžádání – načtení zprávy Twitteru pomocí Azure Functions
 
@@ -23,7 +23,7 @@ V tomto projektu se naučíte, jak pomocí snímače pohybu aktivovat událost p
 
 ## <a name="what-you-need"></a>Co budete potřebovat
 
-Dokončete [průvodce Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) :
+Dokončete [průvodce Začínáme](./iot-hub-arduino-iot-devkit-az3166-get-started.md) :
 
 * Připojte DevKit k Wi-Fi.
 * Připravte vývojové prostředí.
@@ -207,4 +207,4 @@ Pokud se setkáte s dalšími problémy, přečtěte si [Nejčastější dotazy 
 
 Teď, když jste se naučili, jak připojit zařízení DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT a načíst provedený disk, je tady doporučený následující postup:
 
-* [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Přehled akcelerátoru řešení vzdáleného monitorování Azure IoT](/azure/iot-suite/)

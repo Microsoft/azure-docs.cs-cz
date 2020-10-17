@@ -6,16 +6,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 346b1f83a9c18e35b009e88ae82d6984274fd4e4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983005"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147740"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
-V tomto kurzu se dozvíte, jak používat nástroje sady Visual Studio k ladění aplikace v [App Service](https://go.microsoft.com/fwlink/?LinkId=529714), spuštění v [režimu ladění](/visualstudio/debugger/) vzdáleně nebo zobrazení protokolů aplikací a protokolů webového serveru.
+V tomto kurzu se dozvíte, jak používat nástroje sady Visual Studio k ladění aplikace v [App Service](./overview.md), spuštění v [režimu ladění](/visualstudio/debugger/) vzdáleně nebo zobrazení protokolů aplikací a protokolů webového serveru.
 
 Naučíte se:
 
@@ -28,7 +28,7 @@ Naučíte se:
 
 Pokud máte Visual Studio Ultimate, můžete použít také [IntelliTrace](/visualstudio/debugger/intellitrace) pro ladění. IntelliTrace se v tomto kurzu nezabývá.
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a><a name="prerequisites"></a>Předpoklady
 Tento kurz spolupracuje s vývojovým prostředím, webovým projektem a App Service aplikaci, kterou jste nastavili v části [Vytvoření aplikace v ASP.NET v Azure App Service](quickstart-dotnet-framework.md). V sekcích WebJobs budete potřebovat aplikaci, kterou vytvoříte v části [Začínáme s Azure WEBJOBS SDK][GetStartedWJ].
 
 Ukázky kódu zobrazené v tomto kurzu jsou pro webovou aplikaci v jazyce C# MVC, ale postupy řešení potíží jsou stejné pro aplikace Visual Basic a webových formulářů.
@@ -49,7 +49,7 @@ Sada Visual Studio poskytuje přístup k podmnožině funkcí správy aplikací 
    >
    >
 
-    Další informace o připojení k prostředkům Azure ze sady Visual Studio najdete v tématu [Správa účtů, předplatných a rolí pro správu](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
+    Další informace o připojení k prostředkům Azure ze sady Visual Studio najdete v tématu [Správa účtů, předplatných a rolí pro správu](../role-based-access-control/role-assignments-portal.md).
 2. V **Průzkumník serveru**rozbalte položku **Azure** a rozbalte položku **App Service**.
 3. Rozbalte skupinu prostředků, která obsahuje aplikaci, kterou jste vytvořili v části [vytvoření Azure App Service aplikace v ASP.NET](quickstart-dotnet-framework.md), a pak klikněte pravým tlačítkem myši na uzel aplikace a pak klikněte na **Zobrazit nastavení**.
 
@@ -125,7 +125,7 @@ V této části se dozvíte, jak vzdáleně ladit pomocí projektu, který jste 
     }
     ```
 
-1. [Nastavte zarážku](https://docs.microsoft.com/visualstudio/debugger/) na `ViewBag.Message` řádku.
+1. [Nastavte zarážku](/visualstudio/debugger/) na `ViewBag.Message` řádku.
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a klikněte na **publikovat**.
 
@@ -176,7 +176,7 @@ Vzdálené ladění funguje jenom se souvislými WebJobs. Naplánované a na vy�
 
 2. V projektu ContosoAdsWebJob otevřete *Functions.cs*.
 
-3. [Nastavte zarážku](https://docs.microsoft.com/visualstudio/debugger/) na prvním příkazu v `GnerateThumbnail` metodě.
+3. [Nastavte zarážku](/visualstudio/debugger/) na prvním příkazu v `GnerateThumbnail` metodě.
 
     ![Nastavit zarážku](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -241,7 +241,7 @@ Pokud funkce [zapsala protokoly](https://github.com/Azure/azure-webjobs-sdk/wiki
       <httpRuntime targetFramework="4.5" />
     </system.web>
     ```
-* Pokud zjistíte, že ladicí program nekrokuje do kódu, který chcete ladit, bude pravděpodobně nutné změnit nastavení Pouze můj kód.  Další informace naleznete v tématu [určení, zda se má ladit pouze uživatelský kód pomocí pouze můj kód v aplikaci Visual Studio](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
+* Pokud zjistíte, že ladicí program nekrokuje do kódu, který chcete ladit, bude pravděpodobně nutné změnit nastavení Pouze můj kód.  Další informace naleznete v tématu [určení, zda se má ladit pouze uživatelský kód pomocí pouze můj kód v aplikaci Visual Studio](/visualstudio/debugger/just-my-code).
 * Časovač se spustí na serveru, když povolíte funkci vzdáleného ladění a po 48 hodinách se funkce automaticky vypne. Tento limit 48 hodin se provádí z důvodů zabezpečení a výkonu. Tuto funkci můžete snadno znovu zapnout, kolikrát chcete. Doporučujeme ponechat ho zakázaný, když nebudete aktivně ladit.
 * Ladicí program můžete připojit ručně k libovolnému procesu, nejen k procesu aplikace (w3wp.exe). Další informace o použití režimu ladění v aplikaci Visual Studio naleznete v tématu [ladění v aplikaci Visual Studio](/visualstudio/debugger/debugging-in-visual-studio).
 
@@ -330,7 +330,7 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
     ```
 
 `WebPageTraceListener`Umožňuje zobrazit výstup trasování procházením na `/trace.axd` .
-1. Do souboru Web.config přidejte <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">prvek trasování</a> `<system.web>` , například následující příklad:
+1. Do souboru Web.config přidejte <a href="/previous-versions/dotnet/netframework-4.0/6915t83k(v=vs.100)">prvek trasování</a> `<system.web>` , například následující příklad:
 
     ``` xml
     <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -481,7 +481,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
     This setting specifies which Azure datacenter will host your storage account. For this tutorial your choice won't make a noticeable difference, but for a production web app you want your web server and your storage account to be in the same region to minimize latency and data egress charges. The web app (which you'll create later) should run in a region as close as possible to the browsers accessing your web app in order to minimize latency.
 3. Set the **Replication** drop-down list to **Locally redundant**.
    
-    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-create-storage-account.md).
+    When geo-replication is enabled for a storage account, the stored content is replicated to a secondary datacenter to enable failover to that location in case of a major disaster in the primary location. Geo-replication can incur additional costs. For test and development accounts, you generally don't want to pay for geo-replication. For more information, see [Create, manage, or delete a storage account](../storage/common/storage-account-create.md).
 4. Click **Create**.
 
     ![New storage account](./media/web-sites-dotnet-troubleshoot-visual-studio/newstorage.png)    
@@ -600,7 +600,7 @@ Další informace o řešení potíží s aplikacemi v Azure App Service najdete
 Chcete-li získat nápovědu k určité otázce týkající se řešení potíží, spusťte vlákno v jednom z následujících fór:
 
 * [Fórum Azure na webu ASP.NET](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Fórum Azure v Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-webapps.html).
+* [Fórum Azure v Microsoft Q&A](/answers/topics/azure-webapps.html).
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Ladění v sadě Visual Studio

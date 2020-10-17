@@ -1,18 +1,18 @@
 ---
 title: 'Kurz: připojení k účtu Azure Cosmos pomocí privátního koncového bodu Azure'
 titleSuffix: Azure Private Link
-description: Začněte s privátním koncovým bodem Azure a připojovat se k účtu Azure Cosmos soukromě.
+description: Začněte s tímto kurzem pomocí privátního koncového bodu Azure a připojovat se k účtu Azure Cosmos soukromě.
 author: asudbring
 ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 8b38c72efff5b76392d23837696c340e3cfb58de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd534fff5bfc56dbc4040db016563b06bef6d047
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91844235"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145691"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Kurz: připojení k účtu Azure Cosmos pomocí privátního koncového bodu Azure
 
@@ -26,7 +26,11 @@ V tomto kurzu se naučíte:
 > * Vytvořte účet Cosmos DB s privátním koncovým bodem.
 > * Otestujte připojení k Cosmos DB privátní koncový bod účtu.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+
+## <a name="prerequisites"></a>Předpoklady
+
+* Předplatné Azure
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -170,7 +174,7 @@ V této části vytvoříte účet Cosmos DB a nakonfigurujete privátní koncov
     | Předplatné | Vyberte své předplatné Azure. |
     | Resource Group | Vybrat **myResourceGroup** |
     | Umístění | Vyberte **východní USA** |
-    | Name | Zadejte **myPrivateEndpoint** |
+    | Název | Zadejte **myPrivateEndpoint** |
     | Cílový podprostředek | Ponechat výchozí **jádro (SQL)** |
     | **Sítě** |  |
     | Virtuální síť | Vybrat **myVNet** |
@@ -250,7 +254,7 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 11. Na obrazovce **připojit k Azure Storage** vyberte **Zrušit**.
 
-12. V Průzkumník služby Storage pravým tlačítkem myši klikněte na **Cosmos DB účty** a vyberte **připojit k Cosmos DB**.
+12. V Průzkumník služby Storage vyberte v **Cosmos DB účtech** pravé tlačítko myši a vyberte **připojit k Cosmos DB**.
 
 13. V části **Vybrat rozhraní API**ponechte výchozí hodnotu **SQL** .
 

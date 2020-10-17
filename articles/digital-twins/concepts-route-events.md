@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Naučte se směrovat události v rámci digitálních vláken Azure a dalších služeb Azure.
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 02b977a7b6abdb77deec3973bd94b82fae9c2af5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044288"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145984"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -91,6 +91,20 @@ await client.CreateEventRoute("routeName", er);
 > Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.
 
 Trasy je také možné vytvořit pomocí rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md).
+
+## <a name="dead-letter-events"></a>Nedoručené události
+Když koncový bod nemůže doručovat událost v určitém časovém období nebo po pokusu o doručení události v určitém počtu opakování, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako **nedoručené**. Pokud je splněna **jedna z následujících** podmínek, digitální vlákna Azure bude událost nedoručena. 
+
+- Událost se nedoručuje do období TTL (Time to Live).
+- Počet pokusů o doručení události překročil limit.
+
+Je-li splněna některá z podmínek, událost je vyřazena nebo byla nedoručena.  Ve výchozím nastavení **každý koncový bod** nezapne nedoručené písmeno. Pokud ho chcete povolit, musíte při vytváření koncového bodu zadat účet úložiště, který bude obsahovat nedoručené události. Vyžádáte si události z tohoto účtu úložiště, abyste mohli vyřešit dodávky.
+
+Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Při vytváření koncového bodu zadejte adresu URL tohoto kontejneru. Nedoručené písmeno je k dispozici jako adresa URL kontejneru s tokenem SAS. Tento token potřebuje `write` oprávnění pouze pro cílový kontejner v rámci účtu úložiště. Plně vytvořená adresa URL bude ve formátu: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+
+Další informace o tokenech SAS najdete v tématu: [ *udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+
+Informace o tom, jak nastavit nedoručené zprávy, najdete [*v tématu Postupy: Správa koncových bodů a tras v digitálních prostředníkech Azure (rozhraní API a rozhraní příkazového řádku)*](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 
 ### <a name="types-of-event-messages"></a>Typy zpráv událostí
 

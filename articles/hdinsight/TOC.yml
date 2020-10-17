@@ -954,6 +954,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: Architektura virtuálních sítí HDInsight
           href: ./hdinsight-virtual-network-architecture.md
+        - name: Private Link
+          href: ./hdinsight-private-link.md
         - name: Protokol TLS (Transport Layer Security)
           href: ./transport-layer-security.md
         - name: Plánování virtuálních sítí pro HDInsight

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: f77a5b634b035b7cc1142645d355fe6c3756226b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1eed12593168975b1dfda6e51b07b256cbd0c246
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89004064"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145805"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Dotazování na data Avro pomocí Azure Data Lake Analytics
 
@@ -171,7 +171,7 @@ V této části se dotazuje na data Avro a exportují je do souboru CSV v úlož
 
 V tomto kurzu jste zjistili, jak pomocí dotazu na Avro data efektivně směrovat zprávy z Azure IoT Hub do služeb Azure.
 
-Příklady kompletních řešení, která používají IoT Hub, najdete v [dokumentaci k akcelerátorům řešení Azure IoT](/azure/iot-accelerators).
+Příklady kompletních řešení, která používají IoT Hub, najdete v [dokumentaci k akcelerátorům řešení Azure IoT](../iot-accelerators/index.yml).
 
 Další informace o vývoji řešení pomocí IoT Hub najdete v příručce pro [vývojáře IoT Hub](iot-hub-devguide.md).
 

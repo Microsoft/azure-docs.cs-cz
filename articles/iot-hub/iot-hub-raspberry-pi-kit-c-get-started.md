@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 5b86803b763039846e2101b9caf0232aafa4fa24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327459"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145861"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Připojit malinu pi k Azure IoT Hub (C)
 
@@ -81,7 +81,7 @@ Následující položky jsou volitelné:
 > Tyto položky jsou volitelné, protože ukázka kódu podporuje Simulovaná data senzorů.
 >
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -154,7 +154,7 @@ Pro PIN kódy senzorů použijte následující kabely:
 | SDI (PIN 23F)            | SPI0 MOSI (PIN 19)     | Zelený kabel   |
 | CS (PIN 24F)             | SPI0 CS (PIN kód 24)       | Modrý kabel    |
 
-Kliknutím zobrazíte [& 3 – mapování kódu PIN pro malin 2](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) pro váš odkaz.
+Kliknutím zobrazíte [& 3 – mapování kódu PIN pro malin 2](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) pro váš odkaz.
 
 Po úspěšném připojení BME280 k malinu PI by měl být podobný jako obrázek.
 

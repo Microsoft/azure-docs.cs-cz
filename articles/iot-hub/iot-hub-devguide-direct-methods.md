@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: f68705309d15548dc9728686e2e0ecd6aaad3fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334102"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147791"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Vysvětlení a volání přímých metod ze služby IoT Hub
 
@@ -55,7 +55,7 @@ Nyní vyvolejte přímou metodu z back-endové aplikace.
 
 Přímým voláním metod v zařízení jsou volání HTTPS, která se skládají z následujících položek:
 
-* *Identifikátor URI žádosti* specifický pro zařízení společně s [verzí rozhraní API](https://docs.microsoft.com/rest/api/iothub/service/devices/invokemethod):
+* *Identifikátor URI žádosti* specifický pro zařízení společně s [verzí rozhraní API](/rest/api/iothub/service/devices/invokemethod):
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
