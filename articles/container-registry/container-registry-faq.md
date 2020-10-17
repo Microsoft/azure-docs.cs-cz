@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c65ca24b3fa4dccb2bb0060996ade50c90bd02a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570512"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148531"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -33,11 +33,11 @@ Pokyny k odstraňování potíží registru najdete v těchto tématech:
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Můžu vytvořit Azure Container Registry pomocí šablony Správce prostředků?
 
-Ano. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
+Yes. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , kterou můžete použít k vytvoření registru.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Kontroluje se u obrázků v ACR chyba zabezpečení?
 
-Ano. Přečtěte si dokumentaci od [Azure Security Center](../security-center/azure-container-registry-integration.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Yes. Přečtěte si dokumentaci od [Azure Security Center](../security-center/defender-for-container-registries-introduction.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
 
@@ -56,7 +56,7 @@ Získání přihlašovacích údajů pomocí Azure CLI:
 az acr credential show -n myRegistry
 ```
 
-Použití Azure PowerShell:
+Pomocí Azure PowerShellu:
 
 ```powershell
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
@@ -259,7 +259,7 @@ Karanténa obrázku je teď funkcí Preview ACR. Můžete povolit karanténní r
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>Návody povolit anonymní přístup pro vyžádání obsahu?
 
-Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístupnění přístupu je aktuálně funkcí verze Preview. Pokud máte v registru nějaké [obory mapování (uživatelů) nebo prostředků tokenů](https://aka.ms/acr/repo-permissions) , odstraňte je prosím před vyvoláním lístku podpory (mapování oboru systému se dají ignorovat). Pokud chcete povolit veřejný přístup, otevřete prosím na adrese lístek podpory https://aka.ms/acr/support/create-ticket . Podrobnosti najdete na [fóru názory Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
+Nastavení služby Azure Container registry pro anonymní (veřejné) zpřístupnění přístupu je aktuálně funkcí verze Preview. Pokud máte v registru nějaké [obory mapování (uživatelů) nebo prostředků tokenů](./container-registry-repository-scoped-permissions.md) , odstraňte je prosím před vyvoláním lístku podpory (mapování oboru systému se dají ignorovat). Pokud chcete povolit veřejný přístup, otevřete prosím na adrese lístek podpory https://aka.ms/acr/support/create-ticket . Podrobnosti najdete na [fóru názory Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries).
 
 > [!NOTE]
 > Anonymně lze získat přístup pouze k rozhraním API vyžadovaným k vyžádání známého obrázku. Žádná další rozhraní API pro operace, jako je seznam značek nebo seznam úložišť, nejsou anonymní přístupná.
@@ -443,7 +443,7 @@ Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a p�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Proč dojde k selhání žádosti o přijetí změn nebo nabízení oznámení s nepovolenou operací?
 
 Tady je několik scénářů, ve kterých může být operace zakázaná:
-* Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](https://aka.ms/acr/skus) pomocí [AZ acr Update](/cli/azure/acr#az-acr-update) nebo Azure Portal.
+* Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](./container-registry-skus.md) pomocí [AZ acr Update](/cli/azure/acr#az-acr-update) nebo Azure Portal.
 * Bitová kopie nebo úložiště je možná zamčené, aby se nemohlo odstranit ani aktualizovat. Aktuální atributy můžete zobrazit pomocí příkazu [AZ ACR show úložištì](./container-registry-image-lock.md) .
 * Pokud je obrázek v karanténě, některé operace jsou zakázané. Přečtěte si další informace o [karanténě](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Je možné, že váš registr dosáhl svého [limitu úložiště](container-registry-skus.md#service-tier-features-and-limits).
@@ -456,7 +456,7 @@ Pokud se zobrazí chyba, například "nepodporovaný formát úložiště", "nep
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Povolit dešifrování HTTPS v Fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -508,10 +508,10 @@ V tuto chvíli nepodporujeme GitLab pro aktivační události zdroje.
 
 | Služba Git | Zdrojový kontext | Ruční sestavení | Automatické sestavení prostřednictvím aktivační události potvrzení |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Yes |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | No |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | No |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ano |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Ano | Ano |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Ano | Ne |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Ano | Ne |
 
 ## <a name="run-error-message-troubleshooting"></a>Řešení potíží s chybovou zprávou
 

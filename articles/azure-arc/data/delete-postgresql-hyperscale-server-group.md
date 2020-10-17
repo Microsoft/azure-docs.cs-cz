@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: dcabe4b1520c66b8d5bfa398dc1248972587cd32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cacef205b614170df210e03ddf3978a64a90ea22
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936805"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151925"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Odstranění skupiny serverů s povoleným PostgreSQLým rozšířením Azure ARC
 
@@ -57,7 +57,7 @@ Pokud chcete zobrazit seznam virtuálních okruhů, spusťte tento příkaz:
 kubectl get pvc [-n <namespace name>]
 ```
 
-Vrátí seznam PVSs, zejména okruh PVC pro skupinu serverů, kterou jste odstranili. Například:
+Vrátí seznam virtuálních okruhů (PVC), konkrétně pro skupinu serverů, kterou jste odstranili. Například:
 ```console
 kubectl get pvc
 NAME                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE

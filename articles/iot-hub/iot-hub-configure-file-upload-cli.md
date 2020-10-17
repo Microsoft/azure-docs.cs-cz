@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 830e72a8de047b0219cfa0be264fad2e1f83beb2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302521"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142609"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurace nahrávání souborů IoT Hub pomocí Azure CLI
 
@@ -25,17 +25,17 @@ K dokončení tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-* Azure IoT Hub. Pokud Centrum IoT nemáte, můžete pomocí [ `az iot hub create` příkazu](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) vytvořit nebo [vytvořit centrum IoT pomocí portálu](iot-hub-create-through-portal.md).
+* Azure IoT Hub. Pokud Centrum IoT nemáte, můžete pomocí [ `az iot hub create` příkazu](/cli/azure/iot/hub#az-iot-hub-create) vytvořit nebo [vytvořit centrum IoT pomocí portálu](iot-hub-create-through-portal.md).
 
-* Účet služby Azure Storage. Pokud účet Azure Storage nemáte, můžete ho vytvořit pomocí rozhraní příkazového řádku Azure. Další informace najdete v článku o [vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md).
+* Účet služby Azure Storage. Pokud účet Azure Storage nemáte, můžete ho vytvořit pomocí rozhraní příkazového řádku Azure. Další informace najdete v článku o [vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a nastavte svůj účet Azure.
 
 Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
-1. Na příkazovém řádku spusťte [příkaz pro přihlášení](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
+1. Na příkazovém řádku spusťte [příkaz pro přihlášení](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest):
 
     ```azurecli
     az login
@@ -43,7 +43,7 @@ Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
     Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému účtu Azure ve webovém prohlížeči.
 
-2. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího [příkazu zobrazte výpis účtů Azure](https://docs.microsoft.com/cli/azure/account), které můžete použít:
+2. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího [příkazu zobrazte výpis účtů Azure](/cli/azure/account), které můžete použít:
 
     ```azurecli
     az account list
@@ -144,5 +144,5 @@ Pokud chcete získat další informace o správě IoT Hub Azure, postupujte podl
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 
 * [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)
-* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge](../iot-edge/quickstart-linux.md)
 * [Zabezpečení řešení IoT od základů](../iot-fundamentals/iot-security-ground-up.md)

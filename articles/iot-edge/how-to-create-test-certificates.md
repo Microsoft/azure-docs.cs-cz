@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66c8f72c82e04bafe9582c4a5dc6967e5470d3ea
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84430664"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147890"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Vytváření ukázkových certifikátů pro účely testování funkcí zařízení IoT Edge
 
@@ -32,11 +32,11 @@ Při vytváření ukázkových certifikátů pro testování IoT Edge scénář 
 1. [Nastavte skripty](#set-up-scripts) pro generování certifikátů na vašem zařízení.
 2. [Vytvořte certifikát kořenové certifikační autority](#create-root-ca-certificate) , který používáte k podepsání všech ostatních certifikátů pro váš scénář.
 3. Vygenerujte certifikáty, které potřebujete pro scénář, který chcete testovat:
-   * K otestování automatického zřizování pomocí IoT Hub Device Provisioning Service můžete [vytvořit IoT Edge certifikáty identit zařízení](#create-iot-edge-device-identity-certificates) .
-   * [Vytvářejte IoT Edge certifikáty certifikační autority zařízení](#create-iot-edge-device-ca-certificates) pro testování produkčních scénářů nebo scénářů bran.
-   * [Vytvořte certifikáty pro příjem zařízení](#create-downstream-device-certificates) , abyste mohli testovat ověřování zařízení se systémem pro příjem dat IoT Hub ve scénáři brány.
+   * [Vytvořte IoT Edge certifikáty identit zařízení](#create-iot-edge-device-identity-certificates) pro Automatické zřizování pomocí IoT Hub Device Provisioning Service.
+   * [Vytvářejte IoT Edge certifikáty certifikační autority zařízení](#create-iot-edge-device-ca-certificates) pro IoT Edge zařízení ve scénářích brány.
+   * [Vytvoření certifikátů pro příjem zařízení](#create-downstream-device-certificates) pro ověřování zařízení se systémem pro příjem dat ve scénáři brány.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vývojový počítač s nainstalovaným Git.
 
@@ -53,7 +53,7 @@ K vytvoření ukázkových certifikátů na zařízení s Windows je potřeba na
 #### <a name="install-openssl"></a>Nainstalovat OpenSSL
 
 Nainstalujte OpenSSL pro Windows na počítači, který používáte k vygenerování certifikátů.
-Pokud jste na zařízení s Windows už OpenSSL nainstalované, můžete tento krok přeskočit, ale zajistěte, aby byla v proměnné prostředí PATH dostupná openssl.exe.
+Pokud jste již na zařízení s Windows nainstalovali OpenSSL, ujistěte se, že je v proměnné prostředí PATH k dispozici openssl.exe.
 
 Existuje několik způsobů, jak nainstalovat OpenSSL, včetně následujících možností:
 
@@ -183,7 +183,7 @@ Než budete pokračovat s postupem v této části, postupujte podle kroků v od
 
 ## <a name="create-iot-edge-device-identity-certificates"></a>Vytvoření certifikátů identit IoT Edge zařízení
 
-Certifikáty identit zařízení slouží ke zřízení IoT Edgech zařízení prostřednictvím [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml).
+Certifikáty identit zařízení slouží ke zřízení IoT Edgech zařízení prostřednictvím Azure IoT Hub Device Provisioning Service (DPS).
 
 Certifikáty identity zařízení najdete v části **zřizování** v souboru config. yaml na zařízení IoT Edge.
 
@@ -247,8 +247,6 @@ Než budete postupovat podle kroků v této části, postupujte podle kroků v �
    * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
 
 Název předaný příkazu **New-CACertsEdgeDevice** by neměl být stejný jako parametr HostName v souboru config. YAML nebo ID zařízení v IoT Hub.
-Tento skript pomáhá zabránit jakýmkoli problémům připojením řetězce ". ca" k názvu certifikátu, aby se zabránilo kolizi názvů pro případ, že uživatel nastaví IoT Edge se stejným názvem na obou místech.
-Je však dobré se vyhnout použití stejného názvu.
 
 ### <a name="linux"></a>Linux
 
@@ -266,8 +264,6 @@ Je však dobré se vyhnout použití stejného názvu.
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
 Název předaný příkazu **create_edge_device_certificate** nesmí být stejný jako parametr HostName v souboru config. YAML nebo ID zařízení v IoT Hub.
-Tento skript pomáhá zabránit jakýmkoli problémům připojením řetězce ". ca" k názvu certifikátu, aby se zabránilo kolizi názvů pro případ, že uživatel nastaví IoT Edge se stejným názvem na obou místech.
-Je však dobré se vyhnout použití stejného názvu.
 
 ## <a name="create-downstream-device-certificates"></a>Vytvoření certifikátů pro příjem zařízení
 

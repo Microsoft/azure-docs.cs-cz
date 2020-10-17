@@ -6,12 +6,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: dd0c08fa968f9d029f1b89be1183ab374f1b5348
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dd553f0a41f82991c467ab256a87beabbff25ee
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932392"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92143640"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor sešity
 
@@ -97,7 +97,7 @@ Když v mřížce dat požadavku vybereme tlačítko Upravit hned, uvidíme, že
 
 ![Snímek obrazovky základního dotazu Kusto](./media/workbooks-overview/kusto.png)
 
-Kliknutím na další tlačítka pro **Úpravy** na pravé straně se zobrazí řada základních komponent, které tvoří sešity, jako jsou [textová pole](workbooks-visualizations.md#text)založená na Markdownu, prvky uživatelského rozhraní pro [Výběr parametrů](workbooks-parameters.md) a další [typy grafů a vizualizací](workbooks-visualizations.md). 
+Kliknutím na další tlačítka pro **Úpravy** na pravé straně se zobrazí řada základních komponent, které tvoří sešity, jako jsou [textová pole](workbooks-text-visualizations.md)založená na Markdownu, prvky uživatelského rozhraní pro [Výběr parametrů](workbooks-parameters.md) a další [typy grafů a vizualizací](#visualizations). 
 
 Seznamte se s předem vytvořenými šablonami v režimu úprav a pak je upravte tak, aby vyhovovaly vašim potřebám, a uložte si vlastní sešit je skvělým způsobem, jak se naučit, co je možné u Azure Monitorch sešitů.
 
@@ -129,5 +129,5 @@ Po zahájení vytváření vlastních šablon sešitu ho můžete chtít sdílet
 
 ## <a name="next-step"></a>Další krok
 
-* [Začínáme](workbooks-visualizations.md) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
+* [Začínáme](#visualizations) se dozvědět více o seznámcích s mnoha různými možnostmi vizualizací.
 * [Řízení](workbooks-access-control.md) a sdílení přístupu k prostředkům sešitu.

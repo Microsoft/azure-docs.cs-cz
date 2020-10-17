@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 672918280a988771431dccc81f042226addf029d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817a13080cedc1d737b43bae14a07a7d4a0bd416
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265931"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145260"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
 
@@ -134,9 +134,8 @@ Pomocí nástroje What-If Simulujte přihlášení uživatele k cílové aplikac
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 
-Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje se před jejich vyzkoušením do produkčního prostředí otestovat. V ideálním případě použijte testovacího tenanta a ověřte, zda vaše nové zásady fungují tak, jak mají. Další informace najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+Abyste se ujistili, že vaše zásada funguje podle očekávání, doporučuje se před jejich vyzkoušením do produkčního prostředí otestovat. V ideálním případě použijte testovacího tenanta a ověřte, zda vaše nové zásady fungují tak, jak mají. Další informace najdete v článku [Plánování nasazení podmíněného přístupu](plan-conditional-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete zjistit, jak nakonfigurovat zásadu podmíněného přístupu, přečtěte si článek věnované použití [vícefaktorového ověřování pro konkrétní aplikace s Azure Active Directory podmíněný přístup](../authentication/tutorial-enable-azure-mfa.md).
-* Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si článek [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+* Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si článek [Plánování nasazení podmíněného přístupu](plan-conditional-access.md).

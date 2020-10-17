@@ -4,12 +4,12 @@ description: Služba Batch podporuje službu Azure AD k ověřování ze služby
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d84086e3fa59c1e04df5b2717738da44f5c14b2
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533508"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92144820"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -103,7 +103,7 @@ V části **oprávnění API** se teď zobrazuje, že vaše aplikace Azure AD m�
 Pokud chcete ověřit aplikaci, která běží bez obsluhy, použijte instanční objekt. Po zaregistrování aplikace proveďte následující kroky v Azure Portal ke konfiguraci instančního objektu:
 
 1. Vyžádejte si tajný klíč pro vaši aplikaci.
-1. Přiřaďte aplikaci řízení přístupu na základě role (RBAC).
+1. Přiřaďte aplikaci řízení přístupu na základě role Azure (Azure RBAC).
 
 ### <a name="request-a-secret-for-your-application"></a>Vyžádání tajného klíče pro vaši aplikaci
 
@@ -119,15 +119,15 @@ Na webu Azure Portal postupujte podle těchto pokynů:
 
     ![Vytvoření tajného klíče](./media/batch-aad-auth/secret-key.png)
 
-### <a name="assign-rbac-to-your-application"></a>Přiřazení RBAC k aplikaci
+### <a name="assign-azure-rbac-to-your-application"></a>Přiřazení služby Azure RBAC do vaší aplikace
 
-K ověřování pomocí instančního objektu je potřeba přiřadit k aplikaci RBAC. Postupujte takto:
+K ověřování pomocí instančního objektu je třeba přiřadit aplikaci Azure RBAC do vaší aplikace. Postupujte takto:
 
 1. V Azure Portal přejděte na účet Batch používaný vaší aplikací.
 1. V části **Nastavení** účtu Batch vyberte možnost **Access Control (IAM)**.
 1. Vyberte kartu **přiřazení rolí** .
 1. Vyberte **Přidat přiřazení role**.
-1. V rozevíracím seznamu **role** vyberte roli *Přispěvatel* nebo *Čtenář* pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s Role-Based Access Control v Azure Portal](../role-based-access-control/overview.md).
+1. V rozevíracím seznamu **role** vyberte roli *Přispěvatel* nebo *Čtenář* pro vaši aplikaci. Další informace o těchto rolích najdete [v tématu Začínáme s řízením přístupu na základě role Azure v Azure Portal](../role-based-access-control/overview.md).
 1. Do pole **Vybrat** zadejte název vaší aplikace. V seznamu vyberte svou aplikaci a pak vyberte **Uložit**.
 
 Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s přiřazenou rolí Azure.
@@ -138,7 +138,7 @@ Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s př
 
 Vlastní role uděluje podrobné oprávnění uživateli k odesílání úloh, úloh a dalších funkcí. Díky tomu je možné zabránit uživatelům v provádění operací, které mají vliv na náklady, jako je vytváření fondů nebo změna uzlů.
 
-Vlastní roli můžete použít k udělení oprávnění uživateli, skupině nebo instančnímu objektu služby Azure AD pro následující operace RBAC:
+Pomocí vlastní role můžete udělit oprávnění uživateli, skupině nebo instančnímu objektu služby Azure AD pro tyto operace Azure RBAC:
 
 - Microsoft.Batch/batchAccounts/Pools/Write
 - Microsoft.Batch/batchAccounts/Pools/DELETE

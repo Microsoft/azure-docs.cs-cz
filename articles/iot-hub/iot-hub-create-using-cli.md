@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 69372e4c212e2ce81bcd4c91d460aa191a1d3476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6daed4f5f1871d76da707edec00010cd27dfa8db
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087843"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142318"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Vytvoření služby IoT Hub pomocí Azure CLI
 
@@ -20,9 +20,9 @@ ms.locfileid: "90087843"
 
 V tomto článku se dozvíte, jak vytvořit centrum IoT pomocí Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -30,7 +30,7 @@ K dokončení tohoto postupu potřebujete předplatné Azure. Pokud ještě pře
 
 Pokud používáte Azure CLI místně místo používání Cloud Shell, musíte se přihlásit ke svému účtu Azure.
 
-Na příkazovém řádku spusťte [příkaz pro přihlášení](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli):
+Na příkazovém řádku spusťte [příkaz pro přihlášení](/cli/azure/get-started-with-azure-cli):
 
    ```azurecli
    az login
@@ -42,7 +42,7 @@ Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému 
 
 Pomocí Azure CLI vytvořte skupinu prostředků a pak přidejte službu IoT Hub.
 
-1. Když vytvoříte centrum IoT, musíte ho vytvořit ve skupině prostředků. Použijte existující skupinu prostředků, nebo spusťte následující [příkaz pro vytvoření skupiny prostředků](https://docs.microsoft.com/cli/azure/resource):
+1. Když vytvoříte centrum IoT, musíte ho vytvořit ve skupině prostředků. Použijte existující skupinu prostředků, nebo spusťte následující [příkaz pro vytvoření skupiny prostředků](/cli/azure/resource):
     
    ```azurecli-interactive
    az group create --name {your resource group name} --location westus
@@ -56,7 +56,7 @@ Pomocí Azure CLI vytvořte skupinu prostředků a pak přidejte službu IoT Hub
    > ```
    >
 
-2. Spuštěním následujícího příkazu vytvořte ve skupině prostředků [Centrum IoT](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) s použitím globálně jedinečného názvu pro vaše centrum IoT:
+2. Spuštěním následujícího příkazu vytvořte ve skupině prostředků [Centrum IoT](/cli/azure/iot/hub#az-iot-hub-create) s použitím globálně jedinečného názvu pro vaše centrum IoT:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \
@@ -70,16 +70,16 @@ Předchozí příkaz vytvoří centrum IoT v cenové úrovni S1, pro kterou se f
 
 ## <a name="remove-an-iot-hub"></a>Odebrání IoT Hub
 
-Pomocí Azure CLI můžete [odstranit jednotlivý prostředek](https://docs.microsoft.com/cli/azure/resource), jako je třeba Centrum IoT, nebo odstranit skupinu prostředků a všechny její prostředky, včetně všech rozbočovačů IoT.
+Pomocí Azure CLI můžete [odstranit jednotlivý prostředek](/cli/azure/resource), jako je třeba Centrum IoT, nebo odstranit skupinu prostředků a všechny její prostředky, včetně všech rozbočovačů IoT.
 
-Pokud chcete [Odstranit centrum IoT](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete), spusťte následující příkaz:
+Pokud chcete [Odstranit centrum IoT](/cli/azure/iot/hub#az-iot-hub-delete), spusťte následující příkaz:
 
 ```azurecli-interactive
 az iot hub delete --name {your iot hub name} -\
   -resource-group {your resource group name}
 ```
 
-Pokud chcete [Odstranit skupinu prostředků](https://docs.microsoft.com/cli/azure/group#az-group-delete) a všechny její prostředky, spusťte následující příkaz:
+Pokud chcete [Odstranit skupinu prostředků](/cli/azure/group#az-group-delete) a všechny její prostředky, spusťte následující příkaz:
 
 ```azurecli-interactive
 az group delete --name {your resource group name}

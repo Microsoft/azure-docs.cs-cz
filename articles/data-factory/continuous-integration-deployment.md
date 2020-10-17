@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1836e6fc1c29e74bceba62bbeb40ce9cc5831895
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616887"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147441"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -656,7 +656,7 @@ Pokud používáte integraci Git s datovou továrnou a máte kanál CI/CD, kter�
     - Entity Data Factory jsou vzájemně závislé. Například triggery závisejí na kanálech a kanály závisí na datových sadách a dalších kanálech. Selektivní publikování podmnožiny prostředků by mohlo vést k neočekávanému chování a chybám.
     - Ve výjimečných případech když potřebujete selektivní publikování, zvažte použití opravy hotfix. Další informace najdete v tématu [provozní prostředí oprav hotfix](#hotfix-production-environment).
 
-- Tým Azure Data Factory nedoporučuje přiřazovat řízení RBAC jednotlivým entitám (kanálům, datovým sadám atd.) v datové továrně. Pokud má například vývojář přístup k kanálu nebo datové sadě, měl by mít přístup ke všem kanálům nebo datovým sadám v datové továrně. Pokud se domníváte, že v rámci datové továrny potřebujete implementovat mnoho rolí RBAC, podívejte se na nasazení druhého objektu pro vytváření dat.
+- Tým Azure Data Factory nedoporučuje přiřazovat řízení služby Azure RBAC jednotlivým entitám (kanálům, datovým sadám atd.) v datové továrně. Pokud má například vývojář přístup k kanálu nebo datové sadě, měl by mít přístup ke všem kanálům nebo datovým sadám v datové továrně. Pokud se domníváte, že v rámci datové továrny potřebujete implementovat mnoho rolí Azure, podívejte se na nasazení druhého objektu pro vytváření dat.
 
 -   Nemůžete publikovat z privátních větví.
 
@@ -675,7 +675,7 @@ Při spuštění skriptu po nasazení bude nutné zadat variaci následujících
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
-![Azure PowerShell úkol](media/continuous-integration-deployment/continuous-integration-image11.png)
+![Úloha Azure PowerShellu](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 Tady je skript, který se dá použít k předběžnému a následnému nasazení. Účty IT pro odstraněné prostředky a odkazy na prostředky.
 

@@ -7,6 +7,7 @@
 - name: Rychlé starty
   items:
     - name: Šablona ARM
+      displayName: Resource Manager
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md

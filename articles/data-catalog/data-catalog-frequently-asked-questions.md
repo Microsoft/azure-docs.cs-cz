@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f893f8e2ec03681697f15cd85685d4c99b13de6
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397296"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151954"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog nejčastějších dotazech
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se služby Azure Data Catalog.
@@ -87,7 +87,7 @@ Konkrétní vlastnosti se liší od zdroje dat až po zdroj dat, ale obecně pla
 >
 
 > [!NOTE]
-> Pro zdroje dat, jako je například SQL Server Analysis Services, které mají vlastnost **Popis** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu této vlastnosti. U *místních* SQL Server relačních databází, které neobsahují vlastnost **popisu** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu z **MS_Description** rozšířené vlastnosti pro objekty a sloupce. Tato vlastnost není podporována pro SQL Azure. Další informace najdete v tématu [použití rozšířených vlastností u databázových objektů](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Pro zdroje dat, jako je například SQL Server Analysis Services, které mají vlastnost **Popis** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu této vlastnosti. U *místních* SQL Server relačních databází, které neobsahují vlastnost **popisu** první třídy, nástroj pro registraci zdroje dat Data Catalog extrahuje hodnotu z **MS_Description** rozšířené vlastnosti pro objekty a sloupce. Tato vlastnost není podporována pro SQL Azure. Další informace najdete v tématu [použití rozšířených vlastností u databázových objektů](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105)).
 >
 >
 
@@ -122,7 +122,7 @@ Data Catalog je cloudová služba, která může spolupracovat s cloudovým i m�
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>Můžu extrahovat větší nebo rozsáhlejší metadata ze zdrojů dat, které zaregistruju?
 Aktivně pracujeme na rozšiřování možností Data Catalog. Pokud chcete, aby se další metadata extrahovaná ze zdroje dat během registrace mohla navrhnout (nebo hlasovat pro IT, pokud už byla navržená) v [Data Catalog na fórech Azure pro názory](https://feedback.azure.com/forums/906052-data-catalog). 
 
-Pokud chcete zahrnout metadata sloupce nebo schématu, náhledy nebo datové profily, pro zdroje dat, kde tato metadata nejsou extrahovány nástrojem pro registraci zdroje dat, můžete tato metadata přidat pomocí rozhraní Data Catalog API. Další informace najdete v tématu [Azure Data Catalog REST API](https://docs.microsoft.com/rest/api/datacatalog/).
+Pokud chcete zahrnout metadata sloupce nebo schématu, náhledy nebo datové profily, pro zdroje dat, kde tato metadata nejsou extrahovány nástrojem pro registraci zdroje dat, můžete tato metadata přidat pomocí rozhraní Data Catalog API. Další informace najdete v tématu [Azure Data Catalog REST API](/rest/api/datacatalog/).
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>Návody omezit viditelnost registrovaných datových assetů, aby je mohli zjistit jenom někteří lidé?
 V Data Catalog vyberte datové assety a pak klikněte na tlačítko **převzít vlastnictví** . Vlastníci datových assetů v Data Catalog mohou změnit nastavení viditelnosti tak, aby všichni uživatelé mohli vyhledat vlastněné prostředky nebo omezit viditelnost konkrétních uživatelů. Další informace najdete v tématu [Správa datových assetů v Azure Data Catalog](data-catalog-how-to-manage.md).

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87062054"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145951"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -47,33 +47,9 @@ Níže je fragment kódu klienta, který používá [rozhraní API DigitalTwins]
 
 V aktuální verzi Preview digitálních vláken Azure musí být všechny vlastnosti vlákna inicializované předtím, než může být vytvořena dvojitá vlákna. To se provádí vytvořením dokumentu JSON, který poskytuje nezbytné inicializační hodnoty.
 
-```csharp
-public Task<boolean> CreateRoom(string id, double temperature, double humidity) 
-{
-    // Define the model for the twin to be created
-    Dictionary<string, object> meta = new Dictionary<string, object>()
-    {
-      { "$model", "dtmi:com:contoso:Room;2" }
-    };
-    // Initialize the twin properties
-    Dictionary<string, object> initData = new Dictionary<string, object>()
-    {
-      { "$metadata", meta },
-      { "Temperature", temperature},
-      { "Humidity", humidity},
-    };
-    try
-    {
-      await client.DigitalTwins.AddAsync(id, initData);
-      return true;
-    }
-    catch (ErrorResponseException e)
-    {
-      Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}");
-      return false;
-    }
-}
-```
+[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+
+Můžete také použít pomocnou třídu nazvanou `BasicDigitalTwin` pro uložení polí vlastností do "" vlákna "objektu, a to více přímo jako alternativu k použití slovníku. Další informace o pomocné třídě a příkladech jejich použití naleznete v části [*vytvoření digitálního vlákna*](how-to-manage-twin.md#create-a-digital-twin) v tématu *Postupy: Správa digitálních vláken*.
 
 ### <a name="create-relationships"></a>Vytvoření relací
 
@@ -105,7 +81,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |
@@ -172,7 +148,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$relationshipId` | Uživatelem zadaný řetězec představující ID tohoto vztahu. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `relationshipId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |

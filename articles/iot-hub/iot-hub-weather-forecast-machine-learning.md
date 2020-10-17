@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777152"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145769"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Předpověď počasí s využitím dat ze senzorů ze služby IoT Hub v Azure Machine Learning Studio (Classic)
 
@@ -46,7 +46,7 @@ Naučíte se, jak pomocí Azure Machine Learning Studio (Classic) provádět př
   - Azure IoT Hub v rámci vašeho předplatného.
   - Klientská aplikace, která odesílá zprávy do služby Azure IoT Hub.
 - Účet [Azure Machine Learning Studio (Classic)](https://studio.azureml.net/) .
-- Účet [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts), účet pro **obecné účely v2** , je upřednostňovaný, ale budou fungovat i všechny Azure Storage účty, které podporují službu Azure Blob Storage.
+- Účet [Azure Storage](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts), účet pro **obecné účely v2** , je upřednostňovaný, ale budou fungovat i všechny Azure Storage účty, které podporují službu Azure Blob Storage.
 
 > [!Note]
 > Tento článek používá Azure Stream Analytics a několik dalších placených služeb. Další poplatky se účtují v Azure Stream Analytics, když se data musí přenést napříč oblastmi Azure. Z tohoto důvodu by bylo vhodné zajistit, aby se vaše skupina prostředků, IoT Hub a účet Azure Storage a pracovní prostor Machine Learning Studio (Classic) a Azure Stream Analyticsá úloha v tomto kurzu přidala do stejné oblasti Azure. Místní podporu pro Azure Machine Learning Studio (Classic) a další služby Azure najdete na [stránce dostupnost produktu Azure podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all).
