@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/27/2020
-ms.openlocfilehash: 4041b824d099edbefcc45c68163257ca69ddf7de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.custom: references_regions
+ms.openlocfilehash: b903fda9a64233b4906941167ca7fd5819a0316b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995676"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164478"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
@@ -30,37 +31,49 @@ Nastavení Azure Monitor pro virtuální počítače:
 * Povolte několik virtuálních počítačů Azure, virtuálních počítačů ARC Azure, Azure VMSS nebo počítačů ARC Azure v rámci zadaného předplatného nebo skupiny prostředků pomocí PowerShellu.
 * Povolte Azure Monitor pro virtuální počítače k monitorování virtuálních počítačů nebo fyzických počítačů hostovaných ve vaší podnikové síti nebo jiném cloudovém prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že rozumíte informacím v následujících částech. 
 
 >[!NOTE]
 >Následující informace popsané v této části se vztahují také na [řešení Service map](service-map.md).  
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="log-analytics-workspace"></a>Pracovní prostor služby Log Analytics
 
 Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v následujících oblastech:
 
-- USA – středozápad
-- USA – západ
-- Západní USA 2
-- Středojižní USA
-- East US
-- USA – východ 2
-- Střední USA
-- USA – středosever
-- US Gov AZ
-- US Gov VA
-- Střední Kanada
-- Spojené království – jih
-- Severní Evropa
-- West Europe
-- Východní Asie
-- Southeast Asia
-- Indie – střed
-- Japan East
-- Austrálie – východ
-- Austrálie – jihovýchod
+- Afrika
+  - Jižní Afrika – sever
+- Asie a Tichomoří
+  - Východní Asie
+  - Southeast Asia
+- Austrálie
+  - Austrálie – východ
+  - Austrálie – jihovýchod
+- Azure Government
+  - US Gov AZ
+  - US Gov VA
+- Kanada
+  - Střední Kanada
+- Evropa
+  - Severní Evropa
+  - West Europe
+- Indie
+  - Indie – střed
+- Japonsko
+  - Japonsko – východ
+- Spojené království
+  - Spojené království – jih
+- USA
+  - Střední USA
+  - East US
+  - USA – východ 2
+  - USA – středosever
+  - Středojižní USA
+  - USA – středozápad
+  - USA – západ
+  - Západní USA 2
+
 
 >[!NOTE]
 >Virtuální počítače Azure můžete monitorovat v libovolné oblasti. Samotné virtuální počítače nejsou omezeny na oblasti podporované pracovním prostorem Log Analytics.
@@ -94,11 +107,11 @@ Přečtěte si následující seznam důležitých informací o podpoře agenta 
 ## <a name="supported-azure-arc-machines"></a>Podporované počítače ARC Azure
 Azure Monitor pro virtuální počítače je k dispozici pro servery s podporou ARC Azure v oblastech, kde je k dispozici služba rozšíření ARC. Je nutné, abyste spustili agenta ARC verze 0,9 nebo vyšší.
 
-| Připojený zdroj | Podporováno | Description |
+| Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Yes | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems). |
-| Agenti systému Linux | Yes | Společně s [agentem Log Analytics pro Linux](../platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | No | |
+| Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](../platform/agents-overview.md#supported-operating-systems). |
+| Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Ne | |
 
 ## <a name="agents"></a>Agenti
 Azure Monitor pro virtuální počítače vyžaduje, aby byly na každém virtuálním počítači nebo sadě škálování virtuálních počítačů, které mají být monitorovány, nainstalovány následující dva agenty. Jediným požadavkem k zaregistrování prostředků je instalace těchto agentů a jejich připojení k pracovnímu prostoru.

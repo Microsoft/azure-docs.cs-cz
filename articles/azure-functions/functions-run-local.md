@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 094449ddcbfc2baf41657d00de030ef3c1cddbb5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108486"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164855"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -574,15 +574,11 @@ Doporučený způsob, jak monitorovat provádění vašich funkcí, je integrace
 
 ### <a name="application-insights-integration"></a>Integrace Application Insights
 
-Při vytváření aplikace Function App v Azure by měla být povolená integrace Application Insights. Pokud z nějakého důvodu vaše aplikace Function není připojená k instanci Application Insights, můžete tuto integraci snadno provést v Azure Portal. 
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+Při vytváření aplikace Function App v Azure by měla být povolená integrace Application Insights. Pokud z nějakého důvodu vaše aplikace Function není připojená k instanci Application Insights, můžete tuto integraci snadno provést v Azure Portal. Další informace najdete v tématu [Povolení integrace Application Insights](configure-monitoring.md#enable-application-insights-integration).
 
 ### <a name="enable-streaming-logs"></a>Povolit streamování protokolů
 
 Proud souborů protokolu generovaných funkcemi můžete zobrazit v relaci příkazového řádku na místním počítači. 
-
-#### <a name="native-streaming-logs"></a>Nativní protokoly streamování
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 

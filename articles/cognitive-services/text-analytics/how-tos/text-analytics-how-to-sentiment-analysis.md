@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 570a21a307d60ab1e2c02d6481746576f5dcf0e3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930284"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166926"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
 
@@ -29,14 +29,14 @@ Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Dalš�
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Příznak                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
+| Funkce                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Metody pro jednotlivé a dávkové požadavky    | X                     | X                                 |
 | Mínění skóre a popisky             | X                     | X                                 |
 | [Kontejner Docker](text-analytics-how-to-install-containers.md) založený na Linux | ×  |  |
 | Dolování názoru                            |                       | ×                                 |
 
-### <a name="sentiment-scoring-and-labeling"></a>Bodování a označování mínění
+## <a name="sentiment-scoring-and-labeling"></a>Bodování a označování mínění
 
 Analýza mínění v v3 aplikuje popisky mínění na text, které se vrátí na úrovni věty a dokumentu s hodnocením spolehlivosti pro každý z nich. 
 
@@ -51,7 +51,7 @@ Popisky jsou *kladné*, *záporné*a *neutrální*. Na úrovni dokumentu lze tak
 
 Výsledky spolehlivosti jsou v rozsahu od 1 do 0. Skóre Blíže k 1 znamenají vyšší důvěru v klasifikaci popisku, zatímco nižší skóre znamenají nižší důvěru. U každého dokumentu nebo každé věty jsou předpovězené skóre spojené s popisky (kladné, záporné a neutrální) přidány až 1.
 
-### <a name="opinion-mining"></a>Dolování názoru
+## <a name="opinion-mining"></a>Dolování názoru
 
 Dolování stanovisek je funkce Analýza mínění, počínaje verzí 3,1-Preview. 1. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
 

@@ -4,12 +4,12 @@ description: Naučte se, jak povolit monitorování clusteru Azure Kubernetes Se
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: d283ac43b466140045c8acaaf7ba7bb1e490b835
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994509"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165396"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
 
@@ -132,12 +132,10 @@ Pokud chcete monitorování povolit přímo z jednoho z clusterů AKS v Azure Po
 2. V seznamu prostředků začněte psát **kontejnery**.  Seznam se filtruje podle vašeho zadání.
 
 3. Vyberte **Kubernetes Services**.
+    
+4. V seznamu služeb Kubernetes vyberte službu.
 
-    ![Odkaz služby Kubernetes Services](./media/container-insights-onboard/portal-search-containers-01.png)
-
-4. V seznamu kontejnerů vyberte kontejner.
-
-5. Na stránce Přehled kontejneru vyberte **monitorovat kontejnery**.
+5. Na stránce Přehled služby Kubernetes vyberte **monitorování – přehledy**.
 
 6. Pokud máte existující pracovní prostor Log Analytics ve stejném předplatném jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .
     Seznam předchází výchozí pracovní prostor a umístění, do kterého je kontejner AKS nasazený v rámci předplatného.

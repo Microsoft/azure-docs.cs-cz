@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a9bb3ac7d3028937a422f2cd94aca4f4f4f41b58
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288847"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167531"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Použití externích tabulek s synapse SQL
 
@@ -165,6 +165,8 @@ Vytvořením formátu externího souboru zadáte skutečné rozložení dat, na 
 
 ### <a name="syntax-for-create-external-file-format"></a>Syntaxe pro formát vytvoření externího souboru
 
+#### <a name="sql-pool"></a>[Fond SQL](#tab/sql-pool)
+
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
 CREATE EXTERNAL FILE FORMAT file_format_name  
@@ -192,6 +194,40 @@ WITH (
     | Encoding = {'UTF8' | 'UTF16'}
 }
 ```
+
+#### <a name="sql-on-demand"></a>[SQL na vyžádání](#tab/sql-on-demand)
+
+```syntaxsql
+-- Create an external file format for PARQUET files.  
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = PARQUET  
+    [ , DATA_COMPRESSION = {  
+        'org.apache.hadoop.io.compress.SnappyCodec'  
+      | 'org.apache.hadoop.io.compress.GzipCodec'      }  
+    ]);  
+
+--Create an external file format for DELIMITED TEXT files
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = DELIMITEDTEXT  
+    [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' ]
+    [ , FORMAT_OPTIONS ( <format_options> [ ,...n  ] ) ]  
+    );  
+
+<format_options> ::=  
+{  
+    FIELD_TERMINATOR = field_terminator  
+    | STRING_DELIMITER = string_delimiter
+    | First_Row = integer
+    | USE_TYPE_DEFAULT = { TRUE | FALSE }
+    | Encoding = {'UTF8' | 'UTF16'}
+    | PARSER_VERSION = {'parser_version'}
+}
+```
+
+---
+
 
 ### <a name="arguments-for-create-external-file-format"></a>Argumenty pro formát vytvoření externího souboru
 
@@ -244,6 +280,8 @@ Při čtení z externích tabulek PARQUET je tento argument ignorován, ale pou�
 Typ formátu souboru DELIMITEDTEXT podporuje následující kompresní metodu:
 
 - DATA_COMPRESSION = ' org. Apache. Hadoop. IO. Compress. GzipCodec '
+
+PARSER_VERSION = ' parser_version ' určuje verzi analyzátoru, která má být použita při čtení souborů. Podrobnosti najdete v argumentech PARSER_VERSION v argumentech [OpenRowset](develop-openrowset.md#arguments) .
 
 ### <a name="example-for-create-external-file-format"></a>Příklad pro vytvoření formátu externího souboru
 

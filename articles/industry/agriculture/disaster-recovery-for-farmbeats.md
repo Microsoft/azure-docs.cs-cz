@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdd59d078da1df021b7e23ec858ba7305f72cfa1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683895"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164206"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>Zotavení po havárii pro FarmBeats
 
@@ -45,18 +45,18 @@ Můžete iniciovat převzetí služeb při selhání a obnovit uložená data, p
 Zkopírujte přístupový klíč obnoveného Cosmos DB a aktualizujte nové Key Vault FarmBeats DataHub.
 
 
-  ![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
+  ![Snímek obrazovky, který zvýrazní, kde získat kopii přístupového klíče](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Zkopírujte adresu URL obnoveného Cosmos DB a aktualizujte ji v nové konfiguraci App Service FarmBeats DataHub. Nyní můžete Cosmos DB účet odstranit v novém nasazení FarmBeats.
 
-  ![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/configuration.png)
+  ![Snímek obrazovky, který ukazuje, kam zkopírovat adresu URL obnoveného Cosmos DB.](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Konfigurace účtu úložiště
 
 Zkopírujte přístupový klíč obnoveného účtu úložiště a aktualizujte ho v New FarmBeats DataHub Key Vault.
 
-![Zotavení po havárii](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
+![Snímek obrazovky, který ukazuje, kam zkopírovat přístupový klíč obnoveného účtu úložiště.](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Ujistěte se, že jste v novém konfiguračním souboru FarmBeats Batch VM aktualizovali název účtu úložiště.

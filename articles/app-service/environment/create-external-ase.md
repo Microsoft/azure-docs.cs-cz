@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e4922d8855173ab2539c3960aacf54c89aaf1b7b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: aa65508c4f8df2c11bab74cd34f3311b21c63d9c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148249"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164597"
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externího prostředí App Service
 
@@ -61,7 +61,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte **vytvořit prostředek**  >  **web a mobilní zařízení**  >  **webovou aplikaci**.
 
-    ![Vytvoření webové aplikace][1]
+    ![Snímek obrazovky Azure Portal zobrazující Web a mobilní zařízení vybrané v Azure Marketplace a na obrazovce pro vytvoření nové webové aplikace na pravé straně][1]
 
 2. Vyberte své předplatné. Aplikace a pomocného mechanismu se vytvoří ve stejných předplatných.
 
@@ -71,7 +71,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 5. Vyberte plán App Service a pak vyberte **vytvořit novou**. Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
 
-    ![Nový plán App Service][2]
+    ![Snímek obrazovky Azure Portal zobrazující podokno webové aplikace, podokno plán služby App Service a nové podokno plánu App Service otevřené.][2]
 
 6. V rozevíracím seznamu **umístění** vyberte oblast, ve které chcete vytvořit pomocného panelu. Když vyberete existující pomocným mechanismem, nevytvoří se nový. V rámci pomocného mechanismu, který jste vybrali, se vytvoří plán App Service. 
 
@@ -99,7 +99,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 1. V [Azure Portal](https://portal.azure.com/)vytvořte web a mobilní zařízení **prostředku**  >  **Web + Mobile**  >  **Web App for Containers.** 
 
-    ![Vytvoření webové aplikace][7]
+    ![Snímek obrazovky Azure Portal zobrazující Web a mobilní zařízení vybrané v Azure Marketplace a podokno Web App for Containers otevřené vpravo.][7]
 
 1. Vyberte své předplatné. Aplikace a pomocného mechanismu se vytvoří ve stejných předplatných.
 
@@ -107,7 +107,7 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 1. Vyberte plán App Service a pak vyberte **vytvořit novou**. Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
 
-    ![Nový plán App Service][8]
+    ![Snímek obrazovky Azure Portal znázorňující podokno Web App for Containers, podokno plán služby App Service a nové podokno App Service plán se otevřelo.][8]
 
 1. V rozevíracím seznamu **umístění** vyberte oblast, ve které chcete vytvořit pomocného panelu. Když vyberete existující pomocným mechanismem, nevytvoří se nový. V rámci pomocného mechanismu, který jste vybrali, se vytvoří plán App Service. 
 

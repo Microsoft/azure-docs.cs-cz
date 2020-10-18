@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/16/2020
 tags: connectors
-ms.openlocfilehash: a50a171536d7f81de42da415960398d31ec64827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2fb2180acfe8fed5701ae4320ea0d1424ed9e0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326775"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166280"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro databázi SQL pomocí Azure Logic Apps
 
@@ -22,7 +22,7 @@ Můžete vytvářet aplikace logiky, které se spouštějí při aktivaci událo
 
 Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informace o technických informacích, omezeních a známých problémech specifických pro konektor najdete na [stránce s referenčními informacemi pro konektor SQL Server](/connectors/sql/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -67,11 +67,14 @@ Nyní pokračujte následujícími kroky:
 
 ### <a name="connect-to-azure-sql-database-or-managed-instance"></a>Připojení k Azure SQL Database nebo spravované instanci
 
+Pokud chcete získat přístup ke spravované instanci SQL Azure bez použití místní brány dat nebo prostředí integrační služby, musíte [nastavit veřejný koncový bod na spravované instanci SQL Azure](../azure-sql/managed-instance/public-endpoint-configure.md). Veřejný koncový bod používá port 3342, proto nezapomeňte při vytváření připojení z aplikace logiky zadat toto číslo portu.
+
+
 Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql-action)a ještě jste nevytvořili připojení k vaší databázi, budete vyzváni k provedení těchto kroků:
 
 1. Jako **typ ověřování**vyberte požadované a povolené ověřování ve vaší databázi v Azure SQL Database nebo spravované instanci SQL Azure:
 
-   | Authentication | Description |
+   | Authentication | Popis |
    |----------------|-------------|
    | [**Integrovaná služba Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platnou identitu v Azure Active Directory (Azure AD), která má přístup k vaší databázi. <p>Další informace najdete v těchto tématech: <p>- [Přehled zabezpečení Azure SQL – ověřování](../azure-sql/database/security-overview.md#authentication) <br>- [Autorizace přístupu k databázi do Azure SQL – ověřování a autorizace](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – integrované ověřování Azure AD](../azure-sql/database/authentication-aad-overview.md) |
    | [**Ověřování SQL Server**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platné uživatelské jméno a silné heslo, které se vytvoří a uloží do vaší databáze. <p>Další informace najdete v těchto tématech: <p>- [Přehled zabezpečení Azure SQL – ověřování](../azure-sql/database/security-overview.md#authentication) <br>- [Autorizace přístupu k databázi do Azure SQL – ověřování a autorizace](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
@@ -85,11 +88,11 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
 1. Vyberte tyto hodnoty pro vaši databázi:
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
    | **Název serveru** | Yes | Adresa pro váš SQL Server, například `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Název databáze** | Yes | Název vaší databáze SQL, například `Fabrikam-Azure-SQL-DB` |
-   | **Název tabulky** | Yes | Tabulka, kterou chcete použít, například `SalesLT.Customer` |
+   | **Název databáze** | Ano | Název vaší databáze SQL, například `Fabrikam-Azure-SQL-DB` |
+   | **Název tabulky** | Ano | Tabulka, kterou chcete použít, například `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -115,7 +118,7 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
 1. Jako **typ ověřování**vyberte požadované a povolené ověřování v SQL Server:
 
-   | Authentication | Description |
+   | Authentication | Popis |
    |----------------|-------------|
    | [**Ověřování systému Windows**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Podporuje jenom konektor non-ISE SQL Server, který vyžaduje prostředek brány dat, který se dřív vytvořil v Azure pro vaše připojení, bez ohledu na to, jestli používáte víceklientské prostředí Azure nebo ISE. <p><p>– Vyžaduje platné uživatelské jméno a heslo systému Windows k potvrzení vaší identity prostřednictvím účtu systému Windows. <p>Další informace najdete v tématu [ověřování systému Windows](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) . |
    | [**Ověřování SQL Server**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platné uživatelské jméno a silné heslo, které se vytvoří a uloží do SQL Server. <p>Další informace najdete v tématu [ověřování SQL Server](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
@@ -127,12 +130,12 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
 1. Vyberte nebo zadejte pro svou databázi SQL následující hodnoty:
 
-   | Vlastnost | Požaduje se | Popis |
+   | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název systému SQL Server** | Yes | Adresa pro váš SQL Server, například `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Název databáze SQL** | Yes | Název databáze SQL Server, například `Fabrikam-Azure-SQL-DB` |
-   | **Uživatelské jméno** | Yes | Vaše uživatelské jméno pro SQL Server a databázi |
-   | **Heslo** | Yes | Heslo pro SQL Server a databázi |
+   | **Název systému SQL Server** | Ano | Adresa pro váš SQL Server, například `Fabrikam-Azure-SQL.database.windows.net` |
+   | **Název databáze SQL** | Ano | Název databáze SQL Server, například `Fabrikam-Azure-SQL-DB` |
+   | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro SQL Server a databázi |
+   | **Heslo** | Ano | Heslo pro SQL Server a databázi |
    | **Předplatné** |  Ano, pro ověřování systému Windows | Předplatné Azure pro prostředek brány dat, který jste dříve vytvořili v Azure |
    | **Brána připojení** | Ano, pro ověřování systému Windows | Název prostředku brány dat, který jste dříve vytvořili v Azure <p><p>**Tip**: Pokud se brána v seznamu nezobrazí, ověřte, že jste správně [nastavili bránu](../logic-apps/logic-apps-gateway-connection.md). |
    |||
@@ -248,6 +251,18 @@ Když zavoláte uloženou proceduru pomocí konektoru SQL Server, vrácený výs
 
 1. Chcete-li odkazovat na vlastnosti obsahu JSON, klikněte do textových polí, kde chcete odkazovat na tyto vlastnosti, aby se zobrazil seznam dynamického obsahu. V seznamu v záhlaví [**JSON analýzy**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) vyberte datové tokeny pro vlastnosti obsahu JSON, které chcete.
 
+## <a name="troubleshoot-problems"></a>Poradce při potížích
+
+Je velmi běžné, že narazíte na potíže s připojením. Následuje příklad chybové zprávy:
+
+> `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+>
+> `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+>
+> `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+
+Pokud chcete problém vyřešit, postupujte prosím podle pokynů [SQL Server k řešení chyb připojení](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) .
+
 ## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 
 Technické informace o aktivačních událostech, akcích a omezeních tohoto konektoru najdete na [referenční stránce konektoru](/connectors/sql/), která je vygenerována z popisu Swagger.
@@ -255,4 +270,3 @@ Technické informace o aktivačních událostech, akcích a omezeních tohoto ko
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech pro Azure Logic Apps](../connectors/apis-list.md)
-

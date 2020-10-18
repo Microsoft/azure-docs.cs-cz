@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2887e7c5fd875942c3d19391267ddbb9b73ccfec
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75482566"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165549"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generovat heatmapu vlhkosti půdy
 
@@ -54,7 +54,7 @@ Po propojení účtu snímače se službou Azure FarmBeats je potřeba přiřadi
 2.  Vyberte **MyFarm**  >  **Přidat zařízení**.
 3.  Zobrazí se okno **Přidat zařízení** . Vyberte jakékoli zařízení, které je propojené s senzory vlhkosti v půdě pro vaši farmu.
 
-    ![Beats farmy projektu](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Snímek obrazovky, na kterém se zobrazuje obrazovka Přidat zařízení](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
 4. Vyberte **Přidat zařízení**.     
 
@@ -70,7 +70,7 @@ V tomto kroku se vytvoří úloha nebo dlouhodobá operace, která bude generova
 6.  V části **Vybrat míru vlhkosti půdního** **senzoru**zadejte míru, kterou chcete pro mapu použít.
     Pokud chcete zjistit míru snímače, vyberte v **senzorech**jakýkoliv senzor vlhkosti půdy. Ve **vlastnostech senzoru**použijte hodnotu **Název míry** .
 
-    ![Beats farmy projektu](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
+    ![Snímek obrazovky, který ukazuje obrazovku vlhkosti půdy.](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
 
 
 7.  Vyberte **Generovat mapy**.

@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: d234a121ee8f36389c79228d69a11d9fe999eb5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a966579e1acc02f1479c41520dcbbc58d420647c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444776"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164512"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Konfigurace Always Encrypted pomocí úložiště certifikátů Windows
 
@@ -37,7 +37,7 @@ Podle pokynů v tomto článku se dozvíte, jak nastavit Always Encrypted pro SQ
 * Vytvořte databázovou tabulku a Zašifrujte sloupce.
 * Vytvořte aplikaci, která vloží, vybere a zobrazí data ze zašifrovaných sloupců.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz budete potřebovat:
 
@@ -97,7 +97,7 @@ SSMS poskytuje průvodce pro snadnou konfiguraci Always Encrypted nastavením CM
 1. Rozbalte položku **databáze**  >  **Clinic**  >  **Tables**.
 2. Klikněte pravým tlačítkem na tabulku **pacientům** a vyberte možnost **Šifrovat sloupce** a otevřete tak Průvodce Always Encrypted:
 
-    ![Šifrovat sloupce](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
+    ![Snímek obrazovky, který zobrazuje Colunns šifrování... možnost nabídky v tabulce pacientů.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
 Průvodce Always Encrypted obsahuje následující části: **Výběr sloupce**, **Konfigurace hlavního klíče** (CMK), **ověřování**a **Shrnutí**.
 
@@ -149,7 +149,7 @@ Teď, když je nastavené Always Encrypted, můžete vytvořit aplikaci, která 
 1. Otevřete Visual Studio a vytvořte novou konzolovou aplikaci v jazyce C#. Ujistěte se, že je váš projekt nastaven na **.NET Framework 4,6** nebo novější.
 2. Pojmenujte projekt **AlwaysEncryptedConsoleApp** a klikněte na **OK**.
 
-![Nová Konzolová aplikace](./media/always-encrypted-certificate-store-configure/console-app.png)
+![Snímek obrazovky, který zobrazuje nově pojmenovaný projekt AlwaysEncryptedConsoleApp.](./media/always-encrypted-certificate-store-configure/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Změňte připojovací řetězec tak, aby povoloval Always Encrypted
 
@@ -510,7 +510,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 Můžete vidět, že šifrované sloupce neobsahují žádná data ve formátu prostého textu.
 
-   ![Nová Konzolová aplikace](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
+   ![Snímek obrazovky zobrazující šifrovaná data v šifrovaných sloupcích](./media/always-encrypted-certificate-store-configure/ssms-encrypted.png)
 
 Pokud chcete pro přístup k datům ve formátu prostého textu použít SSMS, můžete do připojení přidat parametr **nastavení šifrování sloupce = povoleno** .
 
@@ -518,7 +518,7 @@ Pokud chcete pro přístup k datům ve formátu prostého textu použít SSMS, m
 2. Kliknutím na **připojit**  >  **databázový stroj** otevřete okno **připojit k serveru** a potom klikněte na **Možnosti**.
 3. Klikněte na **Další parametry připojení** a **nastavení šifrování sloupce typ = povoleno**.
 
-    ![Nová Konzolová aplikace](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
+    ![Snímek obrazovky zobrazující kartu dalších parametrů připojení s nastavením šifrování sloupce = povolenou v poli](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)
 4. Spusťte následující dotaz na **Clinic** Database.
 
     ```tsql

@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81000249"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165668"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Kurz: vytvoření analytické aplikace v obchodě v Azure IoT Central
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > * Připojení zařízení k aplikaci
 > * Přidat pravidla a akce pro monitorování podmínek
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení této série kurzů potřebujete:
 * Doporučuje se předplatné Azure. Volitelně můžete použít bezplatnou 7 dní zkušební verzi. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
@@ -148,7 +148,7 @@ Přidání šablony zařízení RuuviTag do vaší aplikace:
 
 1. Vyberte **Další: Přizpůsobit**.
 
-    ![Šablona zařízení RuuviTag pro senzory Azure IoT Central](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko Další: přizpůsobení](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
 1. Vyberte **Vytvořit**. Aplikace přidá šablonu zařízení RuuviTag.
 
@@ -191,7 +191,7 @@ Pro `humidity` typ telemetrie proveďte následující změny:
 
 1. Vyberte **Uložit** a uložte tak provedené změny.
 
-    ![Přizpůsobení šablony zařízení v Azure IoT Central RuuviTag](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
+    ![Snímek obrazovky, který zobrazuje obrazovku přizpůsobit a zvýrazní tlačítko Uložit.](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
 
 Přidání vlastnosti cloudu do šablony zařízení v aplikaci:
 

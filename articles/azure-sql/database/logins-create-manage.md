@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 7be78a0c05942aebb9e3154a79035d71f87becd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca458bebf75f8e77774236166704794b817b7c3f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334901"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167116"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi SQL Database, spravované instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -65,7 +65,7 @@ Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a
 
 ![Správci SQL serveru](./media/logins-create-manage/sql-admins.png)
 
-![Správci SQL serveru](./media/logins-create-manage/sql-admins2.png)
+![Snímek obrazovky, který zvýrazní možnost nabídky vlastnosti](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
 > Přihlašovací jméno správce nelze po vytvoření změnit. Pokud chcete resetovat heslo pro správce serveru, přejděte na [Azure Portal](https://portal.azure.com), klikněte na **SQL servery**, vyberte server ze seznamu a potom klikněte na **resetovat heslo**. Heslo pro spravovanou instanci SQL resetujete tak, že přejdete na Azure Portal, kliknete na instanci a kliknete na **resetovat heslo**. Můžete také použít PowerShell nebo rozhraní příkazového řádku Azure CLI.

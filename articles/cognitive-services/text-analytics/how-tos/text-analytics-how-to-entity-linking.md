@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: f37828d5561ef382f572c1fdd4917a71f8a00407
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 94f863bd4f016ed1117fa236323b43515fd53797
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930165"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165594"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -34,7 +34,7 @@ Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé en
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Příznak                                                         | NER v 3.0 | NER verze 3.1 – Preview. 2 |
+| Funkce                                                         | NER v 3.0 | NER verze 3.1 – Preview. 2 |
 |-----------------------------------------------------------------|--------|----------|
 | Metody pro jednotlivé a dávkové požadavky                          | X      | X        |
 | Rozšířené rozpoznávání entit napříč několika kategoriemi           | X      | X        |
@@ -43,7 +43,7 @@ Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé en
 
 Informace najdete v tématu [Podpora jazyků](../language-support.md) .
 
-### <a name="entity-types"></a>Typy entit
+## <a name="entity-types"></a>Typy entit
 
 Rozpoznávání pojmenovaných entit V3 poskytuje rozšířené zjišťování napříč více typy. V současné době NER v 3.0 dokáže rozpoznat entity v [kategorii obecné entity](../named-entity-types.md).
 
@@ -291,7 +291,7 @@ Příklad obecné odpovědi NER:
 ---
 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro propojení entit pomocí Analýza textu v Cognitive Services. Souhrn:
 

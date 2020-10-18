@@ -1,33 +1,34 @@
 ---
 title: Nastavení clusteru Azure Service Fabric Linux ve Windows
-description: Tento článek popisuje, jak nastavit clustery Service Fabric Linux spuštěné ve vývojových počítačích s Windows. To je užitečné hlavně při vývoji pro různé platformy.
+description: Tento článek popisuje, jak nastavit clustery Service Fabric Linux spuštěné ve vývojových počítačích s Windows. Tento přístup je vhodný pro vývoj pro různé platformy.
 ms.topic: conceptual
-ms.date: 11/20/2017
-ms.openlocfilehash: 83d494d777a4a1e1586707c8848056ca8fe9780a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: e25c6adf5e5f5101025aa883ef2ff9750c113a76
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537068"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164104"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Nastavení clusteru se systémem Linux Service Fabric ve vašem počítači s Windows Developer
 
-Tento dokument popisuje, jak nastavit místní Service Fabric pro Linux ve vývojových počítačích s Windows. Nastavení místního clusteru se systémem Linux je užitečné pro rychlé testování aplikací určených pro clustery se systémem Linux, které jsou vyvíjeny na počítači s Windows.
+Tento dokument popisuje, jak nastavit místní Cluster Service Fabric pro Linux na vývojovém počítači s Windows. Nastavení místního clusteru se systémem Linux je užitečné pro rychlé testování aplikací určených pro clustery se systémem Linux, které jsou vyvíjeny na počítači s Windows.
 
-## <a name="prerequisites"></a>Požadavky
-Clustery Service Fabric se systémem Linux neběží nativně ve Windows. Pro spuštění místního clusteru Service Fabric je k dispozici předem nakonfigurovaná image kontejneru Docker. Než začnete, budete potřebovat:
+## <a name="prerequisites"></a>Předpoklady
+Clustery Service Fabric se systémem Linux neběží ve Windows, ale pokud chcete povolit vytváření prototypů pro různé platformy, poskytujeme pro Linux Service Fabric jeden Box kontejner Docker, který se dá nasadit prostřednictvím Docker for Windows.
+
+Než začnete, budete potřebovat:
 
 * Minimálně 4 GB RAM
-* Nejnovější verzi [Dockeru](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* Docker musí běžet v režimu Linux.
+* Nejnovější verze [Docker for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows)
+* Docker musí běžet v režimu kontejnerů Linux.
 
 >[!TIP]
-> * Můžete postupovat podle kroků uvedených v oficiální [dokumentaci](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) k Docker a nainstalovat Docker ve Windows. 
-> * Po dokončení instalace ověřte, že proběhla úspěšně, podle postupu uvedeného [tady](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine).
-
+> Pokud chcete nainstalovat Docker na počítač s Windows, postupujte podle kroků v [dokumentaci k Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions). Po dokončení [instalaci ověřte](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine).
+>
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Vytvoření místního kontejneru a nastavení Service Fabric
-Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluster Service Fabric, proveďte v PowerShellu následující kroky:
+Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluster Service Fabric, spusťte následující kroky:
 
 
 1. Následujícím způsobem aktualizujte konfiguraci démona Dockeru na hostiteli a potom démon Dockeru restartujte: 
@@ -38,33 +39,47 @@ Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluste
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    Povýšený způsob aktualizace: Přejít na ikonu Docker > nastavení > démona > Upřesnit a aktualizovat tam. Pak restartujte démona Docker, aby se změny projevily. 
+    Povýšený způsob, jak ho aktualizovat, je přejít na: 
 
-2. V novém adresáři vytvořte soubor `Dockerfile` pro sestavení vaší image Service Fabric:
+    * Ikona Docker > nastavení > Docker Engine
+    * Přidat nová pole uvedená výše
+    * Použít & restartovat – restartujte démona Docker, aby se změny projevily.
 
-    ```Dockerfile
-    FROM mcr.microsoft.com/service-fabric/onebox:latest
-    WORKDIR /home/ClusterDeployer
-    RUN ./setup.sh
-    #Generate the local
-    RUN locale-gen en_US.UTF-8
-    #Set environment variables
-    ENV LANG=en_US.UTF-8
-    ENV LANGUAGE=en_US:en
-    ENV LC_ALL=en_US.UTF-8
-    EXPOSE 19080 19000 80 443
-    #Start SSH before running the cluster
-    CMD /etc/init.d/ssh start && ./run.sh
+2. Spusťte cluster přes PowerShell.<br/>
+    <b>Ubuntu 18,04 LTS:</b>
+    ```powershell
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
+    <b>Ubuntu 16,04 LTS:</b>
+    ```powershell
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hubu](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
+
+
+
+3. Volitelné: Sestavte obrázek rozšířené Service Fabric.
+
+    V novém adresáři vytvořte soubor `Dockerfile` s názvem pro sestavení vlastní image:
+
     >[!NOTE]
-    >Úpravou tohoto souboru můžete do kontejneru přidat další programy nebo závislosti.
+    >Obrázek uvedený výše můžete upravit pomocí souboru Dockerfile a přidat do svého kontejneru další programy nebo závislosti.
     >Například přidáním `RUN apt-get install nodejs -y` se povolí podpora aplikací `nodejs` jako spustitelných souborů typu Host.
+    ```Dockerfile
+    FROM mcr.microsoft.com/service-fabric/onebox:u18
+    RUN apt-get install nodejs -y
+    EXPOSE 19080 19000 80 443
+    WORKDIR /home/ClusterDeployer
+    CMD ["./ClusterDeployer.sh"]
+    ```
     
     >[!TIP]
-    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) .
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hubu](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
 
-3. Pokud ze souboru `Dockerfile` chcete sestavit opakovatelně použitelnou image, otevřete terminál, pomocí příkazu `cd` přejděte přímo do adresáře s vaším souborem `Dockerfile` a pak spusťte:
+    Pokud chcete vytvořit opakovaně použitelnou image z `Dockerfile` , otevřete terminál a přímo si `cd` podržíte své `Dockerfile` spuštění:
 
     ```powershell 
     docker build -t mysfcluster .
@@ -73,10 +88,10 @@ Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluste
     >[!NOTE]
     >Tato operace nějakou dobu trvá, ale stačí ji provést jenom jednou.
 
-4. Teď můžete rychle spustit místní kopii Service Fabric, kdykoli budete potřebovat, spuštěním:
+    Teď můžete rychle začít místní kopii Service Fabric, kdykoli ji budete potřebovat, a to spuštěním:
 
     ```powershell 
-    docker run --name sftestcluster -d -v //var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
     ```
 
     >[!TIP]
@@ -84,21 +99,22 @@ Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluste
     >
     >Pokud vaše aplikace naslouchá na konkrétních portech, musí se zadat pomocí dalších značek `-p`. Pokud například aplikace naslouchá na portu 8080, přidejte následující značku `-p`:
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
+    >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-5. Spuštění clusteru bude chvíli trvat. Pomocí následujícího příkazu můžete zobrazit protokoly nebo můžete přejít na řídicí panel na adrese `http://localhost:19080` a zobrazit stav clusteru:
+
+4. Spuštění clusteru bude chvíli trvat. Pomocí následujícího příkazu můžete zobrazit protokoly nebo můžete přejít na řídicí panel na adrese `http://localhost:19080` a zobrazit stav clusteru:
 
     ```powershell 
     docker logs sftestcluster
     ```
 
-6. Po úspěšném dokončení kroku 5 můžete přejít ``http://localhost:19080`` z okna z okna a zobrazit průzkumníka Service Fabric. V tuto chvíli se můžete připojit k tomuto clusteru pomocí libovolných nástrojů ze svého počítače s Windows Developer a nasadit aplikaci cílené na Service Fabric clustery pro Linux. 
+5. Po úspěšném nasazení clusteru, jak je zjištěno v kroku 4, můžete přejít na ``http://localhost:19080`` z počítače s Windows a najít Service Fabric Explorer řídicí panel. V tomto okamžiku se můžete připojit k tomuto clusteru pomocí nástrojů z počítače s Windows Developer a nasazovat aplikace cílené na Service Fabric clusterů pro Linux. 
 
     > [!NOTE]
     > Modul plug-in Eclipse se v systému Windows aktuálně nepodporuje. 
 
-7. Až skončíte, zastavte a vyčistěte kontejner pomocí tohoto příkazu:
+6. Až skončíte, zastavte a vyčistěte kontejner pomocí tohoto příkazu:
 
     ```powershell 
     docker rm -f sftestcluster
@@ -108,11 +124,14 @@ Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluste
  
  Následující seznam uvádí známá omezení pro místní cluster spuštěný v kontejneru pro Mac: 
  
- * Služba DNS neběží a není podporovaná [Problém č. 132](https://github.com/Microsoft/service-fabric/issues/132)
+ * Služba DNS není spuštěna a v rámci kontejneru není aktuálně podporována. [Problém #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * Spouštění aplikací založených na kontejnerech vyžaduje spuštění SF na hostiteli se systémem Linux. Vnořené aplikace kontejneru se v tuto chvíli nepodporují.
 
 ## <a name="next-steps"></a>Další kroky
+* [Vytvoření a nasazení první aplikace Service Fabric v Javě v Linuxu pomocí Yeomana](service-fabric-create-your-first-linux-application-with-java.md)
 * Začínáme s [zatmění](./service-fabric-get-started-eclipse.md)
 * Podívejte se na další [ukázky Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* Informace o [možnostech podpory pro Service Fabric](service-fabric-support.md)
 
 
 <!-- Image references -->

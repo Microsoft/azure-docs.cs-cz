@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
-ms.openlocfilehash: 948fbcd57514f4ef77483b05c60324e867e0e3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293638"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165141"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Prostředí pomocníka návrhů pro Windows 10
 
@@ -70,7 +70,7 @@ I když se stavy mění rychle, je vhodné zvážit poskytování uživatelskéh
 Když má aplikace pomocníka fokus, záměr zákazníka je snadno interagovat s aplikací, takže všechna prostředí hlasové aktivace by měla být zpracována hlavním zobrazením aplikace. Toto zobrazení může změnit velikost zákazníka. Aby bylo možné vysvětlit interakce prostředí pomocníka, zbytek tohoto dokumentu používá konkrétní příklad asistenta finančních služeb s názvem contoso. V tomto a dalším diagramu se zobrazí zpráva o tom, co zákazník zobrazuje na stránce kreslené bubliny řeči na levé straně s odezvami pomocníka ve kreslené bublině na pravé straně.
 
 **Zobrazení v aplikaci. Počáteční stav při zahájení aktivace hlasu:** 
- ![ snímek hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/initial_state.png)
+ ![ snímek obrazovky s otevřenou aplikací společnosti Contoso pro finanční asistenty, která je otevřená na výchozím plátně. Kreslené bubliny pro řeč na pravé straně říká "contoso".](media/voice-assistants/windows_voice_assistant/initial_state.png)
 
 **Zobrazení v aplikaci. Po úspěšném pokusu o aktivaci hlasu se spustí naslouchací proces:** ![ snímek hlasového pomocníka ve Windows, když hlasová asistent naslouchá.](media/voice-assistants/windows_voice_assistant/listening.png)
 
@@ -108,9 +108,9 @@ Pomocník musí v této části implementovat pokyny k odhlášení, aby se zák
 - Pokud je aplikace &quot; používána &quot; , může pokračovat výše v zámku. &quot;používá se pro &quot; jakýkoliv vstup nebo výstup. Například při streamování hudby nebo videa může aplikace pokračovat výše v zámku. &quot;Sledování &quot; a další kroky při více zapnutích jsou povoleny, aby aplikace zůstala nad zámkem.
 - **Podrobnosti o implementaci chybějící aplikace** najdete [v části výše Průvodce implementací zámku](windows-voice-assistants-implementation-guide.md#closing-the-application).
 
-![Snímek obrazovky hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
+![Snímek obrazovky s výše uvedeným zobrazením zámku aplikace pro finanční asistenta společnosti Contoso](media/voice-assistants/windows_voice_assistant/above_lock_response.png)
 
-![Snímek obrazovky hlasového pomocníka ve Windows před aktivací](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
+![Snímek obrazovky plochy, na které se zobrazuje zamykací obrazovka Windows](media/voice-assistants/windows_voice_assistant/lock_screen2.png)
 
 ### <a name="privacy-amp-security-considerations-above-lock"></a>Požadavky na zabezpečení ochrany osobních údajů &amp; nad zámkem
 

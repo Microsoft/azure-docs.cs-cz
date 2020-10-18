@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005936"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164787"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření účtu Video Indexer připojeného k Azure
 
@@ -25,7 +25,7 @@ Tento článek ukazuje, jak vytvořit účet Video Indexer propojený s předpla
 
 Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, můžete si vybrat, jestli chcete zkopírovat všechna videa a přizpůsobení modelu na nový účet, jak je popsáno v části [Import obsahu z zkušebního účtu](#import-your-content-from-the-trial-account) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure.
 
@@ -47,7 +47,7 @@ Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, m�
 
     Tento člen budete používat při připojování účtu Video Indexer k Azure.
 
-    Tento uživatel by měl být členem v předplatném Azure pomocí role **vlastníka** nebo role **Správce přístupu** **přispěvatele** i uživatele. Uživatele lze přidat dvakrát se dvěma rolemi. Jednou s přispěvatelem a jednou u správce přístupu uživatele.
+    Tento uživatel by měl být členem v předplatném Azure pomocí role **vlastníka** nebo role **Správce přístupu** **přispěvatele** i uživatele. Uživatele lze přidat dvakrát se dvěma rolemi. Jednou s přispěvatelem a jednou u správce přístupu uživatele. Další informace najdete v tématu [zobrazení přístupu uživatele k prostředkům Azure](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
     ![řízení přístupu](./media/create-account/access-control-iam.png)
 
@@ -163,7 +163,7 @@ Možnost importu obsahu je platná pro automatizované i ruční postupy popsan�
 > [!NOTE]
 > Obsah se dá z každého účtu importovat jenom jednou.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Platí následující Azure Media Services související s požadavky:
 

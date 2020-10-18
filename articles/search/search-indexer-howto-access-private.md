@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: bcacd6c2e1353c71d8e4e25c95ee2b563e7b3fba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b81d3f74c20f42620ceeae08bec5d484909377a7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150423"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167470"
 ---
 # <a name="indexer-connections-through-a-private-endpoint-azure-cognitive-search"></a>Připojení indexeru prostřednictvím privátního koncového bodu (Azure Kognitivní hledání)
 
@@ -23,7 +23,7 @@ Chcete-li použít tuto metodu připojení indexeru, existují dva požadavky:
 
 + Prostředek Azure poskytující obsah nebo kód musí být dřív zaregistrovaný ve [službě Azure Private Link](https://azure.microsoft.com/services/private-link/).
 
-+ Služba Azure Kognitivní hledání musí být Basic nebo vyšší (není dostupná na úrovni Free). Kromě toho pro indexery, které mají dovednosti, musí být vyhledávací služba S2 nebo vyšší. Další informace najdete v tématu [omezení služby](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
++ Služba Azure Kognitivní hledání musí být Basic nebo vyšší (není dostupná na úrovni Free). Kromě toho, pokud má indexer dovednosti, musí mít úroveň Standard 2 (S2) nebo vyšší. Další informace najdete v tématu [omezení služby](search-limits-quotas-capacity.md#shared-private-link-resource-limits).
 
 ## <a name="shared-private-link-resources-management-apis"></a>Rozhraní API pro správu sdílených prostředků privátního propojení
 

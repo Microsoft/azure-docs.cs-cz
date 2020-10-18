@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cba2517f536c9044ad15c628c793529f93b988ce
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966487"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164991"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Doplňte kontaktní údaje pro ověření uživatele pro Azure Active Directory Samoobslužné resetování hesla (SSPR).
 
@@ -48,16 +48,14 @@ Jakmile uživatel ověří své číslo mobilního telefonu, pole *telefon* v č
 
 ## <a name="authentication-contact-info"></a>Kontaktní údaje pro ověření
 
-Na stránce **metody ověřování** pro uživatele Azure AD v Azure Portal může globální správce ručně nastavit kontaktní údaje pro ověření, jak je znázorněno na následujícím ukázkovém snímku obrazovky:
+Na stránce **metody ověřování** pro uživatele Azure AD v Azure Portal může globální správce ručně nastavit kontaktní údaje pro ověření. Můžete si prohlédnout existující metody v části *použitelné metody ověřování* nebo **přidat metody ověřování**, jak je znázorněno na následujícím ukázkovém snímku obrazovky:
 
-![Kontaktní údaje pro ověření uživatele v Azure AD][Contact]
+:::image type="content" source="media/howto-sspr-authenticationdata/user-authentication-contact-info.png" alt-text="Správa metod ověřování z Azure Portal":::
 
 Následující požadavky se vztahují na tyto kontaktní údaje pro ověření:
 
 * Pokud je pole *telefon* vyplněné a v zásadách SSPR je povolený *mobilní telefon* , uživatel uvidí toto číslo na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
-* Pole *alternativní telefon* se pro resetování hesla nepoužívá.
 * Pokud je v zásadách SSPR zadáno pole *e-mail* a je povolen *e-mail* , uživatel uvidí tento e-mail na registrační stránce pro resetování hesla a během pracovního postupu pro resetování hesla.
-* Pokud je v zásadách SSPR zadáno *alternativní pole e-mail* a v zásadách je povolen *e-mail* , uživateli se tento e-mail na registrační stránce pro resetování hesla nezobrazí.
 
 ## <a name="security-questions-and-answers"></a>Bezpečnostní otázky a odpovědi
 
@@ -169,5 +167,3 @@ Jakmile budou pro uživatele předem vyplněny kontaktní informace pro ověřen
 
 > [!div class="nextstepaction"]
 > [Povolit Samoobslužné resetování hesla služby Azure AD](tutorial-enable-sspr.md)
-
-[Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "Globální správci můžou upravovat kontaktní údaje pro ověření uživatele."

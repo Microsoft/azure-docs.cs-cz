@@ -7,12 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5e457742d8a940ff3a1602cc3dcf1b1d77126ac3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076670"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165481"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu na portálu
 
@@ -53,7 +53,7 @@ Nastavení škálování pro roli můžete nakonfigurovat buď pomocí dvou rež
 
 Nastavte možnost **škálovat podle** na **pravidla plánování a výkon**.
 
-![Nastavení škálování cloudových služeb pomocí profilu a pravidla](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![Snímek obrazovky zobrazující možnost pravidla plánování a výkonu.](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. Existující profil.
 2. Přidejte pravidlo pro nadřazený profil.

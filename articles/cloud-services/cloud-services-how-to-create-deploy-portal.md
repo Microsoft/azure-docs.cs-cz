@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: b42c693943c41176936ac796f4586463e9af917c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076687"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164160"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
 Azure Portal poskytuje dva způsoby, jak vytvořit a nasadit cloudovou službu: *rychlé vytvoření* a *vlastní vytvoření*.
@@ -56,7 +56,7 @@ Chcete-li vytvořit cloudovou službu s nasazením webových rolí nebo rolí pr
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **vytvořit prostředek > COMPUTE**, přejděte dolů na **cloudovou službu**a klikněte na ni.
 
-    ![Publikování cloudové služby](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![Snímek obrazovky, který zvýrazní možnost cloudové služby v části Vytvoření prostředku > Compute.](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. V podokně nová **cloudová služba** zadejte hodnotu pro **název DNS**.
 4. Vytvořte novou **skupinu prostředků** nebo vyberte existující.
 5. Vyberte **umístění**.
@@ -74,7 +74,7 @@ Pokud byl balíček pro nasazení [nakonfigurovaný tak, aby používal certifik
 2. Klikněte na tlačítko **připojit certifikát**a potom v podokně **Přidat certifikáty** klikněte na tlačítko **OK** .
 3. V podokně **cloudová služba** klikněte na **vytvořit** . Až nasazení dosáhne stavu **připraveno** , můžete přejít k dalším krokům.
 
-    ![Publikování cloudové služby](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Snímek obrazovky, který zvýrazňuje proces odeslání certifikátu.](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Ověřte, že nasazení bylo úspěšně dokončeno.
 1. Klikněte na instanci cloudové služby.

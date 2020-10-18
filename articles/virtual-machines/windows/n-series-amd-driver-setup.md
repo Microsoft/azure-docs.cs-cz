@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: ebae7359c7bd593cb2b63bbd69919330c6aa24f9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6885c28d993b8ddab5fe158ad7b1480259cb8fb0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150758"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92163781"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů AMD GPU pro virtuální počítače řady N-Series s Windows
 
@@ -48,11 +48,12 @@ Základní specifikace, kapacity úložiště a podrobnosti o discích najdete v
 
 Instalaci ovladače můžete ověřit v Device Manager. Následující příklad ukazuje úspěšnou konfiguraci karty Radeon Instinct MI25 na virtuálním počítači Azure NVv4.
 <br />
-![Stav zařízení GPU](./media/n-series-amd-driver-setup/device-manager.png)
+
+![Snímek obrazovky, který zobrazuje úspěšnou konfiguraci karty Instinct MI25 na virtuálním počítači Azure NVv4.](./media/n-series-amd-driver-setup/device-manager.png)
 
 Pomocí nástroje Dxdiag můžete ověřit zobrazované vlastnosti GPU, včetně video RAM. Následující příklad ukazuje oddíl 1/2 karty Instinct MI25 na virtuálním počítači Azure NVv4.
 <br />
-![Vlastnosti GPU](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
+![Snímek obrazovky, který zobrazuje oddíl 1/2 karty Instinct MI25 na virtuálním počítači Azure NVv4.](./media/n-series-amd-driver-setup/dxdiag-output-new.png)
 
 Pokud používáte Windows 10 Build 1903 nebo vyšší, dxdiag na kartě Display (zobrazení) nezobrazí žádné informace. Použijte prosím v dolní části možnost Uložit všechny informace a ve výstupním souboru se zobrazí informace související s procesorem AMD MI25 GPU.
 

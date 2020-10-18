@@ -13,25 +13,26 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4020f47184e141a69586fc958f641547d7bde94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89482793"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164563"
 ---
-# <a name="configure-an-availability-group-for-sql-server-on-azure-vm-azure-portal---preview"></a>Konfigurace skupiny dostupnosti pro SQL Server na virtuálním počítači Azure (Azure Portal-Preview)
+# <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Použití Azure Portal ke konfiguraci skupiny dostupnosti (Preview) pro SQL Server na virtuálním počítači Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Tento článek popisuje, jak pomocí [Azure Portal](https://portal.azure.com) nakonfigurovat skupinu dostupnosti pro SQL Server na virtuálních počítačích Azure. 
 
 Pomocí Azure Portal vytvořte nový cluster nebo zaveďte existující cluster a pak vytvořte skupinu dostupnosti, naslouchací proces a interní nástroj pro vyrovnávání zatížení. 
 
-   > [!NOTE]
-   > Tato funkce je aktuálně ve verzi Preview a je nasazená, takže pokud vaše požadovaná oblast není k dispozici, vraťte se brzy. 
+Tato funkce je aktuálně ve verzi Preview. 
+
+I když tento článek používá Azure Portal ke konfiguraci prostředí skupiny dostupnosti, je taky možné to udělat pomocí [PowerShellu nebo Azure CLI](availability-group-az-commandline-configure.md), [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md)nebo [ručně](availability-group-manually-configure-tutorial.md) . 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci skupiny dostupnosti Always On pomocí Azure Portal musíte mít následující požadavky: 
 
@@ -177,7 +178,7 @@ Můžete **Přidat další repliky** do skupiny dostupnosti, **nakonfigurovat na
 
 ## <a name="remove-cluster"></a>Odebrat cluster
 
-Odeberte všechny SQL Server virtuálních počítačů z clusteru, abyste je zničili, a pak odeberte metadata clusteru z poskytovatele prostředků virtuálního počítače SQL. Můžete to provést pomocí nejnovější verze rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nebo PowerShellu. 
+Odeberte všechny SQL Server virtuálních počítačů z clusteru, abyste je zničili, a pak odeberte metadata clusteru z poskytovatele prostředků virtuálního počítače SQL. Můžete to provést pomocí nejnovější verze rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) nebo PowerShellu. 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

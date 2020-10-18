@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589296"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165758"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -23,7 +23,7 @@ Existují další možnosti globální konfigurace v [host.js](functions-host-js
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Klíč instrumentace pro Application Insights. Použijte pouze jeden z `APPINSIGHTS_INSTRUMENTATIONKEY` nebo `APPLICATIONINSIGHTS_CONNECTION_STRING` . Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md). 
+Klíč instrumentace pro Application Insights. Použijte pouze jeden z `APPINSIGHTS_INSTRUMENTATIONKEY` nebo `APPLICATIONINSIGHTS_CONNECTION_STRING` . Pokud Application Insights běží v cloudu svrchovan, použijte `APPLICATIONINSIGHTS_CONNECTION_STRING` . Další informace najdete v tématu [Konfigurace monitorování pro Azure Functions](configure-monitoring.md). 
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -31,7 +31,12 @@ Klíč instrumentace pro Application Insights. Použijte pouze jeden z `APPINSIG
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-Připojovací řetězec pro Application Insights. Použijte `APPLICATIONINSIGHTS_CONNECTION_STRING` místo toho, aby `APPINSIGHTS_INSTRUMENTATIONKEY` vaše aplikace Function vyžadovala přidaná přizpůsobení podporovaná pomocí připojovacího řetězce. Další informace najdete v tématu [připojovací řetězce](../azure-monitor/app/sdk-connection-string.md). 
+Připojovací řetězec pro Application Insights. Použijte `APPLICATIONINSIGHTS_CONNECTION_STRING` místo `APPINSIGHTS_INSTRUMENTATIONKEY` v následujících případech:
+
++ Když aplikace Function App vyžaduje přidaná přizpůsobení podporovaná pomocí připojovacího řetězce. 
++ Když instance Application Insights běží v cloudu svrchovaného prostředí, které vyžaduje vlastní koncový bod.
+
+Další informace najdete v tématu [připojovací řetězce](../azure-monitor/app/sdk-connection-string.md). 
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -204,7 +209,7 @@ Další informace najdete v tématu [vlastní závislosti](functions-reference-p
 
 _Toto nastavení je aktuálně ve verzi Preview._  
 
-Toto nastavení řídí protokolování z Azure Functionsho řadiče škálování. Další informace najdete v tématu [škálování protokolů řadiče](functions-monitoring.md#scale-controller-logs-preview).
+Toto nastavení řídí protokolování z Azure Functionsho řadiče škálování. Další informace najdete v tématu [škálování protokolů řadiče](functions-monitoring.md#scale-controller-logs).
 
 |Klíč|Ukázková hodnota|
 |-|-|

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: da9b7216908b4a4ba80a421427f473c217f76c28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993737"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167045"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -121,10 +121,18 @@ Služba spouští komunitní verze MySQL. To umožňuje úplnou kompatibilitu ap
 
 Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Server pro Azure Database for MySQL je k dispozici v současnosti v následujících oblastech Azure:
 
+- West Europe
 - Severní Evropa
-- Jihovýchodní Asie
+- Spojené království – jih
 - USA – východ 2
 - Západní USA 2
+- Střední USA
+- East US
+- Střední Kanada
+- Southeast Asia
+- Jižní Korea – střed
+- Japan East
+- Austrálie – východ
 
 Pracujeme na přidávání nových serverů brzy.
 

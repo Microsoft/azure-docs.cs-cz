@@ -14,18 +14,20 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 812fb35f404092453ad35b2f70c4a5b1697fbfe0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea9c8b91237f4590d1999c99fbb356d78994390d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075701"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166892"
 ---
-# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On u SQL Server v Azure Virtual Machines
+# <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Kurz: předpoklady pro vytváření skupin dostupnosti v SQL Server v Azure Virtual Machines
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 V tomto kurzu se dozvíte, jak dokončit požadavky pro vytvoření [skupiny dostupnosti Always on SQL Server ve službě Azure Virtual Machines (VM)](availability-group-manually-configure-tutorial.md). Po dokončení požadovaných součástí budete mít řadič domény, dva SQL Server virtuální počítače a monitorovací server v jedné skupině prostředků.
+
+I když tento článek konfiguruje prostředí skupiny dostupnosti ručně, je možné to provést také pomocí [Azure Portal](availability-group-azure-portal-configure.md), [PowerShellu nebo Azure CLI](availability-group-az-commandline-configure.md)nebo [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md) . 
 
 **Časový odhad**: dokončení požadavků může trvat několik hodin. Mnohé z těchto časů stráví vytváření virtuálních počítačů.
 
@@ -60,7 +62,7 @@ Potřebujete mít účet Azure. Můžete si [otevřít bezplatný účet Azure](
 8. Vyberte umístění. Umístění je oblast Azure, ve které chcete vytvořit skupinu dostupnosti. Tento článek vytvoří všechny prostředky v jednom umístění Azure.
 9. Ověřte, že je zaškrtnuté políčko **Připnout na řídicí panel** . Toto volitelné nastavení umístí zástupce pro skupinu prostředků na řídicím panelu Azure Portal.
 
-   ![Skupina prostředků](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
+   ![Zástupce skupiny prostředků pro Azure Portal](./media/availability-group-manually-configure-prerequisites-tutorial-/01-resourcegroup.png)
 
 10. Vyberte **vytvořit** a vytvořte skupinu prostředků.
 
@@ -118,13 +120,13 @@ Nová virtuální síť má jednu podsíť s názvem **admin**. Řadiče domény
 
     Poznamenejte si podsíť, kterou jste už vytvořili.
 
-   ![Konfigurace virtuální sítě](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
+   ![Poznamenejte si podsíť, kterou jste už vytvořili.](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
 
 5. Druhou podsíť vytvoříte tak, že vyberete **+ podsíť**.
 6. V části **Přidat podsíť**nakonfigurujte podsíť zadáním **sqlsubnet** pod **názvem**. Azure automaticky určí platný **Rozsah adres**. Ověřte, zda je v tomto rozsahu adres alespoň 10 adres. V produkčním prostředí můžete potřebovat víc adres.
 7. Vyberte **OK**.
 
-    ![Konfigurace virtuální sítě](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
+    ![Konfigurace podsítě](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
 Následující tabulka shrnuje nastavení konfigurace sítě:
 

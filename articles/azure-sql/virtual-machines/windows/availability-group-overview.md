@@ -11,71 +11,95 @@ ms.service: virtual-machines-sql
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/13/2017
+ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 34d76d7c85a478b5e31a692e653752aa1653884c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293658"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166535"
 ---
-# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Představení skupin dostupnosti Always On SQL Server v Azure Virtual Machines
-
+# <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Skupina dostupnosti Always On u SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Tento článek představuje SQL Server skupiny dostupnosti v Azure Virtual Machines. 
+Tento článek představuje skupiny dostupnosti Always On pro SQL Server v Azure Virtual Machines (VM). 
 
-Skupiny dostupnosti Always On v Azure Virtual Machines jsou podobné skupinám dostupnosti Always On místně. Další informace najdete v tématu [skupiny dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx). 
+## <a name="overview"></a>Přehled
 
-Následující diagram znázorňuje části úplné SQL Server skupiny dostupnosti ve službě Azure Virtual Machines.
+Skupiny dostupnosti Always On v Azure Virtual Machines jsou podobně jako [skupiny dostupnosti Always On-premises](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Vzhledem k tomu, že virtuální počítače jsou hostované v Azure, existuje několik dalších důležitých informací, jako je třeba redundance virtuálních počítačů, a směrování provozu v síti Azure. 
+
+Následující diagram znázorňuje skupinu dostupnosti pro SQL Server na virtuálních počítačích Azure:
 
 ![Skupina dostupnosti](./media/availability-group-overview/00-EndstateSampleNoELB.png)
 
-Klíčový rozdíl pro skupinu dostupnosti v Azure Virtual Machines je, že tyto virtuální počítače vyžadují [Nástroj pro vyrovnávání zatížení](../../../load-balancer/load-balancer-overview.md). Nástroj pro vyrovnávání zatížení uchovává IP adresy pro naslouchací proces skupiny dostupnosti. Pokud máte více než jednu skupinu dostupnosti, každá skupina vyžaduje naslouchací proces. Jeden nástroj pro vyrovnávání zatížení může podporovat více posluchačů.
 
-V clusteru s podporou převzetí služeb při selhání hosta virtuálního počítače Azure IaaS doporučujeme jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
+## <a name="vm-redundancy"></a>Redundance virtuálního počítače 
 
-Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuální počítače s SQL Server buď ve stejné [skupině dostupnosti](availability-group-manually-configure-prerequisites-tutorial.md#create-availability-sets), nebo v různých [zónách dostupnosti](/azure/availability-zones/az-overview). 
+Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuální počítače s SQL Server buď ve stejné [skupině dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview), nebo v různých [zónách dostupnosti](/azure/availability-zones/az-overview).
 
-|  | Verze Windows serveru | Verze SQL Server | Edice SQL Server | Konfigurace kvora služby WSFC | DR s více oblastmi | Podpora více podsítí | Podpora pro existující službu AD | DR se stejnou oblastí ve více zónách | Podpora balíčku DIST-AG bez domény AD | Podpora balíčku DIST-AG bez clusteru |  
-| :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| **[Azure Portal](availability-group-azure-portal-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | No | Yes | Yes | Yes | No | No |
-| **[Azure CLI/PowerShell](availability-group-az-cli-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | No | Yes | Yes | Yes | No | No |
-| **[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)** | 2019 </br> 2016 | 2019 </br>2017 </br>2016  | Rozlehlé | Disk s kopií cloudu | No | Yes | Yes | Yes | No | No |
-| **[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | Vše | Vše | Vše | Vše | Yes | Yes | Yes | Yes | Yes | Yes |
-
-Šablona **SQL Serverho clusteru AlwaysOn (Preview)** byla odebrána z Azure Marketplace a již není k dispozici. 
-
-Až budete připraveni vytvořit skupinu dostupnosti SQL Server v Azure Virtual Machines, přečtěte si tyto kurzy.
-
-## <a name="manually-with-azure-cli"></a>Ruční pomocí Azure CLI
-
-Pro konfiguraci a nasazení skupiny dostupnosti doporučujeme použít Azure CLI, protože to je nejjednodušší a nejrychlejší nasazení. Pomocí Azure CLI se při vytváření clusteru s podporou převzetí služeb při selhání systému Windows, připojení SQL Server virtuálních počítačů do clusteru a vytváření naslouchacího procesu a interních Load Balancer dají dosáhnout za méně než 30 minut. Tato možnost stále vyžaduje ruční vytvoření skupiny dostupnosti, ale automatizuje všechny ostatní nezbytné kroky konfigurace. 
-
-Další informace najdete v tématu věnovaném [použití Azure SQL VM CLI ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure](availability-group-az-cli-configure.md). 
-
-## <a name="automatically-with-azure-quickstart-templates"></a>Automatické zprovoznění šablon Azure pro rychlý Start
-
-Šablony pro rychlý Start Azure využívají poskytovatele prostředků virtuálního počítače SQL k nasazení clusteru s podporou převzetí služeb při selhání s Windows, připojte SQL Server k tomuto virtuálnímu počítači, vytvořte naslouchací proces a nakonfigurujte interní Load Balancer. Tato možnost stále vyžaduje ruční vytvoření skupiny dostupnosti a interní Load Balancer (interního nástroje). Ale automatizuje a zjednodušuje všechny další nezbytné kroky konfigurace, včetně konfigurace interního nástroje. 
-
-Další informace najdete v tématu [použití šablony pro rychlý Start Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure](availability-group-quickstart-template-configure.md).
+Skupina dostupnosti je seskupení prostředků, které jsou nakonfigurované tak, aby ve stejné zóně dostupnosti nebyla žádná dvě půda. To brání vlivu na více prostředků ve skupině během zavádění nasazení. 
 
 
-## <a name="automatically-with-an-azure-portal-template"></a>Automatické s Azure Portal šablonou
+## <a name="connectivity"></a>Připojení 
 
-[Automatická konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure Správce prostředků](availability-group-azure-marketplace-template-configure.md)
+V tradičním místním nasazení se klienti připojují k naslouchacího procesu skupiny dostupnosti pomocí názvu virtuální sítě (VNN) a naslouchací proces směruje provoz do příslušné repliky SQL Server ve skupině dostupnosti. Pro směrování provozu v síti Azure ale existuje dodatečný požadavek. 
+
+Při SQL Server na virtuálních počítačích Azure nakonfigurujte [Nástroj pro vyrovnávání zatížení](availability-group-vnn-azure-load-balancer-configure.md) , který bude směrovat provoz do naslouchacího procesu skupiny dostupnosti, nebo pokud používáte SQL Server 2019 CU8 a novější, můžete nakonfigurovat [naslouchací proces DNN (Distributed Network Name)](availability-group-distributed-network-name-dnn-listener-configure.md) , který nahradí tradiční NASLOUCHACÍ proces skupiny dostupnosti vnn. 
 
 
-## <a name="manually-in-the-azure-portal"></a>Ručně v Azure Portal
+### <a name="vnn-listener"></a>Naslouchací proces VNN 
 
-Virtuální počítače můžete také vytvořit sami bez šablony. Nejdřív dokončete požadované součásti a pak vytvořte skupinu dostupnosti. Přečtěte si následující témata: 
+Použijte [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) ke směrování provozu z klienta na klasický naslouchací proces názvu virtuální sítě (vnn) skupiny dostupnosti v síti Azure. 
 
-- [Konfigurace požadavků pro skupiny dostupnosti Always On SQL Server v Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md)
+Nástroj pro vyrovnávání zatížení uchovává IP adresy pro naslouchací proces VNN. Pokud máte více než jednu skupinu dostupnosti, každá skupina vyžaduje naslouchací proces VNN. Jeden nástroj pro vyrovnávání zatížení může podporovat více posluchačů.
 
-- [Vytvoření skupiny dostupnosti Always On pro zlepšení dostupnosti a zotavení po havárii](availability-group-manually-configure-tutorial.md)
+Informace o tom, jak začít, najdete v tématu [Konfigurace nástroje pro vyrovnávání zatížení](availability-group-vnn-azure-load-balancer-configure.md). 
+
+### <a name="dnn-listener"></a>Naslouchací proces DNN
+
+SQL Server 2019 CU8 zavádí podporu pro naslouchací proces DNN (Distributed Network Name). Naslouchací proces DNN nahrazuje klasický naslouchací proces skupiny dostupnosti, kdy je potřeba, aby nástroj pro vyrovnávání zatížení Azure nasměroval provoz v síti Azure. 
+
+Naslouchací proces DNN je doporučené řešení připojení HADR v Azure, protože zjednodušuje nasazení, snižuje údržbu a náklady a snižuje dobu převzetí služeb při selhání v případě selhání. 
+
+Použijte naslouchací proces DNN k nahrazení stávajícího naslouchacího procesu VNN, případně ho použijte ve spojení s existujícím naslouchací proces VNN, aby vaše skupina dostupnosti měla dva odlišné body připojení – jeden pomocí názvu naslouchacího procesu VNN (a port, pokud není výchozí), a druhý pomocí názvu a portu naslouchacího procesu DNN. To může být užitečné pro zákazníky, kteří se chtějí vyhnout latenci převzetí služeb při selhání nástroje pro vyrovnávání zatížení, ale pořád využívají SQL Server funkce, které závisejí na naslouchací službě VNN, jako jsou distribuované skupiny dostupnosti, Service Broker nebo FileStream. Další informace najdete v tématu [interoperabilita DNN Listener a funkce SQL Server](availability-group-dnn-interoperability.md) .
+
+Informace o tom, jak začít, najdete v tématu [Konfigurace naslouchacího procesu DNN](availability-group-distributed-network-name-dnn-listener-configure.md).
+
+
+## <a name="deployment"></a>Nasazení 
+
+Existuje několik možností, jak nasadit skupinu dostupnosti, která se SQL Server na virtuálních počítačích Azure. některé s víc než jiným Automation než jiné. 
+
+Následující tabulka poskytuje porovnání dostupných možností: 
+
+| |**[portál Azure](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](availability-group-az-cli-configure.md)**|**[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)**|**[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+|---------|---------|---------|--------- |---------|
+|**Verze SQL Serveru** |2016 + |2016 +|2016 +|2012 +|
+|**Edice SQL Serveru** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
+|**Verze Windows serveru**| 2016 + | 2016 + | 2016 + | Vše| 
+|**Vytvoří cluster za vás.**|Ano|Ano | Ano |Ne|
+|**Vytvoří skupinu dostupnosti pro vás.** |Ano |Ne|Ne|Ne|
+|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |Ne|Ne|Ne|Ano|
+|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|Ne|Ne|Ne|Ano|
+|**Konfigurace kvora služby WSFC**n|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
+|**DR s více oblastmi** |Ne|Ne|Ne|Ano|
+|**Podpora více podsítí** |Ano|Ano|Ano|Ano|
+|**Podpora pro existující službu AD**|Ano|Ano|Ano|Ano|
+|**DR s více zónami ve stejné oblasti**|Ano|Ano|Ano|Ano|
+|**Distributed AG bez AD**|Ne|Ne|Ne|Ano|
+|**Distribuovaný AG bez clusteru** |Ne|Ne|Ne|Ano|
+||||||
+
+
+
+## <a name="considerations"></a>Požadavky 
+
+Na hostovaném clusteru s podporou převzetí služeb při selhání ve virtuálním počítači Azure IaaS doporučujeme použít jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
 
 ## <a name="next-steps"></a>Další kroky
 
-[Konfigurace skupiny dostupnosti Always On SQL Server v Azure Virtual Machines v různých oblastech](availability-group-manually-configure-multiple-regions.md)
+Projděte si [osvědčené postupy hadr](hadr-cluster-best-practices.md) a pak začněte s nasazením skupiny dostupnosti pomocí [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](availability-group-az-cli-configure.md), [šablon rychlý Start](availability-group-quickstart-template-configure.md) nebo [ručně](availability-group-manually-configure-prerequisites-tutorial.md).
+
+Případně můžete nasadit [skupinu dostupnosti bez clusteru](availability-group-clusterless-workgroup-configure.md) nebo skupinu dostupnosti ve [více oblastech](availability-group-manually-configure-multiple-regions.md). 
