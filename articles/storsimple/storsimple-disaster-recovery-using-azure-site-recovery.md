@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a5f92e0092d3e20db25b519fec46e6018dd543
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514911"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168014"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované řešení zotavení po havárii s využitím Azure Site Recovery pro sdílené složky hostované v StorSimple
 
@@ -37,7 +37,7 @@ Tento dokument podrobně vysvětluje, jak můžete vytvořit řešení pro zotav
 ## <a name="supported-azure-site-recovery-deployment-options"></a>Podporované možnosti nasazení Azure Site Recovery
 Zákazníci mohou nasadit souborové servery jako fyzické servery nebo virtuální počítače běžící na technologii Hyper-V nebo VMware a pak vytvořit sdílené složky ze svazků Carved z úložiště StorSimple. Azure Site Recovery může chránit fyzické i virtuální nasazení buď na sekundární lokalitu, nebo na Azure. Tento dokument obsahuje podrobné informace o řešení zotavení po havárii s Azure jako lokalitu pro obnovení pro virtuální počítač souborového serveru hostovaný na Hyper-V a s sdílenými složkami v StorSimple Storage. Další scénáře, ve kterých je virtuální počítač souborového serveru na VIRTUÁLNÍm počítači VMware nebo fyzický počítač, se dají implementovat podobně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Implementace řešení pro zotavení po havárii typu jedním kliknutím, který používá Azure Site Recovery pro sdílené složky hostované v úložišti StorSimple, má následující požadavky:
 
    - Místní virtuální počítač souborového serveru Windows Server 2012 R2 hostovaný na Hyper-V nebo VMware nebo na fyzickém počítači
@@ -294,7 +294,7 @@ V doprovodné příručce k [řešení Active Directory Dr](../site-recovery/sit
 1. V Azure Portal vyberte možnost plány obnovení trezoru **služby Recovery Services** &gt; **(Site Recovery)** &gt; **recoveryplan_name** vytvořené pro virtuální počítač souborového serveru.
 1. V okně plán **obnovení klikněte na** &gt; **plánované převzetí služeb při selhání**.  
 
-   ![Plán obnovení](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
+   ![Snímek obrazovky, který zvýrazní plánované možnosti převzetí služeb při selhání](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. V okně **potvrdit plánované převzetí služeb při selhání** zvolte zdrojové a cílové umístění a vyberte cílovou síť a kliknutím na ikonu zaškrtnutí ✓ spusťte proces převzetí služeb při selhání.
 1. Po vytvoření virtuálních počítačů repliky jsou ve stavu čekání na potvrzení. Kliknutím na **Potvrdit** potvrďte převzetí služeb při selhání.
 1. Po dokončení replikace se virtuální počítače spustí v sekundárním umístění.

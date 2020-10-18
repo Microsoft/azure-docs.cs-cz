@@ -4,15 +4,15 @@ description: Sada nabídek komerčních aplikací od Microsoftu bude přispívat
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 07/21/2020
-ms.openlocfilehash: 8a8b64bc0ed2702066a1ba280f1b40aabbcdb11b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/15/2020
+ms.openlocfilehash: e5f1a70182d4b31a1bcd0a811be32bdfc55129d9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87097057"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168428"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Zvýhodnění závazku využití Azure
 
@@ -27,3 +27,33 @@ Pokud chcete tuto výhodu využít, stačí si koupit opravňující nabídku na
 
 > [!IMPORTANT]
 > Vyloučení se můžou vztahovat na smlouvy CtC podepsané před touto výhodou Marketplace. Pokud máte otázky týkající se nároků, obraťte se na pracovníky účet Microsoft.
+
+## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>Určení, jestli má vaše organizace závazek na využití Azure (MACC/CtC)
+
+Pokud si nejste jistí, jestli má vaše organizace opravňující smlouvu, přihlaste se k prostředí Marketplace v rámci [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) v rámci tenanta přidruženého k vaší organizaci. Pokud se vám v rámci cenového filtru zobrazí možnost **zvýhodněné výhody Azure** , máte opravňující závazek na využití Azure. Opravňující nákupy Azure Marketplace přispívat k závazku na používání Azure ve vaší organizaci, pokud se kupují přímo prostřednictvím Azure Marketplace.
+
+[![Možnost nabídky s nárokem na zvýhodnění Azure](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
+
+## <a name="determine-which-offers-are-eligible-for-azure-consumption-commitments-maccctc"></a>Určení nabídek, které jsou způsobilé pro závazky využití Azure (MACC/CtC)
+
+1. Přihlaste se k prostředí Marketplace v rámci [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) v rámci tenanta přidruženého k vaší organizaci.
+2. Použijte filtr **nároků na zvýhodněné výhody Azure** (obrázek výše) a zjistěte nabídky, které mají nárok na přispívání k závazku na používání Azure vaší organizace.
+
+   > [!NOTE]
+   > Pokud tento filtr nemáte, vaše organizace nemá opravňující závazek. Pokud se domníváte, že se jedná o nesprávnou hodnotu, obraťte se na pracovníky účet Microsoft
+ 
+3. Nabídky budou označeny s **nárokem na zvýhodnění Azure s nárokem** na další indikaci, že náklady na software/IP spojené s touto nabídkou budou přispívat k závazku na používání Azure ve vaší organizaci nad všemi službami Azure, které se fakturují do vaší organizace.
+
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Nárok na zvýhodněné výhody Azure":::
+
+   > [!NOTE]
+   > Microsoft Azure služby, které se fakturují do vaší organizace prostřednictvím nasazení Azure Marketplace, budou podstatně přispívat k závazku vaší organizace. Přidané výhody pro nabídky s nárokem na zvýhodnění výhod Azure je to, že náklady na software/IP předané od dodavatele třetí strany budou také přispívat k 100% vaší Azure Marketplace faktury.
+
+4. Zakupte nebo vytvořte nabídku přímo prostřednictvím Azure Marketplace. Microsoft bude přispívat 100% opravňující nabídky k závazku na používání Azure v každé fakturační lhůtě, včetně nákladů na software/IP.
+
+> [!IMPORTANT]
+> Nabídky se musí koupit přímo prostřednictvím Azure Marketplace s registrací, která souvisí s závazkem na používání Azure vaší organizace za nákup, který přispívá k vašemu závazku. Nabídky zakoupené prostřednictvím poskytovatele Cloud Solution Provider (CSP), jakýkoli jiný kanál prodejce nebo mimo web Marketplace nepřispívají k vašemu závazku.
+
+## <a name="next-steps"></a>Další kroky
+
+- Další informace o tom, jak může vaše organizace využívat Azure Marketplace, najdete v našem Microsoft Learn modulu: [zjednodušení cloudového nákupu a zásad správného řízení pomocí Azure Marketplace](https://aka.ms/cm.marketplaceprocurement).

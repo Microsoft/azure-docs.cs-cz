@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce5882f2621dc5b8c48bcf5be6d4ea3a2f723bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962957"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168218"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service
 
@@ -36,7 +36,7 @@ Pokud chcete do aplikace přidat pravidlo omezení přístupu, otevřete pomocí
 
 V uživatelském rozhraní omezení přístupu si můžete prohlédnout seznam pravidel omezení přístupu definovaných pro vaši aplikaci.
 
-![Vypsat omezení přístupu](media/app-service-ip-restrictions/access-restrictions-browse.png)
+![Snímek obrazovky s omezením přístupu v Azure Portal zobrazuje seznam pravidel omezení přístupu definovaných pro vybranou aplikaci.](media/app-service-ip-restrictions/access-restrictions-browse.png)
 
 V seznamu se zobrazí všechna aktuální omezení, která jsou ve vaší aplikaci. Pokud máte v aplikaci omezení virtuální sítě, tabulka zobrazí, jestli jsou pro Microsoft. Web povolené koncové body služby. Pokud vaše aplikace nemá žádná definovaná omezení, bude vaše aplikace přístupná odkudkoli.  
 
@@ -68,11 +68,11 @@ Pomocí koncových bodů služby můžete nakonfigurovat aplikaci pomocí aplika
 
 Můžete kliknout na libovolný řádek a upravit existující pravidlo omezení přístupu. Úpravy jsou okamžitě platné, včetně změn v pořadí podle priority.
 
-![Upravit pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
+![Snímek obrazovky dialogového okna Upravit omezení IP adres v Azure Portal zobrazující pole pro existující pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-ip-edit.png)
 
 Když upravujete pravidlo, nemůžete změnit typ pravidla IP adresy a pravidla Virtual Network. 
 
-![Upravit pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
+![Snímek obrazovky dialogového okna Upravit omezení IP adres v Azure Portal zobrazující nastavení pravidla Virtual Network](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
 Pokud chcete pravidlo odstranit, klikněte na **...** v pravidle a pak klikněte na **Odebrat**.
 
@@ -90,7 +90,7 @@ V případě scénáře, kdy uživatelé chtějí explicitně blokovat jednu IP 
 
 Kromě toho, že je možné řídit přístup k vaší aplikaci, můžete také omezit přístup k webu SCM, který používá vaše aplikace. Web SCM je koncovým bodem nasazení webu a také konzolou Kudu. Můžete samostatně přiřadit omezení přístupu k webu SCM z aplikace nebo použít stejnou sadu pro aplikaci i web SCM. Když zaškrtnete políčko, aby měla stejná omezení jako vaše aplikace, vše je prázdné. Pokud zrušíte jeho zrušení, budou použita všechna nastavení, která jste předtím použili na webu SCM. 
 
-![Vypsat omezení přístupu](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
+![Snímek obrazovky s omezením přístupu v Azure Portal ukazuje, že pro web SCM nebo aplikaci nejsou nastavená žádná omezení přístupu.](media/app-service-ip-restrictions/access-restrictions-scm-browse.png)
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programová manipulace s pravidly omezení přístupu ##
 

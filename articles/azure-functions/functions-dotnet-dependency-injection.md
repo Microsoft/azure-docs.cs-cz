@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715936"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167691"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -22,7 +22,7 @@ Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což j
 
 - Podpora vkládání závislostí začíná Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 
@@ -131,8 +131,8 @@ Pokud potřebujete vlastního poskytovatele protokolování, zaregistrujte vlast
 Application Insights automaticky přidá Azure Functions.
 
 > [!WARNING]
-> - Nepřidávat `AddApplicationInsightsTelemetry()` do kolekce služeb při registraci služeb, které jsou v konfliktu se službami poskytovanými prostředím.
-> - Neregistrujte si vlastní `TelemetryConfiguration` , nebo `TelemetryClient` Pokud používáte integrovanou funkci Application Insights. Pokud potřebujete nakonfigurovat vlastní `TelemetryClient` instanci, vytvořte ji pomocí vloženého, `TelemetryConfiguration` jak je znázorněno v [Azure Functions monitorování](./functions-monitoring.md#version-2x-and-later-2).
+> - Nepřidávat `AddApplicationInsightsTelemetry()` do kolekce služeb, které registrují služby, které jsou v konfliktu se službami poskytovanými prostředím.
+> - Neregistrujte svoji vlastní `TelemetryConfiguration` nebo `TelemetryClient` Pokud používáte integrovanou funkci Application Insights. Pokud potřebujete nakonfigurovat vlastní `TelemetryClient` instanci, vytvořte ji pomocí vloženého kódu, jak je `TelemetryConfiguration` znázorněno v části [vlastní telemetrie protokolu ve funkcích jazyka C#](functions-dotnet-class-library.md?tabs=v2%2Ccmd#log-custom-telemetry-in-c-functions).
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger <T> a ILoggerFactory
 
@@ -186,7 +186,7 @@ Následující příklad `host.json` souboru Přidá filtr protokolu.
 
 Hostitel funkce registruje mnoho služeb. V rámci vaší aplikace je možné v aplikaci provést zabezpečení těchto služeb:
 
-|Typ služby|Doba platnosti|Description|
+|Typ služby|Doba platnosti|Popis|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Konfigurace modulu runtime|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Zodpovídá za poskytnutí ID instance hostitele.|
@@ -287,7 +287,7 @@ namespace MyNamespace
 }
 ```
 
-Přidejte poskytovatele konfigurace do `ConfigurationBuilder` vlastnosti `IFunctionsConfigurationBuilder` . Další informace o použití zprostředkovatelů konfigurace najdete [v tématu Konfigurace v ASP.NET Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers).
+Přidejte poskytovatele konfigurace do `ConfigurationBuilder` vlastnosti `IFunctionsConfigurationBuilder` . Další informace o použití zprostředkovatelů konfigurace najdete [v tématu Konfigurace v ASP.NET Core](/aspnet/core/fundamentals/configuration/#configuration-providers).
 
 `FunctionsHostBuilderContext`Je získán z `IFunctionsConfigurationBuilder.GetContext()` . Pomocí tohoto kontextu načtěte aktuální název prostředí a vyřešte umístění konfiguračních souborů ve složce Function App.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 423fdcdf48d90b4c428497f22cb6924900de8931
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f22473d4a865e2925ecbfe74d68811c12f7c26d7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107517"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168082"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Základní hodnoty zabezpečení Azure pro Azure Functions
 
@@ -315,7 +315,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 - [Postup povolení nastavení diagnostiky pro Azure Functions](./functions-monitor-log-analytics.md)
 
-- [Postup povolení Application Insights pro Azure Functions](./functions-monitoring.md#enable-application-insights-integration)
+- [Postup povolení Application Insights pro Azure Functions](./configure-monitoring.md#enable-application-insights-integration)
 
 - [Vytvoření upozornění v rámci Azure](../azure-monitor/learn/tutorial-response.md)
 
@@ -369,7 +369,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 **Pokyny**: přístup roviny ovládacího prvku k Azure Functions je řízen prostřednictvím Azure Active Directory (AD). Azure AD nemá koncept výchozích hesel.
 
-Přístup k rovině dat je možné ovládat několika způsoby, včetně autorizačních klíčů, omezení sítě a ověření identity AAD. Autorizační klíče používají klienti, kteří se připojují k Azure Functions koncovým bodům HTTP a dají se kdykoli znovu vygenerovat. Tyto klíče se ve výchozím nastavení generují pro nové koncové body HTTP.
+Přístup k rovině dat je možné ovládat několika způsoby, včetně autorizačních klíčů, omezení sítě a ověření identity Azure AD. Autorizační klíče používají klienti, kteří se připojují k Azure Functions koncovým bodům HTTP a dají se kdykoli znovu vygenerovat. Tyto klíče se ve výchozím nastavení generují pro nové koncové body HTTP.
 
 Pro aplikace Function App je k dispozici více metod nasazení. některé z nich mohou využívat sadu generovaných přihlašovacích údajů. Zkontrolujte metody nasazení, které budou použity pro vaši aplikaci.
 
@@ -463,7 +463,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 - [Jak nakonfigurovat aplikaci Azure Functions, aby používala přihlášení k Azure AD](../app-service/configure-authentication-provider-aad.md)
 
-- [Postup vytvoření a konfigurace instance AAD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Monitorování Azure Security Center**: Ano
 

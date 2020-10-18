@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 6a5df4f6a20a9f7061f56dac507a474f7bda6100
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992878"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168269"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Použití analýzy změn aplikace (Preview) v Azure Monitor
 
@@ -187,7 +187,9 @@ Pokud při prvním zobrazení historie změn po integraci s analýzou změn apli
 - **Trvá to déle, než se čekalo**. Tato zpráva znamená, že registrace trvá déle než 2 minuty. To je neobvyklé, ale nemusí nutně znamenat, že se něco pokazilo. Můžete přejít k **předplatným | Poskytovatel prostředků** pro kontrolu stavu registrace poskytovatele prostředků **Microsoft. ChangeAnalysis** . Můžete zkusit použít uživatelské rozhraní pro zrušení registrace, opětovného registraci nebo obnovení, abyste viděli, jestli vám to pomůže. Pokud se problém opakuje, obraťte se changeanalysishelp@microsoft.com na podporu.
     ![Řešení potíží s registrací RP trvá příliš dlouho](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
 
+![Snímek obrazovky nástroje pro diagnostiku a řešení problémů pro virtuální počítač s vybranými nástroji pro řešení potíží](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
+![Snímek obrazovky dlaždice pro nástroj pro řešení potíží s nedávnými změnami pro virtuální počítač](./media/change-analysis/analyze-recent-changes.png)
 
 ## <a name="next-steps"></a>Další kroky
 

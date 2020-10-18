@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 612bd019dc7a4bdf481fde4511084245fabd1620
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1319b1b7a53303bad78c0b8e6701676755aa1484
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319958"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167844"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure v Red Hat Enterprise Linux pro Průvodce pro aplikace SAP s více SID
 
@@ -161,6 +161,9 @@ Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatíže
 * Konfigurace back-endu
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
 
+> [!IMPORTANT]
+> Plovoucí IP adresa není ve scénářích Vyrovnávání zatížení podporována u sekundární konfigurace IP adresy NIC. Podrobnosti najdete v tématu [omezení nástroje pro vyrovnávání zatížení Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Pokud pro virtuální počítač potřebujete další IP adresu, nasaďte druhou síťovou kartu.  
+
 > [!Note]
 > Pokud se virtuální počítače bez veřejných IP adres nacházejí v back-end fondu interní služby pro vyrovnávání zatížení (bez veřejné IP adresy), nebude žádné odchozí připojení k Internetu, pokud se neprovede další konfigurace, která umožní směrování na veřejné koncové body. Podrobnosti o tom, jak dosáhnout odchozího připojení, najdete v tématu [připojení k veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)  
 
@@ -191,7 +194,7 @@ V tomto příkladu předpokládáme, že systém **NW1** už je v clusteru nasaz
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-### <a name="prerequisites"></a>Požadavky 
+### <a name="prerequisites"></a>Předpoklady 
 
 > [!IMPORTANT]
 > Než budete postupovat podle pokynů k nasazení dalších systémů SAP v clusteru, postupujte podle pokynů pro nasazení prvního systému SAP v clusteru, protože existují kroky, které jsou nezbytné pouze při prvním nasazení systému.  

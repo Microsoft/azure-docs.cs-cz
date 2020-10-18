@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
-ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b73fa9702a95897afbca53e2de70dcabc04a4665
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77658502"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168501"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Referenční příručka pro zobrazení dlaždic návrháře v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek představuje referenční příručku k nastavením pro dlaždice, které jsou k dispozici ve vlastních zobrazeních.
@@ -104,7 +104,7 @@ Na dlaždici **prstenec** se zobrazí jedno číslo, které shrnuje sloupec hodn
 ## <a name="line-chart-tile"></a>Dlaždice spojnicového grafu
 Tato dlaždice je spojnicový graf, který v průběhu času zobrazuje více řad z dotazu protokolu. 
 
-![Dlaždice spojnicový graf a popisek](media/view-designer-tiles/tile-line-chart.png)
+![Snímek obrazovky dlaždice spojnicového grafu v Návrháři zobrazení Azure Monitor.](media/view-designer-tiles/tile-line-chart.png)
 
 | Nastavení | Popis |
 |:--- |:--- |
@@ -125,7 +125,7 @@ Tato dlaždice je spojnicový graf, který v průběhu času zobrazuje více řa
 ## <a name="line-chart-and-callout-tile"></a>Dlaždice spojnicový graf a popisek
 Tato dlaždice má spojnicový graf, který zobrazuje více řad z dotazu protokolu v průběhu času a popisek s souhrnnou hodnotou. 
 
-![Dlaždice spojnicový graf a popisek](media/view-designer-tiles/tile-line-chart-callout.png)
+![Snímek obrazovky dlaždice spojnicového grafu a popisku v Návrháři zobrazení Azure Monitor. popisek rozšiřuje spojnicový graf zobrazením shrnuté hodnoty.](media/view-designer-tiles/tile-line-chart-callout.png)
 
 | Nastavení | Popis |
 |:--- |:--- |

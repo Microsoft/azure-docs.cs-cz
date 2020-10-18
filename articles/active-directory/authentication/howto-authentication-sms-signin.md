@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 10/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 849057ab1ccde2e0771f0c1cd52ea399ffe4cea7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cdc0dea825cb32275a2ada3a49d7d622180aa468
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964685"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166623"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Konfigurace a povolení ověřování na základě serveru SMS pomocí Azure Active Directory (Preview)
 
@@ -96,13 +96,17 @@ Pokud je telefonní číslo nastavené na znaménko SMS, je k dispozici také pr
 1. Vyhledejte a vyberte **Azure Active Directory**.
 1. V navigační nabídce na levé straně okna Azure Active Directory vyberte **Uživatelé**.
 1. V předchozí části vyberte uživatele, kterého jste povolili pro ověřování pomocí serveru SMS, jako je například *uživatel společnosti Contoso*, a pak vyberte **metody ověřování**.
-1. Zadejte telefonní číslo uživatele, včetně kódu země, například *+ 1 XXXXXXXXX*. Azure Portal ověří, jestli je telefonní číslo ve správném formátu.
+1. Vyberte **+ Přidat metodu ověřování**a pak v rozevírací nabídce *zvolit metodu* zvolte **telefonní číslo**.
 
-    ![Nastavení telefonního čísla pro uživatele v Azure Portal pro použití s ověřováním pomocí serveru SMS](./media/howto-authentication-sms-signin/set-user-phone-number.png)
+    Zadejte telefonní číslo uživatele, včetně kódu země, například *+ 1 XXXXXXXXX*. Azure Portal ověří, jestli je telefonní číslo ve správném formátu.
+
+    Pak z rozevírací nabídky *typ telefonu* vyberte *mobilní zařízení*, *alternativní mobilní zařízení*nebo *jiné* podle potřeby.
+
+    :::image type="content" source="media/howto-authentication-sms-signin/set-user-phone-number.png" alt-text="Nastavení telefonního čísla pro uživatele v Azure Portal pro použití s ověřováním pomocí serveru SMS":::
 
     Telefonní číslo musí být ve vašem tenantovi jedinečné. Pokud se pokusíte použít stejné telefonní číslo pro více uživatelů, zobrazí se chybová zpráva.
 
-1. Chcete-li použít telefonní číslo na účet uživatele, vyberte možnost **Uložit**.
+1. Chcete-li použít telefonní číslo na účet uživatele, vyberte možnost **Přidat**.
 
 Po úspěšném zřízení se u *přihlašovacích práv SMS*zobrazí zaškrtnutí.
 

@@ -2,26 +2,24 @@
 title: Nastavení vývojového prostředí v macOS
 description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení tohoto nastavení budete připraveni k sestavování aplikací v macOS.
 ms.topic: conceptual
-ms.date: 11/17/2017
+ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0d5a31f22fb0472882e3854488fbd1c3249879d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adec05a4d8e34374fe260343c73b1ecd14ba04f1
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539856"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168167"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started.md)
 > * [Linux](service-fabric-get-started-linux.md)
-> * [OSX](service-fabric-get-started-mac.md)
->
->  
+> * [Mac OS X](service-fabric-get-started-mac.md)
 
 Pomocí Mac OS X můžete sestavit aplikace Azure Service Fabric, které poběží na clusterech s Linuxem. Tento dokument popisuje nastavení počítače Mac pro vývoj.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Azure Service Fabric nefunguje v Mac OS X nativně. Pro spuštění místního clusteru Service Fabric se poskytuje předkonfigurovaná image kontejneru Dockeru. Než začnete, budete potřebovat:
 
 * Minimálně 4 GB RAM
@@ -53,31 +51,41 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >[!TIP]
     >Při testování rozsáhlých aplikací doporučujeme zvýšit množství prostředků přidělených Dockeru. Můžete to provést tak, že vyberete **ikonu Dockeru**, pak vyberete **Upřesnit** a upravíte počet jader a velikost paměti.
 
-2. V novém adresáři vytvořte soubor `Dockerfile` pro sestavení vaší image Service Fabric:
-
-    ```Dockerfile
-    FROM mcr.microsoft.com/service-fabric/onebox:latest
-    WORKDIR /home/ClusterDeployer
-    RUN ./setup.sh
-    #Generate the local
-    RUN locale-gen en_US.UTF-8
-    #Set environment variables
-    ENV LANG=en_US.UTF-8
-    ENV LANGUAGE=en_US:en
-    ENV LC_ALL=en_US.UTF-8
-    EXPOSE 19080 19000 80 443
-    #Start SSH before running the cluster
-    CMD /etc/init.d/ssh start && ./run.sh
+2. Spusťte cluster.<br/>
+    <b>Ubuntu 18,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
+    <b>Ubuntu 16,04 LTS:</b>
+    ```bash
+    docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
+    ```
+
+    >[!TIP]
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hubu](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
+
+
+
+3. Volitelné: Sestavte obrázek rozšířené Service Fabric.
+
+    V novém adresáři vytvořte soubor `Dockerfile` s názvem pro sestavení vlastní image:
+
     >[!NOTE]
-    >Úpravou tohoto souboru můžete do kontejneru přidat další programy nebo závislosti.
+    >Obrázek uvedený výše můžete upravit pomocí souboru Dockerfile a přidat do svého kontejneru další programy nebo závislosti.
     >Například přidáním `RUN apt-get install nodejs -y` se povolí podpora aplikací `nodejs` jako spustitelných souborů typu Host.
+    ```Dockerfile
+    FROM mcr.microsoft.com/service-fabric/onebox:u18
+    RUN apt-get install nodejs -y
+    EXPOSE 19080 19000 80 443
+    WORKDIR /home/ClusterDeployer
+    CMD ["./ClusterDeployer.sh"]
+    ```
     
     >[!TIP]
-    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) .
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hubu](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
 
-3. Pokud ze souboru `Dockerfile` chcete sestavit opakovatelně použitelnou image, otevřete terminál, pomocí příkazu `cd` přejděte přímo do adresáře s vaším souborem `Dockerfile` a pak spusťte:
+    Pokud chcete vytvořit opakovaně použitelnou image z `Dockerfile` , otevřete terminál a přímo si `cd` podržíte své `Dockerfile` spuštění:
 
     ```bash 
     docker build -t mysfcluster .
@@ -86,7 +94,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >[!NOTE]
     >Tato operace nějakou dobu trvá, ale stačí ji provést jenom jednou.
 
-4. Teď můžete rychle spustit místní kopii Service Fabric, kdykoli budete potřebovat, spuštěním:
+    Teď můžete rychle začít místní kopii Service Fabric, kdykoli ji budete potřebovat, a to spuštěním:
 
     ```bash 
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
@@ -97,18 +105,17 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >
     >Pokud vaše aplikace naslouchá na konkrétních portech, musí se zadat pomocí dalších značek `-p`. Pokud například aplikace naslouchá na portu 8080, přidejte následující značku `-p`:
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
+    >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-5. Spuštění clusteru bude chvíli trvat. Když je spuštěný, můžete zobrazit protokoly pomocí následujícího příkazu nebo přejít na řídicí panel a zobrazit stav clusterů `http://localhost:19080` :
+4. Spuštění clusteru bude chvíli trvat. Když je spuštěný, můžete zobrazit protokoly pomocí následujícího příkazu nebo přejít na řídicí panel a zobrazit stav clusterů: `http://localhost:19080`
 
     ```bash 
     docker logs sftestcluster
     ```
 
 
-
-6. Chcete-li zastavit a vyčistit kontejner, použijte následující příkaz. Tento kontejner ale použijeme v dalším kroku.
+5. Chcete-li zastavit a vyčistit kontejner, použijte následující příkaz. Tento kontejner ale použijeme v dalším kroku.
 
     ```bash 
     docker rm -f sftestcluster
@@ -118,7 +125,8 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
  
  Následující seznam uvádí známá omezení pro místní cluster spuštěný v kontejneru pro Mac: 
  
- * Služba DNS neběží a není podporovaná [Problém č. 132](https://github.com/Microsoft/service-fabric/issues/132)
+ * Služba DNS není spuštěna a v rámci kontejneru není aktuálně podporována. [Problém #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * Spouštění aplikací založených na kontejnerech vyžaduje spuštění SF na hostiteli se systémem Linux. Vnořené aplikace kontejneru se v tuto chvíli nepodporují.
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Nastavení Service Fabric CLI (sfctl) na počítači Mac
 
@@ -185,9 +193,9 @@ Po vytvoření a sestavení aplikace Service Fabric ji můžete nasadit pomocí 
     bash install.sh
     ```
 
-## <a name="set-up-net-core-20-development"></a>Nastavení pro vývoj v .NET Core 2.0
+## <a name="set-up-net-core-31-development"></a>Nastavení vývoje .NET Core 3,1
 
-Pokud chcete začít [vytvářet aplikace Service Fabric v jazyce C#](service-fabric-create-your-first-linux-application-with-csharp.md), nainstalujte sadu [.NET Core 2.0 SDK pro Mac](https://www.microsoft.com/net/core#macos). Balíčky pro aplikace Service Fabric v .NET Core 2.0 jsou hostované na NuGet.org, který je aktuálně ve verzi Preview.
+Pokud chcete začít [vytvářet aplikace Service Fabric C#](service-fabric-create-your-first-linux-application-with-csharp.md), nainstalujte [sadu .NET Core 3,1 SDK pro Mac](https://www.microsoft.com/net/core#macos) . Balíčky pro aplikace .NET Core Service Fabric se hostují na NuGet.org.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Instalace modulu plug-in Service Fabric pro Eclipse na počítači Mac
 

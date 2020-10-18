@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86131662"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167810"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Řešení potíží: Nepodařilo se odstranit virtuální síť v Azure.
 
@@ -48,7 +48,7 @@ V případě klasických virtuálních sítí přejdete na Azure Portal na strá
 
 Pro virtuální sítě navštivte stránku **Přehled** virtuální sítě. Ověřte **připojená zařízení** pro bránu virtuální sítě.
 
-![Zkontrolování připojeného zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
+![Snímek obrazovky se seznamem připojených zařízení pro virtuální síť v Azure Portal. Brána virtuální sítě je v seznamu zvýrazněná.](media/virtual-network-troubleshoot-cannot-delete-vnet/vnet-gateway.png)
 
 Předtím, než budete moci bránu odebrat, odeberte nejprve všechny objekty **připojení** v bráně. 
 
@@ -56,7 +56,7 @@ Předtím, než budete moci bránu odebrat, odeberte nejprve všechny objekty **
 
 Přejít na stránku **Přehled** virtuální sítě. Ověřte **připojená zařízení** pro aplikační bránu.
 
-![Zkontrolování připojeného zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![Snímek obrazovky se seznamem připojených zařízení pro virtuální síť v Azure Portal. Application Gateway je v seznamu zvýrazněná.](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 Pokud je k dispozici brána Application Gateway, je nutné ji odebrat předtím, než budete moci odstranit virtuální síť.
 
@@ -64,7 +64,7 @@ Pokud je k dispozici brána Application Gateway, je nutné ji odebrat předtím,
 
 Pokud je služba Doména služby Active Directory povolená a připojená k virtuální síti, nemůžete tuto virtuální síť odstranit. 
 
-![Zkontrolování připojeného zařízení](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
+![Obrazovka obrazovky Azure AD Domain Services v Azure Portal Je zvýrazněno pole k dispozici v Virtual Network/podsíti.](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
 Pokud chcete službu zakázat, přečtěte si téma [zakázání Azure Active Directory Domain Services pomocí Azure Portal](../active-directory-domain-services/delete-aadds.md).
 

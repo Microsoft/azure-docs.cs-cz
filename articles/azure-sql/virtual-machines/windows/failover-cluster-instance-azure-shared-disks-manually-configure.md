@@ -1,5 +1,5 @@
 ---
-title: Vytvoření FCI pomocí sdílených disků Azure (Preview)
+title: Vytvoření FCI se sdílenými disky Azure
 description: Pomocí sdílených disků Azure vytvořte instanci clusteru s podporou převzetí služeb při selhání (FCI) s SQL Server v Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6e32f183709aca8a78f8448f2d6e6b63a77f2133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272646"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168235"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,14 +28,14 @@ Tento článek vysvětluje, jak vytvořit instanci clusteru s podporou převzet�
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
 - Předplatné Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
 - [Dva nebo více virtuálních počítačů se systémem Windows Azure](failover-cluster-instance-prepare-vm.md). Podporují se skupiny [dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md) a [skupiny umístění pro Proximity](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs). Pokud použijete PPG, musí všechny uzly existovat ve stejné skupině.
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
-- Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps?view=azps-4.2.0). 
+- Nejnovější verze [prostředí PowerShell](/powershell/azure/install-az-ps). 
 
 
 ## <a name="add-azure-shared-disk"></a>Přidat sdílený disk Azure
@@ -213,7 +213,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>Konfigurace možností připojení 
 
-Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, nakonfigurujte možnost připojení, která je vhodná pro vaše prostředí. Můžete vytvořit [Nástroj pro vyrovnávání zatížení Azure](hadr-vnn-azure-load-balancer-configure.md) , nebo pokud používáte SQL Server 2019 CU2 + a Windows Server 2016 (nebo novější), můžete místo toho zobrazit náhled funkce [názvu distribuované sítě](hadr-distributed-network-name-dnn-configure.md) . 
+Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, nakonfigurujte možnost připojení, která je vhodná pro vaše prostředí. Můžete vytvořit [Nástroj pro vyrovnávání zatížení Azure](failover-cluster-instance-vnn-azure-load-balancer-configure.md) , nebo pokud používáte SQL Server 2019 CU2 (nebo novější) a Windows Server 2016 (nebo novější), můžete místo toho použít funkci [názvu distribuované sítě](failover-cluster-instance-distributed-network-name-dnn-configure.md) . 
 
 ## <a name="limitations"></a>Omezení
 
@@ -221,12 +221,13 @@ Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, na
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste to ještě neudělali, nakonfigurujte připojení k vašemu FCI pomocí [názvu virtuální sítě a nástroje pro vyrovnávání zatížení Azure](hadr-vnn-azure-load-balancer-configure.md) nebo [názvu DISTRIBUOVANÉ sítě (DNN)](hadr-distributed-network-name-dnn-configure.md). 
+Pokud jste to ještě neudělali, nakonfigurujte připojení k vašemu FCI pomocí [názvu virtuální sítě a nástroje pro vyrovnávání zatížení Azure](failover-cluster-instance-vnn-azure-load-balancer-configure.md) nebo [názvu DISTRIBUOVANÉ sítě (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
+
 
 Pokud se pro vás nejedná o vhodné řešení úložiště FCI, doporučujeme místo toho vytvořit FCI pomocí [prémiových sdílených složek](failover-cluster-instance-premium-file-share-manually-configure.md) nebo [prostory úložiště s přímým přístupem](failover-cluster-instance-storage-spaces-direct-manually-configure.md) . 
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech konfigurace clusteru](hadr-cluster-best-practices.md).
 
-Další informace najdete tady: 
+Další informace naleznete v tématech: 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

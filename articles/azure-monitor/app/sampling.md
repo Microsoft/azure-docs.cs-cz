@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 151bc87bd5674a61b8652adfa70634318c405240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4c5000adb2339d3fd0f828781a60f75c75894b5
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839601"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168592"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -33,12 +33,12 @@ Následující tabulka shrnuje typy vzorkování dostupné pro každou sadu SDK 
 | Sada Application Insights SDK | Adaptivní vzorkování se podporuje. | Vzorkování s pevnou sazbou je podporováno. | Podporuje se vzorkování přijímání. |
 |-|-|-|-|
 | ASP.NET | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Jádro ASP.NET | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Azure Functions | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | No | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Java | No | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Node.JS | No | [Ano](./nodejs.md#sampling) | Jenom v případě, že se neplatí žádné jiné vzorkování
-| Python | No | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Všichni ostatní | No | No | [Ano](#ingestion-sampling) |
+| ASP.NET Core | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Azure Functions | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | Ne | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Java | Ne | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Node.JS | Ne | [Ano](./nodejs.md#sampling) | Jenom v případě, že se neplatí žádné jiné vzorkování
+| Python | Ne | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Všichni ostatní | Ne | Ne | [Ano](#ingestion-sampling) |
 
 > [!NOTE]
 > Informace na většině této stránky se vztahují na aktuální verze sad Application Insights SDK. Informace o starších verzích sad SDK [najdete v části níže](#older-sdk-versions).
@@ -212,7 +212,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Konfigurace adaptivního vzorkování pro Azure Functions
 
-Podle pokynů na [této stránce](../../azure-functions/functions-monitoring.md#configure-sampling) můžete nakonfigurovat adaptivní vzorkování pro aplikace běžící v Azure Functions.
+Podle pokynů na [této stránce](../../azure-functions/configure-monitoring.md#configure-sampling) můžete nakonfigurovat adaptivní vzorkování pro aplikace běžící v Azure Functions.
 
 ## <a name="fixed-rate-sampling"></a>Vzorkování s pevnou sazbou
 

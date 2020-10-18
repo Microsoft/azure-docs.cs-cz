@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc2eb7ecb7f0587c065aac1cfb57cfae10b732ac
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797934"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168286"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Řešení potíží s FarmBeats
 
@@ -174,7 +174,7 @@ To **znamená**, že k zařízení jsou přidružená jiná zařízení.
 
 Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste to znovu tak, že aktualizujete stránku. Pokud chyba přetrvává, kontaktujte nás s chybovou zprávou/protokoly.
 
-![FarmBeats projektu](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
+![Snímek obrazovky znázorňující chybu autorizace](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
 ### <a name="accelerator-issues"></a>Problémy akcelerátoru  
 
@@ -293,7 +293,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 6. V levém podokně vyberte **kontejnery objektů BLOB**a potom vyberte **protokoly úloh** pro protokoly Azure Data Factory nebo protokoly **appinsights** pro protokoly App Service.
 7. Vyberte **Stáhnout** a stáhnout protokoly do místní složky na vašem počítači.
 
-    ![FarmBeats projektu](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
+    ![Snímek obrazovky zobrazující stažené soubory protokolu](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory nebo protokoly App Service pro akcelerátor
 
@@ -327,26 +327,26 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 > [!NOTE]
 > Pokud chcete zobrazit značky služeb v rámci skupiny prostředků, klikněte na Upravit sloupce a přidejte do zobrazení skupiny prostředků značky.
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
 
 3. Na stránce Přehled objektu pro vytváření dat klikněte na **vytvořit a monitorovat**. V prohlížeči se otevře nová karta. Klikněte na **monitorování** .
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
 
 4. Zobrazí se seznam spuštění kanálu, která jsou součástí provádění úlohy počasí. Klikněte na úlohu, pro kterou chcete shromažďovat protokoly.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
 
 5. Na stránce Přehled kanálu se zobrazí seznam spuštění aktivit. Poznamenejte si ID spuštění aktivit, pro které chcete shromažďovat protokoly.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
 
 6. Vraťte se do skupiny prostředků FarmBeats v Azure Portal a klikněte na účet úložiště s názvem **datahublogs-xxxx** .
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
 
 7. Klikněte na **kontejnery**  ->  **adfjobs**. Do vyhledávacího pole zadejte ID běhu úlohy, které jste si poznamenali v kroku 5 výše.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats projektu":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Snímek obrazovky, který zvýrazní značku SKU: DataHub.":::
 
 8. Výsledek hledání bude obsahovat složku, která obsahuje protokoly týkající se úlohy. Stáhněte si protokoly a odešlete je farmbeatssupport@microsoft.com pro pomoc při ladění problému.

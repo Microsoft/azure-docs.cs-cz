@@ -4,12 +4,12 @@ description: Naučte se vyvíjet a testovat Azure Functions pomocí Azure Functi
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612805"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167793"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -27,7 +27,7 @@ Tento článek poskytuje podrobné informace o tom, jak používat Visual Studio
 
 Pokud není uvedeno jinak, postupy a příklady jsou uvedeny pro Visual Studio 2019. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Functions nástroje. Pokud chcete přidat nástroje Azure Function Tools, zahrňte do instalace sady Visual Studio úlohu **vývoj pro Azure** . Azure Functions nástroje jsou k dispozici v rámci úlohy vývoje Azure počínaje sadou Visual Studio 2017.
 
@@ -229,11 +229,9 @@ Nastavení aplikace můžete spravovat také jedním z těchto způsobů:
 
 ## <a name="monitoring-functions"></a>Funkce monitorování
 
-Doporučeným způsobem, jak monitorovat provádění vašich funkcí, je integrace aplikace Function App s Azure Application Insights. Když vytvoříte aplikaci funkcí v Azure Portal, tato integrace se ve výchozím nastavení provádí. Při vytváření aplikace Function App během publikování sady Visual Studio ale nebude dokončena integrace v aplikaci Function App v Azure.
+Doporučeným způsobem, jak monitorovat provádění vašich funkcí, je integrace aplikace Function App s Azure Application Insights. Když vytvoříte aplikaci funkcí v Azure Portal, tato integrace se ve výchozím nastavení provádí. Při vytváření aplikace Function App během publikování sady Visual Studio ale nebude dokončena integrace v aplikaci Function App v Azure. Informace o tom, jak připojit Application Insights k aplikaci Function App, najdete v tématu [Povolení integrace Application Insights](configure-monitoring.md#enable-application-insights-integration).
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+Další informace o monitorování pomocí Application Insights najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Další kroky
 

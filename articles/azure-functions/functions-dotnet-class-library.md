@@ -4,12 +4,12 @@ description: Naučte se vyvíjet Azure Functions pomocí jazyka C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 23b0961c369c21f50d9a873678a1c910385e6a91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88206197"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167742"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční informace pro vývojáře v jazyce C# Azure Functions
 
@@ -164,18 +164,7 @@ Vygenerovaná *function.jsv* souboru obsahuje `configurationSource` vlastnost, k
 
 Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functions. Cílová architektura je tím, že rozlišuje projekt 1. x z projektu 2. x. Tady jsou relevantní části souborů *. csproj* , které zobrazují různá cílová rozhraní a stejný `Sdk` balíček:
 
-**Functions 1.x**
-
-```xml
-<PropertyGroup>
-  <TargetFramework>net461</TargetFramework>
-</PropertyGroup>
-<ItemGroup>
-  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
-</ItemGroup>
-```
-
-**Functions 2.x**
+# <a name="v2x"></a>[v2. x +](#tab/v2)
 
 ```xml
 <PropertyGroup>
@@ -186,6 +175,19 @@ Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functi
   <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
 </ItemGroup>
 ```
+
+# <a name="v1x"></a>[V1. x](#tab/v1)
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+---
+
 
 Mezi `Sdk` závislostmi balíčku jsou triggery a vazby. Projekt 1. x odkazuje na události triggerů a vazeb 1. x, protože tyto triggery a vazby cílí na .NET Framework, zatímco 2. x Triggers a Bindings Target .NET Core.
 
@@ -259,25 +261,6 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>protokolování
-
-Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme, abyste ho pojmenovat `log` jako v následujícím příkladu:  
-
-```csharp
-public static class SimpleExample
-{
-    [FunctionName("QueueTrigger")]
-    public static void Run(
-        [QueueTrigger("myqueue-items")] string myQueueItem, 
-        ILogger log)
-    {
-        log.LogInformation($"C# function processed: {myQueueItem}");
-    }
-} 
-```
-
-Nepoužívejte `Console.Write` v Azure Functions. Další informace najdete v tématu [zápis protokolů ve funkcích C#](functions-monitoring.md#write-logs-in-c-functions) v článku **monitorování Azure Functions** .
-
 ## <a name="async"></a>Async
 
 Chcete-li provést [asynchronní](/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte `async` klíčové slovo a vraťte `Task` objekt.
@@ -327,6 +310,237 @@ public static class CancellationTokenExample
     }
 }
 ```
+
+## <a name="logging"></a>protokolování
+
+V kódu funkce můžete napsat výstup do protokolů, které se zobrazí jako trasování v Application Insights. Doporučeným způsobem, jak zapisovat do protokolů, je zahrnout parametr typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger), který se obvykle nazývá `log` . Verze 1. x používaného modulu runtime Functions `TraceWriter` , který také zapisuje do Application Insights, ale nepodporuje strukturované protokolování. Nepoužívejte `Console.Write` k zápisu protokolů, protože tato data nejsou zachycena Application Insights. 
+
+### <a name="ilogger"></a>ILogger
+
+Do definice funkce zadejte parametr [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) , který podporuje [strukturované protokolování](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+
+S `ILogger` objektem zavoláte `Log<level>` [metody rozšíření v ILogger](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) k vytváření protokolů. Následující kód zapisuje `Information` protokoly do kategorie `Function.<YOUR_FUNCTION_NAME>.User.` :
+
+```cs
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
+{
+    logger.LogInformation("Request for item with key={itemKey}.", id);
+```
+
+### <a name="structured-logging"></a>Strukturované protokolování
+
+Pořadí zástupných symbolů, nikoli jejich názvů, určuje, které parametry se použijí ve zprávě protokolu. Předpokládejme, že máte následující kód:
+
+```csharp
+string partitionKey = "partitionKey";
+string rowKey = "rowKey";
+logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionKey, rowKey);
+```
+
+Pokud zachováte stejný řetězec zprávy a obrátíte pořadí parametrů, výsledný text zprávy by měl mít hodnoty na nesprávných místech.
+
+Zástupné symboly jsou zpracovávány tímto způsobem, aby bylo možné provádět strukturované protokolování. Application Insights ukládá páry parametr název-hodnota a řetězec zprávy. Výsledkem je, že se argumenty zprávy stanou poli, se kterými se můžete dotazovat.
+
+Pokud vaše volání metody protokolovacího nástroje vypadá jako v předchozím příkladu, můžete zadat dotaz na pole `customDimensions.prop__rowKey` . `prop__`Je přidána předpona, aby se zajistilo, že mezi poli, které modul runtime přidává, nedochází k žádné kolizi, které přidávají kód funkce.
+
+Můžete také zadat dotaz na původní řetězec zprávy odkazem na pole `customDimensions.prop__{OriginalFormat}` .  
+
+Tady je ukázková reprezentace dat ve formátu JSON `customDimensions` :
+
+```json
+{
+  "customDimensions": {
+    "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
+    "Category":"Function",
+    "LogLevel":"Information",
+    "prop__message":"c9519cbf-b1e6-4b9b-bf24-cb7d10b1bb89"
+  }
+}
+```
+
+## <a name="log-custom-telemetry-in-c-functions"></a>Protokolování vlastní telemetrie ve funkcích jazyka C#
+
+Verze Application Insights SDK specifická pro konkrétní funkce, kterou můžete použít k posílání vlastních dat telemetrie z vašich funkcí do Application Insights: [Microsoft. Azure. WebJobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). K instalaci tohoto balíčku použijte následující příkaz z příkazového řádku:
+
+# <a name="command"></a>[Příkaz](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+V tomto příkazu nahraďte `<VERSION>` verzi tohoto balíčku, která podporuje vaši nainstalovanou verzi [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/). 
+
+Následující příklady jazyka C# používají [vlastní rozhraní API telemetrie](../azure-monitor/app/api-custom-events-metrics.md). Příklad je pro knihovnu tříd .NET, ale kód Application Insights je stejný pro skript jazyka C#.
+
+# <a name="v2x"></a>[v2. x +](#tab/v2)
+
+Verze 2. x a novější verze modulu runtime používají v Application Insights novějších funkcí k automatickému korelaci telemetrie s aktuální operací. Nemusíte ručně nastavit operaci `Id` , `ParentId` nebo `Name` pole.
+
+```cs
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public class HttpTrigger2
+    {
+        private readonly TelemetryClient telemetryClient;
+
+        /// Using dependency injection will guarantee that you use the same configuration for telemetry collected automatically and manually.
+        public HttpTrigger2(TelemetryConfiguration telemetryConfiguration)
+        {
+            this.telemetryClient = new TelemetryClient(telemetryConfiguration);
+        }
+
+        [FunctionName("HttpTrigger2")]
+        public Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]
+            HttpRequest req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.Query
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Write an event to the customEvents table.
+            var evt = new EventTelemetry("Function called");
+            evt.Context.User.Id = name;
+            this.telemetryClient.TrackEvent(evt);
+
+            // Generate a custom metric, in this case let's use ContentLength.
+            this.telemetryClient.GetMetric("contentLength").TrackValue(req.ContentLength);
+
+            // Log a custom dependency in the dependencies table.
+            var dependency = new DependencyTelemetry
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
+            dependency.Context.User.Id = name;
+            this.telemetryClient.TrackDependency(dependency);
+
+            return Task.FromResult<IActionResult>(new OkResult());
+        }
+    }
+}
+```
+
+V tomto příkladu se vlastní data metriky agreguje hostitelem před odesláním do tabulky customMetrics. Další informace najdete v dokumentaci [getmetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) v tématu Application Insights. 
+
+Při místním spuštění je nutné přidat `APPINSIGHTS_INSTRUMENTATIONKEY` nastavení s klíčem Application Insights do [local.settings.jsv](functions-run-local.md#local-settings-file) souboru.
+
+
+# <a name="v1x"></a>[V1. x](#tab/v1)
+
+```cs
+using System;
+using System.Net;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.Azure.WebJobs;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+
+namespace functionapp0915
+{
+    public static class HttpTrigger2
+    {
+        private static string key = TelemetryConfiguration.Active.InstrumentationKey = 
+            System.Environment.GetEnvironmentVariable(
+                "APPINSIGHTS_INSTRUMENTATIONKEY", EnvironmentVariableTarget.Process);
+
+        private static TelemetryClient telemetryClient = 
+            new TelemetryClient() { InstrumentationKey = key };
+
+        [FunctionName("HttpTrigger2")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+            HttpRequestMessage req, ExecutionContext context, ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+            DateTime start = DateTime.UtcNow;
+
+            // Parse query parameter
+            string name = req.GetQueryNameValuePairs()
+                .FirstOrDefault(q => string.Compare(q.Key, "name", true) == 0)
+                .Value;
+
+            // Get request body
+            dynamic data = await req.Content.ReadAsAsync<object>();
+
+            // Set name to query string or body data
+            name = name ?? data?.name;
+         
+            // Track an Event
+            var evt = new EventTelemetry("Function called");
+            UpdateTelemetryContext(evt.Context, context, name);
+            telemetryClient.TrackEvent(evt);
+            
+            // Track a Metric
+            var metric = new MetricTelemetry("Test Metric", DateTime.Now.Millisecond);
+            UpdateTelemetryContext(metric.Context, context, name);
+            telemetryClient.TrackMetric(metric);
+            
+            // Track a Dependency
+            var dependency = new DependencyTelemetry
+                {
+                    Name = "GET api/planets/1/",
+                    Target = "swapi.co",
+                    Data = "https://swapi.co/api/planets/1/",
+                    Timestamp = start,
+                    Duration = DateTime.UtcNow - start,
+                    Success = true
+                };
+            UpdateTelemetryContext(dependency.Context, context, name);
+            telemetryClient.TrackDependency(dependency);
+        }
+        
+        // Correlate all telemetry with the current Function invocation
+        private static void UpdateTelemetryContext(TelemetryContext context, ExecutionContext functionContext, string userName)
+        {
+            context.Operation.Id = functionContext.InvocationId.ToString();
+            context.Operation.ParentId = functionContext.InvocationId.ToString();
+            context.Operation.Name = functionContext.FunctionName;
+            context.User.Id = userName;
+        }
+    }    
+}
+```
+---
+
+Nevolejte `TrackRequest` nebo `StartOperation<RequestTelemetry>` , protože se zobrazí duplicitní požadavky na vyvolání funkce.  Modul runtime Functions automaticky sleduje požadavky.
+
+Nenastaveno `telemetryClient.Context.Operation.Id` . Toto globální nastavení způsobuje nesprávnou korelaci, pokud mnoho funkcí běží současně. Místo toho vytvořte novou instanci telemetrie ( `DependencyTelemetry` , `EventTelemetry` ) a upravte její `Context` vlastnost. Pak předejte instanci telemetrie do odpovídající `Track` metody v `TelemetryClient` ( `TrackDependency()` , `TrackEvent()` , `TrackMetric()` ). Tato metoda zajišťuje, že telemetrie má správné korelační údaje pro aktuální vyvolání funkce.
+
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 

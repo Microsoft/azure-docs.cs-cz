@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e87e3d59fec354ca3590a79accb45a74172793b
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60456607"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167878"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
 
 Azure File Storage je služba, která nabízí sdílené složky v cloudu přes standardní protokol SMB (Server Message Block). Podporují se SMB 2.1 i SMB 3.0. S Azure File Storage můžete rychle a bez nákladných přepisů migrovat starší aplikace, které spoléhají na sdílené složky, do Azure. Službu File Storage můžete používat ke zveřejňování dat pro celý svět, nebo k soukromému ukládání dat aplikací. V tomto článku se dozvíte, jak pomocí Průzkumníka služby Storage pracovat se sdílenými složkami a soubory.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
@@ -73,7 +73,7 @@ Následující postup ukazuje, jak zobrazit obsah sdílené složky v Průzkumn�
 
 1. V hlavním podokně se zobrazí obsah sdílené složky.
     
-    ![Obsah sdílené složky](media/vs-azure-tools-storage-explorer-files/image5.png)
+    ![Snímek obrazovky hlavního podokna pro sdílenou složku v Průzkumník služby Storage zobrazení obsahu sdílené složky.](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>Odstranění sdílené složky
 
@@ -89,7 +89,7 @@ Následující postup ukazuje odstranění sdílené složky v Průzkumníkovi s
 
 1. Klikněte pravým tlačítkem na sdílenou složku, kterou chcete odstranit, a v místní nabídce vyberte **Odstranit**. Můžete také stisknout klávesu **Delete** a odstranit tak aktuálně vybranou sdílenou složku.
 
-    ![Delete](media/vs-azure-tools-storage-explorer-files/image6.png)
+    ![Odstranit](media/vs-azure-tools-storage-explorer-files/image6.png)
 
 1. V potvrzovacím dialogovém okně klikněte na **Ano**.
     
@@ -191,7 +191,7 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
 1.  V hlavním podokně se zobrazí obsah sdílené složky.
 
-    ![Obsah sdílené složky](media/vs-azure-tools-storage-explorer-files/image17.png)
+    ![Snímek obrazovky hlavního podokna pro sdílenou složku myazurefileshare v Průzkumník služby Storage zobrazuje obsah sdílené složky s vybranou první složkou.](media/vs-azure-tools-storage-explorer-files/image17.png)
 
 1.  V hlavním podokně se zobrazí obsah sdílené složky.
 

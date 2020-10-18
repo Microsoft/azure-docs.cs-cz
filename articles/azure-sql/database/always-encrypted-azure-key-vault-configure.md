@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 98ba8c54b1754d6384dfcedb86e6c4889e52cb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26bac8115a64d78ce64bc400f98fb26cb929ba4d
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444841"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164495"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Konfigurace Always Encrypted pomocí Azure Key Vault 
 
@@ -37,7 +37,7 @@ Postupujte podle kroků v tomto článku a Naučte se, jak nastavit Always Encry
 - Vytvořte databázovou tabulku a Zašifrujte sloupce.
 - Vytvořte aplikaci, která vloží, vybere a zobrazí data ze zašifrovaných sloupců.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 
 - Účet a předplatné Azure. Pokud ho ještě nemáte, zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -149,7 +149,7 @@ SSMS poskytuje průvodce, který vám pomůže snadno nakonfigurovat Always Encr
 1. Rozbalte položku **databáze**  >  **Clinic**  >  **Tables**.
 2. Klikněte pravým tlačítkem na tabulku **pacientům** a vyberte možnost **Šifrovat sloupce** a otevřete tak Průvodce Always Encrypted:
 
-    ![Šifrovat sloupce](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
+    ![Snímek obrazovky, který zvýrazní sloupce šifrování... možnost nabídky](./media/always-encrypted-azure-key-vault-configure/encrypt-columns.png)
 
 Průvodce Always Encrypted obsahuje následující části: **Výběr sloupce**, **Konfigurace hlavního klíče**, **ověřování**a **Souhrn**.
 
@@ -179,7 +179,7 @@ V tomto kurzu se dozvíte, jak ukládat klíče v Azure Key Vault.
 
 Nyní můžete šifrovat sloupce nebo uložit skript prostředí PowerShell pro pozdější spuštění. Pro tento kurz vyberte **pokračovat** a klikněte na **Další**.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
 Ověřte správnost nastavení a kliknutím na **Dokončit** dokončete instalaci pro Always Encrypted.
 
@@ -574,7 +574,7 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
 Můžete vidět, že šifrované sloupce neobsahují žádná data ve formátu prostého textu.
 
-   ![Nová Konzolová aplikace](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
+   ![Snímek obrazovky, který ukazuje, že šifrované sloupce neobsahují žádná data ve formátu prostého textu.](./media/always-encrypted-azure-key-vault-configure/ssms-encrypted.png)
 
 Pokud chcete pro přístup k datům ve formátu prostého textu používat SSMS, musíte nejdřív zajistit, aby měl uživatel správná oprávnění k Azure Key Vault: *Get*, *unwrapKey*a *verify*. Podrobné informace najdete v tématu [Vytvoření a uložení hlavních klíčů sloupce (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
@@ -584,7 +584,7 @@ Pak během připojení přidejte parametr *nastavení šifrování sloupce = pov
 2. Kliknutím na **připojit**  >  **databázový stroj** otevřete okno **připojit k serveru** a klikněte na **Možnosti**.
 3. Klikněte na **Další parametry připojení** a **nastavení šifrování sloupce typ = povoleno**.
 
-    ![Nová Konzolová aplikace](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
+    ![Snímek obrazovky zobrazující kartu parametrů dalších oprav](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)
 
 4. Spusťte následující dotaz na Clinic Database.
 

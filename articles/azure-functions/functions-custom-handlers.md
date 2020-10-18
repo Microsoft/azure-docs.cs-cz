@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 8/18/2020
 ms.topic: article
-ms.openlocfilehash: f3106553def982eb90ccc90822206e75a11ce354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294590"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164546"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions vlastní obslužné rutiny (Preview)
 
@@ -534,7 +534,7 @@ func azure functionapp publish $functionAppName
 
 - Webový server vlastní obslužné rutiny musí být spuštěn do 60 sekund.
 
-## <a name="samples"></a>ukázky
+## <a name="samples"></a>Ukázky
 
 Příklady implementace funkcí v různých jazycích najdete v části [vlastní obslužné rutiny ukázky v úložišti GitHub](https://github.com/Azure-Samples/functions-custom-handlers) .
 
@@ -566,7 +566,7 @@ Hostitel Functions výstupuje další zprávy protokolu, včetně informací sou
 
 Místně se protokoly tisknou do konzoly.
 
-V Azure se [dotazuje Application Insights trasování](functions-monitoring.md#query-telemetry-data) , aby se zobrazily zprávy protokolu. Pokud vaše aplikace vytváří velký objem protokolů, pošle se Application Insights jenom podmnožina zpráv protokolu. [Zakáže vzorkování](functions-monitoring.md#configure-sampling) , aby bylo zajištěno, že budou protokolovány všechny zprávy.
+V Azure se [dotazuje Application Insights trasování](analyze-telemetry-data.md#query-telemetry-data) , aby se zobrazily zprávy protokolu. Pokud vaše aplikace vytváří velký objem protokolů, pošle se Application Insights jenom podmnožina zpráv protokolu. [Zakáže vzorkování](configure-monitoring.md#configure-sampling) , aby bylo zajištěno, že budou protokolovány všechny zprávy.
 
 ### <a name="test-custom-handler-in-isolation"></a>Test vlastní obslužné rutiny v izolaci
 

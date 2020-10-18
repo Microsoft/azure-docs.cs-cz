@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 51310b1569982e0b71f39dede0d4d7dbefd1a3c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 49840c2591bc1a991920b00aec020d4f652c9a50
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975531"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168388"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -161,10 +161,10 @@ Následující tabulka je odkazem na jiné rozhraní API datových formátů, kt
 
 Rozhraní API | Výchozí formát dat | Jiné formáty
 --------|---------------------|--------------
-/attested | json | Žádná
-/identity | json | Žádná
+/attested | json | žádné
+/identity | json | žádné
 /instance | json | text
-/scheduledevents | json | Žádná
+/scheduledevents | json | žádné
 
 Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Například:
 
@@ -732,7 +732,7 @@ Add-Type -AssemblyName System.Security
 $signedCms = New-Object -TypeName System.Security.Cryptography.Pkcs.SignedCms
 $signedCms.Decode($signature);
 $content = [System.Text.Encoding]::UTF8.GetString($signedCms.ContentInfo.Content)
-Write-Host "Attested data: " $conten
+Write-Host "Attested data: " $content
 $json = $content | ConvertFrom-Json
 # Do additional validation here
 ```
@@ -823,7 +823,7 @@ Služba je **všeobecně dostupná** ve všech cloudech Azure.
 
 Ukázky volání služby metadat pomocí různých jazyků uvnitř virtuálního počítače:
 
-Language      | Příklad
+Jazyk      | Příklad
 --------------|----------------
 C++ (Windows) | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#            | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs

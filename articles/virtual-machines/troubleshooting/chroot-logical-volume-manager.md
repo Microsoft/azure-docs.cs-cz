@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361462"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167912"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem Linux, když není k dispozici přístup ke konzole sériového rozhraní Azure a rozložení disku používá LVM (Správce logických svazků)
 
@@ -71,7 +71,7 @@ Pokud chcete zobrazit LVMs ovlivněného virtuálního počítače, spusťte př
 
 `lsblk`
 
-![Spustit lsblk](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
+![Snímek obrazovky, který zobrazuje výstup z příkazu lsblk](./media/chroot-logical-volume-manager/lsblk-output-mounted.png)
 
 
 Ověřte, jestli se zobrazuje LVMs z ovlivněného virtuálního počítače.
@@ -198,11 +198,11 @@ Teď znovu přihlaste k prostředí **chroot** spuštěním
 
 Všechny LVs musí být viditelné jako připojené oddíly.
 
-![Pokročilý](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Snímek obrazovky, který zobrazuje LVs viditelné jako připojené oddíly.](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 Dotaz na nainstalované **jádro**
 
-![Pokročilý](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Snímek obrazovky zobrazující dotaz na nainstalované jádro](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 V případě potřeby odebrat nebo upgradovat **kernel** 
  ![ Pokročilé jádro](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)

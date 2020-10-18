@@ -4,12 +4,12 @@ description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšířen�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 1614ac0711c6a83d7e303b5a4b6ebbdf23ba2e03
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104066"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167895"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -384,15 +384,13 @@ Další informace najdete v tématu [streamování protokolů](functions-monitor
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> Protokoly streamování podporují jenom jednu instanci hostitele Functions. Pokud je vaše funkce škálovaná na více instancí, data z jiných instancí se v datovém proudu protokolu nezobrazují. [Live Metrics Stream](../azure-monitor/app/live-stream.md) v Application Insights podporuje více instancí. I když téměř v reálném čase je analýza streamování založená na [ukázkových datech](functions-monitoring.md#configure-sampling).
+> Protokoly streamování podporují jenom jednu instanci hostitele Functions. Pokud je vaše funkce škálovaná na více instancí, data z jiných instancí se v datovém proudu protokolu nezobrazují. [Live Metrics Stream](../azure-monitor/app/live-stream.md) v Application Insights podporuje více instancí. I když téměř v reálném čase je analýza streamování založená na [ukázkových datech](configure-monitoring.md#configure-sampling).
 
 ### <a name="application-insights"></a>Application Insights
 
-Doporučujeme vám monitorovat provádění vašich funkcí integrací aplikace Function App s Application Insights. Při vytváření aplikace Function App v Azure Portal k této integraci dojde ve výchozím nastavení. Při vytváření aplikace Function App během publikování sady Visual Studio je nutné integrovat Application Insights sami.
+Doporučujeme vám monitorovat provádění vašich funkcí integrací aplikace Function App s Application Insights. Při vytváření aplikace Function App v Azure Portal k této integraci dojde ve výchozím nastavení. Při vytváření aplikace Function App během publikování sady Visual Studio je nutné integrovat Application Insights sami. Další informace najdete v tématu [Povolení integrace Application Insights](configure-monitoring.md#enable-application-insights-integration).
 
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+Další informace o monitorování pomocí Application Insights najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
 ## <a name="c-script-projects"></a>\#Projekty skriptu jazyka C
 

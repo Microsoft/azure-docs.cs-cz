@@ -14,28 +14,29 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee249a33187c3f8776cfc8fc750590c58f74579e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360918"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168133"
 ---
-# <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Kurz: Konfigurace skupiny dostupnosti SQL Server v Azure Virtual Machines ručně
-
+# <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>Kurz: ruční konfigurace skupiny dostupnosti (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-V tomto kurzu se dozvíte, jak ve službě Azure Virtual Machines vytvořit skupinu dostupnosti Always On SQL Server. Úplný kurz vytvoří skupinu dostupnosti s replikou databáze na dvou serverech SQL.
+V tomto kurzu se dozvíte, jak vytvořit skupinu dostupnosti Always On pro SQL Server v Azure Virtual Machines (VM). Úplný kurz vytvoří skupinu dostupnosti s replikou databáze na dvou serverech SQL.
 
-**Časový odhad**: po dokončení splnění požadavků zabere asi 30 minut.
+I když tento článek konfiguruje prostředí skupiny dostupnosti ručně, je možné to provést také pomocí [Azure Portal](availability-group-azure-portal-configure.md), [PowerShellu nebo Azure CLI](availability-group-az-commandline-configure.md)nebo [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md) . 
 
-Diagram znázorňuje, co sestavíte v tomto kurzu.
 
-![Skupina dostupnosti](./media/availability-group-manually-configure-tutorial/00-EndstateSampleNoELB.png)
+**Časový odhad**: po dokončení splnění [požadavků](availability-group-manually-configure-prerequisites-tutorial.md) zabere asi 30 minut.
 
-## <a name="prerequisites"></a>Požadavky
+
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá základní znalost skupin dostupnosti Always On SQL Server. Pokud potřebujete další informace, přečtěte si téma [Přehled skupin dostupnosti Always On (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
+
+Než začnete tento kurz, musíte [Dokončit požadavky na vytváření skupin dostupnosti Always On v Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md). Pokud jsou tyto požadavky již dokončeny, můžete přejít na příkaz [vytvořit cluster](#CreateCluster).
 
 V následující tabulce jsou uvedeny předpoklady, které je třeba provést před zahájením tohoto kurzu:
 
@@ -49,11 +50,8 @@ V následující tabulce jsou uvedeny předpoklady, které je třeba provést p�
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Přidat funkci clusteringu s podporou převzetí služeb při selhání** | Tato funkce vyžaduje tyto instance SQL Server. |
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **Instalační účet domény** | – Místní správce na každé SQL Server <br/> – Člen pevné role serveru sysadmin SQL Server pro každou instanci SQL Server  |
 
-
-Než začnete tento kurz, musíte [Dokončit požadavky na vytváření skupin dostupnosti Always On v Azure Virtual Machines](availability-group-manually-configure-prerequisites-tutorial.md). Pokud jsou tyto požadavky již dokončeny, můžete přejít na příkaz [vytvořit cluster](#CreateCluster).
-
-  >[!NOTE]
-  > Mnohé z kroků uvedených v tomto kurzu teď můžete automatizovat pomocí šablon [Azure SQL VM CLI](availability-group-az-cli-configure.md) a [Azure pro rychlý Start](availability-group-quickstart-template-configure.md).
+>[!NOTE]
+> Mnohé z kroků uvedených v tomto kurzu teď můžete automatizovat pomocí [Azure Portal](availability-group-azure-portal-configure.md), [PowerShellu a šablon pro](availability-group-az-cli-configure.md) [rychlý Start](availability-group-quickstart-template-configure.md)pro příkaz AZ CLI a Azure.
 
 
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
@@ -129,7 +127,7 @@ Přidejte ostatní SQL Server do clusteru.
 
 ### <a name="add-a-cluster-quorum-file-share"></a>Přidat sdílenou složku kvora clusteru
 
-V tomto příkladu používá cluster Windows ke sdílení souborů sdílenou složku k vytvoření kvora clusteru. V tomto kurzu se používá kvorum Většina uzlů a sdílených souborů. Další informace najdete v článku [Principy konfigurací kvora v clusteru s podporou převzetí služeb při selhání](https://technet.microsoft.com/library/cc731739.aspx).
+V tomto příkladu cluster Windows používá ke vytvoření kvora clusteru sdílenou složku. V tomto kurzu se používá kvorum Většina uzlů a sdílených souborů. Další informace najdete v článku [Principy konfigurací kvora v clusteru s podporou převzetí služeb při selhání](https://technet.microsoft.com/library/cc731739.aspx).
 
 1. Připojte se k členskému serveru určující sdílené složky s relací vzdálené plochy.
 
@@ -139,7 +137,7 @@ V tomto příkladu používá cluster Windows ke sdílení souborů sdílenou sl
 
 1. Klikněte pravým tlačítkem na **sdílené složky**a vyberte **Nová sdílená složka...**.
 
-   ![Nová sdílená složka](./media/availability-group-manually-configure-tutorial/48-newshare.png)
+   ![Klikněte pravým tlačítkem na sdílené složky a vyberte Nová sdílená složka.](./media/availability-group-manually-configure-tutorial/48-newshare.png)
 
    Pomocí **Průvodce vytvořením sdílené složky** vytvořte sdílenou složku.
 
@@ -153,7 +151,7 @@ V tomto příkladu používá cluster Windows ke sdílení souborů sdílenou sl
 
 1. Ujistěte se, že účet použitý k vytvoření clusteru má úplné řízení.
 
-   ![Nová sdílená složka](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
+   ![Ujistěte se, že účet použitý k vytvoření clusteru má úplné řízení.](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
 
 1. Vyberte **OK**.
 
@@ -169,7 +167,7 @@ V dalším kroku nastavte kvorum clusteru.
 
 1. V **Správce clusteru s podporou převzetí služeb při selhání**klikněte pravým tlačítkem na cluster, přejděte na **Další akce**a vyberte **Konfigurovat nastavení kvora clusteru..**..
 
-   ![Nová sdílená složka](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
+   ![Vyberte konfigurovat nastavení kvora clusteru.](./media/availability-group-manually-configure-tutorial/52-configurequorum.png)
 
 1. V **Průvodci konfigurací kvora clusteru**vyberte **Další**.
 
@@ -195,9 +193,9 @@ Potom povolte funkci **skupiny dostupnosti AlwaysOn** . Proveďte tyto kroky na 
 
 1. Z obrazovky **Start** spusťte **SQL Server Configuration Manager**.
 2. Ve stromové struktuře prohlížeče vyberte **SQL Server Services**, klikněte pravým tlačítkem na službu **SQL Server (MSSQLSERVER)** a vyberte **vlastnosti**.
-3. Vyberte kartu **vysoce dostupná dostupnost AlwaysOn** a pak vyberte **Povolit skupiny dostupnosti AlwaysOn**, a to následujícím způsobem:
+3. Vyberte kartu **Vysoká dostupnost AlwaysOn** a pak vyberte **Povolit skupiny dostupnosti AlwaysOn**následujícím způsobem:
 
-    ![Povolit Skupiny dostupnosti AlwaysOn](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
+    ![Povolit skupiny dostupnosti AlwaysOn](./media/availability-group-manually-configure-tutorial/54-enableAlwaysOn.png)
 
 4. Vyberte **Použít**. V automaticky otevíraném okně vyberte **OK** .
 
@@ -208,7 +206,7 @@ Opakujte tyto kroky na ostatních SQL Server.
 <!-----------------
 ## <a name="endpoint-firewall"></a>Open firewall for the database mirroring endpoint
 
-Each instance of SQL Server that participates in an Availability Group requires a database mirroring endpoint. This endpoint is a TCP port for the instance of SQL Server that is used to synchronize the database replicas in the Availability Groups on that instance.
+Each instance of SQL Server that participates in an availability group requires a database mirroring endpoint. This endpoint is a TCP port for the instance of SQL Server that is used to synchronize the database replicas in the availability groups on that instance.
 
 On both SQL Servers, open the firewall for the TCP port for the database mirroring endpoint.
 
@@ -242,7 +240,7 @@ Repeat these steps on the second SQL Server.
 
 1. Klikněte pravým tlačítkem na **sdílené složky**a vyberte **Nová sdílená složka...**.
 
-   ![Nová sdílená složka](./media/availability-group-manually-configure-tutorial/48-newshare.png)
+   ![Vybrat novou sdílenou složku](./media/availability-group-manually-configure-tutorial/48-newshare.png)
 
    Pomocí **Průvodce vytvořením sdílené složky** vytvořte sdílenou složku.
 
@@ -256,7 +254,7 @@ Repeat these steps on the second SQL Server.
 
 1. Ujistěte se, že účty služby Agent SQL Server a SQL Server pro oba servery mají úplné řízení.
 
-   ![Nová sdílená složka](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
+   ![Ujistěte se, že účty služby Agent SQL Server a SQL Server pro oba servery mají úplné řízení.](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
 
 1. Vyberte **OK**.
 
@@ -317,7 +315,7 @@ Nyní jste připraveni ke konfiguraci skupiny dostupnosti pomocí následující
    >Úplná synchronizace provede úplnou zálohu databáze na první instanci SQL Server a obnoví ji do druhé instance. U rozsáhlých databází se Úplná synchronizace nedoporučuje, protože může trvat dlouhou dobu. Tuto dobu můžete zkrátit ručním vytvořením zálohy databáze a jejím obnovením `NO RECOVERY` . Pokud je databáze již `NO RECOVERY` v druhém SQL Server obnovena před konfigurací skupiny dostupnosti, vyberte možnost **pouze připojit**. Pokud chcete zálohování provést po konfiguraci skupiny dostupnosti, vyberte možnost **Přeskočit počáteční synchronizaci dat**.
    >
 
-   ![Průvodce novou skupinou dostupnosti, vyberte počáteční synchronizaci dat.](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
+   ![Výběr možnosti přeskočit počáteční synchronizaci dat](./media/availability-group-manually-configure-tutorial/70-datasynchronization.png)
 
 9. Na stránce **ověřování** vyberte **Další**. Tato stránka by měla vypadat podobně jako na následujícím obrázku:
 
@@ -358,6 +356,8 @@ V tomto okamžiku máte skupinu dostupnosti s replikami na dvou instancích SQL 
 
 ## <a name="create-an-azure-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení Azure
 
+[!INCLUDE [sql-ag-use-dnn-listener](../../includes/sql-ag-use-dnn-listener.md)]
+
 Na virtuálních počítačích Azure vyžaduje Skupina dostupnosti SQL Server službu pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení uchovává IP adresy pro naslouchací procesy skupiny dostupnosti a cluster s podporou převzetí služeb při selhání systému Windows Server. Tato část shrnuje, jak vytvořit nástroj pro vyrovnávání zatížení v Azure Portal.
 
 Nástroj pro vyrovnávání zatížení v Azure může být buď Standard Load Balancer, nebo základní Load Balancer. Standard Load Balancer má více funkcí než základní Load Balancer. V případě skupiny dostupnosti se Standard Load Balancer vyžaduje, pokud použijete zónu dostupnosti (místo skupiny dostupnosti). Podrobnosti o rozdílu mezi SKU nástroje pro vyrovnávání zatížení najdete v tématu [Load Balancer porovnání skladové](../../../load-balancer/skus.md)položky.
@@ -365,7 +365,7 @@ Nástroj pro vyrovnávání zatížení v Azure může být buď Standard Load B
 1. V Azure Portal otevřete skupinu prostředků, kde jsou vaše servery SQL, a vyberte **+ Přidat**.
 1. Vyhledejte **Load Balancer**. Vyberte nástroj pro vyrovnávání zatížení publikovaný Microsoftem.
 
-   ![Skupina dostupnosti v Správce clusteru s podporou převzetí služeb při selhání](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
+   ![Volba nástroje pro vyrovnávání zatížení publikovaného Microsoftem](./media/availability-group-manually-configure-tutorial/82-azureloadbalancer.png)
 
 1. Vyberte **Vytvořit**.
 1. Pro nástroj pro vyrovnávání zatížení nakonfigurujte následující parametry.
@@ -506,7 +506,7 @@ V SQL Server Management Studio nastavte port naslouchacího procesu.
 
 1. Spusťte SQL Server Management Studio a připojte se k primární replice.
 
-1. Přejděte na **AlwaysOn High Availability**  >  **Availability Groups**  >  **naslouchací procesy**skupin dostupnosti AlwaysOn vysoké dostupnosti.
+1. Přejděte na **AlwaysOn High Availability**  >  **availability groups**  >  **naslouchací procesy**skupin dostupnosti AlwaysOn vysoké dostupnosti.
 
 1. Nyní byste měli vidět název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání. Klikněte pravým tlačítkem myši na název naslouchacího procesu a vyberte možnost **vlastnosti**.
 

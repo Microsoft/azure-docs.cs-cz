@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317017"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167946"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy pro konfiguraci clusteru (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -45,8 +45,6 @@ V následující tabulce jsou uvedené možnosti kvora, které jsou k dispozici 
 ||[Disk s kopií clusteru](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Disk s kopií cloudu](/windows-server/failover-clustering/deploy-cloud-witness)  |[Určující sdílená složka](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**Podporovaný operační systém**| Vše |Windows Server 2016 +| Vše|
-
-
 
 
 ### <a name="disk-witness"></a>Disk s kopií clusteru
@@ -84,26 +82,27 @@ Informace o tom, jak začít, najdete v tématu [Konfigurace určující sdílen
 
 ## <a name="connectivity"></a>Připojení
 
-V tradičních místních síťových prostředích se SQL Server instance clusteru s podporou převzetí služeb při selhání jeví jako jediná instance SQL Server spuštěná v jednom počítači. Vzhledem k tomu, že instance clusteru s podporou převzetí služeb při selhání převezme služby při selhání z uzlu na uzel, název virtuální sítě (VNN) pro instanci poskytuje jednotný spojovací bod a umožňuje aplikacím připojit se k instanci SQL Server bez vědomí, který uzel je aktuálně aktivní. Když dojde k převzetí služeb při selhání, název virtuální sítě se zaregistruje do nového aktivního uzlu po jeho spuštění. Tento proces je transparentní pro klienta nebo aplikaci, které se připojují k SQL Server. tím se minimalizuje prostoje, ke kterým klient nebo aplikace při selhání dojde. 
+V tradičních místních síťových prostředích se SQL Server instance clusteru s podporou převzetí služeb při selhání jeví jako jediná instance SQL Server spuštěná v jednom počítači. Vzhledem k tomu, že instance clusteru s podporou převzetí služeb při selhání převezme služby při selhání z uzlu na uzel, název virtuální sítě (VNN) pro instanci poskytuje jednotný spojovací bod a umožňuje aplikacím připojit se k instanci SQL Server bez vědomí, který uzel je aktuálně aktivní. Když dojde k převzetí služeb při selhání, název virtuální sítě se zaregistruje do nového aktivního uzlu po jeho spuštění. Tento proces je transparentní pro klienta nebo aplikaci, které se připojují k SQL Server. tím se minimalizuje prostoje, ke kterým klient nebo aplikace při selhání dojde. Naslouchací proces skupiny dostupnosti také používá VNN ke směrování provozu do příslušné repliky. 
 
-K směrování provozu do VNN instance clusteru s podporou převzetí služeb při selhání s SQL Server na virtuálních počítačích Azure použijte VNN s Azure Load Balancer nebo název distribuované sítě (DNN). Funkce DNN je aktuálně dostupná jenom pro SQL Server 2019 CU2 a novější na virtuálním počítači s Windows serverem 2016 (nebo novějším). 
+Použijte VNN s Azure Load Balancer nebo název distribuované sítě (DNN) ke směrování provozu do VNN instance clusteru s podporou převzetí služeb při selhání s SQL Server na virtuálních počítačích Azure nebo pro nahrazení stávajícího naslouchacího procesu VNN ve skupině dostupnosti. 
+
 
 Následující tabulka porovnává podporu připojení HADR: 
 
 | |**Název virtuální sítě (VNN)**  |**Název distribuované sítě (DNN)**  |
 |---------|---------|---------|
-|**Minimální verze operačního systému**| Vše | Vše |
-|**Minimální verze SQL Server** |Vše |SQL Server 2019 CU2|
-|**Podporované řešení HADR** | Instance clusteru s podporou převzetí služeb při selhání <br/> Skupina dostupnosti | Instance clusteru s podporou převzetí služeb při selhání|
+|**Minimální verze operačního systému**| Vše | Windows Server 2016 |
+|**Minimální verze SQL Server** |Vše |SQL Server 2019 CU2 (pro FCI)<br/> SQL Server 2019 CU8 (pro AG)|
+|**Podporované řešení HADR** | Instance clusteru s podporou převzetí služeb při selhání <br/> Skupina dostupnosti | Instance clusteru s podporou převzetí služeb při selhání <br/> Skupina dostupnosti|
 
 
 ### <a name="virtual-network-name-vnn"></a>Název virtuální sítě (VNN)
 
-Vzhledem k tomu, že přístupový bod virtuální IP adresy funguje v Azure jinak, je nutné nakonfigurovat [Azure Load Balancer](../../../load-balancer/index.yml) ke směrování provozu na IP adresu uzlů FCI. Nástroj pro vyrovnávání zatížení ve virtuálních počítačích Azure obsahuje IP adresu VNN, na které se spoléhají Clusterové SQL Server prostředky. Nástroj pro vyrovnávání zatížení distribuuje příchozí toky, které dorazí na front-end, a potom směruje provoz do instancí definovaných back-end fondem. Tok přenosů se konfiguruje pomocí pravidel vyrovnávání zatížení a sond stavu. U SQL Server FCI jsou instance fondu back-endu virtuálními počítači Azure, na kterých běží SQL Server. 
+Vzhledem k tomu, že přístupový bod virtuální IP adresy funguje v Azure jinak, je nutné nakonfigurovat [Azure Load Balancer](../../../load-balancer/index.yml) ke směrování provozu na IP adresu uzlů FCI nebo naslouchacího procesu skupiny dostupnosti. Nástroj pro vyrovnávání zatížení ve virtuálních počítačích Azure obsahuje IP adresu VNN, na které se spoléhají Clusterové SQL Server prostředky. Nástroj pro vyrovnávání zatížení distribuuje příchozí toky, které dorazí na front-end, a potom směruje provoz do instancí definovaných back-end fondem. Tok přenosů se konfiguruje pomocí pravidel vyrovnávání zatížení a sond stavu. U SQL Server FCI jsou instance fondu back-endu virtuálními počítači Azure, na kterých běží SQL Server. 
 
 Při použití nástroje pro vyrovnávání zatížení existuje mírné zpoždění při převzetí služeb při selhání, protože sonda stavu je ve výchozím nastavení každých 10 sekund. 
 
-Pokud chcete začít, přečtěte si, jak [nakonfigurovat Azure Load Balancer pro FCI](hadr-vnn-azure-load-balancer-configure.md). 
+Pokud chcete začít, přečtěte si, jak nakonfigurovat Azure Load Balancer pro [instanci clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-vnn-azure-load-balancer-configure.md) nebo [skupinu dostupnosti](availability-group-vnn-azure-load-balancer-configure.md) .
 
 **Podporovaný operační systém**: vše   
 **Podporovaná verze SQL**: vše   
@@ -112,22 +111,22 @@ Pokud chcete začít, přečtěte si, jak [nakonfigurovat Azure Load Balancer pr
 
 ### <a name="distributed-network-name-dnn"></a>Název distribuované sítě (DNN)
 
-Název distribuované sítě je nová funkce Azure pro SQL Server 2019 CU2. DNN nabízí alternativní způsob, jak SQL Server klientům připojit se k instanci clusteru s podporou převzetí služeb při selhání SQL Server bez použití nástroje pro vyrovnávání zatížení. 
+Název distribuované sítě je nová funkce Azure pro SQL Server 2019. DNN nabízí alternativní způsob, jak se klienti SQL Server připojit k instanci clusteru s podporou převzetí služeb při selhání SQL Server nebo skupině dostupnosti bez použití nástroje pro vyrovnávání zatížení. 
 
-Při vytvoření prostředku DNN se cluster připojí k názvu DNS s IP adresami všech uzlů v clusteru. Klient SQL se pokusí připojit ke každé IP adrese v tomto seznamu, aby našel uzel, ve kterém je aktuálně spuštěná instance clusteru s podporou převzetí služeb při selhání. Tento proces lze urychlit zadáním `MultiSubnetFailover=True` v připojovacím řetězci. Toto nastavení oznamuje poskytovateli, aby vyzkoušel všechny IP adresy paralelně, takže se klient může k FCI okamžitě připojit. 
+Při vytvoření prostředku DNN se cluster připojí k názvu DNS s IP adresami všech uzlů v clusteru. Klient SQL se pokusí připojit ke každé IP adrese v tomto seznamu a vyhledat tak prostředek, ke kterému se má připojit.  Tento proces lze urychlit zadáním `MultiSubnetFailover=True` v připojovacím řetězci. Toto nastavení oznamuje poskytovateli, aby vyzkoušel všechny IP adresy paralelně, takže se klient může okamžitě připojit k FCI nebo naslouchacímu procesu. 
 
 Pokud je to možné, doporučuje se název distribuované sítě přes Nástroj pro vyrovnávání zatížení, protože: 
 - Kompletní řešení je robustnější, protože už nemusíte spravovat prostředek nástroje pro vyrovnávání zatížení. 
 - Odstraněním sond nástroje pro vyrovnávání zatížení minimalizujete dobu trvání převzetí služeb při selhání. 
-- DNN zjednodušuje zřizování a správu instance clusteru s podporou převzetí služeb při selhání SQL Server na virtuálních počítačích Azure. 
+- DNN zjednodušuje zřizování a správu instancí clusteru s podporou převzetí služeb při selhání nebo naslouchacího procesu skupiny dostupnosti s SQL Server na virtuálních počítačích Azure. 
 
-Většina funkcí SQL Server pracuje transparentně s FCI. V těchto případech můžete jednoduše nahradit existující název DNS VNN názvem DNS DNN nebo hodnotu DNN nastavit pomocí existujícího názvu DNS VNN. Některé komponenty na straně serveru ale vyžadují alias sítě, který mapuje VNN název na DNN název. Konkrétní případy můžou vyžadovat explicitní použití názvu DNS DNN, například při definování určitých adres URL v konfiguraci na straně serveru. 
+Většina funkcí SQL Server při použití DNN transparentně spolupracuje s FCI a skupinami dostupnosti, ale některé funkce můžou vyžadovat zvláštní pozornost. Další informace najdete v tématech [interoperabilita FCI and DNN](failover-cluster-instance-dnn-interoperability.md) a [interoperabilita AG a DNN](availability-group-dnn-interoperability.md) . 
 
-Pokud chcete začít, přečtěte si, jak [nakonfigurovat prostředek DNN pro FCI](hadr-distributed-network-name-dnn-configure.md). 
+Začněte tím, že se seznámíte s konfigurací prostředku názvu distribuované sítě pro [instanci clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-distributed-network-name-dnn-configure.md) nebo [skupinu dostupnosti](availability-group-distributed-network-name-dnn-listener-configure.md) .
 
 **Podporovaný operační systém**: Windows Server 2016 a novější   
-**Podporovaná verze SQL**: SQL Server 2019 a novější   
-**Podporované řešení hadr**: jenom instance clusteru s podporou převzetí služeb při selhání
+**Podporovaná verze SQL**: SQL Server 2019 CU2 (FCI) a SQL Server 2019 CU8 (AG)   
+**Podporované řešení hadr**: instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
 
 
 ## <a name="limitations"></a>Omezení
@@ -146,5 +145,5 @@ V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 201
 
 ## <a name="next-steps"></a>Další kroky
 
-Až zjistíte vhodné osvědčené postupy pro vaše řešení, začněte tím, že [připravíte SQL Server virtuální počítač pro FCI](failover-cluster-instance-prepare-vm.md). Skupinu dostupnosti můžete vytvořit také pomocí [Azure CLI](availability-group-az-cli-configure.md)nebo [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md). 
+Až zjistíte vhodné osvědčené postupy pro vaše řešení, začněte tím, že [připravíte SQL Server virtuální počítač pro FCI](failover-cluster-instance-prepare-vm.md) nebo vytvoříte skupinu dostupnosti pomocí [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShellu](availability-group-az-cli-configure.md)nebo [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md). 
 

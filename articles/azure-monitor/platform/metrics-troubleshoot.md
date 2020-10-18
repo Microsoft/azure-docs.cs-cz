@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 54f99f2f8708fca9c02950a8886a2a9b976a93dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a9286ff15834fafe4a69907836ce1abd17abca6
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440673"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168065"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -79,16 +79,16 @@ K tomuto problému může dojít v případě, že se řídicí panel vytvořil 
 ## <a name="chart-shows-dashed-line"></a>Graf znázorňuje čárkovanou čáru
 
 Grafy metrik Azure používají čárkovaný styl čáry k označení toho, že mezi dvěma známými datovými body zrnitosti chybí hodnota (označovaná také jako hodnota null). Například pokud v selektoru jste si vybrali členitou časovou přesnost 1 minuty, ale metrika byla nahlášena v 07:26, 07:27, 07:29 a 07:30 (Všimněte si, že se v části sekunda a třetí datové body objeví minutová mezera), pak se přerušovaná čára připojí 07:27 a 07:29 a plná čára připojí všechny ostatní datové body. Přerušovaná čára klesne dolů na nulu, pokud metrika používá agregaci **Count** a **Sum** . U agregací **AVG**, **min** nebo **Max** se přerušovaná čára spojí dva nejbližší známé datové body. Pokud data navíc chybí na pravé nebo levé straně grafu, přerušovaná čára se protáhne směrem k chybějícímu datovému bodu.
-  ![obrázek metriky](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+  ![Snímek obrazovky, který ukazuje, jak data chybějí na pravé straně grafu nebo v levé části grafu, se odvádí na směr chybějícího datového bodu.](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
 
-**Řešení:** Toto chování je záměrné. Je to užitečné při identifikaci chybějících datových bodů. Spojnicový graf je nadřízenou volbou pro vizualizaci trendů metrik s vysokou hustotou, ale může být obtížné ji interpretovat pro metriky s zhuštěnými hodnotami, zejména v případě, že se v souvislosti s časovým intervalem jsou důležité hodnoty. Přerušovaná čára usnadňuje čtení těchto grafů, ale pokud je váš graf stále nejasný, zvažte zobrazení metrik pomocí jiného typu grafu. Například rozptýlený graf pro stejnou metriku jasně zobrazuje každé časové intervaly tím, že vizualizuje tečku pouze v případě, že existuje hodnota a přeskočí datový bod úplně, pokud hodnota chybí: ![ Obrázek metriky](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Řešení:** Toto chování je záměrné. Je to užitečné při identifikaci chybějících datových bodů. Spojnicový graf je nadřízenou volbou pro vizualizaci trendů metrik s vysokou hustotou, ale může být obtížné ji interpretovat pro metriky s zhuštěnými hodnotami, zejména v případě, že se v souvislosti s časovým intervalem jsou důležité hodnoty. Přerušovaná čára usnadňuje čtení těchto grafů, ale pokud je váš graf stále nejasný, zvažte zobrazení metrik pomocí jiného typu grafu. Například rozptýlený graf pro stejnou metriku jasně zobrazuje každé časové intervaly tím, že pouze vizualizuje tečku, pokud existuje hodnota a přeskočí datový bod úplně, když hodnota chybí: ![ snímek obrazovky, který zvýrazní možnost nabídky bodový graf.](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
 
    > [!NOTE]
    > Pokud stále dáváte přednost zobrazení metrik pomocí spojnicového grafu, může vám s posuzováním časových intervalů pomoct, když najedete myší na graf, protože se zvýrazní datový bod, který se nachází pod ukazatelem myši.
 
 ## <a name="chart-shows-unexpected-drop-in-values"></a>Graf zobrazuje neočekávané hodnoty zrušení v hodnotách
 
-V řadě případů je zdánlivý pokles hodnot metrik způsobený nesprávným výkladem dat zobrazených v grafu. Pokud graf ukazuje data za poslední minuty, může vás zmást pokles součtů nebo počtů, protože platforma Azure ještě nepřijala nebo nezpracovala nejnovější datové body metrik. V závislosti na konkrétní službě se může latence zpracování metrik pohybovat v rozsahu několika minut. V grafech zobrazujících nedávný časový rozsah s členitou přesností 1 nebo 5 minut se může poznamenat, že hodnota za posledních několik minut bude podrobná: ![ Obrázek metriky](./media/metrics-troubleshoot/drop-in-values.png)
+V řadě případů je zdánlivý pokles hodnot metrik způsobený nesprávným výkladem dat zobrazených v grafu. Pokud graf ukazuje data za poslední minuty, může vás zmást pokles součtů nebo počtů, protože platforma Azure ještě nepřijala nebo nezpracovala nejnovější datové body metrik. V závislosti na konkrétní službě se může latence zpracování metrik pohybovat v rozsahu několika minut. V grafech zobrazujících nedávný časový rozsah s členitou úrovní 1 nebo 5 minut se může poznamenat, že hodnota za posledních několik minut bude poznatelný: ![ snímek obrazovky, který zobrazuje jednu z hodnot za posledních několik minut.](./media/metrics-troubleshoot/drop-in-values.png)
 
 **Řešení:** Toto chování je záměrné. Věříme, že je přínosné zobrazovat data ihned po přijetí, a to i v případě, že jde o *částečná* nebo *neúplná* data. Díky tomu můžete rychleji dojít k důležitému závěru a rovnou spustit šetření. Když například u metriky, která ukazuje počet selhání, uvidíte částečnou hodnotu X, budete vědět, že v dané minutě došlo minimálně k X selháním. Rovnou můžete začít s šetřením problému a nemusíte čekat, až se zobrazí přesný počet selhání, ke kterým došlo v dané minutě, což nemusí být tak důležité. Jakmile obdržíme kompletní sadu dat, graf se aktualizuje. V tu dobu se však můžou zobrazit také nové neúplné datové body pro poslední minuty.
 

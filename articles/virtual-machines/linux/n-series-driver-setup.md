@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 02fbe721f1bf5737ad1d10d656ea75ed1372b484
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284876"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168473"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
@@ -310,7 +310,7 @@ Pokud chcete zadat dotaz na stav zařízení GPU, SSH k virtuálnímu počítač
 
 Pokud je ovladač nainstalovaný, zobrazí se výstup podobný následujícímu. Všimněte si, že **GPU-util** zobrazuje 0%, pokud momentálně na virtuálním počítači nespouštíte úlohu GPU. Podrobnosti o verzi ovladače a GPU se mohou lišit od zobrazených.
 
-![Stav zařízení NVIDIA](./media/n-series-driver-setup/smi-nv.png)
+![Snímek obrazovky, který zobrazuje výstup při dotazování na stav zařízení GPU](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>Server X11

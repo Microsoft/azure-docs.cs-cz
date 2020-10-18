@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: azfuncdf
-ms.openlocfilehash: f91cdaa81e18105eb39af442ab6152bfd2888ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4714b9330c4a9d9cd390a58f814e3cdb4b591038
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319703"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168137"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostika v Durable Functions v Azure
 
@@ -99,7 +99,7 @@ Chcete-li povolit generování podrobných událostí opětovného přehrání o
 ```
 
 > [!NOTE]
-> Ve výchozím nastavení je Application Insights telemetrie vzorkovat modulem runtime Azure Functions, aby nedocházelo k příliš častému generování dat. To může způsobit ztrátu informací o sledování, když dojde v krátké době k mnoha událostem životního cyklu. [Článek monitorování Azure Functions](../functions-monitoring.md#configure-sampling) vysvětluje, jak toto chování nakonfigurovat.
+> Ve výchozím nastavení je Application Insights telemetrie vzorkovat modulem runtime Azure Functions, aby nedocházelo k příliš častému generování dat. To může způsobit ztrátu informací o sledování, když dojde v krátké době k mnoha událostem životního cyklu. [Článek monitorování Azure Functions](../configure-monitoring.md#configure-sampling) vysvětluje, jak toto chování nakonfigurovat.
 
 ### <a name="single-instance-query"></a>Dotaz s jednou instancí
 

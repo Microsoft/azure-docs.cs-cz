@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ac044666b8f723e3cc26fd7a30f5dd8a8f77d90
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399529"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168031"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technické možnosti zabezpečení Azure
 Tento článek poskytuje Úvod do služby zabezpečení v Azure, které vám pomůžou chránit vaše data, prostředky a aplikace v cloudu a splňovat požadavky na zabezpečení vaší firmy.
@@ -367,7 +367,8 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 Cloudové aplikace jsou komplexní s mnoha pohybujícími se částmi. Monitorování poskytuje data, která zajistí, že vaše aplikace zůstane v dobrém stavu. Také vám pomůže nastavovat potenciální problémy nebo řešit potíže s předchozími.
 
-![Azure Monitor ](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) navíc můžete použít data monitorování a získat tak podrobné informace o vaší aplikaci. Tato znalostní báze vám může pomoci zvýšit výkon a udržovatelnost aplikace nebo automatizovat akce, které by jinak vyžadovaly ruční zásah.
+![Diagram, který ukazuje, jak můžete pomocí dat monitorování získat podrobné informace o vaší aplikaci.](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png)
+Kromě toho můžete k získání podrobných přehledů o vaší aplikaci použít data monitorování. Tato znalostní báze vám může pomoci zvýšit výkon a udržovatelnost aplikace nebo automatizovat akce, které by jinak vyžadovaly ruční zásah.
 
 Auditování zabezpečení sítě je důležité pro detekci ohrožení zabezpečení sítě a zajištění souladu s vaším modelem zabezpečení IT a dodržováním předpisů. Pomocí zobrazení skupiny zabezpečení můžete načíst nakonfigurovanou skupinu zabezpečení sítě a pravidla zabezpečení a také platná pravidla zabezpečení. Pomocí seznamu použitých pravidel můžete určit porty, které jsou otevřené a SS ohrožení zabezpečení sítě.
 

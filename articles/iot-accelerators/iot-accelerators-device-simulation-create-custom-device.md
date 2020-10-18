@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ddd1aa9865cb4061212ce77b31efc82ad339283
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61450543"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165566"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Kurz: Vytvoření vlastního simulovaného zařízení
 
@@ -28,9 +28,9 @@ V tomto kurzu jste:
 > * Klonování modelu zařízení
 > * Odstranění modelu zařízení
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle tohoto kurzu, musíte ve svém předplatném Azure mít nasazenou instanci Simulace zařízení.
 
@@ -88,7 +88,7 @@ Klonování modelu zařízení umožňuje vytvořit kopii existujícího modelu 
 
 Pokud chcete naklonovat model zařízení, zaškrtněte políčko vedle požadovaného modelu a pak na panelu akcí klikněte na **Klonovat**:
 
-![Odstranění modelu zařízení](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
+![Snímek obrazovky, který zvýrazní vybraný model a tlačítko klonování](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
 
 ## <a name="delete-a-device-model"></a>Odstranění modelu zařízení
 

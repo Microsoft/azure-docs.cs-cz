@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Naučte se, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 69df9b6337674233e1f257cc509115d5f58d2e7f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a52b2d06e65de0d056653f12065e36d83d6d8e0c
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152058"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167759"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -90,7 +90,7 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
    :::image type="content" source="media/tutorial-vmware-hcx/select-ovf-template.png" alt-text="Přejít na místní Server vCenter a vybrat šablonu OVF, která se nasadí do místního serveru vCenter." lightbox="media/tutorial-vmware-hcx/select-ovf-template.png":::
 
 
-1. Vyberte název a umístění, prostředek/cluster, do kterého nasazujete konektor HCX, a pak zkontrolujte podrobnosti a požadované prostředky.  
+1. Vyberte název a umístění, prostředek/cluster, ve kterém nasadíte konektor HCX, a pak zkontrolujte podrobnosti a požadované prostředky.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/configure-template.png" alt-text="Přejít na místní Server vCenter a vybrat šablonu OVF, která se nasadí do místního serveru vCenter." lightbox="media/tutorial-vmware-hcx/configure-template.png":::
 
@@ -268,7 +268,7 @@ Kompletní přehled tohoto kroku najdete v článku [Řešení Azure VMware – 
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="Přejít na místní Server vCenter a vybrat šablonu OVF, která se nasadí do místního serveru vCenter." lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
 
-Kompletní přehled tohoto kroku najdete v článku [Řešení Azure VMware – VMware HCX Create COMPUTE Profile](https://www.youtube.com/embed/qASXi5xrFzM) video.
+Úplný přehled tohoto kroku najdete v [Řešení Azure VMware – VMware HCX vytvořit video s výpočetním profilem](https://www.youtube.com/embed/qASXi5xrFzM) .
 
 
 
@@ -296,7 +296,9 @@ Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
 
 1. Zkontrolujte služby, které budou povolené, a pak vyberte **pokračovat**.  
 
-1. V **rozšířené konfiguraci – přepsat síťové profily pro odesílání** vyberte **pokračovat**.  Profily sítě pro odesílání se připojují k síti, přes kterou je možné oslovit zařízení pro vzdálenou lokalitu.  
+1. V **rozšířené konfiguraci – přepsat síťové profily pro odesílání** vyberte **pokračovat**.  
+
+   Profily sítě pro odesílání se připojují k síti, přes kterou je možné oslovit zařízení pro vzdálenou lokalitu.  
   
 1. V **rozšířené konfiguraci – zařízení rozšíření sítě škálovat**, zkontrolujte a vyberte **pokračovat**. 
 

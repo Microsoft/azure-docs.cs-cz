@@ -4,12 +4,12 @@ description: Zjistěte, jak se vyhnout problémům s výkonem v Azure Functions 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: a305c692c63f278c4edc4240f7adf9de22b22c56
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106089"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168303"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -21,11 +21,11 @@ Počet dostupných připojení je částečně omezený, protože aplikace Funct
 
 Toto omezení je na instanci. Když [řadič škálování přidává instance aplikace Function App](functions-scale.md#how-the-consumption-and-premium-plans-work) a zpracovává více požadavků, má každá instance nezávislé omezení počtu připojení. To znamená, že není k dispozici žádný limit globálního připojení a v rámci všech aktivních instancí může být mnohem více než 600 aktivních připojení.
 
-Při řešení potíží se ujistěte, že jste povolili Application Insights aplikace Function App. Application Insights umožňuje zobrazit metriky pro aplikace Function App, jako je spuštění. Další informace najdete v tématu [zobrazení telemetrie v Application Insights](functions-monitoring.md#view-telemetry-in-application-insights).  
+Při řešení potíží se ujistěte, že jste povolili Application Insights aplikace Function App. Application Insights umožňuje zobrazit metriky pro aplikace Function App, jako je spuštění. Další informace najdete v tématu [zobrazení telemetrie v Application Insights](analyze-telemetry-data.md#view-telemetry-in-application-insights).  
 
 ## <a name="static-clients"></a>Statické klienty
 
-Aby nedošlo k většímu podílu připojení, než je potřeba, místo vytváření nových funkcí pomocí jednotlivých volání funkce znovu použijte instance klientů. Pro libovolný jazyk, ve kterém můžete napsat funkci, doporučujeme znovu použít připojení klientů. Například klienti .NET, jako jsou [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1), [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)a klienti Azure Storage, můžou spravovat připojení, pokud použijete jediného statického klienta.
+Aby nedošlo k většímu podílu připojení, než je potřeba, místo vytváření nových funkcí pomocí jednotlivých volání funkce znovu použijte instance klientů. Pro libovolný jazyk, ve kterém můžete napsat funkci, doporučujeme znovu použít připojení klientů. Například klienti .NET, jako jsou [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true), [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)a klienti Azure Storage, můžou spravovat připojení, pokud použijete jediného statického klienta.
 
 Tady jsou některé pokyny, které je potřeba provést, když v Azure Functions aplikaci používáte klienta pro konkrétní služby:
 
@@ -39,7 +39,7 @@ Tato část popisuje osvědčené postupy pro vytváření a používání klien
 
 ### <a name="httpclient-example-c"></a>Příklad HttpClient (C#)
 
-Zde je příklad kódu funkce jazyka C#, který vytváří statickou instanci [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) :
+Zde je příklad kódu funkce jazyka C#, který vytváří statickou instanci [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) :
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +52,7 @@ public static async Task Run(string input)
 }
 ```
 
-Běžným dotazem týkajícím se [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) v .NET je "Mám vyřadit klienta?" Obecně platí, že budete nakládat objekty, které implementují, `IDisposable` až je budete používat. Ale nebudete odstraňovat statický klient, protože ho nebudete používat, když funkce skončí. Chcete, aby byl statický klient aktivní po dobu trvání vaší aplikace.
+Běžným dotazem týkajícím se [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1&preserve-view=true) v .NET je "Mám vyřadit klienta?" Obecně platí, že budete nakládat objekty, které implementují, `IDisposable` až je budete používat. Ale nebudete odstraňovat statický klient, protože ho nebudete používat, když funkce skončí. Chcete, aby byl statický klient aktivní po dobu trvání vaší aplikace.
 
 ### <a name="http-agent-examples-javascript"></a>Příklady agenta HTTP (JavaScript)
 
@@ -143,10 +143,10 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>Připojení SqlClient
 
-Kód funkce může použít .NET Framework Zprostředkovatel dat pro SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) k vytvoření připojení k RELAČNÍ databázi SQL. Toto je také základní poskytovatel pro datové architektury, které spoléhají na ADO.NET, jako je například [Entity Framework](/ef/ef6/). Na rozdíl od připojení [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) implementuje ADO.NET ve výchozím nastavení sdružování připojení. Ale vzhledem k tomu, že stále může docházet k připojení, byste měli optimalizovat připojení k databázi. Další informace najdete v tématu věnovaném [sdružování připojení SQL Server (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
+Kód funkce může použít .NET Framework Zprostředkovatel dat pro SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) k vytvoření připojení k RELAČNÍ databázi SQL. Toto je také základní poskytovatel pro datové architektury, které spoléhají na ADO.NET, jako je například [Entity Framework](/ef/ef6/). Na rozdíl od připojení [HttpClient](/dotnet/api/system.net.http.httpclient) a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) implementuje ADO.NET ve výchozím nastavení sdružování připojení. Ale vzhledem k tomu, že stále může docházet k připojení, byste měli optimalizovat připojení k databázi. Další informace najdete v tématu věnovaném [sdružování připojení SQL Server (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Některá datová rozhraní, například Entity Framework, obvykle získávají připojovací řetězce z oddílu **connectionStrings** konfiguračního souboru. V tomto případě musíte explicitně přidat připojovací řetězce databáze SQL do kolekce **připojovacích řetězců** v nastavení aplikace Function App a v [local.settings.jsv souboru](functions-run-local.md#local-settings-file) v místním projektu. Pokud vytváříte instanci [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** s ostatními připojeními.
+> Některá datová rozhraní, například Entity Framework, obvykle získávají připojovací řetězce z oddílu **connectionStrings** konfiguračního souboru. V tomto případě musíte explicitně přidat připojovací řetězce databáze SQL do kolekce **připojovacích řetězců** v nastavení aplikace Function App a v [local.settings.jsv souboru](functions-run-local.md#local-settings-file) v místním projektu. Pokud vytváříte instanci [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** s ostatními připojeními.
 
 ## <a name="next-steps"></a>Další kroky
 

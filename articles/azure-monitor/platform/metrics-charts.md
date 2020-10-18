@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079549"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168558"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Pokročilé funkce Průzkumníku metrik Azure
 
@@ -77,15 +77,15 @@ Můžete použít filtry na grafy, které zobrazují metriky s rozměry. Pokud n
 
 2. Vyberte dimenzi (vlastnost), kterou chcete filtrovat.
 
-   ![obrázek metriky](./media/metrics-charts/00006.png)
+   ![Snímek obrazovky zobrazující dimenze (vlastnosti), které můžete filtrovat.](./media/metrics-charts/00006.png)
 
 3. Vyberte, které hodnoty dimenze chcete zahrnout při vykreslování grafu (Tento příklad ukazuje odfiltrování úspěšných transakcí úložiště):
 
-   ![obrázek metriky](./media/metrics-charts/00007.png)
+   ![Snímek obrazovky zobrazující filtrování z úspěšných transakcí úložiště](./media/metrics-charts/00007.png)
 
 4. Po výběru hodnot filtru klikněte na pryč v selektoru filtru a zavřete ho. Graf teď zobrazuje, kolik transakcí úložiště selhalo:
 
-   ![obrázek metriky](./media/metrics-charts/00008.png)
+   ![Snímek obrazovky, který ukazuje, kolik transakcí úložiště selhalo](./media/metrics-charts/00008.png)
 
 5. Opakováním kroků 1-4 můžete použít více filtrů pro stejné grafy.
 
@@ -104,11 +104,11 @@ Metriku můžete rozdělit podle dimenzí, abyste vizualizují, jak různé segm
 
 2. Vyberte dimenzi, na které chcete graf rozdělit:
 
-   ![obrázek metriky](./media/metrics-charts/00010.png)
+   ![Snímek obrazovky zobrazující vybranou dimenzi, na které se má váš graf rozdělit](./media/metrics-charts/00010.png)
 
    Nyní graf nyní zobrazuje více řádků, jeden pro každý segment dimenze:
 
-   ![obrázek metriky](./media/metrics-charts/00012.png)
+   ![Snímek obrazovky, který zobrazuje více řádků, jeden pro každý segment dimenze.](./media/metrics-charts/00012.png)
 
 3. Kliknutím na tlačítko mimo **Výběr seskupení** jej zavřete.
 
@@ -125,7 +125,7 @@ Dalším příkladem je kolísání dostupné paměti, kde hodnota nebude techni
 
 Chcete-li řídit rozsah osy y, použijte znak "...". Nabídka graf a vyberte **Upravit graf** pro přístup k rozšířeným nastavením grafu. Upravte hodnoty v části Rozsah osy Y nebo použijte tlačítko **auto** a vraťte se k výchozímu nastavení.
 
-![obrázek metriky](./media/metrics-charts/00014-manually-set-granularity.png)
+![Snímek obrazovky, který zvýrazní možnost upravit graf](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > Uzamykání ohraničení osy y pro grafy, které sledují různé počty nebo součty v určitém časovém období (a proto používají počty, součty, minimum nebo maximum agregace) obvykle vyžadují zadání členitosti času, ale nespoléhání se na automatické výchozí hodnoty. To je nezbytné, protože hodnoty v grafech se mění, když je časová hustota automaticky upravována uživatelem v prohlížeči nebo při přechodu z jednoho rozlišení obrazovky na jiný. Výsledná změna v časovém intervalu ovlivňuje vzhled grafu, neověřuje aktuální výběr rozsahu osy y.
@@ -138,7 +138,7 @@ Chcete-li změnit barvu čáry grafu, klikněte na barevný pruh v legendě, kte
 
 Až budou barvy grafu nakonfigurované, zůstanou při připnutí grafu na řídicí panel. V následující části se dozvíte, jak připnout graf.
 
-![obrázek metriky](./media/metrics-charts/018.png)
+![Snímek obrazovky, který ukazuje, jak připnout graf](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>Připnutí grafů na řídicí panely
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5eff13c9ec672937258cf35274d2f5f7bc66f18
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272493"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164240"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Příprava virtuálních počítačů na FCI (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ Tento článek popisuje, jak připravit virtuální počítače Azure na jejich 
 
 Další informace najdete v tématu Přehled [FCI s SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) a [osvědčených postupech pro clustery](hadr-cluster-best-practices.md). 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Předplatné Microsoft Azure. Začněte [zdarma](https://azure.microsoft.com/free/). 
 - Doména Windows na virtuálních počítačích Azure nebo v místním datacentru, které se rozšířily do Azure s párováním virtuálních sítí.
@@ -101,14 +101,14 @@ Po zrušení registrace od poskytovatele prostředků můžete odinstalovat SQL 
 
 Na každém virtuálním počítači otevřete port Windows firewallu TCP, který SQL Server používá. Ve výchozím nastavení se jedná o port 1433. Můžete ale změnit port SQL Server v nasazení virtuálního počítače Azure, takže otevřete port, který SQL Server používá ve vašem prostředí. Tento port se automaticky otevře v SQL Server imagí nasazených z Azure Marketplace. 
 
-Pokud používáte [Nástroj pro vyrovnávání zatížení](hadr-vnn-azure-load-balancer-configure.md), budete také muset otevřít port, který sonda stavu používá. Ve výchozím nastavení se jedná o port 59999. Může to ale být libovolný port TCP, který zadáte při vytváření nástroje pro vyrovnávání zatížení. 
+Pokud používáte [Nástroj pro vyrovnávání zatížení](failover-cluster-instance-vnn-azure-load-balancer-configure.md), budete také muset otevřít port, který sonda stavu používá. Ve výchozím nastavení se jedná o port 59999. Může to ale být libovolný port TCP, který zadáte při vytváření nástroje pro vyrovnávání zatížení. 
 
 Tato tabulka podrobně popisuje porty, které může být potřeba otevřít, v závislosti na konfiguraci FCI: 
 
    | Účel | Port | Poznámky
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře. </br> </br> **Používá**se: všechny konfigurace FCI. |
-   | Sonda stavu | TCP 59999 | Libovolný otevřený port TCP. Nakonfigurujte [sondu stavu](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) nástroje pro vyrovnávání zatížení a cluster, který bude používat tento port. </br> </br> **Používá**: FCI s nástrojem pro vyrovnávání zatížení. |
+   | Sonda stavu | TCP 59999 | Libovolný otevřený port TCP. Nakonfigurujte [sondu stavu](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) nástroje pro vyrovnávání zatížení a cluster, který bude používat tento port. </br> </br> **Používá**: FCI s nástrojem pro vyrovnávání zatížení. |
    | Sdílená složka | UDP 445 | Port, který používá služba sdílení souborů. </br> </br> **Používá se v**: FCI se službou Premium File Share. |
 
 ## <a name="join-the-domain"></a>Připojení k doméně

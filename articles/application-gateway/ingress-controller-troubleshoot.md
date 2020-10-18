@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207163"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92168184"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Řešení běžných otázek nebo potíží s řadičem příchozího přenosu dat
 
@@ -85,15 +85,15 @@ Po úspěšném nasazení aplikace nad cluster AKS bude k dispozici nový pod, s
 Seznam lusků získáte pomocí [Cloud Shell](https://shell.azure.com/): `kubectl get pods -o wide` .
 Očekáváme, že se vytvoří název pod názvem test-agic-App-pod. Bude mít IP adresu. Tato adresa musí být v rámci virtuální sítě Application Gateway, která se používá s AKS.
 
-![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
+![Snímek obrazovky okna bash v Azure Cloud Shell zobrazující seznam lusků, který zahrnuje test-agic-App-pod v seznamu.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
 Získat seznam služeb: `kubectl get services -o wide` . Očekáváme, že se zobrazí služba s názvem test-agic-App-Service.
 
-![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
+![Snímek obrazovky okna bash v Azure Cloud Shell zobrazující seznam služeb, které obsahují test-agic-App-pod v seznamu.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
 Získat seznam příchozích dat: `kubectl get ingress` . Očekáváme, že prostředek příchozího přenosu s názvem test-agic-App-příchozí je vytvořený. Prostředek bude mít název hostitele ' test.agic.contoso.com '.
 
-![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
+![Snímek obrazovky okna bash v Azure Cloud Shell zobrazující seznam vstupů, které v seznamu obsahují test-agic-App-in.](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
 Jedna z lusků bude AGIC. `kubectl get pods` Zobrazí seznam lusků, z nichž jedna začíná "příchozí – Azure". Získejte všechny protokoly, které jsou pod nástrojem, `kubectl logs <name-of-ingress-controller-pod>` a ověřte tak, že máme úspěšné nasazení. Úspěšné nasazení by do protokolu přidalo následující řádky:
 ```
@@ -120,7 +120,7 @@ Nakonec můžeme pomocí příkazu v `cURL` rámci [Cloud Shell](https://shell.a
 1. Použijte `kubectl get ingress` k získání veřejné IP adresy Application Gateway
 2. Použití `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>`
 
-![podů](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
+![Snímek obrazovky okna bash v Azure Cloud Shell znázorňující příkaz složeného příkazu se úspěšně navázáním připojení HTTP k testovací aplikaci.](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
 Výsledek `HTTP/1.1 200 OK` znamená, že systém Application Gateway + AKS + AGIC pracuje podle očekávání.
 
@@ -236,7 +236,7 @@ AGIC má 3 úrovně protokolování. První úroveň je výchozí a zobrazuje mi
 Komunita Kubernetes zřídila 9 úrovní protokolování pro nástroj [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) . V tomto úložišti využíváme 3 z těchto verzí s podobnou sémantikou:
 
 
-| Podrobnosti | Description |
+| Podrobnosti | Popis |
 |-----------|-------------|
 |  1        | Výchozí úroveň protokolu; zobrazuje podrobnosti o spuštění, upozornění a chyby. |
 |  3        | Rozšířené informace o událostech a změnách; seznamy vytvořených objektů |

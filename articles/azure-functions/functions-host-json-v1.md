@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 1. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem Runtime v1.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32848c725d5c99e3814e86447d604839502054c0
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81757515"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167712"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.jsna referenci pro Azure Functions 1. x
 
@@ -136,7 +136,7 @@ Nastavení konfigurace [aktivační události Azure Cosmos DB a vazeb](functions
 }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |GatewayMode|brána|Režim připojení, který funkce používá při připojování ke službě Azure Cosmos DB. Možnosti jsou `Direct` a `Gateway`|
 |Protokol|Https|Protokol připojení, který funkce používá při připojení ke službě Azure Cosmos DB.  Přečtěte si [zde pro vysvětlení obou režimů](../cosmos-db/performance-tips.md#networking) .|
@@ -186,7 +186,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |enabled|true|Určuje, jestli je funkce povolená. | 
 |healthCheckInterval|10 sekund|Časový interval mezi pravidelnými kontrolami stavu pozadí. | 
@@ -209,7 +209,7 @@ Nastavení konfigurace [aktivačních událostí a vazeb HTTP](functions-binding
 }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|false (nepravda)|Když je toto nastavení povolené, bude v kanálu zpracování požadavků pravidelně kontrolovat čítače výkonu systému, jako jsou připojení/vlákna, procesy/paměti/CPU/a, pokud některý z těchto čítačů překročí vestavěnou vysokou prahovou hodnotu (80%), požadavky se odmítnou se 429 "příliš zaneprázdněnou", dokud se čítače nevrátí na normální úrovně.|
 |maxConcurrentRequests|bez vazby ( `-1` )|Maximální počet funkcí HTTP, které se spustí paralelně. To vám umožňuje řídit souběžnost, což pomáhá spravovat využití prostředků. Můžete mít například funkci HTTP, která používá velké množství systémových prostředků (paměť/procesor/sokety), což způsobuje problémy, pokud je souběžnost příliš vysoká. Nebo může být funkce, která vytváří odchozí požadavky na službu třetí strany, a tyto hovory musí být omezené na míru. V těchto případech vám může pomáhat použití omezení.|
@@ -230,7 +230,7 @@ Pokud sdílíte účet úložiště napříč více aplikacemi Function App, uji
 
 ## <a name="logger"></a>Nástroj
 
-Řídí filtrování protokolů zapsaných [objektem ILogger](functions-monitoring.md#write-logs-in-c-functions) nebo [kontextem. log](functions-monitoring.md#write-logs-in-javascript-functions).
+Řídí filtrování protokolů zapsaných objektem [ILogger](functions-dotnet-class-library.md#ilogger) nebo [kontextem. log](functions-reference-node.md#contextlog-method).
 
 ```json
 {
@@ -247,7 +247,7 @@ Pokud sdílíte účet úložiště napříč více aplikacemi Function App, uji
 }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |categoryFilter|neuvedeno|Určuje filtrování podle kategorie.| 
 |defaultLevel|Informace|Pro jakékoli kategorie, které nejsou určené v `categoryLevels` poli, odešlete protokoly na této úrovni a výše do Application Insights.| 
@@ -269,7 +269,7 @@ Nastavení konfigurace [aktivačních událostí a vazeb fronty úložiště](fu
 }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |maxPollingInterval|60000|Maximální interval v milisekundách mezi dotazy na frontu.| 
 |visibilityTimeout|0|Časový interval mezi opakovanými pokusy při zpracování zprávy se nezdařil.| 
@@ -288,7 +288,7 @@ Nastavení konfigurace pro [výstupní vazbu SendGrind](functions-bindings-sendg
     }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |Výsledkem|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 
@@ -306,7 +306,7 @@ Nastavení konfigurace pro [aktivační události Service Bus a vazby](functions
 }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo iniciovat čerpadlo zpráv. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně. Pokud chcete modul runtime nasměrovat tak, aby zpracovával jenom jednu frontu nebo zprávu o tématu, nastavte `maxConcurrentCalls` na hodnotu 1. | 
 |prefetchCount|neuvedeno|Výchozí PrefetchCount, které bude používat základní MessageReceiver.| 
@@ -328,7 +328,7 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Období, pro které jsou přijímány zámky na úrovni funkce. Automatické obnovení zámků.| 
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
@@ -340,7 +340,7 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 
 *Verze 1. x*
 
-Nastavení konfigurace pro protokoly, které vytvoříte pomocí `TraceWriter` objektu. Viz protokolování [C#](functions-reference-csharp.md#logging) a [ protokolováníNode.js](functions-reference-node.md#writing-trace-output-to-the-console).
+Nastavení konfigurace pro protokoly, které vytvoříte pomocí `TraceWriter` objektu. Další informace najdete v tématu [protokolování C#].
 
 ```json
 {
@@ -351,7 +351,7 @@ Nastavení konfigurace pro protokoly, které vytvoříte pomocí `TraceWriter` o
 }
 ```
 
-|Vlastnost  |Výchozí | Description |
+|Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |consoleLevel|příjemce|Úroveň trasování pro protokolování konzoly. Možnosti jsou: `off` , `error` , `warning` , `info` a `verbose` .|
 |fileLoggingMode|debugOnly|Úroveň trasování pro protokolování souborů. Možnosti jsou `never` , `always` , `debugOnly` .| 
