@@ -1,4 +1,4 @@
-- name: Dokumentace k privátnímu propojení Azure
+- name: Dokumentace k Private Linku
   href: index.yml
 - name: Přehled
   items:
@@ -24,6 +24,7 @@
     - name: Vytvoření služby Private Link – šablona Resource Manageru
       displayName: Resource Manager
       href: create-private-link-service-template.md
+  expanded: true
 - name: Kurzy
   items:
     - name: Připojení k účtu úložiště
@@ -42,7 +43,7 @@
       items:
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
-- name: Postup
+- name: Postupy
   items:
     - name: Privátní připojení k webové aplikaci
       href: create-private-endpoint-webapp-portal.md

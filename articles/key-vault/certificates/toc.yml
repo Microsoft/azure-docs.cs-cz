@@ -37,6 +37,8 @@
       href: create-certificate.md
     - name: Vytvoření žádosti o podepsání certifikátu
       href: create-certificate-signing-request.md
+    - name: Řízení přístupu k certifikátům
+      href: certificate-access-control.md
 - name: Návody
   items:
     - name: Integrace služby Key Vault s certifikační autoritou DigiCert

@@ -193,7 +193,7 @@
       items:
         - name: Služba simulátoru zařízení
           href: 'https://github.com/Azure/device-simulation-dotnet/tree/master'
-        - name: Ukázky služby Azure Digital Twins
+        - name: Komplexní ukázky služby Azure Digital Twins
           href: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
         - name: Průzkumník Azure Digital Twins (ukázka)
           href: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer/
@@ -201,10 +201,10 @@
           href: /samples/azure-samples/dtdl-validator/dtdl-validator/
         - name: Ukázka integrace ioT Hubu a DPS
           href: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
-        - name: Vlastní swaggery služby Azure Digital Twins pro konektor Logic Apps
-          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
         - name: Ukázka integrace SignalR
           href: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+        - name: Vlastní swaggery služby Azure Digital Twins pro konektor Logic Apps
+          href: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
     - name: Nástroje Azure
       items:
         - name: Azure Cloud Shell

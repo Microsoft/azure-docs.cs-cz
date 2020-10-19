@@ -686,11 +686,10 @@
           items:
             - name: Doporučení zabezpečení
               href: security-recommendations.md
-            - name: Řízení přístupu (adresáře a soubory)
+            - name: Model řízení přístupu
+              href: data-lake-storage-access-control-model.md
+            - name: Seznamy řízení přístupu
               href: data-lake-storage-access-control.md
-            - name: Mechanismy zabezpečení služby Azure Policy
-              displayName: 'regulatory, compliance, standards, domains'
-              href: ./security-controls-policy.md
         - name: Kompatibilita
           items:
             - name: Přístup s více protokoly

@@ -864,6 +864,24 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
                         - name: Tipy pro použití balíčků jazyka R
                           href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: Správa
+                  items:
+                    - name: Monitorování
+                      items:
+                        - name: Monitorování s využitím sestav SSMS
+                          href: 'https://docs.microsoft.com/sql/machine-learning/administration/monitor-sql-server-machine-learning-services-using-custom-reports-management-studio?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: Monitorování s využitím zobrazení dynamické správy
+                          href: 'https://docs.microsoft.com/sql/machine-learning/administration/monitor-sql-server-machine-learning-services-using-dynamic-management-views?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                        - name: Rozšířené události
+                          items:
+                            - name: Monitorování s využitím rozšířených událostí
+                              href: 'https://docs.microsoft.com/sql/machine-learning/administration/extended-events?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                            - name: Monitorování PREDICT T-SQL
+                              href: 'https://docs.microsoft.com/sql/machine-learning/administration/extended-events-predict-tsql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                - name: Zabezpečení
+                  items:
+                    - name: Udělení uživatelských oprávnění
+                      href: 'https://docs.microsoft.com/sql/machine-learning/security/user-permission?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
         - name: Funkce
           items:
             - name: Propojené servery

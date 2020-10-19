@@ -6,10 +6,8 @@
       href: introduction.md
 - name: Rychlý start
   items:
-    - name: Proces před nasazením
+    - name: 0. Naplánování nasazení
       href: production-ready-deployment-steps.md
-    - name: Kontrolní seznam před nasazením
-      href: pre-deployment-checklist.md
     - name: 1. Nasazení služby Azure VMware Solution
       href: deploy-azure-vmware-solution.md
     - name: 2. Připojení k místnímu prostředí
@@ -104,3 +102,7 @@
           href: fix-deployment-provisioning-failures.md
     - name: Nejčastější dotazy
       href: faq.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware

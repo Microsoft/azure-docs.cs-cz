@@ -34,7 +34,11 @@
     - name: Koncepty
       items:
         - name: Kontrola požadavků
-          href: azure-stack-edge-gpu-system-requirements.md
+          items:
+            - name: Pro Azure Stack Edge
+              href: azure-stack-edge-gpu-system-requirements.md
+            - name: Pro úložiště objektů blob Azure Stack Edge
+              href: azure-stack-edge-gpu-system-requirements-rest.md
         - name: Pochopení limitů
           href: azure-stack-edge-limits.md
         - name: Přehled zabezpečení
