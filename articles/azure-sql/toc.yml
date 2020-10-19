@@ -977,7 +977,7 @@
                   href: virtual-machines/windows/backup-restore.md
                 - name: Azure Storage pro zálohování
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
-                - name: Skupina dostupnosti Always On
+                - name: Skupina dostupnosti (AG)
                   href: virtual-machines/windows/availability-group-overview.md
                 - name: Instance clusteru s podporou převzetí služeb při selhání
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
@@ -1054,33 +1054,45 @@
                       href: virtual-machines/windows/automated-backup.md
                     - name: Automatizované zálohování (SQL 2014)
                       href: virtual-machines/windows/automated-backup-sql-2014.md
-                - name: Skupina dostupnosti Always On
+                - name: Skupina dostupnosti
                   items:
-                    - name: portál Azure
-                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
-                    - name: PowerShell nebo Az CLI
-                      href: virtual-machines/windows/availability-group-az-commandline-configure.md
-                    - name: Šablony Azure pro rychlé zprovoznění
-                      href: virtual-machines/windows/availability-group-quickstart-template-configure.md
-                    - name: Několik oblastí
-                      href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
-                    - name: Nezávislé na doméně (pracovní skupina)
-                      href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
-                    - name: Ruční konfigurace
+                    - name: Vytvoření skupiny dostupnosti
                       items:
-                        - name: Požadavky
-                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
-                        - name: Kurz
-                          href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
-                        - name: Load Balancer – web Azure Portal
-                          href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
-                        - name: Load Balancer – Azure PowerShell
-                          href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                        - name: portál Azure
+                          href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                        - name: PowerShell nebo Az CLI
+                          href: virtual-machines/windows/availability-group-az-commandline-configure.md
+                        - name: Šablony Azure pro rychlé zprovoznění
+                          href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                        - name: Několik oblastí
+                          href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                        - name: Nezávislé na doméně (pracovní skupina)
+                          href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
+                        - name: Ruční konfigurace
+                          items:
+                            - name: Požadavky
+                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
+                            - name: Kurz
+                              href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                            - name: Load Balancer – web Azure Portal
+                              href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+                            - name: Load Balancer – Azure PowerShell
+                              href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                    - name: Konfigurace možností připojení
+                      items:
+                        - name: Naslouchací proces VNN
+                          displayName: virtual network name
+                          href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
+                        - name: Naslouchací proces DNN
+                          displayName: distributed network name
+                          href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
+                        - name: Vzájemná funkční spolupráce DNN
+                          href: virtual-machines/windows/availability-group-dnn-interoperability.md
                 - name: Instance clusteru s podporou převzetí služeb při selhání (FCI)
                   items:
                     - name: Příprava virtuálního počítače pro FCI
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
-                    - name: Vytvoření FCI s využitím
+                    - name: Vytvoření FCI
                       items:
                         - name: Sdílené disky Azure
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
@@ -1088,16 +1100,14 @@
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
                         - name: Sdílená složka úrovně Premium (Win2012+)
                           href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
-                    - name: Název distribuované sítě (DNN)
+                    - name: Konfigurace možností připojení
                       items:
-                        - name: Vytvoření DNN pro FCI
-                          href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: DNN FCI a funkce SQL Serveru
+                        - name: Název virtuální sítě (VNN)
+                          href: virtual-machines/windows/failover-cluster-instance-vnn-azure-load-balancer-configure.md
+                        - name: Název distribuované sítě (DNN)
+                          href: virtual-machines/windows/failover-cluster-instance-distributed-network-name-dnn-configure.md
+                        - name: Vzájemná funkční spolupráce DNN
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
-                - name: Konfigurace možností připojení
-                  items:
-                    - name: Název virtuální sítě (VNN)
-                      href: virtual-machines/windows/hadr-vnn-azure-load-balancer-configure.md
         - name: Referenční informace
           items:
             - name: Azure PowerShell

@@ -89,6 +89,9 @@
     - name: Poznámkové bloky Jupyter
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: Ukázkové úložiště
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: Datové sady a ukázky designeru
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md

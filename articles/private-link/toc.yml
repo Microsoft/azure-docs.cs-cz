@@ -31,6 +31,8 @@
       href: tutorial-private-endpoint-storage-portal.md
     - name: Připojení k účtu Cosmos DB
       href: tutorial-private-endpoint-cosmosdb-portal.md
+    - name: Připojení k webové aplikaci
+      href: tutorial-private-endpoint-webapp-portal.md
 - name: Koncepty
   items:
     - name: Privátní koncový bod
