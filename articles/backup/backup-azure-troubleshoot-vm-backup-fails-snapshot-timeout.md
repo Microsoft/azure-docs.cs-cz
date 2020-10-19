@@ -4,12 +4,12 @@ description: Příznaky, příčiny a řešení chyb Azure Backup souvisejícíc
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1711652434be3d9937c8199bc1999273ef58e4d0
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182033"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170288"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -103,7 +103,6 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 
 K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální počítač do stavu selhání zřizování.<br>**Otevřete Azure Portal > > nastavení virtuálního počítače > rozšíření stav rozšíření >** a ověřte, jestli jsou všechna rozšíření ve stavu **úspěšné zřizování** . Další informace najdete v tématu [stav zřizování](../virtual-machines/states-lifecycle.md#provisioning-states).
 
-- Pokud je rozšíření VMSnapshot ve stavu selhání, klikněte pravým tlačítkem myši na rozšíření, které selhalo, a odeberte ho. Aktivovat zálohování na vyžádání. Tato akce nainstaluje rozšíření znovu a spustí úlohu zálohování.  <br>
 - Pokud je jakékoli jiné rozšíření ve stavu selhání, může to narušit zálohování. Zajistěte, aby byly problémy s rozšířením vyřešeny, a opakujte operaci zálohování.
 - Pokud je stav zřizování virtuálního počítače v aktualizovaném stavu, může to narušit zálohování. Ujistěte se, že je v pořádku, a zkuste operaci zálohování zopakovat.
 

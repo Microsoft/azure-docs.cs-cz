@@ -4,16 +4,16 @@ description: V tomto rychlém startu nasadíme jarní cloudovou aplikaci do jarn
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 09/18/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: fe6f72b60257a1101765dcb539cc3e0eb1d2346e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2ec79c9c1fc3b461037b2005da7198f81cbbab34
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090042"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170361"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -33,7 +33,7 @@ V tomto rychlém startu se dozvíte, jak:
 
 Kód aplikace použitý v tomto rychlém startu je jednoduchá aplikace vytvořená pomocí šablony projektu webového rozhraní API .NET Core. Po dokončení tohoto příkladu bude aplikace dostupná online a bude ji možné spravovat prostřednictvím Azure Portal a Azure CLI.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Sada .NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Služba pružinového cloudu Azure podporuje .NET Core 3,1 a novější verze.
@@ -334,7 +334,7 @@ V tomto rychlém startu se dozvíte, jak:
 > * Sestavení a nasazení aplikace s veřejným koncovým bodem
 > * Streamování protokolů v reálném čase
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -419,10 +419,10 @@ Následující postup sestaví a nasadí aplikaci pomocí rozhraní příkazové
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public
     ```
 
-1. Nasadit soubor JAR pro aplikaci:
+1. Nasadit soubor JAR pro aplikaci ( `target\hellospring-0.0.1-SNAPSHOT.jar` ve Windows):
 
     ```azurecli
-    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar
+    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path <jar file path>
     ```
     
 1. Dokončení nasazení aplikace trvá několik minut. Pokud chcete potvrdit, že se nasadil, otevřete okno **aplikace** v Azure Portal. Měl by se zobrazit stav aplikace.

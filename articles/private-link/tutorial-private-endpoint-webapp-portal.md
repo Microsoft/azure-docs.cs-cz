@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 4b12c71390a6b03de2f6f6a4bd79707cbc357dfe
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6d4d9fd901337b9c05c7d7d7f271974273e9fe37
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169032"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170061"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Kurz: připojení k webové aplikaci pomocí privátního koncového bodu Azure
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte privátní koncový bod.
 > * Otestujte připojení k privátnímu koncovému bodu webové aplikace.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!Note]
 > Privátní koncový bod je k dispozici ve veřejných oblastech pro PremiumV2 webové aplikace PremiumV3 Windows, Linux Web Apps a plán služby Azure Functions Premium (někdy se mu říká plán elastické Premium). 
@@ -206,7 +206,7 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 7. Po připojení otevřete Windows PowerShell na serveru.
 
-8. Zadejte `nslookup <webapp-name>.azurewebsites.net`. Nahraďte **\<webapp-name>** názvem účtu úložiště, který jste vytvořili v předchozích krocích.  Zobrazí se zpráva podobná tomu, co se zobrazuje níže:
+8. Zadejte `nslookup <webapp-name>.azurewebsites.net`. Nahraďte **\<webapp-name>** názvem webové aplikace, kterou jste vytvořili v předchozích krocích.  Zobrazí se zpráva podobná tomu, co se zobrazuje níže:
 
     ```powershell
     Server:  UnKnown

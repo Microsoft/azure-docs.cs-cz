@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 5f9f8be81c5b90ff5e7172b2aba41a108afc64bd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3fc10c9601deb66c8fb6182d5943011f1ef185ce
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126837"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170047"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
@@ -113,7 +113,7 @@ Pokud dojde k narušení zabezpečení nebo pokud je váš primární certifiká
 
 ### <a name="register-and-connect-devices"></a>Registrace a připojení zařízení
 
-Pokud chcete zařízení hromadně propojit pomocí certifikátů X. 509, nejdřív zařízení zaregistrujte do aplikace pomocí souboru CSV [a importujte identifikátory zařízení a názvy zařízení](howto-manage-devices.md#import-devices). Všechna ID zařízení by měla být malá.
+Pokud chcete zařízení hromadně propojit pomocí certifikátů X. 509, nejdřív zařízení zaregistrujte do aplikace pomocí souboru CSV [a importujte identifikátory zařízení a názvy zařízení](howto-manage-devices.md#import-devices). ID zařízení může obsahovat písmena, číslice a `-` znak.
 
 Pomocí kořenového nebo zprostředkujícího certifikátu, který jste nahráli do vaší skupiny registrací X. 509, vygenerujte na svých zařízeních hlavní certifikáty X. 509. Jako **Device ID** `CNAME` hodnotu v listových certifikátech použijte ID zařízení. Váš kód zařízení potřebuje hodnotu **rozsahu ID** vaší aplikace, **ID zařízení**a odpovídající certifikát zařízení.
 
@@ -149,7 +149,7 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
 
     :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Přidat snímek skupiny registrace X. 509":::
 
-1. Pomocí `az iot central device compute-device-key` příkazu vygenerujte klíče SAS zařízení. Použijte primární klíč skupiny z předchozího kroku. ID zařízení musí být malá písmena:
+1. Pomocí `az iot central device compute-device-key` příkazu vygenerujte klíče SAS zařízení. Použijte primární klíč skupiny z předchozího kroku. ID zařízení může obsahovat písmena, číslice a `-` znak:
 
     ```azurecli
     az iot central device compute-device-key --primary-key <enrollment group primary key> --device-id <device ID>
@@ -170,7 +170,7 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
 
 1. [Vytvořte skupinu](#create-an-enrollment-group) registrací a potom do aplikace IoT Central [přidejte a ověřte kořenový nebo zprostředkující certifikát X. 509](#add-and-verify-a-root-or-intermediate-x509-certificate) .
 
-1. Vygenerujte list – certifikáty pro vaše zařízení pomocí kořenového nebo zprostředkujícího certifikátu, který jste přidali do aplikace IoT Central. Použijte ID zařízení malými písmeny jako `CNAME` v listových certifikátech.
+1. Vygenerujte list – certifikáty pro vaše zařízení pomocí kořenového nebo zprostředkujícího certifikátu, který jste přidali do aplikace IoT Central. Použijte ID zařízení jako `CNAME` v listových certifikátech. ID zařízení může obsahovat písmena, číslice a `-` znak.
 
 1. Výrobce OEM pokaždé zařízení pokaždé, když má ID zařízení, vygenerovaný listový certifikát X. 509 a hodnotu **rozsahu ID** aplikace.
 
@@ -185,7 +185,7 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Jednotlivá připojení zařízení založená na registraci
 
-Pro zákazníky připojující zařízení, která mají vlastní ověřovací přihlašovací údaje, použijte jednotlivé registrace. Jednotlivá registrace je záznam pro jedno zařízení, které se smí připojit. Jednotlivé registrace můžou jako mechanismus ověřování použít buď certifikáty na listech X. 509, nebo tokeny SAS (z modulu fyzického nebo virtuální důvěryhodné platformy). ID zařízení (označované také jako ID registrace) v individuální registraci je alfanumerické a malé písmeno a může obsahovat spojovníky. Další informace najdete v tématu [DPS – jednotlivý zápis](../../iot-dps/concepts-service.md#individual-enrollment).
+Pro zákazníky připojující zařízení, která mají vlastní ověřovací přihlašovací údaje, použijte jednotlivé registrace. Jednotlivá registrace je záznam pro jedno zařízení, které se smí připojit. Jednotlivé registrace můžou jako mechanismus ověřování použít buď certifikáty na listech X. 509, nebo tokeny SAS (z modulu fyzického nebo virtuální důvěryhodné platformy). ID zařízení (označované také jako ID registrace) v individuální registraci: ID zařízení může obsahovat písmena, číslice a `-` znak. Další informace najdete v tématu [DPS – jednotlivý zápis](../../iot-dps/concepts-service.md#individual-enrollment).
 
 > [!NOTE]
 > Když vytvoříte jednotlivou registraci zařízení, bude mít přednost před výchozími možnostmi registrace skupin ve vaší aplikaci IoT Central.

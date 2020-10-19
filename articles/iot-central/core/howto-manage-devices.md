@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperfq2
-ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850094"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170333"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Správa zařízení v aplikaci Azure IoT Central
 
@@ -60,7 +60,7 @@ Postup přidání zařízení do aplikace Azure IoT Central:
 
 Pokud chcete k aplikaci připojit velký počet zařízení, můžete hromadně importovat zařízení ze souboru CSV. Soubor CSV by měl mít následující sloupce a hlavičky:
 
-* **IOTC_DeviceID** – ID zařízení by mělo být jen malými písmeny.
+* **IOTC_DeviceID** – ID zařízení může obsahovat písmena, číslice a `-` znak.
 * **IOTC_DeviceName** – tento sloupec je nepovinný.
 
 Postup hromadné registrace zařízení v aplikaci:

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: d36fe791e34544a4d6132a49fc5ec3f2aa334654
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: cc32a67ab681341fd8320b9445f4e00013f2aa51
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127280"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170267"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Porozumění změnám v kořenové CA se mění Azure Database for MySQL
 
@@ -104,7 +104,7 @@ Pokud kořenový certifikát neaktualizujete dřív než 15. února 2021 (02/15/
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. Jaký je dopad při použití App Service s Azure Database for MySQL?
 V případě Azure App Services můžeme mít Azure Database for MySQL k dispozici dva možné scénáře a závisí na tom, jak používáte protokol SSL s vaší aplikací.
 *   Tento nový certifikát se přidal do App Service na úrovni platformy. Pokud používáte certifikáty SSL obsažené na platformě App Service v aplikaci, není nutné provádět žádnou akci.
-*   Pokud explicitně zadáte cestu k souboru certifikátu SSL v kódu, budete muset stáhnout nový certifikát a aktualizovat kód, aby používal nový certifikát.
+*   Pokud explicitně zadáte cestu k souboru certifikátu SSL v kódu, budete muset stáhnout nový certifikát a aktualizovat kód, aby používal nový certifikát. Dobrým příkladem tohoto scénáře je použití vlastních kontejnerů v App Service jako sdílené v [dokumentaci k App Service](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. Jaký je dopad použití služeb Azure Kubernetes Services (AKS) s Azure Database for MySQL?
 Pokud se pokoušíte připojit k Azure Database for MySQL pomocí služeb Azure Kubernetes Services (AKS), bude se podobat přístupu z hostitelského prostředí s vyhrazenými zákazníky. Postup najdete [tady](../aks/ingress-own-tls.md).

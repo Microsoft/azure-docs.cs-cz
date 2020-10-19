@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9a93602327b5c5294d6c17c1804c04c6603dcf37
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9ebf07a5125995e66297d89643845b54aad246b8
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999870"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170308"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>Postup připojení zařízení pomocí certifikátů X. 509 pomocí sady SDK pro Node.js zařízení pro IoT Central aplikace
 
@@ -50,12 +50,15 @@ V této části pomocí certifikátu X. 509 připojíte zařízení s certifiká
     npm install
     ```
 
-1. Vytvořte kořenový certifikát a potom odvodit certifikát zařízení spuštěním skriptu. Nezapomeňte použít pouze malé alfanumerické znaky a spojovníky pro název certifikátu:
+1. Vytvořte kořenový certifikát a potom odvodit certifikát zařízení spuštěním skriptu:
 
     ```cmd/sh
     node create_test_cert.js root mytestrootcert
     node create_test_cert.js device mytestdevice mytestrootcert
     ```
+
+    > [!TIP]
+    > ID zařízení může obsahovat písmena, číslice a `-` znak.
 
 Tyto příkazy vytváří tři soubory pro kořenový adresář a certifikát zařízení.
 

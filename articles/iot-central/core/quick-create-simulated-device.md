@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 757575b31bde1a0e25cc3e70aad0cca0fdd45953
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87001943"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170319"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Rychlý Start: Přidání simulovaného zařízení do aplikace IoT Central
 
@@ -28,7 +28,7 @@ V tomto rychlém startu přidáte šablonu zařízení pro desku *MXChip IoT Dev
 * Reaguje na příkazy, jako je zapnutí a vypnutí.
 * Sestavy obecných vlastností zařízení, jako je například verze firmwaru a sériové číslo.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) pro vytvoření IoT Central aplikace pomocí vlastní šablony **aplikace > vlastní** .
 
@@ -128,7 +128,7 @@ K přidání simulovaného zařízení do aplikace použijete šablonu zařízen
 
 1. Pokud chcete přidat nové zařízení jako operátor v levém podokně vyberte **zařízení** . Karta **zařízení** zobrazuje **všechna zařízení** a šablonu zařízení **MXChip IoT DevKit** . Vyberte **MXChip IoT DevKit**.
 
-1. Pokud chcete přidat simulované zařízení DevKit, vyberte **+** . Použijte navržené **ID zařízení** nebo zadejte svoje **ID zařízení**s malými písmeny. Můžete také zadat název nového zařízení. Ujistěte se, že je **zapnuté** **simulované** přepínání, a pak vyberte **vytvořit**.
+1. Pokud chcete přidat simulované zařízení DevKit, vyberte **+** . Použijte navržené **ID zařízení** nebo zadejte vlastní. ID zařízení může obsahovat písmena, číslice a `-` znak. Můžete také zadat název nového zařízení. Ujistěte se, že je **zapnuté** **simulované** přepínání, a pak vyberte **vytvořit**.
 
     ![Simulované zařízení](./media/quick-create-simulated-device/simulated-device.png)
 
