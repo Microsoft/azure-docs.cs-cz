@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 7ae7e20c32836d595d6e0fb4162a895407beeb5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02ea65748928fda7142ce17532999e1a069f6eb0
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828047"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169403"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -94,6 +94,17 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
   
    ![Možnosti úložiště](./media/auditing-overview/auditing-select-destination.png)
 
+### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Auditování operací podpora Microsoftu (Preview)
+
+Auditování operací podpora Microsoftu (Preview) pro Azure SQL Server umožňuje auditovat činnosti pracovníků podpory společnosti Microsoft, když potřebují přístup k vašemu serveru během žádosti o podporu. Tato funkce, společně s vaším auditem, umožňuje větší transparentnost zaměstnanců a umožňuje detekci anomálií, vizualizaci trendů a ochranu před únikem informací.
+
+Pokud chcete povolit auditování podpora Microsoftuch operací (Preview), přejděte do části **audit** v záhlaví zabezpečení v PODOKNĚ **Azure SQL serveru** a přepněte **Auditování operací podpory společnosti Microsoft (Preview)** na **zapnuto**.
+
+  > [!IMPORTANT]
+  > Auditování operací podpory společnosti Microsoft (Preview) nepodporuje cíl účtu úložiště. Aby bylo možné povolit funkci, je nutné nakonfigurovat Log Analytics pracovní prostor nebo cíl centra událostí.
+
+![Snímek obrazovky podpora Microsoftuch operací](./media/auditing-overview/support-operations.png)
+
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Auditovat cíl úložiště
 
 Pokud chcete nakonfigurovat zápis protokolů auditu na účet úložiště, vyberte **úložiště** a otevřete **Podrobnosti úložiště**. Vyberte účet úložiště Azure, do kterého se budou ukládat protokoly, a pak vyberte dobu uchování. Pak klikněte na **OK**. Protokoly starší než doba uchování se odstraní.
@@ -111,7 +122,7 @@ Pokud chcete nakonfigurovat zápis protokolů auditu na účet úložiště, vyb
 - Protokoly auditu můžete zapsat na účet Azure Storage za virtuální sítí nebo bránou firewall. Konkrétní pokyny najdete v tématu [zápis auditu do účtu úložiště za virtuální sítí a branou firewall](audit-write-storage-account-behind-vnet-firewall.md).
 - Po dokončení konfigurace nastavení auditování můžete zapnout funkci detekce nové hrozby a nakonfigurovat e-maily tak, aby přijímaly výstrahy zabezpečení. Pokud používáte detekci hrozeb, obdržíte proaktivní výstrahy týkající se neobvykléch databázových aktivit, které mohou označovat potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekcí hrozeb](threat-detection-overview.md).
 - Podrobnosti o formátu protokolu, hierarchii složky úložiště a zásadách vytváření názvů najdete v referenčních informacích o [formátu protokolu auditu objektů BLOB](https://go.microsoft.com/fwlink/?linkid=829599).
-- Při použití ověřování AAD se záznamy neúspěšných přihlášení *nezobrazí v* protokolu auditu SQL. Chcete-li zobrazit záznamy auditu neúspěšných přihlášení, je nutné navštívit [portál Azure Active Directory](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), který protokoluje podrobnosti o těchto událostech.
+- Při použití ověřování Azure AD se záznamy neúspěšných přihlášení *nezobrazí v* protokolu auditu SQL. Chcete-li zobrazit záznamy auditu neúspěšných přihlášení, je nutné navštívit [portál Azure Active Directory](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), který protokoluje podrobnosti o těchto událostech.
 - Auditování [replik jen pro čtení](read-scale-out.md) je povoleno automaticky. Další podrobnosti o hierarchii složek úložiště, konvencí pojmenování a formátu protokolu najdete v tématu [Formát protokolu auditu SQL Database](audit-log-format.md).
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Audit na Log Analytics cíl

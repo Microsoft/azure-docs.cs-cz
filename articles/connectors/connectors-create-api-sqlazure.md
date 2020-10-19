@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/16/2020
 tags: connectors
-ms.openlocfilehash: 3a2fb2180acfe8fed5701ae4320ea0d1424ed9e0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 534b9fedc6649d3174ea65caf51b28004de7bda2
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166280"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169383"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro databázi SQL pomocí Azure Logic Apps
 
@@ -253,15 +253,13 @@ Když zavoláte uloženou proceduru pomocí konektoru SQL Server, vrácený výs
 
 ## <a name="troubleshoot-problems"></a>Poradce při potížích
 
-Je velmi běžné, že narazíte na potíže s připojením. Následuje příklad chybové zprávy:
+Často dochází k problémům s připojením, aby bylo možné problémy vyřešit a vyřešit tyto druhy problémů, přečtěte si téma [řešení chyb připojení k SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Tady je několik příkladů:
 
-> `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
->
-> `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
->
-> `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 
-Pokud chcete problém vyřešit, postupujte prosím podle pokynů [SQL Server k řešení chyb připojení](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) .
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>Podrobnosti specifické pro spojnici
 

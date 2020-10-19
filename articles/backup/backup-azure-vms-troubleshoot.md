@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 908c7e4bc0ca15d952ef1d4d969c5bf686e0bdc3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: da650453006b77490769d1cef57fc3d4f4447e40
+ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058110"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92169366"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -324,6 +324,16 @@ Po obnovení si všimněte, že jsou disky v režimu offline:
 * Ověřte, zda počítač, ve kterém je spuštěn skript, splňuje požadavky na operační systém. [Další informace](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
 * Ujistěte se, že neprovádíte obnovení do stejného zdroje. další [informace](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)najdete v části.
 
+### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound – obnovení se nepovedlo, protože se nenašel snímek virtuálního počítače.
+
+Kód chyby: UserErrorInstantRpNotFound <br>
+Chybová zpráva: operace obnovení se nezdařila, protože nebyl nalezen snímek virtuálního počítače. Snímek se mohl odstranit, zkontrolujte prosím.<br>
+
+K této chybě dochází při pokusu o obnovení z bodu obnovení, který nebyl přenesen do trezoru a byl odstraněn ve fázi snímku. 
+<br>
+Pokud chcete tento problém vyřešit, zkuste obnovit virtuální počítač z jiného bodu obnovení.<br>
+
+#### <a name="common-errors"></a>Běžné chyby 
 | Podrobnosti o chybě | Alternativní řešení |
 | --- | --- |
 | Obnovení selhalo s interní chybou cloudu. |<ol><li>Cloudová služba, na kterou se pokoušíte obnovit, je nakonfigurovaná pomocí nastavení DNS. Můžete kontrolovat: <br>**$Deployment = Get-AzureDeployment-ServiceName "ServiceName" – slot "provozní" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Pokud je nakonfigurovaná **adresa** , nakonfigurují se nastavení DNS.<br> <li>Cloudová služba, na kterou se pokoušíte obnovit, má nakonfigurovanou **vyhrazenou IP adresu**a stávající virtuální počítače v cloudové službě jsou ve stavu Zastaveno. Můžete ověřit, že cloudová služba rezervovala IP adresu pomocí následujících rutin PowerShellu: **$Deployment = Get-AzureDeployment-ServiceName "ServiceName" – slot "produkční" $DEP. ReservedIPName**. <br><li>Pokoušíte se obnovit virtuální počítač pomocí následujících speciálních síťových konfigurací do stejné cloudové služby: <ul><li>Virtuální počítače s konfigurací nástroje pro vyrovnávání zatížení, interní a externí.<li>Virtuální počítače s několika rezervovanými IP adresami. <li>Virtuální počítače s několika síťovými kartami. </ul><li>V uživatelském rozhraní vyberte novou cloudovou službu nebo si přečtěte [důležité informace o obnovení](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) virtuálních počítačů se speciální konfigurací sítě.</ol> |
