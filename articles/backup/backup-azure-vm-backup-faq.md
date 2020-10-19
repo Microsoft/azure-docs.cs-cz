@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 51c54aa732259180a5393488891b21956553f581
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056714"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172839"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -24,7 +24,7 @@ Když vytváříte virtuální počítač, můžete povolit zálohování pro vi
 ### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Proč dokončení počátečního zálohování trvá dlouho?
 
 Prvotní zálohování je vždy úplné zálohování a bude záviset na velikosti dat a při zpracování zálohy. <br>
-Pokud chcete zlepšit výkon zálohování, Projděte si [osvědčené postupy pro zálohování](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices). [Předpoklady zálohování](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) a [výkon zálohování](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+Pokud chcete zlepšit výkon zálohování, Projděte si [osvědčené postupy pro zálohování](./backup-azure-vms-introduction.md#best-practices). [Předpoklady zálohování](./backup-azure-vms-introduction.md#backup-and-restore-considerations) a [výkon zálohování](./backup-azure-vms-introduction.md#backup-performance)<br>
 Přestože je celková doba zálohování v případě přírůstkového zálohování kratší než 24 hodin, u prvního zálohování to platit nemusí.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Jsou náklady na zálohování zahrnuty do nákladů na virtuální počítače?
@@ -109,7 +109,7 @@ Azure Backup teď podporuje zálohování a obnovení selektivního disku pomoc�
 
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Jsou spravované identity zachované, pokud během zálohování dojde ke změně tenanta?
 
-Pokud dojde ke [změnám tenanta](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) , budete muset zakázat a znovu povolit [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) , aby bylo zálohování znovu fungovat.
+Pokud dojde ke [změnám tenanta](/azure/devops/organizations/accounts/change-azure-ad-connection) , budete muset zakázat a znovu povolit [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) , aby bylo zálohování znovu fungovat.
 
 ## <a name="restore"></a>Obnovení
 
@@ -207,6 +207,6 @@ Ano, existuje limit 100 virtuálních počítačů, které se dají přidružit 
 
 V současné době můžete nastavení uchování zobrazit na úrovni zálohované položky na základě zásady zálohování, která je přiřazená k virtuálnímu počítači.
 
-Jedním ze způsobů, jak zobrazit nastavení uchovávání záloh, je přejít na [řídicí panel](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) zálohovaných položek pro váš virtuální počítač v Azure Portal. Když vyberete odkaz na zásady zálohování, můžete si prohlédnout dobu uchovávání všech denních, týdenních, měsíčních a ročních bodů uchování přidružených k virtuálnímu počítači.
+Jedním ze způsobů, jak zobrazit nastavení uchovávání záloh, je přejít na [řídicí panel](./backup-azure-manage-vms.md#view-vms-on-the-dashboard) zálohovaných položek pro váš virtuální počítač v Azure Portal. Když vyberete odkaz na zásady zálohování, můžete si prohlédnout dobu uchovávání všech denních, týdenních, měsíčních a ročních bodů uchování přidružených k virtuálnímu počítači.
 
-Pomocí [Průzkumníka služby Backup](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) můžete také zobrazit nastavení uchovávání všech virtuálních počítačů v jednom podokně skla. Přejděte do Průzkumníka zálohování z libovolného trezoru Recovery Services, přejděte na kartu **zálohované položky** a kliknutím na rozšířené zobrazení zobrazte podrobné informace o uchovávání dat pro jednotlivé virtuální počítače.
+Pomocí [Průzkumníka služby Backup](./monitor-azure-backup-with-backup-explorer.md) můžete také zobrazit nastavení uchovávání všech virtuálních počítačů v jednom podokně skla. Přejděte do Průzkumníka zálohování z libovolného trezoru Recovery Services, přejděte na kartu **zálohované položky** a kliknutím na rozšířené zobrazení zobrazte podrobné informace o uchovávání dat pro jednotlivé virtuální počítače.

@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte o selektivním zálohování a obnoven
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce7e53bc740882a819e8a21e3ac95ab47d3b876a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271371"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174108"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektivní zálohování a obnovení disku pro virtuální počítače Azure
 
@@ -185,7 +185,7 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 
 Když tyto příkazy spustíte, uvidíte `"diskExclusionProperties": null` .
 
-## <a name="using-powershell"></a>Pomocí prostředí PowerShell
+## <a name="using-powershell"></a>Použití PowerShellu
 
 Ujistěte se, že používáte Azure PowerShell verze 3.7.0 nebo novější.
 
@@ -240,6 +240,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 ```
 
 ## <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 Pomocí Azure Portal můžete zobrazit zahrnuté a vyloučené disky z podokna Podrobnosti zálohy virtuálního počítače a podokna podrobností úlohy zálohování.  Když při obnovení vyberete bod obnovení, ze kterého se má obnovit, můžete v tomto bodu obnovení zobrazit zálohované disky.
 

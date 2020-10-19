@@ -3,12 +3,12 @@ title: Přehled centra zálohování
 description: Tento článek poskytuje přehled služby Backup Center pro Azure.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7eab2e8f9694ca83d0e050f55bc6f6dd802a7331
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614274"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173737"
 ---
 # <a name="overview-of-backup-center"></a>Přehled centra zálohování
 
@@ -16,9 +16,9 @@ Centrum zálohování nabízí v Azure **jednotně sjednocené prostředí pro s
 
 Mezi klíčové výhody služby Backup Center patří:
 
-* **Samostatné podokno pro správu zálohování** – centrum zálohování je navržené tak, aby fungovalo dobře v rozsáhlém a distribuovaném prostředí Azure. Pomocí služby Backup Center můžete efektivně spravovat zálohy zahrnující různé typy úloh, trezory, odběry, oblasti a klienty [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) .
+* **Samostatné podokno pro správu zálohování** – centrum zálohování je navržené tak, aby fungovalo dobře v rozsáhlém a distribuovaném prostředí Azure. Pomocí služby Backup Center můžete efektivně spravovat zálohy zahrnující různé typy úloh, trezory, odběry, oblasti a klienty [Azure Lighthouse](../lighthouse/overview.md) .
 * Správa zaměřená na **zdroje dat** – centrum zálohování poskytuje zobrazení a filtry, které jsou soustředěné do zdrojů dat, které zálohujete (například virtuální počítače a databáze). Vlastník prostředku nebo správci zálohování tak můžou monitorovat a provozovat zálohy položek, aniž by se museli soustředit na to, na který trezor se položka zálohuje. Klíčovou funkcí tohoto návrhu je schopnost filtrovat zobrazení podle vlastností specifických pro zdroj dat, jako je například předplatné zdroje dat, skupina prostředků zdroje dat a značky DataSource. Pokud například vaše organizace postupuje při přiřazování různých značek k virtuálním počítačům patřícím do různých oddělení, můžete pomocí centra zálohování filtrovat informace o zálohování na základě značek zálohovaných podkladových virtuálních počítačů, aniž byste se museli soustředit na značku trezoru.
-* **Prostředí s připojením** – služba Backup Center poskytuje nativní integraci do stávajících služeb Azure, které umožňují správu ve velkém měřítku. Centrum zálohování například používá [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) prostředí, které vám pomůžou s tím, jak se budou vaše zálohy řídit. Také využívá [sešity Azure](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) a [protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) , které vám pomůžou zobrazit podrobné sestavy o zálohování. Takže nemusíte se učit žádné nové principy používání různých funkcí, které centrum zálohování nabízí.
+* **Prostředí s připojením** – služba Backup Center poskytuje nativní integraci do stávajících služeb Azure, které umožňují správu ve velkém měřítku. Centrum zálohování například používá [Azure Policy](../governance/policy/overview.md) prostředí, které vám pomůžou s tím, jak se budou vaše zálohy řídit. Také využívá [sešity Azure](../azure-monitor/platform/workbooks-overview.md) a [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) , které vám pomůžou zobrazit podrobné sestavy o zálohování. Takže nemusíte se učit žádné nové principy používání různých funkcí, které centrum zálohování nabízí.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 

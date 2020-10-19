@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448522"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174162"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
@@ -112,6 +112,9 @@ K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávně
 * Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
   * Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.
   * Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:<br>
-     1. [Obnovte](#recover-workspace) pracovní prostor.
-     2. [Trvale odstraňte](#permanent-workspace-delete) pracovní prostor.
-     3. Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.
+    1. [Obnovte](#recover-workspace) pracovní prostor.
+    2. [Trvale odstraňte](#permanent-workspace-delete) pracovní prostor.
+    3. Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.
+* Pokud se zobrazí kód odpovědi 204, který ukazuje, že *prostředek nebyl nalezen*, může být příčinou opakované použití operace odstranit pracovní prostor. 204 je prázdná odpověď, což obvykle znamená, že prostředek neexistuje, takže se odstranění dokončilo bez jakéhokoli zásahu.
+  Po úspěšném dokončení volání odstranění na back-endu můžete pracovní prostor obnovit a dokončit operaci trvalého odstranění v jedné z výše navrhovaných metod.
+

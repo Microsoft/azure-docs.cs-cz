@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 0d36a09b67e110551470f3908800e77c35b1e3be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7c7caf6c01c2e7ea9aaf141a2597ef338735d3d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843801"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173603"
 ---
 # <a name="prepare-for-an-azure-stack-edge-pro-gpu-device-failure"></a>Příprava na selhání zařízení s GRAFICKÝm rozhraním Azure Stack Edge pro
 
@@ -66,7 +66,8 @@ Následující řešení ochrany dat třetích stran můžou poskytnout řešen�
 | Software jiných výrobců           | Odkaz na řešení                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | https://www.cohesity.com/solution/cloud/azure/ <br> Podrobnosti získáte od Cohesity.          |
-| Veritas                        | Podrobnosti získáte od společnosti Veritas.   |
+| CommVault                      | https://www.commvault.com/azure <br> Podrobnosti získáte od CommVault.          |
+| Veritas                        | http://veritas.com/azure <br> Podrobnosti získáte od společnosti Veritas.   |
 
 
 ## <a name="protect-files-and-folders-on-vms"></a>Ochrana souborů a složek na virtuálních počítačích
@@ -74,11 +75,12 @@ Následující řešení ochrany dat třetích stran můžou poskytnout řešen�
 Azure Stack Edge spolupracuje s Azure Backup a dalšími řešeními ochrany dat třetích stran, které poskytuje řešení pro zálohování k ochraně dat obsažených v virtuálních počítačích nasazených na zařízení. V následující tabulce jsou uvedeny odkazy na dostupná řešení, ze kterých si můžete vybrat.
 
 
-| Řešení zálohování        | Podporovaný operační systém   | Odkaz                                                                |
+| Řešení zálohování        | Podporovaný operační systém   | Referenční informace                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Agent Microsoft Azure Recovery Services (MARS) pro Azure Backup | Windows        | [Informace o agentovi Mars](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows, Linux | [Stručně Microsoft Azure integrace, řešení zálohování a obnovení](https://www.cohesity.com/solution/cloud/azure) <br>Podrobnosti získáte od Cohesity.                          |
-| Veritas                 | Windows, Linux | Podrobnosti získáte od společnosti Veritas.                    |
+| CommVault               | Windows, Linux | https://www.commvault.com/azure <br>Podrobnosti získáte od CommVault.                          |
+| Veritas                 | Windows, Linux | http://veritas.com/azure <br> Podrobnosti získáte od společnosti Veritas.                    |
 
 
 

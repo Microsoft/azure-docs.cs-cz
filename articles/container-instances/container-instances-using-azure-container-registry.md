@@ -5,12 +5,12 @@ services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: eeafc58a1f61ed0439fb29fb08e4ce8c5dd4350c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657005"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173645"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení ze služby Azure Container Registry do služby Azure Container Instances
 
@@ -22,19 +22,18 @@ ms.locfileid: "89657005"
 
 **Azure CLI**: Příklady příkazového řádku v tomto článku používají [Azure CLI](/cli/azure/) a jsou naformátované pro prostředí bash. [Azure CLI můžete nainstalovat](/cli/azure/install-azure-cli) místně nebo použít [Azure Cloud Shell][cloud-shell-bash].
 
+## <a name="limitations"></a>Omezení
+
+* Pomocí [spravované identity](container-instances-managed-identity.md) nakonfigurované ve stejné skupině kontejnerů se nemůžete ověřit, aby se při nasazení skupiny kontejnerů načetly image Azure Container Registry.
+* V tuto chvíli nemůžete načítat image z [Azure Container Registry](../container-registry/container-registry-vnet.md) nasazených do Azure Virtual Network.
+
 ## <a name="configure-registry-authentication"></a>Konfigurace ověřování registru
 
 V produkčním scénáři, kdy poskytujete přístup k "bezobslužným" službám a aplikacím, se doporučuje nakonfigurovat přístup k registru pomocí [instančního objektu](../container-registry/container-registry-auth-service-principal.md). Instanční objekt umožňuje poskytnout vašim imagím kontejneru [řízení přístupu na základě role Azure (Azure RBAC)](../container-registry/container-registry-roles.md) . Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
 
 Azure Container Registry poskytuje další [Možnosti ověřování](../container-registry/container-registry-authentication.md).
 
-> [!NOTE]
-> Pomocí [spravované identity](container-instances-managed-identity.md) nakonfigurované ve stejné skupině kontejnerů se nemůžete ověřit, aby se při nasazení skupiny kontejnerů načetly image Azure Container Registry.
-
-> [!NOTE]
-> V tuto chvíli nemůžete načítat image z [Azure Container Registry](../container-registry/container-registry-vnet.md) nasazených do Azure Virtual Network.
-
-V následující části vytvoříte Trezor klíčů Azure a instanční objekt a uložíte přihlašovací údaje instančního objektu do trezoru. 
+V následující části vytvoříte Trezor klíčů Azure a instanční objekt a uložíte přihlašovací údaje instančního objektu do trezoru.
 
 ### <a name="create-key-vault"></a>Vytvoření trezoru klíčů
 

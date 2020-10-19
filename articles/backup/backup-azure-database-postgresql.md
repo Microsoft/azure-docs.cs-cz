@@ -4,12 +4,12 @@ description: Přečtěte si o Azure Database for PostgreSQL zálohování s dlou
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: a30f822db134ce82e772602cb2430d7e8d0db23e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093884"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173575"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL zálohování s dlouhodobou dobou uchovávání (Preview)
 
@@ -244,7 +244,7 @@ V této části najdete informace o řešení potíží při zálohování datab
 
 Poskytněte záložnímu úložišti MSI přístup **pro čtení** na serveru PG, který chcete zálohovat nebo obnovit:
 
-K navázání zabezpečeného připojení k databázi PostgreSQL používá Azure Backup model ověřování [Identita spravované služby (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) . To znamená, že úložiště záloh bude mít přístup jenom k prostředkům, kterým uživatel výslovně udělil oprávnění.
+K navázání zabezpečeného připojení k databázi PostgreSQL používá Azure Backup model ověřování [Identita spravované služby (MSI)](../active-directory/managed-identities-azure-resources/overview.md) . To znamená, že úložiště záloh bude mít přístup jenom k prostředkům, kterým uživatel výslovně udělil oprávnění.
 
 K trezoru se v době vytváření automaticky přiřadí systémový soubor MSI. K tomuto trezoru je potřeba poskytnout přístup k serverům PostgreSQL, ze kterých máte v úmyslu zálohovat databáze.
 
@@ -308,7 +308,7 @@ Vytvořením přístupnosti sítě v síti povolíte příznak **Povolit příst
 
     ![Přiřazení role Přispěvatel dat objektu BLOB služby Storage](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
 
-1. Další možností je poskytnout podrobné oprávnění ke konkrétnímu kontejneru, na který obnovujete, pomocí příkazu Azure CLI [AZ role Assignment Create](https://docs.microsoft.com/cli/azure/role/assignment) .
+1. Další možností je poskytnout podrobné oprávnění ke konkrétnímu kontejneru, na který obnovujete, pomocí příkazu Azure CLI [AZ role Assignment Create](/cli/azure/role/assignment) .
 
     ```azurecli
     az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id

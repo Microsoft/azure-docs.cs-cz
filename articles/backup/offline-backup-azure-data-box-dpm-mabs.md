@@ -3,12 +3,12 @@ title: Offline zálohování s Azure Data Box pro DPM a MABS
 description: Azure Data Box můžete použít k počátečnímu počátečnímu zálohování dat v režimu offline z aplikace DPM a MABS.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271490"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172230"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline osazení pomocí Azure Data Box pro DPM a MABS (Preview)
 
@@ -18,7 +18,7 @@ ms.locfileid: "91271490"
 
 V tomto článku se dozvíte, jak můžete pomocí Azure Data Box naplnit počáteční zálohovaná data offline z aplikace DPM a MABS do trezoru služby Azure Recovery Services.
 
-[Azure Data box](https://docs.microsoft.com/azure/databox/data-box-overview) můžete použít k osazení velkých počátečních a MABS záloh aplikace DPM v režimu offline (bez použití sítě) do trezoru Recovery Services. Tento proces šetří čas a šířku pásma sítě, které by jinak využily přesun velkých objemů zálohovaných dat online přes síť s vysokou latencí. Tato funkce je aktuálně ve verzi Preview.
+[Azure Data box](../databox/data-box-overview.md) můžete použít k osazení velkých počátečních a MABS záloh aplikace DPM v režimu offline (bez použití sítě) do trezoru Recovery Services. Tento proces šetří čas a šířku pásma sítě, které by jinak využily přesun velkých objemů zálohovaných dat online přes síť s vysokou latencí. Tato funkce je aktuálně ve verzi Preview.
 
 Offline zálohování na základě Azure Data Box poskytuje dvě různé výhody oproti [zálohování offline založené na službě Azure import/export](backup-azure-backup-server-import-export.md):
 
@@ -39,8 +39,8 @@ Podporují se následující Data Box SKU:
 
 | Velikost dat zálohy (po kompresi pomocí MARS) \* na server | Podporovaná Azure Data Box SKU |
 | --- | --- |
-| \<= 7,2 TB | [Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| > 7,2 TB a <= 80 TB\*\* | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| \<= 7,2 TB | [Azure Data Box Disk](../databox/data-box-disk-overview.md) |
+| > 7,2 TB a <= 80 TB\*\* | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 \*Typické kompresní frekvence se mezi 10-20% liší. <br>
 \*\*[SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com)Pokud očekáváte, že budete mít více než 80 TB počátečních dat zálohování pro jeden zdroj dat, můžete se obrátit na.
@@ -64,7 +64,7 @@ Zajistěte, aby:
 
 ### <a name="order-and-receive-the-data-box-device"></a>Objednat a přijmout Data Box zařízení
 
-Před aktivací offline zálohování zajistěte, aby byla požadovaná zařízení Data Box v *doručeném* stavu. V tématu [Velikost zálohovaných dat a podporovaných data box SKU](#backup-data-size-and-supported-data-box-skus) můžete seřadit nejvhodnější SKU podle vašich požadavků. Podle kroků v [tomto článku](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) seřiďte a dodržujte zařízení data box.
+Před aktivací offline zálohování zajistěte, aby byla požadovaná zařízení Data Box v *doručeném* stavu. V tématu [Velikost zálohovaných dat a podporovaných data box SKU](#backup-data-size-and-supported-data-box-skus) můžete seřadit nejvhodnější SKU podle vašich požadavků. Podle kroků v [tomto článku](../databox/data-box-disk-deploy-ordered.md) seřiďte a dodržujte zařízení data box.
 
 > [!IMPORTANT]
 > Pro **druh účtu**nevybírejte *BlobStorage* . Server DPM/MABS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
@@ -77,14 +77,14 @@ Jakmile obdržíte Azure Data Box zařízení, v závislosti na Azure Data Box S
 
 ### <a name="setup-azure-data-box-disk"></a>Instalační Azure Data Box disk
 
-Pokud jste si objednali jeden nebo více Azure Data Box disků (každý až 8 TB), postupujte podle kroků uvedených [tady](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up) a rozbalte tak data box disk, připojte se a odemkněte.
+Pokud jste si objednali jeden nebo více Azure Data Box disků (každý až 8 TB), postupujte podle kroků uvedených [tady](../databox/data-box-disk-deploy-set-up.md) a rozbalte tak data box disk, připojte se a odemkněte.
 
 > [!NOTE]
 > Je možné, že server DPM/MABS nemá port USB. V takovém scénáři můžete Azure Data Box disk připojit k jinému serveru nebo klientovi a zveřejnit kořen zařízení jako sdílenou síťovou složku.
 
 ## <a name="setup-azure-data-box"></a>Instalační Azure Data Box
 
-Pokud jste objednali Azure Data Box (až 100 TB), postupujte podle kroků uvedených [tady](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) a nastavte data box.
+Pokud jste objednali Azure Data Box (až 100 TB), postupujte podle kroků uvedených [tady](../databox/data-box-deploy-set-up.md) a nastavte data box.
 
 ### <a name="mount-your-azure-data-box-as-local-system"></a>Připojit Azure Data Box jako místní systém
 
@@ -100,7 +100,7 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
    ```
 
 4. Příkazové okno, které se otevře v důsledku výše uvedeného příkazu, je v kontextu místního systému. Pomocí tohoto příkazového okna můžete provést kroky pro připojení sdílené složky Azure Page BLOB jako síťové jednotky na Windows serveru.
-5. Postupujte podle kroků uvedených [tady](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) a připojte svůj server DPM/MABS k zařízení data box přes systém souborů NFS a spusťte následující příkaz na příkazovém řádku místního systému pro připojení sdílené složky objektů blob stránky Azure:
+5. Postupujte podle kroků uvedených [tady](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) a připojte svůj server DPM/MABS k zařízení data box přes systém souborů NFS a spusťte následující příkaz na příkazovém řádku místního systému pro připojení sdílené složky objektů blob stránky Azure:
 
     ```cmd
     mount -o nolock \\<DeviceIPAddres>\<StorageAccountName_PageBlob X:
@@ -110,7 +110,7 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Přenos počátečních zálohovaných dat do zařízení Azure Data Box
 
-1. Na serveru DPM nebo MABS postupujte podle pokynů pro [Vytvoření nové skupiny ochrany](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups). Pokud přidáváte online ochranu do existující skupiny ochrany, klikněte pravým tlačítkem na existující skupinu ochrany a vyberte **Přidat online ochranu** a začněte od **kroku 8**.
+1. Na serveru DPM nebo MABS postupujte podle pokynů pro [Vytvoření nové skupiny ochrany](/system-center/dpm/create-dpm-protection-groups). Pokud přidáváte online ochranu do existující skupiny ochrany, klikněte pravým tlačítkem na existující skupinu ochrany a vyberte **Přidat online ochranu** a začněte od **kroku 8**.
 2. Na stránce **Vybrat členy skupiny** zadejte počítače a zdroje, které chcete zálohovat.
 3. Na stránce **Vybrat způsob ochrany dat** určete způsob zpracování krátkodobého a dlouhodobého zálohování. Ujistěte se, že jste vybrali možnost **Chci online ochranu.**
 
@@ -163,7 +163,7 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
     > ![Jednotka USB](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
     > Pokud je například cesta k disku `\\mydomain\myserver\disk1\` a *Disk1* obsahuje adresář s názvem *PageBlob*, cesta, která se má zadat v průvodci DPM/MABS Server, je `\\mydomain\myserver\disk1\` .
-    > Pokud [nastavili Azure Data Box 100 TB zařízení](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box), zadejte jako síťovou cestu k zařízení následující `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
+    > Pokud [nastavili Azure Data Box 100 TB zařízení](./offline-backup-azure-data-box.md#set-up-azure-data-box), zadejte jako síťovou cestu k zařízení následující `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
 15. Vyberte **Další**. Na stránce **Souhrn** zkontrolujte nastavení a vyberte **vytvořit skupinu**.
 
@@ -193,8 +193,8 @@ Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
 
 Po úspěšném zálohování dat do Azure Data Box Disk postupujte podle těchto kroků.
 
-- Pomocí kroků v [tomto článku](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up) dodáte Azure Data box disk do Azure. Pokud jste použili Azure Data Box 100 TB, dokončete Azure Data Box do Azure pomocí [těchto kroků](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) .
-- [Monitorujte úlohu data box](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) v Azure Portal. Po *dokončení*úlohy Azure Data box server DPM/MABS automaticky přesune data z účtu úložiště do trezoru Recovery Services v době příštího naplánovaného zálohování. Po úspěšném vytvoření bodu obnovení bude pak označovat úlohu zálohování jako *dokončenou úlohu* .
+- Pomocí kroků v [tomto článku](../databox/data-box-disk-deploy-picked-up.md) dodáte Azure Data box disk do Azure. Pokud jste použili Azure Data Box 100 TB, dokončete Azure Data Box do Azure pomocí [těchto kroků](../databox/data-box-deploy-picked-up.md) .
+- [Monitorujte úlohu data box](../databox/data-box-disk-deploy-upload-verify.md) v Azure Portal. Po *dokončení*úlohy Azure Data box server DPM/MABS automaticky přesune data z účtu úložiště do trezoru Recovery Services v době příštího naplánovaného zálohování. Po úspěšném vytvoření bodu obnovení bude pak označovat úlohu zálohování jako *dokončenou úlohu* .
 
   > [!NOTE]
   > Server DPM/MABS spustí zálohy v časech naplánovaných během vytváření skupiny ochrany. Tyto úlohy však označí čekání na *dokončení Azure Data box úlohy* až do doby, kdy je úloha dokončena.

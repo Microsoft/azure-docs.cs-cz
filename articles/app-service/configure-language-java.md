@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ed511f25132ea6bb766736804a5257ad7f6eff0a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149052"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171568"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurace aplikace Java pro Azure App Service
 
@@ -412,7 +412,7 @@ Další informace o tomto tématu najdete v [dokumentaci ke jarnímu spuštění
 
 Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
-| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
@@ -490,7 +490,7 @@ Alternativně můžete k nahrání ovladače JDBC použít klienta FTP. [Při z�
 
 Tyto pokyny platí pro všechna databázová připojení. Zástupné symboly budete muset vyplnit pomocí názvu třídy ovladače zvolené databáze a souboru JAR. Poskytuje se tabulka s názvy tříd a stahování ovladačů pro běžné databáze.
 
-| databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhnout](https://dev.mysql.com/downloads/connector/j/) (vyberte "nezávislé na platformě") |
@@ -692,11 +692,15 @@ App Service umožňuje uživatelům zvolit hlavní verzi JVM, jako je Java 8 neb
 
 Pokud se rozhodnete k vedlejší verzi připnout, budete muset pravidelně aktualizovat podverze JVM v lokalitě. Chcete-li zajistit, aby vaše aplikace běžela v novější podverzi, vytvořte přípravný slot a zvyšte podverzi v přípravném webu. Jakmile ověříte, že je aplikace správně spuštěná na nové dílčí verzi, můžete vyměnit pracovní a produkční sloty.
 
+## <a name="jboss-eap-hardware-options"></a>Hardwarové možnosti JBoss protokolu EAP
+
+Protokol EAP JBoss je k dispozici pouze v možnostech hardwaru Premium a Isolated. Zákazníci, kteří vytvořili web JBoss EAP na úrovni Free, Shared, Basic nebo Standard ve verzi Public Preview, by měli škálovat až na úroveň Premium nebo izolovanou, aby nedocházelo k neočekávanému chování.
+
 ## <a name="java-runtime-statement-of-support"></a>Příkaz Java Runtime pro podporu
 
 ### <a name="jdk-versions-and-maintenance"></a>Verze a údržba JDK
 
-Podporovaná sada Java Development Kit (JDK) pro Azure je zajištěná [Zulu](https://www.azul.com/downloads/azure-only/zulu/) prostřednictvím [systémů Azul](https://www.azul.com/). Azul Zulu Enterprise Builds of OpenJDK jsou špičkovou distribucí do produkčního prostředí OpenJDK pro Azure a Azure Stack zajištěné systémy Microsoftu a Azul. Obsahuje všechny komponenty pro vytváření a spouštění aplikací Java SE. JDK můžete nainstalovat z [instalace Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support).
+Podporovaná sada Java Development Kit (JDK) pro Azure je zajištěná [Zulu](https://www.azul.com/downloads/azure-only/zulu/) prostřednictvím [systémů Azul](https://www.azul.com/). Azul Zulu Enterprise Builds of OpenJDK jsou špičkovou distribucí do produkčního prostředí OpenJDK pro Azure a Azure Stack zajištěné systémy Microsoftu a Azul. Obsahuje všechny komponenty pro vytváření a spouštění aplikací Java SE. JDK můžete nainstalovat z [instalace Java JDK](https://aka.ms/azure-jdks).
 
 Hlavní aktualizace verze se budou poskytovat prostřednictvím nových možností modulu runtime v Azure App Service. Zákazníci aktualizují tyto novější verze Java tím, že nakonfigurují nasazení App Service a zodpovídá za testování a zajištění významné aktualizace, které vyhovují jejich potřebám.
 

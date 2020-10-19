@@ -3,12 +3,12 @@ title: Automatické povolení zálohování při vytváření virtuálních poč
 description: Článek popisující, jak použít Azure Policy k automatickému povolení zálohování pro všechny virtuální počítače vytvořené v daném oboru
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78fe0ccdbf6f1cc3498d14530d7492a86e8bf730
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826068"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174080"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
 
@@ -27,6 +27,8 @@ V současné době Azure Backup poskytuje předdefinované zásady (pomocí Azur
 * Obor skupiny pro správu se momentálně nepodporuje.
 
 * Integrovaná zásada není v současnosti k dispozici v národních cloudech.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="using-the-built-in-policy"></a>Používání předdefinované zásady
 

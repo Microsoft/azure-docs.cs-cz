@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b449913c9d1abbbec84f0ff77f7a1c1bc5321bf
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7d5dd7d2d0aa3d10f439b5cf3604e2d595456f86
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048453"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172253"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -170,7 +170,7 @@ Další informace o regionální dostupnosti najdete v tématu [oblasti](regions
 | `fr-CH` <sup>Nová</sup> | Francouzština (Švýcarsko) | Female | `fr-CH-ArianeNeural` | Obecné |
 | `fr-FR` | Francouzština (Francie) | Female | `fr-FR-DeniseNeural` | Obecné |
 | `fr-FR` <sup>Nová</sup> | francouzština (Francie) | Male | `fr-FR-HenriNeural` | Obecné |
-| `he-IL` <sup>Nová</sup> | Hebrejština (plochá) | Female | `he-IL-HilaNeural` | Obecné |
+| `he-IL` <sup>Nová</sup> | Hebrejština (Izrael) | Female | `he-IL-HilaNeural` | Obecné |
 | `hi-IN` | Hindština (Indie) | Female | `hi-IN-SwaraNeural` | Obecné |
 | `hr-HR` <sup>Nová</sup> | chorvatština (Chorvatsko) | Female | `hr-HR-GabrijelaNeural` | Obecné |
 | `hu-HU` <sup>Nová</sup> | Maďarština (Maďarsko) | Female | `hu-HU-NoemiNeural` | Obecné |

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 268455e582e54dfa8eb73fe81eaad19f453e303b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d888266ae13b500abc5b03fa6a699c9f34b782a6
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057888"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173567"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -137,6 +137,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 - Názvy objektů (databáze, tabulky a sloupce) nesmí obsahovat tečky tisknutelné znaky (.), levou hranatou závorku ([) nebo pravou hranatou závorku (]).
 - Ověřování Azure Active Directory se nepodporuje.
 - Pokud jsou tabulky se stejným názvem, ale s jiným schématem (například dbo. Customers and Sales. Customers), je možné přidat do synchronizace pouze jednu z tabulek.
+- Název tabulky nesmí obsahovat znaky, které mají hodnotu ASCII menší nebo rovny-.
 - Sloupce s datovými typy User-Defined se nepodporují.
 - Přesun serverů mezi různými předplatnými není podporován. 
 

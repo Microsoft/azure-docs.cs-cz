@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout Recovery Services trezor mezi předplatnými
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 55c906585e6f6d4a2ae3f2279b2c3ffbaaccb025
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056425"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171612"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -178,7 +178,7 @@ Pokud potřebujete zachovat aktuální chráněná data ve starém trezoru a pok
   - Zálohovaná data bude možné obnovit pouze v případě neplatných bodů obnovení ve starém trezoru.
   - V novém trezoru se musí vytvořit nová počáteční replika dat.
 
-- U virtuálního počítače Azure můžete [Zastavit ochranu s uchováním dat](backup-azure-manage-vms.md#stop-protecting-a-vm) pro virtuální počítač ve starém trezoru, přesunout virtuální počítač do jiné skupiny prostředků a pak chránit virtuální počítač v novém trezoru. Přečtěte si [doprovodné materiály a omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) pro přesun virtuálního počítače do jiné skupiny prostředků.
+- U virtuálního počítače Azure můžete [Zastavit ochranu s uchováním dat](backup-azure-manage-vms.md#stop-protecting-a-vm) pro virtuální počítač ve starém trezoru, přesunout virtuální počítač do jiné skupiny prostředků a pak chránit virtuální počítač v novém trezoru. Přečtěte si [doprovodné materiály a omezení](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) pro přesun virtuálního počítače do jiné skupiny prostředků.
 
   Virtuální počítač se dá v jednom okamžiku chránit jenom v jednom trezoru. Virtuální počítač v nové skupině prostředků se ale dá chránit v novém trezoru, protože se považuje za jiný virtuální počítač.
 

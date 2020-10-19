@@ -3,16 +3,16 @@ title: Získání přehledů pomocí centra zálohování
 description: Naučte se analyzovat historické trendy a získat hlubší přehled o zálohách pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 5964f285089feea721a0b452efed884e905b89cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0f687ee123abe2f95ad0d23a6fe302f4a5c22e1
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994971"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173757"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Získání přehledů pomocí centra zálohování
 
-K analýze historických trendů a získání hlubších přehledů o zálohách poskytuje centrum zálohování rozhraní pro [zálohování sestav](configure-reports.md), které používá [protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) a [sešity Azure](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview). Sestavy zálohování nabízí následující možnosti:
+K analýze historických trendů a získání hlubších přehledů o zálohách poskytuje centrum zálohování rozhraní pro [zálohování sestav](configure-reports.md), které používá [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) a [sešity Azure](../azure-monitor/platform/workbooks-overview.md). Sestavy zálohování nabízí následující možnosti:
 
 - Přidělování a prognózování spotřebovaného cloudového úložiště.
 
@@ -32,7 +32,7 @@ K analýze historických trendů a získání hlubších přehledů o zálohách
 
 ### <a name="configure-your-vaults-to-send-data-to-a-log-analytics-workspace"></a>Konfigurace trezorů pro posílání dat do Log Analyticsho pracovního prostoru
 
-[Naučte se konfigurovat nastavení diagnostiky ve velkém měřítku pro vaše trezory.](https://docs.microsoft.com/azure/backup/configure-reports#get-started)
+[Naučte se konfigurovat nastavení diagnostiky ve velkém měřítku pro vaše trezory.](./configure-reports.md#get-started)
 
 ### <a name="view-backup-reports-in-the-backup-center-portal"></a>Zobrazení sestav zálohování na portálu služby Backup Center
 
@@ -42,17 +42,17 @@ Po výběru položky nabídky **sestavy zálohování** v centru zálohování s
 
 K dispozici jsou následující zobrazení:
 
-1. **Souhrn** – pomocí této karty získáte podrobný přehled vaší služby zálohování. [Další informace](https://docs.microsoft.com/azure/backup/configure-reports#summary)
+1. **Souhrn** – pomocí této karty získáte podrobný přehled vaší služby zálohování. [Další informace](./configure-reports.md#summary)
 
-1. **Zálohované položky** – pomocí této karty můžete zobrazit informace a trendy v cloudovém úložišti spotřebovaném na úrovni záložních položek. [Další informace](https://docs.microsoft.com/azure/backup/configure-reports#backup-items)
+1. **Zálohované položky** – pomocí této karty můžete zobrazit informace a trendy v cloudovém úložišti spotřebovaném na úrovni záložních položek. [Další informace](./configure-reports.md#backup-items)
 
-1. **Využití** – pomocí této karty můžete zobrazit klíčové parametry fakturace pro vaše zálohy. [Další informace](https://docs.microsoft.com/azure/backup/configure-reports#usage)
+1. **Využití** – pomocí této karty můžete zobrazit klíčové parametry fakturace pro vaše zálohy. [Další informace](./configure-reports.md#usage)
 
-1. **Úlohy** – pomocí této karty můžete zobrazit dlouhotrvající trendy na úlohách, jako je počet neúspěšných úloh za den a nejvyšší příčiny selhání úlohy. [Další informace](https://docs.microsoft.com/azure/backup/configure-reports#jobs)
+1. **Úlohy** – pomocí této karty můžete zobrazit dlouhotrvající trendy na úlohách, jako je počet neúspěšných úloh za den a nejvyšší příčiny selhání úlohy. [Další informace](./configure-reports.md#jobs)
 
-1. **Zásady** – pomocí této karty můžete zobrazit informace o všech aktivních zásadách, jako je třeba počet přidružených položek a celkové cloudové úložiště spotřebované položkami zálohovanými v rámci dané zásady. [Další informace](https://docs.microsoft.com/azure/backup/configure-reports#policies)
+1. **Zásady** – pomocí této karty můžete zobrazit informace o všech aktivních zásadách, jako je třeba počet přidružených položek a celkové cloudové úložiště spotřebované položkami zálohovanými v rámci dané zásady. [Další informace](./configure-reports.md#policies)
 
-1. **Optimalizovat** – pomocí této karty získáte přehled o potenciálních možnostech optimalizace nákladů pro vaše zálohy. [Další informace](https://docs.microsoft.com/azure/backup/configure-reports#optimize)
+1. **Optimalizovat** – pomocí této karty získáte přehled o potenciálních možnostech optimalizace nákladů pro vaše zálohy. [Další informace](./configure-reports.md#optimize)
 
 ## <a name="next-steps"></a>Další kroky
 

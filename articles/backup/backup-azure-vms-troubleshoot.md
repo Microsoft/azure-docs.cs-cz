@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit chyby zjištěné při z�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: da650453006b77490769d1cef57fc3d4f4447e40
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 6da91248c197eae12fbc59f2da8c5294d95117b6
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169366"
+ms.locfileid: "92173834"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Řešení potíží se zálohováním virtuálních počítačů Azure
 
@@ -129,9 +129,9 @@ Chcete-li ověřit, přejděte do části ***systémové a prohlížeč událost
 
 Řešení:
 
-* Vyhledejte možnosti pro distribuci zatížení mezi disky virtuálních počítačů. Tím se sníží zatížení na jednom disku. [Omezení IOPS můžete kontrolovat tím, že povolíte diagnostické metriky na úrovni úložiště](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm).
+* Vyhledejte možnosti pro distribuci zatížení mezi disky virtuálních počítačů. Tím se sníží zatížení na jednom disku. [Omezení IOPS můžete kontrolovat tím, že povolíte diagnostické metriky na úrovni úložiště](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm).
 * Změňte zásadu zálohování tak, aby prováděla zálohování v době mimo špičku, kdy je zatížení virtuálního počítače na nejnižší úrovni.
-* Upgradujte disky Azure tak, aby podporovaly vyšší IOPs. [Další informace](https://docs.microsoft.com/azure/virtual-machines/disks-types)
+* Upgradujte disky Azure tak, aby podporovaly vyšší IOPs. [Další informace](../virtual-machines/disks-types.md)
 
 ### <a name="extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state"></a>ExtensionFailedVssServiceInBadState – Operace vytvoření snímku selhala kvůli špatnému stavu služby Stínová kopie svazku (VSS)
 
@@ -157,15 +157,15 @@ Kód chyby: chybová zpráva UserErrorSkuNotAvailable: Vytvoření virtuálního
 
 K této chybě dochází, protože velikost virtuálního počítače vybraná během operace obnovení je Nepodporovaná velikost. <br>
 
-Chcete-li tento problém vyřešit, použijte během operace obnovení možnost [obnovit disky](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) . Pomocí těchto disků vytvořte virtuální počítač ze seznamu [dostupných podporovaných velikostí virtuálních počítačů](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-compute-support) pomocí [rutin PowerShellu](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks).
+Chcete-li tento problém vyřešit, použijte během operace obnovení možnost [obnovit disky](./backup-azure-arm-restore-vms.md#restore-disks) . Pomocí těchto disků vytvořte virtuální počítač ze seznamu [dostupných podporovaných velikostí virtuálních počítačů](./backup-support-matrix-iaas.md#vm-compute-support) pomocí [rutin PowerShellu](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
 ### <a name="usererrormarketplacevmnotsupported---vm-creation-failed-due-to-market-place-purchase-request-being-not-present"></a>UserErrorMarketPlaceVMNotSupported – vytvoření virtuálního počítače se nezdařilo, protože není k dispozici požadavek na nákup na trhu.
 
 Kód chyby: chybová zpráva UserErrorMarketPlaceVMNotSupported: Vytvoření virtuálního počítače se nezdařilo z důvodu nepřítomnosti žádosti o nákup na trhu v místě.
 
-Azure Backup podporuje zálohování a obnovení virtuálních počítačů, které jsou k dispozici v Azure Marketplace. K této chybě dochází, když se pokoušíte obnovit virtuální počítač (s konkrétním nastavením pro plán/Vydavatel), který už není dostupný v Azure Marketplace. další [informace najdete tady](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal).
+Azure Backup podporuje zálohování a obnovení virtuálních počítačů, které jsou k dispozici v Azure Marketplace. K této chybě dochází, když se pokoušíte obnovit virtuální počítač (s konkrétním nastavením pro plán/Vydavatel), který už není dostupný v Azure Marketplace. další [informace najdete tady](/legal/marketplace/participation-policy#offering-suspension-and-removal).
 
-* Pokud chcete tento problém vyřešit, použijte během operace obnovení možnost [obnovit disky](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) a pak použijte rutiny [PowerShellu](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) nebo [Azure CLI](https://docs.microsoft.com/azure/backup/tutorial-restore-disk) k vytvoření virtuálního počítače s nejnovějšími informacemi z webu Marketplace, které odpovídají danému virtuálnímu počítači.
+* Pokud chcete tento problém vyřešit, použijte během operace obnovení možnost [obnovit disky](./backup-azure-arm-restore-vms.md#restore-disks) a pak použijte rutiny [PowerShellu](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) nebo [Azure CLI](./tutorial-restore-disk.md) k vytvoření virtuálního počítače s nejnovějšími informacemi z webu Marketplace, které odpovídají danému virtuálnímu počítači.
 * Pokud Vydavatel nemá žádné informace z Marketplace, můžete k načtení dat použít datové disky a můžete je připojit k existujícímu virtuálnímu počítači.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – při analýze konfigurace záložního rozšíření došlo k chybě.
@@ -321,8 +321,8 @@ Pokud máte Azure Policy, který [řídí značky v rámci vašeho prostředí](
 
 Po obnovení si všimněte, že jsou disky v režimu offline:
 
-* Ověřte, zda počítač, ve kterém je spuštěn skript, splňuje požadavky na operační systém. [Další informace](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#system-requirements).  
-* Ujistěte se, že neprovádíte obnovení do stejného zdroje. další [informace](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#original-backed-up-machine-versus-another-machine)najdete v části.
+* Ověřte, zda počítač, ve kterém je spuštěn skript, splňuje požadavky na operační systém. [Další informace](./backup-azure-restore-files-from-vm.md#system-requirements).  
+* Ujistěte se, že neprovádíte obnovení do stejného zdroje. další [informace](./backup-azure-restore-files-from-vm.md#original-backed-up-machine-versus-another-machine)najdete v části.
 
 ### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound – obnovení se nepovedlo, protože se nenašel snímek virtuálního počítače.
 

@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087964ab64c94d5dfe223ce4e47355784003b627
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371180"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173340"
 ---
-# <a name="azure-ddos-protection-standard-overview"></a>Přehled Azure DDoS Protection Standard
+# <a name="azure-ddos-protection-standard-overview"></a>Přehled služby Azure DDoS Protection úrovně Standard
 
 Distribuované útoky na dostupnost služeb (DDoS) patří k největším hrozbám pro dostupnost a zabezpečení, se kterými se musejí zákazníci přesouvající aplikace do cloudu vyrovnávat. Útok DDoS se pokusí vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na jakýkoli koncový bod, který je veřejně dostupný přes internet.
 
@@ -26,7 +26,7 @@ Ochrana Azure DDoS v kombinaci s osvědčenými postupy návrhu aplikací zajiš
 
 DDoS Protection Standard se snadno povoluje a nevyžaduje žádné změny aplikací. K ladění zásad ochrany slouží vyhrazené monitorování provozu a algoritmy strojového učení. Zásady se použijí na veřejné IP adresy přidružené k prostředkům nasazeným ve virtuálních sítích, jako jsou Azure Load Balancer, Azure Application Gateway a instance služby Azure Service Fabric, ale tato ochrana se nevztahuje na App Service prostředí.Telemetrie v reálném čase jsou k dispozici prostřednictvím Azure Monitor zobrazení během útoku a pro historii. K dispozici je rozsáhlé analýzy zmírnění útoků prostřednictvím nastavení diagnostiky. Ochranu aplikační vrstvy lze přidat prostřednictvím [brány firewall webových aplikací Azure Application Gateway](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo instalací brány firewall od jiného výrobce z Azure Marketplace. Ochrana je k dispozici pro [veřejné IP adresy](virtual-network-public-ip-address.md)IPv4 a IPv6.
 
-![DDoS Protection Basic vs Standard](./media/ddos-protection-overview/ddoscomparison.png)
+![DDoS Protection Basic vs Standard](./media/ddos-protection-overview/ddosfeatures.png)
 
 Azure DDoS Protection neukládá zákaznická data.
 
@@ -41,8 +41,6 @@ DDoS Protection Standard může zmírnit následující typy útoků:
 DDoS Protection Standard chrání prostředky ve virtuální síti, včetně veřejných IP adres přidružených k virtuálním počítačům, nástrojům pro vyrovnávání zatížení a aplikačním branám. V případě, že je propojena s bránou firewall webových aplikací Application Gateway nebo se službou Firewall webových aplikací třetí strany nasazená ve virtuální síti s veřejnou IP adresou, DDoS Protection Standard může poskytnout plnou vrstvu 3 schopnost omezit omezení vrstvy 7.
 
 ## <a name="ddos-protection-standard-features"></a>DDoS Protection standardní funkce
-
-![Funkce DDoS](./media/ddos-protection-overview/ddosfeatures.png)
 
 Mezi DDoS Protection standardní funkce patří:
 

@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae80ac5833e90164fc4ff92010fd1830ae932cd2
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847854"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174035"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integrace správce prostředků clusteru s Service Fabric správu clusterů
 Cluster Service Fabric Správce prostředků nereaguje na inovace v Service Fabric, ale je součástí této služby. První způsob, jakým cluster Správce prostředků pomáhá se správou, je sledovat požadovaný stav clusteru a služby uvnitř něj. Cluster Správce prostředků odesílá zprávy o stavu, když nedokáže cluster vložit do požadované konfigurace. Pokud například není dostatečná kapacita, cluster Správce prostředků odesílá upozornění na stav a chyby, které signalizují problém. Další integrací se musí udělat s tím, jak upgrade funguje. Cluster Správce prostředků během upgradu mírně mění jeho chování.  
@@ -64,11 +64,11 @@ HealthEvents          :
 
 Tady je tato zpráva o stavu, kterou nám řekne:
 
-1. Všechny samotné repliky jsou v pořádku: každá z nich má AggregatedHealthState: OK
+1. Všechny samotné repliky jsou v pořádku: každá má `AggregatedHealthState : Ok`
 2. V tuto chvíli je porušené omezení distribuce domény upgradu. To znamená, že konkrétní upgradovací doména má více replik z tohoto oddílu, než by měl.
-3. Který uzel obsahuje repliku, která způsobuje narušení. V tomto případě je to uzel s názvem Node. 8.
+3. Který uzel obsahuje repliku, která způsobuje narušení. V tomto případě je to uzel s *uzlem Name. 8*
 4. Zda aktuálně probíhá upgrade pro tento oddíl (aktuálně probíhá upgrade--false)
-5. Zásady distribuce pro tuto službu: "zásady distribuce--balení". Řídí se `RequireDomainDistribution` [zásadami umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Balení" značí, že v tomto případě DomainDistribution _nebylo vyžadováno,_ takže víme, že pro tuto službu nebyly zadány zásady umístění. 
+5. Zásady distribuce pro tuto službu: "zásady distribuce--balení". Řídí se `RequireDomainDistribution` [zásadami umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). *Balení* znamená, že v tomto případě DomainDistribution _nebylo vyžadováno,_ takže víme, že pro tuto službu nebyla zadána zásada umístění. 
 6. Když se nastala sestava-8/10/2015 7:13:02 ODP.
 
 Takové informace, jako jsou tyto výzvy, upozorňují na to, že se něco pokazilo a že se také používá ke zjištění a zastavení chybných upgradů. V takovém případě chceme zjistit, proč Správce prostředků musela zabalit repliky do upgradovací domény. Balení je obvykle přechodný, protože uzly v jiných doménách upgradu byly mimo provoz, například.
@@ -83,7 +83,7 @@ V těchto případech se Správce prostředků sestavy o stavu z clusteru, kter�
 ## <a name="constraint-types"></a>Typy omezení
 Pojďme se o každé z různých omezení v těchto sestavách stavů spojit. V případě, že repliky nejdou umístit, zobrazí se zprávy o stavu související s těmito omezeními.
 
-* **ReplicaExclusionStatic** a **ReplicaExclusionDynamic**: Tato omezení označují, že řešení bylo odmítnuto, protože dva objekty služby ze stejného oddílu by musely být umístěny do stejného uzlu. Tato možnost není povolená, protože v takovém případě by selhání tohoto uzlu mělo vliv na oddíl. ReplicaExclusionStatic a ReplicaExclusionDynamic jsou skoro stejné pravidlo a rozdíly nezáleží na tom. Pokud vidíte sekvenci eliminace omezení obsahující omezení ReplicaExclusionStatic nebo ReplicaExclusionDynamic, cluster Správce prostředků považuje za to, že nejsou k dispozici dostatek uzlů. K tomu je potřeba, aby zbývající řešení používala tato neplatná umístění, která nejsou povolená. Ostatní omezení v sekvenci obvykle říkají, proč se uzly odstraňují na prvním místě.
+* **ReplicaExclusionStatic** a **ReplicaExclusionDynamic**: Tato omezení označují, že řešení bylo odmítnuto, protože dva objekty služby ze stejného oddílu by musely být umístěny do stejného uzlu. Tato možnost není povolená, protože v takovém případě by selhání tohoto uzlu mělo vliv na oddíl. ReplicaExclusionStatic a ReplicaExclusionDynamic jsou skoro stejné pravidlo a rozdíly nezáleží na tom. Pokud vidíte sekvenci eliminace omezení obsahující omezení ReplicaExclusionStatic nebo ReplicaExclusionDynamic, cluster Správce prostředků považuje za to, že nejsou k dispozici dostatek uzlů. To vyžaduje zbývající řešení pro použití těchto neplatných míst, která nejsou povolena. Ostatní omezení v sekvenci obvykle říkají, proč se uzly odstraňují na prvním místě.
 * **PlacementConstraint**: Pokud se zobrazí tato zpráva, znamená to, že jsme některé uzly vyloučili, protože neodpovídaly omezením umístění služby. V rámci této zprávy sledujeme aktuálně konfigurovaná omezení umístění. To je normální, pokud máte definováno omezení umístění. Pokud je ale omezení umístění nesprávně příčinou příliš velkého počtu uzlů, které by bylo možné odstranit, jedná se o to, jak si všimnete.
 * **NodeCapacity**: Toto omezení znamená, že správce prostředků clusteru nemohly umístit repliky na označené uzly, protože by se daly předávat do kapacity.
 * **Spřažení**: Toto omezení znamená, že se nám nepovedlo umístit repliku na ovlivněné uzly, protože by to způsobilo porušení omezení spřažení. Další informace o spřažení [najdete v tomto článku](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) .
@@ -93,7 +93,7 @@ Pojďme se o každé z různých omezení v těchto sestavách stavů spojit. V 
 ## <a name="blocklisting-nodes"></a>Uzly Blocklisting
 Další zpráva o stavu, kterou cluster Správce prostředků, je v případě, že se uzly blocklisted. Blocklisting můžete představit jako dočasné omezení, které je automaticky použito pro vás. Uzly získají blocklisted, když při spouštění instancí tohoto typu služby dojde k opakovaným chybám. Uzly se blocklisted podle typu jednotlivých služeb. Uzel může být blocklisted pro jeden typ služby, ale ne pro jiný. 
 
-Uvidíte, že se během vývoje často Blocklisting při vývoji: některá chyba způsobí selhání hostitele služby při spuštění. Service Fabric se pokusí vytvořit hostitele služby několikrát a dojde k selhání. Po několika pokusech uzel získá blocklisted a cluster Správce prostředků se pokusí službu vytvořit jinde. Pokud se toto selhání chová na více uzlech, je možné, že všechny platné uzly v clusteru jsou zablokované. Blocklisting může také odebrat tolik uzlů, které nestačí k úspěšnému spuštění služby, aby splňovaly požadované škálování. Obvykle se zobrazí další chyby nebo upozornění z Správce prostředků clusteru, což znamená, že se služba nachází pod požadovaným počtem replik nebo instancí a také se zprávami o stavu, které označují, co selhání vedlo k Blocklisting na prvním místě.
+Uvidíte, že Blocklisting se během vývoje často setká: některá chyba způsobí, že hostitel služby selže při spuštění, Service Fabric se pokusí vytvořit hostitele služby několikrát a dojde k selhání. Po několika pokusech uzel získá blocklisted a cluster Správce prostředků se pokusí službu vytvořit jinde. Pokud se toto selhání chová na více uzlech, je možné, že všechny platné uzly v clusteru jsou zablokované. Blocklisting může také odebrat tolik uzlů, které nestačí k úspěšnému spuštění služby, aby splňovaly požadované škálování. Obvykle se zobrazí další chyby nebo upozornění z Správce prostředků clusteru, což znamená, že se služba nachází pod požadovaným počtem replik nebo instancí a také se zprávami o stavu, které označují, co selhání vedlo k Blocklisting na prvním místě.
 
 Blocklisting není trvalá podmínka. Po několika minutách se uzel odebere z seznamu blokovaných a Service Fabric může znovu aktivovat služby v tomto uzlu. Pokud se služby nadále nezdaří, uzel bude znovu blocklisted pro daný typ služby. 
 
@@ -188,7 +188,7 @@ Cluster Správce prostředků také pomáhá při upgradování aplikací a clus
 * Zkuste přispět k bezproblémovému upgradu.
 
 ### <a name="keep-enforcing-the-rules"></a>Udržování vynucování pravidel
-Hlavní věcí, o které je potřeba vědět, je to, že pravidla – striktní omezení, jako jsou omezení umístění a kapacity, se při upgradech pořád vynutila. Omezení umístění zajistí, aby vaše úlohy běžely jenom tam, kde jsou povolené, i během upgradů. Když jsou služby vysoce omezené, můžou upgrady trvat delší dobu. Když je služba nebo uzel, na kterém je spuštěná, zavedený pro aktualizaci, může to mít několik možností, jak to může projít.
+Hlavní věcí, o které je potřeba vědět, je to, že pravidla – striktní omezení, jako jsou omezení umístění a kapacity, se při upgradech pořád vynutila. Omezení umístění zajistí, aby vaše úlohy běžely jenom tam, kde jsou povolené, i během upgradů. Když jsou služby vysoce omezené, můžou upgrady trvat delší dobu. Když je služba nebo její uzel v provozu pro aktualizaci, může to mít několik možností, jak to může projít.
 
 ### <a name="smart-replacements"></a>Inteligentní náhrady
 Když se spustí upgrade, Správce prostředků pořizuje snímek aktuálního uspořádání clusteru. Vzhledem k tomu, že se každá upgradovací doména dokončí, pokusí se vrátit služby, které byly v této doméně upgradu, na původní uspořádání. Tímto způsobem existují u služby během upgradu nanejvýš dvě přechody. Dojde k jednomu přesunu z ovlivněného uzlu a jeden přesun zpátky. Aktualizace clusteru nebo služby na to, jak probíhala před upgradem, také zajistí, že upgrade nebude mít vliv na rozložení clusteru. 
@@ -197,7 +197,7 @@ Když se spustí upgrade, Správce prostředků pořizuje snímek aktuálního u
 Další věcí, ke které dojde během upgradu, je to, že cluster Správce prostředků vypne vyrovnávání. Prevence vyrovnávání brání zbytečné reakce samotného upgradu, jako je třeba přesunutí služeb do uzlů, které se pro upgrade vyprázdní. Pokud se jedná o upgrade clusteru, celý cluster se během upgradu vyrovnává. Kontroly omezení zůstávají aktivní, pouze pohyb na základě proaktivního vyrovnávání metrik je zakázán.
 
 ### <a name="buffered-capacity--upgrade"></a>& upgrade kapacity vyrovnávací paměti
-Obecně chcete, aby se upgrade dokončil i v případě, že je cluster omezený nebo blízko úplný. Správa kapacity clusteru je ještě důležitější během inovací než obvykle. V závislosti na počtu domén upgradu se musí migrovat 5 až 20 procent kapacity, protože upgrade prochází clusterem. Tato práce musí jít někam. Tady je užitečné vyhodnotit [kapacitu ve vyrovnávací paměti](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) . Při normálním provozu se respektuje kapacita ve vyrovnávací paměti. Cluster Správce prostředků může v případě potřeby doplňovat uzly až do celkové kapacity (což spotřebovává vyrovnávací paměť).
+Obecně chcete, aby se upgrade dokončil i v případě, že je cluster omezený nebo blízko úplný. Správa kapacity clusteru je ještě důležitější během inovací než obvykle. V závislosti na počtu domén upgradu se musí migrovat 5 až 20 procent kapacity, protože upgrade prochází clusterem. Tato práce musí jít někam. Tady je užitečné vyhodnotit [kapacitu ve vyrovnávací paměti](service-fabric-cluster-resource-manager-cluster-description.md#node-buffer-and-overbooking-capacity) . Při normálním provozu se respektuje kapacita ve vyrovnávací paměti. Cluster Správce prostředků může v případě potřeby doplňovat uzly až do celkové kapacity (což spotřebovává vyrovnávací paměť).
 
 ## <a name="next-steps"></a>Další kroky
 * Začněte od začátku a [Získejte Úvod do clusteru Service Fabric správce prostředků](service-fabric-cluster-resource-manager-introduction.md)

@@ -4,16 +4,18 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: d04f57c19e31b946f7c360edb796bc4f0f5fcf71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 978e98bc623cecd768b1f2dda0a129e0459521da
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377399"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174015"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
 Azure Backup poskytuje několik zálohovacích řešení na základě požadavků na zálohování a topologie infrastruktury (místní vs Azure). Každý uživatel, který má záložní účet nebo správce, by měl vidět, co se ve všech řešeních provede, a očekává se, že bude v důležitých scénářích upozorněn Tento článek podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup Service.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Úlohy zálohování v trezoru Recovery Services
 
@@ -36,6 +38,9 @@ Tady jsou uvedené úlohy z následujících řešení Azure Backup:
 > Úlohy Azure, jako jsou zálohování SQL a SAP HANA v rámci virtuálních počítačů Azure, mají velký počet úloh zálohování. Například zálohování protokolů může běžet každých 15 minut. Pro takové databázové úlohy se ale zobrazí jenom operace aktivované uživatelem. Naplánované operace zálohování se nezobrazují.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Výstrahy zálohování v trezoru Recovery Services
+
+> [!NOTE]
+> Zobrazení výstrah napříč trezory není v současné době v centru zálohování podporováno. Pokud chcete zobrazit výstrahy pro tento trezor, musíte přejít do jednotlivého trezoru.
 
 Výstrahy jsou primárně ve scénářích, kdy se uživatelům pošle oznámení, aby mohli provádět příslušné akce. Část **výstrahy zálohování** zobrazuje výstrahy vygenerované službou Azure Backup. Tyto výstrahy definuje služba a uživatel nemůže vlastní výstrahy vytvořit.
 

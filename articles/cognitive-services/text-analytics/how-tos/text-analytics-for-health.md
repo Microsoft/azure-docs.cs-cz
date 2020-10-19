@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: dffd12f319bd2766decda5874299cd7115f0502b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309196"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173962"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
 
@@ -227,7 +227,11 @@ Další informace najdete v dokumentaci k NGINX o [ukončení Nginx SSL](https:/
 
 
 ## <a name="example-api-request"></a>Příklad požadavku rozhraní API
-Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST.
+Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST.  K dispozici jsme také nástroj pro vizualizaci v kontejneru, který je přístupný připojením **ukázky** ke koncovému bodu kontejneru, například:
+
+```bash
+http://<serverURL>:5000/demo
+```
 
 Použijte níže uvedený příklad žádosti o vytvoření dotazu do kontejneru, který jste nasadili, a nahraďte `serverURL` proměnnou odpovídající hodnotou.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e27c6661c34ab6d177feec11f8e9ec891987ab48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfec218c1bf1d018157fc6d78c700991f332a13
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005747"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172796"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Zásady umístění pro služby Service Fabric
 Zásady umístění jsou další pravidla, která se dají použít k řízení umístění služby v některých specifických, méně častých scénářích. Příklady těchto scénářů:
@@ -20,6 +20,7 @@ Zásady umístění jsou další pravidla, která se dají použít k řízení 
 - Vaše prostředí zahrnuje více oblastí geopolitické nebo právní kontroly nebo jiné případy, kdy máte hranice zásad, které je potřeba vyhovět.
 - V důsledku velkých vzdáleností nebo používání pomalejších nebo méně spolehlivých síťových propojení dochází k důležitým informacím o výkonu nebo latenci komunikace.
 - Je potřeba uchovávat určité úlohy společně umístěného jako nejlepší úsilí, a to buď s ostatními úlohami, nebo v blízkosti zákazníků.
+- V jednom uzlu budete potřebovat více bezstavových instancí oddílu.
 
 Většina těchto požadavků je zarovnaná s fyzickým rozložením clusteru, který je reprezentován jako doména selhání clusteru. 
 
@@ -29,6 +30,7 @@ Pokročilé zásady umístění, které vám pomůžou vyřešit tyto scénáře
 2. Požadované domény
 3. Preferované domény
 4. Nepovoluje se balení repliky.
+5. Povolí více bezstavových instancí na uzlu.
 
 Většinu následujících ovládacích prvků lze nakonfigurovat prostřednictvím vlastností uzlů a omezení umístění, ale některé jsou složitější. Aby se zjednodušily věci, Service Fabric cluster Správce prostředků poskytuje tyto další zásady umístění. Zásady umístění se konfigurují na základě instance služby podle názvu. Můžou se taky aktualizovat dynamicky.
 
@@ -122,6 +124,42 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 Nyní by bylo možné použít tyto konfigurace pro služby v clusteru, který nebyl geograficky rozložený? Je možné, že to ale není velký důvod. Požadovaná, neplatná a Upřednostňovaná konfigurace domény by se měla vyhnout, pokud je nevyžadují jejich scénáře. Nedává žádný smysl, aby se pokusil vynutit spuštění dané úlohy v jednom stojanu nebo preferovat některé segmenty svého místního clusteru přes jiné. Různé konfigurace hardwaru by měly být rozloženy mezi doménami selhání a zpracovávány prostřednictvím normálního omezení umístění a vlastností uzlu.
+
+## <a name="placement-of-multiple-stateless-instances-of-a-partition-on-single-node"></a>Umístění více bezstavových instancí oddílu na jednom uzlu
+Zásada umístění **AllowMultipleStatelessInstancesOnNode** umožňuje umístění více bezstavových instancí oddílu na jednom uzlu. Ve výchozím nastavení nelze na uzel umístit více instancí jednoho oddílu. I u služby-1 není možné škálovat počet instancí nad rámec počtu uzlů v clusteru pro danou pojmenovanou službu. Tato zásada umístění odstraní toto omezení a umožní InstanceCount, aby bylo zadáno vyšší než počet uzlů.
+
+Pokud jste někdy viděli zprávu o stavu, například " `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: ReplicaExclusion` ", pak jste narazili na tuto podmínku nebo něco podobného. 
+
+Když zadáte `AllowMultipleStatelessInstancesOnNode` zásadu pro službu, InstanceCount se dá nastavit nad rámec počtu uzlů v clusteru.
+
+Kód:
+
+```csharp
+ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription allowMultipleInstances = new ServicePlacementAllowMultipleStatelessInstancesOnNodePolicyDescription();
+serviceDescription.PlacementPolicies.Add(allowMultipleInstances);
+```
+
+PowerShell:
+
+```posh
+New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless –PartitionSchemeSingleton –PlacementPolicy @(“AllowMultipleStatelessInstancesOnNode”) -InstanceCount 10 -ServicePackageActivationMode ExclusiveProcess 
+```
+
+> [!NOTE]
+> Zásada umístění je aktuálně ve verzi Preview a za `EnableUnsupportedPreviewFeatures` nastavením clusteru. Vzhledem k tomu, že se jedná o funkci verze Preview, nastavení konfigurace verze Preview brání clusteru v upgradu na/z. Jinými slovy, budete muset vytvořit nový cluster, abyste mohli tuto funkci vyzkoušet.
+>
+
+> [!NOTE]
+> V současné době je zásada podporovaná jenom pro bezstavové služby s [režimem aktivace balíčku služby](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicepackageactivationmode?view=azure-dotnet)ExclusiveProcess.
+>
+
+> [!WARNING]
+> Zásady se při použití se statickými koncovými body portů nepodporují. Použití obou v kombinaci může vést k nesprávnému clusteru, protože se více instancí na stejném uzlu pokusí vytvořit vazby na stejný port a nemůže být spuštěno. 
+>
+
+> [!NOTE]
+> Použití vysoké hodnoty [MinInstanceCount](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount?view=azure-dotnet) s touto zásadou umísťování může vést k zablokování upgradů aplikace. Pokud máte například cluster s pěti uzly a nastavíte InstanceCount = 10, budete mít na každém uzlu dvě instance. Pokud nastavíte MinInstanceCount = 9, může se pokus o upgrade aplikace zablokovat. s MinInstanceCount = 8 se to může vyhnout.
+>
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o konfiguraci služeb najdete v informacích [o konfiguraci služeb](service-fabric-cluster-resource-manager-configure-services.md) .

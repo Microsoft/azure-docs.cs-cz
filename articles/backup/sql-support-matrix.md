@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování S
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5126159f2f9e5761b5f6a073972935101bc03210
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946344"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174055"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure
 
@@ -41,7 +41,7 @@ Pomocí Azure Backup můžete zálohovat databáze SQL Server ve virtuálních p
 * Podporují se všechny typy zálohování (úplný/rozdíl/protokol) a modely obnovení (jednoduché/úplné/hromadné protokolování).
 * Pro databáze **jen pro čtení** jsou podporovány úplné typy úplné zálohy a pouze kopírování.
 * Nativní komprese SQL je podporována, pokud je explicitně povolena uživatelem v zásadách zálohování. Azure Backup přepisuje výchozí hodnoty na úrovni instance pomocí klauzule COMPRESSION/NO_COMPRESSION v závislosti na hodnotě tohoto ovládacího prvku nastavené uživatelem.
-* Zálohování databáze s podporou TDE je podporováno. Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Komprese záloh pro databáze s povoleným TDE pro SQL Server 2016 a novější verze je dostupná, ale v nižší velikosti přenosu, jak je popsáno [zde](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593).
+* Zálohování databáze s podporou TDE je podporováno. Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Komprese záloh pro databáze s povoleným TDE pro SQL Server 2016 a novější verze je dostupná, ale v nižší velikosti přenosu, jak je popsáno [zde](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593).
 * Operace zálohování a obnovení pro databáze zrcadlení a snímky databáze nejsou podporovány.
 * SQL Server **instance clusteru s podporou převzetí služeb při selhání (FCI)** se nepodporuje.
 * Použití více než jednoho řešení zálohování k zálohování samostatné instance SQL Server nebo skupiny dostupnosti Always On SQL může způsobit selhání zálohování. Upustí od tohoto postupu. Zálohování dvou uzlů skupiny dostupnosti jednotlivě se stejnými nebo různými řešeními může také vést k chybě zálohování.

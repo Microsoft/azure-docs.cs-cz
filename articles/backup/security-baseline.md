@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24bdb192ddfe1759cb1d70fff9936979f5e28143
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 09066d9e51f12923772758b3aebcebd347a59380
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093357"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174129"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Základní plán zabezpečení Azure pro zálohování
 
@@ -436,7 +436,7 @@ Podpůrná dokumentace:
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -612,7 +612,7 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 - [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -818,9 +818,9 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 - [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [Ověření Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+* [Ověření Key Vault](../key-vault/general/authentication.md)
 
-* [Postup přiřazení zásady přístupu Key Vault](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+* [Postup přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -868,7 +868,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 - [Pochopení Microsoft antimalwaru pro Azure Cloud Services a Virtual Machines](../security/fundamentals/antimalware.md)
 
-- [Vysvětlení detekce hrozeb Azure Security Center pro datové služby](../security-center/threat-protection.md)
+- [Vysvětlení detekce hrozeb Azure Security Center pro datové služby](../security-center/azure-defender.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -924,7 +924,7 @@ Zálohujte spravované klíče zákazníka v rámci Azure Key Vault.
 
 **Doprovodné**materiály: pro místní zálohování je k dispozici šifrování v klidovém formátu pomocí hesla, které zadáte při zálohování do Azure. Pro virtuální počítače Azure jsou neaktivní uložená data zašifrovaná pomocí Šifrování služby Storage (SSE). Můžete povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-- [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: Ano
 

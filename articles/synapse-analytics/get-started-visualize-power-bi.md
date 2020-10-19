@@ -7,15 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
-ms.subservice: overview
+ms.subservice: business-intelligence
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1046639f60b6fecd5b3b84328b38c10f269a348
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c5c41b98d52a4b8182fb162c3bfa9a08c0df5e15
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093850"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171851"
 ---
 # <a name="visualize-data-with-power-bi"></a>Vizualizace dat pomocí Power BI
 
@@ -55,7 +55,7 @@ Pracovní prostor Power BI můžete propojit s pracovním prostorem Azure synaps
 1. Pokud se zobrazí dialogové okno s názvem **databáze SQL serveru**:
     1. Vyberte **účet Microsoft**.
     1. Vyberte **Přihlásit** se a přihlaste se ke svému účtu.
-    1. Vyberte **Připojit**.
+    1. Vyberte **Connect** (Připojit).
 1. Po otevření dialogového okna **navigátor** ověřte tabulku **PassengerCountStats** a vyberte **načíst**.
 1. Po zobrazení dialogového okna **nastavení připojení** vyberte **DirectQuery**  >  **OK**.
 1. Na levé straně vyberte tlačítko **Sestava** .

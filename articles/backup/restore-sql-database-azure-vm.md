@@ -3,12 +3,12 @@ title: Obnovení databází SQL Server na virtuálním počítači Azure
 description: Tento článek popisuje, jak obnovit SQL Server databáze, které běží na virtuálním počítači Azure a které se zálohují s Azure Backup. K obnovení databází do sekundární oblasti můžete také použít obnovení mezi oblastmi.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbafd179f4b2f4e91a4bf19da41ffc14e4775e5c
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985390"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172175"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Serveru na virtuálních počítačích Azure
 
@@ -30,7 +30,7 @@ Před obnovením databáze mějte na paměti následující:
 - Databázi můžete obnovit do instance SQL Server ve stejné oblasti Azure.
 - Cílový server musí být zaregistrován ve stejném trezoru jako zdroj.
 - Chcete-li obnovit TDE šifrovanou databázi do jiné SQL Server, je nutné nejprve [obnovit certifikát na cílový server](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server).
-- Databáze s povoleným [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) by se měly obnovit pomocí možnosti [Obnovit jako soubory](#restore-as-files) .
+- Databáze s povoleným [CDC](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server) by se měly obnovit pomocí možnosti [Obnovit jako soubory](#restore-as-files) .
 - Než obnovíte hlavní databázi, spusťte instanci SQL Server v jednouživatelském režimu pomocí možnosti Startup **-m AzureWorkloadBackup**.
   - Hodnota pro **-m** je název klienta.
   - Připojení může otevřít pouze zadaný název klienta.

@@ -3,12 +3,12 @@ title: Zálohování serveru MABS
 description: Naučte se zálohovat Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: de62f0f57273ad7bd77df917d909627819165adb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946707"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172124"
 ---
 # <a name="back-up-the-mabs-server"></a>Zálohování serveru MABS
 
@@ -184,9 +184,9 @@ Pokud je server MABS stále v provozu a fond úložiště je v pořádku (např�
 
 Databázi MABS můžete zálohovat na místní disk s nativním zálohováním SQL Server, nezávisle na MABS.
 
-- Získejte [přehled](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) o zálohování SQL Serveru.
+- Získejte [přehled](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) o zálohování SQL Serveru.
 
-- Najděte [další informace](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) o zálohování SQL Serveru do cloudu.
+- Najděte [další informace](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) o zálohování SQL Serveru do cloudu.
 
 ## <a name="back-up-to-a-share-protected-by-mabs"></a>Zálohování do sdíleného úložiště chráněného přes MABS
 
@@ -238,9 +238,9 @@ Tato možnost zálohování používá nativní SQL pro zálohování databáze 
 
 Databázi MABS můžete zálohovat stejně jako jakoukoli jinou SQL Server databázi pomocí SQL Server nativního zálohování.
 
-- Získejte [přehled](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) o zálohování SQL Serveru.
+- Získejte [přehled](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases) o zálohování SQL Serveru.
 
-- Najděte [další informace](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) o zálohování SQL Serveru do cloudu.
+- Najděte [další informace](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service) o zálohování SQL Serveru do cloudu.
 
 ### <a name="recover-the-mabs-database"></a>Obnovení databáze MABS
 

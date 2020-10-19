@@ -3,12 +3,12 @@ title: Řízení infrastruktury zálohování s využitím centra zálohování
 description: Naučte se řídit prostředí Azure a zajistit, aby všechny vaše prostředky vyhovovaly z perspektivy zálohování pomocí centra zálohování.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614313"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173809"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>Řízení infrastruktury zálohování s využitím centra zálohování
 
@@ -26,15 +26,15 @@ Centrum zálohování vám pomůže řídit vaše prostředí Azure a zajistit, 
 
 ## <a name="azure-policies-for-backup"></a>Zásady Azure pro zálohování
 
-Chcete-li zobrazit všechny [zásady Azure](https://docs.microsoft.com/azure/governance/policy/overview) , které jsou k dispozici pro zálohování, vyberte položku nabídky **zásady Azure pro zálohování** . Zobrazí se všechny předdefinované a vlastní [definice zásad Azure pro zálohování](policy-reference.md) , které jsou k dispozici pro přiřazení k vašim předplatným a skupinám prostředků.
+Chcete-li zobrazit všechny [zásady Azure](../governance/policy/overview.md) , které jsou k dispozici pro zálohování, vyberte položku nabídky **zásady Azure pro zálohování** . Zobrazí se všechny předdefinované a vlastní [definice zásad Azure pro zálohování](policy-reference.md) , které jsou k dispozici pro přiřazení k vašim předplatným a skupinám prostředků.
 
-Výběr libovolné definice vám umožní [přiřadit zásadu](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) k oboru.
+Výběr libovolné definice vám umožní [přiřadit zásadu](../governance/policy/tutorials/create-and-manage.md#assign-a-policy) k oboru.
 
 ![Vybrat definice Azure Policy](./media/backup-center-govern-environment/azure-policy-definitions.png)
 
 ## <a name="backup-compliance"></a>Dodržování předpisů pro zálohování
 
-Kliknutím na položku nabídky Kompatibilita záloh můžete zobrazit [dodržování předpisů](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) vašich prostředků podle různých předdefinovaných zásad, které jste přiřadili vašemu prostředí Azure. Můžete zobrazit procentní podíl prostředků, které jsou v souladu se všemi zásadami, a také zásady, které mají jeden nebo více nekompatibilních zdrojů.
+Kliknutím na položku nabídky Kompatibilita záloh můžete zobrazit [dodržování předpisů](../governance/policy/how-to/get-compliance-data.md) vašich prostředků podle různých předdefinovaných zásad, které jste přiřadili vašemu prostředí Azure. Můžete zobrazit procentní podíl prostředků, které jsou v souladu se všemi zásadami, a také zásady, které mají jeden nebo více nekompatibilních zdrojů.
 
 ![Zobrazit dodržování předpisů pro zálohování](./media/backup-center-govern-environment/azure-policy-compliance.png)
 

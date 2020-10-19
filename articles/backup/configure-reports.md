@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d40da1ebd87ef7d7a43d0be9ae0d34911e854d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567430"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172457"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -30,6 +30,8 @@ Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá
 - Pokud jste uživatelem [Azure Lighthouse](../lighthouse/index.yml) , který má delegovaný přístup k předplatným vašich zákazníků, můžete pomocí těchto sestav s Azure Lighthouse zobrazit sestavy pro všechny klienty.
 - V současné době je možné data zobrazit v sestavách zálohování v rámci maximálního počtu 100 Log Analytics pracovních prostorů (mezi klienty).
 - Data pro úlohy zálohování protokolů aktuálně nejsou v sestavách zobrazená.
+
+[!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="get-started"></a>Začínáme
 

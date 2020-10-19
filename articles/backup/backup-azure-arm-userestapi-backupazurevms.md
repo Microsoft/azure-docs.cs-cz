@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak nakonfigurovat, iniciovat a sprav
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 42af6ae69699be7eefac0aca2bcd22b1e25720b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506623"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171454"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -41,7 +41,7 @@ Operace Refresh je [asynchronní operace](../azure-resource-manager/management/a
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |204 bez obsahu     |         |  OK bez vráceného obsahu      |
 |202 přijato     |         |     Přijato    |
@@ -104,7 +104,7 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba ž�
 
 #### <a name="responses-to-get-operation"></a>Odpovědi na operaci získání
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Chcete-li vytvořit chráněnou položku, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
 
@@ -208,7 +208,7 @@ Vytvoření chráněné položky je [asynchronní operace](../azure-resource-man
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 přijato     |         |     Přijato    |
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
@@ -348,7 +348,7 @@ Aktivace zálohování na vyžádání je [asynchronní operace](../azure-resour
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
@@ -437,7 +437,7 @@ Pokud je virtuální počítač Azure již zálohovaný, můžete změnit zásad
 > [!IMPORTANT]
 > Výše uvedený text žádosti je vždycky poslední kopie datových disků, které se mají vyloučit nebo zahrnout. Nepřidá *add* se do předchozí konfigurace. Příklad: Pokud nejprve aktualizujete ochranu jako "vyloučit datový disk 1" a pak se znovu pokusíte "vyloučit datový disk 2", v následujících zálohách se vyloučí *jenom datový disk 2* , který obsahuje datový disk 1. Toto je vždy konečný seznam, který bude zahrnut nebo vyloučen v následujících zálohách.
 
-Pokud chcete získat aktuální seznam disků, které jsou vyloučené nebo zahrnuté, Získejte informace o chráněných položkách, jak je uvedeno [zde](https://docs.microsoft.com/rest/api/backup/protecteditems/get). Odpověď poskytne seznam logických jednotek dat a označuje, zda jsou zahrnuty nebo vyloučeny.
+Pokud chcete získat aktuální seznam disků, které jsou vyloučené nebo zahrnuté, Získejte informace o chráněných položkách, jak je uvedeno [zde](/rest/api/backup/protecteditems/get). Odpověď poskytne seznam logických jednotek dat a označuje, zda jsou zahrnuty nebo vyloučeny.
 
 ### <a name="stop-protection-but-retain-existing-data"></a>Zastavit ochranu, ale zachovat existující data
 
@@ -477,7 +477,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 (obsah) po dokončení této operace.
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |204. obsah     |         |  Obsah       |
 |202 přijato     |         |     Přijato    |

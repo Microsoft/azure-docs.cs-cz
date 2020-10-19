@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 4ba7ec73ac70723e21b6acad571d62d14edd250a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89bad470d5ead43b79e3691343b53fff796f7abc
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828118"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172777"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning
 
@@ -39,20 +39,28 @@ Použití Azure Machine Learningho pracovního prostoru s privátním odkazem ne
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Vytvoření pracovního prostoru, který používá privátní koncový bod
 
-K vytvoření pracovního prostoru s privátním koncovým bodem použijte jednu z následujících metod:
+K vytvoření pracovního prostoru s privátním koncovým bodem použijte jednu z následujících metod. Každá z těchto metod __vyžaduje existující virtuální síť__:
 
 > [!TIP]
-> Šablona Azure Resource Manager může v případě potřeby vytvořit novou virtuální síť. Ostatní metody vyžadují stávající virtuální síť.
-
-# <a name="resource-manager-template"></a>[Šablona Správce prostředků](#tab/azure-resource-manager)
-
-Šablona Azure Resource Manager v [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) poskytuje snadný způsob, jak vytvořit pracovní prostor s privátním koncovým bodem a virtuální sítí.
-
-Informace o použití této šablony, včetně privátních koncových bodů, najdete v tématu [použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning](how-to-create-workspace-template.md).
+> Pokud chcete současně vytvořit pracovní prostor, privátní koncový bod a virtuální síť, přečtěte si téma [použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning](how-to-create-workspace-template.md).
 
 # <a name="python"></a>[Python](#tab/python)
 
 Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) , která se dá použít s [pracovním prostorem. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) k vytvoření pracovního prostoru s privátním koncovým bodem. Tato třída vyžaduje existující virtuální síť.
+
+```python
+from azureml.core import Workspace
+from azureml.core import PrivateEndPointConfig
+
+pe = PrivateEndPointConfig(name='myprivateendpoint', vnet_name='myvnet', vnet_subnet_name='default')
+ws = Workspace.create(name='myworkspace',
+    subscription_id='<my-subscription-id>',
+    resource_group='myresourcegroup',
+    location='eastus2',
+    private_endpoint_config=pe,
+    private_endpoint_auto_approval=True,
+    show_output=True)
+```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -67,6 +75,78 @@ Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig]
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Karta __sítě__ v nástroji Azure Machine Learning Studio umožňuje konfigurovat soukromý koncový bod. Vyžaduje ale existující virtuální síť. Další informace najdete v tématu [vytvoření pracovních prostorů na portálu](how-to-manage-workspace.md).
+
+---
+
+## <a name="add-a-private-endpoint-to-a-workspace"></a>Přidání privátního koncového bodu do pracovního prostoru
+
+K přidání privátního koncového bodu do existujícího pracovního prostoru použijte jednu z následujících metod:
+
+> [!IMPORTANT]
+>
+> Pro vytvoření privátního koncového bodu v nástroji musíte mít existující virtuální síť. Před přidáním privátního koncového bodu musíte taky [zakázat zásady sítě pro privátní koncové body](../private-link/disable-private-endpoint-network-policy.md) .
+
+> [!WARNING]
+>
+> Pokud máte k tomuto pracovnímu prostoru přidružené nějaké výpočetní cíle a nejsou za stejnou virtuální sítí, v rámci které se vytvoří privátní koncový bod, nebudou fungovat.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+from azureml.core import Workspace
+from azureml.core import PrivateEndPointConfig
+
+pe = PrivateEndPointConfig(name='myprivateendpoint', vnet_name='myvnet', vnet_subnet_name='default')
+ws = Workspace.from_config()
+ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approval=True, show_output=True)
+```
+
+Další informace o třídách a metodách, které se používají v tomto příkladu, naleznete v tématu [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) a [Workspace.add_private_endpoint](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-).
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru přidat](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) .
+
+```azurecli
+az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
+```
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Z pracovního prostoru Azure Machine Learning na portálu vyberte __připojení privátních koncových bodů__ a pak vyberte __+ privátní koncový bod__. Použijte pole k vytvoření nového privátního koncového bodu.
+
+* Při výběru __oblasti__vyberte stejnou oblast jako vaše virtuální síť. 
+* Při výběru __typu prostředku__použijte __Microsoft. MachineLearningServices/Workspaces__. 
+* Nastavte __prostředek__ na název vašeho pracovního prostoru.
+
+Nakonec vyberte __vytvořit__ k vytvoření privátního koncového bodu.
+
+---
+
+## <a name="remove-a-private-endpoint"></a>Odebrání privátního koncového bodu
+
+K odebrání privátního koncového bodu z pracovního prostoru použijte jednu z následujících metod:
+
+# <a name="python"></a>[Python](#tab/python)
+
+Pro odebrání privátního koncového bodu použijte [Workspace.delete_private_endpoint_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) .
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+# get the connection name
+_, _, connection_name = ws.get_details()['privateEndpointConnections'][0]['id'].rpartition('/')
+ws.delete_private_endpoint_connection(private_endpoint_connection_name=connection_name)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) .
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Z pracovního prostoru Azure Machine Learning na portálu vyberte __připojení privátního koncového bodu__a pak vyberte koncový bod, který chcete odebrat. Nakonec vyberte __Odebrat__.
 
 ---
 

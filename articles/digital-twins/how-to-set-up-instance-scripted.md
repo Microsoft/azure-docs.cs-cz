@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8157517c0df942c40d93853c8d18ae31e9909d21
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fd48ff8dd0f4fa44206f6636f869d4ea3f959ae5
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132512"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174182"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -57,10 +57,10 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
 
     Přejděte na soubor _**deploy.ps1**_ na vašem počítači (v _Azure_Digital_Twins_end_to_end_samples > skripty > **deploy.ps1** _) a stiskněte otevřít. Tím se soubor nahraje do Cloud Shell, abyste ho mohli spustit v okně Cloud Shell.
 
-4. Spusťte skript odesláním `./deploy.ps1` příkazu v okně Cloud Shell. (Pokud chcete vložit do Cloud Shell, můžete použít **CTRL + SHIFT + v** v systémech Windows a Linux nebo **Cmd + Shift + v** v MacOS. Můžete také použít nabídku kliknutím pravým tlačítkem myši.)
+4. Spusťte skript odesláním `./deploy.ps1` příkazu v okně Cloud shell s přepínačem, který zahrnuje nastavení registrace aplikace. Níže uvedený příkaz můžete zkopírovat (pokud ho chcete vložit do Cloud Shell, můžete použít **CTRL + SHIFT + v** v systémech Windows a Linux nebo **Cmd + Shift + v** v MacOS. Můžete také použít nabídku klikněte pravým tlačítkem myši.
 
     ```azurecli
-    ./deploy.ps1
+    ./deploy.ps1 -RegisterAadApp
     ```
 
     Když se skript spustí pomocí automatizovaného postupu nastavení, budete vyzváni k předání těchto hodnot:

@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: d0a5c1b5800bbc626453ba8896dc706a0cd5bfd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd974181c78586f915dad6cc6ed39d9255a1456b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324939"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172572"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server a DPM – Nejčastější dotazy
 
@@ -19,7 +19,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server"></a>Mohu použít server Azure Backup k vytvoření zálohy úplného obnovení (BMR) pro fyzický server?
 
-Ano.
+Yes.
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>Můžu server zaregistrovat do více trezorů?
 
@@ -31,7 +31,7 @@ Ne. Azure Backup můžete použít k ochraně Azure Stack, Azure Backup nepodpor
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Je-li nainstalován agent Azure Backup pro ochranu souborů a složek, je možné nainstalovat aplikaci System Center DPM pro zálohování místních úloh do Azure?
 
-Ano. Měli byste ale nejdřív nastavit DPM a pak nainstalovat agenta Azure Backup.  Instalace součástí v tomto pořadí zajistí, že agent Azure Backup funguje s aplikací DPM. Instalace agenta před instalací aplikace DPM se nedoporučuje ani nepodporuje.
+Yes. Měli byste ale nejdřív nastavit DPM a pak nainstalovat agenta Azure Backup.  Instalace součástí v tomto pořadí zajistí, že agent Azure Backup funguje s aplikací DPM. Instalace agenta před instalací aplikace DPM se nedoporučuje ani nepodporuje.
 
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Proč po instalaci UR7 a nejnovějšího agenta Azure Backup nelze přidat externí server DPM?
 
@@ -39,13 +39,13 @@ Pro servery DPM se zdroji dat, které jsou chráněny do cloudu (pomocí kumulat
 
 ### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Existují doporučení pro konfiguraci vyloučení pro antivirový software?
 
-Ano, doporučuje se nakonfigurovat vyloučení antivirové ochrany. Informace o vyloučení pro aplikaci DPM najdete v tématu [spuštění antivirového softwaru na serveru aplikace DPM](https://docs.microsoft.com/system-center/dpm/run-antivirus-server). Informace o vyloučení pro MABS najdete v tématu [Konfigurace antivirového programu pro server MABS](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
+Ano, doporučuje se nakonfigurovat vyloučení antivirové ochrany. Informace o vyloučení pro aplikaci DPM najdete v tématu [spuštění antivirového softwaru na serveru aplikace DPM](/system-center/dpm/run-antivirus-server). Informace o vyloučení pro MABS najdete v tématu [Konfigurace antivirového programu pro server MABS](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>Zálohování VMware a Hyper-V
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Je možné zálohovat servery VMware vCenter do Azure?
 
-Ano. Pomocí Azure Backup Server můžete zálohovat hostitele VMware vCenter Server a ESXi do Azure.
+Yes. Pomocí Azure Backup Server můžete zálohovat hostitele VMware vCenter Server a ESXi do Azure.
 
 - [Přečtěte si další informace](backup-mabs-protection-matrix.md) o podporovaných verzích.
 - Při zálohování serveru VMware [postupujte podle těchto kroků](backup-azure-backup-server-vmware.md) .

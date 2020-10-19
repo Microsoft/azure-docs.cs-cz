@@ -4,12 +4,12 @@ description: Poskytuje přehled služby Azure Backup a jejich podíl na strategi
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 72dee7bbcaa730f12af3ee323157fa92f6694603
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 537605498fe166b24bd4e24673cfa1542bc449ea
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968335"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92172470"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
@@ -46,7 +46,7 @@ Azure Backup přináší tyto klíčové výhody:
 - **Více možností úložiště** – Azure Backup nabízí dva typy replikace k zajištění vysoké dostupnosti úložiště/dat.
   - [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) replikuje vaše data třikrát (vytváří tři kopie dat) v jednotce škálování úložiště v datacentru. Všechny kopie dat existují ve stejné oblasti. Místně redundantní úložiště nabízí cenově úsporný způsob ochrany dat před selháním místního hardwaru.
   - [Geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) je výchozí a doporučená možnost replikace. GRS replikuje vaše data do sekundární oblasti (vzdálené stovky kilometrů od primárního umístění zdrojových dat). GRS náklady jsou větší než LRS, ale GRS poskytuje vyšší úroveň trvanlivosti vašich dat, i když dojde k oblastnímu výpadku.
-  - [Zóna – redundantní úložiště (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) replikuje vaše data do [zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. ZRS nemá žádný výpadek. Takže vaše důležité úlohy, které vyžadují zajistěení [dat](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)a musí být bez výpadků, se dají zálohovat v ZRS.
+  - [Zóna – redundantní úložiště (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. ZRS nemá žádný výpadek. Takže vaše důležité úlohy, které vyžadují zajistěení [dat](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)a musí být bez výpadků, se dají zálohovat v ZRS.
 
 ## <a name="next-steps"></a>Další kroky
 

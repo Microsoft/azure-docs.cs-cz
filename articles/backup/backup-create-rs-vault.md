@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit a nakonfigurovat trezor
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: c659efad7f0eaf5793e1fd608eb522964df7befd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981503"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171627"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Vytvoření a konfigurace trezoru Recovery Services
 
@@ -35,7 +35,7 @@ Azure Backup automaticky zpracovává úložiště pro trezor. Musíte určit zp
    - Pokud používáte Azure jako primární koncový bod úložiště záloh, doporučujeme, abyste používali výchozí **geograficky redundantní** nastavení.
    - Pokud Azure nepoužíváte jako primární koncový bod úložiště záloh, vyberte **Místně redundantní** – snížíte tím náklady na úložiště Azure.
    - Přečtěte si další informace o [geografické](../storage/common/storage-redundancy.md#geo-redundant-storage) a [místní](../storage/common/storage-redundancy.md#locally-redundant-storage) redundanci.
-   - Pokud potřebujete dostupnost dat bez výpadků v oblasti, garantujete si zajišťovat data a pak zvolte [zóna – redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage).
+   - Pokud potřebujete dostupnost dat bez výpadků v oblasti, garantujete si zajišťovat data a pak zvolte [zóna – redundantní úložiště](../storage/common/storage-redundancy.md#zone-redundant-storage).
 
 >[!NOTE]
 >Nastavení replikace úložiště pro trezor nejsou relevantní pro zálohování sdílené složky Azure, protože aktuální řešení je založené na snímku a do trezoru se nepřenesla žádná data. Snímky se ukládají do stejného účtu úložiště jako zálohovaná sdílená složka.

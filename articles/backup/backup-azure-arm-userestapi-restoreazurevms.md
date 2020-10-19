@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak spravovat operace obnovení zálo
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: ad60436d82ccc8049a4509ba5bf1e244bee150ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89506673"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174024"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Obnovení virtuálních počítačů Azure pomocí REST API
 
@@ -31,7 +31,7 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba dal
 
 ### <a name="responses"></a>Odpovědi
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -122,7 +122,7 @@ Po výběru [relevantního bodu obnovení](#select-recovery-point)pokračujte a 
 ***Všechny operace obnovení v zálohovaných položkách se provádějí se stejným rozhraním API pro *odeslání* . V rámci scénářů obnovení se mění pouze tělo žádosti.***
 
 > [!IMPORTANT]
-> Všechny podrobnosti o různých možnostech obnovení a jejich závislostech jsou uvedeny [zde](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options). Než budete pokračovat v aktivaci těchto operací, přečtěte si je.
+> Všechny podrobnosti o různých možnostech obnovení a jejich závislostech jsou uvedeny [zde](./backup-azure-arm-restore-vms.md#restore-options). Než budete pokračovat v aktivaci těchto operací, přečtěte si je.
 
 Aktivace operací obnovení je požadavek *post* . Pokud chcete získat další informace o rozhraní API, přečtěte si [téma "Trigger Restore" REST API](/rest/api/backup/restores/trigger).
 
@@ -144,7 +144,7 @@ Triggerem jakékoli operace obnovení je [asynchronní operace](../azure-resourc
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
@@ -216,7 +216,7 @@ Pokud je potřeba přizpůsobit vytvoření virtuálního počítače ze zálož
 
 Pokud chcete aktivovat obnovení disku ze zálohy virtuálního počítače Azure, níže jsou uvedené součásti textu žádosti.
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -246,7 +246,7 @@ Následující text žádosti definuje vlastnosti vyžadované k aktivaci obnove
 
 ### <a name="restore-disks-selectively"></a>Selektivní obnovení disků
 
-Pokud jste [selektivně zálohovali disky](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), pak je v [souhrnu bodů obnovení](#select-recovery-point) k dispozici aktuální seznam zálohovaných disků a [podrobná odpověď](https://docs.microsoft.com/rest/api/backup/recoverypoints/get). Můžete také selektivně obnovit disky a další podrobnosti najdete [tady](selective-disk-backup-restore.md#selective-disk-restore). Chcete-li selektivně obnovit disk ze seznamu zálohovaných disků, najděte logickou jednotku disku z odpovědi bodu obnovení a přidejte vlastnost **restoreDiskLunList** do [výše uvedeného textu žádosti](#example-request) , jak je uvedeno níže.
+Pokud jste [selektivně zálohovali disky](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), pak je v [souhrnu bodů obnovení](#select-recovery-point) k dispozici aktuální seznam zálohovaných disků a [podrobná odpověď](/rest/api/backup/recoverypoints/get). Můžete také selektivně obnovit disky a další podrobnosti najdete [tady](selective-disk-backup-restore.md#selective-disk-restore). Chcete-li selektivně obnovit disk ze seznamu zálohovaných disků, najděte logickou jednotku disku z odpovědi bodu obnovení a přidejte vlastnost **restoreDiskLunList** do [výše uvedeného textu žádosti](#example-request) , jak je uvedeno níže.
 
 ```json
 {
@@ -278,7 +278,7 @@ I když obnovení disků vytvoří disky z bodu obnovení, nahradí disky aktuá
 
 Chcete-li aktivovat nahrazení disku ze zálohy virtuálního počítače Azure, je nutné, aby tyto součásti textu žádosti byly.
 
-|Název  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 

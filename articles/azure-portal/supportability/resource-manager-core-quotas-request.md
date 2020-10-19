@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7fd04428edc28315e714b9e81af0bea0e9344e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7486cee351880dc0465a43b1259a5f07ef31c77b
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763801"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173288"
 ---
 # <a name="quota-increase-requests"></a>Žádosti o navýšení kvóty
 
@@ -22,6 +22,9 @@ První úroveň je celkový regionální limit vCPU napříč všemi řadou virt
 Můžete požádat o zvýšení limitu kvóty vCPU pro řady virtuálních počítačů z Azure Portal. Zvýšení kvóty řady virtuálních počítačů automaticky zvýší celkový rozsah regionálního Vcpuu o stejné množství.
 
 Při vytvoření nového předplatného se nemusí výchozí celková oblast vCPU rovnat součtu výchozích kvót vCPU pro všechny jednotlivé řady virtuálních počítačů. Tato skutečnost může mít za následek předplatné s dostatečnou kvótou pro každou jednotlivou řadu virtuálních počítačů, kterou chcete nasadit. Pro všechny místní Vcpuy pro všechna nasazení by mohlo dojít k dostatečnému počtu kvót. V takovém případě budete muset odeslat žádost o explicitní zvýšení celkového počtu místních vCPU. Celkový počet regionálních vCPU nesmí překročit součet schválené kvóty v rámci všech řad virtuálních počítačů v dané oblasti.
+
+> [!NOTE]
+> Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, [otevřete online žádost o zákaznickou podporu](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-resource-quota#solution)zdarma.
 
 Další informace o kvótách najdete v tématech o kvótách [VCPU virtuálních počítačů](../../virtual-machines/windows/quotas.md) a [omezeních, kvótách a omezeních předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
