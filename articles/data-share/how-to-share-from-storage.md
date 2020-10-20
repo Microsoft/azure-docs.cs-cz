@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 08/28/2020
-ms.openlocfilehash: a54a9d4c50852fe78fd245723dd29f487d58f4b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89270049"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219900"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Sdílení a příjem dat ze služeb Azure Blob Storage a Azure Data Lake Storage
 
@@ -33,7 +33,7 @@ Když jsou systémy souborů, kontejnery nebo složky sdíleny ve sdílení zalo
 
 ### <a name="prerequisites-for-source-storage-account"></a>Požadavky na zdrojový účet úložiště
 
-* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](../storage/common/storage-account-create.md)
 * Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel.
 * Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli Vlastník. 
 
@@ -58,7 +58,7 @@ Vytvořte prostředek sdílené složky Azure ve skupině prostředků Azure.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj účet pro sdílení dat.|
     | Skupina prostředků | *test-Resource-Group* | Použijte existující skupinu prostředků nebo vytvořte novou skupinu prostředků. |
     | Umístění | *USA – východ 2* | Vyberte oblast pro svůj účet pro sdílení dat.
-    | Name | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
+    | Název | *datashareaccount* | Zadejte název vašeho účtu pro sdílení dat. |
     | | |
 
 1. Vyberte **zkontrolovat + vytvořit**a pak **vytvořte** a zřiďte svůj účet pro sdílení dat. Zřizování nového účtu pro sdílení dat obvykle trvá přibližně 2 minuty nebo méně. 
@@ -124,7 +124,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 
 ### <a name="prerequisites-for-target-storage-account"></a>Předpoklady pro cílový účet úložiště
 
-* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
+* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](../storage/common/storage-account-create.md). 
 * Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel. 
 * Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli Vlastník.  
 
@@ -194,4 +194,3 @@ Tento krok platí jenom pro sdílení na základě snímků. Chcete-li zobrazit 
 
 ## <a name="next-steps"></a>Další kroky
 Zjistili jste, jak sdílet a přijímat data z účtu úložiště pomocí služby Azure Data Share. Pokud se chcete dozvědět víc o sdílení z jiných zdrojů dat, pokračujte na [podporovaná úložiště dat](supported-data-stores.md).
-

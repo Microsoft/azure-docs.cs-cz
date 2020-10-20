@@ -10,12 +10,12 @@ metadata:
   author: duongau
   ms.author: duau
   ms.date: 08/27/2019
-  ms.openlocfilehash: b26699e31b5c633e4d04651f6057826426f6c2f0
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 384079389c66811016b1c813b3c11185ddfd52a6
+  ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89393101"
+  ms.lasthandoff: 10/19/2020
+  ms.locfileid: "92203972"
 landingContent:
 - title: Informace o ExpressRoute
   linkLists:
@@ -77,7 +77,7 @@ landingContent:
       url: site-to-site-vpn-over-microsoft-peering.md
     - text: Konfigurace režimu přenosu IPsec pro privátní peering
       url: expressroute-howto-ipsec-transport-private-windows.md
-- title: Sledování
+- title: Monitorování
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -116,7 +116,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/network/express-route
+      url: /cli/azure/network/express-route
     - text: Azure Powershell
       url: /powershell/module/az.network#expressroute
     - text: REST
@@ -124,6 +124,6 @@ landingContent:
   - linkListType: architecture
     links:
     - text: Referenční architektura pro hybridní sítě
-      url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute
+      url: /azure/architecture/reference-architectures/hybrid-networking/expressroute
     - text: Referenční architektura pro hybridní sítě s převzetím služeb při selhání sítě VPN
-      url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/expressroute-vpn-failover
+      url: /azure/architecture/reference-architectures/hybrid-networking/expressroute-vpn-failover

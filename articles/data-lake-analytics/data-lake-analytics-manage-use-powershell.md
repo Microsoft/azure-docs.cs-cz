@@ -1,29 +1,28 @@
 ---
 title: Správa Azure Data Lake Analytics pomocí Azure PowerShell
 description: Tento článek popisuje, jak pomocí Azure PowerShell spravovat účty Data Lake Analytics, zdroje dat, uživatele a & úlohy.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afa21e6aae769e69e8bc83b9fa0d4f9b76396f7e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87125628"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220308"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Správa Azure Data Lake Analytics pomocí Azure PowerShell
+
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí Azure PowerShell.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud chcete používat PowerShell s Data Lake Analytics, shromážděte následující informace: 
+Pokud chcete používat PowerShell s Data Lake Analytics, shromážděte následující informace:
 
 * **ID předplatného**: ID předplatného Azure, které obsahuje váš účet Data Lake Analytics.
 * **Skupina prostředků**: název skupiny prostředků Azure, která obsahuje váš účet Data Lake Analytics.
@@ -52,7 +51,7 @@ Přihlaste se pomocí ID předplatného nebo podle názvu předplatného.
 Connect-AzAccount -SubscriptionId $subId
 
 # Using subscription name
-Connect-AzAccount -SubscriptionName $subname 
+Connect-AzAccount -SubscriptionName $subname
 ```
 
 ## <a name="saving-authentication-context"></a>Ukládá se kontext ověřování.
@@ -64,23 +63,22 @@ Connect-AzAccount -SubscriptionName $subname
 Save-AzAccounts -Path D:\profile.json  
 
 # Load login session information
-Select-AzAccounts -Path D:\profile.json 
+Select-AzAccounts -Path D:\profile.json
 ```
 
 ### <a name="log-in-using-a-service-principal-identity-spi"></a>Přihlaste se pomocí identity objektu služby (SPI).
 
 ```powershell
 $tenantid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
-$spi_appname = "appname" 
-$spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" 
-$spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" 
+$spi_appname = "appname"
+$spi_appid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+$spi_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 $pscredential = New-Object System.Management.Automation.PSCredential ($spi_appid, (ConvertTo-SecureString $spi_secret -AsPlainText -Force))
 Login-AzAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential -Subscription $subid
 ```
 
 ## <a name="manage-accounts"></a>Správa účtů
-
 
 ### <a name="list-accounts"></a>Výpis účtů
 
@@ -94,7 +92,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg
 
 ### <a name="create-an-account"></a>Vytvoření účtu
 
-Každý účet Data Lake Analytics vyžaduje výchozí účet Data Lake Store, který slouží k ukládání protokolů. Můžete znovu použít existující účet nebo vytvořit účet. 
+Každý účet Data Lake Analytics vyžaduje výchozí účet Data Lake Store, který slouží k ukládání protokolů. Můžete znovu použít existující účet nebo vytvořit účet.
 
 ```powershell
 # Create a data lake store if needed, or you can re-use an existing one
@@ -117,12 +115,13 @@ Test-AdlAnalyticsAccount -Name $adla
 ```
 
 ## <a name="manage-data-sources"></a>Správa zdrojů dat
+
 Azure Data Lake Analytics aktuálně podporuje následující zdroje dat:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage](../storage/common/storage-introduction.md)
 
-Každý Data Lake Analytics účet má výchozí účet Data Lake Store. Výchozí účet Data Lake Store slouží k ukládání metadat úlohy a protokolů auditu úlohy. 
+Každý Data Lake Analytics účet má výchozí účet Data Lake Store. Výchozí účet Data Lake Store slouží k ukládání metadat úlohy a protokolů auditu úlohy.
 
 ### <a name="find-the-default-data-lake-store-account"></a>Najít výchozí účet Data Lake Store
 
@@ -134,7 +133,7 @@ $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 Výchozí účet Data Lake Store můžete najít tak, že filtrujete seznam zdrojů dat pomocí `IsDefault` vlastnosti:
 
 ```powershell
-Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
+Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault }
 ```
 
 ### <a name="add-a-data-source"></a>Přidání zdroje dat
@@ -148,7 +147,7 @@ Add-AdlAnalyticsDataSource -Account $adla -Blob $AzureStorageAccountName -Access
 
 # Add an additional Data Lake Store account.
 $AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
-Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
+Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName
 ```
 
 ### <a name="list-data-sources"></a>Seznam zdrojů dat
@@ -170,8 +169,8 @@ Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "Blob"
 
 ```powershell
 $script = @"
-@a  = 
-    SELECT * FROM 
+@a  =
+    SELECT * FROM
         (VALUES
             ("Contoso", 1500.0),
             ("Woodgrove", 2700.0)
@@ -182,7 +181,7 @@ OUTPUT @a
 "@
 
 $scriptpath = "d:\test.usql"
-$script | Out-File $scriptpath 
+$script | Out-File $scriptpath
 
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
@@ -191,7 +190,7 @@ Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 
 ```powershell
 $scriptpath = "d:\test.usql"
-$script | Out-File $scriptpath 
+$script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
@@ -265,7 +264,6 @@ Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 
 `-SubmittedAfter`Je užitečné při filtrování do časového rozsahu.
 
-
 ```powershell
 # List  jobs submitted in the last day.
 $d = [DateTime]::Now.AddDays(-1)
@@ -283,7 +281,6 @@ Získejte stav konkrétní úlohy.
 ```powershell
 Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
-
 
 ### <a name="cancel-a-job"></a>Zrušení úlohy
 
@@ -320,7 +317,6 @@ $recurrences = Get-AdlJobRecurrence -Account $adla
 $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>"
 ```
 
-
 ## <a name="manage-compute-policies"></a>Správa výpočetních zásad
 
 ### <a name="list-existing-compute-policies"></a>Vypsat existující výpočetní zásady
@@ -340,9 +336,10 @@ $userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
 
 New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
 ```
+
 ## <a name="manage-files"></a>Správa souborů
 
-### <a name="check-for-the-existence-of-a-file"></a>Zkontrolujte, jestli soubor existuje.
+### <a name="check-for-the-existence-of-a-file"></a>Kontrolovat existenci souboru
 
 ```powershell
 Test-AdlStoreItem -Account $adls -Path "/data.csv"
@@ -353,7 +350,7 @@ Test-AdlStoreItem -Account $adls -Path "/data.csv"
 Nahrajte soubor.
 
 ```powershell
-Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv" 
+Import-AdlStoreItem -AccountName $adls -Path "c:\data.tsv" -Destination "/data_copy.csv"
 ```
 
 Nahrajte rekurzivně celou složku.
@@ -379,13 +376,13 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 
 ## <a name="manage-the-u-sql-catalog"></a>Správa katalogu U-SQL
 
-Katalog U-SQL slouží ke strukturování dat a kódu, aby je bylo možné sdílet se skripty U-SQL. Katalog umožňuje nejvyšší možný výkon s daty v Azure Data Lake. Další informace najdete v tématu [Použití katalogu U-SQL](data-lake-analytics-use-u-sql-catalog.md).
+Katalog U-SQL slouží ke strukturování dat a kódu, aby je bylo možné sdílet se skripty U-SQL. Katalog umožňuje nejvyšší možný výkon s daty v Azure Data Lake. Další informace najdete v tématu [Použití katalogu U-SQL](./data-lake-analytics-u-sql-get-started.md).
 
 ### <a name="list-items-in-the-u-sql-catalog"></a>Seznam položek v katalogu U-SQL
 
 ```powershell
 # List U-SQL databases
-Get-AdlCatalogItem -Account $adla -ItemType Database 
+Get-AdlCatalogItem -Account $adla -ItemType Database
 
 # List tables within a database
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
@@ -478,7 +475,6 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
 Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
-
 ## <a name="working-with-azure"></a>Práce s Azure
 
 ### <a name="get-error-details"></a>Získat podrobnosti o chybě
@@ -556,4 +552,4 @@ foreach ($sub in $subs)
 ## <a name="next-steps"></a>Další kroky
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * Začínáme s Data Lake Analytics pomocí rozhraní příkazového [Azure portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [řádku Azure](data-lake-analytics-get-started-cli.md) Azure Portal Azure PowerShell
-* Správa Azure Data Lake Analytics pomocí [Azure portal](data-lake-analytics-manage-use-portal.md)rozhraní příkazového  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [řádku](data-lake-analytics-manage-use-cli.md) Azure Portal Azure PowerShell 
+* Správa Azure Data Lake Analytics pomocí [Azure portal](data-lake-analytics-manage-use-portal.md)rozhraní příkazového  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [řádku](data-lake-analytics-manage-use-cli.md) Azure Portal Azure PowerShell

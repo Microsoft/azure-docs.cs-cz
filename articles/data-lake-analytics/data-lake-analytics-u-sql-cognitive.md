@@ -1,18 +1,16 @@
 ---
 title: Funkce pro rozpoznávání jazyka U-SQL v Azure Data Lake Analytics
 description: Naučte se používat inteligentní funkce rozpoznávání v U-SQL. Tyto ukázky kódu vám pomůžou začít.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/05/2018
-ms.openlocfilehash: 35973f3453daf61ee18b04b68e2fee4dd2e52402
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19d947b8b595107c76c1201d05e4d5ade3d7a092
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87125475"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220053"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Začínáme se schopností rozpoznávání U-SQL
 
@@ -32,4 +30,4 @@ Než začnete, podle kroků v tomto článku Zaregistrujte rozšíření rozpozn
 ## <a name="next-steps"></a>Další kroky
 * [Ukázky U-SQL/vnímání](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-* [Použití funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)
+* [Použití funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](./data-lake-analytics-u-sql-get-started.md)

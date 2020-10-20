@@ -1,18 +1,17 @@
 ---
 title: Spouštění úloh U-SQL v Pythonu, R a C# – Azure Data Lake Analytics
 description: Naučte se používat kód za použití Pythonu, R a C# k odeslání úlohy v Azure Data Lake.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
-ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6066bd6ec2a4c986ae17ad0cce3e7f6f73b21e7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87876202"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219968"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Vývoj U-SQL pomocí Pythonu, R a C# pro Azure Data Lake Analytics v Visual Studio Code
 Naučte se používat Visual Studio Code (VSCode) k zápisu kódu Pythonu, R a C# za použití U-SQL a odesílání úloh do služby Azure Data Lake. Další informace o Azure Data Lakech nástrojích pro VSCode najdete v tématu [použití nástroje Azure Data Lake pro Visual Studio kódu](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -183,4 +182,4 @@ Soubor kódu na pozadí je soubor C# přidružený k jednomu skriptu U-SQL. V so
 * [Začínáme s Data Lake Analytics pomocí prostředí PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Začínáme s Data Lake Analytics pomocí Azure Portal](data-lake-analytics-get-started-portal.md)
 * [Použití Data Lake nástrojů pro Visual Studio pro vývoj aplikací U-SQL](data-lake-analytics-data-lake-tools-get-started.md)
-* [Použití katalogu Data Lake Analytics (U-SQL)](data-lake-analytics-use-u-sql-catalog.md)
+* [Použití katalogu Data Lake Analytics (U-SQL)](./data-lake-analytics-u-sql-get-started.md)
