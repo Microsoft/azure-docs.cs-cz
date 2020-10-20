@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772715"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017008"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
 
@@ -134,7 +134,7 @@ Ano. Propojené ID partnera lze změnit, přidat nebo odebrat.
 
 Propojení mezi ID partnera a účtem se provádí u každého tenanta zákazníka. Propojte toto ID partnera v každém tenantovi zákazníka.
 
-Pokud ale spravujete zákaznické prostředky přes Azure Lighthouse, měli byste vytvořit odkaz v tenantovi poskytovatele služeb, a to pomocí účtu, který má k těmto zákaznickým prostředkům přístup. Další informace najdete v tématu věnovaném [propojení s ID partnera pro podporu kreditů získaných partnerem u delegovaných prostředků](../../lighthouse/how-to/partner-earned-credit.md).
+Pokud ale spravujete zákaznické prostředky přes Azure Lighthouse, měli byste vytvořit odkaz v tenantovi poskytovatele služeb, a to pomocí účtu, který má k těmto zákaznickým prostředkům přístup. Další informace najdete v tématu o [připojení vašeho ID partnera za účelem sledování vašeho dopadu na delegované prostředky](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Můžou propojení s ID partnera upravit nebo odebrat jiní partneři nebo zákazníci?**
 
@@ -164,7 +164,7 @@ Ano, ID partnera je možné propojit pro Azure Stack.
 
 Při onboardingu zákazníků do správy delegovaných prostředků Azure [publikováním nabídky spravovaných služeb na Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) se automaticky přidruží vaše MPN ID.
 
-Pokud k [onboardingu zákazníků využíváte nasazení šablon Azure Resource Manageru](../../lighthouse/how-to/onboard-customer.md), musíte přidružit vaše MPN ID nejméně k jednomu uživatelskému účtu, který má přístup ke všem vašim onboardovaným předplatným. Upozorňujeme, že tuto akci musíte provést v tenantovi poskytovatele služeb, nikoli v tenantech jednotlivých zákazníků. Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, přidružit ho k vašemu MPN ID a udělit mu přístup ke každému onboardovanému zákazníkovi s [předdefinovanou rolí Azure, u které jde uplatit kredit získaný partnerem](/partner-center/azure-roles-perms-pec). Další informace najdete v tématu věnovaném [propojení s ID partnera pro podporu kreditů získaných partnerem u delegovaných prostředků](../../lighthouse/how-to/partner-earned-credit.md).
+Pokud k [onboardingu zákazníků využíváte nasazení šablon Azure Resource Manageru](../../lighthouse/how-to/onboard-customer.md), musíte přidružit vaše MPN ID nejméně k jednomu uživatelskému účtu, který má přístup ke všem vašim onboardovaným předplatným. Upozorňujeme, že tuto akci musíte provést v tenantovi poskytovatele služeb, nikoli v tenantech jednotlivých zákazníků. Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, přidružit ho k vašemu MPN ID a udělit mu přístup ke každému onboardovanému zákazníkovi s [předdefinovanou rolí Azure, u které jde uplatit kredit získaný partnerem](/partner-center/azure-roles-perms-pec). Další informace najdete v tématu o [připojení vašeho ID partnera za účelem sledování vašeho dopadu na delegované prostředky](../../lighthouse/how-to/partner-earned-credit.md).
 
 **Jak mám zákazníkům vysvětlit PAL (Partner Admin Link)?**
 

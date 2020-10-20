@@ -3,12 +3,12 @@ title: Začínáme a vytvoření testovacího prostředí Azure Lab Services v r
 description: Naučte se, jak začít a vytvořit Azure Lab Services testovací prostředí v rámci týmů.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 4f8c0e2c5f7b75990460b0a1812d4fec3a758259
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092133"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217078"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Začínáme a vytvoření testovacího prostředí testovacích služeb v rámci týmů
 
@@ -24,6 +24,9 @@ Toto je typický pracovní postup při použití Azure Lab Services v rámci tý
 1. [Tvůrce účtu testovacího prostředí přidá další uživatele](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role) do role **testovacího prostředí** . Například autor nebo správce účtu testovacího prostředí přidává pedagogy do role **Tvůrce testovacího prostředí** , aby mohli vytvářet Labs pro své třídy.
 1. Pak pedagogy vytvoří Labs, předem nakonfigurují šablonu virtuálního počítače a publikují testovací prostředí, aby se virtuální počítač zřídil všem členům týmu.
 1. Po publikování testovacího prostředí se virtuální počítač přiřadí všem uživatelům v seznamu členství v týmu při jejich prvním Azure Lab Services přihlášení, a to kliknutím na kartu obsahující **Azure Lab Services** aplikace v rámci týmů (SSO) nebo přístupem na [Web Labs](https://labs.azure.com). Uživatelé pak můžou použít virtuální počítač k tomu, aby mohli pracovat s pracovními a nedokončenými úkoly.
+
+> [!IMPORTANT]
+> Azure Lab Services lze v rámci týmů použít pouze v případě, že účty testovacího prostředí jsou vytvořeny ve stejném tenantovi jako týmy.
 
 ## <a name="add-azure-lab-services-app-as-a-tab-to-a-team"></a>Přidání aplikace Azure Lab Services jako karty týmu
 

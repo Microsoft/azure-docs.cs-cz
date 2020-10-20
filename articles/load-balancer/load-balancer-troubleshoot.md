@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1cfe27fd5c63bc4c1436982212b91e07f54aedb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85801916"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217384"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
@@ -30,6 +30,12 @@ Když je připojení Load Balancer nedostupné, nejběžnější příznaky jsou
 - Virtuální počítače za Load Balancer nereagují na provoz na konfigurovaném portu.
 
 Když externí klienti back-end virtuálních počítačů procházejí nástrojem pro vyrovnávání zatížení, použijí se pro tuto komunikaci IP adresa klientů. Ujistěte se, že se IP adresa klientů přidala do seznamu povolených NSG. 
+
+## <a name="symptom-no-outbound-connectivity-from-standard-internal-load-balancers-ilb"></a>Příznak: žádné odchozí připojení ze standardních interních nástrojů pro vyrovnávání zatížení (interního nástroje)
+
+**Ověření a rozlišení**
+
+Standardní ILBs jsou **ve výchozím nastavení zabezpečené**. Základní ILBs povoluje připojení k Internetu prostřednictvím *skryté* veřejné IP adresy. To není doporučeno pro produkční úlohy, protože IP adresa není ani statická ani uzamčená prostřednictvím skupin zabezpečení sítě, kterou vlastníte. Pokud jste v nedávné době přesunuli ze základní interního nástroje na standardní interního nástroje, měli byste vytvořit veřejnou IP adresu explicitně prostřednictvím [odchozí jenom odchozí](egress-only.md) konfigurace, která uzamkne IP přes skupin zabezpečení sítě. 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Příznak: virtuální počítače za Load Balancer nereagují na sondy stavu.
 Aby se servery back-end účastnily sady nástroje pro vyrovnávání zatížení, musí projít kontrolu sondy. Další informace o sondách stavu najdete v tématu [principy Load Balancer sondy](load-balancer-custom-probe-overview.md). 

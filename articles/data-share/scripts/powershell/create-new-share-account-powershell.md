@@ -1,20 +1,17 @@
 ---
-title: 'PowerShellový skript: vytvoření nového účtu Azure Data Share | Microsoft Docs'
+title: 'PowerShellový skript: vytvoření nového účtu Azure Data Share'
 description: Tento skript PowerShellu vytvoří nový účet pro sdílení dat.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: c3852dd5f1d3d3df8a982716ce5dab9426782869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4608afc16398a4cd1fa47ee1ae2cd4a4489a3f96
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70307274"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221362"
 ---
 # <a name="use-powershell-to-create-a-data-share-account-in-azure"></a>Použití PowerShellu k vytvoření účtu pro sdílení dat v Azure
 
@@ -38,11 +35,11 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount?view=azps-2.6.0) | Vytvoří účet pro sdílení dat. |
+| [New-AzDataShareAccount](/powershell/module/az.datashare/new-azdatashareaccount) | Vytvoří účet pro sdílení dat. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další ukázkové skripty PowerShellu pro sdílení dat Azure najdete v [ukázkách Azure Data Share PowerShell](../../samples-powershell.md).

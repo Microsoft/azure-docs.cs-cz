@@ -1,17 +1,16 @@
 ---
 title: Vyřešit data – zkosit – Nástroje Azure Data Lake pro Visual Studio
 description: Řešení problémů s případnými řešeními pro problémy s pozkosením dat pomocí Nástroje Azure Data Lake pro Visual Studio.
-services: data-lake-analytics
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/16/2016
-ms.openlocfilehash: 5e9359582c07a78feb2d04b2ea87f046887238a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b82ce187c06afa69e54ea93931e1745f0d52674
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129929"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219186"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Řešení potíží s nerovnoměrnou distribucí dat pomocí Nástrojů Azure Data Lake pro Visual Studio
 

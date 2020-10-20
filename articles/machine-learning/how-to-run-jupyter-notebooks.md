@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 94c67be39ddd9f52087fa4632e239a8e85930886
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171470"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221416"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 
@@ -30,7 +30,7 @@ Podívejte se, jak můžete:
 * Změna prostředí poznámkového bloku
 * Vyhledání podrobností o výpočetních instancích použitých ke spouštění vašich poznámkových bloků
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
@@ -108,6 +108,16 @@ Poznámkový blok můžete upravovat bez připojení k výpočetní instanci.  P
 Když je spuštěná výpočetní instance, můžete také použít dokončování kódu využívající [technologii IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)v jakémkoli poznámkovém bloku Pythonu.
 
 Na panelu nástrojů poznámkového bloku můžete také spustit Jupyter nebo JupyterLab.  Azure Machine Learning neposkytuje aktualizace a opravují chyby z Jupyter nebo JupyterLab, protože se jedná o open source produkty mimo hranici podpora Microsoftu.
+
+### <a name="focus-mode"></a>Detailní režim
+
+Pomocí detailního režimu můžete rozšířit aktuální zobrazení, abyste se mohli soustředit na aktivní karty. Detailní režim skryje Průzkumníka souborů poznámkových bloků.
+
+1. Na panelu nástrojů okna terminálu vyberte **detailní režim**   pro zapnutí detailního režimu. V závislosti na šířce okna se to může nacházet pod položkou nabídky **...** na panelu nástrojů.
+1. V detailním režimu se po výběru **standardního zobrazení**vraťte do standardního zobrazení.
+
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Create new file":::
+
 
 ### <a name="use-intellisense"></a>Používání technologie IntelliSense
 

@@ -9,14 +9,14 @@ ms.author: mlearned
 description: Tento článek poskytuje přehled služby Azure ARC s povoleným Kubernetes.
 keywords: Kubernetes, oblouk, Azure, kontejnery
 ms.custom: references_regions
-ms.openlocfilehash: a4d53614a0ab6783b9adfe395fec4d79e7b62e1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601fcb096bf2bfeb1a6120015690c9aff4b6177b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858417"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216075"
 ---
-# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Co je Kubernetes s podporou Azure Arc (Preview)?
+# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Co je Kubernetes s podporou služby Azure Arc (Preview)?
 
 Clustery Kubernetes můžete připojit a nakonfigurovat v rámci Azure nebo mimo něj pomocí Kubernetes ve verzi Preview s podporou Azure ARC. Když je cluster Kubernetes připojený ke službě Azure ARC, zobrazí se v Azure Portal. Bude mít ID Azure Resource Manager a spravovanou identitu. Clustery jsou připojené ke standardním předplatným Azure, jsou umístěné ve skupině prostředků a můžou přijímat značky stejně jako všechny ostatní prostředky Azure. 
 
@@ -72,7 +72,7 @@ Kubernetes se zapnutým Azure ARC v tuto chvíli podporuje tyto oblasti:
 
     Ne. Všechny funkce služby Azure ARC s povoleným Kubernetes, jako je Azure Monitor, Azure Policy (gatekeeper), jsou nativně dostupné v AKS, které už mají v Azure reprezentaci prostředků.
     
-* Mám svůj cluster AKS připojit k Azure Stack HCL do Azure ARC? Jaké clustery Kubernetes běží na rozbočovači Azure Stack nebo Azure Stackm stroji?
+* Mám svůj cluster AKS připojit k Azure Stack HCL do Azure ARC? Jaké clustery Kubernetes běží na rozbočovači Azure Stack nebo Azure Stack Edge?
 
     Ano, připojení těchto clusterů ke službě Azure ARC má výhody. Poskytuje reprezentaci prostředků pro tyto clustery Kubernetes v Azure Resource Manager. Pomocí této reprezentace prostředků se dají rozšířit možnosti jako konfigurace clusteru, Azure Monitor Azure Policy (gatekeeper) na tyto clustery Kubernetes.
 

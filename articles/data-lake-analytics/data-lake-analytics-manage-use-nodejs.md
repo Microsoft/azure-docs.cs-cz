@@ -1,19 +1,17 @@
 ---
 title: Správa Azure Data Lake Analytics pomocí sady Azure SDK pro Node.js
 description: Tento článek popisuje, jak používat sadu Azure SDK pro Node.js ke správě účtů, zdrojů dat, úloh a uživatelů Data Lake Analytics.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.custom: devx-track-js
-ms.openlocfilehash: 86f5f4faaaf1c2177e3dcbb8f357bca54554aacd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca1c865b31739e7163b0db26cb666a8a42edbaa2
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318632"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218455"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Správa Azure Data Lake Analytics pomocí sady Azure SDK pro Node.js
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]

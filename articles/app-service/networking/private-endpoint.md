@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 2c4b6377d28339b0b4953cd908f4964b64dab4fe
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 880100c3d67dfe10aacf10ed5bb57dec6e2c2a83
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873094"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217061"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Používání privátních koncových bodů pro webovou aplikaci Azure
 
@@ -91,7 +91,7 @@ Například překlad názvů bude:
 
 |Název |Typ |Hodnota |Přeznačit |
 |-----|-----|------|-------|
-|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
+|mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|< – Azure vytvoří tuto položku ve veřejném DNS Azure, aby odkazovala službu App Service na privatelink a spravovala ji v USA.|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|< – tuto položku můžete spravovat v systému DNS, aby odkazovala na IP adresu privátního koncového bodu.|
 
 Po této konfiguraci DNS se můžete připojit k webové aplikaci soukromě s výchozím názvem mywebappname.azurewebsites.net. Je nutné použít tento název, protože výchozí certifikát je vydaný pro *. azurewebsites.net.

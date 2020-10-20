@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 70417ce862294e1041951d722bbbc09de4adeef6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fef9eb49b10008c86ee044a199ae69a43585f4f3
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107109"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217935"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>Ověření VPN Gatewayho připojení
 
@@ -34,7 +34,6 @@ Pokud chcete ověřit připojení brány VPN pro model nasazení Správce prost�
 Pokud chcete ověřit připojení brány VPN pro model nasazení Správce prostředků pomocí rozhraní příkazového řádku Azure, nainstalujte nejnovější verzi [příkazů rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/install-azure-cli) (2,0 nebo novější).
 
 [!INCLUDE [CLI](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
-
 
 ## <a name="azure-portal-classic"></a>Azure Portal (Classic)
 

@@ -1,22 +1,20 @@
 ---
 title: Ladění opakujících se úloh v Azure Data Lake Analytics
 description: Naučte se, jak pomocí Nástroje Azure Data Lake pro Visual Studio ladit neobvyklou opakovanou úlohu.
-services: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
-ms.openlocfilehash: 86d5134e257d2dae642eceb933a78047773b25a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95d4b0a082e8eac191d610c9516e5ce72180b4c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129946"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219169"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Řešení potíží s neobvykle se opakující úlohou
 
-Tento článek popisuje, jak pomocí [nástroje Azure Data Lake pro Visual Studio](https://aka.ms/adltoolsvs) řešit problémy s opakovanými úlohami. Přečtěte si další informace o kanálu a opakujících se úlohách na [blogu Azure Data Lake a Azure HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
+Tento článek popisuje, jak pomocí [nástroje Azure Data Lake pro Visual Studio](https://aka.ms/adltoolsvs) řešit problémy s opakovanými úlohami. Přečtěte si další informace o kanálu a opakujících se úlohách na [blogu Azure Data Lake a Azure HDInsight](/archive/blogs/azuredatalake/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy).
 
 Opakující se úlohy obvykle sdílejí stejnou logiku dotazu a podobná vstupní data. Představte si například, že máte opakovanou úlohu, která se spouští každé pondělí ráno v 8 dop. pro výpočet týdenního aktivního uživatele v minulém týdnu. Skripty pro tyto úlohy sdílejí jednu šablonu skriptu obsahující logiku dotazu. Vstupy pro tyto úlohy jsou data o využití za poslední týden. Sdílení stejné logiky dotazů a podobného vstupu obvykle znamená, že výkon těchto úloh je podobný a stabilní. Pokud se jedna z vašich opakovaných úloh náhle vykoná neobvykle, dojde k chybě nebo zpomalí velkou spoustu, možná budete chtít:
 

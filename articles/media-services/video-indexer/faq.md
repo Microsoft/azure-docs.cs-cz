@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046965"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217724"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer nejčastějších dotazech
 
@@ -88,7 +88,7 @@ Můžete vidět, které oblasti Azure Video Indexer k dispozici na stránce [obl
 
 ### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>Můžu přizpůsobit Video Indexer modely pro můj konkrétní případ použití? 
 
-Ano. V Video Indexer můžete přizpůsobit některé z dostupných modelů, aby lépe vyhovovaly vašim potřebám. 
+Yes. V Video Indexer můžete přizpůsobit některé z dostupných modelů, aby lépe vyhovovaly vašim potřebám. 
 
 Například náš model person podporuje dopředné 1 000 000i rozpoznávání celebrit, ale můžete ho také naučit, aby rozpoznal jiné plošky, které nejsou v této databázi. 
 
@@ -96,7 +96,7 @@ Podrobnosti najdete v článcích o přizpůsobení [osob](customize-person-mode
 
 ###  <a name="can-i-edit-the-videos-in-my-library"></a>Můžu upravit videa v knihovně?
 
-Ano. Kliknutím na tlačítko **Upravit video** v zobrazení knihovny nebo kliknutím na tlačítko **otevřít v editoru** na displeji přehrávače se dostanete na kartu **projekty** . Můžete vytvořit nový projekt a přidat další videa z knihovny, abyste je mohli společně upravovat. až budete hotovi, můžete si video vykreslit a stáhnout. 
+Yes. Kliknutím na tlačítko **Upravit video** v zobrazení knihovny nebo kliknutím na tlačítko **otevřít v editoru** na displeji přehrávače se dostanete na kartu **projekty** . Můžete vytvořit nový projekt a přidat další videa z knihovny, abyste je mohli společně upravovat. až budete hotovi, můžete si video vykreslit a stáhnout. 
 
 Pokud chcete získat přehled o novém videu, Indexujte ho pomocí Video Indexer a zobrazí se ve vaší knihovně se svými přehledy.
 
@@ -217,4 +217,5 @@ Ano, Video Indexer nabízí bezplatnou zkušební verzi, která poskytuje úplno
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled](video-indexer-overview.md)
+* [Přehled](video-indexer-overview.md)
+* [Stack Overflow](https://stackoverflow.com/search?q=video-indexer)

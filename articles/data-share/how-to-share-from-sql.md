@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.openlocfilehash: 1bf5966ab3e4bb62c2be302a7791cadad9761a70
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 85ddda4bbb6702ed8c82a40d603c8ca87ffb7053
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150389"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217537"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Sdílení a příjem dat ze služeb Azure SQL Database a Azure Synapse Analytics
 
@@ -39,7 +39,7 @@ Níže je uveden seznam požadavků pro sdílení dat ze zdroje SQL. Můžete ta
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli Přispěvatel.
 * Oprávnění ke sdílení dat pro přístup k datovému skladu. To lze provést pomocí následujících kroků: 
     1. V Azure Portal přejděte na SQL Server a nastavte si ho jako správce Azure Active Directory.
-    1. Připojení k Azure SQL Database/datový sklad pomocí [Editoru dotazů](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) nebo SQL Server Management Studio Azure Active Directory ověřování. 
+    1. Připojení k Azure SQL Database/datový sklad pomocí [Editoru dotazů](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) nebo SQL Server Management Studio Azure Active Directory ověřování. 
     1. Spusťte následující skript, který přidá identitu spravovaného prostředku sdílené dat jako db_datareader. Je nutné se připojit pomocí služby Active Directory a SQL Server ověřování. 
     
         ```sql
@@ -144,7 +144,7 @@ Před přijetím pozvánky ke sdílení dat se ujistěte, že jsou splněné vš
 ### <a name="prerequisites-for-target-storage-account"></a>Předpoklady pro cílový účet úložiště
 Pokud se rozhodnete přijímat data do Azure Storage, níže je uvedený seznam požadavků.
 
-* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
+* Účet Azure Storage: Pokud ho ještě nemáte, můžete vytvořit [účet Azure Storage](../storage/common/storage-account-create.md). 
 * Oprávnění k zápisu do účtu úložiště, který je k dispozici v *Microsoft. Storage/storageAccounts/Write*. Toto oprávnění existuje v roli Přispěvatel. 
 * Oprávnění k přidání přiřazení role k účtu úložiště, který je k dispozici v *Microsoft. autorizace/přiřazení role/zápis*. Toto oprávnění existuje v roli Vlastník.  
 
@@ -154,7 +154,7 @@ Pokud se rozhodnete přijímat data do Azure SQL Database, najdete níže seznam
 * Oprávnění k zápisu do databází na SQL serveru, které jsou k dispozici v *Microsoft. SQL/serverech/databázích/Write*. Toto oprávnění existuje v roli Přispěvatel. 
 * Oprávnění pro spravovanou identitu prostředku sdílení dat pro přístup k Azure SQL Database nebo ke službě Azure synapse Analytics. To lze provést pomocí následujících kroků: 
     1. V Azure Portal přejděte na SQL Server a nastavte si ho jako správce Azure Active Directory.
-    1. Připojení k Azure SQL Database/datový sklad pomocí [Editoru dotazů](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) nebo SQL Server Management Studio Azure Active Directory ověřování. 
+    1. Připojení k Azure SQL Database/datový sklad pomocí [Editoru dotazů](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory) nebo SQL Server Management Studio Azure Active Directory ověřování. 
     1. Spuštěním následujícího skriptu přidejte spravovanou identitu sdílené dat jako db_datareader, db_datawriter db_ddladmin. Je nutné se připojit pomocí služby Active Directory a SQL Server ověřování. 
 
         ```sql
@@ -275,7 +275,7 @@ Když sdílíte data ze zdroje SQL, používá se následující mapování SQL 
 
 >[!NOTE]
 > 1. Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně snímek podporuje přesnost až na 28. Pokud máte data, která vyžadují přesnost větší než 28, zvažte převod na řetězec. 
-> 1.  Pokud sdílíte data z Azure SQL Database do služby Azure synapse Analytics, nejsou podporované všechny datové typy. Podrobnosti najdete [v tabulkách s datovými typy v synapse fondu SQL](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) . 
+> 1.  Pokud sdílíte data z Azure SQL Database do služby Azure synapse Analytics, nejsou podporované všechny datové typy. Podrobnosti najdete [v tabulkách s datovými typy v synapse fondu SQL](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) . 
 
 ## <a name="sql-always-encrypted-or-dynamic-data-masking"></a>Always Encrypted SQL nebo maskování dynamických dat
 Služba Azure Data Share v současné době nepodporuje databáze SQL Azure s nakonfigurovaným Always Encrypted. 
@@ -294,6 +294,3 @@ Nejběžnější příčinou selhání snímku je to, že sdílená data nemají
 
 ## <a name="next-steps"></a>Další kroky
 Zjistili jste, jak sdílet a přijímat data ze zdrojů SQL pomocí služby Azure Data Share. Pokud se chcete dozvědět víc o sdílení z jiných zdrojů dat, pokračujte na [podporovaná úložiště dat](supported-data-stores.md).
-
-
-

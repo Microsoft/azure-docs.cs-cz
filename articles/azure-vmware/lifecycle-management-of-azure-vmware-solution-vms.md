@@ -3,12 +3,12 @@ title: Správa životního cyklu virtuálních počítačů řešení Azure VMwa
 description: Naučte se spravovat všechny aspekty životního cyklu virtuálních počítačů řešení Azure VMware pomocí Microsoft Azurech nativních nástrojů.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 452fa6bf4610c9d0dcb46587242e8d6df9cebd0d
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950359"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216245"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Správa životního cyklu virtuálních počítačů řešení Azure VMware
 
@@ -53,8 +53,8 @@ Virtuální počítače řešení Azure VMware je možné monitorovat prostředn
 **Azure Update Management** v Azure Automation spravují aktualizace operačního systému pro počítače s Windows a Linux v hybridním prostředí. Monitoruje dodržování předpisů a přepošle výstrahy na odchylky oprav, které Azure Monitor k nápravě. Azure Update Management se musí připojit k pracovnímu prostoru Log Analytics a pomocí uložených dat vyhodnotit stav aktualizací na vašich virtuálních počítačích.
 - Pokud chcete přidat Log Analytics do Azure Update Management, musíte nejprve [vytvořit Azure Automation účet](../automation/automation-create-standalone-account.md).
 - Pokud chcete propojit pracovní prostor Log Analytics s vaším účtem Automation, přečtěte si téma [pracovní prostor Log Analytics a účet Automation](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
-- Pokud chcete povolit Azure Update Management pro vaše virtuální počítače, přečtěte si téma [povolení Update Management z účtu Automation](../automation/update-management/update-mgmt-enable-automation-account.md).
-- Po přidání virtuálních počítačů do Azure Update Management můžete [nasadit aktualizace na virtuální počítače a zkontrolovat výsledky](../automation/update-management/update-mgmt-deploy-updates.md). 
+- Pokud chcete povolit Azure Update Management pro vaše virtuální počítače, přečtěte si téma [povolení Update Management z účtu Automation](../automation/update-management/enable-from-automation-account.md).
+- Po přidání virtuálních počítačů do Azure Update Management můžete [nasadit aktualizace na virtuální počítače a zkontrolovat výsledky](../automation/update-management/deploy-updates.md). 
 
 **Azure Security Center** poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu i místně. Vyhodnotí ohrožení zabezpečení virtuálních počítačů řešení Azure VMware a v případě potřeby vyvolává výstrahy. Tyto výstrahy zabezpečení je možné přeslat do Azure Monitor pro řešení.
 - Azure Security Center nevyžaduje nasazení. Další informace najdete v seznamu [podporovaných funkcí pro virtuální počítače](../security-center/security-center-services.md).
