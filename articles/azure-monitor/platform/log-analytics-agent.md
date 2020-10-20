@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 015bd48060f47023877d8c48601770228b1500fe
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c09b50272ce73fe084e84d49be7d9d81cbe725aa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104338"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207134"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics shromažďuje telemetrie z virtuálních počítačů s Windows a Linux v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](/system-center/scom/) a odesílá je do vašeho pracovního prostoru Log Analytics v Azure monitor. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)a [Azure Automation](../../automation/automation-intro.md). Tento článek poskytuje podrobný přehled požadavků na agenty, systém a síť a metody nasazení.
@@ -51,7 +51,7 @@ Následující tabulka uvádí typy dat, které můžete nakonfigurovat Log Anal
 Agent Log Analytics odesílá data do pracovního prostoru Log Analytics v Azure Monitor. Agent systému Windows může být více vícedomý pro posílání dat do několika pracovních prostorů a System Center Operations Manager skupin pro správu. Agent pro Linux může být odeslán pouze do jednoho cíle, buď z pracovního prostoru, nebo do skupiny pro správu.
 
 ## <a name="other-services"></a>Další služby
-Agent pro Linux a Windows není dostupný jenom pro připojení k Azure Monitor. Jiné služby, například Azure Security Center a služba Azure Sentinel, spoléhají na agenta a jeho připojené Log Analytics pracovním prostoru. Agent také podporuje Azure Automation pro hostování role Hybrid Runbook Worker a dalších služeb, jako jsou [Change Tracking](../../automation/change-tracking.md), [Update Management](../../automation/update-management/update-mgmt-overview.md)a [Azure Security Center](../../security-center/security-center-introduction.md). Další informace o Hybrid Runbook Worker roli najdete v tématu [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Agent pro Linux a Windows není dostupný jenom pro připojení k Azure Monitor. Jiné služby, například Azure Security Center a služba Azure Sentinel, spoléhají na agenta a jeho připojené Log Analytics pracovním prostoru. Agent také podporuje Azure Automation pro hostování role Hybrid Runbook Worker a dalších služeb, jako jsou [Change Tracking](../../automation/change-tracking/overview.md), [Update Management](../../automation/update-management/update-mgmt-overview.md)a [Azure Security Center](../../security-center/security-center-intro.md). Další informace o Hybrid Runbook Worker roli najdete v tématu [Azure Automation Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="workspace-and-management-group-limitations"></a>Omezení skupiny pro pracovní prostor a skupinu pro správu
 

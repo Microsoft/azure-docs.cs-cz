@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: ad0712de85a08ed581ba89d7e01d8ba1244006b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977557"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206080"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>Jaké technologie a služby Azure můžete použít k vytváření řešení IoT?
 
@@ -61,7 +61,7 @@ Můžete ještě více zjednodušit vytváření vloženého kódu pro vaše za�
 
 [Azure IoT Edge](../iot-edge/about-iot-edge.md) umožňuje přesměrovat části úlohy IoT z cloudových služeb Azure na vaše zařízení. IoT Edge může snížit latenci ve vašem řešení, omezit objem dat, která vaše zařízení vyměňuje s cloudem, a povolit online scénáře. Zařízení IoT Edge můžete spravovat z IoT Central a některých akcelerátorů řešení.
 
-[Azure sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) je zabezpečená špičková aplikační platforma s integrovanými komunikačními funkcemi a funkcemi zabezpečení pro zařízení připojená k Internetu. Zahrnuje zabezpečenou mikrokontrolerů jednotku, vlastní operační systém Linux a cloudovou službu zabezpečení, která poskytuje nepřetržité a obnovitelné zabezpečení.
+[Azure sphere](/azure-sphere/product-overview/what-is-azure-sphere) je zabezpečená špičková aplikační platforma s integrovanými komunikačními funkcemi a funkcemi zabezpečení pro zařízení připojená k Internetu. Zahrnuje zabezpečenou mikrokontrolerů jednotku, vlastní operační systém Linux a cloudovou službu zabezpečení, která poskytuje nepřetržité a obnovitelné zabezpečení.
 
 ### <a name="cloud-connectivity"></a>Cloudové připojení
 
@@ -76,7 +76,7 @@ IoT Hub je základní součástí akcelerátorů řešení a můžete ji použí
 
 ### <a name="bridging-the-gap-between-the-physical-and-digital-worlds"></a>Přemostění mezery mezi fyzickým a digitálním světů
 
-[Digitální vlákna Azure](../digital-twins/about-digital-twins.md) je služba IoT, která umožňuje modelovat fyzické prostředí. K modelování vztahů mezi lidmi, mezerami a zařízeními používá graf prostorového zpravodajství. Pomocí spolusouvisejících dat napříč digitálními i fyzickými světů můžete vytvářet kontextová řešení s podporou.
+[Digitální vlákna Azure](../digital-twins/overview.md) je služba IoT, která umožňuje modelovat fyzické prostředí. K modelování vztahů mezi lidmi, mezerami a zařízeními používá graf prostorového zpravodajství. Pomocí spolusouvisejících dat napříč digitálními i fyzickými světů můžete vytvářet kontextová řešení s podporou.
 
 IoT Central používá digitální vlákna k synchronizaci zařízení a dat v reálném světě s digitálními modely, které uživatelům umožňují monitorovat a spravovat tato připojená zařízení.
 
@@ -84,7 +84,7 @@ IoT Central používá digitální vlákna k synchronizaci zařízení a dat v r
 
 Zařízení IoT typicky generují velké objemy dat časových řad, jako je například čtení teploty ze senzorů. [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) se můžou připojit ke službě IoT Hub, číst datový proud telemetrie z vašich zařízení, ukládat tato data a používat je k dotazování a vizualizaci.
 
-[Azure Maps](/azure/azure-maps) je kolekce geoprostorových služeb, které používají data z nového mapování k zajištění přesného geografického kontextu pro webové a mobilní aplikace. Můžete použít REST API, webový ovládací prvek JavaScriptu nebo Android SDK k sestavení aplikací.
+[Azure Maps](../azure-maps/index.yml) je kolekce geoprostorových služeb, které používají data z nového mapování k zajištění přesného geografického kontextu pro webové a mobilní aplikace. Můžete použít REST API, webový ovládací prvek JavaScriptu nebo Android SDK k sestavení aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 

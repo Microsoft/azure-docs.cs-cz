@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: ef99ff874376e0d76e45e4b0b2c36a78d938130b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91efdac9d17e679226f10012bbff9b5b6676ff0e
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843800"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205574"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Obnovení z neúspěšného Azure Stackového zařízení pro grafické procesory 
 
@@ -62,7 +62,8 @@ Pro přípravu na možné selhání zařízení jste možná nasadili jedno z n�
 | Software jiných výrobců           | Odkaz na řešení                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | [https://www.cohesity.com/solution/cloud/azure/](https://www.cohesity.com/solution/cloud/azure/) <br> Podrobnosti získáte od Cohesity.          |
-| Veritas                        | Podrobnosti získáte od společnosti Veritas.   |
+| CommVault                      | https://www.commvault.com/azure <br> Podrobnosti získáte od CommVault. |
+| Veritas                        | http://veritas.com/azure <br> Podrobnosti získáte od společnosti Veritas.   |
 
 Po úplné konfiguraci náhradního zařízení povolte zařízení pro místní úložiště. 
 
@@ -78,11 +79,12 @@ Pokud chcete připravit na potenciální selhání zařízení, možná jste nas
 
 
 
-| Řešení zálohování        | Podporovaný operační systém   | Odkaz                                                                |
+| Řešení zálohování        | Podporovaný operační systém   | Referenční informace                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Agent Microsoft Azure Recovery Services (MARS) pro Azure Backup | Windows        | [Informace o agentovi Mars](/azure/backup/backup-azure-about-mars)    |
 | Cohesity                | Windows, Linux | [Stručně Microsoft Azure integrace, řešení zálohování a obnovení](https://www.cohesity.com/solution/cloud/azure) <br>Podrobnosti získáte od Cohesity.                          |
-| Veritas                 | Windows, Linux | Podrobnosti získáte od společnosti Veritas.                    |
+| CommVault               | Windows, Linux | https://www.commvault.com/azure <br> Podrobnosti získáte od CommVault.
+| Veritas                 | Windows, Linux | http://veritas.com/azure <br> Podrobnosti získáte od společnosti Veritas.                    |
 
 Po úplné konfiguraci náhradního zařízení můžete virtuální počítače znovu nasadit pomocí dříve používané image virtuálního počítače. 
 

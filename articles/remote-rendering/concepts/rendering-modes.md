@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e61ea423cb94dc1192d6b189a95e5a5da3b38ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d8ff6640f856b3227cead6dc50befca5d5ef3e8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613899"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202765"
 ---
 # <a name="rendering-modes"></a>Režimy vykreslování
 
@@ -74,10 +74,10 @@ async void ExampleConnect(AzureSession session)
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [C# AzureSession. ConnectToRuntime ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.azuresession.connecttoruntime)
-* [Struktura ConnectToRuntimeParams C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.connecttoruntimeparams)
-* [C++ AzureSession:: ConnectToRuntime ()](https://docs.microsoft.com/cpp/api/remote-rendering/azuresession#connecttoruntime)
-* [Struktura C++ ConnectToRuntimeParams](https://docs.microsoft.com/cpp/api/remote-rendering/connecttoruntimeparams)
+* [C# AzureSession. ConnectToRuntime ()](/dotnet/api/microsoft.azure.remoterendering.azuresession.connecttoruntime)
+* [Struktura ConnectToRuntimeParams C#](/dotnet/api/microsoft.azure.remoterendering.connecttoruntimeparams)
+* [C++ AzureSession:: ConnectToRuntime ()](/cpp/api/remote-rendering/azuresession#connecttoruntime)
+* [Struktura C++ ConnectToRuntimeParams](/cpp/api/remote-rendering/connecttoruntimeparams)
 
 ## <a name="next-steps"></a>Další kroky
 

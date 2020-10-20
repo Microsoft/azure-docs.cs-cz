@@ -1,16 +1,16 @@
 ---
 title: Podporované oblasti pro propojený pracovní prostor Log Analytics
 description: Tento článek popisuje podporovaná mapování oblastí mezi účtem služby Automation a pracovním prostorem Log Analytics v souvislosti s některými funkcemi Azure Automation.
-ms.date: 09/03/2020
+ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: dd831789d5f09ca6a20cce13659d6c479845f74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440656"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207321"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Podporované oblasti pro propojený pracovní prostor Log Analytics
 
@@ -32,6 +32,7 @@ V následující tabulce jsou uvedena podporovaná mapování:
 |**USA**||
 |EastUS<sup>1</sup>|EastUS2|
 |WestUS2|WestUS2|
+|SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
 |**Kanada**||
 |CanadaCentral|CanadaCentral|
@@ -44,6 +45,7 @@ V následující tabulce jsou uvedena podporovaná mapování:
 |**Evropa**||
 |UKSouth|UKSouth|
 |WestEurope|WestEurope|
+|SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>2</sup>|USGovArizona|
@@ -86,5 +88,5 @@ Alternativně můžete zrušit propojení pracovního prostoru s účtem Automat
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si o Update Management v článku [Update Management přehled](../update-management/update-mgmt-overview.md).
-* Přečtěte si o Change Tracking a inventáři v [přehledu Change Tracking a inventáře](../change-tracking.md).
+* Přečtěte si o Change Tracking a inventáři v [přehledu Change Tracking a inventáře](../change-tracking/overview.md).
 * Přečtěte si o Start/Stop VMs during off-hours v článku [Start/Stop VMS during off-hours přehled](../automation-solution-vm-management.md).

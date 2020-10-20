@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: bc4fbbc265bef00be27c890c3f090a49591dc415
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86fd6a5d7ca1cb9c828a4ad095720f1664b82caa
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562736"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201414"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Žádost o službu se nezdařila. Stav: 403 (zakázáno)
 
@@ -29,9 +29,9 @@ Nejčastěji se tato chyba označuje, že vaše oprávnění k řízení příst
 
 ### <a name="cause-2"></a>Příčina #2
 
-Pokud ke komunikaci s digitálními podmnožinami Azure používáte klientskou aplikaci, k této chybě může dojít, protože registrace aplikace [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) nemá oprávnění nastavená pro službu Azure Digital probíhají.
+Pokud používáte klientskou aplikaci ke komunikaci s digitálními událostmi Azure, které se ověřují při [registraci aplikace](how-to-create-app-registration.md), může k této chybě dojít, protože registrace vaší aplikace nemá oprávnění nastavená pro službu Azure Digital probíhají.
 
-K registraci aplikace je potřeba mít přístupová oprávnění nakonfigurovaná pro rozhraní API digitálních vláken Azure. Když se klientská aplikace ověřuje proti registraci aplikace, udělí se jim oprávnění, že se registrace aplikace nakonfigurovala.
+Registrace aplikace musí mít oprávnění k přístupu nakonfigurovaná pro rozhraní API digitálních vláken Azure. Když se klientská aplikace ověřuje proti registraci aplikace, udělí se jim oprávnění, že se registrace aplikace nakonfigurovala.
 
 ## <a name="solutions"></a>Řešení
 
@@ -59,23 +59,33 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 Další podrobnosti o tomto požadavku role a procesu přiřazení najdete v [části *Nastavení přístupových oprávnění uživatele* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) v tématu *Postupy: nastavení instance a ověřování (CLI nebo portál)*.
 
-Pokud již máte přiřazení této role k problému 403, pokračujte dalším řešením.
+Pokud toto přiřazení role už máte *a* k ověření klientské aplikace používáte registraci aplikace Azure AD, můžete pokračovat k dalšímu řešení, pokud toto řešení nevyřešilo problém 403.
 
 ### <a name="solution-2"></a>#2 řešení
 
-Druhým řešením je ověřit, jestli má registrace aplikace služby Azure AD oprávnění nakonfigurovaná pro službu Azure Digital revlákens. Pokud není nakonfigurováno, nastavte je.
+Pokud k ověření klientské aplikace používáte registraci aplikace Azure AD, druhým možným řešením je ověřit, jestli má registrace aplikace oprávnění nakonfigurovaná pro službu Azure Digital prokážed. Pokud tato nastavení nejsou nakonfigurovaná, nastavte je.
 
 #### <a name="check-current-setup"></a>Kontrolovat aktuální nastavení
 
-[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
+Pokud chcete zjistit, jestli jsou oprávnění správně nakonfigurovaná, přejděte na [stránku Přehled registrace aplikace Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) v Azure Portal. Tuto stránku můžete získat sami tak, že na portálu vyhledáte *Registrace aplikací* na panelu hledání.
+
+Přepněte na kartu *všechny aplikace* a zobrazte všechny registrace aplikací, které byly vytvořeny v rámci vašeho předplatného.
+
+V seznamu by se měla zobrazit registrace aplikace, kterou jste právě vytvořili. Výběrem této informace otevřete její podrobnosti.
+
+:::image type="content" source="media/troubleshoot-error-403/app-registrations.png" alt-text="Registrace aplikací stránka v Azure Portal":::
 
 Nejdřív ověřte, že nastavení oprávnění pro digitální vlákna Azure byla v registraci správně nastavená. Provedete to tak, že v řádku nabídek vyberete *manifest* a zobrazí se kód manifestu registrace aplikace. Posuňte se do dolní části okna Code (kód) a vyhledejte tato pole v části `requiredResourceAccess` . Hodnoty by měly odpovídat hodnotám na snímku obrazovky níže:
 
-[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Registrace aplikací stránka v Azure Portal":::
+
+V dalším kroku vyberte *oprávnění rozhraní API* z řádku nabídek, abyste ověřili, že tato registrace aplikace obsahuje oprávnění ke čtení a zápisu pro digitální vlákna Azure. Měla by se zobrazit položka podobná této:
+
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Registrace aplikací stránka v Azure Portal":::
 
 #### <a name="fix-issues"></a>Opravit problémy
 
-Pokud se některá z těchto informací zobrazí jinak než popsané, postupujte podle pokynů v části Postup nastavení registrace aplikace v části [ *Nastavení oprávnění přístupu pro klientské aplikace* v tématu](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications) *Postupy: nastavení instance a ověřování (CLI nebo portál)*.
+Pokud se některá z těchto informací zobrazí jinak než popsané, postupujte podle pokynů v tématu jak nastavit registraci aplikace v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md).
 
 ## <a name="next-steps"></a>Další kroky
 

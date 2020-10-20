@@ -3,14 +3,14 @@ title: Nasazení Windows Hybrid Runbook Worker v Azure Automation
 description: V tomto článku se dozvíte, jak nasadit Hybrid Runbook Worker, které můžete použít ke spouštění Runbooků v počítačích se systémem Windows v místním datovém centru nebo cloudovém prostředí.
 services: automation
 ms.subservice: process-automation
-ms.date: 08/20/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a03d14fa272f5f86af1caf0ce9537bbb186d13cc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660508"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204513"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -28,7 +28,7 @@ Role Hybrid Runbook Worker závisí na pracovním prostoru Azure Monitor Log Ana
 
 Pokud nemáte pracovní prostor Azure Monitor Log Analytics, před vytvořením pracovního prostoru si přečtěte téma [Průvodce návrhem protokolu Azure monitor](../azure-monitor/platform/design-logs-deployment.md) .
 
-Pokud máte pracovní prostor, ale není propojený s vaším účtem Automation, umožňuje funkce automatizace přidat funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Pokud povolíte jednu z Azure Automation funkcí v pracovním prostoru Log Analytics, konkrétně [Update Management](update-management/update-mgmt-overview.md) nebo [Change Tracking a inventáře](change-tracking.md), automaticky se do počítače agenta přiřadí komponenty pracovního procesu.
+Pokud máte pracovní prostor, ale není propojený s vaším účtem Automation, umožňuje funkce automatizace přidat funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Pokud povolíte jednu z Azure Automation funkcí v pracovním prostoru Log Analytics, konkrétně [Update Management](update-management/update-mgmt-overview.md) nebo [Change Tracking a inventáře](change-tracking/overview.md), automaticky se do počítače agenta přiřadí komponenty pracovního procesu.
 
 > [!NOTE]
 > Když povolíte funkci Update Management nebo Change Tracking a inventáře, Azure Automation podporuje jenom určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md). Než povolíte některou z funkcí, přečtěte si informace o [cenách Azure](https://azure.microsoft.com/pricing/details/automation/) pro Azure Automation.
@@ -120,12 +120,12 @@ Stáhněte si skript **New-OnPremiseHybridWorker.ps1** z [Galerie prostředí Po
 | --------- | ------ | ----------- |
 | `AAResourceGroupName` | Povinné | Název skupiny prostředků, která je přidružená k vašemu účtu Automation. |
 | `AutomationAccountName` | Povinné | Název vašeho účtu Automation.
-| `Credential` | Volitelné | Přihlašovací údaje, které se mají použít při přihlašování do prostředí Azure. |
+| `Credential` | Nepovinné | Přihlašovací údaje, které se mají použít při přihlašování do prostředí Azure. |
 | `HybridGroupName` | Povinné | Název skupiny Hybrid Runbook Worker, kterou zadáte jako cíl pro Runbooky, které podporují tento scénář. |
-| `OMSResourceGroupName` | Volitelné | Název skupiny prostředků pro pracovní prostor Log Analytics. Pokud není tato skupina prostředků zadaná, použije se hodnota `AAResourceGroupName` . |
+| `OMSResourceGroupName` | Nepovinné | Název skupiny prostředků pro pracovní prostor Log Analytics. Pokud není tato skupina prostředků zadaná, použije se hodnota `AAResourceGroupName` . |
 | `SubscriptionID` | Povinné | Identifikátor předplatného Azure přidruženého k vašemu účtu Automation. |
-| `TenantID` | Volitelné | Identifikátor organizace tenanta přidružené k vašemu účtu Automation. |
-| `WorkspaceName` | Volitelné | Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje. |
+| `TenantID` | Nepovinné | Identifikátor organizace tenanta přidružené k vašemu účtu Automation. |
+| `WorkspaceName` | Nepovinné | Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje. |
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>Krok 2 – otevření prostředí příkazového řádku Windows PowerShellu
 
@@ -175,7 +175,7 @@ Heartbeat
 
 Ve výsledcích hledání byste měli vidět záznamy prezenčního signálu pro daný počítač, což znamená, že je připojený a oznamuje službě zprávy. Ve výchozím nastavení každý Agent přepošle záznam prezenčního signálu do přiřazeného pracovního prostoru. Pomocí následujících kroků dokončete instalaci a instalaci agenta.
 
-1. Povolením funkce přidejte počítač agenta. Informace o Update Management a virtuálních počítačích Azure najdete v tématu [povolení Update Management z účtu Automation](update-management/update-mgmt-enable-automation-account.md), [Povolení Update Management procházením Azure Portal](update-management/update-mgmt-enable-portal.md), [povolením Update Management z Runbooku](update-management/update-mgmt-enable-runbook.md)nebo [povolením Update Management z virtuálního počítače Azure](update-management/update-mgmt-enable-vm.md). Informace o Change Tracking a virtuálních počítačích Azure najdete v tématu [Povolení virtuálních počítačů Azure](automation-enable-changes-from-auto-acct.md#enable-azure-vms)a pro virtuální počítače mimo Azure najdete v tématu [Povolení počítačů v pracovním prostoru](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
+1. Povolením funkce přidejte počítač agenta. Informace o Update Management a virtuálních počítačích Azure najdete v tématu [povolení Update Management z účtu Automation](update-management/update-mgmt-enable-automation-account.md), [Povolení Update Management procházením Azure Portal](update-management/update-mgmt-enable-portal.md), [povolením Update Management z Runbooku](update-management/update-mgmt-enable-runbook.md)nebo [povolením Update Management z virtuálního počítače Azure](update-management/update-mgmt-enable-vm.md). Informace o Change Tracking a virtuálních počítačích Azure najdete v tématu [Povolení virtuálních počítačů Azure](change-tracking/enable-from-automation-account.md#enable-azure-vms)a pro virtuální počítače mimo Azure najdete v tématu [Povolení počítačů v pracovním prostoru](change-tracking/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
 2. Chcete-li ověřit verzi Hybrid Runbook Worker, přejděte na `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` podsložku **verze** a poznamenejte si ji.
 
@@ -214,7 +214,7 @@ Runbooky můžou používat jakékoli aktivity a rutiny definované v modulech n
 
 Vzhledem k tomu, že primárním účelem Hybrid Runbook Worker je spravovat místní prostředky, pravděpodobně budete muset nainstalovat moduly, které tyto prostředky podporují, zejména `PowerShellGet` modul. Informace o instalaci modulů prostředí Windows PowerShell najdete v tématu [Windows PowerShell](/powershell/scripting/developer/windows-powershell).
 
-Moduly, které jsou nainstalovány, musí být v umístění, na `PSModulePath` které odkazuje proměnná prostředí, aby je hybridní pracovní proces mohl automaticky importovat. Další informace najdete v tématu [Instalace modulů v PSModulePath](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+Moduly, které jsou nainstalovány, musí být v umístění, na `PSModulePath` které odkazuje proměnná prostředí, aby je hybridní pracovní proces mohl automaticky importovat. Další informace najdete v tématu [Instalace modulů v PSModulePath](/powershell/scripting/developer/module/installing-a-powershell-module).
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>Odebrání Hybrid Runbook Worker z místního počítače s Windows
 

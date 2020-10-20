@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c8143a19d7e18b24e202018698b37e1b2855db4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125418"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206734"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -164,7 +164,7 @@ Zobrazí se následující výstup:
     WSManStackVersion              3.0
 ```
 
-Pokud je vaše verze nižší než 6.2.4, musíte upgradovat verzi Windows PowerShellu. Pokud chcete nainstalovat nejnovější verzi Windows PowerShellu, přečtěte si článek [instalace Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7).
+Pokud je vaše verze nižší než 6.2.4, musíte upgradovat verzi Windows PowerShellu. Pokud chcete nainstalovat nejnovější verzi Windows PowerShellu, přečtěte si článek [instalace Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true).
 
 **Nainstalovat Azure PowerShell a Data Box moduly**
 
@@ -247,7 +247,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     ![Snímek obrazovky s průvodcem objednávkou znázorňující základní krok průvodce se správnými informacemi, které jsou vyplněny.](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
-    Ve výchozím nastavení je heslo k odemknutí zařízení šifrované pomocí klíče spravovaného společností Microsoft. Po dokončení objednávky můžete přidat spravovaný klíč zákazníka. Spravovaný klíč zákazníka vám umožňuje použít vlastní klíč z klíče trezoru klíčů Azure k ochraně vašeho hesla pro odemknutí zařízení. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data box](data-box-customer-managed-encryption-key-portal.md).
+    Ve výchozím nastavení je heslo k odemknutí zařízení šifrované pomocí klíče spravovaného společností Microsoft. Po dokončení objednávky můžete přidat klíč spravovaný zákazníkem. Klíč spravovaný zákazníkem vám umožní využít vlastní klíč z klíče trezoru klíčů Azure k ochraně vašeho hesla pro odemknutí zařízení. Další informace najdete v tématu [použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data box](data-box-customer-managed-encryption-key-portal.md).
 
 7. Na kartě **cíl dat** vyberte **cíl dat**.
 
@@ -273,14 +273,44 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     Pokračujte výběrem **Další: zabezpečení** .
 
-1. Pokud chcete povolit šifrování na základě softwaru, vyberte v části **zabezpečení**možnost **Povolit pro objednávku dvojité šifrování**. 
+    Pomocí obrazovky **zabezpečení** můžete používat vlastní zařízení a sdílet hesla a zvolit, že se má používat dvojité šifrování. 
+
+    Všechna nastavení na obrazovce **zabezpečení** jsou volitelná. Pokud žádná nastavení nezměníte, použijí se výchozí nastavení.
+
+    ![Obrazovka zabezpečení pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+
+1. Pokud nechcete používat systémem generovaná hesla, která Azure Data Box používá ve výchozím nastavení, rozbalte možnost **uvést vlastní heslo**.
+
+   Systémem generovaná hesla jsou zabezpečená a doporučuje se, pokud vaše organizace nevyžaduje jinak.
+
+   ![Rozšířené možnosti vlastního hesla pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+
+   - Pokud chcete pro nové zařízení použít vlastní heslo, napřed **nastavte předvolby pro heslo zařízení**, vyberte **použít vlastní heslo**a zadejte heslo, které splňuje požadavky na zabezpečení.
+   
+     ![Obrazovka zabezpečení pro import Data Box, možnosti pro používání vlastního hesla zařízení](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+
+   - Použití vlastních hesel ke sdíleným složkám:
+
+     1. Nastavením **Předvolby pro hesla pro sdílení**vyberte **použít vlastní hesla** a pak **Vyberte hesla pro sdílené složky**.
+     
+        ![Obrazovka zabezpečení pro Data Box import, možnosti pro použití vlastních hesel pro sdílení](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+
+     1. Zadejte heslo pro každý účet úložiště v uvedeném pořadí. Heslo bude použito ve všech sdílených složkách účtu úložiště.
+     
+        Pokud chcete použít stejné heslo pro všechny účty úložiště, vyberte **Kopírovat do všech**. Po dokončení vyberte **Uložit**.
+     
+        ![Obrazovka pro zadávání hesel pro sdílení Data Boxho pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+       Na obrazovce **zabezpečení** můžete měnit hesla pomocí **zobrazení změn hesel** .
+
+1. Pokud chcete povolit šifrování na základě softwaru, rozbalte v části **zabezpečení**možnost **dvojité šifrování (pro vysoce zabezpečená prostředí)** a **pro objednávku vyberte Povolit dvojité šifrování**.
+
+   ![Obrazovka zabezpečení pro Data Box import a povolení softwarového šifrování pro Data Boxou objednávku](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    Šifrování založené na softwaru se provádí kromě šifrování AES-256 dat na Data Box.
 
    > [!NOTE]
    > Povolení této možnosti může způsobit, že zpracování objednávek a kopírování dat trvá déle. Po vytvoření objednávky tuto možnost nemůžete změnit.
-
-   ![Obrazovka zabezpečení pro import datového boxu, dvojité šifrování](media/data-box-deploy-ordered/select-data-box-import-07c.png)
 
    Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
 
@@ -296,7 +326,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
 10. Po úspěšném ověření podrobností o expedici vyberte **Přidat dodací adresu** . Vrátíte se na kartu **Podrobnosti o kontaktu** .
 
-11. Až se vrátíte k **podrobnostem kontaktu** , přidejte jednu nebo víc e-mailových adres. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
+11. Až se vrátíte k **podrobnostem kontaktu**, přidejte jednu nebo víc e-mailových adres. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
 
     Doporučujeme použít skupinový e-mail, abyste oznámení mohli dostávat i tehdy, když odejde správce skupiny.
 
@@ -338,7 +368,7 @@ Při seřazení zařízení pomocí Azure CLI proveďte následující kroky:
    |query| Řetězec dotazu JMESPath Další informace najdete v tématu [JMESPath](http://jmespath.org/). | --dotaz <string>|
    |verbose| Zahrnout podrobné protokolování. | --verbose |
 
-2. V příkazovém řádku příkazu Choice nebo terminálu pomocí [úlohy AZ data box Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) vytvořte objednávku Azure Data box.
+2. V příkazovém řádku možnosti volby nebo terminálu spusťte příkaz [AZ data box Create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) a vytvořte tak Azure Data box objednávku.
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -506,7 +536,7 @@ Microsoft potom připraví a odešle vaše zařízení přes místní přepravn�
 
 ### <a name="track-a-single-order"></a>Sledovat jednu objednávku
 
-Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte příkaz [AZ Databox Job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
+Pokud chcete získat informace o sledování jednoho existujícího pořadí Azure Data Box, spusťte příkaz [AZ Databox Job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true). Příkaz zobrazí informace o takovém pořadí, jako je například, nikoli omezení na: název, skupina prostředků, informace o sledování, ID předplatného, kontaktní informace, typ dodávky a SKU zařízení.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -547,7 +577,7 @@ Pokud chcete získat informace o sledování jednoho existujícího pořadí Azu
 
 ### <a name="list-all-orders"></a>Vypsat všechny objednávky
 
-Pokud jste objednali více zařízení, můžete spuštěním [AZ Databox Job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
+Pokud jste objednali více zařízení, můžete spuštěním [AZ Databox Job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) Zobrazit všechny vaše objednávky Azure Data box. Příkaz zobrazí seznam všech objednávek, které patří do určité skupiny prostředků. Zobrazuje se také ve výstupu: název objednávky, stav expedice, oblast Azure, typ doručení, stav objednávky. Zrušené objednávky jsou také zahrnuty v seznamu.
 Příkaz také zobrazuje časová razítka jednotlivých objednávek.
 
 ```azurecli
@@ -666,7 +696,7 @@ Zrušení objednávky odstraníte tak, že přejdete na **Přehled** a na panelu
 
 ### <a name="cancel-an-order"></a>Zrušení objednávky
 
-Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel). Je nutné zadat důvod pro zrušení objednávky.
+Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job Cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true). Je nutné zadat důvod pro zrušení objednávky.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -703,7 +733,7 @@ Pokud chcete Azure Data Box pořadí zrušit, spusťte příkaz [AZ Databox Job 
 
 ### <a name="delete-an-order"></a>Odstranění objednávky
 
-Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [AZ Databox Job Delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) .
+Pokud jste zrušili Azure Data Boxou objednávku, můžete ji odstranit spuštěním příkazu [AZ Databox Job Delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) .
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4a3325592c2085034473163cb886ba2b8b416a30
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91652444"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205825"
 ---
-# <a name="quickstart-convert-a-model-for-rendering"></a>Rychlý Start: převod modelu pro vykreslování
+# <a name="quickstart-convert-a-model-for-rendering"></a>Rychlý start: Převod modelu pro vykreslování
 
 V [rychlém startu: vykreslit model pomocí Unity](render-model.md), zjistili jste, jak pomocí ukázkového projektu Unity vykreslit vestavěný model. Tato příručka ukazuje, jak převést vlastní modely.
 
@@ -24,10 +24,10 @@ Dozvíte se, jak provést tyto akce:
 > * Nahrání a převod 3D model pro použití s Azure Remote rendering
 > * Zahrnout převedený 3D model v aplikaci pro vykreslování
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Kompletní [rychlé zprovoznění: vykreslení modelu pomocí Unity](render-model.md)
-* Nainstalovat Azure PowerShell [(dokumentace)](https://docs.microsoft.com/powershell/azure/)
+* Nainstalovat Azure PowerShell [(dokumentace)](/powershell/azure/)
   * Otevření PowerShellu s právy správce
   * Spouštěl `Install-Module -Name Az -AllowClobber`
 
@@ -166,7 +166,7 @@ Connect-AzAccount
 ```
 
 > [!NOTE]
-> V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+> V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 Přejděte do `azure-remote-rendering\Scripts` adresáře a spusťte převodní skript:
 

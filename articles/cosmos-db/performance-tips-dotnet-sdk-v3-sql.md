@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 432d9656bf56b87798d6563cfd545b34c20001b6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802986"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204023"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -163,7 +163,7 @@ Když pracujete na Azure Functions, instance by měly také postupovat podle st�
 Pro úlohy s velkým množstvím vytvoření datových částí nastavte `EnableContentResponseOnWrite` možnost požadavek na `false` . Služba již nebude vracet vytvořený nebo aktualizovaný prostředek k sadě SDK. Vzhledem k tomu, že aplikace má objekt, který je právě vytvořen, obvykle nepotřebuje službu k jejímu vrácení. Hodnoty hlaviček jsou pořád dostupné, třeba poplatky za požadavek. Vypnutí odpovědi na obsah může zvýšit výkon, protože sada SDK již nemusí přidělovat paměť nebo serializovat tělo odpovědi. Také snižuje využití šířky pásma sítě, aby bylo možné lépe zvýšit výkon.  
 
 ```csharp
-ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
+ItemRequestOptions requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
 ItemResponse<Book> itemResponse = await this.container.CreateItemAsync<Book>(book, new PartitionKey(book.pk), requestOptions);
 // Resource will be null
 itemResponse.Resource

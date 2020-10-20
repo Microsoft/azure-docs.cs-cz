@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 18ee64e6866764e250cfa08a1d4721674bb66e5a
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 31660d13fe69d393a19167eaea8a69bfb6260467
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097333"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202068"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Azure ExpressRoute pro poskytovatele Cloud Solution Provider
 Společnost Microsoft poskytuje pro tradiční prodejce a distributory (poskytovatele Cloud Solution Provider) hyperškálovatelné služby, aby mohli pro vaše zákazníky rychle zřizovat nové služby a řešení bez nutnosti investovat do vývoje těchto nových služeb. Aby měl poskytovatel Cloud Solution Provider (CSP) možnosti spravovat tyto služby přímo, poskytuje společnost Microsoft programy a rozhraní API umožňující poskytovateli CSP spravovat prostředky Microsoft Azure za své zákazníky. Jeden z těchto prostředků je ExpressRoute. ExpressRoute umožňuje poskytovateli CSP připojovat prostředky zákazníků ke službám Azure. ExpressRoute je vysokorychlostní propojení privátních komunikací se službami v Azure. 
@@ -28,7 +28,7 @@ ExpressRoute se skládá z páru okruhů pro zajištění vysoké dostupnosti, k
 Množství služeb Microsoft Azure, které můžete nabídnout zákazníkům, se stále zvyšuje. ExpressRoute pomáhá a vašim zákazníkům využívat tyto služby tím, že poskytuje vysokorychlostní přístup s nízkou latencí pro Microsoft Azure prostředí.
 
 ## <a name="microsoft-azure-management"></a>Správa Microsoft Azure
-Společnost Microsoft poskytuje CSP s rozhraními API pro správu předplatných zákazníků Azure tím, že umožňuje programovou integraci s vlastními systémy správy služeb. Podporované možnosti správy najdete [tady](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
+Společnost Microsoft poskytuje CSP s rozhraními API pro správu předplatných zákazníků Azure tím, že umožňuje programovou integraci s vlastními systémy správy služeb. Podporované možnosti správy najdete [tady](/previous-versions/windows/mt844538(v=win.10)).
 
 ## <a name="microsoft-azure-resource-management"></a>Správa prostředků Microsoft Azure
 Způsob správy předplatného závisí na vaší smlouvě se zákazníkem. Poskytovatel CSP může přímo spravovat vytváření a správu prostředků, případně si může zákazník ponechat kontrolu nad předplatným Microsoft Azure a vytvářet prostředky Azure podle potřeby. Pokud zákazník spravuje vytváření prostředků v rámci předplatného Microsoft Azure, bude používat jeden ze dvou modelů: "*Connect-through*" nebo "*Direct-to*" (přímý) model. Tyto modely jsou podrobně popsány v následujících oddílech.  
@@ -129,6 +129,6 @@ Služba poskytovatele Cloud Solution Provider nabízí možnost zvýšení hodno
 
 Další informace najdete prostřednictvím následujících odkazů:
 
-[Program Azure in Cloud Solution Provider](https://docs.microsoft.com/azure/cloud-solution-provider).  
+[Program Azure in Cloud Solution Provider](/azure/cloud-solution-provider).  
 [Připravte se na jednání jako poskytovatel Cloud Solution Provider](https://partner.microsoft.com/solutions/cloud-reseller-pre-launch).  
 [Prostředky pro poskytovatele Microsoft Cloud Solution Provider](https://partner.microsoft.com/solutions/cloud-reseller-resources).

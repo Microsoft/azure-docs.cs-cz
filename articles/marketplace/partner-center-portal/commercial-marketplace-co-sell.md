@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 05/12/2020
-ms.openlocfilehash: 6088569efed56d4453e4f1b0806af68f206cd2e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033247"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204907"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Možnost spoluprodeje v Partnerském centru
 
@@ -36,7 +36,7 @@ Možnost společného prodeje v partnerském centru je aktuálně dostupná pro 
 
 ## <a name="listing"></a>Výpis
 
-Předprodejní seznamy vám pomůžou prodejním týmům Microsoftu na svém řešení nabízet širší cílovou skupinu.
+Předprodejní seznamy vám pomůžou prodejním týmům Microsoftu na svém řešení nabízet širší cílovou skupinu. *(Všechna pole jsou povinná.)*
 
 - Vyberte platformy Microsoftu, pomocí kterých je vaše nabídka sestavená, rozšiřuje nebo integruje se.
 - Vyberte segmenty trhu, na které se vaše nabídka zaměřuje.
@@ -58,26 +58,26 @@ Typy řešení usnadňují definování scénářů, na které je vaše nabídka
 
 Řešení oblastí řešení vám umožní dále definovat vaše řešení.
 
-Můžete přidat až tři oblasti řešení pro vaši nabídku. Pro každou oblast řešení můžete zvolit až dvě podoblasti řešení. Pokud chcete vybrat více podkategorií, použijte `Ctrl` klíč (ve Windows) nebo klíč příkazu (na Mac OS).
+Můžete přidat až tři oblasti řešení pro vaši nabídku. Pro každou oblast řešení můžete zvolit až dvě podoblasti řešení. Pokud chcete vybrat více podkategorií, použijte `Ctrl` klíč (ve Windows) nebo klíč příkazu (na MacOS).
 
 ## <a name="documents"></a>Dokumenty
 
-Máte možnost poskytnout dokumentaci, kterou Microsoft bude používat k získání dalších informací o vaší nabídce, a vyhodnotit, co vyhovuje vašim potřebám zákazníků. Všechny dokumenty uvedené v následující tabulce jsou volitelné.
+Máte možnost poskytnout dokumentaci, kterou Microsoft bude používat k získání dalších informací o vaší nabídce, a vyhodnotit, co vyhovuje vašim potřebám zákazníků.
 
 | **Dokumenty**    | **Popis**  |
 | :------------------- | :-------------------|
-| *Zákazník – jeden – pager* | Popis vaší nabídky připravené pro zákazníka Prodejní týmy Microsoftu můžou tyto informace sdílet se zákazníky, aby zjistili, jestli vaše nabídka může být dobrá a aby se zajistilo, že je připravená na zákazníka. <br> <br> Použijte jednu z relevantních šablon, které jsou k dispozici v partnerském centru: <br> <ul> <li> Microsoft Azure šablonu s jedním stránkováním </li> <li> Microsoft Dynamics 365 1 – Šablona stránkování </li> <li> Microsoft 365 1 – Šablona stránkování </li> <li> Windows 10 1 – Šablona stránkování </li> </ul> |
-| *Prezentace zákazníků* | Posunutí balíčku k rozteči vašeho řešení a jeho umístění hodnoty Když si zajistěte, aby vaše nabídka byla připravená pro zákazníky, prodejní týmy Microsoftu můžou prezentaci sdílet se zákazníky, aby vyjadřují hodnotu, kterou obě společnosti přinášejí při nasazování společného řešení. Prezentace by měla zahrnovat to, co vaše řešení dělá, jak může pomáhat zákazníkům, v jakém odvětví je řešení a jak se porovnává s konkurenčními řešeními. <br> <br> Použijte šablonu dostupnou v partnerském centru.|
+| *Zákazník – jeden – pager (povinné)* | Popis vaší nabídky připravené pro zákazníka Prodejní týmy Microsoftu můžou tyto informace sdílet se zákazníky, aby zjistili, jestli vaše nabídka může být dobrá a aby se zajistilo, že je připravená na zákazníka. <br> <br> Použijte jednu z relevantních šablon, které jsou k dispozici v partnerském centru: <br> <ul> <li> Microsoft Azure šablonu s jedním stránkováním </li> <li> Microsoft Dynamics 365 1 – Šablona stránkování </li> <li> Microsoft 365 1 – Šablona stránkování </li> <li> Windows 10 1 – Šablona stránkování </li> </ul> |
+| *Prezentace zákazníka (povinné)* | Posunutí balíčku k rozteči vašeho řešení a jeho umístění hodnoty Když si zajistěte, aby vaše nabídka byla připravená pro zákazníky, prodejní týmy Microsoftu můžou prezentaci sdílet se zákazníky, aby vyjadřují hodnotu, kterou obě společnosti přinášejí při nasazování společného řešení. Prezentace by měla zahrnovat to, co vaše řešení dělá, jak může pomáhat zákazníkům, v jakém odvětví je řešení a jak se porovnává s konkurenčními řešeními. <br> <br> Použijte šablonu dostupnou v partnerském centru.|
 | *Případová studie zákazníka* | Tyto informace zobrazují potenciální zákazníky, jak vy a Microsoft úspěšně nasadili toto řešení v předchozích případech. <br> <br> Použijte šablonu dostupnou v partnerském centru. |
-| *Ověřitelné odběratele služby WINS (volitelné)* | Konkrétní příklady úspěšnosti zákazníků po nasazení vašeho řešení |
-| *Balíček pro rozteč kanálů (volitelné)* | Snímková balíček s informacemi, které pomůžou prodejcům kanálů získat další informace o vašem řešení a připravit své prodejní týmy na prodej vaší nabídky. Obvykle zahrnuje rozteč výtahů, informace o cílových zákaznících, otázky týkající se zákazníků, mluvích bodů a odkazy na videa, dokumentaci a informace o podpoře. |
+| *Ověřitelné zákazníky ze služby WINS* | Konkrétní příklady úspěšnosti zákazníků po nasazení vašeho řešení |
+| *Balíček pro rozteč kanálu* | Snímková balíček s informacemi, které pomůžou prodejcům kanálů získat další informace o vašem řešení a připravit své prodejní týmy na prodej vaší nabídky. Obvykle zahrnuje rozteč výtahů, informace o cílových zákaznících, otázky týkající se zákazníků, mluvích bodů a odkazy na videa, dokumentaci a informace o podpoře. |
 | *Diagramy referenční architektury* | Dokument znázorňující model, který představuje IP adresu vytvořenou partnerem, spolu se vztahem k cloudovým službám Microsoftu a jak splňuje technické požadavky programu pro spoluprodejní IP adresy. |
 | *Další dokumenty* | Volitelně můžete nahrajte až pět dalších dokumentů nebo videí, které pomůžou prodejním týmům Microsoftu a prodejcům kanálů získat další informace o vašem řešení, organizaci nebo rozdílech. |
 | *Adresa URL externího odkazu* | Odkaz na web vašeho produktu, kde se můžou prodejci Microsoftu a prodejci kanálů dozvědět víc o vašem řešení. |
 
 ## <a name="contacts"></a>Kontakty
 
-Vaše kontaktní informace umožní prodejcům v oddělení Microsoftu a prodejcům kanálů požádat o další informace z příslušného zdroje ve vaší organizaci. Kontaktní údaje jsou k dispozici pro všechny prodejní týmy Microsoftu. Pokud se rozhodnete zpřístupnit nabídku v programu CSP, jsou tyto kontaktní informace k dispozici také pro prodejce kanálů.
+Vaše kontaktní informace umožní prodejcům v oddělení Microsoftu a prodejcům kanálů požádat o další informace z příslušného zdroje ve vaší organizaci. Kontaktní údaje jsou k dispozici pro všechny prodejní týmy Microsoftu. *(V případě programu společného prodeje se vyžaduje kontakt pro každé geografické prostředí, ve kterém je vaše nabídka dostupná.)* Pokud se rozhodnete zpřístupnit nabídku v programu CSP, jsou tyto kontaktní informace k dispozici také pro prodejce kanálů.
 
 Kontakty můžete zadat stažením šablony CSV z partnerského centra, vyplněním každého řádku a zadáním informací o kontaktu a importem tohoto souboru CSV. Import souboru CSV přepíše existující kontakty.
 

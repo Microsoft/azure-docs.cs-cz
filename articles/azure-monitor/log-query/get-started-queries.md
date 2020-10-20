@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43a72db385d282ee189c179254cfc270929dbbf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87874057"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207185"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Začínáme s dotazy protokolů v Azure Monitoru
 
@@ -171,7 +171,7 @@ Předchozí příklad vygeneruje tento výstup:
 **Projekt** můžete také použít k přejmenování sloupců a definování nových. Následující příklad používá projekt k provedení následujících akcí:
 
 * Vyberte pouze původní sloupce *počítač* a *TimeGenerated* .
-* Přejmenujte sloupec *aktivity* na *EventDetails*.
+* Zobrazí sloupec *aktivity* jako *EventDetails*.
 * Vytvoří nový sloupec s názvem *kód události*. Funkce **substring ()** se používá k získání pouze prvních čtyř znaků z pole Activity.
 
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d02568dbb5dfc6b7feb38d353e1ba0ecd8ae25d6
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588921"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203989"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrace služby Key Vault s certifikační autoritou DigiCert
 
@@ -25,7 +25,7 @@ Uživatelé služby Azure Key Recovery můžou certifikáty DigiCert vygenerovat
 
 Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](/azure/key-vault/certificates/about-certificates).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -135,9 +135,16 @@ Další informace najdete v referenčních informacích o [operacích certifiká
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 - Můžu vytvořit certifikát se zástupným znakem DigiCert prostřednictvím trezoru klíčů? 
-   Ano. Bude záviset na tom, jak jste nakonfigurovali účet DigiCert.
-- Pokud jsme chtěli vytvořit certifikát EV, jak to zadáte? 
-   Při vytváření certifikátu klikněte na Pokročilá konfigurace zásad a pak zadejte typ certifikátu. Podporované hodnoty: OV-SSL, EV-SSL
+   Yes. Bude záviset na tom, jak jste nakonfigurovali účet DigiCert.
+- Jak můžu vytvořit certifikát **ov-SSL nebo EV-SSL** s DigiCert?? 
+   Trezor klíčů podporuje vytváření certifikátů SSL OV a EV. Při vytváření certifikátu klikněte na Pokročilá konfigurace zásad a pak zadejte typ certifikátu. Podporované hodnoty: OV-SSL, EV-SSL
+   
+   Tento typ certifikátu byste mohli vytvořit v trezoru klíčů, pokud to váš účet DigiCert povoluje. Pro tento typ certifikátu provádí ověření DigiCert a jejich tým podpory by vám mohl při ověřování probíhat, pokud se ověření nepodaří. Při vytváření certifikátu můžete přidat další informace jejich definováním v tématu Subject.
+
+Příklad
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+   
 - Je při vytváření certifikátu DigiCert prostřednictvím integrace, která přímo získává certifikát prostřednictvím DigiCert, k dispozici časová prodleva?
    Ne. Při vytváření certifikátu se jedná o proces ověřování, který může chvíli trvat a toto ověření závisí na procesu, který DigiCert sleduje.
 

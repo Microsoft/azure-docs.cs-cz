@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 451b651be8036feb272d4444d00608bb61c1e438
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87445798"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204482"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače se systémem Linux v Azure
 
-Azure [Change Tracking](../../automation/change-tracking.md) umožňuje snadno identifikovat změny a [Update Management](../../automation/update-management/update-mgmt-overview.md) vám umožní spravovat aktualizace operačního systému pro virtuální počítače Azure Linux.
+Azure [Change Tracking](../../automation/change-tracking/overview.md) umožňuje snadno identifikovat změny a [Update Management](../../automation/update-management/update-mgmt-overview.md) vám umožní spravovat aktualizace operačního systému pro virtuální počítače Azure Linux.
 
 V tomto kurzu se naučíte:
 

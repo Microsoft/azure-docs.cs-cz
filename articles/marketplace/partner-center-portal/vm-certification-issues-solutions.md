@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/14/2020
-ms.openlocfilehash: 1a8dbbb42a548a8c4e9a1117166aa621e8734208
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/16/2020
+ms.openlocfilehash: 48a044e53602b330e43b35ce2425b4b7a90582bf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044492"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206573"
 ---
 # <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Běžné problémy při certifikaci imagí virtuálních počítačů pro Azure Marketplace
 
@@ -35,7 +35,7 @@ Chcete-li tento problém vyřešit, načtěte obrázek z Azure Marketplace a pro
 - [Bitové kopie systému Windows](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base)
 
 > [!Note]
-> Pokud používáte základní image Linux, která není z webu Marketplace, můžete posunout první oddíl o 2048 KB. To umožňuje, aby neformátované místo bylo možné použít k přidání nových fakturačních informací, a umožní službě Azure začít s publikováním virtuálního počítače na Marketplace.  
+> Pokud používáte základní bitovou kopii systému Linux, která se nepoužívá Azure Marketplace, můžete posunout první oddíl o 2048 KB. To umožňuje, aby se neformátované místo používalo k přidávání nových fakturačních informací, a umožňuje Azure přejít k publikování virtuálního počítače do Azure Marketplace.  
 
 ## <a name="vm-extension-failure"></a>Selhání rozšíření virtuálního počítače
 
@@ -87,7 +87,7 @@ Pokud se pokoušíte nainstalovat sadu Visual Studio nebo jakýkoli produkt lice
 
 Další informace o výběru schválené základní třídy najdete v tématu [Vytvoření technických prostředků virtuálních počítačů Azure](create-azure-vm-technical-asset.md#create-a-vm-image-using-an-approved-base).
 
-## <a name="tool-kit-test-case-execution-failed"></a>Spuštění testovacího případu sady nástrojů se nezdařilo 
+## <a name="tool-kit-test-case-execution-failed"></a>Spuštění testovacího případu sady nástrojů se nezdařilo
 
 Sada nástrojů Microsoft Certification Toolkit vám může pomáhat při spouštění testovacích případů a ověření, že je váš virtuální pevný disk nebo Image kompatibilní s prostředím Azure.
 
@@ -145,7 +145,7 @@ V následující tabulce jsou uvedeny testovací případy systému Windows, kte
 |16|Služba Windows Internet Name Service|Služba Windows Internet Name Service. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 |17|Služba bezdrátové sítě LAN|Služba bezdrátové sítě LAN. Tato funkce serveru zatím není podporovaná. Aplikace by neměla být závislá na této funkci.|
 
-Pokud jste pocházeli při jakémkoli selhání s předchozími testovacími případy, přečtěte si sloupec **Popis** v tabulce pro řešení. Pokud potřebujete další informace, obraťte se na tým podpory. 
+Pokud jste pocházeli při jakémkoli selhání s předchozími testovacími případy, přečtěte si sloupec **Popis** v tabulce pro řešení. Pokud potřebujete další informace, obraťte se na tým podpory.
 
 ## <a name="data-disk-size-verification"></a>Ověření velikosti datového disku
 
@@ -199,8 +199,8 @@ Aktualizujte jádro pomocí schválené verze a odešlete požadavek znovu. Schv
 
 Pokud bitová kopie není nainstalovaná s některou z následujících verzí jádra, aktualizujte ji pomocí správných oprav. Po aktualizaci obrázku pomocí těchto požadovaných oprav vyžádejte od týmu podpory potřebné schválení:
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |Řada OS|Verze|jádro|
@@ -261,12 +261,12 @@ Pokud při spuštění testovacích případů na virtuálním počítači postu
 Zkontrolujte, zda je pro účet, na kterém běží vlastní testové případy, povolen správný přístup. Pokud přístup povolen není, povolte ho pro spuštění testovacích případů. Pokud nechcete povolit přístup, můžete sdílet výsledky pro samočinný test případu s týmem podpory.
 
 ## <a name="download-failure"></a>Chyba stahování
-    
+
 V následující tabulce najdete případné problémy, které vznikají při stahování image virtuálního počítače pomocí adresy URL sdíleného přístupového podpisu (SAS).
 
 |Scénář|Chyba|Důvod|Řešení|
 |---|---|---|---|
-|1|Objekt BLOB se nenašel.|Virtuální pevný disk může být buď odstraněn, nebo přesunut ze zadaného umístění.|| 
+|1|Objekt BLOB se nenašel.|Virtuální pevný disk může být buď odstraněn, nebo přesunut ze zadaného umístění.||
 |2|Používaný objekt BLOB|VHD používá jiný interní proces.|Virtuální pevný disk by měl být v používaném stavu, když ho stáhnete pomocí adresy URL SAS.|
 |3|Neplatná adresa URL SAS|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
 |4|Neplatný podpis|Přidružená adresa URL SAS pro virtuální pevný disk je nesprávná.|Získejte správnou adresu URL SAS.|
@@ -317,7 +317,7 @@ Pro řešení chyb souvisejících s datovým diskem použijte následující ta
 
 ## <a name="remote-access-issue"></a>Problém se vzdáleným přístupem
 
-Pokud v imagi Windows není povolená možnost protokol RDP (Remote Desktop Protocol) (RDP), zobrazí se tato chyba. 
+Pokud v imagi Windows není povolená možnost protokol RDP (Remote Desktop Protocol) (RDP), zobrazí se tato chyba.
 
 Než je odešlete, povolte přístup k protokolu RDP pro image Windows.
 
@@ -334,11 +334,11 @@ Krok 2. Vyberte první možnost "RunShellScript" a spusťte následující pří
 
 Příkaz: CAT/dev/null > ~/.bash_history && History-c " ![ bash historie příkazu on Azure Portal](./media/vm-certification-issues-solutions-4.png)
 
-Krok 3. Po úspěšném provedení příkazu restartujte virtuální počítač.
+Krok 3. po úspěšném provedení příkazu restartujte virtuální počítač.
 
-Krok 4: Generalizujte virtuální počítač, povezměte virtuální pevný disk image a zastavte virtuální počítač.
+Krok 4. generalizace virtuálního počítače, povezměte virtuální pevný disk image a zastavte virtuální počítač.
 
-Krok 5.     Re-Submit generalizovaná bitová kopie.
+Krok 5. Re-Submit generalizovaná bitová kopie.
 
 ## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Požadavky na výjimky (vlastní šablony) na image virtuálních počítačů pro selektivní testy
 
@@ -349,7 +349,7 @@ V následujících částech budeme pohovořit o hlavních scénářích, kde js
 
 Scénáře pro výjimku
 
-Existují tři scénáře/případy, kdy vydavatel obecně požadují tyto výjimky. 
+Existují tři scénáře/případy, kdy vydavatel obecně požadují tyto výjimky.
 
 * **Výjimka pro jeden nebo více testovacích případů:** Vydavatelé se můžou spojit s výjimkami žádosti o [podporu vydavatele na Marketplace](https://aka.ms/marketplacepublishersupport) pro testovací případy. 
 
@@ -357,20 +357,22 @@ Existují tři scénáře/případy, kdy vydavatel obecně požadují tyto výji
        V takovém případě mohou vydavatelé stáhnout [Nástroj certifikovaný test](https://aka.ms/AzureCertificationTestTool) a poskytnout zprávu na [webu Marketplace podpora vydavatelů](https://aka.ms/marketplacepublishersupport) .
 
 
-* **Vlastní šablony:** Někteří vydavatelé publikují image virtuálních počítačů, které pro nasazení virtuálních počítačů vyžadují vlastní šablonu ARM. V takovém případě se vydavatelé požadují, aby poskytovali vlastní šablony v rámci [podpory vydavatele na webu Marketplace](https://aka.ms/marketplacepublishersupport) , aby je bylo možné používat certifikační tým pro ověřování. 
+* **Vlastní šablony:** Někteří vydavatelé publikují image virtuálních počítačů, které pro nasazení virtuálních počítačů vyžadují vlastní šablonu ARM.
+
+V takovém případě se vydavatelé požadují, aby poskytovali vlastní šablony v rámci [podpory vydavatele na webu Marketplace](https://aka.ms/marketplacepublishersupport) , aby je bylo možné používat certifikační tým pro ověřování.
 
 ### <a name="information-to-provide-for-exception-scenarios"></a>Informace, které je potřeba poskytnout pro scénáře výjimek
 
 Vydavatelé se musí obrátit na podporu [vydavatele na webu Marketplace](https://aka.ms/marketplacepublishersupport) , který požaduje výjimky pro výše uvedený scénář, a další následující informace:
 
-   1.   ID vydavatele – ID vydavatele na portálu partnerského centra
-   2.   ID nabídky/název – ID nabídky/název, pro který se požaduje výjimka 
-   3.   ID SKU/plánu – ID/SKU nabídky virtuálních počítačů, pro které se požaduje výjimka
-   4.    Verze – verze nabídky virtuálních počítačů, pro kterou je požadována výjimka
-   5.   Typ výjimky – testy, uzamčený virtuální počítač, vlastní šablony
-   6.   Důvod žádosti – důvod pro tuto výjimku a informace o testech, které mají být vyloučeny 
-   7. Časová osa – datum, do kterého byla tato výjimka požadována 
-   8.   Příloha – připojte všechny dokumenty legitimace podle důležitosti. Pro zamčené virtuální počítače připojte testovací sestavu a pro vlastní šablony zadejte vlastní šablonu ARM jako přílohu. Nepovedlo se připojit sestavu pro zamčené virtuální počítače a vlastní šablonu ARM pro vlastní šablony. výsledkem bude odepření žádosti.
+   1. ID vydavatele – ID vydavatele na portálu partnerského centra
+   1. ID nabídky/název – ID nabídky/název, pro který se požaduje výjimka 
+   1. ID SKU/plánu – ID/SKU nabídky virtuálních počítačů, pro které se požaduje výjimka
+   1. Verze – verze nabídky virtuálních počítačů, pro kterou je požadována výjimka
+   1. Typ výjimky – testy, uzamčený virtuální počítač, vlastní šablony
+   1. Důvod žádosti – důvod pro tuto výjimku a informace o testech, které mají být vyloučeny 
+   1. Časová osa – datum, do kterého byla tato výjimka požadována 
+   1. Příloha – připojte všechny dokumenty legitimace podle důležitosti. Pro zamčené virtuální počítače připojte testovací sestavu a pro vlastní šablony zadejte vlastní šablonu ARM jako přílohu. Nepovedlo se připojit sestavu pro zamčené virtuální počítače a vlastní šablonu ARM pro vlastní šablony. výsledkem bude odepření žádosti.
 
 ## <a name="how-to-address-a-vulnerability-or-exploit-in-a-vm-offer"></a>Řešení chyby zabezpečení nebo zneužití v nabídce virtuálních počítačů
 
@@ -403,7 +405,7 @@ K provedení těchto kroků budete potřebovat připravit technický prostředek
 1. Na kartě **Přehled plánu** ve sloupci **název** vyberte plán, do kterého chcete virtuální počítač přidat.
 1. Na kartě **Technická konfigurace** v části **image virtuálních počítačů**vyberte **+ Přidat image virtuálního počítače**.
    > [!NOTE]
-   > V jednom okamžiku můžete do plánu přidat jenom jednu image virtuálního počítače. Pokud chcete přidat víc imagí virtuálních počítačů, publikujte první a počkejte, dokud nedosáhne fáze _schvalování Publisher_ před přidáním další image virtuálního počítače.
+   > V jednom okamžiku můžete do plánu přidat jenom jednu image virtuálního počítače. Pokud chcete přidat víc imagí virtuálních počítačů, publikujte každou jednu po sobě a teprve potom přidejte další image virtuálního počítače.
 1. V zobrazených oknech zadejte novou verzi disku a image virtuálního počítače.
 1. Vyberte **Uložit koncept**.
 1. Pokračujte k další části, abyste odebrali image virtuálního počítače s chybou zabezpečení.
@@ -425,6 +427,7 @@ Po odebrání nebo nahrazení image virtuálního počítače je potřeba tuto n
 1. Vyberte možnost **zkontrolovat a publikovat**.
 1. Pokud potřebujete poskytnout certifikačnímu týmu nějaké informace, přidejte ho do pole **poznámky pro certifikaci** .
 1. Vyberte **Publikovat**.
+1. Když stav publikování dosáhne fáze publikování, vyberte možnost **Přejít na aktivní**.
 
 Další informace o procesu publikování najdete v tématu [postup kontroly a publikování nabídky na komerčním webu Marketplace](../review-publish-offer.md).
 

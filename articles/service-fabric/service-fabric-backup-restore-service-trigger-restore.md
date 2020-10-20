@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d881033b8dde6cc55a9720ec94084bd876116f1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246686"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207389"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovování zálohy v Azure Service Fabric
 
@@ -190,6 +190,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 Průběh obnovení můžete sledovat pomocí TrackRestoreProgress.
 
+> [!NOTE]
+> Při použití PowerShellu k obnovení oddílu, pokud backuplocation má $, vydejte ho pomocí znaku ~.
+>
+
 ### <a name="using-service-fabric-explorer"></a>Použití Service Fabric Explorer
 Můžete aktivovat obnovení z Service Fabric Explorer. Ujistěte se, že je v nastavení Service Fabric Explorer povolený rozšířený režim.
 1. Vyberte požadované oddíly a klikněte na akce. 
@@ -250,6 +254,10 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 ```
 
 Průběh obnovy můžete sledovat pomocí TrackRestoreProgress.
+
+> [!NOTE]
+> Při použití PowerShellu k obnovení oddílu, pokud backuplocation má $, vydejte ho pomocí znaku ~.
+>
 
 ## <a name="track-restore-progress"></a>Sledovat průběh obnovení
 

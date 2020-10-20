@@ -4,21 +4,21 @@ description: Přečtěte si o funkcích sítě v Azure App Service a o tom, jak�
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743042"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207038"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
 Aplikace v Azure App Service lze nasadit různými způsoby. Ve výchozím nastavení jsou App Service hostované aplikace přímo přístupné z Internetu a můžou mít přístup jenom k hostovaným koncovým bodům Internetu. Mnoho zákaznických aplikací ale potřebuje k řízení příchozího a odchozího síťového provozu. V App Service je k dispozici několik funkcí k uspokojení těchto potřeb. Tato výzva má na vědomí, jakou funkci byste měli použít k vyřešení daného problému. Účelem tohoto dokumentu je pomáhat zákazníkům určit, jakou funkci byste měli použít na základě některých příkladů případů použití.
 
-Existují dva typy primárních nasazení pro Azure App Service. Je k dispozici veřejná služba s více klienty, která hostuje App Service plány v cenových jednotkách Free, Shared, Basic, Standard, Premium, PremiumV2 a PremiumV3. Pak je k dispozici jeden tenant App Service Environment (pomocný), který hostuje izolované SKU App Service plány přímo ve službě Azure Virtual Network (VNet). Funkce, které použijete, se budou lišit, pokud jste ve službě pro více tenantů nebo v pomocném modulu pro čtení. 
+Existují dva typy primárních nasazení pro Azure App Service. Je k dispozici veřejná služba s více klienty, která hostuje App Service plány v cenových jednotkách Free, Shared, Basic, Standard, Premium, Premiumv2 a Premiumv3. Pak je k dispozici jeden tenant App Service Environment (pomocný), který hostuje izolované SKU App Service plány přímo ve službě Azure Virtual Network (VNet). Funkce, které použijete, se budou lišit, pokud jste ve službě pro více tenantů nebo v pomocném modulu pro čtení. 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>Funkce pro více tenantů App Service sítě 
 
@@ -36,20 +36,20 @@ Pokud není uvedeno jinak, lze použít všechny funkce společně. Můžete kom
 
 U každého daného případu použití může být problém vyřešit několika způsoby.  Správná funkce, která má být použita, je někdy způsobena důvody mimo samotný případ použití. Následující případy příchozího použití ukazují, jak používat funkce App Service sítě k řešení problémů s řízením provozu, který do vaší aplikace směřuje. 
  
-| Případy příchozího použití | Příznak |
+| Případy příchozího použití | Funkce |
 |---------------------|-------------------|
 | Podpora protokolu SSL založeného na protokolu IP pro vaši aplikaci | Adresa přiřazená aplikaci |
 | Nesdílená a vyhrazená příchozí adresa pro vaši aplikaci | Adresa přiřazená aplikaci |
 | Omezení přístupu k aplikaci ze sady dobře definovaných adres | Omezení přístupu |
-| Omezení přístupu k aplikaci z prostředků ve virtuální síti | Koncové body služby </br> INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Privátní koncový bod (Preview) |
-| Zpřístupnit moji aplikaci na privátní IP adrese ve virtuální síti | INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> privátní IP adresa pro příchozí u Application Gateway s koncovými body služby </br> Koncový bod služby (Preview) |
-| Ochrana aplikace pomocí WAF | Application Gateway + interního nástroje pomocného mechanismu </br> Application Gateway s koncovými body služby </br> Přední dvířka Azure s omezeními přístupu |
+| Omezení přístupu k aplikaci z prostředků ve virtuální síti | Koncové body služby </br> INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Soukromé koncové body |
+| Zpřístupnit moji aplikaci na privátní IP adrese ve virtuální síti | INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Soukromé koncové body </br> privátní IP adresa pro příchozí u Application Gateway s koncovými body služby |
+| Ochrana aplikace pomocí firewallu webových aplikací (WAF) | Application Gateway + interního nástroje pomocného mechanismu </br> Application Gateway s privátními koncovými body </br> Application Gateway s koncovými body služby </br> Přední dvířka Azure s omezeními přístupu |
 | Vyrovnávání zatížení u mých aplikací v různých oblastech | Přední dvířka Azure s omezeními přístupu | 
 | Vyrovnávat zatížení provozu ve stejné oblasti | [Application Gateway s koncovými body služby][appgwserviceendpoints] | 
 
 Následující případy odchozího použití ukazují, jak používat funkce App Service sítě k řešení požadavků na odchozí přístup k vaší aplikaci. 
 
-| Případy odchozího použití | Příznak |
+| Případy odchozího použití | Funkce |
 |---------------------|-------------------|
 | Přístup k prostředkům v Azure Virtual Network ve stejné oblasti | Integrace virtuální sítě </br> ASE |
 | Přístup k prostředkům v Azure Virtual Network v jiné oblasti | Požadovaná brána Integration VNet </br> Pomocného a virtuálním počítačem |
@@ -62,11 +62,15 @@ Následující případy odchozího použití ukazují, jak používat funkce Ap
 
 ### <a name="default-networking-behavior"></a>Výchozí chování sítě
 
-Jednotky škálování Azure App Service podporují mnoho zákazníků v každém nasazení. Bezplatné a sdílené SKU naplánují hostování úloh zákazníků na víceklientské pracovní procesy. Základní a vyšší plánuje úlohy hostitele, které jsou vyhrazeny jenom jednomu App Service plánu (ASP). Pokud máte plán Standard App Service, všechny aplikace v tomto plánu se spustí na stejném pracovním procesu. Při horizontálním navýšení kapacity pracovního procesu se všechny aplikace v tomto prostředí ASP replikují na nového pracovního procesu pro každou instanci ASP. Pracovní procesy používané pro PremiumV2 a PremiumV3 se liší od pracovníků používaných pro jiné plány. Každé nasazení App Service má jednu IP adresu, která se používá pro veškerý příchozí provoz do aplikací v rámci nasazení App Service. K odchozím voláním je ale možné použít libovolné místo od 4 do 11 adres. Tyto adresy sdílí všechny aplikace v rámci tohoto App Service nasazení. Odchozí adresy se liší v závislosti na různých typech pracovních procesů. To znamená, že adresy používané na úrovni Free, Shared, Basic, Standard a Premium ASP se liší od adres používaných pro odchozí hovory z PremiumV2 a PremiumV3 ASP. Pokud ve vlastnostech své aplikace hledáte, můžete zobrazit příchozí a odchozí adresy, které vaše aplikace používá. Pokud potřebujete uzamknout závislost se seznamem ACL protokolu IP, použijte possibleOutboundAddresses. 
+Jednotky škálování Azure App Service podporují mnoho zákazníků v každém nasazení. Bezplatné a sdílené SKU naplánují hostování úloh zákazníků na víceklientské pracovní procesy. Základní a vyšší plánuje úlohy hostitele, které jsou vyhrazeny jenom jednomu App Service plánu (ASP). Pokud máte plán Standard App Service, všechny aplikace v tomto plánu se spustí na stejném pracovním procesu. Při horizontálním navýšení kapacity pracovního procesu se všechny aplikace v tomto prostředí ASP replikují na nového pracovního procesu pro každou instanci ASP. 
+
+#### <a name="outbound-addresses"></a>Odchozí adresy
+
+Pracovní procesy pracovních procesů jsou v rámci App Service cenové tarify rozdělené na velké části. Všechny úrovně Free, Shared, Basic, Standard a Premium používají stejný typ virtuálního počítače Worker. Premiumv2 je na jiném typu virtuálního počítače. Premiumv3 je ještě jiný typ virtuálního počítače. Každá změna v rodině virtuálních počítačů má jinou sadu odchozích adres. Pokud budete škálovat z úrovně Standard na Premiumv2, budou se vaše odchozí adresy měnit. Pokud budete škálovat z Premiumv2 na Premiumv3, budou se vaše odchozí adresy měnit. Existují starší jednotky škálování, které při škálování z úrovně Standard na Premiumv2 mění vstupní i výstupní adresy. K odchozím voláním se používá několik adres. Odchozí adresy, které vaše aplikace používá k odchozím voláním, jsou uvedené ve vlastnostech vaší aplikace. Tyto adresy jsou sdíleny všemi aplikacemi spuštěnými ve stejné rodině virtuálních počítačů pracovních procesů v rámci tohoto App Service nasazení. Pokud chcete zobrazit všechny možné adresy, které vaše aplikace může používat v této jednotce škálování, existuje další vlastnost s názvem possibleOutboundAddresses, která je vypíše. 
 
 ![Vlastnosti aplikace](media/networking-features/app-properties.png)
 
-App Service má počet koncových bodů, které se používají ke správě služby.  Tyto adresy jsou publikovány v samostatném dokumentu a jsou také ve značce AppServiceManagement IP Service. Značka AppServiceManagement se používá jenom s App Service Environment (pomocným mechanismem), kde je potřeba tento provoz umožňovat. Příchozí adresy App Service jsou sledovány ve značce služby IP AppService. Neexistuje žádná značka služby IP, která obsahuje odchozí adresy, které používá App Service. 
+App Service má počet koncových bodů, které se používají ke správě služby.  Tyto adresy jsou publikovány v samostatném dokumentu a jsou také ve značce AppServiceManagement IP Service. Značka AppServiceManagement se používá pouze u App Service Environment, kde je třeba takový provoz umožňovat. Příchozí adresy App Service jsou sledovány ve značce služby IP AppService. Neexistuje žádná značka služby IP, která obsahuje odchozí adresy, které používá App Service. 
 
 ![App Service příchozího a odchozího diagramu](media/networking-features/default-behavior.png)
 
@@ -100,7 +104,7 @@ Pokud chcete přístup k aplikaci uzamknout, aby se mohla získat jenom z prost�
 
 ### <a name="service-endpoints"></a>Koncové body služby
 
-Koncové body služby umožňují Uzamknout **příchozí** přístup k aplikaci tak, že zdrojová adresa musí pocházet ze sady podsítí, kterou vyberete. Tato funkce funguje v kombinaci s omezeními přístupu k IP adresám. Koncové body služby se nastavují ve stejném uživatelském prostředí jako omezení přístupu IP. Můžete vytvořit seznam povolených a zakázaných pravidel přístupu, který zahrnuje veřejné adresy i podsítě v virtuální sítě. Tato funkce podporuje scénáře, jako například:
+Koncové body služby umožňují Uzamknout **příchozí** přístup k aplikaci tak, aby zdrojová adresa měla pocházet ze sady podsítí, kterou vyberete. Tato funkce funguje v kombinaci s omezeními přístupu k IP adresám. Koncové body služby nejsou kompatibilní se vzdáleným laděním. Chcete-li použít vzdálené ladění s vaší aplikací, klient nemůže být v podsíti s povolenými koncovými body služby. Koncové body služby se nastavují ve stejném uživatelském prostředí jako omezení přístupu IP. Můžete vytvořit seznam povolených a zakázaných pravidel přístupu, který zahrnuje veřejné adresy i podsítě v virtuální sítě. Tato funkce podporuje scénáře, jako například:
 
 ![koncové body služby](media/networking-features/service-endpoints.png)
 
@@ -111,10 +115,18 @@ Koncové body služby umožňují Uzamknout **příchozí** přístup k aplikaci
 
 Další informace o konfiguraci koncových bodů služby s vaší aplikací najdete v kurzu [Konfigurace omezení přístupu koncového bodu služby][serviceendpoints] .
 
-### <a name="private-endpoint-preview"></a>Privátní koncový bod (Preview)
+### <a name="private-endpoints"></a>Privátní koncové body
 
 Privátní koncový bod je síťové rozhraní, které vám prostřednictvím privátního propojení Azure připojuje soukromě a bezpečně ke své webové aplikaci. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně přináší webovou aplikaci do vaší virtuální sítě. Tato funkce je určena pouze pro **příchozí** toky do vaší webové aplikace.
-[Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)][privateendpoints]
+[Používání privátních koncových bodů pro webovou aplikaci Azure][privateendpoints]
+
+Soukromé koncové body umožňují scénáře, jako například:
+
+* Omezení přístupu k aplikaci z prostředků ve virtuální síti 
+* Zpřístupnit moji aplikaci na privátní IP adrese ve virtuální síti 
+* Ochrana aplikace pomocí WAF 
+
+Soukromé koncové body zabraňují exfiltrace dat jako jediná věc, kterou můžete dosáhnout v rámci privátního koncového bodu je aplikace, se kterou nakonfigurujete. 
  
 ### <a name="hybrid-connections"></a>Hybridní připojení
 
@@ -132,7 +144,7 @@ Tato funkce se běžně používá k těmto akcím:
 * Pokrytí scénářů, na které se nevztahuje jiné metody odchozího připojení
 * Vývoj v App Service, kde aplikace můžou snadno využívat místní prostředky 
 
-Vzhledem k tomu, že tato funkce umožňuje přístup k místním prostředkům bez příchozího otvoru brány firewall, je oblíbená pro vývojáře. Ostatní funkce pro odchozí App Service sítě jsou velmi související s virtuálními sítěmi Azure. Hybrid Connections nemá závislost při přechodu přes virtuální síť a dá se použít pro širší škálu síťových potřeb. Je důležité si uvědomit, že funkce App Service Hybrid Connections nezáleží ani na tom, co v nich děláte. To znamená, že ji můžete použít pro přístup k databázi, webové službě nebo libovolnému soketu TCP v rámci sálového počítače. Tato funkce v podstatě odpojování paketů TCP. 
+Vzhledem k tomu, že tato funkce umožňuje přístup k místním prostředkům bez příchozího otvoru brány firewall, je oblíbená pro vývojáře. Ostatní funkce pro odchozí App Service sítě jsou související s virtuálními sítěmi Azure. Hybrid Connections nemá závislost při přechodu přes virtuální síť a dá se použít pro širší škálu síťových potřeb. Je důležité si uvědomit, že funkce App Service Hybrid Connections nezáleží ani na tom, co v nich děláte. To znamená, že ji můžete použít pro přístup k databázi, webové službě nebo libovolnému soketu TCP v rámci sálového počítače. Tato funkce v podstatě odpojování paketů TCP. 
 
 I když je Hybrid Connections populární pro vývoj, používá se také v mnoha produkčních aplikacích. Je ideální pro přístup k webové službě nebo databázi, ale není vhodná pro situace zahrnující vytváření mnoha připojení. 
 
@@ -152,7 +164,7 @@ Když je tato funkce povolená, bude aplikace používat server DNS, se kterým 
 
 ### <a name="vnet-integration"></a>Integrace virtuální sítě
 
-Funkce vyžadovat integraci virtuální sítě pro bránu je velmi užitečná, ale stále neřeší přístup k prostředkům napříč ExpressRoute. Aby bylo možné dosáhnout mezi připojeními ExpressRoute, je potřeba, aby aplikace mohly volat zabezpečené služby koncového bodu služby. Aby bylo možné oba tyto další požadavky vyřešit, byla přidána další funkce integrace virtuální sítě. Nová funkce integrace virtuální sítě umožňuje umístit back-end aplikace do podsítě ve Správce prostředků virtuální síti ve stejné oblasti. Tato funkce není k dispozici z App Service Environment, která je již ve virtuální síti. Tato funkce umožňuje:
+Funkce vyžadovat integraci virtuální sítě pro bránu je užitečná, ale stále neřeší přístup k prostředkům napříč ExpressRoute. Aby bylo možné dosáhnout mezi připojeními ExpressRoute, je potřeba, aby aplikace mohly volat zabezpečené služby koncového bodu služby. Aby bylo možné oba tyto další požadavky vyřešit, byla přidána další funkce integrace virtuální sítě. Nová funkce integrace virtuální sítě umožňuje umístit back-end aplikace do podsítě ve Správce prostředků virtuální síti ve stejné oblasti. Tato funkce není k dispozici z App Service Environment, která je již ve virtuální síti. Tato funkce umožňuje:
 
 * Přístup k prostředkům v Správce prostředků virtuální sítě ve stejné oblasti
 * Přístup k prostředkům, které jsou zabezpečené pomocí koncových bodů služby 
@@ -213,22 +225,58 @@ Tento styl nasazení vám neposkytne vyhrazenou adresu pro odchozí provoz na In
 
 ### <a name="create-multi-tier-applications"></a>Vytváření vícevrstvých aplikací
 
-Vícevrstvá aplikace je aplikace, ve které se k aplikacím back-endu rozhraní API dá dostat jenom z front-endové úrovně. Chcete-li vytvořit vícevrstvou aplikaci, můžete:
+Vícevrstvá aplikace je aplikace, ve které se k aplikacím back-endu rozhraní API dá dostat jenom z front-endové úrovně. Existují dva způsoby, jak vytvořit vícevrstvou aplikaci. Jak začít pomocí integrace virtuální sítě připojit front-end webovou aplikaci k podsíti ve virtuální síti. Tím umožníte, aby webová aplikace provedla volání do vaší virtuální sítě. Po připojení aplikace front-end k virtuální síti musíte zvolit, jak se má uzamknout přístup k vaší aplikaci API.  Další možnosti:
 
-* Použití integrace virtuální sítě k připojení back-endu webové aplikace front-end k podsíti ve virtuální síti
-* Použití koncových bodů služby k zabezpečení příchozího provozu do vaší aplikace API, aby se dostaly jenom z podsítě používané front-end webovou aplikací
+* hostování front-endu i aplikace API ve stejném interního nástroje pomocném programu pro čtení a zpřístupnění front-endové aplikace Internetu pomocí aplikační brány
+* hostování front-endu v rámci víceklientské služby a back-endu v interního nástroje pomocném modulu pro čtení
+* hostování front-endu i aplikace API ve službě pro více tenantů
 
-![Vícevrstvá aplikace](media/networking-features/multi-tier-app.png)
+Pokud hostuje front-end i aplikaci API pro vícevrstvou aplikaci, můžete:
 
-Můžete mít několik front-endové aplikací, které používají stejnou aplikaci API pomocí integrace virtuální sítě z jiných front-end aplikací a koncových bodů služby z aplikace API s jejich podsítěmi.  
+Vystavení aplikace API pomocí privátních koncových bodů ve vaší virtuální síti
+
+![aplikace se dvěma vrstvami privátních koncových bodů](media/networking-features/multi-tier-app-private-endpoint.png)
+
+Použití koncových bodů služby k zabezpečení příchozího provozu do vaší aplikace API, aby se dostaly jenom z podsítě používané front-end webovou aplikací
+
+![Zabezpečená aplikace pro koncové body služby](media/networking-features/multi-tier-app.png)
+
+Mezi tyto dvě techniky patří:
+
+* s koncovými body služby budete mít jenom zabezpečený provoz do vaší aplikace API do podsítě Integration. Tím se tato aplikace API zabezpečuje, ale stále můžete mít možnost exfiltrace dat z aplikace front-end do jiných aplikací v App Service.
+* s privátními koncovými body máte při hraní dvě podsítě. Tím se zvyšuje složitost. Privátní koncový bod je také prostředkem nejvyšší úrovně a přidává další ke správě. Výhodou použití privátních koncových bodů je, že nemáte možnost exfiltrace dat. 
+
+Kterákoli z těchto postupů bude fungovat s více front-endy. Ve velkém měřítku jsou koncové body služby mnohem jednodušší, protože jednoduše povolíte koncové body služby pro aplikaci API na front-endové integrační podsíti. Když přidáváte další aplikace front-end, je nutné upravit každou aplikaci API tak, aby měla koncové body služby s podsítí integrace. U privátních koncových bodů máte větší složitost, ale po nastavení privátního koncového bodu nemusíte nic měnit v aplikacích API. 
+
+### <a name="line-of-business-applications"></a>Obchodní aplikace
+
+Obchodní aplikace (LOB) jsou interní aplikace, které nejsou běžně přístupné pro přístup z Internetu. Tyto aplikace jsou volány v rámci podnikových sítí, kde může být přístup striktně řízen. Pokud používáte interního nástroje pomocného uživatele, můžete snadno hostovat své obchodní aplikace. Pokud používáte víceklientské služby, můžete buď použít soukromé koncové body nebo koncové body služby kombinované s Application Gateway. Existují dva důvody, proč použít Application Gateway s koncovými body služby místo privátních koncových bodů:
+
+* v obchodních aplikacích potřebujete WAF Protection.
+* Chcete vyrovnávat zatížení pro víc instancí obchodních aplikací
+
+Pokud ani tento případ není, je lepší používat soukromé koncové body. Díky soukromým koncovým bodům dostupným v App Service můžete své aplikace zveřejnit na soukromých adresách ve vaší virtuální síti. Privátní koncový bod, který umístíte do virtuální sítě, je možné dosáhnout napříč ExpressRoute a připojeními VPN. Konfigurace privátních koncových bodů zveřejňuje vaše aplikace na soukromé adrese, ale budete muset nakonfigurovat DNS tak, aby se na tuto adresu dostaly z místního prostředí. Chcete-li tuto práci provést, budete muset předávat Azure DNS privátní zóna, která obsahuje vaše soukromé koncové body, na místní servery DNS. Azure DNS privátní zóny nepodporují předávání zóny, ale můžete je podporovat pomocí serveru DNS pro tento účel. V této šabloně je [Služba DNS pro](https://azure.microsoft.com/resources/templates/301-dns-forwarder/)přeposílání Azure DNS privátní zóna na místní servery DNS snazší.
+
+## <a name="app-service-ports"></a>Porty App Service
+
+Pokud provedete kontrolu App Service, najdete několik portů, které jsou vystaveny pro příchozí připojení. Neexistuje žádný způsob, jak zablokovat ani řídit přístup k těmto portům v rámci víceklientské služby. Porty, které jsou k dispozici, jsou následující:
+
+| Použití | Porty |
+|----------|-------------|
+|  HTTP/HTTPS  | 80, 443 |
+|  Správa | 454, 455 |
+|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  Vzdálené ladění sady Visual Studio  |  4020, 4022, 4024 |
+|  Služba Nasazení webu | 8172 |
+|  Použití infrastruktury | 7654, 1221 |
 
 <!--Links-->
-[appassignedaddress]: ./configure-ssl-certificate.md
-[iprestrictions]: ./app-service-ip-restrictions.md
-[serviceendpoints]: ./app-service-ip-restrictions.md
-[hybridconn]: ./app-service-hybrid-connections.md
-[vnetintegrationp2s]: ./web-sites-integrate-with-vnet.md
-[vnetintegration]: ./web-sites-integrate-with-vnet.md
-[networkinfo]: ./environment/network-info.md
-[appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
-[privateendpoints]: ./networking/private-endpoint.md
+[appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate
+[iprestrictions]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[serviceendpoints]: https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions
+[hybridconn]: https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections
+[vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
+[vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
+[networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
+[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

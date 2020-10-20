@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 848894518077ca41d3166570bf0dc39914f1c439
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5fb00fb6382bb53f40ad63a95c880c47f91cae2f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131152"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201660"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -31,7 +31,7 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si **[ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** hned teď.
 
@@ -47,18 +47,17 @@ Prvním krokem při práci se službou Azure Digital proworking je nastavení **
 
 Nastavili jste taky oprávnění pro Průzkumníka aplikace ADT ke spuštění na vašem počítači a přístup k instanci digitálních vláken Azure. To vám umožní prozkoumat svou instanci a data pomocí ukázkové aplikace.
 
-### <a name="set-up-azure-digital-twins-instance"></a>Nastavení instance digitálních vláken Azure
+### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Nastavení instance digitálních vláken Azure a registrace aplikací
 
-Nejdřív nastavte instanci digitálních vláken Azure a požadované ověřování, abyste s ním mohli pracovat. Provedete to podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). V závislosti na preferovaných zkušenostech je k dispozici článek o instalaci pro [ukázkový skript nasazení](how-to-set-up-instance-scripted.md) [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)nebo automatizované Cloud Shell. Všechny verze pokynů také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
+Nejdřív **nastavte instanci digitálních vláken Azure** a požadované ověřování, abyste s ním mohli pracovat. Provedete to podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). V závislosti na preferovaných zkušenostech je k dispozici článek o instalaci pro [ukázkový skript nasazení](how-to-set-up-instance-scripted.md) [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)nebo automatizované Cloud Shell. Všechny verze pokynů také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
+* Po nastavení instance digitálního vlákna Azure budete potřebovat **_název hostitele_** instance ([najít v portálu](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
-V tomto rychlém startu budete při nastavování instance potřebovat následující hodnoty. Pokud tyto hodnoty potřebujete znovu shromáždit, použijte odkazy níže na příslušné části v článku o nastavení, abyste je našli v [Azure Portal](https://portal.azure.com).
-* **_Název hostitele_** instance digitálních vláken Azure ([najít v portálu](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* ID aplikace registrace aplikace Azure AD **_(ID klienta)_** ([najít v portálu](how-to-set-up-instance-portal.md#collect-important-values))
-* **_ID adresáře_** pro registraci aplikace Azure AD ([najít v portálu](how-to-set-up-instance-portal.md#collect-important-values))
+Chcete-li ověřit aplikaci pro Průzkumníka aplikace ADT, budete také muset nastavit **registraci aplikace**. Postupujte podle pokynů v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md) pro nastavení. 
+* Jakmile budete mít registraci aplikace, budete potřebovat ID **_aplikace (klienta)_** registrace a **_ID adresáře (_** klienta) ([tyto informace najdete na portálu](how-to-create-app-registration.md#collect-client-id-and-tenant-id).
 
 ### <a name="set-adt-explorer-permissions"></a>Nastavení oprávnění Průzkumníka aplikace ADT
 
-Dále Připravte instanci digitálních vláken Azure, kterou jste vytvořili pro práci s Průzkumníkem aplikace ADT, což je místně hostovaná webová aplikace. Přejděte na stránku [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) v Azure Portal a v seznamu vyberte název registrace vaší aplikace.
+Dále Připravte instanci digitálních vláken Azure, kterou jste vytvořili pro práci s Průzkumníkem aplikace ADT, což je místně hostovaná webová aplikace. Přejděte na stránku [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) v Azure Portal a v seznamu vyberte název registrace vaší **aplikace** , kterou jste vytvořili v předchozí části.
 
 V nabídce registrace vyberte *ověřování* a stiskněte *+ Přidat platformu*.
 

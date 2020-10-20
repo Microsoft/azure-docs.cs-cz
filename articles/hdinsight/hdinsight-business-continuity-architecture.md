@@ -8,12 +8,12 @@ keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856428"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207576"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Architektury Azure HDInsight pro provozní kontinuitu
 
@@ -24,7 +24,7 @@ Tento článek obsahuje několik příkladů architektur provozní kontinuity, k
 
 ## <a name="apache-hive-and-interactive-query"></a>Apache Hive a interaktivní dotaz
 
-[Replikace podregistru v2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) je doporučená pro provozní kontinuitu v podregistru HDInsight a v clusterech interaktivních dotazů. Trvalé oddíly samostatného clusteru podregistru, které je potřeba replikovat, jsou vrstvou úložiště a metastore Hive. Clustery podregistru ve scénáři s více uživateli, které Balíček zabezpečení podniku potřebují Azure Active Directory Domain Services a Ranger metastore.
+[Replikace podregistru v2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development#HiveReplicationv2Development-REPLSTATUS) se doporučuje pro zajištění kontinuity podnikových prostředí v podregistru HDInsight a v clusterech interaktivních dotazů. Trvalé oddíly samostatného clusteru podregistru, které je potřeba replikovat, jsou vrstvou úložiště a metastore Hive. Clustery podregistru ve scénáři s více uživateli, které Balíček zabezpečení podniku potřebují Azure Active Directory Domain Services a Ranger metastore.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hive-interactive-query.png" alt-text="Architektura podregistru a interaktivních dotazů":::
 
@@ -57,6 +57,8 @@ V *aktivní primární službě s sekundární architekturou na vyžádání* ap
 V *aktivní primární primární službě s pohotovostním sekundárním*prostředím aplikace zapisují do aktivní primární oblasti a v režimu jen pro čtení se spustí v režimu jen pro čtení během normálního provozu. Během normálního provozu můžete zvolit přesměrování operací čtení specifických pro oblast do sekundárního.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Architektura podregistru a interaktivních dotazů":::
+
+Další informace o replikaci podregistru a ukázkách kódu najdete [v tématu Apache Hive replikace v clusterech Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication) .
 
 ## <a name="apache-spark"></a>Apache Spark
 

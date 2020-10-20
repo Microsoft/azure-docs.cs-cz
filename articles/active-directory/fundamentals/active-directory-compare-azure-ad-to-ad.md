@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: e71ed9655c7b195fea8a2eeeaa76d8a28717637f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c8cf84aa697512b6d1147bf853d30761792370b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318552"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207304"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Porovnání Active Directory s Azure Active Directory
 
@@ -39,9 +39,9 @@ Většina správců IT je obeznámená s Active Directory Domain Services koncep
 | Tradiční a starší aplikace| Většina místních aplikací používá protokol LDAP, Windows-Integrated ověřování (NTLM a Kerberos) nebo ověřování na základě hlaviček k řízení přístupu uživatelům.| Azure AD může poskytovat přístup k těmto typům místních aplikací pomocí agentů [proxy aplikací služby Azure AD](../manage-apps/application-proxy.md) místně běžících v místním prostředí. Pomocí této metody může Azure AD ověřovat uživatele Active Directory místně pomocí protokolu Kerberos při migraci nebo nutnosti koexistovat se staršími aplikacemi. |
 | Aplikace SaaS|Služba Active Directory nepodporuje aplikace SaaS nativně a vyžaduje federační systém, například AD FS.|Aplikace SaaS podporující OAuth2, SAML a WS- \* Authentication lze integrovat pro ověřování pomocí služby Azure AD. |
 | Obchodní aplikace (LOB) s moderním ověřováním|Organizace můžou použít AD FS se službou Active Directory k podpoře obchodních aplikací vyžadujících moderní ověřování.| Obchodní aplikace vyžadující moderní ověřování se dají nakonfigurovat tak, aby pro ověřování používaly službu Azure AD. |
-| Služby střední vrstvy/démona|Služby běžící v místních prostředích obvykle používají účty služby AD nebo skupinové účty spravované služby (gMSA) ke spuštění. Tyto aplikace pak zdědí oprávnění k účtu služby.| Azure AD poskytuje [spravované identity](../managed-identities-azure-resources/index.yml) pro spouštění dalších úloh v cloudu. Životní cyklus těchto identit spravuje Azure AD a je vázaný na poskytovatele prostředků se nedá použít k získání přístupu zadní vrátka k jiným účelům.|
+| Služby střední vrstvy/démona|Služby běžící v místních prostředích obvykle používají účty služby AD nebo skupinové účty spravované služby (gMSA) ke spuštění. Tyto aplikace pak zdědí oprávnění k účtu služby.| Azure AD poskytuje [spravované identity](../managed-identities-azure-resources/index.yml) pro spouštění dalších úloh v cloudu. Životní cyklus těchto identit spravuje Azure AD a je vázaný na poskytovatele prostředků, proto se nedá použít k získání přístupu zadní vrátka k jiným účelům.|
 | **Zařízení**|||
-| Mobilní|Služba Active Directory nativně nepodporuje mobilní zařízení bez řešení třetích stran.| Řešení správy mobilních zařízení od Microsoftu, Microsoft Intune, je integrováno se službou Azure AD. Microsoft Intune poskytuje systému identit informace o stavu zařízení k vyhodnocení během ověřování. |
+| Mobilní funkce|Služba Active Directory nativně nepodporuje mobilní zařízení bez řešení třetích stran.| Řešení správy mobilních zařízení od Microsoftu, Microsoft Intune, je integrováno se službou Azure AD. Microsoft Intune poskytuje systému identit informace o stavu zařízení k vyhodnocení během ověřování. |
 | Stolní počítače se systémem Windows|Služba Active Directory umožňuje připojit zařízení s Windows k doméně a spravovat je pomocí Zásady skupiny, System Center Configuration Manager nebo jiných řešení třetích stran.|Zařízení s Windows je možné [připojit ke službě Azure AD](../devices/index.yml). Podmíněný přístup může v rámci procesu ověřování zjistit, jestli je zařízení připojené k Azure AD. Zařízení s Windows je taky možné spravovat pomocí [Microsoft Intune](/intune/what-is-intune). V takovém případě podmíněný přístup zvažte, jestli zařízení dodržuje předpisy (například aktualizované opravy zabezpečení a signatury virů) ještě před tím, než povolí přístup k aplikacím.|
 | Windows servery| Služba Active Directory poskytuje silné možnosti správy místních serverů Windows pomocí Zásady skupiny nebo jiných řešení pro správu.| Virtuální počítače s Windows serverem v Azure je možné spravovat pomocí [Azure AD Domain Services](../../active-directory-domain-services/index.yml). [Spravované identity](../managed-identities-azure-resources/index.yml) se dají použít, když virtuální počítače potřebují přístup k prostředkům nebo adresářům systému identit.|
 | Úlohy Linux/UNIX|Služba Active Directory není nativně podporována bez řešení jiných výrobců, i když počítače se systémem Linux lze konfigurovat pro ověřování pomocí služby Active Directory jako sféru protokolu Kerberos.|Virtuální počítače se systémem Linux/UNIX můžou k přístupu k systémům identit a prostředkům používat [spravované identity](../managed-identities-azure-resources/index.yml) . Některé organizace migrují tyto úlohy do cloudových kontejnerových technologií, které můžou používat i spravované identity.|

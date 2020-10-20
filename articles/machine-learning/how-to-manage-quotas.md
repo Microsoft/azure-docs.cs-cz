@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a81af14992c8557c245ab3a1073f031a6c505084
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 93cf29651110356023752f2377c9a0fc358982a7
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019388"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203040"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
 
@@ -178,11 +178,13 @@ Pokud chcete požádat o povolení těchto scénářů, použijte následující
     | Typ problému | Technické |
     | Služba | Moje služby V rozevíracím seznamu vyberte __Machine Learning__ . |
     | Typ problému | Nastavení pracovního prostoru, sada SDK a rozhraní příkazového řádku |
-    | Podtyp problému | Problém se zřízením nebo správou pracovního prostoru |
+    | Podtyp problému | Žádost o povolení privátního koncového bodu a Privátní DNS zóny |
 
 2. V části __Podrobnosti__ použijte pole __Popis__ k poskytnutí oblasti Azure, kterou chcete použít, a scénáře, který chcete použít. Pokud potřebujete požádat o zvýšení kvóty pro více předplatných, uveďte také ID předplatných v tomto poli.
 
 3. Vyberte __vytvořit__ a vytvořte žádost.
+
+:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="Snímek obrazovky s požadavkem na zvýšení kvóty privátního koncového bodu a privátního serveru DNS":::
 
 ## <a name="next-steps"></a>Další kroky
 

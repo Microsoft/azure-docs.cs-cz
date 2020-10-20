@@ -1,18 +1,18 @@
 ---
 title: Správa delegovaných prostředků Azure
 description: Správa delegovaných prostředků Azure je klíčovou součástí Azure Lighthouse, která umožňuje poskytovatelům služeb spravovat delegované prostředky ve velkém měřítku s flexibilitou a přesností.
-ms.date: 08/12/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9a499ceda546b7ea5c71cd8c770f1a4b99001b08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163522"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203853"
 ---
 # <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
-Správa delegovaných prostředků Azure je jednou z klíčových součástí [Azure Lighthouse](../overview.md). Pomocí delegované správy prostředků Azure můžou poskytovatelé služeb zjednodušit zapojení zákazníků a zprovoznění při správě delegovaných prostředků s flexibilitou a přesností.
+Správa delegovaných prostředků Azure je jednou z klíčových součástí [Azure Lighthouse](../overview.md). Pomocí delegované správy prostředků Azure můžou poskytovatelé služeb zjednodušit zapojení zákazníků a zprovoznění při správě delegovaných prostředků s flexibilitou a přesností. Zákazníci udržují kontrolu nad tím, kteří poskytovatelé služeb mají přístup ke svým klientům, udržují kontrolu nad tím, kdo bude mít přístup ke svému tenantovi, k jakým prostředkům mají přístup, a jaké akce je možné učinit.
 
 ## <a name="what-is-azure-delegated-resource-management"></a>Co je Správa prostředků delegovaná Azure?
 
@@ -35,7 +35,8 @@ V takovém případě funguje Správa delegovaných prostředků v Azure na nejv
 2. Tento přístup určíte a zařadíte zákazníka do Azure Lighthouse jedním ze dvou způsobů:
    - [Publikování nabídky spravované služby Azure Marketplace](../how-to/publish-managed-services-offers.md) (soukromé nebo veřejné), kterou bude zákazník akceptovat
    - [Nasazení šablony Azure Resource Manager do tenanta zákazníka](../how-to/onboard-customer.md) pro jedno nebo více konkrétních předplatných nebo skupin prostředků
-3. Po zprovoznění zákazníka se oprávnění uživatelé můžou přihlásit ke svému tenantovi a provádět úkoly v daném oboru zákazníka na základě přístupu, který jste definovali.
+
+3. Po zprovoznění zákazníka se oprávnění uživatelé můžou přihlásit ke svému tenantovi a provádět úkoly v daném oboru zákazníka na základě přístupu, který jste definovali. Zákazníci si můžou prohlédnout akce poskytovatele služeb a mít možnost v případě potřeby odebrat přístup.
 
 > [!NOTE]
 > Můžete spravovat delegované prostředky, které se nacházejí v různých [oblastech](../../availability-zones/az-overview.md#regions). Nicméně delegování předplatných v rámci [národního cloudu](../../active-directory/develop/authentication-national-cloud.md) a veřejného cloudu Azure nebo ve dvou různých národních cloudech se nepodporuje.

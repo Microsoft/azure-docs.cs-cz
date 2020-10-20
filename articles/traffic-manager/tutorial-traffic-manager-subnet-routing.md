@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: duau
-ms.openlocfilehash: 5c6551e721a4bf197ea7091b8c0b71829693ba76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 348f1d779f8ea67860726b8f8b7739921e7ad54a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89398286"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205944"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Kurz: směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí Traffic Manager
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Přidání koncových bodů virtuálních počítačů do profilu služby Traffic Manager
 > * Zobrazení služby Traffic Manager v akci
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -214,12 +214,13 @@ V této části uvidíte službu Traffic Manager v akci.
 
 7. V dalším kroku se připojte k virtuálnímu počítači *myVMWestEurope* , který se nachází v **Západní Evropa** pomocí kroků 1-5 a přejděte k názvu domény profilu Traffic Manager z tohoto virtuálního počítače. Vzhledem k tomu, že *myVMWestEurope* IP adresa virtuálního počítače je přidružená ke koncovému bodu *myProductionWebsiteEndpoint*, webový prohlížeč spustí testovací webový server – *myIISVMWestEurope*.
 
-## <a name="delete-the-traffic-manager-profile"></a>Odstranění profilu služby Traffic Manager
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už skupiny prostředků (**ResourceGroupTM1** a **ResourceGroupTM2**) nepotřebujete, odstraňte je. Uděláte to tak, že vyberte skupinu prostředků (**ResourceGroupTM1** nebo **ResourceGroupTM2**) a pak vyberete **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [metodě váženého směrování provozu](traffic-manager-configure-weighted-routing-method.md).
-- Přečtěte si o [metodě prioritního směrování](traffic-manager-configure-priority-routing-method.md).
-- Přečtěte si o [metodě geografického směrování](traffic-manager-configure-geographic-routing-method.md).
+Další informace o metodě směrování podsítí najdete v těchto tématech:
+
+> [!div class="nextstepaction"]
+> [Metoda směrování provozu podsítě](traffic-manager-routing-methods.md#subnet)

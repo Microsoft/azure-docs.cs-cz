@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2508846e5dd2fcc96aade9ce64b599bb4154de00
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91397806"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203377"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
@@ -130,7 +130,7 @@ Služby pro sítě v rámci Azure i mezi Azure a místními datacentry:
 
 - Azure Content Delivery Network
 
-Podrobnou dokumentaci ke službám Azure najdete v [dokumentaci ke službě Azure](https://docs.microsoft.com/azure).
+Podrobnou dokumentaci ke službám Azure najdete v [dokumentaci ke službě Azure](/azure).
 
 ## <a name="azure-key-concepts"></a>Klíčové pojmy Azure
 
@@ -142,7 +142,7 @@ Jednou z výhod používání Azure je to, že můžete své aplikace nasadit do
 
 ### <a name="azure-portal"></a>portál Azure
 
-Azure Portal je webová aplikace, která se dá použít k vytváření, správě a odebírání prostředků a služeb Azure. Azure Portal najdete na adrese [Portal.Azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatném. Další informace najdete v tématu [přehled portál Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Azure Portal je webová aplikace, která se dá použít k vytváření, správě a odebírání prostředků a služeb Azure. Azure Portal najdete na adrese [Portal.Azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatném. Další informace najdete v tématu [přehled portál Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](../../azure-resource-manager/management/manage-resources-portal.md).
 
 ### <a name="resources"></a>Zdroje a prostředky
 
@@ -170,11 +170,11 @@ Rozhraní příkazového řádku Azure je nástroj, který můžete použít k v
 
 #### <a name="rest-apis"></a>Rozhraní REST API
 
-Azure je založený na sadě rozhraní REST API, které podporují uživatelské rozhraní Azure Portal. Většina těchto rozhraní REST API se taky podporuje, aby vám umožnila programové zřizování a správu prostředků a aplikací Azure z libovolného zařízení s podporou Internetu. Další informace najdete v referenčních informacích k [sadě Azure REST SDK](https://docs.microsoft.com/rest/api/index).
+Azure je založený na sadě rozhraní REST API, které podporují uživatelské rozhraní Azure Portal. Většina těchto rozhraní REST API se taky podporuje, aby vám umožnila programové zřizování a správu prostředků a aplikací Azure z libovolného zařízení s podporou Internetu. Další informace najdete v referenčních informacích k [sadě Azure REST SDK](/rest/api/index).
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Správci mají přístup k Azure PowerShell a Azure CLI prostřednictvím prostředí přístupného pro prohlížeč, které se nazývá Azure Cloud Shell. Toto interaktivní rozhraní poskytuje flexibilní nástroj pro správce systémů Linux a Windows, aby používal své rozhraní příkazového řádku, které je zvoleno, buď bash nebo PowerShell. Azure Cloud Shell může mít přístup prostřednictvím portálu, jako samostatné webové rozhraní na [Shell.Azure.com](https://shell.azure.com), nebo z řady dalších přístupových bodů. Další informace najdete v tématu [přehled Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+Správci mají přístup k Azure PowerShell a Azure CLI prostřednictvím prostředí přístupného pro prohlížeč, které se nazývá Azure Cloud Shell. Toto interaktivní rozhraní poskytuje flexibilní nástroj pro správce systémů Linux a Windows, aby používal své rozhraní příkazového řádku, které je zvoleno, buď bash nebo PowerShell. Azure Cloud Shell může mít přístup prostřednictvím portálu, jako samostatné webové rozhraní na [Shell.Azure.com](https://shell.azure.com), nebo z řady dalších přístupových bodů. Další informace najdete v tématu [přehled Azure Cloud Shell](../../cloud-shell/overview.md).
 
 ## <a name="azure-subscriptions"></a>Předplatná Azure
 
@@ -282,7 +282,7 @@ Pro automatizaci nasazení jsou k dispozici následující mechanismy:
 
 - **Propojování šablon**: v rámci jedné šablony Správce prostředků můžete propojit s jinou šablonou. To umožňuje, aby bylo nasazení rozloženo do sady cílových šablon specifických pro účel.
 
-Šablony Správce prostředků lze vytvořit v libovolném textovém editoru. Sada Azure SDK pro Visual Studio ale obsahuje nástroje, které vám pomůžou. Pomocí sady Visual Studio můžete přidat prostředky do šablony prostřednictvím průvodce a potom nasadit a ladit šablonu přímo z aplikace Visual Studio. Další informace najdete v tématu [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md).
+Šablony Správce prostředků lze vytvořit v libovolném textovém editoru. Sada Azure SDK pro Visual Studio ale obsahuje nástroje, které vám pomůžou. Pomocí sady Visual Studio můžete přidat prostředky do šablony prostřednictvím průvodce a potom nasadit a ladit šablonu přímo z aplikace Visual Studio. Další informace najdete v tématu [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md).
 
 Nakonec můžete převést existující skupiny prostředků na opakovaně použitelnou šablonu z Azure Portal. To může být užitečné, pokud chcete vytvořit nasazenou šablonu existující skupiny prostředků nebo chcete jenom prostudovat základní JSON. Pokud chcete exportovat skupinu prostředků, vyberte tlačítko **skript Automation** z nastavení skupiny prostředků.
 
@@ -314,7 +314,7 @@ Azure Virtual Machines je jednou z centrálních služeb IaaS v Azure. Azure Vir
 
 Když nasazujete virtuální počítač Azure, můžete vybrat obrázek z Azure Marketplace, nebo můžete zadat vlastní zobecněnou bitovou kopii. Tato image se používá k aplikování operačního systému a počáteční konfigurace. Při nasazení Správce prostředků zpracuje některá nastavení konfigurace, jako je například přiřazení názvu počítače, pověření pro správu a konfigurace sítě. Rozšíření virtuálních počítačů Azure můžete použít k dalšímu automatizaci konfigurací, jako je instalace softwaru, konfigurace antivirového programu a řešení monitorování.
 
-Virtuální počítače můžete vytvářet v mnoha různých velikostech. Velikost virtuálního počítače určuje přidělování prostředků, jako je například zpracování, paměť a kapacita úložiště. V některých případech jsou specifické funkce, jako jsou síťové adaptéry s podporou RDMA a disky SSD, dostupné jenom pro určité velikosti virtuálních počítačů. Úplný seznam velikostí a možností virtuálních počítačů najdete v tématu "velikosti pro virtuální počítače v Azure" pro [systémy Windows](../../virtual-machines/windows/sizes.md) a [Linux](../../virtual-machines/linux/sizes.md).
+Virtuální počítače můžete vytvářet v mnoha různých velikostech. Velikost virtuálního počítače určuje přidělování prostředků, jako je například zpracování, paměť a kapacita úložiště. V některých případech jsou specifické funkce, jako jsou síťové adaptéry s podporou RDMA a disky SSD, dostupné jenom pro určité velikosti virtuálních počítačů. Úplný seznam velikostí a možností virtuálních počítačů najdete v tématu "velikosti pro virtuální počítače v Azure" pro [systémy Windows](../../virtual-machines/sizes.md) a [Linux](../../virtual-machines/sizes.md).
 
 ### <a name="use-cases"></a>Případy použití
 
@@ -344,7 +344,7 @@ Podobně můžete pomocí rozhraní příkazového řádku Azure nasadit šablon
 
 ### <a name="access-and-security-for-virtual-machines"></a>Přístup a zabezpečení pro virtuální počítače
 
-Přístup k virtuálnímu počítači z Internetu vyžaduje přidružené síťové rozhraní nebo nástroj pro vyrovnávání zatížení, aby se nakonfigurovala veřejná IP adresa. Veřejná IP adresa zahrnuje název DNS, který se bude překládat na virtuální počítač nebo nástroj pro vyrovnávání zatížení. Další informace najdete v tématu [IP adresy v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+Přístup k virtuálnímu počítači z Internetu vyžaduje přidružené síťové rozhraní nebo nástroj pro vyrovnávání zatížení, aby se nakonfigurovala veřejná IP adresa. Veřejná IP adresa zahrnuje název DNS, který se bude překládat na virtuální počítač nebo nástroj pro vyrovnávání zatížení. Další informace najdete v tématu [IP adresy v Azure](../../virtual-network/public-ip-addresses.md).
 
 Přístup k virtuálnímu počítači můžete spravovat přes veřejnou IP adresu pomocí prostředku skupiny zabezpečení sítě (NSG). NSG funguje jako brána firewall a povoluje nebo zakazuje provoz napříč síťovým rozhraním nebo podsítí na sadě definovaných portů. Pokud třeba chcete vytvořit relaci vzdálené plochy s virtuálním počítačem Azure, musíte nakonfigurovat NSG, aby povolovala příchozí provoz na portu 3389. Další informace najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
@@ -378,7 +378,7 @@ Azure Storage podporuje tři druhy objektů blob:
 
 - **Doplňovací objekty blob** se skládají z bloků, jako jsou objekty blob bloku, ale jsou optimalizované pro operace připojení. Tyto informace se často používají k protokolování informací z jednoho nebo více zdrojů do stejného objektu BLOB. Můžete například zapsat všechna trasování protokolování do stejného doplňovací objektu BLOB pro aplikaci, která běží na více virtuálních počítačích. Jeden doplňovací objekt blob může mít až 195 GB.
 
-Další informace najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Další informace najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 #### <a name="file-storage"></a>File Storage
 
@@ -394,7 +394,7 @@ Azure Table Storage je služba, která ukládá strukturovaná data typu NoSQL v
 
 Úložiště Table Storage můžete používat k ukládání flexibilních datových sad, například uživatelských dat pro webové aplikace, adresářů, informací o zařízení a dalších typů metadat, které vaše služba vyžaduje. V tabulce můžete uložit libovolný počet entit. Účet úložiště může obsahovat libovolný počet tabulek až do limitu kapacity účtu úložiště.
 
-Další informace najdete v tématu [Začínáme s úložištěm Azure Table](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Další informace najdete v tématu [Začínáme s úložištěm Azure Table](../../cosmos-db/tutorial-develop-table-dotnet.md).
 
 #### <a name="queue-storage"></a>Queue Storage
 
@@ -414,15 +414,15 @@ Kromě nasazení účtu úložiště z Azure Portal můžete nasadit Azure Resou
 
 #### <a name="powershell"></a>PowerShell
 
-Nasazení účtu Azure Storage pomocí prostředí PowerShell umožňuje kompletní automatizaci nasazení účtu úložiště. Další informace najdete v tématu [použití Azure PowerShell s Azure Storage](../../storage/common/storage-powershell-guide-full.md).
+Nasazení účtu Azure Storage pomocí prostředí PowerShell umožňuje kompletní automatizaci nasazení účtu úložiště. Další informace najdete v tématu [použití Azure PowerShell s Azure Storage](/powershell/module/az.storage/).
 
 Kromě nasazení prostředků Azure můžete použít modul Azure PowerShell k nasazení Azure Resource Manager šablony. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md).
 
 #### <a name="command-line-interface-cli"></a>Rozhraní příkazového řádku (CLI)
 
-Stejně jako modul PowerShellu nabízí rozhraní příkazového řádku Azure automatizaci nasazení a dá se použít v systémech Windows, OS X a Linux. K vytvoření účtu úložiště můžete použít příkaz **vytvořit účet úložiště** Azure CLI. Další informace najdete v tématu [použití rozhraní příkazového řádku Azure s Azure Storage.](../../storage/common/storage-azure-cli.md)
+Stejně jako modul PowerShellu nabízí rozhraní příkazového řádku Azure automatizaci nasazení a dá se použít v systémech Windows, OS X a Linux. K vytvoření účtu úložiště můžete použít příkaz **vytvořit účet úložiště** Azure CLI. Další informace najdete v tématu [použití rozhraní příkazového řádku Azure s Azure Storage.](../../storage/blobs/storage-quickstart-blobs-cli.md)
 
-Podobně můžete pomocí rozhraní příkazového řádku Azure nasadit šablonu Azure Resource Manager. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../resource-group-template-deploy-cli.md).
+Podobně můžete pomocí rozhraní příkazového řádku Azure nasadit šablonu Azure Resource Manager. Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md).
 
 ### <a name="access-and-security-for-azure-storage"></a>Přístup a zabezpečení pro Azure Storage
 
@@ -446,7 +446,7 @@ Každý účet úložiště má dva ověřovací klíče, primární a sekundár
 
 #### <a name="shared-access-signatures"></a>Sdílené přístupové podpisy
 
-Pokud potřebujete, aby mohli uživatelé řídit přístup k prostředkům úložiště, můžete vytvořit sdílený přístupový podpis. Sdílený přístupový podpis je token, který se dá připojit k adrese URL, která umožňuje delegovaný přístup k prostředku úložiště. Každý, kdo má token, má přístup k prostředku, na který odkazuje, s oprávněními, která určuje, po dobu, po kterou je platný. Další informace najdete v tématu [použití sdílených přístupových podpisů](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Pokud potřebujete, aby mohli uživatelé řídit přístup k prostředkům úložiště, můžete vytvořit sdílený přístupový podpis. Sdílený přístupový podpis je token, který se dá připojit k adrese URL, která umožňuje delegovaný přístup k prostředku úložiště. Každý, kdo má token, má přístup k prostředku, na který odkazuje, s oprávněními, která určuje, po dobu, po kterou je platný. Další informace najdete v tématu [použití sdílených přístupových podpisů](../../storage/common/storage-sas-overview.md).
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
@@ -456,7 +456,7 @@ Virtuální sítě jsou nezbytné k podpoře komunikace mezi virtuálními poč�
 
 Služba Azure Virtual Network je ve výchozím nastavení dostupná jenom pro prostředky uložené v Azure. Prostředky připojené ke stejné virtuální síti můžou vzájemně komunikovat. K zpřístupnění virtuálního počítače přes Internet můžete přidružit síťová rozhraní virtuálního počítače a nástroje pro vyrovnávání zatížení s veřejnou IP adresou. Zabezpečený přístup k veřejně vystaveným prostředkům můžete zvýšit pomocí skupiny zabezpečení sítě.
 
-![Azure Virtual Network pro webovou aplikaci ve dvou vrstvách](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+![Azure Virtual Network pro webovou aplikaci ve dvou vrstvách](/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
 
 ### <a name="hybrid-virtual-networks"></a>Hybridní virtuální sítě
 
@@ -479,7 +479,7 @@ Existuje několik možností, jak nasadit virtuální síť.
 
 ### <a name="access-and-security-for-virtual-networks"></a>Přístup a zabezpečení pro virtuální sítě
 
-Pomocí skupiny zabezpečení sítě můžete přispět k zabezpečení virtuálních sítí Azure. Skupin zabezpečení sítě obsahují seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo zakazují síťové přenosy do instancí virtuálních počítačů ve virtuální síti. V rámci této podsítě můžete přidružit skupin zabezpečení sítě buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů. Když přidružíte NSG k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v dané podsíti. Kromě toho můžete dál omezit provoz na jednotlivé virtuální počítače tím, že přidružíte NSG přímo k tomuto virtuálnímu počítači. Další informace viz [Filtrování provozu sítě s použitím skupin zabezpečení sít](../../virtual-network/security-overview.md).
+Pomocí skupiny zabezpečení sítě můžete přispět k zabezpečení virtuálních sítí Azure. Skupin zabezpečení sítě obsahují seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo zakazují síťové přenosy do instancí virtuálních počítačů ve virtuální síti. V rámci této podsítě můžete přidružit skupin zabezpečení sítě buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů. Když přidružíte NSG k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v dané podsíti. Kromě toho můžete dál omezit provoz na jednotlivé virtuální počítače tím, že přidružíte NSG přímo k tomuto virtuálnímu počítači. Další informace viz [Filtrování provozu sítě s použitím skupin zabezpečení sít](../../virtual-network/network-security-groups-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

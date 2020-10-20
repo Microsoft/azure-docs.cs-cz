@@ -3,14 +3,14 @@ title: Jak vytvořit výstrahy pro Azure Automation Update Management
 description: Tento článek obsahuje informace o tom, jak nakonfigurovat výstrahy Azure, aby upozornily na stav posouzení aktualizací nebo nasazení.
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a46b5bf6c4be4953e6cde9972aa143be71406a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8f832f0359bd8f9caf13008939f482b440faa1a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977003"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203173"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Jak vytvořit výstrahy pro Update Management
 
@@ -27,7 +27,7 @@ Vysílané dvě metriky jsou:
 
 Při použití pro výstrahy podporují obě metriky dimenze, které obsahují další informace, které vám pomůžou určit podrobnosti o konkrétnímu nasazení aktualizace. V následující tabulce jsou uvedeny podrobnosti o metrikě a dimenzích, které jsou k dispozici při konfiguraci výstrahy.
 
-|Název signálu|Dimenze|Description
+|Název signálu|Dimenze|Popis
 |---|---|---|
 |`Total Update Deployment Runs`|– Název nasazení aktualizace<br>-Status | Upozorní na celkový stav nasazení aktualizace.|
 |`Total Update Deployment Machine Runs`|– Název nasazení aktualizace</br>-Status</br>– Cílový počítač</br>– Aktualizovat ID běhu nasazení    |Upozorní na stav nasazení aktualizace zaměřeného na konkrétní počítače.|
@@ -86,3 +86,8 @@ Jakmile budete mít nakonfigurovaná upozornění, můžete nastavit skupinu akc
 
 ## <a name="next-steps"></a>Další kroky
 
+* Přečtěte si další informace o [výstrahách v Azure monitor](../../azure-monitor/platform/alerts-overview.md).
+
+* Přečtěte si o [dotazech protokolu](../../azure-monitor/log-query/log-query-overview.md) pro načtení a analýzu dat z log Analyticsho pracovního prostoru.
+
+* Správa [využití a nákladů pomocí Azure Monitorch protokolů](../../azure-monitor/platform/manage-cost-storage.md) popisuje, jak řídit náklady změnou doby uchovávání dat a jak analyzovat a upozorňovat na využití vašich dat.

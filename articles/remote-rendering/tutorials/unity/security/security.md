@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650472"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207525"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
 
@@ -188,11 +188,11 @@ Pro odebrání z místní aplikace máme ještě jedno "heslo", AccountKey. To s
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Ověřování Azure Active Directory (Azure AD)
 
-Ověřování AAD vám umožní lépe řízený způsob, jakým jednotlivci nebo skupiny používají ARR. ŠIPKA na základě této vlastnosti podporovala příjem [přístupových tokenů](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) namísto použití klíče účtu. Přístupové tokeny si můžete představit jako uživatelsky omezený klíč specifický uživatelem, který pouze odemkne určité části konkrétního prostředku, pro který byl vyžádán.
+Ověřování AAD vám umožní lépe řízený způsob, jakým jednotlivci nebo skupiny používají ARR. ŠIPKA na základě této vlastnosti podporovala příjem [přístupových tokenů](../../../../active-directory/develop/access-tokens.md) namísto použití klíče účtu. Přístupové tokeny si můžete představit jako uživatelsky omezený klíč specifický uživatelem, který pouze odemkne určité části konkrétního prostředku, pro který byl vyžádán.
 
 Skript **RemoteRenderingCoordinator** má delegáta s názvem **ARRCredentialGetter**, který obsahuje metodu, která vrací objekt **AzureFrontendAccountInfo** , který se používá ke konfiguraci vzdálené správy relací. K **ARRCredentialGetter**můžeme přiřadit jinou metodu. díky tomu můžeme použít tok přihlášení Azure, který vygeneruje objekt **AzureFrontendAccountInfo** , který obsahuje přístupový token Azure. Tento přístupový token bude specifický pro uživatele, který se přihlašuje.
 
-1. Postupujte podle pokynů v tématu [Postupy: Konfigurace ověřování pro nasazené aplikace](../../../how-tos/authentication.md#authentication-for-deployed-applications), konkrétně budete postupovat podle pokynů uvedených v dokumentaci k Azure AD anchorch kotev v dokumentaci k [ověřování uživatelů Azure AD](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication). Zahrnuje registraci nové aplikace Azure Active Directory a konfiguraci přístupu k instanci ARR.
+1. Postupujte podle pokynů v tématu [Postupy: Konfigurace ověřování pro nasazené aplikace](../../../how-tos/authentication.md#authentication-for-deployed-applications), konkrétně budete postupovat podle pokynů uvedených v dokumentaci k Azure AD anchorch kotev v dokumentaci k [ověřování uživatelů Azure AD](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication). Zahrnuje registraci nové aplikace Azure Active Directory a konfiguraci přístupu k instanci ARR.
 1. Po nakonfigurování nové aplikace AAD ověřte, že vaše aplikace AAD vypadá jako na následujících obrázcích:
 
     **Aplikace AAD – ověřování >** ![ Ověřování aplikací](./media/app-authentication-public.png)
@@ -361,7 +361,7 @@ Když je služba Azure na místě, je teď potřeba změnit způsob připojení 
 
 Kód se nejprve pokusí získat token tiše pomocí **AquireTokenSilent**. Pokud uživatel tuto aplikaci dřív ověřil, bude tato akce úspěšná. Pokud to neproběhne úspěšně, přejděte k další strategii, kterou uživatel zahrnoval.
 
-Pro tento kód používáme [tok kódu zařízení](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code) k získání přístupového tokenu. Tento tok umožňuje uživateli přihlásit se ke svému účtu Azure na počítači nebo mobilním zařízení a nechat si výsledný token odeslat zpátky do aplikace HoloLens.
+Pro tento kód používáme [tok kódu zařízení](../../../../active-directory/develop/v2-oauth2-device-code.md) k získání přístupového tokenu. Tento tok umožňuje uživateli přihlásit se ke svému účtu Azure na počítači nebo mobilním zařízení a nechat si výsledný token odeslat zpátky do aplikace HoloLens.
 
 Nejdůležitější část této třídy z perspektivy ARR je tento řádek:
 

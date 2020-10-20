@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 94947499452c7f1b8515fee56996b13120232f34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac4b08b590f93b3ec450eb1e1329d706fa09a3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462373"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206199"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -24,7 +24,7 @@ ms.locfileid: "89462373"
 
 ### <a name="new-features"></a>Nové funkce
 
-* **Neuronové TTS: nový styl speaking pro `en-US` Hlasový Standard**. AriaNeural může při čtení zpráv newscaster zvuk, jako je. Styl "newscast-formální" se podrobněji rozpíná, zatímco styl "newscast-příležitostné" je uvolněn a neformální. Podívejte se, [Jak používat styly Speak v SSML](speech-synthesis-markup.md).
+* **Neuronové TTS: nový styl speaking pro `en-US` Hlasový Standard**. AriaNeural může při čtení zpráv zvuk vypadat jako při přetypování zpráv. Styl "newscast-formální" se podrobněji rozpíná, zatímco styl "newscast-příležitostné" je uvolněn a neformální. Podívejte se, [Jak používat styly Speak v SSML](speech-synthesis-markup.md).
 
 * **Vlastní hlas: nová funkce se uvolní k automatickému ověření kvality dat školení**. Když nahráváte data, systém bude kontrolovat různé aspekty zvukových a přepisových dat a automaticky opravovat nebo filtrovat problémy pro zlepšení kvality hlasového modelu. To zahrnuje i objem zvuku, hladinu hluku, přesnost výslovnosti řeči, zarovnání řeči s normalizovaným textem, tiché ve zvukovém prostředí a také formát zvuku a skriptu. 
 
@@ -38,7 +38,7 @@ ms.locfileid: "89462373"
 
     * Dokumentace k SSML: propojená s dokumentem SSML vám umožní kontrolovat pravidla, jak používat všechny funkce ladění.
 
-* **Rozhraní API pro seznam hlasu se aktualizuje tak, aby obsahovalo uživatelsky přívětivé zobrazované jméno a styly speaking podporované neuronové hlasy**.
+* **Rozhraní API pro hlasový seznam se aktualizuje tak, aby obsahovalo uživatelsky přívětivé zobrazované jméno a styly speaking podporované neuronové hlasy**.
 
 ### <a name="general-tts-voice-quality-improvements"></a>Obecná vylepšení kvality hlasu TTS
 
@@ -64,7 +64,7 @@ ms.locfileid: "89462373"
 * Opravili jsme několik chyb pomocí nástroje pro tvorbu zvukového obsahu. 
     * Opravili jsme problém s automatickou aktualizací. 
     * Opravili jsme problémy se styly hlasu zh-CN v oblasti jih Východní Asie.
-    * Pevný problém se stabilitou, včetně chyby exportu se značkou ' break ' a chyb v interpunkčních znamének.    
+    * Pevný problém se stabilitou, včetně chyby exportu se značkou Break a chyby v interpunkci.
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Nové národní prostředí pro převod řeči na text: 2020 – srpen Release
 Převod řeči na text vydaný 26 nových národních prostředí v srpnu: 2 Evropské jazyky `cs-CZ` a `hu-HU` , 5 anglické národní prostředí a 19 Španělská národní prostředí, která se týkají většiny zemí jihovýchodní Ameriky. Níže je uveden seznam nových národních prostředí. Seznam kompletních jazyků najdete [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
@@ -162,7 +162,7 @@ Buďte v pořádku!
     * Aktualizace Katja v `de-DE` nástroji pomocí nejnovější metody modelování Prosody, MOS (střední skóre stanoviska) je + 0,13. 
     * Aktualizovali jsme Nanami v `ja-JP` rámci nového sklonu pro zdůraznění Prosody, MOS (střední skóre stanoviska) je + 0,19;  
 
-* Vylepšená přesnost výslovnosti na úrovni aplikace v 5 jazycích.
+* Vylepšená přesnost výslovnosti na úrovni aplikace v pěti jazycích.
 
     | Jazyk | Omezení chyby výslovnosti |
     |---|---|
@@ -205,12 +205,12 @@ Buďte v pořádku!
     -   `spx help csr examples`
 
 **Nové funkce**
--   **C \# , C++**: rozpoznávání mluvčího Preview: Tato funkce umožňuje identifikaci mluvčího (který mluví?) a ověření mluvčího (Jedná se o to, kdo to vyžádá?). Začněte s [přehledem](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview), přečtěte si [článek Základy rozpoznávání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics)nebo [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/rest/api/speakerrecognition/).
+-   **C \# , C++**: rozpoznávání mluvčího Preview: Tato funkce umožňuje identifikaci mluvčího (který mluví?) a ověření mluvčího (je to mluvčí, který je vydávají?). Začněte s [přehledem](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/speaker-recognition-overview), přečtěte si [článek Základy rozpoznávání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-basics)nebo [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/rest/api/speakerrecognition/).
 
 **Opravy chyb**
 -   **C \# , C++**: pevný záznam o mikrofonu v rozpoznávání mluvčího nepracuje v 1,12.
 -   **JavaScript**: oprava pro převod textu na řeč v prohlížeči Firefox a Safari v MacOS a iOS.
--   Oprava chyby narušení přístupu ověřovatele aplikace systému Windows v přepisu konverzace při použití streamu s 8 kanály.
+-   Oprava chyby narušení přístupu ověřovatele aplikace systému Windows v přepisu konverzace při použití streamu s osmi kanály.
 -   Oprava chyby narušení přístupu ověřovače aplikací systému Windows v překladu konverzací na více zařízení.
 
 **ukázky**
@@ -234,13 +234,13 @@ Buďte v pořádku!
 
 **Vylepšení & optimalizace**
 - **JavaScript**: optimalizovaná implementace mikrofonu prohlížeče vylepšuje přesnost rozpoznávání řeči.
-- **Java**: refaktorované vazby pomocí přímé implementace JNI bez SWIG. Tím se sníží 10x velikost vazeb pro všechny balíčky Java používané pro Windows, Android, Linux a Mac a usnadňují další vývoj implementace sady Speech SDK jazyka Java.
+- **Java**: refaktorované vazby pomocí přímé implementace JNI bez SWIG. Tato změna se omezuje tím, že 10x velikost vazeb pro všechny balíčky Java používané pro Windows, Android, Linux a Mac a usnadňuje další vývoj implementace sady Speech SDK jazyka Java.
 - **Linux**: aktualizovaná [dokumentace k](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux) podpoře s nejnovějšími poznámkami k RHEL 7.
-- Vylepšená logika připojení pro pokus o připojení vícekrát v případě chyb služby a sítě.
+- Vylepšená logika připojení pro pokus o připojení vícekrát, pokud dojde k chybám služby a sítě.
 - Aktualizovali jsme stránku rychlý Start řeči [Portal.Azure.com](https://portal.azure.com) , která vývojářům pomůžou zabrat další krok v cestě ke službě Azure Speech.
 
 **Opravy chyb**
-- **C#, Java**: Opravili jsme [problém](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) s načítáním knihoven SDK v systému Linux ARM (32 a 64 bitů).
+- **C#, Java**: Opravili jsme [problém](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/587) s načítáním knihoven SDK v systému Linux ARM (32 bitů a 64 bitů).
 - **C#**: Opravili jsme explicitní odstraňování nativních popisovačů pro objekty TranslationRecognizer, IntentRecognizer a Connection.
 - **C#**: pevná Správa životnosti vstupů zvuku pro objekt ConversationTranscriber.
 - Opravili jsme problém, kdy `IntentRecognizer` byl důvod výsledku správně nastavený při rozpoznávání záměrů z jednoduchých frází.
@@ -253,7 +253,7 @@ Buďte v pořádku!
 - **JavaScript**: Přidali jsme rychlé starty pro převod [textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), [překlady](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)a [rozpoznávání záměru](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript).
 - Ukázky rozpoznávání klíčových slov pro jazyky [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) a [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android).  
 
-**COVID-19 – zkrácené testování:** Vzhledem k tomu, že během posledních několika týdnů pracujete vzdáleně, nemůžeme provést tolik testování ručních ověření jako obvykle. Neudělali jsme žádné změny, které by bylo možné jakkoli rozdělit, a naše automatizované testy byly úspěšné. V nepravděpodobném případě, že jsme něco zmeškali, dejte nám prosím na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)informace.<br>
+**COVID-19 – zkrácené testování:** Vzhledem k tomu, že během posledních několika týdnů pracujete vzdáleně, nemůžeme provést tolik testování ručních ověření jako obvykle. Neudělali jsme žádné změny, které by bylo možné jakkoli rozdělit, a naše automatizované testy byly úspěšné. Pokud jsme něco nenechali, dejte nám prosím na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)informace.<br>
 Buďte v pořádku!
 
 ## <a name="speech-sdk-1110-2020-march-release"></a>Sada Speech SDK 1.11.0:2020-březen verze
@@ -261,7 +261,7 @@ Buďte v pořádku!
 - Linux: Přidání podpory pro Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 s [pokyny](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) , jak nakonfigurovat systém pro sadu Speech SDK.
 - Linux: Přidání podpory pro .NET Core C# v systémech Linux ARM32 a ARM64. Další informace si můžete přečíst [zde](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux). 
 - C#, C++: přidáno `UtteranceId` v `ConversationTranscriptionResult` , konzistentní ID napříč všemi zprostředkujícími a konečný výsledek rozpoznávání řeči. Podrobnosti pro [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
-- Python: přidala se podpora pro `Language ID` . Podívejte se prosím na speech_sample. py v [úložišti GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console).
+- Python: přidala se podpora pro `Language ID` . Viz speech_sample. py v [úložišti GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console).
 - Windows: Přidání komprimovaného formátu zvukového vstupu na platformu Windows pro všechny konzolové aplikace Win32. Podrobnosti [.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams) 
 - JavaScript: podporuje syntézu řeči (převod textu na řeč) v NodeJS. Další informace najdete [tady](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
 - JavaScript: přidejte nové rozhraní API, které umožní kontrolu všech zpráv Send a Received. Další informace najdete [tady](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
@@ -271,14 +271,14 @@ Buďte v pořádku!
 - C#, C++: Opravili jsme problém, kdy použití `Connection MessageReceived` události může způsobit chybu, pokud `Recognizer` je uvolněn před `Connection` objektem. Podrobnosti pro [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived).
 - Android: velikost zvukové vyrovnávací paměti z mikrofonu se snížila z 800ms na 100 ms, aby se zlepšila latence.
 - Android: Opravili jsme [problém](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) s emulátorem x86 pro Android v Android Studio.
-- JavaScript: Přidání podpory pro oblasti v Číně s `fromSubscription` rozhraním API. Podrobnosti [.](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-) 
+- JavaScript: Přidání podpory pro oblasti v Číně s `fromSubscription` rozhraním API. Podrobnosti [.](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#fromsubscription-string--string-) 
 - JavaScript: přidejte další informace o chybě pro chyby připojení z NodeJS.
         
 **ukázky**
 - Unity: veřejná ukázka rozpoznávání záměrů je pevná, kde se LUIS import JSON nezdařil. Podrobnosti [.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369)
 - Python: byla přidána ukázka pro `Language ID` . Podrobnosti [.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)
     
-**Covid19 zkrácené testování:** Vzhledem k tomu, že během posledních několika týdnů pracujete vzdáleně, nemůžeme provést tolik ručních testů ověřování zařízení, jako bychom normálně. Příkladem je testování mikrofonu vstupu a mluvčího výstupu v systémech Linux, iOS a macOS. Neudělali jsme žádné změny, které jsme na těchto platformách mohli jakkoli rozdělit, a naše automatizované testy jsme prošli všemi úspěchy. V nepravděpodobném případě, že jsme něco zmeškali, dejte nám prosím na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)informace.<br> Děkujeme za vaši trvalou podporu. Jako vždycky prosím vydejte dotazy nebo připomínky na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) nebo [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731).<br>
+**Covid19 zkrácené testování:** Vzhledem k tomu, že během posledních několika týdnů pracujete vzdáleně, nemůžeme provést tolik ručních testů ověřování zařízení, jako bychom normálně. Nemůžete například testovat výstup mikrofonu a reproduktory v systémech Linux, iOS a macOS. Neudělali jsme žádné změny, které jsme na těchto platformách mohli jakkoli rozdělit, a naše automatizované testy jsme prošli všemi úspěchy. V nepravděpodobném případě, že jsme něco zmeškali, dejte nám prosím na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)informace.<br> Děkujeme za vaši trvalou podporu. Jako vždycky prosím vydejte dotazy nebo připomínky na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) nebo [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731).<br>
 Buďte v pořádku!
 
 ## <a name="speech-sdk-1100-2020-february-release"></a>Sada Speech SDK 1.10.0:2020 – Únorová verze
@@ -329,7 +329,7 @@ Buďte v pořádku!
 
 - `OpenSSL` byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud vaše Doručená pošta nebyla `OpenSSL` nainstalována do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
 - Změnili jsme datový typ vrácený pro C# `WordLevelTimingResult.Offset` z `int` na, `long` aby bylo umožněno přístupu k `WordLevelTimingResults` datům, když jsou data řeči delší než 2 minuty.
-- `PushAudioInputStream` a `PullAudioInputStream` teď pošle informace o hlavičce WAV do služby pro rozpoznávání řeči na základě `AudioStreamFormat` , volitelně zadané při jejich vytvoření. Zákazníci teď musí používat [podporovaný formát zvukového vstupu](how-to-use-audio-input-streams.md). Všechny ostatní formáty získají dílčí optimální výsledky rozpoznávání nebo můžou způsobit jiné problémy. 
+- `PushAudioInputStream` a `PullAudioInputStream` teď pošle informace o hlavičce WAV do služby pro rozpoznávání řeči na základě `AudioStreamFormat` , volitelně zadané při jejich vytvoření. Zákazníci teď musí používat [podporovaný formát zvukového vstupu](how-to-use-audio-input-streams.md). Všechny ostatní formáty budou mít k disočekávané výsledky rozpoznávání nebo můžou způsobit jiné problémy. 
 
 **Opravy chyb**
 
@@ -369,7 +369,7 @@ Buďte v pořádku!
 **Změny způsobující chyby**
 
 - Funkce konverzace Transcriber přesunuté do oboru názvů `Microsoft.CognitiveServices.Speech.Transcription` .
-- Součást metod konverzace Transcriber je přesunuta do nové `Conversation` třídy.
+- Části metod konverzace Transcriber se přesunou do nové `Conversation` třídy.
 - Vyřazena podpora pro 32-bit (ARMv7 a x86) iOS
 
 **Opravy chyb**
@@ -442,7 +442,7 @@ Buďte v pořádku!
 - Oprava problému aplikace .NET Core pro načtení základní knihovny s cílovou architekturou net461 v ukázkách
 - Oprava pro příležitostné problémy s nasazováním nativních knihoven do výstupní složky v ukázkách
 - Oprava pro spolehlivou zavírání webového soketu
-- Oprava pro možnou chybu při otevírání připojení v rámci velmi velkého zatížení systému Linux
+- Oprava pro možnou chybu při otevírání připojení v případě velkého zatížení systému Linux
 - Oprava chybějících metadat v sadě rozhraní pro macOS
 - Oprava pro problémy s `pip install --user` Windows
 
@@ -657,7 +657,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 Vylepšení spolehlivosti a opravy chyb:
 
 - Opravená potenciální závažná chyba kvůli konfliktu časování v nástroji pro rozpoznávání disposing
-- Opravená potenciální závažná chyba pro případ zrušení vlastností
+- Opravili jsme potenciální závažnou chybu, když dojde k zrušení vlastností.
 - Přidala se další chyba a kontrola parametrů.
 - Cíl-C: Opravili jsme možnou závažnou chybu způsobenou přepsáním názvu v NSString.
 - Cíl-C: upravená viditelnost rozhraní API

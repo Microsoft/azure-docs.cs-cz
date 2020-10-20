@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c17750fbe016e8bfa86569f34f9af26b1c6de3bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 32d0ebc3f37f7af4d9cdb1940f1870dbf51f86b4
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055847"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206127"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
@@ -27,13 +27,13 @@ Vzdálené vykreslování Azure poskytuje následující dvě rozhraní REST API
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
+Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](/powershell/azure/).
 
 1. Nainstalujte Azure PowerShell:
     1. Otevřete okno PowerShellu s právy správce.
     1. Spouštěl `Install-Module -Name Az -AllowClobber`
 
-1. Pokud se zobrazí chyby týkající se spouštění skriptů, ujistěte se, že jsou správně nastavené [zásady spouštění](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) :
+1. Pokud se zobrazí chyby týkající se spouštění skriptů, ujistěte se, že jsou správně nastavené [zásady spouštění](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) :
     1. Otevřete okno PowerShellu s právy správce.
     1. Spouštěl `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
@@ -44,7 +44,7 @@ Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azur
     1. Spusťte: `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
     > [!NOTE]
-    > V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    > V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 1. Stáhněte složku *skripty* z [úložiště GitHubu pro vzdálené vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
 
@@ -276,5 +276,5 @@ Použijte `-Poll` k čekání na převod, nebo došlo k chybě.
 ## <a name="next-steps"></a>Další kroky
 
 - [Rychlý Start: vykreslení modelu pomocí Unity](../quickstarts/render-model.md)
-- [Rychlý Start: převod modelu pro vykreslování](../quickstarts/convert-model.md)
+- [Rychlý start: Převod modelu pro vykreslování](../quickstarts/convert-model.md)
 - [Převod modelu](../how-tos/conversion/model-conversion.md)

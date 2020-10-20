@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 114a0d6f97149baad0c9e76fb359c52996820575
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958357"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207151"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
 
@@ -207,6 +207,23 @@ Pomocí [Apache Hive](https://hive.apache.org/)můžete zadávat dotazy na data 
 
 1. K ukončení připojení SSH použijte `exit` .
 
+### <a name="separate-hive-and-hbase-clusters"></a>Samostatné clustery podregistru a HBA
+
+Dotaz na podregistr pro přístup k datům HBA nemusíte spouštět z clusteru HBA. Každý cluster, který je součástí podregistru (včetně Sparku, Hadoop, HBA nebo interaktivního dotazu), se dá použít k dotazování na data HBA za předpokladu, že jsou splněné následující kroky:
+
+1. Oba clustery musí být připojeny ke stejnému Virtual Network a podsíti
+2. Kopírování `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` z clusteru HBA hlavních do podregistru clusteru hlavních
+
+### <a name="secure-clusters"></a>Zabezpečené clustery
+
+Data HBA je také možné dotazovat z podregistru pomocí adaptérů HBA s povoleným protokolem ESP: 
+
+1. Pokud budete postupovat podle vzoru více clusterů, musí být oba clustery povolené ESP. 
+2. Pokud chcete, aby se v podregistru mohly dotazovat data HBA, ujistěte se, že `hive` uživatel má udělená oprávnění pro přístup k datům HBA přes modul plug-in HBA Ranger.
+3. Při použití samostatných clusterů s povoleným protokolem ESP se `/etc/hosts` musí obsah z clusteru HBA hlavních připojit k `/etc/hosts` podregistru clusteru hlavních. 
+> [!NOTE]
+> Po škálování obou clusterů se `/etc/hosts` musí znovu připojit.
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>Použití rozhraní REST API HBase pomocí Curl
 
 Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Požadavky byste vždy měli provádět pomocí protokolu HTTPS (Secure HTTP), čímž pomůžete zajistit, že se přihlašovací údaje budou na server odesílat bezpečně.
@@ -306,7 +323,7 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz HBA `disable 'Contacts'` . Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 1. V části **služby**vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.

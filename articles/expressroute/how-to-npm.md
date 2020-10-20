@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: duau
-ms.openlocfilehash: 7810afffd5da6d46439ff27ddb3f5b0aafdc2341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8127a60a4685a615bc07e21a1efb4dd216c5b8c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981314"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201048"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
@@ -20,7 +20,7 @@ Tento článek vám pomůže nakonfigurovat rozšíření Network Performance Mo
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Můžete:
+Další možnosti:
 
 * Monitorování ztrát a latence v různých virtuální sítě a nastavení výstrah
 
@@ -54,7 +54,7 @@ Vytvořte pracovní prostor v předplatném, který má odkaz virtuální sítě
 1. V [Azure Portal](https://portal.azure.com)vyberte předplatné, které má virtuální sítě partnerský vztah k vašemu okruhu ExpressRoute. Pak vyhledejte v seznamu služeb na **webu Marketplace** pro ' Network Performance Monitor '. Kliknutím na tlačítko Zpět otevřete stránku **Network Performance Monitor** .
 
    >[!NOTE]
-   >Můžete vytvořit nový pracovní prostor nebo použít existující pracovní prostor. Pokud chcete použít existující pracovní prostor, musíte zajistit, aby byl pracovní prostor migrován do nového dotazovacího jazyka. [Další informace...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >Můžete vytvořit nový pracovní prostor nebo použít existující pracovní prostor. Pokud chcete použít existující pracovní prostor, musíte zajistit, aby byl pracovní prostor migrován do nového dotazovacího jazyka. [Další informace...](../azure-monitor/log-query/log-query-overview.md)
    >
 
    ![portál](./media/how-to-npm/3.png)<br><br>
@@ -92,7 +92,7 @@ Vytvořte pracovní prostor v předplatném, který má odkaz virtuální sítě
 Doporučujeme nainstalovat alespoň dva agenty na každou stranu připojení ExpressRoute pro zajištění redundance (například místně, Azure virtuální sítě). Agent musí být nainstalovaný na Windows serveru (2008 SP1 nebo novější). Monitorování okruhů ExpressRoute pomocí systému Windows Desktop OS a operačního systému Linux není podporováno. K instalaci agentů použijte následující postup:
    
   >[!NOTE]
-  >Agenti, kteří jsou nabízeni SCOM (včetně [MMA](https://technet.microsoft.com/library/dn465154(v=sc.12).aspx)), nemusí být schopni konzistentně detekovat své umístění, pokud jsou hostovány v Azure. Doporučujeme, abyste tyto agenty nepoužívali v Azure virtuální sítě k monitorování ExpressRoute.
+  >Agenti, kteří jsou nabízeni SCOM (včetně [MMA](/previous-versions/system-center/system-center-2012-R2/dn465154(v=sc.12))), nemusí být schopni konzistentně detekovat své umístění, pokud jsou hostovány v Azure. Doporučujeme, abyste tyto agenty nepoužívali v Azure virtuální sítě k monitorování ExpressRoute.
   >
 
 1. Spuštěním **instalačního programu** nainstalujte agenta na každý server, který chcete použít pro monitorování ExpressRoute. Server, který používáte pro monitorování, může být buď virtuální počítač, nebo místní, a musí mít přístup k Internetu. Je nutné nainstalovat alespoň jednoho agenta místně a jednoho agenta v každém segmentu sítě, který chcete monitorovat v Azure.
@@ -118,7 +118,7 @@ Doporučujeme nainstalovat alespoň dva agenty na každou stranu připojení Exp
 
 ### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2,3: Konfigurace nastavení proxy serveru (volitelné)
 
-Pokud používáte webový proxy server pro přístup k Internetu, použijte následující postup ke konfiguraci nastavení proxy serveru pro Microsoft Monitoring Agent. Proveďte tyto kroky pro každý server. pokud máte mnoho serverů, které je nutné nakonfigurovat, může být jednodušší použít skript, který tento proces zautomatizuje. Pokud ano, přečtěte si téma [Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí skriptu](../log-analytics/log-analytics-windows-agent.md).
+Pokud používáte webový proxy server pro přístup k Internetu, použijte následující postup ke konfiguraci nastavení proxy serveru pro Microsoft Monitoring Agent. Proveďte tyto kroky pro každý server. pokud máte mnoho serverů, které je nutné nakonfigurovat, může být jednodušší použít skript, který tento proces zautomatizuje. Pokud ano, přečtěte si téma [Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí skriptu](../azure-monitor/platform/agent-windows.md).
 
 Konfigurace nastavení proxy serveru pro Microsoft Monitoring Agent pomocí ovládacích panelů:
 
@@ -161,7 +161,7 @@ Na serverech agentů otevřete okno PowerShellu s oprávněními správce. Spus�
 
 Pokud chcete monitorovat servery agenta v Azure, musíte nakonfigurovat pravidla skupiny zabezpečení sítě (NSG) tak, aby povolovala přenosy TCP na portu, který používá NPM pro syntetické transakce. Výchozí port je 8084. To umožňuje, aby byl agent monitorování nainstalovaný na virtuálním počítači Azure ke komunikaci s místním agentem monitorování.
 
-Další informace o NSG najdete v tématu [skupiny zabezpečení sítě](../virtual-network/virtual-networks-create-nsg-arm-portal.md).
+Další informace o NSG najdete v tématu [skupiny zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md).
 
 >[!NOTE]
 >Ujistěte se, že jste nainstalovali agenty (místní server a Agent Azure serveru) a předtím, než budete pokračovat v tomto kroku, spusťte skript PowerShellu.

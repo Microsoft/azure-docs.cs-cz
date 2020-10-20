@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397844"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202476"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>Vývoj a integrace rozhraní ExpressRoute CrossConnnections API
 
@@ -30,7 +30,7 @@ Výhody přechodu na prostředek expressRouteCrossConnections:
 
 * Všechna budoucí vylepšení pro partnery ExpressRoute budou zpřístupněna v prostředku ExpressRouteCrossConnection.
 
-* Partneři můžou použít [řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) na prostředek expressRouteCrossConnection. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
+* Partneři můžou použít [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) na prostředek expressRouteCrossConnection. Tyto ovládací prvky mohou definovat oprávnění, pro které mohou uživatelské účty upravovat prostředek expressRouteCrossConnection a konfigurace partnerských vztahů Přidat/aktualizovat/odstranit.
 
 * Prostředek expressRouteCrossConnection zpřístupňuje rozhraní API, která můžou být užitečná při řešení potíží s připojením ExpressRoute. Patří sem tabulka ARP, Souhrn tabulky směrování BGP a podrobnosti tabulky směrování protokolu BGP. Tato schopnost není podporována rozhraními API pro nasazení Classic.
 
@@ -51,7 +51,7 @@ Umístění pro testování partnerských vztahů: fiktivní zařízení a porty
 
 ### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. Zaregistrujte si předplatné Dev_Provider pro přístup k rozhraní expressRouteCrossConnections API
 
-Aby bylo možné získat přístup k rozhraní expressRouteCrossConnections API, musí být partnerský odběr zaregistrovaný v **poskytovateli prostředků Microsoft. Network**. K dokončení procesu registrace použijte postup v článku [poskytovatelé a typy prostředků Azure](/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal) .
+Aby bylo možné získat přístup k rozhraní expressRouteCrossConnections API, musí být partnerský odběr zaregistrovaný v **poskytovateli prostředků Microsoft. Network**. K dokončení procesu registrace použijte postup v článku [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) .
 
 ### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. nastavení ověřování pro Azure Resource Manager volání REST API
 
@@ -59,8 +59,8 @@ Většina služeb Azure vyžaduje klientský kód k ověření pomocí Správce 
 
 Proces ověřování zahrnuje dva hlavní kroky:
 
-1. [Zaregistrujte klienta](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad).
-2. [Vytvořte žádost o přístup](https://docs.microsoft.com/rest/api/azure/#create-the-request).
+1. [Zaregistrujte klienta](/rest/api/azure/#register-your-client-application-with-azure-ad).
+2. [Vytvořte žádost o přístup](/rest/api/azure/#create-the-request).
 
 ### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. Poskytněte klientské aplikaci oprávnění přispěvatele sítě.
 
@@ -76,12 +76,12 @@ Po úspěšném nakonfigurování ověření musíte v rámci Dev_Provider_Sub u
 
 ### <a name="5-develop"></a>5. vývoj
 
-Vývoj s využitím [rozhraní expressRouteCrossConnections API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections)
+Vývoj s využitím [rozhraní expressRouteCrossConnections API](/rest/api/expressroute/expressroutecrossconnections)
 
 ## <a name="rest-api"></a>REST API
 
-Dokumentaci k REST API najdete v tématu [ExpressRoute CrossConnections REST API](https://docs.microsoft.com/rest/api/expressroute/expressroutecrossconnections) .
+Dokumentaci k REST API najdete v tématu [ExpressRoute CrossConnections REST API](/rest/api/expressroute/expressroutecrossconnections) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o všech ExpressRoute REST API najdete v tématu [EXPRESSROUTE REST API](https://docs.microsoft.com/rest/api/expressroute/).
+Další informace o všech ExpressRoute REST API najdete v tématu [EXPRESSROUTE REST API](/rest/api/expressroute/).

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c67add18dc653cc033d0cf4990f9c44f07633ac2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047399"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205476"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -24,7 +24,8 @@ Tato verze tohoto článku prochází těmito kroky ručně, jednou po jednom, p
 * Pokud chcete projít tyto kroky ručně pomocí rozhraní příkazového řádku, přečtěte si verzi rozhraní příkazového řádku tohoto článku: [*Postupy: nastavení instance a ověřování (CLI)*](how-to-set-up-instance-cli.md).
 * Chcete-li provést automatickou instalaci pomocí skriptu nasazení, přečtěte si skriptovaná verze tohoto článku: [*Postupy: nastavení instance a ověřování (skriptované)*](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Vytvoření instance digitálních vláken Azure
 
@@ -94,72 +95,7 @@ Můžete zobrazit přiřazení role, které jste nastavili v části *řízení 
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
-Teď máte k dispozici instanci digitálních vláken Azure, která je připravená k použití, a máte přiřazená oprávnění ke správě IT. Potom nastavíte oprávnění pro klientské aplikace pro přístup k ní.
-
-## <a name="set-up-access-permissions-for-client-applications"></a>Nastavení přístupových oprávnění pro klientské aplikace
-
-[!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
-
-Začněte tím, že přejdete na [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) v Azure Portal (můžete použít tento odkaz nebo ho najít pomocí panelu hledání na portálu). V nabídce služba vyberte *Registrace aplikací* a potom klikněte na *+ Nová registrace*.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
-Na následující stránce *Registrovat aplikaci* vyplňte požadované hodnoty:
-* **Název**: zobrazovaný název aplikace Azure AD, který se má přidružit k registraci.
-* **Podporované typy účtů**: vyberte *účty jenom v tomto organizačním adresáři (jenom výchozí adresář – jeden tenant)* .
-* **Identifikátor URI pro přesměrování**: *Adresa URL pro odpověď aplikace Azure AD* pro aplikaci Azure AD. Přidejte identifikátor URI *veřejného klienta/nativního (mobilní & Desktop)* pro `http://localhost` .
-
-Až skončíte, stiskněte tlačítko *zaregistrovat* .
-
-:::image type="content" source="media/how-to-set-up-instance/portal/register-an-application.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
-Po dokončení nastavení registrace bude portál přesměrován na stránku podrobností.
-
-### <a name="provide-azure-digital-twins-api-permission"></a>Poskytnutí oprávnění rozhraní API pro digitální vlákna Azure
-
-V dalším kroku nakonfigurujte registraci aplikace, kterou jste vytvořili, s oprávněními k rozhraní API pro digitální vlákna Azure s použitím základních oprávnění.
-
-Na stránce portálu pro registraci aplikace vyberte v nabídce *oprávnění rozhraní API* . Na následující stránce oprávnění stiskněte tlačítko *+ Přidat oprávnění* .
-
-:::image type="content" source="media/how-to-set-up-instance/portal/add-permission.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
-Na stránce *oprávnění rozhraní API* , které následuje, přepněte do *rozhraní API moje organizace používá* kartu a vyhledejte *digitální vlákna Azure*. Pokud chcete pokračovat v přiřazování oprávnění pro rozhraní API digitálních vláken Azure, vyberte z výsledků hledání možnost _**digitálních vláken Azure**_ .
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
->[!NOTE]
-> Pokud vaše předplatné stále obsahuje existující instanci digitálních vláken Azure z předchozí verze Public Preview služby (do července 2020), budete muset místo toho vyhledat a vybrat _**službu Azure Smart Spaces**_ . Toto je starší název pro stejnou sadu rozhraní API (Všimněte si, že *ID aplikace (klienta)* je stejné jako na snímku obrazovky výše) a vaše prostředí se po tomto kroku nemění.
-> :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1-smart-spaces.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
-V dalším kroku vyberete, která oprávnění chcete těmto rozhraním API udělit. Rozbalte oprávnění **číst (1)** a zaškrtněte políčko *číst. zapsat* pro udělení oprávnění pro přístup k registraci aplikace a oprávnění k zápisu.
-
-:::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
-Po dokončení stiskněte *Přidat oprávnění* .
-
-### <a name="verify-success"></a>Ověřit úspěch
-
-Zpátky na stránce *oprávnění rozhraní API* ověřte, že je teď záznam pro digitální vlákna Azure, který odráží oprávnění ke čtení a zápisu:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-api-permissions.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
-Můžete také ověřit připojení k digitálním vyplnění Azure v rámci registrace aplikace *manifest.jsv*, která byla automaticky aktualizována pomocí informací o digitálním prostředí Azure, když jste přidali oprávnění rozhraní API.
-
-Provedete to tak, že v nabídce vyberete *manifest* a zobrazíte kód manifestu registrace aplikace. Posuňte se do dolní části okna Code (kód) a vyhledejte tato pole v části `requiredResourceAccess` . Hodnoty by měly odpovídat hodnotám na snímku obrazovky níže:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-manifest.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
-### <a name="collect-important-values"></a>Shromažďovat důležité hodnoty
-
-V dalším kroku na řádku nabídek vyberte *Přehled* a zobrazte podrobnosti o registraci aplikace:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
-
-Poznamenejte si *ID aplikace (klienta)* a *ID adresáře (tenanta)* **zobrazené na stránce** . Tyto hodnoty budete potřebovat později při [ověřování klientské aplikace proti rozhraním API pro digitální vlákna Azure](how-to-authenticate-client.md). Pokud nejste osoba, která bude psát kód pro takové aplikace, měli byste tyto hodnoty sdílet s osobou, která bude.
-
-### <a name="other-possible-steps-for-your-organization"></a>Další možné kroky pro vaši organizaci
-
-[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+Teď máte k dispozici instanci digitálních vláken Azure, která je připravená k použití, a máte přiřazená oprávnění ke správě IT.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -167,5 +103,5 @@ Otestujte jednotlivá REST API volání na vaši instanci pomocí příkazů roz
 * [AZ DT reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
 * [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md)
 
-Případně můžete informace o tom, jak připojit klientskou aplikaci k instanci, napsáním ověřovacího kódu klientské aplikace:
+Případně můžete informace o tom, jak připojit klientskou aplikaci k instanci s ověřovacím kódem:
 * [*Postupy: psaní kódu ověřování aplikace*](how-to-authenticate-client.md)

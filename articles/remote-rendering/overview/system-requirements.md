@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 31fde0c7af652bc50eb5f06743c5dd5807a1762e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323721"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207406"
 ---
 # <a name="system-requirements"></a>Požadavky na systém
 
@@ -68,7 +68,7 @@ Informace o řešení problémů se sítí najdete v [Průvodci odstraňováním
 
 Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblokují následující porty:
 
-| Port              | Protokol | Povolit    | Description |
+| Port              | Protokol | Povolit    | Popis |
 |-------------------|----------|----------|-------------|
 | 50051             | TCP      | Odesílaná | Počáteční připojení (HTTP handshake) |
 | 8266              | UDP      | Odesílaná | Přenos dat |
@@ -80,7 +80,7 @@ Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblo
 Musí být nainstalovaný následující software:
 
 * Nejnovější verzi sady **Visual Studio 2019** [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [Visual Studio Tools pro Mixed reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
+* [Visual Studio Tools pro Mixed reality](/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
   * **Vývoj desktopových aplikací v C++**
   * **Vývoj Univerzální platforma Windows (UWP)**
 * **Windows SDK 10.0.18362.0** [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
