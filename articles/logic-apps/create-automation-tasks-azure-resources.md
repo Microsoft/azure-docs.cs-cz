@@ -6,17 +6,17 @@ ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1826b17a971b49fdfe8d5df02d71eb682b15db6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b3b40b5958df52dabf92155a1de809578f1d374
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269722"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201116"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Umožňuje spravovat prostředky Azure a monitorovat náklady vytvořením úloh automatizace (Preview).
 
 > [!IMPORTANT]
-> Tato funkce je ve verzi Public Preview, která se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato funkce je ve verzi Public Preview, poskytuje se bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pro snazší správu [prostředků Azure](../azure-resource-manager/management/overview.md#terminology) můžete vytvářet automatizované úlohy správy pro konkrétní prostředek nebo skupinu prostředků pomocí šablon úloh služby Automation, které se liší v dostupnosti na základě typu prostředku. Například pro [účet služby Azure Storage](../storage/common/storage-account-overview.md)můžete nastavit úlohu automatizace, která vám pošle měsíční náklady na účet úložiště. Pro [virtuální počítač Azure](https://azure.microsoft.com/services/virtual-machines/)můžete vytvořit úlohu automatizace, která tento virtuální počítač zapíná nebo vypíná podle předdefinovaného plánu.
 
@@ -47,7 +47,7 @@ V tomto článku se dozvíte, jak provádět následující úlohy:
 
 V současné době můžete vytvořit úlohu automatizace jenom na úrovni prostředků, zobrazit historii spuštění úkolu a upravit základní pracovní postup aplikace logiky úlohy, který používá služba [Azure Logic Apps](../logic-apps/logic-apps-overview.md) . Úlohy služby Automation jsou více základní a nenáročné než [Azure Automation](../automation/automation-intro.md).
 
-Porovnáním Azure Automation je cloudová služba pro automatizaci a konfiguraci, která podporuje konzistentní správu napříč prostředími Azure a mimo Azure. Služba zahrnuje [automatizaci procesů pro orchestraci procesů](../automation/automation-intro.md#process-automation) pomocí [runbooků](../automation/automation-runbook-execution.md), správy konfigurace se [sledováním změn a inventáře](../automation/change-tracking.md), správy aktualizací, sdílených možností a heterogenních funkcí. Automatizace poskytuje plnou kontrolu nad nasazením, provozem a vyřazením úloh a prostředků z provozu.
+Porovnáním Azure Automation je cloudová služba pro automatizaci a konfiguraci, která podporuje konzistentní správu napříč prostředími Azure a mimo Azure. Služba zahrnuje [automatizaci procesů pro orchestraci procesů](../automation/automation-intro.md#process-automation) pomocí [runbooků](../automation/automation-runbook-execution.md), správy konfigurace se [sledováním změn a inventáře](../automation/change-tracking/overview.md), správy aktualizací, sdílených možností a heterogenních funkcí. Automatizace poskytuje plnou kontrolu nad nasazením, provozem a vyřazením úloh a prostředků z provozu.
 
 ## <a name="prerequisites"></a>Požadavky
 

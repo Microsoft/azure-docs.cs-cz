@@ -4,12 +4,12 @@ description: Naučte se používat servery s podporou ARC Azure ke správě serv
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 10/07/2020
 ms.topic: overview
-ms.openlocfilehash: c8d74bcaa7eb0b4adbb5aaf66626b9bfc349d639
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108894"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200963"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
@@ -23,7 +23,7 @@ Když počítač připojíte k serverům s podporou ARC Azure, umožní vám pro
 
 - Přiřaďte [Azure Policy konfigurace hostů](../../governance/policy/concepts/guest-configuration.md) stejným způsobem jako přiřazení zásad pro virtuální počítače Azure. V současné době většina zásad konfigurace hostů nepoužívá konfigurace, Audituje pouze nastavení v rámci počítače. Pokud chcete pochopit náklady na používání zásad konfigurace Azure Policy hostů se servery s podporou ARC, přečtěte si téma [Cenová příručka](https://azure.microsoft.com/pricing/details/azure-policy/)Azure Policy.
 
-- Pomocí Azure Automation [Change Tracking a inventarizace](../../automation/change-tracking.md)ohlaste změny konfigurace nainstalovaného softwaru, služeb Microsoftu, registru a souborů systému Windows a démony Linux na monitorovaných serverech.
+- Pomocí Azure Automation [Change Tracking a inventarizace](../../automation/change-tracking/overview.md)ohlaste změny konfigurace nainstalovaného softwaru, služeb Microsoftu, registru a souborů systému Windows a démony Linux na monitorovaných serverech.
 
 - Monitorujte výkon hostovaného operačního systému a Prohlédněte si součásti aplikace a sledujte jejich procesy a závislosti s dalšími prostředky, které aplikace komunikuje pomocí [Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md).
 

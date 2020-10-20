@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
-ms.openlocfilehash: 731101b1a8236e20a9af07f1bbf5a7b70d53c0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653379"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204873"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.
@@ -64,7 +64,7 @@ Abyste optimalizovali směrování pro uživatele obou poboček, musíte vědět
 >
 
 ## <a name="suboptimal-routing-from-microsoft-to-customer"></a>Neoptimální směrování od Microsoftu k zákazníkovi
-Zde je další příklad, kdy připojení z Microsoftu používá delší cestu pro přístup do vaší sítě. V tomto případě používáte místní servery Exchange a Exchange Online v [hybridním prostředí](https://technet.microsoft.com/library/jj200581%28v=exchg.150%29.aspx). Vaše pobočky jsou připojené k síti WAN. Inzerujete předpony vašich místních serverů v obou vašich pobočkách Microsoftu prostřednictvím dvou okruhů ExpressRoute. Exchange Online bude inicializovat připojení k místním serverům v případech, jako je například přenesení poštovní schránky. Bohužel připojení k pobočce v Los Angeles se směruje na okruh ExpressRoute v oblasti USA – východ, aby se pak celý obsah přenášel zpátky na západní pobřeží. Příčina problému je podobná té předchozí. Bez jakékoli pomoci namůže síť Microsoftu zjistit, která předpona zákazníka je blíž oblasti USA – východ a která je blíž oblasti USA – západ. Tak se stane, že se pro pobočku v Los Angeles zvolí špatná cesta.
+Zde je další příklad, kdy připojení z Microsoftu používá delší cestu pro přístup do vaší sítě. V tomto případě používáte místní servery Exchange a Exchange Online v [hybridním prostředí](/exchange/exchange-hybrid). Vaše pobočky jsou připojené k síti WAN. Inzerujete předpony vašich místních serverů v obou vašich pobočkách Microsoftu prostřednictvím dvou okruhů ExpressRoute. Exchange Online bude inicializovat připojení k místním serverům v případech, jako je například přenesení poštovní schránky. Bohužel připojení k pobočce v Los Angeles se směruje na okruh ExpressRoute v oblasti USA – východ, aby se pak celý obsah přenášel zpátky na západní pobřeží. Příčina problému je podobná té předchozí. Bez jakékoli pomoci namůže síť Microsoftu zjistit, která předpona zákazníka je blíž oblasti USA – východ a která je blíž oblasti USA – západ. Tak se stane, že se pro pobočku v Los Angeles zvolí špatná cesta.
 
 ![Případ 2 ExpressRoute – Neoptimální směrování od Microsoftu k zákazníkovi](./media/expressroute-optimize-routing/expressroute-case2-problem.png)
 
