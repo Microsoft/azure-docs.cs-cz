@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1c49c7bfaa7714dda902d05537fbe3d8a55d5abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfcfa4c5ed57489c56ebf845d238198944150a96
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613916"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202884"
 ---
 # <a name="entities"></a>Entity
 
@@ -139,10 +139,10 @@ Dotaz bude úspěšný i v případě, že objekt neobsahuje žádná metadata.
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [Třída entity C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.entity)
-* [C# RemoteManager. CreateEntity ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
-* [Třída entity C++](https://docs.microsoft.com/cpp/api/remote-rendering/entity)
-* [C++ RemoteManager:: CreateEntity ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#createentity)
+* [Třída entity C#](/dotnet/api/microsoft.azure.remoterendering.entity)
+* [C# RemoteManager. CreateEntity ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.createentity)
+* [Třída entity C++](/cpp/api/remote-rendering/entity)
+* [C++ RemoteManager:: CreateEntity ()](/cpp/api/remote-rendering/remotemanager#createentity)
 
 ## <a name="next-steps"></a>Další kroky
 

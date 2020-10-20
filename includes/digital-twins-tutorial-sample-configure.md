@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: b44e15e4592de5e874ee50ebd390940e8ab16a22
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 2a62cae025be05a8f5a6ef4407737ab8da36a951
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92157782"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92210873"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurace ukázkového projektu
 
@@ -22,12 +22,10 @@ Ve složce přejděte do _AdtSampleApp_. Otevřete _**AdtE2ESample. sln**_ v apl
 
 V aplikaci Visual Studio použijte podokno *Průzkumník řešení* k vytvoření kopie _> SampleClientApp **serviceConfig.jsna. Soubor šablony** _ (k zkopírování a vložení můžete použít nabídky ze seznamu pravým tlačítkem myši). Přejmenujte *serviceConfig.jskopie na*. Tato akce bude sloužit jako předem nastavený soubor JSON s nezbytnými konfiguračními proměnnými pro spuštění projektu.
 
-Vyberte *serviceConfig.jsv* souboru a otevřete ji v okně pro úpravy. Změňte `tenantId` *ID vašeho adresáře*na ID vaší `clientId` *aplikace*a `instanceUrl` adresu URL *hostitele* instance digitálního vlákna Azure (s *https://* před ním, jak je uvedeno níže).
+Vyberte *serviceConfig.jsv* souboru a otevřete ji v okně pro úpravy. Změňte `instanceUrl` na adresu URL *názvu hostitele* instance digitálního vlákna Azure (s *https://* před ním, jak je znázorněno níže).
 
 ```json
 {
-  "tenantId": "<your-directory-ID>",
-  "clientId": "<your-application-ID>",
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```

@@ -1,0 +1,154 @@
+---
+title: 'Rychlý Start: vytvoření pracovního prostoru synapse pomocí Azure PowerShell'
+description: Pomocí Azure PowerShell podle kroků v této příručce vytvořte pracovní prostor Azure synapse.
+services: synapse-analytics
+author: alehall
+ms.service: synapse-analytics
+ms.topic: quickstart
+ms.subservice: overview
+ms.date: 10/19/2020
+ms.author: alehall
+ms.reviewer: jrasnick
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 005e3a3b717d4b1b8e5eb02b77a1d228908f8707
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92210623"
+---
+# <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse s využitím Azure PowerShell
+
+Azure PowerShell je sada rutin pro správu prostředků Azure přímo z PowerShellu. Můžete ho používat ve svém prohlížeči prostřednictvím služby Azure Cloud Shell. Můžete ho také nainstalovat na macOS, Linux nebo Windows.
+
+V tomto rychlém startu se naučíte vytvořit pracovní prostor synapse pomocí Azure PowerShell.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+
+## <a name="prerequisites"></a>Požadavky
+
+- [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+
+    > [!IMPORTANT]
+    > Pracovní prostor Azure synapse musí být schopný číst a zapisovat na vybraný ADLS Gen2 účet. Pro libovolný účet úložiště, který propojíte jako primární účet úložiště, musíte povolit **hierarchický obor názvů** při vytváření účtu úložiště, jak je popsáno v tématu [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell#create-a-storage-account).
+
+Pokud se rozhodnete použít Cloud Shell, přečtěte si téma [přehled Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) , kde najdete další informace.
+
+### <a name="install-the-azure-powershell-module-locally"></a>Místní instalace modulu Azure PowerShell
+
+Pokud se rozhodnete použít prostředí PowerShell místně, Tento článek vyžaduje, abyste nainstalovali modul AZ PowerShell a připojili se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Další informace o instalaci modulu AZ PowerShell najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
+
+Další informace o ověřování pomocí Azure PowerShell najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps).
+
+### <a name="install-the-azure-synapse-powershell-module"></a>Instalace modulu PowerShellu pro Azure synapse
+
+> [!IMPORTANT]
+> I když je modul PowerShell **AZ. synapse** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna ve výchozím nastavení AZ PowerShell Module releases a Available v rámci Azure Cloud Shell.
+
+```azurepowershell-interactive
+Install-Module -Name Az.Synapse
+```
+
+## <a name="create-an-azure-synapse-workspace-using-azure-powershell"></a>Vytvoření pracovního prostoru Azure synapse pomocí Azure PowerShell
+
+1. Definujte potřebné proměnné prostředí pro vytváření prostředků pro pracovní prostor Azure synapse.
+
+   |        Název proměnné        |                                                 Popis                                                 |
+   | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
+   | název_účtu_úložiště          | Název existujícího účtu úložiště ADLS Gen2.                                                           |
+   | StorageAccountResourceGroup | Název existující skupiny prostředků účtu úložiště ADLS Gen2                                             |
+   | FileShareName               | Název existujícího systému souborů úložiště.                                                                  |
+   | SynapseResourceGroup        | Vyberte nový název skupiny prostředků Azure synapse.                                                    |
+   | Oblast                      | Vyberte jednu z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/geographies/#overview). |
+   | SynapseWorkspaceName        | Vyberte jedinečný název pro nový pracovní prostor Azure synapse.                                                  |
+   | SqlUser                     | Vyberte hodnotu pro nové uživatelské jméno.                                                                          |
+   | SqlPassword                 | Vyberte zabezpečené heslo.                                                                                   |
+   | IP adresa klienta                    | Veřejná IP adresa systému, ze kterého spouštíte PowerShell                                             |
+   |                             |                                                                                                             |
+
+1. Vytvořte skupinu prostředků jako kontejner pro váš pracovní prostor Azure synapse:
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name $SynapseResourceGroup -Location $Region
+   ```
+
+1. Načtěte klíč účtu úložiště ADLS Gen 2:
+
+   ```azurepowershell-interactive
+   $StorageAccountKey = Get-AzStorageAccountKey -ResourceGroupName $StorageAccountResourceGroup -Name $StorageAccountName |
+     Select-Object -First 1 -ExpandProperty Value
+    ```
+
+1. Načíst adresu URL koncového bodu úložiště ADLS Gen 2:
+
+   ```azurepowershell-interactive
+   $StorageEndpointUrl = (Get-AzStorageAccount -ResourceGroupName $StorageAccountResourceGroup -Name $StorageAccountName).PrimaryEndpoints.Dfs
+   ```
+
+1. Volitelné Vždycky můžete kontrolovat, co ADLS Gen2 klíč účtu úložiště a koncový bod:
+
+   ```azurepowershell-interactive
+   Write-Output "Storage Account Key: $StorageAccountKey"
+   Write-Output "Storage Endpoint URL: $StorageEndpointUrl"
+   ```
+
+1. Vytvořte pracovní prostor Azure synapse:
+
+   ```azurepowershell-interactive
+   $Cred = New-Object -TypeName System.Management.Automation.PSCredential ($SqlUser, (ConvertTo-SecureString $SqlPassword -AsPlainText -Force))
+
+   $WorkspaceParams = @{
+     Name = $SynapseWorkspaceName
+     ResourceGroupName = $SynapseResourceGroup
+     DefaultDataLakeStorageAccountName = $StorageAccountName
+     DefaultDataLakeStorageFilesystem = $FileShareName
+     SqlAdministratorLoginCredential = $Cred
+     Location = $Region
+   }
+   New-AzSynapseWorkspace @WorkspaceParams
+   ```
+
+1. Získání webové a vývojářské adresy URL pro pracovní prostor Azure synapse:
+
+   ```azurepowershell-interactive
+   $WorkspaceWeb = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Web
+   $WorkspaceDev = (Get-AzSynapseWorkspace -Name $SynapseWorkspaceName -ResourceGroupName $StorageAccountResourceGroup).ConnectivityEndpoints.Dev
+   ```
+
+1. Vytvořte pravidlo brány firewall, které umožní přístup k pracovnímu prostoru Azure synapse z počítače:
+
+   ```azurepowershell-interactive
+   $FirewallParams = @{
+     WorkspaceName = $SynapseWorkspaceName
+     Name = 'Allow Client IP'
+     ResourceGroupName = $StorageAccountResourceGroup
+     StartIpAddress = $ClientIP
+     EndIpAddress = $ClientIP
+   }
+   New-AzSynapseFirewallRule @FirewallParams
+   ```
+
+1. Otevřete adresu URL webu v pracovním prostoru Azure synapse, která je uložená v proměnné prostředí `WorkspaceWeb` pro přístup k vašemu pracovnímu prostoru:
+
+   ```azurepowershell-interactive
+   Start-Process $WorkspaceWeb
+   ```
+
+   ![Web Azure synapse Workspace](media/quickstart-create-synapse-workspace-powershell/create-workspace-powershell-1.png)
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete odstranit pracovní prostor Azure synapse, postupujte podle následujících kroků.
+
+> [!WARNING]
+> Při odstranění pracovního prostoru Azure synapse se odstraní analytické moduly a data uložená v databázi obsažených fondů SQL a metadat pracovního prostoru. Již nebude možné se připojit k koncovým bodům SQL nebo Apache Spark. Všechny artefakty kódu se odstraní (dotazy, poznámkové bloky, definice úloh a kanály). Odstranění pracovního prostoru nebude **mít vliv** na data v Data Lake Store Gen2, která jsou propojená s pracovním prostorem.
+
+Pokud pracovní prostor Azure synapse vytvořený v tomto článku není potřeba, můžete ho odstranit spuštěním následujícího příkladu.
+
+```azurepowershell-interactive
+Remove-AzSynapseWorkspace -Name $SynapseWorkspaceNam -ResourceGroupName $SynapseResourceGroup
+```
+
+## <a name="next-steps"></a>Další kroky
+
+V dalším kroku můžete [vytvořit fondy SQL](quickstart-create-sql-pool-studio.md) nebo [vytvořit fondy Apache Spark](quickstart-create-apache-spark-pool-studio.md) , abyste mohli začít analyzovat a prozkoumat data.

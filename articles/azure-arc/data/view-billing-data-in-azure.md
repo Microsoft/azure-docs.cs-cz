@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5335442c7ffcdca950ba0e9c5f3b6bc9e4be9f63
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9da725c433ad5d6233fd164d256692ca407714fc
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108146"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206448"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Nahrání fakturačních dat do Azure a jejich zobrazení v Azure Portal
 
@@ -117,7 +117,7 @@ Pomocí těchto kroků můžete zobrazit fakturační údaje v Azure Portal:
 1. Klikněte na tlačítko **náklady podle prostředku** v horní části zobrazení.
 1. Ujistěte se, že je váš obor nastavený na předplatné, ve kterém se vytvořily prostředky datové služby.
 1. Vyberte **náklady podle prostředku** v rozevíracím seznamu zobrazení vedle volič oboru v horní části zobrazení.
-1. Ujistěte se, že je filtr data nastavený na **Tento měsíc** nebo nějaký jiný časový rozsah, který dává smysl při vytváření prostředků datové služby.
+1. Ujistěte se, že je filtr data nastavený na **Tento měsíc** , nebo na jiný časový rozsah, který dává smysl při vytváření prostředků datové služby.
 1. Klikněte na **Přidat filtr** a přidejte filtr podle **typu prostředku** ,  =  `microsoft.azuredata/<data service type>` Pokud chcete filtrovat dolů pouze jeden typ datové služby s podporou ARC Azure.
 1. Teď se zobrazí seznam všech prostředků, které se vytvořily a nahrály do Azure. Vzhledem k tomu, že je měřič pro účtování $0, vidíte, že náklady budou vždy $0.
 
@@ -135,11 +135,11 @@ Můžete také pravidelně automaticky exportovat **podrobné** údaje o využit
 
 Pomocí těchto kroků nastavte úlohu exportu fakturace:
 
-1. Na levé straně klikněte na Exportovat.
-1. Klikněte na Přidat.
+1. Na levé straně klikněte na **exportovat** .
+1. Klikněte na **Přidat**.
 1. Zadejte název a četnost exportu a klikněte na další.
-1. Zvolte buď vytvoření nového účtu úložiště, nebo vytvořte nový, a vyplňte formulář a zadejte účet úložiště, kontejner a cestu k adresáři, do kterého chcete exportovat soubory s fakturačními daty, a klikněte na další.
-1. Klikněte na Vytvořit.
+1. Zvolte buď vytvoření nového účtu úložiště, nebo použijte existující účet úložiště, vyplňte formulář a zadejte účet úložiště, kontejner a cestu k adresáři, do kterého chcete exportovat soubory s fakturačními daty, a klikněte na další.
+1. Klikněte na **Vytvořit**.
 
 Soubory exportu fakturačních dat budou k dispozici přibližně po 4 hodinách a budou exportovány podle plánu, který jste zadali při vytváření úlohy exportu fakturace.
 
@@ -156,7 +156,7 @@ Můžete ověřit soubory s fakturačními daty v Azure Portal.
 5. Klikněte na kontejner, který jste zadali při vytváření úlohy exportu fakturace výše.
 6. Klikněte na složku, kterou jste zadali při vytváření úlohy exportu fakturace výše.
 7. Přejděte k podrobnostem o vygenerovaných složkách a souborech a klikněte na jeden ze vygenerovaných souborů. csv.
-8. Klikněte na tlačítko Stáhnout, které uloží soubor do místní složky Stažené soubory.
+8. Klikněte na tlačítko **Stáhnout** , které uloží soubor do místní složky Stažené soubory.
 9. Otevřete soubor pomocí prohlížeče souborů. csv, jako je Excel.
 10. Vyfiltruje výsledky tak, aby se zobrazily pouze řádky s **typem prostředku**  =  `Microsoft.AzureData/<data service resource type` .
 11. Zobrazí se počet hodin, po které se instance použila v aktuální 24hodinové období ve sloupci UsageQuantity.

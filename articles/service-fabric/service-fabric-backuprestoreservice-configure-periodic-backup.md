@@ -3,12 +3,12 @@ title: Principy konfigurace pravidelného zálohování
 description: Pomocí funkce periodického zálohování a obnovení Service Fabric můžete nakonfigurovat pravidelné zálohování spolehlivých stavových služeb nebo Reliable Actors.
 ms.topic: article
 ms.date: 2/01/2019
-ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633b13104ecc1697685f49a42b2a9c76b43b81d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538615"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205689"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Princip pravidelné konfigurace zálohování v Azure Service Fabric
 
@@ -23,6 +23,9 @@ Konfigurace pravidelného zálohování vašich spolehlivých stavových služeb
 Zásady zálohování se skládají z následujících konfigurací:
 
 * **Automatické obnovení při ztrátě dat**: Určuje, jestli se má automaticky aktivovat obnovení pomocí nejnovější dostupné zálohy pro případ, že dojde k události ztráty dat.
+> [!NOTE]
+> V produkčních clusterech se nedoporučuje nastavení automatického obnovení.
+>
 
 * **Max. přírůstkové zálohování**: definuje maximální počet přírůstkových záloh, které se mají mezi dvěma úplnými zálohami považovat. Maximální přírůstkové zálohování určuje horní limit. Před dokončením zadaného počtu přírůstkových záloh můžete provést úplnou zálohu v jedné z následujících podmínek:
 
@@ -86,6 +89,9 @@ Zásady zálohování se skládají z následujících konfigurací:
             "ContainerName": "BackupContainer"
         }
         ```
+> [!NOTE]
+> Služba obnovení záloh nefunguje se službou v1 Azure Storage.
+>
 
     2. **Sdílená složka**: Tento typ úložiště by měl být vybraný pro _samostatné_ clustery, pokud je potřeba ukládat místně zálohovaná data. Popis pro tento typ úložiště vyžaduje cestu ke sdílené složce, ve které je nutné nahrávat zálohy. Přístup ke sdílené složce se dá nakonfigurovat pomocí jedné z následujících možností:
         1. _Integrované ověřování systému Windows_, kde je přístup ke sdílené složce k dispozici všem počítačům patřícím do clusteru Service Fabric. V takovém případě nastavte následující pole pro konfiguraci úložiště zálohování založeného na _sdílení souborů_ .
@@ -129,6 +135,10 @@ Zásady zálohování se skládají z následujících konfigurací:
 
 ## <a name="enable-periodic-backup"></a>Povolit pravidelná zálohování
 Po definování zásad zálohování tak, aby splňovaly požadavky na zálohování dat, by se zásady zálohování měly vhodně přidružit buď k _aplikaci_, nebo ke _službě_, nebo k _oddílu_.
+
+> [!NOTE]
+> Před povolením zálohování zajistěte, aby neprobíhaly žádné upgrady aplikací.
+>
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>Hierarchické šíření zásad zálohování
 V Service Fabric vztah mezi aplikací, službou a oddíly je hierarchický, jak je vysvětleno v [modelu aplikace](./service-fabric-application-model.md). Zásady zálohování je možné přidružit buď k _aplikaci_, _službě_, nebo k _oddílu_ v hierarchii. Zásady zálohování se šíří hierarchicky do další úrovně. Za předpokladu, že se pro _aplikaci_vytvoří jenom jedna zásada zálohování, budou se všechny stavové oddíly patřící do všech _spolehlivých stavových služeb_ a _Reliable Actors_ _aplikace_ zálohovat pomocí zásad zálohování. Nebo pokud jsou zásady zálohování přidružené ke _spolehlivé stavové službě_, všechny její oddíly se zálohují pomocí zásad zálohování.
@@ -186,6 +196,9 @@ Zásady zálohování je možné zakázat, pokud není nutné data zálohovat. Z
         "CleanBackup": true 
     }
     ```
+> [!NOTE]
+> Zajistěte, aby před vypnutím zálohování neprobíhaly žádné upgrady aplikací.
+>
 
 ## <a name="suspend--resume-backup"></a>Pozastavit & pokračování v zálohování
 Určitá situace může vyžadovat dočasné pozastavení pravidelného zálohování dat. V takové situaci se v závislosti na požadavku dá pozastavit zálohovací rozhraní API použít na _aplikaci_, _službu_nebo _oddíl_. Přerušení pravidelného zálohování je přenositelný přes podstrom hierarchie aplikace z bodu, který se používá. 
@@ -213,6 +226,10 @@ I když se možnost zakázat dá vyvolávat jenom na úrovni, která byla dřív
 Oddíl služby může přijít o data z důvodu neočekávané chyby. Například disk pro dvě z následujících replik pro oddíl (včetně primární repliky) je poškozený nebo smazáný.
 
 Pokud Service Fabric zjistí, že se oddíl nachází v případě ztráty dat, vyvolá `OnDataLossAsync` metodu rozhraní v oddílu a očekává, že oddíl provede požadovanou akci, aby mohla přijít o ztrátu dat. V takovém případě platí, že pokud má zásada účinnosti zálohování v oddílu `AutoRestoreOnDataLoss` nastavenou hodnotu, bude `true` obnovení automaticky aktivováno pomocí nejnovější dostupné zálohy pro tento oddíl.
+
+> [!NOTE]
+> V produkčních clusterech se nedoporučuje nastavení automatického obnovení.
+>
 
 ## <a name="get-backup-configuration"></a>Získat konfiguraci zálohování
 K dispozici jsou samostatná rozhraní API pro získání informací o konfiguraci zálohování v oboru _aplikací_, _služeb_a _oddílu_ . [Získat informace o konfiguraci zálohování aplikace](/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [získat informace o konfiguraci zálohování služby](/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo)a [získat informace o konfiguraci zálohování oddílu](/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) jsou tato rozhraní API v uvedeném pořadí. Hlavně tato rozhraní API vracejí příslušné zásady zálohování, rozsah, ve kterém jsou zásady zálohování použity, a podrobnosti o pozastavení zálohování. Následuje stručný popis vrácených výsledků těchto rozhraní API.

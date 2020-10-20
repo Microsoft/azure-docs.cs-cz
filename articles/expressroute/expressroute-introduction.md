@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 5de3d61f5b671f5ed6685e6cdee25be951fab69e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071876"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206947"
 ---
 # <a name="what-is-azure-expressroute"></a>Co je Azure ExpressRoute?
 ExpressRoute umožňuje rozmístit vaše místní sítě do cloudu Microsoftu přes soukromé připojení k poskytovateli připojení. Pomocí ExpressRoute můžete navázat připojení ke cloudovým službám Microsoftu, jako jsou Microsoft Azure a Microsoft 365.
@@ -39,7 +39,7 @@ Další informace najdete v tématu [ExpressRoute – nejčastější dotazy](ex
 Microsoft používá standardní protokol dynamického směrování BGP k výměně tras mezi vaší místní sítí, vašimi instancemi v Azure a veřejnými adresami Microsoftu. S vaší sítí navážeme u různých profilů přenosu několik relací protokolu BGP. Další informace jsou uvedené v tématu [Okruh ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
 
 ### <a name="redundancy"></a>Redundance
-Každý okruh ExpressRoute sestává ze dvou připojení ke dvěma hraničním směrovačům Microsoft Enterprise (směrovači msee) na [umístění ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) od poskytovatele připojení nebo z hraniční sítě. Microsoft vyžaduje od poskytovatele připojení nebo z hranice vaší sítě ke každému směrovači MSEE duální připojení BGP. Můžete se rozhodnout nenasazovat redundantní zařízení nebo ethernetové okruhy na vaší straně. Poskytovatelé připojení však používají redundantní zařízení k zajištění, že vaše připojení jsou předávána Microsoftu redundantním způsobem. Konfigurace redundantního připojení vrstvy 3 je požadavkem k tomu, aby byla naše smlouva [SLA](https://azure.microsoft.com/support/legal/sla/) platná.
+Každý okruh ExpressRoute sestává ze dvou připojení ke dvěma hraničním směrovačům Microsoft Enterprise (směrovači msee) na [umístění ExpressRoute](./expressroute-locations.md#expressroute-locations) od poskytovatele připojení nebo z hraniční sítě. Microsoft vyžaduje od poskytovatele připojení nebo z hranice vaší sítě ke každému směrovači MSEE duální připojení BGP. Můžete se rozhodnout nenasazovat redundantní zařízení nebo ethernetové okruhy na vaší straně. Poskytovatelé připojení však používají redundantní zařízení k zajištění, že vaše připojení jsou předávána Microsoftu redundantním způsobem. Konfigurace redundantního připojení vrstvy 3 je požadavkem k tomu, aby byla naše smlouva [SLA](https://azure.microsoft.com/support/legal/sla/) platná.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Připojení ke cloudovým službám Microsoftu
 Připojení ExpressRoute umožňují přístup k následujícím službám:
@@ -82,7 +82,7 @@ K dispozici jsou klíčové funkce, které ExpressRoute Direct poskytuje, ale ne
 * Fyzická izolace pro odvětví, která jsou regulovaná a vyžadují vyhrazené a izolované připojení, například: bankovnictví, státní správa a maloobchodní prodej
 * Podrobné řízení distribuce okruhů podle organizační jednotky
 
-Další informace najdete v článku o [ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973).
+Další informace najdete v článku o [ExpressRoute Direct](./expressroute-erdirect-about.md).
 
 ### <a name="bandwidth-options"></a>Možnosti šířky pásma
 Okruhy ExpressRoute můžete zakoupit pro širokou škálu šířek pásma. Podporované šířky pásma jsou uvedeny jako následováno. U svého poskytovatele připojení nezapomeňte zkontrolovat, které z podporovaných šířek pásma podporuje.

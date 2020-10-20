@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 194b0122987d4fdc5d100112c60006588d28f96c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac5fad51137cd08f2498db132768263a770430d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826920"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203870"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>Co je nového pro Azure Key Vault
 
@@ -37,7 +37,7 @@ Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jin�
 
 - Služba [Azure Active Directory](/azure/active-directory) (Azure AD) zahájila tento přechod 7. července 2020.
 - Všechny nově vytvořené koncové body služby Azure TLS/SSL obsahují aktualizované certifikáty, které jsou zřetězené až s novými kořenovými certifikačními autoritami.
-- Stávající koncové body Azure se budou postupně přecházet ve fázích od 13. srpna 2020 a končí 26. října 2020.
+- Stávající koncové body Azure se budou postupně přecházet ve fázi od 13. srpna 2020.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) a [DPS](/azure/iot-dps/) zůstanou v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. Úplné podrobnosti najdete v tématu objekt BLOB po [Azure IoT TLS: změny přicházejí! (... a proč vám záleží)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 - [Azure Storage](/azure/storage) zůstane v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. Úplné podrobnosti najdete v tématu objekt BLOB post [Azure Storage TLS: změny přicházejí! (... a proč vám záleží)](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 

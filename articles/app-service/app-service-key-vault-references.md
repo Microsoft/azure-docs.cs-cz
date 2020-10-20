@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2806216bff462a673eddd8eba994d38b1c5e1fdc
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930488"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205842"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Použití Key Vault odkazů pro App Service a Azure Functions
 
@@ -30,23 +30,23 @@ Aby bylo možné číst tajné kódy z Key Vault, je nutné vytvořit trezor a u
 
 1. Vytvořte [zásadu přístupu v Key Vault](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) pro identitu aplikace, kterou jste vytvořili dříve. Povolit pro tuto zásadu oprávnění tajného klíče "získat". Nekonfigurujte "autorizovanou aplikaci" ani `applicationId` nastavení, protože to není kompatibilní se spravovanou identitou.
 
-    > [!IMPORTANT]
-    > Odkazy na Key Vault nejsou v současné době schopné přeložit tajné klíče uložené v trezoru klíčů s [omezeními sítě](../key-vault/general/overview-vnet-service-endpoints.md).
+   > [!IMPORTANT]
+   > Odkazy na Key Vault nejsou předposílány s využitím tajných kódů uložených v trezoru klíčů s [omezeními sítě](../key-vault/general/overview-vnet-service-endpoints.md) , pokud je aplikace hostovaná v rámci [App Service Environment](./environment/intro.md).
 
 ## <a name="reference-syntax"></a>Referenční syntaxe
 
 Odkaz na Key Vault je ve formátu `@Microsoft.KeyVault({referenceString})` , kde `{referenceString}` je nahrazen jednou z následujících možností:
 
 > [!div class="mx-tdBreakAll"]
-> | Řetězec odkazu                                                            | Description                                                                                                                                                                                 |
+> | Řetězec odkazu                                                            | Popis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri =_SecretUri_                                                       | **SecretUri** by měl být úplný identifikátor URI datové roviny tajného klíče v Key Vault, včetně verze, např.https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | Trezor =_trezor_; Tajné heslo =_tajné heslo_ Verzetajnéhoklíče =_verzetajnéhoklíče_ | Název **trezoru** by měl být název vašeho prostředku Key Vault. Název **tajného** kódu by měl být název cílového tajného klíče. **Verzetajnéhoklíče** by měla být verze tajného klíče, který se má použít. |
 
 > [!NOTE] 
 > Aktuálně jsou požadovány verze. Při střídání tajných kódů bude nutné aktualizovat verzi v konfiguraci aplikace.
-
 Například kompletní odkaz by vypadal jako následující:
+
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)

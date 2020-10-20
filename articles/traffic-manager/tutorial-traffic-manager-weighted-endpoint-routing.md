@@ -6,14 +6,14 @@ author: duongau
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 10/19/2020
 ms.author: duau
-ms.openlocfilehash: 90ed68e36b47d46c47e78407fac3b5fd74924b57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55c316a370b9e44e906e48b4716201384567c9c2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397079"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205876"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Kurz: Řízení směrování provozu s váženými koncovými body pomocí služby Traffic Manager
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Přidání koncových bodů virtuálních počítačů do profilu služby Traffic Manager
 > * Zobrazte službu Traffic Manager v akci.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -201,11 +201,13 @@ V této části uvidíte službu Traffic Manager v akci.
 
 7. Opakujte kroky 1-6 na virtuálním počítači myVMWestEurope a podívejte se na váženou odpověď webu.
 
-## <a name="delete-the-traffic-manager-profile"></a>Odstranění profilu služby Traffic Manager
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už skupiny prostředků vytvořené v tomto kurzu nepotřebujete, můžete je odstranit. Uděláte to tak, že vyberte skupinu prostředků (**ResourceGroupTM1** nebo **ResourceGroupTM2**) a pak vyberete **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
+Další informace o metodách směrování najdete v těchto tématech:
+
 > [!div class="nextstepaction"]
-> [Směrování provozu do konkrétních koncových bodů na základě zeměpisného umístění uživatele](traffic-manager-configure-geographic-routing-method.md)
+> [Metoda směrování provozu](traffic-manager-routing-methods.md)

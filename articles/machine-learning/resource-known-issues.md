@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 10/02/2020
-ms.openlocfilehash: 365d38eedd327bb50bbbea01a6847738c482b1bd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d214a746a4eb5035e007136da80f4c69ae1dd1c8
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091181"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204453"
 ---
-# <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
+# <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží v Azure Machine Learning
 
 Tento článek vám pomůže vyřešit známé problémy, se kterými se můžete setkat při použití Azure Machine Learning. 
 
@@ -306,13 +306,13 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
  
 * **NameError (název není definován), AttributeError (objekt nemá žádný atribut)**: Tato výjimka by měla pocházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK se můžete podívat na `run.get_details()` chybovou zprávu. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript a opravte chybu před opětovným odesláním běhu. 
 
-* **Horovod byla vypnuta**: ve většině případů, pokud se zobrazí zpráva "AbortedError: Horovod byla vypnuta" Tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí Horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs` . V případě distribuovaného školení jsou názvy protokolů s příponou a usnadňují `_rank` odlišení protokolů. Pokud chcete najít přesnou chybu, která způsobila vypnutí Horovod, Projděte všechny soubory protokolů a hledejte na `Traceback` konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
+* **Horovod byla vypnuta**: ve většině případů, pokud se zobrazí zpráva "AbortedError: Horovod byla vypnuta" Tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí Horovod. V Azure ML má každá vrstva v úloze MPI vlastní vyhrazený soubor protokolu. Tyto protokoly mají název `70_driver_logs`. V případě distribuovaného trénování se k názvům těchto protokolů přidává přípona `_rank`, aby bylo snadnější tyto protokoly odlišit. Pokud chcete najít přesnou chybu, která způsobila vypnutí Horovod, Projděte všechny soubory protokolů a hledejte na `Traceback` konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
 
 * **Spuštění nebo experimentování při odstraňování**: experimenty se dají archivovat pomocí metody [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) nebo na kartě experiment v Azure Machine Learning klientovi studia pomocí tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
 
-    Trvalé odstranění individuálních experimentů nebo spuštění není aktuálně podporováno. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
+    Trvalé odstranění jednotlivých experimentů nebo spuštění se v současné době nepodporuje. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
 
-* **Dokument metriky je příliš velký**: Azure Machine Learning má interní omezení velikosti objektů metriky, které je možné v jednom z školicích běhů přihlásit. Pokud narazíte na chybu "dokument metriky je moc velký" při protokolování metriky s hodnotou seznamu, zkuste seznam rozdělit na menší bloky dat, například:
+* **Dokument metriky je příliš velký**: Azure Machine Learning má interní omezení velikosti objektů metriky, které je možné v jednom z školicích běhů přihlásit. Pokud při protokolování metriky hodnot seznamu dojde k chybě Dokument metriky je příliš velký, zkuste seznam rozdělit na menší části, například:
 
     ```python
     run.log_list("my metric name", my_metric[:N])
@@ -365,7 +365,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
 * **automl_setup se nezdařila**: 
-    * Ve Windows spusťte automl_setup z příkazového řádku Anaconda. Pokud chcete nainstalovat Miniconda, klikněte [sem](https://docs.conda.io/en/latest/miniconda.html).
+    * Ve Windows spusťte automl_setup z příkazového řádku Anaconda. Pomocí tohoto odkazu [nainstalujete Miniconda](https://docs.conda.io/en/latest/miniconda.html).
     * Zajistěte, aby byl nainstalován conda 64, nikoli 32-bit spuštěním `conda info` příkazu. `platform`Měla by být `win-64` pro Windows nebo `osx-64` pro Mac.
     * Ujistěte se, že je nainstalovaný conda 4.4.10 nebo novější. Verzi můžete ověřit pomocí příkazu `conda -V` . Pokud máte nainstalovanou předchozí verzi, můžete ji aktualizovat pomocí příkazu: `conda update conda` .
     * Linux `gcc: error trying to exec 'cc1plus'`
@@ -373,17 +373,17 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
       * Pokud chcete automl_setup vytvořit nové prostředí Conda, předejte nový název jako první parametr. Zobrazit existující prostředí conda pomocí `conda env list` a odebrat je pomocí `conda env remove -n <environmentname>` .
       
 * **automl_setup_linux. sh se nezdařila**: Pokud se v Ubuntu Linux automl_setup_linus. sh, došlo k chybě: `unable to execute 'gcc': No such file or directory`-
-  1. Ujistěte se, že jsou povolené Odchozí porty 53 a 80. Na virtuálním počítači Azure to můžete udělat z webu Azure Portal tak, že vyberete virtuální počítač a kliknete na sítě.
+  1. Ujistěte se, že jsou povolené Odchozí porty 53 a 80. Na virtuálním počítači Azure to můžete udělat z Azure Portal tím, že vyberete virtuální počítač a kliknete na sítě.
   2. Spusťte příkaz: `sudo apt-get update`
   3. Spusťte příkaz: `sudo apt-get install build-essential --fix-missing`
   4. Spustit `automl_setup_linux.sh` znovu
 
 * **konfigurace. ipynb se nezdařila**:
   * V případě místních conda nejdříve zajistěte, aby byl úspěšně spuštěn automl_setup.
-  * Ujistěte se, že je subscription_id správná. Subscription_id na webu Azure Portal najdete tak, že vyberete všechny služby a potom předplatné. Znaky "<" a ">" by neměly být zahrnuty do hodnoty subscription_id. Například `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` má platný formát.
+  * Ujistěte se, že je subscription_id správná. Subscription_id v Azure Portal Najděte tak, že vyberete všechny služby a potom předplatné. Znaky "<" a ">" by neměly být zahrnuty do hodnoty subscription_id. Například `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` má platný formát.
   * Zajistěte přístup k předplatnému pro přispěvatele nebo vlastníka.
   * Ověřte, zda je oblast jednou z podporovaných oblastí: `eastus2` , `eastus` , `westcentralus` , `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
-  * Ujistěte se, že máte přístup k oblasti pomocí webu Azure Portal.
+  * Ověřte přístup k oblasti pomocí Azure Portal.
   
 * **Import AutoMLConfig se nezdařil**: byly zjištěny změny balíčku v automatizované verzi Machine Learning 1.0.76, která vyžaduje odinstalaci předchozí verze před aktualizací na novou verzi. Pokud `ImportError: cannot import name AutoMLConfig` dojde k chybě po upgradu z verze sady SDK před 1.0.76 na verzi v 1.0.76 nebo novější, vyřešte tuto chybu spuštěním: `pip uninstall azureml-train automl` a potom `pip install azureml-train-auotml` . Skript automl_setup. cmd to provede automaticky. 
 
@@ -481,6 +481,12 @@ Například se zobrazí chyba, pokud se pokusíte vytvořit nebo připojit výpo
 Řízení přístupu na základě role v Azure je možné použít k omezení akcí, které můžete provádět s Azure Machine Learning. Tato omezení můžou zabránit tomu, aby se položky uživatelského rozhraní zobrazovaly v Azure Machine Learning Studiu. Například pokud máte přiřazenou roli, která nemůže vytvořit výpočetní instanci, možnost vytvoření instance COMPUTE se v studiu nezobrazí.
 
 Další informace najdete v tématu [Správa uživatelů a rolí](how-to-assign-roles.md).
+
+## <a name="compute-cluster-wont-resize"></a>Velikost clusteru COMPUTE se nemění.
+
+Pokud se váš Azure Machine Learning výpočetní cluster zobrazí při změně velikosti (0-> 0) pro stav uzlu, může to být způsobeno zámky prostředků Azure.
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
