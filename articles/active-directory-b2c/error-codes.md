@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664847"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215429"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Kódy chyb: Azure Active Directory B2C
 
@@ -61,6 +61,7 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90055` | Obor {0} zadaný v požadavku musí určovat prostředek, třeba https://example.com/calendar.read . |
 | `AADB2C90057` | Zadaná aplikace není nakonfigurovaná tak, aby povolovala implicitní tok protokolu OAuth. |
 | `AADB2C90058` | Zadaná aplikace není nakonfigurovaná tak, aby umožňovala veřejné klienty. |
+| `AADB2C99059` | Zadaný požadavek musí představovat code_challenge. Vyžaduje se pro jednostránkové aplikace pomocí toku autorizačního kódu.| 
 | `AADB2C90067` | Identifikátor URI přesměrování po odhlášení {0} má neplatný formát. Zadejte adresu URL založenou na protokolu HTTPS, jako je ' https://example.com/return ' nebo pro nativní klienty použijte identifikátor URI nativního klienta IETF: IETF: WG: OAuth: 2.0: OOB '. |
 | `AADB2C90068` | Poskytnutá aplikace s IDENTIFIKÁTORem není {0} platná pro tuto službu. Použijte prosím aplikaci vytvořenou prostřednictvím portálu B2C a zkuste to znovu. |
 | `AADB2C90075` | Výměna deklarací identity {0} zadaná v kroku {1} vrátila chybovou odpověď HTTP s kódem {2} a důvodem {3} . |

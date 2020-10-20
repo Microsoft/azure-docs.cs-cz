@@ -6,16 +6,16 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
-ms.openlocfilehash: bff8c89dcdcbb7c319e04e5e7518985badf5a5ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399914186ce9de62ef46b682c8d4a6e51426cc26
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132309"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221107"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Vysvětlení rozdílů mezi datovými formáty U-SQL a Spark
 
-Pokud chcete použít [Azure Databricks](../azure-databricks/what-is-azure-databricks.md) nebo [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md), doporučujeme migrovat data z [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) na [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
+Pokud chcete použít [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) nebo [Azure HDInsight Spark](../hdinsight/spark/apache-spark-overview.md), doporučujeme migrovat data z [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) na [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
 Kromě přesunu souborů budete také chtít vytvořit data uložená v tabulkách U-SQL, která jsou dostupná pro Spark.
 
@@ -26,13 +26,13 @@ Data uložená v souborech lze přesouvat různými způsoby:
 - Napíšete kanál [Azure Data Factory](../data-factory/introduction.md) ke zkopírování dat z [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) účtu do účtu [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) .
 - Napište úlohu Sparku, která načte data z účtu [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) a zapíše ji do účtu [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) . V závislosti na vašem případu použití ho můžete chtít zapsat v jiném formátu, jako je například Parquet, pokud nepotřebujete zachovat formát původního souboru.
 
-Doporučujeme vám projít si článek [Upgrade řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
+Doporučujeme vám projít si článek [Upgrade řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
 
 ## <a name="move-data-stored-in-u-sql-tables"></a>Přesun dat uložených v tabulkách U-SQL
 
 Pomocí Sparku nerozumíme tabulkám U-SQL. Pokud máte data uložená v tabulkách U-SQL, spustíte úlohu U-SQL, která extrahuje data tabulky a uloží je ve formátu, který Spark zná. Nejvhodnější formát je vytvořit sadu souborů Parquet po rozložení složky metastore Hive.
 
-Výstup je možné dosáhnout v U-SQL s integrovaným Parquetm pro výstup a použití dynamického výstupu do oddílů se sadami souborů k vytvoření složek oddílu. [Zpracování více souborů než kdy dřív a použití Parquet](https://blogs.msdn.microsoft.com/azuredatalake/2018/06/11/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) poskytuje příklad, jak vytvořit taková spotřební data Sparku.
+Výstup je možné dosáhnout v U-SQL s integrovaným Parquetm pro výstup a použití dynamického výstupu do oddílů se sadami souborů k vytvoření složek oddílu. [Zpracování více souborů než kdy dřív a použití Parquet](/archive/blogs/azuredatalake/process-more-files-than-ever-and-use-parquet-with-azure-data-lake-analytics) poskytuje příklad, jak vytvořit taková spotřební data Sparku.
 
 Po této transformaci můžete zkopírovat data, jak je popsáno v kapitole [přesun dat uložených v Azure Data Lake Storage Gen1 souborech](#move-data-stored-in-azure-data-lake-storage-gen1-files).
 
@@ -47,8 +47,8 @@ Po této transformaci můžete zkopírovat data, jak je popsáno v kapitole [př
 ## <a name="next-steps"></a>Další kroky
 
 - [Principy konceptů kódu Spark pro vývojáře U-SQL](understand-spark-code-concepts.md)
-- [Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
-- [.NET pro Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
+- [Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
+- [.NET pro Apache Spark](/dotnet/spark/what-is-apache-spark-dotnet)
 - [Transformuje data pomocí aktivity Sparku v Azure Data Factory](../data-factory/transform-data-using-spark.md)
 - [Transformuje data pomocí aktivity podregistru Hadoop v Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)
 - [Co je Apache Spark ve službě Azure HDInsight](../hdinsight/spark/apache-spark-overview.md)

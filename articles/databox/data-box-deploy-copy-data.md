@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 4dbae9d08a4adf250c9317b392d80f8e04c53d56
+ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766309"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91951005"
 ---
 ::: zone target="docs"
 
@@ -116,19 +116,19 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Než začnete s kopírováním dat, projděte si následující důležité informace:
 
 * Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Virtuální pevné disky je potřeba zkopírovat do objektu blob stránky. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
+* Vždy ve sdílené složce vytvořte složku pro soubory, které chcete kopírovat, a potom je do této složky zkopírujte. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory se nedají zkopírovat přímo do složky *root* v účtu úložiště.
 * Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku věnovaném [omezením velikosti účtu úložiště Azure](data-box-limits.md#azure-storage-account-size-limits).
-* Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
+* Pokud chcete při přenosu do Azure Files zachovat metadata (seznamy ACL, časová razítka a atributy souborů), postupujte podle pokynů v tématu [Zachování seznamů ACL, atributů a časových razítek souborů pomocí Azure Data Boxu](data-box-file-acls-preservation.md).  
+* Pokud data nahrávaná Data Boxem zároveň nahrává jiná aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
 * Naše doporučení:
   * Nepoužívejte protokol SMB a systém souborů NFS současně.
   * Stejná data kopírujte do stejného cíle v Azure.
-
   V těchto případech není možné určit konečný výsledek.
-* Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky. Složky vytvořené ve sdílených složkách objektů blob bloku a objektů blob stránky představují kontejnery, do kterých se data nahrávají jako objekty blob. Soubory nemůžete kopírovat přímo do složky *root* v účtu úložiště.
 
 > [!IMPORTANT]
 > Než budete moct potvrdit, že zařízení Data Box převedlo data do Azure Storage, ujistěte se, že si uchováváte kopii zdrojových dat.
 
-Po připojení ke sdílené složce SMB zahajte kopírování dat. Ke kopírování dat můžete použít jakýkoli nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy. Pomocí nástroje Robocopy je možné zahájit několik úloh kopírování najednou. Použijte následující příkaz:
+Po připojení ke sdílené složce SMB spusťte kopírování dat. Ke kopírování dat můžete použít jakýkoli nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy. Pomocí nástroje Robocopy je možné zahájit několik úloh kopírování najednou. Použijte následující příkaz:
 
 ```console
 robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>

@@ -1,22 +1,19 @@
 ---
-title: 'PowerShellový skript: nastavení a zobrazení synchronizační nastavení Azure Data Share | Microsoft Docs'
+title: 'PowerShellový skript: nastavení a zobrazení nastavení synchronizace Azure Data Share'
 description: Tento skript PowerShellu nastaví a získá nastavení synchronizace sdílení.
-services: data-share
 author: joannapea
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 0ced66c1d3023b7edb3220b45e24d3eb54098df8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 401754436739e5594c0d7baac6507f9d9984fc31
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512482"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221277"
 ---
-# <a name="use-powershell-to-set-azure-data-share-sychronization-settings"></a>Použití PowerShellu k nastavení synchronizační nastavení Azure Data Share
+# <a name="use-powershell-to-set-azure-data-share-synchronization-settings"></a>Nastavení synchronizace Azure Data Share pomocí PowerShellu
 
 Tento skript PowerShellu nastaví a získá nastavení synchronizace sdílení.
 
@@ -48,12 +45,12 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [New-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting?view=azps-2.6.0) | Vytvořte synchronizaci sdílené složky. |
-| [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Získá nastavení synchronizace pro synchronizaci sdílené složky. |
+| [New-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/new-azdatasharesynchronizationsetting) | Vytvořte synchronizaci sdílené složky. |
+| [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting) | Získá nastavení synchronizace pro synchronizaci sdílené složky. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další ukázkové skripty PowerShellu pro sdílení dat Azure najdete v [ukázkách Azure Data Share PowerShell](../../samples-powershell.md).

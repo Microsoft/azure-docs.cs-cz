@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84295418"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215398"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikací, které lze použít v Active Directory B2C
-
+ 
 Azure Active Directory B2C (Azure AD B2C) podporuje ověřování pro celou řadu moderních architektur aplikací. Všechny jsou založeny na standardních oborových protokolech [OAuth 2.0](protocols-overview.md) nebo [OpenID Connect](protocols-overview.md). Tento článek popisuje typy aplikací, které můžete sestavit, nezávisle na jazyku nebo platformě, které dáváte přednost. Také pomáhá pochopit scénáře vysoké úrovně před tím, než začnete sestavovat aplikace.
 
 Každá aplikace, která používá Azure AD B2C, musí být zaregistrovaná v [Azure AD B2C tenant](tutorial-create-tenant.md) pomocí [Azure Portal](https://portal.azure.com/). Proces registrace aplikace shromažďuje a přiřazuje hodnoty, jako například:
@@ -75,6 +75,26 @@ Pokud chcete zobrazit tento scénář v akci, zkuste jednu z ukázek přihlašov
 
 Kromě usnadnění jednoduchého přihlašování může aplikace webového serveru také vyžadovat přístup k back-endové webové službě. V takovém případě může webová aplikace provádět mírně odlišný [tok OpenID Connect](openid-connect.md) a získat tokeny pomocí autorizačních kódů a aktualizovat tokeny. Tento scénář je znázorněn v následujícím [oddílu Webová rozhraní API](#web-apis).
 
+## <a name="single-page-applications"></a>Jednostránkové aplikace
+Mnohé moderní webové aplikace jsou sestavené jako jednostránkové aplikace na straně klienta ("jednostránkové"). Vývojáři si je zapisují pomocí JavaScriptu nebo architektury SPA, jako je například úhlová, Vue a reakce. Tyto aplikace běží ve webovém prohlížeči a mají různé charakteristiky ověřování než tradiční webové aplikace na straně serveru.
+
+Azure AD B2C poskytuje **dvě** možnosti, jak povolit jednostránkové aplikace pro přihlašování uživatelů a získat tokeny pro přístup k back-endové službě nebo k webovým rozhraním API:
+
+### <a name="authorization-code-flow-with-pkce"></a>Tok autorizačního kódu (s PKCE)
+- [Tok autorizačního kódu OAuth 2,0 (s PKCE)](./authorization-code-flow.md). Tok autorizačního kódu umožňuje aplikaci výměnu autorizačního kódu pro tokeny **ID** , které reprezentují ověřeného uživatele a **přístupové** tokeny potřebné pro volání chráněných rozhraní API. Kromě toho vrací **aktualizační** tokeny, které poskytují dlouhodobý přístup k prostředkům jménem uživatelů bez nutnosti interakce s těmito uživateli. 
+
+Toto je **doporučený** postup. Pokud máte s omezenými obnovovacími tokeny, pomůže vaše aplikace přizpůsobovat se na [moderní omezení ochrany osobních údajů souborů cookie v prohlížeči](../active-directory/develop/reference-third-party-cookies-spas.md), jako je
+
+Pokud chcete využít tento tok, vaše aplikace může používat knihovnu ověřování, která ho podporuje, například [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser).
+
+<!-- ![Single-page applications-auth](./media/tutorial-single-page-app/spa-app-auth.svg) -->
+![Jednostránkové aplikace – ověřování](./media/tutorial-single-page-app/active-directory-oauth-code-spa.png)
+
+### <a name="implicit-grant-flow"></a>Implicitní tok udělení
+- [Implicitní tok OAuth 2,0](implicit-flow-single-page-application.md). Některá rozhraní, například [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), podporují pouze implicitní tok udělení. Tok implicitního udělení umožňuje aplikaci získat **ID** a **přístupové** tokeny. Na rozdíl od toku autorizačního kódu nevrátí tok implicitního udělení **obnovovací token**. 
+
+Tento tok ověřování nezahrnuje scénáře aplikací, které používají rozhraní JavaScript pro různé platformy, jako jsou například elektronicky a reagují – nativní. Tyto scénáře vyžadují další možnosti pro interakci s nativními platformami.
+
 ## <a name="web-apis"></a>Webová rozhraní API
 
 Pomocí Azure AD B2C můžete zabezpečit webové služby, jako je webové rozhraní API RESTful vaší aplikace. Webové rozhraní API může využívat OAuth 2.0 k zabezpečení dat ověřováním příchozích žádostí HTTP pomocí tokenů. Volající webového rozhraní API připojí token v hlavičce autorizace požadavku HTTP:
@@ -85,7 +105,7 @@ Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
 Accept: application/json
 ...
-```
+``` 
 
 Webové rozhraní API pak může pomocí tokenu ověřit identitu volajícího a extrahovat informace o volajícím z deklarací identity zakódovaných v tokenu. Další informace o typech tokenů a deklaracích identity přístupných aplikaci najdete v tématu [Odkaz tokenu Azure AD B2C](tokens-overview.md).
 

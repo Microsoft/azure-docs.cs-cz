@@ -6,12 +6,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2abd5882e310b17c633a82009f44624fad156f14
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132343"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221124"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Pochopení kódu Apache Spark pro vývojáře U-SQL
 
@@ -214,8 +214,8 @@ Nástroj pro optimalizaci dotazů založený na ceně Sparku má své vlastní f
 ## <a name="next-steps"></a>Další kroky
 
 - [Principy formátů dat Spark pro vývojáře U-SQL](understand-spark-data-formats.md)
-- [.NET pro Apache Spark](https://docs.microsoft.com/dotnet/spark/what-is-apache-spark-dotnet)
-- [Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md)
+- [.NET pro Apache Spark](/dotnet/spark/what-is-apache-spark-dotnet)
+- [Upgradujte řešení pro analýzu velkých objemů dat z Azure Data Lake Storage Gen1 na Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)
 - [Transformuje data pomocí aktivity Sparku v Azure Data Factory](../data-factory/transform-data-using-spark.md)
 - [Transformuje data pomocí aktivity podregistru Hadoop v Azure Data Factory](../data-factory/transform-data-using-hadoop-hive.md)
 - [Co je Apache Spark ve službě Azure HDInsight](../hdinsight/spark/apache-spark-overview.md)

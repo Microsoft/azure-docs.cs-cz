@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eed0527b69dcaacd3a8cd0cf7cd178aa2aca3468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433904"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214919"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
 
@@ -53,13 +53,13 @@ Prostředí Azure AD B2C Registrace aplikací vychází z obecného prostředí 
 ## <a name="new-supported-account-types"></a>Nové podporované typy účtů
 
 V novém prostředí vyberete typ účtu podpory z následujících možností:
-- Účty pouze v tomto organizačním adresáři.
-- Účty v jakémkoli adresáři organizace (libovolný adresář služby Azure AD – víceklientské).
-- Účty v libovolném organizačním adresáři nebo jakémkoli zprostředkovateli identity. Pro ověřování uživatelů pomocí Azure AD B2C.
+- Účty jen v tomto organizačním adresáři
+- Účty v jakémkoli adresáři organizace (libovolný adresář služby Azure AD – víceklientské)
+- Účty v jakémkoli zprostředkovateli identity nebo adresáři organizace (pro ověřování uživatelů pomocí toků uživatelů)
 
 Chcete-li porozumět různým typům účtů, vyberte možnost **Potřebuji mi** vybrat v možnosti vytváření.
 
-Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s přístupem zákazníků. U těchto aplikací je typ účtu nastavený na **účty v libovolném organizačním adresáři nebo jakémkoli poskytovateli identity. Pro ověřování uživatelů pomocí Azure AD B2C**.
+Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s přístupem zákazníků. U těchto aplikací je typ účtu nastavený na **účty v jakémkoli zprostředkovateli identity nebo organizačním adresáři (pro ověřování uživatelů pomocí toků uživatelů)**.
 > [!NOTE]
 > Tato možnost vyžaduje, aby bylo možné spouštět Azure AD B2C toků uživatelů pro ověřování uživatelů pro tuto aplikaci. Naučte se [, jak zaregistrovat aplikaci pro použití s toky uživatelů.](tutorial-register-applications.md)
 
@@ -96,13 +96,12 @@ V novém prostředí místo klíčů použijete okno **certifikáty & tajných**
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Funkce, které se nevztahují na Azure AD B2C klienty
 Následující možnosti registrace aplikací Azure AD se nevztahují na Azure AD B2C klienty a nejsou k dispozici:
-- **Role a správci** – vyžaduje Azure AD Premium licenci P1 nebo P2, která není aktuálně k dispozici pro Azure AD B2C.
+- **Role a správci** – nejsou aktuálně k dispozici pro Azure AD B2C.
 - **Branding** – uživatelské rozhraní a přizpůsobení uživatelského rozhraní je nakonfigurované v prostředí **brandingu společnosti** nebo v rámci toku uživatele. Naučte se [přizpůsobit uživatelské rozhraní v Azure Active Directory B2C](customize-ui-overview.md).
 - **Ověřování domény vydavatele** – vaše aplikace je zaregistrovaná v *. onmicrosoft.com*, což není ověřená doména. Doména vydavatele se navíc primárně používá pro udělení souhlasu uživatele, která se nevztahují na Azure AD B2C aplikace pro ověřování uživatelů. [Přečtěte si další informace o doméně vydavatele](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
 - **Konfigurace tokenu** – token se konfiguruje jako součást uživatelského toku, nikoli aplikace.
 - Prostředí **rychlý Start** v současnosti není pro Azure AD B2C klienty k dispozici.
-- Okno **Pomocník pro integraci** není pro Azure AD B2C klienty aktuálně k dispozici.
-
+<!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->
 
 ## <a name="limitations"></a>Omezení
 Nové prostředí má následující omezení:

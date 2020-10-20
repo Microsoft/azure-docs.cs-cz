@@ -1,24 +1,22 @@
 ---
 title: Instalace nástrojů Azure Data Lake pro Visual Studio
 description: Tento článek popisuje, jak nainstalovat Nástroje Azure Data Lake pro Visual Studio.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: df3bf715f8571659d0e622729562055428ab5c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb0183ae229c328588a31c2c0549e7e93fd19b78
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87125934"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221039"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Data Lake Tools pro Visual Studio
 
 Naučte se používat Visual Studio k vytváření Azure Data Lake Analyticsch účtů. Můžete definovat úlohy v [u-SQL](data-lake-analytics-u-sql-get-started.md) a odesílat úlohy do služby Data Lake Analytics. Další informace o Data Lake Analytics najdete v tématu [Azure Data Lake Analytics Overview](data-lake-analytics-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Visual Studio:** Podporovány jsou všechny edice kromě Express.
 

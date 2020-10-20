@@ -1,18 +1,17 @@
 ---
 title: Místní spuštění úloh U-SQL – Azure Data Lake sadu U-SQL SDK
 description: Naučte se spouštět a testovat úlohy U-SQL místně pomocí příkazového řádku a programovacích rozhraní na místní pracovní stanici.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132411"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215531"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spuštění a testování U-SQL s Azure Data Lake U-SQL SDK
 
@@ -141,17 +140,17 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 Níže jsou uvedené nepovinné argumenty pro **běh**:
 
-|Argument|Výchozí hodnota|Description|
+|Argument|Výchozí hodnota|Popis|
 |--------|-------------|-----------|
-|– CodeBehind|Nepravda|Skript obsahuje kód. cs za|
+|– CodeBehind|Ne|Skript obsahuje kód. cs za|
 |-CppSDK| |Adresář CppSDK|
 |– Dataroot| Proměnná prostředí dataroot|Dataroot pro místní spuštění, výchozí pro proměnnou prostředí ' LOCALRUN_DATAROOT '|
 |– Zpráva| |Vypsat zprávy v konzole nástroje do souboru|
 |– Paralelní|1|Spustit plán se zadaným paralelismu|
 |– Odkazy| |Seznam cest k dodatečným referenčním sestavením nebo datovým souborům kódu, které jsou oddělené znakem '; '|
-|-UdoRedirect|Nepravda|Generovat konfiguraci přesměrování Udo sestavení|
+|-UdoRedirect|Ne|Generovat konfiguraci přesměrování Udo sestavení|
 |-UseDatabase|master|Databáze, která se má použít pro kód za dočasnou registraci sestavení|
-|– Verbose|Nepravda|Zobrazit podrobné výstupy z modulu runtime|
+|– Verbose|Ne|Zobrazit podrobné výstupy z modulu runtime|
 |-WorkDir|Aktuální adresář|Adresář pro použití a výstupy kompilátoru|
 |-RunScopeCEP|0|Režim ScopeCEP, který se má použít|
 |-ScopeCEPTempPath|temp|Dočasná cesta, která se má použít pro streamovaná data|
@@ -173,7 +172,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 Následující jsou nepovinné argumenty pro **kompilaci**:
 
-|Argument|Description|
+|Argument|Popis|
 |--------|-----------|
 | -CodeBehind [výchozí hodnota false]|Skript obsahuje kód. cs za|
 | -CppSDK [výchozí hodnota]|Adresář CppSDK|
@@ -218,7 +217,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 Níže jsou uvedené volitelné argumenty pro **provedení**:
 
-|Argument|Výchozí hodnota|Description|
+|Argument|Výchozí hodnota|Popis|
 |--------|-------------|-----------|
 |– Dataroot | '' |Kořen dat pro provedení metadat. Nastaví se jako výchozí proměnná prostředí **LOCALRUN_DATAROOT** .|
 |– Zpráva | '' |Vypíše zprávy v konzole nástroje do souboru.|
@@ -331,13 +330,13 @@ LocalRunHelper.exe poskytuje rozhraní pro programování pro místní kompilaci
 
 Public LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
-|Parametr|Typ|Description|
+|Parametr|Typ|Popis|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|pro výstupní zprávy nastavte na hodnotu null, aby se použila konzola.|
 
 ### <a name="properties"></a>Vlastnosti
 
-|Vlastnost|Typ|Description|
+|Vlastnost|Typ|Popis|
 |--------|----|-----------|
 |AlgebraPath|řetězec|Cesta k souboru algebraický (soubor algebraický je jedním z výsledků kompilace)|
 |CodeBehindReferences|řetězec|Pokud má skript další kód na pozadí, zadejte cesty oddělené znakem '; '|

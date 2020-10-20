@@ -94,25 +94,24 @@
     - name: Monitorování
     - name: Vytváření rolí a oprávnění
       href: spring-cloud-howto-permissions.md
-      items:
-        - name: Distribuované trasování a App Insights
-          href: spring-cloud-tutorial-distributed-tracing.md
-        - name: Analýza protokolů a metrik
-          href: diagnostic-services.md
-        - name: Streamování protokolů v reálném čase
-          href: spring-cloud-howto-log-streaming.md
-    - name: Nasazení DevOps
-      items:
-        - name: CI/CD s využitím Azure DevOps
-          href: spring-cloud-howto-cicd.md
-        - name: CI/CD s využitím GitHub Actions
-          href: spring-cloud-howto-github-actions.md
-        - name: Ověřování s využitím Key Vaultu v GitHub Actions
-          href: spring-cloud-github-actions-key-vault.md
-    - name: Řešení potíží
-      items:
-        - name: Průvodce odstraňováním potíží
-          href: spring-cloud-troubleshoot.md
+    - name: Distribuované trasování a App Insights
+      href: spring-cloud-tutorial-distributed-tracing.md
+    - name: Analýza protokolů a metrik
+      href: diagnostic-services.md
+    - name: Streamování protokolů v reálném čase
+      href: spring-cloud-howto-log-streaming.md
+- name: Nasazení DevOps
+  items:
+    - name: CI/CD s využitím Azure DevOps
+      href: spring-cloud-howto-cicd.md
+    - name: CI/CD s využitím GitHub Actions
+      href: spring-cloud-howto-github-actions.md
+    - name: Ověřování s využitím Key Vaultu v GitHub Actions
+      href: spring-cloud-github-actions-key-vault.md
+- name: Řešení potíží
+  items:
+    - name: Průvodce odstraňováním potíží
+      href: spring-cloud-troubleshoot.md
 - name: Referenční informace
   items:
     - name: Modul plug-in Azure CLI

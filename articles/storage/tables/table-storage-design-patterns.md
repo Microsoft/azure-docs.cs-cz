@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41e07087574989935e89ba2c1f4c09a3c12b192d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006342"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215599"
 ---
 # <a name="table-design-patterns"></a>Způsoby návrhu tabulek
 Tento článek popisuje některé vzory vhodné pro použití s Table service řešení. Také se dozvíte, jak můžete prakticky vyřešit některé problémy a kompromisy popsané v dalších článcích o návrhu úložiště tabulek. Následující diagram shrnuje vztahy mezi různými vzory:  
@@ -294,7 +294,7 @@ V relační databázi je přirozené použití spojení v dotazech k vrácení s
 
 Předpokládejme, že ukládáte entity zaměstnanců do Table service pomocí následující struktury:  
 
-![Struktura entit zaměstnanců](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
+![Snímek obrazovky, který ukazuje, jak můžete ukládat entity zaměstnanců v Table service.](media/storage-table-design-guide/storage-table-design-IMAGE18.png)
 
 Je také potřeba ukládat historická data týkající se kontrol a výkonu každého roku, který zaměstnanec pracoval ve vaší organizaci, a vy budete mít přístup k těmto informacím po rocích. Jednou z možností je vytvořit další tabulku, která obsahuje entity s následující strukturou:  
 
