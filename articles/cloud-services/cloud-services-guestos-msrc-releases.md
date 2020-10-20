@@ -10,17 +10,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/12/2020
+ms.date: 10/19/2020
 ms.author: yohaddad
-ms.openlocfilehash: 6ceba8e81c4700963e0d147c10085760b9308319
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3f088d248037ecf552bf7130e3fe4c86d7430695
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076653"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207984"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
+
+## <a name="october-2020-guest-os"></a>Října 2020 hostovaný operační systém
+>[!NOTE] 
+
+>Hostovaný operační systém v říjnu se v tuto chvíli zavádí na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. V říjnu hostovaného operačního systému jsou zahrnuté následující opravy. Tento seznam se může změnit. 
+
+| Kategorie produktu | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
+| --- | --- | --- | --- | --- |
+|  Rel. 20-10 |  [4577010]  |  Kumulativní aktualizace IE | 2,103, 3,90, 4,83 | 8. září 2020 |
+|  Rel. 20-10 |  [4580325]  |  Aktualizace pro Flash | 3,90, 4,83, 5,48, 6,24 | 13. října 2020 |
+|  Rel. 20-10 |  [4577668]  |  Nejnovější kumulativní aktualizace | 6,24 | 13. října 2020 |
+|  Rel. 20-10 |  [4580346]  |  Nejnovější kumulativní aktualizace | 5,48 | 13. října 2020 |
+|  Rel. 20-10 |  [4580970]  |  Aktualizace servisního zásobníku | 2,103 | 13. října 2020 |
+|  Rel. 20-10 |  [4580345]  |  Měsíční souhrn | 2,103 | 13. října 2020 |
+|  Rel. 20-10 |  [4578952]  |  Shrnutí zabezpečení a kvality .NET Framework 3.5.1 | 2,103 | 13. října 2020 |
+|  Rel. 20-10 |  [4578955]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 2,103 | 13. října 2020 |
+|  Rel. 20-10 |  [4566426]  |  Aktualizace servisního zásobníku | 3,90 | 14. července 2020 |
+|  Rel. 20-10 |  [4580382]  |  Měsíční souhrn | 3,90 | 13. října 2020 |
+|  Rel. 20-10 |  [4578950]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 3,90 | 13. října 2020 |
+|  Rel. 20-10 |  [4578954]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 3,90 | 13. října 2020 |
+|  Rel. 20-10 |  [4566425]  |  Aktualizace servisního zásobníku | 4,83 | 14. července 2020 |
+|  Rel. 20-10 |  [4580347]  |  Měsíční souhrn | 4,83 | 13. října 2020 |
+|  Rel. 20-10 |  [4578953]  |  Shrnutí zabezpečení a kvality .NET Framework 3,5 | 4,83 | 13. října 2020 |
+|  Rel. 20-10 |  [4578956]  |  Shrnutí zabezpečení a kvality .NET Framework 4.5.2 | 4,83 | 13. října 2020 |
+|  Rel. 20-10 |  [4578013]  |  Samostatná aktualizace zabezpečení | 4,83 | 19. srpna 2020 |
+|  Rel. 20-10 |  [4576750]  |  Aktualizace servisního zásobníku | 5,48 | 8. září 2020 |
+|  Rel. 20-10 |  [4494175]  |  Vyžádal povolení mikrokódu | 5,48 | Od 1. září 2020 |
+|  Rel. 20-10 |  [4577667]  |  Aktualizace servisního zásobníku | 6,24 | 13. října 2020 |
+|  Rel. 20-10 |  [4578966]  |  .NET Framework 3,5 a kumulativní aktualizace 4.7.2 | 6,24 | 13. října 2020 |
+|  Rel. 20-10 |  [4494174]  |  Vyžádal povolení mikrokódu | 6,24 | 3. září 2020 |
+
+
+[4577010]: https://support.microsoft.com/kb/4577010
+[4580325]: https://support.microsoft.com/kb/4580325
+[4577668]: https://support.microsoft.com/kb/4577668
+[4580346]: https://support.microsoft.com/kb/4580346
+[4580970]: https://support.microsoft.com/kb/4580970
+[4580345]: https://support.microsoft.com/kb/4580345
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4566426]: https://support.microsoft.com/kb/4566426
+[4580382]: https://support.microsoft.com/kb/4580382
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4566425]: https://support.microsoft.com/kb/4566425
+[4580347]: https://support.microsoft.com/kb/4580347
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4494175]: https://support.microsoft.com/kb/4494175
+[4577667]: https://support.microsoft.com/kb/4577667
+[4578966]: https://support.microsoft.com/kb/4578966
+[4494174]: https://support.microsoft.com/kb/4494174
+
 
 ## <a name="september-2020-guest-os"></a>Hostovaný operační systém od září 2020
 

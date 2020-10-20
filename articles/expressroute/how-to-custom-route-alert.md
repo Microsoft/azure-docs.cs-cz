@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b812a727a555f8c4c95389f2ba0cc5ccea2f608a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766674"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205553"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Konfigurace vlastních upozornění pro monitorování inzerovaných tras
 
@@ -42,7 +42,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 * Jste obeznámeni s [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
-* Jste obeznámeni s používáním Azure PowerShell. Pro shromáždění předpon sítě v bráně ExpressRoute se vyžaduje Azure PowerShell. Další informace o Azure PowerShell obecně najdete v [dokumentaci k Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-4.1.0).
+* Jste obeznámeni s používáním Azure PowerShell. Pro shromáždění předpon sítě v bráně ExpressRoute se vyžaduje Azure PowerShell. Další informace o Azure PowerShell obecně najdete v [dokumentaci k Azure PowerShell](/powershell/azure/?view=azps-4.1.0).
 
 ### <a name="notes-and-limitations"></a><a name="limitations"></a>Poznámky a omezení
 
@@ -257,7 +257,7 @@ Při spuštění skriptu PowerShellu se shromáždí seznam hodnot:
 
 * Zpráva s upozorněním pro podrobný popis stavu (OK, VÝSTRAHa, upozornění)
 
-Skript prostředí PowerShell převede shromážděné informace na výstup JSON. Sada Runbook pomocí rutiny PowerShellu [Write-Output](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Write-Output?)  jako výstupní Stream oznamuje informace klientovi.
+Skript prostředí PowerShell převede shromážděné informace na výstup JSON. Sada Runbook pomocí rutiny PowerShellu [Write-Output](/powershell/module/Microsoft.PowerShell.Utility/Write-Output)  jako výstupní Stream oznamuje informace klientovi.
 
 ### <a name="4-validate-the-runbook"></a><a name="validate"></a>4. ověření Runbooku
 

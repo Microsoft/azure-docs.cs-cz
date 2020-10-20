@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575176"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205315"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
 
@@ -195,7 +195,7 @@ Tyto formáty jsou povolené pro příslušné součásti:
 
 Paměťové nároky na formáty jsou následující:
 
-| Formát | Description | Počet bajtů za sekundu :::no-loc text="vertex"::: |
+| Formát | Popis | Počet bajtů za sekundu :::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|Úplná přesnost plovoucí desetinné čárky se dvěma komponentami|8
 |16_16_FLOAT|poloviční přesnost s plovoucí desetinnou čárkou pro dvě komponenty|4
@@ -258,7 +258,7 @@ Jak je popsáno v části [osvědčené postupy pro změny formátu komponent](c
 ### <a name="texture-sizes"></a>Velikosti textury
 
 V závislosti na typu scénáře mohou množství dat textury převážit velikost paměti používané pro data sítě. Modely Photogrammetry jsou kandidáti.
-Konfigurace převodu neposkytuje způsob, jak automaticky škálovat textury. V případě potřeby je potřeba škálovat texturu jako krok předběžného zpracování na straně klienta. Krok převodu ale vyberte vhodný [Formát komprese textury](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11):
+Konfigurace převodu neposkytuje způsob, jak automaticky škálovat textury. V případě potřeby je potřeba škálovat texturu jako krok předběžného zpracování na straně klienta. Krok převodu ale vyberte vhodný [Formát komprese textury](/windows/win32/direct3d11/texture-block-compression-in-direct3d-11):
 
 * `BC1` pro neprůhledné textury barev
 * `BC7` pro zdrojové textury barev s alfa kanálem

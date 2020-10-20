@@ -5,21 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 8f3b144a7790c3122d59d27183b3037998ddadd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e61767b9b8d904eae9a247f48d2d781fd0c95192
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565845"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202714"
 ---
 # <a name="configure-authentication"></a>Konfigurace ověřování
 
-Vzdálené vykreslování Azure používá stejný ověřovací mechanismus jako [prostorové kotvy Azure (ASA)](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp). Klienti musí nastavit *jednu* z následujících možností, aby úspěšně volala rozhraní REST API:
+Vzdálené vykreslování Azure používá stejný ověřovací mechanismus jako [prostorové kotvy Azure (ASA)](../../spatial-anchors/concepts/authentication.md?tabs=csharp). Klienti musí nastavit *jednu* z následujících možností, aby úspěšně volala rozhraní REST API:
 
 * **AccountKey**: lze získat na kartě Keys (klíče) pro účet vzdáleného vykreslování na Azure Portal. Klíče účtu doporučujeme jenom pro vývoj a vytváření prototypů.
     ![Account ID](./media/azure-account-primary-key.png)
 
-* **AuthenticationToken**: je token Azure AD, který se dá získat pomocí [knihovny MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-overview). K dispozici je více různých toků pro příjem přihlašovacích údajů uživatele a používání těchto pověření k získání přístupového tokenu.
+* **AuthenticationToken**: je token Azure AD, který se dá získat pomocí [knihovny MSAL](../../active-directory/develop/msal-overview.md). K dispozici je více různých toků pro příjem přihlašovacích údajů uživatele a používání těchto pověření k získání přístupového tokenu.
 
 * **MRAccessToken**: je token Mr, který se dá získat ze služby STS (Azure Mixed reality Security token). Načteno z `https://sts.mixedreality.azure.com` koncového bodu pomocí volání REST podobného následujícímu volání:
 
@@ -44,7 +44,7 @@ Vzdálené vykreslování Azure používá stejný ověřovací mechanismus jako
 
 Klíče účtu se doporučují pro rychlé vytváření prototypů při vývoji. Doporučujeme, abyste aplikaci nedodali do produkčního prostředí pomocí vloženého klíče účtu. Doporučený postup je použití přístupu k ověřování Azure AD založeného na uživateli nebo službě.
 
- Ověřování Azure AD je popsané v části [ověřování uživatelů Azure AD](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) ve službě [Azure prostorové kotvy (ASA)](https://docs.microsoft.com/azure/spatial-anchors/) .
+ Ověřování Azure AD je popsané v části [ověřování uživatelů Azure AD](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication) ve službě [Azure prostorové kotvy (ASA)](../../spatial-anchors/index.yml) .
 
  Další informace najdete v tomto [kurzu: zabezpečení vzdáleného vykreslování Azure a modelu úložiště – Azure Active Directory ověřování](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 

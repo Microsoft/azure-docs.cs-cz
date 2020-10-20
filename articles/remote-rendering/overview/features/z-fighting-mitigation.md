@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e217676f5e1f4dcba24917cb140d9d4d8fcc422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7550d0f997182b3938285f1d0a360a31bf05177
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90024362"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207457"
 ---
 # <a name="z-fighting-mitigation"></a>Zmírnění Z-fightingu
 
@@ -78,8 +78,8 @@ K dispozici je nejlepší úsilí z hlediska zmírnění omezení z hlediska boj
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [Vlastnost C# RemoteManager. ZFightingMitigationSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
-* [C++ RemoteManager:: ZFightingMitigationSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
+* [Vlastnost C# RemoteManager. ZFightingMitigationSettings](/dotnet/api/microsoft.azure.remoterendering.remotemanager.zfightingmitigationsettings)
+* [C++ RemoteManager:: ZFightingMitigationSettings ()](/cpp/api/remote-rendering/remotemanager#zfightingmitigationsettings)
 
 ## <a name="next-steps"></a>Další kroky
 

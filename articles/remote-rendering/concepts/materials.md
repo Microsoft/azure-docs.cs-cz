@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8f3a0d0ec79624fb709bb80b8392e2ad8d6f7ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dca22303edc3b75625df88dac98557c6a2e6162
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613875"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202848"
 ---
 # <a name="materials"></a>Materiály
 
@@ -84,14 +84,14 @@ void SetMaterialColorToGreen(ApiHandle<Material> material)
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [Třída materiálu C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.material)
-* [Třída C# ColorMaterial](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterial)
-* [Třída C# PbrMaterial](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
-* [C# RemoteManager. CreateMaterial ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
-* [Třída materiálu C++](https://docs.microsoft.com/cpp/api/remote-rendering/material)
-* [Třída C++ ColorMaterial](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterial)
-* [Třída C++ PbrMaterial](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterial)
-* [C++ RemoteManager:: CreateMaterial ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#creatematerial)
+* [Třída materiálu C#](/dotnet/api/microsoft.azure.remoterendering.material)
+* [Třída C# ColorMaterial](/dotnet/api/microsoft.azure.remoterendering.colormaterial)
+* [Třída C# PbrMaterial](/dotnet/api/microsoft.azure.remoterendering.pbrmaterial)
+* [C# RemoteManager. CreateMaterial ()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.creatematerial)
+* [Třída materiálu C++](/cpp/api/remote-rendering/material)
+* [Třída C++ ColorMaterial](/cpp/api/remote-rendering/colormaterial)
+* [Třída C++ PbrMaterial](/cpp/api/remote-rendering/pbrmaterial)
+* [C++ RemoteManager:: CreateMaterial ()](/cpp/api/remote-rendering/remotemanager#creatematerial)
 
 ## <a name="next-steps"></a>Další kroky
 

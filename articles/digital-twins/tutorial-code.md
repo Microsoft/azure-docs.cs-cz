@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 830052237580101d9141bbf812c050430c6269f2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144574"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201340"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -25,7 +25,7 @@ Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžn
 > * Vyčištění prostředků
 > * Další kroky
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto kurzu se používá příkazový řádek pro nastavení a práci v projektu. Proto můžete použít libovolný editor kódu k procházení cvičení.
 
@@ -104,40 +104,21 @@ Dále do tohoto souboru přidáte kód, který vyplní některé funkce.
 
 První věc, kterou bude vaše aplikace muset udělat, je ověřování vůči službě Azure Digital prokážed. Pak můžete vytvořit třídu klienta služby pro přístup k funkcím sady SDK.
 
-Aby bylo možné ověřit, potřebujete tři části informací:
-* *ID adresáře (tenanta)* pro vaše předplatné
-* *ID aplikace (klienta)* vytvořené při nastavování instance služby Azure Digital provláknas dříve
-* *Název hostitele* instance digitálního vlákna Azure
+Aby bylo možné ověřit, potřebujete *název hostitele* instance digitálního vlákna Azure.
 
->[!TIP]
-> Pokud neznáte *ID adresáře (tenant)*, můžete ho získat spuštěním tohoto příkazu v [Azure Cloud Shell](https://shell.azure.com):
-> 
-> ```azurecli
-> az account show --query tenantId
-> ```
-
-Do *program.cs*vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele*instance digitálního vlákna Azure, `clientId` *ID vaší aplikace*a ID `tenantId` vašeho *adresáře*.
+Do *program.cs*vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele*instance digitálního vlákna Azure.
 
 ```csharp
-string clientId = "<your-application-ID>";
-string tenantId = "<your-directory-ID>";
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+var credential = new DefaultAzureCredential();
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 Console.WriteLine($"Service client created – ready to go");
 ```
 
 Soubor uložte. 
 
-Všimněte si, že v tomto příkladu se používá interaktivní přihlašovací údaje prohlížeče:
-```csharp
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-```
-
-Tento typ přihlašovacích údajů způsobí, že se otevře okno prohlížeče s výzvou k zadání přihlašovacích údajů Azure. 
-
 >[!NOTE]
-> Informace o dalších typech přihlašovacích údajů najdete v dokumentaci k [ověřovacím knihovnám Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md).
+> V tomto příkladu se používá `DefaultAzureCredential` pro ověřování. Informace o dalších typech přihlašovacích údajů najdete v dokumentaci k [ověřovacím knihovnám Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md)nebo v článku o [ověřování klientských aplikací](how-to-authenticate-client.md)v části digitální vlákna Azure.
 
 V příkazovém okně spusťte kód pomocí tohoto příkazu: 
 
@@ -463,11 +444,10 @@ namespace minimal
         {
             Console.WriteLine("Hello World!");
             
-            string clientId = "<your-application-ID>";
-            string tenantId = "<your-directory-ID>";
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-            var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+            
+            var credential = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
             Console.WriteLine($"Service client created – ready to go");
 
             Console.WriteLine();

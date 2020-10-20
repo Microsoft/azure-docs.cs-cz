@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97873c9f59dc0d99293d2b1ebaf87af309dbcf47
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627138"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208290"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -158,8 +158,8 @@ Případně můžete agenta nasadit ručně na existující virtuální počíta
 | MCAS SecurityAlert  | [Připojit Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
 | Sysmon (událost) | [Připojit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Připojit události systému Windows](../azure-monitor/platform/data-sources-windows-events.md) <br> [Získání analyzátoru Sysmon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Kolekce Sysmon není ve výchozím nastavení ve virtuálních počítačích nainstalovaná. Další informace o tom, jak nainstalovat agenta Sysmon, najdete v tématu [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
-| ConfigurationData  | [Automatizace inventáře virtuálních počítačů](../automation/automation-vm-inventory.md)| &#10007; | |
-| ConfigurationChange  | [Automatizace sledování virtuálních počítačů](../automation/change-tracking.md) | &#10007; | |
+| ConfigurationData  | [Automatizace inventáře virtuálních počítačů](../automation/change-tracking/overview.md)| &#10007; | |
+| ConfigurationChange  | [Automatizace sledování virtuálních počítačů](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [Připojení F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |
 | McasShadowItReporting  |  | &#10007; | |
 | Barracuda_CL | [Připojení Barracudy](connect-barracuda.md) | &#10003; | |

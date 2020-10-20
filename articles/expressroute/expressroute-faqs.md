@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: a862b978d7737d3d1c301d090012576f64a3ddda
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150741"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202204"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -80,12 +80,12 @@ ExpressRoute podporuje [tři domény směrování](expressroute-circuit-peerings
 
 ### <a name="microsoft-peering"></a>Partnerský vztah Microsoftu
 
-Pokud je pro partnerský vztah Microsoft Azure povolen okruh ExpressRoute, můžete k [rozsahům veřejných IP adres](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) , které se používají v Azure, přistupovat přes okruh. Partnerský vztah Microsoftu Azure poskytne přístup ke službám, které jsou aktuálně hostované v Azure (s geografickými omezeními v závislosti na SKU vaší okruhu). Pokud chcete ověřit dostupnost konkrétní služby, můžete si prohlédnout dokumentaci k příslušné službě a zjistit, jestli je pro danou službu publikovaný rezervovaný rozsah. Pak vyhledejte rozsahy IP adres cílové služby a porovnejte je s rozsahy uvedenými v části [rozsahy IP adres Azure a značky služby – veřejný cloudový soubor XML](https://www.microsoft.com/download/details.aspx?id=56519). Případně můžete pro vyjasnění otevřít lístek podpory pro příslušnou službu.
+Pokud je pro partnerský vztah Microsoft Azure povolen okruh ExpressRoute, můžete k [rozsahům veřejných IP adres](../virtual-network/public-ip-addresses.md#public-ip-addresses) , které se používají v Azure, přistupovat přes okruh. Partnerský vztah Microsoftu Azure poskytne přístup ke službám, které jsou aktuálně hostované v Azure (s geografickými omezeními v závislosti na SKU vaší okruhu). Pokud chcete ověřit dostupnost konkrétní služby, můžete si prohlédnout dokumentaci k příslušné službě a zjistit, jestli je pro danou službu publikovaný rezervovaný rozsah. Pak vyhledejte rozsahy IP adres cílové služby a porovnejte je s rozsahy uvedenými v části [rozsahy IP adres Azure a značky služby – veřejný cloudový soubor XML](https://www.microsoft.com/download/details.aspx?id=56519). Případně můžete pro vyjasnění otevřít lístek podpory pro příslušnou službu.
 
 **Doložen**
 
 * [Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
-* Power BI – k dispozici prostřednictvím regionální komunity Azure, [najdete informace o](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) tom, jak zjistit oblast Power BI tenanta.
+* Power BI – k dispozici prostřednictvím regionální komunity Azure, [najdete informace o](/power-bi/service-admin-where-is-my-tenant-located) tom, jak zjistit oblast Power BI tenanta.
 * Azure Active Directory
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (komunita Azure Global Services)
 * Veřejné IP adresy Azure pro IaaS (Virtual Machines, Virtual Network brány, nástroje pro vyrovnávání zatížení atd.)  
@@ -118,7 +118,7 @@ Pokud se zobrazí zpráva potřebná pro ověření, shromážděte dokumenty, k
 Prostředí Dynamics 365 a Common Data Service (CD) jsou hostována v Azure, takže zákazníci využívají základní podporu ExpressRoute pro prostředky Azure. Můžete se připojit ke svým koncovým bodům služby, pokud váš filtr směrovače obsahuje oblasti Azure, ve kterých jsou vaše prostředí Dynamics 365 a CD hostovaná.
 
 > [!NOTE]
-> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) se **nevyžaduje** pro připojení Dynamics 365 přes Azure ExpressRoute, pokud je okruh ExpressRoute nasazený ve stejné [geopolitické oblasti](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations).
+> [ExpressRoute Premium](#expressroute-premium) se **nevyžaduje** pro připojení Dynamics 365 přes Azure ExpressRoute, pokud je okruh ExpressRoute nasazený ve stejné [geopolitické oblasti](./expressroute-locations-providers.md#expressroute-locations).
 
 ## <a name="data-and-connections"></a>Data a připojení
 
@@ -152,15 +152,15 @@ V případě, že jedno z vzájemných připojení selže, připojení k síti n
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Návody implementovat redundanci s privátním partnerským vztahem?
 
-Několik okruhů ExpressRoute z různých umístění partnerských vztahů nebo až čtyř připojení ze stejného umístění partnerského vztahu může být připojeno ke stejné virtuální síti, aby se zajistila vysoká dostupnost v případě, že jeden okruh nebude k dispozici. Pak můžete [přiřadit vyšší váhu](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) jednomu z místních připojení a preferovat konkrétní okruh. Důrazně doporučujeme, aby si zákazníci nastavili aspoň dva okruhy ExpressRoute, aby se předešlo jednomu bodu selhání. 
+Několik okruhů ExpressRoute z různých umístění partnerských vztahů nebo až čtyř připojení ze stejného umístění partnerského vztahu může být připojeno ke stejné virtuální síti, aby se zajistila vysoká dostupnost v případě, že jeden okruh nebude k dispozici. Pak můžete [přiřadit vyšší váhu](./expressroute-optimize-routing.md#solution-assign-a-high-weight-to-local-connection) jednomu z místních připojení a preferovat konkrétní okruh. Důrazně doporučujeme, aby si zákazníci nastavili aspoň dva okruhy ExpressRoute, aby se předešlo jednomu bodu selhání. 
 
-V tématu Navrhování pro zajištění vysoké [dostupnosti najdete tady, kde najdete](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) [Návrh pro zotavení](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) po havárii.  
+V tématu Navrhování pro zajištění vysoké [dostupnosti najdete tady, kde najdete](./designing-for-high-availability-with-expressroute.md) [Návrh pro zotavení](./designing-for-disaster-recovery-with-expressroute-privatepeering.md) po havárii.  
 
 ### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Jak implementovat redundanci v partnerském vztahu Microsoftu?
 
-Důrazně doporučujeme, když zákazníci používají partnerské vztahy Microsoftu pro přístup k veřejným službám Azure, jako je Azure Storage nebo Azure SQL, a také zákazníkům, kteří používají partnerský vztah Microsoftu pro Microsoft 365, že implementují více okruhů v různých umístěních partnerských vztahů, aby nedocházelo k jednomu bodu selhání. Zákazníci můžou inzerovat stejnou předponu na obou okruhech a používat [je jako nedokončená cesta](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) nebo inzerovat jiné předpony k určení cesty z místního prostředí.
+Důrazně doporučujeme, když zákazníci používají partnerské vztahy Microsoftu pro přístup k veřejným službám Azure, jako je Azure Storage nebo Azure SQL, a také zákazníkům, kteří používají partnerský vztah Microsoftu pro Microsoft 365, že implementují více okruhů v různých umístěních partnerských vztahů, aby nedocházelo k jednomu bodu selhání. Zákazníci můžou inzerovat stejnou předponu na obou okruhech a používat [je jako nedokončená cesta](./expressroute-optimize-routing.md#solution-use-as-path-prepending) nebo inzerovat jiné předpony k určení cesty z místního prostředí.
 
-Pro návrh pro zajištění vysoké dostupnosti se podívejte [sem](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) .
+Pro návrh pro zajištění vysoké dostupnosti se podívejte [sem](./designing-for-high-availability-with-expressroute.md) .
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Návody zajistěte vysokou dostupnost ve virtuální síti připojené k ExpressRoute?
 
@@ -170,7 +170,7 @@ Vysokou dostupnost můžete dosáhnout připojením až čtyř okruhů ExpressRo
 
 Ve směrovačích musíte implementovat atribut *místní předvolby* , aby se zajistilo, že cesta z místního prostředí do Azure je vždy upřednostňovaná na okruhech ExpressRoute.
 
-Další podrobnosti najdete [na základě](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings) výběru cest protokolu BGP a konfigurací běžných směrovačů. 
+Další podrobnosti najdete [na základě](./expressroute-optimize-routing.md#path-selection-on-microsoft-and-public-peerings) výběru cest protokolu BGP a konfigurací běžných směrovačů. 
 
 ### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>Pokud nemám společné umístění v cloudové výměně a poskytovatel mých služeb nabízí připojení typu Point-to-Point, musím objednat dvě fyzická připojení mezi místní sítí a Microsoftem?
 
@@ -384,7 +384,7 @@ Informace najdete v tématu [partneři a umístění ExpressRoute](expressroute-
 Yes. Koncové body služby Microsoft 365 jsou dosažitelné přes Internet, i když je ExpressRoute pro vaši síť nakonfigurovaný. Pokud je síť ve vašem umístění nakonfigurovaná tak, aby se připojovala k Microsoft 365 službám prostřednictvím ExpressRoute, obraťte se prosím na síťový tým organizace.
 
 ### <a name="how-can-i-plan-for-high-availability-for-microsoft-365-network-traffic-on-azure-expressroute"></a>Jak mohu naplánovat vysokou dostupnost pro Microsoft 365 síťový provoz v Azure ExpressRoute?
-Přečtěte si doporučení k zajištění [vysoké dostupnosti a převzetí služeb při selhání pomocí Azure ExpressRoute](https://aka.ms/erhighavailability)
+Přečtěte si doporučení k zajištění [vysoké dostupnosti a převzetí služeb při selhání pomocí Azure ExpressRoute](/microsoft-365/enterprise/network-planning-with-expressroute)
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Můžu získat přístup ke službám pro Office 365 USA státní komunity (RSZ) prostřednictvím okruhu ExpressRoute pro státní správu Azure USA?
 
@@ -422,5 +422,4 @@ Stávající okruh bude pokračovat ve inzerci prefixů pro Microsoft 365. Pokud
 
 ### <a name="does-the-expressroute-service-store-customer-data"></a>Ukládá služba ExpressRoute údaje o zákaznících?
 
-Ne. 
-
+Ne.

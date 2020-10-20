@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 2ddce7e2f073914e9393eabf12e8b0f4ef347828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49027899d66a2192cc311fb4dba66e441155b527
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613643"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206845"
 ---
 # <a name="scene-lighting"></a>Osvětlení scény
 
@@ -72,14 +72,14 @@ Zdroje světla mají významný dopad na výkon vykreslování. Používejte je 
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [Třída C# LightComponentBase](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
-* [Třída C# PointLightComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
-* [Třída C# SpotLightComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
-* [Třída C# DirectionalLightComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
-* [Třída C++ LightComponentBase](https://docs.microsoft.com/cpp/api/remote-rendering/lightcomponentbase)
-* [Třída C++ PointLightComponent](https://docs.microsoft.com/cpp/api/remote-rendering/pointlightcomponent)
-* [Třída C++ SpotLightComponent](https://docs.microsoft.com/cpp/api/remote-rendering/spotlightcomponent)
-* [Třída C++ DirectionalLightComponent](https://docs.microsoft.com/cpp/api/remote-rendering/directionallightcomponent)
+* [Třída C# LightComponentBase](/dotnet/api/microsoft.azure.remoterendering.lightcomponentbase)
+* [Třída C# PointLightComponent](/dotnet/api/microsoft.azure.remoterendering.pointlightcomponent)
+* [Třída C# SpotLightComponent](/dotnet/api/microsoft.azure.remoterendering.spotlightcomponent)
+* [Třída C# DirectionalLightComponent](/dotnet/api/microsoft.azure.remoterendering.directionallightcomponent)
+* [Třída C++ LightComponentBase](/cpp/api/remote-rendering/lightcomponentbase)
+* [Třída C++ PointLightComponent](/cpp/api/remote-rendering/pointlightcomponent)
+* [Třída C++ SpotLightComponent](/cpp/api/remote-rendering/spotlightcomponent)
+* [Třída C++ DirectionalLightComponent](/cpp/api/remote-rendering/directionallightcomponent)
 
 ## <a name="next-steps"></a>Další kroky
 

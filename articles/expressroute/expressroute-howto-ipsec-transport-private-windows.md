@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89396484"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208239"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurace režimu přenosu IPsec pro privátní partnerské vztahy ExpressRoute
 
@@ -65,7 +65,7 @@ Při konfiguraci zásad protokolu IPsec je důležité pochopit následující t
 
 Ujistěte se, že splňujete následující požadavky:
 
-* Musíte mít funkční konfiguraci služby Active Directory, kterou můžete použít k implementaci Zásady skupiny nastavení. Další informace o objektech zásad skupiny najdete v tématu [Zásady skupiny objektů](https://msdn.microsoft.com/library/windows/desktop/aa374162(v=vs.85).aspx).
+* Musíte mít funkční konfiguraci služby Active Directory, kterou můžete použít k implementaci Zásady skupiny nastavení. Další informace o objektech zásad skupiny najdete v tématu [Zásady skupiny objektů](/previous-versions/windows/desktop/Policy/group-policy-objects).
 
 * Musí mít aktivní okruh ExpressRoute.
   * Informace o vytvoření okruhu ExpressRoute najdete v tématu [vytvoření okruhu ExpressRoute](expressroute-howto-circuit-arm.md). 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021064"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203241"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Kurz: rafinace materiálů, osvětlení a efektů
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Poskytnutí vizuální zpětné vazby uživateli je důležitou součástí uživatelského prostředí v libovolné aplikaci. Vzdálené vykreslování Azure poskytuje mechanismy vizuálního zpětné vazby prostřednictvím [potlačení hierarchických stavů](../../../overview/features/override-hierarchical-state.md). Přepsání hierarchických stavů jsou implementována s komponentami připojenými k místním instancím modelů. Zjistili jsme, jak vytvořit tyto místní instance v [synchronizaci grafu vzdáleného objektu s hierarchií Unity](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy).
 
-Nejprve vytvoříme obálku kolem komponenty [**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) . **HierarchicalStateOverrideComponent** je místní skript, který řídí přepsání na vzdálené entitě. [**Výukové materiály**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) obsahují abstraktní základní třídu s názvem **BaseEntityOverrideController**, kterou rozšiřujeme a vytvoříme obálku.
+Nejprve vytvoříme obálku kolem komponenty [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) . **HierarchicalStateOverrideComponent** je místní skript, který řídí přepsání na vzdálené entitě. [**Výukové materiály**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial) obsahují abstraktní základní třídu s názvem **BaseEntityOverrideController**, kterou rozšiřujeme a vytvoříme obálku.
 
 1. Vytvořte nový skript s názvem **EntityOverrideController** a nahraďte jeho obsah následujícím kódem:
 

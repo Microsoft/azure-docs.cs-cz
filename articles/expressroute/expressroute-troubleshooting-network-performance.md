@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a021d658711e77c3e3be0df722223cefe506abba
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566071"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204584"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
 ## <a name="overview"></a>Přehled
@@ -53,7 +53,7 @@ V předchozím diagramu je úplně vlevo vaše podniková síť. V závislosti n
 
 Vzhledem k složitosti těchto tří různých síťových prostředí je často vhodné začít na okrajích a zkusit Ukázat, kde je výkon dobrý, a kde se snižuje. Tento přístup může přispět k identifikaci problému s doménou směrování těchto tří a pak se zaměřit na řešení potíží v tomto konkrétním prostředí.
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 Většinu problémů se sítí se dá analyzovat a izolovat pomocí základních nástrojů, jako je třeba příkazy traceroute. Je to zřídka, když potřebujete jako analýzu paketů, jako je třeba Nástroj Wireshark, přejít hluboko. Pro pomoc s řešením potíží se vyvinula sada Azure Connectivity Toolkit (AzureCT), která do snadného balíčku tyto nástroje umísťuje. V případě testování výkonu chci použít iPerf a PSPing. iPerf je běžně používaný nástroj a funguje ve většině operačních systémů. iPerf je pro základní testy funkčních zkoušek dobré a je poměrně snadné ho používat. PSPing je nástroj pro použití testu, který vyvinula společnost Sysinternals. PSPing je jednoduchý způsob, jak v jednom snadno používat příkazy protokolu ICMP a TCP s protokolem TCP. Oba tyto nástroje jsou odlehčené a jsou "nainstalují" jednoduše kopírování soubory do adresáře na hostiteli.
 
 Všechny tyto nástroje a metody jsme zabalily do modulu PowerShellu (AzureCT), který můžete nainstalovat a použít.
@@ -209,6 +209,6 @@ Nastavení testu:
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
-[Network Docs]: https://docs.microsoft.com/azure/index
+[Network Docs]: ../index.yml
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 [ACT]: https://aka.ms/AzCT

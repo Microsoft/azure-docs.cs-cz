@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 45a10ddce165626bfbadb0ba0b3d68b81709c3bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8c8e7539b888141a22e92378d78282edd1ce6ff
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326133"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208018"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -95,7 +95,7 @@ Pokud je směrování červené, znamená to, že je součástí nejméně jedn�
 NPM používá mechanismus pravděpodobnostní pro přiřazení pravděpodobnosti chyby každé síťové cestě, segmentu sítě a směrování sítě v závislosti na počtu nezdravých cest, které jsou součástí. Protože segmenty sítě a směrování se stanou součástí většího počtu špatných cest, zvyšují se pravděpodobnost selhání, která jsou k nim přidružená. Tento algoritmus funguje nejlépe tehdy, když máte spoustu uzlů s NPM agentem, který se navzájem připojuje. tím se zvyšuje počet datových bodů pro výpočet pravděpodobnosti selhání.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Jak můžu vytvářet upozornění v NPM?
-Kvůli problému se aktuálně nedaří vytvořit výstrahy z uživatelského rozhraní NPM. Vytvořte prosím výstrahy ručně.
+V současné době se vytváření výstrah z uživatelského rozhraní NPM nedaří kvůli známému problému. [Vytvořte prosím výstrahy ručně](../platform/alerts-log.md).
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Jaké jsou výchozí Log Analytics dotazy na výstrahy
 Dotaz na sledování výkonu
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM identifikuje jenom IP adresu a název hostitele pro základní síťové směrování (přepínače, směrovače, servery atd.) mezi zdrojovou a cílovou IP adresou. Také identifikuje latenci mezi těmito identifikovanými segmenty směrování. Nemonitoruje jednotlivě tyto segmenty směrování.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Dá se NPM použít k monitorování připojení k síti mezi Azure a AWS?
-Ano. Podrobnosti najdete v článku [monitorování Azure, AWS a místních sítí pomocí npm](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) .
+Yes. Podrobnosti najdete v článku [monitorování Azure, AWS a místních sítí pomocí npm](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) .
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Je využití šířky pásma ExpressRoute příchozí nebo odchozí?
 Využití šířky pásma je celkovým počtem příchozích a odchozích šířek pásma. Je vyjádřena v bitech/s.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: fe2a632901b32993d46e723ab73fce045bfa9f84
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90889129"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92208222"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý start: Začínáme se službou Azure Sentinel
 
@@ -26,7 +26,7 @@ V tomto rychlém startu se dozvíte, jak rychle zobrazit a monitorovat, co se d�
 
 ## <a name="get-visualization"></a>Získat vizualizaci
 
-Aby bylo možné vizualizovat a získat analýzu toho, co se děje ve vašem prostředí, nejprve se podívejte na řídicí panel přehled, abyste získali představu o stav zabezpečení vaší organizace. Můžete kliknout na jednotlivé prvky těchto dlaždic a přejít k podrobnostem o nezpracovaná data, ze kterých jsou vytvořena. K tomu, abyste snížili šum a minimalizovali počet výstrah, které je třeba zkontrolovat a prozkoumat, využívá Azure Sentinel způsob fúze ke korelaci upozornění na incidenty. **incidenty** jsou skupiny souvisejících výstrah, které společně vytvářejí incident s možnou činností, který můžete prozkoumat a vyřešit.
+Aby bylo možné vizualizovat a získat analýzu toho, co se děje ve vašem prostředí, nejprve se podívejte na řídicí panel přehled, abyste získali představu o stav zabezpečení vaší organizace. Můžete kliknout na jednotlivé prvky těchto dlaždic a přejít k podrobnostem o nezpracovaná data, ze kterých jsou vytvořena. K tomu, abyste snížili šum a minimalizovali počet výstrah, které je třeba zkontrolovat a prozkoumat, využívá Azure Sentinel způsob fúze ke korelaci upozornění na incidenty. **Incidenty** jsou skupiny souvisejících výstrah, které společně vytvářejí incident s možnou činností, který můžete prozkoumat a vyřešit.
 
 - V Azure Portal vyberte možnost Azure Sentinel a pak vyberte pracovní prostor, který chcete monitorovat.
 
@@ -44,7 +44,7 @@ Hlavní část stránky s přehledem poskytuje rychlý přehled o stavu zabezpe�
 
    ![Mapa škodlivého provozu](./media/qs-get-visibility/map.png)
 
-- **Nedávné incidenty**: Pokud si chcete zobrazit poslední incidenty, jejich závažnost a počet výstrah přidružených k incidentu. Pokud se u určitého typu výstrahy zobrazí jako náhlé špičky, může to znamenat, že aktuálně probíhá aktivní útok. Například pokud máte náhlé špičky 20 událostí pass-the-hash od Microsoft Defenderu po identitu (dřív ATP. Azure ATP), je možné, že se někdo momentálně snaží o útok.
+- **Nedávné incidenty**: Pokud si chcete zobrazit poslední incidenty, jejich závažnost a počet výstrah přidružených k incidentu. Pokud se v konkrétním typu výstrahy zobrazí náhlé špičky, může to znamenat, že aktuálně probíhá aktivní útok. Například pokud máte náhlé špičky 20 událostí pass-the-hash od Microsoft Defenderu po identitu (dřív ATP. Azure ATP), je možné, že se někdo momentálně snaží o útok.
 
 - **Anomálie zdrojů dat**: analytiky dat Microsoftu vytvořily modely, které neustále vyhledávají data ze zdrojů dat, a to kvůli anomáliím. Pokud neexistují žádné anomálie, nic se nezobrazí. Pokud se zjistí anomálie, měli byste je podrobněovat, abyste zjistili, co se stalo. Například klikněte na špička v aktivitě Azure. Kliknutím na **graf** můžete zobrazit, kdy špička proběhla, a potom filtrovat aktivity, ke kterým došlo během tohoto časového období, abyste viděli, co způsobilo špičku.
 

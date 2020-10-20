@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756615"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207083"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Vytvoření a Správa výpočetní instance Azure Machine Learning
 
@@ -256,6 +256,7 @@ Balíčky můžete nainstalovat přímo do Jupyter Notebook nebo RStudio:
 * Python: přidejte instalační kód a proveďte v Jupyter Notebook buňce.
 
 Případně můžete provést instalaci z okna terminálu. Nainstalujte balíčky Pythonu do prostředí **Python 3,6-AzureML** .  Nainstalujte balíčky R do prostředí jazyka **r** .
+% PIP a% conda Magic Functions automaticky instaluje balíčky do aktuálně běžícího jádra v relaci poznámkového bloku Jupyter.
 
 ## <a name="add-new-kernels"></a>Přidat nové jádra
 

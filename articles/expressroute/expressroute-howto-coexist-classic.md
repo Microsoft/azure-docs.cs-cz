@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: duau
-ms.openlocfilehash: 4cc96a8183e07a17ae880549cdc2b8bdca516322
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70407d726b697dd6c4dfb6777cf6c445092d3b73
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651492"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206321"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute (Classic)
 > [!div class="op_single_selector"]
@@ -85,7 +85,7 @@ Existují dvě sady postupů, ze kterých si můžete vybrat, když konfigurujet
 Tento postup vás provede procesem vytvoření virtuální sítě a vytvoření připojení ExpressRoute a VPN site-to-site, která budou existovat společně.
 
 1. Budete potřebovat nainstalovat nejnovější verzi rutin Azure PowerShellu. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/). Všimněte si, že rutiny, které budete používat pro tuto konfiguraci, se můžou mírně lišit od těch, co znáte. Ujistěte se, že používáte rutiny určené v těchto pokynech. 
-2. Vytvořte schéma pro virtuální síť. Další informace o schématu konfigurace najdete v tématu [Azure Virtual Network configuration schema](https://msdn.microsoft.com/library/azure/jj157100.aspx) (Schéma konfigurace Azure Virtual Network).
+2. Vytvořte schéma pro virtuální síť. Další informace o schématu konfigurace najdete v tématu [Azure Virtual Network configuration schema](/previous-versions/azure/reference/jj157100(v=azure.100)) (Schéma konfigurace Azure Virtual Network).
    
     Při vytváření schématu použijte následující hodnoty:
    
@@ -229,7 +229,7 @@ Pokud podsíť brány je /27 nebo větší a virtuální síť je připojená p�
 4. Upravte schéma konfiguračního souboru sítě, aby podsíť brány byla /27 nebo kratší předpona (například /26 nebo /25). Prohlédněte si následující příklad. 
    
    > [!NOTE]
-   > Pokud vám ve virtuální síti nezbylo dost IP adres pro zvětšení velikosti podsítě brány, budete muset přidat další adresní prostor IP adres. Další informace o schématu konfigurace najdete v tématu [Azure Virtual Network configuration schema](https://msdn.microsoft.com/library/azure/jj157100.aspx) (Schéma konfigurace Azure Virtual Network).
+   > Pokud vám ve virtuální síti nezbylo dost IP adres pro zvětšení velikosti podsítě brány, budete muset přidat další adresní prostor IP adres. Další informace o schématu konfigurace najdete v tématu [Azure Virtual Network configuration schema](/previous-versions/azure/reference/jj157100(v=azure.100)) (Schéma konfigurace Azure Virtual Network).
    > 
    > 
    
@@ -253,4 +253,3 @@ Pokud podsíť brány je /27 nebo větší a virtuální síť je připojená p�
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
-

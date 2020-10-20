@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 17e3e8dca1c03f9783c0ca94350bb8a4ba5aca64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 737c7e61a7ae0573ca6de0d6daa8288313f70741
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935763"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201898"
 ---
 # <a name="securing-azure-sql-edge"></a>Zabezpečení Edge Azure SQL
 
@@ -92,8 +92,8 @@ Podobně jako u Azure SQL a Microsoft SQL Server poskytuje Azure SQL Edge stejn�
 
 Mezi osvědčené postupy zabezpečení Azure SQL Edge patří vytváření zabezpečených klientských aplikací. Další informace o tom, jak lépe zabezpečit klientské aplikace v síťové vrstvě, najdete v tématu [Konfigurace sítě klienta](https://docs.microsoft.com/sql/database-engine/configure-windows/client-network-configuration).
 
-### <a name="sql-server-security-catalog-views-and-functions"></a>SQL Server zobrazení a funkcí katalogu zabezpečení  
- Informace o zabezpečení jsou zpřístupněny v několika zobrazeních a funkcích, které jsou optimalizovány pro výkon a nástroj. Následující tabulka obsahuje informace o zobrazení a funkcích zabezpečení.  
+### <a name="security-catalog-views-and-functions"></a>Zobrazení a funkce katalogu zabezpečení  
+Informace o zabezpečení jsou zpřístupněny v několika zobrazeních a funkcích, které jsou optimalizovány pro výkon a nástroj. Následující tabulka obsahuje informace o zobrazení a funkcích zabezpečení v Azure SQL Edge.  
   
 |Funkce a zobrazení|Odkazy|  
 |---------------------------|---------|  

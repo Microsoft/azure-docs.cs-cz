@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 87c8a7523222afd3ae4daeb8fb5824025e693cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569624"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204788"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Požadavky ExpressRoute a kontrolní seznam
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, musíte ověřit, že jsou splněné požadavky uvedené v následujících oddílech.
@@ -34,14 +34,14 @@ Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby Exp
 * **Směrování**: v závislosti na tom, jak se připojíte k Microsoft Cloud, budete vy nebo váš poskytovatel potřebovat nastavit a spravovat relace protokolu BGP pro [domény směrování](expressroute-circuit-peerings.md). Někteří poskytovatelé připojení k síti Ethernet nebo poskytovatelé cloudového serveru můžou nabízet správu protokolu BGP jako službu pro přidání hodnoty.
 * **NAT:** Microsoft prostřednictvím partnerského vztahu Microsoftu přijímá jenom veřejné IP adresy. Pokud používáte privátní IP adresy v místní síti, vy nebo váš poskytovatel potřebuje překlad privátních IP adres na veřejné IP adresy [pomocí překladu adres (NAT)](expressroute-nat.md).
 * **QoS:** Skype pro firmy má různé služby (třeba hlasové, textové nebo videoslužby), které vyžadují diferencovaný přístup. Vy a váš poskytovatel byste měli postupovat podle [požadavků QoS](expressroute-qos.md).
-* **Zabezpečení sítě:** Při připojení ke cloudu Microsoftu pomocí ExpressRoute byste měli zvážit [zabezpečení sítě](../best-practices-network-security.md).
+* **Zabezpečení sítě:** Při připojení ke cloudu Microsoftu pomocí ExpressRoute byste měli zvážit [zabezpečení sítě](/azure/cloud-adoption-framework/reference/networking-vdc).
 
 ## <a name="microsoft-365"></a>Microsoft 365
 Pokud máte v plánu povolit Microsoft 365 v ExpressRoute, přečtěte si následující dokumenty, kde najdete další informace o Microsoft 365 požadavcích.
 
 * [Azure ExpressRoute pro Microsoft 365](/microsoft-365/enterprise/azure-expressroute)
 * [Směrování s ExpressRoute pro Microsoft 365](/microsoft-365/enterprise/routing-with-expressroute)
-* [Vysoká dostupnost a převzetí služeb při selhání u ExpressRoute](https://aka.ms/erhighavailability)
+* [Vysoká dostupnost a převzetí služeb při selhání u ExpressRoute](/microsoft-365/enterprise/network-planning-with-expressroute)
 * [Microsoft 365 adresy URL a rozsahy IP adres](/microsoft-365/enterprise/urls-and-ip-address-ranges)
 * [Plánování sítě a optimalizace výkonu pro Microsoft 365](/microsoft-365/enterprise/network-planning-and-performance)
 * [Plánování sítě a migrace pro Microsoft 365](/microsoft-365/enterprise/network-and-migration-planning)

@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 928737608ae3e3e44b352724713a284ff9a45da9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 939c36cd62dab4362232aef0da8701b34a88c6ff
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936322"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202952"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Ověřování ve službě Azure Communication Services
 
@@ -33,7 +33,7 @@ Následující tabulka popisuje, které možnosti ověřování jsou podporován
 
 Každá možnost autorizace je stručně popsána níže:
 
-- **Přístupové ověřování klíčů** pro operace SMS a správy. Ověřování přístupového klíče je vhodné pro aplikace běžící v prostředí důvěryhodné služby. Pro ověření pomocí přístupového klíče klient vygeneruje [ověřovací kód metody založený na hodnotě hash (HMAC)](https://en.wikipedia.org/wiki/HMAC) a zahrne ho do `Authorization` HLAVIČKY jednotlivých požadavků HTTP. Další informace najdete v tématu [ověřování pomocí přístupového klíče](#authenticate-with-an-access-key).
+- **Přístupové ověřování klíčů** pro operace SMS a správy. Ověřování přístupového klíče je vhodné pro aplikace běžící v prostředí důvěryhodné služby. Pro ověřování pomocí přístupového klíče klient generuje [kód pro ověřování zpráv (HMAC) založený na hodnotě hash (HMAC)](https://en.wikipedia.org/wiki/HMAC) a obsahuje ho v `Authorization` HLAVIČCE jednotlivých požadavků HTTP. Další informace najdete v tématu [ověřování pomocí přístupového klíče](#authenticate-with-an-access-key).
 - Ověřování **uživatelského přístupového tokenu** pro chat a volání. Tokeny přístupu uživatele umožňují klientským aplikacím ověřování přímo proti komunikačním službám Azure. Tyto tokeny se generují ve službě zřizování tokenů na straně serveru, kterou vytvoříte. Pak jsou k dispozici pro klientská zařízení, která používají token k inicializaci chatu a volání klientských knihoven. Další informace najdete v tématu [ověřování pomocí přístupového tokenu uživatele](#authenticate-with-a-user-access-token).
 
 ## <a name="authenticate-with-an-access-key"></a>Ověřování pomocí přístupového klíče

@@ -6,12 +6,12 @@ ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 468d21abc861e905472d1d15405b1c8ba9e5be74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8905fbdcfc03f2683698cca57ab6c066e77863
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904880"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205927"
 ---
 # <a name="cut-planes"></a>Řezy roviny
 
@@ -75,10 +75,10 @@ Příklady:
 
 | Vyjmout masku filtru rovin | Maska filtru geometrie  | Výsledek logického `AND` | Vyjmutá rovina má vliv na geometrii?  |
 |--------------------|-------------------|-------------------|:----------------------------:|
-| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Yes |
-| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Yes |
-| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | No |
-| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | No |
+| (0000 0001) = = 1   | (0000 0001) = = 1  | (0000 0001) = = 1  | Ano |
+| (1111 0000) = = 240 | (0001 0001) = = 17 | (0001 0000) = = 16 | Ano |
+| (0000 0001) = = 1   | (0000 0010) = = 2  | (0000 0000) = = 0  | Ne |
+| (0000 0011) = = 3   | (0000 1000) = = 8  | (0000 0000) = = 0  | Ne |
 
 >[!TIP]
 > Nastavení vyjmuté plochy `ObjectFilterMask` na hodnotu 0 znamená, že nebude mít vliv na žádný geometrii, protože výsledek logické hodnoty `AND` nemůže být prázdný. Vykreslovací systém nepovažuje tyto roviny na první místo, takže jde o odlehčenou metodu zakázání jednotlivých vyjmutých ploch. Tyto vyjmuté roviny se také nepočítají na základě limitu osmi aktivních rovin.
@@ -94,8 +94,8 @@ Každá aktivní vyjmutá rovina při vykreslování způsobí malé náklady. P
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [Třída C# CutPlaneComponent](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
-* [Třída C++ CutPlaneComponent](https://docs.microsoft.com/cpp/api/remote-rendering/cutplanecomponent)
+* [Třída C# CutPlaneComponent](/dotnet/api/microsoft.azure.remoterendering.cutplanecomponent)
+* [Třída C++ CutPlaneComponent](/cpp/api/remote-rendering/cutplanecomponent)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39e3b41d49ad06e5dbe5164809a6743da8dedae5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a193fdf82ed5e9a785c6c01db4931fb05e9aaac7
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613747"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205740"
 ---
 # <a name="sky-reflections"></a>Odrazy oblohy
 
@@ -26,7 +26,7 @@ Vzdálené vykreslování Azure využívá pro realistické výpočty světla *f
 
 Následující obrázky znázorňují výsledky osvětlení různých povrchů pouze s texturou nebe:
 
-| Hrubá  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
+| Hrubá  | 0                                        | 0,25                                          | 0.5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
 | Jiný než kov  | ![Dielectric, hrubosti = 0](media/dielectric-0.png)   | ![Dielectric, hrubosti = 0,25](media/dielectric-0.25.png)  | ![Dielectric, hrubosti = 0.5](media/dielectric-0.5.png)  | ![Dielectric, hrubosti = 0,75](media/dielectric-0.75.png)  | ![Dielectric, hrubosti = 1](media/dielectric-1.png)  |
 | Metal      | ![Kov, Hrubost = 0](media/metallic-0.png)  | ![Kov, Hrubost = 0,25](media/metallic-0.25.png)    | ![Kov, Hrubost = 0,5](media/metallic-0.5.png)    | ![Kov, Hrubost = 0,75](media/metallic-0.75.png)    | ![Kov, Hrubost = 1](media/metallic-1.png)    |
@@ -119,7 +119,7 @@ Použijte `AzureSession.Actions.LoadTextureAsync` `TextureType.Texture2D` k nač
 
 Vzdálené vykreslování Azure poskytuje několik předdefinovaných map prostředí, které jsou vždycky dostupné. Všechna integrovaná mapování prostředí jsou cubemaps.
 
-|Identifikátor                         | Description                                              | Obrázek                                                      |
+|Identifikátor                         | Popis                                              | Obrázek                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
 |builtin://Autoshop                 | Spektrum pruhů světla, jasného základního osvětlení interiéru    | ![Skybox k osvětlení objektu pomocí technologie autoshop](media/autoshop.png)
 |builtin://BoilerRoom               | Světlé světlo – nastavení, více indikátorů okna      | ![BoilerRoom Skybox, který se používá k osvětlení objektu](media/boiler-room.png)
@@ -138,8 +138,8 @@ Vzdálené vykreslování Azure poskytuje několik předdefinovaných map prost�
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 
-* [Vlastnost C# RemoteManager. SkyReflectionSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
-* [C++ RemoteManager:: SkyReflectionSettings ()](https://docs.microsoft.com/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
+* [Vlastnost C# RemoteManager. SkyReflectionSettings](/dotnet/api/microsoft.azure.remoterendering.remotemanager.skyreflectionsettings)
+* [C++ RemoteManager:: SkyReflectionSettings ()](/cpp/api/remote-rendering/remotemanager#skyreflectionsettings)
 
 ## <a name="next-steps"></a>Další kroky
 

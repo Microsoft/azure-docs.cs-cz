@@ -3,12 +3,12 @@ title: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 description: Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 838501bf4195c99c4d4ef7805fb8f4cba79e05d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 98f6ce7eee799b1baf29782d7eca11d62cf62353
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151870"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207287"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Základní hodnoty zabezpečení Azure pro Azure DevTest Labs
 
@@ -493,7 +493,7 @@ Kromě použití Change Tracking ke sledování softwarových aplikací, adaptiv
 **Doprovodné materiály:** Azure Automation poskytuje úplnou kontrolu nad nasazením, provozem a vyřazením úloh a prostředků z provozu. Jako správce předplatného můžete použít Change Tracking k identifikaci veškerého softwaru nainstalovaného na virtuálních počítačích hostovaných v DevTest Labs. Můžete implementovat vlastní proces nebo použít konfiguraci Azure Automation stav pro odebrání neautorizovaného softwaru.
 
 - [Seznámení se službou Azure Automation](../automation/automation-intro.md)
-- [Sledování změn ve vašem prostředí pomocí Change Tracking řešení](../automation/change-tracking.md)
+- [Sledování změn ve vašem prostředí pomocí Change Tracking řešení](../automation/change-tracking/overview.md)
 - [Přehled konfigurace stavu Azure Automation](../automation/automation-dsc-overview.md)
 
 **Monitorování Azure Security Center:** Není k dispozici
@@ -581,7 +581,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 - [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 - [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
-- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
 **Monitorování Azure Security Center:** Nelze použít
 
@@ -591,7 +591,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 **Doprovodné materiály:** Použijte Azure Security Center doporučení k údržbě konfigurací zabezpečení u všech základních výpočetních prostředků vytvořených jako součást laboratoře DevTest Labs. Kromě toho můžete k vytvoření konfigurace zabezpečení operačního systému vyžadovaného vaší organizací použít vlastní image operačního systému nebo konfigurace stavu Azure Automation nebo artefakty DevTest Labs.
 
 - [Jak monitorovat Azure Security Center doporučení](../security-center/security-center-recommendations.md)
-- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 - [Přehled konfigurace stavu Azure Automation](../automation/automation-dsc-overview.md)
 - [Nahrání virtuálního pevného disku a jeho použití k vytvoření nových virtuálních počítačů s Windows v Azure](../virtual-machines/windows/upload-generalized-managed.md)
 - [Vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI](../virtual-machines/linux/upload-vhd.md)

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 302a478dd32c93a555bb17e9d7d0f60bd7859a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39a4c7b8afab1a9f102bc0bc24b40a7525d93d83
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292665"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201341"
 ---
 ### <a name="prepare-an-azure-digital-twins-instance"></a>Příprava instance digitálních vláken Azure
 
@@ -18,8 +18,4 @@ K dokončení tohoto kurzu budete potřebovat **instanci digitálního vlákna A
 
 * Jinak **nastavte instanci a ověřování** podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](../articles/digital-twins/how-to-set-up-instance-portal.md). Pokyny také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
 
-V tomto kurzu budete při nastavování instance potřebovat následující hodnoty. Pokud tyto hodnoty potřebujete znovu shromáždit, použijte odkazy níže na příslušné části v článku o nastavení, abyste je našli v [Azure Portal](https://portal.azure.com).
-* **_Název_** instance digitálních vláken Azure ([najít v portálu](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* **_Název hostitele_** instance digitálních vláken Azure ([najít v portálu](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* ID aplikace registrace aplikace Azure AD **_(ID klienta)_** ([najít v portálu](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
-* **_ID adresáře_** pro registraci aplikace Azure AD ([najít v portálu](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
+Jakmile budete mít v tomto kurzu instanci digitálních vláken Azure, budete potřebovat **_název hostitele_** instance ([najít v portálu](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).

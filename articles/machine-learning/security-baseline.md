@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 831e72610690753a62c04b51e277110653e0d2c9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107670"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92204329"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -721,7 +721,7 @@ Odeberte prostředky Azure, když už je nepotřebujete.
 
 - [Jak používat monitorování integrity souborů](../security-center/security-center-file-integrity-monitoring.md)
 
-- [Pochopení Azure Automation Change Tracking a inventáře](../automation/change-tracking.md)
+- [Pochopení Azure Automation Change Tracking a inventáře](../automation/change-tracking/overview.md)
 
 - [Jak povolit inventář virtuálních počítačů Azure](../automation/automation-tutorial-installed-software.md)
 
@@ -820,7 +820,7 @@ Azure Machine Learning plně podporuje úložiště Git pro sledování práce; 
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -834,7 +834,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 - [Jak monitorovat Azure Security Center doporučení](../security-center/security-center-recommendations.md)
 
-- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
 - [Přehled konfigurace stavu Azure Automation](../automation/automation-dsc-overview.md)
 

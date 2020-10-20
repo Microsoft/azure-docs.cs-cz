@@ -2,15 +2,15 @@
 title: Povolit Azure Automation Update Management z účtu Automation
 description: V tomto článku se dozvíte, jak povolit Update Management z účtu Automation.
 services: automation
-ms.date: 09/09/2020
+ms.date: 10/15/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 787338be06c2e30aabb6421a42e7cb3aaabf8a2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b46bd1e30efff81748389ef62c46410479fb4b
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669498"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206624"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Povolení Update Managementu z účtu Automation
 
@@ -65,14 +65,14 @@ Ručně nainstalované počítače nebo počítače, které už hlásí do vaše
 
     ![Uložená hledání](media/update-mgmt-enable-automation-account/managemachines.png)
 
-3. Pokud chcete povolit Update Management pro všechny dostupné počítače, které se hlásí do pracovního prostoru, vyberte **Povolit na všech dostupných počítačích** na stránce Správa počítačů. Tato akce zakáže ovládacímu prvku přidat počítače jednotlivě. Tato úloha přidá všechny názvy počítačů, které nahlásí do pracovního prostoru, do uloženého vyhledávacího dotazu skupiny počítačů `MicrosoftDefaultComputerGroup` . Když se tato akce vybere, zakáže se tlačítko **spravovat počítače** .
+3. Pokud chcete povolit Update Management pro všechny dostupné počítače, které se hlásí do pracovního prostoru, vyberte **Povolit na všech dostupných počítačích** na stránce Správa počítačů. Tato akce zakáže ovládacímu prvku přidat počítače jednotlivě a přidá všechny počítače, které nastavují sestavy do pracovního prostoru, do uloženého vyhledávacího dotazu skupiny počítačů `MicrosoftDefaultComputerGroup` . Když se tato akce vybere, zakáže se možnost **spravovat počítače** .
 
-4. Pokud chcete funkci povolit pro všechny dostupné počítače a budoucí počítače, vyberte **Povolit na všech dostupných a budoucích počítačích**. Tato možnost odstraní uloženou konfiguraci hledání a rozsahu z pracovního prostoru a umožní, aby funkce zahrnovala všechny počítače s Azure a mimo Azure, které aktuálně nebo v budoucnu, nahlásily do pracovního prostoru. Když se tato akce vybere, zakáže se trvale tlačítko **spravovat počítače** , protože není k dispozici žádná konfigurace oboru.
+4. Pokud chcete funkci povolit pro všechny dostupné počítače a budoucí počítače, vyberte **Povolit na všech dostupných a budoucích počítačích**. Tato možnost odstraní uloženou konfiguraci hledání a rozsahu z pracovního prostoru a umožní, aby funkce zahrnovala všechny počítače s Azure a mimo Azure, které aktuálně nebo v budoucnu, nahlásily do pracovního prostoru. Když se tato akce vybere, zakáže možnost **spravovat počítače** trvale, protože není dostupná žádná konfigurace oboru.
 
     > [!NOTE]
-    > Vzhledem k tomu, že tato možnost odstraní uložená hledání a konfigurace oboru v rámci Log Analytics, je důležité před výběrem této možnosti odebrat všechna zámky pro odstranění v pracovním prostoru Log Analytics. Pokud to neuděláte, možnost odebrání konfigurací neproběhne a je nutné je odebrat ručně.
+    > Vzhledem k tomu, že tato možnost odstraní uloženou konfiguraci hledání a rozsahu v rámci Log Analytics, je důležité před výběrem této možnosti odebrat všechna zámky pro odstranění v pracovním prostoru Log Analytics. Pokud to neuděláte, možnost odebrání konfigurací neproběhne a je nutné je odebrat ručně.
 
-5. V případě potřeby můžete konfigurace oboru přidat zpátky tak, že znovu přidáte počáteční uložený vyhledávací dotaz. Další informace najdete v tématu [omezení rozsahu nasazení Update Management](update-mgmt-scope-configuration.md).
+5. V případě potřeby můžete konfiguraci oboru přidat zpátky tak, že znovu přidáte počáteční uložený vyhledávací dotaz. Další informace najdete v tématu [omezení rozsahu nasazení Update Management](update-mgmt-scope-configuration.md).
 
 6. Pokud chcete funkci povolit pro jeden nebo víc počítačů, vyberte **Povolit na vybraných počítačích** a vyberte **Přidat** vedle každého počítače. Tato úloha přidá vybrané názvy počítačů do uloženého vyhledávacího dotazu skupiny počítačů pro danou funkci.
 

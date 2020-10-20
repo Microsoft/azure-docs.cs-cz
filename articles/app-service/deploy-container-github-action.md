@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: d6f66993b0fb7f97c551f4fbcb305111cfb2097e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150283"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203190"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -28,7 +28,7 @@ Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 |**Sestavení** | 1. Vytvořte prostředí. <br /> 2. Sestavte image kontejneru. |
 |**Nasazení** | 1. Nasaďte image kontejneru. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
@@ -190,15 +190,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>Nasazení do kontejneru App Service
 
-K nasazení image do vlastního kontejneru v App Service použijte `azure/webapps-deploy@v2` akci. Tato akce má pět parametrů:
+K nasazení image do vlastního kontejneru v App Service použijte `azure/webapps-deploy@v2` akci. Tato akce má sedm parametrů:
 
 | **Parametr**  | **Vysvětlení**  |
 |---------|---------|
 | **název aplikace** | Požadovanou Název aplikace App Service | 
-| **publikování – profil** | Volitelné Publikování obsahu souboru profilu pomocí Nasazení webu tajných klíčů |
-| **fotografií** | Plně kvalifikované názvy imagí kontejneru. Například ' myregistry.azurecr.io/nginx:latest ' nebo ' Python: 3.7.2-Alpine/'. Pro scénář s více kontejnery lze zadat více názvů imagí kontejneru (oddělené více řádky). |
+| **publikování – profil** | Volitelné Platí pro Web Apps (Windows a Linux) a kontejnery webové aplikace (Linux). Scénář vícenásobného kontejneru není podporován. Publikovat \* obsah souboru profilu (. publishsettings) s nasazení webu tajnými klíči | 
 | **název slotu** | Volitelné Zadejte jinou existující patici, než je produkční slot. |
-| **konfigurační soubor** | Volitelné Cesta k souboru Docker-Compose |
+| **balíček** | Volitelné Platí jenom pro webovou aplikaci: cesta k balíčku nebo složce. \*. zip, \* . War, \* . jar nebo složka, která se má nasadit |
+| **fotografií** | Požadovanou Platí jenom pro kontejnery webové aplikace: zadejte plně kvalifikované názvy imagí kontejneru. Například ' myregistry.azurecr.io/nginx:latest ' nebo ' Python: 3.7.2-Alpine/'. Pro aplikaci s více kontejnery je možné zadat více názvů imagí kontejneru (oddělené víceřádkově). |
+| **konfigurační soubor** | Volitelné Platí jenom pro kontejnery webové aplikace: cestu k souboru Docker-Compose. Musí být úplná cesta nebo relativní vzhledem k výchozímu pracovnímu adresáři. Vyžaduje se pro aplikace s více kontejnery. |
+| **spuštění – příkaz** | Volitelné Zadejte spouštěcí příkaz. Pro ex. spuštění dotnet nebo dotnet filename.dll |
 
 # <a name="publish-profile"></a>[Publikovat profil](#tab/publish-profile)
 

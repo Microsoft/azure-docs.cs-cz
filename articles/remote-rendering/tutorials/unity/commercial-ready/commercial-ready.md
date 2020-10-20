@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff6d064b6bfabbd8a648c23b5648aae9b12a11d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510925"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207491"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Kurz: Vytvoření aplikace pro vzdálené vykreslování Azure připravené pro komerční zpracování
 
@@ -35,8 +35,8 @@ Tento modul vás seznámí s dalšími možnostmi, které možná budete muset v
 
 Obecný přehled osvědčených postupů architektury pro celou architekturu najdete v těchto postupech:
 
-* [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/)
-* [Příručka Začínáme pro vývojáře v Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)
+* [Azure Architecture Center](/azure/architecture/)
+* [Příručka Začínáme pro vývojáře v Azure](../../../../guides/developer/azure-developer-guide.md)
 
 ## <a name="analytics"></a>Analýzy
 
@@ -54,7 +54,7 @@ Za tímto účelem Azure nabízí službu s názvem označování prostředků, 
 
 Další informace o pojmenování a označování prostředků je dobrým místem, kde začínáte:
 
-* [Rozhodovací příručka pro pojmenování a označování prostředků](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+* [Rozhodovací příručka pro pojmenování a označování prostředků](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
 
 ### <a name="diagnostics"></a>Diagnostika
 
@@ -62,9 +62,9 @@ Výkonné nástroje, jako je trasování událostí pro Windows (ETW) a protokol
 
 Další informace najdete na adrese:
 
-* [Vytvoření trasování výkonu na straně klienta](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
-* [Jak shromažďovat data trasování událostí pro Windows (ETW)](https://docs.microsoft.com/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
-* [Použití portálu zařízení Windows: protokolování](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
+* [Vytvoření trasování výkonu na straně klienta](../../../how-tos/performance-tracing.md)
+* [Jak shromažďovat data trasování událostí pro Windows (ETW)](/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
+* [Použití portálu zařízení Windows: protokolování](/windows/mixed-reality/using-the-windows-device-portal)
 
 ### <a name="usage-analysis"></a>Analýza využití
 
@@ -72,7 +72,7 @@ Azure Application Insights pomáhá pochopit, jak uživatelé používají vaši
 
 Další informace najdete na adrese:
 
-* [Analýza využití pomocí Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)
+* [Analýza využití pomocí Application Insights](../../../../azure-monitor/app/usage-overview.md)
 
 ## <a name="fast-startup-time-strategies"></a>Strategie rychlého spuštění
 
@@ -102,7 +102,7 @@ Tato strategie také pomáhá s optimalizací volby mezi relacemi *Standard* a *
 
 Další informace o relacích vzdáleného vykreslování Azure najdete v těchto případech:
 
-* [Relace Remote Renderingu](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
+* [Relace Remote Renderingu](../../../concepts/sessions.md)
 
 ## <a name="standard-vs-premium-server-size-routing-strategies"></a>Strategie směrování pro velikost Standard vs. Premium Server
 
@@ -164,9 +164,9 @@ Mezi další příklady patří streamované video, současná nahraná na pozad
 Další informace o analýze sítě najdete v těchto informacích:
 
 * [Azure Storage Blob test rychlosti stahování](https://www.azurespeed.com/Azure/Download)
-* [Statistika latence odezvy sítě Azure](https://docs.microsoft.com/azure/networking/azure-network-latency)
-* [Trasování výkonu na straně serveru](https://docs.microsoft.com/azure/remote-rendering/overview/features/performance-queries)
-* [Trasování výkonu na straně klienta](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
+* [Statistika latence odezvy sítě Azure](../../../../networking/azure-network-latency.md)
+* [Trasování výkonu na straně serveru](../../../overview/features/performance-queries.md)
+* [Trasování výkonu na straně klienta](../../../how-tos/performance-tracing.md)
 
 ## <a name="collaboration-considerations"></a>Požadavky na spolupráci
 
@@ -192,8 +192,8 @@ U 3D prostředků, které se opakovaně použijí, například v případě ško
 
 Další informace najdete tady:
 
-* [Sdílená prostředí ve smíšené realitě](https://docs.microsoft.com/windows/mixed-reality/shared-experiences-in-mixed-reality)
-* [Azure Storage redundance](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Sdílená prostředí ve smíšené realitě](/windows/mixed-reality/shared-experiences-in-mixed-reality)
+* [Azure Storage redundance](../../../../storage/common/storage-redundancy.md)
 
 ## <a name="managing-model-access"></a>Správa přístupu k modelu
 
@@ -230,7 +230,7 @@ Tento přístup se dá provést ještě jednou, protože ponechá přidružení 
 Další informace najdete tady:
 
 * [Šablona Microsoft Power automatizuje pro OneDrive pro Azure Storage replikaci](https://flow.microsoft.com/galleries/public/templates/2f90b5d3-029b-4e2e-ad37-1c0fe6d187fe/when-a-file-is-uploaded-to-onedrive-copy-it-to-azure-storage-container/)
-* [Přehled rozhraní API pro File Storage OneDrivu](https://docs.microsoft.com/graph/onedrive-concept-overview)
+* [Přehled rozhraní API pro File Storage OneDrivu](/graph/onedrive-concept-overview)
 
 ### <a name="direct-cad-access"></a>Přímý přístup do CAD
 
@@ -255,7 +255,7 @@ Mnoho podnikových klientů vyžaduje, aby vaše Azure Stack mohla být nasazena
 Další informace najdete tady:
 
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/)
-* [Kurz: publikování spravovaných aplikací Azure na webu Marketplace](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/publish-marketplace-app)
+* [Kurz: publikování spravovaných aplikací Azure na webu Marketplace](../../../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>Zabezpečení
 
@@ -277,6 +277,6 @@ Pro ověřování se můžete co nejvíce přesunout na webovou službu Azure ja
 
 Další informace najdete tady:
 
-* [Ověřování služby Azure AD](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-service-authentication)
+* [Ověřování služby Azure AD](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [Posílení stav zabezpečení s využitím Azure](https://azure.microsoft.com/overview/security/)
 * [Zabezpečení cloudu](https://azure.microsoft.com/product-categories/security/)

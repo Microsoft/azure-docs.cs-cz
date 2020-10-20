@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 35b39ceb7ef54b0e00eaa53dad821c9336ea88ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302617"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207933"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -42,9 +42,9 @@ Další informace najdete v tématu [nastavení ověřování pro Azure Machine 
 
 Azure Machine Learning podporuje dvě formy ověřování pro webové služby: klíč a token. Každá webová služba může současně povolit jenom jednu formu ověřování.
 
-|Metoda ověřování|Description|Azure Container Instances|AKS|
+|Metoda ověřování|Popis|Azure Container Instances|AKS|
 |---|---|---|---|
-|Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
+|Key|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
 |Token|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
 
 Příklady kódu naleznete v [části ověřování webové služby](how-to-setup-authentication.md#web-service-authentication).
@@ -376,6 +376,10 @@ Podrobnosti najdete tady:
 Další informace o Azure Policy najdete v dokumentaci k [Azure Policy](/azure/governance/policy/overview).
 
 Další informace o zásadách specifických pro Azure Machine Learning najdete v tématu [auditování a Správa dodržování předpisů pomocí Azure Policy](how-to-integrate-azure-policy.md).
+
+## <a name="resource-locks"></a>Zámky prostředků
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ecd4330381db1f63a40e9ba5ff63108c6fa78fe
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187230"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92205604"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Řešení problémů s řešením Change Tracking a Inventory
 
-Tento článek popisuje, jak řešit a řešit problémy s Azure Automation Change Tracking a inventáře. Obecné informace o Change Tracking a inventáři najdete v tématu [přehled Change Tracking a inventáře](../change-tracking.md).
+Tento článek popisuje, jak řešit a řešit problémy s Azure Automation Change Tracking a inventáře. Obecné informace o Change Tracking a inventáři najdete v tématu [přehled Change Tracking a inventáře](../change-tracking/overview.md).
 
 ## <a name="windows"></a>Windows
 
@@ -108,11 +108,11 @@ Další řešení potíží s tímto problémem najdete v tématu [problém: nev
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Agent Log Analytics pro Linux není správně nakonfigurovaný.
 
-Agent Log Analytics pro Linux nemusí být správně nakonfigurovaný pro protokoly a výstupní kolekce příkazového řádku pomocí nástroje kolektor protokolů OMS. Viz [přehled Change Tracking a inventáře](../change-tracking.md).
+Agent Log Analytics pro Linux nemusí být správně nakonfigurovaný pro protokoly a výstupní kolekce příkazového řádku pomocí nástroje kolektor protokolů OMS. Viz [přehled Change Tracking a inventáře](../change-tracking/overview.md).
 
 ##### <a name="fim-conflicts"></a>Konflikty FIM
 
-Funkce FIM Azure Security Center možná nesprávně ověřuje integritu souborů Linux. Ověřte, že je produkt FIM funkční a správně nakonfigurovaný pro monitorování souborů systému Linux. Viz [přehled Change Tracking a inventáře](../change-tracking.md).
+Funkce FIM Azure Security Center možná nesprávně ověřuje integritu souborů Linux. Ověřte, že je produkt FIM funkční a správně nakonfigurovaný pro monitorování souborů systému Linux. Viz [přehled Change Tracking a inventáře](../change-tracking/overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f96b48b8fec07ab207ea3962a201bbff68a5339
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742969"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92200844"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu služby App Service
 
@@ -37,7 +37,7 @@ Každá úroveň také poskytuje určitou podmnožinu funkcí App Service. Mezi 
 <a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Nová cenová úroveň **PremiumV3** garantuje [virtuální počítače řady Dv3-Series](../virtual-machines/dv3-dsv3-series.md) s rychlejšími procesory, SSD úložištěm a čtyřnásobným poměrem paměti k jádrům ve srovnání s úrovní **Standard** . **PremiumV3** také podporuje vyšší škálování prostřednictvím zvýšeného počtu instancí a zároveň zajišťuje všechny rozšířené možnosti, které se nacházejí na úrovni **Standard** . Všechny funkce, které jsou k dispozici ve stávající úrovni **PremiumV2** , jsou součástí **PremiumV3**.
+> Nová cenová úroveň **PremiumV3** garantuje počítače s rychlejšími procesory (minimálně 195 [ACU](https://docs.microsoft.com/azure/virtual-machines/acu) na virtuální procesor), SSD Storage a čtyřnásobným poměrům paměti až po jádru v porovnání s úrovní **Standard** . **PremiumV3** také podporuje vyšší škálování prostřednictvím zvýšeného počtu instancí a zároveň zajišťuje všechny rozšířené možnosti, které se nacházejí na úrovni **Standard** . Všechny funkce, které jsou k dispozici ve stávající úrovni **PremiumV2** , jsou součástí **PremiumV3**.
 >
 > Podobně jako jiné vyhrazené úrovně jsou pro tuto vrstvu k dispozici tři velikosti virtuálních počítačů:
 >

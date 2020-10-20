@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 49e82467cd5e9cef8100aa56016f778df3445f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264f0e59e2c43ca92fc5209b8613282a0b0fca37
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822388"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203768"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -22,8 +22,9 @@ Datové sady mají jedinečné životní cykly. Brzy v životním cyklu lidé k 
 
 Zásady správy životního cyklu vám umožňují:
 
-- Pokud chcete optimalizovat výkon a náklady, převeďte objekty blob na studenou vrstvu úložiště (horkou, horkou pro archivaci nebo studenou).
-- Odstranění objektů blob na konci jejich životního cyklu
+- Převeďte objekty blob ze studené na horkou hned, pokud je k dispozici pro optimalizaci výkonu. 
+- Převeďte objekty blob, verze objektů BLOB a snímky objektů blob na studenou úroveň úložiště (horká na studenou, horkou pro archivaci nebo studenou pro archivaci), pokud k optimalizaci nákladů neproběhla nebo se změnila.
+- Odstranění objektů blob, verzí objektů BLOB a snímků objektů blob na konci jejich životního cyklu
 - Definujte pravidla, která se spustí jednou denně na úrovni účtu úložiště.
 - Použití pravidel u kontejnerů nebo podmnožiny objektů BLOB (použití předpon názvů nebo [značek indexu objektů BLOB](storage-manage-find-blobs.md) jako filtrů)
 
@@ -33,7 +34,7 @@ Vezměte v úvahu scénář, kdy data budou často přístupná v počátečníc
 
 ## <a name="availability-and-pricing"></a>Dostupnost a ceny
 
-Funkce správy životního cyklu je dostupná ve všech oblastech Azure pro účty Pro obecné účely v2 (GPv2), účty BLOB Storage a účty úložiště blob bloku úrovně Premium. V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
+Funkce správy životního cyklu je dostupná ve všech oblastech Azure pro účty Pro obecné účely v2 (GPv2), účty BLOB Storage, účty úložiště objektů blob bloku Premium a účty Azure Data Lake Storage Gen2. V Azure Portal můžete upgradovat existující účet Pro obecné účely (GPv1) na účet GPv2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady za volání rozhraní API [vrstvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
@@ -211,7 +212,7 @@ Správu životního cyklu můžete definovat pomocí Azure Resource Manager šab
 
 ---
 
-## <a name="policy"></a>Zásady
+## <a name="policy"></a>Zásada
 
 Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
@@ -241,10 +242,10 @@ Zásada je kolekcí pravidel:
 
 Každé pravidlo v zásadě má několik parametrů:
 
-| Název parametru | Typ parametru | Poznámky | Vyžadováno |
+| Název parametru | Typ parametru | Poznámky | Povinné |
 |----------------|----------------|-------|----------|
 | `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena. Musí být jedinečný v rámci zásad. | Ano |
-| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Nepravda | 
+| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Ne | 
 | `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle` . | Ano |
 | `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | Ano |
 
@@ -263,29 +264,41 @@ Následující ukázkové pravidlo filtruje účet, aby spouštěl akce na objek
 - Úroveň objektu BLOB na studenou vrstvu 30 dní od poslední změny
 - Úroveň objektu BLOB na archivní vrstvu 90 dní od poslední změny
 - Odstranit objekt BLOB 2 555 dní (sedm let) po poslední úpravě
-- Odstranit snímky objektů BLOB 90 dní po vytvoření snímku
+- Odstranit předchozí verze objektů BLOB 90 dní po vytvoření
 
 ```json
 {
   "rules": [
     {
-      "name": "ruleFoo",
       "enabled": true,
+      "name": "rulefoo",
       "type": "Lifecycle",
       "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
         "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 },
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          "version": {
+            "delete": {
+              "daysAfterCreationGreaterThan": 90
+            }
           },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "baseBlob": {
+            "tierToCool": {
+              "daysAfterModificationGreaterThan": 30
+            },
+            "tierToArchive": {
+              "daysAfterModificationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterModificationGreaterThan": 2555
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "container1/foo"
+          ]
         }
       }
     }
@@ -301,9 +314,9 @@ Filtry zahrnují:
 
 | Název filtru | Typ filtru | Poznámky | Je povinné |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob` a `appendBlob` . Pro se podporuje jenom odstranění `appendBlob` , nastavení úrovně se nepodporuje. | Yes |
-| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
-| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
+| blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob` a `appendBlob` . Pro se podporuje jenom odstranění `appendBlob` , nastavení úrovně se nepodporuje. | Ano |
+| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
+| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | Ne |
 
 > [!NOTE]
 > Index objektu BLOB je ve verzi Public Preview a je dostupný v oblasti **Kanada – střed**, Kanada – **východ**, Francie – **střed**a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
@@ -312,24 +325,24 @@ Filtry zahrnují:
 
 Akce se aplikují na filtrované objekty BLOB při splnění podmínky spuštění.
 
-Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a odstraňování snímků objektů BLOB. Pro každé pravidlo pro objekty blob nebo snímky objektů BLOB definujte alespoň jednu akci.
+Správa životního cyklu podporuje vrstvení a mazání objektů blob, předchozích verzí objektů BLOB a snímků objektů BLOB. Definujte alespoň jednu akci pro každé pravidlo základních objektů blob, předchozí verze objektu BLOB nebo snímky objektů BLOB.
 
-| Akce                      | Základní objekt BLOB                                   | Snímek      |
-|-----------------------------|---------------------------------------------|---------------|
-| tierToCool                  | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporováno |
-| enableAutoTierToHotFromCool | Podpora objektů BLOB v současnosti ve studené úrovni        | Nepodporováno |
-| tierToArchive               | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporováno |
-| delete                      | Podporováno pro `blockBlob` a `appendBlob`  | Podporováno     |
+| Akce                      | Základní objekt BLOB                                  | Snímek      | Verze
+|-----------------------------|--------------------------------------------|---------------|---------------|
+| tierToCool                  | Podporováno pro `blockBlob`                  | Podporováno     | Podporováno     |
+| enableAutoTierToHotFromCool | Podporováno pro `blockBlob`                  | Nepodporováno | Nepodporováno |
+| tierToArchive               | Podporováno pro `blockBlob`                  | Podporováno     | Podporováno     |
+| delete                      | Podporováno pro `blockBlob` a `appendBlob` | Podporováno     | Podporováno     |
 
 >[!NOTE]
 >Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive` . Akce `tierToArchive` je levnější než akce `tierToCool` .
 
-Podmínky spuštění jsou založené na stáří. Základní objekty blob používají čas poslední změny ke sledování stáří a snímky objektů BLOB používají čas vytvoření snímku ke sledování stáří.
+Podmínky spuštění jsou založené na stáří. Základní objekty blob používají čas poslední změny, verze objektů BLOB používají čas vytvoření verze a snímky objektů BLOB používají čas vytvoření snímku ke sledování stáří.
 
-| Podmínka spuštění akce               | Hodnota podmínky                          | Description                                                                      |
+| Podmínka spuštění akce               | Hodnota podmínky                          | Popis                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Celočíselná hodnota označující stáří ve dnech | Podmínka pro základní akce objektů BLOB                                              |
-| daysAfterCreationGreaterThan       | Celočíselná hodnota označující stáří ve dnech | Podmínka pro akce snímku objektu BLOB                                          |
+| daysAfterCreationGreaterThan       | Celočíselná hodnota označující stáří ve dnech | Podmínka pro akci snímku verze a objektu BLOB                         |
 | daysAfterLastAccessTimeGreaterThan | Celočíselná hodnota označující stáří ve dnech | Tisk Podmínka pro akce základního objektu blob, pokud je povolen čas posledního otevření |
 
 ## <a name="examples"></a>Příklady
@@ -522,26 +535,35 @@ Některá data by měla být vyhodnocena pouze v případě, že jsou výslovně
 }
 ```
 
-### <a name="delete-old-snapshots"></a>Odstranit staré snímky
+### <a name="manage-versions"></a>Správa verzí
 
-Pro data, která se pravidelně upravují a přibývají k nim přistupovaly během své životnosti, se snímky často používají ke sledování starších verzí dat. Můžete vytvořit zásadu, která odstraní staré snímky na základě stáří snímku. Stáří snímku je určeno vyhodnocením času vytvoření snímku. Toto pravidlo zásad odstraní snímky objektů blob bloku v rámci kontejneru `activedata` , které jsou 90 dní nebo starší po vytvoření snímku.
+Pro data, která se upravují a běžně přistupovala během své životnosti, můžete povolit správu verzí služby Blob Storage a automaticky tak zachovat předchozí verze objektu. Můžete vytvořit zásadu pro vrstvu nebo odstranit předchozí verze. Stáří verze je určeno vyhodnocením času vytvoření verze. Toto pravidlo zásad nastavuje předchozí verze v rámci kontejneru `activedata` , které jsou 90 dní nebo starší po vytvoření verze do studené úrovně, a odstraní předchozí verze, které jsou 365 dní nebo starší.
 
 ```json
 {
   "rules": [
     {
-      "name": "snapshotRule",
       "enabled": true,
+      "name": "versionrule",
       "type": "Lifecycle",
-    "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "activedata" ]
-        },
+      "definition": {
         "actions": {
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
+          "version": {
+            "tierToCool": {
+              "daysAfterCreationGreaterThan": 90
+            },
+            "delete": {
+              "daysAfterCreationGreaterThan": 365
+            }
           }
+        },
+        "filters": {
+          "blobTypes": [
+            "blockBlob"
+          ],
+          "prefixMatch": [
+            "activedata"
+          ]
         }
       }
     }
@@ -549,7 +571,7 @@ Pro data, která se pravidelně upravují a přibývají k nim přistupovaly bě
 }
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Vytvořili jsem novou zásadu, proč se akce nespouštějí hned?**
 

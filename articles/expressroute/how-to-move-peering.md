@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: duau
-ms.openlocfilehash: 5671be5e54a9bb789e349a4da6d0f1809807d974
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 608d6c87442821e904fde16c6b75841fe792e3f0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401414"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206284"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Přesun veřejného partnerského vztahu do partnerskému vztahu Microsoftu
 
@@ -31,7 +31,7 @@ Pokud se chcete připojit k partnerskému vztahu Microsoftu, musíte nastavit a 
 > [!Warning]
 > Fond IP adres NAT inzerovaný Microsoftu nesmí být inzerovaný do internetu. Tím by došlo k přerušení připojení k jiným službám Microsoftu.
 
-Před konfigurací partnerského vztahu Microsoftu se můžete podívat na [asymetrické směrování s několika síťovými cestami](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) , které vám umožní mít upozornění asymetrického směrování.
+Před konfigurací partnerského vztahu Microsoftu se můžete podívat na [asymetrické směrování s několika síťovými cestami](./expressroute-asymmetric-routing.md) , které vám umožní mít upozornění asymetrického směrování.
 
 * Pokud používáte veřejný partnerský vztah a aktuálně máte pravidla sítě IP pro veřejné IP adresy, které se používají pro přístup k [Azure Storage](../storage/common/storage-network-security.md) nebo [Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md), musíte se UJISTIT, že fond IP adres NAT nakonfigurovaný s partnerským vztahem Microsoftu je obsažený v seznamu veřejných IP adres pro účet Azure Storage nebo účet Azure SQL.<br>
 * Aby bylo možné přejít na partnerský vztah Microsoftu bez výpadků, postupujte podle kroků v tomto článku v uvedeném pořadí.

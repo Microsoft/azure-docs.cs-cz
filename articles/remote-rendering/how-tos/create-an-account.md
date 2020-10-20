@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb321aeeae1f0ef5aaadce22e228024895176143
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318088"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202646"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Vytvoření účtu Azure Remote Renderingu
 
@@ -101,7 +101,7 @@ Ostatní rozevírací seznamy jsou vybrány jako v prvním kroku.
 
 Pokud jste přidali všechny tři role, má účet vzdáleného vykreslování Azure přístup k vašemu účtu úložiště pomocí identit spravované služby přiřazené systémem.
 > [!IMPORTANT]
-> Přiřazení rolí Azure se Azure Storage ukládá do mezipaměti, takže může trvat až 30 minut, než udělíte přístup k účtu vzdáleného vykreslování a když ho můžete použít pro přístup k účtu úložiště. Podrobnosti najdete v [dokumentaci k základnímu řízení přístupu role](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) .
+> Přiřazení rolí Azure se Azure Storage ukládá do mezipaměti, takže může trvat až 30 minut, než udělíte přístup k účtu vzdáleného vykreslování a když ho můžete použít pro přístup k účtu úložiště. Podrobnosti najdete v [dokumentaci k základnímu řízení přístupu role](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 072eeb0bee0d0441549d2edad448f3b1c85a28a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566496"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202340"
 ---
 # <a name="expressroute-circuits-and-peering"></a>Okruhy ExpressRoute a peering
 
@@ -70,7 +70,7 @@ Každý partnerský vztah vyžaduje samostatné relace protokolu BGP (jednu dvoj
 
 ## <a name="expressroute-health"></a><a name="health"></a>Stav ExpressRoute
 
-Okruhy ExpressRoute je možné monitorovat kvůli dostupnosti, připojení k virtuální sítě a využití šířky pásma pomocí [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (npm).
+Okruhy ExpressRoute je možné monitorovat kvůli dostupnosti, připojení k virtuální sítě a využití šířky pásma pomocí [Network Performance Monitor](../networking/network-monitoring-overview.md) (npm).
 
 NPM monitoruje stav privátního partnerského vztahu Azure a partnerského vztahu Microsoftu. Další informace najdete na našem [příspěvku](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) .
 

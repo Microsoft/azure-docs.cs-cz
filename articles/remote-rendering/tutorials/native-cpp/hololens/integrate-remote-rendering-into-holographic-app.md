@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 9457323b2642d0e7c5a623c13ec8440520bd5b8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56e889778e3b598dc4ded5f64eef20101c542b6a
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88891772"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207508"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Kurz: integrace vzdáleného vykreslování do holografické aplikace HoloLens
 
@@ -26,14 +26,14 @@ Tento kurz se zaměřuje na přidání nezbytných bitů do nativního `Holograp
 > [!TIP]
 > [Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje výsledek tohoto kurzu jako projekt sady Visual Studio, který je připravený k použití. Je také obohacen se správnými chybami a vytvářením zpráv o stavu prostřednictvím třídy uživatelského rozhraní `StatusDisplay` . V rámci tohoto kurzu jsou všechny dodatky specifické pro ARR vymezeny nástrojem `#ifdef USE_REMOTE_RENDERING`  /  `#endif` , takže je snadné identifikovat doplňky vzdáleného vykreslování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento kurz potřebujete:
 
 * Informace o vašem účtu (ID účtu, klíč účtu, ID předplatného). Pokud účet nemáte, [vytvořte účet](../../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk).
 * Nejnovější verzi sady Visual Studio 2019 [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/).
-* [Visual Studio Tools pro Mixed reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
+* [Visual Studio Tools pro Mixed reality](/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
   * **Vývoj desktopových aplikací v C++**
   * **Vývoj Univerzální platforma Windows (UWP)**
 * Šablony aplikací Windows Mixed reality pro Visual Studio [(Stáhnout)](https://marketplace.visualstudio.com/items?itemName=WindowsMixedRealityteam.WindowsMixedRealityAppTemplatesVSIX).
@@ -593,4 +593,4 @@ V tomto kurzu jste se dozvěděli o všech krocích, které je potřeba pro při
 Pokud chcete převést svůj vlastní model, přečtěte si následující rychlý Start:
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: převod modelu pro vykreslování](../../../quickstarts/convert-model.md)
+> [Rychlý start: Převod modelu pro vykreslování](../../../quickstarts/convert-model.md)

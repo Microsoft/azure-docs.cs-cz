@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: duau
-ms.openlocfilehash: 0cc07f9647c4f7836438adbe2b4cf9fa24a1c890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566394"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202143"
 ---
 # <a name="about-expressroute-direct"></a>O službě ExpressRoute Direct
 
@@ -73,7 +73,7 @@ ExpressRoute Direct podporuje rozsáhlé scénáře přijímání dat do služby
     * Je nutné přidat vnější značku VLAN (STAG) založenou na ID sítě VLAN, které je určeno pro Microsoft, *pouze v QinQ* .
     * Musí podporovat víc relací protokolu BGP (VLAN) na port a zařízení.
     * Připojení IPv4 a IPv6. *Pro protokol IPv6 se nevytvoří žádné další dílčí rozhraní. Adresa IPv6 bude přidána do stávajícího podřízeného rozhraní*. 
-    * Volitelné: podpora [detekce obousměrného předávání (BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) , která je nakonfigurovaná ve výchozím nastavení u všech privátních partnerských vztahů v okruhech ExpressRoute.
+    * Volitelné: podpora [detekce obousměrného předávání (BFD)](./expressroute-bfd.md) , která je nakonfigurovaná ve výchozím nastavení u všech privátních partnerských vztahů v okruhech ExpressRoute.
 
 ## <a name="vlan-tagging"></a>Označování značek VLAN
 

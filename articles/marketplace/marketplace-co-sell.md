@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 09/23/2020
-ms.openlocfilehash: f0996ba6cd914043ad31500934141ad8770a1c50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268719"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207699"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
@@ -35,7 +35,7 @@ Nabídky, které dosahují **společného prodeje Azure IP motivovaní** stav z�
 
 * Poplatek za službu Marketplace se snižuje z 20% na 10%. Tato sleva se vztahuje na vaši nabídku IaaS nebo SaaS prodanou prostřednictvím komerčního tržiště. Další podrobnosti najdete v tématu [snížený poplatek za službu](marketplace-commercial-transaction-capabilities-and-considerations.md#reduced-service-fee) .
 * Partneři poskytovatele Cloud Solution Provider (CSP) obdrží 10% pobídky k prodeji vaší nabídky IaaS nebo SaaS. Přečtěte si další informace o programu CSP v [programu Cloud Solution Provider](cloud-solution-providers.md).
-* Prodej vaší nabídky prostřednictvím komerčního tržiště přispěje ke svým zákaznickým závazkům za využití Azure. Oprávnění zákazníci uvidí na webu Azure Portal nabídku označenou jako **nárok na zvýhodněné výhody Azure** . Další podrobnosti najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md) .
+* Prodej vaší nabídky prostřednictvím komerčního tržiště přispěje ke svým zákaznickým závazkům za využití Azure. Způsobilí zákazníci uvidí nabídku označenou jako **"zvýhodněný přínos Azure"** v Azure Portal. Další podrobnosti najdete v tématu [zvýhodnění závazků za využití Azure](azure-consumption-commitment-benefit.md) .
 * Nabídky, které dosahují motivovaní nebo **Business Applications spoluprodávajího motivovaní** ve spolupráci **Azure IP** , obdrží v prodejní místa **označení "upřednostňovaná řešení"** . Visačka podporuje kvalitu, výkon a možnost řešení potřeb zákazníků v určité odvětví vertikální nebo oblasti řešení. Přečtěte si další informace o [preferovaných řešeních v Microsoft AppSource a Azure Marketplace](preferred-solutions.md).
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Společný prodej kroků a požadavků publikování
@@ -45,7 +45,7 @@ V následující tabulce jsou uvedené kroky a požadavky pro získání nabídk
 |Krok    |Typ nabídky    |Požadavky    |Stav společného prodeje    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li> Vytvořte si účet v partnerském centru a publikujte nabídku na komerčním webu Marketplace.</li>|Vše|<li>Tato nabídka splňuje požadavky na publikování na komerčním webu Marketplace.</li><li>Máte kompletní obchodní profil v partnerském centru.</li>|Nepřipraveno|
-|<ol start=2><li>Odeslat požadované spoluprodejní materiály.</li>|Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Nahrajte požadované materiály v partnerském centru](#how-to-submit-co-sell-materials-in-partner-center): <ul><li>Prodejní kontaktní osoba pro každou oprávněnou zemi.</li><li>Vyúčtování materiálů: zákaznická prezentace na jednom pageru, prezentační balíček pro zákazníky (volitelné), adresa URL pro úvodní stránku řešení, adresa URL kanálu pro sociální média nebo jiná (například Případová studie).|Připravený společný prodej|
+|<ol start=2><li>Odeslat požadované spoluprodejní materiály.</li>|Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Odeslat požadované materiály do partnerského centra](#how-to-submit-co-sell-materials-in-partner-center)|Připravený společný prodej|
 ||Nabídky protokolu IP *bez* [možnosti společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>Požadavek na [spolupráci s cloudovým specialistem](https://partner.microsoft.com/campaigns/ced-nomination-form/) , který poskytne požadovanou dokumentaci pro spoluprodej.|Připravený společný prodej|
 ||Konzultační služby|<li>Požadavek na [spolupráci s cloudovým specialistem](https://partner.microsoft.com/campaigns/ced-nomination-form/) , který poskytne požadovanou dokumentaci pro spoluprodej.</li><li>Aktivní kompetence Gold.</li>|Připravený společný prodej|
 |<ol start=3><li>Nárok na pobídky pro společný prodej IP</li>|Aplikace Azure, kontejnery Azure, IoT Edge moduly, SaaS, virtuální počítače|Po dosažení připraveného společného prodeje jsou k dispozici dva další požadavky: <ul> Požadavek 1: dosáhnete těchto:<ul><li>*Na úrovni organizace:* vyhovět nebo překročit $100 000 USD výnosů za Azure spotřebovaných za poslední 12 měsíců.</li><li>*Na úrovni nabídky:* účtované výnosy z kumulativního tržiště $100 000 USD.</li></ul><br>Požadavek 2: v Azure musí běžet více než 50% infrastruktury vaší nabídky:<ul><li>Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): nahrání diagramu architektury se společnými prodeji dokumentů v partnerském centru pro kontrolu.</li><li>Nabídky protokolu IP *bez* [možnosti společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): nahrání diagramu architektury do OCP GTM.|Azure IP – společný prodej motivovaní|
@@ -63,15 +63,19 @@ Svůj společný prodej přímo v partnerském centru začněte podle následuj�
 
 1. V nabídce na levé straně vyberte **společný prodej s Microsoftem**.
 
-    [![Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::
 
-1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky.
+1. Poskytněte základní informace o seznamech, které pomůžou prodejcům Microsoftu rychle seřadit a zjistit vaši nabídku v oddílu **výpisu** . (*Požadováno: všechna pole.*)
+
+    :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::  
+
+1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky. (*Požadováno: zákaznická balíček One-pager a zákaznická prezentace.*)
+
+    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::
  
-   [![Tento obrázek ukazuje část dokumenty na kartě spoluprodej.](./media/co-sell/co-sell-documents-section.png)](./media/co-sell/co-sell-documents-section.png#lightbox)
+1. Odeslat prodejní kontaktní informace v části **Kontakty** . Prodejci Microsoftu mohou kontaktovat tyto kontakty a požádat o další informace o vaší nabídce. (*Požadováno: kontakt pro každou zeměpisnou oblast, ve které je vaše nabídka dostupná.*)
 
-1. Odeslat prodejní kontaktní informace v části **Kontakty** . Prodejci Microsoftu mohou kontaktovat tyto kontakty a požádat o další informace o vaší nabídce.
-
-     [![Tento obrázek ukazuje část kontakty na kartě spoluprodej.](./media/co-sell/co-sell-contacts-section.png)](./media/co-sell/co-sell-contacts-section.png#lightbox)
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::
 
 1. Než budete pokračovat, uložte si koncept.
 1. Po dokončení všech požadovaných částí nabídky ji můžete odeslat pro kontrolu a publikování. V pravém horním rohu vyberte **zkontrolovat a publikovat**. Přečtěte si podrobnosti nabídky a pak vyberte **publikovat**.
