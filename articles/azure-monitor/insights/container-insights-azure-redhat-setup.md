@@ -3,14 +3,23 @@ title: Konfigurace Azure Red Hat OpenShift v3. x s Azure Monitor for Containers 
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift verze 3 a vyšší.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 4e1770944fa1917bc94dfbf1a3daa0708593e356
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994553"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216364"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí Azure Monitor for Containers 
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí Azure Monitor for Containers
+
+>[!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazení od června 2022.
+>
+> Od října 2020 už nebudete moct vytvářet nové clustery 3,11.
+> Stávající clustery 3,11 budou fungovat i nadále až do června 2022, ale po tomto datu již nebudou podporovány.
+>
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:aro-feedback@microsoft.com).
 
 Azure Monitor for Containers poskytuje bohatou monitorovací prostředí pro clustery Azure Kubernetes Service (AKS) a AKS Engine. Tento článek popisuje, jak povolit monitorování clusterů Kubernetes hostovaných v [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) verze 3 a nejnovější verzi verze 3, aby bylo možné dosáhnout podobného monitorování.
 
@@ -30,7 +39,7 @@ Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift, j
 - Živá data (Preview)
 - [Shromážděte metriky](container-insights-update-metrics.md) z uzlů clusteru a lusky a ukládají je do databáze Azure Monitorch metrik.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Pracovní prostor služby Log Analytics](../platform/design-logs-deployment.md).
 

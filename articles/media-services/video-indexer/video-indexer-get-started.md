@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 10/19/2020
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85130751"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219784"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Rychlý Start: jak se zaregistrovat a nahrát své první video
 
@@ -39,24 +39,28 @@ Seznam formátů souborů, které můžete použít s Video Indexer, najdete v �
 ### <a name="upload-a-video"></a>Nahrání videa
 
 1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/).
-2. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
+1. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
 
     > [!NOTE]
     > Název videa nesmí být delší než 80 znaků.
 
-    ![Nahrávání](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Nahrát":::
+1. Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat. Uvidíte průběh. 
 
-    Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Nahrát":::
+1. Po dokončení analýzy Video Indexer obdržíte e-mail s odkazem na vaše video a stručný popis toho, co bylo ve videu nalezeno. Například: lidé, mluvená a psaná slova, témata a pojmenované entity.
+1. Video můžete později najít v seznamu Knihovna a provádět různé operace. Například: Hledat, opakovat index, upravit.
 
-    ![Nahráno](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Když Video Indexer dokončí analýzu, zobrazí se oznámení s odkazem na vaše video a krátkým popisem, co se ve videu našlo. Například: lidé, témata, OCR.
-
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="Nahrát":::
+ 
 ## <a name="see-also"></a>Viz také
 
 Další podrobnosti najdete v tématu [videa pro nahrávání a indexování](upload-index-videos.md) .
 
-Po nahrání a indexování videa můžete začít používat web [video indexer](video-indexer-view-edit.md) nebo [portál pro vývojáře video indexer](video-indexer-use-apis.md) , abyste viděli přehledy videa. 
+Po nahrání a indexování videa můžete začít používat [web video indexer](video-indexer-view-edit.md) nebo [portál pro vývojáře video indexer](video-indexer-use-apis.md) , abyste viděli přehledy videa. 
 
 [Začínáme používat rozhraní API](video-indexer-use-apis.md)
 

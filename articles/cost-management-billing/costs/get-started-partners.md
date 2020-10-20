@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372251"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827574"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -151,9 +151,11 @@ Pokud chcete zobrazit náklady pro předplatné, otevřete v Azure tenanta **Spr
 
 Analýza nákladů, rozpočty a upozornění jsou k dispozici pro rozsahy Azure RBAC předplatného a skupin prostředků. Použijí se náklady podle tarifů s průběžnými platbami.
 
-V amortizačních zobrazeních a ve skutečných nákladech na rezervované instance v rozsazích Azure RBAC se zobrazí nulové poplatky. Náklady na rezervované instance se zobrazují jenom v těch rozsazích fakturace, kde došlo k nákupu.
+V amortizačních zobrazeních a ve skutečných nákladech na rezervované instance v rozsazích Azure RBAC se zobrazí nulové poplatky. Náklady na nákup nároků, jako jsou rezervované instance a poplatky za Marketplace, se zobrazují jenom v rozsazích fakturace tenanta partnera, ve kterých se nákupy uskutečnily.
 
 Maloobchodní ceny použité pro výpočet nákladů uvedených v tomto zobrazení jsou stejné jako ceny uváděné v cenové kalkulačce Azure pro všechny zákazníky. Uvedené náklady nezahrnují slevy ani kredity, které partner může mít, například získané partnerské kredity, slevy založené na úrovni a globální slevy za služby.
+
+ 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analýza nákladů
 

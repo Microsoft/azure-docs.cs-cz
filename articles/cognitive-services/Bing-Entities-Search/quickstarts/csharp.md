@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99f2197732a332e860af421f46d1049c2388043c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936822"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221226"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí jazyka C #
 
@@ -28,21 +28,20 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
-
-- Rozhraní [Json.NET](https://www.newtonsoft.com/json), k dispozici jako balíček NuGet. Instalace balíčku NuGet v aplikaci Visual Studio:
-
-   1. V **Průzkumník řešení**klikněte pravým tlačítkem na svůj projekt.
-   2. Vyberte **Spravovat balíčky NuGet**.
-   3. Vyhledejte a vyberte *Newtonsoft.Jsna*a pak balíček nainstalujte.
-
-- Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
+- Nebo pokud používáte Linux nebo MacOS, můžete postupovat podle tohoto rychlého startu pomocí [Visual Studio Code](https://code.visualstudio.com/) a [.NET Core](/dotnet/core/install/macos) .
+- [Bezplatný účet Azure](https://azure.microsoft.com/free/dotnet)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Vytvoření a inicializace projektu
 
-1. Vytvořte nové řešení konzoly C# v aplikaci Visual Studio. Pak přidejte následující obory názvů do hlavního souboru kódu:
+1. Vytvořte nové řešení konzoly C# v aplikaci Visual Studio. 
+1. Přidejte [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) do balíčku NuGet.
+    1. V **Průzkumník řešení**klikněte pravým tlačítkem na svůj projekt.
+    2. Vyberte **Spravovat balíčky NuGet**.
+    3. Vyhledejte a vyberte *Newtonsoft.Jsna*a pak balíček nainstalujte.
+1. Pak přidejte následující obory názvů do hlavního souboru kódu:
     
     ```csharp
     using Newtonsoft.Json;

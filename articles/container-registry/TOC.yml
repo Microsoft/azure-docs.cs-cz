@@ -120,6 +120,7 @@
                   href: container-registry-repository-scoped-permissions.md
             - name: Řízení přístupu na základě role v Azure
               href: container-registry-roles.md
+              displayName: 'permissions, authorization'
             - name: Důvěryhodnost obsahu
               href: container-registry-content-trust.md
             - name: Kontrola imagí s využitím služby Security Center

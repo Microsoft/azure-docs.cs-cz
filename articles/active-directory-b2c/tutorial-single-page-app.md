@@ -11,16 +11,16 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 42c2ca777a999a4d4387646110ed88af84631183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258894"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216520"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C
 
-V tomto kurzu se dozvíte, jak pomocí Azure Active Directory B2C (Azure AD B2C) se zaregistrovat a přihlašovat uživatele v aplikaci s jednou stránkou (SPA).
+V tomto kurzu se dozvíte, jak pomocí Azure Active Directory B2C (Azure AD B2C) se zaregistrovat a přihlašovat uživatele v aplikaci s jednou stránkou (SPA) pomocí procesu implicitního udělení (OAuth 2,0).
 
 V tomto kurzu první v řadě dvou částí:
 
@@ -34,12 +34,12 @@ V [dalším kurzu](tutorial-single-page-app-webapi.md) v řadě se povoluje čá
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto kurzu, budete potřebovat následující Azure AD B2C prostředky:
 
 * [Tenant Azure AD B2C](tutorial-create-tenant.md)
-* [Aplikace zaregistrovaná](tutorial-register-applications.md) ve vašem tenantovi
+* [Aplikace zaregistrovaná](tutorial-register-spa.md) ve vašem tenantovi (použijte možnosti implicitního toku)
 * [Toky uživatelů vytvořené](tutorial-create-user-flows.md) ve vašem tenantovi
 
 V místním vývojovém prostředí budete navíc potřebovat následující:
@@ -60,7 +60,7 @@ Pokud chcete aktualizovat aplikaci ve vašem tenantovi Azure AD B2C, můžete vy
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
 1. V části **Web**vyberte odkaz **Přidat identifikátor URI** , zadejte `http://localhost:6420` .
-1. V části **implicitní udělení**vyberte zaškrtávací políčka pro **přístupové tokeny** a **tokeny ID** a pak vyberte **Uložit**.
+1. V části **implicitní udělení**vyberte zaškrtávací políčka pro **přístupové tokeny** a **tokeny ID** , pokud ještě není vybraná, a pak vyberte **Uložit**.
 1. Vyberte **Přehled**.
 1. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku, když aktualizujete kód ve webové aplikaci s jednou stránkou.
 

@@ -1,21 +1,18 @@
 ---
 title: Postup testování kódu Azure Data Lake Analytics
 description: Naučte se, jak přidat testovací případy pro jazyk U-SQL a Rozšířený kód C# pro Azure Data Lake Analytics.
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 08/30/2019
-ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129912"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219203"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Testování kódu Azure Data Lake Analytics
 
@@ -112,7 +109,7 @@ Po sestavení projektu vyberte **test**  >  **Windows**  >  **Test Explorer**. T
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Spuštění testovacích případů v Azure Pipelines<a name="run-test-cases-in-azure-devops"></a>
 
-Projekty testů **skriptu U-SQL** a **projekty Udo v jazyce c#** dědí projekty testování částí v jazyce c#. [Úkol testu sady Visual Studio](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) v Azure Pipelines může spustit tyto testovací případy.
+Projekty testů **skriptu U-SQL** a **projekty Udo v jazyce c#** dědí projekty testování částí v jazyce c#. [Úkol testu sady Visual Studio](/azure/devops/pipelines/test/getting-started-with-continuous-testing) v Azure Pipelines může spustit tyto testovací případy.
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Spuštění testovacích případů U-SQL v Azure Pipelines
 

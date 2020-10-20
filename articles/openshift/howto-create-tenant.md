@@ -6,16 +6,22 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 775aa44043e9c8900bd0c040ab603736314ea34e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e949f1ac5259ba35772ce98c2ee88e5ea66c2d84
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469979"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221158"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Vytvoření tenanta Azure AD pro Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift vyžaduje tenanta [Azure Active Directory (Azure AD)](../active-directory/develop/quickstart-create-new-tenant.md) , ve kterém se má cluster vytvořit. *Tenant* je vyhrazená instance služby Azure AD, kterou vývojář organizace nebo aplikace obdrží, když vytvoří relaci se společností Microsoft tím, že se přihlásí k Azure, Microsoft Intune nebo Microsoft 365. Každý tenant služby Azure AD je jedinečný a oddělený od ostatních tenantů Azure AD a má vlastní pracovní a školní identitu a registrace aplikací.
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3,11 bude vyřazeno 30. června 2022. Podpora pro vytváření nových clusterů Azure Red Hat OpenShift 3,11 pokračuje do 30. listopadu 2020. Po vyřazení z provozu budou zbývající clustery Azure Red Hat OpenShift 3,11 vypnuté, aby se předešlo chybám zabezpečení.
+> 
+> Podle tohoto průvodce [vytvořte cluster Azure Red Hat OpenShift 4](tutorial-create-cluster.md).
+> Pokud máte konkrétní otázky, [kontaktujte nás prosím](mailto:arofeedback@microsoft.com).
+
+Microsoft Azure Red Hat OpenShift vyžaduje tenanta [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) , ve kterém se má cluster vytvořit. *Tenant* je vyhrazená instance služby Azure AD, kterou vývojář organizace nebo aplikace obdrží, když vytvoří relaci se společností Microsoft tím, že se přihlásí k Azure, Microsoft Intune nebo Microsoft 365. Každý tenant služby Azure AD je jedinečný a oddělený od ostatních tenantů Azure AD a má vlastní pracovní a školní identitu a registrace aplikací.
 
 Pokud ještě nemáte tenanta Azure AD, vytvořte ho podle těchto pokynů.
 

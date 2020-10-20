@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9647de255b749e064b94f57c9067aaff7dc3cb7
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187247"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219441"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Plánované spouštění a zastavování prostředí Azure-SSIS Integration Runtime
 
@@ -30,7 +30,7 @@ Alternativně můžete vytvořit aktivity webu v kanálech ADF a spustit nebo za
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud jste už Azure-SSIS IR ještě nezřídili, zřiďte ho podle pokynů v tomto [kurzu](tutorial-create-azure-ssis-runtime-portal.md). 
 
 ## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>Vytvářejte a naplánujte kanály ADF, které začínají a nebo zastavují Azure-SSIS IR
@@ -136,7 +136,7 @@ Pokud vytvoříte třetí Trigger, u kterého je naplánováno každodenní spu�
     1. Jako **název serveru**zadejte ** &lt; název vašeho serveru &gt; . Database.Windows.NET**.
     2. Vyberte **možnosti >>**.
     3. Pro **připojení k databázi**vyberte **SSISDB**.
-    4. Vyberte **Připojit**. 
+    4. Vyberte **Connect** (Připojit). 
     5. Rozbalte položku **katalogy integračních služeb**  ->  **SSISDB** -> vaše složka – > **projekty** – > **balíčky**> projektu SSIS. 
     6. Klikněte pravým tlačítkem na zadaný SSIS balíček, který se spustí, a vyberte **sestavy**  ->  **standardní sestavy**  ->  **všechna spuštění**. 
     7. Ověřte, zda bylo spuštěno. 
@@ -149,7 +149,7 @@ Teď, když vaše kanály pracují podle očekávání, můžete vytvořit trigg
 
 1. Na panelu nástrojů kanálu vyberte **aktivační událost** a vyberte **Nová/upravit**. 
 
-   ![Trigger-> nový/upravit](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
+   ![Snímek obrazovky, který zvýrazní možnost nabídky pro nové/úpravy > triggeru](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
 
 2. V podokně **Přidat aktivační události** vyberte **+ Nová**.
 
@@ -220,7 +220,7 @@ Pokud účet Azure Automation ještě nemáte, vytvořte ho podle pokynů v tomt
 2. Přihlaste se k [Azure Portal](https://portal.azure.com/).    
 3. V nabídce vlevo vyberte **Nový** , vyberte **monitorování a Správa**a pak vyberte **Automation**. 
 
-   ![Automatizace > Monitorování a správa >](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+   ![Snímek obrazovky, který zvýrazní možnost Monitorování a správa > Automation.](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
     
 2. V podokně **Přidat účet Automation** proveďte následující akce.
 
@@ -262,7 +262,7 @@ V následující části najdete postup vytvoření Runbooku PowerShellu. Skript
 
 1. Přepněte na kartu **Runbooky** a na panelu nástrojů vyberte **+ Přidat Runbook** . 
 
-   ![Přidat Runbook – tlačítko](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   ![Snímek obrazovky, který zvýrazní tlačítko + Přidat Runbook](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
    
 2. Vyberte **vytvořit novou sadu Runbook** a proveďte následující akce: 
 
@@ -345,7 +345,7 @@ V následující části najdete postup vytvoření Runbooku PowerShellu. Skript
    
 6. V okně úlohy vyberte možnost **výstupní** dlaždice. V okně výstup po zobrazení # # # # # od # # **#**# # počkejte na zprávu **# # # # # dokončeno #** # # # #. Spuštění Azure-SSIS IR trvá přibližně 20 minut. Zavřete okno **úlohy** a vraťte se do okna **Runbooku** .
 
-   ![Azure SSIS IR – spuštěno](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+   ![Snímek obrazovky, který zvýrazní dlaždici výstup.](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
 7. Opakujte předchozí dva kroky pomocí **stop** jako hodnoty pro **operaci**. Znovu spusťte Runbook tak, že na panelu nástrojů vyberete tlačítko **Start** . Zadejte svoji skupinu prostředků, ADF a názvy Azure-SSIS IR. V případě **operace**zadejte **stop**. V okně výstup počkejte na **dokončení zprávy # # #** # # po zobrazení **# # # # # zastavování # # # # #**. Zastavení Azure-SSIS IR netrvá tak dlouho, dokud ho nespustíte. Zavřete okno **úlohy** a vraťte se do okna **Runbooku** .
 
@@ -373,7 +373,7 @@ V předchozí části jste vytvořili Azure Automation sadu Runbook, která mů�
     
 3. Přepněte na **parametry a spusťte kartu nastavení** . Zadejte svoji skupinu prostředků, ADF a názvy Azure-SSIS IR. V případě **operace**zadejte **Start** a vyberte **OK**. Opětovným výběrem **OK** zobrazíte **stránku plán na plánování sady** Runbook. 
 
-   ![Plán pro hvězdování prostředí Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+   ![Snímek obrazovky, který zvýrazní pole operace](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     
 4. Zopakováním předchozích dvou kroků vytvořte plán s názvem **zastavit IR denně**. Zadejte čas, který je nejméně 30 minut po zadané době pro **spuštění IR denního** plánu. V případě **operace**zadejte **stop** a vyberte **OK**. Opětovným výběrem **OK** zobrazíte **stránku plán na plánování sady** Runbook. 
 

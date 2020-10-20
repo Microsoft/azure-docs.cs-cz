@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5918adfb6724c984f4a59fda802e2f4c5cde7c1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964681"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221192"
 ---
 # <a name="unsupported-language-deployments"></a>Nasazení nepodporovaného jazyka
 
@@ -25,7 +25,7 @@ Díky nadcházejícímu vyřazení centra Microsoft Translator bude Microsoft od
 
 Nyní máme proces, který umožňuje nasadit nepodporované modely prostřednictvím vlastního překladatele.  Tento proces vám umožní pokračovat v překladu obsahu pomocí nejnovějšího rozhraní API v3.  Tyto modely budou hostovány, dokud se nerozhodnete je zrušit nebo že se dvojice jazyků bude k dispozici ve vlastním překladateli.  Tento článek vysvětluje proces nasazení modelů s nepodporovanými páry jazyků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby byly vaše modely kandidátem na nasazení, musí splňovat následující kritéria:
 * Projekt obsahující model musí být z centra migrován do vlastního překladatele pomocí nástroje pro migraci.  Proces migrace projektů a pracovních prostorů najdete [tady](how-to-migrate.md).
@@ -35,11 +35,11 @@ Aby byly vaše modely kandidátem na nasazení, musí splňovat následující k
 ## <a name="process"></a>Proces
 Po migraci modelů z centra, které jsou kandidáty na nasazení, je můžete najít tak, že přejdete na stránku **Nastavení** pro váš pracovní prostor a přejdete na konec stránky, kde se zobrazí **Nepodporovaná část školení centra překladatelů** .  Tato část se zobrazí pouze v případě, že máte projekty, které splňují výše zmíněné požadavky.
 
-![Postup migrace z centra](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Snímek obrazovky, který zvýrazní oddíl nepodporovaného školení centra překladatelů.](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
 Na stránce s výběrem **nepodporovaného výběru školení centra překladatelů** obsahuje karta **nežadatelé školení** modely, které mají nárok na nasazení.  Vyberte modely, které chcete nasadit, a odešlete žádost.   Před uplynutím 30. dubna můžete vybrat tolik modelů, kolik chcete pro nasazení.
  
-![Postup migrace z centra](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Snímek obrazovky, na které se zobrazuje karta nežádosti o školení](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
 Po odeslání nebude model na kartě **nevyžádaných** **školení** dostupný a místo toho se zobrazí na kartě požadované školení.  Požadované školení můžete kdykoli zobrazit.
 

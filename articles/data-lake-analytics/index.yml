@@ -4,19 +4,18 @@ summary: Data Lake Analytics umožňuje spouštět analytické úlohy pro velké
 metadata:
   title: Azure Data Lake Analytics
   description: Data Lake Analytics umožňuje spouštět analytické úlohy pro velké objemy dat, které se přizpůsobí obrovským datovým sadám.
-  services: data-lake-analytics
   ms.service: data-lake-analytics
   ms.topic: landing-page
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 09/13/2019
-  ms.openlocfilehash: 5dadcad164a309a7251a1e4627cf1e78f6e927d4
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 24f8293f7c7f60dd143a2ee0920c63d640cb97b6
+  ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "87475715"
+  ms.lasthandoff: 10/20/2020
+  ms.locfileid: "92217622"
 landingContent:
 - title: Informace o Data Lake Analytics
   linkLists:
@@ -41,7 +40,7 @@ landingContent:
     - text: Začínáme s U-SQL
       url: data-lake-analytics-u-sql-get-started.md
     - text: Referenční informace k jazyku U-SQL
-      url: https://docs.microsoft.com/u-sql/
+      url: /u-sql/
     - text: Začínáme s katalogem U-SQL
       url: data-lake-analytics-u-sql-catalog.md
     - text: Použití uživatelsky definovaných operátorů

@@ -2,7 +2,6 @@
 title: Schémata pro výstrahy Azure Security Center
 description: Tento článek popisuje různá schémata používaná nástrojem Azure Security Center pro výstrahy zabezpečení.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 894fc4066ad408f0749e7a982011d82b205e6fec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901335"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220665"
 ---
 # <a name="security-alerts-schemas"></a>Schémata výstrah zabezpečení
 
@@ -140,7 +139,7 @@ Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že
 
 ### <a name="the-data-model-of-the-schema"></a>Datový model schématu
 
-|Pole|Description|
+|Pole|Popis|
 |----|----|
 |**barev**|Konstanta, "operace"|
 |**ID**|ID výstrahy Azure Security Center|
@@ -173,7 +172,7 @@ Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že
 
 Microsoft Graph je brána k datům a inteligentním Microsoft 365. Poskytuje jednotný model programovatelnosti, který můžete použít pro přístup k obrovskému množství dat v Microsoft 365, Windows 10 a Enterprise Mobility + Security. Využijte spoustu dat v Microsoft Graph k sestavování aplikací pro organizace a zákazníky, kteří komunikují s miliony uživatelů.
 
-Schéma a reprezentace JSON pro výstrahy zabezpečení odeslané do služby MS Graph jsou k dispozici v [dokumentaci Microsoft Graph](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0).
+Schéma a reprezentace JSON pro výstrahy zabezpečení odeslané do služby MS Graph jsou k dispozici v [dokumentaci Microsoft Graph](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true).
 
 ---
 

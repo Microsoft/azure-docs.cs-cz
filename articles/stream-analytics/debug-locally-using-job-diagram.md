@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045395"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218251"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v aplikaci Visual Studio
 
@@ -87,7 +87,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
   
 #### <a name="output-sinks-live-output"></a>Výstupní jímky (živý výstup)
 
-![Místní výstupní jímky diagramu úloh](./media/debug-locally-using-job-diagram/live-output.png)
+![Diagram úlohy, který zobrazuje místní výstupní jímky.](./media/debug-locally-using-job-diagram/live-output.png)
 
 |Metrika|Popis|
 |-|-|

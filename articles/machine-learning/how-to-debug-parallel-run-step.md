@@ -11,12 +11,12 @@ ms.reviewer: jmartens, larryfr, vaidyas, laobri, tracych
 ms.author: trmccorm
 author: tmccrmck
 ms.date: 09/23/2020
-ms.openlocfilehash: 7866f2dcaebe396759eb7f6315c457bfce307723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 602babb3544093b7cd7c5b30ce4f4612148591cb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91315571"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216908"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>Ladění třídy ParallelRunStep a řešení souvisejících potíží
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak ladit a řešit potíže se třídou [Parallel
 
 ## <a name="testing-scripts-locally"></a>Místní testování skriptů
 
-Přečtěte si [část testování skriptů místně](how-to-debug-pipelines.md#debug-scripts-locally) pro kanály strojového učení. Vaše ParallelRunStep se spouští jako krok v kanálech ML, takže stejná odpověď platí i pro obě.
+Přečtěte si [část testování skriptů místně](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines) pro kanály strojového učení. Vaše ParallelRunStep se spouští jako krok v kanálech ML, takže stejná odpověď platí i pro obě.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
 
@@ -141,6 +141,8 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
+* Podívejte se na tyto [poznámkové bloky Jupyter, které demonstrují Azure Machine Learning kanály](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) .
 
 * Nápovědu k balíčku [AzureML-Pipeline Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py&preserve-view=true) najdete v referenčních informacích k sadě SDK. Zobrazení referenční [dokumentace](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py&preserve-view=true) pro třídu ParallelRunStep.
 

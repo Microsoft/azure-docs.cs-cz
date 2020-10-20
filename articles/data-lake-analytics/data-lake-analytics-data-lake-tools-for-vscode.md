@@ -1,18 +1,16 @@
 ---
 title: Použití nástrojů Azure Data Lake pro Visual Studio Code
 description: Naučte se používat kód Nástroje Azure Data Lake pro Visual Studio k vytváření, testování a spouštění skriptů U-SQL.
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: b554869864ff71fb31b6c4e2b891fd42c4a380b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87126478"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221243"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Použití nástrojů Azure Data Lake pro Visual Studio Code
 
@@ -20,7 +18,7 @@ V tomto článku se dozvíte, jak můžete pomocí Nástroje Azure Data Lake pro
 
 [![Video Player: Azure Data Lake nástroje pro VS Code](media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png)](https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode")
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Azure Data Lake nástroje pro VS Code podporují systémy Windows, Linux a macOS.Místní spuštění U-SQL a místní ladění funguje pouze v systému Windows.
 
@@ -146,7 +144,7 @@ Azure Data Lake nástroje podporují více vlastních kódů. Pokyny najdete v t
 
 ## <a name="work-with-assemblies"></a>Práce se sestaveními
 
-Informace o vývoji sestavení naleznete v tématu [vývoj sestavení U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-assemblies.md).
+Informace o vývoji sestavení naleznete v tématu [vývoj sestavení U-SQL pro úlohy Azure Data Lake Analytics]().
 
 Můžete použít nástroje Data Lake k registraci vlastních sestavení kódu v katalogu Data Lake Analytics.
 

@@ -3,12 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 85cb84ac376abbf0ead13e64c4dff7c8b916aac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254580"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218081"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -23,7 +23,8 @@ Zálohování databáze SQL Server do Azure a její obnovení z Azure:
 1. Obnovte databázi z Azure.
 
 >[!NOTE]
->DPM 2019 UR2 podporuje SQL Server instance clusterů s podporou převzetí služeb při selhání (FCI) pomocí sdílených svazků clusteru (CSV).
+>DPM 2019 UR2 podporuje SQL Server instance clusterů s podporou převzetí služeb při selhání (FCI) pomocí sdílených svazků clusteru (CSV).<br><br>
+>Tato funkce podporuje ochranu [SQL Server instance clusteru s podporou převzetí služeb při selhání s prostory úložiště s přímým přístupem v Azure](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)  a [SQL Server instanci clusteru s podporou převzetí služeb při selhání se sdílenými disky Azure](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure) . Aby bylo možné chránit instanci SQL FCI nasazenou na virtuálních počítačích Azure, musí být server DPM nasazený na virtuálním počítači Azure. 
 
 ## <a name="prerequisites-and-limitations"></a>Požadavky a omezení
 

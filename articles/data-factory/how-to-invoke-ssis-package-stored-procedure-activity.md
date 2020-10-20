@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 05ec19fd2351b3a9ac1f383ce4747404eeead936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2bad99a836da7aab64e8cc0d454423fd56ffce1
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89067820"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217775"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spuštění balíčku SSIS pomocí aktivity Uložená procedura ve službě Azure Data Factory
 
@@ -27,7 +27,7 @@ ms.locfileid: "89067820"
 
 Tento článek popisuje, jak spustit balíček SSIS v kanálu Azure Data Factory pomocí aktivity uložené procedury. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
 Návod v tomto článku používá Azure SQL Database k hostování katalogu SSIS. Můžete také použít spravovanou instanci Azure SQL.
@@ -95,7 +95,7 @@ V tomto kroku použijete uživatelské rozhraní Data Factory k vytvoření kan�
     7. Otestujte připojení k databázi kliknutím na tlačítko **Testovat připojení** .
     8. Kliknutím na tlačítko **Uložit** uložte propojenou službu. 
 
-        ![Propojená služba Azure SQL Database](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
+        ![Snímek obrazovky, který ukazuje proces přidání nové propojené služby.](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. V okně Vlastnosti přepněte na kartu **uložená procedura** na kartě **účet SQL** a proveďte následující kroky: 
 
     1. Vyberte **Upravit**. 
