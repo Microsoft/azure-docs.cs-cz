@@ -1,29 +1,36 @@
 ---
-title: Programové vytváření předplatných Azure
-description: Naučte se vytvářet další předplatná Azure programově.
+title: Programové vytváření předplatných Azure pomocí nejnovějších rozhraní API
+description: Naučte se programově vytvářet předplatná Azure pomocí nejnovějších verzí rozhraní REST API, Azure CLI a Azure PowerShellu.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/26/2020
+ms.topic: how-to
+ms.date: 10/12/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62989c21333e53fcb58b4b637802c8b697ae970e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 28397d36a611f26544fefb9f4fa7593a0fdf3f73
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371435"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92014524"
 ---
-# <a name="programmatically-create-azure-subscriptions-preview"></a>Programové vytváření předplatných Azure (Preview)
+# <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>Programové vytváření předplatných Azure pomocí nejnovějších rozhraní API
 
-Zákazníci Azure s fakturačním účtem se [smlouvou Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Smlouvou se zákazníkem Microsoftu (MCA)](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) nebo [Smlouvou s partnerem Microsoftu (MPA)](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement) mohou předplatná vytvářet programově. V tomto článku se naučíte, jak programově vytvářet předplatná s využitím Azure Resource Manageru.
+Tento článek se věnuje programovému vytváření předplatných Azure pomocí nejnovějších verzí rozhraní API. Pokud ještě používáte starší verzi Preview, přejděte na téma [Programové vytváření předplatných Azure pomocí rozhraní API ve verzi Preview](programmatically-create-subscription-preview.md). 
 
-Když vytvoříte předplatné Azure programově, na toto předplatné se vztahuje smlouva, na základě které jste získali služby Azure od společnosti Microsoft nebo autorizovaného prodejce. Další informace najdete v [právních informacích k Microsoft Azure](https://azure.microsoft.com/support/legal/).
+Zákazníci Azure s fakturačním účtem pro následující typy smluv můžou vytvářet předplatná programově:
+
+- [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
+- [Smlouva se zákazníkem Microsoftu (MCA)](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)
+- [Smlouva s partnerem Microsoftu](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement)
+
+V tomto článku se naučíte, jak programově vytvářet předplatná s využitím Azure Resource Manageru.
+
+Když vytvoříte předplatné Azure programově, na toto předplatné se vztahuje smlouva, na základě které jste získali služby Azure od společnosti Microsoft nebo autorizovaného prodejce. Další informace najdete v článku [Právní informace o Microsoft Azure](https://azure.microsoft.com/support/legal/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 
 ## <a name="create-subscriptions-for-an-ea-billing-account"></a>Vytváření předplatných pro fakturační účet EA
 
@@ -34,8 +41,7 @@ K vytváření předplatných EA použijte informace v následujících sekcích
 K vytvoření předplatného je potřeba, abyste pro registrační účet měli roli vlastníka. Existují dva způsoby, jak tuto roli získat:
 
 * Podnikový správce pro vaši registraci vás [může nastavit jako vlastníka účtu](https://ea.azure.com/helpdocs/addNewAccount) (vyžaduje se přihlášení) a to z vás udělá vlastníka tohoto registračního účtu.
-
-* [Přístup vám může udělit](grant-access-to-create-subscription.md) stávající vlastník registračního účtu. Obdobně pokud chcete k vytvoření předplatného EA využít instanční objekt, musíte [tomuto instančnímu objektu zajistit možnost vytvářet předplatná](grant-access-to-create-subscription.md).
+* [Přístup vám může udělit](grant-access-to-create-subscription.md) stávající vlastník registračního účtu. Podobně platí, že pokud chcete k vytvoření předplatného EA využít instanční objekt, musíte [tomuto instančnímu objektu udělit možnost vytvářet předplatná](grant-access-to-create-subscription.md).
 
 ### <a name="find-accounts-you-have-access-to"></a>Vyhledání účtů, ke kterým máte přístup
 
@@ -43,12 +49,12 @@ Jakmile jste přidáni k registračnímu účtu přidruženému k vlastníkovi �
 
 Abyste mohli spustit následující příkazy, musíte být přihlášeni k *domovskému adresáři* vlastníka účtu. V tomto adresáři se ve výchozím nastavení vytvářejí předplatná.
 
-### <a name="rest"></a>[REST](#tab/rest)
+### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
 
 Vyžádejte si výpis všech registračních účtů, ke kterým máte přístup:
 
 ```json
-GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
+GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
 ```
 
 V odpovědi rozhraní API se zobrazí všechny registrační účty, ke kterým máte přístup.
@@ -57,177 +63,199 @@ V odpovědi rozhraní API se zobrazí všechny registrační účty, ke kterým 
 {
   "value": [
     {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "type": "Microsoft.Billing/enrollmentAccounts",
+      "id": "/providers/Microsoft.Billing/billingAccounts/1234567",
+      "name": "1234567",
       "properties": {
-        "principalName": "SignUpEngineering@contoso.com"
-      }
-    },
-    {
-      "id": "/providers/Microsoft.Billing/enrollmentAccounts/4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "type": "Microsoft.Billing/enrollmentAccounts",
-      "properties": {
-        "principalName": "BillingPlatformTeam@contoso.com"
-      }
+        "accountStatus": "Unknown",
+        "accountType": "Enterprise",
+        "agreementType": "EnterpriseAgreement",
+        "soldTo": {
+          "companyName": "Contoso",
+          "country": "US "
+        },
+        "billingProfiles": {
+          "hasMoreResults": false
+        },
+        "displayName": "Contoso",
+        "enrollmentAccounts": [
+          {
+            "id": "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/7654321",
+            "name": "7654321",
+            "type": "Microsoft.Billing/enrollmentAccounts",
+            "properties": {
+              "accountName": "Contoso",
+              "accountOwnerEmail": "kenny@contoso.onmicrosoft.com",
+              "costCenter": "Test",
+              "isDevTest": false
+            }
+          }
+        ],
+        "hasReadAccess": false
+      },
+      "type": "Microsoft.Billing/billingAccounts"
     }
   ]
 }
+
 ```
 
-K určení účtu, pod kterým se mají předplatná fakturovat, použijte vlastnost `principalName`. Zkopírujte `name` tohoto účtu. Pokud například chcete vytvářet předplatná v rámci registračního účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Tento identifikátor představuje ID objektu registračního účtu. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
+Poznamenejte si hodnotu `id` jednoho z vašich účtů `enrollmentAccounts`. Ta udává rozsah fakturace, pod kterým se iniciuje požadavek na vytvoření předplatného. 
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+<!-- 
+### [PowerShell](#tab/azure-powershell-getEnrollments)
 
-Otevřete [Azure Cloud Shell](https://shell.azure.com/) a vyberte PowerShell.
+we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
 
-K zobrazení seznamu všech registračních účtů, ke kterým máte přístup, použijte rutinu [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount).
+-->
 
-```azurepowershell-interactive
-Get-AzEnrollmentAccount
-```
 
-Azure odpoví výpisem registračních účtů, ke kterým máte přístup:
+<!--
+### [Azure CLI](#tab/azure-cli-getEnrollments)
 
-```azurepowershell
-ObjectId                               | PrincipalName
-747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | SignUpEngineering@contoso.com
-4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
-```
-K určení účtu, pod kterým se mají předplatná fakturovat, použijte vlastnost `principalName`. Zkopírujte `ObjectId` tohoto účtu. Pokud například chcete vytvářet předplatná v rámci registračního účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Toto ID objektu někam vložte, abyste ho mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Pomocí příkazu [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) zobrazte výpis všech registračních účtů, ke kterým máte přístup.
-
-```azurecli-interactive
-az billing enrollment-account list
-```
-
-Azure odpoví výpisem registračních účtů, ke kterým máte přístup:
-
-```json
-[
-  {
-    "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "name": "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "principalName": "SignUpEngineering@contoso.com",
-    "type": "Microsoft.Billing/enrollmentAccounts",
-  },
-  {
-    "id": "/providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "name": "4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "principalName": "BillingPlatformTeam@contoso.com",
-    "type": "Microsoft.Billing/enrollmentAccounts",
-  }
-]
-```
-
-K určení účtu, pod kterým se mají předplatná fakturovat, použijte vlastnost `principalName`. Zkopírujte `name` tohoto účtu. Pokud například chcete vytvářet předplatná v rámci registračního účtu SignUpEngineering@contoso.com, zkopírujete ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Tento identifikátor představuje ID objektu registračního účtu. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku jako `enrollmentAccountObjectId`.
+we're still working on enabling CLI SDK for billing APIs. Check back soon.
+-->
 
 ---
 
 ### <a name="create-subscriptions-under-a-specific-enrollment-account"></a>Vytváření předplatných v rámci konkrétního registračního účtu
 
-Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* v registračním účtu, který jste vybrali v předchozím kroku. Nabídka předplatného je *MS-AZR-0017P* (běžná smlouva Microsoft Enterprise). Volitelně také pro toto předplatné přidá dva uživatele jako vlastníky Azure RBAC.
+Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* v registračním účtu, který jste vybrali v předchozím kroku. 
 
-### <a name="rest"></a>[REST](#tab/rest)
+### <a name="rest"></a>[REST](#tab/rest-EA)
 
-Proveďte následující požadavek, ve kterém nahraďte `<enrollmentAccountObjectId>` hodnotou `name`, kterou jste zkopírovali v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Pokud chcete zadat vlastníky, přečtěte si, jak [získat ID objektů uživatele](grant-access-to-create-subscription.md#userObjectId).
+Volejte rozhraní API PUT za účelem vytvoření požadavku/aliasu pro vytvoření předplatného.
 
 ```json
-POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-03-01-preview
+PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01 
+```
 
+V textu požadavku zadejte jako `billingScope` údaj `id` některého z vašich účtů `enrollmentAccounts`.
+
+```json 
 {
-  "displayName": "Dev Team Subscription",
-  "offerType": "MS-AZR-0017P",
-  "owners": [
-    {
-      "objectId": "<userObjectId>"
-    },
-    {
-      "objectId": "<servicePrincipalObjectId>"
-    }
-  ]
+  "properties": {
+        "billingScope": "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321",
+        "DisplayName": "Dev Team Subscription", //Subscription Display Name
+        "Workload": "Production"
+  }
 }
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
-|---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
-| `offerType`   | Ano      | Řetězec | Nabídka předplatného. Pro EA jsou k dispozici dvě možnosti: [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční využití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování, musí se [aktivovat prostřednictvím portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `owners`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření.  |
+#### <a name="response"></a>Odpověď
 
-V odpovědi se jako součást hlavičky `Location`vrátí adresa URL, na které se můžete dotazovat na stav operace vytváření předplatného. Jakmile se vytvoření předplatného dokončí, příkaz GET pro adresu URL `Location` vrátí objekt `subscriptionLink`, který obsahuje ID předplatného. Další podrobnosti najdete v [dokumentaci k rozhraní API pro předplatné](/rest/api/subscription/).
+```json
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "type": "Microsoft.Subscription/aliases",
+  "properties": {
+    "subscriptionId": "b5bab918-e8a9-4c34-a2e2-ebc1b75b9d74",
+    "provisioningState": "Accepted"
+  }
+}
+```
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Stav požadavku můžete získat metodou GET na stejné adrese URL.
 
-Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscription`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
+### <a name="request"></a>Žádost
 
-Spusťte následující příkaz [New-AzSubscription](/powershell/module/az.subscription) a `<enrollmentAccountObjectId>` nahraďte hodnotou `ObjectId` získanou v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Pokud chcete zadat vlastníky, přečtěte si, jak [získat ID objektů uživatele](grant-access-to-create-subscription.md#userObjectId).
+```json
+GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
+```
+
+### <a name="response"></a>Odpověď
+
+```json
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "type": "Microsoft.Subscription/aliases",
+  "properties": {
+    "subscriptionId": "b5bab918-e8a9-4c34-a2e2-ebc1b75b9d74",
+    "provisioningState": "Succeeded"
+  }
+}
+```
+
+Probíhající stav se vrátí jako stav `Accepted` u položky `provisioningState`.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-EA)
+
+Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscriptionAlias`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
+
+Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
 
 ```azurepowershell-interactive
-New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
+New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
-|---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `Name` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
-| `OfferType`   | Ano      | Řetězec | Nabídka předplatného. Pro EA jsou k dispozici dvě možnosti: [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční využití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování, musí se [aktivovat prostřednictvím portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `EnrollmentAccountObjectId`      | Ano       | Řetězec | ID objektu registračního účtu, pod kterým je předplatné vytvořené a pod kterým se fakturuje. Tato hodnota je identifikátor GUID získaný z rutiny `Get-AzEnrollmentAccount`. |
-| `OwnerObjectId`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření.  |
-| `OwnerSignInName`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `OwnerObjectId`.|
-| `OwnerApplicationId` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `OwnerObjectId`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
+V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 
-Úplný seznam všech parametrů najdete v tématu [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription).
+```azurepowershell
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "type": "Microsoft.Subscription/aliases",
+  "properties": {
+    "provisioningState": "Succeeded",
+    "subscriptionId": "4921139b-ef1e-4370-a331-dd2229f4f510"
+  }
+}
+```
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-EA)
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Nejdřív spuštěním příkazů `az extension add --name account` a `az extension add --name alias` nainstalujte rozšíření.
 
-Nejdřív nainstalujte toto rozšíření ve verzi Preview spuštěním příkazu `az extension add --name subscription`.
-
-Spusťte následující příkaz [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) a nahraďte přitom `<enrollmentAccountObjectId>` hodnotou `name`, kterou jste zkopírovali v prvním kroku (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Pokud chcete zadat vlastníky, přečtěte si, jak [získat ID objektů uživatele](grant-access-to-create-subscription.md#userObjectId).
+Spusťte následující příkaz [az account alias create](/cli/azure/ext/account/account/alias?view=azure-cli-latest#ext_account_az_account_alias_create&preserve-view=true) a zadejte v něm údaje `billing-scope` a `id` některého z vašich účtů `enrollmentAccounts`. 
 
 ```azurecli-interactive
-az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
+az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/654321" --display-name "Dev Team Subscription" --workload "Production"
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
-|---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `display-name` | No      | Řetězec | Zobrazovaný název předplatného. Pokud není zadaný, nastaví se na název nabídky, například Microsoft Azure Enterprise.                                 |
-| `offer-type`   | Ano      | Řetězec | Nabídka předplatného. Pro EA jsou k dispozici dvě možnosti: [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (produkční využití) a [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (vývoj/testování, musí se [aktivovat prostřednictvím portálu EA](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
-| `enrollment-account-object-id`      | Ano       | Řetězec | ID objektu registračního účtu, pod kterým je předplatné vytvořené a pod kterým se fakturuje. Tato hodnota je identifikátor GUID získaný z rutiny `az billing enrollment-account list`. |
-| `owner-object-id`      | No       | Řetězec | ID objektu libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření.  |
-| `owner-upn`    | No       | Řetězec | E-mailová adresa libovolného uživatele, kterého chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `owner-object-id`.|
-| `owner-spn` | No       | Řetězec | ID aplikace libovolného instančního objektu, který chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření. Tento parametr můžete využít místo `owner-object-id`. Při použití tohoto parametru musí mít instanční objekt [oprávnění ke čtení pro příslušný adresář](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
+V rámci odpovědi příkazu se vrátí údaj subscriptionId.
 
-Úplný seznam všech parametrů najdete u příkazu [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create).
+```azurecli
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "properties": {
+    "provisioningState": "Succeeded",
+    "subscriptionId": "4921139b-ef1e-4370-a331-dd2229f4f510"
+  },
+  "type": "Microsoft.Subscription/aliases"
+}
+```
 
 ---
 
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Omezení rozhraní API pro vytváření předplatných Azure Enterprise
 
-- Pomocí tohoto rozhraní API se dají vytvářet jenom předplatná Azure Enterprise.
-- Platí limit 2 000 předplatných na jeden registrační účet. Další předplatná pro tento účet se potom dají vytvářet jenom na webu Azure Portal. Pokud chcete prostřednictvím tohoto rozhraní API vytvořit více předplatných, vytvořte si další registrační účet.
+- Pomocí rozhraní API se dají vytvářet jenom předplatná Azure Enterprise.
+- Platí limit 2 000 předplatných na jeden registrační účet. Další předplatná pro tento účet se potom dají vytvářet jenom na webu Azure Portal. Pokud chcete prostřednictvím rozhraní API vytvořit více předplatných, vytvořte si další registrační účet.
 - Uživatelé, kteří nejsou vlastníky účtu, ale byli do registračního účtu přidáni přes Azure RBAC, nemůžou vytvářet předplatná na webu Azure Portal.
 - Tenanta, ve kterém se má předplatné vytvořit, nejde vybrat. Předplatné se vždycky vytvoří v domovském tenantovi vlastníka účtu. Pokud chcete předplatné přesunout do jiného tenanta, projděte si téma věnované [změně tenanta předplatného](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 
 ## <a name="create-subscriptions-for-an-mca-account"></a>Vytváření předplatných pro fakturační účet MCA
 
+Informace v následujících částech se věnují vytváření předplatných MCA.
+
 ### <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli vytvářet předplatná, musíte mít roli vlastníka, přispěvatele nebo tvůrce předplatného Azure pro oddíl faktury nebo roli vlastníka nebo přispěvatele pro fakturační profil nebo fakturační účet. Další informace najdete v tématu [Role a úlohy fakturace předplatného](understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
-V následujícím příkladu se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
+V následujících příkladech se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
 
 ### <a name="find-billing-accounts-that-you-have-access-to"></a>Vyhledání fakturačních účtů, ke kterým máte přístup
 
 Pomocí následujícího požadavku zobrazte seznam všech fakturačních účtů.
 
+### <a name="rest"></a>[REST](#tab/rest-getBillingAccounts)
+
 ```json
-GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
+GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
+
 ```
 V odpovědi rozhraní API se zobrazí všechny fakturační účty, ke kterým máte přístup.
 
@@ -238,138 +266,269 @@ V odpovědi rozhraní API se zobrazí všechny fakturační účty, ke kterým m
       "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
       "name": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
       "properties": {
-        "accountId": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "accountStatus": "Active",
         "accountType": "Enterprise",
         "agreementType": "MicrosoftCustomerAgreement",
+        "billingProfiles": {
+          "hasMoreResults": false
+        },
         "displayName": "Contoso",
-        "hasReadAccess": true,
-        "organizationId": "41b29574-xxxx-xxxx-xxxx-xxxxxxxxxxxxx_xxxx-xx-xx"
-      },
-      "type": "Microsoft.Billing/billingAccounts"
-    },
-    {
-      "id": "/providers/Microsoft.Billing/billingAccounts/4f89e155-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
-      "name": "4f89e155-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
-      "properties": {
-        "accountId": "4f89e155-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "accountStatus": "Active",
-        "accountType": "Enterprise",
-        "agreementType": "MicrosoftCustomerAgreement",
-        "displayName": "Fabrikam",
-        "hasReadAccess": true,
-        "organizationId": "41b29574-xxxx-xxxx-xxxx-xxxxxxxxxxxxx_xxxx-xx-xx"
+        "hasReadAccess": false
       },
       "type": "Microsoft.Billing/billingAccounts"
     }
   ]
 }
-
 ```
-Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, že agreeementType tohoto účtu je *MicrosoftCustomerAgreement*. Zkopírujte `name` tohoto účtu.  Pokud byste například chtěli vytvořit předplatné pro fakturační účet `Contoso`, zkopírovali byste `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
 
-### <a name="find-invoice-sections-to-create-subscriptions"></a>Vyhledání oddílů faktur pro vytváření předplatných
+Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftCustomerAgreement*. Zkopírujte `name` tohoto účtu.  Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
 
-V oddílu faktury pro fakturační profil se zobrazí poplatky za vaše předplatné. Pomocí následujícího rozhraní API získáte seznam oddílů faktur a fakturačních profilů, u kterých máte oprávnění k vytváření předplatných Azure.
+<!--
+### [PowerShell](#tab/azure-powershell-getBillingAccounts)
 
-Proveďte následující požadavek, ve kterém nahraďte `<billingAccountName>` hodnotou `name`, kterou jste zkopírovali v prvním kroku (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```).
+we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+-->
 
+<!--
+### [Azure CLI](#tab/azure-cli-getBillingAccounts)
+
+we're still working on enabling CLI SDK for billing APIs. Check back soon.
+-->
+
+---
+
+### <a name="find-billing-profiles--invoice-sections-to-create-subscriptions"></a>Vyhledání fakturačních profilů a oddílů faktur pro vytváření předplatných
+
+V oddílu faktury pro fakturační profil se zobrazí poplatky za vaše předplatné. Pomocí následujícího rozhraní API získáte seznam fakturačních profilů a oddílů faktur, u kterých máte oprávnění k vytváření předplatných Azure.
+
+Nejdřív získáte seznam fakturačních profilů v rámci fakturačního účtu, ke kterému máte přístup.
+
+### <a name="rest"></a>[REST](#tab/rest-getBillingProfiles)
 ```json
-POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/listInvoiceSectionsWithCreateSubscriptionPermission?api-version=2019-10-01-preview
+GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingprofiles/?api-version=2020-05-01
 ```
-V odpovědi rozhraní API se zobrazí všechny oddíly faktur a jejich fakturační profily, u kterých máte přístup pro vytváření předplatných:
+V odpovědi rozhraní API se zobrazí všechny fakturační profily, u kterých máte přístup k vytváření předplatných:
 
 ```json
 {
-    "value": [{
-        "billingProfileDisplayName": "Contoso finance",
-        "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx",
-        "enabledAzurePlans": [{
-            "productId": "DZH318Z0BPS6",
-            "skuId": "0001",
-            "skuDescription": "Microsoft Azure Plan"
-        }, {
-            "productId": "DZH318Z0BPS6",
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx",
+      "name": "AW4F-xxxx-xxx-xxx",
+      "properties": {
+        "billingRelationshipType": "Direct",
+        "billTo": {
+          "addressLine1": "One Microsoft Way",
+          "city": "Redmond",
+          "companyName": "Contoso",
+          "country": "US",
+          "email": "kenny@contoso.com",
+          "phoneNumber": "425xxxxxxx",
+          "postalCode": "98052",
+          "region": "WA"
+        },
+        "currency": "USD",
+        "displayName": "Contoso Billing Profile",
+        "enabledAzurePlans": [
+          {
             "skuId": "0002",
             "skuDescription": "Microsoft Azure Plan for DevTest"
-        }],
-        "invoiceSectionDisplayName": "Development",
-        "invoiceSectionId": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx/invoiceSections/GJ77-xxxx-xxx-xxx"
-    }, {
-        "billingProfileDisplayName": "Contoso finance",
-        "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx",
-        "enabledAzurePlans": [{
-            "productId": "DZH318Z0BPS6",
+          },
+          {
             "skuId": "0001",
             "skuDescription": "Microsoft Azure Plan"
-        }, {
-            "productId": "DZH318Z0BPS6",
-            "skuId": "0002",
-            "skuDescription": "Microsoft Azure Plan for DevTest"
-        }],
-        "invoiceSectionDisplayName": "Testing",
-        "invoiceSectionId": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX"
-  }]
+          }
+        ],
+        "hasReadAccess": true,
+        "invoiceDay": 5,
+        "invoiceEmailOptIn": false,
+        "invoiceSections": {
+          "hasMoreResults": false
+        },
+        "poNumber": "001",
+        "spendingLimit": "Off",
+        "status": "Active",
+        "systemId": "AW4F-xxxx-xxx-xxx",
+        "targetClouds": []
+      },
+      "type": "Microsoft.Billing/billingAccounts/billingProfiles"
+    }
+  ]
 }
-
 ```
 
-Pomocí vlastnosti `invoiceSectionDisplayName` identifikujte oddíl faktury, pro který chcete vytvářet předplatná. Pro tento oddíl faktury zkopírujte `invoiceSectionId`, `billingProfileId` a jednu z hodnot `skuId`. Pokud například chcete vytvořit předplatné typu `Microsoft Azure plan` pro oddíl faktury `Development`, zkopírujete `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX`, `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-xxxx-xxx-xxx` a `0001`. Tyto hodnoty někam vložte, abyste je mohli použít v dalším kroku.
+ Zkopírujte `id`, abyste mohli v dalším kroku určit oddíly faktur v rámci daného fakturačního profilu. Například zkopírujte údaj `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx` a zavolejte následující rozhraní API.
+
+```json
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoicesections?api-version=2020-05-01
+```
+### <a name="response"></a>Odpověď
+
+```json
+{
+  "totalCount": 1,
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx",
+      "name": "SH3V-xxxx-xxx-xxx",
+      "properties": {
+        "displayName": "Development",
+        "state": "Active",
+        "systemId": "SH3V-xxxx-xxx-xxx"
+      },
+      "type": "Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections"
+    }
+  ]
+}
+```
+
+Pomocí vlastnosti `id` identifikujte oddíl faktury, pro který chcete vytvářet předplatná. Zkopírujte celý řetězec. Například, `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
+
+<!--
+### [PowerShell](#tab/azure-powershell-getBillingProfiles)
+
+we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+-->
+
+<!--
+### [Azure CLI](#tab/azure-cli-getBillingProfiles)
+
+we're still working on enabling CLI SDK for billing APIs. Check back soon.
+-->
+
+---
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>Vytvoření předplatného pro oddíl faktury
 
-Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* typu *plán Microsoft Azure* pro oddíl faktury *Development*. Toto předplatné se bude účtovat na fakturační profil *Contoso finance's* a v příslušné faktuře bude uvedené v oddílu *Development*.
+Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* pro oddíl faktury *Development*. Toto předplatné se účtuje do fakturačního profilu *Contoso Billing Profile* a v příslušné faktuře bude uvedené v oddílu *Development*. Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
-Proveďte následující požadavek, ve kterém nahradíte `<invoiceSectionId>` hodnotou `invoiceSectionId`, kterou jste zkopírovali v druhém kroku (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```). Jako parametry požadavku pro rozhraní API musíte předat hodnoty `billingProfileId` a `skuId` zkopírované v druhém kroku. Pokud chcete zadat vlastníky, přečtěte si, jak [získat ID objektů uživatele](grant-access-to-create-subscription.md#userObjectId).
-
-```json
-POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview
-```
+### <a name="rest"></a>[REST](#tab/rest-MCA)
 
 ```json
-'{"displayName": "Dev Team subscription",
-  "billingProfileId": "<billingProfileId>",
-  "skuId": "<skuId>",
-  "owners": [
-      {
-        "objectId": "<userObjectId>"
-      },
-      {
-        "objectId": "<servicePrincipalObjectId>"
-      }
-    ],
-  "costCenter": "35683",
-  "managementGroupId": "/providers/Microsoft.Management/managementGroups/xxxxxxx",",
-}'
-
+PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
-|---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | Ano      | Řetězec | Zobrazovaný název předplatného.|
-| `billingProfileId`   | Ano      | Řetězec | ID fakturačního profilu, na který se budou účtovat poplatky za využití předplatného.  |
-| `skuId` | Ano      | Řetězec | Identifikátor SKU, který určuje typ plánu Azure. |
-| `owners`      | No       | Řetězec | ID objektu libovolného instančního objektu služby nebo uživatele, který chcete přidat jako vlastníka Azure RBAC v předplatném při jeho vytvoření.  |
-| `costCenter` | No      | Řetězec | Nákladové centrum přidružené k předplatnému. Zobrazuje se v souboru CSV s údaji o využití. |
-| `managementGroupId` | No      | Řetězec | ID skupiny pro správu, do které bude toto předplatné přidáno. Pokud chcete získat seznam skupin pro správu, projděte si téma zaměřené na [skupiny pro správu – rozhraní API pro zobrazení seznamu](/rest/api/resources/managementgroups/list). Použijte ID skupiny pro správu z tohoto rozhraní API. |
+### <a name="request-body"></a>Text požadavku
 
-V odpovědi se vrátí objekt `subscriptionCreationResult` pro monitorování. Jakmile se vytvoření předplatného dokončí, objekt `subscriptionCreationResult` vrátí objekt `subscriptionLink`, který obsahuje ID předplatného.
+```json
+{
+  "properties":
+    {
+        "billingScope": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx",
+        "DisplayName": "Dev Team subscription",
+        "Workload": "Production"
+    }
+}
+```
+
+### <a name="response"></a>Odpověď
+
+```json
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "type": "Microsoft.Subscription/aliases",
+  "properties": {
+    "subscriptionId": "b5bab918-e8a9-4c34-a2e2-ebc1b75b9d74",
+    "provisioningState": "Accepted"
+  }
+}
+```
+
+Stav požadavku můžete získat metodou GET na stejné adrese URL.
+
+### <a name="request"></a>Žádost
+
+```json
+GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
+```
+
+### <a name="response"></a>Odpověď
+
+```json
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "type": "Microsoft.Subscription/aliases",
+  "properties": {
+    "subscriptionId": "b5bab918-e8a9-4c34-a2e2-ebc1b75b9d74",
+    "provisioningState": "Succeeded"
+  }
+}
+```
+
+Probíhající stav se vrátí jako stav `Accepted` u položky `provisioningState`.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MCA)
+
+Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscriptionAlias`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
+
+Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`. 
+
+```azurepowershell-interactive
+New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
+```
+
+V rámci odpovědi příkazu se vrátí údaj subscriptionId.
+
+```azurepowershell
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "properties": {
+    "provisioningState": "Succeeded",
+    "subscriptionId": "4921139b-ef1e-4370-a331-dd2229f4f510"
+  },
+  "type": "Microsoft.Subscription/aliases"
+}
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-MCA)
+
+Nejdřív spuštěním příkazů `az extension add --name account` a `az extension add --name alias` nainstalujte rozšíření.
+
+Spusťte následující příkaz [az account alias create](/cli/azure/ext/account/account/alias?view=azure-cli-latest#ext_account_az_account_alias_create&preserve-view=true).
+
+```azurecli-interactive
+az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" --display-name "Dev Team Subscription" --workload "Production"
+```
+
+V rámci odpovědi příkazu se vrátí údaj subscriptionId.
+
+```azurecli
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "properties": {
+    "provisioningState": "Succeeded",
+    "subscriptionId": "4921139b-ef1e-4370-a331-dd2229f4f510"
+  },
+  "type": "Microsoft.Subscription/aliases"
+}
+```
+
+---
 
 ## <a name="create-subscriptions-for-an-mpa-billing-account"></a>Vytváření předplatných pro fakturační účet MPA
+
+Informace v následujících částech se věnují vytváření předplatných MPA.
 
 ### <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli vytvořit předplatné pro váš fakturační účet, musíte mít v účtu poskytovatele cloudového řešení vaší organizace roli globálního správce nebo agenta pro správu. Další informace najdete v tématu [Partnerské centrum – přiřazování uživatelských rolí a oprávnění](/partner-center/permissions-overview).
 
-V následujícím příkladu se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
+V následujících příkladech se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
 
 ### <a name="find-the-billing-accounts-that-you-have-access-to"></a>Vyhledání fakturačních účtů, ke kterým máte přístup
 
 Pomocí následujícího požadavku zobrazte seznam všech fakturačních účtů, ke kterým máte přístup.
 
+### <a name="rest"></a>[REST](#tab/rest-getBillingAccount-MPA)
+
 ```json
-GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
+GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
 ```
+
 V odpovědi rozhraní API se zobrazí seznam fakturačních účtů.
 
 ```json
@@ -379,82 +538,104 @@ V odpovědi rozhraní API se zobrazí seznam fakturačních účtů.
       "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
       "name": "99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
       "properties": {
-        "accountId": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "accountStatus": "Active",
-        "accountType": "Enterprise",
+        "accountType": "Partner",
         "agreementType": "MicrosoftPartnerAgreement",
+        "billingProfiles": {
+          "hasMoreResults": false
+        },
         "displayName": "Contoso",
-        "hasReadAccess": true,
-        "organizationId": "1d100e69-xxxx-xxxx-xxxx-xxxxxxxxxxxxx_xxxx-xx-xx"
-      },
-      "type": "Microsoft.Billing/billingAccounts"
-    },
-    {
-      "id": "/providers/Microsoft.Billing/billingAccounts/4f89e155-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
-      "name": "4f89e155-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
-      "properties": {
-        "accountId": "4f89e155-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "accountStatus": "Active",
-        "accountType": "Enterprise",
-        "agreementType": "MicrosoftCustomerAgreement",
-        "displayName": "Fabrikam",
-        "hasReadAccess": true,
-        "organizationId": "1d100e69-xxxx-xxxx-xxxx-xxxxxxxxxxxxx_xxxx-xx-xx"
+        "hasReadAccess": true
       },
       "type": "Microsoft.Billing/billingAccounts"
     }
   ]
 }
-
 ```
-Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, že agreeementType tohoto účtu je *MicrosoftPartnerAgreement*. Zkopírujte `name` tohoto účtu. Pokud byste například chtěli vytvořit předplatné pro fakturační účet `Contoso`, zkopírovali byste `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+
+Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftPartnerAgreement*. Zkopírujte `name` tohoto účtu. Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+
+<!--
+### [PowerShell](#tab/azure-powershell-getBillingAccounts-MPA)
+
+we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+-->
+
+<!--
+### [Azure CLI](#tab/azure-cli-getBillingAccounts-MPA)
+
+we're still working on enabling CLI SDK for billing APIs. Check back soon.
+-->
+
+---
 
 ### <a name="find-customers-that-have-azure-plans"></a>Vyhledání zákazníků s plány Azure
 
-Proveďte následující požadavek, ve kterém nahradíte `<billingAccountName>` hodnotou `name`, kterou jste zkopírovali v prvním kroku (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```). Zobrazí se seznam všech zákazníků ve fakturačním účtu, pro které můžete vytvářet předplatná Azure.
+Proveďte následující požadavek, ve kterém zadáte údaj `name` zkopírovaný z prvního kroku (```99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```). Zobrazí se seznam všech zákazníků ve fakturačním účtu, pro které můžete vytvářet předplatná Azure.
+
+### <a name="rest"></a>[REST](#tab/rest-getCustomers)
 
 ```json
-GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/customers?api-version=2019-10-01-preview
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers?api-version=2020-05-01
 ```
+
 V odpovědi rozhraní API se zobrazí zákazníci ve fakturačním účtu s plány Azure. Pro tyto zákazníky můžete vytvářet předplatná.
 
 ```json
 {
+  "totalCount": 2,
   "value": [
     {
-      "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "properties": {
-        "billingProfileDisplayName": "Contoso USD",
-        "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/JUT6-xxxx-xxxx-xxxx",
+        "billingProfileDisplayName": "Fabrikam toys Billing Profile",
+        "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/YL4M-xxxx-xxx-xxx",
         "displayName": "Fabrikam toys"
       },
       "type": "Microsoft.Billing/billingAccounts/customers"
     },
     {
-      "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/97c3fac4-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "97c3fac4-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "properties": {
-        "billingProfileDisplayName": "Fabrikam sports",
-        "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/JUT6-xxxx-xxxx-xxxx",
-        "displayName": "Fabrikam bakery"
+        "billingProfileDisplayName": "Contoso toys Billing Profile",
+        "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/YL4M-xxxx-xxx-xxx",
+        "displayName": "Contoso toys"
       },
       "type": "Microsoft.Billing/billingAccounts/customers"
-    }]
+    }
+  ]
 }
 
 ```
 
-Pomocí vlastnosti `displayName` identifikujte zákazníka, pro kterého chcete vytvářet předplatná. Zkopírujte `id` tohoto zákazníka. Pokud byste například chtěli vytvořit předplatné pro `Fabrikam toys`, zkopírovali byste `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalších krocích.
+Pomocí vlastnosti `displayName` identifikujte zákazníka, pro kterého chcete vytvářet předplatná. Zkopírujte `id` tohoto zákazníka. Pokud například chcete vytvořit předplatné pro zákazníka `Fabrikam toys`, zkopírujte `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/7d15644f-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalších krocích.
+
+<!--
+### [PowerShell](#tab/azure-powershell-getCustomers)
+
+we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+-->
+
+<!--
+### [Azure CLI](#tab/azure-cli-getCustomers)
+
+we're still working on enabling CLI SDK for billing APIs. Check back soon.
+-->
+
+---
 
 ### <a name="optional-for-indirect-providers-get-the-resellers-for-a-customer"></a>Volitelné pro nepřímé poskytovatele: Zjištění prodejců pro zákazníka
 
 Pokud jste nepřímý poskytovatel v dvouúrovňovém modelu CSP, můžete při vytváření předplatných pro zákazníky určit prodejce.
 
-Proveďte následující požadavek, ve kterém nahradíte `<customerId>` hodnotou `id`, kterou jste zkopírovali v druhém kroku (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Zobrazí se seznam všech prodejců, kteří jsou pro příslušného zákazníka k dispozici.
+Proveďte následující požadavek s údajem `id` zkopírovaným v druhém kroku (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Zobrazí se seznam všech prodejců, kteří jsou pro příslušného zákazníka k dispozici.
+
+### <a name="rest"></a>[REST](#tab/rest-getIndirectResellers)
 
 ```json
-GET https://management.azure.com<customerId>?$expand=resellers&api-version=2019-10-01-preview
+GET "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx?$expand=resellers&api-version=2020-05-01"
 ```
 V odpovědi rozhraní API se zobrazí prodejci pro tohoto zákazníka:
 
@@ -465,6 +646,8 @@ V odpovědi rozhraní API se zobrazí prodejci pro tohoto zákazníka:
   "name": "2ed2c490-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "Microsoft.Billing/billingAccounts/customers",
   "properties": {
+    "billingProfileDisplayName": "Fabrikam toys Billing Profile",
+    "billingProfileId": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/YL4M-xxxx-xxx-xxx",
     "displayName": "Fabrikam toys",
     "resellers": [
       {
@@ -473,52 +656,563 @@ V odpovědi rozhraní API se zobrazí prodejci pro tohoto zákazníka:
       }
     ]
   }
-},
-{
-  "id": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/4ed2c793-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "name": "4ed2c793-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "type": "Microsoft.Billing/billingAccounts/customers",
-  "properties": {
-    "displayName": "Fabrikam toys",
-    "resellers": [
-      {
-        "resellerId": "5xxxxx",
-        "description": "Tailspin"
-      }
-    ]
-  }
 }]
 }
 ```
-Pomocí vlastnosti `description` identifikujte prodejce, který bude přidružený k předplatnému. Zkopírujte `resellerId` tohoto prodejce. Pokud například chcete přidružit `Wingtip`, zkopírujete `3xxxxx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+
+Pomocí vlastnosti `description` určete prodejce, který bude přidružený k předplatnému. Zkopírujte `resellerId` tohoto prodejce. Pokud například chcete přidružit prodejce `Wingtip`, zkopírujte `3xxxxx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+
+<!--
+### [PowerShell](#tab/azure-powershell-getIndirectResellers)
+
+we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+-->
+
+<!--
+### [Azure CLI](#tab/azure-cli-getIndirectResellers)
+
+we're still working on enabling CLI SDK for billing APIs. Check back soon.
+-->
+
+---
 
 ### <a name="create-a-subscription-for-a-customer"></a>Vytvoření předplatného pro zákazníka
 
-Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* pro *Fabrikam toys* a přidruží k tomuto předplatnému prodejce *Wingtip*. T
+Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* pro *Fabrikam toys* a přidruží k tomuto předplatnému prodejce *Wingtip*. Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
 
-Proveďte následující požadavek, ve kterém nahradíte `<customerId>` hodnotou `id`, kterou jste zkopírovali v druhém kroku (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Jako parametry požadavku pro rozhraní API předejte volitelnou hodnotu *resellerId* zkopírovanou v druhém kroku.
-
-```json
-POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview
-```
+### <a name="rest"></a>[REST](#tab/rest-MPA)
 
 ```json
-'{"displayName": "Dev Team subscription",
-  "skuId": "0001",
-  "resellerId": "<resellerId>",
-}'
+PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
 ```
 
-| Název prvku  | Požaduje se | Typ   | Popis                                                                                               |
-|---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | Ano      | Řetězec | Zobrazovaný název předplatného.|
-| `skuId` | Ano      | Řetězec | Identifikátor SKU plánu Azure. Pro předplatná typu plán Microsoft Azure použijte *0001*. |
-| `resellerId`      | No       | Řetězec | Identifikátor MPN prodejce, který bude přidružený k předplatnému.  |
+### <a name="request-body"></a>Text požadavku
 
-V odpovědi se vrátí objekt `subscriptionCreationResult` pro monitorování. Jakmile se vytvoření předplatného dokončí, objekt `subscriptionCreationResult` vrátí objekt `subscriptionLink`, který obsahuje ID předplatného.
+```json
+{
+  "properties":
+    {
+        "billingScope": "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "DisplayName": "Dev Team subscription",
+        "Workload": "Production"
+    }
+}
+```
+### <a name="response"></a>Odpověď
+
+```json
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "type": "Microsoft.Subscription/aliases",
+  "properties": {
+    "subscriptionId": "b5bab918-e8a9-4c34-a2e2-ebc1b75b9d74",
+    "provisioningState": "Accepted"
+  }
+}
+```
+
+Stav požadavku můžete získat metodou GET na stejné adrese URL.
+
+### <a name="request"></a>Žádost
+
+```json
+GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sampleAlias?api-version=2020-09-01
+```
+
+### <a name="response"></a>Odpověď
+
+```json
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "type": "Microsoft.Subscription/aliases",
+  "properties": {
+    "subscriptionId": "b5bab918-e8a9-4c34-a2e2-ebc1b75b9d74",
+    "provisioningState": "Succeeded"
+  }
+}
+```
+
+Probíhající stav se vrátí jako stav `Accepted` u položky `provisioningState`. 
+
+V textu požadavku pro rozhraní API zadejte volitelnou hodnotu *resellerId* zkopírovanou v druhém kroku.
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MPA)
+
+Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscriptionAlias`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
+
+Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`. 
+
+```azurepowershell-interactive
+New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Workload 'Production"
+```
+
+V rámci odpovědi příkazu se vrátí údaj subscriptionId.
+
+```azurepowershell
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "properties": {
+    "provisioningState": "Succeeded",
+    "subscriptionId": "4921139b-ef1e-4370-a331-dd2229f4f510"
+  },
+  "type": "Microsoft.Subscription/aliases"
+}
+```
+
+Ve volání `New-AzSubscriptionAlias` uveďte volitelnou hodnotu *resellerId* zkopírovanou v druhém kroku.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-MPA)
+
+Nejdřív spuštěním příkazů `az extension add --name account` a `az extension add --name alias` nainstalujte rozšíření.
+
+Spusťte následující příkaz [az account alias create](/cli/azure/ext/account/account/alias?view=azure-cli-latest#ext_account_az_account_alias_create&preserve-view=true). 
+
+```azurecli-interactive
+az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --display-name "Dev Team Subscription" --workload "Production"
+```
+
+V rámci odpovědi příkazu se vrátí údaj subscriptionId.
+
+```azurecli
+{
+  "id": "/providers/Microsoft.Subscription/aliases/sampleAlias",
+  "name": "sampleAlias",
+  "properties": {
+    "provisioningState": "Succeeded",
+    "subscriptionId": "4921139b-ef1e-4370-a331-dd2229f4f510"
+  },
+  "type": "Microsoft.Subscription/aliases"
+}
+```
+
+Ve volání `az account alias create` zadejte volitelnou hodnotu *resellerId* zkopírovanou v druhém kroku.
+
+---
+
+## <a name="create-subscriptions-using-arm-templates"></a>Vytváření předplatných pomocí šablon ARM
+
+V šabloně Azure Resource Manageru (šabloně ARM) můžete vytvářet předplatná, což umožňuje automatizaci procesů nasazení do produkčního/testovacího prostředí. V následujícím příkladu vytvoříte předplatné Azure a skupinu prostředků Azure pomocí šablony ARM.
+
+### <a name="prerequisites"></a>Předpoklady
+
+Abyste mohli vytvářet předplatná, musíte mít roli vlastníka, přispěvatele nebo tvůrce předplatného Azure pro oddíl faktury nebo roli vlastníka nebo přispěvatele pro fakturační profil nebo fakturační účet. Další informace najdete v tématu [Role a úlohy fakturace předplatného](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+
+Kromě toho platí, že jelikož nasazujete šablonu ARM, potřebujete mít oprávnění k zápisu do kořenového objektu. Pokud tedy nasazení šablony ARM ve skupině pro správu, budete potřebovat oprávnění k zápisu do této skupiny pro správu. Upozorňujeme, že tato akce slouží jenom k vytvoření nasazení šablony ARM. Pokud se vytvoří předplatné, vytvoří se jenom ve skupině pro správu uvedené v této šabloně ARM.
+
+V následujících příkladech se používají rozhraní REST API. PowerShell ani Azure CLI se v současné době nepodporují.
+
+### <a name="find-billing-accounts-that-you-have-access-to"></a>Vyhledání fakturačních účtů, ke kterým máte přístup
+
+Pomocí následujícího požadavku zobrazte seznam všech fakturačních účtů.
+
+### <a name="rest"></a>[REST](#tab/rest-getBillingAccounts)
+
+```json
+GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/?api-version=2020-05-01
+```
+
+V odpovědi rozhraní API se zobrazí všechny fakturační účty, ke kterým máte přístup.
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
+      "name": "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx",
+      "properties": {
+        "accountStatus": "Active",
+        "accountType": "Enterprise",
+        "agreementType": "MicrosoftCustomerAgreement",
+        "billingProfiles": {
+          "hasMoreResults": false
+        },
+        "displayName": "Contoso",
+        "hasReadAccess": false
+      },
+      "type": "Microsoft.Billing/billingAccounts"
+    }
+  ]
+}
+```
+
+Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftCustomerAgreement*. Zkopírujte `name` tohoto účtu. Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+
+<!--
+### [PowerShell](#tab/azure-powershell-getBillingAccounts)
+
+we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+-->
+
+<!--
+### [Azure CLI](#tab/azure-cli-getBillingAccounts)
+
+we're still working on enabling CLI SDK for billing APIs. Check back soon.
+-->
+
+---
+
+### <a name="find-billing-profiles--invoice-sections-to-create-subscriptions"></a>Vyhledání fakturačních profilů a oddílů faktur pro vytváření předplatných
+
+V oddílu faktury pro fakturační profil se zobrazí poplatky za vaše předplatné. Pomocí následujícího rozhraní API získáte seznam fakturačních profilů a oddílů faktur, u kterých máte oprávnění k vytváření předplatných Azure.
+
+Nejdřív získáte seznam fakturačních profilů v rámci fakturačního účtu, ke kterému máte přístup.
+
+### <a name="rest"></a>[REST](#tab/rest-getBillingProfiles)
+
+```json
+GET https://management.azure.com/providers/Microsoft.Billing/billingaccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingprofiles/?api-version=2020-05-01
+```
+
+V odpovědi rozhraní API se zobrazí všechny fakturační profily, u kterých máte přístup k vytváření předplatných:
+
+```json
+{
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx",
+      "name": "AW4F-xxxx-xxx-xxx",
+      "properties": {
+        "billingRelationshipType": "Direct",
+        "billTo": {
+          "addressLine1": "One Microsoft Way",
+          "city": "Redmond",
+          "companyName": "Contoso",
+          "country": "US",
+          "email": "kenny@contoso.com",
+          "phoneNumber": "425xxxxxxx",
+          "postalCode": "98052",
+          "region": "WA"
+        },
+        "currency": "USD",
+        "displayName": "Contoso Billing Profile",
+        "enabledAzurePlans": [
+          {
+            "skuId": "0002",
+            "skuDescription": "Microsoft Azure Plan for DevTest"
+          },
+          {
+            "skuId": "0001",
+            "skuDescription": "Microsoft Azure Plan"
+          }
+        ],
+        "hasReadAccess": true,
+        "invoiceDay": 5,
+        "invoiceEmailOptIn": false,
+        "invoiceSections": {
+          "hasMoreResults": false
+        },
+        "poNumber": "001",
+        "spendingLimit": "Off",
+        "status": "Active",
+        "systemId": "AW4F-xxxx-xxx-xxx",
+        "targetClouds": []
+      },
+      "type": "Microsoft.Billing/billingAccounts/billingProfiles"
+    }
+  ]
+}
+```
+
+ Zkopírujte `id`, abyste mohli v dalším kroku určit oddíly faktur v rámci daného fakturačního profilu. Například zkopírujte údaj `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx` a zavolejte následující rozhraní API.
+
+```json
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoicesections?api-version=2020-05-01
+```
+
+### <a name="response"></a>Odpověď
+
+```json
+{
+  "totalCount": 1,
+  "value": [
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx",
+      "name": "SH3V-xxxx-xxx-xxx",
+      "properties": {
+        "displayName": "Development",
+        "state": "Active",
+        "systemId": "SH3V-xxxx-xxx-xxx"
+      },
+      "type": "Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections"
+    }
+  ]
+}
+```
+
+Pomocí vlastnosti `id` identifikujte oddíl faktury, pro který chcete vytvářet předplatná. Zkopírujte celý řetězec. Například, `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
+
+<!--
+### [PowerShell](#tab/azure-powershell-getBillingProfiles)
+
+we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+
+### [Azure CLI](#tab/azure-cli-getBillingProfiles)
+
+we're still working on enabling CLI SDK for billing APIs. Check back soon.
+-->
+
+---
+
+### <a name="create-a-subscription-and-resource-group-with-a-template"></a>Vytvoření předplatného a skupiny prostředků pomocí šablony
+
+Následující šablona ARM vytvoří předplatné s názvem *Dev Team Subscription* pro oddíl faktury *Development*. Toto předplatné se účtuje do fakturačního profilu *Contoso Billing Profile* a v příslušné faktuře bude uvedené v oddílu *Development*. Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
+
+#### <a name="request"></a>Žádost
+
+```rest
+PUT https://management.azure.com/providers/Microsoft.Resources/deployments/sampleTemplate?api-version=2019-10-01
+```
+
+#### <a name="request-body"></a>Text požadavku
+
+```json
+{
+  "properties":
+    {
+        "location": "westus",
+        "properties": {
+            "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {},
+                "variables": {
+                    "uniqueAliasName": "sampleAlias"
+                },
+                "resources": [
+                    {
+                        "type": "Microsoft.Resources/deployments",
+                        "apiVersion": "2019-10-01",
+                        "name": "sampleTemplate",
+                        "location": "westus",
+                        "properties": {
+                            "expressionEvaluationOptions": {
+                                "scope": "inner"
+                            },
+                            "mode": "Incremental",
+                            "template": {
+                                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                                "contentVersion": "1.0.0.0",
+                                "variables": {
+                                    "uniqueAliasName": "sampleAlias"
+                                },
+                                "resources": [
+                                    {
+                                        "name": "[variables('uniqueAliasName')]",
+                                        "type": "Microsoft.Subscription/aliases",
+                                        "apiVersion": "2020-09-01",
+                                        "properties": {
+                                            "workLoad": "Production",
+                                            "displayName": "Dev Team subscription",
+                                            "billingScope": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"
+                                        },
+                                        "dependsOn": [],
+                                        "tags": {}
+                                    }
+                                ],
+                                "outputs": {
+                                    "subscriptionId": {
+                                        "type": "string",
+                                        "value": "[replace(reference(variables('uniqueAliasName')).subscriptionId, 'invalidrandom/', '')]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "sampleOuterResource",
+                        "type": "Microsoft.Resources/deployments",
+                        "apiVersion": "2019-10-01",
+                        "location": "westus",
+                        "properties": {
+                            "expressionEvaluationOptions": {
+                                "scope": "inner"
+                            },
+                            "mode": "Incremental",
+                            "parameters": {
+                                "subscriptionId": {
+                                    "value": "[reference('sampleTemplate').outputs.subscriptionId.value]"
+                                }
+                            },
+                            "template": {
+                                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                            "contentVersion": "1.0.0.0",
+                                "parameters": {
+                                    "subscriptionId": {
+                                        "type": "string"
+                                    }
+                                },
+                                "variables": {},
+                                "resources": [
+                                    {
+                                        "name": "sampleInnerResource",
+                                        "type": "Microsoft.Resources/deployments",
+                                        "subscriptionId": "[parameters('subscriptionId')]",
+                                        "apiVersion": "2019-10-01",
+                                        "location": "westus",
+                                        "properties": {
+                                            "expressionEvaluationOptions": {
+                                                "scope": "inner"
+                                            },
+                                            "mode": "Incremental",
+                                            "parameters": {},
+                                            "template": {
+                                                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                                                "contentVersion": "1.0.0.0",
+                                                "parameters": {},
+                                                "variables": {},
+                                                "resources": [
+                                                    {
+                                                        "type": "Microsoft.Resources/resourceGroups",
+                                                        "apiVersion": "2020-05-01",
+                                                        "location": "[deployment().location]",
+                                                        "name": "sampleRG",
+                                                        "properties": {},
+                                                        "tags": {}
+                                                    }
+                                                ],
+                                                "outputs": {}
+                                            }
+                                        }
+                                    }
+                                ],
+                                "outputs": {}
+                            }
+                        }
+                    }
+                ],
+                "outputs": {
+                    "messageFromLinkedTemplate": {
+                        "type": "string",
+                        "value": "[reference('sampleTemplate').outputs.subscriptionId.value]"
+                    }
+                }
+            },
+            "mode": "Incremental"
+        }
+    }
+}
+```
+
+#### <a name="response"></a>Odpověď
+
+```json
+{
+  "id": "/providers/Microsoft.Resources/deployments/sampleTemplate",
+  "name": "sampleTemplate",
+  "type": "Microsoft.Resources/deployments",
+  "location": "westus",
+  "properties": {
+    "templateHash": "16005880870587497948",
+    "parameters": {},
+    "mode": "Incremental",
+    "provisioningState": "Accepted",
+    "timestamp": "2020-10-07T19:06:34.110811Z",
+    "duration": "PT0.1345459S",
+    "correlationId": "2b57ddf6-7e27-42cb-90b4-90eeccd11a28",
+    "providers": [
+      {
+        "namespace": "Microsoft.Resources",
+        "resourceTypes": [
+          {
+            "resourceType": "deployments",
+            "locations": [
+              "westus"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/providers/Microsoft.Resources/deployments/sampleTemplate",
+            "resourceType": "Microsoft.Resources/deployments",
+            "resourceName": "anuragTemplate1"
+          }
+        ],
+        "id": "/providers/Microsoft.Resources/deployments/sampleOuterResource",
+        "resourceType": "Microsoft.Resources/deployments",
+        "resourceName": "sampleOuterResource"
+      }
+    ]
+  }
+}
+```
+
+Pokud chcete sledovat průběh, můžete získat stav nasazení metodou GET.
+
+```json
+GET https://management.azure.com/providers/Microsoft.Resources/deployments/sampleTemplate?api-version=2019-10-01
+```
+
+#### <a name="response"></a>Odpověď
+
+```json
+{
+  "id": "/providers/Microsoft.Resources/deployments/sampleDeployment5",
+  "name": "sampleDeployment5",
+  "type": "Microsoft.Resources/deployments",
+  "location": "westus",
+  "properties": {
+    "templateHash": "16005880870587497948",
+    "parameters": {},
+    "mode": "Incremental",
+    "provisioningState": "Succeeded",
+    "timestamp": "2020-10-07T19:07:20.8007311Z",
+    "duration": "PT46.824466S",
+    "correlationId": "2b57ddf6-7e27-42cb-90b4-90eeccd11a28",
+    "providers": [
+      {
+        "namespace": "Microsoft.Resources",
+        "resourceTypes": [
+          {
+            "resourceType": "deployments",
+            "locations": [
+              "westus"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/providers/Microsoft.Resources/deployments/sampleTemplate",
+            "resourceType": "Microsoft.Resources/deployments",
+            "resourceName": "sampleTemplate"
+          }
+        ],
+        "id": "/providers/Microsoft.Resources/deployments/sampleOuterResource",
+        "resourceType": "Microsoft.Resources/deployments",
+        "resourceName": "sampleOuterResource"
+      }
+    ],
+    "outputs": {
+      "messageFromLinkedTemplate": {
+        "type": "String",
+        "value": "16edf959-11fd-48bb-9a46-85190963ead9"
+      }
+    },
+    "outputResources": [
+      {
+        "id": "/providers/Microsoft.Subscription/aliases/sampleAlias"
+      },
+      {
+        "id": "/subscriptions/16edf959-11fd-48bb-9a46-85190963ead9/resourceGroups/sampleRG"
+      }
+    ]
+  }
+}
+```
+
+Vidíte, že se v předchozím příkladu vytvořilo předplatné `16edf959-11fd-48bb-9a46-85190963ead9` a skupina prostředků `sampleRG`.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Příklad vytvoření předplatného pro smlouvu Enterprise (EA) pomocí rozhraní .NET najdete v [ukázkovém kódu na GitHubu](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
 * Teď když jste vytvořili předplatné, můžete tuto možnost poskytnout dalším uživatelům a instančním objektům. Další informace najdete v tématu [Udělení přístupu pro vytváření předplatných Azure Enterprise (Preview)](grant-access-to-create-subscription.md).
 * Další informace o správě velkého počtu předplatných pomocí skupin pro správu najdete v tématu věnovaném [uspořádání prostředků pomocí skupin pro správu v Azure](../../governance/management-groups/overview.md).

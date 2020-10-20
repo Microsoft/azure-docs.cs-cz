@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 25022cc70f3b6c8fc01aa556b6229ae8a6ccb82b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8d6e10b025b9e9524982b1558beacfab1970eb59
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205086"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216432"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače s Windows v Azure
 
-Díky Azure [Change Tracking](../../automation/change-tracking/overview.md) a [Update Management](../../automation/update-management/update-mgmt-overview.md)můžete snadno identifikovat změny ve virtuálních počítačích s Windows v Azure a spravovat aktualizace operačního systému pro tyto virtuální počítače.
+Díky Azure [Change Tracking](../../automation/change-tracking/overview.md) a [Update Management](../../automation/update-management/overview.md)můžete snadno identifikovat změny ve virtuálních počítačích s Windows v Azure a spravovat aktualizace operačního systému pro tyto virtuální počítače.
 
 V tomto kurzu se naučíte:
 
@@ -112,10 +112,10 @@ Pokud chcete naplánovat nové nasazení aktualizace pro virtuální počítač,
 | --- | --- |
 | **Název** |Zadejte jedinečný název pro identifikaci nasazení aktualizace. |
 |**Operační systém**| Vyberte možnost **Linux** nebo **Windows**.|
-| **Skupiny, které se mají aktualizovat** |U virtuálních počítačů hostovaných v Azure definujte dotaz na základě kombinace předplatného, skupin prostředků, umístění a značek. Tento dotaz vytvoří dynamickou skupinu virtuálních počítačů hostovaných v Azure, které se mají zahrnout do nasazení. </br></br>U virtuálních počítačů, které nejsou hostované v Azure, vyberte existující uložené výsledky hledání. Pomocí tohoto hledání můžete vybrat skupinu těchto virtuálních počítačů, které chcete zahrnout do nasazení. </br></br> Další informace najdete v tématu [dynamické skupiny](../../automation/update-management/update-mgmt-groups.md).|
+| **Skupiny, které se mají aktualizovat** |U virtuálních počítačů hostovaných v Azure definujte dotaz na základě kombinace předplatného, skupin prostředků, umístění a značek. Tento dotaz vytvoří dynamickou skupinu virtuálních počítačů hostovaných v Azure, které se mají zahrnout do nasazení. </br></br>U virtuálních počítačů, které nejsou hostované v Azure, vyberte existující uložené výsledky hledání. Pomocí tohoto hledání můžete vybrat skupinu těchto virtuálních počítačů, které chcete zahrnout do nasazení. </br></br> Další informace najdete v tématu [dynamické skupiny](../../automation/update-management/configure-groups.md).|
 | **Počítače, které se mají aktualizovat** |Vyberte **uložené hledání**, **importované skupiny**nebo **počítače**.<br/><br/>Pokud vyberete možnost **počítače**, můžete z rozevíracího seznamu zvolit jednotlivé počítače. Připravenost jednotlivých počítačů se zobrazí ve sloupci **připravenosti agenta aktualizace** v tabulce.</br></br> Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md) |
 |**Klasifikace aktualizací**|Vyberte všechny potřebné klasifikace aktualizací.|
-|**Zahrnout nebo vyloučit aktualizace**|Tuto možnost vyberte, pokud chcete otevřít podokno **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout, a ty, které se mají vyloučit, jsou na různých kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu [Naplánování nasazení aktualizací](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment). |
+|**Zahrnout nebo vyloučit aktualizace**|Tuto možnost vyberte, pokud chcete otevřít podokno **zahrnutí/vyloučení** . Aktualizace, které se mají zahrnout, a ty, které se mají vyloučit, jsou na různých kartách. Další informace o způsobu zpracování zahrnutí najdete v tématu [Naplánování nasazení aktualizací](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment). |
 |**Nastavení plánu**|Zvolte čas **spuštění a vyberte jeden nebo znovu** **.**|
 | **Pre-Scripts + post-Scripts**|Vyberte skripty, které se spustí před nasazením a po něm.|
 | **Časové období údržby** | Zadejte počet minut, po které se nastavují aktualizace. Platné hodnoty jsou v rozsahu od 30 do 360 minut. |

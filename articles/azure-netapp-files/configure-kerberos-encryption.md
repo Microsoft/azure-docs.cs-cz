@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 9/29/2020
+ms.date: 10/19/2020
 ms.author: b-juche
-ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461474"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217044"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurace šifrování protokolu Kerberos NFSv 4.1 pro Azure NetApp Files
 
@@ -75,7 +75,7 @@ Konfigurace protokolu Kerberos pro NFSv 4.1 vytvoří dva účty počítačů ve
 * Účet počítače pro sdílené složky SMB
 * Počítačový účet pro NFSv 4.1 – Tento účet můžete identifikovat pomocí předpony `NFS-` . 
 
-Po vytvoření prvního svazku protokolu Kerberos NFSv 4.1 nastavte typ šifrování nebo účet počítače pomocí následujícího příkazu PowerShellu:
+Po vytvoření prvního svazku protokolu Kerberos NFSv 4.1 nastavte typ šifrování pro účet počítače pomocí následujícího příkazu PowerShellu:
 
 `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256`
 
@@ -96,11 +96,11 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 3. Vytvořte adresář (přípojný bod) pro nový svazek.  
 
 4. Nastavte výchozí typ šifrování na AES 256 pro účet počítače:  
-    `Set-ADComputer $COMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
+    `Set-ADComputer $NFSCOMPUTERACCOUNT -KerberosEncryptionType AES256 -Credential $ANFSERVICEACCOUNT`
 
     * Tento příkaz musíte spustit pouze jednou pro každý účet počítače.
     * Tento příkaz můžete spustit z řadiče domény nebo z počítače s nainstalovanými [RSAT](https://support.microsoft.com/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems) . 
-    * `$COMPUTERACCOUNT`Proměnná je účet počítače vytvořený ve službě Active Directory při nasazení svazku Kerberos. Jedná se o účet s předponou `NFS-` . 
+    * `$NFSCOMPUTERACCOUNT`Proměnná je účet počítače vytvořený ve službě Active Directory při nasazení svazku Kerberos. Jedná se o účet s předponou `NFS-` . 
     * `$ANFSERVICEACCOUNT`Proměnná je uživatelský účet služby Active Directory bez oprávnění s delegovanými ovládacími prvky v rámci organizační jednotky, ve které byl účet počítače vytvořen. 
 
 5. Připojte svazek na hostiteli: 

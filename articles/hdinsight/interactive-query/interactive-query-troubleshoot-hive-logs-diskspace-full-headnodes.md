@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
-ms.date: 03/05/2020
-ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/05/2020
+ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78943969"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220886"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Scénář: protokoly Apache Hive zaplňují místo na disku v hlavních uzlech ve službě Azure HDInsight.
 
@@ -24,6 +24,7 @@ V clusteru Apache Hive/LLAP zabírají nechtěné protokoly v hlavních uzlech c
 
 1. Přístup SSH se nezdařil z důvodu nedostatku místa na hlavním uzlu.
 2. Ambari poskytuje *chybu protokolu http: služba 503 není k dispozici*.
+3. HiveServer2 Interactive se nerestartuje.
 
 V `ambari-agent` protokolech se při potížích zobrazí následující.
 ```
@@ -35,7 +36,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Příčina
 
-V pokročilých konfiguracích log4j podregistru se parametr *log4j. appender. rfa. MaxBackupIndex* vynechá. Způsobuje nekonečnou generaci souborů protokolu.
+V pokročilých konfiguracích log4j podregistru je aktuální výchozí plán odstranění nastavený na soubory starší než 30 dní na základě data poslední úpravy.
 
 ## <a name="resolution"></a>Řešení
 
@@ -43,30 +44,28 @@ V pokročilých konfiguracích log4j podregistru se parametr *log4j. appender. r
 
 2. Přejít na `Advanced hive-log4j` část v části Upřesnit nastavení.
 
-3. Nastavte `log4j.appender.RFA` parametr jako RollingFileAppender. 
+3. Nastavte `appender.RFA.strategy.action.condition.age` parametr na stáří podle vašeho výběru. Příklad 14 dnů: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. Nastavte `log4j.appender.RFA.MaxFileSize` a `log4j.appender.RFA.MaxBackupIndex` následujícím způsobem.
+4. Pokud nevidíte žádná související nastavení, přidejte prosím následující nastavení.
+    ```
+    # automatically delete hive log
+    appender.RFA.strategy.action.type = Delete
+    appender.RFA.strategy.action.basePath = ${sys:hive.log.dir}
+    appender.RFA.strategy.action.condition.type = IfLastModified
+    appender.RFA.strategy.action.condition.age = 30D
+    appender.RFA.strategy.action.PathConditions.type = IfFileName
+    appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
+    ```
 
-```
-log4jhive.log.maxfilesize=1024MB
-log4jhive.log.maxbackupindex=10
-
-log4j.appender.RFA=org.apache.log4j.RollingFileAppender
-log4j.appender.RFA.File=${hive.log.dir}/${hive.log.file}
-log4j.appender.RFA.MaxFileSize=${log4jhive.log.maxfilesize}
-log4j.appender.RFA.MaxBackupIndex=${log4jhive.log.maxbackupindex}
-log4j.appender.RFA.layout=org.apache.log4j.PatternLayout
-log4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n
-```
 5. Nastavte `hive.root.logger` následujícím `INFO,RFA` způsobem. Výchozím nastavením je ladění, které způsobí, že se protokoly budou velmi velké.
 
-```
-# Define some default values that can be overridden by system properties
-hive.log.threshold=ALL
-hive.root.logger=INFO,RFA
-hive.log.dir=${java.io.tmpdir}/${user.name}
-hive.log.file=hive.log
-```
+    ```
+    # Define some default values that can be overridden by system properties
+    hive.log.threshold=ALL
+    hive.root.logger=INFO,RFA
+    hive.log.dir=${java.io.tmpdir}/${user.name}
+    hive.log.file=hive.log
+    ```
 
 6. Uložte konfigurace a restartujte požadované součásti.
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ac528d1cfb74221a7398e390cedda08df4ea4508
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151397"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220495"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -63,7 +63,7 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
 1. Klikněte na *Uložit*.
 
-Další informace o přiřazení rolí najdete [v tématu Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment). Pokud sdílíte data pomocí rozhraní REST API, můžete přiřazení rolí vytvořit pomocí rozhraní API tak, že na [REST API přidáte nebo odeberete přiřazení rolí Azure pomocí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). 
+Další informace o přiřazení rolí najdete [v tématu Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment). Pokud sdílíte data pomocí rozhraní REST API, můžete přiřazení rolí vytvořit pomocí rozhraní API tak, že na [REST API přidáte nebo odeberete přiřazení rolí Azure pomocí](../role-based-access-control/role-assignments-rest.md). 
 
 Pro zdroje založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v SQL Database se stejným názvem jako s prostředkem sdílené složky Azure při připojování k SQL Database pomocí ověřování Azure Active Directory. Tomuto uživateli musí být uděleno oprávnění *db_datareader* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení z Azure SQL Database nebo synapse Analytics](how-to-share-from-sql.md) . 
 
@@ -83,7 +83,7 @@ Chcete-li vytvořit přiřazení role pro spravovanou identitu prostředku sdíl
 1. V části *Vybrat*zadejte název vašeho prostředku Azure Data Share.
 1. Klikněte na *Uložit*.
 
-Další informace o přiřazení rolí najdete [v tématu Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment). Pokud přijímáte data pomocí rozhraní REST API, můžete přiřazení rolí vytvořit pomocí rozhraní API tak, že na [REST API přidáte nebo odeberete přiřazení rolí Azure pomocí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). 
+Další informace o přiřazení rolí najdete [v tématu Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment). Pokud přijímáte data pomocí rozhraní REST API, můžete přiřazení rolí vytvořit pomocí rozhraní API tak, že na [REST API přidáte nebo odeberete přiřazení rolí Azure pomocí](../role-based-access-control/role-assignments-rest.md). 
 
 V případě cíle založeného na jazyce SQL je nutné vytvořit uživatele SQL z externího poskytovatele v SQL Database se stejným názvem jako s prostředkem sdílené složky Azure při připojování k databázi SQL pomocí ověřování Azure Active Directory. Tento uživatel musí mít udělená oprávnění *db_datareader, db_datawriter db_ddladmin* . Ukázkový skript spolu s dalšími předpoklady pro sdílení na základě SQL najdete v kurzu [sdílení z Azure SQL Database nebo synapse Analytics](how-to-share-from-sql.md) . 
 
@@ -103,7 +103,7 @@ Pomocí těchto kroků zaregistrujete poskytovatele prostředků Microsoft. data
 1. Vyhledejte Microsoft. datashare.
 1. Klikněte na **Zaregistrovat**.
  
-Další informace o poskytovateli prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+Další informace o poskytovateli prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ## <a name="next-steps"></a>Další kroky
 

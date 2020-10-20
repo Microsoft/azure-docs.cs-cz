@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 19b65554801a22954499219e43ed021a7cc8c121
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7a143f99eca73e0620e24ac5d93141ddb7d99e6
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258431"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215956"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Při komunikaci s Azure AD B2C se používají následující tokeny:
 
 - *ID tokenu – token* JWT, který obsahuje deklarace identity, které můžete použít k identifikaci uživatelů v aplikaci. Tento token se bezpečně pošle v požadavcích HTTP na komunikaci mezi dvěma komponentami stejné aplikace nebo služby. Deklarace identity v tokenu ID můžete použít podle svých potřeb. Obvykle se používají k zobrazení informací o účtu nebo k rozhodování o řízení přístupu v aplikaci. Tokeny ID jsou podepsané, ale nejsou zašifrované. Když vaše aplikace nebo rozhraní API obdrží token ID, musí ověřit signaturu a prokázat, že token je pravý. Vaše aplikace nebo rozhraní API musí také ověřit pár deklarací identity v tokenu, aby bylo možné prokázat, že je platná. V závislosti na požadavcích na scénář se může deklarace identity ověřené aplikací lišit, ale aplikace musí v každém scénáři provádět některé běžné validace deklarací identity.
 - *Přístupový token – token* JWT obsahující deklarace identity, které můžete použít k identifikaci udělených oprávnění pro vaše rozhraní API. Přístupové tokeny jsou podepsané, ale nejsou zašifrované. Přístupové tokeny slouží k poskytnutí přístupu k rozhraním API a serverům prostředků.  Když rozhraní API obdrží přístupový token, musí ověřit signaturu a prokázat tak, že token je pravý. Vaše rozhraní API musí také ověřit, jestli je v tokenu několik deklarací identity, aby bylo možné prokázat, že je platný. V závislosti na požadavcích na scénář se může deklarace identity ověřené aplikací lišit, ale aplikace musí v každém scénáři provádět některé běžné validace deklarací identity.
-- *Aktualizovat token* – aktualizace tokenů se používají k získání nových tokenů ID a přístupových tokenů v toku OAuth 2,0. Poskytují aplikaci dlouhodobě přístup k prostředkům jménem uživatelů bez nutnosti interakce s těmito uživateli. Aktualizační tokeny jsou neprůhledné pro vaši aplikaci. Jsou vydávány Azure AD B2C a lze je prozkoumat a interpretovat pouze pomocí Azure AD B2C. Jsou dlouhotrvající, ale aplikace by neměla být zapsána očekávaným způsobem, že obnovovací token bude po určitou dobu trvat. Platnost tokenů aktualizace lze kdykoli zrušit z nejrůznějších důvodů. Jediným způsobem, jak aplikace zjistit, jestli je obnovovací token platný, je pokus o uplatnění žádosti o token na Azure AD B2C. Při uplatnění aktualizačního tokenu pro nový token obdržíte v odpovědi na token nový token aktualizace. Uložte nový obnovovací token. Nahrazuje obnovovací token, který jste předtím použili v žádosti. Tato akce pomáhá zaručit, že vaše obnovovací tokeny zůstanou platné po dobu co možná.
+- *Aktualizovat token* – aktualizace tokenů se používají k získání nových tokenů ID a přístupových tokenů v toku OAuth 2,0. Poskytují aplikaci dlouhodobě přístup k prostředkům jménem uživatelů bez nutnosti interakce s těmito uživateli. Aktualizační tokeny jsou neprůhledné pro vaši aplikaci. Jsou vydávány Azure AD B2C a lze je prozkoumat a interpretovat pouze pomocí Azure AD B2C. Jsou dlouhotrvající, ale aplikace by neměla být zapsána očekávaným způsobem, že obnovovací token bude po určitou dobu trvat. Platnost tokenů aktualizace lze kdykoli zrušit z nejrůznějších důvodů. Jediným způsobem, jak aplikace zjistit, jestli je obnovovací token platný, je pokus o uplatnění žádosti o token na Azure AD B2C. Při uplatnění aktualizačního tokenu pro nový token obdržíte v odpovědi na token nový token aktualizace. Uložte nový obnovovací token. Nahrazuje obnovovací token, který jste předtím použili v žádosti. Tato akce pomáhá zaručit, že vaše obnovovací tokeny zůstanou platné po dobu co možná. Mějte na paměti, že jednostránkové aplikace používající tok autorizačního kódu s PKCE vždy mají dobu životnosti obnovovacího tokenu 24 hodin. [Přečtěte si další informace o dopadech aktualizace tokenů v prohlížeči na zabezpečení](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
 
 ## <a name="endpoints"></a>Koncové body
 
@@ -50,7 +50,7 @@ Deklarace identity v tokenech ID se nevrací v žádném konkrétním pořadí. 
 
 V následující tabulce jsou uvedeny deklarace identity, které můžete očekávat v tokenech ID a přístupových tokenech vydaných Azure AD B2C.
 
-| Name | Deklarovat | Příklad hodnoty | Description |
+| Název | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifikuje zamýšleného příjemce tokenu. Pro Azure AD B2C je cílovou skupinou ID aplikace. Vaše aplikace by měla tuto hodnotu ověřit a zamítnout token, pokud se neshoduje. Cílová skupina je synonymum s prostředkem. |
 | Vystavitel | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token. Identifikuje taky adresář, ve kterém se uživatel ověřil. Vaše aplikace by měla ověřit deklaraci vystavitele, aby se zajistilo, že token pochází z příslušného koncového bodu. |
@@ -65,7 +65,7 @@ V následující tabulce jsou uvedeny deklarace identity, které můžete oček�
 | Referenční dokumentace třídy kontextu ověřování | `acr` | Nelze použít | Používá se jenom se staršími zásadami. |
 | Zásada pro pravidlo důvěryhodnosti | `tfp` | `b2c_1_signupsignin1` | Název zásady, která byla použita k získání tokenu ID. |
 | Čas ověřování | `auth_time` | `1438535543` | Čas, kdy uživatel naposledy zadal pověření, reprezentovaný v epocha čase. Neexistuje žádná diskriminace mezi tímto ověřováním, jedná se o nové přihlášení, relaci jednotného přihlašování (SSO) nebo jiný typ přihlášení. `auth_time`Je poslední čas, kdy aplikace (nebo uživatel) iniciovala pokus o ověření u Azure AD B2C. Metoda použitá k ověření není odlišná. |
-| Rozsah | `scp` | `Read`| Oprávnění udělená prostředku pro přístupový token. Vícenásobná udělená oprávnění jsou oddělená mezerou. |
+| Obor | `scp` | `Read`| Oprávnění udělená prostředku pro přístupový token. Vícenásobná udělená oprávnění jsou oddělená mezerou. |
 | Autorizovaná strana | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | **ID aplikace** klientské aplikace, která iniciovala požadavek. |
 
 ## <a name="configuration"></a>Konfigurace

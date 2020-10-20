@@ -3,12 +3,12 @@ title: Monitorování aplikací Java v jakémkoli prostředí – Azure Monitor 
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí bez instrumentace aplikace Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 08e5b68ea5e5ec63531bb4f9c6b4483e9afbb9bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1182813c0b79d43c2c264482629ad97f23683a49
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370030"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215276"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Monitorování aplikací nezaložených na kódu Java Azure Monitor Application Insights – Public Preview
 
@@ -114,8 +114,8 @@ Podrobnosti najdete v článku [3,0 Public Preview: možnosti konfigurace](./jav
 ### <a name="logs"></a>Protokoly
 
 * Java. util. Logging
-* Log4j
-* SLF4J/Logback
+* Log4j (včetně vlastností MDC)
+* SLF4J/Logback (včetně vlastností MDC)
 
 ### <a name="metrics"></a>Metriky
 
@@ -134,13 +134,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Yes    |
-| **Vlastní metriky**  |  Yes       |                     |  Yes    |
-| **Závislosti**    |            |                     |  Yes    |
-| **Výjimky**      |            |  Yes                |  Yes    |
-| **Page Views**      |            |                     |  Yes    |
-| **Žádosti**        |            |                     |  Yes    |
-| **Trasování**          |            |  Yes                |  Yes    |
+| **Vlastní události**   |            |                     |  Ano    |
+| **Vlastní metriky**  |  Ano       |                     |  Ano    |
+| **Závislosti**    |            |                     |  Ano    |
+| **Výjimky**      |            |  Ano                |  Ano    |
+| **Page Views**      |            |                     |  Ano    |
+| **Žádosti**        |            |                     |  Ano    |
+| **Trasování**          |            |  Ano                |  Ano    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 

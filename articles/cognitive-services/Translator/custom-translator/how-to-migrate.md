@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537982"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220869"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace pracovního prostoru centra a projektů do vlastního překladatele
 
@@ -55,7 +55,7 @@ Migrace projektu:
 
 3. Klikněte na odkaz migrovat pro příslušný projekt.
 
-    ![Postup migrace z centra](media/how-to/how-to-migrate-from-hub.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko migrace pro vybraný projekt.](media/how-to/how-to-migrate-from-hub.png)
 
 4. Po kliknutí na odkaz migrace se zobrazí formulář, který vám umožní:
    * Zadejte pracovní prostor, na který se má přenést vlastní překladatel.
@@ -76,7 +76,7 @@ Postup migrace pracovního prostoru:
 
 3. Na stránce nastavení klikněte na migrovat data pracovního prostoru na vlastní překladatel.
 
-    ![Postup migrace z centra](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![Snímek obrazovky, který zvýrazní možnost migrace dat pracovního prostoru na vlastní překladatel.](media/how-to/how-to-migrate-workspace-from-hub.png)
 
 4. Na další stránce vyberte jednu z těchto dvou možností:
 
@@ -130,14 +130,14 @@ Pokud potřebujete podrobnější zprávu o migraci týkající se vašich proje
 
 Tato tabulka porovnává funkce mezi centrem Microsoft Translator a vlastním překladatelem.
 
-| Příznak | Rozbočovač | Custom Translator |
+| Funkce | Rozbočovač | Custom Translator |
 | ------- | :-: | :---------------: |
 | Stav funkce přizpůsobení    | Obecná dostupnost    | Obecná dostupnost |
 | Verze textového rozhraní API    | V2     | Technologie  |
-| Přizpůsobení SMT    | Yes    | No |
-| Přizpůsobení NMT    | No    | Yes |
-| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | No    | Yes |
-| Žádné trasování | Yes | Yes |
+| Přizpůsobení SMT    | Ano    | Ne |
+| Přizpůsobení NMT    | Ne    | Ano |
+| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | Ne    | Ano |
+| Žádné trasování | Ano | Ano |
 
 ## <a name="new-languages"></a>Nové jazyky
 

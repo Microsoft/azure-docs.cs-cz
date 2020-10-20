@@ -1,20 +1,18 @@
 ---
 title: Úprava kvót a omezení ve službě Azure Data Lake Analytics
 description: Naučte se upravovat a zvyšovat kvóty a omezení v účtech Azure Data Lake Analytics (ADLA).
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
-ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: 0025e35f516543c8fe703daa647ca29ed3fb87e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd032235f286b5db1930e9c9c6d730b5424aa4eb
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87127583"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220835"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Úprava kvót a omezení ve službě Azure Data Lake Analytics
 
@@ -27,8 +25,9 @@ Přečtěte si, jak upravit a zvýšit kvótu a omezení v účtech Azure Data L
 Pokud se pokusíte vytvořit šestý účet ADLA, zobrazí se chyba "dosáhli jste maximálního počtu povolených Data Lake Analytics účtů (5) v oblasti" název předplatného ".
 
 Pokud chcete tento limit přesáhnout, můžete vyzkoušet tyto možnosti:
-* Pokud je to vhodné, vyberte jinou oblast.
-* kontaktujte podporu Azure [otevřením lístku podpory](#increase-maximum-quota-limits) pro vyžádání zvýšení kvóty.
+
+- Pokud je to vhodné, vyberte jinou oblast.
+- kontaktujte podporu Azure [otevřením lístku podpory](#increase-maximum-quota-limits) pro vyžádání zvýšení kvóty.
 
 ## <a name="default-adla-account-limits"></a>Výchozí omezení účtu ADLA
 
@@ -36,8 +35,8 @@ Pokud chcete tento limit přesáhnout, můžete vyzkoušet tyto možnosti:
 
 Toto je maximální počet jednotek Austrálie, které mohou běžet souběžně ve vašem účtu. Pokud celkový počet provozního prostředí Austrálie napříč všemi úlohami překročí tento limit, novější úlohy se automaticky zařadí do fronty. Například:
 
-* Pokud máte pouze jednu úlohu spuštěnou s 32 jednotkou Austrálie, při odeslání druhé úlohy bude čekat ve frontě úloh až do dokončení první úlohy.
-* Pokud už máte spuštěné čtyři úlohy a každý z nich používá 8 jednotek Austrálie, odešlete pátý úkol, který potřebuje 8 jednotek analýzy, dokud nebude k dispozici 8 jednotek Austrálie.
+- Pokud máte pouze jednu úlohu spuštěnou s 32 jednotkou Austrálie, při odeslání druhé úlohy bude čekat ve frontě úloh až do dokončení první úlohy.
+- Pokud už máte spuštěné čtyři úlohy a každý z nich používá 8 jednotek Austrálie, odešlete pátý úkol, který potřebuje 8 jednotek analýzy, dokud nebude k dispozici 8 jednotek Austrálie.
 
     ![Stránka omezení Azure Data Lake Analytics a kvóta](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
@@ -62,18 +61,21 @@ Další informace o omezeních Azure najdete v [dokumentaci k omezením specific
 
 1. Otevřete žádost o podporu v Azure Portal.
 
-    ![Stránka Azure Data Lake Analyticsového portálu](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
+   ![Portál Azure Data Lake Analytics – pomoc a podpora](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-help-support.png)
 
-    ![Stránka Azure Data Lake Analyticsového portálu](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
+   ![Nová žádost o podporu pro Azure Data Lake Analytics portál](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request.png)
+
 2. Vyberte **kvótu**typu problému.
+
 3. Vyberte své **předplatné** (Ujistěte se, že se nejedná o zkušební předplatné).
+
 4. Vyberte typ kvóty **Data Lake Analytics**.
 
-    ![Stránka Azure Data Lake Analyticsového portálu](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
+   ![Typ kvóty žádosti o podporu Azure Data Lake Analytics](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-basics.png)
 
 5. Na stránce problém Vysvětlete požadovaný limit zvýšení s **podrobnostmi** o tom, proč tuto dodatečnou kapacitu potřebujete.
 
-    ![Stránka Azure Data Lake Analyticsového portálu](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
+   ![Podrobnosti žádosti o podporu Azure Data Lake Analytics](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-support-request-details.png)
 
 6. Ověřte kontaktní informace a vytvořte žádost o podporu.
 
@@ -81,6 +83,6 @@ Microsoft si vaši žádost posuzuje a snaží se co nejdříve přizpůsobit va
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Správa Azure Data Lake Analytics pomocí Azure PowerShellu](data-lake-analytics-manage-use-powershell.md)
-* [Monitorování úloh Azure Data Lake Analytics a odstraňování potíží pomocí webu Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+- [Správa Azure Data Lake Analytics pomocí Azure PowerShellu](data-lake-analytics-manage-use-powershell.md)
+- [Monitorování úloh Azure Data Lake Analytics a odstraňování potíží pomocí webu Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

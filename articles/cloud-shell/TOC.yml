@@ -20,6 +20,12 @@
       items:
         - name: Vytvoření plánu provádění
           href: example-terraform-bash.md
+- name: Koncepty
+  items:
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: PowerShell Cloud Shell pro uživatele Windows

@@ -1,20 +1,17 @@
 ---
-title: 'PowerShellový skript: vypsat pozvánky ke sdílení dat Azure odeslané příjemci | Microsoft Docs'
+title: 'PowerShellový skript: výpis požadavků na sdílení dat Azure odeslaných příjemci'
 description: Přečtěte si, jak tento skript PowerShellu získá pozvánky odeslané příjemci a podívejte se na příklad skriptu, který můžete použít.
-services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 3f0374ba5b98c145359d18143584e23fc543c552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f75894094fa2a15dbc9e2809ed6c3631df96c3f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985628"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221209"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>Použití PowerShellu k získání pozvánky ke sdílení dat
 
@@ -40,11 +37,11 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Načte a vypíše pozvánky pro sdílení odeslaných dat. |
+| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation) | Načte a vypíše pozvánky pro sdílení odeslaných dat. |
 |||
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další ukázkové skripty PowerShellu pro sdílení dat Azure najdete v [ukázkách Azure Data Share PowerShell](../../samples-powershell.md).

@@ -166,7 +166,7 @@
     - name: Osvědčené postupy
       items:
         - name: Osvědčené postupy pro zabezpečení sítě a cloudové služby
-          href: ../best-practices-network-security.md
+          href: /azure/cloud-adoption-framework/reference/networking-vdc
         - name: Optimalizace směrování
           href: expressroute-optimize-routing.md
         - name: Asymetrické směrování
@@ -192,9 +192,9 @@
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST
-      href: 'https://msdn.microsoft.com/library/azure/mt586720'
+      href: /rest/api/expressroute/
     - name: REST (Classic)
-      href: 'https://msdn.microsoft.com/library/azure/dn606310'
+      href: /previous-versions/azure/reference/dn606310(v=azure.100)
     - name: Šablona Resource Manageru
       displayName: 'ARM,resource manager template'
       href: /azure/templates/microsoft.network/expressroutecircuits

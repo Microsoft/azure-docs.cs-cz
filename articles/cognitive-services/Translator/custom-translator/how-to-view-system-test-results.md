@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0899132f308c7069395738140b35b138571483d
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509639"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220852"
 ---
 # <a name="view-system-test-results"></a>Zobrazení výsledků systémových testů
 
@@ -70,12 +70,12 @@ Požadavek na nasazení:
 
 2. V případě úspěšného školení modelu zobrazuje tlačítko "nasadit", pokud není nasazeno.
 
-    ![Nasadit model](media/how-to/how-to-deploy-model.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko nasadit pro nasazení modelu.](media/how-to/how-to-deploy-model.png)
 
 3.  Klikněte na nasadit.
 4.  Vyberte **nasazené** pro oblasti, kde chcete model nasadit, a klikněte na Uložit. Můžete vybrat možnost **nasazeno** pro více oblastí.
 
-    ![Nasadit model](media/how-to/how-to-deploy-model-regions.png)
+    ![Snímek obrazovky, který ukazuje, kde můžete model nasadit nebo zrušit jeho nasazení.](media/how-to/how-to-deploy-model-regions.png)
 
 5.  Stav modelu můžete zobrazit ve sloupci "stav".
 
@@ -90,7 +90,7 @@ Aktualizace nastavení nasazení:
 
 2. V případě úspěšného nasazení modelu se zobrazí tlačítko **aktualizovat** .
 
-    ![Nasadit model](media/how-to/how-to-update-undeploy-model.png)
+    ![Snímek obrazovky, který zvýrazní tlačítko aktualizace pro nastavení aktualizace nasazení.](media/how-to/how-to-update-undeploy-model.png)
 
 3.  Vyberte **Aktualizovat**.
 4.  Vyberte **nasazené** nebo **nenasazené pro oblasti** , kde chcete, aby byl model nasazený nebo nenasazený, a pak klikněte na **Uložit**.
