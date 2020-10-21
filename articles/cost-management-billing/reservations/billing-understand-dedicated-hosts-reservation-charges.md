@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: f9080d13c4358a03b3f13ffcf346af42e49c47c6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689452"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148375"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Jak se na službu Azure Dedicated Host uplatňuje sleva za rezervaci Azure
 
@@ -36,17 +36,16 @@ Pokud máte dotazy nebo potřebujete pomoc,  [vytvořte žádost o podporu](htt
 
 Další informace o rezervacích Azure najdete v následujících článcích:
 
-- [Co jsou rezervace v Azure?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Co jsou rezervace v Azure?](./save-compute-costs-reservations.md)
 
-- [Používání služby Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Používání služby Azure Dedicated Host](../../virtual-machines/dedicated-hosts.md)
 
 - [Ceny služby Dedicated Host](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [Správa rezervací v Azure](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [Správa rezervací v Azure](./manage-reserved-vm-instance.md)
 
-- [Vysvětlení využití rezervací u předplatného s průběžnými platbami](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [Vysvětlení využití rezervací u předplatného s průběžnými platbami](./understand-reserved-instance-usage.md)
 
-- [Vysvětlení využití rezervací u smlouvy Enterprise](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [Vysvětlení využití rezervací u smlouvy Enterprise](./understand-reserved-instance-usage-ea.md)
 
-- [Vysvětlení využití rezervací u předplatných CSP](https://docs.microsoft.com/partner-center/azure-reservations)
-
+- [Vysvětlení využití rezervací u předplatných CSP](/partner-center/azure-reservations)

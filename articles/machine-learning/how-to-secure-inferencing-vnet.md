@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e778538efe97266eb73f85e8548a9cd5ca1f53c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972505"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341307"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí Azure Machine Learning Inferencing s virtuálními sítěmi
 
@@ -119,11 +119,11 @@ Po dokončení procesu vytváření můžete spustit odvození nebo model bodov�
 
 Existují dva přístupy k izolaci provozu do a z clusteru AKS do virtuální sítě:
 
-* __Privátní cluster AKS__: Tento přístup používá privátní odkaz Azure k vytvoření privátního koncového bodu pro cluster AKS v rámci virtuální sítě.
-* __Interní nástroj pro vyrovnávání zatížení AKS__: Tento přístup nakonfiguruje Nástroj pro vyrovnávání zatížení clusteru, aby používal interní IP adresu ve virtuální síti.
+* __Privátní cluster AKS__: Tento přístup používá privátní propojení Azure k zabezpečení komunikace s clusterem pro operace nasazení a správy.
+* __Interní nástroj pro vyrovnávání zatížení AKS__: Tento přístup nakonfiguruje koncový bod pro vaše nasazení, aby AKS používal privátní IP adresu v rámci virtuální sítě.
 
 > [!WARNING]
-> Obě konfigurace jsou různými způsoby, jak dosáhnout stejného cíle (zabezpečení provozu do clusteru AKS v rámci virtuální sítě). **Použijte jeden nebo druhý, ale ne obojí**.
+> **Použijte buď privátní AKS, nebo interní nástroj pro vyrovnávání zatížení, ale ne obojí**.
 
 ### <a name="private-aks-cluster"></a>Privátní cluster AKS
 

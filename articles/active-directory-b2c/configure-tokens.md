@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 10f86d194c5c70f2de0ab6502893e228800b1bdf
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 67bc9d6b35d4841999721a00592a6bbe23bff10f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215463"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340219"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurace tokenů v Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ V tomto článku se dozvíte, jak nakonfigurovat [životnost a kompatibilitu tok
 
 Životnost tokenu můžete nakonfigurovat pro libovolný tok uživatele.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů (zásady)**.
@@ -54,6 +54,17 @@ V tomto článku se dozvíte, jak nakonfigurovat [životnost a kompatibilitu tok
     ![Nastavení vlastností kompatibility tokenu v Azure Portal](./media/configure-tokens/token-compatibility.png)
 
 5. Klikněte na **Uložit**.
+
+## <a name="provide-optional-claims-to-your-app"></a>Poskytněte do aplikace volitelné deklarace identity.
+
+Deklarace identity aplikace jsou hodnoty, které se vrátí do aplikace. Aktualizujte tok uživatele tak, aby obsahoval požadované deklarace identity.
+
+1. Vyberte **toky uživatelů (zásady)**.
+1. Otevřete uživatelský tok, který jste vytvořili dříve.
+1. Vyberte **Deklarace identit aplikace**.
+1. Vyberte deklarace identity a atributy, které chcete poslat zpátky do své aplikace.
+1. Klikněte na **Uložit**.
+
 
 ## <a name="next-steps"></a>Další kroky
 

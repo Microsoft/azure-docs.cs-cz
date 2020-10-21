@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: c8ab6f51daf18802b83508a3e1bbd5af3ee59799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50180984423b7c6d2921234a3502495016c4df5c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336862"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150116"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Plánování správy nákladů na Azure
 
@@ -24,7 +24,7 @@ Tento článek vám pomůže začít s plánováním správy nákladů na Azure.
 - Zjistěte odhadované náklady před přidáním služeb s využitím [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) a ceníku Azure, případně při přidávání služeb na webu Azure Portal.
 - Monitorujte náklady s využitím [rozpočtů](../costs/tutorial-acm-create-budgets.md), [upozornění](../costs/cost-mgt-alerts-monitor-usage-spending.md) a [analýzy nákladů](../costs/quick-acm-cost-analysis.md).
 - Projděte si poplatky na vaší faktuře a porovnejte je se [soubory s podrobnými informacemi o využití](../manage/download-azure-invoice-daily-usage-date.md).
-- Integrujte fakturační údaje a data o využití s vlastním systémem generování sestav s využitím rozhraní API pro [fakturaci](https://docs.microsoft.com/rest/api/billing/) a [spotřebu](https://docs.microsoft.com/rest/api/consumption/).
+- Integrujte fakturační údaje a data o využití s vlastním systémem generování sestav s využitím rozhraní API pro [fakturaci](/rest/api/billing/) a [spotřebu](/rest/api/consumption/).
 - Využijte další prostředky a nástroje pro zákazníky se smlouvou Enterprise (EA), zákazníky CSP (Cloud Solution Provider) a zákazníky s nabídkou Azure Sponsorship.
 - Využijte [některé z nejoblíbenějších služeb Azure zdarma po dobu 12 měsíců](../manage/create-free-services.md), které jsou k dispozici v rámci [bezplatného účtu Azure](https://azure.microsoft.com/free/). Spolu s níže uvedenými doporučeními si přečtěte, jak se [vyhnout platbám za bezplatný účet](../manage/avoid-charges-free-account.md).
 
@@ -125,7 +125,7 @@ Absolvujte výukový kurz [Optimalizace nákladů na základě doporučení](../
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrace s využitím rozhraní API pro fakturaci a spotřebu
 
-Pomocí rozhraní API pro [fakturaci](https://docs.microsoft.com/rest/api/billing/) a [spotřebu](https://docs.microsoft.com/rest/api/consumption/) Azure můžete fakturační údaje a data o nákladech získat programově. Využití, které je vám účtováno, získáte zkombinováním rozhraní RateCard API a Usage API. Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](../manage/usage-rate-card-overview.md).
+Pomocí rozhraní API pro [fakturaci](/rest/api/billing/) a [spotřebu](/rest/api/consumption/) Azure můžete fakturační údaje a data o nákladech získat programově. Využití, které je vám účtováno, získáte zkombinováním rozhraní RateCard API a Usage API. Další informace najdete v článku [Získání přehledu o spotřebě prostředků Microsoft Azure](../manage/usage-rate-card-overview.md).
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> Další prostředky a speciální případy
 

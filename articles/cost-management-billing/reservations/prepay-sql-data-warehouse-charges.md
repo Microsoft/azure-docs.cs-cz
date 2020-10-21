@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ca83760f09ea29ba0b21a0f7177dd3f3188c44cd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686135"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151516"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Úspora nákladů na poplatky za Azure Synapse Analytics s využitím rezervované kapacity
 
@@ -27,7 +27,7 @@ Když rezervovaná kapacita vyprší, instance služby Azure Synapse Analytics p
 
 Informace o cenách najdete v [nabídce rezervované kapacity služby Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-Rezervovanou kapacitu služby Azure Synapse Analytics si můžete koupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](monthly-payments-reservations.md). Pro nákup rezervované kapacity platí:
+Rezervovanou kapacitu služby Azure Synapse Analytics si můžete koupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](./prepare-buy-reservation.md). Pro nákup rezervované kapacity platí:
 
 - Musíte mít roli vlastníka alespoň pro jedno předplatné se smlouvou Enterprise nebo s průběžnými platbami.
 - U předplatných se smlouvou Enterprise musí být na portálu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Pokud je toto nastavení zakázané, musíte být správcem EA.

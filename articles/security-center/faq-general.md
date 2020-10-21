@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301444"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341681"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné otázky týkající se Azure Security Center
 
@@ -62,7 +62,7 @@ Informace o tom, jak nakonfigurovat zásady zabezpečení, najdete [v tématu Na
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když se identifikují potenciální slabá místa zabezpečení, vytvoří se doporučení. Doporučení vás provede procesem konfigurace potřebného ovládacího prvku. Příklady:
 
 * Zřizování ochrany proti malwaru, které vám pomůžou identifikovat a odebrat škodlivý software
-* [Skupiny zabezpečení sítě](../virtual-network/security-overview.md) a pravidla pro řízení provozu do virtuálních počítačů
+* [Skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md) a pravidla pro řízení provozu do virtuálních počítačů
 * Zřizování firewallu webových aplikací, které vám pomůžou chránit před útoky zaměřenými na vaše webové aplikace
 * Nasazení chybějících aktualizací systému
 * Adresování konfigurací operačního systému, které neodpovídají doporučeným standardním hodnotám

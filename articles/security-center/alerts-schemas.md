@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220665"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341936"
 ---
 # <a name="security-alerts-schemas"></a>Schémata výstrah zabezpečení
 
@@ -24,9 +24,9 @@ Pokud je ve vašem předplatném Azure Defender povolený, obdržíte výstrahy 
 
 Tyto výstrahy zabezpečení můžete zobrazit na stránkách **ochrany před internetovými útoky** v Azure Security Center nebo prostřednictvím externích nástrojů, jako jsou:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – cloudová nativní Siem Microsoftu Konektor Sentinel získá výstrahy od Azure Security Center a pošle je do [pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) pro Sentinel Azure.
-- Systémů Siem třetí strany – slouží k posílání dat do [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)pomocí nástrojů [průběžného exportu](continuous-export.md) Security Center. Potom Integrujte data centra událostí s SIEM třetí strany.
-- [REST API](https://docs.microsoft.com/rest/api/securitycenter/) – pokud používáte REST API k přístupu k výstrahám, přečtěte si [dokumentaci k rozhraní API pro online výstrahy](https://docs.microsoft.com/rest/api/securitycenter/alerts).
+- [Azure Sentinel](../sentinel/index.yml) – cloudová nativní Siem Microsoftu Konektor Sentinel získá výstrahy od Azure Security Center a pošle je do [pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md) pro Sentinel Azure.
+- Systémů Siem třetí strany – slouží k posílání dat do [Azure Event Hubs](../event-hubs/index.yml)pomocí nástrojů [průběžného exportu](continuous-export.md) Security Center. Potom Integrujte data centra událostí s SIEM třetí strany.
+- [REST API](/rest/api/securitycenter/) – pokud používáte REST API k přístupu k výstrahám, přečtěte si [dokumentaci k rozhraní API pro online výstrahy](/rest/api/securitycenter/alerts).
 
 Pokud používáte nějaké programové metody pro využívání výstrah, budete potřebovat správné schéma, abyste našli pole, která jsou pro vás důležitá. Pokud exportujete do centra událostí nebo se pokoušíte aktivovat automatizaci pracovního postupu pomocí obecných konektorů HTTP, použijte schémata k správné analýze objektů JSON.
 
@@ -60,7 +60,7 @@ Konektor Sentinel získá výstrahy od Azure Security Center a pošle je do prac
 
 K vytvoření případu nebo incidentu Sentinel pomocí výstrah Security Center budete potřebovat schéma pro tyto výstrahy zobrazené níže. 
 
-Další informace o Sentinel Azure najdete v [dokumentaci](https://docs.microsoft.com/azure/sentinel/).
+Další informace o Sentinel Azure najdete v [dokumentaci](../sentinel/index.yml).
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -172,7 +172,7 @@ Události výstrahy zabezpečení v protokolu aktivit můžete zobrazit tak, že
 
 Microsoft Graph je brána k datům a inteligentním Microsoft 365. Poskytuje jednotný model programovatelnosti, který můžete použít pro přístup k obrovskému množství dat v Microsoft 365, Windows 10 a Enterprise Mobility + Security. Využijte spoustu dat v Microsoft Graph k sestavování aplikací pro organizace a zákazníky, kteří komunikují s miliony uživatelů.
 
-Schéma a reprezentace JSON pro výstrahy zabezpečení odeslané do služby MS Graph jsou k dispozici v [dokumentaci Microsoft Graph](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true).
+Schéma a reprezentace JSON pro výstrahy zabezpečení odeslané do služby MS Graph jsou k dispozici v [dokumentaci Microsoft Graph](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0).
 
 ---
 
@@ -183,7 +183,7 @@ Tento článek popisuje schémata, která Azure Security Center nástroje ochran
 
 Další informace o způsobech přístupu k výstrahám zabezpečení z vnějších Security Center najdete na následujících stránkách:
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) – cloudová nativní Siem Microsoftu
-- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) – plně spravovaná služba pro přijímání dat v reálném čase od Microsoftu
+- [Azure Sentinel](../sentinel/index.yml) – cloudová nativní Siem Microsoftu
+- [Azure Event Hubs](../event-hubs/index.yml) – plně spravovaná služba pro přijímání dat v reálném čase od Microsoftu
 - [Funkce průběžného exportu](continuous-export.md) Security Center
-- [Log Analytics pracovní prostory](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) – Azure monitor ukládá data protokolu v pracovním prostoru Log Analytics, kontejneru, který obsahuje informace o datech a konfiguraci.
+- [Log Analytics pracovní prostory](../azure-monitor/learn/quick-create-workspace.md) – Azure monitor ukládá data protokolu v pracovním prostoru Log Analytics, kontejneru, který obsahuje informace o datech a konfiguraci.

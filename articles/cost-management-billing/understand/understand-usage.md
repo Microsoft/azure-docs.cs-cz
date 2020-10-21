@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681732"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149354"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení termínů v souboru s využitím a poplatky Azure
 
@@ -90,8 +90,8 @@ PublisherType | Vše | Typ vydavatele (hodnoty: **Azure**, **AWS**, **Marketplac
 Množství | Vše | Počet zakoupených nebo spotřebovaných jednotek.
 ReservationId | EA, MCA | Jedinečný identifikátor zakoupené instance rezervace.
 ReservationName | EA, MCA | Název zakoupené instance rezervace.
-ResourceGroup | Vše | Název [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ve které se prostředek nachází. Ne všechny poplatky pocházejí z prostředků nasazených ve skupinách prostředků. Poplatky, které nemají skupinu prostředků, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
-ResourceId<sup>1</sup> | Vše | Jedinečný identifikátor prostředku [Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources).
+ResourceGroup | Vše | Název [skupiny prostředků](../../azure-resource-manager/management/overview.md), ve které se prostředek nachází. Ne všechny poplatky pocházejí z prostředků nasazených ve skupinách prostředků. Poplatky, které nemají skupinu prostředků, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
+ResourceId<sup>1</sup> | Vše | Jedinečný identifikátor prostředku [Azure Resource Manageru](/rest/api/resources/resources).
 ResourceLocation | Vše | Umístění datacentra, ve kterém prostředek běží. Viz Location.
 ResourceName | EA, PAYG | Název prostředku. Ne všechny poplatky pocházejí z nasazených prostředků. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
 ResourceType | MCA | Typ instance prostředku. Ne všechny poplatky pocházejí z nasazených prostředků. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.

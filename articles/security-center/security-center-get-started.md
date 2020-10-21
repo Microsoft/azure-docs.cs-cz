@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 46bb3b1e450312a2c02fec3f98e2b3d7381b53d2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946011"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341325"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Rychlý Start: nastavení Azure Security Center
 
@@ -27,7 +27,7 @@ Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu pře
 
 V tomto článku provedete upgrade na Azure Defender za účelem zvýšení zabezpečení a nainstalujete na vaše počítače agenta Log Analytics, abyste mohli monitorovat ohrožení zabezpečení a hrozby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 Pokud chcete povolit Azure Defender v rámci předplatného, musíte mít přiřazenou roli Vlastník předplatného, přispěvatele předplatného nebo správce zabezpečení.
@@ -35,7 +35,7 @@ Pokud chcete povolit Azure Defender v rámci předplatného, musíte mít přiř
 
 ## <a name="enable-security-center-on-your-azure-subscription"></a>Povolení Security Center v předplatném Azure
 
-1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Přihlaste se k [portálu Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 
 1. V nabídce portálu vyberte **Security Center**. 
 
@@ -105,7 +105,7 @@ V tomto rychlém startu jste povolili Azure Defender a zřídili Log Analytics a
 Chcete optimalizovat a uložit své útraty do cloudu?
 
 > [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Zahájení analýzy nákladů pomocí Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

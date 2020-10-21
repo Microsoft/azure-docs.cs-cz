@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766832"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125333"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ Po dokončení kopírování dat můžete přejít k jejich ověření. Pokud js
 
 Pokud jste ke kopírování dat nepoužili nástroj Split Copy, budete svá data muset ověřit. Data ověříte následujícím postupem.
 
-1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce. Tato možnost je k dispozici jenom pro prostředí Windows. Uživatelé Linuxu musí ověřit, že zdrojová data, která se kopírují na disk, splňují příslušné [požadavky](https://docs.microsoft.com/azure/databox/data-box-disk-limits).
+1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce. Tato možnost je k dispozici jenom pro prostředí Windows. Uživatelé Linuxu musí ověřit, že zdrojová data, která se kopírují na disk, splňují příslušné [požadavky](./data-box-disk-limits.md).
     
     ![Výstup ověřovacího nástroje Data Box Disku](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -335,6 +335,6 @@ Při ověřování dat postupujte následovně.
 1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce.
 2. Pomocí možnosti 2 ověřte soubory a vygenerujte kontrolní součty. V závislosti na velikosti dat může tento krok nějakou dobu trvat. Pokud během ověřování a generování kontrolního součtu došlo k chybě, budete na to upozorněni a obdržíte odkaz na protokoly chyb.
 
-    Další informace o ověřování dat najdete v tématu věnovaném [ověřování dat](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Pokud při ověřování dojde k chybám, přečtěte si téma věnované [řešení potíží s chybami ověření](data-box-disk-troubleshoot.md).
+    Další informace o ověřování dat najdete v tématu věnovaném [ověřování dat](#validate-data). Pokud při ověřování dojde k chybám, přečtěte si téma věnované [řešení potíží s chybami ověření](data-box-disk-troubleshoot.md).
 
 ::: zone-end

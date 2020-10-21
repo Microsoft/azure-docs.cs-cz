@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: jaserano
-ms.openlocfilehash: adc3874ba211de270589d8ea36a04b9431e9e12a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 77ca8e8425326cec31fce345600bdd0174ab5f4e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684911"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131849"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Řešení potíží s platbami za Azure
 
@@ -102,4 +102,4 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dokumentace k fakturaci Azure](../../billing/index.md)
+- [Dokumentace k fakturaci Azure](../index.yml)

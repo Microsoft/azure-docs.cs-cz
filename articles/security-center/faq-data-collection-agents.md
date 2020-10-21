@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315183040515110a6a21afcd00e12d1b12313170
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441492"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341834"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Nejčastější dotazy týkající se shromažďování dat, agentů a pracovních prostorů
 
@@ -43,7 +43,7 @@ Další informace o cenách najdete v tématu [Security Center ceny](https://azu
 
 ## <a name="what-is-the-log-analytics-agent"></a>Co je agent Log Analytics?
 
-Pokud chcete monitorovat ohrožení zabezpečení a hrozby, Azure Security Center závisí na [agentu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) – to je stejný agent, kterého používá služba Azure monitor. 
+Pokud chcete monitorovat ohrožení zabezpečení a hrozby, Azure Security Center závisí na [agentu Log Analytics](../azure-monitor/platform/log-analytics-agent.md) – to je stejný agent, kterého používá služba Azure monitor. 
 
 Agent se někdy označuje jako Microsoft Monitoring Agent (nebo "MMA"). 
 
@@ -66,7 +66,7 @@ Virtuální počítače s Windows nebo Linux IaaS mají nárok v těchto přípa
 
 - Na virtuálním počítači není aktuálně nainstalované rozšíření agenta Log Analytics.
 - Virtuální počítač je ve spuštěném stavu.
-- Je nainstalovaný [Agent virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) se systémem Windows nebo Linux.
+- Je nainstalovaný [Agent virtuálního počítače Azure](../virtual-machines/extensions/agent-windows.md) se systémem Windows nebo Linux.
 - Virtuální počítač se nepoužívá jako zařízení, jako je třeba brána firewall webových aplikací nebo brána firewall nové generace.
 
 
@@ -88,7 +88,7 @@ Umístění výchozího pracovního prostoru závisí na vaší oblasti Azure:
 
 ## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Jaká data shromažďuje agent Log Analytics?
 
-Úplný seznam aplikací a služeb monitorovaných agentem najdete v tématu [co je monitorované pomocí Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services).
+Úplný seznam aplikací a služeb monitorovaných agentem najdete v tématu [co je monitorované pomocí Azure monitor?](../azure-monitor/monitor-reference.md#azure-services).
 
 > [!IMPORTANT]
 > Pamatujte na to, že u některých služeb, jako je například Azure Firewall, pokud jste povolili protokolování a vybrali prostředek konverzace, které se mají protokolovat (například nastavením protokolu na *verbose*), může se stát, že se v Log Analytics potřebuje úložiště pracovních prostorů významné dopady. 

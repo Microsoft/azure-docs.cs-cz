@@ -8,20 +8,20 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448396"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341885"
 ---
-# <a name="using-custom-security-policies"></a>Použití vlastních zásad zabezpečení
+# <a name="using-custom-security-policies"></a>Používání vlastních zásad zabezpečení
 
 Kvůli lepšímu zabezpečení systémů a prostředí Azure Security Center vygeneruje doporučení zabezpečení. Tato doporučení jsou založená na osvědčených postupech, které jsou součástí obecných výchozích zásad zabezpečení dodaných všem zákazníkům. Můžou také pocházet ze zkušeností Security Center v oboru a zákonných standardů.
 
 Pomocí této funkce můžete přidat *vlastní iniciativy.* Pak dostanete doporučení, pokud vaše prostředí nedodržuje zásady, které vytvoříte. Všechny vlastní iniciativy, které vytvoříte, se zobrazí společně s integrovanou iniciativou na řídicím panelu dodržování předpisů, jak je popsáno v kurzu [zlepšení dodržování předpisů](security-center-compliance-dashboard.md).
 
-Jak je popsáno v [dokumentaci k Azure Policy](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location), když zadáte umístění pro vlastní iniciativu, musí se jednat o skupinu pro správu nebo o předplatné. 
+Jak je popsáno v [dokumentaci k Azure Policy](../governance/policy/concepts/definition-structure.md#definition-location), když zadáte umístění pro vlastní iniciativu, musí se jednat o skupinu pro správu nebo o předplatné. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Přidání vlastní iniciativy do předplatného 
 
@@ -136,7 +136,7 @@ Níže je uveden příklad vlastní zásady, včetně vlastnosti metadata/securi
 }
   ```
 
-Další příklad použití vlastnosti securityCenter naleznete v [této části dokumentace k REST API](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples).
+Další příklad použití vlastnosti securityCenter naleznete v [této části dokumentace k REST API](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples).
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -146,4 +146,4 @@ V tomto článku jste zjistili, jak vytvořit vlastní zásady zabezpečení.
 Další související materiály najdete v následujících článcích: 
 
 - [Přehled zásad zabezpečení](tutorial-security-policy.md)
-- [Seznam předdefinovaných zásad zabezpečení](security-center-policy-definitions.md)
+- [Seznam předdefinovaných zásad zabezpečení](./policy-reference.md)

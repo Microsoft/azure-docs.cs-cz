@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: 2ca4affaeae7f19cf3c913b5dfcf89a04e5bc628
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 32c0779f4086574aeaf8d38ea675f80fbd2c1ec7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026358"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132223"
 ---
 # <a name="troubleshoot-mca-billing-issues-with-usage-file-pivot-tables"></a>Řešení potíží s fakturací u smlouvy MCA pomocí kontingenčních tabulek ze souborů s daty využití
 
@@ -27,13 +27,13 @@ Tento článek pomáhá řešit potíže s fakturací u smlouvy se zákazníkem 
 
 Na základě informací z vašich souborů s daty využití můžete získat lepší přehled o problémech s využitím a diagnostikovat je. Soubory s daty využití se generují ve formátu CSV. Vzhledem k tomu, že soubory CSV s daty využití můžou být poměrně velké, je práce s nimi jednodušší, když se zobrazí jako kontingenční tabulky v tabulkové aplikaci jako Excel. V příkladech v tomto článku se používá Excel, ale můžete použít i jakoukoli jinou tabulkovou aplikaci.
 
-Ke stahování souborů s údaji o využití mají přístup jenom vlastníci fakturačního profilu, přispěvatelé, čtenáři nebo správci faktur. Podrobnosti najdete v tématu [Stažení informací o využití pro smlouvu se zákazníkem Microsoftu](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-your-microsoft-customer-agreement). 
+Ke stahování souborů s údaji o využití mají přístup jenom vlastníci fakturačního profilu, přispěvatelé, čtenáři nebo správci faktur. Podrobnosti najdete v tématu [Stažení informací o využití pro smlouvu se zákazníkem Microsoftu](./download-azure-invoice-daily-usage-date.md#download-usage-for-your-microsoft-customer-agreement). 
 
 ## <a name="get-the-data-and-format-it"></a>Získání dat a jejich naformátování
 
 Vzhledem k tomu, že jsou soubory s daty využití Azure ve formátu CSV, je potřeba data nejdřív připravit na použití v Excelu. Pomocí následujících kroků naformátujte data jako tabulku.
 
-1. Stáhněte si soubor s údaji o využití podle pokynů v tématu [Stažení využití na webu Azure Portal](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-in-azure-portal).
+1. Stáhněte si soubor s údaji o využití podle pokynů v tématu [Stažení využití na webu Azure Portal](./download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal).
 1. Otevřete daný soubor v Excelu.
 1. Neformátovaná data se podobají následujícímu příkladu.  
     :::image type="content" source="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" alt-text="Příklad zobrazení neformátovaných dat" lightbox="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" :::

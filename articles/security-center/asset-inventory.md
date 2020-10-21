@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950733"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341919"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Prozkoumejte a spravujte svoje prostředky pomocí inventáře prostředků a nástrojů pro správu.
 
@@ -43,7 +43,7 @@ Možnosti správy prostředků pro tento nástroj jsou zásadní a stále se roz
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|Všichni uživatelé|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -68,22 +68,22 @@ Na stránce inventarizace najdete následující nástroje:
     ![Možnosti exportu inventáře](./media/asset-inventory/inventory-export-options.png)
 
     > [!TIP]
-    > Dokumentace ke službě KQL poskytuje databázi s ukázkovými daty společně s některými jednoduchými dotazy, aby se pro daný jazyk nezískal "pocit". [Další informace najdete v tomto kurzu pro KQL](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+    > Dokumentace ke službě KQL poskytuje databázi s ukázkovými daty společně s některými jednoduchými dotazy, aby se pro daný jazyk nezískal "pocit". [Další informace najdete v tomto kurzu pro KQL](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
 - **Možnosti správy prostředků** – inventarizace umožňuje provádět složité dotazy zjišťování. Po nalezení prostředků odpovídajících vašim dotazům poskytuje inventář klávesové zkratky pro operace, jako například:
 
     - Přiřadit značky k filtrovaným prostředkům – zaškrtněte políčka vedle prostředků, které chcete označit.
     - Připojte nové servery k Security Center – použijte tlačítko **Přidat jiné servery než Azure** na panelu nástrojů.
-    - Automatizace úloh pomocí Azure Logic Apps – pomocí tlačítka Spustit **aplikaci logiky** spusťte aplikaci logiky na jednom nebo několika prostředcích. Vaše aplikace logiky musí být připravené předem a musí přijmout příslušný typ triggeru (požadavek HTTP). [Přečtěte si další informace o Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+    - Automatizace úloh pomocí Azure Logic Apps – pomocí tlačítka Spustit **aplikaci logiky** spusťte aplikaci logiky na jednom nebo několika prostředcích. Vaše aplikace logiky musí být připravené předem a musí přijmout příslušný typ triggeru (požadavek HTTP). [Přečtěte si další informace o Logic Apps](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Jak funguje soupis prostředků?
 
-Inventář [prostředků využívá Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/), službu Azure, která poskytuje možnost Security Center dotazovat se na stav data zabezpečení v rámci několika předplatných.
+Inventář [prostředků využívá Azure Resource Graph (ARG)](../governance/resource-graph/index.yml), službu Azure, která poskytuje možnost Security Center dotazovat se na stav data zabezpečení v rámci několika předplatných.
 
 ARG je navržený tak, aby poskytoval efektivní průzkum prostředků s možností škálování ve velkém měřítku.
 
-Při použití [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)může inventář prostředků rychle získat podrobné přehledy pomocí křížového odkazu na data ASC pomocí dalších vlastností prostředku.
+Při použití [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)může inventář prostředků rychle získat podrobné přehledy pomocí křížového odkazu na data ASC pomocí dalších vlastností prostředku.
 
 
 ## <a name="how-to-use-asset-inventory"></a>Jak používat inventář assetů
@@ -156,5 +156,5 @@ Tento článek popisuje stránku inventáře prostředků Azure Security Center.
 
 Další informace o souvisejících nástrojích najdete na následujících stránkách:
 
-- [Azure Resource Graph (ARG)](https://docs.microsoft.com/azure/governance/resource-graph/)
-- [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml)
+- [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/)

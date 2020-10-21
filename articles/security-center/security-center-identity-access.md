@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946212"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341258"
 ---
 # <a name="monitor-identity-and-access"></a>Monitorování identity a přístupu
 
@@ -30,7 +30,7 @@ Když sledujete aktivity a nastavení konfigurace související s identitou, mů
 
 Azure Security Center má dva vyhrazené bezpečnostní prvky zabezpečení pro zajištění, že splňujete požadavky na identitu a zabezpečení vaší organizace: 
 
- - **Správa přístupu a oprávnění** – doporučujeme, abyste přijali [model přístupu s minimálními oprávněními](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a zajistili uživatelům udělení přístupu pouze k tomu, aby mohli provádět své úlohy. Tento ovládací prvek také obsahuje doporučení pro řízení přístupu k vašim prostředkům [pomocí implementace řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) .
+ - **Správa přístupu a oprávnění** – doporučujeme, abyste přijali [model přístupu s minimálními oprávněními](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a zajistili uživatelům udělení přístupu pouze k tomu, aby mohli provádět své úlohy. Tento ovládací prvek také obsahuje doporučení pro řízení přístupu k vašim prostředkům [pomocí implementace řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) .
  
  - **Povolení MFA** – s povoleným [ověřováním MFA](https://www.microsoft.com/security/business/identity/mfa) jsou vaše účty bezpečnější a uživatelé se můžou i nadále ověřovat prakticky u všech aplikací s jednotným přihlašováním.
 
@@ -84,7 +84,7 @@ Pokud chcete zjistit, které účty nemají povolený MFA, použijte následují
     > Účty se zobrazují jako ID objektů, nikoli názvy účtů, aby chránily soukromí držitelů účtů.
 
 > [!TIP]
-> Alternativně můžete použít vyhodnocení metod REST API Security Center [– získat](https://docs.microsoft.com/rest/api/securitycenter/assessments/get).
+> Alternativně můžete použít vyhodnocení metod REST API Security Center [– získat](/rest/api/securitycenter/assessments/get).
 
 
 ## <a name="next-steps"></a>Další kroky

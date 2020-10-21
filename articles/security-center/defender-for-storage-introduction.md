@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577811"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341970"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Seznámení se službou Azure Defender pro službu Storage
 
@@ -27,8 +27,8 @@ Tato vrstva ochrany umožňuje řešit hrozby, *aniž* byste museli být odborn�
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro úložiště** se fakturuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Typy chráněných úložišť:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Typy chráněných úložišť:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Soubory Azure](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 
@@ -66,6 +66,6 @@ V tomto článku jste se dozvěděli o Azure Defenderu pro službu Storage.
 Související materiály najdete v následujících článcích: 
 
 - Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijatá Security Center z jiného bezpečnostního produktu, můžete ji exportovat. Pokud chcete exportovat výstrahy do Azure Sentinel, všech SIEM třetích stran nebo jakýchkoli jiných externích nástrojů, postupujte podle pokynů v tématu [Export výstrah do Siem](continuous-export.md).
-- [Jak povolit rozšířený Defender pro úložiště](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Jak povolit rozšířený Defender pro úložiště](../storage/common/azure-defender-storage-configure.md)
 - [Seznam upozornění služby Azure Defender pro úložiště](alerts-reference.md#alerts-azurestorage)
 - [Možnosti logiky hrozeb Microsoftu](https://go.microsoft.com/fwlink/?linkid=2128684)

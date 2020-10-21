@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 6f8a7292ff21fbf287a4144abaf8e006513718e5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 96b6467d0d529f5839c33182057f3aa3c39cb6e7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017008"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132546"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
 
@@ -25,13 +25,13 @@ PAL umožňuje Microsoftu identifikovat a rozpoznávat partnery, kteří posiluj
 
 Před propojením vašeho ID partnera vám zákazník musí udělit přístup k prostředkům Azure pomocí jedné z následujících možností:
 
-- **Uživatel typu host**: Zákazník vás může přidat jako uživatele typu host a přiřadit nějaké role Azure. Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Uživatel typu host**: Zákazník vás může přidat jako uživatele typu host a přiřadit nějaké role Azure. Další informace najdete v tématu [Přidání uživatelů typu host z jiného adresáře](../../active-directory/external-identities/what-is-b2b.md).
 
 - **Účet v adresáři**: Zákazník vám může vytvořit uživatelský účet ve svém vlastním adresáři a přiřadit nějakou roli Azure.
 
 - **Instanční objekt**: Zákazník může přidat aplikaci nebo skript z vaší organizace do svého adresáře a přiřadit nějakou roli Azure. Identita aplikace nebo skriptu se označuje jako instanční objekt.
 
-- **Azure Lighthouse:** Zákazník může delegovat předplatné (nebo skupinu prostředků), takže v něm uživatelé mohou pracovat z vašeho tenanta. Další informace najdete v tématu [Správa delegovaných prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
+- **Azure Lighthouse:** Zákazník může delegovat předplatné (nebo skupinu prostředků), takže v něm uživatelé mohou pracovat z vašeho tenanta. Další informace najdete v tématu [Správa delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md).
 
 ## <a name="link-to-a-partner-id"></a>Propojení s ID partnera
 
@@ -55,7 +55,7 @@ Když máte přístup k prostředkům zákazníka, použijte Azure Portal, Power
 
 1. Nainstalujte modul PowerShellu [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/).
 
-2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [Přihlášení pomocí Azure PowerShellu](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [Přihlášení pomocí Azure PowerShellu](/powershell/azure/authenticate-azureps).
 
    ```azurepowershell-interactive
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -89,7 +89,7 @@ C:\> remove-AzManagementPartner -PartnerId 12345
     C:\ az extension add --name managementpartner
     ```
 
-2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [Přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+2. Přihlaste se k tenantovi zákazníka pomocí uživatelského účtu nebo instančního objektu. Další informace najdete v tématu [Přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
@@ -152,9 +152,9 @@ Sestavy výkonu cloudových produktů jsou pro partnery dostupné v partnerském
 
 Možné důvody nezobrazování zákazníka v sestavách:
 
-1. Propojený uživatelský účet nemá v žádném předplatném nebo prostředku Azure daného zákazníka [řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview).
+1. Propojený uživatelský účet nemá v žádném předplatném nebo prostředku Azure daného zákazníka [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
-2. Předplatné Azure, ve kterém má daný uživatel [řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview), se vůbec nevyužívá.
+2. Předplatné Azure, ve kterém má daný uživatel [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md), se vůbec nevyužívá.
 
 **Funguje propojení ID partnera s Azure Stackem?**
 

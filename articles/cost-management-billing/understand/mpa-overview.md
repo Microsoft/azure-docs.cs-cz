@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4dff56db9f1450ff7eb2a2b9ca6f4ca648e2ac38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447926"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150099"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Začínáme s fakturačním účtem pro smlouvu s partnerem Microsoftu
 
@@ -29,7 +29,7 @@ Následující diagram ukazuje vztah mezi fakturačním účtem, fakturačními 
 
 ![Diagram znázorňující hierarchii fakturace smlouvy s partnerem Microsoftu](./media/mpa-overview/mpa-hierarchy.svg)
 
-Fakturační účty, fakturační profily a zákazníky můžou spravovat uživatelé s rolí **Globální správce** a **Agent správy** v rámci organizace. Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](https://docs.microsoft.com/partner-center/permissions-overview).
+Fakturační účty, fakturační profily a zákazníky můžou spravovat uživatelé s rolí **Globální správce** a **Agent správy** v rámci organizace. Další informace najdete v tématu [Partnerské centrum – Přiřazování uživatelských rolí a oprávnění](/partner-center/permissions-overview).
 
 ## <a name="billing-profiles"></a>Fakturační profily
 
@@ -47,7 +47,7 @@ Na webu Azure Portal můžete zobrazit a spravovat zákazníky, kteří přijali
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Získání přehledu o nákladech povolením zásad
 
-Pomocí zásad můžete řídit, jestli uživatelé v organizacích zákazníků můžou zobrazit a analyzovat náklady na využití Azure podle tarifů průběžných plateb. Ve výchozím nastavení jsou zásady vypnuté a uživatelé nemůžou zobrazit náklady. Po jejich povolení můžou uživatelé s odpovídající úrovní přístupu [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) k předplatnému zobrazit a analyzovat náklady na předplatné.
+Pomocí zásad můžete řídit, jestli uživatelé v organizacích zákazníků můžou zobrazit a analyzovat náklady na využití Azure podle tarifů průběžných plateb. Ve výchozím nastavení jsou zásady vypnuté a uživatelé nemůžou zobrazit náklady. Po jejich povolení můžou uživatelé s odpovídající úrovní přístupu [Azure RBAC](../../role-based-access-control/overview.md) k předplatnému zobrazit a analyzovat náklady na předplatné.
 
 Postup zapnutí zásad:
 
@@ -69,7 +69,7 @@ Postup zapnutí zásad:
 
 ## <a name="resellers"></a>Prodejci
 
-Nepřímí poskytovatelé v [dvouúrovňovém modelu](https://docs.microsoft.com/partner-center) CSP můžou při vytváření předplatných pro zákazníky na webu Azure Portal vybrat prodejce. Po vytvoření můžou zobrazit seznam předplatných vyfiltrovaný podle prodejce a v analýze nákladů Azure analyzovat náklady na zákazníka podle prodejců.
+Nepřímí poskytovatelé v [dvouúrovňovém modelu](/partner-center) CSP můžou při vytváření předplatných pro zákazníky na webu Azure Portal vybrat prodejce. Po vytvoření můžou zobrazit seznam předplatných vyfiltrovaný podle prodejce a v analýze nákladů Azure analyzovat náklady na zákazníka podle prodejců.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Kontrola přístupu ke smlouvě s partnerem Microsoftu
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
@@ -83,5 +83,5 @@ Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#bl
 Informace o fakturačním účtu najdete v následujících článcích:
 
 - [Vytvoření dalšího předplatného Azure pro smlouvu s partnerem Microsoftu](../manage/create-subscription.md)
-- Integrace fakturačních údajů s vlastním systémem generování sestav s využitím [rozhraní API pro fakturaci Azure](https://docs.microsoft.com/rest/api/billing/)
-- [Úvodní příručka ke službě Azure Cost Management pro partnery](https://go.microsoft.com/fwlink/?linkid=2106482)
+- Integrace fakturačních údajů s vlastním systémem generování sestav s využitím [rozhraní API pro fakturaci Azure](/rest/api/billing/)
+- [Úvodní příručka ke službě Azure Cost Management pro partnery](../costs/get-started-partners.md)

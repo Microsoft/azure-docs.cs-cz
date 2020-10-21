@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 617351d5d1bdf9b6528803552e2d34766e9ab217
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371945"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132648"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Začínáme s portálem Azure Enterprise
 
@@ -561,7 +561,7 @@ V rámci registrace Azure EA můžete vytvořit libovolný počet oddělení. Ab
 
 Po vytvoření oddělení a předplatných uvidíte v sestavě využití data. Tyto informace vám pomohou sledovat využití a spravovat náklady a útratu na úrovni oddělení.
 
-K datům využití se můžete dostat také v rozhraní API pro generování sestav. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+K datům využití se můžete dostat také v rozhraní API pro generování sestav. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](./ea-portal-rest-apis.md).
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Mohu nastavit kvótu útraty a dostávat upozornění, když se budu blížit limitu?
 
@@ -573,7 +573,7 @@ Pokud chcete definovat kvótu útraty, vyberte oddělení a potom ikonu úprav. 
 
 Informace o používání _skupin prostředků_ a _značek_ se sledují na úrovni služby a jsou k dispozici v souboru s podrobnými informacemi o využití (CSV), který si můžete stáhnout. Na portálu Azure Enterprise přejděte na [stažení sestavy využití](https://ea.azure.com/report/downloadusage).
 
-K informacím o využití se dostanete také přes rozhraní API. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+K informacím o využití se dostanete také přes rozhraní API. Podrobné informace a ukázkový kód najdete v tématu [Rozhraní Azure Enterprise REST API](./ea-portal-rest-apis.md).
 
 > [!NOTE]
 > Značky můžete používat pouze u prostředků, které podporují operace Azure Resource Manageru. Pokud jste vytvořili virtuální počítač, virtuální síť nebo úložiště prostřednictvím modelu nasazení Classic (například přes portál Classic), nemůžete pro tyto prostředky použít značky. Pokud chcete zajistit podporu označování, musíte tyto prostředky nasadit znovu prostřednictvím Resource Manageru. Všechny ostatní prostředky označování podporují.

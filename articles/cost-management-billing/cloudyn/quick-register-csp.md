@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 92d4c84cc73ea05f58912549674f76513e3faeb1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1cbdeb09a1f3182aef9dcc6445c5b5e22e2448ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985507"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132342"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrace do partnerského programu CSP a zobrazení informací o nákladech
 
@@ -29,7 +29,7 @@ Jako partner CSP se můžete zaregistrovat u Cloudyn. Registrací získáte př�
 > Registraci do Cloudyn můžou dokončit pouze přímí partneři CSP a nepřímí poskytovatelé CSP.
 >
 > Pro ověřování a přístup k datům je nezbytná konfigurace rozhraní API partnerského centra. Pro zřízení přístupu k rozhraní API je potřeba účet globálního správce partnerského centra.
-> Další informace najdete v tématu [Připojení k rozhraní API partnerského centra](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx).
+> Další informace najdete v tématu [Připojení k rozhraní API partnerského centra](/partner-center/develop/set-up-api-access-in-partner-center).
 >
 > Nepřímým prodejcům CSP je možné Cloudyn zpřístupnit poté, co se jejich nepřímý poskytovatel CSP zaregistruje u Cloudyn. Nepřímí prodejci CSP pak můžou poskytovat přístup do Cloudyn předplatným a zákazníkům Azure.
 >

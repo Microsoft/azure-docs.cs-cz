@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 44f7ce657ea9341779e15f6e4817e8fae1515e47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d6d0d0a4c4b3328fa50777b5106bac202c9972ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685965"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151507"
 ---
 # <a name="save-on-sap-hana-large-instances-with-an-azure-reservation"></a>Úspory pro Velké instance SAP HANA s využitím rezervace Azure
 
@@ -32,15 +32,15 @@ Před zahájením nákupu rezervované kapacity už musí být zřízená sklado
 - Pro rezervovanou kapacitu HANA nejde využít sdílený rozsah rezervace. Rozsah rezervace nelze rozdělit, sloučit ani aktualizovat.
 - Pomocí volání rozhraní API pro rezervovanou kapacitu je možné vždycky koupit jednu službu HLI. Pokud jich chcete koupit větší množství, použijte další volání rozhraní API.
 
-Rezervovanou kapacitu můžete koupit na webu Azure Portal nebo pomocí [REST API](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase).
+Rezervovanou kapacitu můžete koupit na webu Azure Portal nebo pomocí [REST API](/rest/api/reserved-vm-instances/reservationorder/purchase).
 
 ## <a name="buy-a-hana-large-instance-reservation"></a>Nákup rezervace Velké instance HANA
 
-K nákupu rezervace HLI s využitím [rozhraní REST API pro objednávku rezervací](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/purchase) použijte následující informace.
+K nákupu rezervace HLI s využitím [rozhraní REST API pro objednávku rezervací](/rest/api/reserved-vm-instances/reservationorder/purchase) použijte následující informace.
 
 ### <a name="get-the-reservation-order-and-price"></a>Získání objednávky a ceny rezervace
 
-Nejdřív pomocí rozhraní API pro [výpočet ceny](https://docs.microsoft.com/rest/api/reserved-vm-instances/reservationorder/calculate) získejte cenu a objednávku rezervace pro skladovou položku Velká instance HANA.
+Nejdřív pomocí rozhraní API pro [výpočet ceny](/rest/api/reserved-vm-instances/reservationorder/calculate) získejte cenu a objednávku rezervace pro skladovou položku Velká instance HANA.
 
 Následující příklad používá nástroj [armclient](https://github.com/projectkudu/ARMClient) k volání REST API s využitím PowerShellu. Objednávka rezervace a požadavek rozhraní API pro výpočet ceny by měly vypadat přibližně takto:
 
@@ -220,7 +220,7 @@ Následující informace popisují význam jednotlivých polí rezervace.
 
   **SKU:** Název skladové položky HLI. Vypadá takto: `SAP_HANA_On_Azure_<SKUname>`.
 
-  **Umístění:** Dostupné oblasti HLI. Dostupné oblasti najdete v tématu věnovaném [skladovým položkám pro SAP HANA v Azure (Velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus). K získání formátu řetězce umístění použijte [volání rozhraní API pro získání umístění](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations#locationlistresult).
+  **Umístění:** Dostupné oblasti HLI. Dostupné oblasti najdete v tématu věnovaném [skladovým položkám pro SAP HANA v Azure (Velké instance)](../../virtual-machines/workloads/sap/hana-available-skus.md). K získání formátu řetězce umístění použijte [volání rozhraní API pro získání umístění](/rest/api/resources/subscriptions/listlocations#locationlistresult).
 
   **Typ rezervovaného prostředku:** `SapHana`
 
@@ -248,5 +248,5 @@ location. You can also go to https://aka.ms/corequotaincrease to learn about quo
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v tématu věnovaném [volání rozhraní Azure REST API s využitím nástrojů Postman a cURL](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman).
-- Seznam dostupných skladových položek a oblastí najdete v tématu věnovaném [skladovým položkám pro SAP HANA v Azure (Velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus).
+- Další informace najdete v tématu věnovaném [volání rozhraní Azure REST API s využitím nástrojů Postman a cURL](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman).
+- Seznam dostupných skladových položek a oblastí najdete v tématu věnovaném [skladovým položkám pro SAP HANA v Azure (Velké instance)](../../virtual-machines/workloads/sap/hana-available-skus.md).

@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326602"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131067"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 
 Při pokusu o registraci nového účtu na portálu Microsoft Azure nebo v Centru účtů Azure může dojít k problému. Tato stručná příručka vás provede procesem registrace a probere běžné potíže pro jednotlivé kroky.
 
 > [!NOTE]
-> Pokud už máte účet a hledáte pokyny pro řešení potíží s přihlašováním, přečtěte si téma [Řešení potíží s přihlášením k předplatnému Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
+> Pokud už máte účet a hledáte pokyny pro řešení potíží s přihlašováním, přečtěte si téma [Řešení potíží s přihlášením k předplatnému Azure](./troubleshoot-sign-in-issue.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -76,8 +76,8 @@ Pokud chcete tento problém vyřešit, překontrolujte, jestli jsou pravdivá n�
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>Zobrazí se zpráva typu Váš aktuální typ účtu se nepodporuje.
 
-K tomuto problému může dojít, pokud je účet registrován v [nespravovaném adresáři Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup) a není v adresáři Azure AD vaší organizace.
-Pokud chcete tento problém vyřešit, zaregistrujte si účet Azure pomocí jiného účtu nebo převezměte nespravovaný adresář služby AD. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover).
+K tomuto problému může dojít, pokud je účet registrován v [nespravovaném adresáři Azure AD](../../active-directory/users-groups-roles/directory-self-service-signup.md) a není v adresáři Azure AD vaší organizace.
+Pokud chcete tento problém vyřešit, zaregistrujte si účet Azure pomocí jiného účtu nebo převezměte nespravovaný adresář služby AD. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../../active-directory/users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="identity-verification-by-phone"></a>Telefonické ověření identity
 
@@ -107,7 +107,7 @@ Tady jsou některé další tipy:
 
 #### <a name="credit-card-declined-or-not-accepted"></a>Platební karta byla odmítnuta nebo nebyla přijata
 
-Při platbě za předplatná Azure se nepřijímají virtuální nebo předplacené kreditní nebo debetní karty. Další informace o tom, co dalšího může být příčinou odmítnutí vaší karty, najdete v tématu [Řešení potíží s odmítnutou kartou při registraci do Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card).
+Při platbě za předplatná Azure se nepřijímají virtuální nebo předplacené kreditní nebo debetní karty. Další informace o tom, co dalšího může být příčinou odmítnutí vaší karty, najdete v tématu [Řešení potíží s odmítnutou kartou při registraci do Azure](./troubleshoot-declined-card.md).
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Formulář platební karty nepodporuje vaši fakturační adresu
 
@@ -144,7 +144,7 @@ Dokončete smlouvu.
 Zkontrolujte, že k přihlášení používáte správné přihlašovací údaje. Potom zkontrolujte program výhod a ujistěte se, že jste pro něj způsobilí.
 - MSDN
   - Stav způsobilosti si můžete ověřit na [stránce účtu MSDN](https://msdn.microsoft.com/subscriptions/manage/default.aspx).
-  - Pokud si stav nemůžete ověřit, kontaktujte [centra služeb zákazníkům pro předplatná MSDN](https://msdn.microsoft.com/library/aa493452.aspx).
+  - Pokud si stav nemůžete ověřit, kontaktujte [centra služeb zákazníkům pro předplatná MSDN](/previous-versions/mappoint/aa493452(v=msdn.10)).
 - Microsoft for Startups
   - Přihlaste se na [portál Microsoft for Startups](https://startups.microsoft.com/#start-two) a ověřte si stav způsobilosti pro Microsoft for Startups.
   - Pokud si stav nemůžete ověřit, můžete získat pomoc ve [fórech programu Microsoft for Startups](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups).
@@ -161,10 +161,10 @@ Pokud chcete vytvořit předplatné Azure v rámci licenčního programu Open, m
 
 Další články týkající se řešení potíží s fakturací a předplatnými Azure
 
-- [Odmítnutá karta](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Problémy s přihlašováním k předplatnému](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [Nenalezena žádná předplatná](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Zákaz zobrazení firemních nákladů](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [Odmítnutá karta](./troubleshoot-declined-card.md)
+- [Problémy s přihlašováním k předplatnému](./troubleshoot-sign-in-issue.md)
+- [Nenalezena žádná předplatná](./no-subscriptions-found.md)
+- [Zákaz zobrazení firemních nákladů](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>Kontaktujte nás, abychom vám pomohli
 
@@ -172,4 +172,4 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="find-out-more-about-azure-cost-management"></a>Další informace o službě Azure Cost Management
 
-- [Dokumentace ke správě nákladů a fakturaci Azure](https://docs.microsoft.com/azure/cost-management-billing)
+- [Dokumentace ke správě nákladů a fakturaci Azure](../index.yml)

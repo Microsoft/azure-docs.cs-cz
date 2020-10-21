@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c277da54e56fcd0ce68444d499b17e84f706ad03
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442492"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132580"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Rozhraní Azure Enterprise REST API
 
@@ -25,15 +25,15 @@ Zákazníci Microsoft Enterprise Azure mohou prostřednictvím rozhraní REST AP
 
 ### <a name="available-apis"></a>Dostupná rozhraní API
 
-**Zůstatek a souhrn:** Toto [rozhraní API](../../billing/billing-enterprise-api-balance-summary.md) poskytuje měsíční přehled informací o zůstatcích, nových nákupech, poplatcích ve službě Azure Marketplace, úpravách a poplatcích za nadlimitní využití. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Zůstatek a souhrn](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary).
+**Zůstatek a souhrn:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) poskytuje měsíční přehled informací o zůstatcích, nových nákupech, poplatcích ve službě Azure Marketplace, úpravách a poplatcích za nadlimitní využití. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Zůstatek a souhrn](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary).
 
-**Podrobnosti o využití:** Toto [rozhraní API](../../billing/billing-enterprise-api-usage-detail.md) poskytuje denní rozpis spotřebovaných prostředků a odhadované poplatky podle registrace. Výsledek obsahuje také informace o instancích, měřičích a odděleních. Na rozhraní API můžete zadávat dotazy podle fakturačního období nebo podle konkrétního počátečního a koncového data. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Podrobnosti o využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
+**Podrobnosti o využití:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) poskytuje denní rozpis spotřebovaných prostředků a odhadované poplatky podle registrace. Výsledek obsahuje také informace o instancích, měřičích a odděleních. Na rozhraní API můžete zadávat dotazy podle fakturačního období nebo podle konkrétního počátečního a koncového data. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Podrobnosti o využití](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-**Poplatek obchodu Marketplace Store:** Toto [rozhraní API](../../billing/billing-enterprise-api-marketplace-storecharge.md) vrací poplatky vzniklé v obchodě na základě využití, v rozpisu po dnech, a to pro zadané fakturační období nebo konkrétní počáteční a koncové datum. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Poplatek obchodu Marketplace Store](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
+**Poplatek obchodu Marketplace Store:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) vrací poplatky vzniklé v obchodě na základě využití, v rozpisu po dnech, a to pro zadané fakturační období nebo konkrétní počáteční a koncové datum. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Poplatek obchodu Marketplace Store](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
 
 **Ceník:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) poskytuje platnou sazbu každého měřiče pro danou registraci a fakturační období. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Ceník](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
 
-**Fakturační období:** Toto [rozhraní API](../../billing/billing-enterprise-api-billing-periods.md) vrací seznam fakturačních období, která obsahují data o spotřebě u dané registrace, a to v obráceném chronologickém pořadí. Každé období obsahuje vlastnost ukazující na trasu rozhraní API pro čtyři sady dat: BalanceSummary, UsageDetails, MarketplaceCharges a PriceSheet. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
+**Fakturační období:** Toto [rozhraní API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) vrací seznam fakturačních období, která obsahují data o spotřebě u dané registrace, a to v obráceném chronologickém pořadí. Každé období obsahuje vlastnost ukazující na trasu rozhraní API pro čtyři sady dat: BalanceSummary, UsageDetails, MarketplaceCharges a PriceSheet. Další informace najdete v tématu [Rozhraní API pro vytváření sestav pro podnikové zákazníky – Fakturační období](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
 ### <a name="enable-api-data-access"></a>Povolení přístupu k datům rozhraní API
 

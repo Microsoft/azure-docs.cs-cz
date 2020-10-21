@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5340d6124ae4fdc669a30458b9e58cf4c86d6746
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684656"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150077"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení informací na faktuře za smlouvu Azure Enterprise
 
@@ -436,7 +436,7 @@ V případě problémů s Power BI zaprotokolujte lístek pomocí [týmu podpory
 
 ### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Proč se značky prostředků nezobrazují u sestav?
 
-Značky prostředků se spravují na webu Azure Portal. Obraťte se na tým předplatného Azure na webu [Azure Portal](https://portal.azure.com). Postupujte podle kroků v článku [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Značky prostředků se spravují na webu Azure Portal. Obraťte se na tým předplatného Azure na webu [Azure Portal](https://portal.azure.com). Postupujte podle kroků v článku [Jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="why-does-my-resource-rate-change-every-day"></a>Proč se mi každý den mění sazba za prostředek?
 
