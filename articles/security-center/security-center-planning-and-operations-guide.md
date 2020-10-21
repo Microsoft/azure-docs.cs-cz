@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713797"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341239"
 ---
 # <a name="planning-and-operations-guide"></a>Průvodce plánováním a provozem
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -40,7 +40,7 @@ V závislosti na velikosti a struktuře vaší organizace můžou službu Securi
 
 ![Role](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Například:
+Security Center umožňuje těmto osobám tyto různé povinnosti plnit. Příklad:
 
 **Jeff (vlastník úloh)**
 
@@ -135,7 +135,7 @@ Azure Security Center používá agenta Log Analytics – to je stejný agent, k
 
 ### <a name="agent"></a>Agent
 
-Pokud je v zásadách zabezpečení zapnuté Automatické zřizování, agent Log Analytics (pro [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) nebo [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) je nainstalovaný na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Pokud je na VIRTUÁLNÍm počítači nebo počítači již nainstalován agent Log Analytics, Azure Security Center bude využívat aktuálně nainstalovaného agenta. Proces agenta je navržený tak, aby neinvazivní a měl velmi minimální dopad na výkon virtuálního počítače.
+Pokud je v zásadách zabezpečení zapnuté Automatické zřizování, agent Log Analytics (pro [Windows](../azure-monitor/platform/agent-windows.md) nebo [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)) je nainstalovaný na všech podporovaných virtuálních počítačích Azure a všech nově vytvořených. Pokud je na VIRTUÁLNÍm počítači nebo počítači již nainstalován agent Log Analytics, Azure Security Center bude využívat aktuálně nainstalovaného agenta. Proces agenta je navržený tak, aby neinvazivní a měl velmi minimální dopad na výkon virtuálního počítače.
 
 Agent Log Analytics pro Windows vyžaduje použití portu TCP 443. Další podrobnosti najdete v [článku Řešení problémů](security-center-troubleshooting-guide.md).
 
@@ -217,7 +217,7 @@ Následující příklad ukazuje probíhající podezřelé aktivity protokolu R
 
 ![Podezřelá aktivita](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
-Tato stránka obsahuje podrobné informace o čase útoku, zdrojovém názvu hostitele a cílovém virtuálním počítači a nabízí také doporučené kroky. V některých případech mohou být zdrojové informace o útoku prázdné. Další informace o tomto typu chování najdete v článku [Chybějící informace o zdroji ve výstrahách služby Azure Security Center](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/).
+Tato stránka obsahuje podrobné informace o čase útoku, zdrojovém názvu hostitele a cílovém virtuálním počítači a nabízí také doporučené kroky. V některých případech mohou být zdrojové informace o útoku prázdné. Další informace o tomto typu chování najdete v článku [Chybějící informace o zdroji ve výstrahách služby Azure Security Center](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts).
 
 Po identifikaci ohroženého systému můžete spustit [automatizaci pracovního postupu](workflow-automation.md) , která byla dříve vytvořena. Jedná se o kolekci procedur, které mohou být provedeny z Security Center po spuštění výstrahy.
 
@@ -233,6 +233,6 @@ V tomto dokumentu jste zjistili, jak naplánovat přechod na službu Security Ce
 
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
+* [Sledování partnerských řešení pomocí Azure Security Center](./security-center-partner-integration.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Nejčastější](faq-general.md) dotazy k Azure Security Center – Přečtěte si nejčastější dotazy týkající se používání služby.
-* [Blog o zabezpečení Azure](https://docs.microsoft.com/archive/blogs/azuresecurity/) – Přečtěte si blogové příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](/archive/blogs/azuresecurity/) – Přečtěte si blogové příspěvky o zabezpečení Azure a dodržování předpisů.

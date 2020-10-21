@@ -9,18 +9,18 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527135"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132801"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
 Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. Pomůžou vám informovat ostatní o jejich výdajích, aby mohli aktivně spravovat náklady, a umožní vám sledovat, jak se výdaje vyvíjejí v průběhu času. Při překročení vámi vytvořených prahových hodnot rozpočtu se aktivují pouze oznámení. Žádný z vašich prostředků není ovlivněný a vaše spotřeba není zastavena. Rozpočty můžete použít k porovnání a sledování výdajů při analýze nákladů.
 
-Data o nákladech a využití jsou obvykle k dispozici během 8 až 24 hodin a rozpočty se na základě těchto nákladů vyhodnocují vždy po 12 až 14 hodinách. Nezapomeňte se seznámit se specifiky [aktualizací údajů o využití a nákladech](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention). Po dosažení prahové hodnoty rozpočtu se obvykle rozesílají e-mailová oznámení během jedné hodiny od vyhodnocení.
+Data o nákladech a využití jsou obvykle k dispozici během 8 až 24 hodin a rozpočty se na základě těchto nákladů vyhodnocují vždy po 12 až 14 hodinách. Nezapomeňte se seznámit se specifiky [aktualizací údajů o využití a nákladech](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). Po dosažení prahové hodnoty rozpočtu se obvykle rozesílají e-mailová oznámení během jedné hodiny od vyhodnocení.
 
 Po výběru budoucího data vypršení platnosti se rozpočty automaticky obnoví na konci období (měsíčně, čtvrtletně nebo ročně) pro stejnou částku rozpočtu. Vzhledem k tomu, že dojde k obnovení se stejnou částkou rozpočtu, musíte vytvořit samostatné rozpočty, pokud se rozpočtované částky v budoucích obdobích liší.
 
@@ -72,7 +72,7 @@ Pro rozpočty se podporují následující oprávnění nebo obory Azure pro př
 - Přispěvatel a přispěvatel služby Cost Management – Může vytvářet, upravovat a odstraňovat vlastní rozpočty. Může měnit částky rozpočtu pro rozpočty, které vytvářejí jiní uživatelé.
 - Čtenář a čtenář služby Cost Management – Může zobrazovat rozpočty, ke kterým má oprávnění.
 
-Další informace o přiřazování oprávnění k datům služby Cost Management najdete v tématu [Přiřazení přístupu k datům služby Cost Management](../../cost-management/assign-access-acm-data.md).
+Další informace o přiřazování oprávnění k datům služby Cost Management najdete v tématu [Přiřazení přístupu k datům služby Cost Management](./assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -104,7 +104,7 @@ Na základě dosud zvolených polí v rozpočtu se zobrazí graf, který vám po
 
 Po konfiguraci částky rozpočtu vyberte **Další** a nakonfigurujte upozornění rozpočtu. Rozpočty vyžadují alespoň jednu prahovou hodnotu pro náklady (% rozpočtu) a odpovídající e-mailovou adresu. Do jednoho rozpočtu můžete volitelně zahrnout až pět prahových hodnot a pět e-mailových adres. Po dosažení prahové hodnoty rozpočtu se obvykle rozesílají e-mailová oznámení během jedné hodiny od vyhodnocení.
 
-Pokud chcete dostávat e-maily, přidejte adresu azure-noreply@microsoft.com do seznamu schválených odesílatelů, aby e-maily nechodily do složky nevyžádané pošty. Další informace o oznámeních naleznete v tématu [Použití upozornění na náklady](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
+Pokud chcete dostávat e-maily, přidejte adresu azure-noreply@microsoft.com do seznamu schválených odesílatelů, aby e-maily nechodily do složky nevyžádané pošty. Další informace o oznámeních naleznete v tématu [Použití upozornění na náklady](./cost-mgt-alerts-monitor-usage-spending.md).
 
 V následujícím příkladu se e-mailové upozornění vygeneruje při dosažení 90 % rozpočtu. Pokud vytvoříte rozpočet pomocí rozhraní API pro rozpočty, můžete také lidem přiřadit role pro příjem upozornění. Na webu Azure Portal není přiřazování rolí lidem podporováno. Další informace o rozhraní API pro rozpočty Azure najdete v tématu popisujícím [rozhraní API pro rozpočty](/rest/api/consumption/budgets). Pokud chcete, aby se e-mailové upozornění posílalo v jiném jazyce, projděte si téma [Podporovaná národní prostředí pro e-maily s upozorněními na rozpočet](manage-automation.md#supported-locales-for-budget-alert-emails).
 
@@ -112,7 +112,7 @@ Limity upozornění podporují rozsah od 0,01 do 1000% zadané prahové hodnoty 
 
 ![Příklad znázorňující podmínky upozornění](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Vytvořený rozpočet se zobrazí v analýze nákladů. Zobrazení rozpočtu ve vztahu k trendu výdajů je jedním z prvních kroků při zahájení [analýzy nákladů a výdajů](../../cost-management/quick-acm-cost-analysis.md).
+Vytvořený rozpočet se zobrazí v analýze nákladů. Zobrazení rozpočtu ve vztahu k trendu výdajů je jedním z prvních kroků při zahájení [analýzy nákladů a výdajů](./quick-acm-cost-analysis.md).
 
 ![Příklad rozpočtu a výdajů zobrazených v analýze nákladů](./media/tutorial-acm-create-budgets/cost-analysis.png)
 

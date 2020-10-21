@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 91c767fb031633900434b3aa07ccfae7cf7458cb
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ec23252883f928cfa6c1651afbfe88e413d55571
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332089"
+ms.locfileid: "92339590"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
@@ -169,7 +169,6 @@ Po povolení minimálního filtru `true` koncových bodů dostane z digitálníc
 * Telemetrie aktivovaná pomocí [digitálních vláken](concepts-twins-graph.md) pomocí rozhraní API služby Azure Digital Service
 * Dvojitá oznámení o změně vlastností, která se aktivují při změnách vlastností u všech vláken v instanci digitálních vláken Azure
 * Události životního cyklu aktivované při vytváření nebo odstraňování vazeb
-* Přidané nebo odstraněné události změny modelu aktivované při přidání nebo odstranění [modelů](concepts-models.md) nakonfigurovaných v instanci digitálních vláken Azure
 
 Můžete omezit typy odesílaných událostí tak, že definujete konkrétnější filtr.
 

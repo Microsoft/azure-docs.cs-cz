@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ee1d9ff8145051bbbe6b65004f7f358b5fdade
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686441"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132138"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Jak se na virtuální počítače uplatňuje sleva za rezervaci Azure
 
@@ -57,7 +57,7 @@ Pokud používáte instance virtuálních počítačů s Windows, rezervace pokr
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Sleva se může vztahovat na různé velikosti
 
-Pokud si koupíte rezervovanou instanci virtuálního počítače a vyberete možnost **optimalizace pro flexibilní velikost instance**, pokrytí slevou se využije pro zvolenou velikost virtuálního počítače. Může se vztahovat i na jiné velikosti virtuálních počítačů, které jsou ve stejné skupině flexibilních velikostí instancí. Další informace najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Pokud si koupíte rezervovanou instanci virtuálního počítače a vyberete možnost **optimalizace pro flexibilní velikost instance**, pokrytí slevou se využije pro zvolenou velikost virtuálního počítače. Může se vztahovat i na jiné velikosti virtuálních počítačů, které jsou ve stejné skupině flexibilních velikostí instancí. Další informace najdete v tématu [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 
 ## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Virtuální počítače služby Premium Storage nezískávají slevy jiného typu než Premium
 

@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81261070"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340083"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Výstrahy metrik s dynamickými prahovými hodnotami v Azure Monitor
 
@@ -61,7 +61,7 @@ Můžete zvolit výstrahu, která se má aktivovat, na jednu z následujících 
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Co znamená rozšířené nastavení v případě dynamických prahových hodnot?
 
-**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Například:
+**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Příklad:
 
 Chcete-li aktivovat upozornění, když je problém v průběhu 20 minut v intervalu po dobu 4 po sobě jdoucích časů v daném období seskupení 5 minut, použijte následující nastavení:
 
@@ -98,7 +98,7 @@ U existujících prostředků s dostatečnými daty metriky můžou dynamické p
 
 ## <a name="dynamic-thresholds-best-practices"></a>Osvědčené postupy pro dynamické prahové hodnoty
 
-Dynamické prahové hodnoty lze použít pro libovolnou platformu nebo vlastní metriku v Azure Monitor a byla také vyladěna pro běžné metriky aplikací a infrastruktury.
+Dynamické prahové hodnoty lze použít pro většinu platforem a vlastní metriky v nástroji Azure Monitor a byly také vyladěny pro běžné metriky aplikací a infrastruktury.
 Následující položky jsou osvědčené postupy pro konfiguraci výstrah na některých těchto metrikách pomocí dynamických prahových hodnot.
 
 ### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dynamické prahové hodnoty pro procentuální metriky procesoru virtuálního počítače

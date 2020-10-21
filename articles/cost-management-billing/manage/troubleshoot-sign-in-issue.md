@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686492"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132325"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Řešení potíží s přihlášením k předplatnému Azure
 
 Tato příručka vám pomůže vyřešit problémy s přihlášením na Azure Portal nebo do Centra účtů Azure.
 
 > [!NOTE]
-> Pokud máte potíže s registrací nového účtu Azure, projděte si téma věnované [řešení potíží s registrací předplatného Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up).
+> Pokud máte potíže s registrací nového účtu Azure, projděte si téma věnované [řešení potíží s registrací předplatného Azure](./troubleshoot-azure-sign-up.md).
 
 ## <a name="page-hangs-in-the-loading-status"></a>Stránka zamrzne ve stavu načítání
 
@@ -66,7 +66,7 @@ K tomuto problému dochází, pokud jste vybrali nesprávný adresář nebo poku
 Pokud chcete tento problém vyřešit:
 
 - Vyberte vpravo nahoře na svůj účet a ujistěte se, že je vybraný správný adresář Azure.
-- Pokud je vybraný správný adresář Azure, ale chybová zpráva se přesto zobrazuje, zajistěte, aby váš účet byl [přidán jako Vlastník](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator).
+- Pokud je vybraný správný adresář Azure, ale chybová zpráva se přesto zobrazuje, zajistěte, aby váš účet byl [přidán jako Vlastník](./add-change-subscription-administrator.md).
 
 **Scénář 2:** Při přihlášení k [Centru účtů Azure](https://account.windowsazure.com/Subscriptions) se zobrazila chyba
 
@@ -80,11 +80,11 @@ Zkontrolujte, jestli účet, který jste použili, je účet správce účtu. Po
 
 Další články týkající se řešení potíží s fakturací a předplatnými Azure
 
-- [Odmítnutá karta](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [Problémy s registrací předplatného](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [Nenalezena žádná předplatná](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [Zákaz zobrazení firemních nákladů](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Dokumentace k fakturaci Azure](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Odmítnutá karta](./troubleshoot-declined-card.md)
+- [Problémy s registrací předplatného](./troubleshoot-azure-sign-up.md)
+- [Nenalezena žádná předplatná](./no-subscriptions-found.md)
+- [Zákaz zobrazení firemních nákladů](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Dokumentace k fakturaci Azure](../index.yml)
 
 ## <a name="contact-us-for-help"></a>Kontaktujte nás, abychom vám pomohli
 

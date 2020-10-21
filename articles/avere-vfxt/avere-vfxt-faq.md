@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 647a9792384a21dfc191371ef444cbdc098bc819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272687"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342361"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure – nejčastější dotazy
 
@@ -160,7 +160,7 @@ Odpojení a opětovné připojení SSD se nepodporuje. Metadata nebo obsah soubo
 
 ### <a name="does-the-system-encrypt-the-cache"></a>Šifruje systém mezipaměť?
 
-Data jsou rozložená na disky, ale nejsou šifrovaná. Samotné disky však mohou být zašifrovány. Další informace najdete v tématu [zabezpečení a používání zásad na virtuálních počítačích v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption).
+Data jsou rozložená na disky, ale nejsou šifrovaná. Samotné disky však mohou být zašifrovány. Další informace najdete v tématu [zabezpečení a používání zásad na virtuálních počítačích v Azure](../virtual-machines/security-policy.md#encryption).
 
 ## <a name="technical-networking"></a>Technické: sítě
 
@@ -259,7 +259,7 @@ Ne. Smlouva o úrovni služeb (SLA) pro úložiště archivu není kompatibilní
 
 Pro avere vFXT pro Azure Core souborového se obvykle nedoporučuje používat úložiště objektů BLOB ve studené vrstvě. Studená úroveň nabízí nižší náklady na úložiště, ale vyšší provozní náklady. (Další podrobnosti najdete v tématu ceny za objekty [blob bloku](<https://azure.microsoft.com/pricing/details/storage/blobs/>) .) Pokud budou data k dispozici a upravována nebo odstraněna často, zvažte použití horké úrovně.
 
-[Úrovně přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) poskytují další informace o tom, kdy může být vhodné používat jako vFXT Core Storage úložiště s chladnou vrstvou.
+[Úrovně přístupu](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier) poskytují další informace o tom, kdy může být vhodné používat jako vFXT Core Storage úložiště s chladnou vrstvou.
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>Návody zašifrovat kontejner objektů BLOB?
 

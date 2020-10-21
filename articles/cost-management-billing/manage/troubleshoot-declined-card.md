@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7e30d7a7b4636f256980927446108c78c2b8b480
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5b53d1855abb3114be1ab31e19af3bb3a11d722f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686526"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132155"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Řešení potíží s odmítnutou kartou při registraci do Azure
 
@@ -71,4 +71,4 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dokumentace k fakturaci Azure](../../billing/index.md)
+- [Dokumentace k fakturaci Azure](../index.yml)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851040"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341749"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptivní posílení zabezpečení sítě v Azure Security Center
 Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v Security Center.
@@ -29,11 +29,11 @@ Přečtěte si, jak nakonfigurovat adaptivní posílení zabezpečení sítě v 
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|Oprávnění k zápisu do skupin zabezpečení sítě počítače|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Co je adaptivní posílení zabezpečení sítě?
-Použití [skupin zabezpečení sítě (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) k filtrování provozu do prostředků a z nich vylepšuje zabezpečení sítě stav. Přesto však může být v některých případech, kdy je skutečný přenos toků přes NSG podmnožinou definovaných pravidel NSG. V těchto případech je možné zvýšit stav zabezpečení tím, že posílíte pravidla NSG, a to na základě skutečných schémat přenosů.
+Použití [skupin zabezpečení sítě (NSG)](../virtual-network/network-security-groups-overview.md) k filtrování provozu do prostředků a z nich vylepšuje zabezpečení sítě stav. Přesto však může být v některých případech, kdy je skutečný přenos toků přes NSG podmnožinou definovaných pravidel NSG. V těchto případech je možné zvýšit stav zabezpečení tím, že posílíte pravidla NSG, a to na základě skutečných schémat přenosů.
 
 Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu posílení pravidel NSG. Používá algoritmus strojového učení, který má vliv na skutečný provoz, známou důvěryhodnou konfiguraci, analýzu hrozeb a další indikátory ohrožení a pak poskytuje doporučení k tomu, aby se provozoval jenom z konkrétních řazených kolekcí IP/portů.
 
@@ -93,7 +93,7 @@ Některé důležité pokyny pro úpravu pravidla posílení adaptivní sítě:
 * Nemůžete změnit pravidla "Povolit", která se stanou "Odepřít". 
 
   > [!NOTE]
-  > Vytváření a úpravy pravidel "Odepřít" se provádí přímo na NSG. Další informace najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > Vytváření a úpravy pravidel "Odepřít" se provádí přímo na NSG. Další informace najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md).
 
 * Pravidlo **Odepřít všechna přenosová** pravidla jsou jediným typem pravidla odepřít, které by bylo uvedeno zde a nelze je upravit. Můžete ho ale odstranit (viz [odstranění pravidla](#delete-rule)).
   > [!NOTE]
@@ -121,7 +121,7 @@ Některé důležité pokyny pro úpravu pravidla posílení adaptivní sítě:
 Můžete přidat pravidlo "Allow", které nedoporučuje Security Center.
 
 > [!NOTE]
-> Sem lze přidat pouze pravidla "povoleno". Pokud chcete přidat pravidla "Odepřít", můžete tak učinit přímo na NSG. Další informace najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+> Sem lze přidat pouze pravidla "povoleno". Pokud chcete přidat pravidla "Odepřít", můžete tak učinit přímo na NSG. Další informace najdete v tématu [Vytvoření, změna nebo odstranění skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md).
 
 *Postup přidání pravidla posílení adaptivní sítě:*
 

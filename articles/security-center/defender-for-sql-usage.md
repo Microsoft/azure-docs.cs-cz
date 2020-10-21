@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a532418ebc5cab08b06f8dde87e8126bf8e96ffe
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: aee886e4e5ccaa3e07851ba839532f47c0a46ef8
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217163"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342038"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender pro servery SQL na počítačích 
 
@@ -49,13 +49,13 @@ Obě tyto parametry jsou popsány níže.
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Krok 1. Zřízení agenta Log Analytics na hostiteli SQL serveru:
 
 - **SQL Server na virtuálním počítači Azure** – Pokud je váš počítač SQL hostovaný na virtuálním počítači Azure, můžete [automaticky zřídit agenta Log Analytics](security-center-enable-data-collection.md#workspace-configuration). Alternativně můžete postupovat podle ručního postupu připojení [Azure Stackch virtuálních počítačů](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
-- **SQL Server v Azure ARC** – Pokud je vaše SQL Server hostovaná v počítači [ARC Azure](https://docs.microsoft.com/azure/azure-arc/) , můžete agenta Log Analytics nasadit pomocí Security Center doporučení Log Analytics agenta, který se má nainstalovat na počítače se systémem Windows Azure ARC (Preview). Alternativně můžete postupovat podle ručního postupu v [dokumentaci k Azure ARC](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
+- **SQL Server v Azure ARC** – Pokud je vaše SQL Server hostovaná v počítači [ARC Azure](../azure-arc/index.yml) , můžete agenta Log Analytics nasadit pomocí Security Center doporučení Log Analytics agenta, který se má nainstalovat na počítače se systémem Windows Azure ARC (Preview). Alternativně můžete postupovat podle ručního postupu v [dokumentaci k Azure ARC](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal).
 
 - **SQL Server Prem** – Pokud je váš SQL Server hostovaný na místním počítači s Windows bez ARC Azure, máte dvě možnosti, jak ho připojit k Azure:
     
-    - **Nasazení ARC Azure** – k Security Center můžete připojit libovolný počítač s Windows. Azure ARC ale poskytuje hlubší integraci ve *všech* prostředích Azure. Pokud nastavíte Azure ARC, na portálu se zobrazí stránka **SQL Server – ARC Azure** a výstrahy zabezpečení se zobrazí na vyhrazené kartě **zabezpečení** na této stránce. První a doporučenou možností je [nastavit na hostiteli Azure ARC](https://docs.microsoft.com/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-windows) a postupovat podle pokynů **SQL Server v Arc Azure ARC**výše.
+    - **Nasazení ARC Azure** – k Security Center můžete připojit libovolný počítač s Windows. Azure ARC ale poskytuje hlubší integraci ve *všech* prostředích Azure. Pokud nastavíte Azure ARC, na portálu se zobrazí stránka **SQL Server – ARC Azure** a výstrahy zabezpečení se zobrazí na vyhrazené kartě **zabezpečení** na této stránce. První a doporučenou možností je [nastavit na hostiteli Azure ARC](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) a postupovat podle pokynů **SQL Server v Arc Azure ARC**výše.
         
-    - **Připojit počítač s Windows bez ARC Azure** – Pokud se rozhodnete připojit SQL Server běžící na počítači s Windows bez použití ARC Azure, postupujte podle pokynů v tématu [připojení počítačů s Windows k Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+    - **Připojit počítač s Windows bez ARC Azure** – Pokud se rozhodnete připojit SQL Server běžící na počítači s Windows bez použití ARC Azure, postupujte podle pokynů v tématu [připojení počítačů s Windows k Azure monitor](../azure-monitor/platform/agent-windows.md).
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>Krok 2. Povolte na stránce Security Center ceny a nastavení volitelného plánu:
@@ -75,7 +75,7 @@ Obě tyto parametry jsou popsány níže.
     Plán bude povolen na všech serverech SQL připojených k vybranému pracovnímu prostoru. Ochrana bude plně aktivní po prvním restartování instance SQL Server.
 
     >[!TIP] 
-    > Pokud chcete vytvořit nový pracovní prostor, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+    > Pokud chcete vytvořit nový pracovní prostor, postupujte podle pokynů v tématu [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 
 1. Volitelně můžete nakonfigurovat e-mailová oznámení pro výstrahy zabezpečení. 
@@ -118,7 +118,7 @@ Výstrahy v programu Azure Defender jsou k dispozici na stránce výstrahy Secur
 
 1. Výstrahy jsou navržené tak, aby byly samostatné, s podrobnými kroky pro nápravu a informace o šetření v každé z nich. Můžete prozkoumat další možnosti pomocí dalších možností Azure Security Center a Azure Sentinel pro širší zobrazení:
 
-    * Povolit funkci auditování SQL Server pro další šetření. Pokud jste uživatelem Sentinel Azure, můžete nahrát protokoly auditování SQL z událostí protokolu zabezpečení Windows do Sentinel a využít bohatých prostředí pro šetření. [Přečtěte si další informace o SQL Server auditování](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15&preserve-view=true).
+    * Povolit funkci auditování SQL Server pro další šetření. Pokud jste uživatelem Sentinel Azure, můžete nahrát protokoly auditování SQL z událostí protokolu zabezpečení Windows do Sentinel a využít bohatých prostředí pro šetření. [Přečtěte si další informace o SQL Server auditování](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?preserve-view=true&view=sql-server-ver15).
     * Chcete-li zlepšit stav zabezpečení, použijte doporučení Security Center pro hostitelský počítač uvedený v každé výstraze. Tím se sníží rizika budoucích útoků. 
 
     [Přečtěte si další informace o správě a reakci na výstrahy](security-center-managing-and-responding-alerts.md).
@@ -130,5 +130,5 @@ Související materiály najdete v následujícím článku:
 
 - [Výstrahy zabezpečení pro SQL Database a Azure synapse Analytics (dřív SQL Data Warehouse)](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [Nastavení e-mailových oznámení pro upozornění zabezpečení](security-center-provide-security-contact-details.md)
-- [Další informace o Sentinel Azure](https://docs.microsoft.com/azure/sentinel/)
-- [Balíček zabezpečení dat Azure Security Center](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+- [Další informace o Sentinel Azure](../sentinel/index.yml)
+- [Balíček zabezpečení dat Azure Security Center](../azure-sql/database/azure-defender-for-sql.md)

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 6b4b5fe5d7dffbcacc804500cc1f3f8f07f0090d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758536"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131135"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Přidání nebo aktualizace platební karty pro Azure
 
@@ -32,7 +32,7 @@ V případě smlouvy se zákazníkem Microsoftu (MCA) jsou způsoby platby přid
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Správa platebních karet pro předplatné Azure
 
-Následující části se vztahují na zákazníky, kteří mají fakturační účet programu MOSP (Microsoft Online Services Program). Zjistěte, jak [zkontrolovat typ vašeho fakturačního účtu](#check-the-type-of-your-account). Pokud je váš fakturační účet typu MOSP (Microsoft Online Services Program), jsou způsoby platby přidružené k jednotlivým předplatným Azure. Pokud po přidání platební karty dojde k chybě, přečtěte si téma věnované [odmítnutí platební karty při registraci do Azure](/azure/cost-management-billing/manage/troubleshoot-declined-card).
+Následující části se vztahují na zákazníky, kteří mají fakturační účet programu MOSP (Microsoft Online Services Program). Zjistěte, jak [zkontrolovat typ vašeho fakturačního účtu](#check-the-type-of-your-account). Pokud je váš fakturační účet typu MOSP (Microsoft Online Services Program), jsou způsoby platby přidružené k jednotlivým předplatným Azure. Pokud po přidání platební karty dojde k chybě, přečtěte si téma věnované [odmítnutí platební karty při registraci do Azure](./troubleshoot-declined-card.md).
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Změna platební karty pro předplatné (přidání nové platební karty)
 

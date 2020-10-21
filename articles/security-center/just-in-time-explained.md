@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449007"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340015"
 ---
-# <a name="understanding-just-in-time-jit-vm-access"></a>Porozumění přístupu k virtuálnímu počítači JIT (just-in-time)
+# <a name="understanding-just-in-time-jit-vm-access"></a>Principy přístupu k virtuálním počítačům za běhu (JIT)
 
 Tato stránka vysvětluje principy za Azure Security Center funkcí přístupu k VIRTUÁLNÍm počítačům JIT (just-in-time) a logiky na základě doporučení.
 
@@ -40,14 +40,14 @@ Chcete-li tento dilematem vyřešit, Azure Security Center nabízí JIT. Pomocí
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>Jak pracuje JIT se skupinami zabezpečení sítě a Azure Firewall
 
-Když povolíte přístup k virtuálnímu počítači za běhu, můžete vybrat porty na virtuálním počítači, do kterého se bude blokovat příchozí provoz. Security Center zajistí, že pro vybrané porty ve [skupině zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) a [Azure firewall pravidla](https://docs.microsoft.com/azure/firewall/rule-processing)existují pravidla odepřít veškerý příchozí provoz. Tato pravidla omezují přístup k portům pro správu virtuálních počítačů Azure a brání jejich útokům. 
+Když povolíte přístup k virtuálnímu počítači za běhu, můžete vybrat porty na virtuálním počítači, do kterého se bude blokovat příchozí provoz. Security Center zajistí, že pro vybrané porty ve [skupině zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) a [Azure firewall pravidla](../firewall/rule-processing.md)existují pravidla odepřít veškerý příchozí provoz. Tato pravidla omezují přístup k portům pro správu virtuálních počítačů Azure a brání jejich útokům. 
 
 Pokud pro vybrané porty už existují další pravidla, budou mít tato stávající pravidla přednost před novými pravidly odepřít všechna příchozí provoz. Pokud na vybraných portech neexistují žádná pravidla, nová pravidla budou mít v NSG a Azure Firewall nejvyšší prioritu.
 
-Když si uživatel požádá o přístup k virtuálnímu počítači, Security Center zkontroluje, jestli má uživatel oprávnění [řízení přístupu na základě role (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) pro tento virtuální počítač. Pokud je žádost schválená, Security Center nakonfiguruje skupin zabezpečení sítě a Azure Firewall, aby povolovaly příchozí provoz na vybrané porty z příslušné IP adresy (nebo rozsahu) po určenou dobu. Po vypršení časového limitu Security Center obnoví skupin zabezpečení sítě do jejich předchozích stavů. Připojení, která jsou již navázána, nejsou přerušena.
+Když si uživatel požádá o přístup k virtuálnímu počítači, Security Center zkontroluje, jestli má uživatel oprávnění [řízení přístupu na základě role (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) pro tento virtuální počítač. Pokud je žádost schválená, Security Center nakonfiguruje skupin zabezpečení sítě a Azure Firewall, aby povolovaly příchozí provoz na vybrané porty z příslušné IP adresy (nebo rozsahu) po určenou dobu. Po vypršení časového limitu Security Center obnoví skupin zabezpečení sítě do jejich předchozích stavů. Připojení, která jsou již navázána, nejsou přerušena.
 
 > [!NOTE]
-> JIT nepodporuje virtuální počítače chráněné pomocí bran Azure firewall řízené nástrojem [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview).
+> JIT nepodporuje virtuální počítače chráněné pomocí bran Azure firewall řízené nástrojem [Azure firewall Manager](../firewall-manager/overview.md).
 
 
 

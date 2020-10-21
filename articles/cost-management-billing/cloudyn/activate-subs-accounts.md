@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: acfbdb203cfa6b1b54145c5d325493b90525bf43
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52ac239369f2998a3a8eac9c400512ac845a0c49
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690149"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131424"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivace účtů a předplatných Azure pomocí služby Cloudyn
 
@@ -96,7 +96,7 @@ Z předchozích zpráv vyplývá, že jste si smlouvu Azure Enterprise zakoupili
 Tady je postup řešení těchto potíží:
 
 1. Váš prodejce musí pro váš účet povolit _revize_. Postup najdete v [pokynech k nepřímé registraci zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Vygenerujte klíč smlouvy Azure Enterprise pro použití se službou Cloudyn. Pokyny najdete v článku o [registraci smlouvy Azure Enterprise a zobrazení informací o nákladech](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
+2. Vygenerujte klíč smlouvy Azure Enterprise pro použití se službou Cloudyn. Pokyny najdete v článku o [registraci smlouvy Azure Enterprise a zobrazení informací o nákladech](./quick-register-ea.md).
 
 Než budete moct vygenerovat klíč rozhraní API smlouvy Azure Enterprise k nastavení služby Cloudyn, musíte podle následujících pokynů povolit rozhraní API pro fakturaci Azure:
 

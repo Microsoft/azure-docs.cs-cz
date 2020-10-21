@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9b2c5b24b88dd51596dfb5bd8b5f397419ca6e4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e72bd04bb41537546191b8ceb320c0722bd10146
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215191"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340287"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Správa jednotného přihlašování a přizpůsobení tokenů pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -90,6 +90,45 @@ V předchozím příkladu jsou nastaveny následující hodnoty:
 
 > [!NOTE]
 > Jednostránkové aplikace používající tok autorizačního kódu s PKCE vždy mají dobu životnosti obnovovacího tokenu 24 hodin. [Přečtěte si další informace o dopadech aktualizace tokenů v prohlížeči na zabezpečení](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser).
+
+## <a name="provide-optional-claims-to-your-app"></a>Poskytněte do aplikace volitelné deklarace identity.
+
+Deklarace identity výstupu [Technical profil zásad předávající strany](relyingparty.md#technicalprofile) jsou hodnoty, které se vrátí do aplikace. Přidáním deklarací výstup budou deklarace identity vydány do tokenu po úspěšné cestě uživatele a budou odeslány do aplikace. Upravte element Technical profil v části předávající strany a přidejte požadované deklarace identity jako výstupní deklaraci.
+
+1. Otevřete vlastní soubor zásad. Například SignUpOrSignin.xml.
+1. Vyhledejte element OutputClaims. Přidejte OutputClaim, který chcete zahrnout do tokenu. 
+1. Nastavte výstupní atributy deklarace identity. 
+
+Následující příklad přidá `accountBalance` deklaraci identity. Deklarace identity accountBalance se do aplikace pošle jako zůstatek. 
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <!--Add the optional claims here-->
+      <OutputClaim ClaimTypeReferenceId="accountBalance" DefaultValue="" PartnerClaimType="balance" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+Element OutputClaim obsahuje následující atributy:
+
+  - **ClaimTypeReferenceId** – identifikátor typu deklarace identity, který už je definovaný v oddílu [ClaimsSchema](claimsschema.md) v souboru zásad nebo v nadřazeném souboru zásad.
+  - **PartnerClaimType** – umožňuje změnit název deklarace identity v tokenu. 
+  - **DefaultValue** – výchozí hodnota. Výchozí hodnotu můžete také nastavit na [překladač deklarací identity](claim-resolver-overview.md), jako je například ID tenanta.
+  - **AlwaysUseDefaultValue** – vynutí použití výchozí hodnoty.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 62651f611654fa601752308ac2fa7f4c388297d6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297857"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132835"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -32,7 +32,7 @@ V tomto rychlém startu se naučíte:
 
 Analýza nákladů podporuje různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md). Pokud chcete zobrazit data o nákladech, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
 
-Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](../../cost-management/assign-access-acm-data.md).
+Informace o přiřazování přístupu k datům služby Azure Cost Management najdete v článku [Přiřazení přístupu k datům](./assign-access-acm-data.md).
 
 Pokud máte nové předplatné, nemůžete rovnou využívat funkce služby Cost Management. Může trvat až 48 hodin, než budete moct využívat všechny funkce služby Cost Management.
 
@@ -108,7 +108,7 @@ Pokud je prognóza útrat vypnutá, neuvidíte předpokládané útraty na budou
 
 Obecně můžete očekávat, že se data nebo oznámení o využitých prostředcích budou zobrazovat během 8 až 12 hodin.
 
-Možnost **Seskupit podle** nabízí běžné vlastnosti, pomocí kterých můžete rozdělit náklady a identifikovat hlavní přispěvatele. Pokud třeba chcete zobrazit seskupení podle značek prostředků, vyberte klíč značky, podle kterého chcete seskupovat. Náklady se rozdělí podle jednotlivých hodnot značky a bude u nich další segment pro prostředky, které danou značku nemají.  Další informace o možnostech seskupování a filtrování najdete v tématu [Možnosti filtrování a seskupení](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter).
+Možnost **Seskupit podle** nabízí běžné vlastnosti, pomocí kterých můžete rozdělit náklady a identifikovat hlavní přispěvatele. Pokud třeba chcete zobrazit seskupení podle značek prostředků, vyberte klíč značky, podle kterého chcete seskupovat. Náklady se rozdělí podle jednotlivých hodnot značky a bude u nich další segment pro prostředky, které danou značku nemají.  Další informace o možnostech seskupování a filtrování najdete v tématu [Možnosti filtrování a seskupení](./group-filter.md).
 
 [Označování podporuje většina prostředků Azure.](../../azure-resource-manager/management/tag-support.md) Některé značky ale nejsou k dispozici ve službě Cost Management a při fakturaci. Navíc se nepodporují značky skupin prostředků. Údaje vázané na značky zahrnují data o využití nahlášená až *po* nastavení značky u prostředku. Značky se nedají použít pro retroaktivní shrnutí.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: aa73fed0af0d6cd7154118d8987f42e55814e25a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6991c222590b52ca4dadb2b9f5a9661bf731c4c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448941"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340831"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Přizpůsobení zásad SQL Information Protection v Azure Security Center (Preview)
  
@@ -78,8 +78,8 @@ Po úplném definování a uložení zásad služby Information Protection se ta
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>Správa SQL Information Protection pomocí Azure PowerShell
 
-- [Get-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy): načte efektivní zásadu SQL Information Protection tenanta.
-- [Set-AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy): nastaví efektivní zásady pro SQL Information Protection tenanta.
+- [Get-AzSqlInformationProtectionPolicy](/powershell/module/az.security/get-azsqlinformationprotectionpolicy): načte efektivní zásadu SQL Information Protection tenanta.
+- [Set-AzSqlInformationProtectionPolicy](/powershell/module/az.security/set-azsqlinformationprotectionpolicy): nastaví efektivní zásady pro SQL Information Protection tenanta.
  
 ## <a name="next-steps"></a>Další kroky
  

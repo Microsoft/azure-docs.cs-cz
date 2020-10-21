@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: a30f85ae1b65321a25ee93239374d2a8aae26769
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b32bb979176af8a8a3751db8edf9c129caf1002e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026298"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131985"
 ---
 # <a name="troubleshoot-ea-billing-issues-with-usage-file-pivot-tables"></a>Řešení potíží s fakturací u smlouvy Enterprise pomocí kontingenčních tabulek ze souborů s daty využití
 
@@ -33,7 +33,7 @@ Ke stažení souborů s daty využití mají přístup jenom správci smlouvy En
 
 Vzhledem k tomu, že jsou soubory s daty využití Azure ve formátu CSV, je potřeba data nejdřív připravit na použití v Excelu. Pomocí následujících kroků naformátujte data jako tabulku.
 
-1. Podle pokynů v tématu [Stažení informací o využití pro zákazníky se smlouvou Enterprise](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-ea-customers) si stáhněte soubor Usage Details Version 2 with All Charges (usage and purchases).
+1. Podle pokynů v tématu [Stažení informací o využití pro zákazníky se smlouvou Enterprise](./download-azure-invoice-daily-usage-date.md#download-usage-for-ea-customers) si stáhněte soubor Usage Details Version 2 with All Charges (usage and purchases).
 1. Otevřete daný soubor v Excelu.
 1. Neformátovaná data se podobají následujícímu příkladu.  
     :::image type="content" source="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" alt-text="Příklad zobrazení neformátovaných dat v aplikaci Excel" lightbox="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" :::

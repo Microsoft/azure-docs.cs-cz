@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 893b2eefc2c4c81e66bf86a1c999a3c4198a3c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d7ecf4751e9f3fe2051feb64a94e828e00bf106
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883836"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339488"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Posílení stavu zabezpečení s využitím služby Azure Security Center
 Tento článek vám pomůže posílit stav zabezpečení. Využijte možnosti monitorování v Azure Security Center, abyste se ujistili, že zabezpečení prostředků je co nejtěsnější a jak monitorovat dodržování zásad.
@@ -38,4 +38,4 @@ V tomto článku jste zjistili, jak ve službě Azure Security Center používat
 
 * [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak se v Azure Security Center konfiguruje nastavení zabezpečení.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak sledovat stav vašich partnerských řešení.
+* [Sledování partnerských řešení pomocí Azure Security Center](./security-center-partner-integration.md): Zjistěte, jak sledovat stav vašich partnerských řešení.
