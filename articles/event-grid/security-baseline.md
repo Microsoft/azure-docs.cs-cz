@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d027797deee9435127592fc91c21d59ee93fe9b5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 2a1396f67c94b34b4fdef0bdaf7e01770da91246
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152247"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331511"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Základní hodnoty zabezpečení Azure pro Event Grid
 
@@ -287,9 +287,9 @@ Kromě toho můžete pracovní prostor Log Analytics připojit do Azure Sentinel
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé operace správy, jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role (RBAC) Azure. Event Grid podporuje předdefinované role i vlastní role.
+**Doprovodné**materiály: Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé operace správy, jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role v Azure (Azure RBAC). Event Grid podporuje předdefinované role i vlastní role.
 
-Řízení přístupu na základě role (RBAC) v Azure umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell nebo Azure Portal.
+Řízení přístupu na základě role Azure (Azure RBAC) umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell nebo Azure Portal.
 
 - [Autorizace přístupu k prostředkům Event Grid](security-authorization.md)
 
@@ -457,7 +457,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit pomocí Azure Active Directory RBAC.
+**Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím Azure RBAC.
 
 - [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
@@ -501,7 +501,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: ke správě přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: Azure Event Grid podporuje použití Azure Active Directory (AD) k autorizaci požadavků na Event Grid prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby.
+**Pokyny**: Azure Event Grid podporuje použití Azure Active Directory (AD) k autorizaci požadavků na Event Grid prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role Azure (Azure RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instančního objektu aplikace.
 
 - [Autorizace přístupu k prostředkům Event Grid](security-authorization.md)
 

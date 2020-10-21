@@ -3,18 +3,18 @@ title: Nejčastější dotazy k Azure DevTest Labs | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 6f4c0e34242677eca6a32af4731817085be12436
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144579"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328381"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé z nejběžnějších otázek o Azure DevTest Labs.
 
 ## <a name="blog-post"></a>Příspěvek na blogu
-Náš blog týmu DevTest Labs byl vyřazen od 20. března 2019. 
+Náš blog týmu DevTest Labs byl vyřazen od 20. března 2019. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Kde můžu sledovat aktualizace funkcí od teď?
 Od této chvíle budeme publikovat aktualizace funkcí a informativní blogové příspěvky na blogu Azure a na aktualizace Azure. Tyto blogové příspěvky budou také odkazovat na naši dokumentaci, kdykoli je to potřeba.
@@ -22,7 +22,7 @@ Od této chvíle budeme publikovat aktualizace funkcí a informativní blogové 
 Přihlaste se k odběru [blogu Azure pro DevTest Labs](https://azure.microsoft.com/blog/tag/azure-devtest-labs/) a [aktualizace DevTest Labs Azure](https://azure.microsoft.com/updates/?product=devtest-lab) , abyste měli přehled o nových funkcích v DevTest Labs.
 
 ### <a name="what-happens-to-the-existing-blog-posts"></a>Co se stane s existujícími příspěvky na blogu?
-V současnosti pracujeme na migraci stávajících příspěvků na blogu (s výjimkou aktualizací výpadků) do naší [dokumentace k DevTest Labs](devtest-lab-overview.md). Pokud je blog MSDN zastaralý, bude přesměrován na přehled dokumentace pro DevTest Labs. Po přesměrování můžete vyhledat článek, který hledáte v názvu Filter by. Zatím jsme nemigrovali všechny příspěvky, ale měli byste to udělat na konci tohoto měsíce. 
+V současnosti pracujeme na migraci stávajících příspěvků na blogu (s výjimkou aktualizací výpadků) do naší [dokumentace k DevTest Labs](devtest-lab-overview.md). Pokud je blog MSDN zastaralý, bude přesměrován na přehled dokumentace pro DevTest Labs. Po přesměrování můžete vyhledat článek, který hledáte v názvu Filter by. Zatím jsme nemigrovali všechny příspěvky, ale měli byste to udělat na konci tohoto měsíce. 
 
 
 ### <a name="where-do-i-see-outage-updates"></a>Kde se zobrazují aktualizace výpadku?
@@ -68,7 +68,7 @@ DevTest Labs je bezplatná služba. Vytváření Labs a konfigurace zásad, šab
 ## <a name="security"></a>Zabezpečení
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Jaké jsou různé úrovně zabezpečení v DevTest Labs?
-Přístup k zabezpečení je určený pomocí Role-Based Access Control (RBAC). Pokud se chcete dozvědět, jak Access funguje, pomůže se naučit rozdíly mezi oprávněními, rolí a oborem definovaným pomocí RBAC.
+Přístup k zabezpečení závisí na řízení přístupu na základě role Azure (Azure RBAC). Pokud se chcete dozvědět, jak Access funguje, pomůže se naučit rozdíly mezi oprávněními, rolí a oborem definovaným v Azure RBAC.
 
 - **Oprávnění**: oprávnění je definovaný přístup k určité akci. Oprávnění může být například přístup pro čtení ke všem virtuálním počítačům.
 - **Role**: role je sada oprávnění, která se dají seskupit a přiřadit k uživateli. Například uživatel s rolí vlastníka předplatného má přístup ke všem prostředkům v rámci předplatného.
@@ -83,7 +83,7 @@ Můžete také vytvořit vlastní role v DevTest Labs. Informace o tom, jak vytv
 
 Vzhledem k tomu, že obory jsou hierarchické, pokud má uživatel oprávnění v určitém oboru, uživateli se tato oprávnění automaticky udělí v každém oboru nižší úrovně v oboru. Pokud je například uživateli přiřazena role vlastníka předplatného, má uživatel přístup ke všem prostředkům v rámci předplatného. Mezi tyto prostředky patří virtuální počítače, virtuální sítě a laboratoře. Vlastník předplatného automaticky zdědí roli vlastníka testovacího prostředí. Opak však není pravda. Vlastník testovacího prostředí má přístup k testovacímu prostředí, což je nižší obor než úroveň předplatného. Vlastník testovacího prostředí proto nemůže zobrazit virtuální počítače, virtuální sítě ani žádné další prostředky, které jsou mimo testovací prostředí.
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Návody pro prostředí DevTest Labs definovat řízení přístupu na základě rolí, aby se zajistilo, že se může řídit, zatímco vývojáři/testy můžou svou práci dělat?
+### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>Návody pro prostředí DevTest Labs definovat řízení přístupu na základě role v Azure, aby se zajistilo, že se bude moct řídit i když vývojáři/testy můžou dělat svou práci?
 Existuje velký model, ale podrobnosti závisí na vaší organizaci.
 
 Centrální IT oddělení by mělo mít pouze to, co je potřeba, a umožnit týmům projektu a aplikace, aby měli potřebnou úroveň řízení. Obvykle to znamená, že je ústřední IT vlastníkem předplatného a zpracovává základní funkce IT, jako jsou třeba síťové konfigurace. Sada **vlastníků** předplatného musí být malá. Tito vlastníci můžou jmenovat další vlastníky, pokud je potřeba, nebo použít zásady na úrovni předplatného, například bez veřejné IP adresy.
@@ -92,7 +92,7 @@ Může existovat podmnožina uživatelů, kteří vyžadují přístup v rámci 
 
 Prostředek DevTest Labs by měl vlastnit vlastníci, kteří jsou blízko týmu projektu nebo aplikace. Je to proto, že rozumí jejich požadavkům na počítače a požadovaný software. Ve většině organizací je vlastníkem tohoto prostředku DevTest Labs obvykle vedoucí projektu nebo vývoje. Tento vlastník může spravovat uživatele a zásady v rámci testovacího prostředí a může spravovat všechny virtuální počítače v prostředí DevTest Labs.
 
-Členové týmu projektu nebo aplikace by měli být přidáni do role **Uživatelé DevTest Labs** . Tito uživatelé můžou vytvářet virtuální počítače (v souladu s zásadami testovacího prostředí a na úrovni předplatného). Můžou taky spravovat svoje vlastní virtuální počítače. Nemůžou spravovat virtuální počítače, které patří jiným uživatelům.
+Členové týmu projektu nebo aplikace by měli být přidáni do role **uživatele DevTest Labs** . Tito uživatelé můžou vytvářet virtuální počítače (v souladu s zásadami testovacího prostředí a na úrovni předplatného). Můžou taky spravovat svoje vlastní virtuální počítače. Nemůžou spravovat virtuální počítače, které patří jiným uživatelům.
 
 Další informace najdete v tématu základní informace o [službě Azure Enterprise lešení – dokumentace zásad správného řízení předplatného](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
 
@@ -200,7 +200,7 @@ Zkopírování stávajících virtuálních počítačů do DevTest Labs:
 Ano, k virtuálním počítačům můžete připojit několik disků.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Jsou pro DevTest Labs podporované image Gen 2?
-Yes. Služba DevTest Labs podporuje [Image Gen 2](../virtual-machines/generation-2.md). Pokud jsou však pro Image k dispozici obě verze 1. generace a 2. DevTest Labs při vytváření virtuálního počítače zobrazuje pouze verzi 1. generace. Obrázek se zobrazí, pokud je k dispozici pouze obecná verze 2. 
+Ano. Služba DevTest Labs podporuje [Image Gen 2](../virtual-machines/generation-2.md). Pokud jsou však pro Image k dispozici obě verze 1. generace a 2. DevTest Labs při vytváření virtuálního počítače zobrazuje pouze verzi 1. generace. Obrázek se zobrazí, pokud je k dispozici pouze obecná verze 2. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Pokud chci pro svoje testování použít bitovou kopii operačního systému Windows, musím si koupit předplatné MSDN?
 Pokud chcete pro vývoj nebo testování v Azure použít image operačního systému Windows Client (Windows 7 nebo novější), proveďte jeden z následujících kroků:
@@ -277,7 +277,7 @@ K automatickému nahrávání souborů VHD pro vytváření vlastních imagí m�
 
 Pokud chcete najít cílový účet úložiště, který je přidružený k vašemu testovacímu prostředí:
 
-1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1.  Přihlaste se na [Azure Portal](https://portal.azure.com).
 2.  V nabídce vlevo vyberte **skupiny prostředků**.
 3.  Vyhledejte a vyberte skupinu prostředků, která je přidružená k vašemu testovacímu prostředí.
 4.  V části **Přehled**vyberte jeden z účtů úložiště.
@@ -357,7 +357,7 @@ Při použití sdílených veřejných IP adres sdílí virtuální počítače 
 
 ### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>Návody zajistěte, aby vývojové a testovací virtuální počítače nedokázaly získat přístup k veřejnému Internetu? Existují nějaké Doporučené vzory pro nastavení konfigurace sítě?
 
-Yes. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
+Ano. K dispozici jsou dvě aspekty, které byste měli zvážit – příchozí a odchozí provoz.
 
 - **Příchozí provoz** – Pokud virtuální počítač nemá veřejnou IP adresu, nepůjde k němu získat Internet. Běžným přístupem je zajistit, že jsou nastavené zásady na úrovni předplatného, takže žádný uživatel nemůže vytvořit veřejnou IP adresu.
 - **Odchozí provoz** – Pokud chcete zabránit tomu, aby virtuální počítače přistupovaly k veřejnému Internetu a vynutily provoz přes podnikovou bránu firewall, můžete směrovat provoz místně přes Express Route nebo VPN pomocí vynuceného směrování.

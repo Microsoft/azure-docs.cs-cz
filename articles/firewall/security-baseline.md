@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24c9e5137e59fbd14a489b4d41709f39aa448ed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4794e581dc9855d79cb7cafbc5a6e55f1477f318
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231346"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329725"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Základní hodnoty zabezpečení Azure pro Azure Firewall
 
@@ -370,7 +370,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure Firewall, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit pomocí Azure Active Directory řízení přístupu na základě role. 
+**Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure Firewall, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím řízení přístupu na základě role v Azure. 
 
 - [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
@@ -556,7 +556,7 @@ V tuto chvíli není plně podporovaná zásada Azure.
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

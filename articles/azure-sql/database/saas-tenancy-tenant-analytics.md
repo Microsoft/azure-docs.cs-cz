@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 19c09bd03a3d1eb3b16f69b9a605a4ccb763030a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8076b417c8043a4f6796ccca0e67db79360ede73
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619538"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331664"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Analýza mezi klienty pomocí extrahované aplikace pro jednoho tenanta
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -65,7 +65,7 @@ Porozumění způsobu, jakým každý tenant používá tuto službu, se použí
 
 ## <a name="setup"></a>Nastavení
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
@@ -95,7 +95,7 @@ V následujících krocích nasadíte úložiště analýzy, které se nazývá 
 
 Teď, když jste nasadili aplikaci a nastavili ji s zajímavými daty tenanta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) k propojení **tenants1-DPT- &lt; User &gt; ** a **Catalog-DPT- &lt; User &gt; ** Servers pomocí Login = *Developer*, Password = *P \@ ssword1*. Další pokyny najdete v [úvodním kurzu](../../sql-database/saas-dbpertenant-wingtip-app-overview.md) .
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
+![Snímek obrazovky, který zobrazuje informace potřebné pro připojení k SQL Server.](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 V Průzkumník objektů proveďte následující kroky:
 
@@ -110,7 +110,7 @@ Rozbalením uzlu analytického úložiště se podívejte na následující polo
 - Tabulky schématu hvězdiček jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**a **dim_Dates**.
 - Uložená procedura slouží k naplnění tabulek schématu hvězdiček z nezpracovaných tabulek dat.
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
+![Snímek obrazovky s položkami databáze zobrazenými ve Průzkumník objektů SSMS](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Extrakce dat 
 
@@ -181,7 +181,7 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 
 6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: fact_Tickets, dim_Events, dim_Venues, dim_Customers a dim_Dates. Pak vyberte **načíst**. 
 
-Gratulujeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď můžete začít zkoumat zajímavé vizualizace, které vám pomůžou získat přehled o vašich klientech. Dále vám ukážeme, jak vám analýza umožní poskytnout doporučení na základě dat pro obchodní tým Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začnete analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte následující možnosti v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. V důsledku náhodné variace generátoru lístků se vaše výsledky můžou lišit.
  
@@ -236,9 +236,9 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytické databáze 
 > - Použití Power BI pro vizualizaci dat ke sledování trendů v datech tenanta 
 
-Gratulujeme!
+Blahopřejeme!
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - Další [kurzy, které se vytvářejí na aplikaci Wingtip SaaS](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 - [Elastické úlohy](../../sql-database/elastic-jobs-overview.md).

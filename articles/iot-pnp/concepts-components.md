@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574275"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329998"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>Komponenty technologie IoT Plug and Play v modelech
 
@@ -69,7 +69,7 @@ ID modelu je uloženo ve vlastnosti vlákna zařízení, jak ukazuje následují
 Model DTDL bez komponent je užitečné zjednodušení pro zařízení nebo IoT Edge modul s jedinou sadou telemetrie, vlastností a příkazů. Model, který nepoužívá komponenty, usnadňuje migraci stávajícího zařízení nebo modulu technologie Plug and Play zařízení nebo modul IoT – vytvoříte model DTDL, který popisuje vaše skutečné zařízení nebo modul, aniž by bylo potřeba definovat nějaké součásti.
 
 > [!TIP]
-> Modulem může být zařízení [Module] (.. /IoT-Hub/IoT-Hub-DevGuide-Module-Twins.MD nebo [modul IoT Edge](../iot-edge/about-iot-edge.md).
+> Modulem může být [modul zařízení nebo modul](../iot-hub/iot-hub-devguide-module-twins.md) [IoT Edge](../iot-edge/about-iot-edge.md).
 
 ## <a name="multiple-components"></a>Více komponent
 

@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802221"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329249"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -41,6 +41,9 @@ Azure Monitor obor privátních odkazů je prostředek seskupení pro připojen�
 ## <a name="planning-based-on-your-network"></a>Plánování na základě vaší sítě
 
 Před nastavením prostředků AMPLS Zvažte požadavky na izolaci sítě. Vyhodnoťte přístup k virtuálním sítím k veřejnému Internetu a omezení přístupu každého z vašich Azure Monitorch prostředků (tj. Application Insights komponent a Log Analytics pracovních prostorů).
+
+> [!NOTE]
+> Sítě rozbočovače a paprsků nebo jakákoli jiná topologie partnerských sítí může nastavit privátní propojení mezi sítí VNet (hlavní) a příslušnými prostředky Azure Monitor, místo abyste nastavili privátní propojení na každé virtuální síti a každou virtuální síť. To je vhodné zejména v případě, že Azure Monitor prostředky používané těmito sítěmi jsou sdílené. Pokud ale chcete, aby každá virtuální síť měla přístup k samostatné sadě prostředků monitorování, vytvořte pro každou síť privátní odkaz na vyhrazené AMPLS.
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>Vyhodnotit, které virtuální sítě by se měly připojit k privátnímu propojení
 
@@ -230,7 +233,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -X
 $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace key>
 ```
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Chcete-li použít Azure Monitor portálu, jako je Application Insights a Log Analytics, je nutné, aby byla rozšíření Azure Portal a Azure Monitor dostupná v privátních sítích. Do brány firewall přidejte [značky služby](../../firewall/service-tags.md) **azureactivedirectory selhala**, **AzureResourceManager**, **AzureFrontDoor. FirstParty**a **AzureFrontDoor. front-endu** .
 

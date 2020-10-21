@@ -220,6 +220,8 @@
           href: troubleshoot-password-based-sso.md
         - name: Řešení potíží s jednotným přihlašováním založeným na SAML
           href: troubleshoot-saml-based-sso.md
+        - name: Ladění jednotného přihlašování pomocí SAML
+          href: debug-saml-sso-issues.md
         - name: Řešení potíží s přihlašováním uživatelů
           items:
             - name: Neočekávaná výzva k poskytnutí souhlasu

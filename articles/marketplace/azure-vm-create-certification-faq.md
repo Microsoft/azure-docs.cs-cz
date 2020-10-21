@@ -7,14 +7,14 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: ee7a7101740e88d55d77f769263ab03a86b878d4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283936"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331290"
 ---
-# <a name="vm-certification-troubleshooting"></a>Řešení potíží s certifikacem virtuálních počítačů
+# <a name="vm-certification-troubleshooting"></a>Řešení potíží s certifikacemi virtuálních počítačů
 
 Když publikujete image virtuálního počítače do Azure Marketplace, tým Azure je ověří, aby zajistil, že se jedná o možnosti spouštění, zabezpečení a kompatibility Azure. Pokud některý z testů s vysokou kvalitou selže, publikování se nezdaří a zobrazí se chybová zpráva s popisem problému.
 
@@ -410,7 +410,7 @@ K provedení těchto kroků budete potřebovat připravit technické prostředky
 5. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vyberte **+ Přidat image virtuálního počítače**.
 
 > [!NOTE]
-> V jednom okamžiku můžete přidat jenom jednu image virtuálního počítače do jednoho plánu. Pokud chcete přidat víc imagí virtuálních počítačů, publikujte první a počkejte, dokud nedosáhne fáze pro odhlášení vydavatele, a pak přidejte další image virtuálního počítače.
+> V jednom okamžiku můžete přidat jenom jednu image virtuálního počítače do jednoho plánu. Pokud chcete přidat víc imagí virtuálních počítačů, před přidáním další image virtuálního počítače publikujte nejdřív jednu živou.
 
 6. V zobrazených oknech zadejte novou verzi disku a image virtuálního počítače.
 7. Vyberte **Uložit koncept**.
@@ -439,6 +439,6 @@ Chcete-li dokončit proces publikování, přečtěte si téma [Revize a publiko
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace vlastností nabídky virtuálních počítačů](azure-vm-create-properties.md)
+- [Konfigurace vlastností nabídek virtuálních počítačů](azure-vm-create-properties.md)
 - [Ceny aktivního tržiště](partner-center-portal/marketplace-rewards.md)
 - Pokud máte dotazy nebo připomínky ke zlepšení, obraťte se na [podporu](https://aka.ms/marketplacepublishersupport)partnerského centra.

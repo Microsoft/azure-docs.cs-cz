@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77121714"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328755"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -24,7 +24,7 @@ DNS (Domain Name System) překládá nebo řeší název webu nebo služby na je
 
 Domény DNS v Azure DNS hostují globální síť názvových serverů DNS v Azure. Tento systém využívá síť s libovolným všesměrovým vysíláním, aby každý dotaz DNS byl zodpovězen nejbližším dostupným serverem DNS. Azure DNS poskytuje pro vaši doménu rychlý výkon a vysokou dostupnost.
 
-Azure DNS je založen na Azure Resource Manager. Azure DNS výhody z funkcí Správce prostředků, jako je řízení přístupu na základě role, protokoly auditu a uzamykání prostředků. Domény a záznamy můžete spravovat prostřednictvím Azure Portal, Azure PowerShell rutin a Azure CLI pro různé platformy. Aplikace, které vyžadují automatickou správu DNS, se dají integrovat se službou prostřednictvím REST API a sad SDK.
+Azure DNS je založen na Azure Resource Manager. Azure DNS výhody z funkcí Správce prostředků, jako je řízení přístupu na základě role Azure, protokoly auditu a uzamykání prostředků. Domény a záznamy můžete spravovat prostřednictvím Azure Portal, Azure PowerShell rutin a Azure CLI pro různé platformy. Aplikace, které vyžadují automatickou správu DNS, se dají integrovat se službou prostřednictvím REST API a sad SDK.
 
 ### <a name="how-much-does-azure-dns-cost"></a>Kolik se Azure DNS náklady?
 
@@ -177,7 +177,7 @@ Změny stávajících záznamů DNS můžou trvat trochu déle. Obvykle se zobra
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>Jak můžu chránit své zóny DNS před náhodným odstraněním?
 
-Azure DNS se spravují pomocí Azure Resource Manager. Azure DNS výhody z funkcí řízení přístupu, které Azure Resource Manager poskytuje. Řízení přístupu na základě role řídí, kteří uživatelé mají přístup pro čtení nebo zápis do zón a sad záznamů DNS. Zámky prostředků zabraňují náhodnému úpravám nebo odstraňování zón a sad záznamů DNS.
+Azure DNS se spravují pomocí Azure Resource Manager. Azure DNS výhody z funkcí řízení přístupu, které Azure Resource Manager poskytuje. Řízení přístupu na základě role v Azure se dá použít k řízení přístupu uživatelů ke čtení nebo zápisu do zón a sad záznamů DNS. Zámky prostředků zabraňují náhodnému úpravám nebo odstraňování zón a sad záznamů DNS.
 
 Další informace najdete v tématu [ochrana záznamů a zón DNS](dns-protect-zones-recordsets.md).
 

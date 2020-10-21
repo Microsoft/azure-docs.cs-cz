@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: d92dad445b1aeace24dc0af7d95289f5535a5680
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281811"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329028"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Postup plánování nabídky virtuálního počítače
 
@@ -23,16 +23,13 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 
 ### <a name="technical-fundamentals"></a>Technické základy
 
-Proces navrhování, sestavování a testování nabídek trvá čas a vyžaduje odbornost na platformě Azure i v technologiích, které slouží k sestavování vaší nabídky. Váš technický tým by měl mít praktické znalosti o těchto technologiích Microsoftu:
-
-- [Návrh a Architektura aplikací Azure](https://azure.microsoft.com/solutions/architecture/)
-- Sítě [azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)a [Azure](https://azure.microsoft.com/services/?filter=networking#networking)
+Proces navrhování, sestavování a testování nabídek trvá čas a vyžaduje odbornost na platformě Azure i v technologiích, které slouží k sestavování vaší nabídky. Váš technický tým by měl mít praktické znalosti o sítích [azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)a [Azure](https://azure.microsoft.com/services/?filter=networking#networking)a také o [návrhu a architektuře aplikací Azure](https://azure.microsoft.com/solutions/architecture/). Podívejte se na tyto další technické materiály: 
 
 - Kurzy
   - [Virtuální počítače s Linuxem](../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../virtual-machines/windows/tutorial-manage-vm.md)
 
-- ukázky
+- Ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](../virtual-machines/linux/cli-samples.md)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](../virtual-machines/linux/powershell-samples.md)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](../virtual-machines/windows/cli-samples.md)
@@ -40,9 +37,17 @@ Proces navrhování, sestavování a testování nabídek trvá čas a vyžaduje
 
 ## <a name="technical-requirements"></a>Technické požadavky
 
+Nabídky virtuálních počítačů mají následující technické požadavky:
+
+- Musíte připravit jeden virtuální pevný disk operačního systému (VHD). Virtuální pevné disky datového disku jsou volitelné. Tato informace je podrobněji vysvětlena níže.
+- Zákazník může vaši nabídku kdykoli zrušit.
+- Musíte vytvořit aspoň jeden plán pro vaši nabídku. Ceny plánu se účtují na základě vámi vybrané [možnosti licencování](#licensing-options) .
+   > [!IMPORTANT]
+   > Každá image virtuálního počítače v plánu musí mít stejný počet datových disků.
+
 Virtuální počítač obsahuje dvě komponenty:
 
-- **Virtuální pevný disk s operačním systémem** – obsahuje operační systém a řešení, které se nasadí s vaší nabídkou. Proces přípravy VHD se liší v závislosti na tom, jestli se jedná o virtuální počítač se systémem Linux-, Windows nebo vlastní.
+- **Operační virtuální pevný disk** – obsahuje operační systém a řešení, které se nasadí s vaší nabídkou. Proces přípravy VHD se liší v závislosti na tom, jestli se jedná o virtuální počítač se systémem Linux-, Windows nebo vlastní.
 - **Virtuální pevné disky** (volitelné) datového disku – vyhrazené a trvalé úložiště pro virtuální počítač. Nepoužívejte virtuální pevný disk operačního systému (například jednotku C:) k ukládání trvalých informací. 
     - Můžete zahrnout až 16 datových disků.
     - Použijte jeden virtuální pevný disk na datový disk, a to i v případě, že je disk prázdný.
@@ -50,13 +55,7 @@ Virtuální počítač obsahuje dvě komponenty:
     > [!NOTE]
     > Bez ohledu na to, jaký operační systém používáte, přidejte jenom minimální počet datových disků, které řešení potřebuje. Zákazníci nemohou odebrat disky, které jsou součástí bitové kopie v době nasazení, ale mohou vždy přidávat disky během nebo po nasazení.
 
-Nabídky virtuálních počítačů mají následující technické požadavky:
-
-- Musíte připravit jeden virtuální pevný disk operačního systému (VHD). Virtuální pevné disky datového disku jsou volitelné.
-- Zákazník může vaši nabídku kdykoli zrušit.
-- Musíte vytvořit aspoň jeden plán pro vaši nabídku. Ceny plánu se účtují na základě vámi vybrané [možnosti licencování](#licensing-options) .
-   > [!IMPORTANT]
-   > Každá image virtuálního počítače v plánu musí mít stejný počet datových disků.
+Podrobné pokyny k přípravě technických prostředků najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](azure-vm-create-using-approved-base.md) nebo [Vytvoření virtuálního počítače pomocí vlastní image](azure-vm-create-using-own-image.md).
 
 ## <a name="preview-audience"></a>Cílová skupina Preview
 
@@ -134,5 +133,6 @@ Při vytváření vaší nabídky v partnerském centru se zobrazí karta pro **
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Vytvoření nabídky virtuálního počítače na Azure Marketplace](azure-vm-create.md)
 - [Vytvořte virtuální počítač pomocí schválené základny](azure-vm-create-using-approved-base.md) nebo [vytvořte virtuální počítač s použitím vlastní image](azure-vm-create-using-own-image.md).
 - [Osvědčené postupy nabídky](gtm-offer-listing-best-practices.md)

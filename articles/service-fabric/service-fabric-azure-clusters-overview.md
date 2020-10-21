@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c5e6fe92ce5ac118de204e43eb443b4aab3b698
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843307"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320511"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Přehled clusterů Service Fabric v Azure
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se označuje jako uzel clusteru. Clustery se můžou škálovat na tisíce uzlů. Pokud do clusteru přidáte nové uzly, Service Fabric rebilance repliky oddílů služby a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech.
@@ -45,7 +45,7 @@ Sady škálování můžete použít k nasazení a správě kolekce virtuálníc
 
 Další informace najdete v [Service Fabric typech uzlů a virtuálních počítačů Scale Sets](service-fabric-cluster-nodetypes.md).
 
-### <a name="azure-load-balancer"></a>Azure Load Balancer
+### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
 Instance virtuálních počítačů jsou připojené za [Nástroj pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-overview.md), který je přidružený k [veřejné IP adrese](../virtual-network/public-ip-addresses.md) a popisku DNS.  Když zřizujete cluster s názvem * &lt; &gt; název_clusteru*, název DNS, * &lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com* je popisek DNS přidružený k nástroji pro vyrovnávání zatížení před nastavenou stupnicí.
 
 Virtuální počítače v clusteru mají jenom [privátní IP adresy](../virtual-network/private-ip-addresses.md).  Provoz správy a provoz služeb jsou směrovány prostřednictvím veřejného nástroje pro vyrovnávání zatížení.  Síťový provoz se směruje na tyto počítače prostřednictvím pravidel NAT (klienti se připojují ke konkrétním uzlům/instancím) nebo pravidel vyrovnávání zatížení (provoz směřuje do virtuálních počítačů kruhového dotazování).  Nástroj pro vyrovnávání zatížení má přidruženou veřejnou IP adresu s názvem DNS ve formátu: * &lt; název_clusteru &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  Veřejná IP adresa je další prostředek Azure ve skupině prostředků.  Pokud v clusteru definujete více typů uzlů, vytvoří se nástroj pro vyrovnávání zatížení pro každou sadu typů nebo škálování uzlu. Nebo můžete nastavit jeden nástroj pro vyrovnávání zatížení pro více typů uzlů.  Typ primárního uzlu má název * &lt; klastru DNS &gt; . &lt; Location &gt; . cloudapp.Azure.com*, jiné typy uzlů mají název clusteru DNS * &lt; &gt; - &lt; NodeType &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
@@ -78,7 +78,7 @@ Další informace najdete v článku [Service Fabric Role-Based Access Control (
 ### <a name="network-security-groups"></a>Skupiny zabezpečení sítě 
 Skupiny zabezpečení sítě (skupin zabezpečení sítě) řízení příchozího a odchozího provozu podsítě, virtuálního počítače nebo konkrétního síťového adaptéru.  Ve výchozím nastavení platí, že pokud je více virtuálních počítačů umístěno ve stejné virtuální síti, mohou vzájemně komunikovat prostřednictvím libovolného portu.  Pokud chcete omezit komunikaci mezi počítači, můžete definovat skupin zabezpečení sítě k segmentaci sítě nebo izolaci virtuálních počítačů od sebe navzájem.  Pokud máte v clusteru více typů uzlů, můžete použít skupin zabezpečení sítě na podsítě, abyste zabránili vzájemné komunikaci počítačů, které patří různým typům uzlů.  
 
-Další informace najdete v článku o [skupinách zabezpečení](../virtual-network/security-overview.md) .
+Další informace najdete v článku o [skupinách zabezpečení](../virtual-network/network-security-groups-overview.md) .
 
 ## <a name="scaling"></a>Škálování
 
@@ -98,11 +98,11 @@ Můžete vytvářet clustery na virtuálních počítačích, na kterých běž�
 | --- | --- |
 | Windows Server 2012 R2 | Všechny verze |
 | Windows Server 2016 | Všechny verze |
-| Windows Server 1709 | 6,0 |
+| Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6,0 |
+| Linux Ubuntu 16,04 | 6.0 |
 | Linux Ubuntu 18,04 | 7.1 |
 
 Další informace najdete v tématu [podporované verze clusteru v Azure](./service-fabric-versions.md#supported-operating-systems) .

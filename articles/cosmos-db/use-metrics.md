@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6869aa8bc7ede7d2047abf8eddc98b01f567fa
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568008"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280811"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění pomocí metrik v Azure Cosmos DB
 
@@ -59,7 +59,7 @@ Dobré mohutnosti klíčů oddílů je nezbytné pro libovolnou škálovatelnou 
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Cosmos DB metriky výkonu v Azure Portal":::
 
-Nerovnoměrné rozdělení propustnosti může způsobovat *aktivní* oddíly, což může vést k omezení požadavků a může vyžadovat přerozdělení na oddíly. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
+Nerovnoměrné rozdělení propustnosti může způsobovat *aktivní* oddíly, což může vést k omezení požadavků a může vyžadovat přerozdělení na oddíly. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partitioning-overview.md).
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>Určení distribuce úložiště mezi oddíly
 
@@ -71,7 +71,7 @@ Můžete hlavní příčinu, která klíč oddílu zkosí rozdělení, kliknutí
 
 :::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Cosmos DB metriky výkonu v Azure Portal":::
 
-Po zjištění, který klíč oddílu způsobuje rozdělení v distribuci, bude pravděpodobně nutné znovu rozdělit svůj kontejner na více distribuovaných klíčů oddílu. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partition-data.md).
+Po zjištění, který klíč oddílu způsobuje rozdělení v distribuci, bude pravděpodobně nutné znovu rozdělit svůj kontejner na více distribuovaných klíčů oddílu. Další informace o dělení v Azure Cosmos DB najdete v tématu [dělení a škálování v Azure Cosmos DB](./partitioning-overview.md).
 
 ## <a name="compare-data-size-against-index-size"></a>Porovnat velikost dat s velikostí indexu
 

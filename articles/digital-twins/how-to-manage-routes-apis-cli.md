@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 652299ebb98f685a16871cf4e944608a471d8df2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 96d759f0f722e332eb25e049fd336c784eb99789
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279088"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332072"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -64,7 +64,7 @@ Jakmile téma vytvoříte, můžete ho propojit s digitálními akcemi Azure pom
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-Teď je téma Event gridu dostupné jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným `--endpoint-name` argumentem. Tento název obvykle použijete jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#event-routes-with-apis-and-the-c-sdk) pomocí rozhraní API služby Azure Digital.
+Teď je téma Event gridu dostupné jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným `--endpoint-name` argumentem. Tento název obvykle použijete jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#create-an-event-route) pomocí rozhraní API služby Azure Digital.
 
 ### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>Vytvoření koncového bodu Event Hubs nebo Service Bus
 
@@ -150,7 +150,7 @@ Tady je příklad zprávy nedoručených zpráv pro [dvojitou dobu vytvoření o
 }
 ```
 
-## <a name="event-routes-with-apis-and-the-c-sdk"></a>Trasy událostí (s rozhraními API a sadou C# SDK)
+## <a name="create-an-event-route"></a>Vytvoření trasy události
 
 Aby bylo možné ve skutečnosti odesílat data z digitálních vláken Azure do koncového bodu, bude nutné definovat **trasu události**. **Rozhraní API** pro digitální vlákna v Azure EventRoutes umožňují vývojářům nacházet v celém systému a na navazujících službách tok událostí. Přečtěte si další informace o trasách událostí v tématu [*Koncepty: směrování událostí digitálních vláken Azure*](concepts-route-events.md).
 
@@ -163,7 +163,7 @@ Ukázky v této části používají [sadu .NET (C#) SDK](https://www.nuget.org/
 >
 > Pokud tento tok spouštíte, můžete si ho vymezit tak, že sestavíte za 2-3 minut čekání na dokončení nasazování služby koncového bodu a teprve potom přejdete na nastavení směrování.
 
-### <a name="create-an-event-route"></a>Vytvoření trasy události
+### <a name="creation-code-with-apis-and-the-c-sdk"></a>Vytváření kódu pomocí rozhraní API a sady C# SDK
 
 Trasy událostí jsou definované pomocí [rozhraní API roviny dat](how-to-use-apis-sdks.md#overview-data-plane-apis). 
 
@@ -217,7 +217,7 @@ catch (RequestFailedException e)
 }
 ```
 
-### <a name="filter-events"></a>Události filtru
+## <a name="filter-events"></a>Události filtru
 
 Bez filtrování se koncovým bodům dostanou nejrůznější události z digitálních vláken Azure:
 * Telemetrie aktivovaná pomocí [digitálních vláken](concepts-twins-graph.md) pomocí rozhraní API služby Azure Digital Service

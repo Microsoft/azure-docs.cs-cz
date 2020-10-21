@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c578d9df8c008d73460801547e6b9361e60baa8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597508"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318004"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Kurz: vytvoření prvního balíčku přístupu ve správě nároků Azure AD
 
@@ -42,9 +42,9 @@ Podrobný příklad procesu nasazení správy opravňujících Azure Active Dire
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-Balíček pro přístup můžete také vytvořit programově pomocí Microsoft Graph. Kurz, ve kterém se dozvíte, jak vytvořit balíček pro přístup prostřednictvím kódu programu, najdete v tématu [rozhraní API pro správu oprávnění](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
+Balíček pro přístup můžete také vytvořit programově pomocí Microsoft Graph. Kurz, ve kterém se dozvíte, jak vytvořit balíček pro přístup prostřednictvím kódu programu, najdete v tématu [rozhraní API pro správu oprávnění](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat správu nároků služby Azure AD, musíte mít jednu z těchto licencí:
 

@@ -3,12 +3,12 @@ title: Použití centra událostí z aplikace Apache Kafka – Azure Event Hubs 
 description: Tento článek poskytuje informace o podpoře Apache Kafka službou Azure Event Hubs.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 95534d32bdf34d44a11b31c2476c153272717941
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2b101adf173f3d623bb85d811ba5832020313f14
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319851"
+ms.locfileid: "92327293"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití Azure Event Hubs z Apache Kafkach aplikací
 Event Hubs poskytuje koncový bod kompatibilní s rozhraními API Apache Kafka® výrobce a spotřebitele, která můžou používat většina stávajících klientských aplikací Apache Kafka jako alternativu ke spuštění vlastního Apache Kafka clusteru. Event Hubs podporuje klienty rozhraní API Apache Kafka výrobce a příjemce ve verzi 1,0 a vyšší.
@@ -60,7 +60,7 @@ Azure Event Hubs poskytuje několik možností, jak autorizovat přístup k vaš
 - Sdílený přístupový podpis (SAS)
 
 #### <a name="oauth-20"></a>OAuth 2.0
-Event Hubs se integruje s Azure Active Directory (Azure AD), která poskytuje centralizovaný autorizační server kompatibilní s **OAuth 2,0** . Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení jemně odstupňovaných oprávnění pro identity klientů. Tuto funkci můžete použít u klientů Kafka zadáním **SASL_SSL** pro protokol a  **OAUTHBEARER** pro mechanismus. Podrobnosti o rolích a úrovních Azure pro přístup k oboru najdete v tématu [autorizace přístupu pomocí Azure AD](authorize-access-azure-active-directory.md).
+Event Hubs se integruje s Azure Active Directory (Azure AD), která poskytuje centralizovaný autorizační server kompatibilní s **OAuth 2,0** . Pomocí Azure AD můžete pomocí řízení přístupu založeného na rolích Azure (Azure RBAC) udělit k identitě klientů jemně odstupňovaná oprávnění. Tuto funkci můžete použít u klientů Kafka zadáním **SASL_SSL** pro protokol a  **OAUTHBEARER** pro mechanismus. Podrobnosti o rolích a úrovních Azure pro přístup k oboru najdete v tématu [autorizace přístupu pomocí Azure AD](authorize-access-azure-active-directory.md).
 
 ```xml
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -83,7 +83,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 > [!NOTE]
 > Při použití ověřování pomocí SAS u klientů Kafka nejsou vytvořená připojení po opětovném vygenerování klíče SAS odpojena. 
 
-#### <a name="samples"></a>ukázky 
+#### <a name="samples"></a>Ukázky 
 **Kurz** s podrobnými pokyny k vytvoření centra událostí a přístup k němu pomocí SAS nebo OAuth najdete v tématu [rychlý Start: streamování dat pomocí Event Hubs pomocí protokolu Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
 Další **ukázky** , které ukazují, jak používat OAuth s Event Hubs pro Kafka, najdete v tématu [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).

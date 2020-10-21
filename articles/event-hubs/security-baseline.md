@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f47e9cb93b90c8a2401d1dfe6c0ff7800b0bcf27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 007409d755da2d879297b4b898663dcbd9fd6d7f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401125"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329623"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Základní hodnoty zabezpečení Azure pro Event Hubs
 
@@ -397,7 +397,7 @@ Jak nakonfigurovat pojmenovaná umístění v Azure: https://docs.microsoft.com/
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Doprovodné**materiály: použití Azure Active Directory (AD) jako centrálního ověřování a autorizačního systému pro prostředky Azure, jako je například Event Hubs. To umožňuje řízení přístupu na základě role (RBAC) pro správu citlivých prostředků.
+**Doprovodné**materiály: použití Azure Active Directory (AD) jako centrálního ověřování a autorizačního systému pro prostředky Azure, jako je například Event Hubs. To umožňuje řízení přístupu na základě role v Azure (Azure RBAC) pro správu citlivých prostředků.
 
  Jak vytvořit a nakonfigurovat instanci Azure AD: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -539,9 +539,9 @@ Pochopení ochrany zákaznických dat v Azure: https://docs.microsoft.com/azure/
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: Azure Event Hubs podporuje použití Azure Active Directory (AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby.
+**Pokyny**: Azure Event Hubs podporuje použití Azure Active Directory (AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role Azure (Azure RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instančního objektu aplikace.
 
-Pochopení služby Azure AD RBAC a dostupných rolí pro Azure Event Hubs: https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+Pochopení Azure RBAC a dostupných rolí pro Azure Event Hubs: https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Monitorování Azure Security Center**: nelze použít
 

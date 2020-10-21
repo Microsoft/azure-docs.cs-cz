@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a93ba674e82da090eb2b7c8805880f6e79d7e5d7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 565282b2da5383c1d3471337f64588f97157a79c
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280207"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328670"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -172,7 +172,6 @@ Aktualizace v září zahrnují:
 - [Vyloučení prostředku z doporučení](#exempt-a-resource-from-a-recommendation)
 - [Konektory AWS a GCP v Security Center přinášejí prostředí pro více cloudů](#aws-and-gcp-connectors-in-security-center-bring-a-multi-cloud-experience)
 - [Sada doporučení pro ochranu úloh Kubernetes](#kubernetes-workload-protection-recommendation-bundle)
-- [Vylepšení ochrany IoT Threat v Azure Defenderu pro IoT](#iot-threat-protection-enhancements-in-azure-defender-for-iot)
 - [Výsledky posouzení ohrožení zabezpečení jsou nyní k dispozici při průběžném exportu](#vulnerability-assessment-findings-are-now-available-in-continuous-export)
 - [Zabránit neoprávněným konfiguracím zabezpečení vynucováním doporučení při vytváření nových prostředků](#prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources)
 - [Vylepšení doporučení skupiny zabezpečení sítě](#network-security-group-recommendations-improved)
@@ -200,8 +199,7 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender for SQL](defender-for-sql-introduction.md)
-- [Azure Defender for IoT](defender-for-iot-introduction.md)
+- [Azure Defender pro SQL](defender-for-sql-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
@@ -293,13 +291,6 @@ Když jste nainstalovali doplněk Azure Policy pro Kubernetes do clusteru AKS, v
 Můžete například stanovit, že by se neměly vytvářet privilegované kontejnery a všechny budoucí požadavky tak budou zablokovány.
 
 Další informace najdete v článku [osvědčené postupy ochrany úloh pomocí řízení přístupu Kubernetes](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
-
-
-### <a name="iot-threat-protection-enhancements-in-azure-defender-for-iot"></a>Vylepšení ochrany IoT Threat v Azure Defenderu pro IoT
-
-Azure Defender pro IoT přináší více funkcí ochrany před hrozbami díky zahrnutí technologie bez agentů CyberX. To přináší ochranu zabezpečení pro nespravovaná zařízení brownfield používaná v prostředích provozní technologie, jako je například výroba, vytváření systémů pro správu (BMS), věd o životní prostředí, energetické a vodní pomůcky, ropný & plyn a logistika.
-
-Další informace najdete v [úvodu k Azure Defenderu pro IoT](defender-for-iot-introduction.md).
 
 
 ### <a name="vulnerability-assessment-findings-are-now-available-in-continuous-export"></a>Výsledky posouzení ohrožení zabezpečení jsou nyní k dispozici při průběžném exportu

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a01d4137217aa594d4636f3338d3f33dc03cc836
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6c3fff3ed265cb910388a2c9456b8a3f9d63c8b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713746"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281195"
 ---
 # <a name="pricing-of-azure-security-center"></a>Ceny Azure Security Center
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad úlohami hybridního cloudu, aktivní ochranou, která snižuje vaše nároky na hrozby a inteligentní zjišťování, které vám pomůže udržet krok s rychle se rozvíjejícími se internetovými útoky.
@@ -32,9 +32,10 @@ Security Center se nabízí ve dvou režimech:
 
 - **Azure Defender on** -umožňující Azure Defender rozšiřuje možnosti bezplatného režimu na úlohy spuštěné v privátních a dalších veřejných cloudech a poskytuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudy. Některé z hlavních funkcí v Azure Defenderu:
 
+    - **Microsoft Defender pro koncové body** – Azure Defender pro servery zahrnuje [Microsoft Defender pro koncové](https://www.microsoft.com/microsoft-365/security/endpoint-defender) body pro komplexní zjišťování koncových bodů a odpověď (EDR). Přečtěte si další informace o výhodách používání programu Microsoft Defender pro koncový bod společně s Azure Defenderem v [integrovaném řešení EDR Security Center](security-center-wdatp.md).
+    - **Chyba při vyhledávání virtuálních počítačů a registrů kontejnerů** – snadno nasadíte skener na všechny virtuální počítače, které poskytují špičkové řešení pro správu ohrožení zabezpečení. Zobrazit, prozkoumat a opravit zjištění přímo v rámci Security Center. 
     - **Hybridní zabezpečení** – Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami. Použijte zásady zabezpečení a průběžně vyhodnoťte zabezpečení vašich hybridních cloudových úloh, abyste zajistili dodržování standardů zabezpečení. Shromažďovat, vyhledávat a analyzovat data zabezpečení z různých zdrojů, včetně bran firewall a dalších partnerských řešení.
     - **Výstrahy ochrany před hrozbami** – Pokročilá analýza chování a Microsoft Intelligent Security Graph poskytují hraniční rozšíření pro počítačové útoky. Využijte integrované analýzy chování a strojové učení k identifikaci útoků a využívání funkce Zero Day. Monitorujte sítě, počítače a cloudové služby pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte šetření pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
-    - **Chyba při vyhledávání virtuálních počítačů a registrů kontejnerů** – snadno nasadíte skener na všechny virtuální počítače, které poskytují špičkové řešení pro správu ohrožení zabezpečení. Zobrazit, prozkoumat a opravit zjištění přímo v rámci Security Center. 
     - **Řízení přístupu a aplikací** – zablokuje malware a další nežádoucí aplikace, a to pomocí doporučení pro založenou na strojovém učení přizpůsobených vašim konkrétním úlohám a vytváření seznamů povolených a zakázaných. Snižte úroveň útoku na síť pomocí řízeného přístupu za běhu k portům pro správu virtuálních počítačů Azure. To významně snižuje riziko útoků hrubou silou a dalších sítí.
     - **Funkce zabezpečení kontejnerů** – výhody správy ohrožení zabezpečení a ochrany před hrozbami v reálném čase ve vašich kontejnerových prostředích. Když povolíte **Azure Defender pro Registry kontejnerů**, může to trvat až 12hrs, než se všechny funkce povolí. Poplatky vycházejí z počtu jedinečných imagí kontejnerů, které jsou vloženy do připojeného registru. Po kontrole obrázku jednou se vám nebude nic účtovat, dokud ho neupravíte a znovu nepřidáte. 
 

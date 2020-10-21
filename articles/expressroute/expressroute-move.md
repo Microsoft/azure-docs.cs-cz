@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.author: duau
-ms.openlocfilehash: 12ace8dff58d3d747bf17260950d2b91e31b398a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 649174e59c3e58b4675393ce665cf765016d5551
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395158"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331545"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager
 Tento článek obsahuje přehled toho, co znamená přesun okruhu Azure ExpressRoute z modelu nasazení Classic do Azure Resource Manager.
@@ -85,7 +85,7 @@ Tato část popisuje, co je podporováno pro okruhy ExpressRoute:
 Tato část popisuje, co není podporováno pro okruhy ExpressRoute:
 
 * Správa životního cyklu okruhu ExpressRoute z modelu nasazení Classic.
-* Podpora řízení přístupu na základě role (RBAC) pro model nasazení Classic. Nejde provádět řízení RBAC na okruh v modelu nasazení Classic. Libovolný správce nebo spolusprávce předplatného může propojit virtuální sítě k okruhu nebo toto propojení zrušit.
+* Podpora řízení přístupu na základě role Azure (Azure RBAC) pro model nasazení Classic. V modelu nasazení Classic nemůžete provádět řízení na Azure RBAC pro okruh. Libovolný správce nebo spolusprávce předplatného může propojit virtuální sítě k okruhu nebo toto propojení zrušit.
 
 ## <a name="configuration"></a>Konfigurace
 Postupujte podle pokynů uvedených v tématu [Přesun okruhu ExpressRoute z modelu nasazení Classic do Resource Manager](expressroute-howto-move-arm.md).

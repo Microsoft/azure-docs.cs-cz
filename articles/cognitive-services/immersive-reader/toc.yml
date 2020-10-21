@@ -40,6 +40,8 @@
       href: reference.md
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Podpora jazyků

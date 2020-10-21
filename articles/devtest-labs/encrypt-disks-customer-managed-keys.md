@@ -3,12 +3,12 @@ title: Šifrování disků s operačním systémem pomocí klíčů spravovanýc
 description: Naučte se šifrovat disky operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs.
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc29f8cf924bca6c757843ae8b7062757ff61bf
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489808"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329538"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Šifrování disků operačního systému (OS) pomocí klíčů spravovaných zákazníkem v Azure DevTest Labs
 Šifrování na straně serveru (SSE) chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. SSE automaticky šifruje vaše data uložená na spravovaných discích v Azure (s operačním systémem a datovými disky) ve výchozím nastavení, když je trvale ukládá do cloudu. Přečtěte si další informace o [šifrování disků](../virtual-machines/windows/disk-encryption.md) v Azure. 

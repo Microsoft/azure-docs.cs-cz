@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0126c5348a2acaebea0400a94ca0a1d14a1bf6ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c1734af799ee473d6ba75fe2e8ab8429afa51d0
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707539"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318198"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Vytvoření nového balíčku pro přístup ve správě nároků Azure AD
 
@@ -57,7 +57,7 @@ Tady je postup vysoké úrovně pro vytvoření nového přístupového balíčk
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Klikněte na **Azure Active Directory** a pak na zásady **správného řízení identity**.
 
@@ -67,7 +67,7 @@ Tady je postup vysoké úrovně pro vytvoření nového přístupového balíčk
    
     ![Správa nároků v Azure Portal](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>Základy
+## <a name="basics"></a>Základní kroky
 
 Na kartě **základy** udělíte přístupovému balíčku název a určíte, ke kterému katalogu se má balíček pro přístup vytvořit.
 
@@ -135,11 +135,11 @@ Na kartě **Revize + vytvořit** můžete zkontrolovat nastavení a zkontrolovat
 
 Balíček pro přístup můžete také vytvořit pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má delegované `EntitlementManagement.ReadWrite.All` oprávnění, může volat rozhraní API na
 
-1. [Seznamte se s accessPackageResources v katalogu](https://docs.microsoft.com/graph/api/accesspackagecatalog-list?view=graph-rest-beta&tabs=http) a [vytvořte accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&tabs=http) pro všechny prostředky, které ještě nejsou v katalogu.
-1. [Vypíše accessPackageResourceRoles](https://docs.microsoft.com/graph/api/accesspackage-list-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) každého accessPackageResourceu v accessPackageCatalog. Tento seznam rolí se pak použije k výběru role při následném vytvoření accessPackageResourceRoleScope.
-1. [Vytvořte accessPackage](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta).
-1. [Vytvořte accessPackageAssignmentPolicy](https://docs.microsoft.com/graph/api/accesspackageassignmentpolicy-post?view=graph-rest-beta&tabs=http).
-1. [Vytvořte accessPackageResourceRoleScope](https://docs.microsoft.com/graph/api/accesspackage-post-accesspackageresourcerolescopes?view=graph-rest-beta&tabs=http) pro každou roli prostředku potřebnou v balíčku pro přístup.
+1. [Seznamte se s accessPackageResources v katalogu](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta) a [vytvořte accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta) pro všechny prostředky, které ještě nejsou v katalogu.
+1. [Vypíše accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) každého accessPackageResourceu v accessPackageCatalog. Tento seznam rolí se pak použije k výběru role při následném vytvoření accessPackageResourceRoleScope.
+1. [Vytvořte accessPackage](/graph/tutorial-access-package-api?view=graph-rest-beta).
+1. [Vytvořte accessPackageAssignmentPolicy](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta).
+1. [Vytvořte accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) pro každou roli prostředku potřebnou v balíčku pro přístup.
 
 ## <a name="next-steps"></a>Další kroky
 

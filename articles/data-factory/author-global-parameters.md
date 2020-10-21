@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20bb77711833a1a17082e25e31d4a2e14db5bf9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567532"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328161"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globální parametry v Azure Data Factory
 
@@ -52,7 +52,7 @@ Pro většinu případů použití se doporučuje zahrnout globální parametry 
 
 ![Zahrnout do šablony ARM](media/author-global-parameters/include-arm-template.png)
 
-Přidáním globálních parametrů do šablony ARM přidáte nastavení na úrovni továrny, které může přepsat další nastavení na úrovni továrny, jako je například klíč spravovaný zákazníkem nebo konfigurace Gitu v jiných prostředích. Pokud máte tato nastavení povolená v prostředí se zvýšenými oprávněními, jako je UAT nebo PROD, je lepší nasadit globální parametry prostřednictvím skriptu PowerShellu v níže popsaném postupu.
+Přidáním globálních parametrů do šablony ARM přidáte nastavení na úrovni továrny, které přepíše další nastavení na úrovni továrny, jako je například klíč spravovaný zákazníkem nebo konfigurace Gitu v jiných prostředích. Pokud máte tato nastavení povolená v prostředí se zvýšenými oprávněními, jako je UAT nebo PROD, je lepší nasadit globální parametry prostřednictvím skriptu PowerShellu v níže popsaném postupu.
 
 ### <a name="deploying-using-powershell"></a>Nasazení pomocí PowerShellu
 

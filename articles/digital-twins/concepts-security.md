@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015000"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331749"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
 
-Z důvodu zabezpečení umožňuje digitální vlákna Azure přesné řízení přístupu ke konkrétním datům, prostředkům a akcím v nasazení. Provede to prostřednictvím podrobné strategie správy rolí a oprávnění označovaného jako **řízení přístupu na základě role (RBAC)**. [Tady](../role-based-access-control/overview.md)si můžete přečíst obecné principy RBAC pro Azure.
+Z důvodu zabezpečení umožňuje digitální vlákna Azure přesné řízení přístupu ke konkrétním datům, prostředkům a akcím v nasazení. Provede to prostřednictvím podrobné strategie správy rolí a oprávnění označovaného jako **řízení přístupu na základě role Azure (Azure RBAC)**. Obecné principy Azure RBAC si můžete přečíst [tady](../role-based-access-control/overview.md).
 
 Digitální vlákna Azure také podporuje šifrování dat v klidovém umístění.
 
-## <a name="granting-permissions-with-rbac"></a>Udělování oprávnění pomocí RBAC
+## <a name="granting-permissions-with-azure-rbac"></a>Udělování oprávnění pomocí Azure RBAC
 
-RBAC je poskytována pro digitální vlákna Azure pomocí integrace s [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
+Služba Azure RBAC se poskytuje pro digitální vlákna Azure prostřednictvím integrace s [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
 
-Pomocí RBAC můžete udělit oprávnění *objektu zabezpečení*, který může být uživatel, skupina nebo instanční objekt. Objekt zabezpečení je ověřený službou Azure AD a při návratu obdrží token OAuth 2,0. Tento token se dá použít k autorizaci žádosti o přístup k instanci digitálních vláken Azure.
+Službu Azure RBAC můžete použít k udělení oprávnění *objektu zabezpečení*, který může být uživatel, skupina nebo instanční objekt aplikace. Objekt zabezpečení je ověřený službou Azure AD a při návratu obdrží token OAuth 2,0. Tento token se dá použít k autorizaci žádosti o přístup k instanci digitálních vláken Azure.
 
 ### <a name="authentication-and-authorization"></a>Ověřování a autorizace
 
@@ -57,7 +57,7 @@ Azure poskytuje níže vestavěné role Azure pro autorizaci přístupu k prost�
 Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [*vysvětlení definic rolí*](../role-based-access-control/role-definitions.md) v dokumentaci k Azure RBAC. Informace o vytváření vlastních rolí Azure najdete v tématu [*vlastní role Azure*](../role-based-access-control/custom-roles.md).
 
 Role můžete přiřadit dvěma způsoby:
-* prostřednictvím podokna řízení přístupu (IAM) pro digitální vlákna Azure v Azure Portal (viz [*Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal*](../role-based-access-control/role-assignments-portal.md))
+* prostřednictvím podokna řízení přístupu (IAM) pro digitální vlákna Azure v Azure Portal (viz [*Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal*](../role-based-access-control/role-assignments-portal.md))
 * Přidání nebo odebrání role přes příkazy rozhraní příkazového řádku
 
 Podrobnější pokyny k tomu, jak to provést, najdete v kurzu o digitálních Zdvojeních Azure [*: připojení kompletního řešení*](tutorial-end-to-end.md).
@@ -95,4 +95,4 @@ Chcete-li tuto chybu vyřešit, můžete provést jednu z následujících akcí
 
 * Informace o tom, jak s těmito koncepty pracovat z klientského kódu aplikace v tématu [*Postupy: psaní ověřovacího kódu aplikace*](how-to-authenticate-client.md).
 
-* Přečtěte si další informace o [RBAC pro Azure](../role-based-access-control/overview.md).
+* Přečtěte si další informace o [službě Azure RBAC](../role-based-access-control/overview.md).

@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79479555"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330474"
 ---
 # <a name="install-azure-farmbeats"></a>Instalace služby Azure FarmBeats
 
@@ -42,7 +42,7 @@ Při instalaci Azure FarmBeats se ve vašem předplatném Azure zřídí tyto pr
 | Účet Azure Maps       |     Accelerator    |
 | Obor názvů centra událostí    |     Datahub      |
 | Aplikace logiky      |  Datahub       |
-| Účet úložiště      |     Akcelerátor & DataHub      |
+| Storage Account (Účet úložiště)      |     Akcelerátor & DataHub      |
 | Time Series Insights     |    Datahub    |
 
 ### <a name="costs-incurred"></a>Náklady vznikly
@@ -71,7 +71,7 @@ V současné době se Azure FarmBeats podporuje ve veřejných cloudových prost
 
 Celá instalace Azure FarmBeats, včetně přípravy a instalace, bude trvat méně než hodinu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s vlastní instalací Azure FarmBeats, musíte provést následující kroky:
 
@@ -87,7 +87,7 @@ První dvě oprávnění jsou potřebná k [Vytvoření kroku aplikace AAD](#cre
 
 Osoba, která spouští FarmBeats Install z Marketplace, musí být vlastníkem skupiny prostředků, ve které se instaluje FarmBeats. Pro vlastníky předplatného se k tomu automaticky dojde při vytvoření skupiny prostředků. Pro jiné nastavte skupinu prostředků předem a požádejte vlastníka předplatného, aby vás vytvořil jako vlastník skupiny prostředků.
 
-Oprávnění k přístupu můžete v Azure Portal ověřit podle pokynů v tématu [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+Oprávnění k přístupu můžete v Azure Portal ověřit podle pokynů v tématu [řízení přístupu na základě role v Azure](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
 ### <a name="decide-subscription-and-region"></a>Rozhodnutí o předplatném a oblasti
 
@@ -198,7 +198,7 @@ Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a 
 
 Cesta k input.jssouboru je volitelná. Pokud není zadaný, skript se vyzve pro všechny požadované vstupy. Upgrade by se měl dokončit během přibližně 30 minut.
 
-## <a name="uninstall"></a>Odinstalovat
+## <a name="uninstall"></a>Odinstalace
 
 Pokud chcete odinstalovat službu Azure FarmBeats DataHub nebo akcelerátor, proveďte následující kroky:
 

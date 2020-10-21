@@ -3,12 +3,12 @@ title: Koncepty DevTest Labs | Microsoft Docs
 description: Přečtěte si o základních konceptech DevTest Labs a o tom, jak usnadňuje vytváření, správu a monitorování virtuálních počítačů Azure.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b184f835ee99d47ddb843e5b02136299c26bfcdc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283839"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327854"
 ---
 # <a name="devtest-labs-concepts"></a>Koncepce DevTest Labs
 ## <a name="overview"></a>Přehled
@@ -56,7 +56,7 @@ Zásady vám pomůžou řídit náklady v testovacím prostředí. Můžete nap�
 CAPS je mechanismus pro minimalizaci odpadu v testovacím prostředí. Můžete například nastavit limit, který omezí počet virtuálních počítačů, které lze vytvořit pro jednotlivé uživatele, nebo v testovacím prostředí.
 
 ## <a name="security-levels"></a>Úrovně zabezpečení
-Přístup k zabezpečení závisí na řízení přístupu na základě role Azure (Azure RBAC). Abyste porozuměli tomu, jak Access funguje, pomůže pochopit rozdíly mezi oprávněními, rolí a oborem definovaným pomocí RBAC.
+Přístup k zabezpečení závisí na řízení přístupu na základě role Azure (Azure RBAC). Abyste porozuměli tomu, jak Access funguje, pomůže pochopit rozdíly mezi oprávněními, rolí a oborem definovaným v Azure RBAC.
 
 * Oprávnění – oprávnění je definovaný přístup k určité akci (např. přístup pro čtení ke všem virtuálním počítačům).
 * Role – role je sada oprávnění, která se dají seskupovat a přiřazovat uživateli. Například role *vlastníka předplatného* má přístup ke všem prostředkům v rámci předplatného.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 17474b4f38ccc6f43e664042b1218a8c253718e5
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 770c9f7d677f739781db6290fa0c43e410761d17
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203411"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327814"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -158,7 +158,7 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/quickstart-custom-container.md?pivots=platform-linux%253fpivots%253dplatform-linux).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 
@@ -193,7 +193,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHubu
+* GitHub
 * Puppet
 * Chef
 * TeamCity
@@ -233,7 +233,7 @@ Azure poskytuje dva způsoby, jak spravovat aplikace a služby z příkazového 
 
 -   [Azure PowerShell](/powershell/azure/): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí Windows PowerShellu.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 [Azure Portal](https://portal.azure.com) je webová aplikace. Pomocí Azure Portal můžete vytvářet, spravovat a odebírat prostředky a služby Azure. Obsahuje:
 
@@ -281,7 +281,7 @@ Pokud chcete vytvořit předplatné Azure nebo pracovat s ním, musíte mít ú�
 
 Každé předplatné služby Azure má vztah důvěryhodnosti s instancí služby Azure AD. To znamená, že tomuto adresáři svěřuje ověřování uživatelů, služeb i zařízení. Několik předplatných může důvěřovat stejnému adresáři, ale jedno předplatné důvěřuje pouze jednomu adresáři. Další informace najdete v tématu [jak jsou předplatná Azure přidružená k Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-I definování individuálních identit účtů Azure, označovaných také jako *Uživatelé*, můžete definovat *skupiny* v Azure AD. Vytváření skupin uživatelů je dobrým způsobem, jak spravovat přístup k prostředkům v rámci předplatného pomocí řízení přístupu na základě role (RBAC). Další informace o vytváření skupin najdete v tématu [Vytvoření skupiny v Azure Active Directory Preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Skupiny můžete také vytvářet a spravovat [pomocí prostředí PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+I definování individuálních identit účtů Azure, označovaných také jako *Uživatelé*, můžete definovat *skupiny* v Azure AD. Vytváření skupin uživatelů je dobrým způsobem, jak spravovat přístup k prostředkům v rámci předplatného pomocí řízení přístupu na základě role Azure (Azure RBAC). Další informace o vytváření skupin najdete v tématu [Vytvoření skupiny v Azure Active Directory Preview](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Skupiny můžete také vytvářet a spravovat [pomocí prostředí PowerShell](../../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
 
 ### <a name="manage-your-subscriptions"></a>Správa odběrů
 
@@ -297,11 +297,11 @@ Azure Resource Explorer je skvělý nástroj pro vizualizaci prostředků, kter�
 
 Když povolíte přístup k prostředkům Azure, doporučuje se uživatelům poskytnout nejnižší oprávnění, která jsou potřebná k provedení dané úlohy.
 
-- **Řízení přístupu na základě role (RBAC)**: v Azure můžete udělit přístup k uživatelským účtům (UPN) v zadaném oboru: předplatné, skupina prostředků nebo jednotlivé prostředky. RBAC umožňuje nasazení prostředků do skupiny prostředků a udělení oprávnění určitému uživateli nebo skupině. Umožňuje taky omezit přístup jenom na prostředky, které patří do cílové skupiny prostředků. Můžete taky udělit přístup k jednomu prostředku, jako je třeba virtuální počítač nebo virtuální síť. Chcete-li udělit přístup, přiřaďte roli uživateli, skupině nebo objektu služby. Existuje mnoho předdefinovaných rolí a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
+- **Řízení přístupu na základě role v Azure (Azure RBAC)**: v Azure můžete udělit přístup k uživatelským účtům v zadaném oboru: předplatné, skupina prostředků nebo jednotlivé prostředky. Azure RBAC umožňuje nasazení prostředků do skupiny prostředků a udělení oprávnění určitému uživateli nebo skupině. Umožňuje taky omezit přístup jenom na prostředky, které patří do cílové skupiny prostředků. Můžete taky udělit přístup k jednomu prostředku, jako je třeba virtuální počítač nebo virtuální síť. Chcete-li udělit přístup, přiřaďte roli uživateli, skupině nebo objektu služby. Existuje mnoho předdefinovaných rolí a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
   > **Kdy použít**: když pro uživatele a skupiny potřebujete jemně odstupňovanou správu přístupu, nebo když potřebujete nastavit uživatele jako vlastníka předplatného.
   >
-  > **Začínáme**: Další informace najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+  > **Začínáme**: Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 - **Instanční objekty služby**: společně s poskytnutím přístupu k objektům zabezpečení a skupinám můžete udělit stejný přístup k instančnímu objektu.
 
@@ -313,9 +313,9 @@ Azure Resource Manager umožňuje přiřadit k jednotlivým prostředkům vlastn
 
 * Na portálu
 * V šabloně Azure Resource Manager
-* S využitím REST API
+* Použití rozhraní REST API
 * Použití Azure CLI
-* Použití PowerShellu
+* Pomocí prostředí PowerShell
 
 Každému prostředku můžete přiřadit více značek. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../../azure-resource-manager/management/tag-resources.md).
 

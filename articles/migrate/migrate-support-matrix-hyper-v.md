@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení technologie Hyper-V v Azure Migrate
 description: Další informace o podpoře pro vyhodnocení technologie Hyper-V s Azure Migrate posouzení serveru
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 36cc96915380a464f02df5806337a06f022ecbbf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4c50bd2bdd0e5a0d68b545a914582352d7b34421
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311328"
+ms.locfileid: "92331970"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Matice podpory pro posouzení technologie Hyper-V
 
@@ -63,7 +63,7 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 **Zařízení** | **Připojení**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL: ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Odchozí připojení na portech 443 (HTTPS), která odesílají metadata zjišťování a výkonu Azure Migrate.
-**Hostitel nebo cluster Hyper-V** | Příchozí připojení na portu WinRM 5985 (HTTP), které vyžádá data o metadatech a výkonu pro virtuální počítače Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
+**Hostitel nebo cluster Hyper-V** | Příchozí připojení na portu WinRM 5985 (HTTP) nebo 5986 (HTTPS) pro vyžádání metadat a dat výkonu pro virtuální počítače Hyper-V pomocí relace model CIM (Common Information Model) (CIM).
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agentů
 

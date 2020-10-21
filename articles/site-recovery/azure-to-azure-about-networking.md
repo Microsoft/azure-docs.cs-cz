@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 525ab34bb9edff737686a88d7a8e664500282555
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320528"
+ms.locfileid: "92332038"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -29,7 +29,7 @@ Přečtěte si, jak Site Recovery poskytuje zotavení po havárii pro [Tento sc�
 
 Následující diagram znázorňuje typické prostředí Azure pro aplikace běžící na virtuálních počítačích Azure:
 
-![zákazník – prostředí](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![Diagram, který znázorňuje typické prostředí Azure pro aplikace běžící na virtuálních počítačích Azure.](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 Pokud používáte Azure ExpressRoute nebo připojení VPN z vaší místní sítě do Azure, prostředí je následující:
 

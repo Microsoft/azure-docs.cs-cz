@@ -4,12 +4,12 @@ description: Popisuje způsob nasazení Azure Resource Manager šablon pomocí a
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure,subject-armqs
-ms.openlocfilehash: b5852a65b4ed3c7cc73352fed37eeff035f8563c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106786"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282849"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Nasazení šablon Azure Resource Manager pomocí akcí GitHubu
 
@@ -40,13 +40,19 @@ Soubor má dvě části:
 
 [Instanční objekt](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
 
+Vytvořte skupinu prostředků, pokud ji ještě nemáte. 
+
+```azurecli-interactive
+    az group create -n {MyResourceGroup}
+```
+
 Zástupný symbol nahraďte `myApp` názvem vaší aplikace. 
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
+   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho předplatného a názvem skupiny prostředků. Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které poskytují přístup k vaší App Service aplikaci, která je podobná níže. Zkopírujte tento objekt JSON pro pozdější verzi.
+V předchozím příkladu Nahraďte zástupné symboly IDENTIFIKÁTORem vašeho předplatného a názvem skupiny prostředků. Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které poskytují přístup k vaší App Service aplikaci, která je podobná níže. Zkopírujte tento objekt JSON pro pozdější verzi. Tyto oddíly budete potřebovat jenom s `clientId` `clientSecret` hodnotami,, `subscriptionId` a `tenantId` . 
 
 ```output 
   {
@@ -73,9 +79,9 @@ Musíte vytvořit tajné kódy pro přihlašovací údaje Azure, skupinu prostř
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
-1. Vytvořte další tajný kód s názvem `AZURE_RG` . Přidejte název vaší skupiny prostředků do pole hodnota tajného klíče. 
+1. Vytvořte další tajný kód s názvem `AZURE_RG` . Přidejte název skupiny prostředků do pole hodnota tajného klíče (příklad: `myResourceGroup` ). 
 
-1. Vytvořte další tajný kód s názvem `AZURE_SUBSCRIPTION` . Přidejte své ID předplatného do pole hodnota tajného klíče. 
+1. Vytvořte další tajný kód s názvem `AZURE_SUBSCRIPTION` . Přidejte ID předplatného do pole hodnota tajného kódu (příklad: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
 
 ## <a name="add-resource-manager-template"></a>Přidat šablonu Správce prostředků
 
@@ -114,17 +120,19 @@ Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows*
             creds: ${{ secrets.AZURE_CREDENTIALS }}
      
           # Deploy ARM template
-        - uses: azure/arm-deploy@v1
         - name: Run ARM deploy
+          uses: azure/arm-deploy@v1
           with:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS
+            parameters: storageAccountType=Standard_LRS 
         
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
+    > [!NOTE]
+    > Místo toho můžete v akci nasazení ARM zadat soubor parametrů formátu JSON (příklad: `.azuredeploy.parameters.json` ).  
 
     První část souboru pracovního postupu obsahuje:
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: sample
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 10/21/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 948eea168b071813cf20e03d3a0744a824fd4c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4327d8426a5dc1668993efd418c3f21624d407d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773888"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327650"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -27,9 +27,6 @@ Microsoft Identity Platform můžete použít k těmto akcím:
 - Vyžadování přístupového tokenu pro přístup k chráněnému webovému rozhraní API.
 
 Tento článek stručně popisuje a poskytuje odkazy na ukázky pro koncový bod Microsoft Identity Platform. Tyto ukázky ukazují, jak je to hotové, a také poskytují fragmenty kódu, které můžete použít ve svých aplikacích. Na stránce ukázka kódu najdete podrobná témata týkající se souboru Readme, která vám pomůžou s požadavky, instalací a nastavením. Komentáře v kódu vám pomůžou pochopit důležité oddíly.
-
-> [!NOTE]
-> Pokud vás zajímá ukázky v 1.0, přečtěte si téma [ukázky kódu Azure AD (v 1.0 koncový bod)](../azuread-dev/sample-v1-code.md).
 
 Pokud chcete pochopit základní scénář pro každý typ vzorku, přečtěte si téma [typy aplikací pro koncový bod Microsoft Identity Platform](v2-app-types.md).
 
@@ -142,5 +139,4 @@ Další informace o [ukázkách](https://github.com/microsoftgraph/msgraph-commu
 
 ## <a name="see-also"></a>Viz také
 
-- [Příručka pro vývojáře Azure Active Directory (v 1.0)](../azuread-dev/v1-overview.md)
-- [Koncepční a referenční informace k rozhraní Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)
+[Koncepční a referenční informace k rozhraní Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2fbeta&view=graph-rest-beta)
