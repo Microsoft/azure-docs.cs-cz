@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eb266680cc514b1e2d70e510ed65e9a7790c0260
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 255fbe4036c83618dd0131b262d13709ab7f9c2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370330"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131883"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-microsoft-365-account"></a>Registrace předplatného Azure s využitím účtu Microsoft 365
 
-Pokud máte předplatné Microsoftu 365, můžete k vytvoření předplatného Azure použít svůj účet Microsoft 365. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého uživatelského jména a hesla pro Microsoft 365. Pokud chcete nastavit virtuální počítače nebo využívat další služby Azure, musíte si zaregistrovat předplatné Azure. Své předplatné Azure můžete sdílet s ostatními a [pomocí řízení přístupu na základě role v Azure (Azure RBAC) můžete spravovat přístup k vašemu předplatnému a prostředkům Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Pokud máte předplatné Microsoftu 365, můžete k vytvoření předplatného Azure použít svůj účet Microsoft 365. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého uživatelského jména a hesla pro Microsoft 365. Pokud chcete nastavit virtuální počítače nebo využívat další služby Azure, musíte si zaregistrovat předplatné Azure. Své předplatné Azure můžete sdílet s ostatními a [pomocí řízení přístupu na základě role v Azure (Azure RBAC) můžete spravovat přístup k vašemu předplatnému a prostředkům Azure](../../role-based-access-control/role-assignments-portal.md).
 
 Pokud již máte účet Microsoft 365 i předplatné Azure, projděte si [přidružení tenanta Microsoftu 365 k předplatnému Azure](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -57,4 +57,4 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- Své předplatné Azure můžete sdílet s ostatními a [pomocí řízení přístupu na základě role v Azure (Azure RBAC) můžete spravovat přístup k vašemu předplatnému a prostředkům Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+- Své předplatné Azure můžete sdílet s ostatními a [pomocí řízení přístupu na základě role v Azure (Azure RBAC) můžete spravovat přístup k vašemu předplatnému a prostředkům Azure](../../role-based-access-control/role-assignments-portal.md).

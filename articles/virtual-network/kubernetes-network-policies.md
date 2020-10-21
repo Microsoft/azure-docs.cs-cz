@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 0ecf3e5f30ee38c0d60c77df3d6aae3ad90930e9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332235"
+ms.locfileid: "92342310"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Přehled zásad sítě Azure Kubernetes
 
@@ -154,7 +154,7 @@ Otevřete Azure Portal. Jakmile budete mít přehled o clusteru, přejděte do �
 Kromě zobrazení sešitu (obrázky níže) můžete také přímo zadat dotaz na metriky Prometheus v části protokoly v části přehledy. Tento dotaz bude například vracet všechny shromažďované metriky.
 | kde TimeGenerated > před (5H) | kde název obsahuje "npm_"
 
-Můžete také zadat dotaz na Log Analytics přímo pro metriky. Další informace o této Začínáme s dotazy Log Analytics] (https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
+Můžete také zadat dotaz na Log Analytics přímo pro metriky. Další informace o Začínáme s [dotazy Log Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>Zobrazení v řídicím panelu Grafana
 Nastavte server Grafana a nakonfigurujte zdroj dat Log Analytics, jak je popsáno [zde](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource). Pak naimportujte [řídicí panel Grafana pomocí back-endu Log Analytics](https://grafana.com/grafana/dashboards/10956) do Grafana Labs.

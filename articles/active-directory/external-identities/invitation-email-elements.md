@@ -5,28 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439840"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340589"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory
 
 E-maily pozvánky jsou důležitou součástí, která zajistí, aby partneři na panelu jako uživatelé spolupráce B2B v Azure AD. I když se nevyžaduje [odeslání e-mailu s pozváním na někoho, kdo používá spolupráci B2B](add-user-without-invite.md), umožní to uživateli získat všechny informace, které potřebují k rozhodnutí o tom, jestli chce pozvánku přijmout. Poskytuje jim taky odkaz, na který se můžou v budoucnu kdykoli odkázat, když se potřebují vrátit k vašim prostředkům.
 
 ![Snímek obrazovky s e-mailem pozvánky B2B](media/invitation-email-elements/invitation-email.png)
-
-> [!NOTE]
-> Tato nová šablona e-mailu se pořád nasazuje všem klientům, takže někteří klienti pořád používají starší návrh. Po konci května 2020 budou tyto šablony používat pozvánky ze všech tenantů.
 
 ## <a name="explaining-the-email"></a>Vysvětlení e-mailu
 
@@ -52,17 +49,11 @@ E-mail začíná stručným upozorněním na uživatele o phishingu a upozorňuj
 
 ![Obrázek podvodného upozornění v e-mailu](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>Informace pozvat
+### <a name="inviters-information-and-invitation-message"></a>Informace a zpráva pozvánky pozvánky
 
-E-mail obsahuje informace o pozvánce a organizaci, ze které posílá Pozvánka. To zahrnuje jméno odesílatele a e-mailovou adresu a také název a primární doménu přidruženou k organizaci. Všechny tyto informace by vám měly požádat, aby Pozvánka pomohly o přijetí pozvánky.
+E-mail obsahuje název a primární doménu přidruženou k organizaci, která pozvánku posílá. Tyto informace by měly být užitečné pro pozvání k rozhodnutí o přijetí pozvánky. Pokud Pozvánka obsahuje zprávu jako součást své pozvánky [, když vyzve uživatele typu Host k adresáři, skupině nebo aplikaci](add-users-administrator.md) nebo když [používají rozhraní API pozvánky](customize-invitation-api.md), zpráva se zvýrazní v hlavní části e-mailu. K dispozici jsou také názvy a profily pozvánky, pokud je nastavila. Samotná zpráva je textová oblast, z důvodů zabezpečení proto nezpracovává značky HTML.
 
-![Obrázek informací pozvat do e-mailu](media/invitation-email-elements/inviters-information.png)
-
-### <a name="invitation-message"></a>Zpráva pozvánky
-
-Pokud Pozvánka obsahuje zprávu jako součást své pozvánky [, když vyzve uživatele typu Host k adresáři, skupině nebo aplikaci](add-users-administrator.md) nebo když [používají rozhraní API pozvánky](customize-invitation-api.md), zpráva se zvýrazní v hlavní části e-mailu. K dispozici jsou také názvy a profily pozvánky, pokud je nastavila. Samotná zpráva je textová oblast, z důvodů zabezpečení proto nezpracovává značky HTML.
-
-![Obrázek zprávy s pozvánkou v e-mailu](media/invitation-email-elements/invitation-message.png)
+![Obrázek zprávy s pozvánkou v e-mailu](media/invitation-email-elements/invitation-message-inviters-info.png)
 
 ### <a name="accept-button-and-redirect-url"></a>Tlačítko přijmout a adresa URL pro přesměrování
 

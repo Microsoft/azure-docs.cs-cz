@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 939e621da414fc2d4d55d85e8b66a409b1338941
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372183"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131968"
 ---
 # <a name="manage-costs-with-automation"></a>Správa nákladů s využitím automatizace
 
@@ -21,7 +21,7 @@ Automatizaci služby Cost Management můžete využít k vytvoření vlastní sa
 
 ## <a name="automate-cost-data-retrieval-for-offline-analysis"></a>Automatizace načítání údajů o nákladech pro offline analýzu
 
-Možná potřebujete stáhnout údaje o nákladech na Azure a sloučit je s jinými datovými sadami. Nebo údaje o nákladech potřebujete integrovat do vlastních systémů. V závislosti na objemu dat jsou k dispozici různé možnosti. V každém případě je pro použití rozhraní API a nástrojů potřeba, abyste měli oprávnění služby Cost Management v odpovídajícím rozsahu. Další informace najdete v tématu [Přiřazení přístupu k datům](https://docs.microsoft.com/azure/cost-management-billing/costs/assign-access-acm-data).
+Možná potřebujete stáhnout údaje o nákladech na Azure a sloučit je s jinými datovými sadami. Nebo údaje o nákladech potřebujete integrovat do vlastních systémů. V závislosti na objemu dat jsou k dispozici různé možnosti. V každém případě je pro použití rozhraní API a nástrojů potřeba, abyste měli oprávnění služby Cost Management v odpovídajícím rozsahu. Další informace najdete v tématu [Přiřazení přístupu k datům](./assign-access-acm-data.md).
 
 ## <a name="suggestions-for-handling-large-datasets"></a>Návrhy pro zpracování velkých datových sad
 
@@ -29,33 +29,33 @@ Pokud vaše organizace značně využívá Azure napříč mnoha prostředky neb
 
 **Power BI**
 
-Power BI slouží k ingestování a zpracování velkých objemů dat. Pokud jste zákazník se smlouvou Enterprise, můžete k analýze nákladů pro fakturační účet použít šablonu Power BI. Tato sestava obsahuje klíčová zobrazení používaná zákazníky. Další informace najdete v tématu [Analýza nákladů na Azure s využitím aplikace šablony Power BI](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app).
+Power BI slouží k ingestování a zpracování velkých objemů dat. Pokud jste zákazník se smlouvou Enterprise, můžete k analýze nákladů pro fakturační účet použít šablonu Power BI. Tato sestava obsahuje klíčová zobrazení používaná zákazníky. Další informace najdete v tématu [Analýza nákladů na Azure s využitím aplikace šablony Power BI](./analyze-cost-data-azure-cost-management-power-bi-template-app.md).
 
 **Konektor dat Power BI**
 
-Pokud chcete data analyzovat denně, doporučujeme k získání dat pro podrobnou analýzu použít [konektor dat Power BI](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management). Všechny sestavy, které vytvoříte, budou díky konektoru stále aktuální, jak budou nabíhat další náklady.
+Pokud chcete data analyzovat denně, doporučujeme k získání dat pro podrobnou analýzu použít [konektor dat Power BI](/power-bi/connect-data/desktop-connect-azure-cost-management). Všechny sestavy, které vytvoříte, budou díky konektoru stále aktuální, jak budou nabíhat další náklady.
 
 **Exporty služby Cost Management**
 
-Možná nepotřebovat data analyzovat každý den. Pokud tomu tak je, zvažte použití funkce [Exporty](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) ve službě Cost Management k plánování exportů dat do účtu služby Azure Storage. Potom můžete data načíst do Power BI podle potřeby, nebo je analyzovat v Excelu, pokud je soubor dostatečně malý. Exporty jsou k dispozici na webu Azure Portal nebo je můžete nakonfigurovat pomocí [Rozhraní API pro export](https://docs.microsoft.com/rest/api/cost-management/exports).
+Možná nepotřebovat data analyzovat každý den. Pokud tomu tak je, zvažte použití funkce [Exporty](./tutorial-export-acm-data.md) ve službě Cost Management k plánování exportů dat do účtu služby Azure Storage. Potom můžete data načíst do Power BI podle potřeby, nebo je analyzovat v Excelu, pokud je soubor dostatečně malý. Exporty jsou k dispozici na webu Azure Portal nebo je můžete nakonfigurovat pomocí [Rozhraní API pro export](/rest/api/cost-management/exports).
 
 **Rozhraní API pro podrobnosti využití**
 
-Použití [rozhraní API pro podrobnosti využití](https://docs.microsoft.com/rest/api/consumption/usageDetails) zvažte, pokud máte malou sadu údajů o nákladech. Pokud máte velké množství nákladových dat, měli byste si pro konkrétní období vyžádat co nejmenší objem údajů o využití. Provedete to tak, že buď zadáte krátký časový rozsah, nebo v požadavku použijete filtr. Například ve scénáři, kdy potřebujete nákladová data za tři roky, bude rozhraní API fungovat lépe, pokud použijete několik volání pro různé časové rozsahy, nikoli jedno volání. Potom můžete data načíst do Excelu pro další analýzu.
+Použití [rozhraní API pro podrobnosti využití](/rest/api/consumption/usageDetails) zvažte, pokud máte malou sadu údajů o nákladech. Pokud máte velké množství nákladových dat, měli byste si pro konkrétní období vyžádat co nejmenší objem údajů o využití. Provedete to tak, že buď zadáte krátký časový rozsah, nebo v požadavku použijete filtr. Například ve scénáři, kdy potřebujete nákladová data za tři roky, bude rozhraní API fungovat lépe, pokud použijete několik volání pro různé časové rozsahy, nikoli jedno volání. Potom můžete data načíst do Excelu pro další analýzu.
 
 ## <a name="automate-retrieval-with-usage-details-api"></a>Automatizace načítání pomocí rozhraní API pro podrobnosti využití
 
-[Rozhraní API pro podrobnosti využití](https://docs.microsoft.com/rest/api/consumption/usageDetails) poskytuje snadný způsob získání nezpracovaných a neagregovaných nákladových dat, která odpovídají vyúčtování Azure. Toto rozhraní API je užitečné v případě, že vaše organizace potřebuje řešení pro načítání dat prostřednictvím kódu programu. Použití tohoto rozhraní API zvažte, pokud chcete analyzovat menší sady nákladových dat. Pokud ale máte rozsáhlejší datové sady, měli byste použít jiná řešení uvedená výše. Data v podrobnostech o využití se poskytují na základě měřičů pro jednotlivé dny. Používají se při výpočtu měsíčního vyúčtování. Všeobecně dostupná verze (GA) těchto rozhraní API je `2019-10-01`. Verzi `2019-04-01-preview` použijte pro přístup k verzi Preview pro rezervace a nákupy na Azure Marketplace s využitím rozhraní API.
+[Rozhraní API pro podrobnosti využití](/rest/api/consumption/usageDetails) poskytuje snadný způsob získání nezpracovaných a neagregovaných nákladových dat, která odpovídají vyúčtování Azure. Toto rozhraní API je užitečné v případě, že vaše organizace potřebuje řešení pro načítání dat prostřednictvím kódu programu. Použití tohoto rozhraní API zvažte, pokud chcete analyzovat menší sady nákladových dat. Pokud ale máte rozsáhlejší datové sady, měli byste použít jiná řešení uvedená výše. Data v podrobnostech o využití se poskytují na základě měřičů pro jednotlivé dny. Používají se při výpočtu měsíčního vyúčtování. Všeobecně dostupná verze (GA) těchto rozhraní API je `2019-10-01`. Verzi `2019-04-01-preview` použijte pro přístup k verzi Preview pro rezervace a nákupy na Azure Marketplace s využitím rozhraní API.
 
 ### <a name="usage-details-api-suggestions"></a>Návrhy rozhraní API pro podrobnosti využití
 
 **Plán požadavků**
 
-Doporučujeme zadávat _maximálně jeden požadavek_ na rozhraní API pro podrobnosti využití za den. Další informace o tom, jak často se aktualizují nákladová data a jak se zachází se zaokrouhlováním, najdete v tématu [Vysvětlení dat služby Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#rated-usage-data-refresh-schedule).
+Doporučujeme zadávat _maximálně jeden požadavek_ na rozhraní API pro podrobnosti využití za den. Další informace o tom, jak často se aktualizují nákladová data a jak se zachází se zaokrouhlováním, najdete v tématu [Vysvětlení dat služby Cost Management](./understand-cost-mgt-data.md).
 
 **Cílení na hlavní rozsahy bez filtrování**
 
-Rozhraní API využijte k získání všech potřebných dat na nejvyšší úrovni, která je k dispozici. Před jakýmkoli filtrováním, seskupováním nebo agregovanou analýzou počkejte, než se všechna potřebná data ingestují. Toto rozhraní API je optimalizované speciálně pro poskytování velkých objemů neagregovaných nezpracovaných nákladových dat. Další informace o rozsazích dostupných ve službě Cost Management najdete v tématu [Vysvětlení a práce s rozsahy](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-work-scopes). Po stažení potřebných dat pro příslušný rozsah použijte aplikaci Excel k analýze těchto dat s využitím filtrů a kontingenčních tabulek.
+Rozhraní API využijte k získání všech potřebných dat na nejvyšší úrovni, která je k dispozici. Před jakýmkoli filtrováním, seskupováním nebo agregovanou analýzou počkejte, než se všechna potřebná data ingestují. Toto rozhraní API je optimalizované speciálně pro poskytování velkých objemů neagregovaných nezpracovaných nákladových dat. Další informace o rozsazích dostupných ve službě Cost Management najdete v tématu [Vysvětlení a práce s rozsahy](./understand-work-scopes.md). Po stažení potřebných dat pro příslušný rozsah použijte aplikaci Excel k analýze těchto dat s využitím filtrů a kontingenčních tabulek.
 
 ## <a name="example-usage-details-api-requests"></a>Příklady požadavků na rozhraní API pro podrobnostmi využití
 
@@ -329,6 +329,6 @@ Pro zajištění konzistentního prostředí pro všechny předplatitele služby
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Analýza nákladů na Azure s využitím aplikace šablony Power BI](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app)
-- [Vytvoření a správa exportovaných dat](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data) s využitím funkce Exporty
-- Další informace o [rozhraní API pro podrobnosti využití](https://docs.microsoft.com/rest/api/consumption/usageDetails)
+- [Analýza nákladů na Azure s využitím aplikace šablony Power BI](./analyze-cost-data-azure-cost-management-power-bi-template-app.md)
+- [Vytvoření a správa exportovaných dat](./tutorial-export-acm-data.md) s využitím funkce Exporty
+- Další informace o [rozhraní API pro podrobnosti využití](/rest/api/consumption/usageDetails)

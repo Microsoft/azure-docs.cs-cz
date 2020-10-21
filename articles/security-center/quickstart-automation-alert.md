@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c86561f7c677ec4a335ecb04cc0da95dad119d1e
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906349"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340967"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Rychlý Start: Vytvoření automatické odpovědi na konkrétní výstrahu zabezpečení pomocí šablony Azure Resource Manager (šablona ARM)
 
@@ -64,7 +64,7 @@ Další šablony pro rychlý Start Security Center najdete v těchto [komunitác
 
     [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
-    Další informace o této možnosti nasazení najdete v tématu nasazení [šablon z úložiště GitHub pomocí tlačítka nasazení](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button).
+    Další informace o této možnosti nasazení najdete v tématu nasazení [šablon z úložiště GitHub pomocí tlačítka nasazení](../azure-resource-manager/templates/deploy-to-azure-button.md).
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
@@ -94,4 +94,4 @@ Pokud už je nepotřebujete, odstraňte automatizaci pracovního postupu pomocí
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Kurz: vytvoření a nasazení první šablony ARM](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

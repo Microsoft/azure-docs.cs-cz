@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532597"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342072"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Použití Azure Defenderu pro Registry kontejnerů k prohledávání imagí pro ohrožení zabezpečení
 
@@ -29,8 +29,8 @@ Když skener ohlásí chyby zabezpečení pro Security Center, Security Center j
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro Registry kontejnerů** se účtuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Podporované registry a Image:|![Ano ](./media/icons/yes-icon.png) . ACR Registry hostované pro Linux, které jsou přístupné z veřejného Internetu a poskytují přístup k prostředí.<br>![Žádné ](./media/icons/no-icon.png) Registry ACR hostované v systému Windows.<br>![Žádné ](./media/icons/no-icon.png) ' privátní ' Registry-Security Center vyžaduje, aby vaše registry byly přístupné z veřejného Internetu. Security Center se aktuálně nemůže připojit k registrům s přístupem, které jsou omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure.<br>![Žádné ](./media/icons/no-icon.png) Image minimalist, jako jsou [pomocné image Docker](https://hub.docker.com/_/scratch/) , nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému.|
-|Požadované role a oprávnění:|Role **Čtenář zabezpečení** a [Azure Container Registry Reader](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Požadované role a oprávnění:|Role **Čtenář zabezpečení** a [Azure Container Registry Reader](../container-registry/container-registry-roles.md)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 

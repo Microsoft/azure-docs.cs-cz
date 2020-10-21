@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: d829ffb9d3a264052e3f688018acd7afa854578e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 49533947ff01aea07eaacd9d761b6414fb672a1c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018266"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339471"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat Azure Security Center
 
@@ -51,7 +51,7 @@ Microsoft používá ke zvýšení možností prevence a detekce vzory a analýz
 ## <a name="manage-data-collection-from-machines"></a>Správa shromažďování dat z počítačů
 Když povolíte službu Security Center v Azure, u každého vašeho předplatného Azure se zapne funkce shromažďování dat. Můžete také povolit shromažďování dat pro vaše předplatná v Security Center. Když je povolené shromažďování dat, Security Center zřídí agenta Log Analytics na všech stávajících podporovaných virtuálních počítačích Azure a všech nově vytvořených.
 
-Agent Log Analytics vyhledává různé konfigurace a události související se zabezpečením v [trasování událostí pro Windows](https://docs.microsoft.com/windows/win32/etw/event-tracing-portal) (ETW). Operační systém bude kromě toho během chodu počítače shromažďovat události protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Agent Log Analytics načte položky protokolu událostí a trasování ETW a zkopíruje je do vašich pracovních prostorů pro účely analýzy. Agent Log Analytics taky umožňuje události vytváření procesů a auditování na příkazovém řádku.
+Agent Log Analytics vyhledává různé konfigurace a události související se zabezpečením v [trasování událostí pro Windows](/windows/win32/etw/event-tracing-portal) (ETW). Operační systém bude kromě toho během chodu počítače shromažďovat události protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Agent Log Analytics načte položky protokolu událostí a trasování ETW a zkopíruje je do vašich pracovních prostorů pro účely analýzy. Agent Log Analytics taky umožňuje události vytváření procesů a auditování na příkazovém řádku.
 
 Pokud nepoužíváte Azure Defender, můžete taky zakázat shromažďování dat z virtuálních počítačů v zásadách zabezpečení. Pro předplatná, která jsou chráněná pomocí Azure Defenderu, se vyžaduje shromažďování dat. Shromažďování artefaktů a snímků disku virtuálního počítače bude nadále povolené i v případě, že shromažďování dat je zakázané.
 
@@ -83,9 +83,9 @@ Zákazníci mohou získat přístup k Security Center související data z násl
 | Datový proud                                                                                | Typy dat                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Protokol aktivit Azure](../azure-monitor/platform/activity-log.md)                       | Všechny výstrahy zabezpečení, schválené Security Center požadavky na přístup [za běhu](security-center-just-in-time.md) a všechny výstrahy vygenerované [adaptivními ovládacími prvky aplikace](security-center-adaptive-application.md).|
-| [Protokoly Azure Monitor](../azure-monitor/platform/data-platform.md)                      | Všechny výstrahy zabezpečení                                                                                                                                                                                                |
+| [Protokoly Azure Monitoru](../azure-monitor/platform/data-platform.md)                      | Všechny výstrahy zabezpečení                                                                                                                                                                                                |
 | [Azure Resource Graph](../governance/resource-graph/overview.md)                      | Výstrahy zabezpečení, doporučení zabezpečení, výsledky posouzení ohrožení zabezpečení, informace o bezpečném hodnocení, stav kontrol dodržování předpisů a další.                                                                       |
-| [Rozhraní REST API služby Azure Security Center](https://docs.microsoft.com/rest/api/securitycenter/) | Výstrahy zabezpečení, doporučení zabezpečení a další.                                                                                                                                                                |
+| [Rozhraní REST API služby Azure Security Center](/rest/api/securitycenter/) | Výstrahy zabezpečení, doporučení zabezpečení a další.                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |
 
 ## <a name="next-steps"></a>Další kroky

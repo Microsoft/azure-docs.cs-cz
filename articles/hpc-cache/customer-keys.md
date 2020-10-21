@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092520"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340525"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Použití šifrovacích klíčů spravovaných zákazníkem pro mezipaměť HPC Azure
 
@@ -58,7 +58,7 @@ Přístupová oprávnění trezoru klíčů:
 
 * Uživatel, který vytváří mezipaměť prostředí Azure HPC, musí mít oprávnění ekvivalentní [roli přispěvatele Key Vault](../role-based-access-control/built-in-roles.md#key-vault-contributor). K nastavení a správě Azure Key Vault je potřeba mít stejná oprávnění.
 
-  Pro další informace si přečtěte [zabezpečený přístup k trezoru klíčů](../key-vault/key-vault-secure-your-key-vault.md) .
+  Pro další informace si přečtěte [zabezpečený přístup k trezoru klíčů](../key-vault/general/secure-your-key-vault.md) .
 
 ## <a name="1-set-up-azure-key-vault"></a>1. nastavení Azure Key Vault
 
@@ -66,7 +66,7 @@ Trezor klíčů a klíč můžete nastavit před vytvořením mezipaměti nebo v
 
 V okamžiku vytvoření mezipaměti musíte zadat trezor, klíč a verzi klíče, které se mají použít pro šifrování mezipaměti.
 
-Podrobnosti najdete v [dokumentaci k Azure Key Vault](../key-vault/key-vault-overview.md) .
+Podrobnosti najdete v [dokumentaci k Azure Key Vault](../key-vault/general/overview.md) .
 
 > [!NOTE]
 > Azure Key Vault musí používat stejné předplatné a musí být ve stejné oblasti jako mezipaměť prostředí Azure HPC. Ujistěte se, že oblast, kterou zvolíte, [podporuje funkci klíčů spravovaných zákazníkem](hpc-cache-overview.md#region-availability).
@@ -92,7 +92,7 @@ Uživatel, který vytváří mezipaměť, musí mít oprávnění rovna [roli p�
 
 1. Po výběru trezoru Vyberte jednotlivý klíč z dostupných možností nebo vytvořte nový klíč. Klíč musí být 2048 klíč RSA.
 
-1. Zadejte verzi vybraného klíče. Přečtěte si další informace o tom, jak se správou verzí v [dokumentaci Azure Key Vault](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning).
+1. Zadejte verzi vybraného klíče. Přečtěte si další informace o tom, jak se správou verzí v [dokumentaci Azure Key Vault](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning).
 
 Pokračujte ve zbývajících specifikacích a vytvořte mezipaměť, jak je popsáno v tématu [vytvoření mezipaměti prostředí Azure HPC](hpc-cache-create.md).
 

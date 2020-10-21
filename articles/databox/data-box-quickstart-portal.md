@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924508"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122785"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Začínáme s Azure Data Boxem pro import dat do Azure
 
@@ -40,7 +40,7 @@ Než začnete:
 
 - Typ předplatného, které používáte pro službu Data Box, musí být jeden z následujících:
     - Smlouva Microsoft Enterprise (EA). Další informace o [předplatných se smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
-    - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
+    - Cloud Solution Provider (CSP). Další informace o [programu Azure CSP](/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Microsoft Azure Sponsorship. Získejte další informace o [programu Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 
 - Pokud chcete vytvořit objednávku Data Boxu, potřebujete mít u předplatného přístup vlastníka nebo přispěvatele.
@@ -131,7 +131,7 @@ Tento krok trvá 5 až 7 minut.
 
 Doba trvání této operace závisí na množství dat a rychlosti sítě.
  
-1. Pokud používáte hostitele Windows, použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB, jako je třeba Robocopy. Pro hostitele systému souborů NFS použijte ke kopírování dat příkaz `cp` nebo `rsync`. Připojte nástroj k zařízení a začněte kopírovat data do sdílených složek. Další informace o tom, jak použít Robocopy ke kopírování dat, získáte v tématu [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+1. Pokud používáte hostitele Windows, použijte nástroj pro kopírování souborů kompatibilní s protokolem SMB, jako je třeba Robocopy. Pro hostitele systému souborů NFS použijte ke kopírování dat příkaz `cp` nebo `rsync`. Připojte nástroj k zařízení a začněte kopírovat data do sdílených složek. Další informace o tom, jak použít Robocopy ke kopírování dat, získáte v tématu [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10)).
 2. Připojte se ke sdíleným složkám s použitím cesty: `\\<IP address of your device>\ShareName`. Pokud chcete získat přihlašovací údaje ke sdílené složce, přejděte na stránku **Connect & copy** (Připojit a kopírovat) v místním webovém uživatelském rozhraní Data Boxu.
 3. Název sdílené složky a složky a data musí vyhovovat pokynům popsaným v tématu [Omezení služby Azure Storage a Data Boxu](data-box-limits.md).
 
@@ -170,5 +170,3 @@ V tomto rychlém startu jste nasadili Azure Data Box, který vám má pomoci s i
 > [Použití webu Azure Portal ke správě Data Boxu](data-box-portal-admin.md)
 
 ::: zone-end
-
-

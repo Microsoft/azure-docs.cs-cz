@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372353"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132291"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -180,7 +180,7 @@ Pro poskytovatele CSP se zákazníky, kteří mají Smlouvu se zákazníkem Micr
 
 Spravovat a zobrazovat náklady na fakturační účty, fakturační profily a zákazníky přímo v partnerském tenantovi Azure můžou jenom uživatelé s oprávněním *globálního správce* a *agenta správy*. Další informace o rolích Partnerského centra najdete v tématu [Přiřazení uživatelských rolí a oprávnění](/partner-center/permissions-overview).
 
-Pokud mají zákazníci Smlouvu se zákazníkem Microsoftu, podporuje Azure Cost Management pouze zákazníky partnerů CSP. Informace o zákaznících podporovaných poskytovateli CSP, kteří ještě nemají Smlouvu se zákazníkem Microsoftu, najdete v [Partnerském centru](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+Pokud mají zákazníci Smlouvu se zákazníkem Microsoftu, podporuje Azure Cost Management pouze zákazníky partnerů CSP. Informace o zákaznících podporovaných poskytovateli CSP, kteří ještě nemají Smlouvu se zákazníkem Microsoftu, najdete v [Partnerském centru](/azure/cloud-solution-provider/overview/partner-center-overview).
 
 Cost Management nepodporuje skupiny pro správu v rozsazích CSP. Pokud máte předplatné CSP a při analýze nákladů jako rozsah nastavíte skupinu pro správu, zobrazí se chybová zpráva podobná této:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: c6bb335ad7783c180ceeaafde955d6ac9dcb8799
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d156887416fb9a587c9690c3b275229e91f1dbe
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280121"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339794"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -93,7 +93,7 @@ Každý program zabezpečení zahrnuje několik pracovních postupů pro reakci 
 
 Další informace o funkcích automatických a ručních Security Center pro spouštění pracovních postupů najdete v tématu [automatizace pracovních postupů](workflow-automation.md).
 
-Přečtěte si další informace o [vytváření Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Přečtěte si další informace o [vytváření Logic Apps](../logic-apps/logic-apps-overview.md).
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Integrace Azure Security Center s centrem pro správu Windows
@@ -214,7 +214,7 @@ Dnes zavádíme novou funkci v Security Center, která zákazníkům umožňuje 
 
 Další informace o funkcích automatických a ručních Security Center pro spouštění pracovních postupů najdete v tématu [automatizace pracovních postupů](workflow-automation.md).
 
-Další informace o vytváření Logic Apps najdete v tématu [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Další informace o vytváření Logic Apps najdete v tématu [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 
 ### <a name="quick-fix-for-bulk-resources-generally-available"></a>Rychlá oprava pro hromadné prostředky je všeobecně dostupná
@@ -270,9 +270,9 @@ Aplikace, které jsou nainstalované na virtuálních počítačích, by mohly �
 
 Podpora Azure Security Center ochrany před hrozbami a posouzení ohrožení zabezpečení pro SQL databáze běžící na virtuálních počítačích s IaaS je teď ve verzi Preview.
 
-[Posouzení ohrožení zabezpečení](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) je snadno konfigurovatelná služba, která může zjišťovat, sledovat a pomáhat opravovat potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stav zabezpečení jako součást služby Azure Secure skore a zahrnuje kroky pro řešení problémů se zabezpečením a vylepšení fortifications databáze.
+[Posouzení ohrožení zabezpečení](../azure-sql/database/sql-vulnerability-assessment.md) je snadno konfigurovatelná služba, která může zjišťovat, sledovat a pomáhat opravovat potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stav zabezpečení jako součást služby Azure Secure skore a zahrnuje kroky pro řešení problémů se zabezpečením a vylepšení fortifications databáze.
 
-[Rozšířená ochrana před internetovými útoky](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k SQL serveru nebo jeho zneužití. Nepřetržitě monitoruje vaši databázi pro podezřelé aktivity a poskytuje výstrahy zabezpečení zaměřené na akce na vzorech přístupu k databázi neobvyklé. Tyto výstrahy obsahují podrobnosti o podezřelé aktivitě a doporučené akce pro šetření a zmírnění hrozby.
+[Rozšířená ochrana před internetovými útoky](../azure-sql/database/threat-detection-overview.md) detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k SQL serveru nebo jeho zneužití. Nepřetržitě monitoruje vaši databázi pro podezřelé aktivity a poskytuje výstrahy zabezpečení zaměřené na akce na vzorech přístupu k databázi neobvyklé. Tyto výstrahy obsahují podrobnosti o podezřelé aktivitě a doporučené akce pro šetření a zmírnění hrozby.
 
 
 ### <a name="support-for-custom-policies-preview"></a>Podpora vlastních zásad (Preview)
@@ -346,7 +346,7 @@ Když pro své virtuální počítače povolíte JIT, vytvoříte zásadu, kter�
 
 Požadavky se zaznamenávají do protokolu aktivit Azure, takže můžete snadno sledovat a auditovat přístup. Stránka za běhu také pomáhá rychle identifikovat stávající virtuální počítače s povoleným JIT a virtuálními počítači, kde se doporučuje JIT.
 
-[Přečtěte si další informace o Azure firewall](https://docs.microsoft.com/azure/firewall/overview).
+[Přečtěte si další informace o Azure firewall](../firewall/overview.md).
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>Zvýšení zabezpečení stav (Preview) jedním kliknutím na nápravu

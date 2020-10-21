@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 33a53fa46d7d07183b77f2608d44f8ea5d0d2804
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371911"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132257"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -71,13 +71,13 @@ Na portálu Azure EA můžete spravovat náklady a použití Azure EA. Na portá
 
 Každá role má jinou úroveň přístupu a jiná oprávnění.
 
-Další informace o rolích uživatelů najdete v tématu [Role podnikových uživatelů](https://docs.microsoft.com/azure/billing/billing-ea-portal-get-started#enterprise-user-roles).
+Další informace o rolích uživatelů najdete v tématu [Role podnikových uživatelů](./ea-portal-get-started.md#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Přidání účtu Azure EA
 
 Účet Azure EA je organizační jednotka portálu Azure EA Portal. Slouží ke správě předplatných a také ke generování sestav. Pokud chcete získat přístup ke službám Azure, potřebujete vytvořit účet nebo vám ho někdo musí vytvořit.
 
-Další informace o účtech Azure najdete v tématu [Přidání účtu](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#add-an-account).
+Další informace o účtech Azure najdete v tématu [Přidání účtu](./ea-portal-get-started.md#add-an-account).
 
 ## <a name="enterprise-devtest-offer"></a>Nabídka Enterprise pro vývoj/testování
 

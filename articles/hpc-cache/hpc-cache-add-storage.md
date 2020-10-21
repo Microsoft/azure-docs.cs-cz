@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611270"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340304"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -74,9 +74,9 @@ Po dokončení klikněte na tlačítko **OK** a přidejte tak cíl úložiště.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Přidání rolí řízení přístupu ke svému účtu
 
-Azure HPC Cache používá [řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) k autorizaci služby cache pro přístup k vašemu účtu úložiště pro cíle Azure Blob Storage.
+Azure HPC Cache používá [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/index.yml) k autorizaci služby cache pro přístup k vašemu účtu úložiště pro cíle Azure Blob Storage.
 
-Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) pro uživatele "poskytovatel prostředků mezipaměti HPC".
+Vlastník účtu úložiště musí explicitně přidat role přispěvatele [účtu úložiště](../role-based-access-control/built-in-roles.md#storage-account-contributor) a přispěvatel [dat objektů BLOB úložiště](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) pro uživatele "poskytovatel prostředků mezipaměti HPC".
 
 Můžete to provést předem nebo kliknutím na odkaz na stránce, kam přidáte cíl úložiště objektů BLOB. Mějte na paměti, že může trvat až pět minut, než se nastavení role rozšíří přes prostředí Azure, takže byste před vytvořením cíle úložiště měli počkat několik minut od přidání rolí.
 

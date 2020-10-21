@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: d2814a989cb82216081083f3198d52ccd70210ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666105"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131917"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -69,7 +69,7 @@ Pokud jste přijali vlastnictví fakturace předplatného Azure, doporučujeme v
 1. Zkontrolujte a aktualizujte správce služby, spolusprávce a další přiřazení rolí Azure. Pokud se chcete dozvědět víc, přečtěte si téma [Přidání nebo změna správců předplatného Azure](add-change-subscription-administrator.md) a téma věnované [přidání nebo odebrání přiřazení rolí Azure s využitím webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 1. Aktualizujte přihlašovací údaje přidružené službám tohoto předplatného, mezi které patří:
    1. Certifikáty pro správu, které udělují uživateli oprávnění správce prostředků předplatného. Další informace najdete v tématu o [vytvoření a nahrání certifikátu pro správu Azure](../../cloud-services/cloud-services-certs-create.md).
-   1. Přístupové klíče pro služby, jako je Storage. Další informace najdete v článku o [účtech Azure Storage](../../storage/common/storage-create-storage-account.md).
+   1. Přístupové klíče pro služby, jako je Storage. Další informace najdete v článku o [účtech Azure Storage](../../storage/common/storage-account-create.md).
    1. Oprávnění pro vzdálený přístup ke službám, jako je Azure Virtual Machines.
 1. Pokud pracujete s partnerem, zvažte u předplatného aktualizaci ID partnera. ID partnera můžete aktualizovat na webu [Azure Portal](https://portal.azure.com). Další informace najdete v článku [Propojení ID partnera s účty Azure](link-partner-id.md).
 

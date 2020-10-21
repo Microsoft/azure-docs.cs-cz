@@ -7,13 +7,13 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: matjazl
-ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cavoeg
+ms.openlocfilehash: ea9a47676b8294b2541c27d361b0dc2fa1ae3627
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007566"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339504"
 ---
 # <a name="features"></a>Funkce
 
@@ -25,29 +25,29 @@ Nejnovější verze je podporována: `4.0.1`
 
 Předchozí verze, které jsou aktuálně podporované, zahrnují: `3.0.2`
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 
 | Rozhraní API                            | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| read                           | Yes       | Yes       | Yes       |                                                     |
-| vread                          | Yes       | Yes       | Yes       |                                                     |
-| update                         | Yes       | Yes       | Yes       |                                                     |
-| aktualizace s optimistické uzamykání | Yes       | Yes       | Yes       |                                                     |
-| aktualizovat (podmíněné)           | Yes       | Yes       | Yes       |                                                     |
-| použita                          | No        | No        | No        |                                                     |
-| delete                         | Yes       | Yes       | Yes       |                                                     |
-| Odstranit (podmíněné)           | No        | No        | No        |                                                     |
-| vytvoření                         | Yes       | Yes       | Yes       | Podpora pro POST/PUT                               |
-| vytvořit (podmíněné)           | Yes       | Yes       | Yes       |                                                     |
+| read                           | Ano       | Ano       | Ano       |                                                     |
+| vread                          | Ano       | Ano       | Ano       |                                                     |
+| update                         | Ano       | Ano       | Ano       |                                                     |
+| aktualizace s optimistické uzamykání | Ano       | Ano       | Ano       |                                                     |
+| aktualizovat (podmíněné)           | Ano       | Ano       | Ano       |                                                     |
+| použita                          | Ne        | Ne        | Ne        |                                                     |
+| delete                         | Ano       | Ano       | Ano       |                                                     |
+| Odstranit (podmíněné)           | Ne        | Ne        | Ne        |                                                     |
+| historie                        | Ano       | Ano       | Ano       |                                                     |
+| vytvoření                         | Ano       | Ano       | Ano       | Podpora pro POST/PUT                               |
+| vytvořit (podmíněné)           | Ano       | Ano       | Ano       |                                                     |
 | search                         | Částečné   | Částečné   | Částečné   | Viz níže                                           |
-| zřetězené hledání                 | No        | Yes       | No        |                                           |
-| zpětné zřetězené hledání         | No        | No        | No        |                                            |
-| možnosti                   | Yes       | Yes       | Yes       |                                                     |
-| dávka                          | Yes       | Yes       | Yes       |                                                     |
-| transakce                    | No        | Yes       | No        |                                                     |
-| historie                        | Yes       | Yes       | Yes       |                                                     |
+| zřetězené hledání                 | Ne        | Ano       | Ne        |                                           |
+| zpětné zřetězené hledání         | Ne        | Ne        | Ne        |                                            |
+| možnosti                   | Ano       | Ano       | Ano       |                                                     |
+| dávka                          | Ano       | Ano       | Ano       |                                                     |
+| transakce                    | Ne        | Ano       | Ne        |                                                     |
 | přenosu                         | Částečné   | Částečné   | Částečné   | `self` a `next` jsou podporovány                     |
-| prostředníci                 | No        | No        | No        |                                                     |
+| prostředníci                 | Ne        | Ne        | Ne        |                                                     |
 
 ## <a name="search"></a>Hledat
 
@@ -55,67 +55,69 @@ Všechny typy parametrů vyhledávání jsou podporovány.
 
 | Typ parametru hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-----------------------|-----------|-----------|-----------|---------|
-| Číslo                | Yes       | Yes       | Yes       |         |
-| Datum/datum a čas         | Yes       | Yes       | Ano       |         |
-| Řetězec                | Yes       | Yes       | Yes       |         |
-| Token                 | Yes       | Yes       | Yes       |         |
-| Odkaz             | Yes       | Yes       | Yes       |         |
-| Složený             | Yes       | Yes       | Yes       |         |
-| Množství              | Yes       | Yes       | Yes       |         |
-| Identifikátor URI                   | Yes       | Yes       | Yes       |         |
-| Speciální               | No        | No        | No        |         |
+| Číslo                | Ano       | Ano       | Ano       |         |
+| Datum/datum a čas         | Ano       | Ano       | Ano       |         |
+| Řetězec                | Ano       | Ano       | Ano       |         |
+| Token                 | Ano       | Ano       | Ano       |         |
+| Referenční informace             | Ano       | Ano       | Ano       |         |
+| Složený             | Ano       | Ano       | Ano       |         |
+| Množství              | Ano       | Ano       | Ano       |         |
+| Identifikátor URI                   | Ano       | Ano       | Ano       |         |
+| Speciální               | Ne        | Ne        | Ne        |         |
 
 
 | Modifikátory             | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-----------------------|-----------|-----------|-----------|---------|
-|`:missing`             | Yes       | Yes       | Yes       |         |
-|`:exact`               | Yes       | Yes       | Yes       |         |
-|`:contains`            | Yes       | Yes       | Yes       |         |
-|`:text`                | Yes       | Yes       | Yes       |         |
-|`:in` klíčové          | No        | No        | No        |         |
-|`:below` klíčové       | No        | No        | No        |         |
-|`:above` klíčové       | No        | No        | No        |         |
-|`:not-in` klíčové      | No        | No        | No        |         |
-|`:[type]` odkaz  | No        | No        | No        |         |
-|`:below` identifikátor URI         | Yes       | Yes       | Yes       |         |
-|`:not`                 | No        | No        | No        |         |
-|`:above` identifikátor URI         | No        | No        | No        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:missing`             | Ano       | Ano       | Ano       |         |
+|`:exact`               | Ano       | Ano       | Ano       |         |
+|`:contains`            | Ano       | Ano       | Ano       |         |
+|`:text`                | Ano       | Ano       | Ano       |         |
+|`:in` klíčové          | Ne        | Ne        | Ne        |         |
+|`:below` klíčové       | Ne        | Ne        | Ne        |         |
+|`:above` klíčové       | Ne        | Ne        | Ne        |         |
+|`:not-in` klíčové      | Ne        | Ne        | Ne        |         |
+|`:[type]` odkaz  | Ne        | Ne        | Ne        |         |
+|`:below` identifikátor URI         | Ano       | Ano       | Ano       |         |
+|`:not`                 | Ne        | Ne        | Ne        |         |
+|`:above` identifikátor URI         | Ne        | Ne        | Ne        | Problém [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Společný parametr hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------| ----------| ----------| ----------|---------|
-| `_id`                   | Yes       | Yes       | Yes       |         |
-| `_lastUpdated`          | Yes       | Yes       | Yes       |         |
-| `_tag`                  | Yes       | Yes       | Yes       |         |
-| `_profile`              | Yes       | Yes       | Yes       |         |
-| `_security`             | Yes       | Yes       | Yes       |         |
-| `_text`                 | No        | No        | No        |         |
-| `_content`              | No        | No        | No        |         |
-| `_list`                 | Yes       | Yes       | Yes       |         |
-| `_has`                  | No        | No        | No        |         |
-| `_type`                 | Yes       | Yes       | Yes       |         |
-| `_query`                | No        | No        | No        |         |
+| `_id`                   | Ano       | Ano       | Ano       |         |
+| `_lastUpdated`          | Ano       | Ano       | Ano       |         |
+| `_tag`                  | Ano       | Ano       | Ano       |         |
+| `_profile`              | Ano       | Ano       | Ano       |         |
+| `_security`             | Ano       | Ano       | Ano       |         |
+| `_text`                 | Ne        | Ne        | Ne        |         |
+| `_content`              | Ne        | Ne        | Ne        |         |
+| `_list`                 | Ano       | Ano       | Ano       |         |
+| `_has`                  | Ne        | Ne        | Ne        |         |
+| `_type`                 | Ano       | Ano       | Ano       |         |
+| `_query`                | Ne        | Ne        | Ne        |         |
+| `_filter`               | Ne        | Ne        | Ne        |         |
 
-| Operace hledání       | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
+| Parametry výsledků hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_filter`               | No        | No        | No        |         |
 | `_sort`                 | Částečné        | Částečné   | Částečné        |   `_sort=_lastUpdated` je podporováno       |
-| `_score`                | No        | No        | No        |         |
-| `_count`                | Yes       | Yes       | Yes       |         |
+| `_count`                | Ano       | Ano       | Ano       | `_count` je omezen na 100 znaků. Pokud je nastavena na hodnotu vyšší než 100, bude vrácena pouze 100 a v balíčku bude vráceno upozornění. |
+| `_include`              | Ne        | Ano       | Ne        |         |
+| `_revinclude`           | Ne        | Ano       | Ne        | Zahrnuté položky jsou omezeny na 100. |
 | `_summary`              | Částečné   | Částečné   | Částečné   | `_summary=count` je podporováno |
-| `_include`              | No        | Yes       | No        |         |
-| `_revinclude`           | No        | Yes       | No        | Zahrnuté položky jsou omezeny na 100. |
-| `_contained`            | No        | No        | No        |         |
-| `_elements`             | Yes        | Yes        | Yes        |         |
+| `_total`                | Částečné   | Částečné   | Částečné   | _total = non and _total = přesný      |
+| `_elements`             | Ano       | Ano       | Ano       |         |
+| `_contained`            | Ne        | Ne        | Ne        |         |
+| `containedType`         | Ne        | Ne        | Ne        |         |
+| `_score`                | Ne        | Ne        | Ne        |         |
 
 ## <a name="extended-operations"></a>Rozšířené operace
 
 Všechny podporované operace, které rozšiřuje rozhraní RESTful API.
 
 | Typ parametru hledání | Podporováno – PaaS | Podporováno – OSS (SQL) | Podporované – OSS (Cosmos DB) | Komentář |
-|-----------------------|-----------|-----------|-----------|---------|
-| $export (celý systém)                | Yes       | Yes       | Yes       |         |
-| Pacient/$export         | Yes       | Yes       | Yes       |         |
-| Skupina/$export               | Yes       | Yes       | Yes       |         |
+|------------------------|-----------|-----------|-----------|---------|
+| $export (celý systém) | Ano       | Ano       | Ano       |         |
+| Pacient/$export        | Ano       | Ano       | Ano       |         |
+| Skupina/$export          | Ano       | Ano       | Ano       |         |
 
 ## <a name="persistence"></a>Uchování
 
