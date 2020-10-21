@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570193"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278768"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Globální distribuce dat pomocí Azure Cosmos DB
 
 V současné době se od aplikací žádá, aby byly vysoce responzivní a vždy online. Aby bylo možné zajistit nízkou latenci a vysokou dostupnost, instance aplikací je potřeba nasazovat do datových center, která se nachází v blízkosti uživatelů. Tyto aplikace jsou obvykle nasazeny v několika datových centrech a jsou označovány jako globálně distribuované. Globálně distribuované aplikace potřebují globálně distribuovanou databázi, která dokáže transparentně replikovat data po celém světě, aby mohly pracovat s kopií dat, která je blízko uživatelům. 
 
-Azure Cosmos DB je globálně distribuovaná databázová služba, která je navržená tak, aby poskytovala nízkou latenci, elastickou škálovatelnost propustnosti, jasně definovanou sémantiku pro konzistenci dat a vysokou dostupnost. Krátce, pokud vaše aplikace potřebuje zaručit rychlou dobu odezvy kdekoliv na světě, pokud je potřeba, aby byla vždycky online, a potřebuje neomezenou a pružnou škálovatelnost propustnosti a úložiště, měli byste sestavit aplikaci na Azure Cosmos DB.
+Azure Cosmos DB je globálně distribuovaná databázová služba, která je navržená tak, aby poskytovala nízkou latenci, elastickou škálovatelnost propustnosti, jasně definovanou sémantiku pro konzistenci dat a vysokou dostupnost. Krátce, pokud vaše aplikace potřebuje rychlou odezvu kdekoli na světě, pokud je potřeba, aby byla vždycky online, a potřebuje neomezenou a pružnou škálovatelnost propustnosti a úložiště, měli byste sestavit aplikaci na Azure Cosmos DB.
 
 Své databáze můžete nakonfigurovat tak, aby byly globálně distribuované a dostupné v libovolné oblasti Azure. Pokud chcete snížit latenci, umístěte data blízko do místa, kde jsou vaši uživatelé. Výběr požadovaných oblastí závisí na globálním dosahu vaší aplikace a na umístění uživatelů. Cosmos DB transparentně replikuje data do všech oblastí přidružených k vašemu účtu Cosmos. Poskytuje jedinou systémovou bitovou kopii vaší globálně distribuované databáze a kontejnerů Azure Cosmos, které může vaše aplikace číst a zapisovat do místního počítače. 
 
@@ -29,7 +29,7 @@ Pomocí Azure Cosmos DB můžete kdykoli přidat nebo odebrat oblasti přidruže
 
 **Sestavování globálních aktivních – aktivních aplikací.** Díky novému zápisu do více oblastí zapisuje replikační protokol každá oblast podporuje zápis i čtení. Funkce zápisu ve více oblastech taky umožňuje:
 
-- Neomezený pružný zápis a škálovatelnost pro čtení. 
+- Neomezený pružný zápis a škálovatelnost pro čtení.
 - 99,999% dostupnost čtení a zápisu všech po celém světě.
 - Garantuje čtení a zápisy poskytované za méně než 10 milisekund v 99 percentilu.
 
@@ -41,7 +41,7 @@ Pomocí Azure Cosmos DB rozhraní API pro více domovských míst vaše aplikace
 
 **Udržujte kontinuitu podnikových aplikací během regionálních výpadků.** Azure Cosmos DB podporuje [automatické převzetí služeb při selhání](how-to-manage-database-account.md#automatic-failover) při regionálním výpadku. Během regionálního výpadku Azure Cosmos DB nadále udržovat latenci, dostupnost, konzistenci a SLA propustnost. Aby bylo možné zajistit vysokou dostupnost celé aplikace, Cosmos DB nabízí rozhraní API pro ruční převzetí služeb při selhání pro simulaci oblasti výpadku regionu. Pomocí tohoto rozhraní API můžete provádět běžné cvičení provozní kontinuity.
 
-**Globální škálování a propustnost čtení a zápisu** Každé oblasti můžete povolit zapisovatelné a elasticky škálovat čtení a zápisy po celém světě. Propustnost, kterou vaše aplikace konfiguruje v databázi Azure Cosmos nebo v kontejneru, je zaručená pro doručování ve všech oblastech přidružených k vašemu účtu Azure Cosmos. Zajištěná propustnost je zaručena podle [finančně zálohovaných SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
+**Globální škálování a propustnost čtení a zápisu** Každé oblasti můžete povolit zapisovatelné a elasticky škálovat čtení a zápisy po celém světě. Propustnost, kterou vaše aplikace nakonfiguruje v databázi Azure Cosmos nebo ve všech oblastech přidružených k vašemu účtu Azure Cosmos, se zřizuje v rámci všech oblastí. Zajištěná propustnost je zaručena podle [finančně zálohovaných SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
 
 **Vyberte si z několika dobře definovaných modelů konzistence.** Protokol replikace Azure Cosmos DB nabízí pět dobře definovaných, praktických a intuitivních modelů konzistence. Každý model má kompromisy mezi konzistencí a výkonem. Tyto modely konzistence slouží k snadnému sestavování globálně distribuovaných aplikací.
 

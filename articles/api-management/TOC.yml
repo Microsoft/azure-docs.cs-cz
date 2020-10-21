@@ -80,6 +80,8 @@
       href: self-hosted-gateway-overview.md
     - name: Pozorovatelnost
       href: observability.md
+    - name: CI/CD s využitím šablon ARM
+      href: devops-api-development-templates.md
 - name: Návody
   items:
     - name: Definování rozhraní API
@@ -158,6 +160,8 @@
       items:
         - name: Vysvětlení portálu pro vývojáře
           href: api-management-howto-developer-portal.md
+        - name: Migrace ze zastaralého vývojářského portálu na nový
+          href: developer-portal-deprecated-migration.md
         - name: Ověřování pomocí Azure AD
           href: api-management-howto-aad.md
         - name: Ověřování pomocí Azure AD B2C
@@ -168,13 +172,13 @@
           href: api-management-howto-configure-notifications.md
         - name: Povolení podpory OAuth v konzole
           href: api-management-howto-oauth2.md
-        - name: Starší verze portálu – přizpůsobení portálu
+        - name: Zastaralý portál – přizpůsobení portálu
           href: api-management-customize-styles.md
-        - name: Starší verze portálu – změna stránek a rozložení
+        - name: Zastaralý portály – změna stránek a rozložení
           href: api-management-modify-content-layout.md
-        - name: Starší verze portálu – přizpůsobení s využitím šablon
+        - name: Zastaralý portál – přizpůsobení s využitím šablon
           href: api-management-developer-portal-templates.md
-    - name: Šablony starší verze portálu
+    - name: Šablony zastaralého portálu
       items:
         - name: Referenční informace k datovému modelu
           href: api-management-template-data-model-reference.md

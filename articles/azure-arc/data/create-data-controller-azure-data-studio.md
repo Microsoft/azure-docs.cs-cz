@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 208c9b4172719b876766f0c4d07a17caa24bfd63
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273139"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310953"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Vytvořit řadič dat v Azure Data Studio
 
@@ -22,10 +22,10 @@ Můžete vytvořit řadič dat pomocí Azure Data Studio prostřednictvím Prův
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Potřebujete přístup ke clusteru Kubernetes a pokud chcete, aby váš soubor kubeconfig odkazoval na cluster Kubernetes, na který chcete nasadit.
-- Je potřeba [nainstalovat nástroje klienta](install-client-tools.md) , včetně **Azure Data Studio** rozšíření Azure Data Studio označovaná jako **Azure ARC** a **Azure Data CLI**.
+- Musíte [nainstalovat nástroje klienta](install-client-tools.md) , včetně **Azure Data Studio** rozšíření Azure Data Studio s názvem **ARC Azure** a **[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]** .
 - Musíte se přihlásit k Azure v Azure Data Studio.  Provedete to takto: zadáním CTRL/Command + SHIFT + P otevřete okno text příkazu a zadáte **Azure**.  Vyberte **Azure: přihlásit se**.   Na panelu, který se zobrazí po kliknutí na ikonu + v pravém horním rohu k přidání účtu Azure.
 
 ## <a name="use-the-deployment-wizard-to-create-azure-arc-data-controller"></a>Použití Průvodce nasazením k vytvoření kontroleru dat ARC Azure

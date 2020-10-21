@@ -17,12 +17,12 @@ ms.date: 09/23/2020
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344782"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319778"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Sestavy aktivit přihlašování Azure Active Directory – Preview
 
@@ -32,8 +32,8 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
     - **Přihlášení** – informace o tom, kdy se uživatelé, aplikace a spravované prostředky přihlásí ke službě Azure AD a chtějí získat přístup k prostředkům.
     - **Protokoly auditu**  -  [Protokoly auditu](concept-audit-logs.md) poskytují informace o aktivitě systému o uživatelích a správě skupin, spravovaných aplikacích a aktivitách adresářů.
 - **Zabezpečení** 
-    - **Riziková přihlášení** – [rizikové přihlášení](concept-risky-sign-ins.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
-    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](concept-user-at-risk.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
+    - **Riziková přihlášení** – [rizikové přihlášení](../identity-protection/overview-identity-protection.md) je indikátorem pokusu o přihlášení někoho, kdo není legitimním vlastníkem uživatelského účtu.
+    - **Uživatelé označení příznakem rizika** – [rizikové uživatel](../identity-protection/overview-identity-protection.md) je indikátorem uživatelského účtu, který mohl být ohrožen.
 
 Sestava klasického přihlášení v Azure Active Directory poskytuje přehled interaktivních přihlášení uživatelů. Kromě toho máte nyní přístup k třem dalším sestavám přihlašování, které jsou nyní ve verzi Preview:
 
@@ -47,7 +47,7 @@ Tento článek poskytuje přehled sestavy aktivit přihlašování s náhledem n
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct začít používat tuto funkci, měli byste znát odpovědi na tyto otázky:
 
@@ -86,7 +86,7 @@ V okně sestavy přihlášení můžete přepínat mezi:
 
 - **Přihlášení instančního objektu** – přihlášení pomocí aplikací a instančních objektů, které nezahrnují žádného uživatele. V těchto přihlášeních aplikace nebo služba poskytují svým jménem vlastní přihlašovací údaje k ověřování nebo přístupu k prostředkům.
 
-- **Spravované identity pro přihlášení prostředků Azure** – přihlášení pomocí prostředků Azure, které mají tajné klíče spravované v Azure Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+- **Spravované identity pro přihlášení prostředků Azure** – přihlášení pomocí prostředků Azure, které mají tajné klíče spravované v Azure Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md) 
 
 
 ![Typy sestav přihlášení](./media/concept-all-sign-ins/sign-ins-report-types.png)
@@ -214,7 +214,7 @@ Aby se usnadnilo shrnutí dat, jsou seskupeny neinteraktivní přihlašovací ud
 - ID prostředku
 
 
-Můžete:
+Další možnosti:
 
 - Rozbalením uzlu zobrazíte jednotlivé položky skupiny.  
 
@@ -271,7 +271,7 @@ Aby bylo snazší vyhlašovat data v protokolech přihlášení instančního ob
 
 - Název nebo ID prostředku
 
-Můžete:
+Další možnosti:
 
 - Rozbalením uzlu zobrazíte jednotlivé položky skupiny.  
 

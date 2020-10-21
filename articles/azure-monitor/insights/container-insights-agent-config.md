@@ -2,13 +2,13 @@
 title: Konfigurace Azure Monitor pro shromažďování dat agenta kontejnerů | Microsoft Docs
 description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers pro řízení kolekce protokolů stdout/stderr a proměnných prostředí.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 675b9c9c109ee8bb3b0087523bf5af46ce2c5270
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 10/09/2020
+ms.openlocfilehash: 1644e541ee873a5bb058dd9bde2b82a907a400ff
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994620"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320411"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro službu Azure Monitor pro kontejnery
 
@@ -29,9 +29,9 @@ K dispozici je soubor šablony ConfigMap, který umožňuje snadnou úpravu pomo
 
 ### <a name="data-collection-settings"></a>Nastavení shromažďování dat
 
-Níže jsou uvedené nastavení, které lze nakonfigurovat pro řízení shromažďování dat.
+Následující tabulka popisuje nastavení, která můžete nakonfigurovat pro řízení shromažďování dat:
 
-| Klíč | Datový typ | Hodnota | Popis |
+| Key | Datový typ | Hodnota | Popis |
 |--|--|--|--|
 | `schema-version` | Řetězec (rozlišuje velká a malá písmena) | V1 | Toto je verze schématu používaná agentem.<br> při analýze tohoto ConfigMap.<br> Aktuálně podporovaná verze schématu je v1.<br> Úprava této hodnoty není podporována a bude<br> odmítnuto, když je vyhodnocen ConfigMap |
 | `config-version` | Řetězec |  | Podporuje schopnost sledovat tuto verzi konfiguračního souboru v systému správy zdrojů nebo v úložišti.<br> Maximální povolený počet znaků je 10 a všechny ostatní znaky jsou zkráceny. |
@@ -43,16 +43,24 @@ Níže jsou uvedené nastavení, které lze nakonfigurovat pro řízení shroma�
 | `[log_collection_settings.enrich_container_logs] enabled =` | Logická hodnota | true nebo false | Toto nastavení řídí rozšíření protokolu kontejneru, aby se naplnily hodnoty vlastností název a obrázek.<br> pro každý záznam protokolu zapsaný do tabulky ContainerLog pro všechny protokoly kontejnerů v clusteru.<br> Nastaví se na výchozí hodnotu, `enabled = false` Pokud není zadána v ConfigMap. |
 | `[log_collection_settings.collect_all_kube_events]` | Logická hodnota | true nebo false | Toto nastavení umožňuje shromažďování událostí Kube všech typů.<br> Ve výchozím nastavení nejsou shromažďovány události Kube s typem *Normal* . Pokud je toto nastavení nastaveno na hodnotu `true` , *běžné* události již nejsou filtrovány a jsou shromažďovány všechny události.<br> Ve výchozím nastavení je tato hodnota nastavena na `false` . |
 
+### <a name="metric-collection-settings"></a>Nastavení kolekce metriky
+
+Následující tabulka popisuje nastavení, která můžete konfigurovat pro řízení shromažďování metrik:
+
+| Key | Datový typ | Hodnota | Popis |
+|--|--|--|--|
+| `[metric_collection_settings.collect_kube_system_pv_metrics] enabled =` | Logická hodnota | true nebo false | Toto nastavení umožňuje shromažďovat metriky využití trvalých svazků (PV) v oboru názvů Kube-System. Ve výchozím nastavení se neshromažďují metriky využití pro trvalé svazky s deklaracemi trvalých svazků v oboru názvů Kube-System. Když je toto nastavení nastaveno na `true` , shromažďují se metriky využití PV pro všechny obory názvů. Ve výchozím nastavení je tato hodnota nastavena na `false` . |
+
 ConfigMaps je globální seznam a v agentovi může být použit pouze jeden ConfigMap. Nemůžete mít k dispozici další ConfigMaps pro kolekce.
 
 ## <a name="configure-and-deploy-configmaps"></a>Konfigurace a nasazení ConfigMaps
 
 Provedením následujících kroků nakonfigurujete a nasadíte konfigurační soubor ConfigMap do clusteru.
 
-1. [Stáhněte](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) si soubor Template ConfigMap YAML a uložte ho jako Container-AZM-MS-agentconfig. yaml. 
+1. Stáhněte si [soubor Template CONFIGMAP YAML](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-agentconfig.yaml) a uložte ho jako Container-AZM-MS-agentconfig. yaml. 
 
-   >[!NOTE]
-   >Tento krok není nutný při práci s Azure Red Hat OpenShift, protože šablona ConfigMap už v clusteru existuje.
+   > [!NOTE]
+   > Tento krok není nutný při práci s Azure Red Hat OpenShift, protože šablona ConfigMap už v clusteru existuje.
 
 2. Upravte soubor ConfigMap YAML s vlastními nastaveními pro shromažďování proměnných prostředí stdout, stderr a/nebo. Pokud upravujete soubor ConfigMap YAML pro Azure Red Hat OpenShift, nejprve spusťte příkaz `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` a otevřete soubor v textovém editoru.
 

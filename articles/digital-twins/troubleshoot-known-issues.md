@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 6f57f801f2270819d4a67a49590f5ba61b32afcb
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047637"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311689"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -19,7 +19,7 @@ Tento článek poskytuje informace o známých problémech souvisejících s dig
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>"400 chyba klienta: Chybný požadavek" v Cloud Shell
 
-Příkazy v Cloud Shell můžou selhat neúspěšné s chybou 400 klienta chyba: Chybný požadavek na adresu URL: http://localhost:50342/oauth2/token "následovaný úplným trasováním zásobníku.
+Příkazy v Cloud Shell spuštěných v *https://shell.azure.com* můžou občas selhat s chybou 400 chyba klienta: Chybná žádost o adresu URL: http://localhost:50342/oauth2/token , následované úplným trasováním zásobníku.
 
 U digitálních vláken Azure to platí konkrétně pro následující skupiny příkazů:
 * `az dt route`
@@ -30,7 +30,11 @@ U digitálních vláken Azure to platí konkrétně pro následující skupiny p
 
 To se dá vyřešit tak, že znovu spustíte `az login` příkaz v Cloud Shell a dokončíte další kroky přihlášení. Za tímto účelem byste měli být schopni spustit příkaz znovu.
 
-Alternativním řešením je [nainstalovat rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) do vašeho počítače, abyste mohli spouštět příkazy Azure CLI místně. V místním rozhraní příkazového řádku se tento problém netýká.
+Případně můžete otevřít podokno Cloud Shell v Azure Portal a dokončit Cloud Shell práci z těchto kroků:
+
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Zobrazuje se Azure Portal se zvýrazněnou ikonou Cloud Shell a Cloud Shell se zobrazuje v dolní části okna portálu.":::
+
+Nakonec další řešení je [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) do vašeho počítače, abyste mohli spouštět příkazy rozhraní příkazového řádku Azure v místním prostředí. V místním rozhraní příkazového řádku se tento problém netýká.
 
 ### <a name="possible-causes"></a>Možné příčiny
 

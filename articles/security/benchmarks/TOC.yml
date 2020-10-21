@@ -125,6 +125,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Batch
       href: ../../batch/security-baseline.md
+    - name: Standardní nastavení zabezpečení pro Cloud Shell
+      href: ../../cloud-shell/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Cognitive Services
       href: ../../cognitive-services/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Container Instances

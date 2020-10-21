@@ -85,6 +85,8 @@
               href: connect-cpp.md
             - name: Přejít
               href: connect-go.md
+            - name: GitHub Actions
+              href: quickstart-mysql-github-actions.md
     - name: Kurzy
       items:
         - name: Návrh databáze
@@ -220,7 +222,7 @@
               displayName: 'manage, reset password, scale'
             - name: Pravidla brány firewall
               items:
-                - name: portál Azure
+                - name: Azure Portal
                   href: howto-manage-firewall-using-portal.md
                   displayName: firewall
                 - name: Azure CLI
@@ -236,7 +238,7 @@
               displayName: 'managed identity, msi'
         - name: Obnovení serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-restore-server-portal.md
               displayName: 'restore server,backup'
             - name: Azure CLI
@@ -267,7 +269,7 @@
               displayName: 'development, redirection , php'
         - name: Konfigurace parametrů serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-server-parameters.md
               displayName: server parameters
             - name: Azure CLI
@@ -282,7 +284,7 @@
               href: how-to-stop-start-server.md
         - name: Automatické zvětšení úložiště
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'storage, business continuity , downtime, portal'
             - name: Azure CLI
@@ -293,7 +295,7 @@
               displayName: 'storage, business continuity , downtime, powershell'
         - name: Protokoly pomalých dotazů
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
               displayName: 'debug, slow query log , performance'
             - name: Azure CLI
@@ -301,7 +303,7 @@
               displayName: 'debug, slow query log , performance'
         - name: Protokoly auditu
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-audit-logs-portal.md
               displayName: 'debug, audit log'
             - name: Azure CLI
@@ -353,7 +355,7 @@
               displayName: 'atp, advanced thread, security'
             - name: Virtual Network
               items:
-                - name: portál Azure
+                - name: Azure Portal
                   href: howto-manage-vnet-using-portal.md
                   displayName: 'vnet, virtual network, service endpoint'
                 - name: Azure CLI
@@ -390,7 +392,7 @@
               displayName: 'security, public access'
         - name: Restartování serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-restart-server-portal.md
               displayName: restart
             - name: Azure CLI

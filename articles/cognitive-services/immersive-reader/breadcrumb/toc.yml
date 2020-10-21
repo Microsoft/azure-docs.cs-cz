@@ -6,6 +6,6 @@
       tocHref: /azure/cognitive-services/
       topicHref: /azure/cognitive-services/index
       items:
-        - name: Služba Speech
+        - name: Asistivní čtečka
           tocHref: /azure/cognitive-services/
-          topicHref: /azure/cognitive-services/speech-service/index
+          topicHref: /azure/cognitive-services/immersive-reader/index

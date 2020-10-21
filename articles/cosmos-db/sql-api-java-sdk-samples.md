@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: 8910983ea5946c88d3d560c0cf0a321f8bd2c4ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead5ab6f914db951027406e43437ac30a4f85247
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569970"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279264"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: příklady Java SDK v4
 
@@ -102,9 +102,9 @@ kde může být *Sample. synchronicity. MainClass*
 > 
 
 ## <a name="database-examples"></a>Příklady pro databáze
-Soubor [ukázek pro databázi CRUD](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java) ukazuje, jak provádět následující úlohy. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu. 
+Soubor [ukázek pro databázi CRUD](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java) ukazuje, jak provádět následující úlohy. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu. 
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření databáze](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L77-L85) | CosmosClient. metodu createdatabaseifnotexists |
 | [Čtení databáze podle ID](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L88-L95) | CosmosClient. getdatabase |
@@ -112,9 +112,9 @@ Soubor [ukázek pro databázi CRUD](https://github.com/Azure-Samples/azure-cosmo
 | [Odstranění databáze](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/databasecrud/sync/DatabaseCRUDQuickstart.java#L115-L123) | CosmosDatabase. Delete |
 
 ## <a name="collection-examples"></a>Příklady pro kolekce
-Soubor [ukázek pro CRUD kolekce](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) ukazuje, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
+Soubor [ukázek pro CRUD kolekce](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) ukazuje, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření kolekce](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L97-L112) | CosmosDatabase. metodu createcontainerifnotexists |
 | [Změna konfigurovaného výkonu kolekce](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/containercrud/sync/ContainerCRUDQuickstart.java#L115-L123) | CosmosContainer.replaceProvisionedThroughput |
@@ -128,13 +128,13 @@ Další informace o automatickém škálování před spuštěním těchto ukáz
 
 Soubor [vzorků s ukázkami databáze pro databázi automatického škálování](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java) ukazuje, jak provádět následující úlohy.
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření databáze se zadaným maximální propustností automatického škálování](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java#L78-L89) | CosmosClient. createDatabase<br>ThroughputProperties.createAutoscaledThroughput |
 
 Soubor [vzorků s ukázkami funkce CRUD kolekce automatického škálování](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java) ukazuje, jak provádět následující úlohy. 
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření kolekce se zadaným maximální propustností automatického škálování](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L97-L110) | CosmosDatabase. metodu createcontainerifnotexists |
 | [Změna konfigurované propustnosti pro automatické škálování v kolekci](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscalecontainercrud/sync/AutoscaleContainerCRUDQuickstart.java#L113-L120) | CosmosContainer.replaceThroughput |
@@ -144,14 +144,14 @@ Soubor [vzorků s ukázkami funkce CRUD kolekce automatického škálování](ht
 
 Soubor [vzorků s ukázkami pro analýzu analytického úložiště](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/analyticalcontainercrud/sync/AnalyticalContainerCRUDQuickstart.java) ukazuje, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku o Azure Cosmos DB synapse a analytickém úložišti.
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření kolekce](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/analyticalcontainercrud/sync/AnalyticalContainerCRUDQuickstart.java#L93-L108) | CosmosDatabase. metodu createcontainerifnotexists |
 
 ## <a name="document-examples"></a>Příklady pro dokumenty
-Soubor [ukázek dokumentů CRUD](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) ukazuje, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
+Soubor [ukázek dokumentů CRUD](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) ukazuje, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření dokumentu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L133-L147) | CosmosContainer. CreateItem – |
 | [Čtení dokumentu podle ID](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L179-L193) | CosmosContainer.readItem |
@@ -165,7 +165,7 @@ Soubor [ukázek dokumentů CRUD](https://github.com/Azure/azure-documentdb-java/
 ## <a name="indexing-examples"></a>Příklady indexování
 Soubor [ukázek pro CRUD kolekce](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) ukazuje, jak provádět následující úlohy. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-types.md)a [indexovaných cestách](index-paths.md) . 
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | Vyloučení dokumentu z indexu | ExcludedIndex<br>IndexingPolicy |
 | Použití opožděného indexování | IndexingPolicy.IndexingMode |
@@ -182,7 +182,7 @@ Další informace o indexování najdete v tématu pojednávajícím o [zásadá
 ## <a name="query-examples"></a>Příklady dotazů
 V souboru [ukázek dotazů](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) se dozvíte, jak provádět následující úlohy pomocí gramatiky dotazů SQL. Další informace o odkazech na dotaz SQL v Azure Cosmos DB před spuštěním následujících ukázek najdete v tématu [příklady dotazů SQL pro Azure Cosmos DB](how-to-sql-query.md). 
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Dotazování na všechny dokumenty](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L210-L214) | CosmosContainer.queryItems |
 | [Dotaz na rovnost s využitím ==](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L291-L295) | CosmosContainer.queryItems |
@@ -203,7 +203,7 @@ V souboru [ukázek dotazů](https://github.com/Azure-Samples/azure-cosmos-java-s
 ## <a name="change-feed-examples"></a>Příklady kanálů změn 
 [Ukázkový soubor procesoru Change feed](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java) ukazuje, jak provádět následující úlohy. Další informace o kanálu změn v Azure Cosmos DB před spuštěním následujících ukázek najdete v tématu [čtení Azure Cosmos DB Změna kanálu](read-change-feed.md) a [Změna procesoru kanálu](change-feed-processor.md).
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Základní funkce změny kanálu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java#L124-L154) |ChangeFeedProcessor.changeFeedProcessorBuilder |
 | Číst kanál změn z konkrétního času | ChangeFeedProcessor.changeFeedProcessorBuilder |
@@ -213,7 +213,7 @@ V souboru [ukázek dotazů](https://github.com/Azure-Samples/azure-cosmos-java-s
 
 [Ukázkový soubor uložené procedury](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java) ukazuje, jak provádět následující úlohy. Další informace o programování na straně serveru v Azure Cosmos DB před spuštěním následujících ukázek najdete v tématu [uložené procedury, triggery a uživatelsky definované funkce](stored-procedures-triggers-udfs.md).
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření uložené procedury](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L132-L151) | CosmosScripts.createStoredProcedure |
 | [Spuštění uložené procedury](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/storedprocedure/sync/SampleStoredProcedure.java#L167-L181) | CosmosStoredProcedure.exeroztomilá |
@@ -222,7 +222,7 @@ V souboru [ukázek dotazů](https://github.com/Azure-Samples/azure-cosmos-java-s
 ## <a name="user-management-examples"></a>Příklady správy uživatelů
 Ukázkový soubor správy uživatelů ukazuje, jak provádět následující úlohy:
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | Vytvoření uživatele | - |
 | Nastavení oprávnění pro kolekci nebo dokument | - |

@@ -1,24 +1,27 @@
 ---
-title: Zřizování propustnosti automatického škálování v Azure Cosmos DB
-description: Naučte se, jak zřídit propustnost automatického škálování na úrovni kontejneru a databáze v Azure Cosmos DB pomocí Azure Portal, CLI, PowerShellu a různých dalších sad SDK.
+title: Zřizování propustnosti automatického škálování v Azure Cosmos DB SQL API
+description: Naučte se, jak zřídit propustnost automatického škálování na úrovni kontejneru a databáze v Azure Cosmos DB SQL API pomocí Azure Portal, CLI, PowerShellu a různých dalších sad SDK.
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4e7c5f3f4bf84b7a267cb883df5f375f2a8cf981
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 190289165b291edabf31320eee1328c1b0cf6205
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017137"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277829"
 ---
-# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>Zřizování propustnosti automatického škálování v databázi nebo kontejneru v Azure Cosmos DB
+# <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Zřizování propustnosti automatického škálování v databázi nebo kontejneru v Azure Cosmos DB-SQL API
 
-Tento článek vysvětluje, jak zřídit propustnost automatického škálování pro databázi nebo kontejner (kolekci, graf nebo tabulku) v Azure Cosmos DB. Můžete povolit automatické škálování v jednom kontejneru nebo zřídit propustnost automatického škálování databáze a sdílet ji mezi všemi kontejnery v databázi.
+Tento článek vysvětluje, jak zřídit propustnost automatického škálování pro databázi nebo kontejner (kolekci, graf nebo tabulku) v Azure Cosmos DB SQL API. Můžete povolit automatické škálování v jednom kontejneru nebo zřídit propustnost automatického škálování databáze a sdílet ji mezi všemi kontejnery v databázi.
 
-## <a name="azure-portal"></a>portál Azure
+Pokud používáte jiné rozhraní API, přečtěte si téma [rozhraní API pro MongoDB](how-to-provision-throughput-mongodb.md), [rozhraní API Cassandra](how-to-provision-throughput-cassandra.md), články [Gremlin API](how-to-provision-throughput-gremlin.md) pro zajištění propustnosti.
+
+## <a name="azure-portal"></a>Azure Portal
 
 ### <a name="create-new-database-or-container-with-autoscale"></a>Vytvoření nové databáze nebo kontejneru pomocí automatického škálování
 
@@ -52,7 +55,7 @@ Pokud chcete zřídit automatické škálování sdílené databáze propustnost
 > [!NOTE]
 > Pokud povolíte automatické škálování u existující databáze nebo kontejneru, počáteční hodnota pro max. RU/s se určí systémem na základě vašeho aktuálního ručního zřízeného nastavení propustnosti a úložiště. Po dokončení operace můžete v případě potřeby změnit maximální RU/s. [Další informace](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
-## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>Sada Azure Cosmos DB .NET V3 SDK pro SQL API
+## <a name="azure-cosmos-db-net-v3-sdk"></a>Sada Azure Cosmos DB .NET V3 SDK
 
 Ke správě prostředků automatického škálování použijte [verzi 3,9 nebo vyšší](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) z Azure Cosmos DB .NET SDK pro SQL API. 
 
@@ -109,7 +112,7 @@ int? currentThroughput = autoscaleContainerThroughput.Throughput;
 await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThroughput(newAutoscaleMaxThroughput));
 ```
 
-## <a name="azure-cosmos-db-java-v4-sdk-for-sql-api"></a>Sada SDK pro SQL API Azure Cosmos DB Java v4
+## <a name="azure-cosmos-db-java-v4-sdk"></a>Azure Cosmos DB SDK pro Java v4
 
 Ke správě prostředků automatického škálování můžete použít [verzi 4,0 nebo vyšší](https://mvnrepository.com/artifact/com.azure/azure-cosmos) z Azure Cosmos DB Java SDK pro SQL API.
 
@@ -242,14 +245,6 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 ```
 
 ---
-
-## <a name="cassandra-api"></a>Rozhraní Cassandra API
-
-Účty Azure Cosmos DB pro rozhraní API Cassandra se dají zřídit pro automatické škálování pomocí [příkazů CQL](manage-scale-cassandra.md#use-autoscale), [Azure CLI](cli-samples.md), [Azure PowerShell](powershell-samples.md) nebo [šablon Azure Resource Manager](resource-manager-samples.md).
-
-## <a name="azure-cosmos-db-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
-
-Účty Azure Cosmos DB pro rozhraní API MongoDB se dají zřídit pro automatické škálování pomocí [příkazů rozšíření MongoDB](mongodb-custom-commands.md), [Azure CLI](cli-samples.md), [Azure PowerShell](powershell-samples.md) nebo [šablon Azure Resource Manager](resource-manager-samples.md).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

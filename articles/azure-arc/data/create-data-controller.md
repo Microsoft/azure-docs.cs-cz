@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273037"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310926"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
 
@@ -65,7 +65,7 @@ K dispozici je několik možností pro vytvoření kontroleru dat ARC Azure:
 > **Chcete něco vyzkoušet?**  
 > Začněte rychle s využitím [Azure ARC rychlé zprovoznění](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ve službě Azure Kubernetes Service (AKS), AWS elastické KUBERNETES (EKS), Google Cloud Kubernetes Engine (GKE) nebo na virtuálním počítači Azure!
 > 
-- [Vytvoření kontroleru dat pomocí Azure Data CLI (azdata)](create-data-controller-using-azdata.md)
+- [Vytvoření kontroleru dat pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Vytvoření kontroleru dat pomocí Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Z Azure Portal pomocí poznámkového bloku Jupyter v Azure Data Studio vytvořit řadič dat](create-data-controller-resource-in-azure-portal.md)
 - [Vytvoření kontroleru dat s Kubernetes nástroji, jako je kubectl nebo oC](create-data-controller-using-kubernetes-native-tools.md)

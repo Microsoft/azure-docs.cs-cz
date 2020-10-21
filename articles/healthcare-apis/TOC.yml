@@ -9,21 +9,17 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Nasazení Azure API for FHIR – portál
-      href: fhir-paas-portal-quickstart.md
-    - name: Nasazení Azure API for FHIR – PowerShell
-      href: fhir-paas-powershell-quickstart.md
-    - name: Nasazení Azure API for FHIR – CLI
-      href: fhir-paas-cli-quickstart.md
-    - name: Nasazení Azure API for FHIR – šablona ARM
-      href: fhir-paas-arm-template-quickstart.md
-      displayName: deploy azure resource manager template
-    - name: Nasazení FHIR Serveru pro Azure – portál
-      href: fhir-oss-portal-quickstart.md
-    - name: Nasazení FHIR Serveru pro Azure – PowerShell
-      href: fhir-oss-powershell-quickstart.md
-    - name: Nasazení FHIR Serveru pro Azure – CLI
-      href: fhir-oss-cli-quickstart.md
+    - name: Nasazení Azure API for FHIR
+      expanded: false
+      items:
+        - name: Pomocí portálu
+          href: fhir-paas-portal-quickstart.md
+        - name: Použití PowerShellu
+          href: fhir-paas-powershell-quickstart.md
+        - name: Pomocí rozhraní příkazového řádku
+          href: fhir-paas-cli-quickstart.md
+        - name: Použití šablony Resource Manageru
+          href: fhir-paas-arm-template-quickstart.md
     - name: Nasazení konektoru Azure IoT pro FHIR (Preview) – portál
       href: iot-fhir-portal-quickstart.md
 - name: Kurzy
@@ -93,6 +89,8 @@
       href: find-identity-object-ids.md
     - name: Povolení protokolování diagnostiky v Azure API for FHIR®
       href: enable-diagnostic-logging.md
+    - name: Export metrik konektoru Azure IoT pro FHIR (Preview) přes nastavení diagnostiky
+      href: iot-metrics-diagnostics-export.md
     - name: Získání tokenu pro rozhraní API služby Azure pro FHIR – rozhraní příkazového řádku
       href: get-healthcare-apis-access-token-cli.md
     - name: Řešení chyb v konektoru Azure IoT pro FHIR (Preview)

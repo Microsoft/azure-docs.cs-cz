@@ -40,6 +40,8 @@
       href: quickstart-create-workspace.md
     - name: Vytvoření pracovního prostoru Synapse s využitím Azure CLI
       href: quickstart-create-workspace-cli.md
+    - name: Vytvoření pracovního prostoru Synapse s využitím Azure PowerShellu
+      href: quickstart-create-workspace-powershell.md
     - name: Nasazení s využitím šablony
       href: quickstart-deployment-template-workspaces.md
     - name: Použití sady Synapse Studio
@@ -388,7 +390,7 @@
           items:
             - name: Průvodce bodováním modelů pro fondy SQL
               href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
-            - name: Spuštění regresního experimentu s využitím Azure AutoML (bodování v DW)
+            - name: Spuštění regresního experimentu s využitím Azure AutoML
               href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 'Integrace nástrojů (AI, ETL, BI)'
       items:
@@ -483,9 +485,9 @@
             - name: Připojení k Azure Synapse Linku pro Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Použití bezserverového fondu SQL a Power BI k analýze Azure Cosmos DB
-              href: ../cosmos-db/synapse-link-power-bi.mdtoc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Dotazování na data ve službě Azure Cosmos DB s využitím bezserverového fondu SQL
-              href: ./sql/query-cosmos-db-analytical-store.md
+              href: ./sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Kopírování dat ze Synapse Linku do fondu SQL s využitím Apache Sparku
@@ -925,7 +927,7 @@
       href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/synapse@v43.3.0+incompatible'
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.synapse?view=azure-dotnet-preview
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Rozhraní REST API
       href: /rest/api/synapse/

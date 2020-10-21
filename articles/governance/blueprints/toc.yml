@@ -31,6 +31,9 @@
     - name: Ochrana nových prostředků pomocí zamykání prostředků podrobného plánu
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: 'Learn: Řízení více předplatných s využitím Azure Blueprints'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: ukázky
   items:
     - name: Index

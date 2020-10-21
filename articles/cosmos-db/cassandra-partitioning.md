@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: d0234ca04b772e4ff5127ef9dd896b49141febfb
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f12919cd35441c6c198269e2f79c705c1d304acd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167555"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278822"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Vytváření oddílů v Azure Cosmos DB rozhraní API Cassandra
 
@@ -25,7 +25,7 @@ V perspektivě pro vývojáře se při vytváření oddílů chová stejným zp�
 
 ## <a name="differences-between-apache-cassandra-and-azure-cosmos-db"></a>Rozdíly mezi Apache Cassandra a Azure Cosmos DB
 
-V Azure Cosmos DB se každý počítač, na kterém jsou uložené oddíly, nazývá [fyzický oddíl](partition-data.md#physical-partitions). Fyzický oddíl je podobají k virtuálnímu počítači; vyhrazenou výpočetní jednotku nebo sadu fyzických prostředků. Každý oddíl uložený v této výpočetní jednotce se v Azure Cosmos DB označuje jako [logický oddíl](partition-data.md#logical-partitions) . Pokud jste už obeznámení s Apache Cassandra, můžete si logické oddíly představit stejným způsobem, jako byste si myslíte z běžných oddílů v Cassandra. 
+V Azure Cosmos DB se každý počítač, na kterém jsou uložené oddíly, nazývá [fyzický oddíl](partitioning-overview.md#physical-partitions). Fyzický oddíl je podobají k virtuálnímu počítači; vyhrazenou výpočetní jednotku nebo sadu fyzických prostředků. Každý oddíl uložený v této výpočetní jednotce se v Azure Cosmos DB označuje jako [logický oddíl](partitioning-overview.md#logical-partitions) . Pokud jste už obeznámení s Apache Cassandra, můžete si logické oddíly představit stejným způsobem, jako byste si myslíte z běžných oddílů v Cassandra. 
 
 Apache Cassandra doporučuje omezení 100 MB na velikost dat, která se dají uložit do oddílu. Rozhraní API Cassandra pro Azure Cosmos DB umožňuje až 20 GB na logický oddíl a až 30 GB dat na fyzický oddíl. V Azure Cosmos DB na rozdíl od Apache Cassandra je výpočetní kapacita dostupná ve fyzickém oddílu vyjádřená pomocí jedné metriky nazvané [jednotky žádosti](request-units.md), která vám umožní považovat zatížení za požadavky (čtení nebo zápisy) za sekundu, místo jader, paměti nebo IOPS. Díky tomu může plánování kapacity lépe rovnou, jakmile porozumíte nákladům na jednotlivé požadavky. Každý fyzický oddíl může mít k dispozici až 10000 ru výpočetní kapacity. Další informace o možnostech škálovatelnosti najdete v našem článku o [elastickém škálování](manage-scale-cassandra.md) v rozhraní API Cassandra. 
 
@@ -112,6 +112,6 @@ CREATE TABLE uprofile.user (
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [dělení a horizontálním škálování v Azure Cosmos DB](partition-data.md).
+* Přečtěte si o [dělení a horizontálním škálování v Azure Cosmos DB](partitioning-overview.md).
 * Přečtěte si o [zřízené propustnosti v Azure Cosmos DB](request-units.md).
 * Přečtěte si o [globální distribuci v Azure Cosmos DB](distribute-data-globally.md).

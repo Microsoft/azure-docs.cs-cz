@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43206fbc956602ddaf189f45648cf8a44a3dd143
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258315"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277329"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy pro zvýšení výkonu pro sadu Java SDK v4 služby Azure Cosmos DB
 
@@ -38,14 +38,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 * **Režim připojení: použít přímý režim**
 <a id="direct-connection"></a>
     
-    Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména z hlediska latence na straně klienta. Režim připojení je klíčovým nastavením konfigurace, které je k dispozici pro konfiguraci klienta. Pro Azure Cosmos DB Java SDK v4 jsou k dispozici dva režimy připojení:  
-
-    * Přímý režim (výchozí)      
-    * Režim brány
-
-    Tyto režimy připojení v podstatě vybírají trasu, kterou požadavky na data rovinují – čtení a zápis dokumentů – z klientského počítače na oddíly v Azure Cosmos DB back-endu. Obecně přímým režimem je upřednostňovaná možnost pro nejlepší výkon – umožňuje klientovi otevřít připojení TCP přímo k oddílům v Azure Cosmos DB back-endu a *odesílat požadavky přímo*, bez jakýchkoli dodavatelů. V režimu brány naopak požadavky vytvořené vaším klientem jsou směrovány na server "brána" v Azure Cosmos DB front-endu, který zase odvolá vaše požadavky na příslušné oddíly v back-endu Azure Cosmos DB. Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod. Kompromisy týkající se výkonu však jsou v tom, že režim brány zahrnuje dodatečné směrování sítě (klient brány k bráně plus brána) při každém čtení nebo zápisu dat do Azure Cosmos DB. Díky tomu přímý režim nabízí lepší výkon kvůli menšímu počtu směrování sítě.
-
-    Režim připojení pro požadavky na rovinu dat je konfigurován v Azure Cosmos DB tvůrce klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument (*DirectConnectionConfig* pro *directMode ()*,  *GatewayConnectionConfig* pro *gatewayMode ()*.)
+    Výchozí režim připojení sady Java SDK je přímý. Režim připojení můžete nakonfigurovat v Tvůrci klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument (*DirectConnectionConfig* pro *directMode ()*,  *GatewayConnectionConfig* pro *gatewayMode ()*.). Další informace o různých možnostech připojení najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
@@ -372,4 +365,4 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o návrhu aplikace pro škálování a vysoký výkon najdete v tématu [dělení a škálování v Azure Cosmos DB](partition-data.md).
+Další informace o návrhu aplikace pro škálování a vysoký výkon najdete v tématu [dělení a škálování v Azure Cosmos DB](partitioning-overview.md).

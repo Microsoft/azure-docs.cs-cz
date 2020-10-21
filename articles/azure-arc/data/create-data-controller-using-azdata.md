@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kontroleru dat pomocí Azure Data CLI (azdata)
-description: Vytvořte řadič dat ARC Azure na typickém clusteru s více uzly Kubernetes, který jste už vytvořili pomocí Azure Data CLI (azdata).
+title: Vytvoření kontroleru dat pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
+description: Vytvořte řadič dat ARC Azure na typickém clusteru s více uzly Kubernetes, který jste už vytvořili pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,24 +9,24 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb5fac5987a36c425b9e130df17412e5ad902345
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761681"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310941"
 ---
-# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Vytvoření řadiče dat ARC Azure pomocí Azure Data CLI (azdata)
+# <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Vytvořte řadič dat ARC Azure pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Přehled informací najdete v tématu [vytvoření řadiče dat ARC Azure](create-data-controller.md) .
 
-Pokud chcete vytvořit řadič dat ARC Azure pomocí Azure Data CLI, budete muset mít nainstalované rozhraní Azure Data CLI.
+Pokud chcete vytvořit řadič dat ARC Azure pomocí nástroje [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , budete ho muset [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] nainstalovat.
 
-   [Instalace Azure Data CLI](install-client-tools.md)
+   [Nainstalovat [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](install-client-tools.md)
 
 Bez ohledu na to, kterou cílovou platformu zvolíte, budete muset před vytvořením uživatele správce kontroleru dat nastavit následující proměnné prostředí. Tyto přihlašovací údaje můžete zadat jiným lidem, kteří potřebují mít k řadiči dat přístup správce podle potřeby.
 

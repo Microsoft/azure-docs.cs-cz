@@ -101,8 +101,10 @@
   items:
     - name: Integrace aplikací
       items:
-        - name: Registrace aplikace
+        - name: Registrace webové aplikace
           href: tutorial-register-applications.md
+        - name: Registrace jednostránkové aplikace (SPA)
+          href: tutorial-register-spa.md
         - name: Registrace poskytovatele služeb SAML
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'

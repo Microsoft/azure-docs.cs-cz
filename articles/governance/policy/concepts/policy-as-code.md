@@ -1,29 +1,29 @@
 ---
-title: Návrh pracovních postupů pro zásady jako kód
+title: Návrh Azure Policy jako pracovní postupy kódu
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598218"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320613"
 ---
-# <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód
+# <a name="design-azure-policy-as-code-workflows"></a>Návrh Azure Policy jako pracovní postupy kódu
 
 Jak budete postupovat na cestě pomocí zásad správného řízení cloudu, budete chtít posunout z ruční správy každé definice zásad v Azure Portal nebo prostřednictvím různých sad SDK na něco mnohem spravovatelnou a opakovat v podnikovém měřítku. Mezi dva z převládajících přístupů ke správě systémů ve velkém měřítku v cloudu patří:
 
 - Infrastruktura jako kód: postupy pro zpracování obsahu definujícího vaše prostředí, vše od Azure Resource Manager šablon (šablony ARM), které Azure Policy definice do Azure modrotisky jako zdrojový kód.
 - DevOps: sjednocení lidí, procesů a produktů umožní průběžné doručování hodnot našim koncovým uživatelům.
 
-Zásada jako kód je kombinací těchto nápadů. V podstatě Udržujte definice zásad ve správě zdrojového kódu a pokaždé, když provedete změnu, otestujete a ověříte tuto změnu. Nicméně by neměl být rozsahem zapojení zásad s infrastrukturou jako Code nebo DevOps.
+Azure Policy jako kód je kombinací těchto nápadů. V podstatě Udržujte definice zásad ve správě zdrojového kódu a pokaždé, když provedete změnu, otestujete a ověříte tuto změnu. Nicméně by neměl být rozsahem zapojení zásad s infrastrukturou jako Code nebo DevOps.
 
 Krok ověření by měl být také součástí dalších pracovních postupů průběžné integrace nebo průběžného nasazování. Příklady zahrnují nasazení prostředí aplikace nebo virtuální infrastruktury. Provedením Azure Policy ověření počáteční komponenty procesu sestavení a nasazení aplikace a provozní týmy zjišťují, zda jsou jejich změny nekompatibilní, dlouho předtím, než jsou příliš pozdě a pokoušejí se nasadit v produkčním prostředí.
 
 ## <a name="definitions-and-foundational-information"></a>Definice a základní informace
 
-Než se dostanete k podrobnostem o pracovním postupu pro kód zásad, Projděte si následující definice a příklady:
+Než se dostanete k podrobnostem Azure Policy jako pracovní postup kódu, přečtěte si následující definice a příklady:
 
 - [Definice zásady](./definition-structure.md)
 - [Definice iniciativy](./initiative-definition-structure.md)
@@ -43,10 +43,10 @@ Přečtěte si také téma [Export Azure Policy prostředky](../how-to/export-re
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 
-Doporučený obecný pracovní postup zásad jako kódu vypadá jako v tomto diagramu:
+Doporučený obecný pracovní postup Azure Policy jako kód vypadá jako v tomto diagramu:
 
-:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Diagram znázorňující pole pro pracovní postup kódu z vytvořit k otestování pro nasazení." border="false":::
-   Diagram znázorňující pole zásad jako kód pracovního postupu. Vytvořit pokrývá vytváření definicí zásad a iniciativ. Test pokrývá přiřazení s povoleným režimem vynucení. Ověření brány pro stav dodržování předpisů je následováno přidělením oprávnění M S I a prostředků oprava.  Nasazení pokrývá aktualizaci přiřazení s povoleným režimem vynucení.
+:::image type="complex" source="../media/policy-as-code/policy-as-code-workflow.png" alt-text="Diagram znázorňující pole pracovního postupu pro Azure Policy jako kód pracovního postupu z vytvořit pro test k nasazení." border="false":::
+   Diagram znázorňující pole pracovního postupu Azure Policy jako kód Vytvořit pokrývá vytváření definicí zásad a iniciativ. Test pokrývá přiřazení s povoleným režimem vynucení. Ověření brány pro stav dodržování předpisů je následováno přidělením oprávnění M S I a prostředků oprava.  Nasazení pokrývá aktualizaci přiřazení s povoleným režimem vynucení.
 :::image-end:::
 
 ### <a name="create-and-update-policy-definitions"></a>Vytvoření a aktualizace definic zásad
@@ -56,22 +56,19 @@ Definice zásad jsou vytvořeny pomocí formátu JSON a uloženy ve správě zdr
 ```text
 .
 |
-|- policies/  ________________________ # Root folder for policies
+|- policies/  ________________________ # Root folder for policy resources
 |  |- policy1/  ______________________ # Subfolder for a policy
 |     |- policy.json _________________ # Policy definition
 |     |- policy.parameters.json ______ # Policy definition of parameters
 |     |- policy.rules.json ___________ # Policy rule
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
-|
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy definition
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy definition
 |  |- policy2/  ______________________ # Subfolder for a policy
 |     |- policy.json _________________ # Policy definition
 |     |- policy.parameters.json ______ # Policy definition of parameters
 |     |- policy.rules.json ___________ # Policy rule
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy definition
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy definition
 |
 ```
 
@@ -89,17 +86,15 @@ Stejně tak iniciativy mají vlastní soubor JSON a související soubory, kter�
 |     |- policyset.json ______________ # Initiative definition
 |     |- policyset.definitions.json __ # Initiative list of policies
 |     |- policyset.parameters.json ___ # Initiative definition of parameters
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy initiative
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy initiative
 |
 |  |- init2/ _________________________ # Subfolder for an initiative
 |     |- policyset.json ______________ # Initiative definition
 |     |- policyset.definitions.json __ # Initiative list of policies
 |     |- policyset.parameters.json ___ # Initiative definition of parameters
-|     |- params.dev.json _____________ # Parameters for a Dev environment
-|     |- params.prd.json _____________ # Parameters for a Prod environment
-|     |- params.tst.json _____________ # Parameters for a Test environment
+|     |- assign.<name1>.json _________ # Assignment 1 for this policy initiative
+|     |- assign.<name2>.json _________ # Assignment 2 for this policy initiative
 |
 ```
 
@@ -114,7 +109,7 @@ Přiřazení by mělo používat [enforcementMode](./assignment-structure.md#enf
 > [!NOTE]
 > I když je režim vynucení užitečný, není náhrada za účelem důkladného testování definice zásad za různých podmínek. Definice zásad by měla být testována pomocí `PUT` a `PATCH` REST API volání, kompatibilních a nekompatibilních prostředků a hranové případy, jako je vlastnost chybějící v prostředku.
 
-Po nasazení přiřazení použijte k [získání dat dodržování předpisů](../how-to/get-compliance-data.md) pro nové přiřazení sadu SDK zásad nebo [Azure Policy akci GitHubu pro kontrolu dodržování předpisů](https://github.com/marketplace/actions/azure-policy-compliance-scan) . Prostředí, které se používá k testování zásad a přiřazení, by mělo mít odpovídající i nekompatibilní prostředky.
+Po nasazení přiřazení použijte Azure Policy SDK, [akci githubu Azure Policy kontrolu kompatibility](https://github.com/marketplace/actions/azure-policy-compliance-scan)nebo [úlohu hodnocení Azure Pipelines zabezpečení a dodržování předpisů](/azure/devops/pipelines/tasks/deploy/azure-policy) , která [vám umožní získat data dodržování předpisů](../how-to/get-compliance-data.md) pro nové přiřazení. Prostředí, které se používá k testování zásad a přiřazení, by mělo mít odpovídající i nekompatibilní prostředky.
 Stejně jako dobrý test jednotek kódu, chcete testovat, že prostředky jsou podle očekávání a že také nemáte žádné falešně pozitivní nebo falešně negativní. Pokud otestujete a ověříte pouze za to, co očekáváte, může dojít k neočekávanému a Neidentifikovanému dopadu zásad. Další informace najdete v tématu [vyhodnocení dopadu nové definice Azure Policy](./evaluate-impact.md).
 
 ### <a name="enable-remediation-tasks"></a>Povolit úlohy nápravy
@@ -138,13 +133,13 @@ Po dokončení všech bran ověřování aktualizujte přiřazení tak, aby bylo
 
 ## <a name="process-integrated-evaluations"></a>Zpracování integrovaných vyhodnocení
 
-Obecný pracovní postup pro zásady jako kód je určen pro vývoj a nasazování zásad a iniciativ do prostředí ve velkém měřítku. Vyhodnocení zásad by ale mělo být součástí procesu nasazení pro libovolný pracovní postup, který nasazuje nebo vytváří prostředky v Azure, jako je nasazení aplikací nebo spouštění šablon ARM, aby bylo možné vytvořit infrastrukturu.
+Obecný pracovní postup pro Azure Policy jako kód je určen pro vývoj a nasazování zásad a iniciativ do prostředí ve velkém měřítku. Vyhodnocení zásad by ale mělo být součástí procesu nasazení pro libovolný pracovní postup, který nasazuje nebo vytváří prostředky v Azure, jako je nasazení aplikací nebo spouštění šablon ARM, aby bylo možné vytvořit infrastrukturu.
 
 V těchto případech platí, že po nasazení aplikace nebo infrastruktury do testovacího předplatného nebo skupiny prostředků by se mělo provést vyhodnocení zásad pro tento rozsah ověřování všech stávajících zásad a iniciativ. I když můžou být v takovém prostředí nakonfigurované jako **enforcementMode** _zakázané_ , je užitečné znát počáteční informace v případě, že nasazení aplikace nebo infrastruktury v brzké době neporušila definice zásad. Toto vyhodnocení zásad by proto mělo být krok v těchto pracovních postupech a neúspěšné nasazení, které vytváří nekompatibilní prostředky.
 
 ## <a name="review"></a>Opakování
 
-Tento článek popisuje obecný pracovní postup pro zásady jako kód a také v případě, že vyhodnocení zásad by mělo být součástí dalších pracovních postupů nasazení. Tento pracovní postup se dá použít v jakémkoli prostředí, které podporuje skriptované kroky a automatizaci na základě triggerů.
+Tento článek popisuje obecný pracovní postup pro Azure Policy jako kód a také v případě, kdy by hodnocení zásad mělo být součástí dalších pracovních postupů nasazení. Tento pracovní postup se dá použít v jakémkoli prostředí, které podporuje skriptované kroky a automatizaci na základě triggerů. Kurz týkající se použití tohoto pracovního postupu na GitHubu najdete v tématu [kurz: implementace Azure Policy jako kódu pomocí GitHubu](../tutorials/policy-as-code-github.md).
 
 ## <a name="next-steps"></a>Další kroky
 

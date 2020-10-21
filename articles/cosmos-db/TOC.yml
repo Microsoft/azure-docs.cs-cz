@@ -86,7 +86,7 @@
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
-      href: resource-manager-samples.md
+      href: templates-samples-sql.md
 - name: Koncepty
   items:
     - name: NoSQL vs. relační databáze
@@ -99,31 +99,17 @@
         - name: Úrovně konzistence
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: consistency-levels.md
-        - name: Volba vhodné úrovně konzistence
-          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
-          href: consistency-levels-choosing.md
-        - name: Úrovně konzistence a rozhraní API služby Cosmos DB
-          href: consistency-levels-across-apis.md
-        - name: 'Kompromisy mezi konzistencí, dostupností a výkonem'
-          href: consistency-levels-tradeoffs.md
         - name: Vysoká dostupnost
           href: high-availability.md
-        - name: Globální škálování zřízené propustnosti
-          displayName: 'request units, RUs, RU'
-          href: scaling-throughput.md
         - name: Zásady řešení a typy konfliktů
           displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: Globální distribuce – pod pokličkou
           href: global-dist-under-the-hood.md
-        - name: Přítomnost v konkrétních oblastech
-          href: regional-presence.md
     - name: Dělení
       items:
-        - name: Přehled dělení
-          href: partitioning-overview.md
         - name: Dělení a horizontální škálování
-          href: partition-data.md
+          href: partitioning-overview.md
         - name: Syntetický klíč oddílu
           href: synthetic-partition-keys.md
     - name: Kapacita
@@ -389,6 +375,9 @@
                     - name: LTRIM
                       displayName: 'LTRIM, left trim, built-in functions'
                       href: sql-query-ltrim.md
+                    - name: REGEXMATCH
+                      displayName: 'REGEXMATCH, built-in functions'
+                      href: sql-query-regexmatch.md
                     - name: REPLACE
                       displayName: 'REPLACE, built-in functions'
                       href: sql-query-replace.md
@@ -486,13 +475,11 @@
         - name: Technologie LINQ to SQL
           displayName: 'linq, .NET'
           href: sql-query-linq-to-sql.md
-    - name: Práce s účtem Azure Cosmos
-      href: account-overview.md
+    - name: Model prostředků Azure Cosmos DB
+      displayName: 'collection, document'
+      href: account-databases-containers-items.md
     - name: Kontejnery a položky
       items:
-        - name: 'Práce s databázemi, kontejnery a položkami'
-          displayName: 'collection, document'
-          href: databases-containers-items.md
         - name: Modelování dat dokumentů
           displayName: document
           href: modeling-data.md
@@ -564,12 +551,11 @@
         - name: Optimalizace nákladů na zřízenou propustnost
           displayName: 'request units, RUs, RU'
           href: optimize-cost-throughput.md
-        - name: Optimalizace nákladů na dotazování
-          href: optimize-cost-queries.md
+        - name: Optimalizace nákladů na požadavky
+          displayName: 'request, cost, read, write, query, queries, RUs, RU'
+          href: optimize-cost-reads-writes.md
         - name: Optimalizace nákladů na úložiště
           href: optimize-cost-storage.md
-        - name: Optimalizace nákladů na čtení a zápis
-          href: optimize-cost-reads-writes.md
         - name: Optimalizace nákladů na více oblastí
           href: optimize-cost-regions.md
         - name: Optimalizace nákladů na vývoj/testování
@@ -586,11 +572,6 @@
         - name: Zabezpečený přístup k datům
           displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
-        - name: Brána firewall protokolu IP
-          href: firewall-support.md
-        - name: Přístup z virtuálních sítí
-          displayName: service endpoint
-          href: vnet-service-endpoint.md
         - name: Značky služeb
           href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Řízení přístupu na základě role
@@ -605,8 +586,6 @@
           href: security-baseline.md
     - name: Připravenost pro podnikové zpracování
       items:
-        - name: Online zálohování a obnovení na vyžádání
-          href: online-backup-and-restore.md
         - name: Dodržování předpisů
           href: compliance.md
         - name: Podpora služby Azure Policy
@@ -663,6 +642,8 @@
               href: cassandra-partitioning.md
             - name: Sekundární indexy
               href: cassandra-secondary-index.md
+            - name: Mapování úrovní konzistence
+              href: cassandra-consistency.md
         - name: Návody
           items:
             - name: Migrace do rozhraní API Cassandra
@@ -675,6 +656,14 @@
                   href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Změna kanálu
               href: cassandra-change-feed.md
+            - name: Vytvoření kontejneru – rozhraní API Cassandra
+              href: how-to-create-container-cassandra.md
+            - name: Zřízení propustnosti – rozhraní API Cassandra
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-cassandra.md
+            - name: Zjištění poplatku za jednotku žádosti
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-cassandra.md
             - name: Ukládání a správa služby Spring Data
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Cassandra a Spark
@@ -700,12 +689,12 @@
                 - name: Kopírování dat tabulek
                   href: cassandra-spark-table-copy-ops.md
             - name: Správa s využitím šablon Resource Manageru
-              href: manage-cassandra-with-resource-manager.md
+              href: templates-samples-cassandra.md
               displayName: ARM
             - name: Správa pomocí prostředí PowerShell
-              href: powershell-samples.md
+              href: powershell-samples-cassandra.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
-              href: cli-samples.md
+              href: cli-samples-cassandra.md
     - name: Rozhraní MongoDB API
       items:
         - name: Přehled
@@ -760,6 +749,8 @@
               href: mongodb-feature-support.md
             - name: Nejčastější dotazy
               href: mongodb-api-faq.md
+            - name: Mapování úrovní konzistence
+              href: mongodb-consistency.md
         - name: Návody
           items:
             - name: Migrace na rozhraní API MongoDB
@@ -793,18 +784,28 @@
               href: mongodb-change-streams.md
             - name: Správa indexování dat
               href: mongodb-indexing.md
+            - name: Vytvoření kontejneru – rozhraní API MongoDB
+              href: how-to-create-container-mongodb.md
+            - name: Zřízení propustnosti – rozhraní API MongoDB
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-mongodb.md
+            - name: Zjištění poplatku za jednotku žádosti
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-mongodb.md
+            - name: Řešení potíží s výkonem dotazů
+              href: mongodb-troubleshoot-query.md
             - name: Ukládání a správa služby Spring Data
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Příkazy rozšíření MongoDB
               href: mongodb-custom-commands.md
               displayName: custom commands
             - name: Správa s využitím šablon Resource Manageru
-              href: manage-mongodb-with-resource-manager.md
+              href: templates-samples-mongodb.md
               displayName: ARM
             - name: Správa pomocí prostředí PowerShell
-              href: powershell-samples.md
+              href: powershell-samples-mongodb.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
-              href: cli-samples.md
+              href: cli-samples-mongodb.md
             - name: Řešení běžných potíží
               href: mongodb-troubleshoot.md
     - name: Rozhraní Gremlin API
@@ -838,6 +839,10 @@
           items:
             - name: Nejčastější dotazy
               href: gremlin-api-faq.md
+            - name: Hlavičky odpovědi
+              href: gremlin-headers.md
+            - name: Omezení
+              href: gremlin-limits.md
         - name: Návody
           items:
             - name: Modelování dat grafů
@@ -848,6 +853,14 @@
               href: bulk-executor-graph-dotnet.md
             - name: Optimalizace dotazů Gremlinu
               href: graph-execution-profile.md
+            - name: Vytvoření kontejneru – rozhraní API Gremlinu
+              href: how-to-create-container-gremlin.md
+            - name: Zřízení propustnosti – rozhraní API Gremlinu
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-throughput-gremlin.md
+            - name: Zjištění poplatku za jednotku žádosti
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-gremlin.md
             - name: Použití tokenů prostředků
               href: how-to-use-resource-tokens-gremlin.md
             - name: Použití regionálních koncových bodů
@@ -859,12 +872,12 @@
             - name: Ukládání a správa služby Spring Data
               href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
             - name: Správa s využitím šablon Resource Manageru
-              href: manage-gremlin-with-resource-manager.md
+              href: templates-samples-gremlin.md
               displayName: ARM
             - name: Správa pomocí prostředí PowerShell
-              href: powershell-samples.md
+              href: powershell-samples-gremlin.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
-              href: cli-samples.md
+              href: cli-samples-gremlin.md
         - name: Referenční informace
           items:
             - name: Hlavičky odpovědi
@@ -927,15 +940,20 @@
           items:
             - name: Vytváření aplikací s využitím Table API
               href: table-support.md
+            - name: Vytvoření kontejneru – rozhraní API pro tabulky
+              href: how-to-create-container-table.md
+            - name: Zjištění poplatku za jednotku žádosti
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge-table.md
             - name: Průvodce návrhem úložiště Table
               href: table-storage-design-guide.md
             - name: Správa s využitím šablon Resource Manageru
-              href: manage-table-with-resource-manager.md
+              href: templates-samples-table.md
               displayName: ARM
             - name: Správa pomocí prostředí PowerShell
-              href: powershell-samples.md
+              href: powershell-samples-table.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
-              href: cli-samples.md
+              href: cli-samples-table.md
         - name: Referenční informace
           items:
             - name: .NET
@@ -971,7 +989,7 @@
         - name: Použití Azure CLI
           href: manage-with-cli.md
         - name: Použití šablon Azure Resource Manageru
-          href: manage-sql-with-resource-manager.md
+          href: manage-with-templates.md
           displayName: ARM
         - name: Přesun mezi oblastmi
           href: how-to-move-regions.md
@@ -1018,7 +1036,7 @@
               href: storage-explorer.md
             - name: Práce s daty s využitím průzkumníka Azure Cosmos
               href: data-explorer.md
-        - name: Vytvoření kontejneru
+        - name: Vytvoření kontejneru – rozhraní SQL API
           href: how-to-create-container.md
         - name: Vytvoření kontejneru s rozsáhlým klíčem oddílu
           href: large-partition-keys.md
@@ -1038,6 +1056,8 @@
           href: how-to-define-unique-keys.md
     - name: Výkon
       items:
+        - name: Režimy připojení
+          href: sql-sdk-connection-modes.md
         - name: Dotaz
           items:
             - name: Získání metriky spouštění dotazů
@@ -1102,16 +1122,12 @@
               href: troubleshoot-java-async-sdk.md
     - name: Kanál změn
       items:
-        - name: Protokoly triggerů služby Azure Cosmos DB
-          href: how-to-configure-cosmos-db-trigger-logs.md
-        - name: Zásady připojení triggerů Azure Cosmos DB
-          href: how-to-configure-cosmos-db-trigger-connection-policy.md
+        - name: Rozšířená konfigurace triggeru Azure Cosmos DB
+          href: how-to-configure-cosmos-db-trigger.md
         - name: Několik triggerů Azure Cosmos DB
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Řešení potíží s triggery Azure Cosmos DB
           href: troubleshoot-changefeed-functions.md
-        - name: Počáteční čas procesoru kanálu změn
-          href: how-to-configure-change-feed-start-time.md
         - name: Použití estimátoru pro kanálu změn
           href: how-to-use-change-feed-estimator.md
         - name: Migrace z knihovny Change Feed Processor
@@ -1180,8 +1196,8 @@
           href: how-to-setup-cmk.md
     - name: Připravenost pro podnikové zpracování
       items:
-        - name: Obnovení dat ze zálohy
-          href: how-to-backup-and-restore.md
+        - name: Online zálohování a obnovení na vyžádání
+          href: online-backup-and-restore.md
         - name: Žádost o navýšení kvóty
           href: create-support-request-quota-increase.md
     - name: Monitorování

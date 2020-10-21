@@ -229,6 +229,8 @@
   items:
     - name: Dokumentace k rozpoznávání záměru
       href: index-intent-recognition.yml
+    - name: Přehled rozpoznávání záměru
+      href: intent-recognition.md
     - name: Rychlé zprovoznění rozpoznávání záměrů
       href: quickstarts/intent-recognition.md
     - name: Návody
@@ -516,7 +518,7 @@
     - name: Konfigurace RHEL/CentOS 7
       href: how-to-configure-rhel-centos-7.md
       displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: Containers
+    - name: Kontejnery
       items:
         - name: Instalace a spuštění kontejnerů služby Speech
           displayName: 'containers,install container,run container'
@@ -578,9 +580,8 @@
       href: how-to-migrate-from-translator-speech-api.md
 - name: Zdroje a prostředky
   items:
-    - name: Podpora
-      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
-      href: support.md
+    - name: Možnosti pomoci a podpory
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Dokumentace ke Swaggeru
       href: swagger-documentation.md
     - name: Suverénní cloudy

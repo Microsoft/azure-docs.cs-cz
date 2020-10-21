@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
-  ms.date: 08/11/2020
-  ms.openlocfilehash: 43de19b3caa87bf410ad30a237c2c9e91beba63f
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/20/2020
+  ms.openlocfilehash: cd1e23d464baa593ed5f63683664ca355e467168
+  ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88136367"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92311703"
 landingContent:
 - title: Informace o službě Azure Data Share
   linkLists:
@@ -44,25 +44,31 @@ landingContent:
       url: subscribe-to-data-share.md
   - linkListType: how-to-guide
     links:
-    - text: Přidání datových sad
-      url: how-to-add-datasets.md
-    - text: Konfigurace mapování datové sady
-      url: how-to-configure-mapping.md
+    - text: Sdílení z Azure Storage
+      url: how-to-share-from-storage.md
+    - text: Sdílení z Azure SQL Database nebo Synapse Analytics
+      url: how-to-share-from-sql.md
+    - text: Sdílení z Azure Data Exploreru
+      url: https://docs.microsoft.com/azure/data-explorer/data-share
 - title: Monitorování a správa
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Monitorování sdílené složky
-      url: how-to-monitor.md
-    - text: Řešení běžných potíží
-      url: data-share-troubleshoot.md
+    - text: Přidání datových sad
+      url: how-to-add-datasets.md
     - text: Přidání příjemců
       url: how-to-add-recipients.md
+    - text: Konfigurace mapování datové sady
+      url: how-to-configure-mapping.md
     - text: Odstranění pozvánky
       url: how-to-delete-invitation.md
     - text: Odvolání předplatného sdílené složky
       url: how-to-revoke-share-subscription.md
+    - text: Monitorování sdílené složky
+      url: how-to-monitor.md
     - text: Přehled zabezpečení služby Azure Data Share
       url: security.md
     - text: Zotavení po havárii
       url: disaster-recovery.md
+    - text: Řešení běžných potíží
+      url: data-share-troubleshoot.md

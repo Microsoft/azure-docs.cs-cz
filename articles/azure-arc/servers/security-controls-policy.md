@@ -1,15 +1,15 @@
 ---
 title: Řízení dodržování předpisů pro servery s podporou Azure ARC (Preview) Azure Policy dodržování předpisů
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou k dispozici pro servery s podporou ARC Azure (Preview). Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7829a2e75b60f641af96a0e70b5e05d1d86deb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57d6a3a39ef28af8b350063c2f9f79117c8db0d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826058"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320136"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Azure Policy řízení dodržování předpisů pro servery s podporou ARC Azure
 

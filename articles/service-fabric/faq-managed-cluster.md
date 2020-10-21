@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dc41d2c13c834657534971041440bb744cfca38
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728994"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319829"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Nejčastější dotazy k Service Fabric spravovaných clusterů
 
@@ -41,7 +41,7 @@ Smlouva SLA se nezměnila z modelu prostředků aktuální Service Fabric.
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Jaký je rozdíl mezi základním a standardním clusterem SKU?
 
-Základní cluster SKU znamená, že většina konfigurací poskytuje Service Fabric poskytovatel prostředků. Clustery základních SKU jsou určeny k použití pro testování a předprodukční prostředí. Standardní cluster SKU umožňuje uživatelům nakonfigurovat cluster tak, aby splňoval požadavky přímo. Další informace najdete v tématu [Service Fabric spravovaných SKU clusteru](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) pro další podrobnosti.
+Základní cluster SKU znamená, že většina konfigurací poskytuje Service Fabric poskytovatel prostředků. Clustery základních SKU jsou určeny k použití pro testování a předprodukční prostředí. Standardní cluster SKU umožňuje uživatelům nakonfigurovat cluster tak, aby splňoval požadavky přímo. Další informace najdete v tématu [Service Fabric spravovaných SKU clusteru](./overview-managed-cluster.md#service-fabric-managed-cluster-skus) pro další podrobnosti.
 
 ## <a name="cluster-deployment-and-management"></a>Nasazení a Správa clusteru
 
@@ -66,7 +66,7 @@ V rámci verze Preview budou všechny upgrady modulu runtime dokončeny automati
 
 ### <a name="is-there-a-local-development-experience-for-service-fabric-managed-clusters"></a>Je pro Service Fabric spravovaných clusterů k dispozici místní vývojové prostředí?
 
-Místní vývojové prostředí zůstane beze změny ze stávajících Service Fabric clusterů. Další informace najdete v tématu [Vytvoření aplikace .NET](https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-dotnet) , kde najdete další podrobnosti o místním prostředí pro vývoj.
+Místní vývojové prostředí zůstane beze změny ze stávajících Service Fabric clusterů. Další informace najdete v tématu [Vytvoření aplikace .NET](./service-fabric-quickstart-dotnet.md) , kde najdete další podrobnosti o místním prostředí pro vývoj.
 
 ### <a name="can-i-deploy-my-applications-as-an-azure-resource-manager-resource"></a>Můžu své aplikace nasadit jako prostředek Azure Resource Manager?
 

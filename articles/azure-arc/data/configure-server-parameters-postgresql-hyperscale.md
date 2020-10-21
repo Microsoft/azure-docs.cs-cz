@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbddfc84b3f71576cfd0299f2babec859b4ef1f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936099"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311049"
 ---
 # <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Nastavení databázového stroje PostgreSQL Hyperscale s podporou služby Azure Arc
 
@@ -37,7 +37,7 @@ Tento dokument popisuje postup nastavení databázového stroje skupiny serverů
 > - `ssl`
 > - `wal_level`
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 Obecný formát příkazu pro konfiguraci nastavení databázového stroje je:
 
@@ -45,15 +45,15 @@ Obecný formát příkazu pro konfiguraci nastavení databázového stroje je:
 azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}] [{--replace-engine-settings, --re}] {'<parameter name>=<parameter value>, ...'}
 ```
 
-## <a name="show-the-current-custom-values-of-the-parameters-settings"></a>Zobrazit aktuální vlastní hodnoty nastavení parametrů
+## <a name="show-current-custom-values"></a>Zobrazit aktuální vlastní hodnoty
 
-## <a name="with-azdata-cli-command"></a>Pomocí příkazu CLI azdata
+### <a name="with-azure-data-cli-azdata-command"></a>Pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] příkazu
 
 ```console
 azdata arc postgres server show -n <server group name>
 ```
 
-Například:
+Příklad:
 
 ```console
 azdata arc postgres server show -n postgres01
@@ -74,117 +74,117 @@ engine": {
 ...
 ```
 
-## <a name="with-kubectl-command"></a>Pomocí příkazu kubectl
+### <a name="with-kubectl-command"></a>Pomocí příkazu kubectl
 
 Postupujte podle následujících kroků.
 
-### <a name="1-retrieve-the-kind-of-custom-resource-definition-for-your-server-group"></a>1. načtěte si pro skupinu serverů druh definice vlastního prostředku
+1. Načíst druh definice vlastního prostředku pro skupinu serverů
 
-Spusťte tento příkaz:
+   Spusťte tento příkaz:
 
-```console
-azdata arc postgres server show -n <server group name>
-```
+   ```console
+   azdata arc postgres server show -n <server group name>
+   ```
 
-Například:
+   Příklad:
 
-```console
-azdata arc postgres server show -n postgres01
-```
+   ```console
+   azdata arc postgres server show -n postgres01
+   ```
 
-Tento příkaz vrátí specifikaci skupiny serverů, ve které byste viděli parametry, které jste nastavili. Pokud není k dispozici žádný oddíl engine\settings, znamená to, že všechny parametry jsou spuštěny na výchozí hodnotě:
+   Tento příkaz vrátí specifikaci skupiny serverů, ve které byste viděli parametry, které jste nastavili. Pokud není k dispozici žádný oddíl engine\settings, znamená to, že všechny parametry jsou spuštěny na výchozí hodnotě:
 
-```
-> {
-  >"apiVersion": "arcdata.microsoft.com/v1alpha1",
-  >"**kind**": "**postgresql-12**",
-  >"metadata": {
-    >"creationTimestamp": "2020-08-25T14:32:23Z",
-    >"generation": 1,
-    >"name": "postgres01",
-    >"namespace": "arc",
-```
+   ```output
+   > {
+     >"apiVersion": "arcdata.microsoft.com/v1alpha1",
+     >"**kind**": "**postgresql-12**",
+     >"metadata": {
+       >"creationTimestamp": "2020-08-25T14:32:23Z",
+       >"generation": 1,
+       >"name": "postgres01",
+       >"namespace": "arc",  
+   ```
 
-V takovém případě vyhledejte pole "druh" a nastavte jeho hodnotu, například: `postgresql-12` .
+   Ve výsledcích výstupu vyhledejte pole `kind` a nastavte jeho hodnotu, například: `postgresql-12` .
 
-### <a name="2-describe-the-kubernetes-custom-resource-corresponding-to-your-server-group"></a>2. Popište vlastní prostředek Kubernetes, který odpovídá vaší skupině serverů. 
+2. Popište vlastní prostředek Kubernetes, který odpovídá vaší skupině serverů. 
 
-Obecný formát příkazu je:
+   Obecný formát příkazu je:
 
-```console
-kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
-```
+   ```console
+   kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
+   ```
 
-Například:
+   Příklad:
 
-```console
-kubectl describe postgresql-12 postgres01
-```
+   ```console
+   kubectl describe postgresql-12 postgres01
+   ```
 
-Pokud jsou pro nastavení modulu nastaveny vlastní hodnoty, vrátí se. Například:
+   Pokud jsou pro nastavení modulu nastaveny vlastní hodnoty, vrátí se. Příklad:
 
-```console
-Engine:
-...
+   ```output
+   Engine:
+   ...
     Settings:
       Default:
         autovacuum_vacuum_threshold:  65
-```
+   ```
 
-Pokud jste nestavili vlastní hodnoty pro některá z nastavení modulu, bude sekce nastavení modulu sady výsledků prázdná, jako je:
+   Pokud jste nestavili vlastní hodnoty pro některá z nastavení modulu, bude sekce nastavení modulu v nástroji `resultset` prázdná, například:
 
-```console
-Engine:
-...
-    Settings:
-      Default:
-```
+   ```output
+   Engine:
+   ...
+       Settings:
+         Default:
+   ```
 
-## <a name="set-custom-values-for-the-engine-settings"></a>Nastavit vlastní hodnoty pro nastavení modulu
+## <a name="set-custom-values-for-engine-settings"></a>Nastavení vlastních hodnot pro nastavení modulu
 
 Níže uvedené příkazy nastaví parametry uzlu koordinátora a pracovní uzly ve vašem PostgreSQL měřítku na stejné hodnoty. V rámci skupiny serverů ještě není možné nastavovat parametry pro roli. To znamená, že ještě není možné nakonfigurovat daný parametr na konkrétního uzlu koordinátora a na jinou hodnotu pro pracovní uzly.
 
-## <a name="set-a-single-parameter"></a>Nastavení jednoho parametru
+### <a name="set-a-single-parameter"></a>Nastavení jednoho parametru
 
 ```console
 azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
 ```
 
-Například:
+Příklad:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
 ```
 
-## <a name="set-multiple-parameters-with-a-single-command"></a>Nastavení více parametrů jediným příkazem
+### <a name="set-multiple-parameters-with-a-single-command"></a>Nastavení více parametrů jediným příkazem
 
 ```console
 azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
 ```
 
-Například:
+Příklad:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
 ```
 
-## <a name="reset-a-parameter-to-its-default-value"></a>Resetování parametru na jeho výchozí hodnotu
+### <a name="reset-a-parameter-to-its-default-value"></a>Resetování parametru na jeho výchozí hodnotu
 
 Chcete-li obnovit výchozí hodnotu parametru, nastavte jej bez označení hodnoty. 
 
-Například:
+Příklad:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=
 ```
 
-## <a name="reset-all-parameters-to-their-default-values"></a>Resetovat všechny parametry na jejich výchozí hodnoty
+### <a name="reset-all-parameters-to-their-default-values"></a>Resetovat všechny parametry na jejich výchozí hodnoty
 
 ```console
 azdata arc postgres server edit -n <server group name> -e '' -re
 ```
 
-Například:
+Příklad:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e '' -re
@@ -198,7 +198,7 @@ azdata arc postgres server edit -n postgres01 -e '' -re
 azdata arc postgres server edit -n <server group name> -e '<parameter name>="<parameter value>"'
 ```
 
-Například:
+Příklad:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plpgsql,plperl"'
@@ -208,13 +208,11 @@ azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plp
 
 Proměnná prostředí by měla být zabalená v rámci "" "", aby se nevyřešila před nastavením.
 
-Například: 
+Příklad: 
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'
 ```
-
-
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si o vertikálním navýšení kapacity [(Přidání pracovních uzlů)](scale-out-postgresql-hyperscale-server-group.md) do skupiny serverů.

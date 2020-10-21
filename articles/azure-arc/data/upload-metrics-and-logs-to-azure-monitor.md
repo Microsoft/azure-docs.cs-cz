@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: cda123adb667b4c857e05ce53d603e328e995766
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 869bfcb87aa4846674db233c4268e9269929cd04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108163"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320168"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Nahrajte data o využití, metriky a protokoly do Azure Monitor
 
@@ -25,7 +25,7 @@ Pravidelně můžete exportovat informace o využití pro účely fakturace, mon
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Budete potřebovat rozhraní příkazového řádku Azure CLI (AZ) a rozhraní Azure Data CLI (azdata).  [Nainstalovat nástroje](./install-client-tools.md).
+Budete potřebovat rozhraní příkazového řádku Azure CLI (AZ) a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] nainstalováno.  [Nainstalovat nástroje](./install-client-tools.md).
 
 Před nahráním dat do Azure je potřeba zajistit, aby předplatné Azure mělo zaregistrovaný poskytovatel prostředků Microsoft. AzureData.
 
@@ -45,7 +45,7 @@ az provider register -n Microsoft.AzureData --wait
 
 Informace o využití, jako jsou inventarizace a využití prostředků, se dají do Azure nahrát v následujícím dvoufázovém postupu:
 
-1. Pomocí příkazu exportujte data o využití následujícím ```azdata export``` způsobem:
+1. Pomocí příkazu exportujte data o využití následujícím `azdata export` způsobem:
 
    ```console
    #login to the data controller and enter the values at the prompt
@@ -56,7 +56,7 @@ Informace o využití, jako jsou inventarizace a využití prostředků, se daj�
    ```
    Tento příkaz vytvoří `usage.json` soubor se všemi datovými zdroji s povoleným obloukem Azure, jako jsou spravované instance SQL, PostgreSQL instancemi s ochranou velkého rozsahu atd., které se vytvářejí na řadiči dat.
 
-2. Nahrání dat o využití pomocí ```azdata upload``` příkazu
+2. Nahrání dat o využití pomocí `azdata upload` příkazu
 
    > [!NOTE]
    > Před spuštěním nahrávání prosím počkejte aspoň 24 hodin po vytvoření řadiče dat ARC Azure.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f433c33f50506309e88b7ffa2c8aaf498fb3613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e844904f236e9d81404a3481af9349ac8881085
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761154"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310436"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Základní hodnoty zabezpečení Azure pro Service Bus
 
@@ -62,7 +62,7 @@ Použijte Azure Security Center a dodržujte doporučení k ochraně sítě, kte
 
 - [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
 
-- [Azure Security Center Intelligence Integrated Threat Intelligence](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center Intelligence Integrated Threat Intelligence](../security-center/azure-defender.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -111,7 +111,7 @@ Pokud předdefinované definice nevyhovují potřebám vaší organizace, může
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Integrovaná zásada Azure pro obor názvů Service Bus](/azure/service-bus-messaging/policy-samples#azure-service-bus-messaging)
+- [Integrovaná zásada Azure pro obor názvů Service Bus](./policy-reference.md#azure-service-bus-messaging)
 
 - [Ukázky Azure Policy pro sítě](../governance/policy/samples/built-in-policies.md#network)
 
@@ -129,7 +129,7 @@ Použijte některou z vestavěných definic zásad Azure souvisejících s ozna�
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek. 
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags) 
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md) 
 
 - [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md) 
 
@@ -143,7 +143,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s Azure Service Bus. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -177,7 +177,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 - [Postup povolení nastavení diagnostiky pro Azure Service Bus](service-bus-diagnostic-logs.md)
 
-- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -231,9 +231,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 - [Předdefinované role pro Azure Service Bus](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -311,7 +311,7 @@ Pokud předdefinované definice nevyhovují potřebám vaší organizace, může
 
 **Doprovodné**materiály: použití sestav a monitorování zabezpečení Azure Active Directory k detekci, kdy dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -347,7 +347,7 @@ Pokud předdefinované definice nevyhovují potřebám vaší organizace, může
 
 V dalším případě pravidelně otáčejte sdílený přístupový podpis oboru názvů Service Bus.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
@@ -363,7 +363,7 @@ V dalším případě pravidelně otáčejte sdílený přístupový podpis obor
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Pak v Azure Monitor můžete nakonfigurovat požadované výstrahy protokolu pro určité akce, ke kterým dojde v protokolech.
 
-- [Jak integrovat protokoly aktivit Azure do Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure do Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Autorizace přístupu k prostředkům Service Bus pomocí Azure Active Directory](authenticate-application.md)
 
@@ -375,7 +375,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny**: pomocí funkcí Azure Active Directory ochrany identit a detekce rizik můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce související s vašimi prostředky s podporou Service Bus. Pomocí služby Azure Sentinel byste měli povolit automatizované odezvy pro implementaci reakcí zabezpečení vaší organizace.
 
-- [Jak zobrazit rizikové přihlašování Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -403,7 +403,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné**materiály: pomocí značek u prostředků souvisejících s vaším Service Bus pomáhat při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -413,11 +413,11 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné**materiály: implementace samostatných předplatných a skupin pro správu pro vývoj, testování a produkci. Obory názvů Service Bus by měly být oddělené virtuálními sítěmi s nakonfigurovanými privátními koncovými body a vhodně označené.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Jak vytvářet a používat značky](/azure/azure-resource-manager/resource-group-using-tags)
+- [Jak vytvářet a používat značky](../azure-resource-manager/management/tag-resources.md)
 
 - [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md)
 
@@ -437,7 +437,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Service Bus a
 
 - [Povolení přístupu k Azure Service Bus obory názvů prostřednictvím privátních koncových bodů](private-link-service.md)
 
-- [Pochopení skupin zabezpečení sítě a značek služeb](/azure/virtual-network/security-overview)
+- [Pochopení skupin zabezpečení sítě a značek služeb](../virtual-network/network-security-groups-overview.md)
 
 - [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -507,7 +507,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 - [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -527,11 +527,11 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování Azure Service Bus oborů názvů a souvisejících prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -574,7 +574,7 @@ Pokud předdefinované definice nevyhovují potřebám vaší organizace, může
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](../governance/policy/samples/index.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -603,9 +603,9 @@ Pokud předdefinované definice nevyhovují potřebám vaší organizace, může
 
 Pomocí aliasů Azure Policy v oboru názvů Microsoft. ServiceBus můžete vytvořit vlastní zásady pro auditování nebo vymáhání konfigurací.
 
-- [Předdefinované zásady Azure pro Service Bus ](/azure/service-bus-messaging/policy-samples)
+- [Předdefinované zásady Azure pro Service Bus ](./policy-reference.md)
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -653,7 +653,7 @@ Pomocí aliasů Azure Policy v oboru názvů Microsoft. ServiceBus můžete vytv
 
 - [Konfigurace klíčů spravovaných zákazníkem pro Service Bus](configure-customer-managed-key.md)
 
-- [Vytvoření Key Vault](/azure/key-vault/quick-create-portal)
+- [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -731,7 +731,7 @@ Pomocí následujícího příkazu PowerShellu Zajistěte pravidelné automatizo
 
 - [Postup konfigurace klíčů spravovaných zákazníkem pro šifrování Azure Service Busch dat v klidovém umístění](configure-customer-managed-key.md)
 
-- [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -741,7 +741,7 @@ Pomocí následujícího příkazu PowerShellu Zajistěte pravidelné automatizo
 
 **Pokyny**: povolení obnovitelného odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění. Azure Service Bus vyžaduje, aby klíče spravované zákazníkem byly obnovitelné odstranění a nakonfigurovány.
 
-- [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [Nastavení trezoru klíčů s klíči](../event-hubs/configure-customer-managed-key.md)
 
@@ -775,7 +775,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -843,5 +843,5 @@ Použijte funkci automatizace pracovních postupů Azure Security Center k autom
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

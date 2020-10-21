@@ -55,6 +55,8 @@
               href: how-to-set-up-instance-portal.md
         - name: Zápis ověřovacího kódu aplikace
           href: how-to-authenticate-client.md
+        - name: Vytvoření registrace aplikace
+          href: how-to-create-app-registration.md
         - name: Přesun instance do jiné oblasti
           href: how-to-move-regions.md
     - name: Návrh modelů

@@ -3,12 +3,12 @@ title: Další informace o Azure Service Fabric
 description: Přečtěte si o základních konceptech a hlavních oblastech Azure Service Fabric. Poskytuje rozšířený přehled Service Fabric a vytváření mikroslužeb.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f4e0ea03b631773f96ca4645d44b9fe28d89da9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836696"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319811"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Chcete se dozvědět o Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má ale velkou oblast povrchu, ale máme spoustu informací.  Tento článek obsahuje stručný přehled Service Fabric a popisuje základní koncepty, programovací modely, životní cyklus aplikací, testování, clustery a monitorování stavu. Přečtěte si [Přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) Úvod do Service Fabric, jak se dá použít k vytváření mikroslužeb. Tento článek neobsahuje úplný seznam obsahu, ale obsahuje odkaz na přehled a zahájení práce pro každou oblast Service Fabric. 
@@ -75,7 +75,7 @@ Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy.
 ### <a name="reliable-actors"></a>Reliable Actors
 Technologie [Reliable Actors](service-fabric-reliable-actors-introduction.md) , která je postavená na Reliable Services, je rozhraní aplikace, které implementuje vzor virtuálního objektu actor na základě vzoru návrhu objektu actor. Rozhraní Reliable actor používá nezávislé jednotky COMPUTE a State s jedním vláknovým spouštěním nazvaným Actors. Rozhraní Reliable Actors poskytuje vestavěnou komunikaci pro objekty actor a trvalá nastavení trvalých stavů a škálování na více systémů.
 
-### <a name="aspnet-core"></a>Jádro ASP.NET
+### <a name="aspnet-core"></a>ASP.NET Core
 Service Fabric se integruje s [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) jako první třída programovací model pro vytváření webových aplikací a aplikací API.  ASP.NET Core lze použít dvěma různými způsoby v Service Fabric:
 
 - Hostuje se jako spustitelný soubor hosta. Používá se hlavně ke spouštění existujících aplikací ASP.NET Core v Service Fabric bez jakýchkoli změn kódu.
@@ -189,7 +189,7 @@ K dispozici je více produktů, které pokrývají tyto tři oblasti, a pro kaž
 * Naučte se [monitorovat a diagnostikovat služby](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
 * Naučte se [testovat své aplikace a služby](service-fabric-testability-overview.md).
 * Naučte se [Spravovat a orchestrovat prostředky clusteru](service-fabric-cluster-resource-manager-introduction.md).
-* Prohlédněte si [ukázky Service Fabric](https://aka.ms/servicefabricsamples).
+* Prohlédněte si [ukázky Service Fabric](/samples/browse/?products=azure).
 * Přečtěte si o [možnostech podpory Service Fabric](service-fabric-support.md).
 * Články a oznámení si můžete přečíst na [blogu týmu](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) .
 
