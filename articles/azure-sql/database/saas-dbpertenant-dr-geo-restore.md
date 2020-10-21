@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618995"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330100"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Použití geografického obnovení k obnovení víceklientské aplikace SaaS ze záloh databáze
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -184,7 +184,7 @@ Představte si výpadky v oblasti, ve které je aplikace nasazená, a spusťte s
 
 3. Monitorujte stav procesu obnovení v okně PowerShellu.
 
-    ![Proces obnovení](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![Snímek obrazovky, který zobrazuje okno prostředí PowerShell, kde můžete monitorovat stav procesu obnovení.](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > Pokud chcete prozkoumat kód pro úlohy obnovení, zkontrolujte skripty PowerShellu ve složce. ..\Learning Modules\Business kontinuita a zotavení po havárii Recovery\DR-RestoreFromBackup\RecoveryJobs.
@@ -202,7 +202,7 @@ I když je koncový bod aplikace v Traffic Manager zakázán, aplikace není k d
 
   * Pokud otevřete stránku události tenanta přímo v době, kdy je klient v režimu offline, zobrazí se stránka s oznámením klienta offline. Pokud je například contoso v režimu offline, zkuste otevřít http://events.wingtip-dpt.&lt ; User &gt; . trafficmanager.NET/contosoconcerthall.
 
-    ![Proces obnovení](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![Snímek obrazovky zobrazující stránku offline události](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Zřízení nového tenanta v oblasti obnovení
 Dokonce i před obnovením databází klientů můžete zřídit nové klienty v oblasti obnovení. Nové databáze tenantů zřízené v oblasti obnovení jsou později vráceny se obnovenými databázemi.   
@@ -376,6 +376,6 @@ V tomto kurzu jste se naučili:
 
 Vyzkoušejte [zotavení po havárii pro víceklientské aplikace SaaS s využitím kurzu geografické replikace databáze](../../sql-database/saas-dbpertenant-dr-geo-replication.md) a Naučte se, jak pomocí geografické replikace výrazně zkrátit dobu potřebnou k obnovení rozsáhlé aplikace pro více tenantů.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 [Další kurzy, které se vytvářejí na aplikaci Wingtip SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

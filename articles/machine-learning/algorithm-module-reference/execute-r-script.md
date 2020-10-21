@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542284"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330389"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
 
@@ -194,11 +194,11 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
     > [!NOTE]
     > Existující kód R může vyžadovat drobné změny ke spuštění v kanálu návrháře. Například vstupní data, která zadáte ve formátu CSV, by měla být explicitně převedena na datovou sadu, aby ji bylo možné použít ve svém kódu. Typy dat a sloupců používané v jazyce R se také liší v různých způsobech z dat a typů sloupců použitých v návrháři.
 
-    Pokud je váš skript větší než 16 KB, použijte port **sady skriptu** , aby se předešlo chybám, jako *je příkazový řádek, který překračuje limit 16597 znaků*. 
+1. Pokud je váš skript větší než 16 KB, použijte port **sady skriptu** , aby se předešlo chybám, jako *je příkazový řádek, který překračuje limit 16597 znaků*. 
     
     1. Vytvořte balíček skriptu a dalších vlastních prostředků do souboru ZIP.
     1. Nahrajte soubor ZIP jako **datovou sadu souboru** do studia. 
-    1. Přetáhněte modul DataSet ze seznamu *Moje datové sady* v levém podokně modulu na stránce vytváření návrháře. 
+    1. Přetáhněte modul DataSet ze seznamu *datových sad* v levém podokně modulu na stránce vytváření návrháře. 
     1. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
     
     Následuje ukázkový kód pro využití skriptu ve skriptovém svazku:

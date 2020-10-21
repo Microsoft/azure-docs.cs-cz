@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 738d62d60ad06431bd77cd99343fc8835c4c5685
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363218"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330168"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Postup ochrany privátních zón a záznamů DNS
 
@@ -22,9 +22,9 @@ Privátní DNS zóny a záznamy jsou důležité prostředky. Odstranění zóny
 
 Tento článek vysvětluje, jak Azure DNS umožňuje chránit privátní zóny DNS a záznamy s těmito změnami.  K dispozici jsou dvě výkonné funkce cenných papírů poskytované Azure Resource Manager: [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md) a [zámky prostředků](../azure-resource-manager/management/lock-resources.md).
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
-Řízení přístupu na základě role v Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro uživatele, skupiny a prostředky Azure. Pomocí RBAC můžete udělit úroveň přístupu, kterou uživatelé potřebují. Další informace o tom, jak vám Správa přístupu pomáhá spravovat přístup, najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md).
+Řízení přístupu na základě role v Azure (Azure RBAC) umožňuje jemně odstupňovanou správu přístupu pro uživatele, skupiny a prostředky Azure. Pomocí Azure RBAC můžete udělit úroveň přístupu, kterou uživatelé potřebují. Další informace o tom, jak Azure RBAC pomáhá spravovat přístup, najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md).
 
 ### <a name="the-private-dns-zone-contributor-role"></a>Role Přispěvatel Privátní DNS zóny
 
@@ -32,11 +32,11 @@ Role Přispěvatel Privátní DNS zóny je předdefinovaná role pro správu pri
 
 Skupina prostředků *myPrivateDNS* obsahuje pět zón pro společnost Contoso Corporation. Udělení oprávnění přispěvatele zóny Privátní DNS Správce DNS pro tuto skupinu prostředků umožňuje úplné řízení těchto zón DNS. Zabraňuje udělení zbytečných oprávnění. Správce DNS nemůže vytvářet ani zastavovat virtuální počítače.
 
-Nejjednodušší způsob, jak přiřadit oprávnění RBAC [, je prostřednictvím Azure Portal](../role-based-access-control/role-assignments-portal.md).  
+Nejjednodušším způsobem přiřazení oprávnění Azure RBAC je [prostřednictvím Azure Portal](../role-based-access-control/role-assignments-portal.md).  
 
 Otevřete pro skupinu prostředků položku **řízení přístupu (IAM)** , vyberte **Přidat**a potom vyberte roli **Přispěvatel privátní DNSová zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
 
-![Úroveň skupiny prostředků RBAC prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/rbac1.png)
+![Úroveň skupiny prostředků Azure RBAC prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
 Oprávnění lze také [udělit pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
@@ -61,15 +61,15 @@ az role assignment create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="private-zone-level-rbac"></a>RBAC úrovně privátní zóny
+### <a name="private-zone-level-azure-rbac"></a>Úroveň privátních zón Azure RBAC
 
 Pravidla Azure RBAC se dají použít u předplatného, skupiny prostředků nebo samostatného prostředku. Tento prostředek může být jednotlivou zónou DNS nebo individuální sada záznamů.
 
 Například skupina prostředků *myPrivateDNS* obsahuje zónu *Private.contoso.com* a podzónu *Customers.Private.contoso.com*. Pro každý účet zákazníka se vytvoří záznamy CNAME. Účet správce, který se používá ke správě záznamů CNAME, má přiřazená oprávnění k vytváření záznamů v zóně *Customers.Private.contoso.com* . Účet může spravovat jenom *Customers.Private.contoso.com* .
 
-Oprávnění RBAC na úrovni zóny je možné udělit prostřednictvím Azure Portal.  Otevřete **řízení přístupu (IAM)** pro zónu, vyberte **Přidat**a potom vyberte roli **Přispěvatel privátní DNS zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
+Oprávnění Azure RBAC na úrovni zóny je možné udělit prostřednictvím Azure Portal.  Otevřete **řízení přístupu (IAM)** pro zónu, vyberte **Přidat**a potom vyberte roli **Přispěvatel privátní DNS zóna** . Vyberte požadované uživatele nebo skupiny, kterým chcete udělit oprávnění.
 
-![RBAC úrovně zóny DNS prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/rbac2.png)
+![Úroveň zóny DNS Azure RBAC prostřednictvím Azure Portal](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
 Oprávnění lze také [udělit pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
@@ -96,17 +96,17 @@ az role assignment create \
 --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/privateDnsZones/<zone name>/"
 ```
 
-### <a name="record-set-level-rbac"></a>Nastavení RBAC na úrovni sady záznamů
+### <a name="record-set-level-azure-rbac"></a>Úroveň sady záznamů Azure RBAC
 
 Oprávnění se aplikují na úrovni sady záznamů.  Uživateli je uděleno řízení k záznamům, které potřebují, a nelze provádět žádné další změny.
 
-Oprávnění RBAC na úrovni záznamů můžete nakonfigurovat prostřednictvím Azure Portal pomocí tlačítka **Access Control (IAM)** na stránce sada záznamů:
+Úroveň sady záznamů Azure RBAC lze nakonfigurovat prostřednictvím Azure Portal pomocí tlačítka **Access Control (IAM)** na stránce sada záznamů:
 
 ![Snímek obrazovky zobrazuje tlačítko Access Control (I I M).](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
 ![Snímek obrazovky zobrazuje Access Control s vybraným přiřazením přidat roli.](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
-[Pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)lze také udělit oprávnění RBAC na úrovni záznamů a nastavení:
+Oprávnění Azure RBAC na úrovni záznamů lze také [udělit pomocí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
 ```azurepowershell-interactive
 # Grant permissions to a specific record set
@@ -188,7 +188,7 @@ az role create -inputfile <file path>
 
 Roli je pak možné přiřadit stejným způsobem jako předdefinované role, jak je popsáno výše v tomto článku.
 
-Další informace o tom, jak vytvářet, spravovat a přiřazovat vlastní role, najdete v tématu [vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md).
+Další informace o tom, jak vytvářet, spravovat a přiřazovat vlastní role, najdete v tématu [vlastní role Azure](../role-based-access-control/custom-roles.md).
 
 ## <a name="resource-locks"></a>Zámky prostředků
 
@@ -287,5 +287,5 @@ Současně je možné použít oba přístupy – zámky prostředků i vlastní
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o práci s RBAC najdete v tématu [Začínáme se správou přístupu v Azure Portal](../role-based-access-control/overview.md).
+* Další informace o práci s Azure RBAC najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md).
 * Další informace o práci s zámky prostředků najdete v tématu [uzamčení prostředků pomocí Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).

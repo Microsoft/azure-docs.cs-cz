@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 92dcb1e75d43a946b9b6a238aaa360ec3d84dbb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b381e2dbdbfd30d10f37637b30bcdfbab8ed99a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619610"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331936"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Zřízení a katalog nových tenantů v aplikaci SaaS s využitím víceklientské Azure SQL Database horizontálně dělené
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,7 +123,7 @@ V tomto kurzu se naučíte:
 > * Zřízení dávky tenantů do databází s více klienty a s jedním tenantům
 > * Registrace databáze a mapování tenanta v katalogu
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
@@ -150,7 +150,7 @@ Níže jsou uvedené klíčové prvky pracovního postupu zřizování, který p
 - **Přidejte název tenanta do tabulky přípon katalogu**: název místa se přidá do tabulky tenantů v katalogu.  V tomto dodatku se dozvíte, jak se dá databáze katalogu rozšířit, aby podporovala další data specifická pro danou aplikaci.
 - **Otevřít stránku události pro nového tenanta**: stránka události *Blues Bushwillow* se otevře v prohlížeči.
 
-   ![stránka events](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![Snímek obrazovky, který zobrazuje stránku události pro nového tenanta.](./media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 #### <a name="debugger-steps"></a>Kroky ladicího programu
 
@@ -163,7 +163,7 @@ Chcete-li pochopit, jak aplikace Wingtip implementuje nové zřizování tenanta
 
 2. Přidejte zarážku tak, že umístíte kurzor kamkoli na řádek 38, řádek, který uvádí: *New-tenant*, a pak stiskněte **F9**.
 
-   ![přerušení](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
+   ![Snímek obrazovky, který zvýrazní řádek, který obsahuje nového tenanta.](./media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
 3. Spusťte skript stisknutím klávesy **F5**.
 
@@ -261,7 +261,7 @@ Ve vzorech automatického zřizování se vyhrazená služba zřizování použ�
 
 Tento typ automatizované služby může být jednoduchý nebo složitý. Automatizace může například zvládnout zřizování napříč několika geografickými oblastmi a může nastavit geografickou replikaci pro zotavení po havárii. Pomocí vzoru automatického zřizování odešle klientská aplikace nebo skript požadavek na zřízení do fronty, kterou má zpracovat služba zřizování. Skript by se pak mohl dotázat, aby se zjistilo dokončení. Při použití předběžného zřizování se požadavky budou zpracovávat rychle, zatímco služba na pozadí by spravovala zřizování náhradní databáze.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Klientská knihovna Elastic Database](elastic-database-client-library.md)

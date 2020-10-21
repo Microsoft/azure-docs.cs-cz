@@ -36,7 +36,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: Jádro ASP.NET
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -75,6 +75,8 @@
       items:
         - name: Úhlová
           href: tutorial-v2-angular.md
+        - name: Blazor WebAssembly
+          href: tutorial-blazor-webassembly.md
         - name: JavaScript – tok ověřovacího kódu
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript – implicitní tok
@@ -123,6 +125,9 @@
       href: authentication-flows-app-scenarios.md
     - name: Osvědčené postupy pro platformu identit
       href: identity-platform-integration-checklist.md
+    - name: Mobilní jednotné přihlašování (SSO)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
     - name: Scénáře aplikací
       displayName: App scenarios
       items:
@@ -291,10 +296,8 @@
           items:
             - name: Účty a profily tenantů
               href: accounts-overview.md
-            - name: Autorizační agenti
-              href: authorization-agents.md
-            - name: Zprostředkované ověřování
-              href: brokered-auth.md
+            - name: Jednotné přihlašování s MSAL pro Android
+              href: msal-android-single-sign-on.md
             - name: Integrace s Azure AD B2C
               href: msal-android-b2c.md
             - name: Migrace na MSAL.Android
@@ -474,7 +477,7 @@
       items:
         - name: Přehled
           href: authentication-national-cloud.md
-        - name: Ověřování
+        - name: Authentication
           href: msal-national-cloud.md
     - name: Automatické zřizování uživatelů (SCIM)
       items:

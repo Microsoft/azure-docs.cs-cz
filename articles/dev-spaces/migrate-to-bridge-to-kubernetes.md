@@ -1,16 +1,16 @@
 ---
 title: Migrace na Bridge to Kubernetes
 services: azure-dev-spaces
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 description: Popisuje proces migrace z Azure Dev Spaces na přemostění do Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, most na Kubernetes
-ms.openlocfilehash: 008cb90c172d8106115e4424956d82d026dbcee0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044696"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329794"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrace na Bridge to Kubernetes
 
@@ -46,26 +46,26 @@ Azure Dev Spaces a most pro Kubernetes mají podobné funkce, liší se i v něk
 | Azure Kubernetes Service | V 15 oblastech Azure | Libovolný region služby AKS    |
 | **Zabezpečení** |
 | V clusteru je vyžadován přístup k zabezpečení.  | Přispěvatel clusteru AKS  | Kubernetes RBAC – aktualizace nasazení   |
-| Na vašem vývojovém počítači je vyžadován přístup zabezpečení.  | Není k dispozici  | Místní správce/sudo   |
+| Na vašem vývojovém počítači je vyžadován přístup zabezpečení.  | –  | Místní správce/sudo   |
 | **Použitelnost** |
-| Nezávisle na artefaktech Kubernetes a Docker  | No  | Yes   |
-| Automatické vrácení změn provedených po ladění  | No  | Yes   |
-| **Prostředí** |
-| Spolupracuje se sadou Visual Studio 2019  | Yes  | Yes   |
-| Funguje s Visual Studio Code  | Yes  | Yes   |
-| Funguje s rozhraním příkazového řádku  | Yes  | No   |
+| Nezávisle na artefaktech Kubernetes a Docker  | Ne  | Ano   |
+| Automatické vrácení změn provedených po ladění  | Ne  | Ano   |
+| **Podporované nástroje klienta** |
+| Spolupracuje se sadou Visual Studio 2019  | Ano  | Ano   |
+| Funguje s Visual Studio Code  | Ano  | Ano   |
+| Funguje s rozhraním příkazového řádku  | Ano  | Ne   |
 | **Kompatibilita s operačním systémem** |
-| Funguje ve Windows 10  | Yes  | Yes  |
-| Funguje na Linux  | Yes  | Yes  |
-| Funguje na macOS  | Yes  | Yes  |
+| Funguje ve Windows 10  | Ano  | Ano  |
+| Funguje na Linux  | Ano  | Ano  |
+| Funguje na macOS  | Ano  | Ano  |
 | **Možnosti** |
-| Izolace vývojářů nebo vývoj pro týmovou spolupráci  | Yes  | Yes  |
-| Selektivní přepsání proměnných prostředí  | No  | Yes  |
-| Vytvoření grafu souboru Dockerfile a Helm  | Yes  | No  |
-| Trvalé nasazení kódu do Kubernetes  | Yes  | No  |
-| Vzdálené ladění v Kubernetes pod  | Yes  | No  |
-| Místní ladění, připojené k Kubernetes  | No  | Yes  |
-| Ladění více služeb současně na stejné pracovní stanici  | Yes  | Yes  |
+| Izolace vývojářů nebo vývoj pro týmovou spolupráci  | Ano  | Ano  |
+| Selektivní přepsání proměnných prostředí  | Ne  | Ano  |
+| Vytvoření grafu souboru Dockerfile a Helm  | Ano  | Ne  |
+| Trvalé nasazení kódu do Kubernetes  | Ano  | Ne  |
+| Vzdálené ladění v Kubernetes pod  | Ano  | Ne  |
+| Místní ladění, připojené k Kubernetes  | Ne  | Ano  |
+| Ladění více služeb současně na stejné pracovní stanici  | Ano  | Ano  |
 
 ## <a name="kubernetes-inner-loop-development"></a>Vývoj vnitřních smyček Kubernetes
 

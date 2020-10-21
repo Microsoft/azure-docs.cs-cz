@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro jarní cloud Azure
 description: Obsahuje seznam Azure Policy integrovaných definic zásad pro jarní cloud Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: ffbd4f3b030a807bd6b72795e71b92dc2764b65e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 754166132caa7abcf27f5fc42c897097be9460bd
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818879"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330321"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Azure Policy předdefinované definice pro Azure jaře Cloud
 

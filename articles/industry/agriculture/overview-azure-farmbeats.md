@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87439563"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331919"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Přehled služby Azure FarmBeats (Preview)
 
@@ -43,7 +43,7 @@ DataHub je navržená jako rozšiřitelná platforma rozhraní API. Spolupracuje
 
 Akcelerátor Azure FarmBeats je Ukázková webová aplikace, která je postavená nad DataHub. Odkaz akcelerátoru – spustí vaše uživatelské rozhraní a vývoj modelu. Akcelerátor Azure FarmBeats používá rozhraní API Azure FarmBeats. Vizualizuje ingestovaná data senzorů jako grafy a výstupy modelu jako mapy. Můžete například použít akcelerátor k rychlému vytvoření farmy a získat mapu pro vegetativní rozvržení nebo mapu umístění senzorů pro tuto farmu snadno.
 
-## <a name="role-based-access-control-rbac"></a>Řízení přístupu podle role (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role Azure (Azure RBAC)
 
 Správce může definovat pravidla přístupu pro Azure FarmBeats pomocí jedné z předdefinovaných rolí. Role určují, ke kterým oblastem aplikace má uživatel přístup a jaké akce můžou provádět. Existují dva druhy rolí v Azure FarmBeats – pro uživatele a partnery.
 
@@ -61,7 +61,7 @@ Správce může do Azure FarmBeats přidat několik partnerů jako zprostředkov
 | Partner pro satelitní servery  |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | Scéna, SceneFile <br/> <br/> ExtendedType <br/> <br/> Sdílených |
 | Partner s počasí * <br/> <br/>  (* Již brzy) |   Vytvořit, číst, aktualizovat <br/> <br/> Číst, aktualizovat <br/> <br/> Číst | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Sdílených |
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 Azure FarmBeats se nabízí bez dalších poplatků a platíte jenom za prostředky Azure, které používáte. Pomocí níže uvedených prostředků můžete získat další informace o této nabídce:
 

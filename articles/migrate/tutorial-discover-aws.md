@@ -4,12 +4,12 @@ description: Naučte se zjišťovat instance AWS pomocí posouzení serveru Azur
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b837ae89831024b169782fe9ae1a062677a4b45b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275451"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311278"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Kurz: zjištění instancí AWS pomocí posouzení serveru
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti.  
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -224,7 +224,7 @@ Nastavte zařízení poprvé.
    
    Přihlášení pomocí PIN kódu se nepodporuje.
 3. Po úspěšném přihlášení se vraťte k webové aplikaci. 
-4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění](tutorial-prepare-physical.md) k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
+4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění](./tutorial-discover-physical.md) k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
 1. Po úspěšné registraci zařízení si můžete zobrazit podrobnosti o registraci kliknutím na **Zobrazit podrobnosti**.
 
 

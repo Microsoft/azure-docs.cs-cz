@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44426103b8f0fce275f33682edbc3b84a08344b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257669"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329555"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Analýza a vizualizace událostí pomocí protokolů Azure Monitor
  Protokoly Azure Monitor shromažďuje a analyzuje telemetrii z aplikací a služeb hostovaných v cloudu a poskytuje analytické nástroje, které vám pomůžou maximalizovat jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v protokolech Azure Monitor a získat přehledy a řešit potíže s tím, co se děje ve vašem clusteru. Řeší se tyto běžné otázky:
@@ -42,7 +42,7 @@ V nástroji `Summary` se zobrazí dlaždice ve formě grafu pro každé povolen�
 
 Následující obrázek ukazuje domovskou stránku Service Fabric Analytics řešení. Tato domovská stránka nabízí snímek toho, co se děje ve vašem clusteru.
 
-![Řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Snímek obrazovky, který zobrazuje domovskou stránku řešení Service Fabric Analytics.](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
  Pokud jste při vytváření clusteru povolili diagnostiku, můžete zobrazit události pro 
 

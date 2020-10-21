@@ -80,10 +80,10 @@
           href: redirect-overview.md
         - name: Přepsání hlaviček HTTP a adres URL
           href: rewrite-http-headers-url.md
-        - name: Zabezpečení
-          items:
-            - name: Standardní hodnoty zabezpečení
-              href: security-baseline.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: SSL
       items:
         - name: Ukončení protokolu SSL a kompletní SSL

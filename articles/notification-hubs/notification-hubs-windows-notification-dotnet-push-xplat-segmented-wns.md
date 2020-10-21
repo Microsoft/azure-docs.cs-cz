@@ -17,12 +17,12 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 027bbebaaab0694cfa0157464d47ef2c8e08fbff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998216"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320572"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Kurz: odesílání oznámení na konkrétní zařízení s Univerzální platforma Windows aplikacemi
 
@@ -47,7 +47,7 @@ V tomto kurzu provedete následující úlohy:
 > * Posílání označených oznámení
 > * Spuštění aplikace a generování oznámení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením tohoto kurzu dokončete [kurz o odesílání oznámení do aplikací pro Univerzální platformu Windows pomocí služby Azure Notification Hubs][get-started].  
 
@@ -270,4 +270,4 @@ V tomto článku jste se dozvěděli, jak vysílat nejnovější zprávy podle k
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)

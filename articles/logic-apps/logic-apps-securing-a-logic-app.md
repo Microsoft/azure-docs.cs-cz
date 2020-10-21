@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: b25cac502a4e9a0cc5582134cb9601b75672ffd1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 159f4b2ea0cafb0b2c883cde76ddce7ddd3f1fc6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168490"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317574"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Zabezpečený přístup a data v Azure Logic Apps
 
@@ -863,7 +863,7 @@ Pokud je k dispozici možnost [základní](../active-directory-b2c/secure-rest-a
 
 | Property – vlastnost (Designer) | Property (JSON) | Povinné | Hodnota | Popis |
 |---------------------|-----------------|----------|-------|-------------|
-| **Authentication** | `type` | Ano | Základní | Typ ověřování, který se má použít |
+| **Authentication** | `type` | Ano | Basic | Typ ověřování, který se má použít |
 | **Uživatelské jméno** | `username` | Ano | <*uživatelské jméno*>| Uživatelské jméno pro ověřování přístupu k cílovému koncovému bodu služby |
 | **Heslo** | `password` | Ano | <*zadáno*> | Heslo pro ověřování přístupu k cílovému koncovému bodu služby |
 ||||||
@@ -1065,7 +1065,7 @@ Můžete použít Azure Logic Apps v [Azure Government](../azure-government/docu
 
   * [Plány Azure App Service](../app-service/overview-hosting-plans.md)
   * [Možnosti sítí Azure Functions](../azure-functions/functions-networking-options.md)
-  * [Vyhrazení hostitelé Azure pro virtuální počítače](../virtual-machines/windows/dedicated-hosts.md)
+  * [Vyhrazení hostitelé Azure pro virtuální počítače](../virtual-machines/dedicated-hosts.md)
   * [Izolace virtuálních počítačů v Azure](../virtual-machines/isolation.md)
   * [Nasazení vyhrazených služeb Azure do virtuálních sítí](../virtual-network/virtual-network-for-azure-services.md)
 

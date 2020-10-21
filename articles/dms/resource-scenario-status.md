@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 77c54d6ea463b5a8a4952d243886b80f38312d27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291482"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319905"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stav migračních scénářů, které podporuje Azure Database Migration Service
 
@@ -81,13 +81,12 @@ Následující tabulka uvádí Azure Database Migration Service podporu pro onli
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | Služba RDS MySQL | ✔ | GA |
 | **Azure DB pro PostgreSQL – jeden server** | PostgreSQL | ✔ | GA |
-|   | Azure DB pro PostgreSQL – jeden server * | ✔ | GA |
+|   | Azure DB pro PostgreSQL – jeden server | ✔ | GA |
 |   | PostgreSQL RDS | ✔ | GA |
 |   | Oracle | ✔ | Verze Public Preview |
 | **Azure DB pro PostgreSQL – škálovatelné (Citus)** | PostgreSQL | ✔ | GA |
 |   | PostgreSQL RDS | ✔ | GA |
 
-* Podporováno pro PostgreSQL verze 10 a novější.
 
 ## <a name="next-steps"></a>Další kroky
 

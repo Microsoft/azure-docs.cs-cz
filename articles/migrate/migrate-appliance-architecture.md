@@ -3,12 +3,12 @@ title: Architektura zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 028e0e5b0bbf83c08b5f9cd6d24d7914513ae89a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a01932a9e4f72d7ce6747214b53f124d54942894
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322253"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312909"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektura zařízení Azure Migrate
 
@@ -51,8 +51,8 @@ Během instalace zařízení zaregistrujete zařízení pomocí Azure Migrate a 
 **Akce** | **Podrobnosti** | **Oprávnění**
 --- | --- | ---
 **Registrovat zprostředkovatele zdrojů** | Tito poskytovatelé prostředků jsou zaregistrovaní v předplatném, které jste si zvolili během instalace zařízení: Microsoft. OffAzure, Microsoft. migruje a Microsoft. webtrezor.<br/><br/> Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. | Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
-**Vytvoření aplikace Azure AD – komunikace** | Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD) pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení a jejich příslušnými službami běžícími na Azure.<br/><br/> Tato aplikace nemá oprávnění k provádění Azure Resource Manager volání nebo přístupu RBAC k jakémukoli prostředku. | K vytvoření aplikace budete potřebovat [Tato oprávnění](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps) pro Azure Migrate.
-**Vytváření aplikací Azure AD – Trezor klíčů** | Tato aplikace se vytvoří jenom pro migraci virtuálních počítačů VMware bez agenta do Azure.<br/><br/> Používá se výhradně pro přístup k trezoru klíčů vytvořenému v předplatném uživatele pro migraci bez agentů.<br/><br/> Má přístup RBAC v trezoru klíčů Azure (vytvořeném v tenantovi zákazníka) při zahájení zjišťování ze zařízení. | K vytvoření aplikace budete potřebovat [Tato oprávnění](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault) pro Azure Migrate.
+**Vytvoření aplikace Azure AD – komunikace** | Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD) pro komunikaci (ověřování a autorizaci) mezi agenty běžícími na zařízení a jejich příslušnými službami běžícími na Azure.<br/><br/> Tato aplikace nemá oprávnění k provádění Azure Resource Manager volání nebo přístupu RBAC k jakémukoli prostředku. | K vytvoření aplikace budete potřebovat [Tato oprávnění](./tutorial-discover-vmware.md#prepare-an-azure-user-account) pro Azure Migrate.
+**Vytváření aplikací Azure AD – Trezor klíčů** | Tato aplikace se vytvoří jenom pro migraci virtuálních počítačů VMware bez agenta do Azure.<br/><br/> Používá se výhradně pro přístup k trezoru klíčů vytvořenému v předplatném uživatele pro migraci bez agentů.<br/><br/> Má přístup RBAC v trezoru klíčů Azure (vytvořeném v tenantovi zákazníka) při zahájení zjišťování ze zařízení. | K vytvoření aplikace budete potřebovat [Tato oprávnění](./tutorial-discover-vmware.md#prepare-an-azure-user-account) pro Azure Migrate.
 
 
 
@@ -91,4 +91,3 @@ Automatickou aktualizaci vypnete v registru nastavením HKEY_LOCAL_MACHINE\SOFTW
 ## <a name="next-steps"></a>Další kroky
 
 [Projděte si](migrate-appliance.md) matici podpora zařízení.
-

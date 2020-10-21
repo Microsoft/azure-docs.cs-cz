@@ -4,12 +4,12 @@ description: Naučte se zjišťovat místní fyzické servery s Azure Migrate po
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 00fb4073bc8a7b1375f92202b5a6bd0a59a23816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7cbd7939248686a251fdf56bf1a5f1acc952a3a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442293"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314085"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Kurz: zjištění fyzických serverů pomocí posouzení serveru
 
@@ -29,9 +29,9 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejrychlejší cestu k vyzkoušení scénáře a používají výchozí možnosti.  
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, Projděte si tyto požadavky.
 
@@ -208,7 +208,7 @@ Nastavte zařízení poprvé.
    
    Přihlášení pomocí PIN kódu se nepodporuje.
 3. Po úspěšném přihlášení se vraťte k webové aplikaci. 
-4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění](tutorial-prepare-physical.md) k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
+4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění]() k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
 1. Po úspěšné registraci zařízení si můžete zobrazit podrobnosti o registraci kliknutím na **Zobrazit podrobnosti**.
 
 
@@ -245,5 +245,3 @@ Po dokončení zjišťování můžete ověřit, že se servery zobrazují na po
 
 - [Posuzuje fyzické servery](tutorial-assess-physical.md) pro migraci na virtuální počítače Azure.
 - [Zkontrolujte data](migrate-appliance.md#collected-data---physical) , která zařízení shromažďuje během zjišťování.
-
-

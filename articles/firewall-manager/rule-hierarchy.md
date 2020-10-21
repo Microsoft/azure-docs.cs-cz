@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: c290904c9f4bc7dba70dad9351dc45b676e0c236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893686"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331732"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Použití zásad Azure Firewall k definování hierarchie pravidel
 
@@ -21,7 +21,7 @@ Správci zabezpečení musí spravovat brány firewall a zajišťovat dodržová
 Zásady Azure Firewall umožňují definovat hierarchii pravidla a vyhovět dodržování předpisů:
 
 - Poskytuje hierarchickou strukturu pro překrytí centrální základní zásady nad podřízenou zásadu týmového týmu aplikace. Základní zásady mají vyšší prioritu a běží před podřízenou zásadou.
-- Pomocí vlastní definice řízení přístupu na základě role (RBAC) zabráníte nechtěnému odebrání základních zásad a zajistěte selektivní přístup ke skupinám kolekcí pravidel v rámci předplatného nebo skupiny prostředků. 
+- Pomocí definice vlastní role Azure zabráníte nechtěnému odebrání základních zásad a zadáte selektivní přístup ke skupinám kolekcí pravidel v rámci předplatného nebo skupiny prostředků. 
 
 ## <a name="solution-overview"></a>Přehled řešení
 
@@ -151,9 +151,9 @@ Na portálu můžete přidat uživatele do role Autoři skupin kolekcí pravidel
 
 Tento postup opakujte pro ostatní zásady brány firewall.
 
-### <a name="summary"></a>Shrnutí
+### <a name="summary"></a>Souhrn
 
-Zásady brány firewall s vlastní RBAC teď poskytují selektivní přístup ke skupinám kolekcí pravidel zásad brány firewall.
+Zásada brány firewall s vlastními rolemi teď nabízí selektivní přístup ke skupinám kolekcí pravidel zásad brány firewall.
 
 Uživatelé nemají oprávnění k těmto akcím:
 - Odstraňte zásady Azure Firewall nebo brány firewall.

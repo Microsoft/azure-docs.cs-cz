@@ -24,7 +24,7 @@
       items:
         - name: Instalace klientských nástrojů
           href: install-client-tools.md
-        - name: azdata
+        - name: Azure Data CLI (azdata)
           items:
             - name: Instalace
               href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
@@ -46,7 +46,7 @@
           href: create-data-controller-azure-data-studio.md
         - name: Vytvoření prostředku kontroleru dat (portál)
           href: create-data-controller-resource-in-azure-portal.md
-        - name: Vytvoření kontroleru dat (azdata)
+        - name: Vytvoření kontroleru dat (Azure Data CLI)
           href: create-data-controller-using-azdata.md
         - name: Vytvoření kontroleru dat s využitím Kubernetes
           href: create-data-controller-using-kubernetes-native-tools.md

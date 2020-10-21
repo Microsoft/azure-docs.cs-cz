@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace o ověřování spravované iden
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23fc0a59f9accc70c69c1096c1a15f1313ee2e0
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010014"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332446"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs
 Azure Event Hubs podporuje ověřování Azure Active Directory (Azure AD) se [spravovanými identitami pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md). Spravované identity pro prostředky Azure můžou autorizovat přístup k Event Hubs prostředkům pomocí přihlašovacích údajů Azure AD z aplikací běžících ve službě Azure Virtual Machines (VM), aplikací Function App, Virtual Machine Scale Sets a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu.
@@ -26,7 +26,7 @@ Než budete moct použít spravované identity pro prostředky Azure k autorizac
 - [Klientské knihovny Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Udělení oprávnění spravované identitě v Azure AD
-Pro autorizaci žádosti o Event Hubs služby ze spravované identity ve vaší aplikaci nejdřív nakonfigurujte nastavení řízení přístupu na základě role (RBAC) pro tuto spravovanou identitu. Azure Event Hubs definuje role Azure, které zahrnují oprávnění k posílání a čtení z Event Hubs. Když je role Azure přiřazená ke spravované identitě, udělí se spravované identitě přístup k Event Hubs datům v příslušném oboru.
+Pokud chcete autorizovat požadavek na Event Hubs služby ze spravované identity ve vaší aplikaci, nejdřív nakonfigurujte nastavení řízení přístupu na základě role Azure (Azure RBAC) pro tuto spravovanou identitu. Azure Event Hubs definuje role Azure, které zahrnují oprávnění k posílání a čtení z Event Hubs. Když je role Azure přiřazená ke spravované identitě, udělí se spravované identitě přístup k Event Hubs datům v příslušném oboru.
 
 Další informace o přiřazování rolí Azure najdete v tématu [ověřování pomocí Azure Active Directory pro přístup k prostředkům Event Hubs](authorize-access-azure-active-directory.md).
 
@@ -138,7 +138,7 @@ var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHub
 ## <a name="event-hubs-for-kafka"></a>Event Hubs pro Kafka
 Pomocí Apache Kafka aplikací můžete odesílat a přijímat zprávy z Azure Event Hubs pomocí spravované identity OAuth. Podívejte se na následující ukázku na GitHubu: [Event Hubs pro posílání a přijímání zpráv pomocí spravované identity OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity).
 
-## <a name="samples"></a>ukázky
+## <a name="samples"></a>Ukázky
 - Ukázky pro **Azure. Messaging. EventHubs**
     - [.NET](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)

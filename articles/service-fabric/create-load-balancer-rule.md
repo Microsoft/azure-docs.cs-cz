@@ -3,12 +3,12 @@ title: Vytvoření pravidla Azure Load Balancer pro cluster
 description: Nakonfigurujte Azure Load Balancer pro otevření portů pro cluster Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e09c7b0b3e2bfa5a5ff834e243f5098cbbd947b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259040"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319889"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevření portů pro cluster Service Fabric
 
@@ -60,7 +60,7 @@ Příkaz Azure CLI má několik parametrů, které jsou popsané v následujíc�
 
 
 >[!NOTE]
->Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md).
+>Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí Azure CLI](../load-balancer/quickstart-load-balancer-standard-internal-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -96,7 +96,7 @@ $lb | Set-AzLoadBalancer
 V souvislosti s `New-AzLoadBalancerRuleConfig` příkazem představuje port, který nástroj `-FrontendPort` pro vyrovnávání zatížení zveřejňuje pro externí připojení, a `-BackendPort` představuje port, na který aplikace Service Fabric naslouchá.
 
 >[!NOTE]
->Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí PowerShellu, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí PowerShellu](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).
+>Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí PowerShellu, najdete v tématu [Vytvoření nástroje pro vyrovnávání zatížení pomocí PowerShellu](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2047832f8cfbf31c04c84eb7a70fee6631fa4b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619147"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330117"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro víceklientské aplikace SaaS s využitím geografické replikace databáze
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -114,7 +114,7 @@ V této úloze spustíte proces, který synchronizuje konfiguraci serverů, elas
     * **$DemoScenario = 1**, spustí úlohu na pozadí, která synchronizuje Server tenanta a informace o konfiguraci fondu do katalogu.
 
 3. Stisknutím klávesy **F5** spusťte skript synchronizace. Otevře se nová relace PowerShellu pro synchronizaci konfigurace prostředků tenanta.
-![Proces synchronizace](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+![Snímek obrazovky, který zobrazuje novou relaci PowerShellu, která je otevřená pro synchronizaci konfigurace prostředků tenanta.](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 Nechte okno PowerShellu spuštěné na pozadí a pokračujte ve zbývající části tohoto kurzu. 
 
@@ -314,6 +314,6 @@ V tomto kurzu jste se naučili:
 
 Další informace o technologiích Azure SQL Database poskytuje, aby bylo možné zajistit kontinuitu podnikových aplikací v dokumentaci [Přehled provozní kontinuity](business-continuity-high-availability-disaster-recover-hadr-overview.md) .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Další kurzy, které se vytvářejí na aplikaci Wingtip SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

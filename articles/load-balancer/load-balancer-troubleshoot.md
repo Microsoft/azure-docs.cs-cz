@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 4dba170c750a61ea08e4116dc6f2b13ef14c87ed
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217384"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314821"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
@@ -157,6 +157,17 @@ Pokud se rozhodnete otevřít případ podpory, shromážděte při rychlejším
 - Pomocí Psping z jednoho ze back-end virtuálních počítačů v rámci virtuální sítě otestujte odpověď na port testu paměti (příklad: Psping 10.0.0.4:3389) a výsledky záznamu. 
 - Pokud se v těchto testech testu příkazu otestuje žádná odpověď, spusťte pro virtuální počítač back-end a virtuální počítač s testovacím virtuálním počítačem při spuštění PsPing a pak zastavte trasování Netsh. 
  
+## <a name="symptom-load-balancer-in-failed-state"></a>Příznak: Load Balancer ve stavu selhání 
+
+**Řešení**
+
+- Jakmile identifikujete prostředek, který je ve stavu selhání, přejdete na [Azure Resource Explorer](https://resources.azure.com/) a Identifikujte prostředek v tomto stavu. 
+- Aktualizujte přepínač na pravém horním rohu pro čtení a zápis.
+- Klikněte na upravit pro prostředek v neúspěšném stavu.
+- Klikněte na tlačítko Vložit a potom na tlačítko získat a ověřte, zda byl stav zřizování aktualizován na úspěšné.
+- Potom můžete pokračovat v provádění dalších akcí, protože prostředek je neúspěšného stavu.
+
+
 ## <a name="next-steps"></a>Další kroky
 
 Pokud předchozí kroky problém nevyřeší, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).

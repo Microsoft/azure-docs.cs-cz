@@ -4,12 +4,12 @@ description: Tento článek poskytuje informace o různých možnostech pro auto
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 18b8bd80eaec316fbaefadad0dd7a19418bfa838
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fc35387f4ac28ad4dd28bea0013bcdf1e1e9f02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85323181"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332378"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autorizace přístupu ke službě Azure Event Hubs
 Pokaždé, když publikujete nebo spotřebujete události a data z centra událostí, se klient snaží získat přístup k prostředkům Event Hubs. Každý požadavek na zabezpečený prostředek musí být autorizovaný, aby služba mohla zajistit, aby měl klient potřebná oprávnění k publikování/využívání dat. 
@@ -23,7 +23,7 @@ Azure Event Hubs nabízí následující možnosti pro autorizaci přístupu k z
 > Tento článek se týká Event Hubs i [Apache Kafkach](event-hubs-for-kafka-ecosystem-overview.md) scénářů. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Integrace služby Azure Active Directory (Azure AD) pro prostředky Event Hubs poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Řízení přístupu na základě role (RBAC) můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Event Hubs.
+Integrace služby Azure Active Directory (Azure AD) pro prostředky Event Hubs poskytuje řízení přístupu na základě role Azure (Azure RBAC) pro detailní kontrolu nad přístupem klienta k prostředkům. Službu Azure RBAC můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Event Hubs.
 
 Další informace o ověřování ve službě Azure AD najdete v následujících článcích:
 
@@ -40,7 +40,7 @@ Ve výchozím nastavení jsou všechny prostředky Event Hubs zabezpečené a js
 Další informace o autorizaci pomocí SAS najdete v tématu [autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md).
 
 ## <a name="next-steps"></a>Další kroky
-- Podívejte se na [ukázky RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) publikované v našem úložišti GitHubu. 
+- Podívejte se na [ukázky Azure RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) publikované v našem úložišti GitHubu. 
 - Viz následující články:
     - [Ověřování požadavků do Azure Event Hubs z aplikace pomocí Azure Active Directory](authenticate-application.md)
     - [Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs](authenticate-managed-identity.md)

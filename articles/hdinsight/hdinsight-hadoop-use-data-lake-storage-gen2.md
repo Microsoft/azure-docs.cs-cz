@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 94a84220b276edf8eaf539151964715675693dec
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 0675f77acbdecfe74634a6734b83c5b74019b8ab
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131373"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332021"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -42,11 +42,11 @@ Pomocí následujících odkazů najdete podrobné pokyny k vytvoření cluster�
 
 ### <a name="what-kinds-of-permissions-does-data-lake-storage-gen2-support"></a>Jaké druhy oprávnění podporuje Data Lake Storage Gen2 podporu?
 
-Data Lake Storage Gen2 používá model řízení přístupu, který podporuje řízení přístupu na základě role (RBAC) a seznamy řízení přístupu (ACL) typu POSIX. Data Lake Storage Gen1 podporuje seznamy řízení přístupu pouze pro řízení přístupu k datům.
+Data Lake Storage Gen2 používá model řízení přístupu, který podporuje řízení přístupu na základě role Azure (Azure RBAC) i seznamy řízení přístupu (ACL) typu POSIX. Data Lake Storage Gen1 podporuje seznamy řízení přístupu pouze pro řízení přístupu k datům.
 
-RBAC pomocí přiřazení rolí efektivně aplikuje sady oprávnění pro uživatele, skupiny a instanční objekty pro prostředky Azure. Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například účty Azure Blob Storage). V případě služby Azure Blob Storage a také Data Lake Storage Gen2 tento mechanismus byl rozšířen na prostředek systému souborů.
+Azure RBAC pomocí přiřazení rolí efektivně aplikuje sady oprávnění pro uživatele, skupiny a instanční objekty pro prostředky Azure. Tyto prostředky Azure jsou obvykle omezené na prostředky nejvyšší úrovně (například účty Azure Blob Storage). V případě služby Azure Blob Storage a také Data Lake Storage Gen2 tento mechanismus byl rozšířen na prostředek systému souborů.
 
-Další informace o oprávněních k souborům pomocí RBAC najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
+Další informace o oprávněních k souborům v Azure RBAC najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
 Další informace o oprávněních k souborům pomocí seznamů řízení přístupu najdete v tématu [seznam řízení přístupu pro soubory a adresáře](../storage/blobs/data-lake-storage-access-control.md).
 

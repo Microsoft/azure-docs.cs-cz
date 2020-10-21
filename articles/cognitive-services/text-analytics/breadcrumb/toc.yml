@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Cognitive Services
+      tocHref: /azure/cognitive-services/
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: Analýza textu
+          tocHref: /azure/cognitive-services/
+          topicHref: /azure/cognitive-services/text-analytics/index

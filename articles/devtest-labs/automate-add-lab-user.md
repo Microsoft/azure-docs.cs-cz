@@ -3,12 +3,12 @@ title: Automatizace přidávání uživatele testovacího prostředí v Azure De
 description: V tomto článku se dozvíte, jak automatizovat přidávání uživatelů do testovacího prostředí v Azure DevTest Labs pomocí šablon Azure Resource Manager, PowerShellu a rozhraní příkazového řádku.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b016d6edcb75016302cf652f873881008de18abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61853efacc5974b81d46b2b8cca0f2796672d72d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483818"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327956"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v Azure DevTest Labs
 Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro vývoj a testování pomocí Azure Portal. Pokud ale máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) umožňují vytvářet laboratoře, testovací virtuální počítače, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se zaměřuje především na přidávání uživatelů do instance DevTest Labs.
@@ -123,7 +123,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 
 Můžete také použít rutiny prostředí PowerShell pro Azure Active Directory, které zahrnují rutiny [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)a [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Obor
 Obor Určuje prostředek nebo skupinu prostředků, pro které by se mělo přiřazení role použít. V případě prostředků je rozsah ve formátu: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}` . Šablona používá `subscription().subscriptionId` funkci k vyplnění `subscription-id` části a `resourceGroup().name` funkci šablony, která se má vyplnit `resource-group-name` . Pomocí těchto funkcí se znamená, že testovací prostředí, ke kterému přiřadíte roli, musí existovat v aktuálním předplatném a stejnou skupinu prostředků, ve které se nasazování šablony provádí. Poslední část `resource-name` je název testovacího prostředí. Tato hodnota je přijímána prostřednictvím parametru šablony v tomto příkladu. 
 
 Rozsah rolí v šabloně: 
@@ -179,7 +179,7 @@ New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinition
 Chcete-li určit prostředek, pro který mají být udělena oprávnění, lze zadat kombinací `ResourceName` , `ResourceType` `ResourceGroup` nebo pomocí `scope` parametru. Bez ohledu na to, jakou kombinaci parametrů použijete, poskytněte rutině dostatek informací, aby jednoznačně identifikovala objekt služby Active Directory (uživatel, skupinu nebo instanční objekt), obor (skupinu prostředků nebo prostředek) a definici role.
 
 ## <a name="use-azure-command-line-interface-cli"></a>Použití rozhraní příkazového řádku Azure (CLI)
-V Azure CLI se do testovacího prostředí přidá uživatel Labs pomocí `az role assignment create` příkazu. Další informace o rutinách Azure CLI najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
+V Azure CLI se do testovacího prostředí přidá uživatel Labs pomocí `az role assignment create` příkazu. Další informace o rutinách Azure CLI najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../role-based-access-control/role-assignments-cli.md).
 
 Objekt, kterému je udělen přístup, lze určit pomocí `objectId` `signInName` parametrů,, `spn` . Testovacímu prostředí, ke kterému má být objekt udělen přístup, lze identifikovat pomocí `scope` adresy URL nebo kombinace `resource-name` `resource-type` parametrů, a `resource-group` .
 

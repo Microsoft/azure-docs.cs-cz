@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: b2b8bed9233073e629ee3bce2630fd373c87663b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 3cb335cb32ded68377b4eec0af3b1ebbc19e77d9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215871"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328297"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -45,7 +45,7 @@ Ujistěte se, že jsou splněné následující předpoklady:
 > [!NOTE]
 > 
 > - Konektor ITSM se může připojit pouze ke cloudovým instancím ServiceNow. Místní instance ServiceNow se v tuto chvíli nepodporují.
-> - Aby bylo možné používat vlastní šablony jako součást akcí, parametr "ProjectionType" v SCSM by měl být namapován na "IncidentManagement! System. pracovní položka. incident. ProjectionType "
+> - Aby bylo možné používat vlastní šablony jako součást akcí, parametr "ProjectionType" v šabloně SCSM by měl být namapován na "IncidentManagement! System. pracovní položka. incident. ProjectionType "
 
 ### <a name="connection-procedure"></a>Postup připojení
 

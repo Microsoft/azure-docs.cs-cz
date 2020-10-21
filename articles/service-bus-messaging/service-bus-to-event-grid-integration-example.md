@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f64c8155724a1306f5074a9164bcf97391dfbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7f177b8738fdaf8d0975877d9af094b6f0a49a9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000341"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328143"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Kurz: reakce na události Azure Service Bus přijatých prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps
 V tomto kurzu se naučíte reagovat na události Azure Service Bus přijímané prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps. 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Propojení funkce a oboru názvů přes službu Event Grid
 > * Příjem zpráv pomocí služby Azure Functions
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před tímto kurzem se ujistěte, že máte nainstalované tyto položky:
 
@@ -96,7 +96,7 @@ Pomocí následujících kroků Připojte aplikaci logiky pomocí Azure Service 
         ![Návrhář Logic Apps – výběr sdíleného přístupového klíče](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     8. Vyberte své **téma** a **předplatné**. 
     
-        ![Logic Apps Designer – výběr Service Busho tématu a předplatného](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+        ![Snímek obrazovky, který ukazuje, kde si vyberete své téma a předplatné.](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
 7. Vyberte **+ Nový krok**a proveďte následující kroky: 
     1. Vyberte **Service Bus**.
     2. V seznamu akcí vyberte **Dokončit zprávu v odběru tématu** . 

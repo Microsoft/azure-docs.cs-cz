@@ -43,6 +43,12 @@
     - name: Správa zásad správného řízení značek
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: Implementace Azure Policy jako kódu s využitím GitHubu
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./tutorials/policy-as-code-github.md
+    - name: 'Learn: Řízení a audit prostředků s využitím Azure Policy'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
 - name: ukázky
   items:
     - name: Index
@@ -113,7 +119,7 @@
     - name: Dodržování legislativní předpisů
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
-    - name: Návrh pracovních postupů pro zásady jako kód
+    - name: Návrh pracovních postupů pro Azure Policy jako kód
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Integrace Kubernetes

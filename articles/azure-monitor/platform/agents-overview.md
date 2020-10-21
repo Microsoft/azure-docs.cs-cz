@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/02/2020
-ms.openlocfilehash: ec7b776f7d573ea07f010eeab81d98222102be41
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 10/20/2020
+ms.openlocfilehash: 66d420a902cbfb56ece75646ee39bbba774b6208
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202000"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312416"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 
@@ -162,26 +162,26 @@ V následujících tabulkách jsou uvedeny operační systémy, které jsou podp
 | CentOS Linux 7                                           | X | X |   | X |
 | CentOS Linux 7,8                                         | X | X | X | X |
 | CentOS Linux 7,6                                         | X | X | X | X |
-| CentOS Linux 6                                           | X | X |   |   |
-| CentOS Linux 6.5 +                                        | X | X |   | X |
+| CentOS Linux 6                                           |   | × |   |   |
+| CentOS Linux 6.5 +                                        |   | X |   | X |
 | Debian 10                                                | × |   |   |   |
 | Debian 9                                                 | X | X | x | × |
 | Debian 8                                                 |   | X | X | X |
 | Debian 7                                                 |   |   |   | × |
 | OpenSUSE 13.1 +                                           |   |   |   | × |
 | Oracle Linux 7                                           | X | X |   | X |
-| Oracle Linux 6                                           | X | X |   |   |
-| Oracle Linux 6.4 +                                        | X | X |   | X |
+| Oracle Linux 6                                           |   | × |   |   |
+| Oracle Linux 6.4 +                                        |   | X |   | X |
 | Server Red Hat Enterprise Linux 8                        |   | × |   |   |
 | Red Hat Enterprise Linux Server 7                        | X | X | X | X |
-| Red Hat Enterprise Linux Server 6                        | X | X | X |   |
-| Red Hat Enterprise Linux Server 6.7 +                     | X | X | X | X |
+| Red Hat Enterprise Linux Server 6                        |   | X | X |   |
+| Red Hat Enterprise Linux Server 6.7 +                     |   | X | X | X |
 | SUSE Linux Enterprise Server 15                          | X | X |   |   |
 | SUSE Linux Enterprise Server 12                          | X | X | X | X |
 | Ubuntu 20,04 LTS                                         |   | × |   |   |
 | Ubuntu 18,04 LTS                                         | X | X | X | X |
 | Ubuntu 16.04 LTS                                         | X | X | X | X |
-| Ubuntu 14,04 LTS                                         | X | X |   | X |
+| Ubuntu 14,04 LTS                                         |   | X |   | X |
 
 
 #### <a name="dependency-agent-linux-kernel-support"></a>Podpora jádra agenta závislostí v systému Linux

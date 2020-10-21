@@ -7,24 +7,26 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8c971168add1aa63599a22f81a3b517d6cc561a1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6ce0885cce1861b27d6230c3807350831603684b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281306"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329113"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Výuka modelu pomocí vlastní image Docker
 
 V tomto článku se dozvíte, jak používat vlastní image Docker při výuce modelů pomocí Azure Machine Learning. Použijete ukázkové skripty v tomto článku ke klasifikaci PET imagí vytvořením sítě konvoluční neuronové. 
 
-Azure Machine Learning poskytuje výchozí obrázek Docker Base. Pomocí Azure Machine Learning prostředí můžete také určit jinou základní image, jako je například jedna ze spravovaných [základních imagí Azure Machine Learning](https://github.com/Azure/AzureML-Containers) nebo vlastní [Image](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Vlastní základní image umožňují pečlivě spravovat vaše závislosti a udržovat užší kontrolu nad verzemi komponent při spouštění školicích úloh. 
+Azure Machine Learning poskytuje výchozí obrázek Docker Base. Pomocí Azure Machine Learning prostředí můžete také určit jinou základní image, jako je například jedna ze spravovaných [základních imagí Azure Machine Learning](https://github.com/Azure/AzureML-Containers) nebo vlastní [Image](how-to-deploy-custom-docker-image.md#create-a-custom-base-image). Vlastní základní image umožňují pečlivě spravovat vaše závislosti a udržovat užší kontrolu nad verzemi komponent při spouštění školicích úloh.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Předpoklady
+
 Spusťte kód v některém z těchto prostředí:
+
 * Azure Machine Learning výpočetní instance (nejsou nutné žádné soubory ke stažení nebo instalace):
   * Dokončete kurz [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md) pro vytvoření vyhrazeného serveru poznámkového bloku, který je předem nazálohovaný pomocí sady SDK a ukázkového úložiště.
   * V úložišti s [Příklady](https://github.com/Azure/azureml-examples)Azure Machine Learning Najděte dokončený Poznámkový blok tak, že v adresáři **Poznámkový blok**  >  **fastai**  >  **výuka resnet34. ipynb** . 
@@ -33,10 +35,12 @@ Spusťte kód v některém z těchto prostředí:
   * Nainstalujte [sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
   * Vytvořte službu [Azure Container Registry](/azure/container-registry) nebo jiný registr Docker, který je k dispozici na internetu.
 
-## <a name="set-up-the-experiment"></a>Nastavení experimentu 
-V této části nastavíte experiment školení tím, že inicializujete pracovní prostor, vytvoříte experiment a nahrajete školicí data a školicí skripty.
+## <a name="set-up-a-training-experiment"></a>Nastavení experimentu školení
+
+V této části nastavíte experiment pro školení inicializací pracovního prostoru, definováním vašeho prostředí a konfigurací cíle výpočetní služby.
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
+
 [Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) objektu.
 
 Vytvořte `Workspace` objekt z config.jsv souboru, který jste vytvořili jako [požadavek](#prerequisites).
@@ -47,11 +51,9 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="prepare-scripts"></a>Příprava skriptů
-Pro tento kurz použijte školicí skript *Train.py* na [GitHubu](https://github.com/Azure/azureml-examples/blob/main/code/models/fastai/pets-resnet34/train.py). V praxi můžete použít libovolný vlastní školicí skript a spustit ho tak, jak je, pomocí Azure Machine Learning.
-
 ### <a name="define-your-environment"></a>Definice prostředí
-Vytvořte `Environment` objekt a povolte Docker. 
+
+Vytvořte `Environment` objekt a povolte Docker.
 
 ```python
 from azureml.core import Environment
@@ -69,6 +71,8 @@ fastai_env.docker.base_image = "fastdotai/fastai2:latest"
 fastai_env.python.user_managed_dependencies = True
 ```
 
+#### <a name="use-a-private-container-registry-optional"></a>Použití privátního registru kontejnerů (volitelné)
+
 Pokud chcete použít image z privátního registru kontejneru, který není ve vašem pracovním prostoru, použijte `docker.base_image_registry` k zadání adresy úložiště a uživatelského jména a hesla:
 
 ```python
@@ -77,6 +81,8 @@ fastai_env.docker.base_image_registry.address = "myregistry.azurecr.io"
 fastai_env.docker.base_image_registry.username = "username"
 fastai_env.docker.base_image_registry.password = "password"
 ```
+
+#### <a name="use-a-custom-dockerfile-optional"></a>Použití vlastního souboru dockerfileu (volitelné)
 
 Je také možné použít vlastní souboru Dockerfile. Tento postup použijte v případě, že potřebujete instalovat balíčky mimo Python jako závislosti. Nezapomeňte nastavit základní bitovou kopii na `None` .
 
@@ -98,12 +104,13 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 
 Další informace o vytváření a správě Azure Machine Learning prostředí najdete v tématu [vytváření a používání softwarových prostředí](how-to-use-environments.md). 
 
-### <a name="create-or-attach-an-amlcompute-resource"></a>Vytvoření nebo připojení prostředku AmlCompute
+### <a name="create-or-attach-a-compute-target"></a>Vytvoření nebo připojení cíle výpočtů
+
 Musíte vytvořit [výpočetní cíl](concept-azure-machine-learning-architecture.md#compute-targets) pro školení modelu. V tomto kurzu se vytváříte `AmlCompute` jako výpočetní prostředek pro školení.
 
-Vytvoření `AmlCompute` trvá přibližně pět minut. Pokud `AmlCompute` je prostředek již ve vašem pracovním prostoru, tento kód přeskočí proces vytváření.
+Vytváření `AmlCompute` trvá několik minut. Pokud `AmlCompute` je prostředek již ve vašem pracovním prostoru, tento kód přeskočí proces vytváření.
 
-Stejně jako u ostatních služeb Azure platí omezení určitých prostředků (například `AmlCompute` ) přidružených ke službě Azure Machine Learning. Další informace najdete v tématu [výchozí omezení a jak požádat o vyšší kvótu](how-to-manage-quotas.md). 
+Stejně jako u ostatních služeb Azure platí omezení určitých prostředků (například `AmlCompute` ) přidružených ke službě Azure Machine Learning. Další informace najdete v tématu [výchozí omezení a jak požádat o vyšší kvótu](how-to-manage-quotas.md).
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -129,7 +136,10 @@ except ComputeTargetException:
 print(compute_target.get_status().serialize())
 ```
 
-### <a name="create-a-scriptrunconfig-resource"></a>Vytvoření prostředku ScriptRunConfig
+## <a name="configure-your-training-job"></a>Konfigurace školicí úlohy
+
+Pro tento kurz použijte školicí skript *Train.py* na [GitHubu](https://github.com/Azure/azureml-examples/blob/main/code/models/fastai/pets-resnet34/train.py). V praxi můžete použít libovolný vlastní školicí skript a spustit ho tak, jak je, pomocí Azure Machine Learning.
+
 Vytvořte `ScriptRunConfig` prostředek pro konfiguraci úlohy pro spuštění na požadovaném cíli služby [COMPUTE](how-to-set-up-training-targets.md).
 
 ```python
@@ -141,7 +151,8 @@ src = ScriptRunConfig(source_directory='fastai-example',
                       environment=fastai_env)
 ```
 
-### <a name="submit-your-run"></a>Odeslat běh
+## <a name="submit-your-training-job"></a>Odeslat školicí úlohu
+
 Když odešlete školicí běh pomocí `ScriptRunConfig` objektu, `submit` Metoda vrátí objekt typu `ScriptRun` . Vrácený `ScriptRun` objekt poskytuje programový přístup k informacím o běhu školení. 
 
 ```python

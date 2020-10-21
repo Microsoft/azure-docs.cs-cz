@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: daf3b6c36b191f52f0d7ac7638ef59695325f541
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078540"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327327"
 ---
-# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>Kurz: vytvoření hostitele Azure bastionu a připojení k virtuálnímu počítači s Windows pomocí prohlížeče
+# <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>Kurz: Konfigurace bastionu a připojení k virtuálnímu počítači s Windows pomocí prohlížeče
 
 V tomto kurzu se dozvíte, jak se připojit k virtuálnímu počítači přes prohlížeč pomocí Azure bastionu a Azure Portal. V Azure Portal nasadíte bastionu do vaší virtuální sítě. Po nasazení bastionu se k virtuálnímu počítači připojíte přes jeho privátní IP adresu pomocí Azure Portal. Váš virtuální počítač nepotřebuje veřejnou IP adresu ani speciální software. Po zřízení služby je prostředí RDP/SSH dostupné všem virtuálním počítačům ve stejné virtuální síti. Další informace o Azure bastionu najdete v tématu [co je Azure bastionu?](bastion-overview.md).
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Virtuální síť.
 * Virtuální počítač s Windows ve virtuální síti.
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>Vytvoření hostitele bastionu
 

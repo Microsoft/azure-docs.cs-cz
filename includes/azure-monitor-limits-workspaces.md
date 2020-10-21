@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e206c12a85cfbaed3297f2a44bf0a5d694c2d170
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91639395"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320871"
 ---
 **Objem shromažďování dat a jejich uchovávání** 
 
@@ -47,7 +47,7 @@ ms.locfileid: "91639395"
 | Maximální velikost pro jeden příspěvek | 30 MB | Rozdělte větší svazky na více příspěvků. |
 | Maximální velikost pro hodnoty polí  | 32 KB | Pole delší než 32 kB se oříznou. |
 
-**Rozhraní API pro vyhledávání**
+**Search API**
 
 | Kategorie | Omezení | Komentáře |
 |:---|:---|:---|
@@ -70,31 +70,7 @@ Azure Monitor je služba data ve velkém měřítku, která slouží tisícům z
 
 Když do pracovního prostoru odešlete data rychlostí vyšší než 80% prahové hodnoty nakonfigurované ve vašem pracovním prostoru, do tabulky *operace* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Když je rychlost příjmu dat vyšší než prahová hodnota, některá data se zahozena a do tabulky *operací* v pracovním prostoru se pošle událost každých 6 hodin, zatímco prahová hodnota bude i nadále překročena. Pokud vaše rychlost ingestování stále překročí prahovou hodnotu nebo jste se k nim neočekávali, můžete požádat o jejich zvýšení otevřením žádosti o podporu. 
 
-Pokud chcete být ve svém pracovním prostoru upozorněni na přístup nebo dosažení limitu přenosové rychlosti pro přijímání, vytvořte [pravidlo upozornění protokolu](../articles/azure-monitor/platform/alerts-log.md) pomocí následujícího dotazu se základní logikou výstrahy na základě počtu výsledků, který je větší než nula, zkušební období 5 minut a frekvence 5 minut.
-
-Míra zpracování příjmu překročila prahovou hodnotu.
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Error"
-```
-
-Frekvence zpracování příjmu překročila 80% prahové hodnoty.
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Warning"
-```
-
-Frekvence zpracování příjmu překročila 70% prahové hodnoty.
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Info"
-```
+[V tématu monitorování stavu Log Analytics pracovního prostoru v Azure monitor](../articles/azure-monitor/platform/monitor-workspace.md) můžete vytvořit pravidla výstrah, která se budou aktivně informovat, když dosáhnou všech omezení přijímání.
 
 >[!NOTE]
 >V závislosti na tom, jak dlouho jste používali Log Analytics, je možné, že budete mít přístup ke starším cenovým úrovním. Další informace o [cenových úrovních Log Analytics starších verzích](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

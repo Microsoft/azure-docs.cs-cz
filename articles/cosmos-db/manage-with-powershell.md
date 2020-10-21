@@ -4,19 +4,19 @@ description: Spravujte prostředky rozhraní API pro Azure Cosmos DB Core (SQL) 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4147b9a3a5f0a249366431a4e43f924e89f9075
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840876"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281482"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Správa prostředků rozhraní API pro Azure Cosmos DB Core (SQL) pomocí PowerShellu
 
-Následující příručka popisuje použití prostředí PowerShell ke skriptování a automatizaci správy prostředků rozhraní API pro Azure Cosmos DB Core (SQL), včetně účtu Cosmos, databáze, kontejneru a propustnosti.
+Následující příručka popisuje použití prostředí PowerShell ke skriptování a automatizaci správy prostředků rozhraní API pro Azure Cosmos DB Core (SQL), včetně účtu Cosmos, databáze, kontejneru a propustnosti. Rutiny PowerShellu pro další rozhraní API najdete v tématu [ukázky PowerShellu pro Cassandra](powershell-samples-cassandra.md), ukázky PowerShellu pro [MongoDB API](powershell-samples-mongodb.md), ukázky PowerShellu pro Gremlin, [ukázky](powershell-samples-table.md) PowerShellu pro [PowerShell Samples for Gremlin](powershell-samples-gremlin.md)
 
 > [!NOTE]
 > Ukázky v tomto článku využívají rutiny [AZ. CosmosDB](/powershell/module/az.cosmosdb) Management. Nejnovější změny najdete na stránce s referenční stránkou [AZ. CosmosDB](/powershell/module/az.cosmosdb) API.

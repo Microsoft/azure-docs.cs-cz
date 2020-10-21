@@ -6,15 +6,16 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af49a7bec68c30e4ded576a8d84eac850eb745f8
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85114261"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331358"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití Azure Cosmos DB
-Tento článek poskytuje přehled několika běžných případů použití pro Azure Cosmos DB.  Doporučení v tomto článku slouží jako výchozí bod při vývoji aplikace pomocí Cosmos DB.   
+
+Tento článek poskytuje přehled několika běžných případů použití pro Azure Cosmos DB.  Doporučení v tomto článku slouží jako výchozí bod při vývoji aplikace pomocí Cosmos DB.
 
 Po přečtení tohoto článku budete moci zodpovědět následující otázky: 
 
@@ -24,7 +25,8 @@ Po přečtení tohoto článku budete moci zodpovědět následující otázky:
 * Jaké jsou výhody používání Azure Cosmos DB pro webové a mobilní aplikace?
 
 ## <a name="introduction"></a>Úvod
-[Azure Cosmos DB](../cosmos-db/introduction.md) je globálně distribuovaná databázová služba Microsoftu. Služba je navržená tak, aby zákazníkům umožnila elasticky (a nezávisle) škálovat propustnost a úložiště napříč libovolným počtem geografických oblastí. Azure Cosmos DB je první globálně distribuovaná databázová služba na trhu dnes, která nabízí komplexní [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zahrnující propustnost, latenci, dostupnost a konzistenci. 
+
+[Azure Cosmos DB](../cosmos-db/introduction.md) je databáze Microsoftu pro rychlé NoSQL s otevřenými rozhraními API pro jakékoli škálování. Služba je navržená tak, aby zákazníkům umožnila elasticky (a nezávisle) škálovat propustnost a úložiště napříč libovolným počtem geografických oblastí. Azure Cosmos DB je první globálně distribuovaná databázová služba na trhu dnes, která nabízí komplexní [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zahrnující propustnost, latenci, dostupnost a konzistenci.
 
 Azure Cosmos DB je globální distribuovaná databáze s více modely, která se používá v široké škále aplikací a případech použití. Je vhodným řešením pro jakékoli aplikace bez [serveru](https://azure.com/serverless) , které potřebují méně času odezvy v milisekundách a které musí rychle a globálně škálovat. Podporuje více datových modelů (klíč-hodnota, dokumenty, grafy a sloupcové) a mnoho rozhraní API pro přístup k datům, [Azure Cosmos DB včetně rozhraní API pro MongoDB](mongodb-introduction.md), rozhraní API [SQL](documentdb-introduction.md), rozhraní [Gremlin API](graph-introduction.md)a [tabulkových rozhraní API](table-introduction.md) nativně a rozšiřitelným způsobem. 
 
@@ -40,6 +42,7 @@ Níže jsou uvedeny některé atributy Azure Cosmos DB, které jsou vhodné pro 
 Tyto atributy jsou užitečné v aplikacích pro web, mobilní zařízení, hry a aplikace IoT, které potřebují dobu odezvy s nízkou odezvou a potřebují zpracovávat obrovské objemy čtení a zápisu.
 
 ## <a name="iot-and-telematics"></a>IoT a telematika
+
 Případy použití IoT obvykle sdílejí některé vzorce v tom, jak jejich příjem, zpracování a ukládání dat.  Nejprve tyto systémy potřebují ingestovat shluky dat ze senzorů zařízení různých národních prostředí. V dalším kroku tyto systémy zpracovávají a analyzují streamovaná data pro odvození přehledů v reálném čase. Data se pak archivují do studeného úložiště pro dávkovou analýzu. Microsoft Azure nabízí obsáhlé služby, které se dají použít pro případy použití IoT, včetně Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification hub, Azure Machine Learning, Azure HDInsight a Power BI. 
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Referenční architektura IoT Azure Cosmos DB" border="false":::

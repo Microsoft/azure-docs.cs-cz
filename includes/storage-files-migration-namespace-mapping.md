@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80e04ec06edc7169f0a4318c2c94de34dda9d96a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87425159"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331070"
 ---
 V tomto kroku si vyhodnocujete, kolik sdílených složek Azure potřebujete. Jedna instance nebo cluster Windows serveru může synchronizovat až 30 sdílených složek Azure.
 
@@ -28,11 +28,15 @@ Pokud má vaše personální oddělení (například) celkem 15 sdílených slo�
 
 Azure File Sync podporuje synchronizaci kořene svazku se sdílenou složkou Azure. Pokud synchronizujete kořenovou složku, budou všechny podsložky a soubory přecházet do stejné sdílené složky Azure.
 
-Synchronizace kořene svazku není vždycky nejlepší odpověď. Synchronizace více umístění přináší výhody. Například v takovém případě pomáhá udržet počet položek snížený na rozsah synchronizace. Nastavení Azure File Sync s menším počtem položek není pro synchronizaci souborů prakticky výhodné. Nižší počet položek také přináší podobné scénáře:
+Synchronizace kořene svazku není vždycky nejlepší odpověď. Synchronizace více umístění přináší výhody. Například v takovém případě pomáhá udržet počet položek snížený na rozsah synchronizace. I když testujeme sdílené složky Azure a Azure File Sync s 100 000 000 položkami (soubory a složkami) na jednu sdílenou složku, osvědčeným postupem je vyzkoušet a zachovat číslo nižší než 20 nebo 30 000 000 v jedné sdílené složce. Nastavení Azure File Sync s menším počtem položek není pro synchronizaci souborů prakticky výhodné. Nižší počet položek také přináší podobné scénáře:
 
-* Obnovení na straně cloudu ze snímku sdílené složky Azure se dá udělat jako záložní.
+* Počáteční prohledávání cloudového obsahu před tím, než se může začít zobrazovat na serveru s povolenou Azure File Sync může docházet k rychlejšímu dokončení.
+* Obnovení na straně cloudu ze snímku sdílené složky Azure bude rychlejší.
 * Zotavení po havárii místního serveru se může významně zrychlit.
 * Změny provedené přímo ve sdílené složce Azure (mimo synchronizaci) se dají detekovat a synchronizovat rychleji.
+
+> [!TIP]
+> Pokud si nejste jistí, kolik souborů a složek máte, můžete si Projděte nástroj TreeSize od zaseknutí softwaru GmbH.
 
 #### <a name="a-structured-approach-to-a-deployment-map"></a>Strukturovaný přístup k mapě nasazení
 
@@ -53,14 +57,12 @@ Pokud chcete učinit rozhodnutí o tom, kolik sdílených složek Azure potřebu
 >
 > Toto seskupení v rámci společného kořene nemá žádný vliv na přístup k vašim datům. Seznamy ACL zůstanou tak, jak jsou. Je třeba upravit pouze jakékoli cesty ke sdílené složce (například sdílené složky SMB nebo NFS), které se změnily na společné kořenové složky serveru. Nic jiného nemění.
 
-Dalším důležitým aspektem Azure File Sync a vyváženým výkonem a prostředím je porozumění faktorům škálování pro Azure File Sync výkon. Pokud jsou soubory synchronizované přes Internet, větší soubory zabírají více času a šířku pásma pro synchronizaci.
-
 > [!IMPORTANT]
 > Nejdůležitějším vektorem škálování pro Azure File Sync je počet položek (soubory a složky), které je třeba synchronizovat.
 
 Azure File Sync podporuje synchronizaci až 100 000 000 položek s jednou sdílenou složkou Azure. Toto omezení může být překročeno a zobrazuje pouze informace o tom, co tým Azure File Sync pravidelně testuje.
 
-Osvědčeným postupem je udržovat počet položek na rozsah synchronizace nízké. To je důležitý faktor, který je potřeba vzít v úvahu při mapování složek na sdílené složky Azure.
+Osvědčeným postupem je udržovat počet položek na rozsah synchronizace nízké. To je důležitý faktor, který je potřeba vzít v úvahu při mapování složek na sdílené složky Azure. I když testujeme sdílené složky Azure a Azure File Sync s 100 000 000 položkami (soubory a složkami) na jednu sdílenou složku, osvědčeným postupem je vyzkoušet a zachovat číslo nižší než 20 nebo 30 000 000 v jedné sdílené složce. Pokud začnete přesáhnout tato čísla, rozdělte obor názvů na více sdílených složek. Můžete dál seskupovat více sdílených složek Prem do stejné sdílené složky Azure, pokud se vám podržíte zhruba pod těmito čísly. Díky tomu budete mít k dispozici prostor pro růst.
 
 V případě potřeby je možné, že sada složek může logicky synchronizovat se stejnou sdílenou složkou Azure (pomocí nového přístupu ke společné kořenové složce zmíněného dříve). Stále ale může být lepší oddělit složky tak, aby se synchronizovaly na dvě místo jedné sdílené složky Azure. Tento přístup můžete použít k udržení počtu souborů a složek na sdílení souborů napříč serverem.
 
@@ -73,7 +75,7 @@ V případě potřeby je možné, že sada složek může logicky synchronizovat
     :::column:::
         Použijte kombinaci předchozích konceptů, které vám pomůžou určit, kolik sdílených složek Azure potřebujete, a které části vašich stávajících dat budou mít za následek sdílení souborů Azure.
         
-        Vytvořte tabulku, která bude zaznamená vaše myšlenky, abyste na ni mohli odkazovat v dalším kroku. Organizování je důležité, protože při zřizování mnoha prostředků Azure můžete snadno ztratit podrobnosti o plánu mapování. Abyste vám pomohli vytvořit úplné mapování, můžete si stáhnout soubor aplikace Microsoft Excel jako šablonu.
+        Vytvořte tabulku, která bude zaznamená vaše myšlenky, takže v případě potřeby na ni můžete odkazovat. Organizování je důležité, protože při zřizování mnoha prostředků Azure můžete snadno ztratit podrobnosti o plánu mapování. Abyste vám pomohli vytvořit úplné mapování, můžete si stáhnout soubor aplikace Microsoft Excel jako šablonu.
 
 [//]: # (HTML se zobrazí jako jediný způsob, jak dosáhnout Přidání vnořené tabulky se dvěma sloupci s analýzou pracovní image a textu nebo hypertextového odkazu na stejný řádek.)
 

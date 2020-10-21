@@ -3,15 +3,15 @@ title: Autorizace přístupu pomocí Azure Active Directory
 description: Tento článek poskytuje informace o autorizaci přístupu k prostředkům Event Hubs pomocí Azure Active Directory.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 48d2bc1aa3389459077bb7b8df0ac63ce1e1a438
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f69c3e5136ab47de4683cc65c32054d067dde13
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566257"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332395"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory
-Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
+Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role Azure (Azure RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instančního objektu aplikace. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
 
 ## <a name="overview"></a>Přehled
 Když se objekt zabezpečení (uživatel nebo aplikace) pokusí o přístup k prostředku Event Hubs, musí být žádost autorizována. S Azure AD je přístup k prostředku v procesu se dvěma kroky. 
@@ -39,7 +39,7 @@ Azure poskytuje následující předdefinované role Azure pro autorizaci přís
 | [Odesilatel dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) | Pomocí této role udělíte přístup k prostředkům Event Hubs. |
 | [Přijímač dat Event Hubs Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) | Tuto roli použijte, pokud chcete, aby přístup k Event Hubs prostředkům poskytoval náročné a přijímaly. |
 
-Předdefinované role registru schématu najdete v tématu [role registru schématu](schema-registry-overview.md#role-based-access-control).
+Předdefinované role registru schématu najdete v tématu [role registru schématu](schema-registry-overview.md#azure-role-based-access-control).
 
 ## <a name="resource-scope"></a>Obor prostředku 
 Než do objektu zabezpečení přiřadíte roli Azure, určete rozsah přístupu, který má objekt zabezpečení mít. Osvědčené postupy určují, že vždy nejlépe přidělíte jenom nejužšímu možnému rozsahu.
@@ -61,7 +61,7 @@ Další informace o tom, jak jsou předdefinované role definované, najdete v t
 
 
 
-## <a name="samples"></a>ukázky
+## <a name="samples"></a>Ukázky
 - [Ukázky Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 
     
     Tyto ukázky používají starou knihovnu **Microsoft. Azure. EventHubs** , ale můžete ji snadno aktualizovat tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** . Postup přesunutí ukázky z použití staré knihovny do nové verze najdete v [Průvodci migrací z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
@@ -73,7 +73,7 @@ Další informace o tom, jak jsou předdefinované role definované, najdete v t
 
 ## <a name="next-steps"></a>Další kroky
 - Informace o tom, jak přiřadit předdefinovanou roli Azure k objektu zabezpečení, najdete v tématu [ověření přístupu k Event Hubs prostředkům pomocí Azure Active Directory](authenticate-application.md).
-- Naučte [se vytvářet vlastní role pomocí RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
+- Naučte [se vytvářet vlastní role pomocí Azure RBAC](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/CustomRole).
 - Naučte [se používat Azure Active Directory s eh](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/AzureEventHubsSDK) .
 
 Podívejte se na následující související články:
