@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89615f53f62329ca37ae4a4dde301a9fae6b1202
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400498"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279743"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití děleného grafu ve službě Azure Cosmos DB
 
 Jednou z klíčových funkcí rozhraní Gremlin API v Azure Cosmos DB je schopnost zpracovávat rozsáhlá měřítka prostřednictvím horizontálního škálování. Kontejnery se můžou nezávisle škálovat z hlediska úložiště a propustnosti. V Azure Cosmos DB můžete vytvořit kontejnery, které se dají automaticky škálovat, aby se ukládaly data grafu. Data se automaticky vyrovnávají podle zadaného **klíče oddílu**.
 
-**Dělení je vyžadováno** , pokud se očekává, že velikost kontejneru ukládá více než 20 GB nebo pokud chcete přidělit více než 10 000 jednotek žádostí za sekundu (ru). Stejné obecné principy [mechanismu dělení Azure Cosmos DB](partition-data.md) platí pro několik optimalizací specifických pro graf, které jsou popsané níže.
+**Dělení je vyžadováno** , pokud se očekává, že velikost kontejneru ukládá více než 20 GB nebo pokud chcete přidělit více než 10 000 jednotek žádostí za sekundu (ru). Stejné obecné principy [mechanismu dělení Azure Cosmos DB](partitioning-overview.md) platí pro několik optimalizací specifických pro graf, které jsou popsané níže.
 
 :::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="Dělení grafů." border="false":::
 
@@ -78,7 +78,7 @@ Pro zajištění výkonu a škálovatelnosti při použití grafů s neomezeným
 
 - **Při dotazování na hrany používejte odchozí směr, kdykoli je to možné**. Jak je uvedeno výše, hrany se ukládají se zdrojovými vrcholy v odchozím směru. Takže se při navrhování dat a dotazů s tímto vzorem minimalizuje možnost vytváření dotazů mezi oddíly. V opačném případě `in()` bude dotaz vždy nákladným dotazem na více instancí.
 
-- **Vyberte klíč oddílu, který bude rovnoměrně distribuovat data mezi oddíly**. Toto rozhodnutí je silně závislé na datovém modelu řešení. Přečtěte si další informace o vytvoření vhodného klíče oddílu v tématu [dělení a škálování v Azure Cosmos DB](partition-data.md).
+- **Vyberte klíč oddílu, který bude rovnoměrně distribuovat data mezi oddíly**. Toto rozhodnutí je silně závislé na datovém modelu řešení. Přečtěte si další informace o vytvoření vhodného klíče oddílu v tématu [dělení a škálování v Azure Cosmos DB](partitioning-overview.md).
 
 - **Optimalizuje dotazy pro získání dat v rámci hranic oddílu**. Optimální strategie dělení by byla zarovnaná na vzory dotazů. Dotazy, které získávají data z jednoho oddílu, poskytují nejlepší možný výkon.
 
@@ -86,6 +86,6 @@ Pro zajištění výkonu a škálovatelnosti při použití grafů s neomezeným
 
 Dál si můžete přečíst následující články:
 
-* Přečtěte si o [oddílu a škálování v Azure Cosmos DB](partition-data.md).
+* Přečtěte si o [oddílu a škálování v Azure Cosmos DB](partitioning-overview.md).
 * Přečtěte si o [podpoře Gremlin v rozhraní Gremlin API](gremlin-support.md).
 * Přečtěte si o [úvodu k rozhraní Gremlin API](graph-introduction.md).

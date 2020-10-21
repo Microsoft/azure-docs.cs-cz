@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: ba5a9561242219652d3f72300f0b0559cfb867b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74e9e3df1e532d23c99add39f5fd3b0d439c6e55
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87506560"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281954"
 ---
 # <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Vytvoření tabulky pro Azure Cosmos DB rozhraní API pro tabulky
 
@@ -48,5 +48,3 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
-
-Další ukázkové skripty PowerShellu pro službu Azure Cosmos DB najdete ve [skriptech PowerShellu pro službu Azure Cosmos DB](../../../powershell-samples.md).

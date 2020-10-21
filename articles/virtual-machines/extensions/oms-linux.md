@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 38bbe52e45c348977cdda02a5399f6c89fb91bcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1193bfe74e8b5e20d2189c143f6ca0cb09abfd49
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307445"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329640"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Rozšíření Log Analytics pro virtuální počítače pro Linux
 
@@ -32,7 +32,7 @@ Protokoly Azure Monitor poskytují možnosti monitorování, upozorňování a n
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -43,6 +43,7 @@ Následující tabulka poskytuje mapování verze Log Analyticsho rozšíření 
 
 | Verze rozšíření virtuálního počítače s Log Analytics Linux | Verze sady prostředků agenta Log Analytics | 
 |--------------------------------|--------------------------|
+| 1.13.27 | [1.13.27](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.27-0) |
 | 1.13.15 | [1.13.9-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.9-0) |
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0 – 9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
@@ -186,7 +187,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstranit potíže
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 

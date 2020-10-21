@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 09/29/2020
-ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450131"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330358"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -120,9 +120,47 @@ Modul spuštění skriptu Pythonu obsahuje ukázkový kód Pythonu, který můž
 
     ![Spustit vstupní mapu Pythonu](media/module/python-module.png)
 
-4. Pokud chcete zahrnout nové balíčky nebo kód Pythonu, přidejte do **sady skriptů**soubor zip, který obsahuje tyto vlastní prostředky. **Sada prostředků skriptu** musí být soubor zip odeslaný do vašeho pracovního prostoru jako datová sada typu souboru. Datovou sadu můžete nahrát na stránce assetu **datových sad** . Modul DataSet můžete přetáhnout ze seznamu **Moje datové sady** v levém stromu modulu na stránce vytváření návrháře. 
+4. Pokud chcete zahrnout nové balíčky nebo kód Pythonu, připojte soubor zip, který obsahuje tyto vlastní prostředky, na port **sady skriptu** . Nebo pokud je váš skript větší než 16 KB, zabraňte **chybám, jako** je *příkazový řádek, vyšší než maximální počet 16597 znaků*. 
 
-    Během provádění kanálu lze použít jakýkoli soubor obsažený v odeslaném archivu zip. Pokud archiv obsahuje adresářovou strukturu, struktura se zachová, ale musíte do cesty předřadit adresář **Src** .
+    
+    1. Vytvořte balíček skriptu a dalších vlastních prostředků do souboru ZIP.
+    1. Nahrajte soubor ZIP jako **datovou sadu souboru** do studia. 
+    1. Přetáhněte modul DataSet ze seznamu *datových sad* v levém podokně modulu na stránce vytváření návrháře. 
+    1. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
+    
+    Během provádění kanálu lze použít jakýkoli soubor obsažený v odeslaném archivu zip. Pokud archiv obsahuje adresářovou strukturu, struktura se zachová.
+    
+    Následuje příklad sady skriptu, který obsahuje soubor skriptu Pythonu a soubor txt:
+      
+    > [!div class="mx-imgBorder"]
+    > ![Příklad skriptu sady](media/module/python-script-bundle.png)  
+
+    Následuje obsah `my_script.py` :
+
+    ```python
+    def my_func(dataframe1):
+    return dataframe1
+    ```
+    Následuje ukázkový kód, který ukazuje, jak využívat soubory ve skriptovém svazku:    
+
+    ```python
+    import pandas as pd
+    from my_script import my_func
+ 
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+ 
+        # Execution logic goes here
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+ 
+        # Test the custom defined python function
+        dataframe1 = my_func(dataframe1)
+ 
+        # Test to read custom uploaded files by relative path
+        with open('./Script Bundle/my_sample.txt', 'r') as text_file:
+            sample = text_file.read()
+    
+        return dataframe1, pd.DataFrame(columns=["Sample"], data=[[sample]])
+    ```
 
 5. Do textového pole **skript Pythonu** zadejte nebo vložte platný skript Pythonu.
 

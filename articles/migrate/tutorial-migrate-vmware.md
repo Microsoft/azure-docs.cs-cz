@@ -4,12 +4,12 @@ description: Naučte se spouštět migraci virtuálních počítačů VMware bez
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530518"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310634"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta)
 
@@ -30,14 +30,14 @@ V tomto kurzu se naučíte:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci virtuálního počítače.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
-1. [Dokončete první kurz](tutorial-prepare-vmware.md) pro přípravu Azure a VMware pro migraci.
-2. Doporučujeme, abyste dokončili druhý kurz pro [vyhodnocení virtuálních počítačů VMware](tutorial-assess-vmware.md) před jejich migrací do Azure, ale nemusíte je. 
+1. [Dokončete první kurz](./tutorial-discover-vmware.md) pro přípravu Azure a VMware pro migraci.
+2. Doporučujeme, abyste dokončili druhý kurz pro [vyhodnocení virtuálních počítačů VMware](./tutorial-assess-vmware-azure-vm.md) před jejich migrací do Azure, ale nemusíte je. 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Přidání nástroje pro migraci Azure Migrate serveru
@@ -59,7 +59,7 @@ Pokud jste ještě nevytvořili Azure Migrate projekt, udělejte před tím [,](
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Nastavení zařízení Azure Migrate
 
-Migrace Azure Migrate serveru spouští zjednodušené zařízení VMware VM, které se používá pro zjišťování, posuzování a migraci virtuálních počítačů VMware bez agenta. Pokud budete postupovat podle [kurzu hodnocení](tutorial-assess-vmware.md), již jste nastavili zařízení. Pokud jste to neudělali, nastavte ji nyní pomocí jedné z těchto metod:
+Migrace Azure Migrate serveru spouští zjednodušené zařízení VMware VM, které se používá pro zjišťování, posuzování a migraci virtuálních počítačů VMware bez agenta. Pokud budete postupovat podle [kurzu hodnocení](./tutorial-assess-vmware-azure-vm.md), již jste nastavili zařízení. Pokud jste to neudělali, nastavte ji nyní pomocí jedné z těchto metod:
 
 - **Šablona vajíček**: [nastavte](how-to-set-up-appliance-vmware.md) na virtuálním počítači VMware pomocí stažené šablony vajíček.
 - **Skript**: [nastavte](deploy-appliance-script.md) na virtuálním počítači VMware nebo fyzickém počítači pomocí skriptu instalačního programu PowerShell. Tato metoda by se měla použít, pokud nemůžete nastavit virtuální počítač pomocí šablony pro VAJÍČKa nebo pokud jste v Azure Government.
@@ -210,7 +210,7 @@ Po ověření, že migrace testu funguje podle očekávání, můžete migrovat 
     - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
-    - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/security-overview.md).
+    - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
     - Nasaďte službu [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), která vám pomůže zabezpečit disky a zajistit bezpečnost dat před krádeží a neoprávněným přístupem.
     - Přečtěte si další informace o [zabezpečení prostředků IaaS](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) a navštivte [Azure Security Center](https://azure.microsoft.com/services/security-center/).
 - Pro monitorování a správu:

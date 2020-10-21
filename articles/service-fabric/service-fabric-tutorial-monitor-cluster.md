@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020090"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331987"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Kurz: monitorování clusteru Service Fabric v Azure
 
@@ -36,7 +36,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -57,7 +57,7 @@ Vyberte prostředek **ServiceFabric (mysfomsworkspace)**.
 
 V **přehledu** uvidíte dlaždice ve formě grafu pro každé povolené řešení, včetně jednoho pro Service Fabric. Kliknutím na graf **Service Fabric** pokračujte v řešení Service Fabric Analytics.
 
-![Řešení Service Fabric](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![Snímek obrazovky, který zobrazuje graf Service Fabric.](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 Následující obrázek ukazuje domovskou stránku Service Fabric Analytics řešení. Tato domovská stránka nabízí snímek toho, co se děje ve vašem clusteru.
 

@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
-ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e62a7d9b9beb8ecdfaabdd44fdd547dd78d38f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443805"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328185"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Export do souboru BACPAC-Azure SQL Database a Azure SQL Managed instance
 
@@ -24,7 +24,7 @@ ms.locfileid: "91443805"
 
 Pokud potřebujete exportovat databázi k archivaci nebo přesunout na jinou platformu, můžete exportovat schéma databáze a data do souboru [BacPac](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) . Soubor BACPAC je soubor ZIP s příponou BACPAC obsahující metadata a data z databáze. Soubor BACPAC může být uložený v úložišti objektů BLOB v Azure nebo v místním úložišti v místním umístění a později se importuje zpátky do Azure SQL Database, spravované instance Azure SQL nebo instance SQL Server.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 - Aby bylo možné export provést bez zásahu, je nutné zajistit, aby během exportu nedošlo k žádné aktivitě zápisu nebo zda exportujete z převedené [kopie](database-copy.md) vaší databáze.
 - Pokud exportujete do úložiště objektů blob, maximální velikost souboru BACPAC je 200 GB. Pokud chcete archivovat větší soubor BACPAC, exportujte ho do místního úložiště.
@@ -48,7 +48,7 @@ Export BACPAC databáze ze [spravované instance Azure SQL](../managed-instance/
 
 1. Pokud chcete exportovat databázi pomocí [Azure Portal](https://portal.azure.com), otevřete stránku pro vaši databázi a na panelu nástrojů klikněte na **exportovat** .
 
-   ![Export databáze](./media/database-export/database-export1.png)
+   ![Snímek obrazovky, který zvýrazní tlačítko pro export.](./media/database-export/database-export1.png)
 
 2. Zadejte název souboru BACPAC, vyberte existující účet úložiště Azure a kontejner pro export a potom zadejte příslušné přihlašovací údaje pro přístup ke zdrojové databázi. **Přihlašovací jméno správce SQL serveru** je potřeba, i když jste správce Azure, protože se správcem Azure nerovná oprávnění správce v Azure SQL Database nebo spravované instanci SQL Azure.
 

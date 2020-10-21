@@ -292,8 +292,8 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
-                - name: Šablona Resource Manageru
-                  href: ./samples/resource-manager-workspace.md
+            - name: Monitorování pracovního prostoru
+              href: platform/monitor-workspace.md
             - name: Odstranění a obnovení pracovního prostoru
               href: platform/delete-workspace.md
             - name: Správa přístupu

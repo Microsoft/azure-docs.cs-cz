@@ -4,12 +4,12 @@ description: Tento článek poskytuje pokyny pro orchestraci implementace Azure 
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0438445f99a22ed9fd239156044d6b3f6b477edc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480843"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330610"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Orchestrace implementace Azure DevTest Labs
 Tento článek poskytuje doporučený postup pro rychlé nasazení a implementaci Azure DevTest Labs. Následující obrázek zvýrazňuje celkový proces jako doporučené doprovodné materiály a přitom pozoruje flexibilitu při podpoře různých požadavků a scénářů v oboru.
@@ -36,7 +36,7 @@ Jakmile bude síťová topologie zavedena, je možné první/pilotní prostřed�
 
 1. Vytvořte počáteční prostředí DevTest Labs.
 2. Určete povolené image virtuálních počítačů a velikosti pro použití s testovacím prostředím. Rozhodněte se, jestli se vlastní image dají nahrát do Azure pro použití s DevTest Labs.
-3. Zabezpečený přístup k testovacímu prostředí vytvořením počátečních řízení přístupu základní role (RBAC) pro testovací prostředí (vlastníky testovacího prostředí a uživatele testovacího prostředí). Doporučujeme, abyste používali synchronizované účty služby Active Directory s Azure Active Directory pro identitu s DevTest Labs.
+3. Zabezpečený přístup k testovacímu prostředí vytvořením počátečního řízení přístupu na základě role Azure (Azure RBAC) pro testovací prostředí (vlastníky testovacího prostředí a uživatele testovacího prostředí). Doporučujeme, abyste používali synchronizované účty služby Active Directory s Azure Active Directory pro identitu s DevTest Labs.
 4. Nakonfigurujte DevTest Labs, aby používaly zásady, jako jsou plány, Správa nákladů, vynucené virtuální počítače, vlastní image nebo vzorce.
 5. Navažte online úložiště, jako je například Azure Repos/Git.
 6. Rozhodněte se, jak použít veřejné nebo soukromé úložiště nebo kombinaci obou. Uspořádání šablon JSON pro nasazení a dlouhodobé udržování.

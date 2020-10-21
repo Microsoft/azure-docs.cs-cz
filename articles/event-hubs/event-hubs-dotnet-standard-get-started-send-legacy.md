@@ -4,12 +4,12 @@ description: Tento článek poskytuje návod pro vytvoření aplikace .NET Core,
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d33ebcabb728cf2fbf43b393de5eec6cb58af3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8819a95364bf41c6f9837c3db31a9800968d096c
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010694"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332157"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Odesílání událostí do nebo příjem událostí z Azure Event Hubs pomocí .NET Core (Microsoft. Azure. EventHubs)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny **Microsoft. Azure. EventHubs** .NET Core.
@@ -17,7 +17,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 > [!WARNING]
 > V tomto rychlém startu se používá starý balíček **Microsoft. Azure. EventHubs** . Pro rychlý Start, který používá nejnovější knihovnu  **Azure. Messaging. EventHubs** , najdete informace v tématu [posílání a přijímání událostí pomocí knihovny Azure. Messaging. EventHubs](event-hubs-dotnet-standard-getstarted-send.md). Pokud chcete aplikaci přesunout z používání staré knihovny na novou, přečtěte si [příručku k migraci z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
@@ -362,7 +362,7 @@ Pomocí následujícího postupu do svého projektu přidejte balíčky NuGet kn
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články:
 
-- [Ukázky řízení přístupu na základě role (RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
+- [Ukázky řízení přístupu na základě role Azure (Azure RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
     Tyto ukázky používají starou knihovnu **Microsoft. Azure. EventHubs** , ale můžete ji snadno aktualizovat tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** . Postup přesunutí ukázky z použití staré knihovny do nové verze najdete v [Průvodci migrací z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 - [EventProcessorHost](event-hubs-event-processor-host.md)

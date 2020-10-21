@@ -12,19 +12,19 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617685"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331902"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Rychlý Start: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního prostředí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento rychlý Start ukazuje, jak se připojit ke spravované instanci Azure SQL pomocí [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) z místního klientského počítače přes připojení typu Point-to-site. Informace o připojení typu Point-to-site najdete v tématu věnovaném [síti VPN typu Point-to-site](../../vpn-gateway/point-to-site-about.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý start:
 
@@ -65,7 +65,7 @@ Tento rychlý start:
 
 ## <a name="create-a-vpn-connection"></a>Vytvoření připojení VPN
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Otevřete skupinu prostředků, ve které jste vytvořili bránu virtuální sítě, a pak otevřete prostředek brány virtuální sítě.
 3. Vyberte **Konfigurace Point-to-site** a pak vyberte **stáhnout klienta VPN**.
 
@@ -83,16 +83,16 @@ Tento rychlý start:
 1. Pokud chcete navázat připojení k této virtuální síti, klikněte na síť **VPN** v **síti & Internetu** na místním klientském počítači a vyberte svou virtuální síť spravované instance SQL. Na následujícím obrázku je virtuální síť s názvem **MyNewVNet**.
 
     ![Připojení VPN](./media/point-to-site-p2s-configure/vpn-connection.png)  
-2. Vyberte **Připojit**.
+2. Vyberte **Connect** (Připojit).
 3. V dialogovém okně vyberte **připojit**.
 
-    ![Připojení VPN](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+    ![Snímek obrazovky, který zvýrazní tlačítko připojit](./media/point-to-site-p2s-configure/vpn-connection2.png)  
 4. Když se zobrazí výzva, že správce připojení potřebuje zvýšená oprávnění pro aktualizaci směrovací tabulky, vyberte **pokračovat**.
 5. Chcete-li pokračovat, vyberte v dialogovém okně Řízení uživatelských účtů možnost **Ano** .
 
    Navázali jste připojení VPN k virtuální síti spravované instance SQL.
 
-    ![Připojení VPN](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![Snímek obrazovky, který zvýrazní připojenou zprávu po navázání připojení.](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>Připojení přes SSMS
 

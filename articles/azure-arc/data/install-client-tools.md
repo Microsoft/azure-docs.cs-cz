@@ -9,19 +9,19 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d61bc99e851b28712262dba8512c06b6e8872c0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ecf0f54913f980d879b562eb4aa8063acf6c4772
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108214"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320253"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Instalace klientských nástrojů pro nasazování a správu datových služeb s podporou služby Azure Arc
 
 > [!IMPORTANT]
-> Pokud aktualizujete na novou měsíční verzi, nezapomeňte taky aktualizovat na nejnovější verzi Azure Data Studio, nástroj Azure Data CLI (azdata) a Azure Data CLI a rozšíření Azure ARC pro Azure Data Studio.
+> Pokud aktualizujete na novou měsíční verzi, nezapomeňte aktualizovat taky na nejnovější verzi Azure Data Studio, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Nástroj a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] rozšíření Azure Arc pro Azure Data Studio.
 
-Tento dokument vás provede kroky pro instalaci rozhraní příkazového řádku Azure (azdata), Azure Data Studio, rozhraní příkazového řádku Azure CLI (AZ) a Kubernetes CLI Tool (kubectl) na klientském počítači.
+Tento dokument vás provede kroky pro instalaci [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , Azure Data Studio, rozhraní příkazového řádku Azure CLI (AZ) a nástroj KUBERNETES CLI (kubectl) na klientském počítači.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -31,10 +31,10 @@ Následující tabulka obsahuje seznam běžných nástrojů vyžadovaných k vy
 
 | Nástroj | Povinné | Popis | Instalace |
 |---|---|---|---|
-| Azure Data CLI (azdata) | Ano | Nástroj příkazového řádku pro instalaci a správu clusteru velkých objemů dat. Azure Data CLI také obsahuje nástroj příkazového řádku pro připojení k Azure SQL a SQL Server instancí a Postgres serverů a jejich dotazování pomocí příkazů `azdata sql query` (spuštění jednoho dotazu z příkazového řádku), `azdata sql shell` (interaktivní prostředí) `azdata postgres query` a `azdata postgres shell` . | [Instalace](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
+| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] | Ano | Nástroj příkazového řádku pro instalaci a správu clusteru velkých objemů dat. [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] zahrnuje také nástroj příkazového řádku pro připojení a dotazování instancí Azure SQL a SQL Server a Postgres serverů pomocí příkazů `azdata sql query` (spustit jeden dotaz z příkazového řádku), `azdata sql shell` (interaktivní prostředí) `azdata postgres query` a `azdata postgres shell` . | [Instalace](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
 | Azure Data Studio | Ano | Nástroj pro bohatou práci pro připojení a dotazování nejrůznějších databází, včetně Azure SQL, SQL Server, PostrgreSQL a MySQL. Rozšíření pro Azure Data Studio poskytují prostředí pro správu datových služeb s povoleným ARC Azure. | [Instalace](/sql/azure-data-studio/download-azure-data-studio) |
-| Rozšíření Azure Data CLI pro Azure Data Studio | Ano | Rozšíření pro Azure Data Studio, které nainstaluje Azure Data CLI, pokud ho ještě nemáte.| Instalace z galerie rozšíření v Azure Data Studio.|
-| Rozšíření Azure ARC pro Azure Data Studio | Ano | Rozšíření pro Azure Data Studio, které poskytuje prostředí pro správu datových služeb s podporou ARC Azure. Existuje závislost na rozšíření Azure Data CLI pro Azure Data Studio. | Instalace z galerie rozšíření v Azure Data Studio.|
+| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] rozšíření pro Azure Data Studio | Ano | Rozšíření pro Azure Data Studio, které se nainstaluje, [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Pokud ho ještě nemáte.| Instalace z galerie rozšíření v Azure Data Studio.|
+| Rozšíření Azure ARC pro Azure Data Studio | Ano | Rozšíření pro Azure Data Studio, které poskytuje prostředí pro správu datových služeb s podporou ARC Azure. Existuje závislost na [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] rozšíření pro Azure Data Studio. | Instalace z galerie rozšíření v Azure Data Studio.|
 | Rozšíření PostgreSQL v Azure Data Studio | Ne | Rozšíření PostgreSQL pro Azure Data Studio, které poskytuje možnosti správy pro PostgreSQL. | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> Instalace z galerie rozšíření v Azure Data Studio.|
 | Azure CLI (AZ)<sup>1</sup> | Ano | Moderní rozhraní příkazového řádku pro správu služeb Azure. Používá se s AKS nasazeními a k nahrání inventáře datových služeb s povoleným ARC Azure a fakturační data do Azure. ([Další informace](/cli/azure/?view=azure-cli-latest&preserve-view=true)). | [Instalace](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) |
 | Kubernetes CLI (kubectl)<sup>2</sup> | Ano | Nástroj příkazového řádku pro správu clusteru Kubernetes ([Další informace](https://kubernetes.io/docs/tasks/tools/install-kubectl/)) | [Systém Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \| [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013742"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332497"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Instalace agenta Log Analytics do počítačů se systémem Linux
 Tento článek poskytuje podrobné informace o instalaci agenta Log Analytics v počítačích se systémem Linux pomocí následujících metod:
@@ -43,9 +43,11 @@ Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory
 >[!NOTE]
 >Pokud používáte distribuce nebo verzi, která není v současné době podporovaná a nerovná se k našemu modelu podpory, doporučujeme, abyste toto úložiště rozpustili a potvrdili, že podpora Microsoftu nebude poskytovat pomoc s rozvětvené verze agenta.
 
-### <a name="python-2-requirement"></a>Požadavek Pythonu 2
+### <a name="python-requirement"></a>Požadavek Pythonu
 
- Agent Log Analytics vyžaduje Python 2. Pokud váš virtuální počítač používá distribuce, který ve výchozím nastavení neobsahuje Python 2, musíte ho nainstalovat. Následující vzorové příkazy instalují Python 2 v různých distribuce.
+Od agenta verze 1.13.27 bude agent Linux podporovat Python 2 a 3. Vždycky doporučujeme používat nejnovějšího agenta. 
+
+Pokud používáte starší verzi agenta, musíte mít virtuální počítač ve výchozím nastavení používat Python 2. Pokud váš virtuální počítač používá distribuce, který ve výchozím nastavení neobsahuje Python 2, musíte ho nainstalovat. Následující vzorové příkazy instalují Python 2 v různých distribuce.
 
  - Red Hat, CentOS, Oracle: `yum install -y python2`
  - Ubuntu, Debian: `apt-get install -y python2`
@@ -71,7 +73,7 @@ Agent OMS má podporu vlastního nastavení pro Linux.
 V současné době jsou podporovány následující: 
 - Standardů
 
-Následující jsou plánovány, ale nejsou dosud podporovány:
+Níže jsou uvedené aspekty, které se zatím nepodporují:
 - SLUŽBY
 - SELINUX
 
@@ -81,7 +83,7 @@ Jiné metody posílení zabezpečení a přizpůsobení nejsou pro agenta OMS po
 
 V následující tabulce jsou vysvětlené balíčky požadované pro [Podporované distribuce Linux](#supported-operating-systems) , na které se agent nainstaluje.
 
-|Požadovaný balíček |Description |Minimální verze |
+|Požadovaný balíček |Popis |Minimální verze |
 |-----------------|------------|----------------|
 |Glibc |    Knihovna GNU C | 2.5-12 
 |Openssl    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |

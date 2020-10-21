@@ -67,6 +67,8 @@
       items:
         - name: Kódování a streamování vzdáleného souboru – REST
           href: stream-files-tutorial-with-rest.md
+        - name: Klíče spravované zákazníkem s využitím Media Services
+          href: tutorial-byok.md
     - name: Rozhraní příkazového řádku
       items:
         - name: Kódování a streamování vzdáleného souboru – CLI
@@ -175,6 +177,8 @@
         - name: Dynamické šifrování a doručování klíčů
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
+        - name: Klíče spravované zákazníkem
+          href: concept-use-customer-managed-keys-byok.md
         - name: Návrh systému s více variantami DRM
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md

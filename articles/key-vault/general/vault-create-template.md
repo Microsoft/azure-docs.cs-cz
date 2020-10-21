@@ -1,6 +1,6 @@
 ---
-title: Průvodce Azure – vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí šablony Azure Resource Manager | Microsoft Docs
-description: Ukazuje, jak vytvořit trezory klíčů Azure a zásady přístupu k trezoru pomocí šablony Azure Resource Manager.
+title: Vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí šablony ARM
+description: Tento článek ukazuje, jak vytvořit trezory klíčů Azure a zásady přístupu k trezoru pomocí šablony Azure Resource Manager.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,29 +10,29 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cf19561005fe2e98b7b5cf6812ff9224fd9474dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804337"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282323"
 ---
-# <a name="how-to-create-azure-key-vault-and-vault-access-policy-using-a-resource-manager-template"></a>Postup vytvoření Azure Key Vault a zásad přístupu k trezoru pomocí šablony Správce prostředků
+# <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí šablony Správce prostředků
 
-[Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště tajných kódů, jako jsou klíče, hesla, certifikáty a další tajné kódy. Tato příručka se zaměřuje na proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření trezoru klíčů.
+[Azure Key Vault](../general/overview.md) je cloudová služba, která poskytuje zabezpečené úložiště pro tajné klíče, jako jsou klíče, hesla a certifikáty. Tento článek popisuje proces nasazení šablony Azure Resource Manager (šablona ARM) pro vytvoření trezoru klíčů.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Postup dokončení tohoto článku:
+Postup dokončení kroků v tomto článku:
 
-* Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 
-## <a name="create-key-vault-resource-manager-template"></a>Vytvořit šablonu Key Vault Správce prostředků
+## <a name="create-a-key-vault-resource-manager-template"></a>Vytvoření šablony Key Vault Správce prostředků
 
-Následující šablona ukazuje základní způsob vytvoření trezoru klíčů. Některé hodnoty jsou zadány v rámci šablony.
+Následující šablona ukazuje základní způsob vytvoření trezoru klíčů. V šabloně jsou zadány některé hodnoty.
 
 ```json
 {
@@ -87,11 +87,11 @@ Následující šablona ukazuje základní způsob vytvoření trezoru klíčů.
 Další informace o Key Vault nastavení šablon naleznete v tématu [Key Vault na šablonu ARM](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults).
 
 > [!IMPORTANT]
-> Pokud se šablona znovu nasadí, přepíše všechny existující zásady přístupu v trezoru klíčů. Doporučuje se naplnit `accessPolicies` vlastnost existujícími zásadami přístupu, abyste se vyhnuli ztrátě přístupu k trezoru klíčů. 
+> Pokud se šablona znovu nasadí, budou se všechny existující zásady přístupu v trezoru klíčů přepsat. `accessPolicies`Pro zamezení ztráty přístupu k trezoru klíčů doporučujeme naplnit vlastnost stávajícími zásadami přístupu. 
 
-## <a name="add-access-policy-to-key-vault-resource-manager-template"></a>Přidání zásad přístupu k šabloně Key Vault Správce prostředků
+## <a name="add-an-access-policy-to-a-key-vault-resource-manager-template"></a>Přidání zásady přístupu do šablony Key Vault Správce prostředků
 
-Zásady přístupu můžete nasadit do existujícího trezoru klíčů bez opětovného nasazení celé šablony trezoru klíčů. Následující šablona ukazuje základní způsob, jak vytvořit zásady přístupu.
+Zásady přístupu můžete nasadit do existujícího trezoru klíčů, aniž byste museli znovu nasazovat celou šablonu trezoru klíčů. Následující šablona ukazuje základní způsob vytváření zásad přístupu:
 
 ```json
 {
@@ -160,23 +160,23 @@ Zásady přístupu můžete nasadit do existujícího trezoru klíčů bez opět
 }
 
 ```
-Další informace o Key Vault nastavení šablon naleznete v tématu [Key Vault na šablonu ARM](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
+Další informace o nastavení šablon Key Vault naleznete v tématu [Key Vault na šablonu ARM](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
-## <a name="other-available-key-vault-resource-manager-templates"></a>Další dostupné Key Vault šablony Správce prostředků
+## <a name="more-key-vault-resource-manager-templates"></a>Další šablony Key Vault Správce prostředků
 
 K dispozici jsou jiné šablony Správce prostředků pro objekty Key Vault:
 
 | Tajné kódy | Klíče | Certifikáty |
 |--|--|--|
-|[Rychlý start](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<br>[Odkaz](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|N/A|N/A|
+|<ul><li>[Rychlý start](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[Odkaz](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|N/A|N/A|
 
-Další Key Vault šablony najdete tady: [Key Vault správce prostředků odkazem](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions) .
+Další Key Vault šablony můžete najít tady: [Key Vault správce prostředků odkazem](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions).
 
 ## <a name="deploy-the-templates"></a>Nasazení šablon
 
-Pomocí Azure Portal můžete nasadit výše uvedené šablony pomocí možnosti sestavit vlastní šablonu v editoru v následující příručce: [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template) .
+Pomocí Azure Portal můžete nasadit předchozí šablony pomocí možnosti **vytvořit vlastní šablonu v editoru** , jak je popsáno zde: [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template).
 
-Můžete také uložit výše uvedené šablony do souborů a použít následující příkazy:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
+Předchozí šablony můžete také uložit do souborů a použít tyto příkazy:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
@@ -188,7 +188,7 @@ az group deployment create --resource-group ExampleGroup --template-file key-vau
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v úmyslu pokračovat a pracovat s dalšími rychlými starty a kurzy, můžete tyto prostředky ponechat na místě. Pokud už prostředky nepotřebujete, odstraňte skupinu prostředků, která odstraní Trezor klíčů a související prostředky. Pokud chcete odstranit skupinu prostředků pomocí Azure CLI nebo Azure PowerShell, použijte následující postup.
+Pokud máte v plánu pokračovat s dalšími rychlými starty a kurzy, můžete tyto prostředky ponechat na místě. Když už prostředky nepotřebujete, odstraňte skupinu prostředků. Pokud skupinu odstraníte, odstraní se taky Trezor klíčů a související prostředky. Pokud chcete odstranit skupinu prostředků pomocí Azure CLI nebo Azure PowerShell, proveďte tyto kroky:
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
@@ -209,14 +209,14 @@ Write-Host "Press [ENTER] to continue..."
 
 ---
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
-- Přečtěte si [přehled Azure Key Vault](../general/overview.md)
-- Další informace o [Azure Resource Manageru](../../azure-resource-manager/management/overview.md)
-- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
+- Přečtěte si [přehled Azure Key Vault](../general/overview.md).
+- Přečtěte si další informace o [Azure Resource Manager](../../azure-resource-manager/management/overview.md).
+- Projděte si [Azure Key Vault osvědčené postupy](../general/best-practices.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Zabezpečený přístup k trezoru klíčů](secure-your-key-vault.md)
 - [Ověřování pro Trezor klíčů](authentication.md)
-- [Azure Key Vault příručka pro vývojáře](developers-guide.md)
+- [Průvodce vývojáře pro službu Azure Key Vault](developers-guide.md)

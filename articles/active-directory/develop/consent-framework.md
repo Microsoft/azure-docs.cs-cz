@@ -9,16 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: e9780332ad6279deef63910c7e6ba95e1ccf43bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e53c29c41b3c4a5a2dd1f421e128231aa5eec3
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706128"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327545"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Architektura Azure AD pro udělování souhlasu
 
@@ -64,5 +63,4 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací i p
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se, [Jak převést aplikaci na více tenantů](howto-convert-app-to-be-multi-tenant.md) .
-* Podrobnější informace najdete [v tématu o tom, jak je podpora podporovaná na úrovni protokolu OAuth 2,0 během toku udělení autorizačního kódu.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)
+Podívejte se, [Jak převést aplikaci na více tenantů](howto-convert-app-to-be-multi-tenant.md) .

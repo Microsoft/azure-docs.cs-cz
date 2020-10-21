@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c2b606059f92cafc44e383c2aced0d6bed467c2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5fdaa1346e4837b3bf611d964158d132dcdfeeda
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149834"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282679"
 ---
-# <a name="backup-and-restore-on-sap-hana-on-azure"></a>Zálohování a obnovení při SAP HANA v Azure
+# <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>Zálohování a obnovení SAP HANA ve velkých instancích HANA
 
 >[!IMPORTANT]
 >Tento článek není náhradou za dokumentaci pro správu SAP HANA ani pro poznámky ke službě SAP. Očekáváme, že budete mít plnou znalost a odbornosti v SAP HANA správě a operacích, zejména pro zálohování, obnovení, vysokou dostupnost a zotavení po havárii. V tomto článku se zobrazí snímky obrazovky z SAP HANA studia. Obsah, struktura a povaha obrazovek nástrojů pro správu SAP a samotných nástrojů se můžou v SAP HANA vydání verze změnit.

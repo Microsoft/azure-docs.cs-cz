@@ -5,16 +5,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 3c176f103371bfb1b35231f222b2045f1f4a3ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 203ba2988d817e3e396fd8aec3db00eba9832041
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327020"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92322540"
 ---
 ## <a name="download-and-install"></a>Stažení a instalace
 
 #### <a name="windows-install"></a>[Instalace Windows](#tab/windowsinstall)
+
+> [!NOTE]
+> V systému Windows potřebujete [Microsoft Visual C++ distribuovatelné součásti pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu. První instalace může vyžadovat restartování systému Windows.
 
 Pomocí těchto kroků nainstalujete rozhraní příkazového řádku pro rozpoznávání řeči ve Windows:
 

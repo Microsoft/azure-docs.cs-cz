@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3441d7c7f42c58928bb97c945e7b1e7673f7afa
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876983"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328875"
 ---
 # <a name="configure-device-redirections"></a>Konfigurace přesměrování zařízení
 
@@ -50,7 +50,10 @@ Pro konfiguraci přesměrování kamery nastavte následující vlastnost RDP:
 - `camerastoredirect:s:*` přesměruje všechny kamery.
 - `camerastoredirect:s:` Zakáže přesměrování kamery.
 
-Můžete také přesměrovat konkrétní kamery pomocí středníku seznamu KSCATEGORY_VIDEO_CAMERA rozhraní, například `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` .
+>[!NOTE]
+>I v případě `camerastoredirect:s:` , že je vlastnost zakázaná, mohou být místní fotoaparáty přesměrovány prostřednictvím `devicestoredirect:s:` Vlastnosti. Chcete-li úplně zakázat nastavení přesměrování kamery `camerastoredirect:s:` a buď nastavit `devicestoredirect:s:` nebo definovat některé podmnožiny zařízení Plug and Play, která neobsahují fotoaparát.
+
+Můžete také přesměrovat konkrétní kamery pomocí středníku seznamu KSCATEGORY_VIDEO_CAMERA rozhraní, například `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` . 
 
 ### <a name="clipboard-redirection"></a>Přesměrování schránky
 

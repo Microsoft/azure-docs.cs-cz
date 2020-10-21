@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289428"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329147"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Vytvoření hlasového asistenta pomocí vlastních příkazů
 
@@ -34,7 +34,7 @@ V současné době vlastní příkazy podporují odběry řeči vytvořené v t�
 * Východní Asie
 * Southeast Asia
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvořte prostředek řeči Azure v oblasti, která podporuje vlastní příkazy.<span class="docon docon-navigate-external x-hidden-focus"></span></a> Seznam podporovaných oblastí najdete výše v části **dostupnost oblasti** .
@@ -123,7 +123,7 @@ V rozsahu tohoto článku budeme používat klienta Windows Voice Assistant, kte
 1. Spusťte **VoiceAssistantClient.exe**.
 1. Vytvořte nový profil publikování a zadejte hodnotu pro **profil připojení**. V části **Obecné nastavení** zadejte hodnotu **klíč předplatného** (to je stejná jako hodnota **klíče prostředku řeči** , kterou jste uložili při publikování aplikace), **oblast klíče předplatného** a **vlastní příkazy ID aplikace**.
     > [!div class="mx-imgBorder"]
-    > ![WVAC vytvořit profil](media/custom-commands/create-profile.png)
+    > ![Snímek obrazovky, který zvýrazní oddíl Obecné nastavení pro vytvoření profilu WVAC](media/custom-commands/create-profile.png)
 1. Vyberte **Uložit a použít profil**.
 1. Teď vyzkoušejte následující vstupy přes řeč/text
     > [!div class="mx-imgBorder"]

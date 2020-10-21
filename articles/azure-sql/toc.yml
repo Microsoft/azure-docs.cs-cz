@@ -263,6 +263,8 @@
           items:
             - name: Pravidla firewallu protokolu IP na úrovni serveru
               href: database/firewall-create-server-level-portal-quickstart.md
+        - name: GitHub Actions
+          href: database/connect-github-actions-sql-db.md
     - name: Kurzy
       items:
         - name: Návrh databáze

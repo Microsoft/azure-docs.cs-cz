@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: devx-track-js
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4e8d7054fb0df265285bda223e360ea61612aaf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ca225f136b0c3a6fc8b47d00ff64064fe17d4ee
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263942"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281760"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Použití dlaždice Markdownu na řídicích panelech Azure pro zobrazení vlastního obsahu
 
@@ -48,7 +48,7 @@ Dlaždici Markdownu můžete přidat do řídicích panelů Azure a zobrazit tak
       ![Snímek obrazovky ukazující zadání adresy URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > Pro zvýšení zabezpečení můžete vytvořit soubor Markdownu a uložit ho do [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../storage/common/storage-service-encryption.md), a pak na soubor odkazovat pomocí možnosti adresa URL. Obsah Markdownu je zašifrovaný prostřednictvím možností šifrování účtu úložiště. Obsah Markdownu na řídicím panelu můžou zobrazit jenom uživatelé s oprávněními k tomuto souboru.
+      > Pro zvýšení zabezpečení můžete vytvořit soubor Markdownu a uložit ho do [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../storage/common/storage-service-encryption.md), a pak na soubor odkazovat pomocí možnosti adresa URL. Obsah Markdownu je zašifrovaný prostřednictvím možností šifrování účtu úložiště. Obsah Markdownu na řídicím panelu můžou zobrazit jenom uživatelé s oprávněními k tomuto souboru. Nastavte pravidlo sdílení prostředků mezi zdroji (CORS) v účtu úložiště tak, aby Azure Portal ( _https://portal.azure.com/_ ) mohl získat přístup k souboru Markdownu v objektu BLOB.
 
 1. Výběrem **Hotovo** zavřete podokno **Upravit Markdownu** . Obsah se zobrazí na dlaždici Markdownu, kterou můžete změnit přetažením úchytu v pravém dolním rohu.
 

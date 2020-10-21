@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34b4a7395102549dfea6f9d51ef8d1216bacddba
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230428"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327701"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Základní hodnoty zabezpečení Azure pro HDInsight
 
@@ -142,7 +142,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky týkající se vašeho clusteru Azure HDInsight. Pomocí aliasů Azure Policy v oborech názvů Microsoft. HDInsight a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě v clusteru Azure HDInsight.
 
-Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, ovládací prvky RBAC a zásady, a to v jediné definici podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
+Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení a zásady služby Azure RBAC v rámci jedné definice podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
 Jak zobrazit dostupné aliasy Azure Policy:
 

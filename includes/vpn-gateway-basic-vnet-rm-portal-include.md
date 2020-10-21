@@ -5,24 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/27/2020
+ms.date: 10/20/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 517acc5137d70c722d8defade1e218a3b2e78f86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a66596ecb926c1bf3c6b61cc99e1eb1b56e99158
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89052472"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328422"
 ---
-Virtuální síť můžete vytvořit pomocí modelu nasazení Správce prostředků a Azure Portal pomocí následujících kroků. Další informace o virtuálních sítích najdete v tématu [přehled Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
-
->[!NOTE]
->Pokud používáte virtuální síť jako součást architektury mezi různými místy, ujistěte se, že jste ve Správci místní sítě vyčlenit rozsah IP adres, který můžete použít speciálně pro tuto virtuální síť. Pokud existuje duplicitní rozsah adres na obou stranách připojení VPN, provoz se směruje neočekávaným způsobem. Kromě toho, pokud chcete připojit tuto virtuální síť k jiné virtuální síti, adresní prostor se nemůže překrývat s jinou virtuální sítí. Naplánujte konfiguraci sítě odpovídajícím způsobem.
->
->
-
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Do **vyhledávacích prostředků, služeb a dokumentů (G +/)** zadejte *Virtual Network*.
 
    ![Stránka pro vyhledání prostředku Virtual Network](./media/vpn-gateway-basic-vnet-rm-portal-include/marketplace.png "Stránka pro vyhledání prostředku virtuální sítě")

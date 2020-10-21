@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 122de64e33778966d563cc8e94b46515e54769f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281406"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331205"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se přechodu z portál partnerů cloudu do partnerského centra
 
@@ -77,8 +77,8 @@ Pro typy nabídek podporované v partnerském centru se všechny nabídky přesu
 
 | Typ nabídky <img src="" width=150px>| Přesunuli jste se do partnerského centra? <img src="" width=100px>| Další kroky |
 | --- | --- | --- |
-| SaaS | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v části Vytvoření nové nabídky SaaS na komerčním webu Marketplace](partner-center-portal/create-new-saas-offer.md). |
-| Virtuální počítač | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [na Azure Marketplace v nabídce vytvořit virtuální počítač Azure](azure-vm-create.md). |
+| SaaS | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [části plánování nabídky SaaS pro komerční tržiště](plan-saas-offer.md). |
+| Virtuální počítač | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [plánu nabídky virtuálních počítačů](marketplace-virtual-machines.md). |
 | Aplikace Azure | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky aplikací Azure](partner-center-portal/create-new-azure-apps-offer.md). |
 | Dynamics 365 Business Central | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky podnikového centra Dynamics 365](partner-center-portal/create-new-business-central-offer.md). |
 | Dynamics 365 pro Customer Engagement & PowerApps | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření Dynamics 365 pro zákaznickou zapojení & nabídky PowerApps](partner-center-portal/create-new-customer-engagement-offer.md). |

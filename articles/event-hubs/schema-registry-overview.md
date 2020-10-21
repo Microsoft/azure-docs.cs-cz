@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled podpory registru schématu pomoc�
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938793"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330491"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Registr schémat Azure v Event Hubs (Preview)
 V mnoha scénářích pro streamování událostí a zasílání zpráv obsahuje datová část události nebo zprávy strukturovaná data, která jsou buď serializovaná, nebo deserializovaná pomocí formátu založeného na schématu, jako je Apache Avro. Odesílatelé i přijímače můžou chtít ověřit integritu dat pomocí schématu dokumentu jako ve schématu JSON. V případě formátů založených na schématu je k dispozici pro příjemce zprávy je předpokladem, že příjemce může data deserializovat. 
@@ -50,8 +50,8 @@ Následující obrázek znázorňuje tok informací v registru schématu pomocí
 ## <a name="standard-vs-dedicated-limits"></a>Standardní vs. vyhrazená omezení
 Pro omezení (například počet skupin schémat v oboru názvů), které jsou stejné a rozdílné pro standardní a vyhrazené úrovně Event Hubs, přečtěte si téma [omezení registru schématu](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations) .
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
-Při přistupování k registru schématu prostřednictvím kódu programu je nutné zaregistrovat aplikaci v Azure Active Directory (Azure AD) a přidat objekt zabezpečení aplikace do jedné z rolí řízení přístupu na základě role (RBAC):
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
+Při přistupování k registru schématu prostřednictvím kódu programu je nutné zaregistrovat aplikaci v Azure Active Directory (Azure AD) a přidat objekt zabezpečení aplikace do jedné z rolí řízení přístupu na základě role Azure (Azure RBAC):
 
 | Role | Popis | 
 | ---- | ----------- | 

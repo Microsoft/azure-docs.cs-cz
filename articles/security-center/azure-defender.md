@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576846"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331681"
 ---
 # <a name="introduction-to-azure-defender"></a>Seznámení s Azure Defenderem
 
@@ -35,14 +35,15 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender for SQL](defender-for-sql-introduction.md)
-- [Azure Defender for IoT](defender-for-iot-introduction.md)
+- [Azure Defender pro SQL](defender-for-sql-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
 
 Každý z těchto plánů je vysvětlen samostatně v dokumentaci Security Center.
 
+> [!TIP]
+> Azure Defender pro IoT (Preview) je samostatný produkt. Všechny podrobnosti najdete v článku [představení Azure Defenderu pro IoT (Preview)](../defender-for-iot/overview.md). 
 
 ## <a name="hybrid-cloud-protection"></a>Ochrana hybridního cloudu
 
@@ -50,7 +51,6 @@ Stejně jako při obraně prostředí Azure můžete do svého hybridního cloud
 
 - Ochrana serverů mimo Azure
 - Chraňte své virtuální počítače v jiných cloudech (například AWS a GCP)
-- Ochrana zařízení IoT
 
 V závislosti na konkrétním prostředí budete mít přizpůsobenou analýzu hrozeb a výstrahy s upřednostněním priorit, abyste se mohli soustředit na to, co nejvíc věcí.
 

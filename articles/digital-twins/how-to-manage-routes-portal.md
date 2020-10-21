@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9d60297ba3bf16eac496703635ec8faf647c7f94
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 91c767fb031633900434b3aa07ccfae7cf7458cb
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279355"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332089"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
@@ -72,7 +72,7 @@ Koncový bod, který byl vytvořen zpátky, můžete také zobrazit na stránce 
 
 Pokud se vytvoření koncového bodu nepovede, Sledujte chybovou zprávu a zkuste to znovu za několik minut.
 
-Teď je téma Event gridu dostupné jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#event-routes).
+Teď je téma Event gridu dostupné jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#create-an-event-route).
 
 ### <a name="create-an-event-hubs-endpoint"></a>Vytvoření koncového bodu Event Hubs
 
@@ -94,7 +94,7 @@ To, jestli se koncový bod úspěšně vytvoří, můžete ověřit tak, že zko
 
 Pokud se vytvoření koncového bodu nepovede, Sledujte chybovou zprávu a zkuste to znovu za několik minut.
 
-Centrum událostí je teď k dispozici jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#event-routes).
+Centrum událostí je teď k dispozici jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#create-an-event-route).
 
 ### <a name="create-a-service-bus-endpoint"></a>Vytvoření koncového bodu Service Bus
 
@@ -116,7 +116,7 @@ To, jestli se koncový bod úspěšně vytvoří, můžete ověřit tak, že zko
 
 Pokud se vytvoření koncového bodu nepovede, Sledujte chybovou zprávu a zkuste to znovu za několik minut.
 
-Nyní je téma Service Bus k dispozici jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#event-routes).
+Nyní je téma Service Bus k dispozici jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#create-an-event-route).
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Vytvoření koncového bodu s nedoručenými písmeny
 
@@ -126,7 +126,7 @@ Aby bylo možné vytvořit koncový bod s povolenou výjimkou, je nutné použí
 
 Pokyny k tomu, jak to udělat pomocí rozhraní API, najdete v tématu [*rozhraní API a verze CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) tohoto článku.
 
-## <a name="event-routes"></a>Trasy událostí
+## <a name="create-an-event-route"></a>Vytvoření trasy události
 
 Aby bylo možné ve skutečnosti odesílat data z digitálních vláken Azure do koncového bodu, bude nutné definovat **trasu události**. Tyto trasy umožňují vývojářům nasměrovat tok událostí v celém systému a na navazující služby. Přečtěte si další informace o trasách událostí v tématu [*Koncepty: směrování událostí digitálních vláken Azure*](concepts-route-events.md).
 
@@ -135,7 +135,7 @@ Aby bylo možné ve skutečnosti odesílat data z digitálních vláken Azure do
 >[!NOTE]
 >Pokud jste své koncové body v poslední době nasadili, ověřte, že se jejich nasazení dokončilo, **než** se pokusíte použít pro novou trasu události. Pokud nemůžete nastavit trasu, protože koncové body nejsou připravené, počkejte pár minut a zkuste to znovu.
 
-### <a name="create-an-event-route"></a>Vytvoření trasy události 
+### <a name="creation-steps-with-the-azure-portal"></a>Postup vytvoření pomocí Azure Portal
 
 Definice trasy události obsahuje tyto prvky:
 * Název trasy, kterou chcete použít
@@ -161,7 +161,7 @@ Aby bylo možné trasu povolit, je nutné také **Přidat filtr trasy události*
 
 Po dokončení stiskněte tlačítko _Uložit_ a vytvořte tak trasu události.
 
-### <a name="filter-events"></a>Události filtru
+## <a name="filter-events"></a>Události filtru
 
 Jak je popsáno výše, trasy mají pole **filtru** . Pokud je hodnota filtru v trase `false` , nebudou do koncového bodu odesílány žádné události. 
 

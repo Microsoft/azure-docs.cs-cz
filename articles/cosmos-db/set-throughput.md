@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8cca75f7071b8b9c8d1108b82ebf8f7049ec316a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282570"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331817"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 
@@ -96,7 +96,7 @@ Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i konte
 
 Po vytvoření kontejneru Azure Cosmos nebo databáze můžete aktualizovat zřízenou propustnost. Maximální zajištěná propustnost, kterou můžete nakonfigurovat v databázi nebo v kontejneru, není nijak omezena.
 
-### <a name="current-provisioned-throughput"></a>Současná zřízená propustnost
+### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a> Současná zřízená propustnost
 
 Zřízenou propustnost kontejneru nebo databáze můžete načíst v Azure Portal nebo pomocí sad SDK:
 
@@ -135,6 +135,14 @@ Průběh škálování můžete programově ověřit načtením [aktuální zř�
 * [ThroughputResponse. isReplacePending ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
 
 Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) můžete zobrazit historii zřízené propustnosti (ru/s) a úložiště v prostředku.
+
+## <a name="high-storage--low-throughput-program"></a><a id="high-storage-low-throughput-program"></a> Vysoká úroveň úložiště/program s nízkou propustností
+
+Jak je popsáno výše v předchozí [zřízené propustnosti](#current-provisioned-throughput) , je minimální propustnost, kterou můžete zřídit na kontejneru nebo databázi, závislá na mnoha faktorech. Jedním z nich je množství dat, která jsou momentálně uložená, protože Azure Cosmos DB vynutila minimální propustnost 10 RU/s za GB úložiště.
+
+To může být obavou v situacích, kdy potřebujete ukládat velké objemy dat, ale v porovnání s nízkými nároky na propustnost. Aby lépe vyhovovaly těmto scénářům, Azure Cosmos DB zavedl **program "vysokého úložiště/nízké propustnosti"** , který u opravňujících účtů snižuje omezení ru/s na GB z 10 na 1.
+
+V současné době musíte mít v účtu k dispozici alespoň 1 kontejner nebo sdílenou databázi s více než 1 TB dat, aby mohla být v účtu oprávněná. Abyste se mohli připojit k tomuto programu a posoudit celou způsobilost, stačí udělat, abyste [Tento průzkum](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)naplnili. Tým Azure Cosmos DB pak bude sledovat a pokračovat v registraci.
 
 ## <a name="comparison-of-models"></a>Porovnání modelů
 Tato tabulka ukazuje porovnání mezi zřizováním standardní (ruční) propustností databáze vs. v kontejneru. 

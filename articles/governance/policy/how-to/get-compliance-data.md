@@ -3,12 +3,12 @@ title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 36645d5eb50aaf571c608fc51127b47ac885777d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873621"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320428"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -88,7 +88,7 @@ Ve výchozím nastavení `az policy state trigger-scan` spustí vyhodnocení pro
 az policy state trigger-scan --resource-group "MyRG"
 ```
 
-Můžete zvolit, že se nemá čekat na dokončení asynchronního procesu, než budete pokračovat s parametrem **No-Wait** .
+Můžete zvolit, že nechcete čekat na dokončení asynchronního procesu, než budete pokračovat s parametrem **No-Wait** .
 
 #### <a name="on-demand-evaluation-scan---azure-powershell"></a>Kontrola vyhodnocení na vyžádání – Azure PowerShell
 
@@ -157,15 +157,20 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
+#### <a name="on-demand-evaluation-scan---visual-studio-code"></a>Kontrola vyhodnocení na vyžádání – Visual Studio Code
+
+Rozšíření Azure Policy pro Visual Studio Code je schopné spustit kontrolu vyhodnocení konkrétního prostředku. Tato kontrola je synchronní proces, na rozdíl od metod Azure PowerShell a REST.
+Podrobnosti a postup najdete v tématu [vyhodnocení na vyžádání s rozšířením vs Code](./extension-for-vscode.md#on-demand-evaluation-scan).
+
 ## <a name="how-compliance-works"></a>Jak dodržování předpisů funguje
 
 V přiřazení není prostředek **nekompatibilní** , pokud nedodržuje pravidla zásad nebo iniciativ a není _vyloučený_. Následující tabulka ukazuje, jak různé účinky zásad fungují s hodnocením podmínek pro výsledný stav dodržování předpisů:
 
 | Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
-| Nové nebo aktualizované | Audit, úprava, AuditIfNotExist | Ano | Nevyhovující předpisům |
+| Nové nebo aktualizované | Audit, úprava, AuditIfNotExist | Pravda | Nevyhovující předpisům |
 | Nové nebo aktualizované | Audit, úprava, AuditIfNotExist | Nepravda | Odpovídající |
-| Existuje | Deny, audit, připojit, upravit, DeployIfNotExist, AuditIfNotExist | Ano | Nevyhovující předpisům |
+| Existuje | Deny, audit, připojit, upravit, DeployIfNotExist, AuditIfNotExist | Pravda | Nevyhovující předpisům |
 | Existuje | Deny, audit, připojit, upravit, DeployIfNotExist, AuditIfNotExist | Nepravda | Odpovídající |
 
 > [!NOTE]

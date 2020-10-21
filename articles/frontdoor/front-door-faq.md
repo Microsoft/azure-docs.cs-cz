@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2020
+ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: c7a5a02a063f90953982d42fe9c7d2c6dc199b2a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282287"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331579"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -161,6 +161,10 @@ Přečtěte si o všech dokumentovaných [časových limitech a omezeních pro p
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>Jak dlouho trvá, než se pravidlo projeví po přidání do modulu pravidel pro přední dveře?
 
 Dokončení aktualizace v konfiguraci modulu pravidel trvá přibližně 10 až 15 minut. Můžete očekávat, že se pravidlo projeví až po dokončení aktualizace. 
+
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-vice-versa"></a>Můžu nakonfigurovat Azure CDN za profilem front-dveří nebo naopak?
+
+Přední dvířka Azure a Azure CDN není možné konfigurovat společně, protože obě služby využívají stejné lokality Azure Edge při reagování na požadavky. 
 
 ## <a name="performance"></a>Výkon
 

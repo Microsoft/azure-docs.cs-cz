@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: efee261478cdc8b9b5349ef4c69ab5fc250315c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc12d1359ab7b6f664326cd3be448b79809c53e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619453"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332174"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřízení a zařazení nových tenantů pomocí aplikace na SaaS vzor pro každého tenanta
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Při nasazování aplikace pro tenanta se aplikace a databáze zřídí v nové 
 
 I když jsou aplikace a databáze jednotlivých tenantů plně izolované, můžou různé scénáře správy a analýzy fungovat napříč klienty.  Například použití změny schématu pro novou verzi aplikace vyžaduje změny schématu v každé databázi tenanta. Scénáře vytváření sestav a analýzy mohou také vyžadovat přístup ke všem databázím tenanta bez ohledu na to, kde jsou nasazeny.
 
-   ![vzor aplikace na tenanta](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
+   ![Diagram, který ukazuje, jak používat katalog tenanta s aplikací na model klienta.](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
 
 Katalog tenanta obsahuje mapování mezi identifikátorem tenanta a databází tenanta, takže se identifikátor dá přeložit na název serveru a databáze.  V aplikaci Wingtip SaaS je identifikátor tenanta vypočítaný jako hodnota hash názvu tenanta, i když se dají použít jiné systémy.  I když samostatné aplikace nepotřebují ke správě připojení katalog, katalog se dá použít k určení rozsahu dalších akcí pro sadu databází tenantů. Elastický dotaz může například použít katalog k určení sady databází, napříč kterými jsou dotazy distribuované pro vytváření sestav napříč klienty.
 
@@ -68,7 +68,7 @@ Co se v tomto kurzu naučíte:
 
 Na konci tohoto kurzu máte sadu samostatných klientských aplikací s každou databází zaregistrovanou v katalogu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
@@ -143,7 +143,7 @@ Pak můžete zkontrolovat nové prostředky vytvořené v Azure Portal.
 
 Po dokončení průzkumu ukázky odstraňte všechny skupiny prostředků, které jste vytvořili, abyste zastavili související fakturaci.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - Další informace o aplikacích pro více tenantů SaaS Database najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS](saas-tenancy-app-design-patterns.md).
 

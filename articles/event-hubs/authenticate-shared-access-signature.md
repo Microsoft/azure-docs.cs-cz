@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak ověřit přístup k prostředků
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270096"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332429"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověřování přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů (SAS)
 Sdílený přístupový podpis (SAS) poskytuje podrobnější kontrolu nad typem přístupu, který udělíte klientům, kteří mají sdílený přístupový podpis. Tady jsou některé ovládací prvky, které můžete nastavit v SAS: 
@@ -222,7 +222,7 @@ K ověření back-endové aplikace, které využívají data generovaná Event H
 Viz následující články:
 
 - [Autorizovat pomocí SAS](authenticate-shared-access-signature.md)
-- [Autorizovat pomocí řízení přístupu na základě role (RBAC)](authenticate-shared-access-signature.md)
+- [Autorizace pomocí řízení přístupu na základě role v Azure (Azure RBAC)](authenticate-shared-access-signature.md)
 - [Další informace o Event Hubs](event-hubs-about.md)
 
 Podívejte se na následující související články:

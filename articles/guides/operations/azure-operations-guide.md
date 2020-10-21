@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 2508846e5dd2fcc96aade9ce64b599bb4154de00
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7b9e95c06dd48e78e42244d27d27d063bf5f0be7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203377"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327769"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme s operátory IT Azure
 
@@ -140,11 +140,11 @@ Azure je globální cloudová platforma, která je obecně dostupná v mnoha obl
 
 Jednou z výhod používání Azure je to, že můžete své aplikace nasadit do různých Datacenter po celém světě. Oblast, kterou zvolíte, může ovlivnit výkon aplikace. Je optimální zvolit oblast, která je blíže většině vašich zákazníků, aby se snížila latence v případě síťových požadavků. Můžete také vybrat oblast, která bude vyhovovat zákonným požadavkům pro distribuci aplikace v určitých zemích nebo oblastech.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Azure Portal je webová aplikace, která se dá použít k vytváření, správě a odebírání prostředků a služeb Azure. Azure Portal najdete na adrese [Portal.Azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatném. Další informace najdete v tématu [přehled portál Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](../../azure-resource-manager/management/manage-resources-portal.md).
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Prostředky
 
 Prostředky Azure jsou individuální výpočetní prostředí, sítě, data nebo služby hostování aplikací, které se nasadily do předplatného Azure. Mezi běžné prostředky patří virtuální počítače, účty úložiště nebo databáze SQL. Služby Azure se často skládají z několika souvisejících prostředků Azure. Virtuální počítač Azure může například zahrnovat virtuální počítač, účet úložiště, síťový adaptér a veřejnou IP adresu. Tyto prostředky je možné vytvořit, spravovat a odstranit jednotlivě nebo jako skupinu. Prostředky Azure jsou podrobněji popsány dále v této příručce.
 
@@ -198,9 +198,9 @@ Průběžné **platby**: s tímto předplatným platíte za to, co využijete, p
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Udělení přístupu pro správu k předplatnému Azure
 
-RBAC má několik předdefinovaných rolí, které můžete použít k přiřazení oprávnění. Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu roli [vlastníka](../../role-based-access-control/built-in-roles.md#owner) v oboru předplatného. Role Vlastník poskytuje uživateli úplný přístup ke všem prostředkům v předplatném, včetně práva delegovat přístup na ostatní.
+Azure RBAC má několik předdefinovaných rolí, které můžete použít k přiřazení oprávnění. Pokud chcete, aby uživatel měl správce předplatného Azure, přiřaďte mu roli [vlastníka](../../role-based-access-control/built-in-roles.md#owner) v oboru předplatného. Role Vlastník poskytuje uživateli úplný přístup ke všem prostředkům v předplatném, včetně práva delegovat přístup na ostatní.
 
-Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Zobrazit fakturační údaje v Azure Portal
 
@@ -238,7 +238,7 @@ Resource Manager poskytuje několik výhod:
 
 - Můžete definovat závislosti mezi prostředky, takže se nasadí ve správném pořadí.
 
-- Řízení přístupu můžete použít pro všechny služby ve vaší skupině prostředků, protože RBAC je nativně integrovaná do platformy pro správu.
+- Řízení přístupu můžete použít pro všechny služby ve vaší skupině prostředků, protože služba Azure RBAC je nativně integrovaná do platformy pro správu.
 
 - Můžete použít značky pro prostředky a logicky uspořádat všechny prostředky v rámci vašeho předplatného.
 
@@ -286,7 +286,7 @@ Pro automatizaci nasazení jsou k dispozici následující mechanismy:
 
 Nakonec můžete převést existující skupiny prostředků na opakovaně použitelnou šablonu z Azure Portal. To může být užitečné, pokud chcete vytvořit nasazenou šablonu existující skupiny prostředků nebo chcete jenom prostudovat základní JSON. Pokud chcete exportovat skupinu prostředků, vyberte tlačítko **skript Automation** z nastavení skupiny prostředků.
 
-## <a name="security-of-azure-resources-rbac"></a>Zabezpečení prostředků Azure (RBAC)
+## <a name="security-of-azure-resources-azure-rbac"></a>Zabezpečení prostředků Azure (Azure RBAC)
 
 Operačnímu účtu můžete udělit přístup k uživatelským účtům v zadaném oboru: předplatné, skupina prostředků nebo individuální prostředek. To znamená, že můžete nasadit sadu prostředků do skupiny prostředků, jako je například virtuální počítač a všechny související prostředky, a udělit oprávnění konkrétnímu uživateli nebo skupině. Tento přístup omezuje přístup jenom na prostředky, které patří do cílové skupiny prostředků. Můžete taky udělit přístup k jednomu prostředku, jako je třeba virtuální počítač nebo virtuální síť.
 
@@ -306,7 +306,7 @@ Tady je několik příkladů [předdefinovaných rolí v Azure](../../role-based
 
 - **Přispěvatel účtu úložiště**: uživatel s touto rolí může spravovat účty úložiště, ale nemůže spravovat přístup k účtům úložiště.
 
-Další informace najdete v tématu [Správa přístupu pomocí RBAC a webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
+Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí webu Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 

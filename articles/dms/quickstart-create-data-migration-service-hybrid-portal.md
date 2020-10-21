@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 39f893e9375970ff4bb6e3cfa2c93ceea48ec896
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84195678"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331800"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Rychlý Start: vytvoření instance hybridního režimu pomocí Azure Portal & Azure Database Migration Service
 
@@ -184,7 +184,7 @@ Kromě instalace Azure Database Migration Service Hybrid Worker prostřednictví
 Tento skript je určený pro rychlé vytváření prototypů, pokud už uživatel má všechna potřebná oprávnění v prostředí. Všimněte si, že ve vašem produkčním prostředí můžou mít AdApp a CERT různé požadavky, takže by se skript mohl zdařit.
 
 > [!IMPORTANT]
-> Tento skript předpokládá, že v hybridním režimu existuje existující instance Azure Database Migration Service a že účet Azure, který používá, má oprávnění k vytvoření AdApps v tenantovi a k úpravě RBAC v předplatném.
+> Tento skript předpokládá, že v hybridním režimu existuje existující instance Azure Database Migration Service a že účet Azure, který používá, má oprávnění k vytvoření AdApps v tenantovi a pro úpravu služby Azure RBAC v rámci předplatného.
 
 Vyplňte parametry v horní části skriptu a spusťte skript z instance prostředí PowerShell pro správce.
 
