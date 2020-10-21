@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930947"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317452"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer komponenty
 
 Azure Load Balancer obsahuje několik klíčových součástí. Tyto komponenty můžete nakonfigurovat v předplatném prostřednictvím:
 
-* portál Azure
+* Azure Portal
 * Azure CLI
 * Azure PowerShell
 * Šablony Resource Manageru
@@ -128,6 +128,7 @@ Load Balancer úrovně Basic nepodporuje odchozí pravidla.
 
 ## <a name="limitations"></a>Omezení
 
+- Další informace o [omezeních](https://aka.ms/lblimits) Load Balancer 
 - Nástroj pro vyrovnávání zatížení poskytuje vyrovnávání zatížení a přesměrování portů pro konkrétní protokoly TCP a UDP. Pravidla vyrovnávání zatížení a pravidla příchozího překladu adres (NAT) podporují protokoly TCP a UDP, ale ne jiné protokoly IP, včetně protokolu ICMP.
 - Odchozí tok z back-endu virtuálního počítače do front-endu interního Load Balancer se nezdaří.
 - Pravidlo nástroje pro vyrovnávání zatížení nemůže zahrnovat dvě virtuální sítě.  Front-endové a jejich instance back-endu se musí nacházet ve stejné virtuální síti.  

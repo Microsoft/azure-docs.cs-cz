@@ -1,7 +1,7 @@
 ---
-title: Přehled portálu pro vývojáře Azure API Management
+title: Přehled portálu pro vývojáře v Azure API Management
 titleSuffix: Azure API Management
-description: Seznamte se s portálem pro vývojáře v API Management. Portál pro vývojáře je místo, kde příjemci můžou najít vaše rozhraní API.
+description: Přečtěte si o portálu pro vývojáře v API Management – přizpůsobitelný web, ve kterém můžou uživatelé rozhraní API prozkoumat vaše rozhraní API.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -11,61 +11,46 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a6a73768db7b073258487435ddbe6c0daccf16
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715465"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317822"
 ---
-# <a name="azure-api-management-developer-portal-overview"></a>Přehled portálu pro vývojáře Azure API Management
+# <a name="overview-of-the-developer-portal"></a>Přehled portálu pro vývojáře
 
 Portál pro vývojáře je automaticky generovaný plně přizpůsobitelný web s dokumentací vašich rozhraní API. Je tam, kde můžou příjemci rozhraní API zjišťovat vaše rozhraní API, učit se, jak je používat, žádat o přístup a vyzkoušet si je.
 
-Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verzemi portálu pro vývojáře v API Management. Vysvětluje také její architekturu a poskytuje odpovědi na nejčastější dotazy.
+Tento článek popisuje rozdíly mezi místně hostovanými a spravovanými verzemi portálu pro vývojáře v API Management. Obsahuje také odpovědi na nejčastější dotazy.
 
 ![Portál pro vývojáře API Management](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-> [!NOTE]
-> <a name="migrate-from-legacy"></a> Nový portál pro vývojáře není kompatibilní se starší verzí portálu pro vývojáře a automatizovaná migrace není možná. Je potřeba ručně znovu vytvořit obsah (stránky, text, multimediální soubory) a přizpůsobit vzhled nového portálu. Pokyny najdete [v kurzu na portálu pro vývojáře](api-management-howto-developer-portal-customize.md) .
+## <a name="migration-from-the-legacy-portal"></a>Migrace ze starší verze portálu
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> Spravované a samostatně hostované verze
+> [!IMPORTANT]
+> Starší verze portálu pro vývojáře je nyní zastaralá a bude dostávat pouze aktualizace zabezpečení. Můžete ho i nadále používat, jak je obvyklé, do svého vyřazení v říjnu 2023, když se odebere ze všech API Management Services.
 
-Portál pro vývojáře můžete vytvořit dvěma způsoby:
+Migrace na nový portál pro vývojáře je popsaná v [článku věnovaném vyhrazené dokumentaci](developer-portal-deprecated-migration.md).
 
-- **Spravovaná verze** – úpravou a přizpůsobením portálu, který je součástí vaší instance API Management a je přístupný prostřednictvím adresy URL `<your-api-management-instance-name>.developer.azure-api.net` . Informace o přístupu a přizpůsobení spravovaného portálu najdete v [tomto článku v dokumentaci](api-management-howto-developer-portal-customize.md) .
-- **Samoobslužná verze** – nasazením a vlastním hostováním portálu mimo instanci API Management. Tento přístup umožňuje upravit základ kódu na portálu a zvětšit poskytované základní funkce – například implementovat vlastní widgety pro integraci se systémy třetích stran. V tomto scénáři jste portálem pro správu a zodpovídáte za upgrade portálu na nejnovější verzi. Podrobnosti a pokyny najdete v [úložišti GitHub se zdrojovým kódem portálu][1] a v [kurzu implementace widgetu][3]. [Kurz spravované verze](api-management-howto-developer-portal-customize.md) se provede pomocí panelu pro správu portálu, který je společný pro spravované a samoobslužné verze.
+## <a name="customization-and-styling"></a>Přizpůsobení a stylování
 
-## <a name="portal-architectural-concepts"></a>Koncepce architektury portálu
+Portál pro vývojáře se dá přizpůsobit a vytvořit jeho stylem prostřednictvím integrovaného a přetahování pomocí vizuálního editoru. Další podrobnosti najdete v [tomto kurzu](api-management-howto-developer-portal-customize.md) .
 
-Komponenty portálu mohou být logicky rozděleny do dvou kategorií: *kód* a *obsah*.
+## <a name="extensibility"></a><a name="managed-vs-self-hosted"></a> Rozšiřitelnost
 
-*Kód* je udržován v [úložišti GitHub][1] a zahrnuje:
+Vaše služba API Management obsahuje integrovaný, stále aktuální, **spravovaný** portál pro vývojáře. K němu můžete přistupovat z rozhraní Azure Portal.
 
-- Widgety, které reprezentují vizuální prvky a kombinují HTML, JavaScript, styl možností, nastavení a mapování obsahu. Příkladem je obrázek, textový odstavec, formulář, seznam rozhraní API atd.
-- Definice stylů – určení způsobu, jakým mohou být widgety ve stylu
-- Modul, který generuje statické webové stránky z obsahu portálu a je napsán v JavaScriptu
-- Vizuální Editor – umožňuje přizpůsobení v prohlížeči a možnosti vytváření obsahu.
+Pokud ho potřebujete zvětšit pomocí vlastní logiky, která není předem podporovaná, můžete změnit jeho základ kódu. Základ kódu na portálu je [k dispozici v úložišti GitHubu][1]. Můžete například implementovat nový widget, který se integruje se systémem podpory třetí strany. Při implementaci nových funkcí můžete vybrat jednu z následujících možností:
 
-*Obsah* je rozdělen do dvou podkategorií: *obsah portálu* a *API Management obsah*.
+- **Vlastní hostování** výsledného portálu mimo vaši službu API Management. Po samoobslužném hostování portálu se stanete jeho údržbou a zodpovídáte za jeho upgrady. Pomocná podpora Azure je omezená jenom na základní nastavení samoobslužných portálů, jak je popsáno v [části wiki v úložišti][2].
+- Otevřete žádost o přijetí změn pro tým API Management, aby se do základu kódu **spravovaného** portálu sloučila nová funkce.
 
-*Obsah portálu* je specifický pro portál a zahrnuje:
-
-- Stránky – například úvodní stránka, kurzy k rozhraní API, příspěvky na blogu
-- Média – obrázky, animace a další obsah založený na souborech
-- Rozložení – šablony, které jsou porovnány s adresou URL a definují způsob zobrazení stránek
-- Styly – hodnoty pro definice stylu, například písma, barvy, ohraničení
-- Nastavení – konfigurace, například favicon, metadata webu
-
-*Obsah portálu*, s výjimkou médií, se vyjadřuje jako dokumenty JSON.
-
-*API Management obsah* zahrnuje entity, jako jsou rozhraní API, operace, produkty a odběry.
-
-Portál je založen na upraveném rozvětvení [architektury Paperbits](https://paperbits.io/). Původní funkce Paperbits se rozšířily tak, aby poskytovaly widgety specifické pro API Management (například seznam rozhraní API, seznam produktů) a konektor pro API Management službu pro ukládání a načítání obsahu.
+Podrobnosti a pokyny k rozšíření najdete v [úložišti GitHubu][1] a v [kurzech k implementaci widgetu][3]. [Kurz pro přizpůsobení spravovaného portálu](api-management-howto-developer-portal-customize.md) vás provede pomocí panelu pro správu portálu, který je běžně pro **spravované** a **samoobslužné** verze.
 
 ## <a name="frequently-asked-questions"></a><a name="faq"></a> Nejčastější dotazy
 
@@ -77,7 +62,7 @@ Při prvním spuštění verze Preview portálu pro vývojáře jste ve službě
 
 Pokud jste portál silně přizpůsobili na základě verze Preview obsahu, můžete ho i nadále používat a na stránkách na portálu umístit nové widgety ručně. V opačném případě doporučujeme nahradit obsah vašeho portálu novým výchozím obsahem.
 
-Chcete-li obnovit obsah na spravovaném portálu, klikněte na možnost **obnovit obsah** v části nabídka **operace** . Tato operace odstraní veškerý obsah portálu a zřídí nový výchozí obsah. Ztratíte všechna přizpůsobení a změny portálu pro vývojáře. **Tuto akci nelze vrátit zpět**.
+Chcete-li obnovit obsah na spravovaném portálu, vyberte možnost **obnovit obsah** v části nabídka **operace** . Tato operace odstraní veškerý obsah portálu a zřídí nový výchozí obsah. Ztratíte všechna přizpůsobení a změny portálu pro vývojáře. **Tuto akci nelze vrátit zpět**.
 
 ![Resetování obsahu portálu](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -85,21 +70,11 @@ Pokud používáte samoobslužnou verzi, spusťte `scripts.v2/cleanup.bat` `scri
 
 Pokud jste na portál poprvé získali po oznámení o všeobecné dostupnosti v listopadu 2019, měl by již být součástí nového výchozího obsahu a nevyžaduje se žádná další akce.
 
-### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>Má portál všechny funkce starší verze portálu?
-
-Portál pro vývojáře už nepodporuje aplikace, *problémy*a přímou integraci s *aplikacemi*Facebook, Microsoft, Twitter a Google jako zprostředkovatelé identity (místo toho můžete použít Azure AD B2C).
-
-### <a name="has-the-legacy-portal-been-deprecated"></a>Je starší verze portálu zastaralá?
-
-Starší verze portálu pro vývojáře a vydavatele jsou nyní *starší* než funkce – budou přijímat pouze aktualizace zabezpečení. Nové funkce se implementují jenom na novém portálu pro vývojáře.
-
-Vyřazení starší verze portálů bude oznámeno samostatně. Pokud máte dotazy, obavy nebo komentáře, vyvolejte je [ve vyhrazeném problému GitHubu](https://github.com/Azure/api-management-developer-portal/issues/121).
-
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>Funkce, které potřebuji, se na portálu nepodporují.
 
-Můžete otevřít [žádost o funkci](https://aka.ms/apimwish) nebo [implementovat chybějící funkce sami][3]. Pokud implementujete funkci sami, můžete portál pro vývojáře sami hostovat nebo otevřít žádost o přijetí změn na GitHubu a zahrnout změny ve spravované verzi.
+V [úložišti GitHubu][1] můžete otevřít žádost o funkci, nebo můžete [chybějící funkce implementovat sami][3]. Další podrobnosti najdete v části **rozšiřitelnost** výše.
 
-### <a name="how-can-i-automate-portal-deployments"></a>Jak můžu automatizovat nasazení portálu?
+### <a name="how-can-i-automate-portal-deployments"></a><a id="automate"></a> Jak můžu automatizovat nasazení portálu?
 
 Můžete programově přistupovat k obsahu portálu pro vývojáře a spravovat ho prostřednictvím REST API bez ohledu na to, jestli používáte spravovanou nebo místně hostovanou verzi.
 
@@ -107,7 +82,7 @@ Rozhraní API je popsané v [části wiki úložiště GitHubu][2]. Dá se použ
 
 ### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>Návody se přesunout ze spravovaného na místně hostovanou verzi?
 
-Informace najdete v podrobném článku v [části wiki v úložišti portálu pro vývojáře na GitHubu][2].
+Přečtěte si podrobný článek v [části wiki v úložišti portálu pro vývojáře na GitHubu][2].
 
 ### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>Můžu mít v jedné API Management službě víc portálů pro vývojáře?
 
@@ -127,7 +102,7 @@ Ve většině případů – ne.
 
 Pokud je vaše služba API Management v interní virtuální síti, portál pro vývojáře je přístupný jenom v rámci sítě. Název hostitele koncového bodu správy se musí překládat na interní virtuální IP adresu služby z počítače, který používáte pro přístup k rozhraní pro správu portálu. Ujistěte se, že je koncový bod správy zaregistrován v DNS. V případě chybné konfigurace se zobrazí chyba: `Unable to start the portal. See if settings are specified correctly in the configuration (...)` .
 
-Pokud je vaše služba API Management interní virtuální síť a k ní přistupujete prostřednictvím Application Gateway z Internetu, Nezapomeňte povolit připojení k portálu pro vývojáře a koncovým bodům správy API Management.
+Pokud je vaše služba API Management interní virtuální síť a k ní přistupujete prostřednictvím Application Gateway z Internetu, Nezapomeňte povolit připojení k portálu pro vývojáře a koncovým bodům správy API Management. Možná budete muset zakázat pravidla firewallu webových aplikací. Další podrobnosti najdete v [tomto článku v dokumentaci](api-management-howto-integrate-internal-vnet-appgateway.md) .
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>Přiřadil (a) jsem vlastní doménu API Management a publikovaný portál nefunguje
 
@@ -135,7 +110,7 @@ Po aktualizaci domény je potřeba [znovu publikovat portál](api-management-how
 
 ### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>Přidal (a) jsem poskytovatele identity a nevidím ho na portálu
 
-Po nakonfigurování zprostředkovatele identity (například AAD, AAD B2C) je potřeba [znovu publikovat portál](api-management-howto-developer-portal-customize.md#publish) , aby se změny projevily.
+Po nakonfigurování zprostředkovatele identity (například Azure AD, Azure AD B2C) je potřeba [znovu publikovat portál](api-management-howto-developer-portal-customize.md#publish) , aby se změny projevily. Ujistěte se, že stránky portálu pro vývojáře obsahují widget tlačítek OAuth.
 
 ### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>Nastavil (a) delegování a portál ho nepoužívá
 
@@ -143,7 +118,7 @@ Po nastavení delegování je potřeba [znovu publikovat portál](api-management
 
 ### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>Změny konfigurace mých API Management nebyly rozšířeny na portál pro vývojáře.
 
-Většina změn konfigurace (například virtuální síť, přihlášení a podmínek produktu) vyžaduje [Opětovné publikování portálu](api-management-howto-developer-portal-customize.md#publish).
+Většina změn konfigurace (například virtuální síť, přihlášení, podmínek produktu) vyžaduje [Opětovné publikování portálu](api-management-howto-developer-portal-customize.md#publish).
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> Při použití interaktivní konzoly se mi zobrazuje chyba CORS
 
@@ -157,9 +132,9 @@ Automaticky použít zásadu CORS kliknutím na tlačítko **Povolit CORS**
 
 Můžete také povolit CORS ručně.
 
-1. Pokud chcete zobrazit generovaný kód zásad, klikněte na odkaz ručně na odkaz na **globální úrovni** .
+1. Pokud chcete zobrazit generovaný kód zásad, vyberte **ho ručně na odkaz na globální úrovni** .
 2. V Azure Portal přejděte ke **všem rozhraním API** v části **rozhraní API** služby API Management.
-3. **</>** V části **příchozí zpracování** klikněte na ikonu.
+3. Vyberte **</>** ikonu v části **příchozí zpracování** .
 4. Vložte zásadu do **<inbound>** části souboru XML. Ujistěte se, že **<origin>** hodnota odpovídá vaší doméně portálu pro vývojáře.
 
 > [!NOTE]
@@ -169,6 +144,10 @@ Můžete také povolit CORS ručně.
 > Prohlížeč automaticky vydá požadavek na možnost HTTP, který neobsahuje hlavičku s klíčem předplatného. Z důvodu chybějícího klíče předplatného API Management nemůže přidružit volání možností k produktu, takže nemůže uplatnit zásadu CORS.
 >
 > Jako alternativní řešení můžete klíč předplatného předat v parametru dotazu.
+
+> [!NOTE]
+> 
+> Spustí se jenom jedna zásada CORS. Pokud jste zadali několik zásad CORS (například na úrovni rozhraní API a na úrovni All-API), vaše interaktivní konzola nemusí fungovat podle očekávání.
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Jaká oprávnění potřebuji k úpravám portálu pro vývojáře?
 
@@ -217,7 +196,7 @@ Selhání volání může být způsobeno také certifikátem TLS/SSL, který je
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |
 | Microsoft Edge              | Ano<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Ne              |
 | Mozilla Firefox             | Ano<sup>1</sup> |
 
  <small><sup>1</sup> podporuje se v obou nejnovějších produkčních verzích.</small>

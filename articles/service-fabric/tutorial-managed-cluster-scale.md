@@ -3,12 +3,12 @@ title: Horizontální navýšení kapacity Service Fabric spravovaného clusteru
 description: V tomto kurzu se naučíte škálovat typ uzlu Service Fabric spravovaného clusteru.
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.openlocfilehash: a6777743932f3cc73db973c4d9935d4b5827700b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01b299744d462496296884211eff08b7a9c64687
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410434"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316141"
 ---
 # <a name="tutorial-scale-out-a-service-fabric-managed-cluster-preview"></a>Kurz: horizontální navýšení kapacity Service Fabric spravovaného clusteru (Preview)
 
@@ -28,7 +28,7 @@ Tato část řady se zabývá těmito postupy:
 ## <a name="prerequisites"></a>Předpoklady
 
 * Service Fabric spravovaný cluster (viz [*nasazení spravovaného clusteru*](tutorial-managed-cluster-deploy.md)).
-* [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) nebo novějším (viz [*instalace Azure PowerShell*](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.7.0&preserve-view=true)).
+* [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) nebo novějším (viz [*instalace Azure PowerShell*](/powershell/azure/install-az-ps?preserve-view=true&view=azps-4.7.0)).
 
 ## <a name="scale-a-service-fabric-managed-cluster"></a>Škálování Service Fabric spravovaného clusteru
 Změňte počet instancí pro zvýšení nebo snížení počtu uzlů v typu uzlu, který chcete škálovat. Názvy typů uzlů můžete najít v šabloně Azure Resource Manager (šablona ARM) z nasazení clusteru nebo v Service Fabric Explorer.  

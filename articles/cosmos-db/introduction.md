@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569873"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278432"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -56,11 +56,11 @@ Udržování schématu databáze a indexů v synchronizaci se schématem aplikac
 
 ### <a name="battle-tested-database-service"></a>Testovaná databázová služba pro výročí
 
-Cosmos DB je základní služba v Azure. Skoro pro desetiletí Cosmos DB používala řada produktů Microsoftu pro kritické aplikace v globálním měřítku, včetně Skype, Xbox, Microsoft 365, Azure a mnoha dalších. Dnes je Cosmos DB jednou z nejrychlejších rostoucích služeb v Azure, které používá mnoho externích zákazníků a důležitých aplikací, které vyžadují Elastické škálování, klíč globální distribuci, replikaci s více oblastmi pro zajištění nízké latence a vysokou dostupnost pro čtení i zápis.
+Cosmos DB je základní služba Azure. Skoro pro desetiletí Cosmos DB používala řada produktů Microsoftu pro kritické aplikace v globálním měřítku, včetně Skype, Xbox, Microsoft 365, Azure a mnoha dalších. Dnes je Cosmos DB jednou z nejrychlejších rostoucích služeb v Azure, které používá mnoho externích zákazníků a důležitých aplikací, které vyžadují Elastické škálování, klíč globální distribuci, replikaci s více oblastmi pro zajištění nízké latence a vysokou dostupnost pro čtení i zápis.
 
 ### <a name="ubiquitous-regional-presence"></a>Všudypřítomný regionální přítomnost
 
-Cosmos DB je k dispozici ve všech oblastech Azure po celém světě, včetně 54 + oblastí ve veřejném cloudu, [Azure Čína 21Vianet](https://www.azure.cn/en-us/), Azure německo, Azure Government a Azure Government pro departementy obrany (DOD). Podívejte se [na oblast Cosmos DB](regional-presence.md).
+Cosmos DB je k dispozici ve všech oblastech Azure po celém světě, včetně 54 + oblastí ve veřejném cloudu, [Azure Čína 21Vianet](https://www.azure.cn/en-us/), Azure německo, Azure Government a Azure Government pro departementy obrany (DOD). Podívejte [se na vysokou dostupnost pomocí Azure Cosmos DB](high-availability.md).
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>Zabezpečení ve výchozím nastavení a připraveno pro podniky
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: 91094879de1e1762f95d35e22c1ea441e211b99e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979696"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282862"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
@@ -39,10 +39,12 @@ Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se pře
 - Azure Security Center
 
 >[!IMPORTANT]
-> **Zákazníci se službou Sentinel Azure:**
+> **Zákazníci s Sentinel Azure**
 > - Po nasazení v pracovním prostoru Azure Sentinel v **současné době nepodporuje** přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných. 
->
->   Pokud jste pracovní prostor již přesunuli, zakažte v rámci **analýz** všechna aktivní pravidla a po pěti minutách je znovu povolte. Tato činnost by se měla projevit ve většině případů, ale při opakování iterace není podporovaná a je prováděná na vlastním riziku.
+> - Pokud jste pracovní prostor již přesunuli, zakažte v rámci **analýz** všechna aktivní pravidla a po pěti minutách je znovu povolte. Tato činnost by se měla projevit ve většině případů, ale při opakování iterace není podporovaná a je prováděná na vlastním riziku.
+> 
+> **Výstrahy**
+> - Všechna upozornění se musí po přesunutí znovu vytvořit, protože oprávnění jsou založená na ID prostředku Azure pracovního prostoru a změny v pracovním prostoru se přesunují. 
 
 ### <a name="delete-solutions-in-azure-portal"></a>Odstranění řešení v Azure Portal
 K odebrání řešení pomocí Azure Portal použijte následující postup:
@@ -87,7 +89,7 @@ Pomocí následujícího postupu odpojte účet Automation z pracovního prostor
 
 ## <a name="move-your-workspace"></a>Přesunout pracovní prostor
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 Pomocí následujícího postupu můžete přesunout svůj pracovní prostor pomocí Azure Portal:
 
 1. Otevřete nabídku **pracovní prostory Log Analytics** a pak vyberte svůj pracovní prostor.

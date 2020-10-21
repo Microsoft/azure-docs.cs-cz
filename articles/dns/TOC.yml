@@ -79,7 +79,7 @@
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: Nejčastější dotazy
           href: dns-faq-private.md
-- name: Postup
+- name: Návody
   items:
     - name: Veřejná služba DNS
       items:

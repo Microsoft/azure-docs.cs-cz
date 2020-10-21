@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/30/2020
-  ms.openlocfilehash: fce9674e9ad21f51344b3ea249849e1474c40ee4
-  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+  ms.date: 10/16/2020
+  ms.openlocfilehash: 28011d2f3bbbb838f0de9a66c98845d968620fb1
+  ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92054827"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92314181"
 landingContent:
 - title: O službě Azure Policy
   linkLists:
@@ -63,8 +63,10 @@ landingContent:
       url: ./tutorials/create-and-manage.md
     - text: Použití rozšíření VS Code
       url: ./how-to/extension-for-vscode.md
-    - text: Návrh pracovních postupů pro zásady jako kód
+    - text: Návrh pracovních postupů pro Azure Policy jako kód
       url: ./concepts/policy-as-code.md
+    - text: Implementace Azure Policy jako kódu s využitím GitHubu
+      url: ./tutorials/policy-as-code-github.md
   - linkListType: deploy
     links:
     - text: Index ukázek zásad
@@ -89,9 +91,9 @@ landingContent:
     links:
     - text: Dodržování legislativní předpisů
       url: ./concepts/regulatory-compliance.md
-    - text: Zásady pro Kubernetes
+    - text: Azure Policy pro Kubernetes
       url: ./concepts/policy-for-kubernetes.md
-    - text: Zásady pro virtuální počítače
+    - text: Azure Policy pro virtuální počítače
       url: ./concepts/guest-configuration.md
 - title: Kontrola a náprava prostředků
   linkLists:

@@ -1,5 +1,5 @@
 ---
-title: Bezpečné skóre v Azure Security Center
+title: Skóre zabezpečení ve službě Azure Security Center
 description: Popis zabezpečeného skóre Azure Security Center a jeho ovládacích prvků zabezpečení
 services: security-center
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4897c1b54eff5eb06e0ef49f0c74e261f5a9687e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268260"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281284"
 ---
-# <a name="secure-score-in-azure-security-center"></a>Bezpečné skóre v Azure Security Center
+# <a name="secure-score-in-azure-security-center"></a>Skóre zabezpečení ve službě Azure Security Center
 
 ## <a name="introduction-to-secure-score"></a>Úvod do zabezpečeného skóre
 
@@ -57,7 +57,7 @@ Security Center zobrazuje vaše skóre na portálu na portálu: první věc zobr
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Získat zabezpečené skóre z REST API
 
-K vašemu skóre můžete přistupovat prostřednictvím [rozhraní API pro zabezpečené skóre](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (aktuálně ve verzi Preview). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Můžete například použít rozhraní API pro **zabezpečení skóre** k získání skóre pro konkrétní předplatné. Kromě toho můžete použít rozhraní API **ovládacích prvků bezpečného řízení skóre** k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných.
+K vašemu skóre můžete přistupovat prostřednictvím rozhraní API pro zabezpečené skóre (aktuálně ve verzi Preview). Metody rozhraní API poskytují flexibilitu pro dotazování na data a vytváření vlastních mechanismů generování sestav v rámci vašich zabezpečených výsledků v průběhu času. Můžete například použít [rozhraní API pro zabezpečení skóre](https://docs.microsoft.com/rest/api/securitycenter/securescores) k získání skóre pro konkrétní předplatné. Kromě toho můžete použít [rozhraní API ovládacích prvků bezpečného řízení skóre](https://docs.microsoft.com/rest/api/securitycenter/securescorecontrols) k vypsání ovládacích prvků zabezpečení a aktuálního skóre vašich předplatných.
 
 ![Načtení jediného zabezpečeného skóre přes rozhraní API](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -156,7 +156,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Omezit neautorizovaný přístup k síti (maximální skóre 4)</p></strong>Koncové body v rámci organizace poskytují přímé připojení z vaší virtuální sítě k podporovaným službám Azure. Virtuální počítače v podsíti můžou komunikovat se všemi prostředky. Pokud chcete omezit komunikaci s prostředky v rámci jedné podsítě a z nich, vytvořte skupinu zabezpečení sítě a přidružte ji k podsíti. Organizace můžou omezit a chránit před neoprávněným provozem vytvořením příchozích a odchozích pravidel.</td>
-    <td class="tg-lboi"; width=55%>- Předávání IP na virtuálním počítači by mělo být zakázané.<br>- Pro služby Kubernetes Services (Preview) by měly být definované rozsahy povolených IP adres.<br>- ZASTARALÉ Přístup k App Services by měl být omezený (Preview)<br>- ZASTARALÉ Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by se měla posílit.<br>- Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.<br>- CORS by neměl umožňovat každému prostředku přístup k vaší aplikaci API.<br>- CORS by neměl umožňovat každému prostředku přístup k vašemu Function App<br>- CORS by neměl umožňovat každému prostředku přístup k vaší webové aplikaci<br>- Pro aplikaci API by mělo být vypnuto vzdálené ladění.<br>- Vzdálené ladění by mělo být pro Function App vypnuté.<br>- Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.<br>- Přístup by měl být omezený na povolující skupiny zabezpečení sítě u virtuálních počítačů s přístupem k Internetu.<br>- Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.<br>- V clusterech se musí nainstalovat a povolit doplněk Azure Policy Kubernetes (Preview).<br>- Kontejnery by měly naslouchat jenom povoleným portům (Preview)<br>- Služby by měly naslouchat jenom povoleným portům (Preview).<br>- Používání hostitelských sítí a portů by mělo být omezené (Preview)</td>
+    <td class="tg-lboi"; width=55%>- Předávání IP na virtuálním počítači by mělo být zakázané.<br>- Pro služby Kubernetes Services (Preview) by měly být definované rozsahy povolených IP adres.<br>- ZASTARALÉ Přístup k App Services by měl být omezený (Preview)<br>- ZASTARALÉ Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by se měla posílit.<br>- Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.<br>- CORS by neměl umožňovat každému prostředku přístup k vaší aplikaci API.<br>- CORS by neměl umožňovat každému prostředku přístup k vašemu Function App<br>- CORS by neměl umožňovat každému prostředku přístup k vaší webové aplikaci<br>- Pro aplikaci API by mělo být vypnuto vzdálené ladění.<br>- Vzdálené ladění by mělo být pro Function App vypnuté.<br>- Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.<br>- Přístup by měl být omezený na povolující skupiny zabezpečení sítě u virtuálních počítačů s přístupem k Internetu.<br>- Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.<br>- V clusterech se musí nainstalovat a povolit doplněk Azure Policy Kubernetes (Preview).<br>- Kontejnery by měly naslouchat jenom povoleným portům (Preview)<br>- Služby by měly naslouchat jenom povoleným portům (Preview).<br>- Používání hostitelských sítí a portů by mělo být omezené (Preview)<br>- Virtuální sítě by měly být chráněné pomocí Azure Firewall (Preview)</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Použít adaptivní řízení aplikací (maximální skóre 3)</p></strong>Adaptivní řízení aplikací (AAC) je inteligentní, automatizované a ucelené řešení, které umožňuje řídit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure. Pomáhá také posílit zabezpečení vašich počítačů proti malwaru.<br>Security Center využívá Machine Learning k vytvoření seznamu aplikací se známým zabezpečením pro skupinu počítačů.<br>Tento inovativní přístup k seznamu schválených aplikací nabízí výhody zabezpečení bez složitosti správy.<br>AAC je zvláště relevantní pro účelově sestavené servery, které potřebují spouštět konkrétní sadu aplikací.</td>

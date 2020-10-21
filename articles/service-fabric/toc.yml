@@ -930,7 +930,7 @@
     - name: "Poznámky k\_verzi"
       href: release-notes.md
     - name: Ukázka kódu
-      href: 'https://aka.ms/servicefabricsamples'
+      href: /samples/browse/?products=azure
     - name: Možnosti podpory
       href: service-fabric-support.md
     - name: Verze Service Fabric

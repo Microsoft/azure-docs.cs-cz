@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329495"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319018"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Akamai
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Akamai s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Akamai svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-Integrace podnikových aplikací Azure Active Directory a Akamai umožňuje bezproblémový přístup ke starším aplikacím hostovaným v cloudu nebo místním prostředí. Integrované řešení využívá výhod všech moderních možností Azure Active Directory jako je [Azure AD podmíněný přístup](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal), [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) a [Azure AD identity governance](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview) pro starší verze aplikací, které nemají přístup k změnám aplikací nebo instalacím agentů.
+Integrace podnikových aplikací Azure Active Directory a Akamai umožňuje bezproblémový přístup ke starším aplikacím hostovaným v cloudu nebo místním prostředí. Integrované řešení využívá výhod všech moderních možností Azure Active Directory jako je [Azure AD podmíněný přístup](../conditional-access/overview.md), [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) a [Azure AD identity governance](../governance/identity-governance-overview.md) pro starší verze aplikací, které nemají přístup k změnám aplikací nebo instalacím agentů.
 
 Následující obrázek popisuje, kde Akamai EAA zapadá do širšího scénáře hybridního zabezpečeného přístupu.
 
@@ -84,7 +84,7 @@ Aplikace Akamai EAA se nastavuje individuálně na portálu Azure AD. Správce m
 
 ![Scénář integrace 2](./media/header-akamai-tutorial/scenario2.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -589,14 +589,14 @@ V této části vytvoříte uživatele s názvem B. Simon v Akamai. Pokud chcete
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Akamai, měli byste se automaticky přihlásit k Akamai, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Akamai, měli byste se automaticky přihlásit k Akamai, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Akamai s Azure AD](https://aad.portal.azure.com/)

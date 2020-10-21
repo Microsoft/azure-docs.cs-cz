@@ -3,15 +3,15 @@ title: Zobrazení a filtrování informací o prostředcích Azure
 description: Filtrujte informace a používejte různá zobrazení k lepšímu pochopení vašich prostředků Azure.
 author: mgblythe
 ms.service: azure-portal
-ms.topic: quickstart
+ms.topic: how-to
 ms.author: mblythe
 ms.date: 09/11/2020
-ms.openlocfilehash: 3b9783e7f452b38292c784d44ddb60672e150961
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f6185e1c4042110f446337c1b2c2904fefdae7a9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91650390"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280248"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Zobrazení a filtrování informací o prostředcích Azure
 
@@ -53,7 +53,7 @@ Odstranění zobrazení:
 
 ## <a name="summarize-resources-with-visuals"></a>Sumarizace prostředků pomocí vizuálů
 
-Zobrazení, která jsme prohlédli zatím, byla _zobrazením seznamu_, ale existují také _Souhrnná zobrazení_ , která obsahují vizuály. Tato zobrazení můžete uložit a používat stejně jako seznam zobrazení. Filtry se chovají mezi dvěma typy zobrazení. Existují standardní zobrazení, jako je například zobrazení **umístění** , které je relevantní pro konkrétní služby, jako je například zobrazení **stavu** virtuálních počítačů.
+Zobrazení, která jsme prohlédli zatím, byla _zobrazením seznamu_, ale existují také _Souhrnná zobrazení_ , která obsahují vizuály. Tato zobrazení můžete uložit a používat stejně jako seznam zobrazení. Filtry se chovají mezi dvěma typy zobrazení. Existují standardní zobrazení, jako je například zobrazení **umístění** , které je relevantní pro konkrétní služby, jako je například zobrazení **stavu** pro Azure Storage.
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="Azure Portal zobrazení všech prostředků":::
 

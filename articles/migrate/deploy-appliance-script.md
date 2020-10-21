@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pomocí skriptu
 description: Naučte se, jak nastavit zařízení Azure Migrate pomocí skriptu.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438912"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317331"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Nastavení zařízení pomocí skriptu
 
@@ -16,11 +16,11 @@ Podle tohoto článku vytvořte [zařízení Azure Migrate](./migrate-appliance-
 
 Zařízení pro virtuální počítače VMware a Hyper-V můžete nasadit pomocí skriptu nebo pomocí šablony, kterou stáhnete z Azure Portal. Použití skriptu je užitečné, pokud nemůžete vytvořit virtuální počítač pomocí stažené šablony.
 
-- Chcete-li použít šablonu, postupujte podle kurzů pro [VMware](tutorial-prepare-vmware.md) nebo [Hyper-V](tutorial-prepare-hyper-v.md).
+- Chcete-li použít šablonu, postupujte podle kurzů pro [VMware](./tutorial-discover-vmware.md) nebo [Hyper-V](./tutorial-discover-hyper-v.md).
 - K nastavení zařízení pro fyzické servery můžete použít jenom skript. Postupujte podle [tohoto článku](how-to-set-up-appliance-physical.md).
 - Pokud chcete zařízení nastavit v cloudu Azure Government, postupujte podle pokynů v [tomto článku](deploy-appliance-script-government.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Skript nastaví zařízení Azure Migrate na stávajícím fyzickém počítači nebo VIRTUÁLNÍm počítači.
 

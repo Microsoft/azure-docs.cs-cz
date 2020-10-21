@@ -97,8 +97,6 @@
               href: howto-v1-enable-sso-android.md
             - name: Povolení jednotného přihlašování v iOS
               href: howto-v1-enable-sso-ios.md
-            - name: Ladění jednotného přihlašování založeného na SAML
-              href: howto-v1-debug-saml-sso-issues.md
         - name: Konfigurace deklarací identity
           items:
             - name: Konfigurace deklarací identity rolí

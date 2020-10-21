@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 21e72e63dae2c52d04aca0cd11971fe5cd23fb47
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207542"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280855"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
@@ -26,7 +26,7 @@ Digitální vlákna Azure momentálně nemají certifikovaný (předem sestaven�
 
 V tomto článku použijete [Azure Portal](https://portal.azure.com) k **Vytvoření vlastního konektoru** , který se dá použít k připojení Logic Apps k instanci digitálních vláken Azure. Pak **vytvoříte aplikaci logiky** , která bude toto připojení používat pro ukázkový scénář, ve kterém události aktivované časovačem automaticky aktualizují dvojitou repliku v instanci digitálních vláken Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si ** [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** před tím, než začnete.
 Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu. 
@@ -200,7 +200,7 @@ Může se zobrazit výzva k přihlášení pomocí přihlašovacích údajů Azu
 V poli New *DigitalTwinsAdd* vyplňte pole následujícím způsobem:
 * _ID_: Vyplňte *dvojitou identifikaci* digitálního vlákna ve vaší instanci, kterou chcete, aby aplikace logiky aktualizovala.
 * Prop _: do_tohoto pole zadáte text, který vyžaduje vybraná žádost o rozhraní API. V případě *DigitalTwinsUpdate*je tento text ve formě kódu opravy JSON. Další informace o strukturování opravy JSON pro aktualizaci vlákna najdete v části [aktualizace digitálního vlákna](how-to-manage-twin.md#update-a-digital-twin) v tématu *Postupy: Správa digitálních vláken*.
-* _API-Version_: nejnovější verze rozhraní API. V aktuální veřejné verzi Preview je tato hodnota *2020-05-31-Preview* .
+* _API-Version_: nejnovější verze rozhraní API. V současné době je tato hodnota *2020-10-31*.
 
 Stiskněte *Uložit* v Návrháři Logic Apps.
 
