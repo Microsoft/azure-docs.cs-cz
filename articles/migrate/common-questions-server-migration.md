@@ -3,12 +3,12 @@ title: Běžné otázky týkající se migrace Azure Migrate serveru
 description: Získejte odpovědi na běžné otázky týkající se použití migrace serveru Azure Migrate k migraci počítačů.
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275536"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315235"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
 
@@ -34,8 +34,8 @@ Azure Migrate: Nástroj pro migraci serveru migruje počítače založené na UE
 | SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | Ubuntu Server 16,04, 18,04, 19,04, 19,10                | Y                                                                                                                                         | Y                              | Y                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _RHEL 8. x vyžaduje [ruční přípravu](https://go.microsoft.com/fwlink/?linkid=2143939) ._   | Y                              | Y                                                          |
-| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_Cent OS 8. x vyžaduje [ruční přípravu](https://go.microsoft.com/fwlink/?linkid=2143939) ._ | Y                              | Y                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _RHEL 8. x vyžaduje [ruční přípravu](./prepare-for-migration.md#linux-machines) ._   | Y                              | Y                                                          |
+| Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_Cent OS 8. x vyžaduje [ruční přípravu](./prepare-for-migration.md#linux-machines) ._ | Y                              | Y                                                          |
 | Oracle Linux 7,7, 7,7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Můžu použít trezor služby Recovery Services vytvořený Azure Migrate pro scénáře zotavení po havárii?
@@ -43,11 +43,11 @@ Pro scénáře zotavení po havárii nedoporučujeme používat trezor služby R
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>Kde mám nainstalovat zařízení replikace pro migrace založené na agentech?
 
-Zařízení replikace by se mělo nainstalovat na vyhrazený počítač. Zařízení replikace by se nemělo nainstalovat na zdrojový počítač, který chcete replikovat, nebo na zařízení pro zjišťování a hodnocení Azure Migrate, které jste mohli nainstalovat dřív. Další podrobnosti najdete v tomto [kurzu](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) .
+Zařízení replikace by se mělo nainstalovat na vyhrazený počítač. Zařízení replikace by se nemělo nainstalovat na zdrojový počítač, který chcete replikovat, nebo na zařízení pro zjišťování a hodnocení Azure Migrate, které jste mohli nainstalovat dřív. Další podrobnosti najdete v tomto [kurzu](./tutorial-migrate-physical-virtual-machines.md) .
 
 ## <a name="how-can-i-migrate-my-aws-ec2-instances-to-azure"></a>Jak můžu migrovat své instance AWS EC2 do Azure?
 
-V tomto [článku](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines) najdete postup zjišťování, vyhodnocení a migrace instancí AWS EC2 do Azure.
+V tomto [článku](./tutorial-migrate-aws-virtual-machines.md) najdete postup zjišťování, vyhodnocení a migrace instancí AWS EC2 do Azure.
 
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>Můžu migrovat virtuální počítače AWS s operačním systémem Amazon Linux?
 
@@ -79,18 +79,18 @@ Bez ohledu na zvolenou možnost migrace je prvním krokem migrace serveru pomoc�
 Tady je několik důležitých informací, které je potřeba vzít v úvahu při rozhodování o možnosti migrace.
 
 **Migrace bez agentů** nevyžadují nasazení softwaru (agentů) na zdrojové virtuální počítače nebo servery, které migrujete. Možnost bez agenta orchestruje replikaci integrací s funkcemi poskytovanými zprostředkovatelem virtualizace.
-Možnosti replikace bez agenta jsou k dispozici pro [virtuální počítače VMware](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) a [virtuální počítače Hyper-V](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v).
+Možnosti replikace bez agenta jsou k dispozici pro [virtuální počítače VMware](./tutorial-migrate-vmware.md) a [virtuální počítače Hyper-V](./tutorial-migrate-hyper-v.md).
 
 **Migrace založené na agentech** vyžadují instalaci Azure Migrate softwaru (agentů) na zdrojové virtuální počítače nebo počítače, které se mají migrovat. Možnost založená na agentech se nespoléhá na virtualizační platformu pro funkce replikace a je proto možné ji použít s jakýmkoli serverem s architekturou x86/x64 a verzí operačního systému podporovaným metodou replikace založenou na agentech.
 
-Možnost migrace na základě agentů se dá použít pro [virtuální počítače VMware](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent), [virtuální počítače Hyper-V](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), [fyzické servery](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines), [virtuální počítače běžící na AWS](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines), virtuální počítače běžící na GCP nebo virtuální počítače, které běží na jiném zprostředkovateli virtualizace. Migrace na základě agenta považuje vaše počítače za účely migrace za fyzické servery.
+Možnost migrace na základě agentů se dá použít pro [virtuální počítače VMware](./tutorial-migrate-vmware-agent.md), [virtuální počítače Hyper-V](./tutorial-migrate-physical-virtual-machines.md), [fyzické servery](./tutorial-migrate-physical-virtual-machines.md), [virtuální počítače běžící na AWS](./tutorial-migrate-aws-virtual-machines.md), virtuální počítače běžící na GCP nebo virtuální počítače, které běží na jiném zprostředkovateli virtualizace. Migrace na základě agenta považuje vaše počítače za účely migrace za fyzické servery.
 
 I když migrace bez agentů nabízí další pohodlí a jednoduchost prostřednictvím možností replikace na základě agenta pro podporované scénáře (VMWare a Hyper-V), možná budete chtít zvážit použití scénáře založeného na agentovi v následujících případech použití:
 
 - Omezené prostředí IOPS: replikace bez agenta používá snímky a spotřebovává IOPS a šířku pásma úložiště. Metodu migrace založenou na agentech doporučujeme, pokud ve vašem prostředí dojde k omezením úložiště/IOPS.
 - Pokud nemáte vCenter Server, můžete s virtuálními počítači VMware nakládat jako s fyzickými servery a používat pracovní postup migrace založený na agentovi.
 
-Pokud se chcete dozvědět víc, přečtěte si tento [článek](https://docs.microsoft.com/azure/migrate/server-migrate-overview) a porovnejte možnosti migrace pro migrace VMware.
+Pokud se chcete dozvědět víc, přečtěte si tento [článek](./server-migrate-overview.md) a porovnejte možnosti migrace pro migrace VMware.
 
 ## <a name="how-does-agentless-migration-work"></a>Jak funguje migrace bez agentů?
 
@@ -101,13 +101,13 @@ Možnost replikace bez agenta funguje pomocí mechanismů poskytovaných zprost�
 Když je replikace nakonfigurovaná pro virtuální počítač, prochází se nejprve fází prvotní replikace. Během počáteční replikace se pořídí snímek virtuálního počítače a na spravovaných discích ve vašem předplatném se replikuje úplná kopie dat z disků snímku. Po dokončení počáteční replikace virtuálního počítače přejde proces replikace do fáze přírůstkové replikace (rozdílové replikace). Ve fázi přírůstkové replikace se změny dat, k nimž došlo od posledního dokončeného cyklu replikace, pravidelně replikují a aplikují na spravované disky repliky, takže se replikace synchronizuje se změnami provedenými ve virtuálním počítači. V případě virtuálních počítačů VMware se k udržení přehledu změn mezi replikačními cykly používá technologie VMware pro sledování bloků. Na začátku cyklu replikace se pořídí snímek virtuálního počítače a změněné sledování bloku se používá k získání změn mezi aktuálním snímkem a posledním úspěšně replikovaným snímkem. Tímto způsobem se musí replikovat jenom data, která se změnila od posledního dokončeného cyklu replikace, aby se replikace pro virtuální počítač udržovala synchronizovaná. Na konci každého cyklu replikace se snímek uvolní a pro virtuální počítač se provede konsolidace snímků. Podobně platí, že v případě virtuálních počítačů Hyper-v se používá modul Sledování změn repliky technologie Hyper-V k udržení přehledu o změnách mezi po sobě jdoucích replikačních cyklů.
 Při provádění operace migrace na virtuálním počítači repliky máte možnost vypnout místní virtuální počítač a provést jednu finální přírůstkovou replikaci, aby se zajistila nulová ztráta dat. Při provádění možnosti migrace se k vytvoření virtuálního počítače v Azure použijí spravované disky repliky odpovídající virtuálnímu počítači.
 
-Informace o tom, jak začít, najdete v kurzech [migrace bez agentů VMware](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) a [migrace bez agenta Hyper-V](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v) .
+Informace o tom, jak začít, najdete v kurzech [migrace bez agentů VMware](./tutorial-migrate-vmware.md) a [migrace bez agenta Hyper-V](./tutorial-migrate-hyper-v.md) .
 
 ## <a name="how-does-agent-based-migration-work"></a>Jak funguje migrace založená na agentech?
 
 Kromě možností migrace bez agenta pro virtuální počítače VMware a virtuální počítače Hyper-V poskytuje nástroj pro migraci serveru možnost migrace na základě agenta pro migraci serverů se systémem Windows a Linux, které běží na fyzických serverech nebo běží jako virtuální počítače x86/x64 na VMware, Hyper-V, AWS, Google Cloud Platform atd.
 
-Metoda migrace založená na agentovi používá software agenta nainstalovaný na serveru, který se migruje, a replikuje data serveru do Azure. Proces replikace využívá architekturu snižování zátěže, ve které agent přenáší replikační data na vyhrazený replikační Server, který se nazývá zařízení replikace nebo konfigurační server (nebo na procesový Server se škálováním na více instancí). [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture) o tom, jak funguje možnost migrace na základě agenta. 
+Metoda migrace založená na agentovi používá software agenta nainstalovaný na serveru, který se migruje, a replikuje data serveru do Azure. Proces replikace využívá architekturu snižování zátěže, ve které agent přenáší replikační data na vyhrazený replikační Server, který se nazývá zařízení replikace nebo konfigurační server (nebo na procesový Server se škálováním na více instancí). [Přečtěte si další informace](./agent-based-migration-architecture.md) o tom, jak funguje možnost migrace na základě agenta. 
 
 Poznámka: zařízení replikace se liší od zařízení pro zjišťování Azure Migrate a musí být nainstalované na samostatném nebo vyhrazeném počítači.
 
@@ -127,11 +127,11 @@ Doba, po kterou se má dokončit počáteční replikace = {velikost disků (neb
 
 ### <a name="agent-based-vmware-vm-migration"></a>Migrace virtuálních počítačů VMware na základě agentů
 
-Pro metodu replikace založenou na agentovi může Plánovač nasazení pomáhat profilovat prostředí pro změny dat a předpovídat potřebný požadavek na šířku pásma. Pokud se chcete dozvědět víc, podívejte se na tento [článek](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture#plan-vmware-deployment). 
+Pro metodu replikace založenou na agentovi může Plánovač nasazení pomáhat profilovat prostředí pro změny dat a předpovídat potřebný požadavek na šířku pásma. Pokud se chcete dozvědět víc, podívejte se na tento [článek](./agent-based-migration-architecture.md#plan-vmware-deployment). 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Návody omezení replikace při používání zařízení Azure Migrate pro bezagentskou replikaci VMware?  
 
-Můžete omezit pomocí NetQosPolicy. Například:
+Můžete omezit pomocí NetQosPolicy. Příklad:
 
 AppNamePrefix pro použití v NetQosPolicy je "GatewayWindowsService.exe". Můžete vytvořit zásadu na zařízení Azure Migrate, abyste omezili provoz replikace ze zařízení tím, že vytvoříte zásadu, jako je tato:
 
@@ -153,10 +153,10 @@ Pokud třeba virtuální počítač pro rozdílový cyklus trvá čtyři hodiny,
 
 ## <a name="how-do-i-migrate-windows-server-2003-running-on-vmwarehyper-v-to-azure"></a>Návody migrujete Windows Server 2003 běžící na VMware/Hyper-V do Azure?
 
-[Rozšířená podpora Windows serveru 2003](https://go.microsoft.com/fwlink/?linkid=2140400) skončila 14. července 2015.  Tým podpory Azure bude dál pomáhat při řešení problémů, které se týkají spuštění Windows serveru 2003 v Azure. Tato podpora je však omezená na problémy, které nevyžadují řešení potíží nebo opravy na úrovni operačního systému.
+[Rozšířená podpora Windows serveru 2003](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support) skončila 14. července 2015.  Tým podpory Azure bude dál pomáhat při řešení problémů, které se týkají spuštění Windows serveru 2003 v Azure. Tato podpora je však omezená na problémy, které nevyžadují řešení potíží nebo opravy na úrovni operačního systému.
 Doporučený postup je migrace vašich aplikací do instancí Azure, na kterých běží novější verze Windows serveru, abyste měli jistotu, že budete efektivně využívat flexibilitu a spolehlivost cloudu Azure.
 
-Pokud se ale stále rozhodnete migrovat Windows Server 2003 do Azure, můžete použít nástroj Azure Migrate: Server pro migraci, pokud je Windows Server VIRTUÁLNÍm počítačem, který běží na VMware nebo Hyper-V tento článek, abyste mohli připravit počítače s [Windows serverem 2003 pro migraci](https://go.microsoft.com/fwlink/?linkid=2140302).
+Pokud se ale stále rozhodnete migrovat Windows Server 2003 do Azure, můžete použít nástroj Azure Migrate: Server pro migraci, pokud je Windows Server VIRTUÁLNÍm počítačem, který běží na VMware nebo Hyper-V tento článek, abyste mohli připravit počítače s [Windows serverem 2003 pro migraci](./prepare-windows-server-2003-migration.md).
 
 ## <a name="what-is-the-difference-between-the-test-migration-and-migrate-operations"></a>Jaký je rozdíl mezi operacemi testování migrace a migrace?
 

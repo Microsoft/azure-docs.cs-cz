@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 7c5e938f985296e0534ca6e2438cf3acedb0fb65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626475"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279216"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Kurz: rychlé škálování a ochrana webové aplikace s využitím front-bran Azure a firewallu webových aplikací Azure (WAF)
 
@@ -34,12 +34,12 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Pokyny v tomto kurzu používají rozhraní příkazového řádku Azure CLI. [Podívejte se na tento průvodce](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest&preserve-view=true) , abyste mohli začít s Azure CLI.
+- Pokyny v tomto kurzu používají rozhraní příkazového řádku Azure CLI. [Podívejte se na tento průvodce](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest) , abyste mohli začít s Azure CLI.
 
   > [!TIP] 
-  > Snadný a rychlý způsob, jak začít pracovat s Azure CLI, je [bash v Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+  > Snadný a rychlý způsob, jak začít pracovat s Azure CLI, je [bash v Azure Cloud Shell](../cloud-shell/quickstart.md).
 
 - Zajistěte, aby `front-door` bylo rozšíření přidané do Azure CLI:
 
@@ -48,7 +48,7 @@ V tomto kurzu se naučíte:
    ```
 
 > [!NOTE] 
-> Další informace o příkazech použitých v tomto kurzu najdete v tématu [Reference k rozhraní příkazového řádku Azure CLI pro přední dveře](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest&preserve-view=true).
+> Další informace o příkazech použitých v tomto kurzu najdete v tématu [Reference k rozhraní příkazového řádku Azure CLI pro přední dveře](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest).
 
 ## <a name="create-an-azure-front-door-resource"></a>Vytvoření prostředku front-dveří Azure
 
@@ -62,7 +62,7 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 `--name`: Název prostředku front-dveří Azure.
 
-`--resource-group`: Skupina prostředků, do které chcete umístit tento prostředek front-dveří Azure. Další informace o skupinách prostředků najdete v tématu [Správa skupin prostředků v Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
+`--resource-group`: Skupina prostředků, do které chcete umístit tento prostředek front-dveří Azure. Další informace o skupinách prostředků najdete v tématu [Správa skupin prostředků v Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 V odpovědi, která se zobrazí po spuštění tohoto příkazu, vyhledejte klíč `hostName` . Tuto hodnotu budete potřebovat v pozdějším kroku. `hostName`Je název DNS prostředku služby Azure front-dveří, který jste vytvořili.
 
@@ -130,21 +130,21 @@ az network front-door update --name <> --resource-group <> --set frontendEndpoin
 
 Vlastní název domény vaší webové aplikace je ten, který zákazníci používají k odkazování na vaši aplikaci. Například www.contoso.com. Zpočátku tento název domény odkazoval na umístění, ve kterém byl spuštěný, než zavedete přední dvířka Azure. Po přidání front-WAF a aplikací Azure do front aplikace by položka DNS, která odpovídá této vlastní doméně, odkazovala na prostředek front-dveří Azure. Tuto změnu můžete provést tak, že znovu namapujete položku na serveru DNS na přední dveře Azure `hostName` , které jste si poznamenali při vytváření prostředku front-dveří Azure.
 
-Konkrétní kroky aktualizace záznamů DNS budou záviset na vašem poskytovateli služeb DNS. Pokud používáte Azure DNS k hostování názvu DNS, můžete si podle pokynů v dokumentaci [aktualizovat záznam DNS](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) a nasměrovat ho na přední dveře Azure `hostName` . 
+Konkrétní kroky aktualizace záznamů DNS budou záviset na vašem poskytovateli služeb DNS. Pokud používáte Azure DNS k hostování názvu DNS, můžete si podle pokynů v dokumentaci [aktualizovat záznam DNS](../dns/dns-operations-recordsets-cli.md) a nasměrovat ho na přední dveře Azure `hostName` . 
 
-Je důležité si uvědomit, že pokud potřebujete, aby se vaši zákazníci dostali na svůj web pomocí vrcholu zóny (například contoso.com). V takovém případě je nutné použít Azure DNS a jeho [typ záznamu alias](https://docs.microsoft.com/azure/dns/dns-alias) pro hostování názvu DNS. 
+Je důležité si uvědomit, že pokud potřebujete, aby se vaši zákazníci dostali na svůj web pomocí vrcholu zóny (například contoso.com). V takovém případě je nutné použít Azure DNS a jeho [typ záznamu alias](../dns/dns-alias.md) pro hostování názvu DNS. 
 
-Také je potřeba aktualizovat konfiguraci front-dveří pro Azure, aby se do ní [přidala vlastní doména](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain) , aby bylo možné toto mapování znát.
+Také je potřeba aktualizovat konfiguraci front-dveří pro Azure, aby se do ní [přidala vlastní doména](./front-door-custom-domain.md) , aby bylo možné toto mapování znát.
 
-Nakonec, pokud používáte vlastní doménu k dosažení vaší webové aplikace a chcete povolit protokol HTTPS. Musíte [nastavit certifikáty pro vlastní doménu v Azure front-dveří](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
+Nakonec, pokud používáte vlastní doménu k dosažení vaší webové aplikace a chcete povolit protokol HTTPS. Musíte [nastavit certifikáty pro vlastní doménu v Azure front-dveří](./front-door-custom-domain-https.md). 
 
 ## <a name="lock-down-your-web-application"></a>Uzamčení webové aplikace
 
-Doporučujeme, abyste měli jistotu, že s vaší webovou aplikací můžou komunikovat jenom okraje front-end pro Azure. Tím zajistíte, že nikdo nebude moci obejít ochranu před předními dvířky Azure a přistupovat k vaší aplikaci přímo. Pokud chcete dosáhnout této uzamčené funkce, přečtěte si téma [návody uzamčení přístupu k back-endu jenom na přední dveře Azure?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
+Doporučujeme, abyste měli jistotu, že s vaší webovou aplikací můžou komunikovat jenom okraje front-end pro Azure. Tím zajistíte, že nikdo nebude moci obejít ochranu před předními dvířky Azure a přistupovat k vaší aplikaci přímo. Pokud chcete dosáhnout této uzamčené funkce, přečtěte si téma [návody uzamčení přístupu k back-endu jenom na přední dveře Azure?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) :
+Pokud už nepotřebujete prostředky používané v tomto kurzu, odeberte skupinu prostředků, přední dveře a zásady WAF pomocí příkazu [AZ Group Delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) :
 
 ```azurecli-interactive
   az group delete \

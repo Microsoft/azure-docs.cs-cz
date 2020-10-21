@@ -3,18 +3,18 @@ title: Přidání rozšíření sady škálování virtuálního počítače na 
 description: Tady je postup, jak přidat rozšíření sady škálování virtuálního počítače Service Fabric typ uzlu spravovaného clusteru.
 ms.topic: article
 ms.date: 09/28/2020
-ms.openlocfilehash: 10487bad4fce41c68b4e2cb90c311b986d709eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be51a03494c90ba91cddb383b62b2477fabc8fc3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410303"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309285"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>Přidání rozšíření sady škálování virtuálního počítače na Service Fabric typ uzlu spravovaného clusteru (Preview)
 
 Každý typ uzlu v Service Fabric spravovaném clusteru je zálohovaný pomocí sady škálování virtuálního počítače. To umožňuje přidat [rozšíření sady škálování virtuálních počítačů](../virtual-machines/extensions/overview.md) do Service Fabric typů uzlů spravovaného clusteru.
 
-Rozšíření sady škálování virtuálního počítače můžete přidat k typu uzlu pomocí příkazu prostředí PowerShell [Add-AzServiceFabricManagedNodeTypeVMExtension](https://docs.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?view=azps-4.7.0&preserve-view=true) .
+Rozšíření sady škálování virtuálního počítače můžete přidat k typu uzlu pomocí příkazu prostředí PowerShell [Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?preserve-view=true&view=azps-4.7.0) .
 
 Alternativně můžete v šabloně Azure Resource Manager pomocí rozšíření sady škálování virtuálního počítače v Service Fabric typ uzlu clusteru, například:
 
@@ -51,7 +51,7 @@ Alternativně můžete v šabloně Azure Resource Manager pomocí rozšíření 
 }
 ```
 
-Další informace o konfiguraci Service Fabric typů uzlů spravovaného clusteru najdete v tématu [typ uzlu spravovaného clusteru](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes).
+Další informace o konfiguraci Service Fabric typů uzlů spravovaného clusteru najdete v tématu [typ uzlu spravovaného clusteru](/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes).
 
 ## <a name="next-steps"></a>Další kroky
 

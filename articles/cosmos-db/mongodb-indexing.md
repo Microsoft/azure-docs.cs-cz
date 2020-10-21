@@ -9,12 +9,12 @@ ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: abd6d6379fba1efac20255ca97e66e6b2d7e72ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324404"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282374"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -324,7 +324,7 @@ Bez ohledu na hodnotu zadanou pro vlastnost index na **pozadí** jsou aktualizac
 
 Při přidávání nového indexu nemá žádný vliv na dostupnost čtení. Po dokončení transformace indexu budou dotazy využívat pouze nové indexy. Při transformaci indexu bude modul dotazu dál používat stávající indexy, takže budete mít podobný výkon při čtení během transformace indexování na to, co jste předtím provedli při zahájení změny indexování. Při přidávání nových indexů nehrozí riziko neúplných nebo nekonzistentních výsledků dotazu.
 
-Při odebírání indexů a okamžitém spuštění dotazů mají filtry na vyřazených indexech, výsledky mohou být nekonzistentní a nedokončené, dokud se nedokončí transformace indexu. Pokud odeberete indexy, dotazovací modul nezaručuje konzistenci nebo úplné výsledky při filtrování dotazů na těchto nově odebraných indexech. Většina vývojářů neprovádí vyřazení indexů a potom se okamžitě pokusí o dotazování, takže v praxi je tato situace nepravděpodobná.
+Při odebírání indexů a okamžitém spuštění dotazů mají filtry na vyřazených indexech, výsledky mohou být nekonzistentní a nedokončené, dokud se nedokončí transformace indexu. Pokud odeberete indexy, dotazovací stroj neposkytne konzistentní nebo úplné výsledky, když dotazy filtrují na těchto nově odebraných indexech. Většina vývojářů neprovádí vyřazení indexů a potom se okamžitě pokusí o dotazování, takže v praxi je tato situace nepravděpodobná.
 
 > [!NOTE]
 > [Průběh indexu můžete sledovat](#track-index-progress).

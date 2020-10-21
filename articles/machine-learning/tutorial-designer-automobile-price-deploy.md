@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a4923e48c890a50d642d937f014e466e998171cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95e5b3ac568cfa370fd1e49fad990b681aef46d9
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896627"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311520"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Kurz: nasazení modelu strojového učení pomocí návrháře
 
@@ -28,7 +28,7 @@ Můžete nasadit prediktivní model vyvinutý v [rámci jednoho kurzu](tutorial-
 > * Nasaďte koncový bod v reálném čase.
 > * Otestujte koncový bod v reálném čase.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Kompletní [část tohoto kurzu](tutorial-designer-automobile-price-train-score.md) se naučíte, jak v Návrháři naučit a vyhodnocovat model strojového učení.
 
@@ -61,7 +61,7 @@ Pokud chcete svůj kanál nasadit, musíte nejdřív převést kanál školení 
 
 1. Vyberte **Odeslat**a použijte stejný cíl výpočtů a experiment, který jste použili v první části.
 
-    Pokud je první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
+    Pokud se jedná o první spuštění, může trvat až 20 minut, než se váš kanál dokončí. Výchozí nastavení COMPUTE mají minimální velikost uzlu 0, což znamená, že Návrhář musí přidělit prostředky po nečinnosti. Opakované spuštění kanálu bude trvat kratší dobu, protože výpočetní prostředky už jsou přidělené. Kromě toho Návrhář používá výsledky v mezipaměti pro každý modul k dalšímu zvýšení efektivity.
 
 1. Vyberte **Nasadit**.
 
@@ -103,21 +103,17 @@ Až se dokončí zřizování služby AKS, vraťte se do kanálu Inferencing v r
 
     Po dokončení nasazení se zobrazí oznámení o úspěchu nad plátnem. Může to trvat několik minut.
 
-## <a name="test-the-real-time-endpoint"></a>Testování koncového bodu v reálném čase
+## <a name="view-the-real-time-endpoint"></a>Zobrazení koncového bodu v reálném čase
 
-Po dokončení nasazení můžete koncový bod v reálném čase otestovat tak, že na stránku **koncové body** kliknete.
+Po dokončení nasazení můžete zobrazit koncový bod v reálném čase tak, že na stránce **koncové body** kliknete.
 
 1. Na stránce **koncové body** vyberte koncový bod, který jste nasadili.
 
-    ![Snímek obrazovky zobrazující kartu koncových bodů v reálném čase s zvýrazněným nedávno vytvořeným koncovým bodem](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
+1. Na kartě **Podrobnosti** můžete zobrazit další informace, jako je například identifikátor URI, stav a značky REST.
 
-1. Vyberte **Test**.
+1. Na kartě **spotřebovávat** můžete najít klíče zabezpečení a nastavit metody ověřování.
 
-1. Můžete ručně zadat data testování, nebo použít ukázková data automatického vyplňování a vybrat **test**.
-
-    Portál odešle požadavek na test na koncový bod a zobrazí výsledky. I když je pro vstupní data vygenerována hodnota ceny, není použita k vygenerování hodnoty předpovědi.
-
-    ![Snímek obrazovky ukazující, jak otestovat koncový bod v reálném čase pomocí popisku s skóre pro zvýrazněnou cenu](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
+Další informace o využívání webové služby najdete v tématu [Spotřeba modelu nasazeného jako WebService](how-to-consume-web-service.md) .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

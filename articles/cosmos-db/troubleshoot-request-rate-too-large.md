@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f8b1129c94ecf80efb60a13a0b80b1cc1817ff3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 905560094afa9338d44ba73120d316b3c81b5580
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871084"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277146"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-exceptions"></a>Diagnostika a řešení potíží s Azure Cosmos DB příliš velkým množstvím výjimek
 Zpráva "počet požadavků je moc velká" nebo kód chyby 429 označuje, že vaše požadavky jsou omezené.
@@ -24,7 +24,7 @@ Následující část obsahuje známé příčiny a řešení pro příliš mnoh
 Zkontrolujte [Azure Cosmos DB monitorování](monitor-cosmos-db.md) a podívejte se na počet výjimek 429.
 
 #### <a name="cause"></a>Příčina:
-Spotřebované propustnost (jednotky žádostí za sekundu) překročily [zřízenou propustnost](set-throughput.md). Sada SDK automaticky opakuje požadavky na základě zadaných zásad opakování. Pokud se toto selhání často dostanou, zvažte zvýšení propustnosti kolekce. Zkontrolujte metriky na portálu, abyste viděli, jestli se vám zobrazují chyby 429. Zkontrolujte klíč oddílu a ujistěte se, že je výsledkem [ještě distribuce úložiště a objemu požadavků](partition-data.md).
+Spotřebované propustnost (jednotky žádostí za sekundu) překročily [zřízenou propustnost](set-throughput.md). Sada SDK automaticky opakuje požadavky na základě zadaných zásad opakování. Pokud se toto selhání často dostanou, zvažte zvýšení propustnosti kolekce. Zkontrolujte metriky na portálu, abyste viděli, jestli se vám zobrazují chyby 429. Zkontrolujte klíč oddílu a ujistěte se, že je výsledkem [ještě distribuce úložiště a objemu požadavků](partitioning-overview.md).
 
 #### <a name="solution"></a>Řešení:
 1. Zvyšte míru zřízené propustnosti pomocí [portálu nebo sady SDK](set-throughput.md) .

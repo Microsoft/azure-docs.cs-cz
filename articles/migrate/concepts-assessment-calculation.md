@@ -3,12 +3,12 @@ title: Posouzení virtuálních počítačů Azure v Azure Migrate posouzení se
 description: Další informace o hodnoceních v Azure Migrate posouzení serveru
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275519"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319319"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Přehled posouzení serveru (migrace na virtuální počítače Azure)
 
@@ -54,7 +54,7 @@ Pokud nasazujete zařízení Azure Migrate pro zjišťování místních server�
 
 Jakmile zařízení spustí zjišťování počítačů, můžete shromáždit počítače, které chcete vyhodnotit, do skupiny a spustit posouzení pro skupinu s typem posouzení **virtuální počítač Azure**.
 
-Pokud si chcete vyzkoušet tento postup, postupujte podle našich kurzů pro [VMware](tutorial-prepare-vmware.md), [Hyper-V](tutorial-prepare-hyper-v.md)nebo [fyzických serverů](tutorial-prepare-physical.md) .
+Pokud si chcete vyzkoušet tento postup, postupujte podle našich kurzů pro [VMware](./tutorial-discover-vmware.md), [Hyper-V](./tutorial-discover-hyper-v.md)nebo [fyzických serverů](./tutorial-discover-physical.md) .
 
 ## <a name="how-do-i-assess-with-imported-data"></a>Návody vyhodnotit s importovanými daty?
 
@@ -173,7 +173,7 @@ Windows Server 2012 R2 a všechny SPs | Azure poskytuje plnou podporu. | Připra
 Windows Server 2012 a všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure.
 Windows Server 2008 R2 se všemi službami SPs | Azure poskytuje plnou podporu.| Připraveno pro Azure.
 Windows Server 2008 (32 a 64-bit) | Azure poskytuje plnou podporu. | Připraveno pro Azure.
-Windows Server 2003 a Windows Server 2003 R2 | Tyto operační systémy prošly datem ukončení podpory a potřebují pro podporu v Azure [vlastní smlouvu o podpoře (CSA)](https://aka.ms/WSosstatement) . | Podmíněně připravené pro Azure. Před migrací do Azure zvažte možnost upgradovat operační systém.
+Windows Server 2003 a Windows Server 2003 R2 | Tyto operační systémy prošly datem ukončení podpory a potřebují pro podporu v Azure [vlastní smlouvu o podpoře (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) . | Podmíněně připravené pro Azure. Před migrací do Azure zvažte možnost upgradovat operační systém.
 Windows 2000, Windows 98, Windows 95, Windows NT, Windows 3,1 a MS-DOS | Tyto operační systémy prošly datem ukončení podpory. Počítač se může v Azure spustit, ale Azure neposkytuje žádnou podporu operačního systému. | Podmíněně připravené pro Azure. Před migrací do Azure doporučujeme upgradovat operační systém.
 Windows 7, Windows 8 a Windows 10 | Azure poskytuje podporu jenom s [předplatným sady Visual Studio.](../virtual-machines/windows/client-images.md) | Podmíněně připravené pro Azure.
 Windows 10 Pro | Azure podporuje [práva hostování s více klienty.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Podmíněně připravené pro Azure.
@@ -297,6 +297,6 @@ Náklady se zobrazují v měně určené v nastavení hodnocení.
 
 [Projděte si](best-practices-assessment.md) osvědčené postupy pro vytváření hodnocení. 
 
-- Seznamte se se spouštěním posouzení pro [virtuální počítače VMware](tutorial-prepare-vmware.md), [virtuální počítače Hyper-V](tutorial-prepare-hyper-v.md)a [fyzické servery](tutorial-prepare-physical.md).
-- Seznamte se s vyhodnocováním serverů [importovaných pomocí souboru CSV](tutorial-assess-import.md).
+- Seznamte se se spouštěním posouzení pro [virtuální počítače VMware](./tutorial-discover-vmware.md), [virtuální počítače Hyper-V](./tutorial-discover-hyper-v.md)a [fyzické servery](./tutorial-discover-physical.md).
+- Seznamte se s vyhodnocováním serverů [importovaných pomocí souboru CSV](./tutorial-discover-import.md).
 - Přečtěte si o nastavení [Vizualizace závislostí](concepts-dependency-visualization.md).

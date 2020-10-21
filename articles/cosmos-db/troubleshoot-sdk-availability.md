@@ -3,17 +3,17 @@ title: Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v p
 description: Seznamte se s chováním dostupnosti sady SDK Azure Cosmos při provozu ve více regionálních prostředích.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743960"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319361"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v prostředí s více oblastmi
 
@@ -34,7 +34,7 @@ Když nastavíte místní předvolbu, klient se připojí k oblasti, jak je uved
 | Jedna oblast zápisu | Upřednostňovaná oblast | Primární oblast  |
 | Více oblastí zápisu | Upřednostňovaná oblast | Upřednostňovaná oblast  |
 
-Pokud nenastavíte upřednostňovanou oblast:
+Pokud **nenastavíte upřednostňovanou oblast**, klient sady SDK bude ve výchozím nastavení primární oblastí:
 
 |Typ účtu |Čtení |Zápisy |
 |------------------------|--|--|
@@ -44,7 +44,9 @@ Pokud nenastavíte upřednostňovanou oblast:
 > [!NOTE]
 > Primární oblast odkazuje na první oblast v [seznamu oblastí účtu Azure Cosmos](distribute-data-globally.md) .
 
-Když nastane kterýkoli z následujících scénářů, klient nástroje, který používá sadu Azure Cosmos SDK, zveřejňuje protokoly a obsahuje informace o opakování v rámci **diagnostických informací o operaci**:
+Za normálních okolností se klient SDK připojí k upřednostňované oblasti (Pokud je nastavená místní předvolba) nebo do primární oblasti (Pokud není nastavená žádná předvolba) a operace budou omezené na tuto oblast, pokud nedošlo k žádnému z následujících scénářů.
+
+V těchto případech klient, který používá sadu Azure Cosmos SDK, zveřejňuje protokoly a obsahuje informace o opakování jako součást **diagnostických informací o operaci**:
 
 * Vlastnost *RequestDiagnosticsString* na odpovědích v sadě .NET v2 SDK.
 * Vlastnost *Diagnostic* na odpovědích a výjimkách v sadě .NET V3 SDK.
@@ -66,7 +68,7 @@ Pokud odeberete oblast a později ji přidáte zpátky k účtu, pokud přidaná
 
 Pokud nakonfigurujete klienta nástroje tak, aby se k oblasti, kterou účet Azure Cosmos nemá, připojovat, bude preferovaná oblast ignorována. Pokud přidáte tuto oblast později, klient ji detekuje a bude trvale přepnuta do této oblasti.
 
-## <a name="failover-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Převzetí služeb při selhání v oblasti zápisu v jednom účtu s oblastí zápisu
+## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>Převzetí služeb při selhání oblasti zápisu v jednom účtu oblasti pro zápis
 
 Pokud zahájíte převzetí služeb při selhání aktuální oblasti pro zápis, další požadavek na zápis se nezdaří se známou odpovědí na back-end. Když je tato odpověď zjištěná, klient odešle dotaz na účet, aby se dozvěděl o nové oblasti pro zápis, a pokračuje v operaci opakování aktuální operace a trvale přesměruje všechny budoucí operace zápisu do nové oblasti.
 
@@ -76,7 +78,7 @@ Pokud je účet jediný zápis a v průběhu operace zápisu dojde k oblasti vý
 
 ## <a name="session-consistency-guarantees"></a>Záruky konzistence relace
 
-Při použití [konzistence relací](consistency-levels.md#guarantees-associated-with-consistency-levels)musí klient zaručit, že může číst vlastní zápisy. V jednom z účtů oblastí pro zápis, kde se preference oblasti čtení liší od oblasti zápisu, můžou nastat případy, kdy uživatel vystaví zápis a když provádí čtení z místní oblasti, místní oblast ještě neobdržela replikaci dat (rychlost omezení světla). V takových případech sada SDK detekuje konkrétní selhání operace čtení a opakuje čtení v oblasti centra, aby se zajistila konzistence relace.
+Při použití [konzistence relací](consistency-levels.md#guarantees-associated-with-consistency-levels)musí klient zaručit, že může číst vlastní zápisy. V jednom z účtů oblastí pro zápis, kde se preference oblasti čtení liší od oblasti zápisu, můžou nastat případy, kdy uživatel vystaví zápis a když provádí čtení z místní oblasti, místní oblast ještě neobdržela replikaci dat (rychlost omezení světla). V takových případech sada SDK detekuje konkrétní selhání operace čtení a zopakuje čtení v primární oblasti, aby se zajistila konzistence relace.
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>Problémy s přechodným připojením v protokolu TCP
 

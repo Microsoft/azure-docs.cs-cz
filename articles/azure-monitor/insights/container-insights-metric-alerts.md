@@ -2,13 +2,13 @@
 title: Výstrahy metrik z Azure Monitor pro kontejnery
 description: Tento článek kontroluje Doporučené výstrahy metriky, které jsou dostupné z Azure Monitor pro kontejnery ve verzi Public Preview.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/09/2020
+ms.openlocfilehash: 7d9e6cb9a89dfe65777f8bcf507186e24d38a422
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619946"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308643"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Doporučené výstrahy metriky (Preview) z Azure Monitor pro kontejnery
 
@@ -18,7 +18,7 @@ Tento článek popisuje prostředí a poskytuje pokyny ke konfiguraci a správě
 
 Pokud nejste obeznámeni s výstrahami Azure Monitor, přečtěte si téma [Přehled výstrah v Microsoft Azure](../platform/alerts-overview.md) před tím, než začnete. Další informace o výstrahách metrik najdete [v tématu výstrahy metrik v Azure monitor](../platform/alerts-metric-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, zkontrolujte následující:
 
@@ -45,6 +45,7 @@ Pokud chcete upozornit na to, co Azure Monitor kontejnerů, zahrnuje následují
 |Průměrná paměť pracovní sady v kontejneru% |Vypočítá průměrnou paměť pracovní sady použitou na kontejner.|V případě, že průměrná spotřeba paměti pracovní sady na kontejner je větší než 95%. |
 |Average CPU % (průměrné procento využití procesoru) |Vypočítá průměrný počet využitých PROCESORů na uzel. |Když je využití procesoru na středních uzlech větší než 80% |
 |Průměrné využití disku% |Vypočítá průměrné využití disku pro uzel.|Když je využití disku pro uzel větší než 80%. |
+|Průměrné využití trvalého svazku% |Vypočítá průměrné využití PV na jeden z nich. |V případě, že průměrné využití PV na jeden z nich je větší než 80%.|
 |Průměrná paměť pracovní sady% |Vypočítá průměrnou paměť pracovní sady pro uzel. |Průměrná velikost pracovní sady pro uzel je větší než 80%. |
 |Restartování počtu kontejnerů |Vypočítá počet restartování kontejnerů. | Pokud je restartování kontejneru větší než 0. |
 |Počet neúspěšných pod |Vypočítá, zda je některý z nich ve stavu selhání.|Pokud je počet lusků ve stavu selhání větší než 0. |
@@ -75,6 +76,8 @@ Následující metriky založené na výstrahách mají v porovnání s ostatní
 
 * metriky *cpuExceededPercentage*, *memoryRssExceededPercentage*a *memoryWorkingSetExceededPercentage* se odesílají v případě, že hodnoty pracovní sady procesoru, paměti RSS a paměti překročí nakonfigurovanou prahovou hodnotu (výchozí prahová hodnota je 95%). Tyto prahové hodnoty jsou výhradně pro mezní hodnotu podmínky upozornění zadanou pro příslušné pravidlo výstrahy. To znamená, že pokud chcete shromáždit tyto metriky a analyzovat je z [Průzkumníka metrik](../platform/metrics-getting-started.md), doporučujeme nastavit prahovou hodnotu na nižší hodnotu, než je prahová hodnota pro výstrahu. Konfigurace související s nastavením kolekce pro prahové hodnoty využití prostředků kontejneru se dá přepsat v souboru ConfigMaps v části `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . Podrobnosti týkající se konfigurace konfiguračního souboru ConfigMap najdete v části [Konfigurace metrik s výstrahou ConfigMaps](#configure-alertable-metrics-in-configmaps) .
 
+* Pokud procento využití trvalého svazku překročí nastavenou prahovou hodnotu, bude odeslána metrika *pvUsageExceededPercentage* (výchozí prahová hodnota je 60%). Tato prahová hodnota je výlučná na prahovou hodnotu podmínky upozornění zadanou pro příslušné pravidlo výstrahy. To znamená, že pokud chcete shromáždit tyto metriky a analyzovat je z [Průzkumníka metrik](../platform/metrics-getting-started.md), doporučujeme nastavit prahovou hodnotu na nižší hodnotu, než je prahová hodnota pro výstrahu. Konfigurace související s nastavením kolekce pro prahové hodnoty trvalého využití svazku se dá přepsat v souboru ConfigMaps v části `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . Podrobnosti týkající se konfigurace konfiguračního souboru ConfigMap najdete v části [Konfigurace metrik s výstrahou ConfigMaps](#configure-alertable-metrics-in-configmaps) . Ve výchozím nastavení jsou vyloučeny kolekce trvalých metrik svazků s deklaracemi v oboru názvů *Kube-System* . Chcete-li povolit shromažďování v tomto oboru názvů, použijte část `[metric_collection_settings.collect_kube_system_pv_metrics]` v souboru ConfigMap. Podrobnosti najdete v tématu [nastavení kolekce metrik](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings) .
+
 ## <a name="metrics-collected"></a>Shromážděné metriky
 
 Následující metriky jsou povolené a shromážděné, pokud není uvedeno jinak, jako součást této funkce:
@@ -97,6 +100,7 @@ Následující metriky jsou povolené a shromážděné, pokud není uvedeno jin
 |Insights. Container/Containers |cpuExceededPercentage |Procento využití procesoru u kontejnerů, které překračují mezní hodnotu uživatelsky konfigurovatelné (výchozí hodnota je 95,0) podle názvu kontejneru, názvu kontroleru, oboru názvů Kubernetes, pod názvem.<br> Sběru  |
 |Insights. Container/Containers |memoryRssExceededPercentage |Procento paměti RSS pro kontejnery překračující prahovou hodnotu uživatelsky konfigurovatelné (výchozí hodnota je 95,0) podle názvu kontejneru, názvu kontroleru, oboru názvů Kubernetes pod názvem.|
 |Insights. Container/Containers |memoryWorkingSetExceededPercentage |Procento pracovní sady paměti pro kontejnery překračující prahovou hodnotu uživatele (výchozí je 95,0) podle názvu kontejneru, názvu kontroleru, oboru názvů Kubernetes pod názvem.|
+|Insights. Container/persistentvolumes |pvUsageExceededPercentage |Procento využití PV pro trvalé svazky překračující prahovou hodnotu uživatelsky konfigurovatelné (výchozí je 60,0) podle názvu deklarace, oboru názvů Kubernetes, názvu svazku, názvu pod a názvu uzlu.
 
 ## <a name="enable-alert-rules"></a>Povolit pravidla upozornění
 
@@ -106,7 +110,7 @@ Pomocí těchto kroků povolíte výstrahy metrik v Azure Monitor z Azure Portal
 
 Tato část vás provede povolením výstrahy metriky Azure Monitor pro kontejnery (Preview) z Azure Portal.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Přístup k funkci upozornění na metriku Azure Monitor for Containers (Preview) je k dispozici přímo z clusteru AKS, a to tak, že v levém podokně v Azure Portal vyberete **přehledy** .
 
@@ -207,29 +211,40 @@ Chcete-li zobrazit výstrahy vytvořené pro povolená pravidla, vyberte v podok
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>Konfigurace metrik s výstrahou v ConfigMaps
 
-Proveďte následující kroky ke konfiguraci konfiguračního souboru ConfigMap pro přepsání výchozích prahových hodnot využití prostředků kontejneru. Tyto kroky jsou použitelné pouze pro následující metriky s možností upozorňování.
+Provedením následujících kroků nakonfigurujte konfigurační soubor ConfigMap tak, aby přepsal výchozí prahové hodnoty využití. Tyto kroky platí jenom pro následující metriky upozorňující na tyto výstrahy:
 
 * *cpuExceededPercentage*
 * *memoryRssExceededPercentage*
 * *memoryWorkingSetExceededPercentage*
+* *pvUsageExceededPercentage*
 
-1. Upravte soubor ConfigMap YAML v části `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` .
+1. Upravte soubor ConfigMap YAML v části `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` nebo `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` .
 
-2. Chcete-li změnit prahovou hodnotu *cpuExceededPercentage* na 90% a spustit shromažďování této metriky, když je tato prahová hodnota splněna a překročena, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu.
+   - Chcete-li změnit prahovou hodnotu *cpuExceededPercentage* na 90% a spustit shromažďování této metriky, když je tato prahová hodnota splněna a překročena, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu:
 
-    ```
-    container_cpu_threshold_percentage = 90.0
-    # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
-    container_memory_rss_threshold_percentage = 95.0
-    # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
-    container_memory_working_set_threshold_percentage = 95.0
-    ```
+     ```
+     [alertable_metrics_configuration_settings.container_resource_utilization_thresholds]
+         # Threshold for container cpu, metric will be sent only when cpu utilization exceeds or becomes equal to the following percentage
+         container_cpu_threshold_percentage = 90.0
+         # Threshold for container memoryRss, metric will be sent only when memory rss exceeds or becomes equal to the following percentage
+         container_memory_rss_threshold_percentage = 95.0
+         # Threshold for container memoryWorkingSet, metric will be sent only when memory working set exceeds or becomes equal to the following percentage
+         container_memory_working_set_threshold_percentage = 95.0
+     ```
 
-3. Spusťte následující příkaz kubectl: `kubectl apply -f <configmap_yaml_file.yaml>` .
+   - Chcete-li změnit prahovou hodnotu *pvUsageExceededPercentage* na 80% a spustit shromažďování této metriky, když je tato prahová hodnota splněna a překročena, nakonfigurujte soubor ConfigMap pomocí následujícího příkladu:
+
+     ```
+     [alertable_metrics_configuration_settings.pv_utilization_thresholds]
+         # Threshold for persistent volume usage bytes, metric will be sent only when persistent volume utilization exceeds or becomes equal to the following percentage
+         pv_usage_threshold_percentage = 80.0
+     ```
+
+2. Spusťte následující příkaz kubectl: `kubectl apply -f <configmap_yaml_file.yaml>` .
 
     Příklad: `kubectl apply -f container-azm-ms-agentconfig.yaml`.
 
-Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created` .
+Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restart je postupné restartování pro všechny omsagent lusky. nerestartují se ve stejnou dobu. Po dokončení restartování se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created` .
 
 ## <a name="next-steps"></a>Další kroky
 

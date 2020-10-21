@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090089"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315290"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace s využitím Azure Migrate
 
@@ -166,4 +166,4 @@ Až budete připraveni k migraci, použijte *Nástroj pro migraci serveru* Azure
 
 - Prozkoumejte [cestu k migraci do cloudu](/azure/architecture/cloud-adoption/getting-started/migrate)   v rozhraní Azure cloudu pro přijetí.
 - [Začínáme](https://youtu.be/wFfq3YPxYHE) s Azure Migrate.
-- Vytvořte posouzení pro [virtuální počítače VMware](tutorial-assess-vmware.md) nebo [virtuální počítače Hyper-V](tutorial-assess-hyper-v.md).
+- Vytvořte posouzení pro [virtuální počítače VMware](./tutorial-assess-vmware-azure-vm.md) nebo [virtuální počítače Hyper-V](tutorial-assess-hyper-v.md).

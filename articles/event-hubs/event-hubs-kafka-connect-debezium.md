@@ -5,18 +5,18 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: cac04bed797bb9956125bc1a38fdfa5c8285050e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4bd6cdf6d3a5dc30b90abc5094202360181ae0b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061678"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318519"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Integrace podpory Apache Kafka Connect do Azure Event Hubs (Preview) s využitím Debezium for Change Data Capture
 
 Funkce **Change Data Capture (CDC)** je technika používaná ke sledování změn na úrovni řádků v databázových tabulkách v reakci na operace vytvoření, aktualizace a odstranění. [Debezium](https://debezium.io/) je distribuovaná platforma, která se sestavuje nad funkcemi funkce Change Data Capture, které jsou k dispozici v různých databázích (například [logické dekódování v PostgreSQL](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)). Poskytuje sadu [konektorů Kafka Connect](https://debezium.io/documentation/reference/1.2/connectors/index.html) , které klepnutím na změny na úrovni řádků v databázových tabulkách a převádí je do datových proudů událostí odesílaných do [Apache Kafka](https://kafka.apache.org/).
 
-V tomto kurzu se dozvíte, jak nastavit systém založený na Change Data Capture v Azure pomocí [azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about?WT.mc_id=devto-blog-abhishgu) (pro Kafka), [Azure DB pro PostgreSQL](../postgresql/overview.md) a Debezium. Použije [konektor Debezium PostgreSQL](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) k streamování úprav databáze z PostgreSQL na Kafka témata v Azure Event Hubs
+V tomto kurzu se dozvíte, jak nastavit systém založený na Change Data Capture v Azure pomocí [azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (pro Kafka), [Azure DB pro PostgreSQL](../postgresql/overview.md) a Debezium. Použije [konektor Debezium PostgreSQL](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) k streamování úprav databáze z PostgreSQL na Kafka témata v Azure Event Hubs
 
 V tomto kurzu provedete následující kroky:
 

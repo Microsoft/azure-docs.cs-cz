@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568093"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282298"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -57,6 +57,7 @@ Překladatel podporuje pro převod textu na text následující jazyky.
 |Filipino|  `fil`   |
 |Finština|   `fi`    |
 |Francouzština|    `fr`    |
+|Francouzština (Kanada)|   `fr-ca` |
 |Němčina|    `de`    |
 |Řečtina| `el`    |
 |Gudžarátština|  `gu`    |
@@ -364,6 +365,7 @@ Převod řeči na text, aby se přeložil do jazyka textu dle vašeho výběru. 
 |Angličtina|
 |Finština|
 |Francouzština|
+|Francouzština (Kanada)|
 |Němčina|
 |Gudžarátština|
 |Hindština|
@@ -401,6 +403,7 @@ Převod textu na řeč Převod textu na řeč se používá k přidání zvukov�
 |Angličtina|
 |Finština|
 |Francouzština|
+|Francouzština (Kanada)|
 |Němčina|
 |Řečtina|
 |Hebrejština|

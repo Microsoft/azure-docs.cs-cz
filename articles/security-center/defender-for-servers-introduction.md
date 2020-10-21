@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448292"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275241"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Seznámení s Azure Defenderem pro servery
 
@@ -27,11 +27,18 @@ Pro Linux shromažďuje Azure Defender záznamy auditu z počítačů se systém
 
 Mezi možnosti detekce a ochrany před hrozbami, které poskytuje Azure Defender pro servery, patří:
 
+- **Integrovaná licence pro Microsoft Defender pro koncové body (jenom Windows)** – Azure Defender pro servery zahrnuje  [Microsoft Defender pro koncový bod](https://www.microsoft.com/microsoft-365/security/endpoint-defender). Společně poskytují komplexní možnosti detekce a odezvy koncových bodů (EDR). [Další informace](security-center-wdatp.md).
+
+    Když Defender pro koncový bod zjistí hrozbu, aktivuje výstrahu. Výstraha je zobrazena v Security Center. Z Security Center můžete také provést přesun do programu Defender pro konzolu koncového bodu a provést podrobné šetření, které odhalí rozsah útoku. Přečtěte si další informace o programu Microsoft Defender pro koncový bod.
+
+    > [!IMPORTANT]
+    > Program **Microsoft Defender pro koncové body** je automaticky povolen na serverech se systémem Windows, které používají Security Center.
+
 - **Posouzení ohrožení zabezpečení pro virtuální počítače** – skener ohrožení zabezpečení, který je součástí Azure Security Center, používá Qualys. 
 
     Qualys je jedním z špičkových nástrojů pro identifikaci ohrožení zabezpečení v reálném čase v Azure Virtual Machines. Nepotřebujete licenci Qualys ani účet Qualys – všechno se bez problémů zpracovává v Security Center. [Další informace](deploy-vulnerability-assessment-vm.md).
 
-- **Přístup k virtuálnímu počítači JIT (just-in-time)**  – aktéri hrozeb aktivně prostupují přístupné počítače s otevřenými porty pro správu, jako je RDP nebo SSH. Všechny vaše virtuální počítače jsou potenciálními cíli pro útok. Když je virtuální počítač úspěšně napadený, používá se jako vstupní bod k útoku dalších prostředků ve vašem prostředí.
+- **Přístup k virtuálnímu počítači JIT (just-in-time** ) – aktéri hrozeb aktivně prostupují přístupné počítače s otevřenými porty pro správu, jako je RDP nebo SSH. Všechny vaše virtuální počítače jsou potenciálními cíli pro útok. Když je virtuální počítač úspěšně napadený, používá se jako vstupní bod k útoku dalších prostředků ve vašem prostředí.
 
     Když povolíte Azure Defender pro servery, můžete použít přístup k virtuálnímu počítači za běhu k uzamknutí příchozího provozu do virtuálních počítačů. tím se sníží riziko útoků na útoky a v případě potřeby získáte snadný přístup k virtuálním počítačům. [Další informace](just-in-time-explained.md).
 
@@ -46,13 +53,6 @@ Mezi možnosti detekce a ochrany před hrozbami, které poskytuje Azure Defender
 - **Adaptivní posílení zabezpečení sítě (Anh)** – použití skupin zabezpečení sítě (NSG) k filtrování provozu do a z prostředků, vylepšuje zabezpečení vaší sítě stav. Přesto však může být v některých případech, kdy je skutečný přenos toků přes NSG podmnožinou definovaných pravidel NSG. V těchto případech je možné zvýšit stav zabezpečení tím, že posílíte pravidla NSG, a to na základě skutečných schémat přenosů.
 
     Adaptivní posílení zabezpečení sítě poskytuje doporučení k dalšímu posílení pravidel NSG. Používá algoritmus strojového učení, který má vliv na skutečný provoz, známou důvěryhodnou konfiguraci, analýzu hrozeb a další indikátory ohrožení a pak poskytuje doporučení k tomu, aby se provozoval jenom z konkrétních řazených kolekcí IP/portů. [Další informace](security-center-adaptive-network-hardening.md).
-
-- **Integrace s pokročilou ochranou před internetovými útoky v programu Microsoft Defender (jenom Windows)** – Azure Defender se integruje s pokročilou ochranou před internetovými útoky v programu Microsoft Defender. Společně poskytují komplexní možnosti detekce a odezvy koncových bodů (EDR). [Další informace](security-center-wdatp.md).
-
-    > [!IMPORTANT]
-    > Senzor ATP v programu Microsoft Defender je automaticky povolen na serverech se systémem Windows, které používají Security Center.
-
-    Když ATP v programu Microsoft Defender zjistí hrozbu, aktivuje výstrahu. Výstraha je zobrazena v Security Center. Z Security Center můžete také překlopit konzolu ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Microsoft Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
 - **Posílení zabezpečení hostitele Docker** – Azure Security Center identifikuje nespravované kontejnery hostované na virtuálních počítačích s IaaS Linux nebo jiné počítače se systémem Linux s kontejnery Docker. Security Center nepřetržitě vyhodnocuje konfiguraci těchto kontejnerů. Pak je porovná s centrem testování v Docker pro Internet Security (CIS). Security Center zahrnuje celou RuleSet srovnávacího testu služby CI Docker a upozorní vás, pokud vaše kontejnery nevyhovují žádnému z ovládacích prvků. [Další informace](harden-docker-hosts.md).
 

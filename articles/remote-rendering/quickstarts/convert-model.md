@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4a3325592c2085034473163cb886ba2b8b416a30
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205825"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281358"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Rychlý start: Převod modelu pro vykreslování
 
@@ -24,10 +24,10 @@ Dozvíte se, jak provést tyto akce:
 > * Nahrání a převod 3D model pro použití s Azure Remote rendering
 > * Zahrnout převedený 3D model v aplikaci pro vykreslování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Kompletní [rychlé zprovoznění: vykreslení modelu pomocí Unity](render-model.md)
-* Nainstalovat Azure PowerShell [(dokumentace)](/powershell/azure/)
+* Pro převod pomocí skriptu PowerShellu nainstalujte Azure PowerShell [(dokumentace)](/powershell/azure/) .
   * Otevření PowerShellu s právy správce
   * Spouštěl `Install-Module -Name Az -AllowClobber`
 
@@ -44,7 +44,7 @@ Budete potřebovat:
 * Kontejner úložiště objektů BLOB pro vaše výstupní data
 * Model, který se má převést, najdete v tématu [ukázkové modely](../samples/sample-model.md) .
   * Zobrazit seznam [podporovaných formátů zdroje](../how-tos/conversion/model-conversion.md#supported-source-formats)
-  * Chcete-li použít vzorový skript pro převod, ujistěte se, že jste připravili vstupní složku, která obsahuje model a všechny externí závislosti (například externí textury nebo geometrii).
+  * Chcete-li použít vzorový skript pro převod, ujistěte se, že jste připravili vstupní složku, která obsahuje model a všechny externí závislosti (například externí textury nebo geometrie).
 
 ## <a name="azure-setup"></a>Nastavení Azure
 
@@ -108,12 +108,21 @@ Teď byste měli mít dva kontejnery úložiště objektů BLOB:
 
 ## <a name="run-the-conversion"></a>Spuštění převodu
 
+Existují tři různé způsoby, jak aktivovat převod modelu:
+
+### <a name="1-conversion-via-the-arrt-tool"></a>1. převod pomocí nástroje ARRT
+
+K zahájení převodu a interakci s vykresleným výsledkem je k dispozici [nástroj založený na uživatelském rozhraní s názvem ARRT](./../samples/azure-remote-rendering-asset-tool.md) .
+![ARRT](./../samples/media/azure-remote-rendering-asset-tool.png "Snímek obrazovky ARRT")
+
+### <a name="2-conversion-via-a-powershell-script"></a>2. převod pomocí skriptu PowerShellu
+
 Aby bylo snazší volat službu převodu assetů, poskytujeme skript nástrojů. Je umístěný ve složce *Scripts* a nazývá se **Conversion.ps1**.
 
 Konkrétně tento skript
 
 1. nahraje všechny soubory v daném adresáři z místního disku do vstupního kontejneru úložiště.
-1. volá [REST API převodu assetu](../how-tos/conversion/conversion-rest-api.md) , která načte data z kontejneru vstupního úložiště a spustí převod, který vrátí ID převodu.
+1. volá [REST API převodu assetu](../how-tos/conversion/conversion-rest-api.md), která načte data z kontejneru vstupního úložiště a spustí převod, který vrátí ID převodu.
 1. cyklické dotazování na rozhraní API stavu převodu s načteným ID převodu, dokud se proces převodu neukončí s úspěchem nebo selháním
 1. Načte odkaz na převedený prostředek ve výstupním úložišti.
 
@@ -153,9 +162,9 @@ Změňte **localAssetDirectoryPath** tak, aby odkazoval na adresář na disku, k
 
 Všechna data z cesty zadané v **localAssetDirectoryPath** se nahrají do kontejneru objektů BLOB **blobInputContainerName** pod podcestou určenou **inputFolderPath**. Proto se v příkladu konfigurace nad rámec obsahu adresáře "D: \\ TMP \\ robot" nahraje do kontejneru objektů blob "arrinput" účtu úložiště "arrtutorialstorage" v cestě "robotConversion". Již existující soubory budou přepsány.
 
-Změňte **inputAssetPath** na cestu k modelu, který se má převést – cesta je relativní k localAssetDirectoryPath. Jako oddělovač cest použijte "/" místo " \\ ". Takže pro soubor robot. FBX, který se nachází přímo v "D: \\ TMP \\ robot", používá "robot. FBX".
+Změňte **inputAssetPath** na cestu k modelu, který se má převést – cesta je relativní k localAssetDirectoryPath. Jako oddělovač cest použijte "/" místo " \\ ". Takže pro soubor robot. FBX, který se nachází přímo v "D: \\ TMP \\ robot", použijte "robot. FBX".
 
-Až se model převede, zapíše se zpátky do kontejneru úložiště, který je zadaný pomocí **blobOutputContainerName**. Je možné zadat dílčí cestu zadáním volitelné **outputFolderPath**. Ve výše uvedeném příkladu se "robot. arrAsset" zkopíruje do výstupního kontejneru objektů BLOB v části převedený/robot.
+Po převodu modelu se tento model zapíše zpátky do kontejneru úložiště, který je zadaný pomocí **blobOutputContainerName**. Je možné zadat dílčí cestu zadáním volitelné **outputFolderPath**. V předchozím příkladu bude výsledný "robot. arrAsset" zkopírován do výstupního kontejneru objektů BLOB v části převedený/robot.
 
 Nastavení konfigurace **outputAssetFileName** Určuje název převedeného prostředku – parametr je nepovinný a název výstupního souboru bude odvozený ze vstupního souboru jinak.
 
@@ -175,6 +184,13 @@ Přejděte do `azure-remote-rendering\Scripts` adresáře a spusťte převodní 
 ```
 
 Mělo by se zobrazit něco podobného: ![Conversion.ps1](./media/successful-conversion.png)
+
+### <a name="3-conversion-via-api-calls"></a>3. převod prostřednictvím volání rozhraní API
+
+Jazyk C# i rozhraní API pro C++ poskytují vstupní bod pro interakci se službou:
+* [C# AzureFrontend. StartAssetConversionAsync ()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
+* [C++ AzureFrontend:: StartAssetConversionAsync ()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+
 
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>Vložení nového modelu do ukázkové aplikace pro rychlé zprovoznění
 

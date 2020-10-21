@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575006"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314841"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -23,7 +23,7 @@ Tady je například aplikace logiky vysoké úrovně, která používá obor ke 
 
 ![Diagram znázorňuje tok oboru aplikace logiky s příklady "obor se selháním" a "obor byl úspěšný".](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li postupovat podle příkladu v tomto článku, budete potřebovat tyto položky:
 
@@ -31,7 +31,7 @@ Chcete-li postupovat podle příkladu v tomto článku, budete potřebovat tyto 
 
 * E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje služba Logic Apps. V tomto příkladu se používá Outlook.com. Pokud používáte jiného poskytovatele, zůstane obecný tok stejný, ale vaše uživatelské rozhraní se zobrazí jinak.
 
-* Klíč mapy Bing. Pokud chcete získat tento klíč, přečtěte si téma <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">získání klíče mapy Bing</a>.
+* Klíč mapy Bing. Pokud chcete získat tento klíč, přečtěte si téma <a href="/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key" target="_blank">získání klíče mapy Bing</a>.
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -386,7 +386,7 @@ Pokud pracujete v zobrazení kódu, můžete místo toho definovat strukturu obo
 },
 ```
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).

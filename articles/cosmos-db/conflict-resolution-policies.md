@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69bc58e7d217bbd902a82a15333eee6df40a21c9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570111"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276330"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Typy konfliktů a zásady řešení při použití více oblastí zápisu
 
@@ -32,7 +32,7 @@ Azure Cosmos DB nabízí flexibilní mechanizmy založené na zásadách pro ře
 
 * **Poslední zápis WINS (LWW)**: Tato zásada řešení ve výchozím nastavení používá systémem definovanou vlastnost časového razítka. Vychází z protokolu časových hodin synchronizace. Pokud používáte rozhraní SQL API, můžete zadat jakoukoli jinou vlastní číselnou vlastnost (například vlastní fiktivní časovou známku), která se použije pro řešení konfliktů. Vlastní numerická vlastnost je také označována jako *cesta řešení konfliktů*. 
 
-  Pokud dojde ke konfliktu dvou nebo více položek u operací vložení nebo nahrazení, bude se jednat o položku s nejvyšší hodnotou pro cestu k řešení konfliktů. Systém Určuje, zda má více položek stejnou číselnou hodnotu pro cestu k řešení konfliktů. Všechny oblasti jsou zaručené sblížení s jednou vítězí a končí stejnou verzí potvrzené položky. Pokud jsou zapojené konflikty při odstraňování, Odstraněná verze vždy vyhrává z konfliktů vložení nebo nahrazení. K tomuto výsledku nedochází bez ohledu na to, co je hodnota cesty pro řešení konfliktů.
+  Pokud dojde ke konfliktu dvou nebo více položek u operací vložení nebo nahrazení, bude se jednat o položku s nejvyšší hodnotou pro cestu k řešení konfliktů. Systém Určuje, zda má více položek stejnou číselnou hodnotu pro cestu k řešení konfliktů. Všechny oblasti se sblíženy s jednou vítězí a končí stejnou verzí potvrzené položky. Pokud jsou zapojené konflikty při odstraňování, Odstraněná verze vždy vyhrává z konfliktů vložení nebo nahrazení. K tomuto výsledku nedochází bez ohledu na to, co je hodnota cesty pro řešení konfliktů.
 
   > [!NOTE]
   > Poslední zápis WINS je výchozí zásada řešení konfliktů a používá časové razítko `_ts` pro následující rozhraní API: SQL, MongoDB, Cassandra, Gremlin a Table. Vlastní číselná vlastnost je k dispozici pouze pro rozhraní SQL API.

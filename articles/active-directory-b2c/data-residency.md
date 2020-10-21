@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/06/2020
+ms.date: 10/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840553"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309685"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: dostupnost oblasti & data zasídlí
 
@@ -59,6 +59,14 @@ Do seznamu se přidávají následující země nebo oblasti. Prozatím můžete
 
 > Argentina, Austrálie, Brazílie, Chile, Kolumbie, Ekvádor, Irák, Nový Zéland, Paraguay, Peru, Uruguay a Venezuela.
 
+## <a name="remote-profile-solution"></a>Řešení vzdáleného profilu
+
+Díky Azure AD B2C [vlastní zásady](custom-policy-overview.md)můžete integrovat se [službami rozhraní API RESTful](custom-policy-rest-api-intro.md), které umožňují ukládat a číst profily uživatelů ze vzdálené databáze (jako je marketingová databáze, systém CRM nebo libovolná obchodní aplikace).  
+- V průběhu registrace a úprav profilu Azure AD B2C zavolá vlastní REST API, aby zachoval profil uživatele do vzdáleného zdroje dat. Přihlašovací údaje uživatele jsou uloženy v adresáři Azure AD B2C. 
+- Po přihlášení po ověření přihlašovacích údajů s místním nebo sociálním účtem Azure AD B2C vyvolá REST API, které pošle jedinečný identifikátor uživatele jako primární klíč uživatele (e-mailová adresa nebo identifikátor objectId uživatele). REST API čte data ze vzdálené databáze a vrací profil uživatele.  
+
+Po registraci, úpravách profilu nebo přihlášení se Azure AD B2C zahrne profil uživatele do přístupového tokenu, který se vrátí do aplikace. Další informace najdete v [ukázkovém řešení vzdáleného profilu Azure AD B2C](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) v GitHubu.
+
 ## <a name="preview-tenant"></a>Klient verze Preview
 
 Pokud jste vytvořili tenanta B2C během období Preview Azure AD B2C's, je pravděpodobný, že váš **typ tenanta** uvádí **tenanta verze Preview**.
@@ -70,3 +78,7 @@ Neexistuje **žádná cesta migrace** z klienta ve verzi Preview B2C do tenanta 
 Při odstraňování tenanta B2C ve verzi Preview a vytvoření tenanta B2C ve výrobním měřítku se stejným názvem domény se vyskytly známé problémy. Je *nutné vytvořit klienta B2C ve výrobním měřítku s jiným názvem domény*.
 
 ![Snímek obrazovky typu tenanta jako tenant verze Preview](./media/data-residency/preview-b2c-tenant.png)
+
+## <a name="next-steps"></a>Další kroky
+
+- [Vytvořte tenanta Azure AD B2C](tutorial-create-tenant.md).

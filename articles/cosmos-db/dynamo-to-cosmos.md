@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 167d1f21a2eb7ea4c685b5bbbb5d8d64fcc1367e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261864"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278704"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Migrace aplikace z Amazon DynamoDB na Azure Cosmos DB
 
@@ -23,8 +23,8 @@ Níže jsou uvedené klíčové rozdíly mezi Azure Cosmos DB a DynamoDB:
 
 |  DynamoDB | Azure Cosmos DB  |
 |---|---|
-|Nelze použít|  databáze |
-|Tabulka      |  Collection (Kolekce) |
+|Nelze použít|  Databáze |
+|Tabulka      |  Kolekce |
 |  Položka |  Dokument |
 |Atribut|Pole|
 |Sekundární index|Sekundární index|
@@ -144,7 +144,7 @@ client_documentDB = new CosmosClient("your connectionstring from the Azure porta
 
 Pomocí Azure Cosmos DB můžete k optimalizaci připojení použít následující možnosti:
 
-* **ConnectionMode** – použijte režim přímého připojení pro připojení k datovým uzlům ve službě Azure Cosmos DB. Použijte režim brány jenom k inicializaci a ukládání logických adres do mezipaměti a k aktualizaci aktualizací. Další podrobnosti najdete v článku [režimy připojení](performance-tips.md#networking) .
+* **ConnectionMode** – použijte režim přímého připojení pro připojení k datovým uzlům ve službě Azure Cosmos DB. Použijte režim brány jenom k inicializaci a ukládání logických adres do mezipaměti a k aktualizaci aktualizací. Další podrobnosti najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
 
 * **ApplicationRegion** – Tato možnost slouží k nastavení upřednostňované geograficky replikované oblasti, která se používá k interakci s Azure Cosmos DB. Další informace najdete v článku o [globální distribuci](distribute-data-globally.md) .
 

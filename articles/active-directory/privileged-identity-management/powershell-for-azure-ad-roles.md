@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8d9740e05bf4236f1b2b722c9a91b3644533fce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a3c5274a1b63d486bb7eb48b89560d5684db2e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707896"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317011"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell pro role Azure AD v Privileged Identity Management
 
@@ -54,7 +54,7 @@ Tento článek obsahuje pokyny k používání rutin prostředí PowerShell pro 
     ![Vyhledání ID organizace ve vlastnostech organizace Azure AD](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> V následujících částech najdete jednoduché příklady, které vám pomůžou začít pracovat. Podrobnější dokumentaci týkající se následujících rutin najdete na adrese [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . Je však nutné nahradit "azureResources" v parametru providerID parametrem "aadRoles". Bude také nutné pamatovat na použití ID tenanta pro vaši organizaci Azure AD jako parametr resourceId.
+> V následujících částech najdete jednoduché příklady, které vám pomůžou začít pracovat. Podrobnější dokumentaci týkající se následujících rutin najdete na adrese [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) . Je však nutné nahradit "azureResources" v parametru providerID parametrem "aadRoles". Bude také nutné pamatovat na použití ID tenanta pro vaši organizaci Azure AD jako parametr resourceId.
 
 ## <a name="retrieving-role-definitions"></a>Načítání definic rolí
 

@@ -4,12 +4,12 @@ description: Přečtěte si o službě Azure Migrate.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 48447959f0a60baf8802a9939612bf0d536c2557
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86122077"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314765"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -80,7 +80,7 @@ Posouzení serveru používá odlehčené [Azure Migrate zařízení](migrate-ap
 
 Azure Migrate: Nástroj pro migraci serveru vám pomůže migrovat do Azure:
 
-**Přenes** | **Podrobnosti**
+**Migrace** | **Podrobnosti**
 --- | ---
 Místní virtuální počítače VMware | Migrujte virtuální počítače do Azure pomocí agenta bez agentů nebo migrace založené na agentech.<br/><br/> Při migraci bez agentů používá migrace serveru Azure Migrate zařízení, které nasazujete místně. Je to stejný typ zařízení, které používáte pro vyhodnocování serveru.<br/><br/> Pro migraci na základě agenta používá posouzení serveru zařízení replikace.
 Místní virtuální počítače Hyper-V | Migrujte virtuální počítače do Azure.<br/><br/> Vyhodnocování serveru používá pro migraci agenty poskytovatele nainstalované na hostiteli Hyper-V.
@@ -124,5 +124,5 @@ Existují dvě verze služby Azure Migrate.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vyzkoušejte si naše kurzy, abyste vyhodnotili [virtuální počítače VMware](tutorial-prepare-vmware.md), [virtuální počítače Hyper-V](tutorial-prepare-hyper-v.md)nebo [fyzické servery](tutorial-prepare-physical.md).
+- Vyzkoušejte si naše kurzy, abyste vyhodnotili [virtuální počítače VMware](./tutorial-discover-vmware.md), [virtuální počítače Hyper-V](./tutorial-discover-hyper-v.md)nebo [fyzické servery](./tutorial-discover-physical.md).
 - [Přečtěte si nejčastější dotazy](resources-faq.md) ohledně služby Azure Migrate.

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090276"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317377"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, ukázky, kurzy a návody pro Azure Logic Apps
 
@@ -99,7 +99,7 @@ V některých případech vaše aplikace logiky a účty pro integraci potřebuj
 
 Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, Azure DevOps nebo jakéhokoli jiného nástroje pro správu zdrojového kódu a automatizovaných nástrojů sestavení. Pro podporu nasazení pro pracovní postupy a závislá připojení v šabloně prostředků Logic Apps používá šablony nasazení prostředků Azure. Nástroje sady Visual Studio automaticky generují tyto šablony, které lze vrátit se změnami do správy zdrojového kódu. Pro oznamování a diagnostické protokoly pro stav spuštění pracovního postupu Azure Logic Apps také nabízí monitorování a výstrahy.
 
-### <a name="deploy"></a>Nasadit
+### <a name="deploy"></a>Nasazení
 
 * [Rychlý Start: vytváření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Přehled: Automatizace nasazení aplikace logiky](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
@@ -111,13 +111,13 @@ Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, 
 * [Ukázka: připojení k účtu pro integraci z Azure Logic Apps a nasazení pomocí Azure Pipelines ve službě Azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 * [Ukázka: orchestrace Azure Pipelines pomocí Azure Logic Apps](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
-### <a name="manage"></a>Spravovat
+### <a name="manage"></a>Správa
 
 * [Správa aplikací logiky pomocí sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [Vytváření a Správa účtů pro integraci pro podniková integrace B2B](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Správa prostředí ISE (Integration Service Environment) v Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>Monitor
+### <a name="monitor"></a>Monitorování
 
 * [Monitorování stavu spuštění, zobrazení historie aktivačních událostí a nastavení upozornění pro Azure Logic Apps](../logic-apps/monitor-logic-apps.md)
 * [Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)
@@ -126,7 +126,7 @@ Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, 
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>Zpracování typů obsahu, převodů a transformací
 
-Pomocí mnoha funkcí v [jazyce Azure Logic Apps definice pracovního postupu](https://aka.ms/logicappsdocs)můžete získat přístup k více typům obsahu, převést je a transformovat. Například můžete převádět mezi řetězci, JSON a XML pomocí `@json()` `@xml()` výrazů pracovního postupu and. Modul Logic Apps zachovává typy obsahu pro zajištění bezztrátového přenosu obsahu mezi službami.
+Pomocí mnoha funkcí v [jazyce Azure Logic Apps definice pracovního postupu](./logic-apps-workflow-definition-language.md)můžete získat přístup k více typům obsahu, převést je a transformovat. Například můžete převádět mezi řetězci, JSON a XML pomocí `@json()` `@xml()` výrazů pracovního postupu and. Modul Logic Apps zachovává typy obsahu pro zajištění bezztrátového přenosu obsahu mezi službami.
 
 * [Zpracování typů obsahu v Azure Logic Apps](../logic-apps/logic-apps-content-type.md), například `application/` , `application/octet-stream` a `multipart/formdata`
 * [Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci](../logic-apps/workflow-definition-language-functions-reference.md)

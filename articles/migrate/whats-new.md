@@ -4,12 +4,12 @@ description: Seznamte se s novinkami a nejnovějšími aktualizacemi ve službě
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: a36e73496b07df18c61b07df9d90992c0ab399ce
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b03f3a7e10aa42f3393ecc22cb74f4e565587032
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124651"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314579"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Co je nového v Azure Migrate
 
@@ -36,7 +36,7 @@ ms.locfileid: "92124651"
 
 ## <a name="update-june-2020"></a>Aktualizace (červen 2020)
 
-- Pro migraci místních virtuálních počítačů VMware do [Řešení Azure VMware (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) se teď podporuje vyhodnocení. [Další informace](how-to-create-azure-vmware-solution-assessment.md)
+- Pro migraci místních virtuálních počítačů VMware do [Řešení Azure VMware (AVS)](./concepts-azure-vmware-solution-assessment-calculation.md) se teď podporuje vyhodnocení. [Další informace](how-to-create-azure-vmware-solution-assessment.md)
 - Podpora více přihlašovacích údajů na zařízení pro zjištění fyzického serveru.
 - Podpora pro povolení přihlášení Azure ze zařízení pro tenanta, ve kterém je nakonfigurované omezení tenanta.
 
@@ -104,4 +104,4 @@ Pokud používáte předchozí verzi Azure Migrate (podporuje se jenom posouzen�
 
 - [Další informace](https://azure.microsoft.com/pricing/details/azure-migrate/) o cenách služby Azure Migrate.
 - [Přečtěte si nejčastější dotazy](resources-faq.md) ohledně služby Azure Migrate.
-- Vyzkoušejte si naše kurzy, abyste vyhodnotili [virtuální počítače VMware](tutorial-assess-vmware.md) a [virtuální počítače Hyper-V](tutorial-assess-hyper-v.md).
+- Vyzkoušejte si naše kurzy, abyste vyhodnotili [virtuální počítače VMware](./tutorial-assess-vmware-azure-vm.md) a [virtuální počítače Hyper-V](tutorial-assess-hyper-v.md).

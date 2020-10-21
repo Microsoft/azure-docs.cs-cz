@@ -3,12 +3,12 @@ title: Upgrade uzlů clusteru pro používání služby Azure Managed disks
 description: Tady je postup, jak upgradovat existující Cluster Service Fabric tak, aby používal Azure Managed disks s malým nebo žádným výpadkem clusteru.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717519"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316159"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgrade uzlů clusteru pro používání služby Azure Managed disks
 
@@ -25,7 +25,7 @@ Všeobecná strategie pro upgrade uzlu clusteru Service Fabric na používání 
 Tento článek vás provede jednotlivými kroky upgradu primárního typu uzlu ukázkového clusteru, který bude používat spravované disky, a zároveň vyloučí jakékoli výpadky clusteru (viz poznámka níže). Počáteční stav ukázkového testovacího clusteru se skládá z jednoho typu uzlu [odolného proti stříbrnému](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), který je zajištěný jednou sadou škálování s pěti uzly.
 
 > [!NOTE]
-> Omezení základního nástroje pro vyrovnávání zatížení zabrání přidání dalšího měřítka sady. Místo toho doporučujeme použít nástroj pro vyrovnávání zatížení Standard SKU. Další informace naleznete v [porovnání dvou skladových](/azure/load-balancer/skus)položek.
+> Omezení základního nástroje pro vyrovnávání zatížení zabrání přidání dalšího měřítka sady. Místo toho doporučujeme použít nástroj pro vyrovnávání zatížení Standard SKU. Další informace naleznete v [porovnání dvou skladových](../load-balancer/skus.md)položek.
 
 > [!CAUTION]
 > Tento postup se projeví pouze v případě, že máte závislosti na DNS clusteru (například při přístupu k [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). [Osvědčeným postupem pro front-end služby](/azure/architecture/microservices/design/gateway) je mít určitý druh nástroje pro [Vyrovnávání zatížení](/azure/architecture/guide/technology-choices/load-balancing-overview) před typy uzlů, aby bylo možné přeměnit uzel bez výpadku.
@@ -215,7 +215,7 @@ V části šablona nasazení `variables` přidejte položku pro fond adres pří
 "lbNatPoolID1": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool1')]", 
 ```
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Prostředky
 
 V části *prostředky* šablony nasazení přidejte novou sadu škálování virtuálního počítače. Pamatujte na tyto věci:
 

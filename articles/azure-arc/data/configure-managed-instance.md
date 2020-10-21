@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f687923f1185d848c2c4f2f40d949c71a7743d65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e2443014f6788504a11784945078187a5a72de4
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936721"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311130"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Konfigurace spravované instance serveru SQL s podporou ARC Azure
 
@@ -22,11 +22,11 @@ Tento článek vysvětluje, jak nakonfigurovat spravovanou instanci SQL s podpor
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="configure-resources-for-azure-arc-enabled-sql-managed-instance"></a>Konfigurace prostředků pro spravovanou instanci SQL s podporou ARC Azure
+## <a name="configure-resources"></a>Konfigurace prostředků
 
-### <a name="configure-using-azdata"></a>Konfigurace pomocí azdata
+### <a name="configure-using-azure-data-cli-azdata"></a>Konfigurace pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
-Pomocí rozhraní příkazového řádku můžete upravit konfiguraci spravovaných instancí SQL s podporou ARC Azure `azdata` . Spuštěním následujícího příkazu zobrazte možnosti konfigurace. 
+Konfiguraci spravovaných instancí SQL s podporou ARC Azure můžete upravit pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] . Spuštěním následujícího příkazu zobrazte možnosti konfigurace. 
 
 ```
 azdata arc sql mi edit --help

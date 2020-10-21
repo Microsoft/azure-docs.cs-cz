@@ -5,17 +5,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 8cca75f7071b8b9c8d1108b82ebf8f7049ec316a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777787"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282570"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 
-Azure Cosmos DB umožňuje nastavit zřízenou propustnost pro vaše databáze a kontejnery. Existují dva typy zřízené propustnosti, standardní (ruční) nebo automatické škálování. Tyto články poskytují přehled o tom, jak zajištěná propustnost funguje. 
+Azure Cosmos DB umožňuje nastavit zřízenou propustnost pro vaše databáze a kontejnery. Existují dva typy zřízené propustnosti, standardní (ruční) nebo automatické škálování. Tento článek poskytuje přehled o tom, jak zajištěná propustnost funguje. 
 
 Databáze Azure Cosmos je jednotkou správy pro sadu kontejnerů. Databáze se skládá ze sady kontejnerů nezávislých na schématu. Kontejner Azure Cosmos je jednotkou škálovatelnosti pro propustnost i úložiště. Kontejner se horizontálně dělí na sadu počítačů v rámci oblasti Azure a distribuuje se napříč všemi oblastmi Azure přidruženými k vašemu účtu Azure Cosmos.
 
@@ -34,9 +34,9 @@ Propustnost zřízená pro kontejner je rovnoměrně rozdělená mezi své fyzic
 
 Pokud zatížení běžící na logickém oddílu spotřebovává více než propustnost, která byla přidělena základnímu fyzickému oddílu, je možné, že vaše operace budou omezeny na míru. K tomu, co se říká _aktivní oddíl_ , dojde v případě, že jeden logický oddíl má neúměrnější více požadavků než jiné hodnoty klíče oddílu.
 
-Pokud dojde k omezení rychlosti, můžete buď zvýšit zřízenou propustnost celého kontejneru, nebo operaci zopakovat. Ujistěte se také, že jste vybrali klíč oddílu, který rovnoměrně distribuuje úložiště a vyžádá svazek. Další informace o dělení najdete [v tématu dělení a horizontální škálování v Azure Cosmos DB](partition-data.md).
+Pokud dojde k omezení rychlosti, můžete buď zvýšit zřízenou propustnost celého kontejneru, nebo operaci zopakovat. Ujistěte se také, že jste vybrali klíč oddílu, který rovnoměrně distribuuje úložiště a vyžádá svazek. Další informace o dělení najdete [v tématu dělení a horizontální škálování v Azure Cosmos DB](partitioning-overview.md).
 
-Doporučujeme, abyste nakonfigurovali propustnost na členitosti kontejneru, pokud chcete zaručit výkon kontejneru.
+Doporučujeme, abyste nakonfigurovali propustnost na členitosti kontejneru, pokud požadujete předvídatelný výkon kontejneru.
 
 Následující obrázek ukazuje, jak fyzický oddíl je hostitelem jednoho nebo více logických oddílů kontejneru:
 
@@ -49,7 +49,7 @@ Následující obrázek ukazuje, jak fyzický oddíl je hostitelem jednoho nebo 
 
 Při zřizování propustnosti v databázi Azure Cosmos se propustnost sdílí ve všech kontejnerech (nazývaných sdílené databázové kontejnery) v databázi. Výjimkou je, pokud některým kontejnerům v databázi nastavíte zřízenou propustnost. Sdílení zřízené propustnosti databáze mezi kontejnery je podobné jako hostování databáze na clusteru počítačů. Vzhledem k tomu, že všechny kontejnery v rámci databáze sdílejí prostředky dostupné v počítači, přirozeně nedosáhnete předvídatelného výkonu u žádného konkrétního kontejneru. Informace o tom, jak nakonfigurovat zřízenou propustnost v databázi, najdete v tématu [Konfigurace zřízené propustnosti v databázi Azure Cosmos](how-to-provision-database-throughput.md). Informace o tom, jak nakonfigurovat propustnost automatického škálování v databázi, najdete v tématu [zřizování propustnosti automatického škálování](how-to-provision-autoscale-throughput.md).
 
-Nastavení propustnosti v databázi Azure Cosmos zaručuje, že se vám bude pořídit zajištěná propustnost pro tuto databázi. Vzhledem k tomu, že všechny kontejnery v databázi sdílejí zřízenou propustnost, Azure Cosmos DB pro konkrétní kontejner v této databázi neposkytují předvídatelné záruky propustnosti. Část propustnosti, kterou může určitý kontejner obdržet, závisí na:
+Vzhledem k tomu, že všechny kontejnery v databázi sdílejí zřízenou propustnost, Azure Cosmos DB pro konkrétní kontejner v této databázi neposkytují předvídatelné záruky propustnosti. Část propustnosti, kterou může určitý kontejner obdržet, závisí na:
 
 * Počet kontejnerů.
 * Volba klíčů oddílů pro různé kontejnery.
@@ -63,9 +63,9 @@ Následující příklady ukazují, kde je upřednostňováno zřídit propustno
 
 * Sdílení zřízené propustnosti databáze napříč sadou kontejnerů je užitečné při migraci databáze NoSQL, jako je třeba MongoDB nebo Cassandra, která je hostovaná v clusteru virtuálních počítačů nebo z místních fyzických serverů na Azure Cosmos DB. Zamyslete se nad zajištěnou propustností nakonfigurovanou v databázi Azure Cosmos jako s logickým ekvivalentem, ale cenově výhodnější a elastické pro výpočetní kapacitu vašeho clusteru MongoDB nebo Cassandra.  
 
-Všechny kontejnery vytvořené v databázi s zřízenou propustností se musí vytvořit s [klíčem oddílu](partition-data.md). V jakémkoli okamžiku je propustnost přidělená kontejneru v rámci databáze distribuována napříč všemi logickými oddíly tohoto kontejneru. Pokud máte kontejnery, které sdílejí zřízenou propustnost nakonfigurovanou v databázi, nemůžete selektivně použít tuto propustnost na konkrétní kontejner nebo na logický oddíl. 
+Všechny kontejnery vytvořené v databázi s zřízenou propustností se musí vytvořit s [klíčem oddílu](partitioning-overview.md). V jakémkoli okamžiku je propustnost přidělená kontejneru v rámci databáze distribuována napříč všemi logickými oddíly tohoto kontejneru. Pokud máte kontejnery, které sdílejí zřízenou propustnost nakonfigurovanou v databázi, nemůžete selektivně použít tuto propustnost na konkrétní kontejner nebo na logický oddíl. 
 
-Pokud zatížení na logickém oddílu spotřebovává více než propustnost, která je přidělena konkrétnímu logickému oddílu, jsou operace omezené na míru. Pokud dojde k omezení rychlosti, můžete buď zvýšit propustnost pro celou databázi, nebo opakovat operace. Další informace o dělení najdete v tématu [logické oddíly](partition-data.md).
+Pokud zatížení na logickém oddílu spotřebovává více než propustnost, která je přidělena konkrétnímu logickému oddílu, jsou operace omezené na míru. Pokud dojde k omezení rychlosti, můžete buď zvýšit propustnost pro celou databázi, nebo opakovat operace. Další informace o dělení najdete v tématu [logické oddíly](partitioning-overview.md).
 
 Kontejnery v databázi se sdílenou propustností sdílí propustnost (RU/s) přidělenou dané databázi. V jedné databázi můžete mít až čtyři kontejnery s minimálně 400 RU/s. Při standardní (ruční) zřízené propustnosti budou mít každý nový kontejner po prvních čtyřech dalších minimálních 100 RU/s. Například pokud máte databázi se sdílenou propustností a osmi kontejnery, minimální počet RU/s pro databázi bude 800 RU/s. Díky zajištění vysoce škálovatelné propustnosti můžete mít až 25 kontejnerů v databázi s AutoScale Max 4000 RU/s (škály 400-4000 RU/s).
 
@@ -82,7 +82,7 @@ Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekc
 Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i kontejneru je povoleno. Následující příklad ukazuje, jak zřídit standardní (ruční) zřízené propustnost v databázi Azure Cosmos a v kontejneru:
 
 * Můžete vytvořit databázi Azure Cosmos s názvem *Z* s zřízenou propustností *"K"* ru. 
-* Dále v rámci databáze vytvořte pět kontejnerů s názvem *a*, *B*, *C*, *D*a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Všimněte si, že se sdílená a vyhrazená propustnost dá nakonfigurovat jenom při vytváření databáze a kontejneru. 
+* Dále v rámci databáze vytvořte pět kontejnerů s názvem *a*, *B*, *C*, *D*a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru":::
 
@@ -94,22 +94,47 @@ Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i konte
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>Aktualizace propustnosti v databázi nebo kontejneru
 
-Po vytvoření kontejneru Azure Cosmos nebo databáze můžete aktualizovat zřízenou propustnost. Maximální zajištěná propustnost, kterou můžete nakonfigurovat v databázi nebo v kontejneru, není nijak omezena. 
+Po vytvoření kontejneru Azure Cosmos nebo databáze můžete aktualizovat zřízenou propustnost. Maximální zajištěná propustnost, kterou můžete nakonfigurovat v databázi nebo v kontejneru, není nijak omezena.
 
-K odhadu [minimální zřízené propustnosti](concepts-limits.md#storage-and-database-operations) databáze nebo kontejneru Najděte maximum z těchto hodnot:
+### <a name="current-provisioned-throughput"></a>Současná zřízená propustnost
+
+Zřízenou propustnost kontejneru nebo databáze můžete načíst v Azure Portal nebo pomocí sad SDK:
+
+* [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
+* [CosmosContainer. readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
+
+Reakce těchto metod také obsahuje [minimální zřízenou propustnost](concepts-limits.md#storage-and-database-operations) pro kontejner nebo databázi:
+
+* [ThroughputResponse. MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
+* [ThroughputResponse. getMinThroughput ()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
+
+Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Obecně se ale jedná o maximum:
 
 * 400 RU/s 
 * Aktuální úložiště v GB × 10 RU/s
 * Nejvyšší RU/s zřízené v databázi nebo kontejneru/100
 * Počet kontejnerů × 100 RU/s (pouze sdílená databáze propustnosti)
 
-Skutečné minimální RU/s se může lišit v závislosti na konfiguraci vašeho účtu. Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) můžete zobrazit historii zřízené propustnosti (ru/s) a úložiště v prostředku.
+### <a name="changing-the-provisioned-throughput"></a>Změna zřízené propustnosti
 
-Minimální propustnost kontejneru nebo databáze můžete načíst programově pomocí sad SDK nebo zobrazit hodnotu v Azure Portal. Při použití sady .NET SDK, [kontejneru. Metoda ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) umožňuje škálovat hodnotu zřízené propustnosti. Při použití sady Java SDK umožňuje metoda [CosmosContainer. replaceProvisionedThroughput](sql-api-java-sdk-samples.md) škálovat hodnotu zřízené propustnosti.
+Zřízenou propustnost kontejneru nebo databáze můžete škálovat prostřednictvím Azure Portal nebo pomocí sad SDK:
 
-Při použití sady .NET SDK umožňuje metoda [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) načíst minimální propustnost kontejneru nebo databáze. 
+* [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
+* [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
 
-Zřízenou propustnost kontejneru nebo databáze můžete kdykoli škálovat. Při provádění operace škálování pro zvýšení propustnosti může trvat delší dobu, než systémové úlohy zřídí požadované prostředky. Můžete kontrolovat stav operace škálování v Azure Portal nebo programově pomocí sad SDK. Při použití sady .NET SDK můžete získat stav operace škálování pomocí `Container.ReadThroughputAsync` metody.
+Pokud **snižujete zřízenou propustnost**, budete ji moci provést až na [minimum](#current-provisioned-throughput).
+
+Pokud **zvýšíte zřízenou propustnost**, většinou je operace okamžitá. Existují však případy, kdy může operace trvat delší dobu, protože systémové úlohy vyžadují zřízení požadovaných prostředků. V takovém případě se pokus o změnu zřízené propustnosti v průběhu této operace zaznamená odpověď HTTP 423 s chybovou zprávou s vysvětlením, že probíhá jiná operace škálování.
+
+> [!NOTE]
+> Pokud plánujete velmi velkou úlohu příjmu, která bude vyžadovat velký nárůst zřízené propustnosti, pamatujte na to, že operace škálování nemá žádnou smlouvu SLA a jak je uvedeno v předchozím odstavci, může trvat dlouhou dobu, než se zvýší velká doba. Možná budete chtít naplánovat dopředu a zahájit škálování před spuštěním úlohy a pomocí níže uvedených metod ověřit průběh.
+
+Průběh škálování můžete programově ověřit načtením [aktuální zřízené propustnosti](#current-provisioned-throughput) a použitím:
+
+* [ThroughputResponse. IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
+* [ThroughputResponse. isReplacePending ()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
+
+Pomocí [Azure monitor metrik](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) můžete zobrazit historii zřízené propustnosti (ru/s) a úložiště v prostředku.
 
 ## <a name="comparison-of-models"></a>Porovnání modelů
 Tato tabulka ukazuje porovnání mezi zřizováním standardní (ruční) propustností databáze vs. v kontejneru. 
@@ -126,7 +151,7 @@ Tato tabulka ukazuje porovnání mezi zřizováním standardní (ruční) propus
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [logických oddílech](partition-data.md).
+* Přečtěte si další informace o [logických oddílech](partitioning-overview.md).
 * Přečtěte si, jak [zřídit standardní (ruční) na kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 * Naučte se [zřídit standardní (ruční) propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
 * Naučte se [zřídit propustnost automatického škálování v databázi nebo kontejneru Azure Cosmos](how-to-provision-autoscale-throughput.md).

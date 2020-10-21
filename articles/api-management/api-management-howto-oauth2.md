@@ -11,23 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 08/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f2673bd181bc24d821b41ae1466c05a9593f154
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87902253"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315749"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autorizovat vývojářské účty pomocí OAuth 2,0 v Azure API Management
 
 Mnoho rozhraní API podporuje [OAuth 2,0](https://oauth.net/2/) k zabezpečení rozhraní API a zajišťují, že přístup k nim mají jenom platní uživatelé a mají přístup jenom k prostředkům, ke kterým mají oprávnění. Aby bylo možné používat interaktivní konzolu pro vývojáře Azure API Management s těmito rozhraními API, služba vám umožní nakonfigurovat instanci služby tak, aby fungovala s rozhraním API s povoleným protokolem OAuth 2,0.
 
-> [!IMPORTANT]
-> Autorizace OAuth 2,0 není zatím k dispozici v interaktivní konzole nového portálu pro vývojáře.
-
-## <a name="prerequisites"></a><a name="prerequisites"> </a>Požadavky
+## <a name="prerequisites"></a><a name="prerequisites"> </a>Předpoklady
 
 V této příručce se dozvíte, jak nakonfigurovat instanci služby API Management, aby používala autorizaci OAuth 2,0 pro vývojářské účty, ale neukazuje, jak nakonfigurovat poskytovatele OAuth 2,0. Konfigurace pro každého poskytovatele OAuth 2,0 se liší, ale postup je podobný a požadované informace, které se používají při konfiguraci OAuth 2,0 ve vaší instanci služby API Management, jsou stejné. V tomto tématu se dozvíte o příkladech použití Azure Active Directory jako poskytovatele OAuth 2,0.
 
@@ -123,7 +120,7 @@ Když je vybraný **autorizační kód** , zobrazí se automaticky otevírané o
 > [!NOTE]
 > Pokud jste automaticky otevíraná okna zakázali, budete vyzváni, abyste je povolili v prohlížeči. Jakmile je povolíte, znovu vyberte **autorizační kód** a zobrazí se formulář pro přihlášení.
 
-![Přihlásit se][api-management-oauth2-signin]
+![Přihlášení][api-management-oauth2-signin]
 
 Jakmile se přihlásíte, **hlavičky žádosti** se naplní `Authorization : Bearer` hlavičkou, která žádost autorizuje.
 

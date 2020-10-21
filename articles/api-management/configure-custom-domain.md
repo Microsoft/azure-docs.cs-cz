@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024856"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311138"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Konfigurace vlastního názvu domény pro instanci Azure API Management
 
@@ -29,7 +29,7 @@ Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí sub
 > [!WARNING]
 > Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, budou mít zavedenou závislost na vlastnostech certifikátu, který neovládají, což není doporučený postup.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
@@ -50,10 +50,10 @@ K provedení kroků popsaných v tomto článku musíte mít:
     K dispozici je několik koncových bodů, ke kterým můžete přiřadit vlastní název domény. V současné době jsou k dispozici následující koncové body:
 
     - **Brána** (výchozí je: `<apim-service-name>.azure-api.net` ),
-    - **Portál** (výchozí je: `<apim-service-name>.portal.azure-api.net` ),
+    - **Portál pro vývojáře (starší verze)** (výchozí je: `<apim-service-name>.portal.azure-api.net` ),
+    - **Portál pro vývojáře** (výchozí je: `<apim-service-name>.developer.azure-api.net` ).
     - **Správa** (výchozí je: `<apim-service-name>.management.azure-api.net` ),
     - **SCM** (výchozí je: `<apim-service-name>.scm.azure-api.net` ),
-    - **NewPortal** (výchozí je: `<apim-service-name>.developer.azure-api.net` ).
 
     > [!NOTE]
     > Pouze koncový bod **brány** je k dispozici pro konfiguraci v úrovni spotřeby.

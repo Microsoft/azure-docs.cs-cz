@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fd7431b19ed21ee9cf76b6c2fe190b3f31cacf6
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020877"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281048"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Vyřazení úrovní výkonu S1, S2 a S3 z provozu
 
@@ -82,7 +82,7 @@ Za předpokladu, že máte 10 kolekcí S1, 1 GB úložiště pro každý, v USA 
 
 ## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>Co když potřebuji víc než 20 GB úložiště?
 
-Bez ohledu na to, jestli máte kolekci s úrovní výkonu S1, S2 nebo S3 nebo pokud máte kolekci s jedním oddílem, máte k dispozici více než 20 GB úložiště, můžete použít nástroj pro migraci dat Azure Cosmos DB k migraci dat do dělené kolekce s prakticky neomezeným úložištěm. Informace o výhodách dělené kolekce najdete [v tématu dělení a škálování v Azure Cosmos DB](sql-api-partition-data.md). 
+Bez ohledu na to, jestli máte kolekci s úrovní výkonu S1, S2 nebo S3 nebo pokud máte kolekci s jedním oddílem, máte k dispozici více než 20 GB úložiště, můžete použít nástroj pro migraci dat Azure Cosmos DB k migraci dat do dělené kolekce s prakticky neomezeným úložištěm. Informace o výhodách dělené kolekce najdete [v tématu dělení a škálování v Azure Cosmos DB](partitioning-overview.md). 
 
 <a name="change-before"></a>
 
@@ -132,6 +132,6 @@ Zákazníci se smlouvou EA budou mít cenu chráněnou až do konce stávající
 ## <a name="next-steps"></a>Další kroky
 Pokud chcete získat další informace o cenách a správě dat pomocí Azure Cosmos DB, Prozkoumejte tyto materiály:
 
-1.  [Vytváření oddílů dat v Cosmos DB](sql-api-partition-data.md). Pochopte rozdíl mezi kontejnerem s jedním oddílem a kontejnery rozdělenými na oddíly a také tipy k implementaci strategie dělení pro bezproblémové škálování.
+1.  [Vytváření oddílů dat v Cosmos DB](partitioning-overview.md). Pochopte rozdíl mezi kontejnerem s jedním oddílem a kontejnery rozdělenými na oddíly a také tipy k implementaci strategie dělení pro bezproblémové škálování.
 2.  [Cosmos DB ceny](https://azure.microsoft.com/pricing/details/cosmos-db/). Seznamte se s náklady na zřizování propustnosti a spotřebou úložiště.
 3.  [Jednotky žádosti](request-units.md). Pochopte spotřebu propustnosti pro různé typy operací, například čtení, zápis a dotazování.

@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804193"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276092"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Stránkování v Azure Cosmos DB
 
@@ -21,7 +21,7 @@ V Azure Cosmos DB mohou dotazy obsahovat více stránek výsledků. Tento dokume
 
 Někdy budou výsledky dotazu rozděleny na více stránek. Výsledky každé stránky jsou generovány pomocí samostatného spuštění dotazu. Pokud výsledky dotazu nelze vrátit v jednom jednom spuštění, Azure Cosmos DB budou automaticky rozděleny výsledky na více stránek.
 
-Můžete zadat maximální počet položek vrácených dotazem nastavením `MaxItemCount` . `MaxItemCount`Je určen pro každý požadavek a zaručuje, že dotazovací stroj vrátí tento počet položek nebo méně. Můžete nastavit `MaxItemCount` na, `-1` Pokud nechcete omezit počet výsledků na provedení dotazu.
+Můžete zadat maximální počet položek vrácených dotazem nastavením `MaxItemCount` . `MaxItemCount`Je určen pro každý požadavek a oznamuje dotazovacímu stroji, aby vrátil tento počet položek nebo méně. Můžete nastavit `MaxItemCount` na, `-1` Pokud nechcete omezit počet výsledků na provedení dotazu.
 
 Kromě toho existují další důvody, proč může dotazovací stroj potřebovat rozdělit výsledky dotazu na více stránek. Tady jsou některé z nich:
 

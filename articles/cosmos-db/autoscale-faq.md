@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567583"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277965"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se zajištěné propustnosti automatického škálování v Azure Cosmos DB
 
@@ -125,7 +125,7 @@ Předpokládejme například, že máte kontejner automatického škálování s
 - Hodina 1: T = 2: kontejner zahajuje získávání požadavků, které spotřebovávají 1000 RU za 1 sekundu. K dispozici jsou také 200 Ruy, které se musí vyskytnout. Fakturovatelné RU/s je stále 1000 RU/s. Bez ohledu na to, kdy k TTLs dojde, nebude mít vliv na logiku škálování automatického škálování.
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>Jaké je mapování mezi maximálním RU/s a fyzickými oddíly?
-Při prvním výběru maximálního RU/s se Azure Cosmos DB zřídí: max. RU/s/10 000 RU/s = # fyzických oddílů. Každý [fyzický oddíl](partition-data.md#physical-partitions) může podporovat až 10 000 ru/s a 50 GB úložiště. Když velikost úložiště roste, Azure Cosmos DB bude automaticky rozdělit oddíly a přidat tak další fyzické oddíly pro zpracování zvýšení úložiště nebo zvýšit maximální RU/s, pokud úložiště [překročí přidružený limit](#what-is-the-storage-limit-associated-with-each-max-rus-option). 
+Při prvním výběru maximálního RU/s se Azure Cosmos DB zřídí: max. RU/s/10 000 RU/s = # fyzických oddílů. Každý [fyzický oddíl](partitioning-overview.md#physical-partitions) může podporovat až 10 000 ru/s a 50 GB úložiště. Když velikost úložiště roste, Azure Cosmos DB bude automaticky rozdělit oddíly a přidat tak další fyzické oddíly pro zpracování zvýšení úložiště nebo zvýšit maximální RU/s, pokud úložiště [překročí přidružený limit](#what-is-the-storage-limit-associated-with-each-max-rus-option). 
 
 Maximální RU/s databáze nebo kontejneru se rovnoměrně rozděluje napříč všemi fyzickými oddíly. Celkové propustnosti, na které se může každý fyzický oddíl škálovat, tedy: max. RU/s databáze nebo kontejner/# fyzické oddíly. 
 
@@ -147,5 +147,5 @@ Pokud například vyberete možnost maximální propustnost 20 000 RU/s a máte 
 
 * Naučte se, jak [Povolit automatické škálování u Azure Cosmos DB databáze nebo kontejneru](how-to-provision-autoscale-throughput.md).
 * Přečtěte si o [výhodách zřízené propustnosti pomocí automatického škálování](provision-throughput-autoscale.md#benefits-of-autoscale).
-* Další informace o [logických a fyzických oddílech](partition-data.md).
+* Další informace o [logických a fyzických oddílech](partitioning-overview.md).
                         

@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871172"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314734"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 
@@ -90,7 +90,7 @@ Komponenta, která se pokouší replikovat data do Azure, je buď nefunkční, n
     
     **Postup spuštění testu výkonnosti výkonu:**
     
-      1. [Stáhnout](https://go.microsoft.com/fwlink/?linkid=2138966) AzCopy
+      1. [Stáhnout](../storage/common/storage-use-azcopy-v10.md) AzCopy
         
       2. Vyhledejte účet úložiště zařízení ve skupině prostředků. Účet úložiště má název, který se podobá migrategwsa \* \* \* \* \* \* \* \* \* \* . Toto je hodnota parametru [Account] ve výše uvedeném příkazu.
         
@@ -170,7 +170,7 @@ Mezi možné příčiny patří:
     
     **Postup spuštění testu výkonnosti výkonu:**
     
-      1. [Stáhnout](https://go.microsoft.com/fwlink/?linkid=2138966) AzCopy
+      1. [Stáhnout](../storage/common/storage-use-azcopy-v10.md) AzCopy
         
       2. Vyhledejte účet úložiště zařízení ve skupině prostředků. Účet úložiště má název, který se podobá migratelsa \* \* \* \* \* \* \* \* \* \* . Toto je hodnota parametru [Account] ve výše uvedeném příkazu.
         
@@ -295,4 +295,4 @@ K tomu dojde v případě, že vyrovnávací paměť hostitele NFC nemá dostate
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokračujte v replikaci virtuálních počítačů a proveďte [testovací migraci](https://go.microsoft.com/fwlink/?linkid=2139333).
+Pokračujte v replikaci virtuálních počítačů a proveďte [testovací migraci](./tutorial-migrate-vmware.md#run-a-test-migration).
