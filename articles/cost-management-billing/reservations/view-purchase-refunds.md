@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d9e5269468f7cd4571e7ae686af7f1ef159b4ef3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b986aa2bfce203be85adbcde8e2966c167bf7ca1
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681698"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151771"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>Zobrazení nákupu rezervací a transakcí refundace
 
@@ -39,11 +39,11 @@ Správce fakturace pro podnikovou registraci nebo Smlouvu se zákazníkem Micros
 
 [![Příklad ukazující transakce rezervací](./media/view-purchase-refunds/power-bi-reservation-transactions.png)](./media/view-purchase-refunds/power-bi-reservation-transactions.png#lightbox)
 
-Další informace najdete v tématu [Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise](https://docs.microsoft.com/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app).
+Další informace najdete v tématu [Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise](../costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md).
 
 ## <a name="use-apis-to-get-reservation-transactions"></a>Použití rozhraní API k získání transakcí rezervací
 
-Uživatelé se smlouvou Enterprise (EA) a Smlouvou se zákazníkem Microsoftu mohou k získání údajů o transakcích rezervací využít [rozhraní API Reservation Transactions – List](https://docs.microsoft.com/rest/api/consumption/reservationtransactions/list).
+Uživatelé se smlouvou Enterprise (EA) a Smlouvou se zákazníkem Microsoftu mohou k získání údajů o transakcích rezervací využít [rozhraní API Reservation Transactions – List](/rest/api/consumption/reservationtransactions/list).
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

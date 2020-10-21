@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436014"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342208"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>Nejčastější dotazy týkající se virtuálních počítačů
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>Jaké typy virtuálních počítačů se podporují?
 
-Monitorování a doporučení jsou k dispozici pro virtuální počítače vytvořené pomocí [modelu nasazení Classic i správce prostředků](../azure-classic-rm.md).
+Monitorování a doporučení jsou k dispozici pro virtuální počítače vytvořené pomocí [modelu nasazení Classic i správce prostředků](/azure/security-center/./azure-resource-manager/management/deployment-models).
 
 Seznam podporovaných platforem najdete [v tématu podporované platformy v Azure Security Center](security-center-os-coverage.md) .
 
@@ -51,7 +51,7 @@ Níže jsou uvedeny doby latence Security Center prověřování chyb zabezpeče
 Security Center obvykle vyhledává nová data každou hodinu a příslušná doporučení aktualizuje. 
 
 > [!NOTE]
-> Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Další informace najdete v tématu [migrace platformy Azure Security Center](security-center-platform-migration.md).
+> Security Center používá agenta Log Analytics ke shromažďování a ukládání dat. Další informace najdete v tématu [migrace platformy Azure Security Center](./security-center-enable-data-collection.md).
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Proč se zobrazí zpráva "agent virtuálního počítače chybí?"

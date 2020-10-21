@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e270185550fac5a06d800d74d5fcd751aceb25d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80585972"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342225"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Správa uživatelských dat ve službě Azure Security Center
 Tento článek poskytuje informace o tom, jak můžete spravovat data uživatelů v Azure Security Center. Správa uživatelských dat zahrnuje možnost přístupu, odstranění a exportu dat.
@@ -87,7 +87,7 @@ Správce účtu může exportovat podrobnosti výstrahy podle těchto údajů:
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
   ```
 
-Další informace najdete v tématu [získání výstrah zabezpečení (získání kolekce)](https://msdn.microsoft.com/library/mt704050.aspx).
+Další informace najdete v tématu [získání výstrah zabezpečení (získání kolekce)](/previous-versions/azure/reference/mt704050(v=azure.100)).
 
 ## <a name="restricting-the-use-of-personal-data-for-profiling-or-marketing-without-consent"></a>Omezení používání osobních údajů pro profilaci nebo marketing bez souhlasu
 Uživatel Security Center se může rozhodnout, že se má odhlásit a odstranit [data kontaktů zabezpečení](security-center-provide-security-contact-details.md).

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: c4eb30df74e2a8d6748ede987df0b1c41cff0ca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448477"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342089"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Potlačit výstrahy z Azure Defenderu
 
@@ -26,7 +26,7 @@ Tato stránka vysvětluje, jak můžete pomocí pravidel potlačení výstrah po
 |Stav vydaných verzí:|Preview|
 |Stanov|Free<br>(Většina výstrah zabezpečení je dostupná jenom v Azure Defenderu.)|
 |Požadované role a oprávnění:|**Správce zabezpečení** a **vlastník** můžou pravidla vytvářet a odstraňovat.<br>**Čtenáři zabezpečení** a **čtenáři** můžou zobrazit pravidla.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -49,16 +49,16 @@ Pravidla potlačení definují kritéria, pro která se mají automaticky odklá
 
 ## <a name="create-a-suppression-rule"></a>Vytvoření pravidla potlačení
 
-Existuje několik způsobů, jak můžete vytvořit pravidla pro potlačení upozornění na nechtěné zabezpečení:
+Pravidla pro potlačení nechtěných upozornění zabezpečení můžete vytvořit několika způsoby:
 
-- Chcete-li potlačit výstrahy na úrovni skupiny pro správu, použijte Azure Policy
-- Chcete-li potlačit výstrahy na úrovni předplatného, můžete použít Azure Portal nebo REST API, jak je vysvětleno níže.
+- Pokud chcete potlačit upozornění na úrovni skupiny pro správu, použijte službu Azure Policy.
+- Pokud chcete potlačit upozornění na úrovni předplatného, můžete použít Azure Portal nebo rozhraní REST API, jak je vysvětleno níže.
 
 Pravidla potlačení můžou odpustit jenom výstrahy, které už se aktivovaly ve vybraných předplatných.
 
 Postup vytvoření pravidla přímo v Azure Portal:
 
-1. Stránka výstrahy zabezpečení Security Center:
+1. V horní části stránky Upozornění zabezpečení služby Security Center
 
     - Vyhledejte konkrétní výstrahu, kterou už nechcete vidět, a z nabídky se třemi tečkami (...) pro výstrahu vyberte **vytvořit pravidlo potlačení**:
 
@@ -76,11 +76,11 @@ Postup vytvoření pravidla přímo v Azure Portal:
     > Pokud jste otevřeli stránku Nová pravidla z konkrétní výstrahy, výstraha a předplatné se automaticky nakonfigurují v novém pravidle. Pokud jste použili odkaz **vytvořit nové pravidlo potlačení** , vybrané odběry budou odpovídat aktuálnímu filtru na portálu.
 
     [![Podokno Vytvoření pravidla potlačení](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
-1. Zadejte podrobnosti pravidla:
-    - **Název** – název pravidla. Názvy pravidel musí začínat písmenem nebo číslicí, být mezi 2 a 50 znaky a nesmí obsahovat žádné symboly jiné než spojovníky (-) nebo podtržítka (_). 
+1. Zadejte podrobnosti o pravidle:
+    - **Název** – název pravidla. Názvy pravidel musí začínat písmenem nebo číslicí, mít 2 až 50 znaků a nesmí obsahovat žádné jiné symboly než spojovníky (-) a podtržítka (_). 
     - **Stav** -povoleno nebo zakázáno.
     - **Důvod** – vyberte jeden z předdefinovaných důvodů nebo ' jiné ', pokud nevyhovují vašim potřebám.
-    - **Datum vypršení platnosti** – datum a čas ukončení pravidla. Pravidla mohou běžet až po dobu šesti měsíců.
+    - **Datum vypršení platnosti** – datum a čas ukončení pravidla. Pravidla můžou platit až šest měsíců.
 1. Volitelně můžete otestovat pravidlo pomocí tlačítka **simulovat** a zjistit, kolik výstrah by bylo vykázalo, pokud bylo toto pravidlo aktivní.
 1. Uložte pravidlo. 
 
@@ -139,7 +139,7 @@ Příslušné metody HTTP pro pravidla potlačení v REST API jsou:
 
 - **Odstranit**: odstraní stávající pravidlo (ale nemění stav výstrah, které mu už zavřelo).
 
-Úplné podrobnosti a příklady použití najdete v [dokumentaci k rozhraní API](https://docs.microsoft.com/rest/api/securitycenter/). 
+Úplné podrobnosti a příklady použití najdete v [dokumentaci k rozhraní API](/rest/api/securitycenter/). 
 
 
 ## <a name="next-steps"></a>Další kroky

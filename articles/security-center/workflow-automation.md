@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b713977d811411ea2ccd7dfa22c7757321ecd7aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b3fb116c4eb16e4280e2f71873e88dccff278
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712285"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92344028"
 ---
-# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Vytváření automatických odpovědí na výstrahy a doporučení pomocí automatizace pracovních postupů
+# <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Vytváření automatických odpovědí na upozornění a doporučení s využitím automatizace pracovních postupů
 
 Každý program zabezpečení zahrnuje několik pracovních postupů pro reakci na incidenty. Tyto procesy mohou zahrnovat oznamování relevantních účastníků, spuštění procesu správy změn a uplatnění specifických kroků k nápravě. Odborníci na zabezpečení doporučují automatizovat tolik kroků těchto postupů, jako je to možné. Automatizace snižuje režijní náklady. Může taky zlepšit zabezpečení tím, že zajistí rychlé, konzistentní a podle vašich předdefinovaných požadavků kroky procesu.
 
-Tento článek popisuje funkci automatizace pracovního postupu Azure Security Center. Tato funkce může aktivovat Logic Apps výstrah zabezpečení a doporučení. Můžete například chtít, aby Security Center při výskytu výstrahy poslat e-mailem konkrétního uživatele. Naučíte se také, jak vytvořit Logic Apps pomocí [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+Tento článek popisuje funkci automatizace pracovního postupu Azure Security Center. Tato funkce může aktivovat Logic Apps výstrah zabezpečení a doporučení. Můžete například chtít, aby Security Center při výskytu výstrahy poslat e-mailem konkrétního uživatele. Naučíte se také, jak vytvořit Logic Apps pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
 > [!NOTE]
 > Pokud jste dříve použili zobrazení Playbooky (Preview) na bočním panelu, najdete stejné funkce společně s rozšířenými funkcemi na stránce Nová automatizace pracovního postupu.
@@ -32,8 +32,8 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Free|
-|Požadované role a oprávnění:|**Role správce zabezpečení** nebo **vlastník** skupiny prostředků<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.<br><br>Pokud chcete pracovat s Azure Logic Apps pracovními postupy, musíte mít také následující Logic Apps role/oprávnění:<br> - Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)<br> - Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .<br>Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Požadované role a oprávnění:|**Role správce zabezpečení** nebo **vlastník** skupiny prostředků<br>Musí mít taky oprávnění k zápisu pro cílový prostředek.<br><br>Pokud chcete pracovat s Azure Logic Apps pracovními postupy, musíte mít také následující Logic Apps role/oprávnění:<br> - Jsou vyžadována oprávnění [operátora aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)<br> - Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-contributor) .<br>Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -101,9 +101,9 @@ V tomto článku jste se dozvěděli o vytváření Logic Apps, automatizaci jej
 
 Související materiály najdete v tématech: 
 
-- [Modul Microsoft Learn, jak pomocí automatizace pracovních postupů automatizovat odpověď zabezpečení](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
+- [Modul Microsoft Learn, jak pomocí automatizace pracovních postupů automatizovat odpověď zabezpečení](/learn/modules/resolve-threats-with-azure-security-center/)
 - [Doporučení zabezpečení v Azure Security Center](security-center-recommendations.md)
 - [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
-- [Informace o Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
-- [Konektory Logic Apps](https://docs.microsoft.com/connectors/)
-- [Schémata datových typů automatizace pracovního postupu](https://aka.ms/ASCAutomationSchemas)
+- [Informace o Azure Logic Apps](../logic-apps/logic-apps-overview.md)
+- [Konektory Logic Apps](/connectors/)
+- [Schémata datových typů v rámci automatizace pracovních postupů](https://aka.ms/ASCAutomationSchemas)

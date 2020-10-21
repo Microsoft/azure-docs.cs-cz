@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0546bd173a5cab456c0ccdafcd5a35c11b0d5ee9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102149"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342123"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -187,7 +187,7 @@ Pokud dochází k potížím při vytváření, aktualizaci, načítání nebo o
 - Projděte si seznam [běžných chyb nasazení Azure](../../azure-resource-manager/templates/common-deployment-errors.md) a vyřešte případné potíže.
 - V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](./alerts-metric-create-templates.md) , abyste měli jistotu, že předáváte všechny parametry správně.
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Přečtěte si [průvodce REST API](/rest/api/monitor/metricalerts/) , abyste ověřili, že všechny parametry předáváte správně.
 
@@ -228,7 +228,7 @@ Ujistěte se, že používáte pro výstrahy metrik správné příkazy rozhran�
 Pokud chcete vytvořit pravidlo upozornění na metriky, musíte mít následující oprávnění:
 
 - Oprávnění číst pro cílový prostředek pravidla výstrahy
-- Oprávnění k zápisu pro skupinu prostředků, ve které se vytvoří pravidlo výstrahy (Pokud vytváříte pravidlo výstrahy z Azure Portal, pravidlo výstrahy se vytvoří ve stejné skupině prostředků, ve které se nachází cílový prostředek).
+- Oprávnění k zápisu pro skupinu prostředků, ve které se vytvoří pravidlo výstrahy (Pokud vytváříte pravidlo výstrahy z Azure Portal, pravidlo výstrahy se ve výchozím nastavení vytvoří ve stejné skupině prostředků, ve které se nachází cílový prostředek).
 - Oprávnění ke čtení pro jakoukoli skupinu akcí přidruženou k pravidlu výstrahy (Pokud je k dispozici)
 
 
@@ -250,7 +250,7 @@ Při použití dimenzí v pravidle výstrahy, které obsahuje více podmínek, v
 - V rámci každé podmínky můžete vybrat jenom jednu hodnotu na dimenzi.
 - Nemůžete použít možnost vybrat všechny aktuální a budoucí hodnoty (vybrat \* ).
 - Pokud metriky, které jsou konfigurovány v různých podmínkách, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných podmínkách).
-Například:
+Příklad:
     - Vezměte v úvahu pravidlo upozornění metriky, které je definováno v účtu úložiště, a monitorujte dvě podmínky:
         * Celkový počet **transakcí** > 5
         * Průměrná **SuccessE2ELatency** > 250 ms

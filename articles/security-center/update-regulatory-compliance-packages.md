@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 5e32aa8491e18a66a3e8b90f065e6b785d1e3bd9
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106259"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342191"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
 Azure Security Center průběžně porovnává konfiguraci vašich prostředků s požadavky v oborových normách, nařízeních a srovnávacích testech. **Řídicí panel dodržování předpisů** poskytuje přehledy o stav dodržování předpisů na základě toho, jak splňujete konkrétní kontrolu a požadavky na dodržování předpisů.
 
 
-## <a name="overview-of-compliance-packages"></a>Přehled balíčků dodržování předpisů
+## <a name="overview-of-compliance-packages"></a>Přehled balíčků pro dodržování předpisů
 
 Oborové standardy, regulativní normy a srovnávací testy jsou v Security Center jako *balíčky dodržování předpisů*.  Každý balíček je iniciativou určenou v Azure Policy. Pokud chcete zobrazit data o dodržování předpisů namapovaná jako posouzení na řídicím panelu, přidejte do skupiny pro správu nebo předplatného na stránce **zásady zabezpečení** balíček pro dodržování předpisů. (Další informace o Azure Policy a iniciativách při [práci se zásadami zabezpečení](tutorial-security-policy.md).)
 
@@ -41,7 +41,7 @@ Microsoft také sleduje zákonné standardy a automaticky zlepšuje jejich pokry
 
 Můžete přidat standardy, jako je NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK oficiální a Velká Británie NHS, Kanada – federální PBMM a Azure CIS 1.1.0 (nový) – ucelená reprezentace 1.1.0 pro Azure CIS. 
 
-Kromě toho můžete přidat **srovnávací testy zabezpečení Azure**, které jsou specifické pro Azure, a to v souladu s osvědčenými postupy zabezpečení a dodržování předpisů, které jsou založené na běžných architekturách dodržování předpisů. (Další[informace o srovnávacích testech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/introduction).)
+Kromě toho můžete přidat **srovnávací testy zabezpečení Azure**, které jsou specifické pro Azure, a to v souladu s osvědčenými postupy zabezpečení a dodržování předpisů, které jsou založené na běžných architekturách dodržování předpisů. (Další[informace o srovnávacích testech zabezpečení Azure](../security/benchmarks/introduction.md).)
 
 Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici. 
 
@@ -116,6 +116,6 @@ V tomto článku jste zjistili, jak **Přidat balíčky dodržování předpisů
 
 Další související materiály najdete v následujících článcích: 
 
-- [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/introduction)
+- [Srovnávací test zabezpečení Azure](../security/benchmarks/introduction.md)
 - [Řídicí panel dodržování legislativních předpisů služby Security Center](security-center-compliance-dashboard.md)
 - [Práce se zásadami zabezpečení](tutorial-security-policy.md)

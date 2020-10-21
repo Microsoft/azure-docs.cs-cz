@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: f2f40d2ac6652b2b7c968a428961a9bd7f7b4288
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6be5e9bda27ddff157eda10bbb695dfacaecda7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217503"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342259"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Další dokumentace k Azure FXT Edge souborového
 
@@ -19,7 +19,7 @@ Některé prostředky mimo tento web docs.microsoft.com vám pomůžou pochopit 
 
 ## <a name="avere-vfxt-for-azure-cache-documentation"></a>Dokumentace k avere vFXT pro mezipaměť Azure
 
-[Avere vFXT for Azure](https://docs.microsoft.com/azure/avere-vfxt/) je podobný produkt mezipaměti clusteru, který používá virtuální uzly v Microsoft Azure. Je vytvořen pomocí Azure Portal, ale používá stejný konfigurační software ovládacích panelů jako mezipaměť hardwaru Azure FXT Edge souborového.
+[Avere vFXT for Azure](../avere-vfxt/index.yml) je podobný produkt mezipaměti clusteru, který používá virtuální uzly v Microsoft Azure. Je vytvořen pomocí Azure Portal, ale používá stejný konfigurační software ovládacích panelů jako mezipaměť hardwaru Azure FXT Edge souborového.
 
 ## <a name="legacy-hardware-documentation"></a>Starší verze dokumentace k hardwaru
 

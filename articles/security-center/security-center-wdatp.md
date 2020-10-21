@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 026425c78934209a2d258d50a5c7f51feeebd63b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275345"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342140"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -81,7 +81,7 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud potřebujete přes
     > [!NOTE]
     > Pokud chcete chránit počítače s povoleným obloukem Azure, postupujte podle pokynů v části [rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
 
-1. Pokud jste už na svých serverech licencovaný a nasazený program Microsoft Defender pro koncové body, odeberte ho pomocí postupu popsaného v tématu [odpojení Windows Servers](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
+1. Pokud jste už na svých serverech licencovaný a nasazený program Microsoft Defender pro koncové body, odeberte ho pomocí postupu popsaného v tématu [odpojení Windows Servers](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
 1. V nabídce Security Center vyberte **cenové & nastavení**.
 1. Vyberte předplatné, které chcete změnit.
 1. Vyberte **detekci hrozeb**.
@@ -94,11 +94,11 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud potřebujete přes
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Přístup k programu Microsoft Defender pro portál koncových bodů
 
-1. Ujistěte se, že uživatelský účet má potřebná oprávnění. [Další informace](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
+1. Ujistěte se, že uživatelský účet má potřebná oprávnění. [Další informace](/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
-1. Ověřte, jestli máte proxy nebo bránu firewall, která blokuje anonymní provoz. Defender pro senzor koncového bodu se připojuje z kontextu systému, takže musí být povolený anonymní provoz. Pokud chcete zajistit nerušený přístup k programu Defender pro portál Endpoint, postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby v proxy server](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
+1. Ověřte, jestli máte proxy nebo bránu firewall, která blokuje anonymní provoz. Defender pro senzor koncového bodu se připojuje z kontextu systému, takže musí být povolený anonymní provoz. Pokud chcete zajistit nerušený přístup k programu Defender pro portál Endpoint, postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby v proxy server](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
-1. Otevřete [portál Microsoft Defender Security Center](https://securitycenter.windows.com/). Přečtěte si další informace o funkcích a ikonách portálu v článku [Přehled portálu Microsoft Defender Security Center](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/portal-overview). 
+1. Otevřete [portál Microsoft Defender Security Center](https://securitycenter.windows.com/). Přečtěte si další informace o funkcích a ikonách portálu v článku [Přehled portálu Microsoft Defender Security Center](/windows/security/threat-protection/microsoft-defender-atp/portal-overview). 
 
 ## <a name="send-a-test-alert"></a>Odeslat testovací výstrahu
 
@@ -128,7 +128,7 @@ Defender pro koncový bod je v **Azure Defenderu pro servery**zahrnutý bez dal�
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Návody přepnout z nástroje EDR třetí strany?
 
-Úplné pokyny pro přepínání z řešení koncového bodu od jiného výrobce než od Microsoftu jsou dostupné v dokumentaci k Microsoft Defenderu pro koncové body: [Přehled migrace](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).
+Úplné pokyny pro přepínání z řešení koncového bodu od jiného výrobce než od Microsoftu jsou dostupné v dokumentaci k Microsoft Defenderu pro koncové body: [Přehled migrace](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).
   
 
 

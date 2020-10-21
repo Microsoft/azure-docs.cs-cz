@@ -8,12 +8,12 @@ ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d032937fe79b9f51818ce8917c36fa1cc30397c0
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 300ac0996d9dcb9ecb07abd3392447e393c1781b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400122"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151623"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací prostředků Azure
 
@@ -110,7 +110,7 @@ Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. 
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Změna nastavení optimalizace rezervovaných instancí virtuálních počítačů
 
- Při nákupu rezervované instance virtuálního počítače volíte flexibilní velikost instance nebo prioritu kapacity. Při flexibilní velikosti instance se sleva za rezervaci uplatňuje na jiné virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](https://aka.ms/RIVMGroups). Při použití priority kapacity se pro vaše nasazení upřednostňuje kapacita datového centra. Při použití této možnosti máte větší jistotu, že instance virtuálních počítačů spustíte v době, kdy je potřebujete.
+ Při nákupu rezervované instance virtuálního počítače volíte flexibilní velikost instance nebo prioritu kapacity. Při flexibilní velikosti instance se sleva za rezervaci uplatňuje na jiné virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](../../virtual-machines/reserved-vm-instance-size-flexibility.md). Při použití priority kapacity se pro vaše nasazení upřednostňuje kapacita datového centra. Při použití této možnosti máte větší jistotu, že instance virtuálních počítačů spustíte v době, kdy je potřebujete.
 
 Pokud je rozsah rezervace sdílený, je standardně zapnutá flexibilní velikost instance. Pro nasazení virtuálních počítačů se neupřednostňuje kapacita datového centra.
 
@@ -173,7 +173,7 @@ Zakoupení plánu služby:
 - [Předplacení prostředků Azure Cosmos DB pomocí rezervované kapacity služby Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 
 Zakoupení plánu softwaru:
-- [Předplacení plánů softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Předplacení plánů softwaru Red Hat z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Předplacení plánů softwaru SUSE z rezervací Azure](../../virtual-machines/linux/prepay-suse-software-charges.md)
 
 Principy slevy a využití:

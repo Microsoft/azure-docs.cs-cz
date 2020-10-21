@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 4a709527c0de2e092bcca2bbd9bc596aa0eb4cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6091ccbb64ec880224e861e1b8ee2bd39363385c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440732"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342378"
 ---
-# <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpečení portů pro správu pomocí přístupu za běhu
+# <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpečení portů pro správu s využitím přístupu za běhu
 
 Pomocí funkce přístupu k virtuálnímu počítači (JIT) pro přístup k virtuálnímu počítači (VM) Azure Security Center zablokovat příchozí provoz do vaší služby Azure Virtual Machines. Tím se snižuje riziko útoků při poskytování snadného přístupu, když se potřebujete připojit k virtuálnímu počítači.
 
@@ -35,9 +35,9 @@ Tato stránka vás učí, jak do programu zabezpečení zahrnout JIT. Dozvíte s
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
-|Podporované virtuální počítače:|![Ano ](./media/icons/yes-icon.png) virtuální počítače nasazené prostřednictvím Azure Resource Manager.<br>![Nejsou ](./media/icons/no-icon.png) nasazené žádné virtuální počítače s klasickými modely nasazení. [Přečtěte si další informace o těchto modelech nasazení](../azure-resource-manager/management/deployment-models.md).<br>![Žádné ](./media/icons/no-icon.png) virtuální počítače chráněné pomocí brány firewall Azure řízené nástrojem [Azure firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview)|
+|Podporované virtuální počítače:|![Ano ](./media/icons/yes-icon.png) virtuální počítače nasazené prostřednictvím Azure Resource Manager.<br>![Nejsou ](./media/icons/no-icon.png) nasazené žádné virtuální počítače s klasickými modely nasazení. [Přečtěte si další informace o těchto modelech nasazení](../azure-resource-manager/management/deployment-models.md).<br>![Žádné ](./media/icons/no-icon.png) virtuální počítače chráněné pomocí brány firewall Azure řízené nástrojem [Azure firewall Manager](../firewall-manager/overview.md)|
 |Požadované role a oprávnění:|Role **Čtenář** a **SecurityReader** můžou zobrazovat stav a parametry JIT.<br>Chcete-li vytvořit vlastní role, které mohou pracovat s JIT, přečtěte si téma [jaká oprávnění jsou nutná ke konfiguraci a používání JIT?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Chcete-li vytvořit roli s nejnižšími oprávněními pro uživatele, kteří potřebují vyžadovat přístup JIT k virtuálnímu počítači a provádět žádné jiné operace JIT, použijte [skript set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) ze stránky komunity GitHub Security Center.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -209,13 +209,13 @@ Následující příkazy PowerShellu vytvoří tuto konfiguraci JIT:
     K určení virtuálního počítače použijte parametr-Name. Chcete-li například vytvořit konfiguraci JIT pro dva různé virtuální počítače, VM1 a VM2, použijte: ```Set-AzJitNetworkAccessPolicy -Name VM1``` a ```Set-AzJitNetworkAccessPolicy -Name VM2``` .
 
 
-### <a name="rest-api"></a>[**REST API**](#tab/jit-config-api)
+### <a name="rest-api"></a>[**Rozhraní REST API**](#tab/jit-config-api)
 
 ### <a name="enable-jit-on-your-vms-using-the-rest-api"></a>Povolení JIT na virtuálních počítačích pomocí REST API
 
 Funkce přístupu k VIRTUÁLNÍm počítačům za běhu se dá použít přes rozhraní Azure Security Center API. Pomocí tohoto rozhraní API můžete získat informace o konfigurovaných virtuálních počítačích, přidat nové, požádat o přístup k virtuálnímu počítači a další. 
 
-Další informace najdete v [zásadách síťového přístupu JIT](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Další informace najdete v [zásadách síťového přístupu JIT](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 
 --- 
@@ -229,7 +229,7 @@ Další informace najdete v [zásadách síťového přístupu JIT](https://docs
 
 
 
-## <a name="request-access-to-a-jit-enabled-vm"></a>Požádat o přístup k virtuálnímu počítači s podporou JIT
+## <a name="request-access-to-a-jit-enabled-vm"></a>Žádost o přístup k virtuálnímu počítači s podporu JIT
 
 Můžete požádat o přístup k virtuálnímu počítači s podporou JIT z Azure Portal (v Security Center nebo virtuálních počítačích Azure) nebo programově.
 
@@ -290,7 +290,7 @@ Vyžádání přístupu z virtuálních počítačů Azure:
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-request-powershell)
 
-### <a name="request-access-to-a-jit-enabled-vm-using-powershell"></a>Vyžádání přístupu k virtuálnímu počítači s podporou JIT pomocí PowerShellu
+### <a name="request-access-to-a-jit-enabled-vm-using-powershell"></a>Žádost o přístup k virtuálnímu počítači s podporu JIT pomocí PowerShellu
 
 V následujícím příkladu uvidíte požadavek na přístup k virtuálnímu počítači za běhu na konkrétní virtuální počítač, ve kterém se vyžaduje otevření portu 22 pro konkrétní IP adresu a po určitou dobu:
 
@@ -319,17 +319,17 @@ Spusťte následující příkaz v PowerShellu:
     Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
     ```
 
-Další informace najdete v [dokumentaci k rutinám prostředí PowerShell](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview).
+Další informace najdete v [dokumentaci k rutinám prostředí PowerShell](/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 
 
-### <a name="rest-api"></a>[**REST API**](#tab/jit-request-api)
+### <a name="rest-api"></a>[**Rozhraní REST API**](#tab/jit-request-api)
 
 ### <a name="request-access-to-a-jit-enabled-vms-using-the-rest-api"></a>Vyžádat přístup k virtuálním počítačům s podporou JIT pomocí REST API
 
 Funkce přístupu k VIRTUÁLNÍm počítačům za běhu se dá použít přes rozhraní Azure Security Center API. Pomocí tohoto rozhraní API můžete získat informace o konfigurovaných virtuálních počítačích, přidat nové, požádat o přístup k virtuálnímu počítači a další. 
 
-Další informace najdete v [zásadách síťového přístupu JIT](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies).
+Další informace najdete v [zásadách síťového přístupu JIT](/rest/api/securitycenter/jitnetworkaccesspolicies).
 
 ---
 

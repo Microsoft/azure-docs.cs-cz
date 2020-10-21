@@ -4,12 +4,12 @@ description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3581c1f1660527bfbf2ae598349e30001962b1b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578066"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342174"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -137,7 +137,7 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače<sup>1</sup>  | **Ano** | No | No |
+| Virtuální počítače<sup>1</sup>  | **Ano** | Ne | Ne |
 | Databáze systému SQL Server | **Ano** | **Ano** | **Ano** |
 | Elastické fondy SQL serveru | **Ano** | **Ano** | **Ano** |
 | Fondy kapacity souborů NetApp | **Ano** | **Ano** | **Ano** |
@@ -166,7 +166,7 @@ Vytváření pravidel upozornění na metriky, které monitorují více prostře
 
 ## <a name="typical-latency"></a>Typická latence
 
-V případě výstrah metriky se obvykle během 5 minut zobrazí upozornění, pokud nastavíte četnost pravidel upozornění na 1 min. V případě velkého zatížení systémů oznámení se může zobrazit delší latence.
+V případě upozornění na metriky budete obvykle informováni do 5 minut, pokud frekvenci pravidla upozornění nastavíte na 1 minutu. V případě velkého zatížení systémů oznámení může být latence vyšší.
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Podporované typy prostředků pro výstrahy metriky
 
@@ -179,4 +179,5 @@ V případě výstrah metriky se obvykle během 5 minut zobrazí upozornění, p
 - [Naučte se nasazovat výstrahy metrik pomocí šablon Azure Resource Manager.](./alerts-metric-create-templates.md)
 - [Další informace o skupinách akcí](action-groups.md)
 - [Další informace o typu podmínky dynamického prahového hodnoty](alerts-dynamic-thresholds.md)
+- [Další informace o řešení potíží s upozorněními na metriky](alerts-troubleshoot-metric.md)
 

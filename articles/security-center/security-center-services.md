@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: dad35af600b8973268d07f3a8baae225b91cebc1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 59a87e7c91266dd1ec2d7263df7149d07f6e7ce8
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275237"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342293"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -55,7 +55,7 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 |**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače s podporou ARC Azure**|**Vyžaduje se Azure Defender.**
 |----|:----:|:----:|:----:|:----:|
 |[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|-|-|-|Ano|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](security-center-alerts-iaas.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Ano|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](./azure-defender.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Ano|
 |[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Ano|
 |[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Ano|
 |[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Ano|
@@ -96,10 +96,10 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 | Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | Ne | Ano |
 | Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
 | McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
-| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
-| Sophos v9 +| Řada Linux serverů  | Ne | Ano  **\***  |
+| McAfee v10+ | Řada Linux serverů  | Ne | Ano * *\** _ |
+| Sophos v9 +| Řada Linux serverů  | Ne | Ano  _*\**_  |
 
- **\*** Stav pokrytí a podpůrná data jsou v tuto chvíli k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
+ _ *\** * Stav pokrytí a podpůrná data jsou v tuto chvíli dostupné jenom v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
 
 > [!NOTE]
 > Rozpoznání nástroje System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows Serverem 2008 R2 vyžaduje, aby se protokol SCEP nainstaloval po PowerShellu (verze 3.0 nebo novější).

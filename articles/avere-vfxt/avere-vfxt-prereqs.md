@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: be5c640ef069690c408460b7374aee82c35b3a67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d87f57873a4bb84b20df3da3880017d9ef2484a5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272412"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342106"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
@@ -42,7 +42,7 @@ K dispozici je několik alternativních řešení, která umožňují vytvořit 
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kvóta pro cluster vFXT
 
-Ověřte, zda máte dostatečnou kvótu pro následující součásti Azure. V případě potřeby [vyžádejte zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Ověřte, zda máte dostatečnou kvótu pro následující součásti Azure. V případě potřeby [vyžádejte zvýšení kvóty](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 > [!NOTE]
 > Zde uvedené virtuální počítače a komponenty SSD jsou pro samotný cluster vFXT. Pamatujte, že budete potřebovat kvótu pro virtuální počítače a SSD, které použijete pro výpočetní farmu.

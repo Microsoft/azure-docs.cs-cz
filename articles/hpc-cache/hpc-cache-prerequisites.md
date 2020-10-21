@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 39c890e9e6634413947a96b1ddac608ee44bd9a0
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 92c8d860925ebde7d20befbaa708e8530cd1a0eb
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327395"
+ms.locfileid: "92344011"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -65,7 +65,7 @@ Pokud potřebujete jenom přístup k úložišti objektů blob, můžete pro svo
 
 K vyrovnávání zatížení připojení klientů mezi všemi dostupnými přípojnými body mezipaměti se dá použít taky jednoduchý server DNS.
 
-Přečtěte si další informace o virtuálních sítích Azure a konfiguracích serverů DNS v [překladu názvů pro prostředky v Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances).
+Přečtěte si další informace o virtuálních sítích Azure a konfiguracích serverů DNS v [překladu názvů pro prostředky v Azure Virtual Networks](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -110,7 +110,7 @@ Pokud používáte úložný systém NFS (například místní hardwarový syst�
 
 Další informace najdete v tématu [řešení problémů s cílovým úložištěm a konfigurací serveru pro systém souborů NFS](troubleshoot-nas.md).
 
-* **Připojení k síti:** Mezipaměť prostředí Azure HPC vyžaduje síťový přístup s vysokou šířkou pásma mezi podsítí mezipaměti a datovým centrem systému souborů NFS. Doporučuje se [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) nebo podobný přístup. Pokud používáte síť VPN, může být potřeba ji nakonfigurovat tak, aby se zablokovala TCP MSS v 1350, aby se zajistilo, že nebudou zablokované Velké pakety. Další pomoc při řešení potíží s nastavením sítě VPN najdete v tématu [omezení velikosti paketů sítě VPN](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) .
+* **Připojení k síti:** Mezipaměť prostředí Azure HPC vyžaduje síťový přístup s vysokou šířkou pásma mezi podsítí mezipaměti a datovým centrem systému souborů NFS. Doporučuje se [ExpressRoute](../expressroute/index.yml) nebo podobný přístup. Pokud používáte síť VPN, může být potřeba ji nakonfigurovat tak, aby se zablokovala TCP MSS v 1350, aby se zajistilo, že nebudou zablokované Velké pakety. Další pomoc při řešení potíží s nastavením sítě VPN najdete v tématu [omezení velikosti paketů sítě VPN](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) .
 
 * **Přístup k portu:** Mezipaměť potřebuje přístup ke konkrétním portům TCP/UDP v systému úložiště. Různé typy úložiště mají různé požadavky na porty.
 

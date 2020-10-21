@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c80ed02e137ea092bae1346260dba71cd417bed9
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: feb7be6ad5dbd0dfbd04b05836842d0476780d40
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688925"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151540"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Úspora nákladů na poplatky za kolek služby Azure App Service v izolovaném prostředí pomocí rezervované kapacity
 
@@ -39,7 +39,7 @@ Rezervace s kolkem pro Windows si kupte, pokud máte na kolku jeden nebo více p
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Zakoupení rezervované kapacity izolovaného kolku
 
-Rezervovanou kapacitu izolovaného kolku si můžete koupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](monthly-payments-reservations.md). Pokud si chcete koupit rezervovanou kapacitu, musíte mít roli vlastníka alespoň u jednoho předplatného se smlouvou Enterprise nebo u individuálního předplatného se sazbami pro průběžné platby.
+Rezervovanou kapacitu izolovaného kolku si můžete koupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](./prepare-buy-reservation.md). Pokud si chcete koupit rezervovanou kapacitu, musíte mít roli vlastníka alespoň u jednoho předplatného se smlouvou Enterprise nebo u individuálního předplatného se sazbami pro průběžné platby.
 
 - U předplatných se smlouvou Enterprise musí být na portálu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Pokud je toto nastavení zakázané, musíte být správcem EA.
 - U programu CSP (Cloud Solution Provider) můžou rezervovanou kapacitu služby Azure Synapse Analytics zakoupit jenom agenti správy nebo agenti prodeje.

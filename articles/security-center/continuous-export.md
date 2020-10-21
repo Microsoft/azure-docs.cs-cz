@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 8b27c3d0982e945fcabc6e7748646ea2ee1a4184
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ffc74e05d6cbe7722b9bf293c1a1e75a7de1b879
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945265"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342055"
 ---
 # <a name="continuously-export-security-alerts-and-recommendations"></a>Průběžně exportovat výstrahy a doporučení zabezpečení
 
@@ -41,7 +41,7 @@ Tento článek popisuje, jak nakonfigurovat průběžný export na Log Analytics
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|Free|
 |Požadované role a oprávnění:|<ul><li>**Správce zabezpečení** nebo **vlastník** skupiny prostředků</li><li>Oprávnění k zápisu pro cílový prostředek</li><li>Pokud používáte zásady Azure Policy ' DeployIfNotExist ' popsané níže, budete také potřebovat oprávnění k přiřazování zásad.</li></ul>|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Yes](./media/icons/yes-icon.png) Čína gov (do centra událostí), ostatní gov|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ano](./media/icons/yes-icon.png) Čína gov (do centra událostí), ostatní gov|
 |||
 
 
@@ -80,7 +80,7 @@ Následující postup je nezbytný, ať už nastavujete průběžný export do L
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>Konfigurace průběžného exportu pomocí REST API
 
-Průběžný export se dá nakonfigurovat a spravovat prostřednictvím [rozhraní API pro automatizaci](https://docs.microsoft.com/rest/api/securitycenter/automations)Azure Security Center. Pomocí tohoto rozhraní API můžete vytvářet nebo aktualizovat pravidla pro export do libovolného z následujících možných cílů:
+Průběžný export se dá nakonfigurovat a spravovat prostřednictvím [rozhraní API pro automatizaci](/rest/api/securitycenter/automations)Azure Security Center. Pomocí tohoto rozhraní API můžete vytvářet nebo aktualizovat pravidla pro export do libovolného z následujících možných cílů:
 
 - Azure Event Hub
 - Pracovní prostor služby Log Analytics
@@ -97,7 +97,7 @@ Rozhraní API poskytuje další funkce, které nejsou z Azure Portal k dispozici
     > [!TIP]
     > Pokud jste nastavili více konfigurací exportu pomocí rozhraní API nebo pokud jste použili parametry pouze rozhraní API, tyto funkce navíc nebudou zobrazeny v uživatelském rozhraní Security Center. Místo toho se zobrazí banner s tím, že existují další konfigurace.
 
-Další informace o rozhraní API pro automatizaci najdete v [dokumentaci k REST API](https://docs.microsoft.com/rest/api/securitycenter/automations).
+Další informace o rozhraní API pro automatizaci najdete v [dokumentaci k REST API](/rest/api/securitycenter/automations).
 
 
 
@@ -115,10 +115,10 @@ K nasazení konfigurací průběžného exportu v celé organizaci použijte uve
 
 1. V následující tabulce vyberte zásadu, kterou chcete použít:
 
-    |Cíl  |Zásady  |ID zásady  |
+    |Cíl  |Zásada  |ID zásady  |
     |---------|---------|---------|
-    |Průběžný export do centra událostí|[Nasazení exportu do centra událostí pro Azure Security Center výstrahy a doporučení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
-    |Průběžný export do pracovního prostoru Log Analytics|[Nasazení exportu do Log Analytics pracovního prostoru pro Azure Security Center výstrahy a doporučení](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    |Průběžný export do centra událostí|[Nasazení exportu do centra událostí pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Průběžný export do pracovního prostoru Log Analytics|[Nasazení exportu do pracovního prostoru služby Log Analytics pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
     ||||
 
     > [!TIP]
@@ -163,7 +163,7 @@ Chcete-li zobrazit schémata událostí exportovaných datových typů, navštiv
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Zobrazení exportovaných výstrah a doporučení v Azure Monitor
 
-V některých případech můžete zvolit zobrazení exportovaných výstrah zabezpečení nebo doporučení v [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview). 
+V některých případech můžete zvolit zobrazení exportovaných výstrah zabezpečení nebo doporučení v [Azure monitor](../azure-monitor/platform/alerts-overview.md). 
 
 Azure Monitor poskytuje jednotné prostředí pro upozorňování na nejrůznější výstrahy Azure, včetně diagnostického protokolu, výstrah metrik a vlastních výstrah, a to na základě Log Analytics dotazů v pracovním prostoru.
 
@@ -173,13 +173,13 @@ Chcete-li zobrazit výstrahy a doporučení z Security Center v Azure Monitor, n
 
     ![Stránka s výstrahami Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
-1. Na stránce Vytvořit pravidlo nakonfigurujte nové pravidlo (stejným způsobem, jako byste nakonfigurovali [pravidlo upozornění protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)):
+1. Na stránce Vytvořit pravidlo nakonfigurujte nové pravidlo (stejným způsobem, jako byste nakonfigurovali [pravidlo upozornění protokolu v Azure monitor](../azure-monitor/platform/alerts-unified-log.md)):
 
     * Jako **prostředek**vyberte pracovní prostor Log Analytics, do kterého jste exportovali výstrahy a doporučení zabezpečení.
 
     * V případě **podmínky**vyberte **vlastní prohledávání protokolu**. Na zobrazené stránce nakonfigurujte dotaz, období lookback a periodu četnosti. Do vyhledávacího dotazu můžete zadat *SecurityAlert* nebo *SecurityRecommendation* pro dotazování datových typů, které Security Center průběžně exportovat do funkce průběžný export do Log Analytics. 
     
-    * Volitelně můžete nakonfigurovat [skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) , kterou chcete aktivovat. Skupiny akcí můžou aktivovat odesílání e-mailů, lístky ITSM, Webhooky a další.
+    * Volitelně můžete nakonfigurovat [skupinu akcí](../azure-monitor/platform/action-groups.md) , kterou chcete aktivovat. Skupiny akcí můžou aktivovat odesílání e-mailů, lístky ITSM, Webhooky a další.
     ![Azure Monitor pravidlo výstrahy](./media/continuous-export/azure-monitor-alert-rule.png)
 
 Nyní se zobrazí nové výstrahy Azure Security Center nebo doporučení (v závislosti na konfigurovaných pravidlech průběžného exportu a podmínky, které jste definovali v pravidle Azure Monitor výstrahy), v části Azure Monitor výstrahy s automatickou aktivací skupiny akcí (Pokud je k dispozici).
@@ -198,7 +198,7 @@ Chcete-li stáhnout sestavu CSV pro výstrahy nebo doporučení, otevřete strá
 
 ### <a name="what-are-the-costs-involved-in-exporting-data"></a>Jaké jsou náklady spojené s exportem dat?
 
-Pro povolení průběžného exportu se neúčtují žádné náklady. Náklady mohou být vynaloženy na příjem a uchovávání dat v pracovním prostoru Log Analytics v závislosti na vaší konfiguraci. 
+Za povolení průběžného exportu se neúčtují žádné poplatky. Náklady mohou být vynaloženy na příjem a uchovávání dat v pracovním prostoru Log Analytics v závislosti na vaší konfiguraci. 
 
 Přečtěte si další informace o [cenách Log Analytics pracovního prostoru](https://azure.microsoft.com/pricing/details/monitor/).
 
@@ -214,7 +214,7 @@ V tomto článku jste zjistili, jak nakonfigurovat průběžné export vašich d
 Související materiály najdete v následující dokumentaci: 
 
 - Přečtěte si další informace o [šablonách automatizace pracovních postupů](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
-- [Dokumentace ke službě Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
-- [Dokumentace ke službě Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
-- [Dokumentace k Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
+- [Dokumentace ke službě Azure Event Hubs](../event-hubs/index.yml)
+- [Dokumentace ke službě Azure Sentinel](../sentinel/index.yml)
+- [Dokumentace k Azure Monitor](../azure-monitor/index.yml)
 - [Export schémat datových typů](https://aka.ms/ASCAutomationSchemas)

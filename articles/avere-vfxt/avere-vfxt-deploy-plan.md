@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272786"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342395"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Plánování systému Avere vFXT
 
@@ -75,8 +75,8 @@ Při plánování síťové infrastruktury clusteru avere vFXT postupujte podle 
   |----------|-----------|----------|
   | Skupina prostředků | Ano, je-li prázdné | Musí být prázdné|
   | Účet úložiště | **Ano** , pokud se po vytvoření clusteru připojí existující kontejner objektů BLOB <br/>  **Ne** při vytváření nového kontejneru objektů BLOB během vytváření clusteru | Existující kontejner objektů BLOB musí být prázdný. <br/> &nbsp; |
-  | Virtuální síť | Yes | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
-  | Podsíť | Yes | Nemůže obsahovat jiné prostředky. |
+  | Virtuální síť | Ano | Musí zahrnovat koncový bod služby úložiště při vytváření nového kontejneru objektů blob Azure. |
+  | Podsíť | Ano | Nemůže obsahovat jiné prostředky. |
 
 ## <a name="ip-address-requirements"></a>Požadavky na IP adresu
 
@@ -109,7 +109,7 @@ Každý uzel vFXT bude identický. To znamená, že pokud vytvoříte cluster se
 
 Disková mezipaměť na uzel je konfigurovatelná a může být Rage z 1000 GB do 8000 GB. pro uzly Standard_E32s_v3 doporučená velikost mezipaměti je 4 TB na uzel.
 
-Pokud chcete získat další informace o těchto virtuálních počítačích, přečtěte si dokumentaci k Microsoft Azure: [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+Pokud chcete získat další informace o těchto virtuálních počítačích, přečtěte si dokumentaci k Microsoft Azure: [paměťově optimalizované velikosti virtuálních počítačů](../virtual-machines/sizes-memory.md)
 
 ## <a name="account-quota"></a>Kvóta účtu
 
