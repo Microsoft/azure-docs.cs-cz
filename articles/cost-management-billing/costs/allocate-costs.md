@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 025b9b7e503f38a111bd158f17b7fbeec5b23579
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684979"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131084"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Vytváření a správa pravidel alokace nákladů na Azure (Preview)
 
@@ -58,16 +58,16 @@ Při distribuci nákladů podle nákladů na výpočetní funkce, nákladů na �
 
 Při distribuci nákladů úměrně celkovým nákladům se proporcionální počet procent určuje na základě součtu nebo celkových nákladů na vybrané cíle pro aktuální fakturační měsíc.
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Příklad ukazující procento přidělení" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="Příklad ukazující vytvoření názvu pravidla" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 Po nastavení se předem určená procenta definují jako fixní. Používají se pro všechny průběžné alokace. Procenta se mění jenom při ruční aktualizaci pravidla.
 
 1. V seznamu **Předem vyplnit procento na** vyberte jednu z následujících možností.
     - **Distribuovat rovnoměrně:** Každý z cílů bude mít stejný počet procent z celkových nákladů.
     - **Celkové náklady:** Vytvoří se poměr úměrný cílům na základě jejich celkových nákladů. Tento poměr se použije k distribuci nákladů z vybraných zdrojů.
-    - **Náklady na výpočty:** Vytvoří se poměr úměrný cílům na základě jejich nákladů na výpočetní funkce Azure (typy prostředků v oboru názvů [Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)). Tento poměr se použije k distribuci nákladů z vybraných zdrojů.
-    - **Náklady na úložiště:** Vytvoří se poměr úměrný cílům na základě jejich nákladů na úložiště Azure (typy prostředků v oboru názvů [Microsoft.Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions)). Tento poměr se použije k distribuci nákladů z vybraných zdrojů.
-    - **Náklady na síť:** Vytvoří se poměr úměrný cílům na základě jejich nákladů na síť Azure (typy prostředků v oboru názvů [Microsoft.Network](https://docs.microsoft.com/azure/templates/microsoft.network/allversions)). Tento poměr se použije k distribuci nákladů z vybraných zdrojů.
+    - **Náklady na výpočty:** Vytvoří se poměr úměrný cílům na základě jejich nákladů na výpočetní funkce Azure (typy prostředků v oboru názvů [Microsoft.Compute](/azure/templates/microsoft.compute/allversions)). Tento poměr se použije k distribuci nákladů z vybraných zdrojů.
+    - **Náklady na úložiště:** Vytvoří se poměr úměrný cílům na základě jejich nákladů na úložiště Azure (typy prostředků v oboru názvů [Microsoft.Storage](/azure/templates/microsoft.storage/allversions)). Tento poměr se použije k distribuci nákladů z vybraných zdrojů.
+    - **Náklady na síť:** Vytvoří se poměr úměrný cílům na základě jejich nákladů na síť Azure (typy prostředků v oboru názvů [Microsoft.Network](/azure/templates/microsoft.network/allversions)). Tento poměr se použije k distribuci nákladů z vybraných zdrojů.
     - **Vlastní:** Umožňuje ruční zadání celočíselných hodnot počtů procent. Jejich celkový součet se musí rovnat 100 %.
 1. Po dokončení konfigurace pravidla vyberte **Vytvořit**.
 
@@ -84,7 +84,7 @@ Když je pravidlo alokace nákladů aktivní, náklady z vybraných zdrojů se d
 
 Dopad pravidla alokace si můžete prohlédnout v analýze nákladů. Na webu Azure Portal přejděte na [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). V seznamu vyberte předplatné, na které cílí aktivní pravidlo alokace nákladů. Potom v nabídce vyberte **Analýza nákladů**. V analýze nákladů vyberte **Seskupit podle** a potom vyberte **Alokace nákladů**. Výsledné zobrazení ukazuje rychlé rozdělení nákladů vygenerovaných tímto předplatným. Zobrazí se také náklady přidělené tomuto předplatnému, podobně jako na následujícím obrázku.
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Příklad ukazující rozpis nákladů" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="Příklad ukazující vytvoření názvu pravidla" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>Zobrazení alokace nákladů pro skupinu prostředků
 
@@ -94,7 +94,7 @@ Ke zjištění dopadu pravidla alokace nákladů pro skupinu prostředků použi
 
 Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Správa náklad** > **Analýza nákladů**. V analýze nákladů vyberte **Přidat filtr**. Vyberte **Značka**, zvolte klíč značky a označte hodnoty, které mají přidělené náklady.
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Příklad ukazující náklady pro označené položky" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Příklad ukazující vytvoření názvu pravidla" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>Úprava stávajícího pravidla alokace nákladů
 
@@ -112,10 +112,10 @@ V současné době se alokace nákladů podporuje ve službě Cost Management v 
 Alokace nákladů ve verzi Public Preview momentálně nepodporuje následující položky:
 
 - Naplánované [exporty](tutorial-export-acm-data.md)
-- Data zpřístupněná rozhraním API pro [podrobností využití](https://docs.microsoft.com/rest/api/consumption/usagedetails/list)
+- Data zpřístupněná rozhraním API pro [podrobností využití](/rest/api/consumption/usagedetails/list)
 - Oblast fakturace předplatných
 - [Aplikace Power BI Cost Management](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
-- [Konektor Power BI Desktop](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
+- [Konektor Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
 ### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>Promítají se náklady do rozpočtů a zobrazení prognóz?
 <a name="budgets-forecast"></a>
@@ -144,5 +144,5 @@ Pravidla s překrývajícími se zdroji nebo cíli se nedoporučují. Pravidla a
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvoření nebo aktualizace pravidel alokace s využitím [rozhraní REST API pro alokaci nákladů](https://go.microsoft.com/fwlink/?linkid=2135004)
+- Vytvoření nebo aktualizace pravidel alokace s využitím [rozhraní REST API pro alokaci nákladů](/rest/api/cost-management/costallocationrules)
 - Další informace o [postupu při optimalizaci investic do cloudu s využitím služby Azure Cost Management](cost-mgt-best-practices.md)

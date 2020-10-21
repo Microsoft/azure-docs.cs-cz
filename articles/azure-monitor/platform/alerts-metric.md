@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065858"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342157"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
 
@@ -43,11 +43,11 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v
 8. Pokud má metrika rozměry, zobrazí se tabulka Dimensions. Vyberte jednu nebo více hodnot na dimenzi.
     - Zobrazené hodnoty dimenzí jsou založené na datech metriky za poslední tři dny.
     - Pokud Hledaná hodnota dimenze není zobrazená, přidejte vlastní hodnotu kliknutím na "+".
-    - Můžete také **vybrat \* ** některou z dimenzí. **Vybrat \* ** aplikace bude dynamicky škálovat výběr na všechny aktuální a budoucí hodnoty pro dimenzi.
+    - Můžete také*vybrat \* *_ pro všechny dimenze. _*Vybrat \* *_ aplikace bude dynamicky škálovat výběr na všechny aktuální a budoucí hodnoty pro dimenzi.
 
     Pravidlo upozornění metriky vyhodnotí podmínku pro všechny kombinace hodnot, které jsou vybrány. [Přečtěte si další informace o tom, jak funguje upozorňování na multidimenzionální metriky](alerts-metric-overview.md).
 
-9. Vyberte typ **prahové hodnoty** , **operátor**a **typ agregace**. Tím se určí logika, kterou vyhodnotí pravidlo výstrahy metriky.
+9. Vyberte*hodnotu*_ × typ, **operátor**a **typ agregace**. Tím se určí logika, kterou vyhodnotí pravidlo výstrahy metriky.
     - Pokud používáte **statickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty**. Graf metriky vám pomůže určit, co může být vhodnou prahovou hodnotou.
     - Pokud používáte **dynamickou** prahovou hodnotu, pokračujte v definování **prahové hodnoty citlivosti**. V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat. [Přečtěte si další informace o typu dynamické prahové hodnoty a možnosti citlivosti](alerts-dynamic-thresholds.md).
 
@@ -154,8 +154,8 @@ Pravidla upozornění na metriky mají k dispozici vyhrazené rutiny PowerShellu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvářejte výstrahy metriky pomocí šablon Azure Resource Manager](./alerts-metric-create-templates.md).
-- [Pochopte, jak fungují výstrahy metrik](alerts-metric-overview.md).
-- [Seznamte se s tím, jak výstrahy metrik s podmínkou dynamického prahu fungují](alerts-dynamic-thresholds.md)
+- [Vytváření upozornění na metriky pomocí šablon Azure Resource Manager](./alerts-metric-create-templates.md)
+- [Vysvětlení, jak fungují výstrahy metriky](alerts-metric-overview.md)
+- [Vysvětlení, jak výstrahy metrik s podmínkou dynamického prahu fungují](alerts-dynamic-thresholds.md)
 - [Princip schématu webového zavěšení pro výstrahy metrik](./alerts-metric-near-real-time.md#payload-schema)
-
+- [Řešení potíží s upozorněními na metriky](alerts-troubleshoot-metric.md)

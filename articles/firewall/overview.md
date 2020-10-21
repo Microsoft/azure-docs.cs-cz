@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 09/24/2020
+ms.date: 10/19/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 24b30842bea51394a375cf48e09b7547e057405c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 22b202d0ef54984ea2818112b49bbdf7f1098833
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91261732"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341613"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -50,13 +50,16 @@ Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP)
 |Aktivní FTP se nepodporuje.|Aktivní FTP je v Azure Firewall zakázané, aby se chránily proti útokům na vrácení FTP pomocí příkazu FTP PORT.|Místo toho můžete použít pasivní FTP. V bráně firewall je stále nutné explicitně otevřít porty TCP 20 a 21.
 |Metrika využití portu SNAT zobrazuje 0%|Metrika využití portů Azure Firewall SNAT může zobrazovat 0% využití i v případě, že se používají porty SNAT. V takovém případě poskytuje použití metriky jako součást metriky stavu brány firewall nesprávný výsledek.|Tento problém byl opraven a zavedení do produkčního prostředí je cílené na květen 2020. V některých případech se problém vyřeší opětovným nasazením brány firewall, ale není konzistentní. V rámci dočasného řešení je třeba stav brány firewall použít jenom k vyhledání *stavu = snížený*, ne pro *stav = v pořádku*. Vyčerpání portů se zobrazí jako *degradované*. *Není v pořádku* , pokud jde o budoucí použití v případě, že jsou další metriky ovlivněny stavem brány firewall.
 |DNAT se nepodporuje s povoleným vynuceným tunelovým propojením.|Brány firewall nasazené s povoleným vynuceným tunelovým propojením nemůžou podporovat příchozí přístup z Internetu kvůli asymetrickému směrování.|Jedná se o návrh z důvodu asymetrického směrování. Návratová cesta pro příchozí připojení prochází přes místní bránu firewall, která neviděla navázání připojení.
-|Odchozí pasivní FTP nefunguje pro brány firewall s více veřejnými IP adresami.|Pasivní FTP vytvoří různá připojení pro řídicí a datové kanály. Když brána firewall s více veřejnými IP adresami odesílá odchozí data, náhodně vybere jednu z jejích veřejných IP adres pro zdrojovou IP adresu. FTP se nezdařila, pokud datové a řídicí kanály používají jiné zdrojové IP adresy.|Naplánovala se explicitní konfigurace SNAT. V tuto situaci zvažte použití jediné IP adresy.|
+|Odchozí pasivní FTP nemusí fungovat pro brány firewall s více veřejnými IP adresami v závislosti na konfiguraci serveru FTP.|Pasivní FTP vytvoří různá připojení pro řídicí a datové kanály. Když brána firewall s více veřejnými IP adresami odesílá odchozí data, náhodně vybere jednu z jejích veřejných IP adres pro zdrojovou IP adresu. Protokol FTP může selhat, pokud datové a řídicí kanály používají jiné zdrojové IP adresy v závislosti na konfiguraci serveru FTP.|Naplánovala se explicitní konfigurace SNAT. Mezitím můžete nakonfigurovat server FTP tak, aby přijímal data a řídicí kanály z různých zdrojových IP adres (viz [Příklad služby IIS](https://docs.microsoft.com/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)). Případně zvažte použití jediné IP adresy v této situaci.|
+|Příchozí pasivní FTP nemusí fungovat v závislosti na konfiguraci serveru FTP. |Pasivní FTP vytvoří různá připojení pro řídicí a datové kanály. Příchozí připojení v Azure Firewall před jejich vstupem na jednu z privátních IP adres brány firewall, aby se zajistilo symetrické směrování. Protokol FTP může selhat, pokud datové a řídicí kanály používají jiné zdrojové IP adresy v závislosti na konfiguraci serveru FTP.|Probíhá zkoumání původní zdrojové IP adresy. Mezitím můžete nakonfigurovat server FTP tak, aby přijímal data a řídicí kanály z různých zdrojových IP adres.|
 |V NetworkRuleHitu metriky chybí dimenze protokolu.|Metrika ApplicationRuleHit umožňuje protokol založený na filtrování, ale tato funkce chybí v odpovídající NetworkRuleHitové metrikě.|Probíhá šetření opravy.|
 |Pravidla překladu adres (NAT) s porty mezi 64000 a 65535 nejsou podporovaná.|Azure Firewall povoluje jakýkoli port v rozsahu 1-65535 v pravidlech sítě a aplikace, ale pravidla NAT podporují jenom porty v rozsahu 1-63999.|Toto je aktuální omezení.
 |Aktualizace konfigurace můžou v průměru trvat pět minut.|Aktualizace konfigurace Azure Firewall může v průměru trvat tři až pět minut a paralelní aktualizace nejsou podporované.|Probíhá šetření opravy.|
 |Azure Firewall používá k filtrování provozu HTTPS a MSSQL hlavičky SNI TLS.|Pokud prohlížeč nebo serverový software nepodporuje rozšíření SNI (název serveru), nebudete se moct připojit prostřednictvím Azure Firewall.|Pokud prohlížeč nebo serverový software nepodporuje SNI, může být možné řídit připojení pomocí síťového pravidla namísto pravidla aplikace. Software, který podporuje SNI, najdete v tématu [indikace názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication) .|
 |Vlastní DNS (Preview) nefunguje s vynuceným tunelovým propojením|Pokud je povolené vynucené tunelování, vlastní DNS (Preview) nefunguje.|Probíhá šetření opravy.|
-|Nová podpora veřejných IP adres pro více Zóny dostupnosti|Novou veřejnou IP adresu nemůžete přidat při nasazení brány firewall se dvěma zónami dostupnosti (1 a 2, 2 a 3 nebo 1 a 3).|Toto je omezení prostředků veřejné IP adresy.
+|Nová podpora veřejných IP adres pro více Zóny dostupnosti|Novou veřejnou IP adresu nemůžete přidat při nasazení brány firewall se dvěma zónami dostupnosti (1 a 2, 2 a 3 nebo 1 a 3).|Toto je omezení prostředků veřejné IP adresy.|
+|Funkce Spustit/zastavit nefunguje s bránou firewall nakonfigurovanou v režimu vynuceného tunelového propojení.|Spuštění/zastavení nefunguje s bránou Azure firewall nakonfigurovanou v režimu vynuceného tunelového propojení. Při pokusu o spuštění Azure Firewall s nakonfigurovaným vynuceným tunelovým propojením dojde k následující chybě:<br><br>*Set-AzFirewall: AzureFirewall nelze přidat konfiguraci IP adresy pro správu FW-XX do existující brány firewall. Pokud chcete používat vynucené tunelové propojení, proveďte znovu nasazení s konfigurací IP adresy pro správu. <br> StatusCode: 400 <br> ReasonPhrase: Chybný požadavek*|V rámci šetření.<br><br>Jako alternativní řešení můžete odstranit existující bránu firewall a vytvořit novou se stejnými parametry.|
+
 
 ## <a name="next-steps"></a>Další kroky
 

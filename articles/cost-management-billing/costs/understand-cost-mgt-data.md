@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683177"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132308"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -110,7 +110,7 @@ Azure Cost Management přijímá značky jako součást jednotlivých záznamů 
 
 - Značky musí být použité přímo na prostředky a implicitně se nedědí z nadřazené skupiny prostředků.
 - Značky prostředků se podporují jenom pro prostředky nasazené do skupin prostředků.
-- Některé nasazené prostředky nemusí podporovat značky nebo nemusí vkládat značky do dat o využití – viz [Podpora značek pro prostředky Azure](../../azure-resource-manager/tag-support.md).
+- Některé nasazené prostředky nemusí podporovat značky nebo nemusí vkládat značky do dat o využití – viz [Podpora značek pro prostředky Azure](../../azure-resource-manager/management/tag-support.md).
 - Značky prostředků jsou zahrnuté jenom v datech o využití, když se značka používá. Značky se neaplikují na historická data.
 - Značky prostředků jsou ve službě Cost Management dostupné jenom po aktualizaci dat – viz [Aktualizace a uchovávání údajů o využití a nákladech](#cost-and-usage-data-updates-and-retention).
 - Značky prostředků jsou ve službě Cost Management dostupné, jenom pokud je prostředek aktivní nebo spuštěný a vytváří záznamy o využití (např. ne v případě uvolněného virtuálního počítače).
@@ -121,7 +121,7 @@ Pokud ve službě Cost Management určitou značku nevidíte, zvažte následuj�
 
 - Použila se značka přímo na prostředek?
 - Použila se značka před více než 24 hodinami? Viz [Aktualizace a uchovávání údajů o využití a nákladech](#cost-and-usage-data-updates-and-retention).
-- Podporuje typ prostředku značky? Následující typy prostředků nepodporují značky v datech o využití od 1. prosince 2019. Úplný seznam toho, co se podporuje, najdete v tématu [Podpora značek pro prostředky Azure](../../azure-resource-manager/tag-support.md).
+- Podporuje typ prostředku značky? Následující typy prostředků nepodporují značky v datech o využití od 1. prosince 2019. Úplný seznam toho, co se podporuje, najdete v tématu [Podpora značek pro prostředky Azure](../../azure-resource-manager/management/tag-support.md).
     - Adresáře Azure Active Directory B2C
     - Azure Bastion
     - Brány Azure Firewall
@@ -185,4 +185,4 @@ Historická data pro nabídky založené na kreditech a platbách předem nemus�
 
 ## <a name="see-also"></a>Viz také
 
-- Pokud jste si ještě neprošli úvodní příručku pro Cost Management, najdete ji v tématu [Začínáme s analýzou nákladů](../../cost-management/quick-acm-cost-analysis.md).
+- Pokud jste si ještě neprošli úvodní příručku pro Cost Management, najdete ji v tématu [Začínáme s analýzou nákladů](./quick-acm-cost-analysis.md).

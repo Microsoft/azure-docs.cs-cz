@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: f981e347b809f5df87e3b5379c69aab83ecf74eb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a3c10d95a57ea81f269af8f8f1cad49fc1c1b845
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687616"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131254"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Kurz: Přiřazení přístupu k datům Cloudyn
 
@@ -135,4 +135,4 @@ V tomto kurzu jste se naučili:
 Pokud jste pro své účty ještě nepovolili přístup k rozhraní API Azure Resource Manageru, pokračujte k následujícímu článku.
 
 > [!div class="nextstepaction"]
-> [Aktivace účtů a předplatných Azure](../../cost-management/activate-subs-accounts.md)
+> [Aktivace účtů a předplatných Azure](./activate-subs-accounts.md)

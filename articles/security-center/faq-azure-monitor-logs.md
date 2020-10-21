@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2854f4124a570de4fb467eb6a5d49a3214742e
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613641"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341817"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Nejčastější dotazy pro zákazníky, kteří už používají protokoly Azure Monitor<a name="existingloganalyticscust"></a>
 
@@ -26,13 +26,13 @@ ms.locfileid: "91613641"
 
 Pokud už má virtuální počítač Log Analytics agenta nainstalovaného jako rozšíření Azure, Security Center existující připojení k pracovnímu prostoru nepřepisuje. Místo toho Security Center používá existující pracovní prostor. Virtuální počítač bude chráněn za předpokladu, že řešení "Security" nebo "SecurityCenterFree" bylo nainstalováno do pracovního prostoru, do kterého se hlásí. 
 
-Řešení Security Center je nainstalováno v pracovním prostoru vybraném na obrazovce shromažďování dat, pokud již není přítomno, a toto řešení je použito pouze pro příslušné virtuální počítače. Když přidáte řešení, automaticky se nasadí ve výchozím nastavení na všechny agenty systému Windows a Linux připojené k vašemu pracovnímu prostoru Log Analytics. [Cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) umožňuje použít obor pro vaše řešení.
+Řešení Security Center je nainstalováno v pracovním prostoru vybraném na obrazovce shromažďování dat, pokud již není přítomno, a toto řešení je použito pouze pro příslušné virtuální počítače. Když přidáte řešení, automaticky se nasadí ve výchozím nastavení na všechny agenty systému Windows a Linux připojené k vašemu pracovnímu prostoru Log Analytics. [Cílení na řešení](../azure-monitor/insights/solution-targeting.md) umožňuje použít obor pro vaše řešení.
 
 > [!TIP]
 > Pokud je agent Log Analytics nainstalovaný přímo na virtuálním počítači (ne jako rozšíření Azure), Security Center agenta Log Analytics nenainstaluje a monitorování zabezpečení je omezené.
 
 ## <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Je Security Center instalovat řešení do stávajících pracovních prostorů Log Analytics? Jaké jsou důsledky fakturace?
-Když Security Center identifikuje, že je virtuální počítač už připojený k pracovnímu prostoru, který jste vytvořili, Security Center umožňuje řešení v tomto pracovním prostoru podle vaší cenové konfigurace. Řešení se aplikují jenom na relevantní virtuální počítače Azure, a to prostřednictvím [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md), takže účtování zůstane stejné.
+Když Security Center identifikuje, že je virtuální počítač už připojený k pracovnímu prostoru, který jste vytvořili, Security Center umožňuje řešení v tomto pracovním prostoru podle vaší cenové konfigurace. Řešení se aplikují jenom na relevantní virtuální počítače Azure, a to prostřednictvím [cílení na řešení](../azure-monitor/insights/solution-targeting.md), takže účtování zůstane stejné.
 
 - **Azure Defender off** – Security Center do pracovního prostoru nainstaluje řešení ' SecurityCenterFree '. Nebudeme se vám účtovat.
 - **Azure Defender on** – Security Center do pracovního prostoru nainstaluje řešení zabezpečení.
@@ -40,7 +40,7 @@ Když Security Center identifikuje, že je virtuální počítač už připojen�
    ![Řešení ve výchozím pracovním prostoru](./media/security-center-platform-migration-faq/solutions.png)
 
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Již mám v prostředí pracovní prostory, můžu je použít ke shromažďování dat zabezpečení?
-Pokud už má virtuální počítač Log Analytics agenta nainstalovaného jako rozšíření Azure, Security Center používá existující připojený pracovní prostor. V pracovním prostoru je nainstalováno Security Center řešení, pokud již není přítomno a řešení se používá pouze pro příslušné virtuální počítače prostřednictvím [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md).
+Pokud už má virtuální počítač Log Analytics agenta nainstalovaného jako rozšíření Azure, Security Center používá existující připojený pracovní prostor. V pracovním prostoru je nainstalováno Security Center řešení, pokud již není přítomno a řešení se používá pouze pro příslušné virtuální počítače prostřednictvím [cílení na řešení](../azure-monitor/insights/solution-targeting.md).
 
 Když Security Center nainstaluje agenta Log Analytics na virtuální počítače, použije výchozí pracovní prostory vytvořené Security Center, pokud Security Center neukazuje na existující pracovní prostor.
 

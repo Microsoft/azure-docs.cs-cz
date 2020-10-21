@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: d2d098c3a80bbbdb8c9fb64b25cc5967ee693046
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371401"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132359"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Přenos předplatných Azure mezi předplatiteli a CSP
 
@@ -26,7 +26,7 @@ Partneři poskytovatelů CSP s přímým účtováním, kteří jsou certifikova
 Po schválení žádosti může CSP poskytnout zákazníkům kombinovanou fakturu. Další informace o přenosu předplatných poskytovateli CSP najdete v tématu [Získání vlastnictví fakturace předplatných Azure pro váš účet MPA](mpa-request-ownership.md).
 
 >[!IMPORTANT]
-> Po přenosu předplatného na partnera CSP se veškerá zvýšení kvót dříve použitá u předplatného EA obnoví na výchozí hodnoty. Pokud je po přenosu předplatného vyžadována dodatečná kvóta, nechte poskytovatele CSP odeslat žádost o [zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests). 
+> Po přenosu předplatného na partnera CSP se veškerá zvýšení kvót dříve použitá u předplatného EA obnoví na výchozí hodnoty. Pokud je po přenosu předplatného vyžadována dodatečná kvóta, nechte poskytovatele CSP odeslat žádost o [zvýšení kvóty](../../azure-portal/supportability/regional-quota-requests.md). 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>Přenosy dalších předplatných na partnera CSP
 
@@ -42,7 +42,7 @@ Aby bylo možné přenést jakékoli jiné předplatné Azure na partnera CSP, m
 1. Než začnete, [ověřte](/rest/api/resources/resources/validatemoveresources), že se všechny prostředky Azure můžou přesunout ze zdrojového předplatného do cílového předplatného.  
     Některé prostředky Azure nejde přesunout mezi předplatnými. Úplný seznam prostředků Azure, které se dají přesunout, najdete v tématu [Podpora operací přesunutí pro prostředky](../../azure-resource-manager/management/move-support-resources.md).
     > [!IMPORTANT]
-    >  - Azure CSP podporuje jenom prostředky služby Azure Resource Manager. Pokud byly nějaké prostředky Azure ve zdrojovém předplatném vytvořeny pomocí modelu nasazení Azure Classic, musíte je migrovat do služby [Azure Resource Manager](https://docs.microsoft.com/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm) před migrací. Aby bylo možné zobrazit webovou stránku, musíte být partnerem.
+    >  - Azure CSP podporuje jenom prostředky služby Azure Resource Manager. Pokud byly nějaké prostředky Azure ve zdrojovém předplatném vytvořeny pomocí modelu nasazení Azure Classic, musíte je migrovat do služby [Azure Resource Manager](/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm) před migrací. Aby bylo možné zobrazit webovou stránku, musíte být partnerem.
 
 1. Ověřte, že všechny služby zdrojového předplatného používají model Azure Resource Manager. Potom přeneste prostředky ze zdrojového předplatného do cílového předplatného pomocí [přesunu prostředků Azure](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
     > [!IMPORTANT]

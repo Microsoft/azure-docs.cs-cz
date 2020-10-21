@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993608"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340865"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Připojení počítačů mimo Azure k Security Center
 
@@ -86,7 +86,7 @@ Chcete-li přidat Azure Stack virtuálních počítačů, potřebujete informace
 1. Přihlaste se k portálu **Azure Stack** a otevřete stránku **virtuální počítače** .
 1. Vyberte virtuální počítač, který chcete chránit pomocí Security Center.
     >[!TIP]
-    > Informace o tom, jak vytvořit virtuální počítač na Azure Stack, najdete v [tomto rychlém startu pro virtuální počítače s Windows](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal) nebo v [tomto rychlém startu pro virtuální počítače](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)se systémem Linux.
+    > Informace o tom, jak vytvořit virtuální počítač na Azure Stack, najdete v [tomto rychlém startu pro virtuální počítače s Windows](/azure-stack/user/azure-stack-quick-windows-portal) nebo v [tomto rychlém startu pro virtuální počítače](/azure-stack/user/azure-stack-quick-linux-portal)se systémem Linux.
 1. Vyberte **Rozšíření**. Zobrazí se seznam rozšíření virtuálních počítačů nainstalovaných na tomto virtuálním počítači.
 1. Vyberte kartu **Přidat** . V nabídce **nový prostředek** se zobrazí seznam dostupných rozšíření virtuálních počítačů.
 1. Vyberte rozšíření **pro správu Azure monitor, aktualizace a konfigurace** a vyberte **vytvořit**. Otevře se stránka **instalace konfigurace rozšíření** .
@@ -124,7 +124,7 @@ Další informace o instalaci a konfiguraci agenta najdete v tématu [připojen�
 ::: zone-end
 
 ## <a name="verifying"></a>Ověřoval
-Gratulujeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
+Blahopřejeme! Teď můžete na jednom místě zobrazit počítače s Azure a mimo Azure společně. Otevřete [stránku inventarizace assetů](asset-inventory.md) a vyfiltrujte příslušné typy prostředků. Tyto ikony rozlišují tyto typy:
 
   ![Ikona ASC pro počítač mimo Azure](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Počítač mimo Azure
 

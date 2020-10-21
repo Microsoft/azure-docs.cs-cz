@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 8cc12ba40b6722f75e4f3f4e8ce7023a0523c278
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219662"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341409"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Posouzení a doporučení služby Endpoint Protection v Azure Security Center
 
@@ -29,9 +29,9 @@ Azure Security Center poskytuje posouzení stavu [podporovaných](security-cente
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center doporučuje při spuštění [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps&preserve-view=true) **instalovat řešení Endpoint Protection na virtuálním počítači** a výsledek je **AMServiceEnabled: false**
+* Security Center doporučuje při spuštění [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) **instalovat řešení Endpoint Protection na virtuálním počítači** a výsledek je **AMServiceEnabled: false**
 
-* Security Center doporučuje, abyste při spuštění [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps&preserve-view=true) **vyřešili problémy se stavem Endpoint Protection na vašich počítačích** a nastaly některé z těchto situací:
+* Security Center doporučuje, abyste při spuštění [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) **vyřešili problémy se stavem Endpoint Protection na vašich počítačích** a nastaly některé z těchto situací:
 
   * Kterákoli z následujících vlastností je false:
 
@@ -141,7 +141,7 @@ Security Center doporučuje **vyřešit problémy stavu ochrany koncových bodů
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstranit potíže
 
 Protokoly rozšíření Microsoft Antimalware jsou k dispozici na adrese: **%systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (nebo PaaSAntimalware) \1.5.5.x (verze #) \CommandExecution.log**
 

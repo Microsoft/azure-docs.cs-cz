@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0b3cf0c705048d37d422d62b77dc7d94c5ae13bd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371738"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149394"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Začínáme s aktualizovaným fakturačním účtem Azure
 
@@ -104,8 +104,8 @@ Pokud k dotazování nebo aktualizaci fakturačních dat nebo údajů o využit�
 
 |Rozhraní API | Změny  |
 |---------|---------|
-|[Fakturační účty – seznam](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | V rozhraní API pro fakturační účty – seznam má starý fakturační účet jako typ smlouvy nastavený **MicrosoftOnlineServiceProgram**, v novém fakturačním účtu bude nastavený typ smlouvy **MicrosoftCustomerAgreement**. Pokud využíváte závislost na typu smlouvy, proveďte prosím příslušnou aktualizaci. |
-|[Faktury – seznam podle předplatného pro fakturaci](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Toto rozhraní API vrátí jenom faktury, které se vygenerovaly před aktualizací vašeho účtu. Pokud chcete získat faktury vygenerované v novém fakturačním účtu, musíte použít rozhraní API pro [faktury seznam podle fakturačního účtu](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount). |
+|[Fakturační účty – seznam](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | V rozhraní API pro fakturační účty – seznam má starý fakturační účet jako typ smlouvy nastavený **MicrosoftOnlineServiceProgram**, v novém fakturačním účtu bude nastavený typ smlouvy **MicrosoftCustomerAgreement**. Pokud využíváte závislost na typu smlouvy, proveďte prosím příslušnou aktualizaci. |
+|[Faktury – seznam podle předplatného pro fakturaci](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Toto rozhraní API vrátí jenom faktury, které se vygenerovaly před aktualizací vašeho účtu. Pokud chcete získat faktury vygenerované v novém fakturačním účtu, musíte použít rozhraní API pro [faktury seznam podle fakturačního účtu](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount). |
 
 ## <a name="additional-information"></a>Další informace
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 3e8cef04e0711492b6e76d4c865695ac75e21422
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9927d4780ea015502151188b61c50ddbd2656819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125675"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339539"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Trvalost dat pro mezipaměť Azure Premium pro Redis
 V tomto článku se dozvíte, jak nakonfigurovat trvalost v mezipaměti Azure Premium pro instanci Redis prostřednictvím Azure Portal. Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. 
@@ -83,11 +83,11 @@ Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravu
 
 11. Volitelně můžete na kartě **značky** zadat název a hodnotu, pokud chcete prostředek zařadit do kategorií. 
 
-12. Vyberte **zkontrolovat + vytvořit**. Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
+12. Vyberte **Zkontrolovat a vytvořit**. Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
 
 13. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit**.
 
-Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled**služby Azure cache pro Redis   . Pokud se **stav**   zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 
+Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 
 
 ## <a name="persistence-faq"></a>Nejčastější dotazy týkající se trvalosti
 Následující seznam obsahuje odpovědi na nejčastější dotazy týkající se trvalosti Azure cache pro Redis.
@@ -96,6 +96,7 @@ Následující seznam obsahuje odpovědi na nejčastější dotazy týkající s
 * [Můžu ve stejnou chvíli povolit AOF a trvalost RDB?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
 * [Který model trvalosti mám zvolit?](#which-persistence-model-should-i-choose)
 * [Co se stane, když se škáluje na jinou velikost a obnoví se záloha, která byla provedena před operací škálování?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+* [Můžu použít stejný účet úložiště k trvalosti ve dvou různých mezipamětech?](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
 
 
 ### <a name="rdb-persistence"></a>Trvalost RDB
@@ -135,6 +136,9 @@ Pro zachování RDB i AOF:
 * Pokud jste škálované na větší velikost, nebude to mít žádný vliv.
 * Pokud jste škálované na menší velikost a máte nastavení vlastní [databáze](cache-configure.md#databases) , které je větší než [limit databází](cache-configure.md#databases) pro novou velikost, data v těchto databázích nebudou obnovena. Další informace najdete v tématu [Nastavení moje vlastní databáze ovlivněná během škálování?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
 * Pokud jste škálované na menší velikost a v menší velikosti není dost místa pro uchovávání všech dat od poslední zálohy, klíče se během procesu obnovení vyřadí, obvykle se použijí zásady vyřazení [AllKeys-LRU](https://redis.io/topics/lru-cache) .
+
+### <a name="can-i-use-the-same-storage-account-for-persistence-across-two-different-caches"></a>Můžu použít stejný účet úložiště k trvalosti ve dvou různých mezipamětech?
+Ano, můžete použít stejný účet úložiště k trvalosti ve dvou různých mezipamětech
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Můžu po vytvoření mezipaměti změnit četnost záloh RDB?
 Ano, četnost záloh pro trvalost RDB můžete změnit v okně **trvalá data** . Pokyny najdete v tématu Konfigurace Persistence Redis.

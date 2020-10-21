@@ -7,12 +7,12 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 371bbd6919f787401da361339f705fa5edfa4547
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b7478199e4bb6f1e9ad986193370d4ea8610bd7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328687"
+ms.locfileid: "92340899"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Předdefinované definice Azure Policy pro Azure Security Center
 
@@ -52,5 +52,5 @@ V tomto článku jste se dozvěděli o Azure Policy definice zásad zabezpečen�
 - [Průvodce plánováním a provozem Azure Security Center](./security-center-planning-and-operations-guide.md): Naučte se plánovat a pochopit hlediska návrhu v Azure Security Center.
 - [Sledování stavu zabezpečení v Azure Security Center](./security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
 - [Správa a zpracování výstrah zabezpečení v Azure Security Center](./security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-- [Sledování partnerských řešení pomocí Azure Security Center](./security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
+- [Sledování partnerských řešení pomocí Azure Security Center](./security-center-partner-integration.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 - [Azure Policy](../governance/policy/overview.md): Naučte se auditovat a řídit prostředky Azure.

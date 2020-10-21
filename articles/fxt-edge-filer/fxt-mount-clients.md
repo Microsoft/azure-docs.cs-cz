@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: c9ee50c146271106e2b9c693702827b2e1b52199
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219543"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340508"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Kurz: připojení clusteru
 
@@ -109,6 +109,6 @@ Chcete-li zajistit bezproblémové připojení klienta, předejte tato nastaven�
 
 Po připojení klientů můžete otestovat pracovní postup a začít s clusterem.
 
-Pokud potřebujete přesunout data do nového cloudového jádra souborového, využijte výhod struktury mezipaměti pomocí paralelní ingestování dat. Některé strategie jsou popsány v tématu [přesun dat do clusteru vFXT](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (Avere vFXT for Azure je cloudový produkt, který používá technologii pro ukládání do mezipaměti, která se velmi podobá Azure FXT Edge souborového.)
+Pokud potřebujete přesunout data do nového cloudového jádra souborového, využijte výhod struktury mezipaměti pomocí paralelní ingestování dat. Některé strategie jsou popsány v tématu [přesun dat do clusteru vFXT](../avere-vfxt/avere-vfxt-data-ingest.md). (Avere vFXT for Azure je cloudový produkt, který používá technologii pro ukládání do mezipaměti, která se velmi podobá Azure FXT Edge souborového.)
 
 Pokud potřebujete řešit problémy s hardwarem, přečtěte si téma [monitorování stavu hardwaru Azure FXT Edge souborového](fxt-monitor.md) .

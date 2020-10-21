@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 9343d3fa82302711311d8db3672713fa80fab1f7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 994cf78a9a9b8c418d0f29f5d595f88f021659b4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122168"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341902"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) s důvěrnými výpočetními uzly pomocí rozhraní příkazového řádku Azure (Preview)
 
@@ -27,11 +27,11 @@ V tomto rychlém startu se dozvíte, jak nasadit cluster Azure Kubernetes Servic
 ### <a name="deployment-pre-requisites"></a>Požadavky na nasazení
 
 1. Máte aktivní předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-1. Ve vašem počítači nasazení musí být nainstalovaná a nakonfigurovaná verze Azure CLI 2.0.64 nebo novější (spuštěním nástroje  `az --version` Najděte verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) .
+1. Ve vašem počítači nasazení musí být nainstalovaná a nakonfigurovaná verze Azure CLI 2.0.64 nebo novější (spuštěním nástroje `az --version` Najděte verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) .
 1. minimální verze [rozšíření AKS-Preview](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) 0.4.62 
-1. Ve vašem předplatném je k dispozici minimálně šest jader DCSv2 pro použití. Ve výchozím nastavení kvóta virtuálních počítačů pro důvěrné výpočetní služby na předplatné Azure 8 jader. Pokud plánujete zřídit cluster, který vyžaduje více než 8 jader, postupujte podle [těchto](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) pokynů a vyvolejte lístek zvýšení kvóty.
+1. Ve vašem předplatném je k dispozici minimálně šest jader **DC <x> s-v2** , které by bylo možné použít. Ve výchozím nastavení kvóta virtuálních počítačů pro důvěrné výpočetní služby na předplatné Azure 8 jader. Pokud plánujete zřídit cluster, který vyžaduje více než 8 jader, postupujte podle [těchto](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) pokynů a vyvolejte lístek zvýšení kvóty.
 
-### <a name="confidential-computing-node-features"></a>Funkce uzlu důvěrného výpočetního prostředí
+### <a name="confidential-computing-node-features-dcxs-v2"></a>Funkce důvěrného výpočetního uzlu (DC <x> s-v2)
 
 1. Linux Worker Nodes podporující pouze kontejnery Linux
 1. Ubuntu generace 2 18,04 Virtual Machines
@@ -94,14 +94,14 @@ az aks create \
     --vm-set-type VirtualMachineScaleSets \
     --aks-custom-headers usegen2vm=true
 ```
-Výše uvedený příkaz by měl zřídit nový cluster AKS s fondy uzlů DCSv2 a automaticky instalovat dvě sady démonů –[SGX Device Plugin](confidential-nodes-aks-overview.md#sgx-plugin)(  &  [pomocná pomocná](confidential-nodes-aks-overview.md#sgx-quote)sada SGX zařízení Plug-in SGX)
+Výše uvedený příkaz by měl zřídit nový cluster AKS s fondy uzlů **DC <x> s-v2** a automaticky instalovat dvě sady démonů – (Pomocník pro[SGXu zařízení](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX pro pomocnou nabídku](confidential-nodes-aks-overview.md#sgx-quote)).
 
 Pomocí příkazu AZ AKS Get-credentialss Získejte přihlašovací údaje pro váš cluster AKS:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-Ověřte, zda jsou uzly správně vytvořeny a zda jsou v fondech uzlů DCSv2 spuštěny sady démonů SGX s použitím příkazu kubectl Get lusks & Nodes, jak je uvedeno níže:
+Ověřte, zda jsou uzly správně vytvořeny a že sady démonů související s SGX jsou spuštěny ve fondech **řadičů domény <x> s-v2** pomocí příkazu kubectl get lusky & Nodes, jak je uvedeno níže:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -130,9 +130,12 @@ Nejdřív umožníte, aby se v existujícím clusteru povolily doplňky AKS souv
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-Teď do clusteru přidat fond uzlů DCSv2
-
-```azurecli-interactive
+Teď do clusteru přidejte fond uzlů **DC <x> s-v2** .
+    
+> [!NOTE]
+> Pokud chcete používat funkci důvěrného výpočetního prostředí, váš stávající cluster AKS musí mít minimálně jeden fond uzlů na základě SKU virtuálního počítače ve verzi ** <x> v2** . Další informace o dostupných položkách SKU [a podporovaných oblastech](virtual-machine-solutions.md)pro DCsv2 virtuální počítače s podporou důvěrného zpracování
+    
+  ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2 --aks-custom-headers usegen2vm=true
 
 output node pool added

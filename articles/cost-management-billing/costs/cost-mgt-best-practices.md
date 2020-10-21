@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4dd22427038bc7c4052ee714c3ec3ce45d7a1837
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689146"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132818"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat investice do cloudu se službou Azure Cost Management
 
@@ -126,7 +126,7 @@ Další informace najdete v tématu [Cenová kalkulačka Azure](https://azure.mi
 
 Azure Migrate je služba, která vyhodnotí aktuální úlohy vaší organizace v místních datacentrech. Pomůže vám získat přehled o prostředcích potřebných pro náhradní řešení v Azure. Služba Migrate nejprve analyzuje místní počítače, aby zjistila, jestli je migrace proveditelná. Pak doporučí velikost virtuálních počítačů v Azure, aby maximalizovala výkon. Nakonec také odhadne náklady na řešení založené na Azure.
 
-Další informace najdete v tématu o službě [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview).
+Další informace najdete v tématu o službě [Azure Migrate](../../migrate/migrate-services-overview.md).
 
 ## <a name="analyze-and-manage-your-costs"></a>Analýza a správa nákladů
 

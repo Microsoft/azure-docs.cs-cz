@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 237565a7b72c3317e2c443f86965634ed7c9942c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336861"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149377"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Informace o převodu vlastnictví fakturace předplatného Azure
 
@@ -63,7 +63,7 @@ Převod předplatného na webu Azure Portal je k dispozici pro níže uvedené t
 
 ## <a name="resources-transferred-with-subscriptions"></a>Prostředky převedené společně s předplatnými
 
-Všechny prostředky, jako jsou virtuální počítače, disky a weby, se převedou na nový účet. Pokud ale převádíte předplatné do účtu v jiném tenantovi Azure AD, žádné [role správce](../manage/add-change-subscription-administrator.md) ani [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) předplatného se nepřevedou. Dále se společně s předplatným nepřevádí [registrace aplikací](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) a jiné služby specifické pro tenanta.
+Všechny prostředky, jako jsou virtuální počítače, disky a weby, se převedou na nový účet. Pokud ale převádíte předplatné do účtu v jiném tenantovi Azure AD, žádné [role správce](../manage/add-change-subscription-administrator.md) ani [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md) předplatného se nepřevedou. Dále se společně s předplatným nepřevádí [registrace aplikací](../../active-directory/develop/quickstart-register-app.md) a jiné služby specifické pro tenanta.
 
 ## <a name="transfer-account-ownership-to-another-countryregion"></a>Převod vlastnictví účtu do jiné země nebo oblasti
 
@@ -99,7 +99,7 @@ Uživatele, kteří mají přiřazení rolí Azure pro přístup k prostředkům
 I když během převodu dojde k odebrání [přiřazení rolí Azure](../../role-based-access-control/role-assignments-portal.md), uživatelé v účtu původního vlastníka mohou mít k předplatnému stále přístup prostřednictvím jiných mechanismů zabezpečení, mezi které patří:
 
 * Certifikáty pro správu, které udělují uživateli oprávnění správce prostředků předplatného. Další informace najdete v tématu o [vytvoření a nahrání certifikátu pro správu Azure](../../cloud-services/cloud-services-certs-create.md).
-* Přístupové klíče pro služby, jako je Storage. Další informace najdete v článku o [účtech Azure Storage](../../storage/common/storage-create-storage-account.md).
+* Přístupové klíče pro služby, jako je Storage. Další informace najdete v článku o [účtech Azure Storage](../../storage/common/storage-account-create.md).
 * Oprávnění pro vzdálený přístup ke službám, jako je Azure Virtual Machines.
 
 Pokud příjemce potřebuje omezit přístup k prostředkům, měl by zvážit aktualizaci tajných klíčů přidružených ke službě. Většinu prostředků je možné aktualizovat. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a v nabídce centra vyberte **Všechny prostředky**. Vyberte prostředek. Na stránce prostředku vyberte **Nastavení**. Tady můžete zobrazit a aktualizovat existující tajné klíče.

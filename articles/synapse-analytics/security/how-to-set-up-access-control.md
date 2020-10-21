@@ -9,14 +9,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260151"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341545"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
+# <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview) 
 
 V tomto článku se naučíte, jak používat role a řízení přístupu k řízení aktivit a přístupu k datům. Pomocí těchto pokynů je zjednodušené řízení přístupu v Azure synapse Analytics. Stačí přidat a odebrat uživatele pouze do jedné ze tří skupin zabezpečení.
 
@@ -31,12 +31,12 @@ Pokud chcete zabezpečit pracovní prostor synapse (Preview), postupujte podle v
   - Apache Spark pro správce Azure synapse Analytics
 - Řízení přístupu pro data v Azure Data Lake Storage Gen 2 (ADLSGEN2).
 - Řízení přístupu pro databáze SQL synapse a Spark
-
+- 
 ## <a name="steps-to-secure-a-synapse-workspace"></a>Postup zabezpečení pracovního prostoru synapse
 
 Tento dokument používá ke zjednodušení pokynů standardní názvy. Nahraďte je libovolnými názvy.
 
-|Nastavení | Příklad hodnoty | Description |
+|Nastavení | Příklad hodnoty | Popis |
 | :------ | :-------------- | :---------- |
 | **Pracovní prostor synapse** | WS1 |  Název, který bude mít pracovní prostor synapse. |
 | **Účet ADLSGEN2** | STG1 | Účet ADLS, který se má používat s vaším pracovním prostorem. |
@@ -71,11 +71,12 @@ Identifikujte tyto informace o úložišti:
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>Krok 3: vytvoření a konfigurace pracovního prostoru synapse
 
-V Azure Portal vytvořte pracovní prostor synapse:
+ V Azure Portal vytvořte pracovní prostor synapse:
 
+- Vyberte své předplatné.
+- Vyberte skupinu prostředků. musíte mít přístup ke skupině prostředků, ke které máte přiřazenou roli **vlastníka** .
 - Pojmenujte pracovní prostor WS1
-- Vyberte STG1 pro účet úložiště.
-- Pro kontejner, který se používá jako systém souborů, vyberte CNT1.
+- Pro účet úložiště vyberte STG1. Pro kontejner, který se používá jako systém souborů, vyberte CNT1.
 - Otevřít WS1 v synapse studiu
 - Vyberte **Spravovat**  >  **Access Control** přiřaďte skupiny zabezpečení následujícím rolím synapse.
   - Přiřazení **WS1 \_ WSAdmins** správcům pracovních prostorů synapse

@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 51b2f4964c01efbfc82008134d47f09648a772ff
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d6b32df7264066daa0bc7298a04453dad4fc9937
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681970"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147260"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Způsob uplatňování slev za rezervaci na izolovaný server Azure Database for PostgreSQL
 
@@ -30,7 +30,7 @@ Sleva za rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQ
 
 Následující příklady ukazují, jak se sleva za rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQL uplatňuje v závislosti na počtu zakoupených jader a na tom, kdy jsou tato jádra spuštěná.
 
-* **Příklad 1:** Zakoupíte si rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQL pro 8 virtuálních jader. Pokud používáte izolovaný server Azure Database for PostgreSQL s 16 virtuálními jádry, který vyhovuje ostatním atributům rezervace, za využití výpočetních prostředků pro 8 virtuálních jader izolovaného serveru PostgreSQL se vám bude účtovat cena při průběžných platbách a na jednu hodinu využití výpočetních prostředků pro izolovaný server PostgreSQL s 8 virtuálními jádry získáte slevu za rezervaci.</br>
+**Příklad 1:** Zakoupíte si rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQL pro 8 virtuálních jader. Pokud používáte izolovaný server Azure Database for PostgreSQL s 16 virtuálními jádry, který vyhovuje ostatním atributům rezervace, za využití výpočetních prostředků pro 8 virtuálních jader izolovaného serveru PostgreSQL se vám bude účtovat cena při průběžných platbách a na jednu hodinu využití výpočetních prostředků pro izolovaný server PostgreSQL s 8 virtuálními jádry získáte slevu za rezervaci.</br>
 
 U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapacitu izolovaného serveru Azure Database for PostgreSQL pro 16 virtuálních jader a ostatní atributy rezervace odpovídají spuštěným izolovaným serverům PostgreSQL.
 
@@ -40,7 +40,7 @@ U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapaci
 
 * **Příklad 4:** Od 13:00 do 13:45 spustíte jeden izolovaný server Azure Database for PostgreSQL s 16 virtuálními jádry. Od 13:30 do 14:00 spustíte jiný izolovaný server Azure Database for PostgreSQL s 16 virtuálními jádry. Za 15 minut, kdy se doba chodu obou databází překrývá, zaplatíte průběžnou platbu. Po zbytek doby se na využití výpočetních prostředků uplatňuje sleva za rezervaci.
 
-Vysvětlení a znázornění uplatňování rezervací Azure v sestavách fakturace využití najdete v tématu [Vysvětlení využití rezervací Azure](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
+Vysvětlení a znázornění uplatňování rezervací Azure v sestavách fakturace využití najdete v tématu [Vysvětlení využití rezervací Azure](./understand-reserved-instance-usage-ea.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 553652832f3f4ce84a0a141455551e4977215184
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 32db8396a687428c668a9b8a4213b50986614083
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684418"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150120"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -21,7 +21,7 @@ Rezervace Azure vám dávají flexibilitu pro zvládání stále se vyvíjejíc�
 Možnost samoobslužné výměny nebo zrušení není k dispozici pro zákazníky s předplatným US Government se smlouvou Enterprise. Podporují se i ostatní typy předplatného US Government, včetně předplatného s průběžnými platbami a CSP (Cloud Solution Provider).
 
 > [!NOTE]
-> - **Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte k příslušné objednávce rezervace mít přístup vlastníka.** Můžete [přidat nebo změnit uživatelů, kteří mohou spravovat rezervaci](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+> - **Pokud chcete vyměnit stávající rezervaci nebo za ni vrátit peníze, musíte k příslušné objednávce rezervace mít přístup vlastníka.** Můžete [přidat nebo změnit uživatelů, kteří mohou spravovat rezervaci](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 > - Microsoft v současnosti u refundací rezervací neúčtuje poplatky za předčasné ukončení. Možná budeme účtovat poplatky za refundace provedené v budoucnu. Momentálně ale nemáme pro aktivaci tohoto poplatku stanovený žádný pevný termín.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Postup při výměně nebo refundaci existující rezervace
