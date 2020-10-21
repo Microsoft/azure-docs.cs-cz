@@ -3,12 +3,12 @@ title: Objevte aplikace, role a funkce na místních serverech pomocí Azure Mig
 description: Naučte se zjišťovat aplikace, role a funkce na místních serverech pomocí vyhodnocení Azure Migrate serveru.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 535c8ae8c2d6e5d9d175e663a58d47dc76aa0529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118643"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315197"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Objevte aplikace pro počítače, role a funkce
 
@@ -46,7 +46,7 @@ Po nasazení zařízení a zadání přihlašovacích údajů zařízení spust�
 
 ## <a name="verify-permissions"></a>Ověření oprávnění
 
-[Vytvořili jste účet vCenter Server jen pro čtení](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) pro zjišťování a posouzení. Účet jen pro čtení potřebuje oprávnění povolená pro **Virtual Machines**  >  **operace hostů**, aby bylo možné pracovat s virtuálním počítačem pro zjišťování aplikací.
+[Vytvořili jste účet vCenter Server jen pro čtení](./tutorial-discover-vmware.md#prepare-vmware) pro zjišťování a posouzení. Účet jen pro čtení potřebuje oprávnění povolená pro **Virtual Machines**  >  **operace hostů**, aby bylo možné pracovat s virtuálním počítačem pro zjišťování aplikací.
 
 ### <a name="add-the-user-account-to-the-appliance"></a>Přidat uživatelský účet do zařízení
 

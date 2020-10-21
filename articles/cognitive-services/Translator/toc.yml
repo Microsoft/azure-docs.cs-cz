@@ -4,7 +4,7 @@
   items:
     - name: Co je Translator?
       href: translator-info-overview.md
-    - name: Rychlý start
+    - name: Rychlé zprovoznění
       href: quickstart-translator.md
     - name: Podpora jazyků
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
@@ -84,6 +84,8 @@
           href: request-limits.md
     - name: Zdroje a prostředky
       items:
+        - name: Možnosti pomoci a podpory
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Vzorový kód na GitHubu
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Nejčastější dotazy
@@ -94,8 +96,6 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Dodržování předpisů
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Custom Translator
   items:
     - name: Přehled
@@ -148,6 +148,8 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Zdroje a prostředky
       items:
+        - name: Možnosti pomoci a podpory
+          href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
         - name: Glosář
           href: custom-translator/glossary.md
         - name: Nejčastější dotazy
@@ -158,5 +160,3 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Šifrování
           href: translator-encryption-of-data-at-rest.md
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'

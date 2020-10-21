@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98d194921cd9a7eced06ccee20a3375e8c8a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008688"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280516"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Azure Cosmos DB poskytuje [rozhraní SQL API pro dotazování na data](how-to-sq
 
 ## <a name="about-sql-query-execution"></a>O provádění dotazů SQL
 
-V Azure Cosmos DB ukládáte data do kontejnerů, které se můžou zvětšovat podle [velikosti úložiště nebo propustnosti požadavků](partition-data.md). Azure Cosmos DB plynule škáluje data mezi fyzickými oddíly v rámci pokrývání dat a zpracování nárůstu dat nebo zvýšení zajištěné propustnosti. Dotazy SQL můžete vystavit do libovolného kontejneru pomocí REST API nebo některé z podporovaných [sad SQL SDK](sql-api-sdk-dotnet.md).
+V Azure Cosmos DB ukládáte data do kontejnerů, které se můžou zvětšovat podle [velikosti úložiště nebo propustnosti požadavků](partitioning-overview.md). Azure Cosmos DB plynule škáluje data mezi fyzickými oddíly v rámci pokrývání dat a zpracování nárůstu dat nebo zvýšení zajištěné propustnosti. Dotazy SQL můžete vystavit do libovolného kontejneru pomocí REST API nebo některé z podporovaných [sad SQL SDK](sql-api-sdk-dotnet.md).
 
 Stručný přehled dělení: definujete klíč oddílu, například City, který určuje, jak se data rozdělí mezi fyzické oddíly. Data patřící do klíče s jedním oddílem (například City "= =" Praha ") jsou uložena v rámci fyzického oddílu, ale obvykle jeden fyzický oddíl má více klíčů oddílu. Když oddíl dosáhne velikosti úložiště, služba hladce rozdělí oddíl na dva nové oddíly a rovnoměrně rozděluje klíč oddílu mezi tyto oddíly. Vzhledem k tomu, že se oddíly dočasná, používají rozhraní API abstrakci rozsahu klíčů oddílu, který označuje rozsahy hodnot hash klíčů oddílů. 
 
@@ -163,7 +163,7 @@ U Azure Cosmos DB obvykle dotazy provádějí v následujícím pořadí od nejr
 
 Dotazy, které musí pohlížet na všechny oddíly, vyžadují větší latenci a můžou využívat vyšší ru. Vzhledem k tomu, že každý oddíl má automatické indexování proti všem vlastnostem, lze dotaz v tomto případě efektivně zpracovat z indexu. Pomocí možností paralelismus můžete vytvářet dotazy, které přesahují oddíly rychleji.
 
-Další informace o dělení a klíčích oddílů najdete v tématu [dělení v Azure Cosmos DB](partition-data.md).
+Další informace o dělení a klíčích oddílů najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
 
 ### <a name="sdk-and-query-options"></a>Sada SDK a možnosti dotazu
 V tématu [tipy k výkonu](performance-tips.md) a [testování výkonu](performance-testing.md) získáte nejlepší výkon na straně klienta z Azure Cosmos DB. To zahrnuje použití nejnovějších sad SDK, konfigurace konfigurací specifických pro konkrétní platformu, jako je výchozí počet připojení, frekvence uvolňování paměti a použití zjednodušených možností připojení, jako je Direct/TCP. 
@@ -238,7 +238,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Jednotka | Description | 
+| Metrika | Jednotka | Popis | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisekundy | Čas provedení dotazu | 
 | `queryCompileTimeInMs` | milisekundy | Čas kompilace dotazu  | 
@@ -260,7 +260,7 @@ Klientské sady SDK mohou interně provádět dotazy v rámci jednotlivých odd�
 
 Tady je několik ukázkových dotazů a postup interpretace některých metrik vrácených spuštěním dotazu: 
 
-| Dotaz | Ukázková metrika | Description | 
+| Dotaz | Ukázková metrika | Popis | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Počet načtených dokumentů je 100 + 1, aby se shodovala s horní klauzulí. Čas dotazu se většinou stráví v `WriteOutputTime` a `DocumentLoadTime` vzhledem k tomu, že se jedná o kontrolu. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount je teď vyšší (500 + 1 tak, aby odpovídalo horní klauzuli). | 

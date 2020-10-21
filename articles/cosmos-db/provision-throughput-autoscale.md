@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9d645a16a59e34d1915cf9febde6b1f8a789355
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570725"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282104"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Vytvoření kontejnerů a databází Azure Cosmos s využitím propustnosti automatického škálování
 
@@ -85,6 +85,6 @@ Další podrobnosti najdete v této [dokumentaci](how-to-choose-offer.md) k výb
 * Přečtěte si [Nejčastější dotazy k automatickému škálování](autoscale-faq.md).
 * Naučte se [vybírat mezi ruční a propustností automatického škálování](how-to-choose-offer.md).
 * Naučte se [zřídit propustnost automatického škálování v databázi nebo kontejneru Azure Cosmos](how-to-provision-autoscale-throughput.md).
-* Přečtěte si další informace o [dělení](partition-data.md) Azure Cosmos DB.
+* Přečtěte si další informace o [dělení](partitioning-overview.md) Azure Cosmos DB.
 
 

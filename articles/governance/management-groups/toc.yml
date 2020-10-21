@@ -28,6 +28,11 @@
     - name: Vytvoření skupiny pro správu – REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
+- name: Kurzy
+  items:
+    - name: 'Learn: Vytvoření strategie zásad správného řízení pro předplatná'
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: Návody
   expanded: true
   items:

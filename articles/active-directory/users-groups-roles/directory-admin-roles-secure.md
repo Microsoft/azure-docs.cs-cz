@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7224f8fe1461727504a85df4a5fd95ba871258a8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055805"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308735"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -302,7 +302,7 @@ Pokud je váš Azure Active Directory připojený k místní službě Active Dir
 
 #### <a name="establish-integrated-monitoring"></a>Zavedení integrovaného monitorování
 
-[Azure Security Center](../../security-center/security-center-intro.md):
+[Azure Security Center](../../security-center/security-center-introduction.md):
 
 * Poskytuje integrované monitorování zabezpečení a správu zásad v rámci předplatných Azure.
 * Pomáhá detekovat hrozby, které by jinak neinformovaly
@@ -358,7 +358,7 @@ Fáze 4 plánu by se měla implementovat po dobu šesti měsíců a později. Do
 
 Zabezpečení privilegovaného přístupu je důležité pro zajištění bezpečnostních ujištění vašich obchodních prostředků. Měl by však být součástí kompletního programu zabezpečení, který poskytuje průběžné záruky zabezpečení. Tento program by měl obsahovat tyto prvky:
 
-* Zásady
+* Zásada
 * Operace
 * Zabezpečení informací
 * Servery

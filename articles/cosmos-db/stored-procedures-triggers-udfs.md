@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82509665"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279901"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
 
@@ -24,7 +24,7 @@ Zápis uložených procedur, triggerů a uživatelsky definovaných funkcí (UDF
 
 * **Procesní logika:** JavaScript jako programovací jazyk vysoké úrovně, který poskytuje bohatou a známou rozhraní pro Express Business Logic. Můžete provést sekvenci komplexních operací s daty.
 
-* **Atomické transakce:** Azure Cosmos DB garantuje, že databázové operace, které se provádějí v rámci jedné uložené procedury nebo triggeru, jsou atomické. Tato atomická funkce umožňuje aplikaci zkombinovat související operace do jedné dávky, aby všechny operace byly úspěšné nebo žádné z nich nebyly úspěšné.
+* **Atomické transakce:** Operace Azure Cosmos DB Database, které se provádějí v rámci jedné uložené procedury nebo triggeru, jsou atomické. Tato atomická funkce umožňuje aplikaci zkombinovat související operace do jedné dávky, aby všechny operace byly úspěšné nebo žádné z nich nebyly úspěšné.
 
 * **Výkon:** Data JSON jsou vnitřně mapována na systém typů jazyka JavaScript. Toto mapování umožňuje několik optimalizací, jako je opožděné dematerializace dokumentů JSON ve fondu vyrovnávací paměti a jejich zpřístupnění na vyžádání spouštěcímu kódu. K odeslání obchodní logiky do databáze jsou k dispozici další výhody související s výkonem, které zahrnují:
 
@@ -55,7 +55,7 @@ V Azure Cosmos DB je JavaScript Runtime hostovaný v databázovém stroji. Proto
 
 ### <a name="scope-of-a-transaction"></a>Rozsah transakce
 
-Uložené procedury jsou přidružené k kontejneru Azure Cosmos a provádění uložených procedur je vymezeno na klíč logického oddílu. Uložené procedury musí zahrnovat hodnotu klíče logického oddílu během provádění, která definuje logický oddíl pro obor transakce. Další informace najdete v článku o [dělení Azure Cosmos DB](partition-data.md) .
+Uložené procedury jsou přidružené k kontejneru Azure Cosmos a provádění uložených procedur je vymezeno na klíč logického oddílu. Uložené procedury musí zahrnovat hodnotu klíče logického oddílu během provádění, která definuje logický oddíl pro obor transakce. Další informace najdete v článku o [dělení Azure Cosmos DB](partitioning-overview.md) .
 
 ### <a name="commit-and-rollback"></a>Potvrdit změny a vrátit se zpátky
 

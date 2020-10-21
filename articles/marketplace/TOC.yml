@@ -105,30 +105,38 @@
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Vytvoření nabídky kontejnerů Azure
               href: partner-center-portal/create-azure-container-offer.md
-    - name: Nabídky virtuálních počítačů Azure
+    - name: Nabídka virtuálních počítačů Azure
       items:
         - name: Plánování nabídky virtuálních počítačů
           href: marketplace-virtual-machines.md
         - name: Vytvoření a publikování nabídky virtuálních počítačů
           items:
-            - name: Vytvoření nabídky virtuálních počítačů Azure
-              href: partner-center-portal/azure-vm-create-offer.md
-            - name: Vytvoření technického prostředku virtuálního počítače Azure
+            - name: Vytvoření technických prostředků virtuálního počítače
               items:
-                - name: Potíže s certifikací virtuálních počítačů
-                  href: partner-center-portal/vm-certification-issues-solutions.md
-                - name: Vytvoření technického prostředku virtuálního počítače Azure
-                  href: partner-center-portal/create-azure-vm-technical-asset.md
-                - name: Nejčastější dotazy k technickým prostředkům virtuálního počítače Azure
-                  href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: Testovací virtuální počítač nasazený z VHD
-                  href: partner-center-portal/azure-vm-image-certification.md
-                - name: Identifikátor URI sdíleného přístupového podpisu
-                  items:
-                    - name: Získání identifikátoru URI sdíleného přístupového podpisu
-                      href: partner-center-portal/get-sas-uri.md
-                    - name: Nejčastější dotazy k identifikátoru URI sdíleného přístupového podpisu
-                      href: partner-center-portal/common-sas-uri-issues.md
+                - name: Vytvoření virtuálního počítače ze schválené báze
+                  href: azure-vm-create-using-approved-base.md
+                - name: Vytvoření virtuálního počítače pomocí vlastní image
+                  href: azure-vm-create-using-own-image.md
+                - name: Otestování image virtuálního počítače
+                  href: azure-vm-image-test.md
+                - name: Získání identifikátoru URI sdíleného přístupového podpisu
+                  href: azure-vm-get-sas-uri.md
+                - name: Zprávy o selhání SAS
+                  href: azure-vm-sas-failure-messages.md
+                - name: Nejčastější dotazy k vytváření virtuálních počítačů
+                  href: azure-vm-create-faq.md
+                - name: Řešení potíží s certifikacemi virtuálních počítačů
+                  href: azure-vm-create-certification-faq.md
+            - name: Vytvoření nabídky virtuálních počítačů
+              href: azure-vm-create.md
+            - name: Konfigurace vlastností nabídek virtuálních počítačů
+              href: azure-vm-create-properties.md
+            - name: Konfigurace výpisu nabídek virtuálních počítačů
+              href: azure-vm-create-listing.md
+            - name: Vytváření plánů pro virtuální počítače
+              href: azure-vm-create-plans.md
+            - name: Přidání cílové skupiny pro verzi Preview
+              href: azure-vm-create-preview.md
     - name: Konzultační služby
       items:
         - name: Plánování nabídky konzultačních služeb
@@ -329,7 +337,7 @@
     - name: Konzultační hodiny – technické záležitosti a publikování
       href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: Možnosti podpory Partnerského centra
-      href: partner-center-portal/support.md
+      href: support.md
     - name: Oznámení Partnerského centra
       href: /partner-center/announcements
     - name: Komunita partnerů Microsoftu

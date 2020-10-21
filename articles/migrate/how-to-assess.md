@@ -3,12 +3,12 @@ title: Přidat nástroje pro posouzení do Azure Migrate
 description: Naučte se přidávat nástroje pro posouzení do Azure Migrate.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dee9ec2210bf6e04255b07cf641ced6807c8b5a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86122111"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317371"
 ---
 # <a name="add-assessment-tools"></a>Přidání nástrojů pro vyhodnocení
 
@@ -60,4 +60,4 @@ Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate]
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte vyhodnocení pomocí Azure Migrate posouzení serveru pro virtuální počítače [VMware](tutorial-prepare-vmware.md) , [Hyper-V](tutorial-prepare-hyper-v.md)nebo [fyzické servery](tutorial-prepare-physical.md)
+Vyzkoušejte vyhodnocení pomocí Azure Migrate posouzení serveru pro virtuální počítače [VMware](./tutorial-discover-vmware.md) , [Hyper-V](./tutorial-discover-hyper-v.md)nebo [fyzické servery](./tutorial-discover-physical.md)

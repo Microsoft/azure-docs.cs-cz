@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: b0c9ef99e4cbb0683273d613d3a85e7f6455a40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87366717"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282469"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
 
@@ -25,7 +25,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
 |   Couchbase     |   Azure Cosmos DB   |
 | ---------------|-------------------|
 |Server Couchbase| Účet       |
-|Blocích           | databáze      |
+|Blocích           | Databáze      |
 |Blocích           | Kontejner/kolekce |
 |Dokument JSON    | Položka/dokument |
 
@@ -33,7 +33,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
 
 * Azure Cosmos DB má v dokumentu pole "ID", zatímco Couchbase má ID jako součást intervalu. Pole ID je v rámci oddílu jedinečné.
 
-* Azure Cosmos DB škáluje pomocí techniky dělení nebo horizontálního dělení. To znamená, že data rozdělí do několika horizontálních oddílů/oddílů. Tyto oddíly/horizontálních oddílů se vytvářejí na základě vlastnosti klíče oddílu, kterou zadáte. Můžete vybrat klíč oddílu pro optimalizaci čtení, i když jsou taky optimalizované operace zápisu nebo čtení/zápis. Další informace najdete v článku [dělení](./partition-data.md) .
+* Azure Cosmos DB škáluje pomocí techniky dělení nebo horizontálního dělení. To znamená, že data rozdělí do několika horizontálních oddílů/oddílů. Tyto oddíly/horizontálních oddílů se vytvářejí na základě vlastnosti klíče oddílu, kterou zadáte. Můžete vybrat klíč oddílu pro optimalizaci čtení, i když jsou taky optimalizované operace zápisu nebo čtení/zápis. Další informace najdete v článku [dělení](./partitioning-overview.md) .
 
 * V Azure Cosmos DB není nutné, aby hierarchie nejvyšší úrovně naznamenala kolekci, protože název kolekce již existuje. Tato funkce zpřístupňuje strukturu JSON mnohem jednodušší. Následuje příklad, který ukazuje rozdíly v datovém modelu mezi Couchbase a Azure Cosmos DB:
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801320"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281069"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Propustnost můžete zřídit pro databáze nebo kontejnery a v závislosti na k
 
 * Při zřizování propustnosti v databázi může všechny kontejnery, například kolekce/tabulky nebo grafy v této databázi, sdílet propustnost na základě zatížení. Propustnost rezervovaný na úrovni databáze je nerovnoměrně sdílená v závislosti na zatížení konkrétní sady kontejnerů.
 
-* Pokud zřizujete propustnost na kontejneru, je zajištěna propustnost tohoto kontejneru, kterou zajišťuje smlouva SLA. Volba klíče logického oddílu je zásadní pro rovnoměrné rozložení zatížení ve všech logických oddílech kontejneru. Další podrobnosti najdete v článcích [dělení](partitioning-overview.md) a [horizontální škálování](partition-data.md) .
+* Pokud zřizujete propustnost na kontejneru, je zajištěna propustnost tohoto kontejneru, kterou zajišťuje smlouva SLA. Volba klíče logického oddílu je zásadní pro rovnoměrné rozložení zatížení ve všech logických oddílech kontejneru. Další podrobnosti najdete v článcích [dělení](partitioning-overview.md) a [horizontální škálování](partitioning-overview.md) .
 
 Níže jsou uvedeny některé pokyny k rozhodování o strategii zřízené propustnosti:
 
@@ -56,7 +56,7 @@ Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní A
 
 |Rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
 |----|----|----|
-|SQL API|databáze|Kontejner|
+|SQL API|Databáze|Kontejner|
 |Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
 |Rozhraní Cassandra API|Prostor klíčů|Tabulka|
 |Rozhraní Gremlin API|Databázový účet|Graph|

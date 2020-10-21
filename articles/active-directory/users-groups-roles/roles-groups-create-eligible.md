@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07dc11877b38e830d90f544f1d7524b378bf5902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f14960f98a4257b0c8f920915327661cd8b867c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053748"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310394"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>Vytvoření skupiny s přiřazením rolí v Azure Active Directory
 
-Roli můžete přiřadit jenom skupině, která byla vytvořená s vlastností ' isAssignableToRole ' nastavenou na hodnotu true nebo byla vytvořena na portálu Azure AD s **rolemi služby Azure AD, kterou je možné přiřadit do skupiny** zapnuté. Tento atribut skupiny vytvoří skupinu, která může být přiřazena roli v Azure Active Directory (Azure AD). Tento článek popisuje, jak vytvořit tento speciální druh skupiny. **Poznámka:** Skupina s vlastností isAssignableToRole nastavenou na hodnotu true nemůže být dynamickým typem členství. Další informace najdete v tématu [použití skupiny ke správě přiřazení rolí Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-groups-concept).
+Roli můžete přiřadit jenom skupině, která byla vytvořená s vlastností ' isAssignableToRole ' nastavenou na hodnotu true nebo byla vytvořena na portálu Azure AD s **rolemi služby Azure AD, kterou je možné přiřadit do skupiny** zapnuté. Tento atribut skupiny vytvoří skupinu, která může být přiřazena roli v Azure Active Directory (Azure AD). Tento článek popisuje, jak vytvořit tento speciální druh skupiny. **Poznámka:** Skupina s vlastností isAssignableToRole nastavenou na hodnotu true nemůže být dynamickým typem členství. Další informace najdete v tématu [použití skupiny ke správě přiřazení rolí Azure AD](./roles-groups-concept.md).
 
 ## <a name="using-azure-ad-admin-center"></a>Použití centra pro správu Azure AD
 
@@ -46,7 +46,7 @@ Roli můžete přiřadit jenom skupině, která byla vytvořená s vlastností '
 
 Tato skupina se vytvoří se všemi rolemi, které jste jim mohli přiřadit.
 
-## <a name="using-powershell"></a>Pomocí prostředí PowerShell
+## <a name="using-powershell"></a>Použití PowerShellu
 
 ### <a name="install-the-azure-ad-preview-module"></a>Instalace modulu Azure AD Preview
 

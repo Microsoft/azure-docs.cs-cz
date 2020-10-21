@@ -1,18 +1,18 @@
 ---
 title: Azure Policy kontroly dodržování předpisů pro Azure Service Bus zasílání zpráv
 description: Seznam Azure Policy kontrolních mechanismů dodržování předpisů, které jsou dostupné pro Azure Service Bus zasílání zpráv. Tyto integrované definice zásad poskytují běžné přístupy ke správě dodržování předpisů vašich prostředků Azure.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d3f13011f61562c52350af7d123db90dddbbfcb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20f788c8c29b3bccca1df49acad0674432fbd813
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818945"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310432"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-bus-messaging"></a>Azure Policy kontroly dodržování předpisů pro Azure Service Bus zasílání zpráv
 

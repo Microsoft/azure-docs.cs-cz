@@ -1,31 +1,31 @@
 ---
 title: Azure Policy rozšíření pro Visual Studio Code
 description: Přečtěte si, jak pomocí rozšíření Azure Policy Visual Studio Code vyhledat Azure Resource Manager aliasy.
-ms.date: 10/14/2020
+ms.date: 10/20/2020
 ms.topic: how-to
-ms.openlocfilehash: ea05ffab9c57c50e451008a1ec7c534afbedf282
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077928"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317618"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Použít rozšíření Azure Policy pro Visual Studio Code
 
-> Platí pro Azure Policy rozšíření verze **0.0.21** a novější.
+> Platí pro Azure Policy rozšíření verze **0.1.0** a novější.
 
-Naučte se používat rozšíření Azure Policy pro Visual Studio Code k vyhledání [aliasů](../concepts/definition-structure.md#aliases) a kontrole prostředků a zásad. Nejdřív popíšeme, jak nainstalovat rozšíření Azure Policy v Visual Studio Code. Pak vás provedeme vyhledáním aliasů.
+Naučte se používat Azure Policy rozšíření pro Visual Studio Code k hledání [aliasů](../concepts/definition-structure.md#aliases), kontrole prostředků a zásad, exportu objektů a vyhodnocení definic zásad. Nejdřív popíšeme, jak nainstalovat rozšíření Azure Policy v Visual Studio Code. Pak vás provedeme vyhledáním aliasů.
 
 Azure Policy rozšíření pro Visual Studio Code lze nainstalovat na všechny platformy, které Visual Studio Code podporuje. Tato podpora zahrnuje Windows, Linux a macOS.
 
 > [!NOTE]
 > Změny provedené lokálně v zásadách zobrazených v rozšíření Azure Policy pro Visual Studio Code se nesynchronizují do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 - [Visual Studio Code](https://code.visualstudio.com).
 
 ## <a name="install-azure-policy-extension"></a>Nainstalovat rozšíření Azure Policy
@@ -151,6 +151,51 @@ Rozšíření Azure Policy obsahuje seznam typů zásad a přiřazení zásad ja
 1. Pomocí filtru vyberte, které zásady nebo které chcete zobrazit. Filtr pracuje s parametrem _DisplayName_ pro definici zásady nebo přiřazení zásady.
 
 Když vyberete zásadu nebo přiřazení, ať už přes vyhledávací rozhraní, nebo ho vyberete v ovládacím prvku TreeView, Azure Policy rozšíření otevře JSON, který představuje zásadu nebo přiřazení a všechny jeho Správce prostředků hodnoty vlastností. Rozšíření může ověřit otevřené schéma JSON Azure Policy.
+
+## <a name="export-objects"></a>Exportovat objekty
+
+Objekty z předplatných lze exportovat do místního souboru JSON. V podokně **prostředky** nebo **zásady** najeďte myší na nebo vyberte exportovatelné objekty. Na konci zvýrazněného řádku vyberte ikonu Uložit a vyberte složku pro uložení těchto prostředků JSON.
+
+Následující objekty lze exportovat místně:
+
+- Podokno prostředků
+  - Skupiny prostředků
+  - Jednotlivé prostředky (buď ve skupině prostředků, nebo v rámci poskytovatele prostředků)
+- Podokno zásady
+  - Přiřazení zásad
+  - Předdefinované definice zásad
+  - Definice vlastních zásad
+  - Iniciativy
+
+## <a name="on-demand-evaluation-scan"></a>Prohledávání hodnocení na vyžádání
+
+Můžete spustit kontrolu hodnocení s rozšířením Azure Policy pro Visual Studio Code. Chcete-li zahájit vyhodnocení, vyberte a připněte každý z následujících objektů: prostředek, definice zásady a přiřazení zásad.
+
+1. Pokud chcete každý objekt připnout, najděte ho buď v podokně **prostředky** , nebo v podokně **zásady** a vyberte ikonu Připnout na kartu upravit. Připnutí objektu ho přidá do podokna **vyhodnocení** rozšíření.
+1. V podokně **vyhodnocení** vyberte jeden z jednotlivých objektů a pomocí ikony vybrat pro vyhodnocení ho označte jako zahrnuté do hodnocení.
+1. V horní části podokna **vyhodnocení** vyberte ikonu spustit vyhodnocení. Otevře se nové podokno v Visual Studio Code s výslednými podrobnostmi o vyhodnocení ve formátu JSON.
+
+> [!NOTE]
+> Pokud je vybraná definice zásady buď [AuditIfNotExists](../concepts/effects.md#auditifnotexists) , nebo [DeployIfNotExists](../concepts/effects.md#deployifnotexists), v podokně **vyhodnocení** se k výběru _souvisejícího_ prostředku pro kontrolu existence použije ikona Plus.
+
+Výsledky hodnocení poskytují informace o definici zásady a přiřazení zásad spolu s vlastností **policyEvaluations. evaluationResult** . Výstup bude vypadat podobně jako v následujícím příkladu:
+
+```json
+{
+    "policyEvaluations": [
+        {
+            "policyInfo": {
+                ...
+            },
+            "evaluationResult": "Compliant",
+            "effectDetails": {
+                "policyEffect": "Audit",
+                "existenceScope": "None"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="sign-out"></a>Odhlásit se
 

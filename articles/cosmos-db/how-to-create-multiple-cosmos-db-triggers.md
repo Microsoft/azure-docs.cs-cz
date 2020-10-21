@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019976"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279639"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Vytvoření více triggerů Azure Functions pro Cosmos DB
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak nakonfigurovat několik triggerů služby Azure Fun
 
 Při sestavování architektur bez serveru pomocí [Azure Functions](../azure-functions/functions-overview.md) [doporučujeme](../azure-functions/functions-best-practices.md#avoid-long-running-functions) vytvořit malé sady funkcí, které budou společně fungovat místo velkých dlouho běžících funkcí.
 
-Při sestavování toků bez serveru založeného na událostech pomocí [Azure Functions triggeru pro Cosmos DB](./change-feed-functions.md)spustíte ve scénáři, ve kterém chcete provést několik akcí, když dojde k nové události v konkrétním [kontejneru Azure Cosmos](./databases-containers-items.md#azure-cosmos-containers). Pokud akce, které chcete spustit, jsou nezávisle na sobě, ideální řešení by mělo **vytvořit jednu Azure Functions triggery pro Cosmos DB na akci** , kterou chcete provést, a to vše, které naslouchá změnám ve stejném kontejneru Azure Cosmos.
+Při sestavování toků bez serveru založeného na událostech pomocí [Azure Functions triggeru pro Cosmos DB](./change-feed-functions.md)spustíte ve scénáři, ve kterém chcete provést několik akcí, když dojde k nové události v konkrétním [kontejneru Azure Cosmos](./account-databases-containers-items.md#azure-cosmos-containers). Pokud akce, které chcete spustit, jsou nezávisle na sobě, ideální řešení by mělo **vytvořit jednu Azure Functions triggery pro Cosmos DB na akci** , kterou chcete provést, a to vše, které naslouchá změnám ve stejném kontejneru Azure Cosmos.
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Optimalizace kontejnerů pro vícenásobné triggery
 

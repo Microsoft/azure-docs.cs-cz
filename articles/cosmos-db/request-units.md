@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 6831cb3f39c25eb69d16300156f456980cf57fa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/13/2020
+ms.openlocfilehash: e4e680ea55988f7b3446bf72c8e800bcc51eb537
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88604833"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282051"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Jednotky žádostí ve službě Azure Cosmos DB
 
@@ -38,42 +38,50 @@ Typ účtu Azure Cosmos, který používáte, určuje způsob, jakým se účtuj
 
 Při odhadování počtu ru spotřebovaných úlohami Vezměte v úvahu následující faktory:
 
-* **Velikost položky**: Se vzrůstající velikostí položky se také zvyšuje počet jednotek žádosti spotřebovaných pro čtení a zápis.
+- **Velikost položky**: Se vzrůstající velikostí položky se také zvyšuje počet jednotek žádosti spotřebovaných pro čtení a zápis.
 
-* **Indexování položky**: Ve výchozím nastavení se automaticky indexuje každá položka. Pokud se rozhodnete některé z položek v kontejneru neindexovat, spotřebujete tak méně jednotek žádosti.
+- **Indexování položky**: Ve výchozím nastavení se automaticky indexuje každá položka. Pokud se rozhodnete některé z položek v kontejneru neindexovat, spotřebujete tak méně jednotek žádosti.
 
-* **Počet vlastností položky**: Pokud u všech vlastností platí výchozí indexování, roste s počtem vlastností položky také počet jednotek žádosti spotřebovaných pro její zápis.
+- **Počet vlastností položky**: Pokud u všech vlastností platí výchozí indexování, roste s počtem vlastností položky také počet jednotek žádosti spotřebovaných pro její zápis.
 
-* **Indexované vlastnosti**: Vlastnosti, které se ve výchozím nastavení indexují, jsou určovány zásadami indexování každého kontejneru. Pokud tedy chcete snížit spotřebu jednotek žádosti pro operace zápisu, omezte počet indexovaných vlastností.
+- **Indexované vlastnosti**: Vlastnosti, které se ve výchozím nastavení indexují, jsou určovány zásadami indexování každého kontejneru. Pokud tedy chcete snížit spotřebu jednotek žádosti pro operace zápisu, omezte počet indexovaných vlastností.
 
-* **Konzistence dat**: silná a ohraničená úroveň konzistence odolná proti chybám spotřebovává během operací čtení ve srovnání s jinými uvolněnými úrovněmi konzistence přibližně dvojnásobek více ru.
+- **Konzistence dat**: silná a ohraničená úroveň konzistence odolná proti chybám spotřebovává během operací čtení ve srovnání s jinými uvolněnými úrovněmi konzistence přibližně dvojnásobek více ru.
 
-* **Typ čtení**: Point čte náklady významně méně ru než dotazy.
+- **Typ čtení**: Point čte náklady významně méně ru než dotazy.
 
-* **Struktura dotazů**: Složitost dotazu má vliv na počet jednotek žádosti spotřebovaných operací. Mezi faktory ovlivňující náklady na operace dotazování patří: 
-    
-    - Počet výsledků dotazu
-    - Počet predikátů
-    - Povaha predikátů
-    - Počet funkcí definovaných uživatelem
-    - Velikost zdrojových dat
-    - Velikost sady výsledků
-    - Projekce
+- **Struktura dotazů**: Složitost dotazu má vliv na počet jednotek žádosti spotřebovaných operací. Mezi faktory ovlivňující náklady na operace dotazování patří: 
 
-  Služba Azure Cosmos DB garantuje, že při opakovaných spouštěních se náklady v podobě jednotek žádosti u stejného dotazu na stejná data nezmění.
+  - Počet výsledků dotazu
+  - Počet predikátů
+  - Povaha predikátů
+  - Počet funkcí definovaných uživatelem
+  - Velikost zdrojových dat
+  - Velikost sady výsledků
+  - Projekce
 
-* **Použití skriptu**: stejně jako u dotazů, uložené procedury a triggery spotřebovávají ru na základě složitosti operací, které jsou prováděny. Abyste získali lepší přehled o tom, jakou kapacitu (vyjádřenou v jednotkách RU) každá operace spotřebuje, zkontrolujte při vývoji aplikace [hlavičku zátěže žádostmi](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query).
+  Stejný dotaz na stejná data bude vždy při opakovaném spuštění ru náklady na stejný počet.
+
+- **Použití skriptu**: stejně jako u dotazů, uložené procedury a triggery spotřebovávají ru na základě složitosti operací, které jsou prováděny. Abyste získali lepší přehled o tom, jakou kapacitu (vyjádřenou v jednotkách RU) každá operace spotřebuje, zkontrolujte při vývoji aplikace [hlavičku zátěže žádostmi](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query).
+
+## <a name="request-units-and-multiple-regions"></a>Jednotky žádostí a několik oblastí
+
+Pokud zřizujete *' r '* ru na kontejneru Cosmos (nebo databázi), Cosmos DB zajistí, že je v *každé* oblasti přidružené k vašemu účtu Cosmos k dispozici ru *r* . Ru nelze selektivně přiřadit ke konkrétní oblasti. Ru zřízené na kontejneru Cosmos (nebo databázi) se zřídí ve všech oblastech přidružených k vašemu účtu Cosmos.
+
+Za předpokladu, že je kontejner Cosmos nakonfigurovaný pomocí *R* ru a je *N* oblastí přidružených k účtu Cosmos, celkový ru k dispozici globálně na kontejneru = *R* x *N*.
+
+Vaše volba [modelu konzistence](consistency-levels.md) má vliv také na propustnost. V porovnání s silnějšími úrovněmi konzistence můžete získat přibližně dvojnásobnou propustnost čtení pro příznivější úrovně konzistence *(například* *relace*, *konzistentní předpony* *a* konečná *konzistence* ).
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o tom, jak [zřídit propustnost na Cosmosch kontejnerech a databázích Azure](set-throughput.md).
-* Přečtěte si další informace o [Azure Cosmos DB bez serveru](serverless.md).
-* Přečtěte si další informace o [logických oddílech](partition-data.md).
-* Přečtěte si další informace o [globálním škálování zřízené propustnosti](scaling-throughput.md).
-* Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
-* Naučte se [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
-* Přečtěte si, jak [Najít poplatek za jednotku žádosti o operaci](find-request-unit-charge.md).
-* Naučte se [optimalizovat zřízené náklady na propustnost v Azure Cosmos DB](optimize-cost-throughput.md).
-* Naučte se [optimalizovat čtení a zápis nákladů v Azure Cosmos DB](optimize-cost-reads-writes.md).
-* Naučte se [optimalizovat náklady na dotaz v Azure Cosmos DB](optimize-cost-queries.md).
-* Naučte se [používat metriky k monitorování propustnosti](use-metrics.md).
+- Přečtěte si další informace o tom, jak [zřídit propustnost na Cosmosch kontejnerech a databázích Azure](set-throughput.md).
+- Přečtěte si další informace o [Azure Cosmos DB bez serveru](serverless.md).
+- Přečtěte si další informace o [logických oddílech](partition-data.md).
+- Přečtěte si další informace o [globálním škálování zřízené propustnosti](scaling-throughput.md).
+- Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
+- Naučte se [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
+- Přečtěte si, jak [Najít poplatek za jednotku žádosti o operaci](find-request-unit-charge.md).
+- Naučte se [optimalizovat zřízené náklady na propustnost v Azure Cosmos DB](optimize-cost-throughput.md).
+- Naučte se [optimalizovat čtení a zápis nákladů v Azure Cosmos DB](optimize-cost-reads-writes.md).
+- Naučte se [optimalizovat náklady na dotaz v Azure Cosmos DB](optimize-cost-queries.md).
+- Naučte se [používat metriky k monitorování propustnosti](use-metrics.md).

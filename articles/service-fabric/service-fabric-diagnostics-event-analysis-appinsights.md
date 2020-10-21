@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 61a1d7cb3a5f43aa8100f1c7e8a102ab19b803f5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e35206b5fa9466cda064c09f060f45b437fafd20
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932443"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329572"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analýza a vizualizace událostí pomocí Application Insights
 
@@ -32,7 +32,7 @@ Application Insights při použití Service Fabric nabízí bohatě funkční pr
 
 Na pravém panelu na předchozím obrázku existují dva hlavní typy záznamů v seznamu: žádosti a události. Požadavky jsou volání rozhraní API aplikace prostřednictvím požadavků HTTP v tomto případě a události jsou vlastní události, které fungují jako telemetrie, které můžete přidat kdekoli v kódu. Můžete dále prozkoumat instrumentaci aplikací v [rozhraní Application Insights API pro vlastní události a metriky](../azure-monitor/app/api-custom-events-metrics.md). Kliknutím na žádost se zobrazí další podrobnosti, jak je znázorněno na následujícím obrázku, včetně dat specifických pro Service Fabric, která se shromažďují v balíčku NuGet Application Insights Service Fabric. Tyto informace jsou užitečné při řešení potíží a znalosti toho, co je stav aplikace, a všechny tyto informace jsou prohledávatelné v rámci Application Insights
 
-![Podrobnosti o Application Insights žádosti](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![Snímek obrazovky, který obsahuje další podrobnosti, včetně dat specifických pro Service Fabric, které se shromažďují v balíčku NuGet Application Insights Service Fabric.](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
 Application Insights má určené zobrazení pro dotazování na všechna data, která jsou součástí. V horní části stránky přehled vyberte "Průzkumník metrik", chcete-li přejít na portál Application Insights. Tady můžete spouštět dotazy proti vlastním událostem, které jsou uvedené před, požadavky, výjimky, čítače výkonu a další metriky pomocí dotazovacího jazyka Kusto. Následující příklad zobrazuje všechny žádosti za poslední 1 hodinu.
 
@@ -48,7 +48,7 @@ Pokud k agregaci událostí používáte využitím eventflow, nezapomeňte impo
 "outputs": [
     {
         "type": "ApplicationInsights",
-        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE***"
+        "instrumentationKey": "***ADD INSTRUMENTATION KEY HERE**_"
     }
 ]
 ```
@@ -65,7 +65,7 @@ Pokud vyvíjíte v rozhraní .NET a pravděpodobně použijete některé z progr
 
 ## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Navigace prostředku Application Insights v Azure Portal
 
-Jakmile nakonfigurujete Application Insights jako výstup pro události a protokoly, měly by se informace během několika minut zobrazovat v prostředku Application Insights. Přejděte na prostředek Application Insights, který vás převezme na řídicí panel prostředků Application Insights. Výběrem možnosti **Hledat** na hlavním panelu Application Insights zobrazíte nejnovější trasování, která přijala, a budete je moct přes ně filtrovat.
+Jakmile nakonfigurujete Application Insights jako výstup pro události a protokoly, měly by se informace během několika minut zobrazovat v prostředku Application Insights. Přejděte na prostředek Application Insights, který vás převezme na řídicí panel prostředků Application Insights. Výběrem _*Hledat** na hlavním panelu Application Insights zobrazíte nejnovější trasování, která přijala, a budete je moct přes ně filtrovat.
 
 *Průzkumník metrik* je užitečný nástroj pro vytváření vlastních řídicích panelů na základě metrik, které mohou hlásit aplikace, služby a cluster. V tématu [prozkoumávání metrik v Application Insights](../azure-monitor/platform/metrics-charts.md) můžete nastavit několik grafů pro sebe na základě shromažďovaných dat.
 

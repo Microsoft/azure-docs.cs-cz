@@ -1,17 +1,17 @@
 ---
-title: Vytvoření pracovního prostoru Log Analytics na webu Azure Portal | Microsoft Docs
+title: Vytvoření pracovního prostoru Log Analytics v Azure Portal | Microsoft Docs
 description: Naučte se, jak vytvořit pracovní prostor Log Analytics, který umožňuje řešení pro správu a shromažďování dat z vašich cloudových a místních prostředí v Azure Portal.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: f86cc5e3edc659a233066fcf2544ed4a5019d0f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf7c89c23b3df51dce2710be50c3c62f8f1e3cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324280"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320086"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Vytvoření pracovního prostoru Log Analytics na webu Azure Portal
 Pomocí nabídky **pracovní prostory Log Analytics** můžete vytvořit pracovní prostor Log Analytics pomocí Azure Portal. Log Analytics pracovní prostor je jedinečné prostředí pro Azure Monitor data protokolu. Každý pracovní prostor má své vlastní úložiště a konfiguraci dat a zdroje dat a řešení jsou nakonfigurovány tak, aby ukládaly data do konkrétního pracovního prostoru. Pokud máte v úmyslu shromažďovat data z následujících zdrojů, potřebujete Log Analytics pracovní prostor:
@@ -27,7 +27,7 @@ Další zdroje, jako jsou virtuální počítače Azure a virtuální počítač
 *  [Shromažďování dat z hybridního počítače se systémem Linux](./quick-collect-linux-computer.md)
 *  [Shromažďování dat z hybridního počítače s Windows](quick-collect-windows-computer.md)
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
@@ -35,7 +35,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
-    ![portál Azure](media/quick-create-workspace/azure-portal-01.png)
+    ![Azure Portal](media/quick-create-workspace/azure-portal-01.png)
   
 2. Klikněte na **Přidat**a pak vyberte volby pro následující položky:
 
@@ -62,8 +62,5 @@ Když vytvoříte pracovní prostor, který byl odstraněn za posledních 14 dn�
 ## <a name="next-steps"></a>Další kroky
 Teď, když máte dostupný pracovní prostor, můžete nakonfigurovat shromažďování telemetrie monitorování, spustit prohledávání protokolů a tato data analyzovat a přidat řešení pro správu, která poskytují další data a analytické přehledy. 
 
-* Pokud chcete povolit shromažďování dat z prostředků Azure pomocí Azure Diagnostics nebo úložiště Azure, přečtěte si téma [shromáždění protokolů služby Azure a metrik pro použití v Log Analytics](../platform/resource-logs.md#send-to-log-analytics-workspace).  
-* [Přidejte System Center Operations Manager jako zdroj dat](../platform/om-agents.md) , abyste mohli shromažďovat data z agentů, kteří hlásí skupinu pro správu Operations Manager, a uložit je do pracovního prostoru Log Analytics. 
-* Připojte [Configuration Manager](../platform/collect-sccm.md) k importu počítačů, které jsou členy kolekcí v hierarchii.  
-* Projděte si dostupná [řešení pro monitorování](../insights/solutions.md) a postup přidání nebo odebrání řešení z pracovního prostoru.
-
+* [V tématu monitorování stavu Log Analytics pracovního prostoru v Azure monitor](../platform/monitor-workspace.md) vytváření pravidel výstrah pro monitorování stavu pracovního prostoru. 
+* Další informace najdete [v tématu shromáždění protokolů a metrik služby Azure pro použití v Log Analytics](../platform/resource-logs.md#send-to-log-analytics-workspace) k povolení shromažďování dat z prostředků Azure pomocí Azure Diagnostics nebo Azure Storage.

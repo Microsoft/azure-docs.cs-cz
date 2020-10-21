@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9054fa72ee4204d7a09e6ce8de4fe6d4ed4dac81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77ea96b1bd1b1d661bb835e7bb48d58ce4c3e118
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227708"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309156"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Základní hodnoty zabezpečení Azure pro Service Fabric
 
@@ -78,7 +78,7 @@ Zvažte nasazení firewallu webových aplikací Azure (WAF) před kritickými we
 
 * [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/azure-defender.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -488,7 +488,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -572,7 +572,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 * [Vysvětlení šifrování v klidovém umístění v Azure](../security/fundamentals/encryption-atrest.md)
 
-* [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../storage/common/storage-encryption-keys-portal.md)
+* [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 * [Povolení šifrování disku pro uzly clusteru Azure Service Fabric ve Windows](./service-fabric-enable-azure-disk-encryption-windows.md)
 
@@ -608,7 +608,7 @@ K provádění posouzení ohrožení zabezpečení v síťových zařízeních a
 
 * [NaChaos řízených v clusterech Service Fabric](./service-fabric-controlled-chaos.md)
 
-* [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+* [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -698,7 +698,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 * [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create-management-group-portal.md)
 
 * [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
@@ -1042,7 +1042,7 @@ Pokud používáte spravované klíče zákazníka, ujistěte se, že Soft-Delet
 
 * [Šifrování neaktivních uložených dat ve službě Azure Storage](../storage/common/storage-service-encryption.md)
 
-* [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [Postup povolení Soft-Delete v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 

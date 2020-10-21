@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: a40be5212fb1335482ec5011d24c8eaf5f3d9a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f116139d68f2382085dbbab5e862d0c621ad2e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409675"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282457"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API Azure Cosmos DB pro MongoDB 
 
-Následující dokument obsahuje příkazy vlastní akce, které jsou specifické pro rozhraní API Azure Cosmos DB pro MongoDB. Tyto příkazy lze použít k vytvoření a získání databázových prostředků, které jsou specifické pro [model Azure Cosmos DB kapacity](databases-containers-items.md).
+Následující dokument obsahuje příkazy vlastní akce, které jsou specifické pro rozhraní API Azure Cosmos DB pro MongoDB. Tyto příkazy lze použít k vytvoření a získání databázových prostředků, které jsou specifické pro [model Azure Cosmos DB kapacity](account-databases-containers-items.md).
 
 Díky rozhraní API Azure Cosmos DB pro MongoDB můžete využívat výhod Cosmos DB, jako je globální distribuce, automatická horizontálního dělení, vysoká dostupnost, záruky latence, automatické, šifrování v klidovém režimu, zálohování a spousta dalších, a zároveň zachovat investice do vaší aplikace MongoDB. Můžete komunikovat s rozhraním API Azure Cosmos DB pro MongoDB pomocí kteréhokoli z open-source [klientských ovladačů MongoDB](https://docs.mongodb.org/ecosystem/drivers). Rozhraní API pro Azure Cosmos DB pro MongoDB umožňuje použití existujících ovladačů klientů, které dodržuje [MongoDB síťový protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
@@ -213,9 +213,9 @@ Následující tabulka popisuje parametry v rámci příkazu:
 
 | **Pole** | **Typ** | **Požadováno** | **Popis** |
 |---------|---------|---------|---------|
-| `customAction` | `string` | Vyžadováno | Název vlastního příkazu Musí být "Vytvořitcollection".|
-| `collection` | `string` | Vyžadováno | Název kolekce Nejsou povoleny žádné speciální znaky ani mezery.|
-| `offerThroughput` | `int` | Volitelné | Zřízená propustnost pro nastavení databáze. Pokud tento parametr není zadán, bude výchozí hodnota minimálně 400 RU/s. * Pokud chcete zadat propustnost přesahující 10 000 RU/s, `shardKey` parametr je povinný.|
+| `customAction` | `string` | Povinné | Název vlastního příkazu Musí být "Vytvořitcollection".|
+| `collection` | `string` | Povinné | Název kolekce Nejsou povoleny žádné speciální znaky ani mezery.|
+| `offerThroughput` | `int` | Nepovinné | Zřízená propustnost pro nastavení databáze. Pokud tento parametr není zadán, bude výchozí hodnota minimálně 400 RU/s. * Pokud chcete zadat propustnost přesahující 10 000 RU/s, `shardKey` parametr je povinný.|
 | `shardKey` | `string` | Vyžadováno pro kolekce s velkou propustností | Cesta k horizontálních oddílůmu klíči pro kolekci horizontálně dělené Tento parametr je vyžadován, pokud nastavíte více než 10 000 RU/s v `offerThroughput` .  Pokud je zadáno, budou všechny vložené dokumenty vyžadovat tento klíč a hodnotu. |
 | `autoScaleSettings` | `Object` | Vyžaduje se pro [režim automatického škálování](provision-throughput-autoscale.md) . | Tento objekt obsahuje nastavení přidružená k režimu kapacity automatického škálování. Můžete nastavit `maxThroughput` hodnotu, která popisuje nejvyšší množství jednotek požadavků, na které se kolekce zvyšuje dynamicky. |
 
@@ -234,7 +234,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection"});
 ```
 
-Výsledkem bude, že se vytvoří nová pevná, unsharded, kolekce s 400RU/s a `_id` automaticky se vytvoří index pole. Tento typ konfigurace se použije také při vytváření nových kolekcí prostřednictvím `insert()` funkce. Například: 
+Výsledkem bude, že se vytvoří nová pevná, unsharded, kolekce s 400RU/s a `_id` automaticky se vytvoří index pole. Tento typ konfigurace se použije také při vytváření nových kolekcí prostřednictvím `insert()` funkce. Příklad: 
 
 ```javascript
 use test
@@ -423,7 +423,7 @@ Pokud tento parametr nezadáte, vlastní odpověď obsahuje dokument s následuj
 | `code`    |   `int`      |   Vrátí se jenom v případě, že se příkaz nezdařil (tj. ok = = 0). Obsahuje kód chyby MongoDB. Toto je volitelný parametr odpovědi.      |
 |  `errMsg`   |  `string`      |    Vrátí se jenom v případě, že se příkaz nezdařil (tj. ok = = 0). Obsahuje uživatelsky přívětivou chybovou zprávu. Toto je volitelný parametr odpovědi.      |
 
-Například:
+Příklad:
 
 ```javascript
 { "ok" : 1 }
