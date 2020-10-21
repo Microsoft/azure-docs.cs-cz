@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 12264a79ee5428e98d6cf7d37bef6706295e68dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448370"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275967"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Seznámení s Azure Defenderem pro Registry kontejnerů
 
@@ -66,7 +66,7 @@ Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v 
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Můžu získat výsledky kontroly prostřednictvím REST API?
 Ano. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API](/rest/api/securitycenter/subassessments/list/). Můžete také použít Azure Resource Graph (ARG), Kusto rozhraní API pro všechny vaše prostředky: dotaz může načíst konkrétní kontrolu.
- 
+
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Jaké typy registru jsou prohledávány? Jaké typy se účtují?
 Seznam typů registrů kontejnerů, které Azure Defender podporuje pro Registry kontejnerů, najdete v tématu [dostupnost](defender-for-container-registries-usage.md#availability).
 

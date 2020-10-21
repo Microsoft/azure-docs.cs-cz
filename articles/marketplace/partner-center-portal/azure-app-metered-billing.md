@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 07779769dae4c43148bbf4a8205feceea85ed363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320047"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280455"
 ---
 # <a name="managed-application-metered-billing"></a>Spravovaná fakturace podle objemu spravované aplikace 
 
@@ -67,7 +67,7 @@ Fakturační dimenze se sdílejí napříč všemi plány nabídky. Některé at
 Atributy, které definují vlastní dimenzi, jsou sdíleny ve všech plánech nabídky. Před publikováním této nabídky ovlivní změna těchto atributů z kontextu libovolného plánu definici dimenze ve všech plánech. Po publikování této nabídky již nebude možné tyto atributy upravovat. Atributy jsou:
 
 * Identifikátor
-* Name
+* Název
 * Jednotka měření
 
 Ostatní atributy dimenze jsou specifické pro každý plán a můžou mít různé hodnoty od plánu k plánování.  Před publikováním plánu můžete tyto hodnoty upravit a bude to mít vliv pouze na tento plán. Po publikování plánu už tyto atributy nebude možné upravovat. Atributy jsou:
@@ -93,7 +93,7 @@ Dimenze použitá v rámci služby měření na webu Marketplace představuje po
 Po publikování nabídky s dimenzí již nelze změnit podrobnosti na úrovni nabídky pro tuto dimenzi:
 
 * Identifikátor
-* Name
+* Název
 * Jednotka měření
 
 Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
@@ -109,7 +109,7 @@ Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
 
 Maximální počet dimenzí, které lze konfigurovat pro jednu nabídku, je 18 jedinečných dimenzí.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 Pokud máte některý z následujících problémů, můžete otevřít lístek podpory.
 
@@ -117,7 +117,7 @@ Pokud máte některý z následujících problémů, můžete otevřít lístek 
 * Problém, který je potřeba eskalovat z důvodu chyby nebo chyby na vaší straně (např. nesprávná událost použití)
 * Jakékoli další problémy související s měřením podle objemu.
 
-Postupujte podle pokynů v [části Podpora programu komerčního tržiště v partnerském centru](./support.md) , abyste pochopili možnosti podpory vydavatele a otevřeli lístek podpory s Microsoftem.
+Postupujte podle pokynů v [části Podpora programu komerčního tržiště v partnerském centru](../support.md) , abyste pochopili možnosti podpory vydavatele a otevřeli lístek podpory s Microsoftem.
 
 ## <a name="next-steps"></a>Další kroky
 

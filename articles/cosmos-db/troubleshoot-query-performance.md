@@ -4,27 +4,27 @@ description: Naučte se identifikovat, diagnostikovat a řešit potíže s Azure
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 09/12/2020
+ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: a6833f9d59eca4c2f0b49dd70684ade900226aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089985"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277164"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
 
-Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli zvážit kroky popsané v tomto článku s ucelenou ochranou proti potenciálním problémům s dotazy, zahrnuli jsme sem nejběžnější tipy k výkonu. Tento článek byste měli použít jako výchozí bod při řešení potíží s pomalými nebo nákladnými dotazy v rozhraní Core (SQL) API služby Azure Cosmos DB. K identifikaci dotazů, které jsou pomalé nebo které spotřebovávají významnou část propustnosti, můžete použít také [diagnostické protokoly](cosmosdb-monitor-resource-logs.md).
+Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli zvážit kroky popsané v tomto článku s ucelenou ochranou proti potenciálním problémům s dotazy, zahrnuli jsme sem nejběžnější tipy k výkonu. Tento článek byste měli použít jako výchozí bod při řešení potíží s pomalými nebo nákladnými dotazy v rozhraní Core (SQL) API služby Azure Cosmos DB. K identifikaci dotazů, které jsou pomalé nebo které spotřebovávají významnou část propustnosti, můžete použít také [diagnostické protokoly](cosmosdb-monitor-resource-logs.md). Pokud používáte rozhraní API Azure Cosmos DB pro MongoDB, měli byste použít [rozhraní Azure Cosmos DB API pro Průvodce odstraňováním potíží dotazů MongoDB](mongodb-troubleshoot-query.md) .
 
-Optimalizace dotazů můžete široce roztřídit do Azure Cosmos DB:
+Optimalizace dotazů v Azure Cosmos DB jsou v podstatě zařazené do kategorií následujícím způsobem:
 
 - Optimalizace, které omezují poplatek za jednotku žádosti (RU) na dotaz
 - Optimalizace, které pouze omezují latenci
 
-Pokud snížíte náklady na poplatek za dotaz, bude to skoro jistě snížit latenci.
+Pokud omezíte poplatek za dotaz, obvykle se sníží latence.
 
 Tento článek popisuje příklady, které můžete znovu vytvořit pomocí [nutriční datové sady](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json).
 
@@ -191,7 +191,7 @@ Zásady indexování se aktualizovaly:
 
 **Poplatek za ru:** 2,98 ru
 
-Můžete kdykoli přidat vlastnosti k zásadě indexování bez vlivu na dostupnost zápisu nebo výkon. Přidáte-li do indexu novou vlastnost, budou dotazy, které používají vlastnost, okamžitě používat nový dostupný index. Dotaz použije nový index při sestavení. Takže výsledky dotazu můžou být nekonzistentní, zatímco probíhá opětovné sestavení indexu. Pokud je nová vlastnost indexována, dotazy, které používají pouze existující indexy, nebudou při opětovném sestavení indexu ovlivněny. [Průběh transformace indexu můžete sledovat](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Můžete kdykoli přidat vlastnosti k zásadě indexování bez vlivu na zápis nebo čtení. [Průběh transformace indexu můžete sledovat](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Pochopení, které systémové funkce používají index
 
@@ -469,7 +469,7 @@ Tady je příslušný složený index:
 
 ## <a name="optimizations-that-reduce-query-latency"></a>Optimalizace, které snižují latenci dotazů
 
-V mnoha případech může být poplatek za RU přijatelný, pokud je latence dotazů pořád příliš vysoká. Následující části obsahují přehled tipů pro snížení latence dotazů. Pokud stejný dotaz spouštíte několikrát pro stejnou datovou sadu, bude mít každý čas stejný poplatek za RU. Latence dotazů se ale může lišit mezi provedeními dotazu.
+V mnoha případech může být poplatek za RU přijatelný, pokud je latence dotazů pořád příliš vysoká. Následující části obsahují přehled tipů pro snížení latence dotazů. Pokud stejný dotaz spouštíte několikrát pro stejnou datovou sadu, bude to mít obvykle za každou dobu stejnou částku RU. Latence dotazů se ale může lišit mezi provedeními dotazu.
 
 ### <a name="improve-proximity"></a>Zlepšení blízkosti
 

@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ae5632f2495ac5916ac8c86666e973c34d1b789
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 10444974cf31b95fccd2d11aef20bfd57fab7939
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215225"
+ms.locfileid: "92275291"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Tok autorizačního kódu OAuth 2,0 v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Pokud chcete získat přístup k chráněným prostředkům, jako jsou napříkl
 
 Tok autorizačního kódu OAuth 2,0 je popsaný v [části 4,1 specifikace oauth 2,0](https://tools.ietf.org/html/rfc6749). Můžete ji použít k ověřování a autorizaci ve většině [typů aplikací](application-types.md), včetně webových aplikací, jednostránkovéch aplikací a nativně nainstalovaných aplikací. Tok autorizačního kódu OAuth 2,0 můžete použít k bezpečnému získání přístupových tokenů a k aktualizaci tokenů pro vaše aplikace, které je možné použít pro přístup k prostředkům zabezpečeným [autorizačním serverem](protocols-overview.md).  Aktualizační token umožňuje klientovi získat nové tokeny přístupu (a aktualizovat) po vypršení platnosti přístupového tokenu, obvykle po jedné hodině.
 
-<!-- This article focuses on the **public clients** OAuth 2.0 authorization code flow. A public client is any client application that cannot be trusted to securely maintain the integrity of a secret password. This includes single-page applications, mobile apps, desktop applications, and essentially any application that runs on a device and needs to get access tokens. -->
+Tento článek se zaměřuje na tok autorizačního kódu OAuth 2,0 **veřejných klientů** . Veřejný klient je libovolná klientská aplikace, která nemůže být důvěryhodná pro bezpečné udržování integrity tajného hesla. To zahrnuje jednostránkové aplikace, mobilní aplikace, desktopové aplikace a v podstatě všechny aplikace, které neběží na serveru.
 
 > [!NOTE]
 > Pokud chcete do webové aplikace přidat správu identit pomocí Azure AD B2C, použijte místo OAuth 2,0 [OpenID Connect](openid-connect.md) .
@@ -39,15 +39,9 @@ Postup vyzkoušení požadavků HTTP v tomto článku:
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>Pro jednostránkové aplikace se vyžaduje nastavení identifikátoru URI přesměrování.
 
-Tok autorizačního kódu pro aplikace s jednou stránkou vyžaduje další instalaci.  Postupujte podle pokynů pro [Vytvoření jednostránkové aplikace](tutorial-register-spa.md) pro správné označení identifikátoru URI přesměrování, který je povolený pro CORS. Pokud chcete aktualizovat existující identifikátor URI pro přesměrování a povolit CORS, otevřete editor manifestu a `type` v části nastavte pole pro identifikátor URI přesměrování `spa` `replyUrlsWithType` . Můžete také kliknout na URI přesměrování v části Web na kartě ověřování a vybrat identifikátory URI, které chcete migrovat, pomocí toku autorizačního kódu.
+Tok autorizačního kódu pro aplikace s jednou stránkou vyžaduje další instalaci.  Postupujte podle pokynů pro [Vytvoření jednostránkové aplikace](tutorial-register-spa.md) pro správné označení identifikátoru URI přesměrování, který je povolený pro CORS. Pokud chcete aktualizovat existující identifikátor URI pro přesměrování a povolit CORS, můžete kliknout na dotaz migrace v části Web na kartě **ověřování** **Registrace aplikace**. Případně můžete otevřít **editor manifestu registrace aplikací** a `type` v části nastavit pole pro identifikátor URI přesměrování `spa` `replyUrlsWithType` .
 
 `spa`Typ přesměrování je zpětně kompatibilní s implicitním tokem. Aplikace, které aktuálně používají implicitní tok k získání tokenů, se můžou přesunout na `spa` typ URI přesměrování bez problémů a dál používat implicitní tok.
-
-Pokud se pokusíte použít tok autorizačního kódu a zobrazit tuto chybu:
-
-`access to XMLHttpRequest at 'https://login.microsoftonline.com/common/v2.0/oauth2/token' from origin 'yourApp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.`
-
-Pak je potřeba navštívit registraci vaší aplikace a aktualizovat identifikátor URI přesměrování pro vaši aplikaci na typ `spa` .
 
 ## <a name="1-get-an-authorization-code"></a>1. získání autorizačního kódu
 Tok autorizačního kódu začíná klientem, který uživatele přesměruje na `/authorize` koncový bod. Jedná se o interaktivní část toku, kde uživatel provede akci. V této žádosti klient indikuje v `scope` parametru oprávnění, která potřebuje získat od uživatele. Následující tři příklady (s oddělovači řádků pro čitelnost) každý využívají jiný tok uživatele.

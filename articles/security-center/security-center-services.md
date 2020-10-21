@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad35af600b8973268d07f3a8baae225b91cebc1
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858009"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275237"
 ---
 # <a name="feature-coverage-for-machines"></a>Pokrytí funkcí pro počítače
 
@@ -28,50 +28,50 @@ Následující dvě karty ukazují funkce Azure Security Center, které jsou dos
 
 ### <a name="windows-machines"></a>[**Počítače s Windows**](#tab/features-windows)
 
-|**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače mimo Azure**|**Vyžaduje se Azure Defender.**
+|**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače s podporou ARC Azure**|**Vyžaduje se Azure Defender.**
 |----|:----:|:----:|:----:|:----:|
-|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Yes|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](alerts-reference.md)|✔|✔|✔|Yes|
-|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
-|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
-|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Yes|
-|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
-|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Yes|
-|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
-|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
-|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
-|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|-|-|-|Yes|
-|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
-|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
-|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
-|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|No|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|No|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|No|
+|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Ano|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](alerts-reference.md)|✔|✔|✔|Ano|
+|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Ano|
+|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Ano|
+|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Ano|
+|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Ano|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ano|
+|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Ano|
+|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Ano|
+|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Ano|
+|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Ano|
+|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|-|-|-|Ano|
+|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
+|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
+|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
+|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Ne|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Ne|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Ne|
 
 
 ### <a name="linux-machines"></a>[**Počítače se systémem Linux**](#tab/features-linux)
 
-|**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače mimo Azure**|**Vyžaduje se Azure Defender.**
+|**Funkce**|**Azure Virtual Machines**|**Škálovací sady virtuálních počítačů Azure**|**Počítače s podporou ARC Azure**|**Vyžaduje se Azure Defender.**
 |----|:----:|:----:|:----:|:----:|
-|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|-|-|-|Yes|
-|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](security-center-alerts-iaas.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Yes|
-|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Yes|
-|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
-|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Yes|
-|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
-|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Yes|
-|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
-|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
-|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
-|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Yes|
-|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
-|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Mimo Azure: Ano|
-|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
-|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|No|
-|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|No|
-|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|No|
+|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|-|-|-|Ano|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](security-center-alerts-iaas.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Ano|
+|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Ano|
+|[Výstrahy zabezpečení založené na síti](other-threat-protections.md#network-layer)|✔|✔|-|Ano|
+|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Ano|
+|[Posouzení nativních ohrožení zabezpečení](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Ano|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ano|
+|[Adaptivní řízení aplikací](security-center-adaptive-application.md)|✔|-|✔|Ano|
+|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Ano|
+|[Adaptivní posilování zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Ano|
+|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Ano|
+|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Ano|
+|Chybí posouzení oprav operačního systému|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
+|Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Azure: ne<br><br>Zapnutý oblouk: Ano|
+|[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ne|
+|Vyhodnocení šifrování disku|✔</br>(pro [podporované scénáře](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Ne|
+|Posouzení ohrožení zabezpečení třetí strany|✔|-|-|Ne|
+|[Posouzení zabezpečení sítě](security-center-network-recommendations.md)|✔|✔|-|Ne|
 
 --- 
 
@@ -91,13 +91,13 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 | Funkce Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
-| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Yes |
-| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Yes |
-| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | No | Yes |
-| Symantec v12.1.1100+| Řada Windows Serverů  | No | Yes |
-| McAfee v10+ | Řada Windows Serverů  | No | Yes |
-| McAfee v10+ | Řada Linux serverů  | No | Ano **\*** |
-| Sophos v9 +| Řada Linux serverů  | No | Ano  **\***  |
+| Antivirová ochrana v programu Microsoft Defender| Windows Server 2016 nebo novější| Ne, součást operačního systému| Ano |
+| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
+| Trend Micro – hluboké zabezpečení | Řada Windows Serverů  | Ne | Ano |
+| Symantec v12.1.1100+| Řada Windows Serverů  | Ne | Ano |
+| McAfee v10+ | Řada Windows Serverů  | Ne | Ano |
+| McAfee v10+ | Řada Linux serverů  | Ne | Ano **\*** |
+| Sophos v9 +| Řada Linux serverů  | Ne | Ano  **\***  |
 
  **\*** Stav pokrytí a podpůrná data jsou v tuto chvíli k dispozici pouze v pracovním prostoru Log Analytics přidruženém k vašim chráněným předplatným. Neprojeví se na portálu Azure Security Center.
 

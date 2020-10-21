@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9d8bd72b6a03164a41e0b7c0ff00ac728cecf7f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c01188f783664747b7c20b9703ee5d33a8ab3f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355377"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278729"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Řízení optimistické souběžnosti a transakce
 
 Transakce databáze poskytují bezpečný a předvídatelný programovací model, který umožňuje zabývat se souběžnými změnami dat. Tradiční relační databáze, jako je SQL Server, umožňují napsat obchodní logiku pomocí uložených procedur a/nebo triggerů a odeslat je na server, aby je bylo možné spouštět přímo v databázovém stroji. V případě tradičních relačních databází je nutné se zabývat dvěma různými programovacími jazyky (netransakční) programovací jazyk aplikací (non-transactioned), jako je JavaScript, Python, C#, Java atd., a transakční programovací jazyk (například T-SQL), který je nativně spuštěn databází.
 
-Databázový stroj v Azure Cosmos DB podporuje úplnou transakci (kyselost, konzistenci, izolaci, odolnost) vyhovující požadavkům na izolaci snímků. Všechny databázové operace v oboru [logického oddílu](partition-data.md) kontejneru jsou v rámci databázového stroje, který je hostitelem repliky oddílu, revykonávány. Tyto operace zahrnují zápis (aktualizace jedné nebo více položek v rámci logického oddílu) a operace čtení. Následující tabulka ilustruje různé operace a typy transakcí:
+Databázový stroj v Azure Cosmos DB podporuje úplnou transakci (kyselost, konzistenci, izolaci, odolnost) vyhovující požadavkům na izolaci snímků. Všechny databázové operace v oboru [logického oddílu](partitioning-overview.md) kontejneru jsou v rámci databázového stroje, který je hostitelem repliky oddílu, revykonávány. Tyto operace zahrnují zápis (aktualizace jedné nebo více položek v rámci logického oddílu) a operace čtení. Následující tabulka ilustruje různé operace a typy transakcí:
 
 | **Operace**  | **Typ operace** | **Transakce jedné nebo více položek** |
 |---------|---------|---------|
@@ -51,7 +51,7 @@ Schopnost spustit JavaScript přímo v rámci databázového stroje poskytuje v�
 
 Optimistické řízení souběžnosti umožňuje zabránit ztrátě aktualizací a odstraňování. Souběžné a konfliktní operace se vztahují na běžné pesimistické zamykání databázového stroje hostovaného logickým oddílem, který tuto položku vlastní. Když se dvě souběžné operace pokusí aktualizovat nejnovější verzi položky v rámci logického oddílu, jedna z nich se podaří a druhá se nezdaří. Pokud však jedna nebo dvě operace, které se pokoušejí současně aktualizovat stejnou položku, dříve přečetly starší hodnotu položky, databáze neví, zda byla dříve přečtena buď konfliktní operace, nebo jak v obou konfliktních operacích byla skutečně aktuální hodnota položky. Naštěstí tuto situaci lze zjistit pomocí **optimistického řízení souběžnosti (OCC)** předtím, než umožníte dvěma operacím zadat hranici transakce uvnitř databázového stroje. OCC chrání vaše data před náhodným přepsáním změn provedených ostatními. Zabrání taky ostatním v neúmyslném přepsání vašich změn.
 
-Souběžné aktualizace položky podléhají OCC vrstvě komunikačního protokolu Azure Cosmos DB. Azure Cosmos Database zajišťuje, že verze položky na straně klienta, kterou aktualizujete (nebo odstraňujete), je stejná jako verze položky v kontejneru Azure Cosmos. To zaručuje, že vaše zápisy jsou před náhodným zápisem přepsány zápisy ostatních a naopak. V prostředí s více uživateli vám optimistické řízení souběžnosti chrání před náhodným odstraněním nebo aktualizací nesprávné verze položky. V takovém případě jsou položky chráněny proti problémům s inFamous "ztráty aktualizace" nebo "ztráty odstranění".
+Souběžné aktualizace položky podléhají OCC vrstvě komunikačního protokolu Azure Cosmos DB. Azure Cosmos Database zajišťuje, že verze položky na straně klienta, kterou aktualizujete (nebo odstraňujete), je stejná jako verze položky v kontejneru Azure Cosmos. Tím je zajištěno, že vaše zápisy budou náhodně přepsány zápisy ostatních a naopak. V prostředí s více uživateli vám optimistické řízení souběžnosti chrání před náhodným odstraněním nebo aktualizací nesprávné verze položky. V takovém případě jsou položky chráněny proti problémům s inFamous "ztráty aktualizace" nebo "ztráty odstranění".
 
 Každá položka uložená v kontejneru Azure Cosmos má vlastnost definovanou systémem `_etag` . Hodnota `_etag` je automaticky generována a aktualizována serverem při každém aktualizaci položky. `_etag` dá se použít spolu s `if-match` hlavičkou žádosti, která je součástí klienta, aby mohl server rozhodnout, jestli může být položka podmíněně aktualizována. Hodnota `if-match` hlavičky odpovídá hodnotě na `_etag` serveru, položka se pak aktualizuje. Pokud hodnota `if-match` hlavičky požadavku již není aktuální, server odmítne operaci se zprávou odpovědi "selhání předběžné podmínky HTTP 412". Klient pak může znovu načíst položku k získání aktuální verze položky na serveru nebo přepsat verzi položky na serveru vlastní `_etag` hodnotou položky. Kromě toho `_etag` lze použít s `if-none-match` hlavičkou k určení, zda je nutné znovu načíst prostředek.
 
@@ -61,7 +61,7 @@ Hodnota položky se `_etag` změní pokaždé, když je položka aktualizována.
 
 Další informace o transakcích databáze a kontrole optimistického řízení souběžnosti najdete v následujících článcích:
 
-- [Práce s databázemi, kontejnery a položkami Azure Cosmos](databases-containers-items.md)
+- [Práce s databázemi, kontejnery a položkami Azure Cosmos](account-databases-containers-items.md)
 - [Úrovně konzistence](consistency-levels.md)
 - [Zásady řešení a typy konfliktů](conflict-resolution-policies.md)
 - [Uložené procedury, triggery a uživatelsky definované funkce](stored-procedures-triggers-udfs.md)

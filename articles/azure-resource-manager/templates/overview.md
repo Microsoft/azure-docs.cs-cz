@@ -3,12 +3,12 @@ title: Přehled šablon
 description: V této části najdete popis výhod používání šablon Azure Resource Manager pro nasazení prostředků.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119357"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280049"
 ---
 # <a name="what-are-arm-templates"></a>Co je šablona ARM?
 
@@ -54,7 +54,7 @@ Pokud se snažíte rozhodnout mezi používáním šablon ARM a jedné z další
 
 * **Exportovatelné kódy**: šablonu pro stávající skupinu prostředků můžete získat buď tak, že exportujete aktuální stav skupiny prostředků, nebo si prohlížíte šablonu používanou pro konkrétní nasazení. Zobrazení [vyexportované šablony](export-template-portal.md) vám pomůže blíže se seznámit se syntaxí šablony.
 
-* **Nástroje pro tvorbu**: můžete vytvářet šablony pomocí [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) a rozšíření nástroje šablony. Získáte IntelliSense, zvýrazňování syntaxe, online nápovědu a mnoho dalších funkcí jazyka. Kromě sady Visual Studio Code můžete také použít [Visual Studio](create-visual-studio-deployment-project.md).
+* **Nástroje pro tvorbu**: můžete vytvářet šablony pomocí [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) a rozšíření nástroje šablony. Získáte IntelliSense, zvýrazňování syntaxe, online nápovědu a mnoho dalších funkcí jazyka. Kromě Visual Studio Code můžete také použít [Visual Studio](create-visual-studio-deployment-project.md).
 
 ## <a name="template-file"></a>Soubor šablony
 

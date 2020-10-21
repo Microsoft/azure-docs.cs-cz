@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6c890e9fbda316bfa7f5f3a42572f35ca73811ea
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c74535b8cf11ec4beb413654bdddedb5ba847eea
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931797"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275534"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Rozhraní API pro splnění SaaS verze 2 na komerčním webu Marketplace
 
@@ -151,7 +151,7 @@ Po přijetí volání Webhooku zrušení by měl Vydavatel uchovávat zákaznick
 
 Předplatné SaaS se dá kdykoli zrušit v rámci svého životního cyklu. Po zrušení se předplatné nedá znovu aktivovat.
 
-## <a name="api-reference"></a>referenční dokumentace k rozhraní API
+## <a name="api-reference"></a>API – referenční informace
 
 Tato část popisuje rozhraní API pro odběr a Operations SaaS.
 
@@ -178,7 +178,7 @@ Když se zákazník přesměruje na adresu URL cílové stránky partnerského s
 
 Volání metody Resolve rozhraní API vrátí podrobnosti předplatného a stav SaaS předplatných ve všech podporovaných stavech.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Příspěvek`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionsresolveapi-versionapiversion"></a>Spuštění`https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
@@ -256,7 +256,7 @@ Kód: 500 interní chyba serveru.  Opakujte volání rozhraní API.  Pokud chyba
 
 Jakmile je účet SaaS nakonfigurovaný pro koncového zákazníka, musí vydavatel volat rozhraní API Aktivace předplatného na straně Microsoftu.  Pokud toto volání rozhraní API nebude úspěšné, nebude se vám účtovat zákazník.
 
-##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Příspěvek`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
+##### <a name="posthttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidactivateapi-versionapiversion"></a>Spuštění`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
@@ -953,21 +953,20 @@ Vydavatel musí ve službě SaaS implementovat Webhook, aby se stav předplatné
 
 Pro zahájení procesu vývoje doporučujeme na straně vydavatele vytvořit fiktivní odezvy rozhraní API.  Tyto odpovědi můžou být založené na ukázkových odpovědích uvedených v tomto dokumentu.
 
-Když je Vydavatel připravený na koncové testování: 
+Když je Vydavatel připravený na koncové testování:
 
 * Publikujte nabídku SaaS k omezené cílové skupině Preview a nechte ji ve fázi Preview.
-* Tato nabídka by měla mít plán s 0 cenou, takže neaktivuje skutečné fakturační výdaje při testování.  Další možností je nastavit nenulovou cenu a zrušit všechny nákupy testů během 24 hodin. 
-* Zajistěte, aby všechny toky byly vyvolány na konci, stejně jako zákazník by tuto nabídku koupili. 
+* Tato nabídka by měla mít plán s 0 cenou, takže neaktivuje skutečné fakturační výdaje při testování.  Další možností je nastavit nenulovou cenu a zrušit všechny nákupy testů během 24 hodin.
+* Zajistěte, aby všechny toky byly vyvolány na konci, stejně jako zákazník by tuto nabídku koupili.
 * Pokud chce partner testovat plný nákup a fakturační tok, udělejte to s nabídkou, která má vyšší cenu než $0.  Nákup se bude účtovat a bude vygenerována faktura.
 
 Tok nákupu se dá aktivovat z Azure Portal nebo Microsoft AppSourcech lokalit v závislosti na tom, kde se nabídka publikuje.
 
 Akce *změnit plán*, *změnit množství*a *zrušit odběr* jsou testovány na straně vydavatele.  Na straně Microsoftu se může *zrušit odběr* z Azure Portal i z centra pro správu (portál, ve kterém se spravují nákupy Microsoft AppSource).  *Změna množství a plánu* se dá aktivovat jenom z centra pro správu.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-Možnosti podpory pro vydavatele najdete v tématu [Podpora programu komerčního tržiště v partnerském centru](support.md) .
-
+Možnosti podpory pro vydavatele najdete v tématu [Podpora programu komerčního tržiště v partnerském centru](../support.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

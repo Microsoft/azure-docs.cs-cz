@@ -4,12 +4,12 @@ description: Poskytuje přehled služby Azure Site Recovery a shrnuje scénáře
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 19860e64182cd73fe9f9fa1246f440a03109d465
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86135224"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281875"
 ---
 # <a name="about-site-recovery"></a>O službě Azure Site Recovery
 
@@ -50,7 +50,7 @@ Site Recovery může spravovat replikaci pro:
 **Podporováno** | **Podrobnosti**
 --- | ---
 **Scénáře replikace** | Replikace virtuálních počítačů Azure z jedné oblasti Azure do jiné<br/><br/>  Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, fyzických serverů (Windows a Linux) Azure Stack virtuálních počítačů do Azure.<br/><br/> Replikace instancí Windows AWS do Azure<br/><br/> Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, které spravuje System Center VMM, a fyzických serverů do sekundární lokality
-**Oblasti** | Prohlédněte si [podporované oblasti](https://azure.microsoft.com/regions/services/) pro Site Recovery. |
+**Oblasti** | Prohlédněte si [podporované oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=site-recovery) pro Site Recovery. |
 **Replikované počítače** | Zkontrolujte požadavky na replikaci pro [virtuální počítače Azure](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), [místní fyzické servery a virtuální počítače VMware](vmware-physical-azure-support-matrix.md#replicated-machines) a [místní virtuální počítače Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms).
 **Úlohy** | Můžete replikovat jakoukoli úlohu běžící v počítači, u kterého se podporuje replikace. A Site Recovery tým provedl testy konkrétní aplikace pro určitý [počet aplikací](site-recovery-workload.md#workload-summary).
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: cb24ff0f2e09d98bf4a8cc4a502399fd9b38e350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369905"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281406"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Nejčastější dotazy týkající se přechodu z portál partnerů cloudu do partnerského centra
 
@@ -22,7 +22,7 @@ Portál partnerů cloudu přešla do partnerského centra. Partnerské centrum n
 
 Můžete pokračovat v podnikání v partnerském centru:
 
-| Oblast<img src="" width=200px> | Změny |
+| Plošný<img src="" width=200px> | Změny |
 | --- | --- |
 | Účet | Není potřeba vytvořit nový účet partnerského centra. pomocí svých stávajících přihlašovacích údajů portál partnerů cloudu můžete přihlašovat se k partnerskému centru, kde teď budete spravovat svůj účet, uživatele, oprávnění a fakturaci. Informace o smlouvě o publikování a profilu společnosti se migrují na nový účet partnerského centra spolu s případnými informacemi o profilu výběr, uživatelskými účty a oprávněními a aktivními nabídkami. Další informace najdete v [centru pro správu účtu komerčního tržiště v partnerském centru](partner-center-portal/manage-account.md). |
 | Nabídka prostředí pro publikování a poskytování nabídek | Přesunuli jsme vaše data nabídky z portál partnerů cloudu do partnerského centra. Teď budete mít přístup k Vašim nabídkám v partnerském centru, které nabízí vylepšené uživatelské prostředí a intuitivní rozhraní. Přečtěte si, jak [aktualizovat existující nabídku na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md). |
@@ -77,19 +77,19 @@ Pro typy nabídek podporované v partnerském centru se všechny nabídky přesu
 
 | Typ nabídky <img src="" width=150px>| Přesunuli jste se do partnerského centra? <img src="" width=100px>| Další kroky |
 | --- | --- | --- |
-| SaaS | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v části Vytvoření nové nabídky SaaS na komerčním webu Marketplace](partner-center-portal/create-new-saas-offer.md). |
-| Virtuální počítač | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [na Azure Marketplace v nabídce vytvořit virtuální počítač Azure](partner-center-portal/azure-vm-create-offer.md). |
-| Aplikace Azure | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky aplikací Azure](partner-center-portal/create-new-azure-apps-offer.md). |
+| SaaS | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v části Vytvoření nové nabídky SaaS na komerčním webu Marketplace](partner-center-portal/create-new-saas-offer.md). |
+| Virtuální počítač | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [na Azure Marketplace v nabídce vytvořit virtuální počítač Azure](azure-vm-create.md). |
+| Aplikace Azure | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky aplikací Azure](partner-center-portal/create-new-azure-apps-offer.md). |
 | Dynamics 365 Business Central | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky podnikového centra Dynamics 365](partner-center-portal/create-new-business-central-offer.md). |
-| Dynamics 365 pro Customer Engagement & PowerApps | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření Dynamics 365 pro zákaznickou zapojení & nabídky PowerApps](partner-center-portal/create-new-customer-engagement-offer.md). |
-| Dynamics 365 for Operations | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md). |
-| Aplikace Power BI | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření aplikace Power BI pro AppSource](partner-center-portal/create-power-bi-app-offer.md). |
-| Modul IoT Edge | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v Azure Marketplace vytvoření, konfigurace a publikování IoT Edge modulu nabídky](partner-center-portal/azure-iot-edge-module-creation.md). |
-| Kontejner | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření nabídky kontejnerů Azure](partner-center-portal/create-azure-container-offer.md). |
-| Konzultační služba | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření konzultační nabídky služby](partner-center-portal/create-consulting-service-offer.md). |
-| Spravovaná služba | Yes | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření spravované služby](partner-center-portal/create-new-managed-service-offer.md). |
-| Spravovaná služba Dynamics NAV | No | Společnost Microsoft vyvinula službu Dynamics NAV Managed Service do [Dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/), takže ze AppSource deuvádíme živé nabídky spravované služby Dynamics NAV. Tyto nabídky už zákazníci nezjišťují a nepřesunuli se do partnerského centra. Aby vaše nabídky byly dostupné v AppSource, přizpůsobte si je na Dynamics 365 Business Central nabízí a odešlete je v [partnerském centru](https://partner.microsoft.com/). Další informace najdete v [nabídce vytvoření nabídky podnikového centra Dynamics 365](partner-center-portal/create-new-business-central-offer.md). |
-| Cortana Intelligence | No | Společnost Microsoft vyvinula mapu rozšíření produktu pro Cortana Intelligence, takže v seznamu Cortana Intelligence živé nabídky z AppSource. Tyto nabídky už zákazníci nezjišťují a nepřesunuli se do partnerského centra. Pokud chcete zpřístupnit nabídky na komerčním webu Marketplace, přizpůsobte si nabídky k software jako služby (SaaS) a odešlete je v [partnerském centru](https://partner.microsoft.com/). Další informace najdete v tématu [Kontrolní seznam pro vytvoření nabídky SaaS v partnerském centru](partner-center-portal/offer-creation-checklist.md). |
+| Dynamics 365 pro Customer Engagement & PowerApps | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření Dynamics 365 pro zákaznickou zapojení & nabídky PowerApps](partner-center-portal/create-new-customer-engagement-offer.md). |
+| Dynamics 365 for Operations | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření nabídky Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md). |
+| Aplikace Power BI | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření aplikace Power BI pro AppSource](partner-center-portal/create-power-bi-app-offer.md). |
+| Modul IoT Edge | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete [v Azure Marketplace vytvoření, konfigurace a publikování IoT Edge modulu nabídky](partner-center-portal/azure-iot-edge-module-creation.md). |
+| Kontejner | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření nabídky kontejnerů Azure](partner-center-portal/create-azure-container-offer.md). |
+| Konzultační služba | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v informacích o [Vytvoření konzultační nabídky služby](partner-center-portal/create-consulting-service-offer.md). |
+| Spravovaná služba | Ano | Přihlaste se do partnerského centra, abyste mohli vytvářet nové nabídky a spravovat nabídky vytvořené v portál partnerů cloudu. Další informace najdete v [nabídce vytvoření spravované služby](partner-center-portal/create-new-managed-service-offer.md). |
+| Spravovaná služba Dynamics NAV | Ne | Společnost Microsoft vyvinula službu Dynamics NAV Managed Service do [Dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/), takže ze AppSource deuvádíme živé nabídky spravované služby Dynamics NAV. Tyto nabídky už zákazníci nezjišťují a nepřesunuli se do partnerského centra. Aby vaše nabídky byly dostupné v AppSource, přizpůsobte si je na Dynamics 365 Business Central nabízí a odešlete je v [partnerském centru](https://partner.microsoft.com/). Další informace najdete v [nabídce vytvoření nabídky podnikového centra Dynamics 365](partner-center-portal/create-new-business-central-offer.md). |
+| Cortana Intelligence | Ne | Společnost Microsoft vyvinula mapu rozšíření produktu pro Cortana Intelligence, takže v seznamu Cortana Intelligence živé nabídky z AppSource. Tyto nabídky už zákazníci nezjišťují a nepřesunuli se do partnerského centra. Pokud chcete zpřístupnit nabídky na komerčním webu Marketplace, přizpůsobte si nabídky k software jako služby (SaaS) a odešlete je v [partnerském centru](https://partner.microsoft.com/). Další informace najdete v tématu [Kontrolní seznam pro vytvoření nabídky SaaS v partnerském centru](partner-center-portal/offer-creation-checklist.md). |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Nemůžu najít moje portál partnerů cloudu nabídky v partnerském centru
 
@@ -155,7 +155,7 @@ Všimnete si, že se změní branding. Například *skladové jednotky* jsou v p
 
 Informace, které jste dříve zadali na **webu Marketplace** nebo v části **prezentace**  (konzultační služba, Power BI App) v portál partnerů cloudu, se teď shromažďují na stránce **seznam nabídek** v partnerském centru:
 
-[![Snímek obrazovky se stránkou seznamu nabídek pro partnerských Center.](media/cpp-pc-faq/offer-listing.png "Zobrazuje stránku seznamu nabídek pro partnerský server.")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[! [Snímek obrazovky se zobrazí stránka s nabídkou pro partnerské Centrum.] (Media/cpp-PC-časté otázky/offer-listing.png](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 Informace, které jste dříve zadali pro SKU na jedné stránce portál partnerů cloudu, se teď můžou shromažďovat v rámci několika stránek v partnerském centru:
 
@@ -164,7 +164,7 @@ Informace, které jste dříve zadali pro SKU na jedné stránce portál partner
 - Stránka dostupnosti plánu
 - Stránku naplánovat technickou konfiguraci, jak je znázorněno zde:
 
-![! [Snímek obrazovky se zobrazí stránka technická konfigurace partnerského centra.] (Media/cpp-PC-časté otázky/technical-configuration.png) zobrazuje stránku technická konfigurace partnerského centra.](media/cpp-pc-faq/technical-configuration.png#lightbox)
+[![Zobrazuje stránku technické konfigurace partnerského centra.](media/cpp-pc-faq/technical-configuration.png)](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 ID vaší nabídky se teď zobrazuje na levém navigačním panelu nabídky:
 

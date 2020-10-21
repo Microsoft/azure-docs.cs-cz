@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08305b6aec7dcd5906f4316767c4c512d3a0535e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600496"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308941"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
 
@@ -60,7 +60,7 @@ Přístup k sestavám **uživatelů označeným příznakem rizika** v centru pr
 Provedení následujících akcí vám pomůže napravit ovlivněné účty a zabezpečit vaše prostředí:
 
 1.  [Ověřte správné informace](https://aka.ms/MFAValid) pro Multi-Factor Authentication a Samoobslužné resetování hesla. 
-2.  [Povolte službu Multi-Factor Authentication](https://aka.ms/MFAuth) pro všechny uživatele. 
+2.  [Povolte službu Multi-Factor Authentication](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication) pro všechny uživatele. 
 3.  Tento [skript](https://aka.ms/remediate) pro napravení použijte pro každý ovlivněný účet a automaticky proveďte následující kroky: 
 
     a. Resetujte heslo pro zabezpečení účtu a ukončete aktivní relace.
@@ -85,8 +85,8 @@ Provedení následujících akcí vám pomůže napravit ovlivněné účty a za
 
 Kromě toho byste měli provést následující:
 
-- Přečtěte si a implementujte tyto [pokyny k adresování neobvyklých aktivit](https://aka.ms/fixaccount). 
-- [Povolte kanálu auditu](https://aka.ms/improvesecurity) , který vám umožní analyzovat aktivitu ve vašem tenantovi. Po dokončení se vaše úložiště auditu začne naplňovat pomocí protokolů aktivit. V tomto okamžiku můžete také využít [prostředek pro hledání a vyšetřování centra zabezpečení a dodržování předpisů](https://aka.ms/sccsearch). 
+- Přečtěte si a implementujte tyto [pokyny k adresování neobvyklých aktivit](/archive/blogs/office365security/how-to-fix-a-compromised-hacked-microsoft-office-365-account). 
+- [Povolte kanálu auditu](/archive/blogs/office365security/using-office-365-activity-data-to-improve-your-cybersecurity-stance-and-capability) , který vám umožní analyzovat aktivitu ve vašem tenantovi. Po dokončení se vaše úložiště auditu začne naplňovat pomocí protokolů aktivit. V tomto okamžiku můžete také využít [prostředek pro hledání a vyšetřování centra zabezpečení a dodržování předpisů](https://aka.ms/sccsearch). 
 - Zkontrolovat oprávnění delegáta a pravidla předávání e-mailů pro všechny vaše poštovní schránky. Tuto úlohu můžete provést pomocí tohoto [skriptu PowerShellu](https://aka.ms/delegateforwardrules). 
 
 ## <a name="next-steps"></a>Další kroky

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: ac48973653e89d43521979a5606a8a3a3c2e1346
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319979"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278014"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Rozhraní API pro fakturaci měření na webu Marketplace
 
@@ -271,9 +271,9 @@ Pokud chcete testovat vlastní emise měřičů, implementujte integraci s rozhr
 
 K omezení přístupu k tomuto plánu během testování na omezenou cílovou skupinu můžete použít také soukromý plán pro stávající živou nabídku.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-Postupujte podle pokynů v [části Podpora programu komerčního tržiště v partnerském centru](./support.md) , abyste pochopili možnosti podpory vydavatelů a otevřeli lístek podpory s Microsoftem.
+Postupujte podle pokynů v [části Podpora programu komerčního tržiště v partnerském centru](../support.md) , abyste pochopili možnosti podpory vydavatelů a otevřeli lístek podpory s Microsoftem.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4fca84c8e5aa562572792968d0438a61be5ab91b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c300faf33f57518d26f82234bdff94a37235cd66
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601465"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275785"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -44,7 +44,7 @@ Zásada mapování deklarací identity je typ objektu **zásad** , který mění
 
 Existují určité sady deklarací, které definují, jak a kdy se používají v tokenech.
 
-| Sada deklarací identity | Description |
+| Sada deklarací identity | Popis |
 |---|---|
 | Základní sada deklarací identity | Jsou přítomny v každém tokenu bez ohledu na zásadu. Tyto deklarace jsou také považovány za omezené a nelze je upravit. |
 | Základní sada deklarací identity | Zahrnuje deklarace identity, které jsou ve výchozím nastavení emitované pro tokeny (kromě základní sady deklarací identity). Základní deklarace identity můžete vynechat nebo upravit pomocí zásad mapování deklarací identity. |
@@ -285,7 +285,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: platné hodnoty ID na zdroj
 
-| Zdroj | ID | Description |
+| Zdroj | ID | Popis |
 |-----|-----|-----|
 | Uživatel | surname | Název rodiny |
 | Uživatel | givenname | jméno |
@@ -322,7 +322,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | othermail | Jiná pošta |
 | Uživatel | country | Země/oblast |
 | Uživatel | city | City (Město) |
-| Uživatel | state | State |
+| Uživatel | state | Stav |
 | Uživatel | jobtitle | Název pozice |
 | Uživatel | zaměstnance | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
@@ -362,7 +362,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: metody transformace a očekávané vstupy a výstupy
 
-|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Description|
+|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: " foo@bar.com ", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: " foo@bar.com.sandbox "|
 |ExtractMailPrefix|E-mail nebo hlavní název uživatele|extrahovaný řetězec|ExtensionAttributes 1-15 nebo jiná rozšíření schématu, která pro uživatele ukládají hodnotu hlavního názvu uživatele (UPN) nebo e-mailové adresy, například johndoe@contoso.com . Extrahuje místní část e-mailové adresy. Například: mail: " foo@bar.com " má za následek outputClaim: "foo". Pokud \@ není k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
@@ -388,7 +388,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: atributy povolené jako zdroj dat pro SAML NameID
 
-|Zdroj|ID|Description|
+|Zdroj|ID|Popis|
 |-----|-----|-----|
 | Uživatel | pošta|E-mailová adresa|
 | Uživatel | třídy|Hlavní název uživatele|
@@ -419,7 +419,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
 
-Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Chcete-li přidat vlastní podpisový klíč, můžete pomocí rutiny Azure PowerShell `new-azureadapplicationkeycredential` vytvořit pověření symetrického klíče pro objekt aplikace. Další informace o této rutině Azure PowerShell najdete v článku [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Aby se zásady mapování deklarací projevily, musí se vlastní podpisový klíč přiřadit k instančnímu objektu služby. Tím se zajistí potvrzení, že se tokeny změnily tvůrcem zásad mapování deklarací identity a chrání aplikace před zásadami mapování deklarací, které vytvořily škodlivé objekty actor. Chcete-li přidat vlastní podpisový klíč, můžete použít rutinu Azure PowerShell [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) k vytvoření přihlašovacích údajů klíče certifikátu pro objekt aplikace.
 
 Aplikace, které mají povolené mapování deklarací, musí ověřit své podpisové klíče tokenu připojením `appid={client_id}` ke svým [žádostem o metadata OpenID Connect](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document). Níže je uvedený formát dokumentu metadat OpenID Connect, který byste měli použít:
 
@@ -442,7 +442,7 @@ V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace 
 > [!NOTE]
 > Při vytváření zásad mapování deklarací identity můžete také vygenerovat deklaraci identity z atributu rozšíření schématu adresáře v tokenech. Použijte *ExtensionID* pro atribut Extension namísto *ID* v `ClaimsSchema` elementu.  Další informace o atributech rozšíření najdete v tématu [použití atributů rozšíření schématu adresáře](active-directory-schema-extensions.md).
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 

@@ -4,12 +4,12 @@ description: Tento článek vás provede nasazením aplikace Service Fabric, zm�
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61eba8b7285c2a015ee40d48bc4a73850b412576
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee040916ae1ce6ac931abc1fc07021b08cdbf895
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075184"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309070"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric upgrade aplikace pomocí PowerShellu
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ Upgrade monitorovaných aplikací se dá provést pomocí spravovaných nebo nat
 Díky Service Fabric sledovaných upgradů může správce aplikace nakonfigurovat zásady hodnocení stavu, které Service Fabric používá k určení, jestli je aplikace v pořádku. Kromě toho může správce nakonfigurovat akci, která se má provést, když se vyhodnocení stavu nepovede (například provedení automatického vrácení zpět). Tato část vás provede monitorovaným upgradem pro jeden ze vzorků sady SDK, které používají PowerShell. 
 
 > [!NOTE]
-> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s se nezachovají v rámci upgradu aplikace. Aby bylo možné zachovat aktuální parametry aplikace, uživatel by měl nejprve načíst parametry a předat je do volání rozhraní API pro upgrade, jak je znázorněno níže:
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)s se nezachovají v rámci upgradu aplikace. Aby bylo možné zachovat aktuální parametry aplikace, uživatel by měl nejprve načíst parametry a předat je do volání rozhraní API pro upgrade, jak je znázorněno níže:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -149,4 +149,3 @@ Vyjistěte, aby byly upgrady aplikací kompatibilní, pomocí učení, jak použ
 Naučte se používat pokročilé funkce při upgradu vaší aplikace, které odkazují na [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
 
 Pomocí postupu v části [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md)můžete opravit běžné problémy s upgrady aplikací.
-

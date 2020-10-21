@@ -4,14 +4,14 @@ description: Spravujte prostředky rozhraní API pro Azure Cosmos DB Core (SQL) 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/07/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 631dd3242e695a1e7872a4b078ab3f9761591c56
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840587"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277759"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Správa prostředků rozhraní API pro Azure Cosmos Core (SQL) pomocí Azure CLI
 
@@ -20,6 +20,8 @@ Následující příručka popisuje běžné příkazy pro automatizaci správy 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.12.1 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+
+Ukázky Azure CLI pro další rozhraní API najdete v ukázkách [CLI pro Cassandra](cli-samples-cassandra.md), ukázky CLI pro [MongoDB API](cli-samples-mongodb.md), ukázky CLI pro [Gremlin](cli-samples-gremlin.md), ukázky rozhraní příkazového řádku pro [tabulku](cli-samples-table.md) .
 
 > [!IMPORTANT]
 > Prostředky Azure Cosmos DB nelze přejmenovat, protože jsou v rozporu s tím, jak Azure Resource Manager pracuje s identifikátory URI prostředků.

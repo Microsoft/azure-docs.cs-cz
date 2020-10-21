@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 58db7dcade7567d632fb405b31c4ff7bdbc6e71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018965"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282072"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Čtení z kanálu změn služby Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Použití modelu nabízeného oznámení je nejjednodušší způsob, jak číst
 
 ### <a name="azure-functions"></a>Azure Functions
 
-Azure Functions je nejjednodušší volbou v případě, že právě začínáte používat kanál změn. Vzhledem k jednoduchosti je to také doporučená možnost pro většinu případů použití kanálu změn. Když vytvoříte aktivační událost Azure Functions pro Azure Cosmos DB, vyberete kontejner, který se má připojit, a funkce Azure se aktivuje, kdykoli dojde ke změně v kontejneru. Vzhledem k tomu, že Azure Functions používá procesor změn v kanálu na pozadí, automaticky parallelizes změnu zpracování v [oddílech](partition-data.md)kontejneru.
+Azure Functions je nejjednodušší volbou v případě, že právě začínáte používat kanál změn. Vzhledem k jednoduchosti je to také doporučená možnost pro většinu případů použití kanálu změn. Když vytvoříte aktivační událost Azure Functions pro Azure Cosmos DB, vyberete kontejner, který se má připojit, a funkce Azure se aktivuje, kdykoli dojde ke změně v kontejneru. Vzhledem k tomu, že Azure Functions používá procesor změn v kanálu na pozadí, automaticky parallelizes změnu zpracování v [oddílech](partitioning-overview.md)kontejneru.
 
 Vývoj v prostředí Azure Functions je jednoduchý a může být rychlejší než nasazení procesoru Change feed. Aktivační události se dají vytvořit pomocí Azure Functionsového portálu nebo programově pomocí sad SDK. Visual Studio a VS Code poskytují podporu pro psaní Azure Functions a můžete dokonce používat rozhraní příkazového řádku Azure Functions pro vývoj pro různé platformy. Můžete napsat a ladit kód na ploše a pak nasadit funkci jediným kliknutím. Další informace najdete v tématu [výpočetní databáze bez serveru s využitím Azure Functions](serverless-computing-database.md) a [používáním informačního kanálu se Azure Functionsmi](change-feed-functions.md) články.
 

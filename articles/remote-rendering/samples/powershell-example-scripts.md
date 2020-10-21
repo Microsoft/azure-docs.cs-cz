@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32d0ebc3f37f7af4d9cdb1940f1870dbf51f86b4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206127"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279011"
 ---
 # <a name="example-powershell-scripts"></a>Ukázkové skripty PowerShellu
 
@@ -22,10 +22,13 @@ Vzdálené vykreslování Azure poskytuje následující dvě rozhraní REST API
 
 [Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje ukázkové skripty ve složce *Scripts* pro interakci s rozhraními API REST služby. Tento článek popisuje jejich použití.
 
+> [!TIP]
+> Pro interakci se službou je k dispozici také [nástroj založený na uživatelském rozhraní s názvem ARRT](azure-remote-rendering-asset-tool.md) , což je pohodlnější alternativa k používání skriptů. ![ARRT](./media/azure-remote-rendering-asset-tool.png "Snímek obrazovky ARRT")
+
 > [!CAUTION]
 > Příliš časté volání funkcí REST API způsobí, že server bude omezovat a vracet chybu nakonec. ID kódu chyby HTTP v tomto případě je 429 (příliš mnoho požadavků). Jako pravidlo pro palec by se měla **mezi následnými voláními čekat 5-10 sekund**.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azure PowerShell](/powershell/azure/).
 
@@ -46,7 +49,7 @@ Chcete-li spustit ukázkové skripty, budete potřebovat instalaci funkcí [Azur
     > [!NOTE]
     > V případě, že má vaše organizace více než jedno předplatné, možná budete muset zadat SubscriptionId a argumenty tenanta. Vyhledejte podrobnosti v [dokumentaci Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
-1. Stáhněte složku *skripty* z [úložiště GitHubu pro vzdálené vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
+1. Stáhněte složku *skripty* z [úložiště GitHub pro vzdálené vykreslování Azure](https://github.com/Azure/azure-remote-rendering).
 
 ## <a name="configuration-file"></a>Konfigurační soubor
 

@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f278f0713280dde27d6c3892b4d1f1557d17ecb4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d38f10e5a4f2562825ed2374317602b0640894ae
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215939"
+ms.locfileid: "92275884"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Kurz: registrace webové aplikace v Azure Active Directory B2C
 
@@ -26,9 +26,9 @@ Než můžou vaše [aplikace](application-types.md) pracovat s Azure Active Dire
 "Webová aplikace" odkazuje na tradiční webovou aplikaci, která provádí většinu aplikační logiky na serveru. Můžou být sestavené pomocí rozhraní, jako je ASP.NET Core, Maven (Java), baňka (Python) a Express (Node.js).
 
 > [!IMPORTANT]
-> Pokud místo toho používáte **jednostránkovou aplikaci ("Spa")** (například pomocí úhlů, Vue nebo reakce), Naučte se [Registrovat jednostránkové aplikace](tutorial-register-spa.md).
+> Pokud místo toho používáte jednostránkovou aplikaci ("SPA") (například pomocí úhlů, Vue nebo reakce), Naučte se [Registrovat jednostránkové aplikace](tutorial-register-spa.md).
 > 
-> Pokud místo toho používáte **nativní aplikaci** (například iOS, Android, Mobile & Desktop), zjistěte, [jak zaregistrovat nativní klientskou aplikaci](add-native-application.md).
+> Pokud místo toho používáte nativní aplikaci (například iOS, Android, Mobile & Desktop), zjistěte, [jak zaregistrovat nativní klientskou aplikaci](add-native-application.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -41,7 +41,7 @@ K registraci webové aplikace ve vašem tenantovi Azure AD B2C můžete využít
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -61,19 +61,17 @@ K registraci webové aplikace ve vašem tenantovi Azure AD B2C můžete využít
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace (starší verze)** a pak vyberte **Přidat**.
 1. Zadejte název aplikace. Například *WebApp1*.
 1. Pro **Zahrnout webovou aplikaci nebo webové rozhraní API**vyberte **Ano**.
-1. V případě **adresy URL odpovědi**Zadejte koncový bod, kde Azure AD B2C by měl vracet jakékoli tokeny, které vaše aplikace požaduje. Například můžete nastavit, aby naslouchal místně na `https://localhost:44316` . Pokud číslo portu ještě neznáte, můžete zadat zástupnou hodnotu a později ji změnit.
+1. V případě **adresy URL odpovědi**Zadejte koncový bod, kde Azure AD B2C by měl vracet jakékoli tokeny, které vaše aplikace požaduje. Například můžete nastavit, aby naslouchal místně na `http://localhost:5000` . V registrovaných aplikacích můžete kdykoli přidat a změnit identifikátory URI pro přesměrování.
 
-    Pro účely testování, jako je tento kurz, ho můžete nastavit na, `https://jwt.ms` který zobrazuje obsah tokenu pro kontrolu. Pro tento kurz nastavte **adresu URL odpovědi** na `https://jwt.ms` .
+    Pro identifikátory URI přesměrování platí následující omezení:
 
-    Pro adresy URL odpovědí platí následující omezení:
-
-    * Adresa URL odpovědi musí začínat schématem `https` .
+    * `https`Pokud nepoužíváte, musí adresa URL odpovědi začínat schématem `localhost` .
     * Adresa URL odpovědi rozlišuje velká a malá písmena. Jeho velikost se musí shodovat s písmenem adresy URL vaší běžící aplikace. Například pokud vaše aplikace obsahuje jako součást cesty `.../abc/response-oidc` , nezadávejte `.../ABC/response-oidc` v adrese URL odpovědi. Vzhledem k tomu, že webový prohlížeč považuje cesty jako rozlišování velkých a malých písmen, mohou být soubory cookie přidružené k `.../abc/response-oidc` vyloučeny při přesměrování na neshodnou `.../ABC/response-oidc` adresu URL.
 
 1. Výběrem **vytvořit** dokončete registraci aplikace.

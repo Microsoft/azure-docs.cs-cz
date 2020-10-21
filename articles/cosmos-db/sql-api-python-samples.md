@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: a0db0ff7db8f0bf5b036e40080ee7ff8eac62b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba4382e03e6fc1acfd606a375a062c05581f712c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322678"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278219"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Příklady Azure Cosmos DB Python
 
@@ -32,7 +32,7 @@ Ukázková řešení, která dělají operace CRUD a další běžné operace t�
 * Odkazy na úlohy v jednotlivých ukázkových souborech projektů v Pythonu.
 * Odkazy na související referenční obsah rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Cosmos DB. Máte tyto možnosti:
     * V rámci předplatného Azure Active:
@@ -50,9 +50,9 @@ Ukázková řešení, která dělají operace CRUD a další běžné operace t�
 
 ## <a name="database-examples"></a>Příklady pro databáze
 
-Ukázka [database_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
+Ukázka [database_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o databázích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytvoření databáze](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L48-L56) |CosmosClient.create_database|
 | [Čtení databáze podle ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L59-L67) |CosmosClient.get_database_client|
@@ -62,9 +62,9 @@ Ukázka [database_management. py](https://github.com/Azure/azure-sdk-for-python/
 
 ## <a name="container-examples"></a>Příklady pro kontejnery
 
-Ukázka [container_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) Python ukazuje, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
+Ukázka [container_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) Python ukazuje, jak provádět následující úlohy. Informace o kolekcích Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Dotaz na kontejner](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L51-L66) |database.query_containers |
 | [Vytvoření kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L69-L163) |database.create_container |
@@ -75,9 +75,9 @@ Ukázka [container_management. py](https://github.com/Azure/azure-sdk-for-python
 
 ## <a name="item-examples"></a>Příklady pro položky
 
-Ukázka [item_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](databases-containers-items.md) konceptu.
+Ukázka [item_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o dokumentech Azure Cosmos před spuštěním následujících ukázek najdete v článku [práce s databázemi, kontejnery a položkami](account-databases-containers-items.md) konceptu.
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vytváření položek v kontejneru](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L26-L38) |container.create_item |
 | [Číst položku podle jejího ID](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L41-L49) |container.read_item |
@@ -92,7 +92,7 @@ Ukázka [item_management. py](https://github.com/Azure/azure-sdk-for-python/blob
 
 Ukázka [index_management. py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python ukazuje, jak provádět následující úlohy. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-types.md)a [indexovaných cestách](index-paths.md) .
 
-| Úloha | referenční dokumentace k rozhraní API |
+| Úloha | API – referenční informace |
 | --- | --- |
 | [Vyloučí konkrétní položku z indexování.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L145-L201) | documents.IndexingDirective.Exclude|
 | [Použití ručního indexování s indexovanými konkrétními položkami](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L204-L263) | Document. IndexingDirective. include |

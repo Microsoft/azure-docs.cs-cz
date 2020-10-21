@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d232f7ba1304d76a0ba2db62b9f0f9b4229513f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bcea36b99ae51da256d6b4fc49a4e3965a8c82c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378592"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279176"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Měřená fakturace pro SaaS s využitím komerční služby měření na webu Marketplace
 
@@ -145,7 +145,7 @@ Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
 
 Maximální počet dimenzí, které lze konfigurovat pro jednu nabídku, je 18 jedinečných dimenzí.
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 Pokud máte některý z následujících problémů, můžete otevřít lístek podpory.
 
@@ -153,7 +153,7 @@ Pokud máte některý z následujících problémů, můžete otevřít lístek 
 - Problém, který je potřeba eskalovat z důvodu chyby nebo chyby na vaší straně (např. nesprávná událost použití)
 - Jakékoli další problémy související s měřením podle objemu.
 
-Pokud chcete porozumět možnostem podpory vydavatelů a otevřít lístek podpory s Microsoftem, postupujte podle pokynů v tématu [Podpora programu komerčního tržiště v partnerském centru](./support.md).
+Pokud chcete porozumět možnostem podpory vydavatelů a otevřít lístek podpory s Microsoftem, postupujte podle pokynů v tématu [Podpora programu komerčního tržiště v partnerském centru](../support.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409608"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279832"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Úvod do rozhraní Gremlin API v Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 
   Azure Cosmos DB eliminuje nutnost správy databáze a počítačových prostředků. Většina stávajících databázových platforem grafu je vázána na omezení infrastruktury a často vyžaduje vysokou úroveň údržby, aby bylo zajištěno její fungování. 
   
-  Jako plně spravovaná služba Cosmos DB odstraňuje nutnost spravovat virtuální počítače, aktualizovat běhový software, spravovat horizontálního dělení nebo replikaci nebo řešit komplexní upgrady na datové vrstvě. Každý graf je automaticky zálohovaný a chráněný proti selháním v dané oblasti. Tyto záruky umožňují vývojářům soustředit se na poskytování hodnoty aplikace namísto provozu a správy databází v grafu. 
+  Jako plně spravovaná služba Cosmos DB odstraňuje nutnost spravovat virtuální počítače, aktualizovat běhový software, spravovat horizontálního dělení nebo replikaci nebo řešit komplexní upgrady na datové vrstvě. Každý graf je automaticky zálohovaný a chráněný proti selháním v dané oblasti. To umožňuje vývojářům soustředit se na dodávání hodnoty aplikace, a ne na provoz a správu databází grafů. 
 
 * **Automatické indexování**
 

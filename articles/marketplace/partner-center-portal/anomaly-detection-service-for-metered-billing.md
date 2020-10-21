@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 909b818c60932f5b1d6071ea1ccf0ee4c76173b4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320081"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280528"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Služba detekce anomálií pro fakturaci na základě měření
 
@@ -74,7 +74,7 @@ Odeslání lístku:
     - **Komerční tržiště**  >  **Měřené fakturace**  >  **Nesprávné použití odeslané pro nabídku SaaS**
 3. V části **Další krok**vyberte tlačítko **revidovat řešení** , které se má směrovat, abyste se přihlásili do partnerského centra pro odeslání lístku podpory.
 
-Další možnosti podpory vydavatelů najdete [v tématu Podpora programu komerčního tržiště v partnerském centru](support.md).
+Další možnosti podpory vydavatelů najdete [v tématu Podpora programu komerčního tržiště v partnerském centru](../support.md).
 
 ## <a name="next-step"></a>Další krok
 

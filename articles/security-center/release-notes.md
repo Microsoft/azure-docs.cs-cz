@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: eb5e5cc97b13d8eb8e671501e9b16479ba59642a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: a93ba674e82da090eb2b7c8805880f6e79d7e5d7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999294"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280207"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -28,6 +28,136 @@ Tato stránka se často aktualizuje, takže ji můžete často znovu navštěvov
 > [!TIP]
 > Pokud hledáte položky starší než šest měsíců, najdete je v archivu, kde najdete novinky [v Azure Security Center](release-notes-archive.md).
 
+
+## <a name="october-2020"></a>Říjen 2020
+
+- [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
+- [Přidala se Azure Firewall doporučení (Preview).](#azure-firewall-recommendation-added-preview)
+- [Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
+
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)
+
+Skener pro posouzení ohrožení zabezpečení v [Azure Defenderu pro servery](defender-for-servers-introduction.md)(s technologií Qualys) teď prohledává servery s podporou ARC Azure.
+
+Pokud jste povolili Azure ARC na počítačích mimo Azure, Security Center se bude nabízet k nasazení integrovaného skeneru ohrožení zabezpečení ručně a v rámci škálování.
+
+V této aktualizaci si můžete vysílat výkon **Azure Defenderu pro servery** a konsolidovat svůj program pro správu ohrožení zabezpečení ve všech vašich prostředcích Azure i mimo Azure.
+
+Hlavní možnosti:
+
+- Monitorování stavu zřizování skeneru VA (zranitelnost) na počítačích ARC Azure
+- Zřizování integrovaného agenta s rozhraním VA pro nechráněné počítače s Windows a Linuxem na platformě Azure ARC (ručně a v rozsahu)
+- Přijímání a analýza zjištěných slabých míst z nasazených agentů (ručně a v rozsahu)
+- Jednotné prostředí pro virtuální počítače Azure a počítače s obloukem Azure ARC
+
+[Přečtěte si další informace o nasazení integrovaného skeneru ohrožení zabezpečení do hybridních počítačů](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
+
+[Přečtěte si další informace o serverech s podporou ARC Azure](https://docs.microsoft.com/azure/azure-arc/servers/).
+
+
+### <a name="azure-firewall-recommendation-added-preview"></a>Přidala se Azure Firewall doporučení (Preview).
+
+Bylo přidáno nové doporučení pro ochranu všech virtuálních sítí pomocí Azure Firewall.
+
+Doporučujeme, aby se **virtuální sítě chránily pomocí Azure firewall** radit s cílem omezit přístup k virtuálním sítím a zabránit potenciálním hrozbám pomocí Azure firewall.
+
+Přečtěte si další informace o [Azure firewall](https://azure.microsoft.com/services/azure-firewall/).
+
+
+### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).
+
+Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
+
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
+
+- Využití inventáře prostředků (ARG)
+- Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .
+
+V ARG existují tabulky dat, které můžete použít ve svých dotazech.
+
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
+
+> [!TIP]
+> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
+
+Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
+
+Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
+
+Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
+
+Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
+
+```
+{
+id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
+name: &quot;mico-rg-vnet&quot;,
+type: &quot;Microsoft.Security/securityStatuses&quot;,
+properties:  {
+    policyAssessments: [
+        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
+        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
+    ],
+    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
+    name: &quot;GenericResourceHealthProperties&quot;,
+    type: &quot;VirtualNetwork&quot;,
+    securitystate: &quot;High"
+}
+```
+To znamená, že Microsoft. Security/Assessments bude obsahovat záznam pro každé vyhodnocení zásad, a to následujícím způsobem:
+
+```
+{
+type: "Microsoft.Security/assessments",
+id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
+name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
+properties:  {
+    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
+    displayName: "Azure DDOS Protection Standard should be enabled",
+    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
+}
+
+{
+type: "Microsoft.Security/assessments",
+id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
+name: "8efac66a-1ec5-be63-a824-eb28671dc527",
+properties: {
+    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
+    displayName: "Audit diagnostic setting",
+    status:  {code: "Unhealthy"}
+}
+```
+
+**Příklad převodu existujícího dotazu ARG pomocí securityStatuses pro teď použití tabulky Assessments:**
+
+Dotaz, který odkazuje na SecurityStatuses:
+
+```kusto
+SecurityResources 
+| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
+| where name in ({vmnames}) 
+| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
+```
+
+Náhradní dotaz pro tabulku posouzení:
+
+```kusto
+securityresources
+| where type == "microsoft.security/assessments" and id contains "virtualMachine"
+| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
+| extend source = tostring(properties.resourceDetails.Source)
+| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
+source =~ "aws", properties.additionalData.AzureResourceId,
+source =~ "gcp", properties.additionalData.AzureResourceId,
+extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
+| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
+| where resourceName in ({vmnames}) 
+| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
+```
+
+Další informace najdete na následujících odkazech:
+- [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
+- [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>Září 2020
@@ -180,7 +310,33 @@ Nástroje pro posouzení ohrožení zabezpečení Security Center v rámci "nad�
 
 Výsledky zabezpečení jsou nyní k dispozici pro export prostřednictvím průběžného exportu, když vyberete možnost doporučení a povolíte možnost **Zahrnout zjištění zabezpečení** .
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
+
+> [!TIP]
+> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
+
+Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
+
+Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
+
+Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
+
+Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
+
+```
+{
+id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
+name: &quot;mico-rg-vnet&quot;,
+type: &quot;Microsoft.Security/securityStatuses&quot;,
+properties:  {
+    policyAssessments: [
+        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
+        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
+    ],
+    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
+    name: &quot;GenericResourceHealthProperties&quot;,
+    type: &quot;VirtualNetwork&quot;,
+    securitystate: &quot;High" :::
 
 Související stránky:
 
@@ -245,7 +401,33 @@ Doporučení **verze Preview** navíc nevykreslují prostředek "není v pořád
 
 Příklad doporučení verze Preview:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
+
+> [!TIP]
+> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
+
+Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
+
+Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
+
+Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
+
+Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
+
+```
+{
+id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
+name: &quot;mico-rg-vnet&quot;,
+type: &quot;Microsoft.Security/securityStatuses&quot;,
+properties:  {
+    policyAssessments: [
+        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
+        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
+    ],
+    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
+    name: &quot;GenericResourceHealthProperties&quot;,
+    type: &quot;VirtualNetwork&quot;,
+    securitystate: &quot;High":::
 
 [Přečtěte si další informace o zabezpečeném skóre](secure-score-security-controls.md).
 
@@ -254,7 +436,33 @@ Příklad doporučení verze Preview:
 
 Stránka s podrobnostmi pro doporučení nyní obsahuje indikátor intervalu aktuálnosti (kdykoli je to relevantní) a jasné zobrazení závažnosti doporučení.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
+
+> [!TIP]
+> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
+
+Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
+
+Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
+
+Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
+
+Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
+
+```
+{
+id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
+name: &quot;mico-rg-vnet&quot;,
+type: &quot;Microsoft.Security/securityStatuses&quot;,
+properties:  {
+    policyAssessments: [
+        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
+        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
+    ],
+    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
+    name: &quot;GenericResourceHealthProperties&quot;,
+    type: &quot;VirtualNetwork&quot;,
+    securitystate: &quot;High":::
 
 
 
@@ -326,7 +534,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="before-august-2020"></a>Před srpna 2020
 
-|Doporučení|Rozsah|
+|Doporučení|Obor|
 |----|:----|
 |**Povolení integrovaného řešení posouzení ohrožení zabezpečení na virtuálních počítačích (používá se Qualys)**<br>Klíč: 550e890b-e652-4d22-8274-60b3bdb24c63|Integrované|
 |**Náprava ohrožení zabezpečení zjištěná na vašich virtuálních počítačích (používá se Qualys)**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Integrované|
@@ -335,7 +543,7 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 ||||
 
 
-|Zásady|Rozsah|
+|Zásada|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Integrované|
 |**Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.**<br>ID zásady: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -344,13 +552,13 @@ Pokud máte skripty, dotazy nebo automatizace odkazující na předchozí doporu
 
 ##### <a name="from-august-2020"></a>Od srpna 2020
 
-|Doporučení|Rozsah|
+|Doporučení|Obor|
 |----|:----|
 |**Na virtuálních počítačích by mělo být povolené řešení posouzení ohrožení zabezpečení.**<br>Klíč: ffff0522-1e88-47fc-8382-2a80ba848f5d|Předdefinované + BYOL|
 |**Ohrožení zabezpečení ve vašich virtuálních počítačích by se mělo opravit.**<br>Klíč: 1195afff-c881-495E-9bc5-1486211ae03f|Předdefinované + BYOL|
 ||||
 
-|Zásady|Rozsah|
+|Zásada|Obor|
 |----|:----|
 |[**Na virtuálních počítačích by mělo být povolené posouzení ohrožení zabezpečení**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ID zásady: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Předdefinované + BYOL|
 ||||
@@ -551,7 +759,7 @@ K nasazení konfigurací automatizace napříč vaší organizací použijte tyt
 Zásady najdete v části zásady Azure:
 
 
-|Cíl  |Zásady  |ID zásady  |
+|Cíl  |Zásada  |ID zásady  |
 |---------|---------|---------|
 |Průběžný export do centra událostí|[Nasazení exportu do centra událostí pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
 |Průběžný export do pracovního prostoru Log Analytics|[Nasazení exportu do pracovního prostoru služby Log Analytics pro upozornění a doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
@@ -584,7 +792,7 @@ Nové zásady níže byly přidány do výchozí iniciativy ASC a jsou určeny p
 Zásady najdete v části zásady Azure:
 
 
-| Zásady                                                                                                                                                                                                                                                                | ID zásady                            |
+| Zásada                                                                                                                                                                                                                                                                | ID zásady                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [V Azure SQL Databasech serverech by mělo být povolené rozšířené zabezpečení dat.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [Rozšířené zabezpečení dat by mělo být povoleno na serverech SQL na počítačích](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
@@ -678,7 +886,33 @@ Ovládací prvky zabezpečení – a tento přepínač jsou součástí nového 
 
 Přečtěte si další informace o ovládacích prvcích zabezpečení v [rozšířeném zabezpečeném skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Zahrnout zjištění zabezpečení – přepnout do konfigurace průběžného exportu":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
+
+> [!TIP]
+> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
+
+Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
+
+Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
+
+Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
+
+Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
+
+```
+{
+id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
+name: &quot;mico-rg-vnet&quot;,
+type: &quot;Microsoft.Security/securityStatuses&quot;,
+properties:  {
+    policyAssessments: [
+        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
+        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
+    ],
+    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
+    name: &quot;GenericResourceHealthProperties&quot;,
+    type: &quot;VirtualNetwork&quot;,
+    securitystate: &quot;High":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Rozšířené řízení zabezpečení "implementovat osvědčené postupy zabezpečení" 
 
@@ -731,47 +965,3 @@ Některé z výhod tohoto přechodu:
 - **Agregace výstrah** – Pokud disk CDA zjistil více vzorů útoku v rámci jednoho výpisu stavu systému, aktivovalo se několik výstrah zabezpečení. Detekce útoků bez souborů kombinuje všechny identifikované vzory útoků ze stejného procesu do jediné výstrahy. tím se eliminuje nutnost korelace více výstrah.
 
 - **Omezené požadavky na pracovní prostor Log Analytics** – výpisy stavu systému obsahující potenciálně citlivá data se už nebudou nahrávat do vašeho pracovního prostoru Log Analytics.
-
-
-
-## <a name="april-2020"></a>Duben 2020
-
-Aktualizace v dubnu zahrnují:
-- [Dynamické balíčky pro dodržování předpisů jsou teď všeobecně dostupné.](#dynamic-compliance-packages-are-now-generally-available)
-- [Doporučení identity teď jsou součástí Azure Security Center úrovně Free.](#identity-recommendations-now-included-in-azure-security-center-free-tier)
-
-
-### <a name="dynamic-compliance-packages-are-now-generally-available"></a>Dynamické balíčky pro dodržování předpisů jsou teď všeobecně dostupné.
-
-Řídicí panel dodržování předpisů Azure Security Center nyní zahrnuje **dynamické balíčky kompatibility** (teď všeobecně dostupné) ke sledování dalších odvětví a regulativních standardů.
-
-Dynamické balíčky pro dodržování předpisů můžete přidat do svého předplatného nebo skupiny pro správu ze stránky Security Center zásady zabezpečení. Po zprovoznění standardního nebo srovnávacího testu se standardně zobrazí na řídicím panelu dodržování předpisů, kde jsou všechna přidružená data o dodržování předpisů namapovaná jako posouzení. Zobrazí se souhrnná zpráva o všech standardech, které jsou k dispozici ke stažení.
-
-Nyní můžete přidat standardy jako:
-
-- **NIST SP 800-53 R4**
-- **SWIFT CSP CSCF-v2020**
-- **Oficiální Velká Británie a Velká Británie NHS**
-- **Canada Federal PBMM**
-- **Azure CIS 1.1.0 (nový)** (což je ucelenější reprezentace Azure CIS 1.1.0)
-
-Kromě toho jsme nedávno přidali **srovnávací testy zabezpečení Azure**, které jsou určené pro zabezpečení a osvědčené postupy pro dodržování předpisů v závislosti na běžných architekturách dodržování předpisů, a pokyny specifické pro Azure. Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici.  
- 
-Přečtěte si další informace o [přizpůsobení sady standardů na řídicím panelu dodržování legislativních předpisů](update-regulatory-compliance-packages.md).
-
-
-### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>Doporučení identity teď jsou součástí Azure Security Center úrovně Free.
-
-Doporučení zabezpečení pro identitu a přístup na úrovni Free Azure Security Center jsou teď všeobecně dostupná. Tato funkce je součástí snahy o zpřístupnění funkcí CSPM (Cloud Security stav Management) zdarma. Až do této chvíle byly tato doporučení dostupná jenom na cenové úrovni Standard.
-
-Příklady doporučení pro identitu a přístup zahrnují:
-
-- U účtů s oprávněním vlastníka v předplatném by mělo být povoleno vícefaktorové ověřování.
-- "Pro vaše předplatné by se měla určit maximálně tři vlastníci."
-- "Zastaralé účty by se měly odebrat z vašeho předplatného".
-
-Pokud máte předplatné na cenové úrovni Free, jejich zabezpečená skóre budou ovlivněna touto změnou, protože nebyly nikdy posuzovány pro jejich identitu a zabezpečení přístupu.
-
-Další informace o [identitě a doporučeních pro přístup](recommendations-reference.md#recs-identity).
-
-Přečtěte si další informace o [identitě a přístupu k monitorování](security-center-identity-access.md).

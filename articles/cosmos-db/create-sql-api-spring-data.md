@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0ccab295d39e463d4b6d1e764862678469fba751
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: acd5914ca9f465c69df4c017162ef92f795b235a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776404"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278372"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace pružinové dat Azure Cosmos DB v3 pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -23,7 +23,7 @@ ms.locfileid: "91776404"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > * [Sada Java SDK v4](create-sql-api-java.md)
-> * [Jarní data V3](create-sql-api-spring-data.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -52,9 +52,9 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
 
 *Struktura Cosmos DB účtu* Bez ohledu na rozhraní API nebo programovací jazyk, Cosmos DB *účet* obsahuje nula nebo více *databází*, *databáze* (DB) obsahuje nula nebo více *kontejnerů*a *kontejner* obsahuje nula nebo více položek, jak je znázorněno na následujícím obrázku:
 
-:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Entity účtu Azure Cosmos" border="false":::
+:::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Entity účtu Azure Cosmos" border="false":::
 
-Další informace o databázích, kontejnerech a položkách si můžete přečíst [tady.](databases-containers-items.md) Na úrovni kontejneru je definováno několik důležitých vlastností, mezi kterými je *zřízena propustnost* a *klíč oddílu*. 
+Další informace o databázích, kontejnerech a položkách si můžete přečíst [tady.](account-databases-containers-items.md) Na úrovni kontejneru je definováno několik důležitých vlastností, mezi kterými je *zřízena propustnost* a *klíč oddílu*. 
 
 Zřízená propustnost se měří v jednotkách žádosti (*ru*), které mají peněžní cenu, a jsou zásadním rozhodujícím faktorem za provozní náklady na účet. Zřízenou propustnost lze vybrat v členitosti podle kontejneru nebo členitosti na databázi, ale obvykle je upřednostňována specifikace propustnosti na úrovni kontejneru. Další informace o zřizování propustnosti si můžete přečíst [tady.](set-throughput.md)
 

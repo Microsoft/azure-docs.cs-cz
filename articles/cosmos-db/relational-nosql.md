@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63663d228052934616a59f5d84ff16a6510e46c9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361762"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282076"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>Princip rozdílů mezi NoSQL a relačními databázemi
 
@@ -93,8 +93,8 @@ Naučte se spravovat účet Azure Cosmos a další koncepty:
 * [Jak spravovat účet Azure Cosmos](how-to-manage-database-account.md)
 * [Globální distribuce](distribute-data-globally.md)
 * [Úrovně konzistence](consistency-levels.md)
-* [Práce s kontejnery a položkami Azure Cosmos](databases-containers-items.md)
-* [Koncový bod služby virtuální sítě pro účet Azure Cosmos](vnet-service-endpoint.md)
-* [IP-brána firewall pro účet Azure Cosmos](firewall-support.md)
+* [Práce s kontejnery a položkami Azure Cosmos](account-databases-containers-items.md)
+* [Koncový bod služby virtuální sítě pro účet Azure Cosmos](how-to-configure-vnet-service-endpoint.md)
+* [IP-brána firewall pro účet Azure Cosmos](how-to-configure-firewall.md)
 * [Postup přidání a odebrání oblastí Azure do účtu Azure Cosmos](how-to-manage-database-account.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

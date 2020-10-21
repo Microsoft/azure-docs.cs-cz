@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3e0869e045db0a791bc25f4b81db2efdc1b1645d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 699bdeb34d4a7134cd9fc4938427a2bd813069fa
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87506596"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282630"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-api"></a>Vytvoření databáze a kontejneru pro Azure Cosmos DB rozhraní SQL API
 
@@ -58,5 +58,3 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
-
-Další ukázkové skripty PowerShellu pro službu Azure Cosmos DB najdete ve [skriptech PowerShellu pro službu Azure Cosmos DB](../../../powershell-samples.md).

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8549fba2071ce98b206b3babe073137817aa3145
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d60297ba3bf16eac496703635ec8faf647c7f94
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252829"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279355"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Správa koncových bodů a tras v Azure Digital provlákna (portál)
 
@@ -24,7 +24,7 @@ Tento článek vás provede procesem vytvoření koncových bodů a tras pomocí
 
 Můžete také spravovat koncové body a trasy pomocí [rozhraní API EventRoutes](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md). Verzi tohoto článku, která používá tyto mechanismy místo portálu, najdete v tématu [*How to: Manage Endpoints and Routes (API and CLI)*](how-to-manage-routes-apis-cli.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
@@ -117,6 +117,14 @@ To, jestli se koncový bod úspěšně vytvoří, můžete ověřit tak, že zko
 Pokud se vytvoření koncového bodu nepovede, Sledujte chybovou zprávu a zkuste to znovu za několik minut.
 
 Nyní je téma Service Bus k dispozici jako koncový bod uvnitř digitálních vláken Azure pod názvem zadaným v poli _název_ . Tento název se obvykle používá jako cíl **trasy události**, kterou vytvoříte [později v tomto článku](#event-routes).
+
+### <a name="create-an-endpoint-with-dead-lettering"></a>Vytvoření koncového bodu s nedoručenými písmeny
+
+Když koncový bod nemůže doručovat událost v určitém časovém období nebo po pokusu o doručení události v určitém počtu opakování, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako **nedoručené**.
+
+Aby bylo možné vytvořit koncový bod s povolenou výjimkou, je nutné použít [rozhraní API ARM](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) k vytvoření koncového bodu, nikoli Azure Portal.
+
+Pokyny k tomu, jak to udělat pomocí rozhraní API, najdete v tématu [*rozhraní API a verze CLI*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) tohoto článku.
 
 ## <a name="event-routes"></a>Trasy událostí
 

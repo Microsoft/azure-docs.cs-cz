@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/24/2020
+ms.date: 10/20/2020
 ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51f9043dcf329e4f3f23ddb930e53cfdfa2f107a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78871441fe7f9b0f6d02cdf6f05b97933abfca54
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631643"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275637"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalace agenta služby Azure AD Connect Health
 
@@ -42,7 +42,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 | Kontrola TLS pro odchozí přenosy je filtrovaná nebo zakázaná. | Krok registrace agenta nebo operace nahrávání dat můžou selhat, pokud dojde k prověřování nebo ukončení protokolu TLS pro odchozí přenosy v síťové vrstvě. Přečtěte si další informace o [Nastavení kontroly TLS](/previous-versions/tn-archive/ee796230(v=technet.10)) . |
 | Porty brány firewall na serveru se spuštěným agentem |Agent vyžaduje, aby následující porty brány firewall byly otevřené. Je to proto, aby agent mohl komunikovat s koncovými body služby Azure AD Health.<br /><br /><li>Port 443 protokolu TCP</li><li>Port 5671 protokolu TCP</li> <br />Počítejte s tím, že port 5671 již není vyžadován pro nejnovější verzi agenta. Upgradujte na nejnovější verzi, aby se vyžadoval pouze port 443. Další informace o [povolení portů brány firewall](/previous-versions/sql/sql-server-2008/ms345310(v=sql.100)) |
 | Pokud je povoleno rozšířené zabezpečení Internet Exploreru, povolte následující weby |Pokud je povoleno rozšířené zabezpečení Internet Exploreru, musí být na serveru, na který budete agenta instalovat, povoleny následující weby.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \/ /aadcdn.msftauth.NET</li><li>Federační server vaší organizace, který je pro službu Azure Active Directory důvěryhodný. Příklad: https:\//sts.contoso.com</li> Přečtěte si další informace o [tom, jak nakonfigurovat IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). V případě, že máte proxy server v rámci vaší sítě, přečtěte si prosím poznámku níže.|
-| Ujistěte se, že je nainstalovaný PowerShell v4.0 nebo novější | <li>Windows Server 2008 R2 se dodává s PowerShellem v2.0, který pro agenta není dostačující. Aktualizujte PowerShell, jak je popsáno níže v části [Instalace agenta na servery se systémem Windows Server 2008 R2](#agent-installation-on-windows-server-2008-r2-servers).</li><li>Windows Server 2012 se dodává s PowerShellem v3.0, který pro agenta není dostačující.</li><li>Windows Server 2012 R2 a novější se dodávají s dostatečně aktuální verzí PowerShellu.</li>|
+| Ujistěte se, že je nainstalovaný PowerShell v4.0 nebo novější | <li>Windows Server 2012 se dodává s PowerShellem v3.0, který pro agenta není dostačující.</li><li>Windows Server 2012 R2 a novější se dodávají s dostatečně aktuální verzí PowerShellu.</li>|
 |Zákaz FIPS|Agenti Azure AD Connect Health nepodporují FIPS.|
 
 > [!IMPORTANT]
@@ -60,7 +60,7 @@ Následující tabulka představuje seznam požadavků pro používání služby
 | Doménové prostředí | Požadované koncové body služby Azure |
 | --- | --- |
 | Všeobecná veřejnost | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net – Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *Tento koncový bod se používá jenom pro účely zjišťování během registrace.</li> |
-| Azure (Německo) | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *Tento koncový bod se používá jenom pro účely zjišťování během registrace.</li> |
+| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *Tento koncový bod se používá jenom pro účely zjišťování během registrace.</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *Tento koncový bod se používá jenom pro účely zjišťování během registrace.</li> |
 
 
@@ -111,17 +111,6 @@ Pokud chcete ověřit úspěšnou instalaci agenta, vyhledejte na serveru násle
 
 ![Služby Azure AD Connect Health AD FS](./media/how-to-connect-health-agent-install/install5.png)
 
-### <a name="agent-installation-on-windows-server-2008-r2-servers"></a>Instalace agenta na servery se systémem Windows Server 2008 R2
-
-Kroky pro servery se systémem Windows Server 2008 R2:
-
-1. Zkontrolujte, jestli server používá aktualizaci Service Pack 1 nebo novější.
-2. Pro instalaci agenta vypněte rozšířené zabezpečení IE:
-3. Před instalací agenta AD Health nainstalujte na jednotlivé servery Windows PowerShell 4.0. Pokud chcete nainstalovat Windows PowerShell 4.0, postupujte následovně:
-   * Pomocí následujícího odkazu na stažení offline instalačního programu nainstalujte [rozhraní Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=40779).
-   * Instalace PowerShellu ISE (z funkcí systému Windows)
-   * Nainstalujte na server Internet Explorer verze 10 nebo novější. (Tento krok je požadován službou Health, aby bylo možné provádět ověřování s použitím vašich přihlašovacích údajů správce Azure.)
-4. Další informace o instalaci Windows PowerShell 4.0 na server se systémem Windows Server 2008 R2 najdete v článku na wikiwebu [tady](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx).
 
 ### <a name="enable-auditing-for-ad-fs"></a>Povolení auditování služby AD FS
 
@@ -130,20 +119,6 @@ Kroky pro servery se systémem Windows Server 2008 R2:
 >
 
 Aby mohla funkce analýzy využití shromažďovat a analyzovat data, potřebuje agent Azure AD Connect Health informace z protokolů auditu služby AD FS. Tyto protokoly nejsou ve výchozím nastavení povolené. Pokud chcete na svých serverech služby AD FS povolit auditování služby AD FS a najít protokoly auditu služby AD FS, postupujte následovně.
-
-#### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>Povolení auditování služby AD FS v systému Windows Server 2008 R2
-
-1. Klikněte na **Start**, najeďte myší na **Programy**, potom na **Nástroje pro správu** a potom klikněte na **Místní zásady zabezpečení**.
-2. Přejděte do složky **Security Settings\Local Policies\User Rights Management** a poklikejte na položku **Generovat audity zabezpečení**.
-3. Na kartě **Místní nastavení zabezpečení** zkontrolujte, jestli je tam uvedený účet služby AD FS 2.0. Pokud tam není, klikněte na **Přidat uživatele nebo skupinu** a přidejte ho do seznamu. Potom klikněte na **OK**.
-4. Pokud chcete povolit auditování, otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz: <code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. Zavřete **místní zásady zabezpečení**.
-<br />   -- **Následující kroky se vyžadují pouze pro primární servery AD FS.** -- <br />
-6. Otevřete modul snap-in **Správa služby AD FS**. Pokud chcete otevřít snap-in Správa služby AD FS, klikněte na **Start**, najeďte myší na **Programy**, potom na **Nástroje pro správu** a potom klikněte na **Správa služby AD FS 2.0**.
-7. V podokně **Akce** klikněte na **Upravit služba FS (Federation Service) vlastnosti**.
-8. V dialogovém okně **vlastnosti služba FS (Federation Service)** klikněte na kartu **události** .
-9. Zaškrtněte políčka **Úspěšné audity** a **Neúspěšné audity**.
-10. Klikněte na **OK**.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Povolení auditování služby AD FS v systému Windows Server 2012 R2
 

@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0180135da793aaf7869441ee290f6125ea88fc88
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332691"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276960"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -60,7 +60,7 @@ DPM/MABS lze nasadit jako shrnuté v následující tabulce.
 
 **Nasazení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-**Nasazené místně** | Fyzický server<br/><br/>Virtuální počítač s technologií Hyper-V<br/><br/> Virtuální počítač VMware | Pokud je aplikace DPM/MABS nainstalovaná jako virtuální počítač VMware, zálohuje jenom virtuální počítače VMware a úlohy, které jsou na těchto virtuálních počítačích spuštěné.
+**Nasazené místně** | Fyzický server<br/><br/>Virtuální počítač s technologií Hyper-V<br/><br/> Virtuální počítač VMware | Další podrobnosti najdete v [matrici ochrany](backup-mabs-protection-matrix.md) . 
 **Nasazeno jako Azure Stack virtuální počítač** | Jenom MABS | Aplikaci DPM nelze použít k zálohování Azure Stackch virtuálních počítačů.
 **Nasazeno jako virtuální počítač Azure** | Chrání virtuální počítače a úlohy Azure, které běží na těchto virtuálních počítačích. | DPM/MABS běžící v Azure nemůže zálohovat místní počítače.
 

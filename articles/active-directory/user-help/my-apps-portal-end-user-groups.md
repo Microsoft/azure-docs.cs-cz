@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/03/2020
+ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f5804819e3a7a63120fa8c64d8df27b16608ece1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798070"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277475"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualizace informací o skupinách na portálu moje aplikace
 
-Svůj pracovní nebo školní účet můžete použít s webem **Moje aplikace** na základě webu, abyste mohli zobrazit a spustit mnoho cloudových aplikací vaší organizace, abyste mohli aktualizovat některé z vašich informací o profilech a účtech, abyste viděli informace o **skupinách** a prováděli kontroly **přístupu** pro aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
+Svůj pracovní nebo školní účet můžete použít s webovým portálem **Moje aplikace** k zobrazení a spuštění mnoha cloudových aplikací vaší organizace, k aktualizaci některých informací o profilech a účtu, k zobrazení informací o **skupinách** a k provádění kontrol **přístupu** pro aplikace a skupiny. Pokud nemáte přístup k portálu **Moje aplikace** , musíte se obrátit na helpdesk, aby vám udělil oprávnění.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -44,13 +44,11 @@ Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , m�
 
     Zobrazí se stránka **aplikace** s informacemi o cloudových aplikacích vlastněných vaší organizací a k dispozici pro použití.
 
-    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal/my-apps-portal-apps-page-groups-tile.png)
+    ![Stránka aplikace na portálu moje aplikace](media/my-apps-portal-end-user-groups/my-apps-home-large.png)
 
-3. Kliknutím na dlaždici **skupiny** zobrazíte informace související se skupinami.
+3. Pokud si chcete zobrazit informace související se skupinami, vyberte si nabídku **Moje aplikace** a vyberte **Moje skupiny** .
 
-    ![Stránka skupin s vlastními a skupinami členů](media/my-apps-portal/my-apps-portal-groups-page.png)
-
-4. Na základě vašich oprávnění můžete použít stránku **skupiny** k těmto akcím:
+4. Na základě vašich oprávnění můžete použít stránku **Moje skupiny** k těmto akcím:
 
     - **Zkontrolujte skupiny, které vlastníte.** Zobrazte si informace o všech skupinách, které ve vaší organizaci vlastníte, ze skupin, které **vlastníte** v oblasti. Výběrem konkrétního názvu skupiny získáte další podrobnosti o skupině, včetně typu skupiny, počtu členů, zásad spojení a seznamu aktivních členů.
 

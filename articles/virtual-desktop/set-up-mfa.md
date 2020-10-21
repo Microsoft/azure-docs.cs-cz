@@ -1,28 +1,28 @@
 ---
-title: Nastavení Multi-Factor Authentication Azure pro virtuální počítače s Windows – Azure
-description: Jak nastavit Azure Multi-Factor Authentication pro zvýšení zabezpečení na virtuálním počítači s Windows
+title: Nastavení vícefaktorového ověřování Azure pro virtuální počítače s Windows – Azure
+description: Jak nastavit vícefaktorové ověřování Azure pro zvýšené zabezpečení na virtuálním počítači s Windows
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 10/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e67e3d391ba69bacb82a9154f577942a017e5795
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108979"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312655"
 ---
-# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Povolení služby Azure Multi-Factor Authentication pro službu Windows Virtual Desktop
+# <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Povolení vícefaktorového ověřování Azure pro virtuální počítače s Windows
 
 >[!IMPORTANT]
 > Pokud navštívíte tuto stránku z dokumentace k virtuálním plochám Windows (Classic), nezapomeňte po dokončení [vrátit se do dokumentace k virtuální ploše Windows (Classic)](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) .
 
 Klient Windows pro virtuální počítače s Windows je vynikající volbou pro integraci virtuálního klienta s Windows s vaším místním počítačem. Když ale konfigurujete účet virtuální plochy Windows na klienta Windows, budete muset provést určitá opatření, abyste měli jistotu, že sami a uživatelé budou v bezpečí.
 
-Po prvním přihlášení si klient vyžádá vaše uživatelské jméno, heslo a Azure MFA. Po tomto okamžiku si klient zapamatuje váš token z vaší podnikové aplikace Azure Active Directory (AD). Když vyberete možnost **Zapamatovat si mě**, uživatelé se můžou po restartování klienta přihlásit, aniž by museli znovu zadat svoje přihlašovací údaje.
+Při prvním přihlášení si klient vyžádá vaše uživatelské jméno, heslo a Azure vícefaktorového ověřování. Po tomto okamžiku si klient zapamatuje váš token z vaší podnikové aplikace Azure Active Directory (AD). Když vyberete možnost **pamatovat mě** na výzvu k zadání přihlašovacích údajů pro hostitele relace, uživatelé se můžou po restartování klienta přihlásit, aniž by museli znovu zadat svoje přihlašovací údaje.
 
-I když je zapamatování přihlašovacích údajů pohodlné, může také provádět nasazení v podnikových scénářích nebo na osobních zařízeních méně zabezpečená. Pokud chcete chránit své uživatele, musíte se ujistit, že klient uchovává dotaz na přihlašovací údaje pro Azure Multi-Factor Authentication (MFA). V tomto článku se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro virtuální plochu Windows, aby toto nastavení bylo povolené.
+I když je zapamatování přihlašovacích údajů pohodlné, může také provádět nasazení v podnikových scénářích nebo na osobních zařízeních méně zabezpečená. Pokud chcete chránit své uživatele, můžete se ujistit, že klient bude dál podávat dotazy na přihlašovací údaje vícefaktorového ověřování Azure. V tomto článku se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro virtuální plochu Windows, aby toto nastavení bylo povolené.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -30,10 +30,10 @@ Tady je přehled toho, co budete potřebovat k zahájení práce:
 
 - Přiřaďte uživatelům licenci, která zahrnuje Azure Active Directory Premium P1 nebo P2.
 - Skupina Azure Active Directory s vašimi uživateli přiřazenými jako členové skupiny.
-- Povolte Azure MFA pro všechny uživatele. Další informace o tom, jak to provést, najdete v tématu [jak pro uživatele vyžadovat dvoustupňové ověřování](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
+- Povolte Azure vícefaktorového ověřování pro všechny uživatele. Další informace o tom, jak to provést, najdete v tématu [jak pro uživatele vyžadovat dvoustupňové ověřování](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
 
 > [!NOTE]
-> Následující nastavení platí také pro [webového klienta virtuální plochy systému Windows](https://rdweb.wvd.microsoft.com/webclient/index.html).
+> Následující nastavení platí také pro [webového klienta virtuální plochy systému Windows](https://rdweb.wvd.microsoft.com/arm/webclient/index.html).
 
 ## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
@@ -63,7 +63,7 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
         Potom můžete přejít ke kroku 10.
 
    >[!IMPORTANT]
-   > Nevybírejte aplikaci nazvanou Windows Virtual Desktop Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63). Tato aplikace se používá jenom pro načtení uživatelského kanálu a neměla by mít MFA.
+   > Nevybírejte aplikaci nazvanou Windows Virtual Desktop Azure Resource Manager Provider (50e95039-B200-4007-bc97-8d5790743a63). Tato aplikace se používá jenom pro načtení uživatelského kanálu a neměla by mít vícefaktorové ověřování.
    > 
    > Pokud používáte virtuální plochu Windows (Classic), pokud zásada podmíněného přístupu zablokuje veškerý přístup a vyloučí jenom ID aplikací virtuálních počítačů s Windows, můžete to opravit přidáním ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07 do zásady. Když nepřidáte toto ID aplikace, zablokuje se zjišťování prostředků virtuálních ploch Windows (Classic) v informačním kanálu.
 
@@ -85,7 +85,7 @@ Tady je postup, jak vytvořit zásadu podmíněného přístupu, která při př
     >Pokud chcete najít ID aplikace, kterou chcete vybrat, přejděte na **podnikové aplikace** a v rozevírací nabídce Typ aplikace vyberte **aplikace Microsoftu** .
 
 12. V části **řízení přístupu**  >  **udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a pak **Vyberte**.
-13. V části relace **řízení přístupu**  >  **Session**vyberte **četnost přihlášení**, nastavte hodnotu na **1** a jednotku na **hodiny**a pak vyberte **Vybrat**.
+13. V části relace **řízení přístupu**  >  **Session**vyberte **četnost přihlášení**, nastavte hodnotu na požadovaný čas mezi jednotlivými výzvami a pak vyberte **Vybrat**. Například nastavení hodnoty na hodnotu **1** a jednotka na **hodiny**budou vyžadovat vícefaktorové ověřování, pokud se připojení spustí za hodinu za poslední.
 14. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 15. Vyberte **vytvořit** a povolte tak zásady.
 

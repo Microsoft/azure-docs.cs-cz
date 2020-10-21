@@ -10,18 +10,18 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 992111f6b28356d5220e27a80068acdaf80b4055
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75444687"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280498"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB
 
 V tomto výukovém kurzu se dozvíte, jak vytvořit novou aplikaci napsanou v Node.js pomocí Expressu a úhlu a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md).
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Umožňuje rychle vytvořit a dotazovat databáze dokumentů, klíčů/hodnot a grafů, které využívají možnosti globální distribuce a horizontálního škálování v jádru Cosmos DB. 
+Azure Cosmos DB je databáze Microsoftu pro rychlé NoSQL s otevřenými rozhraními API pro jakékoli škálování. Umožňuje vyvíjet moderní aplikace s využitím rychlosti a dostupnosti zajištěné smlouvou SLA, automatické a okamžité škálovatelnosti a open source rozhraní API pro mnoho NoSQLch modulů.
 
 Tento vícedílný kurz se zabývá následujícími úlohami:
 

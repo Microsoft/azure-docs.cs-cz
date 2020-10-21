@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8e91a611084d201e6609f7e203eaa08c81e19a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569998"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320218"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>Řešení potíží s PostgreSQL skupinami serverů s škálovatelným škálováním
 Tento článek popisuje některé postupy, které můžete použít k řešení potíží se skupinou serverů. Kromě tohoto článku si můžete přečíst, jak používat [Kibana](monitor-grafana-kibana.md) k hledání protokolů, nebo k vizualizaci metriky o skupině serverů pomocí [Grafana](monitor-grafana-kibana.md) . 
@@ -31,7 +31,7 @@ nebo
 azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
 ```
 
-Kromě toho můžete pomocí parametru--Help na jakémkoli příkazu azdata zobrazit nápovědu, seznam parametrů pro konkrétní příkaz. Například:
+Kromě toho můžete pomocí parametru--Help na jakémkoli příkazu azdata zobrazit nápovědu, seznam parametrů pro konkrétní příkaz. Příklad:
 ```console
 azdata arc postgres server create --help
 ```
@@ -51,13 +51,13 @@ Pojďme například řešit potíže s PostgreSQL skupinou serverů s škálovat
 
 ### <a name="install-tools"></a>Instalace nástrojů
 
-Nainstalujte Azure Data Studio `kubectl` a `azdata` na klientském počítači, který používáte ke spuštění poznámkového bloku v Azure Data Studio. Postupujte prosím podle pokynů v tématu [instalace klientských nástrojů](install-client-tools.md)
+Nainstalujte Azure Data Studio `kubectl` a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] na klientském počítači, který používáte ke spuštění poznámkového bloku v Azure Data Studio. Postupujte prosím podle pokynů v tématu [instalace klientských nástrojů](install-client-tools.md)
 
 ### <a name="update-the-path-environment-variable"></a>Aktualizuje proměnnou prostředí PATH.
 
 Ujistěte se, že tyto nástroje lze vyvolat odkudkoli na tomto klientském počítači. Například na klientském počítači s Windows aktualizujte proměnnou prostředí PATH systému a přidejte složku, do které jste nainstalovali kubectl.
 
-### <a name="sign-in-with-azdata"></a>Přihlásit se pomocí `azdata`
+### <a name="sign-in-with-azure-data-cli-azdata"></a>Přihlásit se pomocí [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
 Přihlaste se k řadiči dat ARC z tohoto klientského počítače a před spuštěním Azure Data Studio. Uděláte to tak, že spustíte příkaz jako:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b49e6fc45a84f600131f571d1305c8160ddb1d21
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145984"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282256"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -83,7 +83,7 @@ await client.CreateEventRoute("routeName", er);
 
 1. Nejprve `EventRoute` je vytvořen objekt a konstruktor převezme název koncového bodu. Toto `endpointName` pole označuje koncový bod, jako je například centrum událostí, Event Grid nebo Service Bus. Tyto koncové body je potřeba vytvořit v předplatném a připojit se k digitálním plochám Azure pomocí rozhraní API řídicích rovin před provedením tohoto volání registrace.
 
-2. Objekt směrování událostí má také pole [**filtru**](./how-to-manage-routes-apis-cli.md#filter-events) , pomocí kterého lze omezit typy událostí, které následují po této trase. Filtr `true` umožňuje trasu bez dalšího filtrování (filtr `false` zakáže trasu). 
+2. Objekt směrování událostí má také pole [**filtru**](how-to-manage-routes-apis-cli.md#filter-events) , pomocí kterého lze omezit typy událostí, které následují po této trase. Filtr `true` umožňuje trasu bez dalšího filtrování (filtr `false` zakáže trasu). 
 
 3. Tento objekt směrování události je pak předán `CreateEventRoute` spolu s názvem trasy.
 
@@ -93,18 +93,19 @@ await client.CreateEventRoute("routeName", er);
 Trasy je také možné vytvořit pomocí rozhraní příkazového [řádku Azure Digital zdvojené](how-to-use-cli.md).
 
 ## <a name="dead-letter-events"></a>Nedoručené události
+
 Když koncový bod nemůže doručovat událost v určitém časovém období nebo po pokusu o doručení události v určitém počtu opakování, může odeslat nedoručenou událost do účtu úložiště. Tento proces se označuje jako **nedoručené**. Pokud je splněna **jedna z následujících** podmínek, digitální vlákna Azure bude událost nedoručena. 
 
-- Událost se nedoručuje do období TTL (Time to Live).
-- Počet pokusů o doručení události překročil limit.
+* Událost se nedoručuje do období TTL (Time to Live).
+* Počet pokusů o doručení události překročil limit.
 
-Je-li splněna některá z podmínek, událost je vyřazena nebo byla nedoručena.  Ve výchozím nastavení **každý koncový bod** nezapne nedoručené písmeno. Pokud ho chcete povolit, musíte při vytváření koncového bodu zadat účet úložiště, který bude obsahovat nedoručené události. Vyžádáte si události z tohoto účtu úložiště, abyste mohli vyřešit dodávky.
+Je-li splněna některá z podmínek, událost je vyřazena nebo byla nedoručena. Ve výchozím nastavení **každý koncový bod** nezapne nedoručené písmeno. Pokud ho chcete povolit, musíte při vytváření koncového bodu zadat účet úložiště, který bude obsahovat nedoručené události. Pak můžete vyžádat události z tohoto účtu úložiště a vyřešit tak doručení.
 
 Před nastavením umístění nedoručených zpráv musíte mít účet úložiště s kontejnerem. Při vytváření koncového bodu zadejte adresu URL tohoto kontejneru. Nedoručené písmeno je k dispozici jako adresa URL kontejneru s tokenem SAS. Tento token potřebuje `write` oprávnění pouze pro cílový kontejner v rámci účtu úložiště. Plně vytvořená adresa URL bude ve formátu: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
 Další informace o tokenech SAS najdete v tématu: [ *udělení omezeného přístupu k Azure Storage prostředkům pomocí sdílených přístupových podpisů (SAS)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-Informace o tom, jak nastavit nedoručené zprávy, najdete [*v tématu Postupy: Správa koncových bodů a tras v digitálních prostředníkech Azure (rozhraní API a rozhraní příkazového řádku)*](./how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
+Informace o tom, jak nastavit koncový bod pomocí nedoručených zpráv, najdete v tématu [*Postupy: Správa koncových bodů a tras v digitálních událostech Azure (rozhraní API a rozhraní příkazového řádku)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering).
 
 ### <a name="types-of-event-messages"></a>Typy zpráv událostí
 

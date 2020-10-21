@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167602"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278195"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra v Azure Cosmos DB
 
@@ -79,11 +79,11 @@ Diagnostické protokoly jsou vysvětleny v článku [Azure Cosmos DB diagnostick
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Mapuje primární klíč na klíč oddílu Azure Cosmos DB konceptu?
 
-Ano, klíč oddílu se použije k umístění entity do správného umístění. V Azure Cosmos DB se používá k vyhledání správného logického oddílu, který je uložený na fyzickém oddílu. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partition-data.md) článku. Základní poznatkem tady je, že logický oddíl by neměl přecházet přes limit 20 GB.
+Ano, klíč oddílu se použije k umístění entity do správného umístění. V Azure Cosmos DB se používá k vyhledání správného logického oddílu, který je uložený na fyzickém oddílu. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partitioning-overview.md) článku. Základní poznatkem tady je, že logický oddíl by neměl přecházet přes limit 20 GB.
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Co se stane, když získám oznámení, že je oddíl plný?
 
-Azure Cosmos DB je systém založený na smlouvě o úrovni služeb (SLA). Poskytuje neomezenou škálu a zaručuje latenci, propustnost, dostupnost a konzistenci. Toto neomezené úložiště je založené na horizontálním škálování dat a používá dělení jako klíčové pojmy. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partition-data.md) článku.
+Azure Cosmos DB je systém založený na smlouvě o úrovni služeb (SLA). Poskytuje neomezenou škálu a zaručuje latenci, propustnost, dostupnost a konzistenci. Toto neomezené úložiště je založené na horizontálním škálování dat a používá dělení jako klíčové pojmy. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partitioning-overview.md) článku.
 
 U počtu entit nebo položek na logický oddíl byste měli dodržovat limit 20 GB. Aby se zajistilo, že se vaše aplikace dobře škáluje, doporučujeme, abyste nevytvořili aktivní oddíl tím, *že budete ukládat* všechny informace v jednom oddílu a dotazovat se na něj. Tato chyba se může nacházet jenom v případě, že jsou vaše data nakloněná: to znamená, že máte spoustu dat pro jeden klíč oddílu (víc než 20 GB). Distribuci dat můžete najít pomocí portálu úložiště. Tuto chybu lze vyřešit tak, že znovu vytvoříte tabulku a vyberete podrobný primární (klíč oddílu), který umožňuje lepší distribuci dat.
 
@@ -133,7 +133,7 @@ Ano, hodnota TTL je podporována.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Jak můžu monitorovat infrastrukturu spolu s propustností?
 
-Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Můžete:
+Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Další možnosti:
 
 - Monitorovat [SLA](monitor-accounts.md)
 - Použití [metrik](use-metrics.md)

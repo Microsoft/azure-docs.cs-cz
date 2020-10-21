@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665391"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320707"
 ---
 # <a name="communication-services-notifications"></a>Oznámení služby Communication Services
 
@@ -40,13 +40,20 @@ Centrum oznámení Azure můžete připojit ke zdroji komunikačních služeb, a
 
 Komunikační služby využívají Azure Notification hub jako předávací službu ke komunikaci s různými službami nabízených oznámení specifických pro konkrétní platformu pomocí rozhraní API pro [přímé odesílání](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) . Díky tomu můžete znovu použít stávající prostředky a konfigurace centra oznámení Azure pro zajištění nízké latence a spolehlivého volání oznámení vašim aplikacím.
 
+> [!NOTE]
+> V současné době je podporována pouze nabízená oznámení volání.
+
 ### <a name="notification-hub-provisioning"></a>Zřizování centra oznámení 
 
-Pokud chcete odesílat nabízená oznámení do klientských zařízení pomocí Notification Hubs, [vytvořte centrum oznámení](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) v rámci stejného předplatného jako prostředek služby Communications. Pro službu oznámení platformy, kterou chcete použít, musí být služba Azure Notification Hubs nakonfigurovaná. Informace o tom, jak v klientské aplikaci získat nabízená oznámení z Notification Hubs, najdete v tématu [Začínáme s Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/ios-sdk-get-started) a v rozevíracím seznamu v horní části stránky vyberte cílovou klientskou platformu.
+Pokud chcete odesílat nabízená oznámení do klientských zařízení pomocí Notification Hubs, [vytvořte centrum oznámení](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal) v rámci stejného předplatného jako prostředek služby Communications. Pro službu oznámení platformy, kterou chcete použít, musí být služba Azure Notification Hubs nakonfigurovaná. Informace o tom, jak v klientské aplikaci získat nabízená oznámení z Notification Hubs, najdete v tématu [Začínáme s Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) a v rozevíracím seznamu v horní části stránky vyberte cílovou klientskou platformu.
 
-Jakmile je vaše centrum oznámení nakonfigurované, můžete ho přidružit k vašemu prostředku komunikačních služeb zadáním řetězce připojení pro centrum pomocí klienta Azure Resource Manager nebo prostřednictvím Azure Portal. Připojovací řetězec by měl obsahovat oprávnění Send (Odeslat). Doporučujeme vytvořit další zásadu přístupu s oprávněním Send jenom pro vaše centrum. Další informace o [Notification Hubs zásadách zabezpečení a přístupu](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
+> [!NOTE]
+> V současné době jsou podporovány platformy APNs a FCM.
 
-> Poznámka: Pokud chcete povolit Apple Push Notification Service oznámení VOIP, musíte nastavit název vašeho centra oznámení tak, aby se stal identifikátorem ID sady prostředků vaší aplikace s `.voip` příponou. Viz [použití služby APN VoIP prostřednictvím Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
+Jakmile je vaše centrum oznámení nakonfigurované, můžete ho přidružit k vašemu prostředku komunikačních služeb zadáním připojovacího řetězce pro centrum pomocí klienta Azure Resource Manager nebo prostřednictvím Azure Portal. Připojovací řetězec by měl obsahovat oprávnění Send (Odeslat). Doporučujeme vytvořit další zásadu přístupu s oprávněním Send jenom pro vaše centrum. Další informace o [Notification Hubs zásadách zabezpečení a přístupu](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
+
+> [!IMPORTANT]
+> Aby bylo možné povolit Apple Push Notification Service oznámení VOIP, musíte nastavit název vašeho centra oznámení tak, aby se stal IDENTIFIKÁTORem vašeho aplikačního kompletu s `.voip` příponou. Viz [použití služby APN VoIP prostřednictvím Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Konfigurace centra oznámení pomocí klienta Azure Resource Manager
 
@@ -67,6 +74,9 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 Na portálu přejděte do svého prostředku služby Azure Communication Services. V rámci prostředku služby Communications Services vyberte nabízená oznámení v levé nabídce stránky komunikační služby a připojte centrum oznámení, které jste zřídili dříve. Sem budete muset zadat připojovací řetězec a ID prostředku:
 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Diagram znázorňující, jak se komunikační služby integrují s Event Grid.":::
+
+> [!NOTE]
+> Pokud je připojovací řetězec centra oznámení Azure aktualizovaný, je nutné aktualizovat také prostředek komunikačních služeb.
 
 #### <a name="device-registration"></a>Registrace zařízení 
 

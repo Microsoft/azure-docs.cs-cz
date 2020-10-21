@@ -6,14 +6,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 93d9ce50a451221c86f5336107dba30695af159f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91355359"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282155"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Rychlý Start: vytvoření zóny Azure DNS a záznamu pomocí Azure Portal
 
@@ -28,9 +28,17 @@ V tomto rychlém startu vytvoříte testovací doménu a pak vytvoříte záznam
 You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
 --->
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Pro všechny kroky portálu se přihlaste k [Azure Portal](https://portal.azure.com).
+
+## <a name="prerequisites"></a>Předpoklady
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+
+Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 

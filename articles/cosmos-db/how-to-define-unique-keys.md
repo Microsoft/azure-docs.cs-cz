@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: b275703e0f5952be9ab052a789b64d2ea171922c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 968ae8e582587564f1e268f16c18cf6d562d4333
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330532"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279547"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definování jedinečných klíčů pro kontejner Azure Cosmos
 
@@ -20,7 +20,7 @@ Tento článek nabízí různé způsoby definování [jedinečných klíčů](u
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) nebo vyberte nějaký existující.
 
@@ -36,7 +36,7 @@ Tento článek nabízí různé způsoby definování [jedinečných klíčů](u
 
     :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Snímek obrazovky s jedinečnou položkou omezení klíčů v Azure Portal":::
 
-## <a name="use-powershell"></a>Použití PowerShellu
+## <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Vytvoření kontejneru s jedinečnými klíči najdete v tématu [vytvoření kontejneru Azure Cosmos s jedinečným klíčem a hodnotou TTL](manage-with-powershell.md#create-container-unique-key-ttl) .
 
@@ -151,5 +151,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [dělení](partition-data.md)
+- Další informace o [dělení](partitioning-overview.md)
 - Prozkoumejte, [Jak funguje indexování](index-overview.md)

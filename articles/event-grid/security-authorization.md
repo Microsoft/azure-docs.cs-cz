@@ -3,16 +3,18 @@ title: Azure Event Grid zabezpečení a ověřování
 description: Popisuje Azure Event Grid a jeho koncepty.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 09317b310a5934d27b82d265ec7f9b276135f882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8220e0f913a16cc32b4598ecb3836cc892ea83fd
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119085"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318559"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Autorizace přístupu k prostředkům Event Grid
-Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé operace správy, jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role (RBAC) Azure.
+Azure Event Grid umožňuje řídit úroveň přístupu daným různým uživatelům a provádět různé **operace správy** , jako jsou odběry událostí seznamu, vytváření nových a generování klíčů. Event Grid používá řízení přístupu na základě role (RBAC) Azure.
 
+> [!NOTE]
+> EventGrid nepodporuje RBAC pro publikování událostí pro Event Grid témat nebo domén. Použijte klíč sdíleného přístupového podpisu (SAS) nebo token k ověřování klientů, kteří publikují události. Další informace najdete v tématu [ověřování klientů publikování](security-authenticate-publishing-clients.md). 
 
 ## <a name="operation-types"></a>Typy operací
 

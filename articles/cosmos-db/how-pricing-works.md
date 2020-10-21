@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb47dde8813f31f4a6acceb696a8b7c7eb0095be
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605254"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281546"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Cenový model ve službě Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Cenový model služby Azure Cosmos DB zjednodušuje správu a plánování nákl
 
 - **Databázové operace**: způsob, jakým se vám účtují operace s databází, závisí na typu účtu Azure Cosmos, který používáte.
 
-  - **Zajištěná propustnost**: [zajištěná](set-throughput.md) propustnost (označovaná také jako rezervovaná propustnost) zaručuje vysoký výkon v jakémkoli měřítku. Zadáte propustnost, kterou potřebujete v [jednotkách žádosti](request-units.md) za sekundu (ru/s), a Azure Cosmos DB vyhradit prostředky potřebné k zajištění nakonfigurované propustnosti. Propustnost můžete [zřídit buď pro databázi, nebo pro kontejner](set-throughput.md). V závislosti na potřebách úloh můžete kdykoli škálovat propustnost nahoru nebo dolů nebo použít [Automatické škálování](provision-throughput-autoscale.md) (i když je v databázi nebo kontejneru zajištěná minimální propustnost, která zaručuje SLA). Za danou hodinu se účtuje po hodinách maximální zajištěné propustnosti.
+  - **Zajištěná propustnost**: [zajištěná](set-throughput.md) propustnost (označovaná také jako rezervovaná propustnost) poskytuje vysoký výkon v jakémkoli měřítku. Zadáte propustnost, kterou potřebujete v [jednotkách žádosti](request-units.md) za sekundu (ru/s), a Azure Cosmos DB vyhradit prostředky potřebné k zajištění nakonfigurované propustnosti. Propustnost můžete [zřídit buď pro databázi, nebo pro kontejner](set-throughput.md). V závislosti na potřebách úloh můžete kdykoli škálovat propustnost nahoru nebo dolů nebo použít [Automatické škálování](provision-throughput-autoscale.md) (i když je v databázi nebo kontejneru zajištěná minimální propustnost, která zaručuje SLA). Za danou hodinu se účtuje po hodinách maximální zajištěné propustnosti.
 
    > [!NOTE]
    > Vzhledem k tomu, že model zřízené propustnosti vyhradí prostředky pro váš kontejner nebo databázi, bude se vám účtovat propustnost, kterou jste zřídili, i když nespustíte žádné úlohy.
