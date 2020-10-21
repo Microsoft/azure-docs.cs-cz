@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 188c30a79074b819c5785cf5560f5843a3fcf6b4
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131611"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320476"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Seznamy řízení přístupu (ACL) v Azure Data Lake Storage Gen2
 
@@ -203,7 +203,7 @@ Pro nový kontejner Data Lake Storage Gen2 je maska pro seznam ACL přístupu ko
 |--|--|--|
 |Vlastnící uživatel|`rwx`|`r-w`|
 |Vlastnící skupina|`r-x`|`r--`|
-|Další|`---`|`---`|
+|Ostatní|`---`|`---`|
 
 Soubory neobdrží bit X, protože to není podstatné pro soubory v systému pouze v úložišti. 
 
@@ -326,6 +326,11 @@ Zobrazí se identifikátor OID.
 
 Pokud máte pro instanční objekt správný identifikátor OID, přejděte na stránku Průzkumník služby Storage **spravovat přístup** a přidejte identifikátor OID a přiřaďte příslušná oprávnění identifikátoru objektu. Ujistěte se, že jste vybrali možnost **Uložit**.
 
+### <a name="can-i-set-the-acl-of-a-container"></a>Můžu nastavit seznam řízení přístupu kontejneru?
+
+Ne. Kontejner nemá seznam ACL. Můžete ale nastavit seznam řízení přístupu kořenového adresáře kontejneru. Každý kontejner má kořenový adresář a sdílí stejný název jako kontejner. Například pokud má kontejner název `my-container` , pak kořenový adresář má název `myContainer/` . 
+
+Azure Storage REST API obsahuje operaci s názvem [seznam ACL kontejneru](https://docs.microsoft.com/rest/api/storageservices/set-container-acl), ale tato operace se nedá použít k nastavení seznamu ACL kontejneru nebo kořenového adresáře kontejneru. Místo toho se tato operace používá k označení, zda mohou být objekty BLOB v kontejneru [přístupné veřejně](anonymous-read-access-configure.md). 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Kde najdu další informace o modelu řízení přístupu POSIX?
 

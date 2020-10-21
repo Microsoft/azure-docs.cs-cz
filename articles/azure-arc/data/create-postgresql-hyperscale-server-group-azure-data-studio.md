@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1b1cf90efa14345fa8395f5f62fd80934b922352
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2007d8f0c558d35c0507b6e12bce6d6777fad52
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273003"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310899"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>Vytvoření PostgreSQL s povoleným rozšířením Azure ARC pomocí Azure Data Studio
 
@@ -62,7 +62,7 @@ Teď můžete implementovat další krok.
 1. Na kartě připojení klikněte na tři tečky v levém horním rohu a vyberte nové nasazení.
 1. V možnostech nasazení vyberte **PostgreSQL skupina serverů s škálovatelným škálováním – Azure ARC**
     >[!NOTE]
-    > Pokud není momentálně nainstalovaná, může se vám zobrazit výzva k instalaci rozhraní příkazového `azdata` řádku.
+    > Může se zobrazit výzva k instalaci [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] sem, pokud není aktuálně nainstalovaná.
 1. Přijměte ochranu osobních údajů a licenční podmínky a klikněte na tlačítko **Vybrat** v dolní části.
 1. V okně nasadit PostgreSQL skupinu serverů s rozšířením Azure ARC zadejte následující informace:
    - Zadejte název skupiny serverů.

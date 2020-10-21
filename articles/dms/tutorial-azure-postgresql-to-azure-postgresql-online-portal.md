@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: ef840abdfdb51e2472615ffabf0b49545b6fef3f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938419"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313151"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Kurz: migrace Azure DB pro PostgreSQL – jeden server do Azure DB pro PostgreSQL-Single server online pomocí DMS přes Azure Portal
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Migrace z Azure Database for PostgreSQL se podporuje pro PostgreSQL verze 10 a novější. Tento kurz můžete také použít k migraci z jedné instance Azure Database for PostgreSQL do jiné instance Azure Database for PostgreSQL nebo instance Citus ().
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -258,7 +258,18 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 * Vyberte **Spustit migraci**.
 
-    Zobrazí se okno aktivita migrace a **stav** aktivity by se měl aktualizovat, aby se zobrazila **v průběhu zálohování**.
+Zobrazí se okno aktivita migrace a **stav** aktivity by se měl aktualizovat, aby se zobrazila **v průběhu zálohování**. Při upgradu z Azure DB pro PostgreSQL 9,5 nebo 9,6 se může zobrazit následující chyba:
+
+**Scénář ohlásil neznámou chybu. 28000: není k dispozici položka pg_hba. conf pro připojení replikace z hostitele "40.121.141.121", uživatel "SR"**
+
+Důvodem je to, že PostgreSQL nemá příslušná oprávnění k vytváření požadovaných artefaktů logické replikace. Pokud chcete povolit požadovaná oprávnění, můžete postupovat takto:
+
+1. Otevřete nastavení zabezpečení připojení pro zdrojový server Azure DB pro PostgreSQL, ze kterého se pokoušíte migrovat nebo upgradovat.
+2. Přidejte nové pravidlo brány firewall s názvem končícím na "_replrule" a přidejte IP adresu z chybové zprávy do polí Počáteční IP adresa a koncová IP adresa. Pro výše uvedený příklad chyby –
+> Název pravidla brány firewall = sr_replrule; Počáteční IP adresa = 40.121.141.121; Koncová IP adresa = 40.121.141.121
+
+3. Klikněte na Uložit a nechte změnu dokončeno. 
+4. Opakujte aktivitu DMS. 
 
 ## <a name="monitor-the-migration"></a>Monitorování migrace
 

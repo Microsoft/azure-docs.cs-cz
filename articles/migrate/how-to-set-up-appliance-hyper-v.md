@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pro Hyper-V
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů Hyper-V.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a12785ea3791366badb907498796a73c2c993623
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448081"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314163"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
 
@@ -118,7 +118,7 @@ Nastavte zařízení poprvé.
    
    Přihlášení pomocí PIN kódu se nepodporuje.
 3. Po úspěšném přihlášení se vraťte k webové aplikaci. 
-4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění](tutorial-prepare-hyper-v.md#prepare-azure) k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
+4. Pokud má uživatelský účet Azure použitý k protokolování správná [oprávnění](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) k prostředkům Azure vytvořeným během generování klíče, zahájí se registrace zařízení.
 1. Po úspěšné registraci zařízení si můžete zobrazit podrobnosti o registraci kliknutím na **Zobrazit podrobnosti**.
 
 

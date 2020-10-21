@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e7e140e26da79475bea032c8190ee64740370d04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875019"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312878"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rychlý Start: vytvoření centra oznámení Azure pomocí Azure CLI
 
@@ -27,7 +27,7 @@ Služba Azure Notification Hubs nabízí snadno použitelné, škálovatelné za
 
 V tomto rychlém startu vytvoříte centrum oznámení pomocí Azure CLI. První část obsahuje kroky pro vytvoření oboru názvů Notification Hubs. Druhá část obsahuje postup vytvoření centra oznámení v existujícím oboru názvů. Naučíte se také, jak vytvořit vlastní zásady přístupu.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -36,7 +36,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Azure Notification Hubs, stejně jako všechny prostředky Azure, musí být nasazené do skupiny prostředků.  Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.  Další informace o skupinách prostředků najdete v tématu [co je Azure Resource Manager](/azure/azure-resource-manager/management/overview) .
+Azure Notification Hubs, stejně jako všechny prostředky Azure, musí být nasazené do skupiny prostředků.  Skupiny prostředků vám umožňují organizaci a správu souvisejících prostředků Azure.  Další informace o skupinách prostředků najdete v tématu [co je Azure Resource Manager](../azure-resource-manager/management/overview.md) .
 
 V tomto rychlém startu vytvořte skupinu prostředků s názvem **spnhubrg** v umístění **eastus** pomocí následujícího příkazu [AZ Group Create](/cli/azure/group#az-group-create) .
 

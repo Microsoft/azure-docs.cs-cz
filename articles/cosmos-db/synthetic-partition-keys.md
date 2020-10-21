@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a50de7154bd768f5cc4c25062ec3ce05c0f37328
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75441220"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279860"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Vytvoření syntetického klíče oddílu
 
@@ -58,7 +58,7 @@ V této strategii jsou zápisy rovnoměrně rozloženy mezi hodnoty klíčů odd
 
 Další informace o konceptu dělení na oddíly najdete v následujících článcích:
 
-* Přečtěte si další informace o [logických oddílech](partition-data.md).
+* Přečtěte si další informace o [logických oddílech](partitioning-overview.md).
 * Přečtěte si další informace o tom, jak [zřídit propustnost na Cosmosch kontejnerech a databázích Azure](set-throughput.md).
 * Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 * Naučte se [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).

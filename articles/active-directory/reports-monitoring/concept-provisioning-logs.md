@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056153"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319730"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
@@ -39,7 +39,7 @@ Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) s
 
 Toto téma vám poskytne přehled o zřizovacích sestavách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 * Vlastníci aplikace mohou zobrazovat protokoly pro aplikace, které vlastní.
@@ -61,7 +61,7 @@ Protokoly zřizování poskytují odpovědi na následující otázky:
 
 Přístup k protokolům zřizování můžete získat tak, že v části **monitorování** v okně **Azure Active Directory** v [Azure Portal](https://portal.azure.com)vyberete **protokoly zřizování** . Může trvat až dvě hodiny, než se některé záznamy zřizování zobrazí na portálu.
 
-![Zřizování protokolů](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
+![Protokoly zřizování](./media/concept-provisioning-logs/access-provisioning-logs.png "Protokoly zřizování")
 
 
 Protokol zřizování má výchozí zobrazení seznamu, které obsahuje:
@@ -132,7 +132,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Jiné
+- Ostatní
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -173,7 +173,7 @@ Podrobnosti jsou seskupené podle následujících kategorií:
 
 - Upravené vlastnosti
 
-- Souhrn
+- Shrnutí
 
 
 ![Podrobnosti zřizování](./media/concept-provisioning-logs/provisioning-tabs.png "Karty")
@@ -205,7 +205,7 @@ Karta **Poradce při potížích a doporučeních** poskytuje kód chyby a důvo
 **Změněné vlastnosti** zobrazují starou hodnotu a novou hodnotu. V případech, kdy není k dispozici stará hodnota sloupce stará hodnota je prázdná. 
 
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro objekt ve zdrojovém a cílovém systému. 
 
@@ -215,7 +215,7 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 - Atribut Change ID můžete použít jako jedinečný identifikátor. To je například užitečné při interakci s produktovou podporou.
 
-- V tuto chvíli není k dispozici možnost stahovat data zřizování jako soubor CSV, ale data můžete exportovat pomocí [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http).
+- V tuto chvíli není k dispozici možnost stahovat data zřizování jako soubor CSV, ale data můžete exportovat pomocí [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta).
 
 - Pro uživatele, kteří nejsou v oboru, se můžou zobrazit vynechané události. To je očekáváno, zejména v případě, že je rozsah synchronizace nastaven na všechny uživatele a skupiny. Naše služba vyhodnotí všechny objekty v tenantovi, a to i ty, které jsou mimo rozsah. 
 
@@ -245,10 +245,10 @@ Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, kte
 |DuplicateSourceEntries | Operaci nelze dokončit, protože byl nalezen více než jeden uživatel s nakonfigurovanými shodnými atributy. Odeberte duplicitního uživatele nebo znovu nakonfigurujte mapování atributů, jak je popsáno [zde](../app-provisioning/customize-application-attributes.md).|
 |ImportSkipped | Při vyhodnocování každého uživatele se pokusíme importovat uživatele ze zdrojového systému. K této chybě obvykle dochází v případě, že uživatel, který naimportoval, nemá vlastnost Matching definovanou v mapování atributů. Bez hodnoty přítomné v objektu User pro atribut Matching nemůžeme vyhodnotit rozsahy, shodující se ani exportovat změny. Všimněte si, že přítomnost této chyby neindikuje, že se uživatel nachází v oboru, protože pro uživatele zatím nehodnotili rozsah.|
 |EntrySynchronizationSkipped | Služba zřizování úspěšně provedla dotaz na zdrojový systém a identifikovala uživatele. U uživatele se neuskutečnila žádná další akce, která se přeskočila. Přeskočení může být způsobeno tím, že uživatel je mimo rozsah nebo uživatel, který už v cílovém systému existuje, a nevyžaduje žádné další změny.|
-|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Při provádění požadavku GET k načtení uživatele nebo skupiny přijali v odpovědi více uživatelů nebo skupin. Očekávali jsme, že odpověď bude v odpovědi dostávat jenom jeden uživatel nebo skupina. Pokud [například](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)provedeme požadavek GET na načtení skupiny a poskytneme filtr pro vyloučení členů a váš koncový bod SCIM vrátí členy, vygenerujeme tuto chybu.|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| Při provádění požadavku GET k načtení uživatele nebo skupiny přijali v odpovědi více uživatelů nebo skupin. Očekávali jsme, že odpověď bude v odpovědi dostávat jenom jeden uživatel nebo skupina. Pokud [například](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)provedeme požadavek GET na načtení skupiny a poskytneme filtr pro vyloučení členů a váš koncový bod SCIM vrátí členy, vygenerujeme tuto chybu.|
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Ověřit stav zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD](../app-provisioning/application-provisioning-config-problem.md)
-* [Rozhraní Graph API pro zřizování protokolů](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [Rozhraní Graph API pro zřizování protokolů](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

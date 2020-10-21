@@ -5,25 +5,35 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 27c1a896d25a0db00ff5f263d949f6657a658e3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/12/2020
+ms.openlocfilehash: 70077f8f0e7a951b6da8cf65c874b17eb98b416c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567196"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276384"
 ---
-# <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Co jsou úrovně konzistence v Azure Cosmos DB?
+# <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
-Distribuované databáze, které využívají replikaci pro vysokou dostupnost, nízkou latenci nebo obojí, provedou základní kompromisy mezi konzistencí čtení a dostupností, latencí a propustností. Většina komerčně dostupných distribuovaných databází požádá vývojáře o výběr mezi dvěma extrémními modely konzistence: silná *konzistence a* konečná konzistence. *strong* Linearizability modelu silné konzistence je Gold Standard pro programovatelnost dat. Ale přidává cenu vyšší latence zápisu (v ustáleném stavu) a omezenou dostupnost (během selhání). Na druhé straně, konečná konzistence nabízí vyšší dostupnost a lepší výkon, ale zpřístupňuje programové aplikace.
+Distribuované databáze, které spoléhají na replikaci při vysoké dostupnosti, nízké latenci nebo obojí, musí učinit zásadní kompromis mezi úrovní konzistence čtení, dostupností, latencí a propustností podle definice [PACLC věta](https://en.wikipedia.org/wiki/PACELC_theorem). Linearizability modelu silné konzistence je Gold Standard pro programovatelnost dat. Přidává ale strméou cenu z vyšších latencí zápisu, protože data se musí replikovat a potvrzovat napříč velkými vzdálenostmi. Silná konzistence může mít taky vliv na omezenou dostupnost (během selhání), protože data nejde replikovat a potvrzovat v každé oblasti. Konečná konzistence nabízí vyšší dostupnost a lepší výkon, ale jejich aplikace je obtížnější, protože data nemusí být zcela konzistentní napříč všemi oblastmi.
 
-Azure Cosmos DB přistupuje k konzistenci dat jako spektrum možností místo dvou extrémních hodnot. Vývojáři můžou tyto možnosti využít k zajištění přesného výběru a rozlišení kompromisů s ohledem na vysokou dostupnost a výkon.
+Většina komerčně dostupných distribuovaných databází NoSQL dostupných na trhu nabízí jenom silnou a konečnou konzistenci. Azure Cosmos DB nabízí pět jasně definovaných úrovní. Od nejsilnějších po nejslabších úrovních jsou tyto úrovně:
 
-S Azure Cosmos DB můžou vývojáři vybrat z pěti jasně definovaných úrovní konzistence v rámci spektra konzistence. Mezi tyto úrovně patří *silná*, *ohraničená neaktuálnost*, *relace*, *konzistentní předpona*a konečná *konzistence* . Úrovně jsou jasně definované a intuitivní a dají se použít pro konkrétní scénáře reálného světa. Každá úroveň poskytuje [kompromisy k dostupnosti a výkonu](consistency-levels-tradeoffs.md) a jsou zajištěny SLA. Následující obrázek znázorňuje různé úrovně konzistence jako spektrum.
+- *Silná*
+- *Ohraničená neaktuálnost*
+- *Relace*
+- *Konzistentní předpona*
+- *Konečné*
+
+Každá úroveň poskytuje kompromisy k dostupnosti a výkonu. Následující obrázek znázorňuje různé úrovně konzistence jako spektrum.
 
 :::image type="content" source="./media/consistency-levels/five-consistency-levels.png" alt-text="Konzistence jako spektrum" border="false" :::
 
 Úrovně konzistence jsou nezávislá oblasti a jsou zaručené pro všechny operace bez ohledu na oblast, ze které jsou předávány čtení a zápisy, počet oblastí přidružených k vašemu účtu Azure Cosmos nebo zda je váš účet nakonfigurován s jednou nebo více oblastmi zápisu.
+
+## <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
+
+Azure Cosmos DB poskytuje nativní podporu pro rozhraní API kompatibilní se síťovými protokoly pro oblíbené databáze. Patří mezi ně MongoDB, Apache Cassandra, Gremlin a Azure Table Storage. Při použití rozhraní Gremlin API a rozhraní API pro tabulky se používá výchozí úroveň konzistence nakonfigurovaná na účtu Azure Cosmos. Podrobnosti o mapování na úrovni konzistence mezi rozhraní API Cassandra nebo rozhraní API pro MongoDB a Azure Cosmos DB úrovně konzistence najdete v tématu [rozhraní API Cassandra mapování konzistence](cassandra-consistency.md) a [rozhraní API pro mapování konzistence MongoDB](mongodb-consistency.md).
 
 ## <a name="scope-of-the-read-consistency"></a>Rozsah konzistence čtení
 
@@ -35,7 +45,7 @@ Výchozí úroveň konzistence můžete v účtu Azure Cosmos nakonfigurovat kdy
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Záruky spojené s úrovněmi konzistence
 
-Komplexní SLA poskytované Azure Cosmos DB zaručují, že 100 procento požadavků na čtení vyhovuje záruku konzistence pro jakoukoli zvolenou úroveň konzistence. Požadavek na čtení splňuje podmínky SLA konzistence, pokud jsou splněné veškeré záruky konzistence spojené s úrovní konzistence. Přesné definice pěti úrovní konzistence v Azure Cosmos DB používání jazyka TLA + Specification jsou k dispozici v úložišti GitHub [Azure-Cosmos-tla](https://github.com/Azure/azure-cosmos-tla) .
+Azure Cosmos DB zaručuje, že 100 procento žádostí o čtení odpovídá záruku konzistence pro zvolenou úroveň konzistence. Přesné definice pěti úrovní konzistence v Azure Cosmos DB používání jazyka TLA + Specification jsou k dispozici v úložišti GitHub [Azure-Cosmos-tla](https://github.com/Azure/azure-cosmos-tla) .
 
 Sémantika pěti úrovní konzistence je popsána zde:
 
@@ -46,9 +56,11 @@ Sémantika pěti úrovní konzistence je popsána zde:
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Konzistence jako spektrum" dvěma způsoby:
 
 - Počet verzí položky (*KB*)
-- Časový interval (*T*), kterým mohou číst prodlevy za zápisy
+- Čtení s časovým intervalem (*T*) může odvést zpoždění za zápisy.
 
-Ohraničená neaktuálnost nabízí celkové globální pořadí mimo "okno pro zastaralost". Když klient provádí operace čtení v rámci oblasti, která přijímá zápisy, záruky poskytnuté konzistencí neaktuálnosti jsou stejné jako záruky silnými konzistencí.
+Pro účet s jednou oblastí je minimální hodnota *K* a *T* 10 operací zápisu nebo 5 sekund. Pro účty ve více oblastech je minimální hodnota *K* a *T* 100 000 operací zápisu nebo 300 sekund.
+
+Ohraničená neaktuálnost nabízí celkové globální pořadí mimo "okno pro zastaralost". Když klient provádí operace čtení v rámci oblasti, která přijímá zápisy, záruky poskytnuté konzistencí neaktuálnosti jsou stejné jako záruky silnými konzistencí. Vzhledem k tomu, že se v okně zastaralosti blíží čas nebo aktualizace, podle toho, co je blíže, služba omezí nové zápisy, aby replikace mohla zachytit a přijmout záruku konzistence.
 
 V rámci okna zastaralost poskytuje ohraničená neaktuálnost následující záruky konzistence:
 
@@ -74,7 +86,7 @@ Klientům mimo relaci, která provádí zápis, se zobrazí následující záru
 
 - **Konzistentní předpona**: vrácené aktualizace obsahují předponu všech aktualizací bez mezer. Konzistentní předpony úrovně konzistence, které nemají nikdy vidět zápisy mimo pořadí.
 
-Pokud byla zápisy provedena v pořadí `A, B, C` , klient uvidí buď `A` , `A,B` nebo `A,B,C` , ale nikdy mimo pořadí, například `A,C` nebo `B,A,C` . Konzistentní předpona poskytuje latence zápisu, dostupnost a propustnost čtení srovnatelné s tím, že má konečnou konzistenci, ale také poskytuje pořadí záruk, které vyhovuje potřebám scénářů, ve kterých je pořadí důležité. 
+Pokud byla zápisy provedena v pořadí `A, B, C` , klient uvidí buď `A` , `A,B` nebo `A,B,C` , ale nikdy mimo pořadí, například `A,C` nebo `B,A,C` . Konzistentní předpona poskytuje latence zápisu, dostupnost a propustnost čtení srovnatelné s tím, že má konečnou konzistenci, ale také poskytuje pořadí záruk, které vyhovuje potřebám scénářů, ve kterých je pořadí důležité.
 
 Níže jsou uvedené záruky konzistence pro konzistentní předpony:
 
@@ -91,6 +103,73 @@ Následující obrázek znázorňuje konzistenci předpon konzistence se hudebn�
 Konečná konzistence představuje slabší formu konzistence, protože klient může číst hodnoty, které jsou starší než ty, které se předtím četly. Konečná konzistence je ideální, pokud aplikace nevyžaduje žádné záruky na řazení. Mezi příklady patří počet re, podobně jako u jiných než vlákenných komentářů. Následující obrázek znázorňuje konečnou konzistenci se hudebními poznámkami.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Konzistence jako spektrum":::
+
+## <a name="consistency-guarantees-in-practice"></a>Záruky konzistence v praxi
+
+V praxi můžete často získat silnější záruky konzistence. Záruky konzistence pro operaci čtení odpovídají aktuálnosti a objednání stavu databáze, který požadujete. Konzistence čtení je vázána na řazení a šíření operací zápisu a aktualizace.  
+
+Pokud v databázi neexistují žádné operace zápisu, může být operace čtení s úrovněmi konzistence s **případnými**, **relačními**nebo **konzistentními předponami** stejná jako operace čtení se silným stupněm konzistence.
+
+Pokud je váš účet Azure Cosmos nakonfigurovaný s úrovní konzistence jinou než silná konzistence, můžete zjistit pravděpodobnost, že klienti mohou získat silné a konzistentní čtení pro vaše úlohy, a to tak, že se podíváte na metriku služby PBS ( *probabilistically Bounded* ). Tato metrika se zveřejňuje v Azure Portal. Další informace najdete v tématu [monitorování metriky služby PBS (probabilistically Bounded)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+
+Pravděpodobnostní s ohraničenou neaktuálností ukazuje, jak je to vaše konečná konzistence. Tato metrika poskytuje přehled o tom, jak často můžete získat silnější konzistenci než úroveň konzistence, kterou jste v účtu Azure Cosmos aktuálně nakonfigurovali. Jinými slovy můžete zobrazit pravděpodobnost (měřeno v milisekundách) pro získání silně konzistentních čtení pro kombinaci oblastí zápisu a čtení.
+
+## <a name="consistency-levels-and-latency"></a>Úrovně konzistence a latence
+
+Latence čtení pro všechny úrovně konzistence je vždycky zaručená za méně než 10 milisekund na 99. percentilu. Průměrná latence čtení v 50. percentilu má obvykle 4 milisekundy nebo méně.
+
+Latence zápisu pro všechny úrovně konzistence je vždycky zaručená za méně než 10 milisekund na 99. percentilu. Průměrná latence zápisu na 50. percentilu je obvykle 5 milisekund nebo méně. Účty Azure Cosmos, které jsou v několika oblastech a jsou nakonfigurované se silnými konzistencí, představují výjimku z této záruky.
+
+### <a name="write-latency-and-strong-consistency"></a>Latence zápisu a silná konzistence
+
+U účtů Azure Cosmos nakonfigurovaných se silnou konzistencí s více než jednou oblastí se latence zápisu rovná dvojnásobku doby odezvy (RTT) mezi kteroukoli ze dvou nejvzdálenějších oblastí a 10 milisekundami v 99 percentilu. Vysoká doba odezvy sítě mezi oblastmi se přeloží na vyšší latenci pro Cosmos DB požadavky, protože silná konzistence dokončí operaci jenom poté, co zaručí, že se potvrdila ve všech oblastech v rámci účtu.
+
+Přesná latence RTT je funkce rychlosti a topologie sítě Azure. Azure Networking neposkytuje žádnou latenci SLA pro dobu odezvy mezi dvěma oblastmi Azure, ale zveřejňuje [statistiku latence pro službu Azure Network Round-Trip](../networking/azure-network-latency.md). Pro váš účet Azure Cosmos se latence replikace zobrazují v Azure Portal. Pokud chcete monitorovat latence replikace mezi různými oblastmi, které jsou přidružené k vašemu účtu Azure Cosmos, můžete použít Azure Portal (Přejít do okna metrika a vybrat kartu konzistence).
+
+> [!IMPORTANT]
+> Při vysoké latenci zápisu je ve výchozím nastavení zablokovaná silná konzistence pro účty s oblastmi zahrnujícími více než 5000 mil (8000 kilometrů). Pokud chcete tuto funkci povolit, obraťte se prosím na podporu.
+
+## <a name="consistency-levels-and-throughput"></a>Úrovně konzistence a propustnost
+
+- V případě silné a ohraničené neaktuálnosti se čtení provádí se dvěma replikami ve čtyři sadě replik (minoritní kvorum), aby poskytovala záruky konzistence. Relace, konzistentní předpona a konečné čtení pro jednu repliku. Výsledkem je, že pro stejný počet jednotek žádosti je propustnost čtení pro silná a ohraničená neaktuálnost v polovině dalších úrovní konzistence.
+
+- Pro daný typ operace zápisu, například INSERT, Replace, Upsert a DELETE, je propustnost zápisu pro jednotky požadavků stejná pro všechny úrovně konzistence.
+
+|**Úroveň konzistence**|**Čtení kvora**|**Zápisy kvora**|
+|--|--|--|
+|**Silná**|Místní menšina|Globální většina|
+|**Ohraničená neaktuálnost**|Místní menšina|Místní většina|
+|**Relace**|Jedna replika (pomocí tokenu relace)|Místní většina|
+|**Konzistentní předpona**|Jedna replika|Místní většina|
+|**Konečné**|Jedna replika|Místní většina|
+
+> [!NOTE]
+> Náklady na čtení v úrovni RU/s pro místní minoritní čtení jsou dvojnásobné od slabší úrovně konzistence, protože čtení se provádí ze dvou replik, které poskytují záruky konzistence pro silnou a ohraničenou neaktuálnost.
+
+## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Úrovně konzistence a trvanlivost dat
+
+V globálně distribuovaném databázovém prostředí existuje přímý vztah mezi úrovní konzistence a odolností s daty v oblasti výpadku v rámci oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než se aplikace kompletně obnoví po přerušení události. Čas potřebný k úplnému obnovení aplikace je známý jako **cíl doby obnovení** (**RTO**). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat, které může aplikace tolerovat při obnovování po přerušení události. Časové období aktualizací, které můžete chtít ztratit, se označuje jako **cíl bodu obnovení** (**RPO**).
+
+Následující tabulka definuje vztah mezi modelem konzistence a odolností dat při výpadku oblasti v rámci sítě. Je důležité si uvědomit, že v distribuovaném systému, a to i se silnou konzistencí, není možné mít distribuovanou databázi s cílem RPO a RTO nula z důvodu [Cap věta](https://en.wikipedia.org/wiki/CAP_theorem).
+
+|**Oblast (y)**|**Režim replikace**|**Úroveň konzistence**|**RPO**|**RTO**|
+|---------|---------|---------|---------|---------|
+|1|Jedna nebo více oblastí zápisu|Jakákoli úroveň konzistence|< 240 minut|<1 týden|
+|>1|Jedna oblast zápisu|Relace, konzistentní předpona, případný|< 15 minut|< 15 minut|
+|>1|Jedna oblast zápisu|Omezená neaktuálnost|*K*  &  *T*|< 15 minut|
+|>1|Jedna oblast zápisu|Silná|0|< 15 minut|
+|>1|Více oblastí zápisu|Relace, konzistentní předpona, případný|< 15 minut|0|
+|>1|Více oblastí zápisu|Omezená neaktuálnost|*K*  &  *T*|0|
+
+*K* = počet verzí *"K"* (tj. aktualizace) položky.
+
+*T* = časový interval *"t"* od poslední aktualizace.
+
+Pro účet s jednou oblastí je minimální hodnota *K* a *T* 10 operací zápisu nebo 5 sekund. Pro účty ve více oblastech je minimální hodnota *K* a *T* 100 000 operací zápisu nebo 300 sekund. Tato definice definuje minimální RPO pro data při použití ohraničené neaktuálnosti.
+
+## <a name="strong-consistency-and-multiple-write-regions"></a>Silná konzistence a vícenásobné oblasti zápisu
+
+Účty Cosmos nakonfigurované s více oblastmi zápisu nelze nakonfigurovat pro zajištění vysoké konzistence, protože distribuovaný systém nemůže poskytnout RPO s hodnotou 0 a RTO nula. Navíc neexistují žádné výhody latence zápisu na používání silné konzistence s více oblastmi zápisu, protože zápis do jakékoli oblasti musí být replikován a potvrzen do všech nakonfigurovaných oblastí v rámci účtu. Výsledkem je stejná latence zápisu jako jeden účet oblasti pro zápis.
 
 ## <a name="additional-reading"></a>Další materiály ke čtení
 
@@ -110,6 +189,6 @@ Další informace o úrovních konzistence v Azure Cosmos DB najdete v následuj
 
 - [Volba správné úrovně konzistence pro vaši aplikaci](consistency-levels-choosing.md)
 - [Úrovně konzistence napříč Azure Cosmos DBmi rozhraními API](consistency-levels-across-apis.md)
-- [Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
 - [Konfigurace výchozí úrovně konzistence](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [Přepsání výchozí úrovně konzistence](how-to-manage-consistency.md#override-the-default-consistency-level)
+- [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

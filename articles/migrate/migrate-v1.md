@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001633"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317209"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -121,7 +121,7 @@ Windows Server 2012 R2 a všechny SPs | Azure poskytuje plnou podporu. | Připra
 Windows Server 2012 a všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure
 Windows Server 2008 R2 a všechny SPs | Azure poskytuje plnou podporu.| Připraveno pro Azure
 Windows Server 2008 (32 a 64-bit) | Azure poskytuje plnou podporu. | Připraveno pro Azure
-Windows Server 2003, 2003 R2 | Nepodporovaná a pro podporu v Azure potřebujete [vlastní smlouvu o podpoře (CSA)](https://aka.ms/WSosstatement) . | Podmíněně připravené pro Azure zvažte upgrade operačního systému před migrací do Azure.
+Windows Server 2003, 2003 R2 | Nepodporovaná a pro podporu v Azure potřebujete [vlastní smlouvu o podpoře (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) . | Podmíněně připravené pro Azure zvažte upgrade operačního systému před migrací do Azure.
 Windows 2000, 98, 95, NT, 3,1, MS-DOS | Mimo podporu. Počítač se může spustit v Azure, ale Azure neposkytuje žádnou podporu operačního systému. | Podmíněně připravené pro Azure doporučujeme před migrací do Azure upgradovat operační systém.
 Klient Windows 7, 8 a 10 | Azure poskytuje podporu [jenom pro předplatné sady Visual Studio.](../virtual-machines/windows/client-images.md) | Připraveno pro Azure s podmínkou
 Stolní počítač s Windows 10 pro | Azure podporuje [práva hostování s více klienty.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Připraveno pro Azure s podmínkou

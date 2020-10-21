@@ -9,61 +9,73 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71c84b35c001be7fafdc2df53014050ae21dec63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936045"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320201"
 ---
 # <a name="get-azure-arc-enabled-data-services-logs"></a>Získání protokolů datových služeb s podporou ARC Azure
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K načtení protokolů datových služeb s podporou ARC Azure budete potřebovat nástroj Azure Data CLI. [Pokyny k instalaci](./install-client-tools.md)
+Než budete pokračovat, budete potřebovat:
 
-Musíte být schopni se přihlásit ke službě kontroleru datových služeb s podporou ARC Azure jako správce.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Pokyny k instalaci](./install-client-tools.md).
+* Účet správce pro přihlášení k řadiči Azure Data Services s povoleným ARC.
 
 ## <a name="get-azure-arc-enabled-data-services-logs"></a>Získání protokolů datových služeb s podporou ARC Azure
 
-Pro účely řešení potíží můžete získat protokoly datových služeb s podporou ARC Azure ve všech luskech nebo v jednotlivých luskech.  To můžete provést pomocí standardních Kubernetes nástrojů, jako je například `kubectl logs` příkaz nebo v tomto článku, budete používat nástroj Azure Data CLI, který usnadňuje získání všech protokolů najednou.
+Pro účely řešení potíží můžete získat protokoly datových služeb s podporou ARC Azure ve všech luskech nebo v jednotlivých luskech. Můžete to provést pomocí standardních Kubernetes nástrojů, jako je například `kubectl logs` příkaz nebo v tomto článku, který budete používat [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , což usnadňuje získání všech protokolů najednou.
 
-Nejprve se ujistěte, že jste se přihlásili k řadiči dat.
+1. Přihlaste se k řadiči dat pomocí účtu správce.
 
-```console
-azdata login
-```
+   ```console
+   azdata login
+   ```
 
-Pak spuštěním následujícího příkazu vypíšete protokoly:
-```console
-azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+2. Spusťte následující příkaz pro výpis těchto protokolů:
 
-#Example:
-#azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
-```
+   ```console
+   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```
 
-Soubory protokolu se v aktuálním pracovním adresáři vytvoří ve výchozím nastavení v podadresáři s názvem Logs.  Soubory protokolů můžete výstupovat do jiného adresáře pomocí `--target-folder` parametru.
+   Příklad:
 
-Můžete zvolit komprimaci souborů vynecháním `--skip-compress` parametru.
+   ```console
+   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```
 
-Můžete aktivovat a zahrnout výpisy paměti tím, že vynecháte `--exclude-dumps` , ale to se nedoporučuje, pokud podpora Microsoftu nepožadoval výpisy paměti.  Pořizování výpisu paměti vyžaduje, aby se nastavení kontroleru dat `allowDumps` nastavilo na `true` čas vytvoření řadiče dat.
+Řadič dat vytvoří soubory protokolu v aktuálním pracovním adresáři v podadresáři s názvem `logs` . 
 
-Volitelně můžete zvolit, že se má filtrovat protokol pro shromažďování protokolů jenom pro konkrétní pod ( `--pod` ) nebo kontejner ( `--container` ) podle názvu.
+## <a name="options"></a>Možnosti
 
-Můžete také filtrovat a shromažďovat protokoly pro konkrétní vlastní prostředek předáním `--resource-kind` `--resource-name` parametr a.  `resource-kind`Hodnota parametru by měla být jeden z názvů vlastních definic prostředků, které mohou být načteny příkazem `kubectl get customresourcedefinition` .
+`azdata arc dc debug copy-logs` poskytuje následující možnosti pro správu výstupu.
+
+* Výstup souborů protokolu do jiného adresáře pomocí `--target-folder` parametru.
+* Zkomprimujte soubory vynecháním `--skip-compress` parametru.
+* Trigger a zahrnutí výpisů paměti vynecháním `--exclude-dumps` . Tato metoda se nedoporučuje, pokud podpora Microsoftu nepožadoval výpisy paměti. Pořizování výpisu paměti vyžaduje, aby se nastavení kontroleru dat `allowDumps` nastavilo na `true` čas vytvoření řadiče dat.
+* Filtr pro shromažďování protokolů jenom pro konkrétní pod ( `--pod` ) nebo kontejner ( `--container` ) podle názvu.
+* Vyfiltrujte shromažďování protokolů pro konkrétní vlastní prostředek předáním `--resource-kind` parametru a `--resource-name` . `resource-kind`Hodnota parametru by měla být jeden z názvů vlastních definic prostředků, které mohou být načteny příkazem `kubectl get customresourcedefinition` .
+
+Pomocí těchto parametrů můžete nahradit `<parameters>` v následujícím příkladu. 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```
 
-#Example
+Například
+
+```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Příklad hierarchie složek  Všimněte si, že hierarchie složek je uspořádána podle názvu pod názvem a pak podle kontejneru a pak podle hierarchie adresářů v rámci kontejneru.
+Příklad hierarchie složek Hierarchie složek je uspořádána podle názvu pod, potom kontejner a pak podle hierarchie adresářů v rámci kontejneru.
 
-```console
+```output
 <export directory>
 ├───debuglogs-arc-20200827-180403
 │   ├───bootstrapper-vl8j2
@@ -181,3 +193,7 @@ Příklad hierarchie složek  Všimněte si, že hierarchie složek je uspořád
             ├───journal
             └───openvpn
 ```
+
+## <a name="next-steps"></a>Další kroky
+
+[azdata ARC – protokoly ladění řadiče domény](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

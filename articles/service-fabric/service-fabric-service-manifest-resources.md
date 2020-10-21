@@ -4,12 +4,12 @@ description: Popis prostředků koncového bodu v manifestu služby, včetně po
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017586"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313572"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Určení prostředků v manifestu služby
 ## <a name="overview"></a>Přehled
@@ -158,7 +158,7 @@ Tady je příklad souboru ApplicationManifest, který demonstruje konfiguraci po
 
 V případě clusterů se systémem Linux je **Moje** úložiště standardně nastaveno na složku **/var/lib/sfcerts**.
 
-Příklad úplné aplikace, která využívá koncový bod HTTPS, najdete v tématu [Přidání koncového bodu https do front-endové služby ASP.NET Core webového rozhraní API pomocí Kestrel](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest).
+Příklad úplné aplikace, která využívá koncový bod HTTPS, najdete v tématu [Přidání koncového bodu https do front-endové služby ASP.NET Core webového rozhraní API pomocí Kestrel](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest).
 
 ## <a name="port-acling-for-http-endpoints"></a>Funkce acling portu pro koncové body HTTP
 Ve výchozím nastavení budou automaticky zadané koncové body HTTP (S) Service Fabric. **Neprovede automaticky** funkce acling, pokud k koncovému bodu není přidružen [SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) a Service Fabric je nakonfigurován tak, aby běžel pomocí účtu s oprávněními správce.

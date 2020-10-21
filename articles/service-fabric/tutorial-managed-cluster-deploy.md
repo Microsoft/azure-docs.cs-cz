@@ -4,12 +4,12 @@ description: V tomto kurzu nasadíte Service Fabric spravovaný cluster pro test
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410436"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316174"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Kurz: nasazení spravovaného clusteru Service Fabric (Preview)
 
@@ -37,7 +37,7 @@ Než začnete s tímto kurzem:
 
 * Nainstalujte [sadu Service Fabric SDK a modul prostředí PowerShell](service-fabric-get-started.md).
 
-* Nainstalujte [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) (nebo novější).
+* Nainstalujte [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (nebo novější).
 
 ## <a name="connect-to-your-azure-account"></a>Připojení k účtu Azure
 
@@ -73,7 +73,7 @@ Pro tento krok zadejte vlastní hodnoty pro následující parametry:
 
 * **Název clusteru**: Zadejte jedinečný název pro svůj cluster, například *mysfcluster*.
 * **Heslo správce**: zadejte heslo pro správce, které se má použít pro protokol RDP na podkladových virtuálních počítačích v clusteru.
-* **Kryptografický otisk klientského certifikátu**: zadejte kryptografický otisk klientského certifikátu, který chcete použít pro přístup k vašemu clusteru. Pokud certifikát nemáte, postupujte podle pokynů v [nastavení a načtěte certifikát](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) pro vytvoření certifikátu podepsaného svým držitelem.
+* **Kryptografický otisk klientského certifikátu**: zadejte kryptografický otisk klientského certifikátu, který chcete použít pro přístup k vašemu clusteru. Pokud certifikát nemáte, postupujte podle pokynů v [nastavení a načtěte certifikát](../key-vault/certificates/quick-create-portal.md) pro vytvoření certifikátu podepsaného svým držitelem.
 * **SKU clusteru**: určete [typ Service Fabric spravovaný cluster](overview-managed-cluster.md#service-fabric-managed-cluster-skus) pro nasazení. *Základní* Clustery SKU jsou určeny pouze pro testovací nasazení a neumožňují přidání ani odebrání typu uzlu.
 
 ```powershell

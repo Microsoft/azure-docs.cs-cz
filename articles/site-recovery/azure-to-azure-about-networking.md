@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 525ab34bb9edff737686a88d7a8e664500282555
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096330"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320528"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -41,8 +41,8 @@ Sítě jsou obvykle chráněné pomocí bran firewall a skupin zabezpečení sí
 > Použití ověřeného proxy serveru k řízení připojení k síti není v Site Recovery podporováno a replikaci nelze povolit.
 
 >[!NOTE]
-> Pro řízení odchozího připojení by se nemělo provádět filtrování na základě IP adresy.
-> Pro řízení odchozího připojení by se neměly přidávat IP adresy Azure Site Recovery do směrovací tabulky Azure.
+>- Pro řízení odchozího připojení by se nemělo provádět filtrování na základě IP adresy.
+>- Pro řízení odchozího připojení by se neměly přidávat IP adresy Azure Site Recovery do směrovací tabulky Azure.
 
 ## <a name="outbound-connectivity-for-urls"></a>Odchozí připojení pro adresy URL
 

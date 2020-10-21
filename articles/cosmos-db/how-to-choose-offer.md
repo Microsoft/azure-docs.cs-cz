@@ -1,17 +1,17 @@
 ---
-title: Postup výběru správné nabídky propustnosti v nástroji Azure Cosmos DB
-description: Přečtěte si, jak zvolit standardní (ruční) zřízené propustnost a propustnost zřízené při automatickém škálování pro vaše úlohy.
+title: Jak vybrat ruční a automatické škálování na Azure Cosmos DB
+description: Naučte se vybírat standardní (ruční) zřízené propustnost a propustnost zřízené při automatickém škálování pro vaše úlohy.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0365238fd70e2e098e5a228ee71d5b9e0e584c71
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88605201"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279782"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Jak vybrat standardní (ruční) a zajištěné propustnosti v rámci automatického škálování 
 
@@ -26,7 +26,7 @@ Při použití zřízené propustnosti nastavíte propustnost měřenou v jednot
 
 V následující tabulce je uvedeno porovnání na vysoké úrovni mezi standardem (ručním) a AutoScale.
 
-|Description|Standardní (ruční)|Automatické škálování|
+|Popis|Standardní (ruční)|Automatické škálování|
 |-------------|------|-------|
 |Nejlépe vhodné pro|Úlohy se stabilním nebo předvídatelným provozem|Úlohy s proměnným nebo nepředvídatelným provozem. Viz [případy použití automatického škálování](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Jak to funguje|V průběhu času zřizujete nastavenou velikost RU/s `T` , pokud je ručně nezměníte. Každou sekundu můžete použít `T` propustnost až ru/s. <br/><br/>Pokud například nastavíte standardní (ruční) 400 RU/s, propustnost zůstane v 400 RU/s.|Nastavíte nejvyšší nebo maximální RU/s, `Tmax` které nechcete, aby systém překročil. Systém automaticky škáluje propustnost `T` tak, aby `0.1* Tmax <= T <= Tmax` . <br/><br/>Pokud například nastavíte automatické škálování maximum RU/s z 4000 RU/s, systém bude škálovat mezi 400-4000 RU/s.|
@@ -54,17 +54,82 @@ Pokud máte existující aplikaci s využitím standardní (ruční) zřízené 
 
 Nejprve vyhledejte [metriku normalizované spotřeby požadavků](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) ve vaší databázi nebo kontejneru. Normalizované využití představuje míru toho, kolik aktuálně využíváte standardní (ruční) zřízené propustnost. Bližším číslem je 100%, tím více budete plně používat vaše zřízené RU/s. [Přečtěte si další informace](monitor-normalized-request-units.md#view-the-normalized-request-unit-consumption-metric) o této metrikě.
 
-Dále určete, jak se normalizované využití v průběhu času mění. Pokud zjistíte, že vaše normalizované využití je proměnné nebo nepředvídatelné, zvažte povolení automatického škálování ve vaší databázi nebo kontejneru. Na rozdíl od toho, pokud je stabilní a předvídatelný, zvažte zbývající na standardní (ruční) zřízené propustnost. 
+Dále určete, jak se normalizované využití v průběhu času mění. Vyhledá nejvyšší normalizované využití každé hodiny. Pak vypočítá průměrně normalizované využití napříč všemi hodinami. Pokud zjistíte, že vaše průměrné využití je méně než 66%, zvažte povolení automatického škálování v databázi nebo kontejneru. Naopak, pokud je průměrné využití větší než 66%, doporučujeme zůstat na standardní (ruční) zřízené propustnost.
+
+> [!TIP]
+> Pokud je váš účet nakonfigurovaný tak, aby používal zápisy ve více oblastech a má více než jednu oblast, sazba za 100 RU/s je stejná pro ruční i automatické škálování. To znamená, že povolení automatického škálování nevzniká žádné další náklady bez ohledu na využití. V důsledku toho se vždy doporučuje používat automatické škálování s zápisy ve více oblastech, pokud máte více než jednu oblast, abyste využili úspory jenom za RU/s. vaše aplikace se škáluje na. Pokud máte zápisy ve více oblastech a jednu oblast, pomocí průměrného využití určete, jestli má automatické škálování za následek úsporu nákladů. 
+
+#### <a name="examples"></a>Příklady
+
+Pojďme se podívat na dvě různé ukázkové úlohy a analyzovat, jestli jsou vhodné pro ruční nebo automatické škálování. Abychom vám pomohli obecný přístup, analyzujeme tři hodiny historie, abyste zjistili rozdíl mezi náklady mezi ruční a automatické škálování. U produkčních úloh se doporučuje použít 7 až 30 dnů historie (nebo delší, pokud je k dispozici) k vytvoření vzoru pro použití RU/s.
+
+> [!NOTE]
+> Všechny příklady zobrazené v tomto dokumentu jsou založené na ceně za účet Azure Cosmos nasazený v oblasti mimo státní správu v USA. Ceny a kalkulace se liší v závislosti na oblasti, kterou používáte, na nejnovější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) Azure Cosmos DB.
+
+Předpoklady:
+- Předpokládejme, že aktuálně máme ruční propustnost 30 000 RU/s. 
+- V naší oblasti je nakonfigurované zápisy s jednou oblastí s jednou oblastí. Pokud máme více oblastí, vynásobí hodinové náklady podle počtu oblastí.
+- Využijte veřejné cenové sazby pro ruční ($0,008 USD za 100 RU/s za hodinu) a propustnost automatického škálování ($0,012 USD za 100 RU/s za hodinu) v rámci účtů pro zápis v jedné oblasti. Podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) . 
+
+#### <a name="example-1-variable-workload-autoscale-recommended"></a>Příklad 1: variabilní zatížení (doporučeno automatického škálování)
+
+Nejdřív se podíváme na normalizovanou spotřebu RU. Tato úloha má proměnlivý provoz s normalizovanou spotřebou RU v rozmezí od 6 do 100%. Existují občasné špičky až 100%, které je obtížné odhadnout, ale spousta hodin s nízkým využitím. 
+
+:::image type="content" source="media/how-to-choose-offer/variable-workload_use_autoscale.png" alt-text="Zatížení s proměnnými přenosy – normalizovaná spotřeba RU mezi 6% a 100% po dobu všech hodin":::
+
+Porovnáme ruční propustnost zřizování 30 000 RU/s a nastavujte automatické škálování max. RU/s na 30 000 (škáluje se v rozsahu 3000 – 30 000 RU/s). 
+
+Teď analyzujeme historii. Předpokládejme, že máme využití popsané v následující tabulce. Průměrné využití v těchto třech hodinách je 39%. Vzhledem k tomu, že normalizované průměry s využitím RU na méně než 66%, ušetříme pomocí automatického škálování. 
+
+Všimněte si, že ve hodinu 1 platí, že pokud je využití 6%, bude automatické škálování platit RU/s po dobu 10% maximálního RU/s, což je minimum za hodinu. I když náklady na automatické škálování můžou být v určitou dobu vyšší než ruční propustnost, pokud je průměrné využití méně než 66% všech hodin, automatické škálování bude finančně levnější.
+
+|  | Využití |Poplatky za automatické škálování (RU/s)  |Možnost 1: ruční 30 000 RU/s  | Možnost 2: automatické škálování mezi 3000 – 30 000 RU/s |
+|---------|---------|---------|---------|---------|
+|Hodina 1  | 6 %  |     3000  |  30 000 * 0,008/100 = $2,40        |   3000 * 0,012/100 = $0,36      |
+|Hodina 2  | 100 %  |     30 000    |  30 000 * 0,008/100 = $2,40       |  30 000 * 0,012/100 = $3,60      |
+|Hodina 3 |  odst  |     3300    |  30 000 * 0,008/100 = $2,40       |    3300 * 0,012/100 = $0,40     |
+|**Celkem**   |  |        |  $7,20       |    $4,36 (úspory v 39%)    |
+
+#### <a name="example-2-steady-workload-manual-throughput-recommended"></a>Příklad 2: konstantní zatížení (doporučeno ruční propustnost)
+
+Tato úloha má stálý provoz s normalizovanou spotřebou RU v rozsahu od 72% do 100%. 30 000 RU/s zřízené to znamená, že v rozmezí od 21 600 do 30 000 RU/s.
+
+:::image type="content" source="media/how-to-choose-offer/steady_workload_use_manual_throughput.png" alt-text="Zatížení s proměnnými přenosy – normalizovaná spotřeba RU mezi 6% a 100% po dobu všech hodin":::
+
+Porovnáme ruční propustnost zřizování 30 000 RU/s a nastavujte automatické škálování max. RU/s na 30 000 (škáluje se v rozsahu 3000 – 30 000 RU/s).
+
+Předpokládejme, že máme historii využití, jak je popsáno v tabulce. Naše průměrné využití během těchto tří hodin je 88%. Vzhledem k tomu, že normalizované průměry z hlediska využití RU na více než 66%, ušetříme pomocí ruční propustnosti.
+
+Obecně platí, že pokud je průměrné využití napříč všemi 730 hodinami v jednom měsíci větší než 66%, uložíme je pomocí ruční propustnosti. 
+
+|  | Využití |Poplatky za automatické škálování (RU/s)  |Možnost 1: ruční 30 000 RU/s  | Možnost 2: automatické škálování mezi 3000 – 30 000 RU/s |
+|---------|---------|---------|---------|---------|
+|Hodina 1  | 72%  |     21 600   |  30 000 * 0,008/100 = $2,40        |   21600 * 0,012/100 = $2,59      |
+|Hodina 2  | 93 %  |     28 000    |  30 000 * 0,008/100 = $2,40       |  28 000 * 0,012/100 = $3,36       |
+|Hodina 3 |  100 %  |     30 000    |  30 000 * 0,008/100 = $2,40       |    30 000 * 0,012/100 = $3,60     |
+|**Celkem**   |  |        |  $7,20       |    $9,55     |
 
 > [!TIP]
 > Při standardní (ruční) propustnosti můžete použít normalizovanou metriku využití k odhadu skutečného RU/s, který můžete použít, když přepnete na automatické škálování. Vynásobte normalizované využití k určitému bodu v čase aktuálně zajištěným standardem (ruční) RU/s. Pokud jste například zřídili 5000 RU/s a normalizované využití je 90%, použití RU/s je 0,9 * 5000 = 4500 RU/s. Pokud vidíte, že váš vzor přenosů je proměnlivý, ale jste nad nebo v něm zřízeni, možná budete chtít povolit automatické škálování a odpovídajícím způsobem změnit nastavení automatického škálování max. RU/s.
+
+#### <a name="how-to-calculate-average-utilization"></a>Jak vypočítat průměrné využití
+Automatické škálování faktur pro nejvyšší úroveň RU/s za hodinu Při analýze normalizované spotřeby RU v čase je při výpočtu průměru důležité použít nejvyšší využití za hodinu. 
+
+Výpočet průměru nejvyššího využití ve všech hodinách:
+1. Nastavte **agregaci** pro metriku spotřeby Noramlized ru na **Max**.
+1. Vyberte **časový interval členitosti** na 1 hodinu.
+1. Přejděte na **Možnosti grafu**.
+1. Vyberte možnost pruhového grafu. 
+1. V části **sdílet**vyberte možnost **stáhnout do aplikace Excel** . Z vygenerované tabulky Vypočítejte průměrné využití napříč všemi hodinami. 
+
+:::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Zatížení s proměnnými přenosy – normalizovaná spotřeba RU mezi 6% a 100% po dobu všech hodin":::
 
 ## <a name="measure-and-monitor-your-usage"></a>Měření a monitorování využití
 Po výběru typu propustnosti v průběhu času byste měli monitorovat svoji aplikaci a podle potřeby provádět úpravy. 
 
 Pokud používáte automatické škálování, použijte Azure Monitor k zobrazení maximálního množství RU/s poskytovaného pro automatické škálování (**maximální propustnost automatického škálování**) a ru/s, na který je systém aktuálně škálovatelný (**zřízená propustnost**). Níže je uveden příklad proměnné nebo nepředvídatelné úlohy pomocí automatického škálování. Všimněte si, že pokud nedochází k žádným přenosům, systém škáluje RU/s na minimum z 10% maximálního RU/s, což je v tomto případě 5000 RU/s a 50 000 RU/s. 
 
-:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Příklad úlohy pomocí automatického škálování":::
+:::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Zatížení s proměnnými přenosy – normalizovaná spotřeba RU mezi 6% a 100% po dobu všech hodin":::
 
 > [!NOTE]
 > Když použijete standardní (ruční) zřízené propustnost, metrika **zřízené propustnosti** odkazuje na to, co jste nastavili jako uživatel. Když použijete propustnost automatického škálování, tato metrika odkazuje na RU/s. systém je aktuálně škálovat na.

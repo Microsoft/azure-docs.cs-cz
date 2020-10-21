@@ -3,12 +3,12 @@ title: Vyhodnoťte velký počet virtuálních počítačů VMware pro migraci d
 description: Popisuje, jak vyhodnotit velký počet virtuálních počítačů VMware pro migraci do Azure pomocí služby Azure Migrate. e
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171908"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314116"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Vyhodnocení velkého počtu virtuálních počítačů VMware pro migraci do Azure
 
@@ -26,7 +26,7 @@ V tomto článku získáte informace o těchto tématech:
 
 
 > [!NOTE]
-> Pokud si chcete vyzkoušet zkušební verzi, abyste si vyhodnotili několik virtuálních počítačů před vyhodnocením škálování, postupujte podle našich [kurzů](tutorial-prepare-vmware.md) .
+> Pokud si chcete vyzkoušet zkušební verzi, abyste si vyhodnotili několik virtuálních počítačů před vyhodnocením škálování, postupujte podle našich [kurzů](./tutorial-discover-vmware.md) .
 
 ## <a name="plan-for-assessment"></a>Plánování posouzení
 
@@ -78,7 +78,7 @@ Připravte Azure a VMware pro vyhodnocování serveru.
 2. Nastavte oprávnění pro účet Azure pro interakci s Azure Migrate.
 3. Připravte VMware na posouzení.
 
-Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](tutorial-prepare-vmware.md) .
+Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](./tutorial-discover-vmware.md) .
 
 
 ## <a name="create-a-project"></a>Vytvoření projektu
@@ -96,7 +96,7 @@ V souladu s požadavky na plánování udělejte toto:
 1. Projděte si posouzení v části Příprava na plánování migrace.
 
 
-Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](tutorial-assess-vmware.md) .
+Pokud chcete nakonfigurovat tato nastavení, postupujte podle pokynů v [tomto kurzu](./tutorial-assess-vmware-azure-vm.md) .
     
 
 ## <a name="next-steps"></a>Další kroky

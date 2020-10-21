@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 2c949447635ccdf4cf36acec43a09c1104b9fdd4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91943862"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280020"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -53,7 +53,7 @@ Ujistěte se, že váš tým provozu zabezpečení přijímá oznámení o incid
 Na portálu pro registraci Azure můžete zajistit, aby kontaktní údaje správce zahrnovaly podrobnosti, které upozorňují na operace zabezpečení. Kontaktní informace jsou e-mailová adresa a telefonní číslo.
 
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Uspořádání předplatných Azure do skupin pro správu
-Pokud má vaše organizace mnoho předplatných, můžete potřebovat způsob, jak efektivně u těchto předplatných spravovat přístup, zásady a dodržování předpisů. [Skupiny pro správu Azure](/azure/governance/management-groups/create) poskytují úroveň rozsahu, který je nad rámec předplatných. Své odběry uspořádáte do kontejnerů označovaných jako skupiny pro správu a podmínky zásad správného řízení se vztahují na skupiny pro správu. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky, které se na příslušnou skupinu pro správu vztahují.
+Pokud má vaše organizace mnoho předplatných, můžete potřebovat způsob, jak efektivně u těchto předplatných spravovat přístup, zásady a dodržování předpisů. [Skupiny pro správu Azure](/azure/governance/management-groups/create) poskytují úroveň rozsahu, který je nad rámec předplatných. Předplatná uspořádáte do kontejnerů označovaných jako skupiny pro správu a na tyto skupiny pro správu použijete své podmínky zásad správného řízení. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky, které se na příslušnou skupinu pro správu vztahují.
 
 Můžete vytvořit flexibilní strukturu skupin pro správu a odběrů do adresáře. Každému adresáři je přiřazena jedna skupina pro správu nejvyšší úrovně s názvem kořenová skupina pro správu. Tato kořenová skupina pro správu je integrovaná do hierarchie tak, aby pod ní spadaly všechny skupiny pro správu a všechna předplatná. Kořenová skupina pro správu umožňuje použití globálních zásad a přiřazení rolí Azure na úrovni adresáře.
 
@@ -122,7 +122,7 @@ Bezpečné skóre, které je založeno na ovládacích prvcích Center for Inter
 **Podrobnosti**: [k shromažďování a exportu dat použijte Azure monitor](/azure/azure-monitor/overview#integrate-and-export-data). Tento postup je nezbytný pro povolení vyšetřování incidentů zabezpečení a uchování online protokolů je omezené. Pokud používáte Azure Sentinel, přečtěte si téma [připojení zdrojů dat](../../sentinel/connect-data-sources.md).
 
 **Osvědčený postup**: urychlení vyšetřovacích a loveckých procesů a omezení falešně pozitivních schopností integrací možností zjišťování koncových bodů a odpovědí (EDR) do šetření o útokech.   
-**Podrobnosti**: [Povolení integrace ATP v programu Microsoft Defender](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) prostřednictvím zásad zabezpečení Security Center. Zvažte použití Azure Sentinel pro lov hrozeb a reakci na incidenty.
+**Podrobnosti**: [Povolení integrace programu Microsoft Defender pro koncové body](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) prostřednictvím zásad zabezpečení Security Center. Zvažte použití Azure Sentinel pro lov hrozeb a reakci na incidenty.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Monitorování sítě v komplexním scénáři
 Zákazníci vytvářejí komplexní síť v Azure kombinací síťových prostředků, jako jsou virtuální síť, ExpressRoute, Application Gateway a nástroje pro vyrovnávání zatížení. Monitorování je k dispozici na všech síťových prostředcích.

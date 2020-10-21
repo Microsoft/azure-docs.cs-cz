@@ -1,19 +1,19 @@
 ---
 title: Vytvoření privátního koncového bodu pro zabezpečené připojení
 titleSuffix: Azure Cognitive Search
-description: Nastavení privátního koncového bodu ve virtuální síti pro zabezpečené připojení ke službě Azure Kognitivní hledání
+description: Nastavte privátní koncový bod ve virtuální síti pro zabezpečené připojení ke službě Azure Kognitivní hledání.
 manager: nitinme
 author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935751"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280408"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Vytvoření privátního koncového bodu pro zabezpečené připojení k Azure Kognitivní hledání
 
@@ -46,7 +46,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK** . |
-    | Name | Zadejte *MyVirtualNetwork* |
+    | Název | Zadejte *MyVirtualNetwork* |
     | Oblast | Vyberte požadovanou oblast. |
     |||
 
@@ -152,10 +152,16 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Vyberte příchozí porty | Vyberte **http** a **RDP**.|
     ||
 
+   > [!NOTE]
+   > Adresy IPv4 lze vyjádřit ve formátu [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Nezapomeňte se vyhnout rozsahu IP adres rezervovanému pro privátní sítě, jak je popsáno v [dokumentu RFC 1918](https://tools.ietf.org/html/rfc1918):
+   >
+   > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
+   > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
+   > - `192.168.0.0 - 192.168.255.255 (192.168/16 prefix)`
+
 1. Vyberte **Zkontrolovat a vytvořit**. Budete přesměrováni na stránku **Zkontrolovat a vytvořit**, kde Azure ověří konfiguraci.
 
 1. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**. 
-
 
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 
@@ -181,7 +187,6 @@ Stáhněte si a pak se připojte k virtuálnímu počítači *myVm* následujíc
 1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění na certifikát, vyberte **Ano** nebo **Pokračovat**.
 
 1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
-
 
 ## <a name="test-connections"></a>Test připojení
 
