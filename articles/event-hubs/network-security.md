@@ -2,13 +2,13 @@
 title: Zabezpečení sítě pro Azure Event Hubs
 description: Tento článek popisuje, jak nakonfigurovat přístup z privátních koncových bodů.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 02a3a3436c354f7a9c817298d0ce887e33d8016a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/20/2020
+ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318485"
+ms.locfileid: "92331307"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Zabezpečení sítě pro Azure Event Hubs 
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Hubs: 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak používat následující funkce zabezpečení pro 
 ## <a name="service-tags"></a>Značky služeb
 Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu [Přehled značek služeb](../virtual-network/service-tags-overview.md).
 
-Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules)   nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **EventHub**) v příslušném *zdrojovém*   nebo *cílovém*   poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
+Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules) nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **EventHub**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
 | Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -72,8 +72,8 @@ Další informace najdete v tématu [Konfigurace koncových bodů služby virtu�
 
 Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
-> [!NOTE]
-> Tato funkce je podporována pouze u **vyhrazené** úrovně. Další informace o vyhrazené úrovni najdete v tématu [přehled Event Hubs úrovně Dedicated](event-hubs-dedicated-overview.md). 
+> [!IMPORTANT]
+> Tato funkce je podporovaná pro **standardní** i **vyhrazené** úrovně. Na úrovni **Basic** se nepodporuje.
 
 Další informace najdete v tématu [Konfigurace privátních koncových bodů pro centrum událostí](private-link-service.md) .
 

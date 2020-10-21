@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121635"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314647"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Řešení problémů s projekty Azure Migrate
 
@@ -52,7 +52,7 @@ Pokud se pokusíte vytvořit projekt a dojde k chybě při nasazení:
 - Pokud se zobrazí chybová zpráva "požadavky musí obsahovat hlavičky identity uživatele", může to znamenat, že nemáte přístup k tenantovi Azure Active Directory (Azure AD) organizace. V tomto případě:
     - Při prvním přidání do tenanta Azure AD obdržíte e-mailovou pozvánku pro připojení ke klientovi.
     - Přijměte pozvánku, která se má přidat do tenanta.
-    - Pokud se e-mail nezobrazuje, obraťte se na uživatele s přístupem k tenantovi a požádejte ho, aby [pozvánku poslal znovu](../active-directory/b2b/add-users-administrator.md#resend-invitations-to-guest-users) .
+    - Pokud se e-mail nezobrazuje, obraťte se na uživatele s přístupem k tenantovi a požádejte ho, aby [pozvánku poslal znovu](../active-directory/external-identities/add-users-administrator.md#resend-invitations-to-guest-users) .
     - Po přijetí e-mailu s pozvánkou otevřete ho a vyberte odkaz pro přijetí pozvánky. Pak se odhlaste ze Azure Portal a znovu se přihlaste. (obnovení prohlížeče nebude fungovat.) Pak můžete začít vytvářet projekt migrace.
 
 ## <a name="how-do-i-delete-a-project"></a>Návody odstranit projekt

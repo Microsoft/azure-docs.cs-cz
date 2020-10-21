@@ -3,12 +3,12 @@ title: Event Hubs Azure – procesní události Apache Kafka
 description: 'Kurz: v tomto článku se dozvíte, jak zpracovávat události Kafka, které se ingestují prostřednictvím centra událostí pomocí Azure Stream Analytics'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531283"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319382"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Kurz: proces Apache Kafka pro události Event Hubs pomocí Stream Analytics 
 Tento článek ukazuje, jak streamovat data do Event Hubs a zpracovávat je pomocí Azure Stream Analytics. Provede vás následujícími kroky: 
@@ -25,7 +25,7 @@ Pokud používáte koncový bod Kafka vystavený centrem událostí, nemusíte m
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
+* [Java Development Kit (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 * [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv Maven.
 * [Git](https://www.git-scm.com/)
 * **Účet Azure Storage**. Pokud ho ještě nemáte, [vytvořte ho](../storage/common/storage-account-create.md) ještě předtím, než budete pokračovat. Úloha Stream Analytics v tomto návodu ukládá výstupní data do úložiště objektů BLOB v Azure. 
@@ -171,4 +171,4 @@ Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího dato
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak se streamovat do Event Hubs bez změny klientů protokolu nebo spouštění vlastních clusterů. Další informace o Event Hubs pro Apache Kafka najdete v tématu [Apache Kafka příručka pro vývojáře pro Azure Event Hubs](apache-kafka-developer-guide.md). 
+V tomto článku jste zjistili, jak se streamovat do Event Hubs bez změny klientů protokolu nebo spouštění vlastních clusterů. Další informace o Event Hubs pro Apache Kafka najdete v tématu [Apache Kafka příručka pro vývojáře pro Azure Event Hubs](apache-kafka-developer-guide.md).

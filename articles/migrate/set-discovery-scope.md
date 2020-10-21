@@ -3,12 +3,12 @@ title: Nastavte obor pro zjišťování virtuálních počítačů VMware pomoc�
 description: V této části najdete popis postupu nastavení rozsahu zjišťování pro vyhodnocení virtuálních počítačů VMware a migraci pomocí Azure Migrate.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919722"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314032"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Nastavení rozsahu zjišťování pro virtuální počítače VMware
 
@@ -21,7 +21,7 @@ Když zařízení nastavíte, připojí se k vCenter Server a spustí zjišťov�
 
 ## <a name="before-you-start"></a>Než začnete
 
-Pokud jste nenastavili uživatelský účet vCenter, který Azure Migrate používá ke zjišťování, udělejte to teď pro účely [posouzení](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) nebo [migrace bez agenta](tutorial-prepare-vmware.md#assign-permissions-to-an-account).
+Pokud jste nenastavili uživatelský účet vCenter, který Azure Migrate používá ke zjišťování, udělejte to teď pro účely [posouzení](./tutorial-discover-vmware.md#prepare-vmware) nebo [migrace bez agenta](./migrate-support-matrix-vmware-migration.md#agentless-migration).
 
 
 ## <a name="assign-permissions-and-roles"></a>Přiřazení oprávnění a rolí

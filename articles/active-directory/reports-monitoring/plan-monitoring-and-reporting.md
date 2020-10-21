@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331195"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311226"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Plánování nasazení Azure Active Directory vytváření sestav a monitorování
 
@@ -73,7 +73,7 @@ V tomto projektu definujete cílové skupiny, které budou využívat a monitoro
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
 
-Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Abyste se vyhnuli těmto nástrah, [Ujistěte se, že jste připraví správné zúčastněné strany](https://aka.ms/deploymentplans). Také zajistěte, aby se role účastníků v projektu dobře pochopily tím, že dokumentují zúčastněné strany a jejich vstup a accountabilities projektu.
+Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných očekávání na dopad, výsledky a zodpovědnosti. Abyste se vyhnuli těmto nástrah, [Ujistěte se, že jste připraví správné zúčastněné strany](../fundamentals/active-directory-deployment-plans.md). Také zajistěte, aby se role účastníků v projektu dobře pochopily tím, že dokumentují zúčastněné strany a jejich vstup a accountabilities projektu.
 
 ### <a name="plan-communications"></a>Plán komunikace
 
@@ -99,7 +99,7 @@ Vytváření sestav a monitorování se používá ke splnění vašich obchodn�
 * Skvělé vyhovět potřebám podniku
 * Nelze použít
 
-|Oblast |Description |
+|Plošný |Popis |
 |-|-|
 |Uchovávání| **Protokolujte uchovávání více než 30 dní**. Vzhledem k právním nebo podnikovým požadavkům se vyžaduje ukládání protokolů auditu a přihlášení do protokolů služby Azure AD déle než 30 dní. |
 |Analýzy| **Protokoly musí být prohledávatelné**. Uložené protokoly musí být prohledávatelné pomocí analytických nástrojů. |
@@ -133,7 +133,7 @@ Naučte se [instalovat a používat zobrazení Log Analytics pro protokoly aktiv
 
 Směrování protokolů do centra událostí Azure umožňuje integraci s nástroji SIEM třetích stran. Tato integrace umožňuje kombinovat data protokolu aktivit Azure AD s jinými daty spravovanými vaším SIEM a poskytnout tak lepší přehled o vašem prostředí. 
 
-Informace o [streamování protokolů do centra událostí](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub).
+Informace o [streamování protokolů do centra událostí](./tutorial-azure-monitor-stream-logs-to-event-hub.md).
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>Plánování operací a zabezpečení pro Azure AD Reporting a monitoring
 

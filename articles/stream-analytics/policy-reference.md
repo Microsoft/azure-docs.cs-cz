@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Stream Analytics
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Stream Analytics. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: d33621aebc3a3bff61199b27e7196c2cea4aee75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a9836771b8e2a52cf23e069c28e40b788d24c45
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827120"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331868"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stream-analytics"></a>Azure Policy předdefinované definice pro Azure Stream Analytics
 

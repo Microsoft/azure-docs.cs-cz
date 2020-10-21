@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3394156b073df54d6582dc43571137b21df29cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfc9745fc4684a7b0d8f7da7e63149a6fe50f6d2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968935"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331834"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>Upgradujte ze přečtené verze v2. x, abyste si přečetli v3. x
 
@@ -27,11 +27,12 @@ Následující tabulku použijte k určení **řetězce verze** v cestě rozhran
 
 |Typ produktu| Verze | Řetězec verze v cestě k rozhraní API 3. x |
 |:-----|:----|:----|
-|Služba | Přečíst 3,0 | **v3.0** |
-|Kontejner | Přečíst 3,0 Preview | **v3.0** |
-|Služba/kontejner | Přečíst 3,1 Preview | **v 3.1 – Preview. 2** |
+|Služba | Číst 3,0 nebo 3,1 | **v uvedeném pořadí v 3.0** nebo **v 3.1** |
+|Služba | Přečíst 3,2 Preview | **v 3.2 – Preview. 1** |
+|Kontejner | Přečíst 3,0 Preview nebo číst 3,1 Preview | **v 3.0** nebo **v 3.1 – Preview. 2** v uvedeném pořadí |
 
-Dále pomocí následujících částí upřesněte operace a nahraďte **řetězec verze** v cestě rozhraní API hodnotou z tabulky. Například pro Cloud a verze kontejnerů **pro čtení v 3.1** si aktualizujte cestu rozhraní API na **https://{Endpoint}/Vision/v 3.1-Preview. 2/čtení/analýza [? Language]**.
+
+Dále pomocí následujících částí upřesněte operace a nahraďte **řetězec verze** v cestě rozhraní API hodnotou z tabulky. Například pokud chcete, aby se v cloudu a ve verzi kontejnerů **pro čtení** ve verzi Preview verze Preview aktualizovala cesta rozhraní API na **https://{Endpoint}/Vision/v 3.2-Preview. 1/číst/analyzovat [? Language]**.
 
 ## <a name="servicecontainer"></a>Služba/kontejner
 

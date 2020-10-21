@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 91589a88712b093acfbb88df146074ad91ba0ea2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168371"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277989"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa
 
@@ -327,7 +327,7 @@ Tato uložená procedura vezme ID příspěvku a tělo nového komentáře jako 
 - nahradí příspěvek.
 - Přidá nový komentář.
 
-Vzhledem k tomu, že uložené procedury jsou spouštěny jako atomické transakce, je zaručeno, že hodnota `commentCount` a skutečný počet komentářů zůstane trvale synchronizovaný.
+Protože uložené procedury jsou spouštěny jako atomické transakce, hodnota `commentCount` a skutečný počet komentářů bude vždy zůstat synchronizován.
 
 Zjevně můžeme zavolat podobnou uloženou proceduru, když přidáváme nové, podobně jako k zvýšení `likeCount` .
 
@@ -586,6 +586,6 @@ Kanál změn, který používáme k distribuci aktualizací do jiných kontejner
 
 Po tomto úvodu do modelování praktických a segmentace dat můžete v následujících článcích zkontrolovat koncepty, které jsme pokryli:
 
-- [Práce s databázemi, kontejnery a položkami](databases-containers-items.md)
+- [Práce s databázemi, kontejnery a položkami](account-databases-containers-items.md)
 - [Dělení ve službě Azure Cosmos DB](partitioning-overview.md)
 - [Změnit informační kanál v Azure Cosmos DB](change-feed.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73663178"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327633"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testů pro replikaci Hyper-V do sekundární lokality
 
@@ -47,7 +47,7 @@ V tomto příkladu jsme provedli test Pass:
 * Replika technologie Hyper-V používá k minimalizaci režie za IOPS na základě samy zachované paměti mezipaměť. Ukládá zápisy do VHDX v paměti a vyprázdní je do souboru protokolu před tím, než se protokol pošle do lokality pro obnovení. K vyprázdnění disku dojde také v případě, že zápisy narazí na předem stanovený limit.
 * Následující graf zobrazuje režijní náklady na stabilní stav IOPS pro replikaci. Zjistili jsme, že režie IOPS v důsledku replikace je okolo 5%, což je poměrně nízké.
 
-  ![Primární výsledky](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![Graf, který zobrazuje režijní náklady na stabilní stav IOPS pro replikaci.](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 Replika technologie Hyper-V používá paměť na primárním serveru k optimalizaci výkonu disku. Jak je znázorněno v následujícím grafu, režie paměti na všech serverech v primárním clusteru je mezní. Zobrazená režie paměti je procento paměti využívané replikací v porovnání s celkovou nainstalovanou pamětí na serveru Hyper-V.
 
@@ -55,20 +55,20 @@ Replika technologie Hyper-V používá paměť na primárním serveru k optimali
 
 Replika technologie Hyper-V má minimální nároky na výkon procesoru. Jak je znázorněno v grafu, režie replikace je v rozsahu 2-3%.
 
-![Primární výsledky](./media/hyper-v-vmm-performance-results/IC744915.png)
+![Graf, který zobrazuje režii replikace, je v rozsahu 2-3%.](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>Výkon sekundárního serveru
 
 Replika technologie Hyper-V používá k optimalizaci počtu operací úložiště malou velikost paměti na serveru pro obnovení. Graf shrnuje využití paměti na serveru pro obnovení. Zobrazená režie paměti je procento paměti využívané replikací v porovnání s celkovou nainstalovanou pamětí na serveru Hyper-V.
 
-![Vedlejší výsledky](./media/hyper-v-vmm-performance-results/IC744916.png)
+![Graf, který shrnuje využití paměti na serveru pro obnovení.](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 Množství vstupně-výstupních operací na webu obnovení je funkce počtu operací zápisu v primární lokalitě. Pojďme se podívat na celkový počet vstupně-výstupních operací v lokalitě pro obnovení v porovnání s celkovými vstupně-výstupními operacemi a operacemi zápisu v primární lokalitě. Grafy ukazují, že celkový počet IOPS v lokalitě pro obnovení je
 
 * Přibližně 1,5 krát zápis IOPS na primárním počítači.
 * Přibližně 37% z celkového IOPS v primární lokalitě.
 
-![Vedlejší výsledky](./media/hyper-v-vmm-performance-results/IC744917.png)
+![Graf, který zobrazuje porovnání IOPS v primárních a sekundárních lokalitách.](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![Vedlejší výsledky](./media/hyper-v-vmm-performance-results/IC744918.png)
 

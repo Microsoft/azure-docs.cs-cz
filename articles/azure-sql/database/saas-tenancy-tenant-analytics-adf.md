@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 1e395e4e73f6c140d81189f1abbccca8c064f757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee440c77ec94a7c3e61c37e589aa5ef23031ca7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616648"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332412"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Prozkoumejte SaaS Analytics pomocí Azure SQL Database, Azure synapse Analytics, Data Factory a Power BI
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ V dalším kroku se extrahovaná data transformují a načtou do sady tabulek se
 
 Společně centrální tabulky a tabulky dimenzí umožňují efektivní analytické zpracování. Schéma hvězdičky používané v tomto kurzu se zobrazuje na následujícím obrázku:
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics-adf/starschematables.JPG)
+![Diagram, který zobrazuje schéma hvězdičky používané v tomto kurzu.](./media/saas-tenancy-tenant-analytics-adf/starschematables.JPG)
 
 Nakonec se dotazují tabulky schématu hvězdičky. Výsledky dotazu jsou vizuálně zobrazovány pomocí Power BI, které zvýrazní přehled o chování tenanta a jejich použití. Pomocí tohoto schématu hvězdičky spustíte dotazy, které zveřejňují:
 
@@ -66,7 +66,7 @@ V tomto kurzu najdete základní příklady přehledů, které se dají mohli z 
 
 ## <a name="setup"></a>Nastavení
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
@@ -214,7 +214,7 @@ Pomocí následujících kroků se připojte k Power BI a importujte zobrazení,
 
 6. V podokně **navigátor** v části analytická databáze vyberte tabulky schématu hvězdiček: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** a **dim_Dates**. Pak vyberte **načíst**.
 
-Gratulujeme! Data byla úspěšně načtena do Power BI. Teď Prozkoumejte zajímavé vizualizace, abyste získali přehled o vašich klientech. Podívejme se, jak Analytics může poskytnout některá doporučení řízená daty do obchodního týmu Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
+Blahopřejeme! Data byla úspěšně načtena do Power BI. Teď Prozkoumejte zajímavé vizualizace, abyste získali přehled o vašich klientech. Podívejme se, jak Analytics může poskytnout některá doporučení řízená daty do obchodního týmu Wingtip Tickets. Doporučení můžou přispět k optimalizaci obchodního modelu a prostředí pro zákazníky.
 
 Začněte analýzou dat o prodeji lístků, abyste viděli variaci využití v rámci míst. Vyberte možnosti zobrazené v Power BI k vykreslení pruhového grafu celkového počtu lístků prodávaných každým jejich konáním. (Kvůli náhodné variaci generátoru lístků se vaše výsledky můžou lišit.)
 
@@ -272,8 +272,8 @@ V tomto kurzu jste se naučili:
 > - Dotazování analytického datového skladu.
 > - Pomocí Power BI pro vizualizaci dat zvýrazněte trendy v datech tenanta a udělejte doporučení na vylepšení.
 
-Gratulujeme!
+Blahopřejeme!
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - Další [kurzy, které se vytvářejí na aplikaci Wingtip SaaS](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

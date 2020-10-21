@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67d705f8e878cff6934c2e8a172148fab3f1d71
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82598466"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328994"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -20,7 +20,7 @@ Zavádíme některé důležité změny pro podporu přístupu k citlivým infor
 
 ## <a name="what-is-changing"></a>Co se mění?
 
-Dříve mohli tajné klíče získat prostřednictvím rozhraní API HDInsight uživatelů clusteru, kteří mají [role RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)vlastník, přispěvatel nebo čtenář, protože byly k dispozici pro kohokoli s `*/read` oprávněním. Tajné kódy se definují jako hodnoty, které by se daly použít k získání vyšší úrovně přístupu, než jakou má uživatel role. Mezi ně patří hodnoty jako například přihlašovací údaje protokolu HTTP brány clusteru, klíče účtu úložiště a přihlašovací údaje databáze.
+Dříve mohli tajné klíče získat prostřednictvím rozhraní API HDInsight uživatelů clusteru, kteří mají [role Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)vlastník, přispěvatel nebo čtenář, protože byly k dispozici pro kohokoli s `*/read` oprávněním. Tajné kódy se definují jako hodnoty, které by se daly použít k získání vyšší úrovně přístupu, než jakou má uživatel role. Mezi ně patří hodnoty jako například přihlašovací údaje protokolu HTTP brány clusteru, klíče účtu úložiště a přihlašovací údaje databáze.
 
 Od 3. září 2019 budou přístup k těmto tajným klíčům vyžadovat `Microsoft.HDInsight/clusters/configurations/action` oprávnění, což znamená, že je uživatelé s rolí čtenář již nebudou mít přístup. Role, které mají toto oprávnění, jsou přispěvatel, vlastník a nová role operátora clusteru HDInsight (Další informace najdete níže).
 
@@ -29,7 +29,7 @@ Zavádíme taky novou roli [operátora clusteru HDInsight](https://docs.microsof
 | Role                                  | Měsíci                                                                                       | Po přechodu dál       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Čtenář                                | – Přístup pro čtení, včetně tajných klíčů.                                                                   | – Přístup pro čtení, **s výjimkou** tajných klíčů |           |   |   |
-| Operátor clusteru HDInsight<br>(Nová role) | Není k dispozici                                                                                              | – Přístup pro čtení a zápis, včetně tajných klíčů         |   |   |
+| Operátor clusteru HDInsight<br>(Nová role) | –                                                                                              | – Přístup pro čtení a zápis, včetně tajných klíčů         |   |   |
 | Přispěvatel                           | – Přístup pro čtení a zápis, včetně tajných klíčů.<br>– Vytvářejte a spravujte všechny typy prostředků Azure.<br>-Spouštění akcí skriptu.     | Beze změny |
 | Vlastník                                 | – Přístup pro čtení a zápis včetně tajných klíčů.<br>– Úplný přístup ke všem prostředkům<br>– Delegovat přístup jiným uživatelům.<br>-Spouštění akcí skriptu. | Beze změny |
 
@@ -183,9 +183,9 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Alternativně můžete použít Azure Portal k přidání přiřazení role operátora clusteru HDInsight uživateli. Projděte si dokumentaci, [spravujte přístup k prostředkům Azure pomocí RBAC a Azure Portal – přidejte přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
+Alternativně můžete použít Azure Portal k přidání přiřazení role operátora clusteru HDInsight uživateli. Projděte si dokumentaci, [přidejte nebo odeberte přiřazení rolí Azure pomocí Azure Portal – přidejte přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment).
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="why-am-i-seeing-a-403-forbidden-response-after-updating-my-api-requests-andor-tool"></a>Proč se po aktualizaci požadavků rozhraní API nebo nástroje zobrazuje odpověď 403 (Zakázáno)?
 

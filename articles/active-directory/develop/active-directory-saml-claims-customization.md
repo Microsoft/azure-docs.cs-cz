@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421454"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275751"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Postupy: přizpůsobení deklarací identity vystavených v tokenu SAML pro podnikové aplikace
 
@@ -54,7 +54,7 @@ Pokud požadavek SAML neobsahuje element pro NameIDPolicy, bude platforma Micros
 
 V rozevíracím seznamu **zvolit formát identifikátoru názvu** můžete vybrat jednu z následujících možností.
 
-| Formát NameID | Description |
+| Formát NameID | Popis |
 |---------------|-------------|
 | **Výchozí** | Platforma Microsoft Identity Platform bude používat výchozí formát zdroje. |
 | **Trvalý** | Platforma Microsoft Identity Platform bude používat jako formát NameID jako trvalá. |
@@ -98,7 +98,7 @@ Všem deklaracím, které definujete v Azure AD, můžete také přiřadit jakou
 
 Můžete také použít funkce transformace deklarací identity.
 
-| Funkce | Description |
+| Funkce | Popis |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
 | **Join ()** | Připojí k atributu ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |
@@ -125,7 +125,7 @@ Chcete-li použít transformaci na atribut uživatele:
 
 K transformaci deklarací lze použít následující funkce.
 
-| Funkce | Description |
+| Funkce | Popis |
 |----------|-------------|
 | **ExtractMailPrefix()** | Odebere příponu domény z e-mailové adresy nebo hlavního názvu uživatele. Tím se extrahuje jenom první část uživatelského jména, který se předává (například "joe_smith" místo joe_smith@contoso.com ). |
 | **Join ()** | Vytvoří novou hodnotu spojením dvou atributů. Volitelně můžete použít oddělovač mezi dvěma atributy. Pro transformaci deklarace NameID je spojení omezené na ověřenou doménu. Pokud má vybraná hodnota identifikátoru uživatele doména, extrahuje uživatelské jméno, aby se připojila vybraná ověřená doména. Pokud například joe_smith@contoso.com jako hodnotu identifikátoru uživatele vyberete e-mail () a jako ověřenou doménu vyberete contoso.onmicrosoft.com, bude to mít za následek joe_smith@contoso.onmicrosoft.com . |
@@ -167,7 +167,7 @@ Přidání podmínky deklarace identity:
 3. Vyberte skupiny, do kterých má uživatel patřit. V rámci všech deklarací pro danou aplikaci můžete vybrat až 50 jedinečných skupin. 
 4. Vyberte **zdroj** , ve kterém bude deklarace identity získávat svou hodnotu. Můžete vybrat atribut uživatele z rozevíracího seznamu zdrojový atribut nebo použít transformaci na atribut uživatele před jeho vygenerováním jako deklarace identity.
 
-Pořadí, ve kterém přidáte podmínky, je důležité. Azure AD vyhodnotí podmínky shora dolů a určí, která hodnota se má v deklaracích generovat. 
+Pořadí, ve kterém přidáte podmínky, je důležité. Azure AD vyhodnotí podmínky shora dolů a určí, která hodnota se má v deklaracích generovat. Poslední hodnota, která se shoduje s výrazem, bude v deklaraci identity vygenerována.
 
 Například Britta Simon je uživatel typu Host v tenantovi contoso. Patří do jiné organizace, která používá taky Azure AD. Když se Britta pokusí přihlásit k společnosti Fabrikam níže uvedená konfigurace, aplikace Microsoft Identity Platform vyhodnotí podmínky následujícím způsobem.
 

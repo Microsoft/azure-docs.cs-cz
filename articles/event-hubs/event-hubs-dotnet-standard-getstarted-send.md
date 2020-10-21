@@ -4,12 +4,12 @@ description: Tento článek popisuje postup vytvoření aplikace .NET Core, kter
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 170484b5a24367eb19e69f0a72918d99b6595fca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4949d68750e95e5b62b8387f03c77c082fbaf7f4
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728501"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329317"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET (Azure. Messaging. EventHubs) 
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET **Azure. Messaging. EventHubs** . 
@@ -19,7 +19,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
@@ -61,6 +61,7 @@ V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro ode
 1. `using`Do horní části souboru **program.cs** přidejte následující příkazy:
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading.Tasks;
     using Azure.Messaging.EventHubs;
@@ -150,6 +151,7 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního 
 1. Do `using` horní části souboru **program.cs** přidejte následující příkazy.
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading.Tasks;
     using Azure.Storage.Blobs;
@@ -230,4 +232,4 @@ Podívejte se na ukázky na GitHubu.
 
 - [Ukázky Event Hubs na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
 - [Ukázky procesoru událostí na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
-- [Ukázka řízení přístupu na základě role (RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
+- [Ukázka řízení přístupu na základě role v Azure (Azure RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

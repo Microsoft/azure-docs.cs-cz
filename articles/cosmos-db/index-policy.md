@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b525f3299420f81670c0aea9872ac5fdef00be97
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089509"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277801"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
@@ -271,7 +271,7 @@ V žádném z transformací indexu není žádný vliv na dostupnost zápisu. Tr
 
 Při přidávání nového indexu nemá žádný vliv na dostupnost čtení. Po dokončení transformace indexu budou dotazy využívat pouze nové indexy. Při transformaci indexu bude modul dotazu dál používat stávající indexy, takže budete mít podobný výkon při čtení během transformace indexování na to, co jste předtím provedli při zahájení změny indexování. Při přidávání nových indexů nehrozí riziko neúplných nebo nekonzistentních výsledků dotazu.
 
-Při odebírání indexů a okamžitém spuštění dotazů, které filtrují na vyřazených indexech, není zaručeno konzistentní nebo úplné výsledky dotazu. Pokud odeberete více indexů a uděláte to v jedné změně zásady indexování, nástroj pro dotazování garantuje konzistenci a úplnost výsledků v celé transformaci indexu. Pokud ale odeberete indexy prostřednictvím několika změn zásad indexování, dotazovací modul nezaručuje konzistenci nebo úplnost výsledků, dokud se nedokončí všechny transformace indexu. Většina vývojářů nevynechává indexy a potom se okamžitě pokusí spustit dotazy, které tyto indexy využívají, takže v praxi je tato situace nepravděpodobná.
+Při odebírání indexů a okamžitém spuštění dotazů, které filtrují na vyřazených indexech, není zaručeno konzistentní nebo úplné výsledky dotazu. Pokud odeberete více indexů a v rámci jedné změny zásad indexování zadáte jednu, nástroj pro vytváření dotazů poskytne konzistentní a kompletní výsledky v celé transformaci indexu. Pokud ale odeberete indexy pomocí několika změn zásad indexování, dotazovací modul nebude poskytovat konzistentní nebo úplné výsledky, dokud se nedokončí všechny transformace indexu. Většina vývojářů nevynechává indexy a potom se okamžitě pokusí spustit dotazy, které tyto indexy využívají, takže v praxi je tato situace nepravděpodobná.
 
 > [!NOTE]
 > Pokud je to možné, měli byste vždycky zkusit seskupit více změn indexování do jedné změny zásad indexování.

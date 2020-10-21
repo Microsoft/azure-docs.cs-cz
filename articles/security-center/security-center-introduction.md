@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742073"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332004"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -120,10 +120,6 @@ Security Center vám pomůže omezit vystavení útokům hrubou silou. Omezením
 ### <a name="protect-data-services"></a>Ochrana datových služeb
 
 Security Center obsahuje možnosti, které vám pomůžou provést automatickou klasifikaci vašich dat v Azure SQL. Můžete také získat vyhodnocení potenciálních chyb zabezpečení napříč službou Azure SQL a služby úložiště a doporučení, jak je zmírnit.
-
-### <a name="protect-iot-and-hybrid-cloud-workloads"></a>Ochrana úloh IoT a hybridního cloudu
-
-Defender for IoT (Internet věcí) zjednodušuje ochranu hybridního pracovního vytížení tím, že nabízí jednotnou viditelnost a kontrolu, adaptivní prevenci hrozeb a inteligentní ochranu před hrozbami a reakci napříč úlohami běžícími na hraničních, místních i v Azure a v jiných cloudech. Další informace najdete v tématu [Defender for IoT](../defender-for-iot/index.yml).
 
 ## <a name="get-secure-faster"></a>Rychlejší získání zabezpečení
 
