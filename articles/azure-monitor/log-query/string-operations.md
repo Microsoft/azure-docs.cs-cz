@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/16/2018
-ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 7838f9f1febcab073633dbb4af011e99acbe22d3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75397466"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310297"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Práce s řetězci v Azure Monitorch dotazech protokolu
 
@@ -50,32 +50,32 @@ Operátor       |Popis                         |Case-Sensitive|Příklad (výnos
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Je rovno                              |Ano           |`"aBc" == "aBc"`
 `!=`           |Nerovná se                          |Ano           |`"abc" != "ABC"`
-`=~`           |Je rovno                              |No            |`"abc" =~ "ABC"`
-`!~`           |Nerovná se                          |No            |`"aBc" !~ "xyz"`
-`has`          |Pravá strana je celý výraz na levé straně |No|`"North America" has "america"`
-`!has`         |Pravá strana není úplným termínem na levé straně.       |No            |`"North America" !has "amer"` 
+`=~`           |Je rovno                              |Ne            |`"abc" =~ "ABC"`
+`!~`           |Nerovná se                          |Ne            |`"aBc" !~ "xyz"`
+`has`          |Pravá strana je celý výraz na levé straně |Ne|`"North America" has "america"`
+`!has`         |Pravá strana není úplným termínem na levé straně.       |Ne            |`"North America" !has "amer"` 
 `has_cs`       |Pravá strana je celý výraz na levé straně |Ano|`"North America" has_cs "America"`
 `!has_cs`      |Pravá strana není úplným termínem na levé straně.       |Ano            |`"North America" !has_cs "amer"` 
-`hasprefix`    |Pravá strana je předpona termínu na levé straně         |No            |`"North America" hasprefix "ame"`
-`!hasprefix`   |Pravá strana není předpona termínu na levé straně.     |No            |`"North America" !hasprefix "mer"` 
+`hasprefix`    |Pravá strana je předpona termínu na levé straně         |Ne            |`"North America" hasprefix "ame"`
+`!hasprefix`   |Pravá strana není předpona termínu na levé straně.     |Ne            |`"North America" !hasprefix "mer"` 
 `hasprefix_cs`    |Pravá strana je předpona termínu na levé straně         |Ano            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |Pravá strana není předpona termínu na levé straně.     |Ano            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |Pravá strana je přípona termínu na levé straně.         |No            |`"North America" hassuffix "ica"`
-`!hassuffix`   |Pravá strana není přípona termínu na levé straně.     |No            |`"North America" !hassuffix "americ"`
+`hassuffix`    |Pravá strana je přípona termínu na levé straně.         |Ne            |`"North America" hassuffix "ica"`
+`!hassuffix`   |Pravá strana není přípona termínu na levé straně.     |Ne            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |Pravá strana je přípona termínu na levé straně.         |Ano            |`"North America" hassuffix_cs "ica"`
 `!hassuffix_cs`   |Pravá strana není přípona termínu na levé straně.     |Ano            |`"North America" !hassuffix_cs "icA"`
-`contains`     |Pravá strana probíhá jako dílčí sekvence levé části.  |No            |`"FabriKam" contains "BRik"`
-`!contains`    |Pravá strana se nevyskytuje na levé straně.           |No            |`"Fabrikam" !contains "xyz"`
+`contains`     |Pravá strana probíhá jako dílčí sekvence levé části.  |Ne            |`"FabriKam" contains "BRik"`
+`!contains`    |Pravá strana se nevyskytuje na levé straně.           |Ne            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |Pravá strana probíhá jako dílčí sekvence levé části.  |Ano           |`"FabriKam" contains_cs "Kam"`
 `!contains_cs`  |Pravá strana se nevyskytuje na levé straně.           |Ano           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |Pravá strana je počáteční dílčí sekvence na levé straně.|No            |`"Fabrikam" startswith "fab"`
-`!startswith`  |Pravá strana není počáteční podsekvence na levé straně.|No        |`"Fabrikam" !startswith "kam"`
+`startswith`   |Pravá strana je počáteční dílčí sekvence na levé straně.|Ne            |`"Fabrikam" startswith "fab"`
+`!startswith`  |Pravá strana není počáteční podsekvence na levé straně.|Ne        |`"Fabrikam" !startswith "kam"`
 `startswith_cs`   |Pravá strana je počáteční dílčí sekvence na levé straně.|Ano            |`"Fabrikam" startswith_cs "Fab"`
 `!startswith_cs`  |Pravá strana není počáteční podsekvence na levé straně.|Ano        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |Pravá strana je pravá dílčí sekvence levé části na straně druhé.|No             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |Pravá strana není uzavírací podsekvence levé části.|No         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Pravá strana je pravá dílčí sekvence levé části na straně druhé.|Ano             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Pravá strana není uzavírací podsekvence levé části.|Ano         |`"Fabrikam" !endswith "brik"`
+`endswith`     |Pravá strana je pravá dílčí sekvence levé části na straně druhé.|Ne             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |Pravá strana není uzavírací podsekvence levé části.|Ne         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |Pravá strana je pravá dílčí sekvence levé části na straně druhé.|Ano             |`"Fabrikam" endswith_cs "kam"`
+`!endswith_cs`    |Pravá strana není uzavírací podsekvence levé části.|Ano         |`"Fabrikam" !endswith_cs "brik"`
 `matches regex`|levá strana obsahuje shodu pro pravou stranu.        |Ano           |`"Fabrikam" matches regex "b.*k"`
 `in`           |Je rovno jednomu elementu       |Ano           |`"abc" in ("123", "345", "abc")`
 `!in`          |Nerovná se žádnému elementu   |Ano           |`"bca" !in ("123", "345", "abc")`
@@ -95,7 +95,7 @@ countof(text, search [, kind])
 - `search` – Prostý řetězec nebo regulární výraz pro spárování uvnitř textu
 - `kind` - _normální_  |  _Regex_ (výchozí: Normal).
 
-### <a name="returns"></a>Návraty
+### <a name="returns"></a>Vrací
 
 Počet, kolikrát může být hledaný řetězec v kontejneru spárován. Shody s prostým řetězcem se mohou překrývat, zatímco se neshodují regulární výrazy
 
@@ -137,7 +137,7 @@ extract(regex, captureGroup, text [, typeLiteral])
 - `text` – Řetězec, který chcete vyhledat.
 - `typeLiteral` – Volitelný literál typu (například typeof (Long)). Je-li tento příkaz zadán, extrahovaný dílčí řetězec je převeden na tento typ.
 
-### <a name="returns"></a>Návraty
+### <a name="returns"></a>Vrací
 Podřetězec se shoduje s určenou skupinou zachycení skupiny zachycení, volitelně převedena na typeLiteral.
 Pokud se neshoduje, nebo převod typu se nezdařil, vrátí hodnotu null.
 
@@ -243,7 +243,7 @@ replace(regex, rewrite, input_text)
 - `rewrite` – Nahrazující regulární výraz pro všechny shody provedené porovnáváním regulárním výrazem. Pomocí \ 0 se můžete podívat na celou shodu, \ 1 pro první skupinu zachycení, \ 2 atd. pro další skupiny zachycení.
 - `input_text` – Vstupní řetězec, ve kterém se má hledat.
 
-### <a name="returns"></a>Návraty
+### <a name="returns"></a>Vrací
 Text po nahrazení všech shod regulárního výrazu pomocí vyhodnocení přepisu Shoda se nekryje.
 
 ### <a name="examples"></a>Příklady

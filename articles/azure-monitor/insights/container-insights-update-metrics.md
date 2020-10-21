@@ -2,14 +2,14 @@
 title: Postup aktualizace Azure Monitor pro kontejnery pro metriky | Microsoft Docs
 description: Tento článek popisuje, jak aktualizovat Azure Monitor pro kontejnery pro povolení funkce vlastní metriky, která podporuje prozkoumávání a upozorňování na agregované metriky.
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a94f250c83fbd2779620376087a83b8851e583e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618141"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309433"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak aktualizovat službu Azure Monitor pro kontejnery a povolit metriky
 
@@ -26,6 +26,7 @@ V rámci této funkce jsou povoleny následující metriky:
 | Insights. Container/Nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | Jako metriky *uzlů* zahrnují *hostitel* jako dimenzi. Zahrnují taky<br> název uzlu jako hodnota pro dimenzi *hostitele* . |
 | Přehledy. kontejner/lusky | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | Stejně *jako metriky* obsahují tyto údaje: Dimensions-Controller, Kubernetes Namespace, Name, Phase. |
 | Insights. Container/Containers | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
+| Insights. Container/persistentvolumes | pvUsageExceededPercentage | |
 
 V rámci podpory těchto nových funkcí je ve vydané verzi zahrnutý nový agent s podporou kontejnerů, verze **Microsoft/OMS: ciprod05262020** for AKS a verze **Microsoft/OMS: ciprod09252020** pro clustery Kubernetes s povoleným obloukem Azure. Nová nasazení AKS automaticky zahrnují tuto změnu konfigurace a možnosti. Aktualizace clusteru pro podporu této funkce se dá provést z Azure Portal, Azure PowerShell nebo pomocí Azure CLI. Pomocí Azure PowerShell a CLI. Tento cluster můžete povolit pro všechny clustery v rámci vašeho předplatného.
 
@@ -34,7 +35,7 @@ Buď proces přiřadí roli **vydavatele metrik monitorování** k instančnímu
 > [!IMPORTANT]
 > Upgrade není vyžadován pro clustery Kubernetes s podporou ARC Azure, protože již mají minimální požadovanou verzi agenta.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před aktualizací clusteru potvrďte následující:
 

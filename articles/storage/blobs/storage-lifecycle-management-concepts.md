@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 264f0e59e2c43ca92fc5209b8613282a0b0fca37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203768"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309804"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -31,6 +31,8 @@ Zásady správy životního cyklu vám umožňují:
 Vezměte v úvahu scénář, kdy data budou často přístupná v počátečních fázích životního cyklu, ale pouze občas po dvou týdnech. Po prvním měsíci se k datové sadě používá zřídka. V tomto scénáři je horké úložiště nejlépe v počátečních fázích. Studená úložiště jsou nejvhodnější pro příležitostné přístupy. Archivní úložiště je nejlepší možností po stáří dat za měsíc. Nastavením vrstev úložiště v závislosti na stáří dat můžete navrhnout nejlevnější možnosti úložiště podle vašich potřeb. Pro dosažení tohoto přechodu jsou k dispozici pravidla zásad správy životního cyklu pro přesun dat o splatnosti do úrovní chladiče.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+>[!NOTE]
+>Pokud potřebujete, aby data zůstala čitelná, například při použití v StorSimple, nenastavte zásady pro přesun objektů blob do archivní úrovně.
 
 ## <a name="availability-and-pricing"></a>Dostupnost a ceny
 
@@ -63,7 +65,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Zobrazení seznamu Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte svůj účet úložiště. 
 
@@ -97,7 +99,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 1. Pokud chcete přidat novou zásadu, vyberte **Přidat** .
 
 #### <a name="azure-portal-code-view"></a>Azure Portal zobrazení kódu
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte svůj účet úložiště.
 
@@ -244,10 +246,10 @@ Každé pravidlo v zásadě má několik parametrů:
 
 | Název parametru | Typ parametru | Poznámky | Povinné |
 |----------------|----------------|-------|----------|
-| `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena. Musí být jedinečný v rámci zásad. | Ano |
-| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Ne | 
-| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle` . | Ano |
-| `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | Ano |
+| `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena. Musí být jedinečný v rámci zásad. | Pravda |
+| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Nepravda | 
+| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle` . | Pravda |
+| `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | Pravda |
 
 ## <a name="rules"></a>Pravidla
 

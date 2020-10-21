@@ -4,21 +4,21 @@ description: Přečtěte si o funkcích řetězcového systému SQL v Azure Cosm
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 192f015b37eadb57b8e4a5c83ce3adf94c8bf038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ec1d83b97fadf3954a936847e8e8faeb47d1458
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85549512"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276078"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>Řetězcové funkce (Azure Cosmos DB)
 
 Řetězcové funkce umožňují provádět operace s řetězci v Azure Cosmos DB.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Následující skalární funkce provede operaci na vstupní hodnotě řetězce a vrátí řetězec, číselnou hodnotu nebo logickou hodnotu:
   
@@ -27,12 +27,13 @@ Následující skalární funkce provede operaci na vstupní hodnotě řetězce 
 * [ENDSWITH](sql-query-endswith.md)
 * [INDEX_OF](sql-query-index-of.md)
 * [LEFT](sql-query-left.md)
-* [LENGTH](sql-query-length.md)
+* [ČASOVÝ](sql-query-length.md)
 * [LOWER](sql-query-lower.md)
 * [LTRIM](sql-query-ltrim.md)
+* [REGEXMATCH](sql-query-regexmatch.md)
 * [REPLACE](sql-query-replace.md)
 * [REPLIKACE](sql-query-replicate.md)
-* [REVERSE](sql-query-reverse.md)
+* [ZPĚT](sql-query-reverse.md)
 * [RIGHT](sql-query-right.md)
 * [RTRIM](sql-query-rtrim.md)
 * [STARTSWITH](sql-query-startswith.md)
@@ -41,8 +42,8 @@ Následující skalární funkce provede operaci na vstupní hodnotě řetězce 
 * [StringToNull](sql-query-stringtonull.md)
 * [StringToNumber](sql-query-stringtonumber.md)
 * [StringToObject](sql-query-stringtoobject.md)
-* [SUBSTRING](sql-query-substring.md)
-* [ToString](sql-query-tostring.md)
+* [PODŘETĚZEC](sql-query-substring.md)
+* [Metodu](sql-query-tostring.md)
 * [TRIM](sql-query-trim.md)
 * [UPPER](sql-query-upper.md)
 

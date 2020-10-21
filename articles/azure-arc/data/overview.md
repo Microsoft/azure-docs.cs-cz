@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946958"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316971"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Co jsou datové služby s podporou ARC Azure (Preview)?
 
@@ -41,7 +41,7 @@ Azure ARC také poskytuje další cloudové výhody, jako je rychlé nasazení a
 
 ## <a name="unified-management"></a>Jednotná správa
 
-Pomocí známých nástrojů, jako jsou Azure Portal, Azure Data Studio a Azure Data CLI, teď můžete získat jednotný přehled o všech vašich datových assetech nasazených pomocí ARC Azure. Můžete nejen zobrazit a spravovat celou řadu relačních databází napříč vaším prostředím a Azure, ale taky získat protokoly a telemetrii z rozhraní API Kubernetes, abyste mohli analyzovat základní kapacitu infrastruktury a stav. Kromě toho, že máte lokalizovanou analýzu protokolů a výkonu, teď můžete využít Azure Monitor pro komplexní Operational Insights v celé nemovitosti.
+Pomocí známých nástrojů, jako jsou Azure Portal, Azure Data Studio a [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , teď můžete získat jednotný přehled o všech datových assetech nasazených pomocí ARC Azure. Můžete nejen zobrazit a spravovat celou řadu relačních databází napříč vaším prostředím a Azure, ale taky získat protokoly a telemetrii z rozhraní API Kubernetes, abyste mohli analyzovat základní kapacitu infrastruktury a stav. Kromě toho, že máte lokalizovanou analýzu protokolů a výkonu, teď můžete využít Azure Monitor pro komplexní Operational Insights v celé nemovitosti.
 
 ## <a name="disconnected-scenario-support"></a>Podpora odpojeného scénáře
 

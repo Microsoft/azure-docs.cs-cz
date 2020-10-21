@@ -402,6 +402,8 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: Zdroje a prostředky
   items:
+    - name: Možnosti pomoci a podpory
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: Ukázky kódů
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: Regionální dostupnost
@@ -425,10 +427,6 @@
     - name: Konfigurace virtuálních sítí
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/LUIS'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
     - name: Search
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: Blog

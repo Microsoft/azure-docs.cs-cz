@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639830"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277513"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je privátní koncový bod Azure?
 
@@ -77,7 +77,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure Relay** | Microsoft. Relay/obory názvů | namespace |
 |**Azure Event Grid** | Microsoft. EventGrid/témata    | téma |
 |**Azure Event Grid** | Microsoft. EventGrid/domény    | doména |
-|**WebApps Azure** | Microsoft. Web/weby    | místa |
+|**Azure App Service** | Microsoft. Web/weby    | místa |
 |**Azure Machine Learning** | Microsoft. MachineLearningServices/pracovní prostory    | pracovní prostor |
 |**SignalR** | Microsoft. SignalRService/Signaler    | signalR |
 |**Azure Monitor** | Microsoft. Insights/privateLinkScopes    | azuremonitor |

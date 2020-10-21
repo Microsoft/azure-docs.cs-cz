@@ -3,12 +3,12 @@ title: Podporované typy prostředků prostřednictvím Azure Resource Health | 
 description: Podporované typy prostředků prostřednictvím služby Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bbc7b03a508c9b156de039b4f8706f5063fd23b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447042"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316127"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu v Azure Resource Health
 Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím stavu prostředků podle typů prostředků.
@@ -51,7 +51,7 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft. classiccompute/DomainNames
 |Provedené kontroly|
 |---|
-|<ul><li>Je nasazení produkčního slotu v rámci všech instancí rolí v pořádku?</li><li>Je role v pořádku napříč všemi jejími instancemi virtuálních počítačů?</li><li>Jaký je stav každého virtuálního počítače v rámci role cloudové služby?</li><li>Změnil se stav virtuálního počítače v důsledku operace iniciované platformou nebo zákazníkem?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li><li>[Další informace](https://docs.microsoft.com/azure/cloud-services/resource-health-for-cloud-services) o provedených kontrolách</li></ul>|
+|<ul><li>Je nasazení produkčního slotu v rámci všech instancí rolí v pořádku?</li><li>Je role v pořádku napříč všemi jejími instancemi virtuálních počítačů?</li><li>Jaký je stav každého virtuálního počítače v rámci role cloudové služby?</li><li>Změnil se stav virtuálního počítače v důsledku operace iniciované platformou nebo zákazníkem?</li><li>Bylo spuštění hostovaného operačního systému dokončeno?</li><li>Probíhá plánovaná údržba?</li><li>Je hardwarově snížená a předpokládaná chyba v brzké době?</li><li>[Další informace](../cloud-services/resource-health-for-cloud-services.md) o provedených kontrolách</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. cognitiveservices Account/účty
 |Provedené kontroly|
@@ -257,4 +257,4 @@ Níže je uvedený úplný seznam všech kontrol provedených prostřednictvím 
 ## <a name="next-steps"></a>Další kroky
 -  Další informace najdete v tématu [Úvod do Azure Service Healthho řídicího panelu](service-health-overview.md) a [Úvod do Azure Resource Health](resource-health-overview.md) . 
 -  [Nejčastější dotazy týkající se Azure Resource Health](resource-health-faq.md)
-- Nastavte výstrahy, abyste byli informováni o problémech se stavem. Další informace najdete v tématu [Konfigurace výstrah pro události služby Service Health](./alerts-activity-log-service-notifications-portal.md). 
+- Nastavte výstrahy, abyste byli informováni o problémech se stavem. Další informace najdete v tématu [Konfigurace výstrah pro události služby Service Health](./alerts-activity-log-service-notifications-portal.md).

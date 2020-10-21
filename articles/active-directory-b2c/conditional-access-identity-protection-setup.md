@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89271528"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309773"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Nastavení Identity Protection a podmíněného přístupu v Azure AD B2C
 
@@ -41,14 +41,16 @@ Pro Azure AD B2C se aktuálně podporují následující detekce rizik:
 |Typ detekce rizika  |Popis  |
 |---------|---------|
 | Neobvyklá cesta     | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele.        |
-|Anonymní IP adresa     | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN)        |
+|Anonymní IP adresa     | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN).        |
+|Propojená IP adresa pro malware     | Přihlaste se přes propojenou IP adresu malwaru.         |
 |Neznámé vlastnosti přihlášení     | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno.        |
-|Propojená IP adresa pro malware     | Přihlášení z IP adresy propojené s malwarem         |
+|Správce potvrzuje ohrožení zabezpečení uživatele.    | Správce indikuje, že došlo k ohrožení zabezpečení uživatele.             |
+|Sprej hesla     | Přihlaste se pomocí útoku na spreje hesla.      |
 |Analýza hrozeb v Azure AD     | Zdroje analýzy interních a externích hrozeb Microsoftu identifikovaly známý vzor útoku.        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>Zobrazení rizikových událostí pro vašeho tenanta Azure AD B2C
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
@@ -68,7 +70,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 ### <a name="to-disable-security-defaults"></a>Zakázání výchozích hodnot zabezpečení
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
@@ -84,7 +86,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 ### <a name="to-create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
@@ -122,7 +124,7 @@ Pokud chcete přidat zásady podmíněného přístupu na základě detekce rizi
 
 Kontrola výsledku události podmíněného přístupu:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 

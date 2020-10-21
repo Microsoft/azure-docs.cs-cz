@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd884a7d95edaf6586e7eecd644400c05c15e5a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667788"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315796"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -117,4 +117,4 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 ## <a name="next-steps"></a>Další kroky
 
 - [Projděte si](best-practices-assessment.md) osvědčené postupy pro vytváření hodnocení.
-- [Příprava na vyhodnocení VMware](tutorial-prepare-vmware.md) .
+- [Příprava na vyhodnocení VMware](./tutorial-discover-vmware.md) .

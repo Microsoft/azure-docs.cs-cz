@@ -4,15 +4,15 @@ description: Seznamte se s možnostmi konfigurace klienta, které vám pomůžou
 author: j82w
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 432d9656bf56b87798d6563cfd545b34c20001b6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204023"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277314"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -67,32 +67,7 @@ Pokud testujete na úrovních vysoké propustnosti nebo v tarifech, které jsou 
 
 **Zásady připojení: použít přímý režim připojení**
 
-Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména u pozorované latence na straně klienta. Pro konfiguraci zásad připojení klienta jsou k dispozici dvě konfigurační nastavení: *režim* připojení a *protokol*připojení. K dispozici jsou dva režimy připojení:
-
-   * Přímý režim (výchozí)
-
-     Přímý režim podporuje připojení přes protokol TCP a je výchozím režimem připojení, pokud používáte [sadu Microsoft. Azure. Cosmos/. NET V3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3). Přímý režim nabízí lepší výkon a vyžaduje méně směrování sítě než režim brány.
-
-   * Režim brány
-      
-     Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod. 
-     
-     Kompromisy týkající se výkonu však jsou v tom, že režim brány zahrnuje dodatečné směrování sítě pokaždé, když se data čtou nebo se zapisují do Azure Cosmos DB. Přímý režim proto nabízí lepší výkon, protože je k dispozici méně síťových segmentů. Režim připojení brány doporučujeme také v případě, že spouštíte aplikace v prostředích, které mají omezený počet připojení soketu.
-
-     Při použití sady SDK v Azure Functions, zejména v [plánu spotřeby](../azure-functions/functions-scale.md#consumption-plan), si pamatujte na aktuální [omezení připojení](../azure-functions/manage-connections.md). V takovém případě může být režim brány lepší, pokud také pracujete s jinými klienty na bázi protokolu HTTP v rámci vaší aplikace Azure Functions.
-     
-Pokud používáte protokol TCP v přímém režimu, kromě portů brány je potřeba zajistit, aby byl rozsah portů od 10000 do 20000 otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Když použijete přímý režim na [privátních koncových bodech](./how-to-configure-private-endpoints.md), musí být otevřený celý rozsah portů TCP od 0 do 65535. Ve výchozím nastavení jsou porty otevřené pro standardní konfiguraci virtuálních počítačů Azure. Pokud se tyto porty neotevřou a pokusíte se použít protokol TCP, zobrazí se chyba "služba je nedostupná" 503. 
-
-V následující tabulce jsou uvedeny režimy připojení, které jsou k dispozici pro různá rozhraní API, a porty služeb, které se používají pro každé rozhraní API:
-
-|Režim připojení  |Podporovaný protokol  |Podporované sady SDK  |Port API/Service  |
-|---------|---------|---------|---------|
-|brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443) <br><br> Port 10250 mapuje na výchozí rozhraní Azure Cosmos DB API pro instanci MongoDB bez geografické replikace a porty 10255 a 10256 se mapují na instanci s geografickou replikací.   |
-|Direct    |     TCP    |  .NET SDK    | Při použití koncových bodů veřejné/služby: porty v rozsahu 10000 až 20000<br><br>Pokud používáte soukromé koncové body: porty v rozsahu 0 až 65535 |
-
-Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Protokol TCP pro počáteční ověřování a šifrování provozu používá protokol TLS (Transport Layer Security). Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
-
-V případě sady SDK V3 nakonfigurujete režim připojení při vytváření `CosmosClient` instance v nástroji `CosmosClientOptions` . Pamatujte, že výchozí hodnota je přímý režim.
+Výchozí režim připojení sady .NET V3 SDK je přímý. Režim připojení nakonfigurujete při vytváření `CosmosClient` instance v nástroji `CosmosClientOptions` .  Další informace o různých možnostech připojení najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
 
 ```csharp
 string connectionString = "<your-account-connection-string>";
@@ -102,10 +77,6 @@ new CosmosClientOptions
     ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
 });
 ```
-
-Protože je protokol TCP podporován pouze v přímém režimu, pokud používáte režim brány, protokol HTTPS se vždy používá ke komunikaci s bránou.
-
-:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Navažte připojení k Azure Cosmos DB pomocí různých režimů připojení a protokolů." border="false":::
 
 **Vyčerpání dočasných portů**
 
@@ -126,7 +97,7 @@ Pokud je to možné, umístěte všechny aplikace, které volají Azure Cosmos D
 
 Nejnižší možnou latenci získáte tak, že zajistíte, aby se volající aplikace nacházela ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Navažte připojení k Azure Cosmos DB pomocí různých režimů připojení a protokolů." border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Společné umístění klienty ve stejné oblasti." border="false":::
 
    <a id="increase-threads"></a>
 
@@ -287,4 +258,4 @@ Poplatek za požadavek (tj. náklady na zpracování žádosti) zadané operace 
 ## <a name="next-steps"></a>Další kroky
 Ukázkovou aplikaci, která se používá k vyhodnocení Azure Cosmos DB pro scénáře s vysokým výkonem na několika klientských počítačích, najdete v tématu [testování výkonu a škálování pomocí Azure Cosmos DB](performance-testing.md).
 
-Další informace o návrhu aplikace pro škálování a vysoký výkon najdete v tématu [dělení a škálování v Azure Cosmos DB](partition-data.md).
+Další informace o návrhu aplikace pro škálování a vysoký výkon najdete v tématu [dělení a škálování v Azure Cosmos DB](partitioning-overview.md).

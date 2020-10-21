@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: f83f5da03d2db5354b020ce7d0c3c8d70f1830a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 810c38397981a100c2d5a68492f8a15b75cd79bd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650098"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276042"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním webu Marketplace
 
@@ -67,7 +67,7 @@ Teď, když jste plán skryli se starou cenou, vytvoříte kopii tohoto plánu s
 
 1. V partnerském centru se vraťte na **Přehled plánu**.
 2. Vyberte **vytvořit nový plán**. Zadejte **ID plánu** a **název plánu**a pak vyberte **vytvořit**.
-1. Pokud chcete znovu použít technickou konfiguraci z plánu, který jste skryli, zaškrtněte políčko **znovu použít technickou konfiguraci** . Přečtěte si [Přehled plánu](azure-vm-create-offer.md#plan-overview) a získejte další informace.
+1. Pokud chcete znovu použít technickou konfiguraci z plánu, který jste skryli, zaškrtněte políčko **znovu použít technickou konfiguraci** . Další informace najdete [v tématu Vytvoření plánů pro nabídku virtuálních počítačů](../azure-vm-create-plans.md) .
     > [!IMPORTANT]
     > Pokud vyberete tento plán, který znovu **použije technickou konfiguraci z jiného plánu**, nebudete moct později svůj nadřazený plán přestat prodávat. Tuto možnost nepoužívejte, pokud chcete ukončit prodej nadřazeného plánu.
 3. Dokončete všechny požadované části nového plánu, včetně nové ceny.

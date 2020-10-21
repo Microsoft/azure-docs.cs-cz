@@ -1,5 +1,5 @@
 ---
-title: Vytvoření podřízených zón DNS Azure
+title: 'Kurz: vytvoření podřízených zón DNS Azure'
 titleSuffix: Azure DNS
 description: Kurz týkající se vytváření podřízených zón DNS v Azure Portal.
 author: jonbeck
@@ -10,12 +10,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c763f761d77ac05d9f6b45e5656436faa5697e88
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89087776"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310066"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Kurz: vytvoření nové podřízené zóny DNS
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným.  Pokud účet nemáte, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Stávající zóna nadřazených Azure DNS.  
@@ -40,7 +40,7 @@ Pro účely tohoto kurzu použijeme contoso.com jako nadřazenou zónu a subdoma
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet.
 
 Existují dva způsoby, jak můžete vytvořit podřízenou zónu DNS.
 1.  Prostřednictvím stránky portálu vytvořit zónu DNS.

@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 93cf29651110356023752f2377c9a0fc358982a7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4b072257d49011819fe19d6e2901560df43b26dc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203040"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275551"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
 
@@ -177,7 +177,7 @@ Pokud chcete požádat o povolení těchto scénářů, použijte následující
     | ----- | ----- |
     | Typ problému | Technické |
     | Služba | Moje služby V rozevíracím seznamu vyberte __Machine Learning__ . |
-    | Typ problému | Nastavení pracovního prostoru, sada SDK a rozhraní příkazového řádku |
+    | Typ problému | Konfigurace a zabezpečení v pracovním prostoru |
     | Podtyp problému | Žádost o povolení privátního koncového bodu a Privátní DNS zóny |
 
 2. V části __Podrobnosti__ použijte pole __Popis__ k poskytnutí oblasti Azure, kterou chcete použít, a scénáře, který chcete použít. Pokud potřebujete požádat o zvýšení kvóty pro více předplatných, uveďte také ID předplatných v tomto poli.

@@ -9,7 +9,7 @@
     - name: Přidání uživatelů do Azure AD
       href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - name: Přiřazení licencí k uživatelům
-      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+      href: ../fundamentals/license-users-groups.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context
     - name: Vytvoření neomezené registrace aplikací
       href: roles-quickstart-app-registration-limits.md
     - name: Nastavení konce platnosti skupiny
@@ -65,13 +65,13 @@
         - name: Zavření účtu v nespravovaném adresáři
           href: users-close-account.md
         - name: Přidání uživatelů typu host
-          href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
+          href: ../external-identities/what-is-b2b.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context
         - name: Přiřazení rolí uživatelům typu host
-          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
+          href: ../external-identities/add-guest-to-role.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context
         - name: Omezení přístupu uživatelů typu host
           href: users-restrict-guest-permissions.md
         - name: Dynamické skupiny a hosté
-          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+          href: ../external-identities/use-dynamic-groups.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context
     - name: Správa adresáře
       items:
         - name: Organizace Azure AD

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbfa780269f28e269fed51a25ec4255d18d8ab39
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570124"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277883"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Jak používat Azure Kubernetes s Azure Cosmos DB (Preview)
 
@@ -25,7 +25,7 @@ Rozhraní etcd API v Azure Cosmos DB umožňuje používat Azure Cosmos DB jako 
 
 Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Přehled](etcd-api-introduction.md) . V tomto článku se dozvíte, jak pomocí [modulu Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (AKS-Engine) vytvořit cluster Kubernetes v Azure, který používá [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) namísto lokálně nainstalovaného a nakonfigurovaného etcd. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Nainstalujte nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). Můžete stáhnout Azure CLI specifické pro váš operační systém a nainstalovat.
 
@@ -181,6 +181,6 @@ Název účtu Azure Cosmos bude odpovídat zadané předponě DNS připojené k 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se pracovat s Azure Cosmos Database, kontejnery a položkami](databases-containers-items.md) .
+* Naučte [se pracovat s Azure Cosmos Database, kontejnery a položkami](account-databases-containers-items.md) .
 * Informace o tom, jak [optimalizovat zřízené náklady na propustnost](optimize-cost-throughput.md)
 

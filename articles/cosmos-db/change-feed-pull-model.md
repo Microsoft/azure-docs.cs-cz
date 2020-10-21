@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b056c12f51c6e36a806f2bba0f5efe9ea9498798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59f1231e2edf3277898ff57d8e6f8da42ee057ca
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015632"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276980"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Změna modelu vyžádání obsahu kanálu v Azure Cosmos DB
 
@@ -39,13 +39,13 @@ Měli byste zvážit použití modelu vyžádání obsahu v těchto scénáříc
 
 Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pull:
 
-|Příznak  | Procesor kanálu změn| Model vyžádání |
+|Funkce  | Procesor kanálu změn| Model vyžádání |
 | --- | --- | --- |
 | Udržování přehledu o aktuálním bodu ve zpracování kanálu změn | Zapůjčení (uložené v kontejneru Azure Cosmos DB) | Token pro pokračování (uložený v paměti nebo ručně trvalý) |
 | Možnost Přehrát minulé změny | Ano, s modelem push | Ano, s modelem pull|
 | Cyklické dotazování pro budoucí změny | Automaticky kontroluje změny na základě zadaného uživatele. `WithPollInterval` | Ruční |
 | Zpracovat změny z celého kontejneru | Ano a automaticky paralelně napříč několika vlákny nebo počítači, které jsou náročné ze stejného kontejneru| Ano a ručně paralelně s využitím FeedTokens |
-| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporováno | Yes|
+| Zpracovat změny jenom z jednoho klíče oddílu | Nepodporováno | Ano|
 | Úroveň podpory | Obecná dostupnost | Preview |
 
 ## <a name="consuming-an-entire-containers-changes"></a>Spotřebovávání změn celého kontejneru
@@ -112,7 +112,7 @@ Tady je příklad, který ukazuje, jak získat seznam rozsahů pro váš kontejn
 IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 ```
 
-Když získáte seznam FeedRanges pro váš kontejner, získáte jeden pro `FeedRange` každý [fyzický oddíl](partition-data.md#physical-partitions).
+Když získáte seznam FeedRanges pro váš kontejner, získáte jeden pro `FeedRange` každý [fyzický oddíl](partitioning-overview.md#physical-partitions).
 
 Pomocí `FeedRange` můžete vytvořit a `FeedIterator` paralelizovat zpracování kanálu změn napříč několika počítači nebo vlákny. Na rozdíl od předchozího příkladu, který ukázal, jak získat `FeedIterator` pro celý kontejner nebo jeden klíč oddílu, můžete použít FeedRanges k získání více FeedIterators, které mohou zpracovávat kanál změn paralelně.
 

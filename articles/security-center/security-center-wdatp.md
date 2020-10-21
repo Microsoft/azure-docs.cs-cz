@@ -1,6 +1,6 @@
 ---
-title: Rozšířená ochrana před internetovými útoky v programu Microsoft Defender – Azure Security Center
-description: Tento dokument představuje integraci mezi Azure Security Center a rozšířenou ochranou před internetovými útoky v programu Microsoft Defender.
+title: Používání programu Microsoft Defender pro licenci koncového bodu, který je součástí Azure Security Center
+description: Přečtěte si o programu Microsoft Defender pro koncové body a nasaďte ho z Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,125 +10,129 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 92feb159fe4c893a55d37fa90c34acf4c4c93631
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 026425c78934209a2d258d50a5c7f51feeebd63b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826177"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275345"
 ---
-# <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
+# <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
-Azure Security Center se integruje s [pokročilou ochranou před internetovými útoky v programu Microsoft Defender (ATP)](https://www.microsoft.com/microsoft-365/windows/microsoft-defender-atp) , aby poskytovala komplexní možnosti detekce a odezvy koncových bodů
+Microsoft Defender pro koncové body je holistický, cloudové řešení zabezpečení koncového bodu. Hlavní funkce jsou:
+
+- Řízení a hodnocení rizik na základě rizika 
+- Omezení možností útoku
+- Ochrana založená na chování a cloudové ochrany
+- Detekce a odpověď koncového bodu (EDR)
+- Automatické šetření a náprava
+- Spravované lovecké služby
+
+> [!TIP]
+> Byl původně spuštěn jako ochrana **ATP v programu Windows Defender**, produkt pro detekci a odezvu koncového bodu (EDR) byl přejmenován v 2019 jako **ATP v programu Microsoft Defender**.
+>
+> V Ignite 2020 jsme spustili [sadu Microsoft Defender XDR](https://www.microsoft.com/security/business/threat-protection) a tato komponenta EDR se přejmenovala na **Microsoft Defender pro koncový bod**.
 
 
 ## <a name="availability"></a>Dostupnost
 
-|Aspekt|Podrobnosti|
-|----|:----|
-|Stav vydaných verzí:|Všeobecně dostupná (GA)|
-|Stanov|Vyžaduje [Azure Defender](security-center-pricing.md) .|
-|Podporované počítače:|![Yes](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Yes](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
-|Požadované role a oprávnění:|Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného**nebo **přispěvatele předplatného**|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy.<br>![No](./media/icons/no-icon.png) Zákazníci v RSZ, kteří mají spuštěné úlohy ve veřejných cloudech Azure<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
-|||
+| Aspekt                          | Podrobnosti                                                                                                                                                                                                                                                                                                       |
+|---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Stav vydaných verzí:                  | Všeobecně dostupná (GA)                                                                                                                                                                                                                                                                                      |
+| Stanov                        | Vyžaduje [Azure Defender pro servery](security-center-pricing.md) .                                                                                                                                                                                                                                             |
+| Podporované platformy:            | ![Ano](./media/icons/yes-icon.png) Počítače Azure s Windows<br>![Ano](./media/icons/yes-icon.png) Počítače ARC Azure s Windows|
+| Podporované verze systému Windows:  | Defender pro koncový bod je integrovaný do systému Windows 10 1703 (a novější) a Windows Server 2019.<br>Security Center podporuje detekci na Windows serveru 2016, 2012 R2 a 2008 R2 SP1.<br>Monitorování koncového bodu serveru pomocí této integrace bylo pro zákazníky Office 365 RSZ zakázané. |
+| Požadované role a oprávnění: | Povolení nebo zakázání integrace: **Správce zabezpečení** nebo **vlastník**<br>Zobrazení upozornění MDATP v Security Center: **čtecí modul zabezpečení**, **Čtenář**, **Přispěvatel skupiny prostředků**, **vlastník skupiny prostředků**, **Správce zabezpečení**, **vlastník předplatného**nebo **přispěvatele předplatného**                         |
+| Cloud                         | ![Ano](./media/icons/yes-icon.png) Komerční cloudy.<br>![Ne](./media/icons/no-icon.png) Zákazníci v RSZ, kteří spouštějí úlohy v globálním cloudech Azure<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov                                                        |
+|                                 |                                                                                                                                                                                                                                                                                                               |
 
 
-## <a name="microsoft-defender-atp-features-in-security-center"></a>Funkce ATP v programu Microsoft Defender v Security Center
+## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>Microsoft Defender pro funkce koncového bodu v Security Center
 
-ATP v programu Microsoft Defender poskytuje:
+Microsoft Defender pro koncové body poskytuje:
 
-- **Pokročilé senzory pro detekci narušení po porušení**: senzory ATP Microsoft Defenderu pro Windows servery shromažďují obrovské množství signálů chování.
+- **Pokročilé senzory detekce po porušení**. Defender pro senzory koncového bodu pro počítače s Windows shromažďují obrovské množství signálů chování.
 
-- **Zjišťování porušení narušení cloudu založeného na analýze**: ATP v programu Microsoft Defender se rychle přizpůsobuje měnícím se hrozbám. Používá pokročilou analýzu a velké objemy dat. Ochrana ATP v programu Microsoft Defender je doplněná výkonem Intelligent Security Graph s signály v systému Windows, Azure a Office pro detekci neznámých hrozeb. Poskytuje užitečné výstrahy a umožňuje rychle reagovat.
+- **Analýza, která je založená na analýze, na základě cloudu a odhalení po porušení**. Defender pro koncové body se rychle přizpůsobí měnícím se hrozbám. Používá pokročilou analýzu a velké objemy dat. Je vylepšená výkonem Intelligent Security Graph a signály v systému Windows, Azure a Office ke zjištění neznámých hrozeb. Poskytuje užitečné výstrahy a umožňuje rychle reagovat.
 
-- **Analýza hrozeb**: ATP v programu Microsoft Defender generuje výstrahy, když identifikuje nástroje, techniky a postupy pro útočníky. Využívá data vygenerovaná Microsoft Threat Hunters a týmy zabezpečení a rozšiřuje je o inteligentní informace poskytované partnery.
+- **Analýza hrozeb:** Defender pro koncový bod generuje výstrahy, když identifikuje nástroje, techniky a postupy pro útočníka. Využívá data vygenerovaná Microsoft Threat Hunters a týmy zabezpečení a rozšiřuje je o inteligentní informace poskytované partnery.
 
+Integrací programu Defender pro koncový bod s Security Center se vám bude vytěžit z následujících dalších možností:
 
-Integrací služby Defender ATP s Azure Security Center můžete také využít výhod následujících dalších možností:
+- **Automatizované připojování**. Security Center automaticky povolí Microsoft Defender pro všechny servery se systémem Windows, které jsou monitorovány pomocí Security Center (pokud nepoužívají systém Windows Server 2019).
 
-- **Automatizovaná**registrace: Integration automaticky povoluje senzor ATP v programu Microsoft Defender pro servery Windows, které monitorují Azure Security Center (pokud nepoužívají systém Windows Server 2019).
+- **Jedno podokno skla** Konzola Security Center zobrazí výstrahu programu Microsoft Defender pro koncové body. Pro další zkoumání použijte Microsoft Defender pro vlastní stránky portálu, kde se zobrazí další informace, jako je strom procesu výstrahy a graf incidentu. Můžete se také podívat na podrobnou časovou osu počítače, která zobrazuje každé chování po dobu až šesti měsíců.
 
-- **Jediné podokno skla**: konzola Azure Security Center zobrazuje výstrahy ATP v programu Microsoft Defender. K dalšímu zkoumání použijte ATP v programu Microsoft Defender. ATP v programu Microsoft Defender poskytuje další informace, jako je strom procesu výstrah a graf incidentu. Můžete se také podívat na podrobnou časovou osu počítače, která zobrazuje každé chování po dobu až šesti měsíců.
+    :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Microsoft Defender pro vlastní Security Center koncového bodu" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
-    ![Stránka ATP v programu Microsoft Defender s podrobnými informacemi o výstraze](media/security-center-wdatp/image3.png)
+## <a name="microsoft-defender-for-endpoint-tenant-location"></a>Microsoft Defender pro umístění tenanta koncového bodu
 
-## <a name="platform-support"></a>Podpora platformy
+Když použijete Azure Security Center k monitorování serverů, automaticky se vytvoří Microsoft Defender pro klienta koncového bodu. Data shromážděná programem Defender pro koncový bod jsou uložená v geograficky umístění tenanta, jak je uvedeno během zřizování. Zákaznická data – v pseudonymně naformátované formě se můžou ukládat do centrálního úložného a zpracovatelského systému v USA. 
 
-ATP Microsoft Defender v Security Center podporuje detekci v systému Windows Server 2016, 2012 R2 a 2008 R2 SP1. Pro virtuální počítače Azure, které potřebujete k povolení Azure Defenderu na vašem předplatném a pro virtuální počítače mimo Azure, potřebujete, aby byl v pracovním prostoru jenom povolený Azure Defender.
-
-Monitorování koncového bodu serveru pomocí této integrace bylo pro zákazníky Office 365 RSZ zakázané.
-
-## <a name="data-storage-location"></a>Umístění úložiště dat
-
-Když použijete Azure Security Center k monitorování serverů, vytvoří se automaticky tenant Microsoft Defender ATP. Data shromažďovaná ATP programu Microsoft Defender se ukládají do geografického umístění tenanta, jak je uvedeno během zřizování. Zákaznická data v nepseudonymních formulářích můžou být uložená také v centrálním systému úložiště a zpracování v USA. 
-
-Po nakonfigurování nebudete moct změnit umístění, kde jsou data uložená. Pokud potřebujete přesunout data do jiného umístění, kontaktujte podpora Microsoftu pro resetování tenanta.
+Po nakonfigurování umístění ho nemůžete změnit. Pokud potřebujete přesunout data do jiného umístění, kontaktujte podpora Microsoftu pro resetování tenanta.
 
 
-## <a name="onboard-servers-to-security-center"></a>Připojit servery k Security Center 
+## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Povolení integrace programu Microsoft Defender pro koncové body
 
-Pokud chcete servery připojit k Security Center, klikněte na **Přejít na Azure Security Center a připojte servery** ze serveru Microsoft Defender atp.
+1. Povolte **Azure Defender pro servery**. Podívejte se [na ceny Azure Security Center](security-center-pricing.md#enable-azure-defender).
 
-1. V oblasti **připojování** vyberte nebo vytvořte pracovní prostor, do kterého chcete ukládat data.
+    > [!NOTE]
+    > Pokud chcete chránit počítače s povoleným obloukem Azure, postupujte podle pokynů v části [rychlý Start: připojení hybridního počítače se servery s podporou ARC Azure](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
 
-2. Pokud nevidíte všechny vaše pracovní prostory, může to být způsobeno nedostatečnými oprávněními, ujistěte se, že je váš pracovní prostor chráněný pomocí Azure Defenderu.
-    
-3. Pokud chcete zobrazit pokyny k instalaci agenta Log Analytics, vyberte **Přidat servery** . 
+1. Pokud jste už na svých serverech licencovaný a nasazený program Microsoft Defender pro koncové body, odeberte ho pomocí postupu popsaného v tématu [odpojení Windows Servers](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers).
+1. V nabídce Security Center vyberte **cenové & nastavení**.
+1. Vyberte předplatné, které chcete změnit.
+1. Vyberte **detekci hrozeb**.
+1. Vyberte možnost **Povolení ochrany ATP v programu Windows Defender pro přístup k datům**a vyberte **Uložit**.
 
-4. Po registraci můžete počítače monitorovat v [inventáři assetů](asset-inventory.md).
+    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Microsoft Defender pro vlastní Security Center koncového bodu":::
 
-   ![Zprovoznění počítačů](media/security-center-wdatp/onboard-computers.png)
+    Azure Security Center automaticky zařadí vaše servery do programu Microsoft Defender pro koncový bod. Připojování může trvat až 24 hodin.
 
-## <a name="enable-microsoft-defender-atp-integration"></a>Povolit integraci ATP v programu Microsoft Defender
 
-Pokud chcete zobrazit, jestli je povolená integrace **ochrany**ATP v programu Microsoft Defender, vyberte  >  **Nastavení cenové &** Security Center > vyberte předplatné.
+## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>Přístup k programu Microsoft Defender pro portál koncových bodů
 
-Tady vidíte aktuálně povolená integrace.
+1. Ujistěte se, že uživatelský účet má potřebná oprávnění. [Další informace](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
 
-  ![Stránka Nastavení detekce hrozeb Azure Security Center s povolenou integrací ATP v programu Microsoft Defender](media/security-center-wdatp/enable-integrations.png)
+1. Ověřte, jestli máte proxy nebo bránu firewall, která blokuje anonymní provoz. Defender pro senzor koncového bodu se připojuje z kontextu systému, takže musí být povolený anonymní provoz. Pokud chcete zajistit nerušený přístup k programu Defender pro portál Endpoint, postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby v proxy server](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
 
-- Pokud jste už Azure Defender povolili, nemusíte dělat nic dalšího. Azure Security Center automaticky připojí servery do ochrany ATP v programu Microsoft Defender. Připojování může trvat až 24 hodin.
+1. Otevřete [portál Microsoft Defender Security Center](https://securitycenter.windows.com/). Přečtěte si další informace o funkcích a ikonách portálu v článku [Přehled portálu Microsoft Defender Security Center](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/portal-overview). 
 
-- Pokud jste servery nikdy nepřipojili k Azure Security Center, připojte je k Azure Security Center a umožněte jako obvykle službu Azure Defender.
+## <a name="send-a-test-alert"></a>Odeslat testovací výstrahu
 
-- Pokud jste servery připojili pomocí ochrany ATP v programu Microsoft Defender:
-  - Pokyny [k odpojení serverových počítačů](https://go.microsoft.com/fwlink/p/?linkid=852906)najdete v dokumentaci.
-  - Připojte tyto servery k Azure Security Center.
-
-## <a name="access-to-the-microsoft-defender-atp-portal"></a>Přístup k portálu Microsoft Defender ATP
-
-1. Postupujte podle pokynů v části [přiřazení přístupu uživatele k portálu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/assign-portal-access).
-
-1. Ověřte, jestli máte proxy nebo bránu firewall, která blokuje anonymní provoz. Senzor ATP (Defender ATP) se připojuje z kontextu systému, takže musí být povolený anonymní provoz. Pokud chcete zajistit nerušený přístup k portálu Microsoft Defender ATP, postupujte podle pokynů v tématu [Povolení přístupu k adresám URL služby Microsoft Defender ATP v proxy server](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet#enable-access-to-microsoft-defender-atp-service-urls-in-the-proxy-server).
-
-## <a name="test-the-feature"></a>Testování funkce
-
-Vygenerování neškodné výstrahy testu ATP v programu Microsoft Defender:
+Pro vygenerování neškodné výstrahy testování v programu Microsoft Defender pro koncové body:
 
 1. Vytvořte složku ' C:\test-MDATP-test '.
-
-1. Pro přístup k virtuálnímu počítači s Windows Serverem 2012 R2 nebo k virtuálnímu počítači s Windows serverem 2016 použijte vzdálenou plochu. Otevřete okno příkazového řádku.
-
+1. Pro přístup k virtuálnímu počítači s Windows Serverem 2012 R2 nebo k virtuálnímu počítači s Windows serverem 2016 použijte vzdálenou plochu.
+1. Otevřete okno příkazového řádku.
 1. Na příkazovém řádku zkopírujte a spusťte následující příkaz. Okno příkazového řádku se automaticky zavře.
 
-    ```
+    ```powershell
     powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
+    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Microsoft Defender pro vlastní Security Center koncového bodu":::
 
-   ![Okno příkazového řádku s výše uvedeným příkazem](media/security-center-wdatp/image4.jpeg)
-
-1. Pokud je příkaz úspěšný, zobrazí se na řídicím panelu Azure Security Center a na portálu Microsoft Defender ATP nové upozornění. Zobrazení této výstrahy může trvat několik minut.
-
+1. Pokud je příkaz úspěšný, zobrazí se nová výstraha na řídicím panelu Azure Security Center a v programu Microsoft Defender pro portál koncového bodu. Zobrazení této výstrahy může trvat několik minut.
 1. Pokud chcete zobrazit výstrahu v Security Center, přečtěte si **Security alerts**  >  **podezřelé příkazový řádek PowerShellu**výstrahy zabezpečení.
+1. V okně šetření vyberte odkaz pro přechod na portál Microsoft Defender pro koncový bod.
 
-1. V okně šetření vyberte odkaz pro přechod na portál Microsoft Defender ATP.
+
+## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Nejčastější dotazy k integrovanému programu Microsoft Defender pro Security Center pro koncové body
+
+### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Jaké jsou licenční požadavky pro Microsoft Defender pro koncový bod?
+
+Defender pro koncový bod je v **Azure Defenderu pro servery**zahrnutý bez dalších poplatků. Alternativně se dá koupit samostatně pro 50 počítače a další.
+
+
+### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Návody přepnout z nástroje EDR třetí strany?
+
+Úplné pokyny pro přepínání z řešení koncového bodu od jiného výrobce než od Microsoftu jsou dostupné v dokumentaci k Microsoft Defenderu pro koncové body: [Přehled migrace](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration).
+  
+
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Platformy a funkce podporované službou Azure Security Center](security-center-os-coverage.md)
-- [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md): Naučte se konfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 - [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Přečtěte si, jak doporučení vám pomůžou chránit vaše prostředky Azure.
-- [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.

@@ -44,10 +44,6 @@
         - name: Sdílení z Azure Data Exploreru
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: Monitorování
-      href: how-to-monitor.md
-    - name: Řešení potíží
-      href: data-share-troubleshoot.md
     - name: Přidání datových sad
       href: how-to-add-datasets.md
     - name: Konfigurace mapování datové sady
@@ -58,10 +54,14 @@
       href: how-to-delete-invitation.md
     - name: Odvolání předplatného sdílené složky
       href: how-to-revoke-share-subscription.md
+    - name: Monitorování
+      href: how-to-monitor.md
     - name: Zabezpečení
       href: security.md
     - name: Zotavení po havárii
       href: disaster-recovery.md
+    - name: Řešení potíží
+      href: data-share-troubleshoot.md
 - name: Referenční informace
   items:
     - name: .NET

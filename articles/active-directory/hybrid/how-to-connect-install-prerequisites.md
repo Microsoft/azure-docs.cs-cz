@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fa96d6bd0032f675ffaeabc58c62c13312039dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662171"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276952"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -46,6 +46,14 @@ Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
 * Řadič domény, který používá Azure AD, musí být zapisovatelný. Použití řadiče domény jen pro čtení (RODC) *není podporované*a Azure AD Connect nedodržují žádné přesměrování zápisu.
 * Použití místních doménových struktur nebo domén pomocí teček (název obsahuje tečku ".") Názvy rozhraní NetBIOS *nejsou podporovány*.
 * Doporučujeme [Povolit složku Koš služby Active Directory](how-to-connect-sync-recycle-bin.md).
+
+### <a name="powershell-execution-policy"></a>Zásady spouštění skriptu PowerShell
+Azure Active Directory Connect v rámci instalace spouští podepsané skripty PowerShellu. Ujistěte se, že zásady spouštění prostředí PowerShell umožní spouštění skriptů.
+
+Doporučené zásady spouštění během instalace jsou "RemoteSigned".
+
+Další informace o nastavení zásad spouštění prostředí PowerShell najdete v tématu [Set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+
 
 ### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
 Server Azure AD Connect obsahuje kritická data identity. Je důležité, aby byl přístup pro správu k tomuto serveru správně zabezpečený. Postupujte podle pokynů v části [zabezpečení privilegovaného přístupu](/windows-server/identity/securing-privileged-access/securing-privileged-access). 
@@ -132,7 +140,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 Volitelné: k ověření synchronizace použijte účet testovacího uživatele.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti

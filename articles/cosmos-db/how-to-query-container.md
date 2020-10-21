@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261252"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276114"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Dotazování kontejneru Azure Cosmos
 
@@ -19,7 +19,7 @@ Tento článek vysvětluje, jak zadat dotaz na kontejner (kolekci, graf nebo tab
 
 ## <a name="in-partition-query"></a>Dotaz v rámci oddílu
 
-Pokud má dotaz dotaz na data z kontejnerů, je-li v dotazu zadán filtr klíčů oddílu, Azure Cosmos DB automaticky optimalizuje dotaz. Směruje dotaz na [fyzické oddíly](partition-data.md#physical-partitions) , které odpovídají hodnotám klíče oddílu zadaným ve filtru.
+Pokud má dotaz dotaz na data z kontejnerů, je-li v dotazu zadán filtr klíčů oddílu, Azure Cosmos DB automaticky optimalizuje dotaz. Směruje dotaz na [fyzické oddíly](partitioning-overview.md#physical-partitions) , které odpovídají hodnotám klíče oddílu zadaným ve filtru.
 
 Například zvažte následující dotaz s filtrem rovnosti na `DeviceId` . Pokud tento dotaz spustíte na kontejneru rozděleném na oddíly `DeviceId` , tento dotaz se vyfiltruje na jeden fyzický oddíl.
 
@@ -61,7 +61,7 @@ Paralelní provádění dotazů můžete spravovat laděním následujících pa
 
 - **MaxBufferedItemCount:** Vyvažuje latenci dotazů a využití paměti na straně klienta. Pokud je tato možnost vynechána nebo chcete-li ji nastavit na hodnotu-1, sada SDK spravuje počet položek ukládaných do vyrovnávací paměti během paralelního provádění dotazů.
 
-Vzhledem k tomu, že Azure Cosmos DB je možné paralelizovatovat dotazy na více oddílů, bude latence dotazů obecně škálovatelná, protože systém přidává [fyzické oddíly](partition-data.md#physical-partitions). Poplatek za RU se ale výrazně zvýší, protože se zvýší celkový počet fyzických oddílů.
+Vzhledem k tomu, že Azure Cosmos DB je možné paralelizovatovat dotazy na více oddílů, bude latence dotazů obecně škálovatelná, protože systém přidává [fyzické oddíly](partitioning-overview.md#physical-partitions). Poplatek za RU se ale výrazně zvýší, protože se zvýší celkový počet fyzických oddílů.
 
 Když spustíte dotaz pro různé oddíly, budete v podstatě provádět samostatný dotaz na jednotlivé fyzické oddíly. I když dotazy mezioddílu budou používat index, pokud je k dispozici, stále nejsou skoro stejně efektivní jako dotazy v rámci oddílu.
 

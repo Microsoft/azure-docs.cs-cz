@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 0fda407a916ca43ed36fa567374752bbb7a49a80
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 9a18b35ce974aebb38f8f58b892fd93b94f5e3c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998963"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314793"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
 
@@ -26,7 +26,7 @@ V tomto článku se naučíte, jak použít Azure Machine Learning k nasazení m
 Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model použit k provedení předpovědi. Použití GPU místo CPU nabízí výhody výkonu při vysoce paralelizovat výpočtu.
 
 > [!IMPORTANT]
-> Pro nasazení webových služeb je odvození GPU podporováno pouze ve službě Azure Kubernetes. Pro odvození pomocí __kanálu strojového učení__se GPU podporují jenom v Azure Machine Learning Compute. Další informace o použití kanálů ML najdete v tématu [spuštění dávkového předpovědi](how-to-use-parallel-run-step.md). 
+> Pro nasazení webových služeb je odvození GPU podporováno pouze ve službě Azure Kubernetes. Pro odvození pomocí __kanálu strojového učení__se GPU podporují jenom v Azure Machine Learning Compute. Další informace o použití kanálů ML najdete v tématu [kurz: sestavení kanálu Azure Machine Learning pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md). 
 
 > [!TIP]
 > I když fragmenty kódu v tomto článku používají model TensorFlow, můžete tyto informace použít pro jakékoli rozhraní Machine Learning, které podporuje GPU.
@@ -34,7 +34,7 @@ Odvození modelu nebo Bodové hodnocení je fáze, ve které je nasazený model 
 > [!NOTE]
 > Informace v tomto článku jsou založeny na informacích v článku [Jak nasadit do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md) . V tomto článku se obecně zabývá nasazením na AKS. Tento článek popisuje nasazení specifické pro grafické procesory.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 

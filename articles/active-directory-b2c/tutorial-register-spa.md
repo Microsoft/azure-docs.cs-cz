@@ -12,12 +12,12 @@ ms.date: 04/10/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9debcca5e589038467c8201274471e3c2698cad6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: fc01fb4296226126b996840109d3bb305b042364
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223069"
+ms.locfileid: "92275804"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>Kurz: registrace jednostránkové aplikace (SPA) v Azure Active Directory B2C
 
@@ -53,7 +53,7 @@ Pokud jste ještě nevytvořili vlastního [tenanta Azure AD B2C](tutorial-creat
 
 ## <a name="register-the-spa-application"></a>Registrace aplikace SPA
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -61,11 +61,11 @@ Pokud jste ještě nevytvořili vlastního [tenanta Azure AD B2C](tutorial-creat
 1. V části **podporované typy účtů**vyberte **účty v jakémkoli zprostředkovateli identity nebo organizačním adresáři (pro ověřování uživatelů pomocí toků uživatelů)** .
 1. V části **identifikátor URI pro přesměrování**vyberte **JEDNOSTRÁNKOVÉ aplikace (Spa)** a potom `https://jwt.ms` do textového pole Adresa URL zadejte.
 
-    Identifikátor URI přesměrování je koncový bod, na který se uživatel pošle prostřednictvím autorizačního serveru (Azure AD B2C, v tomto případě) po dokončení jeho interakce s uživatelem a ke kterému se po úspěšné autorizaci pošle přístupový token nebo autorizační kód. V produkční aplikaci je obvykle veřejně přístupný koncový bod, ve kterém je vaše aplikace spuštěná, třeba `https://contoso.com/auth-response` . Pro účely testování, jako je tento kurz, můžete ho nastavit na `https://jwt.ms` , webovou aplikaci ve vlastnictví společnosti Microsoft, která zobrazuje Dekódovatelné obsah tokenu (obsah tokenu nikdy nezůstane v prohlížeči). Během vývoje aplikace můžete přidat koncový bod, ve kterém vaše aplikace naslouchá místně, například `https://localhost:5000` . V registrovaných aplikacích můžete kdykoli přidat a změnit identifikátory URI pro přesměrování.
+    Identifikátor URI přesměrování je koncový bod, na který se uživatel pošle prostřednictvím autorizačního serveru (Azure AD B2C, v tomto případě) po dokončení jeho interakce s uživatelem a ke kterému se po úspěšné autorizaci pošle přístupový token nebo autorizační kód. V produkční aplikaci je obvykle veřejně přístupný koncový bod, ve kterém je vaše aplikace spuštěná, třeba `https://contoso.com/auth-response` . Pro účely testování, jako je tento kurz, můžete ho nastavit na `https://jwt.ms` , webovou aplikaci ve vlastnictví společnosti Microsoft, která zobrazuje Dekódovatelné obsah tokenu (obsah tokenu nikdy nezůstane v prohlížeči). Během vývoje aplikace můžete přidat koncový bod, ve kterém vaše aplikace naslouchá místně, například `http://localhost:5000` . V registrovaných aplikacích můžete kdykoli přidat a změnit identifikátory URI pro přesměrování.
 
     Pro identifikátory URI přesměrování platí následující omezení:
 
-    * Adresa URL odpovědi musí začínat schématem `https` .
+    * `https`Pokud nepoužíváte, musí adresa URL odpovědi začínat schématem `localhost` .
     * Adresa URL odpovědi rozlišuje velká a malá písmena. Jeho velikost se musí shodovat s písmenem adresy URL vaší běžící aplikace. Například pokud vaše aplikace obsahuje jako součást cesty `.../abc/response-oidc` , nezadávejte `.../ABC/response-oidc` v adrese URL odpovědi. Vzhledem k tomu, že webový prohlížeč považuje cesty jako rozlišování velkých a malých písmen, mohou být soubory cookie přidružené k `.../abc/response-oidc` vyloučeny při přesměrování na neshodnou `.../ABC/response-oidc` adresu URL.
 
 1. V části **oprávnění**zaškrtněte políčko *udělit souhlas správcům oprávnění OpenID a offline_access* .

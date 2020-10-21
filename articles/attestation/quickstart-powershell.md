@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d25cdce2670de64fecc8590a2f5f833c10d2df69
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421284"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316007"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>Rychlý Start: nastavení ověření Azure pomocí Azure PowerShell
 
@@ -23,7 +23,7 @@ Upozorňujeme, že Galerie prostředí PowerShell má zastaralé verze protokolu
 - Upozornění: nepovedlo se přeložit zdroj https://www.powershellgallery.com/api/v2 balíčku.
 - PackageManagement\Install-Package: pro zadaná kritéria vyhledávání a název modulu se nenašla žádná shoda. 
 
-Pokud chcete pokračovat v práci s Galerie prostředí PowerShell, spusťte před příkazy instalačního modulu následující příkaz.
+Pokud chcete pokračovat v interakci s Galerie prostředí PowerShell, spusťte před příkazy Install-Module tento příkaz.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
@@ -179,14 +179,14 @@ Toto oprávnění může být přiřazeno uživateli služby AD prostřednictví
 
 Níže uvedené rutiny prostředí PowerShell poskytují správu zásad pro poskytovatele ověření identity (jeden TEE v jednom okamžiku).
 
-Get-AzAttestationPolicy vrátí aktuální zásady pro zadaný TEE. Rutina zobrazí zásady ve formátu text i JWT.
+Get-AzAttestationPolicy vrátí aktuální zásadu pro zadaný TEE. Rutina zobrazí zásady ve formátu text i JWT.
 
 ```powershell
 $teeType = "<tee Type>"
 Get-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
 ```
 
-Podporované typy TEE jsou "sgxenclave" a "vbsenclave".
+Podporované typy TEE jsou "SgxEnclave", "OpenEnclave" a "VbsEnclave".
 
 Set-AttestationPolicy nastaví novou zásadu pro zadaný TEE. Rutina akceptuje zásady ve formátu text nebo JWT a je ovládána parametrem PolicyFormat. "Text" je výchozí hodnota pro PolicyFormat. 
 

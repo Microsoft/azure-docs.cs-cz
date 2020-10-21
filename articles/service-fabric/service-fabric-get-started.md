@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 08abd9ff1134415e47923f22e753691225fc23b8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f32bc444ba753f48955de4a4c16bde8dfb7a05fc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164716"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316645"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 
@@ -94,7 +94,7 @@ Teď, když jste dokončili nastavení vývojového prostředí, můžete začí
 
 * [Naučte se vytvářet, nasazovat a spravovat aplikace.](service-fabric-tutorial-create-dotnet-app.md)
 * [Seznamte se s programovacími modely: Reliable Services a Reliable Actors](service-fabric-choose-framework.md)
-* [Prohlédněte si ukázky kódu Service Fabric na GitHubu](https://aka.ms/servicefabricsamples)
+* [Prohlédněte si ukázky kódu Service Fabric na GitHubu](/samples/browse/?products=azure)
 * [Vizualizujte cluster pomocí Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md)
 * [Příprava linuxového vývojového prostředí ve Windows](service-fabric-local-linux-cluster-windows.md)
 * Informace o [možnostech podpory pro Service Fabric](service-fabric-support.md)
