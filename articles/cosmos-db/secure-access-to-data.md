@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760865"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371728"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 
@@ -29,20 +29,7 @@ Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a posky
 
 ## <a name="primary-keys"></a>Primární klíče
 
-Primární klíče poskytují přístup ke všem prostředkům správy pro účet databáze. Primární klíče:
-
-- Poskytněte přístup k účtům, databázím, uživatelům a oprávněním. 
-- Nelze použít k poskytnutí podrobného přístupu k kontejnerům a dokumentům.
-- Se vytvoří během vytváření účtu.
-- Může být kdykoli znovu vygenerována.
-
-Každý účet se skládá ze dvou primárních klíčů: primárního a sekundárního klíče. Účelem duálních klíčů je, abyste mohli znovu vygenerovat nebo obnovit klíče a zajistit tak nepřetržitý přístup k vašemu účtu a datům.
-
-Kromě dvou primárních klíčů pro účet Cosmos DB jsou k dispozici dva klíče jen pro čtení. Tyto klíče jen pro čtení povolují operace čtení jenom na účtu. Klíče jen pro čtení neposkytují přístup k prostředkům oprávnění ke čtení.
-
-Primární klíče primární, sekundární, jen pro čtení a primární klíče pro čtení i zápis lze načíst a znovu vygenerovat pomocí Azure Portal. Pokyny najdete v tématu [zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#regenerate-account-key).
-
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze NoSQL":::
+Primární klíče poskytují přístup ke všem prostředkům správy pro účet databáze. Každý účet se skládá ze dvou primárních klíčů: primárního a sekundárního klíče. Účelem duálních klíčů je, abyste mohli znovu vygenerovat nebo obnovit klíče a zajistit tak nepřetržitý přístup k vašemu účtu a datům. Další informace o primárních klíčích najdete v článku o [zabezpečení databáze](database-security.md#primary-keys) .
 
 ### <a name="key-rotation"></a>Střídání klíčů<a id="key-rotation"></a>
 
@@ -51,10 +38,10 @@ Proces otáčení primárního klíče je jednoduchý.
 1. Pokud chcete získat sekundární klíč, přejděte na Azure Portal.
 2. Nahraďte primární klíč svým sekundárním klíčem ve vaší aplikaci. Ujistěte se, že všichni klienti Cosmos DB napříč všemi nasazeními se okamžitě restartují a začnou používat aktualizovaný klíč.
 3. Otočení primárního klíče v Azure Portal.
-4. Ověří, jestli má nový primární klíč fungovat u všech prostředků. Proces střídání klíčů může v závislosti na velikosti Cosmos DB účtu trvat od méně než minuty až po hodiny.
+4. Ověří, jestli má nový primární klíč fungovat u všech prostředků. Proces střídání klíčů může trvat kratší dobu než minutu a hodiny v závislosti na velikosti Cosmos DB účtu.
 5. Nahraďte sekundární klíč novým primárním klíčem.
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze NoSQL" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Základní střídání klíčů v Azure Portal – demonstrace zabezpečení databáze NoSQL" border="false":::
 
 ### <a name="code-sample-to-use-a-primary-key"></a>Ukázka kódu pro použití primárního klíče
 
@@ -102,7 +89,7 @@ Tady je typický vzor návrhu, který umožňuje vyžádat, vygenerovat a doruč
 7. Aplikace pro telefon může i nadále používat token prostředku k přímému přístupu k prostředkům Cosmos DB s oprávněními definovanými tokenem prostředku a v intervalu povoleném tokenem prostředku.
 8. Po vypršení platnosti tokenu prostředku obdrží další požadavky 401 neoprávněnou výjimku.  V tuto chvíli aplikace pro telefon znovu naváže identitu a požádá o nový token prostředku.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze NoSQL" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Základní střídání klíčů v Azure Portal – demonstrace zabezpečení databáze NoSQL" border="false":::
 
 Generování a Správa tokenů prostředků jsou zpracovávány nativními klientskými knihovnami Cosmos DB; Pokud však použijete REST, je nutné vytvořit hlavičky žádosti nebo ověřování. Další informace o vytváření ověřovacích hlaviček pro REST najdete v tématu [Access Control v Cosmos DBch prostředcích](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo ve zdrojovém kódu pro naši sadu [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) nebo [ sadu SDKNode.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
 

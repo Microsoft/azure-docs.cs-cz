@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: Co je jednotné přihlašování (SSO)?
       href: what-is-single-sign-on.md
+    - name: Novinky v dokumentaci
+      href: whats-new-docs.md
 - name: Rychlé starty
   expanded: true
   items:

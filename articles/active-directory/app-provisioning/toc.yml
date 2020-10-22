@@ -5,6 +5,8 @@
   items:
     - name: Co je zřizování aplikací?
       href: user-provisioning.md
+    - name: Novinky v dokumentaci
+      href: whats-new-docs.md
 - name: Kurzy
   expanded: true
   items:

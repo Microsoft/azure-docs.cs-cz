@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 455cf921cfcd4ac5d0e81fb4e092ec165070a3f1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 09d5ece0afdd5abe3da5ebdeb6a7ae290e1ccf3d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331562"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372310"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -319,6 +319,12 @@ Pokud chcete zabalit práci pro tento rychlý Start, nejprve ukončete spuštěn
 Pokud máte v úmyslu pokračovat na kurzy digitálních vláken Azure, instance použitá v tomto rychlém startu se dá pro tyto články znovu použít a nemusíte ji odebrat.
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
+
+V dalším kroku odstraňte registraci aplikace Azure Active Directory, kterou jste vytvořili pro klientskou aplikaci, pomocí tohoto příkazu:
+
+```azurecli
+az ad app delete --id <your-application-ID>
+```
 
 Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (_**Azure_Digital_Twins__ADT__explorer**_ a _**Azure_Digital_Twins_end_to_end_samples**_). Možná bude nutné odstranit verze zip i unzip.
 
