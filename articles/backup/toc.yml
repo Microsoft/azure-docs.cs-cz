@@ -406,8 +406,6 @@
           href: backup-encryption.md
         - name: Šifrování s využitím klíčů spravovaných zákazníky
           href: encryption-at-rest-with-cmk.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: backup-security-controls.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

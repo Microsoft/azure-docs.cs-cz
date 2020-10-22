@@ -62,8 +62,6 @@
       items:
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: api-management-security-controls.md
     - name: Předplatná
       href: api-management-subscriptions.md
     - name: Verze

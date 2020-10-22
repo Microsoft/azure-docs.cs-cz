@@ -93,7 +93,7 @@
 - name: Reference
   items:
     - name: Rozhraní REST API dokumentace
-      href: 'https://docs.microsoft.com/rest/api/azure/'
+      href: 'https://docs.microsoft.com/rest/api/communication/'
     - name: Knihovna volání (Android/Java)
       href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
     - name: Knihovna volání (JS)

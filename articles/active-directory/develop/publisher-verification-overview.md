@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258145"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363415"
 ---
 # <a name="publisher-verification"></a>Ověření vydavatele
 
@@ -49,7 +49,7 @@ Je k dispozici několik požadavků na ověření vydavatele, některé z nich j
 
 -  Uživatel, který provádí ověřování, musí mít autorizaci k provádění změn v registraci aplikace v Azure AD a účtu MPN v partnerském centru. 
 
-    -  V Azure AD musí být tento uživatel členem jedné z následujících [rolí](../users-groups-roles/directory-assign-admin-roles.md): správce aplikace, správce cloudové aplikace nebo globální správce. 
+    -  V Azure AD musí být tento uživatel členem jedné z následujících [rolí](../roles/permissions-reference.md): správce aplikace, správce cloudové aplikace nebo globální správce. 
 
     -  V partnerském centru musí mít tento uživatel tyto [role](/partner-center/permissions-overview): správce MPN, účty správce nebo globální správce (Toto je sdílená role spravovaná ve službě Azure AD).
     

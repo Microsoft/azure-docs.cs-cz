@@ -95,6 +95,10 @@
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Možnosti připojení mezi sítěmi
       href: cross-network-connectivity.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Atributy zabezpečení
       href: expressroute-security-controls.md
     - name: BFD přes ExpressRoute
@@ -269,5 +273,3 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: Vytvoření a úprava veřejného partnerského vztahu
           href: about-public-peering.md
-    - name: Standardní hodnoty zabezpečení
-      href: security-baseline.md

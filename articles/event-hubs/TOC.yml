@@ -115,8 +115,6 @@
               href: authenticate-shared-access-signature.md
         - name: Zabezpečení sítě
           href: network-security.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: event-hubs-security-controls.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

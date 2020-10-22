@@ -44,8 +44,6 @@
       href: quickstart-create-workspace-powershell.md
     - name: Nasazení s využitím šablony
       href: quickstart-deployment-template-workspaces.md
-    - name: Použití sady Synapse Studio
-      href: quickstart-synapse-studio.md
     - name: Propojení pracovního prostoru Power BI
       href: quickstart-power-bi.md
     - name: Vytváření fondů

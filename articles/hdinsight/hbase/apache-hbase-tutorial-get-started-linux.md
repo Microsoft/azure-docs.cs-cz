@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: 114a0d6f97149baad0c9e76fb359c52996820575
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207151"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370317"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Kurz: použití Apache HBA v Azure HDInsight
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Použití rozhraní REST API HBase pomocí Curl
 > * Kontrola stavu clusteru
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -228,6 +228,31 @@ Data HBA je také možné dotazovat z podregistru pomocí adaptérů HBA s povol
 
 Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). Požadavky byste vždy měli provádět pomocí protokolu HTTPS (Secure HTTP), čímž pomůžete zajistit, že se přihlašovací údaje budou na server odesílat bezpečně.
 
+1. Pokud chcete povolit rozhraní REST API v clusteru HDInsight, přidejte do oddílu **akce skriptu** následující vlastní spouštěcí skript. Spouštěcí skript můžete přidat po vytvoření clusteru nebo po jeho vytvoření. V poli **typ uzlu**vyberte **servery oblastí** , aby se zajistilo, že se skript spustí jenom v adaptérech HBA na serverech oblasti.
+
+
+    ```bash
+    #! /bin/bash
+
+    THIS_MACHINE=`hostname`
+
+    if [[ $THIS_MACHINE != wn* ]]
+    then
+        printf 'Script to be executed only on worker nodes'
+        exit 0
+    fi
+
+    RESULT=`pgrep -f RESTServer`
+    if [[ -z $RESULT ]]
+    then
+        echo "Applying mitigation; starting REST Server"
+        sudo python /usr/lib/python2.7/dist-packages/hdinsight_hbrest/HbaseRestAgent.py
+    else
+        echo "Rest server already running"
+        exit 0
+    fi
+    ```
+
 1. Nastavte proměnnou prostředí pro snadné použití. Níže uvedené příkazy upravte tak, že nahradíte `MYPASSWORD` heslo pro přihlášení ke clusteru. Nahraďte `MYCLUSTERNAME` názvem vašeho clusteru HBA. Pak zadejte příkazy.
 
     ```bash
@@ -323,7 +348,7 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před odstraněním clusteru. Můžete použít příkaz HBA `disable 'Contacts'` . Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 1. V části **služby**vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu.

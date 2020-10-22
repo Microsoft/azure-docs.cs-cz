@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888e2287c869200434e198204881d5bd5014f87d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387673"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363857"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Správa Azure AD B2C vlastních zásad pomocí Azure PowerShell
 
@@ -27,9 +27,9 @@ Azure PowerShell poskytuje několik rutin pro správu vlastních zásad na zákl
 * Nahrajte do svého tenanta Azure AD B2C novou zásadu.
 * Odstranění vlastních zásad z tenanta
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
+* [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
 * [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
 * [Azure AD PowerShell pro **modul Graph Preview**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
@@ -37,7 +37,7 @@ Azure PowerShell poskytuje několik rutin pro správu vlastních zásad na zákl
 
 Pokud chcete pracovat s vlastními zásadami ve vašem tenantovi Azure AD B2C, musíte nejdřív připojit relaci PowerShellu k tenantovi pomocí příkazu [Connect-AzureAD][Connect-AzureAD] .
 
-Spusťte následující příkaz a nahraďte `{b2c-tenant-name}` názvem vašeho tenanta Azure AD B2C. Přihlaste se pomocí účtu, který má přiřazenou roli [správce zásad B2C IEF](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) v adresáři.
+Spusťte následující příkaz a nahraďte `{b2c-tenant-name}` názvem vašeho tenanta Azure AD B2C. Přihlaste se pomocí účtu, který má přiřazenou roli [správce zásad B2C IEF](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) v adresáři.
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"

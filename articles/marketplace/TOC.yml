@@ -105,12 +105,22 @@
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Vytvoření nabídky kontejnerů Azure
               href: partner-center-portal/create-azure-container-offer.md
-    - name: Nabídka virtuálních počítačů Azure
+    - name: Nabídky virtuálních počítačů Azure
       items:
         - name: Plánování nabídky virtuálních počítačů
           href: marketplace-virtual-machines.md
         - name: Vytvoření a publikování nabídky virtuálních počítačů
           items:
+            - name: Vytvoření nabídky virtuálních počítačů
+              href: azure-vm-create.md
+            - name: Konfigurace vlastností nabídek virtuálních počítačů
+              href: azure-vm-create-properties.md
+            - name: Konfigurace výpisu nabídek virtuálních počítačů
+              href: azure-vm-create-listing.md
+            - name: Vytváření plánů pro virtuální počítače
+              href: azure-vm-create-plans.md
+            - name: Přidání cílové skupiny pro verzi Preview
+              href: azure-vm-create-preview.md
             - name: Vytvoření technických prostředků virtuálního počítače
               items:
                 - name: Vytvoření virtuálního počítače ze schválené báze
@@ -127,16 +137,6 @@
                   href: azure-vm-create-faq.md
                 - name: Řešení potíží s certifikacemi virtuálních počítačů
                   href: azure-vm-create-certification-faq.md
-            - name: Vytvoření nabídky virtuálních počítačů
-              href: azure-vm-create.md
-            - name: Konfigurace vlastností nabídek virtuálních počítačů
-              href: azure-vm-create-properties.md
-            - name: Konfigurace výpisu nabídek virtuálních počítačů
-              href: azure-vm-create-listing.md
-            - name: Vytváření plánů pro virtuální počítače
-              href: azure-vm-create-plans.md
-            - name: Přidání cílové skupiny pro verzi Preview
-              href: azure-vm-create-preview.md
     - name: Konzultační služby
       items:
         - name: Plánování nabídky konzultačních služeb

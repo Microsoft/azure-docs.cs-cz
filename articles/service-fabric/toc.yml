@@ -148,8 +148,6 @@
           href: service-fabric-application-and-service-security.md
         - name: Zabezpečení clusteru Service Fabric
           href: service-fabric-cluster-security.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: service-fabric-security-controls.md
         - name: Ověřování pomocí certifikátů v Service Fabric
           href: cluster-security-certificates.md
         - name: Správa certifikátů ve službě Service Fabric

@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654187"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370232"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
 Vytváření virtuálních počítačů se systémem Linux je snadné z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit, že jste ho nastavili tak, aby optimalizoval jeho výkon na platformě Microsoft Azure. V tomto tématu se používá virtuální počítač s Ubuntu serverem, ale můžete také vytvořit virtuální počítač se systémem Linux pomocí [vlastních imagí jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto tématu se předpokládá, že už máte funkční předplatné Azure ([registrace bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už jste do svého předplatného Azure ZŘÍDILI virtuální počítač. Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásili jste se k předplatnému Azure pomocí [AZ Login](/cli/azure/reference-index) , než [vytvoříte virtuální počítač](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Disk s operačním systémem Azure
@@ -47,7 +47,38 @@ Když vytvoříte virtuální počítač, Azure ve výchozím nastavení poskytu
 ## <a name="linux-swap-partition"></a>Oddíl odkládacího oddílu Linux
 Pokud je váš virtuální počítač Azure z image Ubuntu nebo CoreOS, můžete k odeslání cloudové konfigurace do Cloud-init použít CustomData. Pokud jste [nahráli vlastní image Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , která používá Cloud-init, nakonfigurujete také odkládací oddíly pomocí Cloud-init.
 
-V případě cloudových imagí Ubuntu je potřeba ke konfiguraci odkládacího oddílu použít Cloud-init. Další informace najdete v tématu [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
+Soubor **/etc/waagent.conf** nemůžete použít ke správě swapu pro všechny bitové kopie, které jsou zřízené a podporované modulem Cloud-init. Úplný seznam imagí najdete v tématu [použití Cloud-init](using-cloud-init.md). 
+
+Nejjednodušší způsob, jak spravovat swap pro tyto image, je provést tyto kroky:
+
+1. Ve složce **/var/lib/Cloud/Scripts/per-Boot** vytvořte soubor s názvem **create_swapfile. sh**:
+
+   **$ sudo touch/var/lib/Cloud/Scripts/per-Boot/create_swapfile. sh**
+
+1. Do souboru přidejte následující řádky:
+
+   **$ sudo VI/var/lib/Cloud/Scripts/per-Boot/create_swapfile. sh**
+
+   ```
+   #!/bin/sh
+   if [ ! -f '/mnt/swapfile' ]; then
+   fallocate --length 2GiB /mnt/swapfile
+   chmod 600 /mnt/swapfile
+   mkswap /mnt/swapfile
+   swapon /mnt/swapfile
+   swapon -a ; fi
+   ```
+
+   > [!NOTE]
+   > Hodnotu můžete změnit podle potřeby a na základě dostupného místa na disku s prostředky, které se liší v závislosti na používané velikosti virtuálního počítače.
+
+1. Zajistěte spustitelný soubor souboru:
+
+   **$ sudo chmod + x/var/lib/Cloud/Scripts/per-Boot/create_swapfile. sh**
+
+1. Pokud chcete vytvořit swapfile, spusťte skript hned za posledním krokem:
+
+   **$ sudo/var/lib/Cloud/Scripts/per-Boot/./create_swapfile. sh**
 
 U imagí bez podpory Cloud-init mají image virtuálních počítačů nasazené z Azure Marketplace agenta pro Linux virtuálního počítače integrovaný s operačním systémem. Tento agent umožňuje VIRTUÁLNÍm počítačům komunikovat s různými službami Azure. Za předpokladu, že jste nasadili standardní bitovou kopii z Azure Marketplace, musíte provést následující kroky, abyste správně nakonfigurovali nastavení souborů odkládacího souboru se systémem Linux:
 

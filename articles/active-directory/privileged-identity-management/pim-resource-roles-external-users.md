@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88782732"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365523"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Pozvání uživatelů typu Host a přiřazení rolí prostředků Azure v Privileged Identity Management
 
@@ -67,7 +67,7 @@ Abyste se ujistili, že budete moci pozvat hosty do vaší organizace, měli bys
 
 Pomocí Privileged Identity Management můžete pozvat hosta a nastavit je jako opravňující pro roli prostředků Azure.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je členem role [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) nebo [Správce uživatelů](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) s uživatelem, který je členem role [správce privilegované role](../roles/permissions-reference.md#privileged-role-administrator) nebo [Správce uživatelů](../roles/permissions-reference.md#user-administrator) .
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

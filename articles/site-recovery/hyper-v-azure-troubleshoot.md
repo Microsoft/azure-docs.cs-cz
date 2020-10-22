@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426118"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364027"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s replikací a převzetím služeb při selhání Hyper-V do Azure
 
@@ -29,7 +29,7 @@ Pokud se setkáte s problémy, když povolíte ochranu pro virtuální počíta�
 4. Vyhledejte problémy, které se zobrazí v Hyper-V-VMMS\Admin přihlášení k virtuálnímu počítači. Tento protokol se nachází v **protokolech aplikací a služeb**v  >  **Microsoft**  >  **systému Microsoft Windows**.
 5. Na virtuálním počítači hosta ověřte, zda je služba WMI povolená a přístupná.
    - [Přečtěte si o](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) základních testech rozhraní WMI.
-   - [Řešení potíží](https://aka.ms/WMiTshooting) WMI.
+   - [Řešení potíží](/windows/win32/wmisdk/wmi-troubleshooting) WMI.
    - [Řešení](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22) potíží se skripty a službami WMI.
 6. Na virtuálním počítači hosta zajistěte, aby byla spuštěná nejnovější verze integračních služeb.
     - [Ověřte](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) , že máte nejnovější verzi.
