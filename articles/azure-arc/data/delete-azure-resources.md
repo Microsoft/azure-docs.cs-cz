@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3fe7b39d0e47965a9603b276960d48d6d3063073
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4c76b2c0109637ce34681d2fa5c8b29e1ff800a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108248"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364367"
 ---
 # <a name="delete-resources-from-azure"></a>Odstranění prostředků z Azure
 
@@ -63,7 +63,7 @@ Pomocí Azure CLI můžete odstranit konkrétní prostředky datových služeb s
 
 Pokud chcete z Azure odstranit prostředky spravované instance SQL pomocí rozhraní příkazového řádku Azure, nahraďte zástupné hodnoty v níže uvedeném příkazu a spusťte ji.
 
-```console
+```azurecli
 az resource delete --name <sql instance name> --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group <resource group name>
 
 #Example
@@ -74,7 +74,7 @@ az resource delete --name <sql instance name> --resource-type Microsoft.AzureDat
 
 Pokud chcete z Azure odstranit prostředek skupiny serverů PostgreSQL s použitím rozhraní příkazového řádku Azure CLI, nahraďte zástupné hodnoty v níže uvedeném příkazu a spusťte ho.
 
-```console
+```azurecli
 az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureData/postgresInstances --resource-group <resource group name>
 
 #Example
@@ -88,7 +88,7 @@ az resource delete --name <postgresql instance name> --resource-type Microsoft.A
 
 Pokud chcete odstranit řadič dat ARC Azure z Azure pomocí rozhraní příkazového řádku Azure, nahraďte zástupné hodnoty v níže uvedeném příkazu a spusťte ho.
 
-```console
+```azurecli
 az resource delete --name <data controller name> --resource-type Microsoft.AzureData/dataControllers --resource-group <resource group name>
 
 #Example

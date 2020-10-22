@@ -22,6 +22,12 @@
               href: hb-series-overview.md
             - name: Výkon
               href: hb-series-performance.md
+        - name: Řada HBv2
+          items:
+            - name: Přehled
+              href: hbv2-series-overview.md
+            - name: Výkon
+              href: hbv2-performance.md
         - name: Řada HC
           items:
             - name: Přehled
