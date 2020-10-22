@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e13fe634db49dcc3f015eb90410c3b7753c8363
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: df1285145d0e8b04bf743a3967099d27d1195269
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318065"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362786"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -183,7 +183,7 @@ Od tohoto okamžiku můžou zákazníci, kteří mají bezplatné klienty, získ
 **Kategorie služby:** Správa skupin  
 **Schopnost produktu:** Prostřednictvím
 
-Abychom zákazníkům poskytli pružnější způsob vytváření skupin pro všechny adresáře, které nejlépe vyhovují jejich potřebám, nahradili jsme možnost **skupiny** pro všechny adresáře ze **Groups**  >  **obecných** nastavení skupiny v Azure Portal s odkazem na [dokumentaci k dynamické skupině](../users-groups-roles/groups-dynamic-membership.md). Vylepšili jsme naši dokumentaci, aby zahrnovala další pokyny, aby správci mohli vytvářet skupiny všech uživatelů, které zahrnují nebo vylučují uživatele typu Host.
+Abychom zákazníkům poskytli pružnější způsob vytváření skupin pro všechny adresáře, které nejlépe vyhovují jejich potřebám, nahradili jsme možnost **skupiny** pro všechny adresáře ze **Groups**  >  **obecných** nastavení skupiny v Azure Portal s odkazem na [dokumentaci k dynamické skupině](../enterprise-users/groups-dynamic-membership.md). Vylepšili jsme naši dokumentaci, aby zahrnovala další pokyny, aby správci mohli vytvářet skupiny všech uživatelů, které zahrnují nebo vylučují uživatele typu Host.
 
 ---
 
@@ -739,7 +739,7 @@ Další informace najdete v tématu [upgrade modelu fakturace na měsíční akt
 
 V říjnu 2019 jsme do Galerie aplikací přidali tyto 35 nové aplikace s podporou federace:
 
-[V případě krize – Mobile](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno cest](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [TACT](https://tact.ai/assistant/), [OpusCapita řízení pokladní správy](http://cm1.opuscapita.com/tenantname), [Salestim](https://prd.salestim.io/forms), [Learnster](../saas-apps/learnster-tutorial.md), [dynaTrace](../saas-apps/dynatrace-tutorial.md), [HunchBuzz](https://login.hunchbuzz.com/integrations/azure/process), [Freshworks](../saas-apps/freshworks-tutorial.md), [ECornell](../saas-apps/ecornell-tutorial.md), [ShipHazmat](../saas-apps/shiphazmat-tutorial.md), [Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md), [contentd](../saas-apps/contentful-tutorial.md), [Bindtuning](https://bindtuning.com/login), HireVue [ová souřadnice – Evropa](https://www.hirevue.com/), [HireVue – koordinace – USOnly](https://www.hirevue.com/), [HireVue souřadnice – USA](https://www.hirevue.com/), WittyParrot, [Cloudmore](../saas-apps/cloudmore-tutorial.md), [WittyParrot Knowledge Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), Visit.org, [cambium,](../saas-apps/visitorg-tutorial.md) [Xirrus EasyPass Paylocity](https://login.xirrus.com/azure-signup) [, SIGNL4](../saas-apps/paylocity-tutorial.md), vyjímá [!](../saas-apps/mail-luck-tutorial.md), [Týmová](https://theteamie.com/)schránka, [rychlost pro týmy](https://velocity.peakup.org/teams/login), [EAB](https://account.signl4.com/manage), [impl, ScreenMeet](../saas-apps/eab-navigate-impl-tutorial.md) [, ExactCare,,](https://console.screenmeet.com/) [bod Omega](https://pi.ompnt.com/), [Hlasová pošta pro Intune (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune) [,](https://ihealthnav.com/account/signin) [hlasová zpráva pro Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct) [,](https://qubie.azurewebsites.net/static/adminTab/authorize.html) [iHealthHome SSO](../saas-apps/exactcare-sso-tutorial.md)
+[V případě krize – Mobile](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno cest](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [TACT](https://tact.ai/assistant/), [OpusCapita řízení pokladní správy](http://cm1.opuscapita.com/tenantname), [Salestim](https://www.salestim.com/), [Learnster](../saas-apps/learnster-tutorial.md), [dynaTrace](../saas-apps/dynatrace-tutorial.md), [HunchBuzz](https://login.hunchbuzz.com/integrations/azure/process), [Freshworks](../saas-apps/freshworks-tutorial.md), [ECornell](../saas-apps/ecornell-tutorial.md), [ShipHazmat](../saas-apps/shiphazmat-tutorial.md), [Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md), [contentd](../saas-apps/contentful-tutorial.md), [Bindtuning](https://bindtuning.com/login), HireVue [ová souřadnice – Evropa](https://www.hirevue.com/), [HireVue – koordinace – USOnly](https://www.hirevue.com/), [HireVue souřadnice – USA](https://www.hirevue.com/), WittyParrot, [Cloudmore](../saas-apps/cloudmore-tutorial.md), [WittyParrot Knowledge Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), Visit.org, [cambium,](../saas-apps/visitorg-tutorial.md) [Xirrus EasyPass Paylocity](https://login.xirrus.com/azure-signup) [, SIGNL4](../saas-apps/paylocity-tutorial.md), vyjímá [!](../saas-apps/mail-luck-tutorial.md), [Týmová](https://theteamie.com/)schránka, [rychlost pro týmy](https://velocity.peakup.org/teams/login), [EAB](https://account.signl4.com/manage), [impl, ScreenMeet](../saas-apps/eab-navigate-impl-tutorial.md) [, ExactCare,,](https://console.screenmeet.com/) [bod Omega](https://pi.ompnt.com/), [Hlasová pošta pro Intune (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune) [,](https://ihealthnav.com/account/signin) [hlasová zpráva pro Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct) [,](https://qubie.azurewebsites.net/static/adminTab/authorize.html) [iHealthHome SSO](../saas-apps/exactcare-sso-tutorial.md)
 
 Další informace o aplikacích naleznete v tématu [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Další informace o výpisu vaší aplikace v galerii aplikací Azure AD najdete v tématu [seznam aplikací v galerii aplikací Azure Active Directory](../azuread-dev/howto-app-gallery-listing.md).
 
@@ -774,7 +774,7 @@ Zásady vypršení platnosti skupin Office 365 se rozšířily tak, aby automati
 
 Toto vylepšení pomáhá snižovat vaše oznámení o vypršení platnosti skupiny a pomáhá zajistit, aby byly aktivní skupiny dál dostupné. Pokud pro skupiny Office 365 už máte aktivní zásady vypršení platnosti, nemusíte nic dělat, abyste tuto novou funkci zapnuli.
 
-Další informace najdete v tématu [Konfigurace zásad vypršení platnosti pro skupiny Office 365](../users-groups-roles/groups-lifecycle.md).
+Další informace najdete v tématu [Konfigurace zásad vypršení platnosti pro skupiny Office 365](../enterprise-users/groups-lifecycle.md).
 
 ---
 
@@ -822,7 +822,7 @@ S potěšením oznamujeme, že v portálu Azure AD je dostupná veřejná verze 
 
 - Stahuje se seznam členů skupiny pro konkrétní skupinu.
 
-Další informace najdete v tématu [hromadné přidání členů](../users-groups-roles/groups-bulk-import-members.md), [hromadné odebrání členů](../users-groups-roles/groups-bulk-remove-members.md), [seznam členů hromadného stahování](../users-groups-roles/groups-bulk-download-members.md)a [seznam hromadných stažení skupin](../users-groups-roles/groups-bulk-download.md).
+Další informace najdete v tématu [hromadné přidání členů](../enterprise-users/groups-bulk-import-members.md), [hromadné odebrání členů](../enterprise-users/groups-bulk-remove-members.md), [seznam členů hromadného stahování](../enterprise-users/groups-bulk-download-members.md)a [seznam hromadných stažení skupin](../enterprise-users/groups-bulk-download.md).
 
 ---
 
@@ -861,7 +861,7 @@ Role globálního čtecího modulu funguje s novým centrem pro správu Microsof
 >[!NOTE]
 > Na začátku veřejné verze Preview nebude role globálního čtecího zařízení fungovat s: SharePoint, Privileged Access Management, Customer Lockbox, popisky s citlivostí, životní cyklus týmů, vytváření sestav & Analytics, týmy pro správu telefonních zařízení a týmy katalogu aplikací.
 
-Další informace najdete v tématu [oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Další informace najdete v tématu [oprávnění role správce v Azure Active Directory](../roles/permissions-reference.md).
 
 ---
 
@@ -941,7 +941,7 @@ Další informace najdete v tématu [Správa skupin v Azure Portal](./active-dir
 
 **Zadejte:** Nová **Kategorie služby funkcí:** funkce produktu role Azure AD **:** Access Control
 
-Vlastní role (k dispozici v rámci předplatného Azure AD P1 nebo P2) vám teď můžou pomáhat s jemnou přístupem tím, že vám umožní vytvořit definice rolí s konkrétními oprávněními a pak tyto role přiřadit konkrétním prostředkům. V současné době vytvoříte vlastní role pomocí oprávnění pro správu registrací aplikací a potom přiřadíte roli ke konkrétní aplikaci. Další informace o vlastních rolích najdete v tématu [vlastní role správců v Azure Active Directory (Preview)](../users-groups-roles/roles-custom-overview.md).
+Vlastní role (k dispozici v rámci předplatného Azure AD P1 nebo P2) vám teď můžou pomáhat s jemnou přístupem tím, že vám umožní vytvořit definice rolí s konkrétními oprávněními a pak tyto role přiřadit konkrétním prostředkům. V současné době vytvoříte vlastní role pomocí oprávnění pro správu registrací aplikací a potom přiřadíte roli ke konkrétní aplikaci. Další informace o vlastních rolích najdete v tématu [vlastní role správců v Azure Active Directory (Preview)](../roles/custom-overview.md).
 
 Pokud potřebujete další oprávnění nebo prostředky, které se v tuto chvíli nezobrazuje, můžete poslat svůj názor na náš [web Azure Feedback](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) a my přidáme vaši žádost do naší mapy aktualizace.
 
@@ -1044,7 +1044,7 @@ K dispozici jsou nové aktualizace modulů PowerShellu pro AzureAD a AzureAD ve 
 
 Provedli jsme některá vylepšení uživatelského rozhraní pro tvůrce pravidel dynamické skupiny, který je k dispozici v Azure Portal, abyste mohli snadněji nastavit nové pravidlo nebo změnit stávající pravidla. Toto vylepšení návrhu umožňuje vytvořit pravidla s až pěti výrazy, nikoli jenom s jedním. Aktualizovali jsme také seznam vlastností zařízení, aby se odebraly zastaralé vlastnosti zařízení.
 
-Další informace najdete v tématu [Správa pravidel dynamického členství](../users-groups-roles/groups-dynamic-membership.md).
+Další informace najdete v tématu [Správa pravidel dynamického členství](../enterprise-users/groups-dynamic-membership.md).
 
 ---
 
@@ -1530,7 +1530,7 @@ Zásady pojmenování pro skupiny Office 365 můžete nakonfigurovat dvěma růz
 
 - Nahrajte přizpůsobenou sadu blokovaných slov pro vaši organizaci, která nejsou povolená v názvech skupin (například generální ředitel, výplata, HR).
 
-Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](../users-groups-roles/groups-naming-policy.md).
+Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](../enterprise-users/groups-naming-policy.md).
 
 ---
 
@@ -1594,7 +1594,7 @@ Zásady pojmenování pro skupiny Office 365 můžete nakonfigurovat dvěma růz
 
 - Nahrajte přizpůsobenou sadu blokovaných slov pro vaši organizaci, která nejsou povolená v názvech skupin (například generální ředitel, výplata, HR).
 
-Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](../users-groups-roles/groups-naming-policy.md).
+Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](../enterprise-users/groups-naming-policy.md).
 
 ---
 
@@ -1740,7 +1740,7 @@ Další informace o tom, jak lépe zabezpečit organizaci prostřednictvím auto
 
 Odstraněné skupiny Office 365 teď můžete zobrazit a spravovat z portálu Azure AD. Tato změna vám pomůže zjistit, které skupiny jsou k dispozici pro obnovení, spolu s tím, že vám umožní trvale odstranit všechny skupiny, které nepotřebuje vaše organizace.
 
-Další informace najdete v tématu [obnovení skupin s ukončenou platností nebo odstraněných](../users-groups-roles/groups-restore-deleted.md#view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore).
+Další informace najdete v tématu [obnovení skupin s ukončenou platností nebo odstraněných](../enterprise-users/groups-restore-deleted.md#view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore).
 
 ---
 
@@ -2097,7 +2097,7 @@ Další informace o použití aplikace Microsoft Authenticator k resetování he
 
 Správci můžou k nové roli správce cloudového zařízení přiřadit uživatele, aby mohli provádět úlohy správce cloudového zařízení. Uživatelé s rolí správce cloudových zařízení můžou povolit, zakázat a odstranit zařízení ve službě Azure AD, společně s možnostmi číst klíče Windows 10 BitLocker (pokud jsou k dispozici) v Azure Portal.
 
-Další informace o rolích a oprávněních najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) .
+Další informace o rolích a oprávněních najdete v tématu [přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md) .
 
 ---
 
@@ -2226,7 +2226,7 @@ S radostí oznamujeme, že teď můžete pomocí rozhraní ForceDelete Domain AP
 
 Tato změna vám pomůže rychleji odstranit vlastní názvy domén, pokud vaše organizace už nepoužívá název, nebo pokud potřebujete název domény použít pro jinou službu Azure AD.
 
-Další informace najdete v tématu [odstranění vlastního názvu domény](../users-groups-roles/domains-manage.md#delete-a-custom-domain-name).
+Další informace najdete v tématu [odstranění vlastního názvu domény](../enterprise-users/domains-manage.md#delete-a-custom-domain-name).
 
 ---
 
@@ -2246,7 +2246,7 @@ Role jsou:
 
 - Správce uživatelů
 
-Další informace najdete v tématu [Vytvoření dynamické skupiny a kontroly stavu](../users-groups-roles/groups-create-rule.md) .
+Další informace najdete v tématu [Vytvoření dynamické skupiny a kontroly stavu](../enterprise-users/groups-create-rule.md) .
 
 ---
 
@@ -2303,7 +2303,7 @@ Nová karta **Poradce při potížích a podpoře** na stránce pro **přihláš
 
 V této aktualizaci teď můžete kliknout na odkaz **získat vlastnosti vlastního rozšíření** z Tvůrce pravidla dynamické skupiny uživatelů, zadat jedinečné ID aplikace a získat úplný seznam vlastností vlastního rozšíření, které se použijí při vytváření dynamického pravidla členství pro uživatele. Tento seznam je také možné aktualizovat, aby získal všechny nové vlastnosti rozšíření pro danou aplikaci.
 
-Další informace o použití vlastních vlastností rozšíření pro pravidla dynamického členství najdete v tématu [vlastnosti rozšíření a vlastnosti vlastního rozšíření](../users-groups-roles/groups-dynamic-membership.md#extension-properties-and-custom-extension-properties) .
+Další informace o použití vlastních vlastností rozšíření pro pravidla dynamického členství najdete v tématu [vlastnosti rozšíření a vlastnosti vlastního rozšíření](../enterprise-users/groups-dynamic-membership.md#extension-properties-and-custom-extension-properties) .
 
 ---
 
@@ -2807,7 +2807,7 @@ Správci teď můžou delegovat úlohy správy aplikací bez přiřazení role g
 
     - **Vlastník podnikové aplikace** Uděluje možnost spravovat spoustu aspektů vlastněných podnikových aplikací, včetně nastavení jednotného přihlašování, přiřazení aplikací a souhlasu (s výjimkou prostředků Azure AD).
 
-Další informace o veřejné verzi Preview najdete v tématu [role správy delegovaných aplikací Azure AD ve verzi Public Preview.](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) webový. Další informace o rolích a oprávněních najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Další informace o veřejné verzi Preview najdete v tématu [role správy delegovaných aplikací Azure AD ve verzi Public Preview.](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) webový. Další informace o rolích a oprávněních najdete v tématu [přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md).
 
 ---
 
@@ -3254,7 +3254,7 @@ Další informace najdete v tématu [přizpůsobení seznamu atributů uživatel
 Je možné změnit způsob správy členství ve skupině. To je užitečné, pokud chcete zachovat stejný název skupiny a ID v systému, takže všechny existující odkazy na skupinu jsou stále platné. Vytvoření nové skupiny by vyžadovalo aktualizaci těchto odkazů.
 Aktualizovali jsme centrum pro správu Azure AD, abychom tuto funkci podporovali. Zákazníci teď můžou převést existující skupiny z dynamického členství na přiřazené členství a naopak. Existující rutiny prostředí PowerShell jsou také stále k dispozici.
 
-Další informace najdete v tématu [dynamická pravidla členství pro skupiny v Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md)
+Další informace najdete v tématu [dynamická pravidla členství pro skupiny v Azure Active Directory](../enterprise-users/groups-dynamic-membership.md)
 
 ---
 

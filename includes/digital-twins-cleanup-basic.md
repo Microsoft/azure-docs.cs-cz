@@ -1,16 +1,16 @@
 ---
 author: baanders
-description: zahrnutí souboru pro vyčištění základní instance a registrace aplikace v rámci služby Azure Digital revláken
+description: zahrnout soubor pro vyčištění základní instance digitálních vláken Azure
 ms.service: digital-twins
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: baanders
-ms.openlocfilehash: e8f167555434338416381aaf8978a3d551686fb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e095a7b286a8860535d6b58fa93098735b30c87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606541"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372309"
 ---
 Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků.
 
@@ -23,10 +23,4 @@ Otevřete Azure Cloud Shell a spuštěním následujícího příkazu odstraňte
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-V dalším kroku odstraňte registraci aplikace Azure Active Directory, kterou jste vytvořili pro klientskou aplikaci, pomocí tohoto příkazu:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```

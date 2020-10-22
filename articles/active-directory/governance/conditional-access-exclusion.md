@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783684"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362718"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Pomocí kontrol přístupu Azure AD Spravujte uživatele vyloučené ze zásad podmíněného přístupu.
 
@@ -38,7 +38,7 @@ Dalším příkladem může být použití [pojmenovaných umístění](../condi
 
 ![Pojmenovaná umístění v podmíněném přístupu](./media/conditional-access-exclusion/named-locations.png)
 
-Někteří uživatelé bohužel můžou mít i nadále platný důvod pro přihlášení z těchto blokovaných zemí nebo oblastí. Uživatelé můžou být například na cestách pro práci a potřebují přístup k podnikovým prostředkům. V takovém případě zásada podmíněného přístupu zablokuje, že tyto země nebo oblasti můžou používat skupinu zabezpečení cloudu pro vyloučené uživatele ze zásad. Uživatelé, kteří potřebují přístup při cestování, se můžou do skupiny přidat pomocí [samoobslužné správy skupin Azure AD](../users-groups-roles/groups-self-service-management.md).
+Někteří uživatelé bohužel můžou mít i nadále platný důvod pro přihlášení z těchto blokovaných zemí nebo oblastí. Uživatelé můžou být například na cestách pro práci a potřebují přístup k podnikovým prostředkům. V takovém případě zásada podmíněného přístupu zablokuje, že tyto země nebo oblasti můžou používat skupinu zabezpečení cloudu pro vyloučené uživatele ze zásad. Uživatelé, kteří potřebují přístup při cestování, se můžou do skupiny přidat pomocí [samoobslužné správy skupin Azure AD](../enterprise-users/groups-self-service-management.md).
 
 Dalším příkladem může být, že máte zásady podmíněného přístupu [blokující starší verze ověřování pro většinu uživatelů](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Pokud ale máte nějaké uživatele, kteří potřebují používat starší metody ověřování pro přístup k prostředkům prostřednictvím klientů Office 2010 nebo IMAP/SMTP/na bázi POP, můžete tyto uživatele vyloučit ze zásad, které blokují starší metody ověřování.
 

@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361904"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362565"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Kurz: Konfigurace Průvodce Log Analytics
 
@@ -45,7 +45,7 @@ Seznamte se s těmito články:
 
 - [Jak integrovat protokoly aktivit pomocí Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Správa účtu pro nouzový přístup v Azure AD](../users-groups-roles/directory-emergency-access.md)
+- [Správa účtu pro nouzový přístup v Azure AD](../roles/security-emergency-access.md)
 
 - [Stručná referenční příručka ke KQL](/azure/data-explorer/kql-quick-reference)
 
@@ -96,11 +96,11 @@ Konfigurace pracovního prostoru Log Analytics se skládá ze dvou hlavních kro
 
 7. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 8. V části **monitorování** klikněte na **nastavení diagnostiky**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
 9. Na stránce **nastavení diagnostiky** klikněte na **Přidat nastavení diagnostiky**.
 
@@ -128,7 +128,7 @@ Tento postup ukazuje, jak spustit dotazy pomocí **dotazovacího jazyka Kusto (K
 
 2. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. V části **monitorování** klikněte na **protokoly**.
 
@@ -210,7 +210,7 @@ Tento postup ukazuje, jak odeslat výstrahy při použití účtu breakglass.
 
 2. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. V části **monitorování** klikněte na **protokoly**.
 
@@ -301,7 +301,7 @@ Tento postup ukazuje, jak vytvořit nový sešit pomocí šablony pro rychlý St
 
 2. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. V části **monitorování** klikněte na možnost **sešity**.
 
@@ -353,7 +353,7 @@ Tento postup ukazuje, jak přidat dotaz do existující šablony sešitu. Tento 
 
 2. Vyhledejte **Azure Active Directory**.
 
-    ![Azure Active Firectory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. V části **monitorování** klikněte na možnost **sešity**.
 

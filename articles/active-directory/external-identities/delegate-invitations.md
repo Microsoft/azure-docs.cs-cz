@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5a983931bd372931eacff2f7b21f3358f536046
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278783"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362922"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak povolit spolupráci B2B v Azure Active Directory (A
 
 Ve výchozím nastavení mohou všichni uživatelé a hosté ve vašem adresáři pozvat hosty i v případě, že nejsou přiřazeni k roli správce. Nastavení externí spolupráce vám umožní zapnout nebo vypnout pozvánky hostů pro různé typy uživatelů ve vaší organizaci. Můžete také delegovat pozvánky na jednotlivé uživatele přiřazením rolí, které jim umožní pozvat hosty.
 
-Azure AD umožňuje omezit, co můžou externí uživatelé typu Host zobrazit v adresáři služby Azure AD. Ve výchozím nastavení jsou uživatelé typu Host nastaveni na úroveň omezené úrovně oprávnění, která je blokuje při vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře, ale umožňuje zobrazit členství neskrytých skupin. Nové nastavení ve verzi Preview umožňuje omezit přístup hostů ještě dál, aby mohli hosté zobrazit jenom svoje vlastní informace o profilu. Podrobnosti najdete v tématu [omezení oprávnění přístupu hosta (Preview)](../users-groups-roles/users-restrict-guest-permissions.md).
+Azure AD umožňuje omezit, co můžou externí uživatelé typu Host zobrazit v adresáři služby Azure AD. Ve výchozím nastavení jsou uživatelé typu Host nastaveni na úroveň omezené úrovně oprávnění, která je blokuje při vytváření výčtu uživatelů, skupin nebo jiných prostředků adresáře, ale umožňuje zobrazit členství neskrytých skupin. Nové nastavení ve verzi Preview umožňuje omezit přístup hostů ještě dál, aby mohli hosté zobrazit jenom svoje vlastní informace o profilu. Podrobnosti najdete v tématu [omezení oprávnění přístupu hosta (Preview)](../enterprise-users/users-restrict-guest-permissions.md).
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>Konfigurace nastavení externí spolupráce B2B
 

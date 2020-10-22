@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c761be04c7d31567e727e93b84c98a1b3510e3d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979882"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362548"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegování a role v Azure AD – Správa nároků
 
@@ -76,7 +76,7 @@ Po delegování mohou mít marketingové oddělení stejné role jako v následu
 
 Správa nároků má následující role, které jsou specifické pro správu nároků.
 
-| Role správy oprávnění | Description |
+| Role správy oprávnění | Popis |
 | --- | --- |
 | Tvůrce katalogu | Vytvářejte a spravujte katalogy. Obvykle správce IT, který není globálním správcem, nebo vlastníkem prostředku pro kolekci prostředků. Osoba, která automaticky vytvoří katalog, se bude nacházet jako s prvním vlastníkem katalogu katalogu a může přidat další vlastníky katalogu. Tvůrce katalogu nemůže spravovat ani zobrazovat katalogy, které nevlastní, a nemůže přidat prostředky, které nevlastní katalog. Pokud tvůrce katalogu potřebuje spravovat další katalog nebo přidat prostředky, které nevlastní, můžou požádat o spoluvlastníky tohoto katalogu nebo prostředku. |
 | Vlastník katalogu | Umožňuje upravovat a spravovat existující katalogy. Obvykle správce IT nebo vlastníci prostředků nebo uživatel, který určil vlastníka katalogu. |
@@ -85,7 +85,7 @@ Správa nároků má následující role, které jsou specifické pro správu n�
 
 Kromě toho má určený schvalovatel a žadatel pro přístupovou sadu také práva, i když se nejedná o role.
 
-| Vpravo | Description |
+| Vpravo | Popis |
 | --- | --- |
 | Uživatelem | Autorizováno zásadou ke schválení nebo zamítnutí žádostí o přístup k balíčkům, i když nemůžou měnit definice přístupového balíčku. |
 | Requestor | Autorizován zásadou přístupového balíčku pro vyžádání přístupového balíčku. |
@@ -124,20 +124,20 @@ Pro uživatele, který není globálním správcem nebo správcem uživatelů, p
 
 | Role adresáře Azure AD | Role správy oprávnění | Může přidat skupinu zabezpečení. | Může přidat skupinu Microsoft 365. | Může přidat aplikaci. | Může přidat web SharePointu Online. |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globální správce](../users-groups-roles/directory-assign-admin-roles.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Správce uživatele](../users-groups-roles/directory-assign-admin-roles.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Správce Intune](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Správce Exchange](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  | :heavy_check_mark: |  |  |
-| [Správce služby Teams](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  | :heavy_check_mark: |  |  |
-| [Správce SharePointu](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [Správce aplikace](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  |  | :heavy_check_mark: |  |
-| [Správce cloudové aplikace](../users-groups-roles/directory-assign-admin-roles.md) | Vlastník katalogu |  |  | :heavy_check_mark: |  |
+| [Globální správce](../roles/permissions-reference.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Správce uživatele](../roles/permissions-reference.md) | neuvedeno |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Správce Intune](../roles/permissions-reference.md) | Vlastník katalogu | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Správce Exchange](../roles/permissions-reference.md) | Vlastník katalogu |  | :heavy_check_mark: |  |  |
+| [Správce služby Teams](../roles/permissions-reference.md) | Vlastník katalogu |  | :heavy_check_mark: |  |  |
+| [Správce SharePointu](../roles/permissions-reference.md) | Vlastník katalogu |  | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Správce aplikace](../roles/permissions-reference.md) | Vlastník katalogu |  |  | :heavy_check_mark: |  |
+| [Správce cloudové aplikace](../roles/permissions-reference.md) | Vlastník katalogu |  |  | :heavy_check_mark: |  |
 | Uživatel | Vlastník katalogu | Pouze v případě, že vlastník skupiny | Pouze v případě, že vlastník skupiny | Jenom v případě, že vlastník aplikace |  |
 
 > [!NOTE]
-> Pokud uživatel přidá skupinu zabezpečení nebo skupinu Microsoft 365, nemůže být skupina přiřazena k rolím. Pokud uživatel přidá skupinu, která je přiřazena rolím při vytváření balíčku pro přístup, musí být také vlastníkem této skupiny, kterou lze přiřadit roli. Další informace najdete v referenčních informacích o [Vytvoření skupiny s přiřazením rolí v Azure Active Directory](../users-groups-roles/roles-groups-create-eligible.md).
+> Pokud uživatel přidá skupinu zabezpečení nebo skupinu Microsoft 365, nemůže být skupina přiřazena k rolím. Pokud uživatel přidá skupinu, která je přiřazena rolím při vytváření balíčku pro přístup, musí být také vlastníkem této skupiny, kterou lze přiřadit roli. Další informace najdete v referenčních informacích o [Vytvoření skupiny s přiřazením rolí v Azure Active Directory](../roles/groups-create-eligible.md).
 
-K určení nejnižší privilegované role pro úlohu můžete také [v Azure Active Directory odkazovat na role správce podle úlohy](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)správce.
+K určení nejnižší privilegované role pro úlohu můžete také [v Azure Active Directory odkazovat na role správce podle úlohy](../roles/delegate-by-task.md#entitlement-management)správce.
 
 ## <a name="next-steps"></a>Další kroky
 

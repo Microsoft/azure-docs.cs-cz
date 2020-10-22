@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3dd5898518a9788a7079ab903b6f88b9f82989
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827533"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371201"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -56,7 +56,7 @@ Prostředí Azure Integration runtime může:
 
 - Spouštění toků dat v Azure 
 - Spustit aktivitu kopírování mezi úložišti cloudových dat
-- Odeslání následujících transformačních aktivit ve veřejné síti: datacihly/aktivita jar/jar/Python, aktivita v rámci prostředí HDInsight, aktivita prasete HDInsight, aktivita pro MapReduce HDInsight, aktivita HDInsight Spark, aktivita pro streamování HDInsight, aktivita streamování ve službě HDInsight Machine Learning, aktivita Machine Learning spouštění v prostředí .NET, vlastní aktivita aktivity Data Lake Analytics prostředků, aktivita pro hledání dat
+- Odešlete následující transformační aktivity ve veřejné síti: aktivita poznámkového bloku datacihly/jar/Python, aktivita podregistru HDInsight, aktivita prasete v HDInsight, aktivita MapReduce HDInsight, aktivita Sparku v HDInsight, aktivita streamování HDInsight, aktivita v rámci dávkového zpracování Azure Machine Learning Studio (klasický), Azure Machine Learning Studio (Classic) aktualizovat aktivity prostředků, aktivity uložených procedur a aktivity v jazyce U-SQL, Data Lake Analytics vlastní aktivita technologie .NET, aktivity webu, aktivita vyhledávání
 
 ### <a name="azure-ir-network-environment"></a>Síťové prostředí Azure IR
 
@@ -79,7 +79,7 @@ Informace o vytváření a konfiguraci Azure IR najdete v tématu [jak vytvořit
 Prostředí IR v místním prostředí nabízí tyto funkce:
 
 - Spouštění aktivity kopírování mezi úložišti dat v cloudu a úložištěm dat v privátní síti.
-- Odesílání následujících transformačních aktivit pro výpočetní prostředky v místním prostředí nebo v Azure Virtual Network: aktivita v rámci prostředí HDInsight (BYOC-Přineste si vlastní cluster), aktivita prasete služby HDInsight (BYOC), aktivita MapReduce služby HDInsight (BYOC), aktivita HDInsight Spark (BYOC), aktivita streamování HDInsight (BYOC), aktivita spuštění služby Batch, Machine Learning aktualizovat aktivity prostředků, aktivity uložených procedur, Data Lake Analytics Machine Learning aktivity U-SQL, vlastní aktivita (spouští se v Azure Batch) , Aktivity vyhledávání a získání aktivity metadat.
+- Odesílání následujících transformačních aktivit pro výpočetní prostředky v místním prostředí nebo v Azure Virtual Network: aktivita v podregistru HDInsight (BYOC-Přineste si vlastní cluster), aktivita prasete HDInsight (BYOC), aktivita MapReduce HDInsight (BYOC), aktivita HDInsight Spark (BYOC), aktivita streamování HDInsight (BYOC), aktivita spouštění služby Batch (Classic) Azure Machine Learning Studio (Classic) aktualizovat aktivity prostředků, Azure Machine Learning Studio aktivita uložených procedur a činnost služby Data Lake Analytics U-SQL , Vlastní aktivita (běží na Azure Batch), aktivita vyhledávání a aktivita získat metadata.
 
 > [!NOTE] 
 > Pomocí místního prostředí Integration runtime můžete podporovat úložiště dat, která vyžadují vlastní ovladač, jako je SAP HANA, MySQL atd.  Další informace najdete v tématu [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

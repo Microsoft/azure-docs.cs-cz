@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 901f4a9d4fd53f665c3d078f5e463dcde2af1882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef4baa4be7f6058ca704f8f499c47099de7c1a85
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654867"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372085"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analýza sestavy Plánovač nasazení pro zotavení po havárii VMware do Azure
 
@@ -102,7 +102,7 @@ Tento výsledek je celkový počet jader, která se mají nastavit před převze
 ![Požadovaný počet jader Azure v Deployment Planneru](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
 
 ### <a name="required-on-premises-infrastructure"></a>Požadovaná místní infrastruktura
-Toto číslo je celkový počet konfiguračních serverů a dalších procesových serverů, které se mají nakonfigurovat a které budou stačit k zajištění ochrany všech kompatibilních virtuálních počítačů. V závislosti na podporované [doporučené velikosti pro konfigurační server](https://aka.ms/asr-v2a-on-prem-components) může nástroj doporučit přidání dalších serverů. Doporučení je založeno na větší z hodnot denní četnosti změn a maximálního počtu chráněných virtuálních počítačů (za předpokladu, že každý z nich obsahuje průměrně tři disky), podle toho, čeho konfigurační server nebo další procesový server dosáhne dříve. Podrobnosti o celkové denní četnosti změn a celkovém počtu chráněných disků najdete v části On-premises summary (Přehled místního prostředí).
+Toto číslo je celkový počet konfiguračních serverů a dalších procesových serverů, které se mají nakonfigurovat a které budou stačit k zajištění ochrany všech kompatibilních virtuálních počítačů. V závislosti na podporované [doporučené velikosti pro konfigurační server](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server) může nástroj doporučit přidání dalších serverů. Doporučení je založeno na větší z hodnot denní četnosti změn a maximálního počtu chráněných virtuálních počítačů (za předpokladu, že každý z nich obsahuje průměrně tři disky), podle toho, čeho konfigurační server nebo další procesový server dosáhne dříve. Podrobnosti o celkové denní četnosti změn a celkovém počtu chráněných disků najdete v části On-premises summary (Přehled místního prostředí).
 
 ![Požadovaná místní infrastruktura v Deployment Planneru](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
 
@@ -165,7 +165,7 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 
 **Typ účtu úložiště protokolu**: všechny protokoly replikace se ukládají do standardního účtu úložiště.
 
-**Navrhovaná předpona pro účet úložiště**: navrhovaná předpona se třemi znaky, kterou lze použít k pojmenování účtu úložiště mezipaměti. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](https://aka.ms/storage-performance-checklist).
+**Navrhovaná předpona pro účet úložiště**: navrhovaná předpona se třemi znaky, kterou lze použít k pojmenování účtu úložiště mezipaměti. Můžete použít vlastní předponu, ale návrh nástroje se řídí [zásadami vytváření názvů pro oddíly účtů úložiště](/en-in/azure/storage/blobs/storage-performance-checklist).
 
 **Navrhovaný název účtu protokolu**: název účtu úložiště po zahrnutí navrhované předpony. Název v ostrých závorkách (< a >) nahraďte vlastním názvem.
 
@@ -178,7 +178,7 @@ Může nastat situace, kdy víte, že pro účely replikace Site Recovery nemů�
 
 **VM Name:** Název nebo IP adresa virtuálního počítače, které se použily v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky (VMDK) připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
 
-**VM Compatibility** (Kompatibilita virtuálního počítače): Hodnoty jsou **Yes** (Ano) a **Yes\*** (Ano). **Ano** \* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/disks-types.md). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Například:
+**Kompatibilita virtuálních počítačů**: hodnoty jsou **Ano** a **Ano \* *_. _* Ano** \* je pro instance, ve kterých je virtuální počítač vhodný pro [Premium SSD](../virtual-machines/disks-types.md). V takovém případě profilovaný disk s vysokou četností změn nebo vysokým počtem IOPS spadá do kategorie P20 nebo P30, ale kvůli velikosti se disk mapuje na nižší kategorii P10 nebo P20. Účet úložiště určuje, na jaký disk služby Premium Storage se disk bude mapovat, na základě jeho velikosti. Příklad:
 * Menší než 128 GB je P10.
 * 128 GB až 256 GB je P15.
 * 256 GB až 512 GB je P20.
@@ -219,7 +219,7 @@ Pokud se například charakteristiky zatížení disku umístí do kategorie P20
 
 **VM Name:** Název nebo IP adresa virtuálního počítače, které se použily v souboru VMListFile při generování sestavy. V tomto sloupci jsou uvedeny také disky VMDK připojené k virtuálním počítačům. Aby se rozlišily virtuální počítače vCenter s duplicitními názvy nebo IP adresami, je součástí názvů i název hostitele ESXi. Uvedený hostitel ESXi je ten, na kterém byl virtuální počítač umístěn při zjištění nástrojem během období profilace.
 
-**VM Compatibility:** Označujte, proč je daný virtuální počítač nekompatibilní se Site Recovery. Pro každý nekompatibilní disk virtuálního počítače jsou popsané důvody. V závislosti na publikovaných [omezeních úložiště](https://aka.ms/azure-storage-scalbility-performance) může důvodem být některá z následujících možností:
+**VM Compatibility:** Označujte, proč je daný virtuální počítač nekompatibilní se Site Recovery. Pro každý nekompatibilní disk virtuálního počítače jsou popsané důvody. V závislosti na publikovaných [omezeních úložiště](/en-in/azure/storage/common/scalability-targets-standard-account) může důvodem být některá z následujících možností:
 
 * Nesprávná velikost datového disku nebo nesprávná velikost disku operačního systému. [Zkontrolujte](vmware-physical-azure-support-matrix.md#azure-vm-requirements) omezení podpory. 
 * Total VM size (replication + TFO) exceeds the supported storage-account size limit (35 TB) (Celková velikost virtuálního počítače (replikace + testovací převzetí služeb při selhání) překračuje omezení podporované velikosti účtu úložiště (35 TB)). K této nekompatibilitě obvykle dochází, když je ve virtuálním počítači jeden disk, jehož některé charakteristiky výkonu překračují maximální podporovaná omezení systému Azure nebo Site Recovery pro účet služby Storage úrovně Standard. V takové situaci se virtuální počítač dostává do zóny účtu služby Premium Storage. Nicméně maximální podporovaná velikost účtu služby Premium Storage je 35 TB a jeden virtuální počítač nemůže být chráněn v rámci několika účtů úložiště. Všimněte si také, že testovací převzetí služeb při selhání spuštěné na chráněném virtuálním počítači poběží v rámci stejného účtu úložiště, ve kterém probíhá replikace. V takovém případě nastavte dvojnásobnou velikost disku, aby paralelně mohla probíhat replikace a úspěšné testovací převzetí služeb při selhání.

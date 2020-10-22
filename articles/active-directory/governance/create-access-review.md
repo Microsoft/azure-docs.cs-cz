@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602927"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362769"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -32,7 +32,7 @@ Můžete se podívat na rychlé video s přehledem o povolení kontrol přístup
 
 Tento článek popisuje, jak vytvořit jednu nebo více kontrol přístupu pro členy skupiny nebo přístup k aplikaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure AD Premium P2
 - Globální správce nebo Správce uživatelů
@@ -164,6 +164,7 @@ Pokud jste přidělili hosty jako kontroloři a nepřijali pozvánku, neobdrží
 |Automaticky zkontrolované | Systém zaznamenal rozhodnutí pro všechny uživatele, kteří nebyli zkontrolováni. Kontrola je připravena pokračovat v **použití** , pokud je povoleno automatické použití. |
 |Použije | Pro uživatele, kteří se schválili, nebude přístup nijak změněn. |
 |Použito | Zamítnutí uživatelé (pokud existují) byly odebrány z prostředku nebo adresáře. |
+|Neúspěšný | Kontrola neprobíhala. Tato chyba může souviset s odstraněním tenanta, změnou licencí nebo jinými interními změnami klienta. |
 
 ## <a name="create-reviews-via-apis"></a>Vytváření recenzí prostřednictvím rozhraní API
 

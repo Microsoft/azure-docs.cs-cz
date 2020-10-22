@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534433"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372425"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Zjišťování a přehledy (Preview) pro role Azure AD (dřív Průvodce zabezpečením)
 
@@ -29,13 +29,13 @@ Pokud začínáte s Privileged Identity Management (PIM) v organizaci Azure Acti
 
 Předtím, než začne vaše organizace používat Privileged Identity Management, jsou všechna přiřazení rolí trvalá. Uživatelé jsou vždy ve svých přiřazených rolích, i když nepotřebují jejich oprávnění. Zjišťování a přehledy (ve verzi Preview), která nahrazuje dřívějšího Průvodce zabezpečením, zobrazuje seznam privilegovaných rolí a počet uživatelů, kteří jsou v těchto rolích aktuálně. Můžete vypsat přiřazení pro roli a získat další informace o přiřazených uživatelích, pokud některý z nich není známý.
 
-: heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zachovali dva účty pro oddělitelné sklo, které jsou trvale přiřazeny k roli globálního správce. Ujistěte se, že tyto účty nevyžadují stejný mechanismus Multi-Factor Authentication jako běžné účty pro správu, jak je popsáno v tématu [Správa účtů pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
+: heavy_check_mark: **Společnost Microsoft doporučuje** , abyste zachovali dva účty pro oddělitelné sklo, které jsou trvale přiřazeny k roli globálního správce. Ujistěte se, že tyto účty nevyžadují stejný mechanismus Multi-Factor Authentication jako běžné účty pro správu, jak je popsáno v tématu [Správa účtů pro nouzový přístup ve službě Azure AD](../roles/security-emergency-access.md).
 
 I když má uživatel účet Microsoft (jinými slovy, účet, který používá pro přihlášení ke službám Microsoftu, jako je Skype nebo Outlook.com), zachovat přiřazení rolí trvale. Pokud pro uživatele s účet Microsoft pro aktivaci přiřazení role požadujete vícefaktorové ověřování, bude uživatel uzamčen.
 
 ## <a name="open-discovery-and-insights-preview"></a>Otevřete zjišťování a přehledy (Preview)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 

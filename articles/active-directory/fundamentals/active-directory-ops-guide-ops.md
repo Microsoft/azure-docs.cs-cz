@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312595"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370946"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Přehled Azure Active Directory obecné provozní příručky
 
@@ -49,7 +49,7 @@ Při revizi seznamu se můžete setkat s tím, že budete muset buď přiřadit 
 
 #### <a name="owners-recommended-reading"></a>Vlastníci doporučené čtení
 
-- [Přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md)
 - [Zásady správného řízení v Azure](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>Hybridní Správa
@@ -154,7 +154,7 @@ Informace o typu odesílaných oznámení a jejich kontrole najdete v následuj�
 
 ### <a name="ad-fs-lockdown"></a>AD FS uzamčení
 
-Organizace, které konfigurují aplikace pro ověřování přímo ve zvýhodnění Azure AD z [inteligentního uzamčení Azure AD](../authentication/concept-sspr-howitworks.md). Pokud používáte AD FS ve Windows Serveru 2012 R2, implementujte AD FS [extranetovou ochranu](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Pokud používáte AD FS na Windows serveru 2016 nebo novějším, implementujte [extranetové inteligentní uzamčení](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Doporučujeme povolit uzamčení extranetu, aby obsahovalo riziko útoků hrubou silou na místní službu Active Directory. Pokud ale máte AD FS ve Windows 2016 nebo novějším, měli byste taky povolit extranetové inteligentní uzamčení, které vám pomůže zmírnit útoky proti [rozstřiku hesla](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) .
+Organizace, které konfigurují aplikace pro ověřování přímo ve zvýhodnění Azure AD z [inteligentního uzamčení Azure AD](../authentication/concept-sspr-howitworks.md). Pokud používáte AD FS ve Windows Serveru 2012 R2, implementujte AD FS [extranetovou ochranu](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Pokud používáte AD FS na Windows serveru 2016 nebo novějším, implementujte [extranetové inteligentní uzamčení](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Doporučujeme povolit uzamčení extranetu, aby obsahovalo riziko útoků hrubou silou na místní službu Active Directory. Pokud ale máte AD FS ve Windows 2016 nebo novějším, měli byste taky povolit extranetové inteligentní uzamčení, které vám pomůže zmírnit útoky proti [rozstřiku hesla](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) .
 
 Pokud se AD FS používá jenom pro federaci Azure AD, existuje několik koncových bodů, které je možné vypnout pro minimalizaci oblasti útoku. Pokud se například AD FS používá jenom pro Azure AD, měli byste zakázat WS-Trust koncových bodů kromě koncových bodů povolených pro **usernamemixed** a **windowstransport**.
 
@@ -166,13 +166,13 @@ Model vrstvy správy služby Active Directory byl navržený tak, aby chránil s
 
 [Model vrstev](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) se skládá ze tří úrovní a zahrnuje pouze účty pro správu, nikoli standardní uživatelské účty.
 
-- **Vrstva 0**   – Přímé řízení podnikových identit v prostředí. Vrstva 0 zahrnuje účty, skupiny a další prostředky, které mají přímou nebo nepřímou správní kontrolu nad doménovou strukturou služby Active Directory, doménami nebo řadiči domén a všemi prostředky v nich. Citlivost všech prostředků ve vrstvě 0 je rovnocenná, protože se všechny účinně navzájem kontrolují.
-- **Vrstva 1**   Řízení podnikových serverů a aplikací. Prostředky vrstvy 1 zahrnují serverové operační systémy, cloudové služby a podnikové aplikace. Účty správců vrstvy 1 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako běžný příklad role je možné uvést správce serveru, kteří udržují tyto operační systémy, které můžou ovlivnit všechny podnikové služby.
-- **Úroveň 2**   – Řízení pracovních stanic a zařízení uživatele. Účty správců vrstvy 2 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako příklad můžeme uvést správce technické podpory a podpory pro počítače, protože ty můžou mít vliv na integritu téměř jakýchkoli uživatelských dat.
+- **Vrstva 0** – přímé řízení podnikových identit v prostředí. Vrstva 0 zahrnuje účty, skupiny a další prostředky, které mají přímou nebo nepřímou správní kontrolu nad doménovou strukturou služby Active Directory, doménami nebo řadiči domén a všemi prostředky v nich. Citlivost všech prostředků ve vrstvě 0 je rovnocenná, protože se všechny účinně navzájem kontrolují.
+- **Vrstva 1** – řízení podnikových serverů a aplikací. Prostředky vrstvy 1 zahrnují serverové operační systémy, cloudové služby a podnikové aplikace. Účty správců vrstvy 1 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako běžný příklad role je možné uvést správce serveru, kteří udržují tyto operační systémy, které můžou ovlivnit všechny podnikové služby.
+- **Vrstva 2** – kontrola nad uživatelskými pracovními stanicemi a zařízeními. Účty správců vrstvy 2 mají správní kontrolu nad významnou částí podnikové hodnoty hostované na těchto prostředcích. Jako příklad můžeme uvést správce technické podpory a podpory pro počítače, protože ty můžou mít vliv na integritu téměř jakýchkoli uživatelských dat.
 
 Přístup k místním komponentám identity, jako jsou Azure AD Connect, AD FS a SQL Services, můžete uzamknout stejným způsobem jako u řadičů domény.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Zabezpečená infrastruktura identity má sedm aspektů. Tento seznam vám pomůže najít akce, které byste měli provést k optimalizaci operací pro Azure Active Directory (Azure AD).
 

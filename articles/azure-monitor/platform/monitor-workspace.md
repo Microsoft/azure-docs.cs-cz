@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: a4f578ca2e9fc448fb85b803cce46974a8c2e4dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d77b4b5824c4426f106d10ca246c5b0d5e76327a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326008"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372255"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Monitorování stavu Log Analytics pracovního prostoru v Azure Monitor
 Chcete-li zachovat výkon a dostupnost vašeho pracovního prostoru Log Analytics v Azure Monitor, je nutné být schopni aktivně detekovat všechny problémy, které vznikají. Tento článek popisuje, jak monitorovat stav Log Analytics pracovního prostoru pomocí dat v tabulce [Operations](/azure-monitor/reference/tables/operation) . Tato tabulka je zahrnutá v každém pracovním prostoru Log Analytics a obsahuje chyby a varování, ke kterým dochází ve vašem pracovním prostoru. Tato data byste měli pravidelně kontrolovat a vytvářet výstrahy, které se budou aktivně informovat v případě, že v pracovním prostoru existují důležité incidenty.
@@ -55,19 +55,19 @@ Operace příjmu jsou problémy, ke kterým došlo během příjmu dat, včetně
 |:---|:---|:---|:---|
 | Vlastní protokol | Chyba   | Bylo dosaženo limitu sloupců vlastních polí. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Vlastní protokol | Chyba   | Přijímání vlastních protokolů se nezdařilo. | |
-| Vlastní protokol | Chyba   | Mezipaměť. | |
-| Data | Chyba   | Data byla zahozena, protože požadavek byl vytvořen dříve, než je počet dnů instalace. | [Správa využití a nákladů pomocí protokolů Azure Monitoru](manage-cost-storage.md#alert-when-daily-cap-reached)
+| Mezipaměť. | Chyba | Zjistila se chyba konfigurace. | |
+| Shromažďování dat | Chyba   | Data byla zahozena, protože požadavek byl vytvořen dříve, než je počet dnů instalace. | [Správa využití a nákladů pomocí protokolů Azure Monitoru](manage-cost-storage.md#alert-when-daily-cap-reached)
 | Shromažďování dat | Informace    | Zjistila se konfigurace počítače kolekce.| |
 | Shromažďování dat | Informace    | Shromažďování dat bylo zahájeno z důvodu nového dne. | [Správa využití a nákladů pomocí protokolů Azure Monitoru](/manage-cost-storage.md#alert-when-daily-cap-reached) |
 | Shromažďování dat | Upozornění | Shromažďování dat bylo zastaveno z důvodu dosažení denního limitu.| [Správa využití a nákladů pomocí protokolů Azure Monitoru](/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Zpracování dat | Chyba   | Neplatný formát JSON. | [Odeslání dat protokolu do Azure Monitor pomocí rozhraní API kolekce dat HTTP (Public Preview)](data-collector-api.md#request-body) | 
+| Zpracování dat | Upozornění | Hodnota byla oříznuta na maximální povolenou velikost. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces) |
+| Zpracování dat | Upozornění | Hodnota pole se ořízne při dosažení limitu velikosti. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces) | 
 | Rychlost přijímání zpráv | Informace | Omezení rychlosti přijímání se blíží 70%. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Rychlost přijímání zpráv | Upozornění | Omezení rychlosti přijímání se blíží limitu. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces) |
 | Rychlost přijímání zpráv | Chyba   | Dosáhlo se limitu přenosové rychlosti. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces) |
-| Analýza JSON | Chyba   | Neplatný formát JSON. | [Odeslání dat protokolu do Azure Monitor pomocí rozhraní API kolekce dat HTTP (Public Preview)](data-collector-api.md#request-body) | 
-| Analýza JSON | Upozornění | Hodnota byla oříznuta na maximální povolenou velikost. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces) |
-| Maximální omezení velikosti sloupce | Upozornění | Hodnota pole se ořízne při dosažení limitu velikosti. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces) | 
 | Storage | Chyba   | Nejde získat přístup k účtu úložiště, protože použité přihlašovací údaje jsou neplatné.  |
-| Tabulka   | Chyba   | Bylo dosaženo maximálního počtu vlastních polí. | [Omezení služby Azure Monitor](../service-limits.md#log-analytics-workspaces)|
+
 
 
    
@@ -91,21 +91,32 @@ Chcete-li vytvořit pravidlo výstrahy pro konkrétní operaci, použijte dotaz,
 
 Následující příklad vytvoří výstražné upozornění, pokud rychlost zpracování příjmu dosáhla 80% limitu.
 
-```kusto
-_LogsOperation
-| where Category == "Ingestion"
-| where Operation == "Ingestion rate"
-| where Level == "Warning"
-```
+- Cíl: vyberte svůj pracovní prostor Log Analytics
+- Měřítk
+  - Název signálu: prohledávání vlastního protokolu
+  - Vyhledávací dotaz: `_LogOperation | where Category == "Ingestion" | where Operation == "Ingestion rate" | where Level == "Warning"`
+  - Podle: počet výsledků
+  - Podmínka: je větší než
+  - Prahová hodnota: 0
+  - Období: 5 (minuty)
+  - Frekvence: 5 (minuty)
+- Název pravidla výstrahy: dosáhlo se denního limitu dat.
+- Závažnost: upozornění (závažnost 1)
+
 
 Následující příklad vytvoří výstražné upozornění, pokud shromažďování dat dosáhlo denního limitu. 
-```kusto
-Operation 
-| where OperationCategory == "Ingestion" 
-|where OperationKey == "Data Collection" 
-| where OperationStatus == "Warning"
-```
 
+- Cíl: vyberte svůj pracovní prostor Log Analytics
+- Měřítk
+  - Název signálu: prohledávání vlastního protokolu
+  - Vyhledávací dotaz: `_LogOperation | where Category == "Ingestion" | where Operation == "Data Collection" | where Level == "Warning"`
+  - Podle: počet výsledků
+  - Podmínka: je větší než
+  - Prahová hodnota: 0
+  - Období: 5 (minuty)
+  - Frekvence: 5 (minuty)
+- Název pravidla výstrahy: dosáhlo se denního limitu dat.
+- Závažnost: upozornění (závažnost 1)
 
 
 

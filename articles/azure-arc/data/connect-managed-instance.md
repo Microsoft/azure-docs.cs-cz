@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: abd27e15ccf5b421e69e78b2b726d192ffdecacb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936093"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372357"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Připojení ke spravované instanci SQL ARC s povoleným voláním Azure
 
@@ -49,7 +49,7 @@ Připojení pomocí Azure Data Studio, SQL Server Management Studio nebo SQLCMD
 
 Otevřete Azure Data Studio a připojte se k instanci s IP adresou externího koncového bodu a číslem portu uvedeným výše. Pokud používáte virtuální počítač Azure, budete potřebovat _veřejnou_ IP adresu, kterou můžete identifikovat pomocí [zvláštní poznámky o nasazeních virtuálních počítačů Azure](#special-note-about-azure-virtual-machine-deployments).
 
-Například:
+Příklad:
 
 - Server: 52.229.9.30, 30913
 - Uživatelské jméno: SA
@@ -68,7 +68,7 @@ sqlcmd -S 52.229.9.30,30913 -U sa
 
 Pokud používáte virtuální počítač Azure, IP adresa koncového bodu nebude zobrazovat veřejnou IP adresu. K vyhledání externí IP adresy použijte tento příkaz:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -78,7 +78,7 @@ Také může být nutné vystavit port instance SQL prostřednictvím brány zab
 
 Pokud chcete nastavit pravidlo, budete muset znát název vašeho NSGu, který můžete najít pomocí následujícího příkazu:
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -86,7 +86,7 @@ Jakmile budete mít název NSG, můžete přidat pravidlo brány firewall pomoc�
 
 Nahraďte hodnotu `--destination-port-ranges` parametru níže číslem portu, který jste získali z `azdata sql instance list` příkazu F výše.
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30913 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 

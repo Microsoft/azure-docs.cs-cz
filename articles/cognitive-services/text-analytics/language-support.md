@@ -10,17 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: 4a4058cc6317e863fa20406449e64aa877810a54
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b13d82780a01771c6bb8e87091a7808ea22ca111
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147469"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371180"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Podpora jazyka rozhraní API pro analýzu textu V3 
 
-> [!IMPORTANT]
-> Verze 3. x rozhraní API pro analýzu textu není v tuto chvíli k dispozici v následujících oblastech: Střed Indie, Spojené arabské emiráty sever, Čína – sever 2, Čína – východ.
+[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 
 #### <a name="sentiment-analysis"></a>[Analýza mínění](#tab/sentiment-analysis)

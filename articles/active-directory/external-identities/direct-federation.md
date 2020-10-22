@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b7350d793ea42a46d52d881f1399174a3bb5d0e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908682"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362888"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 
@@ -45,7 +45,7 @@ Pomocí přímé federace se uživatelé typu Host přihlásí k vašemu tenanto
 ## <a name="limitations"></a>Omezení
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Domény ověřené DNS v Azure AD
-Doména, kterou chcete federovat s, nesmí ***být*** ověřená DNS ve službě Azure AD. Máte možnost nastavit přímou federaci s nespravovanými (e-mailem nebo "virovými") klienty Azure AD, protože nejsou ověřené DNS.
+Doména, kterou chcete federovat s **, nesmí být**ve službě Azure AD ověřená DNS. Máte možnost nastavit přímou federaci s nespravovanými (e-mailem nebo "virovými") klienty Azure AD, protože nejsou ověřené DNS.
 
 ### <a name="authentication-url"></a>Adresa URL pro ověření
 Přímá federace je povolená jenom pro zásady, ve kterých se doména URL ověřování shoduje s cílovou doménou, nebo kde adresa URL ověřování je jedním z těchto povolených zprostředkovatelů identity (Tento seznam se může změnit):
@@ -60,7 +60,7 @@ Přímá federace je povolená jenom pro zásady, ve kterých se doména URL ov�
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Například při nastavování přímé federace pro **fabrikam.com**se ověřování předá ověřovací adresou URL `https://fabrikam.com/adfs` . Například hostitel ve stejné doméně bude také předávat `https://sts.fabrikam.com/adfs` . Adresa URL `https://fabrikamconglomerate.com/adfs` pro ověření nebo `https://fabrikam.com.uk/adfs` stejná doména ale nebude úspěšné.
+Například při nastavování přímé federace pro _ * Fabrikam. com * * se ověřování předá ověřovací adresa URL `https://fabrikam.com/adfs` . Například hostitel ve stejné doméně bude také předávat `https://sts.fabrikam.com/adfs` . Adresa URL `https://fabrikamconglomerate.com/adfs` pro ověření nebo `https://fabrikam.com.uk/adfs` stejná doména ale nebude úspěšné.
 
 ### <a name="signing-certificate-renewal"></a>Podpisové obnovení certifikátu
 Pokud v nastavení zprostředkovatele identity zadáte adresu URL metadat, služba Azure AD automaticky obnoví podpisový certifikát, jakmile vyprší jeho platnost. Pokud se ale certifikát z jakéhokoli důvodu před časem vypršení platnosti neposkytne, nebo pokud nezadáte adresu URL metadat, Azure AD ho nebude moct obnovit. V takovém případě budete muset podpisový certifikát aktualizovat ručně.
@@ -73,7 +73,7 @@ V současné době nepodporujeme přímou federaci s více doménami ze stejnéh
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Můžu nastavit přímou federaci s doménou, pro kterou existuje nespravovaný tenant (e-mail ověřený)? 
-Ano. Pokud se doména neověřila a tenant neprošel [převzetím správce](../users-groups-roles/domains-admin-takeover.md), můžete nastavit přímou federaci s touto doménou. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
+Ano. Pokud se doména neověřila a tenant neprošel [převzetím správce](../enterprise-users/domains-admin-takeover.md), můžete nastavit přímou federaci s touto doménou. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>Pokud je povolená přímá federace a e-mailová ověřování jednorázového hesla, která metoda má přednost?
 Pokud je v partnerské organizaci vytvořená přímá federace, má přednost před ověřováním jednorázovým heslem e-mailu pro nové uživatele typu host z této organizace. Pokud uživatel typu Host znovu nastavil pozvánku pomocí jednorázového ověřování hesla před nastavením přímé federace, bude používat jednorázové ověřování pomocí hesla. 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Jsou problémy s přihlašováním přímo v rámci federačních adres způsobeny částečně synchronizovanými tenantů?
