@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efca190f3dad1c0a323aa56ffd68b8b2597b5862
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317508"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370215"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením služby Azure AD
 Tento článek vysvětluje, jak funguje konektivita mezi Azure AD Connect a Azure AD a jak řešit problémy s připojením. Tyto problémy se pravděpodobně zobrazují v prostředí s proxy server.
@@ -44,7 +44,7 @@ Proxy server musí mít také otevřené požadované adresy URL. Oficiální se
 
 Z těchto adres URL je v následující tabulce absolutní minimum, které se může připojit ke službě Azure AD. Tento seznam neobsahuje žádné volitelné funkce, jako je třeba zpětný zápis hesla nebo Azure AD Connect Health. Najdete tady informace, které vám pomůžou při řešení potíží s počáteční konfigurací.
 
-| URL | Port | Description |
+| URL | Port | Popis |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
 | \*. verisign.com |HTTP/80 |Slouží ke stažení seznamů CRL. |
@@ -186,7 +186,7 @@ Ověřování bylo úspěšné, ale v Azure AD PowerShellu je problém s ověře
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Je potřeba role globálního správce služby Azure AD.
-Uživatel byl úspěšně ověřen. Uživatel ale nemá přiřazenou roli globálního správce. Tímto [způsobem můžete uživateli přiřadit roli globálního správce](../users-groups-roles/directory-assign-admin-roles.md) .
+Uživatel byl úspěšně ověřen. Uživatel ale nemá přiřazenou roli globálního správce. Tímto [způsobem můžete uživateli přiřadit roli globálního správce](../roles/permissions-reference.md) .
 
 <div id="privileged-identity-management">
 <!--

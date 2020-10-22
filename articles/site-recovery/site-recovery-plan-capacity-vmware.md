@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135447"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368022"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -20,7 +20,7 @@ Tento článek slouží k plánování kapacity a škálování při replikaci m
 
 ## <a name="how-do-i-start-capacity-planning"></a>Návody začít plánovat kapacitu?
 
-Pokud se chcete dozvědět víc o Azure Site Recovery požadavcích na infrastrukturu, shromážděte informace o prostředí replikace spuštěním [Plánovač nasazení služby Azure Site Recovery](https://aka.ms/asr-deployment-planner-doc) pro replikaci VMware. Další informace najdete v tématu [o Plánovač nasazení Site Recovery pro VMware do Azure](site-recovery-deployment-planner.md). 
+Pokud se chcete dozvědět víc o Azure Site Recovery požadavcích na infrastrukturu, shromážděte informace o prostředí replikace spuštěním [Plánovač nasazení služby Azure Site Recovery](./site-recovery-deployment-planner.md) pro replikaci VMware. Další informace najdete v tématu [o Plánovač nasazení Site Recovery pro VMware do Azure](site-recovery-deployment-planner.md). 
 
 Site Recovery Plánovač nasazení poskytuje sestavu s úplnými informacemi o kompatibilních a nekompatibilních virtuálních počítačích, discích na virtuálním počítači a četnosti změn dat na disk. Nástroj také shrnuje požadavky na šířku pásma sítě tak, aby splňovaly cílovou RPO a infrastrukturu Azure, která je potřebná pro úspěšnou replikaci a testovací převzetí služeb při selhání.
 

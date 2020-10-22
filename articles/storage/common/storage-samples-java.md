@@ -4,16 +4,16 @@ description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure St
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e3cd6be0da7c6d9401945293283de874c7cd866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322223"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359760"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>Azure Storage ukázky pomocí klientských knihoven Java V12
 
@@ -453,4 +453,5 @@ Informace o ukázkách pro jiné jazyky:
 * .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
 * Python: [Azure Storage ukázky pomocí Pythonu](storage-samples-python.md)
 * JavaScript/Node.js: [ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
+* C++: [Azure Storage ukázky pomocí jazyka C++](storage-samples-c-plus-plus.md)
 * Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)

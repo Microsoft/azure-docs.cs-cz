@@ -3,19 +3,19 @@ title: Zobrazení aktivity poskytovatele služeb
 description: Zákazníci si můžou zobrazit protokolované aktivity a zobrazit akce provedené poskytovateli služeb prostřednictvím delegované správy prostředků Azure.
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974307"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371082"
 ---
 # <a name="view-service-provider-activity"></a>Zobrazení aktivity poskytovatele služeb
 
 Zákazníci, kteří mají delegované předplatné pro [Azure Lighthouse](../overview.md) , mohou [Zobrazit data protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) , aby viděli všechny akce, které provedli. Díky tomu mohou zákazníci plně zobrazit operace, které poskytovatelé služeb provádějí prostřednictvím [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md), spolu s operacemi provedenými uživateli v rámci vlastního Azure Active Directoryho tenanta zákazníka (Azure AD).
 
 > [!TIP]
-> Poskytujeme také Azure Policy předdefinované definice zásad, které [omezují delegování na konkrétní správu tenantů](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json) a [auditují delegování oborů na spravovaného tenanta](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Další informace najdete v tématu [auditování delegování ve vašem prostředí](view-manage-service-providers.md#audit-delegations-in-your-environment).
+> Poskytujeme také Azure Policy předdefinované definice zásad, které [omezují delegování na konkrétní správu tenantů](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json) a [auditují delegování oborů na spravovaného tenanta](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Další informace najdete v tématu [auditování delegování ve vašem prostředí](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
 ## <a name="view-activity-log-data"></a>Zobrazení dat protokolu aktivit
 

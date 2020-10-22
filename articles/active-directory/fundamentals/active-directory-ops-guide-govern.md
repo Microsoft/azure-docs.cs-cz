@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f420f66e1db6efc6a0aa43cb88f26687839f0d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321510"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370963"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referenční příručka Azure Active Directory operací zásad správného řízení
 
@@ -49,7 +49,7 @@ Při revizi seznamu se můžete setkat s tím, že budete muset buď přiřadit 
 
 #### <a name="owner-recommended-reading"></a>Čtení Doporučené vlastníkem
 
-- [Přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md)
 - [Zásady správného řízení v Azure](../../governance/index.yml)
 
 ### <a name="configuration-changes-testing"></a>Testování změn konfigurace
@@ -66,7 +66,7 @@ Existují změny, které vyžadují zvláštní okolnosti při testování, od j
 |Zavedení nové funkce|Pokud funkce podporuje zavedení do cílové sady uživatelů, identifikujte uživatele zkušebního nasazení a vystavíte je. Například Samoobslužné resetování hesla a služba Multi-Factor Authentication může cílit na konkrétní uživatele nebo skupiny.|
 |Přímou migraci aplikaci od místního zprostředkovatele identity (IdP), třeba služby Active Directory, do Azure AD|Pokud aplikace podporuje více konfigurací IdP, například Salesforce, nakonfigurujte v rámci okna změny a otestujte službu Azure AD (v případě, že aplikace zavádí stránku HRD). Pokud aplikace nepodporuje více zprostředkovatelů identity, naplánujte testování během výpadku okna řízení změn a výpadku programu.|
 |Aktualizovat pravidla dynamických skupin|Vytvořte paralelní dynamickou skupinu pomocí nového pravidla. Porovnejte na vypočtený výsledek, například spusťte PowerShell se stejnou podmínkou.<br>Pokud je test Pass, Proměňte místo, kde se stará Skupina použila (je-li to možné).|
-|Migrace licencí na produkty|Odkaz na [změnu licence pro jednoho uživatele v licencované skupině v Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md).|
+|Migrace licencí na produkty|Odkaz na [změnu licence pro jednoho uživatele v licencované skupině v Azure Active Directory](../enterprise-users/licensing-groups-change-licenses.md).|
 |Změna pravidel AD FS, jako je například autorizace, vystavení, MFA|K cílové podmnožině uživatelů použijte deklaraci skupiny uživatelů.|
 |Změna možností AD FS ověřování nebo podobných změn v rámci farmy|Vytvořte paralelní farmu se stejným názvem hostitele, implementujte změny konfigurace, otestujte klienty pomocí souboru Hosts, pravidla směrování vyrovnávání zatížení sítě nebo podobného směrování.<br>Pokud cílová platforma nepodporuje soubory hostitelů (například mobilní zařízení), změna ovládacího prvku.|
 
@@ -92,9 +92,9 @@ Je důležité zajistit, aby byl přístup k externím identitám omezený jenom
 
 ### <a name="privileged-account-usage"></a>Využití privilegovaného účtu
 
-Hackeři často cílí na účty správců a další prvky privilegovaného přístupu, aby rychle získali přístup k citlivým datům a systémům.Vzhledem k tomu, že uživatelé s privilegovanými rolemi se v průběhu času často shromažďují, je důležité pravidelně kontrolovat a spravovat přístup správců a poskytovat přístup k prostředkům Azure AD a k prostředkům Azure pomocí privilegovaného přístupu za běhu.
+Hackeři často cílí na účty správců a další prvky privilegovaného přístupu, aby rychle získali přístup k citlivým datům a systémům. Vzhledem k tomu, že uživatelé s privilegovanými rolemi se v průběhu času často shromažďují, je důležité pravidelně kontrolovat a spravovat přístup správců a poskytovat přístup k prostředkům Azure AD a k prostředkům Azure pomocí privilegovaného přístupu za běhu.
 
-Pokud ve vaší organizaci neexistují žádné procesy pro správu privilegovaných účtů nebo v současnosti máte správce, kteří používají své běžné uživatelské účty ke správě služeb a prostředků, měli byste hned začít používat samostatné účty, například jeden pro běžné každodenní aktivity. druhý pro privilegovaný přístup a nakonfigurovaný s MFA. V případě, že vaše organizace má Azure AD Premium předplatné P2, je ještě lepší, měli byste hned nasadit [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM). Ve stejném tokenu byste si měli projít také tyto privilegované účty a v případě potřeby [přiřadit méně privilegované role](../users-groups-roles/directory-admin-roles-secure.md) .
+Pokud ve vaší organizaci neexistují žádné procesy pro správu privilegovaných účtů nebo v současnosti máte správce, kteří používají své běžné uživatelské účty ke správě služeb a prostředků, měli byste hned začít používat samostatné účty, například jeden pro běžné každodenní aktivity. druhý pro privilegovaný přístup a nakonfigurovaný s MFA. V případě, že vaše organizace má Azure AD Premium předplatné P2, je ještě lepší, měli byste hned nasadit [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM). Ve stejném tokenu byste si měli projít také tyto privilegované účty a v případě potřeby [přiřadit méně privilegované role](../roles/security-planning.md) .
 
 Další aspektem správy privilegovaných účtů, které by se měly implementovat, je definování kontrol [přístupu](../governance/access-reviews-overview.md) pro tyto účty, a to buď ručně, nebo [automaticky prostřednictvím PIM](../privileged-identity-management/pim-how-to-perform-security-review.md).
 
@@ -104,12 +104,12 @@ Další aspektem správy privilegovaných účtů, které by se měly implemento
 
 ### <a name="emergency-access-accounts"></a>Účty pro nouzový přístup
 
-Organizace musí vytvořit [Nouzový účet](../users-groups-roles/directory-emergency-access.md) , který se bude připravovat pro správu Azure AD v případech, jako je například výpadek ověřování, například:
+Organizace musí vytvořit [Nouzový účet](../roles/security-emergency-access.md) , který se bude připravovat pro správu Azure AD v případech, jako je například výpadek ověřování, například:
 
 - Výpadek komponent infrastruktury ověřování (AD FS, místní AD, služba MFA)
 - Obrat administrativních zaměstnanců
 
-Aby nedošlo k nechtěnému uzamknutí vašeho tenanta, protože se nemůžete přihlásit nebo aktivovat existující účet individuálního uživatele jako správce, měli byste vytvořit dva nebo více mimořádných účtů a zajistit jejich implementaci a zarovnání k [osvědčeným](../users-groups-roles/directory-admin-roles-secure.md) [postupům Microsoftu a postupům přerušení](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency).
+Aby nedošlo k nechtěnému uzamknutí vašeho tenanta, protože se nemůžete přihlásit nebo aktivovat existující účet individuálního uživatele jako správce, měli byste vytvořit dva nebo více mimořádných účtů a zajistit jejich implementaci a zarovnání k [osvědčeným](../roles/security-planning.md) [postupům Microsoftu a postupům přerušení](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency).
 
 ### <a name="privileged-access-to-azure-ea-portal"></a>Privilegovaný přístup k portálu Azure EA
 
@@ -119,7 +119,7 @@ Aby bylo jasné, že úroveň autorizace portálu EA je aktuálně nastavená na
 
 #### <a name="privileged-access-recommended-reading"></a>Čtení Doporučené privilegovaného přístupu
 
-- [Oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Oprávnění role správce v Azure Active Directory](../roles/permissions-reference.md)
 
 ## <a name="entitlement-management"></a>Správa nároků
 
@@ -128,7 +128,7 @@ Aby bylo jasné, že úroveň autorizace portálu EA je aktuálně nastavená na
 > [!NOTE]
 > Správa nároků Azure AD vyžaduje Azure AD Premium licence P2.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Existuje osm aspektů zabezpečení správného řízení identity. Tento seznam vám pomůže identifikovat akce, které byste měli provést při posuzování a ověřování přístupu k neprivilegovaným a privilegovaným identitám, auditům a řízení změn v prostředí.
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 674ce347f929dd70e32537e9bde3139c5fafc7ea
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398302"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368005"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Řešení potíží s připojením k síti virtuálních počítačů z Azure do Azure
 
@@ -60,7 +60,7 @@ Nelze navázat připojení k Microsoft 365 ověřování a koncovým bodům IP4 
 #### <a name="resolution"></a>Řešení
 
 - Azure Site Recovery vyžaduje přístup k rozsahům IP adres Microsoft 365 pro ověřování.
-- Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, ujistěte se, že jste povolili komunikaci s rozsahy IP adres Microsoft 365. Azure Active Directory vytvořte pravidlo NSG založené na [značkách služby Azure AD](../virtual-network/security-overview.md#service-tags) , které umožňuje přístup ke všem IP adresám, které odpovídají službě Azure AD.
+- Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, ujistěte se, že jste povolili komunikaci s rozsahy IP adres Microsoft 365. Azure Active Directory vytvořte pravidlo NSG založené na [značkách služby Azure AD](../virtual-network/network-security-groups-overview.md#service-tags) , které umožňuje přístup ke všem IP adresám, které odpovídají službě Azure AD.
 - Pokud v budoucnu přidáte do Azure AD nové adresy, budete muset vytvořit nová pravidla NSG.
 
 ### <a name="example-nsg-configuration"></a>Příklad konfigurace NSG

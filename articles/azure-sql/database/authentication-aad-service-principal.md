@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d24c824782bdc6530b78450fc55a879a511ddc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88516618"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367682"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory instančního objektu se službou Azure SQL
 
@@ -74,12 +74,12 @@ Pokud chcete povolit vytvoření objektu Azure AD v SQL Database a Azure synapse
     > [!NOTE]
     > Identitu serveru lze přiřadit také pomocí příkazů rozhraní příkazového řádku. Další informace najdete v tématu [AZ SQL Server Create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) a [AZ SQL Server Update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update).
 
-2. Udělte [**čtenářům adresáře**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) Azure AD oprávnění k vytvoření nebo přiřazení serveru k identitě serveru.
+2. Udělte [**čtenářům adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) Azure AD oprávnění k vytvoření nebo přiřazení serveru k identitě serveru.
     - Pokud chcete toto oprávnění udělit, postupujte podle popisu použitého pro spravovanou instanci SQL, který je k dispozici v následujícím článku: [zřízení správce Azure AD (spravovaná instance SQL)](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
     - Uživatel služby Azure AD, který uděluje toto oprávnění, musí být součástí role správce **globálního správce** nebo **privilegované role** služby Azure AD.
 
 > [!IMPORTANT]
-> Kroky 1 a 2 je nutné provést v uvedeném pořadí. Nejdřív vytvořte nebo přiřaďte identitu serveru a pak udělení oprávnění [**čtenářům adresáře**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) . Při vynechání jednoho z těchto kroků dojde k chybě spuštění během vytváření objektu Azure AD v Azure SQL jménem aplikace služby Azure AD. Podrobné pokyny k vytvoření uživatele služby Azure AD jménem aplikace služby Azure AD najdete v tématu [kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD](authentication-aad-service-principal-tutorial.md).
+> Kroky 1 a 2 je nutné provést v uvedeném pořadí. Nejdřív vytvořte nebo přiřaďte identitu serveru a pak udělení oprávnění [**čtenářům adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) . Při vynechání jednoho z těchto kroků dojde k chybě spuštění během vytváření objektu Azure AD v Azure SQL jménem aplikace služby Azure AD. Podrobné pokyny k vytvoření uživatele služby Azure AD jménem aplikace služby Azure AD najdete v tématu [kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD](authentication-aad-service-principal-tutorial.md).
 >
 > Ve **verzi Public Preview**můžete přiřadit roli **čtenáři adresáře** ke skupině ve službě Azure AD. Vlastníci skupiny pak můžou přidat spravovanou identitu jako člena této skupiny, což by obejít nutnost správce **globálních správců** nebo **privilegovaných rolí** , aby udělili roli **čtenářů adresáře** . Další informace o této funkci najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
 

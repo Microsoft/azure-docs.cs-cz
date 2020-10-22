@@ -1,14 +1,14 @@
 ---
 title: Správa agenta serverů s podporou ARC Azure
 description: Tento článek popisuje různé úlohy správy, které obvykle provedete během životního cyklu serverů s podporou ARC Azure, které jsou agentem počítače připojené.
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: af020d0ca586b950b444f2a3149ad207b5696050
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108928"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371422"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
@@ -138,7 +138,7 @@ Akce příkazu [Yumu](https://access.redhat.com/articles/yum-cheat-sheet) , jako
     zypper update
     ```
 
-Akce příkazu [zypperu](https://en.opensuse.org/Portal:Zypper) , jako je instalace a odebrání balíčků, se zaznamenávají do `/var/log/zypper.log` souboru protokolu. 
+Akce příkazu [zypperu](https://en.opensuse.org/Portal:Zypper) , jako je instalace a odebrání balíčků, se zaznamenávají do `/var/log/zypper.log` souboru protokolu.
 
 ## <a name="about-the-azcmagent-tool"></a>O nástroji Azcmagent
 
@@ -148,9 +148,11 @@ Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci serverů s povol
 
 * **Odpojit** – odpojení počítače od Arc Azure
 
-* **Znovu připojit** -pro opětovné připojení odpojeného počítače ke ARC Azure
+* **Zobrazit** – zobrazit stav agenta a jeho vlastnosti konfigurace (název skupiny prostředků, ID předplatného, verze atd.), která může pomáhat při řešení potíží s agentem. Zahrňte `-j` parametr pro výstup výsledků ve formátu JSON.
 
-* **Zobrazit** – zobrazit stav agenta a jeho vlastnosti konfigurace (název skupiny prostředků, ID předplatného, verze atd.), která může pomáhat při řešení potíží s agentem.
+* **Protokoly** – vytvoří soubor. zip v aktuálním adresáři, který obsahuje protokoly, které vám pomůžou při řešení problémů.
+
+* **Version (verze** ) zobrazuje verzi agenta připojeného počítače.
 
 * **-h nebo--help** -zobrazí dostupné parametry příkazového řádku.
 
@@ -158,7 +160,7 @@ Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci serverů s povol
 
 * **-v nebo--verbose** – Povolit podrobné protokolování
 
-**Připojení**, **odpojení**a opětovné **připojení** můžete provést ručně, pokud jste přihlášeni interaktivně, nebo automatizovat pomocí stejného instančního objektu, který jste použili k registraci více agentů nebo pomocí [přístupového tokenu](../../active-directory/develop/access-tokens.md)platformy Microsoft identity. Pokud jste nepoužívali instanční objekt k registraci počítače se servery s podporou ARC Azure, přečtěte si následující [článek](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a vytvořte instanční objekt.
+Můžete provést **připojení** a **odpojení** ručně během interaktivního přihlášení nebo automatizovat pomocí stejného instančního objektu, který jste použili k připojování více agentů nebo k Microsoft Identity Platform [Access tokenu](../../active-directory/develop/access-tokens.md). Pokud jste nepoužívali instanční objekt k registraci počítače se servery s podporou ARC Azure, přečtěte si následující [článek](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a vytvořte instanční objekt.
 
 >[!NOTE]
 >Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
@@ -198,28 +200,7 @@ Pokud chcete odpojit pomocí přístupového tokenu, spusťte následující př
 
 Pokud se chcete odpojit od přihlašovacích údajů se zvýšenými oprávněními (interaktivní), spusťte následující příkaz:
 
-`azcmagent disconnect --tenant-id <tenantID>`
-
-### <a name="reconnect"></a>Znovu připojit
-
-> [!WARNING]
-> `reconnect`Příkaz je zastaralý a neměl by se používat. Příkaz se odebere v budoucí verzi agenta a stávající agenti se nebude moct dokončit žádost o opětovné připojení. Místo toho [odpojte](#disconnect) počítač a znovu ho [Připojte](#connect) .
-
-Tento parametr připojí již registrovaný nebo připojený počítač k serverům s podporou ARC Azure. To může být nutné v případě, že je počítač vypnutý, minimálně 45 dní, aby jeho platnost jeho certifikátu vypršela. Tento parametr používá možnosti ověřování, které jsou k dispozici pro načtení nových přihlašovacích údajů odpovídajících prostředku Azure Resource Manager, který představuje tento počítač.
-
-Tento příkaz vyžaduje vyšší oprávnění než role registrace [počítače připojeného k Azure](agent-overview.md#required-permissions) .
-
-Pokud se chcete znovu připojit pomocí instančního objektu, spusťte následující příkaz:
-
-`azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
-
-Pokud se chcete znovu připojit pomocí přístupového tokenu, spusťte následující příkaz:
-
-`azcmagent reconnect --access-token <accessToken>`
-
-Pokud se chcete znovu připojit pomocí přihlašovacích údajů se zvýšenými oprávněními (interaktivní), spusťte následující příkaz:
-
-`azcmagent reconnect --tenant-id <tenantID>`
+`azcmagent disconnect`
 
 ## <a name="remove-the-agent"></a>Odebrat agenta
 

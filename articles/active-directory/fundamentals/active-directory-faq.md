@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de7395f42021144eab3dd400bf9a953d57b5a6ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: db8774d6868d55c7d040b1894c4a14d989cb2702
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312589"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371864"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy týkající se Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -53,7 +53,7 @@ Placené služby Azure AD, jako Enterprise Mobility + Security, doplňují dalš
 
 Pokud se ostatní potřebují přihlašovat a přistupovat ke službám pomocí stejného předplatného, můžete jim přiřadit příslušnou [integrovanou roli](../../role-based-access-control/built-in-roles.md). Další informace najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../../role-based-access-control/role-assignments-portal.md).
 
-Ve výchozím nastavení se uživateli, který se zaregistruje do předplatného Azure, přiřadí role globálního správce pro tento adresář. Globální správce má přístup ke všem funkcím adresáře Azure AD. Azure AD má jinou sadu rolí správce pro správu adresáře a funkcí souvisejících s identitou. Tito správci budou mít přístup k různým funkcím v Azure Portal. Role správce určuje, co můžou dělat, jako je vytváření nebo úpravy uživatelů, přiřazování rolí pro správu ostatním, Resetování uživatelských hesel, Správa uživatelských licencí nebo Správa domén.  Další informace o správcích adresáře služby Azure AD a jejich rolích najdete v tématu [přiřazení uživatele k rolím správců v Azure Active Directory](active-directory-users-assign-role-azure-portal.md) a [přiřazování rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Ve výchozím nastavení se uživateli, který se zaregistruje do předplatného Azure, přiřadí role globálního správce pro tento adresář. Globální správce má přístup ke všem funkcím adresáře Azure AD. Azure AD má jinou sadu rolí správce pro správu adresáře a funkcí souvisejících s identitou. Tito správci budou mít přístup k různým funkcím v Azure Portal. Role správce určuje, co můžou dělat, jako je vytváření nebo úpravy uživatelů, přiřazování rolí pro správu ostatním, Resetování uživatelských hesel, Správa uživatelských licencí nebo Správa domén.  Další informace o správcích adresáře služby Azure AD a jejich rolích najdete v tématu [přiřazení uživatele k rolím správců v Azure Active Directory](active-directory-users-assign-role-azure-portal.md) a [přiřazování rolí správce v Azure Active Directory](../roles/permissions-reference.md).
 
 Kromě toho placené služby Azure AD, jako je Enterprise Mobility + Security, doplňují další webové služby, jako jsou Microsoft 365 a Microsoft Azure, s komplexními řešeními pro správu a zabezpečení v podnikovém měřítku.
 

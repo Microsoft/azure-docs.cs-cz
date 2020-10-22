@@ -13,25 +13,25 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321238"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370929"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Přiřazení rolí správců a uživatelů bez oprávnění správce k Azure Active Directory
 
 Pokud v Azure Active Directory (Azure AD) potřebuje některý z uživatelů oprávnění ke správě prostředků Azure AD, musíte jim přiřadit roli, která poskytuje potřebná oprávnění. Informace o tom, které role spravují prostředky Azure a které role spravují prostředky Azure AD, najdete v tématu [role správců klasického předplatného, role Azure a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-Další informace o dostupných rolích služby Azure AD najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Pokud chcete přidat uživatele, přečtěte si téma [Přidání nových uživatelů do Azure Active Directory](add-users-azure-active-directory.md).
+Další informace o dostupných rolích služby Azure AD najdete v tématu [přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md). Pokud chcete přidat uživatele, přečtěte si téma [Přidání nových uživatelů do Azure Active Directory](add-users-azure-active-directory.md).
 
 ## <a name="assign-roles"></a>Přiřazení rolí
 
 Běžný způsob, jak přiřadit role Azure AD uživateli, je na stránce **přiřazené role** pro uživatele. Můžete taky nakonfigurovat, aby se způsobila možnost zvýšení úrovně oprávnění uživatele na roli pomocí Privileged Identity Management (PIM). Další informace o tom, jak používat PIM, najdete v tématu [Privileged Identity Management](../privileged-identity-management/index.yml).
 
 > [!Note]
-> Pokud máte plán licencí Azure AD Premium P2 a už používáte PIM, provedou se všechny úlohy správy rolí v [prostředí Privileged Identity Management](../users-groups-roles/directory-manage-roles-portal.md). Tato funkce je v současné době omezená na přiřazení pouze jedné role. Aktuálně nemůžete vybrat více rolí a přiřadit je uživateli najednou.
+> Pokud máte plán licencí Azure AD Premium P2 a už používáte PIM, provedou se všechny úlohy správy rolí v [prostředí Privileged Identity Management](../roles/manage-roles-portal.md). Tato funkce je v současné době omezená na přiřazení pouze jedné role. Aktuálně nemůžete vybrat více rolí a přiřadit je uživateli najednou.
 >
 > ![Role Azure AD spravované v PIM pro uživatele, kteří už používají PIM a mají licenci Premium P2](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 
@@ -81,4 +81,4 @@ Pokud potřebujete odebrat přiřazení role z uživatele, můžete to udělat t
 
 - [Přidání uživatelů typu host z jiného adresáře](../external-identities/what-is-b2b.md)
 
-Další úlohy správy uživatelů, které můžete rezervovat, jsou k dispozici v [dokumentaci Azure Active Directory správy uživatelů](../users-groups-roles/index.yml).
+Další úlohy správy uživatelů, které můžete rezervovat, jsou k dispozici v [dokumentaci Azure Active Directory správy uživatelů](../enterprise-users/index.yml).

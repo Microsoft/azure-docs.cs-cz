@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
-ms.openlocfilehash: dd4c6f0b9d518acf06f7d018a65cc2b9b92db33d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2365317d83a4c11fa17cb5c449a25b70da17c2eb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395447"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368362"
 ---
 # <a name="configure-expressroute-global-reach"></a>Konfigurace služby ExpressRoute Global Reach
 
@@ -105,17 +105,17 @@ Po dokončení předchozí operace budete mít propojení mezi místními sítě
 
 Pomocí následujícího příkazu Ověřte konfiguraci v okruhu, ve kterém byla provedena konfigurace (například okruh 1 v předchozím příkladu).
 ```azurepowershell-interactive
-$ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+$ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 ```
 
-Pokud v PowerShellu jednoduše spustíte *$CKT 1* , ve výstupu se zobrazí *CircuitConnectionStatus* . Dozvíte se, zda je připojení navázáno, připojeno nebo odpojeno. 
+Pokud v prostředí PowerShell jednoduše spustíte *$CKT _1* , zobrazí se ve výstupu *CircuitConnectionStatus* . Dozvíte se, zda je připojení navázáno, připojeno nebo odpojeno. 
 
 ## <a name="disable-connectivity"></a>Zákaz připojení
 
 Pokud chcete zakázat připojení mezi místními sítěmi, spusťte příkazy proti okruhu, ve kterém byla provedena konfigurace (například okruh 1 v předchozím příkladu).
 
 ```azurepowershell-interactive
-$ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+$ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -ExpressRouteCircuit $ckt_1
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```

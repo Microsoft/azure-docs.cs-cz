@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f8987a8daccc012f9d6da53e46fe7c4e8b43ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146352"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359828"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a Azure Active Directory (Azure AD) topologie, které používají Azure AD Connect synchronizaci jako klíčové řešení pro integraci. Tento článek zahrnuje podporované i nepodporované konfigurace.
@@ -142,7 +142,7 @@ Pokud chcete mít více záloh v různých datových centrech, je možné mít v
 
 ## <a name="multiple-azure-ad-tenants"></a>Několik tenantů Azure AD
 V rámci organizace doporučujeme mít v Azure AD jeden tenant.
-Než budete chtít používat víc tenantů Azure AD, přečtěte si článek [Správa administrativních jednotek v Azure AD](../users-groups-roles/directory-administrative-units.md). Zahrnuje běžné scénáře, kdy můžete použít jednoho tenanta.
+Než budete chtít používat víc tenantů Azure AD, přečtěte si článek [Správa administrativních jednotek v Azure AD](../roles/administrative-units.md). Zahrnuje běžné scénáře, kdy můžete použít jednoho tenanta.
 
 ![Topologie pro více doménových struktur a více tenantů](./media/plan-connect-topologies/multiforestmultidirectory.png)
 
@@ -168,7 +168,7 @@ Tato topologie má následující omezení pro jiné podporované scénáře:
 * Zařízení s Windows 10 se dají přidružit jenom k jednomu klientovi Azure AD.
 * Možnost jednotného přihlašování (SSO) pro synchronizaci hodnot hash hesel a předávací ověřování se dá použít jenom s jedním tenanta Azure AD.
 
-Požadavek na vzájemně exkluzivní sadu objektů platí také pro zpětný zápis. Některé funkce zpětného zápisu nejsou v této topologii podporované, protože předpokládají jednu místní konfiguraci. Mezi tyto funkce patří:
+Požadavek na vzájemně exkluzivní sadu objektů platí také pro zpětný zápis. Některé funkce zpětného zápisu nejsou v této topologii podporované, protože předpokládají jednu místní konfiguraci. Patří k nim:
 
 * Zpětný zápis skupin s výchozí konfigurací.
 * Zpětný zápis zařízení

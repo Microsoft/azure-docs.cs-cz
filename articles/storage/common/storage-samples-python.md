@@ -3,17 +3,17 @@ title: Ukázky Azure Storage pomocí Pythonu | Microsoft Docs
 description: Zobrazit, stáhnout a spustit vzorový kód a aplikace pro Azure Storage. Pomocí knihoven klienta pro úložiště Python můžete zjistit úvodní ukázky pro objekty blob, fronty, tabulky a soubory.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-python
-ms.openlocfilehash: 0d1bfd146729a4a0ef94099a0ad79972517b4f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f57fa1b668cacdaaceb2026f9e5d7fff0cc56d7f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848181"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371354"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Ukázky Azure Storage pomocí klientských knihoven V12 Python
 
@@ -594,4 +594,5 @@ Informace o ukázkách pro jiné jazyky:
 * .NET: [Azure Storage ukázky pomocí .NET](storage-samples-dotnet.md)
 * Java: [Azure Storage ukázky pomocí jazyka Java](storage-samples-java.md)
 * JavaScript/Node.js: [ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
+* C++: [Azure Storage ukázky pomocí jazyka C++](storage-samples-c-plus-plus.md)
 * Všechny ostatní jazyky: [ukázky Azure Storage](storage-samples.md)
