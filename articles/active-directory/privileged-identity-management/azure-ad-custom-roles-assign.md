@@ -16,18 +16,18 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75e004980ada23a616b57e3c7eb1afb241e09598
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87413149"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371643"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Přiřazení vlastní role Azure AD v Privileged Identity Management
 
 V tomto článku se dozvíte, jak pomocí Privileged Identity Management (PIM) vytvořit přiřazení za běhu a časově vázaný čas pro vlastní role vytvořené pro správu aplikací v prostředí pro správu Azure Active Directory (Azure AD).
 
-- Další informace o vytváření vlastních rolí pro delegování správy aplikací ve službě Azure AD najdete v tématu [vlastní role správců v Azure Active Directory (Preview)](../users-groups-roles/roles-custom-overview.md).
+- Další informace o vytváření vlastních rolí pro delegování správy aplikací ve službě Azure AD najdete v tématu [vlastní role správců v Azure Active Directory (Preview)](../roles/custom-overview.md).
 - Pokud jste zatím Privileged Identity Management ještě nepoužili, získáte další informace na adrese Začínáme [s používáním Privileged Identity Management](pim-getting-started.md).
 - Informace o tom, jak udělit přístup jinému správci ke správě Privileged Identity Management, najdete v tématu [udělení přístupu jiným správcům pro správu Privileged Identity Management](pim-how-to-give-access-to-pim.md).
 
@@ -83,4 +83,4 @@ Přiřazení role ověříte tak, že v otevřené roli vyberete **přiřazení*
 - [Aktivace vlastní role Azure AD](azure-ad-custom-roles-assign.md)
 - [Odebrání nebo aktualizace přiřazení vlastní role Azure AD](azure-ad-custom-roles-update-remove.md)
 - [Konfigurace přiřazení vlastní role Azure AD](azure-ad-custom-roles-configure.md)
-- [Definice rolí v Azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Definice rolí v Azure AD](../roles/permissions-reference.md)

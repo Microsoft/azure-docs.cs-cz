@@ -2,13 +2,13 @@
 title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385751"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371439"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -26,7 +26,7 @@ Součástí všech výpočetních uzlů ve službě Batch také jsou:
 
 - Standardní [struktura složek](files-and-directories.md) a přidružené [proměnné prostředí](jobs-and-tasks.md), které jsou úkolu k dispozici.
 - Nastavení **brány firewall**, která jsou nakonfigurována pro řízení přístupu.
-- [Vzdálený přístup](error-handling.md#connect-to-compute-nodes) k uzlům Windows (Remote Desktop Protocol (RDP)) i Linux (Secure Shell (SSH)).
+- [Vzdálený přístup](error-handling.md#connect-to-compute-nodes) k uzlům Windows (protokol RDP (Remote Desktop Protocol) (RDP)) i Linux (Secure Shell (SSH)) (Pokud [nevytvoříte fond se zakázaným vzdáleným přístupem](pool-endpoint-configuration.md)).
 
 Ve výchozím nastavení můžou uzly vzájemně komunikovat, ale nemůžou komunikovat s virtuálními počítači, které nejsou součástí stejného fondu. Pokud chcete, aby uzly komunikovaly bezpečně s ostatními virtuálními počítači nebo v místní síti, můžete fond zřídit [v podsíti virtuální sítě Azure (VNET)](batch-virtual-network.md). Když to uděláte, k vašim uzlům můžete přistup prostřednictvím veřejných IP adres. Tyto veřejné IP adresy vytvoří služba Batch a můžou se měnit po dobu života fondu. Můžete také [vytvořit fond se statickými veřejnými IP adresami](create-pool-public-ip.md) , které řídíte, což zajistí, že se neočekávaně nezmění.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341258"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371065"
 ---
 # <a name="monitor-identity-and-access"></a>Monitorování identity a přístupu
 
@@ -56,7 +56,7 @@ Existují určitá omezení pro Security Center identity a ochrany přístupu:
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a>Multi-Factor Authentication (MFA) a Azure Active Directory 
 
-Povolení MFA vyžaduje [oprávnění klienta Azure Active Directory (AD)](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Povolení MFA vyžaduje [oprávnění klienta Azure Active Directory (AD)](../active-directory/roles/permissions-reference.md).
 
 - Pokud máte edici Premium ve službě AD, povolte vícefaktorové ověřování pomocí [podmíněného přístupu](../active-directory/conditional-access/concept-conditional-access-policy-common.md).
 - Pokud používáte bezplatnou edici AD, povolte **výchozí nastavení zabezpečení** , jak je popsáno v [Azure Active Directory dokumentaci](../active-directory/fundamentals/concept-fundamentals-security-defaults.md).

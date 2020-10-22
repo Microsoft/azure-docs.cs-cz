@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 02bfb7da51f243de8320d0230259577e337231fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149277"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370691"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených ve službě Azure Data Lake Storage Gen1
 Zabezpečení dat v Azure Data Lake Storage Gen1 je třístavový přístup.  Řízení přístupu na základě role Azure (Azure RBAC) a seznamy řízení přístupu (ACL) musí být nastavené tak, aby plně povolovaly přístup k datům pro uživatele a skupiny zabezpečení.
@@ -39,7 +39,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 Pokyny k vytvoření skupin zabezpečení služby Azure AD a přidání uživatelů do této skupiny najdete v tématu [Správa skupin zabezpečení v Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 > [!NOTE] 
-> Do skupiny v Azure AD můžete přidat jak uživatele, tak i jiné skupiny pomocí Azure Portal. Pokud ale chcete přidat instanční objekt do skupiny, použijte [modul PowerShellu služby Azure AD](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+> Do skupiny v Azure AD můžete přidat jak uživatele, tak i jiné skupiny pomocí Azure Portal. Pokud ale chcete přidat instanční objekt do skupiny, použijte [modul PowerShellu služby Azure AD](../active-directory/enterprise-users/groups-settings-v2-cmdlets.md).
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs

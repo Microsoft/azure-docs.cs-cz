@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití GitOps pro konfiguraci clusteru s podporou ARC Azure (Preview)
 keywords: GitOps, Kubernetes, K8s, Azure, ARC, Azure Kubernetes Service, Containers
-ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714189"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371252"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Nasazení konfigurací pomocí GitOps v clusteru Kubernetes s povoleným ARC (Preview)
 
@@ -96,19 +96,18 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Tady jsou podporované scénáře pro parametr hodnota--úložiště-adresa URL.
 
-| Scénář | Formát | Description |
+| Scénář | Formát | Popis |
 | ------------- | ------------- | ------------- |
-| Soukromé úložiště GitHub – SSH | git@github.com:username/repo | Souboru KeyPair SSH vygenerovaný tokem.  Uživatel musí do účtu GitHubu přidat veřejný klíč jako klíč pro nasazení. |
-| Veřejné úložiště GitHub | `http://github.com/username/repo` nebo git://github.com/username/repo   | Veřejné úložiště Git  |
+| Veřejné úložiště Git | http [s]://Server/repo.Git nebo git://server/repo.git   | Veřejné úložiště Git  |
+| Privátní úložiště Git – SSH – klíče vytvořené tokem | SSH://[user@] Server/úložiště. Git nebo [user@] Server: úložiště. Git | Veřejný klíč generovaný tokem musí být přidán do uživatelského účtu nebo úložiště ve vašem poskytovateli služby Git. Další podrobnosti najdete [tady](#apply-configuration-from-a-private-git-repository). |
 
-Tyto scénáře jsou podporovány tokem, ale nikoli sourceControlConfiguration. 
+Tyto scénáře jsou podporovány tokem, ale ne ještě pomocí sourceControlConfiguration.
 
-| Scénář | Formát | Description |
+| Scénář | Formát | Popis |
 | ------------- | ------------- | ------------- |
-| Úložiště privátního GitHubu – HTTPS | `https://github.com/username/repo` | Tok negeneruje souboru KeyPair SSH.  [Pokyny](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
-| Privátní hostitel Git | user@githost:path/to/repo | [Pokyny](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
-| Úložiště privátního GitHubu – SSH (Přineste si vlastní klíč) | git@github.com:username/repo | [Použití vlastního souboru KeyPair SSH](https://docs.fluxcd.io/en/1.17.0/guides/provide-own-ssh-key.html) |
-
+| Privátní úložiště Git – HTTPS | https://server/repo.git | Již brzy (bude podporovat uživatelské jméno/heslo, uživatelské jméno/token, certifikát) |
+| Privátní úložiště Git – SSH – uživatelsky poskytnuté klíče | SSH://[user@] Server/úložiště. Git nebo [user@] Server: úložiště. Git | Již brzy |
+| Privátní hostitel Git – SSH – vlastní known_hosts | SSH://[user@] Server/úložiště. Git nebo [user@] Server: úložiště. Git | Již brzy |
 
 #### <a name="additional-parameters"></a>Další parametry
 
@@ -225,7 +224,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 **Přidat veřejný klíč jako klíč nasazení do úložiště Git**
 
-1. Otevřete GitHub, přejděte do rozvětvení, do **Nastavení**a pak **Nasaďte klíče** .
+1. Otevřete GitHub, přejděte do svého úložiště, do **Nastavení**a pak **Nasaďte klíče** .
 2. Klikněte na **Přidat klíč nasazení** .
 3. Zadejte název.
 4. Ověřit **Povolení přístupu pro zápis**

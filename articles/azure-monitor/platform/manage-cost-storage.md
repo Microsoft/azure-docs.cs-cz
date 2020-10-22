@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 3783c3dea67ebb9a77486d18bf80e67b85292744
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6a14ef6f75d5939501c6bd8ca84620a7a5619a54
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144180"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369059"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitoru    
 
@@ -243,7 +243,7 @@ Pokud chcete začít, tady je doporučené nastavení výstrahy dotazování `Op
 - Cíl: Vyberte prostředek Log Analytics
 - Měřítk 
    - Název signálu: prohledávání vlastního protokolu
-   - Vyhledávací dotaz: `_LogOperation | where Detail has 'OverQuota'`
+   - Vyhledávací dotaz: `_LogOperation | where Category == "Ingestion" | where Operation == "Ingestion rate" | where Level == "Warning"`
    - Podle: počet výsledků
    - Podmínka: je větší než
    - Prahová hodnota: 0
@@ -600,9 +600,9 @@ Chcete-li upozornit, zda byl objem fakturovatelných dat zobrazený za poslední
 - **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor služby Log Analytics.
 - **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
-   - **Vyhledávací dotaz** na `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Pokud chcete differetn 
+   - **Vyhledávací dotaz** na `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` . Pokud chcete jiné 
    - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než***Prahová hodnota***0*.
-   - **Časové období** *1440* minut a **frekvence upozornění** každé *1440* minutesto spustit jednou denně.
+   - **Časové období** *1440* minut a **frekvence upozornění** každé *1440* minut, které se spustí jednou denně.
 - **Definujte podrobnosti upozornění** – Zadejte následující:
    - **Název** pro *fakturovatelný objem dat větší než 50 GB za 24 hodin*
    - **Závažnost** na *Upozornění*.

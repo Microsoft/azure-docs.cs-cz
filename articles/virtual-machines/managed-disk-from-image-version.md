@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/06/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: bf4a1feb91a1ac4b0bca0d6afdbac41a8be3aa4f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 35edcfb4bdb0715245f4a3190fb22638b1162429
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049685"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370980"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Vytvoření spravovaného disku z verze image
 
@@ -23,10 +23,10 @@ Pokud potřebujete, můžete vytvořit spravovaný disk z verze Image uložené 
 
 ## <a name="cli"></a>Rozhraní příkazového řádku
 
-Nastavte `source` proměnnou na ID verze image a pak pomocí [AZ disk Create](/cli/azure/disk.md#az_disk_create) vytvořte spravovaný disk. 
+Nastavte `source` proměnnou na ID verze image a pak pomocí [AZ disk Create](/cli/azure/disk#az_disk_create) vytvořte spravovaný disk. 
 
 
-Verze obrázků v seznamu můžete zobrazit pomocí [seznamu AZ SIG Image-Version list](/cli/azure/sig/image-version.md#az_sig_image_version_list). V tomto příkladu hledáme všechny verze imagí, které jsou součástí definice image *myImageDefinition* v galerii imagí *myGallery* .
+Verze obrázků v seznamu můžete zobrazit pomocí [seznamu AZ SIG Image-Version list](/cli/azure/sig/image-version#az_sig_image_version_list). V tomto příkladu hledáme všechny verze imagí, které jsou součástí definice image *myImageDefinition* v galerii imagí *myGallery* .
 
 ```azurecli-interactive
 az sig image-version list \

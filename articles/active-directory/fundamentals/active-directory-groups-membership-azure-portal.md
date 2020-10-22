@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3918016e35029ea6cc1b60d407ad475b35895b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbd7eecd80b528b1d20d016d51c985bc24d1301d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565460"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371796"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Přidat nebo odebrat skupinu z jiné skupiny pomocí Azure Active Directory
 Tento článek vám pomůže přidat a odebrat skupinu z jiné skupiny pomocí Azure Active Directory.
@@ -78,6 +78,6 @@ Následující články poskytují další informace o službě Azure Active Dir
 
 - [Úprava nastavení skupiny](active-directory-groups-settings-azure-portal.md)
 
-- [Použití skupiny ke správě přístupu k aplikacím SaaS](../users-groups-roles/groups-saasapps.md)
+- [Použití skupiny ke správě přístupu k aplikacím SaaS](../enterprise-users/groups-saasapps.md)
 
-- [Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)
+- [Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory](../enterprise-users/licensing-group-advanced.md#limitations-and-known-issues)

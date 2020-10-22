@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d794716fe1f4717acbabfd90643b72c682e475bc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400685"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370589"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v partnerském centru
 
@@ -170,7 +170,7 @@ Pokud chcete přidat uživatele k vašemu účtu partnerského centra, který u�
 
 ### <a name="create-new-users"></a>Vytvoření nových uživatelů
 
-Chcete-li vytvořit nové uživatelské účty, musíte mít účet s oprávněními [**globálního správce**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) .
+Chcete-li vytvořit nové uživatelské účty, musíte mít účet s oprávněními [**globálního správce**](../../active-directory/roles/permissions-reference.md) .
 
 1. V nabídce **Uživatelé** (v části **Nastavení účtu**) vyberte **Přidat uživatele**a pak zvolte **vytvořit nové uživatele**.
 1. Zadejte jméno, příjmení a uživatelské jméno pro každého nového uživatele. 
@@ -184,7 +184,7 @@ Vytvořením nového uživatele v partnerském centru se taky vytvoří účet p
 
 ### <a name="invite-new-users-by-email"></a>Pozvat nové uživatele e-mailem
 
-Pokud chcete pozvat uživatele, kteří nejsou aktuálně součástí pracovního účtu vaší společnosti (tenant Azure AD) prostřednictvím e-mailu, musíte mít účet s oprávněními [**globálního správce**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) .
+Pokud chcete pozvat uživatele, kteří nejsou aktuálně součástí pracovního účtu vaší společnosti (tenant Azure AD) prostřednictvím e-mailu, musíte mít účet s oprávněními [**globálního správce**](../../active-directory/roles/permissions-reference.md) .
 
 1. Přejít na **uživatele** (v části **Nastavení účtu**) vyberte **Přidat uživatele**a pak zvolte **pozvat uživatele e-mailem**.
 2. Zadejte jednu nebo více e-mailových adres (až 10), které jsou odděleny čárkami nebo středníkem.
@@ -204,7 +204,7 @@ Pokud chcete odebrat uživatele z pracovního účtu (tenant Azure AD), pokraču
 
 ### <a name="change-a-user-password"></a>Změna hesla uživatele
 
-Pokud některý z uživatelů potřebuje změnit heslo, může to udělat sami, pokud jste při vytváření uživatelského účtu zadali **e-mail pro obnovení hesla** . Pomocí následujících kroků můžete také aktualizovat heslo uživatele. Pokud chcete změnit heslo uživatele v pracovním účtu vaší společnosti (tenant Azure AD), musíte být přihlášeni pomocí účtu s oprávněními [**globálního správce**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Tím se změní heslo uživatele v tenantovi Azure AD spolu s heslem, které používají pro přístup k partnerskému centru.
+Pokud některý z uživatelů potřebuje změnit heslo, může to udělat sami, pokud jste při vytváření uživatelského účtu zadali **e-mail pro obnovení hesla** . Pomocí následujících kroků můžete také aktualizovat heslo uživatele. Pokud chcete změnit heslo uživatele v pracovním účtu vaší společnosti (tenant Azure AD), musíte být přihlášeni pomocí účtu s oprávněními [**globálního správce**](../../active-directory/roles/permissions-reference.md) . Tím se změní heslo uživatele v tenantovi Azure AD spolu s heslem, které používají pro přístup k partnerskému centru.
 
 1. Na stránce **Uživatelé** (v části **Nastavení účtu**) vyberte název uživatelského účtu, který chcete upravit.
 2. V dolní části stránky vyberte tlačítko **resetovat heslo** .

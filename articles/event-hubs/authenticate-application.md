@@ -2,13 +2,13 @@
 title: Ověření aplikace pro přístup k prostředkům Azure Event Hubs
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k prostředkům Azure Event Hubs.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 50c697e5c430b72f8d5da393e90f1db7ff6d48a1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.date: 10/21/2020
+ms.openlocfilehash: 6eac2ef362705ecb68212166f8b691ac969a40ff
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332480"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359930"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření aplikace s Azure Active Directory pro přístup k prostředkům Event Hubs
 Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (Azure AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu `https://eventhubs.azure.net/` (pro klienty Kafka je prostředek k vyžádání tokenu `https://<namespace>.servicebus.windows.net` ). Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.
@@ -29,34 +29,6 @@ Předdefinované role registru schématu najdete v tématu [role registru schém
 
 > [!IMPORTANT]
 > Naše verze Preview podporuje přidávání oprávnění k přístupu k datům Event Hubs k roli vlastníka nebo přispěvatele. Oprávnění pro přístup k datům pro vlastníka a roli přispěvatele se ale už neuplatňují. Pokud používáte roli vlastníka nebo přispěvatel, přepněte se na použití role vlastníka dat Event Hubs Azure.
-
-## <a name="assign-azure-roles-using-the-azure-portal"></a>Přiřazení rolí Azure pomocí Azure Portal  
-Další informace o správě přístupu k prostředkům Azure pomocí Azure RBAC a Azure Portal najdete v [tomto článku](..//role-based-access-control/role-assignments-portal.md). 
-
-Po určení vhodného oboru pro přiřazení role přejděte k tomuto prostředku v Azure Portal. Zobrazit nastavení řízení přístupu (IAM) pro prostředek a podle těchto pokynů můžete spravovat přiřazení rolí:
-
-> [!NOTE]
-> Následující kroky přiřadí roli do centra událostí pod oborem názvů Event Hubs, ale stejný postup můžete použít k přiřazení rozsahu role k jakémukoli Event Hubs prostředku.
-
-1. V [Azure Portal](https://portal.azure.com/)přejděte do svého oboru názvů Event Hubs.
-2. Na stránce **Přehled** vyberte centrum událostí, pro které chcete přiřadit roli.
-
-    ![Výběr centra událostí](./media/authenticate-application/select-event-hub.png)
-1. Vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro centrum událostí. 
-1. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí. Na panelu nástrojů vyberte tlačítko **Přidat** a pak vyberte **Přidat přiřazení role**. 
-
-    ![Přidat tlačítko na panelu nástrojů](./media/authenticate-application/role-assignments-add-button.png)
-1. Na stránce **Přidat přiřazení role** proveďte následující kroky:
-    1. Vyberte **roli Event Hubs** , kterou chcete přiřadit. 
-    1. Vyhledejte **objekt zabezpečení** (uživatel, skupina, instanční objekt), ke kterému chcete přiřadit roli.
-    1. Vyberte **Uložit** a uložte přiřazení role. 
-
-        ![Přiřazení role uživateli](./media/authenticate-application/assign-role-to-user.png)
-    4. Identita, ke které jste přiřadili roli, se zobrazí v seznamu v rámci této role. Například na následujícím obrázku vidíte, že Azure – uživatelé jsou v roli vlastníka dat Azure Event Hubs. 
-        
-        ![Uživatel v seznamu](./media/authenticate-application/user-in-list.png)
-
-Můžete postupovat podle podobných kroků a přiřadit obor role Event Hubs oboru názvů, skupiny prostředků nebo předplatného. Po definování role a jejího oboru můžete toto chování otestovat pomocí ukázek [v tomto umístění GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac).
 
 
 ## <a name="authenticate-from-an-application"></a>Ověření z aplikace
@@ -95,12 +67,36 @@ Aplikace potřebuje při žádosti o tokenu klíč klienta k prokázání jeho i
     ![Tajný klíč klienta](./media/authenticate-application/client-secret.png)
 
 
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Přiřazení rolí Azure pomocí Azure Portal  
+Po registraci aplikace přiřadíte instanční objekt aplikace k Event Hubs role služby Azure AD popsané v části [role sestavení pro azure Event Hubs](#built-in-roles-for-azure-event-hubs) . 
+
+1. V [Azure Portal](https://portal.azure.com/)přejděte do svého oboru názvů Event Hubs.
+2. Na stránce **Přehled** vyberte centrum událostí, pro které chcete přiřadit roli.
+
+    ![Výběr centra událostí](./media/authenticate-application/select-event-hub.png)
+1. Vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro centrum událostí. 
+1. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí. Na panelu nástrojů vyberte tlačítko **Přidat** a pak vyberte **Přidat přiřazení role**. 
+
+    ![Přidat tlačítko na panelu nástrojů](./media/authenticate-application/role-assignments-add-button.png)
+1. Na stránce **Přidat přiřazení role** proveďte následující kroky:
+    1. Vyberte **roli Event Hubs** , kterou chcete přiřadit. 
+    1. Vyhledejte **objekt zabezpečení** (uživatel, skupina, instanční objekt), ke kterému chcete přiřadit roli. Vyberte ze seznamu **registrovanou aplikaci** . 
+    1. Vyberte **Uložit** a uložte přiřazení role. 
+
+        ![Přiřazení role uživateli](./media/authenticate-application/assign-role-to-user.png)
+    4. Přepněte na kartu **přiřazení rolí** a potvrďte přiřazení role. Například následující obrázek ukazuje, že **MyWebApp** je v roli **odesilatele dat Azure Event Hubs** . 
+        
+        ![Uživatel v seznamu](./media/authenticate-application/user-in-list.png)
+
+Můžete postupovat podle podobných kroků a přiřadit obor role Event Hubs oboru názvů, skupiny prostředků nebo předplatného. Po definování role a jejího oboru můžete toto chování otestovat pomocí ukázek [v tomto umístění GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). Další informace o správě přístupu k prostředkům Azure pomocí Azure RBAC a Azure Portal najdete v [tomto článku](..//role-based-access-control/role-assignments-portal.md). 
+
+
 ### <a name="client-libraries-for-token-acquisition"></a>Klientské knihovny pro získání tokenu  
 Po zaregistrování aplikace a udělení oprávnění IT k posílání a přijímání dat v Azure Event Hubs můžete do své aplikace přidat kód pro ověření objektu zabezpečení a získání tokenu OAuth 2,0. K ověření a získání tokenu můžete použít buď jednu z [knihoven ověřování Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md) , nebo jinou Open Source knihovnu, která podporuje OpenID nebo Connect 1,0. Aplikace pak může pomocí přístupového tokenu autorizovat požadavek oproti službě Azure Event Hubs.
 
 Seznam scénářů, pro které se podporují tokeny, najdete v části [scénáře](https://aka.ms/msal-net-scenarios) v [knihovně Microsoft Authentication Library (MSAL) pro](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) úložiště GitHub .NET.
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 - [Ukázky Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 
     
     Tyto ukázky používají starou knihovnu **Microsoft. Azure. EventHubs** , ale můžete ji snadno aktualizovat tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** . Postup přesunutí ukázky z použití staré knihovny do nové verze najdete v [Průvodci migrací z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).

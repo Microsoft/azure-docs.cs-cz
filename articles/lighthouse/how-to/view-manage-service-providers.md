@@ -3,12 +3,12 @@ title: Zobrazení a správa poskytovatelů služeb
 description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: ecbeb7f5b6fccb7b66043cf57aa5f48674c6fe8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974392"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371099"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
@@ -78,7 +78,7 @@ Zákazníci mohou chtít získat přehled o předplatných nebo skupinách prost
 
 Poskytujeme [Azure Policy vestavěnou definici zásad](../../governance/policy/samples/built-in-policies.md#lighthouse) pro [auditování delegování oborů do spravovaného tenanta](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json). Tuto zásadu můžete přiřadit ke skupině pro správu, která zahrnuje všechna předplatná, která chcete auditovat. Když zkontrolujete dodržování předpisů pomocí této zásady, budou se všechny delegované předplatné nebo skupiny prostředků (ve skupině pro správu, ke které je zásada přiřazená) zobrazovat v nekompatibilním stavu. Potom můžete zkontrolovat výsledky a ověřit, že neexistují žádná neočekávaná delegování.
 
-Další [definice předdefinované zásady](../../governance/policy/samples/built-in-policies.md#lighthouse) umožňuje [omezit delegování na konkrétní správu klientů](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json). Tyto zásady se můžou použít obdobně pro skupinu pro správu, která obsahuje všechna předplatná, pro která chcete delegování omezit. Po nasazení zásady budou všechny pokusy o delegování předplatného na klienta mimo ty, které zadáte, zamítnuté.
+Další [definice předdefinované zásady](../../governance/policy/samples/built-in-policies.md#lighthouse) umožňuje [omezit delegování na konkrétní správu klientů](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json). Tyto zásady se můžou použít obdobně pro skupinu pro správu, která obsahuje všechna předplatná, pro která chcete delegování omezit. Po nasazení zásady budou všechny pokusy o delegování předplatného na klienta mimo ty, které zadáte, zamítnuté.
 
 Další informace o tom, jak přiřadit zásadu a zobrazit výsledky stavu dodržování předpisů, najdete v tématu [rychlý Start: vytvoření přiřazení zásady](../../governance/policy/assign-policy-portal.md).
 

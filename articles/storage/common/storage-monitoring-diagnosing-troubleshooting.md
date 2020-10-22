@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854553"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370470"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -217,7 +217,7 @@ Klientská knihovna pro úložiště pro .NET umožňuje shromažďovat data pro
 Můžete zachytit provoz mezi klientem a serverem a poskytnout podrobné informace o datech, které klient a server vyměňuje, a o základních síťových podmínkách. K užitečným nástrojům pro protokolování sítě patří:
 
 * [Fiddler](https://www.telerik.com/fiddler) je bezplatný webový proxy server pro ladění, který umožňuje kontrolovat hlavičky a data datové části požadavků HTTP a HTTPS a zprávy s odpovědí. Další informace najdete v [dodatku 1: použití Fiddler k zachycení přenosů http a HTTPS](#appendix-1).
-* [Microsoft sledování sítě (Netmon)](https://cnet-downloads.com/network-monitor) a [Wireshark](https://www.wireshark.org/) jsou bezplatné nástroje pro analyzátor síťových protokolů, které umožňují zobrazit podrobné informace o paketech pro nejrůznější síťové protokoly. Další informace o nástroji Wireshark najdete v[dodatku 2: použití nástroje Wireshark k zachycení síťového provozu](#appendix-2).
+* [Microsoft sledování sítě (Netmon)](https://download.cnet.com/s/network-monitor/) a [Wireshark](https://www.wireshark.org/) jsou bezplatné nástroje pro analyzátor síťových protokolů, které umožňují zobrazit podrobné informace o paketech pro nejrůznější síťové protokoly. Další informace o nástroji Wireshark najdete v[dodatku 2: použití nástroje Wireshark k zachycení síťového provozu](#appendix-2).
 * Pokud chcete provést základní test připojení, abyste zkontrolovali, jestli se Váš klientský počítač může připojit ke službě Azure Storage přes síť, nemůžete to udělat pomocí standardního nástroje **příkazového** testu na klientovi. K zkontrolování připojení ale můžete použít [Nástroj **tcping** ](https://www.elifulkerson.com/projects/tcping.php) .
 
 V mnoha případech budou data protokolu z protokolování úložiště a klientské knihovny pro úložiště dostatečné k diagnostice problému, ale v některých scénářích budete možná potřebovat podrobnější informace, které tyto nástroje pro protokolování sítě můžou poskytnout. Například použití Fiddler k zobrazení zpráv HTTP a HTTPS vám umožní zobrazit hlavičku a data datové části odesílané do a ze služeb úložiště, což vám umožní zjistit, jak klientská aplikace opakuje operace úložiště. Analyzátory protokolů, jako je třeba Wireshark, pracují na úrovni paketů, což vám umožní zobrazit data protokolu TCP, což vám umožní řešit ztracené pakety a problémy s připojením. 

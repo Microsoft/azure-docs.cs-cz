@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 8/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 9bfec8c1da0581fa7f17dd671358218f22c877c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6cbda4067e98c16ea26f3436b5f65e696549462
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708471"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370300"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálů strojového učení s Azure Machine Learning SDK
 
@@ -30,9 +30,9 @@ Kanály ML, které vytvoříte, jsou viditelné pro členy [pracovního prostoru
 
 Kanály ML se spouštějí na výpočetních cílech (viz [co jsou výpočetní cíle v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)). Kanály můžou číst a zapisovat data do a z podporovaných [Azure Storage](https://docs.microsoft.com/azure/storage/) umístění.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu.
 
@@ -251,6 +251,18 @@ from azureml.pipeline.core import Pipeline
 pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
+### <a name="how-python-environments-work-with-pipeline-parameters"></a>Jak prostředí Python pracují s parametry kanálu
+
+Jak bylo popsáno dříve v [části Konfigurace prostředí školicího běhu](#configure-the-training-runs-environment), závislosti stavu prostředí a knihovny Python jsou určeny pomocí `Environment` objektu. Obecně můžete zadat existující `Environment` odkazem na jeho název a volitelně na verzi:
+
+```python
+aml_run_config = RunConfiguration()
+aml_run_config.environment.name = 'MyEnvironment'
+aml_run_config.environment.version = '1.0'
+```
+
+Pokud se ale rozhodnete použít `PipelineParameter` objekty k dynamickému nastavení proměnných za běhu pro kroky vašeho kanálu, nemůžete použít tuto techniku pro odkazování na existující `Environment` . Místo toho, pokud chcete použít `PipelineParameter` objekty, je nutné nastavit `environment` pole `RunConfiguration` `Environment` objektu na objekt. Je vaše zodpovědnost za to, že je nutné zajistit, aby `Environment` se jeho závislosti na externích balíčcích Python správně nastavily.
+
 ### <a name="use-a-dataset"></a>Použití datové sady 
 
 Datové sady vytvořené ze služby Azure Blob Storage, souborů Azure, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database a Azure Database for PostgreSQL lze použít jako vstup do libovolného kroku kanálu. Můžete napsat výstup do [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py&preserve-view=true), [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py&preserve-view=true)nebo pokud chcete zapisovat data do konkrétního úložiště dat [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true)použijte. 
@@ -337,6 +349,8 @@ Při prvním spuštění kanálu Azure Machine Learning:
 ![Diagram spuštění experimentu jako kanálu](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 Další informace najdete v referenčních informacích ke [třídě experimentu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) .
+
+## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>Použití parametrů kanálu pro argumenty, které se mění v čase odvození
 
 ## <a name="view-results-of-a-pipeline"></a>Zobrazení výsledků kanálu
 

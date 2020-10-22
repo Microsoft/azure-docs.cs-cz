@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447424"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370606"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Nasazení akcelerátoru řešení pomocí webu azureiotsolutions.com
 
@@ -38,7 +38,7 @@ Než budete moct nasadit akcelerátor řešení, musíte se přihlásit na Azure
 
 Vaše oprávnění nasadit akcelerátory řešení, spravovat uživatele a spravovat služby Azure závisí na vaší roli ve vybraném adresáři. Mezi běžné role Azure AD přidružené k akcelerátorům řešení patří:
 
-* **Globální správce**: může existovat mnoho [globálních správců](../active-directory/users-groups-roles/directory-assign-admin-roles.md) na tenanta Azure AD:
+* **Globální správce**: může existovat mnoho [globálních správců](../active-directory/roles/permissions-reference.md) na tenanta Azure AD:
 
   * Při vytváření tenanta Azure AD jste ve výchozím nastavení globálním správcem tohoto tenanta.
   * Globální správce může nasazovat základní a standardní akcelerátory řešení.

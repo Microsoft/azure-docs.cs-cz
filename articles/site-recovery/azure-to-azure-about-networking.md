@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332038"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370436"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>O sítích v zotavení po havárii virtuálního počítače Azure
 
@@ -62,9 +62,9 @@ login.microsoftonline.com | Vyžaduje se pro autorizaci a ověřování adres UR
 Při použití NSG k řízení odchozího připojení je potřeba tyto značky služeb povolit.
 
 - Pro účty úložiště ve zdrojové oblasti:
-    - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/security-overview.md#service-tags) pro zdrojovou oblast.
+    - Vytvořte pravidlo NSG založené na [značce služby úložiště](../virtual-network/network-security-groups-overview.md#service-tags) pro zdrojovou oblast.
     - Povolte tyto adresy, aby bylo možné do účtu úložiště mezipaměti zapsat data z virtuálního počítače.
-- Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
+- Vytvořit pravidlo NSG založené na [značce služby pro Azure Active Directory (AAD)](../virtual-network/network-security-groups-overview.md#service-tags) pro povolení přístupu ke všem IP adresám, které odpovídají AAD
 - Vytvořte pravidlo NSG na základě značky služby EventsHub pro cílovou oblast a umožněte přístup Site Recovery monitorování.
 - Vytvořte pravidlo NSG na základě značek služby AzureSiteRecovery, které umožní přístup k Site Recovery službě v libovolné oblasti.
 - Vytvořte pravidlo NSG na základě značek služby AzureKeyVault. To se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál.

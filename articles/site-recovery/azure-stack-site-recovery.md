@@ -3,12 +3,12 @@ title: Replikace Azure Stackch virtuálních počítačů do Azure pomocí Azure
 description: Naučte se, jak nastavit zotavení po havárii do Azure pro Azure Stack virtuálních počítačů pomocí služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448970"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370521"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure Stack do Azure
 
@@ -56,7 +56,7 @@ Replikace funguje následujícím způsobem:
 7. Replikované počítače komunikují s konfiguračním serverem (port HTTPS 443 příchozí, pro správu replikací. Počítače odesílají data replikace na procesový Server (port HTTPS 9443 příchozí – lze upravit).
 8. Provoz se přes internet replikuje do veřejných koncových bodů úložiště Azure. Alternativně můžete použít veřejný partnerský vztah Azure ExpressRoute. Přenos replikačních dat přes síť site-to-site VPN z místního serveru do Azure není podporovaný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je seznam toho, co potřebujete k nastavení tohoto scénáře.
 
@@ -186,7 +186,7 @@ Nyní nainstalujte konfigurační server:
 > [!NOTE]
 > Konfigurační server lze také nainstalovat z příkazového řádku. [Další informace](physical-manage-configuration-server.md#install-from-the-command-line).
 >
-> Může trvat 15 minut nebo déle, než se název účtu objeví na portálu. Pokud chcete aktualizaci hned aktualizovat, vyberte **konfigurační servery**  >  ***název serveru***  >  **aktualizovat server**.
+> Může trvat 15 minut nebo déle, než se název účtu objeví na portálu. Pokud chcete aktualizaci hned aktualizovat, vyberte **konfigurační servery**  >  **_název serveru_*_ > _* obnovit server**.
 
 ## <a name="step-4-set-up-the-target-environment"></a>Krok 4: nastavení cílového prostředí
 
@@ -314,7 +314,7 @@ Pak spusťte převzetí služeb při selhání následujícím způsobem:
 
 ### <a name="fail-back-to-azure-stack"></a>Navrácení služeb po obnovení do Azure Stack
 
-Když je vaše primární lokalita znovu spuštěná, můžete navrátit služby po obnovení z Azure do Azure Stack. Provedete to podle kroků uvedených [tady](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005).
+Když je vaše primární lokalita znovu spuštěná, můžete navrátit služby po obnovení z Azure do Azure Stack. Provedete to podle kroků uvedených [tady](/azure-stack/operator/site-recovery-failback?view=azs-2005).
 
 ## <a name="conclusion"></a>Závěr
 
@@ -323,4 +323,3 @@ V tomto článku jsme replikují Azure Stack virtuálních počítačů do Azure
 ## <a name="next-steps"></a>Další kroky
 
 Po navrácení služeb po obnovení můžete virtuální počítač znovu zapnout a znovu ho začít replikovat do Azure, a to tak, že zopakujete kroky v tomto článku.
-

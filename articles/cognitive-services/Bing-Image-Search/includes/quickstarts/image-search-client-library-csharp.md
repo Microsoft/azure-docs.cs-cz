@@ -6,70 +6,111 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9c3bae9d2ad388409c40a8e8c89bcdd52f536cdb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 122e44da7bbf4229f932eefdae4c70dc49f43bfe
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85805951"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371272"
 ---
-Pomocí tohoto rychlého startu můžete udělat své první hledání obrázků pomocí klientské knihovny Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace C# posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
+Pomocí tohoto rychlého startu můžete vytvořit první hledání obrázků pomocí klientské knihovny Vyhledávání obrázků Bingu. 
+
+Knihovna vyhledávání klientů je obálkou pro REST API a obsahuje stejné funkce. 
+
+Vytvoříte aplikaci jazyka C#, která odešle dotaz na hledání obrázků, analyzuje odpověď JSON a zobrazí adresu URL prvního vráceného obrázku.
 
 Zdrojový kód pro tuto ukázku je k dispozici [na GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) s dalšími zpracováním chyb a poznámkami.
 
 ## <a name="prerequisites"></a>Předpoklady
-* Libovolná edice sady [Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/vs/whatsnew/).
-* [Balíček NuGet Cognitive Image Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/)
 
-Chcete-li nainstalovat knihovnu klienta Vyhledávání obrázků Bingu v aplikaci Visual Studio, použijte možnost **Spravovat balíčky NuGet** z **Průzkumník řešení**.
+* Pokud používáte systém Windows, libovolné vydání sady [Visual Studio 2017 nebo novější](https://visualstudio.microsoft.com/vs/whatsnew/)
+* Pokud používáte macOS nebo Linux, [vs Code](https://code.visualstudio.com) s [nainstalovaným rozhraním .NET Core](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install)
+* [Bezplatné předplatné Azure](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 Viz také [Cognitive Services vyhledávání BINGU API pro ceny](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
+## <a name="create-a-console-project"></a>Vytvoření projektu konzoly
 
-Nejprve v sadě Visual Studio vytvořte novou konzolovou aplikaci v jazyce C#. Pak přidejte do projektu následující balíčky.
+Nejprve vytvořte novou konzolovou aplikaci v jazyce C#.
 
-```csharp
-using System;
-using System.Linq;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
-```
+## <a name="create-a-console-project"></a>Vytvoření projektu konzoly
 
-V metodě main vašeho projektu vytvořte proměnné pro váš platný klíč předplatného, výsledky obrázků, které má vrátit Bing, a hledaný výraz. Potom pomocí daného klíče vytvořte instanci klienta vyhledávání obrázků.
+# <a name="visual-studio"></a>[Visual Studio](#tab/visualstudio)
 
-```csharp
-//IMPORTANT: replace this variable with your Cognitive Services subscription key
-string subscriptionKey = "ENTER YOUR KEY HERE";
-//stores the image results returned by Bing
-Images imageResults = null;
-// the image search term to be used in the query
-string searchTerm = "canadian rockies";
+1. Vytvořte nové řešení konzoly s názvem *BingImageSearch* v aplikaci Visual Studio.
+    
+1. Přidání [balíčku pro rozpoznávání vyhledávání obrázků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch)
+    1. V **Průzkumník řešení**klikněte pravým tlačítkem na svůj projekt.
+    1. Vyberte **Spravovat balíčky NuGet**.
+    1. Vyhledejte a vyberte *Microsoft. Azure. cognitiveservices Account. Search. ImageSearch*a pak balíček nainstalujte.
+    
+# <a name="vs-code"></a>[VS Code](#tab/vscode)
 
-//initialize the client
-//NOTE: If you're using version 1.2.0 or below for the Bing Image Search client library, 
-// use ImageSearchAPI() instead of ImageSearchClient() to initialize your search client.
+1. Otevřete okno terminálu v VS Code.
+1. Vytvořte nový projekt konzoly s názvem *BingImageSearch* zadáním následujícího kódu v okně terminálu:
+    
+    ```bash
+    dotnet new console -n BingImageSearch
+    ```
+1. Otevřete složku *BingImageSearch* v vs Code.
+1. Přidáním následujícího kódu do okna terminálu přidejte NuGetPackage [balíčku NuGet pro rozpoznávání vyhledávání obrázků](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch) :
 
-var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscriptionKey));
-```
+    ```bash
+    dotnet add package Microsoft.Azure.CognitiveServices.Search.ImageSearch
+    ```
 
+---
+
+## <a name="initialize-the-application"></a>Inicializace aplikace
+
+
+1. Nahraďte všechny `using` příkazy v *program.cs* následujícím kódem:
+
+    ```csharp
+    using System;
+    using System.Linq;
+    using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
+    using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
+    ```
+
+1. V `Main` metodě vašeho projektu vytvořte proměnné pro svůj platný klíč předplatného, výsledky obrázků, které mají být vráceny bingem, a hledaný termín. Potom pomocí daného klíče vytvořte instanci klienta vyhledávání obrázků.
+
+    ```csharp
+    static async Task Main(string[] args)
+    {
+        //IMPORTANT: replace this variable with your Cognitive Services subscription key
+        string subscriptionKey = "ENTER YOUR KEY HERE";
+        //stores the image results returned by Bing
+        Images imageResults = null;
+        // the image search term to be used in the query
+        string searchTerm = "canadian rockies";
+        
+        //initialize the client
+        //NOTE: If you're using version 1.2.0 or below for the Bing Image Search client library, 
+        // use ImageSearchAPI() instead of ImageSearchClient() to initialize your search client.
+        
+        var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscriptionKey));
+    }
+    ```
+    
 ## <a name="send-a-search-query-using-the-client"></a>Odeslání vyhledávacího dotazu pomocí klienta
-
-Pomocí klienta vyhledejte text dotazu:
-
+    
+Stále v `Main` metodě použijte klienta k hledání textu dotazu:
+    
 ```csharp
 // make the search request to the Bing Image API, and get the results"
-imageResults = client.Images.SearchAsync(query: searchTerm).Result; //search query
+imageResults = await client.Images.SearchAsync(query: searchTerm).Result; //search query
 ```
 
 ## <a name="parse-and-view-the-first-image-result"></a>Parsování a zobrazení výsledku s prvním obrázkem
 
-Parsujte výsledky obrázků vrácené v odpovědi.
-Pokud odpověď obsahuje výsledky hledání, uloží se první výsledek a vytisknou se jeho podrobnosti, třeba adresa URL miniatury a původní adresa URL, společně s celkovým počtem nalezených obrázků.  
+Parsujte výsledky obrázků vrácené v odpovědi. 
+
+Pokud odpověď obsahuje výsledky hledání, uložte první výsledek a vytiskněte některé z jeho podrobností.
 
 ```csharp
 if (imageResults != null)
@@ -80,6 +121,7 @@ if (imageResults != null)
     Console.WriteLine($"Copy the following URLs to view these images on your browser.\n");
     Console.WriteLine($"URL to the first image:\n\n {firstImageResult.ContentUrl}\n");
     Console.WriteLine($"Thumbnail URL for the first image:\n\n {firstImageResult.ThumbnailUrl}");
+    Console.WriteLine("Press any key to exit ...");
     Console.ReadKey();
 }
 ```

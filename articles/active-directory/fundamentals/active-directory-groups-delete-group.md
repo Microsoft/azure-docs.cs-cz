@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9aed5f282ff7b5d573a6f8511f2fc4dbfd27135d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565503"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371813"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>Odstranění skupiny pomocí Azure Active Directory
 Skupinu Azure Active Directory (Azure AD) můžete odstranit z libovolného počtu důvodů, ale obvykle to bude být způsobeno tím, že:
@@ -48,4 +48,4 @@ Skupinu Azure Active Directory (Azure AD) můžete odstranit z libovolného poč
 
 - Pokud odstraníte skupinu omylem, můžete ji znovu vytvořit. Další informace najdete v tématu [Postup vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md).
 
-- Pokud odstraníte Microsoft 365 skupinu omylem, je možné, že ji budete moct obnovit. Další informace najdete v tématu [Obnovení odstraněné skupiny Office 365](../users-groups-roles/groups-restore-deleted.md).
+- Pokud odstraníte Microsoft 365 skupinu omylem, je možné, že ji budete moct obnovit. Další informace najdete v tématu [Obnovení odstraněné skupiny Office 365](../enterprise-users/groups-restore-deleted.md).

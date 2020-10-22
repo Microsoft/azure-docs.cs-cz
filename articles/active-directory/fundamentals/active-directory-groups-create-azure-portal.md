@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dcbd8618dc0f2bae2eacc9ced67869d8209286a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565520"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371847"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
-Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../users-groups-roles/index.yml).
+Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../enterprise-users/index.yml).
 
 ## <a name="group-and-membership-types"></a>Typy skupin a členství
 Existuje několik typů skupin a členství. Následující informace popisují jednotlivé typy skupin a členství a jejich použití, které vám pomohou rozhodnout, jaké možnosti použít při vytváření skupiny.
@@ -36,7 +36,7 @@ Existuje několik typů skupin a členství. Následující informace popisují 
 - **Dynamické zařízení**: Umožňuje použít dynamická skupinová pravidla a automaticky tak přidávat a odebírat zařízení. Pokud se změní atributy zařízení, systém se podívá do pravidel dynamických skupin u adresáře a zjistí, zda zařízení splňuje požadavky pravidla (je přidáno) nebo zda již požadavky pravidel nesplňuje (je odebráno).
 
     > [!IMPORTANT]
-    > Dynamickou skupinu můžete vytvořit buď pro zařízení, nebo uživatele, ale nikoli pro obojí. Stejně tak nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství zařízení mohou odkazovat pouze na atributy zařízení. Další informace o tom, jak vytvořit dynamickou skupinu pro uživatele a zařízení, najdete v tématu [Vytvoření dynamické skupiny a kontroly stavu](../users-groups-roles/groups-create-rule.md) .
+    > Dynamickou skupinu můžete vytvořit buď pro zařízení, nebo uživatele, ale nikoli pro obojí. Stejně tak nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství zařízení mohou odkazovat pouze na atributy zařízení. Další informace o tom, jak vytvořit dynamickou skupinu pro uživatele a zařízení, najdete v tématu [Vytvoření dynamické skupiny a kontroly stavu](../enterprise-users/groups-create-rule.md) .
 
 ## <a name="create-a-basic-group-and-add-members"></a>Vytvoření základní skupiny a přidání členů
 Vytvořit základní skupinu a přidat do ní členy můžete současně. Chcete-li vytvořit základní skupinu a přidat členy, použijte následující postup:
@@ -81,5 +81,5 @@ Když se vytvoří jakákoli nová skupina Microsoft 365, ať už s dynamickým 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa přístupu k aplikacím SaaS pomocí skupin](../users-groups-roles/groups-saasapps.md)
-- [Správa skupin pomocí powershellových příkazů](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [Správa přístupu k aplikacím SaaS pomocí skupin](../enterprise-users/groups-saasapps.md)
+- [Správa skupin pomocí powershellových příkazů](../enterprise-users/groups-settings-v2-cmdlets.md)

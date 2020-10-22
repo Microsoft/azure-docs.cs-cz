@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55df425367cc8295ef6a3899e2edb47669fe57b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bba8a0898c11cf1af150f4824d9bef5e9e03576e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91741172"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370878"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odebrání nedávno odstraněného uživatele pomocí Azure Active Directory
 Po odstranění uživatele zůstane účet v pozastaveném stavu po dobu 30 dnů. Během tohoto 30denní okna se může uživatelský účet obnovit spolu se všemi jeho vlastnostmi. Po uplynutí tohoto 30denní okna se uživatel automaticky a trvale odstraní.
@@ -90,4 +90,4 @@ Po obnovení nebo odstranění uživatelů můžete provádět následující z�
 
 - [Přidat uživatele typu host z jiné organizace](../external-identities/what-is-b2b.md)
 
-Další informace o dalších dostupných úkolech správy uživatelů najdete v [dokumentaci správy uživatelů Azure AD](../users-groups-roles/index.yml).
+Další informace o dalších dostupných úkolech správy uživatelů najdete v [dokumentaci správy uživatelů Azure AD](../enterprise-users/index.yml).

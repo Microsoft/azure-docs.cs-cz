@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797199"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370895"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Resetování hesla uživatele pomocí Azure Active Directory
 
@@ -33,7 +33,7 @@ Jako správce můžete resetovat heslo uživatele, pokud je zapomenuté heslo, p
 
 ## <a name="to-reset-a-password"></a>Resetování hesla
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce uživatele nebo správce hesel. Další informace o dostupných rolích najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles) .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako správce uživatele nebo správce hesel. Další informace o dostupných rolích najdete v tématu [přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md#available-roles) .
 
 2. Vyberte **Azure Active Directory**, vyberte **Uživatelé**, vyhledejte a vyberte uživatele, který vyžaduje resetování, a pak vyberte **resetovat heslo**.
 
@@ -63,4 +63,4 @@ Po resetování hesla uživatele můžete provádět následující základní p
 
 - [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
 
-Nebo můžete provádět složitější uživatelské scénáře, jako je přiřazení delegátů, používání zásad a sdílení uživatelských účtů. Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../users-groups-roles/index.yml).
+Nebo můžete provádět složitější uživatelské scénáře, jako je přiřazení delegátů, používání zásad a sdílení uživatelských účtů. Další informace o dalších dostupných akcích najdete v tématu [Azure Active Directory dokumentace správy uživatelů](../enterprise-users/index.yml).
