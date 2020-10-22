@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b43b7488f2bb3fec810e8a9de67829a676f6b599
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743518"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369263"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -59,7 +59,7 @@ Teď si projdeme jednoduchý podrobný návod k vytvoření vašeho prvního nas
    ![Škálování na základě procesoru][8]
 1. Klikněte na **Uložit**.
 
-Gratulujeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
+Blahopřejeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
 
 > [!NOTE]
 > Stejné kroky jsou použitelné pro zahájení práce se sadou škálování virtuálních počítačů nebo s rolí cloudové služby.
@@ -121,7 +121,7 @@ Chcete-li tuto funkci povolit u šablon ARM, nastavte `healthcheckpath` vlastnos
 
 ### <a name="health-check-path"></a>Cesta kontroly stavu
 
-Cesta musí odpovídat do dvou minut se stavovým kódem mezi 200 a 299 (včetně). Pokud cesta nereaguje do dvou minut nebo vrátí stavový kód mimo daný rozsah, instance se považuje za "není v pořádku". Při kontrole stavu se integruje s funkcemi ověřování a autorizace App Service, bude systém kontaktovat koncový bod i v případě, že jsou povolené tyto funkce secuity. Pokud používáte vlastní ověřovací systém, musí cesta k kontrole stavu umožňovat anonymní přístup. Pokud má lokalita povolenou možnost HTTP**s**, bude žádost Healthcheck odeslána prostřednictvím protokolu HTTP**s**.
+Cesta musí odpovídat do jedné minuty se stavovým kódem mezi 200 a 299 (včetně). Pokud cesta nereaguje do jedné minuty nebo vrátí stavový kód mimo daný rozsah, instance se považuje za "není v pořádku". App Service nedodržuje 302 přesměrování v cestě kontroly stavu. Při kontrole stavu se integruje s funkcemi ověřování a autorizace App Service, bude systém kontaktovat koncový bod i v případě, že jsou povolené tyto funkce secuity. Pokud používáte vlastní ověřovací systém, musí cesta k kontrole stavu umožňovat anonymní přístup. Pokud má lokalita povolenou možnost HTTP**s**, bude žádost Healthcheck odeslána prostřednictvím protokolu HTTP**s**.
 
 Cesta pro kontrolu stavu by měla kontrolovat kritické součásti aplikace. Například pokud vaše aplikace závisí na databázi a systému zasílání zpráv, koncový bod kontroly stavu by se měl k těmto součástem připojit. Pokud se aplikace nemůže připojit k důležité součásti, měla by tato cesta vracet kód odpovědi 500 na úrovni, aby označoval, že aplikace není v pořádku.
 
@@ -133,7 +133,7 @@ Vývojové týmy ve velkých podnicích často potřebují splňovat požadavky 
 
 Po zadání cesty pro kontrolu stavu App Service otestuje cestu k cestě všech instancí. Pokud kód úspěšné odpovědi po 5 příkazech otestuje neobdrží, považuje se tato instance za "není v pořádku". Z rotace nástroje pro vyrovnávání zatížení budou vyloučeny instance, které nejsou v pořádku. Při horizontálním navýšení nebo zmenšení kapacity App Service nástroj otestuje cestu kontroly stavu, aby bylo zajištěno, že nové instance budou připravené na požadavky.
 
-Zbývající instance v pořádku můžou vyskytnout zvýšené zatížení. Aby nedošlo k zahlcení zbývajících instancí, nebudou vyloučeny žádné více než polovina instancí. Pokud je například plán App Service škálované na 4 instance a 3 z nich není v pořádku, bude při rotaci nástroje pro vyrovnávání zatížení vyloučeno maximálně 2. Ostatní 2 instance (1 v pořádku a 1 poškozený) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné.
+Zbývající instance v pořádku můžou vyskytnout zvýšené zatížení. Aby nedošlo k zahlcení zbývajících instancí, nebudou vyloučeny žádné více než polovina instancí. Pokud je například plán App Service škálované na 4 instance a 3 z nich není v pořádku, bude při rotaci nástroje pro vyrovnávání zatížení vyloučeno maximálně 2. Ostatní 2 instance (1 v pořádku a 1 poškozený) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Pokud chcete toto chování přepsat, můžete `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` nastavení aplikace nastavit na hodnotu mezi `0` a `100` . Nastavení této hodnoty na vyšší znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50).
 
 Pokud instance zůstane po jednu hodinu v nesprávném stavu, bude nahrazena novou instancí. V jednom z nich bude za hodinu nahrazena maximálně jedna instance, a to s maximálním počtem tří instancí za den a App Service.
 

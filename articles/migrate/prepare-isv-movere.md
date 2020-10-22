@@ -3,12 +3,12 @@ title: Příprava Azure Migrate pro práci s nástrojem/stěhovací společnosti
 description: Tento článek popisuje, jak připravit Azure Migrate pro práci s nástrojem ISV nebo stěhovací společnosti a jak začít používat nástroj.
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 885e64536e516e4fd96233c37a68f6e77fb84e33
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103921"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369144"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Příprava na práci s nástrojem ISV nebo jeho stěhovací pracovníky
 
@@ -26,7 +26,7 @@ Váš uživatelský účet Azure potřebuje tato oprávnění:
 
 1. Ve službě Azure AD ověřte roli svého účtu.
 2. Pokud máte roli uživatele, vyberte na levé straně **nastavení uživatele** a ověřte, jestli uživatelé můžou registrovat aplikace. Pokud je tato možnost nastavená na **hodnotu Ano**, můžou aplikace zaregistrovat všechny uživatele v TENANTOVI Azure AD. Pokud je nastavená na **ne**, můžou aplikace registrovat jenom správci.   
-3. Pokud nemáte oprávnění, uživatel s právy pro správu může poskytnout svůj uživatelský účet s rolí [správce aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-administrator) , aby bylo možné aplikaci zaregistrovat.
+3. Pokud nemáte oprávnění, uživatel s právy pro správu může poskytnout svůj uživatelský účet s rolí [správce aplikace](../active-directory/roles/permissions-reference.md#application-administrator) , aby bylo možné aplikaci zaregistrovat.
 4. Po propojení nástroje s Azure Migrate může správce odebrat roli z vašeho účtu.
 
 ### <a name="set-permissions-to-assign-a-role-to-an-azure-ad-app"></a>Nastavení oprávnění k přiřazení role k aplikaci Azure AD

@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662521"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369790"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Jak Azure AD nabízí cloudovou správu pro místní úlohy
 
@@ -107,7 +107,7 @@ Organizace potřebují postup pro správu přístupu, který je škálovatelný.
 
 Obvykle IT deleguje rozhodnutí o schválení přístupu u tvůrců obchodních rozhodnutí. Kromě toho může zahrnovat samotné uživatele. Například uživatelé, kteří mají přístup k důvěrným zákaznickým datům v obchodní aplikaci společnosti v Evropě, potřebují znát zásady společnosti. Uživatelé typu Host můžou také vědět, že požadavky na zpracování dat v organizaci, na kterou byli pozvánky, jsou popsány.
 
-Organizace můžou proces životního cyklu přístupu automatizovat prostřednictvím technologií, jako jsou [dynamické skupiny](../users-groups-roles/groups-dynamic-membership.md), společně s zřizováním uživatelů pro [SaaS aplikace](../saas-apps/tutorial-list.md)nebo [aplikací, které jsou integrované pomocí systému pro standard SCIM (napříč doménovou správu identit](../app-provisioning/use-scim-to-provision-users-and-groups.md)). Organizace také mohou určovat, kteří [Uživatelé typu Host mají přístup k místním aplikacím](../external-identities/hybrid-cloud-to-on-premises.md). Tato přístupová práva se pak dají pravidelně kontrolovat pomocí opakujících se kontrol [přístupu Azure AD](../governance/access-reviews-overview.md).
+Organizace můžou proces životního cyklu přístupu automatizovat prostřednictvím technologií, jako jsou [dynamické skupiny](../enterprise-users/groups-dynamic-membership.md), společně s zřizováním uživatelů pro [SaaS aplikace](../saas-apps/tutorial-list.md)nebo [aplikací, které jsou integrované pomocí systému pro standard SCIM (napříč doménovou správu identit](../app-provisioning/use-scim-to-provision-users-and-groups.md)). Organizace také mohou určovat, kteří [Uživatelé typu Host mají přístup k místním aplikacím](../external-identities/hybrid-cloud-to-on-premises.md). Tato přístupová práva se pak dají pravidelně kontrolovat pomocí opakujících se kontrol [přístupu Azure AD](../governance/access-reviews-overview.md).
 
 ## <a name="future-directions"></a>Budoucí pokyny
 

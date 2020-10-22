@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb0c1773a08bc934eebc4f110cec43e4b07e49e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565051"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369807"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je licencování na základě skupin v Azure Active Directory?
 
@@ -65,9 +65,9 @@ Pokud máte vaše připomínky nebo žádosti o funkce, sdílejte je s námi pom
 
 Další informace o jiných scénářích pro správu licencí pomocí licencování na základě skupin najdete v tématech:
 
-* [Přiřazení licencí ke skupině v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
-* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](../users-groups-roles/licensing-groups-resolve-problems.md)
-* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Další scénáře licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
-* [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Přiřazení licencí ke skupině v Azure Active Directory](../enterprise-users/licensing-groups-assign.md)
+* [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](../enterprise-users/licensing-groups-resolve-problems.md)
+* [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](../enterprise-users/licensing-groups-migrate-users.md)
+* [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](../enterprise-users/licensing-groups-change-licenses.md)
+* [Další scénáře licencování na základě skupin v Azure Active Directory](../enterprise-users/licensing-group-advanced.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](../enterprise-users/licensing-ps-examples.md)

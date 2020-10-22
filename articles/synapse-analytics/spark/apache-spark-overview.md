@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3a2ba65fcef2b6481835cb45243449870361c062
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3c269f07c177d99e46dcc343b80979835b429b68
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87498918"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369348"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark ve službě Azure synapse Analytics
 
@@ -45,7 +45,7 @@ Fondy Spark v Azure synapse nabízejí plně spravovanou službu Spark. Tady jso
 
 Fondy Spark v Azure synapse obsahují následující komponenty, které jsou ve výchozím nastavení k dispozici ve fondech.
 
-- [Spark Core](https://spark.apache.org/docs/latest/). Zahrnuje Spark Core, Spark SQL, GraphX a MLlib.
+- [Spark Core](https://spark.apache.org/docs/2.4.5/). Zahrnuje Spark Core, Spark SQL, GraphX a MLlib.
 - [Anaconda](https://docs.continuum.io/anaconda/)
 - [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
 - [Poznámkový blok Nteract](https://nteract.io/)
@@ -81,7 +81,7 @@ Další informace o Apache Spark v synapse Analytics najdete v následujících 
 - [Rychlý Start: Vytvoření fondu Spark ve službě Azure synapse](../quickstart-create-apache-spark-pool-portal.md)
 - [Rychlý Start: vytvoření poznámkového bloku Apache Spark](../quickstart-apache-spark-notebook.md)
 - [Kurz: Machine Learning pomocí Apache Spark](./apache-spark-machine-learning-mllib-notebook.md)
-- [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/latest/)
+- [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/2.4.5/)
 
 > [!NOTE]
 > Některá z oficiální dokumentace Apache Spark se spoléhá na použití konzoly Spark, což není v Azure synapse Spark k dispozici, místo toho použijte Poznámkový blok nebo IntelliJ.

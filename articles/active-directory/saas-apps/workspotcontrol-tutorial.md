@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "88526512"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Kurz: Azure Active Directory integrace s ovládacím prvkem Workspot
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte integrovat řízení Workspot s využitím Azure Acti
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s ovládacím prvkem Workspot potřebujete tyto věci:
 
@@ -103,20 +103,20 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ovládac
     ![Informace o jednotném přihlašování v doméně řízení Workspot a adresách URL](common/idp-intiated.png)
 
     1. Do textového pole **identifikátor** zadejte adresu URL v následujícím vzoru:<br/>
-    ***https://<<i></i> instancename>-SAML.workspot.com/SAML/metadata***
+    **_https://<<i></i> InstanceName> – saml.workspot.com/saml/metadata_*_
 
-    1. Do textového pole **Adresa URL odpovědi** zadejte adresu URL v následujícím vzoru:<br/>
-    ***https://<<i></i> instancename>-SAML.workspot.com/SAML/Assertion***
+    1. Do _textového pole *Adresa URL odpovědi** zadejte adresu URL v následujícím vzoru: <br/> 
+    * *_https://<<i></i> InstanceName>-SAML.workspot.com/SAML/Assertion_*_
 
-5. Chcete-li nakonfigurovat aplikaci v režimu iniciované SP, vyberte možnost **nastavit další adresy URL**.
+5. Pokud chcete nakonfigurovat aplikaci v režimu iniciované v rámci SP, vyberte _ * nastavit další adresy URL * *.
 
     ![Informace o jednotném přihlašování v doméně řízení Workspot a adresách URL](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL v následujícím vzoru:<br/>
-    ***https://<<i></i> instancename>-SAML.workspot.com/***
+    **_https://<<i></i> InstanceName> – saml.workspot.com/_*_
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Nahraďte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory Workspot Control Client](mailto:support@workspot.com) . Případně můžete také odkazovat na vzory v části **základní konfigurační oddíl SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Nahraďte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory Workspot Control Client](mailto:support@workspot.com) . Případně můžete také odkazovat na vzory v části*základní konfigurace SAML** v Azure Portal.
 
 6. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte v části **podpisový certifikát SAML** možnost **Stáhnout** a Stáhněte si **certifikát (Base64)** z dostupných možností podle vašich požadavků. Uložte ho do svého počítače.
 
@@ -238,7 +238,7 @@ V této části otestujeme konfiguraci jednotného přihlašování Azure AD pro
 
 Když na přístupovém panelu kliknete na dlaždici **ovládacího prvku Workspot** , měli byste být automaticky přihlášeni k ovládacímu prvku Workspot, pro který jste nastavili jednotné přihlašování. Další informace najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 

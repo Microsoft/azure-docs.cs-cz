@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd87265140a0bfaeb7ef4dada6dd76be1269654b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501197"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369365"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -144,7 +144,7 @@ Dokončete nastavení a registraci konfiguračního serveru. Než budete pokrač
 Po registraci konfiguračního serveru se Site Recovery připojí k serverům VMware pomocí zadaného nastavení a vyhledá virtuální počítače.
 
 > [!NOTE]
-> Může trvat 15 minut nebo déle, než se název účtu objeví na portálu. Pokud chcete aktualizaci hned aktualizovat, vyberte **konfigurační servery**  >  ***název serveru***  >  **aktualizovat server**.
+> Může trvat 15 minut nebo déle, než se název účtu objeví na portálu. Pokud chcete aktualizaci hned aktualizovat, vyberte **konfigurační servery**  >  **_název serveru_*_ > _* obnovit server**.
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 
@@ -184,7 +184,7 @@ Replikaci pro virtuální počítače povolíte takto:
 6. V části **Cíl** vyberte předplatné a skupinu prostředků, ve které chcete vytvořit virtuální počítače, jejichž služby se převezmou při selhání. Používáme model nasazení Resource Manager.
 7. Vyberte síť Azure a podsíť, ke kterým se připojí virtuální počítače Azure, když se vytvoří po převzetí služeb při selhání.
 8. Vyberte možnost **Nakonfigurovat pro vybrané počítače** a použijte tak nastavení sítě pro všechny virtuální počítače, na kterých jste povolili replikaci. Vyberte **Konfigurovat později** a vyberte síť Azure na jeden počítač.
-9. V **Virtual Machines**  >  **vyberte virtuální počítače**, vyberte všechny počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud si nejste schopni zobrazit nebo vybrat žádný konkrétní virtuální počítač, [Přečtěte si další informace](https://aka.ms/doc-plugin-VM-not-showing) o řešení tohoto problému.
+9. V **Virtual Machines**  >  **vyberte virtuální počítače**, vyberte všechny počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud si nejste schopni zobrazit nebo vybrat žádný konkrétní virtuální počítač, [Přečtěte si další informace](./vmware-azure-troubleshoot-replication.md) o řešení tohoto problému.
 10. V části **vlastnosti**  >  **Konfigurace vlastností**vyberte účet, který má procesový Server použít k automatické instalaci služby mobility na počítač.
 11. V **nastavení replikace**  >  **nakonfigurujte nastavení replikace**a ověřte, jestli je vybraná správná zásada replikace.
 12. Vyberte **Povolit replikaci**. Jakmile bude replikace virtuálního počítače povolená, nainstaluje Site Recovery automaticky službu mobility.

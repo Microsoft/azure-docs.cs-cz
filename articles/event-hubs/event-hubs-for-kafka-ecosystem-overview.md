@@ -3,12 +3,12 @@ title: Použití centra událostí z aplikace Apache Kafka – Azure Event Hubs 
 description: Tento článek poskytuje informace o podpoře Apache Kafka službou Azure Event Hubs.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 2b101adf173f3d623bb85d811ba5832020313f14
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327293"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369586"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Použití Azure Event Hubs z Apache Kafkach aplikací
 Event Hubs poskytuje koncový bod kompatibilní s rozhraními API Apache Kafka® výrobce a spotřebitele, která můžou používat většina stávajících klientských aplikací Apache Kafka jako alternativu ke spuštění vlastního Apache Kafka clusteru. Event Hubs podporuje klienty rozhraní API Apache Kafka výrobce a příjemce ve verzi 1,0 a vyšší.
@@ -62,7 +62,7 @@ Azure Event Hubs poskytuje několik možností, jak autorizovat přístup k vaš
 #### <a name="oauth-20"></a>OAuth 2.0
 Event Hubs se integruje s Azure Active Directory (Azure AD), která poskytuje centralizovaný autorizační server kompatibilní s **OAuth 2,0** . Pomocí Azure AD můžete pomocí řízení přístupu založeného na rolích Azure (Azure RBAC) udělit k identitě klientů jemně odstupňovaná oprávnění. Tuto funkci můžete použít u klientů Kafka zadáním **SASL_SSL** pro protokol a  **OAUTHBEARER** pro mechanismus. Podrobnosti o rolích a úrovních Azure pro přístup k oboru najdete v tématu [autorizace přístupu pomocí Azure AD](authorize-access-azure-active-directory.md).
 
-```xml
+```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=OAUTHBEARER
@@ -73,17 +73,21 @@ sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 #### <a name="shared-access-signature-sas"></a>Sdílený přístupový podpis (SAS)
 Event Hubs taky poskytuje **sdílené přístupové podpisy (SAS)** pro delegovaný přístup k Event Hubs prostředkům Kafka. Autorizaci přístupu pomocí mechanismu OAuth 2,0 s tokenem založeným na tokenech zabezpečení poskytuje prvotřídní zabezpečení a snadné použití prostřednictvím SAS. Předdefinované role mohou také eliminovat nutnost ověřování na základě seznamu ACL, které musí uživatel spravovat a spravovat. Tuto funkci můžete použít spolu s klienty Kafka zadáním **SASL_SSL** pro protokol a pro mechanismus **jako prostý** . 
 
-```xml
+```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
 security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!IMPORTANT]
+> Nahraďte `{YOUR.EVENTHUBS.CONNECTION.STRING}` připojovacím řetězcem pro váš Event Hubs obor názvů. Pokyny k získání připojovacího řetězce najdete v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md). Tady je příklad konfigurace: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 > [!NOTE]
 > Při použití ověřování pomocí SAS u klientů Kafka nejsou vytvořená připojení po opětovném vygenerování klíče SAS odpojena. 
 
-#### <a name="samples"></a>Ukázky 
+
+#### <a name="samples"></a>ukázky 
 **Kurz** s podrobnými pokyny k vytvoření centra událostí a přístup k němu pomocí SAS nebo OAuth najdete v tématu [rychlý Start: streamování dat pomocí Event Hubs pomocí protokolu Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md).
 
 Další **ukázky** , které ukazují, jak používat OAuth s Event Hubs pro Kafka, najdete v tématu [ukázky na GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).

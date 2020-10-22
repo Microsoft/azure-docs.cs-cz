@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86133699"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369416"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
 
@@ -24,7 +24,7 @@ Pomocí Site Recovery můžete:
 
 Nasazení aplikací SAP NetWeaver můžete chránit pomocí [Azure Site Recovery](site-recovery-overview.md). Tento článek popisuje osvědčené postupy pro ochranu nasazení SAP NetWeaver v Azure při replikaci do jiného datového centra Azure pomocí Site Recovery. Článek popisuje podporované scénáře a konfigurace a postup testování převzetí služeb při selhání (přechody k zotavení po havárii) a skutečné převzetí služeb při selhání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
@@ -39,11 +39,11 @@ Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
 Site Recovery můžete použít k implementaci řešení zotavení po havárii v následujících scénářích:
 * Máte systémy SAP běžící v jednom datovém centru Azure a budete je replikovat do jiného datového centra Azure (zotavení po havárii z Azure do Azure). 
-   Další informace najdete v tématu [Architektura replikace z Azure do Azure](https://aka.ms/asr-a2a-architecture).
+   Další informace najdete v tématu [Architektura replikace z Azure do Azure](./azure-to-azure-architecture.md).
 * Máte systémy SAP spuštěné v místním prostředí VMware (nebo fyzické) servery. Také provádíte replikaci systémů SAP na lokalitu pro zotavení po havárii v datacentru Azure (zotavení po havárii z VMware do Azure). 
-   Tento scénář vyžaduje některé další součásti. Další informace najdete v tématu [Architektura replikace z VMware do Azure](https://aka.ms/asr-v2a-architecture).
+   Tento scénář vyžaduje některé další součásti. Další informace najdete v tématu [Architektura replikace z VMware do Azure](./vmware-azure-architecture.md).
 * Máte systémy SAP spuštěné v místním prostředí Hyper-V. Také provádíte replikaci systémů SAP do lokality pro zotavení po havárii v datacentru Azure (zotavení po havárii z Hyper-V do Azure).
-   Tento scénář vyžaduje některé další součásti. Další informace najdete v tématu [Architektura replikace Hyper-V do Azure](https://aka.ms/asr-h2a-architecture).
+   Tento scénář vyžaduje některé další součásti. Další informace najdete v tématu [Architektura replikace Hyper-V do Azure](./hyper-v-azure-architecture.md).
 
 V tomto článku používáme scénář zotavení po havárii z **Azure do Azure** . Scénář zobrazuje možnosti zotavení po havárii SAP Site Recovery. Vzhledem k tomu, že Site Recovery replikace není specifická pro aplikaci, předpokládá se postup, který je popsán, i pro jiné scénáře.
 

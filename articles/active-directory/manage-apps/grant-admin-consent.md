@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9680c9bee6d0cf5c9605ce7b6009a500abd81ffb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069573"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369093"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udělení souhlasu správce v rámci celého tenanta aplikaci
 
@@ -25,9 +25,9 @@ Naučte se, jak zjednodušit uživatelské prostředí tím, že aplikaci uděl�
 
 Další informace o tom, jak se předávají aplikacím, najdete v tématu [Azure Active Directory souhlasu Framework](../develop/consent-framework.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [správce aplikace](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)nebo [správce cloudové aplikace](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
+Udělení souhlasu správce pro celé tenanta vyžaduje, abyste se přihlásili jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
 
 > [!IMPORTANT]
 > Pokud se aplikaci udělí souhlas správce na úrovni tenanta, všichni uživatelé se budou moct k aplikaci přihlásit, pokud není nakonfigurovaná tak, aby vyžadovala přiřazení uživatele. Chcete-li omezit, kteří uživatelé se mohou přihlašovat k aplikaci, vyžadovat přiřazení uživatele a pak přiřadit uživatele nebo skupiny k aplikaci. Další informace najdete v tématu [metody přiřazení uživatelů a skupin](methods-for-assigning-users-and-groups.md).
@@ -47,7 +47,7 @@ Můžete udělit souhlas správce na úrovni tenanta prostřednictvím *podnikov
 
 Udělení souhlasu správce na úrovni tenanta k aplikaci uvedené v **podnikových aplikacích**:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [správce aplikace](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)nebo [správce cloudové aplikace](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
 2. Vyberte **Azure Active Directory** **podnikové aplikace**.
 3. Vyberte aplikaci, pro kterou chcete udělit souhlas správce na úrovni tenanta.
 4. Vyberte **oprávnění** a pak klikněte na **udělit souhlas správce**.
@@ -63,7 +63,7 @@ Pro aplikace, které vaše organizace vyvinula nebo které jsou zaregistrované 
 
 Udělení souhlasu správce na úrovni tenanta od **Registrace aplikací**:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [správce aplikace](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)nebo [správce cloudové aplikace](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator).
 2. Vyberte **Azure Active Directory** pak **Registrace aplikací**.
 3. Vyberte aplikaci, pro kterou chcete udělit souhlas správce na úrovni tenanta.
 4. Vyberte **oprávnění rozhraní API** a pak klikněte na **udělit souhlas správce**.

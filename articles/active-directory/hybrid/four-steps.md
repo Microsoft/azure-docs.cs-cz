@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600792"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369773"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Čtyři kroky pro silnou identitu Foundation s Azure Active Directory
 
@@ -156,7 +156,7 @@ Přiřazování uživatelů k aplikacím je při používání skupin nejlépe n
 * Založený na atributech pomocí dynamického členství ve skupině
 * Delegování pro vlastníky aplikace
 
-Azure AD poskytuje možnost spravovat přístup k prostředkům pomocí skupin zabezpečení a skupin Microsoft 365. Tyto skupiny může spravovat vlastník skupiny, který může schvalovat nebo zamítnout žádosti o členství a delegovat řízení členství ve skupině. Tato funkce se označuje jako [Samoobslužná správa skupin](../users-groups-roles/groups-self-service-management.md), ale šetří čas tím, že umožňuje vlastníkům skupin, kteří nejsou přiřazeni administrativní roli k vytváření a správě skupin, aniž by museli spoléhat na to, že požádají správce o zpracování požadavků.
+Azure AD poskytuje možnost spravovat přístup k prostředkům pomocí skupin zabezpečení a skupin Microsoft 365. Tyto skupiny může spravovat vlastník skupiny, který může schvalovat nebo zamítnout žádosti o členství a delegovat řízení členství ve skupině. Tato funkce se označuje jako [Samoobslužná správa skupin](../enterprise-users/groups-self-service-management.md), ale šetří čas tím, že umožňuje vlastníkům skupin, kteří nejsou přiřazeni administrativní roli k vytváření a správě skupin, aniž by museli spoléhat na to, že požádají správce o zpracování požadavků.
 
 ## <a name="step-4---operationalize-your-insights"></a>Krok 4 – zprovoznění vašich přehledů
 
@@ -172,9 +172,9 @@ Protokoly zabezpečení a sestavy poskytují elektronický záznam o podezřelý
 
 Jak si myslíte o přístupu k operacím, existuje několik úrovní správy, které je potřeba vzít v úvahu. Na první úrovni se zátěž správy na vašich globálních správcích umístí. Používání role globálního správce může být vždy vhodné pro menší společnosti. U větších organizací, které jsou zodpovědné s pracovníky helpdesku a správci, kteří jsou zodpovědní za konkrétní úkoly, ale přiřazení role globálního správce může představovat bezpečnostní riziko, protože poskytuje těmto jednotlivcům možnost spravovat výše uvedené úkoly a jejich rámec.
 
-V takovém případě byste měli zvážit další úroveň správy. Pomocí Azure AD můžete určit koncové uživatele jako "omezené správce", kteří můžou spravovat úlohy v méně privilegovaných rolích. Například můžete přiřadit pracovníky helpdesku roli [Čtenář zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-reader) a poskytnout jim možnost spravovat funkce související se zabezpečením s přístupem jen pro čtení. Případně je vhodné přiřadit roli [Správce ověřování](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator) jednotlivcům, kteří jim poskytnou možnost resetovat přihlašovací údaje, které nepoužívají heslo, nebo číst a konfigurovat Azure Service Health.
+V takovém případě byste měli zvážit další úroveň správy. Pomocí Azure AD můžete určit koncové uživatele jako "omezené správce", kteří můžou spravovat úlohy v méně privilegovaných rolích. Například můžete přiřadit pracovníky helpdesku roli [Čtenář zabezpečení](../roles/permissions-reference.md#security-reader) a poskytnout jim možnost spravovat funkce související se zabezpečením s přístupem jen pro čtení. Případně je vhodné přiřadit roli [Správce ověřování](../roles/permissions-reference.md#authentication-administrator) jednotlivcům, kteří jim poskytnou možnost resetovat přihlašovací údaje, které nepoužívají heslo, nebo číst a konfigurovat Azure Service Health.
 
-Další informace najdete v tématu [oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Další informace najdete v tématu [oprávnění role správce v Azure Active Directory](../roles/permissions-reference.md).
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>Monitorování hybridních součástí (Azure AD Connect synchronizace AD FS) pomocí Azure AD Connect Health
 
@@ -212,7 +212,7 @@ Kromě zjišťování stínového IT můžete monitorovat využití aplikací v 
 
 *"Díky Cloud App Security můžeme rychle odhalit anomálie a provést akci."* --- [Eric LePenske, vedoucí správce, zabezpečení informací, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Existuje mnoho aspektů implementace řešení hybridní identity, ale tento podrobný kontrolní seznam vám pomůže rychle provést infrastrukturu identit, která umožní uživatelům zvýšit produktivitu a zabezpečení.
 

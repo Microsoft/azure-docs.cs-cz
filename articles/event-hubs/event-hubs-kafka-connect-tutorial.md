@@ -3,12 +3,12 @@ title: Integrace s Apache Kafka Connect – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak používat Kafka Connect s Azure Event Hubs pro Kafka.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: b063bb36ec17c22c0f093f1b33f11597eed5ea68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d37d2465d9389a0bcfaabdec32bad0c86846cfb2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061661"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369535"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Podpora integrace připojení Apache Kafka ve službě Azure Event Hubs (Preview)
 Se zvyšujícími se obchodními požadavky na příjem dat se zvyšuje i potřeba příjmu dat z nejrůznějších externích zdrojů a jímek. [Připojení Apache Kafka](https://kafka.apache.org/documentation/#connect) poskytuje takovou architekturu pro připojení a import nebo export dat do nebo z jakéhokoli externího systému, jako je MySQL, HDFS a systém souborů, prostřednictvím clusteru Kafka. Tento kurz vás provede použitím architektury Kafka Connect s Event Hubs.
@@ -27,7 +27,7 @@ V tomto kurzu provedete následující kroky:
 > * Spuštění připojení Kafka
 > * Vytvoření konektorů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Abyste mohli dokončit tento návod, ujistěte se, že máte následující:
 
 - Předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
@@ -91,13 +91,17 @@ consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModul
 plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka release
 ```
 
+> [!IMPORTANT]
+> Nahraďte `{YOUR.EVENTHUBS.CONNECTION.STRING}` připojovacím řetězcem pro váš Event Hubs obor názvů. Pokyny k získání připojovacího řetězce najdete v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md). Tady je příklad konfigurace: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
+
 ## <a name="run-kafka-connect"></a>Spuštění připojení Kafka
 
 V tomto kroku se místně spustí pracovní proces připojení Kafka v distribuovaném režimu a k zachování stavu clusteru s použije služba Event Hubs.
 
 1. Místně uložte výše uvedený soubor `connect-distributed.properties`.  Nezapomeňte nahradit všechny hodnoty v závorkách.
 2. Na svém počítači přejděte do umístění verze Kafka.
-4. Spusťte příkaz `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties`.  Jakmile se zobrazí `'INFO Finished starting connectors and tasks'`, rozhraní REST API pracovního procesu připojení je připravené k interakci. 
+4. Je nutné spustit `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties`.  Jakmile se zobrazí `'INFO Finished starting connectors and tasks'`, rozhraní REST API pracovního procesu připojení je připravené k interakci. 
 
 > [!NOTE]
 > Kafka Connect používá rozhraní Kafka AdminClient API k automatickému vytváření témat s doporučenými konfiguracemi, včetně komprimace. Rychlou kontrolou oboru názvů na webu Azure Portal zjistíte, že se interní témata pracovního procesu připojení vytvořila automaticky.
