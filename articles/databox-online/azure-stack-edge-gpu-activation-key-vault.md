@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: c841c96326f636e16f3b4f86fcb88a0962011c0f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976827"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367597"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Key Vault integrace s Azure Stack Edge 
 
@@ -22,7 +22,7 @@ Azure Key Vault je integrován s Azure Stackm hraničním prostředkem pro sprá
 
 ## <a name="about-key-vault-and-azure-stack-edge"></a>O trezoru klíčů a Azure Stack Edge
 
-Cloudová služba Azure Key Vault slouží k bezpečnému ukládání a řízení přístupu k tokenům, heslům, certifikátům, klíčům rozhraní API a dalším tajným klíčům. Key Vault také usnadňuje vytváření a řízení šifrovacích klíčů používaných k šifrování vašich dat. 
+Cloudová služba Azure Key Vault slouží k bezpečnému ukládání a řízení přístupu k tokenům, heslům, certifikátům, klíčům rozhraní API a dalším tajným klíčům. Key Vault také usnadňuje vytváření a řízení šifrovacích klíčů používaných k šifrování vašich dat. Další informace o povolených transakcích a odpovídajících nákladech najdete v tématu [ceny za Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
 
 V případě služby Azure Stack Edge je jedním z používaných tajných kódů klíč integrity kanálu (CIK). Tento klíč umožňuje šifrování tajných klíčů. Díky integraci trezoru klíčů je CIK bezpečně uložený v trezoru klíčů. Další informace najdete v tématu [bezpečné ukládání tajných kódů a klíčů](../key-vault/general/overview.md#securely-store-secrets-and-keys).
 
@@ -44,6 +44,8 @@ Pro Azure Stack hraničního prostředku se během procesu generování aktivač
 - Můžete zvolit, že chcete přijmout výchozí název klíče nebo zadat vlastní název trezoru klíčů. Název trezoru klíčů musí být dlouhý 3 až 24 znaků. Nemůžete použít Trezor klíčů, který se už používá. <!--The MSI is then used to authenticate to key vault to retrieve secrets.--> 
 
     ![Služba MSI vytvořená během vytváření Azure Stackch prostředků Edge](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
+
+- Pokud chcete přejít do trezoru klíčů Azure, přejděte na **vlastnosti** v prostředku Azure Stack Edge a vyberte název trezoru klíčů. 
 
 - Aby se zabránilo nechtěnému odstranění, je v trezoru klíčů povolen zámek prostředků. V trezoru klíčů je taky povolené obnovitelné odstranění, které umožňuje obnovení trezoru klíčů během 90 dnů, pokud dojde k náhodnému odstranění. Další informace najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](../key-vault/general/soft-delete-overview.md) .
 

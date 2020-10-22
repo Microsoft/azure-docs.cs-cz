@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91315078"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370572"
 ---
 # <a name="changelog"></a>Protokol změn
 
@@ -198,7 +198,7 @@ Při volání aplikací vracet smysluplné chyby doručení
 
 ### <a name="changes"></a>Změny ###
 
-- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings) .-->
+- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](/javascript/api/azuremediaplayer/cea708captionssettings) .-->
 
 ## <a name="220-official-release"></a>2.2.0 (oficiální verze) ##
 
@@ -447,7 +447,7 @@ Při volání aplikací vracet smysluplné chyby doručení
 
 - Mění Aktualizace přehrávače na aktuální požadavky EME pro Chrome
 - Mění Výchozí techOrder se změnily tak, aby vyhovovaly novému technickému html5FairPlayHLS (Další informace najdete v části [chráněný obsah](azure-media-player-protected-content.md) ).
-- Mění [AzureHtml5JS] Zapnuté přehrávání MPEG-spojovníku v Safari
+- Mění [AzureHtml5JS] Povolení přehrávání MPEG-Dash v Safari
 - Mění Vzory Změna vzorků s více technologiemi DRM pro přizpůsobení FairPlay
 
 ## <a name="174-official-hotfix-update"></a>1.7.4 (oficiální aktualizace hotfix) ##

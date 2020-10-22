@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: c17addc313954fbca5b81c4594d7317065350c09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be127d4214577e017522aec6a1b61b8f62638ed9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249565"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368736"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Kurz: Vytvoření aplikace Apache Spark s použitím IntelliJ pomocí pracovního prostoru synapse
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > - Vývoj aplikací Apache Spark
 > - Odeslat aplikaci do fondů Spark
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Komunita INTELLIJ nápadu](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)
 - Modul plug-in Azure Toolkit 3.27.0-2019.2 – instalace z [úložiště modulu plug-in IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
@@ -145,10 +145,10 @@ Po vytvoření aplikace v Scala můžete tuto aplikaci spustit vzdáleně.
     |Název hlavní třídy|Výchozí hodnota je hlavní třída z vybraného souboru. Třídu můžete změnit tak, že vyberete tři tečky (**...**) a zvolíte jinou třídu.|
     |Konfigurace úloh|Můžete změnit výchozí klíč a hodnoty. Další informace najdete v článku [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Argumenty příkazového řádku|V případě potřeby můžete zadat argumenty oddělené mezerou pro hlavní třídu.|
-    |Odkazované jar a odkazované soubory|Můžete zadat cesty pro odkazované jar a soubory, pokud existují. Můžete také procházet soubory ve virtuálním systému souborů Azure, který v současné době podporuje jenom cluster ADLS Gen2. Další informace: [Apache Spark konfiguraci](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) a [Postup nahrání prostředků do clusteru](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
+    |Odkazované jar a odkazované soubory|Můžete zadat cesty pro odkazované jar a soubory, pokud existují. Můžete také procházet soubory ve virtuálním systému souborů Azure, který v současné době podporuje jenom cluster ADLS Gen2. Další informace: [Apache Spark Configuration] https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) a [Postup nahrání prostředků do clusteru](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Úložiště nahrávání úlohy|Rozbalením zobrazíte další možnosti.|
     |Typ úložiště|Vyberte **použít Azure Blob k nahrání** nebo **použití výchozího účtu úložiště clusteru k nahrání** z rozevíracího seznamu.|
-    |Účet úložiště|Zadejte svůj účet úložiště.|
+    |Storage Account (Účet úložiště)|Zadejte svůj účet úložiště.|
     |Klíč úložiště|Zadejte svůj klíč úložiště.|
     |Kontejner úložiště|Po zadání **účtu úložiště** a **klíče úložiště** vyberte z rozevíracího seznamu svůj kontejner úložiště.|
 

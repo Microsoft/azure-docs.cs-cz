@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 8b8114a6abf5579ed0750862d59a5d13178339f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0332b9aab0db456ed4517c09e541bee1b9884d04
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276488"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368991"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
@@ -102,16 +102,16 @@ V následující tabulce jsou popsány názvy a popisy vlastností, které jsou 
 
 | Vlastnost              | Popis                              | Povinné |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Název aktivity v kanálu     | Yes      |
-| Popis           | Text popisující, co aktivita dělá.  | No       |
-| typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Yes      |
-| linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Yes      |
-| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz `cmd /c dir` , který bude nativně podporován uzlem fondu služby Batch systému Windows. | Yes      |
+| name                  | Název aktivity v kanálu     | Ano      |
+| Popis           | Text popisující, co aktivita dělá.  | Ne       |
+| typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Ano      |
+| linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Ano      |
+| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz `cmd /c dir` , který bude nativně podporován uzlem fondu služby Batch systému Windows. | Ano      |
 | resourceLinkedService | Azure Storage propojených služeb k účtu úložiště, ve kterém je vlastní aplikace uložená. | Bez &#42;       |
 | folderPath            | Cesta ke složce vlastní aplikace a všech jejích závislostí<br/><br/>Pokud máte závislosti uložené v podsložkách – to znamená, že v hierarchické struktuře složek pod *FolderPath* – struktura složek se v současnosti při kopírování souborů do Azure Batch nesloučí. To znamená, že všechny soubory se zkopírují do jediné složky bez podsložek. Chcete-li toto chování obejít, zvažte komprimaci souborů, kopírování komprimovaného souboru a jeho rozzipovává pomocí vlastního kódu v požadovaném umístění. | Bez &#42;       |
-| referenceObjects      | Pole existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON, aby váš vlastní kód mohl odkazovat na prostředky Data Factory | No       |
-| extendedProperties    | Uživatelsky definované vlastnosti, které se dají předat vlastní aplikaci ve formátu JSON, aby váš vlastní kód mohl odkazovat na další vlastnosti | No       |
-| retentionTimeInDays | Doba uchování souborů odeslaných pro vlastní aktivitu. Výchozí hodnota je 30 dní. | No |
+| referenceObjects      | Pole existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON, aby váš vlastní kód mohl odkazovat na prostředky Data Factory | Ne       |
+| extendedProperties    | Uživatelsky definované vlastnosti, které se dají předat vlastní aplikaci ve formátu JSON, aby váš vlastní kód mohl odkazovat na další vlastnosti | Ne       |
+| retentionTimeInDays | Doba uchování souborů odeslaných pro vlastní aktivitu. Výchozí hodnota je 30 dní. | Ne |
 
 &#42; vlastnosti `resourceLinkedService` a `folderPath` musí být buď zadány, nebo musí být obě vynechány.
 
@@ -310,7 +310,7 @@ Můžete odesílat vlastní hodnoty z kódu v rámci vlastní aktivity zpátky d
 
 ## <a name="retrieve-securestring-outputs"></a>Načtení výstupů SecureString
 
-Hodnoty citlivých vlastností určené jako typ *SecureString*, jak je znázorněno v některých příkladech v tomto článku, jsou maskovány na kartě monitorování v uživatelském rozhraní Data Factory.  V samotném spuštění kanálu je však vlastnost *SecureString* serializována jako JSON v `activity.json` souboru jako prostý text. Například:
+Hodnoty citlivých vlastností určené jako typ *SecureString*, jak je znázorněno v některých příkladech v tomto článku, jsou maskovány na kartě monitorování v uživatelském rozhraní Data Factory.  V samotném spuštění kanálu je však vlastnost *SecureString* serializována jako JSON v `activity.json` souboru jako prostý text. Příklad:
 
 ```json
 "extendedProperties": {
@@ -345,7 +345,7 @@ Následující tabulka popisuje rozdíly mezi vlastní aktivitou Data Factory v2
 |Požadovaná datová sada      |Volitelné      |Požadováno pro řetězení aktivit a předávání informací      |
 |Předání informací z aktivity do vlastní logiky      |Prostřednictvím ReferenceObjects (LinkedServices a datových sad) a ExtendedProperties (vlastní vlastnosti)      |Prostřednictvím ExtendedProperties (vlastní vlastnosti), vstupních a výstupních datových sad      |
 |Načtení informací v vlastní logice      |Analyzuje activity.js, linkedServices.jsna a datasets.jsna uložených ve stejné složce spustitelného souboru.      |Přes .NET SDK (.NET Frame 4.5.2)      |
-|protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v knihovně DLL .NET      |
+|Protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v knihovně DLL .NET      |
 
 Pokud máte existující kód .NET napsaný pro aktivitu rozhraní DotNet verze 1 (vlastní), musíte upravit kód, aby fungoval s aktuální verzí vlastní aktivity. Aktualizujte kód podle následujících pokynů vysoké úrovně:
 
@@ -387,5 +387,5 @@ Podívejte se na následující články, které vysvětlují, jak transformovat
 * [Aktivita MapReduce](transform-data-using-hadoop-map-reduce.md)
 * [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
 * [Aktivita Sparku](transform-data-using-spark.md)
-* [Aktivita spuštění Machine Learning dávky](transform-data-using-machine-learning.md)
+* [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](transform-data-using-machine-learning.md)
 * [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

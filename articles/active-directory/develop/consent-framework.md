@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.openlocfilehash: a5e53c29c41b3c4a5a2dd1f421e128231aa5eec3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 74321bc75fa760727e7896f47cdfc5b2929047e5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327545"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366084"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Architektura Azure AD pro udělování souhlasu
 
@@ -49,7 +49,7 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací i p
 
 1. Jakmile uživatel udělí souhlas, vrátí se do vaší aplikace autorizační kód, který se považuje za získání přístupového tokenu a aktualizačního tokenu. Další informace o tomto toku najdete v tématu [tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
-1. Jako správce můžete také vyjádřit souhlas s delegovanými oprávněními aplikace jménem všech uživatelů ve vašem tenantovi. Souhlas se správou brání tomu, aby se v dialogovém okně pro každého uživatele v tenantovi zobrazoval dialog a uživatel s rolí správce může provádět [Azure Portal](https://portal.azure.com) . Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+1. Jako správce můžete také vyjádřit souhlas s delegovanými oprávněními aplikace jménem všech uživatelů ve vašem tenantovi. Souhlas se správou brání tomu, aby se v dialogovém okně pro každého uživatele v tenantovi zobrazoval dialog a uživatel s rolí správce může provádět [Azure Portal](https://portal.azure.com) . Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../roles/permissions-reference.md).
 
     **Vyjádření souhlasu s delegovanými oprávněními aplikace**
 

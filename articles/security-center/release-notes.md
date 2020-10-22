@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 098cfa1784571856cbd80d55fec4e6232e882d17
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ed4bd97dfe64a85785cf7805da2cf7f942baecd4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339845"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367533"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -33,6 +33,7 @@ Tato stránka se často aktualizuje, takže ji můžete často znovu navštěvov
 
 - [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Přidala se Azure Firewall doporučení (Preview).](#azure-firewall-recommendation-added-preview)
+- [Pro doporučení služby Kubernetes Services, které se aktualizovaly pomocí rychlé opravy, by se měly definovat povolené rozsahy IP](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
 - [Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)
@@ -64,6 +65,15 @@ Doporučujeme, aby se **virtuální sítě chránily pomocí Azure firewall** ra
 Přečtěte si další informace o [Azure firewall](https://azure.microsoft.com/services/azure-firewall/).
 
 
+### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>Pro doporučení služby Kubernetes Services, které se aktualizovaly pomocí rychlé opravy, by se měly definovat povolené rozsahy IP
+
+**Povolené rozsahy IP adres pro doporučení by měly být definované v Kubernetes Services** nyní mají možnost Rychlá oprava.
+
+Další podrobnosti o tomto doporučení a všech dalších Security Center doporučeních najdete v tématu [doporučení zabezpečení – referenční příručka](recommendations-reference.md).
+
+:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres.":::
+
+
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
@@ -75,33 +85,7 @@ Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](h
 
 V ARG existují tabulky dat, které můžete použít ve svých dotazech.
 
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
-
-> [!TIP]
-> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
-
-Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
-
-Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
-
-Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
-
-Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High"
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres."
 }
 ```
 To znamená, že Microsoft. Security/Assessments bude obsahovat záznam pro každé vyhodnocení zásad, a to následujícím způsobem:
@@ -301,33 +285,7 @@ Nástroje pro posouzení ohrožení zabezpečení Security Center v rámci "nad�
 
 Výsledky zabezpečení jsou nyní k dispozici pro export prostřednictvím průběžného exportu, když vyberete možnost doporučení a povolíte možnost **Zahrnout zjištění zabezpečení** .
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
-
-> [!TIP]
-> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
-
-Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
-
-Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
-
-Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
-
-Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres." :::
 
 Související stránky:
 
@@ -392,33 +350,7 @@ Doporučení **verze Preview** navíc nevykreslují prostředek "není v pořád
 
 Příklad doporučení verze Preview:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
-
-> [!TIP]
-> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
-
-Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
-
-Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
-
-Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
-
-Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres.":::
 
 [Přečtěte si další informace o zabezpečeném skóre](secure-score-security-controls.md).
 
@@ -427,33 +359,7 @@ properties:  {
 
 Stránka s podrobnostmi pro doporučení nyní obsahuje indikátor intervalu aktuálnosti (kdykoli je to relevantní) a jasné zobrazení závažnosti doporučení.
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
-
-> [!TIP]
-> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
-
-Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
-
-Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
-
-Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
-
-Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres.":::
 
 
 
@@ -877,33 +783,7 @@ Ovládací prvky zabezpečení – a tento přepínač jsou součástí nového 
 
 Přečtěte si další informace o ovládacích prvcích zabezpečení v [rozšířeném zabezpečeném skóre (Preview) v Azure Security Center](secure-score-security-controls.md).
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Průzkumník Azure Resource Graph a dostupné tabulky&quot;:::
-
-> [!TIP]
-> V dokumentaci ARG najdete seznam všech dostupných tabulek v [tabulce Azure Resource Graph a odkaz na typ prostředku](../governance/resource-graph/reference/supported-tables-resources.md).
-
-Z této aktualizace byla odstraněna tabulka **Microsoft. Security/securityStatuses** . Rozhraní securityStatuses API je stále k dispozici.
-
-Nahrazení dat může být použito v tabulce Microsoft. Security/Assessments.
-
-Hlavním rozdílem mezi Microsoft. Security/securityStatuses a Microsoft. Security/Assessments je, že při první zobrazení agregace posouzení obsahuje sekund jeden záznam pro každý.
-
-Například Microsoft. Security/securityStatuses by vrátil výsledek s polem dvou policyAssessments:
-
-```
-{
-id: &quot;/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet&quot;,
-name: &quot;mico-rg-vnet&quot;,
-type: &quot;Microsoft.Security/securityStatuses&quot;,
-properties:  {
-    policyAssessments: [
-        {assessmentKey: &quot;e3deicce-f4dd-3b34-e496-8b5381bazd7e&quot;, category: &quot;Networking&quot;, policyName: &quot;Azure DDOS Protection Standard should be enabled&quot;,...},
-        {assessmentKey: &quot;sefac66a-1ec5-b063-a824-eb28671dc527&quot;, category: &quot;Compute&quot;, policyName: &quot;&quot;,...}
-    ],
-    securitystateByCategory: [{category: &quot;Networking&quot;, securityState: &quot;None&quot; }, {category: &quot;Compute&quot;,...],
-    name: &quot;GenericResourceHealthProperties&quot;,
-    type: &quot;VirtualNetwork&quot;,
-    securitystate: &quot;High":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres.":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Rozšířené řízení zabezpečení "implementovat osvědčené postupy zabezpečení" 
 

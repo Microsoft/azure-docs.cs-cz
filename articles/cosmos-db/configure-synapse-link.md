@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dee5a56f309dab8f09a598219f6302c88f4308e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757839"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370708"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
 
@@ -219,9 +219,6 @@ Postupujte podle pokynů v článku [dotaz Azure Cosmos DB analytické úložiš
 
 Synapse SQL bez serveru (funkce Preview, která se dřív odkazovala na **požadavky SQL na vyžádání**), umožňuje dotazovat a analyzovat data v kontejnerech Azure Cosmos DB, které jsou povolené pomocí odkazu Azure synapse. Data můžete analyzovat téměř v reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z analytického úložiště a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL. Další informace najdete v článku s [dotazem na analytické úložiště s synapse SQL bez serveru](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
 
-> [!NOTE]
-> Použití Azure Cosmos DBho analytického úložiště s synapse bez SQL serveru je v současné době ve verzi gatedd Preview. Pokud chcete požádat o přístup, přihlaste se k [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com).
-
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>K analýze a vizualizaci dat v Power BI používejte SQL Server bez serveru synapse
 
 Můžete vytvořit synapse databázi bez SQL serveru a zobrazení prostřednictvím odkazu synapse pro Azure Cosmos DB. Později můžete zadat dotaz na kontejnery Azure Cosmos a pak vytvořit model s Power BI nad těmito zobrazeními, aby odrážely tento dotaz. Další informace najdete v článku Jak používat [synapse SQL Server bez serveru k analýze Azure Cosmos DB dat pomocí propojení synapse](synapse-link-power-bi.md) .
@@ -240,7 +237,7 @@ Další informace najdete v následujících dokumentech:
 
 * [Odkaz na Azure synapse pro Azure Cosmos DB.](synapse-link.md)
 
-* [Přehled analytického úložiště Azure Cosmos DB](analytical-store-introduction.md)
+* [Přehled analytického úložiště Azure Cosmos DB.](analytical-store-introduction.md)
 
 * [Nejčastější dotazy týkající se Azure Cosmos DB odkaz na synapse.](synapse-link-frequently-asked-questions.md)
 

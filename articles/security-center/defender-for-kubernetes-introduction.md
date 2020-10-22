@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3308a72421b851402642f12daf56359c7e3c9216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd92e1529b889671bc29939f7e9611eceac7ee20
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449066"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370504"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Seznámení s Azure Defenderem pro Kubernetes
 
@@ -31,7 +31,7 @@ Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozi
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro Kubernetes** se účtuje tak, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Požadované role a oprávnění:|**Správce zabezpečení** může zrušit výstrahy.<br>**Čtenář zabezpečení** může zobrazit zjištění.|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Jaké jsou výhody Azure Defenderu pro Kubernetes?
@@ -88,6 +88,23 @@ Jak je uvedeno výše, volitelný plán **Azure Defender for Kubernetes** poskyt
 Pro nejúplnější možnou ochranu doporučujeme nasazení obou.
 
 Pokud se rozhodnete neinstalovat agenta na hostitele, obdržíte pouze podmnožinu výhod ochrany před hrozbami a výstrahy zabezpečení. Pořád budete dostávat výstrahy týkající se analýzy sítě a komunikace se škodlivými servery.
+
+
+### <a name="does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes"></a>Umožňuje AKS instalovat vlastní rozšíření virtuálních počítačů na mých uzlech AKS?
+
+Aby mohl Azure Defender monitorovat uzly AKS, musí používat agenta Log Analytics. 
+
+AKS je spravovaná služba a vzhledem k tomu, že agent Log Analytics je rozšíření spravované Microsoftem, je podporované i v clusterech AKS.
+
+
+
+### <a name="if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too"></a>Pokud můj cluster už používá Azure Monitor pro agenta kontejnerů, potřebuji agenta Log Analytics?
+
+Aby mohl Azure Defender monitorovat uzly AKS, musí používat agenta Log Analytics.
+
+Pokud již máte v clusterech spuštěný agent Azure Monitor for Containers, můžete také agenta Log Analytics nainstalovat a dva agenti mohou společně navzájem pracovat bez jakýchkoli problémů.
+
+[Přečtěte si další informace o agentovi Azure monitor for Containers](../azure-monitor/insights/container-insights-manage-agent.md).
 
 
 ## <a name="next-steps"></a>Další kroky

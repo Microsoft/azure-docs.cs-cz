@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a56cd23494f65b1c74e44868496855c6e4a32bf7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269552"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365812"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>Nasazení zabezpečené pracovní stanice spravované v Azure
 
@@ -31,18 +31,18 @@ Před nasazením řešení vyberte profil. V nasazení můžete použít více p
 
 | Profil | Nízká | Rozšířené | Vysoké | Specializovaná | Psán | Isolated |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Uživatel v Azure AD | Yes | Yes | Yes | Yes | Yes | Yes |
-| Spravovaná v Intune | Yes | Yes | Yes | Yes | Yes | Yes |
-| Zařízení – zaregistrované v Azure AD | Yes |  |  |  |  | |   |
-| Zařízení – připojeno k Azure AD |   | Yes | Yes | Yes | Yes | Yes |
-| Použité standardní hodnoty zabezpečení Intune |   | Yes <br> Rozšíření | Yes <br> (HighSecurity) | Yes <br> (NCSC) | Yes <br> Psán | Není k dispozici |
-| Hardware splňuje zabezpečené standardy pro Windows 10. |   | Yes | Yes | Yes | Yes | Yes |
-| Povolené ATP programu Microsoft Defender |   | Yes  | Yes | Yes | Yes | Yes |
-| Odebrání oprávnění správce |   |   | Yes  | Yes | Yes | Yes |
-| Nasazení pomocí programu Microsoft autopilot |   |   | Yes  | Yes | Yes | Yes |
-| Aplikace nainstalované jenom pomocí Intune |   |   |   | Yes | Yes |Yes |
-| Adresy URL omezené na seznam schválených |   |   |   | Yes | Yes |Yes |
-| Blokované na internetu (příchozí/odchozí) |   |   |   |  |  |Yes |
+| Uživatel v Azure AD | Ano | Ano | Ano | Ano | Ano | Ano |
+| Spravovaná v Intune | Ano | Ano | Ano | Ano | Ano | Ano |
+| Zařízení – zaregistrované v Azure AD | Ano |  |  |  |  | |   |
+| Zařízení – připojeno k Azure AD |   | Ano | Ano | Ano | Ano | Ano |
+| Použité standardní hodnoty zabezpečení Intune |   | Ano <br> Rozšíření | Ano <br> (HighSecurity) | Ano <br> (NCSC) | Ano <br> Psán | Není k dispozici |
+| Hardware splňuje zabezpečené standardy pro Windows 10. |   | Ano | Ano | Ano | Ano | Ano |
+| Povolené ATP programu Microsoft Defender |   | Ano  | Ano | Ano | Ano | Ano |
+| Odebrání oprávnění správce |   |   | Ano  | Ano | Ano | Ano |
+| Nasazení pomocí programu Microsoft autopilot |   |   | Ano  | Ano | Ano | Ano |
+| Aplikace nainstalované jenom pomocí Intune |   |   |   | Ano | Ano |Ano |
+| Adresy URL omezené na seznam schválených |   |   |   | Ano | Ano |Ano |
+| Blokované na internetu (příchozí/odchozí) |   |   |   |  |  |Ano |
 
 > [!NOTE]
 > V doprovodných **zařízeních** zabezpečených pracovních stanic se přiřadí profily a zásady. Uživatelé nebudou mít k těmto zásadám aplikovány přímo, což umožňuje sdílení zařízení (sdílená zařízení) v platnosti. Pokud zabezpečená pracovní stanice není sdílená v nasazení, nebo jsou nutné jednotlivé zásady uživatele, přiřazení profilů uživatelských zásad se dá přiřadit uživateli a zařízení. 
@@ -51,11 +51,11 @@ Před nasazením řešení vyberte profil. V nasazení můžete použít více p
 
 V konceptech popsaných v tomto průvodci se předpokládá, že máte Microsoft 365 Enterprise E5 nebo ekvivalentní SKU. Některá doporučení v tomto průvodci můžete implementovat s nižšími SKU. Další informace najdete v tématu [Microsoft 365 Enterprise licencování](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise).
 
-Pro automatizaci zřizování licencí zvažte [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro vaše uživatele.
+Pro automatizaci zřizování licencí zvažte [licencování na základě skupin](../enterprise-users/licensing-groups-assign.md) pro vaše uživatele.
 
 ## <a name="azure-active-directory-configuration"></a>Konfigurace Azure Active Directory
 
-Azure Active Directory (Azure AD) spravují uživatele, skupiny a zařízení pro pracovní stanice vašich správců. Pomocí [účtu správce](../users-groups-roles/directory-assign-admin-roles.md)povolte služby a funkce identity.
+Azure Active Directory (Azure AD) spravují uživatele, skupiny a zařízení pro pracovní stanice vašich správců. Pomocí [účtu správce](../roles/permissions-reference.md)povolte služby a funkce identity.
 
 Když vytvoříte zabezpečený účet správce pracovní stanice, vystavte si účet pro aktuální pracovní stanici. Ujistěte se, že k provedení této počáteční konfigurace a všech globálních konfigurací používáte známé bezpečné zařízení. Chcete-li snížit riziko útoku při prvním spuštění, zvažte následující [pokyny, abyste zabránili napadení malwarem](/windows/security/threat-protection/intelligence/prevent-malware-infection).
 
@@ -77,7 +77,7 @@ V dalším kroku vytvoříte dvě skupiny: uživatelé pracovní stanice a zař�
 
 Z Azure Portal přejděte na **Azure Active Directory**  >  **skupiny**  >  **Nová skupina**.
 
-1. Pro skupinu uživatelé pracovní stanice možná budete chtít nakonfigurovat [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro automatizaci zřizování licencí pro uživatele.
+1. Pro skupinu uživatelé pracovní stanice možná budete chtít nakonfigurovat [licencování na základě skupin](../enterprise-users/licensing-groups-assign.md) pro automatizaci zřizování licencí pro uživatele.
 1. Pro skupinu uživatelé pracovní stanice zadejte:
 
    * **Typ skupiny** – zabezpečení
@@ -131,7 +131,7 @@ Tyto kroky umožňují spravovat jakékoli zařízení v Intune. Další informa
 
 #### <a name="azure-ad-conditional-access"></a>Podmíněný přístup Azure AD
 
-Podmíněný přístup Azure AD může přispět k omezení privilegované úlohy správy na vyhovující zařízení. Aby se při přihlašování ke cloudovým aplikacím provádělo ověřování Multi-Factor Authentication, musí být předdefinovaná členové skupiny **Uživatelé zabezpečených pracovních stanic** . Osvědčeným postupem je vyloučit z těchto zásad účty pro nouzový přístup. Další informace najdete v tématu [Správa účtů pro nouzový přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md).
+Podmíněný přístup Azure AD může přispět k omezení privilegované úlohy správy na vyhovující zařízení. Aby se při přihlašování ke cloudovým aplikacím provádělo ověřování Multi-Factor Authentication, musí být předdefinovaná členové skupiny **Uživatelé zabezpečených pracovních stanic** . Osvědčeným postupem je vyloučit z těchto zásad účty pro nouzový přístup. Další informace najdete v tématu [Správa účtů pro nouzový přístup ve službě Azure AD](../roles/security-emergency-access.md).
 
 ## <a name="intune-configuration"></a>Konfigurace Intune
 
@@ -251,7 +251,7 @@ Spusťte skript pro export dat Intune `DeviceConfiguration_Export.ps1` z [úlož
 
 ## <a name="additional-configurations-and-hardening-to-consider"></a>Další konfigurace a posílení zabezpečení pro zvážení
 
-Podle pokynů uvedených tady jste nasadili zabezpečenou pracovní stanici. Měli byste ale také zvážit další ovládací prvky. Například:
+Podle pokynů uvedených tady jste nasadili zabezpečenou pracovní stanici. Měli byste ale také zvážit další ovládací prvky. Příklad:
 
 * omezení přístupu k alternativním prohlížečům
 * povolení odchozího HTTP
@@ -308,7 +308,7 @@ Možná budete muset nainstalovat Windows 32 – bitové aplikace nebo jiné apl
 
 ### <a name="conditional-access-only-allowing-secured-workstation-ability-to-access-azure-portal"></a>Podmíněný přístup povoluje přístup k Azure Portal jenom zabezpečeným pracovním stanicím.
 
-Azure AD nabízí možnost spravovat a omezovat, kdo a co má přístup k portálu pro správu cloudu Azure. Povolením [podmíněného přístupu](../conditional-access/overview.md) zajistíte, aby mohli spravovat nebo měnit prostředky jenom zabezpečená pracovní stanice. Při nasazení této funkce je nutné vzít v úvahu, že pokud se funkce [nouzového přístupu](../users-groups-roles/directory-emergency-access.md) může nebo měla používat jenom pro extrémní případy a účet spravovaný prostřednictvím zásad.
+Azure AD nabízí možnost spravovat a omezovat, kdo a co má přístup k portálu pro správu cloudu Azure. Povolením [podmíněného přístupu](../conditional-access/overview.md) zajistíte, aby mohli spravovat nebo měnit prostředky jenom zabezpečená pracovní stanice. Při nasazení této funkce je nutné vzít v úvahu, že pokud se funkce [nouzového přístupu](../roles/security-emergency-access.md) může nebo měla používat jenom pro extrémní případy a účet spravovaný prostřednictvím zásad.
 
 > [!NOTE]
 > Budete muset vytvořit skupinu uživatelů a začlenit svého naléhavého uživatele, který může obejít zásady podmíněného přístupu. V našem příkladu máme skupinu zabezpečení s názvem **Nouzový BreakGlass**

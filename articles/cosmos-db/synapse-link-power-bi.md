@@ -6,19 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 26a6ddf3ea3009c1463f40403c9d1860a7cb81f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1157ca31a66e5df92ff28f5d7190993e51d7dd65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125999"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367631"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Použití Power BI a synapse fondu SQL bez serveru k analýze dat Azure Cosmos DB pomocí propojení synapse (Preview) 
 
 V tomto článku se dozvíte, jak vytvořit synapse fond SQL bez serveru (který se dříve odkazoval na databázi a zobrazení **SQL na vyžádání**) prostřednictvím odkazu na Synapse pro Azure Cosmos DB. Budete dotazováni na kontejnery Azure Cosmos a pak sestavíte model pomocí Power BI přes tato zobrazení, aby odrážely dotaz.
-
-> [!NOTE]
-> Použití Azure Cosmos DBho analytického úložiště s SQL fondem bez serveru je aktuálně v rámci ověřovaného náhledu. Pokud chcete požádat o přístup, přihlaste se k [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com).
 
 V tomto scénáři použijete zástupné údaje o prodeji na Surface produktů v partnerském prodejnovém obchodě. Výnosy za obchod budete analyzovat na základě blízkosti velkých domácností a dopadu reklamy na konkrétní týden. V tomto článku vytvoříte dvě zobrazení s názvem **RetailSales** a **StoreDemographics** a dotaz mezi nimi. Z tohoto úložiště [GitHubu](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) můžete získat ukázková data produktu.
 

@@ -16,18 +16,18 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361900"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368379"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal
 
 [Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně k celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít Azure RBAC k udělení pouze oprávnění, která uživatelé v prostředí potřebují.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -183,7 +183,7 @@ Uživatelé typu Host mají omezená oprávnění k adresáři. Uživatel typu H
 
 ![Uživatel typu Host nemůže procházet uživatele v adresáři.](./media/role-assignments-external-users/directory-no-users.png)
 
-Pokud uživatel typu Host potřebuje v adresáři další oprávnění, můžete uživateli typu Host přiřadit roli adresáře. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+Pokud uživatel typu Host potřebuje v adresáři další oprávnění, můžete uživateli typu Host přiřadit roli adresáře. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
 
 ![Přiřadit roli čtenářů adresáře](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,11 +193,11 @@ Uživatelé typu Host mají omezená oprávnění k adresáři. I v případě, 
 
 ![Uživatel typu Host nemůže procházet objekty zabezpečení a přiřazovat role.](./media/role-assignments-external-users/directory-no-browse.png)
 
-Pokud uživatel typu Host ví v adresáři přesně přihlašovací jméno uživatele, může udělit přístup. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+Pokud uživatel typu Host ví v adresáři přesně přihlašovací jméno uživatele, může udělit přístup. Pokud opravdu chcete, aby měl uživatel typu Host úplný přístup pro čtení do vašeho adresáře, můžete přidat uživatele typu Host do role [čtenáři adresáře](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>Uživatel typu Host nemůže registrovat aplikace nebo vytvářet instanční objekty.
 
-Uživatelé typu Host mají omezená oprávnění k adresáři. Pokud uživatel typu Host potřebuje mít možnost Registrovat aplikace nebo vytvářet instanční objekty, můžete přidat uživatele typu Host do role [vývojář aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
+Uživatelé typu Host mají omezená oprávnění k adresáři. Pokud uživatel typu Host potřebuje mít možnost Registrovat aplikace nebo vytvářet instanční objekty, můžete přidat uživatele typu Host do role [vývojář aplikace](../active-directory/roles/permissions-reference.md) v Azure AD. Další informace najdete v tématu [udělení oprávnění uživatelům z partnerských organizací ve vašem tenantovi Azure Active Directory](../active-directory/b2b/add-guest-to-role.md).
 
 ![Uživatel typu Host nemůže registrovat aplikace.](./media/role-assignments-external-users/directory-access-denied.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601360"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371048"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -42,13 +42,13 @@ Správa Azure Active Directory vyžaduje průběžné provádění klíčových 
 | Třídění a zkoumání uživatelů označených příznakem rizika a ohrožení zabezpečení z Azure AD Identity Protection | Provozní tým InfoSec |
 
 > [!NOTE]
-> Azure AD Identity Protection vyžaduje licenci Azure AD Premium P2. Správnou licenci pro vaše požadavky najdete v tématu [porovnání všeobecně dostupných funkcí Azure AD Free a Azure AD Premium edicí](https://azure.microsoft.com/pricing/details/active-directory/).
+> Azure AD Identity Protection vyžaduje licenci Azure AD Premium P2. Správnou licenci pro vaše požadavky najdete v tématu [porovnání všeobecně dostupných funkcí Azure AD Free a Azure AD Premium edicí](https://azure.microsoft.com/pricing/details/active-directory/).
 
 Při revizi seznamu se můžete setkat s tím, že budete muset buď přiřadit vlastníka pro úlohy, u kterých chybí vlastník, nebo upravit vlastnictví pro úlohy s vlastníky, které nejsou zarovnané na výše uvedená doporučení.
 
 #### <a name="owner-recommended-reading"></a>Čtení Doporučené vlastníkem
 
-- [Přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md)
 - [Zásady správného řízení v Azure](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>Správa přihlašovacích údajů
@@ -119,7 +119,7 @@ Federované ověřování s integrovaným ověřováním systému Windows (IWA) 
 
 ### <a name="device-trust-access-policies"></a>Zásady přístupu důvěryhodnosti zařízení
 
-Podobně jako uživatel ve vaší organizaci je zařízení základní identitou, kterou chcete chránit. Identitu zařízení můžete použít k ochraně svých prostředků kdykoli a z libovolného místa.Ověřování zařízení a monitorování účtů pro svůj typ vztahu důvěryhodnosti vylepšuje stav a použitelnost zabezpečení:
+Podobně jako uživatel ve vaší organizaci je zařízení základní identitou, kterou chcete chránit. Identitu zařízení můžete použít k ochraně svých prostředků kdykoli a z libovolného místa. Ověřování zařízení a monitorování účtů pro svůj typ vztahu důvěryhodnosti vylepšuje stav a použitelnost zabezpečení:
 
 - Zamezení tření, například při ověřování MFA, když je zařízení důvěryhodné
 - Blokování přístupu z nedůvěryhodných zařízení
@@ -128,7 +128,7 @@ Podobně jako uživatel ve vaší organizaci je zařízení základní identitou
 Tento cíl můžete provést tak, že navedete identity zařízení a spravujete je ve službě Azure AD pomocí jedné z následujících metod:
 
 - Organizace můžou pomocí [Microsoft Intune](/intune/what-is-intune) spravovat zařízení a vystavovat zásady dodržování předpisů, ověřit stav zařízení a nastavit zásady podmíněného přístupu na základě toho, jestli zařízení dodržuje předpisy. Microsoft Intune může spravovat zařízení se systémem iOS, stolní počítače Mac (prostřednictvím integrace JAMF), desktopy Windows (nativně pomocí správy mobilních zařízení pro Windows 10 a spolusprávu pomocí služby Microsoft Endpoint Configuration Manager) a mobilních zařízení s Androidem.
-- [Připojení k hybridní službě Azure AD](../devices/hybrid-azuread-join-managed-domains.md) poskytuje správu pomocí zásad skupiny nebo Microsoft Endpoint Configuration Manager v prostředí s počítači připojenými k doméně služby Active Directory. Organizace můžou nasadit spravované prostředí prostřednictvím KOSMETICE nebo PTA s bezproblémové jednotné přihlašování. Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím jednotného přihlašování napříč vaším cloudem a místními prostředky a zároveň vám umožní zabezpečit přístup k vašemu cloudu a místním prostředkům s [podmíněným přístupem](../conditional-access/overview.md)   současně.
+- [Připojení k hybridní službě Azure AD](../devices/hybrid-azuread-join-managed-domains.md) poskytuje správu pomocí zásad skupiny nebo Microsoft Endpoint Configuration Manager v prostředí s počítači připojenými k doméně služby Active Directory. Organizace můžou nasadit spravované prostředí prostřednictvím KOSMETICE nebo PTA s bezproblémové jednotné přihlašování. Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím jednotného přihlašování napříč vaším cloudem a místními prostředky a zároveň vám umožní zabezpečit přístup k vašemu cloudu a místním prostředkům s [podmíněným přístupem](../conditional-access/overview.md) současně.
 
 Pokud máte zařízení s Windows připojená k doméně, která nejsou registrovaná v cloudu, nebo zařízení s Windows připojená k doméně, která jsou zaregistrovaná v cloudu, ale bez zásad podmíněného přístupu, měli byste zaregistrovat neregistrovaná zařízení a v obou případech [použít hybridní službu Azure AD JOIN jako ovládací prvek](../conditional-access/require-managed-devices.md) v zásadách podmíněného přístupu.
 
@@ -177,7 +177,7 @@ Nakonec, pokud máte galerii aplikací Azure AD a používáte aplikace, které 
 
 ### <a name="assign-users-to-applications"></a>Přiřazení uživatelů k aplikacím
 
-[Přiřazování uživatelů k aplikacím](../manage-apps/assign-user-or-group-access-portal.md) je nejlépe namapované pomocí skupin, protože umožňují větší flexibilitu a možnost správy ve velkém měřítku. Mezi výhody používání skupin patří [členství v dynamické skupině založené na atributech](../users-groups-roles/groups-dynamic-membership.md) a [delegování pro vlastníky aplikace](../fundamentals/active-directory-accessmanagement-managing-group-owners.md). Proto, pokud už používáte a spravujete skupiny, doporučujeme, abyste provedli následující akce, abyste vylepšili správu ve velkém měřítku:
+[Přiřazování uživatelů k aplikacím](../manage-apps/assign-user-or-group-access-portal.md) je nejlépe namapované pomocí skupin, protože umožňují větší flexibilitu a možnost správy ve velkém měřítku. Mezi výhody používání skupin patří [členství v dynamické skupině založené na atributech](../enterprise-users/groups-dynamic-membership.md) a [delegování pro vlastníky aplikace](../fundamentals/active-directory-accessmanagement-managing-group-owners.md). Proto, pokud už používáte a spravujete skupiny, doporučujeme, abyste provedli následující akce, abyste vylepšili správu ve velkém měřítku:
 
 - Delegování správy skupin a zásad správného řízení vlastníkům aplikací.
 - Povolí přístup k aplikaci samoobslužné služby.
@@ -189,8 +189,8 @@ Na druhé straně, pokud najdete aplikace, které mají přiřazení jednotlivý
 #### <a name="assign-users-to-applications-recommended-reading"></a>Přiřazení uživatelů k aplikacím – doporučené čtení
 
 - [Přiřazení uživatelů a skupin k aplikaci v Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md)
-- [Delegovat oprávnění k registraci aplikace v Azure Active Directory](../users-groups-roles/roles-delegate-app-roles.md)
-- [Pravidla dynamického členství pro skupiny v Azure Active Directory](../users-groups-roles/groups-dynamic-membership.md)
+- [Delegovat oprávnění k registraci aplikace v Azure Active Directory](../roles/delegate-app-roles.md)
+- [Pravidla dynamického členství pro skupiny v Azure Active Directory](../enterprise-users/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>Zásady přístupu
 
@@ -248,7 +248,7 @@ Podmíněný přístup je důležitým nástrojem pro zlepšení stav zabezpeče
 - Použití zásad podmíněného přístupu k [implementaci vícefaktorového ověřování](../conditional-access/plan-conditional-access.md)(MFA) místo použití **MFA pro jednotlivé uživatele**
 - Máte malou sadu základních zásad, které se můžou vztahovat na víc aplikací.
 - Definování prázdných skupin výjimek a jejich přidání do zásad, které mají strategii výjimek
-- Plánování účtů pro [rozbití skla](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) bez ovládacích prvků MFA
+- Plánování účtů pro [rozbití skla](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency) bez ovládacích prvků MFA
 - Zajistěte konzistentní prostředí napříč Microsoft 365 klientskými aplikacemi, například týmy, OneDrive, Outlook atd.) implementací stejné sady ovládacích prvků pro služby, jako je Exchange Online a SharePoint Online
 - Přiřazení k zásadám by se mělo implementovat pomocí skupin, ne jednotlivců.
 - Provádějte pravidelné kontroly skupin výjimek používaných v zásadách, abyste omezili čas, kdy se uživatelé nacházejí v stav zabezpečení. Pokud vlastníte Azure AD P2, můžete k automatizaci procesu použít kontroly přístupu.
@@ -309,7 +309,7 @@ Níže najdete seznam aplikací s oprávněními, které byste mohli chtít poř
 | | Pošta. Read. Shared |
 | | Pošta. v zápisu |
 
-- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Například:
+- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Příklad:
 
 |Prostředek | Oprávnění |
 | :- | :- |
@@ -347,7 +347,7 @@ Níže jsou uvedena nastavení uživatelů a skupin, která se můžou uzamknout
 - [Integrace aplikací s Azure Active Directory](../develop/quickstart-register-app.md)
 - [Aplikace, oprávnění a souhlas v Azure Active Directory.](../develop/quickstart-register-app.md)
 - [Použití skupin pro správu přístupu k prostředkům v Azure Active Directory](./active-directory-manage-groups.md)
-- [Nastavení samoobslužné správy přístupu k aplikacím ve službě Azure Active Directory](../users-groups-roles/groups-self-service-management.md)
+- [Nastavení samoobslužné správy přístupu k aplikacím ve službě Azure Active Directory](../enterprise-users/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>Provoz z neočekávaných umístění
 
@@ -372,7 +372,7 @@ Přístup k aktivitě přihlašování, auditům a rizikovým událostem pro Azu
 - [Reference k rozhraní API aktivity správy Office 365](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Jak používat balíček obsahu Azure Active Directory Power BI Content Pack](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Zabezpečená infrastruktura identity má 12 aspektů. Tento seznam vám pomůže lépe zabezpečit a spravovat přihlašovací údaje, definovat možnosti ověřování, přiřazení delegáta, využití měr a definovat zásady přístupu na základě podnikového zabezpečení stav.
 
