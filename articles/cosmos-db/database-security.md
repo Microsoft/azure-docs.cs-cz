@@ -4,14 +4,14 @@ description: Přečtěte si, jak Azure Cosmos DB poskytuje ochranu databáze a z
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3658c621a5ac633bf42334df3e354c88afcf9b27
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6236b34c76ccd9e4688b97e7844cbadf9f515213
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278795"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372238"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – Přehled
 
@@ -60,7 +60,7 @@ Pojďme se na každou z nich dig podrobněji.
 |Požadavek zabezpečení|Přístup k zabezpečení Azure Cosmos DB|
 |---|---|
 |Zabezpečení sítě|Použití brány firewall protokolu IP je první vrstvou ochrany pro zabezpečení vaší databáze. Azure Cosmos DB podporuje řízení přístupu na základě protokolu IP, která jsou řízená pomocí zásad pro podporu brány firewall. Řízení přístupu na základě IP adresy se podobá pravidlům brány firewall, která používají tradiční databázové systémy, ale rozšiřují se, aby účet databáze Azure Cosmos byl přístupný jenom ze schválené sady počítačů nebo cloudových služeb. Další informace najdete v článku o [podpoře Azure Cosmos DB brány firewall](how-to-configure-firewall.md) .<br><br>Azure Cosmos DB vám umožní povolit konkrétní IP adresu (168.61.48.0), rozsah IP adres (168.61.48.0/8) a kombinace IP adres a rozsahů. <br><br>Všechny požadavky pocházející z počítačů mimo tento seznam povolených jsou blokované Azure Cosmos DB. Požadavky ze schválených počítačů a cloudových služeb pak musí dokončit proces ověřování, aby bylo možné k prostředkům udělit řízení přístupu.<br><br> [Značky služby virtuální sítě](../virtual-network/service-tags-overview.md) můžete použít k zajištění izolace sítě a ochraně vašich Azure Cosmos DBch prostředků z obecného internetového prostředí. Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například AzureCosmosDB) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.|
-|Authorization (Autorizace)|Azure Cosmos DB pro autorizaci používá algoritmus HMAC (hash-based Message Authentication Code). <br><br>Každý požadavek má pomocí klíče tajného účtu hodnotu hash a při každém volání Azure Cosmos DB se pošle následná hodnota hash kódovaná pomocí základního-64. Pro ověření žádosti služba Azure Cosmos DB používá správný tajný klíč a vlastnosti k vygenerování hodnoty hash, a pak porovná hodnotu s hodnotou v žádosti. Pokud se dvě hodnoty shodují, operace se úspěšně autorizuje a zpracuje se. v opačném případě dojde k chybě autorizace a žádost se odmítne.<br><br>Můžete použít buď [primární klíč](secure-access-to-data.md#primary-keys), nebo [token prostředku](secure-access-to-data.md#resource-tokens) , který umožňuje jemně odstupňovaný přístup k prostředku, jako je například dokument.<br><br>Další informace najdete v [zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
+|Autorizace|Azure Cosmos DB pro autorizaci používá algoritmus HMAC (hash-based Message Authentication Code). <br><br>Každý požadavek má pomocí klíče tajného účtu hodnotu hash a při každém volání Azure Cosmos DB se pošle následná hodnota hash kódovaná pomocí základního-64. Pro ověření žádosti služba Azure Cosmos DB používá správný tajný klíč a vlastnosti k vygenerování hodnoty hash, a pak porovná hodnotu s hodnotou v žádosti. Pokud se dvě hodnoty shodují, operace se úspěšně autorizuje a zpracuje se. v opačném případě dojde k chybě autorizace a žádost se odmítne.<br><br>Můžete použít buď [primární klíč](#primary-keys), nebo [token prostředku](secure-access-to-data.md#resource-tokens) , který umožňuje jemně odstupňovaný přístup k prostředku, jako je například dokument.<br><br>Další informace najdete v [zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
 |Uživatelé a oprávnění|Pomocí primárního klíče pro účet můžete vytvořit prostředky uživatelů a prostředky oprávnění na databázi. Token prostředku je přidružen k oprávnění v databázi a určuje, zda má uživatel přístup k prostředku aplikace v databázi (čtení i zápis, jen pro čtení nebo bez přístupu). Mezi prostředky aplikace patří kontejner, dokumenty, přílohy, uložené procedury, triggery a UDF. Token prostředku se pak při ověřování použije k poskytnutí nebo zamítnutí přístupu k prostředku.<br><br>Další informace najdete v [zabezpečení přístupu k prostředkům Azure Cosmos DB](secure-access-to-data.md).|
 |Integrace služby Active Directory (RBAC)| Pomocí řízení přístupu (IAM) v Azure Portal můžete také poskytnout nebo omezit přístup k účtu Cosmos, databázi, kontejneru a nabídkám (propustnost). IAM poskytuje řízení přístupu na základě role a integruje se se službou Active Directory. Můžete použít předdefinované role nebo vlastní role pro jednotlivce a skupiny. Další informace najdete v článku věnovaném [integraci služby Active Directory](role-based-access-control.md) .|
 |Globální replikace|Azure Cosmos DB nabízí globální distribuci klíč, která umožňuje replikovat data do libovolného datacentra Azure v celém světě pomocí kliknutí na tlačítko. Globální replikace umožňuje horizontální škálování a přístup k datům po celém světě a zajišťuje tak přístup s nízkou latencí.<br><br>Globální replikace v souvislosti se zabezpečením zajišťuje ochranu dat před místními chybami.<br><br>Další informace najdete v části [Globální distribuce dat](distribute-data-globally.md).|
@@ -80,6 +80,25 @@ Pojďme se na každou z nich dig podrobněji.
 |Certifikace zabezpečení a ochrany dat| Nejaktuálnější seznam certifikací najdete na celkovém [webu dodržování předpisů Azure](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a v nejnovějším [dokumentu o dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) všemi certifikacemi (vyhledejte Cosmos). Další informace najdete v tématu 25. dubna 2018 post [Azure #CosmosDB: Secure, Private, splňující předpisy, která zahrnuje SOC 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High a spoustu dalších.
 
 Následující snímek obrazovky ukazuje, jak můžete pomocí protokolu auditu a protokolů aktivit monitorovat svůj účet: :::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Zodpovědnost za zákazníky a poskytovatele databáze":::
+
+<a id="primary-keys"></a>
+
+## <a name="primary-keys"></a>Primární klíče
+
+Primární klíče poskytují přístup ke všem prostředkům správy pro účet databáze. Primární klíče:
+
+- Poskytněte přístup k účtům, databázím, uživatelům a oprávněním. 
+- Nelze použít k poskytnutí podrobného přístupu k kontejnerům a dokumentům.
+- Se vytvoří během vytváření účtu.
+- Může být kdykoli znovu vygenerována.
+
+Každý účet se skládá ze dvou primárních klíčů: primárního a sekundárního klíče. Účelem duálních klíčů je, abyste mohli znovu vygenerovat nebo obnovit klíče a zajistit tak nepřetržitý přístup k vašemu účtu a datům.
+
+Kromě dvou primárních klíčů pro účet Cosmos DB jsou k dispozici dva klíče jen pro čtení. Tyto klíče jen pro čtení povolují operace čtení jenom na účtu. Klíče jen pro čtení neposkytují přístup k prostředkům oprávnění ke čtení.
+
+Primární klíče primární, sekundární, jen pro čtení a primární klíče pro čtení i zápis lze načíst a znovu vygenerovat pomocí Azure Portal. Pokyny najdete v tématu [zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#regenerate-account-key).
+
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Zodpovědnost za zákazníky a poskytovatele databáze":::
 
 ## <a name="next-steps"></a>Další kroky
 

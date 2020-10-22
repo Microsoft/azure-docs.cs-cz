@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/22/2019
 ms.author: chrupa
-ms.openlocfilehash: edc337849b53cb8e818114d3dd100d30cf00b895
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 556cc7fb5f735346a35903840501cf8f8e1be033
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84872061"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372170"
 ---
 # <a name="partner-ecosystem-for-azure-api-for-fhir"></a>Partnerský ekosystém pro Azure API pro FHIR
 Jsme rádi, že rozhraní Azure API pro FHIR bylo pro všechny zákazníky Azure vydané všeobecně dostupné. O řešeních, která budete sestavovat pomocí naší služby, ještě více zajímáme.  
@@ -25,7 +25,7 @@ Při vytváření uceleného řešení založeného na rozhraní Azure API pro F
 |------------------|--------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | Svítí            | De-Identification, FHIR konverze starší verze –  | USA                         | [Kontakt](http://www.medal.com/)                                                                                           |
 | Rhapsody         | Starší převod – FHIR                     | USA, Austrálie, Nový Zéland | [Kontakt](https://rhapsody.health/contact-us)                                                                                          |
-| iNTERFACEWARE    | Starší převod – FHIR                     | USA, Kanada                 | [Kontakt](https://www.interfaceware.com/contact.html)                                                                                  |
+| iNTERFACEWARE    | Starší převod – FHIR                     | USA, Kanada                 | [Kontakt](https://www.interfaceware.com/contact)                                                                                  |
 | Řešení Darena | Vývoj aplikací, systémový integrátor | USA                         | [Kontakt](https://www.darenasolutions.com/contact)                                                                                     |
 | NewWave          | Vývoj aplikací, systémový integrátor | USA                         | [Kontakt](https://newwave.io/get-in-touch/)                                                                                            |
 | Dapasoft         | Vývoj aplikací, systémový integrátor | USA, Kanada                 | [Kontakt](https://www.dapasoft.com/contact-us/)                                                                                        |

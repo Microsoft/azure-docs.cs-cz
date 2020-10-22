@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 681929928e6e6b28c7950c8aeeadc8b181491f46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44a8d82ea2588abad6855fd8eaf7aed34256d87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804125"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370759"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Vytvoření řídicího panelu v reálném čase pomocí Azure Cosmos DB a Power BI
 
@@ -46,7 +46,7 @@ Azure Analysis Services poskytuje plně spravovanou platformu jako službu, kter
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Ingestování dat počasí do Azure Cosmos DB
 
-Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalog.data.gov/dataset/local-weather-archive) do Azure Cosmos DB. Můžete nastavit úlohu [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) , aby pravidelně načetla nejnovější data o počasí do Azure Cosmos DB pomocí zdroje HTTP a Cosmos DB jímky.
+Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) do Azure Cosmos DB. Můžete nastavit úlohu [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) , aby pravidelně načetla nejnovější data o počasí do Azure Cosmos DB pomocí zdroje HTTP a Cosmos DB jímky.
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>Připojit Power BI k Azure Cosmos DB
@@ -63,7 +63,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
    V závislosti na tom, který sloupec a datový typ se nachází ve zdrojové datové sadě, můžete pole RangeStart a RangeEnd změnit odpovídajícím způsobem.
 
    
-   |Vlastnost  |Datový typ  |Filtrování  |
+   |Vlastnost  |Datový typ  |Filtr  |
    |---------|---------|---------|
    |_ts     |   Numeric      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) a [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
    |Datum (například:-2019-08-19)     |   Řetězec      | [Document. Date] > DateTime. ToText (RangeStart, "rrrr-MM-DD") a [Document. Date] < DateTime. ToText (RangeEnd, "rrrr-MM-DD")        |
@@ -87,7 +87,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Ingestování dat počasí do Azure Cosmos DB 
 
-Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalog.data.gov/dataset/local-weather-archive) do Azure Cosmos DB. Můžete nastavit úlohu Azure Data Factory (ADF), aby pravidelně načetla nejnovější data o počasí do Azure Cosmos DB pomocí zdroje HTTP a Cosmos DB jímky.
+Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) do Azure Cosmos DB. Můžete nastavit úlohu Azure Data Factory (ADF), aby pravidelně načetla nejnovější data o počasí do Azure Cosmos DB pomocí zdroje HTTP a Cosmos DB jímky.
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Připojit Azure Analysis Services k účtu Azure Cosmos
 

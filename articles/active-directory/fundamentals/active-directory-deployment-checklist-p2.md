@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318405"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371898"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Průvodce nasazením funkcí Azure Active Directory
 
@@ -26,7 +26,7 @@ Dobře plánovaná a spuštěná infrastruktura identity PAVES způsob zabezpeč
 
 Zákazníci navíc můžou ověřit své [zabezpečené skóre identity](identity-secure-score.md) a zjistit, jak se budou zarovnávat podle osvědčených postupů Microsoftu. Před a po implementaci těchto doporučení Zkontrolujte své zabezpečené skóre, abyste viděli, jak dobře pracujete v porovnání s ostatními uživateli ve vašem odvětví a s jinými organizacemi vaší velikosti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Mnohé z doporučení v tomto průvodci můžete implementovat pomocí Azure AD Free nebo bez licence vůbec. Tam, kde jsou licence požadovány, je pro splnění této smlouvy nutné zadat, jaká licence je vyžadována minimálně.
 
@@ -43,8 +43,8 @@ V této fázi můžou správci ve službě Azure AD před importem nebo vytvoře
 
 | Úloha | Podrobnosti | Požadovaná licence |
 | ---- | ------ | ---------------- |
-| [Určení více než jednoho globálního správce](../users-groups-roles/directory-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. | Azure AD Free |
-| [Pokud je to možné, používejte jiné než globální role správy](../users-groups-roles/directory-assign-admin-roles.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. | Azure AD Free |
+| [Určení více než jednoho globálního správce](../roles/security-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. | Azure AD Free |
+| [Pokud je to možné, používejte jiné než globální role správy](../roles/permissions-reference.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. | Azure AD Free |
 | [Povolit Privileged Identity Management pro sledování použití role správce](../privileged-identity-management/pim-getting-started.md) | Povolí Privileged Identity Management zahájení sledování využití role správy. | Azure AD Premium P2 |
 | [Zavedení samoobslužného resetování hesla](../authentication/howto-sspr-deployment.md) | Omezení výzvy helpdesku pro resetování hesel tím, že zaměstnancům umožní resetovat vlastní hesla pomocí zásad, které jste jako ovládací prvek správce. | |
 | [Vytvořit vlastní seznam zakázaných hesel pro konkrétní organizaci](../authentication/tutorial-configure-custom-password-protection.md) | Uživatelům zabránit ve vytváření hesel, která budou obsahovat běžná slova nebo fráze z vaší organizace nebo oblasti. | |
@@ -69,7 +69,7 @@ V dalším kroku přidáme do základu, která je ve fázi 1, importem uživatel
 | [Implementace synchronizace hodnot hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md) | Synchronizuje hodnoty hash hesel, aby bylo možné replikovat změny hesel, chybnou detekci a nápravu hesla a nevrácené zprávy o přihlašovacích údajích. | Azure AD Free |
 | [Implementace zpětného zápisu hesla](../authentication/tutorial-enable-sspr-writeback.md) | Povolí zpětný zápis změn hesel v cloudu do místního prostředí Active Directory Windows serveru. | Azure AD Premium P1 |
 | [Implementovat Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Povolte monitorování statistik stavu klíčů pro Azure AD Connect servery, servery AD FS a řadiče domény. | Azure AD Premium P1 |
-| [Přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) | Ušetřete čas a úsilí vytvořením skupin licencí, které umožňují povolit nebo zakázat funkce podle skupin namísto nastavení na uživatele. | |
+| [Přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory](../enterprise-users/licensing-groups-assign.md) | Ušetřete čas a úsilí vytvořením skupin licencí, které umožňují povolit nebo zakázat funkce podle skupin namísto nastavení na uživatele. | |
 | [Vytvoření plánu pro přístup uživatele typu Host](../external-identities/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlašovat se k vašim aplikacím a službám s vlastními pracovními, školními nebo sociálními identitami. | [Pokyny k licencování Azure AD B2B](../external-identities/licensing-guidance.md) |
 | [Rozhodnutí o strategii správy zařízení](../devices/overview.md) | Rozhodněte se, co vaše organizace povoluje pro zařízení. Při registraci vs se spojí vaše vlastní zařízení a společnost. | |
 | [Nasazení Windows Hello pro firmy ve vaší organizaci](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Příprava ověřování pomocí hesla ve Windows Hello | |
@@ -93,7 +93,7 @@ Fáze 4 se dohlíží k správcům, kteří vynucují zásady minimálního opr�
 | ---- | ------ | ---------------- |
 | [Vynutilo použití Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | Odeberte role pro správu z normálního denního uživatelského účtu. Uživatelé s právy pro správu mají nárok na používání své role po úspěšném ověření služby Multi-Factor Authentication, poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. | Azure AD Premium P2 |
 | [Dokončení kontroly přístupu pro role adresáře Azure AD v PIM](../privileged-identity-management/pim-how-to-start-security-review.md) | Spolupracujte se svými týmy zabezpečení a vedoucími k vytvoření zásady kontroly přístupu ke kontrole přístupu pro správu na základě zásad vaší organizace. | Azure AD Premium P2 |
-| [Implementace zásad členství v dynamické skupině](../users-groups-roles/groups-dynamic-membership.md) | Pomocí dynamických skupin můžete automaticky přiřazovat uživatele do skupin na základě jejich atributů z HR (nebo ze zdroje pravdy), jako je oddělení, název, oblast a další atributy. |  |
+| [Implementace zásad členství v dynamické skupině](../enterprise-users/groups-dynamic-membership.md) | Pomocí dynamických skupin můžete automaticky přiřazovat uživatele do skupin na základě jejich atributů z HR (nebo ze zdroje pravdy), jako je oddělení, název, oblast a další atributy. |  |
 | [Implementace zřizování aplikace založené na skupinách](../manage-apps/what-is-access-management.md) | Pro Automatické zřizování uživatelů pro aplikace SaaS použijte zřizování skupinového přístupu na základě skupin. |  |
 | [Automatizace zřizování a rušení zřizování uživatelů](../app-provisioning/user-provisioning.md) | Odebrání ručních kroků z životního cyklu účtu zaměstnance, aby nedocházelo k neoprávněnému přístupu Synchronizujte identity ze zdroje pravdy (systému HR) do Azure AD. |  |
 

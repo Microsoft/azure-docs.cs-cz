@@ -9,12 +9,12 @@ ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mblythe
-ms.openlocfilehash: 0831cc40c7d6b25e1db78c84a7adfa644497d486
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091436"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372119"
 ---
 # <a name="create-an-azure-support-request"></a>Vytvoření žádosti o podporu Azure
 
@@ -41,7 +41,7 @@ Můžete získat pomoc a **podporu** v Azure Portal. Je k dispozici v nabídce A
 
 ### <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
-Pokud chcete vytvořit žádost o podporu, musíte být [vlastníkem](../../role-based-access-control/built-in-roles.md#owner), [přispěvatelem](../../role-based-access-control/built-in-roles.md#contributor) nebo přiřazenou roli [Přispěvatel žádosti o podporu](../../role-based-access-control/built-in-roles.md#support-request-contributor) na úrovni předplatného. Pokud chcete vytvořit žádost o podporu bez předplatného, například Azure Active Directory scénář, musíte být [správce](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Pokud chcete vytvořit žádost o podporu, musíte být [vlastníkem](../../role-based-access-control/built-in-roles.md#owner), [přispěvatelem](../../role-based-access-control/built-in-roles.md#contributor) nebo přiřazenou roli [Přispěvatel žádosti o podporu](../../role-based-access-control/built-in-roles.md#support-request-contributor) na úrovni předplatného. Pokud chcete vytvořit žádost o podporu bez předplatného, například Azure Active Directory scénář, musíte být [správce](../../active-directory/roles/permissions-reference.md).
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Přejít na pomoc a podpora z globálního záhlaví
 
@@ -69,7 +69,7 @@ K zahájení žádosti o podporu v kontextu prostředku teď pracujete s:
 
 Provede vás několik kroků, které vám pomůžou shromáždit informace o vašem problému a vyřešit ho. Jednotlivé kroky jsou popsány v následujících částech.
 
-### <a name="basics"></a>Základy
+### <a name="basics"></a>Základní kroky
 
 V prvním kroku procesu žádosti o podporu se shromažďují základní informace o vašem problému a plánu podpory.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355036"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371983"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při přebírání služeb při selhání fyzického počítače nebo virtuálního počítače VMware do Azure
 
@@ -55,7 +55,7 @@ Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operačn�
     Pokud je požadováno vysazování, poskytuje následující výsledek:
 
     ```output
-    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
     This system doesn't meet no-hydration requirement.
     ```
@@ -168,7 +168,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 2. Pokud výstup předchozích příkazů ukazuje, že jsou definovaná nastavení http_proxy nebo https_proxy, pomocí jedné z následujících metod odblokujte komunikaci hlavního cíle pomocí konfiguračního serveru:
    
-   - Stáhněte si [Nástroj PsExec](https://aka.ms/PsExec).
+   - Stáhněte si [Nástroj PsExec](/sysinternals/downloads/psexec).
    - Použijte nástroj pro přístup k systémovému kontextu uživatele a určete, jestli je adresa proxy serveru nakonfigurovaná. 
    - Pokud je proxy server nakonfigurován, otevřete aplikaci Internet Explorer v kontextu uživatele systému pomocí nástroje PsExec.
   

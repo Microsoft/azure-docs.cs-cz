@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939013"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359675"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>Úrovně výkonu pro Managed Disks (Preview)
 
@@ -52,9 +52,9 @@ Informace o fakturaci najdete v tématu [ceny za spravované disky](https://azur
 ## <a name="restrictions"></a>Omezení
 
 - Tato funkce se v současné době podporuje jenom pro Premium SSD.
-- Než budete moct změnit vrstvu disku, musíte disk odpojit od spuštěného virtuálního počítače.
+- Než budete moct změnit vrstvu disku, musíte virtuální počítač buď zrušit, nebo ho odpojit od spuštěného virtuálního počítače.
 - Použití úrovní výkonu P60, P70 a P80 je omezené na disky 4 096 GiB nebo vyšší.
-- Úroveň výkonu disku se dá změnit jenom jednou za 24 hodin.
+- Úroveň výkonu disku se dá downgradovat jenom jednou za 24 hodin.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 

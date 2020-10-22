@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282862"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372272"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Přesunutí pracovního prostoru Log Analytics do jiného předplatného nebo skupiny prostředků
 
@@ -40,11 +40,20 @@ Spravovaná řešení, která jsou nainstalovaná v pracovním prostoru, se pře
 
 >[!IMPORTANT]
 > **Zákazníci s Sentinel Azure**
-> - Po nasazení v pracovním prostoru Azure Sentinel v **současné době nepodporuje** přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných. 
-> - Pokud jste pracovní prostor již přesunuli, zakažte v rámci **analýz** všechna aktivní pravidla a po pěti minutách je znovu povolte. Tato činnost by se měla projevit ve většině případů, ale při opakování iterace není podporovaná a je prováděná na vlastním riziku.
+> - V současné době je po nasazení služby Azure Sentinel v pracovním prostoru přesun pracovního prostoru do jiné skupiny prostředků nebo předplatného nepodporován. 
+> - Pokud jste pracovní prostor již přesunuli, zakažte v rámci **analýz** všechna aktivní pravidla a po pěti minutách je znovu povolte. To by mělo být efektivní řešení ve většině případů, ale pro opakování iterace není podporované a neprovádí se na vlastní riziko.
 > 
-> **Výstrahy**
-> - Všechna upozornění se musí po přesunutí znovu vytvořit, protože oprávnění jsou založená na ID prostředku Azure pracovního prostoru a změny v pracovním prostoru se přesunují. 
+> **Znovu vytvořit výstrahy**
+> - Po přesunutí je nutné znovu vytvořit všechny výstrahy, protože oprávnění jsou založena na ID prostředku Azure pracovního prostoru, které se během přesunu pracovního prostoru mění.
+>
+> **Aktualizace cest k prostředkům**
+> - Po přesunu pracovního prostoru musí být všechny prostředky Azure nebo externí prostředky, které odkazují na pracovní prostor, zkontrolovány a aktualizovány tak, aby odkazovaly na novou cílovou cestu prostředku.
+> 
+>   *Příklady:*
+>   - [Pravidla upozornění Azure Monitor](alerts-resource-move.md)
+>   - Aplikace jiných výrobců
+>   - Vlastní skriptování
+>
 
 ### <a name="delete-solutions-in-azure-portal"></a>Odstranění řešení v Azure Portal
 K odebrání řešení pomocí Azure Portal použijte následující postup:
@@ -89,7 +98,7 @@ Pomocí následujícího postupu odpojte účet Automation z pracovního prostor
 
 ## <a name="move-your-workspace"></a>Přesunout pracovní prostor
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 Pomocí následujícího postupu můžete přesunout svůj pracovní prostor pomocí Azure Portal:
 
 1. Otevřete nabídku **pracovní prostory Log Analytics** a pak vyberte svůj pracovní prostor.

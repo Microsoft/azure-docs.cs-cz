@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79fa01e53b53f3066e55736c105d6489ccbd96e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019840"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372051"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložit nastavení tajné aplikace pro webovou aplikaci
 
@@ -56,14 +56,19 @@ Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístu
     > Před verzí sady Visual Studio 2017 V 15.6 jsme použili k doporučení instalace rozšíření pro ověřování služeb Azure pro Visual Studio. Je ale teď zastaralá, protože je funkce integrovaná v rámci sady Visual Studio. Proto, pokud jste na starší verzi sady Visual Studio 2017, doporučujeme, abyste aktualizovali aspoň na 2017 15,6 nebo nahoru, abyste mohli tuto funkci používat nativně a přistupovat k trezoru klíčů pomocí samotné identity sady Visual Studio.
     >
 
-4. Do projektu přidejte následující balíčky NuGet:
+4. Přihlaste se k Azure pomocí rozhraní příkazového řádku, můžete zadat:
+
+    ```azurecli
+    az login
+    ```
+
+5. Do projektu přidejte následující balíčky NuGet:
 
     ```
-    Microsoft.Azure.KeyVault
-    Microsoft.Azure.Services.AppAuthentication
-    Microsoft.Extensions.Configuration.AzureKeyVault
+    Azure.Identity
+    Azure.Extensions.AspNetCore.Configuration.Secrets
     ```
-5. Do souboru Program.cs přidejte následující kód:
+6. Do souboru Program.cs přidejte následující kód:
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -73,12 +78,7 @@ Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístu
                     var keyVaultEndpoint = GetKeyVaultEndpoint();
                     if (!string.IsNullOrEmpty(keyVaultEndpoint))
                     {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        builder.AddAzureKeyVault(
-                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                        builder.AddAzureKeyVault(new Uri(keyVaultEndpoint), new DefaultAzureCredential(), new KeyVaultSecretManager());
                     }
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
@@ -88,11 +88,12 @@ Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístu
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Přidejte adresu URL Key Vault pro launchsettings.jssouboru. Název proměnné prostředí *KEYVAULT_ENDPOINT* je definován v kódu, který jste přidali v kroku 6.
+
+7. Přidejte adresu URL Key Vault pro launchsettings.jssouboru. Název proměnné prostředí *KEYVAULT_ENDPOINT* je definován v kódu, který jste přidali v kroku 7.
 
     ![Přidat adresu URL Key Vault jako proměnnou prostředí projektu](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-7. Spusťte ladění projektu. Mělo by se úspěšně spustit.
+8. Spusťte ladění projektu. Mělo by se úspěšně spustit.
 
 ## <a name="aspnet-and-net-applications"></a>ASP.NET a aplikace .NET
 
