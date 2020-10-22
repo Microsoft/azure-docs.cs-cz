@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801796"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366679"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -65,15 +65,15 @@ Pro odchozí zřizování z Azure AD do aplikace SaaS, která se spoléhá na [p
 
 * **Skupiny.** Pomocí Azure AD Premiumho licenčního plánu můžete pomocí skupin přiřadit přístup k aplikaci SaaS. Až se pak obor zřizování nastaví na **synchronizovat jenom přiřazené uživatele a skupiny**, služba zřizování Azure AD zřídí nebo zruší zřízení uživatelů na základě toho, jestli jsou členy skupiny, která je přiřazená k dané aplikaci. Samotný objekt skupiny není zřízený, pokud aplikace nepodporuje skupinové objekty. Zajistěte, aby skupiny přiřazené k vaší aplikaci měly vlastnost "SecurityEnabled" nastavenou na hodnotu "true".
 
-* **Dynamické skupiny.** Služba zřizování uživatelů Azure AD může číst a zřizovat uživatele v [dynamických skupinách](../users-groups-roles/groups-create-rule.md). Mějte na paměti tato upozornění a doporučení:
+* **Dynamické skupiny.** Služba zřizování uživatelů Azure AD může číst a zřizovat uživatele v [dynamických skupinách](../enterprise-users/groups-create-rule.md). Mějte na paměti tato upozornění a doporučení:
 
   * Dynamické skupiny můžou ovlivnit výkon komplexního zřizování z Azure AD až po SaaS aplikace.
 
-  * Způsob zřízení a zrušení zřizování uživatele v dynamické skupině v aplikaci SaaS závisí na tom, jak rychlá dynamická skupina dokáže vyhodnotit změny členství ve skupinách. Informace o tom, jak kontrolovat stav zpracování dynamické skupiny, najdete v tématu [Zkontrolujte stav zpracování pravidla členství](../users-groups-roles/groups-create-rule.md).
+  * Způsob zřízení a zrušení zřizování uživatele v dynamické skupině v aplikaci SaaS závisí na tom, jak rychlá dynamická skupina dokáže vyhodnotit změny členství ve skupinách. Informace o tom, jak kontrolovat stav zpracování dynamické skupiny, najdete v tématu [Zkontrolujte stav zpracování pravidla členství](../enterprise-users/groups-create-rule.md).
 
   * Když uživatel ztratí členství v dynamické skupině, považuje se za událost zrušení zřízení. Při vytváření pravidel pro dynamické skupiny Vezměte v úvahu tento scénář.
 
-* **Vnořené skupiny.** Služba zřizování uživatelů Azure AD nemůže číst ani zřizovat uživatele ve vnořených skupinách. Služba může číst a zřizovat pouze uživatele, kteří jsou bezprostředními členy explicitně přiřazené skupiny. Toto omezení "přiřazení na základě skupin na aplikace" ovlivňuje také jednotné přihlašování (viz téma [použití skupiny pro správu přístupu k aplikacím SaaS](../users-groups-roles/groups-saasapps.md)). Místo toho přímo přiřaďte nebo jinak [obor ve](define-conditional-rules-for-provisioning-user-accounts.md) skupinách, které obsahují uživatele, kteří se musí zřídit.
+* **Vnořené skupiny.** Služba zřizování uživatelů Azure AD nemůže číst ani zřizovat uživatele ve vnořených skupinách. Služba může číst a zřizovat pouze uživatele, kteří jsou bezprostředními členy explicitně přiřazené skupiny. Toto omezení "přiřazení na základě skupin na aplikace" ovlivňuje také jednotné přihlašování (viz téma [použití skupiny pro správu přístupu k aplikacím SaaS](../enterprise-users/groups-saasapps.md)). Místo toho přímo přiřaďte nebo jinak [obor ve](define-conditional-rules-for-provisioning-user-accounts.md) skupinách, které obsahují uživatele, kteří se musí zřídit.
 
 ### <a name="attribute-based-scoping"></a>Rozsah založený na atributech 
 
@@ -184,12 +184,12 @@ Ujistěte se, že máte mapování pro *aktivní* pro vaši aplikaci. Pokud pou�
 
 Pomocí následujících scénářů se aktivuje operace zakázat nebo odstranit: 
 * Ve službě Azure AD se neodstranil uživatel (odesílá se do vlastnosti koš/AccountEnabled nastaven na hodnotu false).
-    30 dní po odstranění uživatele ve službě Azure AD se trvale odstraní z tenanta. V tuto chvíli služba zřizování pošle žádost o odstranění, aby uživatele v aplikaci trvale odstranil. Kdykoli během 30denního okna můžete [trvale odstranit uživatele](../fundamentals/active-directory-users-restore.md), který odešle žádost o odstranění do aplikace.
+    30 dní po odstranění uživatele ve službě Azure AD se trvale odstraní z tenanta. V tuto chvíli služba zřizování pošle žádost o odstranění, aby uživatele v aplikaci trvale odstranil. Kdykoli během 30denního okna můžete [trvale odstranit uživatele](../fundamentals/active-directory-users-restore.md), který odešle žádost o odstranění do aplikace.
 * Uživatel je trvale odstraněn nebo odebrán z koše ve službě Azure AD.
 * Uživatel není přiřazený k aplikaci.
 * Uživatel přejde z oboru do rozsahu mimo rozsah (již neprojde filtr oboru).
     
-Ve výchozím nastavení služba zřizování Azure AD dočasná odstraní nebo zakáže uživatele, kteří se přestanou přidělovat mimo rozsah. Pokud chcete přepsat toto výchozí chování, můžete nastavit příznak pro [přeskočení odstranění mimo rozsah.](skip-out-of-scope-deletions.md)
+Ve výchozím nastavení služba zřizování Azure AD dočasná odstraní nebo zakáže uživatele, kteří se přestanou přidělovat mimo rozsah. Pokud chcete přepsat toto výchozí chování, můžete nastavit příznak pro [přeskočení odstranění mimo rozsah.](skip-out-of-scope-deletions.md)
 
 Pokud dojde k jedné z výše uvedených čtyř událostí a cílová aplikace nepodporuje obnovitelné odstranění, služba zřizování odešle požadavek na odstranění, který uživatele trvale odstraní z aplikace.
 

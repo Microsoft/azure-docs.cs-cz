@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cba67e571370d48a04a4e95198462953acdd4d59
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: dfa8227f319a818efee20f26c1f2bebf72ad7cf9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131543"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367648"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -244,12 +244,6 @@ Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-Pokud odstraňujete instanci digitálních vláken Azure, můžete také odstranit registraci aplikace služby Azure AD, kterou jste pro ni vytvořili, pomocí tohoto příkazu:
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 Nakonec odstraňte ukázkové složky projektu, které jste stáhli do místního počítače (*Azure_Digital_Twins_end_to_end_samples.zip* a *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145424"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366356"
 ---
 # <a name="conditional-access-users-and-groups"></a>Podmíněný přístup: uživatelé a skupiny
 
@@ -46,13 +46,13 @@ Při vytváření zásad podmíněného přístupu jsou k dispozici následujíc
 > Pokud jsou uživatelé nebo skupiny členy více než 2048 skupin, jejich přístup může být blokovaný. Toto omezení platí pro přímé i vnořené členství ve skupinách.
 
 > [!WARNING]
-> Zásady podmíněného přístupu nepodporují uživatelům, kteří mají přiřazenou roli adresáře v [oboru pro jednotky pro správu](../users-groups-roles/roles-admin-units-assign-roles.md) nebo role adresáře přímo na objekt, jako je například prostřednictvím [vlastních rolí](../users-groups-roles/roles-create-custom.md).
+> Zásady podmíněného přístupu nepodporují uživatelům, kteří mají přiřazenou roli adresáře v [oboru pro jednotky pro správu](../roles/admin-units-assign-roles.md) nebo role adresáře přímo na objekt, jako je například prostřednictvím [vlastních rolí](../roles/custom-create.md).
 
 ## <a name="exclude-users"></a>Vyloučení uživatelů
 
 Pokud organizace zahrnují a vylučují uživatele nebo skupinu, uživatel nebo skupina je ze zásad vyloučená, protože akce vyloučení Přepisuje zahrnutí v zásadě. Vyloučení se běžně používají pro nouzový přístup nebo pro účty pro rozbití. Další informace o účtech pro nouzový přístup a o tom, proč jsou důležité, najdete v následujících článcích: 
 
-* [Správa účtů pro nouzový přístup v Azure AD](../users-groups-roles/directory-emergency-access.md)
+* [Správa účtů pro nouzový přístup v Azure AD](../roles/security-emergency-access.md)
 * [Vytvoření odolné strategie správy řízení přístupu pomocí Azure Active Directory](../authentication/concept-resilient-controls.md)
 
 Při vytváření zásad podmíněného přístupu je k dispozici možnost vyloučit následující možnosti.

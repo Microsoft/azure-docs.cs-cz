@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6c2255fcba12b19f375e694a0494011aa09b0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 019501eef0857c9dc7cd7f63a656eccf61608f1b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101858"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367818"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jaká jsou výchozí uživatelská oprávnění v Azure Active Directory?
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatel, [přiřazení jejich rolí](active-directory-users-assign-role-azure-portal.md)a jejich vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host. Výchozí uživatelská oprávnění se dají změnit jenom v nastavení uživatele v Azure AD.
@@ -48,19 +48,18 @@ Výchozí oprávnění pro členské uživatele lze omezit následujícími způ
 Oprávnění | Vysvětlení nastavení
 ---------- | ------------
 Uživatelé můžou zaregistrovat aplikaci. | Nastavením této možnosti na možnost Ne znemožníte uživatelům vytvářet registrace aplikací. Tuto možnost je pak možné udělit konkrétním jednotlivcům, když je přidáte do role vývojář aplikace.
-Umožňuje uživatelům připojit pracovní nebo školní účet pomocí LinkedInu. | Nastavením této možnosti na ne znemožníte uživatelům připojit svůj pracovní nebo školní účet ke svému účtu LinkedIn. Další informace najdete v tématu [připojení k účtu LinkedIn – sdílení dat a jejich souhlas](../users-groups-roles/linkedin-user-consent.md).
-Možnost vytvářet skupiny zabezpečení | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny zabezpečení. Globální správci a správci uživatelů stále můžou vytvářet skupiny zabezpečení. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
-Možnost vytvářet Microsoft 365 skupiny | Nastavením této možnosti na možnost Ne znemožníte uživatelům vytvářet Microsoft 365 skupiny. Nastavení této možnosti na některé umožňuje vybrat sadu uživatelů pro vytváření Microsoft 365ch skupin. Globální správci a správci uživatelů budou stále moci vytvářet Microsoft 365 skupiny. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
+Umožňuje uživatelům připojit pracovní nebo školní účet pomocí LinkedInu. | Nastavením této možnosti na ne znemožníte uživatelům připojit svůj pracovní nebo školní účet ke svému účtu LinkedIn. Další informace najdete v tématu [připojení k účtu LinkedIn – sdílení dat a jejich souhlas](../enterprise-users/linkedin-user-consent.md).
+Možnost vytvářet skupiny zabezpečení | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny zabezpečení. Globální správci a správci uživatelů stále můžou vytvářet skupiny zabezpečení. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../enterprise-users/groups-settings-cmdlets.md).
+Možnost vytvářet Microsoft 365 skupiny | Nastavením této možnosti na možnost Ne znemožníte uživatelům vytvářet Microsoft 365 skupiny. Nastavení této možnosti na některé umožňuje vybrat sadu uživatelů pro vytváření Microsoft 365ch skupin. Globální správci a správci uživatelů budou stále moci vytvářet Microsoft 365 skupiny. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../enterprise-users/groups-settings-cmdlets.md).
 Omezení přístupu k portálu pro správu Azure AD | Nastavením této možnosti na Ne umožníte, aby uživatelé bez oprávnění správce mohli číst a spravovat prostředky Azure AD pomocí portálu pro správu Azure AD. Hodnota Ano omezí přístup všech uživatelů bez oprávnění správce k žádným datům Azure AD na portálu pro správu.<p>**Poznámka**: Toto nastavení neomezuje přístup k datům Azure AD pomocí PowerShellu nebo jiných klientů, jako je například Visual Studio. Pokud nastavíte Ano, udělíte konkrétnímu uživateli bez oprávnění správce možnost používat portál pro správu Azure AD, přiřazovat jakékoli administrativní role, jako je například role čtenáři adresáře.<p>Tato role umožňuje čtení základních informací o adresáři, které členské uživatelé mají ve výchozím nastavení (hosté a instanční objekty nedělají).
 Možnost číst ostatní uživatele | Toto nastavení je k dispozici pouze v PowerShellu. Nastavením tohoto příznaku $false znemožníte čtení informací o uživatelích z adresáře všem jiným uživatelům než správcům. Tento příznak nebrání čtení informací o uživateli v jiných službách Microsoftu, jako je Exchange Online. Toto nastavení je určeno pro zvláštní okolnosti a nastavení tohoto příznaku na $false se nedoporučuje.
-
 
 ## <a name="restrict-guest-users-default-permissions"></a>Omezení výchozích oprávnění uživatelů typu Host
 
 Výchozí oprávnění pro uživatele typu Host můžou být omezená následujícími způsoby:
 
->[!NOTE] 
->Nastavení **omezení přístupu uživatele hostů** nahrazená **oprávnění uživatelé typu Host jsou omezená** . Pokyny k použití této funkce najdete v tématu [omezení oprávnění přístupu hosta (Preview) v Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+>[!NOTE]
+>Nastavení omezení přístupu uživatele hostů nahrazená **oprávnění uživatelé typu Host jsou omezená** . Pokyny k použití této funkce najdete v tématu [omezení oprávnění přístupu hosta (Preview) v Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 
 Oprávnění | Vysvětlení nastavení
 ---------- | ------------
@@ -143,7 +142,7 @@ Uživatelé mohou provádět následující akce u vlastněných skupin.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o nastavení omezení přístupu uživatele hostů najdete [v tématu omezení oprávnění přístupu hosta (Preview) v Azure Active Directory](../users-groups-roles/users-restrict-guest-permissions.md).
+* Další informace o nastavení omezení přístupu uživatele hostů najdete [v tématu omezení oprávnění přístupu hosta (Preview) v Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 * Další informace o tom, jak přiřadit role správce Azure AD, najdete v tématu [přiřazení uživatele k rolím Správce v Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Další informace o vztahu Azure Active Directory k předplatnému Azure najdete v tématu [Jak je předplatné Azure propojeno se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).

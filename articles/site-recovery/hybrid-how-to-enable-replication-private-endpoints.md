@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 3d15f4039da85dfa926e7bc9ab96b2c48965d5f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f23efa8d0439422fef685480ed270dce6e78a204
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658806"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366849"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Replikace místních počítačů pomocí privátních koncových bodů
 
@@ -123,7 +123,7 @@ Pomocí privátního koncového bodu můžete Azure Storage. Vytváření privá
 > [!NOTE]
 > Soukromé koncové body pro úložiště lze vytvořit pouze v účtech úložiště Pro obecné účely v2. Informace o cenách najdete v tématu [ceny objektů blob stránky Azure](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
-Pokud chcete vytvořit účet úložiště s privátním koncovým bodem, postupujte podle [pokynů pro vytvoření privátního úložiště](../private-link/create-private-endpoint-storage-portal.md#create-your-private-endpoint) . Nezapomeňte vybrat možnost **Ano** v části **integrace s privátní zónou DNS**. Vyberte existující zónu DNS nebo vytvořte novou.
+Pokud chcete vytvořit účet úložiště s privátním koncovým bodem, postupujte podle [pokynů pro vytvoření privátního úložiště](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint) . Nezapomeňte vybrat možnost **Ano** v části **integrace s privátní zónou DNS**. Vyberte existující zónu DNS nebo vytvořte novou.
 
 ### <a name="grant-required-permissions-to-the-vault"></a>Udělení požadovaných oprávnění k trezoru
 

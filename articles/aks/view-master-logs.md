@@ -4,12 +4,12 @@ description: Naučte se, jak povolit a zobrazit protokoly pro hlavní uzel Kuber
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 79ed9308488725d9be0c839bbd04b6783bbbd85a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1089cb4ea52efaa545478ced053a921728a894ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076381"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368447"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -37,9 +37,11 @@ Protokoly Azure Monitor jsou v Azure Portal povolené a spravované. Chcete-li p
 
 Kromě záznamů zapsaných v Kubernetes mají protokoly auditu vašeho projektu také záznamy z AKS.
 
-Protokoly auditu se zaznamenávají do dvou kategorií, *Kube-audit – admin* a *Kube-audit*. Kategorie *Kube-audit* obsahuje všechna data protokolu auditu pro každou událost auditu, včetně *Get*, *list*, *Create*, *Update*, *Delete*, *patch*a *post*.
+Protokoly auditu se zaznamenávají do tří kategorií: *Kube-audit*, *Kube-audit-admin*a *Guard*.
 
-Kategorie *Kube-audit-admin* je podmnožinou kategorie protokolu *Kube-audit* . *Kube – audit – správce* zkracuje počet protokolů významně tím, že z protokolu vyloučí události *Get* a *list* audit.
+- Kategorie *Kube-audit* obsahuje všechna data protokolu auditu pro každou událost auditu, včetně *Get*, *list*, *Create*, *Update*, *Delete*, *patch*a *post*.
+- Kategorie *Kube-audit-admin* je podmnožinou kategorie protokolu *Kube-audit* . *Kube – audit – správce* zkracuje počet protokolů významně tím, že z protokolu vyloučí události *Get* a *list* audit.
+- Kategorie *Guard* je spravovaná pro audity Azure AD a Azure RBAC. Pro spravovanou službu Azure AD: token v, informace o uživateli. Pro Azure RBAC: kontroly přístupu a kontrolují se.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Naplánování testu pod v clusteru AKS
 
@@ -75,7 +77,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Zobrazit shromážděné protokoly
 
-Povolení a zobrazení diagnostických protokolů může trvat několik minut.
+Povolení a zobrazení diagnostických protokolů může trvat až 10 minut.
 
 > [!NOTE]
 > Pokud potřebujete všechna data protokolu auditu pro dodržování předpisů nebo jiné účely, shromážděte je a uložte do levného úložiště, jako je BLOB Storage. Ke shromáždění a uložení smysluplné sady dat protokolu auditu pro účely monitorování a upozorňování použijte kategorii protokolu *Kube-audit-admin* .

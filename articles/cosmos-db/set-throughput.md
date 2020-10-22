@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331817"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367121"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 
@@ -43,9 +43,6 @@ Následující obrázek ukazuje, jak fyzický oddíl je hostitelem jednoho nebo 
 :::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Nastavení propustnosti pro databázi
-
-> [!NOTE]
-> Propustnost zřizování v databázi Azure Cosmos není v současné době možné použít u účtů, kde jsou povolené [klíče spravované zákazníkem](how-to-setup-cmk.md) .
 
 Při zřizování propustnosti v databázi Azure Cosmos se propustnost sdílí ve všech kontejnerech (nazývaných sdílené databázové kontejnery) v databázi. Výjimkou je, pokud některým kontejnerům v databázi nastavíte zřízenou propustnost. Sdílení zřízené propustnosti databáze mezi kontejnery je podobné jako hostování databáze na clusteru počítačů. Vzhledem k tomu, že všechny kontejnery v rámci databáze sdílejí prostředky dostupné v počítači, přirozeně nedosáhnete předvídatelného výkonu u žádného konkrétního kontejneru. Informace o tom, jak nakonfigurovat zřízenou propustnost v databázi, najdete v tématu [Konfigurace zřízené propustnosti v databázi Azure Cosmos](how-to-provision-database-throughput.md). Informace o tom, jak nakonfigurovat propustnost automatického škálování v databázi, najdete v tématu [zřizování propustnosti automatického škálování](how-to-provision-autoscale-throughput.md).
 

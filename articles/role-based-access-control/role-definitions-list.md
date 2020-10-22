@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84982488"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368243"
 ---
 # <a name="list-azure-role-definitions"></a>Vypsat definice rolí Azure
 
 Definice role je kolekce oprávnění, která se dají provést, jako je čtení, zápis a odstranění. Obvykle se nazývá jenom role. [Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) má více než 120 [integrovaných rolí](built-in-roles.md) , nebo můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit seznam integrovaných a vlastních rolí, které můžete použít k udělení přístupu k prostředkům Azure.
 
-Seznam rolí správce pro Azure Active Directory najdete v tématu [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Seznam rolí správce pro Azure Active Directory najdete v tématu [oprávnění role správce v Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ## <a name="azure-portal"></a>portál Azure
 
@@ -344,7 +344,7 @@ K vypsání definic rolí použijte REST API [seznam definice rolí](/rest/api/a
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete vypsat definice rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |
@@ -356,7 +356,7 @@ K vypsání definic rolí použijte REST API [seznam definice rolí](/rest/api/a
 1. Nahraďte *{Filter}* podmínkou, kterou chcete použít k filtrování seznamu definic rolí.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrovat | Description |
+    > | Filtr | Popis |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Vypisuje definice rolí pro zadaný obor a všechny podobory. |
     > | `$filter=type+eq+'{type}'` | Vypisuje definice rolí zadaného typu. Typ role může být `CustomRole` nebo `BuiltInRole` . |
@@ -429,7 +429,7 @@ Chcete-li zobrazit podrobnosti o konkrétní roli, použijte [Definice rolí –
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem, pro který chcete vypsat definici role.
 
     > [!div class="mx-tableFixed"]
-    > | Rozsah | Typ |
+    > | Obor | Typ |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Skupina pro správu |
     > | `subscriptions/{subscriptionId1}` | Předplatné |

@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 453821e99f53a90a076ff13f010f2031a055cbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444178"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367716"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 > - Vytvoření uživatele instančního objektu ve službě Azure SQL Database
 > - Vytvoření jiného uživatele Azure AD v SQL Database pomocí uživatele instančního objektu služby Azure AD
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Existující [Azure SQL Database](single-database-create-quickstart.md) nebo nasazení služby [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) . Předpokládáme, že pro účely tohoto kurzu máte pracovní SQL Database.
 - Přístup k již existujícímu Azure Active Directory.
@@ -65,7 +65,7 @@ V tomto kurzu se naučíte:
     Další informace najdete v příkazu [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) .
 
     > [!IMPORTANT]
-    > Pokud je pro logický Server Azure SQL nastavená identita Azure AD, musí být oprávnění [**čtenářům adresáře**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) udělená identitě. Provedeme vás tento krok v následující části. Tento krok **nepřeskakujte** , protože ověřování Azure AD přestane fungovat.
+    > Pokud je pro logický Server Azure SQL nastavená identita Azure AD, musí být oprávnění [**čtenářům adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) udělená identitě. Provedeme vás tento krok v následující části. Tento krok **nepřeskakujte** , protože ověřování Azure AD přestane fungovat.
 
     - Pokud jste v minulosti použili příkaz [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) s parametrem `AssignIdentity` pro nové vytvoření SQL serveru, budete muset příkaz [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) spustit později jako samostatný příkaz, který tuto vlastnost povolí v prostředcích infrastruktury Azure.
 

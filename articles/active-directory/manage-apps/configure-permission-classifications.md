@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: d5016dbff30eb054e413acc66b1b2dfee62a5873
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 448106b1c514762c101991f5f944d521f7ea6f75
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070669"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368515"
 ---
 # <a name="configure-permission-classifications"></a>Konfigurace klasifikací oprávnění
 
@@ -33,7 +33,7 @@ V současné době je podporována pouze klasifikace oprávnění "nízká dopad
 
 Pomocí následujících kroků můžete klasifikovat oprávnění pomocí Azure Portal:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [správce aplikace](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)nebo [správce cloudové aplikace](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator), [správce aplikace](../roles/permissions-reference.md#application-administrator)nebo [správce cloudové aplikace](../roles/permissions-reference.md#cloud-application-administrator) .
 1. Vyberte **Azure Active Directory**  >  souhlasu**podnikových aplikací**  >  **a**  >  **klasifikace oprávnění**.
 1. Zvolením možnosti **Přidat oprávnění** Klasifikujte jiné oprávnění jako "nízký dopad".
 1. Vyberte rozhraní API a pak vyberte delegovaná oprávnění.

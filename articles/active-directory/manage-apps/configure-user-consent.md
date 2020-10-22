@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cfcd758390ff401c786c28d410c4d092a82c37f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819270"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368481"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi
 
@@ -47,7 +47,7 @@ Výběrem zásad pro vyjádření souhlasu s aplikacemi pro všechny uživatele 
 
 Konfigurace nastavení souhlasu uživatele prostřednictvím Azure Portal:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako [globální správce](../roles/permissions-reference.md#global-administrator--company-administrator).
 1. Vyberte **Azure Active Directory**  >  souhlasu**podnikových aplikací**  >  **a**  >  **nastavení souhlasu uživatele**.
 1. V části **souhlas uživatele u aplikací**vyberte, které nastavení souhlasu se má nakonfigurovat pro všechny uživatele.
 1. Vyberte **Uložit** a uložte nastavení.
@@ -80,7 +80,7 @@ Pokud chcete povolit souhlas s uživatelem, vyberte, které zásady souhlasu apl
 
 Nahraďte `{consent-policy-id}` ID zásady, kterou chcete použít. Můžete zvolit [vlastní zásadu souhlasu s aplikací](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , kterou jste vytvořili, nebo si můžete vybrat z následujících předdefinovaných zásad:
 
-| ID | Description |
+| ID | Popis |
 |:---|:------------|
 | Microsoft – uživatel – výchozí – nízká | **Povoluje uživateli souhlas s vybranými oprávněními pro aplikace od ověřených vydavatelů.**<br /> Povoluje omezený souhlas s uživatelem jenom pro aplikace od ověřených vydavatelů a aplikací registrovaných ve vašem tenantovi a jenom pro oprávnění, která klasifikujete jako "nízký dopad". (Nezapomeňte [klasifikovat oprávnění](configure-permission-classifications.md) a vybrat, která oprávnění uživatelé můžou udělit souhlas.) |
 | Microsoft – uživatel – výchozí – starší verze | **Povolení souhlasu uživatele pro aplikace**<br /> Tato možnost umožňuje všem uživatelům udělit souhlas s jakýmkoli oprávněním, které nevyžaduje souhlas správce, pro žádnou aplikaci. |
@@ -144,7 +144,7 @@ Můžete použít modul Azure AD PowerShell Preview [AzureADPreview](https://doc
 
 1. Pochopení hodnoty nastavení:
 
-    | Nastavení       | Typ         | Description  |
+    | Nastavení       | Typ         | Popis  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logická hodnota |  Příznak označující, zda bude při zjištění rizikové žádosti zablokován souhlas uživatele |
 

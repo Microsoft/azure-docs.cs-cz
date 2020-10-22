@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758366"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367478"
 ---
 # <a name="security-control-v2-privileged-access"></a>Řízení zabezpečení v2: privilegovaný přístup
 
@@ -34,11 +34,11 @@ Poznámka: Pokud používáte vlastní role s přiřazenými konkrétními privi
 
 Přístup k prostředkům Azure a Azure AD pomocí Azure AD Privileged Identity Management (PIM) můžete povolit pomocí privilegovaného přístupu JIT (just-in-time). Kompilátor JIT uděluje dočasná oprávnění k provádění privilegovaných úloh pouze v případě, že ji uživatelé potřebují. PIM může také generovat výstrahy zabezpečení v případě podezřelé nebo nebezpečné aktivity ve vaší organizaci Azure AD.
 
-- [Oprávnění role správce v Azure AD](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Oprávnění role správce v Azure AD](../../active-directory/roles/permissions-reference.md)
 
 - [Použití výstrah zabezpečení Azure Privileged Identity Management](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)
+- [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../../active-directory/roles/security-planning.md)
 
 **Zodpovědnost**: zákazník
 
@@ -114,7 +114,7 @@ Poznámka: některé služby Azure podporují místní uživatele a role, které
 Pokud se chcete vyhnout náhodnému uzamčení vaší organizace Azure AD, nastavte účet pro nouzový přístup pro přístup, když nebudete moct použít normální účty pro správu. Účty pro nouzový přístup jsou obvykle vysoce privilegované a neměly by být přiřazeny konkrétním jednotlivcům. Účty pro nouzový přístup jsou omezené na nouzové nebo "oddělovací sklo", kde se nedají použít běžné účty pro správu.
 Měli byste zajistit, aby pověření (například heslo, certifikát nebo čipová karta) pro účty pro nouzový přístup byla zabezpečená a známá jenom jednotlivcům, kteří jsou oprávněni je používat jenom v nouzi.
 
-- [Správa účtů pro nouzový přístup v Azure AD](../../active-directory/users-groups-roles/directory-emergency-access.md)
+- [Správa účtů pro nouzový přístup v Azure AD](../../active-directory/roles/security-emergency-access.md)
 
 **Zodpovědnost**: zákazník
 

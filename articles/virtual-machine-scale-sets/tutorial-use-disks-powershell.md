@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: bcd06ce879282ab9897d7e22006bac19a5c22b8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565084"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367954"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure PowerShellu
 
@@ -27,7 +27,7 @@ ms.locfileid: "91565084"
 > * Výkon disků
 > * Připojení a příprava datových disků
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -88,7 +88,7 @@ V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekun
 ## <a name="create-and-attach-disks"></a>Vytvoření a připojení disků
 Disky můžete vytvořit a připojit při vytváření škálovací sady nebo u existující škálovací sady.
 
-Od verze rozhraní API `2019-07-01` můžete nastavit velikost disku s operačním systémem v sadě škálování virtuálního počítače pomocí vlastnosti [StorageProfile. OsDisk. diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) . Po zřízení možná budete muset disk rozbalit nebo znovu rozdělit, aby bylo možné používat celý prostor. Další informace o [rozšiřování disku najdete tady](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os).
+Od verze rozhraní API `2019-07-01` můžete nastavit velikost disku s operačním systémem v sadě škálování virtuálního počítače pomocí vlastnosti [StorageProfile. OsDisk. diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) . Po zřízení možná budete muset disk rozbalit nebo znovu rozdělit, aby bylo možné používat celý prostor. Další informace o [rozšiřování disku najdete tady](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os).
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Připojení disků při vytváření škálovací sady
 Vytvořte sadu škálování virtuálního počítače pomocí [New-AzVmss](/powershell/module/az.compute/new-azvmss). Po zobrazení výzvy zadejte uživatelské jméno a heslo pro instance virtuálních počítačů. Za účelem distribuce provozu do jednotlivých instancí virtuálních počítačů se vytvoří také nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení obsahuje pravidla pro distribuci provozu na portu TCP 80, stejně jako provozu vzdálené plochy na portu TCP 3389 a vzdálené komunikace PowerShellu na portu TCP 5985.

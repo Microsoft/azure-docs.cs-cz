@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: d5699c1d08df8364f33371f911ea3be892b4b285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528124"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365905"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Režim sdíleného zařízení pro zařízení s iOS
 
@@ -43,7 +43,7 @@ Pokud chcete vytvořit sdílenou aplikaci v režimu zařízení, vývojáři a s
 
 1. **Správci zařízení** připraví zařízení pro sdílení pomocí poskytovatele správy mobilních zařízení (MDM), jako je Microsoft Intune ke správě zařízení v jejich organizaci. MDM vloží aplikaci Microsoft Authenticator do zařízení a zapne "sdílený režim" pro každé zařízení prostřednictvím aktualizace profilu na zařízení. V tomto nastavení sdíleného režimu se mění chování podporovaných aplikací na zařízení. Tato konfigurace od poskytovatele MDM nastavuje režim sdíleného zařízení pro zařízení a povoluje [modul plug-in Microsoft Enterprise SSO pro zařízení Apple](apple-sso-plugin.md) , která se vyžadují pro režim sdíleného zařízení.
 
-1. [**Vyžadováno pouze během Public Preview**] Uživatel s rolí [správce cloudového zařízení](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) musí potom spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
+1. [**Vyžadováno pouze během Public Preview**] Uživatel s rolí [správce cloudového zařízení](../roles/permissions-reference.md#cloud-device-administrator) musí potom spustit [aplikaci Microsoft Authenticator](../user-help/user-help-auth-app-overview.md) a připojit své zařízení k organizaci.
 
     Pokud chcete nakonfigurovat členství vaší organizační role v Azure Portal: **Azure Active Directory**  >  **role a správci**  >  **cloudového zařízení správce**
 
