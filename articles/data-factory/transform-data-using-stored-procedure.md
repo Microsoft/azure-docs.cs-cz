@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: bdab4f33852be6bfc2621e2cbecff76778567b1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d62619fe2641ec1aded39650b47b53cf4269d8b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484727"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368872"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity SQL Server uložených procedur v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -70,12 +70,12 @@ Tyto vlastnosti JSON jsou popsány v následující tabulce:
 
 | Vlastnost                  | Popis                              | Povinné |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | Název aktivity                     | Yes      |
-| Popis               | Text popisující, k čemu se aktivita používá | No       |
-| typ                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Yes      |
-| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **analýzy Azure synapse** nebo **SQL Server** v Data Factory zaregistrován jako propojená služba. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
-| storedProcedureName       | Zadejte název uložené procedury, která se má vyvolat. | Yes      |
-| storedProcedureParameters | Zadejte hodnoty parametrů uložených procedur. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu, které jsou podporovány zdrojem dat. Pokud pro parametr potřebujete předat hodnotu null, použijte `"param1": { "value": null }` (všechna malá písmena). | No       |
+| name                      | Název aktivity                     | Ano      |
+| Popis               | Text popisující, k čemu se aktivita používá | Ne       |
+| typ                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Ano      |
+| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **analýzy Azure synapse** nebo **SQL Server** v Data Factory zaregistrován jako propojená služba. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
+| storedProcedureName       | Zadejte název uložené procedury, která se má vyvolat. | Ano      |
+| storedProcedureParameters | Zadejte hodnoty parametrů uložených procedur. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu, které jsou podporovány zdrojem dat. Pokud pro parametr potřebujete předat hodnotu null, použijte `"param1": { "value": null }` (všechna malá písmena). | Ne       |
 
 ## <a name="parameter-data-type-mapping"></a>Mapování datových typů parametrů
 Datový typ, který zadáte pro parametr, je typ Azure Data Factory, který se mapuje na datový typ ve zdroji dat, který používáte. Mapování datových typů pro zdroj dat můžete najít v oblasti konektory. Některé příklady jsou
@@ -102,5 +102,5 @@ Podívejte se na následující články, které vysvětlují, jak transformovat
 * [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
 * [Aktivita Sparku](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita provádění Machine Learning Bach](transform-data-using-machine-learning.md)
+* [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](transform-data-using-machine-learning.md)
 * [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

@@ -14,12 +14,12 @@ ms.date: 08/27/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c9ba7217dfc167a06a1fea389cfc40a5e1251ca
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050195"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367801"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -58,7 +58,7 @@ V této části najdete přehled pro účely plánování relevantních částí
 
 ## <a name="roles-that-can-be-managed-by-pim"></a>Role, které se dají spravovat pomocí PIM
 
-**Role Azure AD** jsou v Azure Active Directory (například globální správce, správce Exchange a správce zabezpečení). Další informace o rolích a jejich funkci najdete v tématu [oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Nápovědu k určení rolí pro přiřazení správců najdete v tématu [nejméně privilegované role podle úkolu](../users-groups-roles/roles-delegate-by-task.md).
+**Role Azure AD** jsou v Azure Active Directory (například globální správce, správce Exchange a správce zabezpečení). Další informace o rolích a jejich funkci najdete v tématu [oprávnění role správce v Azure Active Directory](../roles/permissions-reference.md). Nápovědu k určení rolí pro přiřazení správců najdete v tématu [nejméně privilegované role podle úkolu](../roles/delegate-by-task.md).
 
 **Role Azure** jsou role, které jsou propojené s prostředkem Azure, skupinou prostředků, předplatným nebo skupinou pro správu. PIM můžete použít k zajištění přístupu za běhu k předdefinovaným rolím Azure, jako je vlastník, správce přístupu uživatelů a přispěvatel, a také k [vlastním rolím](../../role-based-access-control/custom-roles.md). Další informace o rolích Azure najdete v tématu [řízení přístupu na základě role v Azure](../../role-based-access-control/overview.md).
 
@@ -111,7 +111,7 @@ Pro role Azure AD je běžné, že organizace přiřadí roli globálního sprá
 
 Pomocí těchto kroků můžete implementovat princip nejnižších oprávnění pro vaše role Azure AD.
 
-1. Přečtěte si o [dostupných rolích správce Azure AD](../users-groups-roles/directory-assign-admin-roles.md#available-roles)a pochopte si členitost rolí. Vy a váš tým by měl také odkazovat na [role správců podle identity ve službě Azure AD](../users-groups-roles/roles-delegate-by-task.md), která vysvětluje nejnižší privilegovaný roli pro konkrétní úkoly.
+1. Přečtěte si o [dostupných rolích správce Azure AD](../roles/permissions-reference.md#available-roles)a pochopte si členitost rolí. Vy a váš tým by měl také odkazovat na [role správců podle identity ve službě Azure AD](../roles/delegate-by-task.md), která vysvětluje nejnižší privilegovaný roli pro konkrétní úkoly.
 
 1. Seznam obsahující privilegované role ve vaší organizaci. Ke snížení rizika můžete využít Privileged Identity Management [zjišťování a přehledy (Preview)](pim-security-wizard.md) .
 
@@ -200,11 +200,11 @@ Určuje, jestli se má skupina přiřadit roli místo pro jednotlivé uživatele
 
 #### <a name="many-users-are-assigned-to-a-role"></a>K roli je přiřazený velký počet uživatelů.
 
-Udržování přehledu o tom, kdo je přiřazen k roli a spravuje jejich přiřazení na základě toho, kdy je potřeba, může trvat až po ručním provedení. Chcete-li přiřadit skupinu k roli, nejprve [vytvořte skupinu s přiřazením role](../users-groups-roles/roles-groups-create-eligible.md) a pak ji přiřaďte jako způsobilou pro roli. Tato akce seskupí všechny skupiny ve skupině na stejný proces aktivace jako jednotliví uživatelé, kteří mají nárok na zvýšení role. Členové skupiny aktivují svá přiřazení do skupiny jednotlivě pomocí žádosti o aktivaci Privileged Identity Management a procesu schválení. Skupina není aktivovaná, stačí členství ve skupině uživatele.
+Udržování přehledu o tom, kdo je přiřazen k roli a spravuje jejich přiřazení na základě toho, kdy je potřeba, může trvat až po ručním provedení. Chcete-li přiřadit skupinu k roli, nejprve [vytvořte skupinu s přiřazením role](../roles/groups-create-eligible.md) a pak ji přiřaďte jako způsobilou pro roli. Tato akce seskupí všechny skupiny ve skupině na stejný proces aktivace jako jednotliví uživatelé, kteří mají nárok na zvýšení role. Členové skupiny aktivují svá přiřazení do skupiny jednotlivě pomocí žádosti o aktivaci Privileged Identity Management a procesu schválení. Skupina není aktivovaná, stačí členství ve skupině uživatele.
 
 #### <a name="you-want-to-delegate-assigning-the-role"></a>Chcete delegovat přiřazení role
 
-Vlastník skupiny může spravovat členství ve skupině. Pro role Azure AD – přiřaditelné skupiny, může spravovat členství ve skupině jenom správce privilegovaných rolí, globální správce a vlastníci skupiny. Přidáním nových členů do skupiny získá člen přístup k rolím, ke kterým je přiřazena skupina, zda je přiřazení oprávněné nebo aktivní. Vlastníky skupin můžete použít k delegování správy členství ve skupině pro přiřazenou roli, aby se snížila šířka požadovaných oprávnění. Další informace o přiřazení vlastníka ke skupině při vytváření skupiny najdete v tématu [Vytvoření skupiny přiřazení role v Azure AD](../users-groups-roles/roles-groups-create-eligible.md).
+Vlastník skupiny může spravovat členství ve skupině. Pro role Azure AD – přiřaditelné skupiny, může spravovat členství ve skupině jenom správce privilegovaných rolí, globální správce a vlastníci skupiny. Přidáním nových členů do skupiny získá člen přístup k rolím, ke kterým je přiřazena skupina, zda je přiřazení oprávněné nebo aktivní. Vlastníky skupin můžete použít k delegování správy členství ve skupině pro přiřazenou roli, aby se snížila šířka požadovaných oprávnění. Další informace o přiřazení vlastníka ke skupině při vytváření skupiny najdete v tématu [Vytvoření skupiny přiřazení role v Azure AD](../roles/groups-create-eligible.md).
 
 > [!TIP]
 > : heavy_check_mark: **Microsoft doporučuje** , abyste roli Azure AD přiřadili skupinám v části správa pomocí Privileged Identity Management. Když je skupina, která je přiřazena rolí, pod správou PIM, nazývá se přístupná skupina privilegovaného přístupu. Před tím, než bude moct členové skupiny spravovat členství ve skupině, použijte PIM k tomu, aby před tím, než mohli spravovat členství ve skupinách Další informace o tom, jak přenést skupiny pod správu PIM, najdete v tématu zařazení [privilegovaných přístupových skupin (Preview) do Privileged Identity Management](groups-discover-groups.md).
@@ -214,7 +214,7 @@ Vlastník skupiny může spravovat členství ve skupině. Pro role Azure AD –
 Jakmile se rozhodnete, že seznam rolí, které se mají spravovat pomocí Privileged Identity Management, musíte rozhodnout, kteří uživatelé by měli mít k trvalé aktivní roli oprávnění. Trvalé aktivní role jsou běžné role přiřazené prostřednictvím Azure Active Directory a prostředků Azure, zatímco oprávněné role se dají přiřadit jenom v Privileged Identity Management.
 
 > [!TIP]
-> : heavy_check_mark: **Microsoft doporučuje** , abyste měli žádná trvale aktivní přiřazení pro role Azure AD i role Azure, kromě doporučených [dvou účtů pro nouzový přístup k zábrusu](../users-groups-roles/directory-emergency-access.md), které by měly mít trvalou roli globálního správce.
+> : heavy_check_mark: **Microsoft doporučuje** , abyste měli žádná trvale aktivní přiřazení pro role Azure AD i role Azure, kromě doporučených [dvou účtů pro nouzový přístup k zábrusu](../roles/security-emergency-access.md), které by měly mít trvalou roli globálního správce.
 
 I když nedoporučujeme žádného stálého správce, je někdy obtížné zajistit, aby si organizace tuto situaci dosáhli okamžitě. Tady jsou věci, které je potřeba vzít v úvahu při provádění tohoto rozhodnutí:
 
@@ -340,7 +340,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 #### <a name="azure-ad-roles"></a>Role Azure AD
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Vyberte **role Azure AD** a pak vyberte **role**.
 1. U každé role, kterou jste nakonfigurovali, vyberte tři tečky (**...**) pro všechny uživatele s oprávněným přiřazením.
@@ -348,7 +348,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 #### <a name="azure-roles"></a>Role Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Vyberte **prostředky Azure** a pak vyberte předplatné nebo prostředek, který chcete vrátit zpět.
 1. Vyberte **role**.
@@ -363,7 +363,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 Další informace o používání integrované funkce upozorňování Privileged Identity Management k ochraně vaší organizace najdete v tématu [výstrahy zabezpečení](pim-how-to-configure-security-alerts.md#security-alerts). Mezi tyto výstrahy patří: Správci nepoužívají privilegované role, role se přiřazují mimo Privileged Identity Management a role se aktivují příliš často a častěji. K zajištění plné ochrany vaší organizace byste měli pravidelně procházet seznam výstrah a opravovat problémy. Výstrahy můžete zobrazit a opravit následujícím způsobem:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.
 1. Vyberte **role Azure AD** a pak vyberte **výstrahy**.
 

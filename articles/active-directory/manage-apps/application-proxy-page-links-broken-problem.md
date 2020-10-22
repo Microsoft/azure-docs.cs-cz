@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1922ea9afd69366e534049f5a7a350cf39e52dee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84760197"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371575"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nefungují pro aplikaci proxy aplikace.
 
@@ -37,7 +37,7 @@ Existují tři způsoby, jak tento problém vyřešit. Níže uvedené možnosti
     Pokud změníte interní adresu URL, ale nechcete změnit cílovou stránku pro uživatele, změňte adresu URL domovské stránky na dříve publikovanou interní adresu URL. To se dá udělat tak, že v části Azure Active Directory – &gt; Registrace aplikací &gt; vyberete aplikaci – &gt; branding. V části branding se zobrazí pole Adresa URL domovské stránky, které můžete upravit jako požadovanou cílovou stránku. Pokud pořád používáte starší verze Registrace aplikací zkušeností, na kartě Vlastnosti se zobrazí podrobnosti adresa URL domovské stránky. 
     
     > [!IMPORTANT]
-    > Aby bylo možné provést výše uvedené změny, budete potřebovat práva k úpravám aplikačních objektů ve službě Azure AD. Uživatel musí mít přiřazenou roli [správce aplikace](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles) , která uživateli uděluje modificaion práva k aplikacím v Azure AD.
+    > Aby bylo možné provést výše uvedené změny, budete potřebovat práva k úpravám aplikačních objektů ve službě Azure AD. Uživatel musí mít přiřazenou roli [správce aplikace](../roles/delegate-app-roles.md#assign-built-in-application-admin-roles) , která uživateli uděluje modificaion práva k aplikacím v Azure AD.
     >
 
 2.  Pokud vaše aplikace používají plně kvalifikované názvy domén (FQDN), publikujte své aplikace pomocí [vlastních domén](application-proxy-configure-custom-domain.md) . Tato funkce umožňuje používat stejnou adresu URL interně i externě.

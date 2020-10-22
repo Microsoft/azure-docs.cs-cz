@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705363"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370198"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Rychlá reakce na zabezpečení identit pomocí Azure AD
 
@@ -34,11 +34,11 @@ Tento kontrolní seznam vám pomůže rychle nasadit kritické doporučené akce
 - Využijte cloudové funkce Cloud Intelligence.
 - Povolit samoobslužnou službu koncového uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto průvodci se předpokládá, že už jste v Azure AD navázali jenom cloudové nebo hybridní identity. Nápovědu k výběru typu identity najdete v článku. [Zvolte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity](../hybrid/choose-ad-authn.md) . 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Existuje mnoho aspektů zabezpečené infrastruktury identity, ale tento kontrolní seznam se zaměřuje na bezpečnou a zabezpečenou infrastrukturu identity, která umožňuje uživatelům pracovat vzdáleně. Zabezpečení vaší identity je jenom součástí vašeho bezpečnostního scénáře, měli byste taky zvážit ochranu dat, aplikací a zařízení.
 
@@ -61,7 +61,7 @@ Existuje několik doporučení, která Azure AD Free, sada Office 365 nebo záka
 | [Automatizace zřizování a rušení zřizování uživatelů v aplikacích SaaS](../app-provisioning/user-provisioning.md) (Pokud je k dispozici) | Automaticky Vytvářejte identity a role uživatelů v cloudových aplikacích (SaaS), ke kterým uživatelé potřebují přístup. Automatické zřizování zahrnuje kromě vytváření identit uživatelů taky údržbu a odebírání identit uživatelů při změně stavu nebo rolí, což zvyšuje zabezpečení vaší organizace. |
 | [Povolit zabezpečený hybridní přístup: zabezpečení starších verzí aplikací pomocí stávajících řadičů pro doručování aplikací a sítí](../manage-apps/secure-hybrid-access.md) (Pokud je k dispozici) | Publikujte a Chraňte své místní a cloudové aplikace ověřování pomocí připojení ke službě Azure AD s existujícím řadičem pro doručování aplikací nebo sítí. |
 | [Povolit Samoobslužné resetování hesla](../authentication/tutorial-enable-sspr.md) (týká se pouze cloudových účtů) | Tato možnost omezuje volání helpdesku a ztrátu produktivity, když se uživatel nemůže přihlásit k zařízení nebo aplikaci. |
-| [Pokud je to možné, používejte jiné než globální role správy](../users-groups-roles/directory-assign-admin-roles.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. |
+| [Pokud je to možné, používejte jiné než globální role správy](../roles/permissions-reference.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. |
 | [Povolit pokyny pro heslo Microsoftu](https://www.microsoft.com/research/publication/password-guidance/) | Zastavení vyžadování uživatelů ke změně hesla podle nastaveného plánu, zakázání požadavků na složitost a vašim uživatelům je více apt, aby si zapamatovali hesla a zajistili, že jsou zabezpečená. |
 
 
@@ -90,8 +90,8 @@ Následující tabulka má zvýraznit klíčové akce pro následující licenč
 | [Automatizace zřizování a rušení zřizování uživatelů v aplikacích SaaS](../app-provisioning/user-provisioning.md) (Pokud je k dispozici) | Automaticky Vytvářejte identity a role uživatelů v cloudových aplikacích (SaaS), ke kterým uživatelé potřebují přístup. Automatické zřizování zahrnuje kromě vytváření identit uživatelů taky údržbu a odebírání identit uživatelů při změně stavu nebo rolí, což zvyšuje zabezpečení vaší organizace. |
 | [Povolit podmíněný přístup – na základě zařízení](../conditional-access/require-managed-devices.md) | Vylepšete zabezpečení a uživatelské prostředí pomocí podmíněného přístupu na základě zařízení. Tento krok zajišťuje uživatelům přístup pouze ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Tato zařízení se také označují jako spravovaná zařízení. Spravovaná zařízení můžou být kompatibilní s Intune nebo hybridní zařízení připojená k Azure AD. |
 | [Povolení ochrany heslem](../authentication/howto-password-ban-bad-on-premises-deploy.md) | Ochrana uživatelů před použitím slabých a snadno použitelných hesel |
-| [Určení více než jednoho globálního správce](../users-groups-roles/directory-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. Účty pro oddělitelné sklo zajistí, že budete mít k této službě přístup v nouzi. |
-| [Pokud je to možné, používejte jiné než globální role správy](../users-groups-roles/directory-assign-admin-roles.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. |
+| [Určení více než jednoho globálního správce](../roles/security-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. Účty pro oddělitelné sklo zajistí, že budete mít k této službě přístup v nouzi. |
+| [Pokud je to možné, používejte jiné než globální role správy](../roles/permissions-reference.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. |
 | [Povolit pokyny pro heslo Microsoftu](https://www.microsoft.com/research/publication/password-guidance/) | Zastavení vyžadování uživatelů ke změně hesla podle nastaveného plánu, zakázání požadavků na složitost a vašim uživatelům je více apt, aby si zapamatovali hesla a zajistili, že jsou zabezpečená. |
 | [Vytvoření plánu pro přístup uživatele typu Host](../external-identities/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlásit své aplikace a služby s vlastními pracovními, školními nebo sociálními identitami. |
 
@@ -122,8 +122,8 @@ Následující tabulka má zvýraznit klíčové akce pro následující licenč
 | [Automatizace zřizování a rušení zřizování uživatelů v aplikacích SaaS](../app-provisioning/user-provisioning.md) (Pokud je k dispozici) | Automaticky Vytvářejte identity a role uživatelů v cloudových aplikacích (SaaS), ke kterým uživatelé potřebují přístup. Automatické zřizování zahrnuje kromě vytváření identit uživatelů taky údržbu a odebírání identit uživatelů při změně stavu nebo rolí, což zvyšuje zabezpečení vaší organizace. |
 | [Povolit podmíněný přístup – na základě zařízení](../conditional-access/require-managed-devices.md) | Vylepšete zabezpečení a uživatelské prostředí pomocí podmíněného přístupu na základě zařízení. Tento krok zajišťuje uživatelům přístup pouze ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Tato zařízení se také označují jako spravovaná zařízení. Spravovaná zařízení můžou být kompatibilní s Intune nebo hybridní zařízení připojená k Azure AD. |
 | [Povolení ochrany heslem](../authentication/howto-password-ban-bad-on-premises-deploy.md) | Ochrana uživatelů před použitím slabých a snadno použitelných hesel |
-| [Určení více než jednoho globálního správce](../users-groups-roles/directory-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. Účty pro oddělitelné sklo zajistí, že budete mít k této službě přístup v nouzi. |
-| [Pokud je to možné, používejte jiné než globální role správy](../users-groups-roles/directory-assign-admin-roles.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. |
+| [Určení více než jednoho globálního správce](../roles/security-emergency-access.md) | Pokud je to možné, přiřaďte alespoň dva trvalé účty globálního správce jenom v cloudu. Tyto účty se nepoužívají denně a měly by mít dlouhá a složitá hesla. Účty pro oddělitelné sklo zajistí, že budete mít k této službě přístup v nouzi. |
+| [Pokud je to možné, používejte jiné než globální role správy](../roles/permissions-reference.md) | Poskytněte správcům jenom přístup, který potřebují jenom pro oblasti, ke kterým potřebují přístup. Ne všichni správci musí být globální správci. |
 | [Povolit pokyny pro heslo Microsoftu](https://www.microsoft.com/research/publication/password-guidance/) | Zastavení vyžadování uživatelů ke změně hesla podle nastaveného plánu, zakázání požadavků na složitost a vašim uživatelům je více apt, aby si zapamatovali hesla a zajistili, že jsou zabezpečená. |
 | [Vytvoření plánu pro přístup uživatele typu Host](../external-identities/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlásit své aplikace a služby s vlastními pracovními, školními nebo sociálními identitami. |
 | [Povolit Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Umožňuje spravovat, řídit a monitorovat přístup k důležitým prostředkům ve vaší organizaci, takže správci mají přístup jenom v případě potřeby a se schválením. |

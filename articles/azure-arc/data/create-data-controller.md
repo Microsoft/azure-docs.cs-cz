@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310926"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372289"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Vytvoření kontroleru dat ARC Azure
 
@@ -39,7 +39,7 @@ V současné době podporuje seznam Kubernetes služeb a distribucí následují
 > * Minimální podporovaná verze Kubernetes je v 1.14.
 > * Podívejte se na [požadavky na připojení](connectivity.md) a zjistěte, co je mezi vaším prostředím a Azure vyžadováno připojení.
 > * Podrobné informace o tom, jak nakonfigurovat trvalé úložiště, najdete v tématu [pokyny ke konfiguraci úložiště](storage-configuration.md) .
-> * Pokud používáte službu Azure Kubernetes, měla by být velikost virtuálního počítače pracovního uzlu clusteru aspoň **Standard_D8s_v3** a používat **prémiové disky.** 
+> * Pokud používáte službu Azure Kubernetes, měla by být velikost virtuálního počítače pracovního uzlu clusteru aspoň **Standard_D8s_v3** a používat **prémiové disky.** Cluster by neměl zahrnovat více zón dostupnosti. 
 > * Pokud používáte jinou Kubernetes distribuci nebo službu, měli byste zajistit, abyste měli minimální velikost uzlů 8 GB paměti RAM a 4 jádra a celkovou kapacitu 32 GB paměti RAM dostupnou ve všech uzlech Kubernetes. Například můžete mít 1 uzel v 32 GB paměti RAM a 4 jádra nebo máte 2 uzly s 16GB pamětí RAM a 4 jádry.
 
 > [!NOTE]

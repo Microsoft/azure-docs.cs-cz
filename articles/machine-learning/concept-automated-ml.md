@@ -1,5 +1,5 @@
 ---
-title: Co je Automated ML/AutoML
+title: Co je to automatizovaná ML? AutoML
 titleSuffix: Azure Machine Learning
 description: Přečtěte si, jak Azure Machine Learning může automaticky vybrat algoritmus a vytvořit z něj model, který vám umožní ušetřit čas pomocí parametrů a kritérií, které zadáte pro výběr nejlepšího algoritmu pro váš model.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 4908f66dbc699a449b7b94febac8133bacc9f669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49c3e5602834576e8d3de86ac7d6683f9b6f7b89
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760965"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367512"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -33,7 +33,7 @@ Odborníci na data, analytiké a vývojáři v různých oborech můžou použí
 + Využijte osvědčené postupy pro datové vědy
 + Zajištění agilních problémů – řešení potíží
 
-### <a name="classification"></a>Classification
+### <a name="classification"></a>Klasifikace
 
 Klasifikace je běžný úkol strojového učení. Klasifikace je typ vzdělávání pod dohledem, ve kterém se modely učí pomocí školicích dat, a aplikujte tyto učení na nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-configure-auto-features.md#featurization) 
 
@@ -116,7 +116,7 @@ Pro automatizované experimenty strojového učení se featurization aplikuje au
 
 V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly. Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak AutoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|&nbsp; & &nbsp; Normalizace škálování| Description |
+|&nbsp; & &nbsp; Normalizace škálování| Popis |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -158,7 +158,7 @@ Webové rozhraní pro automatizované ML vždy používá vzdálený [cíl výpo
 Při volbě cíle výpočetní služby Vezměte v úvahu tyto faktory:
 
  * **Zvolte místní výpočetní**prostředky: Pokud se váš scénář týká počátečních průzkumů nebo ukázek pomocí malých objemů dat a krátkých vlaků (tj. sekund nebo pár minut na jeden podřízený běh), může být lepší volbou školení na místním počítači.  Nejedná se o čas nastavení, prostředky infrastruktury (Váš počítač nebo virtuální počítač) jsou přímo dostupné.
- * **Zvolte vzdálený výpočetní cluster ml**: Pokud provádíte školení s většími datovými sadami, jako je v produkčním školení, vytváření modelů, které potřebují delší vlaky, vzdálené výpočty budou poskytovat mnohem lepší výkon, protože `AutoML` budou paralelizovat vlaky napříč uzly clusteru. Ve vzdáleném výpočetním prostředí se čas spuštění interní infrastruktury přidá přibližně 1,5 minut na jedno podřízený běh a další minuty pro infrastrukturu clusteru, pokud virtuální počítače ještě nejsou spuštěné.
+ * **Výběr vzdáleného výpočetního clusteru ml**: Pokud provádíte školení s většími datovými sadami, jako je v produkčním školení, vytváření modelů, které potřebují delší vlaky, vzdálené výpočty budou poskytovat mnohem lepší výkon, protože `AutoML` se paralelizovat vlaky v uzlech clusteru. Ve vzdáleném výpočetním prostředí se čas spuštění interní infrastruktury přidá přibližně 1,5 minut na jedno podřízený běh a další minuty pro infrastrukturu clusteru, pokud virtuální počítače ještě nejsou spuštěné.
 
 ### <a name="pros-and-cons"></a>Specialisté a nevýhody
 Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
@@ -172,7 +172,7 @@ Při volbě místní a vzdálené považovat tyto specialisty i nevýhody.
 
  K dispozici jsou další funkce, pokud používáte vzdálené výpočty, jak je znázorněno v následující tabulce. 
 
-| Příznak                                                    | Vzdálené | Místní | 
+| Funkce                                                    | Vzdálené | Místní | 
 |------------------------------------------------------------|--------|-------|
 | Streamování dat (podpora velkých objemů dat, až 100 GB)          | ✓      |       | 
 | Featurization a školení textu založeného na DNN-BERT             | ✓      |       |
@@ -219,7 +219,7 @@ Následující nastavení vám umožní nakonfigurovat experiment automatizovan�
 |**Rozdělit data na sady vlaků a ověření**| ✓|✓
 |**Podporuje úlohy ML: klasifikace, regrese a prognózy.**| ✓| ✓
 |**Optimalizuje se na základě primární metriky.**| ✓| ✓
-|**Podporuje COMPUTE AML jako cíl výpočtů.** | ✓|✓
+|**Podporuje Azure ML COMPUTE jako cíl výpočtů.** | ✓|✓
 |**Konfigurace horizontu předpovědi, cílové prodlevy & posuvné okno**|✓|✓
 |**Nastavení kritérií ukončení** |✓|✓ 
 |**Nastavit souběžné iterace**| ✓|✓

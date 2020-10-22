@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146619"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372476"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Plánování nasazení Azure Active Directory moje aplikace
 
@@ -72,7 +72,7 @@ Před zahájením tohoto projektu dokončete následující předpoklady:
 
 Následující tabulka popisuje klíčové případy použití pro nasazení moje aplikace:
 
-| Oblast| Description |
+| Plošný| Popis |
 | - | - |
 | Access| Portál moje aplikace je přístupný z firemních i osobních zařízení v podnikové síti. |
 |Access | Portál moje aplikace je přístupný z firemních zařízení mimo podnikovou síť. |
@@ -122,11 +122,11 @@ Následující tabulka uvádí několik důležitých konfigurací aplikace a ob
 | Určení pilotních skupin| Identifikujte skupinu zabezpečení Azure AD, která se má použít, a ujistěte se, že všichni pilotní členové jsou součástí skupiny. |
 | Určete skupinu nebo skupiny, které mají být povoleny v produkčním prostředí.| Identifikujte skupiny zabezpečení Azure AD nebo skupiny služby Active Directory synchronizované se službou Azure AD, které se mají použít. Zajistěte, aby všichni pilotní členové byli součástí skupiny. |
 | Umožňuje uživatelům používat jednotné přihlašování pro určité typy aplikací.| Federované jednotné přihlašování, OAuth, heslo jednotného přihlašování, App proxy |
-| Povolení uživatelům používat Samoobslužné resetování hesla | Yes |
-| Dovolit uživatelům používat Multi-Factor Authentication| Yes |
+| Povolení uživatelům používat Samoobslužné resetování hesla | Ano |
+| Dovolit uživatelům používat Multi-Factor Authentication| Ano |
 | Umožňuje uživatelům používat samoobslužnou správu skupin pro určité typy skupin.| Skupiny zabezpečení, Microsoft 365 skupiny |
-| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Yes |
-| Umožňuje uživatelům používat kontroly přístupu.| Yes |
+| Umožňuje uživatelům používat samoobslužnou správu aplikací.| Ano |
+| Umožňuje uživatelům používat kontroly přístupu.| Ano |
 
 ### <a name="plan-consent-strategy"></a>Strategie souhlasu s plánem
 
@@ -225,7 +225,7 @@ Pracovní postupy schvalování jsou k dispozici pro explicitní schválení př
 
 Uživatelům můžete povolit vytváření a správu vlastních skupin zabezpečení nebo skupin Microsoft 365 v Azure AD. Vlastník skupiny může schvalovat nebo zamítnout žádosti o členství a delegovat řízení členství ve skupině. Funkce Samoobslužné správy skupin nejsou k dispozici pro skupiny zabezpečení s povoleným e-mailem ani pro distribuční seznamy.
 
-Pokud chcete naplánovat členství ve skupině samoobslužných služeb, určete, jestli chcete, aby všichni uživatelé ve vaší organizaci mohli vytvářet a spravovat skupiny nebo jenom podmnožiny uživatelů. Pokud povolujete podmnožinu uživatelů, budete muset nastavit skupinu, do které se tyto osoby přidávají. Podrobnosti o povolování těchto scénářů najdete [v tématu Nastavení samoobslužné správy skupin v Azure Active Directory](../users-groups-roles/groups-self-service-management.md) .
+Pokud chcete naplánovat členství ve skupině samoobslužných služeb, určete, jestli chcete, aby všichni uživatelé ve vaší organizaci mohli vytvářet a spravovat skupiny nebo jenom podmnožiny uživatelů. Pokud povolujete podmnožinu uživatelů, budete muset nastavit skupinu, do které se tyto osoby přidávají. Podrobnosti o povolování těchto scénářů najdete [v tématu Nastavení samoobslužné správy skupin v Azure Active Directory](../enterprise-users/groups-self-service-management.md) .
 
 ## <a name="plan-reporting-and-auditing"></a>Plánování generování sestav a auditování
 
@@ -299,7 +299,7 @@ Je důležité, abyste naplánovali, co dělat, pokud nasazení neprojde jako pl
 
 ## <a name="manage-your-implementation"></a>Správa implementace
 
-K provedení požadované úlohy v Azure Active Directory použijte nejnižší privilegovanou roli. [Projděte si různé role, které jsou k dispozici](../users-groups-roles/directory-assign-admin-roles.md) , a podle toho, co potřebujete, můžete pro tuto aplikaci vyřešit vaše potřeby pro každého. Některé role může být nutné použít dočasně a odebrat po dokončení nasazení.
+K provedení požadované úlohy v Azure Active Directory použijte nejnižší privilegovanou roli. [Projděte si různé role, které jsou k dispozici](../roles/permissions-reference.md) , a podle toho, co potřebujete, můžete pro tuto aplikaci vyřešit vaše potřeby pro každého. Některé role může být nutné použít dočasně a odebrat po dokončení nasazení.
 
 | Osoby| Role| Role Azure AD  |
 | - | -| -|

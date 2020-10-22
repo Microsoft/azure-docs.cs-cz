@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 6db01531a34e936c59e5aa01a5c37f3a2ccf7345
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277719"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368325"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Kurz: Konfigurace HTTPS pro vlastní doménu Front Dooru
 
@@ -134,6 +134,11 @@ Udělte pro přístup k certifikátům ve vašem účtu Azure Key Vault oprávn�
     - Účty trezoru klíčů pro ID vašeho předplatného 
     - Certifikáty (tajné kódy) v rámci vybraného trezoru klíčů 
     - Dostupné verze certifikátu 
+
+> [!NOTE]
+> Verze certifikátu zůstane prázdná, takže by to vedlo k následujícím akcím:
+> - Vybrala se nejnovější verze certifikátu.
+> - Automatické otočení certifikátů na nejnovější verzi, pokud je v Key Vault k dispozici novější verze certifikátu.
  
 5. Při použití vlastního certifikátu se ověření domény nevyžaduje. Pokračujte k části [Čekání na rozšíření](#wait-for-propagation).
 

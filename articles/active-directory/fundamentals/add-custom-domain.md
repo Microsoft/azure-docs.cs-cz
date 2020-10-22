@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321170"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370861"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Přidání vlastního názvu domény pomocí portálu Azure Active Directory
 
@@ -104,9 +104,9 @@ Pokud Azure AD nemůže ověřit vlastní název domény, zkuste následující 
 
   Pokud nemůžete aktualizovat záznam v lokalitě registrátora, sdílejte tuto položku s někým, kdo má oprávnění k přidání položky a ověření správnosti.
 
-- **Ujistěte se, že se název domény už nepoužívá v jiném adresáři.** Název domény se dá ověřit jenom v jednom adresáři. Pokud je název vaší domény aktuálně ověřený v jiném adresáři, nelze ho také ověřit v novém adresáři. Chcete-li vyřešit tento problém duplikace, je nutné odstranit název domény ze starého adresáře. Další informace o odstraňování názvů domén najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
+- **Ujistěte se, že se název domény už nepoužívá v jiném adresáři.** Název domény se dá ověřit jenom v jednom adresáři. Pokud je název vaší domény aktuálně ověřený v jiném adresáři, nelze ho také ověřit v novém adresáři. Chcete-li vyřešit tento problém duplikace, je nutné odstranit název domény ze starého adresáře. Další informace o odstraňování názvů domén najdete v tématu [Správa vlastních názvů domén](../enterprise-users/domains-manage.md).
 
-- **Ujistěte se, že nemáte žádné nespravované klienty Power BI.** Pokud vaši uživatelé aktivovali Power BI prostřednictvím samoobslužné registrace a vytvořili nespravovaného tenanta pro vaši organizaci, musíte převzít správu jako interní nebo externí správce pomocí prostředí PowerShell. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
+- **Ujistěte se, že nemáte žádné nespravované klienty Power BI.** Pokud vaši uživatelé aktivovali Power BI prostřednictvím samoobslužné registrace a vytvořili nespravovaného tenanta pro vaši organizaci, musíte převzít správu jako interní nebo externí správce pomocí prostředí PowerShell. Další informace najdete v tématu o [převzetí nespravovaného adresáře jako správce v Azure Active Directory](../enterprise-users/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -114,6 +114,6 @@ Pokud Azure AD nemůže ověřit vlastní název domény, zkuste následující 
 
 - Přidejte uživatele do domény. Další informace najdete v tématu [jak přidat nebo odstranit uživatele](add-users-azure-active-directory.md).
 
-- Spravujte informace o názvu domény v Azure AD. Další informace najdete v tématu [Správa vlastních názvů domén](../users-groups-roles/domains-manage.md).
+- Spravujte informace o názvu domény v Azure AD. Další informace najdete v tématu [Správa vlastních názvů domén](../enterprise-users/domains-manage.md).
 
 - Pokud máte místní verze Windows serveru, které chcete používat společně s Azure Active Directory, přečtěte si téma [Integrace místních adresářů s Azure Active Directory](../hybrid/whatis-hybrid-identity.md).

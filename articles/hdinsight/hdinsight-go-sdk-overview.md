@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
-ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 162049c12c0618298695e43dae43f16e9fb50260
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79479582"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372187"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for (Preview)
 
@@ -21,11 +21,11 @@ ms.locfileid: "79479582"
 Sada HDInsight SDK for přejít poskytuje třídy a funkce, které umožňují spravovat clustery HDInsight. Zahrnuje operace pro vytváření, odstraňování, aktualizaci, vypsání, změnu velikosti, provádění akcí skriptu, monitorování, získávání vlastností clusterů HDInsight a další.
 
 > [!NOTE]  
->Referenční materiál GoDoc pro tuto sadu SDK je také [k dispozici zde](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
+>Referenční materiál GoDoc pro tuto sadu SDK je také [k dispozici zde](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [ `go get` Nástroj](https://github.com/golang/go/wiki/GoGetTools).
 * [Přejít](https://golang.org/dl/).
@@ -157,7 +157,7 @@ Skupinu prostředků můžete vytvořit pomocí [Azure Cloud Shell](https://shel
 az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 ```
 
-##### <a name="creating-a-storage-account"></a>Vytváření účtu úložiště
+##### <a name="creating-a-storage-account"></a>Vytvoření účtu úložiště
 
 Účet úložiště můžete pomocí [Azure Cloud Shell](https://shell.azure.com/bash) vytvořit spuštěním:
 
@@ -491,4 +491,4 @@ for (page.NotDone()) {
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte [referenční materiál GoDoc](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). GoDocs poskytuje referenční dokumentaci pro všechny funkce v sadě SDK.
+Prozkoumejte [referenční materiál GoDoc](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight). GoDocs poskytuje referenční dokumentaci pro všechny funkce v sadě SDK.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601298"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370997"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Referenční příručka operací správy identit a přístupu Azure Active Directory
 
@@ -45,7 +45,7 @@ Při revizi seznamu se můžete setkat s tím, že budete muset buď přiřadit 
 
 #### <a name="assigning-owners-recommended-reading"></a>Při přiřazování vlastníků se doporučuje číst.
 
-- [Přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
+- [Přiřazení rolí správce v Azure Active Directory](../roles/permissions-reference.md)
 - [Zásady správného řízení v Azure](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>Synchronizace místní identity
@@ -157,13 +157,13 @@ Pro definování plánů služeb pro uživatele použijte následující pokyny:
 - Volitelně lze atribut definovat tak, aby obsahoval balíčky pro uživatele.
 
 > [!IMPORTANT]
-> Licencování na základě skupin ve službě Azure AD zavádí koncept uživatelů v chybovém stavu licencování. Pokud si všimnete jakýchkoli chyb licencování, měli byste okamžitě [identifikovat a vyřešit](../users-groups-roles/licensing-groups-resolve-problems.md) případné problémy s přiřazením licencí.
+> Licencování na základě skupin ve službě Azure AD zavádí koncept uživatelů v chybovém stavu licencování. Pokud si všimnete jakýchkoli chyb licencování, měli byste okamžitě [identifikovat a vyřešit](../enterprise-users/licensing-groups-resolve-problems.md) případné problémy s přiřazením licencí.
 
 ![Snímek obrazovky s popisem obrazovky počítače se automaticky vygeneroval.](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>Správa životního cyklu
 
-Pokud aktuálně používáte nástroj, například [Microsoft Identity Manager](/microsoft-identity-manager/) nebo systém třetí strany, který spoléhá na místní infrastrukturu, doporučujeme, abyste přesměrovali přiřazení z existujícího nástroje, implementovali licencování na základě skupin a definovali správu životního cyklu skupin na základě [skupin](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups). Podobně platí, že pokud se váš stávající proces nechystá pro nové zaměstnance nebo zaměstnance, kteří odejdou z organizace, měli byste nasadit licencování na základě skupin na základě dynamických skupin a definovat životní cyklus členství ve skupině. Nakonec, pokud se licencování na základě skupin nasadí do místních skupin, které nemají správu životního cyklu, zvažte použití skupin cloudových funkcí, které umožňují využívat možnosti, jako je delegované vlastnictví nebo dynamické členství založené na atributech.
+Pokud aktuálně používáte nástroj, například [Microsoft Identity Manager](/microsoft-identity-manager/) nebo systém třetí strany, který spoléhá na místní infrastrukturu, doporučujeme, abyste přesměrovali přiřazení z existujícího nástroje, implementovali licencování na základě skupin a definovali správu životního cyklu skupin na základě [skupin](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups). Podobně platí, že pokud se váš stávající proces nechystá pro nové zaměstnance nebo zaměstnance, kteří odejdou z organizace, měli byste nasadit licencování na základě skupin na základě dynamických skupin a definovat životní cyklus členství ve skupině. Nakonec, pokud se licencování na základě skupin nasadí do místních skupin, které nemají správu životního cyklu, zvažte použití skupin cloudových funkcí, které umožňují využívat možnosti, jako je delegované vlastnictví nebo dynamické členství založené na atributech.
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>Přiřazení aplikací ke skupině Všichni uživatelé
 
@@ -191,7 +191,7 @@ Je důležité porozumět objemu změn ve vaší organizaci a ujistit se, že ne
 - [Příprava atributů adresáře pro synchronizaci s Microsoft 365 pomocí nástroje IdFix](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect: řešení chyb při synchronizaci](../hybrid/tshoot-connect-sync-errors.md)
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Zabezpečená infrastruktura identity má pět aspektů. Tento seznam vám pomůže rychle vyhledat a provést nezbytné akce pro zabezpečení a správu životního cyklu identit a jejich nároků ve vaší organizaci.
 

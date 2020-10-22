@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 68671a98c7703514af11de2f8c505110129fe713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398642"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367988"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute s Azure Site Recovery
 
@@ -37,7 +37,7 @@ Zajistěte, aby byly splněny také [požadavky na síť](vmware-azure-configura
 
 V případě, že používáte proxy v místním prostředí a chcete pro provoz replikace použít ExpressRoute, musíte nakonfigurovat seznam obcházení proxy serveru na konfiguračním serveru a procesových serverech. Postupujte následovně:
 
-- Stáhněte si z [tohoto místa](https://aka.ms/PsExec) nástroj PsExec pro přístup k systémovému kontextu uživatele.
+- Stáhněte si z [tohoto místa](/sysinternals/downloads/psexec) nástroj PsExec pro přístup k systémovému kontextu uživatele.
 - Spusťte aplikaci Internet Explorer v kontextu uživatele systému spuštěním následujícího příkazového řádku PsExec-s-i "%programfiles%\Internet Explorer\iexplore.exe".
 - Přidání nastavení proxy serveru v IE
 - V seznamu vynechat přidejte adresu URL úložiště Azure *. blob.core.windows.net.

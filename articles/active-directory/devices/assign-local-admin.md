@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0903828b04922104a9dd93ac79459bf73644f35c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419814"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365829"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Jak spravovat místní skupinu Administrators na zařízeních připojených k Azure AD
 
@@ -39,7 +39,7 @@ Azure AD taky přidá roli Správce zařízení Azure AD do místní skupiny Adm
 
 Chcete-li zobrazit a aktualizovat členství v roli globálního správce, přečtěte si téma:
 
-- [Zobrazit všechny členy role správce v Azure Active Directory](../users-groups-roles/directory-manage-roles-portal.md)
+- [Zobrazit všechny členy role správce v Azure Active Directory](../roles/manage-roles-portal.md)
 - [Přiřazení uživatele k rolím správce v Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
@@ -100,7 +100,7 @@ Kromě toho můžete přidat uživatele také pomocí příkazového řádku:
 - Pokud jsou vaši uživatelé klienta synchronizováni z místní služby Active Directory, použijte `net localgroup administrators /add "Contoso\username"` .
 - Pokud jsou vaši uživatelé tenanta vytvořeni ve službě Azure AD, použijte `net localgroup administrators /add "AzureAD\UserUpn"`
 
-## <a name="considerations"></a>Důležité informace 
+## <a name="considerations"></a>Požadavky 
 
 Nelze přiřadit skupiny k roli Správce zařízení, pouze jednotliví uživatelé jsou povoleni.
 

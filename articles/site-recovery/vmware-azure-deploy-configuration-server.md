@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287739"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359811"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -26,7 +26,7 @@ Místní konfigurační server nasadíte při použití [Azure Site Recovery](si
 
 Konfigurační server musí být nastavený jako vysoce dostupný virtuální počítač VMware s určitým minimálním požadavky na hardware a velikost. Pro pohodlné a snadné nasazení Site Recovery poskytuje šablonu aplikace Open Virtualization Virtualization (vajíček), která umožňuje nastavit konfigurační server, který splňuje všechny požadavky, které jsou tady uvedené.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Minimální požadavky na hardware pro konfigurační server jsou shrnuté v následujících oddílech.
 
@@ -166,7 +166,7 @@ Aby nedošlo k přerušení probíhající replikace, ujistěte se, že po regis
     Další informace o konfiguračním serveru a jeho funkcích najdete v tématu [Architektura replikace z VMware do Azure](vmware-azure-architecture.md).
 * Kde můžu najít nejnovější verzi konfiguračního serveru?
 
-    Postup upgradu konfiguračního serveru prostřednictvím portálu najdete v tématu [upgrade konfiguračního serveru](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Pokyny, jak upgradovat všechny součásti Site Recovery, najdete v tématu [aktualizace služby v Site Recovery](https://aka.ms/asr_how_to_upgrade).
+    Postup upgradu konfiguračního serveru prostřednictvím portálu najdete v tématu [upgrade konfiguračního serveru](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Pokyny, jak upgradovat všechny součásti Site Recovery, najdete v tématu [aktualizace služby v Site Recovery](./service-updates-how-to.md).
 * Kde můžu stáhnout heslo pro konfigurační server?
 
     Pokud chcete stáhnout heslo, přečtěte si téma [Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).

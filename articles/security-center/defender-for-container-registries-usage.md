@@ -1,18 +1,18 @@
 ---
 title: Jak používat Azure Defender pro Registry kontejnerů
-description: Přečtěte si, jak používat Azure Defender pro Registry kontejnerů ke skenování imagí v registrech.
+description: Další informace o použití Azure Defenderu pro Registry kontejnerů k prověřování imagí Linux v registrech hostovaných v systému Linux
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342072"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370538"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Použití Azure Defenderu pro Registry kontejnerů k prohledávání imagí pro ohrožení zabezpečení
 
@@ -28,7 +28,8 @@ Když skener ohlásí chyby zabezpečení pro Security Center, Security Center j
 |----|:----|
 |Stav vydaných verzí:|Všeobecně dostupná (GA)|
 |Stanov|**Azure Defender pro Registry kontejnerů** se účtuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
-|Podporované registry a Image:|![Ano ](./media/icons/yes-icon.png) . ACR Registry hostované pro Linux, které jsou přístupné z veřejného Internetu a poskytují přístup k prostředí.<br>![Žádné ](./media/icons/no-icon.png) Registry ACR hostované v systému Windows.<br>![Žádné ](./media/icons/no-icon.png) ' privátní ' Registry-Security Center vyžaduje, aby vaše registry byly přístupné z veřejného Internetu. Security Center se aktuálně nemůže připojit k registrům s přístupem, které jsou omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure.<br>![Žádné ](./media/icons/no-icon.png) Image minimalist, jako jsou [pomocné image Docker](https://hub.docker.com/_/scratch/) , nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému.|
+|Podporované registry a Image:|Image Linux v registrech ACR přístupné z veřejného Internetu s přístupem k prostředí|
+|Nepodporované registry a Image:|Bitové kopie systému Windows<br>' Soukromé ' Registry<br>Registry s přístupem omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure<br>Minimalist image, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a [Azure Container Registry Reader](../container-registry/container-registry-roles.md)|
 |Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
@@ -36,14 +37,12 @@ Když skener ohlásí chyby zabezpečení pro Security Center, Security Center j
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Identifikace ohrožení zabezpečení v obrázcích ve službě Azure Container Registry 
 
-1. Postup povolení kontroly ohrožení zabezpečení imagí uložených v Azure Container Registry na základě Azure Resource Manager:
+Postup povolení kontroly ohrožení zabezpečení imagí uložených v Azure Container Registry na základě Azure Resource Manager:
 
-    1. Povolte **Azure Defender pro Registry kontejnerů** pro vaše předplatné.
+1. Povolte **Azure Defender pro Registry kontejnerů** pro vaše předplatné. Security Center je teď připravený ke skenování imagí v registrech.
 
-        Security Center je teď připravený ke skenování imagí v registrech.
-
-        >[!NOTE]
-        > Tato funkce se účtuje na základě obrázku.
+    >[!NOTE]
+    > Tato funkce se účtuje na základě obrázku.
 
 1. Kontroly imagí se spouštějí při každém vložení nebo importu a v případě, že se image obnovila během posledních 30 dnů. 
 
