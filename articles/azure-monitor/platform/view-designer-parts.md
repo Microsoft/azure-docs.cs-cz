@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 7b670cafa4d643e37fae068a4c0033fc97a96ccd
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92166586"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenční příručka na části vizualizace návrháře zobrazení v Azure Monitor
@@ -81,7 +81,7 @@ V záhlaví se zobrazí jedno číslo, které zobrazuje počet záznamů z dotaz
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Název |Text zobrazený v horní části prvního sloupce |
+| Name |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |** Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -112,7 +112,7 @@ Záhlaví obsahuje dvě čísla, která zobrazují počet záznamů ze samostatn
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Název |Text zobrazený v horní části prvního sloupce |
+| Name |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |** Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -153,7 +153,7 @@ Záhlaví zobrazí jedno číslo, které shrnuje sloupec value v dotazu protokol
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Název |Text zobrazený v horní části prvního sloupce |
+| Name |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |** Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -185,7 +185,7 @@ Záhlaví zobrazuje výsledky dvou dotazů protokolu v průběhu času jako slou
 | Operace |Operace, která má být provedena pro minigraf. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Název |Text zobrazený v horní části prvního sloupce |
+| Name |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |** Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -246,7 +246,7 @@ V záhlaví se zobrazuje spojnicový graf s více řadami z dotazu protokolu v p
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Název |Text zobrazený v horní části prvního sloupce |
+| Name |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |** Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -282,7 +282,7 @@ Záhlaví zobrazí spojnicový graf s více řadami z dotazu protokolu v průbě
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznam** |**> názvy sloupců** |
-| Název |Text zobrazený v horní části prvního sloupce |
+| Name |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznam** |** Prahové hodnoty>** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -352,7 +352,7 @@ Následující tabulka popisuje nastavení prahových hodnot:
 | Nastavení | Popis |
 |:--- |:--- |
 | Povolit prahové hodnoty |Kliknutím na tento odkaz zobrazíte ikonu barvy vlevo od každé hodnoty. Ikona určuje stav hodnoty relativní vzhledem k určeným prahovým hodnotám. |
-| Název |Název prahové hodnoty. |
+| Name |Název prahové hodnoty. |
 | Prahová hodnota |Hodnota prahové hodnoty. Barva stavu každé položky seznamu je nastavena na barvu nejvyšší prahové hodnoty, která je překročena hodnotou položky. Pokud nejsou překročeny žádné prahové hodnoty, použije se výchozí barva. |
 | Color |Barva, která označuje prahovou hodnotu. |
 
