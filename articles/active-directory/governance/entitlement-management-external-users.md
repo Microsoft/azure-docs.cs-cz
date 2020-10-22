@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dd1234e13f77f1ea95327a0a489e9a97cdc0ffd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447083"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362497"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
@@ -109,7 +109,7 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 
 - Pokud chcete, aby externí uživatelé měli přístup k webu SharePointu Online a prostředkům přidruženým ke skupině Microsoft 365, ujistěte se, že jste zapnuli externí sdílení SharePointu Online. Další informace najdete v tématu [Zapnutí nebo vypnutí externí sdílení](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
-- Informace o tom, jak nastavit zásady hosta pro Microsoft 365 skupiny na úrovni adresáře v prostředí PowerShell, najdete v tématu [Příklad: Konfigurace zásad hostů pro skupiny na úrovni adresáře](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+- Informace o tom, jak nastavit zásady hosta pro Microsoft 365 skupiny na úrovni adresáře v prostředí PowerShell, najdete v tématu [Příklad: Konfigurace zásad hostů pro skupiny na úrovni adresáře](../enterprise-users/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
 
 ### <a name="review-your-teams-sharing-settings"></a>Kontrola nastavení sdílení týmů
 

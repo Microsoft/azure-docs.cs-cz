@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3781a87bde283de3b798f840274db1dd5ea3ac7e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145405"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366492"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -44,7 +44,7 @@ Funkce Azure AD terms of use mají tyto možnosti:
 - Před registrací informací o zabezpečení v Azure Multi-Factor Authentication (MFA) vyžadovat, aby zaměstnanci nebo hosté přijali vaše podmínky použití.
 - Před registrací informací o zabezpečení ve službě Azure AD Samoobslužné resetování hesla (SSPR) vyžadovat, aby zaměstnanci přijali vaše podmínky použití.
 - Předběžných podmínek použití pro všechny uživatele ve vaší organizaci.
-- Prezentovat konkrétní podmínek použití na základě atributů uživatele (např. doktoři vs. sestry nebo místní vs. zahraniční pracovníci, a to pomocí [dynamických skupin](../users-groups-roles/groups-dynamic-membership.md)).
+- Prezentovat konkrétní podmínek použití na základě atributů uživatele (např. doktoři vs. sestry nebo místní vs. zahraniční pracovníci, a to pomocí [dynamických skupin](../enterprise-users/groups-dynamic-membership.md)).
 - Při přístupu k aplikacím s vysokým obchodním dopadem, jako je Salesforce, máte k dispozici specifické výrazy použití.
 - Současné použití podmínek použití v různých jazycích.
 - Seznam, který z vašich podmínek použití nebo nepřijal.
@@ -253,7 +253,7 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Další |
+> |  | iOS | Android | Windows 10 | Jiné |
 > | --- | --- | --- | --- | --- |
 > | **Native app** | Ano | Ano | Ano |  |
 > | **Microsoft Edge** | Ano | Ano | Ano |  |

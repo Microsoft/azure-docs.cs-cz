@@ -16,16 +16,16 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6709d7589ebf4c82ec25c6b7a79fa31a305839
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 30724edafdee0c04f0c8b004ce335072b4ce0fd4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87506944"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367444"
 ---
 # <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>Možnosti správy pro privilegovaný přístup skupiny Azure AD (Preview)
 
-V Privileged Identity Management (PIM) teď můžete přiřadit nárok na členství nebo vlastnictví privilegovaných skupin přístupu. Od této verze Preview můžete přiřadit předdefinované role Azure Active Directory (Azure AD) skupinám cloudů a použít PIM ke správě členů skupin a nároků a aktivace vlastníků. Další informace o skupinách přiřazení rolí v Azure AD najdete v tématu [použití skupin cloudu ke správě přiřazení rolí v Azure Active Directory (Preview)](../users-groups-roles/roles-groups-concept.md).
+V Privileged Identity Management (PIM) teď můžete přiřadit nárok na členství nebo vlastnictví privilegovaných skupin přístupu. Od této verze Preview můžete přiřadit předdefinované role Azure Active Directory (Azure AD) skupinám cloudů a použít PIM ke správě členů skupin a nároků a aktivace vlastníků. Další informace o skupinách přiřazení rolí v Azure AD najdete v tématu [použití skupin cloudu ke správě přiřazení rolí v Azure Active Directory (Preview)](../roles/groups-concept.md).
 
 ## <a name="require-different-policies-for-each-role-assignable-group"></a>Vyžadovat pro každou skupinu přiřazenou roli jiné zásady
 

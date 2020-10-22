@@ -4,12 +4,12 @@ description: Jak převzít služby při selhání virtuálních počítačů neb
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6737f64773f91ede1631d42cd7f28c7d961c0454
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317884"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368617"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Spuštění převzetí služeb při selhání z místního prostředí do Azure
 
@@ -127,8 +127,8 @@ Pokud se chcete připojit k virtuálním počítačům Azure vytvořeným po př
 
 **Převzetí služeb při selhání** | **Umístění** | **Akce**
 --- | --- | ---
-**Virtuální počítač Azure s Windows** | Virtuální počítač Azure po převzetí služeb při selhání |  [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojené), musí umožňovat příchozí připojení k portu RDP.<br/><br/> Zkontrolujte **diagnostiku spouštění** a ověřte snímek obrazovky virtuálního počítače.<br/><br/> Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy k odstraňování potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
-**Virtuální počítač Azure se systémem Linux** | Virtuální počítač Azure po převzetí služeb při selhání | Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojené), musí umožňovat příchozí připojení k portu SSH.<br/><br/> [Přidejte veřejnou IP adresu](https://aka.ms/addpublicip) pro tento virtuální počítač.<br/><br/> Podívejte se na **diagnostiku spouštění** pro snímek obrazovky virtuálního počítače.<br/><br/>
+**Virtuální počítač Azure s Windows** | Virtuální počítač Azure po převzetí služeb při selhání |  [Přidejte veřejnou IP adresu](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) pro tento virtuální počítač.<br/><br/> Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojené), musí umožňovat příchozí připojení k portu RDP.<br/><br/> Zkontrolujte **diagnostiku spouštění** a ověřte snímek obrazovky virtuálního počítače.<br/><br/> Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy k odstraňování potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+**Virtuální počítač Azure se systémem Linux** | Virtuální počítač Azure po převzetí služeb při selhání | Pravidla skupiny zabezpečení sítě na virtuálním počítači služby převzetí služeb při selhání (a v podsíti Azure, ke které je připojené), musí umožňovat příchozí připojení k portu SSH.<br/><br/> [Přidejte veřejnou IP adresu](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr) pro tento virtuální počítač.<br/><br/> Podívejte se na **diagnostiku spouštění** pro snímek obrazovky virtuálního počítače.<br/><br/>
 
 Při řešení problémů s připojením po převzetí služeb při selhání použijte [zde](site-recovery-failover-to-azure-troubleshoot.md) popsaný postup.
 
@@ -149,4 +149,3 @@ Po převzetí služeb při selhání budete muset znovu zapnout ochranu a začí
 - [Příprava](vmware-azure-reprotect.md) na reochranu VMware a navrácení služeb po obnovení.
 - Navrácení [služeb po obnovení](hyper-v-azure-failback.md) Virtuální počítače Hyper-V.
 - [Další informace o](physical-to-azure-failover-failback.md) procesu převzetí služeb při selhání a navrácení služeb po obnovení pro fyzické servery
-

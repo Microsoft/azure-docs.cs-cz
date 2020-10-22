@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcd232a3242b0341bfc81fa9785f76b0d3bd90cb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361479"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369450"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzických serverů nebo virtuálních počítačů VMware
 
@@ -164,17 +164,17 @@ V případě potřeby můžete konfigurační server ve stejném trezoru znovu z
 
 ## <a name="upgrade-the-configuration-server"></a>Upgrade konfiguračního serveru
 
-Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Například:
+Aktualizace konfiguračního serveru spustíte spuštěním kumulativních aktualizací. Aktualizace je možné použít až pro N-4 verze. Příklad:
 
 - Pokud spouštíte 9,7, 9,8, 9,9 nebo 9,10, můžete upgradovat přímo na 9,11.
 - Pokud spustíte 9,6 nebo starší a chcete upgradovat na 9,11, musíte nejdřív upgradovat na verzi 9,7. před 9,11.
 
-Podrobné pokyny k příkazu podpory Azure Site Recovery Components najdete [tady](https://aka.ms/asr_support_statement).
-Odkazy na kumulativní aktualizace pro upgrade na všechny verze konfiguračního serveru jsou k dispozici [zde](https://aka.ms/asr_update_rollups).
+Podrobné pokyny k příkazu podpory Azure Site Recovery Components najdete [tady](./service-updates-how-to.md#support-statement-for-azure-site-recovery).
+Odkazy na kumulativní aktualizace pro upgrade na všechny verze konfiguračního serveru jsou k dispozici [zde](./service-updates-how-to.md#links-to-currently-supported-update-rollups).
 
 > [!IMPORTANT]
 > U všech nových verzí N Azure Site Recovery součástí, které jsou vydány, jsou všechny verze nižší než N-4 považovány za nepodporovanou. Je vždy vhodné upgradovat na nejnovější dostupné verze.</br>
-> Podrobné pokyny k příkazu podpory Azure Site Recovery Components najdete [tady](https://aka.ms/asr_support_statement).
+> Podrobné pokyny k příkazu podpory Azure Site Recovery Components najdete [tady](./service-updates-how-to.md#support-statement-for-azure-site-recovery).
 
 Proveďte upgrade serveru následujícím způsobem:
 
@@ -192,7 +192,7 @@ Proveďte upgrade serveru následujícím způsobem:
     ![Aktualizace](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Kliknutím na tlačítko **Dokončit** ukončíte instalační program.
-8. Chcete-li upgradovat zbývající součásti Site Recovery, přečtěte si naše [pokyny k upgradu](https://aka.ms/asr_vmware_upgrades).
+8. Chcete-li upgradovat zbývající součásti Site Recovery, přečtěte si naše [pokyny k upgradu](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>Upgrade konfiguračního serveru/procesového serveru z příkazového řádku
 
@@ -212,21 +212,21 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="parameters"></a>Parametry
 
-|Název parametru| Typ | Description| Hodnoty|
+|Název parametru| Typ | Popis| Hodnoty|
 |-|-|-|-|
-| /ServerMode|Vyžadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
-|/InstallLocation|Vyžadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
-|/MySQLCredsFilePath|Vyžadováno|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
-|/VaultCredsFilePath|Vyžadováno|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
-|/EnvType|Vyžadováno|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
-|/PSIP|Vyžadováno|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
-|/CSIP|Vyžadováno|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
-|/PassphraseFilePath|Vyžadováno|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
+| /ServerMode|Povinné|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
+|/InstallLocation|Povinné|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
+|/MySQLCredsFilePath|Povinné|Cesta k souboru, ve kterém jsou uložené přihlašovací údaje serveru MySQL|Soubor by měl být v níže uvedeném formátu.|
+|/VaultCredsFilePath|Povinné|Cesta k souboru s přihlašovacími údaji trezoru|Platná cesta k souboru|
+|/EnvType|Povinné|Typ prostředí, které chcete chránit |VMware<br>NonVMware|
+|/PSIP|Povinné|IP adresa NIC, která se použije pro přenos dat replikace| Libovolná platná IP adresa|
+|/CSIP|Povinné|IP adresa NIC, na které konfigurační server naslouchá| Libovolná platná IP adresa|
+|/PassphraseFilePath|Povinné|Úplná cesta k umístění souboru s heslem|Platná cesta k souboru|
 |/BypassProxy|Volitelné|Určuje, že se konfigurační server připojí k Azure bez proxy serveru.|Tuto hodnotu získejte z Venu.|
 |/ProxySettingsFilePath|Volitelné|Nastavení proxy serveru (výchozí proxy server vyžaduje ověření, nebo vlastní proxy server)|Soubor by měl být v níže uvedeném formátu.|
 |DataTransferSecurePort|Volitelné|Číslo portu na PSIP, které se má použít pro data replikace| Platné číslo portu (výchozí hodnota je 9433)|
 |/SkipSpaceCheck|Volitelné|Přeskočí kontrolu místa na disku mezipaměti.| |
-|/AcceptThirdpartyEULA|Vyžadováno|Příznak značí přijetí smlouvy EULA třetích stran| |
+|/AcceptThirdpartyEULA|Povinné|Příznak značí přijetí smlouvy EULA třetích stran| |
 |/ShowThirdpartyEULA|Volitelné|Zobrazí smlouvy EULA třetích stran. Pokud je zadán jako vstup, všechny ostatní parametry budou ignorovány| |
 
 

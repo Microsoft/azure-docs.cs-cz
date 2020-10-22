@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91306459"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362446"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co je Azure AD Identity Governance?
 
@@ -58,7 +58,7 @@ Organizace potřebují proces pro správu přístupu nad rámec toho, co byl pop
 
 Obvykle IT deleguje rozhodnutí o schválení přístupu u tvůrců obchodních rozhodnutí.  Kromě toho může zahrnovat samotné uživatele.  Například uživatelé, kteří mají přístup k důvěrným zákaznickým datům v obchodní aplikaci společnosti v Evropě, potřebují znát zásady společnosti. Uživatelé typu Host mohou být nevědomi požadavků na zpracování dat v organizaci, které byly pozvány.
 
-Organizace můžou proces životního cyklu přístupu automatizovat prostřednictvím technologií, jako jsou [dynamické skupiny](../users-groups-roles/groups-dynamic-membership.md), společně s zřizováním uživatelů, aby [SaaS aplikace](../saas-apps/tutorial-list.md) nebo [aplikace integrované s SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organizace také mohou určovat, kteří [Uživatelé typu Host mají přístup k místním aplikacím](../external-identities/hybrid-cloud-to-on-premises.md).  Tato přístupová práva se pak dají pravidelně kontrolovat pomocí opakujících se kontrol [přístupu Azure AD](access-reviews-overview.md).   [Správa opravňujících k Azure AD](entitlement-management-overview.md) také umožňuje definovat, jak uživatelé požadují přístup mezi balíčky členství v rámci skupiny a týmu, aplikační role a role SharePointu Online.
+Organizace můžou proces životního cyklu přístupu automatizovat prostřednictvím technologií, jako jsou [dynamické skupiny](../enterprise-users/groups-dynamic-membership.md), společně s zřizováním uživatelů, aby [SaaS aplikace](../saas-apps/tutorial-list.md) nebo [aplikace integrované s SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md).  Organizace také mohou určovat, kteří [Uživatelé typu Host mají přístup k místním aplikacím](../external-identities/hybrid-cloud-to-on-premises.md).  Tato přístupová práva se pak dají pravidelně kontrolovat pomocí opakujících se kontrol [přístupu Azure AD](access-reviews-overview.md).   [Správa opravňujících k Azure AD](entitlement-management-overview.md) také umožňuje definovat, jak uživatelé požadují přístup mezi balíčky členství v rámci skupiny a týmu, aplikační role a role SharePointu Online.
 
 Když se uživatel pokusí o přístup k aplikacím, Azure AD vynutil zásady [podmíněného přístupu](../conditional-access/index.yml) . Zásady podmíněného přístupu můžou například zahrnovat zobrazení [podmínek použití](../conditional-access/terms-of-use.md) a [zajištění souhlasu uživatele s těmito podmínkami](../conditional-access/require-tou.md) předtím, než bude moci získat přístup k aplikaci.
 
@@ -100,7 +100,7 @@ Pokud máte zpětnou vazbu k funkcím zásad správného řízení identit, klik
 I když pro každého zákazníka není k dispozici žádné dokonalé řešení nebo doporučení, poskytují následující konfigurační příručky také základní zásady, které společnost Microsoft doporučuje, abyste zajistili bezpečnější a produktivní pracovní síly.
 
 - [Konfigurace identit a přístupu k zařízením](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Zabezpečení privilegovaného přístupu](../users-groups-roles/directory-admin-roles-secure.md)
+- [Zabezpečení privilegovaného přístupu](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>Příloha – nejnižší privilegované role pro správu v funkcích zásad správného řízení identity
 

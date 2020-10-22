@@ -3,12 +3,12 @@ title: Další informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí.
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3478a98ef98001ee8a2e3bb502bf289ed52285e7
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 1747e770da420a3448e97628806733459fe07a49
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951532"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366985"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Principy Azure Policy pro clustery Kubernetes
 
@@ -27,7 +27,7 @@ Azure Policy pro Kubernetes podporuje následující Clusterová prostředí:
 > [!IMPORTANT]
 > Doplňky pro modul AKS a Kubernetes s podporou ARC jsou ve **verzi Preview**. Azure Policy pro Kubernetes podporují jenom fondy uzlů Linux a předdefinované definice zásad. Předdefinované definice zásad jsou v kategorii **Kubernetes** . Definice zásad omezené verze Preview s efektem **EnforceOPAConstraint** a **EnforceRegoPolicy** a související kategorií **služby Kubernetes** jsou _zastaralé_. Místo toho použijte _audit_ efektů a _Odepřít_ v režimu poskytovatele prostředků `Microsoft.Kubernetes.Data` .
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>Přehled
 
 Pokud chcete povolit a používat Azure Policy s clusterem Kubernetes, proveďte následující akce:
 
@@ -80,7 +80,7 @@ Následující doporučení platí pouze pro AKS a doplněk Azure Policy:
 
 - Použijte fond uzlů systému s příchodem `CriticalAddonsOnly` k naplánování na serveru gatekeeper lusky. Další informace najdete v tématu [použití fondů systémových uzlů](../../../aks/use-system-pools.md#system-and-user-node-pools).
 - Zabezpečte odchozí přenosy z clusterů AKS. Další informace najdete v tématu [řízení provozu odchozích dat pro uzly clusteru](../../../aks/limit-egress-traffic.md).
-- Pokud je cluster `aad-pod-identity` povolený, lusky NMI (Node Managed identity) upraví uzly na softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato konfigurace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá `aad-pod-identity` . AzurePodIdentityException CRD je možné nakonfigurovat tak, aby informovala `aad-pod-identity` , že všechny požadavky na koncový bod metadat pocházející z objektu pod, který odpovídá popiskům definovaným v CRD, by měly být proxy bez jakéhokoli zpracování v NMI. Systém lusky s `kubernetes.azure.com/managedby: aks` návěštím v oboru názvů _Kube-System_ by měl být vyloučený v `aad-pod-identity` konfiguraci AzurePodIdentityException CRD. Další informace najdete v tématu [zakázání identity AAD-pod-identity pro konkrétního pod nebo aplikaci](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md).
+- Pokud je cluster `aad-pod-identity` povolený, lusky NMI (Node Managed identity) upraví uzly na softwaru iptables tak, aby zachytil volání koncového bodu metadat instance Azure. Tato konfigurace znamená, že všechny požadavky na koncový bod metadat jsou zachyceny NMI i v případě, že pole pod nepoužívá `aad-pod-identity` . AzurePodIdentityException CRD je možné nakonfigurovat tak, aby informovala `aad-pod-identity` , že všechny požadavky na koncový bod metadat pocházející z objektu pod, který odpovídá popiskům definovaným v CRD, by měly být proxy bez jakéhokoli zpracování v NMI. Systém lusky s `kubernetes.azure.com/managedby: aks` návěštím v oboru názvů _Kube-System_ by měl být vyloučený v `aad-pod-identity` konfiguraci AzurePodIdentityException CRD. Další informace najdete v tématu [zakázání identity AAD-pod-identity pro konkrétního pod nebo aplikaci](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Chcete-li konfigurovat výjimku, nainstalujte [YAML s výjimkou mikrofonu](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>Instalace doplňku Azure Policy pro AKS
@@ -436,7 +436,7 @@ Každých 15 minut doplněk volá úplnou kontrolu clusteru. Po shromáždění 
 > [!NOTE]
 > Každá sestava dodržování předpisů v Azure Policy pro clustery Kubernetes zahrnuje všechna porušení během posledních 45 minut. Časové razítko indikuje, kdy došlo k porušení.
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Jako Kubernetes Controller nebo kontejner se v clusteru Kubernetes udržují protokoly _Azure-Policy_ i _gatekeeper_ . Protokoly se dají zveřejnit na stránce **Přehled** v clusteru Kubernetes.
 Další informace najdete v tématu [monitorování výkonu clusteru Kubernetes s využitím Azure monitor pro kontejnery](../../../azure-monitor/insights/container-insights-analyze.md).

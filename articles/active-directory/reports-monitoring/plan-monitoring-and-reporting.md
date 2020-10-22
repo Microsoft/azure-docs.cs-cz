@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311226"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362395"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Plánování nasazení Azure Active Directory vytváření sestav a monitorování
 
@@ -151,7 +151,7 @@ Sestavy služby Azure AD mohou číst následující role:
 
 * Čtenář sestav
 
-Přečtěte si další informace o [rolích pro správu Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+Přečtěte si další informace o [rolích pro správu Azure AD](../roles/permissions-reference.md).
 
 *Vždy používejte koncept nejnižších oprávnění ke snížení rizika ohrožení bezpečnosti účtu*. Zvažte implementaci [Privileged Identity Management](../privileged-identity-management/pim-configure.md) k dalšímu zabezpečení vaší organizace.
 

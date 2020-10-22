@@ -1,6 +1,6 @@
 ---
 title: Transformace dat
-description: Transformujte data nebo zpracujte data v Azure Data Factory pomocí Hadoop, Machine Learning nebo Azure Data Lake Analytics.
+description: Transformujte data nebo zpracujte data v Azure Data Factory pomocí Hadoop, Azure Machine Learning Studio (Classic) nebo Azure Data Lake Analytics.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442781"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368855"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
 
@@ -26,7 +26,7 @@ ms.locfileid: "89442781"
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
 > * [Streamování HDInsight](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [Machine Learning](transform-data-using-machine-learning.md) 
+> * [Azure Machine Learning Studio (klasický)](transform-data-using-machine-learning.md) 
 > * [Uložená procedura](transform-data-using-stored-procedure.md)
 > * [U-SQL Data Lake Analytics](transform-data-using-data-lake-analytics.md)
 > * [Poznámkový blok datacihly](transform-data-databricks-notebook.md)
@@ -70,12 +70,12 @@ Aktivita streamování HDInsight v kanálu Data Factory spouští programy pro s
 ### <a name="hdinsight-spark-activity"></a>Aktivita Spark HDInsight
 Aktivita HDInsight Spark v kanálu Data Factory spouští programy Spark ve vlastním clusteru HDInsight. Podrobnosti najdete v tématu [vyvolání programů Spark z Azure Data Factory](transform-data-using-spark.md). 
 
-### <a name="machine-learning-activities"></a>Machine Learning aktivity
-Azure Data Factory vám umožní snadno vytvářet kanály, které používají publikovanou webovou službu Azure Machine Learning pro prediktivní analýzy. Pomocí [aktivity dávkového spuštění](transform-data-using-machine-learning.md) v kanálu Azure Data Factory můžete vyvolat webovou službu Machine Learning a předpovědi data ve službě Batch.
+### <a name="azure-machine-learning-studio-classic-activities"></a>Aktivity Azure Machine Learning Studio (Classic)
+Azure Data Factory vám umožní snadno vytvářet kanály, které používají publikovanou webovou službu Azure Machine Learning Studio (Classic) pro prediktivní analýzy. Pomocí [aktivity dávkového spuštění](transform-data-using-machine-learning.md) v kanálu Azure Data Factory můžete vyvolat webovou službu studia (Classic), která předpovědi data ve službě Batch.
 
-Prediktivní modely v Machine Learning experimenty bodování musí být v průběhu času převlakované pomocí nových vstupních datových sad. Až budete s rekurzem hotovi, chcete aktualizovat webovou službu bodování pomocí Machine Learningho modelu. [Aktivitu aktualizovat prostředek](update-machine-learning-models.md) můžete použít k aktualizaci webové služby pomocí nově vyučeného modelu.  
+Prediktivní modely v studiu bodování studia (Classic) se v průběhu času musí přenášet pomocí nových vstupních datových sad. Až budete s rekurzem hotovi, chcete aktualizovat webovou službu bodování pomocí převýukového modelu Machine Learning. [Aktivitu aktualizovat prostředek](update-machine-learning-models.md) můžete použít k aktualizaci webové služby pomocí nově vyučeného modelu.  
 
-Podrobnosti o těchto Machine Learningch aktivitách najdete v tématu [použití Machine Learning aktivit](transform-data-using-machine-learning.md) . 
+Podrobnosti o těchto aktivitách studia (Classic) najdete v tématu [použití aktivit Azure Machine Learning Studio (Classic)](transform-data-using-machine-learning.md) . 
 
 ### <a name="stored-procedure-activity"></a>Aktivita uložené procedury
 Pomocí aktivity uložená procedura SQL Server v kanálu Data Factory můžete vyvolat uloženou proceduru v jednom z následujících úložišť dat: Azure SQL Database, Azure synapse Analytics (dříve SQL Data Warehouse), SQL Server databáze ve vašem podniku nebo na virtuálním počítači Azure. Podrobnosti najdete v článku [aktivita uložených procedur](transform-data-using-stored-procedure.md) .  

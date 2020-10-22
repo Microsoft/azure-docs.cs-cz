@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 607ff3cb04002883b49b4c5bc37d312cbb83c8e5
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: c78eae11497702054bb54b5980228fd0a3962577
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173628"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367767"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -58,13 +58,15 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 | NSX    | Pro HCX síťové rozšíření logických přepínačů ve zdroji: NSXv 6.2 + nebo NSX-T 2.4 +.   | NSXv 6.2 + nebo NSX-T 2.4 +<br/><br/>Pro směrování blízkosti HCX: NSXv 6.4 +. (Směrování blízkosti se nepodporuje s NSX-T.) |
 | vCloud ředitel   | Nepožadováno. Neexistuje žádná interoperabilita s vCloud Directorem ve zdrojové lokalitě. | Při integraci cílového prostředí s vCloud Directorem je minimum 9.1.0.2.  |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="network-and-ports"></a>Síť a porty
 
 * Nakonfigurujte [Global REACH Azure ExpressRoute](tutorial-expressroute-global-reach-private-cloud.md) mezi místními a Azure VMware SDDC ExpressRoute okruhy.
 
-* Všechny požadované porty by se měly otevřít pro komunikaci mezi místními komponentami a Azure VMware Solution SDDC. Další informace najdete v [dokumentaci k VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html).
+* [Všechny požadované porty](https://ports.vmware.com/home/VMware-HCX) by se měly otevřít pro komunikaci mezi místními komponentami a Azure VMware Solution SDDC.
+
+Další informace najdete v [dokumentaci k VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html).
 
 
 ### <a name="ip-addresses"></a>IP adresy
@@ -73,13 +75,13 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
    
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>Nasazení vajíček konektoru VMware HCX v místním prostředí
 
->[!NOTE]
->Před nasazením virtuálního zařízení do místního serveru vCenter budete muset stáhnout VAJÍČKa konektoru VMware HCX. 
+> [!NOTE]
+> Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si stáhnout VAJÍČKu konektoru VMware HCX. 
 
 1. Otevřete okno prohlížeče, přihlaste se ke Správci Azure VMware HCX Manager na `https://x.x.x.9` portu 443 s přihlašovacími údaji uživatele **cloudadmin** a pak pokračujte na **podporu**.
 
-   >[!TIP]
-   >Poznamenejte si IP adresu HCX Cloud Manageru v řešení Azure VMware. IP adresu zjistíte tak, že v podokně řešení Azure VMware přejdete na **Spravovat**  >  **připojení** a pak vyberete kartu **HCX** . 
+   > [!TIP]
+   > Poznamenejte si IP adresu HCX Cloud Manageru v řešení Azure VMware. IP adresu zjistíte tak, že v podokně řešení Azure VMware přejdete na **Spravovat**  >  **připojení** a pak vyberete kartu **HCX** . 
    >
    >Heslo vCenter bylo definováno při nastavování privátního cloudu.
 
@@ -102,8 +104,8 @@ Na součástech infrastruktury musí běžet požadovaná minimální verze.
 
 1. Vyberte **Další**, ověřte konfiguraci a pak vyberte **Dokončit** pro nasazení HCX konektoru konektoru.
      
-   >[!NOTE]
-   >Obecně platí, že konektor VMware HCX, který nasazujete, je nasazený do sítě pro správu clusteru.  
+   > [!NOTE]
+   > Obecně platí, že konektor VMware HCX, který nasazujete, je nasazený do sítě pro správu clusteru.  
    
    > [!IMPORTANT]
    > Možná budete muset virtuální zařízení zapnout ručně.  V takovém případě počkejte 10-15 minut, než budete pokračovat k dalšímu kroku.
@@ -171,7 +173,7 @@ Můžete se připojit (spárovat) správce cloudu VMware HCX v řešení Azure V
 1. Zadejte adresu URL nebo IP adresu vzdáleného HCXu, kterou jste si poznamenali dříve, uživatelské jméno řešení Azure VMware cloudadmin@vsphere.local a heslo. Potom vyberte **Připojit**.
 
    > [!NOTE]
-   > Vzdálená adresa URL HCX je vaše IP adresa HCX cloudového správce řešení Azure VMware, což je adresa ". 9" sítě pro správu. Pokud je vaše vCenter například 192.168.4.2, vaše HCX adresa URL bude 192.168.4.9.
+   > Aby bylo možné dvojici lokalit úspěšně vytvořit, musí být váš konektor HCX schopný směrovat na HCX IP adresu cloudového správce přes port 443.
    >
    > Heslo je stejné heslo, které jste použili k přihlášení do vCenter. Toto heslo jste definovali na úvodní obrazovce nasazení.
 
@@ -272,6 +274,13 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 
 Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
 
+   > [!NOTE]
+   > Postup úspěšného vytvoření sítě služby pomocí řešení Azure VMware:
+   >
+   > Porty UDP 500/4500 se otevřou mezi místními adresami profilů pro odchozí připojení (HCX) a adresami síťového profilu pro odchozí připojení Azure VMware Solution HCX Cloud.
+   >
+   > Nezapomeňte zkontrolovat [HCX požadované porty](https://ports.vmware.com/home/VMware-HCX).
+
 1. V části **infrastruktura**vyberte **Interconnect**  >  **Service mřížka**  >  **vytvořit síť služby**.    
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-service-mesh.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/create-service-mesh.png":::
@@ -351,3 +360,4 @@ Další informace o použití HCX najdete v technické dokumentaci k VMware:
 
 * [Dokumentace k VMware HCX](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [Migrace Virtual Machines s využitím VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* [HCX požadované porty](https://ports.vmware.com/home/VMware-HCX)

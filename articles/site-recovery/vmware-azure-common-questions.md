@@ -3,12 +3,12 @@ title: Běžné dotazy týkající se zotavení po havárii VMware pomocí Azure
 description: Získejte odpovědi na běžné dotazy týkající se zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89054967"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359794"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné otázky týkající se replikace z VMware do Azure
 
@@ -75,7 +75,7 @@ Site Recovery je certifikováno pro ISO 27001:2013 a 27018, HIPAA a DPA. Je v pr
 
 Pomocí [cenové kalkulačky](https://aka.ms/asr_pricing_calculator) můžete odhadnout náklady při používání Site Recovery.
 
-Podrobný odhad nákladů získáte spuštěním nástroje Planner Deployment pro [VMware](https://aka.ms/siterecovery_deployment_planner) a použitím [sestavy odhad nákladů](https://aka.ms/asr_DP_costreport).
+Podrobný odhad nákladů získáte spuštěním nástroje Planner Deployment pro [VMware](./site-recovery-deployment-planner.md) a použitím [sestavy odhad nákladů](./site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Je mezi replikací do úložiště nebo přímo na spravované disky nějaký rozdíl v ceně?
 
@@ -114,7 +114,7 @@ Site Recovery replikuje místní virtuální počítače VMware a fyzické serve
 
 Ne. Od března 2019 můžete v Azure Portal replikovat pouze do Azure Managed disks.
 
-Replikace nových virtuálních počítačů do účtu úložiště je k dispozici pouze pomocí prostředí PowerShell ([AZ. RecoveryServices Module verze 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) nebo REST API (verze 2018-01-10 nebo 2016-08-10). [Přečtěte si, jak](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) nastavit replikaci pomocí příkazů PowerShellu.
+Replikace nových virtuálních počítačů do účtu úložiště je k dispozici pouze pomocí prostředí PowerShell ([AZ. RecoveryServices Module verze 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) nebo REST API (verze 2018-01-10 nebo 2016-08-10). [Přečtěte si, jak](./vmware-azure-disaster-recovery-powershell.md) nastavit replikaci pomocí příkazů PowerShellu.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Jaké jsou výhody replikace na spravované disky?
 
@@ -190,7 +190,7 @@ Site Recovery generuje body obnovení konzistentní vzhledem k chybě každých 
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Moje verze agenta služeb mobility nebo konfiguračního serveru je stará a můj upgrade se nezdařil. Co mám udělat?
 
-Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace](https://aka.ms/asr_support_statement) o tom, jak upgradovat z velmi starých verzí.
+Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace](./service-updates-how-to.md#support-statement-for-azure-site-recovery) o tom, jak upgradovat z velmi starých verzí.
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>Kde najdu poznámky k verzi a kumulativní aktualizace pro Azure Site Recovery?
 
@@ -198,11 +198,11 @@ Site Recovery se řídí modelem podpory N-4. [Přečtěte si další informace]
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>Kde najdu informace o upgradu pro zotavení po havárii do Azure?
 
-[Přečtěte si informace o upgradu](https://aka.ms/asr_vmware_upgrades).
+[Přečtěte si informace o upgradu](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Musím pro každý upgrade restartovat zdrojové počítače?
 
-Pro každý upgrade se doporučuje restart, ale není povinný. [Další informace](https://aka.ms/asr_vmware_upgrades).
+Pro každý upgrade se doporučuje restart, ale není povinný. [Další informace](./service-updates-how-to.md#reboot-after-mobility-service-upgrade).
 
 ## <a name="configuration-server"></a>Konfigurační server
 
@@ -246,7 +246,7 @@ I když je to možné, virtuální počítač Azure, na kterém běží konfigur
 
 - Nejnovější informace o aktualizaci najdete na [stránce s aktualizacemi Azure](https://azure.microsoft.com/updates/?product=site-recovery).
 - Nejnovější verzi si můžete stáhnout z portálu. Nebo můžete stáhnout nejnovější verzi konfiguračního serveru přímo z [webu Microsoft Download Center](https://aka.ms/asrconfigurationserver).
-- Pokud má vaše verze více než čtyři verze starší než aktuální verze, přečtěte si téma [Podpora](https://aka.ms/asr_support_statement) pro pokyny k upgradu.
+- Pokud má vaše verze více než čtyři verze starší než aktuální verze, přečtěte si téma [Podpora](./service-updates-how-to.md#support-statement-for-azure-site-recovery) pro pokyny k upgradu.
 
 ### <a name="should-i-back-up-the-configuration-server"></a>Mám zálohovat konfigurační server?
 

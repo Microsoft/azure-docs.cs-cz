@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa1016307cc6e838e2e1136f6bbacd82d2f8c82e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bd6ddf58b3a6e8eb8c618ded335c699fc93328c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88640748"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362361"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Postup konfigurace přiřazení samoobslužné aplikace
 
@@ -82,4 +82,4 @@ Pokud chcete aplikaci povolit Samoobslužný přístup k aplikacím, postupujte 
 Jakmile dokončíte konfiguraci samoobslužné aplikace, uživatelé můžou přejít na své [aplikace](https://myapps.microsoft.com/) a kliknout na tlačítko **Přidat samoobslužné aplikace** a vyhledat aplikace, které jsou povolené pomocí samoobslužného přístupu. Obchodní schvalovatelé také uvidí oznámení ve svých [aplikacích](https://myapps.microsoft.com/). Můžete povolit e-mailem upozornění, když uživatel požaduje přístup k aplikaci, která vyžaduje schválení.
 
 ## <a name="next-steps"></a>Další kroky
-[Nastavení služby Azure Active Directory pro samoobslužnou správu skupin](../users-groups-roles/groups-self-service-management.md)
+[Nastavení služby Azure Active Directory pro samoobslužnou správu skupin](../enterprise-users/groups-self-service-management.md)

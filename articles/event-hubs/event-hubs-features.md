@@ -3,12 +3,12 @@ title: Přehled funkcí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje podrobné informace o funkcích a terminologii Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ebf4e928cadfc87f52fc10b27f9c8419d11a8f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936227"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369637"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkce a terminologie ve službě Azure Event Hubs
 
@@ -33,7 +33,9 @@ Každá entita, která odesílá data do centra událostí, je výrobcem událos
 
 ### <a name="publishing-an-event"></a>Publikování události
 
-Událost můžete publikovat přes AMQP 1,0, Kafka 1,0 (a novější) nebo HTTPS. Event Hubs poskytuje [klientské knihovny a třídy](./event-hubs-dotnet-framework-getstarted-send.md) pro publikování událostí do centra událostí od klientů rozhraní .NET. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](https://qpid.apache.org/). Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) má omezení 1 MB bez ohledu na to, zda se jedná o jednu událost nebo dávku. Publikování událostí větších než tato prahová hodnota způsobí chybu. Osvědčeným postupem je, aby vydavatelé nevěděli o oddílech v centru událostí a zadali jenom *klíč oddílu* (zavedený v další části), nebo jejich identitu prostřednictvím tokenu SAS.
+Událost můžete publikovat přes AMQP 1,0, Kafka 1,0 (a novější) nebo HTTPS. Služba Event Hubs poskytuje klientské knihovny pro [REST API](https://docs.microsoft.com/rest/api/eventhub/) a [.NET](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [JavaScript](event-hubs-node-get-started-send.md)a na [cestách](event-hubs-go-get-started-send.md) pro publikování událostí do centra událostí. Pro jiné moduly runtime a platformy můžete použít libovolného klienta protokolu AMQP 1.0, například [Apache Qpid](https://qpid.apache.org/). 
+
+Události můžete publikovat samostatně nebo v dávce. Jedna publikace (instance dat události) má omezení 1 MB bez ohledu na to, zda se jedná o jednu událost nebo dávku. Publikování událostí větších než tato prahová hodnota způsobí chybu. Osvědčeným postupem je, aby vydavatelé nevěděli o oddílech v centru událostí a zadali jenom *klíč oddílu* (zavedený v další části), nebo jejich identitu prostřednictvím tokenu SAS.
 
 Volba, jestli se použije protokol AMQP nebo HTTPS, závisí na konkrétním scénáři použití. Protokol AMQP vyžaduje nejen protokol TLS (Transport Level Security) nebo SSL/TLS, ale i vytvoření trvalého obousměrného soketu. AMQP má při inicializaci relace vyšší náklady na síť, ale protokol HTTPS vyžaduje pro každý požadavek další režii TLS. AMQP má pro často používané zdroje vyšší výkon.
 

@@ -3,19 +3,19 @@ title: Nasazení horizontu v řešení VMware Azure
 description: Přečtěte si, jak nasadit VMware Horizon do řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 9f8951c1c346eb15ac981b99a4dbf1541f3e3eed
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078880"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369008"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Nasazení horizontu v řešení VMware Azure 
 
 >[!NOTE]
->Tento dokument se zaměřuje na produkt VMware Horizon. Tento postup se dřív jmenoval jako Horizontal 7 před změnou názvu produktu z horizontu 7 na horizont. Horizont je jiné řešení než Horizontal Cloud v Azure, i když existují některé sdílené součásti. Klíčové výhody řešení Azure VMware zahrnují jednodušší metodu určení velikosti a integraci správy VMware Cloud Foundation do Azure Portal.
+>Tento dokument se zaměřuje na produkt VMware Horizon, dříve označovaný jako Horizontal 7. Horizont je jiné řešení než Horizontal Cloud v Azure, i když existují některé sdílené součásti. Klíčové výhody řešení Azure VMware zahrnují jak pružnější způsob určení velikosti, tak i integraci správy VMware Cloud Foundation do Azure Portal.
 
-[VMware Horizon](https://www.vmware.com/products/horizon.html)® je platforma virtuálních ploch a aplikací, která běží v datovém centru a poskytuje IT jednoduchou a centralizovanou správu. Poskytuje virtuálním plochám a aplikacím koncovým uživatelům na libovolném zařízení, a to kdekoli. Horizont umožňuje vytvářet a připojovat připojení k virtuálním plochám Windows, virtuálním plochám Linux, aplikacím hostovaným pro vzdálenou plochu (RDS), počítačům a fyzickým počítačům.
+[VMware Horizon](https://www.vmware.com/products/horizon.html)®, virtuální desktop a aplikace, které běží v datovém centru a poskytuje jednoduchou a centralizovanou správu. Poskytuje virtuální plochy a aplikace na libovolném zařízení, a to kdekoli. Horizont umožňuje vytvářet a připojovat připojení k virtuálním plochám Windows a Linux, aplikacím hostovaným na vzdálené ploše (RDS), stolním počítačům a fyzickým počítačům.
 
 Tady se zaměřujeme konkrétně na nasazení nástroje Horizontal do řešení Azure VMware. Obecné informace o horizontu VMware najdete v dokumentaci k produkčnímu horizontu:
 
@@ -27,20 +27,20 @@ Tady se zaměřujeme konkrétně na nasazení nástroje Horizontal do řešení 
 
 Se zavedením horizontu na řešení Azure VMware teď na platformě Azure existují dvě řešení infrastruktury virtuálních klientských počítačů (VDI). Následující diagram shrnuje klíčové rozdíly na vysoké úrovni.
 
-:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Rozdíly mezi horizontem v cloudu řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
 
 Verze Horizontal 2006 a novější na řádku verze Horizontal 8 podporuje místní nasazení i nasazení řešení Azure VMware. K dispozici je několik funkcí horizontu, které jsou podporovány místně, ale ne v řešení Azure VMware. Podporovány jsou i další produkty v ekosystému Horizon. Informace najdete v tématu věnovaném [paritě funkcí a interoperabilitě](https://kb.vmware.com/s/article/80850).
 
 ## <a name="deploy-horizon-in-a-hybrid-cloud"></a>Nasazení horizontu v hybridním cloudu
 
-Horizont můžete nasadit do hybridního cloudového prostředí, když použijete architekturu Horizontal Cloud pod (CPA) k propojení místních datových center a datacenter Azure. CPA se obvykle používá k horizontálnímu navýšení kapacity nasazení, vytvoření hybridního cloudu a zajištění kontinuity podnikových prostředí a zotavení po havárii. Podrobné informace o doprovodnéch materiálech pro provozní kontinuitu VMware najdete v tématu [rozšíření stávajících prostředí Horizontal 7](https://techzone.vmware.com/resource/business-continuity-vmware-horizon#_Toc41650874).
+Horizont můžete nasadit v hybridním cloudovém prostředí, když použijete architekturu Horizontal Cloud pod (CPA) k propojení místních a datových center Azure. CPA škáluje vaše nasazení, vytváří hybridní cloud a zajišťuje redundanci pro zajištění kontinuity podnikových prostředí a zotavení po havárii.  Další informace najdete v tématu [rozšíření stávajících prostředí Horizontal 7](https://techzone.vmware.com/resource/business-continuity-vmware-horizon#_Toc41650874).
 
 >[!IMPORTANT]
 >CPA není roztažené nasazení; jednotlivé horizonty pod sebou jsou odlišné a všechny připojovací servery, které patří do jednotlivých lusků, se musí nacházet v jednom umístění a spouštět ve stejné doméně všesměrového vysílání z hlediska sítě.
 
-Podobně jako v případě místního nebo privátního datového centra je možné horizont nasadit v privátním cloudu řešení Azure VMware. V následujících částech budeme projednávat klíčové rozdíly v nasazení horizontu do místního prostředí a řešení Azure VMware.
+Podobně jako v případě místního nebo privátního datového centra je možné horizont nasadit v privátním cloudu řešení Azure VMware. Probereme klíčové rozdíly v nasazení horizontu v místním prostředí a řešení Azure VMware v následujících oddílech.
 
-Privátní cloud Azure je koncepčně stejný jako SDDC VMware, což se obvykle používá v dokumentaci k horizontu. Zbývající část tohoto dokumentu bude používat výrazy Azure Private Cloud a VMware SDDC, které jsou zaměnitelné.
+Privátní cloud Azure je koncepčně stejný jako SDDC VMware, což se obvykle používá v dokumentaci k horizontu. Zbytek tohoto dokumentu používá výrazy, které jsou pro vás privátní cloudy Azure a VMware SDDC zaměnitelné.
 
 Cloudový konektor pro horizonty se vyžaduje ke správě licencí předplatného v řešení Azure VMware. Cloud Connector se dá nasadit v Azure Virtual Network spolu se servery připojení Horizon.
 
@@ -67,13 +67,13 @@ Zákazníci se musí používat k používání role správce cloudu, která má
 
 ## <a name="horizon-on-azure-vmware-solution-deployment-architecture"></a>Architektura nasazení řešení VMware pro Azure – Horizont
 
-Typický návrh architektury Horizon používá strategii pod a blok. Blok je jeden vCenter, zatímco několik bloků se v kombinaci vytvoří pod. Horizont pod je jednotka organizace určená omezeními škálovatelnosti horizontu. Každý Horizont má samostatný portál pro správu, a proto standardní postupy návrhu slouží k minimalizaci počtu lusků.
+Typický návrh architektury Horizon používá strategii pod a blok. Blok je jeden vCenter, zatímco několik bloků se v kombinaci vytvoří pod. Horizont pod je jednotka organizace určená omezeními škálovatelnosti horizontu. Každý Horizont má samostatný portál pro správu, a proto standardní postupy návrhu minimalizují počet lusků.
 
 Každý Cloud má vlastní schéma připojení k síti. V kombinaci se službou VMware SDDC Networking/NSX Edge nabízí připojení k síti řešení Azure VMware jedinečné požadavky na nasazení horizontu, které se liší od místních.
 
-Každý privátní cloud nebo SDDC Azure je schopný zpracovávat 4 000 klientských nebo aplikačních relací, které předpokládají následující:
+Každý privátní cloud Azure a SDDC může zpracovávat 4 000 klientských nebo aplikačních relací za předpokladu, že:
 
-* Provoz úloh se zarovnává s tím, jak profil pracovního procesu LoginVSI úlohy.
+* Provoz zatížení se zarovnává s profilem pracovního procesu LoginVSI úloh.
 
 * Bere se jenom provoz protokolu, ale žádná uživatelská data.
 
@@ -82,51 +82,51 @@ Každý privátní cloud nebo SDDC Azure je schopný zpracovávat 4 000 klientsk
 >[!NOTE]
 >Váš profil úlohy a potřeby se můžou lišit, takže výsledky se můžou lišit v závislosti na vašem případu použití. Svazky uživatelských dat můžou v kontextu vaší úlohy snižovat omezení škálování. Velikost a naplánujte nasazení odpovídajícím způsobem. Další informace najdete v části pokyny pro změnu velikosti v části [Velikost hostitelů řešení Azure VMware pro nasazení na horizont](#size-azure-vmware-solution-hosts-for-horizon-deployments) .
 
-Vzhledem k maximálnímu limitu privátního cloudu Azure nebo SDDC doporučujeme architekturu nasazení, kde jsou servery připojení a brány VMware Unified Access (UAGs) spuštěné v rámci Azure Virtual Network. To efektivně zapíná každý privátní cloud Azure nebo SDDC do bloku. To zase maximalizuje škálovatelnost horizontu běžícího na řešení Azure VMware.
+Vzhledem k privátnímu cloudu Azure a SDDC maximálnímu limitu doporučujeme architekturu nasazení, kde jsou servery připojení Horizon a brány VMware Unified Access (UAGs) spuštěné v rámci Azure Virtual Network. To efektivně zapíná každý privátní cloud Azure a SDDC do bloku. Zase maximalizujete škálovatelnost horizontu běžícího na řešení Azure VMware.
 
 Připojení z Azure Virtual Network k privátním cloudům Azure nebo SDDCs by se mělo konfigurovat s ExpressRoute FastPath. Následující diagram znázorňuje základní nasazení horizontu pod.
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Rozdíly mezi horizontem v cloudu řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Síťové připojení ke škále horizontálního škálování v řešení Azure VMware
 
-V této části se dozvíte, jak vytvořit architekturu sítě na vysoké úrovni pro horizontální škálování v řešení Azure VMware s některými běžnými příklady nasazení. Tady je zaměření na důležité prvky sítě.
+V této části se dozvíte, jak vytvořit architekturu sítě na vysoké úrovni s některými běžnými příklady nasazení, které vám pomůžou škálovat horizonty na řešení Azure VMware. Fokus je zaměřen konkrétně na kritické síťové prvky. 
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Jeden horizont pod v řešení Azure VMware
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Rozdíly mezi horizontem v cloudu řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
 
-Jeden horizont je nejrovnější scénář nasazení. V tomto příkladu se rozhodnete, že chcete nasadit pouze jeden horizont pod v oblasti USA – východ. Vzhledem 4 000 k tomu, že se každý privátní cloud nebo SDDC odhaduje, aby se nasadila maximální velikost v rozsahu pod, můžete naplánovat nasazení až na tři privátní cloudy/SDDCs.
+Jeden horizont je nejrovnější scénář nasazení, protože v USA – východ oblasti nasadíte pouze jeden horizont.  Vzhledem k tomu, že každý privátní cloud a SDDC jsou odhadované na zpracování 4 000 relací pro stolní počítače, nasadíte maximální velikost v rozsahu pod.  Nasazení můžete naplánovat až na tři privátní cloudy nebo SDDCs.
 
-V tomto příkladu se v kombinaci s virtuálními počítači infrastruktury pro infrastrukturu nasazeným v Azure Virtual Network můžete spojit s 12 000 relacemi na horizontu na základě vašich úloh a datových potřeb. Připojení mezi jednotlivými privátními cloudy a SDDC do služby Azure Virtual Network je ExpressRoute rychlá cesta, což znamená, že není potřeba žádný přenos v oblasti východ mezi privátními cloudy.
+U virtuálních počítačů infrastruktury Horizon nasazených v Azure Virtual Network můžete dosáhnout relací 12 000 na horizontu pod. Připojení mezi jednotlivými privátními cloudy a SDDC do Azure Virtual Network je ExpressRoute rychlá cesta.  Mezi privátními cloudy je potřeba žádný přenos v západním východě. 
 
 Mezi klíčové předpoklady pro tento příklad základního nasazení patří:
 
 * Nemáte místní horizont, ve kterém se chcete připojit k tomuto novému pod pomocí architektury v cloudu pod (CPA).
 
-* Koncoví uživatelé se ke svým virtuálním plochám připojí přes Internet (vs. připojení prostřednictvím místního datového centra).
+* Koncoví uživatelé se připojují ke svým virtuálním plochám prostřednictvím Internetu (vs. připojení prostřednictvím místního datového centra).
 
-V tomto základním příkladu můžete připojit řadič domény služby AD v Azure Virtual Network s místní službou Active Directory prostřednictvím sítě VPN nebo okruhu ExpressRoute.
+Řadič domény služby AD se připojujete v Azure Virtual Network s místní službou AD prostřednictvím sítě VPN nebo okruhu ExpressRoute.
 
-V popsaných příkladech základního příkladu může být podpora připojení k místním prostředkům. Může se jednat o uživatele, kteří přistupují k plochám a generují provoz aplikací pro virtuální počítače, nebo se připojují k místnímu horizontu pod pomocí CPA.
+Variantou základního příkladu může být podpora připojení k místním prostředkům. Například uživatelé přistupují k plochám a generují provoz aplikací pro virtuální počítače nebo se připojují k místnímu horizontu pod pomocí CPA.
 
-Následující obrázek ukazuje, jak to lze provést.Pokud chcete připojit podnikovou síť k Azure Virtual Network, budete potřebovat ExpressRoute.Také budete muset připojit podnikovou síť ke každému privátnímu cloudu nebo SDDCs pomocí Global Reach, což umožňuje připojení z SDDC k ExpressRoute a místním prostředkům.
+Diagram ukazuje, jak podporovat možnosti připojení k místním prostředkům. Pokud se chcete připojit k podnikové síti k Azure Virtual Network, budete potřebovat okruh ExpressRoute.  Také budete muset připojit podnikovou síť ke každému privátnímu cloudu a SDDCs pomocí ExpressRoute Global Reach.  Umožňuje připojení z SDDC k okruhu ExpressRoute a místním prostředkům. 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Rozdíly mezi horizontem v cloudu řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Několik horizontů na řešení Azure VMware v různých oblastech
 
-Pro jiný Horizontový příklad se podívejme na příklad, který zobrazuje horizont horizontálního škálování napříč více lusky.V tomto příkladu nasazujete dva časové lusky do dvou různých oblastí a federování je pomocí CPA.Konfigurace sítě je podobně jako v předchozím příkladu s dalšími dalšími odkazy mezi různými oblastmi. 
+Dalším scénářem je horizontální škálování v různých luskech.  V tomto scénáři nasadíte dvě lusky do dvou různých oblastí a federovat je pomocí CPA. Je podobný konfiguraci sítě v předchozím příkladu, ale s některými dalšími odkazy pro více oblastí. 
 
-V každé oblasti budete muset připojit Virtual Network Azure k privátním cloudům/SDDCs v jiné oblasti, což umožňuje serverům pro připojení k horizontu, které jsou součástí federace CPA, připojit se ke všem plochám v rámci správy.Přidání dalších privátních cloudů/SDDCs do této konfigurace vám umožní škálovat na celkem 24 000 relací. 
+Azure Virtual Network v každé oblasti připojíte k privátním cloudům/SDDCs v jiné oblasti. Umožňuje, aby se servery připojení Horizon v rámci federace CPA připojily ke všem plochám v rámci správy. Přidání dalších privátních cloudů/SDDCs do této konfigurace vám umožní škálovat na celkem 24 000 relací. 
 
-I když tento příklad ukazuje více oblastí, platí stejný princip, pokud chcete ve stejné oblasti nasazovat dvě horizonty. Počítejte s tím, že byste se měli ujistit, že druhý horizont pod je nasazený v *samostatném Virtual Network Azure*.Nakonec stejně jako v předchozím příkladu v jednom z nich můžete připojit svou podnikovou síť a místní lokalitu pod tento příklad pro více nebo oblastí pomocí zákaznických ExpressRoute a Global Reach.
+Stejné zásady platí i v případě, že ve stejné oblasti nasadíte dvě lusky.  V *samostatném Virtual Network Azure*je třeba nasadit druhý horizont. Stejně jako v případě jednoho z nich můžete k tomuto příkladu typu multi-pod a oblastí připojit svou podnikovou síť a místní, a to pomocí ExpressRoute a Global Reach. 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Rozdíly mezi horizontem v cloudu řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Velikost hostitelů řešení Azure VMware pro nasazení v horizontu 
 
-Metodologie změny velikosti v hostiteli běžícím v řešení Azure VMware je jednodušší než v místním prostředí, protože instance hostitele řešení Azure VMware je standardizovaná. Přesné změny velikosti hostitelů vám pomůžou určit počet hostitelů potřebných k podpoře požadavků vaší infrastruktury virtuálních počítačů (VDI) a centrálně určovat náklady na plochu.
+Metodologie změny velikosti v hostiteli běžícím v řešení Azure VMware je jednodušší než v místním prostředí.  Důvodem je to, že hostitel řešení Azure VMware je standardizovaný.  Přesná velikost hostitele pomáhá určit počet hostitelů potřebných k podpoře požadavků vaší infrastruktury virtuálních klientských počítačů.  Je střední pro určení nákladů na Desktop.
 
 ### <a name="azure-vmware-solution-host-instance"></a>Instance hostitele řešení Azure VMware
 
@@ -146,7 +146,7 @@ Metodologie změny velikosti v hostiteli běžícím v řešení Azure VMware je
 
 ### <a name="horizon-sizing-inputs"></a>Vstupy pro změnu velikosti – Horizont
 
-Pro plánované úlohy zjistíte následující:
+Tady je seznam toho, co budete potřebovat ke shromáždění pro plánované úlohy:
 
 * Počet souběžných ploch
 
@@ -156,13 +156,13 @@ Pro plánované úlohy zjistíte následující:
 
 * Požadované úložiště na plochu
 
-Obecně platí, že nasazení infrastruktury virtuálních klientských počítačů (VDI) jsou omezená na procesor nebo RAM, protože tyto faktory určují velikost hostitele. Pojďme tento příklad využít pro typ úlohy LoginVSI Knowledge Worker, který je ověřený při testování výkonu:
+Obecně platí, že nasazení VDI jsou omezená na procesor nebo RAM, což určuje velikost hostitele. Pojďme tento příklad využít pro typ úlohy LoginVSI Knowledge Worker, který je ověřený při testování výkonu:
 
 * 2 000 souběžného nasazení plochy
 
 * 2vCPU na plochu.
 
-* 4 GB paměti vRAM na stolní počítač.
+* 4 GB paměti vRAM na plochu.
 
 * 50 GB úložiště na stolní počítač
 
@@ -173,7 +173,7 @@ V tomto příkladu celkový počet hostitelů vybere více než 18, což vede k 
 
 ## <a name="horizon-on-azure-vmware-solution-licensing"></a>Horizont na licencování řešení Azure VMware 
 
-Existují čtyři komponenty s celkovými náklady na spuštění nástroje horizont v řešení Azure VMware. 
+Existují čtyři komponenty s celkovými náklady na spuštění nástroje horizont v řešení Azure VMware. 
 
 ### <a name="azure-vmware-solution-capacity-cost"></a>Náklady na kapacitu řešení Azure VMware
 
@@ -189,13 +189,13 @@ K dispozici jsou dvě dostupné licence pro řešení Azure VMware, což může 
 
 Pokud v předvídatelné budoucnosti jenom nasazujete horizonty do řešení Azure VMware, pak použijte licenci pro předplatné horizontu, protože se jedná o nižší náklady.
 
-Pokud nasazujete jak horizont, tak i místní řešení Azure VMware, jako v případě použití zotavení po havárii, zvolte licenci horizont Universal Subscription. Univerzální licence je vyšší cena, protože zahrnuje vSphere licenci pro místní nasazení.
+Pokud je nasazená v řešení Azure VMware a v místním prostředí, jako u případu použití zotavení po havárii, vyberte licenci horizont Universal Subscription. Zahrnuje vSphere licenci pro místní nasazení, takže má vyšší náklady.
 
 Pracujte s prodejním týmem VMware EUC a určete náklady na licencování horizontu podle vašich potřeb.
 
 ### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Náklady na virtuální počítače infrastruktury horizontu v Azure Virtual Network
 
-V závislosti na standardní architektuře nasazení se virtuální počítače infrastruktury horizontu skládají z připojovacích serverů, UAGs a správců aplikací a jsou nasazené v Azure Virtual Network zákazníka. Další nativní instance Azure jsou nutné pro podporu služeb vysoké dostupnosti (HA), Microsoft SQL nebo služby Microsoft Active Directory (AD) v Azure. Níže je seznam instancí Azure, které jsou založené na příkladech nasazení 2 000-Desktop. 
+V závislosti na standardní architektuře nasazení se virtuální počítače infrastruktury horizontu skládají z připojovacích serverů, UAGs a správců hromadných aplikací. Nasazují se na Virtual Network Azure zákazníka. Další nativní instance Azure jsou nutné pro podporu služeb vysoké dostupnosti (HA), Microsoft SQL nebo služby Microsoft Active Directory (AD) v Azure. Tabulka uvádí instance Azure na základě příkladu nasazení 2 000-Desktop. 
 
 >[!NOTE]
 >Aby bylo možné zpracovat selhání, nasaďte další server, než je vyžadováno pro počet připojení (n + 1). Minimální doporučený počet instancí serveru pro připojení, UAG a Správce svazků aplikace je 2 a požadovaný počet bude růst na základě množství uživatelů, které bude prostředí podporovat.  Jeden server pro připojení podporuje maximálně 4 000 relací, i když se jako osvědčený postup doporučuje 2 000. U každého z nich se podporuje až sedm serverů s doporučením celkem 12 000 aktivních relací za sekundu. Nejaktuálnější čísla najdete v [článku znalostní báze VMware – omezení velikosti a doporučení pro změny velikosti VMware Horizon](https://kb.vmware.com/s/article/2150348).
@@ -210,4 +210,4 @@ V závislosti na standardní architektuře nasazení se virtuální počítače 
 | MS-SQL Database                  | D4sv3          | 2       | *Možnost používat službu SQL v Azure*     |
 | Sdílená složka systému Windows               | D4sv3          |         | *Volitelné*                               |
 
-Náklady na virtuální počítač infrastruktury se \$ 0,36 na uživatele za měsíc pro nasazení 2 000-desktopu v předchozím příkladu. Všimněte si, že tento příklad používá USA – východ ceny instance Azure od června 2020. Ceny se můžou lišit v závislosti na oblasti, vybraných volbách a časování.
+Náklady na virtuální počítač infrastruktury se \$ 0,36 na uživatele za měsíc pro nasazení 2 000-desktopu v předchozím příkladu. V tomto příkladu se používá USA – východ ceny Azure instance z června 2020. Ceny se můžou lišit v závislosti na oblasti, vybraných volbách a časování.

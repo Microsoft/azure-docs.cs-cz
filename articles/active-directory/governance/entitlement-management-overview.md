@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24e514208683d540f08818020238090583a1bc42
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91597386"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362463"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Co je správa nároků Azure AD?
 
@@ -77,9 +77,9 @@ Správa nároků zavádí do Azure AD koncept *balíčku pro přístup*. Balíč
 
 Můžete také řídit přístup k dalším prostředkům, které spoléhají na skupiny zabezpečení Azure AD nebo Microsoft 365 skupiny.  Příklad:
 
-- Uživatelům můžete udělit licence pro Microsoft 365 pomocí skupiny zabezpečení Azure AD v balíčku přístupu a konfigurací [licencování na základě skupin](../users-groups-roles/licensing-groups-assign.md) pro tuto skupinu.
+- Uživatelům můžete udělit licence pro Microsoft 365 pomocí skupiny zabezpečení Azure AD v balíčku přístupu a konfigurací [licencování na základě skupin](../enterprise-users/licensing-groups-assign.md) pro tuto skupinu.
 - Uživatelům můžete udělit přístup ke správě prostředků Azure pomocí skupiny zabezpečení Azure AD v balíčku pro přístup a vytvoření [přiřazení role Azure](../../role-based-access-control/role-assignments-portal.md) pro tuto skupinu.
-- Uživatelům můžete udělit přístup ke správě rolí Azure AD pomocí skupin, které můžete přiřadit k rolím Azure AD v balíčku pro přístup a [přiřazením role Azure AD k této skupině](../users-groups-roles/roles-groups-assign-role.md).
+- Uživatelům můžete udělit přístup ke správě rolí Azure AD pomocí skupin, které můžete přiřadit k rolím Azure AD v balíčku pro přístup a [přiřazením role Azure AD k této skupině](../roles/groups-assign-role.md).
 
 ## <a name="how-do-i-control-who-gets-access"></a>Návody ovládací prvek, který získá přístup?
 

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532145"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368260"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrace úloh Azure Scheduleru do Azure Logic Apps
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak můžete naplánovat jednorázové a opakovan�
 
 Další informace najdete v tématu [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md) nebo zkuste vytvořit svou první aplikaci logiky v tomto rychlém startu: [vytvořte svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -133,7 +133,7 @@ Po odeslání hovoru se odpověď z vaší aplikace logiky zobrazí v poli **nez
 
 ## <a name="cancel-a-one-time-job"></a>Zrušení jednorázové úlohy
 
-V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spuštění aplikace logiky. Chcete-li zrušit jednorázovou úlohu, můžete použít [spuštění pracovního postupu – zrušit](https://docs.microsoft.com/rest/api/logic/workflowruns/cancel) v REST API Logic Apps. Po odeslání volání triggeru zadejte [ID spuštění pracovního postupu](#workflow-run-id).
+V Logic Apps se každou jednorázovou úlohu spouští jako jediná instance spuštění aplikace logiky. Chcete-li zrušit jednorázovou úlohu, můžete použít [spuštění pracovního postupu – zrušit](/rest/api/logic/workflowruns/cancel) v REST API Logic Apps. Po odeslání volání triggeru zadejte [ID spuštění pracovního postupu](#workflow-run-id).
 
 ## <a name="schedule-recurring-jobs"></a>Plánování opakujících se úloh
 
@@ -201,7 +201,7 @@ Pokud ve službě Azure Scheduler neproběhne spuštění výchozí akce, může
 
 Další informace o zpracování výjimek naleznete v tématu [zpracování chyb a výjimek – vlastnost runafter šablonové](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 <a name="retire-date"></a>
 
@@ -237,9 +237,9 @@ Pokud má vaše předplatné Azure placený plán podpory, můžete v Azure Port
 
 1. Vyberte požadovanou možnost podpory. Pokud máte placený plán podpory, vyberte **Další**.
 
-**Společenství**
+**Komunita**
 
-* [Microsoft Q&Stránka s otázkou pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)
+* [Microsoft Q&Stránka s otázkou pro Azure Logic Apps](/answers/topics/azure-logic-apps.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
 ## <a name="next-steps"></a>Další kroky

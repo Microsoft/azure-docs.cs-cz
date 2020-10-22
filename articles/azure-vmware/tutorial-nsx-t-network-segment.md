@@ -3,16 +3,16 @@ title: Kurz – vytvoření segmentu sítě NSX-T v řešení Azure VMware
 description: Naučte se vytvářet segmenty sítě NSX-T, které se používají pro virtuální počítače v vCenter.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 780cac15efc043b9ae44b77af1234adca3fec5a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f88f186d2af10bcc114d64920a3ac489ef7be54f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254529"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367665"
 ---
 # <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>Kurz: Vytvoření segmentu sítě NSX-T v řešení Azure VMware
 
-Segmenty sítě vytvořené v NSX-T Manageru se používají jako sítě pro virtuální počítače v vCenter. Virtuální počítače vytvořené v vCenter se umístí do segmentů sítě vytvořených v NSX-T a zobrazují se v vCenter.
+Virtuální počítače vytvořené v vCenter jsou umístěné do segmentů sítě vytvořených v NSX-T a jsou viditelné v vCenter.
 
 V tomto kurzu se naučíte:
 
@@ -21,9 +21,9 @@ V tomto kurzu se naučíte:
 > * Přidat nový segment sítě
 > * Sledovat nový segment sítě v vCenter
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto kurzu se vyžaduje privátní cloud řešení Azure VMware s přístupem k rozhraním pro správu vCenter a NSX-T. Další informace najdete v kurzu [Konfigurace sítě pro privátní cloud VMware v Azure](tutorial-configure-networking.md) .
+Abyste měli přístup k rozhraním pro správu vCenter a NSX-T, musíte mít privátní cloud řešení Azure VMware. Další informace najdete v kurzu [Konfigurace sítě](tutorial-configure-networking.md) .
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>Zřízení segmentu sítě v NSX-T
 
@@ -71,7 +71,7 @@ K dokončení tohoto kurzu se vyžaduje privátní cloud řešení Azure VMware 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili segmenty sítě NSX-T, které se používají pro virtuální počítače v vCenter. Teď můžete [vytvořit knihovnu obsahu pro nasazení virtuálních počítačů v řešení Azure VMware](deploy-vm-content-library.md) a zřídit virtuální počítač v síti, kterou jste vytvořili v tomto kurzu.
+V tomto kurzu jste vytvořili segmenty sítě NSX-T, které se používají pro virtuální počítače v vCenter. Teď můžete [vytvořit knihovnu obsahu pro nasazení virtuálních počítačů v řešení Azure VMware](deploy-vm-content-library.md). Můžete také zřídit virtuální počítač v síti, kterou jste vytvořili v tomto kurzu.
 
 Pokud ne, přejděte k dalšímu kurzu, kde se dozvíte, jak vytvořit ExpressRoute Global Reach partnerský vztah k privátnímu cloudu v řešení Azure VMware.
 

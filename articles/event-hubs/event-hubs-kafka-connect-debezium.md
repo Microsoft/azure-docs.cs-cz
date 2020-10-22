@@ -5,12 +5,12 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: e4bd6cdf6d3a5dc30b90abc5094202360181ae0b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318519"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369552"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Integrace podpory Apache Kafka Connect do Azure Event Hubs (Preview) s využitím Debezium for Change Data Capture
 
@@ -98,6 +98,10 @@ consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModul
 
 plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka release
 ```
+
+> [!IMPORTANT]
+> Nahraďte `{YOUR.EVENTHUBS.CONNECTION.STRING}` připojovacím řetězcem pro váš Event Hubs obor názvů. Pokyny k získání připojovacího řetězce najdete v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md). Tady je příklad konfigurace: `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ### <a name="run-kafka-connect"></a>Spuštění připojení Kafka
 V tomto kroku se místně spustí pracovní proces připojení Kafka v distribuovaném režimu a k zachování stavu clusteru s použije služba Event Hubs.

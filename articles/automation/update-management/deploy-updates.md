@@ -3,14 +3,14 @@ title: Postup vytvoření nasazení aktualizací pro Azure Automation Update Man
 description: Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat jejich stav.
 services: automation
 ms.subservice: update-management
-ms.date: 10/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8b9b3df024839007a349d3a412de4a70ff3a1cd2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222332"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369691"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Jak nasadit aktualizace a zkontrolovat výsledky
 
@@ -54,12 +54,12 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
     > [!NOTE]
     > Tato možnost není dostupná, pokud jste vybrali virtuální počítač Azure nebo server s podporou ARC. Operační systém se automaticky identifikuje.
 
-5. V oblasti **skupiny pro aktualizaci (Preview)** definujte dotaz, který kombinuje předplatné, skupiny prostředků, umístění a značky, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. Další informace najdete v tématu [použití dynamických skupin s Update Management](configure-groups.md).
+5. V oblasti **skupiny pro aktualizaci** definujte dotaz, který kombinuje předplatné, skupiny prostředků, umístění a značky, abyste vytvořili dynamickou skupinu virtuálních počítačů Azure, které chcete zahrnout do nasazení. Další informace najdete v tématu [použití dynamických skupin s Update Management](configure-groups.md).
 
     > [!NOTE]
     > Tato možnost není dostupná, pokud jste vybrali virtuální počítač Azure nebo server s podporou ARC. Počítač je automaticky zaměřen na plánované nasazení.
 
-6. V rozevírací nabídce **počítače k aktualizaci** vyberte uložené výsledky hledání, importovanou skupinu nebo vyberte **počítače** a vyberte jednotlivé počítače. Pomocí této možnosti můžete zobrazit připravenost agenta Log Analytics pro každý počítač. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md). V plánovaném nasazení aktualizace můžete zahrnout maximálně 500 počítačů.
+6. V rozevírací nabídce **počítače k aktualizaci** vyberte uložené výsledky hledání, importovanou skupinu nebo vyberte **počítače** a vyberte jednotlivé počítače. Pomocí této možnosti můžete zobrazit připravenost agenta Log Analytics pro každý počítač. Další informace o různých metodách vytváření skupin počítačů v protokolu Azure Monitor najdete v tématu [skupiny počítačů v protokolech Azure monitor](../../azure-monitor/platform/computer-groups.md). V plánovaném nasazení aktualizace můžete zahrnout maximálně 1000 počítačů.
 
     > [!NOTE]
     > Tato možnost není dostupná, pokud jste vybrali virtuální počítač Azure nebo server s podporou ARC. Počítač je automaticky zaměřen na plánované nasazení.
@@ -83,7 +83,7 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
 
 10. Pomocí **opakování** určete, jestli k nasazení dojde jednou, nebo použijte opakovaný plán, a pak vyberte **OK**.
 
-11. V oblasti **pre-Scripts + post-Scripts (Preview)** vyberte skripty, které chcete spustit před a po nasazení. Další informace najdete v tématu [Správa předběžných skriptů a pozálohovacích skriptů](pre-post-scripts.md).
+11. V oblasti **pre-Scripts + post-Scripts** vyberte skripty, které chcete spustit před a po nasazení. Další informace najdete v tématu [Správa předběžných skriptů a pozálohovacích skriptů](pre-post-scripts.md).
 
 12. V poli časový **interval pro správu a údržbu** můžete zadat dobu, po kterou je možné nainstalovat aktualizace. Při určování časového období údržby Vezměte v úvahu následující podrobnosti:
 
@@ -111,7 +111,7 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
     > [!NOTE]
     > Až dokončíte konfiguraci plánu nasazení pro vybraný server s povoleným obloukem, vyberte **zkontrolovat + vytvořit**.
 
-15. Vrátíte se na řídicí panel stavu. Vyberte **plány nasazení** a zobrazte plán nasazení, který jste vytvořili.
+15. Vrátíte se na řídicí panel stavu. Vyberte **plány nasazení** a zobrazte plán nasazení, který jste vytvořili. Uvádí se maximálně 500 plánů. Pokud máte více než 500 plánů a chcete zobrazit úplný seznam, přečtěte si téma [Konfigurace aktualizace softwaru – seznam](/rest/api/automation/softwareupdateconfigurations/list) REST API metoda s použitím verze 2019-06-01 nebo vyšší.
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>Naplánování nasazení aktualizace prostřednictvím kódu programu
 
