@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921669"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364078"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technický přehled funkcí Azure Active Directory B2C
 
@@ -215,7 +215,7 @@ Role můžete přiřadit k řízení toho, kdo může provádět určité akce s
 * Vytvoření a Správa zásad pro pravidla důvěryhodnosti v architektuře prostředí identity (vlastní zásady)
 * Správa tajných kódů federace a šifrování v architektuře prostředí identity (vlastní zásady)
 
-Další informace o rolích služby Azure AD, včetně podpory rolí Azure AD B2C správy, najdete [v tématu oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Další informace o rolích služby Azure AD, včetně podpory rolí Azure AD B2C správy, najdete [v tématu oprávnění role správce v Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb13b350dfecf70e5f3a45755f6f77069a855c6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78185654"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363840"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Když přidáte nový pracovní účet, je nutné vzít v úvahu následující 
 
     - **Uživatel** – uživatelé mají přístup k přiřazeným prostředkům, ale nemůžou spravovat většinu prostředků tenanta.
     - **Globální správce** – globální správci mají plnou kontrolu nad všemi prostředky tenanta.
-    - **Omezený správce** – vyberte roli pro správu nebo role pro uživatele. Další informace o rolích, které je možné vybrat, najdete v tématu [přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+    - **Omezený správce** – vyberte roli pro správu nebo role pro uživatele. Další informace o rolích, které je možné vybrat, najdete v tématu [přiřazení rolí správce v Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ### <a name="create-a-work-account"></a>Vytvořit pracovní účet
 

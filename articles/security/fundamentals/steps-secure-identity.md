@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107806"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364112"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -135,7 +135,7 @@ Dalším dopadem "předpokládat porušení" je nutnost minimalizovat pravděpod
 
 Povolte Azure AD PIM a pak si prohlédněte uživatele, kteří mají přiřazené administrativní role, a odeberte v těchto rolích zbytečné účty. U zbývajících privilegovaných uživatelů je přesuňte z trvalého na nárok. Nakonec vytvořte vhodné zásady, abyste se ujistili, že potřebují získat přístup k těmto privilegovaným rolím, a to tak, aby je bylo možné bezpečně provést s nezbytným ovládacím prvkem pro změnu.
 
-V rámci nasazení vašeho privilegovaného účtu postupujte podle [osvědčeného postupu pro vytvoření alespoň dvou mimořádných účtů](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) , abyste měli jistotu, že budete mít stále přístup k Azure AD, pokud si to sami zamknete.
+V rámci nasazení vašeho privilegovaného účtu postupujte podle [osvědčeného postupu pro vytvoření alespoň dvou mimořádných účtů](../../active-directory/roles/security-planning.md) , abyste měli jistotu, že budete mít stále přístup k Azure AD, pokud si to sami zamknete.
 
 ## <a name="step-3---automate-threat-response"></a>Krok 3 – automatizace reakce na hrozby
 
@@ -193,13 +193,13 @@ Jak je to možné, budete chtít zabezpečení vyrovnávat s produktivitou. Na s
 
 ### <a name="implement-self-service-group-and-application-access"></a>Implementace samoobslužné skupiny a přístupu k aplikacím
 
-Azure AD poskytuje správcům možnost spravovat přístup k prostředkům pomocí skupin zabezpečení, skupin Microsoft 365, aplikačních rolí a přístupových katalogů balíčků.  [Samoobslužná správa skupin](../../active-directory/users-groups-roles/groups-self-service-management.md) umožňuje vlastníkům skupin spravovat vlastní skupiny, aniž by museli být přiřazeni k roli správce. Uživatelé taky můžou vytvářet a spravovat Microsoft 365 skupiny, aniž by se museli spoléhat na to, že správci budou zpracovávat své požadavky, a automaticky vyprší platnost nevyužívaných skupin.  [Správa nároků Azure AD](../../active-directory/governance/entitlement-management-overview.md) dále umožňuje delegování a viditelnost s komplexními pracovními postupy žádostí o přístup a automatickým vypršením platnosti.  Můžete delegovat na nesprávce, aby mohli nakonfigurovat vlastní balíčky pro přístup pro skupiny, týmy, aplikace a weby SharePointu Online, které vlastní, s vlastními zásadami, které jsou nutné ke schválení přístupu, včetně konfigurace manažerů zaměstnanců a sponzorů obchodních partnerů jako schvalovatelů.
+Azure AD poskytuje správcům možnost spravovat přístup k prostředkům pomocí skupin zabezpečení, skupin Microsoft 365, aplikačních rolí a přístupových katalogů balíčků.  [Samoobslužná správa skupin](../../active-directory/enterprise-users/groups-self-service-management.md) umožňuje vlastníkům skupin spravovat vlastní skupiny, aniž by museli být přiřazeni k roli správce. Uživatelé taky můžou vytvářet a spravovat Microsoft 365 skupiny, aniž by se museli spoléhat na to, že správci budou zpracovávat své požadavky, a automaticky vyprší platnost nevyužívaných skupin.  [Správa nároků Azure AD](../../active-directory/governance/entitlement-management-overview.md) dále umožňuje delegování a viditelnost s komplexními pracovními postupy žádostí o přístup a automatickým vypršením platnosti.  Můžete delegovat na nesprávce, aby mohli nakonfigurovat vlastní balíčky pro přístup pro skupiny, týmy, aplikace a weby SharePointu Online, které vlastní, s vlastními zásadami, které jsou nutné ke schválení přístupu, včetně konfigurace manažerů zaměstnanců a sponzorů obchodních partnerů jako schvalovatelů.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Implementace kontrol přístupu Azure AD
 
 Pomocí kontrol [přístupu ke službě Azure AD](../../active-directory/governance/access-reviews-overview.md)můžete spravovat přístup k balíčku a členství ve skupinách, přístup k podnikovým aplikacím a přiřazení privilegovaných rolí, abyste měli jistotu, že udržujete standard zabezpečení.  Vlastníci prohledí samy sebe, vlastníci prostředků a další kontroloři zajišťují, že uživatelé neuchovávají přístup po delší dobu, kdy je už nepotřebují.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Existuje mnoho aspektů zabezpečení infrastruktury identity, ale tento kontrolní seznam s pěti kroky vám pomůže rychle provést bezpečnější a zabezpečenou infrastrukturu identity:
 

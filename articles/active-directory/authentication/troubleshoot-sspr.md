@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef46cf0947f1ea31c74a6d189b5bdf00fea44fc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963818"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363534"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Řešení potíží s resetováním hesla samoobslužné služby v Azure Active Directory
 
@@ -32,7 +32,7 @@ Pokud máte problémy se zobrazením nebo konfigurací možností SSPR v Azure P
 
 Možnost nabídky **resetování hesla** se nezobrazí, pokud nemáte licenci Azure AD přiřazenou správci, který tuto operaci provádí.
 
-Pokud chcete přiřadit licenci k příslušnému účtu správce, postupujte podle kroků k [přiřazení, ověřování a řešení potíží s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Pokud chcete přiřadit licenci k příslušnému účtu správce, postupujte podle kroků k [přiřazení, ověřování a řešení potíží s licencemi](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
 ### <a name="i-dont-see-a-particular-configuration-option"></a>Nezobrazuje se konkrétní možnost konfigurace.
 
@@ -52,7 +52,7 @@ Pokud máte problémy s vytvářením sestav SSPR v Azure Portal, přečtěte si
 
 K tomu může dojít, pokud nemáte licenci Azure AD přiřazenou správci, který tuto operaci provádí.
 
-Pokud chcete přiřadit licenci k příslušnému účtu správce, postupujte podle kroků k [přiřazení, ověřování a řešení potíží s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Pokud chcete přiřadit licenci k příslušnému účtu správce, postupujte podle kroků k [přiřazení, ověřování a řešení potíží s licencemi](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
 ### <a name="user-registrations-show-multiple-times"></a>Registrace uživatelů se zobrazí víckrát.
 
@@ -74,7 +74,7 @@ V Azure Portal změňte konfiguraci **Povolit Samoobslužné resetování hesla*
 
 Pro SSPR se v tuto chvíli dá povolit jenom jedna skupina Azure AD pomocí Azure Portal. V rámci širšího nasazení SSPR se podporují vnořené skupiny. Ujistěte se, že uživatelé ve skupinách, které jste zvolili, mají přiřazené příslušné licence. Projděte si předchozí krok řešení potíží a povolte SSPR podle potřeby.
 
-Projděte si také postup řešení potíží, abyste se ujistili, že správce, který provádí možnosti konfigurace, má přiřazenou licenci. Pokud chcete přiřadit licenci k příslušnému účtu správce, postupujte podle kroků k [přiřazení, ověřování a řešení potíží s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
+Projděte si také postup řešení potíží, abyste se ujistili, že správce, který provádí možnosti konfigurace, má přiřazenou licenci. Pokud chcete přiřadit licenci k příslušnému účtu správce, postupujte podle kroků k [přiřazení, ověřování a řešení potíží s licencemi](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
 ### <a name="theres-an-error-processing-the-request"></a>Při zpracování požadavku došlo k chybě.
 
@@ -87,7 +87,7 @@ Pokud vy nebo vaši uživatelé máte problémy s používáním SSPR, přečtě
 | Chyba | Řešení |
 | --- | --- |
 | Adresář není povolen pro resetování hesla. | V Azure Portal změňte konfiguraci **Povolit Samoobslužné resetování hesla** na *vybrané* nebo *všechny* a pak vyberte **Uložit**. |
-| Uživatel nemá přiřazenou licenci Azure AD. | Tato situace může nastat, pokud nemáte přiřazenou licenci Azure AD k požadovanému uživateli. Pokud chcete přiřadit licenci k příslušnému účtu správce, postupujte podle kroků k [přiřazení, ověřování a řešení potíží s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
+| Uživatel nemá přiřazenou licenci Azure AD. | Tato situace může nastat, pokud nemáte přiřazenou licenci Azure AD k požadovanému uživateli. Pokud chcete přiřadit licenci k příslušnému účtu správce, postupujte podle kroků k [přiřazení, ověřování a řešení potíží s licencemi](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses). |
 | V adresáři je povoleno resetování hesla, ale uživatel má chybějící nebo poškozené ověřovací informace. | Ujistěte se, že uživatel má správně vytvořené kontaktní údaje pro soubor v adresáři. Další informace najdete v tématu [data používaná samoobslužným resetováním hesla služby Azure AD](howto-sspr-authenticationdata.md). |
 | V adresáři je povoleno resetování hesla, ale pokud je zásada nastavená tak, aby vyžadovala dvě metody ověřování, má uživatel pouze jedno kontaktní údaje v souboru. | Ujistěte se, že uživatel má alespoň dvě správně nakonfigurované metody kontaktu. Příkladem je číslo mobilního telefonu *i* telefon do kanceláře. |
 | Pro resetování hesla je povolený adresář a uživatel je správně nakonfigurovaný, ale uživatel není schopen kontaktovat. | Může to být výsledkem dočasné chyby služby nebo pokud jsou nesprávná kontaktní data, která nepůjde správně zjistit. <br> <br> Pokud uživatel počká 10 sekund, zobrazí se odkaz "zkusit znovu" a "kontaktujte správce". Pokud uživatel vybere "zkusit znovu", znovu se pokusí zavolat. Pokud uživatel vybere "kontaktujte správce", pošle mu e-mail s žádostí o resetování hesla, které se má pro tento uživatelský účet provést. |

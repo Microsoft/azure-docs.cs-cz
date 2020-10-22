@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a4e540ff6a81be8afa769d93b0649e0fce49882
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965093"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363670"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: Samoobslužné resetování hesla v Azure AD
 
@@ -227,7 +227,7 @@ SSPR provádí ekvivalent resetování hesla iniciované správcem ve službě A
 Resetování a změna hesla jsou plně podporované ve všech konfiguracích B2B (Business-to-Business). Resetování hesla uživatele B2B je podporované v následujících třech případech:
 
 * **Uživatelé z partnerské organizace s existujícím klientem Azure AD**: Pokud organizace, se kterou jste partnerem, má stávajícího TENANTA Azure AD, zaplatíme, že v tomto tenantovi jsou povolené zásady pro resetování hesla. Aby se resetování hesla fungovalo, partnerská organizace potřebuje jenom jistotu, že je povolená služba Azure AD SSPR. Za Microsoft 365 zákazníky se neúčtují žádné další poplatky.
-* **Uživatelé, kteří se přihlásí prostřednictvím** samoobslužné registrace: Pokud je organizace, které jste partner použili k tomu, aby se do tenanta dostali pomocí [samoobslužné](../users-groups-roles/directory-self-service-signup.md) funkce pro registraci, umožníme jim resetovat heslo pomocí e-mailu, který zaregistrovali.
+* **Uživatelé, kteří se přihlásí prostřednictvím** samoobslužné registrace: Pokud je organizace, které jste partner použili k tomu, aby se do tenanta dostali pomocí [samoobslužné](../enterprise-users/directory-self-service-signup.md) funkce pro registraci, umožníme jim resetovat heslo pomocí e-mailu, který zaregistrovali.
 * **Uživatelé B2B**: Všichni noví uživatelé B2B, kteří vytvořili pomocí nových [možností Azure AD B2B](../external-identities/what-is-b2b.md) , můžou resetovat hesla také pomocí e-mailu, který zaregistrovali během procesu pozvání.
 
 Pokud chcete tento scénář vyzkoušet, přečtěte si https://passwordreset.microsoftonline.com některý z těchto partnerských uživatelů. Pokud mají definovaný alternativní e-mail nebo ověřovací e-mail, resetování hesla funguje podle očekávání.

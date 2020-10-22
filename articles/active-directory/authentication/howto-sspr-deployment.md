@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657213"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363721"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
 
@@ -56,7 +56,7 @@ Klíčové výhody povolování SSPR jsou:
 
 * **Robustní auditování a sledování využití**. Organizace může zajistit, aby obchodní systémy zůstaly zabezpečené, zatímco její uživatelé resetují svoje vlastní hesla. Robustní protokoly auditu obsahují informace o každém kroku procesu resetování hesla. Tyto protokoly jsou k dispozici z rozhraní API a umožňují uživateli importovat data do SIEM (incidentu zabezpečení) podle vlastního výběru.
 
-### <a name="licensing"></a>Licensing
+### <a name="licensing"></a>Licencování
 
 Azure Active Directory je licence vázaná na každého uživatele, což znamená, že každý uživatel vyžaduje odpovídající licenci pro funkce, které používají. Pro SSPR doporučujeme licencování na základě skupin. 
 
@@ -64,7 +64,7 @@ Pokud chcete porovnat edice a funkce a povolit skupinu nebo uživatele licencov�
 
 Další informace o cenách najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Funkční tenant Azure AD, který má přiřazenou alespoň zkušební licenci. V případě potřeby [ho vytvořte zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -86,7 +86,7 @@ Další informace o cenách najdete v tématu [Azure Active Directory ceny](http
 |Kurzy |[Dokončení zavedení pilotního resetování hesla samoobslužné služby Azure AD](./tutorial-enable-sspr.md) |
 | |[Povolení zpětného zápisu hesla](./tutorial-enable-sspr-writeback.md) |
 | |[Resetování hesla Azure AD z přihlašovací obrazovky pro Windows 10](./howto-sspr-windows.md) |
-| Časté otázky|[Nejčastější dotazy ke správě hesel](./active-directory-passwords-faq.md) |
+| Nejčastější dotazy|[Nejčastější dotazy ke správě hesel](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -149,19 +149,19 @@ Chcete-li vytvořit skupinu, přečtěte si téma [Vytvoření skupiny a přidá
 
 K povolení SSPR spolu s doporučenými hodnotami jsou nutná následující nastavení.
 
-| Oblast | Nastavení | Hodnota |
+| Plošný | Nastavení | Hodnota |
 | --- | --- | --- |
 | **Vlastnosti SSPR** | Samoobslužné resetování hesla povoleno | **Vybraná** skupina pro pilotní/ **vše** pro produkci |
 | **Metody ověřování** | Metody ověřování vyžadované k registraci | Vždy 1, než je vyžadováno pro resetování |
 |   | Metody ověřování vyžadované k resetování | Jedna nebo dvě |
-| **Evidenc** | Při přihlášení vyžadovat registraci uživatelů | Yes |
+| **Evidenc** | Při přihlášení vyžadovat registraci uživatelů | Ano |
 |   | Počet dní před vyzváním uživatelů k potvrzení ověřovacích informací | 90 – 180 dnů |
-| **Oznámení** | Upozornit uživatele na resetování hesla | Yes |
-|   | Upozornit všechny správce na resetování hesla jiného správce | Yes |
-| **Přizpůsobení** | Přizpůsobení odkazu na helpdesk | Yes |
+| **Oznámení** | Upozornit uživatele na resetování hesla | Ano |
+|   | Upozornit všechny správce na resetování hesla jiného správce | Ano |
+| **Přizpůsobení** | Přizpůsobení odkazu na helpdesk | Ano |
 |   | E-mail nebo adresa URL vlastního helpdesku | Web podpory nebo e-mailová adresa |
-| **Místní integrace** | Zápis hesel zpátky do místní služby AD | Yes |
-|   | Povolí uživatelům odemknout účet bez resetování hesla. | Yes |
+| **Místní integrace** | Zápis hesel zpátky do místní služby AD | Ano |
+|   | Povolí uživatelům odemknout účet bez resetování hesla. | Ano |
 
 ### <a name="sspr-properties"></a>Vlastnosti SSPR
 
@@ -254,7 +254,7 @@ I když SSPR obvykle nevytváří problémy s uživatelem, je důležité připr
 
 Pokud chcete, aby váš tým podpory byl úspěšný, můžete vytvořit Nejčastější dotazy na základě dotazů, které obdržíte od uživatelů. Tady je pár příkladů:
 
-| Scénáře| Description |
+| Scénáře| Popis |
 | - | - |
 | Uživatel nemá k dispozici žádné registrované metody ověřování.| Uživatel se pokusí resetovat heslo, ale nemá žádnou z metod ověřování, které jsou k dispozici (například: opustil svůj mobilní telefon na domácím a nemůže získat přístup k e-mailu). |
 | Uživatel nepřijímá text nebo volá na svém Office nebo na mobilním telefonu.| Uživatel se snaží ověřit svoji identitu prostřednictvím textu nebo volání, ale nepřijímá text nebo volání. |
@@ -313,7 +313,7 @@ Azure AD může poskytovat další informace o výkonu SSPR prostřednictvím au
 K měření výkonu SSPR můžete použít předem připravené sestavy na Azure Portal. Pokud máte patřičnou licenci, můžete také vytvořit vlastní dotazy. Další informace najdete v tématu [Možnosti vytváření sestav pro správu hesel služby Azure AD](./howto-sspr-reporting.md) .
 
 > [!NOTE]
->  Musíte být [globálním správcem](../users-groups-roles/directory-assign-admin-roles.md)a musíte se vyjádřit, že se tato data budou shromažďovat pro vaši organizaci. Pokud se chcete přihlásit, musíte navštívit kartu pro vytváření sestav nebo protokoly auditu na portálu Azure Portal aspoň jednou. Data nebudou pro vaši organizaci shromažďována.
+>  Musíte být [globálním správcem](../roles/permissions-reference.md)a musíte se vyjádřit, že se tato data budou shromažďovat pro vaši organizaci. Pokud se chcete přihlásit, musíte navštívit kartu pro vytváření sestav nebo protokoly auditu na portálu Azure Portal aspoň jednou. Data nebudou pro vaši organizaci shromažďována.
 
 Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30 dnů. Pokud audit zabezpečení v rámci vaší společnosti vyžaduje delší dobu uchovávání, je nutné tyto protokoly exportovat a spotřebovat do nástroje SIEM, jako je například [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk nebo ArcSight.
 

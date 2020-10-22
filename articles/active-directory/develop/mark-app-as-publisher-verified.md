@@ -12,18 +12,18 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258332"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363449"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Označení aplikace jako ověřené vydavatelem
 
 Když registrace aplikace má ověřeného vydavatele, znamená to, že vydavatel aplikace [ověřil](/partner-center/verification-responses) svoji identitu pomocí svého účtu Microsoft Partner Network (MPN) a přidružil tento účet MPN k registraci aplikace. Tento článek popisuje, jak dokončit proces [ověření vydavatele](publisher-verification-overview.md) .
 
-## <a name="quickstart"></a>Rychlé zprovoznění
+## <a name="quickstart"></a>Rychlý start
 Pokud už jste zaregistrovaní v Microsoft Partner Network (MPN) a splnili jste [požadavky](publisher-verification-overview.md#requirements), můžete začít hned: 
 
 1. Přihlaste se k [portálu pro registraci aplikací](https://aka.ms/PublisherVerificationPreview) pomocí [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md)
@@ -42,7 +42,7 @@ Ujistěte se, že jste splnili [požadavky](publisher-verification-overview.md#r
 
 1. Ujistěte se, že jste přihlášeni pomocí služby [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) k účtu organizace (Azure AD), který je autorizovaný k provádění změn v aplikacích, které chcete označit jako vydavatel, a v účtu MPN v partnerském centru.
 
-    - V Azure AD musí být tento uživatel členem jedné z následujících [rolí](../users-groups-roles/directory-assign-admin-roles.md): správce aplikace, správce cloudové aplikace, globální správce. 
+    - V Azure AD musí být tento uživatel členem jedné z následujících [rolí](../roles/permissions-reference.md): správce aplikace, správce cloudové aplikace, globální správce. 
 
     - V partnerském centru musí mít tento uživatel tyto [role](/partner-center/permissions-overview): správce MPN, účty správce nebo globální správce (Toto je sdílená role spravovaná ve službě Azure AD). 
 

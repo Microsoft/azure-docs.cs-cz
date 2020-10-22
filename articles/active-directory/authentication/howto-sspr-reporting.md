@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92b9d3c51a9240b7dfc0f8e815735f0e1ecd4dd3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968306"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363602"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti vytváření sestav správy hesel v Azure AD
 
@@ -27,7 +27,7 @@ Po nasazení mnoho organizací chce zjistit, jak nebo jestli se ve skutečnosti 
 Následující dotazy mohou být zodpovězené sestavami, které existují v [Azure Portal](https://portal.azure.com/):
 
 > [!NOTE]
-> Musíte být [globálním správcem](../users-groups-roles/directory-assign-admin-roles.md)a musíte se vyjádřit, že se tato data budou shromažďovat jménem vaší organizace. Chcete-li se vyjádřit výslovný souhlas, musíte navštívit kartu pro **vytváření sestav** nebo protokoly auditu aspoň jednou. Do té doby nebudou pro vaši organizaci shromažďována data.
+> Musíte být [globálním správcem](../roles/permissions-reference.md)a musíte se vyjádřit, že se tato data budou shromažďovat jménem vaší organizace. Chcete-li se vyjádřit výslovný souhlas, musíte navštívit kartu pro **vytváření sestav** nebo protokoly auditu aspoň jednou. Do té doby nebudou pro vaši organizaci shromažďována data.
 >
 
 * Kolik lidí zaregistrovalo pro resetování hesla?

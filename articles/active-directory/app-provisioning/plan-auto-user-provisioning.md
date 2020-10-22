@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070363"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363687"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -42,7 +42,7 @@ Mezi klíčové výhody povolení automatického zřizování uživatelů patř�
 
 * **Snižte náklady**. Automatické zřizování uživatelů snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Omezuje nutnost vlastních řešení pro zřizování uživatelů, skriptů a protokolů auditu.
 
-### <a name="licensing"></a>Licensing
+### <a name="licensing"></a>Licencování
 
 Služba Azure AD poskytuje samoobslužnou integraci jakékoli aplikace pomocí šablon poskytovaných v nabídce Galerie aplikací. Úplný seznam licenčních požadavků najdete na [stránce licencování Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -139,13 +139,13 @@ Komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně komuni
 
 Doporučujeme, aby počáteční konfigurace automatického zřizování uživatelů byla v testovacím prostředí s malou podmnožinou uživatelů, než se škáluje na všechny uživatele v produkčním prostředí. Podívejte se na [osvědčené postupy](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) pro spuštění pilotního projektu.
 
-#### <a name="best-practices-for-a-pilot"></a>Osvědčené postupy pro pilotní nasazení  
+#### <a name="best-practices-for-a-pilot"></a>Osvědčené postupy pro pilotní nasazení  
 
 Pilotní nasazení vám umožní otestovat malou skupinu před tím, než se nasadí funkce pro každého. Ujistěte se, že jako součást testování je každý případ použití v rámci vaší organizace důkladně testován.
 
 V první vlny, cílení na IT, použitelnost a další vhodné uživatele, kteří můžou testovat a poskytovat zpětnou vazbu. Tuto zpětnou vazbu použijte k dalšímu vývoji komunikace a pokynů, které odesíláte vašim uživatelům, a poskytněte přehledy o typech problémů, které mohou pracovníci podpory vidět.
 
-Rozšiřte zavedení na větší skupiny uživatelů tím, že zvýšíte rozsah cílových skupin. To se dá udělat prostřednictvím [členství v dynamické skupině](../users-groups-roles/groups-dynamic-membership.md)nebo ručním přidáním uživatelů do cílových skupin.
+Rozšiřte zavedení na větší skupiny uživatelů tím, že zvýšíte rozsah cílových skupin. To se dá udělat prostřednictvím [členství v dynamické skupině](../enterprise-users/groups-dynamic-membership.md)nebo ručním přidáním uživatelů do cílových skupin.
 
 ## <a name="plan-application-connections-and-administration"></a>Plánování připojení a správy aplikací
 

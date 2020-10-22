@@ -51,8 +51,6 @@
               href: ./database/security-controls-policy.md
             - name: Standardní hodnoty zabezpečení
               href: database/security-baseline.md
-            - name: Atributy zabezpečení
-              href: database/security-controls.md
             - name: Azure Defender for SQL
               href: database/azure-defender-for-sql.md
             - name: Rozšířená ochrana před internetovými útoky

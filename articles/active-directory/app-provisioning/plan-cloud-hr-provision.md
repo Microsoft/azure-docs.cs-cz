@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070380"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363653"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -73,16 +73,16 @@ Tato schopnost zajišťování IT na základě lidských zdrojů nabízí tyto v
 - **Řešení dodržování předpisů a zásad správného řízení:** Azure AD podporuje protokoly nativního auditu pro požadavky uživatelů na zřizování prováděné aplikacemi ze zdrojového i cílového systému. Díky auditování můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
 - **Spravovat náklady:** Automatické zřizování snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Díky starším a zastaralým platformám omezuje nutnost sestavování řešení pro zřizování uživatelů vytvořených v průběhu času.
 
-### <a name="licensing"></a>Licensing
+### <a name="licensing"></a>Licencování
 
 Pokud chcete nakonfigurovat aplikaci cloudového HR na integraci zřizování uživatelů Azure AD, budete potřebovat platnou [licenci Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) a licenci pro aplikaci cloudového HR, jako je například Workday nebo SuccessFactors.
 
 Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a je zajištěná v rámci služby Active Directory nebo Azure AD, potřebujete také platnou licenci pro předplatného Azure AD Premium P1 nebo vyšší. Jakýkoli nesprávný počet licencí vlastněných v aplikaci cloudového HR může vést k chybám při zřizování uživatele.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-- [Správce hybridní identity](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator) Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
-- Role [Správce aplikací](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) Azure AD pro konfiguraci zřizování aplikace v Azure Portal
+- [Správce hybridní identity](../roles/permissions-reference.md#hybrid-identity-administrator) Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
+- Role [Správce aplikací](../roles/permissions-reference.md#application-administrator) Azure AD pro konfiguraci zřizování aplikace v Azure Portal
 - Instance testu a výroby aplikace cloudového HR.
 - Oprávnění správce v aplikaci cloudového HR k vytvoření uživatele Integration System a provedení změn v datech testování zaměstnanců pro účely testování.
 - V případě zřizování uživatelů pro službu Active Directory se pro hostování agenta Azure AD Connectho zřizování vyžaduje server se systémem Windows Server 2012 nebo vyšší s modulem runtime .NET 4.7.1 +.
@@ -110,7 +110,7 @@ Následující příklad popisuje architekturu řešení zřizování koncových
 
 #### <a name="description-of-workflow"></a>Popis pracovního postupu
 
-V diagramu jsou uvedené následující klíčové kroky:  
+V diagramu jsou uvedené následující klíčové kroky:  
 
 1. **Tým HR** provádí transakce v tenantovi cloudové aplikace.
 2. **Služba zřizování Azure AD** spouští naplánované cykly z tenanta aplikace cloudového HR a identifikuje změny, které je potřeba zpracovat pro synchronizaci se službou Active Directory.

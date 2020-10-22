@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: e9a4575ce2f353d61654263aea8d968c650a689e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4023f8584e7b901a19906235d98982abbbfbaaf8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79499747"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364132"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>Rychlý Start: pozvání uživatelů k Video Indexer
 
@@ -27,10 +27,9 @@ Pokud chcete spolupracovat s kolegy, můžete je pozvat na účet Video Indexer.
 ## <a name="invite-new-users"></a>Pozvat nové uživatele
 
 1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/). Ujistěte se, že jste připojení k účtu správce.
-1. V horní nabídce klikněte na tlačítko **pozvat jiné** :
+1. Pokud jste správce, zobrazí se v pravém horním rohu tlačítko **sdílet účet** . Klikněte na tlačítko a můžete pozvat uživatele. 
 
-   ![Pozvat nové uživatele](./media/invite-users/invite-users.png)
-
+   ![Pozvat nové uživatele](./media/invite-users/share-account.png)
 1. Přidejte e-mailové adresy osob, které chcete přidat do účtu Video Indexer:
 
     ![Pozvat uživatele k tomuto účtu](./media/invite-users/invite-to-account.png)
