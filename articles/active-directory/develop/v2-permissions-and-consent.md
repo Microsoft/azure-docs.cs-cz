@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
-ms.openlocfilehash: 79475414f6785474596beae208fefae81a673dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842678"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365846"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Oprávnění a souhlas v koncovém bodu Microsoft Identity Platform
 
@@ -54,13 +54,13 @@ Aplikace tyto oprávnění nejčastěji vyžádá zadáním oborů v požadavcí
 
 Platforma Microsoft Identity Platform podporuje dva typy oprávnění: **delegovaná oprávnění** a **oprávnění aplikací**.
 
-* **Delegovaná oprávnění** se používají v aplikacích, které mají přihlášeného uživatele k dispozici. Pro tyto aplikace buď uživatel nebo správce souhlasí s oprávněními, která aplikace požaduje, a aplikace je delegovaná oprávnění, aby fungovala jako přihlášený uživatel při volání cílového prostředku. Některá delegovaná oprávnění mohou být odsouhlasena uživateli bez oprávnění správce, ale některá z vyšších privilegovaných oprávnění vyžadují [souhlas správce](#admin-restricted-permissions). Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+* **Delegovaná oprávnění** se používají v aplikacích, které mají přihlášeného uživatele k dispozici. Pro tyto aplikace buď uživatel nebo správce souhlasí s oprávněními, která aplikace požaduje, a aplikace je delegovaná oprávnění, aby fungovala jako přihlášený uživatel při volání cílového prostředku. Některá delegovaná oprávnění mohou být odsouhlasena uživateli bez oprávnění správce, ale některá z vyšších privilegovaných oprávnění vyžadují [souhlas správce](#admin-restricted-permissions). Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../roles/permissions-reference.md).
 
 * **Oprávnění aplikací** se používají v aplikacích, které se spouštějí bez přihlášeného uživatele. například aplikace, které běží jako služby nebo procesy na pozadí.  Oprávnění aplikace může pouze [zasílat správce](#requesting-consent-for-an-entire-tenant).
 
 _Skutečná oprávnění_ jsou oprávnění, která aplikace bude mít při provádění požadavků na cílový prostředek. Je důležité pochopit rozdíl mezi delegovanými a aplikačními oprávněními, ke kterým je vaše aplikace udělena, a jejím efektivním oprávněním při volání cílového prostředku.
 
-- U delegovaných oprávnění budou _skutečná oprávnění_ aplikace udělena s nejnižšími privilegovanými oprávněními, kterým byla aplikace udělena (prostřednictvím souhlasu), a oprávněními aktuálně přihlášeného uživatele. Aplikace nemůže mít nikdy více oprávnění než přihlášený uživatel. V rámci organizací je možné oprávnění přihlášeného uživatele určit pomocí zásady nebo členství v jedné nebo několika rolích správce. Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+- U delegovaných oprávnění budou _skutečná oprávnění_ aplikace udělena s nejnižšími privilegovanými oprávněními, kterým byla aplikace udělena (prostřednictvím souhlasu), a oprávněními aktuálně přihlášeného uživatele. Aplikace nemůže mít nikdy více oprávnění než přihlášený uživatel. V rámci organizací je možné oprávnění přihlášeného uživatele určit pomocí zásady nebo členství v jedné nebo několika rolích správce. Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../roles/permissions-reference.md).
 
    Předpokládejme například, že vaše aplikace získala oprávnění User. prohledatelné _. všechna_ delegovaná oprávnění. Toto oprávnění vaší aplikaci výslovně uděluje oprávnění ke čtení a aktualizaci profilu každého uživatele v organizaci. Pokud je přihlášený uživatel globální správce, vaše aplikace bude moct aktualizovat profil každého uživatele v organizaci. Pokud ale přihlášený uživatel není v roli správce, bude moct aplikace aktualizovat jenom profil přihlášeného uživatele. Nebude moct aktualizovat profily ostatních uživatelů v organizaci, protože uživatel, jehož jménem má aplikace oprávnění jednat, tato oprávnění nemá.
 
@@ -196,10 +196,10 @@ https://graph.microsoft.com/mail.send
 | Parametr        | Stav        | Popis                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Povinné | Tenant adresáře, ze kterého chcete požádat o oprávnění. Dá se poskytnout ve formátu GUID nebo popisného názvu nebo obecně odkazovaného v rámci organizací, jak je vidět v příkladu. Nepoužívejte "Common", protože osobní účty nemůžou poskytovat souhlas správce, s výjimkou kontextu tenanta. Aby se zajistila nejlepší kompatibilita s osobními účty, které spravují klienty, použijte ID tenanta, pokud je to možné. |
-| `client_id` | Vyžadováno | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
-| `redirect_uri` | Vyžadováno |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
+| `client_id` | Povinné | **ID aplikace (klienta)** , které [Azure Portal – registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) prostředí přiřazené k vaší aplikaci. |
+| `redirect_uri` | Povinné |Identifikátor URI přesměrování, kde má být odeslána odpověď pro zpracování vaší aplikace. Musí přesně odpovídat jednomu z identifikátorů URI přesměrování, které jste zaregistrovali na portálu pro registraci aplikací. |
 | `state` | Doporučeno | Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Použijte stav ke kódování informací o stavu uživatele v aplikaci předtím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-|`scope`        | Vyžadováno        | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statické (pomocí [`/.default`](#the-default-scope) ) nebo dynamické obory.  To může zahrnovat obory OIDC ( `openid` , `profile` , `email` ). Pokud potřebujete oprávnění aplikace, musíte použít `/.default` k vyžádání staticky nakonfigurovaného seznamu oprávnění.  |
+|`scope`        | Povinné        | Definuje sadu oprávnění, kterou aplikace požaduje. Může se jednat o statické (pomocí [`/.default`](#the-default-scope) ) nebo dynamické obory.  To může zahrnovat obory OIDC ( `openid` , `profile` , `email` ). Pokud potřebujete oprávnění aplikace, musíte použít `/.default` k vyžádání staticky nakonfigurovaného seznamu oprávnění.  |
 
 
 V tomto okamžiku Azure AD vyžaduje, aby se k dokončení žádosti přihlásil správce tenanta. Správce se vyzve ke schválení všech oprávnění, která jste si vyžádali v `scope` parametru.  Pokud jste použili statickou `/.default` hodnotu (), bude fungovat jako koncový bod souhlasu správce v 1.0 a souhlas se žádostí pro všechny obory nalezené v požadovaných oprávněních pro danou aplikaci.

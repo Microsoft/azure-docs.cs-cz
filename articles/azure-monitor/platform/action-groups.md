@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104389"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367733"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -135,7 +135,7 @@ E-mail s oznámením se pošle jenom na *primární e-mailovou* adresu.
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./alerts-rate-limiting.md) .
 
-### <a name="function"></a>Funkce
+### <a name="function"></a>Function
 Zavolá existující koncový bod HTTP triggeru v [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
 
 Ve skupině akcí můžete mít omezený počet akcí funkce.
@@ -157,7 +157,7 @@ Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory 
 2. Povolením použití skupin akcí v aplikaci Azure AD.
 
     > [!NOTE]
-    > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) .
+    > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](../../active-directory/roles/permissions-reference.md#available-roles) .
     
     - Upravte volání Connect-AzureAD skriptu PowerShellu tak, aby používalo vaše ID tenanta Azure AD.
     - Upravte $myAzureADApplicationObjectId proměnné skriptu PowerShellu tak, aby používala ID objektu vaší aplikace služby Azure AD.

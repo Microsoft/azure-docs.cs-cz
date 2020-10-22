@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 869513d5a668544b2aa8afb13bb56e8293788b06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570644"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368719"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Omezení přístupu uživatelů k operacím s daty v Azure Cosmos DB
 
 V Azure Cosmos DB existují dva způsoby, jak ověřit interakce s databázovou službou:
 
 - použití identity Azure Active Directory při interakci s Azure Portal,
-- použití [klíčů](secure-access-to-data.md#primary-keys) Azure Cosmos DB nebo [tokenů prostředků](secure-access-to-data.md#resource-tokens) při vydávání volání z rozhraní API a sad SDK.
+- použití [klíčů](database-security.md#primary-keys) Azure Cosmos DB nebo [tokenů prostředků](secure-access-to-data.md#resource-tokens) při vydávání volání z rozhraní API a sad SDK.
 
 Každá metoda ověřování poskytuje přístup k různým sadám operací s nějakým překrytím:
 

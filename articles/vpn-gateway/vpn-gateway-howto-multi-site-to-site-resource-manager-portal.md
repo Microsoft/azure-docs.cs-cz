@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "89401193"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením služby VPN Gateway
@@ -62,7 +62,7 @@ Ověřte následující položky:
      ![Přidat stránku připojení](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Přidat stránku připojení")<br>
 
 ## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>Část 2 – Přidání brány místní sítě
-1. Klikněte na **Brána místní sítě** ***zvolit bránu místní sítě***. Tím se otevře stránka **Vybrat bránu místní sítě** .
+1. Klikněte na **Brána místní sítě** zvolit bránu ** _místní sítě_*_. Tím otevřete _* vyberte stránku brána místní sítě** .
    
     ![Zvolit bránu místní sítě](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Zvolit bránu místní sítě")<br>
 2. Kliknutím na **vytvořit nový** otevřete stránku **vytvořit bránu místní sítě** .

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342140"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368077"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Ochrana koncových bodů pomocí integrovaného řešení EDR Security Center: Microsoft Defender pro koncové body
 
@@ -85,7 +85,7 @@ Po nakonfigurování umístění ho nemůžete změnit. Pokud potřebujete přes
 1. V nabídce Security Center vyberte **cenové & nastavení**.
 1. Vyberte předplatné, které chcete změnit.
 1. Vyberte **detekci hrozeb**.
-1. Vyberte možnost **Povolení ochrany ATP v programu Windows Defender pro přístup k datům**a vyberte **Uložit**.
+1. Zaškrtněte políčko **povolí programu Microsoft Defender, aby měl koncový bod přístup k datům**, a vyberte **Uložit**.
 
     :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Microsoft Defender pro vlastní Security Center koncového bodu":::
 

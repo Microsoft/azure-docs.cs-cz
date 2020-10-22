@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145276"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366322"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Plánování nasazení podmíněného přístupu
 
@@ -220,7 +220,7 @@ Vytváření zásad pro jednotlivé aplikace nebude efektivní a vede k obtížn
 
 ### <a name="set-up-emergency-access-accounts"></a>Nastavení účtů pro nouzový přístup
 
-Pokud zásadu nakonfigurujete, může se organizacím z Azure Portal uzamknout. Omezte dopad náhodného správce tak, že vytvoříte dva nebo víc [účtů pro nouzový přístup](../users-groups-roles/directory-emergency-access.md) ve vaší organizaci.
+Pokud zásadu nakonfigurujete, může se organizacím z Azure Portal uzamknout. Omezte dopad náhodného správce tak, že vytvoříte dva nebo víc [účtů pro nouzový přístup](../roles/security-emergency-access.md) ve vaší organizaci.
 
 * Vytvořte uživatelský účet vyhrazený pro správu zásad a vyloučíte ho ze všech vašich zásad.
 
@@ -376,7 +376,7 @@ Některé organizace mají pro tento účel testovací klienty. Může však bý
 
 Testovací plán je důležitý pro porovnání očekávaných výsledků a skutečných výsledků. Před testováním byste měli vždycky očekávat. Následující tabulka popisuje příklady testovacích případů. Upravte scénáře a očekávané výsledky na základě toho, jak jsou nakonfigurované zásady certifikační autority.
 
-| Zásady| Scénář| Očekávaný výsledek |
+| Zásada| Scénář| Očekávaný výsledek |
 | - | - | - |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace v důvěryhodném umístění/v práci.| Uživatel není vyzván k MFA. |
 | [Vyžadovat MFA, pokud není v práci](untrusted-networks.md)| Autorizovaný uživatel se přihlásí do aplikace, když není v důvěryhodném umístění/v práci.| Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit. |

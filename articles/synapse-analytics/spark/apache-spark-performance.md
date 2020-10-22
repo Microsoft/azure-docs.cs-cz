@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249463"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368600"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Optimalizace úloh Apache Spark (Preview) ve službě Azure synapse Analytics
 
@@ -52,7 +52,7 @@ Starší verze Sparku používají RDD k abstraktním datům, Spark 1,3 a 1,6 za
 
 Spark podporuje mnoho formátů, jako je CSV, JSON, XML, Parquet, orc a Avro. Spark se dá rozšířit tak, aby podporoval mnoho dalších formátů s externími zdroji dat. Další informace najdete v tématu [Apache Spark balíčky](https://spark-packages.org).
 
-Nejlepší formát pro výkon je Parquet s *kompresí s přichycením*, což je výchozí hodnota ve Sparku 2. x. Parquet ukládá data ve sloupcovém formátu a je vysoce optimalizovaná ve Sparku. I když *Komprese přichycení* může mít za následek větší soubory, než říkáte kompresi gzip. Vzhledem k povaze těchto souborů se tyto soubory dekomprimuje rychleji]
+Nejlepší formát pro výkon je Parquet s *kompresí s přichycením*, což je výchozí hodnota ve Sparku 2. x. Parquet ukládá data ve sloupcovém formátu a je vysoce optimalizovaná ve Sparku. I když *Komprese přichycení* může mít za následek větší soubory, než říkáte kompresi gzip. Vzhledem k povaze těchto souborů se tyto soubory dekomprimuje rychleji.
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
 
@@ -77,7 +77,7 @@ Apache Spark ve službě Azure synapse používá PŘÍZe [Apache HADOOP příze
 Pokud chcete adresovat zprávy o nedostatku paměti, zkuste:
 
 * Projděte si přehledy DAG Management. Zmenšete ze zdrojových dat zmenšeného na straně mapy, před rozdělením na oddíly (nebo nastavit interval), maximalizujte jednotlivá místa a snižte množství odesílaných dat.
-* Preferovat `ReduceByKey` s pevným omezením paměti `GroupByKey` , které poskytuje agregace, okna a další funkce, ale má Ann nevázaný limit paměti.
+* Preferovat `ReduceByKey` s pevným omezením paměti `GroupByKey` , které poskytuje agregace, okna a další funkce, ale má neomezenou velikost paměti.
 * Raději `TreeReduce` , což více funguje na vykonavatelích nebo oddílech, na `Reduce` , který vše funguje na ovladači.
 * Využijte místo objektů RDD na nižší úrovni datový rámec.
 * Vytvořte ComplexTypes, které zapouzdřují akce, například "horních N", různé agregace nebo operace s okny.
@@ -178,6 +178,6 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Apache Spark ladění](https://spark.apache.org/docs/latest/tuning.html)
+- [Apache Spark ladění](https://spark.apache.org/docs/2.4.5/tuning.html)
 - [Jak ve skutečnosti ladit úlohy Apache Spark, aby fungovaly](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 - [Serializace kryo](https://github.com/EsotericSoftware/kryo)

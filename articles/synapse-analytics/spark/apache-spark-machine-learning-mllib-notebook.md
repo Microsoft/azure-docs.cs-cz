@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 667ce8ede9469063e5714470a8e18c218f3c2c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b723c77b193b499286a692bd5145131a904a7f07
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540315"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369331"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Kurz: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -22,7 +22,7 @@ V tomto článku se naučíte, jak pomocí Apache Spark [MLlib](https://spark.ap
 
 MLlib je základní knihovna Sparku, která poskytuje řadu nástrojů, které jsou užitečné pro úlohy strojového učení, včetně nástrojů, které jsou vhodné pro:
 
-- Classification
+- Klasifikace
 - Regrese
 - Clustering
 - Modelování tématu
@@ -286,7 +286,7 @@ Po dokončení používání aplikace vypněte Poznámkový blok a uvolněte ho 
 
 - [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/latest/)
+- [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/2.4.5/)
 
 >[!NOTE]
 > Některé oficiální dokumentace Apache Spark spoléhá na použití konzoly Spark, která není v Azure synapse Spark dostupná. Místo toho používejte [Poznámkový blok](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) nebo [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .

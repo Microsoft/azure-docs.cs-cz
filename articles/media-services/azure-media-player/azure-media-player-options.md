@@ -7,12 +7,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 392ecff2ab120e713a07d130493a4a8339dae5ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67f1f2fe3f6ac1061f1edcd22532bffaf0a1e815
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296191"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366866"
 ---
 # <a name="options"></a>Možnosti #
 
@@ -102,7 +102,7 @@ Nastavením této možnosti na true video element bude trvat celou šířku nad�
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-Další vlastnosti `playbackSpeed` nastavení jsou dány objektem [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) .
+Další vlastnosti `playbackSpeed` nastavení jsou dány objektem [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/playbackspeedoptions) .
 
 Příklad nastavení možností rychlosti přehrávání v JavaScriptu:
 

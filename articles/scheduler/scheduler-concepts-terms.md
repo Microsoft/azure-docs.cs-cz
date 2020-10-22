@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80878387"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368158"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
@@ -40,7 +40,7 @@ Na nejvyšší úrovni rozhraní REST API služby Scheduler zpřístupňuje tyto
 
 ### <a name="job-management"></a>Správa úloh
 
-Podporuje operace vytváření a úpravy úloh. Všechny úlohy musí patřit do existující kolekce, aby se implicitně nevytvářely další kolekce. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy](https://docs.microsoft.com/rest/api/scheduler/jobs). Zde je adresa identifikátoru URI pro tyto operace:
+Podporuje operace vytváření a úpravy úloh. Všechny úlohy musí patřit do existující kolekce, aby se implicitně nevytvářely další kolekce. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy](/rest/api/scheduler/jobs). Zde je adresa identifikátoru URI pro tyto operace:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>Správa kolekce úloh
 
-Podporuje operace vytváření a úpravy úloh a kolekce úloh, které se mapují na kvóty a sdílená nastavení. Kvóty určují například maximální počet úloh nebo nejmenší interval opakování. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Kolekce úloh](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Zde je adresa identifikátoru URI pro tyto operace:
+Podporuje operace vytváření a úpravy úloh a kolekce úloh, které se mapují na kvóty a sdílená nastavení. Kvóty určují například maximální počet úloh nebo nejmenší interval opakování. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Kolekce úloh](/rest/api/scheduler/jobcollections). Zde je adresa identifikátoru URI pro tyto operace:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>Správa historie úloh
 
-Podporuje operaci GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Zahrnuje podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy – Výpis historie úloh](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). Zde je adresa identifikátoru URI pro tuto operaci:
+Podporuje operaci GET pro načtení historie provádění úloh, jako je uplynulá doba úlohy a výsledky provedení úlohy, za posledních 60 dní. Zahrnuje podporu parametru řetězce dotazu pro filtrování podle stavu a statusu. Další informace najdete v tématu [Rozhraní REST API služby Scheduler – Úlohy – Výpis historie úloh](/rest/api/scheduler/jobs/listjobhistory). Zde je adresa identifikátoru URI pro tuto operaci:
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -84,11 +84,11 @@ Azure Scheduler podporuje několik typů úloh:
 
 | Prvek | Povinné | Popis | 
 |---------|----------|-------------| 
-| [**Spuštění**](#start-time) | No | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**Spuštění**](#start-time) | Ne | Čas spuštění úlohy s posunem časového pásma ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**kroky**](#action) | Ano | Podrobnosti pro primární akci, které můžou zahrnovat objekt **errorAction** | 
-| [**errorAction**](#error-action) | No | Podrobnosti pro sekundární akci, která se spustí, pokud primární akce selže |
-| [**vzorec**](#recurrence) | No | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
-| [**retryPolicy**](#retry-policy) | No | Podrobnosti o tom, jak často se má akce opakovat | 
+| [**errorAction**](#error-action) | Ne | Podrobnosti pro sekundární akci, která se spustí, pokud primární akce selže |
+| [**vzorec**](#recurrence) | Ne | Podrobnosti pro opakující se úlohu, například frekvence a interval opakování | 
+| [**retryPolicy**](#retry-policy) | Ne | Podrobnosti o tom, jak často se má akce opakovat | 
 | [**státech**](#state) | Ano | Podrobnosti o aktuálním stavu úlohy |
 | [**stav**](#status) | Ano | Podrobnosti o aktuálním statusu úlohy, který řídí služba |
 ||||
@@ -214,7 +214,7 @@ Tady je příklad akce tématu služby Service Bus:
 },
 ```
 
-Další informace o tokenech sdíleného přístupového podpisu (SAS) najdete v tématu [Autorizace s využitím sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Další informace o tokenech sdíleného přístupového podpisu (SAS) najdete v tématu [Autorizace s využitím sdílených přístupových podpisů](../storage/common/storage-sas-overview.md).
 
 <a name="error-action"></a>
 
@@ -249,15 +249,15 @@ Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakov
 | Vlastnost | Požaduje se | Hodnota | Popis | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
-| **interval** | No | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
-| **CXL** | No | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
-| **hodin** | No | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
-| **minuty** | No | 0 až 59 | Pole s minutami, kdy se má úloha spustit | 
-| **months** | No | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
-| **monthDays** | No | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
-| **weekDays** | No | Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle) | Pole se dny v týdnu, kdy se má úloha spustit | 
-| **výpočtu** | No | <*nTato*> | Počet opakování. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
-| **endTime** | No | <*nTato*> | Datum a čas, kdy se má opakování zastavit. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
+| **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
+| **CXL** | Ne | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
+| **hodin** | Ne | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
+| **minuty** | Ne | 0 až 59 | Pole s minutami, kdy se má úloha spustit | 
+| **months** | Ne | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
+| **monthDays** | Ne | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
+| **weekDays** | Ne | Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle) | Pole se dny v týdnu, kdy se má úloha spustit | 
+| **výpočtu** | Ne | <*nTato*> | Počet opakování. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
+| **endTime** | Ne | <*nTato*> | Datum a čas, kdy se má opakování zastavit. Ve výchozím nastavení se opakování bude provádět donekonečna. Není možné použít vlastnost **count** a zároveň **endTime** – přednost bude mít pravidlo, které se dokončí jako první. | 
 ||||
 
 Další informace o těchto elementech najdete v tématu [Vytváření složitých plánů a pokročilých opakování](../scheduler/scheduler-advanced-complexity.md).
@@ -279,8 +279,8 @@ Pro případ, že by došlo k selhání úlohy služby Scheduler, můžete nasta
 | Vlastnost | Požaduje se | Hodnota | Popis | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ano | **Pevné**, **Žádné** | Určuje, jestli jste zadali určili zásadu opakování (**pevné**), nebo ne (**žádné**). | 
-| **retryInterval** | No | PT30S | Určuje interval a frekvenci opakovaných pokusů ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimální hodnota je 15 sekund a maximální hodnota je 18 měsíců. | 
-| **retryCount** | No | 4 | Určuje počet opakovaných pokusů. Maximální hodnota je 20. | 
+| **retryInterval** | Ne | PT30S | Určuje interval a frekvenci opakovaných pokusů ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimální hodnota je 15 sekund a maximální hodnota je 18 měsíců. | 
+| **retryCount** | Ne | 4 | Určuje počet opakovaných pokusů. Maximální hodnota je 20. | 
 ||||
 
 Další informace najdete v tématu [Vysoká dostupnost a spolehlivost](../scheduler/scheduler-high-availability-reliability.md).
@@ -308,7 +308,7 @@ Po spuštění úlohy vrací Scheduler informace o stavu úlohy prostřednictví
 * Počet selhání, pokud k nějakým došlo
 * Počet chyb, pokud k nějakým došlo
 
-Například:
+Příklad:
 
 ```json
 "status": {

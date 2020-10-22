@@ -3,12 +3,12 @@ title: Kubernetes monitorování pomocí Azure Monitor pro kontejnery | Microsof
 description: Tento článek popisuje, jak můžete zobrazit a analyzovat výkon clusteru Kubernetes s Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 5d267715ed9748c69c33bbd7bc5af0db7b118502
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994771"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368753"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Monitorování výkonu clusteru Kubernetes s využitím Azure Monitor pro kontejnery
 
@@ -24,7 +24,7 @@ Hlavní rozdíly v monitorování clusteru Windows serveru s Azure Monitor pro k
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Zobrazení více clusterů z Azure Monitor
 
@@ -75,7 +75,7 @@ Následující tabulka uvádí rozpis výpočtu, který řídí stav pro monitor
 | |Neznámý |Pokud není uvedeno za posledních 30 minut |
 |**Systém pod**| | |
 | |V pořádku |100 % |
-| |Upozornění |Není k dispozici |
+| |Upozornění |– |
 | |Kritické |<100% |
 | |Neznámý |Pokud není uvedeno za posledních 30 minut |
 |**Node** | | |
@@ -93,7 +93,7 @@ Přístup k Azure monitor pro kontejnery je k dispozici přímo z clusteru AKS v
 - Cluster
 - Uzly
 - Kontrolery
-- Containers
+- Kontejnery
 
 >[!NOTE]
 >Prostředí popsané ve zbývající části tohoto článku platí i pro zobrazení výkonu a stavu clusterů Kubernetes hostovaných v Azure Stack nebo jiném prostředí, když je vybraný ze zobrazení více clusterů.
@@ -195,7 +195,7 @@ Informace, které se zobrazí po zobrazení karty **uzly** , jsou popsány v ná
 | Status | Kubernetes zobrazení stavu uzlu. |
 | Minimální &nbsp; %, prům .% &nbsp; , 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, max.&nbsp;%  | Průměrné procento uzlů na základě percentilu během vybrané doby trvání. |
 | Min, AVG, 50, 90, 95., Max | Průměrná hodnota uzlů na základě hodnoty percentilu v době zvolené doby trvání. Průměrná hodnota se měří od nastaveného limitu CPU/paměti pro uzel. V případě lusků a kontejnerů je to průměrná hodnota uvedená v hostiteli. |
-| Containers | Počet kontejnerů. |
+| Kontejnery | Počet kontejnerů. |
 | Doba provozu | Představuje čas, kdy byl uzel spuštěn nebo byl restartován. |
 | Kontrolér | Pouze pro kontejnery a lusky. Zobrazuje, ve kterém řadiči se nachází. Ne všechny lusky jsou v kontroleru, takže se může zobrazit **N/a**. |
 | Trend min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | Trend pruhového grafu představuje procento metriky průměrného percentilu řadiče. |
@@ -238,7 +238,7 @@ Informace, které se zobrazí při zobrazení řadičů, jsou popsány v násled
 | Status | Stav souhrnu kontejnerů po dokončení jeho spuštění se stavem, jako je například *OK*, *ukončeno*, *Chyba*, *Zastaveno*nebo *pozastaveno*. Pokud je kontejner spuštěný, ale stav buď nebyl správně zobrazen nebo nebyl vyzvednut agentem a nereagoval na více než 30 minut, je stav *Neznámý*. Další podrobnosti o ikoně stavu jsou uvedeny v následující tabulce.|
 | Minimální &nbsp; %, prům .% &nbsp; , 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, max.&nbsp;%| Souhrnný průměr průměrného procenta každé entity pro vybranou metriku a percentil |
 | Min, AVG, 50, 90, 95., Max  | Souhrn průměrného výkonu procesoru v millicore nebo paměti v kontejneru pro vybraný percentil. Průměrná hodnota se měří od limitu CPU nebo paměti nastaveného pro objekt pod. |
-| Containers | Celkový počet kontejnerů pro řadič nebo pod. |
+| Kontejnery | Celkový počet kontejnerů pro řadič nebo pod. |
 | Opětovné | Souhrn počtu restartování z kontejnerů. |
 | Doba provozu | Představuje čas od spuštění kontejneru. |
 | Node | Pouze pro kontejnery a lusky. Zobrazuje, ve kterém řadiči se nachází. |
@@ -290,6 +290,10 @@ Ikony v poli Stav označují stav online lusků, jak je popsáno v následujíc�
 | ![Ikona posledního hlášeného běžícího stavu](./media/container-insights-analyze/containers-grey-icon.png) | Poslední hlášení běželo, ale nereagovalo víc než 30 minut.|
 | ![Ikona stavu ukončení](./media/container-insights-analyze/containers-terminated-icon.png) | Stav se úspěšně zastavil nebo se nepovedlo zastavit.|
 | ![Ikona stavu selhání](./media/container-insights-analyze/containers-failed-icon.png) | Stav selhání |
+
+## <a name="monitor-and-visualize-network-configurations"></a>Monitorování a vizualizace síťových konfigurací
+Správce zásad sítě Azure zahrnuje informativní metriky Prometheus, které vám umožní monitorovat a lépe pochopit síťové konfigurace. Poskytuje integrované vizualizace v Azure Portal nebo Grafana Labs. Podrobnosti najdete v tématu [monitorování a vizualizace konfigurace sítě pomocí Azure npm](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm).
+
 
 ## <a name="workbooks"></a>Workbooks
 
