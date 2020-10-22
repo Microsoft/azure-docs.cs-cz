@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108299"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364418"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Vytvoření skupiny serverů PostgreSQL Hyperscale s podporou služby Azure Arc
 
@@ -112,7 +112,7 @@ Chcete-li zobrazit koncové body pro instanci PostgreSQL, spusťte následujíc�
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-Například:
+Příklad:
 ```console
 [
   {
@@ -138,7 +138,7 @@ Pokud k testování používáte virtuální počítač Azure, postupujte podle 
 
 Pokud používáte virtuální počítač Azure, IP adresa koncového bodu nezobrazuje _veřejnou_ IP adresu. Veřejnou IP adresu najdete pomocí následujícího příkazu:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -148,7 +148,7 @@ Také je možné, že bude nutné vystavit port skupiny serverů PostgreSQL s š
 
 Pokud chcete nastavit pravidlo, budete muset znát název vašeho NSGu. NSG určíte pomocí příkazu níže:
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -156,7 +156,7 @@ Jakmile budete mít název NSG, můžete přidat pravidlo brány firewall pomoc�
 
 Hodnotu parametru--destination-port-Ranges nahraďte číslem portu, který jste získali v příkazu azdata ARC Postgres server list.
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
@@ -169,7 +169,7 @@ Otevřete Azure Data Studio a připojte se k instanci s IP adresou externího ko
 
 Pamatujte, že pokud používáte virtuální počítač Azure, budete potřebovat _veřejnou_ IP adresu, která je přístupná prostřednictvím následujícího příkazu:
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 

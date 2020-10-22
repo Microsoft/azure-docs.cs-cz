@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 411fa207323a9bff6cfcc3b17769203c444dd844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388676"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363925"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Nasazení vlastních zásad pomocí Azure Pipelines
 
@@ -31,9 +31,9 @@ Pro povolení Azure Pipelines správy vlastních zásad v rámci Azure AD B2C js
 > [!IMPORTANT]
 > Správa Azure AD B2C vlastních zásad pomocí kanálu Azure aktuálně používá operace ve **verzi Preview** , které jsou k dispozici na `/beta` KONCOVÉM bodu rozhraní API Microsoft Graph. Použití těchto rozhraní API v produkčních aplikacích není podporováno. Další informace najdete v referenčních informacích ke [koncovému bodu Microsoft Graph REST API beta](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
+* [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
 * [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
 * Ve vašem tenantovi se zaregistrovala [aplikace pro správu](microsoft-graph-get-started.md) se zásadami oprávnění Microsoft Graph API *. TrustFramework* .
 * [Kanál Azure](https://azure.microsoft.com/services/devops/pipelines/)a přístup k [projektu Azure DevOps Services][devops-create-project]
@@ -131,7 +131,7 @@ Po inicializaci a naplnění vašeho úložiště pomocí vlastních souborů z�
 1. Vyberte kartu **proměnné** .
 1. Přidejte následující proměnné pod **proměnnou kanálu** a nastavte jejich hodnoty tak, jak jsou zadány:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | `clientId` | **ID aplikace (klienta)** aplikace, kterou jste zaregistrovali dříve. |
     | `clientSecret` | Hodnota **tajného klíče klienta** , který jste vytvořili dříve. <br /> Změňte typ proměnné na **tajný kód** (vyberte ikonu zámku). |
@@ -151,7 +151,7 @@ Pak přidejte úkol pro nasazení souboru zásad.
     * **Verze úlohy**: 2. *
     * **Zobrazovaný název**: název zásady, kterou by měl tento úkol odeslat. Například *B2C_1A_TrustFrameworkBase*.
     * **Typ**: cesta k souboru
-    * **Cesta ke skriptu**: vyberte tři tečky (***...***), přejděte do složky *skripty* a pak vyberte soubor *DeployToB2C.ps1* .
+    * **Cesta ke skriptu**: vyberte tři tečky (**_..._* _) přejděte do složky _Scripts * a potom vyberte soubor *DeployToB2C.ps1* .
     * **Náhodné**
 
         Pro **argumenty**zadejte následující hodnoty. Nahraďte `{alias-name}` aliasem, který jste zadali v předchozí části.

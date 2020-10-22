@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22f74d3135597e8627cf7af933f8c6f4fbebc990
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246805"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364044"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při návrhu aplikací pro Cloud. Pojednává o školicích materiálech spolu s bezpečnostními otázkami a koncepty, které je potřeba vzít v úvahu během fází vývoje požadavků a návrhů na [životní cyklus Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
@@ -226,7 +226,7 @@ Ujistěte se, že vaše aplikace v celém vzoru přístupu vynutila [nejnižší
 
 #### <a name="implement-just-in-time-access"></a>Implementace přístupu za běhu
 
-Implementujte přístup za běhu (Just *-in-time* ) k dalšímu snížení doby expozice oprávnění. Použít [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) k:
+Implementujte přístup za běhu (Just *-in-time* ) k dalšímu snížení doby expozice oprávnění. Použít [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-admin-activity) k:
 
 - Poskytněte uživatelům oprávnění, která potřebují pouze JIT.
 - Přiřaďte role pro zkrácenou dobu trvání a jistotu, že se oprávnění odvolají automaticky.
