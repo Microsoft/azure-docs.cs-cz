@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614132"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92358994"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Kurz: třídění, zkoumání a reakce na výstrahy zabezpečení
-Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomocí pokročilých analytických algoritmů a inteligentního rozpoznávání hrozeb a upozorní vás na škodlivé aktivity. Můžete také integrovat výstrahy z dalších produktů a služeb zabezpečení do Security Center a vytvářet vlastní výstrahy na základě vlastních ukazatelů nebo zdrojů informací. Jakmile je vygenerována výstraha, je pro prozkoumání a nápravu nutná rychlá akce. 
+Security Center průběžně analyzuje úlohy hybridního cloudu pomocí pokročilých analýz a analýzy hrozeb, které vás upozorní na potenciálně škodlivé aktivity v cloudových prostředcích. Do Security Center také můžete integrovat výstrahy z dalších produktů a služeb zabezpečení. Po vyvolání výstrahy je potřeba k prozkoumání a nápravě potenciálního problému se zabezpečením použít akci SWIFT. 
 
 V tomto kurzu se naučíte, jak:
 
@@ -31,9 +31,9 @@ V tomto kurzu se naučíte, jak:
 > * Prověření výstrahy zabezpečení a určení hlavní příčiny
 > * Reakce na výstrahu zabezpečení a zmírnění této hlavní příčiny
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pro krokování s funkcemi popsanými v tomto kurzu musíte mít povolený Azure Defender. Azure Defender si můžete vyzkoušet bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Rychlý Start [Začínáme s Security Center](security-center-get-started.md) vás provede upgradem.
 
 
@@ -93,8 +93,8 @@ Po prozkoumání výstrahy a porozumění jejímu oboru můžete reagovat na vý
 
     Tím se výstraha z hlavního seznamu výstrah odstraní. Pomocí filtru ze stránky seznam výstrah můžete zobrazit všechny výstrahy se stavem **odeslané** .
 
-1.  Volitelně můžete poskytnout zpětnou vazbu k výstraze Microsoftu:
-    1. Označení výstrahy jako **užitečné** nebo **neužitečné** a poskytování
+1.  Doporučujeme vám poskytnout zpětnou vazbu k této výstraze Microsoftu:
+    1. Označení výstrahy jako **užitečné** nebo **neužitečné**.
     1. Vyberte důvod a přidejte komentář.
 
         :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Stránka seznam výstrah zabezpečení":::
@@ -122,5 +122,5 @@ Pokud pokračovat nechcete, nebo pokud chcete zakázat některou z těchto funkc
 V tomto kurzu jste se dozvěděli o Security Center funkcích, které se mají použít při reakci na výstrahu zabezpečení. Související materiál najdete v těchto tématech:
 
 - [Reakce na upozornění Azure Defenderu pro Key Vault](defender-for-key-vault-usage.md)
-- [Výstrahy zabezpečení – referenční příručka](alerts-reference.md)
+- [Upozornění zabezpečení – Referenční příručka](alerts-reference.md)
 - [Seznámení s Azure Defenderem](azure-defender.md)
