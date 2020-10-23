@@ -35,7 +35,7 @@ Tento kurz popisuje kroky, které je třeba provést v Code42 i Azure Active Dir
 > * Zřizování skupin a členství ve skupinách v Code42
 > * [Jednotné přihlašování](./code42-tutorial.md) k Code42 (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 

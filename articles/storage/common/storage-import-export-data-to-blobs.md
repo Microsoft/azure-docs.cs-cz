@@ -19,7 +19,7 @@ ms.locfileid: "92460729"
 
 Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu v Azure bezpečně importovat velké objemy dat do úložiště objektů BLOB v Azure. Aby bylo možné importovat data do objektů blob Azure, služba vyžaduje, abyste dodali šifrované diskové jednotky obsahující vaše data do datacentra Azure.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než vytvoříte úlohu importu pro přenos dat do Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadavků pro tuto službu.
 Musíte:

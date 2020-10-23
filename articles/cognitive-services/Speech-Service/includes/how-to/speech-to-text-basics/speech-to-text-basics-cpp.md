@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 65340bfcab76bd35901d1b3a9f3b4a8736205706
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 420a8ab9a36cdabc3a4565d18f4dbee1d84ec39e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376963"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470741"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -43,7 +43,7 @@ Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https:/
 * S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
 * Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-Pojďme se podívat, jak [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) se vytvoří pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
+Pojďme se podívat, jak [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) se vytvoří pomocí klíče a oblasti. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ```cpp
 auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");

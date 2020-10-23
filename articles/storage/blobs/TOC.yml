@@ -235,10 +235,13 @@
                   href: ../common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Import dat do objektů blob
                   href: ../common/storage-import-export-data-to-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: Import dat do souborů
                   href: ../common/storage-import-export-data-to-files.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: Export dat z objektů blob
                   href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: Postupy
                   items:
                     - name: Použití klíče spravovaného zákazníkem

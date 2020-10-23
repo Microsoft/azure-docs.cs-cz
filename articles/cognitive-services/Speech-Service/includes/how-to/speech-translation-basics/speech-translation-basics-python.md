@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 91683b3328af384c073f7273b97a1cc0e49814a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 987aad74401a11407e33f0b0bd51548f354bdd6d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376780"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470730"
 ---
 Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči. Tento rychlý Start popisuje témata, včetně:
 
@@ -21,7 +21,7 @@ Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské 
 
 Pokud chcete přeskočit přímo na vzorový kód, přečtěte si [ukázky rychlý Start pro Python](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
@@ -60,7 +60,7 @@ Existuje několik způsobů, jak můžete inicializovat [`SpeechTranslationConfi
 * S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
 * Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-Pojďme se podívat, jak [`SpeechTranslationConfig`][config] se vytvoří pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
+Pojďme se podívat, jak [`SpeechTranslationConfig`][config] se vytvoří pomocí klíče a oblasti. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
 
 ```python
 from_language, to_language = 'en-US', 'de'

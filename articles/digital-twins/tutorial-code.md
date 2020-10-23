@@ -25,7 +25,7 @@ Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžn
 > * Vyčištění prostředků
 > * Další kroky
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se používá příkazový řádek pro nastavení a práci v projektu. Proto můžete použít libovolný editor kódu k procházení cvičení.
 

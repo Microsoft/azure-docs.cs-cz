@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: 665ee16d71612ac79607b4a173979847e5e115af
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fa9ab9d82244d8f9afa0c185176c44ce0ad10a8e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332423"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470876"
 ---
 V tomto rychlém startu se naučíte běžné vzory návrhu pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
@@ -63,7 +63,7 @@ Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https:/
 * S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
 * Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-V tomto příkladu vytvoříte [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) pomocí klíče a oblasti předplatného. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) . Také můžete vytvořit nějaký základní často používaný kód, který se použije pro zbytek tohoto článku, který můžete upravit pro různá přizpůsobení.
+V tomto příkladu vytvoříte [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) pomocí klíče a oblasti předplatného. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free). Také můžete vytvořit nějaký základní často používaný kód, který se použije pro zbytek tohoto článku, který můžete upravit pro různá přizpůsobení.
 
 ```cpp
 int wmain()
