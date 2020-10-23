@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae87771e8a557ad7cb58c9cad9231784606cdd74
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87479842"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426539"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastějších dotazech
 
@@ -58,7 +58,7 @@ Postup kontroly rolí přiřazených uživateli pro předplatné:
 
 3. Pokud chcete zobrazit seznam všech rolí, které jsou přiřazené k zadanému uživateli, použijte příkaz  **Get-AzRoleAssignment-SignInName [User email]-IncludeClassicAdministrators**. 
 
-Pokud nevidíte žádný výstup, obraťte se na příslušného Správce předplatného a získejte přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [Správa řízení přístupu na základě rolí pomocí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+Pokud nevidíte žádný výstup, obraťte se na příslušného Správce předplatného a získejte přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Ve kterých oblastech Azure je Analýza provozu k dispozici?

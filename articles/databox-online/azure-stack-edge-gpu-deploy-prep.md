@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743252"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426992"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Kurz: Příprava na nasazení Azure Stack Edge pro s grafickým procesorem 
 
@@ -137,7 +137,6 @@ Chcete-li vytvořit prostředek Azure Stack Edge, proveďte v Azure Portal násl
 
     ![Vytvoření prostředku 5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
-
 8. Vyberte **Další: adresa příjemce**.
 
     - Pokud už máte nějaké zařízení, vyberte pole se seznamem, **které má zařízení Azure Stack Edge pro**.
@@ -167,6 +166,9 @@ Po úspěšném vytvoření a nasazení prostředku budete upozorněni. Vyberte 
 Po uvedení objednávky Microsoft zkontroluje pořadí a zavede vám (prostřednictvím e-mailu) informace o expedici.
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+
+> [!NOTE]
+>Pokud chcete vytvořit více objednávek najednou nebo naklonovat stávající objednávku, můžete použít [skripty v ukázkách Azure](https://github.com/Azure-Samples/azure-stack-edge-order). Další informace najdete v souboru READme.
 
 Pokud narazíte na problémy v průběhu procesu objednávky, přečtěte si téma [řešení potíží s pořadím](azure-stack-edge-troubleshoot-ordering.md).
 

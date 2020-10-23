@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18367ec163511fac2e90cc5dd0dd0ad6b091afc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94ad0a05dafe2c405b1b9cb62242675aa54c4432
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976217"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424308"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace VPN Gateway
 
@@ -53,11 +53,11 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Konfigurace SKU brány
 
-#### <a name="azure-portal"></a>portál Azure
+**Azure Portal**
 
 Pokud pomocí Azure Portal vytvoříte bránu služby Správce prostředků virtuální sítě, můžete vybrat SKU brány pomocí rozevíracího seznamu. Možnosti, které zobrazíte, odpovídají typu brány a typu VPN, který vyberete.
 
-#### <a name="powershell"></a>PowerShell
+**PowerShell**
 
 Následující příklad prostředí PowerShell Určuje `-GatewaySku` jako VpnGw1. Když pomocí PowerShellu vytvoříte bránu, musíte nejdřív vytvořit konfiguraci IP adresy a potom k tomu použít proměnnou. V tomto příkladu je konfigurační proměnná $gwipconfig.
 
@@ -67,7 +67,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 ```azurecli
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
@@ -82,6 +82,12 @@ Pokud máte bránu VPN a chcete použít jinou SKU brány, vaše možnosti mají
 3. **Nemůžete** změnit velikost z položek Basic/Standard/HighPerformance SKU na SKU VpnGw. Místo toho je třeba [Přejít](#change) na nové SKU.
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>Změna velikosti brány
+
+**Azure Portal**
+
+[!INCLUDE [Resize a SKU - portal](../../includes/vpn-gateway-resize-gw-portal-include.md)]
+
+**PowerShell**
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 

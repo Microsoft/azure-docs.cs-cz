@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ca4ed58de030e372f97ebda87d12340a57a584d5
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207083"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427530"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Vytvoření a Správa výpočetní instance Azure Machine Learning
 
@@ -109,9 +109,9 @@ Můžete také vytvořit výpočetní instanci pomocí [šablony Azure Resource 
 
 Jako správce můžete vytvořit instanci služby COMPUTE jménem odborníka na data a přiřadit k nim instanci s těmito možnostmi:
 * [Šablona Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Podrobnosti o tom, jak najít TenantID a ObjectID potřebné v této šabloně, najdete v tématu [Vyhledání ID objektů identity pro konfiguraci ověřování](../healthcare-apis/find-identity-object-ids.md).  Tyto hodnoty můžete také najít na portálu Azure Active Directory.
-* REST API
+* Rozhraní REST API
 
-Data, na základě kterých vytvoříte výpočetní instanci pro potřeby, jsou následující: oprávnění [řízení přístupu na základě role (RBAC) v Azure](../role-based-access-control/overview.md) : 
+Data, na základě kterých vytvoříte výpočetní instanci pro potřeby, jsou tato oprávnění [řízení přístupu založená na rolích Azure (Azure RBAC)](../role-based-access-control/overview.md) : 
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/spustit/akce*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zastavit/akce*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/restartovat/akce*
@@ -226,9 +226,9 @@ Pro každou výpočetní instanci v pracovním prostoru, který jste vytvořili 
 
 ---
 
-[RBAC](/azure/role-based-access-control/overview) umožňuje řídit, kteří uživatelé v pracovním prostoru můžou vytvořit, odstranit, spustit, zastavit a restartovat výpočetní instanci. Všichni uživatelé v roli přispěvatel a vlastník pracovního prostoru můžou vytvářet, odstraňovat, spouštět, zastavovat a restartovat výpočetní instance v rámci pracovního prostoru. Avšak pouze tvůrce konkrétní výpočetní instance nebo přiřazeného uživatele, pokud byl vytvořen jménem, má povolen přístup k Jupyter, JupyterLab a RStudio této výpočetní instance. Výpočetní instance je vyhrazená jednomu uživateli, který má rootový přístup, a může být terminálem přes Jupyter/JupyterLab/RStudio. Instance COMPUTE bude mít přihlášený jeden uživatel a všechny akce budou používat identitu tohoto uživatele pro RBAC a navýšení pokusů o spuštění. Přístup přes SSH je řízený pomocí mechanismu veřejného a privátního klíče.
+[Azure RBAC](/azure/role-based-access-control/overview) umožňuje řídit, kteří uživatelé v pracovním prostoru můžou vytvořit, odstranit, spustit, zastavit a restartovat výpočetní instanci. Všichni uživatelé v roli přispěvatel a vlastník pracovního prostoru můžou vytvářet, odstraňovat, spouštět, zastavovat a restartovat výpočetní instance v rámci pracovního prostoru. Avšak pouze tvůrce konkrétní výpočetní instance nebo přiřazeného uživatele, pokud byl vytvořen jménem, má povolen přístup k Jupyter, JupyterLab a RStudio této výpočetní instance. Výpočetní instance je vyhrazená jednomu uživateli, který má rootový přístup, a může být terminálem přes Jupyter/JupyterLab/RStudio. Instance COMPUTE bude mít přihlášený jeden uživatel a všechny akce budou používat identitu tohoto uživatele pro Azure RBAC a připisující se ke spuštění experimentu. Přístup přes SSH je řízený pomocí mechanismu veřejného a privátního klíče.
 
-Tyto akce lze řídit pomocí RBAC:
+Tyto akce lze řídit pomocí Azure RBAC:
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočetní výkon/čtení*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/zapisovat*
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/odstranit*

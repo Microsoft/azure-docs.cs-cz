@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: ceb01c97ec50f4e2a7aa146448c3da662d4314ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d6beac446f8a15a41daf0dfe8ca1783c95c775
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258346"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427226"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Použití Azure CLI k vytvoření aplikace Azure AD a její konfiguraci pro přístup k rozhraní Media Services API
 
@@ -36,7 +36,7 @@ V tomto tématu se dozvíte, jak pomocí Azure CLI vytvořit aplikaci Azure Acti
 
 ## <a name="use-the-azure-cloud-shell"></a>Použití Azure Cloud Shell
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 2. Spusťte Cloud Shell v horním navigačním podokně portálu.
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 
@@ -51,7 +51,7 @@ az ad sp create-for-rbac --name <appName>
 az role assignment create --assignee < user/app id> --role Contributor --scope <subscription/subscription id>
 ```
 
-Například:
+Příklad:
 
 ```azurecli
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
@@ -67,7 +67,7 @@ Může to být například jedna z následujících úrovní:
 
 Další informace najdete v tématu [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli) .
 
-Další informace najdete také v tématu [správa Role-Based Access Control s rozhraním příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md). 
+Viz také téma [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](../../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Další kroky
 

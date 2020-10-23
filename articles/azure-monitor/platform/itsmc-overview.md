@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41aabeeeb151a6e2cf3c52dbfa2075c55f86989f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613760"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427313"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Propojení Azure s nástroji ITSM s využitím ITSM konektoru
 
@@ -106,6 +106,11 @@ Jakmile budete mít připravenou nástroje ITSM, vytvořte připojení pomocí n
 ## <a name="using-the-solution"></a>Použití řešení
    Pomocí řešení konektoru ITSM můžete vytvářet pracovní položky z výstrah Azure, Log Analytics upozornění a záznamů protokolu Log Analytics.
 
+## <a name="template-definitions"></a>Definice šablon
+   Existují typy **pracovní položky** , které mohou používat šablony, které jsou definovány nástrojem ITSM.
+Použití šablon umožňuje zákazníkovi definovat pole, která se automaticky vyplní podle pevných hodnot, které jsou definovány jako součást skupiny akcí. Tato definice se provádí v nástroji ITSM.
+V těchto případech zaškrtávací políčko "použít vlastní šablonu" umožní zákazníkovi docházet k poli, která se automaticky vyplní podle pevných hodnot, které jsou definovány jako součást skupiny akcí.
+   
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Vytváření pracovních položek ITSM z výstrah Azure
 
 Po vytvoření připojení ITSM můžete vytvořit pracovní položku v nástroji ITSM na základě výstrah Azure pomocí **Akce ITSM** ve **skupinách akcí**.
@@ -133,8 +138,10 @@ Použijte následující postup:
     ![Podrobnosti o akci ITSM](media/itsmc-overview/itsm-action-details.png)
 
 6. Z rozevírací nabídky vyberte typ **pracovní položky** .
-   Vyberte možnost použít existující šablonu nebo vyplňte pole požadovaná produktem ITSM.
-7. Klikněte na **OK**.
+
+7. Vyberte možnost použít existující šablonu nebo použít běžnou šablonu a vyplňte pole požadovaná produktem ITSM.
+
+8. Klikněte na **OK**.
 
 Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu akcí, která má akci ITSM. Když se aktivuje výstraha, v nástroji ITSM se vytvoří nebo aktualizuje pracovní položka.
 
@@ -186,7 +193,7 @@ ServiceDeskWorkItemType_s = incident
 
 - ServiceDeskConnectionName
 - ID oddělení služeb
-- State
+- Stav
 - Naléhavost
 - Dopad
 - Priorita
@@ -220,7 +227,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Nadpis
 - Typ
 - Kategorie
-- State
+- Stav
 - Eskalace
 - Stav konfliktu
 - Naléhavost
@@ -236,7 +243,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Plánované koncové datum
 - Datum zahájení práce
 - Datum ukončení práce
-- Description
+- Popis
 - Počítač
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro incident ServiceNow
@@ -244,7 +251,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | Log Analytics pole | Pole ServiceNow |
 |:--- |:--- |
 | ServiceDeskId_s| Číslo |
-| IncidentState_s | State |
+| IncidentState_s | Stav |
 | Urgency_s |Naléhavost |
 | Impact_s |Dopad|
 | Priority_s | Priorita |
@@ -272,7 +279,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | Title_s|  Krátký popis |
 | Type_s|  Typ |
 | Category_s|  Kategorie |
-| CRState_s|  State|
+| CRState_s|  Stav|
 | Urgency_s|  Naléhavost |
 | Priority_s| Priorita|
 | Risk_s| Riziko|
@@ -283,7 +290,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | PlannedEndDate_t  |   Plánované koncové datum |
 | WorkStartDate_t  | Skutečné datum zahájení |
 | WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Description |
+| Description_s | Popis |
 | Počítač  | Položka konfigurace |
 
 

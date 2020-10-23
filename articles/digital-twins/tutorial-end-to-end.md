@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 5ac3d76d8c80947b820d195b9727d1fe50d32899
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f76d6a5c4c891abf92b67cc51ffffab5f2a81d6b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372340"
+ms.locfileid: "92427697"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -48,7 +48,7 @@ Pokud chcete pracovat v tomto scénáři, budete pracovat s komponentami předem
 
 Tady jsou komponenty implementované ukázkovou aplikací *AdtSampleApp* scénář vytváření:
 * Ověřování zařízení 
-* Příklady použití [rozhraní .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) (najdete v *CommandLoop.cs*)
+* Příklady použití [rozhraní .NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core) (najdete v *CommandLoop.cs*)
 * Rozhraní konzoly pro volání rozhraní API digitálních vláken Azure
 * *SampleClientApp* – ukázkové řešení digitálních vláken Azure
 * *SampleFunctionsApp* – aplikace Azure Functions, která aktualizuje graf digitálních vláken Azure v důsledku telemetrie z IoT Hub a událostí digitálních vláken Azure

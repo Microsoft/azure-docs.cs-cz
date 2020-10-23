@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044067"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425698"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 
@@ -58,8 +58,8 @@ Aktivita vyhledávání může vracet až 5000 řádků. Pokud sada výsledků o
 
 Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
-integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
-source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Yes
+integrován | Poskytuje odkaz na datovou sadu pro vyhledávání. Získejte podrobnosti z oddílu **Vlastnosti datové sady** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
+source | Obsahuje vlastnosti zdroje specifické pro datovou sadu, která je stejná jako zdroj aktivity kopírování. Získejte podrobnosti z části **vlastnosti aktivity kopírování** v každém odpovídajícím článku konektoru. | Pár klíč/hodnota | Ano
 firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí formát je `true`.
 
 > [!NOTE]
@@ -72,7 +72,7 @@ firstRowOnly | Označuje, zda má být vrácen pouze první řádek nebo všechn
 
 Výsledek vyhledávání se vrátí v `output` části výsledku spuštění aktivity.
 
-* **Pokud `firstRowOnly` je nastaven na `true` (výchozí)**, je výstupní formát, jak je znázorněno v následujícím kódu. Výsledkem hledání je pevný `firstRow` klíč. Chcete-li použít výsledek v následné aktivitě, použijte vzor  `@{activity('LookupActivity').output.firstRow.table` .
+* **Pokud `firstRowOnly` je nastaven na `true` (výchozí)**, je výstupní formát, jak je znázorněno v následujícím kódu. Výsledkem hledání je pevný `firstRow` klíč. Chcete-li použít výsledek v následné aktivitě, použijte vzor  `@{activity('LookupActivity').output.firstRow.table}` .
 
     ```json
     {

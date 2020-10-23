@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140849"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427770"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Vytváření virtuálních počítačů VMware v privátním cloudu
 
@@ -58,37 +58,37 @@ Pokud chcete získat přístup k serveru vCenter, začněte na portálu CloudSim
 1. V vCenter klikněte na ikonu **hostitelé a clustery** .
 
 2. Klikněte pravým tlačítkem na **úlohy** a vyberte **Nový virtuální počítač**.
-    ![Nový virtuální počítač](media/vcvm01.png)
+    ![Snímek obrazovky, který zvýrazní novou možnost nabídky virtuální počítač.](media/vcvm01.png)
 
 3. Vyberte **vytvořit nový virtuální počítač** a klikněte na **Další**.
-    ![Nový virtuální počítač](media/vcvm02.png)
+    ![Snímek obrazovky, který zvýrazní možnost vytvořit nový virtuální počítač.](media/vcvm02.png)
 
 4. Pojmenujte počítač, vyberte umístění **virtuálního počítače úlohy** a klikněte na **Další**.
-    ![Nový virtuální počítač](media/vcvm03.png)
+    ![Snímek obrazovky, který zvýrazní možnost virtuálních počítačů úlohy.](media/vcvm03.png)
 
 5. Vyberte výpočetní prostředek **úlohy** a klikněte na **Další**.
-    ![Nový virtuální počítač](media/vcvm04.png)
+    ![Snímek obrazovky, který zvýrazní výpočetní prostředek úloh](media/vcvm04.png)
 
 6. Vyberte **vsanDatastore** a klikněte na **Další**.
-    ![Nový virtuální počítač](media/vcvm05.png)
+    ![Snímek obrazovky, který zvýrazní možnost vsanDatastore](media/vcvm05.png)
 
 7. Zachovejte výchozí výběr kompatibility ESXi 6,5 a klikněte na tlačítko **Další**.
-    ![Nový virtuální počítač](media/vcvm06.png)
+    ![Snímek obrazovky, který zobrazuje vybranou možnost kompatibility ESXi 6,5.](media/vcvm06.png)
 
 8. Pro vytvářený virtuální počítač vyberte hostovaný operační systém ISO a klikněte na **Další**.
-    ![Nový virtuální počítač](media/vcvm07.png)
+    ![Snímek obrazovky, který ukazuje, jak vybrat guese OS ISO pro virtuální počítač.](media/vcvm07.png)
 
 9. Vyberte možnost pevný disk a síť. V případě nové jednotky CD/DVD vyberte **soubor ISO úložiště dat**.  Pokud chcete na tomto virtuálním počítači povolený provoz z veřejné IP adresy, vyberte síť jako **virtuální počítač-1**.
-    ![Nový virtuální počítač](media/vcvm08.png)
+    ![Snímek obrazovky, který zvýrazní, kde můžete vybrat soubor ISO úložiště dat.](media/vcvm08.png)
 
 10. Otevře se okno výběru. Vyberte soubor, který jste dříve nahráli do složky soubory ISO a Templates a klikněte na **OK**.
     ![Nový virtuální počítač](media/vcvm10.png)
 
 11. Zkontrolujte nastavení a kliknutím na **OK** vytvořte virtuální počítač.
-    ![Nový virtuální počítač](media/vcvm11.png)
+    ![Snímek obrazovky s informacemi o tom, kde můžete zkontrolovat nastavení.](media/vcvm11.png)
 
 Virtuální počítač je teď přidaný do výpočetních prostředků úlohy a je připravený k použití. 
-![Nový virtuální počítač](media/vcvm12.png)
+![Snímek obrazovky, který zobrazuje virtuální počítač přidaný do výpočetních prostředků úlohy.](media/vcvm12.png)
 
 Základní nastavení je nyní dokončeno. Svůj privátní Cloud můžete začít používat podobně jako v místní infrastruktuře virtuálních počítačů.
 

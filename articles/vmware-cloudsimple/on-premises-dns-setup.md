@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79246107"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424712"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurace DNS pro překlad IP adres pro přístup k vCenter privátního cloudu z místních pracovních stanic
 
@@ -58,19 +58,19 @@ zone "az.cloudsimple.io"
 
 1. Klikněte pravým tlačítkem na server DNS a vyberte **Nová zóna**. 
   
-    ![Nová zóna](media/DNS01.png)
+    ![Snímek obrazovky, který zvýrazní možnost nabídky nová zóna](media/DNS01.png)
 2. Vyberte **zónu se zástupnými** procedurami a klikněte na **Další**.
 
-    ![Nová zóna](media/DNS02.png)
+    ![Snímek obrazovky, který zvýrazní možnost zóny se zástupnými procedurami](media/DNS02.png)
 3. V závislosti na vašem prostředí vyberte příslušnou možnost a klikněte na **Další**.
 
-    ![Nová zóna](media/DNS03.png)
+    ![Snímek obrazovky zobrazující možnosti replikace dat zóny](media/DNS03.png)
 4. Vyberte **zónu dopředného vyhledávání** a klikněte na **Další**.
 
-    ![Nová zóna](media/DNS01.png)
+    ![Snímek obrazovky, který zvýrazní možnost zóny dopředného vyhledávání.](media/DNS01.png)
 5. Zadejte název zóny a klikněte na **Další**.
 
-    ![Nová zóna](media/DNS05.png)
+    ![Snímek obrazovky, který ukazuje, kam zadat název zóny.](media/DNS05.png)
 6. Zadejte IP adresy serverů DNS vašeho privátního cloudu, které jste získali z portálu CloudSimple.
 
     ![Nová zóna](media/DNS06.png)

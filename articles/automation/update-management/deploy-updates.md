@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369691"
+ms.locfileid: "92426402"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Jak nasadit aktualizace a zkontrolovat výsledky
 
@@ -111,7 +111,7 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
     > [!NOTE]
     > Až dokončíte konfiguraci plánu nasazení pro vybraný server s povoleným obloukem, vyberte **zkontrolovat + vytvořit**.
 
-15. Vrátíte se na řídicí panel stavu. Vyberte **plány nasazení** a zobrazte plán nasazení, který jste vytvořili. Uvádí se maximálně 500 plánů. Pokud máte více než 500 plánů a chcete zobrazit úplný seznam, přečtěte si téma [Konfigurace aktualizace softwaru – seznam](/rest/api/automation/softwareupdateconfigurations/list) REST API metoda s použitím verze 2019-06-01 nebo vyšší.
+15. Vrátíte se na řídicí panel stavu. Vyberte **plány nasazení** a zobrazte plán nasazení, který jste vytvořili. Uvádí se maximálně 500 plánů. Pokud máte více než 500 plánů a chcete zobrazit úplný seznam, přečtěte si téma [Konfigurace aktualizace softwaru – seznam](/rest/api/automation/softwareupdateconfigurations/list) REST API metoda. Zadejte rozhraní API verze 2019-06-01 nebo vyšší.
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>Naplánování nasazení aktualizace prostřednictvím kódu programu
 

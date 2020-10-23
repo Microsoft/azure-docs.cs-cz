@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 44dac73f4e51214dbc41e8663dd44550dc9549f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97f5bd1718c7612ce330ee27ee64f9ad885591b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715392"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425823"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Doporučení zabezpečení pro úložiště front
 
@@ -45,7 +45,7 @@ Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostřed
 | Pro všechna SAS, která vydáváte klientům, je nutné mít plán odvolání. | Pokud dojde k ohrožení zabezpečení SAS, budete chtít toto SAS odvolat co nejrychleji. Pokud chcete odvolat SAS delegování uživatele, Odvolejte klíč delegování uživatele, abyste mohli rychle zrušit platnost všech signatur přidružených k tomuto klíči. Pokud chcete odvolat SAS služby, která je přidružená k uložené zásadě přístupu, můžete zásady uloženého přístupu odstranit, přejmenovat zásadu nebo změnit její dobu platnosti na čas, který je v minulosti. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](../common/storage-sas-overview.md).  | - |
 | Pokud přidružení zabezpečení služby není přidružené k uloženým zásadám přístupu, nastavte čas vypršení platnosti na jednu hodinu nebo méně. | SAS služby, která není přidružená k uložené zásadě přístupu, nejde odvolat. Z tohoto důvodu se doporučuje omezit čas vypršení platnosti tak, aby SAS platilo jednu hodinu nebo méně. | - |
 
-## <a name="networking"></a>Sítě
+## <a name="networking"></a>Síťové služby
 
 | Doporučení | Komentáře | Security Center |
 |-|----|--|
@@ -65,5 +65,5 @@ Azure Security Center pravidelně analyzuje stav zabezpečení vašich prostřed
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dokumentace k zabezpečení Azure](https://docs.microsoft.com//azure/security/)
-- [Dokumentace k zabezpečení vývoje](https://docs.microsoft.com/azure/security/develop/).
+- [Dokumentace k zabezpečení Azure](/azure/security/)
+- [Dokumentace k zabezpečení vývoje](/azure/security/develop/).

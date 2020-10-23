@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996338"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426638"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Výměna zpráv v cloudu pomocí Azure Logic Apps a Azure Service Bus
 
@@ -60,7 +60,7 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
       ![Zkopírování připojovacího řetězce oboru názvů Service Bus](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Pokud chcete ověřit, jestli je připojovací řetězec přidružený k vašemu oboru názvů Service Bus nebo entitě zasílání zpráv, jako je například fronta, vyhledejte v připojovacím řetězci `EntityPath`   parametr. Pokud tento parametr vyhledáte, připojovací řetězec je pro konkrétní entitu a není správným řetězcem pro použití s vaší aplikací logiky.
+   > Pokud chcete ověřit, jestli je připojovací řetězec přidružený k vašemu oboru názvů Service Bus nebo entitě zasílání zpráv, jako je například fronta, vyhledejte v připojovacím řetězci `EntityPath` parametr. Pokud tento parametr vyhledáte, připojovací řetězec je pro konkrétní entitu a není správným řetězcem pro použití s vaší aplikací logiky.
 
 ## <a name="add-service-bus-trigger"></a>Přidat aktivační událost Service Bus
 
@@ -68,18 +68,22 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
-1. Do vyhledávacího pole zadejte jako filtr "Azure Service Bus". V seznamu triggery vyberte Trigger, který chcete.
+1. Do vyhledávacího pole portálu zadejte `azure service bus` . Ze seznamu triggery, který se zobrazí, vyberte aktivační událost, kterou chcete.
 
    Chcete-li například aktivovat aplikaci logiky při odeslání nové položky do fronty Service Bus, vyberte možnost **při přijetí zprávy v aktivační události fronty (automatické dokončení)** .
 
    ![Vybrat aktivační událost Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   Všechny triggery Service Bus jsou triggery *s dlouhým dotazem* . Tento popis znamená, že když se Trigger aktivuje, Trigger zpracuje všechny zprávy a potom počká 30 sekund, než se další zprávy zobrazí v předplatném fronty nebo tématu. Pokud se během 30 sekund nezobrazí žádné zprávy, spuštění triggeru se přeskočí. V opačném případě bude aktivační událost dál číst zprávy, dokud není předplatné fronty nebo tématu prázdné. Dotaz na další Trigger vychází z intervalu opakování zadaného ve vlastnostech triggeru.
+   Tady jsou některé předpoklady pro použití triggeru Service Bus:
 
-   Některé triggery, například **když přijde jedna nebo více zpráv do aktivační události Queue (AutoComplete)** , můžou vracet jednu nebo více zpráv. Když se tyto triggery aktivují, vrátí se mezi sebou a počtem zpráv, které jsou zadané ve vlastnosti **maximální počet zpráv** triggeru.
+   * Všechny triggery Service Bus jsou triggery *s dlouhým dotazem* . Tento popis znamená, že když se Trigger aktivuje, Trigger zpracuje všechny zprávy a potom počká 30 sekund, než se další zprávy zobrazí v předplatném fronty nebo tématu. Pokud se během 30 sekund nezobrazí žádné zprávy, spuštění triggeru se přeskočí. V opačném případě bude aktivační událost dál číst zprávy, dokud není předplatné fronty nebo tématu prázdné. Dotaz na další Trigger vychází z intervalu opakování zadaného ve vlastnostech triggeru.
 
-    > [!NOTE]
-    > Trigger automatického dokončování automaticky dokončí zprávu, ale dokončování probíhá pouze při dalším volání Service Bus. Toto chování může ovlivnit návrh aplikace logiky. Neměňte například souběžnost na automatickém dokončení triggeru, protože tato změna může mít za následek duplicitní zprávy, pokud vaše aplikace logiky vstoupí do omezeného stavu. Změna řízení souběžnosti vytváří tyto podmínky: omezené triggery jsou přeskočeny `WorkflowRunInProgress` kódem, operace dokončení nebude provedena a další spuštění triggeru nastane po intervalu dotazování. Je nutné nastavit dobu trvání zámku služby Service Bus na hodnotu, která je delší než interval cyklického dotazování. Bez ohledu na toto nastavení ale nemusí být zpráva dokončena, pokud vaše aplikace logiky zůstane v dalším intervalu dotazování v omezeném stavu.
+   * Některé triggery, například **když přijde jedna nebo více zpráv do aktivační události Queue (AutoComplete)** , můžou vracet jednu nebo více zpráv. Když se tyto triggery aktivují, vrátí se mezi sebou a počtem zpráv, které jsou zadané ve vlastnosti **maximální počet zpráv** triggeru.
+
+     > [!NOTE]
+     > Trigger automatického dokončování automaticky dokončí zprávu, ale dokončování probíhá pouze při dalším volání Service Bus. Toto chování může ovlivnit návrh aplikace logiky. Neměňte například souběžnost na automatickém dokončení triggeru, protože tato změna může mít za následek duplicitní zprávy, pokud vaše aplikace logiky vstoupí do omezeného stavu. Změna řízení souběžnosti vytváří tyto podmínky: omezené triggery jsou přeskočeny `WorkflowRunInProgress` kódem, operace dokončení nebude provedena a další spuštění triggeru nastane po intervalu dotazování. Je nutné nastavit dobu trvání zámku služby Service Bus na hodnotu, která je delší než interval cyklického dotazování. Bez ohledu na toto nastavení ale nemusí být zpráva dokončena, pokud vaše aplikace logiky zůstane v dalším intervalu dotazování v omezeném stavu.
+
+   * Pokud [zapnete nastavení souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) pro aktivační událost Service Bus, výchozí hodnota `maximumWaitingRuns` vlastnosti je 10. Na základě nastavení doby trvání zámku Service Bus entit a doby běhu vaší instance aplikace logiky může být tato výchozí hodnota příliš velká a může způsobit výjimku "zámek". Pro vyhledání optimální hodnoty pro váš scénář spusťte testování s hodnotou 1 nebo 2 pro `maximumWaitingRuns` vlastnost. Pokud chcete změnit maximální hodnotu čekání na spuštění, přečtěte si téma [Změna limitu čekání na spuštění](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs).
 
 1. Pokud se Trigger připojuje k vašemu Service Bus oboru názvů poprvé, postupujte podle těchto kroků, když vás návrhář aplikace logiky vyzve k zadání informací o připojení.
 
@@ -113,13 +117,13 @@ Potvrďte, že vaše aplikace logiky má oprávnění pro přístup k vašemu ob
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)a otevřete aplikaci logiky v návrháři aplikace logiky.
+1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
 1. V kroku, kam chcete přidat akci, vyberte **Nový krok**.
 
    Nebo pokud chcete přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole "Azure Service Bus" jako filtr. V seznamu akce vyberte akci, kterou chcete. 
+1. V části **zvolit akci**zadejte do vyhledávacího pole `azure service bus` . V seznamu akce, který se zobrazí, vyberte akci, kterou chcete. 
 
    V tomto příkladu vyberte akci **Odeslat zprávu** .
 

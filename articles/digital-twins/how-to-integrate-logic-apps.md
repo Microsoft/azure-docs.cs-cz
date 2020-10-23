@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280855"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427993"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
@@ -26,7 +26,7 @@ Digitální vlákna Azure momentálně nemají certifikovaný (předem sestaven�
 
 V tomto článku použijete [Azure Portal](https://portal.azure.com) k **Vytvoření vlastního konektoru** , který se dá použít k připojení Logic Apps k instanci digitálních vláken Azure. Pak **vytvoříte aplikaci logiky** , která bude toto připojení používat pro ukázkový scénář, ve kterém události aktivované časovačem automaticky aktualizují dvojitou repliku v instanci digitálních vláken Azure. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud ještě nemáte předplatné Azure, vytvořte si ** [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) ** před tím, než začnete.
 Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu. 
@@ -66,7 +66,7 @@ Nyní ověřte, zda je tajný klíč klienta zobrazen na stránce _certifikáty 
 
 Tento článek používá Logic Apps k aktualizaci vlákna v instanci digitálních vláken Azure. Chcete-li pokračovat, měli byste do své instance přidat alespoň jednu dvojitou akci. 
 
-Pomocí [rozhraní API DigitalTwins](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md)můžete přidat vlákna. Podrobné pokyny, jak vytvořit vlákna pomocí těchto metod, naleznete v tématu [*How to: Manage Digital vláknas*](how-to-manage-twin.md).
+Pomocí [rozhraní API DigitalTwins](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md)můžete přidat vlákna. Podrobné pokyny, jak vytvořit vlákna pomocí těchto metod, naleznete v tématu [*How to: Manage Digital vláknas*](how-to-manage-twin.md).
 
 Budete potřebovat **_zdvojené ID_** vlákna ve vaší instanci, kterou jste vytvořili.
 

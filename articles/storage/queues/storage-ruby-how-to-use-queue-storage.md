@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: c29b864fb3a547599f32c00c9e8c27cbdb0e0a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb7619500cc142eca52ca0a1a6e0b670e6b8f51a
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459602"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425470"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Používání úložiště Queue z Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -29,7 +29,7 @@ Mezi zahrnuté scénáře patří **vkládání**, **prohlížení**, **získáv
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Vytvoření aplikace v Ruby
-Vytvořte aplikaci v Ruby. Pokyny najdete v tématu [Vytvoření aplikace v Ruby v App Service v systému Linux](https://docs.microsoft.com/azure/app-service/quickstart-ruby).
+Vytvořte aplikaci v Ruby. Pokyny najdete v tématu [Vytvoření aplikace v Ruby v App Service v systému Linux](/azure/app-service/quickstart-ruby).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurace aplikace pro přístup k úložišti
 Pokud chcete používat službu Azure Storage, musíte si stáhnout a použít balíček Ruby Azure, který zahrnuje sadu praktických knihoven, které komunikují se službou REST (Storage).
@@ -151,7 +151,7 @@ azure_queue_service.delete_queue("test-queue")
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili základní informace o službě Queue Storage, získáte další informace o složitějších úlohách úložiště pomocí těchto odkazů.
 
-* Navštívit [Blog týmu Azure Storage](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
+* Navštívit [Blog týmu Azure Storage](/archive/blogs/windowsazurestorage/)
 * Navštivte úložiště [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) na GitHubu.
 
 Srovnání služby front Azure popsané v tomto článku a Azure Service Bus frontách popsaných v článku [použití Service Busch front](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) najdete v tématu [fronty Azure a Service Bus fronty – porovnání a kontrast](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) .

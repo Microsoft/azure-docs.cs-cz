@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb403e2d1b11391ca3917478955dc282a174ae88
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204329"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426314"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -303,13 +303,13 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Doprovodné**materiály: kartu Správa identit a přístupu můžete použít pro prostředek v Azure Portal ke konfiguraci řízení přístupu na základě role (RBAC) a udržování inventáře na Azure Machine Learningch prostředcích. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role.
+**Doprovodné**materiály: kartu Správa identit a přístupu k prostředku v Azure Portal můžete použít ke konfiguraci řízení přístupu na základě role Azure (Azure RBAC) a údržbě inventáře na Azure Machine Learningch prostředcích. Role se aplikují na uživatele, skupiny, instanční objekty a spravované identity ve službě Active Directory. Pro jednotlivce a skupiny můžete použít předdefinované role nebo vlastní role.
 
-Azure Machine Learning poskytuje vestavěnou RBAC pro běžné scénáře správy v Azure Machine Learning. Jednotlivec, který má profil v Azure Active Directory (Azure AD), může přiřadit tyto role RBAC uživatelům, skupinám, objektům služby nebo spravovaným identitám, aby mohl udělit nebo odepřít přístup k prostředkům a operacím s prostředky Azure Machine Learning.
+Azure Machine Learning poskytuje předdefinované role pro běžné scénáře správy v Azure Machine Learning. Jednotlivec, který má profil v Azure Active Directory (Azure AD), může přiřadit tyto role uživatelům, skupinám, instančním objektům nebo spravovaným identitám udělit nebo odepřít přístup k prostředkům a operacím s prostředky Azure Machine Learning.
 
 K vyhledání účtů, které jsou členy skupin pro správu, můžete také použít modul Azure AD PowerShell k provádění dotazů ad hoc.
 
-- [Pochopení řízení přístupu na základě role v Azure Machine Learning](how-to-assign-roles.md)
+- [Pochopení řízení přístupu na základě role v Azure v Azure Machine Learning](how-to-assign-roles.md)
 
 - [Postup získání role adresáře v Azure Active Directory pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -902,13 +902,13 @@ Azure Machine Learning plně podporuje úložiště Git pro sledování práce; 
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: bezpečné uložení vlastních imagí operačního systému
 
-**Doprovodné**materiály: Azure Machine Learning má různou podporu napříč různými výpočetními prostředky a dokonce i s vašimi vlastními výpočetními prostředky. U výpočetních prostředků, které vlastní vaše organizace, použijte řízení přístupu na základě role (RBAC) v Azure a zajistěte, aby k vašim vlastním imagím měli přístup jenom autorizovaní uživatelé. Pomocí Galerie sdílených imagí Azure můžete své image sdílet s různými uživateli, instančními objekty nebo skupinami služby Azure AD v rámci vaší organizace. Uložte image kontejneru do Azure Container Registry a pomocí RBAC zajistěte, aby měli přístup jenom autorizovaní uživatelé.
+**Doprovodné**materiály: Azure Machine Learning má různou podporu napříč různými výpočetními prostředky a dokonce i s vašimi vlastními výpočetními prostředky. U výpočetních prostředků, které vlastní vaše organizace, použijte řízení přístupu na základě role Azure (Azure RBAC), abyste zajistili, že k vašim vlastním imagí mají přístup jenom autorizovaní uživatelé. Pomocí Galerie sdílených imagí Azure můžete své image sdílet s různými uživateli, instančními objekty nebo skupinami služby Azure AD v rámci vaší organizace. Uložte image kontejneru do Azure Container Registry a pomocí Azure RBAC zajistěte, aby měli přístup jenom autorizovaní uživatelé.
 
-- [Princip RBAC v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Pochopení Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [Vysvětlení RBAC pro Container Registry](../container-registry/container-registry-roles.md)
+- [Vysvětlení služby Azure RBAC pro Container Registry](../container-registry/container-registry-roles.md)
 
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [Přehled Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md)
 
@@ -1088,7 +1088,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: Zajistěte ochranu záloh a klíčů spravovaných zákazníkem
 
-**Doprovodné**materiály: pro místní zálohování se šifrování v klidovém prostředí poskytuje pomocí hesla, které zadáte při zálohování do Azure. K ochraně záloh a klíčů spravovaných zákazníkem použijte řízení přístupu na základě rolí. 
+**Doprovodné**materiály: pro místní zálohování se šifrování v klidovém prostředí poskytuje pomocí hesla, které zadáte při zálohování do Azure. Použijte řízení přístupu na základě role Azure k ochraně záloh a klíčů spravovaných zákazníkem. 
 
 Povolí v Key Vault ochranu před náhodným odstraněním a vyprázdněním, aby se chránily klíče proti náhodnému nebo škodlivému odstranění. Pokud se pro ukládání záloh používá Azure Storage, povolte obnovitelné odstranění, abyste mohli data ukládat a obnovovat při odstraňování objektů BLOB nebo snímků objektů BLOB.
  

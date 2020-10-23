@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ad26cba30986ee9a5f642755840ad5ec281219aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f174ba30251757182866f9f446eefb10588618e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91320281"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428097"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro JavaScript
 
@@ -31,15 +31,15 @@ Použijte klientskou knihovnu Azure Queue Storage V12 pro JavaScript:
 
 Další prostředky:
 
-* [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/javascript/api/@azure/storage-queue/)
+* [Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-queue/)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
 * [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-queue)
-* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [ukázky](/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Účet úložiště Azure – [Vytvoření účtu úložiště](/azure/storage/common/storage-quickstart-create-account)
 * Aktuální [Node.js](https://nodejs.org/en/download/) pro váš operační systém.
 
 ## <a name="setting-up"></a>Nastavení
@@ -136,9 +136,9 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 Pro interakci s těmito prostředky použijte následující třídy JavaScriptu:
 
-* [QueueServiceClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
-* [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-* [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient?view=azure-node-latest#receivemessages-queuereceivemessageoptions-) ve frontě.
+* [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
+* [QueueClient](/javascript/api/@azure/storage-queue/queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+* [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -174,9 +174,9 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 Určete název nové fronty. Následující kód připojí hodnotu UUID k názvu fronty, aby bylo zajištěno, že je jedinečný.
 
 > [!IMPORTANT]
-> Názvy front můžou obsahovat jenom malá písmena, číslice a spojovníky a musí začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník. Název musí mít také délku 3 až 63 znaků. Další informace o pojmenovávání front najdete v tématu [pojmenování front a metadat](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata).
+> Názvy front můžou obsahovat jenom malá písmena, číslice a spojovníky a musí začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník. Název musí mít také délku 3 až 63 znaků. Další informace o pojmenovávání front najdete v tématu [pojmenování front a metadat](/rest/api/storageservices/naming-queues-and-metadata).
 
-Vytvořte instanci třídy [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient) . Pak zavolejte metodu [Create](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) a vytvořte ve svém účtu úložiště frontu.
+Vytvořte instanci třídy [QueueClient](/javascript/api/@azure/storage-queue/queueclient) . Pak zavolejte metodu [Create](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) a vytvořte ve svém účtu úložiště frontu.
 
 Přidejte tento kód na konec `main` funkce:
 
@@ -197,7 +197,7 @@ console.log("Queue created, requestId:", createQueueResponse.requestId);
 
 ### <a name="add-messages-to-a-queue"></a>Přidání zpráv do fronty
 
-Následující fragment kódu přidá zprávy do fronty voláním metody [SendMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) . Také uloží [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage) vrácenou z třetího `sendMessage` volání. Vráceno `sendMessageResponse` se používá k aktualizaci obsahu zprávy později v programu.
+Následující fragment kódu přidá zprávy do fronty voláním metody [SendMessage](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) . Také uloží [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage) vrácenou z třetího `sendMessage` volání. Vráceno `sendMessageResponse` se používá k aktualizaci obsahu zprávy později v programu.
 
 Přidejte tento kód na konec `main` funkce:
 
@@ -214,7 +214,7 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>Prohlížet zprávy ve frontě
 
-Podívejte se na zprávy ve frontě voláním metody [peekMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) . `peekMessages`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
+Podívejte se na zprávy ve frontě voláním metody [peekMessages](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) . `peekMessages`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
 
 Přidejte tento kód na konec `main` funkce:
 
@@ -232,7 +232,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualizace zprávy ve frontě
 
-Aktualizujte obsah zprávy voláním metody [updateMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) . `updateMessage`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Společně s novým obsahem, předejte `messageId` a `popReceipt` z odpovědi, která byla uložena dříve v kódu. `sendMessageResponse`Vlastnosti určují, která zpráva se má aktualizovat.
+Aktualizujte obsah zprávy voláním metody [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) . `updateMessage`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Společně s novým obsahem, předejte `messageId` a `popReceipt` z odpovědi, která byla uložena dříve v kódu. `sendMessageResponse`Vlastnosti určují, která zpráva se má aktualizovat.
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>Přijímání zpráv z fronty
 
-Stáhněte dříve přidané zprávy voláním metody [receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) .  V `numberOfMessages` poli předejte maximální počet zpráv, které mají být pro toto volání přijímány.
+Stáhněte dříve přidané zprávy voláním metody [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) .  V `numberOfMessages` poli předejte maximální počet zpráv, které mají být pro toto volání přijímány.
 
 Přidejte tento kód na konec `main` funkce:
 
@@ -266,7 +266,7 @@ console.log("Messages received, requestId:", receivedMessagesResponse.requestId)
 
 Po přijetí a zpracování odstraní zprávy z fronty. V tomto případě se zpracovává jenom zpráva v konzole nástroje.
 
-Odstraňte zprávy voláním metody [deleteMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) . Všechny zprávy, které se explicitně neodstraní, se později stanou viditelnými ve frontě, aby se mohly zpracovat další šance na jejich zpracování.
+Odstraňte zprávy voláním metody [deleteMessage](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) . Všechny zprávy, které se explicitně neodstraní, se později stanou viditelnými ve frontě, aby se mohly zpracovat další šance na jejich zpracování.
 
 Přidejte tento kód na konec `main` funkce:
 
@@ -289,7 +289,7 @@ for (i = 0; i < receivedMessagesResponse.receivedMessageItems.length; i++) {
 
 ### <a name="delete-a-queue"></a>Odstranění fronty
 
-Následující kód vyčistí prostředky, které aplikace vytvořila, odstraněním fronty pomocí metody [Delete](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) .
+Následující kód vyčistí prostředky, které aplikace vytvořila, odstraněním fronty pomocí metody [Delete](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) .
 
 Přidejte tento kód na konec `main` funkce a soubor uložte:
 
@@ -354,7 +354,7 @@ V tomto rychlém startu jste zjistili, jak vytvořit frontu a přidat do ní zpr
 Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu:
 
 > [!div class="nextstepaction"]
-> [Dokumentace k Azure pro JavaScript](https://docs.microsoft.com/azure/developer/javascript/)
+> [Dokumentace k Azure pro JavaScript](/azure/developer/javascript/)
 
 * Další informace najdete v tématu [Klientská knihovna pro Azure Storage Queue pro JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
 * Pokud chcete zobrazit více ukázkových aplikací Azure Queue Storage, pokračujte na [ukázky V12 JavaScriptu v klientské knihovně Azure Queue Storage](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples).

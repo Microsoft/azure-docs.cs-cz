@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f81614005a1b0374dc249187c4ff3c920b7c97e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852323"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424846"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Použití Notification Hubs z Pythonu
 
@@ -414,7 +414,7 @@ Všimněte si hlavičky značek HTTP, které se přidají do požadavku protokol
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a formátu oznámení Service Bus, Service Bus značek oznámení a hodnotách typu X W N S zobrazeným červeně.][3]
+![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a Service Busovém formátu oznámení, Service Bus značka oznámení a hodnoty typu X W N S uvedené červeně.][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Odeslat oznámení s určením více značek
 
@@ -425,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a formátu oznámení Service Bus, Service Bus značek oznámení a hodnotách typu X W N S zobrazeným červeně.][4]
+![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a formátu oznámení Service Bus, více značek Service Bus oznámení a hodnot typu X W N S popsaných červeně.][4]
 
 ### <a name="templated-notification"></a>Oznámení v šabloně
 

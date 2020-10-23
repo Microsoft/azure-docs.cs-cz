@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: e418e64fe9fbe98fbd8da4e75a81c05d5e3d118d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1ebbbfed3b3a39e43986a385be87d65d70b175
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885179"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427276"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,7 +62,7 @@ Pokud není uvedeno jinak, doporučujeme, abyste provedli všechny osvědčené 
 
 Chystáme se dál aktualizovat doporučení a osvědčené postupy, které jsou tady uvedené. Zadáním odkazu na **zpětnou vazbu** na konci tohoto článku zadejte nebo opravte tento dokument.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database a spravovaná instance SQL podporují dva typy ověřování:
 
@@ -791,12 +791,14 @@ Většina standardů zabezpečení řeší dostupnost dat v souvislosti s provoz
 
 - Azure nabízí integrovanou vysokou dostupnost [s vysokou dostupností s využitím SQL Database a SQL Managed instance](high-availability-sla.md) .
 
-- Pro důležité obchodní informace vrstva zahrnuje skupiny převzetí služeb při selhání, zóny s vícenásobnou dostupností, úplné a rozdílové zálohy protokolů a zálohy obnovení k bodu v čase, které jsou ve výchozím nastavení povolené:  
-  - [Redundantní konfigurace s vysokou dostupností – zóna](high-availability-sla.md#zone-redundant-configuration)
+- Pro důležité obchodní informace vrstva zahrnuje skupiny převzetí služeb při selhání, úplné a rozdílové zálohy protokolů a zálohy obnovení k bodu v čase povolené ve výchozím nastavení:  
   - [Automatizované zálohy](automated-backups-overview.md)
   - [Obnovení databáze pomocí automatických záloh databáze – obnovení k určitému bodu v čase](recovery-using-backups.md#point-in-time-restore)
 
-- Další funkce pro provozní kontinuitu, jako jsou například skupiny automatického převzetí služeb při selhání v různých zeměpisných oblastech Azure, se dají nakonfigurovat podle popisu v tématu [Přehled provozní kontinuity](business-continuity-high-availability-disaster-recover-hadr-overview.md) .
+- Další funkce pro provozní kontinuitu, jako je například redundantní konfigurace zóny a skupiny automatického převzetí služeb při selhání v různých zeměpisných oblastech Azure, je možné nakonfigurovat: 
+    - [Redundantní konfigurace zóny s vysokou dostupností pro Premium & Pro důležité obchodní informace úrovně služeb](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
+    - [Redundantní konfigurace s vysokou dostupností pro Pro obecné účely úrovně služeb](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+    - [Přehled provozní kontinuity](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
 ## <a name="next-steps"></a>Další kroky
 

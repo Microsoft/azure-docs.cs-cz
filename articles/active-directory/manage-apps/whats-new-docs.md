@@ -10,23 +10,23 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 14e4cd141094763d37a1309572bb4da4efb3f7ce
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376201"
+ms.locfileid: "92428017"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
-Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace.
+Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového ve službě správy aplikací, najdete v tématu [novinky v Azure Active Directory](../fundamentals/whats-new.md).
 
 ## <a name="september-2020"></a>Září 2020
 
 ### <a name="new-articles"></a>Nové články
 - [Rychlý Start: nastavení jednotného přihlašování (SSO) založeného na OIDC pro aplikaci ve vašem tenantovi Azure Active Directory (Azure AD)](add-application-portal-setup-oidc-sso.md)
 - [Rychlý Start: přiřazení uživatelů k aplikaci, která používá službu Azure AD jako zprostředkovatele identity](add-application-portal-assign-users.md)
-- [Co je nového](whats-new-docs.md)
+- [Co je nového v docs?](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>Aktualizované články

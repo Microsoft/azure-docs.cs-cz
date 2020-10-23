@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 52ee08e0cce23aebbac1564a5c3ed894d0e487d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 396d2785d80ff29212dddcfb97adbff8ba9ce4c8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711266"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425170"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Referenční informace o monitorování úložiště fronty Azure
 
@@ -36,7 +36,7 @@ Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
 #### <a name="queue-storage"></a>Queue Storage
 
-Tato tabulka zobrazuje [metriky úložiště fronty](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices).
+Tato tabulka zobrazuje [metriky úložiště fronty](/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices).
 
 | Metrika | Popis |
 | ------------------- | ----------------- |

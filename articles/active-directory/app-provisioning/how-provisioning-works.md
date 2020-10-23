@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: contperfq2
+ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366679"
+ms.locfileid: "92424618"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -179,6 +180,8 @@ Ujistěte se, že jste zaškrtli políčko pro aktualizace.
 
 Ujistěte se, že máte mapování pro *aktivní* pro vaši aplikaci. Pokud používáte aplikaci z Galerie aplikací, mapování může být mírně odlišné. Ujistěte se prosím, že pro aplikace Galerie použijete výchozí/vycházející mapování polí.
 
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="Zakázat uživatele" lightbox="./media/how-provisioning-works/disable-user.png":::
+
 
 **Konfigurace aplikace pro odstranění uživatele**
 
@@ -188,7 +191,9 @@ Pomocí následujících scénářů se aktivuje operace zakázat nebo odstranit
 * Uživatel je trvale odstraněn nebo odebrán z koše ve službě Azure AD.
 * Uživatel není přiřazený k aplikaci.
 * Uživatel přejde z oboru do rozsahu mimo rozsah (již neprojde filtr oboru).
-    
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="Zakázat uživatele" lightbox="./media/how-provisioning-works/delete-user.png":::
+
 Ve výchozím nastavení služba zřizování Azure AD dočasná odstraní nebo zakáže uživatele, kteří se přestanou přidělovat mimo rozsah. Pokud chcete přepsat toto výchozí chování, můžete nastavit příznak pro [přeskočení odstranění mimo rozsah.](skip-out-of-scope-deletions.md)
 
 Pokud dojde k jedné z výše uvedených čtyř událostí a cílová aplikace nepodporuje obnovitelné odstranění, služba zřizování odešle požadavek na odstranění, který uživatele trvale odstraní z aplikace.

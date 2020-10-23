@@ -1,22 +1,22 @@
 ---
 title: Nasazení Azure cache pro Redis pomocí šablony Azure Resource Manager
-description: Naučte se používat šablonu Azure Resource Manager k nasazení mezipaměti Azure pro prostředek Redis. Šablony jsou k dispozici pro běžné scénáře.
+description: Naučte se používat šablonu Azure Resource Manager (šablonu ARM) k nasazení mezipaměti Azure pro prostředek Redis. Šablony jsou k dispozici pro běžné scénáře.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0445aeaea6f99754469d5c0e46972aef2ed667aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461234"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424222"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>Vytvoření mezipaměti Azure pro Redis pomocí šablony Správce prostředků
+# <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>Vytvoření mezipaměti Azure pro Redis pomocí šablony ARM
 
-Naučte se, jak vytvořit šablonu Azure Resource Manager, která nasadí mezipaměť Azure pro Redis. Mezipaměť lze použít s existujícím účtem úložiště pro zachování diagnostických dat. Naučíte se také, jak definovat, které prostředky jsou nasazeny a jak definovat parametry, které jsou zadány při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. V současné době se nastavení diagnostiky sdílí pro všechny mezipaměti ve stejné oblasti pro předplatné. Aktualizace jedné mezipaměti v oblasti má vliv na všechny ostatní mezipaměti v oblasti.
+Naučte se vytvořit šablonu Azure Resource Manager (šablonu ARM), která nasadí mezipaměť Azure pro Redis. Mezipaměť lze použít s existujícím účtem úložiště pro zachování diagnostických dat. Naučíte se také, jak definovat, které prostředky jsou nasazeny a jak definovat parametry, které jsou zadány při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. V současné době se nastavení diagnostiky sdílí pro všechny mezipaměti ve stejné oblasti pro předplatné. Aktualizace jedné mezipaměti v oblasti má vliv na všechny ostatní mezipaměti v oblasti.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +46,7 @@ K dispozici jsou také šablony Správce prostředků pro novou [úroveň Premiu
 * [Vytvoření mezipaměti Azure Premium pro Redis s Trvalost dat](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Vytvoření Redis Cache úrovně Premium nasazených do Virtual Network](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/) a vyhledejte `Azure Cache for Redis` .
+Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony Azure pro rychlý Start](https://azure.microsoft.com/documentation/templates/) a vyhledejte _Azure cache pro Redis_.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -59,14 +59,14 @@ Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony pro
     * **Skupina prostředků**: vyberte **vytvořit novou** a vytvořte novou skupinu prostředků nebo vyberte existující skupinu prostředků.
     * **Umístění:**: Vyberte umístění pro skupinu prostředků. Účet úložiště a mezipaměť Redis musí být ve stejné oblasti. Ve výchozím nastavení používá mezipaměť Redis stejné umístění jako skupina prostředků. Zadejte tedy stejné umístění jako účet úložiště.
     * **Redis Cache název**: zadejte název pro Redis Cache.
-    * **Existující účet úložiště diagnostiky**: Zadejte ID prostředku účtu úložiště. Syntaxe je **/Subscriptions/ &lt; ID předplatného>&lt; název skupiny prostředků/RESOURCEGROUPS/>název &lt; účtu úložiště/Providers/Microsoft.Storage/storageAccounts/>**.
+    * **Existující účet úložiště diagnostiky**: Zadejte ID prostředku účtu úložiště. Syntaxe je `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
 
     Pro zbývající nastavení použijte výchozí hodnotu.
 1. vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**a s vybranou volbou **koupit**.
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 1. Otevřete mezipaměť Redis, kterou jste vytvořili.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

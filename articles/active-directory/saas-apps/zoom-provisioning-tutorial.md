@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9f4947fe379f19593d06ba9efb6bfc43c397e9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333439"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424399"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Kurz: Konfigurace přiblížení pro Automatické zřizování uživatelů
 
@@ -152,6 +152,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 ## <a name="change-log"></a>Protokol změn
 * 05/14/2020 – byla přidána podpora operací aktualizace pro e-maily [Type EQ "Work"] Attribute.
+* 10/20/2020 – Přidali jsme podporu pro dvě nové role "licencované" a "on-Prem", která nahradí stávající role "pro" a "Corp". V budoucnu bude odebrána podpora pro role pro a Corp.
 
 ## <a name="additional-resources"></a>Další zdroje
 

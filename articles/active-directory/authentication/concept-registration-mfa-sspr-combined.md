@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71900bc3741c25299402e31057ea2237cd0a4637
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 79a5d306643fa9597b30f6941c420c403695c22e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965144"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424564"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Souhrnné informace o registraci informací o zabezpečení pro Azure Active Directory
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jaká kombinovaná registrace zabezpečení je. Informa
 
 Než začnete s novým prostředím, přečtěte si dokumentaci k tomuto správci a dokumentaci zaměřenou na uživatele, abyste se ujistili, že jsou funkce a účinky této funkce důležité. Založte školení na [dokumentaci pro uživatele](../user-help/security-info-setup-signin.md) a připravte uživatele na nové prostředí a pomůžou zajistit úspěšné zavedení.
 
-Registrace informací o kombinovaném zabezpečení Azure AD není aktuálně dostupná pro národní cloudy, jako je Azure USA, Azure Německo nebo Azure Čína 21Vianet.
+Registrace informací o kombinovaném zabezpečení Azure AD není aktuálně dostupná pro národní cloudy, jako je Azure Německo nebo Azure Čína 21Vianet. Je k dispozici pro vládu Azure USA.
 
 > [!IMPORTANT]
 > Pro uživatele, kteří jsou povoleni pro původní verzi Preview i pro rozšířené kombinované registrační prostředí, se zobrazí nové chování. Uživatelům, kteří jsou povoleni v obou prostředích, uvidí jenom nové prostředí s profilem. Nový *můj profil* se zarovnává s vzhledem a chováním kombinované registrace a poskytuje uživatelům bezproblémové prostředí. Uživatelé můžou profil zobrazit kliknutím na [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
@@ -53,15 +53,15 @@ Kombinovaná registrace podporuje následující metody ověřování a akce:
 
 | Metoda | Registrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ano (maximálně 5) | No | Ano |
-| Jiná ověřovací aplikace | Ano (maximálně 5) | No | Ano |
-| Hardwarový token | No | No | Ano |
+| Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
+| Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
+| Hardwarový token | Ne | Ne | Ano |
 | Rozložení | Ano | Ano | Ano |
 | Alternativní telefon | Ano | Ano | Ano |
-| Telefon do kanceláře | No | No | No |
+| Telefon do kanceláře | Ne | Ne | Ne |
 | E-mail | Ano | Ano | Ano |
-| Bezpečnostní otázky | Ano | No | Ano |
-| Hesla aplikací | Ano | No | Ano |
+| Bezpečnostní otázky | Ano | Ne | Ano |
+| Hesla aplikací | Ano | Ne | Ano |
 | FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Ano | Ano | Ano |
 
 > [!NOTE]

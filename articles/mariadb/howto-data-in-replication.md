@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21a0aaaa9e10a7c3e445145eb178b50b446ba6ae
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598206"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425994"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace Replikace vstupních dat v Azure Database for MariaDB
 
@@ -56,7 +56,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
 2. Ujistěte se, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
    
-   Otestujte připojení ke zdrojovému serveru tak, že se pokusíte připojit z nástroje, jako je například příkazový řádek MySQL hostovaný na jiném počítači nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) k dispozici v Azure Portal.
+   Otestujte připojení ke zdrojovému serveru tak, že se pokusíte připojit z nástroje, jako je například příkazový řádek MySQL hostovaný na jiném počítači nebo [Azure Cloud Shell](../cloud-shell/overview.md) k dispozici v Azure Portal.
 
    Pokud má vaše organizace přísné zásady zabezpečení a neumožní všem IP adresám na zdrojovém serveru povolit komunikaci z Azure na zdrojový server, můžete k určení IP adresy serveru Azure Database for MariaDB použít následující příkaz.
     
@@ -78,7 +78,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
       ```bash
       ping <output of step 2b>
       ``` 
-      Například: 
+      Příklad: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -212,7 +212,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
 1. Nastavte zdrojový server.
 
-   Všechny funkce Replikace vstupních dat jsou prováděny uloženými procedurami. Všechny postupy najdete v [replikace vstupních dat uložených procedurách](reference-data-in-stored-procedures.md). Uložené procedury lze spustit v prostředí MySQL nebo MySQL Workbench.
+   Všechny funkce Replikace vstupních dat jsou prováděny uloženými procedurami. Všechny postupy najdete v [replikace vstupních dat uložených procedurách](reference-stored-procedures.md). Uložené procedury lze spustit v prostředí MySQL nebo MySQL Workbench.
 
    Pokud chcete propojit dva servery a spustit replikaci, přihlaste se k cílovému serveru repliky ve službě Azure DB pro MariaDB. V dalším kroku nastavte externí instanci jako zdrojový server pomocí `mysql.az_replication_change_master` `mysql.az_replication_change_master_with_gtid` uložené procedury nebo na serveru Azure DB pro MariaDB.
 

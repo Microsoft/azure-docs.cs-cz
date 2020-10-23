@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 3ea413c3879f61f735290717d06a132048169971
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939198"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426701"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET
 
@@ -34,12 +34,12 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/dotnet/api/azure.storage.queues)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [ukázky](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Účet úložiště Azure – [Vytvoření účtu úložiště](/azure/storage/common/storage-quickstart-create-account)
 * Aktuální [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém. Ujistěte se, že jste získali sadu SDK a ne modul runtime.
 
 ## <a name="setting-up"></a>Nastavení
@@ -77,7 +77,7 @@ Z adresáře projektu:
 1. V editoru otevřete soubor *program.cs*
 1. Odebrat `Console.WriteLine("Hello World!");` příkaz
 1. Přidat `using` direktivy
-1. Aktualizujte `Main` deklaraci metody pro [podporu asynchronního kódu](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main) .
+1. Aktualizujte `Main` deklaraci metody pro [podporu asynchronního kódu](/dotnet/csharp/whats-new/csharp-7#async-main) .
 
 
 
@@ -334,7 +334,7 @@ V tomto rychlém startu jste zjistili, jak vytvořit frontu a přidat do ní zpr
 Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu:
 
 > [!div class="nextstepaction"]
-> [Azure pro vývojáře na platformě .NET a .NET Core](https://docs.microsoft.com/dotnet/azure/)
+> [Azure pro vývojáře na platformě .NET a .NET Core](/dotnet/azure/)
 
 * Další informace najdete v tématu [knihovny Azure Storage pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage).
 * Pokud chcete zobrazit více ukázkových aplikací Azure Queue Storage, pokračujte do [v12ch ukázek klientské knihovny .NET pro Azure Queue Storage](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples).

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507663"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424689"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizace privátního cloudu CloudSimple pro instalaci Oracle RAC
 
@@ -46,14 +46,14 @@ V následujícím příkladu se používají disky definované v následující 
 
 | Disk                                      | Účel                                       | sdílený disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| Operační systém                                        | Disk operačním systému                         | No          |
-| MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | No          |
-| DATABÁZE                                  | Umístění instalace pro software Oracle Database | No          |
-| ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | No          |
-| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Yes         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Yes         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Yes         |
-| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Yes         |
+| Operační systém                                        | Disk operačním systému                         | Ne          |
+| MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | Ne          |
+| DATABÁZE                                  | Umístění instalace pro software Oracle Database | Ne          |
+| ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | Ne          |
+| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Ano         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Ano         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Ano         |
+| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Ano         |
 
 ![Konfigurace disku virtuálního počítače Oracle](media/oracle-vmdk.png)
 
@@ -79,7 +79,7 @@ Každý virtuální počítač Oracle je nakonfigurovaný s více disky pro oper
 * Sdílení je nastaveno na **bez sdílení**.
 * Redundance je definována v úložišti pomocí zásad síti vSAN.  
 
-![Konfigurace skupiny datových disků Oracle RAC](media/oracle-vm-os-disks.png)
+![Diagram znázorňující fyzickou konfiguraci disku s operačním systémem Oracle RAC](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Konfigurace datových disků
 
@@ -148,7 +148,7 @@ Oblast rychlé obnovy (v/v) je systém souborů spravovaný skupinou disků Orac
 * Disky musí být nakonfigurované jako skupina disků ASM.  
 * Redundance ASM je nastavená na **externí** redundanci.
 
-![Konfigurace skupiny hlasovacích disků Oracle RAC](media/oracle-vm-fra-disks.png)
+![Diagram, který zobrazuje konfiguraci skupiny hlasovacích disků Oracle RAC.](media/oracle-vm-fra-disks.png)
 
 ## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>Nasazení clusteru CloudSimple Private Cloud vSphere
 
@@ -220,7 +220,7 @@ Oracle používá sdílený disk k ukládání dat, protokolů a souborů protok
 9. Pro sdílení zadejte **Vícenásobný zapisovač**.
 10. V uzlu virtuální zařízení vyberte nový řadič SCSI, který byl vytvořen v kroku 2.
 
-    ![Vytvořit disky na prvním virtuálním počítači](media/oracle-rac-new-hard-disk.png)
+    ![Snímek obrazovky, který zvýrazní pole potřebná k vytvoření disků na prvním virtuálním počítači.](media/oracle-rac-new-hard-disk.png)
 
 Opakujte kroky 2 – 10 pro všechny nové disky požadované pro soubory protokolu Oracle data, protokoly a znovu.
 
@@ -259,7 +259,7 @@ Pravidla spřažení z virtuálního počítače na hostitele zajistí, že virt
 13. Vyberte skupinu hostitelů, kterou jste vytvořili.
 14. Kliknutím na **OK** vytvořte pravidlo.
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 * [Informace o zásadách síti vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [Atribut VMware multi-Writer pro Shared VMDK](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

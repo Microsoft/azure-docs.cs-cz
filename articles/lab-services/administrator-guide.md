@@ -3,12 +3,12 @@ title: Azure Lab Services – příručka pro správce | Microsoft Docs
 description: Tato příručka pomáhá správcům, kteří vytvářejí a spravují účty testovacího prostředí pomocí Azure Lab Services.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 380676b22fc27b5f62c40112457c42a04b4bf955
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371405"
+ms.locfileid: "92425299"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – příručka pro správce
 Správcům informačních technologií (IT), kteří spravují cloudové prostředky vysoké školy, se obvykle zodpovídá za nastavení účtu testovacího prostředí pro svou školu. Po nastavení účtu testovacího prostředí můžou správci nebo pedagogy vytvářet učebny, které jsou obsaženy v rámci účtu testovacího prostředí. Tento článek poskytuje podrobný přehled o prostředcích Azure a pokyny pro jejich vytváření.
@@ -178,7 +178,7 @@ Když správci nebo tvůrci testovacího prostředí vytvoří testovací prost�
 
 ## <a name="manage-identity"></a>Správa identity
 
-Pomocí [řízení přístupu založeného na rolích Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)můžete přiřadit následující role, které umožní přístup k účtům testovacího prostředí a Labs v učebně:
+Pomocí [řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)se dají přiřadit následující role, které umožní přístup k účtům testovacího prostředí a Labs v učebně:
 
 - **Vlastník účtu testovacího prostředí**
 

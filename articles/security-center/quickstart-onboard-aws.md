@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449032"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428116"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Připojení účtů AWS k Azure Security Center
 
@@ -42,7 +42,7 @@ Na snímku obrazovky níže vidíte účty AWS zobrazené na řídicím panelu p
 |Stav vydaných verzí:|Preview|
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|**Vlastník** nebo **Přispěvatel** v příslušném předplatném Azure|
-|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -118,9 +118,12 @@ AWS Systems Manager se vyžaduje pro automatizaci úloh napříč prostředky AW
 - [Instalace a konfigurace agenta SSM na instancích Amazon EC2 Linux](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-agent.html)
 
 
-### <a name="step-4-create-a-service-principal-for-onboarding-at-scale"></a>Krok 4: Vytvoření instančního objektu pro registraci ve velkém měřítku
+### <a name="step-4-complete-azure-arc-prerequisites"></a>Krok 4: Splnění požadavků na Azure ARC
+1. Ujistěte se, že jsou zaregistrované příslušné [poskytovatele prostředků Azure](../azure-arc/servers/agent-overview.md#register-azure-resource-providers) :
+    - Microsoft. HybridCompute
+    - Microsoft. GuestConfiguration
 
-Jako **vlastník** předplatného, který chcete použít pro registraci, vytvořte instanční objekt pro Azure ARC, jak je popsáno v tématu [Vytvoření instančního objektu pro registraci ve velkém měřítku](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) .
+1. Vytvořte instanční objekt pro připojování ve velkém měřítku. Jako **vlastník** předplatného, který chcete použít pro registraci, vytvořte instanční objekt pro Azure ARC, jak je popsáno v tématu [Vytvoření instančního objektu pro registraci ve velkém měřítku](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale).
 
 
 ### <a name="step-5-connect-aws-to-security-center"></a>Krok 5. Připojení AWS k Security Center
@@ -132,7 +135,8 @@ Jako **vlastník** předplatného, který chcete použít pro registraci, vytvo�
     1. Zadejte **Zobrazovaný název** pro konektor.
     1. Potvrďte, že je předplatné správné. Je to předplatné, které bude zahrnovat doporučení centra zabezpečení konektoru a AWS.
     1. V závislosti na možnosti ověřování, kterou jste zvolili v [kroku 2. Nastavení ověřování pro Security Center v AWS](#step-2-set-up-authentication-for-security-center-in-aws):
-        - Vyberte **předpokládat roli** a vložte ARN z části [Vytvoření Role IAM pro Security Center](#create-an-iam-role-for-security-center) :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center"::: .
+        - Vyberte  **předpokládat roli** a vložte ARN z části [Vytvoření Role IAM pro Security Center](#create-an-iam-role-for-security-center).
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center":::
 
             NEBO
 
@@ -143,7 +147,7 @@ Jako **vlastník** předplatného, který chcete použít pro registraci, vytvo�
     Security Center zjistí instance EC2 v připojeném účtu AWS a pomocí SSM je zaregistruje do Azure ARC. 
 
     > [!TIP]
-    > Seznam podporovaných operačních systémů najdete v části Nejčastější dotazy.
+    > Seznam podporovaných operačních systémů najdete v tématu [Jaké operační systémy pro instance EC2 jsou podporované?](#what-operating-systems-for-my-ec2-instances-are-supported) v části Nejčastější dotazy.
 
     1. Vyberte **skupinu prostředků** a **oblast Azure** , ke které se zjištěné AWS EC2s připojí do vybraného předplatného.
     1. Zadejte **ID instančního** objektu a **tajný klíč klienta instančního objektu** pro Azure ARC, jak je popsané tady. [Vytvoření instančního objektu pro registraci ve velkém měřítku](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)

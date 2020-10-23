@@ -3,12 +3,12 @@ title: Klienti, role a uživatelé ve scénářích Azure Lighthouse
 description: Seznamte se s koncepty Azure Active Directory klientů, uživatelů a rolí a také jak se dají použít ve scénářích Azure Lighthouse.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dae09ddd7760af1663e0329eb646c8956dff3ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399240"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424117"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Klienti, role a uživatelé ve scénářích Azure Lighthouse
 
@@ -22,7 +22,7 @@ Podle toho, jakou metodu připojování zvolíte, budete muset definovat *autori
 
 ## <a name="role-support-for-azure-lighthouse"></a>Podpora rolí pro Azure Lighthouse
 
-Při definování autorizace musí mít každý uživatelský účet přiřazenou jednu z [předdefinovaných rolí řízení přístupu na základě role (RBAC)](../../role-based-access-control/built-in-roles.md). Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
+Při definování autorizace musí být každému uživatelskému účtu přiřazená jedna z [předdefinovaných rolí Azure](../../role-based-access-control/built-in-roles.md). Vlastní role a [role správců pro klasický odběr](../../role-based-access-control/classic-administrators.md) nejsou podporovány.
 
 Všechny [předdefinované role](../../role-based-access-control/built-in-roles.md) jsou v současné době podporované pomocí Azure Lighthouse, s následujícími výjimkami:
 

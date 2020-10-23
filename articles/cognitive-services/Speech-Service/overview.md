@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: b15a034a73882287e70afcbcaa9c72ee931c9f78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 29289166dca2ee87055c8bcd4e453fc02966c0e5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630198"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427169"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
 Služba rozpoznávání řeči je sjednocení převodu řeči na text, převod textu na řeč a rozpoznávání řeči do jednoho předplatného Azure. Rozpoznávání řeči vám umožní používat aplikace, nástroje a zařízení pomocí rozpoznávání [řeči](spx-overview.md), [sady Speech SDK](speech-sdk-reference.md), [Speech Devices SDK](https://aka.ms/sdsdk-quickstart), [Speech Studio](https://speech.microsoft.com/)nebo [REST API](rest-apis.md).
 
 > [!IMPORTANT]
-> Služba rozpoznávání řeči nahradila rozhraní API pro zpracování řeči Bingu a Translator Speech. Pokyny k migraci najdete v tématu _Průvodce postupy > migrace_ .
+> Služba rozpoznávání řeči nahradila rozhraní API pro zpracování řeči Bingu a Translator Speech. Pokyny k migraci najdete v části věnované _migraci_ .
 
 Následující funkce jsou součástí služby Speech. Pomocí odkazů v této tabulce se dozvíte víc o běžných případech použití pro jednotlivé funkce nebo o Projděte si referenční informace k rozhraní API.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77087126"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424678"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurace připojení VPN k privátnímu cloudu CloudSimple
 
@@ -63,7 +63,7 @@ Níže uvedený příklad ukazuje Import připojení pomocí **klienta viskozity
 
 4. Vyberte konfigurační soubor OpenVPN (. ovpn) pro protokol, který chcete použít, a klikněte na **otevřít**.
 
-    ![Síť VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![Snímek obrazovky, který zvýrazní konfigurační soubory OpenVPN, které můžete vybrat.](media/import-p2s-vpn-config-choose-ovpn.png)
 
 Připojení se nyní zobrazí v nabídce viskozita.
 
@@ -71,7 +71,7 @@ Připojení se nyní zobrazí v nabídce viskozita.
 
 Pokud se chcete připojit k síti VPN pomocí klienta viskozita OpenVPN, vyberte připojení z nabídky. Ikona nabídky se aktualizuje, aby označovala, že je připojení navázáno.
 
-![Síť VPN](media/vis03.png)
+![Snímek obrazovky, který zobrazuje stav připojení CloudSimple VPN.](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>Připojení k více privátním cloudům
 

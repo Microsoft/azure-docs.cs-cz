@@ -1,6 +1,6 @@
 ---
-title: Řízení přístupu na základě role pro účty Media Services – Azure | Microsoft Docs
-description: Tento článek popisuje řízení přístupu na základě role (RBAC) pro účty Azure Media Services.
+title: Řízení přístupu na základě role v Azure pro účty Media Services – Azure | Microsoft Docs
+description: Tento článek popisuje řízení přístupu na základě role Azure (Azure RBAC) pro účty Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d6bc37a8aaddfb48e6d06eb46d9c1648e815b5ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289235"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426792"
 ---
-# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Řízení přístupu na základě role (RBAC) pro účty Media Services
+# <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Řízení přístupu na základě role Azure (Azure RBAC) pro účty Media Services
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -27,7 +27,7 @@ V současné době Azure Media Services nedefinuje žádné vlastní role specif
 
 ## <a name="design-principles"></a>Principy návrhu
 
-Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. Rozhraní V3 API nevrací tajné klíče ani přihlašovací údaje na operace **Get** nebo **list** . Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Pro získání tajných klíčů nebo přihlašovacích údajů musí uživatel zavolat samostatnou metodu akce. Role **Čtenář** nemůže volat operace jako Asset. ListContainerSas, StreamingLocator. ListContentKeys, ContentKeyPolicies. GetPolicyPropertiesWithSecrets. Samostatné akce umožňují nastavit podrobnější oprávnění zabezpečení RBAC v vlastní roli v případě potřeby.
+Jedním z klíčových principů návrhu rozhraní API v3 je vyšší zabezpečení rozhraní API. Rozhraní V3 API nevrací tajné klíče ani přihlašovací údaje na operace **Get** nebo **list** . Klíče v odpovědi mají vždy hodnotu null, jsou prázdné nebo upravené. Pro získání tajných klíčů nebo přihlašovacích údajů musí uživatel zavolat samostatnou metodu akce. Role **Čtenář** nemůže volat operace jako Asset. ListContainerSas, StreamingLocator. ListContentKeys, ContentKeyPolicies. GetPolicyPropertiesWithSecrets. Pokud budete chtít, můžete v případě potřeby nastavit podrobnější oprávnění zabezpečení služby Azure RBAC v vlastní roli pomocí samostatných akcí.
 
 Pokud chcete zobrazit seznam operací, které Media Services podporuje, udělejte toto:
 
@@ -42,9 +42,9 @@ V článku [předdefinované definice rolí](../../role-based-access-control/bui
 
 Další informace najdete v následujících článcích:
 
-- [Role správců pro klasický odběr, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Role správců pro klasický odběr, role Azure a role Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 - [Co je řízení přístupu na základě role v Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
-- [Správa přístupu pomocí RBAC](../../role-based-access-control/role-assignments-rest.md)
+- [Přidání nebo odebrání přiřazení rolí v Azure pomocí REST API](../../role-based-access-control/role-assignments-rest.md)
 - [Media Services operace poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
 ## <a name="next-steps"></a>Další kroky

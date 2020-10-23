@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268821"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428388"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>Kurz: odeslání nabízených oznámení na zařízení s Androidem pomocí sady Firebase SDK verze 0,6
 
@@ -411,7 +411,7 @@ Vaše centrum je teď nakonfigurované tak, aby fungovalo s Firebase cloudovým 
     android:id="@+id/text_hello"
     ```
 
-    ![Azure Notification Hubs – testovací odeslání](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
+    ![Snímek obrazovky zobrazující ID Androidu: ID = "@ + ID/text_hello" použité pro ovládací prvek TextView](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
 10. Dále přidáte podtřídu pro přijímače, který jste definovali v AndroidManifest.xml. Přidejte další novou třídu do projektu s názvem `FirebaseService`.
 

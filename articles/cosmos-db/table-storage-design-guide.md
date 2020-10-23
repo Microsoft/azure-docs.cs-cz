@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002172"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428059"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulek v Azure Table Storage: Škálovatelné a výkonné tabulky
 
@@ -476,7 +476,7 @@ Více kopií každé entity uložte pomocí různých `RowKey` hodnot v samostat
 #### <a name="context-and-problem"></a>Kontext a problém
 Table Storage automaticky indexuje entity pomocí `PartitionKey` hodnot a `RowKey` . To umožňuje klientské aplikaci efektivně načíst entitu pomocí těchto hodnot. Například pomocí následující struktury tabulky může klientská aplikace použít dotaz typu Point k načtení konkrétní entity zaměstnance pomocí názvu oddělení a ID zaměstnance ( `PartitionKey` `RowKey` hodnoty a). Klient může také načíst entity seřazené podle ID zaměstnance v rámci každého oddělení.  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::[9]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance"::: 9
 
 Pokud chcete také vyhledat entitu zaměstnance na základě hodnoty jiné vlastnosti, jako je například e-mailová adresa, je třeba použít méně efektivní kontrolu oddílů a vyhledat shodu. Důvodem je to, že služba Table Storage neposkytuje sekundární indexy. Kromě toho neexistuje možnost vyžádat si seznam zaměstnanců seřazených v jiném pořadí než v `RowKey` pořadí.  
 
@@ -648,7 +648,7 @@ V relační databázi obvykle Normalizujte data pro odstranění duplicit, ke kt
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE16.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
 
 #### <a name="solution"></a>Řešení
-Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Například:  
+Místo uložení dat ve dvou samostatných entitách denormalizujte data a udržujte kopii podrobností manažera v entitě oddělení. Příklad:  
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE17.png" alt-text="Obrázek znázorňující entitu oddělení a entitu zaměstnance":::
 

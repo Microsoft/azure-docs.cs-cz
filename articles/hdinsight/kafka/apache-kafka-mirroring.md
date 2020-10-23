@@ -8,16 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087358"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428249"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci témat Apache Kafka s využitím platformy Kafka ve službě HDInsight
 
 Naučte se používat funkci zrcadlení Apache Kafka k replikaci témat do sekundárního clusteru. Zrcadlení může být spuštěno jako nepřetržitý proces nebo občasně používáno jako metoda migrace dat z jednoho clusteru do jiného.
+
+> [!NOTE]
+> Tento článek obsahuje odkazy na seznam *povolených*termínů, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 V tomto příkladu se zrcadlení používá k replikaci témat mezi dvěma clustery HDInsight. Oba clustery jsou v různých datových centrech v různých virtuálních sítích.
 
@@ -73,7 +76,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
 1. Vytvořte dva nové clustery Kafka:
 
-    | Název clusteru | Resource Group | Virtual Network | Účet úložiště |
+    | Název clusteru | Resource Group (Skupina prostředků) | Virtual Network | Storage Account (Účet úložiště) |
     |---|---|---|---|
     | Kafka-Primary-cluster | Kafka – primární – RG | Kafka-Primary-VNet | kafkaprimarystorage |
     | Kafka-Secondary-cluster | Kafka – sekundární – RG | Kafka-Secondary-VNet | kafkasecondarystorage |

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70101260"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424254"
 ---
 # <a name="disaster-recovery-principles"></a>Principy zotavení po havárii
 
@@ -68,7 +68,7 @@ Dalším krokem je instalace druhé instance SAP HANA na velké jednotce instanc
 - Zastavte nově nainstalovanou instanci SAP HANA na jednotce velkých instancí HANA v oblasti Azure DR.
 - Odpojte tyto svazky PRD a obraťte se SAP HANA na správu služeb Azure. Svazky nemůžou zůstat připojené k jednotce, protože nemůžou být dostupné, když budou fungovat jako cíl replikace úložiště.  
 
-![Krok instalace DR před vytvořením replikace](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Diagram, který zobrazuje vztah replikace mezi PRD svazky v produkční oblasti Azure a PRD svazky v oblasti Azure DR.](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 Provozní tým vytvoří vztah replikace mezi PRD svazky v produkční oblasti Azure a PRD svazky v oblasti Azure DR.
 
