@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86525037"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419941"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů s úlohami v privátním cloudu CloudSimple pomocí Veeam B&R
 
@@ -56,7 +56,7 @@ Pro prostředí, která mají k zálohování méně než 30 TB, CloudSimple dop
 * Primární úložiště záloh založené na systému Linux v Azure nakonfigurované jako cíl pro úlohy zálohování.
 * `azcopy` používá se ke kopírování dat z primárního úložiště záloh do kontejneru objektů BLOB v Azure, který se replikuje do jiné oblasti.
 
-![Základní scénáře nasazení](media/veeam-basicdeployment.png)
+![Diagram, který znázorňuje základní scénáře nasazení Veeam.](media/veeam-basicdeployment.png)
 
 **Pokročilé nasazení**
 
@@ -136,7 +136,7 @@ Vytvořte pravidla brány firewall mezi podsítí pro správu a sítí zálohov�
 
 V následující tabulce je uveden seznam portů.
 
-| Ikona | Description | Ikona | Description |
+| Ikona | Popis | Ikona | Popis |
 | ------------ | ------------- | ------------ | ------------- |
 | Záložní server  | vCenter  | PROTOKOL HTTPS/TCP  | 443 |
 | Záložní server <br> *Vyžaduje se pro nasazení součástí Veeam Backup & pro replikaci.* | Záložní proxy server  | TCP/UDP  | 135, 137 až 139 a 445 |
@@ -260,7 +260,7 @@ Vytvořte pravidlo brány firewall pomocí nástroje, aby server Veeam Backup mo
 
 Chcete-li zrušit oprávnění, přečtěte si téma oprávnění ke zrušení [Eskalace](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 ### <a name="cloudsimple-references"></a>Odkazy na CloudSimple
 

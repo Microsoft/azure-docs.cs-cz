@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: bc5bfb7c9cadea7aaa9cdedb2a17943014c6ef59
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124754"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426319"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -83,7 +83,7 @@ Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance
 > Pokud jsou v primární databázi aktualizace schématu, je opětovné přehrání protokolu zpožděno v sekundární databázi. Druhá z nich vyžaduje zámek schématu na sekundární databázi.
 
 > [!IMPORTANT]
-> Geografickou replikaci můžete použít k vytvoření sekundární databáze ve stejné oblasti jako primární. Tuto sekundární službu můžete použít k vyrovnávání zatížení úloh jen pro čtení ve stejné oblasti. Sekundární databáze ve stejné oblasti ale neposkytuje další odolnost proti chybám, a proto není vhodným cílem převzetí služeb při selhání pro zotavení po havárii. Nebude taky zaručit izolaci zóny dostupnosti. K dosažení izolace zóny dostupnosti použijte úroveň služby pro důležité nebo Premium pro podnik s [redundantní konfigurací zóny](high-availability-sla.md#zone-redundant-configuration) .
+> Geografickou replikaci můžete použít k vytvoření sekundární databáze ve stejné oblasti jako primární. Tuto sekundární službu můžete použít k vyrovnávání zatížení úloh jen pro čtení ve stejné oblasti. Sekundární databáze ve stejné oblasti ale neposkytuje další odolnost proti chybám, a proto není vhodným cílem převzetí služeb při selhání pro zotavení po havárii. Nebude taky zaručit izolaci zóny dostupnosti. Pro dosažení izolace zóny dostupnosti použijte úroveň služby pro důležité podnikovou nebo službu Premium s [redundantní konfigurací zóny](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) nebo pro obecné účely [redundantní konfigurace zóny](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) služby.
 >
 
 - **Plánované převzetí služeb při selhání**

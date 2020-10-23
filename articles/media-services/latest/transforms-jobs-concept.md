@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
-ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297973"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426786"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Transformace a úlohy v Media Services
 
@@ -62,7 +62,7 @@ V Media Services V3 jsou předvolby silně typované entity v rozhraní API. Def
 
 ### <a name="creating-transforms"></a>Vytváření transformací
 
-Transformace můžete vytvořit pomocí REST, CLI nebo kterékoli z publikovaných sad SDK. Rozhraní API Media Services V3 je založené na Azure Resource Manager, takže můžete také použít šablony Správce prostředků k vytváření a nasazování transformací v účtu Media Services. K uzamčení přístupu k transformacím se dá použít řízení přístupu na základě role.
+Transformace můžete vytvořit pomocí REST, CLI nebo kterékoli z publikovaných sad SDK. Rozhraní API Media Services V3 je založené na Azure Resource Manager, takže můžete také použít šablony Správce prostředků k vytváření a nasazování transformací v účtu Media Services. Řízení přístupu na základě role Azure se dá použít k uzamknutí přístupu k transformům.
 
 ### <a name="updating-transforms"></a>Aktualizace transformací
 

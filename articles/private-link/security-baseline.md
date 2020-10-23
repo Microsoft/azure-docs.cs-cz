@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 654fc453f0b4167ae91afcab811de321925c6bf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9e4fd2f7f55f916743074b57f89788c0d32f7d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89614657"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427495"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Základní plán zabezpečení Azure pro privátní propojení Azure
 
@@ -268,7 +268,7 @@ Ingestujte data do Azure Sentinel pro další šetření.
 
 Omezte úroveň přístupu k prostředkům Azure pomocí vašich aplikací a podnikových prostředí na základě podnikových požadavků. 
 
-Řízení přístupu k prostředkům Azure pomocí Azure Active Directory řízení přístupu na základě role.
+Řízení přístupu k prostředkům Azure prostřednictvím řízení přístupu na základě role Azure (RBAC).
 
 - [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
@@ -292,7 +292,7 @@ Pokud je to možné, postupujte podle Security Center doporučení pro šifrová
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
 **Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k datům a prostředkům, v opačném případě použití metod řízení přístupu specifických pro službu.
 
@@ -456,7 +456,7 @@ Implementujte doporučení z Security Center jako standardní hodnoty konfigurac
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd6a907ce855fbb7c1ef96236766beef9b25b2ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400462"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428366"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Standardní hodnoty zabezpečení Azure pro službu Key Vault
 
@@ -566,7 +566,9 @@ Protokolování Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: šifrování všech citlivých informací během přenosu
 
-**Doprovodné**materiály: veškerý provoz Azure Key Vault pro ověřování, správu a přístup k rovině dat je zašifrovaný a projde přes protokol https: port 443. (Pro seznam CRL bude ale občas možné provozovat přenosy HTTP [port 80].) 
+**Doprovodné**materiály: veškerý provoz Azure Key Vault pro ověřování, správu a přístup k rovině dat je zašifrovaný a projde přes protokol https: port 443. (Pro seznam CRL bude ale občas možné provozovat přenosy HTTP [port 80].) Azure Key Vault nadále povoluje ingestování dat TLS 1,1 a TLS 1,0. Data mohou být omezena na TLS 1,2 prostřednictvím konfigurace na straně klienta.
+
+
 
 Přístup k Azure Key Vault za bránou firewall: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
 

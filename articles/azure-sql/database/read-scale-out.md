@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319422"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426995"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Přesměrování zatížení dotazů jen pro čtení pomocí replik jen pro čtení
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-V rámci [architektury vysoké dostupnosti](high-availability-sla.md#premium-and-business-critical-service-tier-availability)se každá samostatná databáze, databáze elastického fondu a spravovaná instance v úrovni služeb Premium a pro důležité obchodní informace automaticky zřídí s primární replikou pro čtení a zápis a několika sekundárními replikami jen pro čtení. Sekundární repliky se zřídí se stejnou výpočetní velikostí jako primární replika. Funkce *škálování čtení* na více instancí umožňuje přesměrovat úlohy jen pro čtení pomocí výpočetní kapacity jedné z replik jen pro čtení namísto jejich spuštění v replice pro čtení i zápis. Tímto způsobem mohou být některé úlohy jen pro čtení izolované od úloh pro čtení a zápis a nebudou mít vliv na jejich výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako je například analýza. V úrovních služeb Premium a Pro důležité obchodní informace můžou aplikace získat výhody výkonu na základě této další kapacity bez dalších poplatků.
+V rámci [architektury vysoké dostupnosti](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)se každá samostatná databáze, databáze elastického fondu a spravovaná instance v úrovni služeb Premium a pro důležité obchodní informace automaticky zřídí s primární replikou pro čtení a zápis a několika sekundárními replikami jen pro čtení. Sekundární repliky se zřídí se stejnou výpočetní velikostí jako primární replika. Funkce *škálování čtení* na více instancí umožňuje přesměrovat úlohy jen pro čtení pomocí výpočetní kapacity jedné z replik jen pro čtení namísto jejich spuštění v replice pro čtení i zápis. Tímto způsobem mohou být některé úlohy jen pro čtení izolované od úloh pro čtení a zápis a nebudou mít vliv na jejich výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako je například analýza. V úrovních služeb Premium a Pro důležité obchodní informace můžou aplikace získat výhody výkonu na základě této další kapacity bez dalších poplatků.
 
 Funkce *škálování pro čtení* je k dispozici také v úrovni služby škálování na více instancí, pokud je vytvořena alespoň jedna sekundární replika. Pro úlohy vyrovnávání zatížení, které vyžadují více prostředků, než je k dispozici v jedné sekundární replice, lze použít více sekundárních replik.
 
@@ -166,7 +166,7 @@ Opětovné povolení horizontálního navýšení kapacity pro čtení v existuj
 Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Chcete-li vytvořit databázi s vypnutým škálováním pro čtení nebo změnit nastavení pro existující databázi, použijte následující metodu s `readScale` vlastností nastavenou na `Enabled` nebo `Disabled` , jako v následujícím ukázkovém požadavku.
 

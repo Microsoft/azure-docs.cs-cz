@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fed376eae1c3dadb17f5ecf8e7f1c3422e07b9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757448"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426422"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Kurz: Konfigurace Apple School Manageru pro Automatické zřizování uživatelů
 
@@ -160,7 +160,6 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * [Zobrazit aktivitu SCIM v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
 * [Správa stávajícího tokenu SCIM a připojení v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
 * [Odpojení připojení SCIM v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [Správa stávajícího tokenu SCIM a připojení v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
 * [Řešení potíží s připojením SCIM v Apple School Manageru](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>Další kroky

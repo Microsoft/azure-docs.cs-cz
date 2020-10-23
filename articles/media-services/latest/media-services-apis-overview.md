@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5d57a6705973fbd5ee39042404015347d75b49b3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b01208c67610ff220df1654d10211472e0eed61f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019762"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426849"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Vývoj pomocí rozhraní API služby Media Services v3
 
@@ -35,7 +35,7 @@ Abyste mohli získat autorizaci pro přístup k prostředkům a rozhraní API sl
 * **Ověřování instančních objektů:** Slouží k ověřování služeb (například webových aplikací, aplikací funkcí, aplikací logiky, rozhraní API nebo mikroslužeb). Mezi aplikace, které běžně využívají tuto metodu ověřování, patří aplikace spouštějící služby démonů, služby střední úrovně nebo naplánované úlohy. Například pro webové aplikace by měla být vždy střední vrstva, která se připojuje k Media Services s instančním objektem.
 * **Ověřování uživatelů:** Slouží k ověřování lidí, kteří pomocí aplikace pracují s prostředky služby Media Services. Interaktivní aplikace by nejprve měla uživatele vyzvat k zadání přihlašovacích údajů. Příkladem je aplikace konzoly pro správu, kterou autorizovaní uživatelé používají k monitorování úloh kódování nebo živého streamování.
 
-Rozhraní API služby Media Services vyžaduje, aby uživatel nebo aplikace provádějící požadavky rozhraní REST API měli přístup k prostředku účtu služby Media Services a používali roli **Přispěvatel** nebo **Vlastník**. K rozhraní API je možné získat přístup také s rolí **Čtenář**, ale v takovém případě budou k dispozici pouze operace **Get** a **List**.Další informace najdete v tématu [Řízení přístupu na základě role pro účty služby Media Services](rbac-overview.md).
+Rozhraní API služby Media Services vyžaduje, aby uživatel nebo aplikace provádějící požadavky rozhraní REST API měli přístup k prostředku účtu služby Media Services a používali roli **Přispěvatel** nebo **Vlastník**. K rozhraní API je možné získat přístup také s rolí **Čtenář**, ale v takovém případě budou k dispozici pouze operace **Get** a **List**. Další informace najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC) pro účty Media Services](rbac-overview.md).
 
 Místo vytváření instančního objektu zvažte přístup k rozhraní API služby Media Services prostřednictvím Azure Resource Manageru s využitím spravovaných identit pro prostředky Azure. Další informace o spravovaných identitách pro prostředky Azure najdete v tématu [Co jsou spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 

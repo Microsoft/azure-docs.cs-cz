@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: Podívejte se, jak načíst, aktualizovat a odstranit jednotlivé vlákna a relace.
 author: baanders
 ms.author: baanders
-ms.date: 4/10/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c522ac9e1aedbcdfdb4564d17b506b1b490da0c3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 58ee064d4946442bff70e97d56a68080333e2197
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150395"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426129"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
-Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md), [sadu .NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
+Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md), [sadu .NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
 
 Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracovat se vztahy a s [dvojitým grafem](concepts-twins-graph.md) v podobě celku, přečtěte si téma [*Postup: Správa nefunkčního grafu s relacemi*](how-to-manage-graph.md).
 
@@ -25,29 +25,32 @@ Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracova
 
 ## <a name="create-a-digital-twin"></a>Vytvoření digitálního vlákna
 
-Chcete-li vytvořit dvojitou hodnotu, použijte `CreateDigitalTwin` metodu na klientovi služby, například:
+Chcete-li vytvořit dvojitou hodnotu, použijte `CreateDigitalTwin()` metodu na klientovi služby, například:
 
 ```csharp
-await client.CreateDigitalTwinAsync("myNewTwinID", initData);
+await client.CreateDigitalTwinAsync("myTwinId", initData);
 ```
 
 K vytvoření digitálního vlákna musíte zadat:
 * Požadované ID digitálního vlákna
-* [Model](concepts-models.md) , který chcete použít 
+* [Model](concepts-models.md) , který chcete použít
 
 Volitelně můžete zadat počáteční hodnoty pro všechny vlastnosti digitálního vlákna. 
 
 Hodnoty modelů a počátečních vlastností jsou k dispozici prostřednictvím `initData` parametru, což je řetězec JSON obsahující relevantní data. Další informace o strukturování tohoto objektu získáte, když budete pokračovat k další části.
 
 > [!TIP]
-> Po vytvoření nebo aktualizaci vlákna může být latence až 10 sekund, než se změny projeví v [dotazech](how-to-query-graph.md). `GetDigitalTwin`Rozhraní API (popsané [dále v tomto článku) v](#get-data-for-a-digital-twin)této prodlevě nefunguje, proto použijte volání rozhraní API namísto dotazování, abyste viděli nově vytvořená vlákna, pokud potřebujete okamžitou reakci. 
+> Po vytvoření nebo aktualizaci vlákna může být latence až 10 sekund, než se změny projeví v [dotazech](how-to-query-graph.md). `GetDigitalTwin`Rozhraní API (popsané [dále v tomto článku) v](#get-data-for-a-digital-twin)této prodlevě nefunguje, takže pokud potřebujete okamžitou reakci, použijte volání rozhraní API namísto dotazování, abyste viděli nově vytvořené vlákna. 
 
 ### <a name="initialize-model-and-properties"></a>Inicializace modelu a vlastností
 
 Rozhraní API pro vytvoření vlákna přijímá objekt, který je serializován do platného popisu JSON vlastností. V tématu [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md) pro Popis formátu JSON pro dvojitou hodnotu. 
 
-Nejprve vytvoříte datový objekt, který bude představovat vlákna a data vlastností. Pak můžete použít `JsonSerializer` k předání serializované verze do volání rozhraní API pro `initdata` parametr.
+Nejprve můžete vytvořit datový objekt, který bude představovat vlákna a data vlastností. Pak můžete použít `JsonSerializer` k předání serializované verze tohoto objektu do volání rozhraní API pro `initdata` parametr, například takto:
 
+```csharp
+await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+```
 Můžete vytvořit objekt parametru buď ručně, nebo pomocí poskytnuté pomocné třídy. Tady je příklad každé z nich.
 
 #### <a name="create-twins-using-manually-created-data"></a>Vytváření dvojitých vláken pomocí ručně vytvořených dat
@@ -58,7 +61,7 @@ Bez použití vlastních pomocných tříd můžete reprezentovat vlastnosti vl�
 
 #### <a name="create-twins-with-the-helper-class"></a>Vytvoření vláken s podpůrnou třídou
 
-Pomocná třída `BasicDigitalTwin` umožňuje ukládat pole vlastností do "" vlákna "objektu více přímo. Přesto můžete chtít sestavit seznam vlastností pomocí `Dictionary<string, object>` , který lze následně přidat k dodanému objektu jako `CustomProperties` přímo.
+Pomocná třída `BasicDigitalTwin` umožňuje ukládat pole vlastností přímo do objektu "vlákna". Přesto můžete chtít sestavit seznam vlastností pomocí `Dictionary<string, object>` , který lze následně přidat k dodanému objektu jako `CustomProperties` přímo.
 
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
@@ -70,27 +73,37 @@ props.Add("Temperature", 25.0);
 props.Add("Humidity", 50.0);
 twin.CustomProperties = props;
 
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+client.CreateDigitalTwinAsync("myRoomId", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateDigitalTwin` volání. Pro výše uvedený příklad by to vypadalo takto:
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateDigitalTwin()` volání. Příklad:
 >
 >```csharp
->twin.Id = "myNewRoomID";
+>twin.Id = "myRoomId";
 >```
 
 ## <a name="get-data-for-a-digital-twin"></a>Získání dat z digitálního vlákna
 
-Můžete získat přístup k plným datům libovolného digitálního vlákna voláním:
+Můžete získat přístup k podrobnostem jakéhokoliv digitálního vlákna voláním `GetDigitalTwin()` metody, jako je tato:
 
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
+Toto volání vrátí jako řetězec JSON dvojitá data. Tady je příklad toho, jak se má použít k zobrazení podrobností o zdvojených událostech:
 
-Toto volání vrátí jako řetězec JSON dvojitá data. 
-
-Po načtení vlákna se vrátí pouze vlastnosti, které byly nastaveny alespoň jednou `GetDigitalTwin` .
+```csharp
+Response<string> res = client.GetDigitalTwin("myRoomId");
+twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+foreach (string prop in twin.CustomProperties.Keys)
+{
+  if (twin.CustomProperties.TryGetValue(prop, out object value))
+  Console.WriteLine($"Property '{prop}': {value}");
+}
+```
+Po načtení vlákna s metodou se vrátí pouze vlastnosti, které byly nastaveny alespoň jednou `GetDigitalTwin()` .
 
 >[!TIP]
 >`displayName`Pro objekt, který je pro vlákna, je součástí metadat modelu, takže se při získávání dat pro dvojitou instanci nebude zobrazovat. Chcete-li zobrazit tuto hodnotu, můžete [ji načíst z modelu](how-to-manage-model.md#retrieve-models).
@@ -101,7 +114,7 @@ Vezměte v úvahu následující model (napsaný v [digitálním DTDL)](https://
 
 ```json
 {
-    "@id": " dtmi:com:contoso:Moon;1",
+    "@id": "dtmi:example:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2",
     "contents": [
@@ -120,8 +133,7 @@ Vezměte v úvahu následující model (napsaný v [digitálním DTDL)](https://
     ]
 }
 ```
-
-Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` na vlákna typu *měsíc*může vypadat takto:
+Výsledek volání `object result = await client.GetDigitalTwinAsync("my-moon");` na vlákna typu *měsíc*může vypadat takto:
 
 ```json
 {
@@ -130,7 +142,7 @@ Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-m
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
-    "$model": "dtmi:com:contoso:Moon;1",
+    "$model": "dtmi:example:Moon;1",
     "radius": {
       "desiredValue": 1737.1,
       "desiredVersion": 5,
@@ -151,7 +163,7 @@ Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-m
 
 Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
 * ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
-* `$etag`, standardní pole HTTP přiřazené webovým serverem
+* `$etag`, standardní pole HTTP přiřazené webovým serverem.
 * Další vlastnosti v `$metadata` oddílu. Tady jsou některé z nich:
     - DTMI modelu digitálního vlákna.
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
@@ -162,7 +174,7 @@ Můžete analyzovat vrácený formát JSON pro vlákna pomocí knihovny analýzy
 Můžete také použít třídu pomocníka serializace `BasicDigitalTwin` , která je součástí sady SDK, což vrátí základní a vlastnosti ve formě předem analyzovaných formulářů. Tady je příklad:
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
+Response<string> res = client.GetDigitalTwin(twin_Id);
 BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
 foreach (string prop in twin.CustomProperties.Keys)
@@ -176,7 +188,7 @@ Další informace o pomocných třídách serializace najdete v tématu [*Postup
 
 ## <a name="update-a-digital-twin"></a>Aktualizace digitálního vlákna
 
-Chcete-li aktualizovat vlastnosti digitálního vlákna, zapište informace, které chcete nahradit ve formátu [opravy JSON](http://jsonpatch.com/) . Tímto způsobem můžete nahradit více vlastností najednou. Pak předáte dokument opravy JSON do `Update` metody:
+Chcete-li aktualizovat vlastnosti digitálního vlákna, zapište informace, které chcete nahradit ve formátu [opravy JSON](http://jsonpatch.com/) . Tímto způsobem můžete nahradit více vlastností najednou. Pak předáte dokument opravy JSON do `UpdateDigitalTwin()` metody:
 
 ```csharp
 await client.UpdateDigitalTwin(id, patch);
@@ -203,7 +215,6 @@ Tady je příklad kódu opravy JSON. Tento dokument nahrazuje hodnoty *mass* vla
   }
 ]
 ```
-
 Můžete ručně vytvořit opravy nebo pomocí pomocné třídy serializace v [sadě SDK](how-to-use-apis-sdks.md). Tady je příklad každé z nich.
 
 #### <a name="create-patches-manually"></a>Ruční vytvoření oprav
@@ -216,7 +227,10 @@ twinData.Add(new Dictionary<string, object>() {
     { "value", 25.0}
 });
 
-await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData));
+await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+Console.WriteLine("Updated twin properties");
+FetchAndPrintTwin(twin_Id, client);
+}
 ```
 
 #### <a name="create-patches-using-the-helper-class"></a>Vytváření oprav pomocí pomocné třídy
@@ -224,14 +238,14 @@ await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData
 ```csharp
 UpdateOperationsUtility uou = new UpdateOperationsUtility();
 uou.AppendAddOp("/Temperature", 25.0);
-await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
+await client.UpdateDigitalTwinAsync(twin_Id, uou.Serialize());
 ```
 
 ### <a name="update-properties-in-digital-twin-components"></a>Aktualizovat vlastnosti v digitálních nevlákenných komponentách
 
 Odvolání, že model může obsahovat komponenty a umožňuje, aby byl vytvořen z dalších modelů. 
 
-Chcete-li opravit vlastnosti v komponentách digitálního vlákna, budete používat syntaxi cesty v rámci opravy JSON:
+Chcete-li opravit vlastnosti v komponentách digitálního vlákna, můžete použít syntaxi cesty v opravě JSON:
 
 ```json
 [
@@ -245,7 +259,7 @@ Chcete-li opravit vlastnosti v komponentách digitálního vlákna, budete použ
 
 ### <a name="update-a-digital-twins-model"></a>Aktualizace modelu digitálního vlákna
 
-`Update`Funkci lze také použít k migraci digitálního vlákna na jiný model. 
+`UpdateDigitalTwin()`Funkci lze také použít k migraci digitálního vlákna na jiný model. 
 
 Zvažte například následující dokument opravy JSON, který nahrazuje pole metadat digitálního vlákna `$model` :
 
@@ -254,7 +268,7 @@ Zvažte například následující dokument opravy JSON, který nahrazuje pole m
   {
     "op": "replace",
     "path": "/$metadata/$model",
-    "value": "dtmi:com:contoso:foo;1"
+    "value": "dtmi:example:foo;1"
   }
 ]
 ```
@@ -273,7 +287,7 @@ Oprava pro tuto situaci musí aktualizovat model i vlastnost teploty vlákna, na
   {
     "op": "replace",
     "path": "$metadata.$model",
-    "value": "dtmi:com:contoso:foo_new"
+    "value": "dtmi:example:foo_new"
   },
   {
     "op": "add",
@@ -298,9 +312,9 @@ Dvě volání, která mění *Twin1* , se spustí jednou po druhém a při každ
 
 ## <a name="delete-a-digital-twin"></a>Odstranění digitálního vlákna
 
-Můžete odstranit vlákna pomocí `DeleteDigitalTwin(ID)` . Můžete však odstranit pouze dvojitou hodnotu, pokud nemá žádné další relace. Nejprve musíte odstranit všechny relace. 
+Můžete odstranit vlákna pomocí `DeleteDigitalTwin()` metody. Můžete však odstranit pouze dvojitou hodnotu, pokud nemá žádné další relace. Proto nejprve odstraňte příchozí a odchozí vztahy vlákna.
 
-Zde je příklad kódu pro:
+Zde je příklad kódu pro odstranění vláken a jejich vztahů:
 
 ```csharp
 static async Task DeleteTwin(string id)
@@ -334,7 +348,7 @@ public async Task FindAndDeleteOutgoingRelationshipsAsync(string dtId)
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+        Log.Error($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
     }
 }
 
@@ -344,7 +358,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
     try
     {
-        // GetRelationshipssAsync will throw an error if a problem occurs
+        // GetRelationshipsAsync will throw an error if a problem occurs
         AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
 
         await foreach (IncomingRelationship incomingRel in incomingRels)
@@ -355,18 +369,162 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+        Log.Error($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
     }
 }
 ```
-
 ### <a name="delete-all-digital-twins"></a>Odstranit všechny digitální vlákna
 
-Příklad, jak odstranit všechny vlákna najednou, si můžete stáhnout ukázkovou aplikaci používanou v tomto [*kurzu: Prozkoumejte základy s ukázkovou klientskou aplikací*](tutorial-command-line-app.md). Soubor *CommandLoop.cs* to dělá ve `CommandDeleteAllTwins` funkci.
+Příklad, jak odstranit všechny vlákna najednou, si můžete stáhnout ukázkovou aplikaci, která se používá v [_Tutorial: Prozkoumejte základy pomocí ukázkové klientské aplikace *](tutorial-command-line-app.md). Soubor *CommandLoop.cs* to dělá ve `CommandDeleteAllTwins()` funkci.
+
+## <a name="manage-twins-using-runnable-code-sample"></a>Správa dvojitých vláken pomocí ukázky kódu spustitelný
+
+Následující příklad kódu spustitelný můžete použít k vytvoření vlákna, aktualizaci jeho podrobností a odstranění vlákna. 
+
+Fragment kódu používá [Room.jsv](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) definici modelu z [*kurzu: Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md). Pomocí tohoto odkazu můžete přejít přímo k souboru [nebo si ho](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)stáhnout jako součást celého uceleného ukázkového projektu.
+
+Zástupný symbol nahraďte `<your-instance-hostname>` podrobnostmi instance digitálního vlákna Azure a spusťte ukázku.
+
+```csharp
+using System;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections.Generic;
+using Azure;
+using Azure.DigitalTwins.Core.Serialization;
+using System.Text.Json;
+
+namespace minimal
+{
+    class Program
+    {
+
+        static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+            string adtInstanceUrl = "https://<your-instance-hostname>";
+            var credentials = new DefaultAzureCredential();
+            Console.WriteLine();
+            Console.WriteLine($"Upload a model");
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            var typeList = new List<string>();
+            string twin_Id = "myRoomId";
+            string dtdl = File.ReadAllText("Room.json");
+            typeList.Add(dtdl);
+            // Upload the model to the service
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            Console.WriteLine($"Service client created – ready to go");
+            await client.CreateModelsAsync(typeList);
+            twin.Metadata = new DigitalTwinMetadata();
+            twin.Metadata.ModelId = "dtmi:example:Room;1";
+            // Initialize properties
+            Dictionary<string, object> props = new Dictionary<string, object>();
+            props.Add("Temperature", 35.0);
+            props.Add("Humidity", 55.0);
+            twin.CustomProperties = props;
+            await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            Console.WriteLine("Twin created successfully");
+            twin = FetchAndPrintTwin(twin_Id, client);
+            List<object> twinData = new List<object>();
+            twinData.Add(new Dictionary<string, object>() 
+            {
+                { "op", "add"},
+                { "path", "/Temperature"},
+                { "value", 25.0}
+            });
+
+            await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+            Console.WriteLine("Updated Twin Properties");
+            FetchAndPrintTwin(twin_Id, client);
+            await DeleteTwin(client, twin_Id);
+        }
+
+        private static BasicDigitalTwin FetchAndPrintTwin(string twin_Id, DigitalTwinsClient client)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+            foreach (string prop in twin.CustomProperties.Keys)
+            {
+                if (twin.CustomProperties.TryGetValue(prop, out object value))
+                    Console.WriteLine($"Property '{prop}': {value}");
+            }
+
+            return twin;
+        }
+        static async Task DeleteTwin(DigitalTwinsClient client, string id)
+        {
+            await FindAndDeleteOutgoingRelationshipsAsync(client, id);
+            await FindAndDeleteIncomingRelationshipsAsync(client, id);
+            try
+            {
+                await client.DeleteDigitalTwinAsync(id);
+                Console.WriteLine("Twin deleted successfully");
+                FetchAndPrintTwin(id, client);
+            }
+            catch (RequestFailedException exc)
+            {
+                Console.WriteLine($"*** Error:{exc.Message}");
+            }
+        }
+
+        public static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted relationship {rel.Id} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+       static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    await client.DeleteRelationshipAsync(incomingRel.SourceId, incomingRel.RelationshipId).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted incoming relationship {incomingRel.RelationshipId} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+    }
+}
+
+```
+Tady je výstup konzoly výše uvedeného programu: 
+
+:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Výstup na konzole ukazující, že se vytvoří, aktualizuje a odstraní zdvojený" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
 ## <a name="manage-twins-with-cli"></a>Správa dvojitých vláken pomocí rozhraní příkazového řádku
 
-Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v tématu [*Postupy: použití rozhraní příkazového řádku Azure Digital zdvojené*](how-to-use-cli.md).
+Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v [_How-to: použijte Azure Digital Revlákens CLI *](how-to-use-cli.md).
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

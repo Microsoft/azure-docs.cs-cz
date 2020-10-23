@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 5e3b9b841c8e6ff17a29ac9c6a5e746ed6b687b9
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f99a3110880626b3a809e6bab5edc02398094547
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128459"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426223"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Požadavky na úložiště objektů BLOB v Azure Stack Edge
 
@@ -21,16 +21,14 @@ Tento článek obsahuje seznam verzí rozhraní API Azure, klientských knihoven
 
 Doporučujeme pečlivě zkontrolovat informace, než se připojíte k úložišti objektů blob Azure Stack Edge, a pak se na něj v případě potřeby odkazuje zpátky.
 
-
 ## <a name="storage-differences"></a>Rozdíly v úložišti
 
 |     Funkce                                             |     Azure Storage                                     |     Azure Stack úložiště objektů BLOB Edge |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
 |    Azure File Storage                                   |    Podporované cloudové sdílené složky SMB              |    Nepodporováno      |
-|    Šifrování služby pro neaktivní neaktivní data                  |    256 šifrování AES                             |    256 šifrování AES |
 |    Typ účtu úložiště                                 |    Účty úložiště pro obecné účely a Azure Blob Storage    |    Jenom pro obecné účely v1|
 |    Název objektu blob                                            |    1 024 znaků (2 048 bajtů)                     |    880 znaků (1 760 bajtů)|
-|    Maximální velikost objektu blob bloku                              |    4,75 TB (100 MB X 50 000 bloků)                   |    4,75 TB (100 MB x 50 000 bloků) pro Azure Stack Edge v 2.1.1377.2170 a vyšší|
+|    Maximální velikost objektu blob bloku                              |    4,75 TB (100 MB X 50 000 bloků)                   |    4,75 TB (100 MB x 50 000 bloků) pro Azure Stack Edge|
 |    Maximální velikost objektu blob stránky                               |    8 TB                                               |    1 TB                   |
 |    Velikost stránky objektu blob stránky                                  |    512 bajtů                                          |    4 kB                   |
 
@@ -44,7 +42,7 @@ Pro úložiště objektů BLOB v Azure Stack Edge se podporují následující v
 
 ## <a name="supported-azure-client-libraries"></a>Podporované klientské knihovny Azure
 
-U Azure Stackového úložiště objektů BLOB jsou k dispozici konkrétní klientské knihovny a specifické požadavky na příponu koncových bodů. Koncové body úložiště objektů blob Azure Stack Edge nemají úplnou paritu s nejnovější verzí služby Azure Blob Storage REST API; Podívejte se na [podporované verze rozhraní API pro Azure Stack Edge 2.1.1377.2170 a vyšší](#supported-api-versions). Pro klientské knihovny pro úložiště je potřeba znát verzi, která je kompatibilní s REST API.
+U Azure Stackového úložiště objektů BLOB jsou k dispozici konkrétní klientské knihovny a specifické požadavky na příponu koncových bodů. Koncové body úložiště objektů blob Azure Stack Edge nemají úplnou paritu s nejnovější verzí služby Azure Blob Storage REST API; Podívejte se na [podporované verze rozhraní API pro Azure Stack Edge](#supported-api-versions). Pro klientské knihovny pro úložiště je potřeba znát verzi, která je kompatibilní s REST API.
 
 ### <a name="azure-stack-edge-2113772170-onwards"></a>Azure Stack Edge 2.1.1377.2170 a vyšší
 
@@ -52,10 +50,11 @@ Následující verze klientské knihovny Azure jsou podporovány pro úložišt�
 
 [!INCLUDE [data-box-rest-supported-azure-client-libraries](../../includes/data-box-rest-supported-azure-client-libraries.md)]
 
-### <a name="install-php-client-via-composer---current"></a>Instalovat klienta PHP prostřednictvím skladatele – aktuální
+### <a name="install-the-php-client-via-composer---current"></a>Instalace klienta PHP prostřednictvím skladatele – aktuální
 
-Instalace prostřednictvím skladatele: (jako příklad Vezměte objekt BLOB jako příklad).
-1. V kořenovém adresáři projektu vytvořte soubor s názvem composer.jss následujícím kódem:
+Instalace klienta PHP prostřednictvím skladatele:
+
+1. V kořenovém adresáři projektu vytvořte soubor s názvem composer.jss následujícím kódem (příklad používá službu Azure Storage Blob).
 
     ```
     {
@@ -68,10 +67,12 @@ Instalace prostřednictvím skladatele: (jako příklad Vezměte objekt BLOB jak
 
 3. Spuštění: instalace PHP skladatele. phar.
 
-### <a name="endpoint-declaration"></a>Deklarace koncového bodu
+
+## <a name="endpoint-declaration"></a>Deklarace koncového bodu
 
 V sadě SDK pro úložiště objektů BLOB v Azure Stack Edge určuje přípona koncového bodu `<device serial number>.microsoftdatabox.com` Azure Stack hraniční doménu. Další informace o koncovém bodu služby BLOB Service najdete v části [přenos dat prostřednictvím účtů úložiště s grafickým procesorem Azure Stack Edge pro](azure-stack-edge-j-series-deploy-add-storage-accounts.md).
- 
+
+
 ## <a name="examples"></a>Příklady
 
 ### <a name="net"></a>.NET

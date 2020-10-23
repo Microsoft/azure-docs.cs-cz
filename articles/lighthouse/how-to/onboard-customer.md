@@ -3,12 +3,12 @@ title: Onboarding zákazníků do služby Azure Lighthouse
 description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 926e9bc5302403063d536e31fe304d837bca8ec5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109064"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426334"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding zákazníků do služby Azure Lighthouse
 
@@ -62,7 +62,7 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Definování rolí a oprávnění
 
-Jako poskytovatel služeb můžete chtít pro jednoho zákazníka provést několik úloh, které vyžadují různý přístup pro různé obory. Můžete definovat tolik autorizací, kolik potřebujete, aby bylo možné přiřadit k uživatelům ve vašem tenantovi příslušné [předdefinované role řízení přístupu na základě role (RBAC)](../../role-based-access-control/built-in-roles.md) .
+Jako poskytovatel služeb můžete chtít pro jednoho zákazníka provést několik úloh, které vyžadují různý přístup pro různé obory. Chcete-li přiřadit příslušné [předdefinované role Azure](../../role-based-access-control/built-in-roles.md) uživatelům ve vašem tenantovi, můžete definovat tolik autorizací, kolik potřebujete.
 
 Pro zjednodušení správy doporučujeme používat pro každou roli skupiny uživatelů Azure AD. Získáte tak flexibilitu při přidávání nebo odebírání jednotlivých uživatelů do skupiny, která má přístup, takže nemusíte opakovat proces připojování, aby se změny projevily uživatelem. Role můžete přiřadit instančnímu objektu, který může být užitečný pro scénáře automatizace.
 

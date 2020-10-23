@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 0fe9d59e97ebbc9aba17fea14aed43756300d56e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8b87d9d487257504a438cf13a5b94e3ca4f9233d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90528583"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426379"
 ---
 # <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Rychlý Start: zřízení zařízení v Pythonu pomocí symetrických klíčů
 
-V tomto rychlém startu se dozvíte, jak zřídit vývojový počítač s Windows jako zařízení pro IoT Hub pomocí Pythonu. Toto zařízení bude používat symetrický klíč k ověřování pomocí instance služby Device Provisioning (DPS), aby se daly přiřadit ke službě IoT Hub. Ověřené zařízení bude rozpoznáno pomocí DPS na základě individuální registrace a přiřazeno ke službě IoT Hub. K zřízení zařízení se použije ukázkový kód ze [sady Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) . 
+V tomto rychlém startu se dozvíte, jak zřídit vývojový počítač s Windows jako zařízení pro IoT Hub pomocí Pythonu. Toto zařízení bude používat symetrický klíč a jednotlivou registraci k ověřování pomocí instance služby Device Provisioning (DPS), aby se daly přiřadit ke službě IoT Hub. K zřízení zařízení se použije ukázkový kód ze [sady Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) . 
 
 I když tento článek popisuje, jak zřídit jednotlivé registrace, můžete také použít skupiny registrací. Při používání skupin registrací jsou některé rozdíly. Například je nutné použít odvozený klíč zařízení s jedinečným ID registrace pro zařízení. Přestože skupiny registrací symetrického klíče nejsou omezené na starší verze zařízení, příklad skupiny registrací najdete v článku o [zřízení starší verze zařízení pomocí osvědčení symetrického klíče](how-to-legacy-device-symm-key.md). Další informace najdete v článku o [osvědčení symetrického klíče v části o skupinových registracích](concepts-symmetric-key-attestation.md#group-enrollments).
 
@@ -32,7 +32,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Ujistěte se, že na počítači se systémem Windows máte nainstalovaný [Python 3,7](https://www.python.org/downloads/) nebo novější. Verzi Pythonu můžete kontrolovat spuštěním `python --version` .
 

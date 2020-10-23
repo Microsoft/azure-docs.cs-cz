@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: da8dc11212d33627a165dc5e11acc64087fb6c43
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: df45068ff14d8ac08a17719e4e0338308b504cac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131815"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426103"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -39,7 +39,7 @@ Podívejte se na další články v této sérii:
 > I když většina sady Studio funguje s daty uloženými ve virtuální síti, integrované poznámkové bloky __ne__. Integrované poznámkové bloky nepodporují používání úložiště, které je ve virtuální síti. Místo toho můžete použít poznámkové bloky Jupyter z výpočetní instance. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance]() .
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si [Přehled zabezpečení sítě](how-to-network-security-overview.md) , abyste porozuměli běžným scénářům virtuální sítě a celkové architektuře virtuální sítě.
 
@@ -89,7 +89,7 @@ Azure Machine Learning používá [úložiště dat](concept-data.md#datastores)
 1. V nastavení úložiště dat vyberte __Ano__ , pokud  __chcete, aby služba Azure Machine Learning měla přístup k úložišti pomocí identity spravované pracovním prostorem__.
 
 
-Tyto kroky přidají identitu spravovanou pracovním prostorem jako __čtecí__ službu úložiště pomocí řízení přístupu na základě prostředků Azure (RBAC). Přístup __Čtenář__ umožňuje pracovnímu prostoru načíst nastavení brány firewall a zajistit, aby data nezůstala virtuální síť.
+Tyto kroky přidají identitu spravovanou pracovním prostorem jako __čtecí__ službu úložiště pomocí řízení přístupu na základě prostředků Azure (Azure RBAC). Přístup __Čtenář__ umožňuje pracovnímu prostoru načíst nastavení brány firewall a zajistit, aby data nezůstala virtuální síť.
 
 > [!NOTE]
 > Tyto změny mohou trvat až 10 minut, než se projeví.
@@ -104,9 +104,9 @@ V případě __úložiště objektů BLOB v Azure__je identita spravovaná praco
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Řízení přístupu Azure Data Lake Storage Gen2
 
-K řízení přístupu k datům v rámci virtuální sítě můžete použít seznamy RBAC a seznam řízení přístupu (ACL) ve stylu POSIX.
+K řízení přístupu k datům v rámci virtuální sítě můžete použít seznamy řízení přístupu (ACL) pro Azure RBAC i POSIX.
 
-Chcete-li použít RBAC, přidejte identitu spravovanou pracovním prostorem do role [čtečky dat objektů BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Další informace najdete v tématu [řízení přístupu na základě role v Azure](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
+Chcete-li použít Azure RBAC, přidejte identitu spravovanou pracovním prostorem do role [čtečky dat objektů BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) . Další informace najdete v tématu [řízení přístupu na základě role v Azure](../storage/blobs/data-lake-storage-access-control-model.md#role-based-access-control).
 
 Aby bylo možné používat seznamy řízení přístupu (ACL), je možné přiřadit přístup stejným způsobem jako jakýkoli jiný princip zabezpečení. Další informace najdete v tématu [seznam řízení přístupu k souborům a adresářům](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

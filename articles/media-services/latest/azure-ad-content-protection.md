@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839533"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427206"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Kurz: komplexní ochrana obsahu pomocí Azure AD
 
@@ -26,7 +26,7 @@ ms.locfileid: "91839533"
 
 V tomto kurzu a v zadané ukázce přehrávače můžete nastavit kompletní podsystém ochrany mediálního obsahu v Azure Media Services (AMS) a Azure Active Directory (AAD) pro streamování mediálního obsahu se všemi podporovanými možnostmi AMS DRM/AES-128, streamování, kodeků a formátů kontejnerů. Vzorek je dostatečně obecný pro zabezpečený přístup k jakýmkoli REST API chráněným protokolem OAuth 2 prostřednictvím autorizačního toku kódu a ověřovacího klíče pro výměnu kódu (PKCE). (Azure Media Services služby doručování licencí je jenom jedna z nich.) Funguje taky pro Microsoft Graph rozhraní API nebo jakýkoli vlastní vyvinutý REST API zabezpečený pomocí toku autorizačního kódu OAuth 2. Toto je doprovodný dokument k [ukázkovému kódu](https://github.com/Azure-Samples/media-services-content-protection-azure-ad).
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 >
@@ -173,7 +173,7 @@ Vyberte tenanta Azure AD, který se použije pro ucelenou ukázku. Máte dvě mo
 | Popis souhlasu správce * * | *Obor prostředku back-endu doručování licencí DRM* | Podrobný popis oboru, který se zobrazí, když správci tenanta rozbalí obor na obrazovce pro vyjádření souhlasu. |
 | Zobrazovaný název souhlasu uživatele | *Digitálních. Licence. doručení* | Jaký rozsah bude vyvolán na obrazovce pro vyjádření souhlasu uživatele, pokud uživatel souhlasí s tímto oborem. |
 | Popis souhlasu uživatele | *Obor prostředku back-endu doručování licencí DRM* | Toto je podrobný popis oboru, který se zobrazí, když uživatel rozbalí obor na obrazovce pro vyjádření souhlasu. |
-| State | *Povoleno* | Určuje, jestli je tento obor dostupný pro klienty k vyžádání. Nastavte ji na Disabled (zakázáno) pro obory, které nechcete zobrazovat klientům. Odstranit lze pouze zakázané obory a doporučujeme počkat aspoň týden po zakázání rozsahu před jeho odstraněním, aby se zajistilo, že ho žádní klienti stále nepoužívají. |
+| Stav | *Povoleno* | Určuje, jestli je tento obor dostupný pro klienty k vyžádání. Nastavte ji na Disabled (zakázáno) pro obory, které nechcete zobrazovat klientům. Odstranit lze pouze zakázané obory a doporučujeme počkat aspoň týden po zakázání rozsahu před jeho odstraněním, aby se zajistilo, že ho žádní klienti stále nepoužívají. |
 
 ## <a name="register-the-client-app"></a>Registrace klientské aplikace
 
@@ -313,7 +313,7 @@ Pokud máte v úmyslu použít jinou platformu IDE/web nebo webový server, jako
 
 Teď, když jste dokončili kurz a máte funkční subsystém, můžete ho zkusit upravit v následujících scénářích zákazníků:
 
-### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Role-Based Access Control (RBAC) pro doručování licencí prostřednictvím členství ve skupině Azure AD
+### <a name="azure-role-based-access-control-azure-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Řízení přístupu na základě role Azure (Azure RBAC) pro doručování licencí prostřednictvím členství ve skupině Azure AD
 
 V tomto případě systém umožňuje každému uživateli, který se může přihlásit, získat platnou licenci a přehrát chráněný obsah.
 

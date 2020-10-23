@@ -2,17 +2,17 @@
 title: Řešení potíží s místním prostředím Integration runtime v Azure Data Factory
 description: Přečtěte si, jak řešit problémy s místním hostováním prostředí Integration runtime v Azure Data Factory.
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/16/2020
-ms.author: abnarain
-ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/22/2020
+ms.author: lle
+ms.openlocfilehash: d35dd94c8aa264c9b4dd679d3b50f3783acb2fde
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131296"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427229"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -152,7 +152,7 @@ Při řešení případů souvisejících s ověřováním SSL/TLS metodou hands
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Například: 
+Příklad: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -618,34 +618,37 @@ Níže uvedený příklad ukazuje, jak dobrý scénář vypadá.
 
 ### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>Příjem e-mailů k aktualizaci konfigurace sítě, aby bylo možné komunikovat s novými IP adresami
 
-#### <a name="symptoms"></a>Příznaky
+#### <a name="email-notification-from-microsoft"></a>E-mailové oznámení od Microsoftu
 
 Můžete obdržet e-mailové oznámení, které doporučuje aktualizovat konfiguraci sítě tak, aby umožňovalo komunikaci s novými IP adresami pro Azure Data Factory 8. listopadu 2020:
 
    ![E-mailové oznámení](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
 
-#### <a name="resolution"></a>Řešení
+#### <a name="how-to-determine-if-you-are-impacted-by-this-notification"></a>Jak zjistit, jestli to ovlivnilo toto oznámení
 
-Toto oznámení slouží pro **odchozí komunikaci** z vaší **Integration runtime** , která běží **v** místním prostředí nebo ve **virtuální privátní síti Azure** , do služby ADF. Pokud máte například v prostředí Azure VNET v místním prostředí IR nebo Azure-služba SSIS (SQL Server Integration Services) (SSIS) IR, které potřebuje přístup ke službě ADF, budete muset zkontrolovat, jestli je potřeba přidat tento nový rozsah IP adres do pravidel **NSG (Network Security Group)** . Pokud pravidlo odchozího NSG používá značku služby, nebude to mít žádný vliv.
+Toto oznámení má vliv na následující scénáře:
+##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>Scénář 1: odchozí komunikace z Integration Runtime v místním prostředí, která běží místně za podnikovou bránou firewall
+Jak zjistit, jestli máte vliv na:
+- Nebudete mít vliv na definování pravidel brány firewall na základě názvů plně kvalifikovaného názvu domény pomocí přístupu popsaného v tomto dokumentu: [Konfigurace brány firewall a nastavení povolených seznamů pro IP adresu](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
+- Pokud jste ale výslovně do seznamu povolených IP adres ve vaší podnikové bráně firewall, budete mít vliv na něj.
 
-#### <a name="more-details"></a>Další podrobnosti
+Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval konfiguraci sítě tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
 
-Tyto nové rozsahy IP adres **mají dopad jenom na pravidla odchozí komunikace** z **místní brány firewall** nebo **virtuální privátní sítě Azure** do služby ADF (viz [Konfigurace brány firewall a nastavení seznamu povolených IP adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) pro referenci), ve scénářích, kde máte místní síť nebo službu Azure Virtual Network, která musí komunikovat se službou ADF.
+##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>Scénář 2: odchozí komunikace z Integration Runtime v místním prostředí, která běží na virtuálním počítači Azure v rámci zákaznické spravované virtuální sítě Azure
+Jak zjistit, jestli máte vliv na:
+- Ověřte, jestli máte v privátní síti žádná odchozí pravidla NSG, která obsahují Integration Runtime v místním prostředí. Pokud neexistují žádná odchozí omezení, nebude to mít žádný vliv.
+- Pokud máte omezení odchozího pravidla, ověřte, zda používáte značku služby nebo ne. Pokud používáte značku služby, nemusíte nic měnit ani přidávat, protože nové rozsahy IP adres se nacházejí v rámci existující značky služby. 
+ ![Kontrolu cíle](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+- Pokud jste ale výslovně do nastavení pravidel NSG ve službě Azure Virtual Network výslovně přiřadíte odchozí IP adresy, budete ovlivněni.
 
-Pro existující uživatele využívající **Azure VPN**:
+Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval pravidla NSG v konfiguraci virtuální sítě Azure tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
 
-1. V privátní síti ověřte všechna odchozí NSG pravidla, ve kterých je nakonfigurované SSIS nebo Azure SSIS. Pokud neexistují žádná odchozí omezení, žádný vliv na ně.
-1. Pokud máte omezení odchozího pravidla, ověřte, zda používáte značku služby nebo ne. Pokud používáte značku služby, nemusíte nic měnit ani přidávat, protože nové rozsahy IP adres se nacházejí v rámci existující značky služby. 
-  
-    ![Kontrolu cíle](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Scénář 3: odchozí komunikace z SSIS Integration Runtime ve službě Azure Virtual Network spravované zákazníkem
+- Ověřte, jestli máte v privátní síti žádná odchozí pravidla NSG, která obsahují SSIS Integration Runtime. Pokud neexistují žádná odchozí omezení, nebude to mít žádný vliv.
+- Pokud máte omezení odchozího pravidla, ověřte, zda používáte značku služby nebo ne. Pokud používáte značku služby, nemusíte nic měnit ani přidávat, protože nové rozsahy IP adres se nacházejí v rámci existující značky služby.
+- Pokud jste ale výslovně do nastavení pravidel NSG ve virtuální síti Azure výslovně přiřadíte odchozí IP adresy, budete ovlivněni.
 
-1. Pokud používáte IP adresy přímo v nastavení pravidla, potom zaškrtněte, pokud chcete přidat všechny rozsahy IP adres v rámci [značky služby odkaz ke stažení pro rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres. Do tohoto souboru jsme již umístili nové rozsahy IP adres. Pro nové uživatele: stačí, když v našem dokumentu dodržíte příslušnou konfiguraci IR nebo SSIS IR, abyste mohli nakonfigurovat NSG pravidla.
-
-Pro stávající uživatele, kteří mají SSIS IR nebo místní prostředí IR **v**místním prostředí:
-
-- Ověřte u svého týmu síťové infrastruktury a zjistěte, jestli je potřeba zahrnout nové adresy rozsahu IP adres do komunikace pro odchozí pravidla.
-- Pro pravidla brány firewall založená na názvech plně kvalifikovaného názvu domény se nevyžadují žádné aktualizace, když použijete nastavení dokumentované v [konfiguraci brány firewall a nastavení seznam povolených IP adres](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway). 
-- Některé místní brány firewall podporují značky služby, pokud použijete aktualizovaný konfigurační soubor značek služeb Azure, nemusíte dělat žádné další změny.
+Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval pravidla NSG v konfiguraci virtuální sítě Azure tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
 
 ## <a name="self-hosted-ir-sharing"></a>Sdílení místního prostředí IR
 

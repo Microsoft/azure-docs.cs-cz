@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 48ce6edc3d071d84c3921f85c2e9798b804d0279
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0cdf4699f5dc00087845ee6ca0d24ad6493c320b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017739"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426868"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přesun z Media Services V2 na V3
 
@@ -59,7 +59,7 @@ Pokud máte k dispozici službu video Service na [starší verzi rozhraní api M
 * Živý výstup je jednodušší použít než entita programu v rozhraních API v2. 
 * Vylepšená podpora RTMP (zvýšená stabilita a lepší podpora zdrojového kodéru).
 * Zabezpečení pro ingestování RTMP<br/>Při vytváření živé události získáte čtyři adresy URL pro příjem. 4 adresy URL pro přijímání jsou skoro stejné, mají stejný token streamování (AppId), ale liší se jenom část číslo portu. Dvě z těchto adres URL jsou primární a zálohují pro RTMP.   
-* Máte v rámci svých entit řízení přístupu na základě role (RBAC). 
+* Máte k dispozici řízení přístupu na základě role Azure (Azure RBAC) prostřednictvím svých entit. 
 
 ## <a name="known-issues"></a>Známé problémy
 

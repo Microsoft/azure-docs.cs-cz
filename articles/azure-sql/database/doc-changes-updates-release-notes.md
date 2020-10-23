@@ -1,5 +1,5 @@
 ---
-title: Co je nového?
+title: Co je nového
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Přečtěte si o nových funkcích a vylepšeních dokumentace pro Azure SQL Database & spravované instance SQL.
 services: sql-database
@@ -11,19 +11,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 01126a1ca8590d02d0cd0aa1c8554b34161dbac5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079203"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426266"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto článku jsou uvedené Azure SQL Database a funkce spravované instance Azure SQL, které jsou momentálně ve verzi Public Preview. Aktualizace a vylepšení pro SQL Database a SQL spravované instance najdete v tématu [SQL Database & aktualizace služby Managed instance SQL](https://azure.microsoft.com/updates/?product=sql-database). Aktualizace a vylepšení dalších služeb Azure najdete v tématu [aktualizace služby](https://azure.microsoft.com/updates).
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Co je nového
 
 Dokumentace pro Azure SQL Database a Azure SQL Managed instance byla rozdělena do samostatných oddílů. Aktualizovali jsme také, jak odkazujeme na spravovanou instanci z *Azure SQL Database spravované instance* do *Azure SQL Managed instance*.
 
@@ -42,7 +42,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 |**Azure SQL Database**|Azure SQL Database *samostatná databáze*| Pokud není výslovně uvedeno jinak, název produktu Azure SQL Database zahrnuje jak izolované databáze, tak databáze nasazené do elastického fondu. |
 |**Azure SQL Database**|Azure SQL Database *elastický fond*| Pokud není výslovně uvedeno jinak, název produktu Azure SQL Database zahrnuje jak izolované databáze, tak databáze nasazené do elastického fondu.  |
 |**Azure SQL Database** |Azure SQL Database | I když termín zůstává stejný, vztahuje se nyní jenom na nasazení s izolovanými databázemi a elastickými fondy a nezahrnuje spravovanou instanci. |
-| **Azure SQL**| Není k dispozici | To se týká řady SQL Serverch produktů databázového stroje, které jsou k dispozici v Azure: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálních počítačích Azure. | 
+| **Azure SQL**| – | To se týká řady SQL Serverch produktů databázového stroje, které jsou k dispozici v Azure: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálních počítačích Azure. | 
 
 ## <a name="features-in-public-preview"></a>Funkce ve verzi Public Preview
 
@@ -100,7 +100,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 |---------|---------|---------|---------|
 |[Distribuované transakce se dají provést po odebrání spravované instance ze skupiny důvěryhodných serverů.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Říjen 2020|Má alternativní řešení||
 |[Po operaci škálování spravované instance se nedají provést distribuované transakce.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Říjen 2020|Má alternativní řešení||
-|[Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) v Azure SQL a `BACKUP` / `RESTORE` příkazu ve spravované instanci se nemůžou pomocí Azure AD spravovat identitu pro ověřování ve službě Azure Storage.|SEP 2020|Má alternativní řešení||
+|[Bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) / [OpenRowset](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15) v Azure SQL a `BACKUP` / `RESTORE` příkazu ve spravované instanci nejde použít k ověření ve službě Azure Storage službu Azure AD Manage identity.|SEP 2020|Má alternativní řešení||
 |[Instanční objekt nemá přístup k Azure AD a integrace](#service-principal-cannot-access-azure-ad-and-akv)|Srpna 2020|Má alternativní řešení||
 |[Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat](#restoring-manual-backup-without-checksum-might-fail)|Květen 2020|Vyřešeno|Červen 2020|
 |[Agent přestane reagovat při úpravách, zakázání nebo povolování stávajících úloh.](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Květen 2020|Vyřešeno|Červen 2020|
@@ -139,7 +139,7 @@ Operace škálování spravované instance, které zahrnují změnu úrovně slu
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>Příkazy BULK INSERT a BACKUP/Restore nemůžou používat spravovanou identitu pro přístup k Azure Storage.
 
-Příkaz hromadného vložení se nedá použít `DATABASE SCOPED CREDENTIAL` se spravovanou identitou k ověření v Azure Storage. Jako alternativní řešení přepněte na ověřování pomocí SDÍLENÉHO PŘÍSTUPového podpisu. Následující příklad nebude fungovat v Azure SQL (databáze i spravovaná instance):
+Příkazy hromadného vložení, zálohování a obnovení nelze použít `DATABASE SCOPED CREDENTIAL` se spravovanou identitou pro ověření v Azure Storage. Jako alternativní řešení přepněte na ověřování pomocí SDÍLENÉHO PŘÍSTUPového podpisu. Následující příklad nebude fungovat v Azure SQL (databáze i spravovaná instance):
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';

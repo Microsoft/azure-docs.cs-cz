@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c388bd22ba20dd681997064496a90a81dabb292f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074834"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426709"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrace s nasazením Kubernetes pomocí Helm
 
@@ -231,7 +231,7 @@ Přístup k [řídicímu panelu Kubernetes](../aks/kubernetes-dashboard.md)ově�
 
 V konfiguraci aplikace se do Kubernetes tajných klíčů Přidal také jeden tajný kód a **heslo**, které obsahuje odkaz na Key Vault. 
 
-![Spuštění aplikace pro rychlý Start – místní](./media/kubernetes-dashboard-secrets.png)
+![Snímek obrazovky, který zvýrazní heslo v části data](./media/kubernetes-dashboard-secrets.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

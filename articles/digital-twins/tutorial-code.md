@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 40484521ecdc32e2e279ddf1b68ddcd4b1d7bc9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201340"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427574"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
-Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [klientské knihovny Azure IoT Digital vláken pro .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
+Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [sady Azure Digital prokážed SDK pro .NET (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
 
 > [!div class="checklist"]
 > * Nastavit projekt
@@ -58,7 +58,7 @@ dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
-První závislost je [Klientská knihovna pro Azure IoT, která je pro .NET Vyzdvojená](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Druhá závislost poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
+První závislost je [sada Azure Digital dependencypropertys SDK pro .NET](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Druhá závislost poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
 
 Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu tohoto kurzu.
 
@@ -115,7 +115,7 @@ DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred
 Console.WriteLine($"Service client created – ready to go");
 ```
 
-Soubor uložte. 
+Uložte soubor. 
 
 >[!NOTE]
 > V tomto příkladu se používá `DefaultAzureCredential` pro ověřování. Informace o dalších typech přihlašovacích údajů najdete v dokumentaci k [ověřovacím knihovnám Microsoft Identity Platform](../active-directory/develop/reference-v2-libraries.md)nebo v článku o [ověřování klientských aplikací](how-to-authenticate-client.md)v části digitální vlákna Azure.
@@ -266,12 +266,18 @@ Od tohoto okamžiku se v kurzu zabalí všechna volání metod služby v obsluž
 
 Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytváření **digitálních vláken**použít tuto definici modelu. [Digitální vlákna](concepts-twins-graph.md) jsou instance modelu a představují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. Tato část vytvoří několik digitálních vláken na základě modelu, který jste nahráli dříve.
 
-Přidejte nový `using` příkaz v horní části, protože budete potřebovat vestavěný serializátor .NET JSON v `System.Text.Json` :
+Tyto nové příkazy přidejte v `using` horní části, protože tato ukázka kódu používá integrovaný serializátor .NET JSON v nástroji `System.Text.Json` a `Serialization` obor názvů z [sady SDK digitálních vláken Azure pro .NET (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) [Link MODIFIED for Preview]:
 
 ```csharp
 using System.Text.Json;
 using Azure.DigitalTwins.Core.Serialization;
 ```
+
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` není vyžadována pro práci s digitálními úkoly a vztahy; je to volitelný obor názvů, který může pomáhat získat data do správného formátu. Mezi další alternativy použití patří:
+>* Zřetězení řetězců pro vytvoření objektu JSON
+>* Použití analyzátoru JSON jako `System.Text.Json` dynamického sestavení objektu JSON
+>* Modelování vlastních typů v jazyce C#, jejich instance a jejich serializace do řetězců
 
 Pak na konec metody přidejte následující kód, `Main` který vytvoří a inicializuje tři digitální vlákna na základě tohoto modelu.
 
@@ -301,17 +307,7 @@ Všimněte si, že není vyvolána žádná chyba při druhém vytvoření vlák
 
 V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými podmnožinami a propojit je s **dvojitým grafem**. K reprezentaci celého prostředí se používají [Dvojitá grafu](concepts-twins-graph.md) .
 
-Pro usnadnění vytváření relací používá tato ukázka kódu `Azure.DigitalTwins.Core.Serialization` obor názvů. Toto jste přidali do projektu výše pomocí tohoto `using` příkazu:
-
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
-
->[!NOTE]
->`Azure.DigitalTwins.Core.Serialization` není vyžadována pro práci s digitálními úkoly a vztahy; je to volitelný obor názvů, který může pomáhat získat data do správného formátu. Mezi další alternativy použití patří:
->* Zřetězení řetězců pro vytvoření objektu JSON
->* Použití analyzátoru JSON jako `System.Text.Json` dynamického sestavení objektu JSON
->* Modelování vlastních typů v jazyce C#, jejich instance a jejich serializace do řetězců
+Pro usnadnění vytváření relací používá tato ukázka kódu `Azure.DigitalTwins.Core.Serialization` obor názvů. Toto jste přidali do projektu dříve v části [*vytvořit digitální vlákna*](#create-digital-twins) .
 
 Přidejte do třídy novou statickou metodu `Program` pod `Main` metodou:
 

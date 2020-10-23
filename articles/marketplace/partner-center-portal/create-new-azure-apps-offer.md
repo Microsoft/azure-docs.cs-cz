@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710715"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428216"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 
@@ -187,8 +187,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 4. Podmínky použití
 5. Adresa zásad ochrany osobních údajů (odkaz)
 6. Název nabídky
-7. Shrnutí
-8. Description
+7. Souhrn
+8. Popis
 9. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Portal:
@@ -214,7 +214,7 @@ Zadejte krátký popis vaší nabídky, maximálně 100 znaků. Tento popis se d
 
 Zadejte delší popis nabídky, maximálně 256 znaků. Tento popis se dá použít ve výsledcích hledání.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -328,16 +328,16 @@ Po vytvoření se zobrazí vaše názvy plánů, ID, typ plánu, dostupnost (ve�
 
 ### <a name="create-new-plan"></a>Vytvořit nový plán
 
-***ID plánu*** – pro každý plán v této nabídce Vytvořte jedinečné ID plánu. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu.  Používejte jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Pro toto ID plánu je povoleno maximálně 50 znaků. Po výběru možnosti vytvořit nelze toto ID změnit.
+**_ID plánu_*_ – Vytvořte jedinečné ID plánu pro každý plán v této nabídce. Toto ID se bude zobrazovat zákazníkům v adrese URL produktu.  Používejte jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Pro toto ID plánu je povoleno maximálně 50 znaků. Po výběru možnosti vytvořit nelze toto ID změnit.
 
-***Název plánu*** – zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky. Pro každý plán v této nabídce Vytvořte jedinečný název nabídky. Název plánu slouží k rozlišení softwarových plánů, které mohou být součástí stejné nabídky (například název nabídky: Windows Server; plány: Windows Server 2016, Windows Server 2019).
+_*_Název plánu_*_ – zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky. Pro každý plán v této nabídce Vytvořte jedinečný název nabídky. Název plánu slouží k rozlišení softwarových plánů, které mohou být součástí stejné nabídky (například název nabídky: Windows Server; plány: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Nastavení plánu
 
 Na této kartě můžete nastavit konfiguraci na nejvyšší úrovni pro typ plánu, bez ohledu na to, zda znovu používá balíčky z jiného plánu a jaké cloudy by měly být v nástroji k dispozici. Vaše odpovědi na této kartě budou mít vliv na to, která pole se zobrazí na jiných kartách pro stejný plán.
 
 #### <a name="plan-type"></a>Typ plánu
-Vyberte typ plánu pro vaši nabídku. Plán **šablony řešení** je spravován zcela zákazníkem. Plán **spravované aplikace** umožňuje vydavatelům spravovat aplikaci jménem zákazníka. Podrobnosti najdete v tématu [typy plánů aplikací Azure](#types-of-azure-application-plans).
+Vyberte typ plánu pro vaši nabídku. *Šablona řešení*_ * plán je spravována výhradně zákazníkem. Plán **spravované aplikace** umožňuje vydavatelům spravovat aplikaci jménem zákazníka. Podrobnosti najdete v tématu [typy plánů aplikací Azure](#types-of-azure-application-plans).
 
 #### <a name="re-use-technical-configuration"></a>Znovu použít technickou konfiguraci
 
@@ -508,7 +508,7 @@ Zadejte koncový bod Webhooku HTTPS pro příjem oznámení o všech operacích 
 
 Tuto možnost vyberte, pokud chcete určit, které akce můžou zákazníci provádět na spravovaných prostředcích, a to spolu s `*/read` akcemi, které jsou ve výchozím nastavení dostupné.
 
-Seznamte se s dalšími akcemi, které chcete, aby mohl váš zákazník provádět, oddělený středníky.  Další informace najdete v tématu [Principy přiřazení zamítnutí pro prostředky Azure](../../role-based-access-control/deny-assignments.md). Dostupné akce najdete v tématu [Azure Resource Manager operací poskytovatele prostředků](../../role-based-access-control/resource-provider-operations.md). Například pokud chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` do povolených akcí.
+Seznamte se s dalšími akcemi, které chcete, aby mohl váš zákazník provádět, oddělený středníky.  Další informace najdete v tématu [Principy přiřazení zamítnutí pro prostředky Azure](../../role-based-access-control/deny-assignments.md). Dostupné akce najdete v tématu [operace poskytovatele prostředků Azure](../../role-based-access-control/resource-provider-operations.md). Například pokud chcete, aby uživatelé mohli restartovat virtuální počítače, přidejte `Microsoft.Compute/virtualMachines/restart/action` do povolených akcí.
 
 #### <a name="global-azure--azure-government-cloud"></a>Globální cloud Azure/Azure Government
 
@@ -518,7 +518,7 @@ Určete, kdo má mít k této spravované aplikaci přístup pro správu v každ
 
 **Autorizace** – přidejte Azure Active Directory ID objektu uživatele, skupiny nebo aplikace, kterému chcete udělit oprávnění pro spravovanou skupinu prostředků. Identifikujte uživatele podle ID objektu zabezpečení, které najdete v okně [Azure Active Directory uživatelé na Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 
-U každého objektu zabezpečení vyberte v seznamu (vlastník nebo přispěvatel) jednu z předdefinovaných rolí Azure AD. Vybraná role popisuje oprávnění, která bude mít objekt zabezpečení u prostředků v rámci předplatného zákazníka. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md). Další informace o řízení přístupu na základě role (RBAC) najdete v tématu [Začínáme s RBAC v Azure Portal](../../role-based-access-control/overview.md).
+U každého objektu zabezpečení vyberte v seznamu (vlastník nebo přispěvatel) jednu z předdefinovaných rolí Azure AD. Vybraná role popisuje oprávnění, která bude mít objekt zabezpečení u prostředků v rámci předplatného zákazníka. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md). Další informace o řízení přístupu na základě role Azure (Azure RBAC) najdete v tématu [co je Azure RBAC](../../role-based-access-control/overview.md).
 
 >[!Note]
 >I když můžete přidat až 100 autorizací pro každý Cloud, je obecně snazší vytvořit skupinu uživatelů služby Active Directory a zadat její ID v ID objektu zabezpečení. To vám umožní přidat další uživatele do skupiny pro správu po nasazení plánu a snížit nutnost aktualizace plánu jenom na přidání dalších autorizací.

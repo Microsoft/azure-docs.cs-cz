@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319448"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427031"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Výběr mezi modely nákupu vCore a DTU – Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Další informace o cenách za úložiště najdete na stránce s [cenami](https
 
 Virtual Core (vCore) představuje logický procesor a nabízí možnost výběru mezi generacemi hardwaru a fyzickými charakteristikami hardwaru (například počet jader, paměti a velikost úložiště). Nákupní model založený na vCoreech poskytuje flexibilitu, kontrolu, transparentnost individuální spotřeby prostředků a snadný způsob, jak přeložit požadavky na místní úlohy do cloudu. Tento model vám umožní zvolit prostředky výpočtů, paměti a úložiště na základě potřeb vašich úloh.
 
-V rámci nákupního modelu založeného na vCore si můžete vybrat mezi [pro obecné účely](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) a [pro důležité obchodní informace](high-availability-sla.md#premium-and-business-critical-service-tier-availability) úrovněmi služeb pro SQL Database a SQL Managed instance.  Pro izolované databáze můžete také zvolit [úroveň služby pro škálování na úrovni služeb](service-tier-hyperscale.md).
+V rámci nákupního modelu založeného na vCore si můžete vybrat mezi [pro obecné účely](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) a [pro důležité obchodní informace](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) úrovněmi služeb pro SQL Database a SQL Managed instance.  Pro izolované databáze můžete také zvolit [úroveň služby pro škálování na úrovni služeb](service-tier-hyperscale.md).
 
 Nákupní model založený na vCore vám umožňuje nezávisle vybrat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny. V rámci nákupního modelu založeného na vCore platíte za:
 
@@ -104,7 +104,7 @@ Prostředky používané úlohou nemají vliv na prostředky dostupné pro jiné
 
 ![Ohraničovací rámeček](./media/purchasing-models/bounding-box.png)
 
-DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze s různými výpočetními velikostmi a úrovněmi služeb. Například:
+DTU jsou nejužitečnější pro porozumění relativním prostředkům, které jsou přiděleny pro databáze s různými výpočetními velikostmi a úrovněmi služeb. Příklad:
 
 - Zdvojnásobuje se DTU zvýšením velikosti databáze, která je rovna zdvojnásobení sady prostředků, které jsou k dispozici pro danou databázi.
 - P11 databáze úrovně Premium Service s 1750 DTU poskytuje 350 dob výpočetní výkon, než je základní databáze vrstvy služeb s 5 DTU.  

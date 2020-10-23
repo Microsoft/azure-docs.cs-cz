@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400413"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428397"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Řešení problémů s funkcí Hybrid Runbook Worker
 
@@ -46,7 +46,7 @@ Níže jsou uvedené možné příčiny:
 
 #### <a name="resolution"></a>Řešení
 
-Ověřte, zda má počítač odchozí přístup k ***. Azure-Automation.NET** na portu 443.
+Ověřte, zda má počítač odchozí přístup k ** \* . Azure-Automation.NET** na portu 443.
 
 Počítače, na kterých běží Hybrid Runbook Worker, by měly splňovat minimální požadavky na hardware před tím, než se pracovní proces nakonfiguruje na hostování této funkce. Runbooky a procesy na pozadí, které používají, by mohly způsobit, že se systém přeužije a dojde ke zpoždění nebo vypršení platnosti úlohy Runbooku.
 
@@ -226,7 +226,7 @@ V protokolu událostí **Application and Services Logs\Operations Manager** uvid
 
 #### <a name="cause"></a>Příčina
 
-Důvodem může být to, že proxy server nebo brána firewall sítě blokuje komunikaci s Microsoft Azure. Ověřte, zda má počítač odchozí přístup k ***. Azure-Automation.NET** na portu 443.
+Důvodem může být to, že proxy server nebo brána firewall sítě blokuje komunikaci s Microsoft Azure. Ověřte, zda má počítač odchozí přístup k ** \* . Azure-Automation.NET** na portu 443.
 
 #### <a name="resolution"></a>Řešení
 
@@ -293,7 +293,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="scenario-you-cant-add-a-hybrid-runbook-worker"></a><a name="already-registered"></a>Scénář: nemůžete přidat Hybrid Runbook Worker
+### <a name="scenario-you-cant-add-a-windows-hybrid-runbook-worker"></a><a name="already-registered"></a>Scénář: nemůžete přidat Hybrid Runbook Worker Windows.
 
 #### <a name="issue"></a>Problém
 
@@ -312,6 +312,46 @@ K tomuto problému může dojít, pokud je počítač již zaregistrován s jin�
 Pokud chcete tento problém vyřešit, odeberte následující klíč registru, restartujte počítač `HealthService` a zkuste `Add-HybridRunbookWorker` rutinu znovu.
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
+
+### <a name="scenario-you-cant-add-a-linux-hybrid-runbook-worker"></a><a name="already-registered"></a>Scénář: nemůžete přidat Hybrid Runbook Worker pro Linux.
+
+#### <a name="issue"></a>Problém
+
+Při pokusu o přidání Hybrid Runbook Worker pomocí skriptu Pythonu se zobrazí následující zpráva `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` :
+
+```error
+Unable to register, an existing worker was found. Please deregister any existing worker and try again.
+```
+
+Kromě toho se při pokusu o zrušení registrace Hybrid Runbook Worker pomocí `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` skriptu Pythonu:
+
+```error
+Failed to deregister worker. [response_status=404]
+```
+
+#### <a name="cause"></a>Příčina
+
+K tomuto problému může dojít, pokud je počítač už zaregistrovaný v jiném účtu Automation, pokud se odstranila skupina Azure Hybrid Worker, nebo pokud se pokusíte Hybrid Runbook Worker znovu přidat po jeho odebrání z počítače.
+
+#### <a name="resolution"></a>Řešení
+
+Řešení tohoto problému:
+
+1. Odeberte agenta `sudo sh onboard_agent.sh --purge` .
+
+1. Spusťte tyto příkazy:
+
+   ```
+   sudo mv -f /home/nxautomation/state/worker.conf /home/nxautomation/state/worker.conf_old
+   sudo mv -f /home/nxautomation/state/worker_diy.crt /home/nxautomation/state/worker_diy.crt_old
+   sudo mv -f /home/nxautomation/state/worker_diy.key /home/nxautomation/state/worker_diy.key_old
+   ```
+
+1. Opětovné zprovoznění agenta `sudo sh onboard_agent.sh -w <workspace id> -s <workspace key> -d opinsights.azure.com` .
+
+1. Počkejte, než se složka `/opt/microsoft/omsconfig/modules/nxOMSAutomationWorker` naplní.
+
+1. Zkuste `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` znovu skript Pythonu.
 
 ## <a name="next-steps"></a>Další kroky
 
