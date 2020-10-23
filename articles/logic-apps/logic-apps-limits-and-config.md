@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 16dab7897fc41a97a8607df5a03281582377e1e4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 05881791d495770167b271e20de173e6679f39d9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424077"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440650"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -48,7 +48,7 @@ Tady jsou omezení pro jeden běh aplikace logiky:
 | Name | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | Doba trvání spuštění | 90 dnů | 366 dní | Doba trvání běhu se počítá pomocí počátečního času spuštění. |
-| Uchování historie spuštění v úložišti | 90 dnů | 366 dní | Po dokončení nebo vypršení časového limitu se uchování historie spuštění vždycky počítá pomocí počátečního času spuštění a omezení zadaného v *aktuálním čase* nastavením pracovního postupu. [**uchování historie spuštění ve dnech**](#change-retention). Pokud toto nastavení změníte, *aktuální* limit se vždy použije pro výpočet uchování bez ohledu na předchozí omezení. Pokud doba trvání běhu překročí aktuální limit, je spuštění odstraněno z historie spuštění. <p><p>Předpokládejme například, že omezíte dobu uchovávání dat z 90 dnů na 30 dní. Z historie spuštění se odebere 60. den a předchozí spuštění. Pokud zvýšíte dobu uchovávání z 30 dnů na 60 dní, pak 20. staré spuštění zůstane v historii spuštění dalších 40 dnů. <p><p>Pokud chcete změnit výchozí omezení, které je 90 dní, přečtěte si téma [Změna historie spuštění v úložišti](#change-retention). |
+| Uchování historie spuštění v úložišti | 90 dnů | 366 dní | Pokud doba trvání běhu překročí aktuální limit uchování historie spuštění, odebere se běh z historie spuštění v úložišti. Bez ohledu na to, jestli je běh dokončený nebo časový limit, se uchování historie spuštění vždycky počítá pomocí počátečního času spuštění a aktuálního limitu zadaného v nastavení pracovního postupu, [**uchování historie spuštění ve dnech**](#change-retention). Bez ohledu na předchozí omezení se aktuální limit vždycky používá pro výpočet uchovávání. <p><p>Postup změny výchozího limitu a další informace najdete v tématu [Změna uchování historie spuštění v úložišti](#change-retention). Chcete-li zvýšit maximální limit, [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) , kde vám pomůžou vaše požadavky. |
 | Minimální interval opakování | 1 sekunda | 1 sekunda ||
 | Maximální interval opakování | 500 dnů | 500 dnů ||
 |||||
@@ -57,11 +57,17 @@ Tady jsou omezení pro jeden běh aplikace logiky:
 
 ### <a name="change-run-history-retention-in-storage"></a>Změna uchování historie spuštění v úložišti
 
-Pokud chcete změnit výchozí limit pro uchování historie spuštění v úložišti, postupujte podle těchto kroků. Chcete-li zvýšit maximální limit, [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) , kde vám pomůžou vaše požadavky.
+Pokud chcete změnit výchozí limit pro uchování historie spuštění v úložišti, postupujte podle těchto kroků.
 
-> [!NOTE]
-> Pro Logic Apps ve více tenantů Azure je výchozí limit 90 dne stejný jako maximální limit. Tuto hodnotu lze snížit pouze.
-> U Logic Apps v prostředí integrační služby můžete snížit nebo zvýšit výchozí limit 90.
+* Pro Logic Apps ve více tenantů Azure je výchozí limit 90 dne stejný jako maximální limit. Tuto hodnotu lze snížit pouze.
+
+* U Logic Apps v prostředí integrační služby můžete snížit nebo zvýšit výchozí limit 90.
+
+Předpokládejme například, že omezíte dobu uchovávání dat z 90 dnů na 30 dní. Z historie spuštění se odebere 60. den a předchozí spuštění. Pokud zvýšíte dobu uchovávání z 30 dnů na 60 dní, pak 20. staré spuštění zůstane v historii spuštění dalších 40 dnů. 
+
+
+> [!IMPORTANT]
+> Aby nedošlo ke ztrátě historie spuštění, ujistěte se, že limit uchování je *vždycky* větší než nejdelší možná doba trvání běhu. V opačném případě se historie spuštění ztratí.
 
 1. V poli hledání [Azure Portal](https://portal.azure.com) vyhledejte a vyberte **Aplikace logiky**.
 

@@ -1,16 +1,16 @@
 ---
-title: Authentication
+title: Ověřování
 description: Vysvětluje, jak ověřování funguje.
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: e61767b9b8d904eae9a247f48d2d781fd0c95192
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202714"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427467"
 ---
 # <a name="configure-authentication"></a>Konfigurace ověřování
 
@@ -48,7 +48,7 @@ Klíče účtu se doporučují pro rychlé vytváření prototypů při vývoji.
 
  Další informace najdete v tomto [kurzu: zabezpečení vzdáleného vykreslování Azure a modelu úložiště – Azure Active Directory ověřování](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
 Pokud chcete zajistit řízení úrovně přístupu k vaší službě, použijte při udělování přístupu založeného na rolích následující role:
 

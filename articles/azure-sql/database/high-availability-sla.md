@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: fd470180e17bd64990c1e657a6614fc2e0ef71d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e9ad28b14a51432fd9ccd32d1a155eaff2e190
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335020"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427119"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ K dispozici jsou dva modely architektury vysoké dostupnosti:
 
 SQL Database a SQL Managed instance jsou spouštěny v nejnovější stabilní verzi databázového stroje SQL Server a operačním systému Windows a většina uživatelů neoznámila průběžné upgradu.
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>Dostupnost úrovně služeb Basic, Standard a Pro obecné účely
+## <a name="basic-standard-and-general-purpose-service-tier-locally-redundant-availability"></a>Místně redundantní dostupnost úrovně služeb Basic, Standard a Pro obecné účely
 
 Úrovně služeb Basic, Standard a Pro obecné účely využívají standardní architekturu dostupnosti pro neserverový i zřízený výpočetní výkon. Následující obrázek znázorňuje čtyři různé uzly s oddělenými výpočetními a úložnými vrstvami.
 
@@ -46,7 +46,26 @@ Standardní model dostupnosti obsahuje dvě vrstvy:
 
 Pokaždé, když je databázový stroj nebo operační systém upgradovaný, nebo dojde k selhání, Azure Service Fabric přesune bezstavový `sqlservr.exe` proces do jiného bezstavového výpočetního uzlu s dostatečnou volnou kapacitou. Data v úložišti objektů BLOB v Azure nejsou ovlivněná přesunem a soubory dat a protokolů jsou připojené k nově inicializovanému `sqlservr.exe` procesu. Tento proces garantuje 99,99% dostupnost, ale u velkého zatížení může dojít k výraznému snížení výkonu během přechodu, protože nový `sqlservr.exe` proces začíná studenou mezipamětí.
 
-## <a name="premium-and-business-critical-service-tier-availability"></a>Dostupnost úrovně služeb Premium a Pro důležité obchodní informace
+## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Pro obecné účely redundantní dostupnosti zóny služby na úrovni služby (Preview)
+
+Redundantní konfigurace zóny služby pro obecné účely využívá [zóny dostupnosti Azure](../../availability-zones/az-overview.md)   k replikaci databází v různých fyzických umístěních v oblasti Azure.Výběrem redundance zóny můžete vytvořit nové a stávající samostatné databáze a elastické fondy pro obecné účely, odolné vůči mnohem většímu počtu selhání, včetně závažných výpadků datového centra, aniž by došlo k žádným změnám aplikační logiky.
+
+Redundantní konfigurace zóny pro vrstvu pro obecné účely má dvě vrstvy:  
+
+- Stavová Datová vrstva s databázovými soubory (. mdf/. ldf), které jsou uložené ve [sdílené složce](../../storage/files/storage-how-to-create-premium-fileshare.md)ZRS PFS (zóna – redundantní úložiště úrovně Premium). Pomocí [redundantního úložiště zóny](../../storage/common/storage-redundancy.md) se data a soubory protokolů synchronně kopírují mezi tři zóny dostupnosti v rámci fyzicky izolovaného Azure.
+- Bezstavová výpočetní vrstva, která spouští proces sqlservr.exe a obsahuje pouze přechodná a data uložená v mezipaměti, jako je například TempDB, modelové databáze na připojené SSD a mezipaměť plánu, fond vyrovnávací paměti a fond columnstore v paměti. Tento bezstavový uzel je provozován službou Azure Service Fabric, která inicializuje sqlservr.exe, řídí stav uzlu a v případě potřeby provádí převzetí služeb při selhání jiným uzlem. V případě redundantních databází pro obecné účely se uzly, které mají volnou kapacitu, snadno dostupné v jiných Zóny dostupnosti pro převzetí služeb při selhání.
+
+Redundantní verze architektury vysoké dostupnosti pro úroveň služby pro obecné účely je znázorněná v následujícím diagramu:
+
+![Redundantní konfigurace zóny pro obecné účely](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
+
+> [!IMPORTANT]
+> Aktuální informace o oblastech, které podporují redundantní databáze zóny, najdete v tématu [Podpora služeb v jednotlivých oblastech](../../availability-zones/az-region.md). Redundantní konfigurace zóny je dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Tato funkce není k dispozici ve spravované instanci SQL.
+
+> [!NOTE]
+> Pro obecné účely databází s velikostí 80 Vcore může dojít ke snížení výkonu s redundantní konfigurací zóny. Operace, jako je zálohování, obnovení, kopírování databáze a nastavení vztahů geografického DR, můžou mít pomalejší výkon pro izolované databáze větší než 1 TB. 
+
+## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Úroveň služeb Premium a Pro důležité obchodní informace místně redundantní dostupnost
 
 Úrovně služeb Premium a Pro důležité obchodní informace využívají model dostupnosti Premium, který integruje výpočetní prostředky ( `sqlservr.exe` procesy) a úložiště (místně připojené SSD) na jeden uzel. Vysoká dostupnost se dosahuje replikací výpočetních prostředků i úložiště do dalších uzlů vytvářejících cluster se čtyřmi uzly.
 
@@ -55,6 +74,23 @@ Pokaždé, když je databázový stroj nebo operační systém upgradovaný, neb
 Podkladové soubory databáze (. mdf/. ldf) jsou umístěné v připojeném úložišti SSD, aby bylo možné zajistit velmi nízkou latenci v/v pro vaše zatížení. Vysoká dostupnost se implementuje pomocí technologie podobné SQL Server [skupinám dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Cluster obsahuje jednu primární repliku, která je přístupná pro úlohy zákazníka pro čtení i zápis, a to až ze tří sekundárních replik (výpočetní výkon a úložiště), které obsahují kopie dat. Primární uzel průběžně přenáší změny do sekundárních uzlů v pořadí a před potvrzením každé transakce zajišťuje, aby byla data synchronizována do alespoň jedné sekundární repliky. Tento postup zaručuje, že pokud dojde k selhání primárního uzlu z jakéhokoli důvodu, je vždy plně synchronizovaný uzel, který převezme služby při selhání. Převzetí služeb při selhání iniciuje Service Fabric Azure. Jakmile se sekundární replika pokusí o nový primární uzel, vytvoří se další sekundární replika, která zajistí, že cluster má dostatek uzlů (sada kvora). Po dokončení převzetí služeb při selhání se připojení Azure SQL automaticky přesměrují do nového primárního uzlu.
 
 Model dostupnosti Premium navíc nabízí možnost přesměrovat připojení Azure SQL, která jsou jen pro čtení, na jednu ze sekundárních replik. Tato funkce se nazývá horizontální navýšení [kapacity čtení](read-scale-out.md). Poskytuje 100% dodatečnou výpočetní kapacitu bez dalších poplatků za vypínání operací jen pro čtení, jako jsou analytické úlohy, z primární repliky.
+
+## <a name="premium-and-business-critical-service-tier-zone-redundant-availability"></a>Redundantní dostupnost zóny úrovně služeb Premium a Pro důležité obchodní informace 
+
+Ve výchozím nastavení se cluster uzlů pro model dostupnosti Premium vytvoří ve stejném datovém centru. Při zavedení [zóny dostupnosti Azure](../../availability-zones/az-overview.md)můžou SQL Database umístit různé repliky databáze pro důležité obchodní informace do různých zón dostupnosti ve stejné oblasti. Chcete-li eliminovat jediný bod selhání, je řídicí kanál také duplikován v několika zónách jako tři prstence brány (GS). Směrování na konkrétního okruhu brány se řídí službou [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) (ATM). Vzhledem k tomu, že zóna redundantní konfigurace v úrovních služby Premium nebo Pro důležité obchodní informace nevytváří další redundanci databáze, můžete ji povolit bez dalších poplatků. Výběrem redundantní konfigurace zóny můžete zajistit, aby vaše databáze Premium nebo Pro důležité obchodní informace odolné vůči mnohem většímu počtu selhání, včetně závažných výpadků Datacenter, a to bez jakýchkoli změn v aplikační logice. Můžete také převést všechny existující databáze nebo fondy Premium nebo Pro důležité obchodní informace na zónu redundantní konfigurace.
+
+Vzhledem k tomu, že redundantní databáze zóny mají v různých datových centrech repliky s určitou vzdáleností, zvýšení latence sítě může zvýšit dobu potvrzení a tím ovlivnit výkon některých OLTP úloh. Do konfigurace s jednou zónou se můžete kdykoli vrátit tím, že zakážete nastavení redundance zóny. Tento proces je online operace podobná standardnímu upgradu vrstvy služeb. Na konci procesu je databáze nebo fond migrován z zóny redundantního vyzvánění do jediného okruhu zóny nebo naopak.
+
+> [!IMPORTANT]
+> Redundantní databáze zóny a elastické fondy se momentálně podporují jenom v úrovních služby Premium a Pro důležité obchodní informace ve vybraných oblastech. Při použití Pro důležité obchodní informace úrovně je redundantní konfigurace zóny dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Aktuální informace o oblastech, které podporují redundantní databáze zóny, najdete v tématu [Podpora služeb v jednotlivých oblastech](../../availability-zones/az-region.md).
+
+> [!NOTE]
+> Tato funkce není k dispozici ve spravované instanci SQL.
+
+Redundantní verze architektury s vysokou dostupností v zóně je znázorněna v následujícím diagramu:
+
+![redundantní zóna architektury vysoké dostupnosti](./media/high-availability-sla/zone-redundant-business-critical-service-tier.png)
+
 
 ## <a name="hyperscale-service-tier-availability"></a>Dostupnost vrstvy služeb s škálovatelným škálováním
 
@@ -73,21 +109,6 @@ Výpočetní uzly ve všech vrstvách s škálovatelným škálováním běží 
 
 Další informace o vysoké dostupnosti v měřítku najdete v tématu [Vysoká dostupnost databáze v měřítku](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale).
 
-## <a name="zone-redundant-configuration"></a>Redundantní konfigurace zóny
-
-Ve výchozím nastavení se cluster uzlů pro model dostupnosti Premium vytvoří ve stejném datovém centru. Při zavedení [zóny dostupnosti Azure](../../availability-zones/az-overview.md)můžou SQL Database umístit různé repliky databáze pro důležité obchodní informace do různých zón dostupnosti ve stejné oblasti. Chcete-li eliminovat jediný bod selhání, je řídicí kanál také duplikován v několika zónách jako tři prstence brány (GS). Směrování na konkrétního okruhu brány se řídí službou [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) (ATM). Vzhledem k tomu, že zóna redundantní konfigurace v úrovních služby Premium nebo Pro důležité obchodní informace nevytváří další redundanci databáze, můžete ji povolit bez dalších poplatků. Výběrem redundantní konfigurace zóny můžete zajistit, aby vaše databáze Premium nebo Pro důležité obchodní informace odolné vůči mnohem většímu počtu selhání, včetně závažných výpadků Datacenter, a to bez jakýchkoli změn v aplikační logice. Můžete také převést všechny existující databáze nebo fondy Premium nebo Pro důležité obchodní informace na zónu redundantní konfigurace.
-
-Vzhledem k tomu, že redundantní databáze zóny mají v různých datových centrech repliky s určitou vzdáleností, zvýšení latence sítě může zvýšit dobu potvrzení a tím ovlivnit výkon některých OLTP úloh. Do konfigurace s jednou zónou se můžete kdykoli vrátit tím, že zakážete nastavení redundance zóny. Tento proces je online operace podobná standardnímu upgradu vrstvy služeb. Na konci procesu je databáze nebo fond migrován z zóny redundantního vyzvánění do jediného okruhu zóny nebo naopak.
-
-> [!IMPORTANT]
-> Redundantní databáze zóny a elastické fondy se momentálně podporují jenom v úrovních služby Premium a Pro důležité obchodní informace ve vybraných oblastech. Při použití Pro důležité obchodní informace úrovně je redundantní konfigurace zóny dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Aktuální informace o oblastech, které podporují redundantní databáze zóny, najdete v tématu [Podpora služeb v jednotlivých oblastech](../../availability-zones/az-region.md).
-
-> [!NOTE]
-> Tato funkce není k dispozici ve spravované instanci SQL.
-
-Redundantní verze architektury s vysokou dostupností v zóně je znázorněna v následujícím diagramu:
-
-![redundantní zóna architektury vysoké dostupnosti](./media/high-availability-sla/zone-redundant-business-critical-service-tier.png)
 
 ## <a name="accelerated-database-recovery-adr"></a>Urychlené obnovení databáze (ADR)
 

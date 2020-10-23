@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: d55f461205ceecad098319d7b4b41c175390abfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d4c8675d8f03d19a63b7564b05e2de1a809e763
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850503"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s JIRA SAML SSO Microsoftu
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat JIRA SAML SSO Microsoftu pomocí služ
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k JIRA SSO SSO Microsoftu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="description"></a>Popis
 
@@ -218,7 +218,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     1. Uložte nastavení kliknutím na tlačítko **Uložit** .
 
        > [!NOTE]
-       > Další informace o instalaci a řešení potíží najdete v [příručce pro správce konektoru pro JIRA SSO společnosti Microsoft](../ms-confluence-jira-plugin-adminguide.md). K dispozici jsou také [Nejčastější dotazy](../ms-confluence-jira-plugin-faq.md) týkající se vaší pomoci.
+       > Další informace o instalaci a řešení potíží najdete v [příručce pro správce konektoru pro JIRA SSO společnosti Microsoft](./ms-confluence-jira-plugin-adminguide.md). K dispozici jsou také [Nejčastější dotazy](./ms-confluence-jira-plugin-adminguide.md) týkající se vaší pomoci.
 
 ### <a name="create-jira-saml-sso-by-microsoft-test-user"></a>Vytvořit JIRA jednotné přihlašování SAML pomocí Microsoft Test User
 
@@ -258,14 +258,14 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA místním serveru, musí 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici JIRA SSO SSO Microsoft, měli byste se automaticky přihlásit k JIRA SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici JIRA SSO SSO Microsoft, měli byste se automaticky přihlásit k JIRA SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si JIRA SSO SSO Microsoftu pomocí Azure AD](https://aad.portal.azure.com/)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 5100974c071d6a63fd2c00e496a5422fef2dffb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43447d98cf4af6887e66dd0811464e34fc1ac717
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88517632"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457888"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-monitor"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s monitorováním výkonu AppNeta
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat AppNeta Performance Monitor s Azure Ac
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k AppNeta sledování výkonu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -98,7 +98,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace AppNeta Performance Monitor několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --------| ----------------|
     | firstName| User. křestní jméno|
     | lastName| User. příjmení|
@@ -110,7 +110,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | | |
 
     > [!NOTE]
-    > **skupiny** odkazují na skupinu zabezpečení v Appneta, která je namapovaná na **roli** ve službě Azure AD. Podívejte se prosím na [Tento](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) dokument, který vysvětluje, jak vytvářet vlastní role v Azure AD.
+    > **skupiny** odkazují na skupinu zabezpečení v Appneta, která je namapovaná na **roli** ve službě Azure AD. Podívejte se prosím na [Tento](../develop/active-directory-enterprise-app-role-management.md) dokument, který vysvětluje, jak vytvářet vlastní role v Azure AD.
 
     1. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
@@ -179,15 +179,14 @@ V této části se v monitorování výkonu AppNeta vytvoří uživatel s názve
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici AppNeta Performance Monitor na přístupovém panelu byste měli být automaticky přihlášeni ke sledování výkonu AppNeta, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici AppNeta Performance Monitor na přístupovém panelu byste měli být automaticky přihlášeni ke sledování výkonu AppNeta, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte AppNeta Performance Monitor s Azure AD](https://aad.portal.azure.com/)
-

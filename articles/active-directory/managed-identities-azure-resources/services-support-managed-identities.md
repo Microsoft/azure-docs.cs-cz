@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: d0b9e2301a8bb9990f88db8d4d55ef7f97946174
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7e971b4afe0719d74c8aa32c5f5103c4be971d9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072165"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426443"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity prostředků Azure
 
@@ -41,6 +41,16 @@ Pokud chcete nakonfigurovat spravovanou identitu pro Azure API Management (v obl
 
 - [Šablona Azure Resource Manageru](../../api-management/api-management-howto-use-managed-service-identity.md)
 
+### <a name="azure-app-configuration"></a>Azure App Configuration
+
+| Typ spravované identity | Vše je všeobecně dostupné<br>Globální oblasti Azure | Azure Government | Azure Germany | Azure (Čína) 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Přiřazená systémem | ![K dispozici.][check] | ![K dispozici.][check] | Není k dispozici | Není k dispozici |
+| Přiřazená uživatelem | ![K dispozici.][check] | ![K dispozici.][check]  | Není k dispozici  | Není k dispozici |
+
+Pokud chcete nakonfigurovat spravovanou identitu pro konfiguraci aplikace Azure (v oblastech, kde je dostupná), podívejte se na následující seznam:
+
+- [Azure CLI](../../azure-app-configuration/overview-managed-identity.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 

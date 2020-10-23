@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ed4bd97dfe64a85785cf7805da2cf7f942baecd4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4618b315f12257c11391b76ac7ed4dab23fec259
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367533"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460899"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -644,7 +644,7 @@ Další informace o těchto dvou nových doporučeních najdete v tabulce s [dop
 
 Přečtěte si další informace o tom, jak Azure Security Center používá agenta v tématu [co je agent Log Analytics?](faq-data-collection-agents.md#what-is-the-log-analytics-agent).
 
-Přečtěte si další informace o [rozšířeních pro počítače s obloukem Azure ARC](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal).
+Přečtěte si další informace o [rozšířeních pro počítače s obloukem Azure ARC](../azure-arc/servers/manage-vm-extensions.md).
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Nové zásady pro vytváření nepřetržitého exportu a konfigurace automatizace pracovních postupů ve velkém měřítku

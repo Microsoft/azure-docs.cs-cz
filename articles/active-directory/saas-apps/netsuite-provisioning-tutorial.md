@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: b428ffc0122f13ef15f870ce734b54fe6707f582
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdee884990dfadec444fae919a715c7dc3428f77
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983961"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428419"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace NetSuite pro Automatické zřizování uživatelů
 
@@ -28,6 +28,7 @@ Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 *   Tenant Azure Active Directory.
 *   Předplatné NetSuite OneWorld. Všimněte si, že Automatické zřizování uživatelů je v současné době podporováno pouze pomocí NetSuite OneWorld.
 *   Uživatelský účet v NetSuite s oprávněními správce.
+*   Integrace se službou Azure AD vyžaduje výjimku 2FA. Pro tuto výjimku se prosím obraťte na tým podpory NetSuite.
 
 ## <a name="assigning-users-to-netsuite-oneworld"></a>Přiřazení uživatelů k NetSuite OneWorld
 

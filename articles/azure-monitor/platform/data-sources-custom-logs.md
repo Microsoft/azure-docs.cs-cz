@@ -1,21 +1,24 @@
 ---
-title: Shromažďovat vlastní protokoly v Azure Monitor | Microsoft Docs
+title: Shromažďování vlastních protokolů pomocí agenta Log Analytics v Azure Monitor
 description: Azure Monitor může shromažďovat události z textových souborů na počítačích s Windows i Linux.  Tento článek popisuje, jak definovat nový vlastní protokol a podrobnosti o záznamech, které vytvoří v Azure Monitor.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/26/2019
-ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269484"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461562"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly ve službě Azure Monitor
+# <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďování vlastních protokolů pomocí agenta Log Analytics v Azure Monitor
 
-Zdroj dat vlastních protokolů v Azure Monitor umožňuje shromažďovat události z textových souborů na počítačích s Windows i Linux. Mnoho aplikací protokoluje informace do textových souborů namísto standardních protokolovacích služeb, jako je například protokol událostí systému Windows nebo syslog. Po shromáždění můžete data analyzovat do jednotlivých polí v dotazech nebo data extrahovat během shromažďování do jednotlivých polí.
+Zdroj dat vlastních protokolů pro agenta Log Analytics v Azure Monitor umožňuje shromažďovat události z textových souborů na počítačích s Windows i Linux. Mnoho aplikací protokoluje informace do textových souborů namísto standardních protokolovacích služeb, jako je například protokol událostí systému Windows nebo syslog. Po shromáždění můžete data analyzovat do jednotlivých polí v dotazech nebo data extrahovat během shromažďování do jednotlivých polí.
+
+> [!IMPORTANT]
+> Tento článek popisuje shromažďování vlastních protokolů pomocí [agenta Log Analytics](log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 ![Vlastní kolekce protokolů](media/data-sources-custom-logs/overview.png)
 
@@ -74,7 +77,7 @@ Aplikace může například vytvořit soubor protokolu každý den s datem zahrn
 
 Následující tabulka uvádí příklady platných vzorů k určení různých souborů protokolu.
 
-| Description | Cesta |
+| Popis | Cesta |
 |:--- |:--- |
 | Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs. \\ \* . txt |
 | Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log \* . txt |

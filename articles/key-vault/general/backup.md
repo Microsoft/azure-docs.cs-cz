@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585929"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440514"
 ---
 # <a name="azure-key-vault-backup"></a>Zálohování Azure Key Vault
 
@@ -30,6 +30,9 @@ Key Vault udržuje dostupnost ve scénářích havárií a automaticky převezme
 Pokud chcete chránit před náhodným nebo škodlivým odstraněním tajných kódů, nakonfigurujte funkce ochrany obnovitelného odstranění a vyprázdnění v trezoru klíčů. Další informace najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
 
 ## <a name="limitations"></a>Omezení
+
+> [!IMPORTANT]
+> Key Vault nepodporuje zálohování více než 500 starších verzí objektu Key, SECRET nebo Certificate. Pokus o zálohování objektu klíče, tajného kódu nebo certifikátu může mít za následek chybu. Není možné odstranit předchozí verze klíče, tajného kódu ani certifikátu.
 
 Key Vault aktuálně neposkytuje způsob, jak zálohovat celý Trezor klíčů v rámci jedné operace. Jakékoli pokusy o použití příkazů uvedených v tomto dokumentu k provedení automatizovaného zálohování trezoru klíčů může způsobit chyby a společnost Microsoft ani tým Azure Key Vault nepodporují. 
 

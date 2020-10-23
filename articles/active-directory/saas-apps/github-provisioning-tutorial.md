@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5f48cd0056d40ed7dc5c99c4260621533c1f71f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b9b7a82d611743f2ba76e20f47670771e2e38904
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369076"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448958"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
 
@@ -28,7 +28,7 @@ Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 * Tenant Azure Active Directory
 * Organizace GitHubu vytvořená v [GitHub Enterprise cloudu](https://help.github.com/articles/github-s-products/#github-enterprise), která vyžaduje [fakturační plán pro GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
 * Uživatelský účet v GitHubu s oprávněními správce k organizaci
-* [SAML nakonfigurovaný pro organizaci GitHub Enterprise Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
+* [SAML nakonfigurovaný pro organizaci GitHub Enterprise Cloud](./github-tutorial.md)
 * Zajistěte, aby byl pro vaši organizaci poskytnutý přístup OAuth, jak je popsáno [zde](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) .
 * Zřizování SCIM pro jedinou organizaci se podporuje jenom v případě, že je jednotné přihlašování povolené na úrovni organizace.
 
@@ -91,7 +91,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

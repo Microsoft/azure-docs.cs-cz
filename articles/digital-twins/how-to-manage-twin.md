@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 58ee064d4946442bff70e97d56a68080333e2197
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426129"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461310"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
-Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](how-to-use-apis-sdks.md), [sadu .NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
+Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins), [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
 
 Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracovat se vztahy a s [dvojitým grafem](concepts-twins-graph.md) v podobě celku, přečtěte si téma [*Postup: Správa nefunkčního grafu s relacemi*](how-to-manage-graph.md).
 
@@ -383,7 +383,16 @@ Následující příklad kódu spustitelný můžete použít k vytvoření vlá
 
 Fragment kódu používá [Room.jsv](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) definici modelu z [*kurzu: Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md). Pomocí tohoto odkazu můžete přejít přímo k souboru [nebo si ho](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)stáhnout jako součást celého uceleného ukázkového projektu.
 
-Zástupný symbol nahraďte `<your-instance-hostname>` podrobnostmi instance digitálního vlákna Azure a spusťte ukázku.
+Než spustíte ukázku, udělejte toto:
+1. Stáhněte si soubor modelu, umístěte ho do projektu a nahraďte `<path-to>` zástupný symbol v následujícím kódu a sdělte tak programu, kde se má najít.
+2. Zástupný symbol nahraďte `<your-instance-hostname>` názvem hostitele instance digitálního vlákna Azure.
+3. Přidejte tyto balíčky do projektu:
+    ```cmd/sh
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
+    dotnet add package Azure.identity
+    ```
+
+Pak spusťte ukázku.
 
 ```csharp
 using System;
@@ -401,22 +410,29 @@ namespace minimal
     class Program
     {
 
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            //Create the Azure Digital Twins client for API calls
             string adtInstanceUrl = "https://<your-instance-hostname>";
             var credentials = new DefaultAzureCredential();
-            Console.WriteLine();
-            Console.WriteLine($"Upload a model");
-            BasicDigitalTwin twin = new BasicDigitalTwin();
-            var typeList = new List<string>();
-            string twin_Id = "myRoomId";
-            string dtdl = File.ReadAllText("Room.json");
-            typeList.Add(dtdl);
-            // Upload the model to the service
             DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
             Console.WriteLine($"Service client created – ready to go");
+            Console.WriteLine();
+
+            //Upload models
+            Console.WriteLine($"Upload a model");
+            Console.WriteLine();
+            string dtdl = File.ReadAllText("<path-to>/Room.json");
+            var typeList = new List<string>();
+            typeList.Add(dtdl);
+            // Upload the model to the service
             await client.CreateModelsAsync(typeList);
+
+            //Create new digital twin
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            string twin_Id = "myRoomId";
             twin.Metadata = new DigitalTwinMetadata();
             twin.Metadata.ModelId = "dtmi:example:Room;1";
             // Initialize properties
@@ -426,7 +442,15 @@ namespace minimal
             twin.CustomProperties = props;
             await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
             Console.WriteLine("Twin created successfully");
+            Console.WriteLine();
+
+            //Print twin
+            Console.WriteLine("--- Printing twin details:");
             twin = FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Update twin data
             List<object> twinData = new List<object>();
             twinData.Add(new Dictionary<string, object>() 
             {
@@ -434,10 +458,17 @@ namespace minimal
                 { "path", "/Temperature"},
                 { "value", 25.0}
             });
-
             await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
-            Console.WriteLine("Updated Twin Properties");
+            Console.WriteLine("Twin properties updated");
+            Console.WriteLine();
+
+            //Print twin again
+            Console.WriteLine("--- Printing twin details (after update):");
             FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Delete twin
             await DeleteTwin(client, twin_Id);
         }
 
@@ -455,7 +486,7 @@ namespace minimal
 
             return twin;
         }
-        static async Task DeleteTwin(DigitalTwinsClient client, string id)
+        private static async Task DeleteTwin(DigitalTwinsClient client, string id)
         {
             await FindAndDeleteOutgoingRelationshipsAsync(client, id);
             await FindAndDeleteIncomingRelationshipsAsync(client, id);
@@ -463,7 +494,6 @@ namespace minimal
             {
                 await client.DeleteDigitalTwinAsync(id);
                 Console.WriteLine("Twin deleted successfully");
-                FetchAndPrintTwin(id, client);
             }
             catch (RequestFailedException exc)
             {
@@ -471,7 +501,7 @@ namespace minimal
             }
         }
 
-        public static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        private static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
         {
             // Find the relationships for the twin
 
@@ -493,7 +523,7 @@ namespace minimal
             }
         }
 
-       static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+       private static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
         {
             // Find the relationships for the twin
 
@@ -530,7 +560,7 @@ Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azur
 
 ## <a name="view-all-digital-twins"></a>Zobrazit všechny digitální vlákna
 
-Chcete-li zobrazit všechny digitální vlákna ve vaší instanci, použijte [dotaz](how-to-query-graph.md). Dotaz můžete spustit pomocí [rozhraní API pro dotazy](how-to-use-apis-sdks.md) nebo [příkazů CLI](how-to-use-cli.md).
+Chcete-li zobrazit všechny digitální vlákna ve vaší instanci, použijte [dotaz](how-to-query-graph.md). Dotaz můžete spustit pomocí [rozhraní API pro dotazy](/rest/api/digital-twins/dataplane/query) nebo [příkazů CLI](how-to-use-cli.md).
 
 Zde je text základního dotazu, který vrátí seznam všech digitálních vláken v instanci:
 

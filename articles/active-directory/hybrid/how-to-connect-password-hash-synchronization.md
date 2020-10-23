@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee8c7cf2b34d5923f84bf9b9ba3cf5b10034e3e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652076"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458047"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek poskytuje informace, které potřebujete k synchronizaci uživatelských hesel z místní instance služby Active Directory s instancí cloudové Azure Active Directory (Azure AD).
@@ -109,7 +109,7 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-Po povolení Služba Azure AD nepřejde na každého synchronizovaného uživatele, aby odebral `DisablePasswordExpiration` hodnotu z atributu PasswordPolicies. Místo toho je hodnota nastavena na `None` během příští synchronizace hesla pro každého uživatele při dalším změně hesla v místní službě AD.  
+Po povolení Služba Azure AD nepřejde na každého synchronizovaného uživatele, aby odebral `DisablePasswordExpiration` hodnotu z atributu PasswordPolicies. Místo toho se `DisablePasswordExpiration` hodnota při další změně hesla v místní službě AD odebere z PasswordPolicies při příští synchronizaci hodnoty hash hesla pro každého uživatele.
 
 Doporučuje se povolit EnforceCloudPasswordPolicyForPasswordSyncedUsers před povolením synchronizace hodnot hash hesel, aby počáteční synchronizace hodnot hash hesel nepřidala `DisablePasswordExpiration` hodnotu do atributu PasswordPolicies pro uživatele.
 

@@ -3,16 +3,16 @@ title: 'Rychlý Start: spuštění vlastního kontejneru v App Service'
 description: Začněte s kontejnery na Azure App Service nasazením prvního vlastního kontejneru.
 author: msangapu-msft
 ms.author: msangapu
-ms.date: 08/28/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 3191552421091bc0a2c4e6855c0271c142af1882
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1411491906e763a52ee1b6a66df1dea183b91973
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152367"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425866"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Spuštění vlastního kontejneru v Azure
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak nasadit aplikaci ASP.NET v imagi Window
 > App Service v kontejnerech Windows je ve verzi Preview.
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -87,7 +87,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci v ASP.NET:
 
 ## <a name="create-a-windows-container-app"></a>Vytvoření aplikace typu kontejner pro Windows
 
-1. Přihlaste se k [portálu Azure Portal]( https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal]( https://portal.azure.com).
 
 1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
@@ -184,7 +184,7 @@ Nebo si prohlédněte další zdroje informací:
 ::: zone pivot="container-linux"
 App Service v systému Linux poskytuje předdefinované zásobníky aplikací v systému Linux s podporou pro jazyky, jako je například .NET, PHP, Node.js a další. Můžete také použít vlastní image Dockeru a spouštět webovou aplikaci v zásobníku aplikací, který ještě není v Azure definovaný. V tomto rychlém startu se dozvíte, jak nasadit image z [Azure Container Registry](../container-registry/index.yml) (ACR) do App Service.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Účet Azure](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
@@ -199,7 +199,7 @@ K dokončení tohoto rychlého startu budete potřebovat vhodnou image webové a
 > [!IMPORTANT]
 > Nezapomeňte nastavit možnost uživatel s **oprávněními správce** , aby se **povolil** při vytváření registru kontejneru. Můžete ji také nastavit v části **přístupové klíče** stránky registru v Azure Portal. Toto nastavení se vyžaduje pro App Service přístup.
 
-## <a name="sign-in"></a>Přihlášení
+## <a name="sign-in"></a>Přihlásit se
 
 Dále spusťte VS Code a přihlaste se k účtu Azure pomocí rozšíření App Service. Pokud to chcete provést, vyberte na řádku aktivity logo Azure, přejděte do Průzkumníka **služby App Service** , vyberte možnost **Přihlásit se k Azure** a postupujte podle pokynů.
 

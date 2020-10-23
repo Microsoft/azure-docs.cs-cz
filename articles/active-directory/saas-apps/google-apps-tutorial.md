@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a5cb1e589481bb424507d08879da8cc1b14ff1c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707811"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448176"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s konektorem Google Cloud (G Suite)
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat konektor Google Cloud (G Suite) s Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili ke konektoru Google Cloud (G Suite) pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,7 +64,7 @@ K otestování kroků v tomto kurzu byste měli postupovat podle těchto doporu�
 
 5. **Otázka: Pokud je uživatel přihlášený prostřednictvím Windows, automaticky se ověří do konektoru Google Cloud (G Suite), aniž by se zobrazila výzva k zadání hesla?**
 
-    Odpověď: Existují dvě možnosti pro povolení tohoto scénáře. Nejdřív se uživatelé mohli do zařízení s Windows 10 přihlásit pomocí [Azure Active Directory JOIN](../device-management-introduction.md). Další možností je, že se uživatelé můžou přihlašovat do zařízení s Windows, která jsou připojená k doméně, do místní služby Active Directory, u které se povolilo jednotné přihlašování ke službě Azure AD prostřednictvím nasazení [Active Directory Federation Services (AD FS) (AD FS)](../hybrid/plan-connect-user-signin.md) . Obě možnosti vyžadují, abyste provedli kroky v následujícím kurzu a povolili jste jednotné přihlašování mezi Azure AD a konektorem Google Cloud (G Suite).
+    Odpověď: Existují dvě možnosti pro povolení tohoto scénáře. Nejdřív se uživatelé mohli do zařízení s Windows 10 přihlásit pomocí [Azure Active Directory JOIN](../devices/overview.md). Další možností je, že se uživatelé můžou přihlašovat do zařízení s Windows, která jsou připojená k doméně, do místní služby Active Directory, u které se povolilo jednotné přihlašování ke službě Azure AD prostřednictvím nasazení [Active Directory Federation Services (AD FS) (AD FS)](../hybrid/plan-connect-user-signin.md) . Obě možnosti vyžadují, abyste provedli kroky v následujícím kurzu a povolili jste jednotné přihlašování mezi Azure AD a konektorem Google Cloud (G Suite).
 
 6. **Otázka: co mám dělat, když se zobrazí chybová zpráva "Neplatný e-mail"?**
 
@@ -82,8 +82,8 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Konektor Google Cloud (G Suite) podporuje jednotné přihlašování (SSO) spouštěné v **SP**
 
-* Konektor Google Cloud (G Suite) podporuje [ **automatizované** zřizování uživatelů.](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
-* Jakmile nakonfigurujete konektor Google Cloud (G Suite), můžete vynutilit řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Konektor Google Cloud (G Suite) podporuje [ **automatizované** zřizování uživatelů.](./google-apps-provisioning-tutorial.md)
+* Jakmile nakonfigurujete konektor Google Cloud (G Suite), můžete vynutilit řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>Přidání konektoru Google Cloud (G Suite) z Galerie
 
@@ -242,7 +242,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 Cílem této části je [vytvořit uživatele v konektoru Google Cloud (G Suite)](https://support.google.com/a/answer/33310?hl=en) s názvem B. Simon. Po vytvoření uživatele v konektoru Google Cloud (G Suite) se uživatel nyní bude moci přihlásit pomocí přihlašovacích údajů Microsoft 365.
 
-Konektor Google Cloud (G Suite) podporuje taky Automatické zřizování uživatelů. Pokud chcete nakonfigurovat automatické zřizování uživatelů, musíte nejdřív [nakonfigurovat konektor Google Cloud (G Suite) pro Automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
+Konektor Google Cloud (G Suite) podporuje taky Automatické zřizování uživatelů. Pokud chcete nakonfigurovat automatické zřizování uživatelů, musíte nejdřív [nakonfigurovat konektor Google Cloud (G Suite) pro Automatické zřizování uživatelů](./google-apps-provisioning-tutorial.md).
 
 > [!NOTE]
 > Ujistěte se, že váš uživatel už existuje v konektoru Google Cloud (G Suite), pokud se zřizování ve službě Azure AD nepřed testováním jednotného přihlašování nezapnulo.
@@ -254,23 +254,23 @@ Konektor Google Cloud (G Suite) podporuje taky Automatické zřizování uživat
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici konektor Google Cloud (G Suite) na přístupovém panelu, měli byste se automaticky přihlásit ke konektoru Google Cloud (G Suite), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici konektor Google Cloud (G Suite) na přístupovém panelu, měli byste se automaticky přihlásit ke konektoru Google Cloud (G Suite), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
-- [Konfigurace zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+- [Konfigurace zřizování uživatelů](./google-apps-provisioning-tutorial.md)
 
 - [Vyzkoušejte si konektor Google Cloud (G Suite) s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit konektor Google Cloud (G Suite) s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+- [Jak chránit konektor Google Cloud (G Suite) s pokročilou viditelností a ovládacími prvky](/cloud-app-security/protect-gsuite)
 
 <!--Image references-->
 

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 9320abb46c45b4bd151839eda40b03b445a2675f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152007"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427095"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java jarní Boot pomocí Azure App Service v systému Linux a Azure Cosmos DB
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Rozhraní příkazového [řádku Azure](/cli/azure/overview), které je nainstalované na vašem počítači. 
 * [Git](https://git-scm.com/)
@@ -238,7 +238,7 @@ Otevřete `pom.xml` soubor v `initial/spring-boot-todo` adresáři a přidejte n
 
 ## <a name="deploy-to-app-service-on-linux"></a>Nasazení na App Service v systému Linux
 
-Použijte `azure-webapp:deploy` cíl Maven k nasazení aplikace TODO pro Azure App Service v systému Linux.
+Použijte `mvn azure-webapp:deploy` cíl Maven k nasazení aplikace TODO pro Azure App Service v systému Linux.
 
 ```bash
 
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 Výstup obsahuje adresu URL vaší nasazené aplikace (v tomto příkladu `https://spring-todo-app.azurewebsites.net` ). Tuto adresu URL můžete zkopírovat do webového prohlížeče nebo spuštěním následujícího příkazu v okně terminálu načíst svou aplikaci.
 
 ```bash
-open https://spring-todo-app.azurewebsites.net
+curl https://spring-todo-app.azurewebsites.net
 ```
 
 Na adresním řádku by se měla zobrazit aplikace spuštěná se vzdálenou adresou URL:
@@ -299,8 +299,8 @@ az appservice plan update --number-of-workers 2 \
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud tyto prostředky nepotřebujete pro další kurz (viz [Další kroky](#next)), můžete je odstranit spuštěním následujícího příkazu ve službě Cloud Shell: 
-  
+Pokud tyto prostředky nepotřebujete pro další kurz (viz [Další kroky](#next)), můžete je odstranit spuštěním následujícího příkazu ve službě Cloud Shell: 
+  
 ```bash
 az group delete --name <your-azure-group-name>
 ```

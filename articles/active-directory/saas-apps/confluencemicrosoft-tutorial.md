@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91775660"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455336"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Confluence SAML SSO Microsoftu
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Confluence SAML SSO Microsoftu pomocí
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Confluence SSO SSO Microsoftu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="description"></a>Popis:
 
@@ -221,7 +221,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     1. Uložte nastavení kliknutím na tlačítko **Uložit** .
 
        > [!NOTE]
-       > Další informace o instalaci a řešení potíží najdete v [příručce pro správce konektoru pro CONFLUENCE SSO společnosti Microsoft](../ms-confluence-jira-plugin-adminguide.md). K dispozici jsou také [Nejčastější dotazy](../ms-confluence-jira-plugin-faq.md) týkající se vaší pomoci.
+       > Další informace o instalaci a řešení potíží najdete v [příručce pro správce konektoru pro CONFLUENCE SSO společnosti Microsoft](./ms-confluence-jira-plugin-adminguide.md). K dispozici jsou také [Nejčastější dotazy](./ms-confluence-jira-plugin-adminguide.md) týkající se vaší pomoci.
 
 ### <a name="create-confluence-saml-sso-by-microsoft-test-user"></a>Vytvořit Confluence jednotné přihlašování SAML pomocí Microsoft Test User
 
@@ -255,14 +255,14 @@ Aby se uživatelé Azure AD mohli přihlašovat k Confluence místním serveru, 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Confluence SSO SSO Microsoft, měli byste se automaticky přihlásit k Confluence SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Confluence SSO SSO Microsoft, měli byste se automaticky přihlásit k Confluence SAML SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Confluence SSO SSO Microsoftu pomocí Azure AD](https://aad.portal.azure.com/)

@@ -1,25 +1,28 @@
 ---
-title: Shromažďovat a analyzovat čítače výkonu v Azure Monitor | Microsoft Docs
+title: Shromáždění zdrojů dat výkonu pro Windows a Linux pomocí agenta Log Analytics v Azure Monitor
 description: Čítače výkonu jsou shromažďovány nástrojem Azure Monitor k analýze výkonu v agentech systému Windows a Linux.  Tento článek popisuje, jak nakonfigurovat shromažďování čítačů výkonu pro agenty Windows i Linux, podrobnosti o nich jsou uložené v pracovním prostoru a jak je analyzovat v Azure Portal.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/21/2020
+ms.openlocfilehash: 71fc3f457338796289c2f6ac54f3bc713a91cc29
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131186"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461358"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
-Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v častých intervalech pro analýzu téměř v reálném čase (NRT) Kromě agregace dat výkonu pro dlouhodobé analýzy a generování sestav.
+# <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Shromažďování zdrojů dat výkonu pro Windows a Linux pomocí agenta Log Analytics
+Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu od agentů Log Analytics v častých intervalech pro analýzu téměř v reálném čase (NRT) společně s agregací údajů o výkonu pro dlouhodobé analýzy a generování sestav.
+
+> [!IMPORTANT]
+> Tento článek popisuje shromažďování údajů o výkonu pomocí [agenta Log Analytics](log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 ![Čítače výkonu](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
-Nakonfigurujte čítače výkonu z [nabídky data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources).
+Nakonfigurujte čítače výkonu z [nabídky data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources) pro pracovní prostor Log Analytics.
 
 Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový pracovní prostor budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.  Ujistěte se, že jsou zaškrtnuté všechny čítače, které chcete zpočátku vytvořit, a pak klikněte na **Přidat vybrané čítače výkonu**.
 

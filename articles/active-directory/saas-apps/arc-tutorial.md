@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a28e81a0631db75107405576507fba36bdbfd11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8227ea4df6ccce6a0e287e861ed9dc8efade1086
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540520"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457754"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-publishing---sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s obloukem publikováním – jednotné přihlašování
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat publikování ARC – jednotné přihl
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k publikování pomocí jednotného přihlašování (SSO) s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -100,7 +100,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Kromě výše očekává aplikace oblouk Publishing-SSO několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |    
     | firstName | User. křestní jméno |
     | lastName | User. příjmení |
@@ -108,7 +108,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | skupiny | User. assignedroles |
 
     > [!NOTE]
-    > Tady je atribut **Groups** namapován pomocí **User. assignedroles**. Jedná se o vlastní role vytvořené ve službě Azure AD, které mapují názvy skupin zpátky v aplikaci. Další pokyny najdete v [tématu](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) vytvoření vlastních rolí v Azure AD.
+    > Tady je atribut **Groups** namapován pomocí **User. assignedroles**. Jedná se o vlastní role vytvořené ve službě Azure AD, které mapují názvy skupin zpátky v aplikaci. Další pokyny najdete v [tématu](../develop/active-directory-enterprise-app-role-management.md) vytvoření vlastních rolí v Azure AD.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -163,15 +163,14 @@ V této části se uživatel s názvem Britta Simon vytvoří v části publikov
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici publikování na oblouky, která se nachází na přístupovém panelu, byste měli být automaticky přihlášeni k publikování ARC – jednotné přihlašování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici publikování na oblouky, která se nachází na přístupovém panelu, byste měli být automaticky přihlášeni k publikování ARC – jednotné přihlašování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušet publikování ARC – jednotné přihlašování pomocí Azure AD](https://aad.portal.azure.com/)
-

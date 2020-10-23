@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: acbccd09fc8bc765083fea7b3a8d6ad749003ae9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 78addb76e2ce7a2679358e241650cc5cc827791f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428007"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461613"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Připojení aplikací Azure Functions pro zpracování dat
 
@@ -50,7 +50,7 @@ Po vytvoření aplikace Function App bude mít Visual Studio automaticky vyplně
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>Zápis funkce Azure pomocí triggeru Event Grid
 
-Funkci Azure můžete napsat přidáním sady SDK do aplikace Function App. Aplikace Function App komunikuje s digitálními interakcemi Azure pomocí [sady Azure Digital Revlákens SDK pro .NET (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
+Funkci Azure můžete napsat přidáním sady SDK do aplikace Function App. Aplikace Function App komunikuje s digitálními interakcemi Azure pomocí [sady Azure Digital Revlákens SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). 
 
 Aby bylo možné použít sadu SDK, budete muset do svého projektu zahrnout následující balíčky. Balíčky můžete buď nainstalovat pomocí Správce balíčků NuGet sady Visual Studio, nebo balíčky přidat pomocí `dotnet` nástroje příkazového řádku. Vyberte jednu z těchto metod: 
 

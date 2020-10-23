@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274040"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441840"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
 
@@ -51,7 +51,7 @@ Tato funkce se v tuto chvíli nepodporuje. Pokud přístup k prostředkům vaš�
 Organizace může chtít přidat uživatele spolupráce B2B, podle potřeby je zřídit s aplikacemi a pak odesílat pozvánky. K přizpůsobení pracovního postupu připojování můžete použít rozhraní API pozvánky B2B pro spolupráci.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Je možné uživatele typu Host zobrazit v globálním seznamu adres systému Exchange?
-Ano. Objekty hosta nejsou ve výchozím nastavení v globálním seznamu adres vaší organizace viditelné, ale můžete je zobrazit pomocí Azure Active Directory PowerShellu. Viz [, jak se můžou objekty hosta zobrazit v globálním seznamu adres?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+Ano. Objekty hosta nejsou ve výchozím nastavení v globálním seznamu adres vaší organizace viditelné, ale můžete je zobrazit pomocí Azure Active Directory PowerShellu. Viz [, jak se můžou objekty hosta zobrazit v globálním seznamu adres?](/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Můžu uživatele typu Host nastavit jako omezeného správce?
 Jistě. Další informace najdete v tématu [Přidání uživatelů typu Host do role](add-guest-to-role.md).
@@ -80,16 +80,16 @@ Ano! Můžete vytvořit zásadu podmíněného přístupu, která zablokuje vše
 Ano. Služba Multi-Factor Authentication a e-mailové e-mailové účty se podporují pro spolupráci Azure AD B2B.
 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Podporujete resetování hesla pro uživatele spolupráce Azure AD B2B?
-Pokud je váš tenant služby Azure AD domovským adresářem pro uživatele, můžete [resetovat heslo uživatele](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal) z Azure Portal. Nemůžete ale přímo obnovit heslo pro uživatele typu Host, který se přihlásí pomocí účtu spravovaného jiným adresářem služby Azure AD nebo externím zprostředkovatelem identity. Heslo může resetovat jenom uživatel typu Host nebo správce v domovském adresáři uživatele. Tady je několik příkladů, jak funguje resetování hesla pro uživatele typu Host:
+Pokud je váš tenant služby Azure AD domovským adresářem pro uživatele, můžete [resetovat heslo uživatele](../fundamentals/active-directory-users-reset-password-azure-portal.md) z Azure Portal. Nemůžete ale přímo obnovit heslo pro uživatele typu Host, který se přihlásí pomocí účtu spravovaného jiným adresářem služby Azure AD nebo externím zprostředkovatelem identity. Heslo může resetovat jenom uživatel typu Host nebo správce v domovském adresáři uživatele. Tady je několik příkladů, jak funguje resetování hesla pro uživatele typu Host:
  
 * Uživatelé typu Host, kteří se přihlásí pomocí účet Microsoft (například guestuser@live.com ), mohou resetovat vlastní hesla pomocí účet Microsoft samoobslužného resetování hesla (SSPR). Přečtěte si informace [o resetování hesla účet Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Uživatelé typu Host, kteří se přihlásí pomocí účtu Google nebo jiného externího zprostředkovatele identity, můžou resetovat svoje vlastní hesla pomocí metody SSPR zprostředkovatele identity. Uživatel typu host s účtem Google guestuser@gmail.com může například resetovat heslo podle pokynů v tématu [Změna nebo resetování hesla](https://support.google.com/accounts/answer/41078).
-* Pokud je tenant identity tenanta JIT (just-in-time) nebo "virová" tenant (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
+* Pokud je tenant identity tenanta JIT (just-in-time) nebo "virová" tenant (což znamená, že se jedná o samostatného nespravovaného tenanta Azure), může heslo resetovat jenom uživatel typu Host. Někdy organizace [převezme správu virového tenanta](../users-groups-roles/domains-admin-takeover.md) , které se vytvoří, když zaměstnanci použijí své pracovní e-mailové adresy k registraci služeb. Až organizace převezme klienta virového, může resetování hesla uživatele nebo povolení SSPR jenom správce v této organizaci. V případě potřeby můžete jako pozvánku do organizace odebrat uživatelský účet hosta z adresáře a znovu odeslat pozvánku.
 
 * Pokud je domovský adresář uživatele typu Host vaším klientem služby Azure AD, můžete resetovat heslo uživatele. Mohli jste například vytvořit uživatele nebo synchronizovat uživatele z místní služby Active Directory a nastavit jejich UserType na hodnotu Host. Vzhledem k tomu, že se tento uživatel nachází v adresáři, můžete resetovat heslo z Azure Portal.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Poskytuje Microsoft Dynamics 365 podporu spolupráce B2B Azure AD online?
-Ano, Dynamics 365 (online) podporuje spolupráci Azure AD B2B. Další informace najdete v článku o řešení Dynamics 365, který [pozvaní uživatelů s spoluprací B2B v Azure AD](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+Ano, Dynamics 365 (online) podporuje spolupráci Azure AD B2B. Další informace najdete v článku o řešení Dynamics 365, který [pozvaní uživatelů s spoluprací B2B v Azure AD](/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Jaká je doba života počátečního hesla nově vytvořeného uživatele spolupráce B2B?
 Azure AD má pevně danou sadu znaků, sílu hesla a požadavky na uzamčení účtu, které platí stejně pro všechny uživatelské účty cloudu Azure AD. Uživatelské účty cloudu jsou účty, které nejsou federované s jiným poskytovatelem identity, jako je například 
@@ -135,4 +135,3 @@ Informace o tom, jaké licence vaše organizace potřebuje k používání Azure
 ### <a name="next-steps"></a>Další kroky
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-
