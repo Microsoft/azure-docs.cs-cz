@@ -1,20 +1,23 @@
 ---
-title: Protokol IIS v Azure Monitor | Microsoft Docs
+title: Shromažďovat protokoly IIS pomocí agenta Log Analytics v Azure Monitor
 description: Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které lze shromažďovat pomocí Azure Monitor.  Tento článek popisuje, jak nakonfigurovat kolekci protokolů služby IIS a podrobnosti o záznamech, které vytvoří v Azure Monitor.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87008179"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461188"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďovat protokoly IIS v Azure Monitor
-Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které lze shromažďovat pomocí Azure Monitor a uložených jako [data protokolu](data-platform.md).
+# <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Shromažďovat protokoly IIS pomocí agenta Log Analytics v Azure Monitor
+Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které může shromažďovat agent Log Analytics a které jsou uložené v [protokolech Azure monitor](data-platform.md).
+
+> [!IMPORTANT]
+> Tento článek popisuje shromažďování protokolů IIS pomocí [agenta Log Analytics](log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 ![Protokoly IIS](media/data-sources-iis-logs/overview.png)
 
@@ -23,7 +26,7 @@ Azure Monitor shromažďuje záznamy ze souborů protokolu vytvořených službo
 
 Azure Monitor podporuje jenom soubory protokolu IIS uložené ve formátu W3C a nepodporuje vlastní pole ani rozšířené protokolování služby IIS. Neshromažďuje protokoly ve formátu NCSA nebo IIS Native.
 
-Nakonfigurujte protokoly IIS v Azure Monitor z [nabídky Upřesnit nastavení](agent-data-sources.md#configuring-data-sources).  Není vyžadována žádná konfigurace kromě výběru možnosti **shromažďovat soubory protokolů IIS ve formátu W3C**.
+Nakonfigurujte protokoly IIS v Azure Monitor z [nabídky Upřesnit nastavení](agent-data-sources.md#configuring-data-sources) pro agenta Log Analytics.  Není vyžadována žádná konfigurace kromě výběru možnosti **shromažďovat soubory protokolů IIS ve formátu W3C**.
 
 
 ## <a name="data-collection"></a>Shromažďování dat
@@ -60,7 +63,7 @@ Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v nás
 ## <a name="log-queries-with-iis-logs"></a>Protokolování dotazů s protokoly služby IIS
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy protokolu služby IIS.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:--- |:--- |
 | W3CIISLog |Všechny záznamy protokolu služby IIS. |
 | W3CIISLog &#124; WHERE scStatus = = 500 |Všechny záznamy protokolu služby IIS se stavem vrácenými na 500. |

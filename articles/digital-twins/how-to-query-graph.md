@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea12b3eb72ce05f2672f6ca0912cc67345413c3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078472"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461273"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
-Tento článek obsahuje příklady a další podrobnosti o použití [jazyka dotazů digitálních vláken Azure](concepts-query-language.md) k dotazování na [nevlákenný graf](concepts-twins-graph.md) pro informace. Dotazy můžete spouštět v grafu pomocí [**rozhraní API pro dotazování**](how-to-use-apis-sdks.md)digitálních vláken Azure.
+Tento článek obsahuje příklady a další podrobnosti o použití [jazyka dotazů digitálních vláken Azure](concepts-query-language.md) k dotazování na [nevlákenný graf](concepts-twins-graph.md) pro informace. Dotazy můžete spouštět v grafu pomocí [**rozhraní API pro dotazování**](/rest/api/digital-twins/dataplane/query)digitálních vláken Azure.
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 

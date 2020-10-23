@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340589"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441874"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky e-mailu s pozvánkou pro spolupráci B2B Azure Active Directory
 
@@ -63,7 +63,7 @@ Další část e-mailu obsahuje informace o tom, kde se Pozvánka přijme po př
 
 ### <a name="footer-section"></a>Oddíl footer
 
-Zápatí obsahuje další informace o odeslané pozvánce. K blokování budoucích pozvánek je vždy k dispozici možnost pozvání. Pokud organizace [nastavila prohlášení o zásadách ochrany osobních údajů](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), zobrazí se tady odkaz na tento příkaz.  V opačném případě Poznámka znamená, že organizace nevytvořila prohlášení o zásadách ochrany osobních údajů.
+Zápatí obsahuje další informace o odeslané pozvánce. K blokování budoucích pozvánek je vždy k dispozici možnost pozvání. Pokud organizace [nastavila prohlášení o zásadách ochrany osobních údajů](../fundamentals/active-directory-properties-area.md), zobrazí se tady odkaz na tento příkaz.  V opačném případě Poznámka znamená, že organizace nevytvořila prohlášení o zásadách ochrany osobních údajů.
 
 ![Obrázek části zápatí v e-mailu](media/invitation-email-elements/footer-section.png)
 
@@ -85,8 +85,8 @@ Uživatel typu Host může podle těchto kroků zobrazit nebo exportovat organiz
 
 Jazyk prezentovaný uživateli hosta v e-mailu s pozvánkou se určuje pomocí následujících nastavení. Tato nastavení jsou uvedena v pořadí podle priority. Pokud není nastavení nakonfigurované, bude jazyk určovat další nastavení v seznamu.
 
-- Vlastnost **messageLanguage** objektu [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) , pokud se používá rozhraní API pro vytvoření pozvánky
--   Vlastnost **preferredLanguage** zadaná v [objektu uživatele](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) hosta
+- Vlastnost **messageLanguage** objektu [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) , pokud se používá rozhraní API pro vytvoření pozvánky
+-   Vlastnost **preferredLanguage** zadaná v [objektu uživatele](/graph/api/resources/user?view=graph-rest-1.0) hosta
 -   **Jazyk oznámení** nastavený ve vlastnostech domovského tenanta uživatele hosta (jenom pro klienty Azure AD)
 -   **Jazyk oznámení** nastavený ve vlastnostech tenanta prostředků
 

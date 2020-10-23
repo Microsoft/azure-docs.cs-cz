@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602665"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441126"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Pro Azure SQL Database a Azure synapse Analytics se ochrana TDE nastaví na úro
 > Pro ty, kteří používají TDE spravované službou, kteří chtějí začít používat TDE spravované zákazníkem, zůstanou data během přepínání přešifrovaná a nedochází k výpadkům a opětovnému šifrování souborů databáze. Přepnutí z klíče spravovaného službou na klíč spravovaný zákazníkem vyžaduje jenom opětovné šifrování klíč DEK, což je rychlá a online operace.
 
 > [!NOTE]
-> Pokud chcete zákazníkům Azure SQL poskytovat dvě úrovně šifrování neaktivních dat, zavádějí se do provozu šifrování infrastruktury (pomocí šifrovacího algoritmu AES-256) se spravovanými klíči platformy. To poskytuje dodatečnou vrstvu šifrování v klidovém formátu spolu s TDE s klíči spravovanými zákazníkem, který je už dostupný. V tuto chvíli musí zákazníci požádat o přístup k této funkci. Pokud vás zajímá Tato možnost, obraťte se na AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
+> Pokud chcete zákazníkům Azure SQL poskytovat dvě úrovně šifrování neaktivních dat, zavádějí se do provozu šifrování infrastruktury (pomocí šifrovacího algoritmu AES-256) se spravovanými klíči platformy. To poskytuje dodatečnou vrstvu šifrování v klidovém formátu spolu s TDE s klíči spravovanými zákazníkem, který je už dostupný. Pro Azure SQL Database a spravovanou instanci budou při zapnutém šifrování infrastruktury zašifrované všechny databáze včetně hlavní databáze a dalších systémových databází. V tuto chvíli musí zákazníci požádat o přístup k této funkci. Pokud vás zajímá Tato možnost, obraťte se na AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Výhody TDE spravovaného zákazníkem
 

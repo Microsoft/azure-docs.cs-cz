@@ -2,14 +2,14 @@
 title: Přehled serverů s podporou ARC Azure
 description: Naučte se používat servery s podporou ARC Azure ke správě serverů hostovaných mimo Azure, jako je prostředek Azure.
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.topic: overview
-ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 01de579d2e1ea84c0e9da4ceafbd33dbad4c6e27
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200963"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460848"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
@@ -29,7 +29,7 @@ Když počítač připojíte k serverům s podporou ARC Azure, umožní vám pro
 
 - Zjednodušte nasazení s ostatními službami Azure, jako je [Konfigurace stavu](../../automation/automation-dsc-overview.md) Azure Automation, a Azure monitor Log Analytics pracovní prostor s použitím podporovaných [rozšíření virtuálních počítačů Azure](manage-vm-extensions.md) pro počítač se systémem Windows nebo Linux, který není Azure. To zahrnuje provádění konfigurace po nasazení nebo instalace softwaru pomocí rozšíření vlastních skriptů.
 
-- Pomocí [Update Management](../../automation/update-management/update-mgmt-overview.md) v Azure Automation můžete spravovat aktualizace operačního systému pro servery s Windows a Linux. Nejdřív nasaďte roli [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) a pak postupujte podle pokynů a [Povolte Update Management](../../automation/update-management/update-mgmt-enable-portal.md) v počítači, na kterém není Azure Windows nebo Linux.
+- Pomocí [Update Management](../../automation/update-management/update-mgmt-overview.md) v Azure Automation můžete spravovat aktualizace operačního systému pro servery s Windows a Linux.
 
 - Zahrňte servery mimo Azure pro detekci hrozeb a proaktivně monitorujte potenciální bezpečnostní hrozby pomocí [Azure Security Center](../../security-center/security-center-introduction.md).
 

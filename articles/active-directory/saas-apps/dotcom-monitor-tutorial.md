@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2019
 ms.author: jeedes
-ms.openlocfilehash: c2ed6a39853c1cdc89cd3edf75061b85c34c6845
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ffb3f49a79391d5512ffda7ee53e928b6d8e090
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555823"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dotcom-monitor"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Dotcom-Monitor
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte, jak integrovat Dotcom-Monitor s Azure Active Directo
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Dotcom-Monitor se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -90,12 +90,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho Dotcom-Monitor aplikace očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název  |  Zdrojový atribut|
+    | Name  |  Zdrojový atribut|
     | ------|--------- |
     | Role | User. assignedroles |
 
     > [!NOTE]
-    > Další pokyny najdete v [tématu](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) vytvoření vlastních rolí v Azure AD.
+    > Další pokyny najdete v [tématu](../develop/active-directory-enterprise-app-role-management.md) vytvoření vlastních rolí v Azure AD.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
@@ -147,14 +147,14 @@ V této části se na dotcom-monitor vytvoří uživatel s názvem B. Simon. Dot
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Dotcom-Monitor na přístupovém panelu byste měli být automaticky přihlášení do Dotcom-Monitor, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Dotcom-Monitor na přístupovém panelu byste měli být automaticky přihlášení do Dotcom-Monitor, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušet Dotcom-Monitor s využitím Azure AD](https://aad.portal.azure.com/)

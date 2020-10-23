@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bad9757bb62d5175e725bfe8e005155040dccf36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549955"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Kurz: Azure Active Directory integrace s Kontiki
 
@@ -28,7 +28,7 @@ Integrace Kontiki s Azure AD přináší následující výhody:
 * Uživatelé můžou být automaticky přihlášení k Kontiki pomocí svých účtů Azure AD (jednotné přihlašování).
 * Účty můžete spravovat v jednom centrálním umístění, Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ Kontiki podporuje následující funkce:
 
 Pokud chcete integrovat Kontiki s Azure AD, musíte přidat Kontiki do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **Azure Active Directory**.
 
@@ -186,6 +186,6 @@ Po nastavení jednotného přihlašování se při výběru **Kontiki** na port�
 
 Pokud se chcete dozvědět víc, přečtěte si tyto články:
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+- [Jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cfb6a7ba10c388cadb19268ee1431fe523a0cfa4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126322"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461137"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Začínáme se skupinou volajícím Hero Sample
 
@@ -25,12 +25,12 @@ ms.locfileid: "92126322"
 > Add links to our Hero Sample repo when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [Tato ukázka je k dispozici na GitHubu.](https://github.com/Azure-Samples/communication-services-web-calling-hero)
+
 Skupina komunikačních služeb Azure, která **volá Hero Sample** , ukazuje, jak lze pomocí komunikačních služeb volání webové klientské knihovny vytvořit skupinu volání.
 
 V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
-
-> [!IMPORTANT]
-> [Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 ## <a name="overview"></a>Přehled
 
@@ -56,7 +56,7 @@ Součásti hlavní volající obrazovky:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v tématu [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - [Node.js (12.18.4 a vyšší)](https://nodejs.org/en/download/)
@@ -108,7 +108,6 @@ Pokud chcete vyčistit a odebrat předplatné služby Communications Services, m
 Další informace najdete v následujících článcích:
 
 - Seznamte se s [použitím volání klientské knihovny](../quickstarts/voice-video-calling/calling-client-samples.md)
-- Další informace o [volání funkcí klientské knihovny](../quickstarts/voice-video-calling/calling-client-samples.md)
 - Další informace o [volání funkce](../concepts/voice-video-calling/about-call-types.md)
 
 ## <a name="additional-reading"></a>Další materiály ke čtení

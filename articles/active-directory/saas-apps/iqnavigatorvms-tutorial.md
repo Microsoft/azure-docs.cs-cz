@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 947834f0ca32b81a8a5e292ce63507f93a389bb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beef52641b9744b39873a7f48e39eb2f94ed4c9f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552774"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459723"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iqnavigator-vms"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s virtuálními počítači s IQNavigator
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat virtuální počítače s IQNavigator 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k VIRTUÁLNÍm počítačům s IQNavigator pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -139,21 +139,20 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně **virtuálníc
 
 ### <a name="create-iqnavigator-vms-test-user"></a>Vytvořit testovacího uživatele pro virtuální počítače s IQNavigator
 
-V této části vytvoříte na virtuálních počítačích s IQNavigator uživatele s názvem Britta Simon. Práce s [IQNavigator virtuálními počítači podporuje tým](https://www.beeline.com/support-iqn/) k přidávání uživatelů na platformě virtuálních počítačů IQNavigator. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte na virtuálních počítačích s IQNavigator uživatele s názvem Britta Simon. Práce s [IQNavigator virtuálními počítači podporuje tým](https://www.beeline.com/support-iqn/) k přidávání uživatelů na platformě virtuálních počítačů IQNavigator. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici virtuální počítače s IQNavigator, měli byste se automaticky přihlásit k VIRTUÁLNÍm počítačům s IQNavigator, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici virtuální počítače s IQNavigator, měli byste se automaticky přihlásit k VIRTUÁLNÍm počítačům s IQNavigator, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si virtuální počítače s IQNavigator pomocí Azure AD](https://aad.portal.azure.com/)
-

@@ -3,12 +3,12 @@ title: Nedoručené písmeno a zásady opakování – Azure Event Grid
 description: Popisuje, jak přizpůsobit možnosti doručení událostí pro Event Grid. Nastavte cíl nedoručených zpráv a určete, jak dlouho se má opakovat doručení.
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261800"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460933"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>Nastavení umístění pro nedoručené zprávy a zásady opakování
 
@@ -17,7 +17,7 @@ Při vytváření odběru událostí můžete přizpůsobit nastavení pro doru�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> Další informace o doručování, opakovaných pokusech a nedoručených zprávách naleznete v článku koncept: [Event Grid doručování zpráv a pokusu o akci]().
+> Další informace o doručování, opakovaných pokusech a nedoručených zprávách naleznete v článku koncept: [Event Grid doručování zpráv a pokusu o akci](delivery-and-retry.md).
 
 ## <a name="set-dead-letter-location"></a>Nastavit umístění nedoručených zpráv
 

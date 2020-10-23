@@ -1,25 +1,28 @@
 ---
-title: Konfigurace zdrojů dat agenta v Azure Monitor | Microsoft Docs
+title: Log Analytics zdrojů dat agenta v Azure Monitor
 description: Zdroje dat definují data protokolu, která Azure Monitor shromažďuje z agentů a dalších připojených zdrojů.  Tento článek popisuje koncept způsobu, jakým Azure Monitor používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat, a poskytuje souhrn různých zdrojů dat, které jsou k dispozici.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a52f10c7081875113a0ad22bd687776e71d238e2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073694"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460797"
 ---
-# <a name="agent-data-sources-in-azure-monitor"></a>Zdroje dat agenta v Azure Monitor
-Data, která Azure Monitor shromažďuje z agentů, jsou definována zdroji dat, které nakonfigurujete.  Data z agentů jsou ukládána jako [data protokolu](data-platform-logs.md) se sadou záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
+# <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics zdrojů dat agenta v Azure Monitor
+Data, která Azure Monitor shromažďuje z virtuálních počítačů pomocí agenta [Log Analytics](log-analytics-agent.md) , jsou definovaná zdroji dat, které nakonfigurujete v [pracovním prostoru Log Analytics](data-platform-logs.md).   Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
+
+> [!IMPORTANT]
+> Tento článek se zabývá zdroji dat pro [agenta Log Analytics](log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 ![Shromažďování dat protokolu](media/agent-data-sources/overview.png)
 
 ## <a name="summary-of-data-sources"></a>Shrnutí zdrojů dat
-V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně k dispozici v Azure Monitor.  Každá z nich má odkaz na samostatný článek, který poskytuje podrobnosti pro tento zdroj dat.   Poskytuje také informace o jejich metodě a četnosti shromažďování. 
+V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně k dispozici u agenta Log Analytics.  Každá z nich má odkaz na samostatný článek, který poskytuje podrobnosti pro tento zdroj dat.   Poskytuje také informace o jejich metodě a četnosti shromažďování. 
 
 
 | Zdroj dat | Platforma | Agent Log Analytics | Agent Operations Manageru | Azure Storage | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
@@ -34,14 +37,12 @@ V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně 
 
 
 ## <a name="configuring-data-sources"></a>Konfigurace zdrojů dat
-Zdroje dat nakonfigurujete z nabídky **data** v **rozšířeném nastavení** pracovního prostoru.  Všechny konfigurace se doručí do všech připojených zdrojů ve vašem pracovním prostoru.  Z této konfigurace teď nemůžete vyloučit žádné agenty.
+Chcete-li nakonfigurovat zdroje dat pro agenty Log Analytics, přejděte v Azure Portal do nabídky **pracovní prostory Log Analytics** a vyberte pracovní prostor. Klikněte na **Upřesnit nastavení** a pak na **data**. Vyberte zdroj dat, který chcete konfigurovat. Můžete postupovat podle odkazů v tabulce výše a dokumentace pro každý zdroj dat a podrobnosti o jejich konfiguraci.
+
+Všechny konfigurace se doručí všem agentům připojeným k tomuto pracovnímu prostoru.  Z této konfigurace nemůžete vyloučit žádné připojené agenty.
 
 ![Konfigurace událostí systému Windows](media/agent-data-sources/configure-events.png)
 
-1. V Azure Portal vyberte **Log Analytics pracovní prostory** > > **Rozšířená nastavení**.
-2. Vyberte **data**.
-3. Klikněte na zdroj dat, který chcete konfigurovat.
-4. Podrobnosti o konfiguraci získáte pomocí odkazu na dokumentaci pro každý zdroj dat v tabulce výše.
 
 
 ## <a name="data-collection"></a>Shromažďování dat

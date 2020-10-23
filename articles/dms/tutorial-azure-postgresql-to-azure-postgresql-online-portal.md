@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 85b42c6a3c3c59bd8c22bcdc8954b8dd3399c454
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313151"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460967"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Kurz: migrace Azure DB pro PostgreSQL – jeden server do Azure DB pro PostgreSQL-Single server online pomocí DMS přes Azure Portal
+# <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Kurz: migrace/upgrade databáze Azure DB pro PostgreSQL – jeden server do Azure DB pro PostgreSQL-Single server online pomocí DMS prostřednictvím Azure Portal
 
 Pomocí Azure Database Migration Service můžete migrovat databáze z instance [serveru Azure Database for PostgreSQL na jeden server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) do stejné nebo jiné verze Azure Database for PostgreSQL – jedné instance serveru nebo Azure Database for PostgreSQL flexibilního serveru s minimálními výpadky. V tomto kurzu migrujete ukázkovou databázi **pronájmu DVD** z Azure Database for PostgreSQL v10 za účelem na Azure Database for PostgreSQL jeden server pomocí online aktivity migrace v Azure Database Migration Service.
 
@@ -42,12 +42,12 @@ V tomto kurzu se naučíte:
 > [!IMPORTANT]
 > Migrace z Azure Database for PostgreSQL se podporuje pro PostgreSQL verze 10 a novější. Tento kurz můžete také použít k migraci z jedné instance Azure Database for PostgreSQL do jiné instance Azure Database for PostgreSQL nebo instance Citus ().
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
 * Pro podporované kombinace migrace a verze se můžete podívat na [stav migračních scénářů podporovaných nástrojem Azure Database Migration Service](https://docs.microsoft.com/azure/dms/resource-scenario-status) . 
-* Existující instance [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) verze 10 a novější s databází **pronájmu DVD** Azure Database Migration Service nepodporuje migraci z Azure DB pro PostgreSQL 9,5 nebo 9,6.
+* Existující instance [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) verze 10 a novější s databází **pronájmu DVD** 
 
     Všimněte si také, že cílová verze Azure Database for PostgreSQL musí být stejná nebo vyšší než verze místní PostgreSQL. Například PostgreSQL 10 se může migrovat na Azure Database for PostgreSQL 10 nebo 11, ale ne na Azure Database for PostgreSQL 9,6.
 

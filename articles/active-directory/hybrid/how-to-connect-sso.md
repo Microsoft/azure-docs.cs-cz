@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7baa851943db3e8c691b50c2cb5446a2adbbccc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658353"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457987"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Bezproblémové jednotné přihlašování s Azure Active Directory
 
@@ -63,19 +63,21 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Yes|Yes|Ano\*\*\*|Není k dispozici
-|Windows 8.1|Yes\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
-|Windows 8|Yes\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
-|Windows 7|Ano\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
-|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
+|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|–
+|Windows 8.1|Ano\*|Odpoví\*\*\*|Ano|Ano\*\*\*|–
+|Windows 8|Ano\*|–|Ano|Ano\*\*\*|–
+|Windows 7|Ano\*|–|Ano|Ano\*\*\*|–
+|Windows Server 2012 R2 nebo novější|Ano\*\*|–|Ano|Ano\*\*\*|–
 |Mac OS X|N/A|N/A|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 
-\*Vyžaduje Internet Explorer verze 10 nebo vyšší.
+\*Vyžaduje Internet Explorer verze 10 nebo novější.
 
-\*\*Vyžaduje Internet Explorer verze 10 nebo vyšší. Zakázat Rozšířený chráněný režim
+\*\*Vyžaduje Internet Explorer verze 10 nebo novější. Zakažte Rozšířený chráněný režim.
 
-\*\*\*Vyžaduje [Další konfiguraci](how-to-connect-sso-quick-start.md#browser-considerations) .
+\*\*\*Vyžaduje [Další konfiguraci](how-to-connect-sso-quick-start.md#browser-considerations).
+
+\*\*\*\*Vyžaduje Microsoft Edge verze 77 nebo novější.
 
 >[!NOTE]
 >V případě Windows 10 doporučujeme použít službu [Azure AD JOIN](../devices/concept-azure-ad-join.md) k optimálnímu jednotnému přihlašování v Azure AD.

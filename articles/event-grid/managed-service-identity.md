@@ -1,14 +1,14 @@
 ---
-title: Doručování událostí s identitou spravované služby
+title: Doručení události, identita spravované služby a privátní odkaz
 description: Tento článek popisuje, jak povolit identitu spravované služby pro téma Azure Event Grid. Použijte ji k přeposílání událostí do podporovaných cílů.
 ms.topic: how-to
-ms.date: 07/07/2020
-ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 434a2e36ead0d210b7edf64d104243f6643ac019
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87534239"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460916"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Doručování událostí se spravovanou identitou
 Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro témata a domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
@@ -17,6 +17,9 @@ Tady je postup, který je podrobně popsaný v tomto článku:
 1. Vytvořte téma nebo doménu s identitou přiřazenou systémem, nebo aktualizujte existující téma nebo doménu, aby bylo možné identitu povolit. 
 1. Přidejte identitu do příslušné role (například Service Bus odesílatel dat) v cíli (například Service Bus Queue).
 1. Při vytváření odběrů událostí povolte použití identity k doručování událostí do cíle. 
+
+> [!NOTE]
+> V současné době není možné doručovat události pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md). Další informace najdete v části [soukromé koncové body](#private-endpoints) na konci tohoto článku. 
 
 ## <a name="create-a-topic-or-domain-with-an-identity"></a>Vytvoření tématu nebo domény s identitou
 Nejdřív se podíváme na to, jak vytvořit téma nebo doménu s identitou spravovanou systémem.
@@ -279,6 +282,12 @@ az eventgrid event-subscription create
     -n $sa_esname 
 ```
 
+## <a name="private-endpoints"></a>Soukromé koncové body
+V současné době není možné doručovat události pomocí [privátních koncových bodů](../private-link/private-endpoint-overview.md). To znamená, že pokud máte přísné požadavky na izolaci sítě, u kterých vaše doručováné události nesmí opustit privátní IP adresu, neexistuje žádná podpora. 
+
+Pokud ale vaše požadavky zavolají zabezpečený způsob, jak odesílat události pomocí šifrovaného kanálu a známé identity odesilatele (v tomto případě Event Grid) pomocí veřejného prostoru IP adres, mohli byste události doručovat do Event Hubs, Service Bus nebo Azure Storage služby pomocí tématu Azure Event Grid nebo domény s nakonfigurovanou systémem, jak je uvedeno v tomto článku. Pak můžete pomocí privátního odkazu nakonfigurovaného v Azure Functions nebo Webhooku nasazeného ve virtuální síti vyžádat události. Viz Ukázka: [připojení k privátním koncovým bodům pomocí Azure Functions.](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
+
+Všimněte si, že v rámci této konfigurace přechází přenos přes veřejnou IP adresu nebo Internet z Event Grid na Event Hubs, Service Bus nebo Azure Storage, kanál ale může být zašifrovaný a používá se spravovaná identita Event Grid. Pokud nakonfigurujete Azure Functions nebo Webhook nasazený do virtuální sítě tak, aby používal Event Hubs, Service Bus nebo Azure Storage prostřednictvím privátního propojení, Tato část provozu bude v Azure zůstat v provozu.
 
 
 ## <a name="next-steps"></a>Další kroky

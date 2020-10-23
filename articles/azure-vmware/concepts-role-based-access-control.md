@@ -3,22 +3,28 @@ title: Koncepty – řízení přístupu na základě role (RBAC)
 description: Seznamte se s klíčovými možnostmi řízení přístupu na základě rolí pro řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579874"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440939"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>Řízení přístupu na základě role (RBAC) pro řešení Azure VMware
 
-V místním nasazení vCenter a ESXi má správce přístup k administrator@vsphere.local účtu vCenter a můžou mít přiřazené další uživatele nebo skupiny služby Active Directory (AD). V nasazení řešení Azure VMware však správce nemá přístup k uživatelskému účtu správce, ale může přiřadit uživatele a skupiny služby AD k roli CloudAdmin v vCenter.  Uživatel privátního cloudu řešení Azure VMware navíc nemá oprávnění pro přístup k určitým součástem pro správu, které podporuje a spravuje Microsoft, jako jsou clustery, hostitelé, úložiště dat a distribuované virtuální přepínače.
-
-
-V řešení Azure VMware má vCenter integrovaný místní uživatel s názvem cloudadmin, který je přiřazený k předdefinované roli CloudAdmin. Místní uživatel cloudadmin se používá k nastavení dalších uživatelů ve službě AD. Role CloudAdmin obecně má oprávnění k vytváření a správě úloh ve vašem privátním cloudu (virtuální počítače, fondy zdrojů, úložiště dat a sítě). Role CloudAdmin v řešení Azure VMware má konkrétní sadu oprávnění vCenter, která se liší od jiných cloudových řešení VMware.   
+V řešení Azure VMware má vCenter integrovaný místní uživatel s názvem cloudadmin a přiřazený k předdefinované roli CloudAdmin. Místní uživatel cloudadmin se používá k nastavení uživatelů ve službě AD. Obecně platí, že role CloudAdmin vytváří a spravuje úlohy v privátním cloudu. V řešení Azure VMware má role CloudAdmin oprávnění vCenter, která se liší od jiných cloudových řešení VMware.     
 
 > [!NOTE]
 > Řešení Azure VMware v současnosti nenabízí vlastní role na vCenter nebo na portálu řešení Azure VMware. 
+
+V případě místního nasazení vCenter a ESXi má správce přístup k administrator@vsphere.local účtu vCenter. Můžou mít taky přiřazené další uživatele nebo skupiny služby Active Directory (AD). 
+
+V nasazení řešení Azure VMware nemá správce přístup k uživatelskému účtu správce. Ale můžou k roli CloudAdmin v vCenter přiřadit uživatele a skupiny služby AD.  
+
+Uživatel privátního cloudu nemá přístup ke službě a nemůže konfigurovat konkrétní součásti pro správu podporované a spravované společností Microsoft. Například clustery, hostitelé, úložiště dat a distribuované virtuální přepínače.
+
+
+
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>Role CloudAdmin řešení Azure VMware na serveru vCenter
 
@@ -32,7 +38,7 @@ Můžete zobrazit oprávnění udělená roli CloudAdmin Azure VMware pro řeše
 
 Role CloudAdmin v řešení Azure VMware má následující oprávnění pro vCenter. Podrobné vysvětlení jednotlivých oprávnění najdete v [dokumentaci k produktu VMware](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html) .
 
-| Privilege | Description |
+| Privilege | Popis |
 | --------- | ----------- |
 | **Upozornění** | Potvrzení upozornění<br />Vytvořit alarm<br />Zakázat akci alarmu<br />Upravit alarm<br />Odebrat alarm<br />Nastavit stav alarmu |
 | **Oprávnění** | Upravit oprávnění |
@@ -49,7 +55,7 @@ Role CloudAdmin v řešení Azure VMware má následující oprávnění pro vCe
 | **Relace** | Zpráva<br />Ověřit relaci |
 | **Profil** | Zobrazení úložiště řízené profilem |
 | **Zobrazení úložiště** | Zobrazit |
-| **vApp** | Přidat virtuální počítač<br />Přiřadit fond zdrojů<br />Přiřadit vApp<br />Klonování<br />Vytvořit<br />Odstranit<br />Export<br />Importovat<br />Přesunout<br />Napájení vypnuto<br />Zapnout<br />přejmenování<br />Suspend<br />Zrušit registraci<br />Zobrazit prostředí OVF<br />Konfigurace aplikace vApp<br />konfigurace instance vApp<br />Konfigurace vApp managedBy<br />Konfigurace prostředků vApp |
+| **vApp** | Přidat virtuální počítač<br />Přiřadit fond zdrojů<br />Přiřadit vApp<br />Klonování<br />Vytvořit<br />Odstranit<br />Export<br />Import<br />Přesunout<br />Napájení vypnuto<br />Zapnout<br />přejmenování<br />Suspend<br />Zrušit registraci<br />Zobrazit prostředí OVF<br />Konfigurace aplikace vApp<br />konfigurace instance vApp<br />Konfigurace vApp managedBy<br />Konfigurace prostředků vApp |
 | **Virtuální počítač** | Změnit konfiguraci<br />&#160;&#160;&#160;&#160;získání zapůjčení disku<br />&#160;&#160;&#160;&#160;přidat existující disk<br />&#160;&#160;&#160;&#160;přidat nový disk<br />&#160;&#160;&#160;&#160;přidat nebo odebrat zařízení<br />&#160;&#160;&#160;&#160;Pokročilá konfigurace<br />&#160;&#160;&#160;&#160;Změna počtu PROCESORů<br />&#160;&#160;&#160;&#160;změnit paměť<br />&#160;&#160;&#160;&#160;změnit nastavení<br />&#160;&#160;&#160;&#160;změnit umístění swapfile<br />Prostředek změny &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;Konfigurace hostitelského zařízení USB<br />&#160;&#160;&#160;&#160;konfigurace nezpracovaného zařízení<br />&#160;&#160;&#160;&#160;konfigurace managedBy<br />&#160;&#160;&#160;&#160;zobrazení nastavení připojení<br />&#160;&#160;&#160;&#160;– zvětšit virtuální disk<br />&#160;&#160;&#160;&#160;upravit nastavení zařízení<br />Kompatibilita &#160;&#160;&#160;&#160;dotazů na odolnost proti chybám<br />&#160;&#160;&#160;&#160;nevlastněných souborů dotazů<br />Opětovné načtení &#160;&#160;&#160;&#160;z cest<br />&#160;&#160;&#160;&#160;odebrat disk<br />Přejmenování &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;resetovat informace o hostovi<br />&#160;&#160;&#160;&#160;nastavit poznámku<br />&#160;&#160;&#160;&#160;přepínání sledování změn disků<br />Přepínací tlačítko pro rozvětvení &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;upgrade kompatibility virtuálních počítačů<br />Upravit inventář<br />&#160;&#160;&#160;&#160;vytvořit z existujícího<br />&#160;&#160;&#160;&#160;vytvořit nový<br />&#160;&#160;&#160;&#160;přesun<br />&#160;&#160;&#160;&#160;registraci<br />&#160;&#160;&#160;&#160;odebrat<br />&#160;&#160;&#160;&#160;zrušit registraci<br />Operace hosta<br />&#160;&#160;&#160;&#160;úpravy aliasu operace hosta<br />&#160;&#160;&#160;&#160;dotaz na alias operace hosta<br />&#160;&#160;&#160;&#160;úpravy operací hosta<br />&#160;&#160;&#160;&#160;provádění programu operace hosta<br />&#160;&#160;&#160;&#160;dotazy na operace hosta<br />Interakce<br />Odpověď na &#160;&#160;&#160;&#160;otázku<br />&#160;&#160;&#160;&#160;operaci zálohování na virtuálním počítači<br />&#160;&#160;&#160;&#160;nakonfigurovat médium CD<br />&#160;&#160;&#160;&#160;konfigurace disketových médií<br />&#160;&#160;&#160;&#160;připojit zařízení<br />Interakce konzoly &#160;&#160;&#160;&#160;<br />Vytvoření snímku obrazovky &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;defragmentovat všechny disky<br />&#160;&#160;&#160;&#160;přetahování<br />&#160;&#160;&#160;&#160;správu hostovaného operačního systému pomocí rozhraní API pro VIX<br />&#160;&#160;&#160;&#160;vložení kódů kontroly USB HID<br />&#160;&#160;&#160;&#160;instalaci nástrojů VMware<br />Pozastavení nebo zastavení &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;provádění operací vymazání nebo zmenšení<br />Vypínání &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;zapnutí<br />&#160;&#160;&#160;&#160;relace záznamu na virtuálním počítači<br />&#160;&#160;&#160;&#160;relace přehrání na virtuálním počítači<br />Pozastavení &#160;&#160;&#160;&#160;<br />&#160;&#160;&#160;&#160;pozastavit odolnost proti chybám<br />&#160;&#160;&#160;&#160;testovací převzetí služeb při selhání<br />&#160;&#160;&#160;&#160;sekundární virtuální počítač pro restartování testu<br />&#160;&#160;&#160;&#160;vypnout odolnost proti chybám<br />&#160;&#160;&#160;&#160;zapnout odolnost proti chybám<br />Zřizování<br />&#160;&#160;&#160;&#160;povolení přístupu k disku<br />&#160;&#160;&#160;&#160;povolení přístupu k souborům<br />&#160;&#160;&#160;&#160;povolí přístup k disku jen pro čtení.<br />&#160;&#160;&#160;&#160;povolení stahování virtuálního počítače<br />&#160;&#160;&#160;&#160;šablonu klonování<br />&#160;&#160;&#160;&#160;klonovat virtuální počítač<br />&#160;&#160;&#160;&#160;vytvořit šablonu z virtuálního počítače<br />&#160;&#160;&#160;&#160;přizpůsobení hosta<br />&#160;&#160;&#160;&#160;nasazení šablony<br />&#160;&#160;&#160;&#160;označit jako šablonu<br />&#160;&#160;&#160;&#160;upravit specifikaci přizpůsobení<br />&#160;&#160;&#160;&#160;zvýšit úroveň disků<br />&#160;&#160;&#160;&#160;čtení – specifikace přizpůsobení<br />Konfigurace služeb<br />&#160;&#160;&#160;&#160;povolení oznámení<br />&#160;&#160;&#160;&#160;povolení cyklického dotazování na globální oznamování událostí<br />&#160;&#160;&#160;&#160;spravovat konfiguraci služby<br />&#160;&#160;&#160;&#160;upravit konfiguraci služby<br />Konfigurace služby &#160;&#160;&#160;&#160;dotazů<br />Konfigurace služby &#160;&#160;&#160;&#160;čtení<br />Správa snímků<br />&#160;&#160;&#160;&#160;vytvoření snímku<br />&#160;&#160;&#160;&#160;odebrat snímek<br />&#160;&#160;&#160;&#160;přejmenovat snímek<br />&#160;&#160;&#160;&#160;vrátit snímek<br />vSphere replikace<br />&#160;&#160;&#160;&#160;konfiguraci replikace<br />&#160;&#160;&#160;&#160;spravovat replikaci<br />&#160;&#160;&#160;&#160;monitorování replikace |
 | **vService** | Vytvořit závislost<br />Zničit závislost<br />Překonfigurujte konfiguraci závislostí.<br />Aktualizovat závislost |
 

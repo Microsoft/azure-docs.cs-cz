@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b7350d793ea42a46d52d881f1399174a3bb5d0e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362888"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442078"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 
@@ -66,7 +66,7 @@ Například při nastavování přímé federace pro _ * Fabrikam. com * * se ov
 Pokud v nastavení zprostředkovatele identity zadáte adresu URL metadat, služba Azure AD automaticky obnoví podpisový certifikát, jakmile vyprší jeho platnost. Pokud se ale certifikát z jakéhokoli důvodu před časem vypršení platnosti neposkytne, nebo pokud nezadáte adresu URL metadat, Azure AD ho nebude moct obnovit. V takovém případě budete muset podpisový certifikát aktualizovat ručně.
 
 ### <a name="limit-on-federation-relationships"></a>Omezení federačních vztahů
-V současné době je podporováno maximálně 1 000 federačních vztahů. Toto omezení zahrnuje i [interní federace](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) i přímé federace.
+V současné době je podporováno maximálně 1 000 federačních vztahů. Toto omezení zahrnuje i [interní federace](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) i přímé federace.
 
 ### <a name="limit-on-multiple-domains"></a>Omezení ve více doménách
 V současné době nepodporujeme přímou federaci s více doménami ze stejného tenanta.
@@ -87,7 +87,7 @@ Nejdřív vaše partnerská organizace potřebuje nakonfigurovat poskytovatele i
 
 ### <a name="saml-20-configuration"></a>Konfigurace SAML 2,0
 
-Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol SAML s konkrétními požadavky uvedenými níže. Další informace o nastavení vztahu důvěryhodnosti mezi poskytovatelem identity SAML a Azure AD najdete v tématu  [použití zprostředkovatele identity saml 2,0 (IDP) pro jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
+Azure AD B2B se dá nakonfigurovat tak, aby federovat s poskytovateli identity, kteří používají protokol SAML s konkrétními požadavky uvedenými níže. Další informace o nastavení vztahu důvěryhodnosti mezi poskytovatelem identity SAML a Azure AD najdete v tématu  [použití zprostředkovatele identity saml 2,0 (IDP) pro jednotné přihlašování](../hybrid/how-to-connect-fed-saml-idp.md).  
 
 > [!NOTE]
 > Cílová doména pro přímou federaci nesmí být ověřená DNS v Azure AD. Doména URL ověřování musí odpovídat cílové doméně, nebo musí být doménou povoleného zprostředkovatele identity. Podrobnosti najdete v části [omezení](#limitations) . 

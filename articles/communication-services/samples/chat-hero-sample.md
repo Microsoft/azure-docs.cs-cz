@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9be94183fc34c2dbee3503d21e2e643d5296a82b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124581"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461120"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -25,12 +25,14 @@ ms.locfileid: "92124581"
 > links to our Hero Sample repo need to be updated when the sample is publicly available.
 ---->
 
+> [!IMPORTANT]
+> [Tato ukázka je k dispozici na GitHubu.](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+
+
 **Ukázka konverzace Hero skupiny** služby Azure Communication Services ukazuje, jak lze použít knihovnu webového klienta chat komunikační služby k vytvoření skupinového volání.
 
 V tomto rychlém startu se dozvíte, jak ukázka funguje před spuštěním ukázky na místním počítači. Pak nasadíme ukázku do Azure s využitím vlastních prostředků služby Azure Communication Services.
 
-> [!IMPORTANT]
-> [Stažení ukázky z GitHubu](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 ## <a name="overview"></a>Přehled
 
@@ -56,7 +58,7 @@ Součásti hlavní obrazovky chatu:
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 a vyšší)](https://nodejs.org/en/download/)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/09/2020
 ms.author: jeedes
-ms.openlocfilehash: d509bcdca7f37ddb6c471eacb00139e32267e56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 005e2154f4e33f23a2ec45d6e0b3f620be10c1c6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88535746"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fastly-edge-cloud"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s rychlým Edgem z cloudu
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat rychlý hraniční Cloud s Azure Activ
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k rychlému hraničnímu cloudu s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -126,20 +126,20 @@ Chcete-li konfigurovat jednotné přihlašování v **rychlém Edge na straně c
 
 ### <a name="create-fastly-edge-cloud-test-user"></a>Vytvořit rychle hraničního uživatele pro testování v cloudu
 
-V této části vytvoříte uživatele s názvem B. Simon v rychlém hraničním cloudu. Pracujte s [rychlým týmem pro cloudovou podporu](mailto:support@fastly.com) , abyste mohli přidávat uživatele v rychlé hraniční cloudové platformě. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v rychlém hraničním cloudu. Pracujte s [rychlým týmem pro cloudovou podporu](mailto:support@fastly.com) , abyste mohli přidávat uživatele v rychlé hraniční cloudové platformě. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici rychlá hrana v cloudu, měli byste se automaticky přihlásit k rychlému hraničnímu cloudu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici rychlá hrana v cloudu, měli byste se automaticky přihlásit k rychlému hraničnímu cloudu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si rychlý Edge Cloud s Azure AD](https://aad.portal.azure.com/)

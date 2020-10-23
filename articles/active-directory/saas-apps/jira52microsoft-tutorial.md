@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 331d9df6059c8af54857d05d2d6373e48e127eac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 956b57d7215a439c1e3df71c1d3441534fc25723
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850842"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Kurz: Azure Active Directory Integration JIRA SSO Microsoftu (V 5.2)
 
@@ -27,14 +27,14 @@ Integrace služby JIRA SAML SSO Microsoftu (V 5.2) pomocí Azure AD poskytuje n�
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k JIRA SSO SSO Microsoftu (V 5.2) (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="description"></a>Popis
 
 K povolení jednotného přihlašování použijte účet Microsoft Azure Active Directory se serverem Atlassian JIRA. Díky tomu můžou všichni uživatelé vaší organizace používat přihlašovací údaje Azure AD k přihlášení do aplikace JIRA. Tento modul plug-in používá pro federaci protokol SAML 2,0.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K nakonfigurování integrace služby Azure AD pomocí jednotného přihlašování JIRA SAML od Microsoftu (V 5.2) potřebujete následující položky:
 
@@ -189,7 +189,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotn�
     i. Uložte nastavení kliknutím na tlačítko **Uložit** .
 
     > [!NOTE]
-    > Další informace o instalaci a řešení potíží najdete na stránce [Průvodce pro správce konektoru MS JIRA SSO](../ms-confluence-jira-plugin-adminguide.md) a také v [části Nejčastější dotazy](../ms-confluence-jira-plugin-faq.md) týkající se vaší pomoci.
+    > Další informace o instalaci a řešení potíží najdete na stránce [Průvodce pro správce konektoru MS JIRA SSO](./ms-confluence-jira-plugin-adminguide.md) a také v [části Nejčastější dotazy](./ms-confluence-jira-plugin-adminguide.md) týkající se vaší pomoci.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -279,12 +279,12 @@ Aby se uživatelé Azure AD mohli přihlašovat k JIRA místním serveru, musí 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici JIRA SAML SSO Microsoft (V 5.2) na přístupovém panelu, měli byste se automaticky přihlásit k JIRA SAML SSO Microsoft (V 5.2), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici JIRA SAML SSO Microsoft (V 5.2) na přístupovém panelu, měli byste se automaticky přihlásit k JIRA SAML SSO Microsoft (V 5.2), pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

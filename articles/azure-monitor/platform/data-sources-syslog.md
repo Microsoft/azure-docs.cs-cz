@@ -1,20 +1,23 @@
 ---
-title: Shromažďovat a analyzovat zprávy syslog v Azure Monitor | Microsoft Docs
+title: Shromáždění zdrojů dat syslog pomocí agenta Log Analytics v Azure Monitor
 description: Syslog je protokol protokolování událostí, který je společný pro Linux. Tento článek popisuje, jak nakonfigurovat shromažďování zpráv syslog v Log Analytics a podrobnosti o záznamech, které vytvoří.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/22/2019
-ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 2d86983c8ed6c738e4b4e96d8d291dee4dc4d87d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322308"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440616"
 ---
-# <a name="syslog-data-sources-in-azure-monitor"></a>Zdroje dat Syslogu ve službě Azure Monitor
+# <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Shromáždění zdrojů dat syslog pomocí agenta Log Analytics
 Syslog je protokol protokolování událostí, který je společný pro Linux. Aplikace budou odesílat zprávy, které mohou být uloženy v místním počítači nebo doručeny do kolekce syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.  
+
+> [!IMPORTANT]
+> Tento článek popisuje shromažďování událostí protokolu syslog pomocí [agenta Log Analytics](log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 > [!NOTE]
 > Azure Monitor podporuje shromažďování zpráv odeslaných pomocí rsyslog nebo syslog-ng, kde rsyslog je výchozí démon. Výchozí démon procesu Syslog verze 5 Red Hat Enterprise Linux, CentOS a verze Oracle Linux (sysklog) není pro shromažďování událostí syslog podporován. Aby bylo možné shromažďovat data syslog z této verze těchto distribucí, je třeba nainstalovat [démona rsyslog](http://rsyslog.com) a nakonfigurovat tak, aby nahradila sysklog.
@@ -45,7 +48,7 @@ Pro jakékoli jiné zařízení [nakonfigurujte zdroj dat vlastních protokolů]
 Agent Log Analytics pro Linux bude shromažďovat jenom události se zařízeními a závažnostmi, které jsou zadané v jeho konfiguraci. Protokol syslog můžete nakonfigurovat prostřednictvím Azure Portal nebo správou konfiguračních souborů v agentech Linux.
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurace syslogu v Azure Portal
-Nakonfigurujte syslog z [nabídky data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources). Tato konfigurace se doručuje do konfiguračního souboru každého agenta pro Linux.
+Nakonfigurujte syslog z [nabídky data v rozšířeném nastavení](agent-data-sources.md#configuring-data-sources) pro Log Analytics pracovní prostor. Tato konfigurace se doručuje do konfiguračního souboru každého agenta pro Linux.
 
 Nové zařízení můžete přidat tak, že nejprve vyberete možnost **použít níže konfiguraci na moje počítače** a potom zadat název a kliknete na **+** . Pro každé zařízení budou shromažďovány pouze zprávy s vybranými závažnostmi.  Ověřte závažnost konkrétního zařízení, které chcete shromáždit. Nemůžete zadat žádná další kritéria pro filtrování zpráv.
 
@@ -219,7 +222,7 @@ Záznamy syslog mají typ **SYSLOG** a mají vlastnosti v následující tabulce
 ## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy syslog
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy syslog.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:--- |:--- |
 | Syslog |Všechny Syslogy. |
 | Syslog &#124;, kde SeverityLevel = = "Error" |Všechny záznamy syslog se závažností chyby. |

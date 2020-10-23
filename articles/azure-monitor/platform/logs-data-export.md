@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055932"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441104"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -36,7 +36,7 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 ## <a name="current-limitations"></a>Aktuální omezení
 
 - Konfigurace se teď dá provést jenom pomocí požadavků CLI nebo REST. Nemůžete použít Azure Portal ani PowerShell.
-- Podporované tabulky jsou aktuálně omezeny na konkrétní část (#supported-Tabes) níže. Pokud pravidlo exportu dat obsahuje nepodporovanou tabulku, operace bude úspěšná, ale pro tuto tabulku nebudou exportována žádná data. Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, nezdaří se, protože *tabulka chyb <tableName> v pracovním prostoru neexistuje.*
+- Podporované tabulky jsou aktuálně omezeny na konkrétní v níže uvedené části [podporované tabulky](#supported-tables) . Pokud pravidlo exportu dat obsahuje nepodporovanou tabulku, operace bude úspěšná, ale pro tuto tabulku nebudou exportována žádná data. Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k selhání s chybou. ```Table <tableName> does not exist in the workspace.```
 - Pracovní prostor Log Analytics může být v libovolné oblasti s výjimkou následujících:
   - Švýcarsko – sever
   - Švýcarsko – západ
@@ -57,7 +57,7 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 ## <a name="data-completeness"></a>Úplnost dat
 Export dat bude pokračovat v pokusu o odeslání dat po dobu až 30 minut v případě, že cíl není k dispozici. Pokud není po 30 minutách k dispozici, budou data zahozena, dokud nebude cíl k dispozici.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Náklady
 Pro funkci exportu dat se momentálně neúčtují žádné další poplatky. Ceny za export dat budou v budoucnu ohlášeny a oznámení poskytované před zahájením fakturace. Pokud se rozhodnete, že budete exportovat data i po uplynutí období oznámení, bude se vám účtovat příslušná sazba.
 
 ## <a name="export-destinations"></a>Exportovat cíle
@@ -239,7 +239,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Nepodporované tabulky
 Pokud pravidlo exportu dat obsahuje nepodporovanou tabulku, konfigurace bude úspěšná, ale pro tuto tabulku nebudou exportována žádná data. Pokud je tabulka později podporována, budou data exportována v daném čase.
 
-Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, nezdaří se, protože *tabulka chyb <tableName> v pracovním prostoru neexistuje*.
+Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k selhání s chybou. ```Table <tableName> does not exist in the workspace.```
 
 
 ## <a name="supported-tables"></a>Podporované tabulky

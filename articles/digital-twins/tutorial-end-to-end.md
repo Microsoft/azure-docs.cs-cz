@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f76d6a5c4c891abf92b67cc51ffffab5f2a81d6b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f0d28a71e2bd6fc2006bda81fba7d7e6336c5b1c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427697"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460831"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -48,7 +48,7 @@ Pokud chcete pracovat v tomto scénáři, budete pracovat s komponentami předem
 
 Tady jsou komponenty implementované ukázkovou aplikací *AdtSampleApp* scénář vytváření:
 * Ověřování zařízení 
-* Příklady použití [rozhraní .NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core) (najdete v *CommandLoop.cs*)
+* Příklady použití [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) (najdete v *CommandLoop.cs*)
 * Rozhraní konzoly pro volání rozhraní API digitálních vláken Azure
 * *SampleClientApp* – ukázkové řešení digitálních vláken Azure
 * *SampleFunctionsApp* – aplikace Azure Functions, která aktualizuje graf digitálních vláken Azure v důsledku telemetrie z IoT Hub a událostí digitálních vláken Azure
@@ -87,7 +87,7 @@ Query
 ```
 
 >[!TIP]
-> Tato zjednodušená metoda je k dispozici jako součást projektu _**AdtE2ESample**_ . Mimo kontext tohoto ukázkového kódu se můžete kdykoli dotazovat na všechny vlákna ve vaší instanci pomocí [rozhraní API pro dotazy](how-to-use-apis-sdks.md) nebo [příkazů rozhraní příkazového řádku](how-to-use-cli.md).
+> Tato zjednodušená metoda je k dispozici jako součást projektu _**AdtE2ESample**_ . Mimo kontext tohoto ukázkového kódu se můžete kdykoli dotazovat na všechny vlákna ve vaší instanci pomocí [rozhraní API pro dotazy](/rest/api/digital-twins/dataplane/query) nebo [příkazů rozhraní příkazového řádku](how-to-use-cli.md).
 >
 > Tady je úplný text dotazu, který vám umožní získat všechny digitální vlákna ve vaší instanci:
 > 

@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 54a96d1f3227cd4a66e344b63b2ecb337df31aba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427993"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461069"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
@@ -43,7 +43,7 @@ Pokud chcete připojit instanci digitálních vláken Azure k Logic Apps v tomto
 Nejdřív **nastavte instanci digitálních vláken Azure** a požadované ověřování, abyste s ním mohli pracovat. Provedete to podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). V závislosti na preferovaných zkušenostech je k dispozici článek o instalaci pro [ukázkový skript nasazení](how-to-set-up-instance-scripted.md) [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)nebo automatizované Cloud Shell. Všechny verze pokynů také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
 * Po nastavení instance digitálního vlákna Azure budete potřebovat **_název hostitele_** instance ([najít v Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
-Chcete-li ověřit aplikaci pro Průzkumníka aplikace ADT, budete také muset nastavit **registraci aplikace**. Postupujte podle pokynů v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md) pro nastavení. 
+K ověření konektoru budete taky muset nastavit **registraci aplikace**. Postupujte podle pokynů v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md) pro nastavení. 
 * Jakmile budete mít registraci aplikace, budete potřebovat ID **_aplikace (klienta)_** registrace a **_ID adresáře (_** klienta) ([najít v Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
 
 ### <a name="get-app-registration-client-secret"></a>Získat tajný klíč klienta registrace aplikace
@@ -66,7 +66,7 @@ Nyní ověřte, zda je tajný klíč klienta zobrazen na stránce _certifikáty 
 
 Tento článek používá Logic Apps k aktualizaci vlákna v instanci digitálních vláken Azure. Chcete-li pokračovat, měli byste do své instance přidat alespoň jednu dvojitou akci. 
 
-Pomocí [rozhraní API DigitalTwins](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md)můžete přidat vlákna. Podrobné pokyny, jak vytvořit vlákna pomocí těchto metod, naleznete v tématu [*How to: Manage Digital vláknas*](how-to-manage-twin.md).
+Pomocí [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins), [sady .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md)můžete přidat vlákna. Podrobné pokyny, jak vytvořit vlákna pomocí těchto metod, naleznete v tématu [*How to: Manage Digital vláknas*](how-to-manage-twin.md).
 
 Budete potřebovat **_zdvojené ID_** vlákna ve vaší instanci, kterou jste vytvořili.
 

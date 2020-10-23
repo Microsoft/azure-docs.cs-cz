@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: cfd7a007c8f26a96d929026e231cb412cdc70279
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440843"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454180"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ekarda
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat ekarda s Azure Active Directory (Azure
 * Umožněte uživatelům, aby se do ekarda automaticky přihlásili pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je jednotné přihlašování (SSO)?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je jednotné přihlašování (SSO)?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * ekarda podporuje jednotné přihlašování iniciované v SP a IDP.
 * ekarda podporuje zřizování uživatelů za běhu.
-* Po nakonfigurování ekarda můžete vynutili řízení relace. Tato preventivní opatření chrání před exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšíří z Řízení podmíněného přístupu k aplikacím. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování ekarda můžete vynutili řízení relace. Tato preventivní opatření chrání před exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšíří z Řízení podmíněného přístupu k aplikacím. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-ekarda-from-the-gallery"></a>Přidání ekarda z Galerie
 
@@ -73,7 +73,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těchto kroků Azure Portal:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Na stránce integrace aplikací **ekarda** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML vyberte ikonu tužky a upravte základní nastavení **Konfigurace SAML** .
@@ -168,14 +168,14 @@ V této části se v ekarda vytvoří uživatel s názvem B. Simon. ekarda podpo
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí portálu moje aplikace.
 
-Když na portálu moje aplikace vyberete dlaždici ekarda, měli byste se automaticky přihlásit k webu ekarda, pro který jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [Úvod do portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na portálu moje aplikace vyberete dlaždici ekarda, měli byste se automaticky přihlásit k webu ekarda, pro který jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [Úvod do portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-* [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 * [Vyzkoušejte si ekarda s Azure AD](https://aad.portal.azure.com/)
 * Pomocí [řešení Enterprise eCard v ekarda](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise) můžete zřídit libovolného počtu vašich zaměstnanců, kteří budou posílat eCardsy s logem vaší společnosti i jejich klientů a kolegům. Přečtěte si další informace o [zřizování ekarda jako řešení jednotného přihlašování](https://support.ekarda.com/#SSO-Implementation).
-* [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-* [Jak chránit ekarda pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+* [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+* [Jak chránit ekarda pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)
