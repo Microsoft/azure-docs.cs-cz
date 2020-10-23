@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: fe4f0cdcdb863582560b0eba3a22e95b93ff858b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150945"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425108"
 ---
 # <a name="disclosure-design-patterns"></a>Zpřístupnění způsobů návrhu
 Teď, když jste&#39;i zjistili správnou [úroveň zveřejnění](concepts-disclosure-guidelines.md#disclosure-assessment) pro syntetické hlasové prostředí,&#39;s vhodným časem prozkoumat potenciální vzory návrhu.
@@ -184,7 +184,7 @@ Při začleňování následujících typů pomůcek zvažte různé režimy int
 
 Zveřejnění se dá provést implicitně nastavením přesného očekávání za to, co je digitální asistent schopný. Poskytněte ukázkové příkazy, aby se uživatelé mohli naučit pracovat s digitálním asistentem a nabídnout kontextovou nápovědu pro další informace o syntetickém hlasu v počátečních fázích prostředí.
 
-![Vizuální pomůcky a zpětná vazba](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![Příklad výchozích odpovědí na konverzaci, kterou můžete vytvořit.](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>Průhlednost konverzací
 

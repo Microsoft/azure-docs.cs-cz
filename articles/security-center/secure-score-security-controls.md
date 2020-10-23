@@ -11,49 +11,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
+ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 24e10dad6a4b9a6232ce74b5365d9a9df7860079
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339930"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425337"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Skóre zabezpečení ve službě Azure Security Center
 
 ## <a name="introduction-to-secure-score"></a>Úvod do zabezpečeného skóre
 
-Azure Security Center má dva hlavní cíle: a pomůže vám pochopit aktuální situaci v zabezpečení a pomáhat vám efektivně a efektivně zlepšit zabezpečení. Ústřední aspekt Security Center, který vám umožňuje dosáhnout těchto cílů, je bezpečné skóre.
+Azure Security Center má dva hlavní cíle: 
+
+- pomůže vám pochopit aktuální situaci zabezpečení
+- abychom vám pomohli efektivně a efektivně zlepšit zabezpečení
+
+Centrální funkce v Security Center, která vám umožňuje dosáhnout těchto cílů je **bezpečné skóre**.
 
 Security Center průběžně vyhodnocuje vaše prostředky, odběry a organizace pro problémy se zabezpečením. Pak agreguje všechna zjištění do jediného skóre, abyste na první pohled mohli sdělit aktuální situaci zabezpečení: čím vyšší je skóre, tím se sníží zjištěná úroveň rizika.
 
-Stránka zabezpečeného skóre Security Center zahrnuje:
+Zabezpečené skóre je zobrazeno na Azure Portal stránkách jako procentuální hodnota, ale základní hodnoty jsou jasně uváděny také:
 
-- **Skóre** – zabezpečené skóre se zobrazuje jako procentuální hodnota, ale základní hodnoty jsou také jasné:
+:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="Celkové bezpečné skóre, jak je znázorněno na portálu":::
 
-    [![Zabezpečené skóre zobrazené jako procentní hodnota se základními čísly je jasné.](media/secure-score-security-controls/secure-score-with-percentage.png)](media/secure-score-security-controls/secure-score-with-percentage.png#lightbox)
+Chcete-li zvýšit zabezpečení, přečtěte si stránku s doporučeními Security Center pro nedokončené akce potřebné k vyvolání skóre. Každé doporučení obsahuje pokyny, které vám pomůžou vyřešit konkrétní problém.
 
-- **Kontroly zabezpečení** – každý ovládací prvek je logickou skupinou souvisejících doporučení zabezpečení a odráží vaše zranitelné plochy pro útok. Ovládací prvek je sada doporučení zabezpečení s pokyny, které vám pomůžou implementovat tato doporučení. Vaše skóre se zlepšuje jenom při nápravě *všech* doporučení pro jeden prostředek v rámci ovládacího prvku.
+Doporučení jsou seskupena do **ovládacích prvků zabezpečení**. Každý ovládací prvek je logickou skupinou souvisejících doporučení zabezpečení a odráží vaše zranitelné plochy pro útok. Vaše skóre se zlepšuje jenom při nápravě *všech* doporučení pro jeden prostředek v rámci ovládacího prvku. Pokud chcete zjistit, jak dobře vaše organizace zabezpečuje jednotlivé plochy pro útok, Projděte si skóre pro jednotlivé ovládací prvky zabezpečení.
 
-    Pokud chcete hned zjistit, jak dobře vaše organizace zabezpečuje jednotlivé plochy pro útok, Projděte si skóre pro jednotlivé ovládací prvky zabezpečení.
-
-    Další informace najdete v tématu [jak se počítá vaše zabezpečené skóre](secure-score-security-controls.md#how-your-secure-score-is-calculated) níže. 
-
-
->[!TIP]
-> Dřívější verze Security Center v úrovni doporučení přijaly body: když opravíte doporučení pro jeden prostředek, zlepší se vaše zabezpečené skóre. V dnešní době se vaše skóre zlepšuje jenom v případě, že opravíte *všechna* doporučení pro jeden prostředek v rámci ovládacího prvku. Takže se vaše skóre zvyšuje jenom v případě, že jste vylepšili zabezpečení prostředku.
+Další informace najdete v tématu [jak se počítá vaše zabezpečené skóre](secure-score-security-controls.md#how-your-secure-score-is-calculated) níže. 
 
 
 ## <a name="access-your-secure-score"></a>Přístup k zabezpečenému skóre
 
-Celkové výsledky zabezpečení a také skóre na předplatné můžete najít prostřednictvím Azure Portal nebo programově s Azure Security Center REST API.
+Celkové výsledky zabezpečení a také skóre na předplatné můžete najít prostřednictvím Azure Portal nebo programově, jak je popsáno v následujících částech:
+
+- [Získat zabezpečené skóre z portálu](#get-your-secure-score-from-the-portal)
+- [Získat zabezpečené skóre z REST API](#get-your-secure-score-from-the-rest-api)
+- [Získat zabezpečené skóre z Azure Resource graphu (ARG)](#get-your-secure-score-from-azure-resource-graph-arg)
 
 ### <a name="get-your-secure-score-from-the-portal"></a>Získat zabezpečené skóre z portálu
 
-Security Center zobrazuje vaše skóre na portálu na portálu: první věc zobrazená na stránce Přehled. Pokud kliknete na stránku vyhrazeného zabezpečeného skóre, zobrazí se skóre, které je rozdělené podle předplatného. Kliknutím na jedno předplatné zobrazíte podrobný seznam doporučení s upřednostněním a potenciální dopad, který by oprava na skóre předplatného.
+Security Center zobrazuje vaše skóre na portálu na portálu: Jedná se o první hlavní dlaždici Security Center stránku s přehledem. Kliknutím na tuto dlaždici přejdete na stránku vyhrazeného zabezpečeného skóre, kde se zobrazí skóre rozdělené podle předplatného. Když vyberete jedno předplatné, zobrazí se podrobný seznam doporučení s upřednostněním a potenciální dopad, který by oprava na skóre předplatného.
 
-![Celkové bezpečné skóre, jak je znázorněno na portálu](media/secure-score-security-controls/single-secure-score-via-ui.png)
+Rekapitulace se vaše zabezpečené skóre zobrazuje v následujících umístěních na stránkách portálu Security Center.
+
+- V dlaždici v **přehledu** Security Center (hlavní řídicí panel):
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Celkové bezpečné skóre, jak je znázorněno na portálu":::
+
+- Na stránce vyhrazené **bezpečné skóre** :
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Celkové bezpečné skóre, jak je znázorněno na portálu":::
+
+- V horní části stránky **doporučení** :
+
+    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Celkové bezpečné skóre, jak je znázorněno na portálu":::
+
+
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Získat zabezpečené skóre z REST API
 
@@ -62,6 +79,40 @@ K vašemu skóre můžete přistupovat prostřednictvím rozhraní API pro zabez
 ![Načtení jediného zabezpečeného skóre přes rozhraní API](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 Příklady nástrojů postavených na rozhraní API pro zajištění skóre najdete v části [bezpečné skóre naší komunity GitHubu](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
+
+
+
+### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Získat zabezpečené skóre z Azure Resource graphu (ARG)
+
+Azure Resource Graph poskytuje okamžitý přístup k informacím o prostředcích napříč vašimi cloudovým prostředím pomocí robustních funkcí filtrování, seskupování a řazení. Jedná se o rychlý a efektivní způsob dotazování informací v rámci předplatných Azure prostřednictvím Azure Portal. [Přečtěte si další informace o Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/).
+
+Pro přístup k zabezpečenému skóre pro více předplatných s ARG:
+
+1. V Azure Portal otevřete **Průzkumníka Azure Resource Graph**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Celkové bezpečné skóre, jak je znázorněno na portálu" :::
+
+1. Zadejte svůj dotaz Kusto (použijte níže uvedené příklady pro doprovodné materiály).
+
+    - Tento dotaz vrátí ID předplatného, aktuální skóre v bodech a jako procento a maximální skóre pro předplatné. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores' 
+        | extend current = properties.score.current, max = todouble(properties.score.max)
+        | project subscriptionId, current, max, percentage = ((current / max)*100)
+        ```
+
+    - Tento dotaz vrátí stav všech ovládacích prvků zabezpečení. Pro každý ovládací prvek získáte počet prostředků, které nejsou v pořádku, aktuální skóre a maximální skóre. 
+
+        ```kusto
+        SecurityResources 
+        | where type == 'microsoft.security/securescores/securescorecontrols'
+        | extend SecureControl = properties.displayName, unhealthy = properties.unhealthyResourceCount, currentscore = properties.score.current, maxscore = properties.score.max
+        | project SecureControl , unhealthy, currentscore, maxscore
+        ```
+
+1. Vyberte **Spustit dotaz**.
 
 ## <a name="how-your-secure-score-is-calculated"></a>Jak se počítá vaše zabezpečené skóre 
 
@@ -99,7 +150,7 @@ Doporučení, která jsou označená jako **Náhled** , nejsou zahrnutá do výp
 
 Příklad doporučení verze Preview:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Doporučení s příznakem Preview":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Celkové bezpečné skóre, jak je znázorněno na portálu":::
 
 ## <a name="improve-your-secure-score"></a>Zlepšení skóre Secure Score
 

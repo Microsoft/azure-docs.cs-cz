@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef1e3c886cfd30db4c6a550d0ecabe7d41fab55c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776034"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425002"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho pracovního prostoru pomocí virtuálních sítí
 
@@ -43,12 +43,12 @@ V tomto článku se dozvíte, jak povolit následující prostředky v pracovní
 
 + Existující virtuální síť a podsíť pro použití s výpočetními prostředky.
 
-+ Pokud chcete nasadit prostředky do virtuální sítě nebo podsítě, musí mít váš uživatelský účet oprávnění k následujícím akcím v řízení přístupu na základě role (RBAC) v Azure.
++ Aby bylo možné nasadit prostředky do virtuální sítě nebo podsítě, musí mít váš uživatelský účet oprávnění k následujícím akcím v řízení přístupu na základě role Azure (Azure RBAC):
 
     - "Microsoft. Network/virtualNetworks/JOIN/Action" na prostředku virtuální sítě.
     - "Microsoft. Network/virtualNetworks/podsíť/JOIN/Action" na prostředku podsítě.
 
-    Další informace o RBAC se sítí najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking) .
+    Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking) .
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>Zabezpečení pracovního prostoru pomocí privátního koncového bodu

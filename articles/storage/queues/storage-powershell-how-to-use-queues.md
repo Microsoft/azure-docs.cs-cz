@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f45a4de2e13f936556f8dd99aa107110edc6e91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077921"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425544"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue Storage s využitím Azure PowerShellu
 
@@ -104,7 +104,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>Přidat zprávu do fronty
 
-Operace, které mají vliv na skutečné zprávy ve frontě, používají klientskou knihovnu pro úložiště .NET jako zveřejněnou v prostředí PowerShell. Chcete-li přidat zprávu do fronty, vytvořte novou instanci objektu zprávy, třídy [Microsoft. Azure. Storage. Queue. CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) . Pak zavolejte metodu [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage). CloudQueueMessage je možné vytvořit buď z řetězce (ve formátu UTF-8), nebo z bajtového pole.
+Operace, které mají vliv na skutečné zprávy ve frontě, používají klientskou knihovnu pro úložiště .NET jako zveřejněnou v prostředí PowerShell. Chcete-li přidat zprávu do fronty, vytvořte novou instanci objektu zprávy, třídy [Microsoft. Azure. Storage. Queue. CloudQueueMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) . Pak zavolejte metodu [AddMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage). CloudQueueMessage je možné vytvořit buď z řetězce (ve formátu UTF-8), nebo z bajtového pole.
 
 Následující příklad ukazuje, jak přidat zprávu do fronty.
 

@@ -6,26 +6,26 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 8/13/2020
-ms.openlocfilehash: 9868403f69f3dc0b56aae06be1afda2134472805
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: d2d34e95642308dcdacba20879945f2c965db955
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631031"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425205"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database for MariaDB
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for MariaDB poskytuje různé metriky, které poskytují přehled o chování serveru.
 
 ## <a name="metrics"></a>Metriky
-Všechny metriky Azure mají četnost jednosměrných minut a každá metrika poskytuje historii 30 dnů. Výstrahy můžete nakonfigurovat pro metriky. Mezi další úlohy patří nastavení automatizovaných akcí, provádění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Všechny metriky Azure mají četnost jednosměrných minut a každá metrika poskytuje historii 30 dnů. Výstrahy můžete nakonfigurovat pro metriky. Mezi další úlohy patří nastavení automatizovaných akcí, provádění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../azure-monitor/platform/data-platform.md).
 
 Podrobné pokyny najdete v tématu [jak nastavit výstrahy](howto-alert-metric.md).
 
 ### <a name="list-of-metrics"></a>Seznam metrik
 Tyto metriky jsou k dispozici pro Azure Database for MariaDB:
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Description|
+|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
 |---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|
@@ -45,7 +45,7 @@ Tyto metriky jsou k dispozici pro Azure Database for MariaDB:
 
 ## <a name="server-logs"></a>Protokoly serveru
 
-Můžete povolit pomalé protokolování dotazů na serveru. Tyto protokoly jsou dostupné taky prostřednictvím diagnostických protokolů Azure v Azure Monitor protokoly, Event Hubs a účet úložiště. Další informace o protokolování najdete na stránce [protokoly serveru](concepts-server-logs.md) .
+Můžete povolit pomalé protokolování dotazů na serveru. Tyto protokoly jsou dostupné taky prostřednictvím diagnostických protokolů Azure v Azure Monitor protokoly, Event Hubs a účet úložiště. Další informace o protokolování najdete na stránce [protokoly serveru](concepts-server-logs.md) .
 
 ## <a name="query-store"></a>Úložiště dotazů
 
@@ -61,30 +61,13 @@ Funkce [doporučení k výkonu](concepts-performance-recommendations.md) identif
 
 ## <a name="planned-maintenance-notification"></a>Oznámení o plánované údržbě
 
-**Plánovaná oznámení údržby** vám umožní dostávat oznámení o nadcházející plánované údržbě Azure Database for MariaDB. Tato oznámení jsou integrovaná s plánovanou údržbou [Service Health](../service-health/overview.md) a umožňují zobrazit veškerou plánovanou údržbu vašich předplatných na jednom místě. Pomáhá také škálovat oznámení do správných cílových skupin pro různé skupiny prostředků, protože u různých zdrojů můžete mít zodpovědné různé kontakty. Zobrazí se oznámení o nadcházející údržbě 72 hodin před událostí.
+[Plánovaná oznámení údržby](./concepts-planned-maintenance-notification.md) vám umožní dostávat oznámení o nadcházející plánované údržbě Azure Database for MariaDB. Tato oznámení jsou integrovaná s plánovanou údržbou [Service Health](../service-health/overview.md) a umožňují zobrazit veškerou plánovanou údržbu vašich předplatných na jednom místě. Pomáhá také škálovat oznámení do správných cílových skupin pro různé skupiny prostředků, protože u různých zdrojů můžete mít zodpovědné různé kontakty. Zobrazí se oznámení o nadcházející údržbě 72 hodin před událostí.
 
-Během plánované údržby můžete očekávat, že se server restartuje, a může dojít k [přechodným chybám](concepts-connectivity.md#transient-errors) . Většina těchto událostí je systémem automaticky snížena za méně než 60 sekund. 
-
-> [!IMPORTANT]
-> Plánovaná oznámení o údržbě jsou aktuálně k dispozici ve verzi Preview ve všech oblastech **kromě** středozápadní USA.
-
-### <a name="to-receive-planned-maintenance-notification"></a>Příjem plánovaného oznámení o údržbě
-
-1. Na [portálu](https://portal.azure.com)vyberte **Service Health**.
-2. V části **výstrahy** vyberte výstrahy týkající se **stavu**.
-3. Vyberte **+ Přidat upozornění na stav služby** a vyplňte pole.
-4. Vyplňte požadovaná pole. 
-5. Zvolte **Typ události**, vyberte **plánovaná údržba** nebo **Vybrat vše** .
-6. V části **skupiny akcí** definujte způsob, jakým chcete výstrahu přijmout (získat e-mail, aktivovat aplikaci logiky atd.).  
-7. Zajistěte, aby pravidlo Povolit při vytváření bylo nastaveno na Ano.
-8. Vyberte **vytvořit pravidlo upozornění** pro dokončení upozornění.
-
-Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby**, najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications.md).
-
-> [!Note]
-> Povedeme všechny pokusy o poskytnutí **oznámení o plánované údržbě** 72 hodin pro všechny události. V případech kritických nebo bezpečnostních oprav ale můžou být oznámení odeslána blíže k události nebo by se měla vynechat.
+Přečtěte si další informace o tom, jak nastavit oznámení v dokumentu [oznámení o plánované údržbě](./concepts-planned-maintenance-notification.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o tom, jak přistupovat k metrikám a jak je exportovat pomocí Azure Portal, REST API nebo CLI, najdete v tématu [Přehled metrik Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-  - Pokyny k vytvoření výstrahy na metrikě najdete v tématu [Nastavení výstrah](howto-alert-metric.md) .
+- Pokyny k vytvoření výstrahy na metrikě najdete v tématu [Nastavení výstrah](howto-alert-metric.md) .
+- Přečtěte si další informace o [plánovaných oznámeních údržby](./concepts-planned-maintenance-notification.md) v Azure Database for MariaDB.
+

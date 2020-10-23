@@ -10,22 +10,22 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: f2859ddb6ddf7d1041509c47adfe7bf3a1ce99b8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 885838e1a517ab4713f1753957f8b85f40297fd2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375691"
+ms.locfileid: "92424558"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory zřizování aplikací: co je nového
 
-Vítá vás novinky v Azure Active Directory dokumentaci zřizování aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace.
+Vítá vás novinky v Azure Active Directory dokumentaci zřizování aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Informace o tom, co je nového ve službě zřizování, najdete v tématu [novinky v Azure Active Directory](../fundamentals/whats-new.md).
 
 ## <a name="september-2020"></a>Září 2020
 
 ### <a name="new-articles"></a>Nové články
 
-- [Co je nového](whats-new-docs.md)
+- [Co je nového v docs?](whats-new-docs.md)
 
 ### <a name="updated-articles"></a>Aktualizované články
 - [Stav zřizování aplikace v karanténě](application-provisioning-quarantine-status.md)

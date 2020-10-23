@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b78de4769f49954c4d4e860e75818f6485247a17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305626"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445674"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Kurz: Konfigurace funkce pro Automatické zřizování uživatelů
 
@@ -99,7 +99,7 @@ Než začnete konfigurovat funkci pro Automatické zřizování uživatelů pomo
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin ve svazku na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML na základě pokynů v [kurzu jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/harness-tutorial)pomocí tohoto stroje. Můžete nakonfigurovat jednotné přihlašování nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
+> Můžete se také rozhodnout, že povolíte jednotné přihlašování založené na SAML na základě pokynů v [kurzu jednotného přihlašování](./harness-tutorial.md)pomocí tohoto stroje. Můžete nakonfigurovat jednotné přihlašování nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
 
 > [!NOTE]
 > Další informace o koncovém bodu SCIM najdete v článku [klíče rozhraní API](https://docs.harness.io/article/smloyragsm-api-keys) pro povýšení.

@@ -3,12 +3,12 @@ title: Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v ř
 description: Vytvořte knihovnu obsahu pro nasazení virtuálního počítače v privátním cloudu řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575815"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461681"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Vytvoření knihovny obsahu pro nasazení virtuálních počítačů v řešení Azure VMware
 
@@ -92,7 +92,7 @@ Teď, když je knihovna obsahu vytvořená, můžete přidat bitovou kopii ISO p
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud plánujete použít rozšíření HCX (Hybrid Cloud Extension) k migraci úloh virtuálních počítačů do privátního cloudu, použijte postup [Řešení Azure VMware pro instalaci HCX](tutorial-deploy-vmware-hcx.md) .
+Pokud plánujete použít VMware HCX k migraci úloh virtuálních počítačů do privátního cloudu, použijte postup [nasazení a konfigurace VMware HCX](tutorial-deploy-vmware-hcx.md) .
 
 <!-- LINKS - external-->
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: d8c4eea10b0c2230e50b5ded710b3455539f6493
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206029"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461800"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -61,7 +61,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Active Directory B2C | Ne | Ne | Ne |  |
 |Active Directory Domain Services | Ne | Ano | Ne |  |
 |Protokol aktivit | Ne | Ano | Ne | |
-|Rozšířená ochrana před internetovými útoky | Ne | Ne | Ne |  |
+|Advanced Threat Protection | Ne | Ne | Ne |  |
 |Advisor | Ne | Ne | Ne |  |
 |AI Builder | Ne | Ne | Ne |  |
 |Analysis Services | Ano | Ano | Ne |  |
@@ -78,7 +78,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Batch | Ano | Ano | Ne |  |
 |Batch AI | Ne | Ne | Ne |  |
 |Služba Blockchain | Ne | Ano | Ne |  |
-|Blueprint | Ne | Ne | Ne |  |
+|Blueprints | Ne | Ne | Ne |  |
 |Bot Service | Ne | Ne | Ne |  |
 |Cloud Services | Ano | Ano | Ne | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
 |Cloud Shell | Ne | Ne | Ne |  |
@@ -135,17 +135,17 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Multi-Factor Authentication | Ne | Ano | Ne |  |
 |Network Watcher | Ano | Ano | Ne |  |
 |Notification Hubs | Ano | Ne | Ne |  |
-|Otevřené datové sady | Ne | Ne | Ne |  |
+|Open Datasets | Ne | Ne | Ne |  |
 |Zásada | Ne | Ne | No |  |
 |Power BI Embedded | Ano | Ano | Ne |  |
-|Privátní propojení | Ne | Ne | Ne |  |
+|Private Link | Ne | Ne | Ne |  |
 |Komunikační platforma pro zařazování projektu | Ne | Ne | Ne |  |
 |Red Hat OpenShift | Ne | Ne | Ne |  |
 |Redis Cache | Ano | Ano | [Ano](insights/redis-cache-insights-overview.md) | |
 |Resource Graph | Ne | Ne | Ne |  |
 |Resource Manager | Ne | Ne | Ne |  |
 |Maloobchodní vyhledávání – podle Bingu | Ne | Ne | Ne |  |
-|Search | Ano | Ano | Ne |  |
+|Hledat | Ano | Ano | Ne |  |
 |Service Bus | Ano | Ano | Ne |  |
 |Service Fabric | Ne | Ano | Ne | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
 |Portál pro registraci | Ne | Ne | Ne |  |
@@ -164,11 +164,24 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Traffic Manager | Ano | Ano | Ne |  |
 |Univerzální tisk | Ne | Ne | Ne |  |
 |Virtual Machine Scale Sets | Ne | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
-|Virtuální počítače | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
+|Virtual Machines | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
 |Virtual Network | Ano | Ano | [Ano](insights/network-insights-overview.md) |  |
 |Protokoly toku Virtual Network – NSG | Ne | Ano | Ne |  |
 |VPN Gateway | Ano | Ano | Ne |  |
 |Windows Virtual Desktop | Ne | Ne | Ne |  |
+
+## <a name="virtual-machine-agents"></a>Agenti virtuálních počítačů
+Následující tabulka uvádí agenty, které mohou shromažďovat data z hostovaného operačního systému virtuálních počítačů a odesílat data do monitorování. Každý agent může shromažďovat různá data a odesílat je do těchto metrik nebo protokolů v Azure Monitor. 
+
+Podrobnosti o datech, která může každý Agent shromažďovat, najdete v tématu [přehled Azure Monitorch agentů](platform/agents-overview.md) .
+
+| Agent |  Metriky | Protokoly |
+|:---|:---|:---|:---|
+| [Agent Azure Monitor (Preview)](platform/azure-monitor-agent-overview.md) | Ano | Ano |
+| [Agent Log Analytics](platform/log-analytics-agent.md) | Ne | Ano|
+| [Rozšíření diagnostiky](platform/diagnostics-extension-overview.md) | Ano | Ne |
+| [Agent telegraf](platform/collect-custom-metrics-linux-telegraf.md) | Ano | Ne |
+| [Agent závislostí](insights/vminsights-enable-overview.md) | Ne | Ano |
 
 
 ## <a name="product-integrations"></a>Integrace produktů

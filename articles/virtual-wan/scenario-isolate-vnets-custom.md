@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 12bc99d24472780f87a6b2a83befdbbf12944860
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267716"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461817"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Scénář: vlastní izolace pro virtuální sítě
 
@@ -25,11 +25,11 @@ Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba, můžete vy
 
 | Z | Do:| *Modrý virtuální sítě* | *Červené virtuální sítě* | *Větve*|
 |---|---|---|---|---|
-| **Modrý virtuální sítě** |   &#8594;|      X        |               |       X      |
-| **Červené virtuální sítě**  |   &#8594;|              |       X       |       X      |
-| **Větve**   |   &#8594;|     X        |       X       |       X      |
+| **Modrý virtuální sítě** |   &#8594;|   Direct     |           |  Direct |
+| **Červené virtuální sítě**  |   &#8594;|              |   Direct  |  Direct |
+| **Větve**   |   &#8594;|   Direct     |   Direct  |  Direct |
 
-Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (strana "do" toku, záhlaví sloupců v tabulce kurzívou) pro konkrétní tok přenosů, kde "X" znamená, že připojení je zajištěno službou Virtual WAN.
+Každá z buněk v předchozí tabulce popisuje, jestli připojení k virtuální síti WAN (strana "od", záhlaví řádků) komunikuje s cílem (strana "do" toku, záhlaví sloupců jsou kurzívou). V tomto scénáři nejsou k dispozici žádné brány firewall ani síťová virtuální zařízení, takže komunikace směřuje přímo přes virtuální síť WAN (takže slovo "Direct" v tabulce).
 
 Počet různých vzorů řádků bude počet směrovacích tabulek, které v tomto scénáři budete potřebovat. V tomto případě tři směrovací tabulky tras, které budeme volat **RT_BLUE** a **RT_RED** pro virtuální sítě a **výchozí** pro větve. Nezapomeňte, že větve vždy musí být přidruženy k výchozí směrovací tabulce.
 

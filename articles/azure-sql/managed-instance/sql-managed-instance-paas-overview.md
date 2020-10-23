@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e515df0ff8c7cd3794efb4db567ef7146ccb7a03
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618126"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424233"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Co je spravovaná instance Azure SQL?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,15 +56,15 @@ Klíčové funkce spravované instance SQL jsou uvedené v následující tabulc
 |Funkce | Popis|
 |---|---|
 | Verze SQL Server/Build | Databázový stroj SQL Server (nejnovější stabilní) |
-| Spravované automatizované zálohy | Yes |
-| Integrovaná instance a monitorování databáze a metriky | Yes |
-| Automatické opravy softwaru | Yes |
-| Nejnovější funkce databázového stroje | Yes |
+| Spravované automatizované zálohy | Ano |
+| Integrovaná instance a monitorování databáze a metriky | Ano |
+| Automatické opravy softwaru | Ano |
+| Nejnovější funkce databázového stroje | Ano |
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
-| Nasazení VNet-Azure Resource Manager | Yes |
-| Model nasazení sítě VNet – klasický | No |
-| Podpora portálu | Yes|
+| Nasazení VNet-Azure Resource Manager | Ano |
+| Model nasazení sítě VNet – klasický | Ne |
+| Podpora portálu | Ano|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
 | Integrovaná služba vytváření sestav (SSRS) | Nepoužívejte místo toho [Power BI stránkované sestavy](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) nebo Hostujte službu SSRS na virtuálním počítači Azure. I když spravovaná instance SQL nemůže službu SSRS spustit jako službu, může hostovat [databáze katalogu SSRS](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements) pro server sestav nainstalovaný na virtuálním počítači Azure pomocí SQL Server ověřování. |
@@ -96,7 +96,7 @@ Následující seznam popisuje klíčové charakteristiky Pro obecné účely ú
 
 - Navrženo pro většinu obchodních aplikací s typickými požadavky na výkon
 - Vysoce výkonné úložiště Azure Blob Storage (8 TB)
-- Integrovaná [Vysoká dostupnost](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) založená na spolehlivých úložištích Azure Blob a [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
+- Integrovaná [Vysoká dostupnost](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) založená na spolehlivých úložištích Azure Blob a [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
 
 Další informace najdete v tématu [vrstva úložiště v pro obecné účely úrovni](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) a [osvědčené postupy pro výkon úložiště a požadavky pro spravovanou instanci SQL (pro obecné účely)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
@@ -110,7 +110,7 @@ Následující seznam popisuje klíčové charakteristiky Pro důležité obchod
 
 - Navrženo pro obchodní aplikace s nejvyšším výkonem a požadavky na HA
 - Obsahuje vysoce rychlé místní úložiště SSD (až do 1 TB v COMPUTE GEN4 – a až 4 TB v Gen5).
-- Integrovaná [Vysoká dostupnost](../database/high-availability-sla.md#premium-and-business-critical-service-tier-availability) na základě [skupin dostupnosti Always on](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) a [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
+- Integrovaná [Vysoká dostupnost](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) na základě [skupin dostupnosti Always on](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) a [Azure Service Fabric](../../service-fabric/service-fabric-overview.md)
 - Integrovaná další [replika databáze jen pro čtení](../database/read-scale-out.md) , která se dá použít pro vytváření sestav a další úlohy jen pro čtení
 - [OLTP v paměti](../in-memory-oltp-overview.md) , které se dají použít pro úlohy s vysokými nároky na výkon  
 
@@ -164,7 +164,7 @@ Zavádí se nová syntaxe pro vytváření objektů zabezpečení serveru Azure 
 
 Služba SQL Managed instance umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../database/authentication-aad-overview.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory podporuje službu [Multi-Factor Authentication](../database/authentication-mfa-ssms-configure.md) pro zvýšení zabezpečení dat a aplikací při podpoře jednotného přihlašování.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 Ověřování spravované instance SQL odkazuje na to, jak uživatelé při připojování k databázi prokáže jejich identitu. Spravovaná instance SQL podporuje dva typy ověřování:  
 

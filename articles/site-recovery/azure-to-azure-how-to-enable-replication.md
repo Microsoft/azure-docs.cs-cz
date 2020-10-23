@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135778"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424795"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -36,10 +36,10 @@ Povolte replikaci. Tento postup předpokládá, že primární oblast Azure je V
    - **Zdrojové předplatné**: předplatné, ke kterému patří vaše zdrojové virtuální počítače. Může to být jakékoli předplatné ve stejném tenantovi Azure Active Directory, ve kterém se nachází váš trezor služby Recovery Services.
    - **Skupina prostředků**: Skupina prostředků, do které patří vaše zdrojové virtuální počítače. V dalším kroku jsou uvedené pro ochranu všechny virtuální počítače v rámci vybrané skupiny prostředků.
 
-     ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
+     ![Snímek obrazovky, který zvýrazní pole potřebná pro konfiguraci replikace.](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
 3. V **Virtual Machines > vyberte virtuální počítače**, klikněte na a vyberte všechny virtuální počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak klikněte na **OK**.
-    ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
+    ![Snímek obrazovky, který zvýrazní, kde vybíráte virtuální počítače.](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. V **Nastavení**můžete volitelně nakonfigurovat nastavení cílového webu:
 
@@ -101,7 +101,7 @@ Můžete upravit výchozí nastavení cíle, které používá Site Recovery.
     - V části skupina **dostupnosti**můžete do virtuálního počítače přidat nastavení skupiny dostupnosti, pokud jsou součástí skupiny dostupnosti ve zdrojové oblasti.
     - V části **cílové účty úložiště**vyberte účet, který chcete použít.
 
-        ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
+        ![Snímek obrazovky, který ukazuje, jak přizpůsobit nastavení cílového předplatného.](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. Klikněte na **přizpůsobit:** a upravte nastavení replikace.
 4. V části **konzistence více virtuálních počítačů**vyberte virtuální počítače, které chcete replikovat společně.
     - Všechny počítače v replikační skupině budou mít v případě převzetí služeb při selhání sdílené body obnovení konzistentní pro případ chyby a konzistentní vzhledem k aplikacím.
@@ -111,7 +111,7 @@ Můžete upravit výchozí nastavení cíle, které používá Site Recovery.
     - Pokud povolíte konzistenci napříč několika virtuálními počítači, budou spolu počítače v replikační skupině komunikovat přes port 20004.
     - Ujistěte se, že neexistuje žádné zařízení brány firewall blokující interní komunikaci mezi virtuálními počítači přes port 20004.
     - Pokud chcete, aby virtuální počítače se systémem Linux byly součástí replikační skupiny, zajistěte ruční otevření odchozího provozu na portu 20004 podle pokynů pro konkrétní verzi systému Linux.
-![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+![Snímek obrazovky, který zobrazuje nastavení konzistence pro více virtuálních počítačů.](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
 5. Klikněte na **vytvořit cílový prostředek**  >  **Povolit replikaci**.
 6. Po povolení replikace virtuálních počítačů můžete ověřit stav stavu virtuálního počítače v části **replikované položky** .

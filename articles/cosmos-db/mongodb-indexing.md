@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282374"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425032"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -40,7 +40,10 @@ Jeden dotaz používá více indexů s jedním polem, kde je k dispozici. Pro ka
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Složené indexy (MongoDB Server verze 3,6)
 
-Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje složené indexy pro účty, které používají síťový protokol verze 3,6. Do složeného indexu můžete zahrnout až osm polí. **Na rozdíl od MongoDB byste měli vytvořit složený index pouze v případě, že je nutné dotaz efektivně seřadit ve více polích najednou.** Pro dotazy s více filtry, které není nutné řadit, je třeba vytvořit více indexů jednoho pole namísto jednoho složeného indexu.
+Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje složené indexy pro účty, které používají síťový protokol verze 3,6. Do složeného indexu můžete zahrnout až osm polí. Na rozdíl od MongoDB byste měli vytvořit složený index pouze v případě, že je nutné dotaz efektivně seřadit ve více polích najednou. Pro dotazy s více filtry, které není nutné řadit, je třeba vytvořit více indexů jednoho pole namísto jednoho složeného indexu. 
+
+> [!NOTE]
+> Nelze vytvořit složené indexy pro vnořené vlastnosti nebo pole.
 
 Následující příkaz vytvoří složený index pro pole `name` a `age` :
 
@@ -59,7 +62,7 @@ Nicméně sekvence cest ve složeném indexu se musí přesně shodovat s dotaze
 `db.coll.find().sort({age:1,name:1})`
 
 > [!NOTE]
-> Nelze vytvořit složené indexy pro vnořené vlastnosti nebo pole.
+> Složené indexy se používají pouze v dotazech, které řadí výsledky. Pro dotazy, které mají více filtrů, které nepotřebují řadit, vytvářejte Multipe jednoduché indexy polí.
 
 ### <a name="multikey-indexes"></a>Multikey indexy
 
@@ -75,7 +78,7 @@ Tady je příklad vytvoření geoprostorového indexu v `location` poli:
 
 ### <a name="text-indexes"></a>Indexy textu
 
-Rozhraní API pro MongoDB Azure Cosmos DB v současné době nepodporuje textové indexy. Pro dotazy na hledání textu v řetězcích byste měli použít službu [Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) Integration s Azure Cosmos DB.
+Rozhraní API pro MongoDB Azure Cosmos DB v současné době nepodporuje textové indexy. Pro dotazy na hledání textu v řetězcích byste měli použít službu [Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) Integration s Azure Cosmos DB. 
 
 ## <a name="wildcard-indexes"></a>Indexy zástupných znaků
 
@@ -131,7 +134,10 @@ Tady je postup, jak můžete vytvořit index zástupného znaku u všech polí:
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
-Při zahájení vývoje může být užitečné vytvořit index zástupného znaku pro všechna pole. Jelikož jsou v dokumentu indexovány další vlastnosti, zvýší se poplatek za zápis a aktualizaci dokumentu na jednotku žádosti (RU). Proto pokud máte zatížení náročné na zápis, měli byste se rozhodnout pro použití zástupných indexů na jednotlivé cesty indexů.
+> [!NOTE]
+> Pokud začínáte s vývojem, **důrazně** doporučujeme začít se zástupným indexem u všech polí. To může zjednodušit vývoj a usnadnit optimalizaci dotazů.
+
+U dokumentů s mnoha poli se může za zápisy a aktualizace účtovat poplatek vysoké jednotky žádosti (RU). Proto pokud máte zatížení náročné na zápis, měli byste se rozhodnout pro použití zástupných indexů na jednotlivé cesty indexů.
 
 ### <a name="limitations"></a>Omezení
 
@@ -335,7 +341,7 @@ V současné době je možné vytvořit jedinečné indexy pouze v případě, �
 
 ## <a name="indexing-for-mongodb-version-32"></a>Indexování pro MongoDB verze 3,2
 
-Dostupné funkce indexování a výchozí hodnoty se liší pro účty Azure Cosmos, které jsou kompatibilní s verzí 3,2 přenosového protokolu MongoDB. Můžete si [ověřit verzi vašeho účtu](mongodb-feature-support-36.md#protocol-support). Můžete upgradovat na verzi 3,6 podáním žádosti o [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Dostupné funkce indexování a výchozí hodnoty se liší pro účty Azure Cosmos, které jsou kompatibilní s verzí 3,2 přenosového protokolu MongoDB. Můžete si [ověřit verzi vašeho účtu](mongodb-feature-support-36.md#protocol-support) a [upgradovat na verzi 3,6](mongodb-version-upgrade.md).
 
 Pokud používáte verzi 3,2, Tato část popisuje klíčové rozdíly ve verzi 3,6.
 
@@ -352,11 +358,11 @@ Po vyřazení výchozích indexů můžete přidat další indexy, stejně jako 
 
 ### <a name="compound-indexes-version-32"></a>Složené indexy (verze 3,2)
 
-Složené indexy obsahují odkazy na více polí dokumentu. Pokud chcete vytvořit složený index, upgradujte na verzi 3,6 podáním [žádosti o podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Složené indexy obsahují odkazy na více polí dokumentu. Pokud chcete vytvořit složený index, [upgradujte na verzi 3,6](mongodb-version-upgrade.md).
 
 ### <a name="wildcard-indexes-version-32"></a>Indexy zástupných znaků (verze 3,2)
 
-Pokud chcete vytvořit index zástupného znaku, upgradujte na verzi 3,6 podáním žádosti o [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Pokud chcete vytvořit index zástupného znaku, [upgradujte na verzi 3,6](mongodb-version-upgrade.md).
 
 ## <a name="next-steps"></a>Další kroky
 

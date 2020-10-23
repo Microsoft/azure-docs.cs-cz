@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135758"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424820"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replikace virtuálních počítačů Azure s Prostory úložiště s přímým přístupem do jiné oblasti
 
@@ -49,12 +49,12 @@ Pod diagramem je znázorněn cluster s podporou převzetí služeb při selhán�
 1. Vyberte zásadu replikace s vypnutou konzistencí aplikace * (k dispozici je jenom podpora konzistence selhání).
 1. Povolení replikace
 
-   ![Ochrana storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![Snímek obrazovky, který ukazuje, kde nakonfigurovat nastavení replikace](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
 2. Přejděte na replikované položky a uvidíte stav virtuálního počítače.
 3. Virtuální počítače jsou chráněné a zobrazují se taky jako součást skupiny konzistence pro víc virtuálních počítačů.
 
-   ![Ochrana storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![Snímek obrazovky s informacemi o tom, že virtuální počítače jsou chráněné a je součástí skupiny konzistence více virtuálních počítačů.](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>Vytvoření plánu obnovení
 Plán obnovení podporuje sekvencování různých vrstev v vícevrstvé aplikaci během převzetí služeb při selhání. Sekvence pomáhá udržovat konzistenci aplikací. Při vytváření plánu obnovení pro vícevrstvé webové aplikace proveďte kroky popsané v tématu [Vytvoření plánu obnovení pomocí Site Recovery](site-recovery-create-recovery-plans.md).

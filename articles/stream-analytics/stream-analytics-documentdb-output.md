@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b28d75e6526f27fd0076244ec32848dbf20e91e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596568"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424776"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics výstup do Azure Cosmos DB  
-Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument popisuje některé osvědčené postupy pro implementaci této konfigurace.
+Azure Stream Analytics může cílit [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) na výstup JSON, povolit archivaci dat a dotazy s nízkou latencí na nestrukturovaná data JSON. Tento dokument popisuje některé osvědčené postupy pro implementaci této konfigurace. Doporučujeme, abyste nastavili úlohu na úroveň kompatibility 1,2 při použití Azure Cosmos DB jako výstupu.
 
 Pokud nejste obeznámeni s Azure Cosmos DB, přečtěte si téma [dokumentace Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) a začněte. 
 
@@ -107,7 +107,7 @@ Použití Azure Cosmos DB jako výstupu v Stream Analytics generuje následujíc
 
 ![Informační pole pro výstupní datový proud Azure Cosmos DB](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-|Pole           | Description|
+|Pole           | Popis|
 |-------------   | -------------|
 |Alias pro výstup    | Alias pro odkazování na tento výstup v dotazu Stream Analytics.|
 |Předplatné    | Předplatné Azure.|
@@ -137,3 +137,17 @@ Pokud dojde k přechodnému selhání, nedostupnost služby nebo omezování, kd
 - NotFound (kód chyby HTTP 404)
 - Zakázáno (kód chyby HTTP 403)
 - Důvodu chybného požadavku (kód chyby HTTP 400)
+
+## <a name="common-issues"></a>Běžné problémy
+
+1. Do kolekce je přidáno jedinečné omezení indexu a výstupní data z Stream Analytics porušují toto omezení. Zajistěte, aby výstupní data z Stream Analytics neporušila jedinečná omezení nebo odebrala omezení. Další informace najdete v tématu [omezení jedinečnosti klíčů v Azure Cosmos DB](../cosmos-db/unique-keys.md).
+
+2. `PartitionKey`Sloupec neexistuje.
+
+3. `Id`Sloupec neexistuje.
+
+## <a name="next-steps"></a>Další kroky
+
+* [Porozumění výstupům z Azure Stream Analytics](stream-analytics-define-outputs.md) 
+* [Azure Stream Analytics výstup do Azure SQL Database](stream-analytics-sql-output-perf.md)
+* [Azure Stream Analytics vlastní dělení výstupu objektů BLOB](stream-analytics-custom-path-patterns-blob-storage-output.md)

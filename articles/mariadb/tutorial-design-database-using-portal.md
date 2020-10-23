@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e6cac09ff304e02e24b482dc834d8199329c1c0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80063789"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424873"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB pomocí webu Azure Portal
 
@@ -37,7 +37,7 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com/). Zad
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Vytvoření serveru Azure Database for MariaDB
 
-Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetních prostředků a prostředků úložiště](concepts-pricing-tiers.md). Server se vytvoří ve [skupině prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetních prostředků a prostředků úložiště](concepts-pricing-tiers.md). Server se vytvoří ve [skupině prostředků Azure](../azure-resource-manager/management/overview.md).
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
@@ -194,4 +194,4 @@ V tomto kurzu jste se naučili, jak na webu Azure Portal provádět následujíc
 > * Obnovení dat
 
 > [!div class="nextstepaction"]
-> [Postup připojení aplikací k Azure Database for MariaDB](./howto-connection-string.md)
+> [Postup připojení aplikací k Azure Database for MariaDB](howto-connection-string.md)

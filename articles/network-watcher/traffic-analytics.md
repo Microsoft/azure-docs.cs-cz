@@ -13,12 +13,12 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7a5157c955a51215a9e62711ebb7838b61fda496
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951549"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424265"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -160,11 +160,11 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
    :::column-end:::
 :::row-end:::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="user-access-requirements"></a>Požadavky na přístup uživatelů
 
-Váš účet musí být členem jedné z následujících [předdefinovaných rolí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)Azure:
+Váš účet musí být členem jedné z následujících [předdefinovaných rolí Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json):
 
 |Model nasazení   | Role                   |
 |---------          |---------               |

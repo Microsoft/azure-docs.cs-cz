@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 031cbb48a7e0c572866dc591d26fb1e6b6b12dba
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267495"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424732"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>Scénář: směrování provozu prostřednictvím síťová virtuální zařízení-Custom (Preview)
 
@@ -24,25 +24,24 @@ Při práci s směrováním virtuálního rozbočovače WAN je k dispozici něko
 
 V tomto scénáři použijeme konvenci pojmenování:
 
-* "Síť VNet" pro virtuální sítě, ve které uživatelé nasadili síťové virtuální zařízení (virtuální síť 4 na **obrázku 1**), aby zkontrolovaly provoz, který není v Internetu.
+* Paprsky pro virtuální sítě připojené k virtuálnímu rozbočovači (virtuální síť 1, virtuální síť 2 a virtuální síť 3 na **obrázku 1**).
+* "Síť VNet" pro virtuální sítě, ve které uživatelé nasadili síťové virtuální zařízení (virtuální síť 4 na **obrázku 1**), aby zkontrolovaly internetový provoz, a případně i se společnými službami, které jsou k dispozici prostřednictvím paprsků.
 * "DMZ VNet" pro virtuální sítě, ve kterých si uživatelé nasadili síťové virtuální zařízení, které se mají použít ke kontrole provozu vázaného na Internet (virtuální síť 5 na **obrázku 1**).
-* "Síťové virtuální zařízení paprsky" pro virtuální sítě připojené k virtuální síti síťové virtuální zařízení (virtuální síť 1, virtuální síť 2 a virtuální síť 3 na **obrázku 1**).
 * "Centra" pro virtuální sítě WAN spravovaná Microsoftem.
 
 Následující matice připojení shrnuje toky podporované v tomto scénáři:
 
 **Matice připojení**
 
-| Z          | Do:|*SÍŤOVÉ virtuální zařízení paprsky*|*Virtuální síť služby*|*Virtuální síť DMZ*|*Statické větve*|
-|---|---|---|---|---|---|
-| **SÍŤOVÉ virtuální zařízení paprsky**| &#8594;|      X |            X |   Partnerské vztahy |    Static    |
-| **Virtuální síť služby**| &#8594;|    X |            X |      X    |      X       |
-| **Virtuální síť DMZ** | &#8594;|       X |            X |      X    |      X       |
-| **Větve** | &#8594;|  Static |            X |      X    |      X       |
+| Z          | Do:|*Paprsky*|*Virtuální síť služby*|*Větve*|*Internet*|
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **Paprsky**| &#8594;| Přímo |Přímo | Přes virtuální síť služby |Přes DMZ VNet |
+| **Virtuální síť služby**| &#8594;| Přímo |neuvedeno| Přímo | |
+| **Větve** | &#8594;| Přes virtuální síť služby |Přímo| Přímo |  |
 
-Každá z buněk v matici připojení popisuje, jestli připojení k virtuální síti WAN (strana "od", záhlaví řádků) obsahuje předponu cíle (stranu "do" toku, záhlaví sloupců v kurzívě) pro konkrétní tok přenosů. "X" znamená, že připojení je nativně zajištěno službou Virtual WAN a "static" znamená, že připojení je zajištěno přes virtuální síť WAN pomocí statických tras. Podívejme se na podrobnosti na různé řádky:
+Každá z buněk v matici připojení popisuje, jestli jsou toky připojení přímo přes virtuální síť WAN nebo přes jednu z virtuální sítě s síťové virtuální zařízení. Podívejme se na podrobnosti na různé řádky:
 
-* SÍŤOVÉ virtuální zařízení paprsky:
+* Paprsky
   * Paprsky dostanou k ostatním paprskům přímý přístup k virtuálním rozbočovačům WAN.
   * Paprsky získají připojení ke větvím přes statickou trasu ukazující na virtuální síť služby. Neměly by se učit konkrétní předpony z větví (jinak by byly konkrétnější a potlačit souhrn).
   * Paprsky budou odesílat internetový provoz do virtuální sítě DMZ prostřednictvím přímého partnerského vztahu virtuálních sítí.
@@ -51,12 +50,12 @@ Každá z buněk v matici připojení popisuje, jestli připojení k virtuální
 * Virtuální síť služby bude podobná virtuální síti služby Shared Services, která musí být dosažitelná z každé virtuální sítě a každé větve.
 * Virtuální síť DMZ ve skutečnosti nemusí mít připojení přes virtuální síť WAN, protože jediný provoz, který bude podporovat, se bude nacházet prostřednictvím přímých partnerských vztahů virtuální sítě. Pro zjednodušení konfigurace ale použijeme stejný model připojení jako u virtuální sítě DMZ.
 
-Naše matrice připojení proto nabízí tři rozdílné vzory připojení, které se přeloží na tři směrovací tabulky. Přidružení k různým virtuální sítě budou následující:
+Naše tabulka konektivity poskytuje tři rozdílné vzory připojení, které se překládá na tři směrovací tabulky. Přidružení k různým virtuální sítě budou následující:
 
-* SÍŤOVÉ virtuální zařízení paprsky:
+* Paprsky
   * Přidružená směrovací tabulka: **RT_V2B**
   * Rozšiřování do směrovacích tabulek: **RT_V2B** a **RT_SHARED**
-* SÍŤOVÉ virtuální zařízení virtuální sítě (interní a Internet):
+* SÍŤOVÉ virtuální zařízení virtuální sítě (virtuální síť služby a virtuální síť DMZ):
   * Přidružená směrovací tabulka: **RT_SHARED**
   * Rozšiřování do směrovacích tabulek: **RT_SHARED**
 * Zřizování
@@ -65,14 +64,14 @@ Naše matrice připojení proto nabízí tři rozdílné vzory připojení, kter
 
 Tyto statické trasy potřebujeme, abychom zajistili, že provoz VNet-to-VNet a propojení mezi virtuálními sítěmi prochází síťové virtuální zařízení ve virtuální síti služby (virtuální síť 4):
 
-| Description | Tabulka směrování | Statická trasa              |
+| Popis | Tabulka směrování | Statická trasa              |
 | ----------- | ----------- | ------------------------- |
 | Větve    | RT_V2B      | 10.2.0.0/16 – > vnet4conn  |
 | SÍŤOVÉ virtuální zařízení paprsky  | Výchozí     | 10.1.0.0/16 – > vnet4conn  |
 
 Virtuální síť WAN teď ví, ke kterému připojení se mají odesílat pakety, ale připojení potřebuje vědět, co dělat při přijímání těchto paketů: v tomto umístění se používají tabulky směrování připojení.
 
-| Description | Připojení | Statická trasa            |
+| Popis | Připojení | Statická trasa            |
 | ----------- | ---------- | ----------------------- |
 | VNet2Branch | vnet4conn  | 10.2.0.0/16 – > 10.4.0.5 |
 | Branch2VNet | vnet4conn  | 10.1.0.0/16 – > 10.4.0.5 |
