@@ -3,12 +3,12 @@ title: Vytvoření vlastní role Azure Resource Manager a přiřazení k instan�
 description: Tento článek poskytuje pokyny k vytvoření vlastní role Azure Resource Manager a přiřazení k instančnímu objektu pro živé video analýzy v IoT Edge pomocí Azure CLI.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526574"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425720"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Vytvoření vlastní role Azure Resource Manager a přiřazení k instančnímu objektu
 
@@ -179,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Parametry:
 
-|Parametry|Description| 
+|Parametry|Popis| 
 |---|---|
 |--role |Název nebo ID vlastní role V našem případě: "LVAEdge uživatel".|
 |--nabyvatel-objektu-ID|ID objektu instančního objektu, který budete používat.|
@@ -230,7 +230,7 @@ Vyhledejte "roleDefinitionName" a podívejte se, že jeho hodnota je nastavená 
 
 Tím se potvrdí, že jsme propojili vlastní roli uživatele s instančním objektem, který se používá pro naši aplikaci.
 
-### <a name="test-the-service-principal-rbac"></a>Testování RBAC objektu služby  
+### <a name="test-the-service-principal-access-control"></a>Testování řízení přístupu instančního objektu
 
 1. Přihlaste se pomocí instančního objektu. V tomto případě budeme potřebovat 3 části informací, které Azure Active Directory poskytnout pro nás správný přístupový token, který můžeme získat z výstupu kroku [Vytvoření instančního objektu](#create-service-principal) :
     1. AadClientID 

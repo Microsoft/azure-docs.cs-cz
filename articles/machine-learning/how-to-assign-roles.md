@@ -1,7 +1,7 @@
 ---
 title: Správa rolí v pracovním prostoru
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak získat přístup k pracovnímu prostoru Azure Machine Learning pomocí řízení přístupu na základě role (RBAC).
+description: Naučte se, jak získat přístup k pracovnímu prostoru Azure Machine Learning pomocí řízení přístupu na základě role Azure (RBAC).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966402"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425645"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 
@@ -34,9 +34,9 @@ Pracovní prostor služby Azure Machine Learning je prostředek Azure. Podobně 
 | **Vlastní role** | Umožňuje přizpůsobit přístup k určitým operacím ovládacího prvku nebo datové roviny v pracovním prostoru. Například odeslání spuštění, vytvoření COMPUTE, nasazení modelu nebo registrace datové sady. |
 
 > [!IMPORTANT]
-> Přístup k rolím může být v Azure omezený na více úrovní. Například někdo s přístupem vlastníka k pracovnímu prostoru nemusí mít oprávnění vlastníka ke skupině prostředků, která obsahuje pracovní prostor. Další informace najdete v tématu [jak funkce RBAC funguje](/azure/role-based-access-control/overview#how-rbac-works).
+> Přístup k rolím může být v Azure omezený na více úrovní. Například někdo s přístupem vlastníka k pracovnímu prostoru nemusí mít oprávnění vlastníka ke skupině prostředků, která obsahuje pracovní prostor. Další informace najdete v tématu [Jak funguje Azure RBAC](/azure/role-based-access-control/overview#how-azure-rbac-works).
 
-Další informace o konkrétních předdefinovaných rolích najdete v tématu [předdefinované role pro Azure](/azure/role-based-access-control/built-in-roles).
+Další informace o konkrétních předdefinovaných rolích najdete v tématu [předdefinované role Azure](/azure/role-based-access-control/built-in-roles).
 
 ## <a name="manage-workspace-access"></a>Správa přístupu k pracovnímu prostoru
 
@@ -71,7 +71,7 @@ Azure Machine Learning integrovaných akcí pro mnoho operací a úloh. Úplný 
 
 Tyto tabulky popisují rozsah oprávnění, který se má přidat k akcím ve vlastní roli vytvořené k provádění operací MLflow.
 
-| Operace MLflow | Rozsah |
+| Operace MLflow | Obor |
 | --- | --- |
 | Vypíše všechny experimenty v úložišti sledování pracovních prostorů, získá experiment podle ID, získá experiment podle názvu. | Microsoft. MachineLearningServices/pracovní prostory/experimenty/číst |
 | Vytvoření experimentu s názvem, nastavení značky na experimentu, obnovení experimentu označeného k odstranění| Microsoft. MachineLearningServices/pracovní prostory/experimenty/Write | 
@@ -432,13 +432,13 @@ Tady je několik věcí, na kterých je potřeba vědět, když používáte ř�
     - "Microsoft. Network/virtualNetworks/JOIN/Action" na prostředku virtuální sítě.
     - "Microsoft. Network/virtualNetworks/podsíť/JOIN/Action" na prostředku podsítě.
     
-    Další informace o RBAC pomocí sítě najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking).
+    Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking).
 
 - Může někdy trvat až 1 hodinu, než se vaše nové přiřazení role projeví u oprávnění uložených v mezipaměti napříč zásobníkem.
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>Otázka: Jaká oprávnění potřebuji k použití spravované identity přiřazené uživatelem v mých clusterech Amlcompute?
 
-K přiřazení identity přiřazené uživateli v clusterech Amlcompute musí mít jeden oprávnění k zápisu, aby bylo možné vytvořit výpočetní prostředky a mít [roli spravovaného operátora identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Pokud chcete získat další informace o RBAC se spravovanými identitami, přečtěte si téma [Správa identity přiřazené uživatelem](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) .
+K přiřazení identity přiřazené uživateli v clusterech Amlcompute musí mít jeden oprávnění k zápisu, aby bylo možné vytvořit výpočetní prostředky a mít [roli spravovaného operátora identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Další informace o službě Azure RBAC se spravovanými identitami najdete v článku [Správa identity přiřazené uživatelem](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) .
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>Otázka: Podporujeme na portálu Studio řízení přístupu na základě rolí?

@@ -8,32 +8,32 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5fe3017e1f39e4cf23f19e2b16a3d0406707083a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d116bdec2974fa2c39c6a56364e54ca7d776b682
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626509"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426038"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-powershell"></a>Konfigurace parametrů serveru v Azure Database for MariaDB pomocí prostředí PowerShell
 
 Pomocí prostředí PowerShell můžete vypsat, zobrazit a aktualizovat parametry konfigurace serveru Azure Database for MariaDB. Podmnožina konfigurací modulu se zveřejňuje na úrovni serveru a dá se upravit.
 
 >[!Note]
-> Parametry serveru se dají aktualizovat globálně na úrovni serveru, a to pomocí [Azure CLI](./howto-configure-server-parameters-cli.md), [powershellu](./howto-configure-server-parameters-using-powershell.md)nebo [Azure Portal](./howto-server-parameters.md).
+> Parametry serveru je možné aktualizovat globálně na úrovni serveru pomocí [Azure CLI](./howto-configure-server-parameters-cli.md), [PowerShellu](./howto-configure-server-parameters-using-powershell.md) nebo webu [Azure Portal](./howto-server-parameters.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto průvodce budete potřebovat:
 
-- [Modul AZ PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) nainstalovaný místně nebo [Azure Cloud Shell](https://shell.azure.com/) v prohlížeči
+- [Modul AZ PowerShell](/powershell/azure/install-az-ps) nainstalovaný místně nebo [Azure Cloud Shell](https://shell.azure.com/) v prohlížeči
 - [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > I když je modul PowerShell AZ. MariaDb ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MariaDb -AllowPrerelease` .
 > Jakmile je modul PowerShellu AZ. MariaDb všeobecně dostupný, bude součástí budoucna k tomu, aby vydaná vydání modulu PowerShellu a nativně dostupná v rámci Azure Cloud Shell.
 
-Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k účtu Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
+Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

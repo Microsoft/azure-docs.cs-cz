@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011459"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425883"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rychlý Start: použití sady Azure Storage SDK V11 pro .NET ke správě fronty
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak pomocí Azure Storage klientské knihov
 > [!NOTE]
 > V tomto rychlém startu se používá starší verze klientské knihovny Azure Queue Storage. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET](storage-quickstart-queues-dotnet.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -34,7 +34,7 @@ Dále stáhněte a nainstalujte .NET Core 2.0 pro váš operační systém. Poku
 - Nainstalujte [.NET Core pro Windows](https://www.microsoft.com/net/download/windows) nebo [.NET Framework](https://www.microsoft.com/net/download/windows) (ten je součástí sady Visual Studio pro Windows).
 - Nainstalujte sadu [Visual Studio pro Windows](https://www.visualstudio.com/). Pokud používáte .NET Core, instalace sady Visual Studio je volitelná.  
 
-Informace o výběru mezi .NET Core a .NET Framework najdete v tématu [Výběr mezi .NET Core a .NET Framework pro serverové aplikace](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
+Informace o výběru mezi .NET Core a .NET Framework najdete v tématu [Výběr mezi .NET Core a .NET Framework pro serverové aplikace](/dotnet/standard/choosing-core-framework-server).
 
 ### <a name="linux"></a>Linux
 
@@ -266,14 +266,14 @@ Podívejte se na tyto další zdroje informací o vývoji pro .NET pomocí front
 
 ### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
 
-- Stažení balíčků NuGet pro nejnovější verzi [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
+- Stažení balíčků NuGet pro nejnovější verzi [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage)
     - [Společné](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [Fronty](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Prohlédněte si [zdrojový kód klientské knihovny pro .NET](https://github.com/Azure/azure-storage-net) na GitHubu.
 
 ### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
 
-- Další informace o klientské knihovně pro .NET najdete v [referenčních informacích k rozhraní .NET API](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
+- Další informace o klientské knihovně pro .NET najdete v [referenčních informacích k rozhraní .NET API](/dotnet/api/overview/azure/storage).
 - Prozkoumejte [ukázky služby Queue Storage](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) vytvořené pomocí klientské knihovny .NET.
 
 ## <a name="next-steps"></a>Další kroky
@@ -281,6 +281,6 @@ Podívejte se na tyto další zdroje informací o vývoji pro .NET pomocí front
 V tomto rychlém startu jste zjistili, jak přidat zprávy do fronty, prohlížet zprávy z fronty a vyřadit zprávy z fronty a zpracovávat je pomocí .NET. 
 
 > [!div class="nextstepaction"]
-> [Komunikace mezi aplikacemi pomocí Azure Queue Storage](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Komunikace mezi aplikacemi pomocí Azure Queue Storage](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - Další informace o .NET Core najdete v tématu [Začínáme s .NET během 10 minut](https://www.microsoft.com/net/learn/get-started/).

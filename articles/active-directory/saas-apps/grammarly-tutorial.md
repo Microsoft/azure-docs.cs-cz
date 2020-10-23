@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 989e3f4a285d44128bba1c9811aebcb76b8c0220
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13b62646728eb03a7470d9bb57741bcb90cc24fb
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327948"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92447700"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s gramaticky
 
@@ -83,7 +83,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Gramatická aplikace očekává kontrolní výrazy SAML v určitém formátu. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
     
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | -------------- | --------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -135,8 +135,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 1. Kliknutím na **otestovat tuto aplikaci** v Azure Portal a automaticky se přihlásíte k gramatické přihlášení, pro které jste nastavili jednotné přihlašování. 
 
-2. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na gramaticky dlaždici, měli byste se automaticky přihlásit k gramatické přihlášení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+2. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na gramaticky dlaždici, měli byste se automaticky přihlásit k gramatické přihlášení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile gramaticky nakonfigurujete, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Jakmile gramaticky nakonfigurujete, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

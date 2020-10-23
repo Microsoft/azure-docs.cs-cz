@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9780a2adb60c690abda6880157252aaa0c562f18
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: d06d1b0553161523708f4bb142f1c715a77eb2dd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171788"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461103"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure synapse pomocí Azure Portal.
@@ -23,13 +23,8 @@ Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure sy
 
 1. Otevřete [Azure Portal](https://portal.azure.com)a v horní části vyhledejte **synapse**.
 1. Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)**.
-1. Vyberte **Přidat** a vytvořte pracovní prostor pomocí těchto nastavení:
-
-    |Karta|Nastavení | Navrhovaná hodnota | Popis |
-    |---|---|---|---|
-    |Základy|**Název pracovního prostoru**|Můžete si je pojmenovat.| V tomto dokumentu budeme používat **MyWorkspace**.|
-    |Základy|**Oblast**|Porovnává s oblastí účtu úložiště.|
-
+1. Vyberte **Přidat** a vytvořte pracovní prostor.
+1. Na kartě **základy** dejte pracovnímu prostoru jedinečný název. V tomto dokumentu použijeme **mysworkspace** .
 1. K vytvoření pracovního prostoru potřebujete účet ADLSGEN2. Nejjednodušší volbou je vytvoření nového. Pokud chcete znovu použít stávající, musíte provést nějakou další konfiguraci. 
 1. MOŽNOST 1 Vytvoření nového účtu ADLSGEN2 
     1. V části **vybrat data Lake Storage Gen 2**klikněte na **vytvořit nový** a pojmenujte ho **contosolake**.

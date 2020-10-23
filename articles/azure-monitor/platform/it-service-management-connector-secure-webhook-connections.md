@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 447b781ec83a01a58e6af9e9e43f75b3fc56b10f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370776"
+ms.locfileid: "92427325"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
 
@@ -57,7 +57,10 @@ Začněte používat nástroj konektoru ITSM s těmito kroky:
 
 1. Zaregistrovat aplikaci v Azure AD
 2. Vytvořte zabezpečenou skupinu akcí Webhooku.
-3. Nakonfigurujte své partnerské prostředí. Dnes podporujeme jednoho dodavatele, který je BMC Helix.
+3. Nakonfigurujte své partnerské prostředí. 
+
+Zabezpečený export podporuje připojení pomocí následujících ITSM nástrojů:
+* [Helix BMC](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Zaregistrovat s Azure Active Directory
 
@@ -86,24 +89,24 @@ Pokud chcete přidat Webhook k akci, postupujte podle těchto pokynů pro zabezp
 5. Vyberte **zabezpečený Webhook**.
 6. Vyberte tyto podrobnosti:
    1. Vyberte ID objektu Azure Active Directory instance, kterou jste zaregistrovali.
-   2. V případě identifikátoru URI vložte adresu URL Webhooku, kterou jste zkopírovali z prostředí dodavatele.
+   2. V případě identifikátoru URI vložte adresu URL Webhooku, kterou jste zkopírovali z [prostředí nástroje ITSM](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment).
    3. Nastavte **možnost Povolit společné schéma výstrah** na **Ano**. 
 
    Následující obrázek ukazuje konfiguraci ukázkové zabezpečené akce Webhooku:
 
    ![Snímek obrazovky, který zobrazuje zabezpečenou akci Webhooku.](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
 
-## <a name="configure-the-partner-environment"></a>Konfigurace partnerského prostředí
+## <a name="configure-the-itsm-tool-environment"></a>Konfigurace prostředí nástroje ITSM
 
 Konfigurace obsahuje 2 kroky:
 1. Získejte identifikátor URI pro definici zabezpečeného exportu.
-2. Definice podle toku dodavatele.
+2. Definice podle toku nástroje ITSM
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>Připojení řadiče pro správu základní desky Helix k Azure Monitor
 
 V následujících částech najdete podrobné informace o tom, jak připojit Helix produkt pro řadiče pro správu základní desky a zabezpečený export v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jste splnili následující požadavky:
 

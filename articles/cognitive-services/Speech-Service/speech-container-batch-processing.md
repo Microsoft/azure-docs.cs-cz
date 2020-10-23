@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319074"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425794"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Sada Batch Processing Kit pro kontejnery řeči
 
@@ -75,9 +75,8 @@ Klient služby Batch může dynamicky zjistit, jestli koncový bod nebude k disp
 > [!NOTE] 
 > * Tento příklad používá stejný adresář ( `/my_nfs` ) pro konfigurační soubor a vstupní, výstupní a protokoly adresáře. Pro tyto složky můžete použít hostované adresáře nebo adresáře připojené k systému souborů NFS.
 > * Po spuštění klienta se `–h` zobrazí seznam dostupných parametrů příkazového řádku a jejich výchozí hodnoty. 
+> * Kontejner dávkového zpracování je podporován pouze v systému Linux.
 
-
-#### <a name="linux"></a>[Linux](#tab/linux)
 `run`Ke spuštění kontejneru použijte příkaz Docker. Tím se spustí interaktivní prostředí uvnitř kontejneru.
 
 ```Docker
@@ -95,17 +94,6 @@ Spuštění klienta Batch a kontejneru v jednom příkazu:
 ```Docker
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-Spuštění klienta Batch a kontejneru v jednom příkazu:
-
-```Docker
-docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
-
-```
-
----
 
 
 Klient bude spuštěn. Pokud se už zvukový soubor přepisu v předchozím běhu, klient ho automaticky přeskočí. Když dojde k přechodným chybám, odesílají se soubory s automatickým opakováním a můžete odlišit, mezi kterými chybami se má klient pokusit znovu. Při chybě přepisu bude klient pokračovat v přepisu a může to zkusit znovu, aniž by došlo ke ztrátě průběhu.  
@@ -163,7 +151,7 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 ---
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 > [!NOTE]
 > Klient Batch může soubor *Run. log* pravidelně přepsat, pokud je příliš velký.

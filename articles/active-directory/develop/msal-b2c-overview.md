@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119783"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442248"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro jazyk JavaScript pro práci s Azure AD B2C
 
@@ -56,16 +56,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>Krok 3: Konfigurace ověřování
 
-1. Otevřete `config.js` soubor v ukázce.
+1. Otevřete `config.json` soubor v ukázce.
 
-2. Nakonfigurujte ukázku pomocí přihlašovacích údajů aplikace, které jste získali dříve při registraci aplikace. Změňte následující řádky kódu nahrazením hodnot názvy clientID, Host, tenantId a název zásady.
+2. Nakonfigurujte ukázku pomocí přihlašovacích údajů aplikace, které jste získali dříve při registraci aplikace. Změňte následující řádky kódu nahrazením hodnot názvem vašeho tenanta, ID klienta a názvem zásady.
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 Další informace najdete v této [ ukázceNode.js B2C webového rozhraní API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
 
@@ -209,6 +215,6 @@ Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kter
 
 Přečtěte si další informace o těchto Azure AD B2C konceptech:
 
-- [Toky uživatele](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Toky uživatelů](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md)
 - [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/custom-policy-configure-user-input.md)

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de255836cb269f5077a417a203e136f9e903f05d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613981"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441670"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Přidání konektoru API do toku uživatele
 
@@ -44,7 +44,7 @@ Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejd
 > Dřív jste museli nakonfigurovat, které atributy uživatele se mají odeslat do rozhraní API (deklarace k odeslání), a které atributy uživatele se mají přijmout z rozhraní API (deklarace k přijetí). Nyní jsou všechny atributy uživatelů odesílány ve výchozím nastavení, pokud mají hodnotu a libovolný atribut uživatele může být vrácen rozhraním API v odpovědi "pokračování".
 
 ## <a name="the-request-sent-to-your-api"></a>Požadavek odeslaný do vašeho rozhraní API
-Konektor rozhraní API se materializuje jako požadavek **http post** a jako páry klíč-hodnota se posílají atributy uživatele (deklarace), které jsou v těle JSON. Atributy jsou serializovány podobně jako [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) vlastností uživatele. 
+Konektor rozhraní API se materializuje jako požadavek **http post** a jako páry klíč-hodnota se posílají atributy uživatele (deklarace), které jsou v těle JSON. Atributy jsou serializovány podobně jako [Microsoft Graph](/graph/api/resources/user#properties) vlastností uživatele. 
 
 **Příklad požadavku**
 ```http
@@ -85,7 +85,7 @@ Ve výchozím nastavení se ve všech požadavcích standardně odesílají dekl
 > Pokud deklarace identity pro odeslání nemá hodnotu v okamžiku volání koncového bodu rozhraní API, deklarace identity nebude odeslána do rozhraní API. Rozhraní API by mělo být navržené tak, aby explicitně kontrolovalo hodnotu, kterou očekává.
 
 > [!TIP] 
-> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity) a deklarace **e-mailové adresy (' email ')** můžou vaše rozhraní API použít k identifikaci uživatele předtím, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověřuje pomocí zprostředkovatele identity, jako je Google nebo Facebook. ' e-mail ' je vždy odeslán.
+> [**identity (identity)**](/graph/api/resources/objectidentity) a deklarace **e-mailové adresy (' email ')** můžou vaše rozhraní API použít k identifikaci uživatele předtím, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověřuje pomocí zprostředkovatele identity, jako je Google nebo Facebook. ' e-mail ' je vždy odeslán.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Povolení konektoru API v toku uživatele
 
@@ -106,7 +106,7 @@ Pomocí těchto kroků přidáte konektor rozhraní API k samoobslužnému uživ
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Po přihlášení pomocí zprostředkovatele identity
 
-Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele u poskytovatele identity (Google, Facebook, Azure AD). Tento krok předchází ***stránku kolekce atributů***, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. 
+Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele u poskytovatele identity (Google, Facebook, Azure AD). Tento krok předchází*_stránku kolekce atributů_** _, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. 
 
 <!-- The following are examples of API connector scenarios you may enable at this step:
 - Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
@@ -244,12 +244,12 @@ Content-type: application/json
 }
 ```
 
-| Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
+| Parametr                                          | Typ              | Povinné | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| verze                                            | Řetězec            | Yes      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
-| akce                                             | Řetězec            | Yes      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | Hodnoty mohou být uloženy v adresáři, pokud jsou vybrány jako **deklarace pro příjem** v konfiguraci konektoru rozhraní API a **atributy uživatele** pro tok uživatele. Hodnoty mohou být vráceny v tokenu, pokud je vybrána jako **deklarace identity aplikace**.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Vrácená deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Hodnoty se ukládají v adresáři, pokud se vybírají jako **deklarace, aby se přijímaly** v konfiguraci konektoru rozhraní API a **atributu uživatele** pro tok uživatele. Vlastní atributy se v tokenu nedají poslat zpátky. |
+| verze                                            | Řetězec            | Ano      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
+| akce                                             | Řetězec            | Ano      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Hodnoty mohou být uloženy v adresáři, pokud jsou vybrány jako deklarace _*pro příjem** v konfiguraci konektoru rozhraní API a **uživatelských atributů** pro tok uživatele. Hodnoty mohou být vráceny v tokenu, pokud je vybrána jako **deklarace identity aplikace**.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Ne       | Vrácená deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Hodnoty se ukládají v adresáři, pokud se vybírají jako **deklarace, aby se přijímaly** v konfiguraci konektoru rozhraní API a **atributu uživatele** pro tok uživatele. Vlastní atributy se v tokenu nedají poslat zpátky. |
 
 ### <a name="example-of-a-blocking-response"></a>Příklad blokující odpovědi
 
@@ -266,12 +266,12 @@ Content-type: application/json
 
 ```
 
-| Parametr   | Typ   | Vyžadováno | Popis                                                                |
+| Parametr   | Typ   | Povinné | Popis                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec | Yes      | Verze rozhraní API.                                                    |
-| akce      | Řetězec | Yes      | Hodnota musí být `ShowBlockPage`                                              |
-| userMessage | Řetězec | Yes      | Zpráva, která se zobrazí uživateli.                                            |
-| kód        | Řetězec | No       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
+| verze     | Řetězec | Ano      | Verze rozhraní API.                                                    |
+| akce      | Řetězec | Ano      | Hodnota musí být `ShowBlockPage`                                              |
+| userMessage | Řetězec | Ano      | Zpráva, která se zobrazí uživateli.                                            |
+| kód        | Řetězec | Ne       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
 
 **Činnost koncového uživatele s blokující odezvou**
 
@@ -292,13 +292,13 @@ Content-type: application/json
 }
 ```
 
-| Parametr   | Typ    | Vyžadováno | Popis                                                                |
+| Parametr   | Typ    | Povinné | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| verze     | Řetězec  | Yes      | Verze rozhraní API.                                                    |
-| akce      | Řetězec  | Yes      | Hodnota musí být `ValidationError` .                                           |
-| status      | Integer | Yes      | `400`Pro odpověď ValidationError musí být hodnota.                        |
-| userMessage | Řetězec  | Yes      | Zpráva, která se zobrazí uživateli.                                            |
-| kód        | Řetězec  | No       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
+| verze     | Řetězec  | Ano      | Verze rozhraní API.                                                    |
+| akce      | Řetězec  | Ano      | Hodnota musí být `ValidationError` .                                           |
+| status      | Integer | Ano      | `400`Pro odpověď ValidationError musí být hodnota.                        |
+| userMessage | Řetězec  | Ano      | Zpráva, která se zobrazí uživateli.                                            |
+| kód        | Řetězec  | Ne       | Kód chyby Lze použít pro účely ladění. Nezobrazuje se uživateli. |
 
 **Činnost koncového uživatele při ověřování – chybová odezva**
 

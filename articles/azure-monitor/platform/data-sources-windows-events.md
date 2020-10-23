@@ -1,25 +1,28 @@
 ---
-title: Shromažďování a analýza protokolů událostí systému Windows v Azure Monitor | Microsoft Docs
+title: Shromažďovat zdroje dat protokolu událostí systému Windows pomocí agenta Log Analytics v Azure Monitor
 description: V této části najdete popis postupu konfigurace shromažďování protokolů událostí systému Windows Azure Monitor a podrobností záznamů, které vytvoří.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87075261"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440599"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí systému Windows v Azure Monitor
-Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
+# <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Shromažďovat zdroje dat protokolu událostí systému Windows pomocí agenta Log Analytics
+Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](agent-data-sources.md) pro agenty Log Analytics na virtuálních počítačích s Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
+
+> [!IMPORTANT]
+> Tento článek popisuje shromažďování událostí systému Windows pomocí [agenta Log Analytics](log-analytics-agent.md) , který je jedním z agentů používaných Azure monitor. Jiní agenti shromažďují různá data a nakonfigurují se jinak. Seznam dostupných agentů a data, která mohou shromažďovat, najdete v tématu [Přehled agentů Azure monitor](agents-overview.md) .
 
 ![Události systému Windows](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>Konfigurace protokolů událostí systému Windows
-[V nabídce data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources)Nakonfigurujte protokoly událostí systému Windows.
+[V nabídce data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources) pro pracovní prostor Log Analytics Nakonfigurujte protokoly událostí systému Windows.
 
 Azure Monitor shromažďuje pouze události z protokolů událostí systému Windows, které jsou zadány v nastavení.  Protokol událostí můžete přidat zadáním názvu protokolu a kliknutím **+** .  U každého protokolu se shromažďují jenom události s vybranými závažnostmi.  Ověřte závažnost konkrétního protokolu, který chcete shromáždit.  Nemůžete zadat žádná další kritéria pro filtrování událostí.
 
@@ -60,7 +63,7 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 ## <a name="log-queries-with-windows-events"></a>Dotazy protokolu s událostmi systému Windows
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy událostí systému Windows.
 
-| Dotaz | Description |
+| Dotaz | Popis |
 |:---|:---|
 | Událost |Všechny události systému Windows. |
 | Událost &#124;, kde EventLevelName = = "Error" |Všechny události systému Windows se závažností chyby. |

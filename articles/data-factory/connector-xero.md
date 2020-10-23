@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 10/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ac5645ccbb9c926bc5ff70605dd1e5de14e823
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529989"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427618"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
 
@@ -53,18 +53,18 @@ Pro propojenou službu Xero jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **Xero** . | Yes |
-| connectionProperties | Skupina vlastností, která definuje, jak se připojit k Xero. | Yes |
-| ***V části `connectionProperties` :*** | | |
-| Hostitel | Koncový bod serveru Xero ( `api.xero.com` ).  | Yes |
-| authenticationType | Povolené hodnoty jsou `OAuth_2.0` a `OAuth_1.0` . | Yes |
-| consumerKey | Klíč příjemce přidružený k aplikaci Xero Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| privateKey | Privátní klíč ze souboru. pem, který byl vygenerován pro vaši privátní aplikaci Xero, najdete v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka: pro **vygenerování PrivateKey. pem s numbits 1024 512** se nepodporuje `openssl genrsa -out privatekey.pem 512` . Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| typ | Vlastnost Type musí být nastavená na: **Xero** . | Ano |
+| connectionProperties | Skupina vlastností, která definuje, jak se připojit k Xero. | Ano |
+| **_Pod `connectionProperties` :_*_ | | |
+| Hostitel | Koncový bod serveru Xero ( `api.xero.com` ).  | Ano |
+| authenticationType | Povolené hodnoty jsou `OAuth_2.0` a `OAuth_1.0` . | Ano |
+| consumerKey | Klíč příjemce přidružený k aplikaci Xero Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| privateKey | Privátní klíč ze souboru. pem, který byl vygenerován pro vaši privátní aplikaci Xero, najdete v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka: _*vygenerujte PrivateKey. pem s numbits z 512** using `openssl genrsa -out privatekey.pem 512` , 1024 není podporováno. Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | tenantId | ID tenanta přidružené k vaší aplikaci Xero Platí pro ověřování OAuth 2,0.<br>Zjistěte, jak získat ID tenanta z [tématu zjištění klientů, kterým máte oprávnění k přístupu](https://developer.xero.com/documentation/oauth2/auth-flow). | Ano pro ověřování OAuth 2,0 |
-| Refreshtoken kontextového tokenu | Obnovovací token OAuth 2,0 přidružený k aplikaci Xero, který se používá k aktualizaci přístupového tokenu, když vyprší platnost přístupového tokenu. Platí pro ověřování OAuth 2,0. Přečtěte si, jak získat obnovovací token z [tohoto článku](https://developer.xero.com/documentation/oauth2/auth-flow).<br>Platnost tokenu pro aktualizaci nikdy nevypršela. Pokud chcete získat obnovovací token, musíte požádat o [obor offline_access](https://developer.xero.com/documentation/oauth2/scopes).<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano pro ověřování OAuth 2,0 |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
-| useHostVerification | Určuje, jestli se v certifikátu serveru vyžaduje název hostitele, který se bude shodovat s názvem hostitele serveru při připojení přes protokol TLS. Výchozí hodnotou je hodnota true.  | No |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
+| Refreshtoken kontextového tokenu | Platí pro ověřování OAuth 2,0.<br/>Obnovovací token OAuth 2,0 je přidružen k aplikaci Xero a používá se k aktualizaci přístupového tokenu. platnost přístupového tokenu vyprší po 30 minutách. Přečtěte si, jak funguje autorizační tok Xero a jak získat obnovovací token z [tohoto článku](https://developer.xero.com/documentation/oauth2/auth-flow). Pokud chcete získat obnovovací token, musíte požádat o [obor offline_access](https://developer.xero.com/documentation/oauth2/scopes). <br/>Zjištění **omezení**: Poznámka Xero obnoví obnovovací token po jeho použití pro aktualizaci přístupového tokenu. Pro provozní úlohy před spuštěním každé aktivity kopírování musíte nastavit platný obnovovací token pro použití ADF.<br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano pro ověřování OAuth 2,0 |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, jestli se v certifikátu serveru vyžaduje název hostitele, který se bude shodovat s názvem hostitele serveru při připojení přes protokol TLS. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
 
 **Příklad: ověřování OAuth 2,0**
 
@@ -143,7 +143,7 @@ Chcete-li kopírovat data z Xero, nastavte vlastnost Type datové sady na **Xero
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **XeroObject** . | Yes |
+| typ | Vlastnost Type datové sady musí být nastavená na: **XeroObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Příklad**
@@ -173,7 +173,7 @@ Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování 
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **XeroSource** . | Yes |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **XeroSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Contacts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Příklad:**
@@ -210,7 +210,7 @@ Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování 
 
 Při zadávání dotazu Xero Pamatujte na následující:
 
-- Tabulky se složitými položkami budou rozděleny na více tabulek. Například bankovní transakce má komplexní strukturu dat "položky řádku", takže data bankovních transakcí jsou namapována na tabulku `Bank_Transaction` a s využitím `Bank_Transaction_Line_Items` `Bank_Transaction_ID` cizího klíče, aby je bylo možné propojit dohromady.
+- Tabulky se složitými položkami budou rozděleny na více tabulek. Například bankovní transakce mají složitou datovou strukturu "položky řádku", takže data bankovních transakcí jsou namapována na tabulku `Bank_Transaction` a `Bank_Transaction_Line_Items` s využitím `Bank_Transaction_ID` cizího klíče, aby je bylo možné propojit dohromady.
 
 - Xero data jsou dostupná prostřednictvím dvou schémat: `Minimal` (výchozí) a `Complete` . Kompletní schéma obsahuje tabulky volání požadovaných součástí, které před provedením požadovaného dotazu vyžadují další data (například sloupec ID).
 

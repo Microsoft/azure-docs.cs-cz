@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 60bf2034f1e6404f3f09bf25a66c497dbbaf4d05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c3aa5c1f640db79e4e64545dc0da804508f64a9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361649"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460032"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Kurz: Konfigurace Insight4GRC pro Automatické zřizování uživatelů
 
-Tento kurz popisuje kroky, které je třeba provést v Insight4GRC i Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, které se [Insight4GRC](https://www.rsmuk.com/) pomocí služby zřizování Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md). 
+Tento kurz popisuje kroky, které je třeba provést v Insight4GRC i Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, které se [Insight4GRC](https://www.rsmuk.com/) pomocí služby zřizování Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Podporované funkce
@@ -29,20 +29,20 @@ Tento kurz popisuje kroky, které je třeba provést v Insight4GRC i Azure Activ
 > * Odebrat uživatele v Insight4GRC, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Insight4GRC
 > * Zřizování skupin a členství ve skupinách v Insight4GRC
-> * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial) k Insight4GRC (doporučeno)
+> * [Jednotné přihlašování](./insight4grc-tutorial.md) k Insight4GRC (doporučeno)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* [Tenant Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Uživatelský účet v Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
+* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
 * Uživatelský účet v Insight4GRC s oprávněními správce.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
-1. Seznamte se s [fungováním služby zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Zjistěte, kdo bude v [rozsahu zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Určete, jaká data se mají [mapovat mezi Azure AD a Insight4GRC](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
+1. Seznamte se s [fungováním služby zřizování](../app-provisioning/user-provisioning.md).
+2. Zjistěte, kdo bude v [rozsahu zřizování](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+3. Určete, jaká data se mají [mapovat mezi Azure AD a Insight4GRC](../app-provisioning/customize-application-attributes.md). 
 
 ## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Insight4GRC pro podporu zřizování pomocí Azure AD
 
@@ -53,15 +53,15 @@ Před konfigurací Insight4GRC pro Automatické zřizování uživatelů pomocí
 
 ## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání Insight4GRC z Galerie aplikací Azure AD
 
-Přidejte Insight4GRC z Galerie aplikací Azure AD a začněte spravovat zřizování pro Insight4GRC. Pokud jste dříve nastavili Insight4GRC pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
+Přidejte Insight4GRC z Galerie aplikací Azure AD a začněte spravovat zřizování pro Insight4GRC. Pokud jste dříve nastavili Insight4GRC pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](../manage-apps/add-application-portal.md). 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definování uživatelů, kteří budou v rozsahu zřizování 
 
-Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se zřídí, na základě přiřazení k aplikaci nebo atributů jednotlivých uživatelů nebo skupin. Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí pro vaši aplikaci, na základě přiřazení, můžete k aplikaci přiřadit uživatele a skupiny pomocí následujících [kroků](../manage-apps/assign-user-or-group-access-portal.md). Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí, pouze na základě atributů jednotlivých uživatelů nebo skupin, můžete použít filtr rozsahu, jak je popsáno [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se zřídí, na základě přiřazení k aplikaci nebo atributů jednotlivých uživatelů nebo skupin. Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí pro vaši aplikaci, na základě přiřazení, můžete k aplikaci přiřadit uživatele a skupiny pomocí následujících [kroků](../manage-apps/assign-user-or-group-access-portal.md). Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí, pouze na základě atributů jednotlivých uživatelů nebo skupin, můžete použít filtr rozsahu, jak je popsáno [tady](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-* Při přiřazování uživatelů a skupin k Insight4GRC je nutné vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat další role. 
+* Při přiřazování uživatelů a skupin k Insight4GRC je nutné vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat další role. 
 
-* Začněte v malém. Než se pustíte do zavádění pro všechny, proveďte testování s malou skupinou uživatelů a skupin. Pokud je rozsah zřizování nastavený na přiřazené uživatele a skupiny, můžete testování provést tak, že k aplikaci přiřadíte jednoho nebo dva uživatele nebo skupiny. Pokud je rozsah nastavený na všechny uživatele a skupiny, můžete určit [filtr rozsahu na základě atributů](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Začněte v malém. Než se pustíte do zavádění pro všechny, proveďte testování s malou skupinou uživatelů a skupin. Pokud je rozsah zřizování nastavený na přiřazené uživatele a skupiny, můžete testování provést tak, že k aplikaci přiřadíte jednoho nebo dva uživatele nebo skupiny. Pokud je rozsah nastavený na všechny uživatele a skupiny, můžete určit [filtr rozsahu na základě atributů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-insight4grc"></a>Krok 5. Konfigurace automatického zřizování uživatelů na Insight4GRC 
@@ -98,7 +98,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Insight4GRC**.
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Insight4GRC v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Insight4GRC pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), budete muset zajistit, aby rozhraní Insight4GRC API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Insight4GRC v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Insight4GRC pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](../app-provisioning/customize-application-attributes.md), budete muset zajistit, aby rozhraní Insight4GRC API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
    |Atribut|Typ|
    |---|---|
@@ -140,9 +140,9 @@ Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a sk
 ## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
 Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:
 
-* Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně zřídili.
-* Zkontrolujte indikátor [průběhu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) a zobrazte stav cyklu zřizování a způsob, jakým se má dokončit.
-* Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+* Pomocí [protokolů zřizování](../reports-monitoring/concept-provisioning-logs.md) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně zřídili.
+* Zkontrolujte indikátor [průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) a zobrazte stav cyklu zřizování a způsob, jakým se má dokončit.
+* Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 

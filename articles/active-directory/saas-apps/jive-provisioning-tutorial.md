@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fa45ece76499b50694d366ed2dcdd57cc1e0c7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caeff5be83e02948baab4ecbcf05630eacff74df
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312092"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459369"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Kurz: Konfigurace Jive pro Automatické zřizování uživatelů
 
@@ -35,7 +35,7 @@ Azure Active Directory používá koncept nazvaný "přiřazení" k určení už
 
 Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci Jive. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace Jive podle pokynů uvedených tady:
 
-[Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-jive"></a>Důležité tipy pro přiřazení uživatelů k Jive
 

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 10728a5500d8ad36c006bac9176422c6afb9bf1a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 878fa9f576e50fb53e648d3bf39f98558d6e880a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945986"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441092"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparentní šifrování dat pro SQL Database, spravovanou instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Pro Azure SQL Database a Azure synapse se ochrana TDE nastaví na úrovni [serve
 > Všechny nově vytvořené databáze v SQL Database jsou ve výchozím nastavení šifrované pomocí transparentního šifrování dat spravovaného službou. Existující databáze SQL vytvořené před 2017 a databáze SQL vytvořené prostřednictvím obnovení, geografické replikace a kopie databáze nejsou ve výchozím nastavení šifrované. Existující databáze spravované instance SQL vytvořené před únorem 2019 nejsou ve výchozím nastavení šifrované. Databáze spravované instance SQL vytvořené prostřednictvím obnovení dědí stav šifrování ze zdroje.
 
 > [!NOTE]
-> TDE se nedá použít k šifrování **Hlavní** databáze v Azure SQL Database a spravované instanci Azure SQL. **Hlavní** databáze obsahuje objekty, které jsou potřebné k provedení operací TDE v uživatelských databázích.
+> TDE se nedá použít k šifrování systémových databází, jako je **Hlavní** databáze, v Azure SQL Database a Azure SQL Managed instance. **Hlavní** databáze obsahuje objekty, které jsou potřebné k provedení operací TDE v uživatelských databázích.
 
 ## <a name="service-managed-transparent-data-encryption"></a>Transparentní šifrování dat spravované službou
 

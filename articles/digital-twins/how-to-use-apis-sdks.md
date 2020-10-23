@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5be746b73cef37826be36b13c6f491b8ef6ad809
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0fe56a8173a4cfe8836a078a62c7bc9015c83324
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359012"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461256"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -42,10 +42,10 @@ Rozhraní API rovin ovládacích prvků můžete také využít k interakci s di
 ## <a name="overview-data-plane-apis"></a>Přehled: rozhraní API roviny dat
 
 Rozhraní API roviny dat představují rozhraní API digitálních vláken Azure, která slouží ke správě prvků v instanci digitálních vláken Azure. Zahrnují operace, jako je vytváření tras, nahrávání modelů, vytváření relací a správu vláken. Můžou být v podstatě rozdělené do následujících kategorií:
-* **DigitalTwinsModels** – kategorie DigitalTwinsModels obsahuje rozhraní API pro správu [modelů](concepts-models.md) v instanci digitálních vláken Azure. Mezi aktivity správy patří nahrávání, ověřování, načítání a odstraňování modelů, které jsou vytvořené v DTDL.
+* **DigitalTwinModels** – kategorie DigitalTwinModels obsahuje rozhraní API pro správu [modelů](concepts-models.md) v instanci digitálních vláken Azure. Mezi aktivity správy patří nahrávání, ověřování, načítání a odstraňování modelů, které jsou vytvořené v DTDL.
 * **DigitalTwins** – kategorie DigitalTwins obsahuje rozhraní API, která vývojářům umožňují vytvářet, upravovat a odstraňovat [digitální vlákna](concepts-twins-graph.md) a jejich vztahy v instanci digitálních vláken Azure.
 * **Dotaz** – kategorie dotazu umožňuje vývojářům [Najít sady digitálních vláken ve dvojitých grafech](how-to-query-graph.md) napříč relacemi.
-* **EventRoutes** – kategorie EventRoutes obsahuje rozhraní API pro [směrování dat](concepts-route-events.md)prostřednictvím systému a služeb pro příjem dat.
+* **Směrování událostí** – kategorie trasy událostí obsahuje rozhraní API pro [směrování dat](concepts-route-events.md)prostřednictvím systému a služeb pro příjem dat.
 
 Nejaktuálnější verze rozhraní API roviny dat pro verzi Public Preview je _**2020-10-31**_.
 
@@ -56,7 +56,7 @@ Použití rozhraní API roviny dat:
 * Můžete použít sadu **.NET (C#)** SDK. Chcete-li použít sadu .NET SDK...
    - Balíček můžete zobrazit a přidat ze sady NuGet: [Azure. DigitalTwins. Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 
    - zdroj sady SDK, včetně složky ukázek, najdete na webu GitHub: [Klientská knihovna Azure IoT s Nevlákenou pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
-   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview).
+   - Můžete si prohlédnout [referenční dokumentaci k sadě SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview).
    - Podrobné informace a příklady použití můžete zobrazit tak, že v tomto článku budete pokračovat v části [.NET (C#) SDK (rovina dat)](#net-c-sdk-data-plane) .
 * Můžete použít sadu **Java** SDK. Použití sady Java SDK...
    - Balíček můžete zobrazit a nainstalovat z Maven: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)

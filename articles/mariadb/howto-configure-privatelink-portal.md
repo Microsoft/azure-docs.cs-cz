@@ -6,24 +6,24 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da54917d21d468f96b8e72ac362e030570fabaee
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836475"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426012"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB pomocí portálu
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení.  V tomto článku se naučíte, jak pomocí Azure Portal vytvořit virtuální počítač v Azure Virtual Network a Azure Database for MariaDB Server s privátním koncovým bodem Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for MariaDB servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-vm"></a>Vytvoření virtuálního počítače Azure
 
@@ -251,7 +251,7 @@ Až budete s použitím privátního koncového bodu, serveru MariaDB a virtuál
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto postupu jste vytvořili virtuální počítač ve virtuální síti, Azure Database for MariaDB a privátní koncový bod pro privátní přístup. Připojili jste se k jednomu virtuálnímu počítači z Internetu a bezpečně komunikovali se serverem MariaDB pomocí privátního odkazu. Další informace o privátních koncových bodech najdete v tématu [co je privátní koncový bod Azure](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+V tomto postupu jste vytvořili virtuální počítač ve virtuální síti, Azure Database for MariaDB a privátní koncový bod pro privátní přístup. Připojili jste se k jednomu virtuálnímu počítači z Internetu a bezpečně komunikovali se serverem MariaDB pomocí privátního odkazu. Další informace o privátních koncových bodech najdete v tématu [co je privátní koncový bod Azure](../private-link/private-endpoint-overview.md).
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

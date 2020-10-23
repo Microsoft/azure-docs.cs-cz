@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08623e6d69ac4db1790c1e9b46089f0c72c0526d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf57e60fc05d579365d459e4a5d5288c2ca52bb0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87906048"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442146"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Co jsou externí identity v Azure Active Directory?
 
@@ -31,7 +31,7 @@ Azure AD External identity se v rámci vaší organizace liší od vztahu uživa
 
 - **Vývoj aplikací, které jsou určené pro ostatní klienty Azure AD (jeden tenant nebo víceklientské tenanta)**. Při vývoji aplikací pro službu Azure AD můžete cílit uživatele z jedné organizace (jednoho tenanta) nebo uživatelů z jakékoli organizace, která už má tenanta Azure AD (označované jako aplikace s více klienty). Tyto víceklientské aplikace se registrují sami sami ve své vlastní službě Azure AD, ale můžou je použít libovolný uživatel Azure AD z jakékoli organizace bez jakékoli další práce na vaší straně.
 
-- **Vývoj aplikací s prázdným označením pro uživatele a zákazníky (Azure AD B2C)** Pokud jste podnikem nebo vývojářem vytváření zákaznických aplikací, můžete pomocí Azure AD B2C škálovat na uživatele, zákazníky nebo občany. Vývojáři můžou použít Azure AD jako plně vybavený systém identit pro svoji aplikaci a zároveň umožnit zákazníkům, aby se přihlásili pomocí identity, kterou už vytvořili (například Facebook nebo Gmail). Pomocí Azure AD B2C můžete plně přizpůsobovat a řídit, jak se zákazníci při používání vašich aplikací registrují, přihlásí a spravují své profily. Další informace najdete v dokumentaci k [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/).
+- **Vývoj aplikací s prázdným označením pro uživatele a zákazníky (Azure AD B2C)** Pokud jste podnikem nebo vývojářem vytváření zákaznických aplikací, můžete pomocí Azure AD B2C škálovat na uživatele, zákazníky nebo občany. Vývojáři můžou použít Azure AD jako plně vybavený systém identit pro svoji aplikaci a zároveň umožnit zákazníkům, aby se přihlásili pomocí identity, kterou už vytvořili (například Facebook nebo Gmail). Pomocí Azure AD B2C můžete plně přizpůsobovat a řídit, jak se zákazníci při používání vašich aplikací registrují, přihlásí a spravují své profily. Další informace najdete v dokumentaci k [Azure AD B2C](../../active-directory-b2c/index.yml).
 
 ## <a name="compare-external-identities-solutions"></a>Porovnání řešení externích identit
 
@@ -45,13 +45,13 @@ Následující tabulka obsahuje podrobné porovnání různých scénářů, kte
 | Externí uživatelé jsou spravováni ve svém vlastním adresáři izolovaně z adresáře, ve kterém byla aplikace zaregistrována.    | Externí uživatelé jsou spravováni ve stejném adresáři jako zaměstnanci, ale speciálně s poznámkami. Můžou být spravované stejným způsobem jako zaměstnanci, můžou se přidávat do stejných skupin a tak dále.    | Externí uživatelé jsou spravováni v adresáři aplikace. Spravují se odděleně od zaměstnance organizace a adresáře partnerů (pokud existuje).  |
 | Jednotné přihlašování: jednotné přihlašování pro všechny aplikace připojené k Azure AD je podporované.          | Jednotné přihlašování: jednotné přihlašování pro všechny aplikace připojené k Azure AD je podporované. Můžete například poskytnout přístup k Microsoft 365 nebo místním aplikacím a dalším aplikacím SaaS, jako je Salesforce nebo Workday.    | Jednotné přihlašování: jednotné přihlašování pro aplikace vlastněné zákazníkem v rámci Azure AD B2Cch tenantů je podporované. Jednotné přihlašování k Microsoft 365 nebo jiným aplikacím Microsoft SaaS není podporováno.    |
 | Životní cyklus zákazníka: spravuje se v domovské organizaci uživatele.      | Životní cyklus partnera: Spravuje ho hostitelská organizace nebo organizace, která odesílá pozvánky.    | Životní cyklus zákazníka: Zajišťovaný samostatně nebo spravovaný aplikací.      |
-| Zásady zabezpečení a dodržování předpisů: spravované organizací hostitele nebo pozváním (například pomocí [zásad podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).           | Zásady zabezpečení a dodržování předpisů: spravované organizací hostitele nebo pozváním (například pomocí [zásad podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)). | Zásady zabezpečení a dodržování předpisů: Spravuje je aplikace.        |
+| Zásady zabezpečení a dodržování předpisů: spravované organizací hostitele nebo pozváním (například pomocí [zásad podmíněného přístupu](./conditional-access.md)).           | Zásady zabezpečení a dodržování předpisů: spravované organizací hostitele nebo pozváním (například pomocí [zásad podmíněného přístupu](./conditional-access.md)). | Zásady zabezpečení a dodržování předpisů: Spravuje je aplikace.        |
 | Branding: používá se značka organizace hostitele/pozvání.   | Branding: používá se značka organizace hostitele/pozvání.    | Značka: Spravuje ji aplikace. Většinou se používá značka produktu. Značka organizace ustupuje do pozadí.   |
-| Další informace: [Správa identit v aplikacích s více klienty](https://docs.microsoft.com/azure/architecture/multitenant-identity/), [Průvodce postupy](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant) | Další informace: [blogový příspěvek](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentace](what-is-b2b.md)                   | Další informace: [stránka produktu](https://azure.microsoft.com/services/active-directory-b2c/), [dokumentace](https://docs.microsoft.com/azure/active-directory-b2c/)       |
+| Další informace: [Správa identit v aplikacích s více klienty](/azure/architecture/multitenant-identity/), [Průvodce postupy](../develop/howto-convert-app-to-be-multi-tenant.md) | Další informace: [blogový příspěvek](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentace](what-is-b2b.md)                   | Další informace: [stránka produktu](https://azure.microsoft.com/services/active-directory-b2c/), [dokumentace](../../active-directory-b2c/index.yml)       |
 
 Zabezpečte a spravujte zákazníky a partnery nad rámec vašich organizačních hranic pomocí externích identit Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-- [Informace o Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview)
+- [Informace o Azure AD B2C](../../active-directory-b2c/overview.md)

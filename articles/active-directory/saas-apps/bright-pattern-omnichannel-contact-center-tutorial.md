@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
-ms.openlocfilehash: aba8bf7fd022af1abeecfcb931c22714a5f3169d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9929dc3dbe5870fbe1a5047fbc3fc552e32aba59
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542662"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456687"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bright-pattern-omnichannel-contact-center"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s jasným vzorem Omnichannel kontaktního centra
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak pomocí Azure Active Directory (Azure AD) integro
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k jasnému vzoru Omnichannel kontaktního centra pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -155,15 +155,14 @@ V této části se vytvoří uživatel s názvem B. Simon ve světle světlého 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Omnichannel (světlého vzoru) kontaktu na přístupovém panelu byste měli být automaticky přihlášeni k jasnému vzoru Omnichannel kontaktnímu softwaru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Omnichannel (světlého vzoru) kontaktu na přístupovém panelu byste měli být automaticky přihlášeni k jasnému vzoru Omnichannel kontaktnímu softwaru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte jasný vzor Omnichannel kontakt Center s Azure AD](https://aad.portal.azure.com/)
-

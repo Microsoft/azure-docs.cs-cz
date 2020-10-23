@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 33433587f0617382cc5f05550577594d7e3f9f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb04b17db94a2abf0ab11d9b9baff65e764e472a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322015"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457036"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Kurz: Konfigurace blikání pro Automatické zřizování uživatelů
 
@@ -81,7 +81,7 @@ Před konfigurací blikání pro Automatické zřizování uživatelů pomocí A
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů při blikání na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit pro blikání jednotné přihlašování založené na SAML, a to podle pokynů uvedených v [kurzu jednotného přihlašování pro blikání](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce vzájemně přidávají.
+> Můžete se také rozhodnout povolit pro blikání jednotné přihlašování založené na SAML, a to podle pokynů uvedených v [kurzu jednotného přihlašování pro blikání](./blink-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce vzájemně přidávají.
 
 ### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro blikání v Azure AD:
 
@@ -145,4 +145,3 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 ## <a name="next-steps"></a>Další kroky
 
 * [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
-

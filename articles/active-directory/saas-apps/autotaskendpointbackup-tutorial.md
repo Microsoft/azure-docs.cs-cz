@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 502717621fb9b228a818b67a09a699a2ac1713f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b451e1645061d2de1758bf02ff0f59c07a43158e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550210"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Kurz: Azure Active Directory integrace se zálohováním koncového bodu automatického úkolu
 
@@ -27,7 +27,7 @@ Integrace zálohování koncového bodu AutoTask pomocí Azure AD poskytuje nás
 * Můžete uživatelům povolit, aby se automaticky přihlásili k automatickému přihlášení ke službě Endpoint Endpoint Backup (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -179,18 +179,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Vytvořit autoúlohu – koncový uživatel záložního koncového bodu
 
-V této části vytvoříte uživatele s názvem Britta Simon v zálohování koncového bodu automatického úkolu. Pokud chcete přidat uživatele na platformě zálohování koncového bodu automatického úkolu, pracujte s nástrojem pro [zálohování koncového bodu služby automatického úkolu](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v zálohování koncového bodu automatického úkolu. Pokud chcete přidat uživatele na platformě zálohování koncového bodu automatického úkolu, pracujte s nástrojem pro [zálohování koncového bodu služby automatického úkolu](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici zálohování koncového bodu automatického úkolu, měli byste být automaticky přihlášeni k zálohování koncového bodu automatického úkolu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici zálohování koncového bodu automatického úkolu, měli byste být automaticky přihlášeni k zálohování koncového bodu automatického úkolu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

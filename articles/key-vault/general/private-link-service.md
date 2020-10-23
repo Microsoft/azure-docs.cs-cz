@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07be83527fa781f87ed1de06fa41bd6d08ee9dc4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585827"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426584"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
 
@@ -51,7 +51,7 @@ Po nakonfigurování základních informací o trezoru klíčů vyberte kartu s�
 1. Na kartě síť vyberte přepínač privátního koncového bodu.
 1. Kliknutím na tlačítko + Přidat přidáte soukromý koncový bod.
 
-    ![Image](../media/private-link-service-1.png)
+    ![Snímek obrazovky, který zobrazuje první obrazovku při vytváření trezoru klíčů.](../media/private-link-service-1.png)
  
 1. V poli umístění v okně vytvořit privátní koncový bod vyberte oblast, ve které se nachází vaše virtuální síť. 
 1. V poli název Vytvořte popisný název, který vám umožní identifikovat Tento soukromý koncový bod. 
@@ -59,7 +59,7 @@ Po nakonfigurování základních informací o trezoru klíčů vyberte kartu s�
 1. Ponechte možnost integrace s DNS privátní zóny beze změny.  
 1. Vyberte OK.
 
-    ![Image](../media/private-link-service-8.png)
+    ![Snímek obrazovky zobrazující pole, která jsou důležitá pro konfiguraci privátního koncového bodu.](../media/private-link-service-8.png)
  
 Teď budete moct zobrazit nakonfigurovaný soukromý koncový bod. Teď máte možnost Tento soukromý koncový bod odstranit a upravit. Vyberte tlačítko "revize + vytvořit" a vytvořte Trezor klíčů. Dokončení nasazení bude trvat 5-10 minut. 
 
@@ -74,12 +74,10 @@ Pokud už máte Trezor klíčů, můžete vytvořit připojení k privátnímu p
 1. Vyberte kartu připojení privátního koncového bodu v horní části stránky.
 1. V horní části stránky vyberte tlačítko + privátní koncový bod.
 
-    ![](../media/private-link-service-3.png) ![ Obrázek obrázku](../media/private-link-service-4.png)
+    ![Snímek obrazovky, který zobrazuje tlačítko + soukromý koncový bod.](../media/private-link-service-3.png)
+    ![Snímek obrazovky, který zobrazuje obrazovku pro vytvoření privátního koncového bodu.](../media/private-link-service-4.png)
 
 Pro libovolný prostředek Azure v tomto okně se můžete rozhodnout vytvořit privátní koncový bod. Pomocí rozevíracích nabídek můžete vybrat typ prostředku a vybrat prostředek ve vašem adresáři, nebo se můžete připojit k libovolnému prostředku Azure pomocí ID prostředku. Ponechte možnost integrace s DNS privátní zóny beze změny.  
-
-![](../media/private-link-service-3.png)
- ![ Obrázek obrázku](../media/private-link-service-4.png)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>Navázání připojení privátního propojení k Key Vault pomocí rozhraní příkazového řádku
 

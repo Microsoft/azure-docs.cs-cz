@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db83e24931ec91449ac8c08bf4ce476e0f527b26
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85963236"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461341"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Shromažďování čítačů výkonu pro aplikace pro Linux v Azure Monitor 
-[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+
 Tento článek poskytuje podrobné informace o konfiguraci [Log Analytics agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítačů výkonu pro konkrétní aplikace do Azure monitor.  Mezi aplikace, které jsou součástí tohoto článku, patří:  
 
 - [MySQL](#mysql)
@@ -70,7 +70,7 @@ Součástí instalace poskytovatele MySQL OMI je programový soubor MySQL OMI Au
 
 Následující tabulka uvádí podrobnosti o syntaxi pro použití mycimprovauth.
 
-| Operace | Příklad | Description
+| Operace | Příklad | Popis
 |:--|:--|:--|
 | AutoUpdate *false nebo true* | mycimprovauth AutoUpdate – NEPRAVDA | Nastaví, jestli se má soubor ověření automaticky aktualizovat při restartování nebo aktualizaci. |
 | výchozí *přihlašovací heslo pro adresu BIND* | mycimprovauth výchozí adresa 127.0.0.1 root PWD | Nastaví výchozí instanci v souboru OMI pro ověřování MySQL.<br>Pole heslo by mělo být zadáno v prostém textu – heslo v souboru OMI pro ověřování MySQL bude obsahovat kódování Base 64. |

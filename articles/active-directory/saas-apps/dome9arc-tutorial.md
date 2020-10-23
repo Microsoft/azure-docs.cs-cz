@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dee0b84b249446755d5124a8477e993e13e52b0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91775133"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454707"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Dome9em Check Point CloudGuard
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat kontrolní bod CloudGuard Dome9 ARC po
 * Umožněte uživatelům, aby se automaticky přihlásili k kontrolnímu bodu CloudGuard Dome9 ARC pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -102,7 +102,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | memberOf | User. assignedroles |
 
     >[!NOTE]
-    >Kliknutím [sem](https://docs.microsoft.com/azure/active-directory/saas-apps/apptio-tutorial) zobrazíte informace o tom, jak ve službě Azure AD vytvářet role.
+    >Kliknutím [sem](./apptio-tutorial.md) zobrazíte informace o tom, jak ve službě Azure AD vytvářet role.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -213,14 +213,14 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili ke službě Chec
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici CloudGuard (kontrolní bod) Dome9 oblouk na přístupovém panelu, měli byste se automaticky přihlásit ke CloudGuard Dome9 ARC, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici CloudGuard (kontrolní bod) Dome9 oblouk na přístupovém panelu, měli byste se automaticky přihlásit ke CloudGuard Dome9 ARC, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušet kontrolní bod CloudGuard Dome9 ARC s Azure AD](https://aad.portal.azure.com/)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8cc59b805cd757edce79a14d124ea244b4652a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267478"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461460"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>Scénář: Route to Shared Services virtuální sítě
 
@@ -24,17 +24,19 @@ Další informace o směrování virtuálních rozbočovačů najdete v tématu 
 
 ## <a name="design"></a><a name="design"></a>Návrh
 
-K sumarizaci požadavků tohoto scénáře můžeme použít matrici připojení. V matici každá buňka popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (na straně toku, záhlaví sloupců v tabulce kurzíva) pro konkrétní tok přenosů. "X" znamená, že připojení poskytuje virtuální síť WAN:
+K sumarizaci požadavků tohoto scénáře můžeme použít matrici připojení:
 
 **Matice připojení**
 
 | Z             | Do:   |*Izolované virtuální sítě*|*Sdílená virtuální síť*|*Větve*|
 |---|---|---|---|---|
-|**Izolované virtuální sítě**|&#8594;|                |        X        |       X      |
-|**Sdílené virtuální sítě**  |&#8594;|       X        |        X        |       X      |
-|**Větve**      |&#8594;|       X        |        X        |       X      |
+|**Izolované virtuální sítě**|&#8594;|        | Direct | Direct |
+|**Sdílené virtuální sítě**  |&#8594;| Direct | Direct | Direct |
+|**Větve**      |&#8594;| Direct | Direct | Direct |
 
-Podobně jako u [scénáře izolované virtuální](scenario-isolate-vnets.md)sítě poskytuje tato matice připojení dva různé vzory řádků, které se převádějí do dvou směrovacích tabulek (virtuální sítě sdílených služeb a větve mají stejné požadavky na připojení). Virtuální síť WAN už má výchozí směrovací tabulku, takže budeme potřebovat další vlastní směrovací tabulku, která v tomto příkladu budeme volat **RT_SHARED** .
+Každá z buněk v předchozí tabulce popisuje, jestli připojení k virtuální síti WAN (strana "od", záhlaví řádků) komunikuje s cílem (strana "do" toku, záhlaví sloupců jsou kurzívou). V tomto scénáři nejsou k dispozici žádné brány firewall ani síťová virtuální zařízení, takže komunikace toků přímo přes virtuální síť WAN (tedy slovo "Direct" v tabulce).
+
+Podobně jako u [scénáře izolované virtuální](scenario-isolate-vnets.md)sítě poskytuje tato matice připojení dva různé vzory řádků, které se převádějí do dvou směrovacích tabulek (sdílené služby virtuální sítě a větve mají stejné požadavky na připojení). Virtuální síť WAN už má výchozí směrovací tabulku, takže budeme potřebovat další vlastní směrovací tabulku, která v tomto příkladu budeme volat **RT_SHARED** .
 
 Virtuální sítě se bude přidružit k směrovací tabulce **RT_SHARED** . Vzhledem k tomu, že potřebují připojení k větvím a ke sdílené službě virtuální sítě, musí být virtuální síť a větve sdílené služby předávány na **RT_SHARED** (jinak virtuální sítě se neučí pro větve a sdílené předpony virtuální sítě). Vzhledem k tomu, že jsou větve vždy přidružené k výchozí směrovací tabulce a požadavky na připojení jsou pro sdílené služby virtuální sítě stejné, přidružíme virtuální sítě sdílené služby k výchozí tabulce směrování.
 

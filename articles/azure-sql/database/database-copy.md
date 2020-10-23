@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 67f123472a5fd6060bc4e2de36fb7ac1ea46d356
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: a38816f00c0e05c3bde1760e39ba00d745f12a44
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124391"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460950"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -82,7 +82,7 @@ Kopie databáze je asynchronní operace, ale cílová databáze je vytvořena ih
 
 Přihlaste se k hlavní databázi pomocí přihlašovacích údajů správce serveru nebo přihlašovacích údajů, které vytvořila databázi, kterou chcete zkopírovat. Aby bylo kopírování databáze úspěšné, přihlášení, která nejsou správcem serveru, musí být členy této `dbmanager` role. Další informace o přihlášeních a připojení k serveru najdete v tématu [Správa přihlášení](logins-create-manage.md).
 
-Spustit kopírování zdrojové databáze pomocí databáze pro [vytvoření... JAKO kopie](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) příkazu. Příkaz T-SQL pokračuje v běhu, dokud se nedokončí operace kopírování databáze.
+Spustit kopírování zdrojové databáze pomocí databáze pro [vytvoření... JAKO kopie](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) příkazu. Příkaz T-SQL pokračuje v běhu, dokud se nedokončí operace kopírování databáze.
 
 > [!NOTE]
 > Ukončení příkazu T-SQL neukončí operaci kopírování databáze. Chcete-li operaci ukončit, vyřaďte cílovou databázi.
@@ -100,6 +100,21 @@ Tento příkaz zkopíruje Databáze1 do nové databáze s názvem databáze 2 na
    ```sql
    -- execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
+   ```
+
+### <a name="copy-to-an-elastic-pool"></a>Kopírovat do elastického fondu
+
+Přihlaste se k hlavní databázi pomocí přihlašovacích údajů správce serveru nebo přihlašovacích údajů, které vytvořila databázi, kterou chcete zkopírovat. Aby kopírování databáze bylo úspěšné, přihlášení, která nejsou správcem serveru, musí být členy této `dbmanager` role.
+
+Tento příkaz zkopíruje Databáze1 do nové databáze s názvem databáze 2 v elastickém fondu s názvem Pool1. V závislosti na velikosti databáze může dokončení operace kopírování nějakou dobu trvat.
+
+Databáze1 může být jedna nebo ve fondu databáze, ale Pool1 musí být stejná jako úroveň služby jako Databáze1. 
+
+   ```sql
+   -- execute on the master database to start copying
+   CREATE DATABASE "Database2"
+   AS COPY OF "Database1"
+   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) ) ;
    ```
 
 ### <a name="copy-to-a-different-server"></a>Kopírovat na jiný server
@@ -167,7 +182,7 @@ Pokud chcete zobrazit operace v rámci nasazení ve skupině prostředků na por
 
 ## <a name="resolve-logins"></a>Vyřešit přihlášení
 
-Jakmile je nová databáze na cílovém serveru online, pomocí příkazu [ALTER User](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) přemapujte uživatele z nové databáze na přihlašovací údaje na cílovém serveru. Pokud chcete vyřešit osamocené uživatele, přečtěte si téma [řešení potíží s osamocenými](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)uživateli. Viz také [Správa zabezpečení Azure SQL Database po zotavení po havárii](active-geo-replication-security-configure.md).
+Jakmile je nová databáze na cílovém serveru online, pomocí příkazu [ALTER User](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) přemapujte uživatele z nové databáze na přihlašovací údaje na cílovém serveru. Pokud chcete vyřešit osamocené uživatele, přečtěte si téma [řešení potíží s osamocenými](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)uživateli. Viz také [Správa zabezpečení Azure SQL Database po zotavení po havárii](active-geo-replication-security-configure.md).
 
 Všichni uživatelé v nové databázi si uchovávají oprávnění, která měla ve zdrojové databázi. Uživatel, který inicioval kopii databáze, se stal vlastníkem databáze nové databáze. Po úspěšném dokončení kopírování a před přemapováním dalších uživatelů se může k nové databázi přihlásit pouze vlastník databáze.
 

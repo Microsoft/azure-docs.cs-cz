@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: jeedes
-ms.openlocfilehash: bd15798e9b642f3abc617c0fa224c530d90b5dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0433c0fdc1584ce209eb0409b0e8f5cbfc2719ed
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555555"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454401"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro BitBucket
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat EasySSO pro BitBucket s Azure Active D
 * Umožněte uživatelům, aby se automaticky přihlásili k EasySSO pro BitBucket s účty Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * EasySSO for BitBucket podporuje jednotné přihlašování (SSO) iniciované v SP a IdP.
 * EasySSO for BitBucket podporuje zřizování uživatelů za běhu.
-* Po nakonfigurování EasySSO pro BitBucket můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování EasySSO pro BitBucket můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-easysso-for-bitbucket-from-the-gallery"></a>Přidání EasySSO pro BitBucket z Galerie
 
@@ -97,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Aplikace EasySSO for BitBucket také očekává několik dalších atributů, které se mají zpětně předat v odpovědi SAML. Tyto části jsou uvedené v následující tabulce. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
     
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | uživatel. pošta |
@@ -190,7 +190,7 @@ Pokud však nechcete povolit Automatické zřizování uživatelů při prvním 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když vyberete dlaždici EasySSO for BitBucket, měli byste být automaticky přihlášeni k instanci BitBucket, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete dlaždici EasySSO for BitBucket, měli byste být automaticky přihlášeni k instanci BitBucket, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="sp-initiated-workflow"></a>Pracovní postup iniciované v SP
 
@@ -210,14 +210,14 @@ Pokud máte nějaké problémy, obraťte se na [tým podpory EasySSO](mailto:sup
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si EasySSO pro BitBucket s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Ochrana EasySSO pro BitBucket s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Ochrana EasySSO pro BitBucket s pokročilou viditelností a ovládacími prvky](/cloud-app-security/proxy-intro-aad)
