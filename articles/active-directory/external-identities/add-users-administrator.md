@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969294f264e6744e893322864eed85e02c615126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b503c7494d1b5e1821718fab5577bca88be65169
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908814"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442282"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele Azure Active Directory spolupráce B2B do Azure Portal
 
@@ -25,7 +25,7 @@ Jako uživatel, kterému je přiřazena kterákoli z omezených rolí adresáře
 Po přidání uživatele typu Host do adresáře můžete buď Odeslat uživateli typu Host přímý odkaz na sdílenou aplikaci, nebo uživatel typu Host může kliknout na adresu URL pro uplatnění v e-mailu s pozvánkou. Další informace o procesu uplatnění, najdete v tématu věnovaném [uplatnění pozvánky B2B pro spolupráci](redemption-experience.md).
 
 > [!IMPORTANT]
-> Měli byste postupovat podle kroků v tématu [Postupy: Přidání informací o ochraně osobních údajů vaší organizace v tématu Azure Active Directory](https://aka.ms/adprivacystatement) k přidání adresy URL prohlášení o zásadách ochrany osobních údajů vaší organizace. V rámci prvního procesu uplatnění pozvánky musí pozvaní uživatelé před pokračováním vyjádřit souhlas s vaším podmínkami ochrany osobních údajů. 
+> Měli byste postupovat podle kroků v tématu [Postupy: Přidání informací o ochraně osobních údajů vaší organizace v tématu Azure Active Directory](../fundamentals/active-directory-properties-area.md) k přidání adresy URL prohlášení o zásadách ochrany osobních údajů vaší organizace. V rámci prvního procesu uplatnění pozvánky musí pozvaní uživatelé před pokračováním vyjádřit souhlas s vaším podmínkami ochrany osobních údajů. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -124,4 +124,3 @@ Pokud uživatel typu Host ještě nepoužil své pozvání, můžete znovu odesl
 
 - Informace o tom, jak mohou správci služby Azure AD přidat uživatele typu Host B2B, najdete v tématu [jak informační pracovníci přidávají uživatele spolupráce B2B?](add-users-information-worker.md)
 - Informace o e-mailu s pozvánkou najdete v tématu o [prvcích e-mailu s pozvánkou B2B pro spolupráci](invitation-email-elements.md).
-

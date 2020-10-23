@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563d925aa3e0d6922756ab037226f5a86534b19f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0950c92b5a7bb1e782537aa46acad2e949e565c7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705431"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441789"
 ---
 # <a name="microsoft-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Spolupráce s Microsoft 365 externích sdílení a Azure Active Directory (Azure AD) B2B
 
@@ -24,7 +24,7 @@ V rámci spolupráce Azure AD B2B i Microsoft 365 externí sdílení (OneDrive, 
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Jak se Azure AD B2B liší od externího sdílení v SharePointu Online?
 
-OneDrive nebo SharePoint Online má samostatného správce pozvánk. Podpora pro externí sdílení na OneDrivu nebo SharePointu Online se spustila dřív, než Azure AD vyvinula podporu. V průběhu času externí sdílení OneDrivu nebo SharePointu Online narostlo několik funkcí a spousta milionů uživatelů, kteří používají model sdílení daného produktu v rámci sestavení. Existuje však několik drobných rozdílů mezi tím, jak funguje externí sdílení OneDrive/SharePoint Online a jak funguje spolupráce Azure AD B2B. Další informace o externím sdílení OneDrivu nebo SharePointu Online najdete v [přehledu externího](https://docs.microsoft.com/sharepoint/external-sharing-overview)sdílení. Tento proces se obecně liší od Azure AD B2B v těchto ohledech:
+OneDrive nebo SharePoint Online má samostatného správce pozvánk. Podpora pro externí sdílení na OneDrivu nebo SharePointu Online se spustila dřív, než Azure AD vyvinula podporu. V průběhu času externí sdílení OneDrivu nebo SharePointu Online narostlo několik funkcí a spousta milionů uživatelů, kteří používají model sdílení daného produktu v rámci sestavení. Existuje však několik drobných rozdílů mezi tím, jak funguje externí sdílení OneDrive/SharePoint Online a jak funguje spolupráce Azure AD B2B. Další informace o externím sdílení OneDrivu nebo SharePointu Online najdete v [přehledu externího](/sharepoint/external-sharing-overview)sdílení. Tento proces se obecně liší od Azure AD B2B v těchto ohledech:
 
 - OneDrive nebo SharePoint Online přidá uživatele do adresáře po uplatnění svých pozvání uživateli. Takže před uplatněním se uživatel na portálu Azure AD nezobrazuje. Pokud již jiný web pozve uživatele do té doby, je vygenerována nová pozvánka. Pokud ale používáte spolupráci B2B Azure AD, uživatelé se hned přidají na pozvánku, aby se zobrazovaly všude.
 
@@ -32,7 +32,7 @@ OneDrive nebo SharePoint Online má samostatného správce pozvánk. Podpora pro
 
 - Spolupráce Azure AD B2B pozvaní uživatelů může být převzata z dialogových oken OneDrive nebo SharePoint Online pro sdílení. Pozvaní uživatelé OneDrivu nebo SharePointu Online se také zobrazí ve službě Azure AD po uplatnění svých pozvání.
 
-- Licenční požadavky se liší. U každé placené licence Azure AD můžete dát až 5 uživatelům typu Host přístup k placeným funkcím služby Azure AD. Další informace o licencování najdete v tématu věnovaném [licencování Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance) a ["Co je externí uživatel?" v tématu Přehled externího sdílení SharePointu Online](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share).
+- Licenční požadavky se liší. U každé placené licence Azure AD můžete dát až 5 uživatelům typu Host přístup k placeným funkcím služby Azure AD. Další informace o licencování najdete v tématu věnovaném [licencování Azure AD B2B](./external-identities-pricing.md) a ["Co je externí uživatel?" v tématu Přehled externího sdílení SharePointu Online](/sharepoint/external-sharing-overview#what-happens-when-users-share).
 
 Pokud chcete spravovat externí sdílení ve OneDrivu nebo SharePointu Online pomocí spolupráce B2B Azure AD, nastavte nastavení externího sdílení OneDrive/SharePoint Online tak, aby **bylo možné sdílet jenom s externími uživateli, kteří už existují v adresáři vaší organizace**. Uživatelé můžou přejít na externě sdílené weby a vybrat externí spolupracovníky, které správce přidal. Správce může přidat externí spolupracovníky prostřednictvím rozhraní API pozvánky pro spolupráci B2B.
 

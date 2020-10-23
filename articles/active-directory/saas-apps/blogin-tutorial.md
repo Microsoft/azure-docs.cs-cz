@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 2a50d7b037cec2c10f83fdbbd875f80513c00a6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a47a3ae27fd1a18b7e9acd7d8b25748f6274c3e9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88517016"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456989"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s BlogIn
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat BlogIn s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k BlogIn svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * BlogIn podporuje jednotné přihlašování (SSO) **a IDP** .
 * BlogIn podporuje zřizování uživatelů **jenom v čase** .
-* Po nakonfigurování BlogIn můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování BlogIn můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-blogin-from-the-gallery"></a>Přidání BlogIn z Galerie
 
@@ -97,7 +97,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace BlogIn několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ------ | --------- |
     | title |User. jobtitle |
     
@@ -143,7 +143,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování při přihlášení na st
 1. Přejít na **Nastavení**  >  **ověřování uživatelů**  >  **Konfigurace jednotného přihlašování & zřizování uživatelů**.
 2. Na další obrazovce změňte stav jednoho Sign-On na **zapnuto** a jako tlačítko pro přihlášení SSO klikněte na vlastní název, který se zobrazí na přihlašovací obrazovce.
 
-3. Pokud jste v posledním kroku předchozí části uložili **adresu URL federačních metadat aplikace** , vyberte **adresu URL metadat** metody konfigurace a vložte **adresu URL federačních METADAT aplikace** do pole Adresa URL metadat. Jinak změňte metodu konfigurace na **Ruční**, ručně naplňte **adresu URL jednotného přihlašování zprostředkovatele identity (přihlašovací adresu URL)** a **vystavitele zprostředkovatele identity (ID entity)** a nahrajte **certifikát (Base64)**,   který jste získali ze služby Azure AD.
+3. Pokud jste v posledním kroku předchozí části uložili **adresu URL federačních metadat aplikace** , vyberte **adresu URL metadat** metody konfigurace a vložte **adresu URL federačních METADAT aplikace** do pole Adresa URL metadat. Jinak změňte metodu konfigurace na **Ruční**, ručně naplňte **adresu URL jednotného přihlašování zprostředkovatele identity (přihlašovací adresu URL)** a **vystavitele zprostředkovatele identity (ID entity)** a nahrajte **certifikát (Base64)** , který jste získali ze služby Azure AD.
 
 4. Vyberte výchozí roli uživatele pro nové uživatele připojující se k BlogIn pomocí jednotného přihlašování.
 
@@ -159,18 +159,18 @@ V této části se v BlogIn vytvoří uživatel s názvem B. Simon. BlogIn podpo
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici BlogIn, měli byste se automaticky přihlásit k BlogIn, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici BlogIn, měli byste se automaticky přihlásit k BlogIn, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si BlogIn s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit BlogIn pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit BlogIn pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

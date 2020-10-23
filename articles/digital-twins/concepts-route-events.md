@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282256"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440803"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -73,7 +73,7 @@ Rozhraní API koncového bodu, která jsou k dispozici v řídicí rovině, jsou
  
 Pokud chcete vytvořit trasu události, můžete použít [**rozhraní API roviny dat**](how-to-manage-routes-apis-cli.md#create-an-event-route)digitálních vláken Azure, [**příkazy CLI**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)nebo [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route). 
 
-Tady je příklad vytvoření trasy události v rámci klientské aplikace pomocí `CreateEventRoute` volání [rozhraní .NET (C#) SDK](how-to-use-apis-sdks.md) : 
+Tady je příklad vytvoření trasy události v rámci klientské aplikace pomocí `CreateEventRoute` volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) : 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");

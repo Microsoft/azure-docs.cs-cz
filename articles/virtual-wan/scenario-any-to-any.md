@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6115ca375c3e5bf2be3335fe2231628ec7bf309f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267733"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440480"
 ---
 # <a name="scenario-any-to-any"></a>Scénář: Any-to-Any
 
@@ -22,14 +22,14 @@ Při práci s směrováním virtuálního rozbočovače WAN je k dispozici něko
 
 ## <a name="design"></a><a name="design"></a>Návrh
 
-Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba ve scénáři virtuální sítě WAN, můžete vytvořit matici připojení, kde každá buňka představuje, jestli zdroj (řádek) může komunikovat s cílovým sloupcem (sloupec). Matice připojení v tomto scénáři je triviální, ale je zahrnutá, aby byla konzistentní s jinými scénáři.
+Aby bylo možné zjistit, kolik směrovacích tabulek bude potřeba ve scénáři virtuální sítě WAN, můžete vytvořit matici připojení, kde každá buňka představuje, jestli zdroj (řádek) může komunikovat s cílovým sloupcem (sloupec).
 
 | Z |   Záměr |  *Virtuální sítě* | *Větve* |
 | -------------- | -------- | ---------- | ---|
-| Virtuální sítě     | &#8594;|      X     |     X    |
-| Větve   | &#8594;|    X     |     X    |
+| Virtuální sítě     | &#8594;| Direct | Direct |
+| Větve   | &#8594;| Direct  | Direct |
 
-Každá z buněk v předchozí tabulce popisuje, zda se připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků v tabulce) učí předpona cíle (strana "do" toku, záhlaví sloupců v tabulce kurzívou) pro konkrétní tok přenosů, kde "X" znamená, že připojení je zajištěno službou Virtual WAN.
+Každá z buněk v předchozí tabulce popisuje, jestli připojení k virtuální síti WAN (strana "od" na straně toku, záhlaví řádků) komunikuje s předponou cíle (stranu "do" toku, záhlaví sloupce kurzívou). V tomto scénáři nejsou k dispozici žádné brány firewall ani síťová virtuální zařízení, takže komunikace toků přímo přes virtuální síť WAN (tedy slovo "Direct" v tabulce).
 
 Vzhledem k tomu, že všechna připojení z virtuální sítě i větví (VPN, ExpressRoute a User VPN) mají stejné požadavky na připojení, vyžaduje se jedna směrovací tabulka. V důsledku toho budou všechna připojení přidružená a šířena ke stejné směrovací tabulce, výchozí směrovací tabulce:
 

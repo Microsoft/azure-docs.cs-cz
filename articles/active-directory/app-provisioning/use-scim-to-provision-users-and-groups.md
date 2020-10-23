@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: contperfq2
+ms.openlocfilehash: 158a82b43e573e5d34ec9a44c4a47cd1126de8ed
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070193"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424595"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Kurz – sestavení koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure AD
 
@@ -335,7 +336,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *ZÍSKAT/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Základě
+##### <a name="response"></a><a name="response-2"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -376,7 +377,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *ZÍSKAT/Users? Filter = userName EQ "neexistující uživatel"*
 
-##### <a name="response"></a><a name="response-3"></a>Základě
+##### <a name="response"></a><a name="response-3"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -413,7 +414,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Základě
+##### <a name="response"></a><a name="response-4"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -457,7 +458,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Základě
+##### <a name="response"></a><a name="response-5"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -506,7 +507,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Základě
+##### <a name="response"></a><a name="response-14"></a>Odpověď
 
 ```json
 {
@@ -546,7 +547,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *Odstranit/Users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response"></a><a name="response-6"></a>Základě
+##### <a name="response"></a><a name="response-6"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -573,7 +574,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Základě
+##### <a name="response"></a><a name="response-7"></a>Odpověď
 
 *HTTP/1.1 201 vytvořeno*
 ```json
@@ -598,7 +599,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *ZÍSKAT/Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1*
 
-##### <a name="response"></a><a name="response-8"></a>Základě
+##### <a name="response"></a><a name="response-8"></a>Odpověď
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -619,7 +620,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 ##### <a name="request"></a><a name="request-9"></a>Žádost
 *GET/Groups? excludedAttributes = Members&Filter = DisplayName EQ "DisplayName" HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Základě
+##### <a name="response"></a><a name="response-9"></a>Odpověď
 
 *HTTP/1.1 200 OK*
 ```json
@@ -659,7 +660,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Základě
+##### <a name="response"></a><a name="response-10"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -682,7 +683,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Základě
+##### <a name="response"></a><a name="response-11"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -705,7 +706,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Základě
+##### <a name="response"></a><a name="response-12"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -715,7 +716,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *Odstranit/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response"></a><a name="response-13"></a>Základě
+##### <a name="response"></a><a name="response-13"></a>Odpověď
 
 *HTTP/1.1 204 bez obsahu*
 
@@ -915,7 +916,7 @@ Odeslání požadavku GET kontroleru tokenu k získání platného tokenu nosič
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Řízení zřizování a rušení zřizování uživatelů
 
-***Příklad 1. Dotazování služby pro odpovídajícího uživatele***
+***Příklad 1. Dotazování služby pro odpovídajícího uživatele**_
 
 Azure Active Directory dotazuje službu pro uživatele s `externalId` hodnotou atributu, která odpovídá hodnotě atributu mailNickname uživatele v Azure AD. Dotaz se vyjadřuje jako požadavek HTTP (Hypertext Transfer Protocol), jako je například tento příklad, kde jyoung je ukázka mailNickname uživatele v Azure Active Directory.
 
@@ -943,12 +944,12 @@ V ukázkovém kódu je požadavek přeložen do volání metody QueryAsync posky
 
 V ukázkovém dotazu pro uživatele s danou hodnotou pro `externalId` atribut jsou hodnoty argumentů předaných metodě QueryAsync:
 
-* ukazatelů. AlternateFilters. Count: 1
+ukazatelů. AlternateFilters. Count: 1
 * ukazatelů. AlternateFilters. ElementAt (0). AttributePath: "externalId"
 * ukazatelů. AlternateFilters. ElementAt (0). ComparisonOperator: ComparisonOperator. Equals
 * ukazatelů. AlternateFilter. ElementAt (0). ComparisonValue: "jyoung"
 
-***Příklad 2. Zřídit uživatele***
+***Příklad 2. Zřídit uživatele**
 
 Pokud odpověď na dotaz na webovou službu pro uživatele s `externalId` hodnotou atributu mailNickname uživatele nevrátí žádné uživatele, Azure Active Directory požadavky, které zajišťují, že služba zřídí uživatele, který odpovídá vašemu Azure Active Directory.  Tady je příklad takového požadavku: 
 
@@ -997,7 +998,7 @@ V ukázkovém kódu je požadavek přeložen do volání metody CreateAsync posk
 
 V žádosti o zřízení uživatele je hodnota argumentu prostředku instancí třídy Microsoft. SCIM. Core2EnterpriseUser definované v knihovně Microsoft. SCIM. schemas.  Pokud požadavek na zřízení uživatele uspěje, pak implementace metody očekává, že se vrátí instance třídy Microsoft. SCIM. Core2EnterpriseUser s hodnotou vlastnosti identifikátor nastavenou na jedinečný identifikátor nově zřízeného uživatele.  
 
-***Příklad 3. Dotaz na aktuální stav uživatele*** 
+_*_Příklad 3. Dotaz na aktuální stav uživatele_*_ 
 
 Chcete-li aktualizovat uživatele, který je známý jako v úložišti identit, front-SCIM, Azure Active Directory pokračuje tím, že požádá o aktuální stav tohoto uživatele ze služby s požadavkem, jako například: 
 
@@ -1021,14 +1022,14 @@ V ukázkovém kódu je požadavek přeložen do volání metody RetrieveAsync po
 
 V příkladu žádosti o načtení aktuálního stavu uživatele jsou hodnoty vlastností objektu, které jsou k dispozici jako hodnota argumentu Parameters, následující: 
   
-* Identifikátor: "54D382A4-2050-4C03-94D1-E769F1D15682"
+_ Identifikátor: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * SchemaIdentifier: "urn: IETF: param: SCIM: schemas: Extension: Enterprise: 2.0: User"
 
-***Příklad 4. Dotaz na hodnotu referenčního atributu, který se má aktualizovat*** 
+***Příklad 4. Dotaz na hodnotu referenčního atributu, který**se má aktualizovat _ 
 
 Pokud má být aktualizován atribut reference, pak Azure Active Directory dotazování služby, aby zjistila, zda aktuální hodnota atributu reference v úložišti identit, na kterou služba zachází, se již shoduje s hodnotou tohoto atributu v Azure Active Directory. Pro uživatele je jediným atributem, pro který je aktuální hodnota dotazována tímto způsobem atribut správce. Tady je příklad žádosti o zjištění, zda má atribut Manager objektu User Object aktuálně určitou hodnotu: v ukázkovém kódu je požadavek přeložen do volání metody QueryAsync poskytovatele služby. Hodnota vlastností objektu poskytnutého jako hodnota argumentu parameters je následující: 
   
-* ukazatelů. AlternateFilters. Count: 2
+ukazatelů. AlternateFilters. Count: 2
 * ukazatelů. AlternateFilters. ElementAt (x). AttributePath: "ID"
 * ukazatelů. AlternateFilters. ElementAt (x). ComparisonOperator: ComparisonOperator. Equals
 * ukazatelů. AlternateFilter. ElementAt (x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
@@ -1040,7 +1041,7 @@ Pokud má být aktualizován atribut reference, pak Azure Active Directory dotaz
 
 V tomto případě může být hodnota indexu x rovna 0 a hodnota indexu y může být 1 nebo hodnota x může být 1 a hodnota y může být 0 v závislosti na pořadí výrazů parametru dotazu filtru.   
 
-***Příklad 5. Požadavek od Azure AD do služby SCIM k aktualizaci uživatele*** 
+***Příklad 5. Požadavek od Azure AD do služby SCIM k aktualizaci uživatele**_ 
 
 Tady je příklad požadavku z Azure Active Directory na službu SCIM k aktualizaci uživatele: 
 
@@ -1079,7 +1080,7 @@ V ukázkovém kódu je požadavek přeložen do volání metody UpdateAsync posk
 
 V příkladu žádosti o aktualizaci uživatele má objekt zadaný jako hodnota argumentu patch tyto hodnoty vlastností: 
   
-* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+_ ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: Paras: SCIM: schemas: Enterprise: 2.0: User"
 * (PatchRequest as PatchRequest2). Operace. Count: 1
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). OperationName: OperationName. Add
@@ -1088,7 +1089,7 @@ V příkladu žádosti o aktualizaci uživatele má objekt zadaný jako hodnota 
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Referenční informace: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2). Operations. ElementAt (0). Value. ElementAt (0). Hodnota: 2819c223-7f76-453A-919d-413861904646
 
-***Příklad 6. Zrušení zřízení uživatele***
+***Příklad 6. Zrušení zřízení uživatele**_
 
 Pokud chcete zrušit zřízení uživatele z úložiště identit, které přednáší služba SCIM, Azure AD pošle žádost, například:
 
@@ -1111,7 +1112,7 @@ V ukázkovém kódu je požadavek přeložen do volání metody DeleteAsync posk
 
 Objekt poskytnutý jako hodnota argumentu resourceIdentifier má tyto hodnoty vlastností v příkladu požadavku na zrušení zřízení uživatele: 
 
-* ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
+_ ResourceIdentifier. Identifier: "54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier. SchemaIdentifier: "urn: IETF: Paras: SCIM: schemas: Enterprise: 2.0: User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>Krok 4: integrace koncového bodu SCIM s klientem Azure AD SCIM
@@ -1146,8 +1147,8 @@ Aplikace, které podporují profil SCIM popsané v tomto článku, se dají při
 7. Do pole **Adresa URL tenanta** zadejte adresu URL koncového bodu SCIM aplikace. Příklad: `https://api.contoso.com/scim/`
 8. Pokud koncový bod SCIM vyžaduje token nosiče OAuth od jiného vydavatele než Azure AD, Zkopírujte požadovaný token Bearer OAuth do pole volitelného **tajného tokenu** . Pokud toto pole zůstane prázdné, Azure AD zahrnuje token nosiče OAuth vydaný z Azure AD s každým požadavkem. Aplikace, které používají Azure AD jako zprostředkovatel identity, můžou ověřit tento token vydaný službou Azure AD. 
    > [!NOTE]
-   > ***Nedoporučujeme*** toto pole nechat prázdné a spoléhat se na token generovaný službou Azure AD. Tato možnost je primárně k dispozici pro účely testování.
-9. Vyberte **Test připojení** , aby se Azure Active Directory pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
+   > *_* Nedoporučujeme_* toto pole nechat prázdné a spoléhat se na token generovaný službou Azure AD. Tato možnost je primárně k dispozici pro účely testování.
+9. Vyberte _*test Connection**, aby se Azure Active Directory pokus o připojení ke koncovému bodu SCIM. Pokud se pokus nezdaří, zobrazí se informace o chybě.  
 
     > [!NOTE]
     > **Test Connection** se dotazuje na koncový bod SCIM pro uživatele, který neexistuje, pomocí NÁHODNÉho identifikátoru GUID jako odpovídající vlastnosti vybrané v konfiguraci služby Azure AD. Očekávaná správná odpověď je HTTP 200 OK s prázdnou SCIM zprávou ListResponse.

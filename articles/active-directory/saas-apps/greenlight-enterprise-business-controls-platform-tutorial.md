@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: b8e366438e63ec7e4bd33032cea7162d249ff7c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1e15c3fdf9900d016581f848fdfdba5d91b0997
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551451"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92447059"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-greenlight-enterprise-business-controls-platform"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s platformou GreenLight Enterprise Business Controls
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat platformu GreenLight Enterprise Busine
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k GreenLight platformě podnikových ovládacích prvků pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * GreenLight Enterprise Business Controls Platform podporuje **SP a IDP** iniciované jednotné přihlašování
 
-* Jakmile nakonfigurujete platformu GreenLight Enterprise Business Controls, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Jakmile nakonfigurujete platformu GreenLight Enterprise Business Controls, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-greenlight-enterprise-business-controls-platform-from-the-gallery"></a>Přidání platformy GreenLight Enterprise Business Controls z Galerie
 
@@ -135,24 +135,24 @@ Chcete-li nakonfigurovat jednotné přihlašování na straně **platformy Green
 
 ### <a name="create-greenlight-enterprise-business-controls-platform-test-user"></a>Vytvoření testovacího uživatele platformy GreenLight Enterprise Business Controls
 
-V této části vytvoříte uživatele s názvem B. Simon na platformě GreenLight Enterprise Business Controls. Pokud chcete přidat uživatele na platformu GreenLight Enterprise Business Controls Platform, pracujte s [týmem podpory GreenLight Enterprise Business Controls Platform](mailto:support@greenlightcorp.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon na platformě GreenLight Enterprise Business Controls. Pokud chcete přidat uživatele na platformu GreenLight Enterprise Business Controls Platform, pracujte s [týmem podpory GreenLight Enterprise Business Controls Platform](mailto:support@greenlightcorp.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici platforma GreenLight Enterprise Business Controls Platform na přístupovém panelu byste měli být automaticky přihlášení k platformě GreenLight Enterprise Business Controls, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici platforma GreenLight Enterprise Business Controls Platform na přístupovém panelu byste měli být automaticky přihlášení k platformě GreenLight Enterprise Business Controls, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si GreenLight Enterprise Business Controls Platform pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit platformu GreenLight Enterprise Business Controls pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit platformu GreenLight Enterprise Business Controls pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

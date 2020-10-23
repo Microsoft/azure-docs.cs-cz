@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e212b8c72a8cf7000a2789034f3ee83a5a0c9cda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91d48e42dc1c92e05e963b4c8b53e44daa403378
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542745"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Kurz: Azure Active Directory integrace s Brightspace pomocí Desire2Learn
 
@@ -27,7 +27,7 @@ Integrace Brightspace by Desire2Learn se službou Azure AD poskytuje následují
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Brightspace prostřednictvím Desire2Learn (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -187,7 +187,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-brightspace-by-desire2learn-test-user"></a>Vytvořit Brightspace podle Desire2Learn testovacího uživatele
 
-V této části vytvoříte uživatele s názvem Britta Simon v Brightspace pomocí Desire2Learn. Spolupracujte s [Brightspace podle Desire2Learn týmu podpory](https://www.d2l.com/contact/) a přidejte uživatele v Brightspace podle platformy Desire2Learn. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Brightspace pomocí Desire2Learn. Spolupracujte s [Brightspace podle Desire2Learn týmu podpory](https://www.d2l.com/contact/) a přidejte uživatele v Brightspace podle platformy Desire2Learn. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 > [!NOTE]
 > K zřizování Azure Active Directory uživatelských účtů můžete použít jiné Brightspace pomocí nástrojů pro vytváření uživatelských účtů Desire2Learn a rozhraní API, které poskytuje Brightspace od společnosti Desire2Learn.
@@ -196,12 +196,12 @@ V této části vytvoříte uživatele s názvem Britta Simon v Brightspace pomo
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Brightspace by Desire2Learn, měli byste se k Brightspace automaticky přihlásit pomocí Desire2Learn, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Brightspace by Desire2Learn, měli byste se k Brightspace automaticky přihlásit pomocí Desire2Learn, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

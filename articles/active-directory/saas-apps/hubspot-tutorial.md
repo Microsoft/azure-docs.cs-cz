@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551436"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Kurz: Azure Active Directory integrace s HubSpot
 
@@ -28,7 +28,7 @@ Integrace HubSpot s Azure AD přináší následující výhody:
 * Uživatelé můžou být automaticky přihlášení k HubSpot pomocí svých účtů Azure AD (jednotné přihlašování).
 * Účty můžete spravovat v jednom centrálním umístění, Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ HubSpot podporuje následující funkce:
 
 Pokud chcete integrovat HubSpot s Azure AD, musíte přidat HubSpot do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **Azure Active Directory**.
 
@@ -257,6 +257,6 @@ Po nastavení jednotného přihlašování se při výběru **HubSpot** na port�
 
 Pokud se chcete dozvědět víc, přečtěte si tyto články:
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+- [Jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

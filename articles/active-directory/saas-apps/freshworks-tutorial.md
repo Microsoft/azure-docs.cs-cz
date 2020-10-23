@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.openlocfilehash: c953297d4e66f737250451b9a5f42ce7f45dd2e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40b8ff2fa32ae64b1857da4b7e4ef0cb997e4285
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821264"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92450624"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Freshworks
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Freshworks s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Freshworks svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -91,9 +91,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. Chcete-li upravit možnosti **podepisování**   podle vašich požadavků, klikněte na tlačítko **Upravit**   a otevřete dialogové okno **podpisový certifikát SAML**   .
+1. Chcete-li upravit možnosti **podepisování** podle vašich požadavků, klikněte na tlačítko **Upravit** a otevřete dialogové okno **podpisový certifikát SAML** .
 
-     ![image](common/edit-certificate.png)
+     ![image](common/edit-certificate.png)
 
      ![Snímek obrazovky s dialogovým oknem pro podpisový certifikát, který obsahuje vybrané tlačítko pro úpravy](./media/freshworks-tutorial/response.png)
 
@@ -139,7 +139,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se k webu Freshworks společnosti jako správce a proveďte následující kroky:
 
-2. V levé části nabídky klikněte na ikonu **zabezpečení**   a potom zaškrtněte možnost **jednotného přihlašování** a v části **metody ověřování**vyberte **jednotné přihlašování SAML** .
+2. V levé části nabídky klikněte na ikonu **zabezpečení** a potom zaškrtněte možnost **jednotného přihlašování** a v části **metody ověřování**vyberte **jednotné přihlašování SAML** .
 
     ![Snímek obrazovky, který zobrazuje část "metody zabezpečení ověřování" s možností jednotného přihlašování a je vybraný přepínač S A M L S S.](./media/freshworks-tutorial/configure01.png)
 
@@ -159,21 +159,20 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-freshworks-test-user"></a>Vytvořit testovacího uživatele Freshworks
 
-V této části vytvoříte uživatele s názvem B. Simon v Freshworks. Pokud chcete přidat uživatele na platformě Freshworks, pracujte s [týmem podpory klienta Freshworks](mailto:support@freshworks.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
+V této části vytvoříte uživatele s názvem B. Simon v Freshworks. Pokud chcete přidat uživatele na platformě Freshworks, pracujte s [týmem podpory klienta Freshworks](mailto:support@freshworks.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Freshworks, měli byste se automaticky přihlásit k Freshworks, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Freshworks, měli byste se automaticky přihlásit k Freshworks, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Freshworks s Azure AD](https://aad.portal.azure.com/)
-

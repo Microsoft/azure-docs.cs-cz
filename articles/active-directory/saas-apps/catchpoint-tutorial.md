@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ff7f6468b5556b56c5c2aeaba6107cac48d1ed4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88530252"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456445"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí záchytný bod
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat záchytný bod s Azure Active Director
 * Povolte pro uživatele s účty Azure AD automatické přihlašování záchytný bod.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Záchytný bod podporuje jednotné přihlašování iniciované v SP a IDP.
 * Záchytný bod podporuje zřizování uživatelů JIT (just-in-time).
-* Po nakonfigurování záchytný bod můžete vynutili řízení relace. Tato preventivní opatření chrání před exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace je rozšíření podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování záchytný bod můžete vynutili řízení relace. Tato preventivní opatření chrání před exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace je rozšíření podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-catchpoint-from-the-gallery"></a>Přidání záchytný bod z Galerie
 
@@ -71,7 +71,7 @@ Dokončete následující části:
 
 Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těchto kroků Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
 1. Na stránce integrace aplikací **záchytný bod** najděte část **Správa** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jeden Sign-On s SAML** vyberte ikonu pera a upravte **základní nastavení konfigurace SAML** .
@@ -87,24 +87,24 @@ Pokud chcete povolit jednotné přihlašování Azure AD, postupujte podle těch
 
 1. Aplikace záchytný bod očekává kontrolní výrazy SAML v určitém formátu. Přidejte mapování vlastních atributů do vaší konfigurace atributů tokenu SAML. Následující tabulka obsahuje seznam výchozích atributů:
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | GivenName | User. givenneame |
     | příjmení | User. příjmení |
     | EmailAddress | uživatel. pošta |
-    | Název | User. userPrincipalName |
+    | Name | User. userPrincipalName |
     | Jedinečný identifikátor uživatele | User. userPrincipalName |
 
     ![Uživatelské atributy & snímku seznamu deklarací identity](common/default-attributes.png)
 
 1. Také aplikace záchytný bod očekává, že se do odpovědi SAML předává jiný atribut. Podívejte se na následující tabulku. Tento atribut je také předem vyplněný, ale můžete ho zkontrolovat a aktualizovat tak, aby vyhovoval vašim požadavkům.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------ | --------- |
     | namespace | User. assignedrole |
 
     > [!NOTE]
-    > `namespace`Deklarace identity musí být namapovaná s názvem účtu. Tento název účtu by měl být nastavený s rolí v Azure AD, aby se zpátky v odpovědi SAML. Další informace o rolích ve službě Azure AD najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+    > `namespace`Deklarace identity musí být namapovaná s názvem účtu. Tento název účtu by měl být nastavený s rolí v Azure AD, aby se zpátky v odpovědi SAML. Další informace o rolích ve službě Azure AD najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](../develop/active-directory-enterprise-app-role-management.md).
 
 1. Přejít na stránku **nastavit jeden Sign-On se** stránkou SAML. V části **podpisový certifikát SAML** Najděte **certifikát (Base64)**. Vyberte **Stáhnout** a uložte certifikát do počítače.
 
@@ -158,7 +158,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
    Pole | Hodnota
    ----- | ----- 
-   **Hosting** | Platná hodnota oboru názvů.
+   **Obor názvů** | Platná hodnota oboru názvů.
    **Vystavitel zprostředkovatele identity** | `Azure AD Identifier`Hodnota z Azure Portal.
    **Adresa URL jednotného přihlašování** | `Login URL`Hodnota z Azure Portal.
    **Certifikát** | Obsah staženého `Certificate (Base64)` souboru z Azure Portal. K zobrazení a kopírování použijte Poznámkový blok.
@@ -175,7 +175,7 @@ Záchytný bod podporuje zřizování uživatelů za běhu, což je ve výchozí
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí portálu moje aplikace.
 
-Když na portálu moje aplikace vyberete dlaždici záchytný bod, měli byste být automaticky přihlášeni do aplikace záchytný bod pomocí nakonfigurovaného jednotného přihlašování. Další informace o portálu moje aplikace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Když na portálu moje aplikace vyberete dlaždici záchytný bod, měli byste být automaticky přihlášeni do aplikace záchytný bod pomocí nakonfigurovaného jednotného přihlašování. Další informace o portálu moje aplikace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 > [!NOTE]
 > Když jste se přihlásili k aplikaci záchytný bod prostřednictvím přihlašovací stránky, po zadání **přihlašovacích údajů záchytný bod**zadejte platnou hodnotu **oboru názvů** do pole **pověření společnosti (SSO)** a vyberte **přihlašovací jméno**.
@@ -184,12 +184,12 @@ Když na portálu moje aplikace vyberete dlaždici záchytný bod, měli byste b
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si záchytný bod s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

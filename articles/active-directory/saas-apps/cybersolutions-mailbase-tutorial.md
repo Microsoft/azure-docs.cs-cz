@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: aa45494e9870daee079eed4fe92867f64c3c791e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a1bed217f12646687654f37145a4a796d0487a1
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90057366"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454996"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cybersolutions-mailbasecmss"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s CyberSolutions MAILBASEΣ \ CMS
 
@@ -125,7 +125,7 @@ Ke konfiguraci jednotného přihlašování na straně **CYBERSOLUTIONS MAILBASE
 
 ### <a name="create-cybersolutions-mailbase-test-user"></a>Vytvořit testovacího uživatele CyberSolutions MAILBASE
 
-V této části vytvoříte uživatele s názvem Britta Simon v CyberSolutions MAILBASEΣ \ CMS. Pokud chcete přidat uživatele do platformy CyberSolutions MAILBASEΣ \ CMS, pracujte s [týmem podpory CYBERSOLUTIONS MAILBASEΣ \ CMS](mailto:tech@cybersolutions.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v CyberSolutions MAILBASEΣ \ CMS. Pokud chcete přidat uživatele do platformy CyberSolutions MAILBASEΣ \ CMS, pracujte s [týmem podpory CYBERSOLUTIONS MAILBASEΣ \ CMS](mailto:tech@cybersolutions.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -141,9 +141,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k CyberSolutions MAILBASEΣ \ CMS, pro kterou jste si nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici CyberSolutions MAILBASEΣ \ CMS na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k CyberSolutions MAILBASEΣ \ CMS, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici CyberSolutions MAILBASEΣ \ CMS na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud je nakonfigurovaná v režimu IDP, měli byste se automaticky přihlásit k CyberSolutions MAILBASEΣ \ CMS, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování CyberSolutions MAILBASEΣ \ CMS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+Po nakonfigurování CyberSolutions MAILBASEΣ \ CMS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

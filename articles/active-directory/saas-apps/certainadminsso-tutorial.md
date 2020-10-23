@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 6265553b1943511fdedb76df1d4b8aba76c74ccf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ac237c7dd2e11d9acc5230608283aa2ba432a68
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88530069"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456326"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Kurz: Azure Active Directory integraci s určitým SSO správce
 
@@ -27,7 +27,7 @@ Integrace určitého jednotného přihlašování správce k Azure AD vám posky
 * Uživatelům můžete povolit, aby se automaticky přihlásili k určitému JEDNOTNÉmu přihlašování (jednotné přihlašování) s účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -179,18 +179,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-certain-admin-sso-test-user"></a>Vytvořit určitého správce jednotného přihlašování uživatele
 
-V této části vytvoříte uživatele s názvem Britta Simon v rámci určitého jednotného přihlašování správce. Pokud chcete přidat uživatele na určité platformě jednotného přihlašování pro správce, pracujte s [určitým týmem podpory jednotného přihlašování](mailto:integrations@certain.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v rámci určitého jednotného přihlašování správce. Pokud chcete přidat uživatele na určité platformě jednotného přihlašování pro správce, pracujte s [určitým týmem podpory jednotného přihlašování](mailto:integrations@certain.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na ikonu jednotného přihlašování správce na přístupovém panelu, měli byste se automaticky přihlásit ke konkrétnímu JEDNOTNÉmu přihlašování správce, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na ikonu jednotného přihlašování správce na přístupovém panelu, měli byste se automaticky přihlásit ke konkrétnímu JEDNOTNÉmu přihlašování správce, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

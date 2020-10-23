@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 4ba35d91d286cb43a763887d104e21ae0d537c8e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123523"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424123"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Nejčastější dotazy týkající se Azure Network Watcher
 Služba [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) poskytuje sadu nástrojů pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network. Tento článek obsahuje odpovědi na běžné dotazy týkající se služby.
@@ -40,7 +40,7 @@ Network Watcher poskytuje tři hlavní sady funkcí
   * [Řešení potíží s připojením](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-portal) umožňuje jednorázové připojení a kontrolu latence mezi virtuálním počítačem a jiným síťovým prostředkem.
   * [Zachytávání paketů](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) umožňuje zachytit veškerý provoz virtuálního počítače ve vaší virtuální síti.
   * [Řešení potíží s VPN](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-overview) spouští více diagnostických kontrol bran a připojení VPN, které vám pomůžou s laděním.
-* protokolování
+* Protokolování
   * [Protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) vám umožňují protokolovat veškerý provoz ve [skupinách zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview) .
   * [Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) zpracovává data protokolu toku NSG, což umožňuje vizualizovat, dotazovat, analyzovat a pochopit síťový provoz.
 
@@ -55,7 +55,7 @@ Na [stránce s cenami](https://azure.microsoft.com/pricing/details/network-watch
 Nejnovější regionální dostupnost najdete na [stránce dostupnosti služby Azure](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) .
 
 ### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Která oprávnění jsou nutná k použití Network Watcher?
-Podívejte se na seznam [oprávnění RBAC, která jsou nutná k použití Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions). Pro nasazení prostředků potřebujete oprávnění přispěvatele k NetworkWatcherRG (viz níže).
+Podívejte se na seznam [oprávnění Azure RBAC potřebných k použití Network Watcher](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions). Pro nasazení prostředků potřebujete oprávnění přispěvatele k NetworkWatcherRG (viz níže).
 
 ### <a name="how-do-i-enable-network-watcher"></a>Jak povolit službu Network Watcher?
 Služba Network Watcher je [automaticky povolená](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) pro každé předplatné.
@@ -84,7 +84,7 @@ Prostředek Network Watcher představuje back-end službu pro Network Watcher a 
 ## <a name="service-availability-and-redundancy"></a>Dostupnost služby a redundance 
 
 ### <a name="is-the-network-watcher-service-zone-resilient"></a>Je zóna služby Network Watcher odolná proti chybám? 
-Yes. Služba Network Watcher je ve výchozím nastavení odolná proti zónám. 
+Ano. Služba Network Watcher je ve výchozím nastavení odolná proti zónám. 
 
 ### <a name="how-do-i-configure-the-network-watcher-service-to-be-zone-resilient"></a>Návody nakonfigurovat službu Network Watcher, aby byla odolná proti zóně? 
 Pro povolení odolnosti zóny není nutná žádná konfigurace zákazníka. V zóně – odolnost pro Network Watcher prostředky je ve výchozím nastavení dostupná a spravovaná samotnými službami. 

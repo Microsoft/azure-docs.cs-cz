@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047688"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461755"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Funkce pro žádosti o data zákaznických dat v Azure
 
@@ -25,7 +25,7 @@ Digitální reprezentace označované jako *digitální vlákna* v rámci digit�
 
 Mnohé z digitálních vláken v Azure Digital autofactory nepředstavuje přímo osobní entity – typické objekty mohou být v místnosti pro schůzku nebo v továrně. Uživatelé ale můžou zvážit, že některé entity budou identifikovatelné osobně, a na základě jejich uvážení mohou uchovávat vlastní metody sledování prostředků nebo inventáře, které propojují digitální vlákna jednotlivcům. Digitální vlákna Azure spravuje a ukládá všechna data přidružená k digitálním hodnotám, jako by šlo o osobní údaje.
 
-Pokud chcete zobrazit, exportovat a odstranit osobní údaje, které mohou být odkazovány v žádosti subjektu údajů, může správce digitálních vláken Azure použít [**Azure Portal**](https://portal.azure.com/) pro uživatele a role nebo [**rozhraní REST API**](how-to-use-apis-sdks.md) pro digitální vlákna Azure. Rozhraní API pro Azure Portal a REST poskytují různé metody pro poskytování požadavků subjektu dat pro uživatele.
+Pokud chcete zobrazit, exportovat a odstranit osobní údaje, které mohou být odkazovány v žádosti subjektu údajů, může správce digitálních vláken Azure použít [**Azure Portal**](https://portal.azure.com/) pro uživatele a role nebo [**rozhraní REST API**](/rest/api/azure-digitaltwins/) pro digitální vlákna Azure. Rozhraní API pro Azure Portal a REST poskytují různé metody pro poskytování požadavků subjektu dat pro uživatele.
 
 ## <a name="identifying-customer-data"></a>Identifikace zákaznických dat
 

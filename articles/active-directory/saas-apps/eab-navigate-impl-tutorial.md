@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 1ef4cd8830cec4eb8d72855f8308035e47bf3d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3f1982e72fb572f75789f6005b32de557c0b37d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555610"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454469"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) pomocí EAB Navigate IMPL
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat EAB Navigate IMPL s Azure Active Direc
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k EAB procházení IMPL pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -128,20 +128,20 @@ Pokud chcete nakonfigurovat jednotné přihlašování na **EAB, přejděte** na
 
 ### <a name="create-eab-navigate-impl-test-user"></a>Vytvoření EAB navigace IMPL testovacího uživatele
 
-V této části vytvoříte uživatele s názvem B. Simon v EAB Navigate IMPL. Pokud chcete přidat uživatele v EAB platformě IMPL, pracujte s [EAB, přejděte na tým podpory impl](mailto:EABTechSupport@eab.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v EAB Navigate IMPL. Pokud chcete přidat uživatele v EAB platformě IMPL, pracujte s [EAB, přejděte na tým podpory impl](mailto:EABTechSupport@eab.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici EAB navigovat IMPL na přístupovém panelu, měli byste se automaticky přihlášeni k EAB navigaci IMPL, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici EAB navigovat IMPL na přístupovém panelu, měli byste se automaticky přihlášeni k EAB navigaci IMPL, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si EAB s navigací IMPL s Azure AD](https://aad.portal.azure.com/)

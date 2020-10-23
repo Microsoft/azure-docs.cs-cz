@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 03b31f80ecd5cc388b66c6eae54db83be300cd95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e18cd80c0232c4552c0e3dc57a23477d410c5395
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348406"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442554"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hoxhunt"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Hoxhunt
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Hoxhunt s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Hoxhunt svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -122,7 +122,7 @@ Ke konfiguraci jednotného přihlašování na straně **Hoxhunt** je potřeba o
 
 ### <a name="create-hoxhunt-test-user"></a>Vytvořit testovacího uživatele Hoxhunt
 
-V této části vytvoříte uživatele s názvem Britta Simon v Hoxhunt. Pokud chcete přidat uživatele na platformě Hoxhunt, pracujte s [týmem podpory Hoxhunt](mailto:support@hoxhunt.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Hoxhunt. Pokud chcete přidat uživatele na platformě Hoxhunt, pracujte s [týmem podpory Hoxhunt](mailto:support@hoxhunt.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -132,10 +132,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na adresu URL pro přihlášení k Hoxhunt přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Hoxhunt na přístupovém panelu se tato akce přesměruje na přihlašovací adresu Hoxhunt. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Hoxhunt na přístupovém panelu se tato akce přesměruje na přihlašovací adresu Hoxhunt. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Hoxhunt můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování Hoxhunt můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

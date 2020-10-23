@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
-ms.openlocfilehash: b0a12c7ce4ac5faac7103d0032feff7788431751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38765fd6d740c7494cbf7e5a0a38f1d98aecf4a6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553048"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456972"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blue-access-for-members-bam"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s modrým přístupem pro členy (BAM)
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat modrý přístup pro členy (BAM) pomo
 * Umožněte uživatelům, aby se automaticky přihlásili k modrému přístupu pro členy (BAM) s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -99,7 +99,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše očekává aplikace Blue Access for Members (BAM) několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | ------------ | --------- |
     | ClientID | `<ClientID>` |
     | UID | `<UID>` |
@@ -148,20 +148,20 @@ Aby bylo možné konfigurovat jednotné přihlašování na straně **Blue Acces
 
 ### <a name="create-blue-access-for-members-bam-test-user"></a>Vytvořit modrý přístup pro členy (BAM) testovací uživatel
 
-V této části vytvoříte uživatele s názvem B. Simon v modrém přístupu pro členy (BAM). Pracujte s [modrým BAM (Blue Access for Members)](https://www.bcbstx.com/contact-us) a přidejte uživatele na platformu Blue Access for Members (BAM). Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v modrém přístupu pro členy (BAM). Pracujte s [modrým BAM (Blue Access for Members)](https://www.bcbstx.com/contact-us) a přidejte uživatele na platformu Blue Access for Members (BAM). Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Blue Access for Members (BAM), měli byste být automaticky přihlášeni k modrému přístupu pro členy (BAM), pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Blue Access for Members (BAM), měli byste být automaticky přihlášeni k modrému přístupu pro členy (BAM), pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte modrý přístup pro členy (BAM) se službou Azure AD](https://aad.portal.azure.com/)
