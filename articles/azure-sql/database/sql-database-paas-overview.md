@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972e4bcfc0eb20903dafc598bad812d0afe98afb
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617216"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428307"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Pomocí Azure SQL Database můžete vytvořit vysoce dostupnou a výkonnou vrstv
 
 Azure SQL Database vychází z nejnovější stabilní verze [databázového stroje Microsoft SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). Můžete používat funkce pokročilého zpracování dotazů, jako jsou [vysoce výkonné technologie v paměti](../in-memory-oltp-overview.md) a [Inteligentní zpracování dotazů](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json). Nejnovější funkce SQL Serveru se dokonce vydávají nejprve v SQL Database a až poté v samotném SQL Serveru. Tyto funkce otestované na milionech databází se k vám tak dostanou bez nutnosti vynaložení dalších nákladů na opravy a upgrade. 
 
-SQL Database umožňuje snadno definovat a škálovat výkon v rámci dvou různých nákupních modelů: [nákupní model založený na Vcore](service-tiers-vcore.md) a [nákupní model založený na DTU](service-tiers-dtu.md). SQL Database je plně spravovaná služba s integrovanou vysokou dostupností, zálohováním a dalšími běžnými operacemi údržby. Společnost Microsoft zpracovává všechny opravy a aktualizace kódu SQL a operačního systému. Nemusíte spravovat základní infrastrukturu.
+SQL Database umožňuje snadno definovat a škálovat výkon v rámci dvou různých nákupních modelů: [nákupní model založený na Vcore](service-tiers-vcore.md) a [nákupní model založený na DTU](service-tiers-dtu.md). SQL Database je plně spravovaná služba s integrovanou vysokou dostupností, zálohováním a dalšími běžnými operacemi údržby. Společnost Microsoft zpracovává všechny opravy a aktualizace kódu SQL a operačního systému. Správou základní infrastruktury se tedy nemusíte zabývat.
 
 Pokud s Azure SQL Database začínáte, přečtěte si video s *přehledem Azure SQL Database* z naší podrobných [grafických řad Azure SQL](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
@@ -108,7 +108,7 @@ Azure SQL Database umožní vašemu podniku pokračovat v práci během přeruš
 
 Zotavení po havárii předpokládá, že je závažná událost geograficky lokalizovaná, aby mohla mít jiný počítač nebo sadu počítačů s kopií vašich dat daleko pryč. V SQL Server můžete k získání této funkce použít skupiny dostupnosti Always On spuštěné v asynchronním režimu. Lidé často nechtějí čekat na replikaci, která je daleko před potvrzením transakce, takže při neplánovaných převzetí služeb při selhání může dojít ke ztrátě dat.
 
-Databáze na úrovních služeb Premium a Pro důležité obchodní informace již [fungují podobně jako](high-availability-sla.md#premium-and-business-critical-service-tier-availability) synchronizace skupiny dostupnosti. Databáze v nižších úrovních služeb poskytují redundanci prostřednictvím úložiště pomocí jiného, [ale ekvivalentního mechanismu](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability). Vestavěná logika pomáhá chránit proti selhání jednoho počítače. Funkce aktivní geografické replikace vám dává možnost chránit před haváriemi, kdy je zničena celá oblast.
+Databáze na úrovních služeb Premium a Pro důležité obchodní informace již [fungují podobně jako](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) synchronizace skupiny dostupnosti. Databáze v nižších úrovních služeb poskytují redundanci prostřednictvím úložiště pomocí jiného, [ale ekvivalentního mechanismu](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability). Vestavěná logika pomáhá chránit proti selhání jednoho počítače. Funkce aktivní geografické replikace vám dává možnost chránit před haváriemi, kdy je zničena celá oblast.
 
 Zóny dostupnosti Azure se snaží chránit před výpadkem jednoho datového centra v rámci jedné oblasti. Pomáhá chránit před ztrátou energie nebo sítě až po sestavení. V SQL Database umístíte různé repliky do různých zón dostupnosti (ve skutečnosti i v různých budovách).
 

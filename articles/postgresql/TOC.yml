@@ -157,6 +157,8 @@
             - name: Private Link
               href: concepts-data-access-and-security-private-link.md
               displayName: 'security, private link, private endpoint'
+        - name: Plánovaná údržba
+          href: concepts-planned-maintenance-notification.md
         - name: Kontinuita podnikových procesů
           items:
             - name: Úvod do provozní kontinuity

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace konzoly pro správu Netskope pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
-description: Naučte se, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů do konzoly pro správu Netskope.
+title: 'Kurz: Konfigurace ověřování uživatelů Netskope pro Automatické zřizování uživatelů s Azure Active Directory | Microsoft Docs'
+description: Naučte se, jak nakonfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro Netskope ověřování uživatelů.
 services: active-directory
 author: zchia
 writer: zchia
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: b4ac2308eae3466dbb9d68895bca4a4de30fcebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 173ca296689bbdb8d574930ec2549e82839c47e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304906"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428460"
 ---
-# <a name="tutorial-configure-netskope-administrator-console-for-automatic-user-provisioning"></a>Kurz: Konfigurace konzoly pro správu Netskope pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Kurz: Konfigurace ověřování uživatelů Netskope pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v konzole pro správu Netskope a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů a skupin pro konzolu správce Netskope.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést v Netskope ověřování uživatelů a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD pro Automatické zřizování a zrušení zřizování uživatelů a skupin pro Netskope ověřování uživatelů.
 
 > [!NOTE]
 > Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
@@ -32,49 +32,49 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v konzole pro sp
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * Tenant Azure AD
-* [Tenant konzoly správce Netskope](https://www.netskope.com/)
-* Uživatelský účet v konzole pro správu Netskope s oprávněními správce.
+* [Tenant ověřování uživatele Netskope](https://www.netskope.com/)
+* Uživatelský účet v Netskope ověřování uživatele s oprávněními správce.
 
-## <a name="assigning-users-to-netskope-administrator-console"></a>Přiřazení uživatelů ke konzole správce Netskope
+## <a name="assigning-users-to-netskope-user-authentication"></a>Přiřazení uživatelů k Netskope ověřování uživatelů
 
 Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom uživatelé a skupiny, které jsou přiřazené k aplikaci v Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup ke konzole pro správu Netskope. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny do konzoly správce Netskope podle pokynů uvedených tady:
+Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k ověření uživatele Netskope. Po rozhodnutí můžete přiřadit tyto uživatele nebo skupiny, abyste Netskope ověřování uživatelů podle pokynů uvedených tady:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-netskope-administrator-console"></a>Důležité tipy pro přiřazení uživatelů ke konzole správce Netskope
+## <a name="important-tips-for-assigning-users-to-netskope-user-authentication"></a>Důležité tipy pro přiřazení uživatelů k Netskope ověřování uživatelů
 
-* Doporučujeme, aby se k otestování automatické konfigurace zřizování uživatelů přiřadil jeden uživatel Azure AD konzole pro správu Netskope. Další uživatele a skupiny můžete přiřadit později.
+* Doporučuje se, aby jeden uživatel Azure AD byl přiřazený k Netskope ověřování uživatelů, aby mohl otestovat automatickou konfiguraci zřizování uživatelů. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele do konzoly pro správu Netskope musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
+* Když přiřadíte uživatele k Netskope ověření uživatele, musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (Pokud je dostupná). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
-## <a name="set-up-netskope-administrator-console-for-provisioning"></a>Nastavení konzoly pro správu Netskope pro zřizování
+## <a name="set-up-netskope-user-authentication-for-provisioning"></a>Nastavení ověření uživatele Netskope pro zřizování
 
-1. Přihlaste se ke [konzole správce konzoly pro správu Netskope](https://netskope.goskope.com/). Přejděte do **Nastavení domovská >**.
+1. Přihlaste se ke [konzole Správce ověřování uživatelů Netskope](https://netskope.goskope.com/). Přejděte do **Nastavení domovská >**.
 
-    ![Konzola správce konzoly pro správu Netskope](media/netskope-administrator-console-provisioning-tutorial/admin.png)
+    ![Konzola pro správu ověřování uživatelů Netskope](media/netskope-administrator-console-provisioning-tutorial/admin.png)
 
 2.  Přejděte na **nástroje**. V nabídce **nástroje** přejděte na **nástroje adresáře > integrace SCIM**.
 
-    ![Nástroje konzoly pro správu Netskope](media/netskope-administrator-console-provisioning-tutorial/tools.png)
+    ![Nástroje pro ověřování uživatelů Netskope](media/netskope-administrator-console-provisioning-tutorial/tools.png)
 
-    ![Konzola pro správu Netskope přidat SCIM](media/netskope-administrator-console-provisioning-tutorial/directory.png)
+    ![Netskope ověřování uživatele přidat SCIM](media/netskope-administrator-console-provisioning-tutorial/directory.png)
 
 3. Posuňte se dolů a klikněte na tlačítko **Přidat token** . V dialogovém okně **Přidat název klienta OAuth** zadejte **název klienta** a klikněte na tlačítko **Uložit** .
 
-    ![Přidat token do konzoly pro správu Netskope](media/netskope-administrator-console-provisioning-tutorial/add.png)
+    ![Přidat token pro ověření uživatele Netskope](media/netskope-administrator-console-provisioning-tutorial/add.png)
 
-    ![Název klienta konzoly správce Netskope](media/netskope-administrator-console-provisioning-tutorial/clientname.png)
+    ![Název klienta ověřování uživatele Netskope](media/netskope-administrator-console-provisioning-tutorial/clientname.png)
 
-3.  Zkopírujte **adresu URL serveru SCIM** a **token**. Tyto hodnoty se zadají do polí Adresa URL tenanta a tajného tokenu na kartě zřizování v aplikaci konzoly pro správu Netskope v Azure Portal.
+3.  Zkopírujte **adresu URL serveru SCIM** a **token**. Tyto hodnoty se zadají do polí Adresa URL tenanta a tajného tokenu na kartě zřizování vaší aplikace ověřování uživatelů Netskope v Azure Portal.
 
-    ![Vytvoření tokenu v konzole pro správu Netskope](media/netskope-administrator-console-provisioning-tutorial/token.png)
+    ![Netskope vytvořit token pro ověření uživatele](media/netskope-administrator-console-provisioning-tutorial/token.png)
 
-## <a name="add-netskope-administrator-console-from-the-gallery"></a>Přidání konzoly správce Netskope z Galerie
+## <a name="add-netskope-user-authentication-from-the-gallery"></a>Přidání ověření uživatele Netskope z Galerie
 
-Před konfigurací konzoly pro správu Netskope pro Automatické zřizování uživatelů se službou Azure AD je nutné přidat konzolu správce Netskope z Galerie aplikací Azure AD do svého seznamu spravovaných aplikací SaaS.
+Než nakonfigurujete ověřování uživatele Netskope pro Automatické zřizování uživatelů pomocí Azure AD, musíte do svého seznamu spravovaných aplikací pro SaaS přidat Netskope ověřování uživatelů z Galerie aplikací Azure AD.
 
-**Pokud chcete přidat konzolu správce Netskope z Galerie aplikací Azure AD, proveďte následující kroky:**
+**Pokud chcete přidat ověřování uživatelů Netskope z Galerie aplikací Azure AD, proveďte následující kroky:**
 
 1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
@@ -88,29 +88,29 @@ Před konfigurací konzoly pro správu Netskope pro Automatické zřizování u�
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Netskope konzoly pro správu**, vyberte možnost **Konzola pro správu Netskope** na panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Netskope ověření uživatele**, vyberte možnost **ověřování uživatelů Netskope** na panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Konzola pro správu Netskope v seznamu výsledků](common/search-new-app.png)
+    ![Netskope ověřování uživatelů v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-netskope-administrator-console"></a>Konfigurace automatického zřizování uživatelů v konzole pro správu Netskope 
+## <a name="configuring-automatic-user-provisioning-to-netskope-user-authentication"></a>Konfigurace automatického zřizování uživatelů pro Netskope ověřování uživatelů 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v konzole pro správu Netskope na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Netskope ověřování uživatelů na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro konzolu pro správu Netskope podle pokynů uvedených v [kurzu pro jednotné přihlašování v konzole pro správu Netskope](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro ověřování uživatelů Netskope podle pokynů uvedených v [kurzu Netskope pro ověřování uživatelů pomocí jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
 
 > [!NOTE]
-> Další informace o koncovém bodu SCIM konzoly správce Netskope najdete v [tomto](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)tématu.
+> Další informace o koncovém bodu SCIM ověření uživatele Netskope najdete v [tomto](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)tématu.
 
-### <a name="to-configure-automatic-user-provisioning-for-netskope-administrator-console-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro konzolu pro správu Netskope v Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-netskope-user-authentication-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro ověřování uživatelů Netskope ve službě Azure AD:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **konzolu pro správu Netskope**.
+2. V seznamu aplikace vyberte **Netskope ověřování uživatele**.
 
-    ![Odkaz na konzolu správce Netskope v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na ověření uživatele Netskope v seznamu aplikací](common/all-applications.png)
 
 3. Vyberte kartu **Zřizování**.
 
@@ -120,7 +120,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte na **adrese URL klienta**vstupní hodnotu **URL serveru SCIM** . Zadejte hodnotu **tokenu** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** , aby se služba Azure AD mohla připojit ke konzole pro správu Netskope. Pokud se připojení nepovede, zajistěte, aby měl účet konzoly správce Netskope oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte na **adrese URL klienta**vstupní hodnotu **URL serveru SCIM** . Zadejte hodnotu **tokenu** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k ověřování uživatelů Netskope. Pokud se připojení nepovede, ujistěte se, že váš účet pro ověřování uživatelů Netskope má oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -130,29 +130,29 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 7. Klikněte na **Uložit**.
 
-8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů a Netskope konzolu správce**.
+8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů a Netskope ověřování uživatelů**.
 
-    ![Mapování uživatelů konzoly správce Netskope](media/netskope-administrator-console-provisioning-tutorial/usermappings.png)
+    ![Mapování uživatelů ověřování uživatelů Netskope](media/netskope-administrator-console-provisioning-tutorial/usermappings.png)
 
-9. Zkontrolujte atributy uživatele synchronizované z Azure AD do konzoly pro správu Netskope v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v konzole pro správu Netskope pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD a Netskope ověřování uživatelů v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Netskope ověřování uživatelů pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Atributy uživatele konzoly správce Netskope](media/netskope-administrator-console-provisioning-tutorial/userattributes.png)
+    ![Uživatelské atributy ověřování uživatelů Netskope](media/netskope-administrator-console-provisioning-tutorial/userattributes.png)
 
-10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do konzoly pro správu Netskope**.
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny a Netskope ověřování uživatelů**.
 
-    ![Mapování skupin konzoly správce Netskope](media/netskope-administrator-console-provisioning-tutorial/groupmappings.png)
+    ![Mapování skupin ověřování uživatelů Netskope](media/netskope-administrator-console-provisioning-tutorial/groupmappings.png)
 
-11. Zkontrolujte atributy skupiny synchronizované z Azure AD do konzoly pro správu Netskope v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v konzole pro správu Netskope pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+11. Zkontrolujte atributy skupiny synchronizované z Azure AD a Netskope ověřování uživatelů v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v ověřování uživatelů Netskope pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Atributy skupiny konzoly správce Netskope](media/netskope-administrator-console-provisioning-tutorial/groupattributes.png)
+    ![Atributy skupiny ověřování uživatelů Netskope](media/netskope-administrator-console-provisioning-tutorial/groupattributes.png)
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Pokud chcete povolit službu Azure AD Provisioning pro konzolu pro správu Netskope, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+13. Pokud chcete povolit službu Azure AD Provisioning pro ověřování uživatelů Netskope, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
     ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
-14. Definujte uživatele nebo skupiny, které chcete zřídit v konzole pro správu Netskope, výběrem požadovaných hodnot v **oblasti** **Nastavení** v části.
+14. Určete uživatele nebo skupiny, které chcete zřídit pro Netskope ověřování uživatelů, a to tak, že v části **Nastavení** vyberete požadované hodnoty v **oboru** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
@@ -160,7 +160,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část s **podrobnostmi o synchronizaci** můžete použít ke sledování průběhu a následného odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v konzole pro správu Netskope.
+Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít k monitorování průběhu a následnému sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD při ověřování uživatele Netskope.
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
