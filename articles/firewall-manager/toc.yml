@@ -14,6 +14,8 @@
   items:
     - name: Zabezpečení virtuálního centra – portál
       href: secure-cloud-network.md
+    - name: Zabezpečení virtuálního centra – PowerShell
+      href: secure-cloud-network-powershell.md
     - name: Zabezpečení virtuální sítě WAN rozbočovače – portál
       href: secure-hybrid-network.md
 - name: Koncepty

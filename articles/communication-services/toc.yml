@@ -90,6 +90,8 @@
       href: samples/calling-hero-sample.md
     - name: Ukázka pro skupinový chat
       href: samples/chat-hero-sample.md
+    - name: Ukázka webového volání
+      href: samples/web-calling-sample.md
 - name: Reference
   items:
     - name: Rozhraní REST API dokumentace

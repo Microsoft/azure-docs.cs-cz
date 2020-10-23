@@ -1,0 +1,128 @@
+- name: Dokumentace k rolím Azure AD
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Role Azure AD
+      href: custom-overview.md
+- name: Rychlé starty
+  items:
+    - name: Vytvoření neomezené registrace aplikací
+      href: quickstart-app-registration-limits.md
+- name: Kurzy
+  items:
+    - name: Vytvoření dynamické skupiny
+      href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: Koncepty
+  expanded: true
+  items:
+    - name: Delegování rolí správce Azure AD
+      href: concept-delegation.md
+    - name: Porovnání výchozích uživatelských oprávnění
+      href: /azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Porovnání rolí Azure a Azure AD
+      href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Vysvětlení jednotek pro správu v Azure AD
+      href: administrative-units.md
+- name: Návody
+  expanded: true
+  items:
+    - name: Uživatelé a role
+      items:
+        - name: Přiřazení uživatelů k rolím správce
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Odvolání přístupu uživatele
+          href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Přiřazení rolí uživatelům typu host
+          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/roles/context/ugr-context
+        - name: Omezení přístupu uživatelů typu host
+          href: /azure/active-directory/enterprise-users/users-restrict-guest-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Dynamické skupiny a hosté
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/roles/context/ugr-context
+    - name: Role a oprávnění
+      expanded: true
+      items:
+        - name: Role a oprávnění
+          href: permissions-reference.md
+        - name: Zobrazení a přiřazení rolí
+          href: manage-roles-portal.md
+        - name: Delegování na portálu Moji zaměstnanci
+          href: my-staff-configure.md
+    - name: Vlastní role
+      expanded: true
+      items:
+        - name: Přehled vlastních rolí
+          href: custom-overview.md
+        - name: Vytvoření vlastní role
+          href: custom-create.md
+        - name: Zobrazení přiřazení vlastních rolí
+          href: custom-view-assignments.md
+        - name: Přiřazení vlastních rolí na webu Azure Portal
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+        - name: Přiřazení vlastních rolí v PowerShellu
+          href: custom-assign-powershell.md
+        - name: Přiřazení vlastních rolí pro podnikové aplikace
+          href: custom-enterprise-apps.md
+        - name: Vlastní role/oprávnění
+          items:
+            - name: Oprávnění registrace aplikací
+              href: custom-available-permissions.md
+            - name: Oprávnění podnikových aplikací
+              href: custom-enterprise-app-permissions.md
+            - name: Oprávnění souhlasu pro aplikace
+              href: custom-consent-permissions.md
+        - name: Delegování rolí správce aplikace
+          href: delegate-app-roles.md
+    - name: Přiřazení rolí ke skupinám
+      items:
+        - name: Přiřazení rolí na základě skupin (Preview)
+          href: groups-concept.md
+        - name: Vytvoření skupiny s možností přiřazení rolí
+          href: groups-create-eligible.md
+        - name: Přiřazení rolí ke skupině
+          href: groups-assign-role.md
+        - name: Odebrání přiřazení rolí ze skupiny
+          href: groups-remove-assignment.md
+        - name: Zobrazení přiřazení rolí pro skupinu
+          href: groups-view-assignments.md
+        - name: Zajištění možnosti přiřazení role v PIM pro skupinu
+          href: groups-pim-eligible.md
+        - name: Nejčastější dotazy a řešení potíží
+          href: groups-faq-troubleshooting.md
+    - name: Zabezpečení rolí
+      items:
+        - name: Plánování zabezpečení rolí
+          href: security-planning.md
+        - name: Vytvoření nouzových účtů
+          href: security-emergency-access.md
+    - name: Jednotky pro správu
+      items:
+        - name: Přehled jednotek pro správu
+          href: administrative-units.md
+        - name: Přidávání a správa
+          href: admin-units-manage.md
+        - name: Přidávání a správa uživatelů
+          href: admin-units-add-manage-users.md
+        - name: Přidávání a správa skupin
+          href: admin-units-add-manage-groups.md
+        - name: Přiřazení role s rozsahem
+          href: admin-units-assign-roles.md
+        - name: Nejčastější dotazy a řešení potíží
+          href: admin-units-faq-troubleshoot.md
+    - name: Řešení potíží
+      items:
+        - name: Získání podpory pro Azure AD
+          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+- name: Referenční informace
+  items:
+    - name: Role s nejnižšími oprávněními podle úkolu
+      href: delegate-by-task.md
+    - name: Dokumentace k rolím Microsoftu 365
+      href: m365-workload-docs.md
+    - name: Graph API
+      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+    - name: Azure AD CLI
+      href: /cli/azure/ad
+    - name: Azure AD PowerShell pro Graph
+      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
+    - name: Omezení služby Azure AD
+      href: /azure/active-directory/fundamentals/directory-service-limits-restrictions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context

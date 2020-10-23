@@ -45,7 +45,7 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: Zobrazení skupin zabezpečení sítě
       href: network-watcher-security-group-view-overview.md
-    - name: Oprávnění pro řízení přístupu na základě rolí
+    - name: Oprávnění pro řízení přístupu na základě rolí v Azure
       href: required-rbac-permissions.md
     - name: Zabezpečení
       items:

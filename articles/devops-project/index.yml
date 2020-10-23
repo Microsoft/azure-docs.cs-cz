@@ -1,35 +1,37 @@
 ### YamlMime:Landing
-title: Dokumentace k Azure DevOps Starteru
-summary: Azure DevOps Starter představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.
+title: Dokumentace k DevOps Starteru pro nasazení do Azure
+summary: DevOps Starter představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření úlohy nebo kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure. DevOps Starter teď podporuje vytváření pracovních postupů GitHub Actions.
 metadata:
-  title: Dokumentace k Azure DevOps Starteru
+  title: Dokumentace k DevOps Starteru
   description: Přeneste váš stávající kód a úložiště Git nebo zvolte ukázkovou aplikaci pro vytvoření kanálu kontinuální integrace (CI) a průběžného doručování (CD) do Azure.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
   ms.date: 03/24/2020
-  ms.openlocfilehash: 62e95192f25487be60ed0334054f200447fc64cb
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7521a5a57b6dd1c090fbc880033fc5fc0707419b
+  ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91855935"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92330678"
 landingContent:
-- title: Informace o Azure DevOps Starteru
+- title: Informace o DevOps Starteru
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je Azure DevOps Starter?
+    - text: Co je DevOps Starter?
       url: overview.md
   - linkListType: video
     links:
-    - text: Video k vytvoření CI/CD s využitím DevOps Starteru (8:53)
+    - text: Vytvoření CI/CD s využitím DevOps Starteru a Azure DevOps (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
-- title: Vytvoření kanálu CI/CD
+- title: Konfigurace CI/CD
   linkLists:
   - linkListType: quickstart
     links:
+    - text: Node.js s využitím GitHub Actions
+      url: /azure/devops-project/devops-starter-gh-nodejs
     - text: .NET
       url: ./azure-devops-project-aspnet-core.md
     - text: Node.js
@@ -44,10 +46,12 @@ landingContent:
       url: ./azure-devops-project-ruby.md
     - text: Přejít
       url: ./azure-devops-project-go.md
-- title: Vytvoření kanálů verzí
+- title: Nasazení do Azure
   linkLists:
   - linkListType: tutorial
     links:
+    - text: Nasazení aplikace do webové aplikace Azure s využitím GitHub Actions
+      url: devops-starter-gh-web-app.md
     - text: Používání vlastního kódu s využitím GitHubu
       url: azure-devops-project-vms.md
     - text: Nasazení aplikace v ASP.NET do Azure Virtual Machines

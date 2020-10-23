@@ -1,53 +1,63 @@
-- name: Dokumentace k Azure DevOps Starteru
+- name: Dokumentace k DevOps Starteru
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je Azure DevOps Starter?
+    - name: Co je DevOps Starter?
       href: overview.md
 - name: Rychlé starty
   expanded: true
   items:
-    - name: .NET
-      href: ./azure-devops-project-aspnet-core.md
-      maintainContext: true
-    - name: Node.js
-      href: ./azure-devops-project-nodejs.md
-      maintainContext: true
-    - name: Java
-      href: ./azure-devops-project-java.md
-      maintainContext: true
-    - name: Python
-      href: ./azure-devops-project-python.md
-      maintainContext: true
-    - name: PHP
-      href: ./azure-devops-project-php.md
-      maintainContext: true
-    - name: Ruby
-      href: ./azure-devops-project-ruby.md
-      maintainContext: true
-    - name: Přejít
-      href: ./azure-devops-project-go.md
-      maintainContext: true
+    - name: GitHub Actions
+      items:
+        - name: Node.js
+          href: ./devops-starter-gh-nodejs.md
+          maintainContext: true
+    - name: Azure DevOps
+      items:
+        - name: .NET
+          href: ./azure-devops-project-aspnet-core.md
+          maintainContext: true
+        - name: Node.js
+          href: ./azure-devops-project-nodejs.md
+          maintainContext: true
+        - name: Java
+          href: ./azure-devops-project-java.md
+          maintainContext: true
+        - name: Python
+          href: ./azure-devops-project-python.md
+          maintainContext: true
+        - name: PHP
+          href: ./azure-devops-project-php.md
+          maintainContext: true
+        - name: Ruby
+          href: ./azure-devops-project-ruby.md
+          maintainContext: true
+        - name: Přejít
+          href: ./azure-devops-project-go.md
+          maintainContext: true
 - name: Kurzy
   items:
-    - name: 1. GitHub a DevOps Starter
+    - name: Nasazení do webové aplikace Azure s využitím GitHub Actions
+      href: devops-starter-gh-web-app.md
+      maintainContext: true
+    - name: Použití vlastního certifikátu s GitHubem
       href: azure-devops-project-github.md
       maintainContext: true
-    - name: 2. Nasazení do virtuálních počítačů
+    - name: Nasazení do virtuálního počítače s využitím Azure DevOps
       href: azure-devops-project-vms.md
       maintainContext: true
-    - name: 3. Nasazení do Azure SQL Database
+    - name: Nasazení do Azure SQL Database s využitím Azure DevOps
       href: azure-devops-project-sql-database.md
       maintainContext: true
-    - name: 4. Nasazení do AKS
+    - name: Nasazení do AKS s využitím Azure DevOps
       href: azure-devops-project-aks.md
       maintainContext: true
-    - name: 5. Nasazení do Azure Service Fabric
+    - name: Nasazení do Azure Service Fabric s využitím Azure DevOps
       href: azure-devops-project-service-fabric.md
       maintainContext: true
-    - name: 6. Nasazení do Azure Cosmos DB
+    - name: Nasazení do Azure Cosmos DB s využitím Azure DevOps
       href: azure-devops-project-cosmos-db.md
       maintainContext: true
-    - name: 7. Nasazení do Azure Functions
+    - name: Nasazení do Azure Functions s využitím Azure DevOps
       href: azure-devops-project-functions.md
       maintainContext: true

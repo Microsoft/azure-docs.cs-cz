@@ -49,7 +49,7 @@
       href: tutorial-use-mqtt.md
     - name: Interakce se zařízením MXChip (ukázka)
       href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
-    - name: Migrace zařízení do modulu
+    - name: Připojení modulu zařízení
       href: tutorial-migrate-device-to-module.md
 - name: Koncepty
   items:
@@ -85,8 +85,6 @@
       href: concepts-model-discovery.md
     - name: Analyzátor modelů
       href: concepts-model-parser.md
-    - name: Omezení a kvóty
-      href: concepts-limits-quotas.md
     - name: Glosář
       href: iot-plug-and-play-glossary.md
 - name: Návody

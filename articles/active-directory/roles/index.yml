@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Dokumentace k rolím Azure AD – Azure AD
+summary: Řízení přístupu na základě role v Azure AD spravuje přístup k prostředkům Azure AD. Vytvářejte vlastní role, přiřazujte role, které používají jednotky pro správu k omezení rozsahu řízení, přiřazujte přístup aplikací ke skupinám nebo uživatelům, spravujte nároky s využitím technologie PIM (Privileged Identity Management) nebo delegujte oprávnění pro distribuci úloh správy identit.
+metadata:
+  title: Dokumentace k rolím Azure Active Directory
+  description: Zjistěte, jak využívat role Azure AD ke správě přístupu ve vaší organizaci.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: roles
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 16a64fd66ab391436f991b5f92f306f7ecf2eb58
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372711"
+landingContent:
+- title: Informace o rolích Azure AD
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled vlastních rolí
+      url: custom-overview.md
+  - linkListType: concept
+    links:
+    - text: Delegování správy
+      url: concept-delegation.md
+    - text: Vysvětlení jednotek pro správu v Azure AD
+      url: administrative-units.md
+    - text: Využití cloudových skupin ke správě přiřazení rolí
+      url: groups-concept.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Udělení oprávnění pro vytvoření neomezeného počtu registrací aplikací
+      url: quickstart-app-registration-limits.md
+- title: Delegování rolí
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Delegování rolí podle úloh
+      url: delegate-by-task.md
+    - text: Delegování správy aplikací
+      url: delegate-app-roles.md
+- title: Přiřazení rolí uživatelům
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytváření vlastních rolí
+      url: custom-create.md
+    - text: Přiřazení rolí s využitím Graph API
+      url: custom-assign-graph.md
+    - text: Přiřazení s využitím PowerShellu
+      url: custom-assign-powershell.md
+    - text: Přiřazení rolí s využitím Graph API
+      url: custom-assign-graph.md
+- title: Přiřazení rolí ke skupinám
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytváření skupin s možností přiřazení rolí
+      url: groups-create-eligible.md
+    - text: Přiřazení role ke cloudové skupině
+      url: groups-assign-role.md
+    - text: Zajištění možnosti využití PIM pro skupinu
+      url: groups-pim-eligible.md
+    - text: Zobrazení přiřazení pro skupinu
+      url: groups-view-assignments.md
+- title: Správa rozsahu s využitím jednotek pro správu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přidání a odebrání jednotek pro správu
+      url: admin-units-manage.md
+    - text: Přiřazení uživatelů k jednotkám
+      url: admin-units-add-manage-users.md
+    - text: Přiřazení skupin k jednotkám
+      url: admin-units-add-manage-groups.md
+    - text: Přiřazení skupin s využitím rozsahu
+      url: admin-units-assign-roles.md

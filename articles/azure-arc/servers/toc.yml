@@ -37,6 +37,8 @@
           href: onboard-service-principal.md
         - name: Připojení počítačů ke službě Azure Arc s využitím DSC PowerShellu
           href: onboard-dsc.md
+        - name: Připojení počítačů ke službě Azure Arc s využitím PowerShellu
+          href: onboard-powershell.md
     - name: Spravovat
       items:
         - name: Správa a použití rozšíření virtuálních počítačů Azure
@@ -49,7 +51,7 @@
           href: troubleshoot-agent-onboard.md
         - name: Problémy s rozšířením virtuálního počítače
           href: troubleshoot-vm-extensions.md
-- name: Odkaz
+- name: Referenční informace
   items:
     - name: Rezidence dat
       href: data-residency.md

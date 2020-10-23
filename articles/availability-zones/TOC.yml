@@ -61,8 +61,10 @@
           href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: Databáze SQL
           items:
-            - name: Zóny dostupnosti pro SQL Database
-              href: ../azure-sql/database/high-availability-sla.md#zone-redundant-configuration
+            - name: Zóny dostupnosti s využitím SQL Database úrovně Pro obecné účely
+              href: ../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview
+            - name: Zóny dostupnosti s využitím SQL Database úrovně Premium a Pro důležité obchodní informace
+              href: ../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability
         - name: Storage
           items:
             - name: Zónově redundantní úložiště

@@ -18,6 +18,8 @@
   items:
     - name: Vytvoření privátního clusteru Azure Red Hat OpenShift 4
       href: howto-create-private-cluster-4x.md
+    - name: Vytvoření třídy Azure Files Storage v Azure Red Hat OpenShiftu 4
+      href: howto-create-a-storageclass.md
     - name: Aktualizace tajného kódu pro načtení pro cluster Azure Red Hat OpenShift 4
       href: howto-add-update-pull-secret.md
     - name: Konfigurace předávání DNS pro cluster Azure Red Hat OpenShift 4

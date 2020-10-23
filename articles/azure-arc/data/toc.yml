@@ -66,8 +66,16 @@
       items:
         - name: Monitorování s využitím Grafany & Kibany
           href: monitor-grafana-kibana.md
-        - name: Odeslání metrik a protokolů
-          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: Odesílání do Azure Monitoru
+          items:
+            - name: Požadavky odesílání
+              href: upload-metrics-and-logs-to-azure-monitor.md
+            - name: Odesílání protokolů
+              href: upload-logs.md
+            - name: Odesílání metrik
+              href: upload-metrics.md
+            - name: Odesílání údajů o využití
+              href: upload-usage-data.md
         - name: Inventarizace instancí databází
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: Získání hesla a uživatelského jména pro kontroler dat

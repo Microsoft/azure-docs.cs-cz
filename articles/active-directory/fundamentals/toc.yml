@@ -69,6 +69,8 @@
               href: auth-remote-desktop-gateway.md
             - name: Ověřování SAML
               href: auth-saml.md
+            - name: Ověřování SSH
+              href: auth-ssh.md
             - name: Ověřování Windows – KCD
               href: auth-kcd.md
             - name: Synchronizace adresářů

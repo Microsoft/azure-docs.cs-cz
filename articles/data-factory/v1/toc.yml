@@ -139,9 +139,9 @@
           href: data-factory-hadoop-streaming-activity.md
         - name: Aktivita Spark služby HDInsight
           href: data-factory-spark.md
-        - name: Aktivita Provedení dávky služby Machine Learning
+        - name: Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)
           href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Aktivita aktualizace prostředku služby Machine Learning
+        - name: Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)
           href: data-factory-azure-ml-update-resource-activity.md
         - name: Aktivita Uložená procedura
           href: data-factory-stored-proc-activity.md

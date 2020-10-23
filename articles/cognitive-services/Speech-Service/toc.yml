@@ -401,6 +401,8 @@
                       href: how-to-custom-commands-send-activity-to-client.md
                     - name: Nastavení webových koncových bodů
                       href: how-to-custom-commands-setup-web-endpoints.md
+                    - name: Export aplikace Vlastní příkazy jako dovednost
+                      href: how-to-custom-commands-integrate-remote-skills.md
                 - name: Nasazení
                   items:
                     - name: Průběžné nasazování s využitím Azure DevOps

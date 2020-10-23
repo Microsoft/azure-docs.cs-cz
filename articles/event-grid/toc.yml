@@ -248,13 +248,13 @@
           href: move-partner-namespaces-across-regions.md
     - name: Zabezpečení
       items:
-        - name: Konfigurace privátních koncových bodů
+        - name: Zabezpečené publikování událostí prostřednictvím privátního propojení
           href: configure-private-endpoints.md
         - name: Konfigurace brány firewall protokolu P
           href: configure-firewall.md
         - name: Zabezpečený webhook s využitím Azure Active Directory
           href: secure-webhook-delivery.md
-        - name: Doručování událostí s využitím spravované identity
+        - name: 'Doručování událostí, spravovaná identita a privátní propojení'
           href: managed-service-identity.md
     - name: Řešení potíží
       items:
