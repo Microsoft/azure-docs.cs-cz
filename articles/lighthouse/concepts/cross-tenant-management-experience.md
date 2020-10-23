@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 10/20/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9b47dd720271fe782ce9562d2216eca881756ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424145"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460661"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -81,6 +81,10 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 [Služba Azure Kubernetes (AKS)](../../aks/index.yml):
 
 - Správa hostovaných prostředí Kubernetes a nasazení a Správa kontejnerových aplikací v rámci zákaznických tenantů
+
+[Azure Migrate](../../migrate/index.yml):
+
+- Vytváření projektů migrace v tenantovi zákazníka a migrace virtuálních počítačů
 
 [Azure monitor](../../azure-monitor/index.yml):
 

@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 6bcc4ac5561a8bdb721018aa05bf2376579b627b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/22/2020
+ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079659"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440446"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Použití spravovaných identit s Azure Machine Learningm (Preview)
 
@@ -29,7 +29,6 @@ V tomto článku se dozvíte, jak používat spravované identity k těmto akcí
 
  * Nakonfigurujte a použijte ACR pro váš pracovní prostor Azure Machine Learning, aniž byste museli povolit přístup uživatelů pro správce k ACR.
  * Přístup k privátnímu externímu ACR k vašemu pracovnímu prostoru a získání základních imagí pro školení nebo odvozování.
- * Přístup k datovým sadám pro školení pomocí spravovaných identit místo přístupových klíčů úložiště.
 
 > [!IMPORTANT]
 > Použití spravovaných identit k řízení přístupu k prostředkům pomocí Azure Machine Learning je aktuálně ve verzi Preview. Funkce ve verzi Preview je poskytována tak, jak je, bez záruky podpory nebo smlouvy o úrovni služeb. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
@@ -222,31 +221,6 @@ identity.client_id="<UAI client ID>”
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
-
-## <a name="access-training-data"></a>Přístup k datům školení
-
-Po vytvoření výpočetního clusteru Machine Learning se spravovanou identitou, jak je popsáno výše, můžete tuto identitu použít pro přístup k školicím datům bez klíčů účtu úložiště. Pro tento scénář můžete použít spravovanou identitu přiřazenou systémem nebo uživatelem.
-
-### <a name="grant-compute-managed-identity-access-to-storage-account"></a>Udělení přístupu k účtu úložiště výpočetním spravovaným identitám
-
-[Udělte spravované identitě roli Čtenář](https://docs.microsoft.com/azure/storage/common/storage-auth-aad#assign-azure-roles-for-access-rights) v účtu úložiště, do kterého budete ukládat vaše školicí údaje.
-
-### <a name="register-data-store-with-workspace"></a>Registrace úložiště dat s pracovním prostorem
-
-Po přiřazení spravované identity můžete vytvořit úložiště dat bez nutnosti zadat přihlašovací údaje úložiště.
-
-```python
-from azureml.core import Datastore
-
-blob_dstore = Datastore.register_azure_blob_container(workspace=workspace,
-                                                      datastore_name='my-datastore',
-                                                      container_name='my-container',
-                                                      account_name='my-storage-account')
-```
-
-### <a name="submit-training-run"></a>Odeslání trénovacího běhu
-
-Když odešlete školicí běh s použitím úložiště dat, výpočetní prostředí pro přístup k datům používá výpočetní výkon spravované identity.
 
 ## <a name="use-docker-images-for-inference"></a>Použití imagí Docker pro odvození
 

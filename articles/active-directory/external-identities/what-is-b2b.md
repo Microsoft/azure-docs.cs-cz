@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7104040e73679b6563b02aba47698b8eac2b7a56
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87926718"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441381"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
@@ -74,8 +74,8 @@ Správu uživatelů typu host můžete delegovat na vlastníky aplikací, aby do
 
 Přizpůsobte svým externím partnerům způsoby přizpůsobení potřebám vaší organizace.
 
-- Využijte [správu nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) ke konfiguraci zásad, které [spravují přístup pro externí uživatele](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
-- Použijte [rozhraní API pro pozvánky B2B pro spolupráci](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) k přizpůsobení prostředí připojování.
+- Využijte [správu nároků Azure AD](../governance/entitlement-management-overview.md) ke konfiguraci zásad, které [spravují přístup pro externí uživatele](../governance/entitlement-management-external-users.md#how-access-works-for-external-users).
+- Použijte [rozhraní API pro pozvánky B2B pro spolupráci](/graph/api/resources/invitation) k přizpůsobení prostředí připojování.
 
 ## <a name="integrate-with-identity-providers"></a>Integrace s poskytovateli identity
 

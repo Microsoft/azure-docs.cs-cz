@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145951"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440824"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -39,11 +39,11 @@ Výsledkem tohoto procesu je sada uzlů (digitální vlákna) propojená přes h
 
 ## <a name="create-with-the-apis"></a>Vytvoření pomocí rozhraní API
 
-V této části se dozvíte, co vypadá při vytváření digitálních vláken a vztahů z klientské aplikace. Obsahuje příklady kódu .NET, které využívají [rozhraní API DigitalTwins](how-to-use-apis-sdks.md), k poskytnutí dalších informací o tom, co se nachází uvnitř každé z těchto konceptů.
+V této části se dozvíte, co vypadá při vytváření digitálních vláken a vztahů z klientské aplikace. Obsahuje příklady kódu .NET, které využívají [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins), k poskytnutí dalších informací o tom, co se nachází uvnitř každé z těchto konceptů.
 
 ### <a name="create-digital-twins"></a>Vytváření digitálních vláken
 
-Níže je fragment kódu klienta, který používá [rozhraní API DigitalTwins](how-to-use-apis-sdks.md) k vytvoření instance vlákna typu *pokoj*.
+Níže je fragment kódu klienta, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření instance vlákna typu *pokoj*.
 
 V aktuální verzi Preview digitálních vláken Azure musí být všechny vlastnosti vlákna inicializované předtím, než může být vytvořena dvojitá vlákna. To se provádí vytvořením dokumentu JSON, který poskytuje nezbytné inicializační hodnoty.
 
@@ -53,7 +53,7 @@ Můžete také použít pomocnou třídu nazvanou `BasicDigitalTwin` pro uložen
 
 ### <a name="create-relationships"></a>Vytvoření relací
 
-Tady je příklad klientského kódu, který používá [rozhraní API DigitalTwins](how-to-use-apis-sdks.md) k vytvoření vztahu mezi digitálním *typem podlahového*typu s názvem *GroundFloor* a digitálním dvojitým názvem typu *místnosti* *Cafe*.
+Tady je příklad klientského kódu, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření vztahu mezi digitálním *typem podlahového*typu s názvem *GroundFloor* a digitálním dvojitým názvem typu *místnosti* *Cafe*.
 
 ```csharp
 // Create Twins, using functions similar to the previous sample

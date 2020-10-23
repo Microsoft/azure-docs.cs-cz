@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62805564f716d255f38c9312da5c5c986fba944c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f72c255ddac1889131234fefd7d6b014b453d417
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265540"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441721"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Samoobslužná registrace pro spolupráci služby Azure AD B2B
 
@@ -24,11 +24,11 @@ Zákazníci mají spoustu možností, jak využít integrované funkce, ke kter�
 
 ## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>Správa opravňujících k Azure AD pro registraci uživatele hosta B2B
 
-Jako pozvání k organizaci nesmíte znát čas, kdy jednotliví externí spolupracovníci potřebují mít přístup k vašim prostředkům. Potřebujete způsob, jak se uživatelům z partnerských společností zaregistrovat sami se zásadami, které ovládáte. Pokud chcete povolit uživatelům z jiných organizací, aby si vyžádali přístup, a po schválení se zřídí účty hostů a přiřadí se ke skupinám, aplikacím a webům SharePointu Online, můžete pomocí [správy nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) nakonfigurovat zásady, které [spravují přístup pro externí uživatele](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
+Jako pozvání k organizaci nesmíte znát čas, kdy jednotliví externí spolupracovníci potřebují mít přístup k vašim prostředkům. Potřebujete způsob, jak se uživatelům z partnerských společností zaregistrovat sami se zásadami, které ovládáte. Pokud chcete povolit uživatelům z jiných organizací, aby si vyžádali přístup, a po schválení se zřídí účty hostů a přiřadí se ke skupinám, aplikacím a webům SharePointu Online, můžete pomocí [správy nároků Azure AD](../governance/entitlement-management-overview.md) nakonfigurovat zásady, které [spravují přístup pro externí uživatele](../governance/entitlement-management-external-users.md#how-access-works-for-external-users).
 
 ## <a name="azure-active-directory-b2b-invitation-api"></a>Rozhraní API pro pozvání Azure Active Directory B2B
 
-Organizace můžou používat [rozhraní API pro Microsoft Graph pro správce pozvání](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0) k sestavování vlastního prostředí pro uživatele typu Host B2B. Pokud chcete nabízet samoobslužné registrace uživatelů pro službu B2B, doporučujeme použít [správu nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). Pokud ale chcete vytvořit vlastní prostředí, můžete použít [rozhraní API pro vytvoření pozvánky](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http) k automatickému odeslání přizpůsobeného e-mailu pozvánky přímo uživateli B2B, například. Nebo vaše aplikace může použít inviteRedeemUrl vrácenou v reakci na vytvoření k vytvoření vlastní pozvánky (prostřednictvím vašeho komunikačního mechanismu výběru) pozvánému uživateli.
+Organizace můžou používat [rozhraní API pro Microsoft Graph pro správce pozvání](/graph/api/resources/invitation?view=graph-rest-1.0) k sestavování vlastního prostředí pro uživatele typu Host B2B. Pokud chcete nabízet samoobslužné registrace uživatelů pro službu B2B, doporučujeme použít [správu nároků Azure AD](../governance/entitlement-management-overview.md). Pokud ale chcete vytvořit vlastní prostředí, můžete použít [rozhraní API pro vytvoření pozvánky](/graph/api/invitation-post?tabs=http&view=graph-rest-1.0) k automatickému odeslání přizpůsobeného e-mailu pozvánky přímo uživateli B2B, například. Nebo vaše aplikace může použít inviteRedeemUrl vrácenou v reakci na vytvoření k vytvoření vlastní pozvánky (prostřednictvím vašeho komunikačního mechanismu výběru) pozvánému uživateli.
 
 ## <a name="next-steps"></a>Další kroky
 

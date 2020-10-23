@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f524bf6af66d44bc13b7c0957de7977968cbef28
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83651022"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427266"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrace úloh pomocí roztažené sítě vrstvy 2
 
@@ -57,8 +57,8 @@ V následující tabulce jsou uvedeny podporované verze vSphere a typy síťov�
 
 | verze vSphere | Zdrojový typ virtuálního přepínače | Ovladač virtuální síťové karty | Cílový typ virtuálního přepínače | Podporované? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Vše | DVS | Vše | DVS | Yes |
-| vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | VMXNET3 | N-VDS | Yes |
+| Vše | DVS | Vše | DVS | Ano |
+| vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | VMXNET3 | N-VDS | Ano |
 | vSphere 6.7 UI nebo vyšší, 6.5 P03 nebo vyšší | DVS | E1000 | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
 | vSphere 6.7 UI nebo 6.5 P03, NSX-V nebo verze nižší než NSX-T 2.2, 6.5 P03 nebo vyšší | Vše | Vše | N-VDS | [Nepodporováno na VWware](https://kb.vmware.com/s/article/56991) |
 
@@ -118,7 +118,7 @@ Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR i
 
 3. Otevřete relaci SSH s IP adresou pro správu virtuálního počítače Edge. Spusťte ```get logical-router``` příkaz s uživatelským jménem **správce** a heslem **CloudSimple 123!**.
 
-    ![získat výstup logického směrovače](media/l2vpn-fetch03.png)
+    ![Snímek obrazovky, který zobrazuje otevřenou relaci SSH.](media/l2vpn-fetch03.png)
 
 4. Pokud nevidíte položku DR-Provider-LR, proveďte následující kroky.
 
@@ -132,7 +132,7 @@ Následující kroky ukazují, jak načíst ID logického směrovače Tier0 DR i
 
 7. Znovu spusťte `get logical-router` příkaz v relaci SSH virtuálního počítače Edge. Je zobrazen identifikátor UUID logického směrovače DR-Provider-LR. Poznamenejte si identifikátor UUID, který se vyžaduje při konfiguraci L2VPN.
 
-    ![získat výstup logického směrovače](media/l2vpn-fetch06.png)
+    ![Snímek obrazovky, který zobrazuje identifikátor UUID logického směrovače.](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Načtení IDENTIFIKÁTORu logického přepínače potřebného pro L2VPN
 
@@ -430,7 +430,7 @@ Před nasazením ověřte, že vaše místní pravidla brány firewall umožňuj
 
 2. Přejít do složky se všemi extrahovaných souborů. Vyberte všechna VMDK (NSX-l2t-Client-large. MF a NSX-l2t-client-large. ovf pro velkou velikost zařízení nebo NSX-l2t-Client-XLarge. MF a NSX-l2t-client-Xlarge. ovf pro největší velikost zařízení s velkou velikostí). Klikněte na **Next** (Další).
 
-    ![Vybrat šablonu ](media/l2vpn-deploy-client02.png) ![ Vybrat šablonu](media/l2vpn-deploy-client03.png)
+    ![Vyberte ](media/l2vpn-deploy-client02.png) ![ snímek obrazovky šablony, který zobrazuje vybrané soubory VMDK.](media/l2vpn-deploy-client03.png)
 
 3. Zadejte název samostatného klienta NSX-T a klikněte na **Další**.
 

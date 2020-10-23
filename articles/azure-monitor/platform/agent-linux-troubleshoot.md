@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e87331cb2bbfb11a9d49888462b8be3b55e18118
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531186"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460865"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -23,7 +23,37 @@ Pokud žádný z těchto kroků nefunguje za vás, jsou k dispozici i tyto kaná
 * Zákazníci se smlouvou o podpoře Azure můžou na [Azure Portal](https://manage.windowsazure.com/?getsupport=true)otevřít žádost o podporu.
 * Diagnostikujte problémy OMI pomocí [Průvodce odstraňováním potíží OMI](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md).
 * Zapište [problém GitHubu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues).
-* Navštivte stránku Log Analytics zpětnou vazbu pro kontrolu odeslaných nápadů a chyb [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) nebo pro nové soubory.  
+* Navštivte stránku Log Analytics zpětnou vazbu pro kontrolu odeslaných nápadů a chyb [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) nebo pro nové soubory. 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Nástroj pro řešení potíží s Log Analytics
+
+Nástroj pro řešení potíží s nástrojem Log Analytics pro Linux agentů je skript určený k hledání a diagnostice problémů s agentem Log Analytics. Je automaticky součástí agenta při instalaci. Spuštění nástroje by mělo být prvním krokem při diagnostikování problému.
+
+### <a name="how-to-use"></a>Jak používat
+Nástroj pro řešení potíží lze spustit vložením následujícího příkazu do okna terminálu na počítači s agentem Log Analytics: `sudo /opt/microsoft/omsagent/bin/troubleshooter`
+
+### <a name="manual-installation"></a>Ruční instalace
+Nástroj pro řešení potíží je automaticky zahrnutý po instalaci agenta Log Analytics. Pokud se ale instalace nezdařila, můžete ji také nainstalovat ručně pomocí následujícího postupu.
+
+1. Zkopírujte do svého počítače skupinu Poradce při potížích: `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+2. Rozbalení sady: `tar -xzvf omsagent_tst.tar.gz`
+3. Spusťte ruční instalaci: `sudo ./install_tst`
+
+### <a name="scenarios-covered"></a>Zahrnuté scénáře
+Níže je uveden seznam scénářů zkontrolovaných nástrojem pro řešení potíží:
+
+1. Agent není v pořádku, prezenční signál nefunguje správně.
+2. Agent se nespustí, nemůže se připojit k Log Analytics Services
+3. Protokol syslog agenta nefunguje
+4. Agent má vysoké využití procesoru nebo paměti.
+5. Agent s problémy s instalací
+6. Vlastní protokoly agenta nefungují.
+7. Shromažďovat protokoly agentů
+
+Další podrobnosti najdete v [dokumentaci k GitHubu](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md).
+
+ >[!NOTE]
+ >Pokud se setkáte s problémem, spusťte prosím nástroj kolektor protokolů. S tím, jak protokoly začnou mít na začátku, výrazně pomůžou tým podpory řešit potíže rychleji.
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>Důležitá umístění protokolů a nástroj kolektoru protokolů
 

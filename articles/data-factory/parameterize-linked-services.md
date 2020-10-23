@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 1bb523c1b5aa595a714930962bbbe4e7e04de517
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e6c00a0d2b6ff8bbb4ba9e51110e995e93d6b558
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131390"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426971"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
 
@@ -32,16 +32,18 @@ Pokud chcete tuto funkci seznámit a předvedení této funkce, podívejte se na
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>Podporované zdroje dat
+## <a name="supported-linked-service-types"></a>Podporované typy propojených služeb
 
 Můžete parametrizovat libovolný typ propojené služby.
-Při vytváření propojené služby na uživatelském rozhraní poskytuje Data Factory integrované prostředí parametrizace pro následující typy konektorů. V okně pro vytvoření nebo úpravu propojené služby můžete najít možnosti pro nové parametry a přidat dynamický obsah.
+Při vytváření propojené služby na uživatelském rozhraní poskytuje Data Factory integrované prostředí parametrizace pro následující typy propojených služeb. V okně pro vytvoření nebo úpravu propojené služby můžete najít možnosti pro nové parametry a přidat dynamický obsah.
 
 - Amazon Redshift
 - Amazon S3
 - Azure Cosmos DB (SQL API)
 - Azure Database for MySQL
+- Azure Databricks
 - Azure SQL Database
+- Spravovaná instance Azure SQL
 - Azure Synapse Analytics (dříve SQL DW)
 - MySQL
 - Oracle
@@ -49,7 +51,7 @@ Při vytváření propojené služby na uživatelském rozhraní poskytuje Data 
 - Obecná rozhraní HTTP
 - Obecný standard REST
 
-U jiných typů můžete propojenou službu parametrizovat úpravou formátu JSON v uživatelském rozhraní:
+U ostatních typů propojených služeb, které nejsou uvedené v seznamu výše, můžete propojenou službu parametrizovat úpravou formátu JSON v uživatelském rozhraní:
 
 - V okně pro vytvoření nebo úpravu propojené služby – > rozbalte políčko Upřesnit v dolní části > zaškrtněte políčko zadat dynamický obsah ve formátu JSON – > zadejte datovou část JSON propojené služby. 
 - Nebo po vytvoření propojené služby bez Parametrizace se v [centru pro správu](author-visually.md#management-hub) – > propojených službách – > najít konkrétní propojenou službu – > kliknutím na kód (tlačítko {} ) upravte JSON. 

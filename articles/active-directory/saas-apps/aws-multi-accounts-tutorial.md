@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: a9c1eb8816246c66803eca71677bc6ee835a9b29
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425592"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457431"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Kurz: Azure Active Directory Integration with Amazon Web Services (AWS) (kurz starší verze)
 
@@ -31,7 +31,7 @@ Integrace Amazon Web Services (AWS) se službou Azure AD poskytuje následujíc�
 ![Amazon Web Services (AWS) v seznamu výsledků](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> Poznamenejte si prosím, že se jedna aplikace AWS připojuje ke všem účtům AWS a nejedná se o náš doporučený přístup. Místo toho doporučujeme pomocí [tohoto](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) přístupu nakonfigurovat více instancí AWS účtu na více instancí AWS aplikací v Azure AD. Tento postup byste měli použít jenom v případě, že v něm máte několik účtů AWS a rolí, takže tento model není škálovatelný, protože AWS účty a role uvnitř těchto účtů roste. Tento přístup nepoužívá funkce importu rolí AWS pomocí zřizování uživatelů Azure AD, takže musíte ručně přidat/aktualizovat nebo odstranit role. Další omezení tohoto přístupu najdete níže v podrobnostech.
+> Poznamenejte si prosím, že se jedna aplikace AWS připojuje ke všem účtům AWS a nejedná se o náš doporučený přístup. Místo toho doporučujeme pomocí [tohoto](./amazon-web-service-tutorial.md) přístupu nakonfigurovat více instancí AWS účtu na více instancí AWS aplikací v Azure AD. Tento postup byste měli použít jenom v případě, že v něm máte několik účtů AWS a rolí, takže tento model není škálovatelný, protože AWS účty a role uvnitř těchto účtů roste. Tento přístup nepoužívá funkce importu rolí AWS pomocí zřizování uživatelů Azure AD, takže musíte ručně přidat/aktualizovat nebo odstranit role. Další omezení tohoto přístupu najdete níže v podrobnostech.
 
 **Upozorňujeme, že tento postup nedoporučujeme používat z následujících důvodů:**
 
@@ -363,11 +363,11 @@ Můžete také ověřit odpověď SAML a zobrazit role předávané jako deklara
 
 ![Test jednotného přihlašování – On2](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
-Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../active-directory-saas-access-panel-introduction.md).
+Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete Amazon Web Services (AWS), můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+Jakmile nakonfigurujete Amazon Web Services (AWS), můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

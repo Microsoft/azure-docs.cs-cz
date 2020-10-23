@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4403d5470f96ead861196f7c9bcb0b9b6af088b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a89ab7f2304fa51d3e8c7a968d445c9b40a457a3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973111"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456084"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s Cisco AnyConnect
 
@@ -179,8 +179,8 @@ V této části vytvoříte uživatele s názvem Britta Simon v Cisco AnyConnect
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností.
 
 * Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlášeni k Cisco AnyConnect, pro který jste nastavili jednotné přihlašování.
-* Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Cisco AnyConnect, měli byste se automaticky přihlásit k Cisco AnyConnect, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Cisco AnyConnect, měli byste se automaticky přihlásit k Cisco AnyConnect, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Cisco AnyConnect můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování Cisco AnyConnect můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

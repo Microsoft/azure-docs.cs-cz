@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: a6136f5d3f72b0e9390a05b9765934f2db9b768d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41c0bdf3eaac1a78d4cdef09ba418155a5a0c919
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064255"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455026"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cybersolutions-cybermail"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s CYBERMAILΣem CyberSolutions
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat CyberSolutions CYBERMAILΣ s Azure Act
 * Umožněte uživatelům, aby se automaticky přihlásili k CyberSolutions CYBERMAILΣ s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -125,7 +125,7 @@ Ke konfiguraci jednotného přihlašování na straně **CYBERSOLUTIONS CYBERMAI
 
 ### <a name="create-cybersolutions-cybermail-test-user"></a>Vytvořit testovacího uživatele CyberSolutions CYBERMAIL
 
-V této části vytvoříte uživatele s názvem Britta Simon v CyberSolutions CYBERMAILΣ. Pokud chcete přidat uživatele na platformě CyberSolutions CYBERMAILΣ, pracujte s [týmem podpory CYBERSOLUTIONS CYBERMAILΣ](mailto:tech@cybersolutions.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v CyberSolutions CYBERMAILΣ. Pokud chcete přidat uživatele na platformě CyberSolutions CYBERMAILΣ, pracujte s [týmem podpory CYBERSOLUTIONS CYBERMAILΣ](mailto:tech@cybersolutions.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -141,9 +141,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k CYBERMAILΣu CyberSolutions, pro kterou jste si nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici CyberSolutions CYBERMAILΣ na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro zahájení toku přihlášení a v případě, že jste nakonfigurovali v režimu IDP, měli byste se automaticky přihlásit k CYBERMAILΣ CyberSolutions, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když kliknete na dlaždici CyberSolutions CYBERMAILΣ na přístupovém panelu, pokud se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro zahájení toku přihlášení a v případě, že jste nakonfigurovali v režimu IDP, měli byste se automaticky přihlásit k CYBERMAILΣ CyberSolutions, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování CyberSolutions CYBERMAILΣ můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+Po nakonfigurování CyberSolutions CYBERMAILΣ můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

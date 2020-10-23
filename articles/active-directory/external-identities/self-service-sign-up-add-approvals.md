@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d2ff176d7569f6f67c8f0dd37e0073314a07289
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88165228"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441619"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Přidání vlastního pracovního postupu schválení pro samoobslužné přihlášení
 
@@ -29,7 +29,7 @@ Tento článek obsahuje příklad integrace se schvalovacím systémem. V tomto 
 
 ## <a name="register-an-application-for-your-approval-system"></a>Registrace aplikace pro váš systém schválení
 
-Svůj schvalovací systém musíte zaregistrovat jako aplikaci v tenantovi Azure AD, aby se mohl ověřit pomocí Azure AD a mít oprávnění k vytváření uživatelů. Přečtěte si další informace o [ověřování a základech autorizace pro Microsoft Graph](https://docs.microsoft.com/graph/auth/auth-concepts).
+Svůj schvalovací systém musíte zaregistrovat jako aplikaci v tenantovi Azure AD, aby se mohl ověřit pomocí Azure AD a mít oprávnění k vytváření uživatelů. Přečtěte si další informace o [ověřování a základech autorizace pro Microsoft Graph](/graph/auth/auth-concepts).
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V části **služby Azure**vyberte **Azure Active Directory**.
@@ -263,14 +263,14 @@ Content-type: application/json
 
 ## <a name="user-account-creation-after-manual-approval"></a>Vytvoření uživatelského účtu po manuálním schválení
 
-Po získání ručního schválení vytvoří vlastní systém schvalování [uživatelský](https://docs.microsoft.com/graph/azuread-users-concept-overview) účet pomocí [Microsoft Graph](https://docs.microsoft.com/graph/use-the-api). Způsob, jakým systém schvalování zajišťuje, závisí uživatelský účet na poskytovateli identity, který použil uživatel.
+Po získání ručního schválení vytvoří vlastní systém schvalování [uživatelský](/graph/azuread-users-concept-overview) účet pomocí [Microsoft Graph](/graph/use-the-api). Způsob, jakým systém schvalování zajišťuje, závisí uživatelský účet na poskytovateli identity, který použil uživatel.
 
 ### <a name="for-a-federated-google-or-facebook-user"></a>Pro uživatele federovaného Google nebo Facebook
 
 > [!IMPORTANT]
 > Systém schvalování musí explicitně ověřit, jestli `identities` `identities[0]` `identities[0].issuer` jsou přítomná a která se `identities[0].issuer` rovná Facebooku nebo Google, aby používala tuto metodu.
 
-Pokud se uživatel přihlásil pomocí účtu Google nebo Facebook, můžete použít [rozhraní API pro vytvoření uživatele](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http).
+Pokud se uživatel přihlásil pomocí účtu Google nebo Facebook, můžete použít [rozhraní API pro vytvoření uživatele](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0).
 
 1. Systém schvalování používá požadavek HTTP od toku uživatele.
 
@@ -320,17 +320,17 @@ Content-type: application/json
 
 | Parametr                                           | Povinné | Popis                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| userPrincipalName (Hlavní název uživatele)                                   | Yes      | Dá se vygenerovat tak, že se převezme deklarace, která se `email` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled                                      | Yes      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
-| pošta                                                | Yes      | Ekvivalent k `email` deklaraci identity odeslané do rozhraní API.                                                                                                               |
-| userType                                            | Yes      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
-| nebyly                                          | Yes      | Informace o federované identitě.                                                                                                                                    |
-| \<otherBuiltInAttribute>                            | No       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
-| \<extension\_\{extensions-app-id}\_CustomAttribute> | No       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
+| userPrincipalName (Hlavní název uživatele)                                   | Ano      | Dá se vygenerovat tak, že se převezme deklarace, která se `email` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Ano      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
+| pošta                                                | Ano      | Ekvivalent k `email` deklaraci identity odeslané do rozhraní API.                                                                                                               |
+| userType                                            | Ano      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
+| nebyly                                          | Ano      | Informace o federované identitě.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | Ne       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | Ne       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Pro uživatele federovaného Azure Active Directory
 
-Pokud se uživatel přihlásí pomocí federovaného Azure Active Directory účtu, je nutné použít [rozhraní API pro pozvání](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0) k vytvoření uživatele a volitelně také [rozhraní API pro aktualizaci uživatele](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0) k přiřazení dalších atributů uživateli.
+Pokud se uživatel přihlásí pomocí federovaného Azure Active Directory účtu, je nutné použít [rozhraní API pro pozvání](/graph/api/invitation-post?view=graph-rest-1.0) k vytvoření uživatele a volitelně také [rozhraní API pro aktualizaci uživatele](/graph/api/user-update?view=graph-rest-1.0) k přiřazení dalších atributů uživateli.
 
 1. Schvalovací systém přijme požadavek HTTP od toku uživatele.
 
@@ -389,4 +389,4 @@ Content-type: application/json
 ## <a name="next-steps"></a>Další kroky
 
 - Začněte s našimi [ukázkami Azure Functions pro rychlý Start](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts).
-- Zarezervujte [samoobslužnou registraci pro uživatele typu Host pomocí ukázky ručního schválení](code-samples-self-service-sign-up.md#custom-approval-workflows). 
+- Zarezervujte [samoobslužnou registraci pro uživatele typu Host pomocí ukázky ručního schválení](code-samples-self-service-sign-up.md#custom-approval-workflows).

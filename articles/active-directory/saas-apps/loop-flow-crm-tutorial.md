@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 4251a51a8b967d5833fd509cd79c71ce81022e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eccc10cc50bac2eb2dde0bf9f77ab1ba656d5eb8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91451110"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458356"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-loop-flow-crm"></a>Kurz: Azure Active Directory integrace jednotného přihlašování pomocí cyklu Flow CRM
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat tok smyčky CRM s Azure Active Directo
 * Umožněte uživatelům, aby se automaticky přihlásili k cyklům Flow CRM pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -120,7 +120,7 @@ Chcete-li konfigurovat jednotné přihlašování na straně **klienta CRM** , j
 
 ### <a name="create-loop-flow-crm-test-user"></a>Vytvořit testovacího uživatele v toku smyčky CRM
 
-V této části vytvoříte uživatele s názvem Britta Simon v rámci cyklu Flow CRM. Pokud chcete přidat uživatele do platformy CRM Flow flow, pracujte s [týmem podpory smyčky for](mailto:support@loopworks.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v rámci cyklu Flow CRM. Pokud chcete přidat uživatele do platformy CRM Flow flow, pracujte s [týmem podpory smyčky for](mailto:support@loopworks.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -136,11 +136,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k toku smyčky CRM, pro který jste nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici cyklus smyčky CRM, když se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud jste nakonfigurovali v režimu IDP, měli byste se automaticky přihlásit k toku smyčky CRM, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici cyklus smyčky CRM, když se nakonfiguruje v režimu SP, budete přesměrováni na přihlašovací stránku aplikace pro inicializaci toku přihlášení a pokud jste nakonfigurovali v režimu IDP, měli byste se automaticky přihlásit k toku smyčky CRM, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete tok smyček, můžete vynutilit řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Jakmile nakonfigurujete tok smyček, můžete vynutilit řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850865"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460181"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace informačního CloudSuiteu pro Automatické zřizování uživatelů
 
@@ -103,7 +103,7 @@ Před konfigurací informačního CloudSuiteu pro Automatické zřizování uži
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v informačním CloudSuite na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro CloudSuite, a to podle pokynů uvedených v [kurzu pro jednotné přihlašování v informačním CloudSuite](https://docs.microsoft.com/azure/active-directory/saas-apps/infor-cloud-suite-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro CloudSuite, a to podle pokynů uvedených v [kurzu pro jednotné přihlašování v informačním CloudSuite](./infor-cloud-suite-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce navzájem doplňují.
 
 > [!NOTE]
 > Další informace o SCIM koncového bodu [CloudSuite najdete tady.](https://docs.infor.com/mingle/12.0.x/en-us/minceolh/jho1449382121585.html#)

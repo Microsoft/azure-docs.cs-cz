@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147909"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426388"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Zabezpečte a izolujte clustery Azure HDInsight pomocí privátního propojení (Preview).
 
@@ -59,6 +59,8 @@ Když `privateLink` je nastavená možnost *Povolit*, vytvoří se interní stan
 Standardní nástroje pro vyrovnávání zatížení neposkytují automaticky [veřejné odchozí služby NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , jako jsou základní nástroje pro vyrovnávání zatížení. Pro odchozí závislosti musíte zadat vlastní řešení NAT, například [Virtual Network NAT](../virtual-network/nat-overview.md) nebo [bránu firewall](./hdinsight-restrict-outbound-traffic.md). Váš cluster HDInsight pořád potřebuje přístup k odchozím závislostem. Pokud tyto odchozí závislosti nejsou povolené, vytvoření clusteru může selhat.
 
 ### <a name="prepare-your-environment"></a>Příprava prostředí
+
+Pro successgfull vytváření služeb privátních propojení musíte explicitně [zakázat zásady sítě pro službu privátního propojení](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy).
 
 Následující diagram ukazuje příklad konfigurace sítě, která je potřeba před vytvořením clusteru. V tomto příkladu musí být veškerý odchozí provoz [nuceně](../firewall/forced-tunneling.md) Azure firewall pomocí udr a před vytvořením clusteru by měly být v bráně firewall povolené požadované odchozí závislosti. U Balíček zabezpečení podniku clusterů může být připojení k síti Azure Active Directory Domain Services dostupné pomocí partnerského vztahu virtuální sítě.
 

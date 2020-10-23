@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: f114dd4d4f0a9a26a8aab1f8aeecd4d29678a8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dba6b3f2137230ebe95f1bc89156cf6b127c8f52
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896292"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428143"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Použití koncových bodů služeb virtuální sítě a pravidel pro Azure Database for MySQL
 
@@ -88,7 +88,7 @@ V rámci správy koncových bodů služby Virtual Network je oddělení rolí za
 - **Správce sítě:** &nbsp; Zapněte koncový bod.
 - **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL), chcete-li přidat danou podsíť do serveru Azure Database for MySQL.
 
-*Alternativa RBAC:*
+*Alternativa k Azure RBAC:*
 
 Role správce sítě a správce databáze mají více možností, než je nutné ke správě pravidel virtuální sítě. Je potřeba jenom podmnožina jejich schopností.
 
@@ -152,7 +152,7 @@ Příznak **IgnoreMissingServiceEndpoint** můžete nastavit pomocí Azure CLI n
 
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]: ../role-based-access-control/overview.md
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 

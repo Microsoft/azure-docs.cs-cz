@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 7afaa057ecc94cf67d4fd5b041d95210fcf26717
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52615a968ce831a9a5a487f7422ad13bc58ecf6d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707590"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426481"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
@@ -26,7 +26,7 @@ Požadavky jsou omezeny, když jsou dosaženy limity IOPS, příchozí nebo odch
 
 Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **všechny služby** a pak vyhledejte **metriky**.
 
@@ -84,7 +84,7 @@ Klientský virtuální počítač se může nacházet v jiné oblasti než sdíl
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Klientovi se nepovedlo dosáhnout maximální propustnosti, kterou síť podporuje.
 
-Jednou z možných příčin tohoto je nedostatečná podpora více kanálů SMB. Sdílené složky Azure v současné době podporují jenom jeden kanál, takže existuje jenom jedno připojení z virtuálního počítače klienta k serveru. Toto jediné připojení je v klientském počítači klienta připojeno k jednomu jádru, takže maximální propustnost, kterou je možné z virtuálního počítače dosáhnout, je svázána s jedním jádrem.
+Jednou z možných příčin tohoto je nedostatečná podpora pro více kanálů SMB. Sdílené složky Azure v současné době podporují jenom jeden kanál, takže existuje jenom jedno připojení z virtuálního počítače klienta k serveru. Toto jediné připojení je v klientském počítači klienta připojeno k jednomu jádru, takže maximální propustnost, kterou je možné z virtuálního počítače dosáhnout, je svázána s jedním jádrem.
 
 ### <a name="workaround"></a>Alternativní řešení
 

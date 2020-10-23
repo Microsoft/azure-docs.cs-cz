@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048487"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460780"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Kurz: prozkoumání digitálních vláken Azure pomocí ukázkové klientské aplikace
 
@@ -119,7 +119,7 @@ Ověřte vytvoření modelů spuštěním příkazu `GetModels true` . Tím se d
 
 :::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
 
-#### <a name="errors"></a>chyby
+#### <a name="errors"></a>Chyby
 
 Ukázková aplikace také zpracovává chyby ze služby. 
 
@@ -242,7 +242,7 @@ Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [do
     :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Upraveno Room.jss aktualizovaným číslem verze, vlastnostmi HumidityLevel a místností a obsahuje relaci.":::
 
     >[!NOTE]
-    >V ukázkovém projektu `Query` je příkaz bez dalších argumentů ekvivalentem `Query SELECT * FROM DIGITALTWINS` . K dotazování všech vláken ve vaší instanci pomocí [rozhraní API dotazů](how-to-use-apis-sdks.md) nebo [příkazů CLI](how-to-use-cli.md)použijte dotaz delší (kompletní).
+    >V ukázkovém projektu `Query` je příkaz bez dalších argumentů ekvivalentem `Query SELECT * FROM DIGITALTWINS` . K dotazování všech vláken ve vaší instanci pomocí [rozhraní API dotazů](/rest/api/digital-twins/dataplane/query) nebo [příkazů CLI](how-to-use-cli.md)použijte dotaz delší (kompletní).
 
 * **Jaké jsou všechny místnosti v mém prostředí?** (dotaz podle modelu)
 

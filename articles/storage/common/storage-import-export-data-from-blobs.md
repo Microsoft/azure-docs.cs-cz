@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbef5ce3ba7675aff88df654a5ba6572c38adbe
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441863"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440722"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
 
@@ -37,6 +37,8 @@ Musíte:
 
 ## <a name="step-1-create-an-export-job"></a>Krok 1: vytvoření úlohy exportu
 
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující kroky.
 
 1. Přihlaste se k <https://portal.azure.com/> .
@@ -57,7 +59,7 @@ Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující krok
     - Vyberte předplatné.
     - Zadejte nebo vyberte skupinu prostředků.
 
-        ![Základy](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+        ![Základní kroky](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
 5. V **podrobnostech úlohy**:
 
@@ -99,6 +101,83 @@ Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující krok
         > Disky vždy odešlete do datového centra, které jste si poznamenali v Azure Portal. Pokud jsou disky dodávány do špatného datového centra, úloha nebude zpracována.
 
     - Kliknutím na tlačítko **OK** dokončete vytváření úlohy exportu.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí následujících kroků můžete vytvořit úlohu exportu v Azure Portal.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>Vytvoření úlohy
+
+1. Pomocí příkazu [AZ Extension Add](/cli/azure/extension#az_extension_add) přidejte rozšíření [AZ import-export](/cli/azure/ext/import-export/import-export) :
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. Seznam umístění, ze kterých můžete přijímat disky, získáte pomocí příkazu [AZ import-export Location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) :
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. Spusťte následující příkaz [AZ import-export Create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) a vytvořte úlohu exportu, která používá váš stávající účet úložiště:
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name Myexportjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --export blob-path=/ \
+        --type Export \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --storage-account myssdocsstorage
+    ```
+
+    > [!TIP]
+    > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
+
+   Tato úloha exportuje všechny objekty BLOB v účtu úložiště. Objekt BLOB pro export můžete zadat nahrazením této hodnoty pro **--Export**:
+
+    ```azurecli
+    --export blob-path=$root/logo.bmp
+    ```
+
+   Tato hodnota parametru exportuje objekt BLOB s názvem *logo.bmp* v kořenovém kontejneru.
+
+   Máte také možnost vybrat všechny objekty BLOB v kontejneru pomocí předpony. Nahraďte tuto hodnotu pro **--Export**:
+
+    ```azurecli
+    blob-path-prefix=/myiecontainer
+    ```
+
+   Další informace najdete v tématu [Příklady platných cest objektů BLOB](#examples-of-valid-blob-paths).
+
+   > [!NOTE]
+   > Pokud se objekt blob, který se má exportovat, používá během kopírování dat, služba Azure import/export pořizuje snímek objektu BLOB a zkopíruje snímek.
+
+1. Pomocí příkazu [AZ import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) zobrazíte všechny úlohy pro skupinu prostředků myierg:
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. Chcete-li aktualizovat úlohu nebo zrušit úlohu, spusťte příkaz [AZ import-export Update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) :
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 <!--## (Optional) Step 2: -->
 
@@ -153,7 +232,7 @@ Tento *volitelný* krok vám pomůže určit počet jednotek vyžadovaných pro 
 
     Parametry jsou popsány v následující tabulce:
 
-    |Parametr příkazového řádku|Description|  
+    |Parametr příkazového řádku|Popis|  
     |--------------------------|-----------------|  
     |**/logdir:**|Nepovinný parametr. Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud tento parametr nezadáte, použije se jako adresář protokolu aktuální adresář.|  
     |**SN**|Povinná hodnota. Název účtu úložiště pro úlohu exportu|  
@@ -207,7 +286,7 @@ Number of drives needed:        3
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Description |
+   | Volič | Cesta objektu BLOB | Popis |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

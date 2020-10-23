@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587629"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461018"
 ---
 # <a name="understand-event-data"></a>Pochopení dat událostí
 
@@ -202,7 +202,7 @@ Tady jsou pole v těle oznámení o změně hrany.
 
 #### <a name="body-details"></a>Podrobnosti těla
 
-Tělo je datová část relace, také ve formátu JSON. Používá stejný formát jako `GET` požadavek pro relaci prostřednictvím [rozhraní DigitalTwins API](how-to-use-apis-sdks.md). 
+Tělo je datová část relace, také ve formátu JSON. Používá stejný formát jako `GET` požadavek pro relaci prostřednictvím [rozhraní DigitalTwins API](/rest/api/digital-twins/dataplane/twins). 
 
 "Aktualizace vztahu" znamená, že došlo ke změně vlastností vztahu. 
 

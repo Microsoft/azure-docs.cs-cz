@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: aee886e4e5ccaa3e07851ba839532f47c0a46ef8
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342038"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461528"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender pro servery SQL na počítačích 
 
@@ -49,7 +49,7 @@ Obě tyto parametry jsou popsány níže.
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Krok 1. Zřízení agenta Log Analytics na hostiteli SQL serveru:
 
 - **SQL Server na virtuálním počítači Azure** – Pokud je váš počítač SQL hostovaný na virtuálním počítači Azure, můžete [automaticky zřídit agenta Log Analytics](security-center-enable-data-collection.md#workspace-configuration). Alternativně můžete postupovat podle ručního postupu připojení [Azure Stackch virtuálních počítačů](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
-- **SQL Server v Azure ARC** – Pokud je vaše SQL Server hostovaná v počítači [ARC Azure](../azure-arc/index.yml) , můžete agenta Log Analytics nasadit pomocí Security Center doporučení Log Analytics agenta, který se má nainstalovat na počítače se systémem Windows Azure ARC (Preview). Alternativně můžete postupovat podle ručního postupu v [dokumentaci k Azure ARC](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal).
+- **SQL Server v Azure ARC** – Pokud je váš SQL Server spravovaný servery s podporou [ARC Azure](../azure-arc/index.yml) , můžete agenta Log Analytics nasadit pomocí Security Center doporučení Log Analytics agenta, který se má nainstalovat na počítače se systémem Windows Azure ARC (Preview). Případně můžete postupovat podle metod instalace popsaných v [dokumentaci k Azure ARC](../azure-arc/servers/manage-vm-extensions.md).
 
 - **SQL Server Prem** – Pokud je váš SQL Server hostovaný na místním počítači s Windows bez ARC Azure, máte dvě možnosti, jak ho připojit k Azure:
     

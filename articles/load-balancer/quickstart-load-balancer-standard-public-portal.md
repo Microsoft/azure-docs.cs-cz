@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: c8ead035b9ac47325b2237ebd4d248f09d2d22f5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: a4fa1a690c6607b70774be67048fcad7db378b8b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047739"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461596"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -138,7 +138,9 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Back-endový port | Zadejte **80**. |
     | Back-endový fond | Vyberte **myBackendPool**.|
     | Sonda stavu | Vyberte **myHealthProbe**. |
-    | Vytvořit implicitní odchozí pravidla | Vyberte **Ne**.
+    | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15** minut. |
+    | Resetování protokolu TCP | Vyberte **Povoleno**. |
+    | Překlad odchozích adres zdrojové sítě (SNAT) | Vybrat **(doporučeno) použít odchozí pravidla k poskytování back-end členů fondu přístup k Internetu**.. |
 
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
@@ -162,7 +164,7 @@ V této části vytvoříte virtuální síť a podsíť.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group   | Vybrat **myResourceGroupLB** |
+    | Resource Group (Skupina prostředků)   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **západní Evropa** |
@@ -215,7 +217,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group | Vybrat **myResourceGroupLB** |
+    | Resource Group (Skupina prostředků) | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
     | Oblast | Vyberte **západní Evropa** |
@@ -368,7 +370,7 @@ V této části vytvoříte virtuální síť a podsíť.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group   | Vybrat **myResourceGroupLB** |
+    | Resource Group (Skupina prostředků)   | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **západní Evropa** |
@@ -501,7 +503,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group | Vybrat **myResourceGroupLB** |
+    | Resource Group (Skupina prostředků) | Vybrat **myResourceGroupLB** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
     | Oblast | Vyberte **západní Evropa** |
@@ -579,7 +581,7 @@ Virtuální počítače vytvořené v předchozích krocích se musí přidat do
 
 4. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-5. Vyberte **Připojit**.
+5. Vyberte **Connect** (Připojit).
 
 6. Na ploše serveru přejděte do části **Nástroje pro správu Windows**  >  **Windows PowerShell**.
 
@@ -626,6 +628,6 @@ V tomto rychlém startu:
 * K nástroji pro vyrovnávání zatížení se připojily 3 virtuální počítače.
 * Nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení, sondu stavu a pak otestovali Nástroj pro vyrovnávání zatížení. 
 
-Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte na..
+Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte tady:
 > [!div class="nextstepaction"]
 > [Co je Azure Load Balancer?](load-balancer-overview.md)

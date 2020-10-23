@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1b9603e43541ec1a364e4653caeeafc751f7e4f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d801499360bd05cee4c01aefd873337303017f3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012088"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427510"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Připojení ke službě Azure Database for PostgreSQL s využitím spravované identity
 
@@ -27,7 +27,7 @@ Získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](../../articles/active-directory/managed-identities-azure-resources/overview.md). Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Aby bylo možné vytvořit požadovaný prostředek a správu rolí, váš účet potřebuje oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](../../articles/role-based-access-control/role-assignments-portal.md).
+- Aby bylo možné vytvořit požadovaný prostředek a správu rolí, váš účet potřebuje oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [použití řízení přístupu na základě role Azure (Azure RBAC) ke správě přístupu k prostředkům předplatného Azure](../../articles/role-based-access-control/role-assignments-portal.md).
 - Potřebujete virtuální počítač Azure (například se spuštěným Ubuntu Linux), který chcete použít pro přístup k databázi pomocí spravované identity.
 - Potřebujete Azure Database for PostgreSQL databázový server s nakonfigurovaným [ověřováním Azure AD](howto-configure-sign-in-aad-authentication.md) .
 - Chcete-li postupovat podle příkladu jazyka C#, nejprve dokončete průvodce, jak se [připojit pomocí jazyka c#](connect-csharp.md)

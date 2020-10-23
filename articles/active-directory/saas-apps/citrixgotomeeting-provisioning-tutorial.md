@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4abd16d6b5c9593cb1a4df52a7135a658c513410
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299693"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455933"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Kurz: Konfigurace GoToMeeting pro Automatické zřizování uživatelů
 
@@ -35,7 +35,7 @@ Azure Active Directory používá koncept nazvaný "přiřazení" k určení už
 
 Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci GoToMeeting. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace GoToMeeting podle pokynů uvedených tady:
 
-[Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>Důležité tipy pro přiřazení uživatelů k GoToMeeting
 
@@ -90,6 +90,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurace jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
-
-
+* [Konfigurace jednotného přihlašování](./citrix-gotomeeting-tutorial.md)
