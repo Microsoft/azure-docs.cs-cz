@@ -6,13 +6,13 @@ ms.topic: include
 ms.date: 8/3/2020
 ms.author: baanders
 ms.openlocfilehash: a1098088a38b23ec1074434e5424e261e60bcd55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/23/2020
 ms.locfileid: "91779718"
 ---
-| Název filtru | Description | Filtrovat schéma textu | Podporované hodnoty | 
+| Název filtru | Popis | Filtrovat schéma textu | Podporované hodnoty | 
 | --- | --- | --- | --- |
 | True nebo false | Umožňuje vytvoření trasy bez filtrování nebo zakázání trasy, takže se neodesílají žádné události. | `<true/false>` | `true` = trasa je povolená bez filtrování. <br> `false` = trasa je zakázána. |
 | Typ | [Typ toku událostí](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) prostřednictvím vaší digitální instance | `type = '<eventType>'` | Tady jsou možné hodnoty typu události: <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |

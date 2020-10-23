@@ -215,7 +215,7 @@
           displayName: 'accessing, long-running, sdk, invalid character, name, naming, file name'
         - name: 'Stránkování, filtrování, uspořádání entit'
           href: entities-overview.md
-        - name: RBAC
+        - name: Azure RBAC
           href: rbac-overview.md
         - name: Kódy chyb
           items:
@@ -389,7 +389,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Přejít
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions

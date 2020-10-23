@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713598"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Kurz: Azure Active Directory integrace s AnswerHub
 
@@ -27,10 +27,10 @@ Integrace AnswerHub s Azure AD přináší tyto výhody:
 * Uživatelům můžete umožnit, aby se automaticky přihlásili k AnswerHub pomocí svých účtů Azure AD (jednotné přihlašování).
 * Účty můžete spravovat z centrálního umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s AnswerHub potřebujete následující:
 
@@ -242,13 +242,12 @@ Pokud chcete uživatelům Azure AD povolit, aby se přihlásili k AnswerHub, mus
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici AnswerHub, měli byste se automaticky přihlásit k AnswerHub, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici AnswerHub, měli byste se automaticky přihlásit k AnswerHub, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Kurzy pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

@@ -163,14 +163,14 @@
                   href: dynamics-365-finance-operations-functional-validation.md
             - name: Vytvoření nabídky Dynamics 365 Business Central
               href: partner-center-portal/create-new-business-central-offer.md
-        - name: Nabídky modulů IoT Edge
-          items:
-            - name: Plánování nabídky modulů IoT Edge
-              href: iot-edge-module.md
-            - name: Vytvoření nabídky modulu IoT Edge
-              href: partner-center-portal/azure-iot-edge-module-creation.md
-            - name: Příprava technických prostředků modulu IoT Edge
-              href: partner-center-portal/create-iot-edge-module-asset.md
+    - name: Nabídky modulů IoT Edge
+      items:
+        - name: Plánování nabídky modulů IoT Edge
+          href: iot-edge-module.md
+        - name: Vytvoření nabídky modulu IoT Edge
+          href: partner-center-portal/azure-iot-edge-module-creation.md
+        - name: Příprava technických prostředků modulu IoT Edge
+          href: partner-center-portal/create-iot-edge-module-asset.md
     - name: Nabídky spravované služby
       items:
         - name: Vytvoření nabídky spravované služby

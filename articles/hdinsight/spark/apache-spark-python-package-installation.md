@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ef4a4f422bb787b3ead33ed1047d26d5e3c9c1f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b29e4411a104bbcd1d6d5b3320df47a742e2ca84
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978067"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461239"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
 HDInsight obsahuje dvě vestavěné Instalace Pythonu v clusteru Spark, Anaconda Python 2,7 a Python 3,5. Zákazníci možná budou muset přizpůsobit prostředí Pythonu, jako je instalace externích balíčků Pythonu. Tady uvádíme osvědčený postup pro bezpečnou správu prostředí Pythonu pro Apache Spark clustery v HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md). Pokud ještě nemáte cluster Spark ve službě HDInsight, můžete spustit akce skriptu během vytváření clusteru. Podívejte se na dokumentaci, [Jak používat akce vlastního skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -46,8 +46,8 @@ Cluster HDInsight Spark se vytvoří s instalací Anaconda. V clusteru jsou dvě
 |Nastavení |Python 2,7|Python 3,5|
 |----|----|----|
 |Cesta|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Verze Sparku|Výchozí nastavení je 2,7|Není k dispozici|
-|Verze Livy|Výchozí nastavení je 2,7|Není k dispozici|
+|Verze Sparku|Výchozí nastavení je 2,7|Můžete změnit konfiguraci na 3,5.|
+|Verze Livy|Výchozí nastavení je 2,7|Můžete změnit konfiguraci na 3,5.|
 |Jupyter|Jádro PySpark|Jádro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpečně instalovat externí balíčky Pythonu

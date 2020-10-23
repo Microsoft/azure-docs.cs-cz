@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 9eac4b08b590f93b3ec450eb1e1329d706fa09a3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 89a87cd881689f58bbc4d2b4bf2a63a992e8dae9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206199"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461630"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -216,7 +216,7 @@ Buďte v pořádku!
 **ukázky**
 -   **C#**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/speaker-recognition) pro rozpoznávání mluvčího.
 -   **C++**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/speaker-recognition) pro rozpoznávání mluvčího.
--   **Java**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/intent-recognition) pro rozpoznávání záměrů v Androidu. 
+-   **Java**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/intent-recognition) pro rozpoznávání záměrů v Androidu. 
 
 **COVID-19 – zkrácené testování:** Vzhledem k tomu, že během posledních několika týdnů pracujete vzdáleně, nemůžeme provést tolik testování ručních ověření jako obvykle. Neudělali jsme žádné změny, které by bylo možné jakkoli rozdělit, a naše automatizované testy byly úspěšné. V nepravděpodobném případě, že jsme něco zmeškali, dejte nám prosím na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)informace.<br>
 Buďte v pořádku!
@@ -251,7 +251,7 @@ Buďte v pořádku!
 **ukázky**
 - **Přejít**: Přidali jsme rychlé starty pro [rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) a [vlastního hlasového asistenta](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go). [Zde](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)najdete vzorový kód. 
 - **JavaScript**: Přidali jsme rychlé starty pro převod [textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), [překlady](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)a [rozpoznávání záměru](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript).
-- Ukázky rozpoznávání klíčových slov pro jazyky [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) a [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android).  
+- Ukázky rozpoznávání klíčových slov pro jazyky [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) a [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android).  
 
 **COVID-19 – zkrácené testování:** Vzhledem k tomu, že během posledních několika týdnů pracujete vzdáleně, nemůžeme provést tolik testování ručních ověření jako obvykle. Neudělali jsme žádné změny, které by bylo možné jakkoli rozdělit, a naše automatizované testy byly úspěšné. Pokud jsme něco nenechali, dejte nám prosím na [GitHubu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)informace.<br>
 Buďte v pořádku!
@@ -260,7 +260,7 @@ Buďte v pořádku!
 **Nové funkce**
 - Linux: Přidání podpory pro Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 s [pokyny](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) , jak nakonfigurovat systém pro sadu Speech SDK.
 - Linux: Přidání podpory pro .NET Core C# v systémech Linux ARM32 a ARM64. Další informace si můžete přečíst [zde](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux). 
-- C#, C++: přidáno `UtteranceId` v `ConversationTranscriptionResult` , konzistentní ID napříč všemi zprostředkujícími a konečný výsledek rozpoznávání řeči. Podrobnosti pro [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
+- C#, C++: přidáno `UtteranceId` v `ConversationTranscriptionResult` , konzistentní ID napříč všemi zprostředkujícími a konečný výsledek rozpoznávání řeči. Podrobnosti pro [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet&preserve-view=true), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult).
 - Python: přidala se podpora pro `Language ID` . Viz speech_sample. py v [úložišti GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console).
 - Windows: Přidání komprimovaného formátu zvukového vstupu na platformu Windows pro všechny konzolové aplikace Win32. Podrobnosti [.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams) 
 - JavaScript: podporuje syntézu řeči (převod textu na řeč) v NodeJS. Další informace najdete [tady](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
@@ -268,7 +268,7 @@ Buďte v pořádku!
         
 **Opravy chyb**
 - C#, C++: vyřešil se problém, takže `SendMessageAsync` teď odesílá binární zprávu jako binární typ. Podrobnosti pro [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection).
-- C#, C++: Opravili jsme problém, kdy použití `Connection MessageReceived` události může způsobit chybu, pokud `Recognizer` je uvolněn před `Connection` objektem. Podrobnosti pro [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived).
+- C#, C++: Opravili jsme problém, kdy použití `Connection MessageReceived` události může způsobit chybu, pokud `Recognizer` je uvolněn před `Connection` objektem. Podrobnosti pro [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet&preserve-view=true), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived).
 - Android: velikost zvukové vyrovnávací paměti z mikrofonu se snížila z 800ms na 100 ms, aby se zlepšila latence.
 - Android: Opravili jsme [problém](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) s emulátorem x86 pro Android v Android Studio.
 - JavaScript: Přidání podpory pro oblasti v Číně s `fromSubscription` rozhraním API. Podrobnosti [.](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#fromsubscription-string--string-) 

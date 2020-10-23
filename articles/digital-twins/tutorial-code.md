@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 40484521ecdc32e2e279ddf1b68ddcd4b1d7bc9b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 23f32b6d09e36a98c68f5cb8f73ae1125c0543dd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427574"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460746"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
-Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [sady Azure Digital prokážed SDK pro .NET (C#)](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
+Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [sady Azure Digital prokážed SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
 
 > [!div class="checklist"]
 > * Nastavit projekt
@@ -58,7 +58,7 @@ dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
-První závislost je [sada Azure Digital dependencypropertys SDK pro .NET](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Druhá závislost poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
+První závislost je [sada Azure Digital dependencypropertys SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). Druhá závislost poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
 
 Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu tohoto kurzu.
 

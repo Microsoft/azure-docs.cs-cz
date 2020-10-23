@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: af68100d0064187931ede43916d1ab3258baea38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05ce0d3d3d5c66514edc07446aaf0a879657c10c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850706"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459233"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Kanbanize
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Kanbanize s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Kanbanize svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -192,15 +192,14 @@ V této části se v Kanbanize vytvoří uživatel s názvem B. Simon. Kanbanize
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Kanbanize, měli byste se automaticky přihlásit k Kanbanize, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Kanbanize, měli byste se automaticky přihlásit k Kanbanize, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Kanbanize s Azure AD](https://aad.portal.azure.com/)
-

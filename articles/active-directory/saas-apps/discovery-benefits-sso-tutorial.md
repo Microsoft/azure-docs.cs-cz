@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e5d67e00ee56b5c4006a8422c713e3cabb32bfc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91774092"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454758"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s výhodami zjišťování pro jednotné přihlašování
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat výhody zjišťování jednotného př
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k vašemu účtu služby Azure AD ke zjišťování výhod přihlášení.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -78,7 +78,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V **základním oddílu konfigurace SAML**je   aplikace předem nakonfigurovaná v režimu iniciované **IDP**   a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit**   .
+1. V **základním oddílu konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
 
 1. Aplikace jednotného přihlašování pro jednotné přihlašování očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
@@ -149,21 +149,20 @@ Chcete-li nakonfigurovat jednotné přihlašování na straně **jednotného př
 
 ### <a name="create-discovery-benefits-sso-test-user"></a>Vytvořit uživatele testu jednotného přihlašování pro uživatele
 
-V této části vytvoříte v rámci jednotného přihlašování k výhodám zjišťování uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě jednotného přihlašování k výhodám zjišťování, využijte [tým podpory pro jednotné přihlašování s výhodami zjišťování](mailto:Jsimpson@DiscoveryBenefits.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte v rámci jednotného přihlašování k výhodám zjišťování uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě jednotného přihlašování k výhodám zjišťování, využijte [tým podpory pro jednotné přihlašování s výhodami zjišťování](mailto:Jsimpson@DiscoveryBenefits.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici přihlášení k výhodám vyhledávání, měli byste být automaticky přihlášení k výhodám zjišťování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici přihlášení k výhodám vyhledávání, měli byste být automaticky přihlášení k výhodám zjišťování, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si jednotné přihlašování pomocí služby Azure AD](https://aad.portal.azure.com/)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 06d485b390c44adfa3e9562d2336bacf5b6c16e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c115371c77f2d99b60ece1e58252b4d98b9061eb
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549122"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-crossknowledge-learning-suite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu CrossKnowledge Learning Suite
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat CrossKnowledge Learning Suite s Azure 
 * Umožněte uživatelům, aby se automaticky přihlásili ke službě CrossKnowledge Learning Suite pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * CrossKnowledge Learning Suite podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
-* Jakmile nakonfigurujete CrossKnowledge Learning Suite, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Jakmile nakonfigurujete CrossKnowledge Learning Suite, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-crossknowledge-learning-suite-from-the-gallery"></a>Přidání CrossKnowledge Learning Suite z Galerie
 
@@ -133,24 +133,24 @@ Ke konfiguraci jednotného přihlašování na straně **CrossKnowledge Learning
 
 ### <a name="create-crossknowledge-learning-suite-test-user"></a>Vytvořit testovacího uživatele pro CrossKnowledge Learning Suite
 
-V této části vytvoříte uživatele s názvem B. Simon v sadě CrossKnowledge Learning Suite. Pracujte s [týmem podpory CrossKnowledge Learning Suite](mailto:support@crossknowledge.com) a přidejte uživatele do platformy CrossKnowledge Learning Suite. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v sadě CrossKnowledge Learning Suite. Pracujte s [týmem podpory CrossKnowledge Learning Suite](mailto:support@crossknowledge.com) a přidejte uživatele do platformy CrossKnowledge Learning Suite. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici CrossKnowledge Learning Suite na přístupovém panelu byste měli být automaticky přihlášení do sady CrossKnowledge Learning, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici CrossKnowledge Learning Suite na přístupovém panelu byste měli být automaticky přihlášení do sady CrossKnowledge Learning, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si CrossKnowledge Learning Suite s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit CrossKnowledge Learning Suite pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit CrossKnowledge Learning Suite pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

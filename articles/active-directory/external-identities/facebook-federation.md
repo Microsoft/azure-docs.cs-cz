@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 547b455dc776b7304e413b3b6f1330e7cedcf2a2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908652"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441993"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Přidat Facebook jako zprostředkovatele identity pro externí identity
 
@@ -78,7 +78,7 @@ Teď nastavíte ID klienta Facebooku a tajný kód klienta, a to tak, že ho zad
    `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Použijte ID klienta a tajný klíč klienta z aplikace, kterou jste vytvořili výše v konzole pro vývojáře na Facebooku. Další informace najdete v článku [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) . 
+   > Použijte ID klienta a tajný klíč klienta z aplikace, kterou jste vytvořili výše v konzole pro vývojáře na Facebooku. Další informace najdete v článku [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) . 
 
 ## <a name="how-do-i-remove-facebook-federation"></a>Návody odebrat federaci Facebooku?
 Můžete odstranit nastavení federace pro Facebook. Pokud to uděláte, všichni uživatelé, kteří se zaregistrovali pomocí toků uživatelů s účty Facebook, se už nebudou moct přihlásit. 
@@ -92,14 +92,14 @@ Můžete odstranit nastavení federace pro Facebook. Pokud to uděláte, všichn
 
 ### <a name="to-delete-facebook-federation-by-using-powershell"></a>Odstranění federace Facebooku pomocí prostředí PowerShell: 
 1. Nainstalujte nejnovější verzi Azure AD PowerShellu pro modul Graph ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)).
-2. Spusťte příkaz `Connect-AzureAD`.  
+2. Je nutné spustit `Connect-AzureAD`.  
 4. V příkazovém řádku pro přihlášení se přihlaste pomocí účtu spravovaného globálního správce.  
 5. Zadejte následující příkaz:
 
     `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
 
    > [!NOTE]
-   > Další informace najdete v tématu [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > Další informace najdete v tématu [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
 
 ## <a name="next-steps"></a>Další kroky
 

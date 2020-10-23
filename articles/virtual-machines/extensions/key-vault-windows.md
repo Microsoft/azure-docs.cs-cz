@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 741f1ba60a5824654737558d9d977333d3911f45
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 78231fa5cc6e5061ab3e2b26faf97da76da83b32
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201677"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427912"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault rozšíření virtuálního počítače pro Windows
 
@@ -26,6 +26,8 @@ Rozšíření VM Key Vault podporuje následující verze systému Windows:
 - Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012
+
+VIRTUÁLNÍ počítač Key Vault Extensio je také podporován na vlastním místním virtuálním počítači, který se nahraje a převede na specializovanou image pro použití v Azure pomocí instalace Windows serveru 2019 Core.
 
 ### <a name="supported-certificate-content-types"></a>Podporované typy obsahu certifikátu
 
@@ -59,7 +61,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
         "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
-          "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
+          "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
@@ -85,9 +87,9 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | datum |
+| apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
 | typ | KeyVaultForWindows | řetězec |
 | typeHandlerVersion | 1,0 | int |
@@ -194,9 +196,9 @@ Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření Ke
     
     ```azurecli
        # Start the deployment
-         az vm extension set -n "KeyVaultForWindows" `
+         az vm extension set -name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -g "<resourcegroup>" `
+         -resource-group "<resourcegroup>" `
          --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
     ```

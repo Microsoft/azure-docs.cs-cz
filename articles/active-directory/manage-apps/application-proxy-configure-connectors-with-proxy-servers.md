@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: contperfq2
+ms.openlocfilehash: fcf06c280a93489b2e958b9baff2e132da37c005
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208001"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426460"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -121,7 +122,7 @@ Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy po
 Pokud nemůžete připojení podle plně kvalifikovaného názvu domény a potřebujete místo toho zadat rozsahy IP adres, použijte tyto možnosti:
 
 * Povolí konektoru odchozí přístup ke všem cílům.
-* Povolí konektoru odchozí přístup ke všem rozsahům IP adres datacentra Azure. Výzvou k použití seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. K zajištění toho, aby se pravidla přístupu aktualizovala, je potřeba umístit proces. Pouze použití podmnožiny IP adres může způsobit přerušení vaší konfigurace. Pokud si chcete stáhnout nejnovější rozsahy IP adres datového centra Azure, přejděte na [https://download.microsoft.com](https://download.microsoft.com) adresu a vyhledejte "rozsahy IP adres Azure a značky služeb". Ujistěte se, že jste vybrali relevantní Cloud. Například rozsahy IP adres veřejných cloudu najdete v tématu "rozsahy IP adres Azure a značky služeb – veřejný cloud". Cloud US Goverment můžete najít tak, že vyhledáte "rozsahy IP adres Azure a značky služeb – US Goverment Cloud".
+* Povolí konektoru odchozí přístup ke všem rozsahům IP adres datacentra Azure. Výzvou k použití seznamu rozsahů IP adres datacentra Azure je, že se každý týden aktualizuje. K zajištění toho, aby se pravidla přístupu aktualizovala, je potřeba umístit proces. Pouze použití podmnožiny IP adres může způsobit přerušení vaší konfigurace. Pokud si chcete stáhnout nejnovější rozsahy IP adres datového centra Azure, přejděte na [https://download.microsoft.com](https://download.microsoft.com) adresu a vyhledejte "rozsahy IP adres Azure a značky služeb". Ujistěte se, že jste vybrali relevantní Cloud. Například rozsahy IP adres veřejných cloudu najdete v tématu "rozsahy IP adres Azure a značky služeb – veřejný cloud". Cloud pro státní správu USA můžete najít hledáním "rozsahy IP adres Azure a značky služeb – cloud pro státní správu USA".
 
 #### <a name="proxy-authentication"></a>Ověřování proxy
 

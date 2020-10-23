@@ -65,7 +65,6 @@
       href: load-balancer-multivip-overview.md
     - name: Odchozí proxy server
       href: load-balancer-outbound-connections.md
-    - name: Resetování TCP a časový limit při nečinnosti TCP
     - name: Pravidla odchozích přenosů
       href: outbound-rules.md
     - name: Časový limit resetování při nečinnosti TCP

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57598ea22874cfba772f6cf0e6b2ba779ef7c482
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550635"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Kurz: Azure Active Directory integrace s nástroji pro sady nástrojů
 
@@ -28,7 +28,7 @@ Pomocí této integrace můžete:
 * Umožněte uživatelům, aby se automaticky přihlásili k nástrojům Toolkit (jednotné přihlašování) s účty Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Sada nástrojů pro vyžádané čtení podporuje jednotné přihlašování iniciované SP.
 * Sada nástrojů pro vyhlašování uživatelů podporuje zřizování uživatelů za běhu.
-* Po nakonfigurování sady nástrojů pro správu myšlenek můžete vyhovět řízení relace. Tento ovládací prvek chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování sady nástrojů pro správu myšlenek můžete vyhovět řízení relace. Tento ovládací prvek chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-mind-tools-toolkit-from-the-gallery"></a>Přidání nástrojů k nástrojům pro přidávání názorů z Galerie
 
@@ -148,18 +148,18 @@ Nástroj pro vyhlašování do sady nástrojů podporuje zřizování za běhu, 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí portálu moje aplikace.
 
-Když na portálu moje aplikace vyberete dlaždici sady nástrojů pro dodávání, budete automaticky přihlášeni k sadě nástrojů pro panel nástrojů, pro kterou jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [Úvod do portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na portálu moje aplikace vyberete dlaždici sady nástrojů pro dodávání, budete automaticky přihlášeni k sadě nástrojů pro panel nástrojů, pro kterou jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu [Úvod do portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Kurzy pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si sadu nástrojů pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Postup ochrany nástrojů pro sadu nástrojů s pokročilou viditelností a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Postup ochrany nástrojů pro sadu nástrojů s pokročilou viditelností a ovládacími prvky](/cloud-app-security/proxy-intro-aad)

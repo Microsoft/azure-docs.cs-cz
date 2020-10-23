@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265781"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442061"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Model fakturace pro externí identity Azure AD
 
-Ceny za externí identity Azure Active Directory (Azure AD) jsou založené na měsíčních aktivních uživatelích (MAU), což je počet jedinečných uživatelů s aktivitou ověřování v kalendářním měsíci. Tento model fakturace platí pro spolupráci uživatelů Azure AD hosta (B2B) i pro [klienty Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/billing). MAU účtování pomáhá snižovat náklady tím, že nabízí bezplatnou úroveň a flexibilní a předvídatelné ceny. V tomto článku se dozvíte o fakturaci MAU a propojování tenantů Azure AD s předplatným.
+Ceny za externí identity Azure Active Directory (Azure AD) jsou založené na měsíčních aktivních uživatelích (MAU), což je počet jedinečných uživatelů s aktivitou ověřování v kalendářním měsíci. Tento model fakturace platí pro spolupráci uživatelů Azure AD hosta (B2B) i pro [klienty Azure AD B2C](../../active-directory-b2c/billing.md). MAU účtování pomáhá snižovat náklady tím, že nabízí bezplatnou úroveň a flexibilní a předvídatelné ceny. V tomto článku se dozvíte o fakturaci MAU a propojování tenantů Azure AD s předplatným.
 
 > [!IMPORTANT]
 > Tento článek neobsahuje informace o cenách. Nejnovější informace o fakturaci a cenách využití najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -45,7 +45,7 @@ Cenová úroveň, která se vztahuje na uživatele typu Host, je založena na ne
 
 Aby bylo možné správně vyúčtování a přístup k funkcím, musí být tenant služby Azure AD propojený s předplatným Azure. Pokud adresář ještě nemá předplatné, které můžete propojit, budete mít možnost ho během tohoto procesu přidat.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu Azure, kterému byla přiřazena alespoň role [Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) v rámci předplatného nebo skupiny prostředků v rámci předplatného.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí účtu Azure, kterému byla přiřazena alespoň role [Přispěvatel](../../role-based-access-control/built-in-roles.md) v rámci předplatného nebo skupiny prostředků v rámci předplatného.
 
 2. Vyberte adresář, který chcete propojit: na panelu nástrojů Azure Portal vyberte ikonu **adresář + předplatné** a pak vyberte adresář.
 

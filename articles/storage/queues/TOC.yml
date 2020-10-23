@@ -267,7 +267,7 @@
         - name: Dostupnost Storage Exploreru
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Queue Storage na webu Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
+      href: /answers/topics/azure-queue-storage.html
     - name: Queue Storage na webu Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-queues'
     - name: Ceny služby Queue Storage
@@ -309,7 +309,7 @@
             - name: Klientská knihovna Azure Storage verze 12.x
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
             - name: 'Objekty blob, fronty a soubory (verze 8)'
-              href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+              href: /java/api/overview/azure/storage?view=azure-java-legacy
             - name: Klientská knihovna Azure Storage verze 8.x a starší
               href: 'https://github.com/Azure/azure-storage-java'
         - name: Node.js

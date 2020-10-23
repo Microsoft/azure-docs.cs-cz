@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 1623d4501a89e3614e694b57f6cae1eee28062da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 276d444239cb91f1bec2975506279721e6d0008c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547031"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459352"
 ---
 # <a name="tutorial-integrate-jobhub-with-azure-active-directory"></a>Kurz: integrace JOBHUB s Azure Active Directory
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat JOBHUB s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k JOBHUB svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -132,17 +132,16 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-jobhub-test-user"></a>Vytvořit testovacího uživatele JOBHUB
 
-V této části vytvoříte uživatele s názvem Britta Simon v JOBHUB. Pokud chcete přidat uživatele na platformě JOBHUB, pracujte s [týmem podpory JOBHUB](mailto:platform@pasonagroup.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v JOBHUB. Pokud chcete přidat uživatele na platformě JOBHUB, pracujte s [týmem podpory JOBHUB](mailto:platform@pasonagroup.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu vyberete dlaždici JOBHUB, měli byste se automaticky přihlásit k JOBHUB, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici JOBHUB, měli byste se automaticky přihlásit k JOBHUB, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

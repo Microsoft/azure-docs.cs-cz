@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3704f4ad7a879128d23d1b7e971943939353968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826188"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92443897"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Hightail
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Hightail s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Hightail svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Hightail několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | -------- |-------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -184,14 +184,14 @@ V této části se v Hightail vytvoří uživatel s názvem Britta Simon. Highta
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Hightail, měli byste se automaticky přihlásit k Hightail, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Hightail, měli byste se automaticky přihlásit k Hightail, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Hightail s Azure AD](https://aad.portal.azure.com/)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b720f7e49fc0679de5c3f430122bab05d5b706f8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758315"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455747"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s CloudPassage
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat CloudPassage s Azure Active Directory 
 * Umožněte uživatelům, aby se automaticky přihlásili k CloudPassage pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -202,15 +202,15 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v CloudPassage.
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici CloudPassage, měli byste se automaticky přihlásit k CloudPassage, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici CloudPassage, měli byste se automaticky přihlásit k CloudPassage, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si CloudPassage s Azure AD](https://aad.portal.azure.com/)
 
@@ -223,4 +223,3 @@ Když na přístupovém panelu kliknete na dlaždici CloudPassage, měli byste s
 [22]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_15.png
 [23]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_16.png
 [24]: ./media/cloudpassage-tutorial/tutorial_cloudpassage_17.png
-

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 0283688ca2de4e7978da69753d08dd4763d30a75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b5a16a014892764ee26b524489a82744fe6ca82
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532303"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425974"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MariaDB
 
@@ -62,5 +62,5 @@ Kliknutím na **výstrahu detekce hrozeb** spustíte stránku Azure Security Cen
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Další informace o cenách najdete na stránce s [cenami Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/) .  
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)
+* Další informace o cenách najdete na stránce s [cenami Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/) .

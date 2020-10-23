@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54f5721ef606b6ea916f5a00031c58f5e2adeb0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87881ad5533724f08de3b2f348d1487f763ab04
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908760"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442163"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Doporučené postupy Azure Active Directory B2B
 Tento článek obsahuje doporučení a osvědčené postupy pro spolupráci B2B (Business-to-Business) v Azure Active Directory (Azure AD).
@@ -31,7 +31,7 @@ Tento článek obsahuje doporučení a osvědčené postupy pro spolupráci B2B 
 | Optimální prostředí přihlašování federovat pomocí zprostředkovatelů identity | Kdykoli je to možné, federovat přímo s poskytovateli identity, aby pozvaní uživatelé mohli přihlašovat se ke sdíleným aplikacím a prostředkům, aniž by museli vytvářet účty Microsoft (účty spravované služby) nebo účty Azure AD. Pomocí [funkce Google Federation](google-federation.md) můžete uživatelům typu Host B2B, aby se přihlásili pomocí svých účtů Google. Nebo můžete použít [funkci přímé federace (Preview)](direct-federation.md) k nastavení přímé federace s libovolnou organizací, jejíž zprostředkovatel identity (IDP) podporuje protokol SAML 2,0 nebo WS-Fed. |
 | Pro hosty B2B, kteří se nemůžou ověřit jiným způsobem, použijte funkci jednorázového hesla (Preview) e-mailu. | Funkce [jednorázového hesla (Preview) e-mailu](one-time-passcode.md) ověřuje uživatele typu Host B2B, když se nemůžou ověřit jiným způsobem jako Azure AD, účet Microsoft (MSA) nebo Google Federation. Když uživatel typu Host uplatňuje pozvánku nebo přistupuje ke sdílenému prostředku, může požádat o dočasný kód, který se pošle na svou e-mailovou adresu. Pak tento kód zadá, aby bylo možné pokračovat v přihlašování. |
 | Přidání firemního brandingu na přihlašovací stránku | Přihlašovací stránku můžete přizpůsobit tak, aby byla intuitivnější pro uživatele typu Host B2B. Podívejte se na téma Jak [Přidat Branding společnosti pro přihlášení a přístup ke stránkám na panelu](../fundamentals/customize-branding.md). |
-| Přidejte prohlášení o zásadách ochrany osobních údajů do prostředí pro vyplňování uživatelů typu hosta B2B. | Adresu URL prohlášení o zásadách ochrany osobních údajů vaší organizace můžete přidat do prvního procesu uplatnění pozvánky na pozvání, aby pozvaní uživatelé museli před pokračováním souhlasit s vašimi podmínkami ochrany osobních údajů. Viz [Postup: Přidání informací o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement). |
+| Přidejte prohlášení o zásadách ochrany osobních údajů do prostředí pro vyplňování uživatelů typu hosta B2B. | Adresu URL prohlášení o zásadách ochrany osobních údajů vaší organizace můžete přidat do prvního procesu uplatnění pozvánky na pozvání, aby pozvaní uživatelé museli před pokračováním souhlasit s vašimi podmínkami ochrany osobních údajů. Viz [Postup: Přidání informací o ochraně osobních údajů vaší organizace v Azure Active Directory](../fundamentals/active-directory-properties-area.md). |
 | Použití funkce Hromadná Pozvánka (Preview) k pozvání více uživatelů typu Host pro B2B ve stejnou dobu | Pomocí funkce hromadné pozvánky ve verzi Preview v Azure Portal můžete do vaší organizace pozvat více uživatelů typu Host. Tato funkce umožňuje odeslat soubor CSV pro vytvoření uživatelů typu Host B2B a hromadně odesílat pozvánky. Přečtěte si [kurz pro hromadné pozvání uživatelů B2B](tutorial-bulk-invite.md). |
 | Vyhovět zásadám podmíněného přístupu pro Multi-Factor Authentication (MFA) | Doporučujeme vynucovat zásady MFA u aplikací, které chcete sdílet s uživateli B2B pro partnery. Vícefaktorové ověřování se v aplikacích ve vašem tenantovi bude konzistentně uplatňovat bez ohledu na to, jestli partnerská organizace používá MFA. Podívejte se [na podmíněný přístup pro uživatele spolupráce B2B](conditional-access.md). |
 | Pokud vynucujete zásady podmíněného přístupu na základě zařízení, pomocí seznamů vyloučení povolte přístup uživatelům B2B. | Pokud jsou ve vaší organizaci povolené zásady podmíněného přístupu na základě zařízení, zablokují se zařízení uživatelů hosta B2B, protože nejsou spravovaná vaší organizací. Můžete vytvořit seznam vyloučení, který obsahuje konkrétní uživatele, aby je vyloučil ze zásad podmíněného přístupu na základě zařízení. Podívejte se [na podmíněný přístup pro uživatele spolupráce B2B](conditional-access.md). |

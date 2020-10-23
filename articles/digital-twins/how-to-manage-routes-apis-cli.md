@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 775b2da1b3f07897a566b6e82fa3f6b0de10bd22
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: bd6c504970d4991ee7d5c44b091a5d91c9d0a166
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428254"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461392"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92428254"
 
 V digitálních prostředcích Azure můžete směrovat [oznámení událostí](how-to-interpret-event-data.md) na služby pro příjem dat nebo připojené výpočetní prostředky. To je prováděno napřed nastavením **koncových bodů** , které mohou přijímat události. Pak můžete vytvořit  [**trasy událostí**](concepts-route-events.md) , které určují, které události generované pomocí digitálních vláken Azure jsou doručeny do těch koncových bodů.
 
-Koncové body a trasy je možné spravovat pomocí [rozhraní API EventRoutes](how-to-use-apis-sdks.md), [sady .NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)nebo z rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md). Tento článek vás provede procesem vytváření koncových bodů a tras pomocí těchto mechanismů.
+Koncové body a trasy je možné spravovat pomocí [rozhraní API pro směrování událostí](/rest/api/digital-twins/dataplane/eventroutes), rozhraní [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)nebo [digitálních vláken Azure](how-to-use-cli.md)s použitím rozhraní příkazového řádku. Tento článek vás provede procesem vytváření koncových bodů a tras pomocí těchto mechanismů.
 
 Dají se taky spravovat prostřednictvím [Azure Portal](https://portal.azure.com). Verzi tohoto článku, která místo toho používá portál, najdete v tématu [*How to: Manage Endpoints and Routes (portál)*](how-to-manage-routes-portal.md).
 
@@ -154,7 +154,7 @@ Tady je příklad zprávy nedoručených zpráv pro [dvojitou dobu vytvoření o
 
 Aby bylo možné ve skutečnosti odesílat data z digitálních vláken Azure do koncového bodu, bude nutné definovat **trasu události**. **Rozhraní API** pro digitální vlákna v Azure EventRoutes umožňují vývojářům nacházet v celém systému a na navazujících službách tok událostí. Přečtěte si další informace o trasách událostí v tématu [*Koncepty: směrování událostí digitálních vláken Azure*](concepts-route-events.md).
 
-Ukázky v této části používají [sadu .NET (C#) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core).
+Ukázky v této části používají [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true).
 
 **Předpoklad**: před přechodem na vytvoření trasy je nutné vytvořit koncové body, jak je popsáno výše v tomto článku. Po dokončení nastavení koncových bodů můžete pokračovat v vytváření směrování událostí.
 

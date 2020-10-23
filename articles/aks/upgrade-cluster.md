@@ -3,13 +3,13 @@ title: Upgrade clusteru Azure Kubernetes Service (AKS)
 description: Zjistěte, jak upgradovat cluster Azure Kubernetes Service (AKS), abyste získali nejnovější funkce a aktualizace zabezpečení.
 services: container-service
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: da46c44dc9cc16dfa44aacb15b35b652c0c912a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 046c010cdd811b53ef8ef35624ed41a673af43d3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050622"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461443"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
@@ -107,7 +107,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
 
-Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu AKS přidá nový uzel do clusteru, na kterém je spuštěná zadaná verze Kubernetes, a pak pečlivě [Cordon a vyprázdní][kubernetes-drain] jeden ze starých uzlů, aby se minimalizovalo přerušení spouštění aplikací. Když se nový uzel potvrdí jako běžící aplikace, Starý uzel se odstraní. Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru.
+Seznam dostupných verzí pro cluster AKS můžete upgradovat pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Během procesu upgradu AKS přidá nový uzel vyrovnávací paměti (nebo tolik uzlů, jak jsou nakonfigurované v [maximálním](#customize-node-surge-upgrade-preview)přetečení) do clusteru, na kterém je spuštěná zadaná verze Kubernetes. Pak bude [Cordon a vyprázdnit][kubernetes-drain] jeden ze starých uzlů, aby se minimalizovalo přerušení spuštěných aplikací (Pokud používáte max. nárůst, [Cordon a vyprázdní][kubernetes-drain] tolik uzlů ve stejnou dobu jako počet zadaných uzlů vyrovnávací paměti). Když je starý uzel úplně vyprázdněný, obnoví se jeho image, aby se získala Nová verze, a ta se stane uzlem vyrovnávací paměti pro upgrade následujícího uzlu. Tento proces se opakuje, dokud nebudou upgradovány všechny uzly v clusteru. Na konci procesu se odstraní poslední vyprázdnující uzel a zachová se stávající počet uzlů agentů.
 
 ```azurecli-interactive
 az aks upgrade \

@@ -4,18 +4,18 @@ description: Článek obsahuje oznámení uživatelům o migraci IP adres Azure 
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.custom: sqldbrb=1 
+ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fadbecc2c00a739afb2f94dd1d049805915cfa5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004268"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427109"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -108,7 +108,8 @@ Může to mít vliv na to, jestli:
 
 - Pevně zakóduje IP adresu pro konkrétní bránu v místní bráně firewall.
 - Mít všechny podsítě používající Microsoft. SQL jako koncový bod služby, ale nemůžou komunikovat s IP adresami brány.
-- Použít [redundantní konfiguraci zóny](high-availability-sla.md#zone-redundant-configuration) pro vaši databázi
+- Použít [zónu redundantní konfigurace pro vrstvu pro obecné účely](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
+- Použití [nadbytečné konfigurace zóny pro klíčové úrovně premium & pro firmy](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)
 
 Nebudete mít vliv na tyto akce:
  

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 36ca2bc8ba7812229c9c22cedd294085d5a63af7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 139aeb2fad37f96ad9e3d7fc801d574a93e896bd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055176"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457693"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Kurz: integrace s Azure Active Directory s využitím společnosti Ariba
 
@@ -27,7 +27,7 @@ Integrování společnosti Ariba s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k programu Ariba (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -43,7 +43,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Společnost Ariba podporuje jednotné přihlašování (SSO) na **SP**
 
-* Jakmile nakonfigurujete společnost Ariba, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Jakmile nakonfigurujete společnost Ariba, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-ariba-from-the-gallery"></a>Přidání služby Ariba z Galerie
 
@@ -153,13 +153,12 @@ V této části vytvoříte uživatele s názvem Britta Simon v rámci společno
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici společnosti Ariba na přístupovém panelu, měli byste být automaticky přihlášení do aplikace Ariba, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici společnosti Ariba na přístupovém panelu, měli byste být automaticky přihlášení do aplikace Ariba, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
