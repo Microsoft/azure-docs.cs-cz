@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996180"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480356"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Zotavení po havárii pro databázi Oracle Database 12c v prostředí Azure
 
@@ -42,7 +42,7 @@ Tady je souhrn nastavení Azure:
 - JumpBox, Aplikační služba, databáze a brána sítě VPN v samostatných podsítích
 - NSG vynutilo pro podsítě aplikace a databáze
 
-![Snímek obrazovky se stránkou topologie DR](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![Diagram, který zobrazuje primární lokality a weby DR v Azure.](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>Scénář 2: místní lokalita a lokalita DR v Azure
 
@@ -68,7 +68,7 @@ Toto je souhrn nastavení Azure:
 - Zásada nebo pravidlo NSG, které povolí příchozí port TCP 1521 (nebo uživatelem definovaný port)
 - Zásady nebo pravidlo NSG, které omezí jenom IP adresu/adresy v místním prostředí (DB nebo Application) pro přístup k virtuální síti.
 
-![Snímek obrazovky se stránkou topologie DR](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![Diagram, který zobrazuje přímá propojení mezi místními a Azure a vyžadováním otevírání portů TCP v bráně firewall.](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>Přístup 2: síť VPN typu Site-to-site
 VPN typu Site-to-site je lepší přístup. Další informace o nastavení sítě VPN najdete v tématu [vytvoření virtuální sítě s připojením VPN typu Site-to-site pomocí](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)rozhraní příkazového řádku (CLI).

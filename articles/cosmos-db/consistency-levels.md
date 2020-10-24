@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 70077f8f0e7a951b6da8cf65c874b17eb98b416c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0f69b30f477f99e2a4cae10edc7443b0630175c9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276384"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487802"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
@@ -187,8 +187,8 @@ Další informace o konceptech konzistence najdete v následujících článcíc
 
 Další informace o úrovních konzistence v Azure Cosmos DB najdete v následujících článcích:
 
-- [Volba správné úrovně konzistence pro vaši aplikaci](consistency-levels-choosing.md)
-- [Úrovně konzistence napříč Azure Cosmos DBmi rozhraními API](consistency-levels-across-apis.md)
+- [Volba správné úrovně konzistence pro vaši aplikaci]()
+- [Úrovně konzistence napříč Azure Cosmos DBmi rozhraními API]()
 - [Konfigurace výchozí úrovně konzistence](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [Přepsání výchozí úrovně konzistence](how-to-manage-consistency.md#override-the-default-consistency-level)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

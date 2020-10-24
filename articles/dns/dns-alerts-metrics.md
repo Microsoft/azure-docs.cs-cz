@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76937456"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489604"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metriky a výstrahy
 Azure DNS je hostingová služba pro domény DNS, která poskytuje překlad adres IP pomocí infrastruktury Microsoft Azure. Tento článek popisuje metriky a výstrahy pro službu Azure DNS.
@@ -57,7 +57,7 @@ Metrika *počtu sad záznamů* zobrazuje počet sad záznamů v Azure DNS pro va
 ### <a name="record-set-capacity-utilization"></a>Využití kapacity sady záznamů
 Metrika *využití kapacity sady záznamů* v Azure DNS zobrazuje procento využití kapacity vaší sady záznamů v zóně DNS. Každá zóna DNS v Azure DNS podléhá omezení sady záznamů, které definuje maximální počet sad záznamů, které jsou povoleny pro zónu (viz [omezení služby DNS](dns-zones-records.md#limits)). Proto tato metrika ukazuje, jak blízko vás limit sady záznamů zasáhne. Pokud máte například pro vaši zónu DNS nakonfigurované sady záznamů 500 a tato zóna má výchozí limit sady záznamů 5000, metrika RecordSetCapacityUtilization zobrazí hodnotu 10% (která se získá vydělením 500 hodnotou 5000). Měrnou jednotkou je **procento** a typ **agregace** je **maximální**. Tuto metriku zobrazíte tak, že na kartě monitorování v Azure Portal vyberete možnosti Průzkumník metrik (Preview). Vyberte zónu DNS z rozevíracího seznamu prostředek, vyberte metriku využití kapacity sady záznamů a jako agregaci vyberte max. Pod ukázkou se zobrazuje příklad. Další informace o prostředí Průzkumník metrik a vytváření grafů najdete v tématu [Azure Monitor Průzkumník metrik](../azure-monitor/platform/metrics-charts.md). 
 
-![Počet sad záznamů](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
+![Snímek obrazovky, který whows příklad zobrazení metrik.](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
 *Obrázek: metriky využití kapacity sady záznamů Azure DNS*
 

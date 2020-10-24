@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 217a049b589db98b6d28e7a0ef9b8ef64f635349
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e9328d25459985172d2a80915bb156d297371ae
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88541710"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Kurz: Azure Active Directory integrace s TimeLive
 
@@ -30,7 +30,7 @@ Integrace TimeLive s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s TimeLive potřebujete následující položky:
 
@@ -130,11 +130,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TimeLive
 
 2. V části **Možnosti pro správu**vyberte **Předvolby** .
 
-    ![Konfigurace TimeLive](./media/timelive-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje možnosti správy s vybranými preferencemi.](./media/timelive-tutorial/configure1.png)
 
 3. V části **předvoleb aplikace** proveďte následující kroky:
     
-    ![Konfigurace TimeLive](./media/timelive-tutorial/configure2.png)
+    ![Snímek obrazovky se zobrazí v části předvoleb aplikace, kde můžete zadat hodnoty, které jsou popsány.](./media/timelive-tutorial/configure2.png)
 
     a. Vyberte kartu **Zabezpečení**.
 
@@ -210,7 +210,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici TimeLive, měli byste se automaticky přihlásit k TimeLive, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/17/2020
+ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a4fa1a690c6607b70774be67048fcad7db378b8b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f7d9389eb0a0118f2c1be8375531f58b6bed94b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461596"
+ms.locfileid: "92488091"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -52,11 +52,11 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
+    | Skupina prostředků         | Vyberte **vytvořit novou** a do textového pole zadejte **CreatePubLBQS-RG** .|
     | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
-    | SKU           | Vybrat **Standard** |
+    | Skladová položka           | Vybrat **Standard** |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
     | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP** .|
     | Zóna dostupnosti | Chcete-li vytvořit odolný Nástroj pro vyrovnávání zatížení, vyberte **zónu – redundantní** . Pokud chcete vytvořit nástroj pro vyrovnávání zatížení, vyberte konkrétní zónu z 1, 2 nebo 3. |
@@ -164,7 +164,7 @@ V této části vytvoříte virtuální síť a podsíť.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group (Skupina prostředků)   | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků   | Vybrat **CreatePubLBQS-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **západní Evropa** |
@@ -217,7 +217,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group (Skupina prostředků) | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků | Vybrat **CreatePubLBQS-RG** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
     | Oblast | Vyberte **západní Evropa** |
@@ -333,11 +333,11 @@ Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoří
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
+    | Skupina prostředků         | Vyberte **vytvořit nové** a do textového pole zadejte **CreatePubLBQS-RG** .|
     | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **Veřejný**.                                        |
-    | SKU           | Vybrat **základní** |
+    | Skladová položka           | Vybrat **základní** |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
     | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP** .|
     | Přiřazení | Vybrat **dynamický** |
@@ -370,7 +370,7 @@ V této části vytvoříte virtuální síť a podsíť.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group (Skupina prostředků)   | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků   | Vybrat **CreatePubLBQS-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **západní Evropa** |
@@ -476,6 +476,7 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Back-endový port | Zadejte **80**. |
     | Back-endový fond | Vyberte **myBackendPool**.|
     | Sonda stavu | Vyberte **myHealthProbe**. |
+    | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15** minut. |
  
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
@@ -503,7 +504,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group (Skupina prostředků) | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků | Vybrat **CreatePubLBQS-RG** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
     | Oblast | Vyberte **západní Evropa** |
@@ -575,7 +576,7 @@ Virtuální počítače vytvořené v předchozích krocích se musí přidat do
 
 ## <a name="install-iis"></a>Instalace služby IIS
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom ze seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků **CreateStdLBQS-RG** .
 
 2. Na stránce **Přehled** vyberte **připojit**a pak **bastionu**.
 
@@ -618,7 +619,7 @@ Pokud chcete zobrazit distribuci provozu nástroje pro vyrovnávání zatížen�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků **myResourceGroupLB** , která obsahuje prostředky, a pak vyberete **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků **CreatePubLBQS-RG** , která obsahuje prostředky, a pak vyberete **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a5106fcc7f1b55db22ee13ced34328cc38096d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836505"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486204"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníkem pro váš účet služby Azure Cosmos DB s využitím služby Azure Key Vault
 
@@ -279,7 +279,7 @@ Při použití klíčů spravovaných zákazníkem se na [jednotky žádosti](./
 
 Všechna data uložená ve vašem účtu Azure Cosmos se šifrují pomocí klíčů spravovaných zákazníkem s výjimkou následujících metadat:
 
-- Názvy [účtů Azure Cosmos DB, databází a kontejnerů](./account-overview.md#elements-in-an-azure-cosmos-account)
+- Názvy [účtů Azure Cosmos DB, databází a kontejnerů](./account-databases-containers-items.md#elements-in-an-azure-cosmos-account)
 
 - Názvy [uložených procedur](./stored-procedures-triggers-udfs.md)
 

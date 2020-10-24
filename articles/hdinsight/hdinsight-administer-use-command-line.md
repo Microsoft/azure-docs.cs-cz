@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
-ms.openlocfilehash: 2c6495454e5ba2449d4b3c74a096681f74610813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38bf49ba39420aa1edffa13540d61292e23d654b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84699358"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490369"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Správa clusterů Azure HDInsight pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Naučte se používat [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ke správě clusterů Azure HDInsight. Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
+Naučte se používat [Azure CLI](/cli/azure/) ke správě clusterů Azure HDInsight. Rozhraní příkazového řádku Azure (CLI) je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) pro kroky.
+* Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli) pro kroky.
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -42,7 +42,7 @@ az login
 
 ## <a name="list-clusters"></a>Výpis clusterů
 
-K vypsání clusterů použijte [AZ HDInsight list](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-list) . Níže uvedené příkazy upravte nahrazením `RESOURCE_GROUP_NAME` názvem vaší skupiny prostředků a zadáním příkazů:
+K vypsání clusterů použijte [AZ HDInsight list](/cli/azure/hdinsight#az-hdinsight-list) . Níže uvedené příkazy upravte nahrazením `RESOURCE_GROUP_NAME` názvem vaší skupiny prostředků a zadáním příkazů:
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -60,7 +60,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>Zobrazit cluster
 
-K zobrazení informací o zadaném clusteru použijte [AZ HDInsight show](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-show) . Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
+K zobrazení informací o zadaném clusteru použijte [AZ HDInsight show](/cli/azure/hdinsight#az-hdinsight-show) . Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -68,7 +68,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
 
-Pomocí [AZ HDInsight Delete](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-delete) odstraňte zadaný cluster. Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
+Pomocí [AZ HDInsight Delete](/cli/azure/hdinsight#az-hdinsight-delete) odstraňte zadaný cluster. Níže uvedený příkaz upravte nahrazením `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušnými informacemi a zadáním příkazu:
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -82,7 +82,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>Škálování clusterů
 
-Pomocí [AZ HDInsight Resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) změňte velikost zadaného clusteru HDInsight na určenou velikost. Úpravou příkazu níže nahraďte `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušné informace. Nahraďte `WORKERNODE_COUNT` požadovaným počtem uzlů pracovního procesu pro váš cluster. Další informace o škálování clusterů najdete v tématu [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md). Zadejte příkaz:
+Pomocí [AZ HDInsight Resize](/cli/azure/hdinsight#az-hdinsight-resize) změňte velikost zadaného clusteru HDInsight na určenou velikost. Úpravou příkazu níže nahraďte `RESOURCE_GROUP_NAME` a `CLUSTER_NAME` příslušné informace. Nahraďte `WORKERNODE_COUNT` požadovaným počtem uzlů pracovního procesu pro váš cluster. Další informace o škálování clusterů najdete v tématu [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md). Zadejte příkaz:
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT
@@ -95,4 +95,4 @@ V tomto článku jste se naučili, jak provádět různé úlohy správy cluster
 * [Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal](hdinsight-administer-use-portal-linux.md)
 * [Správa HDInsight pomocí Azure PowerShell](hdinsight-administer-use-powershell.md)
 * [Začínáme se službou Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)
+* [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli)

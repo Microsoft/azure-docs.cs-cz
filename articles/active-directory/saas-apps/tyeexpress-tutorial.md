@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a601b7ec7e2615053203e23ea61fc6d2efc85bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09d661f29b2e262e5e67c471711a5e978abe79d8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533439"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Kurz: Azure Active Directory integrace s T&E Express
 
@@ -30,7 +30,7 @@ Integrace T&E Express s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s T&E Express budete potřebovat následující položky:
 
@@ -128,11 +128,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s T&E Express, p
 
 1. Na kartě **správce** kliknutím na **doména SAML** otevřete stránku nastavení SAML.
 
-    ![Konfigurace jednoho Sign-On](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![Snímek obrazovky zobrazuje doménu SAML vybranou v nabídce správce.](./media/tyeexpress-tutorial/tye-SAML.png)
 
 1. Vyberte možnost **activar (aktivovat)** od **ne** po **(Ano)**. Do textového pole **metadata poskytovatele identity** vložte XML metadat, které jste stáhli z Azure Portal.
 
-    ![Konfigurace jednoho Sign-On](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![Snímek obrazovky se zobrazí stránka Dominio SAML, kde můžete zadat metadata.](./media/tyeexpress-tutorial/tyeAdmin.png)
 
 1. Kliknutím na tlačítko **Guardar (Uložit)** nastavení uložte.
 
@@ -197,17 +197,17 @@ Aby se uživatelé Azure AD mohli přihlásit k T&E Expressu, musí se zřídit 
 
 1. V části značka Správce klikněte na uživatelé a otevřete stránku předloha uživatelé.
 
-    ![Přidat zaměstnance](./media/tyeexpress-tutorial/tye-adminusers.png)
+    ![Snímek obrazovky se zobrazí uživatelé vybraní z nabídky správce.](./media/tyeexpress-tutorial/tye-adminusers.png)
 
 1. Na domovské stránce klikněte na tlačítko **+** a přidejte uživatele.
 
-    ![Přidat zaměstnance](./media/tyeexpress-tutorial/tye-usershome.png)
+    ![Snímek obrazovky zobrazuje ikonu Plus pro přidání uživatelů.](./media/tyeexpress-tutorial/tye-usershome.png)
 
 1. Zadejte všechny povinné podrobnosti ve formuláři a kliknutím na tlačítko Uložit uložte podrobnosti.
 
-    ![Přidat zaměstnance](./media/tyeexpress-tutorial/tye-usersadd.png)
+    ![Snímek obrazovky se zobrazí v sekci informace o uživateli, kde můžete zadat příslušné hodnoty.](./media/tyeexpress-tutorial/tye-usersadd.png)
 
-    ![Přidat zaměstnance](./media/tyeexpress-tutorial/tye-userssave.png)
+    ![Snímek obrazovky se zobrazí v sekcích schvalovatelé a asistent, kde můžete zadat příslušné hodnoty.](./media/tyeexpress-tutorial/tye-userssave.png)
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -215,7 +215,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici T&E Express na přístupovém panelu, měli byste se automaticky přihlásit k E-&E Expressu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

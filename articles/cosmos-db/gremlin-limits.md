@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
 ms.author: sngun
-ms.openlocfilehash: 4ac5222e735e0699e507ca1392dc5dd42fc77105
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a265f1ae6e925440e2804056348cb705b09da5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400464"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490556"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Omezení Gremlin ve službě Azure Cosmos DB
 Tento článek pojednává o omezeních Azure Cosmos DBho stroje Gremlin a vysvětluje, jak mohou ovlivnit zákaznická procházení.
 
-Cosmos DB Gremlin je postavená na Cosmos DB infrastruktuře. Z tohoto důvodu jsou všechna omezení vysvětlena v [Azure Cosmos DB omezení služby](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) jsou stále použitelná.
+Cosmos DB Gremlin je postavená na Cosmos DB infrastruktuře. Z tohoto důvodu jsou všechna omezení vysvětlena v [Azure Cosmos DB omezení služby](./concepts-limits.md) jsou stále použitelná.
 
 ## <a name="limits"></a>Omezení
 

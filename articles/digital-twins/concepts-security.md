@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331749"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485745"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
 
@@ -48,11 +48,13 @@ Se spravovanými identitami spravuje platforma Azure tuto identitu modulu runtim
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorizace: role Azure pro digitální vlákna Azure
 
 Azure poskytuje níže vestavěné role Azure pro autorizaci přístupu k prostředku digitálních vláken Azure:
-* *Vlastník digitálních vláken Azure (Preview)* – pomocí této role můžete poskytnout úplný přístup k prostředkům Azure Digital Resources.
-* *Čtečka digitálních vláken Azure (Preview)* – tato role slouží k udělení přístupu k prostředkům digitálních vláken Azure, které jsou jen pro čtení.
+* *Vlastník dat digitálních vláken Azure* – pomocí této role můžete poskytnout úplný přístup k prostředkům Azure Digital relimits.
+* *Čtečka dat digitálních vláken Azure* – tato role slouží k udělení přístupu k prostředkům digitálních vláken Azure, které jsou jen pro čtení.
 
-> [!TIP]
-> Role *Čtenář digitálních vláken Azure (Preview)* teď podporuje i vztahy procházení.
+>[!NOTE]
+> Tyto role byly ve verzi Preview nedávno přejmenovány ze starších názvů:
+> * *Vlastník dat digitálních vláken Azure* byl dřív *vlastníkem digitálních vláken Azure (Preview)*.
+> * *Čtečka dat digitálních vláken Azure* se dřív používala *pro čtečku digitálních vláken Azure (Preview)*.
 
 Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [*vysvětlení definic rolí*](../role-based-access-control/role-definitions.md) v dokumentaci k Azure RBAC. Informace o vytváření vlastních rolí Azure najdete v tématu [*vlastní role Azure*](../role-based-access-control/custom-roles.md).
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bcda410e678e44916a4128d7ef097883e148ed79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81d0a0df53ff18661582416d4d96fd5d5ee83192
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551856"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486901"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s uniFLOW online
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat uniFLOW online s Azure Active Director
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -101,7 +101,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho uniFLOW aplikace online očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | -----------| --------------- |
     | DisplayName | User. DisplayName |
     | zdívek | User. onpremisessamaccountname |
@@ -152,20 +152,19 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V levém navigačním panelu vyberte kartu **uživatel** .
 
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/configure1.png)
+    ![Snímek obrazovky se zobrazí uživatel vybraný na online webu uniFLOW.](./media/uniflow-online-tutorial/configure1.png)
 
 1. Klikněte na **Zprostředkovatelé identity**.
 
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/configure2.png)
+    ![Snímek obrazovky ukazuje vybrané poskytovatele identity.](./media/uniflow-online-tutorial/configure2.png)
 
 1. Klikněte na **Přidat zprostředkovatele identity**.
 
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/configure3.png)
+    ![Snímek obrazovky s vybraným přidat poskytovatele identity](./media/uniflow-online-tutorial/configure3.png)
 
 1. V části **Přidat zprostředkovatele identity** proveďte následující kroky:
 
-
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/configure4.png)
+    ![Snímek obrazovky se zobrazí v části Přidat zprostředkovatele IDENTITY, kde můžete zadat hodnoty, které jsou popsány.](./media/uniflow-online-tutorial/configure4.png)
 
     a. Zadejte zobrazovaný název ex: *AZUREAD SSO*.
 
@@ -177,7 +176,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Na kartě **Obecné** proveďte následující kroky:
 
-    ![Online konfigurace uniFLOW](./media/uniflow-online-tutorial/configure5.png)
+    ![Snímek obrazovky se zobrazí na kartě Obecné, kde můžete zadat hodnoty, které jsou popsány.](./media/uniflow-online-tutorial/configure5.png)
 
     a. Zadejte zobrazovaný název ex: *AZUREAD SSO*.
 
@@ -199,7 +198,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Přihlaste se pomocí testovacího uživatele.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

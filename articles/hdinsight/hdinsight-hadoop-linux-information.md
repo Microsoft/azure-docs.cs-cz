@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b3c694b4d6134f30d04ba8bafee9a6ffabdd959
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856581"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488108"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
 Clustery Azure HDInsight poskytují Apache Hadoop v známém prostředí pro Linux běžící v cloudu Azure. Pro většinu věcí by měla fungovat přesně stejně jako všechny ostatní instalace systému Hadoop-Linux. Tento dokument volá konkrétní rozdíly, o kterých byste měli vědět.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Mnohé z kroků v tomto dokumentu používají následující nástroje, které může být potřeba nainstalovat do systému.
 
 * [oblý](https://curl.haxx.se/) – slouží ke komunikaci s webovými službami.
 * **JQ**, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) – slouží k vzdálené správě služeb Azure.
+* [Azure CLI](/cli/azure/install-azure-cli) – slouží k vzdálené správě služeb Azure.
 * **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Uživatelé
@@ -191,7 +191,7 @@ Existují různé způsoby, jak získat přístup k datům mimo cluster HDInsigh
 
 Pokud používáte __úložiště objektů BLOB v Azure__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): příkazy rozhraní Command-Line pro práci s Azure. Po instalaci použijte `az storage` příkaz pro nápovědu k používání úložiště nebo `az storage blob` pro příkazy pro objekty blob.
+* [Azure CLI](/cli/azure/install-az-cli2): příkazy rozhraní Command-Line pro práci s Azure. Po instalaci použijte `az storage` příkaz pro nápovědu k používání úložiště nebo `az storage blob` pro příkazy pro objekty blob.
 * [blobxfer.py](https://github.com/Azure/blobxfer): skript Pythonu pro práci s objekty blob v Azure Storage.
 * Různé sady SDK:
 

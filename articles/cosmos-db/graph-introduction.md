@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e1a9e4b82971180f375a006f4825832e6179e9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279832"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490607"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Úvod do rozhraní Gremlin API v Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 
 * **Elasticky škálovatelná propustnost a úložiště**
 
-  Grafy v reálném světě je potřeba škálovat nad kapacitu jednoho serveru. Azure Cosmos DB podporuje horizontálně škálovatelné databáze grafů, které mohou mít prakticky neomezenou velikost z hlediska úložiště a zajištěné propustnosti. Při zvětšování měřítka databáze grafu budou data automaticky distribuována pomocí [dělení grafů](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
+  Grafy v reálném světě je potřeba škálovat nad kapacitu jednoho serveru. Azure Cosmos DB podporuje horizontálně škálovatelné databáze grafů, které mohou mít prakticky neomezenou velikost z hlediska úložiště a zajištěné propustnosti. Při zvětšování měřítka databáze grafu budou data automaticky distribuována pomocí [dělení grafů](./graph-partitioning.md).
 
 * **Replikace mezi více oblastmi**
 
@@ -52,7 +52,7 @@ Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 
 * **Automatické indexování**
 
-  Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti v uzlech (označované také jako vrcholy) a hrany v grafu a neočekává ani nevyžaduje žádné schéma nebo vytváření sekundárních indexů. Přečtěte si další informace o [indexování v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview).
+  Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti v uzlech (označované také jako vrcholy) a hrany v grafu a neočekává ani nevyžaduje žádné schéma nebo vytváření sekundárních indexů. Přečtěte si další informace o [indexování v Azure Cosmos DB](/azure/cosmos-db/index-overview).
 
 * **Kompatibilita s Apache TinkerPop**
 

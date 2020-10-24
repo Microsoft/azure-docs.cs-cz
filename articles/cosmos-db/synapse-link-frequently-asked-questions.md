@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104100"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480067"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
 
@@ -37,13 +37,13 @@ Pokud je v rámci verze Preview povolený odkaz Azure synapse pro účet ve víc
 
 U kontejnerů se zapnutým analytickým úložištěm se v současnosti nepodporuje automatické zálohování a obnovování vašich dat v analytickém úložišti. 
 
-Když je na databázovém účtu povoleno propojení synapse, Azure Cosmos DB bude pokračovat v automatickém ukládání [záloh](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) vašich dat do transakčního úložiště (pouze) kontejnerů v naplánovaných intervalech zálohování, jako vždycky. Je důležité si uvědomit, že když se na nový účet obnoví kontejner se zapnutým analytickým úložištěm, kontejner se obnoví jenom v transakčním úložišti a není povolený žádný analytický obchod. 
+Když je na databázovém účtu povoleno propojení synapse, Azure Cosmos DB bude pokračovat v automatickém ukládání [záloh](./online-backup-and-restore.md) vašich dat do transakčního úložiště (pouze) kontejnerů v naplánovaných intervalech zálohování, jako vždycky. Je důležité si uvědomit, že když se na nový účet obnoví kontejner se zapnutým analytickým úložištěm, kontejner se obnoví jenom v transakčním úložišti a není povolený žádný analytický obchod. 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Můžu pro svůj Azure Cosmos DB účet zakázat funkci odkazu na Azure synapse?
 
 V současné době není možné po povolení funkce Synapse Link na úrovni účtu tuto funkci zakázat. Mějte na paměti, že pokud je funkce Synapse Link povolená na úrovni účtu a neexistují žádné kontejnery s povoleným analytickým úložištěm, na fakturaci to nebude mít žádný vliv. 
 
-Pokud potřebujete funkci vypnout, máte 2 možnosti. První z nich je odstranit a znovu vytvořit nový účet Azure Cosmos DB a v případě potřeby migrujte data. Druhou možností je otevřít lístek podpory, který vám umožní získat pomoc s migrací dat na jiný účet.
+Pokud potřebujete tuto funkci vypnout, máte 2 možnosti. První možností je odstranit účet Azure Cosmos DB a vytvořit nový a v případě potřeby migrovat data. Druhou možností je otevřít lístek podpory a požádat o pomoc s migrací dat do jiného účtu.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB analytické úložiště
 

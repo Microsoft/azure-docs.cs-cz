@@ -9,25 +9,25 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: 68a2d354c45820bc9f2b291701deb9066a745235
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1e0f8c301d40ff10dbf977731d457a31b096328
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297874"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477993"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření konzolové aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [Java](sql-api-java-get-started.md)
-> * [Async Java](sql-api-async-java-get-started.md)
+> * [Java](./create-sql-api-java.md)
+> * [Async Java](./create-sql-api-java.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
 Jako vývojář můžete mít aplikace, které používají data dokumentů NoSQL. K ukládání a přístupu k datům v dokumentu můžete použít účet rozhraní SQL API v Azure Cosmos DB. V tomto kurzu se dozvíte, jak vytvořit konzolovou aplikaci Node.js k vytváření prostředků Azure Cosmos DB a dotazování na ně.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvořte účet Azure Cosmos DB a připojte se k němu.
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující:
 > * Přidejte položky do kontejneru.
 > * Provede základní operace s položkami, kontejnerem a databází.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 Ujistěte se, že máte následující prostředky:
 
@@ -221,6 +221,6 @@ Když už tyto prostředky nepotřebujete, můžete odstranit skupinu prostředk
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Monitorování účtu Azure Cosmos DB](monitor-accounts.md)
+> [Monitorování účtu Azure Cosmos DB](./monitor-cosmos-db.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account

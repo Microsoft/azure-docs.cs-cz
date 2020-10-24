@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 6978855e9b32a3842e76d02ef543d86cf0673019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206644"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489638"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Osvědčené postupy pro synapse fond SQL ve službě Azure synapse Analytics (dřív SQL DW)
 
@@ -64,7 +64,7 @@ Viz také [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-
 
 Fond SQL podporuje načítání a export dat prostřednictvím několika nástrojů, včetně Azure Data Factory, základů a BCP.  Pro malá množství dat, kde není výkon tak důležitý, by vám měl stačit libovolný nástroj.  Když však načítáte nebo exportujete velká množství dat nebo vyžadujete vysoký výkon, nejlepší volbou je PolyBase.  
 
-Základna je navržená tak, aby využila architekturu MPP (hromadně paralelní zpracování) a načetla a využívala velikost dat rychleji než jakýkoli jiný nástroj.  Úlohy funkce PolyBase můžete spustit pomocí příkazů CTAS nebo INSERT INTO.  
+Základna je navržená tak, aby využila distribuovanou povahu systému a načetla a exportovali velikost dat rychleji než jakýkoli jiný nástroj.  Úlohy funkce PolyBase můžete spustit pomocí příkazů CTAS nebo INSERT INTO.   
 
 > [!TIP]
 > Použití příkazu CTAS minimalizuje protokolování transakce a je to nejrychlejší způsob, jak načíst vaše data.

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7dface648f7bf219d4c66b038af62e3307560650
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329368"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489281"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -144,7 +144,7 @@ Neexistují žádná omezení na datové části položky, jako je počet vlastn
 
 ## <a name="per-request-limits"></a>Omezení podle požadavků
 
-Azure Cosmos DB podporuje [operace CRUD a dotazování](/rest/api/cosmos-db/) u prostředků, jako jsou kontejnery, položky a databáze. Podporuje také [transakční dávkové požadavky](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) na více položek se stejným klíčem oddílu v kontejneru.
+Azure Cosmos DB podporuje [operace CRUD a dotazování](/rest/api/cosmos-db/) u prostředků, jako jsou kontejnery, položky a databáze. Podporuje také [transakční dávkové požadavky](/dotnet/api/microsoft.azure.cosmos.transactionalbatch) na více položek se stejným klíčem oddílu v kontejneru.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
@@ -191,7 +191,7 @@ Podrobnější vysvětlení propustnosti a omezení úložiště s využitím au
 
 ## <a name="sql-query-limits"></a>Omezení dotazu SQL
 
-Cosmos DB podporuje dotazování na položky pomocí [jazyka SQL](how-to-sql-query.md). V následující tabulce jsou popsána omezení v příkazech dotazu, například v podmínkách počtu klauzulí nebo délka dotazu.
+Cosmos DB podporuje dotazování na položky pomocí [jazyka SQL](./sql-query-getting-started.md). V následující tabulce jsou popsána omezení v příkazech dotazu, například v podmínkách počtu klauzulí nebo délka dotazu.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |

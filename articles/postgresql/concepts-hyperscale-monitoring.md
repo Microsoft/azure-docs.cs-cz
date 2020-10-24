@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30be9cbba7fe702d12285fe13794290c4820fd53
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314806"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487989"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Monitorování a ladění Azure Database for PostgreSQL – Citus (škálování)
 
@@ -22,13 +22,13 @@ Sledování dat o vašich serverech vám pomůže při řešení potíží a opt
 
 Citus () poskytuje metriky pro každý uzel ve skupině serverů. Metriky poskytují přehled o chování podpůrných prostředků. Každá metrika je vygenerována s jednou minutovou frekvencí a má až 30 dnů od historie.
 
-Kromě zobrazení grafů metriky můžete nakonfigurovat výstrahy. Podrobné pokyny najdete v tématu [jak nastavit výstrahy](howto-hyperscale-alert-on-metric.md).  Mezi další úlohy patří nastavení automatizovaných akcí, spouštění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Kromě zobrazení grafů metriky můžete nakonfigurovat výstrahy. Podrobné pokyny najdete v tématu [jak nastavit výstrahy](howto-hyperscale-alert-on-metric.md).  Mezi další úlohy patří nastavení automatizovaných akcí, spouštění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../azure-monitor/platform/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Seznam metrik
 
 Tyto metriky jsou k dispozici pro uzly Citus (s měřítkem):
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Description|
+|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
 |---|---|---|---|
 |active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|

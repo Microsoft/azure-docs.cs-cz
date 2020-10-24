@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/21/2020
+ms.openlocfilehash: a666acbcd2aed168bd1d871c0ef0fb8c3205fd05
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367716"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479135"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD
 
@@ -177,6 +177,16 @@ V tomto kurzu budeme používat *AppSP* jako hlavní instanční objekt a *Mojea
 
 Další informace o tom, jak vytvořit aplikaci Azure AD, najdete v článku [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
+### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Oprávnění požadovaná k nastavení nebo zrušení správce Azure AD
+
+Aby instanční objekt nastavil nebo oddělil správce Azure AD pro Azure SQL, je potřeba další oprávnění API. [Adresář. Read. všechna](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) oprávnění Application API se budou muset do vaší aplikace přidat ve službě Azure AD.
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="ID objektu":::
+
+Instanční objekt bude také potřebovat roli [**přispěvatel SQL Server**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) pro SQL Database nebo roli [**Přispěvatel spravované instance SQL**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) pro spravovanou instanci SQL.
+
+> [!NOTE]
+> I když je služba Azure AD Graph API zastaralá, **adresář. Reader. všechna** oprávnění se pořád týkají tohoto kurzu. Rozhraní API pro Microsoft Graph se nevztahuje na tento kurz.
 
 ## <a name="create-the-service-principal-user-in-azure-sql-database"></a>Vytvořit uživatele instančního objektu v Azure SQL Database
 

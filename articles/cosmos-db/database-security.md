@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6236b34c76ccd9e4688b97e7844cbadf9f515213
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 35bfc45ffffac17a2eca40cb51c2db5d94c140a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372238"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487462"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Zabezpečení ve službě Azure Cosmos DB – Přehled
 
@@ -69,7 +69,7 @@ Pojďme se na každou z nich dig podrobněji.
 |Automatizované online zálohování|Databáze Azure Cosmos se pravidelně zálohují a ukládají se v geograficky redundantním úložišti. <br><br>Další informace najdete v [automatickém online zálohování a obnovení pomocí Azure Cosmos DB](online-backup-and-restore.md).|
 |Obnovit Odstraněná data|Automatické zálohování online lze použít k obnovení dat, která jste pravděpodobně omylem odstranili až do 30 dnů od události. <br><br>Další informace najdete v [automatickém online zálohování a obnovení pomocí Azure Cosmos DB](online-backup-and-restore.md)|
 |Chraňte a izolujte citlivá data|Všechna data v oblastech uvedených v části Co je nového? je teď zašifrovaný v klidovém stavu.<br><br>Osobní údaje a další důvěrné údaje mohou být izolované na konkrétního kontejneru a přístup pro čtení i zápis, nebo jen pro čtení, mohou být omezeny na konkrétní uživatele.|
-|Monitorování útoků|Pomocí protokolu [auditu a protokolů aktivit](logging.md)můžete monitorovat účet pro normální a neobvyklé aktivity. Můžete si prohlédnout, jaké operace byly provedeny na vašich prostředcích, kteří operaci zahájili, kdy k operaci došlo, na stavu operace a mnohem více, jak je znázorněno na snímku obrazovky, který následuje v této tabulce.|
+|Monitorování útoků|Pomocí protokolu [auditu a protokolů aktivit](./monitor-cosmos-db.md)můžete monitorovat účet pro normální a neobvyklé aktivity. Můžete si prohlédnout, jaké operace byly provedeny na vašich prostředcích, kteří operaci zahájili, kdy k operaci došlo, na stavu operace a mnohem více, jak je znázorněno na snímku obrazovky, který následuje v této tabulce.|
 |Reakce na útoky|Po kontaktování podpory Azure za účelem nahlášení potenciálního útoku se aktivuje proces reakce na případ 5 kroků. Cílem procesu 5 kroků je obnovit normální zabezpečení a provoz služeb co nejrychleji po zjištění problému a spuštění šetření.<br><br>Další informace najdete v [Microsoft Azure odpovědi na zabezpečení v cloudu](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91).|
 |Geografické oplocení|Azure Cosmos DB zajišťuje zásady správného řízení dat pro oblasti svrchovan (například Německo, Čína, US Gov).|
 |Chráněná zařízení|Data v Azure Cosmos DB se ukládají na SSD v chráněných datových centrech Azure.<br><br>Další informace najdete v [globálním datacentru Microsoftu](https://www.microsoft.com/en-us/cloud-platform/global-datacenters) .|
@@ -104,6 +104,6 @@ Primární klíče primární, sekundární, jen pro čtení a primární klíč
 
 Další informace o primárních klíčích a tokenech prostředků najdete v tématu [zabezpečení přístupu k Azure Cosmos DB dat](secure-access-to-data.md).
 
-Další informace o protokolování auditu najdete v tématu [Azure Cosmos DB protokolování diagnostiky](logging.md).
+Další informace o protokolování auditu najdete v tématu [Azure Cosmos DB protokolování diagnostiky](./monitor-cosmos-db.md).
 
 Další informace o certifikaci Microsoftu najdete v tématu [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/).

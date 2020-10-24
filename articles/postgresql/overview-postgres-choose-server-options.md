@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: f81a44af4a90ccda1875c0a9f2bfaa8dc0b73441
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946978"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489689"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>Volba pravého serveru PostgreSQL v Azure
 
@@ -86,7 +86,7 @@ Pomocí Azure Database for PostgreSQL můžete dál spravovat databázi. Ale už
 
 Kromě toho konfigurace vysoké dostupnosti v jiném datovém centru vyžaduje minimální konfiguraci nebo správu.
 
-- S PostgreSQL na virtuálních počítačích Azure máte plnou kontrolu nad operačním systémem a konfigurací instance serveru PostgreSQL. Pomocí virtuálního počítače se rozhodnete, kdy aktualizovat nebo upgradovat operační systém a software databáze a jaké opravy se mají použít. Také se rozhodnete, kdy nainstalovat další software, jako je třeba antivirová aplikace. K dispozici jsou některé automatizované funkce, které výrazně zjednodušují opravy, zálohování a vysokou dostupnost. Můžete řídit velikost virtuálního počítače, počet disků a jejich konfigurace úložiště. Další informace najdete v tématu [velikosti virtuálních počítačů a cloudových služeb pro Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+- S PostgreSQL na virtuálních počítačích Azure máte plnou kontrolu nad operačním systémem a konfigurací instance serveru PostgreSQL. Pomocí virtuálního počítače se rozhodnete, kdy aktualizovat nebo upgradovat operační systém a software databáze a jaké opravy se mají použít. Také se rozhodnete, kdy nainstalovat další software, jako je třeba antivirová aplikace. K dispozici jsou některé automatizované funkce, které výrazně zjednodušují opravy, zálohování a vysokou dostupnost. Můžete řídit velikost virtuálního počítače, počet disků a jejich konfigurace úložiště. Další informace najdete v tématu [velikosti virtuálních počítačů a cloudových služeb pro Azure](../virtual-machines/sizes.md).
 
 ## <a name="time-to-move-to-azure-postgresql-service-paas"></a>Čas přechodu na službu Azure PostgreSQL (PaaS)
 
@@ -98,4 +98,3 @@ Kromě toho konfigurace vysoké dostupnosti v jiném datovém centru vyžaduje m
 
 - Informace najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/postgresql/server/)služby Azure Database for PostgreSQL.
 - Začněte vytvářet první server.
-

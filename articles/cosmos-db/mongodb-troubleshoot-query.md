@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 615bd423296fb9ed2ee28cab9e362873a30ee7b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283836"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488380"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>Řešení potíží s dotazy při použití rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -116,7 +116,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 | `timeInclusiveMS` | Latence dotazů back-endu |
 | `pathsIndexed` | Zobrazí indexy používané dotazem. | 
 | `pathsNotIndexed` | Zobrazí indexy, které mohl dotaz použít, pokud je k dispozici. | 
-| `shardInformation` | Souhrn výkonu dotazů pro určitý [fyzický oddíl](partition-data.md#physical-partitions) | 
+| `shardInformation` | Souhrn výkonu dotazů pro určitý [fyzický oddíl](./partitioning-overview.md#physical-partitions) | 
 | `retrievedDocumentCount` | Počet dokumentů načtených dotazovacím modulem | 
 | `outputDocumentCount` | Počet dokumentů vrácených ve výsledcích dotazu | 
 | `estimatedDelayFromRateLimitingInMilliseconds` | Odhad další latence dotazů z důvodu omezení četnosti | 
@@ -256,7 +256,7 @@ Indexování osvědčených postupů v rozhraní Azure Cosmos DB API pro MongoDB
 
 [Indexy zástupných znaků](mongodb-indexing.md#wildcard-indexes) můžou zjednodušit indexování. Na rozdíl od MongoDB můžou indexy zástupných znaků podporovat více polí v predikátech dotazů. Pokud použijete jeden index zástupného znaku namísto vytvoření samostatného indexu pro každou vlastnost, nebudete mít rozdíl ve výkonu dotazů. Přidání indexu se zástupnými znaky pro všechny vlastnosti představuje nejjednodušší způsob, jak optimalizovat všechny vaše dotazy.
 
-Nové indexy můžete kdykoli přidat, aniž by to mělo vliv na zápis nebo čtení. [Průběh transformace indexu můžete sledovat](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Nové indexy můžete kdykoli přidat, aniž by to mělo vliv na zápis nebo čtení. [Průběh transformace indexu můžete sledovat](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-aggregation-operations-use-the-index"></a>Informace o tom, které agregační operace používají index
 

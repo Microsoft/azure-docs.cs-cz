@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: aaff5adf358c31d99df7a51305c4e3554c3259c1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166246"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487428"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Migrace relačních dat 1:1 do Azure Cosmos DB účtu rozhraní SQL API
 
@@ -336,5 +336,5 @@ V obou případech by měl být na konci správně uložen vložený OrderDetail
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="Snímek obrazovky zobrazující tabulky Orders a OrderDetails v databázi SQL":::
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [modelování dat v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/modeling-data)
-* Naučte [se modelovat data a rozdělit je na Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example)
+* Další informace o [modelování dat v Azure Cosmos DB](./modeling-data.md)
+* Naučte [se modelovat data a rozdělit je na Azure Cosmos DB](./how-to-model-partition-example.md)

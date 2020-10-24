@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b99d5ea33693431fb3811af50385891684a366e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df256749a813fe81857aa250081411afd52ae35c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546453"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ThousandEyes
 
@@ -129,11 +129,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. V nabídce v horní části klikněte na **Nastavení**.
 
-    ![Nastavení](./media/thousandeyes-tutorial/ic790066.png "Nastavení")
+    ![Snímek obrazovky se zobrazí web ThousandEyes s vybraným nastavením.](./media/thousandeyes-tutorial/ic790066.png "Nastavení")
 
 3. Kliknout na **účet**
 
-    ![Účet](./media/thousandeyes-tutorial/ic790067.png "Účet")
+    ![Snímek obrazovky zobrazuje účet vybraný v nabídce nastavení.](./media/thousandeyes-tutorial/ic790067.png "Účet")
 
 4. Klikněte na kartu **ověřování & zabezpečení** .
 
@@ -165,11 +165,11 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v ThousandEy
 
 2. Klikněte na **Nastavení**.
 
-    ![Nastavení](./media/thousandeyes-tutorial/IC790066.png "Nastavení")
+    ![Snímek obrazovky se zobrazí web ThousandEyes s vybraným nastavením.](./media/thousandeyes-tutorial/ic790066.png "Nastavení")
 
 3. Klikněte na **účet**.
 
-    ![Účet](./media/thousandeyes-tutorial/IC790067.png "Účet")
+    ![Snímek obrazovky zobrazuje účet vybraný v nabídce nastavení.](./media/thousandeyes-tutorial/ic790067.png "Účet")
 
 4. Klikněte na kartu **účty & uživatelé** .
 
@@ -198,7 +198,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici ThousandEyes, měli byste se automaticky přihlásit k ThousandEyes, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

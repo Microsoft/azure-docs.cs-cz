@@ -10,18 +10,18 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20ebfc571d72b79b61a61fb633feb63c4cc58fdd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714755"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488805"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Získání tokenu z Azure AD pro autorizaci žádostí z klientské aplikace
 
 Klíčovou výhodou použití Azure Active Directory (Azure AD) se službou Azure Blob Storage nebo Queue Storage je, že vaše přihlašovací údaje už nemusíte ukládat do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak pomocí přístupového tokenu autorizuje žádosti do úložiště objektů BLOB v Azure nebo do úložiště fronty.
 
-Tento článek ukazuje, jak nakonfigurovat nativní aplikaci nebo webovou aplikaci pro ověřování pomocí Microsoft Identity Platform 2,0 s použitím ukázkové aplikace, která je k dispozici ke stažení. Ukázková funkce aplikace .NET, ale jiné jazyky používají podobný přístup. Další informace o Microsoft Identity Platform 2,0 najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](../../active-directory/develop/v2-overview.md).
+Tento článek ukazuje, jak nakonfigurovat nativní aplikaci nebo webovou aplikaci pro ověřování pomocí platformy Microsoft identity pomocí ukázkové aplikace, která je k dispozici ke stažení. Ukázková funkce aplikace .NET, ale jiné jazyky používají podobný přístup. Další informace o platformě Microsoft identity najdete v tématu [Přehled platformy Microsoft Identity](../../active-directory/develop/v2-overview.md).
 
 Přehled toku udělení kódu OAuth 2,0 najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
@@ -247,7 +247,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Souhlas je proces uživatele, který uděluje oprávnění k přístupu k chráněným prostředkům jménem uživatele. Microsoft Identity Platform 2,0 podporuje přírůstkový souhlas, což znamená, že instanční objekt může nejdřív požádat o minimální sadu oprávnění a přidat oprávnění v průběhu času podle potřeby. Když kód požádá o přístupový token, určete rozsah oprávnění, která vaše aplikace potřebuje. Další informace o přírůstkovém souhlasu najdete v tématu [přírůstkové a dynamické vyjádření souhlasu](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
+Souhlas je proces uživatele, který uděluje oprávnění k přístupu k chráněným prostředkům jménem uživatele. Platforma Microsoft Identity Platform podporuje přírůstkový souhlas, což znamená, že instanční objekt může nejdřív vyžádat minimální sadu oprávnění a v průběhu času přidat oprávnění podle potřeby. Když kód požádá o přístupový token, určete rozsah oprávnění, která vaše aplikace potřebuje. Další informace o přírůstkovém souhlasu najdete v tématu [přírůstkové a dynamické vyjádření souhlasu](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
 ## <a name="view-and-run-the-completed-sample"></a>Zobrazení a spuštění dokončené ukázky
 
@@ -290,6 +290,6 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/)
+- [Microsoft Identity Platform](/azure/active-directory/develop/)
 - [Správa přístupových práv k datům úložiště pomocí Azure RBAC](storage-auth-aad-rbac.md)
 - [Ověřování přístupu k objektům blob a frontám pomocí Azure Active Directory a spravovaných identit pro prostředky Azure](storage-auth-aad-msi.md)

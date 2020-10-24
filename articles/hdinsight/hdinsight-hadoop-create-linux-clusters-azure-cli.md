@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: 04def98108bf996a8f8cabe0ad36c022011aa533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf292ccd185ad2c6a85cb6d2f097bb8a7fa9e173
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080682"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489655"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure
 
@@ -23,11 +23,11 @@ Kroky v tomto dokumentu vás provedou vytvořením clusteru HDInsight 3,6 pomoc�
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) pro kroky.
+Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli) pro kroky.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +42,7 @@ Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace 
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Nastavte proměnné prostředí. Použití proměnných v tomto článku je založené na bash. Pro ostatní prostředí se budou potřebovat mírné variace. Úplný seznam možných parametrů pro vytvoření clusteru najdete v tématu [AZ-HDInsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) .
+2. Nastavte proměnné prostředí. Použití proměnných v tomto článku je založené na bash. Pro ostatní prostředí se budou potřebovat mírné variace. Úplný seznam možných parametrů pro vytvoření clusteru najdete v tématu [AZ-HDInsight-Create](/cli/azure/hdinsight#az-hdinsight-create) .
 
     |Parametr | Popis |
     |---|---|
@@ -68,7 +68,7 @@ Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace 
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Vytvořte skupinu prostředků](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) zadáním následujícího příkazu:
+3. [Vytvořte skupinu prostředků](/cli/azure/group#az-group-create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     az group create \
@@ -78,7 +78,7 @@ Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace 
 
     Chcete-li zobrazit seznam platných umístění, použijte `az account list-locations` příkaz a pak použijte jedno z umístění z `name` hodnoty.
 
-4. [Vytvořte účet Azure Storage](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) zadáním následujícího příkazu:
+4. [Vytvořte účet Azure Storage](/cli/azure/storage/account#az-storage-account-create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace 
         --sku Standard_LRS
     ```
 
-5. [Extrahujte primární klíč z účtu Azure Storage](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) a uložte ho do proměnné zadáním následujícího příkazu:
+5. [Extrahujte primární klíč z účtu Azure Storage](/cli/azure/storage/account/keys#az-storage-account-keys-list) a uložte ho do proměnné zadáním následujícího příkazu:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -100,7 +100,7 @@ Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace 
         --query [0].value -o tsv)
     ```
 
-6. [Vytvořte kontejner Azure Storage](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) zadáním následujícího příkazu:
+6. [Vytvořte kontejner Azure Storage](/cli/azure/storage/container#az-storage-container-create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     az storage container create \
@@ -109,7 +109,7 @@ Azure CLI Pokud jste nenainstalovali Azure CLI, přečtěte si téma [instalace 
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [Vytvořte cluster HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) zadáním následujícího příkazu:
+7. [Vytvořte cluster HDInsight](/cli/azure/hdinsight#az-hdinsight-create) zadáním následujícího příkazu:
 
     ```azurecli-interactive
     az hdinsight create \

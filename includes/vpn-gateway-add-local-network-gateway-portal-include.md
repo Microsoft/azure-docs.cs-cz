@@ -5,38 +5,30 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc9e18427bb3b8094911d2ac7f285d271ecd1a21
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5358bbbca716f5152a943c90cb7a5f735ae12047
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "91025381"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479550"
 ---
-1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek**.
+1. Z [Azure Portal](https://portal.azure.com)v části **Hledat prostředky, služby a dokumenty (G +/)** zadejte **Brána místní sítě**. Ve výsledcích hledání vyhledejte **bránu místní sítě** v **Marketplace** a vyberte ji. Tím otevřete stránku **vytvořit bránu místní sítě** .
+1. Na stránce **Vytvořit bránu místní sítě** zadejte hodnoty brány místní sítě.
 
-   ![Prostředek](./media/vpn-gateway-add-local-network-gateway-portal-include/azure-portal-create-resource.png)
-2. Do pole **Hledat na Marketplace** zadejte **Brána místní sítě**a potom stiskněte klávesu **ENTER** pro hledání. Zobrazí se seznam výsledků. Klikněte na **Brána místní sítě** a pak kliknutím na **Vytvořit** otevřete stránku **Vytvořit bránu místní sítě**.
+   :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-ip.png" alt-text="Vytvoření brány místní sítě s IP adresou":::
 
-   :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-network-gateway-ip.png" alt-text="Vytvoření IP adresy brány místní sítě":::
-
-3. Na stránce **Vytvořit bránu místní sítě** zadejte hodnoty brány místní sítě.
-
-   - **Název**: Zadejte název objektu brány místní sítě.
-   - **Koncový bod:** Vyberte typ koncového bodu pro místní zařízení VPN – **IP adresa** nebo plně **kvalifikovaný název domény (plně kvalifikovaný název domény)**.
-      - **IP adresa**: Pokud máte pro vaše zařízení VPN STATICKOU veřejnou IP adresu, vyberte možnost IP adresa a zadejte IP adresu, jak je znázorněno v příkladu. Toto je veřejná IP adresa zařízení VPN, ke kterému se má připojit brána Azure VPN. Pokud momentálně nemáte IP adresu, můžete použít hodnoty uvedené v příkladu, ale budete se muset vrátit zpět a nahradit zástupnou IP adresu veřejnou IP adresou svého zařízení VPN. V opačném případe se Azure nebude moci připojit.
-      - **Plně kvalifikovaný název domény**: Pokud máte dynamickou veřejnou IP adresu, která se může po určité době změnit, obvykle určená vaším poskytovatelem internetových služeb, můžete použít konstantní název DNS s dynamickou službou DNS, který odkazuje na aktuální veřejnou IP adresu vašeho zařízení VPN. Vaše brána Azure VPN vám vyřeší plně kvalifikovaný název domény a určí veřejnou IP adresu, ke které se připojí. Níže uvedený snímek obrazovky ukazuje příklad použití plně kvalifikovaného názvu domény místo IP adresy.
-   - **Adresní prostor** odkazuje na rozsahy adres sítě, kterou tato místní síť představuje. Můžete přidat více různých rozsahů adres. Zkontrolujte, že se zadané rozsahy nepřekrývají s rozsahy jiných sítí, ke kterým se budete chtít připojit. Azure bude směrovat zadaný rozsah adres na místní IP adresu zařízení VPN. *Pokud se chcete připojit ke své místní lokalitě, použijte tady vlastní hodnoty, a ne hodnoty uvedené v příkladu*.
-   - **Konfigurovat nastavení protokolu BGP:** Používejte jenom při konfiguraci BGP. V jiných případech tuto možnost nevybírejte.
-   - **Předplatné**: Zkontrolujte, že se zobrazuje správné předplatné.
-   - **Skupina prostředků**: Vyberte skupinu prostředků, kterou chcete použít. Můžete vytvořit novou skupinu prostředků, nebo vybrat skupinu prostředků, kterou jste už vytvořili.
-   - **Umístění:** Umístění je stejné jako **oblast** v jiném nastavení. Vyberte umístění, ve kterém bude tento objekt vytvořen. Můžete vybrat stejné umístění, ve kterém se nachází vaše virtuální síť, ale není to povinné.
-
-   Jedná se o stejnou stránku, ale má zvýrazněný plně kvalifikovaný název domény:
-
-   :::image type="content" source="./media/vpn-gateway-add-local-network-gateway-portal-include/create-local-gateway-fqdn.png" alt-text="Vytvoření IP adresy brány místní sítě":::
+   * **Název**: Zadejte název objektu brány místní sítě.
+   * **Koncový bod:** Vyberte typ koncového bodu pro místní zařízení VPN – **IP adresa** nebo plně **kvalifikovaný název domény (plně kvalifikovaný název domény)**.
+      * **IP adresa**: Pokud máte pro vaše zařízení VPN STATICKOU veřejnou IP adresu, vyberte možnost IP adresa a zadejte IP adresu, jak je znázorněno v příkladu. Toto je veřejná IP adresa zařízení VPN, ke kterému se má připojit brána Azure VPN. Pokud momentálně nemáte IP adresu, můžete použít hodnoty uvedené v příkladu, ale budete se muset vrátit zpět a nahradit zástupnou IP adresu veřejnou IP adresou svého zařízení VPN. V opačném případe se Azure nebude moci připojit.
+      * **Plně kvalifikovaný název domény**: Pokud máte dynamickou veřejnou IP adresu, která se může po určité době změnit, obvykle určená vaším poskytovatelem internetových služeb, můžete použít konstantní název DNS s dynamickou službou DNS, který odkazuje na aktuální veřejnou IP adresu vašeho zařízení VPN. Vaše brána Azure VPN vám vyřeší plně kvalifikovaný název domény a určí veřejnou IP adresu, ke které se připojí. 
+   * **Adresní prostor** odkazuje na rozsahy adres sítě, kterou tato místní síť představuje. Můžete přidat více různých rozsahů adres. Zkontrolujte, že se zadané rozsahy nepřekrývají s rozsahy jiných sítí, ke kterým se budete chtít připojit. Azure bude směrovat zadaný rozsah adres na místní IP adresu zařízení VPN. *Pokud se chcete připojit ke své místní lokalitě, použijte tady vlastní hodnoty, a ne hodnoty uvedené v příkladu*.
+   * **Konfigurovat nastavení protokolu BGP:** Používejte jenom při konfiguraci BGP. V jiných případech tuto možnost nevybírejte.
+   * **Předplatné**: Zkontrolujte, že se zobrazuje správné předplatné.
+   * **Skupina prostředků**: Vyberte skupinu prostředků, kterou chcete použít. Můžete vytvořit novou skupinu prostředků, nebo vybrat skupinu prostředků, kterou jste už vytvořili.
+   * **Umístění:** Umístění je stejné jako **oblast** v jiném nastavení. Vyberte umístění, ve kterém bude tento objekt vytvořen. Můžete vybrat stejné umístění, ve kterém se nachází vaše virtuální síť, ale není to povinné.
 
    > [!NOTE]
    >
@@ -44,4 +36,4 @@ ms.locfileid: "91025381"
    > * Azure VPN Gateway udržuje mezipaměť DNS v intervalu 5 minut. Brána se pokusí přeložit plně kvalifikované názvy domény jenom pro odpojené tunely. Resetování brány bude také spouštět rozlišení FQDN.
    >
 
-4. Po dokončení zadávání hodnot výběrem tlačítka **vytvořit** v dolní části stránky vytvořte bránu místní sítě.
+1. Po dokončení zadávání hodnot výběrem tlačítka **vytvořit** v dolní části stránky vytvořte bránu místní sítě.

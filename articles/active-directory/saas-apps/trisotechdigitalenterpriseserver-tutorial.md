@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e8bf3d2407e2c3d0db4bb5d8591ba598aba68a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfad185718dcc4a1c06ba3a4ed22961615ccd37e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546436"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Kurz: Azure Active Directory integrace s Trisotech Digital Enterprise Server
 
@@ -120,15 +120,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí serveru 
 
 2. Klikněte na **ikonu nabídky** a pak vyberte **Správa**.
 
-    ![Konfigurace jednoho Sign-On](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
+    ![Snímek obrazovky ukazuje ikonu správy na serveru Microsoft Digital Enterprise Server.](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
 3. Vyberte **poskytovatele uživatele**.
 
-    ![Konfigurace jednoho Sign-On](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
+    ![Snímek obrazovky se zobrazí v nabídce vybraný poskytovatel uživatelů.](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
 4. V části **Konfigurace poskytovatele uživatelských služeb** proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
+    ![Snímek obrazovky ukazuje konfigurace poskytovatele uživatelských služeb, kde můžete zadat hodnoty, které jsou popsány.](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
     a. Z rozevíracího seznamu v **metodě ověřování**vyberte **zabezpečený kód kontrolního výrazu (SAML 2)** .
 
@@ -205,7 +205,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Server Trisotech Digital Enterprise na přístupovém panelu byste se měli automaticky přihlášeni k serveru Trisotech Digital Enterprise, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

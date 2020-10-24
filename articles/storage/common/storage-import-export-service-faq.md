@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 08c105bd8ae9b5e0667ef5279e6c9484c631bd48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2e50502c8c3e37c5d48359079e2e72c13feea4a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399036"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487870"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba import/export v Azure: nejčastější dotazy
 
@@ -132,7 +132,7 @@ Ne. Všechny jednotky jsou šifrovány pomocí nástroje BitLocker.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Jak mohu získat přístup k datům, která jsou importována touto službou?
 
-Pro přístup k datům v rámci vašeho účtu úložiště Azure použijte Azure Portal nebo [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) .  
+Pro přístup k datům v rámci vašeho účtu úložiště Azure použijte Azure Portal nebo [Průzkumník služby Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer) .  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Jak budou data po dokončení importu vypadat jako v účtu úložiště? Je moje hierarchie adresáře zachovaná?
 
@@ -144,7 +144,7 @@ Závislosti. Při přípravě jednotky můžete určit, jestli se mají cílové
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Je nástroj WAImportExport kompatibilní s 32 operačními systémy?
 
-Ne. Nástroj WAImportExport je kompatibilní jenom s 64 operačními systémy Windows. Úplný seznam podporovaného operačního systému najdete v části [podporované operační systémy](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements).
+Ne. Nástroj WAImportExport je kompatibilní jenom s 64 operačními systémy Windows. Úplný seznam podporovaného operačního systému najdete v části [podporované operační systémy](/azure/storage/common/storage-import-export-requirements).
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaký je maximální velikost objektů blob bloku a velikosti objektu blob stránky podporované službou Azure import/export?
 

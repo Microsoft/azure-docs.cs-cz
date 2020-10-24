@@ -8,21 +8,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: ffe9167bb155826eea3a1e7994469d378e5925fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 662b85bb2b928cbbcfb1b88adecb2c125c9ae5df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260487"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486612"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Připojení k rozhraní API Cassandra služby Azure Cosmos DB ze Sparku
 
 Tento článek je jedním z řady článků o Azure Cosmos DB rozhraní API Cassandra integraci z Sparku. Články zahrnují připojení, operace jazyka DDL (Data Definition Language), operace DML (Basic data prohledává jazyk) a rozšířené Azure Cosmos DB rozhraní API Cassandra integraci z Sparku. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [Zřídí účet Azure Cosmos DB rozhraní API Cassandra.](create-cassandra-dotnet.md#create-a-database-account)
 
-* Zajištění výběru prostředí Spark [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight – Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Ostatní].
+* Zajištění výběru prostředí Spark [[Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight – Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) | Ostatní].
 
 ## <a name="dependencies-for-connectivity"></a>Závislosti pro připojení
 * **Konektor Spark pro Cassandra:** Konektor Spark slouží k připojení k Azure Cosmos DB rozhraní API Cassandra.  Identifikujte a používejte verzi konektoru, která se nachází v [Maven Central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , která je kompatibilní s verzemi Spark a Scala vašeho prostředí Spark.
@@ -122,5 +122,5 @@ Následující články ukazují integraci Sparku s Azure Cosmos DB rozhraní AP
 * [Operace čtení](cassandra-spark-read-ops.md)
 * [Operace Upsert](cassandra-spark-upsert-ops.md)
 * [Operace Delete](cassandra-spark-delete-ops.md)
-* [Agregační operace](cassandra-spark-aggregation-ops.md)
+* [Operace agregace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)

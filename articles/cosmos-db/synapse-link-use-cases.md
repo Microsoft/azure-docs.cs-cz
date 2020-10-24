@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568042"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480050"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link pro Azure Cosmos DB: Případy použití pro analýzu téměř v reálném čase
 
@@ -118,7 +118,7 @@ Podíváme se na příklad společnosti elektronického obchodování CompanyXYZ
 
   * Ingestování s vysokou propustností datových kanálů Batch & streamování v [reálném čase](index-policy.md) v transakčním úložišti.
 
-  * Azure Cosmos DB transakční úložiště poskytuje tři další možnosti než dvě extrémní hodnoty silné a konečné úrovně konzistence, aby dosáhly [kompromisů pro dostupnost a výkon](consistency-levels-tradeoffs.md) , které jsou nejblíže potřebám podniku.
+  * Azure Cosmos DB transakční úložiště poskytuje tři další možnosti než dvě extrémní hodnoty silné a konečné úrovně konzistence, aby dosáhly [kompromisů pro dostupnost a výkon](./consistency-levels.md) , které jsou nejblíže potřebám podniku.
 
 * Partneři dodavatelských dodavatelských společností mají vysoce výkyvy ve vzorech přenosů v rozsahu od stovek po miliony požadavků, a proto musí platforma pro správu inventáře zabývat se neočekávaným burstiness v provozu.  Výhody použití Azure Cosmos DB:
 

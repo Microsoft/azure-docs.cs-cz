@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b322cc0c1a50df7f8946fa1047bdc58ea92d77
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207495"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488533"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Přenos dat rozsáhlých datových sad s malou nebo žádnou šířkou pásma sítě
  
@@ -51,8 +51,8 @@ Následující tabulka shrnuje rozdíly v klíčových funkcích.
 |    **Datový typ**                    |    Objekty blob Azure                  |    Objekty blob Azure<br>Soubory Azure                    |    Objekty blob Azure<br>Soubory Azure            |    Objekty blob Azure<br>Soubory Azure          |
 |    **Formulářový faktor**                  |    5 SSD na objednávku             |    1 X 50-kg zařízení velikosti stolního počítače na jednu objednávku    |    1 X ~ 500-kg velké zařízení na jednu objednávku    |    Až 10 HDD/SSD na objednávku        |
 |    **Čas prvotního nastavení**           |    Nízká <br>(15 minut)            |    Nízká až střední <br> (<30 minut)               |    Pokročilé<br>(1-2 hodin)               |    Střední až obtížné<br>variabilní |
-|    **Odesílání dat do Azure**           |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
-|    **Export dat z Azure**       |    No                           |    No                                            |    No                                    |    Yes                                 |
+|    **Odesílání dat do Azure**           |    Ano                          |    Ano                                           |    Ano                                   |    Ano                                 |
+|    **Export dat z Azure**       |    Ne                           |    Ne                                            |    Ne                                    |    Ano                                 |
 |    **Šifrování**                   |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
 |    **Hardware**                     |     Dodán Microsoft          |    Dodán Microsoft                            |    Dodán Microsoft                    |    Dodán zákazník                   |
 |    **Síťové rozhraní**            |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III                    |
@@ -66,6 +66,6 @@ Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
 - Informace o tom, jak
 
-    - [Přenos dat pomocí data box disk](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
-    - [Přenos dat pomocí data box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+    - [Přenos dat pomocí data box disk](/azure/databox/data-box-disk-quickstart-portal).
+    - [Přenos dat pomocí data box](/azure/databox/data-box-quickstart-portal).
     - [Přeneste data pomocí importu/exportu](/azure/storage/common/storage-import-export-data-to-blobs).

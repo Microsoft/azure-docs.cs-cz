@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40a909b111d5e667f7554cf727ab26bf9bc39650
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997213"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485847"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
 
@@ -53,7 +53,7 @@ Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení
 > [!NOTE]
 > Estimator kanálu změn není nutné nasazovat jako součást procesoru změny kanálu ani být součástí stejného projektu. Může být nezávislý a musí běžet v zcela jiné instanci. Stačí použít stejný název a konfiguraci zapůjčení.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
@@ -64,4 +64,4 @@ Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení
 Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
 * [Přehled procesoru Change feed](change-feed-processor.md)
-* [Počáteční čas procesoru kanálu změn](how-to-configure-change-feed-start-time.md)
+* [Počáteční čas procesoru kanálu změn](./change-feed-processor.md#starting-time)

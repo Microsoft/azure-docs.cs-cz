@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b403a960016be3795857ddd5645eb73e53e83bd6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714384"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488601"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Průzkumník služby Azure Storage Průvodce zabezpečením
 
@@ -44,13 +44,13 @@ Tato část popisuje dvě technologie založené na službě Azure AD, které se
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Řízení přístupu na základě role Azure (Azure RBAC)
 
-[Řízení přístupu na základě role Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) poskytuje podrobné řízení přístupu k prostředkům Azure. Role a oprávnění Azure je možné spravovat z Azure Portal.
+[Řízení přístupu na základě role Azure (Azure RBAC)](/azure/role-based-access-control/overview) poskytuje podrobné řízení přístupu k prostředkům Azure. Role a oprávnění Azure je možné spravovat z Azure Portal.
 
 Průzkumník služby Storage podporuje přístup Azure RBAC k účtům úložiště, objektům blob a frontám. Pokud potřebujete přístup ke sdíleným složkám nebo tabulkám, budete muset přiřadit role Azure, které udělí oprávnění k vypsání klíčů účtu úložiště.
 
 #### <a name="access-control-lists-acls"></a>Seznamy ACL
 
-[Seznamy řízení přístupu (ACL)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) umožňují řídit přístup na úrovni souborů a složek v adls Gen2 kontejnerech objektů BLOB. Seznamy ACL můžete spravovat pomocí Průzkumník služby Storage.
+[Seznamy řízení přístupu (ACL)](/azure/storage/blobs/data-lake-storage-access-control) umožňují řídit přístup na úrovni souborů a složek v adls Gen2 kontejnerech objektů BLOB. Seznamy ACL můžete spravovat pomocí Průzkumník služby Storage.
 
 ### <a name="shared-access-signatures-sas"></a>Sdílené přístupové podpisy (SAS)
 
@@ -102,4 +102,4 @@ Při povolování veřejného přístupu pro kontejner objektů BLOB doporučuje
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Doporučení zabezpečení](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+- [Doporučení zabezpečení](/azure/storage/blobs/security-recommendations)

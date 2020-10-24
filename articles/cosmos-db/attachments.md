@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 56e8212d60494d469e225c25edbbd331c601ea6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 847ae3688fb713ddbd2dbf196ad1b89a6bb472a1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804156"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486629"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB přílohy
 
@@ -160,7 +160,7 @@ namespace attachments
 
 ## <a name="next-steps"></a>Další kroky
 
-- Začínáme se službou [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet)
-- Získání odkazů na používání příloh prostřednictvím [sady Azure Cosmos DB .NET SDK v2](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.attachment?view=azure-dotnet&preserve-view=true)
-- Získat odkazy na používání příloh prostřednictvím [Azure Cosmos DB Java SDK v2](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.attachment?view=azure-java-stable&preserve-view=true)
-- Získat odkazy na používání příloh prostřednictvím [Azure Cosmos DB REST API](https://docs.microsoft.com/rest/api/cosmos-db/attachments)
+- Začínáme se službou [Azure Blob Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+- Získání odkazů na používání příloh prostřednictvím [sady Azure Cosmos DB .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet)
+- Získat odkazy na používání příloh prostřednictvím [Azure Cosmos DB Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment?preserve-view=true&view=azure-java-stable)
+- Získat odkazy na používání příloh prostřednictvím [Azure Cosmos DB REST API](/rest/api/cosmos-db/attachments)

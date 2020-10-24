@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a4af81c6a216119ae2e1b0221c06ddc349452f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115471"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478129"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Prostředí vyjádření souhlasu s aplikací Azure AD
 
@@ -41,7 +41,7 @@ Následující diagram a tabulka obsahují informace o stavebních blocích výz
 
 ![Stavební bloky výzvy k vyjádření souhlasu](./media/application-consent-experience/consent_prompt.png)
 
-| # | Součást | Účel |
+| # | Komponenta | Účel |
 | ----- | ----- | ----- |
 | 1 | Identifikátor uživatele | Tento identifikátor představuje uživatele, který klientská aplikace žádá o přístup k chráněným prostředkům jménem. |
 | 2 | Nadpis | Název se změní na základě toho, jestli uživatelé procházejí v toku souhlasu uživatele nebo správce. V toku souhlasu uživatele bude mít název "požadovaná oprávnění", zatímco v toku souhlasu správce bude mít název další řádek "přijmout pro vaši organizaci". |
@@ -65,13 +65,13 @@ Tady jsou informace o tom, že se uživatel může setkat ve scénářích spole
     
     2. Uživatelům se zobrazí výzva k zadání tradičního souhlasu.
 
-        ![Výzva k vyjádření souhlasu pro scénář 1B](./media/application-consent-experience/consent_prompt_1b.png)
+        ![Snímek obrazovky zobrazující výzvu k tradičnímu souhlasu](./media/application-consent-experience/consent_prompt_1b.png)
 
 2. Jednotlivci, kteří přistupují k aplikaci, která vyžaduje aspoň jedno oprávnění, které je mimo jejich rozsah autority.
     1. Správci uvidí stejnou výzvu jako 1. výše, jak je uvedeno výše.
     2. Uživatelům bude zablokováno udělení souhlasu s aplikací a budou jim přizvat, aby požádali správce o přístup k aplikaci. 
                 
-        ![Výzva k vyjádření souhlasu pro scénář 1B](./media/application-consent-experience/consent_prompt_2b.png)
+        ![Snímek obrazovky s výzvou k vyjádření souhlasu uživatele informuje, že má správce, aby požádal o přístup k aplikaci.](./media/application-consent-experience/consent_prompt_2b.png)
 
 3. Jednotlivci, kteří přecházejí nebo jsou přesměrováni na tok souhlasu správce.
     1. Uživatelům s oprávněními správce se zobrazí výzva k vyjádření souhlasu správce. Název a popis oprávnění se u této výzvy změnily. změny upozorňující na skutečnost, že přijetí této výzvy udělí aplikaci přístup k požadovaným datům jménem celého tenanta.

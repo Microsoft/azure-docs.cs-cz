@@ -8,24 +8,24 @@ ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 66a3b4919903f739ed5afef0a02b501f00ff248f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1cc9d8bf253a7282a5893af75b5e2ed71b3ab4b6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88545433"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490148"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>Použití jazyků Java a JDBC s Azure Database for PostgreSQL
 
-Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/).
+Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure Database for PostgreSQL](./index.yml).
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
-- Podporovaná [sada Java Development Kit](https://aka.ms/azure-jdks), verze 8 (obsažená v Azure Cloud Shell).
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
+- Podporovaná [sada Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), verze 8 (obsažená v Azure Cloud Shell).
 - Nástroj pro sestavení [Apache Maven](https://maven.apache.org/)
 
 ## <a name="prepare-the-working-environment"></a>Příprava pracovního prostředí
@@ -67,7 +67,7 @@ az group create \
 První věc, kterou vytvoříme, je spravovaný PostgreSQL Server.
 
 > [!NOTE]
-> Podrobnější informace o vytváření serverů PostgreSQL najdete v tématu [vytvoření serveru Azure Database for PostgreSQL pomocí Azure Portal](/azure/postgresql/quickstart-create-server-database-portal).
+> Podrobnější informace o vytváření serverů PostgreSQL najdete v tématu [vytvoření serveru Azure Database for PostgreSQL pomocí Azure Portal](./quickstart-create-server-database-portal.md).
 
 V [Azure Cloud Shell](https://shell.azure.com/)spusťte následující příkaz:
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: faf13f580f6600e761cdaa9927fee4efa2b5995f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f157cc7ac2331f948a562dc12e99acc60e979ada
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500176"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488159"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace na vývojové nástroje založené na Azure Resource Manager pro clustery HDInsight
 
@@ -232,7 +232,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 * [Odeslání úloh Apache Sqoop](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Migrace na novou sadu .NET SDK pro HDInsight
-[Sada SDK HDInsight .NET](https://msdn.microsoft.com/library/azure/mt416619.aspx) založená na službě Azure Service Management (ASM) je nyní zastaralá. Doporučujeme používat [sadu HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)založenou na správě prostředků Azure správce prostředků. Následující balíčky HDInsight založené na ASM se už nepoužívají.
+[Sada SDK HDInsight .NET](https://msdn.microsoft.com/library/azure/mt416619.aspx) založená na službě Azure Service Management (ASM) je nyní zastaralá. Doporučujeme používat [sadu HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight)založenou na správě prostředků Azure správce prostředků. Následující balíčky HDInsight založené na ASM se už nepoužívají.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
@@ -241,7 +241,7 @@ V této části najdete odkazy na Další informace o tom, jak provádět určit
 
 | Jak... používání sady HDInsight SDK založené na Správce prostředků | Odkazy |
 | --- | --- |
-| Sada Azure HDInsight SDK pro .NET|Viz [Azure HDInsight SDK pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
+| Sada Azure HDInsight SDK pro .NET|Viz [Azure HDInsight SDK pro .NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
 | Interaktivní ověřování aplikací pomocí Azure Active Directory se sadou .NET SDK |Viz [spustit Apache Hive dotazy pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Fragment kódu v tomto článku používá interaktivní přístup pro ověřování. |
 | Ověřování aplikací, které nejsou interaktivní pomocí Azure Active Directory se sadou .NET SDK |Viz [Vytvoření neinteraktivních aplikací pro HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | Odeslání úlohy Apache Hive pomocí sady .NET SDK |Viz [odeslání Apache Hive úloh](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
