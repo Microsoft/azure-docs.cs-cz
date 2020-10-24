@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 10713b264429b5588826421231e45194ebed33f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9a29a34b25b6834c2c343bd568f3dd3548ceff3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569182"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474933"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
 
@@ -67,7 +67,7 @@ Toto nastavení zabrání jakýmkoli změnám prostředků Cosmos z libovolného
 
 - Úprava uložených procedur, triggerů nebo uživatelsky definovaných funkcí.
 
-Pokud vaše aplikace (nebo uživatelé prostřednictvím Azure Portal) provádějí některé z těchto akcí, bude nutné provést migraci, aby je bylo možné provádět prostřednictvím [šablon ARM](manage-sql-with-resource-manager.md), [PowerShellu](manage-with-powershell.md), rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), REST nebo [knihovny pro správu Azure](https://github.com/Azure-Samples/cosmos-management-net). Všimněte si, že Správa Azure je dostupná v [několika jazycích](https://docs.microsoft.com/azure/?product=featured#languages-and-tools).
+Pokud vaše aplikace (nebo uživatelé prostřednictvím Azure Portal) provádějí některé z těchto akcí, bude nutné provést migraci, aby je bylo možné provádět prostřednictvím [šablon ARM](./manage-with-templates.md), [PowerShellu](manage-with-powershell.md), rozhraní příkazového [řádku Azure CLI](manage-with-cli.md), REST nebo [knihovny pro správu Azure](https://github.com/Azure-Samples/cosmos-management-net). Všimněte si, že Správa Azure je dostupná v [několika jazycích](/azure/?product=featured#languages-and-tools).
 
 ### <a name="set-via-arm-template"></a>Nastavit přes šablonu ARM
 

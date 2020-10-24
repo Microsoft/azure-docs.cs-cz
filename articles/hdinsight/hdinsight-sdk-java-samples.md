@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
-ms.openlocfilehash: 5876626ed4ba27c0f39b0c02af926c61261fca71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2698e88517642460d756ca7c57031a8f1912358f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327425"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490930"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: ukázky Java
 
@@ -30,7 +30,7 @@ Tento článek obsahuje:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [Azure HDInsight SDK pro Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
@@ -45,4 +45,4 @@ Tyto ukázky pro Java můžete získat klonováním úložiště GitHubu [HDInsi
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro jazyk Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview).
+Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro jazyk Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight).

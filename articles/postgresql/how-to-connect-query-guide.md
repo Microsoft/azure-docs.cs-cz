@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 924dbadc07f57e5928ecc63a24bf5e57d6213670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c6d6a51887d2912da8d6b4e357a1036596d63d5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935862"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490012"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Připojení a přehled dotazů pro Azure Database for PostgreSQL – jeden server
 
@@ -20,10 +20,10 @@ Následující dokument obsahuje odkazy na příklady, které ukazují, jak se p
 
 ## <a name="quickstarts"></a>Rychlé starty
 
-| Rychlé zprovoznění | Description |
+| Rychlé zprovoznění | Popis |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|Pomocí pgAdmin se můžete připojit k serveru a zjednoduší se tím vytváření, údržba a používání databázových objektů.|
-|[psql v Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Tento článek ukazuje, jak spustit [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) pro připojení k vašemu serveru a následné spuštění příkazů pro dotazování, vkládání, aktualizaci a odstraňování dat v databázi. **Psql** můžete spustit, pokud je nainstalovaná ve vašem vývojovém prostředí.|
+|[psql v Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Tento článek ukazuje, jak spustit [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) v [Azure Cloud Shell](../cloud-shell/overview.md) pro připojení k vašemu serveru a následné spuštění příkazů pro dotazování, vkládání, aktualizaci a odstraňování dat v databázi. **Psql** můžete spustit, pokud je nainstalovaná ve vašem vývojovém prostředí.|
 |[PostgreSQL s VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)|Rozšíření Azure databases pro VS Code (Preview) umožňuje procházet a dotazování serveru PostgreSQL lokálně i v cloudu pomocí scrapbooks s bohatou technologií IntelliSense. |
 |[PHP](connect-php.md)|Tento rychlý Start ukazuje použití PHP k vytvoření programu pro připojení k databázi a použití práce s databázovými objekty k dotazování dat.|
 |[Java](connect-java.md)|V tomto rychlém startu se dozvíte, jak se pomocí Java připojit k databázi a potom použít práci s databázovými objekty k dotazování dat.|
@@ -42,10 +42,10 @@ Protokol TLS (Transport Layer Security) se používá u všech ovladačů, kter�
 ## <a name="postgresql-extensions"></a>Rozšíření PostgreSQL
 PostgreSQL poskytuje možnost rozšíření funkcí databáze pomocí rozšíření. Rozšíření je balíček, který vznikne sloučením několika souvisejících objektů SQL. Tento balíček můžete jedním příkazem do databáze načíst nebo ho z ní odebrat. Po načtení do databáze rozšíření fungují jako integrované funkce.
 
-- [Rozšíření Postgres 11](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-11-extensions)
-- [Rozšíření Postgres 10](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-10-extensions)
-- [Rozšíření Postgres 9,6](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-96-extensions)
-- [Rozšíření Postgres 9,5](https://docs.microsoft.com/azure/postgresql/concepts-extensions#postgres-95-extensions)
+- [Rozšíření Postgres 11](./concepts-extensions.md#postgres-11-extensions)
+- [Rozšíření Postgres 10](./concepts-extensions.md#postgres-10-extensions)
+- [Rozšíření Postgres 9,6](./concepts-extensions.md#postgres-96-extensions)
+- [Rozšíření Postgres 9,5](./concepts-extensions.md#postgres-95-extensions)
 
 Další podrobnosti najdete v článku [Jak používat rozšíření PostgreSQL na jednom serveru](concepts-extensions.md).
 

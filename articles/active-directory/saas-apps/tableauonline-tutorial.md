@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 175934c3e80e1271d6d17aa04327b58887427ea5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542507"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483688"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Tableau online
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Tableau online s Azure Active Director
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -165,15 +165,15 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 1. V jiném okně prohlížeče se přihlaste k online aplikaci Tableau. Přejít na **Nastavení** a pak na **ověřování**.
 
-    ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![Snímek obrazovky s vybraným ověřováním zobrazuje v nabídce nastavení.](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
 
 2. Chcete-li povolit SAML, v části **typy ověřování** . Zaškrtněte políčko **Povolit další metodu ověřování** a zaškrtněte políčko **SAML** .
 
-    ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![Snímek obrazovky se zobrazí v části typy ověřování, kde můžete vybrat hodnoty.](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
 3. Posuňte se dolů a **importujte soubor metadat do online oddílu Tableau** .  Klikněte na Procházet a importujte soubor metadat, který jste stáhli ze služby Azure AD. Pak klikněte na **použít**.
 
-   ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![Snímek obrazovky se zobrazí oddíl, do kterého můžete importovat soubor metadat.](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
 4. V části **kontrolní výrazy shody** vložte odpovídající název kontrolního výrazu zprostředkovatele identity pro **e-mailovou adresu**, **křestní jméno**a **příjmení**. Získání těchto informací z Azure AD: 
   
@@ -181,17 +181,17 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     b. V části **atributy uživatele & deklarace identity** klikněte na ikonu Upravit.
 
-   ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/attributesection.png)
+   ![Snímek obrazovky se zobrazí v části atributy uživatele & deklarací, kde můžete vybrat ikonu Upravit.](./media/tableauonline-tutorial/attributesection.png)
 
     c. Zkopírujte hodnotu oboru názvů těchto atributů: křestní číslo, e-mail a příjmení pomocí následujících kroků:
 
-   ![Služba Azure AD Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Snímek obrazovky ukazuje atributy daného atributu, příjmení a EmailAddress.](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
 
     d. Klikněte na tlačítko **uživatel. prodané** hodnoty
 
     e. Zkopírujte hodnotu z textového pole **obor názvů** .
 
-    ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/attributesection2.png)
+    ![Snímek obrazovky se zobrazí část Správa deklarací identity uživatelů, kde můžete zadat obor názvů.](./media/tableauonline-tutorial/attributesection2.png)
 
     f. Pokud chcete zkopírovat hodnoty oboru názvů pro e-mail a příjmení, opakujte výše uvedené kroky.
 
@@ -203,7 +203,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
     * Příjmení: **příjmení**
 
-    ![Konfigurace jednoho Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    ![Snímek obrazovky se zobrazí v sekci atributů shody, kde můžete zadat hodnoty.](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="create-tableau-online-test-user"></a>Vytvořit online testovacího uživatele Tableau
 
@@ -211,11 +211,11 @@ V této části vytvoříte uživatele s názvem Britta Simon v Tableau online.
 
 1. V **online režimu Tableau**klikněte na **Nastavení** a pak na **ověřovací** oddíl. Přejděte dolů do části **Správa uživatelů** . Klikněte na **Přidat uživatele** a pak na **zadat e-mailové adresy**.
   
-    ![Vytvoření testovacího uživatele Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+    ![Snímek obrazovky se zobrazí oddíl spravovat uživatele, kde můžete vybrat přidat uživatele.](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
 2. Vyberte možnost **Přidat uživatele pro ověřování SAML**. Do textového pole **Zadejte e-mailové adresy** přidejte Britta. Simon \@ contoso.com
   
-    ![Vytvoření testovacího uživatele Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+    ![Snímek obrazovky se zobrazí stránka Přidat uživatele, kde můžete zadat e-mailovou adresu.](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 
 3. Klikněte na **Přidat uživatele**.
 
@@ -225,7 +225,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Tableau online, měli byste se automaticky přihlásit k Tableau online, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

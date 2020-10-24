@@ -7,22 +7,22 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0cbbcc822765097f83fcd1a52ce775c69faba9fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836424"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489570"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Rychlý Start: vytvoření a Správa sdílené složky Azure Files s virtuálními počítači s Windows
 
 Tento článek popisuje základní kroky pro vytvoření a použití sdílené složky Azure Files. V tomto rychlém startu se důrazně naučí, jak rychle nastavovat sdílenou složku Azure Files, abyste se mohli setkat s tím, jak služba funguje. Pokud potřebujete podrobnější pokyny pro vytváření a používání sdílených složek Azure ve vlastním prostředí, přečtěte si téma [použití sdílené složky Azure v systému Windows](storage-how-to-use-files-windows.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -98,7 +98,7 @@ Právě jste vytvořili nový virtuální počítač a připojili jste datový d
 1. V Azure Portal přejděte do sdílené složky *qsfileshare* a vyberte **připojit**.
 1. Zkopírujte obsah druhého pole a vložte ho do **poznámkového bloku**.
 
-   ![Cesta UNC z podokna Připojit služby Soubory Azure](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
+   ![Snímek obrazovky zobrazující obsah pole sekund, které byste měli zkopírovat a vložit do poznámkového bloku](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
 
 1. Na virtuálním počítači otevřete **Průzkumníka souborů** a v okně vyberte **Tento počítač** . Tato volba změní nabídky, které jsou k dispozici na pásu karet. V nabídce **počítač** vyberte **mapovat síťovou jednotku**.
 1. Vyberte písmeno jednotky a zadejte cestu UNC. Pokud jste sledovali návrhy pojmenování v tomto rychlém startu, zkopírujte z **poznámkového bloku** * \\ qsstorageacct. File. Core. Windows. net\qsfileshare* .

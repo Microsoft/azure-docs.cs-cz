@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 5c82c7a3fbe931042c1ae817d2f5b6c9ae6989ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427743"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480730"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Zálohování a obnovení v Azure Database for MariaDB
 
@@ -44,12 +44,15 @@ Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v �
 - Servery s úložištěm až 4 TB budou uchovávat až 2 úplné zálohy databáze, všechny rozdílové zálohy a zálohy transakčního protokolu byly provedeny od nejstarší úplné zálohy databáze.
 -   Servery s až 16 TB úložiště uchovávají úplný snímek databáze, všechny rozdílové snímky a zálohy protokolů transakcí za posledních 8 dní.
 
+#### <a name="long-term-retention-of-backups"></a>Dlouhodobé uchovávání záloh
+Dlouhodobá doba uchovávání záloh přesahujících 35 dnů zatím není službou nativně podporována. Máte možnost použít mysqldump k vytvoření zálohy a jejich uložení na dlouhodobé uchovávání. Náš tým podpory blogged [krok za](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) krokem ke sdílení toho, jak ho můžete dosáhnout. 
+
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
 Azure Database for MariaDB poskytuje flexibilitu při výběru místně redundantního nebo geograficky redundantního úložiště záloh v Pro obecné účely a paměťově optimalizovaných úrovních. Když jsou zálohy uložené v geograficky redundantním úložišti zálohování, neukládají se jenom v oblasti, ve které je váš server hostovaný, ale taky se replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). To zajišťuje lepší ochranu a možnost obnovení serveru v jiné oblasti v případě havárie. Úroveň Basic nabízí jenom místně redundantní úložiště záloh.
 
-> [!IMPORTANT]
-> Konfigurace místně redundantního nebo geograficky redundantního úložiště pro zálohování je povolená jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování.
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Přechod z místně redundantní do geograficky redundantního úložiště zálohování
+Konfigurace místně redundantního nebo geograficky redundantního úložiště pro zálohování je povolená jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování. Aby bylo možné přesunout úložiště záloh z místně redundantního úložiště do geograficky redundantního úložiště, je jedinou podporovanou možností vytvoření nového serveru a migrace dat pomocí [výpisu paměti a obnovení](howto-migrate-dump-restore.md) .
 
 ### <a name="backup-storage-cost"></a>Náklady na úložiště zálohování
 

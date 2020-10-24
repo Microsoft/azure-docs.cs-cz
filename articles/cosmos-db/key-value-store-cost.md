@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1cd6b4b52db224db5febcec1eff79b01379a5956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d04c670010e3595d8f30c7ffcd34d99e27374cb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262816"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488448"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB jako úložiště hodnot klíčů – přehled nákladů
 
-Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů, která umožňuje snadnou tvorbu vysoce dostupných a rozsáhlých aplikací ve velkém měřítku. Ve výchozím nastavení Azure Cosmos DB automaticky a efektivně indexovat všechna data, která ingestují. To umožňuje rychlé a konzistentní dotazy [SQL](how-to-sql-query.md) (a [JavaScript](stored-procedures-triggers-udfs.md)) na data. 
+Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů, která umožňuje snadnou tvorbu vysoce dostupných a rozsáhlých aplikací ve velkém měřítku. Ve výchozím nastavení Azure Cosmos DB automaticky a efektivně indexovat všechna data, která ingestují. To umožňuje rychlé a konzistentní dotazy [SQL](./sql-query-getting-started.md) (a [JavaScript](stored-procedures-triggers-udfs.md)) na data. 
 
 Tento článek popisuje náklady na Azure Cosmos DB pro jednoduché operace zápisu a čtení, když se používají jako úložiště klíčů a hodnot. Mezi operace zápisu patří vložení, nahrazení, odstranění a upsertuje datových položek. Kromě zaručení smlouvy SLA 99,999% dostupnosti pro všechny účty ve více oblastech Azure Cosmos DB nabízí zaručenou <ou latenci pro čtení a zápisy (indexovaných) na 99 percentil. 
 
@@ -48,4 +48,3 @@ Většina základního objektu BLOB nebo objekt ukládá služby poplatek $0,40 
 ## <a name="next-steps"></a>Další kroky
 
 * K odhadu propustnosti vašich úloh použijte [kalkulačku ru](https://cosmos.azure.com/capacitycalculator/) .
-

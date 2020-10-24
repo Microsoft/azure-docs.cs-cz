@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314926"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485371"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Zálohování a obnovení v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -39,7 +39,7 @@ V Azure Database for PostgreSQL vytvoří cluster Citus (s obnovením) nový clu
 
 
 > [!IMPORTANT]
-> Odstraněné clustery Citus) se nedají obnovit. Pokud cluster odstraníte, odstraní se všechny uzly patřící do clusteru a nebude možné je obnovit. Pro ochranu prostředků clusteru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](/azure/azure-resource-manager/management/lock-resources).
+> Odstraněné clustery Citus) se nedají obnovit. Pokud cluster odstraníte, odstraní se všechny uzly patřící do clusteru a nebude možné je obnovit. Pro ochranu prostředků clusteru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="point-in-time-restore-pitr"></a>Obnovení k bodu v čase (PITR)
 
@@ -65,5 +65,5 @@ Po obnovení z některého mechanismu obnovení byste měli provést následují
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o [zónách dostupnosti Azure](/azure/availability-zones/az-overview).
-* Nastavte [navrhované výstrahy](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) na skupiny serverů Citus ().
+* Přečtěte si o [zónách dostupnosti Azure](../availability-zones/az-overview.md).
+* Nastavte [navrhované výstrahy](./howto-hyperscale-alert-on-metric.md#suggested-alerts) na skupiny serverů Citus ().

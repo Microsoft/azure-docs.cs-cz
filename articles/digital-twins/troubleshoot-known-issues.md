@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bcbe395f78d3e4e9a6f7f615edc61eaa04347cf
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311689"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489009"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -34,7 +34,7 @@ Případně můžete otevřít podokno Cloud Shell v Azure Portal a dokončit Cl
 
 :::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Zobrazuje se Azure Portal se zvýrazněnou ikonou Cloud Shell a Cloud Shell se zobrazuje v dolní části okna portálu.":::
 
-Nakonec další řešení je [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) do vašeho počítače, abyste mohli spouštět příkazy rozhraní příkazového řádku Azure v místním prostředí. V místním rozhraní příkazového řádku se tento problém netýká.
+Nakonec další řešení je [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) do vašeho počítače, abyste mohli spouštět příkazy rozhraní příkazového řádku Azure v místním prostředí. V místním rozhraní příkazového řádku se tento problém netýká.
 
 ### <a name="possible-causes"></a>Možné příčiny
 
@@ -46,7 +46,9 @@ To nemá vliv na příkazy v digitálních událostech Azure `az dt` ze `az dt e
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>Chybějící přiřazení role po skriptovém nastavení
 
-Někteří uživatelé mohou mít problémy s částí přiřazení role v tématu [*Postupy: nastavení instance a ověřování (skriptované)*](how-to-set-up-instance-scripted.md). Skript neindikuje, že se nejedná o selhání, ale role *vlastníka digitálních vláken Azure (Preview)* není úspěšně přiřazená uživateli. Tento problém bude mít vliv na schopnost vytvořit další prostředky v provozu.
+Někteří uživatelé mohou mít problémy s částí přiřazení role v tématu [*Postupy: nastavení instance a ověřování (skriptované)*](how-to-set-up-instance-scripted.md). Skript neindikuje selhání, ale role *vlastníka dat digitálních vláken Azure* není úspěšně přiřazená uživateli. Tento problém bude mít vliv na schopnost vytvořit další prostředky po silnici.
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 Pokud chcete zjistit, jestli se přiřazení role po spuštění skriptu úspěšně nastavilo, postupujte podle pokynů v části [*Ověření přiřazení role uživatele*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) v článku o nastavení. Pokud se uživatel s touto rolí nezobrazuje, tento problém se vás týká.
 
@@ -64,7 +66,7 @@ Pro uživatele, kteří se přihlásili pomocí osobního [účet Microsoft (MSA
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Problém s interaktivním ověřováním prohlížeče
 
-Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet) **může docházet k problémům s metodou [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) .
+Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) **může docházet k problémům s metodou [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) .
 
 Nejedná se o nejnovější verzi knihovny. Nejnovější verze je **1.2.2**.
 

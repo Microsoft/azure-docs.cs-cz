@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: cfe565c45ea6aa0a4bcfecc95b1e1149b17542a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa136a15e4fa034307e16ef50c2b16060c5af0d2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708046"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490199"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Rozšířená ochrana před internetovými útoky v Azure Database for PostgreSQL – jeden server
 
@@ -41,6 +41,6 @@ Rozšířená ochrana před internetovými útoky pro Azure Database for Postgre
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)
 * Další informace o cenách najdete na stránce s [cenami Azure Database for PostgreSQL](https://azure.microsoft.com/pricing/details/postgresql/) . 
-* Konfigurace [Azure Database for PostgreSQL rozšířené ochrany před internetovými útoky](howto-database-threat-protection-portal.md) pomocí Azure Portal  
+* Konfigurace [Azure Database for PostgreSQL rozšířené ochrany před internetovými útoky](howto-database-threat-protection-portal.md) pomocí Azure Portal

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90903778"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491321"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Co je Azure Database for PostgreSQL?
 
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL je služba relačních databází v cloudu Microso
 
  :::image type="content" source="./media/overview/overview-what-is-azure-postgres.png" alt-text="Azure Database for PostgreSQL":::
 
-Tyto možnosti vyžadují skoro žádnou správu a všechny jsou poskytovány bez dalších poplatků. Díky tomu se můžete soustředit na rychlý vývoj aplikací a urychlení doby uvedení na trh, ale nemusíte přiřazovat drahý čas a prostředky pro správu virtuálních počítačů a infrastruktury. Kromě toho můžete pokračovat ve vývoji aplikací pomocí libovolných opensourcových nástrojů a platforem a dodávat je tak rychle a efektivně, jak váš podnik vyžaduje – a to vše, aniž byste se museli učit nové dovednosti.
+Tyto možnosti nevyžadují téměř žádnou správu a jsou k dispozici bez dalších poplatků. Díky tomu se můžete soustředit na rychlý vývoj aplikací a urychlení doby uvedení na trh, ale nemusíte přiřazovat drahý čas a prostředky pro správu virtuálních počítačů a infrastruktury. Kromě toho můžete pokračovat ve vývoji aplikací pomocí libovolných opensourcových nástrojů a platforem a dodávat je tak rychle a efektivně, jak váš podnik vyžaduje – a to vše, aniž byste se museli učit nové dovednosti.
 
 ## <a name="deployment-models"></a>Modely nasazení
 
@@ -43,7 +43,7 @@ Azure Database for PostgreSQL, kterou používá PostgreSQL Community Edition, j
 
 Azure Database for PostgreSQL jeden server je plně spravovaná databázová služba s minimálními požadavky pro přizpůsobení databáze. Platforma s jednou serverem je navržená tak, aby zpracovávala většinu funkcí správy databáze, jako jsou třeba opravy, zálohování, vysoká dostupnost, zabezpečení s minimální konfigurací a řízením uživatele. Architektura je optimalizovaná pro integrovanou vysokou dostupnost s 99,99% dostupností v jedné zóně dostupnosti. Podporuje komunitní verze PostgreSQL 9,5, 9, 6, 10 a 11. Tato služba je všeobecně dostupná pro celou řadu [oblastí Azure](https://azure.microsoft.com/global-infrastructure/services/).
 
-Nasazení typu Jeden server má tři cenové úrovně: Basic, Pro obecné účely a Optimalizováno pro paměť. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers).
+Nasazení typu Jeden server má tři cenové úrovně: Basic, Pro obecné účely a Optimalizováno pro paměť. Každá úroveň nabízí různé schopnosti prostředků pro podporu vašich úloh databáze. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](./concepts-pricing-tiers.md).
 
 Pro cloudové nativní aplikace navržené pro zpracování automatizovaných oprav bez nutnosti podrobného řízení plánu oprav a vlastních nastavení konfigurace PostgreSQL jsou samostatné servery vhodné.
 
@@ -72,7 +72,7 @@ Možnost nasazení Hyperscale (Citus) podporuje:
 - Paralelizaci dotazů na více serverech za účelem rychlejší odezvy u velkých datových sad
 - Vynikající podpora aplikací s více klienty, provozní analýzy v reálném čase a úlohy s vysokou transakční propustností
   
-Aplikace vytvořené pro PostgreSQL můžou spouštět distribuované dotazy na úrovni Citus (s standardními [knihovnami připojení](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries) a minimálními změnami).
+Aplikace vytvořené pro PostgreSQL můžou spouštět distribuované dotazy na úrovni Citus (s standardními [knihovnami připojení](./concepts-connection-libraries.md) a minimálními změnami).
 
 ## <a name="next-steps"></a>Další kroky
 

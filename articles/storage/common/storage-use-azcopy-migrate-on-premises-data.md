@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f969c30033604cb4b331b5ed86d992af371f9c75
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716082"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490811"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete tento kurz dokončit, Stáhněte si nejnovější verzi AzCopy. Viz Začínáme [s AzCopy](storage-use-azcopy-v10.md).
 
@@ -46,7 +46,7 @@ Podle těchto pokynů vytvořte kontejner:
 1. Na hlavní stránce vyberte tlačítko **Účty úložiště** a pak vyberte účet úložiště, který jste vytvořili.
 2. V části **Služby** vyberte **Objekty blob** a pak vyberte **Kontejner**.
 
-   ![Vytvoření kontejneru](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
+   ![Snímek obrazovky znázorňující vytvoření kontejneru](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 Názvy kontejnerů musí začínat písmenem nebo číslicí. Můžou obsahovat pouze písmena, číslice a znak spojovníku (-). Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
@@ -62,7 +62,7 @@ Uložte soubor AzCopy kamkoli do počítače. Přidejte umístění souboru do p
 
 ## <a name="authenticate-with-azure-ad"></a>Ověřování pomocí Azure AD
 
-Nejdřív k vaší identitě přiřaďte roli [Přispěvatel dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) . Viz [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+Nejdřív k vaší identitě přiřaďte roli [Přispěvatel dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) . Viz [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](/azure/storage/common/storage-auth-aad-rbac-portal).
 
 Pak otevřete příkazový řádek, zadejte následující příkaz a stiskněte klávesu ENTER.
 
@@ -72,13 +72,13 @@ azcopy login
 
 Tento příkaz vrátí ověřovací kód a adresu URL webu. Otevřete web, zadejte kód a potom klikněte na tlačítko **Další** .
 
-![Vytvoření kontejneru](media/storage-use-azcopy-v10/azcopy-login.png)
+![Snímek obrazovky se zobrazením výzvy k přihlášení](media/storage-use-azcopy-v10/azcopy-login.png)
 
 Zobrazí se okno přihlášení. V tomto okně se přihlaste k účtu Azure pomocí svých přihlašovacích údajů k účtu Azure. Po úspěšném přihlášení můžete zavřít okno prohlížeče a začít používat AzCopy.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Nahrání obsahu složky do úložiště objektů blob
 
-Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště objektů blob ve [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) nebo v [Linuxu](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux). Pokud chcete nahrát všechny objekty blob ve složce, zadejte následující příkaz AzCopy:
+Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště objektů blob ve [Windows](/azure/storage/common/storage-use-azcopy) nebo v [Linuxu](/azure/storage/common/storage-use-azcopy-linux). Pokud chcete nahrát všechny objekty blob ve složce, zadejte následující příkaz AzCopy:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -176,7 +176,7 @@ Pokud chcete ověřit správné spouštění plánované úlohy nebo úlohy Cron
 
 Další informace o způsobech přesunu místních dat do služby Azure Storage a naopak najdete na následujícím odkazu:
 
-* [Přesunout data do a z Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
+* [Přesunout data do a z Azure Storage](/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
 
 Další informace o AzCopy najdete v některém z těchto článků:
 

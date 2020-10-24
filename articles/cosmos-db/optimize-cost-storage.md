@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dca046df68b10853752b0de65c48c2b8f83afb31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5af62cd8c110e38ffd2a72ef2441a8e548e1ece
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020894"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475477"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na úložiště v Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Azure Cosmos DB nabízí neomezené úložiště a propustnost. Na rozdíl od pr
 
 ## <a name="storage-cost"></a>Náklady na úložiště
 
-Služba Storage se účtuje s jednotkou GB. Místní úložiště zálohované na jednotku SSD používá vaše data a indexování. Celkové využité úložiště je stejné jako úložiště vyžadované daty a indexy používané ve všech oblastech, ve kterých používáte Azure Cosmos DB. Pokud účet Azure Cosmos globálně replikujte ve třech oblastech, platíte za celkové náklady na úložiště v každé z těchto tří oblastí. Informace o odhadu požadavku na úložiště najdete v tématu Nástroj [Capacity Planner](https://www.documentdb.com/capacityplanner) . Náklady na úložiště v Azure Cosmos DB jsou $0,25 GB/měsíc, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) nejnovější aktualizace. Můžete nastavit výstrahy pro určení úložiště používaného vaším kontejnerem Azure Cosmos, abyste mohli monitorovat úložiště, viz článek [monitorování Azure Cosmos DB](monitor-accounts.md)).
+Služba Storage se účtuje s jednotkou GB. Místní úložiště zálohované na jednotku SSD používá vaše data a indexování. Celkové využité úložiště je stejné jako úložiště vyžadované daty a indexy používané ve všech oblastech, ve kterých používáte Azure Cosmos DB. Pokud účet Azure Cosmos globálně replikujte ve třech oblastech, platíte za celkové náklady na úložiště v každé z těchto tří oblastí. Informace o odhadu požadavku na úložiště najdete v tématu Nástroj [Capacity Planner](https://www.documentdb.com/capacityplanner) . Náklady na úložiště v Azure Cosmos DB jsou $0,25 GB/měsíc, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) nejnovější aktualizace. Můžete nastavit výstrahy pro určení úložiště používaného vaším kontejnerem Azure Cosmos, abyste mohli monitorovat úložiště, viz článek [monitorování Azure Cosmos DB](./monitor-cosmos-db.md)).
 
 ## <a name="optimize-cost-with-item-size"></a>Optimalizace nákladů pomocí velikosti položky
 
@@ -28,7 +28,7 @@ Azure Cosmos DB očekává, že velikost položky bude 2 MB nebo méně pro opti
 
 ## <a name="optimize-cost-with-indexing"></a>Optimalizace nákladů s indexováním
 
-Ve výchozím nastavení jsou data automaticky indexována, což může zvýšit celkové spotřebované úložiště. Můžete ale použít vlastní zásady indexů a snížit tak tuto režii. Automatické indexování, které se nevytvořily prostřednictvím zásad, je přibližně 10-20% velikosti položky. Odebráním nebo přizpůsobením zásad indexování nebudete platit za nadbytečné náklady za zápisy a nebudete potřebovat další kapacitu propustnosti. Pokud chcete nakonfigurovat vlastní zásady indexování, přečtěte si téma [indexování v Azure Cosmos DB](indexing-policies.md) . Pokud jste předtím pracovali s relačními databázemi, můžete si všimnout, že "index všeho" znamená zdvojnásobení úložiště nebo vyšší. V Azure Cosmos DB se ale ve střední části velkých písmen mnohem snižuje. V Azure Cosmos DB je režie úložiště indexu obvykle nízká (10-20%) i s automatickým indexováním, protože je navržena pro menší nároky na úložiště. Díky správě zásad indexování můžete řídit kompromisy nad nároky na index a výkon dotazů v jemně odstupňovaném způsobem.
+Ve výchozím nastavení jsou data automaticky indexována, což může zvýšit celkové spotřebované úložiště. Můžete ale použít vlastní zásady indexů a snížit tak tuto režii. Automatické indexování, které se nevytvořily prostřednictvím zásad, je přibližně 10-20% velikosti položky. Odebráním nebo přizpůsobením zásad indexování nebudete platit za nadbytečné náklady za zápisy a nebudete potřebovat další kapacitu propustnosti. Pokud chcete nakonfigurovat vlastní zásady indexování, přečtěte si téma [indexování v Azure Cosmos DB](index-policy.md) . Pokud jste předtím pracovali s relačními databázemi, můžete si všimnout, že "index všeho" znamená zdvojnásobení úložiště nebo vyšší. V Azure Cosmos DB se ale ve střední části velkých písmen mnohem snižuje. V Azure Cosmos DB je režie úložiště indexu obvykle nízká (10-20%) i s automatickým indexováním, protože je navržena pro menší nároky na úložiště. Díky správě zásad indexování můžete řídit kompromisy nad nároky na index a výkon dotazů v jemně odstupňovaném způsobem.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizace nákladů s využitím času na živé a změna kanálu
 
@@ -40,7 +40,7 @@ Pokud chcete ukládat bohatě formátované typy médií, například videa, obr
 
 ## <a name="check-storage-consumed"></a>Ověřit spotřebované úložiště
 
-Pokud chcete zkontrolovat spotřebu úložiště kontejneru Azure Cosmos, můžete na kontejneru spustit kopii nebo získat požadavek a zkontrolovat `x-ms-request-quota` `x-ms-request-usage` hlavičky a. Případně při práci s .NET SDK můžete použít vlastnosti [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))a [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) a získat tak využité úložiště.
+Pokud chcete zkontrolovat spotřebu úložiště kontejneru Azure Cosmos, můžete na kontejneru spustit kopii nebo získat požadavek a zkontrolovat `x-ms-request-quota` `x-ms-request-usage` hlavičky a. Případně při práci s .NET SDK můžete použít vlastnosti [DocumentSizeQuota](/previous-versions/azure/dn850325(v%3Dazure.100))a [DocumentSizeUsage](/previous-versions/azure/dn850324(v=azure.100)) a získat tak využité úložiště.
 
 ## <a name="using-sdk"></a>S využitím sady SDK
 
@@ -59,6 +59,5 @@ Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následuj
 * Další informace o [Azure Cosmos DB vyúčtování](understand-your-bill.md)
 * Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
 * Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na dotazy](./optimize-cost-reads-writes.md)
 * Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)
-

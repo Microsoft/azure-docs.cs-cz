@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: fcbce9e7a5b24cbbe695b2ad664137875464b705
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107925"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489434"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Vytvoření nastavení diagnostiky pro odesílání metrik a protokolů platformy do různých cílů
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. [Metriky platformy](data-platform-metrics.md) se ve výchozím nastavení shromažďují a obvykle se ukládají do databáze Azure monitor metrik. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání metrik platforem a protokolů platforem do různých umístění.
@@ -63,6 +63,8 @@ Před vytvořením nastavení diagnostiky je nutné vytvořit všechna cílová 
 > [!NOTE]
 > Účty Azure Data Lake Storage Gen2 se v současné době nepodporují jaké cíl pro nastavení diagnostiky, přestože na webu Azure Portal můžou být uvedené jako platná možnost.
 
+> [!NOTE]
+> Azure Monitor (nastavení diagnostiky) nemá přístup k prostředkům Event Hubs, pokud jsou povolené virtuální sítě. Je nutné povolit, aby důvěryhodné služby Microsoftu vypnuly toto nastavení brány firewall v centru událostí, aby se službě Azure Monitor (nastavení diagnostiky) udělil přístup k prostředkům Event Hubs. 
 
 
 ## <a name="create-in-azure-portal"></a>Vytvoření na webu Azure Portal

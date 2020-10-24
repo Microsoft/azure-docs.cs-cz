@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 38dd103189446e287f3d62d93344ed89a364d238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4280932787cfb2220dab1da84dca41ca0c40e302
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708777"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485252"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Přehled sítí – Azure Database for PostgreSQL – flexibilní Server
 
@@ -72,6 +72,9 @@ Tady je několik konceptů, se kterými se můžete seznámit při používání
 * Partnerský vztah virtuální sítě napříč oblastmi se nepodporuje.
 
 Přečtěte si, jak vytvořit flexibilní Server s privátním přístupem (Integration VNet) v [Azure Portal](how-to-manage-virtual-network-portal.md) nebo [v rozhraní příkazového řádku Azure](how-to-manage-virtual-network-cli.md).
+
+> [!NOTE]
+> Pokud používáte vlastní server DNS, musíte k překladu plně kvalifikovaného názvu domény Azure Database for MySQL flexibilního serveru použít službu DNS pro přeposílání. Další informace najdete [v tématu Překlad názvů, který používá vlastní server DNS](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
 
 ## <a name="public-access-allowed-ip-addresses"></a>Veřejný přístup (povolené IP adresy)
 Mezi charakteristiky metody veřejného přístupu patří:

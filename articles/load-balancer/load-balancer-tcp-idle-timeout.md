@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: allensu
-ms.openlocfilehash: 26c4c01aaf6abe6b9c9ac6daf6836d7b660ba21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b507fbad4d9089d918ae7a85c07f30efcb118476
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649810"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487241"
 ---
 # <a name="configure-tcp-idle-timeout-for-azure-load-balancer"></a>Konfigurace časového limitu nečinnosti protokolu TCP pro Azure Load Balancer
 
@@ -28,7 +28,11 @@ ms.locfileid: "91649810"
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
-Azure Load Balancer má nastavení časového limitu nečinnosti na 4 minuty až 120 minut. Ve výchozím nastavení je nastaveno na 4 minuty. Pokud je období neaktivity delší než hodnota časového limitu, není nijak zaručeno, že relace TCP nebo HTTP mezi klientem a vaší cloudovou službou bude zachovaná. Další informace o [vypršení časového limitu nečinnosti protokolu TCP](load-balancer-tcp-reset.md)
+Azure Load Balancer má následující rozsah časového limitu nečinnosti:
+
+4 minuty až 100 minut pro odchozí pravidla 4 minuty až 30 minut pro pravidla Load Balancer a příchozí pravidla NAT
+
+Ve výchozím nastavení je nastaveno na 4 minuty. Pokud je období neaktivity delší než hodnota časového limitu, není nijak zaručeno, že relace TCP nebo HTTP mezi klientem a vaší cloudovou službou bude zachovaná. Další informace o [vypršení časového limitu nečinnosti protokolu TCP](load-balancer-tcp-reset.md)
 
 Následující části popisují, jak změnit nastavení časového limitu nečinnosti pro prostředky veřejné IP adresy a nástroje pro vyrovnávání zatížení.
 
@@ -41,7 +45,7 @@ $publicIP.IdleTimeoutInMinutes = "15"
 Set-AzPublicIpAddress -PublicIpAddress $publicIP
 ```
 
-Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastavené, výchozí časový limit je 4 minuty. Přípustný rozsah časového limitu je 4 až 120 minut.
+Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastavené, výchozí časový limit je 4 minuty. 
 
 ## <a name="set-the-tcp-idle-timeout-on-rules"></a>Nastavení časového limitu nečinnosti protokolu TCP u pravidel
 

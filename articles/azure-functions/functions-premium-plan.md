@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578032"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490743"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -104,7 +104,7 @@ Velikost plánu a maximum v Azure Portal můžete nakonfigurovat výběrem možn
 Můžete taky zvýšit maximální limit shluku z Azure CLI:
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --max-burst <desired_max_burst>
 ```
 
 Minimální pro každý plán bude nejméně jedna instance.  Skutečný minimální počet instancí, které se automaticky nakonfigurují za vás, a to v závislosti na instancích Always Reading požadovaných aplikacemi v plánu.  Pokud například aplikace A požaduje pět instancí vždy připraveno a aplikace B požádá dva instance vždy připravené ve stejném plánu, bude minimální velikost plánu vypočítána jako pět.  App A bude běžet na všech 5 a aplikace B bude běžet jenom na 2.
@@ -117,14 +117,14 @@ Ve většině případů by mělo být minimum vypočítaného minima dostačuj�
 Zvýšení vypočítaného minima pro plán se dá provést pomocí Azure CLI.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-instances <desired_min_instances>
 ```
 
 ### <a name="available-instance-skus"></a>Dostupné skladové položky instance
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a zřízených paměti za sekundu, které jsou pro každou instanci přiděleny.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|SKU|Cores|Paměť|Storage|
+|Skladová položka|Cores|Paměť|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -146,18 +146,18 @@ Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azu
 |Austrálie – střed| 100 | Není k dispozici |
 |Austrálie – střed 2| 100 | Není k dispozici |
 |Austrálie – východ| 100 | 20 |
-|Australia Southeast | 100 | 20 |
+|Austrálie – jihovýchod | 100 | 20 |
 |Brazil South| 100 | 20 |
 |Střední Kanada| 100 | 20 |
 |Střední USA| 100 | 20 |
 |Čína – východ 2| 100 | 20 |
 |Čína – sever 2| 100 | 20 |
 |Východní Asie| 100 | 20 |
-|East US | 100 | 20 |
+|USA – východ | 100 | 20 |
 |USA – východ 2| 100 | 20 |
 |Francie – střed| 100 | 20 |
 |Německo – středozápad| 100 | Není k dispozici |
-|Japan East| 100 | 20 |
+|Japonsko – východ| 100 | 20 |
 |Japonsko – západ| 100 | 20 |
 |Jižní Korea – střed| 100 | 20 |
 |Jižní Korea – jih| Není k dispozici | 20 |

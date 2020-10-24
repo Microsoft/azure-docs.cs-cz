@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: jasonh
-ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408228"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490590"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Vyhodnocování dotazů Gremlin s využitím kroku profilu spuštění
 
@@ -155,7 +155,7 @@ Odezva funkce executionProfile () bude vracet hierarchii objektů JSON s násled
     - `storeOps.count`: Představuje počet výsledků, které tato operace úložiště vrátila.
     - `storeOps.size`: Představuje velikost výsledku dané operace úložiště v bajtech.
 
-Cosmos DB – operátor běhu Gremlin|Description
+Cosmos DB – operátor běhu Gremlin|Popis
 ---|---
 `GetVertices`| Tento krok získá predikátové sady objektů z trvalé vrstvy. 
 `GetEdges`| Tento krok získá hrany sousedící se sadou vrcholů. Tento krok může mít za následek jednu nebo více operací úložiště.
@@ -220,8 +220,8 @@ Z **rozděleného grafu**Předpokládejme následující odpověď profilu spuš
 
 Z nich je možné provést následující závěry:
 - Dotaz je jednoduché vyhledávání ID, protože příkaz Gremlin se řídí vzorem `g.V('id')` .
-- Z hlediska `time` metriky je latence tohoto dotazu vysoká, protože se jedná o [více než 10ms pro jednu operaci čtení z bodu](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide).
-- Pokud se do objektu podíváme, vidíte, `storeOps` že `fanoutFactor` je to `5` , což znamená, že tato operace získala [5 oddílů](https://docs.microsoft.com/azure/cosmos-db/partition-data) .
+- Z hlediska `time` metriky je latence tohoto dotazu vysoká, protože se jedná o [více než 10ms pro jednu operaci čtení z bodu](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide).
+- Pokud se do objektu podíváme, vidíte, `storeOps` že `fanoutFactor` je to `5` , což znamená, že tato operace získala [5 oddílů](./partitioning-overview.md) .
 
 V závěru této analýzy můžeme určit, že první dotaz přistupuje k více oddílům, než je potřeba. Dá se to vyřešit zadáním klíče rozdělení do dotazu jako predikátu. To bude mít za následek menší latenci a méně nákladů na dotaz. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Optimální dotaz by byl `g.V('tt0093640').has('partitionKey', 't1001')` .
 

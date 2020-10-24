@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984111"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478316"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Optimalizace výkonu s využitím materializovaná zobrazení
 
@@ -37,8 +37,8 @@ Většina požadavků na standardní zobrazení se stále vztahuje na materializ
 |Zobrazení obsahu                    | Vygenerováno pokaždé, když je použito zobrazení.   | Během vytváření zobrazení se předem zpracoval a uloží ve fondu SQL. Aktualizováno při přidání dat do podkladových tabulek.
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno
 |Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalá                                         | Rychlý  
-|Dodatečné úložiště                   | No                                           | Yes
-|Syntax                          | VYTVOŘIT ZOBRAZENÍ                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
+|Dodatečné úložiště                   | Ne                                           | Ano
+|Syntax                          | CREATE VIEW                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
 
 ## <a name="benefits-of-using-materialized-views"></a>Výhody použití materializovaná zobrazení
 
@@ -79,7 +79,7 @@ V porovnání s dalšími možnostmi optimalizace, jako je škálování a Sprá
 
 **Pro rychlejší výkon dotazů potřebujete jinou strategii distribuce dat**
 
-Fond SQL je distribuovaný systém pro hromadné paralelní zpracování (MPP).   Data v tabulce fondů SQL jsou distribuována mezi 60 uzlů pomocí jedné ze tří [strategií distribuce](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin nebo replikovaný).  
+Synapse SQL je systém distribuovaného zpracování dotazů.  Data v tabulce SQL jsou distribuována mezi 60 uzlů pomocí jedné ze tří [strategií distribuce](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (hash, round_robin nebo replikovaný).   
 
 Distribuce dat je určena v okamžiku vytvoření tabulky a zůstane beze změny, dokud není tabulka vyřazena. Materializované zobrazení, které je virtuální tabulkou na disku, podporuje distribuce dat a round_robin.  Uživatelé můžou zvolit distribuci dat, která se liší od základních tabulek, ale optimální pro výkon dotazů, které používají zobrazení nejvíce.  
 

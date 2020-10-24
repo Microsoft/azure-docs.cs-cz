@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263540"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480917"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
 
@@ -38,7 +38,7 @@ Mnohé z těchto omezení se stanovují pro nástroje, jako je Azure Data Factor
 
 ## <a name="custom-tool-with-bulk-executor-library"></a>Vlastní nástroj s knihovnou hromadných prováděcích modulů 
 
-Výzvy popsané v předchozí části se dají vyřešit pomocí vlastního nástroje, který je možné snadno škálovat napříč několika instancemi a je odolný vůči přechodným chybám. Navíc může vlastní nástroj pozastavit a obnovit migraci v různých kontrolních bodech. Azure Cosmos DB již poskytuje [knihovnu hromadného prováděcího modulu](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) , která zahrnuje některé z těchto funkcí. Například knihovna hromadného prováděcího modulu již má funkce pro zpracování přechodných chyb a může škálovat vlákna v jednom uzlu, aby se spotřeboval přibližně 500 K ru na uzel. Knihovna hromadného prováděcího modulu také rozdělí zdrojovou datovou sadu do mikrodávkování, které se provozují nezávisle jako forma kontrolního bodu.  
+Výzvy popsané v předchozí části se dají vyřešit pomocí vlastního nástroje, který je možné snadno škálovat napříč několika instancemi a je odolný vůči přechodným chybám. Navíc může vlastní nástroj pozastavit a obnovit migraci v různých kontrolních bodech. Azure Cosmos DB již poskytuje [knihovnu hromadného prováděcího modulu](./bulk-executor-overview.md) , která zahrnuje některé z těchto funkcí. Například knihovna hromadného prováděcího modulu již má funkce pro zpracování přechodných chyb a může škálovat vlákna v jednom uzlu, aby se spotřeboval přibližně 500 K ru na uzel. Knihovna hromadného prováděcího modulu také rozdělí zdrojovou datovou sadu do mikrodávkování, které se provozují nezávisle jako forma kontrolního bodu.  
 
 Vlastní nástroj používá knihovnu hromadného prováděcího modulu a podporuje horizontální navýšení kapacity mezi více klienty a sledování chyb během procesu příjmu. Aby bylo možné použít tento nástroj, zdrojová data by měla být rozdělená do samostatných souborů v Azure Data Lake Storage (ADLS), aby různé procesy migrace mohly každý soubor vybírat a ingestovat do Azure Cosmos DB. Vlastní nástroj využívá samostatnou kolekci, která ukládá metadata o průběhu migrace pro každý jednotlivý zdrojový soubor v ADLS a sleduje případné chyby, které jsou k nim přidruženy.  
 
@@ -152,4 +152,4 @@ I když můžete postupovat podle tohoto průvodce k úspěšné migraci velkýc
 
 * Další informace získáte vyzkoušením ukázkových aplikací, které využívají knihovnu hromadných prováděcích modulů v jazycích [.NET](bulk-executor-dot-net.md) a [Java](bulk-executor-java.md). 
 * Knihovna hromadného prováděcího modulu je integrovaná do konektoru Cosmos DB Spark. Další informace najdete v článku [Azure Cosmos DB Spark Connector](spark-connector.md) .  
-* Obraťte se na Azure Cosmos DB produktového týmu otevřením lístku podpory v části problémový typ problému "Obecné poradenství" a "velké (TB +) migrace" pro další nápovědu k migracím ve velkém měřítku. 
+* Obraťte se na Azure Cosmos DB produktového týmu otevřením lístku podpory v části problémový typ problému "Obecné poradenství" a "velké (TB +) migrace" pro další nápovědu k migracím ve velkém měřítku.

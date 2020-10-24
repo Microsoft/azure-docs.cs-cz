@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a44848e81e974d8294b84471d68ded8509f4ddf6
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3064672dc9eafbabda896f56f4881302980585b0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282813"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475375"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Async Java SDK v2
 
@@ -84,17 +84,17 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
   V Azure Cosmos DB Async Java SDK v2 je přímým režimem nejlepší volbou pro zlepšení výkonu databáze s většinou úloh. 
 
-  * ***Přehled přímého režimu***
+  * ***Přehled přímého režimu**_
 
   :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Obrázek zásad Azure Cosmos DBho připojení" border="false":::
   
-  Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 **kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby**repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
+  Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 _*kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby**repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 
-  * ***Možnosti konfigurace ConnectionPolicy pro přímý režim***
+  * ***Možnosti konfigurace ConnectionPolicy pro přímý režim**_
 
     V prvním kroku použijte následující doporučené konfigurační nastavení. Pokud v tomto konkrétním tématu narazíte na problémy, obraťte se prosím na [tým Azure Cosmos DB](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
 
-    Pokud používáte Azure Cosmos DB jako referenční databázi (to znamená, že databáze se používá v mnoha operacích čtení a několika operací zápisu), může být přijatelné nastavit *idleEndpointTimeout* na hodnotu 0 (tj. bez časového limitu).
+    Pokud používáte Azure Cosmos DB jako referenční databázi (to znamená, že databáze se používá v mnoha operacích čtení a několika operací zápisu), může být přijatelné nastavit _idleEndpointTimeout * na 0 (tj. bez časového limitu).
 
 
     | Možnost konfigurace       | Výchozí    |
@@ -113,13 +113,13 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
     | sendHangDetectionTime      | "PT10S"    |
     | shutdownTimeout            | "PT15S"    |
 
-* ***Tipy pro programování pro přímý režim***
+* ***Tipy pro programování pro přímý režim**_
 
   Přečtěte si článek [řešení potíží s nástrojem](troubleshoot-java-async-sdk.md) Azure Cosmos DB ASYNC Java SDK v2 jako standardní hodnotu pro řešení problémů sady SDK.
   
   Některé důležité tipy pro programování při použití přímého režimu:
   
-  * **Použití multithreading ve vaší aplikaci pro efektivní přenos dat TCP** – po vytvoření žádosti by se vaše aplikace měla přihlásit k odběru dat v jiném vlákně. Nedělá se to tak, že vynutí neúmyslnou operaci "poloduplexní" a následné požadavky se zablokují čekáním na odpověď předchozí žádosti.
+  _ **V aplikaci používat multithreading pro efektivní přenos dat TCP** – po vytvoření žádosti by se vaše aplikace měla přihlásit k odběru dat v jiném vlákně. Nedělá se to tak, že vynutí neúmyslnou operaci "poloduplexní" a následné požadavky se zablokují čekáním na odpověď předchozí žádosti.
   
   * **Provádění úloh náročných na výpočetní výkon na vyhrazeném vlákně** – z podobných důvodů na předchozí Tip jsou operace, jako je složité zpracování dat, nejlépe umístěny v samostatném vlákně. Požadavek, který přebírá data z jiného úložiště dat (například pokud vlákno využívá Azure Cosmos DB a datové úložiště Spark současně) se může zvýšit latence a doporučuje se vytvořit další vlákno, které čeká na odpověď z jiného úložiště dat.
   
@@ -131,19 +131,19 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
   Azure Cosmos DB Async Java SDK v2 podporuje paralelní dotazy, které umožňují paralelní dotazování rozdělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku.
 
-  * ***Vyladění setMaxDegreeOfParallelism\:***
+  * ***Vyladění \: setMaxDegreeOfParallelism** _
     
     Paralelní dotazy fungují paralelně dotazování na více oddílů. Data z jednotlivých dělených kolekcí se ale v souvislosti s dotazem načítají sériově. Proto použijte setMaxDegreeOfParallelism k nastavení počtu oddílů, které mají maximální šanci dosáhnout nejvíce výkonného dotazu. za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete použít setMaxDegreeOfParallelism k nastavení vysokého čísla a systém zvolí minimální (počet oddílů, uživatelem zadaný vstup) jako maximální stupeň paralelismu.
 
     Je důležité si uvědomit, že paralelní dotazy poskytují nejlepší výhody, pokud jsou data rovnoměrně rozložena napříč všemi oddíly v souvislosti s dotazem. Pokud je dělená kolekce rozdělena takovým způsobem, že všechna nebo většina dat vrácených dotazem je soustředěna v několika oddílech (jeden oddíl v nejhorším případě), výkon dotazu by tyto oddíly měl být kritický.
 
-  * ***Vyladění setMaxBufferedItemCount\:***
+  _ ***Vyladění \: setMaxBufferedItemCount**_
     
     Paralelní dotaz je navržený tak, aby byly výsledky předem načteny, zatímco aktuální dávka výsledků je zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. setMaxBufferedItemCount omezuje počet předběžně načtených výsledků. Nastavení setMaxBufferedItemCount na očekávaný počet vrácených výsledků (nebo vyšší číslo) umožňuje, aby dotaz získal maximální přínos před načtením.
 
     Předběžné načítání funguje stejným způsobem bez ohledu na Z MaxDegreeOfParallelism a existuje jedna vyrovnávací paměť pro data ze všech oddílů.
 
-* **Implementace omezení rychlosti v intervalech getRetryAfterInMilliseconds**
+_ **Implementovat omezení rychlosti v intervalech getRetryAfterInMilliseconds**
 
   Během testování výkonu byste měli zvýšit zatížení až do omezení malých sazeb požadavků. V případě omezení by se klientská aplikace měla omezení rychlosti pro interval opakování zadaný serverem. Respektování omezení rychlosti zajistí, že strávíte minimální dobu čekání mezi opakovanými pokusy.
 
@@ -258,7 +258,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    Další informace najdete v tématu [Azure Cosmos DB zásady indexování](indexing-policies.md).
+    Další informace najdete v tématu [Azure Cosmos DB zásady indexování](/azure/cosmos-db/index-policy).
 
 ## <a name="throughput"></a><a id="measure-rus"></a>Propustnost
 

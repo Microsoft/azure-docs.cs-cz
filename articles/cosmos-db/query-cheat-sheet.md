@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5683fb64c9b5df027ff8b0f50cec49e9bce5808
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117977"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475120"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB tahák dotazů
 
@@ -32,7 +32,7 @@ Pokud chcete tisknout pomocí plotru nebo rozsáhlé tiskárny na papír ve form
 
 ## <a name="next-steps"></a>Další kroky
 Další nápovědu k zápisu dotazů naleznete v následujících článcích:
-* Dotazy k rozhraní SQL API najdete v tématu [dotazování pomocí rozhraní SQL API](tutorial-query-sql-api.md), [dotazů SQL pro Azure Cosmos DB](how-to-sql-query.md)a [reference syntaxe SQL](sql-api-query-reference.md) .
+* Dotazy k rozhraní SQL API najdete v tématu [dotazování pomocí rozhraní SQL API](tutorial-query-sql-api.md), [dotazů SQL pro Azure Cosmos DB](./sql-query-getting-started.md)a [reference syntaxe SQL](./sql-query-getting-started.md) .
 * Dotazy na MongoDB najdete v tématu [dotazování pomocí rozhraní API služby Azure Cosmos DB pro MongoDB](tutorial-query-mongodb.md) a [rozhraní API Azure Cosmos DB pro podporu MongoDB funkcí a syntaxi](mongodb-feature-support.md) .
 * Dotazy k rozhraní Gremlin API najdete v tématu [dotazování pomocí rozhraní Gremlin API](tutorial-query-graph.md) a [Podpora Azure Cosmos DB Gremlin graphu](gremlin-support.md) .
 * Dotazy k rozhraní API pro tabulky najdete v tématu [dotazování pomocí rozhraní API pro tabulky](tutorial-query-table.md)

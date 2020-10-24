@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f3ea2d1ce8d3d9f2f584db379618fc6c4a4a67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86535755"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491236"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Rychlý Start: Vytvoření aplikace v cestách pomocí `gocql` klienta pro správu dat Azure Cosmos DB rozhraní API Cassandra
 
@@ -85,7 +85,7 @@ func GetSession(cosmosCassandraContactPoint, cosmosCassandraPort, cosmosCassandr
 }
 ```
 
-Do funkce se předává hostitel Azure Cosmos DB Cassandra, [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) který získá strukturu, která je pak nakonfigurovaná tak, aby používala uživatelské jméno, heslo, port a odpovídající verzi TLS ([požadavek zabezpečení šifrování HTTPS/SSL/TLS](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)).
+Do funkce se předává hostitel Azure Cosmos DB Cassandra, [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig) který získá strukturu, která je pak nakonfigurovaná tak, aby používala uživatelské jméno, heslo, port a odpovídající verzi TLS ([požadavek zabezpečení šifrování HTTPS/SSL/TLS](./database-security.md?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database)).
 
 `GetSession`Funkce je pak volána z `main` funkce ( `main.go` ).
 
@@ -238,7 +238,7 @@ set COSMOSDB_CASSANDRA_USER=<value for "USERNAME">
 set COSMOSDB_CASSANDRA_PASSWORD=<value for "PRIMARY PASSWORD">
 ```
 
-V okně terminálu přejděte do správné složky. Příklad:
+V okně terminálu přejděte do správné složky. Například:
 
 ```shell
 cd "C:\git-samples\azure-cosmosdb-cassandra-go-getting-started"

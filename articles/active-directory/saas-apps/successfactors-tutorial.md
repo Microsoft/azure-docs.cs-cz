@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 232d138488d061c638073b51198e5f2ea4c6b53f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552114"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481274"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SuccessFactors
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat SuccessFactors s Azure Active Director
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -160,14 +160,14 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 3. Přiložte do **tokenu Reset** libovolnou hodnotu a kliknutím na **Uložit token** povolte jednotné přihlašování SAML.
 
-    ![Konfigurace jednotného přihlašování na straně aplikace][11]
+    ![Snímek obrazovky se zobrazí karta zabezpečení aplikace s funkcemi jednotného přihlašování, které se nazývají, kde můžete zadat token.][11]
 
     > [!NOTE]
     > Tato hodnota se používá jako přepínač Zapnuto/vypnuto. Pokud se nějaká hodnota uloží, je jednotné přihlašování SAML ZAPNUTé. Pokud je uložena prázdná hodnota, je jednotné přihlašování SAML vypnuto.
 
 4. Nativně na snímek obrazovky a proveďte následující akce:
 
-    ![Konfigurace jednotného přihlašování na straně aplikace][12]
+    ![Snímek obrazovky ukazuje podokno pro s podporou SAML, kde můžete zadat hodnoty, které jsou popsány.][12]
   
     a. Vyberte přepínač **jednotného přihlašování SAML v2** .
   
@@ -192,7 +192,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 5. Přejděte na SAML v2 a pak proveďte následující kroky:
 
-    ![Konfigurace jednotného přihlašování na straně aplikace][13]
+    ![Snímek obrazovky se zobrazí v podokně pro odhlášení inicializované SAML v2 S P, kde můžete zadat hodnoty, které jsou popsány.][13]
 
     a. V případě **podpory globálního odhlašování iniciované SP**vyberte **Ano** .
 
@@ -231,7 +231,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici SuccessFactors, měli byste se automaticky přihlásit k SuccessFactors, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

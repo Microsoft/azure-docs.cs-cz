@@ -8,18 +8,18 @@ ms.custom: hdinsightactive, devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: dd0d7a3a05c108f0d7e95719356079633a0e2276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367b47e8dbe0e1ee56fea620d97109631ba87a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016083"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484878"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí sady .NET SDK
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Naučte se spravovat clustery HDInsight pomocí [sady HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+Naučte se spravovat clustery HDInsight pomocí [sady HDInsight.NET SDK](/dotnet/api/overview/azure/hdinsight).
 
 **Požadavky**
 
@@ -268,7 +268,7 @@ Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Viz také
 
-* [Referenční dokumentace k sadě HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Referenční dokumentace k sadě HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight)
 * [Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal](hdinsight-administer-use-portal-linux.md)
 * [Správa HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
 * [Vytváření clusterů HDInsight][hdinsight-provision]

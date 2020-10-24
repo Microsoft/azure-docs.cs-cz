@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: f39b93058f3f96d37683ec1f3ae3de0f8c1cb786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409523"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490573"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Hlavičky odpovědi serveru Azure Cosmos DB Gremlin
 Tento článek se věnuje hlavičkám, které server Gremlin služby Cosmos DB vrací volajícímu po provedení požadavku. Tyto hlavičky jsou užitečné při řešení potíží s výkonem požadavků a vytváření aplikací, které se nativně integrují se službou Cosmos DB, a umožňují zjednodušit zákaznickou podporu.
@@ -29,7 +29,7 @@ Mějte na paměti, že při použití závislosti na těchto hlavičkách omezuj
 | **x-MS-Total-server-time-MS** | double | 130,512 | Success and Failure | Celkový čas (v milisekundách), který Cosmos DB Server Gremlin spuštěn celý průchod. Tato hlavička je obsažena v každé částečné odpovědi. Představuje kumulativní dobu provádění od začátku požadavku. Poslední odezva udává celkovou dobu provádění. Tato hlavička je užitečná k rozlišení mezi klientem a serverem jako zdrojem latence. V klientovi můžete porovnat dobu provádění procházení s hodnotou této hlavičky. |
 | **x-MS-stav-kód** | long | 200 | Success and Failure | Záhlaví označuje interní důvod pro dokončení nebo ukončení žádosti. Pro aplikaci se doporučuje podívat na hodnotu této hlavičky a provést nápravná opatření. |
 | **x-MS-SubStatus-Code** | long | 1003 | Pouze selhání | Cosmos DB je databáze s více modely, která je postavená na sjednocené vrstvě úložiště. Tato hlavička obsahuje další přehledy o příčině selhání, pokud dojde k selhání v nižších vrstvách zásobníku vysoké dostupnosti. Aplikace se doporučuje uložit tuto hlavičku a použít ji při kontaktování Cosmos DB zákaznické podpory. Hodnota této hlavičky je užitečná pro Cosmos DB inženýr pro rychlé řešení potíží. |
-| **x-MS-opakovat – za-MS** | řetězec (TimeSpan) | 00:00:03.9500000 | Pouze selhání | Toto záhlaví je řetězcové vyjádření typu rozhraní .NET [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) . Tato hodnota bude zahrnutá jenom v žádostech, které selhaly kvůli poskytnutému vyčerpání propustnosti. Aplikace by měla znovu odeslat procházení po uplynutí časového limitu. |
+| **x-MS-opakovat – za-MS** | řetězec (TimeSpan) | 00:00:03.9500000 | Pouze selhání | Toto záhlaví je řetězcové vyjádření typu rozhraní .NET [TimeSpan](/dotnet/api/system.timespan) . Tato hodnota bude zahrnutá jenom v žádostech, které selhaly kvůli poskytnutému vyčerpání propustnosti. Aplikace by měla znovu odeslat procházení po uplynutí časového limitu. |
 | **x-MS-Activity-ID** | řetězec (GUID) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Success and Failure | Záhlaví obsahuje jedinečný identifikátor na straně serveru žádosti. Každému požadavku je server přiřazen jedinečný identifikátor pro účely sledování. Aplikace by měly protokolovat identifikátory aktivit vrácené serverem pro požadavky, které zákazníci mohou chtít kontaktovat zákaznickou podporu. Pracovníci podpory Cosmos DB můžou najít konkrétní žádosti pomocí těchto identifikátorů v telemetrie služby Cosmos DB. |
 
 ## <a name="status-codes"></a>Stavové kódy

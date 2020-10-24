@@ -9,12 +9,12 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425032"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487377"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -78,7 +78,7 @@ Tady je příklad vytvoření geoprostorového indexu v `location` poli:
 
 ### <a name="text-indexes"></a>Indexy textu
 
-Rozhraní API pro MongoDB Azure Cosmos DB v současné době nepodporuje textové indexy. Pro dotazy na hledání textu v řetězcích byste měli použít službu [Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) Integration s Azure Cosmos DB. 
+Rozhraní API pro MongoDB Azure Cosmos DB v současné době nepodporuje textové indexy. Pro dotazy na hledání textu v řetězcích byste měli použít službu [Azure kognitivní hledání](../search/search-howto-index-cosmosdb.md) Integration s Azure Cosmos DB. 
 
 ## <a name="wildcard-indexes"></a>Indexy zástupných znaků
 

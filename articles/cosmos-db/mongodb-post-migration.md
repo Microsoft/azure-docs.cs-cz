@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: jasonh
-ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6733e0f6447d055da8d349940bc7c7665e003e33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409693"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475596"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Kroky optimalizace po migraci při použití rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -53,12 +53,12 @@ Pokud chcete globálně distribuovat data, přečtěte si prosím [globálně di
 
 ## <a name="set-consistency-level"></a>Nastavit úroveň konzistence
 
-Azure Cosmos DB nabízí 5 jasně definovaných [úrovní konzistence](consistency-levels.md). Pokud si chcete přečíst o mapování mezi MongoDB a Azure Cosmos DB úrovní konzistence, načtěte si [úrovně konzistence a rozhraní API pro Azure Cosmos DB](consistency-levels-across-apis.md). Výchozí úroveň konzistence je úroveň konzistence relace. Změna úrovně konzistence je volitelná a můžete ji optimalizovat pro vaši aplikaci. Postup změny úrovně konzistence pomocí Azure Portal:
+Azure Cosmos DB nabízí 5 jasně definovaných [úrovní konzistence](consistency-levels.md). Pokud si chcete přečíst o mapování mezi MongoDB a Azure Cosmos DB úrovní konzistence, načtěte si [úrovně konzistence a rozhraní API pro Azure Cosmos DB](./consistency-levels.md). Výchozí úroveň konzistence je úroveň konzistence relace. Změna úrovně konzistence je volitelná a můžete ji optimalizovat pro vaši aplikaci. Postup změny úrovně konzistence pomocí Azure Portal:
 
 1. V části Nastavení otevřete okno **výchozí konzistence** .
 2. Vyberte [úroveň konzistence](consistency-levels.md) .
 
-Většina uživatelů opouští úroveň konzistence ve výchozím nastavení konzistence relace. Existují však [kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](consistency-levels-tradeoffs.md).
+Většina uživatelů opouští úroveň konzistence ve výchozím nastavení konzistence relace. Existují však [kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](./consistency-levels.md).
 
 ## <a name="next-steps"></a>Další kroky
 

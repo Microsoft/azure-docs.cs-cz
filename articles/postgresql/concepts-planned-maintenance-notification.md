@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: a0d61488fe5e7e91d025c7d3b8d3aa862b9cd9bd
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1ed2929dc5dc79c30f2a9583966e32d81b63ba2e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428832"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487904"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Oznámení o plánované údržbě v Azure Database for PostgreSQL – jeden server
 
@@ -61,9 +61,9 @@ Můžete buď zaškrtnout oznámení o plánované údržbě Azure Portal nebo n
 7. Zajistěte, aby pravidlo Povolit při vytváření bylo nastaveno na Ano.
 8. Vyberte **vytvořit pravidlo upozornění** pro dokončení upozornění.
 
-Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby**, najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications.md).
+Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby**, najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications-portal.md).
 
-## <a name="can-i-control-or-change-planned-maintenance-for-my-servers-after-i-receive-a-notification-event"></a>Můžu po obdržení oznamovací události řídit nebo měnit plánovanou údržbu serverů?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Můžu zrušit nebo odložit plánovanou údržbu?
 
 Údržba je nutná k zajištění zabezpečeného, stabilního a aktuálnosti serveru. Událost plánované údržby nelze zrušit nebo odložit. Po odeslání oznámení do určité oblasti Azure nelze provést změny plánu oprav pro žádný jednotlivý Server v této oblasti. Oprava je zahrnuta pro celou oblast najednou. Azure Database for PostgreSQL – jedna serverová služba je navržená pro cloudovou nativní aplikaci, která nevyžaduje podrobné řízení nebo přizpůsobení služby. Pokud chcete mít možnost naplánovat údržbu pro vaše servery, doporučujeme vzít v úvahu [flexibilní servery](./flexible-server/overview.md).
 
