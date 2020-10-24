@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277314"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475324"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -39,7 +39,7 @@ Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispo
 
 Čtyři uvedené typy aplikací používají ve výchozím nastavení 32 hostitelského zpracování. Chcete-li změnit zpracování hostitele na 64 zpracování pro typ aplikace, postupujte následovně:
 
-- **Pro spustitelné aplikace**: v okně **Vlastnosti projektu** v podokně **sestavení** nastavte [cíl platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) na hodnotu **x64**.
+- **Pro spustitelné aplikace**: v okně **Vlastnosti projektu** v podokně **sestavení** nastavte [cíl platformy](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) na hodnotu **x64**.
 
 - **Pro projekty testů založené na VSTest**: v nabídce **test** sady Visual Studio vyberte nastavení **test**  >  **testu**a pak nastavte **výchozí architekturu procesoru** na hodnotu **x64**.
 
@@ -53,7 +53,7 @@ Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispo
     
 **Zapnout shromažďování paměti na straně serveru**
 
-Omezení frekvence uvolňování paměti může v některých případech pomáhat. V rozhraní .NET nastavte [gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) na `true` .
+Omezení frekvence uvolňování paměti může v některých případech pomáhat. V rozhraní .NET nastavte [gcServer](/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) na `true` .
 
 **Horizontální navýšení kapacity úlohy klienta**
 
@@ -86,8 +86,8 @@ Když je spuštěný protokol TCP, klient se optimalizuje kvůli latenci pomocí
 
 V případech, kdy máte zhuštěný přístup, a pokud si všimnete vyššího počtu připojení v porovnání s přístupem k režimu brány, můžete:
 
-* Nakonfigurujte vlastnost [CosmosClientOptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) na `PrivatePortPool` (platí pro rozhraní Framework verze 4.6.1 a novější a .net Core verze 2,0 a novější). Tato vlastnost umožňuje sadě SDK používat pro různé Azure Cosmos DB cílové koncové body malý fond dočasných portů.
-* Nakonfigurujte vlastnost [CosmosClientOptions. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) tak, aby byla větší nebo rovna 10 minutám. Doporučené hodnoty jsou 20 minut až 24 hodin.
+* Nakonfigurujte vlastnost [CosmosClientOptions. PortReuseMode](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) na `PrivatePortPool` (platí pro rozhraní Framework verze 4.6.1 a novější a .net Core verze 2,0 a novější). Tato vlastnost umožňuje sadě SDK používat pro různé Azure Cosmos DB cílové koncové body malý fond dočasných portů.
+* Nakonfigurujte vlastnost [CosmosClientOptions. IdleConnectionTimeout](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) tak, aby byla větší nebo rovna 10 minutám. Doporučené hodnoty jsou 20 minut až 24 hodin.
 
 <a id="same-region"></a>
 
@@ -103,7 +103,7 @@ Nejnižší možnou latenci získáte tak, že zajistíte, aby se volající apl
 
 **Zvýšení počtu vláken/úloh**
 
-Vzhledem k tomu, že volání Azure Cosmos DB jsou provedena přes síť, možná budete muset změnit stupeň souběžnosti požadavků, aby klientská aplikace strávila minimální dobu čekání mezi požadavky. Pokud například používáte [úlohu .NET Parallel Library](https://msdn.microsoft.com//library/dd460717.aspx), vytvořte si pořadí stovky úloh, které čtou nebo zapisují do Azure Cosmos DB.
+Vzhledem k tomu, že volání Azure Cosmos DB jsou provedena přes síť, možná budete muset změnit stupeň souběžnosti požadavků, aby klientská aplikace strávila minimální dobu čekání mezi požadavky. Pokud například používáte [úlohu .NET Parallel Library](/dotnet/standard/parallel-programming/task-parallel-library-tpl), vytvořte si pořadí stovky úloh, které čtou nebo zapisují do Azure Cosmos DB.
 
 **Povolit akcelerované síťové služby**
  
@@ -146,7 +146,7 @@ Pro scénáře, které vyžadují velké množství propustnosti, můžete povol
 
 **Zvýšit System.Net MaxConnections na hostitele při použití režimu brány**
 
-Při použití režimu brány se požadavky na Azure Cosmos DB zavedou přes HTTPS/REST. Vztahují se na výchozí limit počtu připojení na název hostitele nebo IP adresu. Možná budete muset nastavit `MaxConnections` na vyšší hodnotu (od 100 do 1 000), aby Klientská knihovna mohla používat víc souběžných připojení k Azure Cosmos DB. V sadě .NET SDK 1.8.0 a novější je výchozí hodnota pro [Třída ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 50. Chcete-li změnit hodnotu, můžete nastavit [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) na vyšší hodnotu.
+Při použití režimu brány se požadavky na Azure Cosmos DB zavedou přes HTTPS/REST. Vztahují se na výchozí limit počtu připojení na název hostitele nebo IP adresu. Možná budete muset nastavit `MaxConnections` na vyšší hodnotu (od 100 do 1 000), aby Klientská knihovna mohla používat víc souběžných připojení k Azure Cosmos DB. V sadě .NET SDK 1.8.0 a novější je výchozí hodnota pro [Třída ServicePointManager. DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 50. Chcete-li změnit hodnotu, můžete nastavit [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) na vyšší hodnotu.
 
 **Ladění paralelních dotazů pro dělené kolekce**
 
@@ -170,7 +170,7 @@ Paralelní dotazy poskytují dva parametry, které můžete ladit podle svých p
 
 Během testování výkonu byste měli zvýšit zatížení, dokud se neomezí malá míra požadavků. Pokud jsou požadavky omezené, klientská aplikace by měla pro interval opakování zadaného serveru obnovit omezení. Respektování omezení rychlosti vám pomůže zajistit, že budete věnovat minimální dobu čekání mezi opakovanými pokusy. 
 
-Další informace najdete v tématu [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+Další informace najdete v tématu [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Existuje mechanismus pro protokolování dalších diagnostických informací a problémů s latencí při odstraňování potíží, jak je znázorněno v následující ukázce. Můžete protokolovat řetězec diagnostiky pro požadavky, které mají vyšší latenci čtení. Zachycený řetězec diagnostiky vám pomůže pochopit, kolikrát se vám pro daný požadavek zobrazila chyba *429* .
 

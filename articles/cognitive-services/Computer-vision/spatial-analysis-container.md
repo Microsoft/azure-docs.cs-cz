@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277287"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496118"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
 Kontejner prostorových analýz vám umožňuje analyzovat streamování videa v reálném čase, abyste pochopili prostorové vztahy mezi lidmi, jejich pohybem a interakcemi s objekty ve fyzických prostředích. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) verze 1.0.8. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
+Pokud hostitelský počítač není Azure Stack hraniční zařízení, bude nutné nainstalovat [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) verze 1.0.9. Chcete-li stáhnout správnou verzi, postupujte podle následujících kroků:
 
 Ubuntu Server 18,04:
 ```bash
@@ -286,10 +286,10 @@ Aktualizujte seznamy balíčků na vašem zařízení.
 sudo apt-get update
 ```
 
-Instalace verze 1.0.8:
+Instalace verze 1.0.9:
 
 ```bash
-sudo apt-get install iotedge=1.0.8* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
 ```
 
 V dalším kroku Zaregistrujte hostitelský počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal).
@@ -314,7 +314,7 @@ Pomocí následujících kroků nasaďte kontejner pomocí Azure CLI.
 
 ### <a name="iot-deployment-manifest"></a>Manifest nasazení IoT
 
-Chcete-li zjednodušit nasazování kontejnerů na více hostitelských počítačích, můžete vytvořit soubor manifestu nasazení a zadat možnosti vytvoření kontejneru a proměnné prostředí. Příklad [manifestu nasazení můžete najít na GitHubu](https://go.microsoft.com/fwlink/?linkid=2142179).
+Chcete-li zjednodušit nasazování kontejnerů na více hostitelských počítačích, můžete vytvořit soubor manifestu nasazení a zadat možnosti vytvoření kontejneru a proměnné prostředí. Můžete najít příklad manifestu nasazení [pro Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) a  [Další stolní počítače](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) na GitHubu.
 
 V následující tabulce jsou uvedeny různé proměnné prostředí používané modulem IoT Edge. Můžete je také nastavit v manifestu nasazení výše, pomocí `env` atributu v `spatialanalysis` :
 
@@ -335,17 +335,16 @@ V následující tabulce jsou uvedeny různé proměnné prostředí používan�
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Aby bylo možné spustit kontejner, musí být zadány možnosti, a. v opačném případě se kontejner nespustí.  Další informace najdete v tématu [fakturace](#billing).
 
-Po aktualizaci ukázkové [DeploymentManifest.jsv](https://go.microsoft.com/fwlink/?linkid=2142179) souboru s vlastním nastavením a výběrem operací můžete použít následující příkaz rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) k nasazení kontejneru v hostitelském počítači jako modul IoT Edge.
+Jakmile aktualizujete manifest nasazení pro [Azure Stack hraničních zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) s vlastním nastavením a výběrem operací, můžete použít následující příkaz rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) k nasazení kontejneru v hostitelském počítači, jako modul IoT Edge.
 
 ```azurecli
 az login
 az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json -–subscription "<subscriptionId>"
+az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
 |Parametr  |Popis  |
 |---------|---------|
-| `--deployment-id` | Nový název pro nasazení. |
 | `--hub-name` | Název Azure IoT Hub. |
 | `--content` | Název souboru nasazení. |
 | `--target-condition` | Název zařízení IoT Edge pro hostitelský počítač. |
@@ -386,7 +385,7 @@ Přejděte do části **Container** a buď vytvořte nový kontejner, nebo použ
 
 Klikněte na **vygenerovat token SAS a adresu URL** a zkopírujte adresu URL SAS objektu BLOB. Nahraďte začínající `https` `http` a otestujte adresu URL v prohlížeči, který podporuje přehrávání videa.
 
-Nahraďte `VIDEO_URL` v [manifestu nasazení](https://go.microsoft.com/fwlink/?linkid=2142179) pomocí adresy URL, kterou jste vytvořili, pro všechny grafy. Nastavte `VIDEO_IS_LIVE` na `false` a znovu nasaďte kontejner prostorové analýzy s aktualizovaným manifestem. Viz následující příklad.
+Nahraďte `VIDEO_URL` v manifestu nasazení pro vaše [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo jiný [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) s adresou URL, kterou jste vytvořili, pro všechny grafy. Nastavte `VIDEO_IS_LIVE` na `false` a znovu nasaďte kontejner prostorové analýzy s aktualizovaným manifestem. Viz následující příklad.
 
 Modul pro prostorové analýzy začne spotřebovávat videosoubor a bude se nepřetržitě automaticky přehrávat také.
 

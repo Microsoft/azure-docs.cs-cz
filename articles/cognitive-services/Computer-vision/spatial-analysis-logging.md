@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254070"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496112"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie a řešení potíží
 
@@ -23,9 +23,9 @@ Prostorová analýza zahrnuje sadu funkcí pro monitorování stavu systému, kt
 
 ## <a name="enable-visualizations"></a>Povolit vizualizace
 
-Pokud chcete povolit vizualizaci událostí AI Insights ve snímku videa, musíte použít `.debug` verzi [operace prostorové analýzy](spatial-analysis-operations.md). K dispozici jsou čtyři operace ladění.
+Pokud chcete povolit vizualizaci událostí AI Insights ve snímku videa, musíte použít `.debug` verzi [operace prostorové analýzy](spatial-analysis-operations.md) na stolním počítači. Vizualizace není možná na Azure Stack hraničních zařízeních. K dispozici jsou čtyři operace ladění.
 
-Upravte [manifest nasazení](https://go.microsoft.com/fwlink/?linkid=2142179) tak, aby používal správnou hodnotu pro `DISPLAY` proměnnou prostředí. Musí se shodovat s `$DISPLAY` proměnnou v hostitelském počítači. Po aktualizaci manifestu nasazení znovu nasaďte kontejner.
+Pokud vaše zařízení není Azure Stack hraniční zařízení, upravte soubor manifestu nasazení pro [stolní počítače](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) tak, aby se pro proměnnou prostředí používala správná hodnota `DISPLAY` . Musí se shodovat s `$DISPLAY` proměnnou v hostitelském počítači. Po aktualizaci manifestu nasazení znovu nasaďte kontejner.
 
 Po dokončení nasazení bude pravděpodobně nutné zkopírovat `.Xauthority` soubor z hostitelského počítače do kontejneru a restartovat jej. V následující ukázce `peopleanalytics` je název kontejneru v hostitelském počítači.
 
@@ -39,7 +39,7 @@ xhost +
 
 ## <a name="collect-system-health-telemetry"></a>Shromažďování telemetrie stavu systému
 
-Telegraf je open source obrázek, který pracuje s prostorovou analýzou a je k dispozici v Microsoft Container Registry. Přebírá následující vstupy a odesílá je do Azure Monitor. Modul telegraf se dá sestavit s požadovanými vlastními vstupy a výstupy. Konfigurace modulu telegraf v prostorové analýze je součástí [manifestu nasazení](https://go.microsoft.com/fwlink/?linkid=2142179). Tento modul je nepovinný a je možné ho odebrat z manifestu, pokud ho nepotřebujete. 
+Telegraf je open source obrázek, který pracuje s prostorovou analýzou a je k dispozici v Microsoft Container Registry. Přebírá následující vstupy a odesílá je do Azure Monitor. Modul telegraf se dá sestavit s požadovanými vlastními vstupy a výstupy. Konfigurace modulu telegraf v prostorové analýze je součástí manifestu nasazení (odkaz výše). Tento modul je nepovinný a je možné ho odebrat z manifestu, pokud ho nepotřebujete. 
 
 Vztahují 
 1. Metriky prostorové analýzy
@@ -51,7 +51,7 @@ Vztahují
 Činnosti
 1. Azure Monitor
 
-Zadaný modul telegrafa prostorových analýz bude publikovat všechna data telemetrie vygenerovaná kontejnerem prostorové analýzy do Azure Monitor. Informace o přidání služby Azure monitor do předplatného najdete v [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) .
+Zadaný modul telegrafa prostorových analýz bude publikovat všechna data telemetrie vygenerovaná kontejnerem prostorové analýzy do Azure Monitor. Informace o přidání Azure Monitor do předplatného najdete v [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) .
 
 Po nastavení Azure Monitor budete muset vytvořit přihlašovací údaje, které modulu umožní odeslat telemetrii. K vytvoření nového instančního objektu můžete použít Azure Portal, nebo ho vytvořit pomocí příkazu Azure CLI níže.
 
@@ -68,14 +68,14 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-V [manifestu nasazení](https://go.microsoft.com/fwlink/?linkid=2142179)vyhledejte modul *telegraf* a nahraďte následující hodnoty informacemi o instančních objektech z předchozího kroku a znovu nasaďte.
+V manifestu nasazení [Azure Stack hraničního zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo jiném [stolním počítači](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)vyhledejte modul *telegraf* a nahraďte následující hodnoty informace o instančním objektu z předchozího kroku a znovu proveďte nasazení.
 
 ```json
 
 "telegraf": { 
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
 "env": {
@@ -103,21 +103,21 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ### <a name="system-health-events"></a>Události stavu systému
 
-| Název události | Description|
+| Název události | Popis|
 |------|---------|
-|archon_exit    |Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
-|archon_error   |Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.  |
-|InputRate  |Rychlost, s jakou graf zpracovává vstup videa Nahlášeno každých 5 minut. | 
-|OutputRate     |Rychlost, s jakou má graf výstup AI Insights Nahlášeno každých 5 minut. |
-|archon_allGraphsStarted | Odesílá se, když se spustí všechny grafy. |
-|archon_configchange    | Odesílá se, když se změní konfigurace grafu. |
-|archon_graphCreationFailed     |Odesílá se, když se nepovede spustit graf s nahlášeným řetězcem `graphId` . |
-|archon_graphCreationSuccess    |Odesílá se, když se graf s nahlášeným `graphId` spuštěním úspěšně spustí. |
-|archon_graphCleanup    | Odesílá se, když se graf s nahlášeným `graphId` čištěním vyčistí a ukončí. |
-|archon_graphHeartbeat  |Prezenční signál se odesílá každou minutu každého grafu dovednosti. |
+|archon_exit    |Odesílá se, když uživatel změní stav modulu prostorové analýzy ze *spuštěno* na *Zastaveno*.  |
+|archon_error   |Odesílá se v případě, že dojde k chybě kontejneru v případě jakéhokoli procesu. Toto je kritická chyba.  |
+|InputRate  |Rychlost, s jakou graf zpracovává vstup videa Nahlášeno každých 5 minut. | 
+|OutputRate     |Rychlost, s jakou má graf výstup AI Insights Nahlášeno každých 5 minut. |
+|archon_allGraphsStarted | Odesílá se, když se spustí všechny grafy. |
+|archon_configchange    | Odesílá se, když se změní konfigurace grafu. |
+|archon_graphCreationFailed     |Odesílá se, když se nepovede spustit graf s nahlášeným řetězcem `graphId` . |
+|archon_graphCreationSuccess    |Odesílá se, když se graf s nahlášeným `graphId` spuštěním úspěšně spustí. |
+|archon_graphCleanup    | Odesílá se, když se graf s nahlášeným `graphId` čištěním vyčistí a ukončí. |
+|archon_graphHeartbeat  |Prezenční signál se odesílá každou minutu každého grafu dovednosti. |
 |archon_apiKeyAuthFail |Odesílá se, když klíč prostředku Počítačové zpracování obrazu nedokáže ověřit kontejner po dobu delší než 24 hodin z následujících důvodů: mimo kvótu, neplatné, offline. |
-|VideoIngesterHeartbeat     |Odesílá se každou hodinu, která indikuje, že video se streamuje ze zdroje videa, a to s počtem chyb v této hodině. Oznamuje se pro každý graf. |
-|VideoIngesterState | Sestavy se *zastavily* nebo se *spustily* pro streamování videa.Oznamuje se pro každý graf. |
+|VideoIngesterHeartbeat     |Odesílá se každou hodinu, která indikuje, že video se streamuje ze zdroje videa, a to s počtem chyb v této hodině. Oznamuje se pro každý graf. |
+|VideoIngesterState | Sestavy se *zastavily* nebo se *spustily* pro streamování videa. Oznamuje se pro každý graf. |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>Řešení potíží s IoT Edge zařízením
 
@@ -129,22 +129,17 @@ Po nasazení modulu telegraf můžete k nahlášeným metrikám přistup prostř
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Shromáždění souborů protokolu pomocí kontejneru diagnostiky
 
-Prostorová analýza vygeneruje protokoly ladění Docker, které můžete použít k diagnostice běhových problémů, nebo zahrnout do lístků podpory. Modul pro diagnostiku prostorových analýz je k dispozici na Container Registry Microsoftu, abyste si ho stáhli. V [manifestu ukázkového nasazení](https://go.microsoft.com/fwlink/?linkid=2142179)vyhledejte modul *diagnostiky* .
+Prostorová analýza vygeneruje protokoly ladění Docker, které můžete použít k diagnostice běhových problémů, nebo zahrnout do lístků podpory. Modul pro diagnostiku prostorových analýz je k dispozici na Container Registry Microsoftu, abyste si ho stáhli. V souboru nasazení manifestu pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo v jiném [stolním počítači](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)vyhledejte modul *diagnostiky* .
 
 V části "ENV" přidejte následující konfiguraci:
 
 ```json
-"diagnostics": {  
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
-  }
+"diagnostics": {  
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
+  }
 ```    
-
->[!NOTE]
-> Pokud nepoužíváte v prostředí Kubernetes pomocného mechanismu, nahraďte možnosti vytvoření kontejneru pro modul protokolování následujícím způsobem:
->
->`"createOptions": "{\"HostConfig\": {\"Binds\": [\"/var/run/docker.sock:/var/run/docker.sock\",\"/usr/bin/docker:/usr/bin/docker\"],\"LogConfig\": {\"Config\": {\"max-size\": \"500m\"}}}}"`
 
 K optimalizaci protokolů odeslaných do vzdáleného koncového bodu, jako je například Azure Blob Storage, doporučujeme zachovat malou velikost souboru. Doporučené konfigurace protokolů Docker najdete v níže uvedeném příkladu.
 
@@ -193,13 +188,13 @@ Dá se taky nastavit prostřednictvím vlákna s dvojitým odkazem IoT Edge modu
 > `diagnostics`Modul nemá vliv na obsah protokolování, pomáhá při shromažďování, filtrování a nahrávání stávajících protokolů.
 > Chcete-li použít tento modul, musíte mít rozhraní Docker API verze 1,40 nebo vyšší.
 
-[Ukázkový soubor manifestu nasazení](https://go.microsoft.com/fwlink/?linkid=2142179) obsahuje modul s názvem `diagnostics` , který shromažďuje a odesílá protokoly. Tento modul je ve výchozím nastavení zakázán a měl by být povolený prostřednictvím konfigurace IoT Edge modulu, pokud potřebujete přístup k protokolům. 
+Ukázkový soubor manifestu nasazení pro [zařízení Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) nebo jiný [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)  obsahuje modul s názvem `diagnostics` , který shromažďuje a odesílá protokoly. Tento modul je ve výchozím nastavení zakázán a měl by být povolený prostřednictvím konfigurace IoT Edge modulu, pokud potřebujete přístup k protokolům. 
 
 `diagnostics`Kolekce je na vyžádání a ovládána prostřednictvím IoT Edge přímé metody a může odesílat protokoly do Azure Blob Storage.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Konfigurace cílů nahrávání diagnostiky
 
-Na portálu IoT Edge vyberte zařízení a pak modul **diagnostiky** . V ukázkovém souboru [*DeploymentManifest.jsna*](https://go.microsoft.com/fwlink/?linkid=2142179), vyhledejte oddíl **proměnné prostředí** pro diagnostiku s názvem "ENV" a přidejte následující informace:
+Na portálu IoT Edge vyberte zařízení a pak modul **diagnostiky** . V souboru manifestu ukázkového nasazení pro [Azure Stack hraniční zařízení](https://go.microsoft.com/fwlink/?linkid=2142179) nebo v jiných [stolních počítačích](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)vyhledejte oddíl **proměnné prostředí** pro diagnostiku s názvem `env` a přidejte následující informace:
 
 **Konfigurace nahrávání do Azure Blob Storage**
 
@@ -221,9 +216,9 @@ Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v
 
 
 1. Přejít na stránku IoT Hub portálu, vyberte **hraniční zařízení**a pak vyberte zařízení a modul diagnostiky. 
-2. Přejděte na stránku podrobností modulu a klikněte na kartu ***Přímá metoda*** .
+2. Přejděte na stránku podrobností modulu a klikněte na kartu **_Přímá metoda_*_.
 3. `getRTCVLogs`V datové části zadejte název metody a řetězec formátu JSON. Můžete zadat `{}` , což je prázdná datová část. 
-4. Nastavte časový limit připojení a metody a klikněte na **vyvolat metodu**.
+4. Nastavte časový limit připojení a metody a klikněte na _ * vyvolat metodu * *.
 5. Vyberte cílový kontejner a vytvořte řetězec JSON datové části pomocí parametrů popsaných v části **syntaxe protokolování** . Pro provedení žádosti klikněte na **vyvolat metodu** .
 
 >[!NOTE]
@@ -237,7 +232,7 @@ Protokoly se nahrávají na vyžádání pomocí `getRTCVLogs` metody IoT Edge v
 
 Následující tabulka obsahuje seznam parametrů, které můžete použít při dotazování protokolů.
 
-| Klíčové slovo | Description | Výchozí hodnota |
+| Klíčové slovo | Popis | Výchozí hodnota |
 |--|--|--|
 | StartTime | Čas spuštění požadovaných protokolů v milisekundách UTC | `-1`, začátek modulu runtime kontejneru. Když `[-1.-1]` se použije jako časový rozsah, rozhraní API vrátí protokoly za poslední hodinu.|
 | EndTime | Požadovaný čas ukončení protokolů v milisekundách UTC. | `-1`, aktuální čas. Když `[-1.-1]` se použije časový rozsah, rozhraní API vrátí protokoly za poslední hodinu. |
@@ -248,9 +243,9 @@ Následující tabulka obsahuje seznam parametrů, které můžete použít při
 
 V následující tabulce jsou uvedeny atributy v odpovědi na dotaz.
 
-| Klíčové slovo | Description|
+| Klíčové slovo | Popis|
 |--|--|
-|DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Neodesílat protokoly, vrátí rozhraní API informace ***synchronně***. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je požadavek platný, a spustí odesílání protokolů ***asynchronně***.|
+|DoPost| Buď *hodnotu true* , nebo *false*. Určuje, jestli jsou protokoly nahrané nebo ne. Pokud se rozhodnete Nenahrávat protokoly, rozhraní API vrátí informace ***synchronně**_. Pokud se rozhodnete odeslat protokoly, rozhraní API vrátí 200, pokud je požadavek platný, a spustí odesílání protokolů _*_asynchronně_*_.|
 |TimeFilter| Filtr času aplikovaný na protokoly.|
 |ValueFilters| Filtry klíčových slov použité pro protokoly. |
 |Časové razítko| Čas spuštění metody |
@@ -303,7 +298,7 @@ V následující tabulce jsou uvedeny atributy v odpovědi na dotaz.
 }
 ```
 
-Zkontrolujte řádky, časy a velikosti protokolu načtení a v případě, že tato nastavení vypadají dobře, nahraďte ***DoPost*** do `true` a tím, že protokoly budou nabízeny stejným filtrům do cílových umístění. 
+Zkontrolujte řádky, časy a velikosti protokolu načtení a v případě, že tato nastavení vypadají dobře, nahraďte _*_DoPost_*_ do `true` a tím, že protokoly budou nabízeny stejným filtrům do cílových umístění. 
 
 Při řešení potíží můžete exportovat protokoly z Azure Blob Storage. 
 
@@ -319,9 +314,9 @@ Další informace najdete v tématu [schválení žádosti o spuštění kontejn
 
 Následující část je k dispozici pro nápovědu k ladění a ověřování stavu zařízení Azure Stack Edge.
 
-### <a name="access-the-kubernetes-api-endpoint"></a>Přístup ke koncovému bodu rozhraní Kubernetes API. 
+### <a name="access-the-kubernetes-api-endpoint"></a>Přístup ke koncovému bodu rozhraní Kubernetes API. 
 
-1. V místním uživatelském rozhraní zařízení přejdete na stránku **zařízení** . 
+1. V místním uživatelském rozhraní zařízení, otevřete stránku _*zařízení**. 
 2. V části **koncové body zařízení**zkopírujte koncový bod služby API Kubernetes. Tento koncový bod je řetězec v následujícím formátu: `https://compute..[device-IP-address]` .
 3. Uložte řetězec koncového bodu. Později to budete používat při konfiguraci `kubectl` pro přístup ke clusteru Kubernetes.
 

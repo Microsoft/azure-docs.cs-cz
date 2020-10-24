@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0c760a3a2f6300108c1739f18ef9fa97a40dd833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021931"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476922"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>Diagnostika a řešení potíží s Azure Cosmos DBmi výjimkami časového limitu požadavku .NET SDK
 K chybě HTTP 408 dojde v případě, že sada SDK nemohla dokončit požadavek předtím, než došlo k vypršení časového limitu.
@@ -28,7 +28,7 @@ Sada SDK obsahuje dvě odlišné alternativy k řízení časových limitů, z n
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-Všechny asynchronní operace v sadě SDK mají volitelný parametr CancellationToken. Tento parametr [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) se používá v celé operaci v rámci všech síťových požadavků. V mezi síťovými požadavky může být zkontrolován token zrušení a operace byla zrušena, pokud vypršela platnost souvisejícího tokenu. Token zrušení by měl být použit k definování přibližné očekávaného časového limitu oboru operace.
+Všechny asynchronní operace v sadě SDK mají volitelný parametr CancellationToken. Tento parametr [CancellationToken](/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) se používá v celé operaci v rámci všech síťových požadavků. V mezi síťovými požadavky může být zkontrolován token zrušení a operace byla zrušena, pokud vypršela platnost souvisejícího tokenu. Token zrušení by měl být použit k definování přibližné očekávaného časového limitu oboru operace.
 
 > [!NOTE]
 > `CancellationToken`Parametr je mechanismus, ve kterém bude knihovna kontrolovat zrušení, pokud to [nezpůsobí neplatnost stavu](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/). Operace se nemusí zrušit přesně tehdy, když je čas definovaný ve zrušení. Místo toho se po uplynutí této doby zruší, jakmile to bude bezpečné.

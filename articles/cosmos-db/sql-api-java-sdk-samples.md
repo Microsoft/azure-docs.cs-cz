@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: ead5ab6f914db951027406e43437ac30a4f85247
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: afc9633c32174cbe1d94535d68e4c8f85f3d137b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279264"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478062"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API: příklady Java SDK v4
 
@@ -124,7 +124,7 @@ Soubor [ukázek pro CRUD kolekce](https://github.com/Azure/azure-documentdb-java
 
 ## <a name="autoscale-collection-examples"></a>Příklady kolekce automatického škálování
 
-Další informace o automatickém škálování před spuštěním těchto ukázek najdete v těchto pokynech k povolení automatického škálování ve vašem [účtu](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/) a ve vašich [databázích a kontejnerech](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale).
+Další informace o automatickém škálování před spuštěním těchto ukázek najdete v těchto pokynech k povolení automatického škálování ve vašem [účtu](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/) a ve vašich [databázích a kontejnerech](./provision-throughput-autoscale.md).
 
 Soubor [vzorků s ukázkami databáze pro databázi automatického škálování](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java) ukazuje, jak provádět následující úlohy.
 
@@ -163,7 +163,7 @@ Soubor [ukázek dokumentů CRUD](https://github.com/Azure/azure-documentdb-java/
 | [Čtení dokumentu jenom v případě, že došlo k jeho změně](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L266-L300) | AccessCondition.setType<br>AccessCondition.setCondition |
 
 ## <a name="indexing-examples"></a>Příklady indexování
-Soubor [ukázek pro CRUD kolekce](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) ukazuje, jak provádět následující úlohy. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-types.md)a [indexovaných cestách](index-paths.md) . 
+Soubor [ukázek pro CRUD kolekce](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) ukazuje, jak provádět následující úlohy. Další informace o indexování v Azure Cosmos DB před spuštěním následujících ukázek najdete v článku o [zásadách indexování](index-policy.md), [typech indexování](index-overview.md#index-kinds)a [indexovaných cestách](index-policy.md#include-exclude-paths) . 
 
 | Úloha | API – referenční informace |
 | --- | --- |
@@ -180,7 +180,7 @@ Soubor [ukázek pro CRUD kolekce](https://github.com/Azure/azure-documentdb-java
 Další informace o indexování najdete v tématu pojednávajícím o [zásadách indexování služby Azure DB Cosmos](index-policy.md).
 
 ## <a name="query-examples"></a>Příklady dotazů
-V souboru [ukázek dotazů](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) se dozvíte, jak provádět následující úlohy pomocí gramatiky dotazů SQL. Další informace o odkazech na dotaz SQL v Azure Cosmos DB před spuštěním následujících ukázek najdete v tématu [příklady dotazů SQL pro Azure Cosmos DB](how-to-sql-query.md). 
+V souboru [ukázek dotazů](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java) se dozvíte, jak provádět následující úlohy pomocí gramatiky dotazů SQL. Další informace o odkazech na dotaz SQL v Azure Cosmos DB před spuštěním následujících ukázek najdete v tématu [příklady dotazů SQL pro Azure Cosmos DB](./sql-query-getting-started.md). 
 
 | Úloha | API – referenční informace |
 | --- | --- |

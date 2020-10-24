@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be987b99c60185647ab976691d42b72236c6364
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84423917"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496060"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
@@ -19,10 +19,14 @@ K exkluzivnímu používání protokolu TLS (Transport Layer Security) verze 1,2
 
 V rámci tohoto úsilí budeme provádět následující změny v mezipaměti Azure pro Redis:
 
-* **Fáze 1:** Nastavíme výchozí minimální verzi TLS na 1,2 pro nově vytvořené instance mezipaměti (dříve TLS 1,0).  Existující instance mezipaměti se v tomto okamžiku neaktualizují. V případě potřeby budete moct [změnit minimální verzi TLS](cache-configure.md#access-ports) zpátky na 1,0 nebo 1,1 na zpětnou kompatibilitu. Tato změna se dá udělat prostřednictvím Azure Portal nebo jiných rozhraní API pro správu.
-* **Fáze 2:** Přestanou podporovat verze TLS 1,0 a 1,1. Po této změně bude vaše aplikace vyžadovat použití TLS 1,2 nebo novější ke komunikaci s mezipamětí.
+* **Fáze 1:** Nastavíme výchozí minimální verzi TLS na 1,2 pro nově vytvořené instance mezipaměti (dříve byla TLS 1,0). Existující instance mezipaměti se v tomto okamžiku neaktualizují. V případě potřeby můžete použít Azure Portal nebo jiná rozhraní API pro správu ke [změně minimální verze protokolu TLS](cache-configure.md#access-ports) na 1,0 nebo 1,1 na zpětnou kompatibilitu.
+* **Fáze 2:** Zastavíme podporu TLS 1,1 a TLS 1,0. Po této změně musí vaše aplikace používat protokol TLS 1,2 nebo novější ke komunikaci s mezipamětí. Očekává se, že služba Azure cache for Redis bude k dispozici, i když ji migrujeme tak, aby podporovala pouze TLS 1,2 nebo novější.
 
-Kromě toho se v rámci této změny odstraní podpora pro starší, nezabezpečené sady šifrováním.  Naše podporované sady šifrováním budou omezeny na následující, pokud je mezipaměť konfigurována s minimální verzí TLS 1,2.
+  > [!NOTE]
+  > Fáze 2 se nezávazně plánuje zahájit od 31. prosince 2020. Důrazně však doporučujeme začít plánovat tuto změnu nyní a aktivně aktualizovat klienty na podporu TLS 1,2 nebo novější. 
+  >
+
+V rámci této změny také odebereme podporu pro starší sady šifrováním, které nejsou zabezpečené. Naše podporované sady šifrováním budou omezeny na následující sady, pokud je mezipaměť konfigurována minimálně pomocí protokolu TLS 1,2:
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
@@ -33,12 +37,14 @@ Datum, kdy se tyto změny projeví:
 
 | Cloud                | Počáteční datum fáze 1 | Počáteční datum fáze 2         |
 |----------------------|--------------------|----------------------------|
-| Azure (Global)       |  13. ledna 2020  | Odloženo z důvodu COVID 19  |
-| Azure Government     |  13. března 2020    | Odloženo z důvodu COVID 19  |
-| Azure (Německo)        |  13. března 2020    | Odloženo z důvodu COVID 19  |
-| Azure (Čína) 21Vianet |  13. března 2020    | Odloženo z důvodu COVID 19  |
+| Azure (Global)       |  13. ledna 2020  | Odloženo z důvodu COVID-19  |
+| Azure Government     |  13. března 2020    | Odloženo z důvodu COVID-19  |
+| Azure (Německo)        |  13. března 2020    | Odloženo z důvodu COVID-19  |
+| Azure (Čína) 21Vianet |  13. března 2020    | Odloženo z důvodu COVID-19  |
 
-Poznámka: nové datum pro fázi 2 ještě není určeno.
+> [!NOTE]
+> Fáze 2 se nezávazně plánuje zahájit od 31. prosince 2020. Tento článek bude aktualizován, pokud jsou nastavena konkrétní data.
+>
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Ověřte, zda je aplikace již kompatibilní.
 

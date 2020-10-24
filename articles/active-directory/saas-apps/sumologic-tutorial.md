@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: a14235cb4fc20147accc8eb8a0e421cbc4df90f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c604a3edcee0c34df2817c7bbebf0f3ad4fada67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533606"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SumoLogic
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat SumoLogic s Azure Active Directory (Az
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -107,7 +107,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace SumoLogic několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    |  Název | Zdrojový atribut |
+    |  Name | Zdrojový atribut |
     | ---------------| --------------- |
     | FirstName | User. křestní jméno |
     | LastName | User. příjmení |
@@ -168,11 +168,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V seznamu **Vybrat konfiguraci nebo vytvořit nový** vyberte **Azure AD**a pak klikněte na **Konfigurovat**.
 
-    ![Konfigurace SAML 2,0](./media/sumologic-tutorial/ic778558.png "Konfigurace SAML 2,0")
+    ![Snímek obrazovky zobrazuje konfiguraci SAML 2,0, kde můžete vybrat Azure A D.](./media/sumologic-tutorial/ic778558.png "Konfigurace SAML 2,0")
 
 1. V dialogovém okně **Konfigurace SAML 2,0** proveďte následující kroky:
 
-    ![Konfigurace SAML 2,0](./media/sumologic-tutorial/ic778559.png "Konfigurace SAML 2,0")
+    ![Snímek obrazovky se zobrazí dialogové okno Konfigurace SAML 2,0, kde můžete zadat hodnoty, které jsou popsány.](./media/sumologic-tutorial/ic778559.png "Konfigurace SAML 2,0")
 
     a. Do textového pole **název konfigurace** zadejte **Azure AD**.
 
@@ -200,11 +200,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k SumoLogic, musí se zřídit a
 
 1. Přejít na **Správa \> uživatelů**
 
-    ![Uživatelé](./media/sumologic-tutorial/ic778561.png "Uživatelé")
+    ![Snímek obrazovky zobrazuje uživatele vybrané v nabídce spravovat.](./media/sumologic-tutorial/ic778561.png "Uživatelé")
 
 1. Klikněte na **Přidat**.
 
-    ![Uživatelé](./media/sumologic-tutorial/ic778562.png "Uživatelé")
+    ![Snímek obrazovky se zobrazí tlačítko Přidat pro uživatele.](./media/sumologic-tutorial/ic778562.png "Uživatelé")
 
 1. V dialogovém okně **Nový uživatel** proveďte následující kroky:
 
@@ -227,7 +227,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici SumoLogic, měli byste se automaticky přihlásit k SumoLogic, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

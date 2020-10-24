@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e214607b82a44fb1b6859a3c73d58907fbb279d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad025d2278d6c9ab360ddbdc250e8db4b4eec665
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91710732"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495754"
 ---
 # <a name="what-is-azure-machine-learning"></a>Co je Azure Machine Learning?
 
@@ -128,7 +128,8 @@ Váš Azure Storage účet, výpočetní cíle a další prostředky se dají v 
 ## <a name="next-steps"></a>Další kroky
 
 - Vytvořte svůj první experiment s upřednostňovanou metodou:
-  + [Použití poznámkových bloků Pythonu k učení & nasazení modelů ML](tutorial-1st-experiment-sdk-setup.md)
+- + [Začněte ve vlastním vývojovém prostředí](tutorial-1st-experiment-sdk-setup-local.md)
+  + [Použití poznámkových bloků Jupyter na výpočetní instanci ke školení & nasazení modelů ML](tutorial-1st-experiment-sdk-setup.md)
   + [Použití R Markdown ke školení & nasazení modelů ML](tutorial-1st-r-experiment.md) 
   + [Použití automatizovaného strojového učení ke studiu & nasazení modelů ML](tutorial-first-experiment-automated-ml.md) 
   + [Použití možností přetažení & designeru pro výuku & nasazení](tutorial-designer-automobile-price-train-score.md) 

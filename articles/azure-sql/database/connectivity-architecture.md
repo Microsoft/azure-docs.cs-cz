@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325381"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479081"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Architektura připojení Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,7 +31,7 @@ Tento článek vysvětluje architekturu různých komponent, které směrují s�
 
 Následující diagram poskytuje podrobný přehled architektury připojení.
 
-![Přehled architektury](./media/connectivity-architecture/connectivity-overview.png)
+![Diagram, který zobrazuje podrobný přehled architektury připojení.](./media/connectivity-architecture/connectivity-overview.png)
 
 Následující kroky popisují, jak se naváže připojení k Azure SQL Database:
 
@@ -63,7 +63,7 @@ Pokud se připojujete z v rámci Azure, mají připojení `Redirect` ve výchoz�
 
 Pokud se připojujete z oblasti mimo Azure, připojení mají `Proxy` ve výchozím nastavení zásady připojení. Zásada `Proxy` znamená, že je relace TCP vytvořená prostřednictvím brány Azure SQL Database a všech následných paketů toku prostřednictvím brány. Tento tok přenosů znázorňuje následující diagram.
 
-![Přehled architektury](./media/connectivity-architecture/connectivity-onprem.png)
+![Diagram znázorňující, jak se vytváří relace protokolu TCP prostřednictvím Azure SQL Database brány a všech následných paketů v toku prostřednictvím brány.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
 > Kromě toho otevřete porty TCP 1434 a 14000-14999, abyste umožnili [připojení pomocí DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) .
@@ -89,7 +89,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
 | Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| USA – východ              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA – východ 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
@@ -98,7 +98,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Indie – střed        | 104.211.96.159     |
 | Indie – jih          | 104.211.224.146    |
 | Indie – západ           | 104.211.160.80     |
-| Japan East           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
+| Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 |
 | Jižní Korea – střed        | 52.231.32.42       |
 | Jižní Korea – jih          | 52.231.200.86      |

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570664"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486136"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurace zápisů ve více oblastech v aplikacích, které používají Azure Cosmos DB
 
@@ -129,8 +129,8 @@ Přečtěte si následující články:
 * [Typy konfliktů a zásady řešení v Azure Cosmos DB](conflict-resolution-policies.md)
 * [Vysoká dostupnost v Azure Cosmos DB](high-availability.md)
 * [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md)
-* [Vyberte správnou úroveň konzistence v Azure Cosmos DB](consistency-levels-choosing.md)
-* [Kompromisy konzistence, dostupnosti a výkonu v Azure Cosmos DB](consistency-levels-tradeoffs.md)
-* [Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
-* [Zřízená propustnost globálního škálování](scaling-throughput.md)
+* [Vyberte správnou úroveň konzistence v Azure Cosmos DB](./consistency-levels.md)
+* [Kompromisy konzistence, dostupnosti a výkonu v Azure Cosmos DB](./consistency-levels.md)
+* [Kompromisy týkající se dostupnosti a výkonu pro různé úrovně konzistence](./consistency-levels.md)
+* [Zřízená propustnost globálního škálování](./request-units.md)
 * [Globální distribuce: pod digestoří](global-dist-under-the-hood.md)

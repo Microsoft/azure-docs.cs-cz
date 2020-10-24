@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78addb76e2ce7a2679358e241650cc5cc827791f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461613"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495915"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Připojení aplikací Azure Functions pro zpracování dat
 
@@ -186,26 +186,28 @@ Přístup zabezpečení pro aplikaci Azure Function App můžete nastavit pomoc�
 
 Funkce Azure Functions z předchozích příkladů vyžaduje předání nosných tokenů, aby bylo možné ho ověřit pomocí digitálních vláken Azure. Abyste se ujistili, že je tento nosný token předán, budete muset pro aplikaci Function App nastavit [Identita spravované služby (MSI)](../active-directory/managed-identities-azure-resources/overview.md) . Tento postup je nutné provést pouze jednou pro každou aplikaci Function App.
 
-Můžete vytvořit systémově spravovanou identitu a přiřadit jí identitu aplikace Function App k roli _vlastníka (Preview) digitálních vláken Azure_ pro instanci digitálního vlákna Azure. Tím se v instanci poskytne oprávnění aplikace Function App, aby se prováděly aktivity roviny dat. Pak zajistěte, aby byla adresa URL instance digitálního vlákna Azure dostupná pro vaši funkci nastavením proměnné prostředí.
+Můžete vytvořit systémově spravovanou identitu a přiřadit jí identitu aplikace Function App k roli _**vlastníka dat digitálních vláken Azure**_ pro instanci digitálního vlákna Azure. Tím se v instanci poskytne oprávnění aplikace Function App, aby se prováděly aktivity roviny dat. Pak zajistěte, aby byla adresa URL instance digitálního vlákna Azure dostupná pro vaši funkci nastavením proměnné prostředí.
 
- Pomocí [Azure Cloud Shell](https://shell.azure.com) spusťte příkazy.
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
+
+Pomocí [Azure Cloud Shell](https://shell.azure.com) spusťte příkazy.
 
 Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poznamenejte si pole _principalId_ ve výstupu.
 
-```azurecli 
+```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-Pomocí hodnoty _principalId_ v následujícím příkazu přiřaďte identitě aplikace Function App roli _vlastníka digitálních vláken Azure (Preview)_ pro instanci digitálního vlákna Azure.
+Pomocí hodnoty _principalId_ v následujícím příkazu přiřaďte identitě aplikace funkcí do role _vlastníka dat digitálních vláken Azure_ pro vaši instanci digitálních vláken Azure.
 
-```azurecli 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive 
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 Nakonec můžete nastavit proměnnou prostředí tak, aby se adresa URL instance digitálního vlákna Azure pro vaši funkci přístupná. Další informace o nastavení proměnných prostředí naleznete v tématu [*proměnné prostředí*](/sandbox/functions-recipes/environment-variables). 
 
 > [!TIP]
 > Adresa URL instance digitálních vláken Azure se provede přidáním *https://* na začátek *názvu hostitele*instance digitálního vlákna Azure. Chcete-li zobrazit název hostitele spolu se všemi vlastnostmi vaší instance, můžete spustit `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
-```azurecli 
+```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 ### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>Možnost 2: nastavení přístupu zabezpečení pro aplikaci funkce Azure pomocí Azure Portal
@@ -241,7 +243,7 @@ Na stránce _Přidat přiřazení role (Preview)_ , která se otevře, vyberte:
 * _Obor:_ Skupina prostředků
 * _Předplatné_: vyberte předplatné Azure.
 * _Skupina prostředků_: z rozevíracího seznamu vyberte svoji skupinu prostředků.
-* _Role_: v rozevíracím seznamu vyberte _vlastníka digitálních vláken Azure (Preview)_ .
+* _Role_: vyberte z rozevíracího seznamu možnost _vlastník dat digitálních vláken Azure_ .
 
 Pak podrobnosti uložte kliknutím na tlačítko _Uložit_ .
 

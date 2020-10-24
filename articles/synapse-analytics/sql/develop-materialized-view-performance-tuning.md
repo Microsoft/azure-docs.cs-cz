@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289034"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474763"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu s využitím materializovaných zobrazení
 
@@ -37,8 +37,8 @@ Většina standardních požadavků zobrazení se pořád vztahuje na materializ
 |Zobrazení obsahu                    | Vygenerováno pokaždé, když je použito zobrazení.   | Předzpracovaná a uložená v Azure Data Warehouse během vytváření zobrazení. Aktualizováno při přidání dat do podkladových tabulek.
 |Aktualizace dat                    | Vždy Aktualizováno                               | Vždy Aktualizováno
 |Rychlost načtení dat zobrazení ze složitých dotazů     | Pomalá                                         | Rychlý  
-|Dodatečné úložiště                   | No                                           | Yes
-|Syntax                          | VYTVOŘIT ZOBRAZENÍ                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
+|Dodatečné úložiště                   | Ne                                           | Ano
+|Syntax                          | CREATE VIEW                                  | VYTVOŘIT MATERIALIZOVANÁ ZOBRAZENÍ JAKO VYBRAT
 
 ## <a name="benefits-of-materialized-views"></a>Výhody materializovaná zobrazení
 
@@ -79,7 +79,9 @@ V porovnání s dalšími možnostmi optimalizace, jako je například škálov�
 
 **Pro rychlejší výkon dotazů potřebujete jinou strategii distribuce dat**
 
-Azure Data Warehouse je distribuovaný a vysoce paralelní zpracování (MPP).   Data v tabulce datového skladu jsou distribuována mezi 60 uzlů pomocí jedné ze tří [strategií distribuce](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin nebo replikovaný).  
+Azure Data Warehouse je distribuovaný a vysoce paralelní zpracování (MPP).  
+
+Synapse SQL je distribuovaný systém dotazů, který podnikům umožňuje implementovat scénáře datových skladů a virtualizace dat pomocí standardních prostředí T-SQL, které znají technici pro práci s daty. Rozšiřuje také možnosti scénářů SQL pro řešení streamování a strojového učení. Data v tabulce datového skladu jsou distribuována mezi 60 uzlů pomocí jedné ze tří [strategií distribuce](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (hash, round_robin nebo replikovaný).  
 
 Distribuce dat je určena v okamžiku vytvoření tabulky a zůstane beze změny, dokud není tabulka vyřazena. Materializované zobrazení, které je virtuální tabulkou na disku, podporuje distribuce dat a round_robin.  Uživatelé můžou zvolit distribuci dat, která se liší od základních tabulek, ale optimální pro výkon dotazů, které často používají zobrazení.  
 

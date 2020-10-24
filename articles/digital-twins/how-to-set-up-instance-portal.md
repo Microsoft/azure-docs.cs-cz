@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0dfc93987fb2ca25b9e397e4aa91adcaaafd8a38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205476"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478821"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -75,7 +75,7 @@ Nejdřív otevřete stránku pro instanci digitálních vláken Azure v Azure Po
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 
 Na následující stránce *Přidat přiřazení role* vyplňte hodnoty (musí být dokončené uživatelem s [dostatečnými oprávněními](#prerequisites-permission-requirements) v předplatném Azure):
-* **Role**: v rozevírací nabídce vyberte *vlastníka digitálních vláken Azure (Preview)* .
+* **Role**: vyberte v rozevírací nabídce možnost *vlastník dat digitálních vláken Azure* .
 * **Přiřadit přístup k**: vyberte *uživatele, skupinu nebo INSTANČNÍ objekt Azure AD* z rozevírací nabídky.
 * **Vyberte**: Vyhledejte jméno nebo e-mailovou adresu uživatele, který chcete přiřadit. Když vyberete výsledek, uživatel se zobrazí v části *Vybrané členy* .
 
@@ -91,7 +91,7 @@ Až skončíte s zadáváním podrobností, stiskněte tlačítko *Uložit* .
 
 ### <a name="verify-success"></a>Ověřit úspěch
 
-Můžete zobrazit přiřazení role, které jste nastavili v části *řízení přístupu (IAM) > přiřazení rolí*. Uživatel by se měl zobrazit v seznamu s rolí *vlastníka digitálních vláken Azure (Preview)*. 
+Můžete zobrazit přiřazení role, které jste nastavili v části *řízení přístupu (IAM) > přiřazení rolí*. Uživatel by se měl zobrazit v seznamu s rolí *vlastníka dat digitálních vláken Azure*. 
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
 

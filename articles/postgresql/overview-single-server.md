@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 469235957ebe26dd44cc6ce464a68167629099ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946979"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476140"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL jeden server
 
@@ -81,8 +81,8 @@ Jedna serverová služba je vybavená integrovanými funkcemi pro monitorování
 
 Služba spouští komunitní verze PostgreSQL. To umožňuje úplnou kompatibilitu aplikací a vyžaduje minimální náklady na Refaktoring pro migraci existující aplikace vyvíjené na PostgreSQL stroji na jedinou serverovou službu. Migraci na jeden server lze provést pomocí jedné z následujících možností:
 
-- **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je Pg_dump, a Pg_restore můžou poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu [migrace pomocí výpisu paměti a obnovení](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore) .
-- **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace na jediný server s minimálními výpadky je možné využít Azure Database Migration Service. Viz [DMS prostřednictvím portálu](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) a [DMS prostřednictvím](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)rozhraní příkazového řádku.
+- **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je Pg_dump, a Pg_restore můžou poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu [migrace pomocí výpisu paměti a obnovení](./howto-migrate-using-dump-and-restore.md) .
+- **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace na jediný server s minimálními výpadky je možné využít Azure Database Migration Service. Viz [DMS prostřednictvím portálu](../dms/tutorial-postgresql-azure-postgresql-online-portal.md) a [DMS prostřednictvím](../dms/tutorial-postgresql-azure-postgresql-online.md)rozhraní příkazového řádku.
 
 ## <a name="contacts"></a>Kontakty
 
@@ -98,4 +98,3 @@ Můžete také využít tyto komunikační kanály:
 
 Teď, když jste si přečetli Úvod do Azure Database for PostgreSQL režimu nasazení na jeden server, jste připraveni:
 - Vytvořte svůj první server.
-  

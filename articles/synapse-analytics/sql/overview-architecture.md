@@ -1,6 +1,6 @@
 ---
 title: Architektura Synapse SQL
-description: Přečtěte si, jak Azure synapse SQL kombinuje výkonné paralelní zpracování (MPP) s Azure Storage pro zajištění vysokého výkonu a škálovatelnosti.
+description: Přečtěte si, jak Azure synapse SQL kombinuje funkce distribuovaného zpracování dotazů pomocí Azure Storage pro zajištění vysokého výkonu a škálovatelnosti.
 services: synapse-analytics
 author: mlee3gsd
 manager: rothja
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3b54ca72c92722dffa370b0b8be1ca2c490f97
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046862"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476004"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Architektura SQL Azure synapse 
 
@@ -35,7 +35,7 @@ V případě SQL na vyžádání bez serveru je škálování provedeno automati
 
 Synapse SQL používá architekturu založenou na uzlech. Aplikace připojují a vydávají příkazy T-SQL do řídicího uzlu, který je jediným bodem záznamu pro synapse SQL. 
 
-Uzel řízení fondu SQL používá modul MPP k optimalizaci dotazů pro paralelní zpracování a pak předává operace do výpočetních uzlů, aby fungovaly paralelně. 
+Řídicí uzel SQL Azure synapse využívá distribuovaný modul dotazů k optimalizaci dotazů na paralelní zpracování a pak předává operace do výpočetních uzlů, aby fungovaly paralelně. 
 
 Uzel řízení na vyžádání SQL využívá modul DQP (Distributed Query Processing) k optimalizaci a orchestraci distribuovaného spouštění dotazů uživatele rozdělením na menší dotazy, které se spustí na výpočetních uzlech. Každý malý dotaz se nazývá Task a představuje distribuovanou jednotku spuštění. Čte soubory z úložiště, spojuje výsledky z jiných úkolů, skupin nebo objednávek načtených z jiných úloh. 
 
@@ -61,7 +61,7 @@ SQL na vyžádání umožňuje dotazování souborů ve službě Data Lake způs
 
 Mozkem této architektury je řídicí uzel. Jde o front-end, který komunikuje se všemi aplikacemi a připojeními. 
 
-V rámci fondu SQL je modul MPP spuštěn v uzlu Control pro optimalizaci a koordinaci paralelních dotazů. Když odešlete dotaz T-SQL do fondu SQL, řídicí uzel ho transformuje na dotazy, které se spouštějí proti každé distribuci paralelně.
+V synapse SQL je distribuovaný dotazovací modul spuštěný v uzlu Control pro optimalizaci a koordinaci paralelních dotazů. Když odešlete dotaz T-SQL do fondu SQL, řídicí uzel ho transformuje na dotazy, které se spouštějí proti každé distribuci paralelně.
 
 V SQL na vyžádání se modul DQP spouští na ovládacím uzlu za účelem optimalizace a koordinace distribuovaného spouštění dotazů uživatele rozdělením na menší dotazy, které se spustí na výpočetních uzlech. Také přiřadí sady souborů, které mají být zpracovány každým uzlem.
 
@@ -69,7 +69,7 @@ V SQL na vyžádání se modul DQP spouští na ovládacím uzlu za účelem opt
 
 Výpočetní uzly poskytují výpočetní výkon. 
 
-Ve fondu SQL se distribuce mapují na výpočetní uzly ke zpracování. Když platíte za více výpočetních prostředků, fond přemapuje distribuci k dostupným výpočetním uzlům. Počet výpočetních uzlů je rozsah od 1 do 60 a je určen úrovní služeb pro fond SQL. Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že vyhledáte sloupec node_id v systémových zobrazeních, jejichž názvy začínají na sys.pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [Systémová zobrazení MPP](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Ve fondu SQL se distribuce mapují na výpočetní uzly ke zpracování. Když platíte za více výpočetních prostředků, fond přemapuje distribuci k dostupným výpočetním uzlům. Počet výpočetních uzlů je rozsah od 1 do 60 a je určen úrovní služeb pro fond SQL. Každý výpočetní uzel má ID uzlu, které je viditelné v systémových zobrazeních. ID výpočetního uzlu můžete zobrazit tak, že vyhledáte sloupec node_id v systémových zobrazeních, jejichž názvy začínají na sys.pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [synapse SQL System views](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
 V SQL na vyžádání je každému výpočetnímu uzlu přiřazen úkol a sada souborů, na kterých se má úloha spustit. Úkol je jednotka provádění distribuovaného dotazu, která je ve skutečnosti součástí odeslaného uživatele dotazu. Automatické škálování je v platnosti, aby se zajistilo, že se k provádění dotazů uživatele využívají dost výpočetních uzlů.
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/19/2020
+ms.date: 10/22/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b481a1ccf36120a30bf7c923e2d59c5782433567
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0ea5995dbd6397c37f88c302754bc7ac1e5ef089
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282504"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478265"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Použití Azure k hostování a spouštění scénářů pro úlohy SAP
 
@@ -79,6 +79,7 @@ V této části najdete dokumenty o integraci PowerBI do zdrojů dat SAP a také
 
 ## <a name="change-log"></a>Protokol změn
 
+- 10/22/2020: Změna [dostupnosti pro SAP NW na virtuálních počítačích Azure v SLES pro aplikace SAP](./high-availability-guide-suse.md), ha pro SAP NW na virtuálních počítačích Azure [v SLES s ANF](./high-availability-guide-suse-netapp-files.md), [ha pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP](./high-availability-guide-rhel.md) a ha pro SAP NW na virtuálních počítačích Azure v [RHEL s ANF](./high-availability-guide-rhel-netapp-files.md) pro úpravu doporučení pro NET.IPv4.tcp_keepalive_time  
 - 10/16/2020: Změna v [ha IBM DB2 LUW na virtuálních počítačích Azure v SLES s Pacemaker](./dbms-guide-ha-ibm.md), [ha pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP](./high-availability-guide-rhel.md), [ha IBM Db2 LUW na virtuálních počítačích Azure v RHEL](./high-availability-guide-rhel-ibm-db2-luw.md), [ha pro SAP NW](./high-availability-guide-rhel-multi-sid.md)na virtuálních počítačích Azure v RHEL [s](./high-availability-guide-rhel-netapp-files.md)RHEL, ha pro SAP [NW na virtuálních počítačích Azure v SLES pro aplikace SAP,](./high-availability-guide-suse.md)ha [pro SAP NNW na virtuálních počítačích](./high-availability-guide-suse-multi-sid.md)Azure v SLES, v SLES [s ANF pro aplikace SAP,](./high-availability-guide-suse-netapp-files.md)ha pro systém [souborů NFS na virtuálních počítačích](./high-availability-guide-suse-nfs.md)Azure v SLES, ha [v](./sap-hana-high-availability.md)systému Azure na SLES, ha pro SAP HANA [škálování pomocí ANF v RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) SAP HANA , [HA SAP HANA na virtuálních počítačích Azure v RHEL](./sap-hana-high-availability-rhel.md), [SAP HANA škálování na více instancí s Pacemaker na virtuálních počítačích Azure v RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), [Připravte infrastrukturu Azure pro SAP ASCS/SCS s WSFC a sdíleným diskem](./sap-high-availability-infrastructure-wsfc-shared-disk.md), [Průvodce pro SAP ASCS/SCS se](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) službou WSFC a sdílený disk Azure a průvodce pro SAP ASCS/SCS se službou WSFC a [sdíleným diskem](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) a s přidáním příkazu, který není v rámci scénářů vyrovnávání zatížení na sekundárních IP adres podporovaný 
 - 10/16/2020: Přidání dokumentace pro řízení snímků úložiště velkých instancí HANA v [zálohování a obnovení SAP HANA ve velkých instancích Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore)
 - 10/15/2020: vydání platformy SAP BusinessObjects BI v dokumentaci k Azure, [Průvodce plánováním a implementací platformy SAP BUSINESSOBJECTS BI v](businessobjects-deployment-guide.md) [Průvodci nasazením platformy Azure a SAP BusinessObjects BI Platform pro Linux v Azure](businessobjects-deployment-guide-linux.md)

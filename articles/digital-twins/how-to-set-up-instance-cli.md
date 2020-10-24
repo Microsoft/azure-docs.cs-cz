@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 081eb10166ff681990af15110829030176efa3fa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207763"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494985"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Nastavení instance a ověřování digitálních vláken Azure (CLI)
 
@@ -36,7 +36,7 @@ Tato verze tohoto článku prochází tyto kroky ručně, jednu po jedné, pomoc
 
 V této části **vytvoříte novou instanci digitálních vláken Azure** pomocí příkazu Cloud Shell. Budete muset zadat:
 * Skupina prostředků, ve které se má nasadit. Pokud ještě nemáte existující skupinu prostředků, můžete si ji vytvořit pomocí tohoto příkazu:
-    ```azurecli
+    ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * Oblast pro nasazení. Pokud chcete zjistit, které oblasti podporují digitální vlákna Azure, přejděte na [*produkty Azure dostupné v jednotlivých oblastech*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
@@ -44,7 +44,7 @@ V této části **vytvoříte novou instanci digitálních vláken Azure** pomoc
 
 Pomocí těchto hodnot v následujícím příkazu vytvořte instanci:
 
-```azurecli
+```azurecli-interactive
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
@@ -67,8 +67,8 @@ Teď máte k dispozici instanci digitálních vláken Azure, která je připrave
 
 Pomocí následujícího příkazu přiřaďte roli (musí být spuštěná uživatelem s [dostatečnými oprávněními](#prerequisites-permission-requirements) v předplatném Azure). Příkaz vyžaduje, abyste předali *hlavní název uživatele* v účtu Azure AD pro uživatele, kterému by se měla přiřadit role. Ve většině případů to bude odpovídat e-mailu uživatele v účtu služby Azure AD.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Data Owner"
 ```
 
 Výsledkem tohoto příkazu jsou informace o vytvořeném přiřazení role.

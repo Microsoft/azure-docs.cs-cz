@@ -8,14 +8,14 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: bea4a5d92309710645dd63e611cd0a5e3b742c34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0fe5c2af42e8d8095963e29149e1338cc064c90
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604247"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495183"
 ---
-# <a name="azure-key-vault-recovery-overview"></a>Přehled obnovení Azure Key Vault
+# <a name="how-to-enable-soft-delete-and-purge-protection"></a>Postup povolení ochrany proti odstranění a vyprázdnění
 
 Tento článek se zabývá dvěma funkcemi pro obnovení Azure Key Vault a ochranou proti odstranění a vyprázdnění. Tento dokument obsahuje přehled těchto funkcí a ukazuje, jak je spravovat prostřednictvím Azure Portal, Azure CLI a Azure PowerShell.
 

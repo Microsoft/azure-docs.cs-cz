@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570842"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475273"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB s využitím konektoru Power BI
 
@@ -25,14 +25,14 @@ Tento článek popisuje kroky potřebné k propojení účtu služby Azure Cosmo
 > [!NOTE]
 > Připojení k Azure Cosmos DB pomocí konektoru Power BI se v současné době podporuje jenom pro Azure Cosmos DB účty rozhraní SQL API a Gremlin API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než budete postupovat podle pokynů v tomto Power BI kurzu, ujistěte se, že máte přístup k následujícím prostředkům:
 
 * [Stáhněte si nejnovější verzi Power BI Desktop](https://powerbi.microsoft.com/desktop).
 
 * Stáhněte si [ukázková data Volcano](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) z GitHubu.
 
-* [Vytvořte účet databáze Azure Cosmos](https://azure.microsoft.com/documentation/articles/create-account/) a importujte data Volcano pomocí [Nástroje pro migraci dat Azure Cosmos DB](import-data.md). Při importu dat zvažte následující nastavení zdroje a cíle v nástroji pro migraci dat:
+* [Vytvořte účet databáze Azure Cosmos](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) a importujte data Volcano pomocí [Nástroje pro migraci dat Azure Cosmos DB](import-data.md). Při importu dat zvažte následující nastavení zdroje a cíle v nástroji pro migraci dat:
 
    * **Zdrojové parametry** 
 
@@ -135,7 +135,7 @@ Načtete data Volcano z účtu Azure Cosmos DB a vizualizujete data v interaktiv
 
 1. Potom zadejte vlastní vzorec pro nový sloupec.  V našem příkladu budeme zřetězit hodnoty zeměpisné šířky a délky oddělené čárkou, jak je znázorněno v následujícím vzorci: `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})` . Klikněte na **OK**.
    
-   Další informace o výrazech data Analysis Expressions (DAX), včetně funkcí DAX, najdete [v Power BI Desktop základy jazyka DAX](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
+   Další informace o výrazech data Analysis Expressions (DAX), včetně funkcí DAX, najdete [v Power BI Desktop základy jazyka DAX](/power-bi/desktop-quickstart-learn-dax-basics).
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop zobrazení sestav – konektor Power BI":::
 
@@ -226,4 +226,3 @@ For a scheduled refresh, do the following.
 ## <a name="next-steps"></a>Další kroky
 * Další informace o Power BI najdete v tématu [Začínáme s Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
 * Další informace o Azure Cosmos DB najdete na [úvodní stránce dokumentace k Azure Cosmos DB](https://azure.microsoft.com/documentation/services/cosmos-db/).
-

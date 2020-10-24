@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50884a45e60826f09fffcc9f86992563e473424d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603046"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478044"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor
 
@@ -19,7 +19,7 @@ Můžete spouštět úlohy [Spark](https://spark.apache.org/) s daty uloženými
 
 Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/services/databricks) nebo [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), který poskytuje spravované Clustery Spark v Azure. V následující tabulce jsou uvedeny podporované verze Sparku.
 
-| Součást | Verze |
+| Komponenta | Verze |
 |---------|-------|
 | Apache Spark | 2.4. x, 2.3. x, 2.2. x a 2.1. x |
 | Scala | 2,11 |
@@ -33,8 +33,8 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 
 ## <a name="quickstart"></a>Rychlé zprovoznění
 
-* Postupujte podle kroků v [části Začínáme se sadou Java SDK](sql-api-async-java-get-started.md) a nastavte účet Cosmos DB a naplňte data.
-* Postupujte podle kroků v [Azure Databricks Začínáme](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s nastavením pracovního prostoru Azure Databricks a clusteru.
+* Postupujte podle kroků v [části Začínáme se sadou Java SDK](./create-sql-api-java.md) a nastavte účet Cosmos DB a naplňte data.
+* Postupujte podle kroků v [Azure Databricks Začínáme](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) s nastavením pracovního prostoru Azure Databricks a clusteru.
 * Nyní můžete vytvořit nové poznámkové bloky a importovat knihovnu konektoru Cosmos DB. Podrobnosti o tom, jak nastavit pracovní prostor, najdete v článku o [práci s konektorem Cosmos DB](#bk_working_with_connector) .
 * Následující část obsahuje fragmenty kódu, jak číst a zapisovat pomocí konektoru.
 

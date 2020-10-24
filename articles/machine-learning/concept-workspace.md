@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: dccdbcb99b32a922d76b29e5896cdf99290758d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302447"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495720"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -88,8 +88,8 @@ Můžete také provádět následující úlohy správy pracovního prostoru:
 
 Existuje několik způsobů, jak vytvořit pracovní prostor:  
 
-* Pomocí [Azure Portal](how-to-manage-workspace.md) pro rozhraní Point-to-Click vás provede jednotlivé kroky.
-* Použití [sady SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) k vytvoření pracovního prostoru ze skriptů Pythonu nebo poznámkových bloků Jupiter
+* Pomocí [Azure Portal](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) pro rozhraní Point-to-Click vás provede jednotlivé kroky.
+* Použití [sady SDK Azure Machine Learning pro Python](how-to-manage-workspace.md?tabs=python#create-a-workspace) k vytvoření pracovního prostoru ze skriptů Pythonu nebo poznámkových bloků Jupiter
 * Pokud potřebujete automatizovat nebo přizpůsobovat vytváření pomocí standardů podnikových zabezpečení, použijte [šablonu Azure Resource Manager](how-to-create-workspace-template.md) nebo [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) .
 * Pokud pracujete v Visual Studio Code, použijte [rozšíření vs Code](how-to-manage-resources-vscode.md#create-a-workspace).
 
@@ -114,7 +114,7 @@ Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik pro
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): ukládá tajné kódy používané výpočetními cíli a dalšími citlivými informacemi, které pracovní prostor potřebuje.
 
 > [!NOTE]
-> Kromě vytváření nových verzí můžete používat i existující služby Azure.
+> Místo toho můžete použít existující instance prostředků Azure, když vytvoříte pracovní prostor se sadou [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace), [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)nebo Azure Machine Learning CLI [pomocí šablony ARM](how-to-create-workspace-template.md).
 
 <a name="wheres-enterprise"></a>
 
@@ -131,9 +131,9 @@ V obou edicích jsou zákazníci odpovědni za náklady na spotřebované prost�
 Pokud chcete začít s Azure Machine Learning, přečtěte si:
 
 + [Přehled Azure Machine Learning](overview-what-is-azure-ml.md)
-+ [Vytvoření pracovního prostoru](how-to-manage-workspace.md)
-+ [Správa pracovního prostoru](how-to-manage-workspace.md)
-+ [Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK](tutorial-1st-experiment-sdk-setup.md)
++ [Vytvoření a Správa pracovního prostoru](how-to-manage-workspace.md)
++ [Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí](tutorial-1st-experiment-sdk-setup-local.md)
++ [Kurz: Začínáme s vytvářením prvního experimentu ML na výpočetní instanci](tutorial-1st-experiment-sdk-setup.md)
 + [Kurz: Začínáme s Azure Machine Learning s využitím sady R SDK](tutorial-1st-r-experiment.md)
 + [Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení](tutorial-first-experiment-automated-ml.md) 
 + [Kurz: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md)

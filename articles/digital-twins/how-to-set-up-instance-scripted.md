@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10d4d07a61bc4ebec789d53e4271a3bcdc7ba76b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205540"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495014"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Nastavení instance a ověřování Azure pro digitální vlákna (skriptované)
 
@@ -43,7 +43,7 @@ V tomto článku se používá ukázka kódu pro digitální vlákna Azure, kter
 
 Tady je postup, jak spustit skript nasazení v Cloud Shell.
 1. V prohlížeči přejdete do okna [Azure Cloud Shell](https://shell.azure.com/) . Přihlaste se pomocí tohoto příkazu:
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
     Pokud rozhraní příkazového řádku může otevřít výchozí prohlížeč, bude to mít za následek a načíst přihlašovací stránku Azure. V opačném případě otevřete stránku prohlížeče na adrese *https://aka.ms/devicelogin* a zadejte autorizační kód zobrazený v terminálu.
@@ -60,11 +60,11 @@ Tady je postup, jak spustit skript nasazení v Cloud Shell.
 
 4. Spusťte skript odesláním `./deploy.ps1` příkazu v okně Cloud Shell. Níže uvedený příkaz můžete zkopírovat (pokud ho chcete vložit do Cloud Shell, můžete použít **CTRL + SHIFT + v** v systémech Windows a Linux nebo **Cmd + Shift + v** v MacOS. Můžete také použít nabídku klikněte pravým tlačítkem myši.
 
-    ```azurecli
+    ```azurecli-interactive
     ./deploy.ps1
     ```
 
-    Skript vytvoří instanci digitálních vláken Azure a přiřadí uživatele Azure, který má na instanci roli *vlastníka digitálních vláken Azure (Preview)* .
+    Skript vytvoří instanci digitálních vláken Azure a přiřadí uživatele Azure s rolí *vlastníka dat digitálních vláken Azure* na instanci.
 
     Když se skript spustí pomocí automatizovaného postupu nastavení, budete vyzváni k předání těchto hodnot:
     * Pro instanci: *ID předplatného* vašeho předplatného Azure, které se má použít.
@@ -79,10 +79,10 @@ Tady je ukázka výstupního protokolu ze skriptu:
 Pokud se skript úspěšně dokončí, vysloví se konečný výtisk `Deployment completed successfully` . Jinak vyřešte chybovou zprávu a znovu spusťte skript. Přeskočí kroky, které jste už dokončili, a začněte znovu požádat o vstup v místě, kde jste skončili.
 
 > [!NOTE]
-> Skript aktuálně přiřadí požadovanou roli správy v rámci digitálních vláken Azure (ve*verzi Preview)* pro stejného uživatele, který spouští skript z Cloud Shell. Pokud potřebujete tuto roli přiřadit někomu jinému, kdo bude spravovat instanci, můžete to udělat hned pomocí Azure Portal ([pokyny](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) nebo rozhraní příkazového řádku ([pokynů](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
+> Skript aktuálně přiřadí požadovanou roli správy v rámci digitálních vláken Azure (*vlastník dat digitálních vláken Azure*) stejnému uživateli, který spouští skript z Cloud Shell. Pokud potřebujete tuto roli přiřadit někomu jinému, kdo bude spravovat instanci, můžete to udělat hned pomocí Azure Portal ([pokyny](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) nebo rozhraní příkazového řádku ([pokynů](how-to-set-up-instance-cli.md#set-up-user-access-permissions)).
 
 >[!NOTE]
->V současné době se jedná o **známý problém** s instalačním programem, ve kterém někteří uživatelé (zejména uživatelé s osobními [účty Microsoft (účty spravované služby)](https://account.microsoft.com/account)) můžou najít **přiřazení role ke _vlastníkovi digitálních vláken Azure (Preview)_ se nevytvořilo**.
+>V současné době se jedná o **známý problém** s instalačním programem, ve kterém někteří uživatelé (zejména uživatelé na osobních [účtech Microsoft (účty spravované služby)](https://account.microsoft.com/account)) můžou najít **přiřazení role ke _službě Azure Digital_ Workers – vlastník dat se nevytvořil**.
 >
 >Přiřazení role můžete ověřit v části [*přiřazení role uživatele*](#verify-user-role-assignment) dále v tomto článku, a pokud je to potřeba, nastavte přiřazení role ručně pomocí [Azure Portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) nebo [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions).
 >

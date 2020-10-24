@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13d2633576454ea6445deb4d2b0b11c2bbb1514e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869435"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478367"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -151,15 +151,15 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--řetězec na úrovni protokolu** definuje podrobnost protokolu pro soubor protokolu, dostupné úrovně: `INFO` (všechny požadavky a odpovědi) `WARNING` (pomalé odezvy), `ERROR` (pouze neúspěšné žádosti) a `NONE` (žádné protokoly výstupu). (výchozí `INFO` ). 
 
-**--Preserve-SMB-info**     Výchozí hodnota je false.Zachovává informace o vlastnostech protokolu SMB (čas posledního zápisu, čas vytvoření, bity atributů) mezi prostředky pracujícími s protokolem SMB (soubory Windows a Azure).Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (například include-Pattern).Informace přenesené pro složky jsou stejné jako u souborů, s výjimkou času posledního zápisu, který není pro složky zachované.
+**--Preserve-SMB-info**   Výchozí hodnota je false. Zachovává informace o vlastnostech protokolu SMB (čas posledního zápisu, čas vytvoření, bity atributů) mezi prostředky pracujícími s protokolem SMB (soubory Windows a Azure). Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (například include-Pattern). Informace přenesené pro složky jsou stejné jako u souborů, s výjimkou času posledního zápisu, který není pro složky zachované.
 
-**--Preserve-SMB-Permissions**     Výchozí hodnota je false.Zachovává seznamy řízení přístupu SMB mezi prostředky, které podporují (soubory Windows a Azure).Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (například  `include-pattern` ).
+**--Preserve-SMB-Permissions**   Výchozí hodnota je false. Zachovává seznamy řízení přístupu SMB mezi prostředky, které podporují (soubory Windows a Azure). Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (například `include-pattern` ).
 
 **--Put-MD5**     Vytvořte hodnotu hash MD5 každého souboru a uložte hodnotu hash jako vlastnost content-MD5 cílového objektu BLOB nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) K dispozici pouze při nahrávání.
 
 **--rekurzivní** `True` ve výchozím nastavení se při synchronizaci mezi adresáři vyhledávají rekurzivně v podadresářích.     (výchozí `True` ). 
 
-**--S2S-Preserve-úroveň přístupu**  Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí `true` ). 
+**--S2S-Preserve-úroveň přístupu**  Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí `true` ). 
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 

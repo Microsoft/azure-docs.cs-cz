@@ -2,13 +2,13 @@
 title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: 2c58f67fed880b8aad60ff1a46a587dcf514102e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.date: 10/23/2020
+ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424175"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495219"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -181,27 +181,12 @@ V nabídce pro více tenantů můžou jednotky propustnosti růst až 40 počet 
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>Co jsou clustery služby Event Hubs úrovně Dedicated?
 Clustery Event Hubs úrovně Dedicated nabízejí nasazení s jedním tenantům pro zákazníky s nejnáročnějšími požadavky. Tato nabídka vytvoří cluster založený na kapacitě, který není svázán s jednotkami propustnosti. To znamená, že cluster můžete použít k ingestování a streamování dat, jak je využíváno využitím procesoru a paměti clusteru. Další informace najdete v tématu [Event Hubs úrovně Dedicated clustery](event-hubs-dedicated-overview.md).
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Co mi umožní dosáhnout jedna jednotka kapacity?
-V případě vyhrazeného clusteru může ingestování a streamování záviset na různých faktorech, jako jsou vaše producenti, spotřebitelé, rychlost, kterou sledujete a zpracováváte, a mnohem víc. 
-
-V následující tabulce jsou uvedeny výsledky srovnávacích testů, které jsme dosáhli během testování:
-
-| Tvar datové části | Příjemců | Šířka pásma příchozího přenosu dat| Příchozí zprávy | Šířka pásma pro výstup | Odchozí zprávy | Celkem počet propustnosti | Počet propustnosti na CU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Dávky 100x1KB | 2 | 400 MB/s | 400 tisíc zprávy za sekundu | 800 MB/s | 800k zprávy za sekundu | 400 počet propustnosti | 100 počet propustnosti | 
-| Dávky 10x10KB | 2 | 666 MB/s | zprávy 66.6 k/s | 1,33 GB/s | 133k zprávy za sekundu | 666 počet propustnosti | 166 počet propustnosti |
-| Dávky 6x32KB | 1 | 1,05 GB/s | 34k zprávy za sekundu | 1,05 GB/s | 34k zprávy za sekundu | 1000 počet propustnosti | 250 počet propustnosti |
-
-Při testování se použila následující kritéria:
-
-- Použil se vyhrazený Event Hubs cluster se čtyřmi jednotkami kapacity (kapacitní jednotky). 
-- Centrum událostí používané pro ingestování mělo 200 oddílů. 
-- Data, která byla ingestovaná, obdrží dvě aplikace přijímače, které přijímají ze všech oddílů.
-
-Výsledky poskytují představu o tom, co je možné dosáhnout pomocí vyhrazeného clusteru Event Hubs. Kromě toho se vyhradující cluster dodává s povoleným Event Hubs Capture pro vaše mikrodávkové a dlouhodobé scénáře uchovávání.
-
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Návody vytvořit cluster Event Hubs úrovně Dedicated?
-Event Hubs vyhrazený cluster vytvoříte tak, že odešlete [žádost o podporu zvýšení kvóty](https://portal.azure.com/#create/Microsoft.Support) nebo se obrátíte na [tým Event Hubs](mailto:askeventhubs@microsoft.com). To obvykle trvá přibližně dva týdny, aby se cluster nasadil a předali se za použití vámi. Tento proces je dočasný, dokud nebude k dispozici kompletní samoobslužná funkce prostřednictvím Azure Portal.
+Podrobné pokyny a další informace o nastavení Event Hubs vyhrazeného clusteru najdete v tématu [rychlý Start: vytvoření vyhrazeného clusteru Event Hubs pomocí Azure Portal](event-hubs-dedicated-cluster-create-portal.md). 
+
+
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
+
 
 ## <a name="best-practices"></a>Osvědčené postupy
 

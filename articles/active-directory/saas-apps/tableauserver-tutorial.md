@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61321af538ee117828914a209523a1138e74c20
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88999594"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483450"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Kurz: Azure Active Directory integrace jednotného přihlašování se serverem Tableau
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat Server Tableau s Azure Active Director
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -131,11 +131,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Na kartě **Konfigurace** vyberte **identita uživatele & přístup**a pak vyberte kartu metoda **ověřování** .
 
-    ![Konfigurace jednoho Sign-On](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Snímek obrazovky ukazuje ověřování vybrané z identity uživatele & přístupu.](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
 
 3. Na stránce **Konfigurace** proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Snímek obrazovky se zobrazí stránka konfigurace, kde můžete zadat hodnoty, které jsou popsány.](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
 
     a. V případě **metody ověřování**vyberte SAML.
 
@@ -171,7 +171,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici Tableau Server na přístupovém panelu, měli byste se automaticky přihlásit k serveru Tableau, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

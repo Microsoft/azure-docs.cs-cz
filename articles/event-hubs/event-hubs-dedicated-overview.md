@@ -2,13 +2,13 @@
 title: Přehled vyhrazených Center událostí – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje přehled vyhrazených Event Hubs Azure, které nabízí nasazení s jedním tenantům pro centra událostí.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 70061b5dc4fe72c9fd2fd60dd8c67da31b1d1e6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/23/2020
+ms.openlocfilehash: e6208a8d50e21766969dbe9d9739d5003958126a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322448"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495080"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled Event Hubs úrovně Dedicated
 
@@ -38,10 +38,10 @@ Na svazcích s vysokou úrovní příchozího přenosu dat (>100 počet propustn
 
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
-| Příznak | Standard | Vyhrazená |
+| Funkce | Standard | Vyhrazená |
 | --- |:---:|:---:|
 | Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
-| Jmenné prostory |  1 | 50 za CU |
+| Obory názvů |  1 | 50 za CU |
 | Event Hubs |  10 na obor názvů | 1000 na obor názvů |
 | Události příchozího přenosu dat | Plaťte za milion událostí | Zahrnuje |
 | Velikost zprávy | 1 000 000 bajtů | 1 000 000 bajtů |
@@ -53,43 +53,16 @@ V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s m
 
 ## <a name="how-to-onboard"></a>Postup zprovoznění
 
-Samoobslužné prostředí pro [vytváření Event Hubsho clusteru](event-hubs-dedicated-cluster-create-portal.md) prostřednictvím webu [Azure Portal](https://aka.ms/eventhubsclusterquickstart) je teď ve verzi Preview. Pokud máte nějaké dotazy nebo potřebujete pomáhat s připojováním k Event Hubs úrovně Dedicated, obraťte se prosím na [tým Event Hubs](mailto:askeventhubs@microsoft.com).
+Prostředí pro samoobslužné [vytváření Event Hubsého clusteru](event-hubs-dedicated-cluster-create-portal.md) prostřednictvím [Azure Portal](https://aka.ms/eventhubsclusterquickstart) je teď ve verzi Preview. Pokud máte nějaké dotazy nebo potřebujete pomáhat s připojováním k Event Hubs úrovně Dedicated, obraťte se prosím na [tým Event Hubs](mailto:askeventhubs@microsoft.com).
 
 ## <a name="faqs"></a>Nejčastější dotazy
 
-#### <a name="what-can-i-achieve-with-a-cluster"></a>Co můžu s clusterem dosáhnout?
-
-V případě Event Hubs clusteru závisí množství, které můžete ingestovat a streamování, na různých faktorech, jako jsou vaše producenti, spotřebitelé, rychlost přijímání a zpracování a mnohem víc. 
-
-V následující tabulce jsou uvedeny výsledky srovnávacích testů, které jsme dosáhli během testování:
-
-| Tvar datové části | Příjemců | Šířka pásma příchozího přenosu dat| Příchozí zprávy | Šířka pásma pro výstup | Odchozí zprávy | Celkem počet propustnosti | Počet propustnosti na CU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Dávky 100x1KB | 2 | 400 MB/s | 400 tisíc zprávy za sekundu | 800 MB/s | 800k zprávy za sekundu | 400 počet propustnosti | 100 počet propustnosti | 
-| Dávky 10x10KB | 2 | 666 MB/s | zprávy 66.6 k/s | 1,33 GB/s | 133k zprávy za sekundu | 666 počet propustnosti | 166 počet propustnosti |
-| Dávky 6x32KB | 1 | 1,05 GB/s | 34k zprávy za sekundu | 1,05 GB/s | 34k zprávy za sekundu | 1000 počet propustnosti | 250 počet propustnosti |
-
-Při testování se použila následující kritéria:
-
-- Použil se cluster Event Hubs s vyhrazenou vrstvou, který má čtyři jednotky kapacity (kapacitní jednotky). 
-- Centrum událostí používané pro ingestování mělo 200 oddílů. 
-- Data, která byla ingestovaná, obdrží dvě aplikace přijímače, které přijímají ze všech oddílů.
-
-#### <a name="can-i-scale-updown-my-cluster"></a>Můžu svůj cluster škálovat nahoru/dolů?
-
-Po vytvoření se clustery účtují minimálně o 4 hodiny využití. Ve verzi Preview prostředí samoobslužného řízení můžete odeslat [žádost o podporu](https://ms.portal.azure.com/#create/Microsoft.Support) týmu Event Hubs v části *Technická > kvóta > žádosti o horizontální navýšení nebo snížení kapacity vyhrazeného clusteru* pro horizontální navýšení nebo snížení kapacity clusteru. Dokončení žádosti o horizontální navýšení kapacity clusteru může trvat až 7 dní. 
-
-#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Jak budou geografické DRy fungovat s clusterem?
-
-Obor názvů můžete geograficky spárovat v rámci clusteru vyhrazené úrovně s jiným oborem názvů v rámci clusteru s vyhrazenou vrstvou. V naší standardní nabídce nedoporučujeme spárovat obor názvů vyhrazené úrovně s oborem názvů, protože limit propustnosti bude nekompatibilní a výsledkem bude chyba. 
-
-#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Můžu migrovat standardní obory názvů tak, aby patřily do clusteru vyhrazené úrovně?
-V současné době nepodporujeme proces automatizované migrace pro migraci dat centra událostí ze standardního oboru názvů na vyhrazený. 
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud chcete získat další podrobnosti o Event Hubs úrovně Dedicated, obraťte se na obchodního zástupce Microsoftu nebo podpora Microsoftu. Můžete také vytvořit cluster nebo získat další informace o Event Hubs cenové úrovně, a to návštěvou následujících odkazů:
 
-- [Vytvoření clusteru Event Hubs prostřednictvím webu Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
+- [Vytvoření clusteru Event Hubs pomocí Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
 - [Event Hubs úrovně Dedicated ceny](https://azure.microsoft.com/pricing/details/event-hubs/). Můžete se také obrátit na prodejní zástupce Microsoftu nebo podpora Microsoftu a získat další podrobnosti o Event Hubs úrovně Dedicated kapacitě.
 - [Event Hubs Nejčastější dotazy](event-hubs-faq.md) obsahují informace o cenách a odpovědi na nejčastější dotazy týkající se Event Hubs.

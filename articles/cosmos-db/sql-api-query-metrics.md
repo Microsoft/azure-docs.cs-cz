@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43a335e6490858828fb2efcaa8436dcb6f3d250
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 38f21ec32d14261c7f1bb5e285180d9721b9dca7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280516"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477823"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
 
-Azure Cosmos DB poskytuje [rozhraní SQL API pro dotazování na data](how-to-sql-query.md), bez nutnosti schématu nebo sekundárních indexů. Tento článek poskytuje pro vývojáře následující informace:
+Azure Cosmos DB poskytuje [rozhraní SQL API pro dotazování na data](./sql-query-getting-started.md), bez nutnosti schématu nebo sekundárních indexů. Tento článek poskytuje pro vývojáře následující informace:
 
 * Podrobné informace o tom, jak funguje Azure Cosmos DB provádění dotazů SQL
 * Podrobnosti o dotazech na požadavky a odpovědi na dotazy a možnosti klientské sady SDK
@@ -275,6 +275,4 @@ Tady je několik ukázkových dotazů a postup interpretace některých metrik v
 ## <a name="next-steps"></a>Další kroky
 * Další informace o podporovaných operátorech dotazu SQL a klíčových slovech naleznete v tématu [SQL Query](sql-query-getting-started.md). 
 * Další informace o jednotkách žádostí najdete v tématu [jednotky žádostí](request-units.md).
-* Další informace o zásadách indexování najdete v tématu [indexování zásad](index-policy.md) . 
-
-
+* Další informace o zásadách indexování najdete v tématu [indexování zásad](index-policy.md) .

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: 48265856e5e745e05f6625766f9cd0c9b15c90a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eaccd0559439ce228325205f5845151f0e76bcae
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708658"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484521"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Koncepce připojení a sítě pro Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -73,6 +73,8 @@ Tady je několik konceptů, se kterými se můžete seznámit při používání
 
 Naučte se, jak povolit privátní přístup (Integration VNET) pomocí [Azure Portal](how-to-manage-virtual-network-portal.md) nebo [Azure CLI](how-to-manage-virtual-network-cli.md).
 
+> [!NOTE]
+> Pokud používáte vlastní server DNS, musíte k překladu plně kvalifikovaného názvu domény Azure Database for MySQL flexibilního serveru použít službu DNS pro přeposílání. Další informace najdete [v tématu Překlad názvů, který používá vlastní server DNS](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) .
 
 ## <a name="public-access-allowed-ip-addresses"></a>Veřejný přístup (povolené IP adresy)
 Mezi charakteristiky metody veřejného přístupu patří:

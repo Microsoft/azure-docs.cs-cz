@@ -3,18 +3,18 @@ title: Zálohování virtuálních počítačů s řešeními VMware Azure pomoc
 description: Nakonfigurujte prostředí řešení Azure VMware pro zálohování virtuálních počítačů pomocí Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: d4273980a134fbdaabe64215aaf0b66a53253788
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893012"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495691"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů s řešeními VMware Azure pomocí Azure Backup Server
 
-V tomto článku se seznámíme s postupy pro zálohování virtuálních počítačů VMware, které běží na řešení Azure VMware, pomocí Azure Backup Server. Než začnete, ujistěte se, že jste důkladně provedli [nastavení Microsoft Azure Backup serveru pro řešení Azure VMware](set-up-backup-server-for-azure-vmware-solution.md).
+V tomto článku zálohujete virtuální počítače VMware běžící na řešení Azure VMware pomocí Azure Backup Server. Nejprve důkladně Projděte [nastavení Microsoft Azure Backup Server pro řešení Azure VMware](set-up-backup-server-for-azure-vmware-solution.md).
 
-Pak projdeme všemi potřebnými postupy:
+Pak vás provedeme všemi potřebnými postupy:
 
 > [!div class="checklist"] 
 > * Nastavte zabezpečený kanál tak, aby Azure Backup Server mohl komunikovat se servery VMware přes protokol HTTPS. 
@@ -162,7 +162,11 @@ VMware 6,7 a vyšší má TLS povolený jako komunikační protokol.
 
    ![Stránka dokončit](../backup/media/backup-azure-backup-server-vmware/summary-screen.png)
 
-   Měl by se zobrazit Server vCenter uvedený v části **provozní server** s typem jako **Server VMware** a **Stav agenta** jako **OK**. Pokud vidíte **Stav agenta** jako **Neznámý**, vyberte **aktualizovat**.
+   Na serveru vCenter se zobrazí v části **provozní server** :
+   - Typ jako **VMware Server** 
+   - Stav agenta jako **OK** 
+   
+      Pokud vidíte **Stav agenta** jako **Neznámý**, vyberte **aktualizovat**.
 
 ## <a name="configure-a-protection-group"></a>Konfigurace skupiny ochrany
 
@@ -202,7 +206,7 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
 
    - Doporučené přidělení disku vychází z rozsahu uchování, který jste zadali, typu úlohy a velikosti chráněných dat. Proveďte požadované změny a pak vyberte **Další**.
    - **Velikost dat:** Velikost dat ve skupině ochrany.
-   - **Místo na disku:** Doporučená velikost místa na disku pro skupinu ochrany. Pokud chcete toto nastavení změnit, přidělte celkové místo, které je mírně větší než množství odhadu jednotlivých zdrojů dat.
+   - **Místo na disku:** Doporučená velikost místa na disku pro skupinu ochrany. Pokud chcete toto nastavení změnit, vyberte prostor, který je lehce větší než velikost, kterou odhadují jednotlivé zdroje dat.
    - **Podrobnosti fondu úložiště:** Zobrazuje stav fondu úložiště, který obsahuje celkovou a zbývající velikost disku.
 
    :::image type="content" source="media/azure-vmware-solution-backup/review-disk-allocation.png" alt-text="Webový klient vSphere":::
@@ -229,14 +233,14 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
 
    ![Zadat data online ochrany](../backup/media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
-1. Na stránce **zadat plán online zálohování** určete, jak často chcete zálohovat data z místního úložiště do Azure, a pak vyberte **Další**. 
+1. Na stránce **zadat plán online zálohování** určete, jak často chcete zálohovat data z místního úložiště do Azure. 
 
    - Body obnovení cloudu pro data, která se mají vygenerovat podle plánu. 
    - Jakmile se bod obnovení vygeneruje, přenese se do trezoru Recovery Services v Azure.
 
    ![Zadat plán online zálohování](../backup/media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. Na stránce **zadat zásady uchovávání online** určete, jak dlouho chcete zachovat body obnovení, které se vytvoří z denní, týdenní, měsíční nebo roční zálohy do Azure, a pak vyberte **Další**.
+1. Na stránce **zadat zásady uchovávání online** určete, jak dlouho chcete zachovat body obnovení vytvořené ze záloh do Azure.
 
    - Neexistují žádná časová omezení, jak dlouho můžete uchovávat data v Azure.
    - Jediným omezením je, že nemůžete mít více než 9 999 bodů obnovení na chráněnou instanci. V tomto příkladu je chráněná instance serverem VMware.
@@ -251,8 +255,9 @@ Skupiny ochrany shromažďují více virtuálních počítačů a používají s
 
 Až nakonfigurujete skupinu ochrany pro zálohování virtuálních počítačů řešení VMware Azure, můžete monitorovat stav úlohy zálohování a výstrahy pomocí konzoly Azure Backup Server. Tady je seznam toho, co můžete monitorovat.
 
-- Na kartě **výstrahy** v podokně **monitorování** můžete monitorovat chyby, varování a obecné informace pro skupinu ochrany, pro určitý chráněný počítač nebo pro závažnost zprávy. Můžete zobrazit aktivní a neaktivní výstrahy a nastavit e-mailová oznámení.
-- Na kartě **úlohy** v podokně **monitorování** můžete zobrazit úlohy iniciované nástrojem Azure Backup Server pro konkrétní chráněný zdroj dat nebo skupinu ochrany. Můžete sledovat průběh úlohy nebo kontrolovat prostředky spotřebované úlohami.
+- V oblasti **sledování** úloh:
+   - V části **výstrahy**můžete monitorovat chyby, varování a obecné informace.  Můžete zobrazit aktivní a neaktivní výstrahy a nastavit e-mailová oznámení.
+   - V části **úlohy**můžete zobrazit úlohy spouštěné Azure Backup Server pro určitý chráněný zdroj dat nebo skupinu ochrany. Můžete sledovat průběh úlohy nebo kontrolovat prostředky spotřebované úlohami.
 - V oblasti úloh **ochrana** můžete kontrolovat stav svazků a sdílených složek ve skupině ochrany. Můžete také kontrolovat nastavení konfigurace, jako je nastavení obnovení, přidělení disku a plán zálohování.
 - V oblasti úloh **Správa** můžete zobrazit karty **disky, online**a **agenti** a ověřit stav disků ve fondu úložiště, registraci do Azure a nasazený stav agenta DPM.
 
@@ -263,18 +268,18 @@ Až nakonfigurujete skupinu ochrany pro zálohování virtuálních počítačů
 V konzole pro správu Azure Backup Server existují dva způsoby, jak najít obnovitelná data. Můžete hledat nebo procházet. Při obnovování dat můžete nebo nebudete chtít obnovit data nebo virtuální počítač do stejného umístění. Z tohoto důvodu Azure Backup Server podporuje tři možnosti obnovení pro zálohy virtuálních počítačů VMware:
 
 - **Obnovení původního umístění (OLR)**: pomocí OLR obnovte chráněný virtuální počítač do původního umístění. Virtuální počítač můžete obnovit do jeho původního umístění jenom v případě, že se nepřidaly nebo neodstranily žádné disky od chvíle, kdy došlo k zálohování. Pokud se disky přidaly nebo odstranily, musíte použít obnovení do alternativního umístění.
-- **Obnovení do alternativního umístění (ALR)**: Pokud chybí původní virtuální počítač nebo pokud nechcete narušit původní virtuální počítač, OBNOVte virtuální počítač do alternativního umístění. Pokud chcete virtuální počítač obnovit do alternativního umístění, musíte zadat umístění hostitele ESXi, fondu zdrojů, složky a úložiště dat úložiště a cesty. Kvůli rozlišení obnoveného virtuálního počítače z původního virtuálního počítače Azure Backup Server připojí k názvu virtuálního počítače "-obnovený".
+- **Obnovení do alternativního umístění (ALR)**: použijte v případě, že původní virtuální počítač chybí nebo pokud nechcete narušit původní virtuální počítač. Zadejte umístění hostitele ESXi, fondu zdrojů, složky a úložiště dat úložiště a cesty k němu. Kvůli rozlišení obnoveného virtuálního počítače z původního virtuálního počítače Azure Backup Server připojí k názvu virtuálního počítače *"-obnovený"* .
 - **Individuální obnovení umístění souborů (ilr)**: Pokud je chráněný virtuální počítač s Windows serverem, můžete jednotlivé soubory nebo složky uvnitř virtuálního počítače obnovit pomocí funkce ilr Azure Backup Server. Postup obnovení jednotlivých souborů najdete v postupu dále v tomto článku. Obnovení jednotlivých souborů z virtuálního počítače je dostupné jenom pro body obnovení virtuálních počítačů s Windows a disků.
 
 ### <a name="restore-a-recovery-point"></a>Obnovení bodu obnovení
 
 1. V konzole správce Azure Backup Server vyberte zobrazení **obnovení** . 
 
-1. Pomocí podokna **procházení** vyhledejte nebo vyfiltrujte virtuální počítač, který chcete obnovit. Jakmile vyberete virtuální počítač nebo složku, zobrazí se v podokně **body obnovení** dostupné body obnovení.
+1. Pomocí podokna **procházení** vyhledejte nebo vyfiltrujte virtuální počítač, který chcete obnovit. Po výběru virtuálního počítače nebo složky se v podokně * * body obnovení zobrazí dostupné body obnovení.
 
    ![Dostupné body obnovení](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
-1. V podokně **body obnovení pro** vyberte v nabídce kalendář a rozevírací nabídky datum, kdy byl bod obnovení proveden. Kalendářní data v tučném textu mají dostupné body obnovení. Alternativně můžete kliknout pravým tlačítkem myši na virtuální počítač a vybrat **Zobrazit všechny body obnovení** a pak vybrat bod obnovení ze seznamu.
+1. V podokně **body obnovení pro** vyberte datum, kdy byl bod obnovení proveden. Kalendářní data v tučném textu mají dostupné body obnovení. Alternativně můžete kliknout pravým tlačítkem myši na virtuální počítač a vybrat **Zobrazit všechny body obnovení** a pak vybrat bod obnovení ze seznamu.
 
    > [!NOTE] 
    > Pro krátkodobou ochranu vyberte bod obnovení založený na disku pro rychlejší obnovení. Po vypršení platnosti krátkodobých bodů obnovení se zobrazí pouze body obnovení **online** pro obnovení.
@@ -292,7 +297,7 @@ V konzole pro správu Azure Backup Server existují dva způsoby, jak najít obn
    > [!NOTE]
    > Úlohy VMware nepodporují povolování omezení šířky pásma sítě.
 
-1. Na stránce **Vybrat typ obnovení** vyberte, zda chcete provést obnovení do původní instance nebo do nového umístění, a poté vyberte možnost **Další**.
+1. Na stránce **Vybrat typ obnovení** buď proveďte obnovení na původní instanci nebo na nové místo.
 
    - Pokud zvolíte **obnovit do původní instance**, nemusíte v průvodci dělat žádné další volby. Použijí se data pro původní instanci.
    - Pokud zvolíte možnost **Obnovit jako virtuální počítač na jakémkoli hostiteli**, pak na obrazovce **zadat cíl** zadejte informace o **hostiteli ESXi**, **fondu zdrojů**, **složce**a **cestě**.
@@ -312,11 +317,11 @@ Jednotlivé soubory můžete obnovit z chráněného bodu obnovení virtuálníh
 
 1. V konzole správce Azure Backup Server vyberte zobrazení **obnovení** .
 
-1. Pomocí podokna **procházení** vyhledejte nebo vyfiltrujte virtuální počítač, který chcete obnovit. Jakmile vyberete virtuální počítač nebo složku, zobrazí se v podokně **body obnovení** dostupné body obnovení.
+1. Pomocí podokna **procházení** vyhledejte nebo vyfiltrujte virtuální počítač, který chcete obnovit. Po výběru virtuálního počítače nebo složky se v podokně * * body obnovení zobrazí dostupné body obnovení.
 
    ![Dostupné body obnovení](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
-1. V podokně **body obnovení pro** vyberte pomocí kalendáře datum, které obsahuje požadované body obnovení. V závislosti na tom, jak byla zásada zálohování nakonfigurovaná, můžou mít data více než jeden bod obnovení. 
+1. V podokně **body obnovení pro** můžete pomocí kalendáře vybrat datum, které obsahuje požadované body obnovení. V závislosti na tom, jak byla zásada zálohování nakonfigurovaná, můžou mít data více než jeden bod obnovení. 
 
 1. Po výběru dne, kdy byl proveden bod obnovení, se ujistěte, že jste zvolili správný **čas obnovení**. 
 
@@ -334,14 +339,14 @@ Jednotlivé soubory můžete obnovit z chráněného bodu obnovení virtuálníh
 
 1. Po výběru položek pro obnovení klikněte na pásu karet nástroje konzoly pro správu na tlačítko **obnovit** a otevřete **Průvodce obnovením**. V **Průvodci obnovením**obrazovka **Kontrola výběru obnovení** zobrazuje vybrané položky, které mají být obnoveny.
 
-1. Na obrazovce **zadat možnosti obnovení** proveďte jednu z následujících akcí:
+1. Na obrazovce **zadat možnosti obnovení** proveďte jeden z následujících kroků:
 
    - Vyberte **Upravit** a povolte omezení šířky pásma sítě. V dialogovém okně **omezení** vyberte **Povolit omezení využití šířky pásma sítě** , aby bylo zapnuté. Po povolení nakonfigurujte **Nastavení** a **plán práce**.
    - Pokud chcete zakázat omezení sítě, vyberte možnost **Další** .
 
 1. Na obrazovce **Vybrat typ obnovení** vyberte **Další**. Soubory nebo složky můžete obnovit pouze do síťové složky.
 
-1. Na obrazovce **zadat cíl** vyberte **Procházet** a vyhledejte síťové umístění pro vaše soubory nebo složky. Azure Backup Server vytvoří složku, do které se zkopírují všechny obnovené položky. Název složky má předponu MABS_day měsíc-year. Když vyberete umístění pro obnovené soubory nebo složku, poskytnou se podrobnosti o tomto umístění, jako je například **cíl**, **cílová cesta**a **místo k dispozici**.
+1. Na obrazovce **zadat cíl** vyberte **Procházet** a vyhledejte síťové umístění pro vaše soubory nebo složky. Azure Backup Server vytvoří složku, do které se zkopírují všechny obnovené položky. Název složky má předponu MABS_day měsíc-year. Když vyberete umístění obnovených souborů nebo složky, poskytnou se podrobnosti pro toto umístění.
 
    ![Zadejte umístění pro obnovení souborů](../backup/media/restore-azure-backup-server-vmware/specify-destination.png)
 
