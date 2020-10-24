@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: a38816f00c0e05c3bde1760e39ba00d745f12a44
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460950"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516201"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopírování přetransakční kopie databáze v Azure SQL Database
 
@@ -108,7 +108,7 @@ Přihlaste se k hlavní databázi pomocí přihlašovacích údajů správce ser
 
 Tento příkaz zkopíruje Databáze1 do nové databáze s názvem databáze 2 v elastickém fondu s názvem Pool1. V závislosti na velikosti databáze může dokončení operace kopírování nějakou dobu trvat.
 
-Databáze1 může být jedna nebo ve fondu databáze, ale Pool1 musí být stejná jako úroveň služby jako Databáze1. 
+Databáze1 může být jedna nebo ve fondu databáze. Kopírování mezi různými fondy vrstev je podporováno, ale některé kopie mezivrstev nebudou úspěšné. Můžete například zkopírovat jednu nebo elastickou databázi Standard do fondu pro obecné účely, ale standardní elastickou databázi nemůžete zkopírovat do fondu Premium. 
 
    ```sql
    -- execute on the master database to start copying

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: d487295e9aab1a56553dc9d31b0a8714688005c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e295075a5c1ae8daa6673757770bbef01208c1d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348410"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92505719"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-virtual-traffic-manager"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím Pulse Secure Virtual Traffic Manager
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Pulse Secure Virtual Traffic Manager s
 * Umožněte uživatelům, aby se automaticky přihlásili k Pulse zabezpečené virtuální Traffic Manager se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -203,8 +203,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na Pulse Secure Virtual Traffic Manager adresa URL pro přihlášení přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Pulse Secure Virtual Traffic Manager, přesměruje se to na pulsně zabezpečenou adresu URL pro přihlášení k virtuálnímu Traffic Manager. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Pulse Secure Virtual Traffic Manager, přesměruje se to na pulsně zabezpečenou adresu URL pro přihlášení k virtuálnímu Traffic Manager. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete pulsně zabezpečenou virtuální Traffic Manager, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Jakmile nakonfigurujete pulsně zabezpečenou virtuální Traffic Manager, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

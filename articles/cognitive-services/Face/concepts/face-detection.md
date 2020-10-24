@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73743050"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504125"
 ---
 # <a name="face-detection-and-attributes"></a>Detekce a atributy obličeje
 
@@ -47,7 +47,7 @@ Atributy jsou sadou funkcí, které lze volitelně detekovat pomocí rozhraní A
 * **Pohlaví** Odhadované pohlaví dané plošky. Možné hodnoty jsou samčí, ženské a žen bez pohlaví.
 * **Brýle**. Určuje, zda má daná ploška brýlí. Možné hodnoty jsou nesklad, ReadingGlasses, Sunglasses a brýle.
 * **Vlasy**. Typ vlasy obličeje. Tento atribut ukazuje, zda je vlasy viditelné, zda je detekována baldness a jaké barvy vlasů byly zjištěny.
-* **Pozice pozice**. Orientace obličeje v prostorovém prostoru. Tento atribut je popsán ve stupních pro rozteč, hod. a Yaw úhly. Rozsahy hodnot jsou-90 stupňů až 90 stupňů,-180 stupňů až 180 stupňů a-90 stupňů až po 90 stupňů v uvedeném pořadí. Podívejte se na následující diagram pro mapování úhlů:
+* **Pozice pozice**. Orientace obličeje v prostorovém prostoru. Tento atribut je popsán ve stupních pro rozteč, hod. a Yaw úhly. Rozsahy hodnot jsou-90 stupňů až 90 stupňů,-90 stupňů až 90 stupňů a-90 stupňů až po 90 stupňů v uvedeném pořadí. Podívejte se na následující diagram pro mapování úhlů:
 
     ![Hlava s Yaw osami rozteč, hod.](../Images/headpose.1.jpg)
 * **Strukturu**. Zda se strukturu obličej. Tento atribut vrací logickou hodnotu pro eyeMakeup a lipMakeup.
@@ -63,7 +63,7 @@ Atributy jsou sadou funkcí, které lze volitelně detekovat pomocí rozhraní A
 Pomocí následujících tipů se ujistěte, že vstupní image poskytují nejpřesnější výsledky zjišťování:
 
 * Podporované formáty vstupních obrázků jsou JPEG, PNG, GIF pro první snímek a BMP.
-* Velikost souboru obrázku by neměla být větší než 4 MB.
+* Velikost souboru obrázku by neměla být větší než 6 MB.
 * Velikost zjistitelného obličejového rozsahu je 36 × 36 až 4096 × 4096 pixelů. Nezjistí se plošky mimo tento rozsah.
 * Některé plošky nemusí být zjištěny z důvodu technických výzev. Extrémní úhly obličeje (hlava pozice) nebo překrytí obličeje (objekty jako Sunglasses nebo ruce, které blokují část plochy) mohou ovlivnit detekci. Nejlepší výsledky poskytují přední a blízko čelních ploch.
 

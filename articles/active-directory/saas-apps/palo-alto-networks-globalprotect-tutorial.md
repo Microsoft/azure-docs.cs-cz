@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c08694efafef315b0f5e96d293d883767860fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b76c21ee76731f78ecd7f482472908fe93a9ee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855204"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92513326"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Palo Alto Networks – GlobalProtect
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Palo Alto Networks-GlobalProtect with 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Palo Alto Networks – GlobalProtect s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -149,8 +149,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na Palo Alto Networks – adresa URL pro GlobalProtect přihlašování přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Palo Alto Networks-GlobalProtect, měli byste být automaticky přihlášeni k Palo Alto Networks-GlobalProtect, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Když na přístupovém panelu kliknete na dlaždici Palo Alto Networks-GlobalProtect, měli byste být automaticky přihlášeni k Palo Alto Networks-GlobalProtect, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Palo Alto Networks – GlobalProtect můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování Palo Alto Networks – GlobalProtect můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

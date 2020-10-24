@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8408dde86d1902cf5b4899c4783c9dd185449ee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067150"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515742"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Migrujte stávající aplikace JMS (Java Message Service) 2,0 z Apache ActiveMQ na Azure Service Bus
 
@@ -48,7 +48,7 @@ I tak existuje několik rozdílů mezi těmito dvěma, jak ukazuje následujíc�
 
 [!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Požadavky
 
 Dvě vrstvená povaha Azure Service Bus zajišťuje různé možnosti kontinuity podnikových operací (vysoká dostupnost a zotavení po havárii). Existují však některé okolnosti, pokud používáte funkce JMS.
 
@@ -62,7 +62,7 @@ V rámci migrace a změny klientských aplikací pro interakci s Azure Service B
 
 #### <a name="authentication-and-authorization"></a>Ověřování a autorizace
 
-Řízení přístupu na základě role (RBAC), které zajišťuje Azure Active Directory, je upřednostňovaným mechanismem ověřování pro Service Bus. Vzhledem k tomu, že služba Apache QPID JMS v současné době nepodporuje ověřování RBAC nebo založené na deklaracích identity, měli byste pro ověřování použít klíče SAS.
+Řízení přístupu na základě role Azure (Azure RBAC), které zajišťuje Azure Active Directory, je upřednostňovaným mechanismem ověřování pro Service Bus. Vzhledem k tomu, že Apache QPID JMS v současnosti nepodporuje ověřování v Azure RBAC nebo založené na deklaracích identity, měli byste pro ověřování použít klíče SAS.
 
 ## <a name="pre-migration"></a>Před migrací
 
@@ -70,7 +70,7 @@ V rámci migrace a změny klientských aplikací pro interakci s Azure Service B
 
 Při psaní aplikací JMS používáte následující komponenty a verze: 
 
-| Součást | Verze |
+| Komponenta | Verze |
 |---|---|
 | Rozhraní API pro JMS (Java Message Service) | 1,1 nebo vyšší |
 | Protokol AMQP | 1,0 |

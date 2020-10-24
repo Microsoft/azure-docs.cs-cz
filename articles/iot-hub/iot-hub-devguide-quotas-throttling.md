@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f2ab3c55c5532b76c45a18054fd653dd8fe8137
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797798"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504070"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -59,7 +59,7 @@ V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na je
 | Maximální počet souběžně připojených zařízení proudů<sup>1</sup> | 50 | 50 | 50 |
 | Maximální přenos dat datového proudu zařízení<sup>1</sup> (agregovaný objem za den) | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup> Tato funkce není k dispozici na úrovni Basic IoT Hub. Další informace najdete v tématu [Jak zvolit správnou IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup> . Velikost měřiče omezení je 4 KB.
+<sup>1</sup> Tato funkce není k dispozici na úrovni Basic IoT Hub. Další informace najdete v tématu [Jak zvolit správnou IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup> . Velikost měřiče omezení je 4 KB. Omezování je založeno jenom na velikosti datové části požadavku.
 
 ### <a name="throttling-details"></a>Podrobnosti o omezování
 

@@ -9,22 +9,35 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b493b78971b7e802d82e8f61203abdaaca527016
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873859"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503551"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Kurz – migrace aplikace pro Android z Google Maps
 
-Android SDK Azure Maps má rozhraní API, které je podobné webové sadě SDK. Pokud jste se seznámili s jednou z těchto sad SDK, platí mnoho ze stejných konceptů, osvědčených postupů a architektur.
+Android SDK Azure Maps má rozhraní API, které je podobné webové sadě SDK. Pokud jste se seznámili s jednou z těchto sad SDK, platí mnoho ze stejných konceptů, osvědčených postupů a architektur. V tomto kurzu se naučíte, jak:
+
+> [!div class="checklist"]
+> * Načtení mapy
+> * Lokalizace mapy
+> * Přidejte značky, lomené čáry a mnohoúhelníky.
+> * Překrytí vrstvy dlaždice
+> * Zobrazení provozních dat
 
 Android SDK Azure Maps podporuje minimální verzi Androidu API 21: Android 5.0.0 (Lupa).
 
 Všechny příklady jsou k dispozici v jazyce Java; Kotlin ale můžete použít s Android SDK Azure Maps.
 
 Další informace o vývoji Android SDK pomocí Azure Maps naleznete v tématu [návody pro Azure Maps Android SDK](how-to-use-android-map-control-library.md).
+
+## <a name="prerequisites"></a>Předpoklady 
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="load-a-map"></a>Načtení mapy
 
@@ -745,6 +758,18 @@ mapControl.onReady(map -> {
 
 ![Azure Maps provoz](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
-Přečtěte si další informace o Android SDK Azure Maps.
+## <a name="next-steps"></a>Další kroky
 
-[Jak používat ovládací prvek mapy pro Android](how-to-use-android-map-control-library.md)
+Další informace o Azure Maps Android SDK:
+
+> [!div class="nextstepaction"]
+> [Jak používat ovládací prvek mapy pro Android](how-to-use-android-map-control-library.md)
+
+> [!div class="nextstepaction"]
+> [Přidání vrstvy symbolů na mapu pro Android](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Přidání obrazců na mapu pro Android](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+
+> [!div class="nextstepaction"]
+> [Změna stylů mapy v doplňkech Android Maps](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

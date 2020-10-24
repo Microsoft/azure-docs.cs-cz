@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36be61fd65db7ea02a3baec4b519a13231c420ec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629739"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514437"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>Základní hodnoty zabezpečení Azure pro Virtual Network
 
@@ -118,7 +118,7 @@ Pomocí skupin zabezpečení aplikací můžete zjednodušit složitou konfigura
 
 Přečtěte si výchozí zásady pro Security Center, které obsahují dostupná doporučení zabezpečení související s vašimi virtuálními sítěmi.
 
-Pomocí Azure modrotisky můžete zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou Azure Resource Manager šablony, přiřazení řízení přístupu na základě role (Azure RBAC) a zásady, a to v jediné definici podrobného plánu. Azure Blueprint můžete použít na nové odběry pro vyladěné řízení a správu prostřednictvím správy verzí. 
+Pomocí Azure modrotisky můžete zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, přiřazení řízení přístupu na základě role (Azure RBAC) a zásady v jediné definici podrobného plánu. Azure Blueprint můžete použít na nové odběry pro vyladěné řízení a správu prostřednictvím správy verzí. 
 
 - [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -408,13 +408,13 @@ Kromě toho je pro veškerý provoz Azure na cestách mezi datovými centry Azur
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-control-to-manage-access-to-resources"></a>4,6: použití řízení přístupu na základě rolí ke správě přístupu k prostředkům 
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: ke správě přístupu k prostředkům použijte službu Azure RBAC. 
 
 **Pokyny**: ke správě přístupu k datům a prostředkům použijte řízení přístupu na základě role Azure (Azure RBAC). V opačném případě použijte metody řízení přístupu ke konkrétním službám. 
 
 Vyberte předdefinované role, jako je vlastník, přispěvatel nebo přispěvatel sítě, a přiřaďte roli příslušnému oboru. Můžete například přiřadit podmnožinu funkcí virtuální sítě s konkrétními oprávněními požadovanými pro virtuální sítě pro kteroukoli z těchto rolí. 
 
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [Plánování virtuálních sítí](virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -562,7 +562,7 @@ Implementujte doporučení z Security Center jako standardní hodnoty konfigurac
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

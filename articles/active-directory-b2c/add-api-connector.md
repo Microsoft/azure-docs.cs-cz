@@ -5,25 +5,28 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 857429ab5fd2e2ea9a0cb0173015ceba4bb0bacb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102268"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504107"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Přidání konektoru rozhraní API k toku registrace uživatele (Preview)
+
+> [!IMPORTANT]
+> Konektory rozhraní API pro registraci jsou funkcí verze Public Preview služby Azure AD B2C. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
 Pokud chcete použít [konektor API](api-connectors-overview.md), vytvořte nejdřív konektor API a pak ho povolte v toku uživatele.
 
 ## <a name="create-an-api-connector"></a>Vytvoření konektoru API
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. V části **služby Azure**vyberte **Azure AD B2C**.
 4. Vyberte možnost **konektory rozhraní API (Preview)** a pak vyberte **nový konektor API**.
 
@@ -48,7 +51,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -80,13 +83,13 @@ Ve výchozím nastavení se ve všech požadavcích standardně odesílají dekl
 > Pokud deklarace identity nemá hodnotu v době volání koncového bodu rozhraní API, deklarace identity se nepošle do rozhraní API. Vaše rozhraní API by mělo být navržené tak, aby explicitně kontrolovalo a zpracovalo případ, ve kterém deklarace identity není v žádosti.
 
 > [!TIP] 
-> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity) a deklarace **e-mailové adresy (' email ')** můžou vaše rozhraní API použít k identifikaci uživatele předtím, než budou mít účet ve vašem tenantovi. Deklarace identity identity se pošle, když se uživatel ověřuje pomocí zprostředkovatele identity, jako je Google nebo Facebook. ' e-mail ' je vždy odeslán.
+> [**identity (identity)**](https://docs.microsoft.com/graph/api/resources/objectidentity) a deklarace **e-mailové adresy (' email ')** můžou vaše rozhraní API použít k identifikaci uživatele předtím, než budou mít účet ve vašem tenantovi. 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Povolení konektoru API v toku uživatele
 
 Pomocí těchto kroků přidáte konektor rozhraní API do uživatelského toku registrace.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. V části **služby Azure**vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů**a pak vyberte tok uživatele, do kterého chcete konektor API přidat.
 5. Vyberte možnost **konektory rozhraní API**a potom vyberte koncové body rozhraní API, které chcete vyvolat, v následujících krocích v toku uživatele:
@@ -100,7 +103,7 @@ Pomocí těchto kroků přidáte konektor rozhraní API do uživatelského toku 
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Po přihlášení pomocí zprostředkovatele identity
 
-Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele s poskytovatelem identity (jako Google, Facebook, & Azure AD). Tento krok předchází ***stránku kolekce atributů***, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. Tento krok se nevyvolá, pokud se uživatel registruje pomocí místního účtu.
+Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele s poskytovatelem identity (jako Google, Facebook, & Azure AD). Tento krok předchází*_stránku kolekce atributů_** _, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. Tento krok se nevyvolá, pokud se uživatel registruje pomocí místního účtu.
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>Příklad žádosti odeslané na rozhraní API v tomto kroku
 ```http
@@ -109,7 +112,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -167,7 +170,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -234,11 +237,11 @@ Content-type: application/json
 }
 ```
 
-| Parametr                                          | Typ              | Povinné | Popis                                                                                                                                                                                                                                                                            |
+| Parametr                                          | Typ              | Vyžadováno | Popis                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | verze                                            | Řetězec            | Ano      | Verze rozhraní API.                                                                                                                                                                                                                                                                |
 | akce                                             | Řetězec            | Ano      | Hodnota musí být `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako **deklarace identity aplikace**.                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | Ne       | Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako deklarace _ * aplikace * *.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Ne       | Deklarace identity nemusí obsahovat `_<extensions-app-id>_` . Vrácené hodnoty mohou přepsat hodnoty shromážděné uživatelem. Můžou se taky vracet v tokenu, pokud je vybraný jako **deklarace identity aplikace**.  |
 
 ### <a name="example-of-a-blocking-response"></a>Příklad blokující odpovědi
@@ -255,7 +258,7 @@ Content-type: application/json
 
 ```
 
-| Parametr   | Typ   | Povinné | Popis                                                                |
+| Parametr   | Typ   | Vyžadováno | Popis                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | verze     | Řetězec | Ano      | Verze rozhraní API.                                                    |
 | akce      | Řetězec | Ano      | Hodnota musí být `ShowBlockPage`                                              |
@@ -281,14 +284,15 @@ Content-type: application/json
 }
 ```
 
-| Parametr   | Typ    | Povinné | Popis                                                                |
+| Parametr   | Typ    | Vyžadováno | Popis                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | verze     | Řetězec  | Ano      | Verze rozhraní API.                                                    |
 | akce      | Řetězec  | Ano      | Hodnota musí být `ValidationError` .                                           |
 | status      | Integer | Ano      | `400`Pro odpověď ValidationError musí být hodnota.                        |
 | userMessage | Řetězec  | Ano      | Zpráva, která se zobrazí uživateli.                                            |
 
-*Poznámka:* Stavový kód HTTP musí být kromě hodnoty "stav" v těle odpovědi "400".
+> [!NOTE]
+> Stavový kód HTTP musí být kromě hodnoty "stav" v těle odpovědi "400".
 
 **Činnost koncového uživatele při ověřování – chybová odezva**
 
@@ -318,4 +322,4 @@ Obecně je užitečné použít protokolovací nástroje povolené vaší služb
 
 ## <a name="next-steps"></a>Další kroky
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-- Začněte s našimi [ukázkami Azure Functions pro rychlý Start](code-samples.md#api-connectors).
+- Začněte s našimi [ukázkami](code-samples.md#api-connectors).

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0261c495ad08000f9041390658e0f19954b71669
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003355"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517017"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Trénování modelu
 > * Publikování modelu pro použití ve službě Azure Power apps nebo automatizace Power
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Sada alespoň pěti forem stejného typu, která se má použít pro data školení a testování. Tipy a možnosti pro vložení sady školicích dat najdete v tématu [Vytvoření školicích dat](./build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2128080).
 * Power apps nebo Power automatizuje License – viz [Průvodce licencováním](https://go.microsoft.com/fwlink/?linkid=2085130). Licence musí zahrnovat [Common data Service](https://powerplatform.microsoft.com/en-us/common-data-service/).
@@ -93,7 +93,7 @@ Na stránce Výběr polí vyberte pole, která vás zajímají:
     - **Hodnota pole**: hodnota zjištěného pole.
 
 > [!div class="mx-imgBorder"]
-> ![Přidat stránku dokumentů](./media/tutorial-ai-builder/select-fields-page.png)
+> ![Stránka označování](./media/tutorial-ai-builder/select-fields-page.png)
 
 ### <a name="label-undetected-fields"></a>Nezjištěná pole popisku
 
@@ -104,7 +104,7 @@ Pokud pole, které chcete označit popiskem, nebylo automaticky zjištěno model
 1. Vyberte **Další**, abyste zkontrolovali vybraná pole formuláře. Pokud vše vypadá dobře, vyberte **Trénovat** k trénování modelu.
 
     > [!div class="mx-imgBorder"]
-    > ![Přidat stránku dokumentů](./media/tutorial-ai-builder/summary-train-page.png)
+    > ![Stránka školení](./media/tutorial-ai-builder/summary-train-page.png)
 1. Po dokončení trénování vyberte **Přejít na stránku s podrobnostmi** na obrazovce **Trénování dokončeno**.
 ## <a name="quick-test-your-model"></a>Rychlé otestování modelu
 
@@ -127,7 +127,7 @@ Pokud pro určitá pole vyzkoušíte špatné výsledky nebo nízkou spolehlivos
 Pokud máte s modelem spokojeni, vyberte **publikovat**  a publikujte ho. Po dokončení publikování se model povýší na **Publikovaný** a je připravený k použití.
 
 > [!div class="mx-imgBorder"]
-> ![Přidat stránku dokumentů](./media/tutorial-ai-builder/model-page.png)
+> ![Stránka publikovat model](./media/tutorial-ai-builder/model-page.png)
 
 Po publikování modelu zpracování formuláře ho můžete použít v [aplikaci plátna Power Apps](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) nebo v [Power](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)automatu.
 

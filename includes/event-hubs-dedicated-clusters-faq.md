@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/23/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 345454557c1bd0df3b4e7210229c81f0149af0f3
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 0335481566ae3f28ac0f1e6bddce7050a65e7dc2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495086"
+ms.locfileid: "92516986"
 ---
 ### <a name="what-can-i-achieve-with-a-cluster"></a>Co můžu s clusterem dosáhnout?
 
-V případě Event Hubs clusteru závisí množství, které můžete ingestovat a streamování, na různých faktorech, jako jsou vaše producenti, spotřebitelé, rychlost přijímání a zpracování a mnohem víc. 
+V případě Event Hubs clusteru závisí množství, které můžete ingestovat a streamování, na různých faktorech, jako jsou vaše producenti, spotřebitelé, rychlost ingestování a zpracování a mnohem víc. 
 
 V následující tabulce jsou uvedeny výsledky srovnávacích testů, které jsme dosáhli během testování:
 
@@ -35,11 +35,11 @@ Při testování se použila následující kritéria:
 
 ### <a name="can-i-scale-updown-my-cluster"></a>Můžu svůj cluster škálovat nahoru/dolů?
 
-Po vytvoření se clustery účtují minimálně o 4 hodiny využití. Ve verzi Preview prostředí samoobslužného řízení můžete odeslat [žádost o podporu](https://ms.portal.azure.com/#create/Microsoft.Support) týmu Event Hubs v části *Technická > kvóta > žádosti o horizontální navýšení nebo snížení kapacity vyhrazeného clusteru* pro horizontální navýšení nebo snížení kapacity clusteru. Dokončení žádosti o horizontální navýšení kapacity clusteru může trvat až 7 dní. 
+Po vytvoření se clustery účtují minimálně o 4 hodiny využití. V rámci verze Preview prostředí samoobslužného řízení můžete odeslat [žádost o podporu](https://ms.portal.azure.com/#create/Microsoft.Support) týmu Event Hubs v rámci žádosti o **technickou**  >  **kvótu**  >  **pro horizontální navýšení nebo snížení kapacity vyhrazeného clusteru** pro horizontální navýšení nebo snížení kapacity clusteru. Dokončení žádosti o horizontální navýšení kapacity clusteru může trvat až 7 dní. 
 
-### <a name="how-will-geo-dr-work-with-my-cluster"></a>Jak budou geografické DRy fungovat s clusterem?
+### <a name="how-does-geo-dr-work-with-my-cluster"></a>Jak funguje geografická DR s mým clusterem?
 
-Obor názvů můžete geograficky spárovat v rámci clusteru vyhrazené úrovně s jiným oborem názvů v rámci clusteru s vyhrazenou vrstvou. V naší standardní nabídce nedoporučujeme spárovat obor názvů vyhrazené úrovně s oborem názvů, protože limit propustnosti bude nekompatibilní a výsledkem bude chyba. 
+Obor názvů můžete geograficky spárovat v rámci clusteru vyhrazené úrovně s jiným oborem názvů v rámci clusteru s vyhrazenou vrstvou. Nedoporučujeme spárovat obor názvů vyhrazené úrovně s oborem názvů v naší standardní nabídce, protože limit propustnosti bude nekompatibilní a bude mít za následek chyby. 
 
 ### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Můžu migrovat standardní obory názvů tak, aby patřily do clusteru vyhrazené úrovně?
 V současné době nepodporujeme proces automatizované migrace pro migraci dat centra událostí ze standardního oboru názvů na vyhrazený. 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b0d2c6c3d70e73be25038c763f05ef572b56ebe
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543978"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515675"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian JIRA a příručka pro správce Confluence pro Azure Active Directory
 
@@ -50,7 +50,7 @@ Správci JIRA a Confluence můžou pomocí tohoto modulu plug-in povolit jednotn
 * JIRA nebo Confluence je k dispozici i mimo podnikovou síť.
 * Modul plug-in funguje jenom s místní verzí JIRA a Confluence.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před instalací modulu plug-in si všimněte následujících informací:
 
@@ -67,7 +67,7 @@ Modul plug-in podporuje následující verze JIRA a Confluence:
 
 * JIRA Core a software: 6,0 až 7,12
 * Oddělení služeb JIRA: 3.0.0 na 3.5.0
-* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) .
+* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](./jira52microsoft-tutorial.md) .
 * Confluence: 5,0 až 5,10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
@@ -185,7 +185,7 @@ Modul plug-in podporuje tyto verze:
 
 * JIRA Core a software: 6,0 až 7,12
 * Oddělení služeb JIRA: 3.0.0 na 3.5.0
-* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial) .
+* JIRA také podporuje 5,2. Další podrobnosti získáte, když kliknete na [Microsoft Azure Active Directory jednotné přihlašování pro JIRA 5,2](./jira52microsoft-tutorial.md) .
 * Confluence: 5,0 až 5,10
 * Confluence: 6.0.1
 * Confluence: 6.1.1

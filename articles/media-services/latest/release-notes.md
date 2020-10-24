@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d18962e097358b8e80ac93b4d8419f7cd4f77ee0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426820"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514482"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -37,6 +37,15 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 > [Azure Portal](https://portal.azure.com/) můžete použít ke správě [událostí V3 Live](live-events-outputs-concept.md), zobrazení [zdrojů](assets-concept.md) a úloh v3, získání informací o přístupu k rozhraním API a k šifrování obsahu. Pro všechny ostatní úlohy správy (například Správa transformací a úloh) použijte [REST API](/rest/api/media/accountfilters), [CLI](/cli/azure/ams)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 >
 > Podrobnosti najdete v tématu [omezení Azure Portal pro Media Services V3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
+
+## <a name="october-2020"></a>Říjen 2020
+
+### <a name="basic-audio-analysis"></a>Základní analýza zvuku
+Přednastavení zvukové analýzy teď obsahuje cenovou úroveň základního režimu. Nový režim základní zvukové analyzátoru poskytuje možnost nízkého výkonu pro extrakci přepisu řeči a formátování titulků a titulků. Tento režim provádí přepis a generování VTT souboru titulků a titulků v textu. Výstup tohoto režimu zahrnuje soubor JSON Insights, včetně informací o klíčových slovech, přepisu a časování. V tomto režimu nejsou zahrnuté automatické rozpoznávání jazyka a diarizationy mluvčího. Podívejte se na seznam [podporovaných jazyků.](analyzing-video-audio-files-concept.md#built-in-presets)
+
+Zákazníci, kteří používají indexer V1 a indexer v2, by měli migrovat na základní předvolby analýzy zvuku.
+
+Další informace o režimu základní zvukové analyzátory najdete v tématu [Analýza videosouborů a zvukových souborů](analyzing-video-audio-files-concept.md).  Pokud se chcete dozvědět, jak použít režim základní zvukové analyzátory s REST API, přečtěte si téma [jak vytvořit základní transformaci zvuku](how-to-create-basic-audio-transform.md).
 
 ## <a name="august-2020"></a>Srpen 2020
 

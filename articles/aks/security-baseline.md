@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 303720cf50b5eabf22319e1eeae7423c4f1d94bb
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a9410215abeb6fdb413866cbff12cf5f826c0fee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201694"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504367"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Základní hodnoty zabezpečení Azure pro Azure Kubernetes Service
 
@@ -949,7 +949,7 @@ Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťov
 
 Implementujte obor názvů v Kubernetes k vytvoření logické hranice izolace. Pomocí aliasů Azure Policy v oboru názvů Microsoft. ContainerService můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace instancí Azure Kubernetes Service (AKS). 
 
-Kontrola a implementace dalších funkcí Kubernetes a důležitých informací pro izolaci a víceklientské architektury zahrnuje následující oblasti: plánování, sítě, ověřování, autorizace a kontejnery. Pro vývoj, testování a produkci použijte také samostatné odběry nebo skupiny pro správu. Oddělte clustery AKS s virtuálními sítěmi, podsítěmi, které jsou označené správně, a zabezpečené pomocí firewallu webových aplikací (WAF).
+Přečtěte si a implementujte další Kubernetes funkce a požadavky pro izolaci a víceklientské architektury, které zahrnují následující: plánování, sítě, ověřování, autorizace a kontejnery. Pro vývoj, testování a produkci použijte také samostatné odběry nebo skupiny pro správu. Oddělte clustery AKS s virtuálními sítěmi, podsítěmi, které jsou označené správně, a zabezpečené pomocí firewallu webových aplikací (WAF).
 
 - [Další informace o osvědčených postupech pro izolaci clusteru v AKS](operator-best-practices-cluster-isolation.md)
 

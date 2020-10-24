@@ -5,27 +5,30 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 195101a432d16c2236ea2d164416e75df33b12e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94d6b0192b014396f8751e58f5620aec5c132203
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828385"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503874"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>Použití konektorů rozhraní API k přizpůsobení a rozšiřování toků uživatelů registrace
 
-## <a name="overview"></a>Přehled 
-Jako vývojář nebo správce IT můžete použít konektory rozhraní API k integraci uživatelských toků přihlášení k webovým rozhraním API pro přizpůsobení prostředí pro registraci. Pomocí konektorů rozhraní API můžete:
+> [!IMPORTANT]
+> Konektory rozhraní API pro registraci jsou funkcí verze Public Preview služby Azure AD B2C. Další informace o verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-- **Proveďte ověření identity**. Pomocí služby ověřování identity přidejte další úroveň zabezpečení pro rozhodování o vytváření účtů.
+## <a name="overview"></a>Přehled 
+Jako vývojář nebo správce IT můžete použít konektory rozhraní API k integraci uživatelských toků přihlášení k webovým rozhraním API pro přizpůsobení prostředí pro registraci. Například pomocí konektorů rozhraní API můžete:
+
 - **Ověřte vstupní data uživatele**. Ověřte proti poškozeným nebo neplatným uživatelským datům. Můžete například ověřit uživatelem zadaná data pro stávající data v externím úložišti dat nebo seznamu povolených hodnot. Pokud je neplatná, můžete požádat uživatele, aby poskytl platná data, nebo zablokovat, aby uživatel pokračoval v procesu registrace.
 - Proveďte **integraci s vlastním pracovním postupem schválení**. Připojte se k vlastnímu systému schvalování pro správu a omezení vytváření účtů.
 - **Přepsat atributy uživatele**. Přeformátujte nebo přiřaďte hodnotu atributu shromážděnému od uživatele. Pokud například uživatel zadá křestní jméno do všech malých a velkých písmen, můžete název naformátovat pouze na první písmeno. 
+- **Proveďte ověření identity**. Pomocí služby ověřování identity přidejte další úroveň zabezpečení pro rozhodování o vytváření účtů.
 - **Spusťte vlastní obchodní logiku**. Můžete aktivovat navazující události v cloudových systémech a odesílat nabízená oznámení, aktualizovat podnikové databáze, spravovat oprávnění, auditovat databáze a provádět další vlastní akce.
 
 Konektor API poskytuje Azure Active Directory s informacemi potřebnými pro volání rozhraní API, včetně adresy URL koncového bodu a ověřování. Po nakonfigurování konektoru API ho můžete povolit pro konkrétní krok v toku uživatele. Když uživatel dosáhne tohoto kroku v procesu registrace, vyvolá se konektor API a materializuje jako požadavek HTTP POST do vašeho rozhraní API a pošle informace o uživateli (deklarace identity) jako páry klíč-hodnota v těle JSON. Reakce rozhraní API může ovlivnit spuštění toku uživatele. Odpověď rozhraní API může například zablokovat uživateli registraci, požádat uživatele o opětovné zadání informací, nebo přepsat a připojit atributy uživatele.
@@ -42,7 +45,7 @@ Tok uživatele obsahuje dvě místa, kde můžete povolit konektor API:
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>Po přihlášení pomocí zprostředkovatele identity
 
-Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele s poskytovatelem identity (jako Google, Facebook, & Azure AD). Tento krok předchází ***stránku kolekce atributů***, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. Tento krok se nevyvolá, pokud se uživatel registruje pomocí místního účtu. Následují příklady scénářů konektoru rozhraní API, které můžete povolit v tomto kroku:
+Konektor API v tomto kroku v procesu registrace se vyvolá hned po ověření uživatele s poskytovatelem identity (jako Google, Facebook, & Azure AD). Tento krok předchází **_stránku kolekce atributů_**, což je formulář prezentovaný uživateli ke shromáždění atributů uživatele. Tento krok se nevyvolá, pokud se uživatel registruje pomocí místního účtu. Následují příklady scénářů konektoru rozhraní API, které můžete povolit v tomto kroku:
 
 - Použijte e-mailovou nebo federované identitu, kterou uživatel zadal k vyhledání deklarací v existujícím systému. Vrátí tyto deklarace ze stávajícího systému, předem vyplní stránku kolekce atributů a zpřístupní je k vrácení v tokenu.
 - Implementujte seznam povolených nebo blokovaných webů na základě sociální identity.
@@ -59,4 +62,5 @@ Konektor rozhraní API v tomto kroku v procesu registrace je vyvolán po stránc
 
 ## <a name="next-steps"></a>Další kroky
 - Naučte se [Přidat konektor API do toku uživatele](add-api-connector.md) .
+- Začněte s našimi [ukázkami](code-samples.md#api-connectors).
 <!-- - Learn how to [add a custom approval system to self-service sign-up](add-approvals.md) -->

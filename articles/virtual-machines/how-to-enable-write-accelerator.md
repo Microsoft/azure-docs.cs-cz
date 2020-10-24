@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: fd0f489bd6109a5dcd6625eb26286e0d40c50c63
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e4f6cefd56c12162b370c78b6df2cd29ece030f1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962322"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515708"
 ---
 # <a name="enable-write-accelerator"></a>Povolit Akcelerátor zápisu
 
@@ -57,7 +57,7 @@ Existují limity pro virtuální počítače Azure Premium Storage, které můž
 | M16ms, M16s | 2 | 2500 |
 | M8ms, M8s | 1 | 1250 |
 
-Omezení IOPS jsou vázaná na virtuální počítač a *ne* na disk. Všechny Akcelerátor zápisu disky sdílí stejný limit počtu IOPS na virtuální počítač.
+Omezení IOPS jsou vázaná na virtuální počítač a *ne* na disk. Všechny Akcelerátor zápisu disky sdílí stejný limit počtu IOPS na virtuální počítač. Připojené disky nemůžou překročit limit zápisu IOPS akcelerátoru zápisu pro virtuální počítač. Například, i když připojené disky můžou provádět 30 000 IOPS, systém nedovolí diskům přejít nad 20 000 IOPS za M416ms_v2.
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Povolení Akcelerátoru zápisu na konkrétním disku
 
