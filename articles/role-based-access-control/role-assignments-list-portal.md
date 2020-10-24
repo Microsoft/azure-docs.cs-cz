@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151713"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479914"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Vypsání přiřazení rolí Azure pomocí Azure Portal
 
@@ -126,7 +126,7 @@ Přiřazení rolí pro spravované identity přiřazené systémem a uživatelem
 
     Zobrazí se seznam rolí přiřazených k vybrané spravované identitě přiřazené uživatelem v různých oborech, jako je skupina pro správu, předplatné, skupina prostředků nebo prostředek. Tento seznam obsahuje všechna přiřazení rolí, ke kterým máte oprávnění číst.
 
-    ![Přiřazení rolí pro spravovanou identitu přiřazenou systémem](./media/shared/role-assignments-user-assigned.png)
+    ![Snímek obrazovky zobrazující přiřazení rolí pro spravovanou identitu přiřazenou uživatelem](./media/shared/role-assignments-user-assigned.png)
 
 1. Chcete-li změnit předplatné, klikněte na seznam **předplatných** .
 
@@ -178,7 +178,7 @@ Pomocí těchto kroků si můžete stáhnout přiřazení rolí v oboru.
 
     ![Stažení přiřazení rolí jako sdíleného svazku clusteru](./media/role-assignments-list-portal/download-role-assignments-csv.png)
 
-    ![Stažení přiřazení rolí jako sdíleného svazku clusteru](./media/role-assignments-list-portal/download-role-assignments-json.png)
+    ![Snímek obrazovky se staženými přiřazeními rolí ve formátu JSON.](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>Další kroky
 

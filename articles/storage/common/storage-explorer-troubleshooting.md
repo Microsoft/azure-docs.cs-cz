@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b71d46c3d6b1612728b2bd81c6acede6d0559b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714446"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488618"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -23,7 +23,7 @@ Tato příručka shrnuje řešení problémů, které se běžně zobrazují v P
 
 ## <a name="azure-rbac-permissions-issues"></a>Problémy s oprávněními Azure RBAC
 
-Řízení přístupu na základě role Azure [RBAC Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) umožňuje vysoce detailní správu přístupu prostředků Azure tím, že kombinuje sady oprávnění s _rolemi_. Tady jsou některé strategie pro optimální fungování Azure RBAC v Průzkumník služby Storage.
+Řízení přístupu na základě role Azure [RBAC Azure](/azure/role-based-access-control/overview) umožňuje vysoce detailní správu přístupu prostředků Azure tím, že kombinuje sady oprávnění s _rolemi_. Tady jsou některé strategie pro optimální fungování Azure RBAC v Průzkumník služby Storage.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Návody přistupovat k prostředkům v Průzkumník služby Storage?
 
@@ -65,7 +65,7 @@ Pokud chcete získat přístup k kontejnerům nebo frontám objektů blob, můž
 3. Vyberte uživatelský účet a tenanta přidružený k prostředku, ke kterému se připojujete. Klikněte na Další.
 4. Vyberte typ prostředku, zadejte adresu URL prostředku a zadejte jedinečný zobrazovaný název pro připojení. Klikněte na Další. Klikněte na Připojit.
 
-U jiných typů prostředků momentálně nepoužíváme řešení související se službou Azure RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+U jiných typů prostředků momentálně nepoužíváme řešení související se službou Azure RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Doporučené předdefinované role Azure
 
@@ -100,7 +100,7 @@ Pokud si nejste jistí, odkud certifikát pochází, postupujte podle těchto kr
 2. Spusťte OpenSSL.
     * Windows: otevřete instalační adresář, vyberte **/bin/** a potom poklikejte na **openssl.exe**.
     * Mac a Linux: Spusťte `openssl` z terminálu.
-3. Spusťte příkaz `s_client -showcerts -connect microsoft.com:443`.
+3. Spusťte `s_client -showcerts -connect microsoft.com:443`.
 4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, poznamenejte si, jestli je předmět `("s:")` a vydavatel `("i:")` stejné.
 5. Když najdete certifikáty podepsané svým držitelem, můžete pro každý z nich zkopírovat a vložit všechno z (a včetně `-----BEGIN CERTIFICATE-----` ) `-----END CERTIFICATE-----` do nového souboru. cer.
 6. Otevřete Průzkumník služby Storage a pokračujte v **úpravách**  >  **certifikátů SSL**  >  **Import certifikátů**. Pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
@@ -332,7 +332,7 @@ Průzkumník služby Storage vyžaduje, aby bylo v systému nainstalované rozhr
 # <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
-2. Instalace [modulu runtime .NET Core](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Instalace [modulu runtime .NET Core](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -345,7 +345,7 @@ Průzkumník služby Storage vyžaduje, aby bylo v systému nainstalované rozhr
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
-2. Instalace [modulu runtime .NET Core](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Instalace [modulu runtime .NET Core](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -358,7 +358,7 @@ Průzkumník služby Storage vyžaduje, aby bylo v systému nainstalované rozhr
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Stáhněte soubor Průzkumník služby Storage. tar. gz.
-2. Instalace [modulu runtime .NET Core](https://docs.microsoft.com/dotnet/core/install/linux):
+2. Instalace [modulu runtime .NET Core](/dotnet/core/install/linux):
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 9a081a28d4c96e3c38986cbb3c0990bc89c5ab99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe1b685a0209643332d798b875b9e62b02aa02da
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83684477"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488771"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -41,7 +41,7 @@ Pokud jste nakonfigurovali zásady uchovávání dat, neúčtují se vám žádn
 
 ### <a name="understanding-billable-requests"></a>Princip fakturovatelných požadavků
 
-Každý požadavek na službu úložiště účtu je buď fakturovatelný, nebo nefakturovatelná. Analýza úložiště protokolovat jednotlivé požadavky na službu, včetně stavové zprávy, která indikuje, jak byl požadavek zpracován. Podobně Analýza úložiště ukládá metriky pro službu i operace rozhraní API této služby, včetně procentuálních hodnot a počtu určitých stavových zpráv. Tyto funkce společně umožňují analyzovat Fakturovatelné žádosti, dělat vylepšení aplikace a diagnostikovat problémy s požadavky na vaše služby. Další informace o fakturaci najdete v tématu [principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
+Každý požadavek na službu úložiště účtu je buď fakturovatelný, nebo nefakturovatelná. Analýza úložiště protokolovat jednotlivé požadavky na službu, včetně stavové zprávy, která indikuje, jak byl požadavek zpracován. Podobně Analýza úložiště ukládá metriky pro službu i operace rozhraní API této služby, včetně procentuálních hodnot a počtu určitých stavových zpráv. Tyto funkce společně umožňují analyzovat Fakturovatelné žádosti, dělat vylepšení aplikace a diagnostikovat problémy s požadavky na vaše služby. Další informace o fakturaci najdete v tématu [principy Azure Storage fakturace – šířka pásma, transakce a kapacita](/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 Při prohlížení dat Analýza úložiště můžete pomocí tabulek v tématu [Analýza úložiště protokolované operace a stavové zprávy](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) určit, které požadavky budou Fakturovatelné. Pak můžete porovnat protokoly a data metrik ve stavových zprávách a zjistit, jestli jste se vám vyrovnali za konkrétní požadavek. K prozkoumání dostupnosti pro službu úložiště nebo jednotlivé operace rozhraní API můžete použít také tabulky v předchozím tématu.
 

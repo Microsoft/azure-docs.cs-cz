@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
-ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ac175e2c1caa39bfe88a7c1a5f42318db343fb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318768"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477279"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 
@@ -137,7 +137,7 @@ Pokud chcete přidat entitu, nejprve vytvořte objekt definující vlastnosti en
 * **PartitionKey** – Určuje oddíl, ve kterém je entita uložená.
 * **RowKey** – Jednoznačně identifikuje entitu v rámci oddílu.
 
-**PartitionKey** i **RowKey** musí být řetězcové hodnoty. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+**PartitionKey** i **RowKey** musí být řetězcové hodnoty. Další informace najdete v tématu [Vysvětlení datového modelu služby Table Storage](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 Následuje příklad definice entity. **DueDate** je definován jako typ `Edm.DateTime` . Zadání typu je volitelné. Pokud typ není zadaný, odvodí se.
 
@@ -483,6 +483,6 @@ Další informace najdete v následujících materiálech.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * Úložiště [sady SDK služby Azure Storage pro Node.js](https://github.com/Azure/azure-storage-node) na GitHubu
-* [Azure pro vývojáře v Node.js](https://docs.microsoft.com/azure/developer/javascript/)
+* [Azure pro vývojáře v Node.js](/azure/developer/javascript/)
 * [Vytvoření webové aplikace Node.js v Azure](../app-service/quickstart-nodejs.md)
 * [Sestavení a nasazení aplikace Node.js v cloudové službě Azure](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (pomocí Windows PowerShellu)

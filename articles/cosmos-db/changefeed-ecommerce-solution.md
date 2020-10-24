@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356362"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475911"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnového kanálu k vizualizaci analýzy dat v reálném čase
 
@@ -50,11 +50,11 @@ Následující diagram představuje tok dat a součásti zapojené do řešení:
 
 5. **Centrum událostí:** Centrum událostí Azure tyto události uloží a pošle je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) k provedení další analýzy.  
 
-6. **Azure Stream Analytics:** Azure Stream Analytics definuje dotazy, které zpracovávají události a provádějí analýzu dat v reálném čase. Tato data se pak odesílají do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
+6. **Azure Stream Analytics:** Azure Stream Analytics definuje dotazy, které zpracovávají události a provádějí analýzu dat v reálném čase. Tato data se pak odesílají do [Microsoft Power BI](/power-bi/desktop-what-is-desktop).  
 
 7. **Power BI:** Power BI slouží k vizualizaci dat odesílaných Azure Stream Analytics. Můžete vytvořit řídicí panel, abyste viděli, jak se metriky mění v reálném čase.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Microsoft .NET Framework 4.7.1 nebo novější
 
@@ -382,4 +382,4 @@ Pokud chcete odstranit prostředky, které jste vytvořili během tohoto testova
 
 ## <a name="next-steps"></a>Další kroky 
   
-* Další informace o službě Change feed najdete [v tématu práce s podporou změny kanálu v Azure Cosmos DB](change-feed.md) 
+* Další informace o službě Change feed najdete [v tématu práce s podporou změny kanálu v Azure Cosmos DB](change-feed.md)

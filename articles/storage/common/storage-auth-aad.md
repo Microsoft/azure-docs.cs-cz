@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f681a271dcd64468cb471c81496e489f0ce8413f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 391cbbca79560ba57ae2be62accdad8451446227
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713666"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488720"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory
 
@@ -61,7 +61,7 @@ Další informace o tom, jak jsou předdefinované role definované pro Azure St
 
 ### <a name="access-permissions-for-data-operations"></a>Přístupová oprávnění pro datové operace
 
-Podrobnosti o oprávněních požadovaných pro volání konkrétních operací BLOB nebo Služba front najdete v tématu [oprávnění pro volání operací s daty BLOB a Queue](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Podrobnosti o oprávněních požadovaných pro volání konkrétních operací BLOB nebo Služba front najdete v tématu [oprávnění pro volání operací s daty BLOB a Queue](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
 ## <a name="resource-scope"></a>Obor prostředku
 

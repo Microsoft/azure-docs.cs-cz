@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708981"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488040"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Protokolování auditu Azure Database for PostgreSQL – jeden server
 
@@ -88,7 +88,7 @@ Chcete-li rychle začít, nastavte `pgaudit.log` na `WRITE` , a otevřete protok
 ## <a name="viewing-audit-logs"></a>Zobrazení protokolů auditu
 Pokud používáte soubory. log, budou se protokoly auditu zahrnovat do stejného souboru jako protokoly chyb PostgreSQL. Soubory protokolu si můžete stáhnout z webu Azure [Portal](howto-configure-server-logs-in-portal.md) nebo rozhraní příkazového [řádku](howto-configure-server-logs-using-cli.md). 
 
-Pokud používáte protokolování prostředků Azure, způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../azure-monitor/platform/resource-logs-collect-storage.md) . Event Hubs najdete v článku [streamování protokolů Azure](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+Pokud používáte protokolování prostředků Azure, způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) . Event Hubs najdete v článku [streamování protokolů Azure](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) .
 
 Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../azure-monitor/log-query/log-query-overview.md) .
 

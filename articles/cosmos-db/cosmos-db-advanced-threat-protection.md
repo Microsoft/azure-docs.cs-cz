@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85119265"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489247"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)
 
@@ -26,7 +26,7 @@ Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Ty
 > * Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB je aktuálně dostupná jenom pro rozhraní SQL API.
 > * Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB není v současnosti dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
-V případě úplného šetření výstrah zabezpečení doporučujeme povolit [protokolování diagnostiky v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging), které zapisuje operace do samotné databáze, včetně operací CRUD na všech dokumentech, kontejnerech a databázích.
+V případě úplného šetření výstrah zabezpečení doporučujeme povolit [protokolování diagnostiky v Azure Cosmos DB](./monitor-cosmos-db.md), které zapisuje operace do samotné databáze, včetně operací CRUD na všech dokumentech, kontejnerech a databázích.
 
 ## <a name="threat-types"></a>Typy hrozeb
 
@@ -59,16 +59,16 @@ Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovo
 
 Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo získat nastavení rozšířené ochrany před internetovými útoky pro určitý účet Azure Cosmos DB.
 
-* [Rozšířená ochrana před internetovými útoky – vytvořit](https://go.microsoft.com/fwlink/?linkid=2099745)
-* [Rozšířená ochrana před internetovými útoky – získání](https://go.microsoft.com/fwlink/?linkid=2099643)
+* [Rozšířená ochrana před internetovými útoky – vytvořit](/rest/api/securitycenter/advancedthreatprotection/create)
+* [Rozšířená ochrana před internetovými útoky – získání](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Použijte následující rutiny PowerShellu:
 
-* [Povolení Rozšířené ochrany před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
-* [Získat rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
-* [Zakázat rozšířenou ochranu před internetovými útoky](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+* [Povolení Rozšířené ochrany před internetovými útoky](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Získat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
+* [Zakázat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0)
 
 ### <a name="arm-template"></a>[Šablona ARM](#tab/arm-template)
 
@@ -112,9 +112,9 @@ E-mailové oznámení se také pošle s podrobnostmi výstrahy a doporučenými 
 
 ## <a name="cosmos-db-atp-alerts"></a>Výstrahy ATP Cosmos DB
 
- Pokud chcete zobrazit seznam výstrah generovaných při monitorování účtů Azure Cosmos DB, přečtěte si část [Cosmos DB výstrahy](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos) v dokumentaci k Azure Security Center.
+ Pokud chcete zobrazit seznam výstrah generovaných při monitorování účtů Azure Cosmos DB, přečtěte si část [Cosmos DB výstrahy](../security-center/alerts-reference.md#alerts-azurecosmos) v dokumentaci k Azure Security Center.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [protokolování diagnostiky v Azure Cosmos DB](cosmosdb-monitor-resource-logs.md)
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)

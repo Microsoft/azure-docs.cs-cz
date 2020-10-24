@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0ec5b5a5ee5c29893f47560d57e78c281825453e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce4efe0250ea1b85e2e2d77b7ee69bdf3dbcab26
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370385"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480391"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
 
@@ -40,7 +40,7 @@ Synapse fond SQL odkazuje na funkce podnikových dat v datovém skladu, které j
 
 Fond SQL představuje kolekci analytických prostředků, které se zřídí při používání synapse SQL. Velikost fondu SQL je určena jednotkami datového skladu (DWU).
 
-Importujte velké objemy dat pomocí jednoduchých [základních](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dotazů T-SQL a potom Využijte sílu MPP ke spouštění vysoce výkonných analýz. Při integraci a analýze se synapse fond SQL stane jedinou verzí pravdy, kterou vaše firma může počítat pro rychlejší a robustnější přehledy.  
+Naimportujte velké objemy dat pomocí jednoduchých [základních](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dotazů T-SQL a potom Využijte sílu modulu distribuovaných dotazů ke spouštění vysoce výkonných analýz. Při integraci a analýze dat se synapse SQL stane jedinou verzí pravdy, kterou vaše firma může počítat pro rychlejší a robustnější přehledy. 
 
 ## <a name="key-component-of-a-big-data-solution"></a>Klíčová součást řešení pro velké objemy dat
 

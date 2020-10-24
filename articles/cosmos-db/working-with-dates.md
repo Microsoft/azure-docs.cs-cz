@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7a524d34fcf8e629914d4fbc4669caada210866b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a876c5ba9c289f0edbbfdf8727e9957e7937b781
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019184"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476242"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Práce s daty v Azure Cosmos DB
 
@@ -66,7 +66,7 @@ Tento dokument je uložený v Azure Cosmos DB následujícím způsobem:
     }
 ```  
 
-Případně můžete ukládat hodnoty DateTime jako časová razítka systému UNIX, tj. číslo představující počet uplynulých sekund od 1. ledna 1970. `_ts`Tento přístup se řídí vnitřní vlastností Timestamp () Azure Cosmos DB. Můžete použít třídu [UnixDateTimeConverter](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.unixdatetimeconverter.aspx) k serializaci hodnot DateTime jako čísel.
+Případně můžete ukládat hodnoty DateTime jako časová razítka systému UNIX, tj. číslo představující počet uplynulých sekund od 1. ledna 1970. `_ts`Tento přístup se řídí vnitřní vlastností Timestamp () Azure Cosmos DB. Můžete použít třídu [UnixDateTimeConverter](/dotnet/api/microsoft.azure.documents.unixdatetimeconverter) k serializaci hodnot DateTime jako čísel.
 
 ## <a name="querying-datetimes-in-linq"></a>Dotazování na hodnoty DateTime v LINQ
 

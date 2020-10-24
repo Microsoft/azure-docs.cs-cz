@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 6708fcbe6f756a92984ee8aa48c181e1103f2046
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c6e09405fbc2fec6da516cabc7f509de712c45d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532870"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Kurz: Azure Active Directory integrace s UserEcho
 
@@ -30,7 +30,7 @@ Integrace UserEcho s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s UserEcho potřebujete následující položky:
 
@@ -128,19 +128,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí UserEcho
 
 2. Na panelu nástrojů v horní části klikněte na své uživatelské jméno a rozbalte nabídku a potom klikněte na tlačítko **nastavit**.
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_06.png) 
+    ![Snímek obrazovky se zobrazí nastavení vybrané na webu UserEcho.](./media/userecho-tutorial/tutorial_userecho_06.png) 
 
 3. Klikněte na **integrace**.
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_07.png) 
+    ![Snímek obrazovky zobrazuje integrace vybrané z nabídky nastavení.](./media/userecho-tutorial/tutorial_userecho_07.png) 
 
 4. Klikněte na **Web**a potom klikněte na **jednotné přihlašování (typu Saml2)**.
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_08.png) 
+    ![Snímek obrazovky se v nabídce integrace zobrazuje typu Saml2 s jednotným přihlašováním.](./media/userecho-tutorial/tutorial_userecho_08.png) 
 
 5. Na stránce **jednotného přihlašování (SAML)** proveďte následující kroky:
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_09.png)
+    ![Snímek obrazovky se zobrazí na stránce SAML jednotného přihlašování, kde můžete zadat hodnoty, které jsou popsány.](./media/userecho-tutorial/tutorial_userecho_09.png)
     
     a. V případě, že je **povoleno SAML**, vyberte **Ano**.
     
@@ -212,23 +212,23 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon v UserEcho.
 
 2. Na panelu nástrojů v horní části klikněte na své uživatelské jméno a rozbalte nabídku a potom klikněte na tlačítko **nastavit**.
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_06.png)
+    ![Snímek obrazovky se zobrazí nastavení vybrané na webu UserEcho.](./media/userecho-tutorial/tutorial_userecho_06.png)
 
 3. Kliknutím na **Uživatelé**rozbalte oddíl **Uživatelé** .
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_10.png)
+    ![Snímek obrazovky zobrazuje uživatele vybrané v nabídce nastavení.](./media/userecho-tutorial/tutorial_userecho_10.png)
 
 4. Klikněte na **Uživatelé**.
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_11.png)
+    ![Snímek obrazovky znázorňující vybrané uživatele.](./media/userecho-tutorial/tutorial_userecho_11.png)
 
 5. Klikněte na **pozvat nového uživatele**.
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_12.png)
+    ![Snímek obrazovky s výzvou k vytvoření nového uživatelského ovládacího prvku](./media/userecho-tutorial/tutorial_userecho_12.png)
 
 6. V dialogovém okně **pozvat nového uživatele** proveďte následující kroky:
    
-    ![Konfigurace jednoho Sign-On](./media/userecho-tutorial/tutorial_userecho_13.png)
+    ![Snímek obrazovky se zobrazí dialogové okno pozvat nového uživatele, kde můžete zadat informace o uživateli.](./media/userecho-tutorial/tutorial_userecho_13.png)
 
     a. Do textového pole **název** zadejte název uživatele, například Britta Simon.
     
@@ -242,7 +242,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici UserEcho, měli byste se automaticky přihlásit k UserEcho, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

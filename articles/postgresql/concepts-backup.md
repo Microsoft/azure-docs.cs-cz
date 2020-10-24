@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 0c1b0b5ac0c5c71dc5c98cb91d86f879a82809bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708450"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488006"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Zálohování a obnovení v Azure Database for PostgreSQL – jeden server
 
@@ -32,11 +32,11 @@ Pro servery, které podporují až 4 TB maximálního úložiště, se k úplný
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>Servery s až 16 TB úložiště
 
-V podmnožině [oblastí Azure](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové. Rozdílové zálohování snímků se neprovádí podle pevně daného plánu. Za den se provádí tři rozdílové zálohy snímků. Zálohování transakčních protokolů probíhá každých pět minut. 
+V podmnožině [oblastí Azure](./concepts-pricing-tiers.md#storage)můžou všechny nově zřízené servery podporovat úložiště až o 16 TB. Zálohy na těchto velkých serverech úložiště jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové. Rozdílové zálohování snímků se neprovádí podle pevně daného plánu. Za den se provádí tři rozdílové zálohy snímků. Zálohování transakčních protokolů probíhá každých pět minut. 
 
 ### <a name="backup-retention"></a>Uchování záloh
 
-Zálohy se uchovávají na základě nastavení období uchovávání záloh na serveru. Můžete vybrat dobu uchování 7 až 35 dní. Výchozí doba uchování je 7 dní. Dobu uchování během vytváření serveru nebo později můžete nastavit tak, že aktualizujete konfiguraci zálohování pomocí [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration). 
+Zálohy se uchovávají na základě nastavení období uchovávání záloh na serveru. Můžete vybrat dobu uchování 7 až 35 dní. Výchozí doba uchování je 7 dní. Dobu uchování během vytváření serveru nebo později můžete nastavit tak, že aktualizujete konfiguraci zálohování pomocí [Azure Portal](./howto-restore-server-portal.md#set-backup-configuration) nebo rozhraní příkazového [řádku Azure CLI](./howto-restore-server-cli.md#set-backup-configuration). 
 
 Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v čase dá načíst, protože je založené na dostupných zálohách. Období uchovávání záloh lze také považovat za okno obnovení z perspektivy obnovení. Všechny zálohy potřebné k provedení obnovení k určitému bodu v čase v rámci období uchovávání záloh jsou uchovávány v úložišti záloh. Pokud je například doba uchování zálohy nastavená na 7 dní, okno obnovení se považuje za posledních 7 dní. V tomto scénáři jsou zachovány všechny zálohy potřebné k obnovení serveru za posledních 7 dní. Okno uchování zálohy po dobu sedmi dnů:
 - Servery s úložištěm až 4 TB budou uchovávat až 2 úplné zálohy databáze, všechny rozdílové zálohy a zálohy transakčního protokolu byly provedeny od nejstarší úplné zálohy databáze.
@@ -44,7 +44,7 @@ Doba uchovávání záloh určuje, jak daleko se obnovení k určitému bodu v �
 
 ### <a name="backup-redundancy-options"></a>Možnosti redundance zálohy
 
-Azure Database for PostgreSQL poskytuje flexibilitu při výběru místně redundantního nebo geograficky redundantního úložiště záloh v Pro obecné účely a paměťově optimalizovaných úrovních. Když jsou zálohy uložené v geograficky redundantním úložišti zálohování, neukládají se jenom v oblasti, ve které je váš server hostovaný, ale taky se replikují do [spárovaného datového centra](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). To zajišťuje lepší ochranu a možnost obnovení serveru v jiné oblasti v případě havárie. Úroveň Basic nabízí jenom místně redundantní úložiště záloh.
+Azure Database for PostgreSQL poskytuje flexibilitu při výběru místně redundantního nebo geograficky redundantního úložiště záloh v Pro obecné účely a paměťově optimalizovaných úrovních. Když jsou zálohy uložené v geograficky redundantním úložišti zálohování, neukládají se jenom v oblasti, ve které je váš server hostovaný, ale taky se replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). To zajišťuje lepší ochranu a možnost obnovení serveru v jiné oblasti v případě havárie. Úroveň Basic nabízí jenom místně redundantní úložiště záloh.
 
 > [!IMPORTANT]
 > Konfigurace místně redundantního nebo geograficky redundantního úložiště pro zálohování je povolená jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování.
@@ -69,7 +69,7 @@ K dispozici jsou dva typy obnovení:
 Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
 > [!IMPORTANT]
-> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
+> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 

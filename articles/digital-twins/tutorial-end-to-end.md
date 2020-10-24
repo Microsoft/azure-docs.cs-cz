@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f0d28a71e2bd6fc2006bda81fba7d7e6336c5b1c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a765bf547924cbba1c4cff36a97df4ae88df1787
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460831"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495935"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -168,24 +168,26 @@ V podokně *publikovat* , které se otevře zpátky v hlavním okně sady Visual
 
 ### <a name="assign-permissions-to-the-function-app"></a>Přiřazení oprávnění k aplikaci Function App
 
-Chcete-li povolit aplikaci Function App přístup k digitálním úlohám Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení aplikace identitou spravované systémem a udělení této identity této identitě v instanci služby Azure Digital reinstances *vlastníka (Preview)* . Tato role se vyžaduje pro libovolného uživatele nebo funkci, která chce v instanci provést mnoho aktivit roviny dat. Další informace o zabezpečení a přiřazování rolí si můžete přečíst v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md).
+Pokud chcete povolit aplikaci Function App přístup k digitálním úlohám Azure, je dalším krokem konfigurace nastavení aplikace, přiřazení této aplikace identitě spravované systémem Azure AD a udělení této identity roli *vlastníka dat v Azure Digital* realiass v instanci digitálních vláken Azure. Tato role se vyžaduje pro libovolného uživatele nebo funkci, která chce v instanci provést mnoho aktivit roviny dat. Další informace o zabezpečení a přiřazování rolí si můžete přečíst v tématu [*Koncepty: zabezpečení pro řešení digitálních vláken Azure*](concepts-security.md).
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 V Azure Cloud Shell pomocí následujícího příkazu nastavte nastavení aplikace, které vaše aplikace Function App použije k odkazování na instanci digitálních vláken Azure.
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 Pomocí následujícího příkazu vytvořte identitu spravovanou systémem. Poznamenejte si pole *principalId* ve výstupu.
 
-```azurecli
+```azurecli-interactive
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Pomocí hodnoty *principalId* z výstupu v následujícím příkazu přiřaďte identitě aplikace funkcí roli vlastníka služby Azure Digital nepracovníci *(Preview)* pro vaši instanci digitálních vláken Azure:
+Pomocí hodnoty *principalId* z výstupu v následujícím příkazu přiřaďte identitu aplikace funkcí k roli *vlastníka dat digitálních vláken Azure* pro vaši instanci digitálních vláken Azure:
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 
 Výsledkem tohoto příkazu jsou informace o přiřazení role, kterou jste vytvořili. Aplikace Function App má teď oprávnění pro přístup k instanci digitálních vláken Azure.
@@ -213,7 +215,7 @@ Digitální vlákna Azure je navržená tak, aby fungovala vedle [IoT Hub](../io
 
 V Azure Cloud Shell pomocí tohoto příkazu vytvořte novou IoT Hub:
 
-```azurecli
+```azurecli-interactive
 az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku S1
 ```
 
@@ -252,7 +254,7 @@ V této části se vytvoří reprezentace zařízení v IoT Hub s ID *thermostat
 
 V Azure Cloud Shell vytvořte v IoT Hub zařízení pomocí následujícího příkazu:
 
-```azurecli
+```azurecli-interactive
 az iot hub device-identity create --device-id thermostat67 --hub-name <your-IoT-hub-name> -g <your-resource-group>
 ```
 
@@ -264,13 +266,13 @@ Dále nakonfigurujte simulátor zařízení, aby odesílal data do instance IoT 
 
 Začněte získáním *připojovacího řetězce centra IoT* pomocí tohoto příkazu:
 
-```azurecli
+```azurecli-interactive
 az iot hub connection-string show -n <your-IoT-hub-name>
 ```
 
 Pak Získejte *připojovací řetězec zařízení* pomocí tohoto příkazu:
 
-```azurecli
+```azurecli-interactive
 az iot hub device-identity connection-string show --device-id thermostat67 --hub-name <your-IoT-hub-name>
 ```
 
@@ -340,13 +342,13 @@ V této části vytvoříte téma Event Grid a potom v rámci digitálních vlá
 
 V Azure Cloud Shell spusťte následující příkaz, který vytvoří téma Event gridu:
 
-```azurecli
+```azurecli-interactive
 az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-grid-topic> -l <region>
 ```
 
 > [!TIP]
 > Pokud chcete vypsat seznam názvů oblastí Azure, které se dají předávat do příkazů v Azure CLI, spusťte tento příkaz:
-> ```azurecli
+> ```azurecli-interactive
 > az account list-locations -o table
 > ```
 
@@ -354,7 +356,7 @@ Výstupem tohoto příkazu jsou informace o tématu, které jste vytvořili.
 
 V dalším kroku vytvořte koncový bod digitálních vláken Azure, který odkazuje na téma Event gridu. Použijte následující příkaz, podle potřeby vyplňte pole zástupné symboly:
 
-```azurecli
+```azurecli-interactive
 az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --eventgrid-resource-group <your-resource-group> --eventgrid-topic <your-event-grid-topic> --endpoint-name <name-for-your-Azure-Digital-Twins-endpoint>
 ```
 
@@ -362,7 +364,7 @@ Výstupem tohoto příkazu jsou informace o koncovém bodu, který jste vytvoři
 
 Spuštěním následujícího příkazu můžete také ověřit, jestli se vytvoření koncového bodu dokončilo, a to tak, že spustíte následující příkaz, který se dotazuje na instanci digitálního vlákna Azure pro tento
 
-```azurecli
+```azurecli-interactive
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
@@ -376,9 +378,7 @@ Uložte názvy, které jste zadali do svého tématu Event gridu, a koncový bod
 
 Dále vytvořte trasu digitálních vláken Azure, která odesílá události do koncového bodu digitálních vláken Azure, který jste právě vytvořili.
 
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
-
-```azurecli
+```azurecli-interactive
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
 
@@ -451,7 +451,7 @@ Pomocí [Azure Cloud Shell](https://shell.azure.com)můžete odstranit všechny 
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

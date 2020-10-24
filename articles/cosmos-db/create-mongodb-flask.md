@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0545ea61879b30349403e019ead69ba14f75cb9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87873037"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486493"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -27,7 +27,7 @@ ms.locfileid: "87873037"
 > * [Golang](create-mongodb-go.md)
 >  
 
-V tomto rychlém startu použijete Azure Cosmos DB pro účet rozhraní API služby Mongo DB nebo emulátor Azure Cosmos DB ke spuštění webové aplikace, která je naklonována z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
+V tomto rychlém startu použijete Azure Cosmos DB pro účet rozhraní API služby Mongo DB nebo emulátor Azure Cosmos DB ke spuštění webové aplikace v To-Do Pythonu, která je klonována z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -37,7 +37,7 @@ V tomto rychlém startu použijete Azure Cosmos DB pro účet rozhraní API slu�
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď naklonujte aplikaci MongoDB z GitHubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu.
+Nyní naklonujte Flask-MongoDB aplikaci z GitHubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu.
 
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
 
@@ -127,7 +127,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
 
-Pokud chcete tuto aplikaci nasadit, můžete v Azure vytvořit novou webovou aplikaci a povolit průběžné nasazování pomocí větvení tohoto úložiště GitHub. V tomto [kurzu](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment) nastavíte průběžné nasazování s GitHubem v Azure.
+Pokud chcete tuto aplikaci nasadit, můžete v Azure vytvořit novou webovou aplikaci a povolit průběžné nasazování pomocí větvení tohoto úložiště GitHub. V tomto [kurzu](../app-service/deploy-continuous-deployment.md) nastavíte průběžné nasazování s GitHubem v Azure.
 
 Při nasazování do Azure je potřeba odebrat klíče aplikace a ujistit se, následující část není označená jako komentář:
 
@@ -137,7 +137,7 @@ Při nasazování do Azure je potřeba odebrat klíče aplikace a ujistit se, n�
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-Potom musíte přidat do nastavení aplikace vaše položky MONGOURL, MONGO_PASSWORD a MONGO_USERNAME. V tomto [kurzu](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings) se dozvíte další informace o nastavení aplikace ve službě Azure Web Apps.
+Potom musíte přidat do nastavení aplikace vaše položky MONGOURL, MONGO_PASSWORD a MONGO_USERNAME. V tomto [kurzu](../app-service/configure-common.md#configure-app-settings) se dozvíte další informace o nastavení aplikace ve službě Azure Web Apps.
 
 Pokud nechcete vytvořit rozvětvení tohoto úložiště, můžete také vybrat tlačítko **nasadit do Azure** níže. Měli byste přejít do Azure a nastavit nastavení aplikace s využitím informací o účtu Azure Cosmos DB.
 
@@ -158,7 +158,7 @@ Pokud nechcete vytvořit rozvětvení tohoto úložiště, můžete také vybrat
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak vytvořit Azure Cosmos DB pro účet rozhraní API služby Mongo DB a pomocí emulátoru Azure Cosmos DB spustit webovou aplikaci, která je naklonována z GitHubu. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data. 
+V tomto rychlém startu jste zjistili, jak vytvořit Azure Cosmos DB pro účet rozhraní API služby Mongo DB a použít emulátor Azure Cosmos DB ke spuštění webové aplikace v To-Do Pythonu, která je klonována z GitHubu. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
-> [Importování dat MongoDB do databáze Azure Cosmos](mongodb-migrate.md)
+> [Importování dat MongoDB do databáze Azure Cosmos](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

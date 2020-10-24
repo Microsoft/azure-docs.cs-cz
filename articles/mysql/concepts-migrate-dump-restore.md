@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905906"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484589"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.
 
@@ -30,11 +30,15 @@ Pokud chcete projít tento průvodce, musíte mít:
 > [!TIP]
 > Pokud chcete migrovat velké databáze s velikostmi databáze více než 1 TBs, můžete zvážit použití nástrojů komunity jako **mydumper/myloader** , které podporují paralelní export a import. Naučte [se migrovat velké databáze MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).
 
-## <a name="common-use-cases-for-dump-and-restore"></a>Běžné použití – případy výpisu a obnovení
-K vypsání a načtení databází do databáze MySQL Azure v několika běžných scénářích můžete použít nástroje MySQL, jako je **mysqldump** a **mysqlpump** . V jiných scénářích můžete místo toho použít přístup pro [Import a export](concepts-migrate-import-export.md) .
 
-- **Při migraci celé databáze používejte výpisy paměti databáze**. Toto doporučení se uchovává při přesunu velkého množství dat MySQL, nebo když chcete minimalizovat přerušení služby pro živé weby nebo aplikace.
--  **Pokud všechny tabulky v databázi používají modul úložiště InnoDB, použijte výpis databáze**. Azure Database for MySQL podporuje jenom modul úložiště InnoDB, a proto nepodporuje alternativní úložné moduly. Pokud jsou vaše tabulky nakonfigurované s jinými úložnými moduly, převeďte je do formátu modulu InnoDB před migrací na Azure Database for MySQL.
+## <a name="common-use-cases-for-dump-and-restore"></a>Běžné použití – případy výpisu a obnovení
+
+Nejběžnější případy použití:
+
+- **Přesun od jiného poskytovatele spravované služby** : Většina poskytovatelů spravované služby nemusí poskytnout přístup k fyzickému souboru úložiště z důvodu zabezpečení, takže je jedinou možností, jak provést migraci, je logické zálohování a obnovení.
+- **Migrace z místního prostředí nebo virtuálního počítače** – Azure Database for MySQL nepodporuje obnovení fyzických záloh, což umožňuje jako jediný přístup logické zálohování a obnovení.
+- **Přesunutí úložiště záloh z místně redundantního na geograficky redundantní úložiště** – Azure Database for MySQL umožňuje, aby se konfigurace místně redundantního úložiště nebo geograficky redundantního úložiště pro zálohování mohla povolit jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování. Aby bylo možné přesunout úložiště záloh z místně redundantního úložiště do geograficky redundantního úložiště, jedinou možností je vypsat a obnovit. 
+-  **Migrace z alternativních úložných motorů do InnoDB** -Azure Database for MySQL podporuje jenom InnoDB modul úložiště, a proto nepodporuje alternativní úložné moduly. Pokud jsou vaše tabulky nakonfigurované s jinými úložnými moduly, převeďte je do formátu modulu InnoDB před migrací na Azure Database for MySQL.
 
     Pokud máte například WordPress nebo WebApp pomocí tabulek MyISAM, nejprve tyto tabulky převeďte tak, že před obnovením do Azure Database for MySQL převedete migraci do formátu InnoDB. Pomocí klauzule `ENGINE=InnoDB` Nastavte modul použitý při vytváření nové tabulky a potom přeneste data do kompatibilní tabulky před obnovením.
 
@@ -165,3 +169,4 @@ V případě známých problémů, tipů a triky vám doporučujeme podívat se 
 ## <a name="next-steps"></a>Další kroky
 - [Připojte aplikace k Azure Database for MySQL](./howto-connection-string.md).
 - Další informace o migraci databází do Azure Database for MySQL najdete v [Průvodci migrací databáze](https://aka.ms/datamigration).
+- Pokud chcete migrovat velké databáze s velikostmi databáze více než 1 TBs, můžete zvážit použití nástrojů komunity jako **mydumper/myloader** , které podporují paralelní export a import. Naučte [se migrovat velké databáze MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).

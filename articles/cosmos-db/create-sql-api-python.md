@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 128e80572275924655e1da534553265407353fff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa23f6d5d7b81e93145fd7db3fb5b45e46918d21
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319006"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487581"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
 
@@ -26,7 +26,7 @@ ms.locfileid: "91319006"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > * [Sada Java SDK v4](create-sql-api-java.md)
-> * [Jarní data V3](create-sql-api-spring-data.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -39,7 +39,7 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
     * V rámci předplatného Azure Active:
         * [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free) nebo použijte stávající předplatné. 
         * [Měsíční kredity sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Azure Cosmos DB úroveň Free](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+        * [Azure Cosmos DB úroveň Free](./optimize-dev-test.md#azure-cosmos-db-free-tier)
     * Bez aktivního předplatného Azure:
         * [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/), což je testovací prostředí, které trvá po dobu 30 dnů.
         * [Emulátor služby Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) 
@@ -67,7 +67,7 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
 
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|Úkoly|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
     |**ID kontejneru**|Položky|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
@@ -237,5 +237,3 @@ V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure C
 
 > [!div class="nextstepaction"]
 > [Import dat do databáze Azure Cosmos DB pro rozhraní SQL API](import-data.md)
-
-

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: f9765f4ce47e6e698daf1680aecf059241c58382
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993571"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480424"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -72,7 +72,7 @@ U Oracle Database verze 12,2 a vyšší je také možné nakonfigurovat více po
 
 Následující diagram je doporučená architektura pro používání ochrany dat Oracle v Azure se zónami dostupnosti. Tato architektura umožňuje získat smlouvu SLA pro dobu provozu virtuálního počítače 99,99%.
 
-![Oracle Database použití zón dostupnosti s zprostředkovatelem ochrany dat – FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
+![Diagram, který zobrazuje doporučenou architekturu pro používání ochrany dat Oracle v Azure se zónami dostupnosti.](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
 V předchozím diagramu klientský systém přistupuje k vlastní aplikaci pomocí back-endu Oracle přes web. Webový front-end je nakonfigurovaný v nástroji pro vyrovnávání zatížení. Webový front-end provede volání příslušného aplikačního serveru za účelem zpracování práce. Aplikační server se dotazuje na primární databázi Oracle. Databáze Oracle byla nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. Pro výkon a vysokou dostupnost se používá několik disků Premium nebo Ultra (Managed Disks).
 

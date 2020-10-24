@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91260134"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480475"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark v základních konceptech služby Azure synapse Analytics
 
@@ -60,7 +60,40 @@ Když odešlete druhou úlohu, pokud ve fondu existuje kapacita, má stávajíc�
 - Jiný uživatel, U2, odešle úlohu, J3, která používá 10 uzlů, vytvoří se nová instance Spark SI2, která zpracuje úlohu.
 - Nyní odešlete další úlohu J2, která používá 10 uzlů, protože stále existují kapacity ve fondu a instance J2 je zpracována SI1.
 
+## <a name="quotas-and-resource-constraints-in-apache-spark-for-azure-synapse"></a>Kvóty a omezení prostředků v Apache Spark pro Azure synapse
+
+### <a name="workspace-level"></a>Úroveň pracovního prostoru
+
+Každý pracovní prostor Azure synapse nabízí výchozí kvótu virtuální jádra, kterou je možné použít pro Spark. Kvóta se rozdělí mezi kvótu uživatelů a kvótu toku dat, aby se v pracovním prostoru nepoužívaly žádné virtuální jádra. Kvóta se liší v závislosti na typu vašeho předplatného, ale je symetrická mezi uživatelským a uživatelským tokem. Pokud však požadujete více virtuální jádra, než je v pracovním prostoru zbývající, zobrazí se následující chyba:
+
+```console
+Failed to start session: [User] MAXIMUM_WORKSPACE_CAPACITY_EXCEEDED
+Your Spark job requested 480 vcores.
+However, the workspace only has xxx vcores available out of quota of yyy vcores.
+Try reducing the numbers of vcores requested or increasing your vcore quota. Click here for more information - https://go.microsoft.com/fwlink/?linkid=213499
+```
+
+Odkaz v této zprávě odkazuje na tento článek.
+
+Následující článek popisuje, jak požádat o zvýšení kvóty vCore pracovního prostoru.
+
+- Jako typ služby vyberte Azure synapse Analytics.
+- V okně Podrobnosti kvóty vyberte možnost Apache Spark (vCore) na pracovní prostor.
+
+[Vyžádání zvýšení kapacity prostřednictvím Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests#request-a-standard-quota-increase-from-help--support)
+
+### <a name="spark-pool-level"></a>Úroveň fondu Spark
+
+Když definujete fond Sparku, budete efektivně definovat kvótu na uživatele pro tento fond, pokud spustíte více poznámkových bloků nebo úloh nebo kombinaci 2, je možné vyčerpat kvótu fondu. Pokud tak učiníte, bude vygenerována chybová zpráva podobná následující:
+
+```console
+Failed to start session: Your Spark job requested xx vcores.
+However, the pool is consuming yy vcores out of available zz vcores.Try ending the running job(s) in the pool, reducing the numbers of vcores requested, increasing the pool maximum size or using another pool
+```
+
+Chcete-li tento problém vyřešit, je třeba snížit využití prostředků fondu před odesláním nového požadavku na prostředek spuštěním poznámkového bloku nebo úlohy.
+
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Dokumentace k Apache Spark](https://spark.apache.org/docs/2.4.4/)
+- [Dokumentace k Apache Spark](https://spark.apache.org/docs/2.4.5/)

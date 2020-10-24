@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 27e346dd97824918d859ea6819e3c2b43f4c02aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed7bda2875fa68254fb3842dac8b713a0bbddfd4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551925"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Kurz: Azure Active Directory integrace s nástrojem sjednocuje
 
@@ -30,7 +30,7 @@ Integrace nástroje sjednocuje s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD pomocí nástroje sjednocuje budete potřebovat následující položky:
 
@@ -130,15 +130,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nástroj
 
 2. Klikněte na **uživatele**.
 
-    ![Konfigurace jednoho Sign-On](./media/unifi-tutorial/app1.png)
+    ![Snímek obrazovky se zobrazí uživatelé vybraní z webu sjednocuje.](./media/unifi-tutorial/app1.png)
 
 3. Klikněte na **Přidat nového zprostředkovatele identity**.
 
-    ![Konfigurace jednoho Sign-On](./media/unifi-tutorial/app2.png)
+    ![Snímek obrazovky zobrazuje vybraný Nový zprostředkovatel identity.](./media/unifi-tutorial/app2.png)
 
 4. V části **Přidat zprostředkovatele identity** proveďte následující kroky:
 
-    ![Konfigurace jednoho Sign-On](./media/unifi-tutorial/app3.png) 
+    ![Snímek obrazovky s informacemi o přidání zprostředkovatele identity, kde můžete zadat hodnoty, které jsou popsány.](./media/unifi-tutorial/app3.png) 
 
     a. Do textového pole **název poskytovatele** zadejte název zprostředkovatele identity.
 
@@ -209,7 +209,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici ' sjednocuje ' na přístupovém panelu byste měli být automaticky přihlášeni k vlastnosti sjednocuje, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

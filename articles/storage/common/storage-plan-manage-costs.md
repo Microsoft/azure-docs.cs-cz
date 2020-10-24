@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f5069ca063f95cb845921c0d716b6c013c9e83
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760732"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479744"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Plánování a Správa nákladů pro Azure Blob Storage
 
@@ -32,9 +32,9 @@ Pomocí [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculat
 
 3. V rozevíracích seznamech vyberte možnosti. 
 
-   Při úpravě hodnoty těchto rozevíracích seznamů se odhad nákladů změní. Tento odhad se zobrazí v horním rohu a také na konci odhadu. 
-    
-   ![Sledovat náklady pomocí podokna analýza nákladů](media/storage-plan-manage-costs/price-calculator-storage-type.png)
+   Při úpravě hodnoty těchto rozevíracích seznamů se odhad nákladů změní. Tento odhad se zobrazí v horním rohu a také na konci odhadu.
+
+   ![Snímek obrazovky zobrazující odhad](media/storage-plan-manage-costs/price-calculator-storage-type.png)
 
    Při změně hodnoty rozevíracího seznamu **typ** se změní také další možnosti, které se zobrazí v tomto listu. Pomocí odkazů v části **Další informace** se dozvíte víc o tom, co jednotlivé možnosti znamená a jak tyto možnosti ovlivňují cenu operací souvisejících s úložištěm. 
 
@@ -56,19 +56,19 @@ V této části jsou popsány jednotlivé možnosti podrobněji.
 
 Můžete ušetřit peníze za náklady na úložiště dat objektů BLOB s využitím Azure Storage rezervované kapacity. Azure Storage Rezervovaná kapacita nabízí slevu na kapacitu pro objekty blob bloku a pro Azure Data Lake Storage Gen2 data v účtech úložiště Standard, když potvrdíte rezervaci za jeden rok nebo tři roky. Rezervace poskytuje pevnou velikost kapacity úložiště pro podmínky rezervace. Azure Storage Rezervovaná kapacita může významně snížit náklady na kapacitu pro objekty blob bloku a Azure Data Lake Storage Gen2 data. 
 
-Další informace najdete v tématu [optimalizace nákladů na úložiště objektů BLOB s využitím rezervované kapacity](https://docs.microsoft.com/azure/storage/blobs/storage-blob-reserved-capacity).
+Další informace najdete v tématu [optimalizace nákladů na úložiště objektů BLOB s využitím rezervované kapacity](/azure/storage/blobs/storage-blob-reserved-capacity).
 
 #### <a name="organize-data-into-access-tiers"></a>Uspořádání dat do úrovní přístupu
 
 Můžete snížit náklady tím, že umístíte data objektů blob do nejnižších cenově nejefektivnějších úrovní přístupu. Vyberte si ze tří vrstev, které jsou navržené k optimalizaci nákladů na používání dat. Například vrstva *Hot* má vyšší náklady na úložiště, ale nižší náklady na přístup. Proto pokud plánujete přístup k datům často, může být horká úroveň nejúčinnější volbou. Pokud plánujete přístup k datům méně často, úroveň *studená* nebo *archivní* může být nejužitečnější, protože vyvolává náklady na přístup k datům a současně snižuje náklady na ukládání dat.    
 
-Další informace najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal).
+Další informace najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal).
 
 #### <a name="automatically-move-data-between-access-tiers"></a>Automaticky přesouvat data mezi úrovněmi přístupu
 
 Zásady správy životního cyklu použijte k pravidelnému přesunu dat mezi vrstvami, abyste ušetřili nejvíc peněz. Tyto zásady mohou přesouvat data do pomocí pravidel, která zadáte. Můžete například vytvořit pravidlo, které přesune objekty blob do archivní úrovně, pokud se tento objekt BLOB v 90 dnech nezměnil. Vytvořením zásad, které upraví úroveň přístupu vašich dat, můžete navrhnout nejlevnější možnosti úložiště podle vašich potřeb.
 
-Další informace najdete v tématu [Správa životního cyklu služby Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) .
+Další informace najdete v tématu [Správa životního cyklu služby Azure Blob Storage](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) .
 
 ## <a name="create-budgets"></a>Tvorba rozpočtů
 
@@ -89,13 +89,13 @@ Postup zobrazení Azure Storagech nákladů při analýze nákladů:
 
 2. Otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte **Analýza nákladů**. V rozevíracím seznamu **Rozsah** pak můžete změnit obor pro konkrétní předplatné.
 
-   ![Sledovat náklady pomocí podokna analýza nákladů](./media/storage-plan-manage-costs/cost-analysis-pane.png)
+   ![Snímek obrazovky znázorňující rozsah](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
 4. Chcete-li zobrazit pouze náklady na Azure Storage, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby**. Pak ze seznamu vyberte **úložiště** . 
 
    Tady je příklad, který ukazuje náklady jenom pro Azure Storage:
 
-   ![Monitorování nákladů na úložiště pomocí podokna analýza nákladů](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
+   ![Snímek obrazovky zobrazující filtr podle úložiště](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
 V předchozím příkladu vidíte aktuální náklady za službu. Také se zobrazí náklady podle oblastí Azure (umístění) a skupiny prostředků. Můžete přidat i další filtry (například: filtr pro zobrazení nákladů na konkrétní účty úložiště).
 

@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7973c85c7ca8051cae2ab7155dda94bec43ebd59
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460543"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486935"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Návrh tabulek v synapse fondu SQL
 
@@ -46,7 +46,7 @@ Chcete-li zobrazit organizaci tabulek ve fondu SQL, můžete použít fakt, Dim 
 
 | Tabulka WideWorldImportersDW  | Typ tabulky | Fond SQL |
 |:-----|:-----|:------|:-----|
-| City (Město) | Rozměr | WWI. DimCity |
+| City (Město) | Dimenze | WWI. DimCity |
 | Objednání | Fact | WWI. FactOrder |
 
 ## <a name="table-persistence"></a>Trvalost tabulek
@@ -79,7 +79,7 @@ Fond SQL podporuje nejběžněji používané datové typy. Seznam podporovanýc
 
 ## <a name="distributed-tables"></a>Distribuované tabulky
 
-Základní funkcí fondu SQL je způsob, jakým může ukládat a fungovat v tabulkách napříč [distribucí](massively-parallel-processing-mpp-architecture.md#distributions).  Fond SQL podporuje tři metody pro distribuci dat: kruhové dotazování (výchozí), algoritmus hash a replikovaný.
+Základní funkcí synapse SQL je způsob, jak může ukládat a pracovat s tabulkami napříč [distribucí](massively-parallel-processing-mpp-architecture.md#distributions). Synapse SQL podporuje tři metody pro distribuci dat: kruhové dotazování (výchozí), algoritmus hash a replikované.
 
 ### <a name="hash-distributed-tables"></a>Distribuované zatřiďovací tabulky (distribuce hodnot hash)
 
@@ -106,7 +106,7 @@ Kategorie tabulka často určuje, která možnost se má zvolit pro distribuci t
 | Kategorie tabulky | Možnost Doporučené distribuce |
 |:---------------|:--------------------|
 | Fact           | Použijte distribuci algoritmem hash s clusterovaným indexem columnstore. Zvýšení výkonu se zvyšuje, když se do stejného distribučního sloupce spojí dvě zatřiďovací tabulky. |
-| Rozměr      | Použijte replikovaný pro menší tabulky. Pokud jsou tabulky příliš velké pro uložení na každém výpočetním uzlu, použijte distribuované pomocí algoritmu hash. |
+| Dimenze      | Použijte replikovaný pro menší tabulky. Pokud jsou tabulky příliš velké pro uložení na každém výpočetním uzlu, použijte distribuované pomocí algoritmu hash. |
 | Příprava        | Pro pracovní tabulku použijte kruhové dotazování. Zatížení pomocí CTAS je rychlé. Jakmile jsou data v pracovní tabulce, použijte příkaz INSERT... Tuto možnost vyberte, pokud chcete přesunout data do provozních tabulek. |
 
 ## <a name="table-partitions"></a>Oddíly tabulky
@@ -144,7 +144,7 @@ PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom nec
 
 Tabulku můžete vytvořit jako novou prázdnou tabulku. Můžete také vytvořit a naplnit tabulku pomocí výsledků příkazu SELECT. Níže jsou uvedené příkazy T-SQL pro vytvoření tabulky.
 
-| Příkaz T-SQL | Description |
+| Příkaz T-SQL | Popis |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří prázdnou tabulku definováním všech sloupců a možností tabulky. |
 | [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Vytvoří externí tabulku. Definice tabulky je uložena ve fondu SQL. Data tabulky se ukládají do služby Azure Blob Storage nebo Azure Data Lake Store. |

@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 746deae725e9e1ca4274b2132f7c09e2548a6629
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715158"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488873"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
 Základní plán zabezpečení Azure pro Azure Storage obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](/azure/security/benchmarks/security-control-network-security).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
@@ -32,9 +32,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 Poznámka: klasické účty úložiště nepodporují brány firewall a virtuální sítě.
 
-- [Jak nakonfigurovat bránu Azure Storage firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security#change-the-default-network-access-rule)
+- [Jak nakonfigurovat bránu Azure Storage firewall](/azure/storage/common/storage-network-security#change-the-default-network-access-rule)
 
-- [Postup konfigurace privátních koncových bodů pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-private-endpoints)
+- [Postup konfigurace privátních koncových bodů pro Azure Storage](/azure/storage/common/storage-private-endpoints)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -46,13 +46,13 @@ Poznámka: klasické účty úložiště nepodporují brány firewall a virtuál
 
 Všimněte si, že pokud máte k účtu úložiště připojené privátní koncové body, nemůžete pro podsítě nakonfigurovat pravidla skupiny zabezpečení sítě (NSG). 
 
-- [Konfigurace bran firewall Azure Storage a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Konfigurace bran firewall Azure Storage a virtuálních sítí](/azure/storage/common/storage-network-security)
 
-- [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Jak povolit protokoly toku NSG](/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
-- [Principy zabezpečení sítě, které poskytuje Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Principy zabezpečení sítě, které poskytuje Azure Security Center](/azure/security-center/security-center-network-recommendations)
 
-- [Principy privátních koncových bodů pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-private-endpoints#known-issues)
+- [Principy privátních koncových bodů pro Azure Storage](/azure/storage/common/storage-private-endpoints#known-issues)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -70,9 +70,9 @@ Všimněte si, že pokud máte k účtu úložiště připojené privátní konc
 
 **Pokyny**: povolení rozšířené ochrany před internetovými útoky pro váš účet Azure Storage. Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Azure Security Center integrované výstrahy jsou založené na aktivitách, pro které byla síťová komunikace přidružena k IP adrese, která byla úspěšně vyřešena, bez ohledu na to, zda je IP adresa známou nebo zda se jedná o známou IP adresu (například známý cryptominer) nebo IP adresu, která nebyla dříve rozpoznána jako riziková. Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. 
 
-- [Jak povolit rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Jak povolit rozšířenou ochranu před internetovými útoky](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
-- [Pochopení Azure Security Center integrované analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Pochopení Azure Security Center integrované analýzy hrozeb](/azure/security-center/security-center-alerts-service-layer)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -82,7 +82,7 @@ Všimněte si, že pokud máte k účtu úložiště připojené privátní konc
 
 **Pokyny**: Network Watcher Capture paketů umožňuje vytvořit relace zachycení pro sledování provozu mezi účtem úložiště a virtuálním počítačem. K dispozici jsou filtry pro relaci zachycení, aby bylo možné zachytit pouze požadovaný provoz. Zachytávání paketů pomáhá diagnostikovat anomálie sítě, jak proaktivní, tak i proaktivní. Mezi další použití patří shromažďování statistik sítě, získávání informací o neoprávněných vniknutích k síti, ladění komunikace mezi klientem a serverem a mnoho dalšího. Schopnost vzdáleně aktivovat zachycení paketů, usnadňuje zatížení ručního zachycení paketů na požadovaném virtuálním počítači, který šetří cenné časy. 
 
-- [Správa zachytávání paketů pomocí Azure Network Watcher pomocí portálu](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [Správa zachytávání paketů pomocí Azure Network Watcher pomocí portálu](/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -92,7 +92,7 @@ Všimněte si, že pokud máte k účtu úložiště připojené privátní konc
 
 **Pokyny**: Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do Azure Security Center a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit. 
 
-- [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](/azure/storage/common/storage-advanced-threat-protection)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -112,9 +112,9 @@ Všimněte si, že pokud máte k účtu úložiště připojené privátní konc
 
 Pokud je třeba přístup k síti určit na konkrétní účty úložiště, použijte Virtual Network zásady koncového bodu služby.
 
-- [Další informace o použití značek služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Další informace o použití značek služeb](/azure/virtual-network/service-tags-overview)
 
-- [Další informace o zásadách koncového bodu služby virtuální sítě pro Azure Storage](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Další informace o zásadách koncového bodu služby virtuální sítě pro Azure Storage](/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -126,13 +126,13 @@ Pokud je třeba přístup k síti určit na konkrétní účty úložiště, pou
 
 Můžete také využít integrované definice zásad související s účtem úložiště, například: účty úložiště by měly používat koncový bod služby virtuální sítě. 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Ukázky Azure Policy pro úložiště](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#storage)
+- [Ukázky Azure Policy pro úložiště](/azure/governance/policy/samples/built-in-policies#storage)
 
-- [Ukázky Azure Policy pro síť](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [Ukázky Azure Policy pro síť](/azure/governance/policy/samples/built-in-policies#network)
 
-- [Vytvoření Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Vytvoření Azure Blueprint](/azure/governance/blueprints/create-blueprint-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -142,11 +142,11 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Pokyny**: používejte značky pro skupiny zabezpečení sítě (NSG) a další zdroje informací týkající se zabezpečení sítě a toku provozu. U individuálních pravidel NSG použijte pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do/ze sítě. Použijte některou z předdefinovaných Azure Policy definic souvisejících s označováním, jako je "vyžadovat značku a její hodnotu", aby se zajistilo, že všechny prostředky budou vytvořeny pomocí značek, a upozorní vás na stávající neoznačené prostředky. Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek. 
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [Vytvoření Virtual Network](/azure/virtual-network/quick-create-portal)
 
-- [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Vytvoření NSG s konfigurací zabezpečení](/azure/virtual-network/tutorial-filter-network-traffic)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -156,9 +156,9 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Pokyny**: k protokolování změn konfigurace síťových prostředků použijte Azure Policy. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích. 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Vytváření výstrah v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytváření výstrah v Azure Monitor](/azure/azure-monitor/platform/alerts-activity-log)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -166,7 +166,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](/azure/security/benchmarks/security-control-logging-monitoring).*
 
 ### <a name="21-use-approved-time-synchronization-resource"></a>2,1: použijte schválený prostředek synchronizace času
 
@@ -180,7 +180,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné**materiály: ingestování protokolů prostřednictvím Azure monitor k agregaci dat zabezpečení generovaných zařízeními koncových bodů, síťovými prostředky a dalšími systémy zabezpečení. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé a archivační úložiště, a to v případě funkcí zabezpečení, jako je například neměnné úložiště a zajištěné uchování.
 
-- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Jak shromažďovat protokoly a metriky platforem pomocí Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -190,7 +190,7 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné**materiály: analýza úložiště Azure poskytuje protokoly objektů blob, front a tabulek. Pomocí Azure Portal můžete nakonfigurovat, které protokoly se budou zaznamenávat pro váš účet. 
 
-- [Jak nakonfigurovat monitorování pro účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-monitoring-for-a-storage-account)
+- [Jak nakonfigurovat monitorování pro účet Azure Storage](/azure/storage/common/storage-monitor-storage-account#configure-monitoring-for-a-storage-account)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -208,9 +208,9 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 **Doprovodné**materiály: při ukládání protokolů událostí zabezpečení do účtu Azure Storage nebo v pracovním prostoru Log Analytics můžete zásady uchovávání informací nastavit podle požadavků vaší organizace. 
 
-- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Jak nakonfigurovat zásady uchovávání informací pro protokoly Azure Storage účtů](/azure/storage/common/storage-monitor-storage-account#configure-logging)
 
-- [Změnit dobu uchovávání dat v Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Změnit dobu uchovávání dat v Log Analytics](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -222,9 +222,9 @@ Můžete také využít integrované definice zásad související s účtem úl
 
 Také pro svůj účet Azure Storage povolit rozšířenou ochranu před internetovými útoky. Rozšířená ochrana před internetovými útoky pro Azure Storage poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy zabezpečení se spouštějí při výskytu anomálií v aktivitě. Tyto výstrahy zabezpečení jsou integrovány do Azure Security Center a jsou také odesílány prostřednictvím e-mailu správcům předplatného s podrobnostmi o podezřelé aktivitě a doporučeních k tomu, jak tyto hrozby prozkoumat a opravit. 
 
-- [Protokolovat a kontrolovat data](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#how-logs-are-stored)
+- [Protokolovat a kontrolovat data](/azure/storage/common/storage-analytics-logging#how-logs-are-stored)
 
-- [Jak povolit rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Jak povolit rozšířenou ochranu před internetovými útoky](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -234,13 +234,13 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 **Doprovodné**materiály: v Azure Security Center povolit rozšířenou ochranu před internetovými útoky pro účet úložiště. Povolte nastavení diagnostiky pro účet úložiště a odešlete protokoly do pracovního prostoru Log Analytics. Připojte pracovní prostor Log Analytics do Azure Sentinel, protože poskytuje řešení pro automatizované odpovědi na orchestraci zabezpečení (společnosti). To umožňuje vytvořit playbooky (automatizovaná řešení) a použít je k nápravě problémů zabezpečení. 
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](/azure/sentinel/quickstart-onboard)
 
-- [Správa výstrah v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Správa výstrah v Azure Security Center](/azure/security-center/security-center-managing-and-responding-alerts)
 
-- [Upozornění na data protokolu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Upozornění na data protokolu Log Analytics](/azure/azure-monitor/learn/tutorial-response)
 
-- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování Analýzy úložiště Azure](/azure/storage/common/storage-analytics-logging)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -250,7 +250,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 **Doprovodné**materiály: použijte Azure Security Center a povolte ochranu před internetovými útoky pro Azure Storage zjišťování malwaru pro Azure Storage pomocí analýzy reputace hodnoty hash a podezřelého přístupu z aktivního uzlu pro ukončení práce (proxy server anonymizace). 
 
-- [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -260,7 +260,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 **Doprovodné**materiály: řešení Azure DNS Analytics (Preview) v Azure monitor shromažďuje přehledy o infrastruktuře DNS v oblasti zabezpečení, výkonu a provozu. V současné době nepodporuje Azure Storage účty, ale můžete použít řešení protokolování DNS třetích stran. 
 
-- [Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.](https://docs.microsoft.com/azure/azure-monitor/insights/dns-analytics)
+- [Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.](/azure/azure-monitor/insights/dns-analytics)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -276,15 +276,15 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](/azure/security/benchmarks/security-control-identity-access-control).*
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
 **Doprovodné**materiály: Azure AD má předdefinované role, které se musí explicitně přiřadit a jsou Queryable. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu. 
 
-- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -294,9 +294,9 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 **Doprovodné**materiály: účty Azure Storage ani Azure Active Directory nemají koncept výchozích nebo prázdných hesel. Azure Storage implementuje model řízení přístupu, který podporuje řízení přístupu na základě role Azure (Azure RBAC), stejně jako sdílené klíče a signatury sdíleného přístupu (SAS). Charakteristika sdíleného klíče a ověřování SAS je, že k volajícímu není přidružena žádná identita, a proto nelze provést autorizaci na základě oprávnění zabezpečení. 
 
-- [Autorizace přístupu k datům v Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Autorizace přístupu k datům v Azure Storage](/azure/storage/common/storage-auth)
 
-- [Porozumění objektům zabezpečení a řízení přístupu pro účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction)
+- [Porozumění objektům zabezpečení a řízení přístupu pro účet Azure Storage](/azure/storage/common/storage-introduction)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -308,9 +308,9 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služby společnosti Microsoft a ARM Azure můžete také povolit přístup za běhu nebo jen tolik. 
 
-- [Pochopení Azure Security Center identity a přístupu](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Pochopení Azure Security Center identity a přístupu](/azure/security-center/security-center-identity-access)
 
-- [Přehled Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [Přehled Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -320,11 +320,11 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Pokyny**: kdykoli je to možné, použijte Azure Active Directory jednotného přihlašování (SSO) místo konfigurace jednotlivých samostatných přihlašovacích údajů pro každou službu. Použijte Azure Security Center doporučení pro správu identit a přístupu. 
 
-- [Princip jednotného přihlašování s Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Princip jednotného přihlašování s Azure AD](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Autorizace přístupu k datům v Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Autorizace přístupu k datům v Azure Storage](/azure/storage/common/storage-auth)
 
-- [Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)
+- [Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory](/azure/storage/common/storage-auth-aad)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -334,9 +334,9 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Doprovodné**materiály: Povolte Azure Active Directory vícefaktorového ověřování a sledujte Azure Security Center doporučení pro správu identit a přístupu, která vám pomůžou ochránit prostředky účtu úložiště. 
 
-- [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Jak povolit vícefaktorové ověřování v Azure](/azure/active-directory/authentication/howto-mfa-getstarted)
 
-- [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Jak monitorovat identitu a přístup v rámci Azure Security Center](/azure/security-center/security-center-identity-access)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -346,9 +346,9 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Doprovodné**materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků účtu úložiště. 
 
-- [Další informace o pracovních stanicích s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Jak povolit vícefaktorové ověřování v Azure](/azure/active-directory/authentication/howto-mfa-getstarted)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -358,11 +358,11 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Doprovodné**materiály: odeslání výstrah detekce rizik Azure Security Center do Azure monitor a konfigurace vlastního upozorňování/oznámení pomocí skupin akcí. Povolit rozšířenou ochranu před internetovými útoky pro účet Azure Storage pro generování výstrah pro podezřelou aktivitu. Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a sestavy týkající se rizikového chování uživatelů. 
 
-- [Postup nastavení rozšířené ochrany před internetovými útoky pro účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [Postup nastavení rozšířené ochrany před internetovými útoky pro účet Azure Storage](/azure/storage/common/storage-advanced-threat-protection)
 
-- [Vysvětlení zjišťování rizik Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Vysvětlení zjišťování rizik Azure AD](/azure/active-directory/reports-monitoring/concept-risk-events)
 
-- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+- [Jak nakonfigurovat skupiny akcí pro vlastní výstrahy a oznámení](/azure/azure-monitor/platform/action-groups)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -372,7 +372,7 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí. 
 
-- [Postup konfigurace pojmenovaných umístění v Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Postup konfigurace pojmenovaných umístění v Azure](/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -382,15 +382,15 @@ Pomocí Azure AD Privileged Identity Management privilegovaných rolí pro služ
 
 **Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure poskytuje řízení přístupu na základě role Azure (Azure RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům v účtu úložiště.  Použijte přihlašovací údaje Azure AD, pokud je to možné, místo použití klíče účtu, který může být snáze ohrožen. Když návrh aplikace vyžaduje pro přístup k úložišti objektů BLOB sdílené přístupové podpisy, pomocí přihlašovacích údajů Azure AD vytvořte delegovaný přístup uživatelů (SAS), pokud je to možné, pro zajištění vysokého zabezpečení.
 
-- [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Jak vytvořit a nakonfigurovat instanci Azure AD](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-- [Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
+- [Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy](/azure/storage/common/authorization-resource-provider)
 
-- [Jak nakonfigurovat přístup k objektům blob Azure a zařadit data do fronty pomocí Azure RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Jak nakonfigurovat přístup k objektům blob Azure a zařadit data do fronty pomocí Azure RBAC v Azure Portal](/azure/storage/common/storage-auth-aad-rbac-portal)
 
-- [Autorizace přístupu k datům v Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Autorizace přístupu k datům v Azure Storage](/azure/storage/common/storage-auth)
 
-- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](/azure/storage/common/storage-sas-overview)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -406,17 +406,17 @@ Přečtěte si také anonymní přístup pro čtení kontejnerů a objektů BLOB
 
 Jedním z efektivních způsobů, jak snížit riziko přístupu k nepodezřelému uživatelskému účtu, je omezit dobu trvání přístupu, který uživatelům udělíte. Časově omezené identifikátory URI SAS představují jeden efektivní způsob, jak automaticky vypršet přístup uživatelů k účtu úložiště. Časté střídání klíčů účtu úložiště je navíc způsob, jak zajistit, že neočekávaný přístup prostřednictvím klíčů účtu úložiště je omezené trvání.
 
-- [Pochopení sestav Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring/)
 
-- [Postup zobrazení a změny přístupu na úrovni účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Postup zobrazení a změny přístupu na úrovni účtu Azure Storage](/azure/storage/common/storage-auth-aad-rbac-portal)
 
-- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+- [Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)](/azure/storage/common/storage-sas-overview)
 
-- [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](https://docs.microsoft.com/azure/storage/blobs/storage-manage-access-to-resources)
+- [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](/azure/storage/blobs/storage-manage-access-to-resources)
 
-- [Monitorování účtu úložiště na webu Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Monitorování účtu úložiště na webu Azure Portal](/azure/storage/common/storage-monitor-storage-account)
 
-- [Správa přístupových klíčů účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Správa přístupových klíčů účtu úložiště](/azure/storage/common/storage-account-keys-manage)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -428,11 +428,11 @@ Jedním z efektivních způsobů, jak snížit riziko přístupu k nepodezřelé
 
 Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských účtů a odešlete protokoly auditu a protokoly přihlášení do pracovního prostoru Log Analytics. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics. Pokud chcete monitorovat selhání ověřování u účtů Azure Storage, můžete vytvořit upozornění, která vás upozorní, když se dosáhne určitých prahových hodnot pro metriky prostředků úložiště. Kromě toho použijte Azure Monitor k upozornění na anonymní přístup k účtům úložiště pomocí podmínky anonymního ověřování.
 
-- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování Analýzy úložiště Azure](/azure/storage/common/storage-analytics-logging)
 
-- [Jak integrovat protokoly aktivit Azure do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure do Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-- [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](/azure/storage/common/storage-monitor-storage-account)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -442,11 +442,11 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 **Doprovodné**materiály: použití funkcí rizika a ochrany Identity v Azure Active Directory ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce související s prostředky vašeho účtu úložiště. Pomocí služby Azure Sentinel byste měli povolit automatizované odezvy pro implementaci reakcí zabezpečení vaší organizace. 
 
-- [Jak zobrazit rizikové přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Jak zobrazit rizikové přihlašování Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-- [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [Jak nakonfigurovat a povolit zásady rizik ochrany identity](/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
 
-- [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Jak připojit Azure Sentinel](/azure/sentinel/quickstart-onboard)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -456,7 +456,7 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 **Doprovodné**materiály: ve scénářích podpory, kde Microsoft potřebuje získat přístup k zákaznickým datům, Customer Lockbox (Preview pro účet úložiště) poskytuje rozhraní pro zákazníky, kteří budou kontrolovat a schvalovat nebo odmítat žádosti o přístup k datům zákazníků. Microsoft nepožaduje ani nepožaduje přístup k tajným klíčům vaší organizace uloženým v účtu úložiště.
 
-- [Pochopení Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Pochopení Customer Lockbox](/azure/security/fundamentals/customer-lockbox-overview)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -464,13 +464,13 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](/azure/security/benchmarks/security-control-data-protection).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
 **Doprovodné**materiály: používejte značky, které pomáhají při sledování prostředků účtu úložiště, které ukládají nebo zpracovávají citlivé informace. 
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -480,15 +480,15 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 **Pokyny**: implementace izolace pomocí samostatného předplatného, skupin pro správu a účtů úložiště pro jednotlivé domény zabezpečení, jako je prostředí, citlivost na data.  Můžete omezit účet úložiště pro řízení úrovně přístupu k účtům úložiště, které vaše aplikace a podniková prostředí vyžadují, na základě typu a podmnožiny používaných sítí. Při konfiguraci síťových pravidel mají přístup k účtu úložiště jenom aplikace požadující data přes zadanou sadu sítí. Přístup k Azure Storage můžete řídit přes Azure RBAC. Můžete také nakonfigurovat privátní koncové body, aby se zlepšily zabezpečení jako provoz mezi vaší virtuální sítí a službou průchod přes páteřní síť Microsoftu, což eliminuje expozici veřejného Internetu. 
 
-- [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
-- [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Konfigurace bran firewall Azure Storage a virtuálních sítí](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Konfigurace bran firewall Azure Storage a virtuálních sítí](/azure/storage/common/storage-network-security)
 
-- [Koncové body služby Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+- [Koncové body služby Virtual Network](/azure/virtual-network/virtual-network-service-endpoints-overview)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -500,11 +500,11 @@ Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských úč
 
 Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě vyfiltrovat odchozí přenosy virtuální sítě na účty Azure Storage prostřednictvím koncového bodu služby a exfiltraceit data pouze na konkrétní Azure Storage účty.
 
-- [Konfigurace bran firewall Azure Storage a virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Konfigurace bran firewall Azure Storage a virtuálních sítí](/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
-- [Zásady koncového bodu služby pro virtuální síť pro službu Azure Storage](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
+- [Zásady koncového bodu služby pro virtuální síť pro službu Azure Storage](/azure/private-link/create-private-endpoint-storage-portal)
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Pochopení ochrany zákaznických dat v Azure](/azure/security/fundamentals/protection-customer-data)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -514,9 +514,9 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné**materiály: můžete vynutili použití protokolu HTTPS povolením zabezpečeného přenosu vyžadovaného pro účet úložiště. Po povolení této možnosti budou připojení pomocí protokolu HTTP zamítnuta. Navíc můžete pomocí Azure Security Center a Azure Policy vynutili zabezpečený přenos pro váš účet úložiště.
 
-- [Postup při vyžadování zabezpečeného přenosu v Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)
+- [Postup při vyžadování zabezpečeného přenosu v Azure Storage](/azure/storage/common/storage-require-secure-transfer)
 
-- [Zásady zabezpečení Azure monitorované pomocí Security Center](https://docs.microsoft.com/azure/security-center/security-center-policy-definitions)
+- [Zásady zabezpečení Azure monitorované pomocí Security Center](/azure/security-center/security-center-policy-definitions)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -526,7 +526,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné**materiály: funkce pro identifikaci dat ještě nejsou k dispozici pro Azure Storage účet a související prostředky. Implementujte řešení třetích stran, pokud je to potřeba pro účely dodržování předpisů. 
 
-- [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Pochopení ochrany zákaznických dat v Azure](/azure/security/fundamentals/protection-customer-data)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -536,15 +536,15 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Pokyny**: Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím řízení přístupu na základě role Azure (Azure RBAC). Azure Storage definuje sadu předdefinovaných rolí Azure, které zahrnují společné sady oprávnění používané pro přístup k datům objektů BLOB nebo front. 
 
-- [Přiřazení rolí Azure pro účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
+- [Přiřazení rolí Azure pro účet Azure Storage](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
-- [Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
+- [Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy](/azure/storage/common/authorization-resource-provider)
 
-- [Jak nakonfigurovat přístup k objektům blob Azure a zařadit data do fronty pomocí Azure RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Jak nakonfigurovat přístup k objektům blob Azure a zařadit data do fronty pomocí Azure RBAC v Azure Portal](/azure/storage/common/storage-auth-aad-rbac-portal)
 
-- [Postup vytvoření a konfigurace instance AAD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Postup vytvoření a konfigurace instance AAD](/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-- [Autorizace přístupu k datům v Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth)
+- [Autorizace přístupu k datům v Azure Storage](/azure/storage/common/storage-auth)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -562,7 +562,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Pokyny**: Azure Storage šifrování je povolené pro všechny účty úložiště a nedá se zakázat. Azure Storage automaticky šifruje vaše data, když se trvale uloží do cloudu. Při čtení dat ze služby Azure Storage jsou data před vrácením dešifrována službou Azure Storage. Azure Storage šifrování vám umožní zabezpečit data v klidovém prostředí, aniž byste museli upravovat kód nebo přidávat kód do žádné aplikace. 
 
-- [Principy šifrování Azure Storage v klidovém umístění](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Principy šifrování Azure Storage v klidovém umístění](/azure/storage/common/storage-service-encryption)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -572,11 +572,11 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro změny prostředků účtů úložiště, ke kterým dochází. Můžete také povolit protokolování Azure Storage, abyste mohli sledovat, jak byl každý požadavek vytvořený proti Azure Storage autorizovaný. Protokoly označují, zda byl požadavek anonymně vytvořen pomocí tokenu OAuth 2,0, pomocí sdíleného klíče nebo pomocí sdíleného přístupového podpisu (SAS). Kromě toho použijte Azure Monitor k upozornění na anonymní přístup k účtům úložiště pomocí podmínky anonymního ověřování.
 
-- [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Vytvoření upozornění pro události protokolu aktivit Azure](/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování Analýzy úložiště Azure](/azure/storage/common/storage-analytics-logging)
 
-- [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
+- [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](/azure/storage/common/storage-monitor-storage-account)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -584,13 +584,13 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
 **Doprovodné**materiály: dodržujte doporučení Azure Security Center a průběžně auditujte a sledujte konfiguraci účtů úložiště. 
 
-- [Doporučení zabezpečení – referenční příručka](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Doporučení k zabezpečení – Referenční příručka](/azure/security-center/recommendations-reference)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -624,7 +624,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné**materiály: použijte výchozí hodnocení rizik (zabezpečené skóre) poskytované Azure Security Center. 
 
-- [Pochopení Azure Security Center zabezpečeného skóre](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+- [Pochopení Azure Security Center zabezpečeného skóre](/azure/security-center/security-center-secure-score)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -632,17 +632,17 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](/azure/security/benchmarks/security-control-inventory-asset-management).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
 
 **Pokyny**: pomocí Azure Resource graphu se můžete dotazovat a zjišťovat všechny prostředky (včetně účtů úložiště) v rámci vašich předplatných. Ujistěte se, že máte ve svém tenantovi příslušná oprávnění (pro čtení) a že máte v rámci předplatných také výčet všech předplatných Azure i prostředků. 
 
-- [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Jak vytvářet dotazy pomocí Azure graphu](/azure/governance/resource-graph/first-query-portal)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription)
 
-- [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Pochopení Azure RBAC](/azure/role-based-access-control/overview)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -652,7 +652,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 **Doprovodné**materiály: použití značek k prostředkům účtu úložiště, které dávají metadata k logickému uspořádání do taxonomie. 
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -664,13 +664,13 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 K detekci neautorizovaných prostředků Azure taky použijte rozšířenou ochranu před internetovými útoky pro Azure Storage. 
 
-- [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
-- [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Postup vytvoření Skupiny pro správu](/azure/governance/management-groups/create)
 
-- [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -694,9 +694,9 @@ K detekci neautorizovaných prostředků Azure taky použijte rozšířenou ochr
 
 Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat prostředky v rámci předplatných. To může pomáhat v prostředích s vysokým zabezpečením, jako jsou ta s účty úložiště. 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Jak vytvářet dotazy pomocí Azure graphu](/azure/governance/resource-graph/first-query-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -714,7 +714,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Pokyny**: zákazník může zabránit vytváření nebo používání prostředků pomocí Azure Policy podle požadavků zásad společnosti zákazníka. 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -735,9 +735,9 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 - Žádné povolené typy prostředků 
 - Povolené typy prostředků 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -755,7 +755,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management. To může zabránit vytváření a změnám prostředků v prostředí s vysokým zabezpečením, jako jsou ty, které mají účty úložiště. 
 
-- [Jak nakonfigurovat podmíněný přístup k blokování přístupu k ARM](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Jak nakonfigurovat podmíněný přístup k blokování přístupu k ARM](/azure/role-based-access-control/conditional-access-azure-management)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -779,7 +779,7 @@ Kromě toho můžete pomocí grafu prostředků Azure dotazovat nebo zjišťovat
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](/azure/security/benchmarks/security-control-secure-configuration).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
@@ -792,9 +792,9 @@ Měl by se povolit zabezpečený přenos do účtů úložiště
 
 Použijte doporučení z Azure Security Center jako standardní hodnoty konfigurace pro vaše účty úložiště. 
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -812,9 +812,9 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné**materiály: použijte Azure Policy [Deny] a [Deploy, pokud neexistuje] k vymáhání zabezpečených nastavení napříč prostředky účtu úložiště. 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
-- [Porozumění efektům Azure Policy](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Porozumění efektům Azure Policy](/azure/governance/policy/concepts/effects)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -832,9 +832,9 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné**materiály: Používejte Azure Repos pro bezpečné ukládání a správu kódu, jako jsou vlastní zásady Azure, šablony Azure Resource Manager, požadované konfigurační skripty stavu atd. Pokud chcete získat přístup k prostředkům, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps, nebo Active Directory, pokud je integrovaná se sadou TFS.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow)
 
-- [O oprávněních a skupinách v Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -852,7 +852,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné**materiály: využijte Azure Policy k oznamování, auditu a prosazování systémových konfigurací pro účet úložiště. Dále můžete vyvinout proces a kanál pro správu výjimek zásad. 
 
-- [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Konfigurace a Správa Azure Policy](/azure/governance/policy/tutorials/create-and-manage)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -870,7 +870,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 **Doprovodné**materiály: využijte Azure Security Center k provádění kontrol standardních hodnot vašich účtů Azure Storage. 
 
-- [Jak opravit doporučení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+- [Jak opravit doporučení v Azure Security Center](/azure/security-center/security-center-remediate-recommendations)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -890,9 +890,9 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 Kromě toho pravidelně otáčejte klíče účtu úložiště, abyste omezili dopad ztráty nebo zveřejnění klíčů účtu úložiště.
 
-- [Šifrování služby Azure Storage pro neaktivní uložená data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Šifrování služby Azure Storage pro neaktivní uložená data](/azure/storage/common/storage-service-encryption)
 
-- [Správa přístupových klíčů účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Správa přístupových klíčů účtu úložiště](/azure/storage/common/storage-account-keys-manage)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -902,7 +902,7 @@ Kromě toho pravidelně otáčejte klíče účtu úložiště, abyste omezili d
 
 **Pokyny**: pomocí Azure Active Directory a spravovaných identit autorizujte přístup k objektům blob a frontám v rámci účtů Azure Storage. Azure Blob a Queue Storage podporují ověřování Azure Active Directory (Azure AD) se spravovanými identitami pro prostředky Azure. Spravované identity pro prostředky Azure můžou autorizovat přístup k objektům blob a Queue pomocí přihlašovacích údajů Azure AD z aplikací běžících na virtuálních počítačích Azure, aplikací Functions, Virtual Machine Scale Sets a dalších služeb. Pomocí spravovaných identit pro prostředky Azure spolu s ověřováním Azure AD se můžete vyhnout ukládání přihlašovacích údajů k vašim aplikacím, které běží v cloudu. 
 
-- [Jak udělit přístup k objektům blob Azure a zařadit data do fronty pomocí spravované identity](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Jak udělit přístup k objektům blob Azure a zařadit data do fronty pomocí spravované identity](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -920,7 +920,7 @@ Kromě toho pravidelně otáčejte klíče účtu úložiště, abyste omezili d
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](/azure/security/benchmarks/security-control-malware-defense).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
@@ -936,7 +936,7 @@ Kromě toho pravidelně otáčejte klíče účtu úložiště, abyste omezili d
 
 Před odesláním do nevýpočetních prostředků Azure, jako jsou App Service, Data Lake Storage, Blob Storage atd. požadavky vaší organizace, můžete také předem vyhledat veškerý obsah pro malware.
 
-- [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
+- [Konfigurace rozšířené ochrany před internetovými útoky pro Azure Storage](/azure/storage/common/storage-advanced-threat-protection?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -952,7 +952,7 @@ Před odesláním do nevýpočetních prostředků Azure, jako jsou App Service,
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](/azure/security/benchmarks/security-control-data-recovery).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
@@ -960,11 +960,11 @@ Před odesláním do nevýpočetních prostředků Azure, jako jsou App Service,
 
 Můžete také povolit službě Azure Automation provádět běžné snímky objektů BLOB.
 
-- [Porozumění Azure Storage redundanci a Service-Level smluv](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Porozumění Azure Storage redundanci a Service-Level smluv](/azure/storage/common/storage-redundancy)
 
-- [Vytvoření snímku objektu BLOB](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob)
+- [Vytvoření snímku objektu BLOB](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
 
-- [Přehled Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+- [Přehled Azure Automation](/azure/automation/automation-intro)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -974,13 +974,13 @@ Můžete také povolit službě Azure Automation provádět běžné snímky obj
 
 **Doprovodné**materiály: aby bylo možné zálohovat data z podporovaných služeb účtu úložiště, je k dispozici více metod, včetně použití AzCopy nebo nástrojů třetích stran. Neměnné úložiště pro úložiště objektů BLOB v Azure umožňuje uživatelům ukládat datové objekty kritické pro podnikání do ČERVa (psát jednou, číst mnoho). Tento stav zpřístupňuje data, která nejsou Erasable a není upravitelná pro interval zadaný uživatelem.
 
-- [Začínáme s nástrojem AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [Začínáme s nástrojem AzCopy](/azure/storage/common/storage-use-azcopy-v10)
 
-- [Nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage?tabs=azure-portal)
+- [Nastavení a Správa zásad neměnnosti pro úložiště objektů BLOB](/azure/storage/blobs/storage-blob-immutability-policies-manage?tabs=azure-portal)
 
 Pomocí Azure CLI nebo PowerShellu se dají zálohovat klíče spravované zákazníkem a poskytnuté klíče v rámci služby Azure Key Vault. 
 
-- [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -992,15 +992,15 @@ Pomocí Azure CLI nebo PowerShellu se dají zálohovat klíče spravované záka
 
 Restore-AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAccount Restore-AzKeyVaultSecret 
 
-- [Postup obnovení certifikátů Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+- [Postup obnovení certifikátů Key Vault](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
-- [Postup obnovení klíčů Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup obnovení klíčů Key Vault](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
-- [Postup obnovení Key Vault spravovaných účtů úložiště](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
+- [Postup obnovení Key Vault spravovaných účtů úložiště](/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount)
 
-- [Postup obnovení tajných kódů Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0)
+- [Postup obnovení tajných kódů Key Vault](/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret)
 
-- [AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování objektů blob, souborů a tabulkových dat do nebo z účtu úložiště.](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování objektů blob, souborů a tabulkových dat do nebo z účtu úložiště.](/azure/storage/common/storage-use-azcopy-v10)
 
 Poznámka: Pokud chcete kopírovat data do služby Azure Table Storage a z ní, nainstalujte AzCopy verze 7,3.
 
@@ -1013,11 +1013,11 @@ Poznámka: Pokud chcete kopírovat data do služby Azure Table Storage a z ní, 
 
 **Pokyny**: Pokud chcete povolit klíče spravované zákazníkem v účtu úložiště, musíte použít Azure Key Vault k uložení klíčů. V trezoru klíčů musíte povolit jak obnovitelné odstranění, tak i Nemazat vlastnosti. Funkce obnovitelného odstranění Key Vault umožňuje obnovení odstraněných trezorů a objektů trezoru, jako jsou klíče, tajné klíče a certifikáty. Pokud dojde k zálohování dat účtu úložiště k Azure Storage objektů blob, povolte obnovitelné odstranění a uložte a obnovte data, když se odstraní objekty blob nebo snímky objektů BLOB. Zálohy byste měli považovat za citlivá data a v rámci tohoto směrného plánu použít příslušné ovládací prvky pro přístup a ochranu dat. Pro lepší ochranu můžete kromě toho uložit stav důležitých podnikových dat do ČERVa (jeden, co je třeba napsat jednou, číst mnoho).
 
-- [Použití obnovitelného odstranění Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+- [Použití obnovitelného odstranění Azure Key Vault](/azure/key-vault/key-vault-soft-delete-powershell)
 
-- [Obnovitelné odstranění objektů blob služby Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Obnovitelné odstranění objektů blob služby Azure Storage](/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
-- [Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+- [Ukládání důležitých podnikových dat objektů BLOB s neměnném úložištěm](/azure/storage/blobs/storage-blob-immutable-storage)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1025,7 +1025,7 @@ Poznámka: Pokud chcete kopírovat data do služby Azure Table Storage a z ní, 
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](/azure/security/benchmarks/security-control-incident-response).*
 
 ### <a name="101-create-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -1047,9 +1047,9 @@ Poznámka: Pokud chcete kopírovat data do služby Azure Table Storage a z ní, 
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
-- [Výstrahy zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+- [Výstrahy zabezpečení ve službě Azure Security Center](/azure/security-center/security-center-alerts-overview)
 
-- [Používání značek k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1069,7 +1069,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-- [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [Jak nastavit kontakt zabezpečení Azure Security Center](/azure/security-center/security-center-provide-security-contact-details)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1079,9 +1079,9 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Pokyny**: vyexportujte výstrahy a doporučení pro Azure Security Center pomocí funkce průběžného exportu, které vám pomůžou identifikovat rizika pro prostředky Azure. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
-- [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [Postup konfigurace průběžného exportu](/azure/security-center/continuous-export)
 
-- [Jak streamovat výstrahy do Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Jak streamovat výstrahy do Azure Sentinel](/azure/sentinel/connect-azure-security-center)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1091,7 +1091,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
 
-- [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](/azure/security-center/workflow-automation)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1099,7 +1099,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources"></a>11,1: Provádějte pravidelné testování průniku vašich prostředků Azure.
 
@@ -1115,5 +1115,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
+- Další informace o [plánech zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)

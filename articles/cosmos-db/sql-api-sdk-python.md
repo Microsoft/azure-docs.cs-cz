@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d784e8bfb0841570f63d8433fa74059eb9e22758
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569817"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487734"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
 
@@ -22,25 +22,25 @@ ms.locfileid: "91569817"
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [Sada .NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
-> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**Stáhnout sadu SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
+|**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Python API](/python/api/azure-cosmos/?preserve-view=true&view=azure-python)|
 |**Pokyny k instalaci sady SDK**|[Pokyny k instalaci sady Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Začínáme**|[Začínáme se sadou Python SDK](create-sql-api-python.md)|
 |**Aktuální podporovaná platforma**|[Python 2,7](https://www.python.org/downloads/) a [Python 3.5.3 +](https://www.python.org/downloads/)|
@@ -220,7 +220,7 @@ Verze 4.0.0 B1 je první náhled našeho úsilí o vytvoření uživatelsky př�
 
 * Přidání podpory pro výchozí opakování při potížích s připojením
 
-### <a name="231"></a>kládají
+### <a name="231"></a>2.3.1
 
 * Aktualizovaná dokumentace, aby odkazovala Azure Cosmos DB místo Azure DocumentDB.
 
@@ -316,7 +316,7 @@ Verze 4.0.0 B1 je první náhled našeho úsilí o vytvoření uživatelsky př�
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
 
-Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK.
+Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady SDK z důvodu hladkého přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
 
 > [!WARNING]
 > Po 31. srpna 2022 už Azure Cosmos DB neprovádí opravy chyb, přidávají nové funkce a poskytuje podporu pro verze 1. x nebo 2. x sady Azure Cosmos DB Python SDK pro SQL API. Pokud nechcete upgradovat, požadavky odeslané z verze 1. x a 2. x sady SDK budou nadále obsluhovány službou Azure Cosmos DB.
@@ -327,8 +327,8 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 | [3.0.2](#302) |15. listopadu 2018 |--- |
 | [3.0.1](#301) |Říjen 04, 2018 |--- |
 | [2.3.3](#233) |Září 08, 2018 |30. srpna 2020 |
-| [2.3.2](#232) |8. května 2018 |30. srpna 2020 |
-| [kládají](#231) |21. prosince 2017 |30. srpna 2020 |
+| [2.3.2](#232) |8\. května 2018 |30. srpna 2020 |
+| [2.3.1](#231) |21. prosince 2017 |30. srpna 2020 |
 | [2.3.0](#230) |10. listopadu 2017 |30. srpna 2020 |
 | [2.2.1](#221) |Září 29, 2017 |30. srpna 2020 |
 | [2.2.0](#220) |10. května 2017 |30. srpna 2020 |
@@ -353,10 +353,10 @@ Microsoft poskytuje oznámení alespoň **12 měsíců** před vyřazením sady 
 | 0.9.1 – zapůjčení |23. září 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |21. srpna 2014 |29. února 2016 |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) . 
+Další informace o Cosmos DB najdete na stránce služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

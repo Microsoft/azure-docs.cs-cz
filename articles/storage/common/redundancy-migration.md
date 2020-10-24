@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a16199891c00e2b8133aebebd1eaa6488423896c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827314"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487887"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Změna způsobu replikace účtu úložiště
 
@@ -39,10 +39,10 @@ Následující tabulka poskytuje přehled toho, jak přepínat mezi jednotlivým
 
 | Přepínání | ... do LRS | ... na GRS/RA – GRS | ... do ZRS | ... na GZRS/RA – GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... z LRS</b> | Není k dispozici | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1</sup> . | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na GRS/RA-GRS a pak požádejte o migraci za provozu<sup>1</sup> . |
-| <b>... z GRS/RA – GRS</b> | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | Není k dispozici | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na LRS a pak požádejte o migraci za provozu. | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu |
-| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | Není k dispozici | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1, 2</sup> . |
-| <b>... z GZRS/RA – GZRS</b> | Provedení ruční migrace | Provedení ruční migrace | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | Není k dispozici |
+| <b>... z LRS</b> | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1</sup> . | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na GRS/RA-GRS a pak požádejte o migraci za provozu<sup>1</sup> . |
+| <b>... z GRS/RA – GRS</b> | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na LRS a pak požádejte o migraci za provozu. | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Vyžádání migrace za provozu |
+| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1, 2</sup> . |
+| <b>... z GZRS/RA – GZRS</b> | Provedení ruční migrace | Provedení ruční migrace | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – |
 
 <sup>1</sup> dojde k jednorázovému výstupnímu poplatku.<br />
 <sup>2</sup> převod z ZRS na GZRS/RA-GZRS nebo naopak není podporován v následujících oblastech: USA – východ 2, USA – východ, Evropa – západ.
@@ -144,9 +144,9 @@ Pracovník podpory vás bude kontaktovat a poskytne vám pomoc, kterou potřebuj
 > [!NOTE]
 > Migrace za provozu není v současné době pro sdílené složky Premium podporována. V tuto chvíli se podporuje jenom ruční kopírování a přesouvání dat.
 >
-> Účty úložiště GZRS momentálně nepodporují archivní vrstvu. Další podrobnosti najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
+> Účty úložiště GZRS momentálně nepodporují archivní vrstvu. Další podrobnosti najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](/azure/storage/blobs/storage-blob-storage-tiers) .
 >
-> Spravované disky jsou dostupné jenom pro LRS a nedají se migrovat na ZRS. Můžete ukládat snímky a image pro standardní spravované disky SSD na úrovni Standard HDD a [volit mezi LRS a ZRS možností](https://azure.microsoft.com/pricing/details/managed-disks/). Informace o integraci se skupinami dostupnosti najdete v tématu [Seznámení se službou Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
+> Spravované disky jsou dostupné jenom pro LRS a nedají se migrovat na ZRS. Můžete ukládat snímky a image pro standardní spravované disky SSD na úrovni Standard HDD a [volit mezi LRS a ZRS možností](https://azure.microsoft.com/pricing/details/managed-disks/). Informace o integraci se skupinami dostupnosti najdete v tématu [Seznámení se službou Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 
 ## <a name="switch-from-zrs-classic"></a>Přepnutí z ZRS Classic
 
@@ -200,6 +200,6 @@ Při migraci účtu úložiště z GRS do LRS se neúčtují žádné další n�
 
 ## <a name="see-also"></a>Viz také
 
-- [Azure Storage redundance](storage-redundancy.md)
+- [Redundance Azure Storage](storage-redundancy.md)
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md)

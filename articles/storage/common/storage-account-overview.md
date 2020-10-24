@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429883a1bd9bc4df270e6a9f2965087fa3fba2dc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280143"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488856"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -133,7 +133,7 @@ Pokud má například účet úložiště pro obecné účely název *mystoragea
 - Úložiště tabulek: `https://*mystorageaccount*.table.core.windows.net`
 - Úložiště fronty: `https://*mystorageaccount*.queue.core.windows.net`
 - Soubory Azure: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (používá [ovladač ABFS optimalizovaný speciálně pro velké](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)objemy dat.)
+- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (používá [ovladač ABFS optimalizovaný speciálně pro velké](/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)objemy dat.)
 
 > [!NOTE]
 > Objekty blob bloku a účty BLOB Storage zpřístupňují jenom Blob service koncový bod.
@@ -177,7 +177,7 @@ Knihovna pro přesun dat v Azure Storage pro .NET je založená na základní pl
 
 Můžete vytvořit vlastní aplikaci pro migraci dat z účtu úložiště pro obecné účely V1 na účet úložiště BLOB. Použijte jednu z klientských knihoven Azure nebo REST API služby Azure Storage. Azure Storage poskytuje množství knihoven klienta pro různé jazyky a platformy, jako například .NET, Java, C++, Node.JS, PHP, Ruby nebo Python. Knihovny klienta nabízí pokročilé možnosti a funkce, jako je například logika opakovaných pokusů, protokolování a paralelní ukládání. Můžete také psát aplikace přímo na rozhraní REST API, které může zavolat jakýkoli jazyk schopný vytvářet požadavky přes HTTP/HTTPS.
 
-Další informace o REST API Azure Storage najdete v tématu informace o [REST API služby Azure Storage Services](https://docs.microsoft.com/rest/api/storageservices/).
+Další informace o REST API Azure Storage najdete v tématu informace o [REST API služby Azure Storage Services](/rest/api/storageservices/).
 
 > [!IMPORTANT]
 > Objekty blob šifrované na straně klienta ukládají metadata šifrování s objektem blob. Pokud kopírujete objekt blob šifrovaný na straně klienta, ujistěte se, že operace kopírování zachová metadata objektu blob, zejména metadata šifrování. Pokud objekt blob zkopírujete bez metadat šifrování, obsah objektu blob bude nenávratně ztracený. Další informace o metadatech šifrování najdete v tématu [Azure Storage a šifrování na straně klienta](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

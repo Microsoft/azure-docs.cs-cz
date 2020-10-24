@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2d82b7f618757fbf77072bd7147595eec3083885
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108758"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487632"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rychlý Start: Vytvoření aplikace TODO pomocí Azure Cosmos DB účtu rozhraní SQL API pomocí Xamarin
 
@@ -22,7 +22,7 @@ ms.locfileid: "92108758"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [ROZHRANÍ .NET V4](create-sql-api-dotnet-V4.md)
 > * [Sada Java SDK v4](create-sql-api-java.md)
-> * [Jarní data V3](create-sql-api-spring-data.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -32,7 +32,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 > [!NOTE]
 > Vzorový kód celé ukázkové kanonické aplikace Xamarin ukazující několik nabídek Azure, včetně služby Cosmos DB, najdete [tady](https://github.com/xamarinhq/app-geocontacts) na GitHubu. Tato aplikace ukazuje, jak zobrazit kontakty rozptýlené v různých geografických umístěních a jak těmto kontaktům umožnit aktualizaci svého umístění.
 
-V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní SQL API služby Azure Cosmos DB, databázi dokumentů a kontejner pomocí webu Azure Portal. Pak sestavíte a nasadíte mobilní aplikaci seznamu úkolů postavenou na [rozhraní SQL .NET API](sql-api-sdk-dotnet.md) a [Xamarin](https://docs.microsoft.com/xamarin/) s využitím modelu [Xamarin. Forms](https://docs.microsoft.com/xamarin/) a [architektury MVVM](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm).
+V tomto rychlém startu se dozvíte, jak vytvořit účet rozhraní SQL API služby Azure Cosmos DB, databázi dokumentů a kontejner pomocí webu Azure Portal. Pak sestavíte a nasadíte mobilní aplikaci seznamu úkolů postavenou na [rozhraní SQL .NET API](sql-api-sdk-dotnet.md) a [Xamarin](/xamarin/) s využitím modelu [Xamarin. Forms](/xamarin/) a [architektury MVVM](/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm).
 
 :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="Aplikace seznamu úkolů Xamarin spuštěná v systému iOS":::
 
@@ -177,7 +177,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 V následujících krocích se dozvíte, jak aplikaci spustit s použitím ladicího programu sady Visual Studio pro Mac.
 
 > [!NOTE]
-> Použití aplikace ve verzi pro Android je naprosto stejné, případné rozdíly budou popsané v následujících krocích. Pokud chcete ladit v sadě Visual Studio ve Windows, přečtěte si návod v příslušné dokumentaci pro [iOS](https://docs.microsoft.com/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) a [Android](https://docs.microsoft.com/xamarin/android/deploy-test/debugging/).
+> Použití aplikace ve verzi pro Android je naprosto stejné, případné rozdíly budou popsané v následujících krocích. Pokud chcete ladit v sadě Visual Studio ve Windows, přečtěte si návod v příslušné dokumentaci pro [iOS](/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) a [Android](/xamarin/android/deploy-test/debugging/).
 
 1. Nejprve vyberte platformu, na kterou chcete cílit, kliknutím na zvýrazněnou rozevírací nabídku a výběrem možnosti ToDoItems.iOS pro iOS nebo ToDoItems.Android pro Android.
 

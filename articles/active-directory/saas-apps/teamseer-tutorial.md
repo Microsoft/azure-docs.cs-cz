@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 815c738f1680c12f94aa97e91cd123237bf1b4f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac050a9b90272203a899a9a15a51df022e4b0d0e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542492"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Kurz: Azure Active Directory integrace s TeamSeer
 
@@ -30,7 +30,7 @@ Integrace TeamSeer s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s TeamSeer potřebujete následující položky:
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
 1. Přejít na **správce lidských zdrojů**
 
-    ![Správce lidských zdrojů](./media/teamseer-tutorial/ic789634.png "Správce lidských zdrojů")
+    ![Snímek obrazovky ukazuje správce H R vybraný v okně TeamSeer.](./media/teamseer-tutorial/ic789634.png "Správce lidských zdrojů")
 
 1. Klikněte na tlačítko **nastavit**.
 
@@ -134,11 +134,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
 1. Klikněte na **nastavení podrobnosti o poskytovateli SAML**.
 
-    ![Nastavení SAML](./media/teamseer-tutorial/ic789636.png "Nastavení SAML")
+    ![Snímek obrazovky s vybraným nastavením podrobností o poskytovateli SAML.](./media/teamseer-tutorial/ic789636.png "Nastavení SAML")
 
 1. V části Podrobnosti o poskytovateli SAML proveďte následující kroky:
 
-    ![Nastavení SAML](./media/teamseer-tutorial/ic789637.png "Nastavení SAML")
+    ![Snímek obrazovky s podrobnostmi o poskytovateli SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/teamseer-tutorial/ic789637.png "Nastavení SAML")
 
     a. Do textového pole **Adresa URL** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
@@ -146,7 +146,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí TeamSeer
 
 1. Konfiguraci zprostředkovatele SAML dokončíte provedením následujících kroků:
 
-    ![Nastavení SAML](./media/teamseer-tutorial/ic789638.png "Nastavení SAML")
+    ![Snímek obrazovky se zobrazí v konfiguraci zprostředkovatele SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/teamseer-tutorial/ic789638.png "Nastavení SAML")
 
     a. Do pole **testovací e-mailové adresy**zadejte e-mailovou adresu testovacího uživatele.
   
@@ -215,7 +215,7 @@ Aby se uživatelé Azure AD mohli přihlašovat k TeamSeer, musí se zřídit v 
 
 1. Přejděte na **správce řízení \> uživatelských zdrojů** a potom klikněte na **Spustit Průvodce vytvořením nového uživatele**.
 
-    ![Správce lidských zdrojů](./media/teamseer-tutorial/ic789640.png "Správce lidských zdrojů")
+    ![Snímek obrazovky se zobrazí na kartě Správce H R, kde můžete vybrat průvodce, který se má spustit.](./media/teamseer-tutorial/ic789640.png "Správce lidských zdrojů")
 
 1. V části **Podrobnosti o uživateli** proveďte následující kroky:
 
@@ -236,7 +236,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici TeamSeer, měli byste se automaticky přihlásit k TeamSeer, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c2194476dc6e640f9c4b93d564728478de41ef7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606255"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475528"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na vývoj a testování ve službě Azure Cosmos DB
 
@@ -28,7 +28,7 @@ Azure Cosmos DB úroveň Free usnadňuje začátek, vývoj a testování aplikac
 > [!NOTE]
 > Úroveň Free je dostupná jenom v režimu zřízené propustnosti.
 
-Úroveň Free pro celou dobu životnosti účtu trvá neomezenou dobu a přináší všechny [výhody a funkce](introduction.md#key-benefits) pravidelného Azure Cosmos DB účtu, včetně neomezené kapacity úložiště a propustnosti (ru/s), SLA, vysoké dostupnosti, klíč globální distribuce ve všech oblastech Azure a dalších. Můžete mít až jeden účet bezplatné úrovně na jedno předplatné Azure a při vytváření účtu musí být výslovný souhlas. Pokud chcete začít, [vytvořte nový účet v Azure Portal s povolenou úrovní Free](create-cosmosdb-resources-portal.md) nebo použijte [šablonu ARM](manage-sql-with-resource-manager.md#free-tier). Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
+Úroveň Free pro celou dobu životnosti účtu trvá neomezenou dobu a přináší všechny [výhody a funkce](introduction.md#key-benefits) pravidelného Azure Cosmos DB účtu, včetně neomezené kapacity úložiště a propustnosti (ru/s), SLA, vysoké dostupnosti, klíč globální distribuce ve všech oblastech Azure a dalších. Můžete mít až jeden účet bezplatné úrovně na jedno předplatné Azure a při vytváření účtu musí být výslovný souhlas. Pokud chcete začít, [vytvořte nový účet v Azure Portal s povolenou úrovní Free](create-cosmosdb-resources-portal.md) nebo použijte [šablonu ARM](./manage-with-templates.md#free-tier). Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Vyzkoušejte si Azure Cosmos DB zdarma
 
@@ -57,5 +57,5 @@ Můžete začít s používáním emulátoru nebo bezplatného Azure Cosmos DB �
 * Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
 * Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
 * Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na dotazy](./optimize-cost-reads-writes.md)
 * Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)

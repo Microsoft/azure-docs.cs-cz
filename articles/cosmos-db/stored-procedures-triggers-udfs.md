@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279901"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480220"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
 
@@ -63,7 +63,7 @@ Transakce jsou nativně integrované do programovacího modelu Azure Cosmos DB J
 
 ### <a name="data-consistency"></a>Konzistence dat
 
-Uložené procedury a triggery se vždycky spouštějí na primární replice kontejneru Azure Cosmos. Tato funkce zajišťuje, že čtení z uložených procedur nabízí [silnou konzistenci](consistency-levels-tradeoffs.md). Dotazy využívající uživatelsky definované funkce lze provádět na primární nebo libovolné sekundární replice. Uložené procedury a triggery jsou určené k podpoře transakčních zápisů – zatímco logika jen pro čtení se nejlépe implementuje jako logika na straně aplikace a dotazy pomocí [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md), vám pomůže sytost propustnosti databáze. 
+Uložené procedury a triggery se vždycky spouštějí na primární replice kontejneru Azure Cosmos. Tato funkce zajišťuje, že čtení z uložených procedur nabízí [silnou konzistenci](./consistency-levels.md). Dotazy využívající uživatelsky definované funkce lze provádět na primární nebo libovolné sekundární replice. Uložené procedury a triggery jsou určené k podpoře transakčních zápisů – zatímco logika jen pro čtení se nejlépe implementuje jako logika na straně aplikace a dotazy pomocí [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md), vám pomůže sytost propustnosti databáze. 
 
 > [!TIP]
 > Dotazy, které byly provedeny v uložené proceduře nebo triggeru, nemusí zobrazit změny v položkách provedených stejnou transakcí skriptu. Tento příkaz se vztahuje na dotazy SQL, jako je například, i na `getContent().getCollection.queryDocuments()` integrované jazykové dotazy, jako je `getContext().getCollection().filter()` .

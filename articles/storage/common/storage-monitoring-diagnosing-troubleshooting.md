@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43c8f3dc0df41d9322edbe2e0c763de12b787ed6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370470"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479795"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -131,7 +131,7 @@ Metriky úložiště pouze ukládají metriky kapacity pro službu BLOB Service,
 >
 >
 
-Nápovědu k odhadu velikosti různých objektů úložiště, jako jsou objekty blob, najdete v příspěvku na blogu [principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
+Nápovědu k odhadu velikosti různých objektů úložiště, jako jsou objekty blob, najdete v příspěvku na blogu [principy Azure Storage fakturace – šířka pásma, transakce a kapacita](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Monitorování dostupnosti
 Dostupnost služeb úložiště ve vašem účtu úložiště byste měli sledovat monitorováním hodnoty ve sloupci **dostupnost** v tabulkách hodinové nebo minutové metriky – **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Sloupec **dostupnosti** obsahuje procentuální hodnotu, která indikuje dostupnost služby nebo operace rozhraní API reprezentované řádkem ( **RowKey** ukazuje, jestli řádek obsahuje metriky pro službu jako celek nebo pro konkrétní operaci rozhraní API).
@@ -362,7 +362,7 @@ Služba Storage počítá jenom **hodnotu averagee2elatency** metriky pro úspě
 #### <a name="investigating-client-performance-issues"></a>Zkoumání problémů s výkonem klienta
 Možné příčiny, proč klient reaguje pomalu, zahrnuje omezený počet dostupných připojení nebo vláken nebo má nízkou velikost prostředků, jako jsou například CPU, paměť nebo šířka pásma sítě. Problém může být možné vyřešit úpravou kódu klienta tak, aby byl efektivnější (například pomocí asynchronního volání služby úložiště), nebo pomocí většího virtuálního počítače (s více jádry a více paměti).
 
-Pro služby Table a Queue může Nagle algoritmus také způsobit vysoké **hodnotu averagee2elatency** ve srovnání s **hodnotu averageserverlatency**: Další informace najdete v tématu o [algoritmu post Nagle není uživatelsky přívětivý vůči malým požadavkům](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). Nagle algoritmus můžete v kódu zakázat pomocí třídy **Třída ServicePointManager** v oboru názvů **System.NET** . Tento postup byste měli provést předtím, než v aplikaci provedete jakékoli volání služby Table nebo Queue, protože to nemá vliv na připojení, která jsou již otevřena. Následující příklad pochází z metody **Application_Start** v roli pracovního procesu.
+Pro služby Table a Queue může Nagle algoritmus také způsobit vysoké **hodnotu averagee2elatency** ve srovnání s **hodnotu averageserverlatency**: Další informace najdete v tématu o [algoritmu post Nagle není uživatelsky přívětivý vůči malým požadavkům](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). Nagle algoritmus můžete v kódu zakázat pomocí třídy **Třída ServicePointManager** v oboru názvů **System.NET** . Tento postup byste měli provést předtím, než v aplikaci provedete jakékoli volání služby Table nebo Queue, protože to nemá vliv na připojení, která jsou již otevřena. Následující příklad pochází z metody **Application_Start** v roli pracovního procesu.
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 

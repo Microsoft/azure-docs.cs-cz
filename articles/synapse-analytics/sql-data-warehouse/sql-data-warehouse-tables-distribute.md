@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 98a3b8d30bcb358a0aaa0f7b124b8399a286d6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85214005"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487003"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Pokyny k návrhu distribuovaných tabulek ve fondu Synapse SQL
 
 Doporučení pro návrh distribuovaných tabulek distribuovaných algoritmem hash a kruhové dotazování v synapse fondech SQL.
 
-V tomto článku se předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat v synapse fondu SQL.Další informace najdete v tématu [Architektura služby MPP (synapse analyticsd Parallel Processing) Azure](massively-parallel-processing-mpp-architecture.md).
+V tomto článku se předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat v synapse SQL.  Další informace najdete v tématu [Architektura Azure synapse Analytics](massively-parallel-processing-mpp-architecture.md).
 
 ## <a name="what-is-a-distributed-table"></a>Co je distribuovaná tabulka?
 
@@ -32,7 +32,7 @@ Distribuovaná tabulka se zobrazí jako jediná tabulka, ale tyto řádky jsou v
 
 Další možností úložiště tabulek je replikace malé tabulky ve všech výpočetních uzlech. Další informace najdete v tématu [pokyny k návrhu replikovaných tabulek](design-guidance-for-replicated-tables.md). Pokud si chcete rychle vybrat ze tří možností, přečtěte si téma distribuované tabulky v tématu [Přehled tabulek](sql-data-warehouse-tables-overview.md).
 
-Jako součást návrhu tabulky Pochopte co nejvíce dat a způsob dotazování na data.Zvažte například tyto otázky:
+Jako součást návrhu tabulky Pochopte co nejvíce dat a způsob dotazování na data.  Zvažte například tyto otázky:
 
 - Jak velká je tabulka?
 - Jak často je tabulka aktualizována?

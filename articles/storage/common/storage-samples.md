@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2cf1b643caef515411842d6aaf668708e873e96d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d537ba74dad55ea1cb980ea04d20fd0c8494ed0b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367886"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479438"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 
@@ -67,8 +67,8 @@ Pokud chcete prozkoumat ukázky Azure CLI, nejdřív [nainstalujte rozhraní př
 
 | Jazyk | API – referenční informace | Zdrojový kód |
 |----------|---------------|-------------|
-| .NET | [Reference ke klientské knihovně .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu úložiště .NET](https://github.com/Azure/azure-storage-net) |
-| Java | [Reference ke klientské knihovně Java](https://docs.microsoft.com/java/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu pro úložiště Java](https://github.com/azure/azure-storage-java) |
+| .NET | [Reference ke klientské knihovně .NET](/dotnet/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu úložiště .NET](https://github.com/Azure/azure-storage-net) |
+| Java | [Reference ke klientské knihovně Java](/java/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu pro úložiště Java](https://github.com/azure/azure-storage-java) |
 | Python | [Referenční dokumentace klientské knihovny Pythonu](https://azure-storage.readthedocs.io/) | [Zdrojový kód pro knihovnu klienta úložiště Python](https://github.com/Azure/azure-storage-python) |
 | Node.js | [ Reference ke klientské knihovněNode.js](https://azure.github.io/azure-storage-node) | [Zdrojový kód pro klientskou knihovnu Node.js Storage](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ – Reference klientské knihovny](https://azure.github.io/azure-sdk-for-cpp/) | [Zdrojový kód pro klientskou knihovnu úložiště C++](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)|
