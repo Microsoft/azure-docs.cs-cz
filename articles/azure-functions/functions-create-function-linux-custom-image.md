@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de4f52dae236502a087116aa72424641220c628
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758978"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517072"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce v Linuxu s využitím vlastního kontejneru
 
@@ -95,7 +95,10 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-`-DjavaVersion`Parametr oznamuje modulu runtime Functions, kterou verzi Java má použít. Použijte `-DjavaVersion=11` , pokud chcete, aby vaše funkce běžely v jazyce Java 11, který je ve verzi Preview. Pokud nezadáte `-DjavaVersion` , Maven se výchozí hodnota Java 8. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions).
+`-DjavaVersion`Parametr oznamuje modulu runtime Functions, kterou verzi Java má použít. Použijte, `-DjavaVersion=11` Pokud chcete, aby se vaše funkce spouštěly na Java 11. Pokud nezadáte `-DjavaVersion` , Maven se výchozí hodnota Java 8. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions).
+
+> [!IMPORTANT]
+> `JAVA_HOME`Aby bylo možné tento článek dokončit, musí být proměnná prostředí nastavena na umístění instalace správné verze JDK.
 
 Maven vás vyzve k zadání hodnot potřebných k dokončení generování projektu při nasazení.   
 Po zobrazení výzvy zadejte následující hodnoty:

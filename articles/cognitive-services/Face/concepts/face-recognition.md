@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00dadf8a91b7ed01ab9f91933d296744305a95af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323018"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518802"
 ---
 # <a name="face-recognition-concepts"></a>Koncepce rozpoznávání obličeje
 
@@ -58,7 +58,7 @@ Operace [Identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/
 Pomocí následujících tipů zajistěte, aby vaše vstupní image poskytovaly nejpřesnější výsledky rozpoznávání:
 
 * Podporované formáty vstupních obrázků jsou JPEG, PNG, GIF (první snímek), BMP.
-* Velikost souboru obrázku by neměla být větší než 4 MB.
+* Velikost souboru obrázku by neměla být větší než 6 MB.
 * Když vytváříte objekty osob, používejte fotky, které mají různé druhy úhlů a osvětlení.
 * Některé plošky nemusí být rozpoznané z důvodu technických problémů, jako například:
   * Obrázky s extrémním osvětlením, například vážným světelnou signalizací.

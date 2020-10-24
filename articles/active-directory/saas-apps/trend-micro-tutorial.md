@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551887"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514533"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím Trend Micro Web Security (TMWS)
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Trend Micro Web Security (TMWS) s Azur
 * Umožněte uživatelům, aby se automaticky přihlásili k TMWS pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Na začátek budete potřebovat:
 
@@ -40,7 +40,7 @@ Na začátek budete potřebovat:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * TMWS podporuje jednotné přihlašování iniciované v SP.
-* Po nakonfigurování TMWS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. Informace o tom, jak vynutilit řízení relace pomocí Microsoft Cloud App Security, najdete v tématu připojení [a nasazení řízení podmíněného přístupu k aplikacím pro všechny aplikace](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování TMWS můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. Informace o tom, jak vynutilit řízení relace pomocí Microsoft Cloud App Security, najdete v tématu připojení [a nasazení řízení podmíněného přístupu k aplikacím pro všechny aplikace](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-tmws-from-the-gallery"></a>Přidání TMWS z Galerie
 
@@ -95,7 +95,7 @@ Provedením těchto kroků povolíte jednotné přihlašování služby Azure AD
 
 1. Kromě atributů na předchozím snímku obrazovky očekává TMWS dva další atributy, které mají být zpět v odpovědi SAML. Tyto atributy jsou uvedeny v následující tabulce. Atributy jsou předem vyplněné, ale můžete je změnit tak, aby splňovaly vaše požadavky.
     
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | Názvu | User. userPrincipalName |
@@ -116,7 +116,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **název** zadejte `B.Simon` .  
-   1. Do pole **uživatelské jméno** zadejte ***UserName *@* doménaspolečnosti *.* Přípona***. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte **_username_ @ *doménaspolečnosti *.* Přípona * * *. Například, `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -228,17 +228,16 @@ Až nakonfigurujete službu Azure AD a jako metodu ověření uživatele zadáte
 
 1. V okně přihlášení k Azure AD zadejte svoje přihlašovací údaje k účtu Azure AD. Nyní byste měli být přihlášeni do TMWS.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Kurzy k integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy k integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Trend Micro Web Security s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit Trend Micro Web Security pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Jak chránit Trend Micro Web Security pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

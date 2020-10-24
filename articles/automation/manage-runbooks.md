@@ -3,14 +3,14 @@ title: Správa runbooků v Azure Automation
 description: V tomto článku se dozvíte, jak spravovat Runbooky v Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/10/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 023864e23c0cd23df0de603e76acac651bd2458e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30979f49a48954280942d786af7e7ff592089062
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987588"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521063"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -20,9 +20,8 @@ Runbook můžete přidat do Azure Automation tím, že vytvoříte nový nebo na
 
 Pomocí Azure Portal nebo Windows PowerShellu vytvořte nový Runbook v Azure Automation. Po vytvoření se Runbook dá upravit pomocí informací v části:
 
-* [Upravit text Runbook v Azure Automation](automation-edit-textual-runbook.md) 
+* [Upravit text Runbook v Azure Automation](automation-edit-textual-runbook.md)
 * [Informace o klíčových konceptech pracovního postupu prostředí Windows PowerShell pro Runbooky Automation](automation-powershell-workflow.md)
-* [Grafické vytváření v Azure Automation](automation-graphical-authoring-intro.md)
 * [Správa balíčků Python 2 v Azure Automation](python-packages.md)
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>Vytvoření Runbooku v Azure Portal
@@ -35,7 +34,7 @@ Pomocí Azure Portal nebo Windows PowerShellu vytvořte nový Runbook v Azure Au
 
 ### <a name="create-a-runbook-with-powershell"></a>Vytvoření Runbooku pomocí PowerShellu
 
-K vytvoření prázdné sady Runbook použijte rutinu [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) . Pomocí `Type` parametru zadejte jeden z typů runbooků definovaných pro `New-AzAutomationRunbook` .
+K vytvoření prázdné sady Runbook použijte rutinu [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook) . Pomocí `Type` parametru zadejte jeden z typů runbooků definovaných pro `New-AzAutomationRunbook` .
 
 Následující příklad ukazuje, jak vytvořit novou prázdnou sadu Runbook.
 
@@ -77,7 +76,7 @@ Pomocí následujícího postupu můžete do Azure Automation importovat soubor 
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>Import Runbooku pomocí Windows PowerShellu
 
-Pomocí rutiny [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) importujte soubor skriptu jako koncept Runbooku. Pokud sada Runbook již existuje, import se nepovede, pokud nepoužijete `Force` parametr s rutinou.
+Pomocí rutiny [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook) importujte soubor skriptu jako koncept Runbooku. Pokud sada Runbook již existuje, import se nepovede, pokud nepoužijete `Force` parametr s rutinou.
 
 Následující příklad ukazuje, jak importovat soubor skriptu do sady Runbook.
 
@@ -147,7 +146,7 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 ## <a name="track-progress"></a>Sledování průběhu
 
-Je dobrým zvykem vytvářet Runbooky, které mají být v podstatě, s logikou, kterou je možné snadno použít a snadno restartovat. Sledování průběhu v Runbooku zajistí, že se logika sady Runbook spustí správně, pokud dojde k problémům. 
+Je dobrým zvykem vytvářet Runbooky, které mají být v podstatě, s logikou, kterou je možné snadno použít a snadno restartovat. Sledování průběhu v Runbooku zajistí, že se logika sady Runbook spustí správně, pokud dojde k problémům.
 
 Průběh Runbooku můžete sledovat pomocí externího zdroje, jako je například účet úložiště, databáze nebo sdílené soubory. Vytvořte v Runbooku logiku, abyste nejdřív zkontrolovali stav poslední provedené akce. V závislosti na výsledcích kontroly může logika přeskočit nebo pokračovat v sadě Runbook konkrétní úkoly.
 
@@ -192,35 +191,33 @@ Pokud se sada Runbook obvykle spouští v rámci časového omezení, skript imp
 
 ## <a name="work-with-multiple-subscriptions"></a>Práce s několika předplatnými
 
-Sada Runbook musí umožňovat práci s [předplatnými](automation-runbook-execution.md#subscriptions). Například pro zpracování více předplatných sada Runbook používá rutinu [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) . Tato rutina zajišťuje, že se kontext ověřování nenačte z jiné sady Runbook spuštěné ve stejném izolovaném prostoru (sandbox). Sada Runbook také používá `Get-AzContext` rutinu k načtení kontextu aktuální relace a přiřadí ji k proměnné `$AzureContext` .
+Sada Runbook musí umožňovat práci s [předplatnými](automation-runbook-execution.md#subscriptions). Například pro zpracování více předplatných sada Runbook používá rutinu [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) . Tato rutina zajišťuje, že se kontext ověřování nenačte z jiné sady Runbook spuštěné ve stejném izolovaném prostoru (sandbox). Sada Runbook také používá `Get-AzContext` rutinu k načtení kontextu aktuální relace a přiřadí ji k proměnné `$AzureContext` .
 
 ```powershell
-# Ensures that you do not inherit an AzContext in your runbook
-Disable-AzContextAutosave –Scope Process
+Disable-AzContextAutosave -Scope Process
 
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal `
+$AzureContext = Connect-AzAccount -ServicePrincipal `
 -Tenant $Conn.TenantID `
 -ApplicationId $Conn.ApplicationID `
--CertificateThumbprint $Conn.CertificateThumbprint
-
-$AzureContext = Get-AzContext
+-CertificateThumbprint $Conn.CertificateThumbprint `
+-Subscription $Conn.SubscriptionId
 
 $ChildRunbookName = 'ChildRunbookDemo'
 $AutomationAccountName = 'myAutomationAccount'
 $ResourceGroupName = 'myResourceGroup'
 
 Start-AzAutomationRunbook `
-    -ResourceGroupName $ResourceGroupName `
-    -AutomationAccountName $AutomationAccountName `
-    -Name $ChildRunbookName `
-    -DefaultProfile $AzureContext
+-ResourceGroupName $ResourceGroupName `
+-AutomationAccountName $AutomationAccountName `
+-Name $ChildRunbookName `
+-DefaultProfile $AzureContext
 ```
 
 ## <a name="work-with-a-custom-script"></a>Práce s vlastním skriptem
 
 > [!NOTE]
-> Na hostiteli nemůžete normálně spouštět vlastní skripty a runbooky s nainstalovaným agentem Log Analytics. 
+> Na hostiteli nemůžete normálně spouštět vlastní skripty a runbooky s nainstalovaným agentem Log Analytics.
 
 Použití vlastního skriptu:
 
@@ -257,7 +254,7 @@ Když vytváříte nebo importujete novou sadu Runbook, je nutné ji publikovat,
 
 ### <a name="publish-a-runbook-using-powershell"></a>Publikování Runbooku pomocí PowerShellu
 
-K publikování Runbooku použijte rutinu [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) . 
+K publikování Runbooku použijte rutinu [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook) . 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -277,7 +274,7 @@ Po publikování Runbooku můžete naplánovat jeho operaci:
 3. Vyberte **Přidat plán**.
 4. V podokně naplánovat Runbook vyberte **připojit plán k sadě Runbook**.
 5. V podokně plán vyberte **vytvořit nový plán** .
-6. Zadejte název, popis a další parametry v podokně nový plán. 
+6. Zadejte název, popis a další parametry v podokně nový plán.
 7. Po vytvoření plánu ho zvýrazněte a klikněte na **OK**. Měla by být teď propojená s vaší sadou Runbook.
 8. Vyhledejte v poštovní schránce e-mail, který vás upozorní na stav Runbooku.
 
@@ -285,7 +282,7 @@ Po publikování Runbooku můžete naplánovat jeho operaci:
 
 ### <a name="view-statuses-in-the-azure-portal"></a>Zobrazit stavy v Azure Portal
 
-Podrobnosti o zpracování úloh v Azure Automation jsou k dispozici v [úlohách](automation-runbook-execution.md#jobs). Až budete připraveni zobrazit své úlohy Runbooku, použijte Azure Portal a přistoupit k vašemu účtu Automation. Napravo se zobrazí souhrn všech úloh sady Runbook v **statistikách úlohy**. 
+Podrobnosti o zpracování úloh v Azure Automation jsou k dispozici v [úlohách](automation-runbook-execution.md#jobs). Až budete připraveni zobrazit své úlohy Runbooku, použijte Azure Portal a přistoupit k vašemu účtu Automation. Napravo se zobrazí souhrn všech úloh sady Runbook v **statistikách úlohy**.
 
 ![Dlaždice statistiky úlohy](./media/manage-runbooks/automation-account-job-status-summary.png)
 
@@ -305,7 +302,7 @@ Případně můžete zobrazit souhrn podrobností úlohy pro konkrétní Runbook
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Načtení stavů úloh pomocí PowerShellu
 
-Pomocí rutiny [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) můžete načíst úlohy vytvořené pro Runbook a podrobnosti konkrétní úlohy. Pokud spustíte sadu Runbook pomocí nástroje `Start-AzAutomationRunbook` , vrátí výslednou úlohu. K načtení výstupu úlohy použijte [příkaz Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) .
+Pomocí rutiny [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) můžete načíst úlohy vytvořené pro Runbook a podrobnosti konkrétní úlohy. Pokud spustíte sadu Runbook pomocí nástroje `Start-AzAutomationRunbook` , vrátí výslednou úlohu. K načtení výstupu úlohy použijte [příkaz Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) .
 
 Následující příklad načte poslední úlohu ukázkového Runbooku a zobrazí její stav, hodnoty zadané pro parametry Runbooku a výstup úlohy.
 
@@ -340,6 +337,4 @@ foreach($item in $output)
 
 * Další informace o správě sad Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
 * Postup přípravy Runbooku PowerShellu najdete [v tématu Úprava textových runbooků v Azure Automation](automation-edit-textual-runbook.md).
-* Nápovědu k psaní Runbooku pracovního postupu PowerShellu najdete v tématu [informace o pracovním postupu PowerShellu pro Azure Automation](automation-powershell-workflow.md).
-* Podrobnosti o psaní grafických sad Runbook naleznete [v tématu Authoring Graphics Runbooky v Azure Automation](automation-graphical-authoring-intro.md).
 * Řešení potíží se spouštěním sady Runbook najdete v tématu [řešení potíží](troubleshoot/runbooks.md)se sadou Runbook.

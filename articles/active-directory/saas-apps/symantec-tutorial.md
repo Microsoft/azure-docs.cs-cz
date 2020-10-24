@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e2087fdd5568156a96645b25cb105cc5f3ca6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 230f7fd9c62f657ce8ab893db2256808dce9a7ba
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544940"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Kurz: Azure Active Directory integrací se službou Symantec Web Security Service (WSS)
 
@@ -30,10 +30,10 @@ Integrace služby WSS Web Security Service (WSS) se službou Azure AD poskytuje 
 
 - Povolte vynucování pravidel zásad uživatelů a úrovní skupin definovaných ve vašem účtu WSS.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD se službou Symantec Web Security Service (WSS) potřebujete následující položky:
 
@@ -183,11 +183,10 @@ V této části otestujete funkci jednotného přihlašování teď, když jste 
 
 Po nakonfigurování webového prohlížeče na provoz proxy na WSS, když otevřete webový prohlížeč a zkusíte přejít na web, budete přesměrováni na přihlašovací stránku Azure. Zadejte přihlašovací údaje koncového uživatele testu, který byl zřízen ve službě Azure AD (tj. BrittaSimon) a přidruženém heslu. Po ověření budete moct přejít na web, který jste zvolili. Měli byste na straně WSS vytvořit pravidlo zásad, které zablokuje BrittaSimon k procházení na konkrétní lokalitu. při pokusu o přechod na tuto lokalitu jako uživatel BrittaSimon by se měla zobrazit stránka blok WSS.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

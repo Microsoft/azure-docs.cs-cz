@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: Optimalizace výkonu
               href: optimization.md
-            - name: Konfigurace softwarového pole RAID
-              href: configure-raid.md
             - name: Konfigurace LVM
               href: configure-lvm.md
         - name: Vyhledání nepřipojených disků – CLI

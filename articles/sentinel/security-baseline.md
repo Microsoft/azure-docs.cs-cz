@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 25571db967608c238bccb1ab44f75a0a163803d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4c6bf8b203f9721436ab3dde1f80837df92234d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90020279"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518258"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Základní plán zabezpečení Azure pro službu Azure Sentinel
 
@@ -325,7 +325,7 @@ Mezi role Log Analytics patří Log Analytics přispěvatel a Log Analytics Read
 
 Každý sešit Sentinel je navíc prostředkem Azure a pro správu přístupu můžete přiřadit role uživatelům.
 
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [Porozumění vlastním rolím](../role-based-access-control/custom-roles.md)
 

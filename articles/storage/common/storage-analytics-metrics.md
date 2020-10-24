@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef38e36ce1d2c7968e3eb7079270626629523334
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021149"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518731"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Analýza úložiště Azure metriky (klasické)
 
@@ -176,7 +176,10 @@ Zvažte nastavení výstrah v [Azure Portal](https://portal.azure.com) , takže 
 >
 
 ## <a name="access-metrics-data-programmatically"></a>Přístup k datům metrik prostřednictvím kódu programu  
-Následující výpis zobrazuje ukázkový kód jazyka C#, který přistupuje k minutovým metrikám po dobu celé řady minut a zobrazuje výsledky v okně konzoly. Ukázka kódu používá Azure Storage klientskou knihovnu verze 4. x nebo novější, která obsahuje třídu **CloudAnalyticsClient** , která zjednodušuje přístup k tabulkám metrik v úložišti.  
+Následující výpis zobrazuje ukázkový kód jazyka C#, který přistupuje k minutovým metrikám po dobu celé řady minut a zobrazuje výsledky v okně konzoly. Ukázka kódu používá Azure Storage klientskou knihovnu verze 4. x nebo novější, která obsahuje třídu **CloudAnalyticsClient** , která zjednodušuje přístup k tabulkám metrik v úložišti. 
+
+> [!NOTE]
+> Třída **CloudAnalyticsClient** není součástí klientské knihovny Azure Blob Storage V12 pro .NET. Od **31. srpna 2023** analýza úložiště metriky, označované také jako *klasické metriky* , budou vyřazeny. Další informace najdete v [oficiálním oznámení](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/). Pokud používáte klasické metriky, doporučujeme přejít na metriky v Azure Monitor před tímto datem. 
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  

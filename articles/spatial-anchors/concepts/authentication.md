@@ -9,16 +9,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715e09eaf6ca379261d619fe02ad81a69a519d3e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328534"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516915"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
-V tomto článku se seznámíte s různými způsoby, kterými se můžete z vaší aplikace nebo webové služby ověřit pro prostorové kotvy Azure. Dozvíte se také o způsobech použití řízení přístupu na základě rolí v Azure Active Directory (Azure AD) k řízení přístupu k účtům prostorových kotev.
+V tomto článku se seznámíte s různými způsoby, kterými se můžete z vaší aplikace nebo webové služby ověřit pro prostorové kotvy Azure. Dozvíte se taky o způsobech použití řízení přístupu na základě role Azure (RBAC) v Azure Active Directory (Azure AD) k řízení přístupu k vašim účtům prostorových kotev.
 
 ## <a name="overview"></a>Přehled
 
@@ -94,7 +94,7 @@ Po nastavení této vlastnosti zpracuje sada SDK výměnu klíče účtu pro př
 
 Pro aplikace, které cílí na Azure Active Directory uživatele, doporučujeme pro tohoto uživatele použít token Azure AD. Tento token můžete získat pomocí [MSAL](../../active-directory/develop/msal-overview.md). Postupujte podle kroků v [rychlém startu při registraci aplikace](../../active-directory/develop/quickstart-register-app.md), která zahrnuje:
 
-**Na webu Azure Portal**
+**V Azure Portal**
 1.    Zaregistrujte svoji aplikaci ve službě Azure AD jako nativní aplikaci. V rámci registrace budete muset určit, jestli má být vaše aplikace víceklientské. Také budete muset zadat adresy URL pro přesměrování povolené pro vaši aplikaci.
 1.  Přejít na kartu **oprávnění rozhraní API** .
 2.  Vyberte **Přidat oprávnění**.
@@ -108,7 +108,7 @@ Pro aplikace, které cílí na Azure Active Directory uživatele, doporučujeme 
    1.    V Azure Portal přejít na prostředek prostorových ukotvení.
    2.    Přejděte na kartu **řízení přístupu (IAM)** .
    3.    Vyberte **Přidat přiřazení role**.
-   1.    [Vyberte roli](#role-based-access-control).
+   1.    [Vyberte roli](#azure-role-based-access-control).
    2.    Do pole **Vybrat** zadejte jména uživatelů, skupin nebo aplikací, ke kterým chcete přiřadit přístup.
    3.    Vyberte **Uložit**.
 
@@ -172,7 +172,7 @@ V tomto případě předpokládáme, že vaše aplikace používá svůj vlastn�
 
 Přístupový token Azure AD se načte přes [MSAL](../../active-directory/develop/msal-overview.md). Postupujte podle kroků v části [rychlý Start pro registraci aplikace](../../active-directory/develop/quickstart-register-app.md), které zahrnují:
 
-**Na webu Azure Portal**
+**V Azure Portal**
 1.    Registrace aplikace ve službě Azure AD:
         1.    V Azure Portal vyberte **Azure Active Directory**a pak vyberte **Registrace aplikací**.
         2.    Vyberte **Nová registrace**.
@@ -182,7 +182,7 @@ Přístupový token Azure AD se načte přes [MSAL](../../active-directory/devel
         1.    V Azure Portal přejít na prostředek prostorových ukotvení.
         2.    Přejděte na kartu **řízení přístupu (IAM)** .
         3.    Vyberte **Přidat přiřazení role**.
-        1.    [Vyberte roli](#role-based-access-control).
+        1.    [Vyberte roli](#azure-role-based-access-control).
         2.    Do pole **Vybrat** zadejte název nebo názvy aplikací, ke kterým chcete přiřadit přístup. Pokud chcete, aby uživatelé vaší aplikace měli různé role proti účtu prostorové kotvy, zaregistrujte několik aplikací v Azure AD a přiřaďte jim samostatnou roli. Potom implementujte logiku autorizace pro použití správné role pro vaše uživatele.
         
               > [!NOTE] 
@@ -262,7 +262,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ---
 
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
+## <a name="azure-role-based-access-control"></a>Řízení přístupu na základě role v Azure
 
 Abychom vám pomohli řídit úroveň přístupu udělených aplikacím, službám nebo uživatelům Azure AD vaší služby, můžete těmto již existujícím rolím přiřadit účty prostorových kotev Azure:
 

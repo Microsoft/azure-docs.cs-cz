@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 787c7d7df5f013dd4477e466c02a2b323b4b59df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f1c4bf9b599da8285ac69e299549e5aa73c2f9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275094"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519584"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Nastavení připojení indexeru ke zdroji dat pomocí spravované identity
 
@@ -31,7 +31,7 @@ Tyto otázky je možné vyřešit nastavením připojení pomocí spravované id
 
 ## <a name="using-managed-identities"></a>Použití spravovaných identit
 
-[Spravované identity](../active-directory/managed-identities-azure-resources/overview.md) jsou funkce, která poskytuje služby Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Pomocí této funkce v Azure Kognitivní hledání můžete vytvořit objekt zdroje dat s připojovacím řetězcem, který neobsahuje žádné přihlašovací údaje. Místo toho bude službě Search udělen přístup ke zdroji dat prostřednictvím řízení přístupu na základě role (RBAC).
+[Spravované identity](../active-directory/managed-identities-azure-resources/overview.md) jsou funkce, která poskytuje služby Azure s automaticky spravovanou identitou v Azure Active Directory (Azure AD). Pomocí této funkce v Azure Kognitivní hledání můžete vytvořit objekt zdroje dat s připojovacím řetězcem, který neobsahuje žádné přihlašovací údaje. Místo toho bude službě Search udělen přístup ke zdroji dat prostřednictvím řízení přístupu na základě role Azure (RBAC).
 
 Při nastavování zdroje dat pomocí spravované identity můžete změnit přihlašovací údaje ke zdroji dat a indexery se pořád budou moct připojit ke zdroji dat. Můžete také vytvořit objekty zdroje dat ve vašem kódu, aniž byste museli zahrnout klíč účtu, nebo použít Key Vault k načtení klíče účtu.
 

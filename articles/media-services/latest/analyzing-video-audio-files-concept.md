@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 05994a61b0afd0190e3fc1d4b841d576cec047f5
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 023cd13c40bdd6aae9febaf7d929f94fe26ef6d3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015836"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519635"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analýza videosouborů a zvukových souborů pomocí Azure Media Services
 
@@ -27,10 +27,12 @@ ms.locfileid: "92015836"
 
 Azure Media Services V3 umožňuje extrakci přehledů z vašich videosouborů a zvukových souborů pomocí Video Indexer. Tento článek popisuje předvolby analyzátoru Media Services V3 použité k extrakci těchto přehledů. Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer. Chcete-li pochopit, kdy použít předvolby Video Indexer vs. Media Services Analyzer, Projděte si [dokument porovnání](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
+Existují dva režimy předvolby zvukového analyzátoru, Basic a Standard. Podívejte se na popis rozdílů v následující tabulce.
+
 Chcete-li analyzovat obsah pomocí přednastavených Media Services V3, vytvořte **transformaci** a odešlete **úlohu** , která používá jedno z těchto přednastavení: [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) nebo **AudioAnalyzerPreset**. Kurz demonstrující použití **VideoAnalyzerPreset**najdete v tématu [analýza videí pomocí Azure Media Services](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
-> Pokud použijete předvolby analyzátoru videa nebo zvuku, pomocí webu Azure Portal nastavte pro svůj účet 10 rezervovaných jednotek médií S3. Další informace najdete v tématu [Škálování zpracování médií](media-reserved-units-cli-how-to.md).
+> Pokud používáte přednastavení videa nebo zvuku, pomocí Azure Portal nastavte účet tak, aby měl rezervované jednotky médií s 10 S3, i když to není potřeba. Pro přednastavení zvuku můžete použít buď S1, nebo S2. Další informace najdete v tématu [Škálování zpracování médií](media-reserved-units-cli-how-to.md).
 
 ## <a name="compliance-privacy-and-security"></a>Dodržování předpisů, ochrana osobních údajů a zabezpečení
 
@@ -42,17 +44,29 @@ Media Services aktuálně podporuje následující předdefinované předvolby a
 
 |**Název předvolby**|**Scénář**|**Podrobnosti**|
 |---|---|---|
-|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza standardu zvuk|Přednastavení používá předdefinovanou sadu operací analýzy založených na AI, včetně přepisu řeči. V současné době přednastavení podporuje zpracování obsahu pomocí jedné zvukové stopy, která obsahuje řeč v jednom jazyce. Jazyk pro datovou část zvuku ve vstupu můžete určit pomocí formátu BCP-47 pro ' Language tag-region '. Podporované jazyky jsou angličtina ("en-US" a "en-GB"), španělština (ES-ES a ES-MX), francouzština (' fr-FR '), italština (' IT-IT '), japonština (' IT-Japonsko '), portugalština (' pt-BR '), čínština (' zh-CN '), němčina (' de-DE '), Arabština (' ar-EG ' a ' ar-SY '), ruština (' ru-RU '), hindština (' Hi-IN ') a korejština (' ko-KR ').<br/><br/> Pokud jazyk není zadán nebo je nastaven na hodnotu null, automatické rozpoznávání jazyka zvolí první nalezený jazyk a pokračuje s vybraným jazykem po dobu trvání souboru. Funkce automatického rozpoznávání jazyka aktuálně podporuje angličtinu, čínštinu, francouzštinu, němčinu, italštinu, japonštinu, španělštinu, ruštinu a portugalštinu. Po zjištění prvního jazyka nepodporuje dynamické přepínání mezi jazyky. Funkce automatického rozpoznávání jazyka funguje nejlépe se zvukovým záznamem, který má jasně discernible řeč. Pokud automatické zjišování jazyka nenajde jazyk, přepis se vrátí do angličtiny.|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza základního zvuku|"Tento režim provádí přepis a generování VTT souboru titulků a titulků v textu. Výstup tohoto režimu zahrnuje soubor JSON Insights, včetně informací o klíčových slovech, přepisu a časování. Automatické rozpoznávání jazyka a mluvčí diarization nejsou v tomto režimu zahrnuty. " Seznam podporovaných jazyků je k dispozici zde: https://go.microsoft.com/fwlink/?linkid=2109463|
-|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analýza zvuku a videa|Extrahuje přehledy (bohatá metadata) z zvukového i videa a vytvoří výstup souboru formátu JSON. Můžete určit, jestli chcete při zpracování videosouboru jenom extrahovat zvukové poznatky. Další informace najdete v tématu [Analýza videa](analyze-videos-tutorial-with-api.md).|
-|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|Zjištění plošek přítomných ve videu|Popisuje nastavení, která se mají použít při analýze videa pro detekci všech plošek přítomných.|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza standardu zvuk|Přednastavení používá předdefinovanou sadu operací analýzy založených na AI, včetně přepisu řeči. V současné době přednastavení podporuje zpracování obsahu pomocí jedné zvukové stopy, která obsahuje řeč v jednom jazyce. Jazyk pro datovou část zvuku ve vstupu můžete určit pomocí formátu BCP-47 pro ' Language tag-region '. Podporované jazyky jsou angličtina ("en-US" a "en-GB"), španělština (ES-ES a ES-MX), francouzština (' fr-FR '), italština (' IT-IT '), japonština (' IT-Japonsko '), portugalština (' pt-BR '), čínština (' zh-CN '), němčina (' de-DE '), Arabština (' ar-EG ' a ' ar-SY '), ruština (' ru-RU '), hindština (' Hi-IN ') a korejština (' ko-KR ').<br/><br/> Pokud jazyk není zadán nebo je nastaven na hodnotu null, automatické rozpoznávání jazyka zvolí první nalezený jazyk a pokračuje s vybraným jazykem po dobu trvání souboru. Funkce automatického rozpoznávání jazyka aktuálně podporuje angličtinu, čínštinu, francouzštinu, němčinu, italštinu, japonštinu, španělštinu, ruštinu a portugalštinu. Po zjištění prvního jazyka nepodporuje dynamické přepínání mezi jazyky. Funkce automatického rozpoznávání jazyka funguje nejlépe se zvukovým záznamem, který má jasně discernible řeč. Pokud automatické zjišování jazyka nenajde jazyk, přepis se vrátí do angličtiny.|
+|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza základního zvuku|Tento režim provádí přepis a generování VTT souboru titulků a titulků v textu. Výstup tohoto režimu zahrnuje soubor JSON Insights, včetně informací o klíčových slovech, přepisu a časování. V tomto režimu nejsou zahrnuté automatické rozpoznávání jazyka a diarizationy mluvčího. Seznam podporovaných jazyků je k dispozici [zde](https://go.microsoft.com/fwlink/?linkid=2109463) .|
+|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analýza zvuku a videa|Extrahuje přehledy (bohatá metadata) z zvukového i videa a vytvoří výstup souboru formátu JSON. Můžete určit, jestli chcete při zpracování videosouboru jenom extrahovat zvukové poznatky. Další informace najdete v tématu [Analýza videa](analyze-videos-tutorial-with-api.md).|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Zjištění plošek přítomných ve videu|Popisuje nastavení, která se mají použít při analýze videa pro detekci všech plošek přítomných.|
 
-### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+### <a name="audioanalyzerpreset-standard-mode"></a>Standardní režim AudioAnalyzerPreset
 
-Přednastavení umožňuje extrahovat z zvukového nebo videosouboru více zvukových přehledů. Výstup obsahuje soubor JSON (se všemi přehledy) a soubor VTT pro přepis zvuku. Tato předvolba přijímá vlastnost, která určuje jazyk vstupního souboru ve formě [BCP47](https://tools.ietf.org/html/bcp47) řetězce. Mezi zvukové poznatky patří:
+Přednastavení umožňuje extrahovat z zvukového nebo videosouboru více zvukových přehledů.
+
+Výstup obsahuje soubor JSON (se všemi přehledy) a soubor VTT pro přepis zvuku. Tato předvolba přijímá vlastnost, která určuje jazyk vstupního souboru ve formě [BCP47](https://tools.ietf.org/html/bcp47) řetězce. Mezi zvukové poznatky patří:
 
 * **Přepis zvuku**: přepis mluvených slov s časovými razítky. Podporuje se několik jazyků.
 * **Indexování mluvčího**: mapování mluvčích a odpovídajících mluveného slova.
 * **Analýza mínění řeči**: výstup analýzy mínění provedených na přepisu zvuku.
+* **Klíčová slova**: klíčová slova, která jsou extrahována ze zvukového přepisu.
+
+### <a name="audioanalyzerpreset-basic-mode"></a>Základní režim AudioAnalyzerPreset
+
+Přednastavení umožňuje extrahovat z zvukového nebo videosouboru více zvukových přehledů.
+
+Výstup obsahuje soubor JSON a soubor VTT pro přepis zvuku. Tato předvolba přijímá vlastnost, která určuje jazyk vstupního souboru ve formě [BCP47](https://tools.ietf.org/html/bcp47) řetězce. Výstup obsahuje:
+
+* **Přepis zvuku**: přepis mluvených slov s časovými razítky. Podporuje se víc jazyků, ale nezahrnují se automatické rozpoznávání jazyka a mluvčí diarization.
 * **Klíčová slova**: klíčová slova, která jsou extrahována ze zvukového přepisu.
 
 ### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset

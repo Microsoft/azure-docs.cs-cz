@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Service Bus | Microsoft Docs
 description: Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Service Bus.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec79b6988fdbc78dc4f45e504f84179e617589cc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894517"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518751"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Service Bus (FAQ)
 
@@ -83,7 +83,7 @@ Pokud používáte **redundanci zóny** pro svůj obor názvů, musíte provést
     > IP adresa vrácená `nslookup` příkazem není statická IP adresa. Zůstává ale konstantní, dokud se základní nasazení neodstraní nebo nepřesune do jiného clusteru.
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Kde najdu IP adresu klienta odesílajícího/přijímaného zprávy do/z oboru názvů? 
-Nebudeme protokolovat IP adresy klientů odesílajících nebo přijímaných zpráv do a z vašeho oboru názvů. Znovu vygenerujte klíče, aby se u všech stávajících klientů nepovedlo ověřit a zkontrolovat nastavení řízení přístupu na základě rolí ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)), aby se zajistilo, že přístup k oboru názvů má jenom povolený uživatel nebo aplikace. 
+Nebudeme protokolovat IP adresy klientů odesílajících nebo přijímaných zpráv do a z vašeho oboru názvů. Znovu vygenerujte klíče, aby se u všech stávajících klientů nepovedlo ověřit a zkontrolovat nastavení [řízení přístupu na základě role (Azure RBAC) v Azure](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)), aby se zajistilo, že přístup k oboru názvů jenom povoleným uživatelům nebo aplikacím. 
 
 Pokud používáte obor názvů **Premium** , omezte přístup k oboru názvů pomocí [filtrování IP adres](service-bus-ip-filtering.md), [koncových bodů služby virtuální sítě](service-bus-service-endpoints.md)a [privátních koncových bodů](private-link-service.md) . 
 

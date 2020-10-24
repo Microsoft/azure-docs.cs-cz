@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945909"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521301"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Podpora pro přesun virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -107,7 +107,7 @@ Image Galerie Azure (publikované Microsoftem) | Podporováno | Podporováno, po
 Image Galerie Azure (Publikováno třetí stranou)  | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
 Vlastní image (publikované třetí stranou)| Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
 Virtuální počítače používající Site Recovery | Nepodporováno | Přesunutí prostředků do oblastí pro virtuální počítače s využitím Site Recovery na back-endu. Pokud již používáte Site Recovery, zakažte replikaci a potom spusťte proces přípravy.
-Zásady RBAC | Nepodporováno | Zásady řízení přístupu na základě role (RBAC) na virtuálních počítačích se nekopírují do virtuálního počítače v cílové oblasti.
+Zásady Azure RBAC | Nepodporováno | Zásady řízení přístupu na základě role Azure (RBAC) na virtuálních počítačích se nekopírují do virtuálního počítače v cílové oblasti.
 Rozšíření | Nepodporováno | Rozšíření se nekopírují do virtuálního počítače v cílové oblasti. Nainstalujte je ručně po dokončení přesunutí.
 
 
@@ -172,7 +172,7 @@ Virtuální počítače Azure, které chcete přesunout, vyžadují odchozí př
 
 **Název** | **Veřejný cloud Azure** | **Podrobnosti** 
 --- | --- | --- 
-Úložiště | `*.blob.core.windows.net`  | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. 
+Storage | `*.blob.core.windows.net`  | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. 
 Azure Active Directory | `login.microsoftonline.com`  | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. 
 Replikace | `*.hypervrecoverymanager.windowsazure.com` | Umožňuje komunikaci virtuálního počítače se službou Site Recovery. 
 Service Bus | `*.servicebus.windows.net` | Umožňuje virtuálnímu počítači zapisovat data monitorování a diagnostiky Site Recovery. 

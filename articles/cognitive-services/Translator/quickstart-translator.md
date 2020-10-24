@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Překladatel, služba Translator, překlad textu, přepis textu, rozpoznávání jazyka
-ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ca86ce1dc015c8d7ee3bc83a6d7e3279a146f195
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318836"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517034"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Rychlý Start: Začínáme s překladatelem
 
@@ -2440,6 +2440,12 @@ Po úspěšném volání by se měla zobrazit následující odpověď. Další 
     }
 ]
 ```
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="java-users"></a>Uživatelé jazyka Java
+
+Pokud dochází k problémům s připojením, může to být tím, že vypršela platnost certifikátu protokolu SSL. Pokud chcete tento problém vyřešit, nainstalujte do svého privátního úložiště [DigiCertGlobalRootG2. CRT](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) . 
 
 ## <a name="next-steps"></a>Další kroky
 

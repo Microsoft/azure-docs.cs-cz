@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168473"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517255"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU pro virtuální počítače řady N-Series se systémem Linux
 
@@ -161,6 +161,23 @@ Nasaďte virtuální počítače s podporou RDMA řady N-Series z jedné bitové
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
 * Na virtuálním počítači jsou nainstalované ovladače **HPC-based 7,4 CentOS HPC** -RDMA a Intel MPI 5,1.
+
+* **CentOS HPC** -CentOS-HPC 7,6 a novější (pro SKU, kde se InfiniBand podporuje přes SR-IOV). Tyto image mají Mellanox OFED a knihovny MPI, které jsou předem nainstalované.
+
+> [!NOTE]
+> Karty CX3-Pro jsou podporovány pouze prostřednictvím LTS verzí Mellanox OFED. Použijte LTS Mellanox OFED verze (4.9-0.1.7.0) na virtuálních počítačích řady N-Series s kartami ConnectX3-Pro. Další informace najdete v tématu [ovladače pro Linux](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
+>
+> Některé z nejnovějších Azure Marketplace imagí HPC mají také Mellanox OFED 5,1 a novější, které nepodporují ConnectX3-Pro karty. Než ho použijete na virtuálních počítačích s ConnectX3-Pro kartami, v imagi HPC ověřte verzi OFED Mellanox.
+>
+> Následující obrázky jsou nejnovější bitové kopie CentOS-HPC, které podporují ConnectX3-Pro karty:
+>
+> - OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
+> - OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
+> - OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
+> - OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+> - OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
+> - OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+>
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>Instalace ovladačů mřížky na virtuálních počítačích NV nebo NVv3-Series
 

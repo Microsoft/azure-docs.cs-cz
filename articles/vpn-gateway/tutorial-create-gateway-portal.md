@@ -5,13 +5,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/21/2020
-ms.openlocfilehash: 41bb69d675f3aa45061dab3236eae5c869bc346b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 10/23/2020
+ms.openlocfilehash: 74000322372652b90e0d0db07d687f8e57c4f88e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460763"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518241"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Kurz: vytvoření a Správa služby VPN Gateway pomocí Azure Portal
 
@@ -30,7 +30,7 @@ Následující diagram ukazuje virtuální síť a bránu VPN vytvořené v rám
 
 :::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="Diagram virtuální sítě a brány VPN":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. Pokud ho ještě nemáte, [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -100,7 +100,10 @@ Pokud nebudete tuto aplikaci nadále používat nebo se k dalšímu kurzu chcete
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte k dalšímu článku, kde se dozvíte, jak:
+Jakmile budete mít bránu VPN, můžete nakonfigurovat připojení. Články níže vám pomůžou vytvořit několik nejběžnějších konfigurací:
 
 > [!div class="nextstepaction"]
-> [Vytvoření a Správa připojení VPN typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> [Připojení VPN typu Site-to-site](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+
+> [!div class="nextstepaction"]
+> [Připojení VPN typu Point-to-site](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

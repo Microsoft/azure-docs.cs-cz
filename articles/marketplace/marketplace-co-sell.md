@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207699"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520981"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
@@ -75,11 +75,13 @@ Svůj společný prodej přímo v partnerském centru začněte podle následuj�
  
 1. Odeslat prodejní kontaktní informace v části **Kontakty** . Prodejci Microsoftu mohou kontaktovat tyto kontakty a požádat o další informace o vaší nabídce. (*Požadováno: kontakt pro každou zeměpisnou oblast, ve které je vaše nabídka dostupná.*)
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::
+    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft." vyberte možnost "připustit do stejného prodeje":
+<ul><ul>
 
-1. Než budete pokračovat, uložte si koncept.
-1. Po dokončení všech požadovaných částí nabídky ji můžete odeslat pro kontrolu a publikování. V pravém horním rohu vyberte **zkontrolovat a publikovat**. Přečtěte si podrobnosti nabídky a pak vyberte **publikovat**.
-1. Podíváme se na materiály, které jste nahráli, a určete, jestli má vaše nabídka nárok na společný prodej programu.
+:::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::
+
+CED vás bude kontaktovat, abyste mohli proces dokončit.
+</ul></ul>
 
 ## <a name="next-steps"></a>Další kroky
 

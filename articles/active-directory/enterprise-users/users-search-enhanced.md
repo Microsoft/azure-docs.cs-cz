@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 10/02/2020
+ms.date: 10/23/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcef70d821c7148cb926bd9357bbe656ceae35fe
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d0e2ce094b792d6f3f7e5f8fe1920d87a9cceea2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375706"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517171"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Vylepšení správy uživatelů (Preview) v Azure Active Directory
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak používat vylepšení správy uživatelů ve verzi
 Změny ve verzi Preview zahrnují:
 
 - Více viditelných uživatelských vlastností včetně ID objektu, stavu synchronizace adresáře, typu vytvoření a vystavitele identity
-- Hledání teď umožňuje kombinované hledání názvů, e-mailů a ID objektů.
+- Hledání teď umožňuje prohledávat dílčí řetězce a kombinovat hledání názvů, e-mailů a ID objektů.
 - Rozšířené filtrování podle typu uživatele (člen, Host, žádný), stav synchronizace adresářů, typ vytvoření, název společnosti a název domény
 - Nové možnosti řazení u vlastností, jako je název a hlavní název uživatele
 - Nový celkový počet uživatelů, kteří se aktualizují pomocí hledání nebo filtrů
@@ -59,7 +59,7 @@ Na stránce **Všichni uživatelé** jsou zobrazeni následující vlastnosti u�
 
 - Název: zobrazovaný název uživatele.
 - Hlavní název uživatele: hlavní název uživatele (UPN).
-- Typ uživatele: typ uživatele, buď člen, nebo host.
+- Typ uživatele: člen, Host, žádný.
 - Adresář synchronizovaný: označuje, jestli je uživatel synchronizovaný z místního adresáře.
 - Vystavitel identity: Vystavitelé identity, která se používá k přihlášení k uživatelskému účtu.
 - ID objektu: ID objektu uživatele.
@@ -67,6 +67,7 @@ Na stránce **Všichni uživatelé** jsou zobrazeni následující vlastnosti u�
 - Název společnosti: název společnosti, ke kterému je uživatel přidružen.
 - Stav pozvánky: stav pozvánky pro uživatele typu Host.
 - E-mail: e-mail uživatele.
+- Poslední přihlášení: datum, kdy se uživatel naposledy přihlásil. Tato vlastnost je viditelná pouze uživatelům s oprávněním ke čtení protokolů auditu (Reporting_ApplicationAuditLogs_Read).
 
 ![nové vlastnosti uživatele zobrazené na stránkách všichni uživatelé a odstranění uživatelé](./media/users-search-enhanced/user-properties.png)
 
@@ -75,7 +76,10 @@ Na stránce **Všichni uživatelé** jsou zobrazeni následující vlastnosti u�
 Stránka **odstraněné uživatele** obsahuje všechny sloupce, které jsou k dispozici na stránce **Všichni uživatelé** , a několik dalších sloupců, konkrétně:
 
 - Datum odstranění: datum, kdy se uživatel poprvé odstranil z organizace (uživatel je obnovitelné).
-- Datum trvalého odstranění: datum, kdy byl uživatel trvale odstraněn z organizace.
+- Datum trvalého odstranění: datum, po kterém se automaticky spustí proces trvalého odstranění uživatele z organizace. 
+
+> [!NOTE]
+> Data odstranění se zobrazují v koordinovaném univerzálním čase (UTC).
 
 Ve výchozím nastavení se zobrazují některé sloupce. Chcete-li přidat další sloupce, vyberte **sloupce** na stránce, vyberte názvy sloupců, které chcete přidat, a výběrem **OK** uložte předvolby.
 
@@ -88,7 +92,7 @@ Vyberte položku ve sloupci **vystavitele identity** , pro libovolného uživate
 
 ## <a name="user-list-search"></a>Hledání v seznamu uživatelů
 
-Když zadáte hledaný řetězec, používá hledání "začíná na", které se nyní může shodovat s názvy, e-maily nebo ID objektů v jednom hledání. Do vyhledávacího pole můžete zadat libovolný z těchto atributů a hledání se automaticky vyhledá ve všech těchto vlastnostech a vrátí všechny vyhovující výsledky. Stejné hledání můžete provádět na stránkách **Všichni uživatelé** i **odstraně uživatelé** .
+Když zadáte hledaný řetězec, hledání nyní používá "začíná v" a hledání v podřetězci tak, aby odpovídalo názvům, e-mailům nebo ID objektů v jednom hledání. Do vyhledávacího pole můžete zadat libovolný z těchto atributů a hledání se automaticky vyhledá napříč všemi těmito vlastnostmi a vrátí všechny vyhovující výsledky. Hledání podřetězců je provedeno pouze celá slova. Stejné hledání můžete provádět na stránkách **Všichni uživatelé** i **odstraně uživatelé** .
 
 ## <a name="user-list-filtering"></a>Filtrování seznamu uživatelů
 
@@ -133,10 +137,10 @@ Celkový počet uživatelů můžete zobrazit na stránkách **Všichni uživate
 
 Otázka | Odpověď
 -------- | ------
+Proč se odstraněný uživatel dál zobrazuje, když datum trvalého odstranění přeuplyne? | Datum trvalého odstranění se zobrazuje v časovém pásmu UTC, takže to nemusí odpovídat vašemu aktuálnímu časovému pásmu. Toto datum je také nejdřívější datum, po jehož uplynutí bude uživatel trvale odstraněn z organizace, aby mohl být stále zpracováván. Trvale odstranění uživatelé budou ze seznamu automaticky odebráni.
 Co se stane s hromadnou schopností pro uživatele a hosty? | Hromadné operace jsou pro uživatele a hosty stále k dispozici, včetně hromadného vytvoření, hromadného pozvání, hromadného odstranění a stažení uživatelů. Právě jsme je sloučili do nabídky s názvem **hromadné operace**. Možnosti **hromadných operací** najdete v horní části stránky **Všichni uživatelé** .
 Co se stalo se zdrojovým sloupcem? | **Zdrojový** sloupec byl nahrazen dalšími sloupci, které obsahují podobné informace, a umožňuje vám tyto hodnoty nezávisle filtrovat. Mezi příklady patří **typ vytvoření**, **Synchronizovaný adresář** a **Vystavitel identity**.
 Co se stalo se sloupcem s uživatelským jménem? | Sloupec **uživatelské jméno** je stále v seznamu, ale je přejmenován na **hlavní název uživatele**. Tím lépe odráží informace obsažené v tomto sloupci. Také si všimnete, že pro hosty B2B se teď zobrazí celý hlavní název uživatele (UPN). To odpovídá tomu, co byste získali v MS graphu.  
-Proč mohu provést hledání "začíná na", a ne "obsahuje" hledání? | Existují určitá omezení, která nám brání v tom, aby vám umožnila provádět hledání "obsahuje". Dostali jsme zpětnou vazbu, takže můžete zůstat vyladěné.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.openlocfilehash: b2427d474f4a36dc518680518a10cace290c0136
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b5e852e3a32c4fb40dbe7ebc50a00302b4b82b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546120"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519088"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s platformou správy vlastností yuhu
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat platformu pro správu vlastností yuhu
 * Umožněte uživatelům, aby se automaticky přihlásili k platformě správy vlastností yuhu pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -90,7 +90,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše uvedeného je u aplikace yuhu Property Management Platform více než v odpovědi SAML vráceno několik atributů, které jsou uvedeny níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---------------| --------------- |
     | firstName | User. křestní jméno |
     | lastName | User. příjmení ||
@@ -140,20 +140,20 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně **platformy pr
 
 ### <a name="create-yuhu-property-management-platform-test-user"></a>Vytvořit testovacího uživatele platformy pro správu vlastností yuhu
 
-V této části vytvoříte uživatele s názvem B. Simon na platformě správy vlastností yuhu. Pracujte s [týmem podpory správy vlastností yuhu](mailto:hello@yuhu.io) a přidejte uživatele na platformě platformy pro správu vlastností yuhu. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon na platformě správy vlastností yuhu. Pracujte s [týmem podpory správy vlastností yuhu](mailto:hello@yuhu.io) a přidejte uživatele na platformě platformy pro správu vlastností yuhu. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici yuhu Property Management Platform na přístupovém panelu byste měli být automaticky přihlášeni k platformě správy vlastností yuhu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici yuhu Property Management Platform na přístupovém panelu byste měli být automaticky přihlášeni k platformě správy vlastností yuhu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si platformu pro správu vlastností yuhu pomocí Azure AD](https://aad.portal.azure.com/)

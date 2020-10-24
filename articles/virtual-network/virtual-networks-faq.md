@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 86336ddb557613d42117480a5793e8b0ecbc7bae
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495837"
+ms.locfileid: "92518003"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -326,7 +326,7 @@ Existují dva kroky pro zabezpečení prostředku služby Azure prostřednictví
 1. Zapněte koncové body služby pro službu Azure.
 2. Nastavení seznamů ACL pro virtuální sítě ve službě Azure
 
-Prvním krokem je operace na straně sítě a druhý krok je operace na straně prostředku služby. Oba kroky může provést stejný správce nebo různí správci na základě oprávnění RBAC udělených roli správce. Před nastavením seznamů ACL virtuální sítě na straně služby Azure doporučujeme, abyste nejdřív zapnuli koncové body služby pro virtuální síť. Proto je třeba provést kroky v pořadí uvedeném výše a nastavit koncové body služby virtuální sítě.
+Prvním krokem je operace na straně sítě a druhý krok je operace na straně prostředku služby. Oba kroky může provést stejný správce nebo různí správci na základě oprávnění Azure RBAC udělených roli správce. Před nastavením seznamů ACL virtuální sítě na straně služby Azure doporučujeme, abyste nejdřív zapnuli koncové body služby pro virtuální síť. Proto je třeba provést kroky v pořadí uvedeném výše a nastavit koncové body služby virtuální sítě.
 
 >[!NOTE]
 > Aby bylo možné omezit přístup služby Azure na povolenou virtuální síť a podsíť, musí být obě výše popsané operace dokončené. Pouze zapnutí koncových bodů služby pro službu Azure na straně sítě vám neposkytuje omezený přístup. Kromě toho musíte také na straně služby Azure nastavit seznamy ACL pro virtuální sítě.
