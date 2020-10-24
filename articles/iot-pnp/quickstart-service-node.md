@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b144d49daf9ab89a4553b93e3b36c9c2c8bef9ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946123"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521320"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91946123"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Node.js připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -214,7 +214,7 @@ V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
     node twin.js
     ```
 
-1. Ve výstupu terminálu **služby** se v části vlastnosti hlášené ¬ zobrazí aktualizovaná cílová teplota. Může chvíli trvat, než zařízení dokončí aktualizaci. Opakujte tento krok, dokud zařízení nezpracuje aktualizaci vlastnosti:
+1. Ve výstupu terminálu **služby** se v `reported` části Vlastnosti zobrazí aktualizovaná cílová teplota. Může chvíli trvat, než zařízení dokončí aktualizaci. Opakujte tento krok, dokud zařízení nezpracuje aktualizaci vlastnosti:
 
     ```json
     "reported": {

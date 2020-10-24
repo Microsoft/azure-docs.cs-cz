@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: bcfd9e1b132ef47c83d028acf5e2bcb3fc637ef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 678f35ffd6d37d8d2dd16665902ebf85d91b633b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369361"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521556"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s zeroheight
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat zeroheight s Azure Active Directory (A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k zeroheight svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -129,7 +129,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně **zeroheight**
 
 ### <a name="create-zeroheight-test-user"></a>Vytvořit testovacího uživatele zeroheight
 
-V této části vytvoříte uživatele s názvem Britta Simon v zeroheight. Pokud chcete přidat uživatele na platformě zeroheight, pracujte s [týmem podpory zeroheight](mailto:support@zeroheight.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v zeroheight. Pokud chcete přidat uživatele na platformě zeroheight, pracujte s [týmem podpory zeroheight](mailto:support@zeroheight.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -139,9 +139,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na adresu URL pro přihlášení k zeroheight přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici zeroheight na přístupovém panelu se tato akce přesměruje na přihlašovací adresu zeroheight. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici zeroheight na přístupovém panelu se tato akce přesměruje na přihlašovací adresu zeroheight. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování zeroheight můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+Po nakonfigurování zeroheight můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

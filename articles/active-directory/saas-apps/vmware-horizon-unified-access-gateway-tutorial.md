@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 9e9d98e8b68b4e01d7e8f19e7c7d89a88d9bf69f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfdcc39966e58a845be0096474cb8a3366f3dd7a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500849"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503568"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím VMware Horizon – Unified Access Gateway
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat službu VMware Horizon – Unified Acc
 * Umožněte uživatelům, aby se automaticky přihlásili k bráně VMware Horizon – Unified Access Gateway s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -125,7 +125,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování na straně **brány VMwar
 
 ### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>Vytvořit testovacího uživatele brány VMware Horizon-Unified Access
 
-V této části vytvoříte uživatele s názvem B. Simon v bráně VMware Horizon – Unified Access Gateway. Pokud chcete přidat uživatele na platformě VMware Horizon – Unified Access Gateway, pracujte s [týmem podpory VMware Horizon – Unified Access](mailto:support@vmware.com) Gateway. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v bráně VMware Horizon – Unified Access Gateway. Pokud chcete přidat uživatele na platformě VMware Horizon – Unified Access Gateway, pracujte s [týmem podpory VMware Horizon – Unified Access](mailto:support@vmware.com) Gateway. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -141,8 +141,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 * Klikněte na **testovat tuto aplikaci** v Azure Portal a měli byste se automaticky přihlášeni k bráně VMware Horizon – Unified Access Gateway, pro kterou jste si nastavili jednotné přihlašování. 
 
-K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Po kliknutí na dlaždici VMware Horizon – Unified Access Gateway na přístupovém panelu byste se měli automaticky přihlášeni k bráně VMware Horizon – Unified Access Gateway, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+K otestování aplikace v jakémkoli režimu můžete také použít panel Microsoft Access. Po kliknutí na dlaždici VMware Horizon – Unified Access Gateway na přístupovém panelu byste se měli automaticky přihlášeni k bráně VMware Horizon – Unified Access Gateway, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile nakonfigurujete bránu VMware pro sjednocení přístupu, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Jakmile nakonfigurujete bránu VMware pro sjednocení přístupu, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

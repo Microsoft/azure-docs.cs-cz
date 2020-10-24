@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 92ec7c0a1469c9f02855cd6191faa8514e54c8f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91829093"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92526073"
 ---
 | Prostředek | Omezení | Poznámka |
 | --- | --- | --- |
@@ -39,6 +39,6 @@ ms.locfileid: "91829093"
 | Maximální velikost nahrávání souborů WAF |V1 střední WAF brány, 100 MB<br>Velké WAF brány V1, 500 MB<br>V2 WAF, 750 MB| |
 | Omezení velikosti těla WAF, bez souborů|128 kB||
 | Maximální počet vlastních pravidel WAF|100||
-| Maximální počet vyloučení WAF|100||
+| Maximální počet WAF vyloučení na Application Gateway|40||
 
 <sup>1</sup> v případě SKU s POVOLENým WAF je nutné omezit počet prostředků na 40.

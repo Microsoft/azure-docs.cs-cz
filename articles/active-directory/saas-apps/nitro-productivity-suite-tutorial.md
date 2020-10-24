@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: b67e280824c5e2336aa79e14d3e09d3a670118a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a4df1ff0561e180ca0a3fd36363ceff7da042df
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554324"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522423"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se sadou nitro produktivity
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat nitro produktivní sadu s Azure Active
 * Umožněte uživatelům, aby se automaticky přihlásili k nitro produktivní sadě pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Na začátek budete potřebovat:
 
@@ -41,7 +41,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * NITRO produktivní sada podporuje **aktualizace SP** a **IDP** , které iniciovaly jednotné přihlašování.
 * Sada nitro produktivity podporuje **jenom při** zřizování uživatelů.
-* Po konfiguraci sady nitro produktivity můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. Další informace najdete v tématu [vymáhání řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po konfiguraci sady nitro produktivity můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. Další informace najdete v tématu [vymáhání řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-nitro-productivity-suite-from-the-gallery"></a>Přidání sady produktivity nitro z Galerie
 
@@ -115,7 +115,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě předchozích atributů očekává aplikace nitro produktivní sada několik dalších atributů, které se vrátí zpět v odpovědi SAML. Tyto atributy jsou předem vyplněné, ale můžete je zkontrolovat podle svých požadavků.
     
-    | Název  |  Zdrojový atribut|
+    | Name  |  Zdrojový atribut|
     | ---------------| --------------- |
     | employeeNumber |  User. objectID |
 
@@ -162,19 +162,18 @@ NITRO produktivní sada podporuje zřizování uživatelů za běhu, což je ve 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici nitro produktivní sada, automaticky jste se přihlásili do sady nitro produktivity, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici nitro produktivní sada, automaticky jste se přihlásili do sady nitro produktivity, pro kterou jste nastavili jednotné přihlašování. Další informace najdete v tématu [přihlášení a spouštění aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy integrace aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si nitro produktivní sadu pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Chraňte nitro produktivní sadu pomocí pokročilých funkcí a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Chraňte nitro produktivní sadu pomocí pokročilých funkcí a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fb8374802e7ec2596dc5f65a2acaf739b12dc164
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8ddebffcfc70440d5ce0988db87b4f6626531c73
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995974"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515538"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s lidmi
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat lidi s Azure Active Directory (Azure A
 * Umožněte uživatelům, aby se automaticky přihlásili k uživatelům pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -160,7 +160,7 @@ V této části vytvoříte uživatele s názvem B. Simon v lidech. Pracujte s [
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici lidé na přístupovém panelu, měli byste se automaticky přihlásit k lidem, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici lidé na přístupovém panelu, měli byste se automaticky přihlásit k lidem, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="test-sso-for-people-mobile"></a>Testování jednotného přihlašování pro lidi (mobilní zařízení)
 
@@ -176,12 +176,12 @@ Když kliknete na dlaždici lidé na přístupovém panelu, měli byste se autom
 
     ![Jednou](./media/people-tutorial/test03.png)
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte lidi s Azure AD](https://aad.portal.azure.com)

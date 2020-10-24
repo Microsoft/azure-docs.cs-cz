@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: ef60f3cddd7bd46057cc346e5e60a658821666e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11e6eb1a2dbf24ba9deb6977a69e30e0e19473d1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546030"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521616"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>Kurz: Azure Active Directory integrace s ZephyrSSO
 
@@ -27,10 +27,10 @@ Integrace ZephyrSSO s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k ZephyrSSO (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s ZephyrSSO potřebujete následující položky:
 
@@ -178,19 +178,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-zephyrsso-test-user"></a>Vytvořit testovacího uživatele ZephyrSSO
 
-V této části vytvoříte uživatele s názvem Britta Simon v ZephyrSSO. Pokud chcete přidat uživatele na platformě ZephyrSSO, pracujte s [týmem podpory ZephyrSSO](https://support.getzephyr.com/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v ZephyrSSO. Pokud chcete přidat uživatele na platformě ZephyrSSO, pracujte s [týmem podpory ZephyrSSO](https://support.getzephyr.com/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici ZephyrSSO, měli byste se automaticky přihlásit k ZephyrSSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici ZephyrSSO, měli byste se automaticky přihlásit k ZephyrSSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

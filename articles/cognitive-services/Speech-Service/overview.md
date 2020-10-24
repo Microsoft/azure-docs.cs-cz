@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: b7b28c972dfb55bfdc4e5bb09c460fe71c92328e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489417"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521505"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -81,9 +81,21 @@ Postup přidání prostředku služby řeči (bezplatná nebo placená úroveň)
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
 -->
-Nasazení nového prostředku řeči chvíli trvá. Po dokončení nasazení vyberte **Přejít k prostředku** a v levém navigačním podokně vyberte **klíče a koncový bod** , abyste zobrazili klíče předplatného služby Speech a identifikátor oblasti. Každé předplatné má dva klíče; v aplikaci můžete použít libovolný klíč. Chcete-li rychle zkopírovat nebo vložit klíč do editoru kódu nebo jiné umístění, vyberte tlačítko Kopírovat vedle každého klíče, přepněte okna a vložte obsah schránky do požadovaného umístění.
+Nasazení nového prostředku řeči chvíli trvá. 
 
-Kromě toho zkopírujte `LOCATION` hodnotu, což je vaše ID vaší oblasti (např. `westus`, `westeurope` ) pro volání sady SDK.
+### <a name="find-keys-and-region"></a>Hledání klíčů a oblastí
+
+Pokud chcete najít klíče a oblast dokončeného nasazení, postupujte podle těchto kroků:
+
+1. Přihlaste se na webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Microsoft.
+
+2. Vyberte **všechny prostředky**a vyberte název prostředku Cognitive Services.
+
+3. V levém podokně v části **Správa prostředků**vyberte **klíče a koncový bod**.
+
+Každé předplatné má dva klíče; v aplikaci můžete použít libovolný klíč. Chcete-li zkopírovat nebo vložit klíč do editoru kódu nebo jiné umístění, vyberte tlačítko Kopírovat vedle každého klíče, přepněte okna a vložte obsah schránky do požadovaného umístění.
+
+Dále zkopírujte `LOCATION` hodnotu, což je vaše ID vaší oblasti (např. `westus`, `westeurope` ) pro volání sady SDK.
 
 > [!IMPORTANT]
 > Tyto klíče předplatného se používají pro přístup ke službě rozpoznávání rozhraní API. Nesdílejte své klíče. Uložte je bezpečně – například pomocí Azure Key Vault. Tyto klíče doporučujeme také pravidelně obnovovat. K volání rozhraní API je potřeba jenom jeden klíč. Při opětovném generování prvního klíče můžete použít druhý klíč pro pokračování přístupu ke službě.

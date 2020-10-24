@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/7/2020
 ms.author: jeedes
-ms.openlocfilehash: 1dbcd2bd997872820e87c9d8c2e239c4324e9ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a473ce1856c250dc29e92b99bda93921c618774
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532800"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521717"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upshotly"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s procházím
 
@@ -26,9 +26,9 @@ V tomto kurzu se naučíte, jak se dá integrovat s Azure Active Directory (Azur
 * Umožněte uživatelům, aby se automaticky přihlásili k účtu Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -136,20 +136,20 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-upshotly-test-user"></a>Vytvořit protestovaný test uživatele
 
-V této části vytvoříte uživatele s názvem B. Simon v provedený hraničním cloudu. Pokud chcete přidat uživatele na špičkové cloudové platformě, pracujte s [týmem podpory klientů](mailto:support@upshotly.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon v provedený hraničním cloudu. Pokud chcete přidat uživatele na špičkové cloudové platformě, pracujte s [týmem podpory klientů](mailto:support@upshotly.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici, měli byste se automaticky přihlásili k tomu, že jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici, měli byste se automaticky přihlásili k tomu, že jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Zkuste to znovu s Azure AD](https://aad.portal.azure.com/)

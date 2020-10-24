@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
-ms.openlocfilehash: fd85b3f1e2319c80817da3376911d57263d187b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94dc70d184de27b1c44f9817686630e04da830f9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91451102"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521658"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s využitím webového nákladového vzduchu
 
@@ -124,7 +124,7 @@ Chcete-li nakonfigurovat jednotné přihlašování na straně **webového nákl
 
 ### <a name="create-web-cargo-air-test-user"></a>Vytvořit uživatele zkušebního provozu pro webové náklady
 
-V této části vytvoříte uživatele s názvem Britta Simon v rámci webového nákladového vzduchu. Pokud chcete přidat uživatele do letecké platformy pro webové náklady, pracujte s [týmem podpory webu pro leteckou dopravu](mailto:support@webcargonet.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v rámci webového nákladového vzduchu. Pokud chcete přidat uživatele do letecké platformy pro webové náklady, pracujte s [týmem podpory webu pro leteckou dopravu](mailto:support@webcargonet.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -134,10 +134,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na adresu URL pro přihlášení ke službě Web nákladní Air přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici se webovým leteckým vzduchem na přístupovém panelu se tato akce přesměruje na adresu URL pro přihlášení k webovému leteckému provozu. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici se webovým leteckým vzduchem na přístupovém panelu se tato akce přesměruje na adresu URL pro přihlášení k webovému leteckému provozu. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování webového nákladového vzduchu můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování webového nákladového vzduchu můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
-ms.openlocfilehash: fdd9a0e72b9fee374de810ce6e18bb0f5c2fbe25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7838e4f2ced5f47a0fb52b6e0f07d30edd770dca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548612"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522070"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Kurz: integrace Shmoop pro školy s Azure Active Directory
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Shmoop pro školy s Azure Active Direc
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Shmoop pro školy se svými účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -90,11 +90,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     ![image](common/default-attributes.png)
 
     > [!NOTE]
-    > Shmoop for School podporuje dvě role pro uživatele: **učitel** a **student**. Nastavte tyto role ve službě Azure AD tak, aby se uživatelům mohly přiřadit příslušné role. Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+    > Shmoop for School podporuje dvě role pro uživatele: **učitel** a **student**. Nastavte tyto role ve službě Azure AD tak, aby se uživatelům mohly přiřadit příslušné role. Informace o tom, jak nakonfigurovat role v Azure AD, najdete [tady](../develop/active-directory-enterprise-app-role-management.md).
 
 1. Kromě výše uvedeného očekává aplikace Shmoop for školy několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název |  Zdrojový atribut|
+    | Name |  Zdrojový atribut|
     | --------- | --------------- |
     | role      | User. assignedroles |
 
@@ -147,14 +147,14 @@ V této části se v Shmoop pro školy vytvoří uživatel s názvem B. Simon. S
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Shmoop for školy na přístupovém panelu, měli byste se automaticky přihlásit k Shmoop pro školy, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Shmoop for školy na přístupovém panelu, měli byste se automaticky přihlásit k Shmoop pro školy, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Shmoop pro školy s Azure AD](https://aad.portal.azure.com/)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: d45a3ddda44922c70080a09447866a9a4c6997a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 950744e0b8b2f722d801c911d6fd2c9112f035ec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554397"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Kurz: Azure Active Directory integrace s cloudovým Portál pro správu pro Microsoft Azure
 
@@ -27,10 +27,10 @@ Integrací cloudových Portál pro správu pro Microsoft Azure se službou Azure
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili do cloudové Portál pro správu Microsoft Azure (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s cloudovým Portál pro správu pro Microsoft Azure potřebujete následující položky:
 
@@ -197,19 +197,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-cloud-management-portal-for-microsoft-azure-test-user"></a>Vytvořit cloudovou Portál pro správu pro Microsoft Azure testovacího uživatele
 
-V této části vytvoříte uživatele s názvem Britta Simon v Cloud Portál pro správu pro Microsoft Azure. Pokud chcete přidat uživatele do cloudového Portál pro správu pro Microsoft Azure platformu, pracujte s [cloudovým portál pro správu pro Microsoft Azure týmu podpory](mailto:jczernuszka@newsignature.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Cloud Portál pro správu pro Microsoft Azure. Pokud chcete přidat uživatele do cloudového Portál pro správu pro Microsoft Azure platformu, pracujte s [cloudovým portál pro správu pro Microsoft Azure týmu podpory](mailto:jczernuszka@newsignature.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Cloud Portál pro správu for Microsoft Azure na přístupovém panelu byste měli být automaticky přihlášení ke cloudové Portál pro správu pro Microsoft Azure, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Cloud Portál pro správu for Microsoft Azure na přístupovém panelu byste měli být automaticky přihlášení ke cloudové Portál pro správu pro Microsoft Azure, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

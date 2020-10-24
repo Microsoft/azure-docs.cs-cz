@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 291aa831279abdedb20196cd9af9ba49ac20d340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f537d82c67745ef590ddaf90a9f4d3dc2aa3c233
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552042"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518147"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-taskize-connect"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Taskize Connect
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Taskize Connect s Azure Active Directo
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Taskize připojení ke svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -81,7 +81,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. V **základním oddílu konfigurace SAML**je   aplikace předem nakonfigurovaná v režimu iniciované **IDP**   a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit**   .
+1. V **základním oddílu konfigurace SAML** je aplikace předem nakonfigurovaná v režimu iniciované **IDP** a nezbytné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko **Uložit** .
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace Taskize Connect v odpovědi SAML několik atributů, které jsou uvedené dál. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ------------------- | -------------------- |    
     | urn: OID: 0.9.2342.19200300.100.1.3 | User. userPrincipalName |
 
@@ -144,21 +144,20 @@ Ke konfiguraci jednotného přihlašování na **Taskize připojení** je potře
 Cílem této části je vytvořit uživatele s názvem B. Simon ve Taskize Connect. Taskize Connect podporuje zřizování za běhu, které je ve výchozím nastavení povolené. V této části není žádná položka akce. Při pokusu o přístup k Taskize Connect se vytvoří nový uživatel, pokud ještě neexistuje.
 
 >[!Note]
->Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory Taskize Connect](mailto:support@taskize.com).
+>Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory Taskize Connect](mailto:support@taskize.com).
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Taskize Connect na přístupovém panelu, měli byste se automaticky přihlásit k Taskize připojení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Taskize Connect na přístupovém panelu, měli byste se automaticky přihlásit k Taskize připojení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte Taskize Connect s Azure AD](https://aad.portal.azure.com/)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 273151cf08bd149da427e9631764f4dae2759b12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd3ce846abbd2ce310b12634391453ef78ce0094
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523269"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521635"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>Kurz: integrace Whatfix s Azure Active Directory
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat Whatfix s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Whatfix svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -126,16 +126,16 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-whatfix-test-user"></a>Vytvořit testovacího uživatele Whatfix
 
-V této části vytvoříte uživatele s názvem Britta Simon v Whatfix. Pokud chcete přidat uživatele na platformě Whatfix, pracujte s [týmem podpory Whatfix](https://support.whatfix.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v Whatfix. Pokud chcete přidat uživatele na platformě Whatfix, pracujte s [týmem podpory Whatfix](https://support.whatfix.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu vyberete dlaždici Whatfix, měli byste se automaticky přihlásit k Whatfix, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici Whatfix, měli byste se automaticky přihlásit k Whatfix, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

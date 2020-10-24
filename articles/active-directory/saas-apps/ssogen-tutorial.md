@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 72b91be9875abf07e5f6f828ed32483a5d61eadd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00aaabb68da13840cc167e235a7cedea4aabe97
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88524394"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s SSOGEN – Azure AD SSO Gateway pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat SSOGEN-Azure AD SSO pro Oracle E-Busin
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k SSOGEN – Azure AD SSO Gateway pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE s jejich účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * SSOGEN – brána pro jednotné přihlašování Azure AD pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE podporuje **SP a IDP** iniciované jednotné přihlašování.
-* Po konfiguraci brány SSOGEN-Azure AD SSO pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po konfiguraci brány SSOGEN-Azure AD SSO pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE můžete vynutili řízení relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
@@ -147,18 +147,18 @@ Kontaktujte prosím [info@ssogen.com](mailto:info@ssogen.com) a [support@ssogen.
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici SSOGEN-Azure AD SSO pro Oracle E-Business Suite-EBS, PeopleSoft spouštěných místně a JDE na přístupovém panelu, měli byste se automaticky přihlásit ke službě SSOGEN – Azure AD SSO pro Oracle E-Business Suite-EBS, PeopleSoft spouštěných místně a JDE, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici SSOGEN-Azure AD SSO pro Oracle E-Business Suite-EBS, PeopleSoft spouštěných místně a JDE na přístupovém panelu, měli byste se automaticky přihlásit ke službě SSOGEN – Azure AD SSO pro Oracle E-Business Suite-EBS, PeopleSoft spouštěných místně a JDE, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte SSOGEN – Azure AD SSO Gateway pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit SSOGEN bránu Azure AD SSO pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit SSOGEN bránu Azure AD SSO pro Oracle E-Business Suite – EBS, PeopleSoft spouštěných místně a JDE s pokročilými viditelnostmi a ovládacími prvky](/cloud-app-security/proxy-intro-aad)
