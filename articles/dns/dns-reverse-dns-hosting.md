@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709194"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489672"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hostitel reverzních zón zpětného vyhledávání DNS v Azure DNS
 
@@ -28,7 +28,7 @@ Tento článek vás provede kroky k vytvoření první zóny a záznamu DNS zpě
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Vytvoření zóny DNS zpětného vyhledávání
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V nabídce **centra** vyberte **Nový**  >  **síť**a pak vyberte **zóna DNS**.
 
    ![Výběr zóny DNS](./media/dns-reverse-dns-hosting/figure1.png)
@@ -48,7 +48,7 @@ Název zóny zpětného vyhledávání IPv4 je založený na rozsahu IP adres, k
 
 Následující příklad ukazuje, jak vytvořit reverzní zónu DNS třídy C s názvem `2.0.192.in-addr.arpa` v Azure DNS prostřednictvím Azure Portal:
 
- ![Podokno vytvořit zónu DNS s vyplněnými poli](./media/dns-reverse-dns-hosting/figure2.png)
+ ![Snímek obrazovky, který ukazuje, jak vytvořit reverzní zónu DNS třídy C s názvem 2.0.192.in-addr. arpa v Azure DNS prostřednictvím Azure Portal.](./media/dns-reverse-dns-hosting/figure2.png)
 
 **Umístění skupiny prostředků** definuje umístění pro skupinu prostředků. Nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a nezobrazuje se.
 
@@ -117,7 +117,7 @@ Následující příklad vás provede procesem vytvoření záznamu PTR v zóně
 
 1. V horní části podokna **zóna DNS** vyberte **+ Sada záznamů** a otevřete podokno **Přidat sadu záznamů** .
 
-   ![Tlačítko pro vytvoření sady záznamů](./media/dns-reverse-dns-hosting/figure4.png)
+   ![Snímek obrazovky s podoknem zóny DNS se šipkou ukazující na tlačítku + sada záznamů](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. Název sady záznamů pro záznam PTR musí být zbytek adresy IPv4 v opačném pořadí. 
 
@@ -162,7 +162,7 @@ Následující příklad vás provede procesem vytvoření nového záznamu PTR.
 4. Jako **název domény**zadejte plně kvalifikovaný název domény prostředku, který používá IP adresu.
 5. V dolní části podokna vyberte **OK** a vytvořte záznam DNS.
 
-![Podokno přidat sadu záznamů s vyplněnými poli](./media/dns-reverse-dns-hosting/figure7.png)
+![Snímek obrazovky, který zobrazuje podokno přidat sadu záznamů s šipkou ukazující na hodnotu v poli Typ](./media/dns-reverse-dns-hosting/figure7.png)
 
 Následující příklady ukazují, jak tuto úlohu dokončit pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
@@ -240,7 +240,7 @@ azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.
 az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>Můžu na Azure DNS hostovat zóny zpětného vyhledávání DNS pro své bloky IP adres přiřazené poskytovateli internetových služeb?
 

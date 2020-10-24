@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a6aed0630acf6ee6624c72831a2cdc88e6c0a91d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c16f8233a2800025a8c6f601e236b86d2fd044fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013057"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480679"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>Použití geografické redundance k návrhu vysoce dostupných aplikací
 
@@ -146,7 +146,7 @@ Dalším aspektem je postup, jak zpracovat více instancí aplikace a co dělat 
 
 Máte tři hlavní možnosti monitorování četnosti opakování v primární oblasti, aby bylo možné určit, kdy přepnout do sekundární oblasti a změnit aplikaci tak, aby běžela v režimu jen pro čtení.
 
-* Přidejte obslužnou rutinu pro událost [**opakování**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) události na objekt [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) , který předáte vašim požadavkům na úložiště – toto je metoda zobrazená v tomto článku a používaná v doprovodné ukázce. Tyto události se aktivují pokaždé, když klient opakuje požadavek, což vám umožní sledovat, jak často má klient v primárním koncovém bodě narazit opakované chyby.
+* Přidejte obslužnou rutinu pro událost [**opakování**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) události na objekt [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) , který předáte vašim požadavkům na úložiště – toto je metoda zobrazená v tomto článku a používaná v doprovodné ukázce. Tyto události se aktivují pokaždé, když klient opakuje požadavek, což vám umožní sledovat, jak často má klient v primárním koncovém bodě narazit opakované chyby.
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -157,7 +157,7 @@ Máte tři hlavní možnosti monitorování četnosti opakování v primární o
     };
     ```
 
-* V metodě [**Evaluate**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) ve vlastních zásadách opakování můžete spustit vlastní kód vždy, když dojde k opakování. Kromě nahrávání, když dojde k opakování, vám to také umožní změnit chování při opakování.
+* V metodě [**Evaluate**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) ve vlastních zásadách opakování můžete spustit vlastní kód vždy, když dojde k opakování. Kromě nahrávání, když dojde k opakování, vám to také umožní změnit chování při opakování.
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,

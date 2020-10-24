@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: efe4753e78c6dd16fa0b6ce3e98dd21ceae52577
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 44f6ba313ab57933a1078e96533c88cc4b4b59b3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047807"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490845"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
 Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření interního nástroje pro vyrovnávání zatížení a dvou virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -61,7 +61,7 @@ V této části vytvoříte virtuální síť a podsíť.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group   | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků   | Vybrat **CreateIntLBQS-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **západní Evropa** |
@@ -109,11 +109,11 @@ V této části vytvoříte virtuální síť a podsíť.
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
+    | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
     | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
-    | SKU           | Vybrat **Standard** |
+    | Skladová položka           | Vybrat **Standard** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
     | Podsíť  | Vyberte **myBackendSubnet** vytvořené v předchozím kroku. |
     | Přiřazení IP adresy | Vyberte **Dynamická**. |
@@ -195,7 +195,9 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Back-endový port | Zadejte **80**. |
     | Back-endový fond | Vyberte **myBackendPool**.|
     | Sonda stavu | Vyberte **myHealthProbe**. |
-    | Vytvořit implicitní odchozí pravidla | Vyberte **Ne**.
+    | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15** minut. |
+    | Resetování protokolu TCP | Vyberte **Povoleno**. |
+    | Překlad odchozích adres zdrojové sítě (SNAT) | Vybrat **(doporučeno) použít odchozí pravidla k poskytování back-end členů fondu přístup k Internetu**.. |
 
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
@@ -223,7 +225,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků | Vybrat **CreateIntLBQS-RG** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
     | Oblast | Vyberte **západní Evropa** |
@@ -294,7 +296,7 @@ V této části vytvoříte virtuální síť a podsíť.
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group   | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků   | Vybrat **CreateIntLBQS-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **západní Evropa** |
@@ -342,11 +344,11 @@ V této části vytvoříte virtuální síť a podsíť.
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **myResourceGroupLB** vytvořené v předchozím kroku.|
+    | Skupina prostředků         | Vyberte **CreateIntLBQS-RG** vytvořené v předchozím kroku.|
     | Name                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte **interní**.                                        |
-    | SKU           | Vybrat **základní** |
+    | Skladová položka           | Vybrat **základní** |
     | Virtuální síť | Vyberte **myVNet** vytvořené v předchozím kroku. |
     | Podsíť  | Vyberte **myBackendSubnet** vytvořené v předchozím kroku. |
     | Přiřazení IP adresy | Vyberte **Dynamická**. |
@@ -435,6 +437,7 @@ V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
     | Back-endový port | Zadejte **80**. |
     | Back-endový fond | Vyberte **myBackendPool**.|
     | Sonda stavu | Vyberte **myHealthProbe**. |
+    | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15** minut. |
  
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
@@ -462,7 +465,7 @@ Tyto virtuální počítače se přidají do back-endového fondu nástroje pro 
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků | Vybrat **CreateIntLBQS-RG** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM1** |
     | Oblast | Vyberte **západní Evropa** |
@@ -534,7 +537,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group | Vybrat **myResourceGroupLB** |
+    | Skupina prostředků | Vybrat **CreateIntLBQS-RG** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myTestVM** |
     | Oblast | Vyberte **západní Evropa** |
@@ -566,13 +569,13 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
 
 ## <a name="install-iis"></a>Instalace služby IIS
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom ze seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků **CreateIntLBQS-RG** .
 
 2. Na stránce **Přehled** vyberte **připojit**a pak **bastionu**.
 
 4. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-5. Vyberte **Připojit**.
+5. Vyberte **Connect** (Připojit).
 
 6. Na ploše serveru přejděte do části **Nástroje pro správu Windows**  >  **Windows PowerShell**.
 
@@ -604,7 +607,7 @@ V této části vytvoříte virtuální počítač s názvem **myTestVM**.  Tent
 
 2. V **přehledu** **myLoadBalancer**si poznamenejte nebo zkopírujte adresu u pole **privátní IP adresa** .
 
-3. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myTestVM** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
+3. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom ze seznamu prostředky vyberte **myTestVM** , která je umístěná ve skupině prostředků **CreateIntLBQS-RG** .
 
 4. Na stránce **Přehled** vyberte **připojit**a pak **bastionu**.
 
@@ -620,7 +623,7 @@ Pokud chcete zobrazit distribuci provozu nástroje pro vyrovnávání zatížen�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků **myResourceGroupLB** , která obsahuje prostředky, a pak vyberete **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků **CreateIntLBQS-RG** , která obsahuje prostředky, a pak vyberete **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

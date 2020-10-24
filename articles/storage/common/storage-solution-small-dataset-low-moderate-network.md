@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a95361dda74c145e435a7e122339fb5945fed0f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504299"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491219"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat malých datových sad s malou až střední šířkou pásma sítě
  
@@ -49,20 +49,20 @@ V tomto scénáři jsou doporučené tyto možnosti:
 
 Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
-| Příznak | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
+| Funkce | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Dostupnost | Stažení a instalace <br>Samostatný nástroj | Webové nástroje pro průzkum v Azure Portal | Nástroj příkazového řádku |Programovatelné rozhraní v jazycích .NET, Java, Python, JavaScript, C++, přejít, Ruby a PHP |
-| Grafické rozhraní | Yes | Yes | No | No |
+| Grafické rozhraní | Ano | Ano | Ne | Ne |
 | Podporované platformy | Windows, Mac, Linux | Založené na webu |Windows, Mac, Linux |Všechny platformy |
 | Povolené operace úložiště objektů BLOB<br>pro objekty BLOB a složky | Nahrávání<br>Stáhnout<br>Spravovat | Nahrávání<br>Stáhnout<br>Spravovat |Nahrávání<br>Stáhnout<br>Spravovat | Ano, přizpůsobit |
-| Povolené Data Lake Gen1 úložiště<br>operace se soubory a složkami | Nahrávání<br>Stáhnout<br>Spravovat | No |Nahrávání<br>Stáhnout<br>Spravovat                   | No |
+| Povolené Data Lake Gen1 úložiště<br>operace se soubory a složkami | Nahrávání<br>Stáhnout<br>Spravovat | Ne |Nahrávání<br>Stáhnout<br>Spravovat                   | Ne |
 | Povolené operace úložiště souborů<br>pro soubory a adresáře | Nahrávání<br>Stáhnout<br>Spravovat | Nahrávání<br>Stáhnout<br>Spravovat   |Nahrávání<br>Stáhnout<br>Spravovat | Ano, přizpůsobit |
-| Povolené operace úložiště tabulek<br>pro tabulky |Spravovat | No |Podpora tabulek v AzCopy v7 |Ano, přizpůsobit|
-| Povolené úložiště fronty | Spravovat | No  |No | Ano, je přizpůsobitelný|
+| Povolené operace úložiště tabulek<br>pro tabulky |Spravovat | Ne |Podpora tabulek v AzCopy v7 |Ano, přizpůsobit|
+| Povolené úložiště fronty | Spravovat | Ne  |Ne | Ano, je přizpůsobitelný|
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak [přenést data pomocí Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
-- [Přenos dat pomocí nástroje AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- Naučte se, jak [přenést data pomocí Průzkumník služby Azure Storage](/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
+- [Přenos dat pomocí nástroje AzCopy](/azure/storage/common/storage-use-azcopy-v10)
 

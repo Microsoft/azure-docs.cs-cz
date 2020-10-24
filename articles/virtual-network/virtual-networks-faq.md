@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 71b7217a1a3d79db67e1649ce33d441f0c2c2da2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86336ddb557613d42117480a5793e8b0ecbc7bae
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489400"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495837"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -283,7 +283,7 @@ Ne. Adresní prostory se nesmí překrývat, aby bylo možné povolit partnersk�
 Za vytvoření připojení partnerského vztahu virtuálních sítí se neúčtují žádné poplatky. Přenos dat mezi připojeními partnerských vztahů se účtuje. [Podívejte se sem](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Je provoz partnerských vztahů virtuálních sítí zašifrovaný?
-Když se provoz partnerských vztahů virtuálních sítí přesouvá mezi datovými centry – mimo fyzické hranice, na kterých se neřídí (nebo za použití [šifrování vrstvy pro připojení](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) Microsoft-MACsec, se využívá na podkladovém síťovém hardwaru.
+Při přesunu provozu Azure mezi datacentry (mimo fyzických hranic, které neřídí společnost Microsoft nebo jménem Microsoftu), se [šifrování vrstvy MACsec (Data-Link](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) ) využívá na základním síťovém hardwaru.  To platí pro provoz partnerských vztahů virtuálních sítí.
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Proč je moje připojení partnerského vztahu v *odpojeném* stavu?
 Připojení partnerských vztahů virtuálních sítí se při odstranění jednoho partnerského vztahu mezi virtuálními sítěmi přejdou do *odpojeného* stavu. Aby bylo možné znovu vytvořit úspěšné připojení partnerského vztahu, je nutné odstranit oba odkazy.

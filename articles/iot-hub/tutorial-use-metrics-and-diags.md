@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 47cca5019277b2f4d0025ccb6743589a21dfaafa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149196"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480118"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Kurz: nastavení a použití metrik a diagnostických protokolů ve službě IoT Hub
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující úlohy:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Nainstalujte [Visual Studio](https://www.visualstudio.com/). 
 
@@ -138,7 +138,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 2. Vyhledejte část **monitorování** v okně IoT Hub. Klikněte na **Nastavení diagnostiky**. 
 
-   ![Snímek obrazovky zobrazující část nastavení diagnostiky v okně IoT Hub](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+   ![Snímek obrazovky, který zvýrazní nastavení diagnostiky v části monitorování.](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
 3. Ujistěte se, že je předplatné a skupina prostředků správné. V části **typ prostředku**zrušte zaškrtnutí políčka **Vybrat vše**a vyhledejte a zaškrtněte **IoT Hub**. (Zaškrtnutím *políčka znovu vybrat vše* , stačí ho ignorovat.) V části **prostředek**vyberte název centra. Vaše obrazovka by měla vypadat jako na tomto obrázku: 
@@ -182,7 +182,7 @@ Teď můžete nastavit některé metriky, které se budou sledovat při posílá
 
    Teď obrazovka zobrazuje minimalizovanou metriku pro *odeslané zprávy telemetrie*a navíc novou metriku pro *Celkový počet použitých zpráv*.
 
-   ![Snímek obrazovky znázorňující přidání metriky pro odeslané zprávy telemetrie](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+   ![Snímek obrazovky, který zvýrazní tlačítko Připnout na řídicí panel](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
 
    Klikněte na **Připnout na řídicí panel**. Připnout ho na řídicí panel svého Azure Portal, abyste k němu mohli znovu přistupovat. Pokud ho připnete na řídicí panel, nastavení se nezachovají.
 

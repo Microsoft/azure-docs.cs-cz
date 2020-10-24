@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a3c37143154a6e701c4308903c46f4e68ac1b604
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458097"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495775"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -221,6 +221,8 @@ await DeleteRelationship(client, srcId, relId);
 
 Následující fragment kódu spustitelný používá operace vztahu z tohoto článku k vytvoření cyklického grafu z digitálních vláken a vztahů.
 
+### <a name="set-up-the-runnable-sample"></a>Nastavení ukázky spustitelný
+
 Fragment kódu používá [*Room.jsv*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) a [*Floor.jsv*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) definicích modelů z [*kurzu: Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md). Pomocí těchto odkazů můžete přejít přímo na soubory nebo je stáhnout jako součást celého kompletního ukázkového [projektu.](/samples/azure-samples/digital-twins-samples/digital-twins-samples/) 
 
 Než spustíte ukázku, udělejte toto:
@@ -232,7 +234,12 @@ Než spustíte ukázku, udělejte toto:
     dotnet add package Azure.identity
     ```
 
-Pak spusťte ukázku.
+Pokud chcete ukázku spustit přímo, budete také muset nastavit místní přihlašovací údaje. V další části se to provede.
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>Spuštění ukázky
+
+Po dokončení výše uvedeného postupu můžete přímo spustit následující vzorový kód.
 
 ```csharp 
 using System;

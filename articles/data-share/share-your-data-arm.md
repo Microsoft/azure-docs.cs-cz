@@ -1,22 +1,22 @@
 ---
 title: Sdílení mimo vaši organizaci (šablona ARM) – rychlý Start Azure Data Share
-description: Naučte se sdílet data se zákazníky a partnery pomocí sdílené složky Azure Data Share a Správce prostředků šablon v tomto rychlém startu.
+description: Naučte se sdílet data se zákazníky a partnery pomocí sdílené složky Azure a šablony Azure Resource Manager (šablony ARM) v tomto rychlém startu.
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146144"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487683"
 ---
-# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Rychlý Start: sdílení dat pomocí šablon Azure Data Share a Správce prostředků
+# <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>Rychlý Start: sdílení dat pomocí šablony Azure Data Share a ARM
 
-Naučte se, jak nastavit novou sdílenou složku Azure z účtu služby Azure Storage pomocí šablony Azure Resource Manager a začít sdílet data se zákazníky a partnery mimo vaši organizaci Azure. Seznam podporovaných úložišť dat najdete [v tématu podporovaná úložiště dat v Azure Data Share](./supported-data-stores.md).
+Přečtěte si, jak nastavit novou sdílenou složku Azure z účtu služby Azure Storage pomocí šablony Azure Resource Manager (šablona ARM). A začněte sdílet data se zákazníky a partnery mimo vaši organizaci Azure. Seznam podporovaných úložišť dat najdete [v tématu podporovaná úložiště dat v Azure Data Share](./supported-data-stores.md).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,12 +38,12 @@ V šabloně jsou definované následující prostředky:
 
 * [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts):
 * [Microsoft. Storage/storageAccounts/blobServices/Containers](/azure/templates/microsoft.storage/storageaccounts/blobservices/containers)
+* [Microsoft. datashare/Accounts](/azure/templates/microsoft.datashare/accounts)
+* [Microsoft. datashare/Accounts/shares](/azure/templates/microsoft.datashare/accounts/shares)
 * [Microsoft. Storage/storageAccounts/Providers/roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [Microsoft. datashare/Accounts](/rest/api/datashare/accounts/create)
-* [Microsoft. datashare/Accounts/shares](/rest/api/datashare/shares/create)
-* [Microsoft. datashare/Accounts/Shares/DataSets](/rest/api/datashare/datasets/create)
-* [Microsoft. datashare/Accounts/Shares/pozvánky](/rest/api/datashare/invitations/create)
-* [Microsoft. datashare/Accounts/Shares/synchronizationSettings](/rest/api/datashare/synchronizationsettings/create)
+* [Microsoft. datashare/Accounts/Shares/DataSets](/azure/templates/microsoft.datashare/accounts/shares/datasets)
+* [Microsoft. datashare/Accounts/Shares/pozvánky](/azure/templates/microsoft.datashare/accounts/shares/invitations)
+* [Microsoft. datashare/Accounts/Shares/synchronizationSettings](/azure/templates/microsoft.datashare/accounts/shares/synchronizationsettings)
 
 Šablona provádí následující úlohy:
 
@@ -56,11 +56,11 @@ V šabloně jsou definované následující prostředky:
 
 Tato šablona se vytvoří pro účely učení. V praxi obvykle máte nějaká data v existujícím účtu úložiště. Před spuštěním šablony nebo skriptu pro vytvoření datové sady byste museli vytvořit přiřazení role. V některých případech se při nasazování šablony může zobrazit následující chybová zpráva:
 
-```error message
+```plaintext
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-Důvodem je to, že nasazení se snaží vytvořit datovou sadu, aby bylo možné dokončit přiřazení role Azure. Navzdory chybové zprávě může být nasazení úspěšné.  Pořád budete moct projít [kontrolou nasazených prostředků](#review-deployed-resources).
+Je to proto, že se nasazení pokouší vytvořit datovou sadu, aby bylo možné dokončit přiřazení role Azure. Navzdory chybové zprávě může být nasazení úspěšné. Pořád budete moct projít [kontrolou nasazených prostředků](#review-deployed-resources).
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -81,7 +81,7 @@ Důvodem je to, že nasazení se snaží vytvořit datovou sadu, aby bylo možn�
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Otevřete účet pro sdílení dat, který jste vytvořili.
 1. V nabídce vlevo vyberte **Odeslat sdílené složky**.  V seznamu se zobrazí účet úložiště.
 1. Vyberte účet úložiště.  V části **Podrobnosti**se zobrazí nastavení synchronizace, jak jste nakonfigurovali v šabloně.

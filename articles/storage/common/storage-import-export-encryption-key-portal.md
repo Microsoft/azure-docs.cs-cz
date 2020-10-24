@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d0a1826dafd1e6ce6202dc4f29417a1ce100e54f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345fd486788cfbb69454be488d771d9b4ea394ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83195251"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488635"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro službu import/export
 
@@ -101,9 +101,9 @@ Pokud obdržíte nějaké chyby týkající se vašeho spravovaného klíče zá
 |----------------|------------|-----------------|
 | CmkErrorAccessRevoked | Přístup ke spravovanému klíči zákazníka je odvolán.                                                       | Ano, zjistit, zda: <ol><li>Trezor klíčů má stále instalační soubor MSI v zásadách přístupu.</li><li>Zásady přístupu mají povolené oprávnění získat, zalamovat a zrušit zalomení.</li><li>Pokud je Trezor klíčů ve virtuální síti za bránou firewall, ověřte, jestli je povolená možnost **Povolit důvěryhodné služby společnosti Microsoft** .</li><li>Ověřte, zda byl soubor MSI prostředku úlohy obnoven na `None` používání rozhraní API.<br>Pokud ano, pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se znovu vytvoří identita prostředku úlohy.<br>Po vytvoření nové identity, povolení `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů</li></ol>                                                                                            |
 | CmkErrorKeyDisabled      | Spravovaný klíč zákazníka je zakázán.                                         | Ano, povolením verze klíče     |
-| CmkErrorKeyNotFound      | Nepovedlo se najít spravovaný klíč zákazníka. | Ano, pokud byl klíč odstraněn, ale je stále v rámci doby trvání vyprázdnění, pomocí [odebrání klíče v trezoru klíčů](https://docs.microsoft.com/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval).<br>Ostatních <ol><li>Ano, pokud má zákazník klíč zálohovaný a obnoví ho.</li><li>Ne, jinak.</li></ol>
-| CmkErrorVaultNotFound |Nejde najít Trezor klíčů spravovaného klíče zákazníka. |   Pokud byl Trezor klíčů odstraněn:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud byl Trezor klíčů migrován do jiného tenanta, je možné ho obnovit pomocí jednoho z následujících kroků:<ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol>|
+| CmkErrorKeyNotFound      | Nepovedlo se najít spravovaný klíč zákazníka. | Ano, pokud byl klíč odstraněn, ale je stále v rámci doby trvání vyprázdnění, pomocí [odebrání klíče v trezoru klíčů](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval).<br>Ostatních <ol><li>Ano, pokud má zákazník klíč zálohovaný a obnoví ho.</li><li>Ne, jinak.</li></ol>
+| CmkErrorVaultNotFound |Nejde najít Trezor klíčů spravovaného klíče zákazníka. |   Pokud byl Trezor klíčů odstraněn:<ol><li>Ano, pokud je v době trvání ochrany vyprázdnění, postupujte podle kroků v části [obnovení trezoru klíčů](/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault).</li><li>Ne, pokud je mimo dobu trvání ochrany vyprázdnění.</li></ol><br>V opačném případě, pokud byl Trezor klíčů migrován do jiného tenanta, je možné ho obnovit pomocí jednoho z následujících kroků:<ol><li>Obnovte Trezor klíčů zpátky na starého tenanta.</li><li>Nastavte `Identity = None` a pak nastavte hodnotu zpět na `Identity = SystemAssigned` . Tím se po vytvoření nové identity odstraní a znovu vytvoří identita. Povolte `Get` , `Wrap` a `Unwrap` oprávnění k nové identitě v zásadách přístupu trezoru klíčů.</li></ol>|
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
+- [Co je Azure Key Vault](/azure/key-vault/key-vault-overview)?

@@ -4,25 +4,27 @@ description: 'Kurz: Naučte se používat Open Source nástroje pro migraci dat 
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 16412e6949bd6bf3d9496b33a900a0331bd1e9fb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8613d3b02d396f16008ee771cdff25fe8b2e2f10
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278164"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490641"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Kurz: Použití nástroje pro migraci dat k migraci dat do Azure Cosmos DB
 
 Tento kurz obsahuje pokyny k použití nástroje pro migraci dat do služby Azure Cosmos DB, který dokáže importovat data z různých zdrojů do kontejnerů a tabulek Azure Cosmos. Můžete importovat ze souborů JSON, CSV, SQL, MongoDB, služby Azure Table Storage, Amazon DynamoDB a dokonce i z kolekcí rozhraní SQL API služby Azure Cosmos DB. Pro použití se službou Azure Cosmos DB tato data migrujete do kolekcí a tabulek. Nástroj pro migraci dat můžete použít také při migraci z kolekce s jedním oddílem do kolekce s více oddíly pro rozhraní SQL API.
 
-Jaké rozhraní API budete se službou Azure Cosmos DB používat?
+> [!NOTE]
+> Nástroj pro migraci dat Azure Cosmos DB je open source nástroj určený pro malé migrace. Pro rozsáhlejší migrace si Projděte náš [Průvodce pro](cosmosdb-migrationchoices.md)ingestování dat.
 
-* **[SQL API](documentdb-introduction.md)** – Při importu dat můžete využít jakoukoli z možností zdroje, které nástroj pro migraci dat poskytuje.
-* **[Table API](table-introduction.md)** – K importu dat můžete využít nástroj pro migraci dat nebo AzCopy. Další informace najdete v tématu [Import dat pro použití s rozhraním Table API služby Azure Cosmos DB](table-import.md).
-* **[Rozhraní API pro MongoDB](mongodb-introduction.md)** – Nástroj pro migraci dat v současné době nepodporuje rozhraní Azure Cosmos DB API pro MongoDB buď jako zdroj, nebo jako cíl. Azure Cosmos DB Pokud chcete migrovat data do nebo z kolekcí v Azure Cosmos DB, přečtěte si téma [Postup migrace dat MongoDB databáze Cosmos pomocí rozhraní API Azure Cosmos DB pro MongoDB](mongodb-migrate.md) . Nástroj pro migraci dat můžete stále použít k exportu dat z MongoDB do kolekcí rozhraní SQL API služby Azure Cosmos DB pro použití s rozhraním SQL API.
-* **[Rozhraní Gremlin API](graph-introduction.md)** – Nástroj pro migraci dat není v tuto chvíli podporovaným nástrojem pro import pro účty rozhraní Gremlin API.
+* **[SQL API](./introduction.md)** – k importu dat v malém měřítku můžete použít jakoukoli z možností zdroje, které jsou k dispozici v nástroji pro migraci dat. [Přečtěte si o možnostech migrace pro import dat ve velkém měřítku](cosmosdb-migrationchoices.md).
+* **[Rozhraní API pro tabulky](table-introduction.md)** – k importu dat můžete použít nástroj pro migraci dat nebo [AzCopy](table-import.md#migrate-data-by-using-azcopy) . Další informace najdete v tématu [Import dat pro použití s rozhraním Table API služby Azure Cosmos DB](table-import.md).
+* **[Rozhraní API pro MongoDB](mongodb-introduction.md)** – Nástroj pro migraci dat nepodporuje rozhraní Azure Cosmos DB API pro MongoDB buď jako zdroj, nebo jako cíl. Azure Cosmos DB Pokud chcete migrovat data do nebo z kolekcí v Azure Cosmos DB, přečtěte si téma [Postup migrace dat MongoDB do databáze Cosmos s rozhraním API Azure Cosmos DB pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) , kde najdete pokyny. Nástroj pro migraci dat můžete stále použít k exportu dat z MongoDB do kolekcí rozhraní SQL API služby Azure Cosmos DB pro použití s rozhraním SQL API.
+* **[Rozhraní API Cassandra](graph-introduction.md)** – Nástroj pro migraci dat není podporovaným nástrojem pro import pro účty rozhraní API Cassandra. [Přečtěte si o možnostech migrace pro import dat do rozhraní API Cassandra](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
+* **[Rozhraní Gremlin API](graph-introduction.md)** – Nástroj pro migraci dat není v tuto chvíli podporovaným nástrojem pro import pro účty rozhraní Gremlin API. [Přečtěte si o možnostech migrace pro import dat do rozhraní Gremlin API.](cosmosdb-migrationchoices.md#other-apis) 
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -42,7 +44,7 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že provede
 * **Vytvoření prostředků služby Azure Cosmos DB:** Ještě před zahájením migrace dat vytvořte všechny kolekce na webu Azure Portal. Pokud chcete migrovat na účet Azure Cosmos DB, který má propustnost na úrovni databáze, poskytněte při vytváření kontejnerů Azure Cosmos klíč oddílu.
 
 > [!IMPORTANT]
-> Abyste se ujistili, že nástroj pro migraci dat používá protokol TLS (Transport Layer Security) 1,2 při připojování k účtům Azure Cosmos, použijte .NET Framework verze 4,7 nebo postupujte podle pokynů uvedených v [tomto článku](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
+> Abyste se ujistili, že nástroj pro migraci dat používá protokol TLS (Transport Layer Security) 1,2 při připojování k účtům Azure Cosmos, použijte .NET Framework verze 4,7 nebo postupujte podle pokynů uvedených v [tomto článku](/dotnet/framework/network-programming/tls).
 
 ## <a name="overview"></a><a id="Overviewl"></a>Přehled
 
@@ -58,6 +60,9 @@ Nástroj pro migraci dat je open source řešení umožňující import dat do s
 * Kontejnery Azure Cosmos
 
 Přestože nástroj pro import obsahuje grafické uživatelské rozhraní (dtui.exe), dá se ovládat i z příkazového řádku (dt.exe). Ve skutečnosti existuje možnost výstupovat přidružený příkaz po nastavení importu prostřednictvím uživatelského rozhraní. Můžete transformovat tabulková zdrojová data, jako jsou SQL Server nebo soubory CSV, a vytvořit tak hierarchické vztahy (poddokumenty) během importu. V dalších částech tohoto článku se dozvíte více o možnostech zdroje, ukázkových příkazech pro import z jednotlivých zdrojů, možnostech cíle a zobrazení výsledků importu.
+
+> [!NOTE]
+> Pro malé migrace byste měli použít jenom nástroj pro migraci Azure Cosmos DB. Pro velké migrace si Projděte náš [Průvodce pro](cosmosdb-migrationchoices.md)ingestování dat.
 
 ## <a name="installation"></a><a id="Install"></a>Instalace
 
@@ -124,7 +129,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>Import z MongoDB
 
 > [!IMPORTANT]
-> Pokud importujete do účtu Cosmos nakonfigurovaného s rozhraním API Azure Cosmos DB pro MongoDB, postupujte podle těchto [pokynů](mongodb-migrate.md).
+> Pokud importujete do účtu Cosmos nakonfigurovaného s rozhraním API Azure Cosmos DB pro MongoDB, postupujte podle těchto [pokynů](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
 
 Pomocí možnosti pro import zdrojového kódu MongoDB můžete importovat z jedné kolekce MongoDB, volitelně filtrovat dokumenty pomocí dotazu a upravit strukturu dokumentu pomocí projekce.  
 
@@ -152,7 +157,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>Import exportovaných souborů MongoDB
 
 > [!IMPORTANT]
-> Pokud importujete na účet Azure Cosmos DB s podporou MongoDB, postupujte podle těchto [pokynů](mongodb-migrate.md).
+> Pokud importujete na účet Azure Cosmos DB s podporou MongoDB, postupujte podle těchto [pokynů](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json).
 
 Možnost importu ze zdrojového exportovaného souboru JSON z MongoDB umožňuje importovat jeden nebo několik souborů JSON vygenerovaných nástrojem mongoexport.  
 
@@ -237,7 +242,7 @@ Formát připojovacího řetězce Azure Table Storage je následující:
 > [!NOTE]
 > Pomocí příkazu Verify se ujistěte, že je instance služby Azure Table Storage zadaná v poli připojovacího řetězce přístupná.
 
-Zadejte název tabulky Azure, ze které se má importovat. Volitelně můžete zadat [filtr](../vs-azure-tools-table-designer-construct-filter-strings.md).
+Zadejte název tabulky Azure, ze které se má importovat. Volitelně můžete zadat [filtr](/visualstudio/azure/vs-azure-tools-table-designer-construct-filter-strings).
 
 Možnost importu ze zdroje Azure Table Storage nabízí následující další možnosti:
 
@@ -292,7 +297,7 @@ Formát připojovacího řetězce Azure Cosmos DB je následující:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-Připojovací řetězec účtu Azure Cosmos DB můžete načíst ze stránky klíče Azure Portal, jak je popsáno v tématu [jak spravovat Azure Cosmos DB účet](manage-account.md). Název databáze se ale musí připojit k připojovacímu řetězci v následujícím formátu:
+Připojovací řetězec účtu Azure Cosmos DB můžete načíst ze stránky klíče Azure Portal, jak je popsáno v tématu [jak spravovat Azure Cosmos DB účet](./how-to-manage-database-account.md). Název databáze se ale musí připojit k připojovacímu řetězci v následujícím formátu:
 
 `Database=<CosmosDB Database>;`
 
@@ -363,7 +368,7 @@ Formát připojovacího řetězce Azure Cosmos DB je následující:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-Připojovací řetězec účtu služby Azure Cosmos DB můžete načíst ze stránky Klíče na webu Azure Portal, jak je popsáno v tématu [Správa účtu služby Azure Cosmos DB](manage-account.md), ale k připojovacímu řetězci je potřeba připojit název databáze v následujícím formátu:
+Připojovací řetězec účtu služby Azure Cosmos DB můžete načíst ze stránky Klíče na webu Azure Portal, jak je popsáno v tématu [Správa účtu služby Azure Cosmos DB](./how-to-manage-database-account.md), ale k připojovacímu řetězci je potřeba připojit název databáze v následujícím formátu:
 
 `Database=<CosmosDB Database>;`
 
@@ -422,7 +427,7 @@ Formát připojovacího řetězce Azure Cosmos DB je následující:
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-Připojovací řetězec pro účet Azure Cosmos DB můžete načíst ze stránky klíče Azure Portal, jak je popsáno v tématu [jak spravovat Azure Cosmos DB účet](manage-account.md). Název databáze se ale musí připojit k připojovacímu řetězci v následujícím formátu:
+Připojovací řetězec pro účet Azure Cosmos DB můžete načíst ze stránky klíče Azure Portal, jak je popsáno v tématu [jak spravovat Azure Cosmos DB účet](./how-to-manage-database-account.md). Název databáze se ale musí připojit k připojovacímu řetězci v následujícím formátu:
 
 `Database=<Azure Cosmos database>;`
 

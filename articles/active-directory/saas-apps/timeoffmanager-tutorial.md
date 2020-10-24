@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 59eb2e320a828b644af6f740cf9f8381370a0dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9535160bbc87b291ba40becdb55c917985bd348c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527277"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483144"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TimeOffManager
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat TimeOffManager s Azure Active Director
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace TimeOffManager několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy se také předem naplní, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | --- | --- |
     | FirstName |User. křestní jméno |
     | Polím |User. příjmení |
@@ -146,11 +146,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. Přejít na ** \> Možnosti účtu účtu \> nastavení s jedním Sign-On**.
    
-    ![Nastavení jednoho Sign-On](./media/timeoffmanager-tutorial/ic795917.png "Nastavení jednoho Sign-On")
+    ![Snímek obrazovky zobrazuje nastavení jednoho Sign-On vybrané z možností účtu.](./media/timeoffmanager-tutorial/ic795917.png "Nastavení jednoho Sign-On")
 
 3. V části **nastavení s jedním Sign-On** proveďte následující kroky:
    
-    ![Nastavení jednoho Sign-On](./media/timeoffmanager-tutorial/ic795918.png "Nastavení jednoho Sign-On")
+    ![Snímek obrazovky se zobrazí část nastavení s jedním Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/timeoffmanager-tutorial/ic795918.png "Nastavení jednoho Sign-On")
    
     a. V programu Poznámkový blok otevřete svůj certifikát s kódováním Base-64, zkopírujte jeho obsah do schránky a vložte celý certifikát do textového pole **certifikátu X. 509** .
    
@@ -168,7 +168,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Na stránce **nastavení jednotného přihlašování** Zkopírujte hodnotu **adresy URL služby pro příjemce kontrolního výrazu** a vložte ji do textového pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal. 
 
-      ![Nastavení jednoho Sign-On](./media/timeoffmanager-tutorial/ic795915.png "Nastavení jednoho Sign-On")
+      ![Snímek obrazovky se zobrazí jako odkaz na službu příjemce kontrolního výrazu R L.](./media/timeoffmanager-tutorial/ic795915.png "Nastavení jednoho Sign-On")
 
 ### <a name="create-timeoffmanager-test-user"></a>Vytvořit testovacího uživatele TimeOffManager
 
@@ -183,7 +183,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici TimeOffManager, měli byste se automaticky přihlásit k TimeOffManager, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

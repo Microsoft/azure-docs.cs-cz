@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461310"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494773"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -78,7 +78,7 @@ Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateDigitalTwin()` volání. Příklad:
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateDigitalTwin()` volání. Například:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -381,6 +381,8 @@ Příklad, jak odstranit všechny vlákna najednou, si můžete stáhnout ukázk
 
 Následující příklad kódu spustitelný můžete použít k vytvoření vlákna, aktualizaci jeho podrobností a odstranění vlákna. 
 
+### <a name="set-up-the-runnable-sample"></a>Nastavení ukázky spustitelný
+
 Fragment kódu používá [Room.jsv](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) definici modelu z [*kurzu: Prozkoumejte digitální vlákna Azure pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md). Pomocí tohoto odkazu můžete přejít přímo k souboru [nebo si ho](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)stáhnout jako součást celého uceleného ukázkového projektu.
 
 Než spustíte ukázku, udělejte toto:
@@ -392,7 +394,12 @@ Než spustíte ukázku, udělejte toto:
     dotnet add package Azure.identity
     ```
 
-Pak spusťte ukázku.
+Pokud chcete ukázku spustit přímo, budete také muset nastavit místní přihlašovací údaje. V další části se to provede.
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>Spuštění ukázky
+
+Po dokončení výše uvedeného postupu můžete přímo spustit následující vzorový kód.
 
 ```csharp
 using System;
@@ -555,8 +562,6 @@ Tady je výstup konzoly výše uvedeného programu:
 ## <a name="manage-twins-with-cli"></a>Správa dvojitých vláken pomocí rozhraní příkazového řádku
 
 Vlákna je také možné spravovat pomocí rozhraní příkazového řádku Azure Digital revlákens CLI. Příkazy najdete v [_How-to: použijte Azure Digital Revlákens CLI *](how-to-use-cli.md).
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="view-all-digital-twins"></a>Zobrazit všechny digitální vlákna
 

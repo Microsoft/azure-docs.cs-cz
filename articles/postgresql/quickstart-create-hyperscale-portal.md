@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/17/2020
-ms.openlocfilehash: e43e20ceb5e84d652fee9ca4db6d5dc871ed1e4f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d4925b8ecb7768f1f49b2c971f7234d58339c056
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91268448"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481104"
 ---
 # <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Rychlý Start: Vytvoření skupiny serverů Citus () v Azure Portal
 
@@ -138,5 +138,5 @@ V předchozích krocích jste vytvořili prostředky Azure ve skupině serverů.
 
 V tomto rychlém startu jste se dozvěděli, jak zřídit skupinu serverů (Citus). K němu jste se připojili pomocí psql, vytvořili schéma a distribuovaná data.
 
-- Postupujte podle kurzu pro [vytváření škálovatelných víceklientské aplikací](https://aka.ms/hyperscale-tutorial-multi-tenant) .
+- Postupujte podle kurzu pro [vytváření škálovatelných víceklientské aplikací](./tutorial-design-database-hyperscale-multi-tenant.md) .
 - Určení nejlepší [počáteční velikosti](howto-hyperscale-scaling.md#picking-initial-size) pro skupinu serverů

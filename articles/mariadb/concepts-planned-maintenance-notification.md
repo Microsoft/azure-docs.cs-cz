@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 9a37baaa80aadcf10f2bb2091a04fccb3fd9b504
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2ce6959cf025d2e29f0ee3dfb3b29b3eaf5d4221
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428836"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490828"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Oznámení o plánované údržbě v Azure Database for MariaDB
 
@@ -63,7 +63,7 @@ Můžete buď zaškrtnout oznámení o plánované údržbě Azure Portal nebo n
 
 Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby**, najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications.md).
 
-## <a name="can-i-control-or-change-planned-maintenance-for-my-servers-after-i-receive-a-notification-event"></a>Můžu po obdržení oznamovací události řídit nebo měnit plánovanou údržbu serverů?
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Můžu zrušit nebo odložit plánovanou údržbu?
 
 Údržba je nutná k zajištění zabezpečeného, stabilního a aktuálnosti serveru. Událost plánované údržby nelze zrušit nebo odložit. Po odeslání oznámení do určité oblasti Azure nelze provést změny plánu oprav pro žádný jednotlivý Server v této oblasti. Oprava je zahrnuta pro celou oblast najednou. Služba Azure Database for MariaDB je navržená pro cloudovou nativní aplikaci, která nevyžaduje podrobné řízení nebo přizpůsobení služby.
 

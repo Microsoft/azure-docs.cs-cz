@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2020
 ms.author: rolyon
-ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511717"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481325"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Vytvoření nebo aktualizace vlastních rolí pomocí portálu Azure Portal
 
 Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní vlastní role Azure. Stejně jako předdefinované role můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v oborech předplatného a skupiny prostředků. Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou se sdílet mezi předplatnými. Každý adresář může mít až 5000 vlastních rolí. Vlastní role se dají vytvořit pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Tento článek popisuje, jak pomocí Azure Portal vytvořit vlastní role.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytvoření vlastních rolí budete potřebovat:
 
@@ -331,7 +331,7 @@ Pomocí těchto kroků můžete zobrazit vlastní role.
 
 1. Klikněte na tlačítko se třemi tečkami (**...**) pro vlastní roli, kterou chcete odstranit, a pak klikněte na **Odstranit**.
 
-    ![Nabídka vlastní role](./media/custom-roles-portal/delete-menu.png)
+    ![Snímek obrazovky zobrazující seznam vlastních rolí, které se dají vybrat k odstranění](./media/custom-roles-portal/delete-menu.png)
 
     Zcela odstranění vlastní role může trvat několik minut.
 

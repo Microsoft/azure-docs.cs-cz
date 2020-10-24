@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 938968599f1824416666818a46cc73a1d33c5341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b5886984d6e3830549e86a7c1ee46cd2483e4b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987740"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480594"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Správa prostředků Azure Cosmos DB pomocí Průzkumník služby Azure Storage
 
@@ -20,9 +20,9 @@ K připojení k Azure Cosmos DB můžete použít aplikaci Azure Storage Explore
 
 Použijte stejný nástroj ke správě různých entit Azure na jednom místě. Můžete spravovat Azure Cosmos DB entit, manipulovat s daty, aktualizovat uložené procedury a triggery spolu s dalšími entitami Azure, jako jsou objekty BLOB a fronty služby Storage.
 
-Průzkumník služby Azure Storage podporuje účty Cosmos nakonfigurované pro rozhraní API SQL, MongoDB, Graph a Table. Další informace najdete [v Azure Cosmos DB v Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) .
+Průzkumník služby Azure Storage podporuje účty Cosmos nakonfigurované pro rozhraní API SQL, MongoDB, Graph a Table. Další informace najdete [v Azure Cosmos DB v Průzkumník služby Azure Storage]() .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Cosmos s rozhraním API SQL nebo rozhraním API Azure Cosmos DB pro MongoDB. Pokud účet nemáte, můžete ho vytvořit v Azure Portal. Další informace najdete v tématu [Azure Cosmos DB: sestavení webové aplikace SQL API s využitím .NET a Azure Portal](create-sql-api-dotnet.md) .
 
@@ -74,7 +74,7 @@ Připojovací řetězec můžete použít pro připojení k Azure Cosmos DB. Tat
 
 Pomocí následujících kroků se připojte k Azure Cosmos DB pomocí emulátoru. Tato metoda podporuje pouze účty SQL.
 
-1. Nainstalujte emulátor Cosmos DB a pak ho otevřete. Postup instalace emulátoru najdete v tématu [Cosmos DB emulátor](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
+1. Nainstalujte emulátor Cosmos DB a pak ho otevřete. Postup instalace emulátoru najdete v tématu [Cosmos DB emulátor](./local-emulator.md).
 
 1. V levém stromě vyhledejte **místní a připojené** , klikněte pravým tlačítkem na **Cosmos DB účty**a pak vyberte **připojit k Cosmos DB emulátoru**.
 
@@ -173,7 +173,7 @@ Můžete kliknout pravým tlačítkem na předplatné v podokně Průzkumník a 
 
 #### <a name="query-for-documents"></a>Dotazování dokumentů
 
-* Chcete-li upravit filtr dokumentu, zadejte [dotaz SQL](how-to-sql-query.md)a pak vyberte **použít**.
+* Chcete-li upravit filtr dokumentu, zadejte [dotaz SQL](./sql-query-getting-started.md)a pak vyberte **použít**.
 
   :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="Snímek obrazovky znázorňující ikonu modulu plug-in v levém podokně.":::
 
@@ -353,4 +353,4 @@ Vyzkoušejte tyto návrhy:
 ## <a name="next-steps"></a>Další kroky
 
 * Podívejte se na toto video, kde se dozvíte, jak používat Azure Cosmos DB v Průzkumník služby Azure Storage: [použijte Azure Cosmos DB v Průzkumník služby Azure Storage](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
-* Další informace o Průzkumníku služby Storage a připojení dalších služeb najdete v tématu [Začínáme s Průzkumníkem služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* Další informace o Průzkumníku služby Storage a připojení dalších služeb najdete v tématu [Začínáme s Průzkumníkem služby Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).

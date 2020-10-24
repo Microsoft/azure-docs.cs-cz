@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09498587ad65a8de0935a3a4455bb3b66ed6c3ec
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504333"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491253"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Řešení pro pravidelné přenosy dat
  
@@ -52,22 +52,22 @@ Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
 ### <a name="continuous-data-ingestion-over-network"></a>Nepřetržité přijímání dat přes síť
 
-| Příznak                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
+| Funkce                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Formulářový faktor                                   | Virtuální zařízení             | Fyzické zařízení          | Služba v Azure Portal, místní Agent                                                            |
 | Hardware                                      | Váš hypervisor            | Dodává se společností Microsoft    | Není k dispozici                                                            |
 | Počáteční úsilí při nastavení                          | Nízká (<30 minut)            | Střední (~ pár hodin) | Velký (počet dní: ~)                                                 |
-| Formát dat                                   | Objekty blob Azure, soubory Azure   | Objekty blob Azure, soubory Azure | [Podporuje 70 + datových konektorů pro úložiště a formáty dat](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| Předběžné zpracování dat                           | No                         | Ano, přes hranice výpočetní technologie    | Yes                                                           |
-| Místní mezipaměť<br>(ukládat místní data)    | Yes                        | Yes                      | No                                                            |
-| Přenos z jiných cloudů                    | No                         | No                       | Yes                                                           |
+| Formát dat                                   | Objekty blob Azure, soubory Azure   | Objekty blob Azure, soubory Azure | [Podporuje 70 + datových konektorů pro úložiště a formáty dat](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
+| Předběžné zpracování dat                           | Ne                         | Ano, přes hranice výpočetní technologie    | Ano                                                           |
+| Místní mezipaměť<br>(ukládat místní data)    | Ano                        | Ano                      | Ne                                                            |
+| Přenos z jiných cloudů                    | Ne                         | Ne                       | Ano                                                           |
 | Ceny                                       | [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Ceny](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Ceny](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Přenos dat pomocí AzCopy](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
-- [Další informace o přenosu dat pomocí rozhraní REST API pro úložiště](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+- [Další informace o přenosu dat pomocí rozhraní REST API pro úložiště](/dotnet/api/overview/azure/storage)
 - Informace o tom, jak:
-    - [Přenos dat pomocí data box Gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
-    - [Umožňuje transformovat data pomocí data box Edge před odesláním do Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).
-- [Naučte se, jak přenést data pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/tutorial-bulk-copy-portal).
+    - [Přenos dat pomocí data box Gateway](/azure/databox-online/data-box-gateway-deploy-add-shares).
+    - [Umožňuje transformovat data pomocí data box Edge před odesláním do Azure](/azure/databox-online/data-box-edge-deploy-configure-compute).
+- [Naučte se, jak přenést data pomocí Azure Data Factory](/azure/data-factory/tutorial-bulk-copy-portal).

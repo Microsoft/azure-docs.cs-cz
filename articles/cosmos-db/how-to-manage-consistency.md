@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e43f2e9897293cb4d5bc25b6ef95252a28628401
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2b3433d969611fabe1b12a8dcabfe6e50066a8c1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279594"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491185"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -288,7 +288,7 @@ Jak co má být konečná konzistence? V případě průměrného případu mů�
 Přečtěte si další informace o tom, jak spravovat konflikty dat, nebo přejděte k dalšímu klíčovému konceptu v Azure Cosmos DB. Viz následující články:
 
 * [Úrovně konzistence v Azure Cosmos DB](consistency-levels.md)
-* [Dělení a distribuce dat](partition-data.md)
+* [Dělení a distribuce dat](./partitioning-overview.md)
 * [Správa konfliktů mezi oblastmi](how-to-manage-conflicts.md)
 * [Dělení a distribuce dat](partitioning-overview.md)
 * [Návrh moderních systémů distribuovaných databází – kompromisy v konzistenci](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)

@@ -9,38 +9,38 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: afee95f6a8776c3506e10c29cfd8e776734a915a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ee7e180094c1584995e5d734adbe589a112754b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326673"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477568"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Apache Spark konektor pro jádro (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
 > * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
-> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
+> * [Sada .NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Jarní data v2](sql-api-sdk-java-spring-v2.md)
-> * [Jarní data V3](sql-api-sdk-java-spring-v3.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Konektor Spark](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
-> * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
+> * [SQL](./sql-query-getting-started.md)
+> * [Bulk Executor – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 Analýzu velkých objemů dat můžete urychlit pomocí konektoru Azure Cosmos DB Apache Spark pro jádro (SQL). Konektor Spark umožňuje spouštět úlohy [Sparku](https://spark.apache.org/) na datech uložených v Azure Cosmos DB. Zpracování dávek a datových proudů je podporováno.
 
 Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/services/databricks) nebo [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), který poskytuje spravované Clustery Spark v Azure. Podporované verze jsou uvedené v následující tabulce:
 
-| Součást | Verze |
+| Komponenta | Verze |
 |---------|-------|
 | Apache Spark | 2,4.*x*, 2,3. *x*, 2,2. *x*a 2,1. *x* |
 | Scala | 2,11 |
@@ -59,7 +59,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 | **Stažení sady SDK** | [Stáhnout nejnovější. jar](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG), [Maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) |
 |**Dokumentace k rozhraní API** | [Referenční informace pro Spark Connector]() |
 |**Přispívání do sady SDK** | [Azure Cosmos DB konektor pro Apache Spark na GitHubu](https://github.com/Azure/azure-cosmosdb-spark) | 
-|**Začínáme** | [Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor](https://docs.microsoft.com/azure/cosmos-db/spark-connector#bk_working_with_connector) <br> [Použití strukturovaného streamování Apache Spark s Apache Kafka a Azure Cosmos DB](https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
+|**Začínáme** | [Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor](./spark-connector.md#bk_working_with_connector) <br> [Použití strukturovaného streamování Apache Spark s Apache Kafka a Azure Cosmos DB](../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>Historie verzí
 
@@ -117,7 +117,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 #### <a name="new-features"></a>Nové funkce
 * Vylepšuje správu připojení a sdružování připojení, aby se snížil počet volání metadat.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Další kroky

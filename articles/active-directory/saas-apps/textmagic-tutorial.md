@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81dc3a4f55b214ea6ca7ad0388e57f4b4fdc7124
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1db4f1ae40c72203cdd5d07c49b2f9c202ad525
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546470"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491355"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TextMagic
 
@@ -149,11 +149,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. V části uživatelské jméno vyberte **Nastavení účtu** .
 
-    ![Konfigurace TextMagic](./media/textmagic-tutorial/config1.png)
+    ![Snímek obrazovky zobrazuje nastavení účtu vybrané od uživatele.](./media/textmagic-tutorial/config1.png)
 
 5. Klikněte na kartu **jednotné Sign-On (SSO)** a vyplňte následující pole:  
 
-    ![Konfigurace TextMagic](./media/textmagic-tutorial/config2.png)
+    ![Snímek obrazovky zobrazuje jednu kartu Sign-On, kde můžete zadat hodnoty, které jsou popsány.](./media/textmagic-tutorial/config2.png)
 
     a. V části **ID entity zprostředkovatele identity:** TextBox vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 
@@ -176,7 +176,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici TextMagic, měli byste se automaticky přihlásit k TextMagic, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

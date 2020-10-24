@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c29fd00a19c930995d748027b2ec04eaa12a5ec
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87075952"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480645"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Řešení potíží s latencí s využitím protokolů Analýzy úložiště
 
@@ -27,7 +27,7 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 
 ## <a name="recommended-steps"></a>Doporučené kroky
 
-1. Stáhněte si [protokoly analýza úložiště](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Stáhněte si [protokoly analýza úložiště](/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
 
 2. Pomocí následujícího skriptu PowerShellu převeďte protokoly nezpracovaných formátů do tabulkového formátu:
 
@@ -99,10 +99,10 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 
    | Typ objektu BLOB |Stavem žádosti =<br>Success|Stavem žádosti =<br>VEDE NetworkError|Doporučení|
    |---|---|---|---|
-   |GetBlob|Yes|No|[**Operace getblob:** Stavem žádosti = úspěch](#getblob-operation-requeststatus--success)|
-   |GetBlob|No|Yes|[**Operace getblob:** Stavem žádosti = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|Yes|No|[**Operace Put:** Stavem žádosti = úspěch](#put-operation-requeststatus--success)|
-   |PutBlob|No|Yes|[**Operace Put:** Stavem žádosti = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|Ano|Ne|[**Operace getblob:** Stavem žádosti = úspěch](#getblob-operation-requeststatus--success)|
+   |GetBlob|Ne|Ano|[**Operace getblob:** Stavem žádosti = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|Ano|Ne|[**Operace Put:** Stavem žádosti = úspěch](#put-operation-requeststatus--success)|
+   |PutBlob|Ne|Ano|[**Operace Put:** Stavem žádosti = (SAS) NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>Výsledky stavu
 
