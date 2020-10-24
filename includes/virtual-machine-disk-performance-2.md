@@ -8,142 +8,165 @@ ms.topic: include
 ms.date: 10/12/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: f5ac97812f973a20f6ee4c2dea34baaeb91203af
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 086ebf71e2da19a96433f32cfb1bae133e875400
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016443"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518048"
 ---
-![Dokumentace k Dsv3](media/vm-disk-performance/dsv3-documentation.jpg)
+![Graf znázorňující specifikace D s v 3.](media/vm-disk-performance/dsv3-documentation.jpg)
 
-Maximální propustnost disku, která není v **mezipaměti** , je výchozím limitem úložiště, který může virtuální počítač zpracovat. Maximální propustnost úložiště **v mezipaměti** je samostatný limit, pokud povolíte ukládání hostitele do mezipaměti. Ukládání do mezipaměti hostitele funguje tak, že se úložiště přiblíží k virtuálnímu počítači, který je možné zapsat nebo číst, a to rychle. Velikost úložiště, která je k dispozici pro virtuální počítač pro ukládání do mezipaměti hostitele, je v dokumentaci. Můžete například vidět, že Standard_D8s_v3 se dodává s 200 GiB úložiště mezipaměti.
+- Maximální propustnost disku, která není v *mezipaměti* , je výchozím limitem úložiště, který může virtuální počítač zpracovat.
+- Maximální propustnost úložiště *v mezipaměti* je samostatný limit, pokud povolíte ukládání hostitele do mezipaměti.
 
-Povolení ukládání do mezipaměti hostitele můžete provést při vytváření virtuálního počítače a připojení disků. Můžete také upravit a zapnout a vypnout ukládání disků do mezipaměti v existujícím virtuálním počítači.
+Ukládání do mezipaměti hostitele funguje tak, že se úložiště přiblíží k virtuálnímu počítači, který je možné zapsat nebo číst, a to rychle. Velikost úložiště, která je k dispozici pro virtuální počítač pro ukládání do mezipaměti hostitele, je v dokumentaci. Můžete například vidět, že Standard_D8s_v3 se dodává s 200 GiB úložiště mezipaměti.
 
-![Ukládání hostitelů do mezipaměti](media/vm-disk-performance/host-caching.jpg)
+Ukládání hostitelů do mezipaměti můžete povolit, když vytvoříte virtuální počítač a připojíte disky. V existujícím VIRTUÁLNÍm počítači můžete také zapnout a vypnout ukládání do mezipaměti hostitele na discích.
 
-Mezipaměť hostitele lze upravit tak, aby odpovídala vašim požadavkům na úlohy pro každý disk. Mezipaměť hostitele můžete nastavit jen pro čtení pro úlohy, které provedou pouze operace čtení a čtení a zápis pro úlohy, které mají rovnováhu na operacích čtení a zápisu. Pokud vaše úloha nedodržuje žádný z těchto vzorů, nedoporučujeme používat ukládání hostitelů do mezipaměti. 
+![Snímek obrazovky, který ukazuje ukládání hostitele do mezipaměti.](media/vm-disk-performance/host-caching.jpg)
 
-Podíváme se na několik příkladů různých nastavení mezipaměti hostitele a zjistíte, jak to ovlivní tok dat a výkon. V tomto prvním příkladu se podíváme na to, co se stane s požadavky na vstupně-výstupní operace, když je nastavení ukládání do mezipaměti hostitele nastaveno **jen pro čtení**.
+Mezipaměť hostitele můžete upravit tak, aby odpovídala požadavkům na zatížení jednotlivých disků. Mezipaměť hostitele můžete nastavit tak, aby byla:
 
-Nastavení:
-- Standard_D8s_v3 
-    - IOPS v mezipaměti: 16 000
-    - Neuložené IOPS s mezipamětí: 12 800
-- Datový disk P30 
-    - IOPS: 5 000
-    - **Ukládání hostitele do mezipaměti: jen pro čtení** 
+- **Jen pro čtení**: pro úlohy, které dělají pouze operace čtení
+- **Čtení a zápis**: pro úlohy, které mají zůstatek operací čtení a zápisu
 
-Když je proveden čtení a v mezipaměti jsou k dispozici požadovaná data, mezipaměť vrátí požadovaná data a není nutné číst z disku. Tato čtení se započítávají do limitů uložených v mezipaměti virtuálního počítače.
+Pokud vaše úloha nedodržuje žádný z těchto vzorů, nedoporučujeme používat ukládání hostitelů do mezipaměti.
 
-![Čtení přístupů do mezipaměti hostitele čtení](media/vm-disk-performance/host-caching-read-hit.jpg)
+Podíváme se na několik příkladů různých nastavení mezipaměti hostitele, abyste viděli, jak ovlivňuje tok dat a výkon. V tomto prvním příkladu se podíváme na to, co se stane s požadavky na vstupně-výstupní operace, když je nastavení ukládání do mezipaměti hostitele nastaveno **jen pro čtení**.
 
-Když je proveden čtení a požadovaná data **nejsou** v mezipaměti k dispozici, požadavek na čtení se pak přesměruje na disk, který je pak nasměruje do mezipaměti i do virtuálního počítače. Tato čtení se započítávají do limitu neuloženého do mezipaměti virtuálního počítače a limitu pro ukládání do mezipaměti virtuálního počítače.
+**Obecného**
 
-![Neúspěšné čtení z mezipaměti hostitele čtení](media/vm-disk-performance/host-caching-read-miss.jpg)
+- Standard_D8s_v3
+  - IOPS v mezipaměti: 16 000
+  - Neuložené IOPS s mezipamětí: 12 800
+- Datový disk P30
+  - IOPS: 5 000
+  - Ukládání hostitele do mezipaměti: **jen pro čtení**
+
+Když se provede čtení a v mezipaměti jsou k dispozici požadovaná data, vrátí mezipaměť požadovaná data. Z disku není nutné číst. Tato čtení se započítávají do limitů uložených v mezipaměti virtuálního počítače.
+
+![Diagram znázorňující, že se dosáhlo čtení z mezipaměti hostitele čtení.](media/vm-disk-performance/host-caching-read-hit.jpg)
+
+Když je proveden čtení a požadovaná data *nejsou* v mezipaměti k dispozici, je požadavek na čtení přenesen na disk. Disk pak rozsvítí do mezipaměti i do virtuálního počítače. Tato čtení se započítávají do limitu neuloženého do mezipaměti virtuálního počítače a limitu pro ukládání do mezipaměti virtuálního počítače.
+
+![Diagram znázorňující neúspěšný čtení z mezipaměti hostitele pro čtení](media/vm-disk-performance/host-caching-read-miss.jpg)
 
 Po provedení zápisu musí být zápis zapisován do mezipaměti i do disku před tím, než je považován za úplný. Tento zápis se započítává do limitu neuloženého do mezipaměti virtuálního počítače a limitu pro ukládání do mezipaměti virtuálního počítače.
 
-![Čtení zápisu do mezipaměti hostitele](media/vm-disk-performance/host-caching-write.jpg)
+![Diagram znázorňující zápis do mezipaměti pro čtení hostitele.](media/vm-disk-performance/host-caching-write.jpg)
 
-V následujícím příkladu se podíváme na to, co se stane s požadavky na vstupně-výstupní operace, když je nastavení mezipaměti hostitele nastaveno na **čtení/zápis**.
+Teď se podívejme na to, co se stane s požadavky na vstupně-výstupní operace, když je nastavení mezipaměti hostitele nastaveno na **čtení/zápis**.
 
-Nastavení:
-- Standard_D8s_v3 
-    - IOPS v mezipaměti: 16 000
-    - Neuložené IOPS s mezipamětí: 12 800
-- Datový disk P30 
-    - IOPS: 5 000
-    - **Mezipaměť hostitele: čtení i zápis** 
+**Obecného**
 
-Čtení jsou zpracovávány stejným způsobem jako jen pro čtení a zápisy jsou pouze ty, které se liší v ukládání do mezipaměti pro čtení a zápis. Při psaní nastavení ukládání do mezipaměti hostitele pro čtení/zápis je nutné zapsat pouze zápis do mezipaměti hostitele, aby bylo možné považovat za kompletní. Zápis pak laxně vytvářená zapsaný na disk jako proces na pozadí. To znamená, že zápisy se budou započítávat do mezipaměti v mezipaměti, když se zapisují do mezipaměti a když se laxně vytvářená zapisuje na disk, který se bude nacházet v neuloženém vstupu do mezipaměti.
+- Standard_D8s_v3
+  - IOPS v mezipaměti: 16 000
+  - Neuložené IOPS s mezipamětí: 12 800
+- Datový disk P30
+  - IOPS: 5 000
+  - Mezipaměť hostitele: **čtení i zápis**
 
-![Zápis do mezipaměti pro čtení a zápis hostitele](media/vm-disk-performance/host-caching-read-write.jpg)
+Čtení je zpracováváno stejným způsobem jako jen pro čtení. Zápisy jsou pouze ta, která je odlišná s ukládáním do mezipaměti pro čtení a zápis. Při psaní do mezipaměti hosta je nastavená možnost **čtení/zápis**, je nutné zapsat pouze zápis do mezipaměti hostitele, aby bylo možné považovat za kompletní. Zápis pak laxně vytvářená zapsaný na disk jako proces na pozadí. To znamená, že zápis se započítá do mezipaměti v mezipaměti při zápisu do mezipaměti. Když se laxně vytvářená zapisuje na disk, napočítá se do neuloženého vstupu do mezipaměti.
 
-Pojďme pokračovat s příkladem pro náš Standard_D8s_v3 virtuální počítač. S výjimkou této doby povolíme ukládání hostitelů do mezipaměti pro disky a limit IOPS virtuálního počítače je 16 000 IOPS. Připojeno k virtuálnímu počítači jsou tři podkladové disky P30, které mohou zpracovávat 5 000 IOPS.
+![Diagram znázorňující zápis do mezipaměti hostitele pro čtení a zápis](media/vm-disk-performance/host-caching-read-write.jpg)
 
-Nastavení:
-- Standard_D8s_v3 
-    - IOPS v mezipaměti: 16 000
-    - Neuložené IOPS s mezipamětí: 12 800
-- Disk s operačním systémem P30 
-    - IOPS: 5 000
-    - Mezipaměť hostitele: čtení i zápis 
-- 2 datové disky P30
-    - IOPS: 5 000
-    - Mezipaměť hostitele: čtení i zápis
+Pojďme pokračovat s naším Standard_D8s_v3m virtuálním počítačem. S výjimkou této doby povolíte ukládání hostitelů do mezipaměti na discích. Také limit IOPS virtuálního počítače je teď 16 000 IOPS. Připojení k virtuálnímu počítači mají tři základní disky P30, které mohou každý popisovač 5 000 IOPS.
 
-![Příklad ukládání hostitele do mezipaměti](media/vm-disk-performance/host-caching-example-without-remote.jpg)
+**Obecného**
 
-Nyní aplikace, která používá tento Standard_D8s_v3 virtuální počítač s povoleným ukládáním do mezipaměti, vytvoří požadavek na 15 000 IOPS. Tyto požadavky se u každého připojeného disku rozdělují jako 5 000 IOPS a neprojeví se žádné capping výkonu.
+- Standard_D8s_v3
+  - IOPS v mezipaměti: 16 000
+  - Neuložené IOPS s mezipamětí: 12 800
+- Disk s operačním systémem P30
+  - IOPS: 5 000
+  - Mezipaměť hostitele: **čtení i zápis**
+- Dva datové disky P30 × 2
+  - IOPS: 5 000
+  - Mezipaměť hostitele: **čtení i zápis**
+
+![Diagram znázorňující příklad mezipaměti hostitele.](media/vm-disk-performance/host-caching-example-without-remote.jpg)
+
+Aplikace používá virtuální počítač Standard_D8s_v3 s povoleným ukládáním do mezipaměti. Vytvoří žádost o 15 000 IOPS. Požadavky jsou u každého připojeného disku rozdělené jako 5 000 IOPS. Nedochází k capping výkonu.
 
 ## <a name="combined-uncached-and-cached-limits"></a>Kombinované omezení neuložených do mezipaměti a mezipaměti
 
-Limity ukládání do mezipaměti virtuálního počítače jsou oddělené od jejich neuloženého limitu. To znamená, že můžete povolit ukládání do mezipaměti hostitele na discích připojených k virtuálnímu počítači a zároveň Nepovolit ukládání do mezipaměti hostitele na jiných discích, aby virtuální počítače mohly získat celkový počet vstupně-výstupních operací úložiště pro limit uložený v mezipaměti a limit neuloženého v mezipaměti. Podíváme se na příklad, abychom vám pomohli přesvědčit, jak tato omezení pracují dohromady, a budeme pokračovat s konfigurací připojení k virtuálnímu počítači s Standard_D8s_v3 a disky Premium.
+Limity uložené v mezipaměti virtuálního počítače jsou oddělené od neuložených omezení. To znamená, že můžete povolit ukládání do mezipaměti hostitele na discích připojených k virtuálnímu počítači a přitom Nepovolit ukládání do mezipaměti hostitele na jiných discích. Tato konfigurace umožňuje vašim virtuálním počítačům získat celkový počet vstupně-výstupních operací úložiště pro limit uložený v mezipaměti a limit neuloženého v mezipaměti.
 
-Nastavení:
-- Standard_D8s_v3 
-    - IOPS v mezipaměti: 16 000
-    - Neuložené IOPS s mezipamětí: 12 800
-- Disk s operačním systémem P30 
-    - IOPS: 5 000
-    - Mezipaměť hostitele: čtení i zápis
-- 2 datové disky P30 × 2
-    - IOPS: 5 000
-    - Mezipaměť hostitele: čtení i zápis
-- 2 datové disky P30 × 2
-    - IOPS: 5 000
-    - Ukládání hostitele do mezipaměti: zakázáno
+Podívejme se na příklad, který vám pomůže pochopit, jak tato omezení pracují dohromady. Budeme pokračovat s konfigurací připojení k virtuálnímu počítači s Standard_D8s_v3 a disky Premium.
 
-![Příklad mezipaměti hostitele se vzdáleným úložištěm](media/vm-disk-performance/host-caching-example-with-remote.jpg)
+**Obecného**
 
-Aplikace spuštěná v Standard_D8s_v3 virtuálním počítači teď vytvoří žádost o 25 000 IOPS. Tento požadavek se u každého přiloženého disku rozděluje jako 5 000 IOPS, kde 3 z těchto disků používá ukládání hostitele do mezipaměti a 2 z těchto disků není. Vzhledem k tomu, že 3 použití mezipaměti hostitele je v rámci limitů uložených v mezipaměti 16 000, jsou tyto požadavky úspěšně dokončeny a nedochází k capping výkonu úložiště. Vzhledem k tomu, že 2 disky, které nepoužívají ukládání hostitelů do mezipaměti, jsou také v rámci 12 800 limitů neukládaných do mezipaměti, jsou tyto požadavky také úspěšně dokončeny a nedochází k capping.
+- Standard_D8s_v3
+  - IOPS v mezipaměti: 16 000
+  - Neuložené IOPS s mezipamětí: 12 800
+- Disk s operačním systémem P30
+  - IOPS: 5 000
+  - Mezipaměť hostitele: **čtení i zápis**
+- Dva datové disky P30 × 2
+  - IOPS: 5 000
+  - Mezipaměť hostitele: **čtení i zápis**
+- Dva datové disky P30 × 2
+  - IOPS: 5 000
+  - Ukládání hostitele do mezipaměti: **zakázáno**
 
-## <a name="metrics-for-disk-performance"></a>Metriky pro výkon disku
-Máme metriky v Azure, které poskytují přehled o tom, jak virtuální počítače a disky provádějí. Tyto metriky lze zobrazit vizuálně prostřednictvím Azure Portal nebo je lze načíst prostřednictvím volání rozhraní API. Metriky se počítají v intervalu jedné minuty. K dispozici jsou následující metriky, které vám pomohou získat přehled o výkonu virtuálních počítačů a disku a propustnosti:
-- **Hloubka fronty disku s operačním systémem** – Počet aktuálních nezpracovaných vstupně-výstupních požadavků, které čekají na čtení nebo zapisování na disk s operačním systémem.
-- **Bajty přečtené z disku s operačním systémem/s** – počet bajtů čtených za sekundu z disku s operačním systémem.
-- **Operace čtení disku s operačním systémem/s** – počet vstupních operací, které se z disku s operačním systémem čtou za sekundu.
-- **Bajty zápisu na disk s operačním systémem/s** – počet bajtů zapsaných za sekundu z disku s operačním systémem.
-- **Operace zápisu na disk s operačním systémem za sekundu** – počet výstupních operací zapsaných za sekundu z disku s operačním systémem.
-- **Hloubka fronty datových disků** – Počet aktuálních nezpracovaných vstupně-výstupních požadavků, které čekají na čtení nebo zapisování na datové disky.
-- **Bajty čtení z datového disku/s** – počet bajtů čtených za sekundu z datových disků.
-- **Operace čtení z datového disku za sekundu** – počet vstupních operací, které se za sekundu čtou z datových disků.
-- Bajty zapsané na **datový disk/s** – počet bajtů zapsaných za sekundu z datových disků.
-- **Operace zápisu na datový disk/s** – počet výstupních operací zapsaných za sekundu z datových disků.
-- **Bajty čtení z disku/s** – celkový počet bajtů čtených za sekundu ze všech disků připojených k virtuálnímu počítači.
-- **Operace čtení disku/s** – počet vstupních operací, které jsou čteny za sekundu ze všech disků připojených k virtuálnímu počítači.
-- **Bajty zápisu na disk/s** – počet bajtů zapsaných v sekundách ze všech disků připojených k virtuálnímu počítači.
-- **Operace zápisu na disk/s** – počet výstupních operací zapsaných v sekundách ze všech disků připojených k virtuálnímu počítači.
+![Diagram znázorňující příklad mezipaměti hostitele se vzdáleným úložištěm.](media/vm-disk-performance/host-caching-example-with-remote.jpg)
+
+V takovém případě aplikace spuštěná ve virtuálním počítači s Standard_D8s_v3 vytvoří požadavek na 25 000 IOPS. Požadavek se u každého připojeného disku rozděluje jako 5 000 IOPS. Tři disky používají ukládání hostitelů do mezipaměti a dva disky nepoužívají ukládání hostitelů do mezipaměti.
+
+- Vzhledem k tomu, že tři disky, které používají ukládání hostitelů do mezipaměti, jsou v rámci limitů v mezipaměti 16 000, tyto požadavky byly úspěšně dokončeny. Nedochází k capping výkonu úložiště.
+- Vzhledem k tomu, že dva disky, které nepoužívají ukládání hostitelů do mezipaměti, jsou v rámci limitů neukládaných do mezipaměti 12 800, tyto požadavky jsou také úspěšně dokončeny. Nedošlo k žádnému capping.
+
+## <a name="disk-performance-metrics"></a>Metriky výkonu disku
+
+Máme metriky v Azure, které vám poskytnou přehled o tom, jak vaše virtuální počítače a disky provádějí. Tyto metriky lze zobrazit pomocí Azure Portal. Lze je také načíst prostřednictvím volání rozhraní API. Metriky se počítají v intervalu jedné minuty. K dispozici jsou následující metriky, které vám pomohou získat informace o virtuálním počítači a vstupně-výstupních discích a také propustnosti:
+
+- **Hloubka fronty disku s operačním systémem**: Počet aktuálních nezpracovaných vstupně-výstupních požadavků, které čekají na čtení nebo zapisování na disk s operačním systémem.
+- **Bajty přečtené z disku s operačním systémem/s**: počet bajtů čtených za sekundu z disku s operačním systémem.
+- **Operace čtení disku s operačním systémem/s**: počet vstupních operací, které se z disku s operačním systémem čtou za sekundu.
+- **Bajty zápisu na disk s operačním systémem/s**: počet bajtů zapsaných za sekundu z disku s operačním systémem.
+- **Operace zápisu na disk s operačním systémem/s**: Počet výstupních operací zapsaných za sekundu z disku s operačním systémem.
+- **Hloubka fronty datových disků**: Počet aktuálních nezpracovaných vstupně-výstupních požadavků, které čekají na čtení nebo zapisování na datové disky.
+- **Bajty přečtené z datového disku/s**: počet bajtů čtených za sekundu z datových disků.
+- **Operace čtení z datového disku/s**: počet vstupních operací, které jsou z datových disků čteny za sekundu.
+- Bajty zapsané na **datový disk/s**: počet bajtů zapsaných za sekundu z datových disků.
+- **Operace zápisu na datový disk/s**: Počet výstupních operací zapsaných za sekundu z datových disků.
+- **Bajty čtení z disku/s**: celkový počet bajtů čtených za sekundu ze všech disků připojených k virtuálnímu počítači.
+- **Operace čtení z disku/s**: počet vstupních operací, které se za sekundu čtou ze všech disků připojených k virtuálnímu počítači.
+- **Bajty zápisu na disk/s**: počet bajtů zapsaných za sekundu ze všech disků připojených k virtuálnímu počítači.
+- **Operace zápisu na disk/s**: Počet výstupních operací zapsaných za sekundu ze všech disků připojených k virtuálnímu počítači.
 
 ## <a name="storage-io-utilization-metrics"></a>Metriky využití v/v úložiště
+
 Metriky, které vám pomůžou diagnostikovat disk v/v capping:
-- **Procento využitého počtu vstupně** -výstupních operací vstupně-výstupních operací – procentuální hodnota vypočítaná za vstupně-výstupní operace datového disku dokončena prostřednictvím zřízeného datového pevného disku Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu IOPS datového disku.
-- **Procento využité šířky pásma datového disku** – procento vypočítané propustností datového disku dokončenou při propustnosti zřízeného datového disku. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma datového disku.
-- **Procento využití IOPS disku s operačním** systémem – procentuální hodnota, kterou vypočítala IOPS disku s operačním systémem, se dokončila v rámci zřízeného IOPS disku operačního systému. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu IOPS disku s operačním systémem.
-- **Procento využité šířky pásma disku** – procentuální hodnota vypočítaná propustností disku s operačním systémem, která se dokončila v rámci zřízené propustnosti disku s operačním systémem. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma disku s operačním systémem.
+
+- **Procento využitého počtu vstupně**-výstupních operací pro datový disk: procento vypočítané IOPS datového disku bylo dokončeno v případě IOPS zřízeného datového disku. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu IOPS datového disku.
+- **Procento využité šířky pásma dat**: procentuální hodnota vypočítaná propustností datového disku dokončenou při propustnosti zřízeného datového disku. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu šířky pásma datového disku.
+- **Procento využitého počtu vstupně-výstupních operací pro operační systém**: procento vypočítané IOPS disku operačního systému se dokončilo prostřednictvím zřízené IOPS disku operačního systému. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu IOPS disku s operačním systémem.
+- **Spotřebované procento šířky pásma disku s operačním systémem**: procentuální hodnota vypočítaná propustností disku s operačním systémem, která se dokončila prostřednictvím zřízené propustnosti disku s operačním systémem. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu šířky pásma disku s operačním systémem.
 
 Metriky, které vám pomůžou diagnostikovat virtuální počítač v/v capping:
-- **Procento využitých vstupně** -výstupních operací IOPS v mezipaměti – procentuální hodnota vypočtená celkovým IOPS dokončena přes maximální limit počtu IOPS virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu IOPS v mezipaměti virtuálního počítače.
-- **Procento spotřebované šířky pásma v mezipaměti pro virtuální počítače** – procento vypočítané celkovou propustností disku dokončenou v rámci maximální propustnosti virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma v mezipaměti virtuálního počítače.
-- **Procento využitých vstupně** -výstupních operací IOPS v mezipaměti – procentuální hodnota vypočítaná celkovým počtem IOPS na virtuálním počítači, která se dokončila v maximálním limitu počtu IOPS virtuálního počítače, který nemá mezipaměť Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu IOPS bez mezipaměti virtuálního počítače.
-- **Procento využité šířky pásma neuložené v mezipaměti** – procentuální hodnota vypočítaná z celkové propustnosti disku na virtuálním počítači, která se dokončila přes maximální propustnost zajištěných virtuálních počítačů. Pokud je tato hodnota na 100%, bude vaše aplikace spuštěná v/v omezené z limitu šířky pásma bez mezipaměti virtuálního počítače.
+
+- **Procento využitých vstupně**-výstupních operací IOPS virtuálních počítačů: procento vypočítané celkovým počtem IOPS dokončených přes maximální limit počtu IOPS virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu IOPS v mezipaměti virtuálního počítače.
+- **Procento spotřebované šířky pásma v mezipaměti virtuálního počítače**: procento vypočítané celkovou propustností disku dokončenou při maximální propustnosti virtuálního počítače v mezipaměti. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu šířky pásma v mezipaměti virtuálního počítače.
+- **Procento využitých vstupně**-výstupních operací IOPS v mezipaměti: procento počítané celkovými IOPS na virtuálním počítači, které se dokončily v maximálním limitu počtu vstupně-výstupních operací virtuálních počítačů. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z limitu IOPS bez mezipaměti virtuálního počítače.
+- **Procento spotřebované šířky pásma neuložené v mezipaměti**: procento vypočítané celkovou propustností disku na virtuálním počítači dokončené přes maximální propustnost zajištěných virtuálních počítačů. Pokud je tato hodnota na 100%, je vaše aplikace spuštěná v/v omezené z neuloženého limitu šířky pásma virtuálního počítače.
 
 ## <a name="storage-io-utilization-metrics-example"></a>Příklad metrik využití v/v úložiště
-Podívejme se na příklad použití těchto nových metrik využití v/v úložiště, které nám pomůžou ladit, kde je v našem systému kritický bod. Nastavení systému je přesně to, co máme v předchozím příkladu, s výjimkou toho, že náš disk s operačním systémem, který jsme připojili, **není** uložený v mezipaměti.
 
-Nastavení:
-- Standard_D8s_v3 
-    - IOPS v mezipaměti: 16 000
-    - Neuložené IOPS s mezipamětí: 12 800
-- Disk s operačním systémem P30 
-    - IOPS: 5 000
-    - Ukládání hostitele do mezipaměti: zakázáno
-- 2 datové disky P30 × 2
-    - IOPS: 5 000
-    - Mezipaměť hostitele: čtení i zápis
-- 2 datové disky P30 × 2
-    - IOPS: 5 000
-    - Ukládání hostitele do mezipaměti: zakázáno
+Podívejme se na příklad použití těchto nových metrik využití v/v úložiště, které nám pomůžou ladit, kde je v našem systému kritický bod. Nastavení systému je stejné jako v předchozím příkladu, s výjimkou toho, že připojený disk s operačním systémem *není* uložen v mezipaměti.
 
+**Obecného**
+
+- Standard_D8s_v3
+  - IOPS v mezipaměti: 16 000
+  - Neuložené IOPS s mezipamětí: 12 800
+- Disk s operačním systémem P30
+  - IOPS: 5 000
+  - Ukládání hostitele do mezipaměti: **zakázáno**
+- Dva datové disky P30 × 2
+  - IOPS: 5 000
+  - Mezipaměť hostitele: **čtení i zápis**
+- Dva datové disky P30 × 2
+  - IOPS: 5 000
+  - Ukládání hostitele do mezipaměti: **zakázáno**

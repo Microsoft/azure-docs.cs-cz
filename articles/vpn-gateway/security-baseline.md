@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df3ae57652737acc2b23cda75ace361f0bb40340
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626254"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518181"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>Základní hodnoty zabezpečení Azure pro VPN Gateway
 
@@ -178,7 +178,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
-**Pokyny**: řízení přístupu na základě role (RBAC) v Azure umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell nebo Azure Portal.
+**Pokyny**: řízení přístupu na základě role v Azure (Azure RBAC) umožňuje spravovat přístup k prostředkům Azure prostřednictvím přiřazení rolí. Tyto role můžete přiřadit uživatelům, skupinám instančních objektů a spravovaným identitám. Pro určité prostředky jsou předem definované předdefinované role a tyto role můžou být v inventáři nebo prostřednictvím nástrojů, jako je Azure CLI, Azure PowerShell nebo Azure Portal.
 
 - [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
@@ -310,7 +310,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: izolujte systémy, které ukládají nebo zpracovávají citlivé informace.
 
-**Pokyny**: brány VPN mají vyhrazené instance virtuálních počítačů pro každou zákaznickou virtuální síť. Implementujte izolaci pomocí samostatných virtuálních sítí, předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit pomocí Azure Active Directory řízení přístupu na základě role.
+**Pokyny**: brány VPN mají vyhrazené instance virtuálních počítačů pro každou zákaznickou virtuální síť. Implementujte izolaci pomocí samostatných virtuálních sítí, předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím řízení přístupu na základě role Azure (RBAC).
 
 - [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
@@ -362,11 +362,11 @@ Pro příslušné prostředky ve vaší virtuální síti postupujte podle Azure
 
 **Zodpovědnost**: zákazník
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Doprovodné**materiály: použití služby Azure AD RBAC k řízení přístupu k datům a prostředkům, v opačném případě použití metod řízení přístupu specifických pro službu. Použijte předdefinované role řízení přístupu založené na rolích, jako je vlastník, přispěvatel nebo přispěvatel sítě, a pak přiřaďte roli příslušnému oboru. Přiřaďte specifická oprávnění pro podmnožinu možností virtuální sítě vytvořením vlastní role a přiřazením konkrétních oprávnění vyžadovaných pro virtuální sítě, podsítě, brány sítě VPN, síťových rozhraní, skupin zabezpečení sítě a směrovacích tabulek k této roli.
+**Pokyny**: použití řízení přístupu na základě role Azure (Azure RBAC) k řízení přístupu k datům a prostředkům, v opačném případě použití metod řízení přístupu specifických pro službu. Použijte předdefinované role, jako je vlastník, přispěvatel nebo přispěvatel sítě, a pak přiřaďte roli příslušnému oboru. Přiřaďte specifická oprávnění pro podmnožinu možností virtuální sítě vytvořením vlastní role a přiřazením konkrétních oprávnění vyžadovaných pro virtuální sítě, podsítě, brány sítě VPN, síťových rozhraní, skupin zabezpečení sítě a směrovacích tabulek k této roli.
 
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [Plánování virtuálních sítí](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
 
@@ -532,7 +532,7 @@ Pro vaše prostředky Azure můžete také použít doporučení z Azure Securit
 
 - [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Doporučení zabezpečení – referenční příručka](../security-center/recommendations-reference.md)
+- [Doporučení k zabezpečení – Referenční příručka](../security-center/recommendations-reference.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

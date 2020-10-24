@@ -3,18 +3,18 @@ title: Ověřování a autorizace Azure Service Bus | Microsoft Docs
 description: Ověřování aplikací pro Service Bus s ověřováním pomocí sdíleného přístupového podpisu (SAS).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88066857"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517276"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Ověřování a autorizace Service Bus
 Existují dva způsoby, jak ověřit a autorizovat přístup k prostředkům Azure Service Bus: Azure Activity Directory (Azure AD) a signatury sdíleného přístupu (SAS). Tento článek obsahuje podrobné informace o použití těchto dvou typů mechanismů zabezpečení. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-Integrace Azure AD pro prostředky Service Bus poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Řízení přístupu na základě role (RBAC) můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt služby. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Service Bus (frontě, tématu atd.).
+Integrace Azure AD pro prostředky Service Bus poskytuje řízení přístupu na základě role Azure (Azure RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Službu Azure RBAC můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Service Bus (frontě, tématu atd.).
 
 Další informace o ověřování ve službě Azure AD najdete v následujících článcích:
 

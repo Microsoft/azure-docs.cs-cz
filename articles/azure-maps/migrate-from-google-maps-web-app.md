@@ -9,16 +9,34 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d7e6c5229fa6f8204ba363d9868ffa80d78ccba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fb99afef2d5e210b8aa166f016bd2b9ec409c2a2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876494"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518955"
 ---
-# <a name="migrate-a-web-app-from-google-maps"></a>Migrace webové aplikace z Map Google
+# <a name="tutorial---migrate-a-web-app-from-google-maps"></a>Kurz – migrace webové aplikace z Map Google
 
-Většina webových aplikací, které používají mapy Google, používá sadu SDK pro Google Maps V3 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Svou aplikaci můžete spustit na webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK.
+Většina webových aplikací, které používají mapy Google, používá sadu SDK pro Google Maps V3 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Svou aplikaci můžete spustit na webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK. V tomto kurzu se naučíte, jak:
+
+> [!div class="checklist"]
+> * Načtení mapy
+> * Lokalizace mapy
+> * Přidejte značky, lomené čáry a mnohoúhelníky.
+> * Zobrazit informace v překryvném okně nebo informačním okně
+> * Načtení a zobrazení dat KML a data o jednotlivých standardech JSON
+> * Značky clusteru
+> * Překrytí vrstvy dlaždice
+> * Zobrazení provozních dat
+> * Přidání překrytí základní desky
+
+Naučíte se také: 
+
+> [!div class="checklist"]
+> * Jak provádět běžné úlohy mapování pomocí Azure Maps Web SDK
+> * Osvědčené postupy pro zlepšení výkonu a uživatelského prostředí
+> * Tipy, jak zajistit, aby vaše aplikace používaly více funkcí k dispozici v Azure Maps
 
 Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapy. Příklady knihovny open source ovládacího prvku mapa jsou: cesium, leták a OpenLayers. Stále můžete migrovat aplikaci i v případě, že používá open source knihovnu ovládacího prvku mapy a nechcete používat Azure Maps Web SDK. V takovém případě připojte svoji aplikaci ke službám Azure Maps dlaždic (satelitní dlaždice[cest](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [satellite tiles](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Následující body jsou podrobně popsány v tématu použití Azure Maps v některých běžně používaných knihovench ovládacích prvků pro mapování open source.
 
@@ -33,6 +51,11 @@ Při vývoji pomocí JavaScriptu rozhraní může být užitečné jeden z násl
 - [Azure Maps reagující na komponentu](https://github.com/WiredSolutions/react-azure-maps) – reakce na reakci ovládacího prvku Azure Maps.
 - [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – komponenta Azure Maps pro aplikaci Vue.
 
+## <a name="prerequisites"></a>Předpoklady 
+
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="key-features-support"></a>Podpora klíčových funkcí
 
@@ -72,7 +95,6 @@ Níže jsou uvedeny některé klíčové rozdíly mezi službami Google Maps a A
 
 Tato kolekce obsahuje ukázky kódu pro každou platformu a každá ukázka pokrývá běžný případ použití. Je určena k tomu, aby vám usnadnila migraci webové aplikace ze sady Google Maps V3 JavaScript SDK do sady Azure Maps Web SDK. Ukázky kódu související s webovými aplikacemi jsou k dispozici v jazyce JavaScript. Azure Maps ale také poskytuje definice TypeScript jako další možnost prostřednictvím [modulu npm](how-to-use-map-control.md).
 
-
 **Témata**
 
 - [Načtení mapy](#load-a-map)
@@ -90,7 +112,6 @@ Tato kolekce obsahuje ukázky kódu pro každou platformu a každá ukázka pokr
 - [Zobrazení provozních dat](#show-traffic-data)
 - [Přidání překrytí základní desky](#add-a-ground-overlay)
 - [Přidání dat KML do mapy](#add-kml-data-to-the-map)
-
 
 ### <a name="load-a-map"></a>Načtení mapy
 
@@ -1011,7 +1032,7 @@ Přidejte a spravujte data ve zdroji dat. Připojte zdroje dat a vrstvy a potom 
 
 Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskupené datové body do vrstev pro vykreslování. Zdroj dat je schopný clusterovat stovky tisíc datových bodů. Datový bod v clusteru má následující vlastnosti:
 
-| Název vlastnosti             | Typ    | Description   |
+| Název vlastnosti             | Typ    | Popis   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Indikuje, že funkce představuje cluster. |
 | `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s `getClusterExpansionZoom` `getClusterChildren` metodami DataSource, a `getClusterLeaves` . |
@@ -1020,7 +1041,7 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 
 `DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
-| Metoda | Návratový typ | Description |
+| Metoda | Návratový typ | Popis |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
 | `getClusterExpansionZoom(clusterId: number)` | Číslo promise &lt;&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
@@ -1720,9 +1741,18 @@ Knihovny přidávají k mapě další funkce. Mnohé z těchto knihoven jsou v z
 | Knihovna geometrie      | [Atlas. Math](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)   |
 | Knihovna vizualizace | [Vrstva tepelné mapy](map-add-heat-map-layer.md) |
 
-Další informace o migraci map Google:
+## <a name="next-steps"></a>Další kroky
 
-* [Jak používat modul služeb](how-to-use-services-module.md) 
-* [Jak používat modul nástrojů pro kreslení](set-drawing-options.md)
-* [Jak používat modul služeb](how-to-use-services-module.md)
-* [Jak používat mapový ovládací prvek](how-to-use-map-control.md)
+Další informace o Azure Maps Web SDK:
+
+> [!div class="nextstepaction"]
+> [Jak používat mapový ovládací prvek](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [Jak používat modul nástrojů pro kreslení](set-drawing-options.md)
+
+> [!div class="nextstepaction"]
+> [Jak používat modul služeb](how-to-use-services-module.md)
+
+> [!div class="nextstepaction"]
+> [Jak používat modul pro prostorové vstupně-výstupní operace](how-to-use-spatial-io-module.md)

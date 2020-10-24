@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816816"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519652"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -37,7 +37,7 @@ Azure automanage také automaticky monitoruje při zjištění posunu a oprav. T
 A konečně prostředí je neuvěřitelně jednoduché.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před tím, než se pokusíte povolit službu Azure na virtuálních počítačích, je třeba zvážit několik požadavků.
 
@@ -58,7 +58,7 @@ Je také důležité si uvědomit, že automanage podporuje jenom virtuální po
 
 V tématu Virtual Machines osvědčené postupy pro úplný seznam zúčastněných služeb Azure a také na jejich podporované konfigurační profily viz [Azure automanage](virtual-machines-best-practices.md) .
 
- Do těchto zúčastněných služeb vás automaticky připojíme. Jsou zásadní pro náš dokument white paper k osvědčeným postupům, který najdete v našem [cloudovém rozhraní pro přijetí](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management).
+ Do těchto zúčastněných služeb vás automaticky připojíme. Jsou zásadní pro náš dokument white paper k osvědčeným postupům, který najdete v našem [cloudovém rozhraní pro přijetí](/azure/cloud-adoption-framework/manage/azure-server-management).
 
 Pro všechny tyto služby budeme automaticky připínat, automaticky konfigurovat, monitorovat a opravovat, pokud se zjistí posun.
 

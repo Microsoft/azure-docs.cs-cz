@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 9f2aaaa4138c483224bb3a98266e10b95b9381a4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b90f0c379310e8557f08f0f318ab6abe2c0be016
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425844"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520934"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -188,7 +188,7 @@ Image Galerie Azure – Publikováno Microsoftem | Podporováno | Podporováno, 
 Image Galerie Azure – Publikováno třetí stranou | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
 Vlastní image – Publikováno třetí stranou | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
 Virtuální počítače migrované pomocí Site Recovery | Podporováno | Pokud se virtuální počítač VMware nebo fyzický počítač migruje do Azure pomocí Site Recovery, musíte odinstalovat starší verzi služby mobility spuštěnou na počítači a restartovat počítač před tím, než ho budete replikovat do jiné oblasti Azure.
-Zásady RBAC | Nepodporováno | Zásady řízení přístupu na základě role (RBAC) na virtuálních počítačích se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti.
+Zásady Azure RBAC | Nepodporováno | Zásady řízení přístupu na základě role Azure na virtuálních počítačích se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti.
 Rozšíření | Nepodporováno | Rozšíření se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti. Po převzetí služeb při selhání je potřeba ji nainstalovat ručně.
 Skupiny umístění blízkosti | Podporováno | Virtuální počítače umístěné ve skupině umístění blízkosti se dají chránit pomocí Site Recovery.
 

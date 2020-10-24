@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: Zhchia
-ms.openlocfilehash: 123f35154c3b87ff1ed479084f5e9dfa35043b9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe48cef0fb235d217f95012e81d7daf501928300
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287198"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518564"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>Kurz: Konfigurace OfficeSpace softwaru pro Automatické zřizování uživatelů
 
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v OfficeSpace
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -89,7 +89,7 @@ Před konfigurací OfficeSpace softwaru pro Automatické zřizování uživatel�
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v OfficeSpace softwaru na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro software OfficeSpace podle pokynů uvedených v [kurzu OfficeSpace Software Single Signing](https://docs.microsoft.com/azure/active-directory/saas-apps/officespace-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro software OfficeSpace podle pokynů uvedených v [kurzu OfficeSpace Software Single Signing](./officespace-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
 
 ### <a name="to-configure-automatic-user-provisioning-for-officespace-software-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro OfficeSpace Software v Azure AD:
 
@@ -145,7 +145,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
@@ -153,4 +153,3 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 ## <a name="next-steps"></a>Další kroky
 
 * [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
-

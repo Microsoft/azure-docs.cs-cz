@@ -3,12 +3,12 @@ title: Ověření aplikace pro přístup k Azure Service Bus entit
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k Azure Service Bus entit (fronty, témata atd.).
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064821"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518224"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Ověřování a autorizace aplikace s Azure Active Directory pro přístup k Azure Service Busm entitám
 Azure Service Bus podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Service Bus entit (fronty, témata, odběry nebo filtry). Pomocí Azure AD můžete použít řízení přístupu na základě role Azure (Azure RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt aplikace. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -131,7 +131,7 @@ Po zaregistrování aplikace a udělení oprávnění k odesílání a přijím�
 Seznam scénářů, pro které se podporují tokeny, najdete v části [scénáře](https://aka.ms/msal-net-scenarios) v [knihovně Microsoft Authentication Library (MSAL) pro](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) úložiště GitHub .NET.
 
 ## <a name="sample-on-github"></a>Ukázka na GitHubu
-Viz následující ukázka na GitHubu: [role – základní řízení přístupu pro Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
+Viz následující ukázka na GitHubu: [řízení přístupu na základě role Azure pro Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl). 
 
 Použijte možnost **přihlášení pomocí tajného klíče klienta** , nikoli možnost **interaktivního přihlášení uživatele** . Když použijete možnost tajný klíč klienta, nezobrazí se místní okno. Aplikace využívá ID tenanta a ID aplikace pro ověřování. 
 

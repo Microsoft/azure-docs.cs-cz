@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 82cd39fdefef477e3761d8d7ab771301cea962e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b81dfec5e8ee828fba202f14967a4583bde32ed3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92443217"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503755"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace HootSuite pro Automatické zřizování uživatelů
 
@@ -30,12 +30,12 @@ Tento kurz popisuje kroky, které je třeba provést v HootSuite i Azure Active 
 > * Zřizování skupin a členství ve skupinách v HootSuite
 > * [Jednotné přihlašování](./hootsuite-tutorial.md) k HootSuite (doporučeno)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
 * [Tenant Azure AD](../develop/quickstart-create-new-tenant.md) 
-* Uživatelský účet v Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (např. správce aplikací, správce cloudových aplikací, vlastník aplikací nebo globální správce) 
+* Uživatelský účet ve službě Azure AD s [oprávněním](../users-groups-roles/directory-assign-admin-roles.md) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
 * Uživatelský účet s [HootSuite](http://www.hootsuite.com/) , který má oprávnění **Spravovat člena** v organizaci.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
@@ -49,7 +49,7 @@ dev.support@hootsuite.comPokud chcete získat dlouhý tajný token, který budet
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání HootSuite z Galerie aplikací Azure AD
 
-Přidejte HootSuite z Galerie aplikací Azure AD a začněte spravovat zřizování pro HootSuite. Pokud jste dříve nastavili HootSuite pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](../manage-apps/add-application-portal.md). 
+Přidejte HootSuite z Galerie aplikací Azure AD a začněte spravovat zřizování pro HootSuite. Pokud jste již dříve HootSuite nastavení pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](../manage-apps/add-application-portal.md). 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definování uživatelů, kteří budou v rozsahu zřizování 
 
@@ -108,18 +108,30 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |displayName|Řetězec|
    |preferredLanguage|Řetězec|
    |timezone|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: HootSuite: 2.0: uživatel: organizationIds|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: HootSuite: 2.0: uživatel: teamIds|Řetězec|
+   |name.givenName|Řetězec|
+   |name.familyName|Řetězec|
 
-10. Pokud chcete povolit službu Azure AD Provisioning pro HootSuite, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny**.
+
+11. Zkontrolujte atributy skupiny synchronizované z Azure AD do HootSuite v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v HootSuite pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
+
+      |Atribut|Typ|
+      |---|---|
+      |displayName|Řetězec|
+      |externalId|Řetězec|
+      |členy|Referenční informace|
+
+12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Pokud chcete povolit službu Azure AD Provisioning pro HootSuite, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
     ![Zapnutý přepínač Stav zřizování](common/provisioning-toggle-on.png)
 
-11. Definujte uživatele nebo skupiny, které chcete zřídit pro HootSuite, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+14. Definujte uživatele nebo skupiny, které chcete zřídit pro HootSuite, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-12. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
+15. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
@@ -132,8 +144,12 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 * Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
 
+## <a name="change-log"></a>Protokol změn
 
-## <a name="additional-resources"></a>Další zdroje
+* 10/22/2020 – byla přidána podpora atributů uživatele "název. jméno a název. rodina". Vlastní atributy rozšíření "organizationIds" a "teamIds" byly pro uživatele odebrány.
+Přidání podpory pro atributy skupin "DisplayName", "Members" a "externalId".
+
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

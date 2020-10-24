@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad5ebaf7eef5b404f7849b79694facf1efd01b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287317"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519435"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak vytvořit sdílenou složku Azure ověřenou �
 
 Tento proces používá Active Directory Domain Services (služba AD DS), což je adresářová služba Prem. Pokud hledáte informace o tom, jak vytvořit kontejner profilu FSLogix pomocí Azure služba AD DS, přečtěte si téma [vytvoření kontejneru profilu FSLogix se soubory Azure](create-profile-container-adds.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že je váš řadič domény synchronizovaný do Azure a je možné ho přeložit ze služby Azure Virtual Network (VNET), ke které jsou hostitelé relace připojení.
 
@@ -29,7 +29,7 @@ Nejdřív budete muset nastavit účet úložiště Azure Files.
 
 Nastavení účtu úložiště:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Na panelu hledání vyhledejte **účet úložiště** .
 
@@ -86,7 +86,7 @@ Pokud chcete nakonfigurovat oprávnění na úrovni sdílené složky, přiřaď
 >[!NOTE]
 >Účty nebo skupiny, kterým přiřazujete oprávnění, musí být vytvořené v dané doméně a synchronizované s Azure AD. Účty vytvořené v Azure AD nebudou fungovat.
 
-Přiřazení oprávnění řízení přístupu na základě role (RBAC):
+Přiřazení oprávnění řízení přístupu na základě role Azure (Azure RBAC):
 
 1. Otevřete web Azure Portal.
 
@@ -106,7 +106,7 @@ Přiřazení oprávnění řízení přístupu na základě role (RBAC):
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Přiřazení oprávnění uživatelů ke sdílené složce Azure
 
-Jakmile uživatelům přiřadíte oprávnění RBAC, jako další krok budete muset nakonfigurovat oprávnění NTFS.
+Po přiřazení oprávnění Azure RBAC vašim uživatelům budete muset nakonfigurovat oprávnění NTFS.
 
 Abyste mohli začít, musíte si od Azure Portal víc věcí:
 

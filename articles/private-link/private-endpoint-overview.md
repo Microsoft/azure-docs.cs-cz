@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277513"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508025"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je privátní koncový bod Azure?
 
@@ -133,11 +133,11 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření privátního koncového bodu pro SQL Database pomocí portálu ](create-private-endpoint-portal.md)
-- [Vytvoření privátního koncového bodu pro SQL Database pomocí prostředí PowerShell ](create-private-endpoint-powershell.md)
-- [Vytvoření privátního koncového bodu pro SQL Database pomocí rozhraní příkazového řádku ](create-private-endpoint-cli.md)
-- [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu ](create-private-endpoint-storage-portal.md)
-- [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu ](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí portálu](create-private-endpoint-portal.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí prostředí PowerShell](create-private-endpoint-powershell.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
+- [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
+- [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)
 - [Vytvoření vlastního privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí portálu](../postgresql/howto-configure-privatelink-portal.md)
 - [Vytvoření vlastního privátního odkazu pro Azure Database for PostgreSQL s jedním serverem pomocí rozhraní příkazového řádku](../postgresql/howto-configure-privatelink-cli.md)
@@ -145,3 +145,4 @@ Následující tabulka obsahuje seznam známých omezení při použití privát
 - [Vytvoření vlastního privátního odkazu pro Azure Database for MySQL pomocí rozhraní příkazového řádku](../mysql/howto-configure-privatelink-cli.md)
 - [Vytvoření vlastního privátního odkazu pro Azure Database for MariaDB pomocí portálu](../mariadb/howto-configure-privatelink-portal.md)
 - [Vytvoření vlastního privátního odkazu pro Azure Database for MariaDB pomocí rozhraní příkazového řádku](../mariadb/howto-configure-privatelink-cli.md)
+- [Vytvoření vlastního privátního odkazu pro Azure Key Vault pomocí portálu a CLI](../key-vault/general/private-link-service.md)

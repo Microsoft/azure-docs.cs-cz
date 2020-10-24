@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569478"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503262"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Bezpečné načtení dat pomocí synapse SQL
 
@@ -97,7 +97,7 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
     > [!IMPORTANT]
     > Zadejte roli vlastníka **dat objektu BLOB** **úložiště** , přispěvatele nebo čtenáře Azure. Tyto role se liší od předdefinovaných rolí vlastník, přispěvatel a čtenář v Azure. 
 
-    ![Udělení oprávnění RBAC k načtení](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Udělení oprávnění Azure RBAC k načtení](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 4. Nyní můžete spustit příkaz COPY, který určuje spravovanou identitu:
 
@@ -118,7 +118,7 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
     > [!IMPORTANT]
     > Zadejte roli vlastníka **dat objektu BLOB** **úložiště** , přispěvatele nebo čtenáře Azure. Tyto role se liší od předdefinovaných rolí vlastník, přispěvatel a čtenář v Azure.
 
-    ![Udělení oprávnění RBAC k načtení](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![Udělení oprávnění Azure RBAC k načtení](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. Projděte si následující [dokumentaci](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)a nakonfigurujte ověřování Azure AD. 
 

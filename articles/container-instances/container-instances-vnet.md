@@ -4,12 +4,12 @@ description: Naučte se, jak nasadit skupinu kontejnerů do nové nebo existují
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: e5a31742956c2ba9bd15026f7667c971c20694a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f61bc74f79c1712c3c662be66384c5ef689eb7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303004"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518122"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do virtuální sítě Azure
 
@@ -40,7 +40,7 @@ Po nasazení první skupiny kontejnerů pomocí této metody můžete nasadit do
 
 ### <a name="example"></a>Příklad
 
-Následující příkaz [AZ Container Create][az-container-create] určí nastavení pro novou virtuální síť a podsíť. Zadejte název skupiny prostředků, která byla vytvořena v oblasti, kde jsou [k dispozici](container-instances-region-availability.md#availability---virtual-network-deployment)skupiny kontejnerů nasazení ve virtuální síti. Tento příkaz nasadí veřejný kontejner Microsoft [ACI-HelloWorld][aci-helloworld] , který spouští malý Node.js webový server obsluhující statickou webovou stránku. V další části nasadíte druhou skupinu kontejnerů do stejné podsítě a otestujete komunikaci mezi dvěma instancemi kontejneru.
+Následující příkaz [AZ Container Create][az-container-create] určí nastavení pro novou virtuální síť a podsíť. Zadejte název skupiny prostředků, která byla vytvořena v oblasti, kde jsou [k dispozici](container-instances-region-availability.md)skupiny kontejnerů nasazení ve virtuální síti. Tento příkaz nasadí veřejný kontejner Microsoft [ACI-HelloWorld][aci-helloworld] , který spouští malý Node.js webový server obsluhující statickou webovou stránku. V další části nasadíte druhou skupinu kontejnerů do stejné podsítě a otestujete komunikaci mezi dvěma instancemi kontejneru.
 
 ```azurecli
 az container create \

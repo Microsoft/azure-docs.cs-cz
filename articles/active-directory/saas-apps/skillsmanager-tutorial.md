@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 092cac4790bf93aad452f79292540c3a49470c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bdb31ff36175fbb70d4befa58187214c707359c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552165"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92510104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>Kurz: Azure Active Directory integrace se správcem dovedností
 
@@ -27,10 +27,10 @@ Integrací manažera dovedností do Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili ke Správci dovedností (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s využitím manažera dovedností potřebujete následující položky:
 
@@ -179,18 +179,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-skills-manager-test-user"></a>Vytvořit testovacího uživatele manažera dovedností
 
-V této části vytvoříte uživatele s názvem Britta Simon ve Správci dovedností. Práce s [týmem podpory manažera dovedností](https://www.ibm.com/support/uk/?lnk=msu_uk) umožňuje přidávat uživatele na platformě vedoucích dovedností. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon ve Správci dovedností. Práce s [týmem podpory manažera dovedností](https://www.ibm.com/support/uk/?lnk=msu_uk) umožňuje přidávat uživatele na platformě vedoucích dovedností. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici manažera dovedností na přístupovém panelu byste měli být automaticky přihlášení ke Správci dovedností, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici manažera dovedností na přístupovém panelu byste měli být automaticky přihlášení ke Správci dovedností, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

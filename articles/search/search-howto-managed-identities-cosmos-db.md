@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 1d2185509631bf03717e418e485cfcaad1e21c63
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3412bfe95951a3fea035ffc6452719ede5e66d4d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102689"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519601"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity
 
@@ -29,7 +29,7 @@ Než se dozvíte víc o této funkci, doporučujeme vám pochopit, co indexer je
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 – zapnout spravovanou identitu přiřazenou systémem
 
-Když je povolená spravovaná identita přiřazená systémem, Azure vytvoří identitu pro vaši vyhledávací službu, která se dá použít k ověření dalších služeb Azure v rámci stejného tenanta a předplatného. Tuto identitu pak můžete použít v přiřazeních řízení přístupu na základě role (RBAC), které umožňuje přístup k datům během indexování.
+Když je povolená spravovaná identita přiřazená systémem, Azure vytvoří identitu pro vaši vyhledávací službu, která se dá použít k ověření dalších služeb Azure v rámci stejného tenanta a předplatného. Tuto identitu pak můžete použít v přiřazeních řízení přístupu na základě role v Azure (Azure RBAC), které umožňuje přístup k datům během indexování.
 
 ![Zapnout spravovanou identitu přiřazenou systémem](./media/search-managed-identities/turn-on-system-assigned-identity.png "Zapnout spravovanou identitu přiřazenou systémem")
 
@@ -85,7 +85,7 @@ Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat násled
 | **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
 |**textový**| Povinná hodnota. Musí být `cosmosdb` . |
 |**přihlašovací údaje** | Povinná hodnota. <br/><br/>Při připojování pomocí spravované identity by měl mít formát **pověření** : *Database = [název databáze]; ResourceId = [Resource-ID-String];(ApiKind = [typ rozhraní API];)*<br/> <br/>Formát ResourceId: *ResourceID =/Subscriptions/**ID vašeho předplatného**/resourceGroups/**název vaší skupiny prostředků**/Providers/Microsoft.DocumentDB/databaseAccounts/**název vašeho účtu služby Cosmos DB**/;*<br/><br/>V případě kolekcí SQL nevyžaduje připojovací řetězec ApiKind.<br/><br/>Pro kolekce MongoDB přidejte **ApiKind = MongoDB** do připojovacího řetězce. <br/><br/>V případě grafů Gremlin a tabulek Cassandra si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.<br/>|
-| **container (kontejner)**  | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
+| **vnitřního** | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
 | **dataChangeDetectionPolicy** | Doporučeno |
 |**dataDeletionDetectionPolicy** | Volitelné |
 

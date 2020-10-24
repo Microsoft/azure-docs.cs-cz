@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a52fc28d99e0f072323e5042257baec9bf98ecb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979715"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518378"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním pomocí služby SharePoint v místním prostředí
 
@@ -133,7 +133,7 @@ Konfigurace jednotného přihlašování Azure AD pomocí služby SharePoint v m
     Spusťte následující příkazy, abyste nakonfigurovali nového důvěryhodného zprostředkovatele identity.
 
     > [!TIP]
-    > Pokud s prostředím PowerShell ještě začínáte a chcete získat další informace o tom, jak prostředí PowerShell funguje, podívejte se na téma [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps).
+    > Pokud s prostředím PowerShell ještě začínáte a chcete získat další informace o tom, jak prostředí PowerShell funguje, podívejte se na téma [SharePoint PowerShell](/powershell/sharepoint/overview?view=sharepoint-ps).
 
 
     ```
@@ -287,4 +287,4 @@ Můžete mít další scénáře, ve kterých chcete pro interní uživatele pos
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování služby SharePoint v místním prostředí můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+Po nakonfigurování služby SharePoint v místním prostředí můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

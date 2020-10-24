@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 10/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 017dabf16384e53d924ed69f36b64050fcacb5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9aae410d320713650704e175006a6593b30f52a7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934782"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504152"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Kurz: středně náročné image produktů elektronického obchodování s využitím Azure Content Moderator
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Kompletní vzorový kód je k dispozici v [ukázkách úložiště moderování katalogu elektronického obchodování](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) na GitHubu.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Předpoklady
 

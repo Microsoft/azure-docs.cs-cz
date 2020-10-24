@@ -3,12 +3,12 @@ title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495219"
+ms.locfileid: "92518020"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -42,13 +42,13 @@ Další informace o cenových úrovních, včetně Event Hubs úrovně Dedicated
 
 Azure Event Hubs je k dispozici ve všech podporovaných oblastech Azure. Seznam najdete na stránce [oblastí Azure](https://azure.microsoft.com/regions/) .  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Můžu použít jedno připojení AMQP k odesílání a příjmu z několika Center událostí?
+### <a name="can-i-use-a-single-advanced-message-queuing-protocol-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Můžu použít jedno rozšířený protokol řízení front zpráv (AMQP) (AMQP) připojení pro odesílání a příjem z několika Center událostí?
 
 Ano, pokud jsou všechna centra událostí ve stejném oboru názvů.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Jaká je maximální doba uchování pro události?
 
-Úroveň Standard Event Hubs v současné době podporuje maximální dobu uchování po dobu sedmi dnů. Centra událostí nejsou zamýšlená jako trvalá úložiště dat. Doby uchování delší než 24 hodin jsou určené pro scénáře, ve kterých je vhodné přehrát datový proud událostí do stejných systémů. například pro školení nebo ověření nového modelu strojového učení pro stávající data. Pokud budete potřebovat dobu uchovávání zpráv déle než 7 dní, povolením [Event Hubsho zachycení](event-hubs-capture-overview.md) v centru událostí získáte data z centra událostí do účtu úložiště nebo účtu služby Azure Data Lake, který zvolíte. Povolení služby Capture účtuje poplatek na základě zakoupených jednotek propustnosti.
+Úroveň Standard Event Hubs v současné době podporuje maximální dobu uchování po dobu sedmi dnů. Centra událostí nejsou zamýšlená jako trvalá úložiště dat. Doby uchování delší než 24 hodin jsou určené pro scénáře, ve kterých je vhodné přehrát datový proud událostí do stejných systémů. Například pro školení nebo ověření nového modelu strojového učení pro stávající data. Pokud budete potřebovat dobu uchovávání zpráv déle než 7 dní, povolením [Event Hubsho zachycení](event-hubs-capture-overview.md) v centru událostí získáte data z centra událostí do účtu úložiště nebo účtu služby Azure Data Lake, který zvolíte. Povolení služby Capture účtuje poplatek na základě zakoupených jednotek propustnosti.
 
 Můžete nakonfigurovat dobu uchování zachycených dat ve vašem účtu úložiště. Funkce **správy životního cyklu** Azure Storage nabízí bohatou zásadu založenou na pravidlech pro účty pro obecné účely v2 a BLOB Storage. Zásady můžete použít k převodu dat do příslušných úrovní přístupu nebo vypršení jejich platnosti na konci životního cyklu dat. Další informace najdete v tématu [Správa životního cyklu služby Azure Blob Storage](../storage/blobs/storage-lifecycle-management-concepts.md). 
 
@@ -56,12 +56,12 @@ Můžete nakonfigurovat dobu uchování zachycených dat ve vašem účtu úlož
 Event Hubs emituje vyčerpávající metriky, které poskytují stav vašich prostředků [Azure monitor](../azure-monitor/overview.md). Také vám umožní vyhodnotit celkový stav služby Event Hubs nejen na úrovni oboru názvů, ale také na úrovni entity. Přečtěte si informace o tom, jaké monitorování se nabízí pro [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Kde Azure Event Hubs ukládá zákaznická data?
-Azure Event Hubs ukládá zákaznická data. Tato data se automaticky ukládají v Event Hubs v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblastech, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
+Azure Event Hubs ukládá zákaznická data. Tato data se automaticky ukládají Event Hubs v jedné oblasti, takže tato služba automaticky splňuje požadavky na umístění dat v oblasti, včetně těch, které jsou uvedené v [Centru zabezpečení](https://azuredatacentermap.azurewebsites.net/).
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Jaké porty potřebuji v bráně firewall otevřít? 
 K posílání a přijímání zpráv můžete použít následující protokoly s Azure Service Bus:
 
-- Rozšířený protokol řízení front zpráv (AMQP)
+- AMQP
 - HTTP
 - Apache Kafka
 
@@ -128,12 +128,23 @@ Event Hubs poskytuje koncový bod Kafka, který mohou používat vaše stávají
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Jaké změny konfigurace je potřeba udělat, aby se moje stávající aplikace mohla spojit s Event Hubs?
 Pokud se chcete připojit k centru událostí, budete muset aktualizovat konfigurace klienta Kafka. Provede se vytvořením oboru názvů Event Hubs a získání [připojovacího řetězce](event-hubs-get-connection-string.md). Změňte Bootstrap. Server tak, aby ukazovaly Event Hubs plně kvalifikovaný název domény a port na 9093. Aktualizujte sasl.jaas.config a nasměrujte klienta Kafka na koncový bod Event Hubs (což je připojovací řetězec, který jste získali), se správným ověřováním, jak je uvedeno níže:
 
-Bootstrap. Servers = {YOUR. EVENTHUBS. FQDN}: 9093 Request. Timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanizmus = obyčejný sasl.jaas.config= org. Apache. Kafka. Common. Security. obyčejný. PlainLoginModule Required username = "$ConnectionString" Password = "{a. EVENTHUBS. Vázán. ŘETĚZEC} ";
+```properties
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```
 
 Příklad:
 
-Bootstrap. Servers = dummynamespace. ServiceBus. Windows. NET: 9093 Request. Timeout. MS = 60000 Security. Protocol = SASL_SSL SASL. mechanismus = obyčejný sasl.jaas.config= org. Apache. Kafka. Common. Security. obyčejný. PlainLoginModule Required username = "$ConnectionString" Password = "Endpoint = Sb://dummynamespace.ServiceBus.Windows.NET/; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = XXXXXXXXXXXXXXXXXXXXX ";
-
+```properties
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
+```
 Poznámka: Pokud sasl.jaas.config ve vašem rozhraní není podporovaná konfigurace, vyhledejte konfigurace používané k nastavení uživatelského jména a hesla SASL a použijte je. Nastavte uživatelské jméno na $ConnectionString a heslo pro připojovací řetězec Event Hubs.
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Jaká je velikost zprávy nebo události pro Event Hubs?
@@ -259,7 +270,7 @@ Další informace o naší smlouvě SLA najdete na stránce [smlouvy o úrovni s
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>Jak můžu cílit na konkrétní verzi sady Azure Storage SDK při použití Azure Blob Storage jako úložiště kontrolních bodů?
-Pokud spustíte tento kód v Azure Stackovém centru, dojde k chybám za běhu, pokud necílíte na konkrétní verzi rozhraní API úložiště. Důvodem je, že sada Event Hubs SDK používá nejnovější dostupné rozhraní API Azure Storage dostupné v Azure, které nemusí být k dispozici na vaší platformě služby Azure Stack hub. Centrum Azure Stack může podporovat jinou verzi sady SDK pro úložiště objektů blob, než jsou ta, která jsou běžně dostupná v Azure. Pokud jako úložiště kontrolního bodu používáte Azure blogu Storage, podívejte se na [podporovanou verzi rozhraní API Azure Storage pro sestavení centra Azure Stack](/azure-stack/user/azure-stack-acs-differences?#api-version) a cílení na verzi v kódu. 
+Pokud spustíte tento kód v Azure Stackovém centru, dojde k chybám za běhu, pokud necílíte na konkrétní verzi rozhraní API úložiště. Důvodem je, že sada Event Hubs SDK používá nejnovější dostupné rozhraní API Azure Storage dostupné v Azure, které nemusí být k dispozici na vaší platformě služby Azure Stack hub. Centrum Azure Stack může podporovat jinou verzi sady SDK služby Storage blob, než která je obvykle dostupná v Azure. Pokud jako úložiště kontrolního bodu používáte Azure blogu Storage, podívejte se na [podporovanou verzi rozhraní API Azure Storage pro sestavení centra Azure Stack](/azure-stack/user/azure-stack-acs-differences?#api-version) a cílení na verzi v kódu. 
 
 Pokud například používáte v Azure Stack centra verze 2005, nejvyšší dostupná verze služby úložiště je verze 2019-02-02. Ve výchozím nastavení používá Klientská knihovna Event Hubs SDK nejvyšší dostupnou verzi v Azure (2019-07-07 v době vydání sady SDK). V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2019-02-02. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v následujících ukázkách pro jazyky C#, Java, Python a JavaScript a TypeScript.  
 

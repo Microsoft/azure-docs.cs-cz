@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c8ec4b68dc774b52ad621ff3e965481de680b6ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079995"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519261"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>Kurz: integrace správce Wandera RADARu pomocí Azure Active Directory
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat správce Wandera RADAR pomocí Azure A
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Wandera PAPRSKového správce s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Správce Wandera PAPRSKů podporuje **IDP** iniciované jednotné přihlašování.
-* Po konfiguraci správce Wandera pro PAPRSKy můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po konfiguraci správce Wandera pro PAPRSKy můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-wandera-radar-admin-from-the-gallery"></a>Přidání správce PAPRSKů Wandera z Galerie
 
@@ -156,19 +156,18 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ### <a name="create-wandera-radar-admin-test-user"></a>Vytvořit testovacího uživatele pro správce Wandera PAPRSKů
 
-V této části vytvoříte uživatele s názvem B. Simon ve Správci Wandera pro PAPRSKy. Pokud chcete přidat uživatele do platformy pro správu Wandera s paprsky, pracujte s [týmem podpory pro správce](https://www.wandera.com/about-wandera/contact/#supportsection) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem B. Simon ve Správci Wandera pro PAPRSKy. Pokud chcete přidat uživatele do platformy pro správu Wandera s paprsky, pracujte s [týmem podpory pro správce](https://www.wandera.com/about-wandera/contact/#supportsection) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Správce Wandera PAPRSKů na přístupovém panelu byste se měli automaticky přihlášeni ke Správci Wandera PAPRSKů, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici Správce Wandera PAPRSKů na přístupovém panelu byste se měli automaticky přihlášeni ke Správci Wandera PAPRSKů, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

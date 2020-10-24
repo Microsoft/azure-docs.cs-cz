@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fbc42864761360d252ed62cea1aef6f2937b599
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856819"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516065"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SignalFx
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat SignalFx s Azure Active Directory (Azu
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k SignalFx svým účtům Azure AD; ani
 * Spravujte svoje účty na jednom místě (Azure Portal).
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -42,7 +42,7 @@ V tomto kurzu budete konfigurovat a testovat jednotné přihlašování Azure AD
 
 * SignalFx podporuje jednotné přihlašování **IDP** .
 * SignalFx podporuje zřizování uživatelů **jenom v čase** .
-* Po nakonfigurování SignalFx můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování SignalFx můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="step-1-add-the-signalfx-application-in-azure"></a>Krok 1: Přidání aplikace SignalFx v Azure
 
@@ -156,7 +156,7 @@ Přečtěte si následující informace týkající se testování jednotného p
 
 * Při prvním přihlášení se k novému testovacímu uživateli Azure vynutí změnu hesla. V takovém případě se přihlašovací proces jednotného přihlašování nedokončí. testovací uživatel bude přesměrován na Azure Portal. Chcete-li vyřešit potíže, měl by testovací uživatel změnit heslo, přejít na přihlašovací stránku SignalFx nebo na přístupový panel a akci opakovat.
     * Po kliknutí na dlaždici SignalFx na přístupovém panelu byste měli být automaticky přihlášeni k SignalFx. 
-        * Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+        * Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 * K aplikaci SignalFx se dá získat přístup prostřednictvím přístupového panelu nebo vlastní přihlašovací stránky přiřazené k organizaci. Testovací uživatel by měl otestovat integraci od některého z těchto umístění.
     * Testovací uživatel může použít přihlašovací údaje vytvořené dříve v tomto procesu pro **b. simon \@ contoso.com**.
@@ -167,14 +167,14 @@ Přečtěte si následující informace týkající se testování jednotného p
 
 * SignalFx podporuje vytvoření uživatelem **pouze v čase** , což znamená, že pokud uživatel v SignalFx neexistuje, bude účet uživatele vytvořen při prvním pokusu o přihlášení.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
 - [Vyzkoušejte si SignalFx s Azure AD](https://aad.portal.azure.com/)

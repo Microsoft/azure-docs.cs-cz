@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý start: Začínáme se službou Azure Sentinel'
-description: V tomto rychlém startu se dozvíte, jak rychle zobrazit a monitorovat, co se děje ve vašem prostředí pomocí funkce Azure Sentinel. 
+description: V tomto rychlém startu se dozvíte, jak rychle zobrazit a monitorovat, co se děje ve vašem prostředí pomocí funkce Azure Sentinel.
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208222"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516949"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Rychlý start: Začínáme se službou Azure Sentinel
 
@@ -80,10 +80,10 @@ Pokud chcete přidat novou dlaždici, můžete ji přidat do existujícího seš
 Můžete vytvořit nový sešit úplně od začátku nebo použít vestavěný sešit jako základ pro nový sešit.
 
 1. Chcete-li vytvořit nový sešit od začátku, vyberte **sešity** a potom **+ nový sešit**.
-2. Vyberte předplatné, ve kterém se sešit vytvoří, a sdělte mu popisný název. Každý sešit je prostředek Azure, podobně jako jakýkoli jiný, a k definování a omezení přístupu k nim můžete přiřadit role pro IT (RBAC). 
+2. Vyberte předplatné, ve kterém se sešit vytvoří, a sdělte mu popisný název. Každý sešit je prostředek Azure, stejně jako jiný, a k definování a omezení toho, kdo může mít přístup, můžete přiřadit role pro IT (Azure RBAC). 
 3. Pokud ho chcete povolit zobrazení v sešitech a připnout vizualizace na, budete ho muset sdílet. Klikněte na **sdílet** a pak na **Spravovat uživatele**. 
  
-1. Použijte přiřazení **přístupových oprávnění** a **rolí** stejně jako u všech ostatních prostředků Azure. Další informace najdete v tématu [sdílení sešitů Azure pomocí RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Použijte přiřazení **přístupových oprávnění** a **rolí** stejně jako u všech ostatních prostředků Azure. Další informace najdete v tématu [sdílení sešitů Azure pomocí služby Azure RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
 ## <a name="new-workbook-examples"></a>Příklady nových sešitů

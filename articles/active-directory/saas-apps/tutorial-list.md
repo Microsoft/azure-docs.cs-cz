@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 14a25559b1eddd4adb58ae2106e8c9e92873ea48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eeddecbec31ec1bfa73cf956deb4c50809c50e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751259"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521942"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Kurzy integrace aplikací SaaS s Azure Active Directory
 
@@ -25,7 +25,7 @@ Abychom vám pomohli integrovat aplikace SaaS (Cloud-Enabled [software jako slu�
 
 Seznam všech aplikací SaaS, které byly předem integrovány do služby Azure AD, najdete v [tržišti služby Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
 
-Použijte [portál aplikační sítě](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) k podání žádosti o přidání aplikace s povoleným [SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) do galerie pro Automatické zřizování nebo pro přidání aplikace s podporou SAML/OIDC do galerie pro jednotné přihlašování.
+Použijte [portál aplikační sítě](../azuread-dev/howto-app-gallery-listing.md) k podání žádosti o přidání aplikace s povoleným [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) do galerie pro Automatické zřizování nebo pro přidání aplikace s podporou SAML/OIDC do galerie pro jednotné přihlašování.
 
 ## <a name="quick-links"></a>Rychlé odkazy
 
@@ -34,7 +34,7 @@ Použijte [portál aplikační sítě](https://docs.microsoft.com/azure/active-d
 | ![logo – Atlassian Cloud](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Atlassian Cloud – zřizování uživatelů](atlassian-cloud-provisioning-tutorial.md)|
 | ![logo – ServiceNow](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow – zřizování uživatelů](servicenow-provisioning-tutorial.md)|
 | ![logo – časová rezerva](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Časová rezerva – zřizování uživatelů](slack-provisioning-tutorial.md)|
-| ![logo – SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors – zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial) |
+| ![logo – SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors – zřizování uživatelů](./sap-successfactors-inbound-provisioning-tutorial.md) |
 | ![logo – Workday](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Workday – zřizování uživatelů](workday-inbound-tutorial.md)|
 
 Pokud chcete najít další kurzy, použijte obsah na levé straně.
@@ -47,7 +47,7 @@ Pokud chcete najít další kurzy, použijte obsah na levé straně.
 | ![logo – cloudová služba Alibaba (jednotné přihlašování k rolím)](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (jednotné přihlašování k rolím)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![logo – Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform – zřizování uživatelů](google-apps-provisioning-tutorial.md) |
 | ![logo – Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce – zřizování uživatelů](salesforce-provisioning-tutorial.md) |
-| ![logo – platforma cloud identity SAP](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [Platforma SAP Cloud identity](saphana-tutorial.md)|[Platforma SAP Cloud identity – zřizování](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
+| ![logo – platforma cloud identity SAP](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [Platforma SAP Cloud identity](saphana-tutorial.md)|[Platforma SAP Cloud identity – zřizování](./sap-cloud-platform-identity-authentication-provisioning-tutorial.md) |
 
 ## <a name="oneclick-sso"></a>Jednotné přihlašování OneClick
 

@@ -11,23 +11,23 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 71b40fe903e5a837046b9b29f62ef4875e3139e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 001d139e7fc140f41fa94ea0c6f32d0b08036a9a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545913"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519772"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zscaler Beta pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést kroky, které je třeba provést v Zscaler Beta a Azure Active Directory (Azure AD) a nakonfigurovat tak, aby služba Azure AD automaticky zřídila a zrušila zřizování uživatelů a skupin Zscaler Beta.
 
 > [!NOTE]
-> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující:
 
@@ -66,7 +66,7 @@ Azure Active Directory používá koncept nazvaný "přiřazení" k určení už
 
 Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé a skupiny ve službě Azure AD potřebují přístup k Zscaler Beta verzi. Až se rozhodnete, můžete těmto uživatelům nebo skupinám přiřadit Zscaler Beta podle pokynů uvedených tady:
 
-* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-beta"></a>Důležité tipy pro přiřazení uživatelů k Zscaler Beta
 
@@ -137,7 +137,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování beta Zscaler](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](./../active-directory-saas-scoping-filters.md).
+14. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 15. Pokud chcete povolit službu Azure AD Provisioning pro Zscaler Beta, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
@@ -153,16 +153,16 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Zscaler Beta verzi.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../active-directory-saas-provisioning-reporting.md).
+* [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/zscaler-beta-provisioning-tutorial/tutorial-general-01.png

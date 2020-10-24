@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: baf528e1b4ab7e323b69574729669d09692741cc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148153"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503517"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Vytvoření a použití interní Load Balancer App Service Environment 
 
@@ -104,22 +104,22 @@ Když použijete externí pomocného Správce služby, aplikace vytvořené ve v
 
 Postup konfigurace DNS na vlastním serveru DNS pomocí pomocného mechanismu pro interního nástroje:
 
-1. vytvořit zónu pro <ASE name> . appserviceenvironment.NET
+1. Vytvořte zónu pro &lt; název pomocného mechanismu &gt; . appserviceenvironment.NET
 2. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
 3. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
-4. vytvoření zóny v <ASE name> . appserviceenvironment.NET s názvem SCM
+4. vytvoření zóny v &lt; názvu pomocného mechanismu &gt; . appserviceenvironment.NET s názvem SCM
 5. Vytvořte v zóně SCM záznam A, který odkazuje na IP adresu interního nástroje.
 
 Postup při konfiguraci DNS v privátních zónách Azure DNS:
 
-1. vytvořit privátní zónu Azure DNS s názvem <ASE name> . appserviceenvironment.NET
+1. vytvořit privátní zónu Azure DNS s názvem &lt; pomocného jména &gt; . appserviceenvironment.NET
 2. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
 3. Vytvořte v této zóně záznam A, který odkazuje na IP adresu interního nástroje.
 4. Vytvořte v této zóně záznam A, který odkazuje *. SCM na IP adresu interního nástroje.
 
-Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem contoso.net, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze v <appname> . SCM. <asename> . appserviceenvironment.net.
+Nastavení DNS pro výchozí příponu vaší domény pro přístup k uživateli neomezuje vaše aplikace tak, aby byly dostupné jenom pro tyto názvy. V pomocném mechanismu interního nástroje můžete nastavit vlastní název domény bez ověřování v aplikacích. Pokud budete chtít vytvořit zónu s názvem contoso.net, můžete to udělat a nasměrovat ji na interního nástroje IP adresu. Vlastní název domény funguje pro žádosti o aplikace, ale pro web SCM ne. Web SCM je k dispozici pouze na adrese &lt; AppName &gt; . SCM. &lt; asename &gt; . appserviceenvironment.NET.
 
-Zóna s názvem. <asename> .. appserviceenvironment.net je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít. contoso.com pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
+Zóna s názvem. &lt; asename &gt; . appserviceenvironment.NET je globálně jedinečný. Od května 2019 mohou zákazníci zadat příponu interního nástroje pomocného programu pro přístup k doméně. Pokud jste chtěli použít. contoso.com pro příponu domény, mohli byste tak učinit a zahrnovat web SCM. S tímto modelem byly problémy, včetně; Správa výchozího certifikátu SSL, nedostatečného jednotného přihlašování s webem SCM a požadavek na použití certifikátu se zástupnými znaky. Proces upgradu výchozího certifikátu interního nástroje pomocného programu pro pořízení byl také narušen a způsobil, že aplikace bude restartována. Aby bylo možné tyto problémy vyřešit, bylo chování pomocného programu interního nástroje změněno tak, aby používalo příponu domény na základě názvu pomocného programu a s příponou vlastněné společností Microsoft. Změna chování pomocného mechanismu interního nástroje má vliv pouze na interního nástroje služby ASE, které byly provedeny po 2019. května. Stávající interního nástroje služby ASE musí stále spravovat výchozí certifikát pro přihlašovací seznam a jejich konfiguraci DNS.
 
 ## <a name="publish-with-an-ilb-ase"></a>Publikování pomocí služby ASE s interním nástrojem pro vyrovnávání zatížení
 

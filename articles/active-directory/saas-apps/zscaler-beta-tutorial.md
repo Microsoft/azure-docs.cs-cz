@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fec471e4047707f2b7cbaa55fdc7f2256bebe93
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545994"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Kurz: Azure Active Directory integrace s Zscaler Beta
 
@@ -27,10 +27,10 @@ Když integrujete Zscaler Beta s Azure AD, můžete:
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Zscaler Beta pomocí svých účtů Azure AD. Toto řízení přístupu se nazývá jednotné přihlašování (SSO).
 * Spravujte své účty v jednom centrálním umístění pomocí Azure Portal.
 
-Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Zscaler Beta budete potřebovat následující položky:
 
@@ -113,7 +113,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler 
 
 6. Aplikace Zscaler Beta očekává, že se v odpovědi SAML vrátí několik atributů zpátky. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** pomocí následujících kroků přidejte atribut tokenu SAML, jak je znázorněno v následující tabulce.
     
-    | Název | Zdrojový atribut | 
+    | Name | Zdrojový atribut | 
     | ---------------| --------------- |
     | memberOf  | User. assignedroles |
 
@@ -136,7 +136,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Zscaler 
     například Vyberte **Uložit**.
 
     > [!NOTE]
-    > Informace o tom, jak nakonfigurovat role v Azure AD, najdete v tématu [konfigurace deklarace identity role](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
+    > Informace o tom, jak nakonfigurovat role v Azure AD, najdete v tématu [konfigurace deklarace identity role](../develop/active-directory-enterprise-app-role-management.md).
 
 7. Pokud chcete stáhnout **certifikát (Base64)**, na stránce **nastavit jednu Sign-On s SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** . Uložte ho do svého počítače.
 
@@ -296,11 +296,10 @@ V této části se uživatel Britta Simon vytvoří v Zscaler Beta. Zscaler Beta
 
 Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici Zscaler Beta, měli byste být automaticky přihlášeni ke službě Zscaler Beta, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Zscaler Beta, měli byste být automaticky přihlášeni ke službě Zscaler Beta, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

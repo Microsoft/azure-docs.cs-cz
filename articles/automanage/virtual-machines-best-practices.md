@@ -8,17 +8,17 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: dce076da08a7c31d7e2637dd5b8b29c9202ea10e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 2b8009d6d571a9daf7163d2126b6d52edfc4bfdd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206403"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521080"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Osvědčené postupy pro virtuální počítače v Azure automanage
 
 
-Tyto služby Azure se automaticky přiřadí za vás, když používáte automatickou správu virtuálních počítačů. Jsou zásadní pro náš dokument white paper k osvědčeným postupům, který najdete v našem [cloudovém rozhraní pro přijetí](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management).
+Tyto služby Azure se automaticky přiřadí za vás, když používáte automatickou správu virtuálních počítačů. Jsou zásadní pro náš dokument white paper k osvědčeným postupům, který najdete v našem [cloudovém rozhraní pro přijetí](/azure/cloud-adoption-framework/manage/azure-server-management).
 
 U všech těchto služeb se automaticky připojíte, automaticky nakonfigurujete, sledujete a nasadíte, pokud se zjistí posun. Další informace o tomto procesu najdete v tématu [Azure automanage pro virtuální počítače](automanage-virtual-machines.md).
 
@@ -29,7 +29,7 @@ U všech těchto služeb se automaticky připojíte, automaticky nakonfigurujete
 |-----------|---------------|----------------------|-------------------------|
 |Monitorování virtuálních počítačů v Insights    |Azure Monitor pro virtuální počítače monitoruje výkon a stav virtuálních počítačů, včetně jejich spuštěných procesů a závislostí na jiných prostředcích. [Další](../azure-monitor/insights/vminsights-overview.md)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní    |Ne    |
 |Backup    |Azure Backup poskytuje nezávislé a izolované zálohy, které chrání před nezamýšleným zničením dat na virtuálních počítačích. [Další](../backup/backup-azure-vms-introduction.md)informace Poplatky vycházejí z počtu a velikosti chráněných virtuálních počítačů. [Další](https://azure.microsoft.com/pricing/details/backup/)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní    |Ano    |
-|Azure Security Center    |Azure Security Center je jednotný systém pro správu zabezpečení infrastruktury, který posílí stav zabezpečení vašich datových center a poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu. [Další](../security-center/security-center-intro.md)informace  Při této službě se bude konfigurovat předplatné, ve kterém se virtuální počítač nachází, do nabídky Azure Security Center úrovně Free. Pokud je vaše předplatné už Azure Security Centeré, nebude se při autosprávě znovu konfigurovat.    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |
+|Azure Security Center    |Azure Security Center je jednotný systém pro správu zabezpečení infrastruktury, který posílí stav zabezpečení vašich datových center a poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu. [Další](../security-center/security-center-introduction.md)informace  Při této službě se bude konfigurovat předplatné, ve kterém se virtuální počítač nachází, do nabídky Azure Security Center úrovně Free. Pokud je vaše předplatné už Azure Security Centeré, nebude se při autosprávě znovu konfigurovat.    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |
 |Antimalware od Microsoftu    |Microsoft Antimalware pro Azure je bezplatná ochrana v reálném čase, která pomáhá identifikovat a odstraňovat viry, spyware a další škodlivý software. Vygeneruje výstrahy v případě, že se známý škodlivý nebo nežádoucí software pokusí nainstalovat nebo spustit v systémech Azure. [Další](../security/fundamentals/antimalware.md)informace |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ano    |
 |Update Management    |Pomocí Update Management v Azure Automation můžete spravovat aktualizace operačního systému pro virtuální počítače. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery. [Další](../automation/update-management/update-mgmt-overview.md)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |
 |Inventář Change Tracking &    |Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, které vám umožní sledovat změny infrastruktury virtuálních počítačů a serverů. Služba podporuje sledování změn napříč službami, démony softwaru, registru a souborů ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace.  [Další](../automation/change-tracking/overview.md)informace    |Osvědčené postupy pro virtuální počítače Azure – provozní, osvědčené postupy pro virtuální počítače Azure – vývoj a testování    |Ne    |

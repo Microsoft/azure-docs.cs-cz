@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 2fb94faacc2bc7d6c3b1e166e617f3f675594cef
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101252"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503483"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>Přístup indexeru k obsahu chráněnému funkcemi zabezpečení sítě Azure (Azure Kognitivní hledání)
 
@@ -41,12 +41,12 @@ Zákazníci můžou tyto prostředky zabezpečit prostřednictvím několika mec
 | Azure Cosmos DB – rozhraní API SQL | Podporováno | Podporováno |
 | Rozhraní API pro Azure Cosmos DB Cassandra, Mongo a Gremlin | Podporováno | Nepodporované |
 | Azure SQL Database | Podporováno | Podporováno |
-| SQL Server na virtuálním počítači Azure | Podporováno | Není k dispozici |
-| Spravovaná instance SQL | Podporováno | Není k dispozici |
+| SQL Server na virtuálním počítači Azure | Podporováno | – |
+| Spravovaná instance SQL | Podporováno | – |
 | Azure Functions | Podporováno | Podporováno, pouze pro určité úrovně služby Azure Functions |
 
 > [!NOTE]
-> Kromě Azure Storage výše uvedených možností můžou zákazníci využít skutečnost, že služba Azure Kognitivní hledání je [důvěryhodnou službou Microsoftu](../storage/common/storage-network-security.md#trusted-microsoft-services). To znamená, že konkrétní vyhledávací služba může obejít omezení virtuální sítě nebo IP adresy v účtu úložiště a získat přístup k datům v účtu úložiště, pokud je v účtu úložiště povolené příslušné řízení přístupu na základě rolí. Další informace najdete v tématu [připojení indexeru pomocí výjimky důvěryhodné služby](search-indexer-howto-access-trusted-service-exception.md). Tato možnost se dá využít místo trasy omezení IP adres, a to v případě, že účet úložiště nebo vyhledávací službu nemůžete přesunout do jiné oblasti.
+> Kromě Azure Storage výše uvedených možností můžou zákazníci využít skutečnost, že služba Azure Kognitivní hledání je [důvěryhodnou službou Microsoftu](../storage/common/storage-network-security.md#trusted-microsoft-services). To znamená, že konkrétní vyhledávací služba může obejít omezení virtuální sítě nebo IP adresy v účtu úložiště a získat přístup k datům v účtu úložiště, pokud je v účtu úložiště povolené příslušné řízení přístupu na základě role. Další informace najdete v tématu [připojení indexeru pomocí výjimky důvěryhodné služby](search-indexer-howto-access-trusted-service-exception.md). Tato možnost se dá využít místo trasy omezení IP adres, a to v případě, že účet úložiště nebo vyhledávací službu nemůžete přesunout do jiné oblasti.
 
 Při volbě mechanismu zabezpečeného přístupu, který by měl indexer používat, zvažte následující omezení:
 
@@ -87,7 +87,7 @@ Tato funkce je k dispozici pouze v fakturovatelných vyhledávacích službách 
 
 Zákazníci by měli volat operaci správy hledání, [rozhraní CreateOrUpdate API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) na **sdíleném prostředku privátního propojení**, aby bylo možné vytvořit připojení privátního koncového bodu ke svému zabezpečenému prostředku (například účet úložiště). Přenosy, které přecházejí z tohoto (odchozího) připojení privátního koncového bodu, pocházejí jenom z virtuální sítě, která je ve spouštěcím prostředí indexeru specifického pro službu Search.
 
-Azure Kognitivní hledání ověří, jestli volající tohoto rozhraní API mají oprávnění RBAC ke schválení požadavků na připojení privátního koncového bodu na zabezpečený prostředek. Například pokud požadujete připojení privátního koncového bodu k účtu úložiště s oprávněním jen pro čtení, toto volání bude odmítnuto.
+Azure Kognitivní hledání ověří, jestli volající tohoto rozhraní API mají oprávnění Azure RBAC ke schválení požadavků na připojení privátního koncového bodu na zabezpečený prostředek. Například pokud požadujete připojení privátního koncového bodu k účtu úložiště s oprávněním jen pro čtení, toto volání bude odmítnuto.
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>Krok 2: schválení připojení privátního koncového bodu
 

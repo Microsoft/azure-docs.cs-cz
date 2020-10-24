@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 163a0c9a7e728ee9cd08c4a154ea499c059cf2f6
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 30fd3843b50ac6b075d33e961986b94ee2496fef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944375"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Kurz: Azure Active Directory integrace s virtuálním prostředím ON24 s připojením SAML
 
@@ -27,10 +27,10 @@ Integrací připojení ON24 s virtuálním prostředím SAML se službou Azure A
 * Můžete uživatelům povolit, aby se automaticky přihlásili k ON24 virtuálnímu prostředí (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s připojením SAML virtuálního prostředí ON24 potřebujete následující položky:
 
@@ -225,19 +225,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-on24-virtual-environment-saml-connection-test-user"></a>Vytvořit testovacího uživatele připojení SAML pro virtuální prostředí ON24
 
-V této části vytvoříte uživatele s názvem Britta Simon ve virtuálním prostředí ON24 připojení SAML. Pokud chcete přidat uživatele v rámci platformy pro připojení SAML ve virtuálním prostředí ON24, pracujte s [týmem podpory připojení SAML s virtuálním prostředím ON24](https://www.on24.com/about-us/support/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon ve virtuálním prostředí ON24 připojení SAML. Pokud chcete přidat uživatele v rámci platformy pro připojení SAML ve virtuálním prostředí ON24, pracujte s [týmem podpory připojení SAML s virtuálním prostředím ON24](https://www.on24.com/about-us/support/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici připojení SAML virtuálního prostředí ON24 na přístupovém panelu byste se měli automaticky přihlášeni k připojení SAML ve virtuálním prostředí ON24, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici připojení SAML virtuálního prostředí ON24 na přístupovém panelu byste se měli automaticky přihlášeni k připojení SAML ve virtuálním prostředí ON24, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

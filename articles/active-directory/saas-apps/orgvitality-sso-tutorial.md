@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 4cb46487904f1f909686119d074dff5dcfad40c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b774f50f6f136d9e7c71b5fe6fbffb725a9240a5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604642"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522219"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-orgvitality-sso"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s OrgVitality SSO
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat jednotné přihlašování OrgVitality
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k OrgVitality SSO pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -124,7 +124,7 @@ Ke konfiguraci jednotného přihlašování na straně **jednotného** přihlaš
 
 ### <a name="create-orgvitality-sso-test-user"></a>Vytvořit testovacího uživatele jednotného přihlašování OrgVitality
 
-V této části vytvoříte uživatele s názvem Britta Simon v rámci OrgVitality SSO. Pokud chcete přidat uživatele na platformě jednotného přihlašování OrgVitality, pracujte s [týmem podpory ORGVITALITY SSO](https://orgvitality.com/contact-us/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v rámci OrgVitality SSO. Pokud chcete přidat uživatele na platformě jednotného přihlašování OrgVitality, pracujte s [týmem podpory ORGVITALITY SSO](https://orgvitality.com/contact-us/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -132,8 +132,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 1. Klikněte na testovat tuto aplikaci v Azure Portal a měli byste se automaticky přihlásit k OrgVitality jednotné přihlašování, pro které jste nastavili jednotné přihlašování.
 
-1. Můžete použít panel Microsoft Access. Když kliknete na dlaždici OrgVitality SSO na přístupovém panelu, měli byste se automaticky přihlásit k OrgVitality SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Můžete použít panel Microsoft Access. Když kliknete na dlaždici OrgVitality SSO na přístupovém panelu, měli byste se automaticky přihlásit k OrgVitality SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování jednotného přihlašování OrgVitality můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Po nakonfigurování jednotného přihlašování OrgVitality můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

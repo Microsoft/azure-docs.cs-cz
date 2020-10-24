@@ -4,15 +4,15 @@ description: Přečtěte si o konfiguraci a optimalizaci virtuálních počíta�
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/07/2020
+ms.date: 10/23/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ecfe1df273834ae38bd6bb94980444f5e34f786
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a1bfb5988169ba79a6e3e8416804d7d4c896c758
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994808"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516846"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurace a optimalizace virtuálních počítačů
 
@@ -36,11 +36,24 @@ Pro [virtuální počítače](../../sizes-hpc.md#rdma-capable-instances)podporuj
   Pro [virtuální počítače podporující](../../sizes-hpc.md#rdma-capable-instances)rozhraní SR-IOV, které podporuje RDMA, jsou vhodné image [CentOS-HPC verze 7,6 nebo novější](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verze virtuálních počítačů na webu Marketplace. Tyto image virtuálních počítačů přináší optimalizované a předem načtené ovladače OFED pro RDMA a různé běžně používané knihovny MPI a vědecké výpočetní balíčky a představují nejjednodušší způsob, jak začít.
 
   Příklady skriptů použitých při vytváření imagí virtuálních počítačů CentOS-HPC verze 7,6 a novější z image základního CentOS na webu Marketplace jsou v [úložišti azhpc-images](https://github.com/Azure/azhpc-images/tree/master/centos).
+  
+  > [!NOTE] 
+  > Nejnovější image Azure HPC Marketplace mají Mellanox OFED 5,1 a vyšší, které nepodporují ConnectX3-Pro InfiniBand karty. Velikosti virtuálních počítačů s povoleným rozhraním SR-IOV s FDR InfiniBand (např. NCv3) budou moci používat následující verze imagí virtuálních počítačů CentOS-HPC nebo starší:
+  >- OpenLogic: CentOS-HPC: 7.6:7.6.2020062900
+  >- OpenLogic: CentOS-HPC: 7_6gen2:7.6.2020062901
+  >- OpenLogic: CentOS-HPC: 7.7:7.7.2020062600
+  >- OpenLogic: CentOS-HPC: 7_7-Gen2:7.7.2020062601
+  >- OpenLogic: CentOS-HPC: 8_1:8.1.2020062400
+  >- OpenLogic: CentOS-HPC: 8_1-Gen2:8.1.2020062401
+
 
 ### <a name="rhelcentos-vm-images"></a>Image virtuálních počítačů s RHEL/CentOS
 Image virtuálních počítačů s RHEL nebo CentOS na webu Marketplace se dají nakonfigurovat tak, aby se používaly na [virtuálních počítačích](../../sizes-hpc.md#rdma-capable-instances)podporujících rozhraní SR-IOV s podporou RDMA. Přečtěte si další informace o [Povolení InfiniBand](enable-infiniband.md) a [Nastavení MPI](setup-mpi.md) na virtuálních počítačích.
 
   Příklady skriptů použitých při vytváření imagí virtuálních počítačů CentOS-HPC verze 7,6 a novější z image základního CentOS na webu Marketplace jsou v [úložišti azhpc-images](https://github.com/Azure/azhpc-images/tree/master/centos).
+  
+  > [!NOTE]
+  > Mellanox OFED 5,1 a novější nepodporují ConnectX3-Pro InfiniBand karty na velikosti virtuálních počítačů s podporou SR-IOV s FDR InfiniBand (např. NCv3). Použijte prosím LTS Mellanox OFED verze 4.9-0.1.7.0 nebo starší na virtuálním počítači řady N-Series s kartami ConnectX3-Pro. Další podrobnosti najdete [tady](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed).
 
 ### <a name="ubuntu-vm-images"></a>Image virtuálních počítačů s Ubuntu
 Ubuntu Server 16,04 LTS, 18,04 LTS a 20,04 image virtuálních počítačů LTS na webu Marketplace se podporují pro [virtuální počítače podporující](../../sizes-hpc.md#rdma-capable-instances)rozhraní SR-IOV a non-SR-IOV RDMA. Přečtěte si další informace o [Povolení InfiniBand](enable-infiniband.md) a [Nastavení MPI](setup-mpi.md) na virtuálních počítačích.

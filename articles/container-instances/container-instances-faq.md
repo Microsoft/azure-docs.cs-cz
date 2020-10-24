@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818483"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516966"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
@@ -61,7 +61,7 @@ Použijte nejmenší obrázek, který splňuje vaše požadavky. Pro Linux byste
 
 Tato skutečnosti závisí na vašich úlohách. Začněte s malým a testovacím výkonem, abyste viděli, jak vaše kontejnery dělají. [Monitorujte využití prostředků procesoru a paměti](container-instances-monitor.md)a pak přidejte jádra nebo paměť na základě typu procesů, které nasadíte do kontejneru.
 
-Nezapomeňte také zkontrolovat [dostupnost prostředků](container-instances-region-availability.md#availability---general) pro oblast, do které nasazujete, v horních mezích jader procesoru a paměti dostupných na jednu skupinu kontejnerů. 
+Nezapomeňte také zkontrolovat [dostupnost prostředků](container-instances-region-availability.md) pro oblast, do které nasazujete, v horních mezích jader procesoru a paměti dostupných na jednu skupinu kontejnerů. 
 
 > [!NOTE]
 > Základní infrastruktura služby používá malý objem prostředků skupiny kontejnerů. Vaše kontejnery budou mít přístup k většině prostředků přiřazených ke skupině, ale ne ke všem. Z tohoto důvodu Naplánujte malou vyrovnávací paměť prostředků při žádosti o prostředky pro kontejnery ve skupině.
@@ -80,7 +80,7 @@ Zatím ne. V současné době jsou to maxima pro skupinu kontejnerů. Kontaktujt
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Kdy bude ACI v konkrétní oblasti?
 
-[Tady](container-instances-region-availability.md#availability---general)se zveřejňuje aktuální dostupnost oblasti. Pokud máte požadavek na konkrétní oblast, obraťte se na podporu Azure.
+[Tady](container-instances-region-availability.md)se zveřejňuje aktuální dostupnost oblasti. Pokud máte požadavek na konkrétní oblast, obraťte se na podporu Azure.
 
 ## <a name="features-and-scenarios"></a>Funkce a scénáře
 

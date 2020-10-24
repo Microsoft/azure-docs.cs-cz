@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f1845a8371c3b64174b83ce640f91e4ce9221b8e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: c2f2e86a3080b0edfcb0a699ac9b3a78ee1b5a52
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940782"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519414"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat NetSuite s Azure Active Directory (Azu
 * Umožněte uživatelům, aby se automaticky přihlásili k NetSuite pomocí svých účtů Azure AD.
 * Spravujte své účty na jednom centrálním místě, Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -44,7 +44,7 @@ NetSuite podporuje:
 * Jednotné přihlašování iniciované IDP
 * Zřizování uživatele JIT (just-in-time).
 * [Automatizované zřizování uživatelů](NetSuite-provisioning-tutorial.md).
-* Po nakonfigurování NetSuite můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po nakonfigurování NetSuite můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Vzhledem k tomu, že identifikátor této aplikace je pevná řetězcová hodnota, může být v jednom klientovi nakonfigurovaná jenom jedna instance.
@@ -107,7 +107,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. Kromě toho očekává aplikace NetSuite několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Název | Zdrojový atribut |
+    | Name | Zdrojový atribut |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -258,14 +258,14 @@ V této části se v NetSuite vytvoří uživatel s názvem B. Simon. NetSuite p
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu vyberete dlaždici NetSuite, měli byste se automaticky přihlásit k NetSuite, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici NetSuite, měli byste se automaticky přihlásit k NetSuite, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 - [Vyzkoušejte si NetSuite s Azure AD](https://aad.portal.azure.com/)
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit NetSuite pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit NetSuite pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

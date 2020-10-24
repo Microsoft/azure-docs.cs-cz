@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: d257935aa3e9ad54b64b0f416119931661809172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545960"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519818"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s přiblížením
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat přiblížení pomocí Azure Active Di
 * Umožněte, aby se vaši uživatelé automaticky přihlásili, aby se přiblížili svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Přiblížení podporuje jednotné přihlašování, které iniciuje **SP** a 
-* Přiblížení podporuje [ **automatizované** zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial).
+* Přiblížení podporuje [ **automatizované** zřizování uživatelů](./zoom-provisioning-tutorial.md).
 
 ## <a name="adding-zoom-from-the-gallery"></a>Přidání přiblížení z Galerie
 
@@ -96,7 +96,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Informace o tom, jak nakonfigurovat roli v Azure AD, najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+> Informace o tom, jak nakonfigurovat roli v Azure AD, najdete v tématu [konfigurace deklarace identity role vydané v tokenu SAML pro podnikové aplikace](../develop/active-directory-enterprise-app-role-management.md).
 
 > [!NOTE]
 > Přiblížení může očekávat deklaraci skupiny v datové části SAML. Pokud jste vytvořili nějaké skupiny, obraťte se na [tým podpory pro přiblížení klientů](https://support.zoom.us/hc/) s informacemi o skupině, aby mohli na svém konci konfigurovat informace o skupině. Také je nutné zadat ID objektu pro [přiblížení týmu podpory klientů](https://support.zoom.us/hc/) , aby mohli na konci nakonfigurovat ID objektu. Pokud chcete získat ID objektu, přečtěte si téma [Konfigurace přiblížení pomocí Azure](https://support.zoom.us/hc/articles/115005887566).
@@ -170,7 +170,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-zoom-test-user"></a>Vytvořit test uživatele lupy
 
-Cílem této části je vytvořit uživatele s názvem B. Simon v přiblížení. Přiblížení podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial) konfigurace automatického zřizování uživatelů.
+Cílem této části je vytvořit uživatele s názvem B. Simon v přiblížení. Přiblížení podporuje automatické zřizování uživatelů, které je ve výchozím nastavení povolené. Další podrobnosti najdete v [tématu](./zoom-provisioning-tutorial.md) konfigurace automatického zřizování uživatelů.
 
 > [!NOTE]
 > Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory přiblížení klienta](https://support.zoom.us/hc/) .
@@ -179,14 +179,14 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v přiblížení
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici přiblížení na přístupovém panelu byste měli být automaticky přihlášeni k přiblížení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici přiblížení na přístupovém panelu byste měli být automaticky přihlášeni k přiblížení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si přiblížení pomocí Azure AD](https://aad.portal.azure.com/)

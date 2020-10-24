@@ -8,40 +8,60 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 9f5a1010959658e75dcc809b2ee1d6d9222af056
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4770ac0181c64ef800aa02ba87284c8add357e36
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539979"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518046"
 ---
 Tento článek vám pomůže objasnit výkon disku a jeho fungování při kombinaci Virtual Machines Azure a disků Azure. Také popisuje, jak můžete diagnostikovat problém pro vstupně-výstupní operace disku a změny, které můžete provést pro optimalizaci výkonu.
 
 ## <a name="how-does-disk-performance-work"></a>Jak funguje výkon disku?
-Virtuální počítače Azure mají omezení počtu vstupně-výstupních operací za sekundu a propustnost na základě typu a velikosti virtuálního počítače. Disky s operačním systémem a datové disky, které se dají připojit k virtuálním počítačům, mají vlastní meze IOPs a propustnosti. Když vaše aplikace spuštěná na virtuálních počítačích požaduje více IOPS nebo propustnosti, než je přidělená virtuálnímu počítači nebo připojeným diskům, výkon vaší aplikace bude omezené. Pokud k tomu dojde, bude aplikace vycházet z optimálního výkonu a může vést k nějakým negativním důsledkům, jako je vyšší latence. Pojďme se na to přesvědčit několika příklady. Aby bylo možné tyto příklady snadno sledovat, Prohlédněte si pouze IOPs, ale stejná logika platí také pro propustnost.
+Virtuální počítače Azure mají vstupně-výstupní operace za sekundu (IOPS) a omezení výkonu propustnosti na základě typu a velikosti virtuálního počítače. Disky s operačním systémem a datové disky je možné připojit k virtuálním počítačům. Disky mají vlastní vstupně-výstupní operace a omezení propustnosti.
+
+Výkon vaší aplikace je omezené, když požádá o více IOPS nebo propustnost, než jaké jsou přiděleny virtuálním počítačům nebo připojeným diskům. Při omezené aplikace, která má optimální výkon. To může vést k negativním důsledkům, jako je vyšší latence. Pojďme se na tento koncept vyjasnit několika příklady. Aby bylo možné tyto příklady snadno sledovat, Prohlédněte si pouze IOPS. Ale stejná logika platí i pro propustnost.
 
 ## <a name="disk-io-capping"></a>Disk v/v capping
-Nastavení:
-- Standard_D8s_v3 
-    - Neuložené IOPS s mezipamětí: 12 800
+
+**Obecného**
+
+- Standard_D8s_v3
+  - Neuložené IOPS s mezipamětí: 12 800
 - Disk s operačním systémem E30
-    - IOPS: 500 
-- 2 datové disky E30
-    - IOPS: 500
+  - IOPS: 500
+- Dva datové disky E30 × 2
+  - IOPS: 500
 
-![Capping na úrovni disku](media/vm-disk-performance/disk-level-throttling.jpg)
+![Diagram znázorňující capping na úrovni disku](media/vm-disk-performance/disk-level-throttling.jpg)
 
-Aplikace spuštěná na virtuálním počítači vytvoří požadavek, který vyžaduje 10 000 vstupně-výstupních operací pro virtuální počítač. Všechny, které jsou povolené virtuálním počítačem, protože virtuální počítač Standard_D8s_v3 může spustit až 12 800 IOPs. Tyto požadavky 10 000 IOPs se pak rozdělí na tři různé požadavky na různé disky. pro disk s operačním systémem se vyžadují 1 000 IOPs a na každý datový disk se vyžadují 4 500 IOPs. Vzhledem k tomu, že jsou všechny připojené disky E30 disky a můžou zpracovávat jenom 500 IOPs, reagují na každý z 500 IOPs. Výkon aplikace se pak omezené připojenými disky a může zpracovat jenom 1 500 vstupně-výstupních operací. Pokud se používaly lepší disky, jako SSD úrovně Premium disky P30, může to v nejvyšší době 10 000 IOPS docházet k provozu.
+Aplikace spuštěná na virtuálním počítači vytvoří požadavek, který vyžaduje 10 000 vstupně-výstupních operací pro virtuální počítač. Všechny, které jsou povolené virtuálním počítačem, protože virtuální počítač Standard_D8s_v3 může spustit až 12 800 IOPS.
+
+Požadavky 10 000 IOPS se v různých discích dělí na tři různé požadavky:
+
+- disk s operačním systémem vyžaduje 1 000 IOPS.
+- pro každý datový disk jsou požadovány 4 500 IOPS.
+
+Všechny připojené disky jsou E30 disky a můžou zpracovat jenom 500 IOPS. To znamená, že každý z nich odpoví 500 IOPS. Výkon aplikace je omezené připojenými disky a může zpracovat pouze 1 500 IOPS. Pokud se používají lepší disky, například SSD úrovně Premium disky P30, může aplikace pracovat na špičkovém výkonu při 10 000 IOPS.
 
 ## <a name="virtual-machine-io-capping"></a>Vstupně-výstupní operace virtuálního počítače capping
-Nastavení:
-- Standard_D8s_v3 
-    - Neuložené IOPS s mezipamětí: 12 800
+
+**Obecného**
+
+- Standard_D8s_v3
+  - Neuložené IOPS s mezipamětí: 12 800
 - Disk s operačním systémem P30
-    - IOPS: 5 000 
-- 2 datové disky P30 
-    - IOPS: 5 000
+  - IOPS: 5 000
+- Dva datové disky P30 × 2
+  - IOPS: 5 000
 
-![Capping na úrovni virtuálního počítače](media/vm-disk-performance/vm-level-throttling.jpg)
+![Diagram znázorňující capping na úrovni virtuálního počítače](media/vm-disk-performance/vm-level-throttling.jpg)
 
-Aplikace spuštěná na virtuálním počítači vytvoří požadavek, který vyžaduje 15 000 vstupně-výstupních operací. Standard_D8s_v3 virtuální počítač se bohužel zřídí jenom pro zpracování 12 800 IOPs. Z toho se aplikace omezené pomocí omezení virtuálních počítačů a pak musí přidělit přidělený 12 800 vstupně-výstupních operací. Požadované 12 800 IOPs se pak rozdělí na tři různé požadavky na různé disky. pro disk s operačním systémem se vyžadují 4 267 IOPs a na každý datový disk se vyžadují 4 266 IOPs. Vzhledem k tomu, že jsou všechny připojené disky P30 disky, které mohou zpracovávat 5 000 IOPs, reagují na ně požadované částky.
+Aplikace spuštěná na virtuálním počítači vytvoří požadavek, který vyžaduje 15 000 vstupně-výstupních operací. Standard_D8s_v3 virtuální počítač se bohužel zřídí jenom pro zpracování 12 800 IOPS. Aplikace je omezené pomocí omezení virtuálních počítačů a musí přidělit přidělený 12 800 IOPS.
+
+Požadované 12 800 IOPS jsou rozdělené na tři různé požadavky na různé disky:
+
+- disk s operačním systémem vyžaduje 4 267 IOPS.
+- pro každý datový disk jsou požadovány 4 266 IOPS.
+
+Všechny připojené disky jsou P30 disky, které mohou zpracovávat 5 000 IOPS. Proto reagují na své požadované částky.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.openlocfilehash: fade4176cbbf432aabae4422553a3caf0235ebed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f20849e4085adcca909d990a2ae9fb7b9751220b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88526410"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520094"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s pracovištěm na Facebooku
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat pracovní plochu na Facebooku pomocí 
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k pracovišti prostřednictvím Facebooku s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -46,7 +46,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Pracoviště podle Facebooku podporuje **zřizování za běhu**
 * Pracoviště – na Facebooku podporuje ** [Automatické zřizování uživatelů](workplacebyfacebook-provisioning-tutorial.md)**
 * Mobilní aplikace na pracovišti na pracovišti se teď dají nakonfigurovat pomocí Azure AD a povolit jednotné přihlašování. V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
-* Jakmile nakonfigurujete pracovní plochu na Facebooku, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Jakmile nakonfigurujete pracovní plochu na Facebooku, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Přidání pracovního místa na Facebooku z Galerie
 
@@ -208,7 +208,7 @@ V této části není žádná akce. Pokud uživatel na pracovišti neexistuje n
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Facebooku, měli byste se k pracovišti automaticky přihlášeni pomocí Facebooku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Facebooku, měli byste se k pracovišti automaticky přihlášeni pomocí Facebooku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="test-sso-for-workplace-by-facebook-mobile"></a>Testování jednotného přihlašování pro pracovní plochu na Facebooku (mobilní zařízení)
 
@@ -232,16 +232,16 @@ Když na přístupovém panelu kliknete na dlaždici pracovní plocha na Faceboo
 
     ![Domovská stránka](./media/workplacebyfacebook-tutorial/test01.png)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Konfigurace zřizování uživatelů](workplacebyfacebook-provisioning-tutorial.md)
 
 - [Vyzkoušejte si pracovní plochu na Facebooku s Azure AD](https://aad.portal.azure.com)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)

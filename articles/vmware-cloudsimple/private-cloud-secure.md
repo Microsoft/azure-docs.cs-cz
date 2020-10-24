@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829869"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518207"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Jak zabezpečit prostředí privátního cloudu
 
 Definujte řízení přístupu na základě role (RBAC) pro službu CloudSimple, portál CloudSimple a privátní cloud z Azure.  Uživatelé, skupiny a role pro přístup k vCenter privátního cloudu se zadává pomocí jednotného přihlašování VMware.  
 
-## <a name="rbac-for-cloudsimple-service"></a>RBAC pro službu CloudSimple
+## <a name="azure-rbac-for-cloudsimple-service"></a>Služba Azure RBAC pro CloudSimple
 
 Vytváření služby CloudSimple vyžaduje roli **vlastníka** nebo **přispěvatele** v předplatném Azure.  Ve výchozím nastavení mohou všichni vlastníci a přispěvatelé vytvořit službu CloudSimple a přistupovat k portálu CloudSimple pro vytváření a správu privátních cloudů.  Pro každou oblast se dá vytvořit jenom jedna služba CloudSimple.  Pokud chcete omezit přístup ke konkrétním správcům, postupujte podle níže uvedeného postupu.
 
 1. Vytvoření služby CloudSimple v nové **skupině prostředků** v Azure Portal
-2. Zadejte RBAC pro skupinu prostředků.
+2. Zadejte pro skupinu prostředků Azure RBAC.
 3. Koupit uzly a použít stejnou skupinu prostředků jako služba CloudSimple
 
 Pouze uživatelé, kteří mají oprávnění **vlastníka** nebo **přispěvatelé** ve skupině prostředků, uvidí službu CloudSimple a spustí portál CloudSimple.

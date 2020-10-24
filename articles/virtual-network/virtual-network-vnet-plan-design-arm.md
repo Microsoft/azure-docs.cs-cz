@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ea65e94e97b69e24c6935328cc01c2295adc5a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045497"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518632"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuálních sítí
 
@@ -105,7 +105,7 @@ Prostředky v jedné virtuální síti nemůžou přeložit názvy prostředků 
 
 ## <a name="permissions"></a>Oprávnění
 
-Azure využívá [řízení přístupu na základě role](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) k prostředkům. Oprávnění jsou přiřazena k [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) v následující hierarchii: skupina pro správu, předplatné, skupina prostředků a jednotlivé prostředky. Další informace o hierarchii najdete v tématu [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete pracovat s virtuálními sítěmi Azure a všemi jejich souvisejícími možnostmi, jako je například partnerský vztah, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete členům vaší organizace přiřadit předdefinované role [Owner](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner) [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)nebo sítě a potom přiřadit roli příslušnému oboru. Pokud chcete přiřadit konkrétní oprávnění k podmnožině možností virtuální sítě, vytvořte [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřaďte specifická oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [Síťová rozhraní](virtual-network-network-interface.md#permissions), [partnerské vztahy](virtual-network-manage-peering.md#permissions), [skupiny zabezpečení sítě a aplikace](manage-network-security-group.md#permissions)nebo [směrovací tabulky](manage-route-table.md#permissions) k roli.
+Azure využívá [řízení přístupu na základě role v Azure (Azure RBAC)](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) k prostředkům. Oprávnění jsou přiřazena k [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) v následující hierarchii: skupina pro správu, předplatné, skupina prostředků a jednotlivé prostředky. Další informace o hierarchii najdete v tématu [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete pracovat s virtuálními sítěmi Azure a všemi jejich souvisejícími možnostmi, jako je například partnerský vztah, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete členům vaší organizace přiřadit předdefinované role [Owner](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner) [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)nebo sítě a potom přiřadit roli příslušnému oboru. Pokud chcete přiřadit konkrétní oprávnění k podmnožině možností virtuální sítě, vytvořte [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřaďte specifická oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [Síťová rozhraní](virtual-network-network-interface.md#permissions), [partnerské vztahy](virtual-network-manage-peering.md#permissions), [skupiny zabezpečení sítě a aplikace](manage-network-security-group.md#permissions)nebo [směrovací tabulky](manage-route-table.md#permissions) k roli.
 
 ## <a name="policy"></a>Zásady
 

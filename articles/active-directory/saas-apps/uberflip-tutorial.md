@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 6aed014800be41ce5b9d1d86d137aefcf2585e98
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486969"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Kurz: Azure Active Directory integrace s Uberflip
 
@@ -28,7 +28,7 @@ Integrace Uberflip s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k Uberflip (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění: Azure Portal.
 
-Podrobnosti o integraci aplikací SaaS (software jako služba) se službou Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Podrobnosti o integraci aplikací SaaS (software jako služba) se službou Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -192,12 +192,12 @@ V Uberflip se teď vytvoří uživatel s názvem B. Simon. K vytvoření tohoto 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí portálu moje aplikace.
 
-Když vyberete **Uberflip** na portálu moje aplikace, měli byste být automaticky přihlášeni k předplatnému Uberflip, pro které jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete **Uberflip** na portálu moje aplikace, měli byste být automaticky přihlášeni k předplatnému Uberflip, pro které jste nastavili jednotné přihlašování. Další informace o portálu moje aplikace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Další materiály
 
-* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-* [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

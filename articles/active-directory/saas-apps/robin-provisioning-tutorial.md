@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: Zhchia
-ms.openlocfilehash: e69b6aa5518f83dbbeba34d70b459c781b50dc9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a7c2634f4dc06e3c988a48c7ca15294160759e2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299901"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520723"
 ---
 # <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>Kurz: Konfigurace dotazování pro Automatické zřizování uživatelů
 
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v dotazech a Azu
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -89,7 +89,7 @@ Před konfigurací dotazování pro Automatické zřizování uživatelů pomoc�
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů a skupin v rámci dotazování na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit pro dotazování jednotné přihlašování založené na SAML podle pokynů uvedených v [kurzu jednotného přihlašování pro dotazování](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce vzájemně přidávají.
+> Můžete se také rozhodnout povolit pro dotazování jednotné přihlašování založené na SAML podle pokynů uvedených v [kurzu jednotného přihlašování pro dotazování](./robin-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce vzájemně přidávají.
 
 ### <a name="to-configure-automatic-user-provisioning-for-robin-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro dotazování ve službě Azure AD:
 
@@ -155,7 +155,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
@@ -163,4 +163,3 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 ## <a name="next-steps"></a>Další kroky
 
 * [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
-
