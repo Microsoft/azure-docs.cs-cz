@@ -6,18 +6,18 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: f6c73362d554ada6c4845ab8dca2093d3dcbf173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707944"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485456"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozšíření serveru PostgreSQL v Azure Database for PostgreSQL – jeden server
 PostgreSQL poskytuje možnost rozšíření funkcí databáze pomocí rozšíření. Rozšíření je balíček, který vznikne sloučením několika souvisejících objektů SQL. Tento balíček můžete jedním příkazem do databáze načíst nebo ho z ní odebrat. Po načtení do databáze rozšíření fungují jako integrované funkce.
 
 ## <a name="how-to-use-postgresql-extensions"></a>Jak používat rozšíření PostgreSQL
-Aby bylo možné použít rozšíření PostgreSQL, musí být v databázi nainstalovány. Pro instalaci konkrétního rozšíření spusťte příkaz [Create Extension](https://www.postgresql.org/docs/current/sql-createextension.html)   z psql Tool, který načte zabalené objekty do vaší databáze.
+Aby bylo možné použít rozšíření PostgreSQL, musí být v databázi nainstalovány. Pokud chcete určité rozšíření nainstalovat, spusťte nástrojem psql příkaz [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html), který do databáze načte zabalené objekty.
 
 Azure Database for PostgreSQL podporuje podmnožinu rozšíření klíčů, jak je uvedeno níže. Tyto informace jsou také k dispozici v systému `SELECT * FROM pg_available_extensions;` . Rozšíření nad rámec těch, která jsou uvedena, nejsou podporována. V Azure Database for PostgreSQL nemůžete vytvořit vlastní rozšíření.
 
@@ -205,7 +205,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 [Rozšíření pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) je předem načteno na každém serveru Azure Database for PostgreSQL a poskytuje tak prostředky pro sledování statistik provádění příkazů SQL.
-Nastavení `pg_stat_statements.track` , které řídí, které příkazy jsou počítány rozšířením, výchozí hodnota `top` , což znamená, že jsou sledovány všechny příkazy vydané přímo klienty. Tyto dvě úrovně sledování jsou `none` a `all` . Toto nastavení se dá nakonfigurovat jako parametr serveru prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
+Nastavení `pg_stat_statements.track` , které řídí, které příkazy jsou počítány rozšířením, výchozí hodnota `top` , což znamená, že jsou sledovány všechny příkazy vydané přímo klienty. Tyto dvě úrovně sledování jsou `none` a `all` . Toto nastavení se dá nakonfigurovat jako parametr serveru prostřednictvím [Azure Portal](./howto-configure-server-parameters-using-portal.md) nebo rozhraní příkazového [řádku Azure CLI](./howto-configure-server-parameters-using-cli.md).
 
 Mezi informacemi o spuštění dotazu pg_stat_statements poskytuje kompromis a dopad na výkon serveru při zaznamenání jednotlivých příkazů SQL. Pokud nepoužíváte rozšíření pg_stat_statements, doporučujeme, abyste nastavili `pg_stat_statements.track` na `none` . Všimněte si, že některé služby monitorování třetích stran můžou spoléhat na pg_stat_statements k poskytování přehledů o výkonu dotazů, takže ověřte, jestli se jedná o případ nebo ne.
 

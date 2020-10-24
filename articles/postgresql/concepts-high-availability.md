@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707927"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485439"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Vysoká dostupnost v Azure Database for PostgreSQL – jeden server
 Azure Database for PostgreSQL – jedna serverová služba poskytuje zaručenou vysokou úroveň dostupnosti s finančně zajištěnou smlouvou SLA [99,99%](https://azure.microsoft.com/support/legal/sla/postgresql) provozní dobou. Azure Database for PostgreSQL poskytuje vysokou dostupnost během plánovaných událostí, jako je například operace COMPUTE initated (User-Scale), a také když dojde k neplánovaným událostem, jako je například základní hardware, software nebo selhání sítě. Azure Database for PostgreSQL se můžou rychle zotavit z nejdůležitějších okolností, takže při použití této služby prakticky neexistují žádné aplikace.
@@ -40,8 +40,8 @@ Tady je několik plánovaných scénářů údržby:
 | ------------ | ----------- |
 | <b>Horizontální navýšení nebo snížení kapacity | Když uživatel provede operaci horizontálního navýšení nebo snížení kapacity, zřídí se nový databázový server s využitím konfigurace COMPUTE s možností škálování. Na starém databázovém serveru se můžou dokončit aktivní kontrolní body, připojení klientů se vyprazdňuje, všechny nepotvrzené transakce se zruší a pak se vypnou. Úložiště se pak odpojí od původního databázového serveru a připojí se k novému databázovému serveru. Když klientská aplikace znovu pokusí připojení, nebo se pokusí vytvořit nové připojení, brána přesměruje požadavek na připojení k novému databázovému serveru.|
 | <b>Škálování úložiště | Vertikální navýšení kapacity úložiště je online operace a neprovádí přerušování databázového serveru.|
-| <b>Nové nasazení softwaru (Azure) | Nové opravy funkcí nebo opravy chyb se automaticky nastávají v rámci plánované údržby služby. Další informace najdete v [dokumentaci](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)a také na [portálu](https://aka.ms/servicehealthpm).|
-| <b>Upgrady dílčí verze | Azure Database for PostgreSQL automaticky opraví databázové servery na podverzi určenou v Azure. K tomu dochází jako součást plánované údržby služby. To by znamenalo krátké výpadky v sekundách a databázový server se automaticky restartuje s novou podverzí. Další informace najdete v [dokumentaci](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)a také na [portálu](https://aka.ms/servicehealthpm).|
+| <b>Nové nasazení softwaru (Azure) | Nové opravy funkcí nebo opravy chyb se automaticky nastávají v rámci plánované údržby služby. Další informace najdete v [dokumentaci](./concepts-monitoring.md#planned-maintenance-notification)a také na [portálu](https://aka.ms/servicehealthpm).|
+| <b>Upgrady dílčí verze | Azure Database for PostgreSQL automaticky opraví databázové servery na podverzi určenou v Azure. K tomu dochází jako součást plánované údržby služby. To by znamenalo krátké výpadky v sekundách a databázový server se automaticky restartuje s novou podverzí. Další informace najdete v [dokumentaci](./concepts-monitoring.md#planned-maintenance-notification)a také na [portálu](https://aka.ms/servicehealthpm).|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>Zmírnění neplánovaných výpadků
@@ -68,8 +68,8 @@ Tady je několik scénářů selhání, které vyžadují akci uživatele při o
 
 | **Scénář** | **Plán obnovení** |
 | ---------- | ---------- |
-| <b> Selhání oblasti | Selhání oblasti je vzácná událost. Pokud však potřebujete ochranu při selhání oblasti, můžete nakonfigurovat jednu nebo více replik pro čtení v jiných oblastech pro zotavení po havárii (DR). (Podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) o vytváření a správě replik pro čtení). V případě selhání na úrovni oblasti můžete ručně povýšit repliku pro čtení nakonfigurovanou v jiné oblasti na provozní server databáze. |
-| <b> Chyby logických/uživatelských uživatelů | Obnovení z uživatelských chyb, například omylem vyřazených tabulek nebo nesprávně aktualizovaných dat, zahrnuje provádění obnovení k určitému [bodu v čase](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) tím, že se obnoví a obnoví data, až do doby, kdy došlo k chybě.<br> <br>  Chcete-li obnovit pouze podmnožinu databází nebo konkrétních tabulek a nikoli všechny databáze na databázovém serveru, můžete obnovit databázový server v nové instanci, exportovat tyto tabulky prostřednictvím [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)a potom pomocí [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) obnovit tyto tabulky do databáze. |
+| <b> Selhání oblasti | Selhání oblasti je vzácná událost. Pokud však potřebujete ochranu při selhání oblasti, můžete nakonfigurovat jednu nebo více replik pro čtení v jiných oblastech pro zotavení po havárii (DR). (Podrobnosti najdete v [tomto článku](./howto-read-replicas-portal.md) o vytváření a správě replik pro čtení). V případě selhání na úrovni oblasti můžete ručně povýšit repliku pro čtení nakonfigurovanou v jiné oblasti na provozní server databáze. |
+| <b> Chyby logických/uživatelských uživatelů | Obnovení z uživatelských chyb, například omylem vyřazených tabulek nebo nesprávně aktualizovaných dat, zahrnuje provádění obnovení k určitému [bodu v čase](./concepts-backup.md) (PITR) tím, že se obnoví a obnoví data, až do doby, kdy došlo k chybě.<br> <br>  Chcete-li obnovit pouze podmnožinu databází nebo konkrétních tabulek a nikoli všechny databáze na databázovém serveru, můžete obnovit databázový server v nové instanci, exportovat tyto tabulky prostřednictvím [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)a potom pomocí [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) obnovit tyto tabulky do databáze. |
 
 
 

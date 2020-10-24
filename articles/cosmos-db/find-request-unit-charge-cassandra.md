@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: a0451e76ad8ce65486534bfbc68ae1b71adc9098
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 38027f651623b16fed259cbf099bc274457723eb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283956"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482549"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-cassandra-api"></a>Najděte poplatek za jednotku žádosti o operace spouštěné v Azure Cosmos DB rozhraní API Cassandra
 
@@ -53,4 +53,4 @@ Další informace o optimalizaci spotřeby RU najdete v těchto článcích:
 
 * [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)
 * [Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB](optimize-cost-throughput.md)
-* [Optimalizace nákladů na dotazování ve službě Azure Cosmos DB](optimize-cost-queries.md)
+* [Optimalizace nákladů na dotazování ve službě Azure Cosmos DB](./optimize-cost-reads-writes.md)

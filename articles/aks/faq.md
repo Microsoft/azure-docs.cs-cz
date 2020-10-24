@@ -3,12 +3,12 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 8f50475d7ba9117fd32951b401b24b63d192fcd8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c68810e0fd9ee3593aa014243c3f75fb8a63a7fd
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372374"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494530"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -193,7 +193,7 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 
 ## <a name="can-i-use-custom-vm-extensions"></a>Můžu použít vlastní rozšíření virtuálních počítačů?
 
-Ne, AKS je spravovaná služba a manipulace s prostředky IaaS není podporovaná. Instalace vlastních komponent atd. Využijte prosím rozhraní API a mechanismů Kubernetes. Můžete například využít DaemonSets k instalaci požadovaných součástí.
+Agent Log Analytics je podporovaný, protože jde o rozšíření spravované Microsoftem. V opačném případě ne, AKS je spravovaná služba a manipulace s prostředky IaaS není podporovaná. Chcete-li nainstalovat vlastní součásti atd., použijte rozhraní API a mechanismy Kubernetes. Použijte například DaemonSets k instalaci požadovaných součástí.
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Ukládá AKS data o zákaznících mimo oblast clusteru?
 

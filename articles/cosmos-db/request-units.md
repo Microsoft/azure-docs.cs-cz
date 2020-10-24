@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: e4e680ea55988f7b3446bf72c8e800bcc51eb537
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 556b3915336d0ca9cec8ac67a34778cfb2523cbe
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282051"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475069"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Jednotky žádostí ve službě Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Při odhadování počtu ru spotřebovaných úlohami Vezměte v úvahu následu
 
   Stejný dotaz na stejná data bude vždy při opakovaném spuštění ru náklady na stejný počet.
 
-- **Použití skriptu**: stejně jako u dotazů, uložené procedury a triggery spotřebovávají ru na základě složitosti operací, které jsou prováděny. Abyste získali lepší přehled o tom, jakou kapacitu (vyjádřenou v jednotkách RU) každá operace spotřebuje, zkontrolujte při vývoji aplikace [hlavičku zátěže žádostmi](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query).
+- **Použití skriptu**: stejně jako u dotazů, uložené procedury a triggery spotřebovávají ru na základě složitosti operací, které jsou prováděny. Abyste získali lepší přehled o tom, jakou kapacitu (vyjádřenou v jednotkách RU) každá operace spotřebuje, zkontrolujte při vývoji aplikace [hlavičku zátěže žádostmi](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request).
 
 ## <a name="request-units-and-multiple-regions"></a>Jednotky žádostí a několik oblastí
 
@@ -76,12 +76,12 @@ Vaše volba [modelu konzistence](consistency-levels.md) má vliv také na propus
 
 - Přečtěte si další informace o tom, jak [zřídit propustnost na Cosmosch kontejnerech a databázích Azure](set-throughput.md).
 - Přečtěte si další informace o [Azure Cosmos DB bez serveru](serverless.md).
-- Přečtěte si další informace o [logických oddílech](partition-data.md).
-- Přečtěte si další informace o [globálním škálování zřízené propustnosti](scaling-throughput.md).
+- Přečtěte si další informace o [logických oddílech](./partitioning-overview.md).
+- Přečtěte si další informace o [globálním škálování zřízené propustnosti]().
 - Naučte se [zřídit propustnost v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 - Naučte se [zřídit propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
 - Přečtěte si, jak [Najít poplatek za jednotku žádosti o operaci](find-request-unit-charge.md).
 - Naučte se [optimalizovat zřízené náklady na propustnost v Azure Cosmos DB](optimize-cost-throughput.md).
 - Naučte se [optimalizovat čtení a zápis nákladů v Azure Cosmos DB](optimize-cost-reads-writes.md).
-- Naučte se [optimalizovat náklady na dotaz v Azure Cosmos DB](optimize-cost-queries.md).
+- Naučte se [optimalizovat náklady na dotaz v Azure Cosmos DB](./optimize-cost-reads-writes.md).
 - Naučte se [používat metriky k monitorování propustnosti](use-metrics.md).

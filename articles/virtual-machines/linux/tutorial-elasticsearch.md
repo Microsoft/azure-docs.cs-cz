@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3d35940a445b73ecb9285355f36b141c3a151b8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80066546"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475052"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Instalace řešení Elastic Stack na virtuální počítač Azure
 
@@ -228,7 +228,7 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 Otevřete konzolu Kibana a vyberte **Create** (Vytvořit). Vygeneruje se výchozí index založený na datech Syslogu, která jste dříve odeslali do Elasticsearch. 
 
-![Proházení událostí Syslogu v Kibana](media/elasticsearch-install/kibana-index.png)
+![Snímek obrazovky, který zobrazuje konzolu Kibana a zvýrazní tlačítko vytvořit.](media/elasticsearch-install/kibana-index.png)
 
 V konzole Kibana vyberte **Discover** (Vyhledat), abyste mohli prohledávat, procházet a filtrovat události Syslogu.
 

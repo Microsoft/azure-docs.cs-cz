@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277164"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476701"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
 
@@ -191,7 +191,7 @@ Zásady indexování se aktualizovaly:
 
 **Poplatek za ru:** 2,98 ru
 
-Můžete kdykoli přidat vlastnosti k zásadě indexování bez vlivu na zápis nebo čtení. [Průběh transformace indexu můžete sledovat](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Můžete kdykoli přidat vlastnosti k zásadě indexování bez vlivu na zápis nebo čtení. [Průběh transformace indexu můžete sledovat](./how-to-manage-indexing-policy.md#dotnet-sdk).
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Pochopení, které systémové funkce používají index
 
@@ -491,5 +491,5 @@ Dotazy jsou navržené tak, aby výsledky byly předem načteny, zatímco aktuá
 V následujících článcích najdete informace o tom, jak měřit ru na dotaz, získat statistiku spuštění pro optimalizaci vašich dotazů a další:
 
 * [Získat metriky spouštění dotazů SQL pomocí sady .NET SDK](profile-sql-api-query.md)
-* [Ladění výkonu dotazů pomocí služby Azure Cosmos DB](sql-api-sql-query-metrics.md)
+* [Ladění výkonu dotazů pomocí služby Azure Cosmos DB](./sql-api-query-metrics.md)
 * [Tipy ke zvýšení výkonu pro .NET SDK](performance-tips.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 97f6817a02b7adf4d2d3e12dee6d1e3445e09a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88053f2c7b1218a15315f2c616231d9356b65540
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552190"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>Kurz: Azure Active Directory integrace s Stormboard
 
@@ -30,7 +30,7 @@ Integrace Stormboard s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Stormboard potřebujete následující položky:
 
@@ -102,13 +102,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Stormboa
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
 
-    ![Informace o jednotném přihlašování v doméně Stormboard a adresách URL](common/both-replyurl.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat odpověď U R L a vybrat Uložit.](common/both-replyurl.png)
 
     Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://<SUBDOMAIN>.stormboard.com/saml2/ad/acs/<TEAMID>`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně Stormboard a adresách URL](common/both-signonurl.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/both-signonurl.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://<SUBDOMAIN>.stormboard.com/saml2/ad/login/<TEAMID>`
 
@@ -194,7 +194,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Stormboard, měli byste se automaticky přihlásit k Stormboard, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

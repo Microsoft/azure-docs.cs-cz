@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893743"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494440"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Problémy online migrace & omezení pro Azure DB for MySQL s Azure Database Migration Service
 
@@ -32,7 +32,7 @@ Známé problémy a omezení související s online migracemi z MySQL na Azure D
 - Azure Database for MySQL podporuje:
   - MySQL Community Edition
   - Modul InnoDB
-- Migrace stejné verze. Migrace MySQL 5,6 na Azure Database for MySQL 5,7 není podporována.
+- Migrace stejné verze. Migrace MySQL 5,6 na Azure Database for MySQL 5,7 není podporována. Migrace do MySQL 8,0 se nepodporují.
 - Povolit binární přihlášení my.ini (Windows) nebo My. CNF (UNIX)
   - Nastavte Server_id na libovolné číslo větší nebo rovno 1, například Server_id = 1 (pouze pro MySQL 5,6).
   - Nastavení log-bin = \<path> (jenom pro MySQL 5,6)

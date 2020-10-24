@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276092"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485031"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Stránkování v Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Pokud dotaz vrátí token pro pokračování, existují další výsledky dotazu
 
 V REST API Azure Cosmos DB můžete spravovat tokeny pokračování s `x-ms-continuation` hlavičkou. Pokud hlavička odpovědi není prázdná, stejně jako při dotazování na sadu .NET nebo Java SDK `x-ms-continuation` znamená, že dotaz má další výsledky.
 
-Pokud používáte stejnou verzi sady SDK, tokeny pro pokračování nebudou nikdy vypršet. Volitelně můžete [omezit velikost tokenu pro pokračování](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb). Bez ohledu na množství dat nebo počet fyzických oddílů ve vašem kontejneru vrátí dotazy jeden token pro pokračování.
+Pokud používáte stejnou verzi sady SDK, tokeny pro pokračování nebudou nikdy vypršet. Volitelně můžete [omezit velikost tokenu pro pokračování](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb). Bez ohledu na množství dat nebo počet fyzických oddílů ve vašem kontejneru vrátí dotazy jeden token pro pokračování.
 
 Tokeny pro pokračování nelze použít pro dotazy s [Group by](sql-query-group-by.md) nebo [DISTINCT](sql-query-keywords.md#distinct) , protože tyto dotazy by vyžadovaly uložení významného stavu. Pro dotazy s `DISTINCT` můžete použít tokeny pro pokračování, pokud přidáte `ORDER BY` do dotazu.
 

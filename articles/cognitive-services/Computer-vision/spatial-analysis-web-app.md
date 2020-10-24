@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc03cf03f8a8e0f2a222ca1089618eaade9485d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628190"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496066"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Postupy: nasazení webové aplikace pro počítání lidí
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte, jak:
 * Konfigurace připojení IoT Hub ve webové aplikaci
 * Nasazení a testování webové aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Základní porozumění konfiguracím nasazení Azure IoT Edge a [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/)
@@ -63,14 +63,14 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>Nasazení kontejneru v Azure IoT Edge v hostitelském počítači
 
-Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači pomocí Azure CLI. Proces nasazení vyžaduje soubor manifestu nasazení, který pojednává o požadovaných kontejnerech, proměnných a konfiguracích pro vaše nasazení. Vzorový [manifest nasazení](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) můžete najít na GitHubu, který obsahuje základní konfiguraci nasazení pro kontejner *prostorových analýz* . 
+Nasaďte kontejner prostorových analýz jako modul IoT na hostitelském počítači pomocí Azure CLI. Proces nasazení vyžaduje soubor manifestu nasazení, který pojednává o požadovaných kontejnerech, proměnných a konfiguracích pro vaše nasazení. Ukázkový [manifest nasazení konkrétního Azure Stackho okraje](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) a také [neAzure Stackho nasazení specifického Edge](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) na GitHubu najdete na webu GitHub, který zahrnuje základní konfiguraci nasazení pro kontejner *prostorových analýz* . 
 
 > [!NOTE] 
-> Kontejnery *prostorových analýz – telegraf* a *prostorové analýzy pro diagnostiku* jsou volitelné. Můžete se rozhodnout je odebrat z *DeploymentManifest.jsv* souboru. Další informace najdete v článku [telemetrie a řešení problémů](./spatial-analysis-logging.md) . Ukázku *DeploymentManifest.js* souboru [na GitHubu](https://go.microsoft.com/fwlink/?linkid=2142179) najdete v části. 
+> Kontejnery *prostorových analýz – telegraf* a *prostorové analýzy pro diagnostiku* jsou volitelné. Můžete se rozhodnout je odebrat z *DeploymentManifest.jsv* souboru. Další informace najdete v článku [telemetrie a řešení problémů](./spatial-analysis-logging.md) . Můžete najít dvě vzorová *DeploymentManifest.jsk* souborům na GitHubu, a to buď pro [zařízení Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) , nebo na jiný [stolní počítač](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) .
 
 ### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
-Většina **proměnných prostředí** pro modul IoT Edge je již nastavena v ukázkové *DeploymentManifest.js* souboru odkazovaného výše. V souboru vyhledejte `BILLING_ENDPOINT` `API_KEY` proměnné prostředí a zobrazené níže. Nahraďte hodnoty identifikátorem URI koncového bodu a klíčem rozhraní API, který jste vytvořili dříve. Zajistěte, aby byla hodnota smlouvy EULA nastavena na přijmout. 
+Většina **proměnných prostředí** pro modul IoT Edge je již nastavena v ukázce *DeploymentManifest.jsna* souborech propojených výše. V souboru vyhledejte `BILLING_ENDPOINT` `API_KEY` proměnné prostředí a zobrazené níže. Nahraďte hodnoty identifikátorem URI koncového bodu a klíčem rozhraní API, který jste vytvořili dříve. Zajistěte, aby byla hodnota smlouvy EULA nastavena na přijmout. 
 
 ```json
 "EULA": { 
@@ -89,7 +89,7 @@ Většina **proměnných prostředí** pro modul IoT Edge je již nastavena v uk
 
 Teď, když je dokončená počáteční konfigurace kontejneru *prostorové analýzy* , je dalším krokem konfigurace parametrů operací a jejich přidání do nasazení. 
 
-Prvním krokem je aktualizovat ukázkový [manifest nasazení](https://go.microsoft.com/fwlink/?linkid=2142179) a nakonfigurovat operationId pro `cognitiveservices.vision.spatialanalysis-personcount` , jak je znázorněno níže:
+Prvním krokem je aktualizovat odkaz na vzorový manifest nasazení výše a nakonfigurovat operationId pro `cognitiveservices.vision.spatialanalysis-personcount` , jak je znázorněno níže:
 
 
 ```json
@@ -107,7 +107,7 @@ Prvním krokem je aktualizovat ukázkový [manifest nasazení](https://go.micros
 },
 ```
 
-Po aktualizaci [manifestu nasazení](https://go.microsoft.com/fwlink/?linkid=2142179) postupujte podle pokynů výrobce fotoaparátu a nainstalujte fotoaparát, nakonfigurujte adresu URL kamery a nakonfigurujte uživatelské jméno a heslo. 
+Po aktualizaci manifestu nasazení postupujte podle pokynů výrobce fotoaparátu a nainstalujte fotoaparát, nakonfigurujte adresu URL kamery a nakonfigurujte uživatelské jméno a heslo. 
 
 Dále nastavte `VIDEO_URL` adresu URL služby RTSP kamery a přihlašovací údaje pro připojení k fotoaparátu.
 
@@ -122,7 +122,7 @@ Můžete také vybrat prahovou hodnotu spolehlivosti, pokud se zjištěné osoby
 
 ### <a name="execute-the-deployment"></a>Spustit nasazení
 
-Teď, když je [manifest nasazení](https://go.microsoft.com/fwlink/?linkid=2142179) dokončený, použijte tento příkaz v rozhraní příkazového řádku Azure CLI a nasaďte kontejner na hostitelském počítači jako modul IoT Edge.
+Teď, když je manifest nasazení dokončený, použijte tento příkaz v rozhraní příkazového řádku Azure CLI a nasaďte kontejner na hostitelském počítači jako modul IoT Edge.
 
 ```azurecli
 az login
@@ -145,7 +145,7 @@ Vyhledejte *stav modulu runtime* v nastavení modulu IoT Edge pro modul prostoro
 
 ![Příklad ověření nasazení](./media/spatial-analysis/deployment-verification.png)
 
-V tomto okamžiku je v kontejneru prostorové analýzy spuštěná operace. Vygeneruje pro ni přehledy AI `cognitiveservices.vision.spatialanalysis-personcount` a směruje tyto poznatky jako telemetrii do instance Azure IoT Hub. Chcete-li konfigurovat další fotoaparáty, můžete aktualizovat soubor [manifestu nasazení](https://go.microsoft.com/fwlink/?linkid=2142179) a znovu spustit nasazení.
+V tomto okamžiku je v kontejneru prostorové analýzy spuštěná operace. Vygeneruje pro ni přehledy AI `cognitiveservices.vision.spatialanalysis-personcount` a směruje tyto poznatky jako telemetrii do instance Azure IoT Hub. Chcete-li konfigurovat další fotoaparáty, můžete aktualizovat soubor manifestu nasazení a znovu spustit nasazení.
 
 ## <a name="person-counting-web-application"></a>Webová aplikace pro počítání osob
 
@@ -156,7 +156,7 @@ Tato osoba, která počítá webovou aplikaci, vám umožní rychle nakonfigurov
 Formulář kontejneru této aplikace je k dispozici na Azure Container Registry. Ke stažení použijte následující příkaz docker pull. Kontaktujte Microsoft na projectarchon@microsoft.com pro přístup k přístupovému tokenu.
 
 ```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
+docker login rtvsofficial.azurecr.io -u <token name> -p <password>
 docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
 ```
 

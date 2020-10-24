@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/23/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: místní, Docker, kontejner
-ms.openlocfilehash: c26c69a0f6cbf0f9f658d3b7a32cce99319767b4
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 6f04e40b0b2baa496faf8001684304c5df78ec20
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930437"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496134"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Instalace a spuštění kontejnerů Docker pro rozhraní API služby pro rozpoznávání řeči 
 
@@ -48,9 +48,9 @@ Kontejnery služby Speech umožňují zákazníkům vytvořit architekturu aplik
 | Rozpoznávání jazyka řeči | Zjišťuje jazyk používaný v zvukových souborech. | 1,0 |
 | Neuronové převodu textu na řeč | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. | 1.2.0 |
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
@@ -491,6 +491,16 @@ Tento příkaz:
 * Přiděluje 1 jádra procesoru a 1 gigabajt (GB) paměti.
 * Zveřejňuje port TCP 5003 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+
+Pokud posíláte jenom požadavky na řeč Rozpoznávání jazyka, budete muset nastavit hodnotu klienta řeči `phraseDetection` na `None` .  
+
+```python
+speech_config.set_service_property(
+      name='speechcontext-phraseDetection.Mode',
+      value='None',
+      channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+   )
+```
 
 Pokud chcete tento kontejner spustit s kontejnerem převod řeči na text, můžete použít tuto [bitovou kopii Docker](https://hub.docker.com/r/antsu/on-prem-client). Po spuštění obou kontejnerů použijte tento příkaz Docker Run ke spuštění `speech-to-text-with-languagedetection-client` .
 

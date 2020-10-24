@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dfa8227f319a818efee20f26c1f2bebf72ad7cf9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4b0e0bd38c8bb9ea1d2331a65fc891e157971eef
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367648"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495850"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Integrace digitálních vláken Azure s využitím služby Azure Signal
 
@@ -147,7 +147,7 @@ V dalším kroku publikujte funkci do Azure pomocí postupu popsaného v části
 
 1. Nakonec pomocí následujícího příkazu rozhraní příkazového řádku Azure přidejte do nastavení aplikace funkce **připojovací řetězec** služby Azure Signal. Příkaz můžete spustit v [Azure Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [v počítači nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)rozhraní příkazového řádku Azure:
  
-    ```azurecli
+    ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
@@ -242,7 +242,7 @@ Pomocí Azure Cloud Shell nebo místních rozhraní příkazového řádku Azure
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné. Skupina prostředků i všechny prostředky v ní obsažené se trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

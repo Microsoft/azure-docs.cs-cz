@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331494"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495898"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Žádost o službu se nezdařila. Stav: 403 (zakázáno)
 
@@ -25,7 +25,9 @@ K této chybě může dojít u mnoha typů žádostí o služby, které vyžaduj
 
 ### <a name="cause-1"></a>Příčina #1
 
-Tato chyba nejčastěji znamená, že oprávnění k řízení přístupu na základě role Azure (RBAC) pro službu nejsou nastavena správně. Celá řada akcí pro instanci digitálních vláken Azure vyžaduje, abyste měli u **instance, kterou se pokoušíte spravovat**, roli *vlastník (Preview) Azure* . 
+Tato chyba nejčastěji znamená, že oprávnění k řízení přístupu na základě role Azure (RBAC) pro službu nejsou nastavena správně. Celá řada akcí pro instanci digitálních vláken Azure vyžaduje, abyste měli v **instanci, kterou se pokoušíte spravovat**, roli *vlastníka dat digitálních vláken Azure* . 
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>Příčina #2
 
@@ -37,11 +39,12 @@ Registrace aplikace musí mít oprávnění k přístupu nakonfigurovaná pro ro
 
 ### <a name="solution-1"></a>#1 řešení
 
-Prvním řešením je ověřit, jestli má váš uživatel Azure na instanci, kterou se pokoušíte spravovat, roli _**vlastníka (Preview) Azure Digital Revlákens**_ . Pokud tuto roli nemáte, nastavte ji.
+Prvním řešením je ověřit, jestli má váš uživatel Azure na instanci, kterou se pokoušíte spravovat, roli _**vlastníka dat s digitálními**_ úlohami Azure. Pokud tuto roli nemáte, nastavte ji.
 
 Všimněte si, že tato role se liší od...
-* role *vlastníka* v celém předplatném Azure. *Vlastník digitálních vláken Azure (Preview)* je role v rámci digitálních vláken Azure a je vymezená na tuto jednotlivou instanci digitálních vláken Azure.
-* role *vlastníka* v digitálních prozdvojeních Azure. Jedná se o dvě odlišná role správy digitálních vláken Azure a *vlastník Azure Digital autoguards (Preview)* je role, která se má použít ke správě ve verzi Preview.
+* předchozí název této role během období Preview je *vlastník digitálních vláken Azure (Preview)* (Tato role je stejná, ale změnil se název).
+* role *vlastníka* v celém předplatném Azure. *Vlastníkem dat digitálních vláken Azure* je role v rámci digitálních vláken Azure, která je vymezená na tuto jednotlivou instanci digitálních vláken Azure.
+* role *vlastníka* v digitálních prozdvojeních Azure. Jedná se o dvě odlišná role správy digitálních vláken Azure a *vlastník dat pro digitální vlákna Azure* je role, která se má použít ke správě ve verzi Preview.
 
 #### <a name="check-current-setup"></a>Kontrolovat aktuální nastavení
 
@@ -49,12 +52,12 @@ Všimněte si, že tato role se liší od...
 
 #### <a name="fix-issues"></a>Opravit problémy 
 
-Pokud toto přiřazení role nemáte, měl by uživatel s rolí vlastníka v rámci vašeho **předplatného Azure** spustit následující příkaz, který uživateli Azure poskytne roli Azure Digital neplnících *vlastníka (Preview)* v **instanci digitálních vláken Azure**. 
+Pokud toto přiřazení role nemáte, měl by uživatel s rolí vlastníka v rámci vašeho **předplatného Azure** spustit následující příkaz, který vašemu uživateli Azure poskytne roli *vlastníka dat Azure s digitálními* úlohami v **instanci digitálních vláken Azure**. 
 
 Pokud jste vlastníkem předplatného, můžete tento příkaz Spustit sami. Pokud ne, obraťte se na vlastníka, aby tento příkaz spustili vaším jménem.
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
 Další podrobnosti o tomto požadavku role a procesu přiřazení najdete v [části *Nastavení přístupových oprávnění uživatele* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) v tématu *Postupy: nastavení instance a ověřování (CLI nebo portál)*.

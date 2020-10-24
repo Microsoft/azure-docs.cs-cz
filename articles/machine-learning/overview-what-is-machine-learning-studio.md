@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667431"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495996"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 
@@ -61,7 +61,7 @@ Spravujte své prostředky strojového učení přímo v prohlížeči. Prostře
 - Notebooks
 - Experimenty
 - Spustit protokoly
-- Kanály 
+- Pipelines 
 - Koncové body kanálu
 
 I v případě, že jste zkušený vývojář, může Studio zjednodušit správu prostředků pracovního prostoru.
@@ -98,7 +98,9 @@ Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure
 ## <a name="next-steps"></a>Další kroky
 
 Navštivte [Studio](https://ml.azure.com)nebo si prozkoumejte různé možnosti vytváření těchto kurzů:  
-  + [Použití poznámkových bloků Pythonu k učení & nasazení modelů](tutorial-1st-experiment-sdk-setup.md)
+
+- + [Začněte ve vlastním vývojovém prostředí](tutorial-1st-experiment-sdk-setup-local.md)
+  + [Použití poznámkových bloků Jupyter na výpočetní instanci ke školení & nasazení modelů](tutorial-1st-experiment-sdk-setup.md)
   + [Použití automatizovaného strojového učení k výuce & nasazení modelů](tutorial-first-experiment-automated-ml.md)  
   + [Použití návrháře ke školení & nasazení modelů](tutorial-designer-automobile-price-train-score.md)
 

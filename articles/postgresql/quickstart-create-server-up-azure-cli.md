@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e4615db3dbabbc4b18dad7d6ec805ddff10e8fd7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c11a98c04f81e7c111faf4aa449ab2bf9a4890bb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705105"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485218"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití příkazu rozhraní příkazového řádku Azure, AZ Postgres up (Preview), vytvoření serveru Azure Database for PostgreSQL-Single
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) . Poznamenejte si vlastnost **ID** z výstupu příkazu pro odpovídající název předplatného.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/authenticate-azure-cli) . Poznamenejte si vlastnost **ID** z výstupu příkazu pro odpovídající název předplatného.
 
 ```azurecli
 az login

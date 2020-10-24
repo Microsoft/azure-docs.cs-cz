@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 9f26dc5214222bb7564c0ba2b199adefad056ed5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: dac2ed3888dcf1d38fc5e2c21611edf8008a07f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280997"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476361"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Omezení jedinečnosti klíčů v Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Jedinečné klíče můžete definovat jenom v případě, že vytvoříte konte
 
 * Existující kontejner nelze aktualizovat tak, aby používal jiný jedinečný klíč. Jinými slovy, po vytvoření kontejneru s jedinečnou zásadou klíče se zásady nedají změnit.
 
-* Chcete-li nastavit jedinečný klíč pro existující kontejner, vytvořte nový kontejner s omezením jedinečného klíče. Pomocí vhodného nástroje pro migraci dat přesuňte data z existujícího kontejneru do nového kontejneru. Pro kontejnery SQL použijte nástroj pro [migraci dat](import-data.md) k přesunutí dat. V případě kontejnerů MongoDB použijte k přesunu dat [mongoimport.exe nebo mongorestore.exe](mongodb-migrate.md) .
+* Chcete-li nastavit jedinečný klíč pro existující kontejner, vytvořte nový kontejner s omezením jedinečného klíče. Pomocí vhodného nástroje pro migraci dat přesuňte data z existujícího kontejneru do nového kontejneru. Pro kontejnery SQL použijte nástroj pro [migraci dat](import-data.md) k přesunutí dat. V případě kontejnerů MongoDB použijte k přesunu dat [mongoimport.exe nebo mongorestore.exe](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) .
 
 * Zásada jedinečného klíče může mít maximálně 16 hodnot cesty. Hodnoty mohou být například `/firstName` , `/lastName` a `/address/zipCode` . Každá zásada jedinečného klíče může mít maximálně 10 omezení nebo kombinací jedinečného klíče. Kombinované cesty pro každé omezení jedinečného indexu nesmí překročit 60 bajtů. V předchozím příkladu je jedno omezení jméno, příjmení a e-mailová adresa. Toto omezení využívá 3 z 16 možných cest.
 

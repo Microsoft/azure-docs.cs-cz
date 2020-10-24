@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122717"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474899"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB ve fondu SQL bez serveru v odkazu Azure synapse (Preview)
 
@@ -277,5 +277,6 @@ Návrhy a problémy můžete nahlásit na [stránce s názory na Azure synapse](
 
 Další informace najdete v následujících článcích:
 
+- [Použití Power BI a synapse fondu SQL bez serveru s propojením Azure synapse](../../cosmos-db/synapse-link-power-bi.md)
 - [Postup vytvoření a používání zobrazení v SQL na vyžádání](create-use-views.md) 
 - [Kurz k sestavování zobrazení SQL na vyžádání přes Azure Cosmos DB a jejich propojení s Power BI modely prostřednictvím DirectQuery](./tutorial-data-analyst.md)

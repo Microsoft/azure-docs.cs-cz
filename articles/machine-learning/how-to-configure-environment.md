@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 98bc108af22491c6ea0b64bc2e278b6b32f43a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 66008012dd9b3eb6000e96f251d18cf14a9c8dc1
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203088"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495244"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí pro Azure Machine Learning
 
@@ -37,7 +37,7 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 * Visual Studio Code: Používáte-li Visual Studio Code, zahrnuje [rozšíření Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) rozsáhlou jazykovou podporu Pythonu a také funkce, které umožňují pracovat s Azure Machine Learning mnohem pohodlnější a produktivní.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure Machine Learning pracovní prostor. Pokud ho nemáte, můžete vytvořit Azure Machine Learning pracovní prostor prostřednictvím šablon [Azure Portal](how-to-manage-workspace.md), [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)a [Azure Resource Manager](how-to-create-workspace-template.md).
 
@@ -139,10 +139,10 @@ Pro výpočetní instanci není nic k instalaci ani konfiguraci.
 
 Vytvořte si ji kdykoli v pracovním prostoru Azure Machine Learning. Zadejte jenom název a zadejte typ virtuálního počítače Azure. Vyzkoušejte si to hned v tomto [kurzu: nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
-Další informace o výpočetních instancích, včetně postupu instalace balíčků, najdete v tématu [výpočetní instance](concept-compute-instance.md).
+Další informace o výpočetních instancích, včetně postupu instalace balíčků, najdete v tématu [Vytvoření a správa Azure Machine Learning výpočetní instance](how-to-create-manage-compute-instance.md).
 
 > [!TIP]
-> Chcete-li zabránit vzniku poplatků za nepoužitou výpočetní instanci, [zastavte výpočetní instanci](tutorial-1st-experiment-bring-data.md#clean-up-resources).
+> Chcete-li zabránit vzniku poplatků za nepoužitou výpočetní instanci, [zastavte výpočetní instanci](how-to-create-manage-compute-instance.md#manage).
 
 Kromě Jupyter Notebook serveru a JupyterLab můžete použít výpočetní instance v [integrované funkci poznámkového bloku v rámci nástroje Azure Machine Learning Studio](how-to-run-jupyter-notebooks.md).
 

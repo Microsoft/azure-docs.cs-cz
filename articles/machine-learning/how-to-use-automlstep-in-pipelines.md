@@ -11,21 +11,21 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 82e2a484e23d55b91ff0c7820302b2cc83537cb8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057701"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494916"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 
 
 Funkce automatizovaného škálování na základě Azure Machine Learning vám pomůže zjistit modely s vysokým výkonem bez nutnosti opětovné implementace každého možného přístupu. V kombinaci s Azure Machine Learning kanály můžete vytvářet nasaditelné pracovní postupy, které umožňují rychle zjistit algoritmus, který je pro vaše data nejvhodnější. V tomto článku se dozvíte, jak efektivně připojit krok přípravy dat k automatizovanému kroku ML. Automatizovaná ML může rychle zjistit algoritmus, který je pro vaše data nejvhodnější, a přitom vás zavede na cestách, aby MLOps a modeloval provozní životní cyklus s kanály.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  
 
@@ -73,7 +73,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-Kód se nejprve přihlásí k pracovnímu prostoru Azure Machine Learning definovanému v **config.js** (vysvětlení najdete v tématu [kurz: Začínáme s vytvářením prvního experimentu ml v sadě Python SDK](tutorial-1st-experiment-sdk-setup.md)). Pokud již není datová sada s názvem `'titanic_ds'` registrována, pak ji vytvoří. Kód stáhne data ve formátu CSV z webu, používá je k vytvoření instance `TabularDataset` a a pak tuto datovou sadu zaregistruje v pracovním prostoru. Nakonec funkce `Dataset.get_by_name()` přiřadí `Dataset` k `titanic_ds` . 
+Kód se nejprve přihlásí k pracovnímu prostoru Azure Machine Learning definovanému v **config.js** (vysvětlení najdete v tématu [vytvoření konfiguračního souboru pracovního prostoru](how-to-configure-environment.md#workspace)). Pokud již není datová sada s názvem `'titanic_ds'` registrována, pak ji vytvoří. Kód stáhne data ve formátu CSV z webu, používá je k vytvoření instance `TabularDataset` a a pak tuto datovou sadu zaregistruje v pracovním prostoru. Nakonec funkce `Dataset.get_by_name()` přiřadí `Dataset` k `titanic_ds` . 
 
 ### <a name="configure-your-storage-and-compute-target"></a>Konfigurace úložiště a cíle výpočtů
 

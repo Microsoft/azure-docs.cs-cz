@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 34b4a7395102549dfea6f9d51ef8d1216bacddba
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ebc0398eeb7679ffd57e0aa5aae642f6303aaa35
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327701"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484606"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Základní hodnoty zabezpečení Azure pro HDInsight
 
@@ -146,9 +146,7 @@ Pomocí Azure modrotisky můžete také zjednodušit rozsáhlá nasazení Azure 
 
 Jak zobrazit dostupné aliasy Azure Policy:
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
-Jak nakonfigurovat a spravovat Azure Policy:
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias Jak nakonfigurovat a spravovat Azure Policy:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -346,11 +344,11 @@ Kromě toho můžete použít Azure Security Center doporučení pro správu ide
 
 Jak získat roli adresáře ve službě Azure AD pomocí prostředí PowerShell:
 
-https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
 Jak získat členy role adresáře ve službě Azure AD pomocí prostředí PowerShell:
 
-https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 Jak monitorovat identitu a přístup pomocí Azure Security Center:
 
@@ -780,7 +778,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Jak zobrazit vaše předplatná Azure:
 
-https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 Porozumění službě Azure RBAC:
 
@@ -942,7 +940,7 @@ Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resou
 
 Jak zobrazit dostupné aliasy Azure Policy:
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 Jak nakonfigurovat a spravovat Azure Policy:
 
@@ -990,13 +988,9 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Doprovodné**materiály: Pokud používáte vlastní definice Azure Policy, použijte k bezpečnému ukládání a správě kódu službu Azure DevOps nebo Azure Repos.
 
-Jak ukládat kód v Azure DevOps:
+[Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
-Azure Repos dokumentaci:
-
-https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+[Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1034,13 +1028,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. HDInsight k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace clusteru HDInsight.
 
-Jak zobrazit dostupné aliasy Azure Policy:
+[Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
-Jak nakonfigurovat a spravovat Azure Policy:
-
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+[Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1174,7 +1164,7 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 Postup zálohování klíčů Key Vault v Azure:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1190,7 +1180,7 @@ https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
 
 Postup obnovení klíčů trezoru klíčů v Azure:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 

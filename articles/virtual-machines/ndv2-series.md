@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 74c8924116cf9b565ea63e3b72a409686a4d725c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ff828024610ce498d40a4039d8116e28366aebb9
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975716"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494418"
 ---
 # <a name="updated-ndv2-series"></a>Aktualizace řady NDv2-Series
 
@@ -37,7 +37,7 @@ Kriticky je NDv2 sestavena jak pro výpočetně náročné škálování (což z
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): nepodporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): nepodporováno<br>
-[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 2<br>
 InfiniBand: podporované<br>
 <br>
 

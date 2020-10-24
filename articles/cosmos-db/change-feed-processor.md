@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277036"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475800"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanálu změn ve službě Azure Cosmos DB
 
@@ -125,14 +125,14 @@ Procesor změny kanálu bude inicializován a začne číst změny od začátku 
 
 Procesor změnového kanálu lze hostovat na libovolné platformě, která podporuje dlouho běžící procesy nebo úlohy:
 
-* Nepřetržitě běžící [Webová úloha Azure](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)
-* Proces na [virtuálním počítači Azure](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines).
-* Úloha na pozadí ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service).
-* [Hostovaná služba ASP.NET](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)
+* Nepřetržitě běžící [Webová úloha Azure](/learn/modules/run-web-app-background-task-with-webjobs/)
+* Proces na [virtuálním počítači Azure](/azure/architecture/best-practices/background-jobs#azure-virtual-machines).
+* Úloha na pozadí ve [službě Azure Kubernetes](/azure/architecture/best-practices/background-jobs#azure-kubernetes-service).
+* [Hostovaná služba ASP.NET](/aspnet/core/fundamentals/host/hosted-services)
 
 I když se procesor Change feed může spouštět v krátkodobých prostředích, protože kontejner zapůjčení udržuje stav, cyklus spuštění těchto prostředí přidá zpoždění pro příjem oznámení (kvůli režii při spouštění procesoru při každém spuštění prostředí).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Kompletní ukázková aplikace na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
@@ -147,4 +147,4 @@ Teď můžete pokračovat a získat další informace o procesoru Change feed v 
 * [Model vyžádání kanálu změn](change-feed-pull-model.md)
 * [Postup migrace z knihovny Change feed Processor](how-to-migrate-from-change-feed-library.md)
 * [Použití estimátoru pro kanálu změn](how-to-use-change-feed-estimator.md)
-* [Počáteční čas procesoru kanálu změn](how-to-configure-change-feed-start-time.md)
+* [Počáteční čas procesoru kanálu změn](#starting-time)

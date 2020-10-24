@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 1b7cfa03aeb705ea7e7caf3254bc39d9fff722ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d50434ce3cca4e6f5082334bb91c3d569e2b1e1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546529"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Kurz: Azure Active Directory integrace s paletou talentů
 
@@ -30,7 +30,7 @@ Integrace palety talentů s Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci Integrace Azure AD s paletou talentů potřebujete následující položky:
 
@@ -100,13 +100,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí talentů
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Talentů a informace o jednotném přihlašování k doménám a adresám URL palety](common/both_replyurl.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat odpověď U R L.](common/both_replyurl.png)
 
     Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:  `https://talent-p.net/saml/acs/<tenantID>`
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Talentů a informace o jednotném přihlašování k doménám a adresám URL palety](common/both_signonurl.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/both_signonurl.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://talent-p.net/saml/sso/<tenantID>`
 
@@ -184,7 +184,7 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-talent-palette-test-user"></a>Vytvořit testovacího uživatele talentů palety
 
-V této části vytvoříte uživatele s názvem Britta Simon v paletě talentů. Pokud chcete přidat uživatele na platformě palet talentů, pracujte s [týmem podpory talentů palety](mailto:talent-support@pa-consul.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v paletě talentů. Pokud chcete přidat uživatele na platformě palet talentů, pracujte s [týmem podpory talentů palety](mailto:talent-support@pa-consul.co.jp) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
@@ -192,7 +192,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici paleta talentů, měli byste být automaticky přihlášeni k paletě talentů, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

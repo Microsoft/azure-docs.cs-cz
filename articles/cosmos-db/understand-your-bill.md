@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0161c1599402fff25337549819f94b833142ba06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567855"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476395"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení informací na faktuře za službu Azure Cosmos DB
 
@@ -284,8 +284,8 @@ Celkový počet faktur (bez rezervované kapacity) by byl (za 30 dní nebo 720 h
 
 |**Oblast**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**|**Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
 |----|----|----|----|----|
-|East US|$0,008 |50 K|$4|$2 880 |
-|Japan East|$0,009 |50 K| $4,50 |$3 240 |
+|USA – východ|$0,008 |50 K|$4|$2 880 |
+|Japonsko – východ|$0,009 |50 K| $4,50 |$3 240 |
 |Celkem|||$8,50|$6 120 |
 
 Pojďme si vzít v úvahu, že jste místo toho koupili rezervovanou kapacitu. Rezervovanou kapacitu můžete zakoupit 100 – K RU/s za cenu $56 064 po dobu jednoho roku (s 20% slevou) nebo $6,40 za hodinu. Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)na ceny rezervovaných kapacit.  
@@ -298,8 +298,8 @@ Z toho, co jste efektivně koupili, je kredit $8 za hodinu, za 100 K RU/s pomoc�
 
 |**Oblast**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**| **Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
 |----|----|----|----|----|
-|East US|$0,008 |50 K|$4|$2 880 |
-|Japan East|$0,009 |50 K| $4,50 |$3 240 |
+|USA – východ|$0,008 |50 K|$4|$2 880 |
+|Japonsko – východ|$0,009 |50 K| $4,50 |$3 240 |
 |||Průběžné platby|$8,50|$6120|
 |Zakoupená Rezervovaná kapacita|$0,0064 (20% sleva) |předem zakoupená kapacita 100 RU/s nebo $8 |-$8|-$5 760 |
 |Čistý účet|||$0,50 |$360 |
@@ -313,5 +313,5 @@ Dále si můžete přečíst další informace o optimalizaci nákladů v Azure 
 * Další informace o [optimalizaci nákladů na propustnost](optimize-cost-throughput.md)
 * Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
 * Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na dotazy](./optimize-cost-reads-writes.md)
 * Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)

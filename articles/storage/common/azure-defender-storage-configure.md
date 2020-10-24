@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289765"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474848"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Konfigurace Azure Defenderu pro úložiště
 
@@ -37,7 +37,7 @@ Následující seznam shrnuje dostupnost služby Azure Defender pro úložiště
 
 - Stav vydaných verzí:
   - [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) (Obecná dostupnost)
-  - [Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (všeobecně dostupné)
+  - [Soubory Azure](/azure/storage/files/storage-files-introduction) (všeobecně dostupné)
   - Azure Data Lake Storage Gen2 (Obecná dostupnost)
 - Cloud<br>
     ✔ Komerční cloudy<br>
@@ -98,16 +98,16 @@ Pomocí Azure Policy můžete povolit Azure Defender napříč účty úložišt
 
 Pomocí příkazů rozhraní REST API můžete vytvořit, aktualizovat nebo získat nastavení Azure Defenderu pro konkrétní účet úložiště.
 
-- [Rozšířená ochrana před internetovými útoky – vytvořit](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-- [Rozšířená ochrana před internetovými útoky – získání](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+- [Rozšířená ochrana před internetovými útoky – vytvořit](/rest/api/securitycenter/advancedthreatprotection/create)
+- [Rozšířená ochrana před internetovými útoky – získání](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Použijte následující rutiny PowerShellu:
 
-- [Povolit rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Získat rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [Zakázat rozšířenou ochranu před internetovými útoky](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+- [Povolit rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+- [Získat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+- [Zakázat rozšířenou ochranu před internetovými útoky](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ---
 

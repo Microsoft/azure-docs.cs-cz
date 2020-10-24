@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483724"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474661"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Návrh strategie načítání základních dat pro fond SQL Azure synapse
 
-Tradiční datové sklady SMP používají proces extrakce, transformace a načítání (ETL) pro načítání dat. Azure SQL Pool je rozsáhlá architektura paralelního zpracování (MPP), která využívá škálovatelnost a flexibilitu výpočetních prostředků a prostředků úložiště. Pomocí procesu extrakce, načítání a transformace (ELT) můžete využít funkci MPP a eliminovat prostředky potřebné k transformaci dat před jejich načtením.
+Tradiční datové sklady SMP používají proces extrakce, transformace a načítání (ETL) pro načítání dat. Azure SQL Pool je rozsáhlá architektura paralelního zpracování (MPP), která využívá škálovatelnost a flexibilitu výpočetních prostředků a prostředků úložiště. Pomocí procesu extrakce, načítání a transformace (ELT) můžete využít integrované možnosti zpracování distribuovaných dotazů a eliminovat prostředky potřebné k transformaci dat před jejich načtením.
 
 I když fond SQL podporuje mnoho metod načítání, včetně nezákladních možností, jako je BCP a SQL BulkCopy API, nejrychlejší a nejškálovatelný způsob načítání data je prostřednictvím základny.  Základem je technologie, která přistupuje k externím datům uloženým ve službě Azure Blob Storage nebo Azure Data Lake Store prostřednictvím jazyka T-SQL.
 
@@ -112,7 +112,7 @@ Formátování textových souborů:
 
 ## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. načtěte data do pracovních tabulek fondu SQL pomocí základu.
 
-Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez rušivého vlivu na provozní tabulky. Přípravná tabulka vám také nabídne možnost použít MPP fondu SQL pro transformaci dat před vložením dat do provozních tabulek.
+Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez rušivého vlivu na provozní tabulky. Přípravná tabulka vám také nabídne možnost použít integrované funkce distribuovaného zpracování dotazů ve fondu SQL pro transformaci dat před vložením dat do provozních tabulek.
 
 ### <a name="options-for-loading-with-polybase"></a>Možnosti načítání s použitím základny
 

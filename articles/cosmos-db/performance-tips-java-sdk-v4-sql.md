@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8735bf721ec85dcd556582f7fd887dd82b55a35d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369977"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475222"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy pro zvýšení výkonu pro sadu Java SDK v4 služby Azure Cosmos DB
 
@@ -85,13 +85,13 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
 * **Povolte na VIRTUÁLNÍm počítači Azure akcelerované síťové služby, aby se snížila latence.**
 
-Doporučuje se postupovat podle pokynů pro povolení akcelerovaných síťových prostředí ve [Windows (kliknutím na pokyny)](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) nebo [Linux (kliknutím na pokyny)](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) na virtuální počítač Azure, aby se maximalizoval výkon.
+Doporučuje se postupovat podle pokynů pro povolení akcelerovaných síťových prostředí ve [Windows (kliknutím na pokyny)](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [Linux (kliknutím na pokyny)](../virtual-network/create-vm-accelerated-networking-cli.md) na virtuální počítač Azure, aby se maximalizoval výkon.
 
 Bez urychlení sítě může být vstupně-výstupní operace přenosu mezi VIRTUÁLNÍm počítačem Azure a dalšími prostředky Azure nutně směrována přes hostitele a virtuální přepínač umístěný mezi virtuálním počítačem a jeho síťovou kartou. V případě, že se hostitel a virtuální přepínač vloží do DataPath, se nezvyšuje jenom latence a kolísání komunikačního kanálu, ale taky z virtuálního počítače odvolá cykly CPU. S akcelerovanými síťovými rozhraními se rozhraní virtuálních počítačů přímo s rozhraním NIC bez dodavatelů; všechny podrobnosti o zásadách sítě, které byly zpracovávány hostitelem a virtuálním přepínačem, jsou nyní zpracovávány v hardwaru síťového adaptéru. hostitel a virtuální přepínač se přeskočí. Obecně můžete očekávat nižší latenci a vyšší propustnost a *také spolehlivější* latenci a snížení využití procesoru, když povolíte akcelerované síťové služby.
 
 Omezení: akcelerované síťové služby musí být podporované v operačním systému virtuálních počítačů a dají se povolit jenom v případě, že je virtuální počítač zastavený a navrácený. Virtuální počítač nejde nasadit pomocí Azure Resource Manager.
 
-Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) a [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) .
+Další podrobnosti najdete v pokynech pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) a [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) .
 
 ## <a name="sdk-usage"></a>Využití sady SDK
 * **Nainstalovat nejnovější sadu SDK**
@@ -311,7 +311,7 @@ _ **Horizontálního navýšení kapacity klienta – zatížení**
 
     [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
-    Další informace najdete v tématu [Azure Cosmos DB zásady indexování](indexing-policies.md).
+    Další informace najdete v tématu [Azure Cosmos DB zásady indexování](index-policy.md).
 
 ## <a name="throughput"></a>Propustnost
 <a id="measure-rus"></a>

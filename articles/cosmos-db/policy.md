@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 493064bc22b1144df6878d71c99e50fd7c15ba1d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320893"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482226"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Použití Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB
 
@@ -134,4 +134,4 @@ Chcete-li opravit prostředky, které nedodržují předpisy, přečtěte si [č
 
 - [Projděte si ukázkové definice vlastních zásad pro Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB), včetně výše uvedených zásad pro víc umístění zápisu a filtrování virtuální sítě.
 - [Vytvoření přiřazení zásady v Azure Portal](../governance/policy/assign-policy-portal.md)
-- [Přečtěte si Azure Policy předdefinované definice zásad pro Azure Cosmos DB](./policy-samples.md)
+- [Přečtěte si Azure Policy předdefinované definice zásad pro Azure Cosmos DB](./policy-reference.md)

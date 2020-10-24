@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281069"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475460"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Jak je znázorněno v následující tabulce v závislosti na volbě rozhraní A
 
 |Rozhraní API|Pro **sdílenou** propustnost nakonfigurujte |U **vyhrazené** propustnosti nakonfigurujte |
 |----|----|----|
-|SQL API|Databáze|Kontejner|
+|SQL API|databáze|Kontejner|
 |Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
 |Rozhraní Cassandra API|Prostor klíčů|Tabulka|
 |Rozhraní Gremlin API|Databázový účet|Graph|
@@ -80,7 +80,7 @@ Nativní sady SDK (.NET/.NET Core, Java, Node.js a Python) implicitně zachytí 
 
 Pokud máte více než jednoho klienta, který se v současné době průběžně pracuje konzistentně nad rámec požadavků, výchozí počet opakování, který je aktuálně nastavený na 9, nemusí být dostatečný. V takových případech klient vyvolá `RequestRateTooLargeException` aplikaci se stavovým kódem 429. Výchozí počet opakování lze změnit nastavením v `RetryOptions` instanci ConnectionPolicy. Ve výchozím nastavení se `RequestRateTooLargeException` stavový kód 429 vrátí po kumulativní čekací době 30 sekund, pokud požadavek nadále funguje nad sazbou požadavku. K tomu dojde i v případě, že aktuální počet opakování je menší než maximální počet opakování, výchozí hodnota je 9 nebo uživatelem definovaná hodnota. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) je nastavené na hodnotu 3, takže v tomto případě platí, že pokud je operace požadavku omezená na překročení rezervované propustnosti kontejneru, operace požadavku se třikrát pokusí vyvoláním výjimky do aplikace. [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) je nastavená na 60, takže v tomto případě je výjimka kumulativního opakování pokusu v sekundách od prvního požadavku delší než 60 sekund.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -112,7 +112,7 @@ Kromě toho, pokud používáte Azure Cosmos DB a víte, že nebudete Hledat pod
 
 ## <a name="optimize-by-changing-indexing-policy"></a>Optimalizace změnou zásad indexování 
 
-Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti každého záznamu. Cílem je usnadnit vývoj a zajistit špičkový výkon v mnoha různých typech dotazů ad hoc. Pokud máte velké záznamy s tisíci vlastností, nemusíte platit náklady na propustnost při indexování každé vlastnosti, zejména pokud se dotazuje pouze na 10 nebo 20 těchto vlastností. Díky lepšímu způsobu, jak získat popisovač na konkrétní úlohu, je naše příručka vyladit zásady indexů. Úplné podrobnosti o zásadách indexování Azure Cosmos DB najdete [tady](indexing-policies.md). 
+Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti každého záznamu. Cílem je usnadnit vývoj a zajistit špičkový výkon v mnoha různých typech dotazů ad hoc. Pokud máte velké záznamy s tisíci vlastností, nemusíte platit náklady na propustnost při indexování každé vlastnosti, zejména pokud se dotazuje pouze na 10 nebo 20 těchto vlastností. Díky lepšímu způsobu, jak získat popisovač na konkrétní úlohu, je naše příručka vyladit zásady indexů. Úplné podrobnosti o zásadách indexování Azure Cosmos DB najdete [tady](index-policy.md). 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>Monitorování zřízené a spotřebované propustnosti 
 
@@ -156,7 +156,7 @@ Následující kroky vám pomůžou zajistit, aby vaše řešení byla při pou�
 
 1. Pokud jste významně využili zajištěné propustnosti napříč kontejnery a databázemi, měli byste zkontrolovat ru zřízené vs spotřebované ru a vyladit úlohy.  
 
-2. Jednou z metod pro odhad množství rezervované propustnosti, kterou vaše aplikace vyžaduje, je zaznamenat poplatky za RU jednotky žádosti spojené s běžícími typickými operacemi na reprezentativním kontejneru Azure Cosmos nebo databázi, kterou vaše aplikace používá, a pak odhadnout počet operací, které předpokládáte za sekundu. Nezapomeňte měřit a zahrnovat i typické dotazy a jejich využití. Informace o tom, jak odhadnout náklady na dotazy pomocí kódu programu nebo pomocí portálu, najdete v tématu [optimalizace nákladů na dotazy](optimize-cost-queries.md). 
+2. Jednou z metod pro odhad množství rezervované propustnosti, kterou vaše aplikace vyžaduje, je zaznamenat poplatky za RU jednotky žádosti spojené s běžícími typickými operacemi na reprezentativním kontejneru Azure Cosmos nebo databázi, kterou vaše aplikace používá, a pak odhadnout počet operací, které předpokládáte za sekundu. Nezapomeňte měřit a zahrnovat i typické dotazy a jejich využití. Informace o tom, jak odhadnout náklady na dotazy pomocí kódu programu nebo pomocí portálu, najdete v tématu [optimalizace nákladů na dotazy](./optimize-cost-reads-writes.md). 
 
 3. Dalším způsobem, jak získat operace a jejich náklady v ru, je povolit protokoly Azure Monitor, což vám poskytne rozpis operace/trvání a poplatků za požadavek. Azure Cosmos DB poskytuje pro každou operaci poplatek za požadavky, takže každý poplatek za operaci lze uložit zpět z odpovědi a pak použít k analýze. 
 
@@ -182,6 +182,5 @@ Další informace o optimalizaci nákladů v Azure Cosmos DB najdete v následuj
 * Další informace o [Azure Cosmos DB vyúčtování](understand-your-bill.md)
 * Další informace o [optimalizaci nákladů na úložiště](optimize-cost-storage.md)
 * Další informace o [optimalizaci nákladů na čtení a zápisy](optimize-cost-reads-writes.md)
-* Další informace o [optimalizaci nákladů na dotazy](optimize-cost-queries.md)
+* Další informace o [optimalizaci nákladů na dotazy](./optimize-cost-reads-writes.md)
 * Další informace o [optimalizaci nákladů na účty Azure Cosmos ve více oblastech](optimize-cost-regions.md)
-

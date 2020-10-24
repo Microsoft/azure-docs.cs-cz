@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2497a1fe5bfd3618246c9590685d08894e897f3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568653"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476514"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní Table API
 
@@ -28,7 +28,7 @@ Tento článek se zabývá následujícími úkony:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Připojení k preferované oblasti pomocí rozhraní Table API
 
-Aby bylo možné využít [globální distribuci](distribute-data-globally.md), měly by klientské aplikace určovat aktuální umístění, ve kterém je aplikace spuštěná. To se provádí nastavením `CosmosExecutorConfiguration.CurrentRegion` Vlastnosti. `CurrentRegion`Vlastnost by měla obsahovat jedno umístění. Každá instance klienta může určit svou vlastní oblast pro čtení s nízkou latencí. Oblast musí být pojmenována pomocí [zobrazovaných názvů](https://msdn.microsoft.com/library/azure/gg441293.aspx) , jako je například "západní USA". 
+Aby bylo možné využít [globální distribuci](distribute-data-globally.md), měly by klientské aplikace určovat aktuální umístění, ve kterém je aplikace spuštěná. To se provádí nastavením `CosmosExecutorConfiguration.CurrentRegion` Vlastnosti. `CurrentRegion`Vlastnost by měla obsahovat jedno umístění. Každá instance klienta může určit svou vlastní oblast pro čtení s nízkou latencí. Oblast musí být pojmenována pomocí [zobrazovaných názvů](/previous-versions/azure/reference/gg441293(v=azure.100)) , jako je například "západní USA". 
 
 Sada Azure Cosmos DB rozhraní API pro tabulky SDK automaticky vybere nejlepší koncový bod ke komunikaci s nástrojem na základě konfigurace účtu a aktuální regionální dostupnosti. Přidělí prioritu nejbližší oblasti, aby poskytovala lepší latenci klientům. Po nastavení aktuální `CurrentRegion` vlastnosti jsou požadavky na čtení a zápis směrovány takto:
 
@@ -47,4 +47,3 @@ V tomto kurzu jste provedli následující:
 > [!div class="checklist"]
 > * Konfigurace globální distribuce pomocí webu Azure Portal
 > * Konfigurace globální distribuce pomocí rozhraní Table API služby Azure Cosmos DB
-

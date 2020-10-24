@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df8e4c2728bd7487520164553d26dfd42e38b647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e9fd3b3d2d5bceb766651c2758f956b9ef105e0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841836"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494956"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Kurz: Začínáme s Azure Machine Learning v poznámkových blocích Jupyter
 
@@ -34,6 +34,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě.
 
+Pokud již máte pracovní prostor Azure Machine Learning, přeskočte k [naklonování složky poznámkového bloku](#clone) .  
+
 Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
@@ -49,7 +51,7 @@ Azure Machine Learning v pracovním prostoru obsahuje cloudový notebook pro pro
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
-### <a name="clone-a-notebook-folder"></a>Naklonování složky poznámkového bloku
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a> Naklonování složky poznámkového bloku
 
 Dokončili jste následující postup nastavení experimentu a spustíte kroky v Azure Machine Learning Studiu. Toto konsolidované rozhraní zahrnuje nástroje strojového učení, které slouží k provádění scénářů pro datové vědy u všech úrovní dovedností.
 

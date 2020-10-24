@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d4e150eddee947aa4ed6f88c122c0fa6d01a0bae
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 84cb7e7e98e81e242ec1cac554fe073370e45645
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460644"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495789"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
@@ -22,7 +22,7 @@ Digitální vlákna Azure provádí ověřování pomocí [tokenů zabezpečení
 
 Tento článek popisuje, jak získat pověření pomocí `Azure.Identity` klientské knihovny. Tento článek ukazuje příklady kódu v jazyce C#, například to, co byste napsali pro [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true), můžete použít verzi bez ohledu na to, `Azure.Identity` jakou sadu SDK používáte (Další informace o sadách SDK dostupných pro digitální vlákna Azure najdete v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md)).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Nejdřív dokončete kroky nastavení v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Tím se zajistí, že máte instanci digitálního vlákna Azure, ke které má váš uživatel oprávnění pro přístup, a Vy jste nastavili oprávnění pro klientské aplikace. Po dokončení všech těchto nastavení jste připraveni k psaní kódu klientské aplikace.
 
@@ -83,6 +83,10 @@ try
     Environment.Exit(0);
 }
 ```
+
+#### <a name="set-up-local-azure-credentials"></a>Nastavit místní přihlašovací údaje Azure
+
+[!INCLUDE [Azure Digital Twins: local credentials prereq (inner)](../../includes/digital-twins-local-credentials-inner.md)]
 
 ### <a name="managedidentitycredential-method"></a>Metoda ManagedIdentityCredential
 

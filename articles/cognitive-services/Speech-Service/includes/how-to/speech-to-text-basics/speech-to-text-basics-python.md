@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: d3caeea88bcbcc1f7db111158d6900d02dd3ade7
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 05fc215d6283c6d839b01a7247518a84d9b89a38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470786"
+ms.locfileid: "92499067"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -37,7 +37,7 @@ Pokud jste v macOS a běželi v problémech s instalací, možná budete muset n
 python3 -m pip install --upgrade pip
 ```
 
-Po instalaci sady Speech SDK ji importujte do projektu Python pomocí tohoto příkazu.
+Po instalaci sady Speech SDK je importujte do projektu Python.
 
 ```Python
 import azure.cognitiveservices.speech as speechsdk
@@ -45,81 +45,61 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
-
-> [!NOTE]
-> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
-
-Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) :
-
-* S předplatným: předejte klíč a přidruženou oblast.
-* S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
-* S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
-* Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
-
-Pojďme se podívat, jak [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) se vytvoří pomocí klíče a oblasti. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token. Vytvořte [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
 
 ```Python
 speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
 speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 ```
 
-## <a name="initialize-a-recognizer"></a>Inicializovat Nástroj pro rozpoznávání
+Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) :
 
-Po vytvoření [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python&preserve-view=true) je dalším krokem inicializace [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python&preserve-view=true) . Když inicializujete [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python&preserve-view=true) , předáte ho `speech_config` . To poskytuje přihlašovací údaje, které služba Speech vyžaduje k ověření vaší žádosti.
+* S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
+* S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
+* Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
+
+> [!NOTE]
+> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
+
+## <a name="recognize-from-microphone"></a>Rozpoznávání z mikrofonu
+
+Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, stačí jednoduše vytvořit `SpeechRecognizer` bez předání `AudioConfig` a předat `speech_config` .
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
+
+print("Speak into your microphone.")
+result = speech_recognizer.recognize_once_async().get()
+print(result.text)
 ```
 
-## <a name="recognize-from-microphone-or-file"></a>Rozpoznávání z mikrofonu nebo souboru
+Pokud chcete použít *konkrétní* vstupní zvukové zařízení, je nutné zadat ID zařízení v a `AudioConfig` předat parametru `SpeechRecognizer` konstruktoru `audio_config` . Přečtěte si, [Jak získat ID zařízení](../../../how-to-select-audio-input-devices.md) pro vstupní zvukové zařízení.
 
-Chcete-li zadat vstupní zvukové zařízení, je nutné vytvořit [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python&preserve-view=true) a předat ho jako parametr při inicializaci [`SpeechRecognizer`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python&preserve-view=true) .
-
-Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, jednoduše vytvořte `SpeechRecognizer` bez předání `AudioConfig`
-
-```Python
-speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
-```
-
-> [!TIP]
-> Pokud chcete odkazovat na zařízení podle ID, vytvořte `AudioConfig` pomocí tématu Zjistěte, `AudioConfig(device_name="<device id>")` 
->  [Jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
+## <a name="recognize-from-file"></a>Rozpoznat ze souboru
 
 Pokud chcete rozpoznávat řeč ze zvukového souboru místo pomocí mikrofonu, vytvořte [`AudioConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python&preserve-view=true) a použijte `filename` parametr.
 
 ```Python
 audio_input = speechsdk.AudioConfig(filename="your_file_name.wav")
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
+
+result = speech_recognizer.recognize_once_async().get()
+print(result.text)
 ```
 
 ## <a name="recognize-speech"></a>Rozpoznávání řeči
 
 [Třída pro rozpoznávání](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python&preserve-view=true) pro sadu Speech SDK for Python zpřístupňuje několik metod, které můžete použít pro rozpoznávání řeči.
 
-* Rozpoznávání s jedním překonání (synchronizace) – provede rozpoznávání v blokujícím (synchronním) režimu. Vrátí po rozpoznání jednoho utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku. Úloha vrátí jako výsledek text rozpoznávání.
-* Rozpoznávání bez přípony (Async) – provádí rozpoznávání v neblokujícím (asynchronním) režimu. Tím se rozpozná jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku.
-* Průběžné rozpoznávání (synchronizace) – synchronně iniciuje průběžné rozpoznávání. Klient se musí připojit, aby `EventSignal` získal výsledky rozpoznávání. Chcete-li zastavit rozpoznávání, zavolejte [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition--).
-* Průběžné rozpoznávání (asynchronní) – asynchronně iniciuje operaci průběžného rozpoznávání. Uživatel se musí připojit k EventSignal a získat výsledky rozpoznávání. Chcete-li zastavit asynchronní průběžné rozpoznávání, zavolejte [stop_continuous_recognition ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#stop-continuous-recognition-async--).
-
-> [!NOTE]
-> Přečtěte si další informace o tom, jak [zvolit režim rozpoznávání řeči](../../../how-to-choose-recognition-mode.md).
-
 ### <a name="single-shot-recognition"></a>Rozpoznávání s jedním záběrem
 
-Tady je příklad synchronního jednorázového rozpoznávání pomocí [`recognize_once()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once) :
+Samostatné rozpoznávání asynchronně rozpoznává jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku. Tady je příklad asynchronního samostatného rozpoznávání pomocí [`recognize_once_async()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once-async------azure-cognitiveservices-speech-resultfuture) :
 
 ```Python
-result = speech_recognizer.recognize_once()
+result = speech_recognizer.recognize_once_async().get()
 ```
 
-Tady je příklad asynchronního samostatného rozpoznávání pomocí [`recognize_once_async()`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.recognizer?view=azure-python#recognize-once-async------azure-cognitiveservices-speech-resultfuture) :
-
-```Python
-result = speech_recognizer.recognize_once_async()
-```
-
-Bez ohledu na to, zda jste použili synchronní nebo asynchronní metodu, budete muset napsat nějaký kód, který projde výsledek. Tato ukázka vyhodnocuje [`result.reason`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python&preserve-view=true) :
+Abyste mohli iterovat výsledek, budete muset napsat nějaký kód. Tato ukázka vyhodnocuje [`result.reason`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason?view=azure-python) :
 
 * Vytiskne výsledek rozpoznávání: `speechsdk.ResultReason.RecognizedSpeech`
 * Pokud se neshodují žádné rozpoznávání, informujte uživatele: `speechsdk.ResultReason.NoMatch `

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 4aaf4f059976635f32c1a4e6b7130f8835598f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f69c0460fe3e2d2570f79e842963f75bab792d9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552131"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92483569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Kurz: Azure Active Directory integrace s ú
 
@@ -30,7 +30,7 @@ Integrace ú se službou Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s využitím ú potřebujete následující položky:
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ú, prov
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace jednotného přihlašování k doménám a adresám URL ú](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://taseu.combtas.com/<DOMAIN>`
 
@@ -107,7 +107,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ú, prov
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace jednotného přihlašování k doménám a adresám URL ú](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://taseu.combtas.com/<DOMAIN>`
 
@@ -134,11 +134,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ú, prov
 
 2. V levé části nabídky klikněte na **Nastavení** , přejděte na **správce** a pak klikněte na **Spravovat jednotné přihlašování**.
 
-    ![Konfigurace ú](./media/tas-tutorial/configure01.png)
+    ![Snímek obrazovky zobrazuje vybrané možnosti spravovat jednotné přihlašování.](./media/tas-tutorial/configure01.png)
 
 3. Na stránce **Spravovat jednotné přihlašování** proveďte následující kroky:
 
-    ![Konfigurace ú](./media/tas-tutorial/configure02.png)
+    ![Snímek obrazovky se zobrazí na stránce Spravovat jednotné přihlašování, kde můžete zadat hodnoty, které jsou popsány.](./media/tas-tutorial/configure02.png)
 
     a. Do textového pole **název** zadejte název prostředí.
     
@@ -220,7 +220,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici ú na přístupovém panelu, měli byste se automaticky přihlásit k ú, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10e3f420a187d67e19392dd3647692b54a817fa5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ffa8e473fb084b2d5f0e7f59a07b3de50e04752e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090297"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475855"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace Xamarin. Forms pomocí .NET SDK a rozhraní Azure Cosmos DB API pro MongoDB
 
@@ -184,7 +184,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 2. Klikněte na **Obnovit všechny balíčky NuGet**.
 3. Klikněte pravým tlačítkem na **TaskList.Android** a vyberte **Nastavit jako spouštěný projekt**.
 4. Stisknutím klávesy F5 spusťte ladění aplikace.
-5. Pokud chcete aplikaci spustit v iOS, nejprve se váš počítač připojí k Macu (informace o [postupu](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio) najdete tady).
+5. Pokud chcete aplikaci spustit v iOS, nejprve se váš počítač připojí k Macu (informace o [postupu](/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio) najdete tady).
 6. Klikněte pravým tlačítkem na **TaskList.iOS** a vyberte **Nastavit jako spouštěný projekt**.
 7. Stisknutím klávesy F5 spusťte ladění aplikace.
 
@@ -206,4 +206,4 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB a spuštění aplikace Xamarin.Forms pomocí rozhraní API pro MongoDB. Teď můžete do účtu databáze Cosmos importovat další data.
 
 > [!div class="nextstepaction"]
-> [Import dat do Azure Cosmos DB nakonfigurovaných pomocí rozhraní API Azure Cosmos DB pro MongoDB](mongodb-migrate.md)
+> [Import dat do Azure Cosmos DB nakonfigurovaných pomocí rozhraní API Azure Cosmos DB pro MongoDB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

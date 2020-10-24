@@ -6,17 +6,17 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 420efd653ef6218b5a1d5a8c70ca268b7185fc30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 41ba9d9e66fa1d7f622550bde68951573af4bb96
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103539"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484980"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Vytváření clusterů HDInsight pomocí Azure Data Lake Storage Gen1 pomocí Azure Portal
 
 > [!div class="op_single_selector"]
-> * [Použití Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Použití webu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Použití PowerShellu (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Použití PowerShellu (pro další úložiště)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Použít Správce prostředků](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -45,7 +45,7 @@ V této části vytvoříte cluster HDInsight s Data Lake Storage Gen1 jako výc
 
 Pokud chcete vytvořit cluster HDInsight s Data Lake Storage Gen1 jako výchozí účet úložiště:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Pro obecné informace o vytváření clusterů HDInsight postupujte podle pokynů v části [Vytvoření clusterů](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. V okně **úložiště** v části **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen1**a potom zadejte následující informace:
 
@@ -64,7 +64,7 @@ Následující pokyny Vytvoří cluster HDInsight s účtem služby Azure Blob S
 
 Pokud chcete vytvořit cluster HDInsight s Data Lake Storage Gen1 jako další účet úložiště:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Pro obecné informace o vytváření clusterů HDInsight postupujte podle pokynů v části [Vytvoření clusterů](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) .
 3. V okně **úložiště** v části **typ primárního úložiště**vyberte **Azure Storage**a potom zadejte následující informace:
 
@@ -85,18 +85,11 @@ V této části nakonfigurujete Data Lake Storage Gen1 přístup z clusterů HDI
 Z Azure Portal můžete buď použít existující instanční objekt, nebo vytvořit nový.
 
 Vytvoření instančního objektu z Azure Portal:
-
-1. V okně úložiště vyberte **Data Lake Store přístup** .
-1. V okně **přístup k Data Lake Storage Gen1** vyberte **vytvořit novou**.
-1. Vyberte **instanční objekt**a potom postupujte podle pokynů pro vytvoření instančního objektu.
-1. Pokud se rozhodnete ho v budoucnu použít znovu, Stáhněte si certifikát. Stažení certifikátu je užitečné, pokud chcete při vytváření dalších clusterů HDInsight použít stejný instanční objekt.
-
-    ![Přidání instančního objektu do clusteru HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png)
-
-1. Vyberte **přístup** ke konfiguraci přístupu ke složce.  Viz téma [Konfigurace oprávnění k souborům](#configure-file-permissions).
+1. Viz téma [Vytvoření instančního objektu a certifikátů](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) pomocí Azure Active Directory.
 
 Použití existujícího instančního objektu z Azure Portal:
 
+1. Instanční objekt by měl mít oprávnění vlastníka k účtu úložiště. Viz [Nastavení oprávnění pro instanční objekt jako vlastníka účtu úložiště](#configure-serviceprincipal-permissions).
 1. Vyberte **přístup data Lake Store**.
 1. V okně **přístup k Data Lake Storage Gen1** vyberte **použít existující**.
 1. Vyberte **instanční objekt**a potom vyberte instanční objekt.
@@ -105,6 +98,10 @@ Použití existujícího instančního objektu z Azure Portal:
 [Přidání instančního objektu do clusteru HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png)
 
 1. Vyberte **přístup** ke konfiguraci přístupu ke složce.  Viz téma [Konfigurace oprávnění k souborům](#configure-file-permissions).
+
+### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>Nastavte oprávnění pro instanční objekt jako vlastníka účtu úložiště.
+1. V okně Access Control (IAM) účtu úložiště klikněte na přidat přiřazení role. 
+2. V okně Přidat přiřazení role vyberte role jako vlastník a vyberte hlavní název služby (SPN) a klikněte na Uložit.
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>Konfigurace oprávnění k souborům
 

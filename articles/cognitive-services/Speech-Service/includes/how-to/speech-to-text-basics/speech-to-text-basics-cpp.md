@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 420a8ab9a36cdabc3a4565d18f4dbee1d84ec39e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7575e174f1f47d55c507fdbf0386fbd578649839
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470741"
+ms.locfileid: "92499192"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -31,68 +31,62 @@ Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token. Vytvořte pomocí [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
 
-> [!NOTE]
-> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
+```cpp
+using namespace std;
+using namespace Microsoft::CognitiveServices::Speech;
 
-Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) :
+auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+```
 
-* S předplatným: předejte klíč a přidruženou oblast.
+Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) :
+
 * S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
 * S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
 * Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-Pojďme se podívat, jak [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) se vytvoří pomocí klíče a oblasti. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
+> [!NOTE]
+> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
-```cpp
-auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-```
+## <a name="recognize-from-microphone"></a>Rozpoznávání z mikrofonu
 
-## <a name="initialize-a-recognizer"></a>Inicializovat Nástroj pro rozpoznávání
-
-Po vytvoření [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) je dalším krokem inicializace [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) . Když inicializujete [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) , budete ho muset předat `speech_config` . To poskytuje přihlašovací údaje, které služba Speech vyžaduje k ověření vaší žádosti.
-
-```cpp
-auto recognizer = SpeechRecognizer::FromConfig(config);
-```
-
-## <a name="recognize-from-microphone-or-file"></a>Rozpoznávání z mikrofonu nebo souboru
-
-Chcete-li zadat vstupní zvukové zařízení, je nutné vytvořit [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) a předat ho jako parametr při inicializaci [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) .
-
-Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, vytvořte `AudioConfig` pomocí `FromDefaultMicrophoneInput()` a pak při vytváření objektu předejte konfiguraci zvuku `SpeechRecognizer` .
+Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, vytvořte `AudioConfig` pomocí `FromDefaultMicrophoneInput()` . Pak inicializujte [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) a, předejte své `audioConfig` a `config` .
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech::Audio;
 
 auto audioConfig = AudioConfig::FromDefaultMicrophoneInput();
 auto recognizer = SpeechRecognizer::FromConfig(config, audioConfig);
+
+cout << "Speak into your microphone." << std::endl;
+auto result = recognizer->RecognizeOnceAsync().get();
+cout << "RECOGNIZED: Text=" << result->Text << std::endl;
 ```
 
-> [!TIP]
-> Přečtěte si, [Jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
+Pokud chcete použít *konkrétní* vstupní zvukové zařízení, je nutné zadat ID zařízení v `AudioConfig` . Přečtěte si, [Jak získat ID zařízení](../../../how-to-select-audio-input-devices.md) pro vstupní zvukové zařízení.
 
-Pokud chcete rozpoznávat řeč ze zvukového souboru místo pomocí mikrofonu, musíte vytvořit `AudioConfig` . Pokud však vytvoříte [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) namísto volání volání, `FromDefaultMicrophoneInput()` zavoláte `FromWavFileInput()` a předáte `filename` parametr.
+## <a name="recognize-from-file"></a>Rozpoznat ze souboru
+
+Pokud chcete rozpoznávat řeč ze zvukového souboru místo pomocí mikrofonu, musíte vytvořit `AudioConfig` . Pokud však vytvoříte [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) místo volání, `FromDefaultMicrophoneInput()` zavoláte `FromWavFileInput()` a předáte cestu k souboru.
 
 ```cpp
+using namespace Microsoft::CognitiveServices::Speech::Audio;
+
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
 auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
+
+auto result = recognizer->RecognizeOnceAsync().get();
+cout << "RECOGNIZED: Text=" << result->Text << std::endl;
 ```
 
 ## <a name="recognize-speech"></a>Rozpoznávání řeči
 
 [Třída pro rozpoznávání](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) pro sadu Speech SDK for C++ zpřístupňuje několik metod, které můžete použít pro rozpoznávání řeči.
 
-* Rozpoznávání bez přípony (Async) – provádí rozpoznávání v neblokujícím (asynchronním) režimu. Tím se rozpozná jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku.
-* Průběžné rozpoznávání (asynchronní) – asynchronně iniciuje operaci průběžného rozpoznávání. Uživatel se musí připojit, aby zpracoval událost pro příjem výsledků rozpoznávání. Chcete-li zastavit asynchronní průběžné rozpoznávání, zavolejte [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync) .
-
-> [!NOTE]
-> Přečtěte si další informace o tom, jak [zvolit režim rozpoznávání řeči](../../../how-to-choose-recognition-mode.md).
-
 ### <a name="single-shot-recognition"></a>Rozpoznávání s jedním záběrem
 
-Tady je příklad asynchronního samostatného rozpoznávání pomocí [`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) :
+Samostatné rozpoznávání asynchronně rozpoznává jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku. Tady je příklad asynchronního samostatného rozpoznávání pomocí [`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) :
 
 ```cpp
 auto result = recognizer->RecognizeOnceAsync().get();

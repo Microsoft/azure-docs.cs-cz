@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 74da0ebf53b265bf5727c080e74772ad95bfb13c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: afe6562357f1d5558fdb2ac8cb0eb53cd3422d48
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470788"
+ms.locfileid: "92499200"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -63,69 +63,57 @@ Další informace o najdete v `require` tématu <a href="https://nodejs.org/en/k
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
-
-> [!NOTE]
-> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
-
-Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) :
-
-* S předplatným: předejte klíč a přidruženou oblast.
-* S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
-* S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
-* Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
-
-Pojďme se podívat, jak [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) se vytvoří pomocí klíče a oblasti. Tyto přihlašovací údaje můžete získat podle kroků v [části Vyzkoušejte si službu Speech Service zdarma](../../../overview.md#try-the-speech-service-for-free).
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token. Vytvořte [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
 
 ```javascript
 const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-## <a name="initialize-a-recognizer"></a>Inicializovat Nástroj pro rozpoznávání
+Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) :
 
-Po vytvoření [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) je dalším krokem inicializace [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) . Když inicializujete [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) , předáte ho `speechConfig` . To poskytuje přihlašovací údaje, které služba Speech vyžaduje k ověření vaší žádosti.
+* S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
+* S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
+* Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-```javascript
-const recognizer = new SpeechRecognizer(speechConfig);
-```
+> [!NOTE]
+> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
-## <a name="recognize-from-microphone-or-file"></a>Rozpoznávání z mikrofonu nebo souboru
+## <a name="recognize-from-microphone"></a>Rozpoznávání z mikrofonu
 
-Chcete-li zadat vstupní zvukové zařízení, je nutné vytvořit [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) a předat ho jako parametr při inicializaci [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) .
-
-Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, vytvořte `AudioConfig` pomocí `fromDefaultMicrophoneInput()` a pak při vytváření objektu předejte konfiguraci zvuku `SpeechRecognizer` .
+Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, vytvořte `AudioConfig` pomocí `fromDefaultMicrophoneInput()` . Pak inicializujte [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) a, předejte své `speechConfig` a `audioConfig` .
 
 ```javascript
 const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+console.log('Speak into your microphone.');
+recognizer.recognizeOnceAsync(result => {
+    console.log(`RECOGNIZED: Text=${result.text}`);
+});
 ```
 
-> [!TIP]
-> Přečtěte si, [Jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
+Pokud chcete použít *konkrétní* vstupní zvukové zařízení, je nutné zadat ID zařízení v `AudioConfig` . Přečtěte si, [Jak získat ID zařízení](../../../how-to-select-audio-input-devices.md) pro vstupní zvukové zařízení.
 
-Pokud chcete rozpoznávat řeč ze zvukového souboru místo pomocí mikrofonu, musíte zadat `AudioConfig` . Pokud však vytvoříte [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) namísto volání volání, `fromDefaultMicrophoneInput()` zavoláte `fromWavFileInput()` a předáte `filename` parametr.
+## <a name="recognize-from-file-nodejs-only"></a>Rozpoznat ze souboru (jenom Node.js)
 
-> [!IMPORTANT]
-> Rozpoznávání řeči ze souboru je podporované *jenom* v sadě SDK pro **Node.js** .
+Pokud chcete rozpoznávat řeč ze zvukového souboru místo pomocí mikrofonu, musíte zadat `AudioConfig` . Pokud však vytvoříte [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) místo volání, `fromDefaultMicrophoneInput()` zavoláte `fromWavFileInput()` a předáte cestu k souboru.
 
 ```javascript
 const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
 const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+
+recognizer.recognizeOnceAsync(result => {
+    console.log(`RECOGNIZED: Text=${result.text}`);
+});
 ```
 
 ## <a name="recognize-speech"></a>Rozpoznávání řeči
 
 [Třída pro rozpoznávání](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) pro sadu Speech SDK pro JavaScript zpřístupňuje několik metod, které můžete použít pro rozpoznávání řeči.
 
-* Rozpoznávání bez přípony (Async) – provádí rozpoznávání v neblokujícím (asynchronním) režimu. Tím se rozpozná jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku.
-* Průběžné rozpoznávání (asynchronní) – asynchronně iniciuje operaci průběžného rozpoznávání. Uživatel zaregistruje události do událostí a zpracuje různé stavy aplikace. Chcete-li zastavit asynchronní průběžné rozpoznávání, zavolejte [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) .
-
-> [!NOTE]
-> Přečtěte si další informace o tom, jak [zvolit režim rozpoznávání řeči](../../../how-to-choose-recognition-mode.md).
-
 ### <a name="single-shot-recognition"></a>Rozpoznávání s jedním záběrem
 
-Tady je příklad asynchronního samostatného rozpoznávání pomocí [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync) :
+Samostatné rozpoznávání asynchronně rozpoznává jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku. Tady je příklad asynchronního samostatného rozpoznávání pomocí [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync) :
 
 ```javascript
 recognizer.recognizeOnceAsync(result => {

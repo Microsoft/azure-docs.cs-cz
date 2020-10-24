@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cb6869aa8bc7ede7d2047abf8eddc98b01f567fa
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2a7645950fd7a239376f07d6c6f4689c1a3f3da5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280811"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476310"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění pomocí metrik v Azure Cosmos DB
 
-Azure Cosmos DB poskytuje metriky pro propustnost, úložiště, konzistenci, dostupnost a latenci. Azure Portal nabízí agregované zobrazení těchto metrik. Metriky služby Azure Cosmos DB můžete zobrazit také s využitím rozhraní API služby Azure Monitor. Hodnoty dimenze pro metriky, jako je například název kontejneru, nerozlišují velká a malá písmena. Proto je nutné použít porovnávání bez rozlišování velkých a malých písmen při porovnávání řetězců u těchto hodnot dimenzí. Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](cosmos-db-azure-monitor-metrics.md) .
+Azure Cosmos DB poskytuje metriky pro propustnost, úložiště, konzistenci, dostupnost a latenci. Azure Portal nabízí agregované zobrazení těchto metrik. Metriky služby Azure Cosmos DB můžete zobrazit také s využitím rozhraní API služby Azure Monitor. Hodnoty dimenze pro metriky, jako je například název kontejneru, nerozlišují velká a malá písmena. Proto je nutné použít porovnávání bez rozlišování velkých a malých písmen při porovnávání řetězců u těchto hodnot dimenzí. Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](./monitor-cosmos-db.md) .
 
 Tento článek popisuje běžné případy použití a možnosti použití metrik služby Azure Cosmos DB k analýze a ladění těchto problémů. Metriky se shromažďují každých pět minut a uchovávají se po dobu sedmi dní.
 
@@ -112,6 +112,6 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 Nyní jste zjistili, jak monitorovat a ladit problémy pomocí metriky, které jsou k dispozici v Azure Portal. Další informace o vylepšení výkonu databáze najdete v následujících článcích:
 
-* Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](cosmos-db-azure-monitor-metrics.md) . 
+* Další informace o tom, jak zobrazit metriky z Azure monitoru, najdete v článku o [získání metrik z Azure monitor](./monitor-cosmos-db.md) . 
 * [Testování výkonu a škálování pomocí Azure Cosmos DB](performance-testing.md)
 * [Tipy pro zvýšení výkonu pro službu Azure Cosmos DB](performance-tips.md)
