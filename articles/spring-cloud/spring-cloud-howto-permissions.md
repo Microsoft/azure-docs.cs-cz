@@ -7,20 +7,20 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 635f1e03596d55101b6158353ed8cdc278212ceb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92155438"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516184"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Jak používat oprávnění v Azure jaře cloudu
-V tomto článku se dozvíte, jak vytvořit vlastní role, které budou delegovat oprávnění k prostředkům služby Azure jaře Cloud. Vlastní role přesahují [předdefinované role Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) s různými uloženými oprávněními.
+V tomto článku se dozvíte, jak vytvořit vlastní role, které budou delegovat oprávnění k prostředkům služby Azure jaře Cloud. Vlastní role rozšířily [předdefinované role Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) s různými oprávněními.
 
 Implementují se tyto vlastní role:
 
 * **Role vývojáře**: 
-    * Nasazení
+    * Nasadit
     * Test
     * Restartovat aplikace
     * Může použít a provést změny v konfiguracích aplikace v úložišti Git.

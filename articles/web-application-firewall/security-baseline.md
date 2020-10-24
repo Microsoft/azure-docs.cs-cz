@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: edb184fa286eb6212f714c18830540e105ea3305
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5ecfd5e5ff29b2eade4391976947062d6e8f186f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92021175"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516150"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Základní hodnota zabezpečení Azure pro Firewall webových aplikací Azure
 
@@ -355,7 +355,7 @@ Zjednodušte tento proces vytvořením nastavení diagnostiky pro účty Azure A
 
 **Pokyny**: Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat, například vývojové, testovací a produkční prostředí. 
 
-Řízení přístupu k prostředkům Azure pomocí služby Azure Active Directory (Azure AD) řízení přístupu na základě role (Azure RBAC).
+Řízení přístupu k prostředkům Azure pomocí řízení přístupu na základě role Azure (RBAC).
 
 - [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
 
@@ -379,10 +379,10 @@ Pokud je to možné, postupujte podle Security Center doporučení pro šifrová
 
 **Odpovědnost**: sdílená
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte službu Azure RBAC.
 
-**Pokyny**: řízení přístupu k prostředkům Azure pomocí služby Azure Active Directory (Azure AD) řízení přístupu na základě role (Azure RBAC).
-- [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
+**Pokyny**: řízení přístupu k prostředkům Azure pomocí řízení přístupu na základě role Azure (RBAC).
+- [Jak nakonfigurovat službu Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 

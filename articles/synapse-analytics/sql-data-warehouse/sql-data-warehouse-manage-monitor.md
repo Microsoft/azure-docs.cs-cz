@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 9eb1006bdba6c69136c972359bb13420a04f4180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70ce0d6aada2b03646500720b0eba980a1f2d8f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048020"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515725"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Monitorování úloh fondu SQL ve službě Azure synapse Analytics pomocí zobrazení dynamické správy
 
@@ -139,7 +139,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
 * Zkontrolujte sloupec *total_elapsed_time* , abyste viděli, jestli konkrétní distribuce trvá podstatně déle než jiné pro pohyb dat.
-* V případě dlouhotrvající distribuce zkontrolujte sloupec *rows_processed* a zjistěte, zda je počet přesouvaných řádků z této distribuce významně větší než ostatní. Pokud ano, může toto hledání znamenat zkosení vašich podkladových dat.
+* V případě dlouhotrvající distribuce zkontrolujte sloupec *rows_processed* a zjistěte, zda je počet přesouvaných řádků z této distribuce významně větší než ostatní. Pokud ano, může toto hledání znamenat zkosení vašich podkladových dat. Jedna z příčin zkosení dat je distribuována na sloupec s mnoha hodnotami NULL (jejichž řádky budou všechny na stejné distribuci). Zabraňte pomalým dotazům tím, že se vyhnete distribuci těchto typů sloupců nebo filtrujete dotaz tak, aby v případě možné hodnoty NULL byly odstraněny. 
 
 Pokud je dotaz spuštěný, můžete použít [příkaz DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení SQL Server odhadovaného plánu z mezipaměti plánu SQL Server pro aktuálně běžící krok SQL v rámci určité distribuce.
 

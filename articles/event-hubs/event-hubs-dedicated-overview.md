@@ -3,12 +3,12 @@ title: Přehled vyhrazených Center událostí – Azure Event Hubs | Microsoft 
 description: Tento článek obsahuje přehled vyhrazených Event Hubs Azure, které nabízí nasazení s jedním tenantům pro centra událostí.
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: e6208a8d50e21766969dbe9d9739d5003958126a
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 20b153c9093c96e7357a8e439b6655f1db80bd46
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495080"
+ms.locfileid: "92516987"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Přehled Event Hubs úrovně Dedicated
 
@@ -25,13 +25,13 @@ Vyhrazená Event Hubs nabízí tři působivé výhody pro zákazníky, kteří 
 
 #### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Zaručená kapacita pro zajištění vyššího výkonu u jednorázové architektury
 
-Vyhrazený cluster zaručuje kapacitu v plném měřítku a může zasílat až gigabajty streamovaná data s plně odolným úložištěm a latencí druhé sekundy tak, aby vyhovovala jakémukoli nárůstu provozu. 
+Vyhrazený cluster garantuje kapacitu v plném měřítku a může zasílat až gigabajty streamovaná data s plně odolným úložištěm a druhou latencí, aby vyhovovala jakémukoli nárůstu provozu. 
 
 #### <a name="inclusive-and-exclusive-access-to-features"></a>Úplný přístup k funkcím a exkluzivnímu přístupu 
-Vyhrazená nabídka zahrnuje funkce, jako je například zachytávání bez dalších poplatků, jakož i exkluzivní přístup k nadcházejícím funkcím, jako je Bring Your Own Key (BYOK). Tato služba také spravuje vyrovnávání zatížení, aktualizace operačního systému, opravy zabezpečení a vytváření oddílů pro zákazníka, takže můžete strávit méně času na údržbu infrastruktury a další čas při sestavování funkcí na straně klienta.  
+Vyhrazená nabídka zahrnuje funkce, jako je například zachytávání bez dalších poplatků, a exkluzivní přístup k nadcházejícím funkcím, jako je Bring Your Own Key (BYOK). Tato služba také spravuje vyrovnávání zatížení, aktualizace operačního systému, opravy zabezpečení a vytváření oddílů pro zákazníka, takže můžete strávit méně času na údržbu infrastruktury a více času na vytváření klientských funkcí.  
 
 #### <a name="cost-savings"></a>Úspora nákladů
-Na svazcích s vysokou úrovní příchozího přenosu dat (>100 počet propustnosti) se náklady na cluster výrazně méně za hodinu, než si koupíte srovnatelné množství jednotek propustnosti ve standardní nabídce.
+U svazků s vysokou úrovní příchozího přenosu dat (>100 jednotek propustnosti) se náklady na cluster výrazně méně za hodinu, než si koupíte srovnatelné množství jednotek propustnosti ve standardní nabídce.
 
 
 ## <a name="event-hubs-dedicated-quotas-and-limits"></a>Event Hubs úrovně Dedicated kvóty a omezení
@@ -53,7 +53,7 @@ V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s m
 
 ## <a name="how-to-onboard"></a>Postup zprovoznění
 
-Prostředí pro samoobslužné [vytváření Event Hubsého clusteru](event-hubs-dedicated-cluster-create-portal.md) prostřednictvím [Azure Portal](https://aka.ms/eventhubsclusterquickstart) je teď ve verzi Preview. Pokud máte nějaké dotazy nebo potřebujete pomáhat s připojováním k Event Hubs úrovně Dedicated, obraťte se prosím na [tým Event Hubs](mailto:askeventhubs@microsoft.com).
+Prostředí pro samoobslužné [vytváření Event Hubsého clusteru](event-hubs-dedicated-cluster-create-portal.md) prostřednictvím [Azure Portal](https://aka.ms/eventhubsclusterquickstart) je teď ve verzi Preview. Pokud máte nějaké dotazy nebo potřebujete pomáhat s připojováním k Event Hubs úrovně Dedicated, obraťte se na [tým Event Hubs](mailto:askeventhubs@microsoft.com).
 
 ## <a name="faqs"></a>Nejčastější dotazy
 

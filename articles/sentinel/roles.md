@@ -1,6 +1,6 @@
 ---
 title: Oprávnění v Azure Sentinel | Microsoft Docs
-description: Tento článek vysvětluje, jak Azure Sentinel používá řízení přístupu na základě rolí k přiřazování oprávnění uživatelům a určuje povolené akce pro jednotlivé role.
+description: Tento článek vysvětluje, jak Azure Sentinel používá řízení přístupu na základě role Azure k přiřazování oprávnění uživatelům a identifikuje povolené akce pro jednotlivé role.
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 3b680dbaead6e94aa955ebc0e0e720281a40389d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369892"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517297"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění ve službě Azure Sentinel
 
 Služba Azure Sentinel používá [řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) k poskytování [integrovaných rolí](../role-based-access-control/built-in-roles.md) , které se dají přiřadit uživatelům, skupinám a službám v Azure.
 
-Pomocí RBAC vytvořte a přiřaďte role v rámci vašeho týmu zabezpečení provozu a udělte odpovídající přístup k Sentinel Azure. Různé role poskytují přesnější kontrolu nad tím, co můžou uživatelé Azure Sentinel zobrazit a dělat. Role Azure se dají přiřadit přímo v pracovním prostoru Azure Sentinel (viz poznámku níže) nebo v předplatném nebo skupině prostředků, do které pracovní prostor patří. to znamená, že Azure Sentinel zdědí.
+Pomocí Azure RBAC můžete vytvářet a přiřazovat role v rámci vašeho týmu zabezpečení provozu a udělit tak odpovídající přístup k Azure Sentinel. Různé role poskytují přesnější kontrolu nad tím, co můžou uživatelé Azure Sentinel zobrazit a dělat. Role Azure se dají přiřadit přímo v pracovním prostoru Azure Sentinel (viz poznámku níže) nebo v předplatném nebo skupině prostředků, do které pracovní prostor patří. to znamená, že Azure Sentinel zdědí.
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Role pro práci v režimu Sentinel Azure
 
@@ -62,7 +62,7 @@ Uživatelům s konkrétními požadavky na úlohy může být potřeba přiřadi
 
 - Uživatelé typu Host přiřazují incidenty
 
-    Pokud uživatel typu Host potřebuje, aby mohl přiřadit incidenty, pak kromě role respondérů služby Azure Sentinel bude muset uživateli také přiřadit roli [čtečky adresářů](../active-directory/roles/permissions-reference.md#directory-readers). Všimněte si, že tato *role není role* Azure RBAC, ale role **Azure Active Directory** a tento běžný uživatel (bez hosta) má tuto roli přiřazenou ve výchozím nastavení. 
+    Pokud uživatel typu Host potřebuje, aby mohl přiřadit incidenty, pak kromě role respondérů služby Azure Sentinel bude muset uživateli také přiřadit roli [čtečky adresářů](../active-directory/roles/permissions-reference.md#directory-readers). Všimněte si, že tato *role není role* Azure, ale role **Azure Active Directory** a tento běžný uživatel (bez hosta) má tuto roli přiřazenou ve výchozím nastavení. 
 
 Pro souběžné porovnání se podívejte na [následující tabulku](#roles-and-allowed-actions).
 
@@ -87,11 +87,11 @@ V následující tabulce najdete souhrn rolí a povolených akcí pro Azure Sent
 | Azure Sentinel Contributor (přispěvatel) | -- | &#10003; | &#10003; | &#10003; |
 | Přispěvatel Azure Sentinel + Přispěvatel aplikace logiky | &#10003; | &#10003; | &#10003; | &#10003; |
 
-## <a name="custom-roles-and-advanced-rbac"></a>Vlastní role a rozšířená RBAC
+## <a name="custom-roles-and-advanced-azure-rbac"></a>Vlastní role a pokročilé řízení přístupu k Azure na základě role
 
-- Kromě toho můžete pomocí předdefinovaných rolí Azure vytvořit vlastní role Azure pro Sentinel. Vlastní role Azure Sentinel pro Azure Sentinel jsou vytvořené stejným způsobem jako jiné [vlastní role Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role) na základě [konkrétních oprávnění k Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) a [prostředkům Azure Log Analytics](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
+- Kromě toho můžete pomocí předdefinovaných rolí Azure vytvořit vlastní role Azure pro Sentinel. Vlastní role Azure Sentinel pro Azure Sentinel jsou vytvořené stejným způsobem jako jiné [vlastní role](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)Azure, a to na základě [konkrétních oprávnění pro službu Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) a [prostředků Azure Log Analytics](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights).
 
-- Můžete použít Log Analytics rozšířené řízení přístupu na základě rolí napříč daty v pracovním prostoru Azure Sentinel. To zahrnuje jak RBAC na základě datového typu, tak i RBAC, který je orientovaný na prostředky. Další informace o rolích Log Analytics najdete [v tématu Správa dat protokolů a pracovních prostorů v Azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- Můžete použít Log Analytics rozšířené řízení přístupu na základě rolí napříč daty v pracovním prostoru Azure Sentinel. To zahrnuje jak Azure RBAC, tak i Azure na základě prostředků. Další informace o rolích Log Analytics najdete [v tématu Správa dat protokolů a pracovních prostorů v Azure monitor](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Další kroky
 

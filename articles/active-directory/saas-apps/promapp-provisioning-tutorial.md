@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
-ms.openlocfilehash: b3677b16921c6954f5f99e55af9afeae9c337cce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00adf8f1559d01d6ba17692e1166c93c93fcbf8f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255773"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516643"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Kurz: Konfigurace Promapp pro Automatické zřizování uživatelů
 
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Promapp a A
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -93,7 +93,7 @@ Před konfigurací Promapp pro Automatické zřizování uživatelů se službou
 V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v Promapp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Promapp podle pokynů uvedených v [kurzu Promapp jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
+> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro Promapp podle pokynů uvedených v [kurzu Promapp jednotného přihlašování](./promapp-tutorial.md). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když tyto dvě funkce doplňují sebe.
 
 ### <a name="to-configure-automatic-user-provisioning-for-promapp-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Promapp ve službě Azure AD:
 
@@ -149,7 +149,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
@@ -157,4 +157,3 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 ## <a name="next-steps"></a>Další kroky
 
 * [Zjistěte, jak procházet protokoly a získat sestavy aktivit zřizování](../app-provisioning/check-status-user-account-provisioning.md).
-

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2db64a950569e4a96a9a87bb86a5397a17b4f2ba
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214936"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503840"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Ukázky kódu pro Azure Active Directory B2C
 
@@ -60,10 +60,23 @@ Následující tabulka obsahuje odkazy na ukázky pro aplikace, včetně ukázek
 
 Následující tabulky obsahují odkazy na ukázky kódu pro využití webových rozhraní API ve vašich uživatelských tocích pomocí [konektorů rozhraní API](api-connectors-overview.md).
 
-## <a name="api-connector-azure-function-quickstarts"></a>Průvodce rychlým startem pro konektory API Azure
+### <a name="azure-function-quickstarts"></a>Rychlé starty funkcí Azure
 
 | Ukázka                                                                                                                          | Popis                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | Tato ukázka .NET Core Azure Functions ukazuje, jak omezit podepisování na konkrétní e-mailové domény a ověřit informace zadané uživatelem. |
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Tato Node.js ukázka Azure Functions ukazuje, jak omezit podepisování na konkrétní e-mailové domény a ověřit informace zadané uživatelem.  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Tato ukázka Azure Functions v Pythonu ukazuje, jak omezit podepisování na konkrétní e-mailové domény a ověřit informace zadané uživatelem.    |
+
+### <a name="identity-verification-with-api-connectors"></a>Ověření identity pomocí konektorů rozhraní API
+
+| Ukázka                                                                                                            | Popis                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci samoobslužné registrace pomocí konektoru rozhraní API pro integraci s IDology. |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | V této ukázce se dozvíte, jak ověřit identitu uživatele v rámci samoobslužné registrace pomocí konektoru rozhraní API pro integraci s Experian. |
+
+### <a name="community-samples"></a>Ukázky komunity
+
+| Ukázka                                                                                                            | Popis                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Ukázky komunitních konektorů API](https://github.com/azure-ad-b2c/api-connector-samples) | Toto úložiště má komunitu udržované vzorky scénářů povolených konektory rozhraní API.|

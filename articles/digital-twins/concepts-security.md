@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485745"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503313"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
 
@@ -20,7 +20,7 @@ Z důvodu zabezpečení umožňuje digitální vlákna Azure přesné řízení 
 
 Digitální vlákna Azure také podporuje šifrování dat v klidovém umístění.
 
-## <a name="granting-permissions-with-azure-rbac"></a>Udělování oprávnění pomocí Azure RBAC
+## <a name="roles-and-permissions-with-azure-rbac"></a>Role a oprávnění s Azure RBAC
 
 Služba Azure RBAC se poskytuje pro digitální vlákna Azure prostřednictvím integrace s [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
 
@@ -47,22 +47,32 @@ Se spravovanými identitami spravuje platforma Azure tuto identitu modulu runtim
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorizace: role Azure pro digitální vlákna Azure
 
-Azure poskytuje níže vestavěné role Azure pro autorizaci přístupu k prostředku digitálních vláken Azure:
-* *Vlastník dat digitálních vláken Azure* – pomocí této role můžete poskytnout úplný přístup k prostředkům Azure Digital relimits.
-* *Čtečka dat digitálních vláken Azure* – tato role slouží k udělení přístupu k prostředkům digitálních vláken Azure, které jsou jen pro čtení.
+Azure poskytuje **dvě předdefinované role Azure** pro autorizaci přístupu k [rozhraním API roviny dat](how-to-use-apis-sdks.md#overview-data-plane-apis)digitálních vláken Azure. Na role můžete odkazovat buď podle názvu, nebo podle ID:
+
+| Předdefinovaná role | Popis | ID | 
+| --- | --- | --- |
+| Vlastník dat digitálních vláken Azure | Poskytuje úplný přístup k prostředkům digitálních vláken Azure. | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
+| Čtečka dat digitálních vláken Azure | Poskytuje přístup jen pro čtení k prostředkům digitálních vláken Azure. | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 >[!NOTE]
 > Tyto role byly ve verzi Preview nedávno přejmenovány ze starších názvů:
 > * *Vlastník dat digitálních vláken Azure* byl dřív *vlastníkem digitálních vláken Azure (Preview)*.
 > * *Čtečka dat digitálních vláken Azure* se dřív používala *pro čtečku digitálních vláken Azure (Preview)*.
 
-Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [*vysvětlení definic rolí*](../role-based-access-control/role-definitions.md) v dokumentaci k Azure RBAC. Informace o vytváření vlastních rolí Azure najdete v tématu [*vlastní role Azure*](../role-based-access-control/custom-roles.md).
-
 Role můžete přiřadit dvěma způsoby:
 * prostřednictvím podokna řízení přístupu (IAM) pro digitální vlákna Azure v Azure Portal (viz [*Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal*](../role-based-access-control/role-assignments-portal.md))
 * Přidání nebo odebrání role přes příkazy rozhraní příkazového řádku
 
 Podrobnější pokyny k tomu, jak to provést, najdete v kurzu o digitálních Zdvojeních Azure [*: připojení kompletního řešení*](tutorial-end-to-end.md).
+
+Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [*vysvětlení definic rolí*](../role-based-access-control/role-definitions.md) v dokumentaci k Azure RBAC. Informace o vytváření vlastních rolí Azure najdete v tématu [*vlastní role Azure*](../role-based-access-control/custom-roles.md).
+
+##### <a name="automating-roles"></a>Automatizace rolí
+
+Při odkazování na role v automatizovaných scénářích doporučujeme, abyste na ně odkazovali pomocí jejich **ID** , nikoli podle jejich názvů. Názvy se můžou mezi verzemi měnit, ale identifikátory nebudou, takže jsou v automatizaci více stabilními odkazy.
+
+> [!TIP]
+> Pokud jste assiging role pomocí rutiny, jako je například `New-AzRoleAssignment` ([referenční](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)dokumentace), můžete `-RoleDefinitionId` místo `-RoleDefinitionName` názvu role předat ID, a to pomocí parametru.
 
 ### <a name="permission-scopes"></a>Obory oprávnění
 

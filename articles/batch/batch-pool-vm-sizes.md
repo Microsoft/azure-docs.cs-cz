@@ -2,14 +2,14 @@
 title: Volba velikostí virtuálních počítačů pro fondy
 description: Jak vybrat z dostupných velikostí virtuálních počítačů pro výpočetní uzly ve fondech Azure Batch
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6dc1b3cf708a6dbaacc87e6c9fc00ae6f0ff3440
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: fd093006a9eb0c9746a19cb5f91b280145ddfb7e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107500"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517051"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -31,17 +31,19 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | Basic A | Všechny velikosti *kromě* Basic_A0 (a0) |
 | A | Všechny velikosti *kromě* Standard_A0 |
 | Av2 | Všechny velikosti |
-| B | Žádné |
-| DC | Žádné |
+| B | Nepodporováno |
+| DC | Nepodporováno |
 | Dv2, DSv2 | Všechny velikosti |
 | Dv3, Dsv3 | Všechny velikosti |
 | Dav4<sup>1</sup> | Všechny velikosti |
 | Dasv4<sup>1</sup> | Všechny velikosti |
 | Ddv4, Ddsv4 |  Všechny velikosti |
+| Dv4, Dsv4 | Nepodporováno |
 | Ev3, Esv3 | Všechny velikosti kromě E64is_v3 |
 | Eav4<sup>1</sup> | Všechny velikosti |
 | Easv4<sup>1</sup> | Všechny velikosti |
 | Edv4, Edsv4 |  Všechny velikosti |
+| Ev4, Esv4 | Nepodporováno |
 | F, FS | Všechny velikosti |
 | Fsv2 | Všechny velikosti |
 | G, GS | Všechny velikosti |
@@ -56,12 +58,13 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | NC | Všechny velikosti |
 | NCv2<sup>1</sup> | Všechny velikosti |
 | NCv3<sup>1</sup> | Všechny velikosti |
+| NCasT4_v3 | Žádný – zatím není k dispozici |
 | ND<sup>1</sup> | Všechny velikosti |
 | NDv2<sup>1</sup> | Žádný – zatím není k dispozici |
 | NV | Všechny velikosti |
 | NVv3<sup>1</sup> | Všechny velikosti |
-| NVv4 | Žádný – zatím není k dispozici |
-| SAP HANA | Žádné |
+| NVv4<sup>1</sup> | Všechny velikosti |
+| SAP HANA | Nepodporováno |
 
 <sup>1</sup> tyto řady virtuálních počítačů je možné přidělit ve fondech Batch v konfiguraci virtuálního počítače, musíte ale vytvořit nový účet Batch a požádat o konkrétní [zvýšení kvóty](batch-quota-limit.md#increase-a-quota). Toto omezení se odebere, až se vCPU kvóta pro každou řadu virtuálních počítačů plně podporuje pro účty Batch.
 

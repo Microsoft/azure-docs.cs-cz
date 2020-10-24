@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 194625ab43dbb161d2b04352d715a44a1328a888
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371747"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503330"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -135,7 +135,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 - Primární klíč nemůže mít následující datové typy: sql_variant, binary, varbinary, image, XML.
 - Buďte opatrní při použití následujících datových typů jako primárního klíče, protože podporovaná přesnost je pouze sekundy: Time, DateTime, datetime2, DateTimeOffset.
 - Názvy objektů (databáze, tabulky a sloupce) nesmí obsahovat tečky tisknutelné znaky (.), levou hranatou závorku ([) nebo pravou hranatou závorku (]).
-- Název tabulky nesmí obsahovat tisknutelné znaky:! " # $ % ' ( ) * + -
+- Název tabulky nesmí obsahovat tisknutelné znaky:! "# $% ' () * +-Space
 - Ověřování Azure Active Directory se nepodporuje.
 - Pokud jsou tabulky se stejným názvem, ale s jiným schématem (například dbo. Customers and Sales. Customers), je možné přidat do synchronizace pouze jednu z tabulek.
 - Sloupce s datovými typy User-Defined se nepodporují.
@@ -150,7 +150,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Příklad:
+Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Například:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro dočasné tabulky.

@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: 4249e7df61c7f1f090b6377114bcab6ce1d40b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b0d6665b440516d29cc9aeb0b6e50f509528574
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619079"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503432"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Správa dlouhodobého uchovávání záloh spravované instance Azure SQL (PowerShell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Ve spravované instanci Azure SQL můžete nakonfigurovat [dlouhodobé zásady uchovávání záloh](../database/long-term-retention-overview.md#sql-managed-instance-support) (LTR) jako omezené funkce Public Preview. Díky tomu můžete automatické uchovávání záloh databáze v samostatných kontejnerech úložiště objektů BLOB v Azure po dobu až 10 let. Pak můžete obnovit databázi pomocí těchto záloh pomocí PowerShellu.
+Ve spravované instanci Azure SQL můžete nakonfigurovat [dlouhodobé zásady uchovávání záloh](../database/long-term-retention-overview.md#sql-managed-instance-support) (LTR) jako omezené funkce Public Preview. Díky tomu můžete automaticky uchovávat zálohy databáze v samostatných kontejnerech úložiště objektů BLOB v Azure po dobu až 10 let. Pak můžete obnovit databázi pomocí těchto záloh pomocí PowerShellu.
 
    > [!IMPORTANT]
    > LTR pro spravované instance je aktuálně ve verzi omezené verze Preview a je k dispozici pro předplatné EA a CSP v případě jednotlivých případů. Pokud chcete požádat o registraci, vytvořte prosím [lístek podpory Azure](https://azure.microsoft.com/support/create-ticket/). Pro typ problému vyberte technický problém, u služby zvolte SQL Database spravovaná instance a pro typ problému vyberte **zálohování, obnovení a kontinuitu podnikových/dlouhodobého uchovávání záloh**. Ve vaší žádosti prosím uveďte stav, který chcete zaregistrovat pro spravovanou instanci v části omezené verze Public Preview LTR.

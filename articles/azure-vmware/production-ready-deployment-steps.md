@@ -3,18 +3,18 @@ title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7914176174a38fef2336fc52eae7501780057452
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147976"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517357"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
-V tomto článku vám poskytneme proces plánování, který umožňuje identifikovat a shromažďovat data používaná během nasazení. Při plánování nasazení nezapomeňte zdokumentovat informace, které shromažďujete pro snadné reference během nasazování.
+Tento článek vám poskytne proces plánování, pomocí kterého můžete identifikovat a shromažďovat data používaná během nasazení. Při plánování nasazení nezapomeňte zdokumentovat informace, které shromažďujete pro snadné reference během nasazování.
 
-Procesy tohoto rychlého startu mají za následek vytváření virtuálních počítačů a migrace do prostředí připraveného pro produkční prostředí. 
+Procesy tohoto rychlého startu mají za následek vytváření virtuálních počítačů a migrace v prostředí připraveném pro produkční prostředí. 
 
 >[!IMPORTANT]
 >Před vytvořením prostředku řešení Azure VMware použijte článek [Povolení prostředku řešení Azure VMware](enable-azure-vmware-solution.md) k odeslání lístku podpory, který má vaše uzly přiděleny. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělil vaše uzly. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup. 
@@ -73,7 +73,7 @@ Další informace najdete v tématu [Kontrolní seznam pro plánování sítě](
 
 Identifikujte segment IP adres pro vytvoření první sítě (segment NSX) ve vašem privátním cloudu.  Jinými slovy, chcete vytvořit segment sítě v řešení Azure VMware, abyste mohli nasadit virtuální počítače do řešení Azure VMware.   
 
-I v případě, že plánujete rozšířit jenom sítě L2, vytvořte segment sítě, který bude užitečný pro ověřování prostředí.
+I v případě, že plánujete rozšířit jenom sítě L2, vytvořte segment sítě, který bude toto prostředí ověřovat.
 
 Nezapomeňte, že všechny vytvořené segmenty IP adres musí být jedinečné napříč vašimi Azure a místními nároky.  
 

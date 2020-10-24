@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
-ms.openlocfilehash: b3790c52598b2857f56cac54acad156b3ba0bf51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d872c50174ba2fe7dfa321ac568e51fdaa80affc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544999"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514737"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s SonarQube
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat SonarQube s Azure Active Directory (Az
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k SonarQube svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -162,21 +162,20 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-sonarqube-test-user"></a>Vytvořit testovacího uživatele SonarQube
 
-V této části vytvoříte uživatele s názvem B. Simon v SonarQube. Pokud chcete přidat uživatele na platformě SonarQube, pracujte s [týmem podpory klienta SonarQube](https://www.sonarsource.com/support/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
+V této části vytvoříte uživatele s názvem B. Simon v SonarQube. Pokud chcete přidat uživatele na platformě SonarQube, pracujte s [týmem podpory klienta SonarQube](https://www.sonarsource.com/support/) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici SonarQube, měli byste se automaticky přihlásit k SonarQube, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici SonarQube, měli byste se automaticky přihlásit k SonarQube, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si SonarQube s Azure AD](https://aad.portal.azure.com/)
-

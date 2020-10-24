@@ -9,23 +9,45 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/29/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 1410af4d3c1fb9974818e5c4ebc469eee03a314c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4accae27dc092a4900e6092c62c7f4978a46668a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948619"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503772"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)
 
 Můžete zadat dobu života tokenu vydaného Microsoft Identity Platform. Životnost tokenů je možné nastavit u všech aplikací ve vaší organizaci, u aplikace pro více tenantů nebo pro konkrétní objekt služby ve vaší organizaci. V současné době ale nepodporujeme konfiguraci životností tokenů pro [spravované objekty služby identity](../managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
-> Po slyšení od zákazníků ve verzi Preview jsme implementovali [Možnosti správy relace ověřování](../conditional-access/howto-conditional-access-session-lifetime.md) ve službě Azure AD podmíněný přístup. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení. Po 30. května 2020 nebude moct žádný nový tenant použít konfigurovatelné zásady životnosti tokenů ke konfiguraci relace a obnovení tokenů. K vyřazení dojde během několika měsíců, což znamená, že přestanou dodržovat existující relaci a aktualizovat zásady tokenů. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.
+> Po 30. ledna 2021 už klienti nebudou moct konfigurovat aktualizace a životnosti tokenů relace a Azure Active Directory přestanou dodržovat existující konfiguraci tokenu aktualizace a relace v zásadách, které platí od tohoto data. Po vyřazení můžete i po vyřazení nakonfigurovat životnost přístupového tokenu.
+> Implementovali jsme [Možnosti správy relace ověřování](../conditional-access/howto-conditional-access-session-lifetime.md)   v podmíněném přístupu Azure AD. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení. Podmíněný přístup je funkce Azure AD Premium P1 a můžete vyhodnotit, jestli je na [stránce s cenami](https://azure.microsoft.com/en-us/pricing/details/active-directory/)na úrovni Premium právo na organzation. 
+> 
+> Pro klienty, kteří nepoužívají správu relace ověřování v podmíněném přístupu po datu vyřazení, můžou očekávat, že služba Azure AD bude dodržovat výchozí konfiguraci podanou v následující části.
+
+## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Konfigurovatelné vlastnosti životnosti tokenů po vyřazení
+Aktualizace a konfigurace tokenu relace jsou ovlivněny následujícími vlastnostmi a jejich nastavenými hodnotami. Po vyřazení aktualizace a konfigurace tokenu relace bude Azure AD dodržovat jenom výchozí hodnotu popsanou níže, bez ohledu na to, jestli zásady mají nakonfigurované vlastní hodnoty nakonfigurované na vlastní hodnoty.  
+
+|Vlastnost   |Řetězec vlastnosti zásad    |Ovlivňuje |Výchozí |
+|----------|-----------|------------|------------|
+|Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime  |Aktualizovat tokeny |90 dnů  |
+|Maximální stáří tokenu Single-Factor aktualizace  |MaxAgeSingleFactor  |Aktualizovat tokeny (pro všechny uživatele)  |Do-neodvolán  |
+|Maximální stáří tokenu pro Multi-Factor Refresh  |MaxAgeMultiFactor  |Aktualizovat tokeny (pro všechny uživatele) |180 dnů  |
+|Maximální stáří tokenu relace Single-Factor  |MaxAgeSessionSingleFactor |Tokeny relace (trvalé a netrvalé)  |Do-neodvolán |
+|Maximální stáří tokenu relace Multi-Factor  |MaxAgeSessionMultiFactor  |Tokeny relace (trvalé a netrvalé)  |180 dnů |
+
+Pomocí rutiny [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) můžete identifikovat zásady životnosti tokenů, jejichž hodnoty vlastností se liší od výchozích hodnot Azure AD.
+
+Abyste lépe pochopili, jak se ve vašem tenantovi používají vaše zásady, můžete pomocí rutiny [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) určit, které aplikace a instanční objekty jsou propojené s vašimi zásadami. 
+
+Pokud má váš tenant zásady, které definují vlastní hodnoty vlastností aktualizace a konfigurace tokenu relace, společnost Microsoft doporučuje tyto zásady aktualizovat v rozsahu na hodnoty, které odpovídají výše uvedeným výchozím hodnotám. Pokud se neprovede žádné změny, služba Azure AD automaticky použije výchozí hodnoty.  
+
+## <a name="overview"></a>Přehled
 
 V Azure AD představuje objekt zásad sadu pravidel, která se vynutila pro jednotlivé aplikace nebo pro všechny aplikace v organizaci. Každý typ zásad má jedinečnou strukturu se sadou vlastností, které jsou aplikovány na objekty, ke kterým jsou přiřazeny.
 

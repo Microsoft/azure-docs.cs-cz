@@ -9,22 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f70a11165f6433e580fd857f2d5a620deb6640c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2815041f32ebd7c2dae235229d1ca19aad253f7d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604243"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503617"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Konfigurace zásad životnosti tokenů (Preview)
-V Azure AD můžete vytvářet a spravovat životnosti tokenů pro aplikace, instanční objekty a vaši celkovou organizaci. Pokud se chcete dozvědět víc, přečtěte si [konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform](active-directory-configurable-token-lifetimes.md). 
+V Azure AD můžete vytvářet a spravovat životnosti tokenů pro aplikace, instanční objekty a vaši celkovou organizaci.  
 
 > [!IMPORTANT]
-> Po slyšení od zákazníků ve verzi Preview jsme implementovali [Možnosti správy relace ověřování](../conditional-access/howto-conditional-access-session-lifetime.md) ve službě Azure AD podmíněný přístup. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení. Po 30. května 2020 nebude moct žádný nový tenant použít konfigurovatelné zásady životnosti tokenů ke konfiguraci relace a obnovení tokenů. K vyřazení dojde během několika měsíců, což znamená, že přestanou dodržovat existující relaci a aktualizovat zásady tokenů. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.
+> Po 30. ledna 2021 už klienti nebudou moct konfigurovat aktualizace a životnosti tokenů relace a služba Azure AD přestane dodržovat existující konfiguraci a konfiguraci tokenu relace v zásadách po tomto datu. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.  Pokud se chcete dozvědět víc, přečtěte si [konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform](active-directory-configurable-token-lifetimes.md).
+> Implementovali jsme [Možnosti správy relace ověřování](../conditional-access/howto-conditional-access-session-lifetime.md)   v podmíněném přístupu Azure AD. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení.
 
 
 V této části si projdeme několik běžných scénářů zásad, které vám pomůžou stanovit nová pravidla pro:
@@ -40,7 +41,7 @@ V příkladech se můžete dozvědět, jak:
 * Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API
 * Správa pokročilých zásad
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro aplikace, instanční objekty a celou organizaci. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.  
 
 Začněte tím, že provedete následující kroky:

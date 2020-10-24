@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: c46565f7eaa060a060183cf321bb1df1903b945c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d38ff5c8f33bda5b12f6267e7a8cdf477db6c7d7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000720"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s pulsem zabezpečenými počítači
 
@@ -174,7 +174,7 @@ Na následující stránce proveďte následující kroky:
 
 ### <a name="create-pulse-secure-pcs-test-user"></a>Vytvořit testovacího uživatele pro Pulse zabezpečené počítače
 
-V této části vytvoříte uživatele s názvem Britta Simon v počítačích Pulse Secure. Pracujte s [týmem podpory Pulse Secure PC](mailto:support@pulsesecure.net) a přidejte uživatele na platformě Pulse Secure PC Platform. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v počítačích Pulse Secure. Pracujte s [týmem podpory Pulse Secure PC](mailto:support@pulsesecure.net) a přidejte uživatele na platformě Pulse Secure PC Platform. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -184,10 +184,8 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na adresu URL Pulse Secure počítače přímo a spustit tok přihlášení z tohoto účtu.
 
-3. Můžete použít panel Microsoft Access. Když kliknete na dlaždici Pulse Secure PC na přístupovém panelu, přesměruje se na adresu URL pro přihlášení Pulse Secure PC. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Když kliknete na dlaždici Pulse Secure PC na přístupovém panelu, přesměruje se na adresu URL pro přihlášení Pulse Secure PC. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po konfiguraci pulsně zabezpečených počítačů můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po konfiguraci pulsně zabezpečených počítačů můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

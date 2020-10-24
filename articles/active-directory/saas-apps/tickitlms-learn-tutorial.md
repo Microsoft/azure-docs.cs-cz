@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 1048b5edf33dc6eead362ad608c0dad61f998b6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e900b4b7b7d704408c4fa77c2eb5441a9d5e2f05
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544787"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516388"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tickitlms-learn"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s TickitLMS
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat TickitLMS s využitím Azure Active Di
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k TickitLMSi s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * TickitLMS s podporou pro jednotné přihlašování **a IDP**
-* Po nakonfigurování TickitLMS se dozvíte, jak vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování TickitLMS se dozvíte, jak vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-tickitlms-learn-from-the-gallery"></a>Přidávání TickitLMSch informací z Galerie
 
@@ -91,7 +91,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výše uvedeného aplikace TickitLMS učí očekává, že se v odpovědi SAML vrátí jenom několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Název | Zdrojový atribut|
+    | Name | Zdrojový atribut|
     | ---- | --------------- |
     | samlaccount | User. samlaccount |
     | zaměstnance | User. ČísloZaměstnance |
@@ -138,25 +138,24 @@ Pokud chcete nakonfigurovat jednotné přihlašování na **TickitLMS** , musít
 
 ### <a name="create-tickitlms-learn-test-user"></a>Vytvořit TickitLMS s testovacím uživatelem
 
-V této části vytvoříte ve TickitLMS učení uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě TickitLMS učení, pracujte s [týmem podpory TickitLMS](mailto:support@tickitlms.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte ve TickitLMS učení uživatele s názvem Britta Simon. Pokud chcete přidat uživatele na platformě TickitLMS učení, pracujte s [týmem podpory TickitLMS](mailto:support@tickitlms.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici TickitLMS informace na přístupovém panelu, měli byste se automaticky přihlásit k TickitLMS, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici TickitLMS informace na přístupovém panelu, měli byste se automaticky přihlásit k TickitLMS, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si TickitLMS s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit TickitLMS s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [Jak chránit TickitLMS s pokročilými viditelnostmi a ovládacími prvky](/cloud-app-security/proxy-intro-aad)

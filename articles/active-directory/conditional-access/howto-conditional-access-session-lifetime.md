@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 10/23/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 817a13080cedc1d737b43bae14a07a7d4a0bd416
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d33721a70f0a9d4cfb26516d2f252424cc924f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145260"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503806"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
 
@@ -37,7 +37,7 @@ Frekvence přihlášení definuje časový interval před tím, než se uživate
 
 Výchozí konfigurací Azure Active Directory (Azure AD) pro četnost přihlašování uživatelů je posuvné okno 90 dnů. Dotazování uživatelů na přihlašovací údaje se často zdá jako rozumné, ale může Backfire: uživatelé, kteří jsou vyškoleni k zadání přihlašovacích údajů, aniž by si je mohli omylem dodávat do výzvy ke škodlivým přihlašovacím údajům.
 
-Může to vést ke zvukovému signalizaci, že nežádá uživatele, aby se k němu přihlásil. v důsledku toho jakékoli porušení zásad IT odvolá relaci. Mezi příklady patří (ale nejsou omezené na) změnu hesla, nekompatibilní zařízení nebo účet zakážete. Relace uživatelů taky můžete explicitně [odvolat pomocí prostředí PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Výchozí konfigurace služby Azure AD se zobrazí v případě, že uživatel nepožaduje zadání přihlašovacích údajů, pokud se zabezpečení stav jejich relací nezměnilo.
+Může to vést ke zvukovému signalizaci, že nežádá uživatele, aby se k němu přihlásil. v důsledku toho jakékoli porušení zásad IT odvolá relaci. Mezi příklady patří (ale nejsou omezené na) změnu hesla, nekompatibilní zařízení nebo účet zakážete. Relace uživatelů taky můžete explicitně [odvolat pomocí prostředí PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0&preserve-view=true). Výchozí konfigurace služby Azure AD se zobrazí v případě, že uživatel nepožaduje zadání přihlašovacích údajů, pokud se zabezpečení stav jejich relací nezměnilo.
 
 Nastavení četnosti přihlašování funguje s aplikacemi, které implementovaly protokoly OAUTH2 nebo OIDC podle standardů. Většina nativních aplikací Microsoftu pro Windows, Mac a mobilní zařízení, včetně těchto webových aplikací, dodržuje toto nastavení.
 
@@ -88,7 +88,7 @@ Výchozí nastavení Azure AD pro trvalost relace prohlížeče umožňuje uživ
 Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na prémii. Pokud se chcete dozvědět víc o podmíněném přístupu, přečtěte si téma [co je podmíněný přístup v Azure Active Directory?](overview.md#license-requirements)
 
 > [!WARNING]
-> Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a další s funkcí konfigurovatelný životností tokenu. Microsoft plánuje vyřadit z provozu konfigurovatelnou funkci životnosti tokenu 1. května 2020 a nahradit ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
+> Pokud používáte funkci [existence konfigurovatelného tokenu](../develop/active-directory-configurable-token-lifetimes.md) , která je aktuálně ve verzi Public Preview, pamatujte, že nepodporujeme vytváření dvou různých zásad pro stejnou kombinaci uživatelů nebo aplikací: jednu s touto funkcí a další s funkcí konfigurovatelný životností tokenu. Microsoft plánuje vyřadit funkci životnosti konfigurovatelného tokenu pro životnost tokenů aktualizace a životnosti tokenů relace 30. ledna 2021 a nahradí ji funkcí správy relace ověřování pomocí podmíněného přístupu.  
 >
 > Než povolíte frekvenci přihlašování, ujistěte se, že je ve vašem tenantovi zakázané jiné nastavení pro opakované ověřování. Pokud je povolená možnost Zapamatovat MFA u důvěryhodných zařízení, nezapomeňte ji před použitím četnosti přihlášení zakázat, protože použití těchto dvou nastavení společně může vést k neočekávanému zobrazení výzvy uživatelů. Další informace o výzvách k opakovanému ověření a době platnosti relace najdete v článku věnovaném [optimalizaci výzev k opakovanému ověření a porozumění životnosti relace pro Azure Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 

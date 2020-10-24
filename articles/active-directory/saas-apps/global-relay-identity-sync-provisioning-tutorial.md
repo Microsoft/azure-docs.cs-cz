@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2020
+ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: f0e34c8a331c475b103922789a9d1983f1c84cac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492167"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514380"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Kurz: Konfigurace globální synchronizace identity Relay pro Automatické zřizování uživatelů
 
@@ -52,7 +52,7 @@ Pokud chcete získat adresu URL tenanta, obraťte se na svého zástupce globál
 
 ## <a name="step-3-add-global-relay-identity-sync-from-the-azure-ad-application-gallery"></a>Krok 3. Přidat globální synchronizaci identity Relay z Galerie aplikací Azure AD
 
-Přidejte globální synchronizaci identity Relay z Galerie aplikací Azure AD a začněte spravovat zřizování pro globální synchronizaci identity Relay. Pokud jste dříve nastavili globální synchronizaci identity Relay pro jednotné přihlašování, můžete použít stejnou aplikaci. Pro účely počátečního testování integrace však doporučujeme vytvořit samostatnou aplikaci. Další informace o přidání aplikace z galerie najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
+Přidejte globální synchronizaci identity Relay z Galerie aplikací Azure AD a začněte spravovat zřizování pro globální synchronizaci identity Relay. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4: Definování uživatelů, kteří budou v rozsahu zřizování 
 
@@ -63,7 +63,7 @@ Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-global-relay-identity-sync"></a>Krok 5. Konfigurace automatického zřizování uživatelů na globální synchronizaci identity Relay 
 
-V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v TestApp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v globální aplikaci pro synchronizaci identity Relay na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro synchronizaci globální identity Relay v Azure AD:
 

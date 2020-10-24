@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a7f27ff20a4770caea44e73d91001d9785c015
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229000"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517221"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Základní hodnoty zabezpečení Azure pro Stream Analytics
 
@@ -248,7 +248,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: Změna výchozích hesel tam, kde je to možné
 
-**Doprovodné**materiály: Stream Analytics nemá koncept výchozích hesel, protože ověřování je zajištěno Azure Active Directory a zabezpečené řízením přístupu na základě role (RBAC) ke správě služby. V závislosti na službě streamování pro vkládání a výstupní služby je potřeba otočit přihlašovací údaje nakonfigurované v úlohách.
+**Doprovodné**materiály: Stream Analytics nemá koncept výchozích hesel, protože ověřování je k dispozici v Azure Active Directory a zabezpečené řízením přístupu na základě role Azure (Azure RBAC) ke správě služby. V závislosti na službě streamování pro vkládání a výstupní služby je potřeba otočit přihlašovací údaje nakonfigurované v úlohách.
 
 * [Otočit přihlašovací údaje pro vstupy a výstupy Stream Analytics úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -324,7 +324,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 ### <a name="39-use-azure-active-directory"></a>3,9: použijte Azure Active Directory
 
-**Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure AD poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům Stream Analytics.
+**Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure AD poskytuje řízení přístupu na základě role Azure (Azure RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům Stream Analytics.
 
 * [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
