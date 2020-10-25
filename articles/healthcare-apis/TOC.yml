@@ -19,6 +19,7 @@
         - name: Pomocí rozhraní příkazového řádku
           href: fhir-paas-cli-quickstart.md
         - name: Použití šablony Resource Manageru
+          displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
     - name: Nasazení konektoru Azure IoT pro FHIR (Preview) – portál
       href: iot-fhir-portal-quickstart.md
