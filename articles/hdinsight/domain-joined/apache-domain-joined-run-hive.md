@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397823"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544932"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
 
 Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro Apache Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad se pomocí aplikace Excel a ovladače ODBC připojte k tabulkám podregistru v HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Cluster HDInsight se Balíček zabezpečení podniku. Viz téma [konfigurace clusterů HDInsight s](apache-domain-joined-configure.md)protokolem ESP.
+* Cluster HDInsight se Balíček zabezpečení podniku. Viz téma [konfigurace clusterů HDInsight s](./apache-domain-joined-configure-using-azure-adds.md)protokolem ESP.
 * Pracovní stanice s Microsoft 365 aplikacemi pro podniky, Office 2016, Office 2013 Professional Plus, Excel 2013 Standalone nebo Office 2010 Professional Plus.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Připojení k uživatelskému rozhraní správce Apache Ranger
@@ -49,8 +49,8 @@ V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable.
 **Vytvoření zásad Ranger**
 
 1. Otevřete uživatelské rozhraní správce Ranger. Viz Připojení k uživatelskému rozhraní správce Apache Ranger.
-2. V části **podregistr**vyberte **CLUSTERNAME_Hive**. Měly by se zobrazit dvě předem nakonfigurované zásady.
-3. Vyberte **Přidat novou zásadu**a pak zadejte následující hodnoty:
+2. V části **podregistr** vyberte **CLUSTERNAME_Hive** . Měly by se zobrazit dvě předem nakonfigurované zásady.
+3. Vyberte **Přidat novou zásadu** a pak zadejte následující hodnoty:
 
     |Vlastnost |Hodnota |
     |---|---|
@@ -87,15 +87,15 @@ Pokyny najdete v tématu [Vytvoření zdroje dat Hive ODBC](../hadoop/apache-had
  | --- | --- |
  | Název zdroje dat | Zadejte název zdroje dat. |
  | Hostitel | Zadejte CLUSTERNAME.azurehdinsight.net. Například mujHDICluster.azurehdinsight.net. |
- | Port | Použijte **443**. (Tento port se změnil z 563 na 443.) |
- | databáze | Použijte **výchozí nastavení**. |
- | Typ serveru Hive | Vyberte **Hive Server 2**. |
+ | Port | Použijte **443** . (Tento port se změnil z 563 na 443.) |
+ | Databáze | Použijte **výchozí nastavení** . |
+ | Typ serveru Hive | Vyberte **Hive Server 2** . |
  | Mechanismus | Vyberte **Služba Azure HDInsight** |
  | Cesta HTTP | Ponechte prázdné. |
  | Uživatelské jméno | Zadejte hiveuser1@contoso158.onmicrosoft.com. Aktualizujte název domény, pokud se liší. |
  | Heslo | Zadejte heslo uživatele hiveuser1. |
 
-Nezapomeňte před uložením zdroje dat kliknout na **Otestovat**.
+Nezapomeňte před uložením zdroje dat kliknout na **Otestovat** .
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>Import dat do Excelu ze služby HDInsight
 
@@ -107,17 +107,17 @@ V poslední části jste nakonfigurovali dvě zásady.  Uživatel hiveuser1 má 
 
     ![Průvodce otevřením datového připojení](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
-1. V rozevíracím seznamu vyberte název zdroje dat, který jste vytvořili v poslední části, a pak vyberte **OK**.
+1. V rozevíracím seznamu vyberte název zdroje dat, který jste vytvořili v poslední části, a pak vyberte **OK** .
 
 1. Pro první použití se otevře dialogové okno **ovladače ODBC** . V nabídce vlevo vyberte **Windows** . Pak vyberte **připojit** a otevřete okno **navigátor** .
 
-1. Počkejte, než se otevře dialogové okno **Vybrat databázi a tabulku**. Může to trvat několik sekund.
+1. Počkejte, než se otevře dialogové okno **Vybrat databázi a tabulku** . Může to trvat několik sekund.
 
-1. Vyberte **hivesampletable**a pak vyberte **Další**.
+1. Vyberte **hivesampletable** a pak vyberte **Další** .
 
-1. Vyberte **Dokončit**.
+1. Vyberte **Dokončit** .
 
-1. V dialogovém okně **Import dat** můžete změnit, nebo zadat dotaz. Provedete to tak, že vyberete **vlastnosti**. Může to trvat několik sekund.
+1. V dialogovém okně **Import dat** můžete změnit, nebo zadat dotaz. Provedete to tak, že vyberete **vlastnosti** . Může to trvat několik sekund.
 
 1. Vyberte kartu **definice** . Text příkazu je:
 
@@ -131,7 +131,7 @@ V poslední části jste nakonfigurovali dvě zásady.  Uživatel hiveuser1 má 
 
 1. Kliknutím na **tlačítko OK** zavřete dialogové okno **Import dat** .  
 
-1. Znovu zadejte heslo uživatele hiveuser1 a pak klikněte na **OK**. Import dat do Excelu trvá několik sekund. Až to bude hotové, zobrazí se 11 sloupců dat.
+1. Znovu zadejte heslo uživatele hiveuser1 a pak klikněte na **OK** . Import dat do Excelu trvá několik sekund. Až to bude hotové, zobrazí se 11 sloupců dat.
 
 Otestování druhé zásady (Read-hivesampletable-devicemake), kterou jste vytvořili v poslední části
 
@@ -158,7 +158,7 @@ Otestování druhé zásady (Read-hivesampletable-devicemake), kterou jste vytvo
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](apache-domain-joined-configure.md)protokolem ESP.
+* Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](./apache-domain-joined-configure-using-azure-adds.md)protokolem ESP.
 * Informace o správě clusteru HDInsight pomocí protokolu ESP najdete v tématu [Správa clusterů HDInsight pomocí protokolu ESP](apache-domain-joined-manage.md).
 * Informace o spouštění dotazů na podregistr pomocí SSH na clusterech HDInsight s protokolem ESP najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).
 * Informace o připojení podregistru pomocí JDBC pro podregistr najdete v tématu [připojení k Apache Hive v Azure HDInsight pomocí ovladače JDBC pro podregistr](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md) .

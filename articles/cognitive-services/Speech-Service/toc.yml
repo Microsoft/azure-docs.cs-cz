@@ -297,17 +297,15 @@
           href: index-conversation-scenarios.yml
         - name: Přepis konverzace
           items:
-            - name: Přehled
-              items:
-                - name: Co je přepis konverzace?
-                  href: conversation-transcription.md
+            - name: Přehled funkce přepisu konverzace
+              href: conversation-transcription.md
+            - name: Rychlé zprovoznění přepisu konverzace v reálném čase
+              href: how-to-use-conversation-transcription.md
             - name: Návody
               items:
                 - name: Zpracování scénářů pro call centra
                   displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
                   href: call-center-transcription.md
-                - name: Přepis konverzace v reálném čase
-                  href: how-to-use-conversation-transcription.md
                 - name: Asynchronní přepis konverzace
                   href: how-to-async-conversation-transcription.md
             - name: Referenční informace
@@ -341,14 +339,10 @@
                       href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
         - name: Konverzace více zařízení
           items:
-            - name: Přehled
-              items:
-                - name: Co je konverzace více zařízení?
-                  href: multi-device-conversation.md
-            - name: Rychlý start
-              items:
-                - name: Zahájení konverzace a připojení ke konverzaci
-                  href: quickstarts/multi-device-conversation.md
+            - name: Přehled konverzace více zařízení
+              href: multi-device-conversation.md
+            - name: Rychlé zprovoznění konverzace více zařízení
+              href: quickstarts/multi-device-conversation.md
             - name: Referenční informace
               items:
                 - name: Speech SDK
@@ -363,12 +357,8 @@
       items:
         - name: Dokumentace k hlasovým asistentům
           href: index-voice-assistants.yml
-        - name: Přehled
-          items:
-            - name: Co je hlasový asistent?
-              href: voice-assistants.md
-            - name: Ukázky hlasového asistenta (GitHub)
-              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: Přehled hlasových asistentů
+          href: voice-assistants.md
         - name: Vlastní příkazy
           items:
             - name: Co jsou vlastní příkazy?
@@ -508,7 +498,7 @@
           href: 'https://speech.microsoft.com'
         - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
           href: quickstart-custom-speech-commands-create-new.md
-- name: Nasazení
+- name: Nasadit
   items:
     - name: Povolit protokolování
       href: how-to-use-logging.md

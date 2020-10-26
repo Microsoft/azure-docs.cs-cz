@@ -41,8 +41,18 @@
           href: onboard-powershell.md
     - name: Spravovat
       items:
-        - name: Správa a použití rozšíření virtuálních počítačů Azure
-          href: manage-vm-extensions.md
+        - name: Rozšíření virtuálních počítačů Azure
+          items:
+            - name: Přehled
+              href: manage-vm-extensions.md
+            - name: Správa rozšíření z portálu
+              href: manage-vm-extensions-portal.md
+            - name: Správa rozšíření pomocí rozhraní příkazového řádku
+              href: manage-vm-extensions-cli.md
+            - name: Správa rozšíření pomocí PowerShellu
+              href: manage-vm-extensions-powershell.md
+            - name: Nasazení rozšíření pomocí šablony ARM
+              href: manage-vm-extensions-template.md
         - name: Správa agenta
           href: manage-agent.md
     - name: Řešení potíží
@@ -55,8 +65,22 @@
   items:
     - name: Rezidence dat
       href: data-residency.md
+    - name: Azure CLI
+      href: /cli/azure/ext/connectedmachine/connectedmachine
+    - name: Azure PowerShell
+      href: /powershell/module/az.connectedmachine
+    - name: .NET
+      href: /dotnet/api/overview/azure/hybridcompute/management
     - name: REST
       href: /rest/api/hybridcompute
+    - name: Přejít
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
+    - name: Java
+      href: /java/api/overview/azure/hybridcompute/management
+    - name: JavaScript
+      href: /javascript/api/%40azure/arm-hybridcompute
+    - name: Python
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: policy-reference.md

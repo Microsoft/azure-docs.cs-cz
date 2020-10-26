@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631711"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543164"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Řízení síťového provozu ve službě Azure HDInsight
 
 Síťový provoz ve virtuálních sítích Azure je možné řídit pomocí následujících metod:
 
-* **Skupiny zabezpečení sítě** (NSG) umožňují filtrovat příchozí a odchozí provoz do sítě. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) .
+* **Skupiny zabezpečení sítě** (NSG) umožňují filtrovat příchozí a odchozí provoz do sítě. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md) .
 
 * **Síťová virtuální zařízení** (síťové virtuální zařízení) se dají použít jenom u odchozích přenosů. Síťová virtuální zařízení replikuje funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v dokumentu [Síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) .
 
@@ -40,9 +40,9 @@ Pokud plánujete používat **skupiny zabezpečení sítě** k řízení síťov
 
 3. Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které plánujete nainstalovat HDInsight.
 
-    * __Skupiny zabezpečení sítě__: povolí __příchozí__ provoz na portu __443__ z IP adres. Tím se zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť. U clusterů s povoleným __Kafka REST__ povolte i __příchozí__ přenosy na portu __9400__ . Tím se zajistí, že proxy server Kafka REST je dosažitelný.
+    * __Skupiny zabezpečení sítě__ : povolí __příchozí__ provoz na portu __443__ z IP adres. Tím se zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť. U clusterů s povoleným __Kafka REST__ povolte i __příchozí__ přenosy na portu __9400__ . Tím se zajistí, že proxy server Kafka REST je dosažitelný.
 
-Další informace o skupinách zabezpečení sítě najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/security-overview.md).
+Další informace o skupinách zabezpečení sítě najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 
 ## <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>Řízení odchozího provozu z clusterů HDInsight
 
@@ -69,6 +69,6 @@ Další informace o pravidlech brány firewall pro virtuální zařízení najde
 * Ukázky kódu a příklady vytváření virtuálních sítí Azure najdete v tématu [Vytvoření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md).
 * Ucelený příklad konfigurace služby HDInsight pro připojení k místní síti najdete v tématu [připojení HDInsight k místní síti](./connect-on-premises-network.md).
 * Další informace o virtuálních sítích Azure najdete v tématu [Přehled azure Virtual Network](../virtual-network/virtual-networks-overview.md).
-* Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
+* Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 * Další informace o trasách definovaných uživatelem najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).
 * Další informace o virtuálních sítích najdete v tématu [plánování virtuální sítě pro HDInsight](./hdinsight-plan-virtual-network-deployment.md).

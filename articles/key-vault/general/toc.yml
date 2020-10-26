@@ -100,7 +100,9 @@
           href: rbac-migration.md
         - name: Řešení potíží s přístupem
           href: troubleshooting-access-issues.md
-    - name: Jak povolit protokolování
+    - name: Povolení obnovitelného odstranění a ochrany před vymazáním
+      href: key-vault-recovery.md
+    - name: Povolit protokolování
       href: howto-logging.md
     - name: Vývoj
       items:
@@ -109,7 +111,7 @@
         - name: Použití Azure Resource Manager k nasazení služby Key Vault
           href: vault-create-template.md
         - name: Uložení tajných kódů webové aplikace
-          href: vs-secure-secret-appsettings.md
+          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
         - name: Ověřování služba-služba s využitím .NET
           href: service-to-service-authentication.md
         - name: Používání připojené služby Key Vault
@@ -134,14 +136,6 @@
           href: private-link-service.md
         - name: Přístup ke službě Key Vault za bránou firewall –⁠ Azure Key Vault
           href: access-behind-firewall.md
-    - name: Obnovitelné odstranění
-      items:
-        - name: Obnovení služby Key Vault (obnovitelné odstranění a ochrana před vymazáním)
-          href: key-vault-recovery.md
-        - name: Použití obnovitelného odstranění v rozhraní příkazového řádku
-          href: soft-delete-cli.md
-        - name: Použití obnovitelného odstranění v PowerShellu
-          href: soft-delete-powershell.md
     - name: Přesun Key Vaultu
       items:
         - name: Přesun Key Vaultu do jiné skupiny prostředků

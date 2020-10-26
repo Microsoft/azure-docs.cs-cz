@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df28374d0f124ceb46d2f97d55218d428275deca
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083946"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533083"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Použití více clusterů HDInsight s účtem Azure Data Lake Storage
 
 Počínaje HDInsight verze 3,5 můžete vytvořit clustery HDInsight s účty Azure Data Lake Storage jako výchozí systém souborů.
-Data Lake Storage podporuje neomezené úložiště, které je ideální a nejenom pro hostování velkých objemů dat; ale taky pro hostování více clusterů HDInsight, které sdílejí jeden Data Lake Storage účet. Pokyny k vytvoření clusteru HDInsight s Data Lake Storage jako úložiště najdete v tématu [rychlý Start: nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Data Lake Storage podporuje neomezené úložiště, které je ideální a nejenom pro hostování velkých objemů dat; ale taky pro hostování více clusterů HDInsight, které sdílejí jeden Data Lake Storage účet. Pokyny k vytvoření clusteru HDInsight s Data Lake Storage jako úložiště najdete v tématu [rychlý Start: nastavení clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
 
 Tento článek poskytuje doporučení pro správce Data Lake Storage pro nastavení jednoho a sdíleného Data Lake Storage účtu, který se dá použít v několika **aktivních** clusterech HDInsight. Tato doporučení platí pro hostování více než zabezpečených Apache Hadoop clusterů na sdíleném Data Lake Storagem účtu.
 
@@ -28,7 +28,7 @@ Ve zbývající části tohoto článku se předpokládá, že máte dobré znal
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Nastavení Data Lake Storage pro několik clusterů HDInsight
 
-Podíváme se na oboustrannou hierarchii složek, kde můžete vysvětlit doporučení pro používání více clusterů HDInsight s účtem Data Lake Storage. Vezměte v úvahu, že máte účet Data Lake Storage se strukturou složek **/Clusters/finance**. V této struktuře můžou všechny clustery, které finanční organizace vyžaduje, používat/Clusters/finance jako umístění úložiště. Pokud je v budoucnu další organizace, což znamená marketing, chce vytvořit clustery HDInsight pomocí stejného Data Lake Storage účtu, můžou vytvořit/Clusters/marketing. Prozatím můžeme jenom **/Clusters/finance**použít.
+Podíváme se na oboustrannou hierarchii složek, kde můžete vysvětlit doporučení pro používání více clusterů HDInsight s účtem Data Lake Storage. Vezměte v úvahu, že máte účet Data Lake Storage se strukturou složek **/Clusters/finance** . V této struktuře můžou všechny clustery, které finanční organizace vyžaduje, používat/Clusters/finance jako umístění úložiště. Pokud je v budoucnu další organizace, což znamená marketing, chce vytvořit clustery HDInsight pomocí stejného Data Lake Storage účtu, můžou vytvořit/Clusters/marketing. Prozatím můžeme jenom **/Clusters/finance** použít.
 
 Aby bylo možné tuto strukturu složky efektivně využívat clustery HDInsight, musí správce Data Lake Storage přiřadit příslušná oprávnění, jak je popsáno v tabulce. Oprávnění zobrazená v tabulce odpovídají přístupovým seznamům ACL a nikoli výchozím nastavením seznamů ACL.
 
@@ -48,10 +48,10 @@ Pokyny k vytvoření aplikace AAD (která také vytvoří instanční objekt) na
 
 Některé klíčové body, které je třeba vzít v úvahu.
 
-- **Než** použijete účet úložiště pro clustery, musíte vytvořit a zřídit pomocí správce Data Lake Storage oprávnění ke struktuře dvou úrovní (**/Clusters/finance/**). Tato struktura není vytvořena automaticky při vytváření clusterů.
+- **Než** použijete účet úložiště pro clustery, musíte vytvořit a zřídit pomocí správce Data Lake Storage oprávnění ke struktuře dvou úrovní ( **/Clusters/finance/** ). Tato struktura není vytvořena automaticky při vytváření clusterů.
 - Výše uvedený příklad doporučuje nastavit vlastnící skupinu **/Clusters/finance** jako **FINGRP** a povolení přístupu **r-x** k FINGRP do celé hierarchie složky počínaje kořenem. Tím se zajistí, že členové FINGRP mohou procházet strukturu složky počínaje kořenovým adresářem.
-- V případě, že různé objekty služby AAD můžou vytvářet clustery v rámci **/Clusters/finance**, služba s rychlým bitem (Pokud je nastavená ve složce **finance** ) zajišťuje, aby složky vytvořené jedním instančním objektem nemohly odstranit druhá.
-- Po vytvoření struktury složky a oprávnění proces vytváření clusteru HDInsight vytvoří umístění úložiště pro konkrétní cluster v rámci **/Clusters/finance/**. Například úložiště pro cluster s názvem fincluster01 by mohlo být **/Clusters/finance/fincluster01**. V následující tabulce jsou uvedena vlastnictví a oprávnění pro složky vytvořené clusterem HDInsight.
+- V případě, že různé objekty služby AAD můžou vytvářet clustery v rámci **/Clusters/finance** , služba s rychlým bitem (Pokud je nastavená ve složce **finance** ) zajišťuje, aby složky vytvořené jedním instančním objektem nemohly odstranit druhá.
+- Po vytvoření struktury složky a oprávnění proces vytváření clusteru HDInsight vytvoří umístění úložiště pro konkrétní cluster v rámci **/Clusters/finance/** . Například úložiště pro cluster s názvem fincluster01 by mohlo být **/Clusters/finance/fincluster01** . V následující tabulce jsou uvedena vlastnictví a oprávnění pro složky vytvořené clusterem HDInsight.
 
     |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Pojmenovaný uživatel | Pojmenovaná uživatelská oprávnění | Pojmenovaná skupina | Pojmenovaná skupina oprávnění |
     |---------|---------|---------|---------|---------|---------|---------|---------|
@@ -59,7 +59,7 @@ Některé klíčové body, které je třeba vzít v úvahu.
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>Doporučení pro vstupní a výstupní data úlohy
 
-Doporučujeme, aby se vstupní data do úlohy a výstupy z úlohy ukládaly do složky mimo **/Clusters**. Tím je zajištěno, že i v případě, že je odstraněna složka specifická pro konkrétní cluster, aby bylo možné uvolnit místo v úložišti, jsou vstupy a výstupy úloh stále k dispozici pro budoucí použití. V takovém případě zajistěte, aby hierarchie složek pro ukládání vstupů a výstupů úlohy umožňovala odpovídající úroveň přístupu k instančnímu objektu.
+Doporučujeme, aby se vstupní data do úlohy a výstupy z úlohy ukládaly do složky mimo **/Clusters** . Tím je zajištěno, že i v případě, že je odstraněna složka specifická pro konkrétní cluster, aby bylo možné uvolnit místo v úložišti, jsou vstupy a výstupy úloh stále k dispozici pro budoucí použití. V takovém případě zajistěte, aby hierarchie složek pro ukládání vstupů a výstupů úlohy umožňovala odpovídající úroveň přístupu k instančnímu objektu.
 
 ## <a name="limit-on-clusters-sharing-a-single-storage-account"></a>Omezení počtu clusterů, které sdílejí jeden účet úložiště
 
@@ -91,5 +91,5 @@ Nastavte oprávnění ke čtení pro **ostatní** přes hierarchii, například 
 
 ## <a name="see-also"></a>Viz také
 
-- [Rychlý start: Nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Rychlý start: Nastavení clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md)
 - [Použití služby Azure Data Lake Storage Gen2 s clustery Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)

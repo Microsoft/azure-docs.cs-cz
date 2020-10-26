@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3181d4a0c605e0b1325f21de6b277e2b41f92d37
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a289a0d963c8e20a3b861ff9964e8afd6665de22
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487292"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542348"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: ukázky Azure CLI
 
@@ -24,11 +24,11 @@ ms.locfileid: "92487292"
 
 Tento článek poskytuje ukázkové skripty pro běžné úlohy. Pro každý příklad aktualizujte proměnné odpovídajícími hodnotami a potom spusťte příkaz.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure CLI Postup najdete v tématu věnovaném [instalaci rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) .
 
-* Volitelné: bash. V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
+* Volitelné: bash. V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](/windows/wsl/install-win10) .  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
 
 ## <a name="az-login"></a>az login
 

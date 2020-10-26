@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439969"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532658"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL – flexibilní Server
 
@@ -90,11 +90,9 @@ Flexibilní serverová služba je vybavená integrovanými funkcemi pro monitoro
 
 Služba spouští komunitní verze PostgreSQL. To umožňuje úplnou kompatibilitu aplikací a vyžaduje minimální náklady na Refaktoring pro migraci existující aplikace vyvinuté na PostgreSQL stroji na flexibilní Server. 
 
-- **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je pg_dump, a pg_restore můžou poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu [migrace pomocí výpisu paměti a obnovení](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore) .
-- **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace do flexibilního serveru s minimálními prostoji je možné využít Azure Database Migration Service. Viz [DMS prostřednictvím portálu](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal) a [DMS prostřednictvím](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)rozhraní příkazového řádku. Z Azure Database for PostgreSQL můžete migrovat z jednoho serveru do flexibilního serveru. Podrobnosti najdete v tomto [článku o DMS](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) .
+- **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je pg_dump, a pg_restore můžou poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu [migrace pomocí výpisu paměti a obnovení](../howto-migrate-using-dump-and-restore.md) .
+- **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace do flexibilního serveru s minimálními prostoji je možné využít Azure Database Migration Service. Viz [DMS prostřednictvím portálu](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) a [DMS prostřednictvím](../../dms/tutorial-postgresql-azure-postgresql-online.md)rozhraní příkazového řádku. Z Azure Database for PostgreSQL můžete migrovat z jednoho serveru do flexibilního serveru. Podrobnosti najdete v tomto [článku o DMS](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste si přečetli Úvod do Azure Database for PostgreSQL režimu nasazení flexibilního serveru, jste připraveni vytvořit svůj první server: [vytvoření Azure Database for PostgreSQL flexibilního serveru pomocí Azure Portal](./quickstart-create-server-portal.md)
-
-

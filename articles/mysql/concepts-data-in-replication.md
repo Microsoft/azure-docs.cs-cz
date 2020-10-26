@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537153"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544048"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikovat data do Azure Database for MySQL
 
@@ -41,12 +41,12 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 - Každá tabulka musí mít primární klíč.
 - Zdrojový server by měl používat modul MySQL InnoDB.
 - Uživatel musí mít oprávnění ke konfiguraci binárního protokolování a vytváření nových uživatelů na zdrojovém serveru.
-- Pokud je na zdrojovém serveru povolený protokol SSL, ujistěte se, že je v uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu `mysql.az_replication_change_master` . Podívejte se na následující [Příklady](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
-- Zajistěte, aby byla IP adresa zdrojového serveru přidaná do pravidel brány firewall serveru repliky Azure Database for MySQL. Pomocí webu [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) nebo [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) aktualizujte pravidla brány firewall.
+- Pokud je na zdrojovém serveru povolený protokol SSL, ujistěte se, že je v uložené proceduře zahrnutý certifikát certifikační autority SSL zadaný pro tuto doménu `mysql.az_replication_change_master` . Podívejte se na následující [Příklady](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) a `master_ssl_ca` parametr.
+- Zajistěte, aby byla IP adresa zdrojového serveru přidaná do pravidel brány firewall serveru repliky Azure Database for MySQL. Pomocí webu [Azure Portal](./howto-manage-firewall-using-portal.md) nebo [Azure CLI](./howto-manage-firewall-using-cli.md) aktualizujte pravidla brány firewall.
 - Ujistěte se, že počítač, který hostuje zdrojový server, umožňuje příchozí i odchozí provoz na portu 3306.
-- Ujistěte se, že zdrojový server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
+- Ujistěte se, že zdrojový server má **veřejnou IP adresu** , služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 - Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 - Identifikátory globálních transakcí (GTID) se nepodporují.
 

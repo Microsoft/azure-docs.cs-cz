@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1fdff6e1c29b8484aaea3bb647e2f1738d1889c6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: df1d4f3a12c6e15e2954bb0e02454ef58b22cb73
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142234"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535786"
 ---
 # <a name="customer-data-request-features-for-azure-iot-hub-devices"></a>Funkce pro žádosti o zákaznických datech pro zařízení Azure IoT Hub
 
@@ -30,7 +30,7 @@ Pokud používáte funkci směrování služby Azure IoT Hub k přeposílání z
 
 Pokud používáte funkci Azure Event Grid Integration služby Azure IoT Hub, musí být požadavky na data provedeny správcem tenanta pro každého předplatitele těchto událostí. Další informace najdete v tématu [reakce na události IoT Hub pomocí Event Grid](iot-hub-event-grid.md).
 
-Pokud používáte funkci Azure Monitor Integration služby Azure IoT Hub k vytváření protokolů diagnostiky, musí být požadavky na data provedeny správcem klienta proti uloženým protokolům. Další informace najdete v tématu [monitorování stavu Azure IoT Hub](iot-hub-monitor-resource-health.md).
+Pokud používáte funkci Azure Monitor Integration služby Azure IoT Hub k vytváření protokolů prostředků, musí být požadavky na data provedeny správcem klienta proti uloženým protokolům. Další informace najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md).
 
 ## <a name="deleting-customer-data"></a>Odstraňují se zákaznická data
 

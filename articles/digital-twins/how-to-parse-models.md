@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2cc60af26754eddbe8699019ae8d906a4c1e9e62
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f560f16c6437b219dd1e7017d70976ff4650c2c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057684"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544354"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analýza a ověření modelů pomocí knihovny analyzátoru DTDL
 
@@ -36,7 +36,7 @@ Po vytvoření samostatného balíčku a přidání spustitelného souboru do va
 DTDLValidator
 ```
 
-V případě výchozích možností bude ukázka hledat `*.json` soubory v aktuálním adresáři a všech podadresářích. Následující možnost můžete také přidat, chcete-li ukázkové hledání v označeném adresáři a všech podadresářích pro soubory s příponou *. dtdl*:
+V případě výchozích možností bude ukázka hledat `*.json` soubory v aktuálním adresáři a všech podadresářích. Následující možnost můžete také přidat, chcete-li ukázkové hledání v označeném adresáři a všech podadresářích pro soubory s příponou *. dtdl* :
 
 ```cmd/sh
 DTDLValidator -d C:\Work\DTDL -e dtdl 
@@ -77,32 +77,50 @@ Knihovnu analyzátoru můžete použít přímo pro věci, jako je ověřování
 
 Pro podporu níže uvedeného příkladu kódu analyzátoru zvažte několik modelů definovaných v instanci digitálních vláken Azure:
 
-> [!TIP] 
-> `dtmi:com:contoso:coffeeMaker`Model používá syntaxi *modelu schopností* , což znamená, že byl nainstalován ve službě připojením zařízení PnP, které tento model zveřejňuje.
-
 ```json
-{
-  "@id": " dtmi:com:contoso:coffeeMaker",
-  "@type": "CapabilityModel",
-  "implements": [
-        { "name": "coffeeMaker", "schema": " dtmi:com:contoso:coffeeMakerInterface" }
-  ]    
-}
-{
-  "@id": " dtmi:com:contoso:coffeeMakerInterface",
-  "@type": "Interface",
-  "contents": [
-      { "@type": "Property", "name": "waterTemp", "schema": "double" }  
-  ]
-}
-{
-  "@id": " dtmi:com:contoso:coffeeBar",
-  "@type": "Interface",
-  "contents": [
-        { "@type": "relationship", "contains": " dtmi:com:contoso:coffeeMaker" },
-        { "@type": "property", "name": "capacity", "schema": "integer" }
-  ]    
-}
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMaker;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Component",
+        "name": "coffeeMaker",
+        "schema": "dtmi:com:contoso:coffeeMakerInterface;1"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMakerInterface;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "waterTemp",
+        "schema": "double"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeBar;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Relationship",
+        "name": "foo",
+        "target": "dtmi:com:contoso:coffeeMaker;1"
+      },
+      {
+        "@type": "Property",
+        "name": "capacity",
+        "schema": "integer"
+      }
+    ]
+  }
+]
 ```
 
 Následující kód ukazuje příklad použití knihovny analyzátoru pro reflektování těchto definic v jazyce C#:

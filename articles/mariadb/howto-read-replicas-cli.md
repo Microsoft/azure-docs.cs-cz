@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e48d14fae4f62b92b5a8d08f83fea6d2e2ed3fe
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c8bb8ad4baec4c59a78afd6a92d69e94240c056a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424942"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542620"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MariaDB pomocí rozhraní příkazového řádku Azure a REST API
 
@@ -23,7 +23,7 @@ Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazov�
 
 ### <a name="prerequisites"></a>Požadavky
 
-- [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli)
 - [Server Azure Database for MariaDB](quickstart-create-mariadb-server-database-using-azure-portal.md) , který se bude používat jako zdrojový server. 
 
 > [!IMPORTANT]
@@ -114,7 +114,7 @@ Pokud chcete odstranit zdrojový server, můžete spustit příkaz **[AZ MariaDB
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 Repliky pro čtení můžete vytvářet a spravovat pomocí [REST API Azure](/rest/api/azure/).
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení

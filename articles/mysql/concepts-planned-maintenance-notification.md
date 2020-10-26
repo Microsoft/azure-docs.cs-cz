@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: bd2f91a697fffa1ef83f5173a394686245cf9826
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488907"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544830"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Oznámení o plánované údržbě v Azure Database for MySQL – jeden server
 
@@ -46,22 +46,22 @@ Můžete buď zaškrtnout oznámení o plánované údržbě Azure Portal nebo n
 
 ### <a name="check-planned-maintenance-notification-from-azure-portal"></a>Kontrolovat oznámení o plánované údržbě z Azure Portal
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **Service Health**.
+1. V [Azure Portal](https://portal.azure.com)vyberte **Service Health** .
 2. Vybrat kartu **plánované údržby**
-3. Vyberte **předplatné**, * * oblast a **službu** , pro kterou chcete kontrolovat oznámení o plánované údržbě. 
+3. Vyberte **předplatné** , * * oblast a **službu** , pro kterou chcete kontrolovat oznámení o plánované údržbě. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Příjem plánovaného oznámení o údržbě
 
-1. Na [portálu](https://portal.azure.com)vyberte **Service Health**.
-2. V části **výstrahy** vyberte výstrahy týkající se **stavu**.
+1. Na [portálu](https://portal.azure.com)vyberte **Service Health** .
+2. V části **výstrahy** vyberte výstrahy týkající se **stavu** .
 3. Vyberte **+ Přidat upozornění na stav služby** a vyplňte pole.
 4. Vyplňte požadovaná pole. 
-5. Zvolte **Typ události**, vyberte **plánovaná údržba** nebo **Vybrat vše** .
+5. Zvolte **Typ události** , vyberte **plánovaná údržba** nebo **Vybrat vše** .
 6. V části **skupiny akcí** definujte způsob, jakým chcete výstrahu přijmout (získat e-mail, aktivovat aplikaci logiky atd.).  
 7. Zajistěte, aby pravidlo Povolit při vytváření bylo nastaveno na Ano.
 8. Vyberte **vytvořit pravidlo upozornění** pro dokončení upozornění.
 
-Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby**, najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications.md).
+Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby** , najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>Můžu zrušit nebo odložit plánovanou údržbu?
 

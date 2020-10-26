@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307802"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545068"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MySQL – flexibilní pravidla brány firewall serveru pomocí rozhraní příkazového řádku Azure
 
@@ -33,17 +33,17 @@ V tomto článku se zaměříme na vytvoření serveru MySQL s **veřejným př�
 
 Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to tak, že kliknete na [https://shell.azure.com/bash](https://shell.azure.com/bash) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a vyberte **ENTER** pro spuštění.
 
-Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud dáváte přednost instalaci a používání rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
 
 ```azurecli-interactive
 az login
 ```
 
-Pomocí příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](https://docs.microsoft.com/cli/azure/account#az-account-list).
+Pomocí příkazu [AZ Account set](/cli/azure/account#az-account-set) vyberte konkrétní předplatné ve vašem účtu. Poznamenejte si hodnotu **ID** z výstupu **AZ Login** , který se použije jako hodnota argumentu **Subscription** v příkazu. Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém se má prostředek účtovat. Pokud chcete získat veškeré předplatné, použijte příkaz [AZ Account list](/cli/azure/account#az-account-list).
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -89,11 +89,11 @@ Příkaz můžete použít `az mysql flexible-server --public access` k vytvoře
 Příkaz **AZ MySQL flexibilní-server firewall-Rule** se používá v Azure CLI k vytvoření, odstranění, vypsání, zobrazení a aktualizaci pravidel brány firewall.
 
 Příkaz
-- **vytvořit**: Vytvořte flexibilní pravidlo brány firewall serveru.
-- **seznam**: vypíše flexibilní pravidla brány firewall serveru.
-- **aktualizace**: aktualizujte pravidlo brány firewall flexibilního serveru.
-- **Zobrazit**: zobrazí podrobnosti pravidla brány firewall flexibilního serveru.
-- **Odstranit**: odstranění flexibilního pravidla brány firewall serveru.
+- **vytvořit** : Vytvořte flexibilní pravidlo brány firewall serveru.
+- **seznam** : vypíše flexibilní pravidla brány firewall serveru.
+- **aktualizace** : aktualizujte pravidlo brány firewall flexibilního serveru.
+- **Zobrazit** : zobrazí podrobnosti pravidla brány firewall flexibilního serveru.
+- **Odstranit** : odstranění flexibilního pravidla brány firewall serveru.
 
 Úplný seznam konfigurovatelných parametrů rozhraní příkazového řádku najdete v [referenční dokumentaci](/cli/azure/mysql/flexible-server) k rozhraní příkazového řádku Azure CLI. V následujících příkazech můžete například volitelně zadat skupinu prostředků.
 

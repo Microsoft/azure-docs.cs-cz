@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 874cea2377d3c0a128894bb67278e8ec2cbe7edc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490964"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535395"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -32,8 +32,8 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 
 |Nástroj | Popis|
 |---|---|
-|[Modul Az PowerShellu](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[Modul AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[Modul Az PowerShellu](/powershell/azure)|[`Set-AzHDInsightClusterSize`](/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[Modul AzureRM PowerShellu](/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](/cli/azure/) | [`az hdinsight resize`](/cli/azure/hdinsight#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure Classic CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
@@ -44,7 +44,7 @@ Pomocí kterékoli z těchto metod můžete škálovat cluster HDInsight během 
 
 > [!IMPORTANT]  
 > * Rozhraní příkazového řádku Azure Classic je zastaralé a mělo by se používat jenom s modelem nasazení Classic. Pro všechna ostatní nasazení použijte rozhraní příkazového [řádku Azure](/cli/azure/).
-> * Modul PowerShell AzureRM je zastaralý.  Pokud je to možné, použijte prosím [modul AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
+> * Modul PowerShell AzureRM je zastaralý.  Pokud je to možné, použijte prosím [modul AZ Module](/powershell/azure/new-azureps-module-az) .
 
 ## <a name="impact-of-scaling-operations"></a>Dopad operací škálování
 
@@ -125,12 +125,12 @@ Aby se předešlo tomu, že spuštěné úlohy selžou během operace horizontá
 1. Ručně ukončete úlohy.
 1. Znovu odešle úlohy po uzavření operace škálování.
 
-Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použít **uživatelské rozhraní příz správce prostředků**následujícím postupem:
+Chcete-li zobrazit seznam probíhajících a spuštěných úloh, můžete použít **uživatelské rozhraní příz správce prostředků** následujícím postupem:
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster.  Cluster se otevře na nové stránce portálu.
-2. V hlavním zobrazení přejděte na **řídicí panely clusteru**  >  **Ambari domů**. Zadejte přihlašovací údaje clusteru.
+2. V hlavním zobrazení přejděte na **řídicí panely clusteru**  >  **Ambari domů** . Zadejte přihlašovací údaje clusteru.
 3. V uživatelském rozhraní Ambari vyberte možnost **příze** v seznamu služeb v nabídce na levé straně.  
-4. Na stránce PŘÍZe vyberte možnost **Rychlé odkazy** a najeďte myší na aktivní hlavní uzel a pak vyberte **Správce prostředků uživatelské rozhraní**.
+4. Na stránce PŘÍZe vyberte možnost **Rychlé odkazy** a najeďte myší na aktivní hlavní uzel a pak vyberte **Správce prostředků uživatelské rozhraní** .
 
     ![Rychlé odkazy na Apache Ambari Správce prostředků uživatelské rozhraní](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 

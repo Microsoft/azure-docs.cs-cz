@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 9ee42482a2b5d59619c678d282f8b38d7a2a0b0d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f8b6f1f8b22435af33c9ae908bb0a3f6f3df8889
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490913"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535344"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: ukázky Pythonu
 
@@ -33,9 +33,9 @@ Tento článek obsahuje:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-[Azure HDInsight SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight#sdk-installation)
+[Azure HDInsight SDK pro Python](/python/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>Správa clusteru – vytvoření
 
@@ -48,4 +48,4 @@ Tyto ukázky pro Python můžete získat klonováním úložiště GitHub pro [H
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight).
+Fragmenty kódu pro tyto další funkce sady SDK najdete v [referenční dokumentaci k sadě HDInsight SDK pro Python](/python/api/overview/azure/hdinsight).

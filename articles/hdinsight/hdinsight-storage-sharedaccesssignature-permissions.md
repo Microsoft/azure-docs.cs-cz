@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e00f7b97b923443cef3b97e0cdeda009ad5c9b03
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a2395eb5f5b40a7e3469292ec7faa68d8942dce9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490862"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535191"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů Azure Blob Storage k omezení přístupu k datům v HDInsight
 
 Služba HDInsight má úplný přístup k datům v účtech služby Azure Blob Storage přidružených ke clusteru. Pomocí sdílených přístupových podpisů v kontejneru objektů blob můžete omezit přístup k datům. Sdílené přístupové podpisy (SAS) jsou funkcemi účtů úložiště Azure Blob, které vám umožňují omezit přístup k datům. Například poskytnutí přístupu k datům jen pro čtení.
 
 > [!IMPORTANT]  
-> Pro řešení využívající Apache Ranger zvažte použití služby HDInsight připojené k doméně. Další informace najdete v tématu [Konfigurace dokumentu HDInsight připojeného k doméně](./domain-joined/apache-domain-joined-configure.md) .
+> Pro řešení využívající Apache Ranger zvažte použití služby HDInsight připojené k doméně. Další informace najdete v tématu [Konfigurace dokumentu HDInsight připojeného k doméně](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) .
 
 > [!WARNING]  
 > HDInsight musí mít úplný přístup k výchozímu úložišti pro cluster.
@@ -31,7 +31,7 @@ Služba HDInsight má úplný přístup k datům v účtech služby Azure Blob S
 
 * Existující [kontejner úložiště](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* Pokud používáte PowerShell, budete potřebovat [AZ Module](https://docs.microsoft.com/powershell/azure/).
+* Pokud používáte PowerShell, budete potřebovat [AZ Module](/powershell/azure/).
 
 * Pokud chcete použít rozhraní příkazového řádku Azure a ještě jste ho nenainstalovali, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
@@ -76,7 +76,7 @@ Rozdíl mezi těmito dvěma formami je důležitý pro jeden klíčový scéná�
 
 Doporučujeme vždy používat uložené zásady přístupu. Pokud používáte uložené zásady, můžete buď odvolat signatury nebo podle potřeby prodloužení platnosti data vypršení platnosti. Kroky v tomto dokumentu používají uložené zásady přístupu k vygenerování SAS.
 
-Další informace o sdílených přístupových podpisech najdete v tématu [Principy modelu SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Další informace o sdílených přístupových podpisech najdete v tématu [Principy modelu SAS](../storage/common/storage-sas-overview.md).
 
 ## <a name="create-a-stored-policy-and-sas"></a>Vytvoření uložené zásady a SAS
 
@@ -207,7 +207,7 @@ Pokud se zobrazí chybová zpráva, může být nutné provést akci `pip instal
 
 1. Otevřete řešení v sadě Visual Studio.
 
-2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SASExample** a vyberte **vlastnosti**.
+2. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SASExample** a vyberte **vlastnosti** .
 
 3. Vyberte **Nastavení** a přidejte hodnoty pro následující položky:
 
@@ -353,27 +353,27 @@ Pokud máte existující cluster, můžete přidat SAS do konfigurace **základn
 
 1. Otevřete webové uživatelské rozhraní Ambari pro váš cluster. Adresa této stránky je `https://YOURCLUSTERNAME.azurehdinsight.net` . Po zobrazení výzvy proveďte ověření v clusteru pomocí jména správce (správce) a hesla, které jste použili při vytváření clusteru.
 
-1. Přejděte na stránku **HDFS**  >  **Konfigurace**  >  **Upřesnit**  >  **vlastní jádro-site**.
+1. Přejděte na stránku **HDFS**  >  **Konfigurace**  >  **Upřesnit**  >  **vlastní jádro-site** .
 
-1. Rozbalte část **vlastní základ pro základní lokalitu** , přejděte na konec a a pak vyberte **Přidat vlastnost...**. Pro **klíč** a **hodnotu**použijte následující hodnoty:
+1. Rozbalte část **vlastní základ pro základní lokalitu** , přejděte na konec a a pak vyberte **Přidat vlastnost...** . Pro **klíč** a **hodnotu** použijte následující hodnoty:
 
-    * **Klíč**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **Hodnota**: SAS vrácená jednou z výše provedených metod.
+    * **Klíč** : `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Hodnota** : SAS vrácená jednou z výše provedených metod.
 
     Nahraďte `CONTAINERNAME` názvem kontejneru, který jste použili v aplikaci C# nebo SAS. Nahraďte `STORAGEACCOUNTNAME` názvem účtu úložiště, který jste použili.
 
     Vyberte **Přidat** a uložte tento klíč a hodnotu.
 
-1. Kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak vyberte **Uložit**.
+1. Kliknutím na tlačítko **Uložit** uložte změny konfigurace. Po zobrazení výzvy přidejte popis změny (například "Přidání přístupu k úložišti SAS") a pak vyberte **Uložit** .
 
     Po dokončení změn vyberte **OK** .
 
    > [!IMPORTANT]  
    > Změny se projeví až po restartování několika služeb.
 
-1. Zobrazí se rozevírací seznam pro **restartování** . V rozevíracím seznamu vyberte **restartovat vše** a pak __potvrďte restart vše__.
+1. Zobrazí se rozevírací seznam pro **restartování** . V rozevíracím seznamu vyberte **restartovat vše** a pak __potvrďte restart vše__ .
 
-    Tento postup opakujte pro **MapReduce2** a **příze**.
+    Tento postup opakujte pro **MapReduce2** a **příze** .
 
 1. Po restartování služby vyberte jednotlivé položky a v rozevíracím seznamu **Akce služby** zakažte režim údržby.
 
@@ -411,7 +411,7 @@ Pomocí následujících kroků ověříte, že můžete číst a vypisovat polo
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    Tento příkaz stáhne soubor do místního souboru s názvem **testfile.txt**.
+    Tento příkaz stáhne soubor do místního souboru s názvem **testfile.txt** .
 
 5. Pomocí následujícího příkazu nahrajte místní soubor do nového souboru s názvem **testupload.txt** v úložišti SAS:
 

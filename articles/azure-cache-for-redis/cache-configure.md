@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089719"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544762"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
 Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure. Toto téma také popisuje výchozí konfiguraci serveru Redis pro Azure cache pro instance Redis.
@@ -24,11 +24,11 @@ Toto téma popisuje konfigurace dostupné pro instance Redis v mezipaměti Azure
 ## <a name="configure-azure-cache-for-redis-settings"></a>Konfigurace mezipaměti Azure pro nastavení Redis
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Nastavení mezipaměti Azure pro Redis se zobrazují a konfigurují v okně **Azure cache pro Redis** pomocí **nabídky prostředků**.
+Nastavení mezipaměti Azure pro Redis se zobrazují a konfigurují v okně **Azure cache pro Redis** pomocí **nabídky prostředků** .
 
 ![Mezipaměť Azure pro nastavení Redis](./media/cache-configure/redis-cache-settings.png)
 
-Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následující nastavení.
+Pomocí **nabídky prostředků** můžete zobrazit a nakonfigurovat následující nastavení.
 
 * [Přehled](#overview)
 * [Protokol aktivit](#activity-log)
@@ -117,7 +117,7 @@ V okně **Upřesnit nastavení** jsou nakonfigurovaná následující nastavení
 * [Oznámení o prostoru na místě (rozšířené nastavení)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Přístupové porty
-Ve výchozím nastavení je přístup bez TLS/SSL pro nové mezipaměti zakázaný. Pokud chcete povolit port bez TLS, klikněte na **ne** pro **Povolit přístup jenom přes SSL** v okně **Upřesnit nastavení** a pak klikněte na **Uložit**.
+Ve výchozím nastavení je přístup bez TLS/SSL pro nové mezipaměti zakázaný. Pokud chcete povolit port bez TLS, klikněte na **ne** pro **Povolit přístup jenom přes SSL** v okně **Upřesnit nastavení** a pak klikněte na **Uložit** .
 
 > [!NOTE]
 > Přístup TLS ke službě Azure cache pro Redis podporuje v současné době TLS 1,0, 1,1 a 1,2, ale brzy se vyřadí verze 1,0 a 1,1.  Další podrobnosti najdete na naší [stránce odebrání TLS 1,0 a 1,1](cache-remove-tls-10-11.md) .
@@ -126,7 +126,7 @@ Ve výchozím nastavení je přístup bez TLS/SSL pro nové mezipaměti zakázan
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>Zásady paměti
-Nastavení zásad paměti pro mezipaměť **Maxmemory zásady**, **Maxmemory rezervované**a **maxfragmentationmemory** v okně **Upřesnit nastavení** .
+Nastavení zásad paměti pro mezipaměť **Maxmemory zásady** , **Maxmemory rezervované** a **maxfragmentationmemory** v okně **Upřesnit nastavení** .
 
 ![Mezipaměť Azure pro zásady Maxmemory pro Redis](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -145,7 +145,7 @@ Nastavení **rezervované pro maxmemory** konfiguruje velikost paměti v MB na i
 
 Nastavení **rezervované pro maxfragmentationmemory** konfiguruje velikost paměti v MB na instanci v clusteru, která je vyhrazena pro fragmentaci paměti. Když nastavíte tuto hodnotu, budete mít k dispozici jednotnější možnosti Redis serveru, když je mezipaměť plná nebo téměř kompletní, a poměr fragmentace je vysoký. Pokud je paměť vyhrazena pro tyto operace, není k dispozici pro ukládání dat uložených v mezipaměti.
 
-Jedna věc, kterou je potřeba vzít v úvahu při výběru nové hodnoty rezervace paměti (**maxmemory-rezervováno** nebo **maxfragmentationmemory**), je to, jak může tato změna ovlivnit mezipaměť, která už je spuštěná s velkým objemem dat. Pokud máte například mezipaměť 53 GB s 49 GB dat, změňte hodnotu rezervace na 8 GB. Tato změna způsobí, že maximální dostupná paměť systému vyřadí hodnotu až 45 GB. Pokud vaše aktuální `used_memory` `used_memory_rss` hodnota nebo hodnoty jsou vyšší než nové omezení 45 GB, bude systém muset data vyřadit, dokud `used_memory` `used_memory_rss` nebudou a nižší než 45 GB. Vyřazení může zvýšit zatížení serveru a fragmentaci paměti. Další informace o metrikách mezipaměti `used_memory` , jako jsou a `used_memory_rss` , najdete v tématu [dostupné metriky a intervaly generování sestav](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Jedna věc, kterou je potřeba vzít v úvahu při výběru nové hodnoty rezervace paměti ( **maxmemory-rezervováno** nebo **maxfragmentationmemory** ), je to, jak může tato změna ovlivnit mezipaměť, která už je spuštěná s velkým objemem dat. Pokud máte například mezipaměť 53 GB s 49 GB dat, změňte hodnotu rezervace na 8 GB. Tato změna způsobí, že maximální dostupná paměť systému vyřadí hodnotu až 45 GB. Pokud vaše aktuální `used_memory` `used_memory_rss` hodnota nebo hodnoty jsou vyšší než nové omezení 45 GB, bude systém muset data vyřadit, dokud `used_memory` `used_memory_rss` nebudou a nižší než 45 GB. Vyřazení může zvýšit zatížení serveru a fragmentaci paměti. Další informace o metrikách mezipaměti `used_memory` , jako jsou a `used_memory_rss` , najdete v tématu [dostupné metriky a intervaly generování sestav](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > Nastavení rezervovaná v **maxmemory** a **maxfragmentationmemory** jsou dostupná jenom pro mezipaměti úrovně Standard a Premium.
@@ -234,7 +234,7 @@ V okně **naplánovat aktualizace** můžete určit časové období údržby pr
 
 ![Plán aktualizací](./media/cache-configure/redis-schedule-updates.png)
 
-Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadované dny a zadejte časový interval pro správu a údržbu pro každý den a klikněte na tlačítko **OK**. Čas časového období údržby je UTC.
+Chcete-li určit časový interval pro správu a údržbu, zaškrtněte požadované dny a zadejte časový interval pro správu a údržbu pro každý den a klikněte na tlačítko **OK** . Čas časového období údržby je UTC.
 
 > [!IMPORTANT]
 > Funkce **Plán aktualizací** je dostupná jenom pro mezipaměti úrovně Premium. Další informace a pokyny najdete v tématu [Správa Azure cache pro Redis – plánování aktualizací](cache-administration.md#schedule-updates).
@@ -316,7 +316,7 @@ Pokud máte mezipaměť Premium s povoleným clusteringem, můžete vybrat, kter
 
 ![Snímek obrazovky, který ukazuje, kde vybrat, které horizontálních oddílů mezipaměti se mají restartovat.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované uzly a klikněte na tlačítko **restartovat**. Pokud máte mezipaměť Premium s povoleným clusteringem, vyberte horizontálních oddílů pro restartování a pak klikněte na **restartovat**. Po několika minutách se vybraný uzel (y) restartuje a později se znovu dovede k online několika minutám.
+Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované uzly a klikněte na tlačítko **restartovat** . Pokud máte mezipaměť Premium s povoleným clusteringem, vyberte horizontálních oddílů pro restartování a pak klikněte na **restartovat** . Po několika minutách se vybraný uzel (y) restartuje a později se znovu dovede k online několika minutám.
 
 > [!IMPORTANT]
 > Pro všechny cenové úrovně je teď k dispozici restart. Další informace a pokyny najdete v tématu [Správa Azure cache pro Redis – restart](cache-administration.md#reboot).
@@ -360,7 +360,7 @@ Nastavení v části **Podpora a řešení potíží** poskytují možnosti pro 
 * [Nová žádost o podporu](#new-support-request)
 
 ### <a name="resource-health"></a>Stav prostředků
-**Stav prostředku** sleduje váš prostředek a oznamuje, zda je spuštěný podle očekávání. Další informace o službě Azure Resource Health najdete v článku [Přehled Azure Resource Health](../resource-health/resource-health-overview.md).
+**Stav prostředku** sleduje váš prostředek a oznamuje, zda je spuštěný podle očekávání. Další informace o službě Azure Resource Health najdete v článku [Přehled Azure Resource Health](../service-health/resource-health-overview.md).
 
 > [!NOTE]
 > Služba Resource Health v tuto chvíli nemůže nahlásit stav mezipaměti Azure pro instance Redis hostované ve virtuální síti. Další informace najdete v tématu [práce s funkcemi mezipaměti při hostování mezipaměti ve virtuální síti?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
@@ -382,7 +382,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> Všechny hodnoty, které lze konfigurovat, jako je například **Max-Memory-Policy**, lze konfigurovat prostřednictvím nástrojů pro správu Azure Portal nebo příkazového řádku, jako je Azure CLI nebo PowerShell.
+> Všechny hodnoty, které lze konfigurovat, jako je například **Max-Memory-Policy** , lze konfigurovat prostřednictvím nástrojů pro správu Azure Portal nebo příkazového řádku, jako je Azure CLI nebo PowerShell.
 >
 >
 
@@ -464,7 +464,7 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 Další informace o příkazech Redis naleznete v tématu [https://redis.io/commands](https://redis.io/commands) .
 
 ## <a name="redis-console"></a>Konzola Redis
-Pomocí **konzoly Redis**, která je k dispozici v Azure Portal pro všechny úrovně mezipaměti, můžete bezpečně vystavit příkazy do mezipaměti Azure cache pro instance Redis.
+Pomocí **konzoly Redis** , která je k dispozici v Azure Portal pro všechny úrovně mezipaměti, můžete bezpečně vystavit příkazy do mezipaměti Azure cache pro instance Redis.
 
 > [!IMPORTANT]
 > - Konzola Redis nefunguje s [virtuální](cache-how-to-premium-vnet.md)sítí. Když je mezipaměť součástí virtuální sítě, budou mít přístup k mezipaměti jenom klienti ve virtuální síti. Vzhledem k tomu, že se konzola Redis spouští v místním prohlížeči, který je mimo virtuální síť, nemůže se připojit ke svojí mezipaměti.
@@ -498,7 +498,7 @@ V předchozím příkladu je horizontálních oddílů 1 vybraný horizontální
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Přesunout mezipaměť do nového předplatného
-Mezipaměť můžete přesunout do nového předplatného kliknutím na **přesunout**.
+Mezipaměť můžete přesunout do nového předplatného kliknutím na **přesunout** .
 
 ![Přesunout Azure cache pro Redis](./media/cache-configure/redis-cache-move.png)
 

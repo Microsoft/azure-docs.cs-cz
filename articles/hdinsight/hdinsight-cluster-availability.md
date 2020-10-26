@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086411"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533559"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí Apache Ambari ve službě Azure HDInsight
 
@@ -55,14 +55,13 @@ Chcete-li zobrazit seznam definic výstrah a jejich stavů, vyberte kartu **výs
 
 Ambari nabízí mnoho předdefinovaných výstrah souvisejících s dostupností, včetně:
 
-| Název výstrahy                        | Description   |
+| Název výstrahy                        | Popis   |
 |---|---|
 | Shrnutí stavu datauzel           | Tato výstraha na úrovni služby se aktivuje, pokud existují chybné datauzly.|
 | Stav vysoké dostupnosti NameNode | Tato výstraha na úrovni služby se aktivuje, pokud není spuštěný aktivní NameNode nebo pohotovostní NameNode.|
 | Procento dostupných dostupných deníkových uzlů    | Tato výstraha se aktivuje, pokud je počet vypnutých dostupných deníkových uzlů v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesu JournalNode. |
 | Procento dostupných datanode       | Tato výstraha se aktivuje, pokud je počet nefunkčních uzlů v clusteru větší než nakonfigurovaná kritická prahová hodnota. Agreguje výsledky kontrol procesů datanode.|
 
-Úplný seznam upozornění Ambari, které vám pomůžou monitorovat dostupnost clusteru, najdete [tady](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui).
 
 Chcete-li zobrazit podrobnosti výstrahy nebo upravit kritéria, vyberte **název** výstrahy. Jako příklad Vezměte v úvahu **souhrn stavu datauzel** . Můžete zobrazit popis výstrahy a také specifická kritéria, která aktivují upozornění "upozornění" nebo "kritická" a interval kontroly pro kritéria. Chcete-li upravit konfiguraci, vyberte tlačítko **Upravit** v pravém horním rohu pole konfigurace.
 
@@ -87,7 +86,7 @@ Otevře se dialogové okno pro správu oznámení výstrah. Vyberte v **+** doln
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](hdinsight-high-availability-linux.md)
+- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](./hdinsight-business-continuity.md)
 - [Dostupnost clusterů – protokoly Azure Monitoru](./cluster-availability-monitor-logs.md)
 - [Použití protokolů Azure Monitor](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [E-mailová oznámení Apache Ambari](apache-ambari-email.md)

@@ -95,6 +95,8 @@
   items:
     - name: Správa účtů Maps
       items:
+        - name: Vytvoření účtu se šablonou ARM
+          href: how-to-create-template.md
         - name: Správa účtů
           href: how-to-manage-account-keys.md
         - name: Správa ověřování

@@ -8,18 +8,18 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a9da6a592249aed727231b810a3fbb5f7b72e228
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 16f1e2a6b7a3c0e81b7ceb57359a48a84ee489d9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164189"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532726"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití rozhraní .NET (C#) k připojení a dotazování dat v Azure Database for MySQL
 
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v jazyce C#. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí jazyka C# a teprve začínáte pracovat se službou Azure Database for MySQL.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
@@ -46,13 +46,13 @@ dotnet add package MySqlConnector
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
+2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver** ).
 3. Klikněte na název serveru.
-4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
+4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru** . Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
  :::image type="content" source="./media/connect-csharp/1_server-overview-name-login.png" alt-text="Název serveru Azure Database for MySQL":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazů `CREATE TABLE` a `INSERT INTO` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazů `CREATE TABLE` a `INSERT INTO` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
 
 Parametry `Server`, `Database`, `UserID` a `Password` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze. 
 
@@ -117,7 +117,7 @@ namespace AzureMySqlExample
 
 ## <a name="read-data"></a>Čtení dat
 
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu `SELECT` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) a metodu [ExecuteReaderAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync) pro spuštění databázových příkazů. Dál tento kód použije [ReadAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) k přechodu na záznamy ve výsledcích. Potom tento kód použije GetInt32 a GetString k parsování hodnot v záznamu.
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu `SELECT` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) a metodu [ExecuteReaderAsync()](/dotnet/api/system.data.common.dbcommand.executereaderasync) pro spuštění databázových příkazů. Dál tento kód použije [ReadAsync()](/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) k přechodu na záznamy ve výsledcích. Potom tento kód použije GetInt32 a GetString k parsování hodnot v záznamu.
 
 Parametry `Server`, `Database`, `UserID` a `Password` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze. 
 
@@ -174,7 +174,7 @@ namespace AzureMySqlExample
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu `UPDATE` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu `UPDATE` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
 
 Parametry `Server`, `Database`, `UserID` a `Password` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze. 
 
@@ -226,7 +226,7 @@ namespace AzureMySqlExample
 ## <a name="delete-data"></a>Odstranění dat
 Pomocí následujícího kódu se připojte a odstraňte data s využitím příkazu `DELETE` jazyka SQL. 
 
-Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
+Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
 
 Parametry `Server`, `Database`, `UserID` a `Password` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze. 
 

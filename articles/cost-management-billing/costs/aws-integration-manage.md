@@ -3,18 +3,18 @@ title: Správa nákladů a využití AWS ve službě Azure Cost Management
 description: V tomto článku se dozvíte, jak můžete analýzu nákladů a rozpočty ve službě Cost Management používat ke správě nákladů a využití AWS.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/28/2020
+ms.date: 10/16/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 7df27a6ed288555d0f4815223fd0bb6dddff6f44
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5fed70ccdbebbd178412c416f37c2e9001a81f38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266168"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148977"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Správa nákladů a využití AWS v Azure
 
@@ -44,7 +44,7 @@ V analýze nákladů otevřete výběr oboru a vyberte skupinu pro správu, kter
 
 Zde je příklad znázorňující náklady skupiny pro správu v analýze nákladů seskupené podle poskytovatele (Azure a AWS).
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Příklad znázorňující náklady na Azure a AWS za čtvrtletí v analýze nákladů" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-azure.png" alt-text="Příklad zobrazení Vybrat obor s propojenými účty v rámci skupiny pro správu" lightbox="./media/aws-integration-manage/cost-analysis-aws-azure.png" :::
 
 > [!NOTE]
 > Skupiny pro správu se v současnosti nepodporují pro zákazníky se Smlouvou se zákazníkem Microsoftu (MCA). Zákazníci se smlouvou MCA si mohou vytvořit tento konektor a zobrazit data AWS. Zákazníci se smlouvou MCA si ale nemohou zobrazovat náklady na Azure a náklady na AWS společně v rámci jedné skupiny pro správu.
@@ -55,17 +55,17 @@ Pokud chcete zobrazit náklady propojeného účtu AWS, otevřete výběr oboru 
 
 Zde je příklad, který ukazuje výběr oboru propojeného účtu AWS.
 
-:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Příklad zobrazení Vybrat obor, které zobrazuje propojené účty AWS" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope02.png" alt-text="Příklad zobrazení Vybrat obor s propojenými účty v rámci skupiny pro správu" :::
 
 ### <a name="view-aws-consolidated-account-costs"></a>Zobrazení nákladů konsolidovaných účtů AWS
 
 Pokud chcete zobrazit náklady konsolidovaných účtů AWS, otevřete výběr oboru a vyberte konsolidovaný účet AWS. Zde je příklad, který ukazuje výběr oboru konsolidovaného účtu AWS.
 
-:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Příklad zobrazení Vybrat obor s konsolidovanými účty" :::
+:::image type="content" source="./media/aws-integration-manage/select-scope03.png" alt-text="Příklad zobrazení Vybrat obor s propojenými účty v rámci skupiny pro správu" :::
 
 Tento obor poskytuje agregované zobrazení všech propojených účtů AWS přidružených ke konsolidovanému účtu AWS. Zde je příklad znázorňující náklady konsolidovaného účtu AWS seskupené podle názvu služby.
 
-:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Příklad znázorňující náklady konsolidovaného účtu AWS v analýze nákladů" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
+:::image type="content" source="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" alt-text="Příklad zobrazení Vybrat obor s propojenými účty v rámci skupiny pro správu" lightbox="./media/aws-integration-manage/cost-analysis-aws-consolidated.png" :::
 
 ### <a name="dimensions-available-for-filtering-and-grouping"></a>Dimenze dostupné pro filtrování a seskupování
 
@@ -95,7 +95,7 @@ Následující tabulka popisuje dimenze, podle kterých lze v analýze nákladů
 
 Rozpočty slouží k proaktivní správě nákladů a posílení zodpovědnosti ve vaší organizaci. Rozpočty se nastavují v oborech konsolidovaného účtu AWS a propojeného účtu AWS. Zde je příklad rozpočtů pro konsolidovaný účet AWS, který se zobrazuje ve službě Cost Management:
 
-:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Příklad znázorňující rozpočty pro konsolidovaný účet AWS" :::
+:::image type="content" source="./media/aws-integration-manage/budgets-aws-consolidated-account01.png" alt-text="Příklad zobrazení Vybrat obor s propojenými účty v rámci skupiny pro správu" :::
 
 ## <a name="aws-data-collection-process"></a>Proces shromažďování dat AWS
 
@@ -145,7 +145,7 @@ Tato chyba znamená, že služba Cost Management nemůže volat rozhraní AWS As
 - Externí ID je stejné jako ID v definici role a definici konektoru.
 - Typ role je nastavený na **Another AWS account Belonging to you or 3rd party** (Jiný účet AWS, který patří vám nebo třetí straně).
 - Políčko **Require MFA** (Vyžadovat vícefaktorové ověřování) není zaškrtnuté.
-- Důvěryhodný účet AWS v této roli AWS je _432263259397_.
+- Důvěryhodný účet AWS v této roli AWS je _432263259397_ .
 
 ### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>Shromažďování selhalo s chybou odepření přístupu – definice sestavy nákladů a využití
 
@@ -176,6 +176,12 @@ Tato chyba znamená, že služba Cost Management nemůže najít sestavu náklad
 **Kód chyby:** _ReportIsNotValid_
 
 Tato chyba souvisí s definicí sestavy nákladů a využití AWS. Pro tuto sestavu se vyžaduje specifické nastavení, viz požadavky v článku [Vytvoření sestavy nákladů a využití v AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
+
+### <a name="internal-error-when-creating-connector"></a>Interní chyba při vytváření konektoru
+
+**Kód chyby:** _Vytvořit konektor – Nepovedlo se vytvořit konektor &lt;ConnectorName&gt;. Důvod: Vnitřní chyba. Ověřte, že byly poskytnuty správné vlastnosti AWS._
+
+K této chybě může dojít, pokud konektor AWS a předplatné jsou v různých skupinách pro správu. Konektor AWS a předplatné musí být ve stejné skupině pro správu.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 6bfedc7d14c234f88e8140281a01ffcc330ba532
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: af1419dfb47f9090fd3aa307c71f7e62206e3e93
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488363"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543351"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB monitorování
 
@@ -66,25 +66,25 @@ Stránka **Přehled** v Azure Portal pro každou databázi Azure Cosmos obsahuje
 
 ## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> Analýza dat metriky
 
-Azure Cosmos DB poskytuje vlastní prostředí pro práci s metrikami. Podrobnosti o používání tohoto prostředí a analýze různých Azure Cosmos DBch scénářů najdete v tématu [monitorování a ladění Azure Cosmos DB metriky z Azure monitor]() .
+Azure Cosmos DB poskytuje vlastní prostředí pro práci s metrikami.
 
-Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) . Všechny metriky pro Azure Cosmos DB jsou v oboru názvů **Cosmos DB Standardní metriky**. Při přidávání filtru do grafu můžete použít následující dimenze s těmito metrikami:
+Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb Azure pomocí Průzkumníka metrik, a to tak, že v nabídce **Azure monitor** otevřete **metriky** . Podrobnosti o použití tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) . Všechny metriky pro Azure Cosmos DB jsou v oboru názvů **Cosmos DB Standardní metriky** . Při přidávání filtru do grafu můžete použít následující dimenze s těmito metrikami:
 
 * Název kolekce
 * DatabaseName
 * Typ operace
-* Oblast
+* Region (Oblast)
 * StatusCode
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
+1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky** .
 
    :::image type="content" source="./media/monitor-cosmos-db/monitor-metrics-blade.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
 
-1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné**a **skupinu prostředků**. Jako **typ prostředku**vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
+1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků** . Jako **typ prostředku** vyberte **Azure Cosmos DB účty** , zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít** .
 
    :::image type="content" source="./media/monitor-cosmos-db/select-cosmosdb-account.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
 
@@ -96,7 +96,7 @@ Metriky pro Azure Cosmos DB můžete analyzovat pomocí metrik z jiných služeb
 
 ### <a name="add-filters-to-metrics"></a>Přidání filtrů do metrik
 
-Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName**, **DatabaseName**, **typem operace OperationType**, **region**a **StatusCode**. Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **typem operace OperationType** , a vyberte hodnotu, jako je například **dotaz**. V grafu se pak zobrazí jednotky žádosti spotřebované pro operaci dotazování pro vybrané období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
+Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName** , **DatabaseName** , **typem operace OperationType** , **region** a **StatusCode** . Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **typem operace OperationType** , a vyberte hodnotu, jako je například **dotaz** . V grafu se pak zobrazí jednotky žádosti spotřebované pro operaci dotazování pro vybrané období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
 
 :::image type="content" source="./media/monitor-cosmos-db/add-metrics-filter.png" alt-text="Možnosti monitorování dostupné v Azure Portal":::
 
@@ -153,7 +153,7 @@ Metriky na úrovni účtu dostupné na portálu, jako je například využití �
 
 * Chcete-li použít REST API, [proveďte operaci get pro kolekci](/rest/api/cosmos-db/get-a-collection). Kvóta a informace o využití pro kolekci se vrátí v hlavičce x-MS-Resource-quote a x-MS-Resource-Usage v odpovědi.
 
-* Chcete-li použít sadu .NET SDK, použijte metodu [DocumentClient. ReadDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) , která vrátí [ResourceResponse](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) obsahující řadu vlastností použití jako **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**a další.
+* Chcete-li použít sadu .NET SDK, použijte metodu [DocumentClient. ReadDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) , která vrátí [ResourceResponse](/dotnet/api/microsoft.azure.documents.client.resourceresponse-1) obsahující řadu vlastností použití jako **CollectionSizeUsage** , **DatabaseUsage** , **DocumentUsage** a další.
 
 Pro přístup k dalším metrikám použijte [sadu Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights). Dostupné definice metriky lze načíst voláním:
 

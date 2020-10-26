@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211306"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544507"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Nejčastější dotazy týkající se vývoje Azure cache pro Redis
 
@@ -45,7 +45,7 @@ Pokud ještě nemáte účet Azure, můžete:
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Co dělají konfigurační možnosti StackExchange. Redis?
 StackExchange. Redis má mnoho možností. Tato část pojednává o některých běžných nastaveních. Podrobnější informace o možnostech StackExchange. Redis najdete v tématu [Konfigurace stackexchange. Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Description | Doporučení |
+| ConfigurationOptions | Popis | Doporučení |
 | --- | --- | --- |
 | AbortOnConnectFail |Když se nastaví na true, připojení se po selhání sítě znovu nepřipojí. |Nastavte na hodnotu false a nechte StackExchange. Redis automaticky znovu připojit. |
 | ConnectRetry |Počet opakovaných pokusů o připojení při počátečním připojení. |Pokyny najdete v následujících pokynech. |
@@ -55,8 +55,8 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
 
 * **Opakování**
   * V případě ConnectRetry a ConnectTimeout je obecné pokyny pro rychlé selhání a zkuste to znovu. Tyto doprovodné materiály jsou založené na vašich úlohách a o tom, kolik času v průměru trvá klientovi, aby vydával příkaz Redis a dostal odpověď.
-  * Nechejte StackExchange. Redis automaticky znovu připojit místo kontroly stavu připojení a opětovném připojení. **Vyhněte se použití vlastnosti ConnectionMultiplexer. nepřipojená**.
-  * Snowballing – někdy můžete narazit na problém, ve kterém zkoušíte, a pokusy Snowball a nikdy se neobnoví. Pokud dojde k Snowballing, měli byste zvážit použití exponenciálního algoritmu opakování omezení rychlosti, jak je popsáno v [obecných pokynech](../best-practices-retry-general.md) , které publikovala skupina Microsoft patterns & Practices.
+  * Nechejte StackExchange. Redis automaticky znovu připojit místo kontroly stavu připojení a opětovném připojení. **Vyhněte se použití vlastnosti ConnectionMultiplexer. nepřipojená** .
+  * Snowballing – někdy můžete narazit na problém, ve kterém zkoušíte, a pokusy Snowball a nikdy se neobnoví. Pokud dojde k Snowballing, měli byste zvážit použití exponenciálního algoritmu opakování omezení rychlosti, jak je popsáno v [obecných pokynech](/azure/architecture/best-practices/transient-faults) , které publikovala skupina Microsoft patterns & Practices.
   
 * **Hodnoty časového limitu**
   * Vezměte v úvahu svůj pracovní postup a nastavte hodnoty odpovídajícím způsobem. Pokud ukládáte velké hodnoty, nastavte časový limit na vyšší hodnotu.
@@ -64,7 +64,7 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
   * Pro aplikaci použijte jednu instanci ConnectionMultiplexer. Pomocí LazyConnection můžete vytvořit jednu instanci, která je vrácena vlastností připojení, jak je znázorněno v [části připojení k mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * `ConnectionMultiplexer.ClientName`Pro účely diagnostiky nastavte vlastnost na jedinečný název instance aplikace.
   * `ConnectionMultiplexer`Pro vlastní úlohy použijte více instancí.
-      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Například:
+      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Příklad:
       * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
       * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
       * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
@@ -109,7 +109,7 @@ Můžete použít kterýkoli z příkazů uvedených v [Redis příkazech](https
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Nástroje příkazového řádku Redis nefungují s portem TLS, ale pomocí `stunnel` pokynů v článku [Jak používat nástroj příkazového řádku Redis s Azure cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) můžete použít nástroj, například k bezpečnému připojení nástrojů k portu TLS.
+> Nástroje příkazového řádku Redis nefungují s portem TLS, ale pomocí `stunnel` pokynů v článku [Jak používat nástroj příkazového řádku Redis s Azure cache for Redis](./cache-how-to-redis-cli-tool.md) můžete použít nástroj, například k bezpečnému připojení nástrojů k portu TLS.
 >
 >
 

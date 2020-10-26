@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75435397"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535225"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
 
 Řešení pro velké objemy dat v reálném čase působí na data, která se pohybují. Tato data jsou obvykle nejužitečnější v době doručení. Pokud je příchozí datový Stream větší, než se dá v tomto okamžiku zpracovat, budete možná muset omezit prostředky. Případně můžete cluster HDInsight škálovat tak, aby splňoval vaše řešení streamování, a to přidáním uzlů na vyžádání.
 
-V aplikaci pro streamování jeden nebo víc zdrojů dat generuje události (někdy v milionech za sekundu), které je potřeba rychle přijmout, aniž by se musely vyhodit žádné užitečné informace. Příchozí události jsou zpracovávány pomocí *ukládání do vyrovnávací paměti služby Stream*, označovaného také jako služba *Event queuing*, například [Apache Kafka](kafka/apache-kafka-introduction.md) nebo [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po shromáždění událostí můžete data analyzovat pomocí analytického systému v reálném čase v rámci vrstvy *zpracování streamu* , jako je například [Apache Storm](storm/apache-storm-overview.md) nebo [streamování Apache Spark](spark/apache-spark-streaming-overview.md). Zpracovaná data mohou být uložena v dlouhodobém systému úložiště, například [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)a zobrazená v reálném čase na řídicím panelu Business Intelligence, jako je například [Power BI](https://powerbi.microsoft.com), Tableau nebo vlastní webová stránka.
+V aplikaci pro streamování jeden nebo víc zdrojů dat generuje události (někdy v milionech za sekundu), které je potřeba rychle přijmout, aniž by se musely vyhodit žádné užitečné informace. Příchozí události jsou zpracovávány pomocí *ukládání do vyrovnávací paměti služby Stream* , označovaného také jako služba *Event queuing* , například [Apache Kafka](kafka/apache-kafka-introduction.md) nebo [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po shromáždění událostí můžete data analyzovat pomocí analytického systému v reálném čase v rámci vrstvy *zpracování streamu* , jako je například [Apache Storm](storm/apache-storm-overview.md) nebo [streamování Apache Spark](spark/apache-spark-streaming-overview.md). Zpracovaná data mohou být uložena v dlouhodobém systému úložiště, například [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)a zobrazená v reálném čase na řídicím panelu Business Intelligence, jako je například [Power BI](https://powerbi.microsoft.com), Tableau nebo vlastní webová stránka.
 
 ![Vzory streamování Azure HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -39,7 +39,7 @@ Další informace najdete v tématu [co je Apache Storm ve službě Azure HDInsi
 
 Streamování Sparku je rozšíření pro Spark, které umožňuje znovu použít stejný kód, který používáte pro dávkové zpracování. V rámci jedné aplikace můžete kombinovat dávkové i interaktivní dotazy. Na rozdíl od neúspěchu poskytuje streamování Spark stav přesně po sémantikě zpracování. Pokud se používá v kombinaci s [rozhraním API Kafka Direct](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), které zajišťuje, aby všechna Kafka data přijímala pouze jednou za vás, je možné, že se přesně zajistěte. Jedna z možností streamování Sparku je odolná proti chybám, která umožňuje rychle obnovit chybové uzly, když se v clusteru používá víc uzlů.
 
-Další informace najdete v tématu [co je Apache Spark streaming?](hdinsight-spark-streaming-overview.md).
+Další informace najdete v tématu [co je Apache Spark streaming?](./spark/apache-spark-streaming-overview.md).
 
 ## <a name="scaling-a-cluster"></a>Škálování clusteru
 
