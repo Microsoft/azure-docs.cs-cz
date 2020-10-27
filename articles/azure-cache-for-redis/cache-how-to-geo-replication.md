@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839686"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536874"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Jak nastavit geografickou replikaci pro Azure cache pro Redis
 
@@ -75,7 +75,7 @@ Po nakonfigurování geografické replikace platí následující omezení pro v
 
     ![Snímek obrazovky, který ukazuje, jak zobrazit stav propojení primárních a sekundárních mezipamětí.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    Po dokončení procesu replikace se **stav odkazu** změní na **úspěch**.
+    Po dokončení procesu replikace se **stav odkazu** změní na **úspěch** .
 
     ![Stav mezipaměti](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -145,8 +145,8 @@ Ano, geografická replikace mezipamětí v virtuální sítě se podporuje s upo
 
 - Geografická replikace mezi mezipamětí ve stejné virtuální síti je podporovaná.
 - Je také podporována geografická replikace mezi mezipamětí v různých virtuální sítě.
-  - Pokud se virtuální sítě nacházejí ve stejné oblasti, můžete je propojit pomocí [partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálních sítí nebo [VPN Gateway připojení typu VNet-to-VNet](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V).
-  - Pokud se virtuální sítě nacházejí v různých oblastech, je geografická replikace pomocí partnerského vztahu virtuálních sítí podporovaná, ale klientský virtuální počítač ve virtuální síti 1 (region 1) nebude mít přístup k mezipaměti ve virtuální síti 2 (region 2) prostřednictvím názvu DNS z důvodu omezení se základními interními nástroji pro vyrovnávání zatížení. Další informace o omezeních partnerských vztahů virtuálních sítí najdete v tématu [Virtual Network-peer-to-požadavky a omezení](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Doporučené řešení je použití VPN Gateway připojení typu VNET-to-VNET.
+  - Pokud se virtuální sítě nacházejí ve stejné oblasti, můžete je propojit pomocí [partnerského vztahu](../virtual-network/virtual-network-peering-overview.md) virtuálních sítí nebo [VPN Gateway připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
+  - Pokud se virtuální sítě nacházejí v různých oblastech, je geografická replikace pomocí partnerského vztahu virtuálních sítí podporovaná, ale klientský virtuální počítač ve virtuální síti 1 (region 1) nebude mít přístup k mezipaměti ve virtuální síti 2 (region 2) prostřednictvím názvu DNS z důvodu omezení se základními interními nástroji pro vyrovnávání zatížení. Další informace o omezeních partnerských vztahů virtuálních sítí najdete v tématu [Virtual Network-peer-to-požadavky a omezení](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Doporučené řešení je použití VPN Gateway připojení typu VNET-to-VNET.
   
 Pomocí [této šablony Azure](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)můžete rychle nasadit dvě geograficky replikované mezipaměti do virtuální sítě připojené s VPN Gateway připojení typu VNet-to-VNet.
 
@@ -166,7 +166,7 @@ Chcete-li získat bod obnovení, [exportujte](cache-how-to-import-export-data.md
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Můžu pomocí PowerShellu nebo Azure CLI spravovat geografickou replikaci?
 
-Ano, geografickou replikaci je možné spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace najdete v dokumentaci k [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) nebo v dokumentaci k rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest).
+Ano, geografickou replikaci je možné spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace najdete v dokumentaci k [prostředí PowerShell](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) nebo v dokumentaci k rozhraní příkazového [řádku Azure CLI](/cli/azure/redis/server-link?view=azure-cli-latest).
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Kolik stojí za replikaci dat napříč oblastmi Azure?
 
@@ -188,7 +188,7 @@ Pokud chcete zahájit převzetí služeb při selhání iniciované zákazníkem
 
 ### <a name="can-i-configure-a-firewall-with-geo-replication"></a>Můžu nakonfigurovat bránu firewall pro geografickou replikaci?
 
-Ano, můžete nakonfigurovat [bránu firewall](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) pomocí geografické replikace. Aby geografická replikace fungovala společně s bránou firewall, zajistěte, aby se IP adresa sekundární mezipaměti přidala do pravidel brány firewall primární mezipaměti.
+Ano, můžete nakonfigurovat [bránu firewall](./cache-configure.md#firewall) pomocí geografické replikace. Aby geografická replikace fungovala společně s bránou firewall, zajistěte, aby se IP adresa sekundární mezipaměti přidala do pravidel brány firewall primární mezipaměti.
 
 ## <a name="next-steps"></a>Další kroky
 

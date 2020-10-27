@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 0b7b09696cbbe12a57d066e452b4c8ea7a7b8f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935883"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545816"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Konfigurace a přístup k protokolům v Azure Database for PostgreSQLm flexibilním serveru
 
@@ -22,20 +22,20 @@ Protokoly PostgreSQL jsou k dispozici na všech uzlech flexibilního serveru. Pr
 
 ## <a name="configure-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
 
-Nastavení diagnostiky pro server Postgres můžete povolit pomocí Azure Portal, CLI, REST API a PowerShellu. Kategorie protokolu, která se má vybrat, je **PostgreSQLLogs**.
+Nastavení diagnostiky pro server Postgres můžete povolit pomocí Azure Portal, CLI, REST API a PowerShellu. Kategorie protokolu, která se má vybrat, je **PostgreSQLLogs** .
 
 Postup povolení protokolů prostředku pomocí Azure Portal:
 
 1. Na portálu přejděte v navigační nabídce serveru Postgres na *nastavení diagnostiky* .
    
-2. Vyberte *Přidat nastavení diagnostiky*.
+2. Vyberte *Přidat nastavení diagnostiky* .
    :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="Tlačítko Přidat nastavení diagnostiky":::
 
 3. Pojmenujte toto nastavení. 
 
 4. Vyberte preferovaný koncový bod (účet úložiště, centrum událostí a Log Analytics). 
 
-5. Vyberte typ protokolu **PostgreSQLLogs**.
+5. Vyberte typ protokolu **PostgreSQLLogs** .
    :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Tlačítko Přidat nastavení diagnostiky":::
 
 7. Uložte nastavení.
@@ -44,7 +44,7 @@ Pokud chcete povolit protokoly prostředků pomocí PowerShellu, rozhraní pří
 
 ### <a name="access-resource-logs"></a>Přístup k protokolům prostředků
 
-Způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../../azure-monitor/platform/resource-logs-collect-storage.md) . Event Hubs najdete v článku [streamování protokolů Azure](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+Způsob přístupu k protokolům závisí na tom, který koncový bod zvolíte. Azure Storage najdete v článku [log Storage Account](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) . Event Hubs najdete v článku [streamování protokolů Azure](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) .
 
 Protokoly Azure Monitor jsou odesílány do vybraného pracovního prostoru. Protokoly Postgres používají režim kolekce **AzureDiagnostics** , takže se dají dotazovat z tabulky AzureDiagnostics. Pole v tabulce jsou popsána níže. Přečtěte si další informace o dotazování a upozorňování v přehledu [dotazů Azure Monitorch protokolů](../../azure-monitor/log-query/log-query-overview.md) .
 
@@ -71,5 +71,5 @@ Výše uvedený dotaz zobrazí výsledky za posledních 6 hodin pro všechny př
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Začínáme s dotazy Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-- Další informace o [službě Azure Event Center](https://docs.microsoft.com/azure/event-hubs/event-hubs-about)
+- [Začínáme s dotazy Log Analytics](../../azure-monitor/log-query/get-started-portal.md)
+- Další informace o [službě Azure Event Center](../../event-hubs/event-hubs-about.md)

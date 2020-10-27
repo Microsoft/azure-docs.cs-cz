@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855663"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547431"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
@@ -44,23 +44,23 @@ Sdílení jednoho kontejneru objektů BLOB jako výchozího systému souborů pr
 
 ## <a name="access-files-from-within-cluster"></a>Přístup k souborům v rámci clusteru
 
-Existuje několik způsobů, jak můžete přistupovat k souborům v Data Lake Storage z clusteru HDInsight. Schéma identifikátoru URI poskytuje nešifrovaný přístup (s *wasb:* prefix) a ŠIFROVANÝ přístup TLS (s *wasbs*). Doporučujeme používat *wasbs* kdykoli je to možné, i v případě přístupu k datům, umístěným uvnitř stejné oblasti v Azure.
+Existuje několik způsobů, jak můžete přistupovat k souborům v Data Lake Storage z clusteru HDInsight. Schéma identifikátoru URI poskytuje nešifrovaný přístup (s *wasb:* prefix) a ŠIFROVANÝ přístup TLS (s *wasbs* ). Doporučujeme používat *wasbs* kdykoli je to možné, i v případě přístupu k datům, umístěným uvnitř stejné oblasti v Azure.
 
-* **Pomocí plně kvalifikovaného názvu**. S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
+* **Pomocí plně kvalifikovaného názvu** . S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **Pomocí zkráceného formátu cesty**. Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
+* **Pomocí zkráceného formátu cesty** . Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **Pomocí relativní cesty**. S tímto přístupem zadáváte pouze relativní cestu k souboru, ke kterému chcete získat přístup.
+* **Pomocí relativní cesty** . S tímto přístupem zadáváte pouze relativní cestu k souboru, ke kterému chcete získat přístup.
 
     ```
     /<file.path>/
@@ -151,7 +151,7 @@ Pokud chcete získat cestu pomocí REST API Ambari, přečtěte si téma [získ�
 
 ## <a name="blob-containers"></a>Kontejnery objektů blob
 
-K použití objektů blob je třeba nejprve vytvořit [Účet služby Azure Storage](../storage/common/storage-create-storage-account.md). V rámci tohoto kroku zadáte oblast Azure, ve které se účet úložiště vytvoří. Účet úložiště a clusteru musí být uloženy ve stejné oblasti. Databáze metastore Hive SQL Server a databáze Apache Oozie SQL Server metastore se musí nacházet ve stejné oblasti.
+K použití objektů blob je třeba nejprve vytvořit [Účet služby Azure Storage](../storage/common/storage-account-create.md). V rámci tohoto kroku zadáte oblast Azure, ve které se účet úložiště vytvoří. Účet úložiště a clusteru musí být uloženy ve stejné oblasti. Databáze metastore Hive SQL Server a databáze Apache Oozie SQL Server metastore se musí nacházet ve stejné oblasti.
 
 Bez ohledu na svoje umístění patří každý objekt blob, který vytvoříte, do kontejneru v účtu úložiště Azure. Tento kontejner může být existující objekt BLOB vytvořený mimo HDInsight. Může se jednat o kontejner, který se vytvoří pro cluster HDInsight.
 

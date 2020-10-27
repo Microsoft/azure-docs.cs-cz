@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 35f96080d6a931c3491e119fe6866bc51eff4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490046"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546564"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Kurz: vytvoření Azure Database for PostgreSQL flexibilního serveru s webovou aplikací App Services ve virtuální síti
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – flexibilní Server je ve verzi Preview.
 
-V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci v Azure App Service s Azure Database for PostgreSQLm flexibilním serverem (ve verzi Preview) ve [virtuální síti](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci v Azure App Service s Azure Database for PostgreSQLm flexibilním serverem (ve verzi Preview) ve [virtuální síti](../../virtual-network/virtual-networks-overview.md).
 
 V tomto kurzu budete
 >[!div class="checklist"]
@@ -121,4 +121,4 @@ az group delete -n myresourcegroup
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+> [Mapování existujícího vlastního názvu DNS na Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)

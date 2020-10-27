@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044646"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544949"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Kurz: Konfigurace zásad Apache HBA v HDInsight pomocí Balíček zabezpečení podniku
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 * Vytvořte [cluster HDInsight HBA pomocí balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md).
 
@@ -45,7 +45,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-domain-users"></a>Vytvoření uživatelů domén
 
-Informace o tom, jak vytvořit **sales_user1** a **marketing_user1** uživatelů domény, najdete v tématu [Vytvoření clusteru HDInsight s balíček zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds). V produkční scénáři uživatelé domény pocházejí z vašeho klienta služby Active Directory.
+Informace o tom, jak vytvořit **sales_user1** a **marketing_user1** uživatelů domény, najdete v tématu [Vytvoření clusteru HDInsight s balíček zabezpečení podniku](./apache-domain-joined-configure-using-azure-adds.md). V produkční scénáři uživatelé domény pocházejí z vašeho klienta služby Active Directory.
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>Vytváření tabulek HBA a Import ukázkových dat
 
@@ -93,13 +93,13 @@ Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Ap
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
 
-Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
+Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1** .
 
-1. Otevřete **Uživatelské rozhraní správce Ranger**. Klikněte na ** \<ClusterName> _hbase** pod položkou **HBA**.
+1. Otevřete **Uživatelské rozhraní správce Ranger** . Klikněte na **\<ClusterName> _hbase** pod položkou **HBA** .
 
    ![Uživatelské rozhraní správce HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. Na obrazovce **seznam zásad** se zobrazí všechny zásady Ranger vytvořené pro tento cluster. Může být uvedena jedna předem nakonfigurovaná zásada. Klikněte na **Přidat novou zásadu**.
+2. Na obrazovce **seznam zásad** se zobrazí všechny zásady Ranger vytvořené pro tento cluster. Může být uvedena jedna předem nakonfigurovaná zásada. Klikněte na **Přidat novou zásadu** .
 
     ![Seznam zásad HBA pro Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
@@ -191,7 +191,7 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zob
 
 ### <a name="access-data-as-marketing_user1"></a>Přístup k datům jako marketing_user1
 
-1. Otevřete nové připojení SSH ke clusteru. Pomocí následujícího příkazu se přihlaste jako **marketing_user1**:
+1. Otevřete nové připojení SSH ke clusteru. Pomocí následujícího příkazu se přihlaste jako **marketing_user1** :
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -235,11 +235,11 @@ V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zob
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Do **vyhledávacího** pole v horní části zadejte **HDInsight**. 
-1. V části **služby**vyberte **clustery HDInsight** .
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+2. Do **vyhledávacího** pole v horní části zadejte **HDInsight** . 
+1. V části **služby** vyberte **clustery HDInsight** .
 1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
-1. Klikněte na **Odstranit**. Klikněte na **Ano**.
+1. Klikněte na **Odstranit** . Klikněte na **Ano** .
 
 ## <a name="next-steps"></a>Další kroky
 

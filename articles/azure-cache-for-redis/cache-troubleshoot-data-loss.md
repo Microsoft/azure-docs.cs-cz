@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 29492ee6b7bce50c4807a36d0c252e18e6aadf87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008946"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538591"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Řešení potíží se ztrátou dat ve službě Azure Cache for Redis
 
@@ -27,7 +27,7 @@ Azure cache pro Redis po uložení do paměti náhodně neodstraní klíče. Ode
 
 Pokud zjistíte, že klíče z mezipaměti zmizely, podívejte se na tyto možné příčiny:
 
-| Příčina | Description |
+| Příčina | Popis |
 |---|---|
 | [Vypršení platnosti klíče](#key-expiration) | Klíče se odeberou kvůli časovým limitům nastaveným pro ně. |
 | [Vyřazení klíčů](#key-eviction) | Klíče jsou odebrány v části tlak paměti. |
@@ -36,7 +36,7 @@ Pokud zjistíte, že klíče z mezipaměti zmizely, podívejte se na tyto možn�
 
 ### <a name="key-expiration"></a>Vypršení platnosti klíče
 
-Azure cache pro Redis odebere klíč automaticky, pokud je klíč přiřazen časový limit a období uplynulo. Další informace o vypršení platnosti klíče Redis najdete v dokumentaci k příkazům vypršení [platnosti](https://redis.io/commands/expire) . Hodnoty časového limitu lze také nastavit pomocí příkazů [set](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [Poznámka GetSet](https://redis.io/commands/getset)a dalších ** \* úložišť** .
+Azure cache pro Redis odebere klíč automaticky, pokud je klíč přiřazen časový limit a období uplynulo. Další informace o vypršení platnosti klíče Redis najdete v dokumentaci k příkazům vypršení [platnosti](https://redis.io/commands/expire) . Hodnoty časového limitu lze také nastavit pomocí příkazů [set](https://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [Poznámka GetSet](https://redis.io/commands/getset)a dalších **\* úložišť** .
 
 Chcete-li získat statistiku o tom, kolik klíčů vypršelo, použijte příkaz [info](https://redis.io/commands/info) . V `Stats` části se zobrazuje celkový počet klíčů s vypršenou platností. V `Keyspace` části najdete další informace o počtu klíčů s časovým limitem a s průměrnou hodnotou časového limitu.
 
@@ -86,7 +86,7 @@ Jakákoli instance Azure cache for Redis v úrovni Standard nebo Premium je nako
 
 Pokud z mezipaměti nezmizí většina nebo všechny klíče, podívejte se na tyto možné příčiny:
 
-| Příčina | Description |
+| Příčina | Popis |
 |---|---|
 | [Vyprazdňování klíče](#key-flushing) | Klíče byly vymazány ručně. |
 | [Nesprávný výběr databáze](#incorrect-database-selection) | Mezipaměť Azure pro Redis je nastavená na použití jiné než výchozí databáze. |
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Nesprávný výběr databáze
 
-Azure cache pro Redis ve výchozím nastavení používá databázi **DB0** . Pokud přepnete do jiné databáze (například **DB1**) a pokusíte se z ní číst klíče, mezipaměť Azure pro Redis je nenalezne. Každá databáze je logicky oddělená jednotka a obsahuje jinou datovou sadu. Pomocí příkazu [Select](https://redis.io/commands/select) můžete použít další dostupné databáze a vyhledat klíče v každém z nich.
+Azure cache pro Redis ve výchozím nastavení používá databázi **DB0** . Pokud přepnete do jiné databáze (například **DB1** ) a pokusíte se z ní číst klíče, mezipaměť Azure pro Redis je nenalezne. Každá databáze je logicky oddělená jednotka a obsahuje jinou datovou sadu. Pomocí příkazu [Select](https://redis.io/commands/select) můžete použít další dostupné databáze a vyhledat klíče v každém z nich.
 
 ### <a name="redis-instance-failure"></a>Selhání instance Redis
 
@@ -114,7 +114,7 @@ Redis je úložiště dat v paměti. Data se uchovávají na fyzických nebo vir
 
 Mezipamětí v úrovních Standard a Premium nabízejí mnohem větší odolnost proti ztrátě dat pomocí dvou virtuálních počítačů v replikované konfiguraci. Pokud primární uzel v takové mezipaměti neproběhne úspěšně, převezme uzel repliky automaticky data do obsluhy. Tyto virtuální počítače se nacházejí v samostatných doménách pro chyby a aktualizace, aby se minimalizovala pravděpodobnost, že se současně stane nedostupnými. Pokud se ale dojde k výpadku velkých Datacenter, virtuální počítače se ale pořád rozstanou pohromadě. V těchto vzácných případech dojde ke ztrátě vašich dat.
 
-Zvažte použití [Trvalost dat Redis](https://redis.io/topics/persistence) a [geografické replikace](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) k vylepšení ochrany vašich dat před těmito selháními infrastruktury.
+Zvažte použití [Trvalost dat Redis](https://redis.io/topics/persistence) a [geografické replikace](./cache-how-to-geo-replication.md) k vylepšení ochrany vašich dat před těmito selháními infrastruktury.
 
 ## <a name="additional-information"></a>Další informace
 

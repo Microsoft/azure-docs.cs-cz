@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80586974"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546003"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Podrobně a osvědčené postupy brány pro Apache Hive ve službě Azure HDInsight
 
@@ -54,11 +54,11 @@ V clusterech s podporou sady Enterprise Security Pack můžou dostatečně slož
 
 Existuje několik míst pro zmírnění rizik a porozumění problémům s výkonem, které jsou splněné v rámci výše uvedeného chování. Použijte následující kontrolní seznam při vykonávání snížení výkonu dotazů prostřednictvím brány HDInsight:
 
-* Při provádění velkých dotazů **Select** použijte klauzuli **limit** . Klauzule **limit** omezuje celkové řádky hlášené na hostitele klienta. Klauzule **limit** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít klauzuli **limit** pro plán dotazu, použijte konfiguraci `hive.limit.optimize.enable` . **Limit** lze kombinovat s posunem pomocí omezení formuláře argumentu **x, y**.
+* Při provádění velkých dotazů **Select** použijte klauzuli **limit** . Klauzule **limit** omezuje celkové řádky hlášené na hostitele klienta. Klauzule **limit** ovlivňuje pouze generování výsledků a nemění plán dotazu. Chcete-li použít klauzuli **limit** pro plán dotazu, použijte konfiguraci `hive.limit.optimize.enable` . **Limit** lze kombinovat s posunem pomocí omezení formuláře argumentu **x, y** .
 
-* Pojmenujte sloupce důležité při spuštění dotazů **Select** namísto použití **Select \* **. Výběr méně sloupců sníží množství čtených dat.
+* Pojmenujte sloupce důležité při spouštění dotazů **Select** namísto použití * *Select \** _. Výběr méně sloupců sníží množství čtených dat.
 
-* Zkuste spustit dotaz, který vás zajímá prostřednictvím Apache Beeline. Pokud načítání výsledků prostřednictvím Apache Beeline trvá delší dobu, očekávat prodlevy při načítání stejných výsledků prostřednictvím externích nástrojů.
+_ Zkuste spustit dotaz, který vás zajímá prostřednictvím Apache Beeline. Pokud načítání výsledků prostřednictvím Apache Beeline trvá delší dobu, očekávat prodlevy při načítání stejných výsledků prostřednictvím externích nástrojů.
 
 * Otestujte základní dotaz na podregistr, abyste měli jistotu, že je možné navázat připojení k bráně HDInsight. Zkuste spustit základní dotaz ze dvou nebo více externích nástrojů, abyste se ujistili, že žádný z těchto nástrojů neběží.
 
@@ -80,7 +80,7 @@ Existuje několik míst pro zmírnění rizik a porozumění problémům s výko
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Apache Beeline ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [Postup řešení potíží s vypršením časového limitu brány HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
-* [Virtuální sítě pro HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [HDInsight se službou Express Route](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [Apache Beeline ve službě HDInsight](../hadoop/apache-hadoop-use-hive-beeline.md)
+* [Postup řešení potíží s vypršením časového limitu brány HDInsight](./troubleshoot-gateway-timeout.md)
+* [Virtuální sítě pro HDInsight](../hdinsight-plan-virtual-network-deployment.md)
+* [HDInsight se službou Express Route](../connect-on-premises-network.md)

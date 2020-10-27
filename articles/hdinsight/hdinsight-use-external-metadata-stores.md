@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c02f9de5b41d58e40001ba103191f3ef015f5c5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873088"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534902"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsightu
 
@@ -41,7 +41,7 @@ Ve výchozím nastavení HDInsight vytvoří metastore s každým typem clusteru
 * Výchozí metastore se doporučuje jenom pro jednoduché úlohy. Úlohy, které nevyžadují více clusterů a nepotřebují metadata zachovaná nad rámec životního cyklu clusteru.
 
 > [!IMPORTANT]
-> Výchozí metastore poskytuje Azure SQL Database s **limitem DTU úrovně Basic 5 (nelze aktualizovat)**! Vhodné pro účely základního testování. U rozsáhlých nebo produkčních úloh doporučujeme migrovat na externí metastore.
+> Výchozí metastore poskytuje Azure SQL Database s **limitem DTU úrovně Basic 5 (nelze aktualizovat)** ! Vhodné pro účely základního testování. U rozsáhlých nebo produkčních úloh doporučujeme migrovat na externí metastore.
 
 ## <a name="custom-metastore"></a>Vlastní metastore
 
@@ -63,9 +63,9 @@ HDInsight podporuje také vlastní metaúložiště, které se doporučují pro 
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Vytvoření a konfigurace Azure SQL Database pro vlastní metastore
 
-Vytvořte nebo existující Azure SQL Database před nastavením vlastního metastore Hive pro cluster HDInsight.  Další informace najdete v tématu [rychlý Start: vytvoření izolované databáze v Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
+Vytvořte nebo existující Azure SQL Database před nastavením vlastního metastore Hive pro cluster HDInsight.  Další informace najdete v tématu [rychlý Start: vytvoření izolované databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal).
 
-Při vytváření clusteru se musí služba HDInsight připojit k externímu metastore a ověřit vaše přihlašovací údaje. Nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru. Tuto možnost povolte v Azure Portal výběrem možnosti **nastavit bránu firewall serveru**. Pak vyberte **žádné** **pod položkou** **Odepřít přístup k veřejné síti**a v části **Povolit přístup k tomuto serveru pro Azure SQL Database pomocí služeb a prostředků Azure** . Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
+Při vytváření clusteru se musí služba HDInsight připojit k externímu metastore a ověřit vaše přihlašovací údaje. Nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru. Tuto možnost povolte v Azure Portal výběrem možnosti **nastavit bránu firewall serveru** . Pak vyberte **žádné** **pod položkou** **Odepřít přístup k veřejné síti** a v části **Povolit přístup k tomuto serveru pro Azure SQL Database pomocí služeb a prostředků Azure** . Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
 
 Privátní koncové body pro úložiště SQL nejsou podporovány.
 
@@ -75,7 +75,7 @@ Privátní koncové body pro úložiště SQL nejsou podporovány.
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Vybrat vlastní metastore při vytváření clusteru
 
-Cluster můžete kdykoli nasměrovat na dříve vytvořenou Azure SQL Database. Při vytváření clusteru prostřednictvím portálu je tato možnost zadaná v **Nastavení úložiště > metastore**.
+Cluster můžete kdykoli nasměrovat na dříve vytvořenou Azure SQL Database. Při vytváření clusteru prostřednictvím portálu je tato možnost zadaná v **Nastavení úložiště > metastore** .
 
 ![Azure Portal úložiště metadat podregistru HDInsight](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 

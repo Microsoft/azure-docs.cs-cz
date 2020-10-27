@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82188153"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545935"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
 
@@ -23,13 +23,13 @@ Výchozí cluster HDInsight Apache Spark zahrnuje následující uzly: tři uzly
 
 ![Architektura Spark HDInsight](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-Počet virtuálních počítačů a velikostí virtuálních počítačů pro uzly v clusteru HDInsight může ovlivnit konfiguraci Sparku. Nevýchozí hodnoty konfigurace HDInsight často vyžadují hodnoty konfigurace Sparku jiné než výchozí. Při vytváření clusteru HDInsight Spark se zobrazí doporučené velikosti virtuálních počítačů pro každou součást. V současné době jsou [velikosti virtuálních počítačů se systémem Linux optimalizované pro paměť](../../virtual-machines/linux/sizes-memory.md) pro Azure D12 v2 nebo vyšší.
+Počet virtuálních počítačů a velikostí virtuálních počítačů pro uzly v clusteru HDInsight může ovlivnit konfiguraci Sparku. Nevýchozí hodnoty konfigurace HDInsight často vyžadují hodnoty konfigurace Sparku jiné než výchozí. Při vytváření clusteru HDInsight Spark se zobrazí doporučené velikosti virtuálních počítačů pro každou součást. V současné době jsou [velikosti virtuálních počítačů se systémem Linux optimalizované pro paměť](../../virtual-machines/sizes-memory.md) pro Azure D12 v2 nebo vyšší.
 
 ## <a name="apache-spark-versions"></a>Verze Apache Spark
 
 Pro svůj cluster použijte nejlepší verzi Sparku.  Služba HDInsight zahrnuje několik verzí Spark i HDInsight.  Každá verze Sparku obsahuje sadu výchozích nastavení clusteru.  
 
-Když vytváříte nový cluster, existuje několik verzí Spark, ze kterých si můžete vybrat. Zobrazí úplný seznam  [komponent a verzí HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Když vytváříte nový cluster, existuje několik verzí Spark, ze kterých si můžete vybrat. Zobrazí úplný seznam  [komponent a verzí HDInsight](../hdinsight-component-versioning.md).
 
 > [!NOTE]  
 > Výchozí verze Apache Spark ve službě HDInsight se může změnit bez předchozího upozornění. Pokud máte závislost verze, společnost Microsoft doporučuje zadat tuto konkrétní verzi při vytváření clusterů pomocí sady .NET SDK, Azure PowerShell a Azure Classic CLI.
@@ -60,7 +60,7 @@ Než začnete s optimalizací výkonu v clusteru, ověřte aktuální nastavení
 
 Zobrazí se webové uživatelské rozhraní Apache Ambari s řídicím panelem klíčových metrik využití prostředků clusteru.  Na řídicím panelu Ambari se zobrazí konfigurace Apache Spark a další instalované služby. Řídicí panel obsahuje kartu **Historie konfigurace** , kde můžete zobrazit informace o nainstalovaných službách, včetně Sparku.
 
-Pokud chcete zobrazit konfigurační hodnoty pro Apache Spark, vyberte **Historie konfigurace**a pak vyberte **Spark2**.  Vyberte kartu **Konfigurace** a potom `Spark` `Spark2` v seznamu služba vyberte odkaz (nebo v závislosti na vaší verzi).  Zobrazí se seznam hodnot konfigurace pro váš cluster:
+Pokud chcete zobrazit konfigurační hodnoty pro Apache Spark, vyberte **Historie konfigurace** a pak vyberte **Spark2** .  Vyberte kartu **Konfigurace** a potom `Spark` `Spark2` v seznamu služba vyberte odkaz (nebo v závislosti na vaší verzi).  Zobrazí se seznam hodnot konfigurace pro váš cluster:
 
 ![Konfigurace Sparku](./media/apache-spark-settings/spark-configurations.png)
 

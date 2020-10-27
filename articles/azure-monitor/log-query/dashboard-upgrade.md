@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988244"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547125"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Upgrade vizualizací řídicího panelu Log Analytics
 
@@ -47,7 +47,7 @@ Když je možné upgradovat část Log Analytics připnuté, zobrazí *se nové 
  
 ![Stín](media/dashboard-upgrade/update-message-1.png)
  
-![Stín](media/dashboard-upgrade/update-message-2.png)
+![Snímek obrazovky, který ukazuje, jak aktualizovat vizualizaci dlaždice](media/dashboard-upgrade/update-message-2.png)
 
 > [!WARNING]
 > Po publikování řídicího panelu je upgrade nevratný. Změny se ale zahodí, Pokud opustíte řídicí panel bez nutnosti opětovného publikování.  
@@ -56,13 +56,13 @@ Po kliknutí bude vizualizace aktualizována na novou technologii. Malé rozdíl
 
 Po upgradu vizualizací je potřeba znovu publikovat řídicí panel, aby se změna projevila.
 
-![Stín](media/dashboard-upgrade/update-message-3.png)
+![Snímek obrazovky, který zobrazuje upgradované vizualizace.](media/dashboard-upgrade/update-message-3.png)
 
 ## <a name="stage-2---migration-of-all-dashboards"></a>Fáze 2 – migrace všech řídicích panelů
 
 Po uplynutí počátečního přihlašovacího období bude tým Log Analytics upgradovat všechny řídicí panely v systému. Zarovnávání všech řídicích panelů Azure umožňuje týmu zavést více vizualizací a vylepšení zkušeností napříč panelem.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Požadavky
 
 Log Analytics vizualizace připnuté na řídicí panel mají určité specifické chování, které je navržené pro optimální prostředí. Pokud připnete vizualizaci na řídicí panel, přečtěte si následující pokyny k návrhu.
 
@@ -74,7 +74,7 @@ Vzhledem k tomu, že řídicí panely můžou obsahovat více vizualizací z ně
 
 Řídicí panely můžou být vizuálně husté a složité. Aby se snížilo zatížení při prohlížení řídicího panelu, optimalizujte vizualizace tím, že omezíte zobrazení na 25 různých datových typů. Pokud je jich více než 25, Log Analytics data optimalizuje. V takovém případě se zobrazí 25 typů s největším množstvím dat jako samostatné a potom se zbývající hodnoty seskupí do hodnoty "jiné". Následující graf ukazuje tento případ.  
 
-![Stín](media/dashboard-upgrade/values-25-limit.png)
+![Snímek obrazovky, který zobrazuje řídicí panel s 25 různými datovými typy.](media/dashboard-upgrade/values-25-limit.png)
 
 ### <a name="dashboard-refresh-on-load"></a>Aktualizace řídicího panelu při zatížení
 

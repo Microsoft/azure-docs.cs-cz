@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 1f062a8f358ac311b53e657fb5714583458bd9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62e2583f8a4d3872a1342f0f702a1913f733e7f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87872578"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545459"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj Apache Storm topologií pomocí Pythonu ve službě HDInsight
 
@@ -22,15 +22,15 @@ Naučte se vytvářet [Apache Storm](https://storm.apache.org/) topologii, kter�
 > [!IMPORTANT]  
 > Informace v tomto dokumentu byly testovány pomocí zaplavení v HDInsight 3,6.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru**.
+* Cluster Apache Storm v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) **a výběr funkce** pro **typ clusteru** .
 
 * Místní vývojové prostředí s více podmnožinami (volitelné). Prostředí místního prostředí se vyžaduje jenom v případě, že chcete topologii spustit místně. Další informace najdete v tématu [Nastavení vývojového prostředí](https://storm.apache.org/releases/current/Setting-up-development-environment.html).
 
 * [Python 2,7 nebo vyšší](https://www.python.org/downloads/).
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks).
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
@@ -114,7 +114,7 @@ Jak bylo zmíněno dříve, existuje `storm.py` soubor, který implementuje defi
     storm kill wordcount
     ```
 
-    Alternativně můžete použít uživatelské rozhraní. V části **Akce topologie** pro topologii vyberte možnost **Kill**.
+    Alternativně můžete použít uživatelské rozhraní. V části **Akce topologie** pro topologii vyberte možnost **Kill** .
 
 ## <a name="run-the-topology-locally"></a>Místní spuštění topologie
 
@@ -141,7 +141,7 @@ Jakmile se topologie spustí, vygeneruje informace místní konzole podobně jak
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-K zastavení topologie použijte __kombinaci kláves CTRL + C__.
+K zastavení topologie použijte __kombinaci kláves CTRL + C__ .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139330"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538489"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>Monitorování operací IoT Hub (zastaralé)
 
 IoT Hub monitorování provozu vám umožní monitorovat stav operací ve službě IoT Hub v reálném čase. IoT Hub sleduje události napříč několika kategoriemi operací. Můžete se rozhodnout, že budete odesílat události z jedné nebo více kategorií do koncového bodu služby IoT Hub ke zpracování. Můžete monitorovat data pro chyby nebo nastavit složitější zpracování na základě vzorců dat.
 
 >[!NOTE]
->**Monitorování operací IoT Hub je zastaralé a bylo odebráno z IoT Hub 10. března 2019**. Informace o monitorování provozu a stavu IoT Hub najdete v tématu [monitorování stavu Azure IoT Hub a rychlé diagnostikování problémů](iot-hub-monitor-resource-health.md). Další informace o časové ose zastaralosti najdete v tématu [monitorování řešení Azure IoT pomocí Azure monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
+>**Monitorování operací IoT Hub je zastaralé a bylo odebráno z IoT Hub 10. března 2019** . Informace o monitorování provozu a stavu IoT Hub najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md). Další informace o časové ose zastaralosti najdete v tématu [monitorování řešení Azure IoT pomocí Azure monitor a Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health).
 
 IoT Hub monitoruje šest kategorií událostí:
 
@@ -39,11 +39,11 @@ IoT Hub monitoruje šest kategorií událostí:
 
 1. Vytvořte centrum IoT. Pokyny, jak vytvořit centrum IoT, najdete [v příručce Začínáme](quickstart-send-telemetry-dotnet.md) .
 
-2. Otevřete okno centra IoT. Odtud klikněte na **monitorování operací**.
+2. Otevřete okno centra IoT. Odtud klikněte na **monitorování operací** .
 
     ![Přístup k konfiguraci monitorování operací na portálu](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. Vyberte kategorie monitorování, které chcete monitorovat, a potom klikněte na **Uložit**. Události jsou k dispozici pro čtení z koncového bodu kompatibilního s centrem událostí uvedených v části **nastavení monitorování**. Je volán koncový bod IoT Hub `messages/operationsmonitoringevents` .
+3. Vyberte kategorie monitorování, které chcete monitorovat, a potom klikněte na **Uložit** . Události jsou k dispozici pro čtení z koncového bodu kompatibilního s centrem událostí uvedených v části **nastavení monitorování** . Je volán koncový bod IoT Hub `messages/operationsmonitoringevents` .
 
     ![Konfigurace monitorování operací ve službě IoT Hub](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
@@ -97,7 +97,7 @@ Kategorie telemetrie zařízení sleduje chyby, ke kterým dochází ve službě
 }
 ```
 
-### <a name="cloud-to-device-commands"></a>Příkazy z cloudu na zařízení
+### <a name="cloud-to-device-commands"></a>Příkazy cloud-zařízení
 
 Kategorie příkazy Cloud-zařízení sleduje chyby, ke kterým dochází ve službě IoT Hub a které souvisejí s kanálem zpráv z cloudu na zařízení. Tato kategorie zahrnuje chyby, ke kterým dochází při posílání zpráv z cloudu na zařízení (jako je například neoprávněný odesílatel), přijímání zpráv z cloudu na zařízení (například překročení počtu doručení) a příjem zpětné vazby ze zpráv typu cloud-zařízení (například vypršení zpětné vazby). Tato kategorie nezachycuje chyby ze zařízení, které nesprávně zpracovává zprávu typu cloud-zařízení, pokud byla zpráva typu cloud-zařízení úspěšně doručena.
 
@@ -197,11 +197,11 @@ Pokud se chcete připojit ke koncovému bodu monitorování, potřebujete připo
 
 1. Na portálu přejděte do okna prostředků IoT Hub.
 
-2. Vyberte **monitorování operací**a poznamenejte si název, který je kompatibilní s centrem **událostí** a hodnoty **koncového bodu kompatibilního centra událostí** :
+2. Vyberte **monitorování operací** a poznamenejte si název, který je kompatibilní s centrem **událostí** a hodnoty **koncového bodu kompatibilního centra událostí** :
 
     ![Hodnoty koncového bodu kompatibilního s centrem událostí](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Zvolte **zásady sdíleného přístupu**a pak zvolte **Služba**. Poznamenejte si hodnotu **primárního klíče** :
+3. Zvolte **zásady sdíleného přístupu** a pak zvolte **Služba** . Poznamenejte si hodnotu **primárního klíče** :
 
     ![Primární klíč zásad sdíleného přístupu služby](./media/iot-hub-operations-monitoring/service-key.png)
 

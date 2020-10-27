@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 973b8a49c4a849f5a50fb3ab72321746a5ca06a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e66329b93ebd7d90258ab4670b77ca849a28189b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083470"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547992"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive s využitím Microsoft Power BI a ODBC ve službě Azure HDInsight
 
 Naučte se, jak připojit Microsoft Power BI Desktop k Azure HDInsight pomocí rozhraní ODBC a vizualizovat Apache Hive data.
 
 > [!IMPORTANT]
-> Můžete využít ovladač ODBC pro podregistr pro import prostřednictvím obecného konektoru ODBC v Power BI Desktop. Nedoporučuje se ale pro úlohy BI, které neinteraktivní charakterují modul dotazů na podregistr. [Konektor HDInsight Interactive pro dotazy](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Spark](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepším výběrem pro jejich výkon.
+> Můžete využít ovladač ODBC pro podregistr pro import prostřednictvím obecného konektoru ODBC v Power BI Desktop. Nedoporučuje se ale pro úlohy BI, které neinteraktivní charakterují modul dotazů na podregistr. [Konektor HDInsight Interactive pro dotazy](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Spark](/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepším výběrem pro jejich výkon.
 
 V tomto článku načtete data z `hivesampletable` tabulky podregistru do Power BI. Tabulka podregistru obsahuje data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
 
@@ -46,27 +46,27 @@ Tabulka podregistru **hivesampletable** se dodává se všemi clustery HDInsight
 
 1. Spusťte Power BI Desktop.
 
-1. V horní nabídce přejděte na **Domů**  >  **získat data**  >  **Další..**..
+1. V horní nabídce přejděte na **Domů**  >  **získat data**  >  **Další..** ..
 
     ![Aplikace Power BI v HDInsight – otevřít data](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
 1. V dialogu **získat data** vyberte z levé strany možnost **jiné** , v pravém horním rohu vyberte **ODBC** a pak dole vyberte **připojit** .
 
-1. V dialogovém okně **z rozhraní ODBC** vyberte v rozevíracím seznamu název zdroje dat, který jste vytvořili v poslední části. Pak vyberte **OK**.
+1. V dialogovém okně **z rozhraní ODBC** vyberte v rozevíracím seznamu název zdroje dat, který jste vytvořili v poslední části. Pak vyberte **OK** .
 
-1. Pro první použití se otevře dialogové okno **ovladače ODBC** . V nabídce vlevo vyberte **výchozí nebo vlastní** . Pak vyberte **připojit** k otevření **navigátoru**.
+1. Pro první použití se otevře dialogové okno **ovladače ODBC** . V nabídce vlevo vyberte **výchozí nebo vlastní** . Pak vyberte **připojit** k otevření **navigátoru** .
 
-1. V dialogovém okně **navigátor** rozbalte položku **> > podregistru rozhraní ODBC**, vyberte možnost **hivesampletable**a pak vyberte **načíst**.
+1. V dialogovém okně **navigátor** rozbalte položku **> > podregistru rozhraní ODBC** , vyberte možnost **hivesampletable** a pak vyberte **načíst** .
 
 ## <a name="visualize-data"></a>Vizualizace dat
 
 Pokračujte od posledního postupu.
 
-1. V podokně vizualizace vyberte **Mapa**, jedná se o ikonu zeměkoule.
+1. V podokně vizualizace vyberte **Mapa** , jedná se o ikonu zeměkoule.
 
     ![Sestava přizpůsobení Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
 
-1. V podokně **pole** vyberte Country ( **země** ) a **devicemake**(země). Data vykreslená na mapě vidíte.
+1. V podokně **pole** vyberte Country ( **země** ) a **devicemake** (země). Data vykreslená na mapě vidíte.
 
 1. Rozbalte mapu.
 

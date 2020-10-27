@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b194812ef68820a0c310d0bac3b055360c5b5e4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150766"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538421"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Monitorování, diagnostika a řešení potíží odpojení pomocí Azure IoT Hub
 
@@ -28,39 +28,39 @@ Problémy s připojením pro zařízení IoT můžou být obtížné řešit, pr
 
 Pomocí Azure Monitor můžete získat výstrahy a zapsat protokoly, když se zařízení odpojí.
 
-### <a name="turn-on-diagnostic-logs"></a>Zapnout diagnostické protokoly
+### <a name="turn-on-logs"></a>Zapnout protokoly
 
-Pokud chcete protokolovat události a chyby připojení zařízení, zapněte diagnostiku pro IoT Hub. Tyto protokoly doporučujeme co nejdříve zapnout, protože pokud nejsou povolené diagnostické protokoly a dojde k odpojení zařízení, nebudete mít k dispozici žádné informace k řešení problému se službou.
+Pokud chcete protokolovat události a chyby připojení zařízení, vytvořte nastavení diagnostiky pro [protokoly prostředků IoT Hub připojení](monitor-iot-hub-reference.md#connections). Toto nastavení doporučujeme vytvořit co nejdříve, protože tyto protokoly nejsou ve výchozím nastavení shromažďovány a bez nich nebudete mít k dispozici žádné informace pro řešení potíží s odpojením zařízení, když k nim dojde.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Přejděte do služby IoT Hub.
+1. Přejděte do služby IoT Hub.
 
-3. Vyberte **nastavení diagnostiky**.
+1. Vyberte **nastavení diagnostiky** .
 
-4. Vyberte **zapnout diagnostiku**.
+1. Vyberte **Přidat nastavení diagnostiky** .
 
-5. Povolte shromažďování protokolů **připojení** .
+1. Vyberte protokoly **připojení** .
 
-6. Pro snazší analýzu zapněte **odeslání do Log Analytics** ([Viz ceny](https://azure.microsoft.com/pricing/details/log-analytics/)). Podívejte se na příklad v části [řešení chyb připojení](#resolve-connectivity-errors).
+1. Pro snazší analýzu vyberte **Odeslat do Log Analytics** ( [Viz ceny](https://azure.microsoft.com/pricing/details/log-analytics/)). Podívejte se na příklad v části [řešení chyb připojení](#resolve-connectivity-errors).
 
    ![Doporučené nastavení](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
-Další informace najdete v tématu [monitorování stavu Azure IoT Hub a rychlé diagnostikování problémů](iot-hub-monitor-resource-health.md).
+Další informace najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md).
 
 ### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>Nastavení upozornění pro odpojení zařízení ve velkém měřítku
 
 Pokud chcete dostávat upozornění, když se zařízení odpojí, nakonfigurujte upozornění na metrikě **připojená zařízení (Preview)** .
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Přejděte do služby IoT Hub.
 
-3. Vyberte **výstrahy**.
+3. Vyberte **výstrahy** .
 
-4. Vyberte **Nové pravidlo upozornění**.
+4. Vyberte **Nové pravidlo upozornění** .
 
-5. Vyberte **Přidat podmínku**a pak vyberte připojená zařízení (Preview).
+5. Vyberte **Přidat podmínku** a pak vyberte připojená zařízení (Preview).
 
 6. Nastavte prahovou hodnotu a výstrahy pomocí následujících výzev.
 
@@ -72,15 +72,15 @@ Chcete-li detekovat odpojení *podle zařízení* , například pokud potřebuje
 
 ## <a name="resolve-connectivity-errors"></a>Řešení chyb připojení
 
-Když zapnete diagnostické protokoly a výstrahy pro připojená zařízení, zobrazí se upozornění, když dojde k chybám. Tato část popisuje, jak vyhledat běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste nastavili protokoly Azure Monitor pro diagnostické protokoly.
+Když zapnete protokoly a výstrahy pro připojená zařízení, zobrazí se upozornění, když dojde k chybám. Tato část popisuje, jak vyhledat běžné problémy, když obdržíte výstrahu. Následující postup předpokládá, že jste již vytvořili nastavení diagnostiky pro odesílání protokolů IoT Hub připojení do pracovního prostoru Log Analytics.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Přejděte do služby IoT Hub.
 
-1. Vyberte **Protokoly**.
+1. Vyberte **Protokoly** .
 
-1. Pokud chcete izolovat protokoly chyb připojení pro IoT Hub, zadejte následující dotaz a pak vyberte **Spustit**:
+1. Pokud chcete izolovat protokoly chyb připojení pro IoT Hub, zadejte následující dotaz a pak vyberte **Spustit** :
 
     ```kusto
     AzureDiagnostics

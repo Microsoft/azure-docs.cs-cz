@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167045"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537945"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -66,7 +66,7 @@ Další informace najdete v tématu [Koncepty zálohování](concepts-backup-res
 
 ## <a name="network-isolation"></a>Izolace sítě
 
-Máte dvě možnosti sítě, které se připojí k vašemu Azure Database for MySQL flexibilnímu serveru. Možnosti jsou **privátní přístup (Integration VNET)** a **veřejný přístup (povolených IP adres)**. 
+Máte dvě možnosti sítě, které se připojí k vašemu Azure Database for MySQL flexibilnímu serveru. Možnosti jsou **privátní přístup (Integration VNET)** a **veřejný přístup (povolených IP adres)** . 
 
 * **Privátní přístup (Integration VNET)** – flexibilní Server můžete nasadit do [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md). Virtuální sítě Azure poskytují soukromou a zabezpečenou síťovou komunikaci. Prostředky ve virtuální síti můžou komunikovat prostřednictvím privátních IP adres.
 
@@ -75,7 +75,7 @@ Máte dvě možnosti sítě, které se připojí k vašemu Azure Database for My
    * Pomocí VPN nebo ExpressRoute se připojte z jiných prostředků než Azure k flexibilnímu serveru.
    * Žádný veřejný koncový bod
 
-* **Veřejný přístup (povolené IP adresy)** – flexibilní Server můžete nasadit pomocí veřejného koncového bodu. Veřejný koncový bod je veřejně přeložitelný adresa DNS. Fráze "povolené IP adresy" odkazuje na rozsah IP adres, které se rozhodnete udělit oprávnění k přístupu k serveru. Tato oprávnění se nazývají **pravidla brány firewall**.
+* **Veřejný přístup (povolené IP adresy)** – flexibilní Server můžete nasadit pomocí veřejného koncového bodu. Veřejný koncový bod je veřejně přeložitelný adresa DNS. Fráze "povolené IP adresy" odkazuje na rozsah IP adres, které se rozhodnete udělit oprávnění k přístupu k serveru. Tato oprávnění se nazývají **pravidla brány firewall** .
 
 Další informace najdete v tématu [Koncepty sítě](concepts-networking.md) .
 
@@ -99,7 +99,7 @@ Služba šifruje přenášená data pomocí Transport Layer Security, který je 
 
 Další informace najdete v tématu [použití šifrovaných připojení k flexibilním serverům](https://docs.mongodb.com/manual/tutorial/configure-ssl) .
 
-Flexibilní servery umožňují úplný privátní přístup k serverům pomocí integrace [virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) . Servery ve službě Azure Virtual Network je možné oslovit a propojit jenom pomocí privátních IP adres. S integrací virtuální sítě se zamítl veřejný přístup a servery se nedají kontaktovat pomocí veřejných koncových bodů. 
+Flexibilní servery umožňují úplný privátní přístup k serverům pomocí integrace [virtuální sítě Azure](../../virtual-network/virtual-networks-overview.md) . Servery ve službě Azure Virtual Network je možné oslovit a propojit jenom pomocí privátních IP adres. S integrací virtuální sítě se zamítl veřejný přístup a servery se nedají kontaktovat pomocí veřejných koncových bodů. 
 
 Další informace najdete v tématu [Koncepty sítě](concepts-networking.md) .
 
@@ -115,7 +115,7 @@ Další informace najdete v tématu věnovaném [konceptům monitorování](conc
 Služba spouští komunitní verze MySQL. To umožňuje úplnou kompatibilitu aplikací a vyžaduje minimální náklady na Refaktoring pro migraci existující aplikace vyvinuté v modulu MySQL na jednu serverovou službu. Migraci na jeden server lze provést pomocí jedné z následujících možností:
 
 - **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je mysqldump/mydumper, může poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu migrace pomocí výpisu paměti a obnovení. 
-- **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace na jediný server s minimálními výpadky je možné využít [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) . 
+- **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace na jediný server s minimálními výpadky je možné využít [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) . 
 
 ## <a name="azure-regions"></a>Oblast Azure
 
@@ -131,7 +131,7 @@ Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Serv
 - Střední Kanada
 - Southeast Asia
 - Jižní Korea – střed
-- Japan East
+- Japonsko – východ
 - Austrálie – východ
 
 Pracujeme na přidávání nových serverů brzy.

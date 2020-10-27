@@ -8,18 +8,18 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 1cb35ce995a27030612499cc3147943112e1c50e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 12466f64daa699925e4e184536b2d50c5fb89847
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89662373"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547720"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Core
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Core, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure. Pomocí klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) jste specificky v konzolové aplikaci .NET Core použili kód C#.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -29,7 +29,7 @@ V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace .NET Core, ab
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Poznamenejte si **NÁZEV HOSTITELE** a **Primární** přístupový klíč. Tyto hodnoty později použijete k vytvoření tajného kódu *CacheConnection*.
+Poznamenejte si **NÁZEV HOSTITELE** a **Primární** přístupový klíč. Tyto hodnoty později použijete k vytvoření tajného kódu *CacheConnection* .
 
 
 
@@ -41,15 +41,15 @@ Otevřete nové okno příkazového řádku a spuštěním následujícího př�
 dotnet new console -o Redistest
 ```
 
-V okně příkazového řádku přejděte do nového adresáře projektu *Redistest*.
+V okně příkazového řádku přejděte do nového adresáře projektu *Redistest* .
 
 
 
 ## <a name="add-secret-manager-to-the-project"></a>Přidání nástroje Secret Manager do projektu
 
-V této části do svého projektu přidáte [nástroj Secret Manager](https://docs.microsoft.com/aspnet/core/security/app-secrets). Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
+V této části do svého projektu přidáte [nástroj Secret Manager](/aspnet/core/security/app-secrets). Nástroj Secret Manager ukládá citlivá data související s vývojem mimo strom vašeho projektu. Tento přístup pomáhá zabránit náhodnému sdílení tajných kódů aplikace ve zdrojovém kódu.
 
-Otevřete soubor *Redistest.csproj*. Přidejte element `DotNetCliToolReference` zahrnující *Microsoft.Extensions.SecretManager.Tools*. Přidejte také element `UserSecretsId`, jak je znázorněno níže, a uložte soubor.
+Otevřete soubor *Redistest.csproj* . Přidejte element `DotNetCliToolReference` zahrnující *Microsoft.Extensions.SecretManager.Tools* . Přidejte také element `UserSecretsId`, jak je znázorněno níže, a uložte soubor.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -64,7 +64,7 @@ Otevřete soubor *Redistest.csproj*. Přidejte element `DotNetCliToolReference` 
 </Project>
 ```
 
-Spuštěním následujícího příkazu přidejte k projektu balíček *Microsoft.Extensions.Configuration.UserSecrets*:
+Spuštěním následujícího příkazu přidejte k projektu balíček *Microsoft.Extensions.Configuration.UserSecrets* :
 
 ```
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
@@ -76,7 +76,7 @@ Spuštěním následujícího příkazu balíčky obnovte:
 dotnet restore
 ```
 
-Po nahrazení zástupných znaků (včetně ostrých závorek) názvu mezipaměti a primárního přístupového klíče spusťte v okně příkazové řádku následující příkaz, který uloží nový tajný kód s názvem *CacheConnection*:
+Po nahrazení zástupných znaků (včetně ostrých závorek) názvu mezipaměti a primárního přístupového klíče spusťte v okně příkazové řádku následující příkaz, který uloží nový tajný kód s názvem *CacheConnection* :
 
 ```
 dotnet user-secrets set CacheConnection "<cache name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<primary-access-key>"
@@ -113,7 +113,7 @@ V okně příkazového řádku spusťte v adresáři projektu *Redistest* násle
 dotnet add package StackExchange.Redis
 ```
 
-Po dokončení instalace budete moct se svým projektem používat klienta mezipaměti *StackExchange.Redis*.
+Po dokončení instalace budete moct se svým projektem používat klienta mezipaměti *StackExchange.Redis* .
 
 
 ## <a name="connect-to-the-cache"></a>Připojení k mezipaměti
@@ -222,7 +222,7 @@ Mezipaměť Azure pro Redis může ukládat do mezipaměti objekty .NET i primit
 
 Jeden snadný způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) a serializovat a deserializovat tak objekty do a z formátu JSON. V této části přidáte do mezipaměti objekt .NET.
 
-Spuštěním následujícího příkazu přidejte do aplikace balíček *Newtonsoft.json*:
+Spuštěním následujícího příkazu přidejte do aplikace balíček *Newtonsoft.json* :
 
 ```
 dotnet add package Newtonsoft.json
@@ -293,13 +293,13 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+Přihlaste se na web [Azure Portal](https://portal.azure.com) a klikněte na **Skupiny prostředků** .
 
-Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources* . Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků** .
 
 ![Odstranit](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
+Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit** .
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
@@ -317,4 +317,4 @@ V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z ap
 Chcete optimalizovat a uložit své útraty do cloudu?
 
 > [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Zahájení analýzy nákladů pomocí Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

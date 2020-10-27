@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 31fc6fe02559c356f072761c024308f158ae4d9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a7d3992ecd2c74947eaa1071b97b2032000c749
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085442"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547601"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Zpracování a analýza dokumentů JSON pomocí Apache Hive ve službě Azure HDInsight
 
@@ -129,7 +129,7 @@ K dispozici jsou omezení get_json_object systému souborů UDF:
 * Vzhledem k tomu, že každé pole v dotazu vyžaduje přeanalýzu dotazu, má vliv na výkon.
 * **Získat \_ JSON_OBJECT ()** vrátí řetězcovou reprezentaci pole. Chcete-li převést toto pole na pole podregistru, je nutné použít regulární výrazy k nahrazení hranatých závorek "[" a "]" a pak je také nutné volat rozdělení pro získání pole.
 
-Tento převod představuje důvody, proč wiki v podregistru doporučuje použít **json_tuple**.  
+Tento převod představuje důvody, proč wiki v podregistru doporučuje použít **json_tuple** .  
 
 ### <a name="use-the-json_tuple-udf"></a>Použití json_tuple UDF
 
@@ -146,19 +146,19 @@ Výstup tohoto skriptu v konzole podregistru:
 
 ![Apache Hive výsledků dotazu JSON](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-`json_tuple`Systém UDF používá syntaxi [zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) v podregistru, která umožňuje \_ řazené kolekci členů JSON vytvořit virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSON se přestanou nepraktický z důvodu opakovaného použití **bočního zobrazení**. **JSON_TUPLE** navíc nemůže zpracovat vnořené JSON.
+`json_tuple`Systém UDF používá syntaxi [zobrazení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) v podregistru, která umožňuje \_ řazené kolekci členů JSON vytvořit virtuální tabulku použitím funkce UDT na každý řádek původní tabulky. Komplexní JSON se přestanou nepraktický z důvodu opakovaného použití **bočního zobrazení** . **JSON_TUPLE** navíc nemůže zpracovat vnořené JSON.
 
 ### <a name="use-a-custom-serde"></a>Použití vlastního SerDe
 
 SerDe je nejlepší volbou pro analýzu vnořených dokumentů JSON. Umožňuje definovat schéma JSON a pak můžete použít schéma k analýze dokumentů. Pokyny najdete v tématu [Jak používat vlastní SERDE JSON s Microsoft Azure HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
-Typ operátoru JSON v podregistru, který zvolíte, závisí na vašem scénáři. Pomocí jednoduchého dokumentu JSON a jednoho pole, které se má vyhledat, vyberte **Get_json_object**podregistr UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít **json_tuple**. U vnořených dokumentů použijte **SerDe JSON**.
+Typ operátoru JSON v podregistru, který zvolíte, závisí na vašem scénáři. Pomocí jednoduchého dokumentu JSON a jednoho pole, které se má vyhledat, vyberte **Get_json_object** podregistr UDF. Pokud máte více než jeden klíč k vyhledání, můžete použít **json_tuple** . U vnořených dokumentů použijte **SerDe JSON** .
 
 ## <a name="next-steps"></a>Další kroky
 
 Související články najdete v tématech:
 
-* [Analýza ukázkového souboru Apache log4j pomocí Apache Hive a HiveQL s Apache Hadoop v HDInsight](../hdinsight-use-hive.md)
+* [Analýza ukázkového souboru Apache log4j pomocí Apache Hive a HiveQL s Apache Hadoop v HDInsight](./hdinsight-use-hive.md)
 * [Analýza dat zpoždění letů pomocí interaktivního dotazu ve službě HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

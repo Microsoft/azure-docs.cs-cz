@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44cfe9bc6cd357cc0c649cecd022d3955bb5a2ce
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756530"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545867"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Zálohování a obnovení v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -24,7 +24,7 @@ Azure Database for MySQL flexibilní server automaticky vytvoří zálohy server
 
 Flexibilní Server využívá zálohy snímků datových souborů a ukládá je v místním redundantním úložišti. Server také provádí zálohování protokolů transakcí a ukládá je také v místním redundantním úložišti. Tyto zálohy umožňují obnovit server k jakémukoli časovému okamžiku v rámci nakonfigurované doby uchovávání záloh. Výchozí doba uchovávání záloh je sedm dní. Volitelně můžete nakonfigurovat zálohu databáze od 1 do 35 dnů. Všechny zálohy jsou šifrovány pomocí šifrování AES 256-bit pro data uložená v klidovém stavu.
 
-Tyto záložní soubory nelze exportovat. Zálohy se dají použít jenom pro operace obnovení v flexibilním serveru. K zkopírování databáze můžete použít také [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   z klienta MySQL.
+Tyto záložní soubory nelze exportovat. Zálohy se dají použít jenom pro operace obnovení v flexibilním serveru. K zkopírování databáze můžete použít také [mysqldump](../concepts-migrate-dump-restore.md#dump-and-restore-using-mysqldump-utility) z klienta MySQL.
 
 ## <a name="backup-frequency"></a>Frekvence zálohování
 
@@ -40,9 +40,9 @@ Doba uchovávání záloh určuje, jak dlouho se má provést operace obnovení 
 
 ## <a name="backup-storage-cost"></a>Náklady na úložiště zálohování
 
-Flexibilní Server poskytuje až 100% zřízeného serverového úložiště jako úložiště zálohování bez dalších poplatků. Jakékoli další využité úložiště záloh se účtuje za GB za měsíc. Pokud jste například zřídili Server s 250 GB úložiště, máte k dispozici 250 GB úložiště pro zálohy serveru bez dalších poplatků. Pokud je denní využití zálohování 25 GB, můžete mít až 10 dní bezplatného úložiště zálohování. Úložiště spotřebované za zálohy větší než 250 GB se účtuje podle [cenového modelu](https://azure.microsoft.com/pricing/details/mysql/).
+Flexibilní Server poskytuje až 100% zřízeného serverového úložiště jako úložiště zálohování bez dalších poplatků. Jakékoli další využité úložiště záloh se účtuje za GB za měsíc. Pokud jste například zřídili Server s 250 GB úložiště, máte k dispozici 250 GB úložiště pro zálohy serveru bez dalších poplatků. Pokud je denní využití zálohování 25 GB, můžete mít až 10 dní bezplatného úložiště zálohování. Úložiště spotřebované za zálohy větší než 250 GB se účtuje podle [cenového modelu](https://azure.microsoft.com/pricing/details/mysql/).
 
-Pomocí metriky [úložiště zálohování](https://docs.microsoft.com/azure/mysql/concepts-monitoring)   v Azure monitor k dispozici v Azure Portal můžete monitorovat úložiště zálohování spotřebované serverem. Metrika využitého **úložiště záloh** představuje součet úložiště spotřebovaného všemi zálohami databáze a zálohami protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Náročné transakční aktivity na serveru můžou způsobit zvýšení využití úložiště zálohování bez ohledu na celkovou velikost databází.
+Pomocí metriky [úložiště zálohování](../concepts-monitoring.md) v Azure monitor k dispozici v Azure Portal můžete monitorovat úložiště zálohování spotřebované serverem. Metrika využitého **úložiště záloh** představuje součet úložiště spotřebovaného všemi zálohami databáze a zálohami protokolů, které jsou zachovány na základě nastaveného období uchovávání záloh pro server. Náročné transakční aktivity na serveru můžou způsobit zvýšení využití úložiště zálohování bez ohledu na celkovou velikost databází.
 
 Hlavním prostředkem řízení nákladů na úložiště zálohování je nastavení vhodné doby uchovávání záloh. Můžete vybrat dobu uchování mezi 1 a 35 dny.
 
@@ -68,8 +68,8 @@ Obnovení k bodu v čase je užitečné ve více scénářích. Mezi běžné p�
 
 Můžete si vybrat mezi posledním bodem obnovení a vlastním bodem obnovení prostřednictvím [Azure Portal](how-to-restore-server-portal.md).
 
--   **Poslední bod obnovení**: nejnovější bod obnovení vám pomůže obnovit server do poslední zálohy provedené na zdrojovém serveru. Časové razítko pro obnovení se zobrazí také na portálu. Tato možnost je užitečná pro rychlé obnovení serveru do nejaktualizovaného stavu.
--   **Vlastní bod obnovení**: umožní vám zvolit jakýkoli časový okamžik v rámci doby uchování definované pro tento flexibilní Server. Tato možnost je užitečná k obnovení serveru v přesném bodě v čase k obnovení z chyby uživatele.
+-   **Poslední bod obnovení** : nejnovější bod obnovení vám pomůže obnovit server do poslední zálohy provedené na zdrojovém serveru. Časové razítko pro obnovení se zobrazí také na portálu. Tato možnost je užitečná pro rychlé obnovení serveru do nejaktualizovaného stavu.
+-   **Vlastní bod obnovení** : umožní vám zvolit jakýkoli časový okamžik v rámci doby uchování definované pro tento flexibilní Server. Tato možnost je užitečná k obnovení serveru v přesném bodě v čase k obnovení z chyby uživatele.
 
 Odhadovaná doba obnovení závisí na několika faktorech, včetně velikosti databáze, velikosti zálohy transakčního protokolu, výpočetní velikosti skladové jednotky a času obnovení. Obnovení protokolu transakcí je čas, který je v rámci procesu obnovení nejvíce náročný. Pokud je zvolena doba obnovení blíže k plánu úplného nebo rozdílového zálohování snímků, obnovení je rychlejší, protože je aplikace transakčního protokolu minimální. Abyste mohli odhadnout přesný čas obnovení serveru, důrazně doporučujeme, abyste ho otestovali ve vašem prostředí, protože má příliš mnoho proměnných specifických pro prostředí.
 
@@ -77,7 +77,7 @@ Odhadovaná doba obnovení závisí na několika faktorech, včetně velikosti d
 > Pokud obnovujete flexibilní server nakonfigurovaný s vysokou dostupností zóny, obnoví se obnovený server ve stejné oblasti a zóně jako primární server a nasazený jako jeden flexibilní Server v režimu bez HA. V případě flexibilního serveru se podívejte na [zónu redundantní vysoké dostupnosti](concepts-high-availability.md) .
 
 > [!IMPORTANT]
-> Odstraněné servery **nelze**   obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
+> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pro ochranu prostředků serveru, po nasazení, před náhodným odstraněním nebo neočekávaným změnám můžou správci využít [zámky pro správu](../../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="perform-post-restore-tasks"></a>Provádění úloh po obnovení
 
@@ -91,5 +91,5 @@ Po obnovení z **posledního bodu obnovení** nebo vlastního mechanismu obnoven
 ## <a name="next-steps"></a>Další kroky
 
 -   Informace o [kontinuitě podnikových aplikací](./concepts-business-continuity.md)
--   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
+-   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
 -   Další informace o [zálohování a obnovení](./concepts-backup-restore.md)

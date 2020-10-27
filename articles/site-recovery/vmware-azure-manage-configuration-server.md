@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: bcd232a3242b0341bfc81fa9785f76b0d3bd90cb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369450"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546343"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzických serverů nebo virtuálních počítačů VMware
 
@@ -29,24 +29,24 @@ Licence, která je součástí šablony OVF, je zkušební licence platná po do
 Ke konfiguračnímu serveru se dostanete takto:
 
 * Přihlaste se k virtuálnímu počítači, na kterém je nasazený, a spusťte **Azure Site Recovery Configuration Manager** z zástupce na ploše.
-* Případně můžete ke konfiguračnímu serveru přistupovat vzdáleně z https://*ConfigurationServerName*/: 44315/. Přihlaste se pomocí přihlašovacích údajů správce.
+* Případně můžete ke konfiguračnímu serveru přistupovat vzdáleně z https:// *ConfigurationServerName* /: 44315/. Přihlaste se pomocí přihlašovacích údajů správce.
 
 ## <a name="modify-vmware-server-settings"></a>Úprava nastavení serveru VMware
 
-1. Pokud chcete po [přihlášení](#access-configuration-server)přidružit jiný server VMware ke konfiguračnímu serveru, vyberte **Přidat vCenter Server/vSphere ESXi server**.
-2. Zadejte podrobnosti a pak vyberte **OK**.
+1. Pokud chcete po [přihlášení](#access-configuration-server)přidružit jiný server VMware ke konfiguračnímu serveru, vyberte **Přidat vCenter Server/vSphere ESXi server** .
+2. Zadejte podrobnosti a pak vyberte **OK** .
 
 ## <a name="modify-credentials-for-automatic-discovery"></a>Upravit přihlašovací údaje pro automatické zjišťování
 
-1. Pokud chcete aktualizovat přihlašovací údaje používané pro připojení k serveru VMware pro automatické zjišťování virtuálních počítačů VMware, po [přihlášení](#access-configuration-server)vyberte účet a klikněte na **Upravit**.
-2. Zadejte nové přihlašovací údaje a pak vyberte **OK**.
+1. Pokud chcete aktualizovat přihlašovací údaje používané pro připojení k serveru VMware pro automatické zjišťování virtuálních počítačů VMware, po [přihlášení](#access-configuration-server)vyberte účet a klikněte na **Upravit** .
+2. Zadejte nové přihlašovací údaje a pak vyberte **OK** .
 
     ![Úprava VMware](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
 Přihlašovací údaje můžete také upravit prostřednictvím CSPSConfigtool.exe.
 
 1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool.exe
-2. Vyberte účet, který chcete upravit, a klikněte na **Upravit**.
+2. Vyberte účet, který chcete upravit, a klikněte na **Upravit** .
 3. Zadejte upravené přihlašovací údaje a klikněte na **OK** .
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>Úprava přihlašovacích údajů pro instalaci služby mobility
@@ -55,7 +55,7 @@ Upravte přihlašovací údaje používané k automatické instalaci služby mob
 
 1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače** .
 2. Vyberte účet, který chcete upravit, a klikněte na **Upravit** .
-3. Zadejte nové přihlašovací údaje a pak vyberte **OK**.
+3. Zadejte nové přihlašovací údaje a pak vyberte **OK** .
 
     ![Úprava přihlašovacích údajů služby mobility](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
 
@@ -63,27 +63,27 @@ Přihlašovací údaje můžete také měnit prostřednictvím CSPSConfigtool.ex
 
 1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool.exe
 2. Vyberte účet, který chcete upravit, a klikněte na **Upravit** .
-3. Zadejte nové přihlašovací údaje a klikněte na **OK**.
+3. Zadejte nové přihlašovací údaje a klikněte na **OK** .
 
 ## <a name="add-credentials-for-mobility-service-installation"></a>Přidání přihlašovacích údajů pro instalaci služby mobility
 
 Pokud jste při OVF nasazení konfiguračního serveru nenechali přidávat přihlašovací údaje,
 
-1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače**.
-2. Klikněte na **Přidat přihlašovací údaje virtuálního počítače**.
+1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače** .
+2. Klikněte na **Přidat přihlašovací údaje virtuálního počítače** .
     ![Snímek obrazovky se zobrazí v podokně spravovat přihlašovací údaje virtuálního počítače pomocí odkazu přidat přihlašovací údaje virtuálního počítače.](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
-3. Zadejte nové přihlašovací údaje a klikněte na **Přidat**.
+3. Zadejte nové přihlašovací údaje a klikněte na **Přidat** .
 
 Přihlašovací údaje můžete také přidat prostřednictvím CSPSConfigtool.exe.
 
 1. Přihlaste se ke konfiguračnímu serveru a spusťte CSPSConfigtool.exe
-2. Klikněte na **Přidat**, zadejte nové přihlašovací údaje a klikněte na **OK**.
+2. Klikněte na **Přidat** , zadejte nové přihlašovací údaje a klikněte na **OK** .
 
 ## <a name="modify-proxy-settings"></a>Úprava nastavení proxy serveru
 
 Upravte nastavení proxy serveru používaného počítačem konfiguračního serveru pro přístup k Internetu do Azure. Pokud máte počítač procesového serveru kromě výchozího procesového serveru spuštěného na počítači konfiguračního serveru, upravte nastavení na obou počítačích.
 
-1. Po [přihlášení](#access-configuration-server) ke konfiguračnímu serveru vyberte **Spravovat připojení**.
+1. Po [přihlášení](#access-configuration-server) ke konfiguračnímu serveru vyberte **Spravovat připojení** .
 2. Aktualizujte hodnoty proxy serveru. Pak vyberte **Uložit** a aktualizujte nastavení.
 
 ## <a name="add-a-network-adapter"></a>Přidat síťový adaptér
@@ -99,7 +99,7 @@ Konfigurační server má integrovaný webový server, který orchestruje aktivi
 
 ### <a name="check-expiry"></a>Kontrolovat vypršení platnosti
 
-Datum vypršení platnosti se zobrazí v části **stav konfiguračního serveru**. U nasazení konfiguračního serveru do května 2016 se platnost certifikátu nastavila na jeden rok. Pokud máte certifikát, jehož platnost vyprší, dojde k následujícímu:
+Datum vypršení platnosti se zobrazí v části **stav konfiguračního serveru** . U nasazení konfiguračního serveru do května 2016 se platnost certifikátu nastavila na jeden rok. Pokud máte certifikát, jehož platnost vyprší, dojde k následujícímu:
 
 - Pokud je datum vypršení platnosti dva měsíce nebo méně, služba začne odesílat oznámení na portálu a e-mailem (Pokud se přihlásíte k odběru oznámení Site Recovery).
 - Na stránce prostředku trezoru se zobrazí banner s oznámením. Pokud chcete získat další informace, vyberte banner.
@@ -107,14 +107,14 @@ Datum vypršení platnosti se zobrazí v části **stav konfiguračního serveru
 
 ### <a name="if-certificates-are-yet-to-expire"></a>Pokud certifikáty ještě vyprší
 
-1. Obnovení prodlužujete tak, že v trezoru otevřete **Site Recovery**  >  **konfigurační server**infrastruktury. Vyberte požadovaný konfigurační server.
+1. Obnovení prodlužujete tak, že v trezoru otevřete **Site Recovery**  >  **konfigurační server** infrastruktury. Vyberte požadovaný konfigurační server.
 2. Zajistěte, aby všechny součásti procesové servery se škálováním na více systémů, hlavní cílové servery a agenti mobility na všech chráněných počítačích používaly nejnovější verze a jsou v připojeném stavu
-3. Nyní vyberte možnost **obnovit certifikáty**.
+3. Nyní vyberte možnost **obnovit certifikáty** .
 4. Postupujte pečlivě podle pokynů na této stránce a kliknutím na tlačítko OK obnovte certifikáty na vybraném konfiguračním serveru a jeho přidružených součástech.
 
 ### <a name="if-certificates-have-already-expired"></a>Pokud již vypršela platnost certifikátů
 
-1. Po vypršení platnosti příspěvku **nejde obnovit certifikáty z Azure Portal**. Než budete pokračovat, ujistěte se, že všechny součásti procesové servery se škálováním na více systémů, hlavní cílové servery a agenti mobility na všech chráněných počítačích mají nejnovější verze a jsou v připojeném stavu.
+1. Po vypršení platnosti příspěvku **nejde obnovit certifikáty z Azure Portal** . Než budete pokračovat, ujistěte se, že všechny součásti procesové servery se škálováním na více systémů, hlavní cílové servery a agenti mobility na všech chráněných počítačích mají nejnovější verze a jsou v připojeném stavu.
 2. **Tento postup použijte pouze v případě, že již vypršela platnost certifikátů.** Přihlaste se ke konfiguračnímu serveru, přejděte na jednotky C > program data > Site Recovery > Home > svsystems > bin a spusťte nástroj "RenewCerts" prováděcí nástroj jako správce.
 3. Okno spuštění PowerShellu se zobrazí a spustí obnovení certifikátů. Tento proces může trvat až 15 minut. Nezavírejte okno až do dokončení obnovení.
 
@@ -125,11 +125,11 @@ Datum vypršení platnosti se zobrazí v části **stav konfiguračního serveru
 V případě potřeby můžete konfigurační server ve stejném trezoru znovu zaregistrovat. Pokud máte další počítač procesového serveru, Kromě výchozího procesového serveru, který běží na počítači konfiguračního serveru, znovu proveďte registraci obou počítačů.
 
 
-1. V trezoru otevřete **Spravovat**  >  **Site Recovery Infrastructure**  >  **servery konfigurace**infrastruktury Site Recovery.
-2. V části **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
+1. V trezoru otevřete **Spravovat**  >  **Site Recovery Infrastructure**  >  **servery konfigurace** infrastruktury Site Recovery.
+2. V části **servery** vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 3. Přihlaste se k počítači konfiguračního serveru.
-4. V **%ProgramData%\ASR\home\svsystems\bin**otevřete **cspsconfigtool.exe**.
-5. Na kartě **registrace trezoru** vyberte **Procházet**a vyhledejte soubor s přihlašovacími údaji trezoru, který jste stáhli.
+4. V **%ProgramData%\ASR\home\svsystems\bin** otevřete **cspsconfigtool.exe** .
+5. Na kartě **registrace trezoru** vyberte **Procházet** a vyhledejte soubor s přihlašovacími údaji trezoru, který jste stáhli.
 6. V případě potřeby zadejte proxy server podrobnosti. Pak vyberte **Register** (Registrovat).
 7. Otevřete okno příkazového řádku PowerShellu pro správu a spusťte následující příkaz:
    ```
@@ -178,18 +178,18 @@ Odkazy na kumulativní aktualizace pro upgrade na všechny verze konfiguračníh
 
 Proveďte upgrade serveru následujícím způsobem:
 
-1. V trezoru přejdete na **Správa**  >  **Site Recovery**  >  **Konfigurace serverů**infrastruktury.
+1. V trezoru přejdete na **Správa**  >  **Site Recovery**  >  **Konfigurace serverů** infrastruktury.
 2. Pokud je k dispozici aktualizace, zobrazí se odkaz ve sloupci **verze agenta** >.
     ![Aktualizace](./media/vmware-azure-manage-configuration-server/update2.png)
 3. Stáhněte instalační soubor aktualizace na konfigurační server.
 
-    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![Snímek obrazovky, který ukazuje, kde se má kliknout ke stažení instalačního souboru aktualizace.](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. Dvojím kliknutím spusťte instalační program.
 5. Instalační program detekuje aktuální verzi spuštěnou v počítači. Kliknutím na **Ano** zahájíte upgrade.
 6. Po dokončení upgradu se konfigurace serveru ověří.
 
-    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![Snímek obrazovky, který ukazuje dokončenou konfiguraci ověření serveru.](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Kliknutím na tlačítko **Dokončit** ukončíte instalační program.
 8. Chcete-li upgradovat zbývající součásti Site Recovery, přečtěte si naše [pokyny k upgradu](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
@@ -256,8 +256,8 @@ ProxyPassword="Password"
 1. [Zakažte ochranu](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) pro všechny virtuální počítače v konfiguračním serveru.
 2. [Zrušte přidružení](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) a [odstranění](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) všech zásad replikace z konfiguračního serveru.
 3. [Odstraňte](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) všechny servery vCenter nebo hostitele vSphere, kteří jsou přidruženi ke konfiguračnímu serveru.
-4. V trezoru otevřete **Site Recovery**  >  **konfigurační servery**infrastruktury.
-5. Vyberte konfigurační server, který chcete odebrat. Pak na stránce **Podrobnosti** vyberte **Odstranit**.
+4. V trezoru otevřete **Site Recovery**  >  **konfigurační servery** infrastruktury.
+5. Vyberte konfigurační server, který chcete odebrat. Pak na stránce **Podrobnosti** vyberte **Odstranit** .
 
     ![Odstranit konfigurační server](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
 
@@ -293,15 +293,15 @@ Volitelně můžete konfigurační server odstranit pomocí prostředí PowerShe
 
 1. Přihlaste se ke konfiguračnímu serveru a otevřete okno příkazového řádku jako správce.
 2. Chcete-li změnit adresář na složku bin, spusťte příkaz **CD%ProgramData%\ASR\home\svsystems\bin**
-3. Chcete-li vygenerovat soubor s heslem, spusťte **genpassphrase.exe-v > MobSvc. přístupový klíč**.
-4. Vaše přístupové heslo bude uloženo v souboru na adrese **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
+3. Chcete-li vygenerovat soubor s heslem, spusťte **genpassphrase.exe-v > MobSvc. přístupový klíč** .
+4. Vaše přístupové heslo bude uloženo v souboru na adrese **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase** .
 
 ## <a name="refresh-configuration-server"></a>Aktualizovat konfigurační server
 
 1. V Azure Portal přejděte do **trezoru Recovery Services**  >  **Správa**  >  **Site Recovery infrastruktury**  >  **pro konfigurační servery VMware & fyzické počítače**  >  **Configuration Servers** .
 2. Klikněte na konfigurační server, který chcete aktualizovat.
-3. V okně s podrobnostmi o zvoleném konfiguračním **serveru klikněte na**tlačítko  >  **aktualizovat server**.
-4. Sledujte průběh úlohy v části monitorování **trezoru služby Recovery Services**  >  **Monitoring**  >  **Site Recovery úlohy**.
+3. V okně s podrobnostmi o zvoleném konfiguračním **serveru klikněte na** tlačítko  >  **aktualizovat server** .
+4. Sledujte průběh úlohy v části monitorování **trezoru služby Recovery Services**  >  **Monitoring**  >  **Site Recovery úlohy** .
 
 ## <a name="failback-requirements"></a>Požadavky na navrácení služeb po obnovení
 
