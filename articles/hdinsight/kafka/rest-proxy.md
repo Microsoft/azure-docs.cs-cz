@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 7d8d2c7d48dc0b77d3be0b9019d4bbf1da8a40c4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a99c6412650cac565414817c91752ae85b8ad37d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490267"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539594"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakce s Apache Kafka clustery ve službě Azure HDInsight pomocí proxy REST
 
@@ -21,13 +21,13 @@ Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST
 
 ## <a name="rest-api-reference"></a>REST API – referenční informace
 
-Informace o operacích podporovaných Kafka REST API najdete v tématu [Reference k rozhraní API HDInsight Kafka REST](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
+Informace o operacích podporovaných Kafka REST API najdete v tématu [Reference k rozhraní API HDInsight Kafka REST](/rest/api/hdinsight-kafka-rest-proxy).
 
 ## <a name="background"></a>Pozadí
 
 ![Návrh proxy serveru REST Kafka](./media/rest-proxy/rest-proxy-architecture.png)
 
-Úplnou specifikaci operací podporovaných rozhraním API najdete v tématu [rozhraní API služby REST proxy serveru Apache Kafka](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
+Úplnou specifikaci operací podporovaných rozhraním API najdete v tématu [rozhraní API služby REST proxy serveru Apache Kafka](/rest/api/hdinsight-kafka-rest-proxy).
 
 ### <a name="rest-proxy-endpoint"></a>Koncový bod proxy REST
 
@@ -40,7 +40,7 @@ Přístup k proxy Kafka REST se spravuje pomocí skupin zabezpečení Azure Acti
 V případě požadavků koncových bodů proxy REST by klientské aplikace měly získat token OAuth. Token slouží k ověření členství ve skupině zabezpečení. Níže najdete [ukázku klientské aplikace](#client-application-sample) , která ukazuje, jak získat token OAuth. Klientská aplikace předá token OAuth v požadavku HTTP na proxy REST.
 
 > [!NOTE]
-> Další informace o skupinách zabezpečení AAD najdete v tématu [Správa přístupu k aplikacím a prostředkům pomocí skupin Azure Active Directory](../../active-directory/fundamentals/active-directory-manage-groups.md). Další informace o tom, jak tokeny OAuth fungují, najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../../active-directory/develop/v1-protocols-oauth-code.md).
+> Další informace o skupinách zabezpečení AAD najdete v tématu [Správa přístupu k aplikacím a prostředkům pomocí skupin Azure Active Directory](../../active-directory/fundamentals/active-directory-manage-groups.md). Další informace o tom, jak tokeny OAuth fungují, najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../../active-directory/azuread-dev/v1-protocols-oauth-code.md).
 
 ## <a name="kafka-rest-proxy-with-network-security-groups"></a>Kafka REST proxy se skupinami zabezpečení sítě
 Pokud přenesete vlastní virtuální síť a řízení síťového provozu pomocí skupin zabezpečení sítě, povolte kromě portu 443 **příchozí** provoz na portu **9400** . Tím se zajistí, že proxy server Kafka REST je dosažitelný.
@@ -51,7 +51,7 @@ Pokud přenesete vlastní virtuální síť a řízení síťového provozu pomo
 
 1. Vytvořte skupinu zabezpečení Azure AD. Přidejte aplikaci, kterou jste zaregistrovali ve službě Azure AD, do skupiny zabezpečení jako **člena** skupiny. Tato skupina zabezpečení se použije k určení, které aplikace můžou pracovat s proxy REST. Další informace o vytváření skupin Azure AD najdete v tématu [Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-    Ověřte, že je skupina typu **zabezpečení**.
+    Ověřte, že je skupina typu **zabezpečení** .
     ![Skupina zabezpečení](./media/rest-proxy/rest-proxy-group.png)
 
     Ověřte, že je aplikace členem skupiny.
@@ -65,11 +65,11 @@ Následující postup používá Azure Portal. Příklad použití rozhraní př
 
      ![Snímek obrazovky s vybraným zabezpečením a sítí zobrazí stránku vytvořit cluster s informacemi o clusteru v D.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
-1. Klikněte na **Vybrat skupinu zabezpečení**. V seznamu skupin zabezpečení vyberte skupinu zabezpečení, kterou chcete mít přístup k proxy REST. Pomocí vyhledávacího pole můžete najít příslušnou skupinu zabezpečení. Klikněte na tlačítko **Vybrat** v dolní části.
+1. Klikněte na **Vybrat skupinu zabezpečení** . V seznamu skupin zabezpečení vyberte skupinu zabezpečení, kterou chcete mít přístup k proxy REST. Pomocí vyhledávacího pole můžete najít příslušnou skupinu zabezpečení. Klikněte na tlačítko **Vybrat** v dolní části.
 
      ![Snímek obrazovky s možností výběru skupiny zabezpečení zobrazí stránku vytvořit cluster s příponou H D Insight.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
-1. Dokončete zbývající kroky k vytvoření clusteru, jak je popsáno v tématu [Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started).
+1. Dokončete zbývající kroky k vytvoření clusteru, jak je popsáno v tématu [Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal](./apache-kafka-get-started.md).
 
 1. Po vytvoření clusteru přejděte do vlastností clusteru a zaznamenejte adresu URL proxy serveru Kafka REST.
 
@@ -269,4 +269,4 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Referenční dokumenty k rozhraní API proxy Kafka REST](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)
+* [Referenční dokumenty k rozhraní API proxy Kafka REST](/rest/api/hdinsight-kafka-rest-proxy/)

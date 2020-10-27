@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74aa0bf84c19b9d663b92d529604c08bf5800c45
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902771"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544847"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Použití sys_schema k vyladění výkonu a údržbě databáze v Azure Database for MySQL
 
@@ -29,7 +29,7 @@ V sys_schema se nachází 52 zobrazení a každé zobrazení má jednu z násled
 - Uživatel: prostředky spotřebované a seskupené podle uživatelů. Příkladem jsou vstupně-výstupy souborů, připojení a paměť.
 - Čekání: Počkejte události seskupené podle hostitele nebo uživatele.
 
-Teď se podíváme na některé běžné způsoby použití sys_schema. Aby bylo možné začít používat, seskupte vzory využití do dvou kategorií: **optimalizace výkonu** a **Údržba databáze**.
+Teď se podíváme na některé běžné způsoby použití sys_schema. Aby bylo možné začít používat, seskupte vzory využití do dvou kategorií: **optimalizace výkonu** a **Údržba databáze** .
 
 ## <a name="performance-tuning"></a>Ladění výkonu
 
@@ -83,4 +83,4 @@ Indexy jsou skvělé nástroje pro zlepšení výkonu čtení, ale u vkládání
 V souhrnu je sys_schema skvělým nástrojem pro ladění výkonu i údržbu databáze. Ujistěte se, že jste tuto funkci využili ve svém Azure Database for MySQL. 
 
 ## <a name="next-steps"></a>Další kroky
-- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, přejděte na [stránku Microsoft Q&na stránku s otázkou](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Pokud chcete najít rovnocenné odpovědi na příslušné otázky nebo Odeslat novou otázku či odpověď, přejděte na [stránku Microsoft Q&na stránku s otázkou](/answers/topics/azure-database-mysql.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).

@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019405"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540750"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Django s PostgreSQL v Azure App Service
 
@@ -99,9 +99,9 @@ cd djangoapp
 
 # <a name="download"></a>[Stáhnout](#tab/download)
 
-Přejděte na [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) , vyberte **klonovat**a pak vyberte **Stáhnout ZIP**. 
+Přejděte na [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) , vyberte **klonovat** a pak vyberte **Stáhnout ZIP** . 
 
-Rozbalte soubor ZIP do složky s názvem *djangoapp*. 
+Rozbalte soubor ZIP do složky s názvem *djangoapp* . 
 
 Pak v této složce *djangoapp* otevřete okno terminálu.
 
@@ -111,7 +111,7 @@ Ukázka djangoapp obsahuje aplikaci s dotazy založenými na datech Django, kter
 
 Ukázka se také upraví tak, aby běžela v produkčním prostředí, jako je App Service:
 
-- Nastavení výroby jsou v souboru *azuresite/produkční. py* . Podrobnosti o vývoji jsou v *azuresite/Settings. py*.
+- Nastavení výroby jsou v souboru *azuresite/produkční. py* . Podrobnosti o vývoji jsou v *azuresite/Settings. py* .
 - Pokud `DJANGO_ENV` je proměnná prostředí nastavená na produkční, aplikace používá nastavení produkčního prostředí. Tuto proměnnou prostředí vytvoříte později v kurzu spolu s dalšími uživateli používanými pro konfiguraci databáze PostgreSQL.
 
 Tyto změny jsou specifické pro konfiguraci Django, aby běžely v jakémkoli provozním prostředí, a nekonkrétně se App Service. Další informace najdete v tématu [Kontrolní seznam nasazení Django](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Podrobnosti o některých změnách najdete také v tématu [Nastavení produkčního prostředí pro Django v Azure](configure-language-python.md#production-settings-for-django-apps) .
@@ -138,7 +138,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 ```
 
 - Nahraďte *\<postgres-server-name>* názvem, který je jedinečný v rámci všech Azure (koncový bod serveru se zamění `https://<postgres-server-name>.postgres.database.azure.com` ). Dobrým vzorem je použití kombinace názvu vaší společnosti a jiné jedinečné hodnoty.
-- V případě *\<admin-username>* a *\<admin-password>* Zadejte přihlašovací údaje pro vytvoření uživatele správce pro tento server Postgres.
+- V případě *\<admin-username>* a *\<admin-password>* Zadejte přihlašovací údaje pro vytvoření uživatele správce pro tento server Postgres. Nepoužívejte `$` znak v uživatelském jméně ani v hesle. Později vytvoříte proměnné prostředí s těmito hodnotami, kde `$` má znak zvláštní význam v rámci kontejneru Linux používaného ke spouštění aplikací v Pythonu.
 - [Cenová úroveň](../postgresql/concepts-pricing-tiers.md) B_Gen5_1 (Basic, Gen5, 1 jádro), která se tady používá, je nejlevnější. V případě produkčních databází vynechejte `--sku-name` místo toho argument pro použití úrovně GP_Gen5_2 (pro obecné účely, Gen 5, 2 jader).
 
 Tento příkaz provede následující akce, což může trvat několik minut:
@@ -153,7 +153,7 @@ Tento příkaz provede následující akce, což může trvat několik minut:
 
 Všechny kroky můžete provádět samostatně s `az postgres` `psql` příkazy a, ale `az postgres up` provede všechny kroky dohromady.
 
-Po dokončení příkazu vytvoří výstup objektu JSON, který obsahuje různé připojovací řetězce pro databázi, spolu s adresou URL serveru, vygenerovaným uživatelským jménem (například " joyfulKoala@msdocs-djangodb-12345 ") a heslem GUID. Zkopírujte uživatelské jméno a heslo k dočasnému textovému souboru, jak je budete potřebovat později v tomto kurzu.
+Po dokončení příkazu vytvoří výstup objektu JSON, který obsahuje různé připojovací řetězce pro databázi, spolu s adresou URL serveru, vygenerovaným uživatelským jménem (například " joyfulKoala@msdocs-djangodb-12345 ") a heslem GUID. Zkopírujte krátké uživatelské jméno (před @) a heslo k dočasnému textovému souboru, jak je budete potřebovat později v tomto kurzu.
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -188,7 +188,7 @@ Tento příkaz provede následující akce, což může trvat několik minut:
 - Pokud neexistuje, vytvořte aplikaci App Service.
 - Povolí výchozí protokolování pro aplikaci, pokud ještě není povolené.
 - Nahrajte úložiště pomocí nasazení ZIP s povoleným automatizací buildu.
-- Společné parametry mezipaměti, jako je název skupiny prostředků a plán App Service, do souboru *. Azure/config*. V důsledku toho nemusíte zadávat stejný parametr s pozdějšími příkazy. Například pro opětovné nasazení aplikace po provedení změn můžete spustit `az webapp up` znovu bez parametrů. Příkazy, které pocházejí z rozšíření CLI, jako je `az postgres up` ale v současné době nepoužívají mezipaměť, což je důvod, proč jste v tomto případě museli zadat skupinu prostředků a umístění s počátečním použitím `az webapp up` .
+- Společné parametry mezipaměti, jako je název skupiny prostředků a plán App Service, do souboru *. Azure/config* . V důsledku toho nemusíte zadávat stejný parametr s pozdějšími příkazy. Například pro opětovné nasazení aplikace po provedení změn můžete spustit `az webapp up` znovu bez parametrů. Příkazy, které pocházejí z rozšíření CLI, jako je `az postgres up` ale v současné době nepoužívají mezipaměť, což je důvod, proč jste v tomto případě museli zadat skupinu prostředků a umístění s počátečním použitím `az webapp up` .
 
 Po úspěšném nasazení příkaz vygeneruje výstup JSON podobný následujícímu příkladu:
 
@@ -212,7 +212,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 ```
 
 - Nahraďte *\<postgres-server-name>* názvem, který jste použili dříve v `az postgres up` příkazu. Kód v *azuresite/produkční. py* automaticky připojí `.postgres.database.azure.com` k vytvoření úplné adresy URL serveru Postgres.
-- Nahraďte *\<username>* a *\<password>* s přihlašovacími údaji správce, které jste použili v předchozím `az postgres up` příkazu, nebo ty, které jste `az postgres up` pro vás vygenerovali. Kód v *azuresite/produkci. py* automaticky vytvoří celé Postgres uživatelské jméno z `DBUSER` a `DBHOST` .
+- Nahraďte *\<username>* a *\<password>* s přihlašovacími údaji správce, které jste použili v předchozím `az postgres up` příkazu, nebo ty, které jste `az postgres up` pro vás vygenerovali. Kód v *azuresite/produkční. py* automaticky sestaví úplné uživatelské jméno Postgres z `DBUSER` a `DBHOST` , takže část nezahrnuje `@server` . (Také jak bylo uvedeno dříve, neměli byste používat `$` znak v žádné hodnotě, protože má zvláštní význam pro proměnné prostředí systému Linux.)
 - Názvy skupin prostředků a aplikací se vykreslují z hodnot uložených v mezipaměti v souboru *. Azure/config* .
 
 V kódu Pythonu získáte přístup k těmto nastavením jako k proměnným prostředí s příkazy, jako je `os.environ.get('DJANGO_ENV')` . Další informace najdete v tématu [přístup k proměnným prostředí](configure-language-python.md#access-environment-variables).
@@ -235,7 +235,7 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
 
     Pokud se nemůžete připojit k relaci SSH, aplikaci se nepovedlo spustit. Podrobnosti [najdete v diagnostických protokolech](#stream-diagnostic-logs) . Pokud jste například v předchozí části nevytvořili potřebná nastavení aplikace, budou tyto protokoly označovat `KeyError: 'DBNAME'` .
 
-1. V relaci SSH spusťte následující příkazy (příkazy můžete vložit pomocí **kombinace kláves CTRL** + **SHIFT** + **V**):
+1. V relaci SSH spusťte následující příkazy (příkazy můžete vložit pomocí **kombinace kláves CTRL** + **SHIFT** + **V** ):
 
     ```bash
     # Change to the folder where the app code is deployed
@@ -268,7 +268,7 @@ Migrace databáze Django zajišťují, že schéma v PostgreSQL ve službě Azur
 
     Po aktualizaci nastavení za účelem opravy jakýchkoli chyb dejte aplikaci minutu na restartování a pak aktualizujte prohlížeč.
 
-1. Přejděte na adresu `http://<app-name>.azurewebsites.net/admin`. Přihlaste se pomocí přihlašovacích údajů naduživatelem z předchozí části ( `root` a `Pollsdb1` ). V části **cyklické dotazování**vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
+1. Přejděte na adresu `http://<app-name>.azurewebsites.net/admin`. Přihlaste se pomocí přihlašovacích údajů naduživatelem z předchozí části ( `root` a `Pollsdb1` ). V části **cyklické dotazování** vyberte **Přidat** vedle **otázky** a vytvořte otázku dotazování s některými možnostmi.
 
 1. Procházejte znovu a `http://<app-name>.azurewebsites.net` potvrďte, že jsou nyní otázky prezentovány uživateli. Odpovězte na otázky, ale chcete v databázi generovat nějaká data.
 
@@ -348,11 +348,11 @@ Otestujte aplikaci místně pomocí následujících kroků:
 
 1. `http://localhost:8000`V prohlížeči, který by měl zobrazovat zprávu "žádné dotazy nejsou k dispozici". 
 
-1. `http:///localhost:8000/admin`Přihlaste se a přihlaste se pomocí uživatelem vytvořeného správce, který jste vytvořili dříve. V části **cyklické dotazování**znovu vyberte **Přidat** další **otázky** a vytvořte otázku dotazování s některými možnostmi. 
+1. `http:///localhost:8000/admin`Přihlaste se a přihlaste se pomocí uživatelem vytvořeného správce, který jste vytvořili dříve. V části **cyklické dotazování** znovu vyberte **Přidat** další **otázky** a vytvořte otázku dotazování s některými možnostmi. 
 
 1. Přejít na *http: \/ /localhost: 8000* znovu a odpovědět na dotaz pro otestování aplikace. 
 
-1. Zastavte Server Django stisknutím **kombinace kláves CTRL** + **C**.
+1. Zastavte Server Django stisknutím **kombinace kláves CTRL** + **C** .
 
 Při místním spuštění aplikace používá místní databázi sqlite3 a nekoliduje s vaší provozní databází. V případě potřeby můžete také místní databázi PostgreSQL použít k lepšímu simulaci provozního prostředí.
 
@@ -374,9 +374,9 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Spusťte vývojový server znovu s `python manage.py runserver` a otestujte aplikaci na adrese *http: \/ /localhost: 8000/admin*:
+Spusťte vývojový server znovu s `python manage.py runserver` a otestujte aplikaci na adrese *http: \/ /localhost: 8000/admin* :
 
-Zastavte webový server Django znovu s **kombinací CTRL** + **C**.
+Zastavte webový server Django znovu s **kombinací CTRL** + **C** .
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -427,7 +427,7 @@ az webapp log tail
 
 Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
 
-Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C**.
+Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C** .
 
 [Máte problémy? Dejte nám prosím jistotu.](https://aka.ms/DjangoCLITutorialHelp)
 

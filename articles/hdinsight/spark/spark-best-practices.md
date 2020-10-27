@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 3818ce9ebae8e6af6ee8bb5ed30c7ab446a6f6b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a93b3e0da7b881b80f7613907e40af509bffadbd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855170"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545561"
 ---
 # <a name="apache-spark-guidelines"></a>Pokyny pro Apache Spark
 
@@ -56,7 +56,7 @@ Tento článek poskytuje různé pokyny k používání Apache Spark v Azure HDI
 | Apache Hive ve službě HDInsight | [Integrace Apache Spark a Apache Hive s konektorem skladu podregistru](../interactive-query/apache-hive-warehouse-connector.md) |
 | Apache HBase ve službě HDInsight | [Použití Apache Sparku ke čtení a zápisu dat Apache HBase](../hdinsight-using-spark-query-hbase.md) |
 | Apache Kafka ve službě HDInsight | [Kurz: Použití strukturovaného streamování Apache Sparku se systémem Apache Kafka ve službě HDInsight](../hdinsight-apache-kafka-spark-structured-streaming.md) |
-| Azure Cosmos DB | [Azure Cosmos DB: implementace architektury lambda na platformě Azure](../../cosmos-db/lambda-architecture.md) |
+| Azure Cosmos DB | [Odkaz na Azure synapse pro Azure Cosmos DB](../../cosmos-db/synapse-link.md) |
 
 ## <a name="what-are-my-storage-options"></a>Jaké jsou možnosti mého úložiště?
 

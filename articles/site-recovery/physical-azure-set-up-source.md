@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
-ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86130190"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534290"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfiguračního serveru pro zotavení po havárii fyzických serverů do Azure
 
@@ -36,19 +36,19 @@ Následující tabulka uvádí minimální požadavky na hardware, software a s�
 ## <a name="choose-your-protection-goals"></a>Výběr cílů ochrany
 
 1. V Azure Portal otevřete okno trezory **Recovery Services** a vyberte svůj trezor.
-2. V nabídce **prostředků** trezoru klikněte na **Začínáme**  >  **Site Recovery**  >  **Krok 1: Příprava**na  >  **cíl ochrany**infrastruktury.
+2. V nabídce **prostředků** trezoru klikněte na **Začínáme**  >  **Site Recovery**  >  **Krok 1: Příprava** na  >  **cíl ochrany** infrastruktury.
 
-    ![Zvolte cíle.](./media/physical-azure-set-up-source/choose-goals.png)
-3. V **cíli ochrany**vyberte **do Azure** a **nevirtualizovaný/jiný**a pak klikněte na **OK**.
+    ![Snímek obrazovky, který ukazuje, kde vybrat cíl ochrany](./media/physical-azure-set-up-source/choose-goals.png)
+3. V **cíli ochrany** vyberte **do Azure** a **nevirtualizovaný/jiný** a pak klikněte na **OK** .
 
     ![Zvolte cíle.](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
-1. Pokud v nabídce **Příprava zdroje**nemáte konfigurační server, přidejte ho kliknutím na **+ konfigurační server** .
+1. Pokud v nabídce **Příprava zdroje** nemáte konfigurační server, přidejte ho kliknutím na **+ konfigurační server** .
 
-   ![Nastavení zdroje](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. V okně **Přidat server** ověřte, že se **konfigurační server** zobrazuje v poli **Typ serveru**.
+   ![Snímek obrazovky, který ukazuje, jak vybrat konfigurační server.](./media/physical-azure-set-up-source/plus-config-srv.png)
+2. V okně **Přidat server** ověřte, že se **konfigurační server** zobrazuje v poli **Typ serveru** .
 4. Stáhněte instalační soubor sjednocené instalace Site Recovery.
 5. Stáhněte registrační klíč trezoru. Registrační klíč potřebujete při spuštění sjednocené instalace. Klíč je platný pět dní od jeho vygenerování.
 

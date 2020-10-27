@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 7be987b99c60185647ab976691d42b72236c6364
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: fd0e6f893d152259c46ff06e9ec20af54395c5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496060"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545306"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
@@ -65,7 +65,7 @@ Redis klienti .NET standardně používají nejstarší verzi TLS ve výchozím 
 
 Redis klienti .NET Core mají výchozí verzi protokolu TLS nastavenou na operační systém, což zjevně závisí na samotném operačním systému. 
 
-V závislosti na verzi operačního systému a všech použitých opravách se může skutečná výchozí verze TLS lišit. I když existuje jeden zdroj informací, je [zde](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) článek pro Windows. 
+V závislosti na verzi operačního systému a všech použitých opravách se může skutečná výchozí verze TLS lišit. I když existuje jeden zdroj informací, je [zde](/dotnet/framework/network-programming/tls#support-for-tls-12) článek pro Windows. 
 
 Pokud ale používáte starý operační systém nebo jste si ho chtěli určitě, doporučujeme nakonfigurovat upřednostňovanou verzi TLS ručně prostřednictvím klienta.
 

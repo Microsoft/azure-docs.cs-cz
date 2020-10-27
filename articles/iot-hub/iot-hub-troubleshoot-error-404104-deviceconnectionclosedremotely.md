@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81758724"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538251"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -24,15 +24,15 @@ Tento článek popisuje příčiny a řešení 404104 chyb **DeviceConnectionClo
 
 ### <a name="symptom-1"></a>Příznak 1
 
-Zařízení se odpojí v pravidelných intervalech (například každých 65 minut) a v IoT Hub diagnostických protokolech vidíte **404104 DeviceConnectionClosedRemotely** . V některých případech se zobrazí také **401003 IoTHubUnauthorized** a událost úspěšného připojení zařízení je kratší než minuta později.
+Zařízení se odpojí v pravidelných intervalech (například každých 65 minut) a v IoT Hubch protokolech prostředků se zobrazí **404104 DeviceConnectionClosedRemotely** . V některých případech se zobrazí také **401003 IoTHubUnauthorized** a událost úspěšného připojení zařízení je kratší než minuta později.
 
 ### <a name="symptom-2"></a>Příznak 2
 
-Zařízení se náhodně odpojí a v IoT Hub diagnostických protokolech vidíte **404104 DeviceConnectionClosedRemotely** .
+Zařízení se náhodně odpojí a v IoT Hub protokolech prostředků uvidíte **404104 DeviceConnectionClosedRemotely** .
 
 ### <a name="symptom-3"></a>Příznak 3
 
-Celá řada zařízení se současně odpojí. na [metrikě připojených zařízení](iot-hub-metrics.md)se zobrazí DIP a v diagnostických protokolech jsou k dispozici další [interní chyby](iot-hub-troubleshoot-error-500xxx-internal-errors.md) **404104 DeviceConnectionClosedRemotely** a 500xxx, než je obvyklé.
+Celá řada zařízení se současně odpojí, v [metrikě připojených zařízení (connectedDeviceCount)](monitor-iot-hub-reference.md)se zobrazí dip a Azure monitor v protokolech jsou k dispozici další [interní chyby](iot-hub-troubleshoot-error-500xxx-internal-errors.md) **404104 DeviceConnectionClosedRemotely** a 500xxx než obvykle.
 
 ## <a name="causes"></a>Příčiny
 

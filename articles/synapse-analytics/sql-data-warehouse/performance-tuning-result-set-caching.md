@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362261"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541277"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Ladění výkonu s využitím ukládání sad výsledků do mezipaměti
 
@@ -36,11 +36,15 @@ Pokud je povoleno ukládání sady výsledků do mezipaměti, synapse SQL automa
 
 Když je pro databázi zapnuté ukládání výsledků do mezipaměti, výsledky se ukládají do mezipaměti pro všechny dotazy, dokud nebude mezipaměť zaplněna, s výjimkou těchto dotazů:
 
-- Dotazování pomocí nedeterministických funkcí, jako je DateTime. Now ()
+- Dotazy s integrovanými funkcemi nebo běhovými výrazy, které jsou nedeterministické ani v případě, že nedojde ke změně dat nebo dotazů základní tabulky. Například DateTime. Now (), GETDATE ().
 - Dotazy využívající uživatelsky definované funkce
 - Dotazy, které používají tabulky se zabezpečením na úrovni řádků nebo na úrovni sloupce povolené
 - Dotazy vracející data s velikostí řádku větší než 64 KB
 - Dotazy vracející velká data ve velikosti (>10GB) 
+>[!NOTE]
+> - Některé nedeterministické funkce a běhové výrazy mohou být deterministické na opakované dotazy na stejná data. Například ROW_NUMBER ().  
+> - Klauzule ORDER BY v dotazu použijte, pokud je pořadí nebo sekvence řádků v sadě výsledků dotazu důležité pro vaši logiku aplikace.
+> - Pokud data ve sloupcích ORDER BY nejsou jedinečná, pro řádky se stejnými hodnotami ve sloupcích ORDER by neexistuje žádné garanteed pořadí řádků bez ohledu na to, jestli je povolená nebo zakázaná mezipaměť sady výsledků.
 
 > [!IMPORTANT]
 > Operace pro vytvoření mezipaměti sady výsledků a načtení dat z mezipaměti se vyskytují v uzlu Control instance synapse fondu SQL.

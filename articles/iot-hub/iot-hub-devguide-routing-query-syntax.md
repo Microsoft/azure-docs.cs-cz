@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767346"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547703"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe dotazu směrování zpráv IoT Hubu
 
@@ -23,7 +23,7 @@ Směrování zpráv umožňuje uživatelům směrovat různé datové typy, konk
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Směrování zpráv vám umožní dotazovat se na vlastnosti zprávy a text zprávy a také na vlastní značky zařízení a vlastnosti, které jsou v zařízení. Pokud tělo zprávy není JSON, směrování zpráv stále může směrovat zprávu, ale dotazy nelze použít na tělo zprávy.  Dotazy jsou popsány jako logické výrazy, kde logická hodnota true provede dotaz úspěšně, který směruje všechna příchozí data, a logická hodnota false neprojde dotazem a nebudou směrována žádná data. Pokud je výraz vyhodnocen jako null nebo nedefinován, je považován za false a v případě selhání bude v diagnostických protokolech generována chyba. Syntaxe dotazu musí být správná, aby bylo možné trasu uložit a vyhodnotit.  
+Směrování zpráv vám umožní dotazovat se na vlastnosti zprávy a text zprávy a také na vlastní značky zařízení a vlastnosti, které jsou v zařízení. Pokud tělo zprávy není JSON, směrování zpráv stále může směrovat zprávu, ale dotazy nelze použít na tělo zprávy.  Dotazy jsou popsány jako logické výrazy, kde logická hodnota true provede dotaz úspěšně, který směruje všechna příchozí data, a logická hodnota false neprojde dotazem a nebudou směrována žádná data. Pokud je výraz vyhodnocen jako null nebo nedefinován, je považován za false a v případě selhání bude vygenerována chyba v IoT Hub [trasy protokolu prostředků](monitor-iot-hub-reference.md#routes) . Syntaxe dotazu musí být správná, aby bylo možné trasu uložit a vyhodnotit.  
 
 ## <a name="message-routing-query-based-on-message-properties"></a>Dotaz na směrování zpráv na základě vlastností zprávy 
 
@@ -53,7 +53,7 @@ IoT Hub definuje [společný formát](iot-hub-devguide-messages-construct.md) pr
 
 Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv. 
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | Třída | řetězec | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
 | contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
@@ -62,7 +62,7 @@ Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv.
 | DT-DataSchema | řetězec |  Tuto hodnotu nastavuje služba IoT Hub pro zprávy ze zařízení do cloudu. Obsahuje ID modelu zařízení nastavené v připojení zařízení. K dotazování použijte `$dt-dataschema` . |
 | DT – předmět | řetězec | Název součásti odesílající zprávy typu zařízení-Cloud. K dotazování použijte `$dt-subject` . |
 
-Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě výše uvedených vlastností v předchozí tabulce můžete také zadat dotaz na **connectionDeviceId**, **connectionModuleId**.
+Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě výše uvedených vlastností v předchozí tabulce můžete také zadat dotaz na **connectionDeviceId** , **connectionModuleId** .
 
 ### <a name="application-properties"></a>Vlastnosti aplikace
 
@@ -70,7 +70,7 @@ Vlastnosti aplikace jsou uživatelsky definované řetězce, které lze přidat 
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$` . Pokud název vlastnosti aplikace začíná `$` na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Například: 
+Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$` . Pokud název vlastnosti aplikace začíná `$` na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Příklad: 
 
 Dotaz na systémovou vlastnost contentEncoding 
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Ukazuje, jak zpracovat kódování těla v JavaScriptu. Pokud chcete vidět ukázku v jazyce C#, Stáhněte si ukázky pro [Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte soubor master.zip. Soubor Program.cs řešení sady Visual Studio *SimulatedDevice*ukazuje, jak zakódovat a odeslat zprávy do IoT Hub. Tato ukázka se používá pro testování směrování zpráv, jak je vysvětleno v [kurzu směrování zpráv](tutorial-routing.md). V dolní části Program.cs má také metodu, jak číst v jednom ze zakódovaných souborů, dekódovat ho a zapsat ho zpět jako ASCII, abyste ho mohli přečíst. 
+> Ukazuje, jak zpracovat kódování těla v JavaScriptu. Pokud chcete vidět ukázku v jazyce C#, Stáhněte si ukázky pro [Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte soubor master.zip. Soubor Program.cs řešení sady Visual Studio *SimulatedDevice* ukazuje, jak zakódovat a odeslat zprávy do IoT Hub. Tato ukázka se používá pro testování směrování zpráv, jak je vysvětleno v [kurzu směrování zpráv](tutorial-routing.md). V dolní části Program.cs má také metodu, jak číst v jednom ze zakódovaných souborů, dekódovat ho a zapsat ho zpět jako ASCII, abyste ho mohli přečíst. 
 
 
 ### <a name="query-expressions"></a>Výrazy dotazů

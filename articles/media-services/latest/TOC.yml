@@ -63,6 +63,7 @@
           href: protect-with-drm.md
         - name: Ochrana obsahu s využitím Azure AD
           href: azure-ad-content-protection.md
+          displayName: 'AAD, Active Directory'
     - name: REST
       items:
         - name: Kódování a streamování vzdáleného souboru – REST
@@ -129,8 +130,8 @@
         - name: Přehled
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: Transformace a úlohy
-          href: transforms-jobs-concept.md
+    - name: Transformace a úlohy
+      href: transforms-jobs-concept.md
     - name: Živé streamování
       items:
         - name: Přehled
@@ -265,6 +266,8 @@
       items:
         - name: Vytváření transformací
           href: cli-create-transform.md
+        - name: Vytvoření základní transformace zvuku s využitím REST
+          href: how-to-create-basic-audio-transform.md
         - name: Vytváření úloh
           href: cli-create-jobs.md
         - name: Vytvoření vstupu úlohy s využitím místního souboru a .NET

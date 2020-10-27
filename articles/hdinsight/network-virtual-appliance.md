@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: c0f5d8cdc7dda72f21fc1cf372e3796b26a3054a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c831e099eca3cd6e6da20f55ad19980ae8e9ddc5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127416"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545918"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Konfigurace síťového virtuálního zařízení ve službě Azure HDInsight
 
 > [!Important]
-> Následující informace jsou požadovány **pouze** v případě, že chcete nakonfigurovat síťové virtuální zařízení (síťové virtuální zařízení) jiné než [Azure firewall](https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic).
+> Následující informace jsou požadovány **pouze** v případě, že chcete nakonfigurovat síťové virtuální zařízení (síťové virtuální zařízení) jiné než [Azure firewall](./hdinsight-restrict-outbound-traffic.md).
 
 Azure Firewall značka plně kvalifikovaného názvu domény se automaticky nakonfiguruje tak, aby umožňovala provoz pro mnoho běžných důležitých plně kvalifikovaných názvů domén. Použití jiného síťového virtuálního zařízení bude vyžadovat, abyste nakonfigurovali řadu dalších funkcí. Při konfiguraci síťového virtuálního zařízení mějte na paměti následující faktory:
 
 * Služby podporující koncové body služby je možné konfigurovat pomocí koncových bodů služby, které mají za následek obejít síťové virtuální zařízení, obvykle pro náklady nebo požadavky na výkon.
-* Pokud je ResourceProviderConnection nastavené na *odchozí*, můžete pro úložiště a SQL servery použít privátní koncové body pro metaúložiště a nemusíte je PŘIDÁVAT do síťové virtuální zařízení.
+* Pokud je ResourceProviderConnection nastavené na *odchozí* , můžete pro úložiště a SQL servery použít privátní koncové body pro metaúložiště a nemusíte je PŘIDÁVAT do síťové virtuální zařízení.
 * Závislosti IP adres jsou pro přenos bez HTTP/S (provoz TCP i UDP).
 * V zařízení síťové virtuální zařízení se dají schvalovat koncové body HTTP/HTTPS s plně kvalifikovaným názvem domény.
 * Přiřaďte směrovací tabulku, kterou vytvoříte ve své podsíti HDInsight.
@@ -41,7 +41,7 @@ Volitelně můžete povolit jeden nebo více následujících koncových bodů s
 
 | **Koncový bod** | **Podrobnosti** |
 |---|---|
-| [Zde](hdinsight-management-ip-addresses.md) publikované IP adresy | Tyto IP adresy jsou pro poskytovatele prostředků HDInsight a měly by být součástí UDR, aby se zabránilo asymetrickému směrování. Toto pravidlo je potřeba jenom v případě, že je ResourceProviderConnection nastavené na *příchozí*. Pokud je ResourceProviderConnection nastavené na *odchozí* , pak tyto IP adresy nejsou v udr potřeba.  |
+| [Zde](hdinsight-management-ip-addresses.md) publikované IP adresy | Tyto IP adresy jsou pro poskytovatele prostředků HDInsight a měly by být součástí UDR, aby se zabránilo asymetrickému směrování. Toto pravidlo je potřeba jenom v případě, že je ResourceProviderConnection nastavené na *příchozí* . Pokud je ResourceProviderConnection nastavené na *odchozí* , pak tyto IP adresy nejsou v udr potřeba.  |
 | Privátní IP adresy AAD-DS | Vyžaduje se jenom pro clustery ESP, pokud virtuální sítě nejsou partnerského vztahu.|
 
 

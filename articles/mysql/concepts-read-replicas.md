@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151181"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537962"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -24,7 +24,7 @@ Další informace o funkcích a problémech replikace MySQL najdete v [dokumenta
 > [!NOTE]
 > Komunikace bez posunu
 >
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_ text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku čtení
@@ -38,7 +38,7 @@ Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavn�
 Funkce replika čtení používá asynchronní replikaci MySQL. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
 
 > [!IMPORTANT]
-> Azure Database for MySQL využívá binární protokolování založené na **řádcích**. Pokud ve vaší tabulce chybí primární klíč, pro operace DML se prohledávají všechny řádky v tabulce. To vede k vyšší prodlevě replikace. Aby se zajistilo, že replika dokáže držet krok se změnami na zdrojovém serveru, obecně doporučujeme před vytvořením serveru repliky nebo opětovným vytvořením serveru repliky, pokud už nějaký máte, přidat do tabulek na zdrojovém serveru primární klíč.
+> Azure Database for MySQL využívá binární protokolování založené na **řádcích** . Pokud ve vaší tabulce chybí primární klíč, pro operace DML se prohledávají všechny řádky v tabulce. To vede k vyšší prodlevě replikace. Aby se zajistilo, že replika dokáže držet krok se změnami na zdrojovém serveru, obecně doporučujeme před vytvořením serveru repliky nebo opětovným vytvořením serveru repliky, pokud už nějaký máte, přidat do tabulek na zdrojovém serveru primární klíč.
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
 Repliku pro čtení můžete vytvořit v jiné oblasti ze zdrojového serveru. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
@@ -71,7 +71,7 @@ Je však třeba vzít v úvahu omezení:
 
 Pokud na zdrojovém serveru nejsou žádné existující servery repliky, zdroj se nejdřív restartuje a připraví se pro replikaci.
 
-Když spustíte pracovní postup vytvoření repliky, vytvoří se prázdný Azure Database for MySQL server. Nový server je vyplněn daty, která byla na zdrojovém serveru. Čas vytvoření závisí na množství dat ve zdroji a času od posledního týdenního úplného zálohování. Čas může být v rozsahu od několika minut až po několik hodin. Server repliky se vždycky vytvoří ve stejné skupině prostředků a v rámci stejného předplatného jako na zdrojovém serveru. Pokud chcete vytvořit server repliky pro jinou skupinu prostředků nebo jiné předplatné, můžete [server repliky](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) po vytvoření přesunout.
+Když spustíte pracovní postup vytvoření repliky, vytvoří se prázdný Azure Database for MySQL server. Nový server je vyplněn daty, která byla na zdrojovém serveru. Čas vytvoření závisí na množství dat ve zdroji a času od posledního týdenního úplného zálohování. Čas může být v rozsahu od několika minut až po několik hodin. Server repliky se vždycky vytvoří ve stejné skupině prostředků a v rámci stejného předplatného jako na zdrojovém serveru. Pokud chcete vytvořit server repliky pro jinou skupinu prostředků nebo jiné předplatné, můžete [server repliky](../azure-resource-manager/management/move-resource-group-and-subscription.md) po vytvoření přesunout.
 
 U každé repliky je povoleno [Automatické zvětšování](concepts-pricing-tiers.md#storage-auto-grow)úložiště. Funkce automatického zvětšení umožňuje replice udržovat data, která jsou do ní replikována, a zabránit přerušení replikace v důsledku chyb způsobených nedostatkem úložiště.
 
@@ -83,7 +83,7 @@ Při vytváření repliky zdědí pravidla brány firewall zdrojového serveru. 
 
 Replika dědí účet správce ze zdrojového serveru. Všechny uživatelské účty na zdrojovém serveru se replikují do replik pro čtení. K replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na zdrojovém serveru.
 
-K replice se můžete připojit pomocí jejího názvu hostitele a platného uživatelského účtu, stejně jako při běžném Azure Database for MySQLm serveru. Pro server s názvem **myreplica** s uživatelským jménem správce **myadmin**se můžete připojit k replice pomocí rozhraní příkazového řádku MySQL:
+K replice se můžete připojit pomocí jejího názvu hostitele a platného uživatelského účtu, stejně jako při běžném Azure Database for MySQLm serveru. Pro server s názvem **myreplica** s uživatelským jménem správce **myadmin** se můžete připojit k replice pomocí rozhraní příkazového řádku MySQL:
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
@@ -113,7 +113,7 @@ Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.m
 
 Mezi zdrojovým serverem a serverem repliky neexistuje automatizované převzetí služeb při selhání. 
 
-Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a replikou. Velikost prodlevy může mít vliv na několik faktorů, jako je to, jak velké zatížení na zdrojovém serveru běží a latence mezi datovými centry. Ve většině případů je prodleva repliky v rozsahu od několika sekund do několika minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky*metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
+Vzhledem k tomu, že replikace je asynchronní, existuje prodleva mezi zdrojem a replikou. Velikost prodlevy může mít vliv na několik faktorů, jako je to, jak velké zatížení na zdrojovém serveru běží a latence mezi datovými centry. Ve většině případů je prodleva repliky v rozsahu od několika sekund do několika minut. Vlastní prodlevu replikace můžete sledovat pomocí *prodlevy repliky* metriky, která je k dispozici pro každou repliku. Tato metrika ukazuje čas od poslední opakované transakce. Doporučujeme, abyste zjistili, jaký je průměrný prodleva tím, že v časovém intervalu pozoruje prodlevu repliky. Můžete nastavit upozornění na prodlevu repliky, takže pokud bude mimo očekávaný rozsah, můžete provést akci.
 
 > [!Tip]
 > Pokud převzetí služeb při selhání repliky přestanou, prodleva v době odpojování repliky ze zdroje bude označovat, kolik dat se ztratilo.

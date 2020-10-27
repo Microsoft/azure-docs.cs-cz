@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087601"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536330"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Možnosti výpočetního kontextu pro služby ML v HDInsight
 
@@ -23,14 +23,14 @@ Hraniční uzel clusteru poskytuje vhodné místo pro připojení ke clusteru a 
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Služby ML ve službě Azure HDInsight
 
-[Služba ml Services v Azure HDInsight](r-server-overview.md) poskytuje nejnovější funkce pro analýzy založené na jazyce R. Může použít data uložená v kontejneru Apache Hadoop HDFS v účtu služby [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage, v Data Lake Store nebo v místním systému souborů Linux. Vzhledem k tomu, že služba ML Services je postavená na Open Source R, aplikace založené na jazyce R můžou použít kterýkoli z balíčků verze 8000 + open-source. Můžou také používat rutiny v [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), což je balíček pro analýzy velkých objemů dat od Microsoftu, který je součástí ml služeb.  
+[Služba ml Services v Azure HDInsight](r-server-overview.md) poskytuje nejnovější funkce pro analýzy založené na jazyce R. Může použít data uložená v kontejneru Apache Hadoop HDFS v účtu služby [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob Storage") Storage, v Data Lake Store nebo v místním systému souborů Linux. Vzhledem k tomu, že služba ML Services je postavená na Open Source R, aplikace založené na jazyce R můžou použít kterýkoli z balíčků verze 8000 + open-source. Můžou také používat rutiny v [RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler), což je balíček pro analýzy velkých objemů dat od Microsoftu, který je součástí ml služeb.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Kontexty výpočtů pro hraniční uzel
 
 Obecně platí, že skript R, který je spuštěn v clusteru služby ML na hraničním uzlu, je spuštěn v překladači R na tomto uzlu. Výjimkou jsou kroky, které volají funkci RevoScaleR. Volání RevoScaleR se spouštějí ve výpočetním prostředí, které je určeno nastavením výpočetního kontextu RevoScaleR.  Při spuštění skriptu R z hraničního uzlu jsou možné hodnoty kontextu Compute:
 
-- místní sekvenční (*místní*)
-- místní paralelní (*localpar*)
+- místní sekvenční ( *místní* )
+- místní paralelní ( *localpar* )
 - Zmenšit mapování
 - Spark
 
@@ -59,12 +59,12 @@ V následujících částech jsou uvedené některé obecné pravidla pro výbě
 
 ### <a name="local"></a>Místní
 
-- Pokud je objem dat k analýze malý a nevyžaduje opakovanou analýzu, pak ji Streamujte přímo do analytické rutiny pomocí *místních* nebo *localpar*.
-- Pokud je množství dat k analýze malé nebo středně velké a vyžaduje opakovanou analýzu, zkopírujte ji do místního systému souborů, importujte ji do XDF a analyzujte ji prostřednictvím *místních* nebo *localpar*.
+- Pokud je objem dat k analýze malý a nevyžaduje opakovanou analýzu, pak ji Streamujte přímo do analytické rutiny pomocí *místních* nebo *localpar* .
+- Pokud je množství dat k analýze malé nebo středně velké a vyžaduje opakovanou analýzu, zkopírujte ji do místního systému souborů, importujte ji do XDF a analyzujte ji prostřednictvím *místních* nebo *localpar* .
 
 ### <a name="apache-spark"></a>Apache Spark
 
-- Pokud je objem dat k analýze velký, importujte ho do datového rámce Spark pomocí **RxHiveData** nebo **RXPARQUETDATA**nebo na XDF v HDFS (Pokud se nejedná o problém) a analyzujte ho pomocí výpočetního kontextu Spark.
+- Pokud je objem dat k analýze velký, importujte ho do datového rámce Spark pomocí **RxHiveData** nebo **RXPARQUETDATA** nebo na XDF v HDFS (Pokud se nejedná o problém) a analyzujte ho pomocí výpočetního kontextu Spark.
 
 ### <a name="apache-hadoop-map-reduce"></a>Zmenšení Apache Hadoop mapy
 
@@ -77,7 +77,7 @@ Další informace a příklady RevoScaleR výpočetních kontextů najdete v té
 > ?rxSetComputeContext
 ```
 
-Další informace najdete v tématu [Přehled distribuovaných výpočtů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) v [dokumentaci Machine Learning Server](https://docs.microsoft.com/machine-learning-server/).
+Další informace najdete v tématu [Přehled distribuovaných výpočtů](/machine-learning-server/r/how-to-revoscaler-distributed-computing) v [dokumentaci Machine Learning Server](/machine-learning-server/).
 
 ## <a name="next-steps"></a>Další kroky
 

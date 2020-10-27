@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: dcb851384f8e2aff60220d4e0002b10f930095a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d94b0815ebe7660d6daef97db0c2a1bef7977ed8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963032"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548215"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -25,8 +25,8 @@ ms.locfileid: "91963032"
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Integrované vývojové prostředí (IDE) sady Visual Studio](https://visualstudio.microsoft.com/vs/) nebo aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
-* Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení sady školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip*).
-* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Objekt blob Azure Storage, který obsahuje sadu školicích dat. Tipy a možnosti pro sestavení sady školicích dat najdete v tématu [Vytvoření školicích dat sady pro vlastní model](../../build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakce *sample_data.zip* ).
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
     * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
@@ -38,11 +38,11 @@ Pomocí sady Visual Studio vytvořte novou aplikaci .NET Core.
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny 
 
-Po vytvoření nového projektu nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení projektu v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní**a vyhledejte `Azure.AI.FormRecognizer` . Vyberte verzi `3.0.0` a pak **nainstalujte**. 
+Po vytvoření nového projektu nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení projektu v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet** . Ve Správci balíčků, který se otevře, vyberte **Procházet** , zaškrtněte políčko **Zahrnout předprodejní** a vyhledejte `Azure.AI.FormRecognizer` . Vyberte verzi `3.0.0` a pak **nainstalujte** . 
 
 #### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/cli)
 
-V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `formrecognizer-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*. 
+V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `formrecognizer-quickstart` . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs* . 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -84,7 +84,7 @@ V adresáři projektu otevřete soubor *program.cs* v preferovaném editoru nebo
 Do třídy **programu** aplikace vytvořte proměnné pro klíč a koncový bod prostředku.
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud se prostředek pro rozpoznávání Fprm, který jste vytvořili v části **předpoklady** , úspěšně nasadil, klikněte v části **Další kroky**na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
+> Přejděte na Azure Portal. Pokud se prostředek pro rozpoznávání Fprm, který jste vytvořili v části **předpoklady** , úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . 
 >
 > Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
 
@@ -102,7 +102,7 @@ Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různ�
 
  - Rozpoznávání polí formuláře a obsahu pomocí vlastních modelů, které jsou vyškolené k rozpoznávání vlastních formulářů.  Tyto hodnoty jsou vráceny v kolekci `RecognizedForm` objektů. Viz příklad [analýzy vlastních formulářů](#analyze-forms-with-a-custom-model).
  - Rozpoznávání obsahu formuláře, včetně tabulek, řádků a slov, bez nutnosti vyškolit model.  Obsah formuláře se vrátí v kolekci `FormPage` objektů. Viz příklad [rozpoznávání obsahu formuláře](#recognize-form-content).
- - Rozpoznávání společných polí z příjmů spojených s námi pomocí předem připraveného modelu příjmu ve službě pro rozpoznávání formulářů.  Tato pole a meta data jsou vrácena v kolekci `RecognizedForm` objektů. Viz příklad [rozpoznávání účtenek](#recognize-receipts).
+ - Rozpoznávání společných polí z příjmů spojených s námi pomocí předem připraveného modelu příjmu ve službě pro rozpoznávání formulářů. Tato pole a meta data jsou vrácena v kolekci `RecognizedForm` objektů. Viz příklad [rozpoznávání účtenek](#recognize-receipts).
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -132,10 +132,10 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klie
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Pod **Hlavní**vytvořte novou metodu s názvem `AuthenticateClient` . Tento postup použijete v jiných úkolech k ověření požadavků na službu rozpoznávání formulářů. Tato metoda používá `AzureKeyCredential` objekt, takže v případě potřeby můžete aktualizovat klíč rozhraní API bez vytváření nových objektů klienta.
+Pod **Hlavní** vytvořte novou metodu s názvem `AuthenticateClient` . Tento postup použijete v jiných úkolech k ověření požadavků na službu rozpoznávání formulářů. Tato metoda používá `AzureKeyCredential` objekt, takže v případě potřeby můžete aktualizovat klíč rozhraní API bez vytváření nových objektů klienta.
 
 > [!IMPORTANT]
-> Získejte klíč a koncový bod z Azure Portal. Pokud se prostředek pro rozpoznávání formulářů, který jste vytvořili v části **předpoklady** , nasadil úspěšně, klikněte na tlačítko **Přejít k prostředku** v části **Další kroky**. Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků**. 
+> Získejte klíč a koncový bod z Azure Portal. Pokud se prostředek pro rozpoznávání formulářů, který jste vytvořili v části **předpoklady** , nasadil úspěšně, klikněte na tlačítko **Přejít k prostředku** v části **Další kroky** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . 
 >
 > Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
@@ -148,7 +148,7 @@ Fragmenty kódu v této příručce používají vzdálené formuláře, ke kter
 
 Také budete muset přidat odkazy na adresy URL pro školení a testování dat. Přidejte je do kořenové složky vaší třídy **programu** .
 
-* Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis** . Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit** . Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Pak použijte výše uvedené kroky a získejte adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB.
 * Nakonec uložte adresu URL ukázkového snímku oznámení, který je zahrnutý v následujících ukázkách (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms). 
 

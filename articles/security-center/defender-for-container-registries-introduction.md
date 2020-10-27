@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0c504ebdec524390d9deb22088979199f80e4f13
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275967"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558631"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Seznámení s Azure Defenderem pro Registry kontejnerů
 
@@ -71,6 +71,12 @@ Ano. Výsledky se nacházejí v rámci [dílčích posouzení rozhraní REST API
 Seznam typů registrů kontejnerů, které Azure Defender podporuje pro Registry kontejnerů, najdete v tématu [dostupnost](defender-for-container-registries-usage.md#availability).
 
 Pokud ke svému předplatnému Azure připojíte nepodporované Registry, nebudou se kontrolovat a nebudou se vám účtovat.
+
+### <a name="can-i-customize-the-findings-from-the-vulnerability-scanner"></a>Můžu přizpůsobit zjištění ze skeneru ohrožení zabezpečení?
+Ano. Pokud máte organizaci, kterou je třeba ignorovat, místo toho, aby ji bylo možné opravit, můžete ji případně zakázat. Zakázané závěry neovlivňují vaše zabezpečené skóre nebo generují nežádoucí hluk.
+
+[Seznamte se s vytvářením pravidel, která zakazují zjištění z integrovaného nástroje pro posouzení ohrožení zabezpečení](defender-for-container-registries-usage.md#disable-specific-findings-preview).
+
 
 
 ## <a name="next-steps"></a>Další kroky

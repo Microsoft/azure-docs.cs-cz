@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 013eb8215064173e002aea23043bc2e9ba92b525
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081045"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545238"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Spouštění dotazů Apache Hive pomocí PowerShellu
 
@@ -28,7 +28,7 @@ Tento dokument poskytuje příklad použití Azure PowerShell ke spouštění do
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
+* Prostředí PowerShell [AZ Module](/powershell/azure/) installed.
 
 ## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
@@ -84,7 +84,7 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > Další informace o **řetězcích**najdete v tématu <a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">použití řetězců v prostředí Windows PowerShell</a>.
+   > Další informace o **řetězcích** najdete v tématu [řetězce](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -101,7 +101,7 @@ Get-AzHDInsightJobOutput `
 
 Tato rutina vrátí informace, které jsou během zpracování úlohy zapisovány do STDERR.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Jak vidíte, Azure PowerShell poskytuje snadný způsob, jak spustit dotazy na podregistr v clusteru HDInsight, jak sledovat stav úlohy a načíst výstup.
 

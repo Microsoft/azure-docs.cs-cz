@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538904"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547244"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Osvědčené postupy pro sestavování aplikace pomocí Azure Database for MySQL 
 
@@ -23,12 +23,12 @@ Tady jsou některé osvědčené postupy, které vám pomůžou vytvořit aplika
 Když nasadíte aplikaci v Azure, ujistěte se, že jsou všechny závislosti ve stejné oblasti. Rozprostření instancí mezi oblasti nebo zóny dostupnosti vytváří latenci sítě, což může mít vliv na celkový výkon aplikace. 
 
 ### <a name="keep-your-mysql-server-secure"></a>Udržujte svůj server MySQL jako zabezpečený
-Nakonfigurujte server MySQL tak, aby byl [zabezpečený](https://docs.microsoft.com/azure/mysql/concepts-security) a není veřejně přístupný. K zabezpečení serveru použijte jednu z těchto možností: 
-- [Pravidla brány firewall](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules)
-- [Virtuální sítě](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet) 
-- [Azure Private Link](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)
+Nakonfigurujte server MySQL tak, aby byl [zabezpečený](./concepts-security.md) a není veřejně přístupný. K zabezpečení serveru použijte jednu z těchto možností: 
+- [Pravidla brány firewall](./concepts-firewall-rules.md)
+- [Virtuální sítě](./concepts-data-access-and-security-vnet.md) 
+- [Azure Private Link](./concepts-data-access-security-private-link.md)
 
-Z důvodu zabezpečení se musíte ke svému serveru MySQL vždycky připojit přes SSL a nakonfigurovat server MySQL a aplikaci tak, aby používala TLS 1,2. Přečtěte si téma [Konfigurace protokolu SSL/TLS](https://docs.microsoft.com/azure/mysql/concepts-ssl-connection-security). 
+Z důvodu zabezpečení se musíte ke svému serveru MySQL vždycky připojit přes SSL a nakonfigurovat server MySQL a aplikaci tak, aby používala TLS 1,2. Přečtěte si téma [Konfigurace protokolu SSL/TLS](./concepts-ssl-connection-security.md). 
 
 ### <a name="tune-your-server-parameters"></a>Vyladění parametrů serveru
 Pro úlohy s vyladěním pro čtení a zvýšení `tmp_table_size` výkonu, které `max_heap_table_size` mohou optimalizovat. Chcete-li vypočítat hodnoty požadované pro tyto proměnné, podívejte se na celkový počet hodnot paměti pro připojení a základní paměť. Součet parametrů paměti pro připojení s výjimkou v `tmp_table_size` kombinaci se základními účty paměti pro celkovou paměť serveru.
@@ -38,15 +38,15 @@ Chcete-li vypočítat největší možnou velikost `tmp_table_size` a `max_heap_
 ```(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections```
 
 >[!NOTE]
-> Celková paměť označuje celkovou velikost paměti, kterou server obsahuje v rámci zřízené virtuální jádra.  Například v Pro obecné účely vCore Azure Database for MySQL serveru bude celková velikost paměti 5 GB × 2. Další podrobnosti o paměti pro každou vrstvu najdete v dokumentaci k [cenové úrovni](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) .
+> Celková paměť označuje celkovou velikost paměti, kterou server obsahuje v rámci zřízené virtuální jádra.  Například v Pro obecné účely vCore Azure Database for MySQL serveru bude celková velikost paměti 5 GB × 2. Další podrobnosti o paměti pro každou vrstvu najdete v dokumentaci k [cenové úrovni](./concepts-pricing-tiers.md) .
 >
 > Základní paměť označuje proměnné paměti, jako je `query_cache_size` a `innodb_buffer_pool_size` , které MySQL Inicializuje a přidělí při spuštění serveru. Paměť vázaná na připojení, například `sort_buffer_size` a `join_buffer_size` , je paměť, která je přidělena pouze v případě, že ji vyžaduje dotaz.
 
 ### <a name="create-non-admin-users"></a>Vytváření uživatelů bez rolí správce 
-Vytvořte pro každou databázi [uživatele, kteří nejsou správci](https://docs.microsoft.com/azure/mysql/howto-create-users) . Obvykle jsou jména uživatelů identifikována jako názvy databází.
+Vytvořte pro každou databázi [uživatele, kteří nejsou správci](./howto-create-users.md) . Obvykle jsou jména uživatelů identifikována jako názvy databází.
 
 ### <a name="reset-your-password"></a>Resetování hesla
-Heslo pro server MySQL můžete [resetovat](https://docs.microsoft.com/azure/mysql/howto-create-manage-server-portal#update-admin-password) pomocí Azure Portal. 
+Heslo pro server MySQL můžete [resetovat](./howto-create-manage-server-portal.md#update-admin-password) pomocí Azure Portal. 
 
 Resetování hesla serveru pro produkční databázi může přinést aplikaci. Dobrým postupem je resetování hesla pro jakékoli provozní úlohy mimo špičku, aby se minimalizoval dopad na uživatele vaší aplikace.
 
@@ -54,29 +54,29 @@ Resetování hesla serveru pro produkční databázi může přinést aplikaci. 
 Tady je několik nástrojů a postupů, které můžete použít k ladění problémů s výkonem ve vaší aplikaci.
 
 ### <a name="enable-slow-query-logs-to-identify-performance-issues"></a>Povolit protokoly pomalých dotazů k identifikaci problémů s výkonem
-Na serveru můžete povolit protokoly [pomalých dotazů](https://docs.microsoft.com/azure/mysql/concepts-server-logs) a [protokoly auditu](https://docs.microsoft.com/azure/mysql/concepts-audit-logs) . Analýza pomalých protokolů dotazů může přispět k identifikaci problémových míst výkonu při odstraňování potíží. 
+Na serveru můžete povolit protokoly [pomalých dotazů](./concepts-server-logs.md) a [protokoly auditu](./concepts-audit-logs.md) . Analýza pomalých protokolů dotazů může přispět k identifikaci problémových míst výkonu při odstraňování potíží. 
 
-Protokoly auditu jsou dostupné taky prostřednictvím protokolů Azure Diagnostics v protokolech Azure Monitor, Azure Event Hubs a účtů úložiště. Podívejte [se, jak řešit problémy s výkonem dotazů](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-query-performance).
+Protokoly auditu jsou dostupné taky prostřednictvím protokolů Azure Diagnostics v protokolech Azure Monitor, Azure Event Hubs a účtů úložiště. Podívejte [se, jak řešit problémy s výkonem dotazů](./howto-troubleshoot-query-performance.md).
 
 ### <a name="use-connection-pooling"></a>Použití sdružování připojení
-Správa připojení k databázi může mít významný dopad na výkon aplikace jako celek. Pokud chcete optimalizovat výkon, musíte snížit počet navázání připojení a čas pro navázání připojení v cestách kódu klíče. [Sdružování připojení](https://docs.microsoft.com/azure/mysql/concepts-connectivity#access-databases-by-using-connection-pooling-recommended) použijte pro připojení k Azure Database for MySQL ke zlepšení odolnosti a výkonu. 
+Správa připojení k databázi může mít významný dopad na výkon aplikace jako celek. Pokud chcete optimalizovat výkon, musíte snížit počet navázání připojení a čas pro navázání připojení v cestách kódu klíče. [Sdružování připojení](./concepts-connectivity.md#access-databases-by-using-connection-pooling-recommended) použijte pro připojení k Azure Database for MySQL ke zlepšení odolnosti a výkonu. 
 
 K efektivní správě připojení můžete použít Pooler připojení [ProxySQL](https://proxysql.com/) . Použití připojení Pooler může snížit nečinné připojení a znovu použít existující připojení, což vám pomůže vyhnout se problémům. Další informace najdete v tématu [jak nastavit ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/connecting-efficiently-to-azure-database-for-mysql-with-proxysql/ba-p/1279842) . 
 
 ### <a name="retry-logic-to-handle-transient-errors"></a>Logika opakování pro zpracování přechodných chyb
-V aplikaci může docházet k [přechodným chybám](https://docs.microsoft.com/azure/mysql/concepts-connectivity#handling-transient-errors) , při kterých se připojení k databázi neúčtují nebo ztratí přerušovaně. V takových situacích je server v provozu po jednom až dvou opakovaných pokusech za 5 až 10 sekund. 
+V aplikaci může docházet k [přechodným chybám](./concepts-connectivity.md#handling-transient-errors) , při kterých se připojení k databázi neúčtují nebo ztratí přerušovaně. V takových situacích je server v provozu po jednom až dvou opakovaných pokusech za 5 až 10 sekund. 
 
-Dobrým postupem je počkat na 5 sekund před prvním opakováním. Pak postupujte podle každého opakování tak, že postupně rozrostete, až 60 sekund. Omezte maximální počet opakovaných pokusů, při kterých aplikace nebere v úvahu operaci, takže se můžete dále prozkoumat. Další informace najdete v tématu [řešení chyb připojení](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues) . 
+Dobrým postupem je počkat na 5 sekund před prvním opakováním. Pak postupujte podle každého opakování tak, že postupně rozrostete, až 60 sekund. Omezte maximální počet opakovaných pokusů, při kterých aplikace nebere v úvahu operaci, takže se můžete dále prozkoumat. Další informace najdete v tématu [řešení chyb připojení](./howto-troubleshoot-common-connection-issues.md) . 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>Povolením replikace pro čtení zmírnit převzetí služeb při selhání
-Pro scénáře převzetí služeb při selhání můžete použít [replikace vstupních dat](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) . Pokud používáte repliky čtení, nedochází k automatizovanému převzetí služeb při selhání mezi zdrojovým serverem a serverem repliky. 
+Pro scénáře převzetí služeb při selhání můžete použít [replikace vstupních dat](./howto-data-in-replication.md) . Pokud používáte repliky čtení, nedochází k automatizovanému převzetí služeb při selhání mezi zdrojovým serverem a serverem repliky. 
 
 Všimnete si prodlevy mezi zdrojem a replikou, protože replikace je asynchronní. Prodleva sítě může být ovlivněná mnoha faktory, jako je velikost úlohy spuštěné na zdrojovém serveru a latence mezi datovými centry. Ve většině případů prodleva repliky vychází z několika sekund až do několika minut.
 
 ## <a name="database-deployment"></a>Nasazení databáze 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>Konfigurace úlohy Azure Database for MySQL v kanálu nasazení CI/CD
-V některých případech je nutné nasadit změny do vaší databáze. V takových případech můžete použít průběžnou integraci (CI) a průběžné doručování (CD) prostřednictvím [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) a pomocí úlohy pro [Server MySQL](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops) aktualizovat databázi spuštěním vlastního skriptu.
+V některých případech je nutné nasadit změny do vaší databáze. V takových případech můžete použít průběžnou integraci (CI) a průběžné doručování (CD) prostřednictvím [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) a pomocí úlohy pro [Server MySQL](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true) aktualizovat databázi spuštěním vlastního skriptu.
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>Použití efektivního procesu ručního nasazení databáze 
 Při ručním nasazování databáze můžete pomocí těchto kroků minimalizovat prostoje nebo snížit riziko neúspěšného nasazení: 
@@ -119,6 +119,4 @@ Použití správného datového typu na základě typu dat, která chcete uloži
 Chcete-li se vyhnout pomalým dotazům, můžete použít indexy. Indexy umožňují rychle najít řádky s konkrétními sloupci. Podívejte [se, jak používat indexy v MySQL](https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html).
 
 ### <a name="use-explain-for-your-select-queries"></a>Vysvětlete pro vaše dotazy SELECT.
-Pomocí `EXPLAIN` příkazu můžete získat přehled o tom, co MySQL dělá ke spuštění dotazu. Může vám to usnadnit detekci kritických bodů nebo problémů s vaším dotazem. Podívejte [se, jak používat vysvětlení k profilování výkonu dotazů](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-query-performance).
-
-
+Pomocí `EXPLAIN` příkazu můžete získat přehled o tom, co MySQL dělá ke spuštění dotazu. Může vám to usnadnit detekci kritických bodů nebo problémů s vaším dotazem. Podívejte [se, jak používat vysvětlení k profilování výkonu dotazů](./howto-troubleshoot-query-performance.md).

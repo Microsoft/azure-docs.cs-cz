@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: b5499a8c4fd6ee200ca0fac800c8c17c92a1cc0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9b74cc3bff23848bf63859e7e38bb06599956a3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087839"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540767"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení aplikace Excel k Apache Hadoopu ve službě Azure HDInsight pomocí konektoru Microsoft Hive ODBC Driver
 
@@ -21,9 +21,9 @@ ms.locfileid: "86087839"
 
 Řešení pro velké objemy dat od Microsoftu integruje komponenty Microsoft Business Intelligence (BI) s Apache Hadoop clustery nasazenými v HDInsight. Příkladem je možnost připojení aplikace Excel k datovému skladu podregistru clusteru Hadoop. Připojte se pomocí ovladače ODBC (Open Database Connectivity) pro podregistr společnosti Microsoft.
 
-Data přidružená k clusteru HDInsight můžete připojit z Excelu k Microsoft Power Query doplňku pro Excel. Další informace najdete v tématu [připojení Excelu k HDInsight pomocí Power Query](../hdinsight-connect-excel-power-query.md).
+Data přidružená k clusteru HDInsight můžete připojit z Excelu k Microsoft Power Query doplňku pro Excel. Další informace najdete v tématu [připojení Excelu k HDInsight pomocí Power Query](./apache-hadoop-connect-excel-power-query.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete tento článek, musíte mít následující položky:
 
@@ -38,13 +38,13 @@ Stáhněte a nainstalujte [Microsoft Hive ODBC Driver](https://www.microsoft.com
 
 Následující kroky ukazují, jak vytvořit zdroj dat pro podregistr ODBC.
 
-1. V systému Windows přejděte na **začátek > nástroje pro správu systému windows > zdroje dat ODBC (32bitová verze)/(64 bitů)**.  Tato akce otevře okno **Správce zdrojů dat ODBC** .
+1. V systému Windows přejděte na **začátek > nástroje pro správu systému windows > zdroje dat ODBC (32bitová verze)/(64 bitů)** .  Tato akce otevře okno **Správce zdrojů dat ODBC** .
 
     ![Správce zdroje dat OBDC](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "Konfigurace DSN pomocí Správce zdrojů dat ODBC")
 
 1. Na kartě **uživatelský název DSN** vyberte **Přidat** a otevřete tak okno **vytvořit nový zdroj dat** .
 
-1. Vyberte **Microsoft Hive ODBC Driver**a pak vyberte **Dokončit** a otevřete tak okno **nastavení Microsoft Hive ODBC Driver DSN** .
+1. Vyberte **Microsoft Hive ODBC Driver** a pak vyberte **Dokončit** a otevřete tak okno **nastavení Microsoft Hive ODBC Driver DSN** .
 
 1. Zadejte nebo vyberte tyto hodnoty:
 
@@ -52,11 +52,11 @@ Následující kroky ukazují, jak vytvořit zdroj dat pro podregistr ODBC.
    | --- | --- |
    |  Název zdroje dat |Zadejte název zdroje dat. |
    |  Hostitelé: |Zadejte `HDInsightClusterName.azurehdinsight.net`. Například, `myHDICluster.azurehdinsight.net`. Poznámka: `HDInsightClusterName-int.azurehdinsight.net` podporuje se, pokud je klientský virtuální počítač v partnerském vztahu ke stejné virtuální síti. |
-   |  Port |Použijte **443**. (Tento port se změnil z 563 na 443.) |
-   |  databáze |Použijte **výchozí nastavení**. |
+   |  Port |Použijte **443** . (Tento port se změnil z 563 na 443.) |
+   |  Databáze |Použijte **výchozí nastavení** . |
    |  Mechanismus |Výběr **služby Windows Azure HDInsight** |
-   |  Uživatelské jméno |Zadejte uživatelské jméno uživatele clusteru HDInsight HTTP. Výchozí uživatelské jméno **admin**. |
-   |  Heslo |Zadejte uživatelské heslo pro cluster HDInsight. Zaškrtněte políčko **Uložit heslo (šifrované)**.|
+   |  Uživatelské jméno |Zadejte uživatelské jméno uživatele clusteru HDInsight HTTP. Výchozí uživatelské jméno **admin** . |
+   |  Heslo |Zadejte uživatelské heslo pro cluster HDInsight. Zaškrtněte políčko **Uložit heslo (šifrované)** .|
 
 1. Volitelné: vyberte **Rozšířené možnosti...**  
 
@@ -86,11 +86,11 @@ Následující kroky popisují způsob, jak importovat data z tabulky podregistr
 
     ![Průvodce otevřením datového připojení aplikace Excel](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Průvodce otevřením datového připojení aplikace Excel")
 
-3. V rozevíracím seznamu vyberte název zdroje dat, který jste vytvořili v poslední části, a pak vyberte **OK**.
+3. V rozevíracím seznamu vyberte název zdroje dat, který jste vytvořili v poslední části, a pak vyberte **OK** .
 
 4. Pro první použití se otevře dialogové okno **ovladače ODBC** . V nabídce vlevo vyberte **Windows** . Pak vyberte **připojit** a otevřete okno **navigátor** .
 
-5. Z **navigátoru**přejděte do **podregistru**  >  **Default**  >  **hivesampletable**a pak vyberte **načíst**. Před importováním dat do Excelu trvá chvíli chvilku.
+5. Z **navigátoru** přejděte do **podregistru**  >  **Default**  >  **hivesampletable** a pak vyberte **načíst** . Před importováním dat do Excelu trvá chvíli chvilku.
 
     ![Navigátor aplikace ODBC pro rozhraní HDInsight v Excelu](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "Navigátor aplikace ODBC pro rozhraní HDInsight v Excelu")
 

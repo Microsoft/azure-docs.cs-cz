@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5b656ff670d4ab4d50f4b6dfbd1c60bfe3db22dd
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 63a9a0acc7a3cb7f5b5a5d451ab6199ec5f1390f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425252"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546734"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Připojení ke službě Azure Database for MySQL s využitím spravované identity
 
@@ -28,7 +28,7 @@ Získáte informace o těchto tématech:
 > [!IMPORTANT]
 > Připojení ke spravované identitě je dostupné jenom pro MySQL 5,7 a novější.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě neznáte funkci spravovaných identit pro prostředky Azure, podívejte se na tento [přehled](../../articles/active-directory/managed-identities-azure-resources/overview.md). Pokud nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Aby bylo možné vytvořit požadovaný prostředek a správu rolí, váš účet potřebuje oprávnění "vlastník" v příslušném oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [použití řízení přístupu na základě role Azure (Azure RBAC) ke správě přístupu k prostředkům předplatného Azure](../../articles/role-based-access-control/role-assignments-portal.md).
@@ -38,13 +38,13 @@ Získáte informace o těchto tématech:
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>Vytvoření spravované identity přiřazené uživatelem pro váš virtuální počítač
 
-Pomocí příkazu [AZ identity Create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) vytvořte v předplatném identitu. Můžete použít stejnou skupinu prostředků, ve které je váš virtuální počítač spuštěný, nebo jiný.
+Pomocí příkazu [AZ identity Create](/cli/azure/identity#az-identity-create) vytvořte v předplatném identitu. Můžete použít stejnou skupinu prostředků, ve které je váš virtuální počítač spuštěný, nebo jiný.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) uložte ID prostředku identity a ID klienta do proměnných.
+Pokud chcete nakonfigurovat identitu v následujících krocích, pomocí příkazu [AZ identity show](/cli/azure/identity#az-identity-show) uložte ID prostředku identity a ID klienta do proměnných.
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -54,7 +54,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-K virtuálnímu počítači teď můžeme přiřadit identitu přiřazenou uživatelem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) :
+K virtuálnímu počítači teď můžeme přiřadit identitu přiřazenou uživatelem pomocí příkazu [AZ VM identity Assign](/cli/azure/vm/identity#az-vm-identity-assign) :
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

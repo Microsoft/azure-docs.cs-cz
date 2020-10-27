@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 1e04662cb0f67863e23f1fc1ce7e1f21ca4e9197
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087635"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536279"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa clusteru služeb ML v Azure HDInsight
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak spravovat existující cluster služeb ML v Az
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru**.
+* Cluster služeb ML v HDInsight. Přečtěte si téma [vytvoření Apache Hadoop clusterů pomocí Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) a výběr **služeb ml** pro **typ clusteru** .
 
 * Klient Secure Shell (SSH): Klient SSH slouží k vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -74,7 +74,7 @@ Po zobrazení výzvy k zadání hesla "aktuální heslo protokolu Kerberos", sta
 
 Přístup k RStudio z `https://CLUSTERNAME.azurehdinsight.net/rstudio/` . Pokud se přihlašujete poprvé po vytvoření clusteru, zadejte přihlašovací údaje Správce clusteru a přihlašovací údaje uživatele SSH, které jste vytvořili. Pokud se nejedná o vaše první přihlášení, zadejte pouze pověření pro uživatele SSH, kterého jste vytvořili.
 
-Můžete se také přihlásit pomocí původních přihlašovacích údajů (ve výchozím nastavení je *sshuser*) souběžně z jiného okna prohlížeče.
+Můžete se také přihlásit pomocí původních přihlašovacích údajů (ve výchozím nastavení je *sshuser* ) souběžně z jiného okna prohlížeče.
 
 Všimněte si také, že nově přidaní uživatelé nemají v systému Linux kořenová oprávnění, ale mají stejný přístup ke všem souborům ve vzdáleném úložišti HDFS a WASB.
 
@@ -106,7 +106,7 @@ mySparkCluster <- RxSpark(
 )
 ```
 
-Další informace najdete v části "použití Microsoft Machine Learning Server jako klienta Apache Hadoop" v tématu [použití RevoScaleR ve výpočetním kontextu Apache Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios) .
+Další informace najdete v části "použití Microsoft Machine Learning Server jako klienta Apache Hadoop" v tématu [použití RevoScaleR ve výpočetním kontextu Apache Spark](/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios) .
 
 ## <a name="use-a-compute-context"></a>Použití výpočetního kontextu
 
@@ -195,19 +195,19 @@ Pokud chcete nainstalovat balíčky R na pracovní uzly clusteru, musíte použ�
 
 1. Postupujte podle kroků v části [Přizpůsobení clusterů pomocí akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
-3. Pro **akci odeslání skriptu**zadejte následující informace:
+3. Pro **akci odeslání skriptu** zadejte následující informace:
 
-   * Jako **typ skriptu**vyberte **vlastní**.
+   * Jako **typ skriptu** vyberte **vlastní** .
 
-   * Do pole **název**zadejte název akce skriptu.
+   * Do pole **název** zadejte název akce skriptu.
 
-     * V případě **identifikátoru URI bash skriptu**zadejte  `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Toto je skript, který do pracovního uzlu nainstaluje další balíčky R.
+     * V případě **identifikátoru URI bash skriptu** zadejte  `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` . Toto je skript, který do pracovního uzlu nainstaluje další balíčky R.
 
-   * Zaškrtněte políčko pouze pro **pracovní proces**.
+   * Zaškrtněte políčko pouze pro **pracovní proces** .
 
    * **Parametry:** Balíčky R určené k instalaci. Například `bitops stringr arules`.
 
-   * Zaškrtněte políčko, pokud chcete **zachovat tuto akci skriptu**.  
+   * Zaškrtněte políčko, pokud chcete **zachovat tuto akci skriptu** .  
 
    > [!NOTE]
    > 1. Ve výchozím nastavení jsou všechny balíčky R nainstalované ze snímku úložiště Microsoft MRAN, který je v souladu s nainstalovanou verzí ML Server. Pokud chcete nainstalovat novější verze balíčků, vystavujete se riziku nekompatibility. Tento typ instalace však můžete provést zadáním `useCRAN` jako prvního prvku seznamu balíčků, například `useCRAN bitops, stringr, arules`.  

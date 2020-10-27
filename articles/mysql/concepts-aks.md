@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc40903de09ebfe04858c631eee0233561784418
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519860"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546904"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Připojení služby Azure Kubernetes a Azure Database for MySQL
 
@@ -26,7 +26,7 @@ Od listopadu 2018 podporuje AKS urychlené síťové služby na těchto podporov
 Můžete potvrdit, jestli cluster AKS má urychlené síťové služby:
 1. Přejít na Azure Portal a vybrat cluster AKS.
 2. Vyberte kartu Properties (Vlastnosti).
-3. Zkopírujte název **skupiny prostředků infrastruktury**.
+3. Zkopírujte název **skupiny prostředků infrastruktury** .
 4. Pomocí panelu hledání na portálu vyhledejte a otevřete skupinu prostředků infrastruktury.
 5. Vyberte virtuální počítač v této skupině prostředků.
 6. Přejít na kartu **síť** virtuálního počítače.
@@ -43,5 +43,5 @@ az network nic list --resource-group nodeResourceGroup -o table
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření clusteru služby Azure Kubernetes Service](../aks/kubernetes-walkthrough.md)
-- Naučte se [instalovat WordPress z grafu Helm pomocí OSBA a Azure Database for MySQL](../aks/integrate-azure.md)
+- [Vytvoření clusteru služby Azure Kubernetes](../aks/kubernetes-walkthrough.md)
+- Naučte se [instalovat WordPress z grafu Helm pomocí OSBA a Azure Database for MySQL](../aks/index.yml)

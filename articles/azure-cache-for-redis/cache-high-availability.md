@@ -6,18 +6,18 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: yegu
-ms.openlocfilehash: 145be11436eb4d0c4f6b892e5239ccacd838d780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0bb8fd2d0b0ac271a167ad5474a55646bdafc65
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654127"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536789"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Vysoká dostupnost pro Azure cache pro Redis
 
 Mezipaměť Azure pro Redis má vestavěnou vysokou dostupnost. Cílem své architektury vysoké dostupnosti je zajistit funkčnost spravované instance Redis i v případě, že na její základní virtuální počítače má vliv plánovaná nebo neplánovaná výpadky. Nabízí mnohem větší procentní sazbu, než je dosažitelná hostováním Redis na jednom virtuálním počítači.
 
-Azure cache pro Redis implementuje vysokou dostupnost pomocí několika virtuálních počítačů nazývaných *uzly*pro mezipaměť. Tyto uzly nakonfiguruje tak, aby replikace dat a převzetí služeb při selhání probíhalo v koordinovaných způsobech. Také orchestruje operace údržby, jako je Redis software patching. K dispozici jsou různé možnosti vysoké dostupnosti na úrovních Standard a Premium:
+Azure cache pro Redis implementuje vysokou dostupnost pomocí několika virtuálních počítačů nazývaných *uzly* pro mezipaměť. Tyto uzly nakonfiguruje tak, aby replikace dat a převzetí služeb při selhání probíhalo v koordinovaných způsobech. Také orchestruje operace údržby, jako je Redis software patching. K dispozici jsou různé možnosti vysoké dostupnosti na úrovních Standard a Premium:
 
 | Možnost | Popis | Dostupnost | Standard | Premium |
 | ------------------- | ------- | ------- | :------: | :---: |
@@ -28,7 +28,7 @@ Azure cache pro Redis implementuje vysokou dostupnost pomocí několika virtuál
 
 ## <a name="standard-replication"></a>Standardní replikace
 
-Mezipaměť Azure pro Redis v úrovni Standard nebo Premium běží ve výchozím nastavení na páru Redis serverů. Tyto dva servery jsou hostovány na vyhrazených virtuálních počítačích. Open Source Redis umožňuje pouze jednomu serveru zpracovávat požadavky na zápis dat. Tento server je *primárním* uzlem, zatímco druhá *replika*. Až zřídí uzly serveru, Azure cache for Redis přiřadí role primární a repliky. Primární uzel obvykle zodpovídá za obsluhu zápisu i žádosti o čtení od klientů Redis. U operace zápisu se potvrdí nový klíč a aktualizuje se klíč do své interní paměti a okamžitě se odpoví na klienta. Přepošle operaci do repliky asynchronně.
+Mezipaměť Azure pro Redis v úrovni Standard nebo Premium běží ve výchozím nastavení na páru Redis serverů. Tyto dva servery jsou hostovány na vyhrazených virtuálních počítačích. Open Source Redis umožňuje pouze jednomu serveru zpracovávat požadavky na zápis dat. Tento server je *primárním* uzlem, zatímco druhá *replika* . Až zřídí uzly serveru, Azure cache for Redis přiřadí role primární a repliky. Primární uzel obvykle zodpovídá za obsluhu zápisu i žádosti o čtení od klientů Redis. U operace zápisu se potvrdí nový klíč a aktualizuje se klíč do své interní paměti a okamžitě se odpoví na klienta. Přepošle operaci do repliky asynchronně.
 
 :::image type="content" source="media/cache-high-availability/replication.png" alt-text="Nastavení replikace dat":::
    
@@ -37,7 +37,7 @@ Mezipaměť Azure pro Redis v úrovni Standard nebo Premium běží ve výchozí
 >
 >
 
-Pokud není primární uzel v mezipaměti Redis k dispozici, replika se bude povýšit na novou primární hodnotu automaticky. Tento proces se označuje jako *převzetí služeb při selhání*. Replika bude po celou dobu trvat, než se převezme v případě, že se primární uzel rychle obnoví. Když dojde k převzetí služeb při selhání, Azure cache for Redis zřídí nový virtuální počítač a připojí ho k mezipaměti jako uzel repliky. Replika provede úplnou synchronizaci dat s primárním serverem, aby měl další kopii dat mezipaměti.
+Pokud není primární uzel v mezipaměti Redis k dispozici, replika se bude povýšit na novou primární hodnotu automaticky. Tento proces se označuje jako *převzetí služeb při selhání* . Replika bude po celou dobu trvat, než se převezme v případě, že se primární uzel rychle obnoví. Když dojde k převzetí služeb při selhání, Azure cache for Redis zřídí nový virtuální počítač a připojí ho k mezipaměti jako uzel repliky. Replika provede úplnou synchronizaci dat s primárním serverem, aby měl další kopii dat mezipaměti.
 
 Primární uzel může přijít o službu jako součást plánované aktivity údržby, jako je Redis software nebo aktualizace operačního systému. Může také přestat fungovat z důvodu neplánovaných událostí, jako jsou například chyby v podkladovém hardwaru, softwaru nebo síti. [Převzetí služeb při selhání a opravy pro Azure cache pro Redis](cache-failover.md) poskytuje podrobné vysvětlení typů převzetí služeb při selhání Redis. Mezipaměť Azure pro Redis projde během své životnosti během celé řady převzetí služeb při selhání. Architektura vysoké dostupnosti je navržena tak, aby byly tyto změny v mezipaměti transparentní pro její klienty, jak je to možné.
 
@@ -57,7 +57,7 @@ Azure cache pro Redis umožňuje další uzly repliky na úrovni Premium. [Mezip
 >
 >
 
-Mezipaměť Azure pro Redis podporuje redundantní konfigurace zóny na úrovni Premium. [Redundantní mezipaměť zóny](cache-how-to-zone-redundancy.md) může umístit své uzly napříč různými [zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) ve stejné oblasti. Eliminuje datové centrum nebo AZ výpadek jako jediný bod selhání a zvýší celkovou dostupnost mezipaměti.
+Mezipaměť Azure pro Redis podporuje redundantní konfigurace zóny na úrovni Premium. [Redundantní mezipaměť zóny](cache-how-to-zone-redundancy.md) může umístit své uzly napříč různými [zóny dostupnosti Azure](../availability-zones/az-overview.md) ve stejné oblasti. Eliminuje datové centrum nebo AZ výpadek jako jediný bod selhání a zvýší celkovou dostupnost mezipaměti.
 
 Následující diagram znázorňuje redundantní konfiguraci zóny:
 

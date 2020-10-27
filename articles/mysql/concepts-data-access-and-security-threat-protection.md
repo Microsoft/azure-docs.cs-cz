@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: ccee3b52b0f204561ca790ce364308f81a1db6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e72cf2cbe17f3a92d3769fb85332f29be038f17
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906589"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547227"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL Rozšířená ochrana před internetovými útoky
 
@@ -34,14 +34,14 @@ Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL p
 
 ## <a name="advanced-threat-protection-alerts"></a>Výstrahy rozšířené ochrany před internetovými útoky 
 Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL detekuje aktivity neobvyklé indikující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití a může aktivovat následující výstrahy:
-- **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MySQL, kde se někdo přihlásil k serveru Azure Database for MySQL z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
-- **Přístup z neobvyklého datového centra Azure**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MySQL, kde se někdo přihlásil k serveru z neobvyklého datového centra Azure, které bylo na tomto serveru vidět během posledního období. V některých případech výstraha detekuje legitimní akci (novou aplikaci v Azure, Power BI Azure Database for MySQL editoru dotazů). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).
-- **Přístup z neznámého objektu zabezpečení**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MySQL, kde se někdo přihlásil k serveru pomocí neobvyklého objektu zabezpečení (Azure Database for MySQL uživatel). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
+- **Přístup z neobvyklého umístění** : Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MySQL, kde se někdo přihlásil k serveru Azure Database for MySQL z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
+- **Přístup z neobvyklého datového centra Azure** : Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MySQL, kde se někdo přihlásil k serveru z neobvyklého datového centra Azure, které bylo na tomto serveru vidět během posledního období. V některých případech výstraha detekuje legitimní akci (novou aplikaci v Azure, Power BI Azure Database for MySQL editoru dotazů). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).
+- **Přístup z neznámého objektu zabezpečení** : Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k serveru Azure Database for MySQL, kde se někdo přihlásil k serveru pomocí neobvyklého objektu zabezpečení (Azure Database for MySQL uživatel). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
 - **Přístup z potenciálně škodlivé aplikace:** Tato výstraha se aktivuje, pokud je pro přístup k databázi použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
-- **Azure Database for MySQL přihlašovací údaje hrubou silou**: Tato výstraha se aktivuje, když dojde k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
+- **Azure Database for MySQL přihlašovací údaje hrubou silou** : Tato výstraha se aktivuje, když dojde k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)
 * Další informace o cenách najdete na stránce s [cenami Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) . 
-* Konfigurace [Azure Database for MySQL rozšířené ochrany před internetovými útoky](howto-database-threat-protection-portal.md) pomocí Azure Portal  
+* Konfigurace [Azure Database for MySQL rozšířené ochrany před internetovými útoky](howto-database-threat-protection-portal.md) pomocí Azure Portal
