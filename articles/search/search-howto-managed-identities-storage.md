@@ -77,7 +77,7 @@ Při indexování z účtu úložiště musí mít zdroj dat následující pož
 * **přihlašovací údaje**
     * Při ověřování pomocí spravované identity se formát **přihlašovacích údajů** liší od použití spravované identity. Tady poskytnete ResourceId, které nemá klíč účtu ani heslo. ResourceId musí zahrnovat ID předplatného účtu úložiště, skupinu prostředků účtu úložiště a název účtu úložiště.
     * Spravovaný formát identity: 
-        * *ResourceId =/Subscriptions/**ID vašeho předplatného**/resourceGroups/název vaší**skupiny prostředků**/Providers/Microsoft.Storage/storageAccounts/**název vašeho účtu úložiště**/;*
+        * *ResourceId =/Subscriptions/ **ID vašeho předplatného** /resourceGroups/název vaší **skupiny prostředků** /Providers/Microsoft.Storage/storageAccounts/ **název vašeho účtu úložiště** /;*
 * **kontejner** Určuje název kontejneru nebo tabulky v účtu úložiště. Ve výchozím nastavení jsou všechny objekty BLOB v kontejneru navýšené. Pokud chcete indexovat objekty blob pouze v konkrétním virtuálním adresáři, můžete tento adresář zadat pomocí volitelného parametru **dotazu** .
 
 Příklad vytvoření objektu zdroje dat objektů BLOB pomocí [REST API](/rest/api/searchservice/create-data-source):

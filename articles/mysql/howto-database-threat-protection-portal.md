@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 43b85ba58ed7163a896054ab9e77ddf82e3461a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f6993f92192a1149e3b243c68fdf5fe96fdc66
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902798"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541447"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Rozšířená ochrana před internetovými útoky pro Azure Database for MySQL
 
@@ -28,11 +28,11 @@ Rozšířená ochrana před internetovými útoky je součástí rozšířené n
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb
 1. Spusťte Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
-2. Přejděte na stránku konfigurace serveru Azure Database for MySQL, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)**.
+2. Přejděte na stránku konfigurace serveru Azure Database for MySQL, který chcete chránit. V nastavení zabezpečení vyberte **Rozšířená ochrana před internetovými útoky (Preview)** .
 3. Na stránce konfigurace **rozšířené ochrany před internetovými útoky (Preview)** :
 
    - Povolit rozšířenou ochranu před internetovými útoky na serveru.
-   - V části **Upřesnit nastavení ochrany před internetovými útoky**zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
+   - V části **Upřesnit nastavení ochrany před internetovými útoky** zadejte do textového pole **Odeslat výstrahy do** seznam e-mailů, které budou dostávat výstrahy zabezpečení při detekci neobvykléch databázových aktivit.
   
    :::image type="content" source="./media/howto-database-threat-protection-portal/set-up-threat-protection.png" alt-text="Nastavení detekce hrozeb":::
 
@@ -63,5 +63,5 @@ Kliknutím na **výstrahu detekce hrozeb** spustíte stránku Azure Security Cen
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* Další informace o cenách najdete na stránce s [cenami Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) .  
+* Další informace o [Azure Security Center](../security-center/security-center-introduction.md)
+* Další informace o cenách najdete na stránce s [cenami Azure Database for MySQL](https://azure.microsoft.com/pricing/details/mysql/) .

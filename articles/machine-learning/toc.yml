@@ -235,7 +235,7 @@
           displayName: policy
     - name: Vytváření a správa pracovních prostorů
       items:
-        - name: Použití webu Azure Portal
+        - name: Použití webu Azure Portal nebo sady Python SDK
           href: how-to-manage-workspace.md
         - name: Použití Azure CLI
           href: how-to-manage-workspace-cli.md

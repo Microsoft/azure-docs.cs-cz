@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 2a6b324c4caf9619566ba335ab2e5a318ab68bb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079424"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542790"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Použití Apache Zeppelin ke spouštění dotazů Apache Phoenix dotazů přes Apache HBA ve službě Azure HDInsight
 
@@ -23,7 +23,7 @@ Apache Zeppelin je open source webový Poznámkový blok, který umožňuje vytv
 
 Uživatelé HDInsight můžou použít Apache Zeppelin k dotazování na tabulky v Phoenixu. Apache Zeppelin je integrováno do clusteru HDInsight a neexistuje žádný další postup pro jeho použití. Jednoduše vytvoříte Zeppelin Poznámkový blok s překladačem JDBC a začnete psát dotazy SQL pro Phoenix.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](./apache-hbase-tutorial-get-started-linux.md).
 
@@ -31,7 +31,7 @@ Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](
 
 1. Nahraďte `CLUSTERNAME` názvem vašeho clusteru v následující adrese URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Pak zadejte adresu URL do webového prohlížeče. Zadejte své uživatelské jméno a heslo pro přihlášení ke clusteru.
 
-1. Na stránce Zeppelin vyberte **vytvořit novou poznámku**.
+1. Na stránce Zeppelin vyberte **vytvořit novou poznámku** .
 
     ![Zeppelin interaktivní dotazy HDInsight](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
 
@@ -40,13 +40,13 @@ Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](
     - Poznámka název: zadejte název poznámky.
     - Výchozí Interpret: v rozevíracím seznamu vyberte **JDBC** .
 
-    Pak vyberte **vytvořit poznámku**.
+    Pak vyberte **vytvořit poznámku** .
 
 1. Ujistěte se, že se v hlavičce poznámkového bloku zobrazuje stav připojeno. Je označený zelenou tečkou v pravém horním rohu.
 
     ![Stav poznámkového bloku Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Stav poznámkového bloku Zeppelin")
 
-1. Vytvořte tabulku HBA. Zadejte následující příkaz a stiskněte klávesu **SHIFT + ENTER**:
+1. Vytvořte tabulku HBA. Zadejte následující příkaz a stiskněte klávesu **SHIFT + ENTER** :
 
     ```sql
     %jdbc(phoenix)
@@ -98,5 +98,5 @@ Cluster Apache HBA v HDInsight. Přečtěte si téma Začínáme [s Apache HBA](
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Apache Phoenix teď podporuje Zeppelin ve službě Azure HDInsight](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/)
+- [Apache Phoenix teď podporuje Zeppelin ve službě Azure HDInsight](/archive/blogs/ashish/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight)
 - [Gramatika Apache Phoenix](https://phoenix.apache.org/language/index.html)

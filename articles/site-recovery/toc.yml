@@ -164,7 +164,7 @@
       href: recovery-plan-overview.md
     - name: O migraci do Azure
       href: migrate-overview.md
-    - name: Řízení přístupu na základě role s využitím Site Recovery
+    - name: Informace o řízení přístupu na základě role v Azure s využitím Site Recovery
       href: site-recovery-role-based-linked-access-control.md
     - name: O zotavení po havárii do místní sekundární lokality
       items:

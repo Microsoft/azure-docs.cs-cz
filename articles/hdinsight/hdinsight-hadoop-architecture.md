@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: cbd1303417f008da476356a274dde30d7d02d36f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505501"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541940"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
 
@@ -37,7 +37,7 @@ Když aplikace MapReduce běží na clusteru, správce prostředků poskytne apl
 
 Správce prostředků taky spouští proces webového serveru, který poskytuje webové uživatelské rozhraní pro monitorování stavu aplikací.
 
-Když uživatel odešle aplikaci MapReduce ke spuštění v clusteru, aplikace se odešle do Správce prostředků. Správce prostředků pak přiděluje kontejner na dostupných uzlech NodeManager. Uzly NodeManager jsou místo, kde se aplikace skutečně spouští. První přidělený kontejner spustí speciální aplikaci s názvem ApplicationMaster. Tento ApplicationMaster zodpovídá za získání prostředků ve formě dalších kontejnerů potřebných ke spuštění odeslané aplikace. ApplicationMaster prověřuje fáze aplikace, jako je například fáze mapy a zmenšení fáze, a okolnosti, kolik dat je potřeba zpracovat. ApplicationMaster pak vyžádá (*vyjednávat*) prostředky od správce prostředků jménem aplikace. Správce prostředků pak udělí prostředky z NodeManagers v clusteru do ApplicationMaster, aby ho mohl použít při spouštění aplikace.
+Když uživatel odešle aplikaci MapReduce ke spuštění v clusteru, aplikace se odešle do Správce prostředků. Správce prostředků pak přiděluje kontejner na dostupných uzlech NodeManager. Uzly NodeManager jsou místo, kde se aplikace skutečně spouští. První přidělený kontejner spustí speciální aplikaci s názvem ApplicationMaster. Tento ApplicationMaster zodpovídá za získání prostředků ve formě dalších kontejnerů potřebných ke spuštění odeslané aplikace. ApplicationMaster prověřuje fáze aplikace, jako je například fáze mapy a zmenšení fáze, a okolnosti, kolik dat je potřeba zpracovat. ApplicationMaster pak vyžádá ( *vyjednávat* ) prostředky od správce prostředků jménem aplikace. Správce prostředků pak udělí prostředky z NodeManagers v clusteru do ApplicationMaster, aby ho mohl použít při spouštění aplikace.
 
 NodeManagers spustí úlohy, které tvoří aplikaci, a pak oznámí jejich průběh a stav zpět do ApplicationMaster. ApplicationMaster v nástroji zase hlásí stav aplikace zpět do Správce prostředků. Správce prostředků vrátí všechny výsledky klientovi.
 
@@ -53,12 +53,12 @@ Pokud chcete obnovit soubor z účtu úložiště, přečtěte si:
 
 ### <a name="azure-storage"></a>Azure Storage
 
-* [Obnovitelné odstranění objektů blob služby Azure Storage](../storage/blobs/storage-blob-soft-delete.md)
-* [Obnovit objekt BLOB](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+* [Obnovitelné odstranění objektů blob služby Azure Storage](../storage/blobs/soft-delete-blob-overview.md)
+* [Obnovit objekt BLOB](/rest/api/storageservices/undelete-blob)
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
-[Obnovit – AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+[Obnovit – AzDataLakeStoreDeletedItem](/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen2
 

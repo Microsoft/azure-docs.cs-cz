@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 6a01e86f4afe397ed78cd279231a2429b17c60a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57cbfa356961aca778032b6e3552cffb88b6ab3d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88651365"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532998"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí prostředí PowerShell
 
@@ -25,13 +25,13 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu budete ke clusteru přistupovat přímo pomocí SSH. Pokud chcete k platformě Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky. Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* Prostředí PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/) installed.
+* Prostředí PowerShell [AZ Module](/powershell/azure/) installed.
 
 * Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -232,7 +232,7 @@ V této části získáte informace o hostiteli z REST API Apache Ambari v clust
 
 ## <a name="manage-apache-kafka-topics"></a>Správa témat Apache Kafka
 
-Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí nástroje `kafka-topics.sh`.
+Kafka ukládá datové proudy do *témat* . Témata můžete spravovat pomocí nástroje `kafka-topics.sh`.
 
 * **K vytvoření tématu** použijte tento příkaz v připojení SSH:
 
@@ -240,7 +240,7 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    Tento příkaz se připojí k hostiteli Zookeeper s použitím informací uložených v proměnné `$KAFKAZKHOSTS`. Pak vytvoří téma Kafka s názvem **test**. 
+    Tento příkaz se připojí k hostiteli Zookeeper s použitím informací uložených v proměnné `$KAFKAZKHOSTS`. Pak vytvoří téma Kafka s názvem **test** . 
 
     * Data uložená v tomto tématu jsou rozdělená mezi osm oddílů.
 
@@ -250,7 +250,7 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
         
         V oblastech se třemi doménami selhání faktor replikace 3 umožní rozložení replik mezi domény selhání. V oblastech se dvěma doménami selhání faktor replikace 4 rozloží repliky rovnoměrně mezi domény selhání.
         
-        Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
+        Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
         Kafka nemá o doménách selhání Azure žádné informace. Při vytváření replik oddílu pro témata se nemusí repliky distribuovat správně z hlediska vysoké dostupnosti.
 
@@ -289,7 +289,7 @@ Další informace o příkazech, které jsou k dispozici v nástroji `kafka-topi
 
 ## <a name="produce-and-consume-records"></a>Produkce a konzumace záznamů
 
-Kafka ukládá *záznamy* v tématech. Záznamy jsou vytvářeny *producenty* a spotřebovávány *konzumenty*. Producenti a konzumenti komunikují se službou *zprostředkovatele Kafka*. Každý pracovní uzel v clusteru HDInsight je hostitelem zprostředkovatele Kafka.
+Kafka ukládá *záznamy* v tématech. Záznamy jsou vytvářeny *producenty* a spotřebovávány *konzumenty* . Producenti a konzumenti komunikují se službou *zprostředkovatele Kafka* . Každý pracovní uzel v clusteru HDInsight je hostitelem zprostředkovatele Kafka.
 
 Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je načíst pomocí konzumenta, použijte následující postup:
 
@@ -313,7 +313,7 @@ Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je na�
 
     Pokud používáte starší verzi Kafka, nahraďte `--bootstrap-server $KAFKABROKERS` za `--zookeeper $KAFKAZKHOSTS`.
 
-4. Konzumenta zastavíte stisknutím __Ctrl+C__.
+4. Konzumenta zastavíte stisknutím __Ctrl+C__ .
 
 Můžete také programově vytvořit producenty a spotřebitele. Příklad použití tohoto rozhraní API najdete v dokumentu [rozhraní API pro Apache Kafka výrobce a příjemce s](apache-kafka-producer-consumer-api.md) využitím služby HDInsight.
 

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 6d4539e5dbc7182386a60317a9ee45a986ffd61f
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999938"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543147"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (Preview)
 
@@ -43,7 +43,7 @@ V tomto diagramu musí klient (tj. prohlížeč nebo aplikace) nejdřív získat
 
 Stále se může jednat o mnoho starších verzí aplikací, které podporují jenom základní ověřování (tj. uživatelské jméno a heslo). V těchto scénářích můžete k připojení ke branám clusteru používat i základní ověřování HTTP. V takovém případě je nutné zajistit připojení k síti z uzlů brány do koncového bodu Active Directory Federation Services (AD FS) (AD FS), aby se zajistila přímá čára pozorování z uzlů brány.
 
-Následující diagram znázorňuje základní tok ověřování pro federované uživatele. Nejdřív se brána pokusí dokončit ověřování pomocí [ROPC toku](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc). V případě, že se do služby Azure AD nesynchronizují žádné hodnoty hash hesel, vrátí se ke zjištění AD FSho koncového bodu a dokončí ověřování tím, že se přistoupí ke koncovému bodu AD FS.
+Následující diagram znázorňuje základní tok ověřování pro federované uživatele. Nejdřív se brána pokusí dokončit ověřování pomocí [ROPC toku](../../active-directory/develop/v2-oauth-ropc.md). V případě, že se do služby Azure AD nesynchronizují žádné hodnoty hash hesel, vrátí se ke zjištění AD FSho koncového bodu a dokončí ověřování tím, že se přistoupí ke koncovému bodu AD FS.
 
 :::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagram znázorňující tok ověřování pomocí služby HDInsight ID Broker.":::
 
@@ -52,9 +52,9 @@ Následující diagram znázorňuje základní tok ověřování pro federované
 
 Vytvoření clusteru Balíček zabezpečení podniku s povoleným zprostředkovatelem HDInsight ID:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Postupujte podle základních kroků pro vytvoření clusteru Balíček zabezpečení podniku. Další informace najdete v tématu [Vytvoření clusteru HDInsight s balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
-1. Vyberte **Povolit zprostředkovatele ID HDInsight**.
+1. Vyberte **Povolit zprostředkovatele ID HDInsight** .
 
 Funkce služby HDInsight ID Broker přidá do clusteru jeden virtuální počítač navíc. Tento virtuální počítač je uzlem zprostředkovatele služby HDInsight ID a zahrnuje součásti serveru pro podporu ověřování. Uzel služby HDInsight ID je připojený k doméně Azure služba AD DS.
 
@@ -103,7 +103,7 @@ Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy 
 
 ## <a name="tool-integration"></a>Integrace nástrojů
 
-Nástroje HDInsight jsou aktualizované tak, aby nativně podporovaly OAuth. Tyto nástroje použijte pro moderní přístup založený na protokolu OAuth k clusterům. [Modul plug-in HDInsight IntelliJ](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) se dá použít pro aplikace založené na jazyce Java, jako je třeba Scala. [Nástroje Spark a podregistr pro Visual Studio Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) lze použít pro úlohy PySpark a podregistr. Nástroje podporují dávkové i interaktivní úlohy.
+Nástroje HDInsight jsou aktualizované tak, aby nativně podporovaly OAuth. Tyto nástroje použijte pro moderní přístup založený na protokolu OAuth k clusterům. [Modul plug-in HDInsight IntelliJ](../spark/apache-spark-intellij-tool-plugin.md#integrate-with-hdinsight-identity-broker-hib) se dá použít pro aplikace založené na jazyce Java, jako je třeba Scala. [Nástroje Spark a podregistr pro Visual Studio Code](../hdinsight-for-vscode.md) lze použít pro úlohy PySpark a podregistr. Nástroje podporují dávkové i interaktivní úlohy.
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Přístup SSH bez hodnoty hash hesla v Azure služba AD DS
 
@@ -117,11 +117,11 @@ Pokud chcete SSH na virtuální počítač připojený k doméně nebo spustit `
 
 Pokud vaše organizace nesynchronizuje hodnoty hash hesel do Azure služba AD DS, doporučujeme v Azure AD vytvořit jednoho pouze cloudového uživatele. Pak ji přiřaďte jako správce clusteru při vytváření clusteru a použijte ji pro účely správy. Můžete ji použít k získání kořenového přístupu k virtuálním počítačům přes SSH.
 
-Pokud chcete řešit problémy s ověřováním, přečtěte si [tuto příručku](https://docs.microsoft.com/azure/hdinsight/domain-joined/domain-joined-authentication-issues).
+Pokud chcete řešit problémy s ověřováním, přečtěte si [tuto příručku](./domain-joined-authentication-issues.md).
 
 ## <a name="clients-using-oauth-to-connect-to-an-hdinsight-gateway-with-hdinsight-id-broker"></a>Klienti, kteří používají OAuth pro připojení k bráně HDInsight pomocí služby HDInsight ID Broker
 
-V instalačním programu HDInsight ID Broker se můžou vlastní aplikace a klienti, kteří se připojují k bráně, aktualizovat tak, aby nejdřív získaly požadovaný token OAuth. Použijte postup v [tomto dokumentu](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) k získání tokenu s následujícími informacemi:
+V instalačním programu HDInsight ID Broker se můžou vlastní aplikace a klienti, kteří se připojují k bráně, aktualizovat tak, aby nejdřív získaly požadovaný token OAuth. Použijte postup v [tomto dokumentu](../../storage/common/storage-auth-aad-app.md) k získání tokenu s následujícími informacemi:
 
 *   Identifikátor URI prostředku OAuth: `https://hib.azurehdinsight.net` 
 *   AppId: 7865c1d2-F040-46cc-875f-831a1ef6a28a

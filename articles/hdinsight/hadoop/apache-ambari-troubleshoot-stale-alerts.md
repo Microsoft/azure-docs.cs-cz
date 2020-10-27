@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539106"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533831"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scénář: zastaralá upozornění Apache Ambari v Azure HDInsight
 
@@ -46,17 +46,17 @@ Hodnotu jednotlivého intervalu výstrah můžete zvýšit na základě doby ode
 
 1. V uživatelském rozhraní Apache Ambari vyberte kartu **výstrahy** .
 1. Vyberte název definice výstrahy, který chcete.
-1. Z definice vyberte **Upravit**.
-1. Zvyšte hodnotu **intervalu kontroly** a pak vyberte **Uložit**.
+1. Z definice vyberte **Upravit** .
+1. Zvyšte hodnotu **intervalu kontroly** a pak vyberte **Uložit** .
 
 ### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Zvyšte čas časového intervalu výstrahy pro Ambari výstrahy serveru.
 
 1. V uživatelském rozhraní Apache Ambari vyberte kartu **výstrahy** .
-1. V rozevíracím seznamu **skupiny** vyberte **AMBARI výchozí**.
+1. V rozevíracím seznamu **skupiny** vyberte **AMBARI výchozí** .
 1. Vyberte výstrahu **výstrahy serveru Ambari** .
-1. Z definice vyberte **Upravit**.
+1. Z definice vyberte **Upravit** .
 1. Zvyšte hodnotu **intervalu kontroly** .
-1. Zvyšte hodnotu **násobitele intervalu** a pak vyberte **Save (Uložit**).
+1. Zvyšte hodnotu **násobitele intervalu** a pak vyberte **Save (Uložit** ).
 
 ### <a name="disable-and-reenable-the-alert"></a>Zakázat a znovu povolit upozornění
 
@@ -65,10 +65,10 @@ Pokud chcete zahodit zastaralou výstrahu, zakažte ji a pak ji znovu povolte:
 1. V uživatelském rozhraní Apache Ambari vyberte kartu **výstrahy** .
 1. Vyberte název definice výstrahy, který chcete.
 1. Z definice vyberte možnost **povoleno** v pravém rohu uživatelského rozhraní.
-1. V automaticky otevíraném okně pro **potvrzení** vyberte **Potvrdit zakázat**.
+1. V automaticky otevíraném okně pro **potvrzení** vyberte **Potvrdit zakázat** .
 1. Počkejte několik sekund na vymazání všech výstrah "instance" zobrazených na stránce.
 1. Z definice vyberte v pravém dolním rohu uživatelského rozhraní možnost **zakázáno** .
-1. V automaticky otevíraném okně pro **potvrzení** vyberte **Potvrdit povolit**.
+1. V automaticky otevíraném okně pro **potvrzení** vyberte **Potvrdit povolit** .
 
 ### <a name="increase-the-alert-grace-period"></a>Prodloužit dobu odkladu výstrahy
 
@@ -84,6 +84,6 @@ Pokud se tady problém nezmiňuje nebo ho nemůžete vyřešit, navštivte jeden
 
 * Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) na Twitteru. Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-* Pokud potřebujete další pomoc, odešlete žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Tam si můžete vybrat nápovědu (**?**) z nabídky portál nebo otevřít podokno Nápověda a **Podpora** . Další informace najdete v tématu [Postup vytvoření žádosti o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
+* Pokud potřebujete další pomoc, odešlete žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Tam si můžete vybrat nápovědu ( **?** ) z nabídky portál nebo otevřít podokno Nápověda a **Podpora** . Další informace najdete v tématu [Postup vytvoření žádosti o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
   Součástí předplatného Microsoft Azure je podpora správy předplatných a fakturace. Technická podpora je dostupná prostřednictvím [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

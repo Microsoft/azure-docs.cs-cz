@@ -33,13 +33,13 @@ Pokud stránka v internetovém prohlížeči zamrzne, vyzkoušejte postupně vš
 - Použijte privátní režim prohlížeče:
 
    - **Edge:** Otevřete **Nastavení** (tři tečky vedle vašeho profilového obrázku), vyberte **Nové okno InPrivate** a potom přejděte na [Azure Portal](https://portal.azure.com/) nebo do [Centra účtů Azure](https://account.azure.com/Subscriptions) a přihlaste se. 
-   - **Chrome:** Zvolte režim **Incognito**.
-   - **Safari:** Zvolte **Soubor** a potom **Nové privátní okno**.
+   - **Chrome:** Zvolte režim **Incognito** .
+   - **Safari:** Zvolte **Soubor** a potom **Nové privátní okno** .
 
 - Vymažte mezipaměť a odstraňte internetové soubory cookie:
 
-   - **Edge:** Otevřete **Nastavení** a vyberte **Ochrana osobních údajů a služby**. Postupujte podle kroků v části **Vymazat údaje o procházení**. Ověřte, že jsou zaškrtnuta zaškrtávací políčka **Historie procházení**, **Historie stahování** a **Obrázky a soubory v mezipaměti**, a potom vyberte **Odstranit**.
-   - **Chrome:** Zvolte **Nastavení** a v části **Ochrana soukromí a zabezpečení** vyberte **Vymazat údaje o procházení**.
+   - **Edge:** Otevřete **Nastavení** a vyberte **Ochrana osobních údajů a služby** . Postupujte podle kroků v části **Vymazat údaje o procházení** . Ověřte, že jsou zaškrtnuta zaškrtávací políčka **Historie procházení** , **Historie stahování** a **Obrázky a soubory v mezipaměti** , a potom vyberte **Odstranit** .
+   - **Chrome:** Zvolte **Nastavení** a v části **Ochrana soukromí a zabezpečení** vyberte **Vymazat údaje o procházení** .
 
 ## <a name="you-are-automatically-signed-in-as-a-different-user"></a>Automaticky se přihlásíte jako jiný uživatel
 
@@ -49,13 +49,13 @@ Při řešení tohoto problému zkuste použít některou z následujících met
 
 - Vymažte mezipaměť a odstraňte internetové soubory cookie.
 
-   - **Edge:** Otevřete **Nastavení** a vyberte **Ochrana osobních údajů a služby**. Postupujte podle kroků v části **Vymazat údaje o procházení**. Ověřte, že jsou zaškrtnuta zaškrtávací políčka **Historie procházení**, **Historie stahování**, **Soubory cookie** a **Obrázky a soubory v mezipaměti**, a potom vyberte **Odstranit**.
-   - **Chrome:** Zvolte **Nastavení** a v části **Ochrana soukromí a zabezpečení** vyberte **Vymazat údaje o procházení**.
+   - **Edge:** Otevřete **Nastavení** a vyberte **Ochrana osobních údajů a služby** . Postupujte podle kroků v části **Vymazat údaje o procházení** . Ověřte, že jsou zaškrtnuta zaškrtávací políčka **Historie procházení** , **Historie stahování** , **Soubory cookie** a **Obrázky a soubory v mezipaměti** , a potom vyberte **Odstranit** .
+   - **Chrome:** Zvolte **Nastavení** a v části **Ochrana soukromí a zabezpečení** vyberte **Vymazat údaje o procházení** .
 - Obnovte výchozí nastavení prohlížeče.
 - Použijte privátní režim prohlížeče. 
    - **Edge:** Otevřete **Nastavení** (tři tečky vedle vašeho profilového obrázku), vyberte **Nové okno InPrivate** a potom přejděte na [Azure Portal](https://portal.azure.com/) nebo do [Centra účtů Azure](https://account.azure.com/Subscriptions) a přihlaste se. 
-   - **Chrome:** Zvolte režim **Incognito**.
-   - **Safari:** Zvolte **Soubor** a potom **Nové privátní okno**.
+   - **Chrome:** Zvolte režim **Incognito** .
+   - **Safari:** Zvolte **Soubor** a potom **Nové privátní okno** .
 
 ## <a name="i-can-sign-in-but-i-see-the-error-no-subscriptions-found"></a>Můžu se přihlásit, ale zobrazí se chyba typu Nenašla se žádná předplatná
 
@@ -73,8 +73,8 @@ Pokud chcete tento problém vyřešit:
 Zkontrolujte, jestli účet, který jste použili, je účet správce účtu. Pokud chcete ověřit, kdo je správce účtu, postupujte takto:
 
 1.  Přihlaste se k [zobrazení předplatných na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1.  Vyberte předplatné, které chcete zkontrolovat, a potom vyberte **Nastavení**.
-1.  Vyberte **Vlastnosti**. Správce účtu předplatného se zobrazí v poli **Správce účtu**.
+1.  Vyberte předplatné, které chcete zkontrolovat, a potom vyberte **Nastavení** .
+1.  Vyberte **Vlastnosti** . Správce účtu předplatného se zobrazí v poli **Správce účtu** .
 
 ## <a name="additional-help-resources"></a>Další pomocné materiály
 

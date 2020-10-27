@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak integrovat NetSuite s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -55,14 +55,14 @@ Pokud chcete nakonfigurovat integraci NetSuite do služby Azure AD, přidejte Ne
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
 1. V levém podokně vyberte službu **Azure Active Directory** .
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **NetSuite** .
-1. V podokně výsledků vyberte **NetSuite**a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+1. V podokně výsledků vyberte **NetSuite** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netsuite"></a>Konfigurace a testování jednotného přihlašování Azure AD pro NetSuite
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí NetSuite pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v NetSuite.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí NetSuite pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v NetSuite.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí NetSuite, dokončete následující stavební bloky:
 
@@ -77,9 +77,9 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal, udělejte toto:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **NetSuite** vyhledejte část **Správa** a pak vyberte **jednotné přihlašování**.
-1. V podokně **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. V podokně **nastavit jednu Sign-On s** podoknem SAML vyberte ikonu **Upravit** (tužka) vedle **základní konfigurace SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **NetSuite** vyhledejte část **Správa** a pak vyberte **jednotné přihlašování** .
+1. V podokně **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
+1. V podokně **nastavit jednu Sign-On s** podoknem SAML vyberte ikonu **Upravit** (tužka) vedle **základní konfigurace SAML** .
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 1. Kromě toho očekává aplikace NetSuite několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name | Zdrojový atribut |
+    | Název | Zdrojový atribut |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -126,32 +126,32 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé** .
 
 1. V horní části obrazovky vyberte **Nový uživatel** .
 
 1. V podokně vlastnosti **uživatele** proveďte následující kroky:
 
-   a. Do pole **název** zadejte **B. Simon**.  
+   a. Do pole **název** zadejte **B. Simon** .  
    b. Do pole **uživatelské jméno** zadejte username@companydomain.extension (například B.Simon@contoso.com ).  
    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .  
-   d. Vyberte **Vytvořit**.
+   d. Vyberte **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte uživateli B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k NetSuite.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **NetSuite**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **NetSuite** .
 1. V podokně Přehled vyhledejte část **Správa** a potom vyberte odkaz **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele** a potom v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele** a potom v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Tlačítko Přidat uživatele](common/add-assign-user.png)
 
-1. V podokně **Uživatelé a skupiny** v rozevíracím seznamu **Uživatelé** vyberte **B. Simon**a pak vyberte tlačítko **Vybrat** v dolní části obrazovky.
+1. V podokně **Uživatelé a skupiny** v rozevíracím seznamu **Uživatelé** vyberte **B. Simon** a pak vyberte tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, udělejte toto:
 
    a. V podokně **Vybrat roli** vyberte v rozevíracím seznamu příslušnou roli pro uživatele.  
@@ -162,41 +162,41 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
 1. V prohlížeči otevřete novou kartu a přihlaste se k webu NetSuite společnosti jako správce.
 
-2. V horním navigačním panelu vyberte možnost **Nastavení**a potom vyberte možnost **Company**  >  **Povolit funkce**společnosti.
+2. V horním navigačním panelu vyberte možnost **Nastavení** a potom vyberte možnost **Company**  >  **Povolit funkce** společnosti.
 
     ![Snímek obrazovky ukazuje možnost povolit funkce vybrané od společnosti.](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-3. Na panelu nástrojů uprostřed stránky vyberte možnost **SuiteCloud**.
+3. Na panelu nástrojů uprostřed stránky vyberte možnost **SuiteCloud** .
 
     ![Snímek obrazovky zobrazuje SuiteCloud vybrané.](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-4. V části **spravovat ověřování**zaškrtněte políčko **jednotné přihlašování SAML** , chcete-li povolit možnost jednotného přihlašování SAML v NetSuite.
+4. V části **spravovat ověřování** zaškrtněte políčko **jednotné přihlašování SAML** , chcete-li povolit možnost jednotného přihlašování SAML v NetSuite.
 
     ![Snímek obrazovky ukazuje spravovat ověřování, kde můžete vybrat jednotné přihlašování SAML.](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-5. V horním navigačním panelu vyberte možnost **Nastavení**.
+5. V horním navigačním panelu vyberte možnost **Nastavení** .
 
     ![Snímek obrazovky se zobrazí nastavení vybrané na navigačním panelu NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
-6. V seznamu **úlohy instalace** vyberte možnost **integrace**.
+6. V seznamu **úlohy instalace** vyberte možnost **integrace** .
 
     ![Snímek obrazovky ukazuje integraci vybranou z úloh nastavení.](./media/NetSuite-tutorial/ns-integration.png)
 
-7. V části **spravovat ověřování**vyberte **jednotné přihlašování SAML**.
+7. V části **spravovat ověřování** vyberte **jednotné přihlašování SAML** .
 
     ![Snímek obrazovky: zobrazení jednotného přihlašování SAML vybrané z položky integrace v ÚLOHách nastavení.](./media/NetSuite-tutorial/ns-saml.png)
 
-8. V podokně **Nastavení SAML** v části **Konfigurace NetSuite**postupujte takto:
+8. V podokně **Nastavení SAML** v části **Konfigurace NetSuite** postupujte takto:
 
     ![Snímek obrazovky ukazuje nastavení SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. Zaškrtněte políčko **primární metoda ověřování** .
 
-    b. V části **metadata poskytovatele identity SAMLV2**vyberte **nahrát soubor metadat IDP**a pak vyberte **Procházet** a nahrajte soubor metadat, který jste stáhli z Azure Portal.
+    b. V části **metadata poskytovatele identity SAMLV2** vyberte **nahrát soubor metadat IDP** a pak vyberte **Procházet** a nahrajte soubor metadat, který jste stáhli z Azure Portal.
 
-    c. Vyberte **Odeslat**.
+    c. Vyberte **Odeslat** .
 
-9. V horním navigačním panelu NetSuite vyberte **Nastavení**a pak vyberte **Company**  >  **informace o**společnosti společnosti.
+9. V horním navigačním panelu NetSuite vyberte **Nastavení** a pak vyberte **Company**  >  **informace o** společnosti společnosti.
 
     ![Snímek obrazovky zobrazuje informace o společnosti vybrané ze společnosti.](./media/NetSuite-tutorial/ns-com.png)
 
@@ -208,39 +208,39 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
 10. Předtím, než mohou uživatelé provádět jednotné přihlašování do NetSuite, musí být nejprve přiřazena příslušná oprávnění v NetSuite. Chcete-li přiřadit tato oprávnění, postupujte takto:
 
-    a. V horním navigačním panelu vyberte možnost **Nastavení**.
+    a. V horním navigačním panelu vyberte možnost **Nastavení** .
 
     ![Snímek obrazovky se zobrazí nastavení vybrané na navigačním panelu NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
-    b. V levém podokně vyberte **Uživatelé/role**a pak vyberte **Spravovat role**.
+    b. V levém podokně vyberte **Uživatelé/role** a pak vyberte **Spravovat role** .
 
     ![Snímek obrazovky se zobrazí v podokně Spravovat role, kde můžete vybrat možnost Nová role.](./media/NetSuite-tutorial/ns-manage-roles.png)
 
-    c. Vyberte **Nová role**.
+    c. Vyberte **Nová role** .
 
     d. Zadejte **název** nové role.
 
     ![Snímek obrazovky se zobrazí Správce instalace, kde můžete zadat název role.](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Vyberte **Uložit**.
+    e. Vyberte **Uložit** .
 
-    f. V horním navigačním panelu vyberte **oprávnění**. Pak vyberte **Nastavení**.
+    f. V horním navigačním panelu vyberte **oprávnění** . Pak vyberte **Nastavení** .
 
     ![Snímek obrazovky se zobrazí karta nastavení, kde můžete zadat hodnoty, které jsou popsány.](./media/NetSuite-tutorial/ns-sso.png)
 
-    například Vyberte **jednotné přihlašování SAML**a pak vyberte **Přidat**.
+    například Vyberte **jednotné přihlašování SAML** a pak vyberte **Přidat** .
 
-    h. Vyberte **Uložit**.
+    h. Vyberte **Uložit** .
 
-    i. V horním navigačním panelu vyberte **Nastavení**a pak vyberte **Správce instalace**.
+    i. V horním navigačním panelu vyberte **Nastavení** a pak vyberte **Správce instalace** .
 
     ![Snímek obrazovky se zobrazí nastavení vybrané na navigačním panelu NETSUITE.](./media/NetSuite-tutorial/ns-setup.png)
 
-    j. V levém podokně vyberte **Uživatelé/role**a pak vyberte **Spravovat uživatele**.
+    j. V levém podokně vyberte **Uživatelé/role** a pak vyberte **Spravovat uživatele** .
 
     ![Snímek obrazovky se zobrazí v podokně spravovat uživatele, kde můžete vybrat možnost ukázkový tým sady.](./media/NetSuite-tutorial/ns-manage-users.png)
 
-    k. Vyberte testovacího uživatele, vyberte **Upravit**a pak vyberte kartu **přístup** .
+    k. Vyberte testovacího uživatele, vyberte **Upravit** a pak vyberte kartu **přístup** .
 
     ![Snímek obrazovky se zobrazí v podokně spravovat uživatele, kde můžete vybrat upravit.](./media/NetSuite-tutorial/ns-edit-user.png)
 
@@ -248,7 +248,7 @@ V této části povolíte uživateli B. Simon používat jednotné přihlašová
 
     ![Snímek obrazovky se zobrazí správce vybraného od zaměstnance.](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Vyberte **Uložit**.
+    m. Vyberte **Uložit** .
 
 ### <a name="create-the-netsuite-test-user"></a>Vytvořit testovacího uživatele NetSuite
 

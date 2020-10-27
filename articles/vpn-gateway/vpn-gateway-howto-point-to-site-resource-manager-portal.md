@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: e1a0234754c2966313e0b35dd59bed79e7736a2c
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 18260867f0258ebe3cc885c5a1b1754f143bfccc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328423"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541600"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: Azure Portal
 
@@ -85,7 +85,7 @@ Azure používá certifikáty k ověřování klientů, kteří se připojují k
 
 Fond adres klienta je rozsah privátních IP adres, který zadáte. Klienti připojující se přes síť VPN typu Point-to-Site dynamicky obdrží IP adresu z tohoto rozsahu. Použijte rozsah privátních IP adres, který se nepřekrývá s místním umístěním, ze kterého se připojujete, ani s virtuální sítí, ke které se chcete připojit. Pokud nakonfigurujete více protokolů a SSTP je jedním z protokolů, nakonfigurované fondy adres se rovnoměrně rozdělí mezi nakonfigurované protokoly.
 
-1. Jakmile je brána virtuální sítě vytvořená, přejděte do části **Nastavení** na stránce brány virtuální sítě. V části **Nastavení** vyberte **Konfigurace Point-to-site**. Kliknutím na **Konfigurovat nyní** otevřete stránku konfigurace.
+1. Jakmile je brána virtuální sítě vytvořená, přejděte do části **Nastavení** na stránce brány virtuální sítě. V části **Nastavení** vyberte **Konfigurace Point-to-site** . Kliknutím na **Konfigurovat nyní** otevřete stránku konfigurace.
 
    ![Stránka Point-to-Site](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/point-to-site-configure.png "Konfigurace Point-to-site teď")
 2. Na stránce **Konfigurace typu Point-to-site** můžete nakonfigurovat celou řadu nastavení. Pokud na této stránce nevidíte Typ tunelového propojení nebo typ ověřování, vaše brána používá základní SKU. Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS. Pokud chcete použít tato nastavení, musíte bránu odstranit a znovu vytvořit pomocí jiné SKU brány.
@@ -106,7 +106,7 @@ Můžete vybrat typ tunelového propojení. Možnosti tunelu jsou OpenVPN, SSTP 
 
 ## <a name="6-configure-authentication-type"></a><a name="authenticationtype"></a>6. konfigurace typu ověřování
 
-Jako **typ ověřování**vyberte **certifikát Azure**.
+Jako **typ ověřování** vyberte **certifikát Azure** .
 
   ![Typ ověřování](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authentication-type.png "zadat typ ověřování")
 
@@ -114,12 +114,12 @@ Jako **typ ověřování**vyberte **certifikát Azure**.
 
 Můžete nahrát další důvěryhodné kořenové certifikáty až do celkového počtu 20. Jakmile jsou data veřejného certifikátu nahraná, Azure ho může použít k ověřování klientů s nainstalovaným klientským certifikátem vygenerovaným z důvěryhodného kořenového certifikátu. Nahrajte do Azure informace o veřejném klíči pro kořenový certifikát.
 
-1. Certifikáty se přidávají na stránce **Konfigurace Point-to-Site** v části **Kořenový certifikát**.
+1. Certifikáty se přidávají na stránce **Konfigurace Point-to-Site** v části **Kořenový certifikát** .
 2. Ujistěte se, že jste kořenový certifikát vyexportovali jako soubor .cer X.509 s kódováním Base-64. Je nutné certifikát exportovat v tomto formátu, abyste ho mohli otevřít v textovém editoru.
 3. Otevřete certifikát v textovém editoru, například v Poznámkovém bloku. Při kopírování dat certifikátu se ujistěte, že kopírujete text jako jeden souvislý řádek bez konců řádků nebo odřádkování. Pokud chcete zobrazit konce řádků a odřádkování, může být nutné upravit zobrazení v textovém editoru na Zobrazit symbol / Zobrazit všechny znaky. Zkopírujte pouze tuto část jako jeden souvislý řádek:
 
    ![Data certifikátu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/notepadroot.png "kopírovat data kořenového certifikátu")
-4. Vložte data certifikátu do pole **Data veřejného certifikátu**. **Pojmenujte** certifikát a pak vyberte **Uložit**. Můžete přidat až 20 důvěryhodných kořenových certifikátů.
+4. Vložte data certifikátu do pole **Data veřejného certifikátu** . **Pojmenujte** certifikát a pak vyberte **Uložit** . Můžete přidat až 20 důvěryhodných kořenových certifikátů.
 
    ![Vložit data certifikátu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/uploaded.png "Vložit data certifikátu")
 5. V horní části stránky vyberte **Uložit** a uložte všechna nastavení konfigurace.
@@ -149,7 +149,7 @@ Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zaříze
 
 1. Chcete-li se připojit ke své síti VNet, přejděte na klientském počítači na připojení VPN a vyhledejte připojení VPN, které jste vytvořili. Bude mít stejný název jako vaše virtuální síť. Vyberte **Connect** (Připojit). Může se zobrazit místní zpráva týkající se použití certifikátu. Pokud chcete používat zvýšená oprávnění, vyberte **pokračovat** .
 
-2. Na stránce Stav **připojení** vyberte **připojit** a spusťte připojení. Pokud uvidíte obrazovku **Výběr certifikátu**, ujistěte se, že zobrazený klientský certifikát je ten, který chcete pro připojení použít. Pokud není, vyberte pomocí šipky rozevíracího seznamu správný certifikát a pak vyberte **OK**.
+2. Na stránce Stav **připojení** vyberte **připojit** a spusťte připojení. Pokud uvidíte obrazovku **Výběr certifikátu** , ujistěte se, že zobrazený klientský certifikát je ten, který chcete pro připojení použít. Pokud není, vyberte pomocí šipky rozevíracího seznamu správný certifikát a pak vyberte **OK** .
 
    ![Připojení klienta VPN k Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png "připojit")
 3. Vaše připojení bylo vytvořeno.
@@ -162,7 +162,7 @@ Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zaříze
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Připojení z klienta VPN systému Mac
 
-V dialogovém okně síť Najděte profil klienta, který chcete použít, zadejte nastavení z [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)a pak vyberte **připojit**.
+V dialogovém okně síť Najděte profil klienta, který chcete použít, zadejte nastavení z [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac)a pak vyberte **připojit** .
 
 Podrobné pokyny najdete v tématu [install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) . Pokud máte potíže s připojením, ověřte, že brána virtuální sítě nepoužívá základní SKU. Základní SKU není pro klienty Mac podporováno.
 
@@ -172,7 +172,7 @@ Podrobné pokyny najdete v tématu [install-Mac (OS X)](https://docs.microsoft.c
 
 Tyto pokyny platí pro klienty se systémem Windows.
 
-1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all*.
+1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all* .
 2. Zkontrolujte výsledky. Všimněte si, že IP adresa, kterou jste obdrželi, je jedna z adres z fondu adres klienta VPN připojení Point-to-Site, který jste určili během konfigurace. Výsledky jsou podobné tomuto příkladu:
 
    ```
@@ -192,7 +192,11 @@ Tyto pokyny platí pro klienty se systémem Windows.
 
 Tyto pokyny platí pro klienty se systémem Windows.
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
+
+* Ověřte, že se po zadání IP adres serveru DNS pro virtuální síť vygeneroval balíček pro konfiguraci klienta VPN. Pokud jste aktualizovali IP adresy serveru DNS, vygenerujte a nainstalujte nový balíček pro konfiguraci klienta VPN.
+
+* Pomocí příkazu ipconfig zkontrolujte IPv4 adresu přiřazenou adaptéru Ethernet na počítači, ze kterého se připojujete. Pokud je IP adresa v rámci rozsahu adres virtuální sítě, ke které se připojujete, nebo v rámci rozsahu adres VPNClientAddressPool, tato situace se označuje jako překrývající se adresní prostor. Když se adresní prostor tímto způsobem překrývá, síťový provoz nemá přístup do Azure a zůstane v místní síti.
 
 ## <a name="to-add-or-remove-trusted-root-certificates"></a><a name="add"></a>Přidání a odebrání důvěryhodných kořenových certifikátů
 
@@ -222,7 +226,7 @@ Klientský certifikát můžete odvolat tím, že přidáte jeho kryptografický
 2. Zkopírujte údaje do textového editoru a smažte všechny mezery, aby vznikl souvislý řetězec.
 3. Přejděte na stránku **Konfigurace Point-to-Site** brány virtuální sítě. To je stejná stránka, kterou jste použili k [nahrání důvěryhodného kořenového certifikátu](#uploadfile).
 4. V části **Odvolané certifikáty** zadejte popisný název certifikátu (nemusí to být CN certifikátu).
-5. Zkopírujte řetězec kryptografického otisku a vložte jej do pole **Kryptografický otisk**.
+5. Zkopírujte řetězec kryptografického otisku a vložte jej do pole **Kryptografický otisk** .
 6. Kryptografický otisk se ověří a automaticky přidá do seznamu odvolaných certifikátů. Na obrazovce se zobrazí zpráva informující o probíhající aktualizaci seznamu. 
 7. Po dokončení aktualizace už nebude možné certifikát použít k připojení. Klientům, kteří se pokusí připojit pomocí tohoto certifikátu, se zobrazí zpráva s informací o neplatnosti certifikátu.
 

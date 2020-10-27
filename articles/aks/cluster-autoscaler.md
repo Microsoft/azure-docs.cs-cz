@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí automatického škálování clusteru autom
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103862"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542637"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru pro splnění požadavků aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -47,7 +47,7 @@ Cluster a horizontální, pod kterými můžou spolupracovníci spolupracovat a 
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>Vytvoření clusteru AKS a povolení automatického škálování clusteru
 
-Pokud potřebujete vytvořit cluster AKS, použijte příkaz [AZ AKS Create][az-aks-create] . Pokud chcete zapnout a nakonfigurovat automatické škálování clusteru ve fondu uzlů pro cluster, použijte parametr *--Enable-cluster-autoscaleer* a určete uzel *--min-Count* a *--Max-Count*.
+Pokud potřebujete vytvořit cluster AKS, použijte příkaz [AZ AKS Create][az-aks-create] . K povolení a konfiguraci automatického škálování clusteru ve fondu uzlů pro cluster použijte `--enable-cluster-autoscaler` parametr a určete uzel `--min-count` a `--max-count` .
 
 > [!IMPORTANT]
 > Automatické škálování clusteru je komponenta Kubernetes. I když cluster AKS používá pro uzly sadu škálování virtuálního počítače, nepovolujte ručně ani neupravujte nastavení automatického škálování sady škálování v Azure Portal nebo pomocí Azure CLI. Umožněte, aby modul automatického škálování clusteru Kubernetes spravoval požadovaná nastavení škálování. Další informace najdete v tématu [Změna prostředků AKS ve skupině prostředků uzlu?][aks-faq-node-resource-group]
@@ -74,7 +74,7 @@ Vytvoření clusteru a konfigurace nastavení automatického škálování clust
 
 ## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>Aktualizace stávajícího clusteru AKS pro povolení automatického škálování clusteru
 
-Pomocí příkazu [AZ AKS Update][az-aks-update] povolte a nakonfigurujte pro existující cluster automatické škálování clusteru ve fondu uzlů. Použijte parametr *--Enable-cluster-autoscaleer* a určete uzel *--min-Count* a *--Max-Count*.
+Pomocí příkazu [AZ AKS Update][az-aks-update] povolte a nakonfigurujte pro existující cluster automatické škálování clusteru ve fondu uzlů. Použijte `--enable-cluster-autoscaler` parametr a zadejte uzel `--min-count` a `--max-count` .
 
 > [!IMPORTANT]
 > Automatické škálování clusteru je komponenta Kubernetes. I když cluster AKS používá pro uzly sadu škálování virtuálního počítače, nepovolujte ručně ani neupravujte nastavení automatického škálování sady škálování v Azure Portal nebo pomocí Azure CLI. Umožněte, aby modul automatického škálování clusteru Kubernetes spravoval požadovaná nastavení škálování. Další informace najdete v tématu [Změna prostředků AKS ve skupině prostředků uzlu?][aks-faq-node-resource-group]
@@ -97,7 +97,7 @@ Aktualizace clusteru a konfigurace nastavení automatického škálování clust
 > [!IMPORTANT]
 > Pokud máte ve svém clusteru AKS více fondů uzlů, přeskočte do [části Automatické škálování s více fondy agentů](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Clustery s více fondy agentů vyžadují použití `az aks nodepool` sady příkazů ke změně vlastností specifických pro fond uzlů místo `az aks` .
 
-Pokud jste v předchozím kroku vytvořili cluster AKS nebo aktualizovali existující fond uzlů, byl minimální počet uzlů pro automatické škálování clusteru nastavený na *1*a maximální počet uzlů byl nastavený na *3*. Jak vaše aplikace vyžaduje změnu, možná budete muset upravit počet uzlů automatického škálování clusteru.
+Pokud jste v předchozím kroku vytvořili cluster AKS nebo aktualizovali existující fond uzlů, byl minimální počet uzlů pro automatické škálování clusteru nastavený na *1* a maximální počet uzlů byl nastavený na *3* . Jak vaše aplikace vyžaduje změnu, možná budete muset upravit počet uzlů automatického škálování clusteru.
 
 Chcete-li změnit počet uzlů, použijte příkaz [AZ AKS Update][az-aks-update] .
 
@@ -129,9 +129,16 @@ Můžete taky nakonfigurovat podrobnější informace o automatickém škálová
 | horizontální navýšení kapacity – zpoždění po chybě   | Jak dlouho po selhání horizontálního navýšení kapacity se zkušební verze obnoví                     | 3 minuty     |
 | horizontální navýšení kapacity – nepotřebné         | Jak dlouho by měl uzel být nepotřebný, než bude mít nárok na horizontální navýšení kapacity                  | 10 minut    |
 | horizontální navýšení kapacity – nečitelný čas          | Doba, po kterou by měl být nečitelný uzel nutný, než bude mít nárok na horizontální navýšení kapacity         | 20 minut    |
-| škála-snížení využití – prahová hodnota | Úroveň využití uzlu definovaná jako součet požadovaných prostředků dělený kapacitou, pod kterou je možné uzel zvážit pro horizontální navýšení kapacity | 0.5 |
+| škála-snížení využití – prahová hodnota | Úroveň využití uzlu definovaná jako součet požadovaných prostředků dělený kapacitou, pod kterou je možné uzel zvážit pro horizontální navýšení kapacity | 0,5 |
 | Max – řádné – ukončení – s     | Maximální počet sekund, po které bude automatické škálování clusteru čekat po ukončení při pokusu o horizontální navýšení kapacity uzlu. | 600 sekund   |
-| rovnováha – podobný uzel – skupiny | Zjištění podobných fondů uzlů a vyvážení počtu uzlů mezi nimi | false (nepravda) |
+| rovnováha – podobný uzel – skupiny      | Detekuje podobné fondy uzlů a vyrovnává počet uzlů mezi nimi.                 | false (nepravda)         |
+| rozbalovací                         | Typ [rozšíření](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) fondu uzlů, které se má použít při horizontálním navýšení kapacity Možné hodnoty: `most-pods` , `random` , `least-waste` | vybraných | 
+| Přeskočení uzlů – s-Local-Storage    | Pokud ano, nebude automatické škálování clusteru nikdy odstraňovat uzly s lusky s místním úložištěm, například EmptyDir nebo HostPath. | true |
+| Skip-Node-with-System-lusky      | Pokud ano, nebude automatické škálování clusteru nikdy odstraňovat uzly s lusky z Kube-System (kromě DaemonSet nebo zrcadlových lusků). | true | 
+| Max – prázdné – hromadné odstranění            | Maximální počet prázdných uzlů, které lze odstranit současně.                      | 10 uzlů      |
+| nové-pod-škálovat – zpoždění           | U scénářů, jako je například škálování na úrovni shluku a dávek, které nechcete, aby certifikační autorita fungovala před tím, než může Plánovač Kubernetes naplánovat všechny lusky, můžete certifikační autoritě sdělit, aby se neplánované lusky ignorovala před určitým                                                                                                                | 10 sekund    |
+| Max-Total-unreadal-PERCENTAGE     | Maximální procento nepřečtených uzlů v clusteru Po překročení tohoto procenta ukončí certifikační autorita operace. | 45 % | 
+| ok – celkem – nepřečtené – počet           | Počet povolených nepřečtených uzlů bez ohledu na maximum-Total-unreadal-PERCENTAGE            | 3 uzly       |
 
 > [!IMPORTANT]
 > Profil automatického škálování clusteru má vliv na všechny fondy uzlů, které používají automatické škálování clusteru. Nemůžete nastavit profil automatického škálování na jeden fond uzlů.
@@ -194,7 +201,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>Zakázat automatické škálování clusteru
 
-Pokud už nechcete používat automatické škálování clusteru, můžete ho zakázat pomocí příkazu [AZ AKS Update][az-aks-update-preview] a zadat parametr *--Disable-cluster-autoscaleer* . Když je automatické škálování clusteru zakázané, uzly se neodeberou.
+Pokud už nechcete používat automatické škálování clusteru, můžete ho zakázat pomocí příkazu [AZ AKS Update][az-aks-update-preview] , který specifikuje `--disable-cluster-autoscaler` parametr. Když je automatické škálování clusteru zakázané, uzly se neodeberou.
 
 ```azurecli-interactive
 az aks update \
@@ -207,18 +214,18 @@ Po zakázání automatického škálování clusteru můžete ručně škálovat
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Opětovné povolení automatického škálování zakázaného clusteru
 
-Pokud chcete znovu povolit automatické škálování clusteru v existujícím clusteru, můžete ho znovu povolit pomocí příkazu [AZ AKS Update][az-aks-update-preview] a zadat parametry *--Enable-cluster-AutoScale*, *--min-Count*a *--Max-Count* .
+Pokud chcete znovu povolit automatické škálování clusteru v existujícím clusteru, můžete ho znovu povolit pomocí příkazu [AZ AKS Update][az-aks-update-preview] , a to zadáním `--enable-cluster-autoscaler` `--min-count` parametrů, a `--max-count` .
 
 ## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Načtení protokolů a stavu automatického škálování clusteru
 
 Chcete-li diagnostikovat a ladit události automatického škálování, můžete protokoly a stav načíst z doplňku automatického škálování.
 
-AKS spravuje automatické škálování clusteru vaším jménem a spouští ho v rovině spravovaného ovládacího prvku. Protokoly hlavního uzlu je třeba nakonfigurovat tak, aby se zobrazily v důsledku.
+AKS spravuje automatické škálování clusteru vaším jménem a spouští ho v rovině spravovaného ovládacího prvku. Můžete povolit uzel roviny řízení a zobrazit protokoly a operace od certifikační autority.
 
 Pokud chcete nakonfigurovat protokoly, které se budou nabízet z automatického škálování clusteru do Log Analytics, postupujte podle těchto kroků.
 
 1. Nastavte pravidlo pro protokoly prostředků pro nabízení protokolů clusteru – automatického škálování na Log Analytics. [Pokyny najdete tady][aks-view-master-logs], nezapomeňte zaškrtnout políčko `cluster-autoscaler` při výběru možností pro protokoly.
-1. Klikněte na oddíl Logs v clusteru prostřednictvím Azure Portal.
+1. Vyberte v clusteru oddíl logs prostřednictvím Azure Portal.
 1. Zadejte následující příklad dotazu do Log Analytics:
 
 ```
@@ -230,7 +237,7 @@ Měli byste vidět protokoly podobné následujícímu příkladu, pokud existuj
 
 ![Protokoly Log Analytics](media/autoscaler/autoscaler-logs.png)
 
-Automatické škálování clusteru také zapíše stav do configmap s názvem `cluster-autoscaler-status` . Chcete-li načíst tyto protokoly, spusťte následující `kubectl` příkaz. Stav bude hlášen pro každý fond uzlů nakonfigurovaný pomocí automatického škálování clusteru.
+Automatické škálování clusteru také zapisuje stav do `configmap` pojmenovaného stavu `cluster-autoscaler-status` . Chcete-li načíst tyto protokoly, spusťte následující `kubectl` příkaz. Stav bude hlášen pro každý fond uzlů nakonfigurovaný pomocí automatického škálování clusteru.
 
 ```
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
@@ -242,7 +249,7 @@ Pokud se chcete dozvědět víc o tom, co se protokoluje pomocí automatického 
 
 Automatické škálování clusteru lze použít společně s povoleným [fondy více uzlů][aks-multiple-node-pools] . Pomocí tohoto dokumentu se dozvíte, jak povolit více fondů uzlů a přidat další fondy uzlů do existujícího clusteru. Při použití obou funkcí současně povolíte automatické škálování clusteru pro každý fond jednotlivých uzlů v clusteru a můžete každému z nich předat jedinečná pravidla automatického škálování.
 
-V níže uvedeném příkazu se předpokládá, že jste provedli [počáteční pokyny](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) dříve v tomto dokumentu a chcete aktualizovat Max-Count fondu uzlů z *3* na *5*. Pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] aktualizujte nastavení existujícího fondu uzlů.
+V níže uvedeném příkazu se předpokládá, že jste provedli [počáteční pokyny](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) dříve v tomto dokumentu a chcete aktualizovat Max-Count fondu uzlů z *3* na *5* . Pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] aktualizujte nastavení existujícího fondu uzlů.
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -264,7 +271,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-Pokud chcete znovu povolit automatické škálování clusteru v existujícím clusteru, můžete ho znovu povolit pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] , který určuje parametry *--Enable-cluster-autoscaleer*, *--min-Count*a *--Max-Count* .
+Pokud chcete znovu povolit automatické škálování clusteru v existujícím clusteru, můžete ho znovu povolit pomocí příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] , a to zadáním `--enable-cluster-autoscaler` `--min-count` parametrů, a `--max-count` .
 
 ## <a name="next-steps"></a>Další kroky
 

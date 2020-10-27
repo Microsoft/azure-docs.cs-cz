@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 5175575bcd968ab9d9bb9db7e284eb332bc7f675
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127076"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542416"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Kurz: sestavení řídicího panelu poskytovatele Power BI
 
@@ -29,7 +29,7 @@ Základní architektura bude postupovat podle této struktury:
 >[!div class="mx-imgBorder"] 
 >![Řídicí panel třídění poskytovatele](media/dashboard-architecture.png)
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Export dat z Azure IoT Central do Azure Event Hubs
@@ -81,7 +81,7 @@ Pokud chcete aplikaci logiky připojit k Azure Event Hubs, můžete postupovat p
 |---|---|
 |Typ obsahu|application/json|
 |Interval|3|
-|Frequency|Second|
+|Frekvence|Second|
 
 Na konci tohoto kroku by měl návrhář aplikace logiky vypadat takto:
 
@@ -139,21 +139,21 @@ V dalším kroku budete analyzovat data přicházející z centra událostí, ab
 }
 ```
 
-2. Teď, když jste zkontrolovali datové části JSON, vraťte se zpátky do svého návrháře aplikace logiky a vyberte **+ Nový krok**. V dalším kroku vyhledejte a přidejte **proměnnou Initialize** a zadejte následující parametry:
+2. Teď, když jste zkontrolovali datové části JSON, vraťte se zpátky do svého návrháře aplikace logiky a vyberte **+ Nový krok** . V dalším kroku vyhledejte a přidejte **proměnnou Initialize** a zadejte následující parametry:
 
     |Parametr|Hodnota|
     |---|---|
     |Název|Název rozhraní|
     |Typ|Řetězec|
 
-    Klikněte na **Uložit**. 
+    Klikněte na **Uložit** . 
 
-3. Přidejte další proměnnou s názvem **text** jako **řetězec**. Vaše aplikace logiky bude mít přidané tyto akce:
+3. Přidejte další proměnnou s názvem **text** jako **řetězec** . Vaše aplikace logiky bude mít přidané tyto akce:
 
     >[!div class="mx-imgBorder"]
     >![Inicializovat proměnné](media/initialize-string-variables.png)
     
-4. Vyberte **+ Nový krok** a přidejte akci **analyzovat JSON** . Přejmenujte tuto **vlastnost pro analýzu vlastností**. V části Obsah vyberte **vlastnosti** přicházející z centra událostí. Vyberte možnost **použít ukázkovou datovou část k vygenerování schématu** v dolní části a vložte ukázkovou datovou část z výše uvedeného oddílu vlastností.
+4. Vyberte **+ Nový krok** a přidejte akci **analyzovat JSON** . Přejmenujte tuto **vlastnost pro analýzu vlastností** . V části Obsah vyberte **vlastnosti** přicházející z centra událostí. Vyberte možnost **použít ukázkovou datovou část k vygenerování schématu** v dolní části a vložte ukázkovou datovou část z výše uvedeného oddílu vlastností.
 
 5. Dále vyberte akci **nastavit proměnnou** a aktualizujte proměnnou **název rozhraní** pomocí **iothub-Interface-Name** z analyzovaných vlastností JSON.
 
@@ -168,14 +168,14 @@ V dalším kroku budete analyzovat data přicházející z centra událostí, ab
 
 9. Přidejte akci **nastavit proměnnou** a aktualizujte proměnnou **body** s **textem** z analyzovaného formátu JSON v kroku 7.
 
-10. Jako další akci přidejte ovládací prvek **Podmínka** a nastavte podmínku na **tělo**, **obsahuje**, **HeartRate**. Tím zajistíte, že máte správnou sadu dat, která přichází z opravy s inteligentními opravami před naplněním Power BI datové sady. Kroky 7-9 budou vypadat takto:
+10. Jako další akci přidejte ovládací prvek **Podmínka** a nastavte podmínku na **tělo** , **obsahuje** , **HeartRate** . Tím zajistíte, že máte správnou sadu dat, která přichází z opravy s inteligentními opravami před naplněním Power BI datové sady. Kroky 7-9 budou vypadat takto:
 
     >[!div class="mx-imgBorder"] 
     >![Chytry důležité přidat podmínku](media/smart-vitals-pbi.png)
 
 11. Pro **skutečný** případ podmínky přidejte akci, která volá **Přidání řádků do datové sady** Power BI funkcionalita. K tomu se budete muset přihlašovat Power BI. Váš **falešný** případ může znovu použít ovládací prvek **ukončení** .
 
-12. Vyberte vhodný **pracovní prostor**, **datovou sadu**a **tabulku**. Namapujte parametry, které jste zadali při vytváření datové sady streamování v Power BI, do analyzovaných hodnot JSON, které pocházejí z vašeho centra událostí. Vaše vyplněné akce by měly vypadat takto:
+12. Vyberte vhodný **pracovní prostor** , **datovou sadu** a **tabulku** . Namapujte parametry, které jste zadali při vytváření datové sady streamování v Power BI, do analyzovaných hodnot JSON, které pocházejí z vašeho centra událostí. Vaše vyplněné akce by měly vypadat takto:
 
     >[!div class="mx-imgBorder"] 
     >![Přidat řádky do Power BI](media/add-rows-yesenia.png)
@@ -183,14 +183,14 @@ V dalším kroku budete analyzovat data přicházející z centra událostí, ab
 13. Pro případ přepínače **inteligentní složené závorky** , přidejte akci **analýzy JSON** pro analýzu obsahu, podobně jako v kroku 7. Pak **přidejte řádky do datové sady** , abyste aktualizovali datovou sadu Teddy stříbrt v Power BI.
 
     >[!div class="mx-imgBorder"] 
-    >![Chytry důležité přidat podmínku](media/knee-brace-pbi.png)
+    >![Snímek obrazovky, který ukazuje, jak přidat řádky do datové sady.](media/knee-brace-pbi.png)
 
 14. Stiskněte **Uložit** a pak spusťte aplikaci logiky.
 
 ## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Vytvoření řídicího panelu v reálném čase pro důležité vlastnosti pacienta
-Nyní se vraťte na Power BI a vyberte **+ vytvořit** pro vytvoření nového **řídicího panelu**. Dejte řídicímu panelu název a stiskněte **vytvořit**.
+Nyní se vraťte na Power BI a vyberte **+ vytvořit** pro vytvoření nového **řídicího panelu** . Dejte řídicímu panelu název a stiskněte **vytvořit** .
 
-V horním navigačním panelu vyberte tři tečky a pak vyberte **+ Přidat dlaždici**.
+V horním navigačním panelu vyberte tři tečky a pak vyberte **+ Přidat dlaždici** .
 
 >[!div class="mx-imgBorder"] 
 >![Přidat dlaždici na řídicí panel](media/add-tile.png)
@@ -203,7 +203,7 @@ Pokud nebudete tuto aplikaci nadále používat, odstraňte prostředky pomocí 
 
 1. Z Azure Portal můžete odstranit centrum událostí a prostředky Logic Apps, které jste vytvořili.
 
-2. Pro aplikaci IoT Central otevřete kartu Správa a vyberte **Odstranit**.
+2. Pro aplikaci IoT Central otevřete kartu Správa a vyberte **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 

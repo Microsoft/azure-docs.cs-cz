@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 524c888bb132405f03af44f9c28198be0ac89370
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 956406ec5ac99be5973f1928bbb89db10e68b339
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489587"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533763"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spouštění dotazů Apache Hive pomocí Apache Hadoop ve službě HDInsight pomocí REST
 
@@ -21,17 +21,17 @@ ms.locfileid: "92489587"
 
 Naučte se používat REST API WebHCat ke spouštění dotazů Apache Hive s Apache Hadoop v clusteru Azure HDInsight.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Cluster Apache Hadoop v HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Klient REST. Tento dokument používá rutinu [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ve Windows PowerShellu a [oblé](https://curl.haxx.se/) v [bash](https://docs.microsoft.com/windows/wsl/install-win10).
+* Klient REST. Tento dokument používá rutinu [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) ve Windows PowerShellu a [oblé](https://curl.haxx.se/) v [bash](/windows/wsl/install-win10).
 
 * Pokud používáte bash, budete také potřebovat JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
 ## <a name="base-uri-for-rest-api"></a>Základní identifikátor URI pro rozhraní REST API
 
-Základní identifikátor URI (Uniform Resource Identifier) pro REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI () rozlišuje velká a malá písmena `CLUSTERNAME.azurehdinsight.net` , jiné výskyty v identifikátoru URI rozlišují velká a malá písmena.
+Základní identifikátor URI (Uniform Resource Identifier) pro REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena** .  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI () rozlišuje velká a malá písmena `CLUSTERNAME.azurehdinsight.net` , jiné výskyty v identifikátoru URI rozlišují velká a malá písmena.
 
 ## <a name="authentication"></a>Authentication
 
@@ -120,7 +120,7 @@ $clusterName
     {"module":"hive","version":"1.2.1000.2.6.5.3008-11"}
     ```
 
-1. K vytvoření tabulky s názvem **log4jLogs**použijte následující:
+1. K vytvoření tabulky s názvem **log4jLogs** použijte následující:
 
     ```bash
     jobid=$(curl -s -u admin:$password -d user.name=admin -d execute="DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/rest" https://$clusterName.azurehdinsight.net/templeton/v1/hive | jq -r .id)
@@ -156,7 +156,7 @@ $clusterName
 
    * `ROW FORMAT` – Způsob formátování dat Pole v každém protokolu jsou oddělená mezerou.
    * `STORED AS TEXTFILE LOCATION` – Kde jsou data uložená (příklad/adresář dat) a že se ukládají jako text.
-   * `SELECT` – Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.
+   * `SELECT` – Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.
 
      > [!NOTE]  
      > Všimněte si, že mezery mezi příkazy HiveQL jsou nahrazeny `+` znakem při použití s kudrlinkou. Hodnoty v uvozovkách, které obsahují mezeru, jako je například oddělovač, by neměly být nahrazeny hodnotou `+` .
@@ -181,11 +181,11 @@ $clusterName
     (ConvertFrom-Json $fixDup).status.state
     ```
 
-    Pokud se úloha dokončí, stav se **podařilo**.
+    Pokud se úloha dokončí, stav se **podařilo** .
 
-1. Jakmile se stav úlohy změní na **úspěch**, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir`Parametr předaný dotazu obsahuje umístění výstupního souboru, v tomto případě `/example/rest` . Tato adresa uchovává výstup v `example/curl` adresáři ve výchozím úložišti clusterů.
+1. Jakmile se stav úlohy změní na **úspěch** , můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir`Parametr předaný dotazu obsahuje umístění výstupního souboru, v tomto případě `/example/rest` . Tato adresa uchovává výstup v `example/curl` adresáři ve výchozím úložišti clusterů.
 
-    Tyto soubory můžete zobrazit a stáhnout pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Další informace o použití rozhraní příkazového řádku Azure s Azure Storage najdete v dokumentu [použití Azure CLI s Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli) .
+    Tyto soubory můžete zobrazit a stáhnout pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Další informace o použití rozhraní příkazového řádku Azure s Azure Storage najdete v dokumentu [použití Azure CLI s Azure Storage](../../storage/blobs/storage-quickstart-blobs-cli.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

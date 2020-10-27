@@ -3,17 +3,17 @@ title: Analýza nákladů na Azure s využitím aplikace Power BI
 description: Tento článek vysvětluje, jak nainstalovat a používat aplikaci Power BI Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/14/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7282ef9269c1168214fe57d3faa5488e531af8da
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447668"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131118"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise (EA)
 
@@ -28,31 +28,31 @@ Aplikace Power BI Azure Cost Management aktuálně podporuje pouze zákazníky s
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Licence Power BI Pro](/power-bi/service-self-service-signup-for-power-bi) pro instalaci a použití aplikace
-- Pokud se chcete připojit k datům, musíte použít účet [správce Enterprise](../manage/understand-ea-roles.md)
+- K instalaci a použití aplikace je potřeba [licence Power BI Pro](/power-bi/service-self-service-signup-for-power-bi).
+- Pokud se chcete připojit k datům, musíte použít účet [správce Enterprise](../manage/understand-ea-roles.md). Podporuje se role podnikového správce (jenom pro čtení).
 
 ## <a name="installation-steps"></a>Kroky instalace
 
 Postup instalace aplikace:
 
 1. Otevřete [aplikaci Power BI Azure Cost Management](https://aka.ms/costmgmt/ACMApp).
-2. Na stránce Power BI AppSource vyberte **Získat hned**.
+2. Na stránce Power BI AppSource vyberte **Získat hned** .
 3. Výběrem **Pokračovat** odsouhlasíte podmínky použití a zásady ochrany osobních údajů.
-4. V poli **Instalovat tuto aplikaci Power BI** vyberte **Instalovat**.
-5. V případě potřeby vytvořte pracovní prostor a vyberte **Pokračovat**.
+4. V poli **Instalovat tuto aplikaci Power BI** vyberte **Instalovat** .
+5. V případě potřeby vytvořte pracovní prostor a vyberte **Pokračovat** .
 6. Po dokončení instalace se zobrazí oznámení, že je vaše nová aplikace připravená.
-7. Vyberte **Přejít do aplikace**.
-8. V okně **Začínáme s novou aplikací** v části **Připojit data** vyberte **Připojit**.  
+7. Vyberte **Přejít do aplikace** .
+8. V okně **Začínáme s novou aplikací** v části **Připojit data** vyberte **Připojit** .  
   ![Začínáme s novou aplikací – Připojit](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. V zobrazeném dialogovém okně zadejte do pole **BillingProfileIdOrEnrollmentNumber** číslo registrace EA. Zadejte počet měsíců, pro které se mají data získat. Ponechte výchozí hodnotu pro **Obor** na **Číslo registrace** a pak vyberte **Další**.  
+9. V zobrazeném dialogovém okně zadejte do pole **BillingProfileIdOrEnrollmentNumber** číslo registrace EA. Zadejte počet měsíců, pro které se mají data získat. Ponechte výchozí hodnotu pro **Obor** na **Číslo registrace** a pak vyberte **Další** .  
   ![Zadání informací o registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. Další dialogové okno se připojí k Azure a získá data požadovaná pro doporučení rezervovaných instancí. *Ponechte nakonfigurované výchozí hodnoty* a vyberte **Přihlásit se**.  
+10. Další dialogové okno se připojí k Azure a získá data požadovaná pro doporučení rezervovaných instancí. *Ponechte nakonfigurované výchozí hodnoty* a vyberte **Přihlásit se** .  
   ![Snímek obrazovky s dialogovým oknem Připojit k aplikaci Azure Cost Management a výchozími hodnotami](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. Poslední krok instalace se připojí k registraci EA a vyžaduje účet [podnikového správce](../manage/understand-ea-roles.md). Vyberte **Přihlásit** a ověřte se pomocí své registrace EA. Tento krok také v Power BI spustí akci aktualizace dat.  
   ![Připojení k registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
     > Dokončení procesu aktualizace dat může trvat poměrně dlouho. Délka závisí na zadaném počtu měsíců a množství dat potřebných k synchronizaci.
-12. Chcete-li zjistit stav aktualizace dat, vyberte v pracovním prostoru kartu **Datové sady**. Podívejte se vedle časového razítka Aktualizováno. Pokud pořád probíhá aktualizace, uvidíte příslušný ukazatel.  
+12. Chcete-li zjistit stav aktualizace dat, vyberte v pracovním prostoru kartu **Datové sady** . Podívejte se vedle časového razítka Aktualizováno. Pokud pořád probíhá aktualizace, uvidíte příslušný ukazatel.  
   ![Aktualizace dat](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/data-refresh2.png)
 
 Po dokončení aktualizace dat vyberte aplikaci Azure Cost Management, abyste zobrazili předem vytvořené sestavy.
@@ -86,9 +86,9 @@ Tato sestava také identifikuje virtuální počítače s Windows, u kterých je
 
 **Vrácení peněz za rezervované instance** – sestava vám pomůže pochopit, kde a kolik výhod rezervované instance (RI) se používá pro oblast, předplatné, skupinu prostředků nebo prostředek. Sestava k zobrazení používá amortizovaná data o využití.
 
-Abyste zobrazili data o nevyužití rezervovaných instancí, můžete použít filtr pro _chargetype_.
+Abyste zobrazili data o nevyužití rezervovaných instancí, můžete použít filtr pro _chargetype_ .
 
-Další informace o amortizovaných datech najdete v článku [Získání nákladů na rezervace a jejich využití u smlouvy Enterprise](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea).
+Další informace o amortizovaných datech najdete v článku [Získání nákladů na rezervace a jejich využití u smlouvy Enterprise](../reservations/understand-reserved-instance-usage-ea.md).
 
 **Úspory za rezervované instance** – v sestavě se zobrazují úspory vyplývající z rezervací pro předplatné, skupinu prostředků a úroveň prostředků. Zobrazuje se:
 
@@ -188,9 +188,9 @@ K této chybě dojde, pokud změníte metodu ověřování pro připojení objek
 #### <a name="solution"></a>Řešení
 
 1. Připojte se k datům.
-1. Po zadání registrace EA a počtu měsíců zkontrolujte, že jste jako metodu ověřování ponechali výchozí hodnotu **Anonymní** a pro úroveň soukromí je nastavena hodnota **Žádné**.  
+1. Po zadání registrace EA a počtu měsíců zkontrolujte, že jste jako metodu ověřování ponechali výchozí hodnotu **Anonymní** a pro úroveň soukromí je nastavena hodnota **Žádné** .  
   ![Snímek obrazovky s dialogovým oknem Připojit k aplikaci Azure Cost Management a zadanými hodnotami Anonymní a Žádné](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
-1. Na další stránce jako metodu ověřování nastavte **OAuth2** a pro úroveň soukromí nastavte hodnotu **Žádné**. Potom se přihlaste a ověřte pomocí své registrace. Tento krok také v Power BI spustí aktualizace dat.
+1. Na další stránce jako metodu ověřování nastavte **OAuth2** a pro úroveň soukromí nastavte hodnotu **Žádné** . Potom se přihlaste a ověřte pomocí své registrace. Tento krok také v Power BI spustí aktualizace dat.
 
 
 ## <a name="data-reference"></a>Reference pro data
@@ -204,8 +204,8 @@ Následující informace shrnují data, která jsou k dispozici prostřednictví
 | [**Rozpočty**](/rest/api/consumption/budgets/get#definitions) | Podrobnosti o rozpočtu pro zobrazení skutečných nákladů nebo využití v rámci stávajících rozpočtových cílů. |
 | [**Ceníky**](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet#see-also) | Použitelné sazby měření pro zadaný fakturační profil nebo registraci EA. |
 | [**Poplatky RI**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges#response) | Poplatky spojené s vašimi rezervovanými instancemi za posledních 24 měsíců. |
-| [**Doporučení RI (sdílená)** ](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Doporučení pro nákup rezervovaných instancí založená na trendech využití všech vašich předplatných za posledních 7, 30 nebo 60 dnů. |
-| [**Doporučení RI (jednotlivé)** ](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Doporučení pro nákup rezervovaných instancí založená na trendech využití vašeho jednotlivého předplatného za posledních 7, 30 nebo 60 dnů. |
+| [**Doporučení RI (sdílená)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Doporučení pro nákup rezervovaných instancí založená na trendech využití všech vašich předplatných za posledních 7, 30 nebo 60 dnů. |
+| [**Doporučení RI (jednotlivé)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Doporučení pro nákup rezervovaných instancí založená na trendech využití vašeho jednotlivého předplatného za posledních 7, 30 nebo 60 dnů. |
 | [**Podrobnosti využití RI**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#response) | Podrobnosti o spotřebě pro stávající rezervované instance za poslední měsíc. |
 | [**Souhrn využití RI**](/rest/api/consumption/reservationssummaries/list) | Procentní část denního využití rezervací Azure. |
 | [**Podrobnosti využití**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | Rozpis spotřebovaných množství a odhadovaných poplatků za daný fakturační profil v registraci EA. |

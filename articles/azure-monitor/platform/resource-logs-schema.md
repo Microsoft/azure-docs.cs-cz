@@ -4,12 +4,12 @@ description: Pochopte podporované služby a schéma událostí pro protokoly pr
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: b9d3dafdf62bda2d07eb7f9d7c357f61ec913d44
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 791f95dc75c55c7a5c7c26d0719e186245713fba
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144005"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543406"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Společné schéma pro protokoly prostředků Azure a schématu pro konkrétní služby
 
@@ -70,7 +70,7 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Express Route | Schéma není k dispozici. |
 | Brána Azure Firewall | Schéma není k dispozici. |
 | Front Door | [Protokolování pro přední dveře](../../frontdoor/front-door-diagnostics.md) |
-| IoT Hub | [IoT Hub operace](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
+| IoT Hub | [IoT Hub operace](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
 | Key Vault |[Protokolování Azure Key Vault](../../key-vault/general/logging.md) |
 | Kubernetes Service |[Protokolování Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Log Analytics pro Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
@@ -79,7 +79,7 @@ Schéma pro protokoly prostředků se liší v závislosti na kategoriích prost
 | Ochrana před útoky DDoS | [Spravovat Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
 | Vyhrazená služba Power BI | [Protokolování Power BI Embedded v Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datový model pro Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| Hledat |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
+| Search |[Povolení a použití Analýza provozu vyhledávání](../../search/search-traffic-analytics.md) |
 | Service Bus |[Protokoly Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | Databáze SQL | [Protokolování Azure SQL Database](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[Protokoly úloh](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |

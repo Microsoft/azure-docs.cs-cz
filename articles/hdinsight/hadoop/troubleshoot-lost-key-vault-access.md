@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
-ms.openlocfilehash: 1e34c1002be3dffb719490fee01e481e8df45901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc8162f3a7ca8744a94aba039996275b5f13c727
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532558"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533406"
 ---
 # <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scénář: clustery Azure HDInsight se ztrátou šifrování disku Key Vault přístup
 
@@ -26,7 +26,7 @@ Výstraha centra Resource Health (RHC) se `The HDInsight cluster is unable to ac
 
 Výstraha zajišťuje, že je KV přístupný z uzlů clusteru, a zajišťuje tak síťové připojení, stav KV a zásady přístupu pro spravovanou identitu přiřazenou uživateli. Tato výstraha je jenom upozornění na blížící se vypnutí zprostředkovatele při následném restartování uzlu. cluster bude dál fungovat, dokud se uzly nerestartují.
 
-Přejděte na uživatelské rozhraní Apache Ambari, kde najdete další informace o upozornění ze **stavu šifrování disku Key Vault**. Tato výstraha bude obsahovat podrobnosti o příčině selhání ověřování.
+Přejděte na uživatelské rozhraní Apache Ambari, kde najdete další informace o upozornění ze **stavu šifrování disku Key Vault** . Tato výstraha bude obsahovat podrobnosti o příčině selhání ověřování.
 
 ## <a name="resolution"></a>Řešení
 
@@ -36,7 +36,7 @@ Další podrobnosti najdete v [Azure Key Vault dostupnosti a redundanci](../../k
 
 ### <a name="kv-accidental-deletion"></a>Nepředvídatelné odstranění KV
 
-* Obnovte odstraněný klíč v KV na automatické obnovení. Další informace najdete v tématu [Obnovení odstraněné klíče](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
+* Obnovte odstraněný klíč v KV na automatické obnovení. Další informace najdete v tématu [Obnovení odstraněné klíče](/rest/api/keyvault/recoverdeletedkey).
 * Vyzkoušením týmu KV se můžete zotavit z neúmyslných odstranění.
 
 ### <a name="kv-access-policy-changed"></a>KV – zásady přístupu se změnily
@@ -88,4 +88,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

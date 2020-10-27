@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: 462358ab967d4ba26a265d7b5f401b995223815e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d712aab6dcb52f64af340b3110e475c8da2b10
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85959838"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542603"
 ---
 # <a name="saved-queries-in-azure-monitor-log-analytics"></a>Uložené dotazy v Azure Monitor Log Analytics
 
@@ -38,7 +38,7 @@ Můžete získat příklady dotazů ze dvou různých umístění.
 
 ### <a name="example-query-dialog"></a>Příklad dialogového okna dotazu
 
-Při prvním zadání Log Analyticsho prostředí se zobrazí *dialogové okno Ukázkové dotazy* automaticky.  K němu lze také přistup kliknutím v pravém horním rohu obrazovky na **příkladech dotazů**.
+Při prvním zadání Log Analyticsho prostředí se zobrazí *dialogové okno Ukázkové dotazy* automaticky.  K němu lze také přistup kliknutím v pravém horním rohu obrazovky na **příkladech dotazů** .
 
 ![Stín](media/saved-queries/sidebar-2.png)
 
@@ -54,7 +54,7 @@ Každý příklad dotazu je reprezentován kartou. Můžete rychle prohledat dot
 
 Ke všem funkcím prostředí dialogového okna se dá dostat z podokna dotazy na levém postranním panelu Log Analytics. Popis dotazu a další funkce můžete získat tak, že najedete myší na název dotazu.
 
-![Stín](media/saved-queries/sidebar-3.png)
+![Snímek obrazovky, který zobrazuje podokno dotazy](media/saved-queries/sidebar-3.png)
 
 ## <a name="finding-and-filtering-queries"></a>Hledání a filtrování dotazů
 
@@ -80,9 +80,9 @@ Chcete-li změnit seskupení dotazů, klikněte na rozevírací seznam *Seskupit
 Dialog podporuje seskupení podle:
 
 - **Typ prostředku** – prostředek definovaný v Azure, jako je třeba virtuální počítač. Úplné mapování Azure Monitor protokolů/Log Analytics tabulek na typ prostředku najdete v [referenčních informacích k Azure monitor tabulce](/azure/azure-monitor/reference/tables/tables-resourcetype) .  
-- **Kategorie** – typ informací, jako je *zabezpečení* nebo *audit*. Kategorie jsou stejné jako kategorie definované v podokně na straně tabulky. Úplný seznam kategorií najdete v [referenčních informacích k Azure monitor tabulce](/azure/azure-monitor/reference/tables/tables-category) .  
+- **Kategorie** – typ informací, jako je *zabezpečení* nebo *audit* . Kategorie jsou stejné jako kategorie definované v podokně na straně tabulky. Úplný seznam kategorií najdete v [referenčních informacích k Azure monitor tabulce](/azure/azure-monitor/reference/tables/tables-category) .  
 - **Řešení** – Azure monitor řešení přidružené k dotazům
-- **Téma** – téma ukázkového dotazu, jako jsou *protokoly aktivit* nebo *protokoly aplikací*. Vlastnost tématu je jedinečná pro příklad dotazů a může se lišit podle konkrétního typu prostředku.
+- **Téma** – téma ukázkového dotazu, jako jsou *protokoly aktivit* nebo *protokoly aplikací* . Vlastnost tématu je jedinečná pro příklad dotazů a může se lišit podle konkrétního typu prostředku.
 
 Hodnoty seskupení také fungují jako aktivní obsah. Kliknutí na jednu z hodnot na levé straně obrazovky posouvá zobrazení dotazů doprava na položku, na kterou jste klikli.
 

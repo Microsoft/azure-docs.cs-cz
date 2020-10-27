@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 0174c40a0fada0f78cc8d52f5c45b991c3851da0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5982cb96891b3c0724007aa98527a07daba0fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85850558"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532557"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Kurz: použití rozhraní API streamování Apache Kafka ve službě Azure HDInsight
 
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 
 * Proveďte kroky v dokumentu [Apache Kafka příjemce a rozhraní API pro výrobce](apache-kafka-producer-consumer-api.md) . Kroky v tomto dokumentu používají ukázkovou aplikaci a témata vytvořená v tomto kurzu.
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) nebo ekvivalent, jako je například OpenJDK.
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
@@ -249,7 +249,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
     Parametr `--from-beginning` konfiguruje konzumenta tak, aby začal číst záznamy uložené v tématu od začátku. Počet se zvýší při každém zjištění slova, takže téma obsahuje pro každé slovo několik záznamů s rostoucím počtem.
 
-4. Producenta ukončíte stisknutím __Ctrl+C__. Pokračujte a pomocí __Ctrl + C__ ukončete aplikaci i konzumenta.
+4. Producenta ukončíte stisknutím __Ctrl+C__ . Pokračujte a pomocí __Ctrl + C__ ukončete aplikaci i konzumenta.
 
 5. Chcete-li odstranit témata používaná operací streamování, použijte následující příkazy:
 
@@ -266,7 +266,7 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit
 
 Odebrání skupiny prostředků pomocí webu Azure Portal:
 
-1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__. Zobrazí se seznam skupin prostředků.
+1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__ . Zobrazí se seznam skupin prostředků.
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fbfb2aef838dbef6e7403e635f5bce42bf9ec901
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487258"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542314"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Osvědčené postupy pro správu clusteru HDInsight
 
@@ -26,12 +26,12 @@ Seznamte se s osvědčenými postupy pro správu clusterů HDInsight.
 | Azure Data Factory | [Vytvoření clusterů Apache Hadoop na vyžádání v HDInsight pomocí Azure Data Factory](./hdinsight-hadoop-create-linux-clusters-adf.md) |
 | Šablona vlastního Správce prostředků | [Vytváření clusterů Apache Hadoop ve službě HDInsight pomocí šablon Správce prostředků](./hdinsight-hadoop-create-linux-clusters-arm-templates.md) |
 | Šablony pro rychlý start | [Šablony pro rychlý Start HDInsight](https://azure.microsoft.com/resources/templates/?term=hdinsight) |
-| ukázek Azure | [Ukázky HDInsight Azure](https://docs.microsoft.com/samples/browse/?products=azure-hdinsight) |
+| ukázek Azure | [Ukázky HDInsight Azure](/samples/browse/?products=azure-hdinsight) |
 | portál Azure | [Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal](./spark/apache-spark-intellij-tool-plugin.md) |
 | Azure CLI | [Vytváření clusterů HDInsight pomocí rozhraní příkazového řádku Azure](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Vytváření clusterů se systémem Linux v HDInsight pomocí Azure PowerShell](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Vytváření clusterů Apache Hadoop pomocí Azure REST API](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| Sady SDK (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python&preserve-view=true), [Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable&preserve-view=true), [Přejít](https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview) |
+| Sady SDK (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight?preserve-view=true&view=azure-java-stable), [Přejít](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > Pokud vytváříte cluster a znovu použijete název clusteru z dříve vytvořeného clusteru, před vytvořením clusteru počkejte, než se dokončí předchozí odstranění clusteru.
@@ -62,7 +62,7 @@ Seznamte se s osvědčenými postupy pro správu clusterů HDInsight.
 | Ruční škálování | [Škálování clusterů Azure HDInsight](./hdinsight-scaling-best-practices.md) |
 | Monitorování pomocí Ambari| [Monitorování výkonu clusteru v Azure HDInsight](./hdinsight-key-scenarios-to-monitor.md) |
 | Monitorování pomocí protokolů Azure Monitor | [Monitorování clusterů HDInsight s využitím protokolů služby Azure Monitor](./hdinsight-hadoop-oms-log-analytics-tutorial.md) |
-| Problémy se službami, plánovaná údržba, & poradce zabezpečení pro stav | [Přihlášení k odběru výstrah stavu služby pro konkrétní předplatné](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications-portal) |
+| Problémy se službami, plánovaná údržba, & poradce zabezpečení pro stav | [Přihlášení k odběru výstrah stavu služby pro konkrétní předplatné](../service-health/alerts-activity-log-service-notifications-portal.md) |
 
 
 ## <a name="how-do-i-check-on-deleted-hdinsight-clusters"></a>Návody kontrolovat odstraněné clustery HDInsight?

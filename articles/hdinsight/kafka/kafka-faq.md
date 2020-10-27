@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436884"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532545"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Nejčastější dotazy k Apache Kafka ve službě Azure HDInsight
 
@@ -68,7 +68,7 @@ Pokud chcete zvýšit množství volného místa dostupného pro Kafka zprávy, 
 
 ## <a name="can-a-kafka-cluster-work-with-databricks"></a>Může cluster Kafka pracovat s datacihly? 
 
-Ano, clustery Kafka můžou pracovat s datacihly, pokud jsou ve stejné virtuální síti. Pokud chcete použít cluster Kafka s datacihly, vytvořte virtuální síť s clusterem HDInsight Kafka a pak tuto virtuální síť zadejte při vytváření pracovního prostoru datacihly a používání injektáže virtuální sítě. Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network (vkládání virtuální sítě)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Při vytváření pracovního prostoru datacihly bude nutné zadat názvy zprostředkovatelů spuštění clusteru Kafka. Informace o načtení názvů zprostředkovatelů Kafka najdete v tématu [získání informací o hostiteli Apache Zookeeper a Broker](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo).
+Ano, clustery Kafka můžou pracovat s datacihly, pokud jsou ve stejné virtuální síti. Pokud chcete použít cluster Kafka s datacihly, vytvořte virtuální síť s clusterem HDInsight Kafka a pak tuto virtuální síť zadejte při vytváření pracovního prostoru datacihly a používání injektáže virtuální sítě. Další informace najdete v tématu [nasazení Azure Databricks ve službě Azure Virtual Network (vkládání virtuální sítě)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject). Při vytváření pracovního prostoru datacihly bude nutné zadat názvy zprostředkovatelů spuštění clusteru Kafka. Informace o načtení názvů zprostředkovatelů Kafka najdete v tématu [získání informací o hostiteli Apache Zookeeper a Broker](./apache-kafka-get-started.md#getkafkainfo).
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>Jak můžu mít maximální odolnost dat?
 

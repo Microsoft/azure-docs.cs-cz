@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168218"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533950"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service
 
@@ -61,7 +61,8 @@ Koncové body služby nelze použít k omezení přístupu k aplikacím, které 
 Pomocí koncových bodů služby můžete nakonfigurovat aplikaci pomocí aplikačních bran nebo jiných zařízení WAF. Vícevrstvé aplikace můžete konfigurovat také pomocí zabezpečených back-endu. Další informace o některých možnostech najdete v článku [funkce sítě a App Service](networking-features.md) a [Application Gateway integraci s koncovými body služby](networking/app-gateway-with-service-endpoints.md).
 
 > [!NOTE]
-> Koncové body služby se aktuálně nepodporují u webových aplikací, které používají IP SSL virtuální IP adresy (VIP). 
+> - Koncové body služby se aktuálně nepodporují u webových aplikací, které používají IP SSL virtuální IP adresy (VIP).
+> - Omezení počtu řádků IP adres nebo koncových bodů služby je 512. Pokud požadujete víc než 512 řádků omezení, doporučujeme, abyste provedli samostatné bezpečnostní produkty, jako jsou například přední vrátka Azure, Azure App Gateway nebo Firewall webových aplikací (WAF).
 >
 
 ## <a name="managing-access-restriction-rules"></a>Správa pravidel omezení přístupu
@@ -74,7 +75,7 @@ Když upravujete pravidlo, nemůžete změnit typ pravidla IP adresy a pravidla 
 
 ![Snímek obrazovky dialogového okna Upravit omezení IP adres v Azure Portal zobrazující nastavení pravidla Virtual Network](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-Pokud chcete pravidlo odstranit, klikněte na **...** v pravidle a pak klikněte na **Odebrat**.
+Pokud chcete pravidlo odstranit, klikněte na **...** v pravidle a pak klikněte na **Odebrat** .
 
 ![Odstranit pravidlo omezení přístupu](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -111,7 +112,7 @@ Hodnoty lze také ručně nastavit pomocí operace Put služby [Azure REST API](
 
 Umístění pro tyto informace v Správce prostředků:
 
-**ID předplatného**Management.Azure.com/Subscriptions//resourceGroups/**skupiny prostředků**/Providers/Microsoft.Web/Sites/**název webové aplikace**/config/Web? API-Version = 2018-02-01
+**ID předplatného** Management.Azure.com/Subscriptions//resourceGroups/ **skupiny prostředků** /Providers/Microsoft.Web/Sites/ **název webové aplikace** /config/Web? API-Version = 2018-02-01
 
 Syntaxe JSON pro předchozí příklad je:
 ```json

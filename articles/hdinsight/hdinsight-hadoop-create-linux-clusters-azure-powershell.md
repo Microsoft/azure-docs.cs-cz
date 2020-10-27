@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: b94fb5aba8cc54d9014a01610f467776c3a3784a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ce0f83e4233837d56ba9045a9a356ebd1cc33f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075951"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541806"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Vytváření clusterů se systémem Linux v HDInsight pomocí Azure PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "86075951"
 
 Azure PowerShell je výkonné skriptovací prostředí, které můžete použít k řízení a automatizaci nasazení a správy úloh v Microsoft Azure. Tento dokument poskytuje informace o tom, jak vytvořit cluster HDInsight se systémem Linux pomocí Azure PowerShell. Obsahuje také ukázkový skript.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -60,7 +60,7 @@ Vytvoření clusteru může trvat až 20 minut.
 
 ## <a name="create-cluster-configuration-object"></a>Vytvořit cluster: objekt konfigurace
 
-Objekt konfigurace služby HDInsight můžete vytvořit také pomocí [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) rutiny. Pak můžete tento objekt konfigurace upravit a povolit pro svůj cluster další možnosti konfigurace. Nakonec použijte `-Config` parametr [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) rutiny pro použití konfigurace.
+Objekt konfigurace služby HDInsight můžete vytvořit také pomocí [`New-AzHDInsightClusterConfig`](/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) rutiny. Pak můžete tento objekt konfigurace upravit a povolit pro svůj cluster další možnosti konfigurace. Nakonec použijte `-Config` parametr [`New-AzHDInsightCluster`](/powershell/module/az.hdinsight/new-azhdinsightcluster) rutiny pro použití konfigurace.
 
 Následující skript vytvoří objekt konfigurace pro konfiguraci R Server v typu clusteru HDInsight. Tato konfigurace umožňuje hraniční uzel, RStudio a další účet úložiště.
 

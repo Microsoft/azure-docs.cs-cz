@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083096"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542297"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -27,7 +27,7 @@ K dispozici jsou následující klíčové volby pro plánování kapacity clust
 Oblast Azure určuje, kde se cluster fyzicky zřídí. Aby se minimalizovala latence čtení a zápisu, měl by cluster být ve stejné oblasti jako data.
 
 **Umístění a velikost úložiště**  
-Výchozí úložiště musí být ve stejné oblasti jako cluster.Pro cluster 48 se doporučuje mít 4 až 8 účtů úložiště. I když již může existovat dostatečná celková velikost úložiště, každý účet úložiště poskytuje pro výpočetní uzly další šířku pásma sítě. Pokud je k dispozici více účtů úložiště, použijte pro každý účet úložiště náhodný název bez předpony. Účelem náhodného pojmenování je snížit pravděpodobnost kritických bodů úložiště (omezování) nebo selhání v běžném režimu napříč všemi účty. Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
+Výchozí úložiště musí být ve stejné oblasti jako cluster. Pro cluster 48 se doporučuje mít 4 až 8 účtů úložiště. I když již může existovat dostatečná celková velikost úložiště, každý účet úložiště poskytuje pro výpočetní uzly další šířku pásma sítě. Pokud je k dispozici více účtů úložiště, použijte pro každý účet úložiště náhodný název bez předpony. Účelem náhodného pojmenování je snížit pravděpodobnost kritických bodů úložiště (omezování) nebo selhání v běžném režimu napříč všemi účty. Pro lepší výkon používejte jenom jeden kontejner na účet úložiště.
 
 **Velikost a typ virtuálního počítače (teď podporuje G-series)**  
 Každý typ clusteru má sadu typů uzlů a každý typ uzlu má konkrétní možnosti pro velikost a typ virtuálního počítače. Velikost a typ virtuálního počítače závisí na výkonu procesoru, velikosti paměti RAM a latenci sítě. Simulované úlohy lze použít k určení optimální velikosti a typu virtuálního počítače pro jednotlivé typy uzlů.
@@ -52,35 +52,35 @@ Aplikace nebo komponenty, které byly dostupné v místních clusterech, ale nej
 |**Aplikace**|**Integrace**
 |---|---|
 |Tok dat|Hraniční uzel IaaS nebo HDInsight
-|Alluxio|IaaS  
-|Arcadia|IaaS 
+|Alluxio|IaaS  
+|Arcadia|IaaS 
 |Tamazight|Žádné (pouze HDP)
 |Datameer|Hraniční uzel HDInsight
 |DataStax (Cassandra)|IaaS (CosmosDB alternativa v Azure)
-|DataTorrent|IaaS 
-|Drill|IaaS 
+|DataTorrent|IaaS 
+|Drill|IaaS 
 |Ignite|IaaS
-|Jethro|IaaS 
-|Mapador|IaaS 
+|Jethro|IaaS 
+|Mapador|IaaS 
 |Mongo|IaaS (CosmosDB alternativa v Azure)
-|NiFi|IaaS 
+|NiFi|IaaS 
 |Presto|Hraniční uzel IaaS nebo HDInsight
-|Python 2|PaaS 
-|Python 3|PaaS 
-|R|PaaS 
-|VEDE|IaaS 
+|Python 2|PaaS 
+|Python 3|PaaS 
+|R|PaaS 
+|SAS|IaaS 
 |Vertica|IaaS (SQLDW alternativa v Azure)
-|Tableau|IaaS 
+|Tableau|IaaS 
 |Hlavní|Hraniční uzel HDInsight
-|StreamSets|Edge HDInsight 
-|Palantir|IaaS 
-|Sailpoint|IaaS 
+|StreamSets|Edge HDInsight 
+|Palantir|IaaS 
+|Sailpoint|IaaS 
 
 Další informace najdete v článku věnovaném [Apache Hadoop komponentám, které jsou k dispozici v různých verzích HDInsight](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions) .
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight pomocí akcí skriptů
 
-HDInsight poskytuje metodu konfigurace clusteru nazvanou **akce skriptu**. Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight a dá se použít k instalaci dalších komponent a změně nastavení konfigurace.
+HDInsight poskytuje metodu konfigurace clusteru nazvanou **akce skriptu** . Akce skriptu je skript bash, který běží na uzlech v clusteru HDInsight a dá se použít k instalaci dalších komponent a změně nastavení konfigurace.
 
 Akce skriptu musí být uložené na identifikátoru URI, který je přístupný z clusteru HDInsight. Dají se použít během vytváření clusteru nebo po ní a můžou se taky omezit na spouštění jenom na určitých typech uzlů.
 
@@ -109,7 +109,7 @@ Další informace najdete v následujících článcích:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>Přizpůsobení konfigurací HDInsight pomocí Bootstrap
 
-Změny konfiguračních souborů v konfiguračních souborech `core-site.xml` , například `hive-site.xml` a, `oozie-env.xml` lze provádět pomocí Bootstrap. Následující skript je příkladem použití PowerShellu [AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) rutina [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
+Změny konfiguračních souborů v konfiguračních souborech `core-site.xml` , například `hive-site.xml` a, `oozie-env.xml` lze provádět pomocí Bootstrap. Následující skript je příkladem použití PowerShellu [AZ Module](/powershell/azure/new-azureps-module-az) rutina [New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster):
 
 ```powershell
 # hive-site.xml configuration
