@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: 334eaa88ae927ae61ebb445343494cfdce570563
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b139e2f14379e0cd52ca72c347d49bcb4512c473
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167487"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542076"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Podporované hlavní verze PostgreSQL v Azure Database for PostgreSQL – flexibilní Server
 
@@ -30,7 +30,7 @@ Aktuální dílčí verze je 11,9. Další informace o vylepšeních a opravách
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL verze 10 a starší
 
-Pro Azure Database for PostgreSQL flexibilní Server nepodporujeme PostgreSQL verze 10 a starší. Pokud požadujete starší verze, použijte prosím možnost nasazení na [jeden server](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) .
+Pro Azure Database for PostgreSQL flexibilní Server nepodporujeme PostgreSQL verze 10 a starší. Pokud požadujete starší verze, použijte prosím možnost nasazení na [jeden server](../concepts-supported-versions.md) .
 
 ## <a name="managing-upgrades"></a>Správa upgradů
 

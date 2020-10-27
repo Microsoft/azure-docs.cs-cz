@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150807"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537265"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
 
@@ -21,7 +21,7 @@ Azure HDInsight nabízí řadu metod pro řešení vašich potřeb podnikového 
 
 Tento článek popisuje řešení zabezpečení a dělí řešení zabezpečení na čtyři tradiční pilíře zabezpečení: hraniční zabezpečení, ověřování, autorizace a šifrování.
 
-Tento článek také zavádí **Azure HDInsight balíček zabezpečení podniku (ESP)**, která poskytuje ověřování založené na službě Active Directory, podporu více uživatelů a řízení přístupu na základě rolí pro clustery HDInsight.
+Tento článek také zavádí **Azure HDInsight balíček zabezpečení podniku (ESP)** , která poskytuje ověřování založené na službě Active Directory, podporu více uživatelů a řízení přístupu na základě rolí pro clustery HDInsight.
 
 ## <a name="enterprise-security-pillars"></a>Pilíře podnikového zabezpečení
 
@@ -78,10 +78,10 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 | Zabezpečení přístupu k datům | Konfigurace [seznamů řízení přístupu seznamy ACL](../../storage/blobs/data-lake-storage-access-control.md) pro Azure Data Lake Storage Gen1 a Gen2  | Zákazník |
 |  | U účtů úložiště Povolte vlastnost ["vyžaduje zabezpečený přenos"](../../storage/common/storage-require-secure-transfer.md) . | Zákazník |
 |  | Konfigurace [Azure Storage bran firewall](../../storage/common/storage-network-security.md) a virtuálních sítí | Zákazník |
-|  | Konfigurace [koncových bodů služby virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pro Cosmos DB a [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Zákazník |
+|  | Konfigurace [koncových bodů služby virtuální sítě Azure](../../virtual-network/virtual-network-service-endpoints-overview.md) pro Cosmos DB a [Azure SQL DB](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) | Zákazník |
 |  | Zajistěte, aby funkce [šifrování v rámci přenosu](./encryption-in-transit.md) povolila používání protokolu TLS a protokolu IPSec pro komunikaci mezi clustery. | Zákazník |
-|  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md) pro šifrování Azure Storage | Zákazník |
-|  | Řízení přístupu k datům prostřednictvím podpory Azure pomocí [bezpečnostního modulu zákazníka](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Zákazník |
+|  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/customer-managed-keys-configure-key-vault.md) pro šifrování Azure Storage | Zákazník |
+|  | Řízení přístupu k datům prostřednictvím podpory Azure pomocí [bezpečnostního modulu zákazníka](../../security/fundamentals/customer-lockbox-overview.md) | Zákazník |
 | Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace protokolu ESP](apache-domain-joined-configure-using-azure-adds.md) nebo použití [Hib pro ověřování OAuth](identity-broker.md)| Zákazník |
 |  | Konfigurace zásad [autorizace Apache Ranger](apache-domain-joined-run-hive.md) | Zákazník |
 |  | Použití [protokolů Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Zákazník |
@@ -92,11 +92,11 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 |  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../control-network-traffic.md) nebo [privátního odkazu](../hdinsight-private-link.md) | Zákazník |
 |  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall | Zákazník |
 |  | Konfigurace [šifrování IPSec při přenosu](encryption-in-transit.md) mezi uzly clusteru | Zákazník |
-| Virtualizovaná infrastruktura | Není k dispozici | HDInsight (poskytovatel cloudu) |
-| Zabezpečení fyzické infrastruktury | Není k dispozici | HDInsight (poskytovatel cloudu) |
+| Virtualizovaná infrastruktura | – | HDInsight (poskytovatel cloudu) |
+| Zabezpečení fyzické infrastruktury | – | HDInsight (poskytovatel cloudu) |
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Plánování clusterů HDInsight pomocí protokolu ESP](apache-domain-joined-architecture.md)
-* [Konfigurace clusterů HDInsight s ESP](apache-domain-joined-configure.md)
+* [Konfigurace clusterů HDInsight s ESP](./apache-domain-joined-configure-using-azure-adds.md)
 * [Správa clusterů HDInsight pomocí protokolu ESP](apache-domain-joined-manage.md)

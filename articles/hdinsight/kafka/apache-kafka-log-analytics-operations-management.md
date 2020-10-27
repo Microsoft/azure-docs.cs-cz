@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087397"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534443"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka ve službě HDInsight
 
@@ -25,7 +25,7 @@ Naučte se používat protokoly Azure Monitor k analýze protokolů vygenerovan�
 
 Protokoly Apache Kafka v clusteru se nacházejí v umístění `/var/log/kafka` . Protokoly Kafka se neukládají ani neukládají mezi životním cyklům clusteru bez ohledu na to, jestli se používají spravované disky. V následující tabulce jsou uvedeny dostupné protokoly.
 
-|Protokol |Description |
+|Protokol |Popis |
 |---|---|
 |Kafka. out|stdout a stderr procesu Kafka V tomto souboru najdete protokoly spouštění a vypínání Kafka.|
 |Server. log|Hlavní protokol serveru Kafka Všechny protokoly služby Kafka Broker tady zakončí.|
@@ -50,7 +50,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 
 1. V [Azure Portal](https://portal.azure.com)vyberte pracovní prostor Log Analytics.
 
-2. V nabídce vlevo v části **Obecné**vyberte **protokoly**. Odtud můžete vyhledávat data shromážděná z Kafka. V okně dotazu zadejte dotaz a pak vyberte **Spustit**. Následuje několik příkladů hledání:
+2. V nabídce vlevo v části **Obecné** vyberte **protokoly** . Odtud můžete vyhledávat data shromážděná z Kafka. V okně dotazu zadejte dotaz a pak vyberte **Spustit** . Následuje několik příkladů hledání:
 
 * Využití disku:
 
@@ -94,7 +94,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 
     Můžete také zadat `*` pro prohledávání všech protokolovaných typů. V současné době jsou k dispozici následující protokoly pro dotazy:
 
-    | Typ protokolu | Description |
+    | Typ protokolu | Popis |
     | ---- | ---- |
     | protokol \_ kafkaserver \_ CL | Server služby Kafka Broker. log |
     | protokol \_ kafkacontroller \_ CL | Protokol Kafka Broker Controller. log |
@@ -104,7 +104,7 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Monitor najdete v tématech [přehled Azure monitor](../../log-analytics/log-analytics-get-started.md)a [dotazy Azure monitor protokoly pro monitorování clusterů HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
+Další informace o Azure Monitor najdete v tématech [přehled Azure monitor](../../azure-monitor/overview.md)a [dotazy Azure monitor protokoly pro monitorování clusterů HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md).
 
 Další informace o práci s Apache Kafka najdete v následujících dokumentech:
 

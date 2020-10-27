@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308380"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534681"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -39,12 +39,12 @@ Vytvořte novou kopii vašich externích metastore. Pokud používáte externí 
 ### <a name="3-upgrade-metastore-schema"></a>3. upgrade schématu metastore
 Po dokončení **kopírování** metastore spusťte skript upgradu schématu v [akci skriptu](../hdinsight-hadoop-customize-cluster-linux.md) v existujícím clusteru HDInsight 3,6 a upgradujte nový metastore na schéma pro podregistr 3. (Tento krok nevyžaduje připojení nového metastore ke clusteru.) To umožňuje připojení databáze jako HDInsight 4,0 metastore.
 
-Použijte hodnoty v tabulce níže. Nahraďte `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` odpovídajícími hodnotami pro metastore Hive **kopie**oddělené mezerami. Při zadávání názvu SQL serveru nezahrnujte ". database.windows.net".
+Použijte hodnoty v tabulce níže. Nahraďte `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` odpovídajícími hodnotami pro metastore Hive **kopie** oddělené mezerami. Při zadávání názvu SQL serveru nezahrnujte ". database.windows.net".
 
 |Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Name|Upgrade podregistru|
+|Název|Upgrade podregistru|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Typ (typy) uzlů|Head|
 |Parametry|SQLSERVER HESLO K UŽIVATELSKÉMU JMÉNU \ DATABASENAME|
@@ -117,7 +117,7 @@ Clustery HDInsight 3,6 a 4,0 musí používat stejný účet úložiště.
 
 1. Připojte se ke clusteru HDInsight 3,6 pomocí [klienta Secure Shell (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Z otevřené relace SSH stáhněte následující soubor skriptu, který vygeneruje soubor s názvem **alltables. HQL**.
+1. Z otevřené relace SSH stáhněte následující soubor skriptu, který vygeneruje soubor s názvem **alltables. HQL** .
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
@@ -208,7 +208,7 @@ Jakmile ověříte, že je vydání hotové a plně funkční, můžete odebrat 
 
 ## <a name="query-execution-across-hdinsight-versions"></a>Provádění dotazů v rámci verzí HDInsight
 
-Existují dva způsoby, jak spustit a ladit dotazy na podregistry/LLAP v clusteru HDInsight 3,6. HiveCLI poskytuje prostředí příkazového řádku a zobrazení [tez/zobrazení podregistru](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) nabízí pracovní postup založený na grafickém uživatelském rozhraní.
+Existují dva způsoby, jak spustit a ladit dotazy na podregistry/LLAP v clusteru HDInsight 3,6. HiveCLI poskytuje prostředí příkazového řádku a zobrazení [tez/zobrazení podregistru](../hadoop/apache-hadoop-use-hive-ambari-view.md) nabízí pracovní postup založený na grafickém uživatelském rozhraní.
 
 V HDInsight 4,0 byl HiveCLI nahrazen Beeline. Zobrazení tez/podregistr poskytuje pracovní postup založený na grafickém uživatelském rozhraní. HiveCLI je klient Thrift pro Hiveserver 1 a Beeline je JDBC klient, který poskytuje přístup k Hiveserver 2. Beeline lze také použít pro připojení k jakémukoli jinému koncovému bodu databáze kompatibilního s JDBC. Beeline je k dispozici předem v HDInsight 4,0 bez nutnosti instalace.
 

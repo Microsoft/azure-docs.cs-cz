@@ -44,7 +44,7 @@ Pokud chcete získat odhad nákladů na zálohování virtuálních počítačů
 
   - Pro souborové servery vyberte **nízkou** nebo **střední** četnost změn, a pokud používáte databáze, vyberte **vysokou** četnost změn.
 
-  - Pokud znáte vaši **procentní četnost změn**, můžete použít možnost **Zadat vlastní procentní hodnotu**.
+  - Pokud znáte vaši **procentní četnost změn** , můžete použít možnost **Zadat vlastní procentní hodnotu** .
 
 - Zvolte zásady zálohování.
 
@@ -62,11 +62,11 @@ Pokud chcete získat odhad nákladů na zálohování virtuálních počítačů
 
 - **Volitelné** – Selektivní zálohování disků
 
-  - Pokud při zálohování virtuálních počítačů Azure využíváte možnost **Selektivní zálohování disků**, zvolte možnost **Vyloučit disk** a zadejte procento disků vyloučených ze zálohování z hlediska velikosti. Například pokud máte virtuální počítač připojený ke třem diskům s využitou velikostí 200 GB a chcete dva z nich vyloučit ze zálohování, zadejte 66,7 %.
+  - Pokud při zálohování virtuálních počítačů Azure využíváte možnost **Selektivní zálohování disků** , zvolte možnost **Vyloučit disk** a zadejte procento disků vyloučených ze zálohování z hlediska velikosti. Například pokud máte virtuální počítač připojený ke třem diskům s využitou velikostí 200 GB a chcete dva z nich vyloučit ze zálohování, zadejte 66,7 %.
 
 - **Volitelné** – Redundance úložiště zálohování
 
-  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS**. Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS**. Pokud chcete porozumět nákladům při povolení [obnovení záloh mezi oblastmi](backup-azure-arm-restore-vms.md#cross-region-restore), vyberte v tabulce možnost **RA-GRS**.
+  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS** . Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS** . Pokud chcete porozumět nákladům při povolení [obnovení záloh mezi oblastmi](backup-azure-arm-restore-vms.md#cross-region-restore), vyberte v tabulce možnost **RA-GRS** .
 
 - **Volitelné** – Úprava regionálních cen nebo používání zvýhodněných sazeb
 
@@ -94,7 +94,7 @@ Pokud chcete získat odhad nákladů na zálohování SQL Serverů na virtuáln�
 
   - Databáze obvykle mají vysokou četnost změn.
 
-  - Pokud znáte vaši **procentní četnost změn**, můžete použít možnost **Zadat vlastní procentní hodnotu**.
+  - Pokud znáte vaši **procentní četnost změn** , můžete použít možnost **Zadat vlastní procentní hodnotu** .
 
 - Zvolte zásady zálohování.
 
@@ -116,7 +116,7 @@ Pokud chcete získat odhad nákladů na zálohování SQL Serverů na virtuáln�
 
 - **Volitelné** – Redundance úložiště zálohování
 
-  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS**. Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS**.
+  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS** . Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS** .
 
 - **Volitelné** – Úprava regionálních cen nebo používání zvýhodněných sazeb
 
@@ -134,7 +134,7 @@ Pokud chcete získat odhad nákladů na zálohování serverů SAP HANA na virtu
 - Jaká je očekávaná denní četnost změn dat na těchto serverech?
   - Tato procentní hodnota značí průměrnou denní četnost změn jako procento celkové velikosti databází SAP HANA, které zálohujete na serveru SAP HANA.
   - Databáze obvykle mají vysokou četnost změn.
-  - Pokud znáte vaši **procentní četnost změn**, můžete použít možnost **Zadat vlastní procentní hodnotu**.
+  - Pokud znáte vaši **procentní četnost změn** , můžete použít možnost **Zadat vlastní procentní hodnotu** .
 - Zvolte zásady zálohování.
   - Typ zálohování
     - Nejefektivnější zásady, které můžete vybrat, jsou **Denní rozdílové zálohování** s **týdenním, měsíčním nebo ročním** úplným zálohováním. Azure Backup umožňuje obnovení jedním kliknutím i z rozdílových záloh.
@@ -146,7 +146,7 @@ Pokud chcete získat odhad nákladů na zálohování serverů SAP HANA na virtu
   - Jak dlouho očekáváte, že se budou uchovávat roční zálohy? (v letech)
 - **Volitelné** – Redundance úložiště zálohování
   
-  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS**. Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS**.
+  - Tento parametr značí redundanci účtu úložiště, do kterého se zálohují vaše data. Pokud chcete zajistit nejvyšší dostupnost, doporučujeme použít **GRS** . Tento typ redundance zajišťuje uchovávání kopie zálohovaných dat v jiné oblasti, a tím pomáhá plnit různé standardy dodržování předpisů. Pokud zálohujete vývojová nebo testovací prostředí, která nevyžadují zálohování na podnikové úrovni, změňte redundanci na **LRS** .
 - **Volitelné** – Úprava regionálních cen nebo používání zvýhodněných sazeb
   
   - Pokud si chcete projít odhady pro jinou oblast nebo zvýhodněné sazby, u možnosti **Vyzkoušet odhady pro jinou oblast?** vyberte **Ano** a zadejte sazby, pro které chcete získat odhady.
@@ -155,14 +155,14 @@ Pokud chcete získat odhad nákladů na zálohování serverů SAP HANA na virtu
 
 Pokud chcete získat odhad nákladů na zálohování sdílených složek Azure pomocí [řešení zálohování založeného na snímcích](azure-file-share-backup-overview.md), které nabízí Azure Backup, budete potřebovat následující parametry:
 
-- Velikost (**v GB**) sdílených složek, které chcete zálohovat.
+- Velikost ( **v GB** ) sdílených složek, které chcete zálohovat.
 
 - Pokud chcete zálohovat sdílené složky rozprostřené mezi několika účty úložiště, zadejte počet účtů úložiště, které jsou hostiteli sdílených složek s výše uvedenou velikostí.
 
 - Očekávaná četnost změn dat ve sdílených složkách, které chcete zálohovat <br>Četnost změn odkazuje na množství změn dat a přímo ovlivňuje velikost úložiště snímků. Například pokud máte sdílenou složku s 200 GB dat, která se mají zálohovat, a každý den se změní 10 GB těchto dat, denní četnost změn je 5 %.
   - Vyšší četnost změn znamená velké množství denních změn dat v obsahu sdílených složek, což způsobuje také větší velikost přírůstkových snímků (zachytávajících pouze změny dat).
   - V závislosti na charakteristice a využití vašich sdílených složek vyberte nízkou (1 %), střední (3 %) nebo vysokou (5 %) četnost změn.
-  - Pokud znáte přesnou **procentní četnost změn** ve vaší sdílené složce, můžete v rozevírací nabídce vybrat možnost **Zadat vlastní procentní hodnotu**. Zadejte hodnoty (v procentech) denní, týdenní, měsíční a roční četnosti změn.
+  - Pokud znáte přesnou **procentní četnost změn** ve vaší sdílené složce, můžete v rozevírací nabídce vybrat možnost **Zadat vlastní procentní hodnotu** . Zadejte hodnoty (v procentech) denní, týdenní, měsíční a roční četnosti změn.
 
 - Typ účtu úložiště (Standard nebo Premium) a nastavení redundance úložiště účtu úložiště, který je hostitelem zálohované sdílené složky <br>V aktuálním řešení zálohování sdílených složek Azure se snímky ukládají ve stejném účtu úložiště jako zálohovaná sdílená složka. Proto se náklady na úložiště spojené se snímky účtují v rámci faktury za Azure Files, a to v závislosti na cenách snímků pro typ účtu a nastavení redundance účtu úložiště, který je hostitelem zálohovaných sdílených složek a snímků.
 

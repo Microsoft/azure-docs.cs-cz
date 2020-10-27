@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c480de6da0427b8eda212e02e08c7b3f5426941c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996675"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534137"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Zlaté brány na virtuálním počítači Azure Linux 
 
@@ -24,7 +24,7 @@ Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další 
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí
 
-K provedení instalace Oracle Zlaté brány potřebujete vytvořit dva virtuální počítače Azure ve stejné skupině dostupnosti. Image Marketplace, kterou použijete k vytvoření virtuálních počítačů, je **Oracle: Oracle-Database-EE: 12.1.0.2: nejnovější**.
+K provedení instalace Oracle Zlaté brány potřebujete vytvořit dva virtuální počítače Azure ve stejné skupině dostupnosti. Image Marketplace, kterou použijete k vytvoření virtuálních počítačů, je **Oracle: Oracle-Database-EE: 12.1.0.2: nejnovější** .
 
 Musíte být také obeznámeni s editorem systému UNIX VI a máte základní znalosti o X11 (X Windows).
 
@@ -347,7 +347,7 @@ SQL> EXIT;
 ### <a name="download-golden-gate-software"></a>Stáhnout software Zlaté brány
 Pokud chcete stáhnout a připravit software pro Oracle zlatou bránu, proveďte následující kroky:
 
-1. Stáhněte soubor **fbo_ggs_Linux_x64_shiphome.zip** ze stránky pro [Stažení aplikace Oracle Zlaté brány](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). V části stažení názvu **Oracle GoldenGate 12. x. x. x pro Oracle Linux X86-64**by měl být k dispozici sada souborů. zip ke stažení.
+1. Stáhněte soubor **fbo_ggs_Linux_x64_shiphome.zip** ze stránky pro [Stažení aplikace Oracle Zlaté brány](https://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). V části stažení názvu **Oracle GoldenGate 12. x. x. x pro Oracle Linux X86-64** by měl být k dispozici sada souborů. zip ke stažení.
 
 2. Po stažení souborů zip do klientského počítače použijte protokol SCP (Secure Copy Protocol) ke zkopírování souborů na virtuální počítač:
 
@@ -389,9 +389,9 @@ Tento krok je volitelný. Tento krok můžete přeskočit, pokud používáte kl
 3. Generátor klíčů ve výstupu:
 
    - Pokud chcete vygenerovat klíč, vyberte tlačítko **Generovat** .
-   - Zkopírujte obsah klíče (**CTRL + C**).
+   - Zkopírujte obsah klíče ( **CTRL + C** ).
    - Vyberte tlačítko **Uložit privátní klíč** .
-   - Ignorujte zobrazené upozornění a pak vyberte **OK**.
+   - Ignorujte zobrazené upozornění a pak vyberte **OK** .
 
    ![Snímek stránky generátoru klíčů pro výstupu](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -403,21 +403,21 @@ Tento krok je volitelný. Tento krok můžete přeskočit, pokud používáte kl
    $ cd .ssh
    ```
 
-5. Vytvořte soubor s názvem **authorized_keys**. Vložte obsah klíče do tohoto souboru a pak soubor uložte.
+5. Vytvořte soubor s názvem **authorized_keys** . Vložte obsah klíče do tohoto souboru a pak soubor uložte.
 
    > [!NOTE]
    > Klíč musí obsahovat řetězec `ssh-rsa` . Obsah klíče musí být také jeden řádek textu.
    >  
 
-6. Spusťte PuTTY. V podokně **kategorie** vyberte **připojení**  >  **SSH**  >  **ověřování**. V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
+6. Spusťte PuTTY. V podokně **kategorie** vyberte **připojení**  >  **SSH**  >  **ověřování** . V poli **soubor privátního klíče pro ověřování** přejděte na klíč, který jste dříve vygenerovali.
 
    ![Snímek obrazovky se stránkou nastavit privátní klíč](./media/oracle-golden-gate/setprivatekey.png)
 
-7. V podokně **kategorie** vyberte **připojení**  >  **SSH**  >  **X11**. Pak zaškrtněte políčko **Povolit předávání X11** .
+7. V podokně **kategorie** vyberte **připojení**  >  **SSH**  >  **X11** . Pak zaškrtněte políčko **Povolit předávání X11** .
 
    ![Snímek obrazovky se stránkou povolit X11](./media/oracle-golden-gate/enablex11.png)
 
-8. V podokně **kategorie** přejít na **relace**. Zadejte informace o hostiteli a pak vyberte **otevřít**.
+8. V podokně **kategorie** přejít na **relace** . Zadejte informace o hostiteli a pak vyberte **otevřít** .
 
    ![Snímek obrazovky se stránkou relace](./media/oracle-golden-gate/puttysession.png)
 
@@ -436,25 +436,25 @@ Pokud chcete nainstalovat Oracle zlatou bránu, proveďte následující kroky:
 
    ![Snímek obrazovky s výběrem instalační stránky instalační služby](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. Změňte umístění softwaru. Pak vyberte pole **Start Manager** a zadejte umístění databáze. Pokračujte výběrem tlačítka **Další**.
+3. Změňte umístění softwaru. Pak vyberte pole **Start Manager** a zadejte umístění databáze. Pokračujte výběrem tlačítka **Další** .
 
    ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_02.png)
 
 4. Změňte adresář inventáře a pokračujte výběrem **Další** .
 
-   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![Snímek obrazovky s instalační stránkou, která zobrazuje instalační adresář](./media/oracle-golden-gate/golden_gate_install_03.png)
 
 5. Na obrazovce **souhrnu** pokračujte výběrem **nainstalovat** .
 
-   ![Snímek obrazovky s výběrem instalační stránky instalační služby](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![Snímek obrazovky zobrazující stránku vybrat instalaci a tlačítko nainstalovat](./media/oracle-golden-gate/golden_gate_install_04.png)
 
 6. Může se zobrazit výzva ke spuštění skriptu jako "root". Pokud ano, otevřete samostatnou relaci, SSH k virtuálnímu počítači, sudo do kořenového adresáře a potom spusťte skript. Vyberte **OK** pokračovat.
 
-   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![Snímek obrazovky zobrazující umístění skriptu a postup spuštění konfiguračního skriptu.](./media/oracle-golden-gate/golden_gate_install_05.png)
 
 7. Po dokončení instalace vyberte **Zavřít** a proces dokončete.
 
-   ![Snímek obrazovky se stránkou vybrat instalaci](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![Snímek obrazovky se stránkou pro instalaci, na které se zobrazuje tlačítko Zavřít](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>Nastavení služby v myVM1 (primární)
 

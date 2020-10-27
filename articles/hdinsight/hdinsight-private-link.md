@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426388"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547414"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Zabezpečte a izolujte clustery Azure HDInsight pomocí privátního propojení (Preview).
 
@@ -25,7 +25,7 @@ Můžete vytvořit privátní clustery HDInsight konfigurací specifických vlas
 
 ## <a name="remove-public-ip-addresses"></a>Odebrat veřejné IP adresy
 
-Ve výchozím nastavení používá HDInsight RP *příchozí* připojení ke clusteru pomocí veřejných IP adres. Když `resourceProviderConnection` je vlastnost Network nastavená na *odchozí*, obrátí se připojení k HDInsight RP, aby se připojení vždy iniciovala v rámci clusteru až po RP. Bez příchozího připojení nemusí být k dispozici žádné vstupní značky služeb ani veřejné IP adresy.
+Ve výchozím nastavení používá HDInsight RP *příchozí* připojení ke clusteru pomocí veřejných IP adres. Když `resourceProviderConnection` je vlastnost Network nastavená na *odchozí* , obrátí se připojení k HDInsight RP, aby se připojení vždy iniciovala v rámci clusteru až po RP. Bez příchozího připojení nemusí být k dispozici žádné vstupní značky služeb ani veřejné IP adresy.
 
 Základní nástroje pro vyrovnávání zatížení používané ve výchozí architektuře virtuální sítě automaticky poskytují veřejné NAT (překlad síťových adres) pro přístup k požadovaným odchozím závislostem, jako je například HDInsight RP. Pokud chcete omezit odchozí připojení k veřejnému Internetu, můžete [nakonfigurovat bránu firewall](./hdinsight-restrict-outbound-traffic.md), ale nejedná se o požadavek.
 
@@ -54,13 +54,13 @@ Pro přístup ke clusteru pomocí plně kvalifikovaných názvů domény cluster
 
 Privátní odkaz, který je ve výchozím nastavení zakázán, vyžaduje rozsáhlou znalost sítě pro nastavení tras definovaných uživatelem (UDR) a pravidla brány firewall, aby bylo možné vytvořit cluster správně. Přístup k tomuto clusteru prostřednictvím privátního propojení je k dispozici pouze v případě, že `resourceProviderConnection` je vlastnost síť nastavena na *odchozí* , jak je popsáno v předchozí části.
 
-Když `privateLink` je nastavená možnost *Povolit*, vytvoří se interní standardní nástroj pro [Vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) (SLB) a pro každý SLB se zřídí služba Azure Private Link. Služba privátního propojení umožňuje přístup ke clusteru HDInsight z privátních koncových bodů.
+Když `privateLink` je nastavená možnost *Povolit* , vytvoří se interní standardní nástroj pro [Vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) (SLB) a pro každý SLB se zřídí služba Azure Private Link. Služba privátního propojení umožňuje přístup ke clusteru HDInsight z privátních koncových bodů.
 
-Standardní nástroje pro vyrovnávání zatížení neposkytují automaticky [veřejné odchozí služby NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , jako jsou základní nástroje pro vyrovnávání zatížení. Pro odchozí závislosti musíte zadat vlastní řešení NAT, například [Virtual Network NAT](../virtual-network/nat-overview.md) nebo [bránu firewall](./hdinsight-restrict-outbound-traffic.md). Váš cluster HDInsight pořád potřebuje přístup k odchozím závislostem. Pokud tyto odchozí závislosti nejsou povolené, vytvoření clusteru může selhat.
+Standardní nástroje pro vyrovnávání zatížení neposkytují automaticky [veřejné odchozí služby NAT](../load-balancer/load-balancer-outbound-connections.md) , jako jsou základní nástroje pro vyrovnávání zatížení. Pro odchozí závislosti musíte zadat vlastní řešení NAT, například [Virtual Network NAT](../virtual-network/nat-overview.md) nebo [bránu firewall](./hdinsight-restrict-outbound-traffic.md). Váš cluster HDInsight pořád potřebuje přístup k odchozím závislostem. Pokud tyto odchozí závislosti nejsou povolené, vytvoření clusteru může selhat.
 
 ### <a name="prepare-your-environment"></a>Příprava prostředí
 
-Pro successgfull vytváření služeb privátních propojení musíte explicitně [zakázat zásady sítě pro službu privátního propojení](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy).
+Pro successgfull vytváření služeb privátních propojení musíte explicitně [zakázat zásady sítě pro službu privátního propojení](../private-link/disable-private-link-service-network-policy.md).
 
 Následující diagram ukazuje příklad konfigurace sítě, která je potřeba před vytvořením clusteru. V tomto příkladu musí být veškerý odchozí provoz [nuceně](../firewall/forced-tunneling.md) Azure firewall pomocí udr a před vytvořením clusteru by měly být v bráně firewall povolené požadované odchozí závislosti. U Balíček zabezpečení podniku clusterů může být připojení k síti Azure Active Directory Domain Services dostupné pomocí partnerského vztahu virtuální sítě.
 

@@ -8,12 +8,12 @@ keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207576"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547023"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Architektury Azure HDInsight pro provozní kontinuitu
 
@@ -54,11 +54,11 @@ V *aktivní primární službě s sekundární architekturou na vyžádání* ap
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>Aktivní primární podregistr s sekundárním pohotovostním režimem
 
-V *aktivní primární primární službě s pohotovostním sekundárním*prostředím aplikace zapisují do aktivní primární oblasti a v režimu jen pro čtení se spustí v režimu jen pro čtení během normálního provozu. Během normálního provozu můžete zvolit přesměrování operací čtení specifických pro oblast do sekundárního.
+V *aktivní primární primární službě s pohotovostním sekundárním* prostředím aplikace zapisují do aktivní primární oblasti a v režimu jen pro čtení se spustí v režimu jen pro čtení během normálního provozu. Během normálního provozu můžete zvolit přesměrování operací čtení specifických pro oblast do sekundárního.
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Architektura podregistru a interaktivních dotazů":::
 
-Další informace o replikaci podregistru a ukázkách kódu najdete [v tématu Apache Hive replikace v clusterech Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication) .
+Další informace o replikaci podregistru a ukázkách kódu najdete [v tématu Apache Hive replikace v clusterech Azure HDInsight](./interactive-query/apache-hive-replication.md) .
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -97,7 +97,7 @@ Aplikace čtou a zapisují do clusterů Spark a podregistr v primární oblasti 
 
 Replikace při exportu a HBA jsou běžné způsoby povolování kontinuity podnikových prostředí mezi clustery HDInsight.
 
-Export HBA je proces dávkové replikace, který používá nástroj pro export HBA k exportu tabulek z primárních clusterů HBA do svého základního Azure Data Lake Storage úložiště 2. generace. Exportovaná data jsou následně dostupná z clusteru sekundárních HBA a naimportovaná do tabulek, které musí existovat v sekundárním rozhraní. I když adaptéry pro export nabízí členitost na úrovni tabulky, v situacích přírůstkové aktualizace řídí modul automatizace exportu rozsah přírůstkových řádků, které se mají zahrnout do každého spuštění. Další informace najdete v tématu [zálohování a replikace HDInsight HBA](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#export-then-import).
+Export HBA je proces dávkové replikace, který používá nástroj pro export HBA k exportu tabulek z primárních clusterů HBA do svého základního Azure Data Lake Storage úložiště 2. generace. Exportovaná data jsou následně dostupná z clusteru sekundárních HBA a naimportovaná do tabulek, které musí existovat v sekundárním rozhraní. I když adaptéry pro export nabízí členitost na úrovni tabulky, v situacích přírůstkové aktualizace řídí modul automatizace exportu rozsah přírůstkových řádků, které se mají zahrnout do každého spuštění. Další informace najdete v tématu [zálohování a replikace HDInsight HBA](./hbase/apache-hbase-backup-replication.md#export-then-import).
 
 HBA replikace v rámci plně automatizovaného způsobu používá replikaci téměř v reálném čase mezi clustery HBA. Replikace se provádí na úrovni tabulky. Všechny tabulky nebo konkrétní tabulky můžou být cílené na replikaci. Replikace HBA je nakonec konzistentní, což znamená, že nedávné úpravy tabulky v primární oblasti nemusí být k dispozici všem sekundárním objektům okamžitě. Sekundárním způsobem je zaručeno, že primárním způsobem bude konzistentní. Replikace HBA je možné nastavit mezi dvěma nebo více clustery HDInsight HBA, pokud:
 
@@ -105,9 +105,9 @@ HBA replikace v rámci plně automatizovaného způsobu používá replikaci té
 * Primární a sekundární jsou v různých virtuální sítě partnerských uzlů ve stejné oblasti.
 * Primární a sekundární jsou v různých virtuální sítě partnerských uzlů v různých oblastech.
 
-Další informace najdete v tématu [nastavení replikace clusteru Apache HBA v Azure Virtual Networks](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-replication).
+Další informace najdete v tématu [nastavení replikace clusteru Apache HBA v Azure Virtual Networks](./hbase/apache-hbase-replication.md).
 
-Existuje několik dalších způsobů, jak provádět zálohování clusterů HBA, jako je [kopírování složky HBA](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-the-hbase-folder), [kopírování tabulek](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-tables) a [snímků](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#snapshots).
+Existuje několik dalších způsobů, jak provádět zálohování clusterů HBA, jako je [kopírování složky HBA](./hbase/apache-hbase-backup-replication.md#copy-the-hbase-folder), [kopírování tabulek](./hbase/apache-hbase-backup-replication.md#copy-tables) a [snímků](./hbase/apache-hbase-backup-replication.md#snapshots).
 
 ### <a name="hbase-rpo--rto"></a>HBA – RPO & RTO
 
@@ -147,7 +147,7 @@ Model více oblastí/cyklických replikací je rozšířením replikace HBA a d�
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-Pokud chcete povolit dostupnost mezi oblastmi, HDInsight 4,0 podporuje Kafka nástroje MirrorMaker, které se dají použít k údržbě sekundární repliky primárního clusteru Kafka v jiné oblasti. Nástroje MirrorMaker funguje jako dvojice spotřebitelů v nejvyšší úrovni, spotřebovává konkrétní téma v primárním clusteru a vytvoří téma se stejným názvem v sekundárním poli. Replikace mezi clustery pro zotavení po havárii s vysokou dostupností pomocí nástroje MirrorMaker je dodávána s předpokladem, že producenti a spotřebitelé musí převzít služby při selhání do clusteru repliky. Další informace najdete v tématu [použití nástroje MirrorMaker k replikaci Apache Kafkach témat s Kafka v HDInsight](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-mirroring) .
+Pokud chcete povolit dostupnost mezi oblastmi, HDInsight 4,0 podporuje Kafka nástroje MirrorMaker, které se dají použít k údržbě sekundární repliky primárního clusteru Kafka v jiné oblasti. Nástroje MirrorMaker funguje jako dvojice spotřebitelů v nejvyšší úrovni, spotřebovává konkrétní téma v primárním clusteru a vytvoří téma se stejným názvem v sekundárním poli. Replikace mezi clustery pro zotavení po havárii s vysokou dostupností pomocí nástroje MirrorMaker je dodávána s předpokladem, že producenti a spotřebitelé musí převzít služby při selhání do clusteru repliky. Další informace najdete v tématu [použití nástroje MirrorMaker k replikaci Apache Kafkach témat s Kafka v HDInsight](./kafka/apache-kafka-mirroring.md) .
 
 V závislosti na době, kdy byla replikace zahájena, může replikace tématu nástroje MirrorMaker vést k různým posunům mezi zdroji a tématy repliky. Clustery HDInsight Kafka také podporují replikaci oddílu tématu, což je funkce vysoké dostupnosti na úrovni jednotlivých clusterů.
 
@@ -192,7 +192,7 @@ Nevýhody:
 
 ## <a name="hdinsight-enterprise-security-package"></a>Balíček zabezpečení podniku HDInsight
 
-Toto nastavení se používá k povolení funkcí více uživatelů v primární i sekundární službě a také k [sadám služba AD DS služby repliky Azure](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-replica-set) , aby bylo zajištěno, že se uživatelé budou moct ověřovat v obou clusterech. Během normálního provozu je potřeba nastavit zásady Ranger v sekundárním, aby bylo zajištěno, že uživatelé budou omezeni na operace čtení. Níže uvedená architektura vysvětluje, jak může vypadat aktivní primární podregistr s povoleným protokolem ESP – sekundární nastavení.
+Toto nastavení se používá k povolení funkcí více uživatelů v primární i sekundární službě a také k [sadám služba AD DS služby repliky Azure](../active-directory-domain-services/tutorial-create-replica-set.md) , aby bylo zajištěno, že se uživatelé budou moct ověřovat v obou clusterech. Během normálního provozu je potřeba nastavit zásady Ranger v sekundárním, aby bylo zajištěno, že uživatelé budou omezeni na operace čtení. Níže uvedená architektura vysvětluje, jak může vypadat aktivní primární podregistr s povoleným protokolem ESP – sekundární nastavení.
 
 Replikace Ranger metastore:
 

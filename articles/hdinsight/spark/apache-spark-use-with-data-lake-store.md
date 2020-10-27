@@ -8,22 +8,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 583a5bcac71265596127c7860c0509963f76b2fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080937"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534324"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1
 
 V tomto článku použijete [Jupyter notebook](https://jupyter.org/) dostupné s clustery HDInsight Spark ke spuštění úlohy, která čte data z účtu Data Lake Storage.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure Data Lake Storage Gen1. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Azure HDInsight Spark cluster s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů v tématu [rychlý Start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Azure HDInsight Spark cluster s Data Lake Storage Gen1 jako úložiště. Postupujte podle pokynů v tématu [rychlý Start: nastavení clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="prepare-the-data"></a>Příprava dat
 
@@ -58,24 +58,24 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
     Copy Completed. 1 file copied.
     ```
 
-    Datový soubor (**HVAC.csv**) se zkopíruje do složky **/HVAC** v Data Lake Storagem účtu.
+    Datový soubor ( **HVAC.csv** ) se zkopíruje do složky **/HVAC** v Data Lake Storagem účtu.
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Použití clusteru HDInsight Spark s Data Lake Storage Gen1
 
-1. Z [Azure Portal](https://portal.azure.com/)klikněte na dlaždici pro cluster Apache Spark (Pokud jste ho připnuli k úvodní panel). Můžete také přejít do clusteru v části **Procházet všechny**  >  **clustery HDInsight**.
+1. Z [Azure Portal](https://portal.azure.com/)klikněte na dlaždici pro cluster Apache Spark (Pokud jste ho připnuli k úvodní panel). Můžete také přejít do clusteru v části **Procházet všechny**  >  **clustery HDInsight** .
 
-2. Z okna clusteru Spark klikněte na tlačítko **Rychlé odkazy** a pak z okna **Řídicí panel clusteru** klikněte na tlačítko **Poznámkový blok Jupyter**. Po vyzvání zadejte přihlašovací údaje správce clusteru.
+2. Z okna clusteru Spark klikněte na tlačítko **Rychlé odkazy** a pak z okna **Řídicí panel clusteru** klikněte na tlačítko **Poznámkový blok Jupyter** . Po vyzvání zadejte přihlašovací údaje správce clusteru.
 
    > [!NOTE]  
    > Může také otevřít poznámkový blok Jupyter pro váš cluster tak, že otevřete následující adresu URL v prohlížeči. Nahraďte **název_clusteru** názvem vašeho clusteru:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. Vytvořte nový poznámkový blok. Klikněte na tlačítko **Nový** a pak klikněte na tlačítko **PySpark**.
+3. Vytvořte nový poznámkový blok. Klikněte na tlačítko **Nový** a pak klikněte na tlačítko **PySpark** .
 
     ![Vytvoření nového poznámkového bloku Jupyter](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Vytvoření nového poznámkového bloku Jupyter")
 
-4. Vzhledem k tomu, že jste poznámkový blok vytvořili pomocí jádra PySpark, není nutné explicitně tvořit kontexty. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. Můžete začít importem typů nezbytných pro tento scénář. Chcete-li tak učinit, vložte následující fragment kódu do buňky a stiskněte klávesu **SHIFT + ENTER**.
+4. Vzhledem k tomu, že jste poznámkový blok vytvořili pomocí jádra PySpark, není nutné explicitně tvořit kontexty. Kontexty Spark a Hive se automaticky vytvoří za vás při spuštění první buňky kódu. Můžete začít importem typů nezbytných pro tento scénář. Chcete-li tak učinit, vložte následující fragment kódu do buňky a stiskněte klávesu **SHIFT + ENTER** .
 
     ```scala
     from pyspark.sql.types import *
@@ -105,7 +105,7 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
         adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
         ```
 
-     Do prázdné buňky vložte následující příklad kódu, nahraďte **MYDATALAKESTORE** názvem účtu Data Lake Storage a stiskněte **SHIFT + ENTER**. Tento ukázkový kód registruje data do dočasné tabulky nazývané **TVK**.
+     Do prázdné buňky vložte následující příklad kódu, nahraďte **MYDATALAKESTORE** názvem účtu Data Lake Storage a stiskněte **SHIFT + ENTER** . Tento ukázkový kód registruje data do dočasné tabulky nazývané **TVK** .
 
       ```scala
       # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster
@@ -124,7 +124,7 @@ Pokud jste vytvořili cluster HDInsight s Data Lake Storage jako další úloži
       hvacdf.registerTempTable("hvac")
       ```
 
-6. Vzhledem k tomu, že používáte jádro PySpark, můžete nyní přímo spustit dotaz SQL na dočasnou tabulku **TVK**, kterou jste právě vytvořili pomocí `%%sql` magic. Další informace o `%%sql` Magic a dalších přístupnosti, které jsou k dispozici v jádru PySpark, najdete v tématu [jádra dostupná na poznámkových blocích Jupyter s Apache Spark clustery HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+6. Vzhledem k tomu, že používáte jádro PySpark, můžete nyní přímo spustit dotaz SQL na dočasnou tabulku **TVK** , kterou jste právě vytvořili pomocí `%%sql` magic. Další informace o `%%sql` Magic a dalších přístupnosti, které jsou k dispozici v jádru PySpark, najdete v tématu [jádra dostupná na poznámkových blocích Jupyter s Apache Spark clustery HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
     ```sql
     %%sql

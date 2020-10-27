@@ -19,7 +19,7 @@ Azure Stream Analytics podporuje [spravované ověřování identity](../active-
 
 Spravovaná identita je spravovaná aplikace zaregistrovaná v Azure Active Directory, která představuje danou Stream Analytics úlohu. Spravovaná aplikace se používá k ověření cílového prostředku. V tomto článku se dozvíte, jak povolit spravovanou identitu pro Azure SQL Database výstupy Stream Analytics úlohy prostřednictvím Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tato funkce vyžaduje následující:
 
@@ -33,7 +33,7 @@ Nejdřív vytvoříte spravovanou identitu pro svou Azure Stream Analytics úloh
 
 1. V [Azure Portal](https://portal.azure.com)otevřete Azure Stream Analytics úlohu.
 
-1. V levém navigačním panelu vyberte **spravovanou identitu** nacházející se v části **Konfigurovat**. Potom zaškrtněte políčko vedle **použít spravovanou identitu přiřazenou systémem** a vyberte **Uložit**.
+1. V levém navigačním panelu vyberte **spravovanou identitu** nacházející se v části **Konfigurovat** . Potom zaškrtněte políčko vedle **použít spravovanou identitu přiřazenou systémem** a vyberte **Uložit** .
 
    ![Vybrat spravovanou identitu přiřazenou systémem](./media/sql-db-output-managed-identity/system-assigned-managed-identity.png)
 
@@ -44,7 +44,7 @@ Nejdřív vytvoříte spravovanou identitu pro svou Azure Stream Analytics úloh
 
    ![ID objektu zobrazené jako ID objektu zabezpečení](./media/sql-db-output-managed-identity/principal-id.png)
 
-   Instanční objekt má stejný název jako Stream Analytics úloha. Například pokud je název úlohy *MyASAJob*, název instančního objektu je také *MyASAJob*.
+   Instanční objekt má stejný název jako Stream Analytics úloha. Například pokud je název úlohy *MyASAJob* , název instančního objektu je také *MyASAJob* .
 
 ## <a name="select-an-active-directory-admin"></a>Vybrat Správce služby Active Directory
 
@@ -52,11 +52,11 @@ Po vytvoření spravované identity vyberete Správce služby Active Directory.
 
 1. Přejděte na prostředek Azure SQL Database a vyberte SQL Server, pod kterou je databáze. Název SQL Server můžete najít vedle pole *název serveru* na stránce Přehled prostředku. 
 
-1. V části **Nastavení**vyberte **Správce služby Active Directory** . Pak vyberte **nastavit správce**. 
+1. V části **Nastavení** vyberte **Správce služby Active Directory** . Pak vyberte **nastavit správce** . 
 
    ![Stránka pro správu služby Active Directory](./media/sql-db-output-managed-identity/active-directory-admin-page.png)
  
-1. Na stránce Správce služby Active Directory vyhledejte uživatele nebo skupinu pro správce SQL Server a klikněte na **Vybrat**.
+1. Na stránce Správce služby Active Directory vyhledejte uživatele nebo skupinu pro správce SQL Server a klikněte na **Vybrat** .
 
    ![Přidat správce služby Active Directory](./media/sql-db-output-managed-identity/add-admin.png)
 
@@ -76,7 +76,7 @@ Dále ve svém SQL Database vytvoříte uživatele databáze s omezením, který
 
    Název serveru se `<SQL Server name>.database.windows.net` může v různých oblastech lišit. Například oblast Čína by měla použít `<SQL Server name>.database.chinacloudapi.cn` .
  
-   Konkrétní SQL Database můžete zadat tak, že v **možnosti > vlastnosti připojení > připojit k databázi**.  
+   Konkrétní SQL Database můžete zadat tak, že v **možnosti > vlastnosti připojení > připojit k databázi** .  
 
    ![Vlastnosti připojení SQL Server](./media/sql-db-output-managed-identity/sql-server-connection-properties.png)
 
@@ -86,11 +86,11 @@ Dále ve svém SQL Database vytvoříte uživatele databáze s omezením, který
 
    1. Pokud ano, v Azure Portal klikněte na prostředek SQL Server. V části **zabezpečení** otevřete stránku **brány firewall a virtuální síť** . 
    1. Přidejte nové pravidlo s libovolným názvem pravidla.
-   1. Pro *Počáteční IP*adresu použijte *z* IP adresy z **nového okna pravidla brány firewall** .
-   1. Pro *koncovou IP*adresu *použijte IP adresu* z **nového okna pravidla brány firewall** . 
+   1. Pro *Počáteční IP* adresu použijte *z* IP adresy z **nového okna pravidla brány firewall** .
+   1. Pro *koncovou IP* adresu *použijte IP adresu* z **nového okna pravidla brány firewall** . 
    1. Vyberte **Uložit** a pokuste se o připojení znovu z SQL Server Management Studio. 
 
-1. Jakmile budete připojeni, vytvořte uživatele databáze s omezením. Následující příkaz SQL vytvoří uživatele databáze s omezením, který má stejný název jako vaše Stream Analyticsová úloha. Nezapomeňte zahrnout hranaté závorky kolem *ASA_JOB_NAME*. Použijte následující syntaxi T-SQL a spusťte dotaz. 
+1. Jakmile budete připojeni, vytvořte uživatele databáze s omezením. Následující příkaz SQL vytvoří uživatele databáze s omezením, který má stejný název jako vaše Stream Analyticsová úloha. Nezapomeňte zahrnout hranaté závorky kolem *ASA_JOB_NAME* . Použijte následující syntaxi T-SQL a spusťte dotaz. 
 
    ```sql
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
@@ -110,7 +110,7 @@ Chcete-li udělit oprávnění pouze určitým tabulkám nebo objektům v datab�
 GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME; 
 ```
 
-Případně můžete kliknout pravým tlačítkem na databázi SQL v SQL Server Management Studio a vybrat **vlastnosti > oprávnění**. V nabídce oprávnění uvidíte úlohu Stream Analytics, kterou jste dříve přidali, a můžete podle potřeby ručně udělit nebo odepřít oprávnění.
+Případně můžete kliknout pravým tlačítkem na databázi SQL v SQL Server Management Studio a vybrat **vlastnosti > oprávnění** . V nabídce oprávnění uvidíte úlohu Stream Analytics, kterou jste dříve přidali, a můžete podle potřeby ručně udělit nebo odepřít oprávnění.
 
 ## <a name="create-an-azure-sql-database-output"></a>Vytvoření výstupu Azure SQL Database
 
@@ -118,11 +118,11 @@ Teď, když je vaše spravovaná identita nakonfigurovaná, jste připraveni př
 
 Ujistěte se, že jste v SQL Database vytvořili tabulku s odpovídajícím výstupním schématem. Název této tabulky je jedna z požadovaných vlastností, které musí být vyplněny při přidání výstupu SQL Database do úlohy Stream Analytics. Ujistěte se také, že úloha má oprávnění k **výběru** a **vložení** pro otestování připojení a spouštění dotazů Stream Analytics. Pokud jste to ještě neudělali, přečtěte si část [udělení oprávnění k úloze udělit Stream Analytics](#grant-stream-analytics-job-permissions) . 
 
-1. Vraťte se do úlohy Stream Analytics a přejděte na stránku **výstupy** v části **topologie úloh**. 
+1. Vraťte se do úlohy Stream Analytics a přejděte na stránku **výstupy** v části **topologie úloh** . 
 
-1. Vyberte **přidat > SQL Database**. V okně Vlastnosti výstupu jímky výstupní SQL Database v rozevíracím seznamu režim ověřování vyberte **spravovaná identita** .
+1. Vyberte **přidat > SQL Database** . V okně Vlastnosti výstupu jímky výstupní SQL Database v rozevíracím seznamu režim ověřování vyberte **spravovaná identita** .
 
-1. Vyplňte zbytek vlastností. Další informace o vytváření výstupů SQL Database najdete v tématu [Vytvoření výstupu SQL Database pomocí Stream Analytics](sql-database-output.md). Po dokončení vyberte **Uložit**. 
+1. Vyplňte zbytek vlastností. Další informace o vytváření výstupů SQL Database najdete v tématu [Vytvoření výstupu SQL Database pomocí Stream Analytics](sql-database-output.md). Po dokončení vyberte **Uložit** . 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,17 +1,17 @@
 ---
-title: Přehled provozní kontinuity pomocí Azure Database for MySQL flexibilního serveru
+title: Přehled provozní kontinuity – Azure Database for MySQL flexibilního serveru
 description: Přečtěte si o konceptech kontinuity podnikových aplikací pomocí Azure Database for MySQL flexibilního serveru.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 0c1afaa7d2d7971b2570914aa7c69fa7c666ae46
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 833031a787f8571a8f8aea8e536410d4abcca298
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107840"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546411"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>Přehled provozní kontinuity pomocí Azure Database for MySQL-flexibilního serveru (Preview)
 
@@ -21,7 +21,6 @@ ms.locfileid: "92107840"
 Azure Database for MySQL flexibilní Server umožňuje využívat možnosti kontinuity podnikových aplikací, které chrání vaše databáze v případě plánovaného a neplánovaného výpadku. Funkce, jako například automatizované zálohování a vysoká dostupnost, řeší různé úrovně ochrany proti chybám s různou dobou obnovení a únikem informací. Při sestavování aplikace pro ochranu před chybami byste měli zvážit cíl doby obnovení (RTO) a cíl bodu obnovení (RPO) pro každou aplikaci. RTO je odolnost proti výpadkům a RPO je odolnost proti ztrátám dat po přerušení databázové služby.
 
 Následující tabulka znázorňuje funkce flexibilní nabídky serveru.
-
 
 | **Funkce** | **Popis** | **Omezení** |
 | ---------- | ----------- | ------------ |
@@ -34,17 +33,18 @@ Následující tabulka znázorňuje funkce flexibilní nabídky serveru.
 > Během období Preview se nenabízí smlouva SLA pro dobu provozu, RTO a RPO. Podrobnosti uvedené na této stránce pro vaše informace a účely plánování.
 
 ## <a name="planned-downtime-mitigation"></a>Omezení zmírňování plánovaných výpadků
+
 Tady je několik plánovaných scénářů údržby, které účtují výpadky:
 
 | **Scénář** | **Proces**|
 | :------------ | :----------- |
 | **Škálování na výpočetní výkon (uživatel)**| Když provádíte operaci výpočetního škálování, nový flexibilní Server se zřídí pomocí výpočetní konfigurace s měřítkem. V existujícím databázovém serveru se můžou dokončit aktivní kontrolní body, připojení klientů se vyprazdňuje, všechny nepotvrzené transakce se zruší a pak se vypnou. Úložiště se pak připojí k novému serveru a spustí se databáze, která v případě potřeby provede obnovení do přijetí připojení klienta. |
 | **Nové nasazení softwaru (Azure)** | Nové opravy funkcí nebo opravy chyb se automaticky nastávají v rámci plánované údržby služby a můžete naplánovat, kdy se tyto aktivity budou provádět. Další informace najdete v [dokumentaci](https://aka.ms/servicehealthpm)a také na [portálu](https://aka.ms/servicehealthpm) . |
-| **Upgrady dílčí verze (Azure)** | Azure Database for MySQL automaticky opraví databázové servery na podverzi určenou v Azure. K tomu dochází jako součást plánované údržby služby. To by znamenalo krátké výpadky v sekundách a databázový server se automaticky restartuje s novou podverzí. Další informace najdete v [dokumentaci](https://docs.microsoft.com/azure/mysql/concepts-monitoring#planned-maintenance-notification)a také na [portálu](https://aka.ms/servicehealthpm).|
+| **Upgrady dílčí verze (Azure)** | Azure Database for MySQL automaticky opraví databázové servery na podverzi určenou v Azure. K tomu dochází jako součást plánované údržby služby. To by znamenalo krátké výpadky v sekundách a databázový server se automaticky restartuje s novou podverzí. Další informace najdete v [dokumentaci](../concepts-monitoring.md#planned-maintenance-notification)a také na [portálu](https://aka.ms/servicehealthpm).|
 
-Pokud je flexibilní server nakonfigurovaný s **vysokou dostupností zóny**, provede flexibilní Server nejdřív operace na pohotovostním serveru a pak na primárním serveru bez převzetí služeb při selhání. Další podrobnosti najdete v tématu [Koncepty – vysoká dostupnost](./concepts-high-availability.md) .
+Pokud je flexibilní server nakonfigurovaný s **vysokou dostupností zóny** , provede flexibilní Server nejdřív operace na pohotovostním serveru a pak na primárním serveru bez převzetí služeb při selhání. Další podrobnosti najdete v tématu [Koncepty – vysoká dostupnost](./concepts-high-availability.md) .
 
-##  <a name="unplanned-downtime-mitigation"></a>Zmírnění neplánovaných výpadků
+## <a name="unplanned-downtime-mitigation"></a>Zmírnění neplánovaných výpadků
 
 Neplánované výpadky se můžou vyskytnout v důsledku neočekávaných selhání, včetně základní hardwarové chyby, potíží se sítí a softwarových chyb. Pokud dojde k neočekávanému výpadku databázového serveru, pokud je nakonfigurovaný s vysokou dostupností [HA], bude se aktivovat pohotovostní replika. V takovém případě se automaticky zřídí nový databázový server. I když nemůžete se vyhnout neplánovanému výpadku, flexibilní Server snižuje výpadek tím, že automaticky provádí operace obnovení na databázovém serveru a vrstvách úložiště, aniž by to vyžadovalo zásah člověka.
 
@@ -60,12 +60,10 @@ Tady je několik neplánovaných scénářů selhání a proces obnovení:
 | **Selhání zóny dostupnosti** | I když se jedná o vzácnou událost, pokud chcete provést obnovení při selhání na úrovni zóny, můžete provést obnovení k určitému bodu v čase pomocí zálohování a volbou možnosti vlastní bod obnovení, abyste získali nejnovější data. Nový flexibilní Server bude nasazený v jiné zóně. Doba potřebná k obnovení závisí na předchozím zálohování a na počtu transakčních protokolů, které se mají obnovit. | Flexibilní server provádí automatické převzetí služeb při selhání do pohotovostní lokality. Další podrobnosti najdete na [stránce s koncepty ha](./concepts-high-availability.md) . |
 | **Selhání oblasti** | Funkce repliky mezi oblastmi a geografické obnovení se ještě ve verzi Preview nepodporují. | |
 
-
 > [!IMPORTANT]
-> Odstraněné servery **nelze**   obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pomocí [zámku prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)můžete   zabránit nechtěnému odstranění serveru.
-
+> Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pomocí [zámku prostředků Azure](../../azure-resource-manager/management/lock-resources.md) můžete zabránit nechtěnému odstranění serveru.
 
 ## <a name="next-steps"></a>Další kroky
 
--   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
--   Další informace o [zálohování a obnovení](./concepts-backup-restore.md)
+- Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
+- Další informace o [zálohování a obnovení](./concepts-backup-restore.md)

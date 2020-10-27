@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 25e38beb561ee954db2987643775f3a3c6e05737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89668778"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544881"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Šifrování IPSec při přenosu pro Azure HDInsight
 
@@ -27,7 +27,7 @@ Azure HDInsight nabízí celou řadu funkcí zabezpečení pro zabezpečení pod
 
 Šifrování v klidovém prostředí se zabývá šifrováním na straně serveru na účtech Azure Storage a šifrováním disků na virtuálních počítačích Azure, které jsou součástí clusteru HDInsight.
 
-Šifrování dat při přenosu v HDInsight se dosahuje pomocí [TLS (Transport Layer Security)](https://docs.microsoft.com/azure/hdinsight/transport-layer-security) pro accssing brány clusteru a [zabezpečení protokolu Internet Protocol (IPSec)](https://en.wikipedia.org/wiki/IPsec) mezi uzly clusteru. Protokol IPSec může být volitelně povolen mezi všemi hlavními uzly, pracovními uzly, hraničními uzly a Zookeeper uzly. Není povolený provoz mezi uzly brány nebo [zprostředkovatele ID](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker) , které jsou virtuální počítače založené na Windows a jiné uzly na bázi Linux v clusteru.
+Šifrování dat při přenosu v HDInsight se dosahuje pomocí [TLS (Transport Layer Security)](../transport-layer-security.md) pro accssing brány clusteru a [zabezpečení protokolu Internet Protocol (IPSec)](https://en.wikipedia.org/wiki/IPsec) mezi uzly clusteru. Protokol IPSec může být volitelně povolen mezi všemi hlavními uzly, pracovními uzly, hraničními uzly a Zookeeper uzly. Není povolený provoz mezi uzly brány nebo [zprostředkovatele ID](./identity-broker.md) , které jsou virtuální počítače založené na Windows a jiné uzly na bázi Linux v clusteru.
 
 ## <a name="enable-encryption-in-transit"></a>Povolit šifrování při přenosu
 
@@ -50,7 +50,7 @@ Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomoc�
 
 Můžete [Stáhnout vzorovou šablonu a soubor parametrů](https://github.com/Azure-Samples/hdinsight-enterprise-security). Než použijete šablonu a fragment kódu Azure CLI níže, nahraďte následující zástupné symboly jejich správnými hodnotami:
 
-| Zástupný symbol | Description |
+| Zástupný symbol | Popis |
 |---|---|
 | `<SUBSCRIPTION_ID>` | ID vašeho předplatného Azure |
 | `<RESOURCE_GROUP>` | Skupina prostředků, ve které chcete vytvořit nový cluster a účet úložiště. |

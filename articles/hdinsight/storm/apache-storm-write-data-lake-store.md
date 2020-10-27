@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73241204"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545442"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Kurz: zápis do Apache Hadoop HDFS z Apache Storm ve službě Azure HDInsight
 
@@ -21,7 +21,7 @@ V tomto kurzu se dozvíte, jak použít Apache Storm k zápisu dat do úložišt
 
 Ukázková topologie použitá v tomto dokumentu spoléhá na komponenty, které jsou zahrnuty v systému HDInsight. V případě použití s jinými clustery Apache Storm může být nutné provést úpravy, aby se Azure Data Lake Storage.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Konfigurace clusteru pomocí akce skriptu
@@ -30,9 +30,9 @@ V tomto kurzu se naučíte:
 > * Zobrazit výstupní data
 > * Zastavení topologie
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
@@ -160,7 +160,7 @@ Informace o použití tohoto skriptu s clusterem naleznete v dokumentu [Přizpů
     hdfs.url: wasbs:///
     ```
 
-    Pokud chcete soubor uložit, použijte __CTRL + X__, pak __Y__a nakonec __ENTER__. Hodnoty v tomto souboru nastavily adresu URL úložiště a název adresáře, do kterého se data zapisují.
+    Pokud chcete soubor uložit, použijte __CTRL + X__ , pak __Y__ a nakonec __ENTER__ . Hodnoty v tomto souboru nastavily adresu URL úložiště a název adresáře, do kterého se data zapisují.
 
 1. K zahájení topologie použijte následující příkaz:
 
@@ -205,7 +205,7 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit
 
 Odebrání skupiny prostředků pomocí webu Azure Portal:
 
-1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__. Zobrazí se seznam skupin prostředků.
+1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__ . Zobrazí se seznam skupin prostředků.
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 

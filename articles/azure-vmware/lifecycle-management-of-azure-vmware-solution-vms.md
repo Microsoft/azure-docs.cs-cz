@@ -3,12 +3,12 @@ title: Správa životního cyklu virtuálních počítačů řešení Azure VMwa
 description: Naučte se spravovat všechny aspekty životního cyklu virtuálních počítačů řešení Azure VMware pomocí Microsoft Azurech nativních nástrojů.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 928a632a34dd31272c7c3bf92f6dc6dda97cb6cc
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5280d362c1e7b1bf33579d051c4cc11adb1b7e59
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216245"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545751"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Správa životního cyklu virtuálních počítačů řešení Azure VMware
 
@@ -25,8 +25,8 @@ Microsoft Azure nativní nástroje vám umožní monitorovat a spravovat virtuá
     - Posouzení opravy operačního systému
     - Vyhodnocení nezabezpečených konfigurací zabezpečení
     - Posouzení služby Endpoint Protection 
-- Snadné nasazení Microsoft Monitoring Agent (MMA) pomocí ARC Azure pro nové virtuální počítače. 
-- Pracovní prostor Log Analytics v Azure Monitor umožňuje shromažďování protokolů a čítače výkonu pomocí MMA nebo rozšíření. Shromážděte data a protokoly do jediného bodu a prezentují data různým nativním službám Azure. 
+- Snadno nasaďte agenta Log Analytics s využitím podpory rozšíření virtuálních počítačů na serverech s podporou ARC Azure pro nové a stávající virtuální počítače. 
+- Pracovní prostor Log Analytics v Azure Monitor umožňuje shromažďování protokolů a čítače výkonu pomocí agenta Log Analytics nebo rozšíření. Shromážděte data a protokoly do jediného bodu a prezentují data různým nativním službám Azure. 
 - Přidané výhody Azure Monitor zahrnují: 
     - Bezproblémové monitorování 
     - Lepší viditelnost infrastruktury 
@@ -40,36 +40,73 @@ Následující diagram znázorňuje integrovanou architekturu monitorování pro
 
 ![Integrovaná architektura monitorování Azure](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
+## <a name="before-you-start"></a>Než začnete
+
+Pokud s Azure začínáte nebo neznáte některou z výše uvedených služeb, přečtěte si následující články:
+
+- [Přehled ověřování účtů služby Automation](../automation/automation-security-overview.md)
+- [Návrh Azure Monitorch protokolů nasazení](../azure-monitor/platform/design-logs-deployment.md) a [Azure monitor](../azure-monitor/overview.md)
+- [Plánování](../security-center/security-center-planning-and-operations-guide.md) a [podporované platformy](../security-center/security-center-os-coverage.md) pro Azure Security Center
+- [Povolit Azure Monitor pro virtuální počítače – přehled](../azure-monitor/insights/vminsights-enable-overview.md)
+- [Co jsou servery s podporou ARC Azure?](../azure-arc/servers/overview.md) a [co je Kubernetes s podporou Azure ARC?](../azure-arc/kubernetes/overview.md)
+- [Přehled Update Managementu](../automation/update-management/overview.md)
+
 ## <a name="integrating-and-deploying-azure-native-services"></a>Integrace a nasazení nativních služeb Azure
 
-**Azure ARC** rozšiřuje správu Azure do jakékoli infrastruktury, včetně řešení Azure VMware, místních nebo jiných cloudových platforem. Azure ARC se dá nasadit tak, že se cluster Azure Kubernetes Service (AKS) nainstaluje do prostředí řešení Azure VMware. Další informace najdete v tématu [připojení clusteru Kubernetes s povoleným ARC Azure](../azure-arc/kubernetes/connect-cluster.md).
+### <a name="enable-azure-update-management"></a>Povolit Azure Update Management
 
-Virtuální počítače řešení Azure VMware je možné monitorovat prostřednictvím MMA (také označovaného jako agent Log Analytics agenta nebo OMS Linux). MMA se dá nainstalovat automaticky, když se virtuální počítače zřídí prostřednictvím pracovních postupů životního cyklu virtuálního počítače ARC. MMA se dá nainstalovat taky při nasazování virtuálních počítačů ze šablony v vCenter. znovu s virtuálními počítači zřízenými prostřednictvím pracovních postupů ARC. Všechny zřízené virtuální počítače řešení Azure VMware můžou mít MMA nainstalované a odesílat protokoly do pracovního prostoru Azure Log Analytics. Další informace najdete v tématu [Přehled agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
+Azure Update Management v Azure Automation spravují aktualizace operačního systému pro počítače s Windows a Linux v hybridním prostředí. Monitoruje dodržování předpisů a přepošle výstrahy na odchylky oprav, které Azure Monitor k nápravě. Azure Update Management se musí připojit k pracovnímu prostoru Log Analytics a pomocí uložených dat vyhodnotit stav aktualizací na vašich virtuálních počítačích.
 
-**Log Analytics pracovní prostor** umožňuje shromažďování protokolů a shromažďování čítače výkonu pomocí MMA nebo rozšíření. Pokud chcete vytvořit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
-- Pokud chcete přidat virtuální počítače s Windows do vašeho pracovního prostoru Log Analytics, přečtěte si téma [instalace agenta Log Analytics do počítačů se systémem Windows](../azure-monitor/platform/agent-windows.md).
-- Pokud chcete přidat virtuální počítače se systémem Linux do pracovního prostoru Log Analytics, přečtěte si téma [instalace agenta Log Analytics do počítačů se systémem Linux](../azure-monitor/platform/agent-linux.md).
+1.  Než budete moct přidat Log Analytics do Azure Update Management, musíte nejprve [vytvořit Azure Automation účet](../automation/automation-create-standalone-account.md). Pokud dáváte přednost vytvoření účtu pomocí šablony, přečtěte si téma [Vytvoření účtu Automation pomocí šablony Azure Resource Manager](../automation/quickstart-create-automation-account-template.md).
 
-**Azure Update Management** v Azure Automation spravují aktualizace operačního systému pro počítače s Windows a Linux v hybridním prostředí. Monitoruje dodržování předpisů a přepošle výstrahy na odchylky oprav, které Azure Monitor k nápravě. Azure Update Management se musí připojit k pracovnímu prostoru Log Analytics a pomocí uložených dat vyhodnotit stav aktualizací na vašich virtuálních počítačích.
-- Pokud chcete přidat Log Analytics do Azure Update Management, musíte nejprve [vytvořit Azure Automation účet](../automation/automation-create-standalone-account.md).
-- Pokud chcete propojit pracovní prostor Log Analytics s vaším účtem Automation, přečtěte si téma [pracovní prostor Log Analytics a účet Automation](../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account).
-- Pokud chcete povolit Azure Update Management pro vaše virtuální počítače, přečtěte si téma [povolení Update Management z účtu Automation](../automation/update-management/enable-from-automation-account.md).
-- Po přidání virtuálních počítačů do Azure Update Management můžete [nasadit aktualizace na virtuální počítače a zkontrolovat výsledky](../automation/update-management/deploy-updates.md). 
+2. **Log Analytics pracovní prostor** umožňuje shromažďování protokolů a shromažďování čítačů výkonu pomocí agenta Log Analytics nebo rozšíření. Pokud chcete vytvořit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Pokud budete chtít, můžete také vytvořit pracovní prostor prostřednictvím rozhraní příkazového [řádku](../azure-monitor/learn/quick-create-workspace-cli.md), [PowerShellu](../azure-monitor/platform/powershell-workspace-configuration.md)nebo [šablony Azure Resource Manager](../azure-monitor/samples/resource-manager-workspace.md).
 
-**Azure Security Center** poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu i místně. Vyhodnotí ohrožení zabezpečení virtuálních počítačů řešení Azure VMware a v případě potřeby vyvolává výstrahy. Tyto výstrahy zabezpečení je možné přeslat do Azure Monitor pro řešení.
-- Azure Security Center nevyžaduje nasazení. Další informace najdete v seznamu [podporovaných funkcí pro virtuální počítače](../security-center/security-center-services.md).
-- Pokud chcete přidat virtuální počítače řešení VMware Azure a virtuální počítače mimo Azure do Azure Security Center, přečtěte si téma připojení [počítačů s Windows k Azure Security Center](../security-center/quickstart-onboard-machines.md) a [zprovoznění počítačů se systémem Linux do Azure Security Center](../security-center/quickstart-onboard-machines.md).
-- Po přidání virtuálních počítačů Azure Security Center analyzuje stav zabezpečení prostředků, aby identifikoval potenciální ohrožení zabezpečení. Nabízí také doporučení na kartě Přehled. Další informace najdete v tématu [doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md).
-- V Azure Security Center můžete definovat zásady zabezpečení. Informace o konfiguraci zásad zabezpečení najdete v tématu [práce se zásadami zabezpečení](../security-center/tutorial-security-policy.md).
+3. Pokud chcete povolit Azure Update Management pro vaše virtuální počítače, přečtěte si téma [povolení Update Management z účtu Automation](../automation/update-management/update-mgmt-enable-automation-account.md). V tomto procesu propojíte Log Analytics pracovní prostor s vaším účtem Automation. 
+ 
+4. Po přidání virtuálních počítačů do Azure Update Management můžete [nasadit aktualizace na virtuální počítače a zkontrolovat výsledky](../automation/update-management/deploy-updates.md). 
 
-**Azure monitor** je komplexní řešení pro shromažďování, analýzu a provoz telemetrie z vašeho cloudového a místního prostředí. Nevyžaduje žádné nasazení.
+### <a name="enable-azure-security-center"></a>Povolit Azure Security Center
+
+Azure Security Center poskytuje rozšířenou ochranu před hrozbami napříč vašimi hybridními úlohami v cloudu i místně. Vyhodnotí ohrožení zabezpečení virtuálních počítačů řešení Azure VMware a v případě potřeby vyvolává výstrahy. Tyto výstrahy zabezpečení je možné přeslat do Azure Monitor pro řešení.
+
+Azure Security Center nevyžaduje nasazení. Další informace najdete v seznamu [podporovaných funkcí pro virtuální počítače](../security-center/security-center-services.md).
+
+1. Pokud chcete přidat virtuální počítače řešení VMware Azure a virtuální počítače mimo Azure do Security Center, přečtěte si téma [rychlý Start: nastavení Azure Security Center](../security-center/security-center-get-started.md). 
+
+2. Po přidání virtuálních počítačů řešení Azure VMware nebo virtuálních počítačů z prostředí mimo Azure povolte v Security Center Azure Defender. Security Center vyhodnotí virtuální počítače pro potenciální problémy se zabezpečením. Nabízí také doporučení na kartě Přehled. Další informace najdete v tématu [doporučení zabezpečení v Azure Security Center](../security-center/security-center-recommendations.md).
+
+3. V Azure Security Center můžete definovat zásady zabezpečení. Informace o konfiguraci zásad zabezpečení najdete v tématu [práce se zásadami zabezpečení](../security-center/tutorial-security-policy.md).
+
+### <a name="onboard-vms-to-azure-arc-enabled-servers"></a>Připojení virtuálních počítačů k serverům s podporou ARC Azure
+
+Azure ARC rozšiřuje správu Azure do jakékoli infrastruktury, včetně řešení Azure VMware, místních nebo jiných cloudových platforem.
+
+- V tématu [připojení hybridních počítačů ke službě Azure ve velkém měřítku](../azure-arc/servers/onboard-service-principal.md) povolte servery s podporou ARC Azure pro více virtuálních počítačů se systémem Windows nebo Linux.
+
+### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Připojení hybridních clusterů Kubernetes s povoleným Kubernetesem ARC
+
+Cluster Kubernetes hostovaný v prostředí řešení Azure VMware můžete připojit pomocí Kubernetes s povoleným ARC Azure. 
+
+- Přečtěte si téma [Vytvoření instančního objektu s podporou ARC Azure](../azure-arc/kubernetes/create-onboarding-service-principal.md).
+
+### <a name="deploy-the-log-analytics-agent"></a>Nasazení agenta Log Analytics
+
+Virtuální počítače řešení Azure VMware je možné monitorovat prostřednictvím agenta Log Analytics (také označovaného jako Microsoft Monitoring Agent (MMA) nebo agent OMS Linux). Během povolování Azure Automation Update Management jste již vytvořili Log Analytics pracovní prostor.
+
+- Nasaďte agenta Log Analytics pomocí [podpory rozšíření virtuálního počítače pro servery s podporou ARC Azure](../azure-arc/servers/manage-vm-extensions.md).
+
+### <a name="enable-azure-monitor"></a>Povolit Azure Monitor
+
+Azure Monitor je komplexní řešení pro shromažďování, analýzu a provoz telemetrie z vašeho cloudového a místního prostředí. Nevyžaduje žádné nasazení. Pomocí Azure Monitor můžete monitorovat výkon hostovaného operačního systému a zjišťovat a mapovat závislosti aplikací pro řešení Azure VMware nebo místní virtuální počítače.
+
 - Azure Monitor umožňuje shromažďovat data z různých zdrojů a monitorovat a analyzovat je. Další informace najdete v tématu [zdroje dat monitorování pro Azure monitor](../azure-monitor/platform/data-sources.md).
-- Můžete také shromažďovat různé typy dat pro analýzy, vizualizaci a upozorňování. Další informace najdete v tématu [Azure monitor datovou platformou](../azure-monitor/platform/data-platform.md).
+
+- Shromažďování různých typů dat pro analýzu, vizualizaci a upozorňování. Další informace najdete v tématu [Azure monitor datovou platformou](../azure-monitor/platform/data-platform.md).
+
 - Pokud chcete nakonfigurovat Azure Monitor pomocí pracovního prostoru Log Analytics, přečtěte si téma [konfigurace log Analyticsho pracovního prostoru pro Azure monitor pro virtuální počítače](../azure-monitor/insights/vminsights-configure-workspace.md).
+
 - Můžete vytvořit pravidla upozornění k identifikaci problémů ve vašem prostředí, jako je třeba vysoké využití prostředků, chybějící opravy, nedostatek místa na disku a prezenční signál virtuálních počítačů. Můžete také nastavit automatizovanou odezvu na zjištěné události odesláním výstrahy do nástrojů pro správu IT služeb (ITSM). Oznámení o detekci výstrah lze také odeslat e-mailem. Chcete-li vytvořit taková pravidla, přečtěte si téma:
     - [Umožňuje vytvářet, zobrazovat a spravovat výstrahy metrik pomocí Azure monitor](../azure-monitor/platform/alerts-metric.md).
     - [Umožňuje vytvářet, zobrazovat a spravovat výstrahy protokolu pomocí Azure monitor](../azure-monitor/platform/alerts-log.md).
     - [Pravidla akcí](../azure-monitor/platform/alerts-action-rules.md) pro nastavení automatizovaných akcí a oznámení.
     - [Připojte Azure k nástrojům pro ITSM pomocí IT Service Management Connectoru](../azure-monitor/platform/itsmc-overview.md).
-
-**Platforma jako služba (PaaS) Azure** je prostředí pro vývoj a nasazení v cloudu s prostředky, které umožňují dodávat cloudové aplikace. Například můžete integrovat Azure SQL Database s virtuálními počítači řešení Azure VMware. Výstrahy SQL se pak můžou korelovat s výstrahami virtuálních počítačů řešení Azure VMware. Řekněme například, že SQL Databaseá fáze aplikace je v rámci Azure PAAS a vrstva webové aplikace stejné aplikace je hostována ve vašich virtuálních počítačích řešení Azure VMware. Výstrahy databáze je pak možné korelovat s výstrahami webových aplikací. Řešení potíží je zjednodušené díky jednotné integrované viditelnosti Azure, řešení Azure VMware a místních virtuálních počítačů.

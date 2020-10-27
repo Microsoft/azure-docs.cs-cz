@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9cbcbeb9d9e216a0b686cba258288db8439e0a9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7b673dc8dfeb2ebf86aec5b7449df91c2ffd635
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946505"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534052"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Kurz: vytvoření Azure Database for MySQL-flexibilního serveru (ve verzi Preview) pomocí App Services webové aplikace ve virtuální síti
 
 > [!IMPORTANT]
 > Azure Database for MySQL – flexibilní Server je momentálně ve verzi Public Preview.
 
-V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci v Azure App Service pomocí MySQL flexibilního serveru (Preview) ve [virtuální síti](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci v Azure App Service pomocí MySQL flexibilního serveru (Preview) ve [virtuální síti](../../virtual-network/virtual-networks-overview.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-K účtu se budete muset přihlásit pomocí příkazu [AZ Login](https://docs.microsoft.com/cli/azure/reference-index#az-login) . Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
+K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Z výstupu příkazu si poznamenejte vlastnost **id** pro odpovídající název předplatného.
 
 ```azurecli
 az login
@@ -69,7 +69,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 
 > [!NOTE]
 > - Pro argument--Location použijte stejné umístění jako u databáze v předchozí části.
-> - V rámci všech Azure nahraďte _ &lt;>App-Name_ jedinečným názvem (koncový bod serveru je https:// \<app-name> . azurewebsites.NET). Povolené znaky pro <App-Name> jsou a-Z, 0-9 a-. Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.
+> - V rámci všech Azure nahraďte _&lt;>App-Name_ jedinečným názvem (koncový bod serveru je https:// \<app-name> . azurewebsites.NET). Povolené znaky pro <App-Name> jsou a-Z, 0-9 a-. Dobrým vzorem je použití kombinace názvu vaší společnosti a identifikátoru aplikace.
 
 Tento příkaz provede následující akce, což může trvat několik minut:
 
@@ -81,7 +81,7 @@ Tento příkaz provede následující akce, což může trvat několik minut:
 
 ## <a name="add-the-web-app-to-the-virtual-network"></a>Přidání webové aplikace do virtuální sítě
 
-Pomocí příkazu **AZ WebApp VNet-Integration** přidejte integraci místní virtuální sítě do WebApp. Nahraďte _ &lt; název VNet-Name>_ a _ &lt; název podsítě_ názvem virtuální sítě a podsítě, kterou používá flexibilní Server.
+Pomocí příkazu **AZ WebApp VNet-Integration** přidejte integraci místní virtuální sítě do WebApp. Nahraďte _&lt; název VNet-Name>_ a _&lt; název podsítě_ názvem virtuální sítě a podsítě, kterou používá flexibilní Server.
 
 ```azurecli
 az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
@@ -95,8 +95,8 @@ S kódem teď nasazeným do App Service je dalším krokem připojení aplikace 
 az webapp config appsettings set --settings DBHOST="<mysql-server-name>.mysql.database.azure.com" DBNAME="flexibleserverdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
-- U nově vytvořeného flexibilního serveru nahraďte položku _ &lt; MySQL-Server-Name>_, _ &lt; username>_ a _ &lt; Password>_ .
-- Nahraďte _ &lt; uživatelské jméno>_ a _ &lt; heslo>_ přihlašovacími údaji, které příkaz vygeneroval také.
+- U nově vytvořeného flexibilního serveru nahraďte položku _&lt; MySQL-Server-Name>_ , _&lt; username>_ a _&lt; Password>_ .
+- Nahraďte _&lt; uživatelské jméno>_ a _&lt; heslo>_ přihlašovacími údaji, které příkaz vygeneroval také.
 - Název skupiny prostředků a aplikace se vykreslí z hodnot uložených v mezipaměti v souboru. Azure/config.
 - Příkaz vytvoří nastavení s názvem DBHOST, DBNAME, DBUSER a DBPASS. Pokud kód aplikace používá jiný název pro informace o databázi, pak použijte tyto názvy pro nastavení aplikace, jak je uvedeno v kódu.
 
@@ -111,4 +111,4 @@ az group delete -n myresourcegroup
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+> [Mapování existujícího vlastního názvu DNS na Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)

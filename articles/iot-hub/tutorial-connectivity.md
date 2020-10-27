@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 0d886fc6797011ff3a0adeb69f50358ece9c5f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252149"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547499"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
@@ -29,7 +29,7 @@ V tomto kurzu použijete nástroje portálu Azure IoT Hub a rozhraní příkazov
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 > [!div class="checklist"]
 > * Zkontrolovat ověřování zařízení
 > * Zkontrolovat připojení zařízení ke cloudu
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Skripty rozhraní příkazového řádku spouštěné v tomto kurzu využívají [rozšíření Microsoft Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md). Toto rozšíření nainstalujete zadáním následujícího příkazu do příkazového řádku:
 
@@ -62,7 +62,7 @@ Stáhněte si ukázkový projekt simulátoru zařízení v Node.js z https://git
 
 Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Pokud jste v některém dřívějším kurzu nebo příručce Rychlý start už vytvořili centrum IoT na úrovni Free nebo Standard, můžete tento krok přeskočit.
 
@@ -70,17 +70,17 @@ Pokud jste v některém dřívějším kurzu nebo příručce Rychlý start už 
 
 ## <a name="check-device-authentication"></a>Kontrola ověření zařízení
 
-Před jakoukoli výměnou dat je třeba zařízení u centra ověřit. Ke správě zařízení a kontrole ověřovacích klíčů, které používají, můžete na portálu využít nástroj **Zařízení IoT** v části **Správa zařízení**. V této části kurzu přidáte nové testovací zařízení, načtete jeho klíč a zkontrolujete, jestli se testovací zařízení připojí k centru. Později resetujete ověřovací klíč a budete zkoumat, co se stane, když se zařízení pokusí použít zastaralý klíč. V této části kurzu se používá portál Azure Portal k vytvoření, správě a sledování zařízení a ukázkový simulátor zařízení napsaný v Node.js.
+Před jakoukoli výměnou dat je třeba zařízení u centra ověřit. Ke správě zařízení a kontrole ověřovacích klíčů, které používají, můžete na portálu využít nástroj **Zařízení IoT** v části **Správa zařízení** . V této části kurzu přidáte nové testovací zařízení, načtete jeho klíč a zkontrolujete, jestli se testovací zařízení připojí k centru. Později resetujete ověřovací klíč a budete zkoumat, co se stane, když se zařízení pokusí použít zastaralý klíč. V této části kurzu se používá portál Azure Portal k vytvoření, správě a sledování zařízení a ukázkový simulátor zařízení napsaný v Node.js.
 
-Přihlaste se na portál a přejděte do svého centra IoT. Pak přejděte k nástroji **Zařízení IoT**:
+Přihlaste se na portál a přejděte do svého centra IoT. Pak přejděte k nástroji **Zařízení IoT** :
 
 ![Nástroj Zařízení IoT](media/tutorial-connectivity/iot-devices-tool.png)
 
-Nové zařízení zaregistrujete tak, že kliknete na **+ Přidat**, nastavíte **ID zařízení** na **MyTestDevice**a kliknete na **Uložit**:
+Nové zařízení zaregistrujete tak, že kliknete na **+ Přidat** , nastavíte **ID zařízení** na **MyTestDevice** a kliknete na **Uložit** :
 
 ![Přidání nového zařízení](media/tutorial-connectivity/add-device.png)
 
-Získejte připojovací řetězec zařízení **MyTestDevice** tak, že na něj kliknete v seznamu zařízení a pak zkopírujete hodnotu **Připojovací řetězec – primární klíč**. Připojovací řetězec obsahuje *klíč pro sdílený přístup* k zařízení.
+Získejte připojovací řetězec zařízení **MyTestDevice** tak, že na něj kliknete v seznamu zařízení a pak zkopírujete hodnotu **Připojovací řetězec – primární klíč** . Připojovací řetězec obsahuje *klíč pro sdílený přístup* k zařízení.
 
 ![Načtení připojovacího řetězce zařízení](media/tutorial-connectivity/copy-connection-string.png)
 
@@ -105,7 +105,7 @@ Teď jste se ze zařízení úspěšně ověřili pomocí klíče zařízení vy
 
 V této části resetujete klíč zařízení a uvidíte chybu, ke které dojde, pokud se simulované zařízení pokusí o připojení.
 
-Pokud chcete resetovat primární klíč zařízení pro **MyTestDevice**, spusťte následující příkazy:
+Pokud chcete resetovat primární klíč zařízení pro **MyTestDevice** , spusťte následující příkazy:
 
 ```azurecli-interactive
 # Generate a new Base64 encoded key using the current date
@@ -248,7 +248,7 @@ Pokud chcete ověřit, že centrum přijalo od zařízení ohlášené vlastnost
 az iot hub device-twin show --device-id MyTestDevice --hub-name {YourIoTHubName}
 ```
 
-Ve výstupu z příkazu vidíte v části s ohlášenými vlastnostmi položku **devicelaststarted**. Tato vlastnost obsahuje datum a čas posledního spuštění simulovaného zařízení.
+Ve výstupu z příkazu vidíte v části s ohlášenými vlastnostmi položku **devicelaststarted** . Tato vlastnost obsahuje datum a čas posledního spuštění simulovaného zařízení.
 
 ![Zobrazení ohlášených vlastností](media/tutorial-connectivity/reported-properties.png)
 
@@ -266,11 +266,11 @@ Vedle průběžného přijímání změn v požadovaných vlastnostech je simulo
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **tutorials-iot-hub-rg**, která obsahuje vaše centrum IoT, a kliknutím na **Odstranit**.
+Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **tutorials-iot-hub-rg** , která obsahuje vaše centrum IoT, a kliknutím na **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli, jak zkontrolovat klíče zařízení, připojení zařízení ke cloudu a cloudu k zařízení a synchronizaci dvojčat zařízení. Další informace o tom, jak sledovat centrum IoT, najdete v článku s postupy monitorování služby IoT Hub.
 
 > [!div class="nextstepaction"]
-> [Monitorování s diagnostikou](iot-hub-monitor-resource-health.md)
+> [IoT Hub monitorování](monitor-iot-hub.md)

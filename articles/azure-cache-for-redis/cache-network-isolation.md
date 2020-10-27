@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: b01e7ca9ff05b6eed51e1c454b8064ab28bda0d5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222402"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537469"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure cache pro možnosti izolace sítě Redis 
 V tomto článku se dozvíte, jak určit nejlepší řešení pro izolaci sítě podle svých potřeb. Projdeme základy používání privátních odkazů Azure, vkládání Azure Virtual Network (VNet) a Azure Firewall pravidla s jejich výhodami a omezeními.  
@@ -21,7 +21,7 @@ Privátní propojení Azure poskytuje privátní připojení z virtuální sít�
 
 ### <a name="advantages"></a>Výhody
 * Podporováno pro instance Redis na úrovni Basic, Standard a Premium Azure cache. 
-* Pomocí [privátního odkazu Azure](/azure/private-link/private-link-overview)se můžete připojit k instanci Azure cache z vaší virtuální sítě prostřednictvím privátního koncového bodu, kterému se přiřadí privátní IP adresa v podsíti v rámci virtuální sítě. V tomto případě jsou instance mezipaměti dostupné jak v rámci virtuální sítě, tak i veřejně.  
+* Pomocí [privátního odkazu Azure](../private-link/private-link-overview.md)se můžete připojit k instanci Azure cache z vaší virtuální sítě prostřednictvím privátního koncového bodu, kterému se přiřadí privátní IP adresa v podsíti v rámci virtuální sítě. V tomto případě jsou instance mezipaměti dostupné jak v rámci virtuální sítě, tak i veřejně.  
 * Po vytvoření privátního koncového bodu může být přístup k veřejné síti omezený pomocí `publicNetworkAccess` příznaku. Tento příznak je nastaven jako `Enabled` výchozí, což vám dává možnost povolení přístupu veřejného i privátního propojení k mezipaměti. Pokud je tato možnost nastavená na `Disabled` , povolí přístup jenom k privátnímu propojení. Hodnotu lze nastavit na žádost o `Disabled` opravu. Další informace najdete v tématu [Azure cache for Redis s privátním odkazem na Azure (Preview)](cache-private-link.md). 
 * Všechny závislosti externích mezipamětí nebudou mít vliv na pravidla NSG virtuální sítě.
 
@@ -51,7 +51,7 @@ Virtuální síť je základním stavebním blokem vaší privátní sítě v Az
 
 
 ## <a name="azure-firewall-rules"></a>Pravidla Azure Firewall
-[Azure firewall](/azure/firewall/overview) je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky virtuální sítě Azure. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností cloudu. Můžete centrálně vytvářet, vynucovat a protokolovat zásady připojení k aplikacím a sítím napříč různými předplatnými a virtuálními sítěmi.  
+[Azure firewall](../firewall/overview.md) je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky virtuální sítě Azure. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností cloudu. Můžete centrálně vytvářet, vynucovat a protokolovat zásady připojení k aplikacím a sítím napříč různými předplatnými a virtuálními sítěmi.  
 
 ### <a name="advantages"></a>Výhody
 * Když jsou pravidla brány firewall nakonfigurovaná, můžou se k ní připojit jenom připojení klientů ze zadaných rozsahů IP adres. Připojení z mezipaměti Azure pro systémy monitorování Redis jsou vždycky povolená, i když jsou nakonfigurovaná pravidla brány firewall. Povolují se taky pravidla NSG, která definujete.  
@@ -63,4 +63,4 @@ Virtuální síť je základním stavebním blokem vaší privátní sítě v Az
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si, jak nakonfigurovat [mezipaměť s vloženou virtuální sítí pro instanci služby Premium Azure cache pro Redis](cache-how-to-premium-vnet.md).  
 * Naučte se konfigurovat [pravidla brány firewall pro všechny úrovně Redis v mezipaměti Azure](cache-configure.md#firewall). 
-* Naučte se [Konfigurovat privátní koncové body pro všechny Redis úrovně Azure cache](cache-private-link.md). 
+* Naučte se [Konfigurovat privátní koncové body pro všechny Redis úrovně Azure cache](cache-private-link.md).

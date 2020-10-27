@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca796b09f10127c68c5a22ff58f95c89cbda2610
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83681813"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534392"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
@@ -34,7 +34,7 @@ Další informace o rozhraních API najdete v dokumentaci k rozhraní [Producer 
 ## <a name="prerequisites"></a>Požadavky
 
 * Apache Kafka v clusteru HDInsight. Informace o tom, jak vytvořit cluster, najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) nebo ekvivalent, jako je například OpenJDK.
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 * Klient SSH, jako je například výstup. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -184,7 +184,7 @@ Chcete-li tento krok přeskočit, lze předem sestavené jar stáhnout z `Prebui
 
     Zobrazí se počet načtených záznamů spolu s celkovým počtem.
 
-1. Konzumenta ukončíte stisknutím __Ctrl+C__.
+1. Konzumenta ukončíte stisknutím __Ctrl+C__ .
 
 ### <a name="multiple-consumers"></a>Víc současných konzumentů
 
@@ -196,7 +196,7 @@ Aplikace konzumenta přijímá parametr, který se použije jako ID skupiny. Nap
 java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS myGroup
 ```
 
-Konzumenta ukončíte stisknutím __Ctrl+C__.
+Konzumenta ukončíte stisknutím __Ctrl+C__ .
 
 Pokud chcete vidět tento proces v akci, použijte následující příkaz:
 
@@ -227,7 +227,7 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, můžete odstranit
 
 Odebrání skupiny prostředků pomocí webu Azure Portal:
 
-1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__. Zobrazí se seznam skupin prostředků.
+1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a pak zvolte __Skupiny prostředků__ . Zobrazí se seznam skupin prostředků.
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 

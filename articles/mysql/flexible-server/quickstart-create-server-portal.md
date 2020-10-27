@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 646506eb347970dadd2a5b2fa6527e5d8bd879ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0c082c797c75ba912bafead15d24ea3941cfc25e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481379"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534188"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Rychlý Start: použití Azure Portal k vytvoření Azure Database for MySQL flexibilního serveru
 
@@ -28,7 +28,7 @@ Otevřete webový prohlížeč a přejděte na web [Azure Portal](https://portal
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>Vytvoření Azure Database for MySQL flexibilního serveru
 
-Vytvoříte flexibilní Server s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-compute-storage.md). Server vytvoříte v rámci [skupiny prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/overview).
+Vytvoříte flexibilní Server s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-compute-storage.md). Server vytvoříte v rámci [skupiny prostředků Azure](../../azure-resource-manager/management/overview.md).
 
 Při vytváření flexibilního serveru postupujte podle těchto kroků:
 
@@ -36,7 +36,7 @@ Při vytváření flexibilního serveru postupujte podle těchto kroků:
     
     > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Hledat Azure Database for MySQL":::
 
-2. Vyberte **Přidat**. 
+2. Vyberte **Přidat** . 
 
 3. Na stránce vybrat možnost nasazení vyberte jako možnost nasazení možnost **flexibilní Server** .
      
@@ -51,17 +51,17 @@ Při vytváření flexibilního serveru postupujte podle těchto kroků:
     Předplatné|Název vašeho předplatného|Předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, vyberte předplatné, ve kterém se má prostředek účtovat.|
     Skupina prostředků|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.|
     Název serveru |*mydemoserver*|Jedinečný název, který identifikuje flexibilní Server. Název domény *MySQL.Database.Azure.com* se připojí k názvu serveru, který zadáte. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat z 3 až 63 znaků.|
-    Uživatelské jméno správce |*mydemouser*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **Administrator**, **root**, **Guest**ani **Public**.|
+    Uživatelské jméno správce |*mydemouser*| Váš vlastní přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser** , **admin** , **Administrator** , **root** , **Guest** ani **Public** .|
     Heslo |Vaše heslo| Nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).|
-    Oblast|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.|
+    Region (Oblast)|Oblast nejbližší vašim uživatelům| Umístění co nejblíže vašim uživatelům.|
     Verze|5.7| Hlavní verze MySQL.|
-    Výpočty + úložiště | **Shluky**, **Standard_B1ms**, **10 GIB**, **7 dní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. *Burstable*Mezi výchozími hodnotami pro **výpočetní vrstvu**, **výpočetní velikost**, **úložiště**a **dobu uchovávání záloh**jsou výchozí hodnoty pro *Standard_B1ms*, *10 GIB*a *7 dní* . Tyto posuvníky můžete ponechat beze změny nebo je upravit. Pokud chcete uložit tento výběr výpočtů a úložišť, vyberte **Uložit** a pokračujte v konfiguracích. Následující snímek obrazovky ukazuje možnosti výpočtů a úložiště.|
+    Výpočty + úložiště | **Shluky** , **Standard_B1ms** , **10 GIB** , **7 dní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server** . *Burstable* Mezi výchozími hodnotami pro **výpočetní vrstvu** , **výpočetní velikost** , **úložiště** a **dobu uchovávání záloh** jsou výchozí hodnoty pro *Standard_B1ms* , *10 GIB* a *7 dní* . Tyto posuvníky můžete ponechat beze změny nebo je upravit. Pokud chcete uložit tento výběr výpočtů a úložišť, vyberte **Uložit** a pokračujte v konfiguracích. Následující snímek obrazovky ukazuje možnosti výpočtů a úložiště.|
     
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Hledat Azure Database for MySQL":::
 
 5. Konfigurace možností sítě
 
-    Na kartě sítě si můžete vybrat, jak je server dostupný. Azure Database for MySQL flexibilní Server nabízí dvě možnosti, jak se připojit k serveru prostřednictvím *veřejného přístupu (povolených IP adres)* a *privátního přístupu (integrace virtuální sítě)*. Díky *veřejnému přístupu (povoleným IP adresám)* je přístup k serveru omezený na povolené IP adresy přidané do pravidla brány firewall. Zabraňuje externím aplikacím a nástrojům v připojení k serveru a libovolné databázi na serveru, pokud nevytvoříte pravidlo pro otevření brány firewall pro konkrétní IP adresu nebo rozsah. Pomocí *privátního přístupu (Integration VNET)* je přístup k vašemu serveru omezený na vaši virtuální síť. V tomto rychlém startu vám ukážeme, jak povolit veřejný přístup pro připojení k serveru. Další informace o metodách připojení najdete v [článku koncepty](./concepts-networking.md).
+    Na kartě sítě si můžete vybrat, jak je server dostupný. Azure Database for MySQL flexibilní Server nabízí dvě možnosti, jak se připojit k serveru prostřednictvím *veřejného přístupu (povolených IP adres)* a *privátního přístupu (integrace virtuální sítě)* . Díky *veřejnému přístupu (povoleným IP adresám)* je přístup k serveru omezený na povolené IP adresy přidané do pravidla brány firewall. Zabraňuje externím aplikacím a nástrojům v připojení k serveru a libovolné databázi na serveru, pokud nevytvoříte pravidlo pro otevření brány firewall pro konkrétní IP adresu nebo rozsah. Pomocí *privátního přístupu (Integration VNET)* je přístup k vašemu serveru omezený na vaši virtuální síť. V tomto rychlém startu vám ukážeme, jak povolit veřejný přístup pro připojení k serveru. Další informace o metodách připojení najdete v [článku koncepty](./concepts-networking.md).
 
     > [!NOTE]
     > Po vytvoření serveru se metoda připojení nedá změnit. Pokud jste například při vytváření vybrali *veřejný přístup (povolené IP adresy)* , nemůžete po vytvoření změnit na *privátní přístup (Integration VNET)* . Důrazně doporučujeme vytvořit server s privátním přístupem k zabezpečenému přístupu k serveru pomocí integrace virtuální sítě. Přečtěte si další informace o privátním přístupu v [článku koncepty](./concepts-networking.md).
@@ -70,20 +70,20 @@ Při vytváření flexibilního serveru postupujte podle těchto kroků:
 
 6. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte flexibilní konfiguraci serveru.
 
-7. Vyberte **Vytvořit**, aby se server zřídil. Zřizování může trvat několik minut.
+7. Vyberte **Vytvořit** , aby se server zřídil. Zřizování může trvat několik minut.
 
-8. Pokud chcete monitorovat proces nasazení, vyberte **Oznámení** (ikona zvonku) na panelu nástrojů. Po dokončení nasazení můžete vybrat **Připnout na řídicí panel**a vytvořit dlaždici pro tento flexibilní Server na řídicím panelu Azure Portal jako zástupce na stránku **Přehled** serveru. Výběr **Přejít k prostředku** otevře stránku **Přehled** serveru.
+8. Pokud chcete monitorovat proces nasazení, vyberte **Oznámení** (ikona zvonku) na panelu nástrojů. Po dokončení nasazení můžete vybrat **Připnout na řídicí panel** a vytvořit dlaždici pro tento flexibilní Server na řídicím panelu Azure Portal jako zástupce na stránku **Přehled** serveru. Výběr **Přejít k prostředku** otevře stránku **Přehled** serveru.
 
-Ve výchozím nastavení se v rámci vašeho serveru vytvoří následující databáze: **information_schema**, **mysql**, **performance_schema** a **sys**.
+Ve výchozím nastavení se v rámci vašeho serveru vytvoří následující databáze: **information_schema** , **mysql** , **performance_schema** a **sys** .
 
 > [!NOTE]
 > Ověřte, jestli vaše síť umožňuje odchozí provoz přes port 3306, který používá Azure Database for MySQL flexibilní Server, aby se předešlo problémům s připojením.  
 
 ## <a name="connect-to-using-mysql-command-line-client"></a>Připojení k pomocí klienta příkazového řádku MySQL
 
-Pokud jste vytvořili flexibilní Server s *privátním přístupem (Integration VNET)*, budete se muset připojit k serveru z prostředku ve stejné virtuální síti jako váš server. Můžete vytvořit virtuální počítač a přidat ho do virtuální sítě vytvořené pomocí flexibilního serveru.
+Pokud jste vytvořili flexibilní Server s *privátním přístupem (Integration VNET)* , budete se muset připojit k serveru z prostředku ve stejné virtuální síti jako váš server. Můžete vytvořit virtuální počítač a přidat ho do virtuální sítě vytvořené pomocí flexibilního serveru.
 
-Pokud jste vytvořili flexibilní Server s *veřejným přístupem (povolenými IP adresami)*, můžete přidat místní IP adresu do seznamu pravidel brány firewall na serveru.
+Pokud jste vytvořili flexibilní Server s *veřejným přístupem (povolenými IP adresami)* , můžete přidat místní IP adresu do seznamu pravidel brány firewall na serveru.
 
 Můžete zvolit [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) nebo [MySQL Workbench](./connect-workbench.md) pro připojení k serveru z místního prostředí. 
 
@@ -95,10 +95,10 @@ Pomocí mysql.exe se připojte pomocí níže uvedeného příkazu. Nahraďte ho
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Úspěšně jste vytvořili Azure Database for MySQL flexibilního serveru ve skupině prostředků.  Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, můžete je odstranit odstraněním skupiny prostředků nebo pouhým odstraněním serveru MySQL. Pokud chcete odstranit skupinu prostředků, postupujte podle těchto kroků:
 
-1. V Azure Portal vyhledejte a vyberte **skupiny prostředků**.
+1. V Azure Portal vyhledejte a vyberte **skupiny prostředků** .
 1. V seznamu Skupina prostředků vyberte název vaší skupiny prostředků.
-1. Na stránce Přehled vaší skupiny prostředků vyberte **Odstranit skupinu prostředků**.
-1. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
+1. Na stránce Přehled vaší skupiny prostředků vyberte **Odstranit skupinu prostředků** .
+1. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit** .
 
 Pokud chcete odstranit server, můžete kliknout na tlačítko **Odstranit** na stránce **Přehled** vašeho serveru, jak je znázorněno níže:
 

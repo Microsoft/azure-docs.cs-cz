@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbae7254949eaa642b8344b4e550de4a44b2f33f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086955"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545969"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Seznámení s chybami přijatými z WebHCatu v HDInsightu a jejich řešení
 
@@ -39,7 +39,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 
 ## <a name="too-many-requests"></a>Příliš mnoho žádostí
 
-**Stavový kód HTTP**: 429
+**Stavový kód HTTP** : 429
 
 | Příčina | Řešení |
 | --- | --- |
@@ -47,7 +47,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 
 ## <a name="server-unavailable"></a>Server není k dispozici
 
-**Stavový kód HTTP**: 503
+**Stavový kód HTTP** : 503
 
 | Příčina | Řešení |
 | --- | --- |
@@ -55,7 +55,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 
 ## <a name="bad-request-content-could-not-find-job"></a>Chybný obsah žádosti: nepovedlo se najít úlohu.
 
-**Stavový kód HTTP**: 400
+**Stavový kód HTTP** : 400
 
 | Příčina | Řešení |
 | --- | --- |
@@ -65,7 +65,7 @@ Pokud dojde k překročení následujících výchozích hodnot, může dojít k
 
 ## <a name="bad-gateway"></a>Chybná brána
 
-**Stavový kód HTTP**: 502
+**Stavový kód HTTP** : 502
 
 | Příčina | Řešení |
 | --- | --- |
@@ -83,7 +83,7 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
 
 [maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration

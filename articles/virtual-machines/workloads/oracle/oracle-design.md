@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ccf7ddb44a25ec123f13b5d7b6cdb5354b63778
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9bfd2330f71b9690e2864968cf51cb438bb23676
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996635"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534069"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -101,11 +101,11 @@ Jednou z věcí, které byste mohli nahlížet, je prvních pět událostí s vy
 
 Například v následujícím diagramu je synchronizace souborů protokolu v horní části. Označuje počet čekání, které jsou požadovány před tím, než LGWR zapíše vyrovnávací paměť protokolu do souboru protokolu opětovného odeslání. Tyto výsledky naznačují, že je potřeba úložiště nebo disky lépe provádět. Kromě toho diagram zobrazuje také počet PROCESORů (jader) a množství paměti.
 
-![Snímek obrazovky se stránkou sestavy AWR](./media/oracle-design/cpu_memory_info.png)
+![Snímek obrazovky zobrazující synchronizaci souboru protokolu v horní části tabulky](./media/oracle-design/cpu_memory_info.png)
 
 Následující diagram znázorňuje celkový počet vstupně-výstupních operací čtení a zápisu. Během sestavy bylo zapsáno 59 GB a 247,3 GB v době sestavování.
 
-![Snímek obrazovky se stránkou sestavy AWR](./media/oracle-design/io_info.png)
+![Snímek obrazovky, který zobrazuje celkový počet vstupně-výstupních operací čtení a zápisu.](./media/oracle-design/io_info.png)
 
 #### <a name="2-choose-a-vm"></a>2. Volba virtuálního počítače
 
@@ -143,13 +143,13 @@ Na základě požadavků na šířku pásma sítě si můžete vybrat z různýc
 
 ### <a name="disk-types-and-configurations"></a>Typy disků a konfigurace
 
-- *Výchozí disky s operačním systémem*: tyto typy disků nabízejí trvalá data a ukládání do mezipaměti. Jsou optimalizované pro přístup k operačnímu systému při spuštění a nejsou navržené pro transakční data ani pro úlohy datového skladu (analytická data).
+- *Výchozí disky s operačním systémem* : tyto typy disků nabízejí trvalá data a ukládání do mezipaměti. Jsou optimalizované pro přístup k operačnímu systému při spuštění a nejsou navržené pro transakční data ani pro úlohy datového skladu (analytická data).
 
-- *Nespravované disky*: u těchto typů disků spravujete účty úložiště, které ukládají soubory virtuálních pevných disků (VHD), které odpovídají vašim DISKŮM virtuálních počítačů. Soubory VHD se ukládají jako objekty blob stránky v účtech úložiště Azure.
+- *Nespravované disky* : u těchto typů disků spravujete účty úložiště, které ukládají soubory virtuálních pevných disků (VHD), které odpovídají vašim DISKŮM virtuálních počítačů. Soubory VHD se ukládají jako objekty blob stránky v účtech úložiště Azure.
 
-- *Spravované disky*: Azure spravuje účty úložiště, které používáte pro disky virtuálních počítačů. Určíte typ disku (Premium nebo Standard) a velikost disku, který potřebujete. Azure vytvoří a spravuje disk za vás.
+- *Spravované disky* : Azure spravuje účty úložiště, které používáte pro disky virtuálních počítačů. Určíte typ disku (Premium nebo Standard) a velikost disku, který potřebujete. Azure vytvoří a spravuje disk za vás.
 
-- *Disky Premium Storage*: tyto typy disků jsou nejvhodnější pro produkční úlohy. Premium Storage podporuje disky virtuálních počítačů, které je možné připojit ke konkrétním virtuálním počítačům řady velikostí, například k virtuálním počítačům DS, DSv2, GS a F Series. Disk Premium se dodává s různými velikostmi a můžete si vybrat mezi disky od 32 do 4 096 GB. Každá velikost disku má své vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete k VIRTUÁLNÍmu počítači připojit jeden nebo více disků.
+- *Disky Premium Storage* : tyto typy disků jsou nejvhodnější pro produkční úlohy. Premium Storage podporuje disky virtuálních počítačů, které je možné připojit ke konkrétním virtuálním počítačům řady velikostí, například k virtuálním počítačům DS, DSv2, GS a F Series. Disk Premium se dodává s různými velikostmi a můžete si vybrat mezi disky od 32 do 4 096 GB. Každá velikost disku má své vlastní specifikace výkonu. V závislosti na požadavcích vaší aplikace můžete k VIRTUÁLNÍmu počítači připojit jeden nebo více disků.
 
 Při vytváření nového spravovaného disku z portálu můžete zvolit **typ účtu** pro typ disku, který chcete použít. Pamatujte, že ne všechny dostupné disky se zobrazí v rozevírací nabídce. Po zvolení konkrétní velikosti virtuálního počítače se v nabídce zobrazí jenom dostupné SKU Premium Storage, které jsou založené na velikosti tohoto virtuálního počítače.
 
@@ -186,9 +186,9 @@ Po jasném přehledu požadavků na vstupně-výstupní operace můžete zvolit 
 
 Pro ukládání do mezipaměti hostitele existují tři možnosti:
 
-- *ReadOnly*: všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechna zápisy se ukládají přímo do Azure Blob Storage.
+- *ReadOnly* : všechny požadavky jsou ukládány do mezipaměti pro budoucí čtení. Všechna zápisy se ukládají přímo do Azure Blob Storage.
 
-- Probuzení *: jedná*se o algoritmus "Read-to-dopředu". Čtení a zápisy jsou ukládány do mezipaměti pro budoucí čtení. Zápisy bez zápisů jsou nejprve trvale ukládány do místní mezipaměti. Poskytuje taky nejnižší latenci disku pro úlohy s nižšími procesy. Použití mezipaměti s podporou přečtení z aplikace, která nezpracovává trvalá potřebná data, může způsobit ztrátu dat, pokud dojde k chybě virtuálního počítače.
+- Probuzení *: jedná* se o algoritmus "Read-to-dopředu". Čtení a zápisy jsou ukládány do mezipaměti pro budoucí čtení. Zápisy bez zápisů jsou nejprve trvale ukládány do místní mezipaměti. Poskytuje taky nejnižší latenci disku pro úlohy s nižšími procesy. Použití mezipaměti s podporou přečtení z aplikace, která nezpracovává trvalá potřebná data, může způsobit ztrátu dat, pokud dojde k chybě virtuálního počítače.
 
 - *None* (zakázáno): pomocí této možnosti můžete mezipaměť obejít. Všechna data se přenesou na disk a trvale Azure Storage. Tato metoda poskytuje nejvyšší počet vstupně-výstupních operací pro úlohy náročné na vstupně-výstupní operace. Také je nutné vzít v úvahu "náklady na transakci".
 
@@ -196,7 +196,7 @@ Pro ukládání do mezipaměti hostitele existují tři možnosti:
 
 Pro maximalizaci propustnosti doporučujeme začít s **možnostmi žádná** pro ukládání do mezipaměti hostitele. V případě Premium Storage Pamatujte na to, že při připojování systému souborů s možnostmi **ReadOnly** nebo **none** je nutné zakázat "překážky". Aktualizujte soubor/etc/fstab s identifikátorem UUID na disky.
 
-![Snímek stránky spravovaného disku](./media/oracle-design/premium_disk02.png)
+![Snímek stránky spravovaného disku, který zobrazuje možnosti ReadOnly a None](./media/oracle-design/premium_disk02.png)
 
 - Pro disky s operačním systémem použijte výchozí mezipaměť **pro čtení a zápis** .
 - U možnosti SYSTEM, TEMP a UNDO použijte **možnost None** pro ukládání do mezipaměti.
@@ -208,9 +208,9 @@ Po uložení nastavení datového disku nemůžete nastavení mezipaměti hostit
 
 Po nastavení a konfiguraci prostředí Azure je dalším krokem zabezpečení vaší sítě. Tady je několik doporučení:
 
-- *Zásady NSG*: NSG se dají definovat v podsíti nebo síťové kartě. Je jednodušší řídit přístup na úrovni podsítě, a to jak pro zabezpečení, tak pro vynucení směrování pro věci, jako jsou brány firewall pro aplikace.
+- *Zásady NSG* : NSG se dají definovat v podsíti nebo síťové kartě. Je jednodušší řídit přístup na úrovni podsítě, a to jak pro zabezpečení, tak pro vynucení směrování pro věci, jako jsou brány firewall pro aplikace.
 
-- *JumpBox*: pro bezpečnější přístup by se správci neměli přímo připojovat ke službě Application Service nebo databázi. JumpBox se používá jako médium mezi počítačem správce a prostředky Azure.
+- *JumpBox* : pro bezpečnější přístup by se správci neměli přímo připojovat ke službě Application Service nebo databázi. JumpBox se používá jako médium mezi počítačem správce a prostředky Azure.
 ![Snímek obrazovky se stránkou topologie JumpBox](./media/oracle-design/jumpbox.png)
 
     Počítač správce by měl nabízet jenom přístup s omezením IP adres jenom pro JumpBox. JumpBox by měl mít přístup k aplikaci a databázi.

@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 0445aeaea6f99754469d5c0e46972aef2ed667aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fdfa8c767757aa17983a28d0d586698551326fe4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424222"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545323"
 ---
 # <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>Vytvoření mezipaměti Azure pro Redis pomocí šablony ARM
 
@@ -20,14 +20,14 @@ Naučte se vytvořit šablonu Azure Resource Manager (šablonu ARM), která nasa
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště**: Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření účtu Azure Storage](/azure/storage/common/storage-account-create?tabs=azure-portal). Účet úložiště se používá pro diagnostická data.
+* **Účet úložiště** : Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření účtu Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal). Účet úložiště se používá pro diagnostická data.
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
@@ -46,7 +46,7 @@ K dispozici jsou také šablony Správce prostředků pro novou [úroveň Premiu
 * [Vytvoření mezipaměti Azure Premium pro Redis s Trvalost dat](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Vytvoření Redis Cache úrovně Premium nasazených do Virtual Network](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony Azure pro rychlý Start](https://azure.microsoft.com/documentation/templates/) a vyhledejte _Azure cache pro Redis_.
+Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony Azure pro rychlý Start](https://azure.microsoft.com/documentation/templates/) a vyhledejte _Azure cache pro Redis_ .
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -55,18 +55,18 @@ Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony Azu
     [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 1. Vyberte nebo zadejte následující hodnoty:
 
-    * **Předplatné**: vyberte předplatné Azure, které se používá k vytvoření sdílené složky dat a dalších prostředků.
-    * **Skupina prostředků**: vyberte **vytvořit novou** a vytvořte novou skupinu prostředků nebo vyberte existující skupinu prostředků.
-    * **Umístění:**: Vyberte umístění pro skupinu prostředků. Účet úložiště a mezipaměť Redis musí být ve stejné oblasti. Ve výchozím nastavení používá mezipaměť Redis stejné umístění jako skupina prostředků. Zadejte tedy stejné umístění jako účet úložiště.
-    * **Redis Cache název**: zadejte název pro Redis Cache.
-    * **Existující účet úložiště diagnostiky**: Zadejte ID prostředku účtu úložiště. Syntaxe je `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
+    * **Předplatné** : vyberte předplatné Azure, které se používá k vytvoření sdílené složky dat a dalších prostředků.
+    * **Skupina prostředků** : vyberte **vytvořit novou** a vytvořte novou skupinu prostředků nebo vyberte existující skupinu prostředků.
+    * **Umístění:** : Vyberte umístění pro skupinu prostředků. Účet úložiště a mezipaměť Redis musí být ve stejné oblasti. Ve výchozím nastavení používá mezipaměť Redis stejné umístění jako skupina prostředků. Zadejte tedy stejné umístění jako účet úložiště.
+    * **Redis Cache název** : zadejte název pro Redis Cache.
+    * **Existující účet úložiště diagnostiky** : Zadejte ID prostředku účtu úložiště. Syntaxe je `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`.
 
     Pro zbývající nastavení použijte výchozí hodnotu.
-1. vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**a s vybranou volbou **koupit**.
+1. vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** a s vybranou volbou **koupit** .
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Otevřete mezipaměť Redis, kterou jste vytvořili.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

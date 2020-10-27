@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816452"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543096"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Chyby při vytváření clusteru
 
@@ -24,7 +24,7 @@ Tento článek popisuje řešení chyb, ke kterým může dojít při vytvářen
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Kód chyby: DeploymentDocument ' CsmDocument_2_0 ' se nepodařilo ověřit
 
-**Chyba**: "umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT ACTION URL\> "
+**Chyba** : "umístění akce skriptu nelze přistupovat k identifikátoru URI: \<SCRIPT ACTION URL\> "
 
 ### <a name="error-message-1"></a>Chybová zpráva 1
 
@@ -141,7 +141,7 @@ Pravidlo brány firewall ve skupině zabezpečení sítě (NSG) blokuje komunika
 Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového provozu, před instalací HDInsight proveďte následující akce:
 
 - Identifikujte oblast Azure, kterou plánujete použít pro HDInsight.
-- Identifikujte IP adresy, které vyžaduje HDInsight. Další informace najdete v tématu [IP adresy pro správu služby HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+- Identifikujte IP adresy, které vyžaduje HDInsight. Další informace najdete v tématu [IP adresy pro správu služby HDInsight](./hdinsight-management-ip-addresses.md).
   - Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které plánujete nainstalovat HDInsight.
   - U skupin zabezpečení sítě povolte příchozí přenosy na portu 443 z IP adres. Tato konfigurace zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť.
 
@@ -161,7 +161,7 @@ Nezadali jste oprávnění potřebná ke správě identity. Spravovaná identita
 
 1. Otevřete web Azure Portal.
 1. Přejít na účet úložiště.
-1. Podívejte se na **Access Control (IAM)**.
+1. Podívejte se na **Access Control (IAM)** .
 1. Ujistěte se, že má uživatel přiřazenou roli Přispěvatel dat objektu BLOB úložiště nebo přiřazenou roli vlastníka dat objektu BLOB úložiště.
 
 Další informace najdete v tématu [Nastavení oprávnění pro spravovanou identitu na účtu Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
@@ -172,7 +172,7 @@ Další informace najdete v tématu [Nastavení oprávnění pro spravovanou ide
 
 ### <a name="error"></a>Chyba
 
-"Pravidla zabezpečení ve skupině zabezpečení sítě/Subscriptions/ \<SubscriptionID\> /resourceGroups/<název skupiny prostředků \> Default/Providers/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> nakonfigurovaná s podsítí/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-VNet-TomTom-default/Providers/Microsoft. Network/virtualNetworks/ \<Virtual Network Name\> /subnets/ \<Subnet Name\> nepovoluje požadované příchozí nebo odchozí připojení. Další informace najdete v tématu [plánování virtuální sítě pro Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), nebo kontaktování podpory.
+"Pravidla zabezpečení ve skupině zabezpečení sítě/Subscriptions/ \<SubscriptionID\> /resourceGroups/<název skupiny prostředků \> Default/Providers/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> nakonfigurovaná s podsítí/Subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-VNet-TomTom-default/Providers/Microsoft. Network/virtualNetworks/ \<Virtual Network Name\> /subnets/ \<Subnet Name\> nepovoluje požadované příchozí nebo odchozí připojení. Další informace najdete v tématu [plánování virtuální sítě pro Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md), nebo kontaktování podpory.
 
 ### <a name="cause"></a>Příčina
 
@@ -182,8 +182,8 @@ Pokud skupiny zabezpečení sítě nebo trasy definované uživatelem (udr) ří
 
 Pokud plánujete použít skupiny zabezpečení sítě k řízení síťového provozu, před instalací HDInsight proveďte následující akce:
 
-- Identifikujte oblast Azure, kterou plánujete použít pro HDInsight, a vytvořte bezpečný seznam IP adres pro vaši oblast. Další informace najdete v tématu [služby pro stav a správu: konkrétní oblasti](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
-- Identifikujte IP adresy, které HDInsight vyžaduje. Další informace najdete v tématu [IP adresy správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+- Identifikujte oblast Azure, kterou plánujete použít pro HDInsight, a vytvořte bezpečný seznam IP adres pro vaši oblast. Další informace najdete v tématu [služby pro stav a správu: konkrétní oblasti](./hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions).
+- Identifikujte IP adresy, které HDInsight vyžaduje. Další informace najdete v tématu [IP adresy správy HDInsight](./hdinsight-management-ip-addresses.md).
 - Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které plánujete nainstalovat HDInsight. U skupin zabezpečení sítě povolte příchozí přenosy na portu 443 z IP adres. Tato konfigurace zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť.
 
 ---
@@ -216,7 +216,7 @@ Služba HDInsight se nemůže připojit ke clusteru při pokusu o vytvoření cl
 
 ### <a name="resolution"></a>Řešení
 
-Pokud používáte vlastní skupinu zabezpečení sítě VNet (skupin zabezpečení sítě) a trasy definované uživatelem (udr), ujistěte se, že váš cluster může komunikovat se službami HDInsight Management. Další informace najdete v tématu [IP adresy správy HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+Pokud používáte vlastní skupinu zabezpečení sítě VNet (skupin zabezpečení sítě) a trasy definované uživatelem (udr), ujistěte se, že váš cluster může komunikovat se službami HDInsight Management. Další informace najdete v tématu [IP adresy správy HDInsight](./hdinsight-management-ip-addresses.md).
 
 ---
 
@@ -240,4 +240,4 @@ Při vytváření clusteru HDInsight odstraňte nebo zakažte přiřazení Azure
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o chybách při vytváření clusteru najdete v tématu [řešení potíží s vytvářením clusteru pomocí Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails).
+Další informace o chybách při vytváření clusteru najdete v tématu [řešení potíží s vytvářením clusteru pomocí Azure HDInsight](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md).

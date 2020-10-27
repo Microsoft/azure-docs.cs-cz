@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be33c968499052b2b254754f37e5163012bcadd0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754952"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547584"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Připojte se k Apache Beeline ve službě HDInsight nebo ji nainstalujte místně.
 
@@ -104,7 +104,7 @@ Při přímém připojení z hlavního uzlu clusteru nebo z prostředku ve stejn
 
 ## <a name="install-beeline-client"></a>Nainstalovat klienta Beeline
 
-I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalovat místně.  Kroky instalace pro místní počítač jsou založené na [subsystému Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalovat místně.  Kroky instalace pro místní počítač jsou založené na [subsystému Windows pro Linux](/windows/wsl/install-win10).
 
 1. Aktualizujte seznamy balíčků. Do prostředí bash zadejte následující příkaz:
 
@@ -128,7 +128,7 @@ I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalova
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        Pak stiskněte klávesy **CTRL + X**, pak **Y**a potom zadejte.
+        Pak stiskněte klávesy **CTRL + X** , pak **Y** a potom zadejte.
 
 1. Stáhněte si archivy Hadoop a Beeline, zadejte následující příkazy:
 
@@ -144,7 +144,7 @@ I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalova
     tar -xvzf apache-hive-1.2.1-bin.tar.gz
     ```
 
-1. Dále opravte soubor bashrc. Budete muset určit cestu, kam se archivy nebalí. Pokud používáte [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10)a provedli jste přesně tento postup, vaše cesta by měla být `/mnt/c/Users/user/` , kde `user` je vaše uživatelské jméno.
+1. Dále opravte soubor bashrc. Budete muset určit cestu, kam se archivy nebalí. Pokud používáte [subsystém Windows pro Linux](/windows/wsl/install-win10)a provedli jste přesně tento postup, vaše cesta by měla být `/mnt/c/Users/user/` , kde `user` je vaše uživatelské jméno.
 
     1. Otevřete soubor: `nano ~/.bashrc`
 
@@ -156,7 +156,7 @@ I když je Beeline obsažený v hlavních uzlech, můžete ho chtít nainstalova
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. Pak stiskněte klávesy **CTRL + X**, pak **Y**a potom zadejte.
+    1. Pak stiskněte klávesy **CTRL + X** , pak **Y** a potom zadejte.
 
 1. Zavřete a znovu otevřete relaci bash.
 

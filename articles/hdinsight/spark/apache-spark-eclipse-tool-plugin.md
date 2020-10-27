@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
-ms.openlocfilehash: 4b0e18e7bcc85dace93962c557d05d114df215d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8607c10d0c5e2dd6544bf6edb7aa267dfa301a91
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082212"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545884"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Použití Azure Toolkit for Eclipse k vytvoření Apache Spark aplikací pro cluster HDInsight
 
@@ -23,11 +23,11 @@ Pomocí nástrojů HDInsight v sadě Azure Toolkit for [zatmění](https://www.e
 * Pro přístup k prostředkům clusteru Azure HDInsight Spark.
 * Pro vývoj a spouštění aplikace Scala Spark lokálně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Apache Spark clusteru v HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks).
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * [Rozhraní IDE pro zatmění](https://www.eclipse.org/downloads/). Tento článek používá pro vývojáře v jazyce Java integrované vývojové prostředí (zatmění).
 
@@ -35,7 +35,7 @@ Pomocí nástrojů HDInsight v sadě Azure Toolkit for [zatmění](https://www.e
 
 ### <a name="install-azure-toolkit-for-eclipse"></a>Instalace sady Azure Toolkit for Eclipse
 
-Pokyny k instalaci najdete v tématu [instalace Azure Toolkit for Eclipse](https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation).
+Pokyny k instalaci najdete v tématu [instalace Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse/installation).
 
 ### <a name="install-the-scala-plug-in"></a>Instalace modulu plug-in Scala
 
@@ -47,7 +47,7 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
 
 1. Přejít na **Help**  >  **Web Help zatmění na webu...**
 
-1. Vyberte kartu **Nainstalováno**.
+1. Vyberte kartu **Nainstalováno** .
 
 1. Měli byste vidět aspoň tyto informace:
     * Azure Toolkit for Eclipse \<version> .
@@ -57,15 +57,15 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
 
 1. Spusťte prostředí IDE s zatmění.
 
-1. Přejít do **okna**  >   **Zobrazit**  >  **Další zobrazení...**  >  **Přihlásit se..**.
+1. Přejít do **okna**  >   **Zobrazit**  >  **Další zobrazení...**  >  **Přihlásit se..** .
 
-1. V dialogovém okně **Zobrazit zobrazení** přejděte na **Azure**  >  **Azure Explorer**a pak vyberte **otevřít**.
+1. V dialogovém okně **Zobrazit zobrazení** přejděte na **Azure**  >  **Azure Explorer** a pak vyberte **otevřít** .
 
    ![Zobrazit zobrazení Apache Spark zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
 
-1. V **Průzkumníku Azure**klikněte pravým tlačítkem na uzel **Azure** a pak vyberte **Přihlásit**se.
+1. V **Průzkumníku Azure** klikněte pravým tlačítkem na uzel **Azure** a pak vyberte **Přihlásit** se.
 
-1. V dialogovém okně **přihlášení do Azure** zvolte metodu ověřování, vyberte **Přihlásit**se a dokončete proces přihlašování.
+1. V dialogovém okně **přihlášení do Azure** zvolte metodu ověřování, vyberte **Přihlásit** se a dokončete proces přihlašování.
 
    ![Apache Spark – přihlašování k Azure v zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
 
@@ -73,7 +73,7 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
 
    ![Dialogové okno vybrat odběry](./media/apache-spark-eclipse-tool-plugin/Select-Subscriptions.png)
 
-1. V **Azure Exploreru**přejděte do **Azure**  >   **HDInsight** , abyste viděli clustery HDInsight Spark v rámci vašeho předplatného.
+1. V **Azure Exploreru** přejděte do **Azure**  >   **HDInsight** , abyste viděli clustery HDInsight Spark v rámci vašeho předplatného.
 
    ![Clustery HDInsight Spark v Azure Explorer3](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer3.png)
 
@@ -85,11 +85,11 @@ Když otevřete položku zatmění, nástroje HDInsight automaticky zjistí, jes
 
 Běžný cluster můžete propojit pomocí spravovaného uživatelského jména Ambari. Podobně v případě clusteru HDInsight připojeného k doméně můžete propojit s doménou a uživatelským jménem, jako je například `user1@contoso.com` .
 
-1. V **Průzkumníku Azure**klikněte pravým tlačítkem na **HDInsight**a vyberte **propojit cluster**.
+1. V **Průzkumníku Azure** klikněte pravým tlačítkem na **HDInsight** a vyberte **propojit cluster** .
 
    ![Nabídka cluster odkazů Azure Explorer](./media/apache-spark-eclipse-tool-plugin/link-a-cluster-context-menu.png)
 
-1. Zadejte **název clusteru**, **uživatelské jméno**a **heslo**a pak vyberte **OK**. Volitelně můžete zadat účet úložiště, klíč úložiště a pak vybrat kontejner úložiště pro Průzkumníka služby Storage, aby fungoval v levém stromovém zobrazení.
+1. Zadejte **název clusteru** , **uživatelské jméno** a **heslo** a pak vyberte **OK** . Volitelně můžete zadat účet úložiště, klíč úložiště a pak vybrat kontejner úložiště pro Průzkumníka služby Storage, aby fungoval v levém stromovém zobrazení.
 
    ![Dialog připojit nový cluster HDInsight](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog1.png)
 
@@ -97,42 +97,42 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
    > V případě, že se ke clusteru přihlásilo v předplatném Azure i v souvislosti s clusterem, používáme klíč propojeného úložiště, uživatelské jméno a heslo
    > ![Účty úložiště Azure Explorer](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
    >
-   > Pouze pro uživatele s klávesnicí, pokud je aktuální fokus na **klíč úložiště**, je nutné použít **klávesovou zkratku CTRL + TAB** pro zaměření na další pole v dialogovém okně.
+   > Pouze pro uživatele s klávesnicí, pokud je aktuální fokus na **klíč úložiště** , je nutné použít **klávesovou zkratku CTRL + TAB** pro zaměření na další pole v dialogovém okně.
 
-1. Propojený cluster můžete zobrazit v **HDInsight**. Nyní můžete odeslat aplikaci do tohoto odkazovaného clusteru.
+1. Propojený cluster můžete zobrazit v **HDInsight** . Nyní můžete odeslat aplikaci do tohoto odkazovaného clusteru.
 
    ![Propojený cluster Azure Explorer HDI](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)
 
-1. Cluster taky můžete odpojit od **Azure Exploreru**.
+1. Cluster taky můžete odpojit od **Azure Exploreru** .
 
    ![Cluster s nepropojeným průzkumníkem Azure Explorer](./media/apache-spark-eclipse-tool-plugin/hdi-unlinked-cluster.png)
 
 ## <a name="set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster"></a>Nastavení projektu Spark Scala pro cluster HDInsight Spark
 
-1. Z pracovního prostoru prostředí IDE pro zatmění vyberte **soubor**  >  **Nový**  >  **projekt...**.
+1. Z pracovního prostoru prostředí IDE pro zatmění vyberte **soubor**  >  **Nový**  >  **projekt...** .
 
-1. V průvodci **vytvořením nového projektu** vyberte **HDInsight Project**  >  **Spark v HDInsight (Scala)**. Pak vyberte **Další**.
+1. V průvodci **vytvořením nového projektu** vyberte **HDInsight Project**  >  **Spark v HDInsight (Scala)** . Pak vyberte **Další** .
 
    ![Výběr projektu Spark na HDInsight (Scala)](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 
-1. V dialogovém okně **Nový projekt HDInsight Scala** zadejte následující hodnoty a potom vyberte **Další**:
+1. V dialogovém okně **Nový projekt HDInsight Scala** zadejte následující hodnoty a potom vyberte **Další** :
    * Zadejte název projektu.
    * V oblasti **JRE** se ujistěte, že **použití spouštěcího prostředí JRE** je nastavené na **Java-1,7** nebo novější.
    * V oblasti **knihovny Spark** můžete zvolit možnost **použít Maven ke konfiguraci sady Spark SDK** .  Náš nástroj integruje správnou verzi pro sadu Spark SDK a sadu Scala SDK. Můžete také zvolit možnost **Přidat sadu Spark SDK ručně** , stáhnout a přidat sadu Spark SDK ručně.
 
    ![Nový projekt HDInsight Scala – dialogové okno](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
 
-1. V dalším dialogovém okně Zkontrolujte podrobnosti a pak vyberte **Dokončit**.
+1. V dalším dialogovém okně Zkontrolujte podrobnosti a pak vyberte **Dokončit** .
 
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>Vytvoření aplikace v Scala pro cluster HDInsight Spark
 
-1. V **Průzkumníku balíčků**rozbalte projekt, který jste vytvořili dříve. Klikněte pravým tlačítkem na **Src**, vyberte **Nový**  >  **...**.
+1. V **Průzkumníku balíčků** rozbalte projekt, který jste vytvořili dříve. Klikněte pravým tlačítkem na **Src** , vyberte **Nový**  >  **...** .
 
-1. V dialogovém okně **Vybrat Průvodce** vyberte **Scala průvodci**  >  **Scala objekt**. Pak vyberte **Další**.
+1. V dialogovém okně **Vybrat Průvodce** vyberte **Scala průvodci**  >  **Scala objekt** . Pak vyberte **Další** .
 
    ![Výběr Průvodce vytvořením objektu Scala](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
 
-1. V dialogovém okně **vytvořit nový soubor** zadejte název objektu a pak vyberte **Dokončit**. Otevře se textový editor.
+1. V dialogovém okně **vytvořit nový soubor** zadejte název objektu a pak vyberte **Dokončit** . Otevře se textový editor.
 
    ![Průvodce novým souborem – vytvořit nový soubor](./media/apache-spark-eclipse-tool-plugin/create-scala-project2.png)
 
@@ -159,11 +159,11 @@ Běžný cluster můžete propojit pomocí spravovaného uživatelského jména 
 
 1. Spusťte aplikaci v clusteru HDInsight Spark:
 
-   a. V Průzkumníku balíčků klikněte pravým tlačítkem myši na název projektu a pak vyberte **Odeslat aplikaci Spark do HDInsight**.
+   a. V Průzkumníku balíčků klikněte pravým tlačítkem myši na název projektu a pak vyberte **Odeslat aplikaci Spark do HDInsight** .
 
-   b. V dialogovém okně pro **odeslání Sparku** zadejte následující hodnoty a pak vyberte **Odeslat**:
+   b. V dialogovém okně pro **odeslání Sparku** zadejte následující hodnoty a pak vyberte **Odeslat** :
 
-   * V poli **název clusteru**vyberte cluster HDInsight Spark, na kterém chcete aplikaci spustit.
+   * V poli **název clusteru** vyberte cluster HDInsight Spark, na kterém chcete aplikaci spustit.
    * Vyberte artefakt z projektu zatmění nebo ho vyberte z pevného disku. Výchozí hodnota závisí na položce, kterou kliknete pravým tlačítkem z Průzkumníka balíčků.
    * V rozevíracím seznamu **název hlavní třídy** se v Průvodci odesláním zobrazí všechny názvy objektů z vašeho projektu. Vyberte nebo zadejte jednu z nich, kterou chcete spustit. Pokud jste vybrali artefakt z pevného disku, je nutné zadat název hlavní třídy ručně. 
    * Vzhledem k tomu, že kód aplikace v tomto příkladu nevyžaduje žádné argumenty příkazového řádku nebo referenční jar nebo soubory, můžete zbývající textová pole nechat prázdná.
@@ -180,11 +180,11 @@ Pomocí nástrojů HDInsight můžete provádět různé operace, včetně pří
 
 ### <a name="access-the-job-view"></a>Přístup k zobrazení úlohy
 
-1. V **Azure Exploreru**rozbalte **HDInsight**, potom název clusteru Spark a pak vyberte **úlohy**.
+1. V **Azure Exploreru** rozbalte **HDInsight** , potom název clusteru Spark a pak vyberte **úlohy** .
 
    ![Uzel zobrazení úlohy zatmění v Průzkumníkovi Azure](./media/apache-spark-eclipse-tool-plugin/eclipse-job-view-node.png)
 
-1. Vyberte uzel **úlohy** . Pokud je verze Java nižší než **1,8**, nástroje HDInsight automaticky připomenutí vám umožní nainstalovat modul plug-in pro **kliparty E (FX)** . Pokračujte výběrem **OK** a pak postupujte podle pokynů průvodce a nainstalujte ho z webu zatmění a restartujte.
+1. Vyberte uzel **úlohy** . Pokud je verze Java nižší než **1,8** , nástroje HDInsight automaticky připomenutí vám umožní nainstalovat modul plug-in pro **kliparty E (FX)** . Pokračujte výběrem **OK** a pak postupujte podle pokynů průvodce a nainstalujte ho z webu zatmění a restartujte.
 
    ![Nainstalovat výstřižek chybějícího modulu plug-in E (FX)](./media/apache-spark-eclipse-tool-plugin/auto-install-efxclipse.png)
 
@@ -198,7 +198,7 @@ Pomocí nástrojů HDInsight můžete provádět různé operace, včetně pří
 
      ![Informace o fázi grafu Apache Spark úlohy](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
 
-   * Vyberte kartu **protokol** pro zobrazení často používaných protokolů, včetně protokolu **stderr**, **ovladače stdout**a **informací o adresáři**.
+   * Vyberte kartu **protokol** pro zobrazení často používaných protokolů, včetně protokolu **stderr** , **ovladače stdout** a **informací o adresáři** .
 
      ![Informace o protokolu úlohy Apache Spark zatmění](./media/apache-spark-eclipse-tool-plugin/eclipse-job-log-info.png)
 
@@ -216,13 +216,13 @@ Pomocí nástrojů HDInsight můžete provádět různé operace, včetně pří
 
 ### <a name="access-the-spark-history-server"></a>Přístup k serveru historie Sparku
 
-1. V Průzkumníku Azure klikněte pravým tlačítkem na název clusteru Spark a pak vyberte **otevřít historii Spark – uživatelské rozhraní**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. Při zřizování clusteru jste tyto služby zadali.
+1. V Průzkumníku Azure klikněte pravým tlačítkem na název clusteru Spark a pak vyberte **otevřít historii Spark – uživatelské rozhraní** . Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. Při zřizování clusteru jste tyto služby zadali.
 
-1. Na řídicím panelu serveru historie Sparku použijte název aplikace a vyhledejte aplikaci, kterou jste právě dokončili. V předchozím kódu nastavíte název aplikace pomocí `val conf = new SparkConf().setAppName("MyClusterApp")` . Takže název vaší aplikace Spark byl **MyClusterApp**.
+1. Na řídicím panelu serveru historie Sparku použijte název aplikace a vyhledejte aplikaci, kterou jste právě dokončili. V předchozím kódu nastavíte název aplikace pomocí `val conf = new SparkConf().setAppName("MyClusterApp")` . Takže název vaší aplikace Spark byl **MyClusterApp** .
 
 ### <a name="start-the-apache-ambari-portal"></a>Spustit portál Apache Ambari
 
-1. V Průzkumníku Azure klikněte pravým tlačítkem na název clusteru Spark a pak vyberte **otevřít cluster portál pro správu (Ambari)**.
+1. V Průzkumníku Azure klikněte pravým tlačítkem na název clusteru Spark a pak vyberte **otevřít cluster portál pro správu (Ambari)** .
 
 1. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru. Při zřizování clusteru jste tyto služby zadali.
 
@@ -230,9 +230,9 @@ Pomocí nástrojů HDInsight můžete provádět různé operace, včetně pří
 
 Ve výchozím nastavení nástroj HDInsight v Azure Toolkit for Eclipse uvádí Clustery Spark ze všech vašich předplatných Azure. V případě potřeby můžete zadat odběry, pro které chcete získat přístup ke clusteru.
 
-1. V Průzkumníku Azure klikněte pravým tlačítkem na kořenový uzel **Azure** a pak vyberte **spravovat předplatná**.
+1. V Průzkumníku Azure klikněte pravým tlačítkem na kořenový uzel **Azure** a pak vyberte **spravovat předplatná** .
 
-1. V dialogovém okně zrušte zaškrtnutí políček u předplatného, ke kterému nechcete získat přístup, a pak vyberte **Zavřít**. Můžete také vybrat možnost **Odhlásit** se, pokud se chcete odhlásit z předplatného Azure.
+1. V dialogovém okně zrušte zaškrtnutí políček u předplatného, ke kterému nechcete získat přístup, a pak vyberte **Zavřít** . Můžete také vybrat možnost **Odhlásit** se, pokud se chcete odhlásit z předplatného Azure.
 
 ## <a name="run-a-spark-scala-application-locally"></a>Místní spuštění aplikace Spark Scala
 
@@ -242,23 +242,23 @@ Pomocí nástrojů služby HDInsight v Azure Toolkit for Eclipse můžete spouš
 
 Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se vám zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K této výjimce dochází, protože ve Windows chybí **WinUtils.exe** .
 
-Chcete-li vyřešit tuto chybu, potřebujete [Winutils.exe](https://github.com/steveloughran/winutils) do umístění, jako je **C:\WinUtils\bin**, a pak přidat proměnnou prostředí **HADOOP_HOME** a nastavit hodnotu proměnné na **C\WinUtils**.
+Chcete-li vyřešit tuto chybu, potřebujete [Winutils.exe](https://github.com/steveloughran/winutils) do umístění, jako je **C:\WinUtils\bin** , a pak přidat proměnnou prostředí **HADOOP_HOME** a nastavit hodnotu proměnné na **C\WinUtils** .
 
 ### <a name="run-a-local-spark-scala-application"></a>Spuštění místní aplikace Spark Scala
 
-1. Spusťte zatmění a vytvořte projekt. V dialogovém okně **Nový projekt** proveďte následující volby a pak vyberte **Další**.
+1. Spusťte zatmění a vytvořte projekt. V dialogovém okně **Nový projekt** proveďte následující volby a pak vyberte **Další** .
 
-1. V průvodci **vytvořením nového projektu** vyberte v **HDInsight Project**  >  **ukázce pro místní spuštění HDInsight možnost HDInsight Project Spark (Scala)**. Pak vyberte **Další**.
+1. V průvodci **vytvořením nového projektu** vyberte v **HDInsight Project**  >  **ukázce pro místní spuštění HDInsight možnost HDInsight Project Spark (Scala)** . Pak vyberte **Další** .
 
    ![Nový projekt vybere dialog průvodce.](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
 1. Chcete-li poskytnout podrobné informace o projektu, postupujte podle kroků 3 až 6 v předchozí části [nastavení projektu Spark Scala pro cluster HDInsight Spark](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster).
 
-1. Šablona přidá vzorový kód (**LogQuery**) do složky **Src** , kterou můžete spustit místně na vašem počítači.
+1. Šablona přidá vzorový kód ( **LogQuery** ) do složky **Src** , kterou můžete spustit místně na vašem počítači.
 
    ![Umístění místní aplikace Scala pro LogQuery](./media/apache-spark-eclipse-tool-plugin/local-scala-application.png)
 
-1. Klikněte pravým tlačítkem na **LogQuery. Scala** a vyberte **Spustit jako**  >  **1 Scala aplikaci**. Výstup podobný tomuto se zobrazí na kartě **Konzola** :
+1. Klikněte pravým tlačítkem na **LogQuery. Scala** a vyberte **Spustit jako**  >  **1 Scala aplikaci** . Výstup podobný tomuto se zobrazí na kartě **Konzola** :
 
    ![Výsledek místního spuštění aplikace Spark](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
@@ -270,7 +270,7 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
 
 1. Přihlaste se pomocí účtu role jen pro čtení.
 
-2. V **Azure Exploreru**rozbalte **HDInsight** pro zobrazení clusterů HDInsight, které jsou ve vašem předplatném. Clustery označené jako **role: čtenář** mají pouze oprávnění role jen pro čtení.
+2. V **Azure Exploreru** rozbalte **HDInsight** pro zobrazení clusterů HDInsight, které jsou ve vašem předplatném. Clustery označené jako **role: čtenář** mají pouze oprávnění role jen pro čtení.
 
     ![Clustery HDInsight Spark v čtečce rolí Azure Explorer](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer6.png)
 
@@ -295,11 +295,11 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
 
 1. Vytvořte projekt HDInsight.
 
-2. Klikněte pravým tlačítkem na balíček. Pak vyberte **Odeslat aplikaci Spark do HDInsight**.
+2. Klikněte pravým tlačítkem na balíček. Pak vyberte **Odeslat aplikaci Spark do HDInsight** .
 
    ![Odeslání clusterů HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer11.png)
 
-3. Vyberte cluster, který má oprávnění role jen pro čtení pro **název clusteru**. Zpráva upozornění se zobrazí. Kliknutím na **propojit tento cluster** můžete propojit cluster.
+3. Vyberte cluster, který má oprávnění role jen pro čtení pro **název clusteru** . Zpráva upozornění se zobrazí. Kliknutím na **propojit tento cluster** můžete propojit cluster.
 
    ![Propojování clusterů HDInsight Spark v Azure Exploreru](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer15.png)
 
@@ -317,7 +317,7 @@ Když uživatelé odešlou úlohu do clusteru s oprávněním role jen pro čten
 
 ## <a name="known-problems"></a>Známé problémy
 
-Při použití **propojení clusteru**doporučujeme zadat přihlašovací údaje úložiště.
+Při použití **propojení clusteru** doporučujeme zadat přihlašovací údaje úložiště.
 
 ![propojit cluster s přihlašovacími údaji služby Storage – zatmění](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
@@ -346,8 +346,8 @@ Existují dva režimy, jak odeslat úlohy. Pokud je zadané přihlašovací úda
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 
 * [Použití Azure Toolkit for IntelliJ k vytváření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně prostřednictvím sítě VPN](../hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně prostřednictvím SSH](../hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně prostřednictvím sítě VPN](./apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití Azure Toolkit for IntelliJ k ladění Apache Spark aplikací vzdáleně prostřednictvím SSH](./apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
 * [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a2c734b256ad934b7a17d7cefd1783b406e766
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521373"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537180"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight – osvědčené postupy pro migraci dat
 
@@ -24,15 +24,15 @@ Tento článek obsahuje doporučení pro migraci dat do Azure HDInsight. Je sou�
 Existují dvě hlavní možnosti migrace dat z místního prostředí do prostředí Azure:
 
 * Přenos dat přes síť pomocí protokolu TLS
-    * Přes Internet – data můžete přenést do služby Azure Storage prostřednictvím běžného internetového připojení pomocí některého z několika nástrojů, jako je: Průzkumník služby Azure Storage, AzCopy, Azure PowerShell a Azure CLI. Další informace najdete v tématu [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md).
+    * Přes Internet – data můžete přenést do služby Azure Storage prostřednictvím běžného internetového připojení pomocí některého z několika nástrojů, jako je: Průzkumník služby Azure Storage, AzCopy, Azure PowerShell a Azure CLI. Další informace najdete v tématu [přesun dat do a z Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md).
 
     * Express Route-ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datovými centry Microsoftu a infrastrukturou ve vašich prostorách nebo v zařízení se systémem. Připojení ExpressRoute nevyužívají veřejný Internet a nabízejí vyšší úroveň zabezpečení, spolehlivosti a rychlosti s nižší latencí než typická připojení přes Internet. Další informace najdete v tématu [Vytvoření a úprava okruhu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
 
-    * Data Box online přenosu dat – Data Box Edge a Data Box Gateway jsou online produkty pro přenos dat, které fungují jako brány síťového úložiště pro správu dat mezi vaší lokalitou a Azure. Data Box Edge, místní síťové zařízení, přenáší data do a z Azure a využívá hraniční výpočetní funkce s povoleným umělou logikou (AI) pro zpracování dat. Data Box Gateway je virtuální zařízení s funkcemi brány úložiště. Další informace najdete v tématu [Azure Data box dokumentaci – online přenos](https://docs.microsoft.com/azure/databox-online/).
+    * Data Box online přenosu dat – Data Box Edge a Data Box Gateway jsou online produkty pro přenos dat, které fungují jako brány síťového úložiště pro správu dat mezi vaší lokalitou a Azure. Data Box Edge, místní síťové zařízení, přenáší data do a z Azure a využívá hraniční výpočetní funkce s povoleným umělou logikou (AI) pro zpracování dat. Data Box Gateway je virtuální zařízení s funkcemi brány úložiště. Další informace najdete v tématu [Azure Data box dokumentaci – online přenos](../../databox-online/index.yml).
 
 * Přenos dat do režimu offline
 
-    Data Box offline přenos dat – Data Box, Data Box Disk a Data Box Heavy zařízení vám pomůžou přenášet velké objemy dat do Azure, když síť není možnost. Tato zařízení offline pro přenos dat se dodávají mezi vaší organizací a datacenterm Azure. Používají šifrování AES k ochraně vašich dat při přenosu a prošly důkladným procesem pro úpravu po nahrání, který umožňuje odstranit vaše data ze zařízení. Další informace o Data Box offline přenosových zařízeních najdete v části [Azure Data box dokumentace – offline přenos](https://docs.microsoft.com/azure/databox/). Další informace o migraci clusterů Hadoop najdete v tématu [použití Azure Data box k migraci z místního úložiště HDFS do Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
+    Data Box offline přenos dat – Data Box, Data Box Disk a Data Box Heavy zařízení vám pomůžou přenášet velké objemy dat do Azure, když síť není možnost. Tato zařízení offline pro přenos dat se dodávají mezi vaší organizací a datacenterm Azure. Používají šifrování AES k ochraně vašich dat při přenosu a prošly důkladným procesem pro úpravu po nahrání, který umožňuje odstranit vaše data ze zařízení. Další informace o Data Box offline přenosových zařízeních najdete v části [Azure Data box dokumentace – offline přenos](../../databox/index.yml). Další informace o migraci clusterů Hadoop najdete v tématu [použití Azure Data box k migraci z místního úložiště HDFS do Azure Storage](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md).
 
 Následující tabulka má přibližnou dobu trvání přenosu dat na základě objemu dat a šířky pásma sítě. Pokud se očekává, že migrace dat trvá déle než tři týdny, použijte data box.
 

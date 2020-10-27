@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ebe9f936e3d0dfafec23842fcdbfd225995d546b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ac42407945196bd60c5ef466497ea6a86b5816c4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88720248"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547295"
 ---
 # <a name="common-errors"></a>Běžné chyby
 
@@ -36,13 +36,13 @@ BEGIN
 END;
 ```
 
-**Řešení**: Pokud chcete chybu vyřešit, nastavte log_bin_trust_function_creators na 1 z okna [parametry serveru](howto-server-parameters.md) na portálu, spusťte příkazy DDL nebo importujte schéma pro vytvoření požadovaných objektů a vraťte zpět log_bin_trust_function_creators parametr na předchozí hodnotu po vytvoření.
+**Řešení** : Pokud chcete chybu vyřešit, nastavte log_bin_trust_function_creators na 1 z okna [parametry serveru](howto-server-parameters.md) na portálu, spusťte příkazy DDL nebo importujte schéma pro vytvoření požadovaných objektů a vraťte zpět log_bin_trust_function_creators parametr na předchozí hodnotu po vytvoření.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>Chyba 1227 (42000) na řádku 101: přístup byl odepřen; pro tuto operaci potřebujete (aspoň jedno z) oprávnění SUPER. Operace selhala s ExitCode 1.
 
 Výše uvedená chyba může nastat při importu souboru s výpisem paměti nebo vytvoření procedury, která obsahuje [zpřesnění](https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html). 
 
-**Řešení**: Chcete-li vyřešit tuto chybu, uživatel s právy pro správu může udělit oprávnění k vytvoření nebo spuštění procedur spuštěním příkazu Grant jako v následujících příkladech:
+**Řešení** : Chcete-li vyřešit tuto chybu, uživatel s právy pro správu může udělit oprávnění k vytvoření nebo spuštění procedur spuštěním příkazu Grant jako v následujících příkladech:
 
 ```sql
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
@@ -64,7 +64,7 @@ DELIMITER ;
 
 ## <a name="next-steps"></a>Další kroky
 Pokud jste nenašli odpověď, kterou jste hledali, zvažte následující:
-- Vystavte svůj dotaz na [Microsoft Q&stránku s dotazy](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
+- Vystavte svůj dotaz na [Microsoft Q&stránku s dotazy](/answers/topics/azure-database-mysql.html) nebo [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 - Odešlete e-mail do Azure Database for MySQL týmu [ @Ask Azure DB pro MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com). Tato e-mailová adresa není alias technické podpory.
 - Obraťte se na podporu Azure, [zasoubor lístku z Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte nástroj [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).

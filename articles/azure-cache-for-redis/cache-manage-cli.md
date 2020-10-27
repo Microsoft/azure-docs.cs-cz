@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500500"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537690"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak vytvořit a spravovat službu Azure cache pro Redis s využitím rozhraní příkazového řádku Azure Classic
 > [!div class="op_single_selector"]
@@ -30,14 +30,14 @@ Azure Classic CLI představuje skvělý způsob, jak spravovat infrastrukturu Az
 Pokud chcete vytvořit a spravovat službu Azure cache pro instance Redis pomocí Azure Classic CLI, musíte provést následující kroky.
 
 * Musíte mít účet Azure. Pokud ho nemáte, můžete si během chvilky vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) .
-* [Nainstalujte rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md).
+* [Nainstalujte rozhraní příkazového řádku Azure Classic](/cli/azure/install-classic-cli).
 * Připojte si instalaci Azure CLI pomocí osobního účtu Azure nebo pomocí pracovního nebo školního účtu Azure a přihlaste se z klasického rozhraní `azure login` příkazového řádku pomocí příkazu.
-* Před spuštěním kteréhokoli z následujících příkazů přepněte klasický příkaz CLI do režimu Správce prostředků spuštěním `azure config mode arm` příkazu. Další informace najdete v tématu věnovaném [použití rozhraní příkazového řádku Azure Classic ke správě prostředků a skupin prostředků Azure](../xplat-cli-azure-resource-manager.md).
+* Před spuštěním kteréhokoli z následujících příkazů přepněte klasický příkaz CLI do režimu Správce prostředků spuštěním `azure config mode arm` příkazu. Další informace najdete v tématu věnovaném [použití rozhraní příkazového řádku Azure Classic ke správě prostředků a skupin prostředků Azure](../azure-resource-manager/management/manage-resources-cli.md).
 
 ## <a name="azure-cache-for-redis-properties"></a>Azure cache pro vlastnosti Redis
 Při vytváření a aktualizaci mezipaměti Azure pro instance Redis se používají následující vlastnosti.
 
-| Vlastnost | Přepínač | Description |
+| Vlastnost | Přepínač | Popis |
 | --- | --- | --- |
 | name |-n,--Name |Název mezipaměti Azure pro Redis. |
 | skupina prostředků |-g,--Resource-Group |Název skupiny prostředků. |

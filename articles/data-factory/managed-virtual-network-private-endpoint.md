@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d0d7f3ecb9ddb8a52c8ddda8a076e32283ae16
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563994"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545714"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory spravované Virtual Network (Preview)
 
@@ -91,9 +91,10 @@ Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátní
 - Azure Database for MariaDB
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory spravované Virtual Network jsou k dispozici v následujících oblastech Azure:
-- East US
+- USA – východ
 - USA – východ 2
 - USA – středozápad
+- USA – západ
 - Západní USA 2
 - Středojižní USA
 - Střední USA
@@ -102,6 +103,7 @@ Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátní
 - Spojené království – jih
 - Southeast Asia
 - Austrálie – východ
+- Austrálie – jihovýchod
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Odchozí komunikace prostřednictvím veřejného koncového bodu ze spravovaného ADF Virtual Network
 - Pro odchozí komunikaci je otevřen pouze port 443.

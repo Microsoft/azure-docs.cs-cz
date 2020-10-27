@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328560"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546666"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Privátní odkaz Azure pro Azure Data Factory
 
@@ -37,7 +37,7 @@ Místní prostředí Integration runtime můžete také nainstalovat do místní
 
 Mezi Azure Data Factory a zákaznickou virtuální sítí se vyžaduje několik komunikačních kanálů, jak je znázorněno v následující tabulce:
 
-| Doména | Port | Description |
+| Doména | Port | Popis |
 | ---------- | -------- | --------------- |
 | `adf.azure.com` | 443 | Rovina ovládacího prvku, kterou vyžaduje Data Factory vytváření a monitorování. |
 | `*.{region}.datafactory.azure.net` | 443 | Požadováno místním prostředím Integration runtime pro připojení ke službě Data Factory. |
@@ -53,10 +53,10 @@ Komunikace se službou Azure Data Factory přechodem přes privátní odkaz a za
 ![Diagram privátního odkazu pro architekturu Azure Data Factory.](./media/data-factory-private-link/private-link-architecture.png)
 
 Povolení služby privátního propojení pro každý z předchozích komunikačních kanálů nabízí následující funkce:
-- **Podporováno**:
+- **Podporováno** :
    - Datovou továrnu můžete vytvářet a monitorovat ve virtuální síti, i když zablokujete veškerou odchozí komunikaci.
    - Spojení příkazů mezi místním prostředím Integration runtime a službou Azure Data Factory se dá bezpečně provést v prostředí privátní sítě. Přenos dat mezi místním prostředím Integration runtime a službou Azure Data Factory prochází pomocí privátního propojení. 
-- **Aktuálně není podporováno**:
+- **Aktuálně není podporováno** :
    - Interaktivní vytváření, které používá místní prostředí Integration runtime, jako je například test Connection, procházení seznamu složek a seznam tabulek, získání schématu a náhled dat, prochází pomocí privátního odkazu.
    - Novou verzi prostředí Integration runtime v místním prostředí je možné stáhnout automaticky z webu Microsoft Download Center, pokud povolíte funkci Automatické aktualizace.
 
@@ -67,7 +67,7 @@ Povolení služby privátního propojení pro každý z předchozích komunikač
 > Když vytvoříte propojenou službu, ujistěte se, že vaše přihlašovací údaje jsou uložené v trezoru klíčů Azure. Jinak přihlašovací údaje nebudou fungovat, když povolíte privátní odkaz v Azure Data Factory.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Nastavit privátní odkaz pro Azure Data Factory
-Soukromé koncové body můžete vytvořit pomocí [Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal), PowerShellu nebo rozhraní příkazového řádku Azure CLI.
+Soukromé koncové body lze vytvořit pomocí [Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).
 
 Můžete také přejít na objekt pro vytváření dat Azure v Azure Portal a vytvořit privátní koncový bod, jak je znázorněno zde:
 

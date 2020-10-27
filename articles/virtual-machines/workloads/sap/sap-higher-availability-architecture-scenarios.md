@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c112896e78c07fafa2d714b0533db1f58dd57ffd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361632"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535599"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Využití restartování virtuálních počítačů infrastruktury Azure k dosažení "vyšší dostupnosti" systému SAP
 
@@ -228,7 +228,7 @@ Služby Azure Managed disks se automaticky umístí do domény selhání virtuá
 
 Ukázková architektura systému SAP NetWeaver, který používá vysokou dostupnost infrastruktury Azure a účty úložiště, může vypadat takto:
 
-![Využijte vysokou dostupnost infrastruktury Azure pro zajištění vyšší dostupnosti aplikace SAP][planning-guide-figure-2900]
+![Diagram znázorňující architekturu systému SAP NetWeaver, která využívá vysokou dostupnost infrastruktury Azure a účty úložiště.][planning-guide-figure-2900]
 
 Ukázková architektura systému SAP NetWeaver, který používá vysokou dostupnost infrastruktury Azure a spravované disky, může vypadat takto:
 

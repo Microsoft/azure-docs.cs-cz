@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f86b2166ea9bd2a547a29a777d6b709877036161
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88163726"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542535"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Jak monitorovat dostupnost clusteru pomocí protokolů Azure Monitor v HDInsight
 
@@ -22,11 +22,11 @@ Clustery HDInsight zahrnují integraci protokolů Azure Monitor, která poskytuj
 
 Protokoly Azure Monitor umožňují shromažďování a agregaci dat vygenerovaných několika prostředky, jako jsou clustery HDInsight, a jejich shromáždění a agregace na jednom místě, abyste dosáhli sjednoceného prostředí monitorování.
 
-Za předpokladu budete potřebovat Log Analytics pracovní prostor pro ukládání shromážděných dat. Pokud jste ho ještě nevytvořili, můžete postupovat podle pokynů zde: [Vytvoření pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Za předpokladu budete potřebovat Log Analytics pracovní prostor pro ukládání shromážděných dat. Pokud jste ho ještě nevytvořili, můžete postupovat podle pokynů zde: [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Povolit integraci protokolů Azure Monitor HDInsight
 
-Na stránce prostředek clusteru HDInsight na portálu vyberte **Azure monitor**. Pak vyberte **Povolit** a v rozevíracím seznamu vyberte svůj pracovní prostor Log Analytics.
+Na stránce prostředek clusteru HDInsight na portálu vyberte **Azure monitor** . Pak vyberte **Povolit** a v rozevíracím seznamu vyberte svůj pracovní prostor Log Analytics.
 
 ![Sada HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
@@ -34,13 +34,13 @@ Ve výchozím nastavení se nainstaluje agent OMS na všechny uzly clusteru s v�
 
 ## <a name="query-metrics-and-logs-tables"></a>Tabulky metrik a protokolů dotazů
 
-Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik minut), přejděte do prostředku **pracovního prostoru Log Analytics** a vyberte **protokoly**.
+Jakmile je integrace protokolu Azure Monitor povolená (může to trvat několik minut), přejděte do prostředku **pracovního prostoru Log Analytics** a vyberte **protokoly** .
 
 ![Protokoly Log Analytics pracovního prostoru](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
 
 Protokoluje seznam několika ukázkových dotazů, například:
 
-| Název dotazu                      | Description                                                               |
+| Název dotazu                      | Popis                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Dostupnost počítačů v dnešní době    | Graf počtu počítačů odesílajících protokoly, každou hodinu                     |
 | Zobrazit prezenční signály                 | Zobrazit seznam všech prezenčních signálů počítače za poslední hodinu                           |
@@ -55,13 +55,13 @@ Jako příklad spusťte dotaz ukázka **míry dostupnosti** tak, že v tomto dot
 > [!NOTE]  
 > Míra dostupnosti se měří v průběhu 24 hodin, takže cluster bude muset běžet aspoň 24 hodin, než uvidíte správné sazby dostupnosti.
 
-Tuto tabulku můžete připnout na sdílený řídicí panel tak, že kliknete na **připnout** v pravém horním rohu. Pokud nemáte žádné zapisovatelné řídicí panely, uvidíte, jak ho vytvořit: [vytváření a sdílení řídicích panelů v Azure Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
+Tuto tabulku můžete připnout na sdílený řídicí panel tak, že kliknete na **připnout** v pravém horním rohu. Pokud nemáte žádné zapisovatelné řídicí panely, uvidíte, jak ho vytvořit: [vytváření a sdílení řídicích panelů v Azure Portal](../azure-portal/azure-portal-dashboards.md#publish-and-share-a-dashboard).
 
 ## <a name="azure-monitor-alerts"></a>Výstrahy Azure Monitor
 
 Můžete také nastavit výstrahy Azure Monitor, které se aktivují, když hodnota metriky nebo výsledky dotazu splňují určité podmínky. Můžete například vytvořit upozornění k odeslání e-mailu, když jeden nebo více uzlů neodeslal prezenční signál během 5 hodin (tzn. že se předpokládá, že není k dispozici).
 
-V části **protokoly**Spusťte ukázkový dotaz **nedostupných počítačů** , a to tak, že v tomto dotazu vyberete **Spustit** , jak je znázorněno níže.
+V části **protokoly** Spusťte ukázkový dotaz **nedostupných počítačů** , a to tak, že v tomto dotazu vyberete **Spustit** , jak je znázorněno níže.
 
 ![Ukázka Log Analytics v pracovním prostoru zaznamenává nedostupné počítače](media/cluster-availability-monitor-logs/portal-unavailable-computers.png)
 
@@ -70,11 +70,11 @@ Pokud jsou k dispozici všechny uzly, tento dotaz by nyní měl vracet nulový v
 ![Nové pravidlo výstrahy Log Analytics pracovního prostoru](media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png)
 
 Existují tři komponenty výstrahy: *prostředek* , pro který chcete vytvořit pravidlo (Log Analytics pracovní prostor v tomto případě), *podmínku* pro aktivaci výstrahy a *skupiny akcí* , které určují, co se stane, když se výstraha aktivuje.
-Klikněte na **název podmínky**, jak je znázorněno níže, a dokončete konfiguraci logiky signálu.
+Klikněte na **název podmínky** , jak je znázorněno níže, a dokončete konfiguraci logiky signálu.
 
 ![Podmínka vytvoření pravidla pro upozornění na portál](media/cluster-availability-monitor-logs/portal-condition-title.png)
 
-Tím se otevře **Konfigurace signálu**.
+Tím se otevře **Konfigurace signálu** .
 
 Nastavte oddíl **Alert Logic** následujícím způsobem:
 
@@ -84,7 +84,7 @@ Vzhledem k tomu, že tento dotaz vrátí nedostupné uzly jako výsledky, pokud 
 
 V části **vyhodnocováno na základě** oddílu nastavte **dobu** a **četnost** podle toho, jak často chcete kontrolovat nedostupné uzly.
 
-Pro účely této výstrahy se chcete ujistit, že **perioda = frekvence.** Další informace o období, četnosti a dalších parametrech výstrahy najdete [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types).
+Pro účely této výstrahy se chcete ujistit, že **perioda = frekvence.** Další informace o období, četnosti a dalších parametrech výstrahy najdete [tady](../azure-monitor/platform/alerts-unified-log.md#alert-logic-definition).
 
 Vyberte **Hotovo** , až budete hotovi s konfigurací logiky signálu.
 
@@ -94,16 +94,16 @@ Pokud ještě nemáte existující skupinu akcí, klikněte na **vytvořit nový
 
 ![Pravidlo výstrahy vytvoří novou skupinu akcí.](media/cluster-availability-monitor-logs/portal-create-new-action-group.png)
 
-Otevře se okno **Přidat skupinu akcí**. Vyberte **název skupiny akcí**, **krátké jméno**, **předplatné**a **skupinu prostředků.** V části **Akce** zvolte **název akce** a jako **typ akce** vyberte **e-mail/SMS/odeslat/hlas** .
+Otevře se okno **Přidat skupinu akcí** . Vyberte **název skupiny akcí** , **krátké jméno** , **předplatné** a **skupinu prostředků.** V části **Akce** zvolte **název akce** a jako **typ akce** vyberte **e-mail/SMS/odeslat/hlas** .
 
 > [!NOTE]
-> K dispozici je několik dalších akcí, které se můžou aktivovat kromě e-mailu, SMS/nabízeného/hlasu, jako je Azure Functions, LogicApp, Webhook, ITSM a Automation Runbook. [Víc se uč.](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
+> K dispozici je několik dalších akcí, které se můžou aktivovat kromě e-mailu, SMS/nabízeného/hlasu, jako je Azure Functions, LogicApp, Webhook, ITSM a Automation Runbook. [Víc se uč.](../azure-monitor/platform/action-groups.md#action-specific-information)
 
-Tím se otevře **e-mail/SMS/nabízený/hlas**. Vyberte **jméno** příjemce, **zaškrtněte** políčko **e-mail** a zadejte e-mailovou adresu, na kterou chcete odeslat výstrahu. V **e-mailu/SMS/Push/Voice**vyberte **OK** a potom do **Přidat skupinu akcí** dokončete konfiguraci skupiny akcí.
+Tím se otevře **e-mail/SMS/nabízený/hlas** . Vyberte **jméno** příjemce, **zaškrtněte** políčko **e-mail** a zadejte e-mailovou adresu, na kterou chcete odeslat výstrahu. V **e-mailu/SMS/Push/Voice** vyberte **OK** a potom do **Přidat skupinu akcí** dokončete konfiguraci skupiny akcí.
 
 ![Pravidlo výstrahy vytvoří přidat skupinu akcí.](media/cluster-availability-monitor-logs/portal-add-action-group.png)
 
-Po zavření těchto oken by se měla zobrazit vaše skupina akcí uvedená v části **skupiny akcí** . Nakonec dokončete část **Podrobnosti výstrahy** zadáním názvu a **popisu** **pravidla výstrahy** a zvolením **závažnosti**. Kliknutím na **vytvořit pravidlo výstrahy** dokončete.
+Po zavření těchto oken by se měla zobrazit vaše skupina akcí uvedená v části **skupiny akcí** . Nakonec dokončete část **Podrobnosti výstrahy** zadáním názvu a **popisu** **pravidla výstrahy** a zvolením **závažnosti** . Kliknutím na **vytvořit pravidlo výstrahy** dokončete.
 
 ![Portál vytvoří dokončení pravidla výstrahy.](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
 
@@ -114,7 +114,7 @@ Pokud je splněna podmínka této výstrahy, výstraha se aktivuje a obdržíte 
 
 ![Příklad e-mailu s výstrahou Azure Monitor](media/cluster-availability-monitor-logs/portal-oms-alert-email.png)
 
-Kliknutím na **výstrahy** v **pracovním prostoru Log Analytics**můžete zobrazit také všechny výstrahy, které byly aktivovány, seskupené podle závažnosti.
+Kliknutím na **výstrahy** v **pracovním prostoru Log Analytics** můžete zobrazit také všechny výstrahy, které byly aktivovány, seskupené podle závažnosti.
 
 ![Výstrahy Log Analytics pracovního prostoru](media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png)
 

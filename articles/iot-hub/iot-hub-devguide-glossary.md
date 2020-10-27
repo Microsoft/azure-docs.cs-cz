@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 30ce2247207b34ab63df5b32b2a96f27256afdbb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147779"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547788"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář IoT Hubch podmínek
 
@@ -60,7 +60,7 @@ K dispozici jsou sady _SDK služeb_ pro několik jazyků, které umožňují vyt
 
 ## <a name="azure-portal"></a>portál Azure
 
-[Portál Microsoft Azure](https://portal.azure.com) je centrální místo, kde můžete zřídit a spravovat prostředky Azure. Uspořádává svůj _obsah pomocí oken_.
+[Portál Microsoft Azure](https://portal.azure.com) je centrální místo, kde můžete zřídit a spravovat prostředky Azure. Uspořádává svůj _obsah pomocí oken_ .
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -218,7 +218,7 @@ IoT Hub je plně spravovaná služba Azure, která umožňuje spolehlivou a zabe
 
 ## <a name="iot-hub-metrics"></a>IoT Hub metriky
 
-[IoT Hub metriky](iot-hub-metrics.md) poskytují údaje o stavu služby IoT Hub ve vašem [předplatném Azure](#subscription). IoT Hub metriky umožňují posoudit celkový stav služby a zařízení, která jsou k ní připojená. IoT Hub metriky vám pomůžou zjistit, co se chystá ve službě IoT Hub, a prozkoumat problémy hlavní příčiny, aniž byste museli kontaktovat podporu Azure.
+[IoT Hub metriky](monitor-iot-hub-reference.md#metrics) poskytují údaje o stavu služby IoT Hub ve vašem [předplatném Azure](#subscription). IoT Hub metriky umožňují posoudit celkový stav služby a zařízení, která jsou k ní připojená. IoT Hub metriky vám pomůžou zjistit, co se chystá ve službě IoT Hub, a prozkoumat problémy hlavní příčiny, aniž byste museli kontaktovat podporu Azure. Další informace najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md).
 
 ## <a name="iot-hub-query-language"></a>Dotazovací jazyk IoT Hub
 

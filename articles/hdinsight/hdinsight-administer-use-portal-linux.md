@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82598494"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533474"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -33,7 +33,7 @@ Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 
 Na stránce **clustery HDInsight** se zobrazí seznam stávajících clusterů.  Z portálu:
 1. V nabídce vlevo vyberte **všechny služby** .
-2. V části **Analýza**vyberte **clustery HDInsight** .
+2. V části **Analýza** vyberte **clustery HDInsight** .
 
 ## <a name="cluster-home-page"></a><a name="homePage"></a> Domovská stránka clusteru
 
@@ -58,9 +58,9 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Přehled|Poskytuje obecné informace o clusteru.|
     |Protokol aktivit|Zobrazení a dotazování protokolů aktivit.|
     |Řízení přístupu (IAM)|Použijte přiřazení rolí.  Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).|
-    |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project**a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
+    |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project** a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
     |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
-    |Rychlé zprovoznění|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
+    |Rychlý start|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
     |Nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
 
   - **Nabídka Nastavení**  
@@ -70,7 +70,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Velikost clusteru|Kontrolovat, zvyšovat a snižovat počet pracovních uzlů clusteru. Viz [škálování clusterů](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Omezení kvót|Zobrazí použitá a dostupná jádra pro vaše předplatné.|
     |SSH + přihlášení k clusteru|Zobrazuje pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH). Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |Data Lake Storage Gen1|Nakonfigurujte přístup Data Lake Storage Gen1.  Viz [rychlý Start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
+    |Data Lake Storage Gen1|Nakonfigurujte přístup Data Lake Storage Gen1.  Viz [rychlý Start: nastavení clusterů v HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).|
     |Účty úložiště|Zobrazení účtů úložiště a klíčů. Účty úložiště se konfigurují během procesu vytváření clusteru.|
     |Aplikace|Přidat nebo odebrat aplikace HDInsight.  Viz [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).|
     |Akce skriptů|Spusťte skripty bash v clusteru. Viz [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).|
@@ -98,7 +98,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
 
 ## <a name="cluster-properties"></a><a name="properties"></a> Vlastnosti clusteru
 
-Na [domovské stránce clusteru](#homePage)v části **Nastavení** vyberte **vlastnosti**.
+Na [domovské stránce clusteru](#homePage)v části **Nastavení** vyberte **vlastnosti** .
 
 |Položka | Popis |
 |---|---|
@@ -109,7 +109,7 @@ Na [domovské stránce clusteru](#homePage)v části **Nastavení** vyberte **vl
 |STAV|Jedna z těchto funkcí: přerušeno, přijato, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, provozní, spuštěno, chyba, odstranění, odstranění, vypršení časového limitu, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued nebo ClusterCustomization.|
 |REGION|Umístění Azure. Seznam podporovaných umístění Azure najdete v rozevíracím seznamu **oblast** na stránce [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |DATUM VYTVOŘENÍ|Datum, kdy byl cluster nasazen.|
-|OPERAČNÍ SYSTÉM|Buď **Windows** , nebo **Linux**.|
+|OPERAČNÍ SYSTÉM|Buď **Windows** , nebo **Linux** .|
 |TYP|Hadoop, HBA, vyplavení, Spark.|
 |Verze|Viz [verze HDInsight](hdinsight-component-versioning.md).|
 |Minimální verze protokolu TLS|Verze TLS.|
@@ -126,7 +126,7 @@ Cluster HDInsight můžete přesunout do jiné skupiny prostředků Azure nebo j
 Z [domovské stránky clusteru](#homePage):
 
 1. V horní nabídce vyberte **přesunout** .
-2. Vyberte **přesunout do jiné skupiny prostředků** nebo **Přejít na jiné předplatné**.
+2. Vyberte **přesunout do jiné skupiny prostředků** nebo **Přejít na jiné předplatné** .
 3. Postupujte podle pokynů na nové stránce.
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
@@ -174,12 +174,12 @@ Ambari poskytuje intuitivní a snadno použitelné webové uživatelské rozhran
 
 Z [domovské stránky clusteru](#homePage):
 
-1. Vyberte **řídicí panely clusteru**.
+1. Vyberte **řídicí panely clusteru** .
 
     ![Nabídka clusteru Apache Hadoop HDInsight](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
 1. Na nové stránce vyberte **Ambari domů** .
-1. Zadejte uživatelské jméno a heslo clusteru.  Výchozí uživatelské jméno clusteru je _admin_.
+1. Zadejte uživatelské jméno a heslo clusteru.  Výchozí uživatelské jméno clusteru je _admin_ .
 
 Další informace najdete v tématu [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
@@ -193,16 +193,16 @@ Cluster An HDInsight může mít dva uživatelské účty. Během procesu vytvá
 > Změna hesla uživatele clusteru (správce) může způsobit selhání akcí skriptu spuštěných pro tento cluster. Pokud máte trvalé akce skriptů, které cílí na pracovní uzly, můžou se tyto skripty při přidávání uzlů do clusteru přes operace změny velikosti zdařit. Další informace o akcích skriptu najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md).
 
 Z [domovské stránky clusteru](#homePage):
-1. V části **Nastavení**vyberte **ssh + přihlášení clusteru** .
-2. Vyberte **resetovat přihlašovací údaje**.
+1. V části **Nastavení** vyberte **ssh + přihlášení clusteru** .
+2. Vyberte **resetovat přihlašovací údaje** .
 3. Do textových polí zadejte a potvrďte nové heslo.
-4. Vyberte **OK**.
+4. Vyberte **OK** .
 
 Heslo se změní na všech uzlech v clusteru.
 
 ### <a name="change-the-ssh-user-password-or-public-key"></a>Změna hesla uživatele SSH nebo veřejného klíče
 
-1. Pomocí textového editoru uložte následující text jako soubor s názvem **changecredentials.sh**.
+1. Pomocí textového editoru uložte následující text jako soubor s názvem **changecredentials.sh** .
 
     > [!IMPORTANT]  
     > Je nutné použít editor, který jako konec řádku používá LF. Pokud editor používá znaky CRLF, skript nefunguje.
@@ -215,8 +215,8 @@ Heslo se změní na všech uzlech v clusteru.
     ```
 
 2. Nahrajte soubor do umístění úložiště, ke kterému se dá dostat z HDInsight pomocí adresy HTTP nebo HTTPS. Například veřejné úložiště souborů, jako je OneDrive nebo Azure Blob Storage. Uložte do souboru identifikátor URI (adresa HTTP nebo HTTPS), protože tento identifikátor URI je potřeba v dalším kroku.
-3. Na [domovské stránce clusteru](#homePage)vyberte v části **Nastavení**možnost **akce skriptu** .
-4. Na stránce **akce skriptu** vyberte **Odeslat novou**.
+3. Na [domovské stránce clusteru](#homePage)vyberte v části **Nastavení** možnost **akce skriptu** .
+4. Na stránce **akce skriptu** vyberte **Odeslat novou** .
 5. Na stránce **Odeslat akci skriptu** zadejte následující informace:
 
 > [!NOTE]
@@ -228,7 +228,7 @@ Heslo se změní na všech uzlech v clusteru.
    | Pole | Hodnota |
    | --- | --- |
    | Typ skriptu | Z rozevíracího seznamu vyberte **-vlastní** .|
-   | Name |Změna přihlašovacích údajů SSH |
+   | Název |Změna přihlašovacích údajů SSH |
    | Identifikátor URI skriptu bash |Identifikátor URI souboru changecredentials.sh |
    | Typ (typy) uzlů: (Head, work, Nimbus, nadřízený nebo Zookeeper.) |✓ pro všechny typy uzlů v seznamu |
    | Parametry |Zadejte uživatelské jméno SSH a pak nové heslo. Mezi uživatelským jménem a heslem by měla být jedna mezera. |
@@ -246,7 +246,7 @@ V režimu Azure Resource Manager se každý cluster HDInsight vytvoří se skupi
 
 ## <a name="find-the-storage-accounts"></a>Vyhledání účtů úložiště
 
-Clustery HDInsight používají k ukládání dat účet Azure Storage nebo Azure Data Lake Storage. Každý cluster HDInsight může mít jeden výchozí účet úložiště a řadu propojených účtů úložiště. Pokud chcete zobrazit seznam účtů úložiště, na [domovské stránce clusteru](#homePage) v části **Nastavení**vyberte **účty úložiště**.
+Clustery HDInsight používají k ukládání dat účet Azure Storage nebo Azure Data Lake Storage. Každý cluster HDInsight může mít jeden výchozí účet úložiště a řadu propojených účtů úložiště. Pokud chcete zobrazit seznam účtů úložiště, na [domovské stránce clusteru](#homePage) v části **Nastavení** vyberte **účty úložiště** .
 
 ## <a name="monitor-jobs"></a>Monitorování úloh
 

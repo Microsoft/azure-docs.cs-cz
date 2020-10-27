@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: eadc976270888499be1ed01040cc4ff00632e8e4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e2b106e64aed08b0586575d4d77602329454a673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142270"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536007"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurace nahrávání souborů IoT Hub pomocí prostředí PowerShell
 
@@ -99,15 +99,15 @@ Teď můžete nakonfigurovat centrum IoT pro [nahrávání souborů do služby I
 
 Konfigurace vyžaduje následující hodnoty:
 
-* **Kontejner úložiště**: kontejner objektů BLOB v účtu služby Azure Storage v aktuálním předplatném Azure, který chcete přidružit ke službě IoT Hub. V předchozí části jste načetli potřebné informace o účtu úložiště. IoT Hub automaticky generuje identifikátory URI SAS s oprávněním k zápisu do tohoto kontejneru objektů blob, aby bylo možné zařízení použít při nahrávání souborů.
+* **Kontejner úložiště** : kontejner objektů BLOB v účtu služby Azure Storage v aktuálním předplatném Azure, který chcete přidružit ke službě IoT Hub. V předchozí části jste načetli potřebné informace o účtu úložiště. IoT Hub automaticky generuje identifikátory URI SAS s oprávněním k zápisu do tohoto kontejneru objektů blob, aby bylo možné zařízení použít při nahrávání souborů.
 
-* **Dostávat oznámení pro nahrané soubory**: povolení nebo zakázání oznámení o nahrávání souborů
+* **Dostávat oznámení pro nahrané soubory** : povolení nebo zakázání oznámení o nahrávání souborů
 
-* **SAS TTL**: Toto nastavení představuje čas do živého vysílání identifikátorů URI SAS vrácených do zařízení IoT Hub. Ve výchozím nastavení nastavte na jednu hodinu.
+* **SAS TTL** : Toto nastavení představuje čas do živého vysílání identifikátorů URI SAS vrácených do zařízení IoT Hub. Ve výchozím nastavení nastavte na jednu hodinu.
 
-* **Nastavení oznámení o souboru výchozí hodnota TTL**: čas do živého oznámení o nahrání souboru před vypršením jeho platnosti. Ve výchozím nastavení nastaveno na jeden den.
+* **Nastavení oznámení o souboru výchozí hodnota TTL** : čas do živého oznámení o nahrání souboru před vypršením jeho platnosti. Ve výchozím nastavení nastaveno na jeden den.
 
-* **Maximální počet doručení oznámení souborů**: počet, kolikrát se IoT Hub pokusí doručovat oznámení o nahrání souboru. Ve výchozím nastavení nastavte na hodnotu 10.
+* **Maximální počet doručení oznámení souborů** : počet, kolikrát se IoT Hub pokusí doručovat oznámení o nahrání souboru. Ve výchozím nastavení nastavte na hodnotu 10.
 
 Pomocí následující rutiny prostředí PowerShell nakonfigurujte nastavení nahrávání souborů ve službě IoT Hub:
 
@@ -130,8 +130,7 @@ Další informace o možnostech nahrávání souborů IoT Hub najdete v tématu 
 Pokud chcete získat další informace o správě IoT Hub Azure, postupujte podle těchto odkazů:
 
 * [Hromadná správa zařízení IoT](iot-hub-bulk-identity-mgmt.md)
-* [IoT Hub metriky](iot-hub-metrics.md)
-* [Monitorování operací](iot-hub-operations-monitoring.md)
+* [Monitorování služby IoT Hub](monitor-iot-hub.md)
 
 Chcete-li dále prozkoumat možnosti IoT Hub, přečtěte si:
 

@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 6b097aa0adb39e1576e8771bbae8707348351a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63ce078cc80b856fe09f3d2bbad1c6e96615eae8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740118"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546802"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak vytvořit a spravovat repliky pro čtení v Azure Database for MySQL pomocí Azure Portal
 
 V tomto článku se naučíte, jak vytvořit a spravovat repliky pro čtení ve službě Azure Database for MySQL pomocí Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md) , který se bude používat jako zdrojový server.
 
@@ -35,9 +35,9 @@ Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 
 2. Vyberte existující server Azure Database for MySQL, který chcete použít jako hlavní server. Tato akce otevře stránku s **přehledem** .
 
-3. V nabídce v části **Nastavení**vyberte **replikace** .
+3. V nabídce v části **Nastavení** vyberte **replikace** .
 
-4. Vyberte **Přidat repliku**.
+4. Vyberte **Přidat repliku** .
 
    :::image type="content" source="./media/howto-read-replica-portal/add-replica.png" alt-text="Azure Database for MySQL – replikace":::
 
@@ -55,7 +55,7 @@ Server repliky pro čtení se dá vytvořit pomocí následujících kroků:
 7. Vyberte **OK** a potvrďte tak vytvoření repliky.
 
 > [!NOTE]
-> Repliky čtení se vytvářejí se stejnou konfigurací serveru jako hlavní. Konfiguraci serveru repliky je možné po vytvoření změnit. Server repliky se vždycky vytvoří ve stejné skupině prostředků a v rámci stejného předplatného jako na zdrojovém serveru. Pokud chcete vytvořit server repliky pro jinou skupinu prostředků nebo jiné předplatné, můžete [server repliky](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) po vytvoření přesunout. Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než zdroj, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
+> Repliky čtení se vytvářejí se stejnou konfigurací serveru jako hlavní. Konfiguraci serveru repliky je možné po vytvoření změnit. Server repliky se vždycky vytvoří ve stejné skupině prostředků a v rámci stejného předplatného jako na zdrojovém serveru. Pokud chcete vytvořit server repliky pro jinou skupinu prostředků nebo jiné předplatné, můžete [server repliky](../azure-resource-manager/management/move-resource-group-and-subscription.md) po vytvoření přesunout. Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než zdroj, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
 
 Po vytvoření serveru repliky ho můžete zobrazit z okna **replikace** .
 
@@ -70,17 +70,17 @@ Pokud chcete zastavit replikaci mezi zdrojem a serverem repliky ze Azure Portal,
 
 1. V Azure Portal vyberte svůj zdrojový Azure Database for MySQL server. 
 
-2. V nabídce v části **Nastavení**vyberte **replikace** .
+2. V nabídce v části **Nastavení** vyberte **replikace** .
 
 3. Vyberte server repliky, pro který chcete zastavit replikaci.
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL – replikace":::
 
-4. Vyberte **zastavit replikaci**.
+4. Vyberte **zastavit replikaci** .
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL – replikace":::
 
-5. Kliknutím na **OK**potvrďte, že chcete replikaci zastavit.
+5. Kliknutím na **OK** potvrďte, že chcete replikaci zastavit.
 
    :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL – replikace":::
 
@@ -90,7 +90,7 @@ K odstranění serveru repliky pro čtení z Azure Portal použijte následujíc
 
 1. V Azure Portal vyberte svůj zdrojový Azure Database for MySQL server.
 
-2. V nabídce v části **Nastavení**vyberte **replikace** .
+2. V nabídce v části **Nastavení** vyberte **replikace** .
 
 3. Vyberte server repliky, který chcete odstranit.
 
@@ -113,7 +113,7 @@ Pokud chcete odstranit zdrojový server z Azure Portal, použijte následující
 
 1. V Azure Portal vyberte svůj zdrojový Azure Database for MySQL server.
 
-2. V **přehledu**vyberte **Odstranit**.
+2. V **přehledu** vyberte **Odstranit** .
 
    :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL – replikace":::
 
@@ -125,7 +125,7 @@ Pokud chcete odstranit zdrojový server z Azure Portal, použijte následující
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte Azure Database for MySQL server repliky, který chcete monitorovat.
 
-2. V části **monitorování** v postranním panelu vyberte **metriky**:
+2. V části **monitorování** v postranním panelu vyberte **metriky** :
 
 3. V rozevíracím seznamu dostupných metrik vyberte **prodlevu replikace v sekundách** .
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 2177e74bd627e80ea1afbcacaf85baf4e030834c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91928975"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546462"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Restartování virtuálních počítačů pro clustery HDInsight
 
@@ -38,13 +38,13 @@ Když se uzel restartuje, může se stát, že cluster přestane být v pořádk
 
 Pro použití operace restartování uzlu jsou vyžadovány dva kroky: seznam uzlů a restartování uzlů.
 
-1. Seznam uzlů. Seznam uzlů clusteru můžete získat na adrese [Get-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsighthost).
+1. Seznam uzlů. Seznam uzlů clusteru můžete získat na adrese [Get-AzHDInsightHost](/powershell/module/az.hdinsight/get-azhdinsighthost).
 
       ```
       Get-AzHDInsightHost -ClusterName myclustername
       ```
 
-1. Restartujte hostitele. Po získání názvů uzlů, které chcete restartovat, restartujte uzly pomocí [restart-AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost).
+1. Restartujte hostitele. Po získání názvů uzlů, které chcete restartovat, restartujte uzly pomocí [restart-AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost).
 
       ```
       Restart-AzHDInsightHost -ClusterName myclustername -Name wn0-myclus, wn1-myclus
@@ -54,13 +54,13 @@ Pro použití operace restartování uzlu jsou vyžadovány dva kroky: seznam uz
 
 Pomocí funkce **vyzkoušet** v dokumentu rozhraní API můžete odesílat požadavky do HDInsight. Pro použití operace restartování uzlu jsou vyžadovány dva kroky: seznam uzlů a restartování uzlů.
 
-1. Seznam uzlů. Seznam uzlů clusteru můžete získat z REST API nebo v Ambari. Další informace naleznete v tématu [seznam HDInsight hosts REST API operace](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/listhosts).
+1. Seznam uzlů. Seznam uzlů clusteru můžete získat z REST API nebo v Ambari. Další informace naleznete v tématu [seznam HDInsight hosts REST API operace](/rest/api/hdinsight/virtualmachines/listhosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. Restartujte hostitele. Po získání názvů uzlů, které chcete restartovat, restartujte uzly pomocí REST API k restartování uzlů. Název uzlu se řídí vzorem *NodeType (dolů/HN/ZK/GS)*  +  *×*  +  *prvních šest znaků názvu clusteru*. Další informace najdete v tématu věnovaném [restartování hostitelů služby HDInsight REST API operace](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/restarthosts).
+1. Restartujte hostitele. Po získání názvů uzlů, které chcete restartovat, restartujte uzly pomocí REST API k restartování uzlů. Název uzlu se řídí vzorem *NodeType (dolů/HN/ZK/GS)*  +  *×*  +  *prvních šest znaků názvu clusteru* . Další informace najdete v tématu věnovaném [restartování hostitelů služby HDInsight REST API operace](/rest/api/hdinsight/virtualmachines/restarthosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview
@@ -77,6 +77,6 @@ Skutečné názvy uzlů, které chcete restartovat, jsou uvedeny v poli JSON v t
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Restart – AzHDInsightHost](https://docs.microsoft.com/powershell/module/az.hdinsight/restart-azhdinsighthost)
-* [Virtuální počítače HDInsight REST API](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines)
-* [REST API HDInsight](https://docs.microsoft.com/rest/api/hdinsight/)
+* [Restart – AzHDInsightHost](/powershell/module/az.hdinsight/restart-azhdinsighthost)
+* [Virtuální počítače HDInsight REST API](/rest/api/hdinsight/virtualmachines)
+* [REST API HDInsight](/rest/api/hdinsight/)

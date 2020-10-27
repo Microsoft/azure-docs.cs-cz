@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505025"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542773"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Nastavení zálohování a replikace pro Apache HBA a Apache Phoenix v HDInsight
 
@@ -52,7 +52,7 @@ Po odstranění clusteru můžete ponechat data na místě nebo zkopírovat data
 
 * Vytvořte novou instanci HDInsight ukazující na aktuální umístění úložiště. Vytvoří se nová instance se všemi existujícími daty.
 
-* Zkopírujte `hbase` složku do jiného Azure Storage kontejneru objektů BLOB nebo umístění Data Lake Storage a pak spusťte nový cluster s těmito daty. Pro Azure Storage použijte [AzCopy](../../storage/common/storage-use-azcopy.md)a pro data Lake Storage použijte [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
+* Zkopírujte `hbase` složku do jiného Azure Storage kontejneru objektů BLOB nebo umístění Data Lake Storage a pak spusťte nový cluster s těmito daty. Pro Azure Storage použijte [AzCopy](../../storage/common/storage-use-azcopy-v10.md)a pro data Lake Storage použijte [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
 
 ## <a name="export-then-import"></a>Exportovat a pak importovat
 
@@ -173,7 +173,7 @@ V našem příkladu:
 
 ## <a name="snapshots"></a>Snímky
 
-Pomocí [snímků](https://hbase.apache.org/book.html#ops.snapshots) můžete v úložišti dat HBA (HBA) vytvořit zálohu dat v určitém bodě v čase. Snímky mají minimální režii a dokončení během několika sekund, protože operace snímku je efektivně zachytávání názvů všech souborů v úložišti. V okamžiku snímku se nekopírují žádná skutečná data. Snímky spoléhají na neproměnlivou povahu dat uložených v HDFS, kde jsou všechny aktualizace, odstranění a vložení znázorněny jako nová data. Můžete obnovit (*klonovat*) snímek ve stejném clusteru nebo exportovat snímek do jiného clusteru.
+Pomocí [snímků](https://hbase.apache.org/book.html#ops.snapshots) můžete v úložišti dat HBA (HBA) vytvořit zálohu dat v určitém bodě v čase. Snímky mají minimální režii a dokončení během několika sekund, protože operace snímku je efektivně zachytávání názvů všech souborů v úložišti. V okamžiku snímku se nekopírují žádná skutečná data. Snímky spoléhají na neproměnlivou povahu dat uložených v HDFS, kde jsou všechny aktualizace, odstranění a vložení znázorněny jako nová data. Můžete obnovit ( *klonovat* ) snímek ve stejném clusteru nebo exportovat snímek do jiného clusteru.
 
 Pokud chcete vytvořit snímek, přihlaste se přes SSH do hlavního uzlu clusteru HDInsight HBA a spusťte `hbase` prostředí:
 
@@ -245,4 +245,4 @@ Pokud chcete povolit replikaci ve službě HDInsight, použijte pro spuštěný 
 ## <a name="next-steps"></a>Další kroky
 
 * [Konfigurace replikace Apache HBA](apache-hbase-replication.md)
-* [Práce s nástrojem pro import a export adaptérů HBA](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [Práce s nástrojem pro import a export adaptérů HBA](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ab45495283f8751912d93e9799958a8effc887a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: quickstart
+ms.openlocfilehash: 10f16118b37810ed888c0812a30ad276c49803f2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323736"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545782"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Java V8 SDK
 
@@ -38,15 +38,15 @@ Pomocí [Gitu](https://git-scm.com/) si stáhněte kopii aplikace do vývojovéh
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete projekt otevřít, spusťte Eclipse a zavřete uvítací obrazovku. Vyberte **File** (Soubor) a pak **Open Projects from File System** (Otevřít projekty ze systému souborů). Ujistěte se, že je zaškrtnuté políčko **Detect and configure project natures** (Detekovat a nakonfigurovat povahu projektu). Vyberte **Directory** (Adresář) a pak přejděte do umístění, kam jste uložili naklonované úložiště. V naklonovaném úložišti vyberte složku**blobAzureApp**. Ujistěte se, že se projekt **blobAzureApp** zobrazí jako projekt Eclipse, a pak vyberte **Finish** (Dokončit).
+Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chcete projekt otevřít, spusťte Eclipse a zavřete uvítací obrazovku. Vyberte **File** (Soubor) a pak **Open Projects from File System** (Otevřít projekty ze systému souborů). Ujistěte se, že je zaškrtnuté políčko **Detect and configure project natures** (Detekovat a nakonfigurovat povahu projektu). Vyberte **Directory** (Adresář) a pak přejděte do umístění, kam jste uložili naklonované úložiště. V naklonovaném úložišti vyberte složku **blobAzureApp** . Ujistěte se, že se projekt **blobAzureApp** zobrazí jako projekt Eclipse, a pak vyberte **Finish** (Dokončit).
 
-Po dokončení importu projektu otevřete **soubor azureapp. Java** (umístěný v **blobQuickstart. blobAzureApp** uvnitř elementu **Src/Main/Java**) a nahraďte `accountname` a `accountkey` uvnitř `storageConnectionString` řetězce. Pak aplikaci spusťte. Konkrétní pokyny k dokončení těchto úloh jsou popsané v následujících částech.
+Po dokončení importu projektu otevřete **soubor azureapp. Java** (umístěný v **blobQuickstart. blobAzureApp** uvnitř elementu **Src/Main/Java** ) a nahraďte `accountname` a `accountkey` uvnitř `storageConnectionString` řetězce. Pak aplikaci spusťte. Konkrétní pokyny k dokončení těchto úloh jsou popsané v následujících částech.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 
-V aplikaci je potřeba zadat připojovací řetězec pro váš účet úložiště. Otevřete soubor **AzureApp.Java**. Vyhledejte proměnnou `storageConnectionString` a vložte do ní hodnotu připojovacího řetězce, kterou jste zkopírovali v předchozí části. Vaše proměnná `storageConnectionString` by měla vypadat podobně jako v následujícím příkladu kódu:
+V aplikaci je potřeba zadat připojovací řetězec pro váš účet úložiště. Otevřete soubor **AzureApp.Java** . Vyhledejte proměnnou `storageConnectionString` a vložte do ní hodnotu připojovacího řetězce, kterou jste zkopírovali v předchozí části. Vaše proměnná `storageConnectionString` by měla vypadat podobně jako v následujícím příkladu kódu:
 
 ```java
 public static final String storageConnectionString =
@@ -57,7 +57,7 @@ public static final String storageConnectionString =
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Tato ukázková aplikace vytvoří testovací soubor ve výchozím adresáři (*C:\Users \<user> \AppData\Local\Temp*, pro uživatele Windows), nahraje ho do úložiště objektů blob, vypíše objekty BLOB v kontejneru a pak soubor stáhne s novým názvem, abyste mohli porovnat Starý a nový soubor.
+Tato ukázková aplikace vytvoří testovací soubor ve výchozím adresáři ( *C:\Users \<user> \AppData\Local\Temp* , pro uživatele Windows), nahraje ho do úložiště objektů blob, vypíše objekty BLOB v kontejneru a pak soubor stáhne s novým názvem, abyste mohli porovnat Starý a nový soubor.
 
 Na příkazovém řádku spusťte ukázku pomocí nástroje Maven. Otevřete prostředí a přejděte k **blobAzureApp** v naklonovaném adresáři. Potom zadejte `mvn compile exec:java`.
 
@@ -76,7 +76,7 @@ Deleting the container
 Deleting the source, and downloaded files
 ```
 
-Než budete pokračovat, vyhledejte ukázkový soubor ve výchozím adresáři (*C:\Users \<user> \AppData\Local\Temp*pro uživatele Windows). Obsah souboru v úložišti objektů blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče. Pokud porovnáte ukázkový soubor ve vašem adresáři s obsahem uloženým v úložišti objektů blob, uvidíte, že se shodují.
+Než budete pokračovat, vyhledejte ukázkový soubor ve výchozím adresáři ( *C:\Users \<user> \AppData\Local\Temp* pro uživatele Windows). Obsah souboru v úložišti objektů blob můžete zobrazit zkopírováním adresy URL objektu blob z okna konzoly a jejím vložením do prohlížeče. Pokud porovnáte ukázkový soubor ve vašem adresáři s obsahem uloženým v úložišti objektů blob, uvidíte, že se shodují.
 
   >[!NOTE]
   >K zobrazení souborů v úložišti objektů blob můžete použít také nástroj, jako je [Průzkumník služby Azure Storage](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Průzkumník služby Azure Storage je bezplatný nástroj pro více platforem, který umožňuje přístup k informacím o účtu úložiště.
@@ -93,22 +93,22 @@ První věc, kterou je potřeba udělat, je vytvořit odkazy na objekty slouží
 
 * Vytvořte instanci objektu [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount) ukazující na účet úložiště.
 
-    Objekt **CloudStorageAccount** je reprezentace vašeho účtu úložiště a umožňuje nastavení a přístup k vlastnostem účtu úložiště prostřednictvím kódu programu. Pomocí objektu **CloudStorageAccount** můžete vytvořit instanci objektu **CloudBlobClient**, která je nezbytná pro přístup ke službě Blob.
+    Objekt **CloudStorageAccount** je reprezentace vašeho účtu úložiště a umožňuje nastavení a přístup k vlastnostem účtu úložiště prostřednictvím kódu programu. Pomocí objektu **CloudStorageAccount** můžete vytvořit instanci objektu **CloudBlobClient** , která je nezbytná pro přístup ke službě Blob.
 
-* Vytvořte instanci objektu **CloudBlobClient**, která odkazuje na [službu Blob service](/java/api/com.microsoft.azure.storage.blob.cloudblobclient) ve vašem účtu úložiště.
+* Vytvořte instanci objektu **CloudBlobClient** , která odkazuje na [službu Blob service](/java/api/com.microsoft.azure.storage.blob.cloudblobclient) ve vašem účtu úložiště.
 
-    **CloudBlobClient** poskytuje přístupový bod ke službě Blob service a díky tomu umožňuje nastavení a přístup k vlastnostem úložiště objektů blob prostřednictvím kódu programu. Pomocí objektu **CloudBlobClient** můžete vytvořit instanci objektu **CloudBlobContainer**, která je nezbytná pro vytváření kontejnerů.
+    **CloudBlobClient** poskytuje přístupový bod ke službě Blob service a díky tomu umožňuje nastavení a přístup k vlastnostem úložiště objektů blob prostřednictvím kódu programu. Pomocí objektu **CloudBlobClient** můžete vytvořit instanci objektu **CloudBlobContainer** , která je nezbytná pro vytváření kontejnerů.
 
 * Vytvořte instanci objektu [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer), která představuje kontejner, ke kterému přistupujete. Kontejnery můžete použít k uspořádání objektů blob podobně jako složky na počítači k uspořádání souborů.
 
-    Jakmile budete mít **CloudBlobContainer**, můžete vytvořit instanci objektu [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) , která odkazuje na konkrétní objekt blob, který vás zajímá, a provádět nahrávání, stahování, kopírování nebo jiné operace.
+    Jakmile budete mít **CloudBlobContainer** , můžete vytvořit instanci objektu [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) , která odkazuje na konkrétní objekt blob, který vás zajímá, a provádět nahrávání, stahování, kopírování nebo jiné operace.
 
 > [!IMPORTANT]
 > Názvy kontejnerů musí být malými písmeny. Další informace o kontejnerech najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
-V této části vytvoříte instance objektů, vytvoříte nový kontejner a pak nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné a přístupné přes pouhou adresu URL. Kontejner má název **quickstartcontainer**.
+V této části vytvoříte instance objektů, vytvoříte nový kontejner a pak nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné a přístupné přes pouhou adresu URL. Kontejner má název **quickstartcontainer** .
 
 Tento příklad používá [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists), protože chceme při každém spuštění ukázky vytvořit nový kontejner. V produkčním prostředí, kde používáte stejný kontejner v celé aplikaci, je lepší volat **CreateIfNotExists** pouze jednou. Případně můžete kontejner vytvořit předem, abyste ho nemuseli vytvářet v kódu.
 
@@ -127,7 +127,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 Pokud chcete nahrát soubor do objektu blob bloku, získejte odkaz na objekt BLOB v cílovém kontejneru. Jakmile budete mít tento odkaz na objekt blob, můžete do něj nahrát data pomocí [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload). Tato operace vytvoří objekt blob, pokud ještě neexistuje, nebo objekt blob přepíše, pokud už existuje.
 
-Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor k nahrání uloží do proměnné **source** a název objektu blob do proměnné **blob**. Následující příklad nahraje soubor do kontejneru **quickstartcontainer**.
+Vzorový kód vytvoří místní soubor, který se použije k nahrání a stažení. Soubor k nahrání uloží do proměnné **source** a název objektu blob do proměnné **blob** . Následující příklad nahraje soubor do kontejneru **quickstartcontainer** .
 
 ```java
 //Creating a sample file

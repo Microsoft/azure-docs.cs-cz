@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 95472d53045e23741286188da004eb649570a965
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487224"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546020"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -77,11 +77,11 @@ Typický cluster HDInsight používá několik služeb a open source softwarový
 
 Apache Ambari zjednodušuje správu, konfiguraci a monitorování clusteru HDInsight poskytnutím webového uživatelského rozhraní a REST API. Ambari je součástí clusterů HDInsight se systémem Linux. Výběrem podokna **řídicí panel clusteru** na stránce Azure Portal HDInsight otevřete stránku odkazy na **řídicí panely clusteru** .  V dalším kroku vyberte podokno **řídicí panel clusteru HDInsight** a otevřete uživatelské rozhraní Ambari.  Zobrazí se výzva k zadání přihlašovacích údajů clusteru.
 
-Chcete-li otevřít seznam zobrazení služeb, vyberte podokno **zobrazení Ambari** na stránce Azure Portal pro HDInsight.  Tento seznam se liší v závislosti na tom, které knihovny jste nainstalovali.  Můžete například zobrazit správce front PŘÍZ, zobrazení podregistru a tez zobrazení.  Kliknutím na libovolný odkaz služby zobrazíte informace o konfiguraci a službě.  Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o historii konfigurace a verze služby clusterových služeb. Pokud chcete přejít do této části uživatelského rozhraní Ambari, vyberte nabídku **správce** a pak nastavte **zásobníky a verze**.  Kliknutím na kartu **verze** zobrazíte informace o verzi služby.
+Chcete-li otevřít seznam zobrazení služeb, vyberte podokno **zobrazení Ambari** na stránce Azure Portal pro HDInsight.  Tento seznam se liší v závislosti na tom, které knihovny jste nainstalovali.  Můžete například zobrazit správce front PŘÍZ, zobrazení podregistru a tez zobrazení.  Kliknutím na libovolný odkaz služby zobrazíte informace o konfiguraci a službě.  Stránka zásobník uživatelského rozhraní **a verze** Ambari poskytuje informace o historii konfigurace a verze služby clusterových služeb. Pokud chcete přejít do této části uživatelského rozhraní Ambari, vyberte nabídku **správce** a pak nastavte **zásobníky a verze** .  Kliknutím na kartu **verze** zobrazíte informace o verzi služby.
 
 ![Sada pro správu Apache Ambari a verze](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro všechny (nebo všechny) služby, které běží na konkrétním hostiteli (nebo uzlu) v clusteru.  Vyberte nabídku **hostitelé** a potom odkaz na hostitele, který vás zajímá. Na stránce tohoto hostitele vyberte tlačítko **akce hostitele** a pak **Stáhněte konfigurace klienta**.
+Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro všechny (nebo všechny) služby, které běží na konkrétním hostiteli (nebo uzlu) v clusteru.  Vyberte nabídku **hostitelé** a potom odkaz na hostitele, který vás zajímá. Na stránce tohoto hostitele vyberte tlačítko **akce hostitele** a pak **Stáhněte konfigurace klienta** .
 
 ![Konfigurace klientů hostitele pro stažení Apache Ambari](./media/hdinsight-log-management/download-client-configs.png)
 
@@ -109,7 +109,7 @@ Dalším krokem je kontrola souborů protokolu spuštění úlohy pro různé sl
 
 ### <a name="access-the-hadoop-log-files"></a>Přístup k souborům protokolu Hadoop
 
-HDInsight ukládá své soubory protokolu jak v systému souborů clusteru, tak v Azure Storage. Soubory protokolu v clusteru můžete prozkoumávat otevřením připojení [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) ke clusteru a procházením systému souborů nebo pomocí portálu stavu Hadoop příz na vzdáleném serveru hlavního serveru. Soubory protokolu v Azure Storage můžete prozkoumávat pomocí kteréhokoli z nástrojů, které mají přístup k datům z Azure Storage a stahovat je. Příklady jsou [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)a Visual Studio Průzkumník serveru. K přístupu k datům v úložišti objektů BLOB v Azure můžete také použít PowerShell a klientské knihovny Azure Storage nebo sady Azure .NET SDK.
+HDInsight ukládá své soubory protokolu jak v systému souborů clusteru, tak v Azure Storage. Soubory protokolu v clusteru můžete prozkoumávat otevřením připojení [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) ke clusteru a procházením systému souborů nebo pomocí portálu stavu Hadoop příz na vzdáleném serveru hlavního serveru. Soubory protokolu v Azure Storage můžete prozkoumávat pomocí kteréhokoli z nástrojů, které mají přístup k datům z Azure Storage a stahovat je. Příklady jsou [AzCopy](../storage/common/storage-use-azcopy-v10.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)a Visual Studio Průzkumník serveru. K přístupu k datům v úložišti objektů BLOB v Azure můžete také použít PowerShell a klientské knihovny Azure Storage nebo sady Azure .NET SDK.
 
 Hadoop spouští práci s úlohami jako se *pokusy* v různých uzlech clusteru. HDInsight může iniciovat spekulativní pokusy o úlohy a ukončit všechny ostatní pokusy o úlohy, které se nejdřív nedokončují. Tím dojde k průběžné zaznamenání významné aktivity, která se protokoluje do souborů protokolů protokolu stderr a syslog. Kromě toho se současně spouští více pokusů o úlohy, ale soubor protokolu může zobrazit pouze lineární výsledky.
 
@@ -144,13 +144,13 @@ Uživatelské rozhraní Správce prostředků PŘÍZe běží na hlavním uzlu c
 
 1. Ve webovém prohlížeči přejděte na adresu `https://CLUSTERNAME.azurehdinsight.net`. Nahraďte CLUSTERNAME názvem clusteru HDInsight.
 2. V seznamu služeb vlevo vyberte možnost PŘÍZe.
-3. V rozevíracím seznamu rychlé odkazy vyberte jeden z hlavních uzlů clusteru a pak vyberte **protokoly ResourceManager**. Zobrazí se seznam odkazů na záznamy PŘÍZe.
+3. V rozevíracím seznamu rychlé odkazy vyberte jeden z hlavních uzlů clusteru a pak vyberte **protokoly ResourceManager** . Zobrazí se seznam odkazů na záznamy PŘÍZe.
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>Krok 4: velikost a náklady úložiště svazků protokolů prognózy
 
 Po dokončení předchozích kroků budete vědět o typech a svazcích souborů protokolu, které vytváří clustery HDInsight.
 
-V dalším kroku Analyzujte objem dat protokolu v umístěních protokolu klíčů úložiště v časovém intervalu. Můžete například analyzovat objem a nárůst mezi 30-60-90 dny.  Poznamenejte si tyto informace v tabulce nebo použijte jiné nástroje, jako je Visual Studio, Průzkumník služby Azure Storage nebo Power Query pro Excel. Další informace najdete v tématu [Analýza protokolů HDInsight](hdinsight-debug-jobs.md).  
+V dalším kroku Analyzujte objem dat protokolu v umístěních protokolu klíčů úložiště v časovém intervalu. Můžete například analyzovat objem a nárůst mezi 30-60-90 dny.  Poznamenejte si tyto informace v tabulce nebo použijte jiné nástroje, jako je Visual Studio, Průzkumník služby Azure Storage nebo Power Query pro Excel. ```
 
 Teď máte dostatek informací, abyste vytvořili strategii správy protokolů pro protokoly klíčů.  Použijte svoji tabulku (nebo nástroj podle vlastního výběru), abyste mohli předpovědět jak růst velikost protokolu, tak i náklady na službu Azure Storage, které se budou přesměrovávat.  Zvažte také všechny požadavky na uchovávání protokolů pro sadu protokolů, které zkoumáte.  Nyní můžete přepovědět budoucí náklady na úložiště protokolů, a to tak, že určíte, které soubory protokolu se můžou odstranit (pokud existují) a které protokoly se mají uchovávat a archivovat na levnější Azure Storage.
 
@@ -186,6 +186,6 @@ Chcete-li shromáždit protokoly ze všech uzlů do jednoho centrálního umíst
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Postupy monitorování a protokolování pro HDInsight](https://msdn.microsoft.com/library/dn749790.aspx)
+* [Postupy monitorování a protokolování pro HDInsight](/previous-versions/msp-n-p/dn749790(v=pandp.10))
 * [Přístup k protokolům aplikace Apache Hadoop nitě v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Jak řídit velikost souborů protokolu pro různé Apache Hadoop komponenty](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)
