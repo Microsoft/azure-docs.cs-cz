@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2159ab8c2639f0f87fd53e8559dad518a3daa663
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77252223"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544813"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatizace instalace služby mobility
 
@@ -18,9 +18,9 @@ Tento článek popisuje, jak automatizovat instalaci a aktualizace pro agenta sl
 
 Když nasadíte Site Recovery pro zotavení po havárii místních virtuálních počítačů VMware a fyzických serverů do Azure, nainstalujete agenta služby mobility na každý počítač, který chcete replikovat. Služba mobility zachycuje zápisy dat na počítači a předá je do Site Recovery procesového serveru pro replikaci. Službu mobility můžete nasadit několika způsoby:
 
-- **Nabízená instalace**: umožňuje Site Recovery nainstalovat agenta služby mobility, když povolíte replikaci pro počítač v Azure Portal.
-- **Ruční instalace**: Nainstalujte službu mobility ručně na každý počítač. [Přečtěte si další informace](vmware-physical-mobility-service-overview.md) o nabízených a ručních instalacích.
-- **Automatizované nasazení**: automatizujte instalaci pomocí nástrojů pro nasazení softwaru, jako je Microsoft Endpoint Configuration Manager nebo nástrojů třetích stran, jako je JetPatch.
+- **Nabízená instalace** : umožňuje Site Recovery nainstalovat agenta služby mobility, když povolíte replikaci pro počítač v Azure Portal.
+- **Ruční instalace** : Nainstalujte službu mobility ručně na každý počítač. [Přečtěte si další informace](vmware-physical-mobility-service-overview.md) o nabízených a ručních instalacích.
+- **Automatizované nasazení** : automatizujte instalaci pomocí nástrojů pro nasazení softwaru, jako je Microsoft Endpoint Configuration Manager nebo nástrojů třetích stran, jako je JetPatch.
 
 Automatizovaná instalace a aktualizace poskytuje řešení v těchto případech:
 
@@ -56,8 +56,8 @@ Následující tabulka shrnuje nástroje a procesy pro automatizaci nasazení sl
 1. V Configuration Manager [zařaďte do kategorií servery](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections) , na kterých chcete nainstalovat nebo aktualizovat službu mobility. Jedna kolekce by měla obsahovat všechny servery Windows, ostatní všechny servery Linux.
 1. Ve sdílené síťové složce vytvořte složku:
 
-   - Pro instalaci na počítačích s Windows vytvořte složku s názvem _MobSvcWindows_.
-   - Pro instalaci na počítače se systémem Linux vytvořte složku s názvem _MobSvcLinux_.
+   - Pro instalaci na počítačích s Windows vytvořte složku s názvem _MobSvcWindows_ .
+   - Pro instalaci na počítače se systémem Linux vytvořte složku s názvem _MobSvcLinux_ .
 
 1. Přihlaste se k počítači konfiguračního serveru.
 1. Na počítači konfiguračního serveru otevřete příkazový řádek pro správu.
@@ -77,8 +77,8 @@ Následující tabulka shrnuje nástroje a procesy pro automatizaci nasazení sl
 
 1. Zkopírujte tyto instalační soubory do sdílené síťové složky:
 
-   - Pro Windows zkopírujte _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ do _MobSvcWindows_.
-   - Pro Linux zkopírujte následující soubory do _MobSvcLinux_:
+   - Pro Windows zkopírujte _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ do _MobSvcWindows_ .
+   - Pro Linux zkopírujte následující soubory do _MobSvcLinux_ :
      - _Microsoft-ASR_UARHEL6 -64release. tar. gz_
      - _Microsoft-ASR_UARHEL7 -64release. tar. gz_
      - _Microsoft-ASR_UASLES11-SP3-64release. tar. gz_
@@ -95,7 +95,7 @@ Následující tabulka shrnuje nástroje a procesy pro automatizaci nasazení sl
 
 Zkopírujte následující kód:
 
-- Uložte kód ve složce _MobSvcWindows_ jako _install.bat_.
+- Uložte kód ve složce _MobSvcWindows_ jako _install.bat_ .
 - Nahraďte `[CSIP]` zástupné symboly v tomto skriptu skutečnými hodnotami IP adresy konfiguračního serveru.
 - Skript podporuje nové instalace agenta služby mobility a aktualizuje agenty, které jsou už nainstalované.
 
@@ -198,7 +198,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 Zkopírujte následující kód:
 
-- Uložte kód ve složce _MobSvcLinux_ jako _install_linux. sh_.
+- Uložte kód ve složce _MobSvcLinux_ jako _install_linux. sh_ .
 - Nahraďte `[CSIP]` zástupné symboly v tomto skriptu skutečnými hodnotami IP adresy konfiguračního serveru.
 - Skript podporuje nové instalace agenta služby mobility a aktualizuje agenty, které jsou už nainstalované.
 
@@ -338,17 +338,17 @@ cd /tmp
 
 ### <a name="create-a-package"></a>Vytvoření balíčku
 
-1. Přihlaste se ke konzole Configuration Manager a pokračujte **Software Library**na  >  balíčky pro**správu aplikací**knihovny softwaru  >  **Packages**.
-1. Klikněte pravým tlačítkem na **balíčky**  >  **vytvořit balíček**.
+1. Přihlaste se ke konzole Configuration Manager a pokračujte **Software Library** na  >  balíčky pro **správu aplikací** knihovny softwaru  >  **Packages** .
+1. Klikněte pravým tlačítkem na **balíčky**  >  **vytvořit balíček** .
 1. Zadejte podrobnosti balíčku, včetně názvu, popisu, výrobce, jazyka a verze.
-1. Vyberte **Tento balíček obsahuje zdrojové soubory**.
-1. Klikněte na tlačítko **Procházet**a vyberte sdílenou síťovou složku a složku obsahující příslušný instalační program (_MobSvcWindows_ nebo _MobSvcLinux_). Pak vyberte **Další**.
+1. Vyberte **Tento balíček obsahuje zdrojové soubory** .
+1. Klikněte na tlačítko **Procházet** a vyberte sdílenou síťovou složku a složku obsahující příslušný instalační program ( _MobSvcWindows_ nebo _MobSvcLinux_ ). Pak vyberte **Další** .
 
    ![Snímek obrazovky Průvodce vytvořením balíčku a programu](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-1. Na stránce **Zvolte typ programu, který chcete vytvořit** vyberte možnost **standardní program**  >  **Další**.
+1. Na stránce **Zvolte typ programu, který chcete vytvořit** vyberte možnost **standardní program**  >  **Další** .
 
-   ![Snímek obrazovky Průvodce vytvořením balíčku a programu](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![Snímek obrazovky Průvodce vytvořením balíčku a programu, který zobrazuje standardní možnost programu](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
 1. Na stránce **Zadejte informace o tomto standardním programu** zadejte následující hodnoty:
 
@@ -359,34 +359,34 @@ cd /tmp
     **Program lze spustit** | Bez ohledu na to, jestli je uživatel přihlášený | Bez ohledu na to, jestli je uživatel přihlášený
     **Další parametry** | Použít výchozí nastavení | Použít výchozí nastavení
 
-   ![Snímek obrazovky Průvodce vytvořením balíčku a programu](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
+   ![Snímek obrazovky, který zobrazuje informace, které můžete zadat pro standardní program.](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-1. V části **Zadejte požadavky pro tento standardní program**proveďte následující úlohy:
+1. V části **Zadejte požadavky pro tento standardní program** proveďte následující úlohy:
 
-   - V případě počítačů se systémem Windows vyberte možnost **Tento program může běžet pouze na zadaných platformách**. Pak vyberte [podporované operační systémy Windows](vmware-physical-azure-support-matrix.md#replicated-machines) a vyberte **Další**.
-   - V případě počítačů se systémem Linux vyberte možnost **Tento program může běžet na libovolné platformě**. Pak vyberte **Další**.
+   - V případě počítačů se systémem Windows vyberte možnost **Tento program může běžet pouze na zadaných platformách** . Pak vyberte [podporované operační systémy Windows](vmware-physical-azure-support-matrix.md#replicated-machines) a vyberte **Další** .
+   - V případě počítačů se systémem Linux vyberte možnost **Tento program může běžet na libovolné platformě** . Pak vyberte **Další** .
 
 1. Dokončete průvodce.
 
 ### <a name="deploy-the-package"></a>Nasazení balíčku
 
-1. V konzole Configuration Manager klikněte pravým tlačítkem na balíček a vyberte **distribuovat obsah**.
+1. V konzole Configuration Manager klikněte pravým tlačítkem na balíček a vyberte **distribuovat obsah** .
 
    ![Snímek obrazovky s konzolou Configuration Manager](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
 1. Vyberte distribuční body, do kterých mají být balíčky zkopírovány. [Další informace](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
 1. Dokončete průvodce. Balíček se pak začne replikovat do zadaných distribučních bodů.
-1. Po dokončení distribuce balíčku klikněte pravým tlačítkem na balíček > **nasadit**.
+1. Po dokončení distribuce balíčku klikněte pravým tlačítkem na balíček > **nasadit** .
 
-   ![Snímek obrazovky s konzolou Configuration Manager](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+   ![Snímek obrazovky konzoly Configuration Manager zobrazující možnost nabídky nasadit](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 
 1. Vyberte kolekci zařízení se systémem Windows nebo Linux, kterou jste vytvořili dříve.
-1. Na stránce **Zadejte cíl obsahu** vyberte možnost **distribuční body**.
-1. V **Možnosti zadejte nastavení pro řízení způsobu nasazení tohoto softwaru** nastavte **účel** na **požadováno**.
+1. Na stránce **Zadejte cíl obsahu** vyberte možnost **distribuční body** .
+1. V **Možnosti zadejte nastavení pro řízení způsobu nasazení tohoto softwaru** nastavte **účel** na **požadováno** .
 
    ![Snímek obrazovky Průvodce nasazením softwaru](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-1. V **části zadejte plán pro toto nasazení**nastavte plán. [Další informace](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
+1. V **části zadejte plán pro toto nasazení** nastavte plán. [Další informace](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
 
    - Služba mobility se nainstaluje podle zadaného plánu.
    - Aby nedocházelo k zbytečnému restartování, naplánujte instalaci balíčku během měsíčního časového období údržby nebo v okně aktualizace softwaru.

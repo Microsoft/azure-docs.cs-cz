@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: c3a6f9b5831d4fed377d3f8702dbc0af0663b3a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596490"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544031"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak nastavit [replikace vstupních dat](concepts-data-i
 > [!NOTE]
 > Komunikace bez posunu
 >
-> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_ text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
 >
 
 Pokud chcete vytvořit repliku ve službě Azure Database for MySQL, [replikace vstupních dat](concepts-data-in-replication.md)  synchronizuje data ze zdrojového serveru MySQL místně, na virtuálních počítačích (VM) nebo v cloudových databázových službách. Replikace vstupních dat je založená na replikaci na základě pozice v souboru binárního protokolu (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
@@ -51,9 +51,9 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
 1. Než budete pokračovat, zkontrolujte [požadavky hlavního serveru](concepts-data-in-replication.md#requirements) . 
 
-2. Ujistěte se, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
+2. Ujistěte se, že zdrojový server umožňuje příchozí i odchozí provoz na portu 3306 a že má zdrojový server **veřejnou IP adresu** , služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN). 
    
-   Otestujte připojení ke zdrojovému serveru tak, že se pokusíte připojit z nástroje, jako je například příkazový řádek MySQL hostovaný na jiném počítači nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) k dispozici v Azure Portal.
+   Otestujte připojení ke zdrojovému serveru tak, že se pokusíte připojit z nástroje, jako je například příkazový řádek MySQL hostovaný na jiném počítači nebo [Azure Cloud Shell](../cloud-shell/overview.md) k dispozici v Azure Portal.
 
    Pokud má vaše organizace přísné zásady zabezpečení a neumožní všem IP adresám na zdrojovém serveru povolit komunikaci z Azure na zdrojový server, můžete k určení IP adresy serveru MySQL použít následující příkaz.
 
@@ -75,7 +75,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
       ```bash
       ping <output of step 2b>
       ``` 
-      Například: 
+      Příklad: 
       ```bash      
       C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
       Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
@@ -134,7 +134,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    **MySQL Workbench**
 
-   Chcete-li vytvořit roli replikace v aplikaci MySQL Workbench, otevřete panel **Uživatelé a oprávnění** na panelu **Správa** . Pak klikněte na **Přidat účet**. 
+   Chcete-li vytvořit roli replikace v aplikaci MySQL Workbench, otevřete panel **Uživatelé a oprávnění** na panelu **Správa** . Pak klikněte na **Přidat účet** . 
  
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="Uživatelé a oprávnění":::
 
@@ -142,7 +142,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Uživatelé a oprávnění":::
  
-   Klikněte na panel **role pro správu** a potom v seznamu **globálních oprávnění**vyberte **replikace podřízená** . Pak kliknutím na **použít** vytvořte roli replikace.
+   Klikněte na panel **role pro správu** a potom v seznamu **globálních oprávnění** vyberte **replikace podřízená** . Pak kliknutím na **použít** vytvořte roli replikace.
 
    :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Uživatelé a oprávnění":::
 
@@ -189,7 +189,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
 1. Nastavit zdrojový Server
 
-   Všechny funkce Replikace vstupních dat jsou prováděny uloženými procedurami. Všechny postupy najdete v [replikace vstupních dat uložených procedurách](reference-data-in-stored-procedures.md). Uložené procedury lze spustit v prostředí MySQL nebo MySQL Workbench. 
+   Všechny funkce Replikace vstupních dat jsou prováděny uloženými procedurami. Všechny postupy najdete v [replikace vstupních dat uložených procedurách](./reference-stored-procedures.md). Uložené procedury lze spustit v prostředí MySQL nebo MySQL Workbench. 
 
    Pokud chcete propojit dva servery a spustit replikaci, přihlaste se k cílovému serveru repliky ve službě Azure DB for MySQL a nastavte externí instanci jako zdrojový server. K tomu je potřeba použít `mysql.az_replication_change_master` uloženou proceduru na serveru Azure DB for MySQL.
 
@@ -286,4 +286,4 @@ CALL mysql.az_replication_skip_counter;
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [replikace vstupních dat](concepts-data-in-replication.md) pro Azure Database for MySQL. 
+- Přečtěte si další informace o [replikace vstupních dat](concepts-data-in-replication.md) pro Azure Database for MySQL.

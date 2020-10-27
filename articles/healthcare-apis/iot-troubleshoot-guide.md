@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982983"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558512"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure IoT Connectorem pro FHIR (Preview)
 
@@ -31,7 +31,7 @@ V této části se dozvíte o procesu ověřování, který Azure IoT Connector 
 
 **Mapování zařízení**
 
-|Prvek|Vyžadováno|
+|Prvek|Povinné|
 |:-------|:------|
 |TypeName|Ano|
 |TypeMatchExpression|Ano|
@@ -47,7 +47,7 @@ V této části se dozvíte o procesu ověřování, který Azure IoT Connector 
 
 **Mapování FHIR**
 
-|Prvek|Vyžadováno|
+|Prvek|Povinné|
 |:------|:-------|
 |TypeName|Ano|
 
@@ -104,7 +104,7 @@ Při otevření lístku podpory, který vám pomůže při řešení potíží, 
 > [!NOTE]
 > Tento proces je také možné použít pro kopírování a ukládání obsahu JSON **"konfigurace FHIR mapování"** .
 
-3. Vyberte **Konfigurovat mapování zařízení**.
+3. Vyberte **Konfigurovat mapování zařízení** .
 
     :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT connector1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
@@ -122,7 +122,7 @@ Při otevření lístku podpory, který vám pomůže při řešení potíží, 
 Přečtěte si nejčastější dotazy k Azure IoT Connectoru pro FHIR.
 
 >[!div class="nextstepaction"]
->[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md)
 
 * V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
 

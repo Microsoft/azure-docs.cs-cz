@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91564778"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543810"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Jednoúčelový server Azure Database for MySQL
 
@@ -55,7 +55,7 @@ Jedna služba serveru automaticky vytvoří zálohy serveru a uloží je v uživ
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
 
-Jedna serverová služba je k dispozici ve třech úrovních SKU: základní, Pro obecné účely a paměťově optimalizovaná. Úroveň Basic je vhodná pro vývoj s nízkými náklady a pro úlohy s nízkou úrovní souběžnosti. Pro obecné účely a paměť optimalizované pro produkční úlohy, které vyžadují vysokou souběžnost, škálování a předvídatelný výkon, jsou lépe vhodné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Škálování úložiště je online a podporuje automatické zvětšování úložiště. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které využíváte. Podrobnosti najdete v tématu [cenové úrovně](concepts-service-tiers.md) .
+Jedna serverová služba je k dispozici ve třech úrovních SKU: základní, Pro obecné účely a paměťově optimalizovaná. Úroveň Basic je vhodná pro vývoj s nízkými náklady a pro úlohy s nízkou úrovní souběžnosti. Pro obecné účely a paměť optimalizované pro produkční úlohy, které vyžadují vysokou souběžnost, škálování a předvídatelný výkon, jsou lépe vhodné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Škálování úložiště je online a podporuje automatické zvětšování úložiště. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které využíváte. Podrobnosti najdete v tématu [Cenové úrovně](./concepts-pricing-tiers.md).
 
 ## <a name="enterprise-grade-security-compliance-and-governance"></a>Zabezpečení, dodržování předpisů a řízení bezpečnosti na podnikové úrovni
 
@@ -63,7 +63,7 @@ Služba Single server používá šifrovací modul ověřený 140-2 Standard FIP
 
 Služba umožňuje privátní přístup k serverům pomocí [privátního propojení](concepts-data-access-security-private-link.md) a poskytuje funkci [rozšířené ochrany před internetovými útoky](concepts-data-access-and-security-threat-protection.md) . Rozšířená ochrana před internetovými útoky detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Kromě nativního ověřování podporuje jediná serverová služba  [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) ověřování. Ověřování Azure AD je mechanismus připojení k serverům MySQL pomocí identit definovaných a spravovaných ve službě Azure AD. Pomocí ověřování Azure AD můžete spravovat identity uživatelů databáze a další služby Azure v centrálním umístění, které zjednodušuje a centralizovat řízení přístupu.
+Kromě nativního ověřování podporuje jediná serverová služba  [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) ověřování. Ověřování Azure AD je mechanismus připojení k serverům MySQL pomocí identit definovaných a spravovaných ve službě Azure AD. Pomocí ověřování Azure AD můžete spravovat identity uživatelů databáze a další služby Azure v centrálním umístění, které zjednodušuje a centralizovat řízení přístupu.
 
 K dispozici je [protokolování auditu](concepts-audit-logs.md) pro sledování všech aktivit na úrovni databáze. 
 
@@ -80,7 +80,7 @@ Jedna serverová služba je vybavená integrovanými funkcemi pro monitorování
 Služba spouští komunitní verze MySQL. To umožňuje úplnou kompatibilitu aplikací a vyžaduje minimální náklady na Refaktoring pro migraci existující aplikace vyvinuté v modulu MySQL na jednu serverovou službu. Migraci na jeden server lze provést pomocí jedné z následujících možností:
 
 - **Vypsat a obnovit** – pro offline migrace, kde můžou uživatelé získat nějaké výpadky, vypsat a obnovit pomocí nástrojů komunity, jako je mysqldump/mydumper, může poskytnout nejrychlejší způsob migrace. Podrobnosti najdete v tématu [migrace pomocí výpisu paměti a obnovení](concepts-migrate-dump-restore.md) . 
-- **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace na jediný server s minimálními výpadky je možné využít [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) . 
+- **Azure Database Migration Service** – pro bezproblémové a zjednodušené migrace na jediný server s minimálními výpadky je možné využít [Azure Database Migration Service](../dms/tutorial-mysql-azure-mysql-online.md) . 
 - Replikace **dat** – pro migraci s minimálními výpadky a replikaci dat, která spoléhá na replikaci založenou na binlog, můžete také využít. Replikace dat je preferována pro migraci s minimálními výpadky prostřednictvím praktických expertů, kteří hledají lepší kontrolu nad migrací. Podrobnosti najdete [v tématu replikace dat](concepts-data-in-replication.md) .
 
 ## <a name="contacts"></a>Kontakty
@@ -108,4 +108,3 @@ Teď, když jste si přečetli Úvod do Azure Database for MySQL režimu nasazen
   - [PHP](./connect-php.md)
   - [.NET (C#)](./connect-csharp.md)
   - [Přejít](./connect-go.md)
-  

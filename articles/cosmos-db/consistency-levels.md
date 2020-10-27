@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 0f69b30f477f99e2a4cae10edc7443b0630175c9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487802"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547074"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
@@ -49,14 +49,14 @@ Azure Cosmos DB zaručuje, že 100 procento žádostí o čtení odpovídá zár
 
 Sémantika pěti úrovní konzistence je popsána zde:
 
-- **Strong**: silná konzistence nabízí záruku linearizability. Linearizability odkazuje na obsluhu souběžných požadavků. U čtení je zaručeno, že vrátí nejnovější potvrzenou verzi položky. Klient nikdy nevidí nepotvrzené nebo částečné zápisy. Uživatelům se vždycky ručí, že si přečtou poslední potvrzený zápis.
+- **Strong** : silná konzistence nabízí záruku linearizability. Linearizability odkazuje na obsluhu souběžných požadavků. U čtení je zaručeno, že vrátí nejnovější potvrzenou verzi položky. Klient nikdy nevidí nepotvrzené nebo částečné zápisy. Uživatelům se vždycky ručí, že si přečtou poslední potvrzený zápis.
 
   Následující obrázek znázorňuje silnou konzistenci se hudebními poznámkami. Po zapsání dat do oblasti "Západní USA 2" se při čtení dat z jiných oblastí zobrazí nejnovější hodnota:
 
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Konzistence jako spektrum" dvěma způsoby:
 
-- Počet verzí položky (*KB*)
-- Čtení s časovým intervalem (*T*) může odvést zpoždění za zápisy.
+- Počet verzí položky ( *KB* )
+- Čtení s časovým intervalem ( *T* ) může odvést zpoždění za zápisy.
 
 Pro účet s jednou oblastí je minimální hodnota *K* a *T* 10 operací zápisu nebo 5 sekund. Pro účty ve více oblastech je minimální hodnota *K* a *T* 100 000 operací zápisu nebo 300 sekund.
 
@@ -84,7 +84,7 @@ Klientům mimo relaci, která provádí zápis, se zobrazí následující záru
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="Konzistence jako spektrum":::
 
-- **Konzistentní předpona**: vrácené aktualizace obsahují předponu všech aktualizací bez mezer. Konzistentní předpony úrovně konzistence, které nemají nikdy vidět zápisy mimo pořadí.
+- **Konzistentní předpona** : vrácené aktualizace obsahují předponu všech aktualizací bez mezer. Konzistentní předpony úrovně konzistence, které nemají nikdy vidět zápisy mimo pořadí.
 
 Pokud byla zápisy provedena v pořadí `A, B, C` , klient uvidí buď `A` , `A,B` nebo `A,B,C` , ale nikdy mimo pořadí, například `A,C` nebo `B,A,C` . Konzistentní předpona poskytuje latence zápisu, dostupnost a propustnost čtení srovnatelné s tím, že má konečnou konzistenci, ale také poskytuje pořadí záruk, které vyhovuje potřebám scénářů, ve kterých je pořadí důležité.
 
@@ -99,7 +99,7 @@ Následující obrázek znázorňuje konzistenci předpon konzistence se hudebn�
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Konzistence jako spektrum":::
 
-- Kdy **: neexistuje**záruka na řazení pro čtení. Pokud nedojde k žádným dalším operacím zápisu, repliky se nakonec konvergují.  
+- Kdy **: neexistuje** záruka na řazení pro čtení. Pokud nedojde k žádným dalším operacím zápisu, repliky se nakonec konvergují.  
 Konečná konzistence představuje slabší formu konzistence, protože klient může číst hodnoty, které jsou starší než ty, které se předtím četly. Konečná konzistence je ideální, pokud aplikace nevyžaduje žádné záruky na řazení. Mezi příklady patří počet re, podobně jako u jiných než vlákenných komentářů. Následující obrázek znázorňuje konečnou konzistenci se hudebními poznámkami.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="Konzistence jako spektrum":::
@@ -108,7 +108,7 @@ Konečná konzistence představuje slabší formu konzistence, protože klient m
 
 V praxi můžete často získat silnější záruky konzistence. Záruky konzistence pro operaci čtení odpovídají aktuálnosti a objednání stavu databáze, který požadujete. Konzistence čtení je vázána na řazení a šíření operací zápisu a aktualizace.  
 
-Pokud v databázi neexistují žádné operace zápisu, může být operace čtení s úrovněmi konzistence s **případnými**, **relačními**nebo **konzistentními předponami** stejná jako operace čtení se silným stupněm konzistence.
+Pokud v databázi neexistují žádné operace zápisu, může být operace čtení s úrovněmi konzistence s **případnými** , **relačními** nebo **konzistentními předponami** stejná jako operace čtení se silným stupněm konzistence.
 
 Pokud je váš účet Azure Cosmos nakonfigurovaný s úrovní konzistence jinou než silná konzistence, můžete zjistit pravděpodobnost, že klienti mohou získat silné a konzistentní čtení pro vaše úlohy, a to tak, že se podíváte na metriku služby PBS ( *probabilistically Bounded* ). Tato metrika se zveřejňuje v Azure Portal. Další informace najdete v tématu [monitorování metriky služby PBS (probabilistically Bounded)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
@@ -148,7 +148,7 @@ Přesná latence RTT je funkce rychlosti a topologie sítě Azure. Azure Network
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Úrovně konzistence a trvanlivost dat
 
-V globálně distribuovaném databázovém prostředí existuje přímý vztah mezi úrovní konzistence a odolností s daty v oblasti výpadku v rámci oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než se aplikace kompletně obnoví po přerušení události. Čas potřebný k úplnému obnovení aplikace je známý jako **cíl doby obnovení** (**RTO**). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat, které může aplikace tolerovat při obnovování po přerušení události. Časové období aktualizací, které můžete chtít ztratit, se označuje jako **cíl bodu obnovení** (**RPO**).
+V globálně distribuovaném databázovém prostředí existuje přímý vztah mezi úrovní konzistence a odolností s daty v oblasti výpadku v rámci oblasti. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než se aplikace kompletně obnoví po přerušení události. Čas potřebný k úplnému obnovení aplikace je známý jako **cíl doby obnovení** ( **RTO** ). Také je potřeba porozumět maximálnímu intervalu nedávných aktualizací dat, které může aplikace tolerovat při obnovování po přerušení události. Časové období aktualizací, které můžete chtít ztratit, se označuje jako **cíl bodu obnovení** ( **RPO** ).
 
 Následující tabulka definuje vztah mezi modelem konzistence a odolností dat při výpadku oblasti v rámci sítě. Je důležité si uvědomit, že v distribuovaném systému, a to i se silnou konzistencí, není možné mít distribuovanou databázi s cílem RPO a RTO nula z důvodu [Cap věta](https://en.wikipedia.org/wiki/CAP_theorem).
 
@@ -187,8 +187,6 @@ Další informace o konceptech konzistence najdete v následujících článcíc
 
 Další informace o úrovních konzistence v Azure Cosmos DB najdete v následujících článcích:
 
-- [Volba správné úrovně konzistence pro vaši aplikaci]()
-- [Úrovně konzistence napříč Azure Cosmos DBmi rozhraními API]()
 - [Konfigurace výchozí úrovně konzistence](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [Přepsání výchozí úrovně konzistence](how-to-manage-consistency.md#override-the-default-consistency-level)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

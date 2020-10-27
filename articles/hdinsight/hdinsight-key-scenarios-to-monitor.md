@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: 78ff8adcc2b50f89daa37112b14d219233559dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1da86e36cf20dc15152aea74be6c43a4cb43d3b4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075566"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539764"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
 
@@ -27,7 +27,7 @@ Clustery Hadoop můžou poskytovat optimální výkon, když je zatížení clus
 
 Pokud se chcete podívat na nejvyšší úroveň uzlů clusteru a jejich načítání, přihlaste se k [webovému uživatelskému rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)a pak vyberte kartu **hostitelé** . Vaši hostitelé jsou uvedeni podle jejich plně kvalifikovaného názvu domény. Stav provozu každého hostitele se zobrazuje pomocí barevného indikátoru stavu:
 
-| Color | Description |
+| Color | Popis |
 | --- | --- |
 | Červený | Nejméně jedna hlavní součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
 | Oranžový | Nejméně jedna sekundární součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
@@ -50,7 +50,7 @@ Hadoop má v distribuované platformě spuštěné různé služby. PŘÍZe (je�
 
 PŘÍZe rozdělí dvě zodpovědnosti JobTracker, správu prostředků a plánování a monitorování úloh do dvou procesů démonů: globální Správce prostředků a ApplicationMaster pro jednotlivé aplikace.
 
-Správce prostředků je *čistě Plánovač*a výhradně arbitrates dostupné prostředky mezi všemi konkurenčními aplikacemi. Správce prostředků zajistí, aby se všechny prostředky vždycky používaly, optimalizace pro různé konstanty, jako je SLA, záruky kapacity a tak dále. ApplicationMaster vyjednává prostředky z Správce prostředků a spolupracuje s NodeManager pro spouštění a monitorování kontejnerů a jejich spotřeby prostředků.
+Správce prostředků je *čistě Plánovač* a výhradně arbitrates dostupné prostředky mezi všemi konkurenčními aplikacemi. Správce prostředků zajistí, aby se všechny prostředky vždycky používaly, optimalizace pro různé konstanty, jako je SLA, záruky kapacity a tak dále. ApplicationMaster vyjednává prostředky z Správce prostředků a spolupracuje s NodeManager pro spouštění a monitorování kontejnerů a jejich spotřeby prostředků.
 
 Pokud více tenantů sdílí velký cluster, existuje konkurence pro prostředky clusteru. CapacityScheduler je připojitelný Plánovač, který pomáhá při sdílení prostředků zařazováním požadavků do fronty. CapacityScheduler také podporuje *hierarchické fronty* , aby bylo zajištěno, že prostředky jsou sdíleny mezi podfrontami organizace, předtím, než fronty jiných aplikací můžou používat bezplatné prostředky.
 
@@ -66,15 +66,15 @@ Podrobnější pohled na vaše fronty získáte tak, že na řídicím panelu Am
 
 ![Odkazy v nabídce uživatelského rozhraní Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
-V uživatelském rozhraní Správce prostředků v nabídce na levé straně vyberte **Scheduler** . Zobrazí se seznam front pod *frontami aplikací*. Tady vidíte kapacitu, která se používá pro každou frontu, jak dobře jsou úlohy distribuované mezi nimi a jestli jsou nějaké úlohy omezené na prostředky.
+V uživatelském rozhraní Správce prostředků v nabídce na levé straně vyberte **Scheduler** . Zobrazí se seznam front pod *frontami aplikací* . Tady vidíte kapacitu, která se používá pro každou frontu, jak dobře jsou úlohy distribuované mezi nimi a jestli jsou nějaké úlohy omezené na prostředky.
 
 ![Nabídka uživatelského rozhraní Apache HAdoop Správce prostředků](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>Omezování úložiště
 
-Kritické body výkonu clusteru se můžou vyskytnout na úrovni úložiště. Tento typ kritických míst je nejčastěji kvůli *blokujícím* vstupně-výstupním operacím (v/v), ke kterým dochází, když spuštěné úlohy odesílají více vstupně-výstupních operací, než dokáže služba úložiště zvládnout. Toto blokování vytvoří frontu požadavků v/v, které čekají na zpracování až po zpracování aktuální IOs. Bloky jsou z důvodu *omezování úložiště*, což není fyzický limit, ale místo omezení služby úložiště pomocí smlouvy SLA (Service level agreement). Tento limit zajistí, že nemůžete monopolizovatovat žádného jednoho klienta ani klienta služby. Smlouva SLA omezuje počet IOs za sekundu (IOPS) pro Azure Storage. Podrobnosti najdete v tématu [škálovatelnost a cíle výkonnosti pro účty úložiště úrovně Standard](../storage/common/scalability-targets-standard-account.md).
+Kritické body výkonu clusteru se můžou vyskytnout na úrovni úložiště. Tento typ kritických míst je nejčastěji kvůli *blokujícím* vstupně-výstupním operacím (v/v), ke kterým dochází, když spuštěné úlohy odesílají více vstupně-výstupních operací, než dokáže služba úložiště zvládnout. Toto blokování vytvoří frontu požadavků v/v, které čekají na zpracování až po zpracování aktuální IOs. Bloky jsou z důvodu *omezování úložiště* , což není fyzický limit, ale místo omezení služby úložiště pomocí smlouvy SLA (Service level agreement). Tento limit zajistí, že nemůžete monopolizovatovat žádného jednoho klienta ani klienta služby. Smlouva SLA omezuje počet IOs za sekundu (IOPS) pro Azure Storage. Podrobnosti najdete v tématu [škálovatelnost a cíle výkonnosti pro účty úložiště úrovně Standard](../storage/common/scalability-targets-standard-account.md).
 
-Pokud používáte Azure Storage, přečtěte si informace o monitorování potíží souvisejících s úložištěm, včetně omezení, najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
+Pokud používáte Azure Storage, přečtěte si informace o monitorování potíží souvisejících s úložištěm, včetně omezení, najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](../storage/common/storage-monitoring-diagnosing-troubleshooting.md).
 
 Pokud je úložiště záložního clusteru Azure Data Lake Storage (ADLS), je pravděpodobně příčinou omezení šířky pásma. Omezování v tomto případě je možné identifikovat pozorováním chyb omezení v protokolech úloh. Informace o ADLS najdete v části omezování pro příslušnou službu v těchto článcích:
 
@@ -126,6 +126,6 @@ Další informace o potížích s místem na disku najdete v tématu [nedostatek
 
 Další informace o řešení potíží a monitorování clusterů najdete na následujících odkazech:
 
-* [Analýza protokolů služby HDInsight](hdinsight-debug-jobs.md)
+* [Analýza protokolů služby HDInsight](./hdinsight-troubleshoot-guide.md)
 * [Ladění aplikací pomocí Apache Hadoopch protokolů PŘÍZe](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Povolit výpisy haldy pro Apache Hadoop služby v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

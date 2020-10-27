@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 7e05e89cae8688162c6ac6ded5ad56c85394dc8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858754"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539832"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Použití Data Lake Storage Gen1 s clustery Azure HDInsight
 
@@ -43,12 +43,12 @@ V současné době pouze některé typy a verze clusteru HDInsight podporují ja
 | Typ clusteru HDInsight | Data Lake Storage Gen1 jako výchozí úložiště | Data Lake Storage Gen1 jako další úložiště| Poznámky |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight verze 4,0 | No | No |ADLS Gen1 není v HDInsight 4,0 podporovaná. |
-| HDInsight verze 3.6 | Yes | Yes | S výjimkou HBA|
-| HDInsight verze 3.5 | Yes | Yes | S výjimkou HBA|
-| HDInsight verze 3.4 | No | Yes | |
+| HDInsight verze 3.6 | Ano | Ano | S výjimkou HBA|
+| HDInsight verze 3.5 | Ano | Ano | S výjimkou HBA|
+| HDInsight verze 3.4 | No | Ano | |
 | HDInsight verze 3.3 | No | No | |
-| HDInsight verze 3.2 | No | Yes | |
-| Bouře | | |Pomocí Data Lake Storage Gen1 můžete zapisovat data z topologie s více podmnožinami. Data Lake Storage Gen1 můžete použít také pro referenční data, která lze následně číst pomocí topologie zaplavení.|
+| HDInsight verze 3.2 | No | Ano | |
+| Storm | | |Pomocí Data Lake Storage Gen1 můžete zapisovat data z topologie s více podmnožinami. Data Lake Storage Gen1 můžete použít také pro referenční data, která lze následně číst pomocí topologie zaplavení.|
 
 > [!WARNING]  
 > Clustery HDInsight nejsou podporované Azure Data Lake Storage Gen1
@@ -62,7 +62,7 @@ Když je HDInsight nasazený s Data Lake Storage Gen1 jako výchozí úložišt�
 * Cluster1 může používat cestu `adl://mydatalakestore/cluster1storage`.
 * Cluster2 může používat cestu `adl://mydatalakestore/cluster2storage`.
 
-Všimněte si, že oba clustery používají stejný účet Data Lake Storage Gen1 **mydatalakestore**. Každý cluster má přístup ke svému vlastnímu kořenovému systému souborů v Data Lake Storage. Prostředí Azure Portal Deployment vás vyzve k použití názvu složky, jako je **/Clusters/ \<clustername> ** pro kořenovou cestu.
+Všimněte si, že oba clustery používají stejný účet Data Lake Storage Gen1 **mydatalakestore** . Každý cluster má přístup ke svému vlastnímu kořenovému systému souborů v Data Lake Storage. Prostředí Azure Portal Deployment vás vyzve k použití názvu složky, jako je **/Clusters/ \<clustername>** pro kořenovou cestu.
 
 Pokud chcete jako výchozí úložiště použít Data Lake Storage Gen1, musíte instančnímu objektu udělit přístup k následujícím cestám:
 
@@ -126,7 +126,7 @@ Přidání účtu Data Lake Storage jako dalšího a přidání více účtů Da
 
 ## <a name="configure-data-lake-storage-gen1-access"></a>Konfigurace přístupu Data Lake Storage Gen1
 
-Pokud chcete nakonfigurovat přístup Azure Data Lake Storage Gen1 z vašeho clusteru HDInsight, musíte mít instanční objekt služby Azure Active Directory (Azure AD). Instanční objekt může vytvořit pouze správce Azure AD. Instanční objekt musí být vytvořený s certifikátem. Další informace najdete v tématu s [rychlým startem pro nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) a v části tématu věnované [vytváření instančních objektů s certifikátem podepsaným jeho držitelem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
+Pokud chcete nakonfigurovat přístup Azure Data Lake Storage Gen1 z vašeho clusteru HDInsight, musíte mít instanční objekt služby Azure Active Directory (Azure AD). Instanční objekt může vytvořit pouze správce Azure AD. Instanční objekt musí být vytvořený s certifikátem. Další informace najdete v tématu s [rychlým startem pro nastavení clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md) a v části tématu věnované [vytváření instančních objektů s certifikátem podepsaným jeho držitelem](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]  
 > Pokud budete používat Azure Data Lake Storage Gen1 jako další úložiště pro cluster HDInsight, důrazně doporučujeme, abyste to provedli během vytváření clusteru, jak je popsáno v tomto článku. Přidání Azure Data Lake Storage Gen1 jako dalšího úložiště do stávajícího clusteru HDInsight není podporovaným scénářem.
@@ -137,19 +137,19 @@ Další informace o modelu řízení přístupu najdete [v tématu řízení př
 
 Existuje několik způsobů, jak můžete přistupovat k souborům v Data Lake Storage z clusteru HDInsight.
 
-* **Pomocí plně kvalifikovaného názvu**. S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
+* **Pomocí plně kvalifikovaného názvu** . S tímto přístupem zadáváte úplnou cestu k souboru, ke kterému chcete získat přístup.
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **Pomocí zkráceného formátu cesty**. Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
+* **Pomocí zkráceného formátu cesty** . Pomocí tohoto přístupu nahradíte cestu až ke kořenu clusteru:
 
     ```
     adl:///<file path>
     ```
 
-* **Pomocí relativní cesty**. S tímto přístupem zadáváte pouze relativní cestu k souboru, ke kterému chcete získat přístup.
+* **Pomocí relativní cesty** . S tímto přístupem zadáváte pouze relativní cestu k souboru, ke kterému chcete získat přístup.
 
     ```
     /<file.path>/
@@ -214,13 +214,13 @@ LOCATION '/example/data/';
 
 ## <a name="identify-storage-path-from-ambari"></a>Identifikujte cestu k úložišti z Ambari.
 
-Chcete-li určit úplnou cestu k nakonfigurovanému výchozímu úložišti **HDFS**, přejděte na  >  **Konfigurace** HDFS a zadejte `fs.defaultFS` do pole Filtr vstupu.
+Chcete-li určit úplnou cestu k nakonfigurovanému výchozímu úložišti **HDFS** , přejděte na  >  **Konfigurace** HDFS a zadejte `fs.defaultFS` do pole Filtr vstupu.
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Vytváření clusterů HDInsight s přístupem k Data Lake Storage Gen1
 
 Pomocí následujících odkazů najdete podrobné pokyny k vytvoření clusterů HDInsight s přístupem k Data Lake Storage Gen1.
 
-* [Pomocí portálu](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Pomocí portálu](./hdinsight-hadoop-provision-linux-clusters.md)
 * [Použití PowerShellu (s Data Lake Storage Gen1 jako výchozí úložiště)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Použití PowerShellu (s Data Lake Storage Gen1 jako další úložiště)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Pomocí šablon Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -305,7 +305,7 @@ V tomto článku jste zjistili, jak používat HDFS kompatibilní Azure Data Lak
 
 Další informace naleznete v tématech:
 
-* [Rychlý start: Nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Rychlý start: Nastavení clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md)
 * [Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1 s využitím Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Nahrání dat do služby HDInsight](hdinsight-upload-data.md)
 * [Použití sdílených přístupových podpisů Azure Blob Storage k omezení přístupu k datům pomocí HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md)

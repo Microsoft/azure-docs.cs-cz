@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
-ms.openlocfilehash: 6473b6b69ba45138c30e4f2c8a7f1ba1a7f2ae7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633b6b33bc044b28628cc444227021cd0b4ff377
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816843"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544898"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Problémy s ověřováním ve službě Azure HDInsight
 
@@ -154,7 +154,7 @@ Způsoby, jak najít `sAMAccountName` :
 
 * Pokud se můžete přihlásit k Ambari pomocí místního správce Ambari, podívejte se na seznam uživatelů.
 
-* Pokud máte počítač s [Windows připojen k doméně](../../active-directory-domain-services/manage-domain.md), můžete k procházení použít standardní nástroje Windows AD. To vyžaduje pracovní účet v doméně.
+* Pokud máte počítač s [Windows připojen k doméně](../../active-directory-domain-services/tutorial-create-management-vm.md), můžete k procházení použít standardní nástroje Windows AD. To vyžaduje pracovní účet v doméně.
 
 * Z hlavního uzlu můžete k hledání použít příkazy služby SAMBA. To vyžaduje platnou relaci protokolu Kerberos (úspěšné kinit). NET ADS Search "(userPrincipalName = Bob *)"
 
@@ -220,4 +220,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

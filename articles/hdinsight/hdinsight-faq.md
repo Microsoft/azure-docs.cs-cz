@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84022210"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547516"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Nejčastější dotazy
 
@@ -24,7 +24,7 @@ Tento článek obsahuje odpovědi na některé z nejběžnějších otázek, jak
 
 ### <a name="how-do-i-provision-an-hdinsight-cluster"></a>Návody zřídit cluster HDInsight?
 
-Pokud chcete zkontrolovat typy clusterů HDInsight a metody zřizování, přečtěte si téma [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).
+Pokud chcete zkontrolovat typy clusterů HDInsight a metody zřizování, přečtěte si téma [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších](./hdinsight-hadoop-provision-linux-clusters.md).
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>Návody odstranit existující cluster HDInsight?
 
@@ -38,7 +38,7 @@ Zkuste z operací vytvoření a odstranění ponechte aspoň 30 až 60 minut. V 
 
 Odpovídající počet jader a dalších možností konfigurace závisí na různých faktorech.
 
-Další informace najdete v tématu [plánování kapacity pro clustery HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning).
+Další informace najdete v tématu [plánování kapacity pro clustery HDInsight](./hdinsight-capacity-planning.md).
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>Jaké jsou různé typy uzlů v clusteru HDInsight?
 
@@ -46,23 +46,23 @@ Seznamte [se s typy prostředků v clusterech Azure HDInsight](hdinsight-virtual
 
 ### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>Jaké jsou osvědčené postupy pro vytváření velkých clusterů HDInsight?
 
-1. Doporučuje se nastavit clustery HDInsight s [vlastní AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db) pro zlepšení škálovatelnosti clusteru.
-2. Pomocí [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) můžete vytvořit clustery HDInsight, abyste mohli využívat větší šířku pásma a další výkonnostní charakteristiky Azure Data Lake Storage Gen2.
+1. Doporučuje se nastavit clustery HDInsight s [vlastní AMBARI DB](./hdinsight-custom-ambari-db.md) pro zlepšení škálovatelnosti clusteru.
+2. Pomocí [Azure Data Lake Storage Gen2](./hdinsight-hadoop-use-data-lake-storage-gen2.md) můžete vytvořit clustery HDInsight, abyste mohli využívat větší šířku pásma a další výkonnostní charakteristiky Azure Data Lake Storage Gen2.
 3. Hlavních by měl být dostatečně velký, aby vyhovovalo více hlavním službám běžícím na těchto uzlech.
 4. Některé konkrétní úlohy, jako například interaktivní dotaz, budou také potřebovat větší Zookeeper uzly. Zvažte prosím minimálně 8 jader virtuálních počítačů.
-5. V případě podregistru a Sparku použijte [externí metastore Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores).
+5. V případě podregistru a Sparku použijte [externí metastore Hive](./hdinsight-use-external-metadata-stores.md).
 
 ## <a name="individual-components"></a>Jednotlivé komponenty
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Můžu do clusteru nainstalovat další součásti?
 
-Ano. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
+Yes. K instalaci dalších součástí nebo přizpůsobení konfigurace clusteru použijte:
 
-- Skripty během nebo po vytvoření. Skripty jsou vyvolány pomocí [akce skriptu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux). Akce skriptu je možnost konfigurace, kterou můžete použít z Azure Portal, rutin prostředí Windows PowerShell pro HDInsight nebo sady HDInsight .NET SDK. Tuto možnost konfigurace můžete použít z Azure Portal rutin prostředí Windows PowerShell nebo sady HDInsight .NET SDK.
+- Skripty během nebo po vytvoření. Skripty jsou vyvolány pomocí [akce skriptu](./hdinsight-hadoop-customize-cluster-linux.md). Akce skriptu je možnost konfigurace, kterou můžete použít z Azure Portal, rutin prostředí Windows PowerShell pro HDInsight nebo sady HDInsight .NET SDK. Tuto možnost konfigurace můžete použít z Azure Portal rutin prostředí Windows PowerShell nebo sady HDInsight .NET SDK.
 
 - [Aplikační platforma HDInsight](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) pro instalaci aplikací.
 
-Seznam podporovaných součástí najdete v tématu [co jsou komponenty Apache Hadoop a verze dostupné v HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
+Seznam podporovaných součástí najdete v tématu [co jsou komponenty Apache Hadoop a verze dostupné v HDInsight?](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Můžu upgradovat jednotlivé komponenty, které jsou v clusteru předem nainstalované?
 
@@ -129,11 +129,11 @@ Pokud zablokujete porty 22 a port 23, nebudete mít přístup přes SSH ke clust
 
 Další informace najdete v následujících dokumentech:
 
-- [Řízení síťového provozu](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+- [Porty používané službou Apache Hadoop Services ve službě HDInsight](./hdinsight-hadoop-port-settings-for-services.md)
 
 - [Zabezpečení příchozího provozu do clusterů HDInsight ve virtuální síti s privátním koncovým bodem](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
 
-- [IP adresy pro správu služby HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [IP adresy pro správu služby HDInsight](./hdinsight-management-ip-addresses.md)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Můžu nasadit další virtuální počítač ve stejné podsíti jako cluster HDInsight?
 
@@ -186,7 +186,7 @@ Doporučuje se použít certifikát vydaný certifikační autoritou. Použití 
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Jak můžu načíst přihlašovací aktivitu zobrazenou v Ranger?
 
-V případě požadavků auditování doporučuje společnost Microsoft povolit protokoly Azure Monitor, jak je popsáno v tématu [použití protokolů Azure monitor k monitorování clusterů HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial).
+V případě požadavků auditování doporučuje společnost Microsoft povolit protokoly Azure Monitor, jak je popsáno v tématu [použití protokolů Azure monitor k monitorování clusterů HDInsight](./hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
 ### <a name="can-i-disable-clamscan-on-my-cluster"></a>Můžu `Clamscan` v clusteru zakázat?
 
@@ -258,7 +258,7 @@ V současné době neexistuje žádný modul plug-in Ranger pro úložiště obj
 Zásady přístupu k datům můžete přiřadit ke skupinám zabezpečení vašich uživatelů pomocí Průzkumník služby Azure Storage. Další informace naleznete v tématech:
 
 - [Návody nastavení oprávnění pro uživatele Azure AD k dotazování na data v Data Lake Storage Gen2 pomocí podregistru nebo jiných služeb?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-- [Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-explorer.md)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Je možné zvýšit HDFS úložiště v clusteru bez zvýšení velikosti disku pracovních uzlů?
 
@@ -272,7 +272,7 @@ Viz [použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDIn
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Jak se můžu připojit k hraničnímu uzlu?
 
-Po vytvoření hraničního uzlu se k němu můžete připojit pomocí SSH na portu 22. Název hraničního uzlu najdete na portálu clusteru. Názvy obvykle končí na *-Ed*.
+Po vytvoření hraničního uzlu se k němu můžete připojit pomocí SSH na portu 22. Název hraničního uzlu najdete na portálu clusteru. Názvy obvykle končí na *-Ed* .
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Proč jsou trvalé skripty nespuštěny automaticky u nově vytvořených hraničních uzlů?
 
@@ -333,11 +333,11 @@ Další informace o cenách a nejčastějších dotazech souvisejících s faktu
 
 ### <a name="how-do-i-cancel-my-subscription"></a>Návody zrušit své předplatné?
 
-Informace o tom, jak zrušit předplatné, najdete v tématu [zrušení předplatného Azure](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription).
+Informace o tom, jak zrušit předplatné, najdete v tématu [zrušení předplatného Azure](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>Co se stane po zrušení předplatného s průběžnými platbami?
 
-Informace o vašem předplatném po jeho zrušení najdete v tématu [co se stane po zrušení předplatného?](/azure/billing/billing-how-to-cancel-azure-subscription)
+Informace o vašem předplatném po jeho zrušení najdete v tématu [co se stane po zrušení předplatného?](../cost-management-billing/manage/cancel-azure-subscription.md)
 
 ## <a name="hive"></a>Hive
 

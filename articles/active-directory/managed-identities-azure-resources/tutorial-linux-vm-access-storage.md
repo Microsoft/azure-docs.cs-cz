@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b61d3ed21d053fc7166b47c94a9ec61e355d199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c093dcff46676dc5f8a25974c3c38c74ae7666b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263157"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546683"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity přiřazené systémem na virtuální počítači s Linuxem pro přístup k Azure Storage 
 
@@ -37,7 +37,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 > [!NOTE]
 > Ověřování Azure Active Directory pro Azure Storage je ve veřejné verzi Preview.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -50,12 +50,12 @@ Ukázkové skripty rozhraní příkazového řádku v tomto kurzu můžete spust
 
 V této části vytvoříte účet úložiště. 
 
-1. Na webu Azure Portal klikněte v levém horním rohu na tlačítko **+ Vytvořit prostředek**.
-2. Klikněte na **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
+1. Na webu Azure Portal klikněte v levém horním rohu na tlačítko **+ Vytvořit prostředek** .
+2. Klikněte na **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta** .
 3. V části **Název** zadejte název účtu úložiště.  
-4. V polích **Model nasazení** a **Druh účtu** nastavte **Resource manager** a **Úložiště (v1 pro obecné účely)**. 
+4. V polích **Model nasazení** a **Druh účtu** nastavte **Resource manager** a **Úložiště (v1 pro obecné účely)** . 
 5. Ověřte, že pole **Předplatné** a **Skupina prostředků** se shodují s údaji zadanými při vytvoření virtuálního počítače v předchozím kroku.
-6. Klikněte na **Vytvořit**.
+6. Klikněte na **Vytvořit** .
 
     ![Vytvoření nového účtu úložiště](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -64,30 +64,33 @@ V této části vytvoříte účet úložiště.
 Soubory vyžadují úložiště objektů blob. Proto potřebujete vytvořit kontejner objektů blob, do kterého soubor uložíte. Potom soubor nahrajete do kontejneru objektů blob v novém účtu úložiště.
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.
-2. V části **BLOB Service**klikněte na **kontejnery**.
-3. Nahoře na stránce klikněte na **+ Kontejner**.
+2. V části **BLOB Service** klikněte na **kontejnery** .
+3. Nahoře na stránce klikněte na **+ Kontejner** .
 4. V části **Nový kontejner** zadejte název kontejneru a v části **Úroveň veřejného přístupu** nechte výchozí hodnotu.
 
     ![Vytvoření kontejneru úložiště](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
-5. Na místním počítači vytvořte ve vámi vybraném editoru soubor s názvem *hello world.txt*.  Otevřete soubor a přidejte text (bez uvozovek) „Hello world! :)“ a pak ho uložte. 
+5. Na místním počítači vytvořte ve vámi vybraném editoru soubor s názvem *hello world.txt* .  Otevřete soubor a přidejte text (bez uvozovek) „Hello world! :)“ a pak ho uložte. 
 
-6. Nahrajte soubor do nově vytvořeného kontejneru – klikněte na název kontejneru a vyberte **Nahrát**.
-7. V podokně **Nahrát objekt blob** v části **Soubory** klikněte na ikonu složky a přejděte k souboru **hello world.txt** na místním počítači, vyberte ho a klikněte na **Nahrát**.
+6. Nahrajte soubor do nově vytvořeného kontejneru – klikněte na název kontejneru a vyberte **Nahrát** .
+7. V podokně **Nahrát objekt blob** v části **Soubory** klikněte na ikonu složky a přejděte k souboru **hello world.txt** na místním počítači, vyberte ho a klikněte na **Nahrát** .
 
     ![Nahrání textového souboru](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
 ## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Udělení přístupu virtuálnímu počítači ke kontejneru Azure Storage 
 
-Spravovanou identitu virtuálního počítače můžete použít k načtení dat, která jsou v úložišti Azure Storage Blob.   
+Spravovanou identitu virtuálního počítače můžete použít k načtení dat, která jsou v úložišti Azure Storage Blob.
+
+>[!NOTE]
+> Další informace o různých rolích, které můžete použít k udělení oprávnění ke kontrole úložiště, [autorizaci přístupu k objektům blob a frontám pomocí Azure Active Directory](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.  
-2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  
+2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)** .  
 3. Kliknutím na **+ Přidat přiřazení role** v horní části stránky přidejte nové přiřazení role pro svůj virtuální počítač.
-4. V části **role**v rozevíracím seznamu vyberte **čtečka dat objektů BLOB úložiště**. 
-5. V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte **Virtuální počítač**.  
-6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na **Všechny skupiny prostředků**.  
-7. V části **Vybrat** zvolte svůj virtuální počítač a klikněte na **Uložit**.
+4. V části **role** v rozevíracím seznamu vyberte **čtečka dat objektů BLOB úložiště** . 
+5. V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte **Virtuální počítač** .  
+6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na **Všechny skupiny prostředků** .  
+7. V části **Vybrat** zvolte svůj virtuální počítač a klikněte na **Uložit** .
 
     ![Přiřazení oprávnění](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
@@ -97,7 +100,7 @@ Azure Storage nativně podporuje ověřování Azure AD, takže může přímo p
 
 K dokončení následujícího postupu musíte použít dříve vytvořený virtuální počítač. Abyste se k němu mohli připojit, potřebujete také klienta SSH. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](/windows/wsl/about). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](~/articles/virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
 
-1. Na webu Azure Portal přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Linuxem a pak na stránce **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači.
+1. Na webu Azure Portal přejděte na **Virtuální počítače** , přejděte ke svému virtuálnímu počítači s Linuxem a pak na stránce **Přehled** klikněte na **Připojit** . Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači.
 2. **Připojte** se vybraným klientem SSH k virtuálnímu počítači. 
 3. V okně terminálu pomocí nástroje CURL odešlete do místního koncového bodu spravované identity žádost o přístupový token pro Azure Storage.
     

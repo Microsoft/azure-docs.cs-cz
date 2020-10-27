@@ -8,12 +8,12 @@ keywords: vysoká dostupnost Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893641"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546938"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Provozní kontinuita Azure HDInsight
 
@@ -39,7 +39,7 @@ Tato část popisuje několik osvědčených postupů, které byste měli vzít 
 
 * Pomocí nástrojů pro monitorování Azure v HDInsight zjistíte neobvyklé chování v clusteru a nastavte odpovídající oznámení o výstrahách. Můžete nasadit předem nakonfigurovaná řešení pro správu specifická pro cluster HDInsight, která shromažďují důležité metriky výkonu konkrétního typu clusteru. Další informace najdete v tématu [monitorování Azure pro HDInsight](./hdinsight-hadoop-oms-log-analytics-tutorial.md).  
 
-* Přihlaste se k odběru upozornění na stav Azure, abyste byli informováni o problémech se službou, plánované údržbě, službě stavu a zpravodajích zabezpečení pro předplatné, službu nebo oblast. Oznámení o stavu, která zahrnují příčinu problému a Resolute ETA, vám pomůžou lépe spustit převzetí služeb při selhání a failbacks. Další informace najdete v [dokumentaci Azure Service Health](/azure/service-health/).
+* Přihlaste se k odběru upozornění na stav Azure, abyste byli informováni o problémech se službou, plánované údržbě, službě stavu a zpravodajích zabezpečení pro předplatné, službu nebo oblast. Oznámení o stavu, která zahrnují příčinu problému a Resolute ETA, vám pomůžou lépe spustit převzetí služeb při selhání a failbacks. Další informace najdete v [dokumentaci Azure Service Health](../service-health/index.yml).
 
 ## <a name="single-region-availability"></a>Dostupnost jedné oblasti
 
@@ -108,16 +108,16 @@ Zlepšení kontinuity podnikových aplikací pomocí vysoce dostupného zotaven�
 
 ### <a name="cost-optimizations"></a>Optimalizace nákladů
 
-|Oblast|Příčina eskalace nákladů|Strategie optimalizace|
+|Plošný|Příčina eskalace nákladů|Strategie optimalizace|
 |----|------------------------|-----------------------|
 |Úložiště dat|Duplikace primárních dat nebo tabulek v sekundární oblasti|Replikovat jenom dodaná data|
 |Výstup dat|Přenosy dat odchozích dat mezi oblastmi přicházejí za cenu. Kontrola pokynů pro ceny šířky pásma|Replikovat jenom ta dodaná data, aby se snížila nároky na výstup oblasti|
 |Výpočetní cluster|Další clustery HDInsight/s v sekundární oblasti|Pomocí automatizovaných skriptů nasaďte sekundární výpočetní prostředky po primárním selhání. Pomocí automatického škálování můžete zachovat minimální velikost sekundárního clusteru. Používejte levnější SKU virtuálních počítačů. Můžete vytvářet sekundární počítače v oblastech, kde je možné zlevněné jednotky virtuálních počítačů.|
-|Authentication |Ve scénářích s více uživateli v sekundární oblasti se účtují další nastavení služby Azure služba AD DS.|Vyhněte se nastavením více uživatelů v sekundární oblasti.|
+|Ověřování |Ve scénářích s více uživateli v sekundární oblasti se účtují další nastavení služby Azure služba AD DS.|Vyhněte se nastavením více uživatelů v sekundární oblasti.|
 
 ### <a name="complexity-optimizations"></a>Optimalizace složitosti
 
-|Oblast|Příčina eskalace složitosti|Strategie optimalizace|
+|Plošný|Příčina eskalace složitosti|Strategie optimalizace|
 |----|------------------------|-----------------------|
 |Čtení vzorů zápisu |Vyžadování pro čtení a zápis s povoleným primárním a sekundárním |Návrh sekundárního, aby byl jen pro čtení|
 |0 RPO & RTO |Vyžadování nulové ztráty dat (RPO = 0) a nulová výpadky (RTO = 0) |Navrhněte RPO a RTO způsobem, jak snížit počet součástí, které je potřeba převzít služby při selhání.|

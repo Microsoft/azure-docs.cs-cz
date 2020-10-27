@@ -8,24 +8,24 @@ ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: a54e950286a37c207d902090f015b3732e0ff10b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 793cab8b37872788da259e45148e314faa00ea15
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88517578"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545136"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>Použití jazyků Java a JDBC s Azure Database for MySQL
 
-Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/).
+Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure Database for MySQL](./index.yml).
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
-- Podporovaná [sada Java Development Kit](https://aka.ms/azure-jdks), verze 8 (obsažená v Azure Cloud Shell).
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
+- Podporovaná [sada Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), verze 8 (obsažená v Azure Cloud Shell).
 - Nástroj pro sestavení [Apache Maven](https://maven.apache.org/)
 
 ## <a name="prepare-the-working-environment"></a>Příprava pracovního prostředí
@@ -68,7 +68,7 @@ az group create \
 První věc, kterou vytvoříme, je spravovaný server MySQL.
 
 > [!NOTE]
-> Podrobnější informace o vytváření serverů MySQL najdete v tématu [vytvoření serveru Azure Database for MySQL pomocí Azure Portal](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal).
+> Podrobnější informace o vytváření serverů MySQL najdete v tématu [vytvoření serveru Azure Database for MySQL pomocí Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md).
 
 V [Azure Cloud Shell](https://shell.azure.com/)spusťte následující skript:
 

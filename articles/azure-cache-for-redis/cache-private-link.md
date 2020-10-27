@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 93a21b627acfb127c98ead465ebeadc8a472bdfd
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: efba69372f46c9b8a7f2857e37b34ec8c88654a0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122700"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546275"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache pro Redis s privátním propojením Azure (Public Preview)
 V tomto článku se dozvíte, jak vytvořit virtuální síť a mezipaměť Azure pro instanci Redis s privátním koncovým bodem pomocí Azure Portal. Naučíte se také, jak přidat privátní koncový bod do existující služby Azure cache pro instanci Redis.
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak vytvořit virtuální síť a mezipaměť Azur
 Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě Azure cache pro Redis využívající privátní propojení Azure. 
 
 ## <a name="prerequisites"></a>Předpoklady
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 > [!IMPORTANT]
 > Chcete-li použít soukromé koncové body, je nutné, aby byla instance Azure cache for Redis vytvořena po 28. července 2020.
@@ -33,15 +33,15 @@ V této části vytvoříte novou mezipaměť Azure pro instanci Redis s privát
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě 
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek** .
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Vyberte vytvořit prostředek.":::
 
-2. Na stránce **Nový** vyberte **síť** a pak vyberte **virtuální síť**.
+2. Na stránce **Nový** vyberte **síť** a pak vyberte **virtuální síť** .
 
 3. Pokud chcete vytvořit virtuální síť, vyberte **Přidat** .
 
-4. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+4. V části **vytvořit virtuální síť** zadejte nebo vyberte tyto informace na kartě **základy** :
 
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -54,11 +54,11 @@ V této části vytvoříte novou mezipaměť Azure pro instanci Redis s privát
 
 6. Na kartě **IP adresy** zadejte **adresní prostor IPv4** jako jednu nebo více předpon adres v zápisu CIDR (např. 192.168.1.0/24).
 
-7. V části **název podsítě**klikněte na **výchozí** a upravte vlastnosti podsítě.
+7. V části **název podsítě** klikněte na **výchozí** a upravte vlastnosti podsítě.
 
-8. V podokně **Upravit podsíť** zadejte **název podsítě** a **Rozsah adres podsítě**. Rozsah adres podsítě by měl být v zápisu CIDR (např. 192.168.1.0/24). Musí být obsažený v adresním prostoru virtuální sítě.
+8. V podokně **Upravit podsíť** zadejte **název podsítě** a **Rozsah adres podsítě** . Rozsah adres podsítě by měl být v zápisu CIDR (např. 192.168.1.0/24). Musí být obsažený v adresním prostoru virtuální sítě.
 
-9. Vyberte **Uložit**.
+9. Vyberte **Uložit** .
 
 10. Vyberte kartu **Revize + vytvořit** nebo klikněte na tlačítko **Revize + vytvořit** .
 
@@ -67,9 +67,9 @@ V této části vytvoříte novou mezipaměť Azure pro instanci Redis s privát
 ### <a name="create-an-azure-cache-for-redis-instance-with-a-private-endpoint"></a>Vytvoření mezipaměti Azure pro instanci Redis s privátním koncovým bodem
 Chcete-li vytvořit instanci mezipaměti, postupujte podle těchto kroků.
 
-1. Vraťte se na domovskou stránku Azure Portal nebo otevřete nabídku bočního panelu a pak vyberte **vytvořit prostředek**. 
+1. Vraťte se na domovskou stránku Azure Portal nebo otevřete nabídku bočního panelu a pak vyberte **vytvořit prostředek** . 
    
-1. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis**.
+1. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis** .
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Vyberte vytvořit prostředek.":::
    
@@ -77,7 +77,7 @@ Chcete-li vytvořit instanci mezipaměti, postupujte podle těchto kroků.
    
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude * \<DNS name> . Redis.cache.Windows.NET*. | 
+   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude *\<DNS name> . Redis.cache.Windows.NET* . | 
    | **Předplatné** | Rozevírací seznam a vyberte své předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
    | **Skupina prostředků** | Rozevírací seznam a vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
    | **Umístění** | Rozevírací seznam a vyberte umístění. | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž jiných služeb, které budou používat vaši mezipaměť. |
@@ -91,7 +91,7 @@ Chcete-li vytvořit instanci mezipaměti, postupujte podle těchto kroků.
 
     :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Vyberte vytvořit prostředek.":::
 
-1. Na stránce **Vytvoření privátního koncového bodu** nakonfigurujte nastavení privátního koncového bodu pomocí virtuální sítě a podsítě, kterou jste vytvořili v poslední části, a vyberte **OK**. 
+1. Na stránce **Vytvoření privátního koncového bodu** nakonfigurujte nastavení privátního koncového bodu pomocí virtuální sítě a podsítě, kterou jste vytvořili v poslední části, a vyberte **OK** . 
 
 1. Vyberte kartu **Další: Upřesnit** nebo klikněte na tlačítko **Další: Upřesnit** v dolní části stránky.
 
@@ -104,11 +104,11 @@ Chcete-li vytvořit instanci mezipaměti, postupujte podle těchto kroků.
 
 1. Volitelně můžete na kartě **značky** zadat název a hodnotu, pokud chcete prostředek zařadit do kategorií. 
 
-1. Vyberte **zkontrolovat + vytvořit**. Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
+1. Vyberte **Zkontrolovat a vytvořit** . Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
 
-1. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit**.
+1. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit** .
 
-Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled**služby Azure cache pro Redis   . Pokud se **stav**   zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 
+Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno** , mezipaměť je připravena k použití. 
     
 > [!IMPORTANT]
 > 
@@ -135,13 +135,13 @@ V této části přidáte privátní koncový bod do existující služby Azure 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě 
 Pokud chcete vytvořit virtuální síť, postupujte podle těchto kroků.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek** .
 
-2. Na stránce **Nový** vyberte **síť** a pak vyberte **virtuální síť**.
+2. Na stránce **Nový** vyberte **síť** a pak vyberte **virtuální síť** .
 
 3. Pokud chcete vytvořit virtuální síť, vyberte **Přidat** .
 
-4. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+4. V části **vytvořit virtuální síť** zadejte nebo vyberte tyto informace na kartě **základy** :
 
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -154,11 +154,11 @@ Pokud chcete vytvořit virtuální síť, postupujte podle těchto kroků.
 
 6. Na kartě **IP adresy** zadejte **adresní prostor IPv4** jako jednu nebo více předpon adres v zápisu CIDR (např. 192.168.1.0/24).
 
-7. V části **název podsítě**klikněte na **výchozí** a upravte vlastnosti podsítě.
+7. V části **název podsítě** klikněte na **výchozí** a upravte vlastnosti podsítě.
 
-8. V podokně **Upravit podsíť** zadejte **název podsítě** a **Rozsah adres podsítě**. Rozsah adres podsítě by měl být v zápisu CIDR (např. 192.168.1.0/24). Musí být obsažený v adresním prostoru virtuální sítě.
+8. V podokně **Upravit podsíť** zadejte **název podsítě** a **Rozsah adres podsítě** . Rozsah adres podsítě by měl být v zápisu CIDR (např. 192.168.1.0/24). Musí být obsažený v adresním prostoru virtuální sítě.
 
-9. Vyberte **Uložit**.
+9. Vyberte **Uložit** .
 
 10. Vyberte kartu **Revize + vytvořit** nebo klikněte na tlačítko **Revize + vytvořit** .
 
@@ -174,13 +174,13 @@ Pokud chcete vytvořit privátní koncový bod, postupujte podle těchto kroků.
 
 2. Vyberte instanci mezipaměti, do které chcete přidat privátní koncový bod.
 
-3. Na levé straně obrazovky vyberte **(Preview) soukromý koncový bod**.
+3. Na levé straně obrazovky vyberte **(Preview) soukromý koncový bod** .
 
 4. Kliknutím na tlačítko **privátního koncového bodu** vytvořte soukromý koncový bod.
 
     :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Vyberte vytvořit prostředek.":::
 
-5. Na **stránce vytvoření privátního koncového bodu**nakonfigurujte nastavení privátního koncového bodu.
+5. Na **stránce vytvoření privátního koncového bodu** nakonfigurujte nastavení privátního koncového bodu.
 
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -201,12 +201,11 @@ Pokud chcete vytvořit privátní koncový bod, postupujte podle těchto kroků.
 
 11. Volitelně můžete na kartě **značky** zadat název a hodnotu, pokud chcete prostředek zařadit do kategorií.
 
-12. Vyberte **zkontrolovat + vytvořit**. Přejdete na kartu **Revize + vytvořit**   , kde Azure ověřuje vaši konfiguraci.
+12. Vyberte **Zkontrolovat a vytvořit** . Přejdete na kartu **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci.
 
-13. Po zobrazení zprávy se zobrazeným zeleným **ověřením** vyberte **vytvořit**.
+13. Po zobrazení zprávy se zobrazeným zeleným **ověřením** vyberte **vytvořit** .
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o privátním propojení Azure najdete v [dokumentaci k privátním odkazům Azure](https://docs.microsoft.com/azure/private-link/private-link-overview). 
-
+Další informace o privátním propojení Azure najdete v [dokumentaci k privátním odkazům Azure](../private-link/private-link-overview.md).

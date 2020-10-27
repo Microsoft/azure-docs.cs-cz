@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 77e4e2e1548beaa840f46953ef5bb4e94345416f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946825"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545102"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Rychlý Start: použití PHP k připojení a dotazování dat v Azure Database for MySQL-flexibilním serveru
 
@@ -28,13 +28,13 @@ Tento rychlý start jako výchozí bod využívá prostředky vytvořené v něk
 - [Vytvoření Azure Database for MySQL flexibilního serveru pomocí Azure CLI](./quickstart-create-server-cli.md)
 
 ## <a name="preparing-your-client-workstation"></a>Příprava pracovní stanice klienta
-1. Pokud jste vytvořili flexibilní Server s *privátním přístupem (Integration VNET)*, budete se muset připojit k serveru z prostředku ve stejné virtuální síti jako váš server. Můžete vytvořit virtuální počítač a přidat ho do virtuální sítě vytvořené pomocí flexibilního serveru. Přečtěte si téma [Vytvoření a správa Azure Database for MySQL flexibilní serverové virtuální sítě pomocí Azure CLI](./how-to-manage-virtual-network-cli.md).
+1. Pokud jste vytvořili flexibilní Server s *privátním přístupem (Integration VNET)* , budete se muset připojit k serveru z prostředku ve stejné virtuální síti jako váš server. Můžete vytvořit virtuální počítač a přidat ho do virtuální sítě vytvořené pomocí flexibilního serveru. Přečtěte si téma [Vytvoření a správa Azure Database for MySQL flexibilní serverové virtuální sítě pomocí Azure CLI](./how-to-manage-virtual-network-cli.md).
 
-2. Pokud jste vytvořili flexibilní Server s *veřejným přístupem (povolenými IP adresami)*, můžete přidat místní IP adresu do seznamu pravidel brány firewall na serveru. Přečtěte si téma [Vytvoření a správa Azure Database for MySQL flexibilních pravidel brány firewall serveru pomocí Azure CLI](./how-to-manage-firewall-cli.md).
+2. Pokud jste vytvořili flexibilní Server s *veřejným přístupem (povolenými IP adresami)* , můžete přidat místní IP adresu do seznamu pravidel brány firewall na serveru. Přečtěte si téma [Vytvoření a správa Azure Database for MySQL flexibilních pravidel brány firewall serveru pomocí Azure CLI](./how-to-manage-firewall-cli.md).
 
 ### <a name="install-php"></a>Instalace PHP
 
-Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](https://docs.microsoft.com/azure/app-service/overview) Azure, která zahrnuje PHP.  Informace o tom, jak vytvořit pravidla brány firewall, najdete v tématu [Vytvoření a Správa pravidel brány firewall](./how-to-manage-firewall-portal.md) .
+Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](../../app-service/overview.md) Azure, která zahrnuje PHP.  Informace o tom, jak vytvořit pravidla brány firewall, najdete v tématu [Vytvoření a Správa pravidel brány firewall](./how-to-manage-firewall-portal.md) .
 
 #### <a name="macos"></a>macOS
 
@@ -55,10 +55,10 @@ Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](https://do
 
 Získejte informace o připojení potřebné pro připojení k Azure Database for MySQL flexibilnímu serveru. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje pro přihlášení.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky** a potom vyhledejte server, který jste vytvořili (například **mydemoserver** ).
 3. Vyberte název serveru.
-4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
+4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru** . Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
  <!---:::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server name":::--->
 
 ## <a name="connecting-to-flexible-server-using-tlsssl-in-php"></a>Připojení k flexibilnímu serveru pomocí protokolu TLS/SSL v PHP

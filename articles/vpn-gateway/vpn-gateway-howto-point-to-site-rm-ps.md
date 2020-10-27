@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2b7522e4c1074c3c52e62453e815cce859a86148
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbadc3262ee6baa383d3b572c021beaa58993f3f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89435758"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541226"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: PowerShell
 
@@ -100,7 +100,7 @@ Deklarujte proměnné, které chcete použít. Použijte následující příkla
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG -Location $Location
    ```
-2. Vytvořte konfigurace podsítí pro virtuální síť, podsítě pojmenujte *FrontEnd*, *BackEnd* a *GatewaySubnet*. Tyto předpony musí být součástí adresního prostoru virtuální sítě deklarovaného výše.
+2. Vytvořte konfigurace podsítí pro virtuální síť, podsítě pojmenujte *FrontEnd* , *BackEnd* a *GatewaySubnet* . Tyto předpony musí být součástí adresního prostoru virtuální sítě deklarovaného výše.
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name $FESubName -AddressPrefix $FESubPrefix
@@ -133,8 +133,8 @@ Deklarujte proměnné, které chcete použít. Použijte následující příkla
 
 Nakonfigurujte a vytvořte bránu virtuální sítě pro svou virtuální síť.
 
-* Parametr -GatewayType musí mít hodnotu **Vpn** a parametr -VpnType musí mít hodnotu **RouteBased**.
-* -VpnClientProtocol se používá k zadání typů tunelů, které chcete povolit. Možnosti tunelu jsou **OpenVPN, SSTP** a **IKEv2**. Můžete zvolit, že se má povolit jedna z nich, nebo libovolná podporovaná kombinace. Pokud chcete povolit více typů, zadejte názvy oddělené čárkou. OpenVPN a SSTP nelze současně povolit. Klient strongSwan v Androidu a Linuxu a nativní klient IKEv2 VPN v iOS a OS X budou pro připojení používat jenom tunel IKEv2. Klienti Windows nejdřív vyzkoušejí IKEv2 a pokus se nepřipojí, přejdou zpátky k SSTP. Klienta OpenVPN můžete použít pro připojení k typu tunelu OpenVPN.
+* Parametr -GatewayType musí mít hodnotu **Vpn** a parametr -VpnType musí mít hodnotu **RouteBased** .
+* -VpnClientProtocol se používá k zadání typů tunelů, které chcete povolit. Možnosti tunelu jsou **OpenVPN, SSTP** a **IKEv2** . Můžete zvolit, že se má povolit jedna z nich, nebo libovolná podporovaná kombinace. Pokud chcete povolit více typů, zadejte názvy oddělené čárkou. OpenVPN a SSTP nelze současně povolit. Klient strongSwan v Androidu a Linuxu a nativní klient IKEv2 VPN v iOS a OS X budou pro připojení používat jenom tunel IKEv2. Klienti Windows nejdřív vyzkoušejí IKEv2 a pokus se nepřipojí, přejdou zpátky k SSTP. Klienta OpenVPN můžete použít pro připojení k typu tunelu OpenVPN.
 * SKU "Basic" pro bránu virtuální sítě nepodporuje ověřování IKEv2, OpenVPN ani RADIUS. Pokud plánujete, že se klienti se systémem Mac připojí k vaší virtuální síti, nepoužívejte základní SKU.
 * Dokončení brány VPN může trvat až 45 minut v závislosti na vybrané [skladové jednotce brány](vpn-gateway-about-vpn-gateway-settings.md). Tento příklad používá IKEv2.
 
@@ -216,8 +216,8 @@ Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zaříze
 >
 >
 
-1. Chcete-li se připojit ke své síti VNet, přejděte na klientském počítači na připojení VPN a vyhledejte připojení VPN, které jste vytvořili. Bude mít stejný název jako vaše virtuální síť. Klikněte na **Připojit**. Může se zobrazit místní zpráva týkající se použití certifikátu. Klikněte na **Pokračovat** pro použití zvýšených oprávnění. 
-2. Připojení spustíte kliknutím na tlačítko **Připojit** na stavové stránce **Připojení**. Pokud uvidíte obrazovku **Výběr certifikátu**, ujistěte se, že zobrazený klientský certifikát je ten, který chcete pro připojení použít. Pokud není, vyberte pomocí šipky rozevíracího seznamu správný certifikát, a poté klikněte na **OK**.
+1. Chcete-li se připojit ke své síti VNet, přejděte na klientském počítači na připojení VPN a vyhledejte připojení VPN, které jste vytvořili. Bude mít stejný název jako vaše virtuální síť. Klikněte na **Připojit** . Může se zobrazit místní zpráva týkající se použití certifikátu. Klikněte na **Pokračovat** pro použití zvýšených oprávnění. 
+2. Připojení spustíte kliknutím na tlačítko **Připojit** na stavové stránce **Připojení** . Pokud uvidíte obrazovku **Výběr certifikátu** , ujistěte se, že zobrazený klientský certifikát je ten, který chcete pro připojení použít. Pokud není, vyberte pomocí šipky rozevíracího seznamu správný certifikát, a poté klikněte na **OK** .
 
    ![Připojení klienta VPN k Azure](./media/vpn-gateway-howto-point-to-site-rm-ps/clientconnect.png)
 3. Vaše připojení bylo vytvořeno.
@@ -230,7 +230,7 @@ Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zaříze
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Připojení z klienta VPN systému Mac
 
-V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, a potom klikněte na **Připojit**.
+V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, a potom klikněte na **Připojit** .
 Podrobné pokyny najdete v tématu [install-Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) . Pokud máte potíže s připojením, ověřte, že brána virtuální sítě nepoužívá základní SKU. Základní SKU není pro klienty Mac podporováno.
 
   ![Připojení v systému Mac](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
@@ -239,7 +239,7 @@ Podrobné pokyny najdete v tématu [install-Mac (OS X)](https://docs.microsoft.c
 
 Tyto pokyny platí pro klienty se systémem Windows.
 
-1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all*.
+1. Chcete-li ověřit, zda je připojení VPN aktivní, v příkazovém řádku se zvýšenými oprávněními spusťte příkaz *ipconfig/all* .
 2. Zkontrolujte výsledky. Všimněte si, že IP adresa, kterou jste obdrželi, je jedna z adres z fondu adres klienta VPN připojení Point-to-Site, který jste určili během konfigurace. Výsledky jsou podobné tomuto příkladu:
 
    ```
@@ -259,7 +259,11 @@ Tyto pokyny platí pro klienty se systémem Windows.
 
 Tyto pokyny platí pro klienty se systémem Windows.
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
+
+* Ověřte, že se po zadání IP adres serveru DNS pro virtuální síť vygeneroval balíček pro konfiguraci klienta VPN. Pokud jste aktualizovali IP adresy serveru DNS, vygenerujte a nainstalujte nový balíček pro konfiguraci klienta VPN.
+
+* Pomocí příkazu ipconfig zkontrolujte IPv4 adresu přiřazenou adaptéru Ethernet na počítači, ze kterého se připojujete. Pokud je IP adresa v rámci rozsahu adres virtuální sítě, ke které se připojujete, nebo v rámci rozsahu adres VPNClientAddressPool, tato situace se označuje jako překrývající se adresní prostor. Když se adresní prostor tímto způsobem překrývá, síťový provoz nemá přístup do Azure a zůstane v místní síti.
 
 ## <a name="to-add-or-remove-a-root-certificate"></a><a name="addremovecert"></a>Přidání nebo odebrání kořenového certifikátu
 

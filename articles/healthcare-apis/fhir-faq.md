@@ -8,16 +8,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056851"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558563"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
-## <a name="azure-api-for-fhir"></a>Azure API for FHIR
+## <a name="azure-api-for-fhir-the-basics"></a>Rozhraní Azure API pro FHIR: Základy
 
 ### <a name="what-is-fhir"></a>Co je FHIR?
 Prostředky pro interoperabilitu s rychlými zdravotními péče (FHIR – "oheň") jsou standardem interoperability, který slouží k povolení výměny dat zdravotnictví mezi různými systémy zdravotní péče. Tento standard vyvinula organizace změněného HL7 a je přijímána organizacemi zdravotnictví po celém světě. Nejaktuálnější verze FHIR je k dispozici jako R4 (verze 4). Rozhraní Azure API pro FHIR podporuje R4 a podporuje také předchozí verzi STU3 (standard pro zkušební použití 3). Další informace o FHIR najdete na [HL7.org](http://hl7.org/fhir/summary.html).
@@ -34,15 +34,25 @@ V tuto chvíli podporujeme Microsoft Azure Active Directory jako zprostředkovat
 
 Podporujeme verze 4.0.0 a 3.0.1 na rozhraní API Azure pro FHIR (PaaS) i na FHIR serveru pro Azure (Open Source).
 
-Podrobnosti najdete v tématu [podporované funkce](fhir-features-supported.md). Přečtěte si informace o tom, co se změnilo mezi verzemi v [historii verzí pro změněného HL7 FHIR](https://hl7.org/fhir/R4/history.html).
+Podrobnosti najdete v tématu [podporované funkce](fhir-features-supported.md). Přečtěte si o tom, co se změnilo mezi FHIR verzemi (tj. STU3 na R4) v [historii verzí pro změněného HL7 FHIR](https://hl7.org/fhir/R4/history.html).
 
-### <a name="whats-the-difference-between-the-open-source-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>Jaký je rozdíl mezi open source serverem Microsoft FHIR pro Azure a rozhraním Azure API pro FHIR?
+Azure IoT Connector pro FHIR (Preview) aktuálně podporuje jenom FHIR verze R4 a je viditelný jenom pro instance R4 Azure API pro FHIR.
+
+### <a name="whats-the-difference-between-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>Jaký je rozdíl mezi Microsoft FHIR serverem pro Azure a rozhraním Azure API pro FHIR?
 
 Rozhraní Azure API pro FHIR je hostovaná a spravovaná verze serveru Microsoft FHIR pro Azure. Ve spravované službě poskytuje společnost Microsoft veškerou údržbu a aktualizace. 
 
-Pokud používáte server FHIR pro Azure, máte přímý přístup k příslušným službám. I když ukládáte data FÍ, zodpovídáte i za údržbu a aktualizaci serveru a všech požadovaných dodržování předpisů.
+Když spustíte server FHIR pro Azure, budete mít přímý přístup k příslušným službám, ale zodpovídá za údržbu a aktualizaci serveru a veškerou potřebnou práci s dodržováním předpisů, pokud ukládáte data FÍ.
 
-Z hlediska vývoje je každá funkce nasazená na Open Source Microsoft FHIR Server pro Azure jako první. Po ověření v open source se uvolní do PaaS Azure API pro řešení FHIR. Doba mezi vydáním v open source a PaaS závisí na složitosti funkce a dalších prioritách plánu. 
+V rámci vývoje se každá funkce, která se netýká jenom spravované služby, nasadí nejdřív na Open Source Microsoft FHIR Server pro Azure. Po ověření v open source se uvolní do PaaS Azure API pro řešení FHIR. Doba mezi vydáním v open source a PaaS závisí na složitosti funkce a dalších prioritách plánu. To je stejný postup pro všechny naše služby, jako je Azure IoT Connector pro FHIR (Preview).
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Kde můžu zjistit, co se uvolňuje do rozhraní API Azure pro FHIR?
+
+Některé z toho, co se uvolňuje do rozhraní API Azure pro FHIR, najdete v článku o [vydání](https://github.com/microsoft/fhir-server/releases) Open-Source serveru FHIR. Od listopadu 2020 jsme označili položky pomocí Azure-API-for-FHIR, pokud se položka Open-Source uvolní do spravované služby. Tyto funkce jsou obvykle k dispozici po dvou týdnech po uplynutí stránky verze v open source. Také jsme zahrnuli pokyny, jak otestovat sestavení [zde] (Pokud chcete https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) testovat ve vašem vlastním prostředí). Vyhodnocujeme, jak nejlépe sdílet další aktualizace spravované služby.
+
+### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>Ve kterých oblastech je Azure API pro FHIR k dispozici?
+
+V současné době máme obecnou dostupnost pro veřejné i státní správu v [několika geografických oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). Informace o cloudových službách pro státní správu v Microsoftu najdete v [FedRAMP služeb Azure](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope).
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Kde můžu zjistit, co se uvolňuje do rozhraní API Azure pro FHIR?
 
@@ -52,6 +62,8 @@ Některé z toho, co se uvolňuje do rozhraní API Azure pro FHIR, najdete v čl
 
 Inteligentní (nahraditelné lékařské aplikace a opakovaně použitelná technologie) na FHIR je sada otevřených specifikací pro integraci partnerských aplikací se servery FHIR a dalšími systémy IT, jako jsou například elektronické záznamy o stavu a výměny informací o stavu. Když vytvoříte inteligentní aplikaci v FHIR, můžete zajistit, že k aplikaci bude možné přistupovat a využívat spoustu různých systémů.
 Ověřování a rozhraní Azure API pro FHIR. Další informace o INTELIGENTNÍch možnostech najdete v přehledu [inteligentního stavu](https://smarthealthit.org/).
+
+## <a name="fhir-implementations-and-specifications"></a>FHIR implementace a specifikace
 
 ### <a name="can-i-create-a-custom-fhir-resource"></a>Můžu vytvořit vlastní prostředek FHIR?
 
@@ -63,7 +75,7 @@ Umožňuje načíst do serveru veškerá platná data FHIR JSON. Pokud chcete ul
 
 ### <a name="what-is-the-limit-on-_count"></a>Jaký je limit _count?
 
-Aktuální limit počtu je 100.
+Aktuální limit _count je 100. Pokud jste nastavili _count na více než 100, zobrazí se v balíčku upozornění, že se zobrazí pouze 100 záznamů.
 
 ### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>Existují nějaká omezení funkce exportu skupin?
 
@@ -83,49 +95,40 @@ Níže jsou uvedeny některé příklady:
 * ZÍSKAT pacienta/ <id> /Observation
 * ZÍSKAT pacient/ <id> /Observation? Code = 8302-2
 
+### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Co je výchozí řazení při hledání prostředků v Azure API pro FHIR?
+
+Podporujeme řazení podle data poslední aktualizace: _sort = _lastUpdated. Další informace o dalších podporovaných parametrech hledání najdete na [stránce podporované funkce](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search).
+
+### <a name="how-does-export-work"></a>Jak $export funguje?
+
+$export je součástí specifikace FHIR: https://hl7.org/fhir/uv/bulkdata/export/index.html . Pokud je u služby FHIR nakonfigurovaná spravovaná identita a účet úložiště, a pokud má spravovaná identita přístup k tomuto účtu úložiště, můžete jednoduše volat $export v rozhraní FHIR API a všechny prostředky FHIR se exportují do účtu úložiště. Další informace najdete [v našem článku o $export](https://docs.microsoft.com/azure/healthcare-apis/export-data).
+
+## <a name="using-azure-api-for-fhir"></a>Používání Azure API pro FHIR
+
+### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>Návody povolit Log Analytics pro Azure API pro FHIR?
+
+Povolujeme diagnostické protokolování a povolujeme prohlížení ukázkových dotazů pro tyto protokoly. Podrobnosti o povolování protokolů auditu a ukázkových dotazech najdete v [této části](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging). Pokud chcete do protokolů zahrnout další informace, podívejte se na [použití vlastních hlaviček protokolu HTTP](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers).
+
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Kde se můžu podívat na některé příklady použití rozhraní Azure API pro FHIR v rámci pracovního postupu?
 
 Na [stránce GitHub architektury Health Architecture](https://github.com/microsoft/health-architectures)máme k dispozici kolekci referenčních architektur.
 
-## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector pro FHIR (Preview)
+### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>Kde se dá zobrazit příklad připojení webové aplikace k rozhraní Azure API pro FHIR?
 
-### <a name="what-is-iomt"></a>Co je IoMT?
-IoMT se jeví pro Internet lékařských věcí a jedná se o kategorii zařízení IoT, která zachytí a vyměňují data o stavu a wellness s dalšími zdravotnickými systémy IT přes síť. Mezi příklady zařízení IoMT patří vhodnost a klinické wearables, sledovací senzory, sledování aktivit, veřejné terminály nebo dokonce inteligentní klid.
+Máme [stránku GitHubu architektury Health](https://github.com/microsoft/health-architectures) , která obsahuje ukázkové aplikace a scénáře. Ukazuje, jak připojit webovou aplikaci k rozhraní Azure API pro FHIR.  
 
-### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>Kolik Azure IoT Connectoru pro FHIR (Preview) Potřebuji?
-Jeden konektor Azure IoT pro FHIR * se dá použít k ingestování dat z velkého počtu různých typů zařízení. V následujících případech se můžete rozhodnout použít různé konektory:
-- **Škálování**: ve verzi Public Preview je pro službu Azure IoT Connector pro kapacitu prostředků FHIR pevný a očekává se, že se bude poskytovat propustnost přibližně 200 zpráv za sekundu. Pokud potřebujete vyšší propustnost, můžete přidat další Azure IoT Connector pro FHIR.
-- **Typ zařízení**: můžete nastavit samostatný konektor Azure IoT pro FHIR pro každý typ zařízení IoMT, které máte k dispozici pro správu zařízení.
+## <a name="azure-api-for-fhir-features-and-services"></a>Rozhraní Azure API pro funkce a služby FHIR 
 
-### <a name="is-there-a-limit-on-number-of-azure-iot-connector-for-fhir-preview-during-public-preview"></a>Je k dispozici limit počtu konektorů Azure IoT pro FHIR (Preview) ve verzi Public Preview?
-Ano, můžete vytvořit pouze dva konektory Azure IoT pro FHIR pro každé předplatné, zatímco funkce je ve verzi Public Preview. Toto omezení existuje, aby nedocházelo k neočekávaným výdajům, protože funkce je dostupná zdarma ve verzi Preview. Na vyžádání by tento limit mohl být vyvolán až pro maximálně pět Azure IoT Connector pro FHIR.
+### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>Existuje způsob, jak šifrovat data pomocí mého osobního klíče, který není výchozím klíčem?
 
-### <a name="what-azure-regions-azure-iot-connector-for-fhir-preview-feature-is-available-during-public-preview"></a>Jaké oblasti Azure IoT Connector pro FHIR (Preview) jsou k dispozici ve verzi Public Preview?
-Azure IoT Connector pro FHIR je k dispozici ve všech oblastech Azure, kde je k dispozici rozhraní Azure API pro FHIR.
+Ano, Azure API for FHIR umožňuje konfiguraci klíčů spravovaných zákazníkem s využitím podpory od Cosmos DB. Další informace o šifrování dat pomocí osobního klíče najdete v [této části](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key).
+
+## <a name="azure-api-for-fhir-preview-features"></a>Azure API pro FHIR: funkce ve verzi Preview
 
 ### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>Můžu nakonfigurovat kapacitu škálování pro Azure IoT Connector pro FHIR (Preview)?
+
 Vzhledem k tomu, že Azure IoT Connector pro FHIR je v rámci verze Public Preview zdarma, je kapacita škálování pevná a omezená. Pro konfiguraci služby Azure IoT Connector pro FHIR, která je dostupná ve verzi Public Preview, se očekává, že bude poskytovat propustnost přibližně 200 zpráv za sekundu. K dispozici je určitá forma konfigurace kapacity prostředků ve všeobecné dostupnosti (GA).
 
-### <a name="what-fhir-version-does-azure-iot-connector-for-fhir-preview-support"></a>Jakou verzi FHIR podporuje Azure IoT Connector pro FHIR (Preview)?
-Azure IoT Connector pro FHIR aktuálně podporuje jenom FHIR verze R4. Proto je tato funkce viditelná jenom v instancích R4 Azure API pro FHIR a Microsoft neplánuje v tomto okamžiku podporu verze STU3.
-
 ### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>Proč není možné nainstalovat Azure IoT Connector pro FHIR (Preview), pokud je v rozhraní Azure API pro FHIR povolené privátní propojení?
+
 Azure IoT Connector pro FHIR v tuto chvíli nepodporuje funkce privátního propojení. Proto pokud máte v rozhraní Azure API pro FHIR povolený privátní odkaz, nemůžete pro FHIR a naopak nainstalovat Azure IoT Connector. Toto omezení se očekává, když je Azure IoT Connector pro FHIR dostupný pro obecnou dostupnost (GA).
-
-### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-azure-iot-connector-for-fhir-preview-feature-of-azure-api-for-fhir-service"></a>Jaký je rozdíl mezi open source konektorem IoMT FHIR pro Azure a funkcí Azure IoT Connector pro FHIR (Preview) Azure API pro službu FHIR?
-Azure IoT Connector pro FHIR je hostovaná a spravovaná verze konektoru open-source IoMT FHIR pro Azure. Ve spravované službě poskytuje společnost Microsoft veškerou údržbu a aktualizace.
-
-Pokud používáte konektor IoMT FHIR pro Azure, máte přímý přístup k podkladovým prostředkům. I když ukládáte data FÍ, zodpovídáte i za údržbu a aktualizaci serveru a všech požadovaných dodržování předpisů.
-
-Z hlediska vývoje se každá funkce nasadí do Open Source konektoru IoMT FHIR pro Azure jako první. Po ověření v open source se uvolní do PaaS Azure IoT Connector pro FHIR funkce Azure API pro službu FHIR. Doba mezi vydáním v open-source a PaaS závisí na složitosti funkce a dalších prioritách na mapě provozu.
-
-## <a name="next-steps"></a>Další kroky
-
-V tomto článku jste si přečetli některé z nejčastějších dotazů k rozhraní Azure API pro FHIR. Přečtěte si o podporovaných funkcích serveru FHIR pro Azure:
- 
->[!div class="nextstepaction"]
->[Podporované funkce FHIR](fhir-features-supported.md)
-
-* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
-
-FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.

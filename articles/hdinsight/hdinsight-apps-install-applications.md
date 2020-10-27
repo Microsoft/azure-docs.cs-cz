@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: e0d1f9ad99e1b64560321312a22f61f5a2ef3dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34c6fe58873a614ee8502e052c2af5aaed898cd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016032"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547941"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací Apache Hadoop třetích stran v Azure HDInsight
 
@@ -23,7 +23,7 @@ An HDInsight aplikace je aplikace, kterou uživatelé můžou instalovat v clust
 
 Publikované aplikace jsou uvedeny v následujícím seznamu:
 
-|Aplikace |Typy clusteru | Description |
+|Aplikace |Typy clusteru | Popis |
 |---|---|---|
 |[Platforma AtScale Intelligence](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |AtScale zapíná cluster HDInsight do serveru OLAP se škálováním na více instancí, což vám umožní interaktivně dotazovat se na miliardy řádků dat pomocí nástrojů BI, které už znáte, vlastníte a máte rádi – od Microsoft Excelu, Power BI, Tableau software až QlikView. |
 |[CDAP pro HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |HBase |CDAP je první sjednocená integrační platforma pro velké objemy dat, která zrychluje dobu na hodnotu Hadoop a umožňuje IT oddělení poskytovat data samoobslužných služeb. Open Source a rozšiřitelné CDAP odstraňují překážky při inovacích. Požadavky: 4 uzly oblasti, min D3 v2. |
@@ -51,10 +51,10 @@ Následující postup ukazuje, jak můžete instalovat aplikace HDInsight do exi
 
 **Instalace aplikace HDInsight**
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight** .
 3. Ze seznamu vyberte cluster HDInsight.  Pokud ho ještě nemáte, vytvořte ho.  Viz článek [Vytvoření clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
+4. V kategorii **Nastavení** vyberte **aplikace** . V hlavním okně uvidíte seznam nainstalovaných aplikací. 
    
     ![Nabídka portálu pro aplikace HDInsight](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. V nabídce vyberte **+ Přidat** . Můžete zobrazit seznam dostupných aplikací.  Pokud je pole **+ Přidat** šedé, znamená to, že pro tuto verzi clusteru HDInsight nejsou k dispozici žádné aplikace.
@@ -66,7 +66,7 @@ Stav instalace můžete zobrazit z oznámení na portálu (vyberte ikonu zvonku 
 
 ## <a name="install-applications-during-cluster-creation"></a>Instalace aplikací při vytváření clusteru
 
-Během vytváření clusteru máte možnost instalace aplikací HDInsight. Během tohoto procesu se aplikace HDInsight instalují po vytvoření clusteru a jeho přechodu do spuštěného stavu. Pokud chcete během vytváření clusteru instalovat aplikace pomocí Azure Portal, na kartě **Konfigurace + ceny** vyberte **+ Přidat aplikaci**.
+Během vytváření clusteru máte možnost instalace aplikací HDInsight. Během tohoto procesu se aplikace HDInsight instalují po vytvoření clusteru a jeho přechodu do spuštěného stavu. Pokud chcete během vytváření clusteru instalovat aplikace pomocí Azure Portal, na kartě **Konfigurace + ceny** vyberte **+ Přidat aplikaci** .
 
 ![Azure Portal aplikace konfigurace clusteru](./media/hdinsight-apps-install-applications/azure-portal-cluster-configuration-applications.png)
 
@@ -75,10 +75,10 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
 
 **Výpis vlastností aplikace a zobrazení HDInsight**
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+2. V nabídce vlevo přejděte na **všechny služby**  >  **Analytics**  >  **clustery HDInsight** .
 3. Ze seznamu vyberte cluster HDInsight.
-4. V kategorii **Nastavení** vyberte **aplikace**. V hlavním okně uvidíte seznam nainstalovaných aplikací. 
+4. V kategorii **Nastavení** vyberte **aplikace** . V hlavním okně uvidíte seznam nainstalovaných aplikací. 
    
     ![Nainstalované aplikace aplikací HDInsight](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Vyberte jednu z nainstalovaných aplikací pro zobrazení vlastnosti. Seznam vlastností:
@@ -89,7 +89,7 @@ Portál zobrazuje seznam nainstalovaných aplikací HDInsight pro cluster a vlas
     |Status |Stav aplikace |
     |Stránku |Adresa URL webové aplikace, kterou jste nasadili na hraničním uzlu. Přihlašovací údaje jsou stejné jako přihlašovací údaje uživatele protokolu HTTP, které jste nakonfigurovali pro cluster. |
     |Koncový bod SSH |Pomocí SSH se můžete připojit k hraničnímu uzlu. Přihlašovací údaje SSH jsou stejné jako přihlašovací údaje uživatele SSH, které jste nakonfigurovali pro cluster. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-    |Description | Popis aplikace |
+    |Popis | Popis aplikace |
 
 6. Pokud chcete aplikaci odstranit, klikněte pravým tlačítkem na aplikaci a potom v místní nabídce klikněte na **Odstranit** .
 
@@ -104,8 +104,7 @@ Viz článek [Řešení potíží instalace](hdinsight-apps-install-custom-appli
 ## <a name="next-steps"></a>Další kroky
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se, jak nasadit nepublikovanou aplikaci HDInsight do HDInsight.
 * [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
-* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
+* [MSDN: Instalace aplikace HDInsight](/rest/api/hdinsight/hdinsight-application): Další informace jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight v systému Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): další informace o použití akce skriptu k instalaci dalších aplikací.
 * [Vytvoření clusterů Apache Hadoop se systémem Linux v HDInsight pomocí šablon Správce prostředků](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Naučte se volat šablony Správce prostředků pro vytváření clusterů HDInsight.
 * [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Zjistěte, jak lze pomocí prázdných hraničních uzlů přistupovat ke clusteru HDInsight, testovat aplikace HDInsight a hostovat aplikace HDInsight.
-

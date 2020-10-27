@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a0d1de622eefad4ae5e55a427f8b0b1bf4360c0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c05badb3b2292a29b8227c7f03b841474c97ad
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84792081"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548228"
 ---
-Ke zjištění stavu koncových bodů můžete použít REST API [získat stav koncových](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) bodů. Doporučujeme použít [IoT Hub metriky](../articles/iot-hub/iot-hub-metrics.md) týkající se latence zprávy směrování k identifikaci a ladění chyb, když je stav koncového bodu v pořádku nebo není v pořádku, protože při použití koncového bodu v jednom z těchto stavů očekáváme, že latence bude vyšší.
+Ke zjištění stavu koncových bodů můžete použít REST API [získat stav koncových](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) bodů. Doporučujeme použít [metriky směrování IoT Hub](../articles/iot-hub/monitor-iot-hub-reference.md#routing-metrics) týkající se latence zpráv směrování a identifikovat a ladit chyby, když je stav koncového bodu v pořádku nebo není v pořádku, protože očekáváme, že latence bude vyšší, pokud je koncový bod v jednom z těchto stavů. Další informace o použití metrik IoT Hub najdete v tématu [monitorování IoT Hub](../articles/iot-hub/monitor-iot-hub.md).
 
-
-|Stav|Description|
+|Stav|Popis|
 |---|---|
 |v pořádku|Koncový bod přijímá zprávy podle očekávání.|
 |není v pořádku|Koncový bod nepřijímá zprávy a IoT Hub se pokouší odeslat zprávy do tohoto koncového bodu.|

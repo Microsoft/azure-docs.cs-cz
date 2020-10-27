@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 05881791d495770167b271e20de173e6679f39d9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0235b8350e21fa51d1b3fed747a11b681f125e67
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440650"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540716"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -23,7 +23,7 @@ Tento článek popisuje omezení a podrobnosti konfigurace pro vytváření a sp
 
 Tady jsou omezení pro jednu definici aplikace logiky:
 
-| Name | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Akce na pracovní postup | 500 | Pro prodloužení tohoto limitu můžete podle potřeby přidávat vnořené pracovní postupy. |
 | Povolená hloubka vnořování pro akce | 8 | Pro prodloužení tohoto limitu můžete podle potřeby přidávat vnořené pracovní postupy. |
@@ -45,41 +45,62 @@ Tady jsou omezení pro jednu definici aplikace logiky:
 
 Tady jsou omezení pro jeden běh aplikace logiky:
 
-| Name | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
+| Název | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
-| Doba trvání spuštění | 90 dnů | 366 dní | Doba trvání běhu se počítá pomocí počátečního času spuštění. |
-| Uchování historie spuštění v úložišti | 90 dnů | 366 dní | Pokud doba trvání běhu překročí aktuální limit uchování historie spuštění, odebere se běh z historie spuštění v úložišti. Bez ohledu na to, jestli je běh dokončený nebo časový limit, se uchování historie spuštění vždycky počítá pomocí počátečního času spuštění a aktuálního limitu zadaného v nastavení pracovního postupu, [**uchování historie spuštění ve dnech**](#change-retention). Bez ohledu na předchozí omezení se aktuální limit vždycky používá pro výpočet uchovávání. <p><p>Postup změny výchozího limitu a další informace najdete v tématu [Změna uchování historie spuštění v úložišti](#change-retention). Chcete-li zvýšit maximální limit, [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) , kde vám pomůžou vaše požadavky. |
+| Doba trvání spuštění | 90 dnů | 366 dní | Doba trvání běhu se počítá pomocí počátečního času běhu a limitu zadaného v nastavení pracovního postupu, [**uchování historie spuštění ve dnech v**](#change-duration) čase spuštění. <p><p>Pokud chcete změnit výchozí limit, přečtěte si téma [Změna doby trvání běhu a uchování historie v úložišti](#change-duration). |
+| Uchování historie spuštění v úložišti | 90 dnů | 366 dní | Pokud doba trvání běhu překročí aktuální limit uchování historie spuštění, odebere se běh z historie spuštění v úložišti. Bez ohledu na to, jestli je běh dokončený nebo časový limit, se uchování historie spuštění vždycky počítá pomocí počátečního času spuštění a aktuálního limitu zadaného v nastavení pracovního postupu, [**uchování historie spuštění ve dnech**](#change-retention). Bez ohledu na předchozí omezení se aktuální limit vždycky používá pro výpočet uchovávání. <p><p>Pokud chcete změnit výchozí limit a další informace, přečtěte si téma [Změna doby trvání a uchování historie spuštění v úložišti](#change-retention). Chcete-li zvýšit maximální limit, [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) , kde vám pomůžou vaše požadavky. |
 | Minimální interval opakování | 1 sekunda | 1 sekunda ||
 | Maximální interval opakování | 500 dnů | 500 dnů ||
 |||||
 
+<a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-history-retention-in-storage"></a>Změna uchování historie spuštění v úložišti
+### <a name="change-run-duration-and-history-retention-in-storage"></a>Změna doby trvání běhu a uchování historie v úložišti
 
-Pokud chcete změnit výchozí limit pro uchování historie spuštění v úložišti, postupujte podle těchto kroků.
+Stejné nastavení řídí maximální počet dní, po které může pracovní postup běžet, a pro uchování historie spuštění v úložišti. Chcete-li změnit výchozí nebo aktuální limit těchto vlastností, postupujte podle těchto kroků.
 
 * Pro Logic Apps ve více tenantů Azure je výchozí limit 90 dne stejný jako maximální limit. Tuto hodnotu lze snížit pouze.
 
 * U Logic Apps v prostředí integrační služby můžete snížit nebo zvýšit výchozí limit 90.
 
-Předpokládejme například, že omezíte dobu uchovávání dat z 90 dnů na 30 dní. Z historie spuštění se odebere 60. den a předchozí spuštění. Pokud zvýšíte dobu uchovávání z 30 dnů na 60 dní, pak 20. staré spuštění zůstane v historii spuštění dalších 40 dnů. 
-
+Předpokládejme například, že omezíte dobu uchovávání dat z 90 dnů na 30 dní. Z historie spuštění se odebere 60. den a předchozí spuštění. Pokud zvýšíte dobu uchovávání z 30 dnů na 60 dní, pak 20. staré spuštění zůstane v historii spuštění dalších 40 dnů.
 
 > [!IMPORTANT]
-> Aby nedošlo ke ztrátě historie spuštění, ujistěte se, že limit uchování je *vždycky* větší než nejdelší možná doba trvání běhu. V opačném případě se historie spuštění ztratí.
+> Pokud doba trvání běhu překročí aktuální limit uchování historie spuštění, odebere se běh z historie spuštění v úložišti. Aby nedošlo ke ztrátě historie spuštění, ujistěte se, že limit uchování je *vždycky* větší než nejdelší možná doba trvání běhu.
 
-1. V poli hledání [Azure Portal](https://portal.azure.com) vyhledejte a vyberte **Aplikace logiky**.
+1. V poli hledání [Azure Portal](https://portal.azure.com) vyhledejte a vyberte **Aplikace logiky** .
 
 1. Najděte a vyberte svou aplikaci logiky. Otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V nabídce aplikace logiky vyberte **Nastavení pracovního postupu**.
+1. V nabídce aplikace logiky vyberte **Nastavení pracovního postupu** .
 
-1. V části **Možnosti modulu runtime**v seznamu **uchování historie spuštění ve dnech** vyberte možnost **vlastní**.
+1. V části **Možnosti modulu runtime** v seznamu **uchování historie spuštění ve dnech** vyberte možnost **vlastní** .
 
 1. Přetažením posuvníku změníte počet dní, které chcete.
 
-1. Až skončíte, na panelu nástrojů **Nastavení pracovního postupu** vyberte **Uložit**.
+1. Až skončíte, na panelu nástrojů **Nastavení pracovního postupu** vyberte **Uložit** .
+
+Pokud vygenerujete šablonu Azure Resource Manager pro vaši aplikaci logiky, toto nastavení se zobrazí jako vlastnost v definici prostředků pracovního postupu, která je popsána v [referenčních informacích k šabloně pracovních postupů Microsoft. Logic](/templates/microsoft.logic/workflows):
+
+```json
+{
+   "name": "{logic-app-name}",
+   "type": "Microsoft.Logic/workflows",
+   "location": "{Azure-region}",
+   "apiVersion": "2019-05-01",
+   "properties": {
+      "definition": {},
+      "parameters": {},
+      "runtimeConfiguration": {
+         "lifetime": {
+            "unit": "day",
+            "count": {number-of-days}
+         }
+      }
+   }
+}
+```
 
 <a name="looping-debatching-limits"></a>
 
@@ -87,13 +108,13 @@ Předpokládejme například, že omezíte dobu uchovávání dat z 90 dnů na 3
 
 Tady jsou omezení pro jeden běh aplikace logiky:
 
-| Name | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
-| Souběžnost triggeru | -Unlimited, pokud je řízení souběžnosti vypnuté <p><p>-25 je výchozím limitem při zapnutém řízení souběžnosti, což po povolení souběžnosti nemůžete vrátit zpět. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou běžet současně, nebo paralelně. <p><p>**Poznámka**: při zapnuté souběžnosti se limit SplitOn snižuje na 100 položek pro [oddávkování polí](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Pokud chcete změnit výchozí limit na hodnotu v rozmezí 1 až 50 (včetně), přečtěte si téma [Změna limitu souběžnosti triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [instancí triggerů postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Souběžnost triggeru | -Unlimited, pokud je řízení souběžnosti vypnuté <p><p>-25 je výchozím limitem při zapnutém řízení souběžnosti, což po povolení souběžnosti nemůžete vrátit zpět. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou běžet současně, nebo paralelně. <p><p>**Poznámka** : při zapnuté souběžnosti se limit SplitOn snižuje na 100 položek pro [oddávkování polí](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Pokud chcete změnit výchozí limit na hodnotu v rozmezí 1 až 50 (včetně), přečtěte si téma [Změna limitu souběžnosti triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [instancí triggerů postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximální počet čekajících spuštění | – Bez souběžnosti je minimální počet čekajících spuštění 1, ale maximální počet je 50. <p><p>– S souběžnou souběžnou je minimální počet čekajících spuštění 10 a počet souběžných spuštění (aktivační souběžnost). Maximální počet můžete změnit až na 100 včetně. | Toto omezení popisuje nejvyšší počet instancí aplikace logiky, které mohou čekat na spuštění, když aplikace logiky již používá maximální počet souběžných instancí. <p><p>Pokud chcete změnit výchozí limit, přečtěte si téma [Změna limitu čekání na spuštění](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Položky pole foreach | 100 000 | Toto omezení popisuje nejvyšší počet položek pole, které může smyčka for each zpracovat. <p><p>Chcete-li filtrovat větší pole, můžete použít [akci dotazu](logic-apps-perform-data-operations.md#filter-array-action). |
 | Souběžnost foreach | 20 je výchozím limitem při vypnutém řízení souběžnosti. Výchozí hodnotu můžete změnit na hodnotu v rozmezí 1 až 50 (včetně). | Toto omezení je nejvyšší počet iterací smyčky for each, které lze spustit současně nebo paralelně. <p><p>Chcete-li změnit výchozí limit na hodnotu mezi 1 a 50, přečtěte si téma [Změna "pro každé" omezení souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění každé smyčky "pro každou" cyklicky](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| Položky SplitOn | -100 000 bez spouštěcího souběžnosti <p><p>-100 s souběžnou podporou triggeru | U triggerů, které vracejí pole, můžete zadat výraz, který používá vlastnost SplitOn, která [rozdělí nebo oddělí dávky polí pole do více instancí pracovního postupu](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) pro zpracování namísto použití smyčky "foreach". Tento výraz odkazuje na pole, které se má použít pro vytvoření a spuštění instance pracovního postupu pro každou položku pole. <p><p>**Poznámka**: když je souběžnost zapnutá, limit SplitOn se sníží na 100 položek. |
+| Položky SplitOn | -100 000 bez spouštěcího souběžnosti <p><p>-100 s souběžnou podporou triggeru | U triggerů, které vracejí pole, můžete zadat výraz, který používá vlastnost SplitOn, která [rozdělí nebo oddělí dávky polí pole do více instancí pracovního postupu](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) pro zpracování namísto použití smyčky "foreach". Tento výraz odkazuje na pole, které se má použít pro vytvoření a spuštění instance pracovního postupu pro každou položku pole. <p><p>**Poznámka** : když je souběžnost zapnutá, limit SplitOn se sníží na 100 položek. |
 | Do iterací | -Výchozí: 60 <p><p>-Maximum: 5 000 | |
 ||||
 
@@ -105,7 +126,7 @@ Tady jsou omezení pro jednu definici aplikace logiky:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Služba Logic Apps pro více tenantů
 
-| Name | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Akce: provádění za 5 minut | 100 000 je výchozí limit, ale 300 000 je maximální limit. | Pokud chcete změnit výchozí limit, přečtěte si téma [spuštění aplikace logiky v režimu vysoké propustnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), který je ve verzi Preview. Případně můžete distribuovat úlohy napříč více aplikacemi logiky podle potřeby. |
 | Action: souběžná odchozí volání | ~2500 | Můžete snížit počet souběžných požadavků nebo snížit dobu trvání podle potřeby. |
@@ -119,7 +140,7 @@ Tady jsou omezení pro jednu definici aplikace logiky:
 
 Tady jsou limity propustnosti pro [SKU ISE úrovně Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 
-| Name | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 |------|-------|-------|
 | Omezení spuštění základní jednotky | Omezené na systém, když kapacita infrastruktury dosáhne 80% | Poskytuje operace ~ 4 000 Actions za minutu, což je ~ 160 000 000 provádění akcí za měsíc. | |
 | Limit spouštění jednotek škálování | Omezené na systém, když kapacita infrastruktury dosáhne 80% | Každá jednotka škálování může poskytnout ~ 2 000 další provádění akcí za minutu, což znamená ~ 80 000 000 další provádění akcí za měsíc. | |
@@ -147,17 +168,17 @@ Tady jsou omezení pro jedno odchozí nebo příchozí volání HTTP:
 
 Některé operace konektoru provádějí asynchronní volání nebo naslouchání požadavkům Webhooku, takže časový limit těchto operací může být delší než tato omezení. Další informace najdete v technických podrobnostech ke konkrétnímu konektoru a také [triggery a akce pracovních postupů](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Name | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
+| Název | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
-| Odchozí požadavek | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Příklady odchozích požadavků zahrnují volání vydaná triggery HTTP. <p><p>**Tip**: pro delší běžící operace použijte [asynchronní vzorek cyklického dotazování](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [do smyčky do](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Pokud chcete při volání jiné aplikace logiky, která má k disvolanému [koncovému bodu](logic-apps-http-endpoint.md), obejít časový limit, můžete místo toho použít integrovanou Azure Logic Apps akci, kterou můžete najít ve výběru konektoru v části **integrovaná**. |
-| Příchozí žádost | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Mezi příklady příchozích požadavků patří volání přijatá aktivačními událostmi žádosti a triggery Webhooku. <p><p>**Poznámka**: původnímu volajícímu získá odpověď, všechny kroky v odpovědi musí být dokončeny v rámci limitu, pokud nebudete volat jinou aplikaci logiky jako vnořený pracovní postup. Další informace najdete v tématu [volání, Trigger nebo vnořování Logic Apps](../logic-apps/logic-apps-http-endpoint.md). |
+| Odchozí požadavek | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Příklady odchozích požadavků zahrnují volání vydaná triggery HTTP. <p><p>**Tip** : pro delší běžící operace použijte [asynchronní vzorek cyklického dotazování](../logic-apps/logic-apps-create-api-app.md#async-pattern) nebo [do smyčky do](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Pokud chcete při volání jiné aplikace logiky, která má k disvolanému [koncovému bodu](logic-apps-http-endpoint.md), obejít časový limit, můžete místo toho použít integrovanou Azure Logic Apps akci, kterou můžete najít ve výběru konektoru v části **integrovaná** . |
+| Příchozí žádost | 120 sekund <br>(2 minuty) | 240 sekund <br>(4 minuty) | Mezi příklady příchozích požadavků patří volání přijatá aktivačními událostmi žádosti a triggery Webhooku. <p><p>**Poznámka** : původnímu volajícímu získá odpověď, všechny kroky v odpovědi musí být dokončeny v rámci limitu, pokud nebudete volat jinou aplikaci logiky jako vnořený pracovní postup. Další informace najdete v tématu [volání, Trigger nebo vnořování Logic Apps](../logic-apps/logic-apps-http-endpoint.md). |
 |||||
 
 <a name="message-size-limits"></a>
 
 #### <a name="message-size"></a>Velikost zpráv
 
-| Name | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
+| Název | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | Velikost zpráv | 100 MB | 200 MB | Pokud chcete tento limit obejít, přečtěte si téma [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). Některé konektory a rozhraní API ale nemusí podporovat blokování nebo ani výchozí omezení. <p><p>– Konektory, jako jsou AS2, X12 a EDIFACT, mají vlastní [omezení zpráv B2B](#b2b-protocol-limits). <br>-Konektory ISE používají limit ISE, ne jejich omezení konektoru ISE. |
 | Velikost zprávy pomocí bloků dat | 1 GB | 5 GB | Toto omezení se vztahuje na akce, které nativně podporují vytváření bloků dat, nebo umožňují povolit v konfiguraci modulu runtime vytváření bloků dat. <p><p>Pokud používáte ISE, Logic Apps modul tento limit podporuje, ale konektory mají vlastní meze omezení na modul, například v [referenčních informacích k rozhraní API konektoru Azure Blob Storage](/connectors/azureblob/). Další informace o dělení na bloky dat najdete v tématu [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). |
@@ -165,7 +186,7 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 
 #### <a name="character-limits"></a>Omezení znaků
 
-| Name | Poznámky |
+| Název | Poznámky |
 |------|-------|
 | Omezení pro vyhodnocení výrazu | 131 072 znaků | `@concat()`Výrazy, `@base64()` a `@string()` nemohou být delší než tento limit. |
 | Omezení počtu znaků adresy URL žádosti | 16 384 znaků |
@@ -175,7 +196,7 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 
 #### <a name="retry-policy"></a>Zásady opakování
 
-| Name | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Opakované pokusy | 90 | Výchozí hodnota je 4. Chcete-li změnit výchozí nastavení, použijte [parametr zásady opakování](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Maximální zpoždění při opakování | 1 den | Chcete-li změnit výchozí nastavení, použijte [parametr zásady opakování](../logic-apps/logic-apps-workflow-actions-triggers.md). |
@@ -188,7 +209,7 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 
 Tady jsou omezení pro aplikaci logiky, která začíná triggerem žádosti a povoluje [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) pro autorizaci příchozích volání triggeru požadavku:
 
-| Name | Omezení | Poznámky |
+| Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
 | Zásady autorizace Azure AD | 5 | |
 | Deklarace identity na zásadu autorizace | 10 | |
@@ -200,7 +221,7 @@ Tady jsou omezení pro aplikaci logiky, která začíná triggerem žádosti a p
 
 Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových rozhraní API.
 
-| Name | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
+| Název | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | Počet vlastních konektorů | 1 000 na předplatné Azure | 1 000 na předplatné Azure ||
 | Počet požadavků za minutu pro vlastní konektor | 500 požadavků za minutu na připojení | 2 000 požadavků za minutu na *vlastní konektor* ||
@@ -210,7 +231,7 @@ Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových r
 
 ## <a name="managed-identities"></a>Spravované identity
 
-| Name | Omezení |
+| Název | Omezení |
 |------|-------|
 | Spravované identity na aplikaci logiky | Buď identita přiřazená systémem, nebo 1 uživatelem přiřazená identita |
 | Počet aplikací logiky, které mají spravovanou identitu v předplatném Azure pro jednotlivé oblasti | 1 000 |
@@ -264,7 +285,7 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 | Artefakt | Omezení | Poznámky |
 | -------- | ----- | ----- |
 | Sestavení | 8 MB | Pokud chcete nahrávat soubory větší než 2 MB, použijte [účet úložiště Azure a kontejner objektů BLOB](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
-| Map (soubor XSLT) | 8 MB | Chcete-li odeslat soubory větší než 2 MB, použijte [mapování Azure Logic Apps REST API](/rest/api/logic/maps/createorupdate). <p><p>**Poznámka**: objem dat nebo záznamů, které může mapa úspěšně zpracovat, vychází z omezení velikost zprávy a časový limit akcí v Azure Logic Apps. Pokud například použijete akci HTTP na základě [velikosti zprávy HTTP a omezení časového limitu](#request-limits), může mapa zpracovat data až do limitu velikosti zprávy HTTP, pokud se operace dokončí v rámci limitu časového limitu protokolu HTTP. |
+| Map (soubor XSLT) | 8 MB | Chcete-li odeslat soubory větší než 2 MB, použijte [mapování Azure Logic Apps REST API](/rest/api/logic/maps/createorupdate). <p><p>**Poznámka** : objem dat nebo záznamů, které může mapa úspěšně zpracovat, vychází z omezení velikost zprávy a časový limit akcí v Azure Logic Apps. Pokud například použijete akci HTTP na základě [velikosti zprávy HTTP a omezení časového limitu](#request-limits), může mapa zpracovat data až do limitu velikosti zprávy HTTP, pokud se operace dokončí v rámci limitu časového limitu protokolu HTTP. |
 | Schéma | 8 MB | Pokud chcete nahrávat soubory větší než 2 MB, použijte [účet úložiště Azure a kontejner objektů BLOB](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||
 
@@ -286,7 +307,7 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 
 Tady jsou omezení velikosti zpráv, která se vztahují na protokoly B2B:
 
-| Name | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
+| Název | Limit více tenantů | Omezení prostředí integrační služby | Poznámky |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | V2 – 100 MB<br>V1 – 25 MB | V2 – 200 MB <br>V1 – 25 MB | Platí pro dekódování a kódování. |
 | X12 | 50 MB | 50 MB | Platí pro dekódování a kódování. |
@@ -311,8 +332,8 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 > Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo určení Logic Appsch IP adres pro každou oblast použít [značky služby](../virtual-network/service-tags-overview.md), které jsou popsané dále v této části.
 > Tyto značky fungují v oblastech, kde je služba Logic Apps k dispozici:
 >
-> * **LogicAppsManagement**: představuje předpony příchozích IP adres pro službu Logic Apps.
-> * **LogicApps**: představuje předpony odchozí IP adresy pro službu Logic Apps.
+> * **LogicAppsManagement** : představuje předpony příchozích IP adres pro službu Logic Apps.
+> * **LogicApps** : představuje předpony odchozí IP adresy pro službu Logic Apps.
 
 * Pro [Azure Čína 21Vianet](/azure/china/)nejsou pevné nebo rezervované IP adresy k dispozici pro [vlastní konektory](../logic-apps/custom-connector-overview.md) a [spravované konektory](../connectors/apis-list.md#managed-api-connectors), například Azure Storage, SQL Server, Office 365 Outlook atd.
 
@@ -333,7 +354,7 @@ IP adresy, které Azure Logic Apps používá pro příchozí a odchozí volán�
 V této části jsou uvedeny příchozí IP adresy pouze pro službu Azure Logic Apps. Pokud máte Azure Government, přečtěte si téma [IP adresy Azure Government příchozích připojení](#azure-government-inbound).
 
 > [!TIP]
-> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adres příchozích Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicAppsManagement**.
+> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adres příchozích Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicAppsManagement** .
 > Tato značka funguje v oblastech, kde je služba Logic Apps k dispozici.
 
 <a name="multi-tenant-inbound"></a>
@@ -343,20 +364,20 @@ V této části jsou uvedeny příchozí IP adresy pouze pro službu Azure Logic
 | Oblast s více klienty | IP adresa |
 |---------------------|----|
 | Austrálie – východ | 13.75.153.66, 104.210.89.222, 104.210.89.244, 52.187.231.161 |
-| Australia Southeast | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
+| Austrálie – jihovýchod | 13.73.115.153, 40.115.78.70, 40.115.78.237, 52.189.216.28 |
 | Brazil South | 191.235.86.199, 191.235.95.229, 191.235.94.220, 191.234.166.198 |
 | Střední Kanada | 13.88.249.209, 52.233.30.218, 52.233.29.79, 40.85.241.105 |
 | Kanada – východ | 52.232.129.143, 52.229.125.57, 52.232.133.109, 40.86.202.42 |
 | Indie – střed | 52.172.157.194, 52.172.184.192, 52.172.191.194, 104.211.73.195 |
 | Střední USA | 13.67.236.76, 40.77.111.254, 40.77.31.87, 104.43.243.39 |
 | Východní Asie | 168.63.200.173, 13.75.89.159, 23.97.68.172, 40.83.98.194 |
-| East US | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
+| USA – východ | 137.135.106.54, 40.117.99.79, 40.117.100.228, 137.116.126.165 |
 | USA – východ 2 | 40.84.25.234, 40.79.44.7, 40.84.59.136, 40.70.27.253 |
 | Francie – střed | 52.143.162.83, 20.188.33.169, 52.143.156.55, 52.143.158.203 |
 | Francie – jih | 52.136.131.145, 52.136.129.121, 52.136.130.89, 52.136.131.4 |
 | Německo – sever | 51.116.211.29, 51.116.208.132, 51.116.208.37, 51.116.208.64 |
 | Německo – středozápad | 51.116.168.222, 51.116.171.209, 51.116.233.40, 51.116.175.0 |
-| Japan East | 13.71.146.140, 13.78.84.187, 13.78.62.130, 13.78.43.164 |
+| Japonsko – východ | 13.71.146.140, 13.78.84.187, 13.78.62.130, 13.78.43.164 |
 | Japonsko – západ | 40.74.140.173, 40.74.81.13, 40.74.85.215, 40.74.68.85 |
 | Jižní Korea – střed | 52.231.14.182, 52.231.103.142, 52.231.39.29, 52.231.14.42 |
 | Jižní Korea – jih | 52.231.166.168, 52.231.163.55, 52.231.163.150, 52.231.192.64 |
@@ -397,7 +418,7 @@ V této části jsou uvedeny příchozí IP adresy pouze pro službu Azure Logic
 V této části jsou uvedeny odchozí IP adresy pro službu Azure Logic Apps a spravované konektory. Pokud máte Azure Government, přečtěte si téma [Azure Government-odchozí IP adresy](#azure-government-outbound).
 
 > [!TIP]
-> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adresy odchozího Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicApps**.
+> Chcete-li při vytváření pravidel zabezpečení zjednodušit složitost, můžete místo zadání předpony IP adresy odchozího Logic Apps pro každou oblast použít [značku služby](../virtual-network/service-tags-overview.md) **LogicApps** .
 > U spravovaných konektorů můžete volitelně použít značku služby **AzureConnectors** a nemusíte pro každou oblast zadávat předpony IP adres spravovaného konektoru. Tyto značky fungují v oblastech, kde je služba Logic Apps k dispozici. 
 
 <a name="multi-tenant-outbound"></a>
@@ -407,20 +428,20 @@ V této části jsou uvedeny odchozí IP adresy pro službu Azure Logic Apps a s
 | Oblast s více klienty | Logic Apps IP | IP adresa spravovaného konektoru |
 |---------------------|---------------|-----------------------|
 | Austrálie – východ | 13.75.149.4, 104.210.91.55, 104.210.90.241, 52.187.227.245, 52.187.226.96, 52.187.231.184, 52.187.229.130, 52.187.226.139 | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213, 52.237.214.72, 13.70.78.224 - 13.70.78.255 |
-| Australia Southeast | 13.73.114.207, 13.77.3.139, 13.70.159.205, 52.189.222.77, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75 | 13.70.136.174, 13.77.50.240 - 13.77.50.255, 40.127.80.34, 52.255.48.202, 13.77.55.160 - 13.77.55.191 |
+| Austrálie – jihovýchod | 13.73.114.207, 13.77.3.139, 13.70.159.205, 52.189.222.77, 13.77.56.167, 13.77.58.136, 52.189.214.42, 52.189.220.75 | 13.70.136.174, 13.77.50.240 - 13.77.50.255, 40.127.80.34, 52.255.48.202, 13.77.55.160 - 13.77.55.191 |
 | Brazil South | 191.235.82.221, 191.235.91.7, 191.234.182.26, 191.237.255.116, 191.234.161.168, 191.234.162.178, 191.234.161.28, 191.234.162.131 | 104.41.59.51, 191.232.38.129, 191.233.203.192 - 191.233.203.207, 191.232.191.157, 191.233.207.160 - 191.233.207.191 |
 | Střední Kanada | 52.233.29.92, 52.228.39.244, 40.85.250.135, 40.85.250.212, 13.71.186.1, 40.85.252.47, 13.71.184.150 | 13.71.170.208 - 13.71.170.223, 52.228.33.76, 52.228.34.13, 52.228.42.205, 52.233.31.197, 52.237.24.126, 52.237.32.212, 13.71.175.160 - 13.71.175.191, 13.71.170.224 - 13.71.170.239 |
 | Kanada – východ | 52.232.128.155, 52.229.120.45, 52.229.126.25, 40.86.203.228, 40.86.228.93, 40.86.216.241, 40.86.226.149, 40.86.217.241 | 40.69.106.240 - 40.69.106.255, 52.229.120.52, 52.229.120.178, 52.229.123.98, 52.229.126.202, 52.242.35.152, 52.242.30.112, 40.69.111.0 - 40.69.111.31 |
 | Indie – střed | 52.172.154.168, 52.172.186.159, 52.172.185.79, 104.211.101.108, 104.211.102.62, 104.211.90.169, 104.211.90.162, 104.211.74.145 | 52.172.211.12, 104.211.81.192 - 104.211.81.207, 104.211.98.164, 52.172.212.129, 20.43.123.0 - 20.43.123.31 |
 | Střední USA | 13.67.236.125, 104.208.25.27, 40.122.170.198, 40.113.218.230, 23.100.86.139, 23.100.87.24, 23.100.87.56, 23.100.82.16 | 13.89.171.80 - 13.89.171.95, 40.122.49.51, 52.173.245.164, 52.173.241.27, 40.77.68.110, 13.89.178.64 - 13.89.178.95 |
 | Východní Asie | 13.75.94.173, 40.83.127.19, 52.175.33.254, 40.83.73.39, 65.52.175.34, 40.83.77.208, 40.83.100.69, 40.83.75.165 | 13.75.36.64 - 13.75.36.79, 23.99.116.181, 52.175.23.169, 13.75.110.131, 104.214.164.0 - 104.214.164.31 |
-| East US | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 40.114.40.132, 40.71.249.139, 52.188.157.160, 40.71.15.160 - 40.71.15.191 |
+| USA – východ | 13.92.98.111, 40.121.91.41, 40.114.82.191, 23.101.139.153, 23.100.29.190, 23.101.136.201, 104.45.153.81, 23.101.132.208 | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 40.114.40.132, 40.71.249.139, 52.188.157.160, 40.71.15.160 - 40.71.15.191 |
 | USA – východ 2 | 40.84.30.147, 104.208.155.200, 104.208.158.174, 104.208.140.40, 40.70.131.151, 40.70.29.214, 40.70.26.154, 40.70.27.236 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100, 104.209.247.23, 52.225.129.144, 40.65.220.25, 40.70.151.96 - 40.70.151.127 |
 | Francie – střed | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28, 40.89.190.104 | 40.79.130.208 - 40.79.130.223, 40.89.135.2, 40.89.186.239, 40.79.148.96 - 40.79.148.127 |
 | Francie – jih | 52.136.132.40, 52.136.129.89, 52.136.131.155, 52.136.133.62, 52.136.139.225, 52.136.130.144, 52.136.140.226, 52.136.129.51 | 40.79.178.240 - 40.79.178.255, 52.136.133.184, 52.136.142.154, 40.79.180.224 - 40.79.180.255 |
 | Německo – sever | 51.116.211.168, 51.116.208.165, 51.116.208.175, 51.116.208.192, 51.116.208.200, 51.116.208.222, 51.116.208.217, 51.116.208.51 | 51.116.211.212, 51.116.60.192 - 51.116.60.223, 51.116.59.16 - 51.116.60.31 |
 | Německo – středozápad | 51.116.233.35, 51.116.171.49, 51.116.233.33, 51.116.233.22, 51.116.168.104, 51.116.175.17, 51.116.233.87, 51.116.175.51 | 51.116.236.78, 51.116.158.96 - 51.116.158.127, 51.116.155.80 - 51.116.155.95 |
-| Japan East | 13.71.158.3, 13.73.4.207, 13.71.158.120, 13.78.18.168, 13.78.35.229, 13.78.42.223, 13.78.21.155, 13.78.20.232 | 13.71.153.19, 13.78.108.0 - 13.78.108.15, 40.115.186.96, 13.73.21.230, 40.79.189.64 - 40.79.189.95 |
+| Japonsko – východ | 13.71.158.3, 13.73.4.207, 13.71.158.120, 13.78.18.168, 13.78.35.229, 13.78.42.223, 13.78.21.155, 13.78.20.232 | 13.71.153.19, 13.78.108.0 - 13.78.108.15, 40.115.186.96, 13.73.21.230, 40.79.189.64 - 40.79.189.95 |
 | Japonsko – západ | 40.74.140.4, 104.214.137.243, 138.91.26.45, 40.74.64.207, 40.74.76.213, 40.74.77.205, 40.74.74.21, 40.74.68.85 | 40.74.100.224 - 40.74.100.239, 40.74.130.77, 104.215.61.248, 104.215.27.24, 40.80.180.64 - 40.80.180.95 |
 | Jižní Korea – střed | 52.231.14.11, 52.231.14.219, 52.231.15.6, 52.231.10.111, 52.231.14.223, 52.231.77.107, 52.231.8.175, 52.231.9.39 | 52.231.18.208 - 52.231.18.223, 52.141.36.214, 52.141.1.104, 20.44.29.64 - 20.44.29.95 |
 | Jižní Korea – jih | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.147.0 - 52.231.147.15, 52.231.163.10, 52.231.201.173, 52.231.148.224 - 52.231.148.255 |
@@ -446,7 +467,7 @@ V této části jsou uvedeny odchozí IP adresy pro službu Azure Logic Apps a s
 
 #### <a name="azure-government---outbound-ip-addresses"></a>Azure Government – odchozí IP adresy
 
-| Oblast | Logic Apps IP | IP adresa spravovaného konektoru |
+| Region (Oblast) | Logic Apps IP | IP adresa spravovaného konektoru |
 |--------|---------------|-----------------------|
 | US DoD – střed | 52.182.48.215, 52.182.92.143 | 52.127.58.160 - 52.127.58.175, 52.182.54.8, 52.182.48.136, 52.127.61.192 - 52.127.61.223 |
 | USA (Gov) – Arizona | 52.244.67.143, 52.244.65.66, 52.244.65.190 | 52.127.2.160 - 52.127.2.175, 52.244.69.0, 52.244.64.91, 52.127.5.224 - 52.127.5.255 |

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462237"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540376"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight
 
@@ -25,13 +25,13 @@ Python 2.7 se ve výchozím nastavení instaluje v HDInsight 3,0 a novějších 
 
 HDInsight také zahrnuje Jython, což je implementace Pythonu napsaná v jazyce Java. Jython běží přímo na prostředí Java Virtual Machine a nepoužívá streamování. Jython je doporučený interpret Pythonu při použití Pythonu s prasetem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](apache-hadoop-linux-tutorial-get-started.md).
-* **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Cluster Hadoop ve službě HDInsight** . Viz Začínáme [se službou HDInsight v systému Linux](apache-hadoop-linux-tutorial-get-started.md).
+* **Klient SSH** . Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 * [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To Azure Storage pro `wasb://` `abfs://` Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 nebo ADL://. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl wasbs://.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
 * **Možná změna konfigurace úložiště.**  Pokud používáte druh účtu úložiště, podívejte se na téma [Konfigurace úložiště](#storage-configuration) `BlobStorage` .
-* Nepovinný parametr.  Pokud plánujete používat PowerShell, budete potřebovat nainstalovaný [modul AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
+* Nepovinný parametr.  Pokud plánujete používat PowerShell, budete potřebovat nainstalovaný [modul AZ Module](/powershell/azure/new-azureps-module-az) .
 
 > [!NOTE]  
 > Účet úložiště použitý v tomto článku byl Azure Storage s povoleným [zabezpečeným přenosem](../../storage/common/storage-require-secure-transfer.md) , a proto `wasbs` se používá v celém článku.
@@ -46,7 +46,7 @@ Pokud je účet úložiště použitý jako typ nebo, není nutná žádná `Sto
 > * Ve svém místním vývojovém prostředí vytvoříte skripty v Pythonu.
 > * Skripty se nahrávají do HDInsight pomocí `scp` příkazu nebo zadaného skriptu PowerShellu.
 >
-> Pokud chcete použít [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) pro práci s HDInsight, musíte:
+> Pokud chcete použít [Azure Cloud Shell (bash)](../../cloud-shell/overview.md) pro práci s HDInsight, musíte:
 >
 > * Vytvořte skripty uvnitř prostředí cloud Shell.
 > * Slouží `scp` k nahrání souborů z Cloud shellu do HDInsight.
@@ -300,8 +300,8 @@ Skript Pythonu se dá použít jako UDF z prasete prostřednictvím `GENERATE` p
 
 K určení interpretu Pythonu použijte `register` při odkazování na skript Pythonu. V následujících příkladech jsou registrovány skripty pomocí prasete jako `myfuncs` :
 
-* **Použití Jython**: `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **Použití jazyka C Python**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Použití Jython** : `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **Použití jazyka C Python** : `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Při použití Jython může být cesta k souboru pig_jython buď místní cesta, nebo cesta WASBS://. Při použití jazyka C Python však musíte odkazovat na soubor v místním systému souborů uzlu, který používáte k odeslání úlohy prasete.
@@ -343,7 +343,7 @@ def create_structure(input):
 
 V latinském příkladu pro vepřové písmo `LINE` je vstup definovaný jako CharArray, protože pro vstup neexistuje žádné konzistentní schéma. Skript Pythonu transformuje data do konzistentního schématu pro výstup.
 
-1. `@outputSchema`Příkaz definuje formát dat vrácených do prasete. V tomto případě je to **datový kontejner**, což je datový typ prasete. Penalta obsahuje následující pole, z nichž všechny jsou CharArray (řetězce):
+1. `@outputSchema`Příkaz definuje formát dat vrácených do prasete. V tomto případě je to **datový kontejner** , což je datový typ prasete. Penalta obsahuje následující pole, z nichž všechny jsou CharArray (řetězce):
 
    * Datum – datum vytvoření položky protokolu
    * čas – čas vytvoření položky protokolu
@@ -423,7 +423,7 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
     #from pig_util import outputSchema
     ```
 
-    Tento řádek upraví skript Pythonu pro práci s C Python místo Jython. Po provedení změny můžete Editor ukončit **stisknutím kombinace kláves CTRL + X** . Vyberte **Y**a pak **zadáním** uložte změny.
+    Tento řádek upraví skript Pythonu pro práci s C Python místo Jython. Po provedení změny můžete Editor ukončit **stisknutím kombinace kláves CTRL + X** . Vyberte **Y** a pak **zadáním** uložte změny.
 
 6. Pomocí `pig` příkazu znovu spusťte prostředí. Po `grunt>` zobrazení výzvy použijte následující příkaz ke spuštění skriptu Pythonu s použitím interpretu jazyka C Python.
 
@@ -594,7 +594,7 @@ Informace o chybě (STDERR) a výsledek úlohy (STDOUT) jsou také protokolován
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky
 
-Pokud potřebujete načíst moduly Pythonu, které nejsou k dispozici ve výchozím nastavení, přečtěte si téma [nasazení modulu do Azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight).
+Pokud potřebujete načíst moduly Pythonu, které nejsou k dispozici ve výchozím nastavení, přečtěte si téma [nasazení modulu do Azure HDInsight](/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight).
 
 Další způsoby použití prasete, podregistru a informací o použití MapReduce najdete v následujících dokumentech:
 

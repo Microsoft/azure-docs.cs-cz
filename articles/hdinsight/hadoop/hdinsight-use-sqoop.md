@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076874"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545221"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoopu s Hadoopem ve službě HDInsight
 
@@ -97,9 +97,9 @@ Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure 
 
     Název [logického serveru SQL Server](../../azure-sql/database/logical-servers.md) bude  `<ClusterName>dbserver` . Název databáze bude `<ClusterName>db` . Výchozí název účtu úložiště bude `e6qhezrh2pdqu` .
 
-3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**.
+3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** .
 
-4. Vyberte **Koupit**. Zobrazí se nová dlaždice s názvem odeslání nasazení pro Template deployment. Vytvoření clusteru a databáze SQL trvá přibližně 20 minut.
+4. Vyberte **Koupit** . Zobrazí se nová dlaždice s názvem odeslání nasazení pro Template deployment. Vytvoření clusteru a databáze SQL trvá přibližně 20 minut.
 
 ## <a name="run-sqoop-jobs"></a>Spuštění úloh Sqoop
 
@@ -120,6 +120,6 @@ HDInsight může spouštět úlohy Sqoop pomocí různých metod. Pomocí násle
 
 Nyní jste se naučili, jak používat Sqoop. Další informace najdete v následujících tématech:
 
-* [Použití Apache Hive se službou HDInsight](../hdinsight-use-hive.md)
+* [Použití Apache Hive se službou HDInsight](./hdinsight-use-hive.md)
 * [Nahrávání dat do HDInsight](../hdinsight-upload-data.md): Najděte další metody pro nahrávání dat do služby HDInsight/Azure Blob Storage.
 * [Import a export dat mezi Apache Hadoopem ve službě HDInsight a SQL Database pomocí Apache Sqoopu](./apache-hadoop-use-sqoop-mac-linux.md)

@@ -3,12 +3,12 @@ title: Výběr možnosti migrace VMware pomocí migrace serveru Azure Migrate | 
 description: Poskytuje přehled možností migrace virtuálních počítačů VMware do Azure pomocí migrace Azure Migrate serveru.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: e62b9cea80f1ed7f672135b93e52ba606a717a6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac08075212d885a1aca755f94906b50754e23b9d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950217"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534103"
 ---
 # <a name="select-a-vmware-migration-option"></a>Vybrat možnost migrace VMware
 
@@ -29,9 +29,9 @@ Tato vybraná porovnání vám pomůžou rozhodnout, kterou metodu použít. Mů
 **Nasazení zařízení** | [Zařízení Azure Migrate](migrate-appliance.md) je nasazené místně. | [Zařízení replikace Azure Migrate](migrate-replication-appliance.md) je nasazené místně.
 **Site Recovery kompatibilita** | Kompatibility. | Pokud jste pro počítač nastavili replikaci pomocí Site Recovery, nemůžete replikovat pomocí Azure Migrate migrace serveru.
 **Cílový disk** | Spravované disky | Spravované disky
-**Omezení disku** | Disk s operačním systémem: 2 TB<br/><br/> Datový disk: 8 TB<br/><br/> Maximální počet disků: 60 | Disk s operačním systémem: 2 TB<br/><br/> Datový disk: 8 TB<br/><br/> Maximální počet disků: 63
+**Omezení disku** | Disk s operačním systémem: 2 TB<br/><br/> Datový disk: 32 TB<br/><br/> Maximální počet disků: 60 | Disk s operačním systémem: 2 TB<br/><br/> Datový disk: 8 TB<br/><br/> Maximální počet disků: 63
 **Průchozí disky** | Nepodporováno | Podporováno
-**Spouštění UEFI** | Nepodporováno | Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS.<br/><br/> Disk s operačním systémem by měl mít až čtyři oddíly a svazky by měly být naformátované pomocí systému souborů NTFS.
+**Spouštění UEFI** | Podporuje se. | Podporuje se.
 
 ## <a name="compare-deployment-steps"></a>Porovnání kroků nasazení
 
@@ -41,13 +41,13 @@ Po kontrole omezení se může porozumět postupům při nasazení jednotlivých
 --- | --- | --- | ---
 **Nasazení zařízení Azure Migrate** | Jednoduché zařízení, které běží na virtuálním počítači VMware.<br/><br/> Zařízení se používá ke zjišťování a hodnocení počítačů a k migraci počítačů pomocí migrace bez agentů. | Povinná hodnota.<br/><br/> Pokud jste už zařízení pro posouzení nastavili, můžete použít stejné zařízení pro migraci bez agenta. | Nepožadováno.<br/><br/> Pokud jste pro posouzení nastavili zařízení, můžete ho nechat na místě, nebo ho odebrat, pokud jste hotovi s posouzením.
 **Použití nástroje pro vyhodnocení serveru** | Vyhodnoťte počítače pomocí nástroje Azure Migrate: Nástroj pro vyhodnocení serveru. | Je možné vyhodnotit počítače před jejich migrací, ale nemusíte je. | Posouzení je volitelné. | Posouzení je volitelné.
-**Použití nástroje pro migraci serveru** | Přidejte Nástroj pro migraci Azure Migrate serveru do projektu Azure Migrate. | Vyžadováno | Vyžadováno
-**Příprava VMware na migraci** | Nakonfigurujte nastavení na serverech a virtuálních počítačích VMware. | Vyžadováno | Vyžadováno
-**Instalace služby mobility na virtuální počítače** | Služba mobility běží na každém virtuálním počítači, který chcete replikovat. | Nevyžadováno | Vyžadováno
-**Nasazení zařízení replikace** | [Zařízení replikace](migrate-replication-appliance.md) se používá pro migraci na základě agenta. Připojuje se ke službě mobility spuštěné na virtuálních počítačích a migraci serveru. | Nevyžadováno | Vyžadováno
-**Replikace virtuálních počítačů**. Povolte replikaci virtuálních počítačů. | Nakonfigurujte nastavení replikace a vyberte virtuální počítače, které se mají replikovat. | Vyžadováno | Vyžadováno
-**Spuštění testu migrace** | Spusťte test migrace a ujistěte se, že vše funguje podle očekávání. | Vyžadováno | Vyžadováno
-**Spustit úplnou migraci** | Migrujte virtuální počítače. | Vyžadováno | Vyžadováno
+**Použití nástroje pro migraci serveru** | Přidejte Nástroj pro migraci Azure Migrate serveru do projektu Azure Migrate. | Povinné | Povinné
+**Příprava VMware na migraci** | Nakonfigurujte nastavení na serverech a virtuálních počítačích VMware. | Povinné | Povinné
+**Instalace služby mobility na virtuální počítače** | Služba mobility běží na každém virtuálním počítači, který chcete replikovat. | Nevyžadováno | Povinné
+**Nasazení zařízení replikace** | [Zařízení replikace](migrate-replication-appliance.md) se používá pro migraci na základě agenta. Připojuje se ke službě mobility spuštěné na virtuálních počítačích a migraci serveru. | Nevyžadováno | Povinné
+**Replikace virtuálních počítačů** . Povolte replikaci virtuálních počítačů. | Nakonfigurujte nastavení replikace a vyberte virtuální počítače, které se mají replikovat. | Povinné | Povinné
+**Spuštění testu migrace** | Spusťte test migrace a ujistěte se, že vše funguje podle očekávání. | Povinné | Povinné
+**Spustit úplnou migraci** | Migrujte virtuální počítače. | Povinné | Povinné
 
 
 

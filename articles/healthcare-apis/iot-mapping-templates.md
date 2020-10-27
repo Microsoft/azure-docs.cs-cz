@@ -8,17 +8,17 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553643"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558529"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Šablony mapování konektoru Azure IoT pro FHIR (Preview)
 Tento článek podrobně popisuje, jak nakonfigurovat Azure IoT Connector pro FHIR * pomocí mapovacích šablon.
 
-Konektor Azure IoT pro FHIR vyžaduje dva typy šablon mapování založených na JSON. Prvním typem je **mapování zařízení**, které zodpovídá za mapování datových částí zařízení odeslaných do `devicedata` koncového bodu centra událostí Azure. Extrahuje typy, identifikátory zařízení, datum a čas měření a hodnoty měření. Druhý typ, **mapování FHIR**, řídí mapování pro prostředek FHIR. Umožňuje konfiguraci délky období pozorování, datového typu FHIR, který slouží k ukládání hodnot, a kódů terminologie. 
+Konektor Azure IoT pro FHIR vyžaduje dva typy šablon mapování založených na JSON. Prvním typem je **mapování zařízení** , které zodpovídá za mapování datových částí zařízení odeslaných do `devicedata` koncového bodu centra událostí Azure. Extrahuje typy, identifikátory zařízení, datum a čas měření a hodnoty měření. Druhý typ, **mapování FHIR** , řídí mapování pro prostředek FHIR. Umožňuje konfiguraci délky období pozorování, datového typu FHIR, který slouží k ukládání hodnot, a kódů terminologie. 
 
 Šablony mapování se skládají do dokumentu JSON na základě jejich typu. Tyto dokumenty JSON se pak přidají do vašeho konektoru Azure IoT Connector pro FHIR prostřednictvím Azure Portal. Dokument mapování zařízení se přidá prostřednictvím stránky **Konfigurace zařízení** mapování a dokumentu mapování FHIR prostřednictvím stránky **Konfigurace mapování FHIR** .
 
@@ -71,8 +71,8 @@ JsonPathContentTemplate umožňuje porovnání a extrakci hodnot z zprávy centr
 |**TypeMatchExpression**|Výraz cesty JSON, který se vyhodnocuje s datovou částí centra událostí. Pokud se najde odpovídající JToken, šablona se považuje za shodu. Všechny následné výrazy jsou vyhodnocovány proti extrahovanému JToken, který se shoduje.|`$..[?(@heartRate)]`
 |**TimestampExpression**|Výraz cesty JSON pro extrakci hodnoty časového razítka pro OccurenceTimeUtc měření.|`$.endDate`
 |**DeviceIdExpression**|Výraz cesty JSON pro extrakci identifikátoru zařízení.|`$.deviceId`
-|**PatientIdExpression**|*Volitelné*: výraz cesty JSON pro extrakci identifikátoru pacienta.|`$.patientId`
-|**EncounterIdExpression**|*Volitelné*: výraz cesty JSON pro extrakci identifikátoru výskytu.|`$.encounterId`
+|**PatientIdExpression**|*Volitelné* : výraz cesty JSON pro extrakci identifikátoru pacienta.|`$.patientId`
+|**EncounterIdExpression**|*Volitelné* : výraz cesty JSON pro extrakci identifikátoru výskytu.|`$.encounterId`
 |**Hodnoty []. Hodnoty**|Název, který se má přidružit k hodnotě extrahované následným výrazem. Slouží k vytvoření vazby požadované hodnoty/komponenty v šabloně mapování FHIR. |`hr`
 |**Hodnoty []. ValueExpression**|Výraz cesty JSON pro extrakci požadované hodnoty.|`$.heartRate`
 |**Hodnoty []. Požadovanou**|Bude vyžadovat, aby byla hodnota přítomna v datové části.  Pokud se nenajde, měření se nevygeneruje a vyvolá se akce InvalidOperationException.|`true`
@@ -565,7 +565,7 @@ Představuje datový typ [CodeableConcept](http://hl7.org/fhir/datatypes.html#Co
 Přečtěte si nejčastější dotazy ke službě Azure IoT Connector pro FHIR (Preview).
 
 >[!div class="nextstepaction"]
->[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md)
 
 * V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
 

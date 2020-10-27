@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2cc0ef4ed0e7a63a822efc34e223cbec20815dd9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 82531466c80917087ca007900ca79b3485f38a21
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521471"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546258"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -31,7 +31,7 @@ Katalog služeb rozpoznávání, které poskytují porozumění rozpoznávání,
 * Řeč
 * Jazyk
 * Rozhodnutí
-* Hledat
+* Search
 
 V následujících částech tohoto článku najdete seznam služeb, které jsou součástí těchto pěti pilířů.
 
@@ -93,7 +93,18 @@ V následujících částech tohoto článku najdete seznam služeb, které jsou
 |[Vyhledávání místních firem Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Vyhledávání místních firem Bingu")| Rozhraní API pro místní vyhledávání Bingu umožňuje vašim aplikacím najít kontaktní a umístění informací o místních firmách na základě vyhledávacích dotazů.|
 |[Kontrola pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Kontrola pravopisu Bingu")|Kontrola pravopisu Bingu umožňuje provádět kontextové gramatiky a kontrolu pravopisu.|
 
-## <a name="get-started-with-cognitive-services"></a>Začínáme se službou Cognitive Services
+## <a name="development-options"></a>Možnosti vývoje 
+
+S Azure a Cognitive Services máte přístup k několika možnostem vývoje, jako je například:
+
+* Nástroje pro automatizaci a integraci, jako je Logic Apps a automatizace.
+* Možnosti nasazení, například Azure Functions a App Service 
+* Cognitive Services kontejnery Docker pro zabezpečený přístup.
+* Nástroje, jako jsou Apache Spark, Azure Databricks, Azure synapse Analytics a služba Azure Kubernetes pro scénáře s velkými objemy dat. 
+
+Další informace najdete v tématu [možnosti vývoje Cognitive Services](./cognitive-services-development-options.md).
+
+## <a name="learn-with-the-quickstarts"></a>Seznamte se s rychlými starty
 
 Začněte tím, že vytvoříte prostředek Cognitive Services s praktickými rychlými starty pomocí následujících metod:
 

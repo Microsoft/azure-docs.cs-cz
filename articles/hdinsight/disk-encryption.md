@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d37f1c52157d2038d216873150b1d68e669e3392
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487309"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548026"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Dvojité šifrování Azure HDInsight pro neaktivní neaktivní data
 
@@ -23,7 +23,7 @@ Tento dokument neřeší data uložená ve vašem účtu Azure Storage. Clustery
 
 ## <a name="introduction"></a>Úvod
 
-V Azure existují tři hlavní role spravovaných disků: datový disk, disk s operačním systémem a dočasný disk. Další informace o různých typech spravovaných disků najdete v tématu [Úvod do služby Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview). 
+V Azure existují tři hlavní role spravovaných disků: datový disk, disk s operačním systémem a dočasný disk. Další informace o různých typech spravovaných disků najdete v tématu [Úvod do služby Azure Managed disks](../virtual-machines/managed-disks-overview.md). 
 
 HDInsight podporuje více typů šifrování ve dvou různých vrstvách:
 
@@ -35,8 +35,8 @@ Tyto typy jsou shrnuty v následující tabulce.
 
 |Typ clusteru |Disk s operačním systémem (spravovaný disk) |Datový disk (spravovaný disk) |Dočasný datový disk (místní SSD) |
 |---|---|---|---|
-|Kafka, HBA s akcelerovanými zápisy|LAYER1: [šifrování SSE](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) ve výchozím nastavení|LAYER1: [šifrování SSE](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) ve výchozím nastavení layer2: volitelné šifrování v klidovém stavu s VYUŽITÍm CMK|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
-|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|LAYER1: [šifrování SSE](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) ve výchozím nastavení|–|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
+|Kafka, HBA s akcelerovanými zápisy|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení layer2: volitelné šifrování v klidovém stavu s VYUŽITÍm CMK|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
+|Všechny ostatní clustery (Spark, Interactive, Hadoop, HBA bez urychleného zápisu)|LAYER1: [šifrování SSE](../virtual-machines/managed-disks-overview.md#encryption) ve výchozím nastavení|–|LAYER1: volitelné šifrování u hostitele pomocí klíče PMK, layer2: volitelné šifrování v klidovém formátu pomocí CMK|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
 
@@ -73,15 +73,15 @@ Konkrétní kroky najdete v tématu [Vytvoření spravované identity přiřazen
 
 Vytvořte trezor klíčů. Konkrétní postup najdete v tématu věnovaném [vytvoření Azure Key Vault](../key-vault/secrets/quick-create-portal.md) .
 
-HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů, můžete klíče importovat do Azure Key Vault. Nezapomeňte, že Trezor klíčů musí mít povolené **obnovitelné odstranění** . Další informace o importu existujících klíčů najdete v [informacích o klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md).
+HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů, můžete klíče importovat do Azure Key Vault. Nezapomeňte, že Trezor klíčů musí mít povolené **obnovitelné odstranění** . Další informace o importu existujících klíčů najdete v [informacích o klíčích, tajných klíčích a certifikátech](../key-vault/general/about-keys-secrets-certificates.md).
 
 ### <a name="create-key"></a>Vytvořit klíč
 
-1. V novém trezoru klíčů přejděte na **Nastavení**  >  **klíče**  >  **+ Generovat/importovat**.
+1. V novém trezoru klíčů přejděte na **Nastavení**  >  **klíče**  >  **+ Generovat/importovat** .
 
     ![Vygenerovat nový klíč v Azure Key Vault](./media/disk-encryption/create-new-key.png "Vygenerovat nový klíč v Azure Key Vault")
 
-1. Zadejte název a pak vyberte **vytvořit**. Udržujte výchozí **typ klíče** **RSA**.
+1. Zadejte název a pak vyberte **vytvořit** . Udržujte výchozí **typ klíče** **RSA** .
 
     ![vygeneruje název klíče.](./media/disk-encryption/create-key.png "Vygenerovat název klíče")
 
@@ -95,7 +95,7 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
 ### <a name="create-access-policy"></a>Vytvořit zásady přístupu
 
-1. V novém trezoru klíčů přejděte na **Nastavení**  >  **zásady přístupu**  >  **+ Přidat zásady přístupu**.
+1. V novém trezoru klíčů přejděte na **Nastavení**  >  **zásady přístupu**  >  **+ Přidat zásady přístupu** .
 
     ![Vytvořit nové zásady přístupu Azure Key Vault](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -103,15 +103,15 @@ HDInsight podporuje jenom Azure Key Vault. Pokud máte vlastní Trezor klíčů,
 
     |Vlastnost |Popis|
     |---|---|
-    |Klíčová oprávnění|Vyberte **získat**, **Rozbalit klíč**a **zalomit klíč**.|
-    |Tajná oprávnění|Vyberte **získat**, **nastavit**a **Odstranit**.|
+    |Klíčová oprávnění|Vyberte **získat** , **Rozbalit klíč** a **zalomit klíč** .|
+    |Tajná oprávnění|Vyberte **získat** , **nastavit** a **Odstranit** .|
     |Vybrat objekt zabezpečení|Vyberte uživatelem přiřazenou spravovanou identitu, kterou jste vytvořili dříve.|
 
     ![Nastavení výběru objektu zabezpečení pro zásady Azure Key Vaultho přístupu](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. Vyberte **Přidat**.
+1. Vyberte **Přidat** .
 
-1. Vyberte **Uložit**.
+1. Vyberte **Uložit** .
 
     ![Uložit zásady přístupu Azure Key Vault](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -121,7 +121,7 @@ Nyní jste připraveni vytvořit nový cluster HDInsight. Klíče spravované z�
 
 #### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-Během vytváření clusteru zadejte úplný **identifikátor klíče**, včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
+Během vytváření clusteru zadejte úplný **identifikátor klíče** , včetně verze klíče. Například, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Musíte také přiřadit spravovanou identitu ke clusteru a zadat identifikátor URI klíče.
 
 ![Vytvořit nový cluster](./media/disk-encryption/create-cluster-portal.png)
 
@@ -141,7 +141,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 
-Následující příklad ukazuje, jak použít šablonu Azure Resource Manager k vytvoření nového clusteru Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [co jsou šablony ARM](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview).
+Následující příklad ukazuje, jak použít šablonu Azure Resource Manager k vytvoření nového clusteru Apache Spark s povoleným šifrováním disku. Další informace najdete v tématu [co jsou šablony ARM](../azure-resource-manager/templates/overview.md).
 
 V tomto příkladu se k volání šablony používá PowerShell.
 
@@ -359,7 +359,7 @@ Můžou nastat situace, kdy budete možná chtít změnit šifrovací klíče po
 
 #### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
-K otočení klíče potřebujete identifikátor URI trezoru základního klíče. Až to uděláte, přejděte do části vlastnosti clusteru HDInsight na portálu a klikněte na **změnit klíč** pod **adresou URL klíče pro šifrování disku**. Zadejte novou adresu URL klíče a odešlete pro otočení klíče.
+K otočení klíče potřebujete identifikátor URI trezoru základního klíče. Až to uděláte, přejděte do části vlastnosti clusteru HDInsight na portálu a klikněte na **změnit klíč** pod **adresou URL klíče pro šifrování disku** . Zadejte novou adresu URL klíče a odešlete pro otočení klíče.
 
 ![otočit šifrovací klíč disku](./media/disk-encryption/change-key.png)
 
@@ -403,7 +403,7 @@ Vzhledem k tomu, že se podporují jenom klíče s povoleným obnovitelném odst
 
 **Pokud je cluster škálovatelný, budou nové uzly bezproblémově podporovat klíče spravované zákazníky?**
 
-Ano. Cluster potřebuje během horizontálního navýšení kapacity přístup k klíči v trezoru klíčů. Stejný klíč se používá k šifrování spravovaných disků i disků prostředků v clusteru.
+Yes. Cluster potřebuje během horizontálního navýšení kapacity přístup k klíči v trezoru klíčů. Stejný klíč se používá k šifrování spravovaných disků i disků prostředků v clusteru.
 
 **Jsou v mém umístění dostupné klíče spravované zákazníky?**
 
@@ -420,7 +420,7 @@ Klíče spravované zákazníkem HDInsight jsou k dispozici ve všech veřejnýc
 
 :::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="Povolte šifrování na hostiteli.":::
 
-Tato možnost povoluje [šifrování na hostiteli](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) pro virtuální počítače HDInsight s použitím klíče PMK. Šifrování na hostiteli se [podporuje jenom u některých SKU virtuálních počítačů v omezených oblastech](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) a HDInsight podporuje [následující konfiguraci uzlů a SKU](./hdinsight-supported-node-configuration.md).
+Tato možnost povoluje [šifrování na hostiteli](../virtual-machines/disks-enable-host-based-encryption-portal.md) pro virtuální počítače HDInsight s použitím klíče PMK. Šifrování na hostiteli se [podporuje jenom u některých SKU virtuálních počítačů v omezených oblastech](../virtual-machines/disks-enable-host-based-encryption-portal.md) a HDInsight podporuje [následující konfiguraci uzlů a SKU](./hdinsight-supported-node-configuration.md).
 
 Pro pochopení správné velikosti virtuálního počítače pro cluster HDInsight si přečtěte téma [Výběr správné velikosti virtuálního počítače pro cluster Azure HDInsight](hdinsight-selecting-vm-size.md). Výchozí SKU virtuálního počítače pro uzel Zookeeper, pokud je povolené šifrování na hostiteli, bude DS2V2.
 
