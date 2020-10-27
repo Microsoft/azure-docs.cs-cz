@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: ee7c1c57c271a6173f4ee978a10ff37526c04c33
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 12190a50579bf5b87685fc4b19ec7b2907e5ee9c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047841"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547040"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Rychlý Start: vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure PowerShell
 
 Začněte s Azure Load Balancer pomocí Azure PowerShell k vytvoření interního nástroje pro vyrovnávání zatížení a dvou virtuálních počítačů.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell lokálně nainstalované nebo Azure Cloud Shell
@@ -44,12 +44,12 @@ Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spra
 
 Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
 
-* S názvem **myResourceGroupLB**.
+* Název **CreateIntLBQS-RG** .
 * V umístění **eastus** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'MyResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 
 New-AzResourceGroup -Name $rg -Location $loc
@@ -59,7 +59,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku"></a>[**Standardní SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
->Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
+>Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)** .
 
 ## <a name="configure-virtual-network"></a>Konfigurace virtuální sítě
 
@@ -69,17 +69,17 @@ Než nasadíte virtuální počítače a otestujete Nástroj pro vyrovnávání 
 
 Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
-* S názvem **myVNet**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Podsíť s názvem **myBackendSubnet**.
-* Virtuální síť **10.0.0.0/16**.
-* Podsíť **10.0.0.0/24**.
-* Podsíť s názvem **AzureBastionSubnet**.
-* **10.0.1.0 podsítě/24**.
+* S názvem **myVNet** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Podsíť s názvem **myBackendSubnet** .
+* Virtuální síť **10.0.0.0/16** .
+* Podsíť **10.0.0.0/24** .
+* Podsíť s názvem **AzureBastionSubnet** .
+* **10.0.1.0 podsítě/24** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
 $spfx = '10.0.0.0/24'
@@ -107,14 +107,14 @@ New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPr
 Použijte [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) k vytvoření veřejné IP adresy pro hostitele bastionu:
 
 * Pojmenovaný **myPublicIPBastion**
-* Ve skupině prostředků **myResourceGroupLB**.
+* Ve skupině prostředků **CreateIntLBQS-RG** .
 * V umístění **eastus** .
-* Metoda alokace je **statická**.
+* Metoda alokace je **statická** .
 * SKU **Standard** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $ipn = 'myPublicIPBastion'
 $all = 'static'
@@ -128,14 +128,14 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -Allocati
 
 Pomocí [New-AzBastion](/powershell/module/az.network/new-azbastion) Vytvořte hostitele bastionu:
 
-* S názvem **myBastion**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Ve virtuální síti **myVNet**.
-* Přidruženo k veřejné IP adrese **myPublicIPBastion**.
+* S názvem **myBastion** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Ve virtuální síti **myVNet** .
+* Přidruženo k veřejné IP adrese **myPublicIPBastion** .
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $nmn = 'myBastion'
 
 ## Command to create bastion host. $vnet and $publicip are from the previous steps ##
@@ -151,16 +151,16 @@ Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Vytvoření pravidla skupiny zabezpečení sítě pro port 80
 Vytvořte pravidlo skupiny zabezpečení sítě pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig):
 
-* S názvem **myNSGRuleHTTP**.
-* Popis **Povolení protokolu HTTP**.
-* Přístup k **Povolení**.
-* Protokol **(*)**.
-* Směr **příchozí**.
-* Priorita **2000**.
-* Zdroj **Internetu**.
-* Rozsah zdrojových portů **(*)**.
-* Předpona cílové adresy **(*)**.
-* Cílový **Port 80**.
+* S názvem **myNSGRuleHTTP** .
+* Popis **Povolení protokolu HTTP** .
+* Přístup k **Povolení** .
+* Protokol **(*)** .
+* Směr **příchozí** .
+* Priorita **2000** .
+* Zdroj **Internetu** .
+* Rozsah zdrojových portů **(*)** .
+* Předpona cílové adresy **(*)** .
+* Cílový **Port 80** .
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -183,14 +183,14 @@ New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Proto
 
 Vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup):
 
-* S názvem **myNSG**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* V umístění **eastus**.
+* S názvem **myNSG** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* V umístění **eastus** .
 * S pravidly zabezpečení vytvořenými v předchozích krocích uložených v proměnné.
 
 ```azurepowershell
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nmn = 'myNSG'
 
@@ -212,13 +212,13 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 Vytvořte front-end IP adresu pomocí [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig):
 
-* S názvem **myFrontEnd**.
-* Privátní IP adresa **10.0.0.4**.
+* S názvem **myFrontEnd** .
+* Privátní IP adresa **10.0.0.4** .
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
 $fe = 'myFrontEnd'
-$rg = 'MyResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $ip = '10.0.0.4'
 
 ## Command to create frontend configuration. The variable $vnet is from the previous commands. ##
@@ -230,7 +230,7 @@ New-AzLoadBalancerFrontendIpConfig -Name $fe -PrivateIpAddress $ip -SubnetId $vn
 
 Vytvořte fond back-end adres pomocí [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig): 
 
-* S názvem **myBackEndPool**.
+* S názvem **myBackEndPool** .
 * Virtuální počítače se připojují k tomuto fondu back-end ve zbývajících krocích.
 
 ```azurepowershell-interactive
@@ -250,9 +250,9 @@ Z nástroje pro vyrovnávání zatížení se odebere virtuální počítač s n
 Vytvořte sondu stavu pomocí [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig):
 
 * Monitoruje stav virtuálních počítačů.
-* S názvem **myHealthProbe**.
-* Protokol **TCP**.
-* **Port monitorování 80**.
+* S názvem **myHealthProbe** .
+* Protokol **TCP** .
+* **Port monitorování 80** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -277,21 +277,24 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje:
 Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [doplňku add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig): 
 
 * Pojmenovaný **myHTTPRule**
-* Naslouchat na **portu 80** ve fondu front-endu **myFrontEnd**.
-* Odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres **myBackEndPool** pomocí **portu 80**. 
-* Pomocí **myHealthProbe**sondy stavu.
-* Protokol **TCP**.
+* Naslouchat na **portu 80** ve fondu front-endu **myFrontEnd** .
+* Odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres **myBackEndPool** pomocí **portu 80** . 
+* Pomocí **myHealthProbe** sondy stavu.
+* Protokol **TCP** .
+* Časový limit nečinnosti **15 minut** .
+* Povolte resetování protokolu TCP.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbr = 'myHTTPRule'
 $pro = 'tcp'
 $port = '80'
+$idl = '15'
 
 ## $feip and $bePool are the variables from previous steps. ##
 
 $rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT
+New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT -IdleTimeoutInMinutes $idl -EnableTcpReset
 ```
 >[!NOTE]
 >Virtuální počítače ve fondu back-end nebudou mít odchozí připojení k Internetu s touto konfigurací. </br> Další informace o poskytování odchozího připojení najdete v tématech: </br> **[Odchozí připojení v Azure](load-balancer-outbound-connections.md)**</br> Možnosti pro poskytování připojení: </br> **[Konfigurace nástroje pro vyrovnávání zatížení – pouze odchozí](egress-only.md)** </br> **[Co je Virtual Network NAT?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
@@ -302,13 +305,13 @@ New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPo
 Vytvořte interní nástroj pro vyrovnávání zatížení pomocí [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer):
 
 * Pojmenovaný **myLoadBalancer**
-* V **eastus**.
-* Ve skupině prostředků **myResourceGroupLB**.
+* V **eastus** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $sku = 'Standard'
 
@@ -324,17 +327,17 @@ Vytvořte tři síťová rozhraní pomocí [New-AzNetworkInterface](/powershell/
 
 #### <a name="vm-1"></a>VIRTUÁLNÍ POČÍTAČ 1
 
-* S názvem **myNicVM1**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* V umístění **eastus**.
-* Ve virtuální síti **myVNet**.
-* V **myBackendSubnet**podsíti.
-* Ve skupině zabezpečení sítě **myNSG**.
-* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení v **myBackEndPool**.
+* S názvem **myNicVM1** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* V umístění **eastus** .
+* Ve virtuální síti **myVNet** .
+* V **myBackendSubnet** podsíti.
+* Ve skupině zabezpečení sítě **myNSG** .
+* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení v **myBackEndPool** .
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
@@ -360,17 +363,17 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 
 #### <a name="vm-2"></a>VIRTUÁLNÍ POČÍTAČ 2
 
-* S názvem **myNicVM2**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* V umístění **eastus**.
-* Ve virtuální síti **myVNet**.
-* V **myBackendSubnet**podsíti.
-* Ve skupině zabezpečení sítě **myNSG**.
-* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení v **myBackEndPool**.
+* S názvem **myNicVM2** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* V umístění **eastus** .
+* Ve virtuální síti **myVNet** .
+* V **myBackendSubnet** podsíti.
+* Ve skupině zabezpečení sítě **myNSG** .
+* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení v **myBackEndPool** .
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
@@ -413,16 +416,16 @@ Vytvořte virtuální počítače pomocí:
 
 #### <a name="vm1"></a>VM1
 
-* S názvem **myVM1**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Připojeno k síťovému rozhraní **myNicVM1**.
-* Připojeno k **myLoadBalancer**nástroje pro vyrovnávání zatížení.
-* V **zóna 1**.
+* S názvem **myVM1** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Připojeno k síťovému rozhraní **myNicVM1** .
+* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení.
+* V **zóna 1** .
 * V umístění **eastus** .
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myVM1'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -444,16 +447,16 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 
 #### <a name="vm2"></a>VM2
 
-* S názvem **myVM2**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Připojeno k síťovému rozhraní **myNicVM2**.
-* Připojeno k **myLoadBalancer**nástroje pro vyrovnávání zatížení.
-* V **zóna 2**.
+* S názvem **myVM2** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Připojeno k síťovému rozhraní **myNicVM2** .
+* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení.
+* V **zóna 2** .
 * V umístění **eastus** .
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myVM2'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -475,7 +478,7 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 # <a name="basic-sku"></a>[**Základní SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
->Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
+>Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU. Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)** .
 
 ## <a name="configure-virtual-network"></a>Konfigurace virtuální sítě
 
@@ -485,17 +488,17 @@ Než nasadíte virtuální počítače a otestujete Nástroj pro vyrovnávání 
 
 Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
-* S názvem **myVNet**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Podsíť s názvem **myBackendSubnet**.
-* Virtuální síť **10.0.0.0/16**.
-* Podsíť **10.0.0.0/24**.
-* Podsíť s názvem **AzureBastionSubnet**.
-* **10.0.1.0 podsítě/24**.
+* S názvem **myVNet** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Podsíť s názvem **myBackendSubnet** .
+* Virtuální síť **10.0.0.0/16** .
+* Podsíť **10.0.0.0/24** .
+* Podsíť s názvem **AzureBastionSubnet** .
+* **10.0.1.0 podsítě/24** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
 $spfx = '10.0.0.0/24'
@@ -523,14 +526,14 @@ New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPr
 Použijte [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) k vytvoření veřejné IP adresy pro hostitele bastionu:
 
 * Pojmenovaný **myPublicIPBastion**
-* Ve skupině prostředků **myResourceGroupLB**.
+* Ve skupině prostředků **CreateIntLBQS-RG** .
 * V umístění **eastus** .
-* Metoda alokace je **statická**.
+* Metoda alokace je **statická** .
 * SKU **Standard** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $ipn = 'myPublicIPBastion'
 $all = 'static'
@@ -544,14 +547,14 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -Allocati
 
 Pomocí [New-AzBastion](/powershell/module/az.network/new-azbastion) Vytvořte hostitele bastionu:
 
-* S názvem **myBastion**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Ve virtuální síti **myVNet**.
-* Přidruženo k veřejné IP adrese **myPublicIPBastion**.
+* S názvem **myBastion** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Ve virtuální síti **myVNet** .
+* Přidruženo k veřejné IP adrese **myPublicIPBastion** .
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $nmn = 'myBastion'
 
 ## Command to create bastion host. $vnet and $publicip are from the previous steps ##
@@ -568,16 +571,16 @@ Vytvořte skupinu zabezpečení sítě, která definuje příchozí připojení 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Vytvoření pravidla skupiny zabezpečení sítě pro port 80
 Vytvořte pravidlo skupiny zabezpečení sítě pomocí [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig):
 
-* S názvem **myNSGRuleHTTP**.
-* Popis **Povolení protokolu HTTP**.
-* Přístup k **Povolení**.
-* Protokol **(*)**.
-* Směr **příchozí**.
-* Priorita **2000**.
-* Zdroj **Internetu**.
-* Rozsah zdrojových portů **(*)**.
-* Předpona cílové adresy **(*)**.
-* Cílový **Port 80**.
+* S názvem **myNSGRuleHTTP** .
+* Popis **Povolení protokolu HTTP** .
+* Přístup k **Povolení** .
+* Protokol **(*)** .
+* Směr **příchozí** .
+* Priorita **2000** .
+* Zdroj **Internetu** .
+* Rozsah zdrojových portů **(*)** .
+* Předpona cílové adresy **(*)** .
+* Cílový **Port 80** .
 
 ```azurepowershell-interactive
 ## Variables for command ##
@@ -600,14 +603,14 @@ New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Proto
 
 Vytvořte skupinu zabezpečení sítě pomocí [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup):
 
-* S názvem **myNSG**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* V umístění **eastus**.
+* S názvem **myNSG** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* V umístění **eastus** .
 * S pravidly zabezpečení vytvořenými v předchozích krocích uložených v proměnné.
 
 ```azurepowershell
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nmn = 'myNSG'
 
@@ -629,13 +632,13 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 Vytvořte front-end IP adresu pomocí [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig):
 
-* S názvem **myFrontEnd**.
-* Privátní IP adresa **10.0.0.4**.
+* S názvem **myFrontEnd** .
+* Privátní IP adresa **10.0.0.4** .
 
 ```azurepowershell-interactive
 ## Variables for the commands ##
 $fe = 'myFrontEnd'
-$rg = 'MyResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $ip = '10.0.0.4'
 
 ## Command to create frontend configuration. The variable $vnet is from the previous commands. ##
@@ -647,7 +650,7 @@ New-AzLoadBalancerFrontendIpConfig -Name $fe -PrivateIpAddress $ip -SubnetId $vn
 
 Vytvořte fond back-end adres pomocí [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig): 
 
-* S názvem **myBackEndPool**.
+* S názvem **myBackEndPool** .
 * Virtuální počítače se připojují k tomuto fondu back-end ve zbývajících krocích.
 
 ```azurepowershell-interactive
@@ -667,9 +670,9 @@ Z nástroje pro vyrovnávání zatížení se odebere virtuální počítač s n
 Vytvořte sondu stavu pomocí [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig):
 
 * Monitoruje stav virtuálních počítačů.
-* S názvem **myHealthProbe**.
-* Protokol **TCP**.
-* **Port monitorování 80**.
+* S názvem **myHealthProbe** .
+* Protokol **TCP** .
+* **Port monitorování 80** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -694,21 +697,23 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje:
 Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [doplňku add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig): 
 
 * Pojmenovaný **myHTTPRule**
-* Naslouchat na **portu 80** ve fondu front-endu **myFrontEnd**.
-* Odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres **myBackEndPool** pomocí **portu 80**. 
-* Pomocí **myHealthProbe**sondy stavu.
-* Protokol **TCP**.
+* Naslouchat na **portu 80** ve fondu front-endu **myFrontEnd** .
+* Odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres **myBackEndPool** pomocí **portu 80** . 
+* Pomocí **myHealthProbe** sondy stavu.
+* Protokol **TCP** .
+* Časový limit nečinnosti **15 minut** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbr = 'myHTTPRule'
 $pro = 'tcp'
 $port = '80'
+$idl = '15'
 
 ## $feip and $bePool are the variables from previous steps. ##
 
 $rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool
+New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -IdleTimeoutInMinutes $idl
 ```
 
 ### <a name="create-load-balancer-resource"></a>Vytvořit prostředek nástroje pro vyrovnávání zatížení
@@ -716,13 +721,13 @@ New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPo
 Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer):
 
 * Pojmenovaný **myLoadBalancer**
-* V **eastus**.
-* Ve skupině prostředků **myResourceGroupLB**.
+* V **eastus** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $lbn = 'myLoadBalancer'
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $sku = 'Basic'
 
@@ -738,17 +743,17 @@ Vytvořte tři síťová rozhraní pomocí [New-AzNetworkInterface](/powershell/
 
 #### <a name="vm-1"></a>VIRTUÁLNÍ POČÍTAČ 1
 
-* S názvem **myNicVM1**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* V umístění **eastus**.
-* Ve virtuální síti **myVNet**.
-* V **myBackendSubnet**podsíti.
-* Ve skupině zabezpečení sítě **myNSG**.
-* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení v **myBackEndPool**.
+* S názvem **myNicVM1** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* V umístění **eastus** .
+* Ve virtuální síti **myVNet** .
+* V **myBackendSubnet** podsíti.
+* Ve skupině zabezpečení sítě **myNSG** .
+* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení v **myBackEndPool** .
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
@@ -774,17 +779,17 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBa
 
 #### <a name="vm-2"></a>VIRTUÁLNÍ POČÍTAČ 2
 
-* S názvem **myNicVM2**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* V umístění **eastus**.
-* Ve virtuální síti **myVNet**.
-* V **myBackendSubnet**podsíti.
-* Ve skupině zabezpečení sítě **myNSG**.
-* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení v **myBackEndPool**.
+* S názvem **myNicVM2** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* V umístění **eastus** .
+* Ve virtuální síti **myVNet** .
+* V **myBackendSubnet** podsíti.
+* Ve skupině zabezpečení sítě **myNSG** .
+* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení v **myBackEndPool** .
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
@@ -812,13 +817,13 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 
 Pomocí [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) vytvořte skupinu dostupnosti pro virtuální počítače:
 
-* S názvem **myAvSet**.
-* Ve skupině prostředků **myResourceGroupLB**.
+* S názvem **myAvSet** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
 * V umístění **eastus** .
 
 ```azurepowershell-interactive
 ## Variables used for the command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $avs = 'myAvSet'
 $loc = 'eastus'
 
@@ -844,16 +849,16 @@ Vytvořte virtuální počítače pomocí:
 
 #### <a name="vm1"></a>VM1
 
-* S názvem **myVM1**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Připojeno k síťovému rozhraní **myNicVM1**.
-* Připojeno k **myLoadBalancer**nástroje pro vyrovnávání zatížení.
+* S názvem **myVM1** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Připojeno k síťovému rozhraní **myNicVM1** .
+* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení.
 * V umístění **eastus** .
 * Ve skupině dostupnosti **myAvSet** .
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myVM1'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -875,16 +880,16 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 #### <a name="vm2"></a>VM2
 
-* S názvem **myVM2**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Připojeno k síťovému rozhraní **myNicVM2**.
-* Připojeno k **myLoadBalancer**nástroje pro vyrovnávání zatížení.
+* S názvem **myVM2** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Připojeno k síťovému rozhraní **myNicVM2** .
+* Připojeno k **myLoadBalancer** nástroje pro vyrovnávání zatížení.
 * V umístění **eastus** .
 * Ve skupině dostupnosti **myAvSet** .
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myVM2'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -917,7 +922,7 @@ Rozšíření spustí PowerShell Add-WindowsFeature Web-Server pro instalaci web
 
 ```azurepowershell-interactive
 ## Variables for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $enm = 'IIS'
 $vmn = 'myVM1'
 $loc = 'eastus'
@@ -932,7 +937,7 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 
 ```azurepowershell-interactive
 ## Variables for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $enm = 'IIS'
 $vmn = 'myVM2'
 $loc = 'eastus'
@@ -951,16 +956,16 @@ Vytvořte síťové rozhraní pomocí [New-AzNetworkInterface](/powershell/modul
 
 #### <a name="mytestvm"></a>myTestVM
 
-* S názvem **myNicTestVM**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* V umístění **eastus**.
-* Ve virtuální síti **myVNet**.
-* V **myBackendSubnet**podsíti.
-* Ve skupině zabezpečení sítě **myNSG**.
+* S názvem **myNicTestVM** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* V umístění **eastus** .
+* Ve virtuální síti **myVNet** .
+* V **myBackendSubnet** podsíti.
+* Ve skupině zabezpečení sítě **myNSG** .
 
 ```azurepowershell-interactive
 ## Variables for command ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $loc = 'eastus'
 $nic1 = 'myNicTestVM'
 $vnt = 'myVNet'
@@ -998,14 +1003,14 @@ Vytvořit virtuální počítač pomocí:
 
 #### <a name="mytestvm"></a>myTestVM
 
-* S názvem **myTestVM**.
-* Ve skupině prostředků **myResourceGroupLB**.
-* Připojeno k síťovému rozhraní **myNicTestVM**.
+* S názvem **myTestVM** .
+* Ve skupině prostředků **CreateIntLBQS-RG** .
+* Připojeno k síťovému rozhraní **myNicTestVM** .
 * V umístění **eastus** .
 
 ```azurepowershell-interactive
 ## Variables used for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 $vm = 'myTestVM'
 $siz = 'Standard_DS1_v2'
 $pub = 'MicrosoftWindowsServer'
@@ -1028,17 +1033,17 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 
 1. [Přihlaste se](https://portal.azure.com) na web Azure Portal.
 
-1. Na obrazovce **Přehled** vyhledejte privátní IP adresu pro nástroj pro vyrovnávání zatížení. V nabídce na levé straně vyberte **všechny služby** a vyberte **všechny prostředky**a pak vyberte **myLoadBalancer**.
+1. Na obrazovce **Přehled** vyhledejte privátní IP adresu pro nástroj pro vyrovnávání zatížení. V nabídce na levé straně vyberte **všechny služby** a vyberte **všechny prostředky** a pak vyberte **myLoadBalancer** .
 
-2. V **přehledu** **myLoadBalancer**si poznamenejte nebo zkopírujte adresu u pole **privátní IP adresa** .
+2. V **přehledu** **myLoadBalancer** si poznamenejte nebo zkopírujte adresu u pole **privátní IP adresa** .
 
-3. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myTestVM** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
+3. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky** a potom ze seznamu prostředky vyberte **myTestVM** , která je umístěná ve skupině prostředků **CreateIntLBQS-RG** .
 
-4. Na stránce **Přehled** vyberte **připojit**a pak **bastionu**.
+4. Na stránce **Přehled** vyberte **připojit** a pak **bastionu** .
 
 6. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-7. Otevřete **Internet Explorer** v **myTestVM**.
+7. Otevřete **Internet Explorer** v **myTestVM** .
 
 8. Zadejte IP adresu z předchozího kroku do panelu Adresa v prohlížeči. V prohlížeči se zobrazí výchozí stránka webového serveru služby IIS.
 
@@ -1052,7 +1057,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, nástro
 
 ```azurepowershell-interactive
 ## Variable for command. ##
-$rg = 'myResourceGroupLB'
+$rg = 'CreateIntLBQS-rg'
 
 Remove-AzResourceGroup -Name $rg
 ```

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: f2b3810afab86b2f81a18bac442ef361404f2309
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b67ddd57c3a0787213763253cef5083f420cefe0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490352"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541668"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytváření clusterů Apache Hadoop pomocí Azure REST API
 
@@ -219,7 +219,7 @@ Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](/cli/azur
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 > [!NOTE]  
-> Tyto kroky jsou zkrácená verze oddílu *vytvořit instanční objekt s heslem* v tématu [použití Azure CLI k vytvoření instančního objektu pro přístup](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) k dokumentu prostředků. Pomocí těchto kroků můžete vytvořit instanční objekt, který se používá k ověření REST API služby Azure.
+> Tyto kroky jsou zkrácená verze oddílu *vytvořit instanční objekt s heslem* v tématu [použití Azure CLI k vytvoření instančního objektu pro přístup](/cli/azure/create-an-azure-service-principal-azure-cli) k dokumentu prostředků. Pomocí těchto kroků můžete vytvořit instanční objekt, který se používá k ověření REST API služby Azure.
 
 1. Z příkazového řádku použijte následující příkaz k vypsání předplatných Azure.
 
@@ -242,13 +242,13 @@ Postupujte podle kroků popsaných v části Začínáme [s Azure CLI](/cli/azur
 
    Hodnota vrácená z tohoto příkazu je __ID aplikace__ pro novou aplikaci. Uložte tuto hodnotu.
 
-3. K vytvoření instančního objektu s použitím **ID aplikace**použijte následující příkaz.
+3. K vytvoření instančního objektu s použitím **ID aplikace** použijte následující příkaz.
 
    ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Hodnota vrácená z tohoto příkazu je __ID objektu__. Uložte tuto hodnotu.
+     Hodnota vrácená z tohoto příkazu je __ID objektu__ . Uložte tuto hodnotu.
 
 4. Přiřaďte roli **vlastníka** k instančnímu objektu pomocí hodnoty **ID objektu** . Použijte **ID předplatného** , které jste získali dříve.
 
@@ -274,7 +274,7 @@ Nastavte `$TENANTID` , `$APPID` a `$PASSWORD` na hodnoty získané nebo použit�
 
 Pokud je tento požadavek úspěšný, obdržíte odpověď řady 200 a tělo odpovědi obsahuje dokument JSON.
 
-Dokument JSON vrácený touto žádostí obsahuje element s názvem **access_token**. Hodnota **access_token** se používá k ověřování požadavků na REST API.
+Dokument JSON vrácený touto žádostí obsahuje element s názvem **access_token** . Hodnota **access_token** se používá k ověřování požadavků na REST API.
 
 ```json
 {

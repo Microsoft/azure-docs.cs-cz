@@ -7,18 +7,18 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d355e7557ff38c52872a89941025d33d01bd92d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa9f9b07eb20c995bc0cf47dd3bf72f236c3112
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503306"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546819"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>Automatické zvětšení úložiště na serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 Tento článek popisuje, jak můžete nakonfigurovat úložiště serveru Azure Database for MySQL pro růst, aniž by to ovlivnilo zatížení.
 
-Automatické zvětšení úložiště zabrání vašemu serveru [dosáhnout limitu úložiště](/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit) a stane se jen pro čtení. U serverů s 100 GB nebo méně zřízeným úložištěm se velikost zvýší o 5 GB, pokud je volné místo menší než 10%. U serverů s více než 100 GB zřízeného úložiště se velikost zvýší o 5%, pokud je volné místo menší než 10 GB. V části úložiště [Azure Database for MySQL cenové úrovně](/azure/mysql/concepts-pricing-tiers#storage)platí omezení maximální velikosti úložiště.
+Automatické zvětšení úložiště zabrání vašemu serveru [dosáhnout limitu úložiště](./concepts-pricing-tiers.md#reaching-the-storage-limit) a stane se jen pro čtení. U serverů s 100 GB nebo méně zřízeným úložištěm se velikost zvýší o 5 GB, pokud je volné místo menší než 10%. U serverů s více než 100 GB zřízeného úložiště se velikost zvýší o 5%, pokud je volné místo menší než 10 GB. V části úložiště [Azure Database for MySQL cenové úrovně](./concepts-pricing-tiers.md#storage)platí omezení maximální velikosti úložiště.
 
 > [!IMPORTANT]
 > Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
-ms.openlocfilehash: e0333c5cabec597261938765298b622bf2fe79a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88f9b82df0ce1fae78f0c9de9c8d7a7b158d151e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542508"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546326"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>Přesunutí serveru Azure Database for MySQL do jiné oblasti pomocí Azure Portal
 
@@ -21,7 +21,7 @@ Existují různé scénáře, jak přesunout existující Azure Database for MyS
 K dokončení přesunu do jiné oblasti můžete použít [repliku čtení Azure Database for MySQL mezi jednotlivými oblastmi](concepts-read-replicas.md#cross-region-replication) . K tomu je třeba nejprve vytvořit repliku pro čtení v cílové oblasti. Potom zastavte replikaci na server repliky pro čtení, aby byl samostatný server, který přijímá přenosy čtení i zápisu. 
 
 > [!NOTE]
-> Tento článek se zaměřuje na přesun serveru do jiné oblasti. Pokud chcete přesunout server do jiné skupiny prostředků nebo předplatného, přečtěte si článek o [přesunutí](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) . 
+> Tento článek se zaměřuje na přesun serveru do jiné oblasti. Pokud chcete přesunout server do jiné skupiny prostředků nebo předplatného, přečtěte si článek o [přesunutí](../azure-resource-manager/management/move-resource-group-and-subscription.md) . 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,8 +35,8 @@ Pokud chcete vytvořit v cílové oblasti server repliky pro různé oblasti pom
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Vyberte existující server Azure Database for MySQL, který chcete použít jako zdrojový server. Tato akce otevře stránku s **přehledem** .
-1. V nabídce v části **Nastavení**vyberte **replikace** .
-1. Vyberte **Přidat repliku**.
+1. V nabídce v části **Nastavení** vyberte **replikace** .
+1. Vyberte **Přidat repliku** .
 1. Zadejte název serveru repliky.
 1. Vyberte umístění serveru repliky. Výchozí umístění je stejné jako na zdrojovém serveru. Ověřte, zda jste vybrali cílové umístění, do kterého chcete repliku nasadit.
 1. Vyberte **OK** a potvrďte tak vytvoření repliky. Při vytváření repliky se data zkopírují ze zdrojového serveru do repliky. Čas vytvoření může trvat několik minut nebo i déle, a to v poměru k velikosti zdrojového serveru.
@@ -53,19 +53,19 @@ Pokud chcete vytvořit v cílové oblasti server repliky pro různé oblasti pom
 Zastavení replikace na server repliky způsobí, že se stane samostatným serverem. Pokud chcete zastavit replikaci do repliky z Azure Portal, použijte následující postup:
 
 1. Po vytvoření repliky vyhledejte a vyberte zdrojový server Azure Database for MySQL. 
-1. V nabídce v části **Nastavení**vyberte **replikace** .
+1. V nabídce v části **Nastavení** vyberte **replikace** .
 1. Vyberte server repliky.
-1. Vyberte **zastavit replikaci**.
-1. Kliknutím na **OK**potvrďte, že chcete replikaci zastavit.
+1. Vyberte **zastavit replikaci** .
+1. Kliknutím na **OK** potvrďte, že chcete replikaci zastavit.
 
 ## <a name="clean-up-source-server"></a>Vyčištění zdrojového serveru
 
 Je možné, že budete chtít zdrojový Azure Database for MySQL server odstranit. Můžete to udělat podle následujících kroků:
 
 1. Po vytvoření repliky vyhledejte a vyberte zdrojový server Azure Database for MySQL.
-1. V okně **Přehled** vyberte **Odstranit**.
+1. V okně **Přehled** vyberte **Odstranit** .
 1. Zadejte název zdrojového serveru a potvrďte, že chcete odstranit.
-1. Vyberte **Odstranit**.
+1. Vyberte **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 

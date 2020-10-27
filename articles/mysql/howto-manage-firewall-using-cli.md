@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb7f8547419b45314ad044b41957a53085cdbe13
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503051"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546394"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Vytváření a Správa Azure Database for MySQL pravidel brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru se dají použít ke správě přístupu k serveru Azure Database for MySQL z konkrétní IP adresy nebo rozsahu IP adres. Pomocí pohodlných příkazů rozhraní příkazového řádku Azure můžete vytvářet, aktualizovat, odstraňovat, zobrazovat a zobrazovat pravidla brány firewall pro správu serveru. Přehled Azure Database for MySQL bran firewall najdete v tématu [pravidla brány firewall pro Azure Database for MySQL serveru](./concepts-firewall-rules.md).
@@ -21,18 +21,18 @@ Pravidla brány firewall na úrovni serveru se dají použít ke správě přís
 Pravidla Virtual Network (VNet) je možné použít také k zabezpečení přístupu k serveru. Přečtěte si další informace o [vytváření a správě koncových bodů a pravidel služby Virtual Network pomocí Azure CLI](howto-manage-vnet-using-cli.md).
 
 ## <a name="prerequisites"></a>Požadavky
-* [Nainstalovat rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* [Nainstalovat rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 * [Server a databáze Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="firewall-rule-commands"></a>Příkazy pravidla brány firewall:
 Pomocí příkazu **AZ MySQL server firewall-Rule** se v Azure CLI použijí pravidla firewallu pro vytvoření, odstranění, vypsání, zobrazení a aktualizaci.
 
 Příkaz
-- **vytvořit**: Vytvořte pravidlo brány firewall serveru Azure MySQL.
-- **Odstranit**: odstraní pravidlo brány firewall serveru Azure MySQL.
-- **seznam**: vypíše pravidla brány firewall serveru Azure MySQL.
-- **Zobrazit**: zobrazí podrobnosti pravidla brány firewall serveru Azure MySQL.
-- **aktualizace**: aktualizujte pravidlo brány firewall serveru Azure MySQL.
+- **vytvořit** : Vytvořte pravidlo brány firewall serveru Azure MySQL.
+- **Odstranit** : odstraní pravidlo brány firewall serveru Azure MySQL.
+- **seznam** : vypíše pravidla brány firewall serveru Azure MySQL.
+- **Zobrazit** : zobrazí podrobnosti pravidla brány firewall serveru Azure MySQL.
+- **aktualizace** : aktualizujte pravidlo brány firewall serveru Azure MySQL.
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Přihlaste se k Azure a seznamte se s Azure Database for MySQL servery.
 Pomocí příkazu **AZ Login** připojte Azure CLI k účtu Azure bezpečně.

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dcb5d7ed75bda8422ba3bd461b08d3bfb2d974f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595780"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541005"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight pomocí Balíček zabezpečení podniku
 
@@ -87,13 +87,13 @@ K vyhledání plně kvalifikovaného názvu domény hlavnímu uzlu použijte inf
 
 Cluster HDInsight bez protokolu ESP má dva uživatelské účty, které se vytvoří během vytváření clusteru:
 
-- **Správce Ambari**: Tento účet je také známý jako uživatel *Hadoop* nebo *uživatel http*. Tento účet se dá použít k přihlášení k Ambari na `https://CLUSTERNAME.azurehdinsight.net` . Dá se také použít ke spouštění dotazů v zobrazeních Ambari, spouštění úloh prostřednictvím externích nástrojů (například PowerShell, Templeton, Visual Studio) a k ověření pomocí ovladače rozhraní ODBC pro podregistr a nástrojů BI (například Excel, Power BI nebo Tableau).
+- **Správce Ambari** : Tento účet je také známý jako uživatel *Hadoop* nebo *uživatel http* . Tento účet se dá použít k přihlášení k Ambari na `https://CLUSTERNAME.azurehdinsight.net` . Dá se také použít ke spouštění dotazů v zobrazeních Ambari, spouštění úloh prostřednictvím externích nástrojů (například PowerShell, Templeton, Visual Studio) a k ověření pomocí ovladače rozhraní ODBC pro podregistr a nástrojů BI (například Excel, Power BI nebo Tableau).
 
 Cluster HDInsight s protokolem ESP má kromě správce Ambari tři nové uživatele.
 
-- **Správce Ranger**: Tento účet je místní účet správce Apache Ranger. Nejedná se o uživatele domény služby Active Directory. Tento účet se dá použít k nastavení zásad a k provádění dalších správců uživatelů nebo delegovaných správců (aby mohli uživatelé spravovat zásady). Ve výchozím nastavení je uživatelské jméno *admin* a heslo je stejné jako heslo správce Ambari. Heslo lze aktualizovat ze stránky nastavení v Ranger.
+- **Správce Ranger** : Tento účet je místní účet správce Apache Ranger. Nejedná se o uživatele domény služby Active Directory. Tento účet se dá použít k nastavení zásad a k provádění dalších správců uživatelů nebo delegovaných správců (aby mohli uživatelé spravovat zásady). Ve výchozím nastavení je uživatelské jméno *admin* a heslo je stejné jako heslo správce Ambari. Heslo lze aktualizovat ze stránky nastavení v Ranger.
 
-- **Uživatel domény Správce clusteru**: Tento účet je uživatelem domény služby Active Directory, který je určený jako správce clusteru Hadoop, včetně Ambari a Ranger. Během vytváření clusteru je nutné zadat přihlašovací údaje tohoto uživatele. Tento uživatel má následující oprávnění:
+- **Uživatel domény Správce clusteru** : Tento účet je uživatelem domény služby Active Directory, který je určený jako správce clusteru Hadoop, včetně Ambari a Ranger. Během vytváření clusteru je nutné zadat přihlašovací údaje tohoto uživatele. Tento uživatel má následující oprávnění:
     - Připojte počítače k doméně a umístěte je do organizační jednotky, kterou zadáte při vytváření clusteru.
     - Vytvořte instanční objekty v rámci organizační jednotky, kterou zadáte při vytváření clusteru.
     - Vytváření reverzních záznamů DNS
@@ -102,7 +102,7 @@ Cluster HDInsight s protokolem ESP má kromě správce Ambari tři nové uživat
 
     V clusteru jsou některé koncové body (například Templeton), které nespravuje Ranger, a proto nejsou zabezpečené. Tyto koncové body jsou zamčené pro všechny uživatele s výjimkou uživatele domény Správce clusteru.
 
-- **Regular**: během vytváření clusteru můžete zadat několik skupin služby Active Directory. Uživatelé v těchto skupinách jsou synchronizovaný na Ranger a Ambari. Tito uživatelé jsou uživatelé domény a mají přístup pouze k koncovým bodům spravovaným Ranger (například Hiveserver2). Pro tyto uživatele budou platit všechny zásady a auditování RBAC.
+- **Regular** : během vytváření clusteru můžete zadat několik skupin služby Active Directory. Uživatelé v těchto skupinách jsou synchronizovaný na Ranger a Ambari. Tito uživatelé jsou uživatelé domény a mají přístup pouze k koncovým bodům spravovaným Ranger (například Hiveserver2). Pro tyto uživatele budou platit všechny zásady a auditování RBAC.
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>Role clusterů HDInsight s ESP
 
@@ -117,7 +117,7 @@ HDInsight Balíček zabezpečení podniku má následující role:
 **Chcete-li zobrazit oprávnění těchto rolí**
 
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Podívejte [se na téma otevření uživatelského rozhraní pro správu Ambari](#open-the-ambari-management-ui).
-2. V nabídce vlevo vyberte **role**.
+2. V nabídce vlevo vyberte **role** .
 3. Vyberte modrou otazník, abyste viděli oprávnění:
 
     ![Oprávnění role protokolu ESP pro HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
@@ -126,7 +126,7 @@ HDInsight Balíček zabezpečení podniku má následující role:
 
 1. Přejděte do `https://CLUSTERNAME.azurehdinsight.net/` složky název_clusteru, kde je název vašeho clusteru.
 1. Přihlaste se k Ambari pomocí uživatelského jména a hesla v doméně správce clusteru.
-1. V pravém horním rohu vyberte rozevírací nabídku **správce** a pak vyberte **Spravovat Ambari**.
+1. V pravém horním rohu vyberte rozevírací nabídku **správce** a pak vyberte **Spravovat Ambari** .
 
     ![ESP HDInsight spravovat Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
@@ -137,21 +137,21 @@ HDInsight Balíček zabezpečení podniku má následující role:
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Seznam uživatelů domény synchronizovaných ze služby Active Directory
 
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Podívejte [se na téma otevření uživatelského rozhraní pro správu Ambari](#open-the-ambari-management-ui).
-2. V nabídce vlevo vyberte **Uživatelé**. Zobrazí se všichni uživatelé synchronizovaný ze služby Active Directory do clusteru HDInsight.
+2. V nabídce vlevo vyberte **Uživatelé** . Zobrazí se všichni uživatelé synchronizovaný ze služby Active Directory do clusteru HDInsight.
 
     ![Uživatelé seznamu v uživatelském rozhraní pro správu Ambari HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Seznam skupin domény synchronizovaných ze služby Active Directory
 
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Podívejte [se na téma otevření uživatelského rozhraní pro správu Ambari](#open-the-ambari-management-ui).
-2. V nabídce vlevo vyberte **skupiny**. Zobrazí se všechny skupiny synchronizované z Active Directory do clusteru HDInsight.
+2. V nabídce vlevo vyberte **skupiny** . Zobrazí se všechny skupiny synchronizované z Active Directory do clusteru HDInsight.
 
     ![Skupiny seznamů rozhraní ESP pro správu Ambari HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Konfigurace oprávnění k zobrazení podregistru
 
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Podívejte [se na téma otevření uživatelského rozhraní pro správu Ambari](#open-the-ambari-management-ui).
-2. V nabídce vlevo vyberte **zobrazení**.
+2. V nabídce vlevo vyberte **zobrazení** .
 3. Pokud chcete zobrazit podrobnosti, vyberte **podregistr** .
 
     ![Zobrazení registru ESP pro správu Ambari v prostředí HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
@@ -161,17 +161,17 @@ HDInsight Balíček zabezpečení podniku má následující role:
 
     ![Konfigurace zobrazení registru ESP Ambari pro správu v prostředí HDInsight konfigurace oprávnění](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 
-6. Vyberte **Přidat uživatele** nebo **Přidat skupinu**a pak zadejte uživatele nebo skupiny, které mohou používat zobrazení podregistru.
+6. Vyberte **Přidat uživatele** nebo **Přidat skupinu** a pak zadejte uživatele nebo skupiny, které mohou používat zobrazení podregistru.
 
 ## <a name="configure-users-for-the-roles"></a>Konfigurace uživatelů pro role
 
  Pokud chcete zobrazit seznam rolí a jejich oprávnění, přečtěte si téma role clusterů HDInsight s protokolem ESP.
 
 1. Otevřete uživatelské rozhraní pro správu Ambari.  Podívejte [se na téma otevření uživatelského rozhraní pro správu Ambari](#open-the-ambari-management-ui).
-2. V nabídce vlevo vyberte **role**.
+2. V nabídce vlevo vyberte **role** .
 3. Pokud chcete přiřadit uživatele a skupiny k různým rolím, vyberte **Přidat uživatele** nebo **Přidat skupinu** .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](apache-domain-joined-configure.md)protokolem ESP.
+- Informace o konfiguraci clusteru HDInsight s Balíček zabezpečení podniku najdete v tématu [konfigurace clusterů HDInsight s](./apache-domain-joined-configure-using-azure-adds.md)protokolem ESP.
 - Informace o konfiguraci zásad podregistru a spouštění dotazů na podregistr najdete v tématu [Konfigurace zásad Apache Hive pro clustery HDInsight s](apache-domain-joined-run-hive.md)protokolem ESP.

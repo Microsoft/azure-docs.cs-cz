@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
-ms.openlocfilehash: 84d9253b865ddac6d97395af3d8632e29cc2ea24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b80616806f846951ebbaffcb2bf31ad77b96266
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323804"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546598"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight
 
@@ -21,7 +21,7 @@ Naučte se, jak pomocí Apache Maven vytvořit aplikaci MapReduce založenou na 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks).
+* [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support).
 
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
 
@@ -38,13 +38,13 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Vytvoření projektu Maven
 
-1. Zadejte následující příkaz a vytvořte tak projekt Maven s názvem **wordcountjava**:
+1. Zadejte následující příkaz a vytvořte tak projekt Maven s názvem **wordcountjava** :
 
    ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    Tento příkaz vytvoří adresář s názvem zadaným `artifactID` parametrem (v tomto příkladu**wordcountjava** ). Tento adresář obsahuje následující položky:
+    Tento příkaz vytvoří adresář s názvem zadaným `artifactID` parametrem (v tomto příkladu **wordcountjava** ). Tento adresář obsahuje následující položky:
 
     * `pom.xml` – [Model objektu projektu (pom)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , který obsahuje informace a podrobnosti o konfiguraci použité k sestavení projektu.
     * src\main\java\org\apache\hadoop\examples: obsahuje kód vaší aplikace.

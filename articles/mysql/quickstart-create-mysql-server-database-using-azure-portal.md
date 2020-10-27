@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 7/15/2020
-ms.openlocfilehash: cdddd9a90911499421351adf0f41ef90f0e2f9a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a3438293bcbf656a371b55605c64a005ae4d599a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906564"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541396"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL v Azure Portal
 
@@ -24,13 +24,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 Otevřete webový prohlížeč a přejděte na web [Azure Portal](https://portal.azure.com/). Zadejte přihlašovací údaje pro přihlášení k portálu. Výchozím zobrazením je váš řídicí panel služby.
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
-Server Azure Database for MySQL vytvoříte s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-compute-unit-and-storage.md). Server vytvoříte v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md).
+Server Azure Database for MySQL vytvoříte s definovanou sadou [výpočetních prostředků a prostředků úložiště](./concepts-pricing-tiers.md). Server vytvoříte v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md).
 
 Server Azure Database for MySQL vytvoříte pomocí tohoto postupu:
 
 1. V levém horním rohu portálu vyberte **vytvořit prostředek** (+).
 
-2. Vyberte **databáze**  >  **Azure Database for MySQL**. Službu můžete vyhledat také zadáním **MySQL** do vyhledávacího pole.
+2. Vyberte **databáze**  >  **Azure Database for MySQL** . Službu můžete vyhledat také zadáním **MySQL** do vyhledávacího pole.
 
   
 >[!div class="mx-imgBorder"]
@@ -46,13 +46,13 @@ Server Azure Database for MySQL vytvoříte pomocí tohoto postupu:
 Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro váš server. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
 Skupina prostředků | *myresourcegroup* | Zadejte název nové nebo existující skupiny prostředků. Skupinu prostředků lze použít k uspořádání závislostí, které patří do jednoho projektu.
 Název serveru | Jedinečný název serveru | Zadejte jedinečný název, který identifikuje server Azure Database for MySQL. Například ' mysqldbserver '. Název serveru může obsahovat jenom malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
-Zdroj dat |*Žádný* | Pokud chcete vytvořit nový server úplně od začátku, vyberte *Žádný*. ( *Zálohování* vyberete, pokud jste vytvořili server z geografické zálohy existujícího Azure Database for MySQLho serveru).
-Přihlášení správce serveru | myadmin | Zadejte uživatelské jméno pro správce serveru. Jako uživatelské jméno správce nemůžete použít **azure_superuser**, **admin**, **Administrator**, **root**, **Guest**ani **Public** .
+Zdroj dat |*Žádný* | Pokud chcete vytvořit nový server úplně od začátku, vyberte *Žádný* . ( *Zálohování* vyberete, pokud jste vytvořili server z geografické zálohy existujícího Azure Database for MySQLho serveru).
+Přihlášení správce serveru | myadmin | Zadejte uživatelské jméno pro správce serveru. Jako uživatelské jméno správce nemůžete použít **azure_superuser** , **admin** , **Administrator** , **root** , **Guest** ani **Public** .
 Heslo | *Podle vašeho výběru* | Zadejte nové heslo pro účet správce serveru. Heslo musí mít délku 8 až 128 znaků a kombinaci velkých a malých písmen, číslic a jiných než alfanumerických znaků (!, $, #,% a tak dále).
 Potvrzení hesla | *Podle vašeho výběru*| Potvrďte heslo účtu správce.
 Umístění | *Oblast nejblíže vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
 Verze | *Nejnovější hlavní verze*| Nejnovější hlavní verze (pokud nemáte specifické požadavky vyžadující jinou verzi).
-Výpočty a úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** |Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server**. Pak vyberte příslušnou cenovou úroveň. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mysql/). Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte z **možností redundance zálohy**možnost **geograficky redundantní** . Vyberte **OK**.
+Výpočty a úložiště | **Obecné účely** , **Gen 5** , **2 virtuální jádra** , **5 GB** , **7 dní** , **Geograficky redundantní** |Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Konfigurovat Server** . Pak vyberte příslušnou cenovou úroveň. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mysql/). Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte z **možností redundance zálohy** možnost **geograficky redundantní** . Vyberte **OK** .
 
    > [!NOTE]
    > Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. 
@@ -61,21 +61,21 @@ Výpočty a úložiště | **Obecné účely**, **Gen 5**, **2 virtuální jádr
    
 5. Pokud chcete monitorovat proces nasazení, vyberte **Oznámení** (ikona zvonku) na panelu nástrojů.
    
-Ve výchozím nastavení se v rámci vašeho serveru vytvoří následující databáze: **information_schema**, **mysql**, **performance_schema** a **sys**.
+Ve výchozím nastavení se v rámci vašeho serveru vytvoří následující databáze: **information_schema** , **mysql** , **performance_schema** a **sys** .
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurace pravidla brány firewall na úrovni serveru
-Ve výchozím nastavení je server, který jste vytvořili, chráněný pomocí brány firewall a není veřejně přístupný. Pokud chcete umožnit přístup k vaší IP adrese, přejděte k prostředku serveru v Azure Portal a vyberte **zabezpečení připojení** z nabídky na levé straně pro prostředek serveru. Nevíte, jak najít prostředek, najdete v tématu [Postup otevření prostředku](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources).
+Ve výchozím nastavení je server, který jste vytvořili, chráněný pomocí brány firewall a není veřejně přístupný. Pokud chcete umožnit přístup k vaší IP adrese, přejděte k prostředku serveru v Azure Portal a vyberte **zabezpečení připojení** z nabídky na levé straně pro prostředek serveru. Nevíte, jak najít prostředek, najdete v tématu [Postup otevření prostředku](../azure-resource-manager/management/manage-resources-portal.md#open-resources).
 
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png" alt-text="Možnost Azure Database for MySQL":::
    
-Teď vyberte **Přidat aktuální IP adresu klienta** a pak vyberte **Uložit**. Můžete přidat další IP adresy nebo zadat rozsah IP adres pro připojení k serveru z těchto IP adres. Další informace najdete v tématu [Správa pravidel brány firewall na serveru Azure Database for MySQL](./concepts-firewall-rules.md) .
+Teď vyberte **Přidat aktuální IP adresu klienta** a pak vyberte **Uložit** . Můžete přidat další IP adresy nebo zadat rozsah IP adres pro připojení k serveru z těchto IP adres. Další informace najdete v tématu [Správa pravidel brány firewall na serveru Azure Database for MySQL](./concepts-firewall-rules.md) .
 
 > [!NOTE]
 > Ověřte, jestli vaše síť umožňuje odchozí provoz přes port 3306, který používá Azure Database for MySQL, aby se předešlo problémům s připojením.  
 
 ## <a name="connect-to-azure-database-for-mysql-server-using-mysql-command-line-client"></a>Připojení k Azure Database for MySQL serveru pomocí klienta příkazového řádku MySQL
-Můžete zvolit [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) nebo [MySQL Workbench](./connect-workbench.md) pro připojení k serveru z místního prostředí. V tomto rychlém startu spustíme **mysql.exe** v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) , abyste se mohli připojit k serveru.
+Můžete zvolit [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) nebo [MySQL Workbench](./connect-workbench.md) pro připojení k serveru z místního prostředí. V tomto rychlém startu spustíme **mysql.exe** v [Azure Cloud Shell](../cloud-shell/overview.md) , abyste se mohli připojit k serveru.
 
 1. Na portálu spusťte Azure Cloud Shell kliknutím na zvýrazněnou ikonu v levé horní části. Poznamenejte si název serveru, přihlašovací jméno správce serveru, heslo a předplatné nově vytvořeného serveru z **přehledu** , jak je znázorněno na následujícím obrázku.
 
@@ -129,10 +129,10 @@ Můžete zvolit [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Úspěšně jste vytvořili Azure Database for MySQL server ve skupině prostředků.  Pokud neočekáváte, že tyto prostředky budete potřebovat v budoucnu, můžete je odstranit odstraněním skupiny prostředků nebo pouhým odstraněním serveru MySQL. Pokud chcete odstranit skupinu prostředků, postupujte podle těchto kroků:
-1. V Azure Portal vyhledejte a vyberte **skupiny prostředků**. 
+1. V Azure Portal vyhledejte a vyberte **skupiny prostředků** . 
 2. V seznamu Skupina prostředků vyberte název vaší skupiny prostředků.
-3. Na stránce Přehled vaší skupiny prostředků vyberte **Odstranit skupinu prostředků**.
-4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
+3. Na stránce Přehled vaší skupiny prostředků vyberte **Odstranit skupinu prostředků** .
+4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit** .
 
 Pokud chcete odstranit server, můžete kliknout na tlačítko **Odstranit** na stránce **Přehled** vašeho serveru, jak je znázorněno níže:
 > [!div class="mx-imgBorder"]
@@ -140,6 +140,6 @@ Pokud chcete odstranit server, můžete kliknout na tlačítko **Odstranit** na 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
->[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/app-service-web-tutorial-php-mysql.md) 
-> [Sestavení aplikace PHP v systému Linux pomocí MySQL](../app-service/containers/tutorial-php-mysql-app.md) 
-> [Sestavení jarní aplikace založené na jazyce Java pomocí MySQL](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/tutorial-php-mysql-app.md) 
+> [Sestavení aplikace PHP v systému Linux pomocí MySQL](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux) 
+> [Sestavení jarní aplikace založené na jazyce Java pomocí MySQL](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)

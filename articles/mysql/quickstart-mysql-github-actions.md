@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 7b4620c739b2f94cb6b96743280cd1decbbb746e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326185"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541260"
 ---
 # <a name="use-github-actions-to-connect-to-azure-mysql"></a>Použití akcí GitHubu pro připojení k Azure MySQL
 
 Začněte s [akcemi GitHubu](https://docs.github.com/en/actions) pomocí pracovního postupu k nasazení aktualizací databáze do [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat: 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -39,7 +39,7 @@ Soubor má dvě části:
 
 ## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
 
-[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
+[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
 
 Zástupné symboly nahraďte `server-name` názvem vašeho serveru MySQL hostovaným v Azure. Nahraďte `subscription-id` a `resource-group` pomocí ID předplatného a skupiny prostředků připojené k serveru MySQL.  
 
@@ -66,7 +66,7 @@ Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které po
 
 ## <a name="copy-the-mysql-connection-string"></a>Zkopírování připojovacího řetězce MySQL 
 
-V Azure Portal přejdete na server Azure Database for MySQL a otevřete **Nastavení**  >  **připojovací řetězce**. Zkopírujte připojovací řetězec pro **ADO.NET**. Nahraďte zástupné hodnoty pro `your_database` a `your_password` . Připojovací řetězec bude vypadat podobně jako v tomto příkladu. 
+V Azure Portal přejdete na server Azure Database for MySQL a otevřete **Nastavení**  >  **připojovací řetězce** . Zkopírujte připojovací řetězec pro **ADO.NET** . Nahraďte zástupné hodnoty pro `your_database` a `your_password` . Připojovací řetězec bude vypadat podobně jako v tomto příkladu. 
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
@@ -77,11 +77,11 @@ Připojovací řetězec použijete jako tajný klíč GitHubu.
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště.
 
-1. Vyberte **nastavení > tajných klíčů > nový tajný kód**.
+1. Vyberte **nastavení > tajných klíčů > nový tajný kód** .
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
-    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
+    Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
 
     ```yaml
     - uses: azure/login@v1
@@ -98,7 +98,7 @@ Připojovací řetězec použijete jako tajný klíč GitHubu.
 
 1. Přejít na **Akce** pro úložiště GitHub. 
 
-2. Vyberte **nastavit pracovní postup sami**. 
+2. Vyberte **nastavit pracovní postup sami** . 
 
 2. Odstraňte vše po `on:` části souboru pracovního postupu. Zbývající pracovní postup může vypadat například takto: 
 
@@ -191,4 +191,4 @@ Pokud už databázi a úložiště Azure MySQL nepotřebujete, vyčistěte prost
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o integraci Azure a GitHubu](https://docs.microsoft.com/azure/developer/github/)
+> [Další informace o integraci Azure a GitHubu](/azure/developer/github/)

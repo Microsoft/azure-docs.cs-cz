@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082271"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546037"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
 
-V tomto dokumentu se dozvíte, jak předpovědět prodlevy při příchodu letu pomocí **modelu logistické** regrese. V příkladu se používá zpoždění letu a data o počasí připojená pomocí **Sparku**.
+V tomto dokumentu se dozvíte, jak předpovědět prodlevy při příchodu letu pomocí **modelu logistické** regrese. V příkladu se používá zpoždění letu a data o počasí připojená pomocí **Sparku** .
 
 I když oba balíčky běží na spouštěcím modulu Spark Apache Hadoop, jsou blokované ze sdílení dat v paměti, protože každý z nich vyžaduje své vlastní relace Sparku. Dokud se tento problém nevyřeší v nadcházející verzi ml Server, doporučujeme, abyste zachovali překrývající se relace Spark a mohli data Exchange obejít prostřednictvím zprostředkujících souborů. Zde uvedené pokyny ukazují, že tyto požadavky je jednoduché dosáhnout.
 
@@ -25,7 +25,7 @@ Tento příklad se původně sdílel v hovořit na úrovni vrstvy 2016 od Mario 
 
 Kód byl původně napsán pro ML Server běžící na Sparku v clusteru HDInsight v Azure. Ale koncept kombinace použití Sparku a nástroje pro škálování v jednom skriptu je platný i v kontextu místních prostředí.
 
-Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) ml Server. Při procházení tohoto scénáře jste zavedeni do [Sparku](https://spark.apache.org/docs/2.1.0/sparkr.html) .
+Kroky v tomto dokumentu předpokládají, že máte pokročilou úroveň znalostí R a že je knihovna pro [škálování](/machine-learning-server/r/concept-what-is-revoscaler) ml Server. Při procházení tohoto scénáře jste zavedeni do [Sparku](https://spark.apache.org/docs/2.1.0/sparkr.html) .
 
 ## <a name="the-airline-and-weather-datasets"></a>Letecké a počasí datové sady
 
@@ -529,13 +529,13 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jsme ukázali, jak je možné kombinovat použití Sparku k manipulaci s daty pomocí nástroje pro vývoj modelů v Hadoop Spark. Tento scénář vyžaduje, abyste zachovali samostatné relace Spark, běželi jenom jednu relaci najednou a data Exchange prostřednictvím souborů CSV. I když je to jasné, měl by být tento proces ještě snazší v nadcházející verzi služby ML, když Spark a služba pro škálování můžou sdílet relaci Sparku a sdílet tak datarámce Sparku.
 
 ## <a name="next-steps-and-more-information"></a>Další kroky a další informace
 
-- Další informace o použití ML Server v Apache Spark najdete v [příručce Začínáme](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
+- Další informace o použití ML Server v Apache Spark najdete v [příručce Začínáme](/machine-learning-server/r/how-to-revoscaler-spark).
 
 - Informace o službách ML ve službě HDInsight najdete v tématu [Přehled služeb ml v HDInsight](r-server/r-server-overview.md).
 
@@ -543,4 +543,4 @@ Další informace o použití Sparku najdete v těchto tématech:
 
 - [Dokument Apache Spark](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- [Sparkový přehled](https://docs.databricks.com/spark/latest/sparkr/overview.html) z datacihly.
+- [Spark – přehled](/azure/databricks/spark/latest/sparkr/overview)

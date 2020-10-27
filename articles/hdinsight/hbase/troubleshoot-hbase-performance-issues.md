@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887151"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547890"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Řešení potíží s výkonem Apache HBase ve službě Azure HDInsight
 
@@ -73,9 +73,9 @@ Níže jsou uvedené některé další konkrétní parametry, které jsme proved
 
 - Zvětšete `memstore` Velikost z výchozích 128 MB na 256 MB. Toto nastavení se obvykle doporučuje pro těžké scénáře zápisu.
 
-- Zvyšte počet podprocesů, které jsou vyhrazeny pro komprimaci, od výchozího nastavení **1** až **4**. Toto nastavení je relevantní, pokud sledujeme časté drobné komprimace.
+- Zvyšte počet podprocesů, které jsou vyhrazeny pro komprimaci, od výchozího nastavení **1** až **4** . Toto nastavení je relevantní, pokud sledujeme časté drobné komprimace.
 
-- Vyhněte se zablokování `memstore` vyprázdnění kvůli limitu úložiště. Pokud chcete tuto vyrovnávací paměť zadat, zvyšte `Hbase.hstore.blockingStoreFiles` nastavení na **100**.
+- Vyhněte se zablokování `memstore` vyprázdnění kvůli limitu úložiště. Pokud chcete tuto vyrovnávací paměť zadat, zvyšte `Hbase.hstore.blockingStoreFiles` nastavení na **100** .
 
 - K řízení vyprázdnění použijte následující nastavení:
 
@@ -104,13 +104,13 @@ Níže jsou uvedené některé další konkrétní parametry, které jsme proved
 - Vypršení časových limitů RPC: **3 minuty**
 
    - Vypršení časových limitů RPC zahrnuje vypršení časového limitu pro adaptéry služby HBA, časový limit pro klientský skener a časový limit dotazů v Phoenixu. 
-   - Ujistěte se, že `hbase.client.scanner.caching` je parametr nastavený na stejnou hodnotu na konci serveru i na konci klienta. Pokud nejsou totožné, toto nastavení vede k chybám na konci klienta, které souvisejí s `OutOfOrderScannerException` . Toto nastavení by mělo být pro velké kontroly nastaveno na nízkou hodnotu. Nastavíme tuto hodnotu na **100**.
+   - Ujistěte se, že `hbase.client.scanner.caching` je parametr nastavený na stejnou hodnotu na konci serveru i na konci klienta. Pokud nejsou totožné, toto nastavení vede k chybám na konci klienta, které souvisejí s `OutOfOrderScannerException` . Toto nastavení by mělo být pro velké kontroly nastaveno na nízkou hodnotu. Nastavíme tuto hodnotu na **100** .
 
 ## <a name="other-considerations"></a>Další důležité informace
 
 Níže jsou uvedené další parametry pro zvážení ladění:
 
-- `Hbase.rs.cacheblocksonwrite` – ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true**.
+- `Hbase.rs.cacheblocksonwrite` – ve výchozím nastavení je v HDI toto nastavení nastaveno na **hodnotu true** .
 
 - Nastavení, které umožňuje odložit menší komprimaci na později.
 
@@ -124,4 +124,4 @@ Pokud váš problém zůstane nevyřešený, podívejte se na jeden z následuj�
 
 - Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) . Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Vaše předplatné Microsoft Azure zahrnuje přístup k podpoře správy předplatných a fakturaci a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Vaše předplatné Microsoft Azure zahrnuje přístup k podpoře správy předplatných a fakturaci a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

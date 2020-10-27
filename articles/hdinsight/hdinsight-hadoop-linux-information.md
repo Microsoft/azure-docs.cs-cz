@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 1b3c694b4d6134f30d04ba8bafee9a6ffabdd959
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488108"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546105"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -24,9 +24,9 @@ Clustery Azure HDInsight poskytují Apache Hadoop v známém prostředí pro Lin
 Mnohé z kroků v tomto dokumentu používají následující nástroje, které může být potřeba nainstalovat do systému.
 
 * [oblý](https://curl.haxx.se/) – slouží ke komunikaci s webovými službami.
-* **JQ**, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
+* **JQ** , procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 * [Azure CLI](/cli/azure/install-azure-cli) – slouží k vzdálené správě služeb Azure.
-* **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient SSH** . Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Uživatelé
 
@@ -81,7 +81,7 @@ Tento příkaz vrátí dokument JSON popisující službu a pak [JQ](https://ste
     >
     > Ověřování je prostého textu – pomocí protokolu HTTPS vždy pomůžete zajistit, aby připojení bylo zabezpečené.
 
-* **SSH** -CLUSTERNAME-SSH.azurehdinsight.NET na portu 22 nebo 23. Port 22 se používá pro připojení k primárnímu hlavnímu uzlu, zatímco 23 se používá pro připojení k sekundárnímu. Další informace o hlavních uzlech najdete v tématu [dostupnost a spolehlivost Apache Hadoopch clusterů ve službě HDInsight](hdinsight-high-availability-linux.md).
+* **SSH** -CLUSTERNAME-SSH.azurehdinsight.NET na portu 22 nebo 23. Port 22 se používá pro připojení k primárnímu hlavnímu uzlu, zatímco 23 se používá pro připojení k sekundárnímu. Další informace o hlavních uzlech najdete v tématu [dostupnost a spolehlivost Apache Hadoopch clusterů ve službě HDInsight](./hdinsight-business-continuity.md).
 
     > [!NOTE]  
     > K hlavním uzlům clusteru můžete přistupovat jenom přes SSH z klientského počítače. Po připojení můžete k pracovním uzlům přistupovat pomocí SSH z hlavnímu uzlu.
@@ -92,8 +92,8 @@ Další informace najdete v tématu [porty používané službou Apache Hadoop S
 
 Soubory související se systémem Hadoop lze nalézt na uzlech clusteru na adrese `/usr/hdp` . Tento adresář obsahuje následující podadresáře:
 
-* **2.6.5.3009-43**: název adresáře je verze platformy Hadoop, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
-* **Current**: Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3009-43** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
+* **2.6.5.3009-43** : název adresáře je verze platformy Hadoop, kterou používá HDInsight. Číslo v clusteru se může lišit od výše uvedeného.
+* **Current** : Tento adresář obsahuje odkazy na podadresáře v adresáři **2.6.5.3009-43** . Tento adresář existuje, takže si nemusíte pamatovat číslo verze.
 
 Příklady dat a souborů JAR najdete v systém souborů DFS (Distributed File System) Hadoop v `/example` a `/HdiSamples` .
 
@@ -183,13 +183,13 @@ Informace o úložišti můžete také najít pomocí Azure Portal pomocí násl
 
 1. Z [Azure Portal](https://portal.azure.com/)vyberte svůj cluster HDInsight.
 
-2. V části **vlastnosti** vyberte **účty úložiště**. Zobrazí se informace o úložišti pro cluster.
+2. V části **vlastnosti** vyberte **účty úložiště** . Zobrazí se informace o úložišti pro cluster.
 
 ### <a name="how-do-i-access-files-from-outside-hdinsight"></a>Návody přístup k souborům mimo HDInsight
 
 Existují různé způsoby, jak získat přístup k datům mimo cluster HDInsight. Následuje několik odkazů na nástroje a sady SDK, které lze použít pro práci s daty:
 
-Pokud používáte __úložiště objektů BLOB v Azure__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
+Pokud používáte __úložiště objektů BLOB v Azure__ , přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
 * [Azure CLI](/cli/azure/install-az-cli2): příkazy rozhraní Command-Line pro práci s Azure. Po instalaci použijte `az storage` příkaz pro nápovědu k používání úložiště nebo `az storage blob` pro příkazy pro objekty blob.
 * [blobxfer.py](https://github.com/Azure/blobxfer): skript Pythonu pro práci s objekty blob v Azure Storage.
@@ -201,9 +201,9 @@ Pokud používáte __úložiště objektů BLOB v Azure__, přečtěte si násle
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
-    * [Rozhraní REST API pro službu Storage](https://msdn.microsoft.com/library/azure/dd135733.aspx)
+    * [Rozhraní REST API pro službu Storage](/rest/api/storageservices/Blob-Service-REST-API)
 
-Pokud používáte __Azure Data Lake Storage Gen1__, přečtěte si následující odkazy, které vám umožní získat přístup k datům:
+Pokud používáte __Azure Data Lake Storage Gen1__ , přečtěte si následující odkazy, které vám umožní získat přístup k datům:
 
 * [Webový prohlížeč](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -245,7 +245,7 @@ Pokud chcete použít jinou verzi komponenty, nahrajte potřebnou verzi a použi
 > [!IMPORTANT]
 > Komponenty dodávané s clusterem HDInsight jsou plně podporované a podpora Microsoftu pomáhají izolovat a řešit problémy související s těmito součástmi.
 >
-> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Microsoft Q&stránku s otázkou pro HDInsight](https://docs.microsoft.com/answers/topics/azure-hdinsight.html), [https://stackoverflow.com](https://stackoverflow.com) . Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org) , například: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
+> Vlastní komponenty získají komerčně přiměřenou podporu, která vám může pomoct s dalším řešením tohoto problému. To může vést k vyřešení problému nebo požádá vás o zapojení dostupných kanálů pro technologie Open Source, ve kterých se najde hlubokou odbornost pro danou technologii. Například existuje mnoho webů komunity, které lze použít, například: [Microsoft Q&stránku s otázkou pro HDInsight](/answers/topics/azure-hdinsight.html), [https://stackoverflow.com](https://stackoverflow.com) . Projekty Apache také obsahují projektové weby [https://apache.org](https://apache.org) , například: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
 
 ## <a name="next-steps"></a>Další kroky
 

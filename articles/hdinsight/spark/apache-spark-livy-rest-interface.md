@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: e5ed8fd2eba175a170c12c032e7c6ecf6a926b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcb845904216fbe4cb05828877775ea2178c45e9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084609"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539152"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Odesílání vzdálených úloh do clusteru HDInsight Spark pomocí rozhraní Apache Spark REST API
 
@@ -21,13 +21,13 @@ Naučte se používat [Apache Livy](https://livy.incubator.apache.org/), Apache 
 
 Livy můžete použít ke spouštění interaktivních prostředí Spark nebo k odeslání dávkových úloh na Spark. Tento článek pojednává o použití Livy k odesílání dávkových úloh. Fragmenty v tomto článku používají oblé k tomu, aby REST API volání do koncového bodu Livy Spark.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>Odeslání dávkové úlohy pro Apache Livy Spark
 
-Před odesláním úlohy služby Batch je nutné nahrát jar aplikace do úložiště clusteru přidruženého ke clusteru. Můžete k tomu použít nástroj příkazového řádku [AzCopy](../../storage/common/storage-use-azcopy.md). Existují různé další klienty, které můžete použít k nahrání dat. Další informace najdete v informacích o [nahrání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
+Před odesláním úlohy služby Batch je nutné nahrát jar aplikace do úložiště clusteru přidruženého ke clusteru. Můžete k tomu použít nástroj příkazového řádku [AzCopy](../../storage/common/storage-use-azcopy-v10.md). Existují různé další klienty, které můžete použít k nahrání dat. Další informace najdete v informacích o [nahrání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
 
 ```cmd
 curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
@@ -126,7 +126,7 @@ Proveďte tyto kroky:
     {"from":0,"total":0,"sessions":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Všimněte si, jak poslední řádek ve výstupu uvádí **součet: 0**, který navrhuje žádné spuštěné dávky.
+    Všimněte si, jak poslední řádek ve výstupu uvádí **součet: 0** , který navrhuje žádné spuštěné dávky.
 
 1. Nyní můžeme odeslat dávkovou úlohu. Následující fragment kódu používá vstupní soubor (input.txt) k předání názvu jar a názvu třídy jako parametrů. Pokud spouštíte tyto kroky z počítače s Windows, je doporučený postup pro použití vstupního souboru.
 
@@ -155,7 +155,7 @@ Proveďte tyto kroky:
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Všimněte si, jak poslední řádek výstupu říká **stav: spouští**se. Také uvádí, **ID: 0**. Tady je **0** ID dávky.
+    Všimněte si, jak poslední řádek výstupu říká **stav: spouští** se. Také uvádí, **ID: 0** . Tady je **0** ID dávky.
 
 1. Nyní můžete načíst stav této konkrétní dávky pomocí ID dávky.
 
@@ -177,7 +177,7 @@ Proveďte tyto kroky:
     {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    Výstup nyní zobrazuje **stav: úspěch**, což naznačuje, že byla úloha úspěšně dokončena.
+    Výstup nyní zobrazuje **stav: úspěch** , což naznačuje, že byla úloha úspěšně dokončena.
 
 1. Pokud chcete, můžete teď dávku odstranit.
 

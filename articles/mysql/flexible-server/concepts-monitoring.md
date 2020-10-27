@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: f3a58a6766c42385dd6611c2014ba36fd1078710
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fe1d5a5a472b47abd364a89d1a65f1249c67c0d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936150"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538659"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Monitorování Azure Database for MySQL flexibilních serverů s integrovanými metrikami
 
@@ -24,14 +24,14 @@ V tomto článku se dozvíte o různých metrikách dostupných pro váš flexib
 
 ## <a name="available-metrics"></a>Dostupné metriky
 
-Azure Database for MySQL flexibilní Server poskytuje různé metriky pro pochopení, jak vaše zatížení provádí a na základě těchto dat můžete pochopit dopad na server a aplikaci. V případě flexibilního serveru můžete například monitorovat **procento využití procesoru hostitele**, **aktivní připojení**, **vstupně-výstupní operace**a **procento paměti hostitele** k určení, kdy dojde k dopadu na výkon. Odtud bude možná potřeba optimalizovat vaše úlohy, škálovat je vertikálně změnou výpočetních vrstev nebo horizontálním škálováním pomocí repliky pro čtení.
+Azure Database for MySQL flexibilní Server poskytuje různé metriky pro pochopení, jak vaše zatížení provádí a na základě těchto dat můžete pochopit dopad na server a aplikaci. V případě flexibilního serveru můžete například monitorovat **procento využití procesoru hostitele** , **aktivní připojení** , **vstupně-výstupní operace** a **procento paměti hostitele** k určení, kdy dojde k dopadu na výkon. Odtud bude možná potřeba optimalizovat vaše úlohy, škálovat je vertikálně změnou výpočetních vrstev nebo horizontálním škálováním pomocí repliky pro čtení.
 
-Všechny metriky Azure mají četnost jednosměrných minut a každá metrika poskytuje historii 30 dnů. Výstrahy můžete nakonfigurovat pro metriky. Podrobné pokyny najdete v tématu [jak nastavit výstrahy](./how-to-alert-on-metric.md). Mezi další úlohy patří nastavení automatizovaných akcí, provádění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Všechny metriky Azure mají četnost jednosměrných minut a každá metrika poskytuje historii 30 dnů. Výstrahy můžete nakonfigurovat pro metriky. Podrobné pokyny najdete v tématu [jak nastavit výstrahy](./how-to-alert-on-metric.md). Mezi další úlohy patří nastavení automatizovaných akcí, provádění pokročilých analýz a archivace historie. Další informace najdete v tématu [Přehled metrik Azure](../../azure-monitor/platform/data-platform.md).
 
 ### <a name="list-of-metrics"></a>Seznam metrik
 Tyto metriky jsou k dispozici pro Azure Database for MySQL:
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Description|
+|Zobrazovaný název metriky|Metrika|Jednotka|Popis|
 |---|---|---|---|
 |Procento využití procesoru hostitele|cpu_percent|Procento|Procento využití procesoru na serveru, včetně využití procesoru z úlohy zákazníka i procesů Azure MySQL|
 |Síť hostitele v |network_bytes_ingress|Bajty|Příchozí síťový provoz na serveru, včetně provozu z databáze zákazníků i funkcí Azure MySQL, jako je replikace, monitorování, protokoly atd.|

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87874023"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541702"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Vytváření clusterů se systémem Linux v HDInsight pomocí Azure Portal
 
@@ -25,21 +25,21 @@ Azure Portal je webový nástroj pro správu služeb a prostředků hostovaných
 
 Azure Portal zpřístupňuje většinu vlastností clusteru. Pomocí šablon Azure Resource Manager můžete skrýt mnoho podrobností. Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop ve službě HDInsight pomocí šablon Správce prostředků](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-clusters"></a>Vytváření clusterů
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. V horní nabídce vyberte **+ vytvořit prostředek**.
+1. V horní nabídce vyberte **+ vytvořit prostředek** .
 
     ![Vytvoření nového clusteru v Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Vytvoření nového clusteru v Azure Portal")
 
 1. Vyberte **Analytics**  >  **Azure HDInsight** a přejdete na stránku **vytvořit cluster HDInsight** .
 
-## <a name="basics"></a>Základy
+## <a name="basics"></a>Základní kroky
 
 ![Základy vytváření clusterů HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Vytvoření nového clusteru v Azure Portal")
 
@@ -48,35 +48,35 @@ Na kartě **základy** zadejte následující informace:
 |Vlastnost |Popis |
 |---|---|
 |Předplatné|V rozevíracím seznamu vyberte předplatné Azure, které se používá pro cluster.|
-|Skupina prostředků|V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou**.|
+|Skupina prostředků|V rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte **vytvořit novou** .|
 |Název clusteru|Zadejte globálně jedinečný název.|
-|Oblast|V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.|
+|Region (Oblast)|V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.|
 |Typ clusteru|Kliknutím na **Vybrat typ clusteru** otevřete seznam. V seznamu vyberte požadovaný typ clusteru. Clustery HDInsight přicházejí v různých typech. Odpovídají zátěži nebo technologii, pro kterou je cluster laděn. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů.|
-|Verze|V rozevíracím seznamu vyberte **verzi**. Pokud si nejste jisti, co si můžete vybrat, použijte výchozí verzi. Další informace najdete v článku [Verze clusterů HDInsight](hdinsight-component-versioning.md).|
-|Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno, výchozí nastavení je **admin**.|
+|Verze|V rozevíracím seznamu vyberte **verzi** . Pokud si nejste jisti, co si můžete vybrat, použijte výchozí verzi. Další informace najdete v článku [Verze clusterů HDInsight](hdinsight-component-versioning.md).|
+|Uživatelské jméno přihlášení clusteru|Zadejte uživatelské jméno, výchozí nastavení je **admin** .|
 |Heslo přihlášení clusteru|Zadejte heslo.|
 |Potvrzení hesla pro přihlášení ke clusteru|Zadejte znovu heslo.|
 |Uživatelské jméno Secure Shell (SSH)|Zadejte uživatelské jméno, výchozí hodnota je **sshuser**|
 |Použít heslo přihlášení clusteru pro SSH|Pokud chcete stejné heslo SSH jako heslo správce, které jste zadali dříve, zaškrtněte políčko **použít heslo přihlášení clusteru pro SSH** . Pokud ne, zadejte buď **heslo** , nebo **veřejný klíč** k ověření uživatele SSH. Veřejný klíč je přístup, který doporučujeme. Kliknutím na **tlačítko vybrat** v dolní části uložte konfiguraci přihlašovacích údajů.  Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).|
 
-Vyberte **Další: >>úložiště ** pro přechod na další kartu.
+Vyberte **Další: >>úložiště** pro přechod na další kartu.
 
 ## <a name="storage"></a>Storage
 
 > [!WARNING] 
-> Od 15. června 2020 nebudou moct zákazníci vytvořit nový instanční objekt pomocí služby HDInsight. Viz téma [Vytvoření instančního objektu a certifikátů](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) pomocí Azure Active Directory.
+> Od 15. června 2020 nebudou moct zákazníci vytvořit nový instanční objekt pomocí služby HDInsight. Viz téma [Vytvoření instančního objektu a certifikátů](../active-directory/develop/howto-create-service-principal-portal.md) pomocí Azure Active Directory.
 
 ![Vytvoření úložiště clusteru HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Vytvoření nového clusteru v Azure Portal – úložiště")
 
 ### <a name="primary-storage"></a>Primární úložiště
 
-Z rozevíracího seznamu pro **typ primárního úložiště**vyberte výchozí typ úložiště. Pozdější pole, která se mají dokončit, se budou lišit v závislosti na vašem výběru. Pro **Azure Storage**:
+Z rozevíracího seznamu pro **typ primárního úložiště** vyberte výchozí typ úložiště. Pozdější pole, která se mají dokončit, se budou lišit v závislosti na vašem výběru. Pro **Azure Storage** :
 
-1. Pro **metodu výběru**vyberte buď **možnost vybrat ze seznamu**, nebo **použijte přístupový klíč**.
-    * V **seznamu vybrat ze**vyberte svůj **primární účet úložiště** z rozevíracího seznamu nebo vyberte **vytvořit novou**.
-    * V případě **použití přístupového klíče**zadejte **název svého účtu úložiště**. Pak zadejte **přístupový klíč**.
+1. Pro **metodu výběru** vyberte buď **možnost vybrat ze seznamu** , nebo **použijte přístupový klíč** .
+    * V **seznamu vybrat ze** vyberte svůj **primární účet úložiště** z rozevíracího seznamu nebo vyberte **vytvořit novou** .
+    * V případě **použití přístupového klíče** zadejte **název svého účtu úložiště** . Pak zadejte **přístupový klíč** .
 
-1. Pro **kontejner**přijměte výchozí hodnotu nebo zadejte novou.
+1. Pro **kontejner** přijměte výchozí hodnotu nebo zadejte novou.
 
 ### <a name="additional-azure-storage"></a>Další Azure Storage
 
@@ -87,7 +87,7 @@ Volitelné: vyberte **přidat Azure Storage** pro další úložiště clusteru.
 Volitelné: Zadejte existující SQL Database pro ukládání Apache Hive, Apache Oozie a a Apache Ambari metadata mimo cluster. Azure SQL Database, který se používá pro metastore, musí umožňovat připojení k ostatním službám Azure, včetně Azure HDInsight. Při vytváření metastore Nejmenujte databázi s pomlčkami nebo pomlčkami. Tyto znaky můžou způsobit selhání procesu vytváření clusteru.
 
 > [!IMPORTANT]
-> Pro obrazce clusterů, které podporují metaúložiště, výchozí metastore poskytuje Azure SQL Database s **limitem DTU úrovně Basic 5 (není aktualizovatelný)**. Vhodné pro účely základního testování. U rozsáhlých nebo produkčních úloh doporučujeme migrovat na externí metastore.
+> Pro obrazce clusterů, které podporují metaúložiště, výchozí metastore poskytuje Azure SQL Database s **limitem DTU úrovně Basic 5 (není aktualizovatelný)** . Vhodné pro účely základního testování. U rozsáhlých nebo produkčních úloh doporučujeme migrovat na externí metastore.
 
 Vyberte **Další: zabezpečení + síťové >>** , abyste mohli přejít na další kartu.
 
@@ -99,7 +99,7 @@ Na kartě **zabezpečení + sítě** zadejte následující informace:
 
 |Vlastnost |Popis |
 |---|---|
-|Balíček podnikového zabezpečení|Volitelné: zaškrtněte políčko pro použití **balíček zabezpečení podniku**. Další informace najdete v tématu [Konfigurace clusteru HDInsight s balíček zabezpečení podniku pomocí Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
+|Balíček podnikového zabezpečení|Volitelné: zaškrtněte políčko pro použití **balíček zabezpečení podniku** . Další informace najdete v tématu [Konfigurace clusteru HDInsight s balíček zabezpečení podniku pomocí Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).|
 |TLS|Volitelné: v rozevíracím seznamu vyberte verzi TLS. Další informace najdete v tématu [zabezpečení transportní vrstvy](./transport-layer-security.md).|
 |Virtuální síť|Volitelné: v rozevíracím seznamu vyberte existující virtuální síť a podsíť. Informace najdete v tématu [Plánování nasazení virtuální sítě pro clustery Azure HDInsight](hdinsight-plan-virtual-network-deployment.md). Článek zahrnuje konkrétní požadavky na konfiguraci pro virtuální síť.|
 |Nastavení šifrování disku|Volitelné: Pokud chcete použít šifrování, zaškrtněte políčko. Další informace najdete v tématu [šifrování klíčového disku spravovaného zákazníkem](./disk-encryption.md).|
@@ -128,7 +128,7 @@ Vyberte **zkontrolovat + vytvořit >>** a ověřte konfiguraci clusteru a přejd
 
 ![Shrnutí clusteru pro vytvoření HDInsight](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Zadat počet uzlů clusteru")
 
-Zkontrolujte nastavení. Vyberte **Vytvořit**. Cluster se vytvoří.
+Zkontrolujte nastavení. Vyberte **Vytvořit** . Cluster se vytvoří.
 
 Vytvoření clusteru nějakou dobu trvá, obvykle přibližně 20 minut. Sledujte **oznámení** pro kontrolu procesu zřizování.
 

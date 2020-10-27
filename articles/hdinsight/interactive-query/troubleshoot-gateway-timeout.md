@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895039"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547380"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Výjimka při spouštění dotazů ze zobrazení podregistru Apache Ambari ve službě Azure HDInsight
 
@@ -54,13 +54,13 @@ Některá obecná doporučení pro zlepšení situace:
 
 * Pokud používáte externí podregistr metastore, zkontrolujte metriky databáze a ujistěte se, že databáze není přetížená. Zvažte možnost škálování vrstvy databáze metastore.
 
-* Ujistěte se, že je paralelní operace zapnutá (to umožňuje paralelní spouštění vláken obslužných rutin HTTP). Pokud chcete ověřit hodnotu, spusťte [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) a **přejděte k části Konfigurace podregistru**  >  **Configs**  >  **Upřesnit**  >  **vlastní podregistr – lokalita**. Hodnota `hive.server2.parallel.ops.in.session` by měla být `true` .
+* Ujistěte se, že je paralelní operace zapnutá (to umožňuje paralelní spouštění vláken obslužných rutin HTTP). Pokud chcete ověřit hodnotu, spusťte [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) a **přejděte k části Konfigurace podregistru**  >  **Configs**  >  **Upřesnit**  >  **vlastní podregistr – lokalita** . Hodnota `hive.server2.parallel.ops.in.session` by měla být `true` .
 
 * Ujistěte se, že SKU virtuálního počítače clusteru není pro zatížení příliš malá. Zvažte rozdělení práce mezi několik clusterů. Další informace najdete v tématu [Výběr typu clusteru](../hdinsight-capacity-planning.md#choose-a-cluster-type).
 
 * Pokud je v clusteru nainstalovaný Ranger, zkontrolujte prosím, jestli je pro každý dotaz moc velký počet Ranger zásad, které je potřeba vyhodnotit. Vyhledejte duplicitní nebo nepotřebné zásady.
 
-* Ověřte hodnotu **velikosti haldy HiveServer2** z Ambari. Přejděte k **Hive**  >  **Configs**  >  **optimalizaci nastavení**konfigurace podregistru  >  **Optimization**. Ujistěte se, že hodnota je větší než 10 GB. Upravte podle potřeby pro optimalizaci výkonu.
+* Ověřte hodnotu **velikosti haldy HiveServer2** z Ambari. Přejděte k **Hive**  >  **Configs**  >  **optimalizaci nastavení** konfigurace podregistru  >  **Optimization** . Ujistěte se, že hodnota je větší než 10 GB. Upravte podle potřeby pro optimalizaci výkonu.
 
 * Ujistěte se, že dotaz na podregistr je dobře laděný. Další informace najdete v tématu věnovaném [optimalizaci Apache Hive dotazů ve službě Azure HDInsight](../hdinsight-hadoop-optimize-hive-query.md).
 
@@ -72,4 +72,4 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

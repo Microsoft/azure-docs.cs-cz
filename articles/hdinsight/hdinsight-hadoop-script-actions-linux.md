@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: fa0ae0137064cc14d6d8f2adfe085ca255da73af
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486306"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545986"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů pomocí HDInsight
 
@@ -161,13 +161,13 @@ HDInsight protokoluje výstup skriptu, který je zapsaný do STDOUT a STDERR. Ty
 > [!NOTE]  
 > Apache Ambari je k dispozici pouze v případě, že byl cluster úspěšně vytvořen. Použijete-li během vytváření clusteru akci skriptu a vytváření se nepovede, přečtěte si téma [řešení potíží se skripty](./troubleshoot-script-action.md) v případě jiných způsobů přístupu k protokolovaným informacím.
 
-Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo` . Například:
+Většina nástrojů a instalačních balíčků již zapisuje informace do STDOUT a STDERR, ale možná budete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo` . Příklad:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte ho do `>&2` `echo` . Například:
+Ve výchozím nastavení `echo` odešle řetězec do STDOUT. Pokud ho chcete směrovat do STDERR, přidejte ho do `>&2` `echo` . Příklad:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -256,7 +256,7 @@ V této části najdete pokyny k implementaci některých běžných vzorů pou�
 
 V některých případech může skript vyžadovat parametry. Při použití REST API Ambari můžete například potřebovat heslo správce clusteru.
 
-Parametry předané skriptu jsou známé jako *poziční parametry*a jsou přiřazeny k `$1` pro první parametr, `$2` pro druhý a tak dále. `$0` obsahuje název samotného skriptu.
+Parametry předané skriptu jsou známé jako *poziční parametry* a jsou přiřazeny k `$1` pro první parametr, `$2` pro druhý a tak dále. `$0` obsahuje název samotného skriptu.
 
 Hodnoty předané skriptu jako parametry by měly být uzavřeny jednoduchými uvozovkami ('). Tím zajistíte, že předaná hodnota je považována za literál.
 
@@ -290,9 +290,9 @@ Skripty používané k přizpůsobení clusteru musí být uloženy v jednom z n
 
 * __Další účet úložiště__ spojený s clusterem.
 
-* __Veřejně čitelný identifikátor URI__. Například adresa URL pro data uložená na OneDrivu, Dropboxu nebo jiné službě hostování souborů.
+* __Veřejně čitelný identifikátor URI__ . Například adresa URL pro data uložená na OneDrivu, Dropboxu nebo jiné službě hostování souborů.
 
-* __Účet Azure Data Lake Storage__ , který je spojený s clusterem HDInsight. Další informace o použití Azure Data Lake Storage se službou HDInsight najdete v tématu [rychlý Start: nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Účet Azure Data Lake Storage__ , který je spojený s clusterem HDInsight. Další informace o použití Azure Data Lake Storage se službou HDInsight najdete v tématu [rychlý Start: nastavení clusterů ve službě HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
 
     > [!NOTE]  
     > Služba HDInsight instančního objektu používá pro přístup Data Lake Storage musí mít ke skriptu oprávnění ke čtení.
@@ -332,13 +332,13 @@ Společnost Microsoft poskytuje ukázkové skripty pro instalaci komponent do cl
 
 V následujícím seznamu jsou chyby, které se můžou při používání skriptů, které jste vyvinuli, nacházet:
 
-**Chyba**: `$'\r': command not found` . Někdy následováno `syntax error: unexpected end of file` .
+**Chyba** : `$'\r': command not found` . Někdy následováno `syntax error: unexpected end of file` .
 
-*Příčina*: Tato chyba je způsobena tím, že řádky ve skriptu končí znakem CRLF. Systémy UNIX očekávají jako konec řádku pouze LF.
+*Příčina* : Tato chyba je způsobena tím, že řádky ve skriptu končí znakem CRLF. Systémy UNIX očekávají jako konec řádku pouze LF.
 
 K tomuto problému často dochází, když je skript vytvořen v prostředí systému Windows, protože znak CRLF je obvyklým řádkem, který končí mnoho textových editorů v systému Windows.
 
-*Řešení*: Pokud se jedná o možnost v textovém editoru, vyberte pro konec řádku možnost formát systému UNIX nebo LF. V systému UNIX můžete také použít následující příkazy, abyste změnili znak CRLF na LF:
+*Řešení* : Pokud se jedná o možnost v textovém editoru, vyberte pro konec řádku možnost formát systému UNIX nebo LF. V systému UNIX můžete také použít následující příkazy, abyste změnili znak CRLF na LF:
 
 > [!NOTE]  
 > Následující příkazy jsou přibližně stejné jako v tom, že by měly změnit čáru CRLF zakončení na LF. Vyberte jednu z nástrojů, které jsou k dispozici ve vašem systému.
@@ -350,11 +350,11 @@ K tomuto problému často dochází, když je skript vytvořen v prostředí sys
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Upraví soubor přímo. |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |SOUBOR s informacemi o verzi obsahuje jenom konce LF. |
 
-**Chyba**: `line 1: #!/usr/bin/env: No such file or directory` .
+**Chyba** : `line 1: #!/usr/bin/env: No such file or directory` .
 
-*Příčina*: k této chybě dochází, když byl skript uložen jako UTF-8 s označením pořadí bajtů (BOM).
+*Příčina* : k této chybě dochází, když byl skript uložen jako UTF-8 s označením pořadí bajtů (BOM).
 
-*Řešení*: Uložte soubor buď jako ASCII, nebo jako UTF-8 bez kusovníku. V systému Linux nebo UNIX můžete také použít následující příkaz k vytvoření souboru bez tohoto kusovníku:
+*Řešení* : Uložte soubor buď jako ASCII, nebo jako UTF-8 bez kusovníku. V systému Linux nebo UNIX můžete také použít následující příkaz k vytvoření souboru bez tohoto kusovníku:
 
 ```bash
 awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
@@ -366,4 +366,4 @@ Nahraďte souborem, který `INFILE` obsahuje kusovník. `OUTFILE` měl by se jed
 
 * Postup [Přizpůsobení clusterů HDInsight pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md)
 * Další informace o vytváření aplikací .NET, které spravují HDInsight, najdete v referenčních informacích k [sadě HDInsight .NET SDK](/dotnet/api/overview/azure/hdinsight) .
-* Pomocí [REST API HDInsight](https://msdn.microsoft.com/library/azure/mt622197.aspx) se naučíte, jak používat REST k provádění akcí správy v clusterech HDInsight.
+* Pomocí [REST API HDInsight](/rest/api/hdinsight/) se naučíte, jak používat REST k provádění akcí správy v clusterech HDInsight.

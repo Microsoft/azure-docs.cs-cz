@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207461"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547958"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop izolovaným prostorem (sandbox), emulátor na virtuálním počítači
 
 Přečtěte si, jak nainstalovat Apache Hadoop izolovaného prostoru (sandbox) z Hortonworks na virtuálním počítači, abyste se seznámili s ekosystémem Hadoop. Izolovaný prostor (sandbox) poskytuje místní vývojové prostředí pro další informace o Hadoop, Hadoop systém souborů DFS (Distributed File System) (HDFS) a odeslání úlohy. Jakmile budete s Hadoop obeznámeni, můžete začít používat Hadoop v Azure tím, že vytvoříte cluster HDInsight. Další informace o tom, jak začít, najdete v tématu Začínáme [se systémem Hadoop ve službě HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Oracle VirtualBox](https://www.virtualbox.org/). Stáhněte si ho a nainstalujte [odsud.](https://www.virtualbox.org/wiki/Downloads)
 
@@ -34,13 +34,13 @@ Přečtěte si, jak nainstalovat Apache Hadoop izolovaného prostoru (sandbox) z
 
 Pokyny k nastavení izolovaného prostoru naleznete v tématu [nasazení izolovaného prostoru a instalační příručka](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/).
 
-Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečtěte si odkazy v části **starší verze**.
+Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečtěte si odkazy v části **starší verze** .
 
 ## <a name="start-the-virtual-machine"></a>Spustit virtuální počítač
 
 1. Otevřete VirtualBox virtuálního počítače Oracle.
-1. V nabídce **soubor** klikněte na položku **importovat zařízení**a pak zadejte obrázek izolovaného prostoru (Hortonworks).
-1. Vyberte izolovaný prostor Hortonworks, klikněte na **Start**a pak na **normální Start**. Po dokončení procesu spuštění virtuálního počítače se zobrazí pokyny pro přihlášení.
+1. V nabídce **soubor** klikněte na položku **importovat zařízení** a pak zadejte obrázek izolovaného prostoru (Hortonworks).
+1. Vyberte izolovaný prostor Hortonworks, klikněte na **Start** a pak na **normální Start** . Po dokončení procesu spuštění virtuálního počítače se zobrazí pokyny pro přihlášení.
 
     ![normální začátek VirtualBox Manageru](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
@@ -48,7 +48,7 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 
 ## <a name="set-sandbox-passwords"></a>Nastavit hesla izolovaného prostoru
 
-1. V kroku **Začínáme** na stránce izolovaného prostoru (Hortonworks) vyberte **Zobrazit upřesňující možnosti**. Pomocí informací na této stránce se přihlaste k izolovanému prostoru pomocí SSH. Použijte zadané jméno a heslo.
+1. V kroku **Začínáme** na stránce izolovaného prostoru (Hortonworks) vyberte **Zobrazit upřesňující možnosti** . Pomocí informací na této stránce se přihlaste k izolovanému prostoru pomocí SSH. Použijte zadané jméno a heslo.
 
    > [!NOTE]
    > Pokud nemáte nainstalovaného klienta SSH, můžete použít webový protokol SSH, který je k dispozici na virtuálním počítači v **http://localhost:4200/** .
@@ -85,7 +85,7 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Naučte se používat Visual Studio s izolovaným prostorem Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
+* [Naučte se používat Visual Studio s izolovaným prostorem Hortonworks](./apache-hadoop-visual-studio-tools-get-started.md)
 
 * [Učení LAN Hortonworks sandboxu](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 

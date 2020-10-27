@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 4d0405df1863ee47374242ba4fba5b845711d3a1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424524"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539713"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
 
 Pro zajištění optimální úrovně dostupnosti pro komponenty analýzy se služba HDInsight vyvinula s jedinečnou architekturou pro zajištění vysoké dostupnosti důležitých služeb (HA). Některé součásti této architektury byly vyvinuty společností Microsoft za účelem poskytování automatického převzetí služeb při selhání. Další komponenty jsou standardní komponenty Apache, které jsou nasazené pro podporu konkrétních služeb. Tento článek popisuje architekturu modelu služby HA v HDInsight, jak HDInsight podporuje převzetí služeb při selhání pro služby HA a osvědčené postupy pro obnovení z dalších přerušení služby.
 
 > [!NOTE]
-> Tento článek obsahuje odkazy na *podřízený*termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
+> Tento článek obsahuje odkazy na *podřízený* termín, termín, který už Microsoft nepoužívá. Po odebrání termínu ze softwaru ho odebereme z tohoto článku.
 
 ## <a name="high-availability-infrastructure"></a>Infrastruktura vysoké dostupnosti
 
@@ -49,7 +49,7 @@ Následující části poskytují další podrobnosti o tom, jak tyto služby sp
 
 ## <a name="hdinsight-high-availability-services"></a>Služby HDInsight s vysokou dostupností
 
-Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následující tabulce v clusterech HDInsight. Aby je bylo možné odlišit od služeb s vysokou dostupností, které jsou podporovány součástmi z Apache, označují se jako *služby HDInsight ha*.
+Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následující tabulce v clusterech HDInsight. Aby je bylo možné odlišit od služeb s vysokou dostupností, které jsou podporovány součástmi z Apache, označují se jako *služby HDInsight ha* .
 
 | Služba | Uzly clusteru | Typy clusterů | Účel |
 |---|---|---|---|
@@ -65,7 +65,7 @@ Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následují
 
 Každý cluster HDInsight má dva hlavních v aktivním a pohotovostním režimu. Služby HDInsight HA běží jenom na hlavních. Tyto služby by měly být vždy spuštěné na aktivním hlavnímu uzlu a zastaveny a přepnuty do režimu údržby v pohotovostním hlavnímu uzlu.
 
-Aby se zajistilo správné stavy služeb HA a poskytovaly rychlé převzetí služeb při selhání, využívá služba HDInsight Apache ZooKeeper, což je koordinační služba pro distribuované aplikace, která umožňuje aktivní volby hlavnímu uzlu. HDInsight také zřizuje několik procesů Java na pozadí, které koordinují postup převzetí služeb při selhání pro služby HDInsight HA. Jedná se o následující služby: hlavní kontroler převzetí služeb při selhání, podřízený řadič pro převzetí služeb při selhání, *hlavní-ha-Service*a *podřízený-ha-Service*.
+Aby se zajistilo správné stavy služeb HA a poskytovaly rychlé převzetí služeb při selhání, využívá služba HDInsight Apache ZooKeeper, což je koordinační služba pro distribuované aplikace, která umožňuje aktivní volby hlavnímu uzlu. HDInsight také zřizuje několik procesů Java na pozadí, které koordinují postup převzetí služeb při selhání pro služby HDInsight HA. Jedná se o následující služby: hlavní kontroler převzetí služeb při selhání, podřízený řadič pro převzetí služeb při selhání, *hlavní-ha-Service* a *podřízený-ha-Service* .
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
@@ -136,5 +136,5 @@ Clustery HDInsight HBA podporují HBase Master vysoké dostupnosti. Na rozdíl o
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](hdinsight-high-availability-linux.md)
+- [Dostupnost a spolehlivost clusterů Apache Hadoop v HDInsight](./hdinsight-business-continuity.md)
 - [Architektura virtuální sítě Azure HDInsight](hdinsight-virtual-network-architecture.md)

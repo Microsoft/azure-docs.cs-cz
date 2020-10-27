@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5842c5f3130b39f75b5339274b84feb2e0f283f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986364"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547091"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 
@@ -64,11 +64,11 @@ Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled ro
 
    -nebo-
 
-   Pro existující aplikace logiky v rámci posledního kroku, kde chcete přidat akci zabezpečení Microsoft Graph, vyberte **Nový krok**.
+   Pro existující aplikace logiky v rámci posledního kroku, kde chcete přidat akci zabezpečení Microsoft Graph, vyberte **Nový krok** .
 
    -nebo-
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte znaménko plus (+), které se zobrazí, a vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi jednotlivými kroky. Vyberte znaménko plus (+), které se zobrazí, a vyberte **přidat akci** .
 
 1. Do vyhledávacího pole zadejte jako filtr "Microsoft Graph Security". V seznamu akce vyberte akci, kterou chcete.
 
@@ -91,15 +91,15 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky, 
 
 1.  V aktivační události zadejte informace o výstrahách, které chcete monitorovat. Pro další vlastnosti otevřete seznam **Přidat nový parametr** a vyberte parametr pro přidání této vlastnosti aktivační události.
 
-   | Vlastnost | Property (JSON) | Požaduje se | Typ | Description |
+   | Vlastnost | Property (JSON) | Požaduje se | Typ | Popis |
    |----------|-----------------|----------|------|-------------|
-   | **Interval** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
-   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
+   | **Interval** | `interval` | Ano | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda** , **minuta** , **hodina** , **den** , **týden** nebo **měsíc** |
    | **Časové pásmo** | `timeZone` | No | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
    | **Čas spuštění** | `startTime` | No | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
-1.  Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
+1.  Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit** .
 
 1.  Nyní pokračujte v přidávání jedné nebo více akcí do aplikace logiky pro úlohy, které chcete provést s výsledky triggeru.
 
@@ -142,19 +142,19 @@ Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-Další informace o dotazech, které můžete použít s tímto konektorem, najdete [v části "volitelné parametry dotazu" v tématu Referenční dokumentace k nástroji Microsoft Graph Security Threat Intelligence](/graph/api/tiindicators-list?tabs=http&view=graph-rest-beta). Pokud chcete s tímto konektorem sestavovat vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu – indikátor analýzy hrozeb](/graph/api/resources/tiindicator?view=graph-rest-beta) , který konektor podporuje.
+Další informace o dotazech, které můžete použít s tímto konektorem, najdete [v části "volitelné parametry dotazu" v tématu Referenční dokumentace k nástroji Microsoft Graph Security Threat Intelligence](/graph/api/tiindicators-list). Pokud chcete s tímto konektorem sestavovat vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu – indikátor analýzy hrozeb](/graph/api/resources/tiindicator) , který konektor podporuje.
 
 | Akce | Popis |
 |--------|-------------|
-| **Získat indikátory pro analýzu hrozeb** | Získání tiIndicators filtrovaných na základě jedné nebo více [tiIndicator vlastností](/graph/api/resources/tiindicator?view=graph-rest-beta), například `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Získat indikátory pro analýzu hrozeb** | Získání tiIndicators filtrovaných na základě jedné nebo více [tiIndicator vlastností](/graph/api/resources/tiindicator), například `threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Získat indikátor analýzy hrozeb podle ID** | Získá konkrétní tiIndicator na základě ID tiIndicator. | 
-| **Vytvořit indikátor analýzy hrozeb** | Vytvořte nový tiIndicator publikováním do kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro vytváření tiIndicator](/graph/api/tiindicators-post?tabs=http&view=graph-rest-beta). |
-| **Odeslání více ukazatelů analýzy hrozeb** | Vytvořte více nových tiIndicators publikováním kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro odeslání více tiIndicators](/graph/api/tiindicator-submittiindicators?tabs=http&view=graph-rest-beta). |
-| **Aktualizovat indikátor analýzy hrozeb** | Aktualizujte konkrétní tiIndicator na základě ID tiIndicator. Abyste se ujistili, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti pro tiIndicator](/graph/api/tiindicator-update?tabs=http&view=graph-rest-beta). Chcete-li například aktualizovat akci, která má být použita, pokud se ukazatel shoduje v rámci nástroje zabezpečení targetProduct, můžete aktualizovat vlastnost **Action** tiIndicator. |
-| **Aktualizace více ukazatelů analýzy hrozeb** | Aktualizace více tiIndicators Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro aktualizaci více tiIndicators](/graph/api/tiindicator-updatetiindicators?tabs=http&view=graph-rest-beta). |
+| **Vytvořit indikátor analýzy hrozeb** | Vytvořte nový tiIndicator publikováním do kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro vytváření tiIndicator](/graph/api/tiindicators-post). |
+| **Odeslání více ukazatelů analýzy hrozeb** | Vytvořte více nových tiIndicators publikováním kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro odeslání více tiIndicators](/graph/api/tiindicator-submittiindicators). |
+| **Aktualizovat indikátor analýzy hrozeb** | Aktualizujte konkrétní tiIndicator na základě ID tiIndicator. Abyste se ujistili, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti pro tiIndicator](/graph/api/tiindicator-update). Chcete-li například aktualizovat akci, která má být použita, pokud se ukazatel shoduje v rámci nástroje zabezpečení targetProduct, můžete aktualizovat vlastnost **Action** tiIndicator. |
+| **Aktualizace více ukazatelů analýzy hrozeb** | Aktualizace více tiIndicators Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro aktualizaci více tiIndicators](/graph/api/tiindicator-updatetiindicators). |
 | **Odstranit indikátor analýzy hrozeb podle ID** | Odstraňte konkrétní tiIndicator na základě ID tiIndicator. |
-| **Odstranění více ukazatelů analýzy hrozeb podle ID** | Odstraňte více tiIndicators podle jejich ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle ID](/graph/api/tiindicator-deletetiindicators?tabs=http&view=graph-rest-beta). |
-| **Odstranění více indikátorů analýzy hrozeb podle externích ID** | Odstraňte více tiIndicators externích ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle externích ID](/graph/api/tiindicator-deletetiindicatorsbyexternalid?tabs=http&view=graph-rest-beta). |
+| **Odstranění více ukazatelů analýzy hrozeb podle ID** | Odstraňte více tiIndicators podle jejich ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle ID](/graph/api/tiindicator-deletetiindicators). |
+| **Odstranění více indikátorů analýzy hrozeb podle externích ID** | Odstraňte více tiIndicators externích ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle externích ID](/graph/api/tiindicator-deletetiindicatorsbyexternalid). |
 |||
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům

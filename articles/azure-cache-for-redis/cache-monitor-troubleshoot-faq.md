@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 2149d069ce9cb0b636e461d19963f413b162bc9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e96c73578a9341f67d90cd4482ed75179c6886d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010858"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537520"
 ---
 # <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>Mezipaměť Azure pro monitorování Redis a časté otázky týkající se řešení potíží
 Tento článek obsahuje odpovědi na běžné dotazy týkající se sledování a řešení potíží s Azure cache pro Redis.
@@ -29,7 +29,7 @@ Mezipaměť Microsoft Azure pro instance Redis lze monitorovat v [Azure Portal](
 **Nabídka prostředků** Azure cache for Redis obsahuje taky několik nástrojů pro monitorování a odstraňování potíží s mezipamětí.
 
 * **Diagnostika a řešení problémů** poskytuje informace o běžných problémech a strategiích jejich řešení.
-* **Stav prostředku** sleduje váš prostředek a oznamuje, zda je spuštěný podle očekávání. Další informace o službě Azure Resource Health najdete v článku [Přehled Azure Resource Health](../resource-health/resource-health-overview.md).
+* **Stav prostředku** sleduje váš prostředek a oznamuje, zda je spuštěný podle očekávání. Další informace o službě Azure Resource Health najdete v článku [Přehled Azure Resource Health](../service-health/resource-health-overview.md).
 * **Nová žádost o podporu** poskytuje možnosti pro otevření žádosti o podporu pro vaši mezipaměť.
 
 Tyto nástroje vám umožní monitorovat stav mezipaměti Azure pro instance Redis a pomáhat při správě aplikací pro ukládání do mezipaměti. Další informace najdete v části "Podpora nastavení řešení potíží s & v tématu [Konfigurace mezipaměti Azure pro Redis](cache-configure.md).

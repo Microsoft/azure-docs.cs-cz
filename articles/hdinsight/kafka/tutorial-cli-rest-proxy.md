@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49419853f193336e39ff8f729472342bb137fd39
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490216"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539475"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Kurz: Vytvoření clusteru s povoleným Apache Kafka proxy REST v HDInsight pomocí Azure CLI
 
-V tomto kurzu se naučíte, jak vytvořit cluster Apache Kafka s [podporou proxy REST](./rest-proxy.md) v Azure HDInsight pomocí rozhraní příkazového řádku (CLI) Azure. Azure HDInsight je spravovaná opensourcová analytická služba určená pro podniky. Apache Kafka je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím [REST API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) přes protokol HTTP. Azure CLI je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
+V tomto kurzu se naučíte, jak vytvořit cluster Apache Kafka s [podporou proxy REST](./rest-proxy.md) v Azure HDInsight pomocí rozhraní příkazového řádku (CLI) Azure. Azure HDInsight je spravovaná opensourcová analytická služba určená pro podniky. Apache Kafka je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím [REST API](/rest/api/hdinsight-kafka-rest-proxy/) přes protokol HTTP. Azure CLI je nové víceplatformové prostředí příkazového řádku Microsoftu pro správu prostředků Azure.
 
 Rozhraní Apache Kafka API je přístupné jenom pro prostředky ve stejné virtuální síti. Ke clusteru můžete přistupovat přímo pomocí SSH. Pokud chcete k platformě Apache Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky. Další informace najdete v tématu [připojení k Apache Kafka pomocí virtuální sítě](./apache-kafka-connect-vpn-gateway.md).
 
@@ -27,9 +27,9 @@ V tomto kurzu se naučíte:
 > * Předpoklady pro proxy Kafka REST
 > * Vytvoření clusteru Apache Kafka pomocí Azure CLI
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Aplikace zaregistrovaná ve službě Azure AD. Klientské aplikace, které napíšete pro interakci s proxy Kafka REST, budou k ověření v Azure používat ID a tajný kód této aplikace. Další informace najdete v tématu [Registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md).
 
@@ -56,8 +56,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
     |location|MÍSTO pro umístění nahraďte oblastí, ve které se cluster vytvoří. Seznam platných umístění získáte pomocí `az account list-locations` příkazu.|
     |clusterName|Parametr název_clusteru nahraďte globálně jedinečným názvem pro nový cluster.|
     |storageAccount|Nahraďte STORAGEACCOUNTNAME názvem nového účtu úložiště.|
-    |httpPassword|HESLO pro přihlášení ke clusteru a **správce**nahraďte heslem.|
-    |sshPassword|Heslo nahraďte heslem pro uživatelské jméno zabezpečeného prostředí **sshuser**.|
+    |httpPassword|HESLO pro přihlášení ke clusteru a **správce** nahraďte heslem.|
+    |sshPassword|Heslo nahraďte heslem pro uživatelské jméno zabezpečeného prostředí **sshuser** .|
     |securityGroupName|Nahraďte SECURITYGROUPNAME názvem skupiny zabezpečení AAD klienta pro proxy Kafka REST. Proměnná bude předána `--kafka-client-group-name` parametru pro `az-hdinsight-create` .|
     |securityGroupID|Nahraďte SECURITYGROUPID ID skupiny zabezpečení AAD klienta pro proxy REST Kafka. Proměnná bude předána `--kafka-client-group-id` parametru pro `az-hdinsight-create` .|
     |storageContainer|Kontejner úložiště, který bude cluster používat, ponechte ho pro tento kurz. Tato proměnná se nastaví s názvem clusteru.|
@@ -130,18 +130,18 @@ Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný úče
 
         |Parametr | Popis|
         |---|---|
-        |--typ|Hodnota musí být **Kafka**.|
-        |--workernode-data-disky – na uzel|Počet datových disků, které se mají použít na jeden pracovní uzel. HDInsight Kafka se podporuje jenom s datovými disky. V tomto kurzu se používá hodnota **2**.|
+        |--typ|Hodnota musí být **Kafka** .|
+        |--workernode-data-disky – na uzel|Počet datových disků, které se mají použít na jeden pracovní uzel. HDInsight Kafka se podporuje jenom s datovými disky. V tomto kurzu se používá hodnota **2** .|
 
     1. Požadované parametry pro proxy Kafka REST:
 
         |Parametr | Popis|
         |---|---|
-        |--Kafka-Management-Node-Size|Velikost uzlu. V tomto kurzu se používá hodnota **Standard_D4_v2**.|
-        |--Kafka-Client-Group-ID|ID skupiny zabezpečení AAD klienta pro proxy Kafka REST Hodnota je předána z proměnné **$securityGroupID**.|
-        |--Kafka-Client-Group-Name|Název skupiny zabezpečení AAD klienta pro proxy Kafka REST Hodnota je předána z proměnné **$securityGroupName**.|
-        |--verze|Verze clusteru HDInsight musí být minimálně 4,0. Hodnota je předána z proměnné **$clusterVersion**.|
-        |--součást-verze|Verze Kafka musí být minimálně 2,1. Hodnota je předána z proměnné **$componentVersion**.|
+        |--Kafka-Management-Node-Size|Velikost uzlu. V tomto kurzu se používá hodnota **Standard_D4_v2** .|
+        |--Kafka-Client-Group-ID|ID skupiny zabezpečení AAD klienta pro proxy Kafka REST Hodnota je předána z proměnné **$securityGroupID** .|
+        |--Kafka-Client-Group-Name|Název skupiny zabezpečení AAD klienta pro proxy Kafka REST Hodnota je předána z proměnné **$securityGroupName** .|
+        |--verze|Verze clusteru HDInsight musí být minimálně 4,0. Hodnota je předána z proměnné **$clusterVersion** .|
+        |--součást-verze|Verze Kafka musí být minimálně 2,1. Hodnota je předána z proměnné **$componentVersion** .|
     
         Pokud chcete cluster vytvořit bez proxy serveru REST, vylučte `--kafka-management-node-size` , `--kafka-client-group-id` a `--kafka-client-group-name` z `az hdinsight create` příkazu.
 

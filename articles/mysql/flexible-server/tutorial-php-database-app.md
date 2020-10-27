@@ -8,21 +8,21 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946535"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537928"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace PHP (Laravel) a MySQL flexibilního serveru (Preview) v Azure App Service
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Webová aplikace PHP v Azure s flexibilním serverem":::
 
-[Azure App Service](https://docs.microsoft.com/azure/app-service/overview) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu se dozvíte, jak v Azure vytvořit aplikaci PHP a připojit ji k databázi MySQL. Až budete hotovi, budete mít aplikaci [Laravel](https://laravel.com/) běžící na Azure App Service v systému Linux.
+[Azure App Service](../../app-service/overview.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu se dozvíte, jak v Azure vytvořit aplikaci PHP a připojit ji k databázi MySQL. Až budete hotovi, budete mít aplikaci [Laravel](https://laravel.com/) běžící na Azure App Service v systému Linux.
 
-V tomto kurzu se naučíte:
+V tomto kurzu:
 > [!div class="checklist"]
 > * Nastavení aplikace PHP (Laravel) s místním MySQL
 > * Vytvoření flexibilního serveru MySQL (Preview)
@@ -31,9 +31,9 @@ V tomto kurzu se naučíte:
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Spravovat aplikaci na webu Azure Portal
 
-Pokud ještě nemáte [předplatné Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+Pokud ještě nemáte [předplatné Azure](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing), vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -96,7 +96,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>Konfigurace připojení k MySQL
 
-V kořenovém adresáři úložiště vytvořte soubor *.env*. Zkopírujte do souboru *.env* následující proměnné. Zástupný text _ &lt;>root_password_ nahraďte heslem kořenového uživatele MySQL.
+V kořenovém adresáři úložiště vytvořte soubor *.env* . Zkopírujte do souboru *.env* následující proměnné. Zástupný text _&lt;>root_password_ nahraďte heslem kořenového uživatele MySQL.
 
 ```txt
 APP_ENV=local
@@ -110,7 +110,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-Informace o tom, jak Laravel používá soubor _.env_, najdete v článku [Laravel Environment Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration) (Konfigurace prostředí Laravel).
+Informace o tom, jak Laravel používá soubor _.env_ , najdete v článku [Laravel Environment Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration) (Konfigurace prostředí Laravel).
 
 ### <a name="run-the-sample-locally"></a>Spuštění ukázky v místním prostředí
 
@@ -139,7 +139,7 @@ V prohlížeči přejděte na `http://localhost:8000`. Na stránce přidejte n�
 Pokud chcete zastavit PHP, zadejte v terminálu `Ctrl + C`.
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>Vytvoření flexibilního serveru MySQL (Preview)
-V tomto kroku vytvoříte databázi MySQL v [Azure Database for MySQL flexibilním serveru](/azure/mysql) , který je ve verzi Public Preview. Později nakonfigurujete aplikaci PHP pro připojení k této databázi. V [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)vytvořte pomocí [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) příkazu Server.
+V tomto kroku vytvoříte databázi MySQL v [Azure Database for MySQL flexibilním serveru](../index.yml) , který je ve verzi Public Preview. Později nakonfigurujete aplikaci PHP pro připojení k této databázi. V [Azure Cloud Shell](../../cloud-shell/overview.md)vytvořte pomocí [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) příkazu Server.
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
@@ -196,7 +196,7 @@ V tomto kroku připojíte aplikaci PHP k databázi MySQL, kterou jste vytvořili
 
 ### <a name="configure-the-database-connection"></a>Konfigurace připojení k databázi
 
-V kořenovém adresáři úložiště vytvořte soubor _.env.production_ a zkopírujte do něj následující proměnné. Nahraďte zástupný symbol _ &lt; MySQL-Server-Name>_ v *DB_HOST* i *DB_USERNAME*.
+V kořenovém adresáři úložiště vytvořte soubor _.env.production_ a zkopírujte do něj následující proměnné. Nahraďte zástupný symbol _&lt; MySQL-Server-Name>_ v *DB_HOST* i *DB_USERNAME* .
 
 ```
 APP_ENV=production
@@ -280,7 +280,7 @@ V tomto kroku nasadíte aplikaci PHP připojenou k MySQL do služby Azure App Se
 
 FTP a místní Git se můžou nasadit do webové aplikace Azure pomocí uživatele nasazení. Jakmile nakonfigurujete uživatele nasazení, můžete ho použít pro všechna nasazení Azure. Uživatelské jméno a heslo nasazení na úrovni účtu se liší od přihlašovacích údajů předplatného Azure.
 
-Pokud chcete nakonfigurovat uživatele nasazení, spusťte v Azure Cloud Shell příkaz [AZ WebApp Deployment User set](https://docs.microsoft.com/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) . Místo uživatelského jména a hesla pro nasazení nahraďte _ &lt; uživatelské jméno>_ a _ &lt; heslo>_ .
+Pokud chcete nakonfigurovat uživatele nasazení, spusťte v Azure Cloud Shell příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) . Místo uživatelského jména a hesla pro nasazení nahraďte _&lt; uživatelské jméno>_ a _&lt; heslo>_ .
 
 Uživatelské jméno musí být v rámci Azure jedinečné a pro místní nabízená oznámení Git nesmí obsahovat symbol @.
 Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly.
@@ -293,7 +293,7 @@ Výstup JSON zobrazuje heslo jako null. Pokud se zobrazí zpráva "konflikt". Po
 
 ### <a name="create-an-app-service-plan"></a>Vytvoření plánu služby App Service
 
-V Cloud Shell ve skupině prostředků vytvořte App Service plán pomocí příkazu [AZ AppService Plan Create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) . Následující příklad vytvoří plán App Service s názvem myAppServicePlan v bezplatné cenové úrovni (--SKU F1) a v kontejneru Linux (--is-Linux).
+V Cloud Shell ve skupině prostředků vytvořte App Service plán pomocí příkazu [AZ AppService Plan Create](/cli/azure/appservice/plan#az-appservice-plan-create) . Následující příklad vytvoří plán App Service s názvem myAppServicePlan v bezplatné cenové úrovni (--SKU F1) a v kontejneru Linux (--is-Linux).
 
 AZ AppService Plan Create--Name myAppServicePlan--Resource-Group myResourceGroup--SKU F1--is-Linux
 
@@ -301,9 +301,9 @@ AZ AppService Plan Create--Name myAppServicePlan--Resource-Group myResourceGroup
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Vytvořte [webovou aplikaci](https://docs.microsoft.com/azure/app-service/overview#app-service-on-linux) v plánu myAppServicePlan App Service.
+Vytvořte [webovou aplikaci](../../app-service/overview.md#app-service-on-linux) v plánu myAppServicePlan App Service.
 
-V Cloud Shell můžete použít příkaz [AZ WebApp Create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) . V následujícím příkladu nahraďte _ &lt; název aplikace>_ globálně jedinečným názvem aplikace (platné znaky jsou `a-z` , `0-9` a `-` ). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [AZ WebApp list-runtimes--Linux](https://docs.microsoft.com/cli/azure/webapp#az-webapp-list-runtimes).
+V Cloud Shell můžete použít příkaz [AZ WebApp Create](/cli/azure/webapp#az-webapp-create) . V následujícím příkladu nahraďte _&lt; název aplikace>_ globálně jedinečným názvem aplikace (platné znaky jsou `a-z` , `0-9` a `-` ). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, spusťte příkaz [AZ WebApp list-runtimes--Linux](/cli/azure/webapp#az-webapp-list-runtimes).
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -336,7 +336,7 @@ Vytvořili jste novou prázdnou webovou aplikaci s povoleným nasazením Gitu.
 
 Ve službě App Service můžete nastavit proměnné prostředí jako _nastavení aplikace_ pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set).
 
-Následující příkaz nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _ &lt; název aplikace>_ a _ &lt; mysql-Server-Name>_.
+Následující příkaz nakonfiguruje nastavení aplikace `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` a `DB_PASSWORD`. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; mysql-Server-Name>_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<mysql-server-name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
@@ -359,13 +359,13 @@ Pro přístup k nastavení můžete použít metodu PHP [getenv](https://www.php
 
 Laravel potřebuje ve službě App Service klíč aplikace. Můžete ho nakonfigurovat pomocí nastavení aplikace.
 
-V okně místního terminálu pomocí příkazu `php artisan` vygenerujte nový klíč aplikace, aniž byste ho ukládali do souboru _.env_.
+V okně místního terminálu pomocí příkazu `php artisan` vygenerujte nový klíč aplikace, aniž byste ho ukládali do souboru _.env_ .
 
 ```bash
 php artisan key:generate --show
 ```
 
-V Cloud Shell nastavte klíč aplikace v aplikaci App Service pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu. Nahraďte zástupné symboly _ &lt; název aplikace>_ a _ &lt; outputofphpartisankey: Generate>_.
+V Cloud Shell nastavte klíč aplikace v aplikaci App Service pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu. Nahraďte zástupné symboly _&lt; název aplikace>_ a _&lt; outputofphpartisankey: Generate>_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -377,17 +377,17 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 [Životní cyklus aplikace Laravel](https://laravel.com/docs/5.4/lifecycle) začíná ve _veřejném_ adresáři místo v kořenovém adresáři aplikace. Výchozí image Dockeru s PHP pro službu App Service používá Apache a neumožňuje přizpůsobení `DocumentRoot` pro Laravel. Pomocí souboru `.htaccess` však můžete přepsat směrování všech požadavků do adresáře _/public_ místo kořenového adresáře. Kořenový adresář úložiště pro tyto účely již soubor `.htaccess` obsahuje. S tímto souborem je vaše aplikace Laravel připravená k nasazení.
 
-Další informace najdete v tématu [Změna kořene lokality](https://docs.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#change-site-root).
+Další informace najdete v tématu [Změna kořene lokality](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root).
 
 ### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
 
-Zpět v okně místního terminálu přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _ &lt; deploymentLocalGitUrl-from-Create-Step>_ adresou URL vzdáleného úložiště Git, kterou jste uložili v části [Vytvoření webové aplikace](#create-a-web-app).
+Zpět v okně místního terminálu přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _&lt; deploymentLocalGitUrl-from-Create-Step>_ adresou URL vzdáleného úložiště Git, kterou jste uložili v části [Vytvoření webové aplikace](#create-a-web-app).
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Když vám správce přihlašovacích údajů Git vyzve k zadání přihlašovacích údajů, ujistěte se, že jste zadali přihlašovací údaje, které jste vytvořili v části **Konfigurace uživatele nasazení**, a ne přihlašovací údaje, které používáte k přihlášení k Azure Portal.
+Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Když vám správce přihlašovacích údajů Git vyzve k zadání přihlašovacích údajů, ujistěte se, že jste zadali přihlašovací údaje, které jste vytvořili v části **Konfigurace uživatele nasazení** , a ne přihlašovací údaje, které používáte k přihlášení k Azure Portal.
 
 ```bash
 git push azure master
@@ -466,11 +466,11 @@ V okně místního terminálu spusťte migrace databáze Laravel, aby se změna 
 php artisan migrate
 ```
 
-Na základě [konvence pojmenování Laravel](https://laravel.com/docs/5.4/eloquent#defining-models) model `Task` (viz _app/Task.php_) ve výchozím nastavení provádí mapování na tabulku `tasks`.
+Na základě [konvence pojmenování Laravel](https://laravel.com/docs/5.4/eloquent#defining-models) model `Task` (viz _app/Task.php_ ) ve výchozím nastavení provádí mapování na tabulku `tasks`.
 
 ### <a name="update-application-logic"></a>Aktualizace logiky aplikace
 
-Otevřete soubor *routes/web.php*. V něm aplikace definuje své trasy a obchodní logiku.
+Otevřete soubor *routes/web.php* . V něm aplikace definuje své trasy a obchodní logiku.
 
 Na konec souboru přidejte trasu s následujícím kódem:
 
@@ -493,7 +493,7 @@ Předchozí kód provede jednoduchou aktualizaci datového modelu tím, že pře
 
 ### <a name="update-the-view"></a>Aktualizace zobrazení
 
-Otevřete soubor *resources/views/tasks.blade.php*. Vyhledejte počáteční značku `<tr>` a nahraďte ji:
+Otevřete soubor *resources/views/tasks.blade.php* . Vyhledejte počáteční značku `<tr>` a nahraďte ji:
 
 ```html
 <tr class="{{ $task->complete ? 'success' : 'active' }}" >
@@ -572,6 +572,6 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Správa prostředků v Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal) <br/>
+> [Správa prostředků v Azure Portal](../../azure-resource-manager/management/manage-resources-portal.md) <br/>
 > [!div class="nextstepaction"]
 > [Správa serveru](how-to-manage-server-cli.md)

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 1de11a07bdbac153b6813915cfa52edfa6484aec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876939"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546717"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>Obnovení vynechaného serveru Azure Database for MySQL
 
@@ -36,7 +36,7 @@ Chcete-li obnovit vyřazený Azure Database for MySQL server, budete potřebovat
    
  3. Poklikejte na událost odstranit server MySQL a klikněte na kartu JSON a Všimněte si atributů resourceId a submissionTimestamp ve výstupu JSON. ResourceId má následující formát:/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforMySQL/servers/deletedserver.
  
- 4. Přejděte na [stránku vytvořit Server REST API](https://docs.microsoft.com/rest/api/mysql/servers/create) a klikněte na kartu vyzkoušet, která se zvýrazní zeleně, a přihlaste se pomocí účtu Azure.
+ 4. Přejděte na [stránku vytvořit Server REST API](/rest/api/mysql/servers/create) a klikněte na kartu vyzkoušet, která se zvýrazní zeleně, a přihlaste se pomocí účtu Azure.
  
  5. Poskytněte resourceGroupName, servername (odstraněný název serveru), subscriptionId odvozený od atributu resourceId zachyceného v kroku 3, zatímco verze API-Version je předem vyplněná, jak je znázorněno na obrázku.
  

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 9927d4780ea015502151188b61c50ddbd2656819
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8ae76ca27c8c6f8fed5692b9a2376fff53a52bb6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339539"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536568"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Trvalost dat pro mezipaměť Azure Premium pro Redis
 V tomto článku se dozvíte, jak nakonfigurovat trvalost v mezipaměti Azure Premium pro instanci Redis prostřednictvím Azure Portal. Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. 
@@ -28,15 +28,15 @@ Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravu
 
 > [!NOTE]
 > 
-> Azure Storage automaticky šifruje data, když jsou trvalá. Pro šifrování můžete použít vlastní klíče. Další informace najdete v tématu [klíče spravované zákazníkem s Azure Key Vault](/azure/storage/common/storage-service-encryption).
+> Azure Storage automaticky šifruje data, když jsou trvalá. Pro šifrování můžete použít vlastní klíče. Další informace najdete v tématu [klíče spravované zákazníkem s Azure Key Vault](../storage/common/storage-service-encryption.md).
 > 
 > 
 
-1. Pokud chcete vytvořit mezipaměť úrovně Premium, přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek**. Mezipaměti můžete vytvářet na portálu Azure Portal, ale také pomocí šablon Resource Manageru, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace o vytvoření mezipaměti Azure pro Redis najdete v tématu [vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+1. Pokud chcete vytvořit mezipaměť úrovně Premium, přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **vytvořit prostředek** . Mezipaměti můžete vytvářet na portálu Azure Portal, ale také pomocí šablon Resource Manageru, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace o vytvoření mezipaměti Azure pro Redis najdete v tématu [vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Vytvořit prostředek.":::
    
-2. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis**.
+2. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis** .
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Vytvořit prostředek.":::
 
@@ -44,7 +44,7 @@ Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravu
    
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude * \<DNS name> . Redis.cache.Windows.NET*. | 
+   | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude *\<DNS name> . Redis.cache.Windows.NET* . | 
    | **Předplatné** | Rozevírací seznam a vyberte své předplatné. | Předplatné, ve kterém se má vytvořit Tato nová mezipaměť Azure pro instanci Redis | 
    | **Skupina prostředků** | Rozevírací seznam a vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
    | **Umístění** | Rozevírací seznam a vyberte umístění. | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž jiných služeb, které budou používat vaši mezipaměť. |
@@ -62,7 +62,7 @@ Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravu
    
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Četnost zálohování** | Rozevírací seznam a výběr intervalu zálohování, volby zahrnují **15 minut**, **30 minut**, **60 minut**, **6 hodin**, **12 hodin**a **24 hodin**. | Tento interval začíná počítat po úspěšném dokončení předchozí operace zálohování a při každém zahájení zálohování. | 
+   | **Četnost zálohování** | Rozevírací seznam a výběr intervalu zálohování, volby zahrnují **15 minut** , **30 minut** , **60 minut** , **6 hodin** , **12 hodin** a **24 hodin** . | Tento interval začíná počítat po úspěšném dokončení předchozí operace zálohování a při každém zahájení zálohování. | 
    | **Účet úložiště** | Rozevírací seznam a vyberte svůj účet úložiště. | Musíte zvolit účet úložiště ve stejné oblasti a předplatném jako mezipaměť a doporučuje se účet **Premium Storage** , protože Premium Storage má vyšší propustnost.  | 
    | **Klíč úložiště** | Rozevírací seznam a vyberte buď **primární klíč** , nebo **sekundární klíč** , který chcete použít. | Pokud se znovu vygeneruje klíč úložiště pro váš účet trvalosti, musíte znovu nakonfigurovat požadovaný klíč z rozevíracího seznamu **klíč úložiště** . | 
 
@@ -83,11 +83,11 @@ Trvalost zapisuje Redis data do účtu Azure Storage, který vlastníte a spravu
 
 11. Volitelně můžete na kartě **značky** zadat název a hodnotu, pokud chcete prostředek zařadit do kategorií. 
 
-12. Vyberte **Zkontrolovat a vytvořit**. Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
+12. Vyberte **Zkontrolovat a vytvořit** . Přejdete na kartu Revize + vytvořit, kde Azure ověřuje vaši konfiguraci.
 
-13. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit**.
+13. Po zobrazení zprávy se zobrazeným zeleným ověřením vyberte **vytvořit** .
 
-Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno**, mezipaměť je připravena k použití. 
+Vytvoření mezipaměti trvá nějakou dobu. Průběh můžete sledovat na stránce **Přehled** služby Azure cache pro Redis. Pokud se **stav** zobrazuje jako **spuštěno** , mezipaměť je připravena k použití. 
 
 ## <a name="persistence-faq"></a>Nejčastější dotazy týkající se trvalosti
 Následující seznam obsahuje odpovědi na nejčastější dotazy týkající se trvalosti Azure cache pro Redis.
@@ -160,7 +160,7 @@ AOF Persistence má vliv na propustnost přibližně o 15% – 20%, pokud je mez
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>Jak můžu odebrat druhý účet úložiště?
 
-Sekundární účet úložiště AOF Persistence můžete odebrat tak, že nastavíte druhý účet úložiště tak, aby byl stejný jako první účet úložiště. V případě existujících mezipamětí se k oknu **trvalá data** dostanete z **nabídky prostředků** pro vaši mezipaměť. Pokud chcete zakázat AOF Persistence, klikněte na **disabled (zakázáno**).
+Sekundární účet úložiště AOF Persistence můžete odebrat tak, že nastavíte druhý účet úložiště tak, aby byl stejný jako první účet úložiště. V případě existujících mezipamětí se k oknu **trvalá data** dostanete z **nabídky prostředků** pro vaši mezipaměť. Pokud chcete zakázat AOF Persistence, klikněte na **disabled (zakázáno** ).
 
 ### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Co je přepsání a jak má vliv na moji mezipaměť?
 

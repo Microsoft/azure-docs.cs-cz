@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71a4f2aa9bebd325b329af335985a37df5cd7263
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82786610"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547397"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -84,7 +84,7 @@ Pomocí kroků v této části zjistíte, jak přidat novou službu HDInsight do
         Další informace najdete v dokumentu [Poradce při potížích se skupinami zabezpečení sítě](../virtual-network/diagnose-network-traffic-filter-problem.md) .
 
         > [!IMPORTANT]  
-        > Pravidla skupiny zabezpečení sítě se aplikují v pořadí podle priority pravidla. Použije se první pravidlo, které odpovídá vzoru provozu, a pro tento provoz se neuplatní žádné další. Seřazení pravidel z nejvyšší moci až po nejméně povolující. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) .
+        > Pravidla skupiny zabezpečení sítě se aplikují v pořadí podle priority pravidla. Použije se první pravidlo, které odpovídá vzoru provozu, a pro tento provoz se neuplatní žádné další. Seřazení pravidel z nejvyšší moci až po nejméně povolující. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md) .
 
     * Trasy definované uživatelem
 
@@ -148,7 +148,7 @@ Chcete-li povolit překlad názvů mezi virtuální sítí a prostředky v přip
 
          * Předejte všechny ostatní požadavky na místní server DNS. Místní DNS zpracovává všechny další požadavky na překlad IP adres, dokonce i požadavky na internetové prostředky, jako je Microsoft.com.
 
-     * __Místní DNS__: předejte požadavky na příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se pak přepošle do rekurzivního překladače Azure.
+     * __Místní DNS__ : předejte požadavky na příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se pak přepošle do rekurzivního překladače Azure.
 
        Tato konfigurace směruje požadavky na plně kvalifikované názvy domén, které obsahují příponu DNS virtuální sítě na vlastní server DNS. Všechny ostatní požadavky (i u veřejných internetových adres) jsou zpracovávány místním serverem DNS.
 
@@ -210,6 +210,6 @@ Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnáván
 * Ukázky kódu a příklady vytváření virtuálních sítí Azure najdete v tématu [Vytvoření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md).
 * Ucelený příklad konfigurace služby HDInsight pro připojení k místní síti najdete v tématu [připojení HDInsight k místní síti](./connect-on-premises-network.md).
 * Další informace o virtuálních sítích Azure najdete v tématu [Přehled azure Virtual Network](../virtual-network/virtual-networks-overview.md).
-* Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
+* Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 * Další informace o trasách definovaných uživatelem najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).
 * Další informace o řízení provozu najdete v tématu [řízení síťového provozu](./control-network-traffic.md).

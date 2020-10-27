@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: e49fd0d2b4d8fc801372dbc766c2fdc7beb21b10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6086aecc73f04b25e95d3c93c60abd2164a5610
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905916"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544235"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privátní odkaz pro Azure Database for MySQL
 
 Private Link umožňuje připojení k různým službám PaaS v Azure přes privátní koncový bod. Azure Private Link v podstatě přináší služby Azure do vaší privátní virtuální sítě. K prostředkům PaaS je možné přistupovat přes privátní IP adresu stejně jako k jakýmkoli jiným prostředkům ve virtuální síti.
 
-Seznam pro PaaS služby, které podporují funkce privátního propojení, najdete v [dokumentaci](https://docs.microsoft.com/azure/private-link/index)k privátním odkazům. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) síti a podsíti.
+Seznam pro PaaS služby, které podporují funkce privátního propojení, najdete v [dokumentaci](../private-link/index.yml)k privátním odkazům. Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../virtual-network/virtual-networks-overview.md) síti a podsíti.
 
 > [!NOTE]
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for MySQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
@@ -28,7 +28,7 @@ Data ex filtrátu v Azure Database for MySQL je, že ověřený uživatel, jako 
 
 Vezměte v úvahu scénář s uživatelem, který aplikaci MySQL Workbench používá v rámci virtuálního počítače Azure, který se připojuje k serveru Azure Database for MySQL zřízenému v Západní USA. Následující příklad ukazuje, jak omezit přístup k veřejným koncovým bodům na Azure Database for MySQL pomocí řízení přístupu k síti.
 
-* Nastavením *Povolit službám Azure* na off zakažte veškerý provoz služeb azure pro Azure Database for MySQL prostřednictvím veřejného koncového bodu. Zajistěte, aby žádné IP adresy nebo rozsahy neumožňovaly přístup k serveru prostřednictvím [pravidel brány firewall](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules) nebo [koncových bodů služby virtuální sítě](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet).
+* Nastavením *Povolit službám Azure* na off zakažte veškerý provoz služeb azure pro Azure Database for MySQL prostřednictvím veřejného koncového bodu. Zajistěte, aby žádné IP adresy nebo rozsahy neumožňovaly přístup k serveru prostřednictvím [pravidel brány firewall](./concepts-firewall-rules.md) nebo [koncových bodů služby virtuální sítě](./concepts-data-access-and-security-vnet.md).
 
 * Povolte provoz do Azure Database for MySQL jenom pomocí privátní IP adresy virtuálního počítače. Další informace najdete v článcích o [pravidlech brány firewall pro virtuální](howto-manage-vnet-using-portal.md)počítače a [služby](concepts-data-access-and-security-vnet.md) .
 
@@ -45,7 +45,7 @@ Pomocí privátního odkazu teď můžete nastavit řízení přístupu k síti,
 
 Když se připojíte k veřejnému koncovému bodu z místních počítačů, vaše IP adresa musí být přidána do brány firewall založené na protokolu IP pomocí pravidla brány firewall na úrovni serveru. I když tento model funguje dobře a umožňuje přístup k jednotlivým počítačům pro vývoj nebo testování, je obtížné ho spravovat v produkčním prostředí.
 
-Pomocí privátního odkazu můžete povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí připojení typu [Express Route](https://azure.microsoft.com/services/expressroute/) (ER), privátního partnerského vztahu nebo [tunelového připojení VPN](https://docs.microsoft.com/azure/vpn-gateway/). Můžou následně zakázat veškerý přístup prostřednictvím veřejného koncového bodu a nepoužívat bránu firewall na základě IP adresy.
+Pomocí privátního odkazu můžete povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí připojení typu [Express Route](https://azure.microsoft.com/services/expressroute/) (ER), privátního partnerského vztahu nebo [tunelového připojení VPN](../vpn-gateway/index.yml). Můžou následně zakázat veškerý přístup prostřednictvím veřejného koncového bodu a nepoužívat bránu firewall na základě IP adresy.
 
 > [!NOTE]
 > V některých případech jsou Azure Database for MySQL a VNet-Subnet v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
@@ -57,8 +57,8 @@ Pomocí privátního odkazu můžete povolit přístup mezi různými místy k p
 
 Aby bylo možné povolit privátní propojení, jsou vyžadovány privátní koncové body. To lze provést pomocí následujících průvodců.
 
-* [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
-* [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
+* [Azure Portal](./howto-configure-privatelink-portal.md)
+* [Rozhraní příkazového řádku](./howto-configure-privatelink-cli.md)
 
 ### <a name="approval-process"></a>Proces schválení
 Po vytvoření privátního koncového bodu (PE) správcem sítě může správce MySQL spravovat připojení privátního koncového bodu (PEC) k Azure Database for MySQL. Tato oddělení povinností mezi správcem sítě a DBA je užitečné pro správu Azure Database for MySQLho připojení. 
@@ -89,17 +89,17 @@ Klienti se můžou připojit ke soukromým koncovým bodem ze stejné virtuáln�
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="vybrat portál privátního koncového bodu":::
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Připojení z virtuálního počítače Azure v partnerském Virtual Network (VNet)
-Nakonfigurujte [partnerský vztah](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) virtuálních sítí pro navázání připojení k Azure Database for MySQL z virtuálního počítače Azure ve virtuální síti s partnerským vztahem.
+Nakonfigurujte [partnerský vztah](../virtual-network/tutorial-connect-virtual-networks-powershell.md) virtuálních sítí pro navázání připojení k Azure Database for MySQL z virtuálního počítače Azure ve virtuální síti s partnerským vztahem.
 
 ### <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Připojení z virtuálního počítače Azure v prostředí VNet-to-VNet
-Nakonfigurujte [připojení typu VNet-to-VNet ke službě VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) , aby se navázalo připojení k Azure Database for MySQL z virtuálního počítače Azure v jiné oblasti nebo předplatném.
+Nakonfigurujte [připojení typu VNet-to-VNet ke službě VPN Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) , aby se navázalo připojení k Azure Database for MySQL z virtuálního počítače Azure v jiné oblasti nebo předplatném.
 
 ### <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Připojení z místního prostředí přes síť VPN
 Pokud chcete navázat připojení z místního prostředí k Azure Database for MySQL, vyberte a implementujte jednu z možností:
 
-* [Připojení Point-to-site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
-* [Připojení site-to-site VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
-* [Okruh ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
+* [Připojení Point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [Připojení site-to-site VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [Okruh ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Privátní propojení v kombinaci s pravidly brány firewall
 
@@ -115,7 +115,7 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 
 Pokud se chcete spoléhat jenom na soukromé koncové body pro přístup ke svým Azure Database for MySQL, můžete zakázat nastavení všech veřejných koncových bodů (tj. [pravidla brány firewall](concepts-firewall-rules.md) a [koncové body služby virtuální](concepts-data-access-and-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
 
-Pokud je toto nastavení nastaveno na *Ano*, budou mít Azure Database for MySQL pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne*, klienti se mohou připojit k vašemu Azure Database for MySQL v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Po nastavení hodnoty přístup k privátní síti můžou zákazníci taky přidávat a aktualizovat existující pravidla brány firewall a pravidla koncových bodů služby virtuální sítě.
+Pokud je toto nastavení nastaveno na *Ano* , budou mít Azure Database for MySQL pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne* , klienti se mohou připojit k vašemu Azure Database for MySQL v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Po nastavení hodnoty přístup k privátní síti můžou zákazníci taky přidávat a aktualizovat existující pravidla brány firewall a pravidla koncových bodů služby virtuální sítě.
 
 > [!Note]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL – jeden server podporuje Pro obecné účely a cenová úroveň optimalizované pro paměť.
@@ -128,11 +128,11 @@ Informace o tom, jak nastavit **přístup k veřejné síti odepřít** pro vá�
 
 Další informace o funkcích Azure Database for MySQL zabezpečení najdete v následujících článcích:
 
-* Pokud chcete nakonfigurovat bránu firewall pro Azure Database for MySQL, přečtěte si téma [Podpora brány firewall](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules).
+* Pokud chcete nakonfigurovat bránu firewall pro Azure Database for MySQL, přečtěte si téma [Podpora brány firewall](./concepts-firewall-rules.md).
 
-* Informace o tom, jak nakonfigurovat koncový bod služby virtuální sítě pro váš Azure Database for MySQL, najdete v tématu [Konfigurace přístupu z virtuálních sítí](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet).
+* Informace o tom, jak nakonfigurovat koncový bod služby virtuální sítě pro váš Azure Database for MySQL, najdete v tématu [Konfigurace přístupu z virtuálních sítí](./concepts-data-access-and-security-vnet.md).
 
-* Přehled připojení Azure Database for MySQL najdete v tématu [Architektura připojení Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture)
+* Přehled připojení Azure Database for MySQL najdete v tématu [Architektura připojení Azure Database for MySQL](./concepts-connectivity-architecture.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

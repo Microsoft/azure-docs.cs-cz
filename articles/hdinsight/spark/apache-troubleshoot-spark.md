@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79271938"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545629"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparkem s využitím služby Azure HDInsight
 
@@ -25,31 +25,31 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemor
 
 1. Přihlaste se k Ambari `https://CLUSTERNAME.azurehdidnsight.net` s přihlašovacími údaji clusteru. Úvodní obrazovka zobrazuje řídicí panel přehled. Mezi HDInsight 3,6 a 4,0 jsou mírné rozdíly v kosmetických rozdílech.
 
-1. Přejděte do **Spark2**  >  **Konfigurace**Spark2.
+1. Přejděte do **Spark2**  >  **Konfigurace** Spark2.
 
     ![Vyberte kartu konfigurace.](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
-1. V seznamu konfigurací vyberte a rozbalte **Custom-spark2-Defaults**.
+1. V seznamu konfigurací vyberte a rozbalte **Custom-spark2-Defaults** .
 
-1. Vyhledejte nastavení hodnoty, které je třeba upravit, například **spark.executor. Memory**. V tomto případě je hodnota **9728m** příliš vysoká.
+1. Vyhledejte nastavení hodnoty, které je třeba upravit, například **spark.executor. Memory** . V tomto případě je hodnota **9728m** příliš vysoká.
 
     ![Výběr možnosti vlastní-Spark-výchozí](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. Nastavte hodnotu na Doporučené nastavení. Pro toto nastavení se doporučuje hodnota **2048m** .
 
-1. Uložte hodnotu a pak konfiguraci uložte. Vyberte **Uložit**.
+1. Uložte hodnotu a pak konfiguraci uložte. Vyberte **Uložit** .
 
     ![Změnit hodnotu na 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    Zapište si poznámku týkající se změn konfigurace a pak vyberte **Uložit**.
+    Zapište si poznámku týkající se změn konfigurace a pak vyberte **Uložit** .
 
     ![Zadejte poznámku k provedeným změnám.](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    Budete upozorněni, pokud některé konfigurace vyžadují pozornost. Poznamenejte si položky a pak vyberte **pokračovat**.
+    Budete upozorněni, pokud některé konfigurace vyžadují pozornost. Poznamenejte si položky a pak vyberte **pokračovat** .
 
     ![Přesto vyberte pokračovat.](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. Při každém uložení konfigurace se zobrazí výzva k restartování služby. Vyberte **restartovat**.
+1. Při každém uložení konfigurace se zobrazí výzva k restartování služby. Vyberte **restartovat** .
 
     ![Vybrat restartování](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
@@ -61,13 +61,13 @@ Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemor
 
     ![Zkontrolovat spuštěné procesy](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. Můžete přidat konfigurace. V seznamu konfigurací vyberte **Custom-spark2-Defaults**a pak vyberte **Přidat vlastnost**.
+1. Můžete přidat konfigurace. V seznamu konfigurací vyberte **Custom-spark2-Defaults** a pak vyberte **Přidat vlastnost** .
 
     ![Výběr vlastnosti přidat](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
 1. Definujte novou vlastnost. Můžete definovat jednu vlastnost pomocí dialogového okna pro konkrétní nastavení, jako je například datový typ. Nebo můžete definovat více vlastností pomocí jedné definice na řádek.
 
-    V tomto příkladu je vlastnost **Spark. Driver. Memory** definovaná s hodnotou **4G**.
+    V tomto příkladu je vlastnost **Spark. Driver. Memory** definovaná s hodnotou **4G** .
 
     ![Definovat novou vlastnost](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
@@ -107,10 +107,10 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * [Přehled správy paměti Spark](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
 
-* [Ladění aplikace Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
+* [Ladění aplikace Spark v clusterech HDInsight](/archive/blogs/azuredatalake/spark-debugging-101).
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
 * Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

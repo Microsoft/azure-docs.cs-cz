@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462271"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540393"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL ve službě Azure HDInsight?
 
@@ -23,7 +23,7 @@ Podregistr umožňuje strukturování struktury na základě nestrukturovaných 
 
 HDInsight nabízí několik typů clusterů, které jsou vyladěné pro konkrétní úlohy. Následující typy clusterů se nejčastěji používají pro dotazy na podregistry:
 
-|Typ clusteru |Description|
+|Typ clusteru |Popis|
 |---|---|
 |Interaktivní dotaz|Cluster Hadoop, který poskytuje funkci [LLAP (nízká latence Analytical Processing)](https://cwiki.apache.org/confluence/display/Hive/LLAP) pro zlepšení dob odezvy pro interaktivní dotazy. Další informace najdete v dokumentu [Začínáme s interaktivním dotazem v HDInsight](../interactive-query/apache-interactive-query-get-started.md) .|
 |Hadoop|Cluster Hadoop, který je vyladěn pro úlohy dávkového zpracování. Další informace najdete v dokumentu [Začínáme s Apache Hadoop v HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) .|
@@ -72,14 +72,14 @@ Další informace o formátech souborů podporovaných podregistru najdete v té
 
 Existují dva typy tabulek, které lze vytvořit s podregistru:
 
-* __Interní__: data jsou uložená v datovém skladu podregistru. Datový sklad se nachází ve `/hive/warehouse/` výchozím úložišti pro daný cluster.
+* __Interní__ : data jsou uložená v datovém skladu podregistru. Datový sklad se nachází ve `/hive/warehouse/` výchozím úložišti pro daný cluster.
 
     Použijte interní tabulky, pokud platí jedna z následujících podmínek:
 
     * Data jsou dočasná.
     * Chcete, aby podregistr spravoval životní cyklus tabulky a dat.
 
-* __Externí__: data se ukládají mimo datový sklad. Data je možné ukládat do libovolného úložiště přístupného clusterem.
+* __Externí__ : data se ukládají mimo datový sklad. Data je možné ukládat do libovolného úložiště přístupného clusterem.
 
     Externí tabulky použijte v případě, že platí jedna z následujících podmínek:
 
@@ -88,11 +88,11 @@ Existují dva typy tabulek, které lze vytvořit s podregistru:
     * Potřebujete vlastní umístění, jako je například účet úložiště, který není výchozí.
     * Jiný program než podregistr spravuje formát dat, umístění atd.
 
-Další informace najdete v blogovém příspěvku v [interních a externích tabulkách pro podregistr](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) .
+Další informace najdete v blogovém příspěvku v [interních a externích tabulkách pro podregistr](/archive/blogs/cindygross/hdinsight-hive-internal-and-external-tables-intro) .
 
 ## <a name="user-defined-functions-udf"></a>Uživatelsky definované funkce (UDF)
 
-Podregistr se dá taky rozšířit prostřednictvím **uživatelsky definovaných funkcí (UDF)**. Systém souborů UDF umožňuje implementovat funkce nebo logiku, které nejsou v HiveQL snadno modelované. Příklad použití UDF s podregistrem najdete v následujících dokumentech:
+Podregistr se dá taky rozšířit prostřednictvím **uživatelsky definovaných funkcí (UDF)** . Systém souborů UDF umožňuje implementovat funkce nebo logiku, které nejsou v HiveQL snadno modelované. Příklad použití UDF s podregistrem najdete v následujících dokumentech:
 
 * [Použití uživatelsky definované funkce Java s Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
@@ -100,7 +100,7 @@ Podregistr se dá taky rozšířit prostřednictvím **uživatelsky definovanýc
 
 * [Použití uživatelsky definované funkce jazyka C# s Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Postup přidání vlastní Apache Hive uživatelsky definované funkce do HDInsight](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
+* [Postup přidání vlastní Apache Hive uživatelsky definované funkce do HDInsight](/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight)
 
 * [Příklad Apache Hive uživatelsky definované funkce pro převod formátů data a času na časové razítko podregistru](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -133,11 +133,11 @@ V předchozím příkladu příkazy HiveQL provádějí následující akce:
 
 |Příkaz |Popis |
 |---|---|
-|ODKLÁDACÍ TABULKA|Pokud tabulka již existuje, odstraňte ji.|
+|DROP TABLE|Pokud tabulka již existuje, odstraňte ji.|
 |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří novou **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění a v původním formátu.|
 |FORMÁT ŘÁDKU|Instruuje podregistr, jak jsou data formátovaná. V tomto případě jsou pole v každém protokolu oddělená mezerou.|
 |ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Říká podregistru, ve kterém jsou data uložená ( `example/data` adresář) a je uložený jako text. Data mohou být v jednom souboru nebo rozložena mezi více souborů v rámci adresáře.|
-|SELECT|Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** , protože existují tři řádky, které obsahují tuto hodnotu.|
+|SELECT|Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento příkaz vrátí hodnotu **3** , protože existují tři řádky, které obsahují tuto hodnotu.|
 |INPUT__FILE__NAME jako je%. log|Podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by mělo vracet pouze data ze souborů končících log. log.|
 
 > [!NOTE]  
@@ -168,7 +168,7 @@ Tyto příkazy provádějí následující akce:
 |---|---|
 |CREATE TABLE, POKUD NEEXISTUJE|Pokud tabulka neexistuje, vytvořte ji. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Tabulka je uložená v datovém skladu podregistru a je plně spravovaná podregistrem.|
 |ULOŽENO JAKO ORC|Ukládá data ve formátu optimalizovaného řádku (ORC). ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.|
-|VLOŽIT PŘEPSÁNÍ... VYBRALI|Vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]**, a pak data vloží **do tabulky chyb** .|
+|VLOŽIT PŘEPSÁNÍ... VYBRALI|Vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]** , a pak data vloží **do tabulky chyb** .|
 
 > [!NOTE]  
 > Vyřazení interní tabulky na rozdíl od externích tabulek odstraní také podkladová data.
@@ -197,11 +197,11 @@ Azure Data Factory umožňuje používat HDInsight jako součást kanálu Data F
 
 Ke spuštění úlohy podregistru můžete použít služba SSIS (SQL Server Integration Services) (SSIS). Sada Azure Feature Pack pro SSIS poskytuje následující komponenty, které pracují s úlohami podregistru v HDInsight.
 
-* [Úloha pro podregistr Azure HDInsight](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Úloha pro podregistr Azure HDInsight](/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Správce připojení předplatného Azure](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Správce připojení předplatného Azure](/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-Další informace najdete v dokumentaci k [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) .
+Další informace najdete v dokumentaci k [Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis) .
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
