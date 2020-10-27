@@ -31,4 +31,4 @@ Pokud chcete spustit kód uvedený v tomto článku ve službě Azure Cloud Shel
 
 1. Vložte kód do relace Cloud Shell pomocí kláves **Ctrl**+**Shift**+**V** ve Windows a Linuxu nebo pomocí kláves **Cmd**+**Shift**+**V** v systému macOS.
 
-1. Spusťte kód stisknutím klávesy **Enter**.
+1. Spusťte kód stisknutím klávesy **Enter** .

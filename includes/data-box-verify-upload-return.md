@@ -12,11 +12,11 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/01/2020
 ms.locfileid: "91631528"
 ---
-Jakmile Microsoft přijme a naskenuje zařízení, stav objednávky se změní na **Přijato**. Zařízení pak projde fyzickým ověřením poškození nebo známek manipulace.
+Jakmile Microsoft přijme a naskenuje zařízení, stav objednávky se změní na **Přijato** . Zařízení pak projde fyzickým ověřením poškození nebo známek manipulace.
 
 Po dokončení ověřování se Data Box připojí k síti v datacentru Azure. Automaticky se spustí kopírování dat. V závislosti na velikosti dat může operace kopírování trvat několik hodin až dní. Průběh kopírování můžete sledovat na portálu.
 
-Po dokončení kopírování se stav objednávky změní na **Dokončeno**.
+Po dokončení kopírování se stav objednávky změní na **Dokončeno** .
 
 Než odstraníte data ze zdroje, ujistěte se, že se nahrála do Azure. Vaše data můžou být v následujících umístěních:
 

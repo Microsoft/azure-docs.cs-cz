@@ -16,11 +16,11 @@ Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všec
 > [!IMPORTANT]
 > Příprava k odeslání je povinná, protože se během ní označí příznakem data, která neodpovídají zásadám vytváření názvů v Azure. Tento krok zabraňuje potenciálnímu selhání nahrávání z důvodu nevyhovujících dat.
 
-1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. Ve výchozím nastavení se během kopírování dat počítají kontrolní součty. Příprava k odeslání dokončí výpočet kontrolních součtů a vytvoří seznam souborů (*soubor BOM*). Výpočet kontrolního součtu může v závislosti na velikosti vašich dat trvat i několik hodin nebo dnů. 
+1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu** . Ve výchozím nastavení se během kopírování dat počítají kontrolní součty. Příprava k odeslání dokončí výpočet kontrolních součtů a vytvoří seznam souborů ( *soubor BOM* ). Výpočet kontrolního součtu může v závislosti na velikosti vašich dat trvat i několik hodin nebo dnů. 
    
     ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
-    Pokud z nějakého důvodu chcete přípravu zařízení zastavit, klikněte na **Zastavit přípravu**. Později můžete v přípravě k odeslání pokračovat.
+    Pokud z nějakého důvodu chcete přípravu zařízení zastavit, klikněte na **Zastavit přípravu** . Později můžete v přípravě k odeslání pokračovat.
         
     ![Příprava k odeslání 2](media/data-box-prepare-to-ship/prepare-to-ship2.png)
     
@@ -30,11 +30,11 @@ Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všec
 
     Pokud chcete do zařízení zkopírovat více dat, můžete ho odemknout, zkopírovat další data a znovu spustit přípravu k odeslání.
 
-    Pokud v tomto kroku došlo k nějakým chybám, stav se aktualizuje na *Kontrola dokončena s chybami*. Odemkněte zařízení, přejděte na stránku **Připojit a kopírovat**, stáhněte si seznam problémů a vyřešte příslušné chyby.
+    Pokud v tomto kroku došlo k nějakým chybám, stav se aktualizuje na *Kontrola dokončena s chybami* . Odemkněte zařízení, přejděte na stránku **Připojit a kopírovat** , stáhněte si seznam problémů a vyřešte příslušné chyby.
 
     ![Příprava k odeslání 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 
-    Po vyřešení chyb spusťte **přípravu k odeslání**.
+    Po vyřešení chyb spusťte **přípravu k odeslání** .
 
 4. Po úspěšném dokončení přípravy k odeslání (bez chyb) použijte následující postup:
 
@@ -45,6 +45,6 @@ Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všec
     3. Vyberte a stáhněte pokyny k expedici pro příslušné zařízení. Pokyny k expedici se liší v závislosti na zemi, ve které se nacházíte.
     4. Pokud E-ink nezobrazuje expediční štítek, můžete si tento štítek stáhnout tady. 
 
-5. Vypněte zařízení. Přejděte na stránku **Vypnout nebo restartovat** a klikněte na **Vypnout**. Po zobrazení výzvy k potvrzení pokračujte kliknutím na **OK**.
+5. Vypněte zařízení. Přejděte na stránku **Vypnout nebo restartovat** a klikněte na **Vypnout** . Po zobrazení výzvy k potvrzení pokračujte kliknutím na **OK** .
 
 6. Odpojte kabely. Dalším krokem je odeslat zařízení do Microsoftu.
