@@ -200,7 +200,7 @@
     - name: Případové studie
       href: data-factory-customer-case-studies.md
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: Cenová kalkulačka

@@ -13,6 +13,7 @@
     - name: Vytvoření profilu služby Traffic Manager – Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
     - name: Vytvoření profilu služby Traffic Manager – šablona ARM
+      displayName: Resource Manager
       href: quickstart-create-traffic-manager-profile-template.md
   expanded: true
 - name: Kurzy

@@ -3,13 +3,13 @@ title: Kurz – spuštění image sestavení buildu pomocí soukromé základní
 description: V tomto kurzu nakonfigurujete úlohu Azure Container Registry pro automatické spouštění sestavení imagí kontejneru v cloudu, když se aktualizuje základní image v jiném privátním registru služby Azure Container Registry.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: 09b795981c1afe497e6adbb14f4f62d45293f0e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 7dda7c54c51c31e750083f302ca558ff7ef548ee
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270963"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739547"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Kurz: automatizace sestavení imagí kontejneru při aktualizaci základní image v jiném privátním registru kontejneru 
 
@@ -78,7 +78,7 @@ V tomto kurzu vaše úloha ACR sestaví a nahraje image kontejneru aplikace zada
 
 ## <a name="build-the-base-image"></a>Sestavit základní image
 
-Začněte vytvořením základní Image pomocí *rychlého úkolu*ACR Tasks pomocí [AZ ACR Build][az-acr-build]. Jak je popsáno v [prvním kurzu](container-registry-tutorial-quick-task.md) série, tímto postupem se nejen sestaví image, ale v případě úspěšného sestavení se odešle do registru kontejneru. V tomto příkladu je obrázek přesunut do registru základní image.
+Začněte vytvořením základní Image pomocí *rychlého úkolu* ACR Tasks pomocí [AZ ACR Build][az-acr-build]. Jak je popsáno v [prvním kurzu](container-registry-tutorial-quick-task.md) série, tímto postupem se nejen sestaví image, ale v případě úspěšného sestavení se odešle do registru kontejneru. V tomto příkladu je obrázek přesunut do registru základní image.
 
 ```azurecli-interactive
 az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
@@ -257,7 +257,7 @@ V prohlížeči přejděte na http://localhost:8081. Měli byste vidět aktualiz
 
 ![Snímek obrazovky ukázkové aplikace vykreslené v prohlížeči][base-update-02]
 
-Důležité je uvědomit si, že jste aktualizovali **základní** image s novým číslem verze, ale novou verzi zobrazuje poslední sestavená image **aplikace**. Služba ACR Tasks převzala změnu základní image a automaticky znovu sestavila image aplikace.
+Důležité je uvědomit si, že jste aktualizovali **základní** image s novým číslem verze, ale novou verzi zobrazuje poslední sestavená image **aplikace** . Služba ACR Tasks převzala změnu základní image a automaticky znovu sestavila image aplikace.
 
 Chcete-li zastavit a odebrat kontejner, spusťte následující příkaz:
 

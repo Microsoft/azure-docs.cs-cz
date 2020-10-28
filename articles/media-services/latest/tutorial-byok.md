@@ -1,53 +1,59 @@
 ---
-title: Klíče spravované zákazníkem nebo Přineste si vlastní klíč (BYOK) s Media Services
-description: Toto je kurz použití spravovaných klíčů zákazníka s účtem úložiště Media Services.
+title: Použití klíčů spravovaných zákazníkem nebo BYOK
+description: V tomto kurzu použijete klíče spravované zákazníkem nebo Přineste vlastní klíč (BYOK) s účtem úložiště Azure Media Services.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: c26da9d888bbcdf72c052fa4bd7fcdf443a2d8f7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 010e5b8fc394448840f8ff8fd11e92ca2e1ec9d4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326137"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740464"
 ---
-# <a name="tutorial-use-customer-managed-keys-or-bring-your-own-key-byok-with-media-services"></a>Kurz: použití klíčů spravovaných zákazníkem nebo Přineste si vlastní klíč (BYOK) s Media Services
+# <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services"></a>Kurz: použití klíčů spravovaných zákazníkem nebo BYOK s Media Services
 
-S rozhraním API 2020-05-01 můžete použít spravovaný klíč RSA zákazníka s účtem Media Services, který má identitu spravovanou systémem.  V tomto kurzu se skládá kolekce a prostředí pro odesílání žádostí REST do služeb Azure.  Používané služby:
+S rozhraním API 2020-05-01 můžete použít klíč RSA spravovaný zákazníkem s účtem Azure Media Services, který má systémově spravovanou identitu. V tomto kurzu se skládá kolekce a prostředí pro odesílání žádostí REST do služeb Azure. Používají se tyto služby:
 
-- Azure Active Directory registraci aplikace pro post
+- Registrace aplikace Azure Active Directory (Azure AD) pro post
 - Microsoft Graph API
 - Azure Storage
 - Azure Key Vault
-- Media Services
+- Azure Media Services
 
 V tomto kurzu se naučíte používat metodu post pro:
 
 > [!div class="checklist"]
-> * Získejte tokeny pro použití se službami Azure.
-> * Vytvořte skupinu prostředků a účet úložiště.
-> * Vytvoření účtu Media Services s identitou spravované systémem
-> * Vytvořte Key Vault pro uložení klíče RSA (spravovaného zákazníkem) pro použití s účtem úložiště.
-> * Aktualizujte účet Media Services, aby používal klíč RSA s účtem úložiště.
-> * Použijte proměnné v post.
+> - Získejte tokeny pro použití se službami Azure.
+> - Vytvořte skupinu prostředků a účet úložiště.
+> - Vytvořte účet Media Services s identitou spravovanou systémem.
+> - Vytvořte Trezor klíčů pro uložení klíče RSA spravovaného zákazníkem.
+> - Aktualizujte účet Media Services, aby používal klíč RSA s účtem úložiště.
+> - Použijte proměnné v post.
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- Zaregistrujte instanční objekt s příslušnými oprávněními.
-- Nainstalujte [post](https://www.postman.com).
-- Stáhněte si kolekci post pro tento kurz v [ukázkách Azure: Media-Services-Customer-Managed-Keys-BYOK](https://github.com/Azure-Samples/media-services-customer-managed-keys-byok)
+1. Zaregistrujte instanční objekt s příslušnými oprávněními.
+1. Nainstalujte [post](https://www.postman.com).
+1. Stáhněte si shromažďování po shromáždění pro tento kurz v [ukázkách Azure: Media-Services-Customer-Managed-Key-BYOK](https://github.com/Azure-Samples/media-services-customer-managed-keys-byok).
 
 ### <a name="register-a-service-principal-with-the-needed-permissions"></a>Registrace instančního objektu s potřebnými oprávněními
 
-[Vytvoření instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).  Pokud chcete získat tajný klíč instančního objektu, podívejte se na [možnost 2](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options) .  Poznamenejte si tajný kód, protože když ponecháte tajnou stránku na portálu, nebude přístupná.
+1. [Vytvoření instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+1. Přejít na [možnost 2: vytvořením nového tajného klíče aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options) získáte tajný klíč objektu služby.
 
-K provedení úkolů v tomto kurzu potřebuje instanční objekt následující oprávnění.
+   > [!IMPORTANT]
+   >Zkopírujte a uložte tajný klíč pro pozdější použití. Po opuštění stránky tajného kódu na portálu nemůžete získat přístup ke tajnému kódu.
 
-![oprávnění potřebná pro instanční objekt](./media/tutorial-byok/service-principal-permissions-1.png)
+1. Přiřaďte oprávnění k instančnímu objektu, jak je znázorněno na následujícím snímku obrazovky:
+
+   :::image type="complex" source="./media/tutorial-byok/service-principal-permissions-1.png" alt-text="Snímek obrazovky zobrazující oprávnění potřebná pro instanční objekt":::
+   Oprávnění jsou uvedena podle služby, název oprávnění, typ a popis. Azure Key Vault: zosobnění uživatele, delegovaný, úplný přístup k Azure Key Vault. Správa služeb Azure: zosobnění uživatele, delegovaný přístup ke správě služeb Azure jako uživatel organizace. Azure Storage: zosobnění uživatele, delegovaný přístup Azure Storage. Media Services: zosobnění uživatele, delegované, přístup k Media Services. Microsoft Graph: uživatel. Read, delegovaný, přihlaste se a číst profil uživatele.
+   :::image-end:::
 
 ### <a name="install-postman"></a>Nainstalovat post
 
@@ -55,74 +61,80 @@ Pokud jste ještě nenainstalovali Poster pro použití s Azure, můžete ho zí
 
 ### <a name="download-and-import-the-collection"></a>Stažení a import kolekce
 
-Stáhněte si kolekci post pro tento kurz v [ukázkách Azure: Media-Services-Customer-Managed-Keys-BYOK](https://github.com/Azure-Samples/media-services-customer-managed-keys-byok)
+Stáhněte si shromažďování po shromáždění pro tento kurz v [ukázkách Azure: Media-Services-Customer-Managed-Key-BYOK](https://github.com/Azure-Samples/media-services-customer-managed-keys-byok).
 
-## <a name="installation-of-collection-and-environment"></a>Instalace kolekce a prostředí
+## <a name="install-the-postman-collection-and-environment"></a>Instalace kolekce a prostředí pro odesílání
 
 1. Spusťte post.
-1. Vyberte **Importovat**.
-1. Vyberte **Odeslat soubory**.
-1. Přejděte do umístění, kam jste uložili soubory kolekce a prostředí.
-1. Vyberte soubor kolekce a prostředí.
-1. Vyberte **Otevřít**.  (Zobrazí se upozornění, že soubory se neimportují jako rozhraní API, ale jako kolekce.  To je přesné.  To je to, co chcete.)
-1. Tato kolekce se teď bude zobrazovat ve vašich kolekcích jako BYOK.
-1. Proměnné prostředí se nyní zobrazí ve vašich prostředích.
+1. Vyberte **Importovat** .
+1. Vyberte **Odeslat soubory** .
+1. Přejít na místo, kam jste uložili soubory kolekce a prostředí.
+1. Vyberte kolekci a soubory prostředí.
+1. Vyberte **Otevřít** . Zobrazí se upozornění oznamující, že soubory nebudou importovány jako rozhraní API, ale jako kolekce. Toto upozornění je přesné. Je to, co chcete.
+
+Kolekce se nyní zobrazuje ve vašich kolekcích jako BYOK. Ve vašem prostředí se taky zobrazí proměnné prostředí.
 
 ### <a name="understand-the-rest-api-requests-in-the-collection"></a>Pochopení požadavků REST API v kolekci
 
-Kolekce poskytuje následující požadavky REST API. Žádosti musí být odesílány v sekvenci, která je poskytována jako většina z nich, má testovací skripty, které dynamicky vytvoří globální proměnné pro další (nebo další) žádost v sekvenci. Není nutné ručně vytvářet globální proměnné.
+Kolekce poskytuje následující požadavky REST API.
 
-V části post se tyto proměnné nacházejí v `{{ }}` závorkách.  Například, `{{bearerToken}}`.
+> [!NOTE]
+>
+>- Žádosti musí být odesílány v zadaném pořadí.
+>- Většina požadavků má testovací skripty, které dynamicky vytváří globální proměnné pro další požadavek v sekvenci.
+>- Nemusíte vytvářet globální proměnné ručně.
 
-1. Získat token AAD – test nastaví globální proměnnou *bearerToken*
-2. Získat token grafu – test nastaví globální proměnnou *graphToken*
-3. Získat podrobnosti objektu služby – test nastaví globální proměnnou *servicePrincipalObjectId*
-4. Vytvoření účtu úložiště – test nastaví globální proměnnou *storageAccountId*
-5. Vytvoření účtu Media Services se systémem spravovaná identita – test nastaví globální proměnnou *principalId*
-6. Vytvoření Key Vault a udělení přístupu k instančnímu objektu – test nastaví globální proměnnou *keyVaultId*
-7. Získání tokenu Key Vault – sada testů globální proměnné *keyVaultToken*
-8. Vytvoření klíče RSA v trezoru klíčů – sada testů nastaví globální proměnnou *keyId*
-9. Aktualizujte účet Media Services, aby používal klíč s účtem úložiště – pro tento požadavek není k dispozici testovací skript.
+V části post se tyto proměnné nacházejí v závorkách. Například, `{{bearerToken}}`.
+
+1. Získání tokenu Azure AD: test nastaví globální proměnnou **bearerToken** .
+2. Získání Microsoft Graph tokenu: test nastaví globální proměnnou **graphToken** .
+3. Získat podrobnosti objektu služby: test nastaví globální proměnnou **servicePrincipalObjectId** .
+4. Vytvoření účtu úložiště: test nastaví globální proměnnou **storageAccountId** .
+5. Vytvoření účtu Media Services s identitou spravovanou systémem: test nastaví globální proměnnou **principalId** .
+6. Vytvoření trezoru klíčů pro udělení přístupu k instančnímu objektu: test nastaví globální proměnnou **keyVaultId** .
+7. Získání Key Vault tokenu: test nastaví globální proměnnou **keyVaultToken** .
+8. Vytvoření klíče RSA v trezoru klíčů: test nastaví globální proměnnou **keyId** .
+9. Aktualizujte účet Media Services, aby používal klíč s účtem úložiště: pro tento požadavek není k dispozici žádný testovací skript.
 
 ## <a name="define-environment-variables"></a>Definování proměnných prostředí
 
-1. Přepněte do prostředí, které jste stáhli, a vyberte rozevírací seznam prostředí.
-1. Vytvořte proměnné prostředí v post. Používají se také jako proměnné obsažené v `{{ }}` závorkách.  Například, `{{tenantId}}`.
+1. Vyberte rozevírací seznam prostředí a přepněte se do prostředí, které jste stáhli.
+1. Vytvořte proměnné prostředí v post. Používají se také jako proměnné obsažené v závorkách. Například, `{{tenantId}}`.
 
-    * *tenantId* = ID tenanta
-    * *servicePrincipalId* = ID instančního objektu, který jste navázali pomocí oblíbené metody: portál, CLI a tak dále.
-    * *servicePrincipalSecret* = tajný kód vytvořený pro instanční objekt
-    * *předplatné* = ID vašeho předplatného
-    * *Storage* = název, který chcete vašemu úložišti přidělit
-    * název *účtu* : název účtu mediální služby, který chcete použít.
-    * název *trezoru* = Key Vault název, který chcete použít
-    * *resourceLocation* = Centralus (nebo kde někdy chcete prostředky umístit.  Tato kolekce byla testována pouze pomocí centralus.)
-    * *resourceName* = název skupiny prostředků
+    - **tenantId** : vaše ID tenanta.
+    - **servicePrincipalId** : ID instančního objektu, který jste navázali s vaší oblíbenou metodou, jako je například portál nebo rozhraní příkazového řádku.
+    - **servicePrincipalSecret** : tajný kód vytvořený pro instanční objekt.
+    - **předplatné** : ID vašeho předplatného.
+    - **Storage (úložiště** ): název, který chcete vašemu úložišti přidělit.
+    - název **účtu** : Media Services název účtu, který chcete použít.
+    - název **trezoru klíčů: název** trezoru klíčů, který chcete použít.
+    - **resourceLocation** : umístění **CentralUs** nebo kam chcete prostředky umístit. Tato kolekce byla testována pouze pomocí **CentralUs** .
+    - Skupina prostředků **zdroj** : název skupiny prostředků.
 
-    Následující proměnné jsou standard pro práci s prostředky Azure, takže je nemusíte měnit.
+    Následující proměnné jsou standard pro práci s prostředky Azure. Takže je nemusíte měnit.
 
-    * *armResource* = `https://management.core.windows.net`
-    * *graphResource* = `https://graph.windows.net/`
-    * *keyVaultResource* = `https://vault.azure.net`
-    * *armEndpoint* = `management.azure.com`
-    * *graphEndpoint* = `graph.windows.net`
-    * *aadEndpoint* = `login.microsoftonline.com`
-    * *keyVaultDomainSuffix* = `vault.azure.net`
+    - **armResource** : `https://management.core.windows.net`
+    - **graphResource** : `https://graph.windows.net/`
+    - **keyVaultResource** : `https://vault.azure.net`
+    - **armEndpoint** : `management.azure.com`
+    - **graphEndpoint** : `graph.windows.net`
+    - **aadEndpoint** : `login.microsoftonline.com`
+    - **keyVaultDomainSuffix** : `vault.azure.net`
 
 ## <a name="send-the-requests"></a>Odeslat žádosti
 
-Po definování proměnných prostředí můžete buď spustit žádosti postupně ve výše uvedeném pořadí, nebo použít spouštěč post pro spuštění kolekce.
+Po definování proměnných prostředí můžete spustit žádosti po jednom v předchozí sekvenci. Nebo můžete použít spouštěčer pro spuštění kolekce.
 
 ## <a name="change-the-key"></a>Změnit klíč
 
-Služba Media Services automaticky detekuje, kdy byl klíč změněn.  Pokud to chcete otestovat, vytvořte pro stejný klíč jinou verzi klíče. Media Services by měl tento klíč detekovat za méně než 15 minut.
+Media Services automaticky detekuje, kdy se klíč změnil. Pro otestování tohoto procesu vytvořte další verzi klíče pro stejný klíč. Media Services by měl klíč detekovat za méně než 15 minut.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete nadále používat prostředky, které jste vytvořili, a nechcete, aby se **vám nadále účtují**, odstraňte je.
+Pokud nebudete nadále používat prostředky, které jste vytvořili, a nechcete, aby se *vám nadále účtují* , odstraňte je.
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším článku se naučíte, jak...
+Podívejte se na další článek, kde se dozvíte, jak:
 > [!div class="nextstepaction"]
 > [Kódování vzdáleného souboru na základě adresy URL a streamování videa pomocí REST](stream-files-tutorial-with-rest.md)

@@ -748,8 +748,6 @@
           href: connector-troubleshoot-guide.md
         - name: Toky dat
           href: data-flow-troubleshoot-guide.md
-        - name: Nástroj pro kopírování dat
-          href: copy-data-tool-troubleshoot-guide.md
         - name: Místní prostředí Integration Runtime
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Prostředí Azure-SSIS Integration Runtime
@@ -783,7 +781,7 @@
     - name: Blog
       href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: Zeptejte se – stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: Zeptejte se – Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Žádost o funkci

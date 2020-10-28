@@ -25,13 +25,13 @@
     - name: Řešení potíží se službou Internet Analyzer
       href: troubleshoot.md
     - name: Referenční informace k CLI služby Internet Analyzer
-      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
+      href: /cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: SLA verze Preview
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

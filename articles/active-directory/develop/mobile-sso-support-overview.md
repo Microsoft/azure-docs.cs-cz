@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 27a58fc66de31fef272ab2f2c2bfaa9896a07d4b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209762"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740143"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte
 
@@ -47,7 +47,7 @@ Pokud v aplikaci aktuálně používáte [knihovnu ADAL](../azuread-dev/active-d
 
 V případě aplikací pro iOS máme [rychlý Start](quickstart-v2-ios.md) , který vám ukáže, jak nastavit přihlášení pomocí MSAL a také [pokyny ke konfiguraci MSAL pro různé scénáře jednotného přihlašování](single-sign-on-macos-ios.md).
 
-V případě aplikací pro Android máme [rychlý Start](quickstart-v2-android.md) , který vám ukáže, jak nastavit přihlášení pomocí MSAL a návod pro použití zprostředkovaných [ověřovacích](brokered-auth.md) nebo [autorizačních agentů](authorization-agents.md).
+V případě aplikací pro Android máme [rychlý Start](quickstart-v2-android.md) , který vám ukáže, jak nastavit přihlášení pomocí MSAL a návod, [Jak povolit jednotné přihlašování pro různé aplikace v Androidu pomocí MSAL](msal-android-single-sign-on.md).
 
 ### <a name="use-the-system-web-browser"></a>Použití systémového webového prohlížeče
 
@@ -68,7 +68,7 @@ Kromě toho musíte pro ověřování použít aplikaci zprostředkovatele. Zpro
 
 Nakonec přidejte do své aplikace [Intune SDK](/mem/intune/developer/app-sdk-get-started) , abyste mohli povolit zásady ochrany aplikací. Sada SDK pro většinu částí sleduje model zachycení a automaticky použije zásady ochrany aplikací k určení, jestli jsou povolené akce, které aplikace přijímá. K dispozici jsou také rozhraní API, která můžete volat ručně a sdělit aplikaci, pokud existují určitá omezení pro určité akce.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Plánování nasazení s jednotným přihlašováním Azure Active Directory](../manage-apps/plan-sso-deployment.md)
 - [Postupy: Konfigurace jednotného přihlašování v macOS a iOS](single-sign-on-macos-ios.md)

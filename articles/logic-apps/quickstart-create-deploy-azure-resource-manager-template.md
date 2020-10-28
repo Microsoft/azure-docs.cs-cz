@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87078122"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739326"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Rychlý Start: vytvoření a nasazení pracovního postupu aplikace logiky pomocí šablony ARM
 
@@ -20,7 +20,7 @@ ms.locfileid: "87078122"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
 
@@ -78,7 +78,7 @@ Použijte možnost, kterou chcete použít k nasazení šablony pro rychlý Star
 
    ![Zadání informací pro šablonu pro rychlé zprovoznění](./media/quickstart-create-deploy-azure-resource-manager-template/create-logic-app-template-portal.png)
 
-1. Až budete hotovi, vyberte **zkontrolovat + vytvořit**.
+1. Až budete hotovi, vyberte **zkontrolovat + vytvořit** .
 
 1. Pokračujte postupem v části [Kontrola nasazených prostředků](#review-deployed-resources).
 
@@ -234,7 +234,7 @@ K zobrazení aplikace logiky můžete použít Azure Portal, spustit skript, kte
 
 1. Po otevření návrháře aplikace logiky si prohlédněte aplikaci logiky vytvořenou šablonou pro rychlý Start.
 
-1. Aplikaci logiky otestujete tak, že na panelu nástrojů návrháře vyberete **Spustit**.
+1. Aplikaci logiky otestujete tak, že na panelu nástrojů návrháře vyberete **Spustit** .
 
 ### <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
 
@@ -288,7 +288,7 @@ Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy,
 
 1. V Azure Portal vyhledejte a vyberte skupinu prostředků, kterou chcete odstranit, což je `Check-Azure-Status-RG` v tomto příkladu.
 
-1. V nabídce skupina prostředků vyberte **Přehled** , pokud ještě není vybraný. Na stránce Přehled vyberte **Odstranit skupinu prostředků**.
+1. V nabídce skupina prostředků vyberte **Přehled** , pokud ještě není vybraný. Na stránce Přehled vyberte **Odstranit skupinu prostředků** .
 
 1. Pro potvrzení zadejte název skupiny prostředků.
 

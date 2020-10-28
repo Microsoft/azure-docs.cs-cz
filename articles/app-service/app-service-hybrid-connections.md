@@ -6,13 +6,13 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: c7900341cfcda52dafcb269b833f5ad8dd0f55b7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742600"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739765"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Hybridní připojení Azure App Service
 
@@ -56,15 +56,15 @@ Mezi věci, které nemůžete Hybrid Connections, patří:
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Přidání a vytvoření Hybrid Connections v aplikaci ##
 
-Pokud chcete vytvořit hybridní připojení, otevřete [Azure Portal][portal] a vyberte svou aplikaci. Vyberte **sítě**  >  **Konfigurace koncových bodů hybridního připojení**. Tady vidíte Hybrid Connections, které jsou pro vaši aplikaci nakonfigurované.  
+Pokud chcete vytvořit hybridní připojení, otevřete [Azure Portal][portal] a vyberte svou aplikaci. Vyberte **sítě**  >  **Konfigurace koncových bodů hybridního připojení** . Tady vidíte Hybrid Connections, které jsou pro vaši aplikaci nakonfigurované.  
 
 ![Snímek obrazovky se seznamem hybridních připojení][2]
 
-Chcete-li přidat nové hybridní připojení, vyberte **[+] přidat hybridní připojení**.  Zobrazí se seznam Hybrid Connections, které jste už vytvořili. Chcete-li do aplikace přidat jednu nebo více z nich, vyberte požadované položky a pak vyberte **Přidat vybrané hybridní připojení**.  
+Chcete-li přidat nové hybridní připojení, vyberte **[+] přidat hybridní připojení** .  Zobrazí se seznam Hybrid Connections, které jste už vytvořili. Chcete-li do aplikace přidat jednu nebo více z nich, vyberte požadované položky a pak vyberte **Přidat vybrané hybridní připojení** .  
 
 ![Snímek obrazovky s portálem hybridního připojení][3]
 
-Pokud chcete vytvořit nové hybridní připojení, vyberte **vytvořit nové hybridní připojení**. Zadejte: 
+Pokud chcete vytvořit nové hybridní připojení, vyberte **vytvořit nové hybridní připojení** . Zadejte: 
 
 - Název hybridního připojení
 - Název hostitele koncového bodu
@@ -75,7 +75,7 @@ Pokud chcete vytvořit nové hybridní připojení, vyberte **vytvořit nové hy
 
 Každé hybridní připojení je svázáno s oborem názvů Service Bus a každý Service Bus obor názvů je v oblasti Azure. Je důležité, abyste se pokusili použít Service Bus obor názvů ve stejné oblasti jako vaši aplikaci, aby nedocházelo k vyvolané latenci sítě.
 
-Pokud chcete odebrat hybridní připojení z vaší aplikace, klikněte na něj pravým tlačítkem myši a vyberte **Odpojit**.  
+Pokud chcete odebrat hybridní připojení z vaší aplikace, klikněte na něj pravým tlačítkem myši a vyberte **Odpojit** .  
 
 Když se do aplikace přidá hybridní připojení, zobrazí se vám podrobnosti jednoduše tak, že je vyberete. 
 
@@ -95,7 +95,7 @@ App Service Hybrid Connections jsou k dispozici pouze v jednotkách Basic, Stand
 | Cenový tarif | Počet Hybrid Connections použitelný v plánu |
 |----|----|
 | Základní | 5 podle plánu |
-| Standard | 25 na plán |
+| Standardní | 25 na plán |
 | PremiumV2 | 200 na aplikaci |
 | Isolated | 200 na aplikaci |
 
@@ -113,7 +113,7 @@ Kromě toho, že App Service požadavek na SKLADOVOU položku plánu, je k použ
 
 ## <a name="hybrid-connection-manager"></a>Správce hybridního připojení ##
 
-Funkce Hybrid Connections vyžaduje přenosového agenta v síti, který je hostitelem koncového bodu hybridního připojení. Agent Relay se nazývá Správce hybridního připojení (HCM). Pokud chcete stáhnout HCM, z vaší aplikace v [Azure Portal][portal]vyberte **sítě**  >  **Konfigurace koncových bodů hybridního připojení**.  
+Funkce Hybrid Connections vyžaduje přenosového agenta v síti, který je hostitelem koncového bodu hybridního připojení. Agent Relay se nazývá Správce hybridního připojení (HCM). Pokud chcete stáhnout HCM, z vaší aplikace v [Azure Portal][portal]vyberte **sítě**  >  **Konfigurace koncových bodů hybridního připojení** .  
 
 Tento nástroj běží na Windows Serveru 2012 a novějším. HCM se spouští jako služba a připojuje odchozí Azure Relay na portu 443.  
 
@@ -126,7 +126,7 @@ Když spustíte uživatelské rozhraní HCM, první věc, kterou vidíte, je tab
 Přidání jednoho nebo více Hybrid Connections do HCM:
 
 1. Spusťte uživatelské rozhraní HCM.
-2. Vyberte **Konfigurovat jiné hybridní připojení**.
+2. Vyberte **Konfigurovat jiné hybridní připojení** .
 ![Snímek obrazovky s konfigurací nových Hybrid Connections][8]
 
 1. Přihlaste se pomocí účtu Azure, abyste mohli Hybrid Connections k dispozici ve svých předplatných. HCM nebude nadále používat váš účet Azure nad rámec těchto. 
@@ -134,7 +134,7 @@ Přidání jednoho nebo více Hybrid Connections do HCM:
 1. Vyberte Hybrid Connections, který má HCM Relay.
 ![Snímek obrazovky s Hybrid Connections][9]
 
-1. Vyberte **Uložit**.
+1. Vyberte **Uložit** .
 
 Teď můžete zobrazit Hybrid Connections, které jste přidali. Můžete také vybrat nakonfigurované hybridní připojení a zobrazit podrobnosti.
 
@@ -201,7 +201,7 @@ Kdokoli, kdo má `Reader` přístup k Relay, uvidí hybridní _see_ připojení 
 
 ## <a name="troubleshooting"></a>Řešení potíží ##
 
-Stav "připojeno" znamená, že minimálně jeden HCM je nakonfigurován s tímto hybridním připojením a je schopný získat přístup k Azure. Pokud stav hybridního připojení nefunguje **, vaše**hybridní připojení není nakonfigurované na žádném HCM, které má přístup k Azure.
+Stav "připojeno" znamená, že minimálně jeden HCM je nakonfigurován s tímto hybridním připojením a je schopný získat přístup k Azure. Pokud stav hybridního připojení nefunguje **, vaše** hybridní připojení není nakonfigurované na žádném HCM, které má přístup k Azure.
 
 Primárním důvodem, proč se klienti nemohou připojit ke svému koncovému bodu, je, že koncový bod byl zadán pomocí IP adresy místo názvu DNS. Pokud vaše aplikace nemůže získat přístup k požadovanému koncovému bodu a použili jste IP adresu, přepněte se na použití názvu DNS, který je platný na hostiteli, kde je spuštěný HCM. Také ověřte, že se název DNS správně překládá na hostiteli, kde je spuštěný HCM. Potvrďte, že existuje připojení z hostitele, kde HCM běží na koncovém bodu hybridního připojení.  
 
