@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 628e9098eefa311f3ee5603b9eaf633d67d60c5f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 4d98323ebe973f13e654324f463ae01a8f1268c9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994348"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629217"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Image Red Hat Enterprise Linux (RHEL) dostupné v Azure
 Azure nabízí celou řadu imagí RHEL pro různé případy použití.
@@ -26,12 +26,12 @@ Toto je seznam imagí RHEL dostupných v Azure. Pokud není uvedeno jinak, všec
 > [!NOTE]
 > Nezpracované obrázky se už nevytvářejí ve prospěch LVM imagí. LVM nabízí několik výhod oproti staršímu schématu oddílu RAW (bez LVM), včetně významně flexibilnějších možností změny velikosti oddílů.
 
-Nabídka| SKU | Dělení | Zřizování | Poznámky
+Nabídka| Skladová položka | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent |
-|             | 6.8      | ZÍSKÁNÍ    | Linuxový agent |
-|             | 6.9      | ZÍSKÁNÍ    | Linuxový agent |
-|             | 6,10     | ZÍSKÁNÍ    | Linuxový agent |
+RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent | 
+|             | 6.8      | ZÍSKÁNÍ    | Linuxový agent | 
+|             | 6.9      | ZÍSKÁNÍ    | Linuxový agent | 
+|             | 6,10     | ZÍSKÁNÍ    | Linuxový agent | 
 |             | 7 – RAW    | ZÍSKÁNÍ    | Linuxový agent | RHEL 7. x rodina imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS).
 |             | 7 – LVM    | LVM    | Linuxový agent | RHEL 7. x rodina imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS). Pokud hledáte standardní image RHEL, která se má nasadit, použijte tuto sadu imagí a/nebo její protějšek 2. generace.
 |             | 7lvm – Gen2| LVM    | Linuxový agent | Generace 2, RHEL 7. x řady imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS). Pokud hledáte standardní image RHEL, která se má nasadit, použijte tuto sadu imagí a/nebo její protějšek 1. generace.
@@ -48,6 +48,8 @@ RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent |
 |             | 77 – Gen2  | LVM    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
 |             | 7,8      | LVM    | Linuxový agent | Připojeno k pravidelným úložištím (EUS není k dispozici pro RHEL 7,8)
 |             | 78 – Gen2  | LVM    | Linuxový agent | Připojeno k pravidelným úložištím (EUS není k dispozici pro RHEL 7,8)
+|             | 7.9      | LVM    | Linuxový agent | Připojeno k pravidelným úložištím (EUS není k dispozici pro RHEL 7,9)
+|             | 79 – Gen2  | LVM    | Linuxový agent | Připojeno k pravidelným úložištím (EUS není k dispozici pro RHEL 7,9)
 |             | 8 – LVM    | LVM    | Linuxový agent | RHEL 8. x řady imagí. Připojeno k pravidelným úložištím.
 |             | 8. LVM – Gen2| LVM    | Linuxový agent | Hyper-V Generation 2 – RHEL 8. x řada imagí. Připojeno k pravidelným úložištím.
 |             | 8        | LVM    | Linuxový agent | Image RHEL 8,0.
@@ -65,14 +67,17 @@ RHEL – SAP      | 7,4      | LVM    | Linuxový agent | RHEL 7,4 pro SAP HANA 
 |             | 7.6       | LVM    | Linuxový agent | RHEL 7,6 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
 |             | 76sap – Gen2| LVM    | Linuxový agent | RHEL 7,6 pro SAP HANA a obchodní aplikace. Obrázek generace 2 Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
 |             | 7.7       | LVM    | Linuxový agent | RHEL 7,7 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
-RHEL – SAP – HANA | 6.7       | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,7 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP.
-|             | 7.2       | LVM    | Linuxový agent | RHEL 7,2 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP.
-|             | 7.3       | LVM    | Linuxový agent | RHEL 7,3 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP.
+RHEL-SAP-HANA (pro odebrání z Marketplace v říjnu 2020) | 6.7       | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,7 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato image se odebere z Azure Martketplace v říjnu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
+|             | 7.2       | LVM    | Linuxový agent | RHEL 7,2 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato image se odebere z Azure Martketplace v říjnu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
+|             | 7.3       | LVM    | Linuxový agent | RHEL 7,3 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato image se odebere z Azure Martketplace v říjnu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
 RHEL-SAP-APLIKACE | 6.8       | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,8 pro SAP Business Applications. Zastaralé ve prospěch imagí RHEL-SAP.
 |             | 7.3       | LVM    | Linuxový agent | RHEL 7,3 pro SAP Business Applications. Zastaralé ve prospěch imagí RHEL-SAP.
-RHEL-HA       | 7,4       | LVM    | Linuxový agent | RHEL 7,4 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek.
-|             | 7,5       | LVM    | Linuxový agent | RHEL 7,5 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek.
-|             | 7.6       | LVM    | Linuxový agent | RHEL 7,6 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek.
+|             | 7,4       | LVM    | Linuxový agent | RHEL 7,4 pro SAP Business Applications.
+|             | 7.6       | LVM    | Linuxový agent | RHEL 7,6 pro SAP Business Applications.
+|             | 7.7       | LVM    | Linuxový agent | RHEL 7,7 pro SAP Business Applications.
+RHEL-HA       | 7,4       | LVM    | Linuxový agent | RHEL 7,4 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek. Zastaralé ve prospěch imagí RHEL-SAP-HA.
+|             | 7,5       | LVM    | Linuxový agent | RHEL 7,5 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek. Zastaralé ve prospěch imagí RHEL-SAP-HA.
+|             | 7.6       | LVM    | Linuxový agent | RHEL 7,6 s doplňkem HA. Poplatky za HA a RHEL se účtují za základní výpočetní poplatek. Zastaralé ve prospěch imagí RHEL-SAP-HA.
 RHEL-SAP-HA   | 7,4          | LVM    | Linuxový agent | RHEL 7,4 pro SAP se službami HA a Update. Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
 |             | 74sapha – Gen2 | LVM    | Linuxový agent | RHEL 7,4 pro SAP se službami HA a Update. Obrázek generace 2 Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.
 |             | 7,5          | LVM    | Linuxový agent | RHEL 7,5 pro SAP se službami HA a Update. Připojeno k úložištím E4S. Za základní výpočetní poplatky účtujeme za úložiště SAP a HA a také RHEL.

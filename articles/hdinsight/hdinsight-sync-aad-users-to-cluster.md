@@ -19,7 +19,7 @@ ms.locfileid: "92535174"
 
 [Clustery HDInsight s balíček zabezpečení podniku (ESP)](./domain-joined/hdinsight-security-overview.md) můžou používat silné ověřování s uživateli služby Azure Active Directory (Azure AD) a také používat zásady *řízení přístupu na základě rolí Azure (Azure RBAC)* . Při přidávání uživatelů a skupin do služby Azure AD můžete synchronizovat uživatele, kteří potřebují přístup ke clusteru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud jste to ještě neudělali, [vytvořte cluster HDInsight s balíček zabezpečení podniku](./domain-joined/apache-domain-joined-configure-using-azure-adds.md).
 

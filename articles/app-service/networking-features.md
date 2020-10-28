@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9b75df9df2e81f01543b407b019c752c77ee6807
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207038"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628826"
 ---
 # <a name="app-service-networking-features"></a>Funkce App Service sítě
 
@@ -29,6 +29,7 @@ Azure App Service je distribuovaný systém. Role, které zpracovávají přích
 | Adresa přiřazená aplikaci | Hybridní připojení |
 | Omezení přístupu | Požadovaná brána Integration VNet |
 | Koncové body služby | Integrace virtuální sítě |
+| Soukromé koncové body ||
 
 Pokud není uvedeno jinak, lze použít všechny funkce společně. Můžete kombinovat funkce a vyřešit různé problémy.
 
@@ -36,20 +37,20 @@ Pokud není uvedeno jinak, lze použít všechny funkce společně. Můžete kom
 
 U každého daného případu použití může být problém vyřešit několika způsoby.  Správná funkce, která má být použita, je někdy způsobena důvody mimo samotný případ použití. Následující případy příchozího použití ukazují, jak používat funkce App Service sítě k řešení problémů s řízením provozu, který do vaší aplikace směřuje. 
  
-| Případy příchozího použití | Funkce |
+| Případy příchozího použití | Doporučené |
 |---------------------|-------------------|
 | Podpora protokolu SSL založeného na protokolu IP pro vaši aplikaci | Adresa přiřazená aplikaci |
 | Nesdílená a vyhrazená příchozí adresa pro vaši aplikaci | Adresa přiřazená aplikaci |
 | Omezení přístupu k aplikaci ze sady dobře definovaných adres | Omezení přístupu |
 | Omezení přístupu k aplikaci z prostředků ve virtuální síti | Koncové body služby </br> INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Soukromé koncové body |
-| Zpřístupnit moji aplikaci na privátní IP adrese ve virtuální síti | INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Soukromé koncové body </br> privátní IP adresa pro příchozí u Application Gateway s koncovými body služby |
+| Zpřístupnit moji aplikaci na privátní IP adrese ve virtuální síti | INTERNÍHO NÁSTROJE POMOCNÉHO MECHANISMU </br> Soukromé koncové body </br> Privátní IP adresa pro příchozí u Application Gateway s koncovými body služby |
 | Ochrana aplikace pomocí firewallu webových aplikací (WAF) | Application Gateway + interního nástroje pomocného mechanismu </br> Application Gateway s privátními koncovými body </br> Application Gateway s koncovými body služby </br> Přední dvířka Azure s omezeními přístupu |
 | Vyrovnávání zatížení u mých aplikací v různých oblastech | Přední dvířka Azure s omezeními přístupu | 
 | Vyrovnávat zatížení provozu ve stejné oblasti | [Application Gateway s koncovými body služby][appgwserviceendpoints] | 
 
 Následující případy odchozího použití ukazují, jak používat funkce App Service sítě k řešení požadavků na odchozí přístup k vaší aplikaci. 
 
-| Případy odchozího použití | Funkce |
+| Případy odchozího použití | Doporučené |
 |---------------------|-------------------|
 | Přístup k prostředkům v Azure Virtual Network ve stejné oblasti | Integrace virtuální sítě </br> ASE |
 | Přístup k prostředkům v Azure Virtual Network v jiné oblasti | Požadovaná brána Integration VNet </br> Pomocného a virtuálním počítačem |
@@ -89,20 +90,23 @@ V tomto kurzu se dozvíte, jak nastavit adresu v aplikaci pomocí kurzu [Přidá
 
 ### <a name="access-restrictions"></a>Omezení přístupu 
 
-Funkce omezení přístupu umožňuje filtrovat **příchozí** požadavky na základě původní IP adresy. Akce filtrování probíhá na front-end rolích, které jsou od rolí pracovních procesů, kde běží vaše aplikace, v nadřazeném umístění. Vzhledem k tomu, že role front-endu jsou z pracovních procesů nadřazené, může být schopnost omezení přístupu považovat za ochranu na úrovni sítě pro vaše aplikace. Tato funkce umožňuje vytvořit seznam bloků adres povolování a odepření, které jsou vyhodnocovány v pořadí podle priority. Podobá se funkci skupiny zabezpečení sítě (NSG), která existuje v sítích Azure.  Tuto funkci můžete použít v pomocném modulu pro čtení nebo ve službě pro více tenantů. Při použití s pomocným mechanismem interního nástroje můžete omezit přístup z privátních bloků adres.
+Funkce omezení přístupu umožňuje filtrovat **příchozí** požadavky. Akce filtrování probíhá na front-end rolích, které jsou od rolí pracovních procesů, kde běží vaše aplikace, v nadřazeném umístění. Vzhledem k tomu, že role front-endu jsou z pracovních procesů nadřazené, může být schopnost omezení přístupu považovat za ochranu na úrovni sítě pro vaše aplikace. Tato funkce umožňuje vytvořit seznam pravidel pro povolení a odepření, která se vyhodnocují v pořadí podle priority. Podobá se funkci skupiny zabezpečení sítě (NSG), která existuje v sítích Azure.  Tuto funkci můžete použít v pomocném modulu pro čtení nebo ve službě pro více tenantů. Při použití s interního nástroje pomocným mechanismem nebo soukromým koncovým bodem můžete omezit přístup z privátních bloků adres.
+> [!NOTE]
+> Pro každou aplikaci je možné nakonfigurovat až 512 pravidel omezení přístupu. 
 
 ![Omezení přístupu](media/networking-features/access-restrictions.png)
+#### <a name="ip-based-access-restriction-rules"></a>Pravidla omezení přístupu podle IP adresy
 
-Funkce omezení přístupu pomáhá ve scénářích, kdy chcete omezit IP adresy, které se dají použít k přístupu k vaší aplikaci. Mezi případy použití této funkce patří:
+Funkce omezení přístupu na základě IP adres pomáhá ve scénářích, kdy chcete omezit IP adresy, které se dají použít k přístupu k vaší aplikaci. Jsou podporovány adresy IPv4 i IPv6. Mezi případy použití této funkce patří:
 
 * Omezení přístupu k aplikaci ze sady dobře definovaných adres 
-* Omezte přístup k přihlašování prostřednictvím služby Vyrovnávání zatížení, jako jsou třeba přední dveře Azure. Pokud jste chtěli zablokovat příchozí provoz na přední dvířka Azure, vytvořte pravidla, která povolí přenos z 147.243.0.0/16 a 2a01:111:2050::/44. 
+* Omezení přístupu přicházejícího přes službu Vyrovnávání zatížení, jako je například přední vrátka Azure
 
 ![Omezení přístupu s předními dvířky](media/networking-features/access-restrictions-afd.png)
 
-Pokud chcete přístup k aplikaci uzamknout, aby se mohla získat jenom z prostředků v Azure Virtual Network (VNet), budete potřebovat statickou veřejnou adresu na jakémkoli zdroji ve vaší virtuální síti. Pokud prostředky nemají veřejnou adresu, měli byste místo toho použít funkci koncové body služby. Naučte se, jak tuto funkci povolit s kurzem [Konfigurace omezení přístupu][iprestrictions].
+Naučte se, jak tuto funkci povolit s kurzem [Konfigurace omezení přístupu][iprestrictions].
 
-### <a name="service-endpoints"></a>Koncové body služby
+#### <a name="service-endpoint-based-access-restriction-rules"></a>Pravidla omezení přístupu na základě koncového bodu služby
 
 Koncové body služby umožňují Uzamknout **příchozí** přístup k aplikaci tak, aby zdrojová adresa měla pocházet ze sady podsítí, kterou vyberete. Tato funkce funguje v kombinaci s omezeními přístupu k IP adresám. Koncové body služby nejsou kompatibilní se vzdáleným laděním. Chcete-li použít vzdálené ladění s vaší aplikací, klient nemůže být v podsíti s povolenými koncovými body služby. Koncové body služby se nastavují ve stejném uživatelském prostředí jako omezení přístupu IP. Můžete vytvořit seznam povolených a zakázaných pravidel přístupu, který zahrnuje veřejné adresy i podsítě v virtuální sítě. Tato funkce podporuje scénáře, jako například:
 
@@ -115,7 +119,7 @@ Koncové body služby umožňují Uzamknout **příchozí** přístup k aplikaci
 
 Další informace o konfiguraci koncových bodů služby s vaší aplikací najdete v kurzu [Konfigurace omezení přístupu koncového bodu služby][serviceendpoints] .
 
-### <a name="private-endpoints"></a>Privátní koncové body
+### <a name="private-endpoints"></a>Soukromé koncové body
 
 Privátní koncový bod je síťové rozhraní, které vám prostřednictvím privátního propojení Azure připojuje soukromě a bezpečně ke své webové aplikaci. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně přináší webovou aplikaci do vaší virtuální sítě. Tato funkce je určena pouze pro **příchozí** toky do vaší webové aplikace.
 [Používání privátních koncových bodů pro webovou aplikaci Azure][privateendpoints]
@@ -225,7 +229,7 @@ Tento styl nasazení vám neposkytne vyhrazenou adresu pro odchozí provoz na In
 
 ### <a name="create-multi-tier-applications"></a>Vytváření vícevrstvých aplikací
 
-Vícevrstvá aplikace je aplikace, ve které se k aplikacím back-endu rozhraní API dá dostat jenom z front-endové úrovně. Existují dva způsoby, jak vytvořit vícevrstvou aplikaci. Jak začít pomocí integrace virtuální sítě připojit front-end webovou aplikaci k podsíti ve virtuální síti. Tím umožníte, aby webová aplikace provedla volání do vaší virtuální sítě. Po připojení aplikace front-end k virtuální síti musíte zvolit, jak se má uzamknout přístup k vaší aplikaci API.  Další možnosti:
+Vícevrstvá aplikace je aplikace, ve které se k aplikacím back-endu rozhraní API dá dostat jenom z front-endové úrovně. Existují dva způsoby, jak vytvořit vícevrstvou aplikaci. Jak začít pomocí integrace virtuální sítě připojit front-end webovou aplikaci k podsíti ve virtuální síti. Tím umožníte, aby webová aplikace provedla volání do vaší virtuální sítě. Po připojení aplikace front-end k virtuální síti musíte zvolit, jak se má uzamknout přístup k vaší aplikaci API.  Máte následující možnosti:
 
 * hostování front-endu i aplikace API ve stejném interního nástroje pomocném programu pro čtení a zpřístupnění front-endové aplikace Internetu pomocí aplikační brány
 * hostování front-endu v rámci víceklientské služby a back-endu v interního nástroje pomocném modulu pro čtení

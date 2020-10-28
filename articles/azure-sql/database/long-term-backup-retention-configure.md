@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: a9ff0219a9b811cae15f9b34ec85240d303ab841
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c66c37be1d200a73aa04854f946946b69c6b76
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450283"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629132"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa Azure SQL Database dlouhodobého uchovávání záloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ V následujících částech se dozvíte, jak použít Azure Portal ke konfigura
 
 Můžete nakonfigurovat SQL Database pro [uchovávání automatizovaných záloh](long-term-retention-overview.md) po dobu delší, než je doba uchování pro vaši úroveň služeb.
 
-1. V Azure Portal vyberte svou instanci SQL Server a pak klikněte na **Spravovat zálohy**. Na kartě **Konfigurovat zásady** zaškrtněte políčko pro databázi, ve které chcete nastavit nebo upravit dlouhodobé zásady uchovávání záloh. Pokud není zaškrtnuté políčko vedle databáze, změny zásad se na tuto databázi nevztahují.  
+1. V Azure Portal vyberte svou instanci SQL Server a pak klikněte na **Spravovat zálohy** . Na kartě **Konfigurovat zásady** zaškrtněte políčko pro databázi, ve které chcete nastavit nebo upravit dlouhodobé zásady uchovávání záloh. Pokud není zaškrtnuté políčko vedle databáze, změny zásad se na tuto databázi nevztahují.  
 
    ![odkaz Správa zálohování](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -39,7 +39,7 @@ Můžete nakonfigurovat SQL Database pro [uchovávání automatizovaných záloh
 
    ![Konfigurace zásad](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-3. Po dokončení klikněte na **použít**.
+3. Po dokončení klikněte na **použít** .
 
 > [!IMPORTANT]
 > Pokud povolíte dlouhodobé zásady uchovávání záloh, může trvat až 7 dní, než se první záloha zobrazí a bude dostupná pro obnovení. Podrobnosti o Cadance zálohování LTR najdete v tématu [dlouhodobé uchovávání záloh](long-term-retention-overview.md).
@@ -48,7 +48,7 @@ Můžete nakonfigurovat SQL Database pro [uchovávání automatizovaných záloh
 
 Prohlédněte si zálohy, které jsou uchovány pro konkrétní databázi se zásadou LTR, a obnovte je z těchto záloh.
 
-1. V Azure Portal vyberte svůj server a pak klikněte na **Spravovat zálohy**. Na kartě **dostupné zálohy** vyberte databázi, pro kterou chcete zobrazit dostupné zálohy.
+1. V Azure Portal vyberte svůj server a pak klikněte na **Spravovat zálohy** . Na kartě **dostupné zálohy** vyberte databázi, pro kterou chcete zobrazit dostupné zálohy.
 
    ![vybrat databázi](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
 
@@ -71,7 +71,7 @@ Prohlédněte si zálohy, které jsou uchovány pro konkrétní databázi se zá
 > [!NOTE]
 > Odtud se můžete pomocí aplikace SQL Server Management Studio připojit k obnovené databázi a provádět požadované úlohy, jako je například [extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze na název existující databáze](recovery-using-backups.md#point-in-time-restore).
 
-## <a name="using-powershell"></a>Pomocí prostředí PowerShell
+## <a name="using-powershell"></a>Použití PowerShellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -82,7 +82,7 @@ V následujících částech se dozvíte, jak pomocí PowerShellu nakonfigurovat
 
 ### <a name="azure-roles-to-manage-long-term-retention"></a>Role Azure pro správu dlouhodobého uchovávání
 
-Pro **Get-AzSqlDatabaseLongTermRetentionBackup** a **Restore-AzSqlDatabase**budete muset mít jednu z následujících rolí:
+Pro **Get-AzSqlDatabaseLongTermRetentionBackup** a **Restore-AzSqlDatabase** budete muset mít jednu z následujících rolí:
 
 - Role vlastníka předplatného nebo
 - SQL Server role přispěvatele nebo
@@ -90,7 +90,7 @@ Pro **Get-AzSqlDatabaseLongTermRetentionBackup** a **Restore-AzSqlDatabase**bude
 
    Microsoft. SQL/Locations/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionBackups/Read Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/Read
 
-V případě funkce **Remove-AzSqlDatabaseLongTermRetentionBackup**budete muset mít jednu z následujících rolí:
+V případě funkce **Remove-AzSqlDatabaseLongTermRetentionBackup** budete muset mít jednu z následujících rolí:
 
 - Role vlastníka předplatného nebo
 - Vlastní role s následujícím oprávněním:
@@ -200,6 +200,9 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 > [!NOTE]
 > Odtud se můžete pomocí aplikace SQL Server Management Studio připojit k obnovené databázi a provádět požadované úlohy, jako je například extrakce části dat z obnovené databáze a zkopírování do existující databáze nebo odstranění existující databáze a přejmenování obnovené databáze na název existující databáze. Viz [Obnovení bodu v čase](recovery-using-backups.md#point-in-time-restore).
+
+## <a name="limitations"></a>Omezení
+- Při obnovení ze zálohy LTR je vlastnost škálování pro čtení zakázaná. Pokud chcete povolit, přečtěte si v obnovené databázi škálování, aktualizujte databázi po jejím vytvoření.
 
 ## <a name="next-steps"></a>Další kroky
 

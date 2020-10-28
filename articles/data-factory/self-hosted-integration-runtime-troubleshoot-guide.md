@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/22/2020
+ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: d35dd94c8aa264c9b4dd679d3b50f3783acb2fde
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427229"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629362"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -34,13 +34,13 @@ Pro neúspěšné aktivity běžící v místním prostředí IR/Shared IR Azure
 
     ![Odeslat protokoly](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
-1. Můžete zvolit protokoly, které chcete odeslat. V případě prostředí *IR*v místním prostředí můžete nahrávat protokoly týkající se neúspěšné aktivity nebo všech protokolů v uzlu IR v místním prostředí. Pro *sdílené infračervené*prostředí můžete nahrávat jenom protokoly týkající se neúspěšné aktivity.
+1. Můžete zvolit protokoly, které chcete odeslat. V případě prostředí *IR* v místním prostředí můžete nahrávat protokoly týkající se neúspěšné aktivity nebo všech protokolů v uzlu IR v místním prostředí. Pro *sdílené infračervené* prostředí můžete nahrávat jenom protokoly týkající se neúspěšné aktivity.
 
     ![Zvolit protokoly](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
 1. Po nahrání protokolů Udržujte záznam ID sestavy, pokud k vyřešení problému potřebujete další pomoc.
 
-    ![Nahrát protokoly](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+    ![Odesílání protokolů](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
 
 > [!NOTE]
 > Žádosti o zobrazení a nahrání protokolu se spustí ve všech online autohostovaných instancích IR. Ujistěte se prosím, že všechny chybějící protokoly jsou online u všech místně hostovaných instancí IR. 
@@ -65,14 +65,14 @@ Jedná se o známý problém s technologií WCF: Při ověřování TLS/SSL tech
 #### <a name="resolution"></a>Řešení
 
 Certifikáty se zástupnými znaky se podporují v místním prostředí IR služby Azure Data Factory v2. K tomuto problému obvykle dochází kvůli nesprávnému certifikátu SSL. Poslední název DNS v síti SAN musí být platný. Při ověřování postupujte následovně. 
-1.  Otevřete konzolu pro správu, v podrobnostech certifikátu překontrolujte *alternativní název* *subjektu i* předmět. V takovém případě není například poslední položka v *alternativním názvu předmětu*, která je "DNS Name = Microsoft.com.com", legitimní.
+1.  Otevřete konzolu pro správu, v podrobnostech certifikátu překontrolujte *alternativní název* *subjektu i* předmět. V takovém případě není například poslední položka v *alternativním názvu předmětu* , která je "DNS Name = Microsoft.com.com", legitimní.
 2.  Požádejte společnost o problém s certifikátem, aby odstranila nesprávný název DNS.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Problém s limitem souběžných úloh
 
 #### <a name="symptoms"></a>Příznaky
 
-Při pokusu o zvýšení limitu souběžných úloh v uživatelském rozhraní Azure Data Factory dojde k trvalému zablokování ve stavu *Probíhá aktualizace*.
+Při pokusu o zvýšení limitu souběžných úloh v uživatelském rozhraní Azure Data Factory dojde k trvalému zablokování ve stavu *Probíhá aktualizace* .
 Maximální hodnota počtu souběžných úloh byla nastavená na 24 a chcete tento počet navýšit, aby se úlohy mohly spouštět rychleji. Minimální hodnota, kterou můžete zadat, je 3 a maximální hodnota, kterou můžete zadat, je 32. Zvýšili jste hodnotu z 24 na 32 a kliknete na tlačítko *aktualizovat* v uživatelském rozhraní, které se zablokovalo při *aktualizaci* , jak vidíte níže. Po aktualizaci se zákazníkovi stále zobrazuje hodnota 24 a aktualizace na hodnotu 32 neproběhla.
 
 ![Stav aktualizace](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
@@ -102,7 +102,7 @@ Při řešení případů souvisejících s ověřováním SSL/TLS metodou hands
 
 - Tady je rychlý a intuitivní způsob řešení potíží při sestavení řetězu certifikátů X. 509.
  
-    1. Exportujte certifikát, který je potřeba ověřit. Přejděte do správy certifikátů počítače, vyhledejte certifikát, který chcete zkontrolovat, a klikněte pravým tlačítkem na **Všechny úlohy** -> **Exportovat**.
+    1. Exportujte certifikát, který je potřeba ověřit. Přejděte do správy certifikátů počítače, vyhledejte certifikát, který chcete zkontrolovat, a klikněte pravým tlačítkem na **Všechny úlohy** -> **Exportovat** .
     
         ![Exportovat úlohy](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
@@ -138,7 +138,7 @@ Při řešení případů souvisejících s ověřováním SSL/TLS metodou hands
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Pak se otevře **nástroj pro načtení adresy URL**. Certifikáty od AIA, CDP a OCSP můžete ověřit kliknutím na tlačítko **Načíst**.
+    1. Pak se otevře **nástroj pro načtení adresy URL** . Certifikáty od AIA, CDP a OCSP můžete ověřit kliknutím na tlačítko **Načíst** .
 
         ![Tlačítko pro načtení](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
@@ -164,8 +164,8 @@ Pokud převezmete monitorování procesů, můžete zobrazit následující výs
 
 > [!TIP] 
 > Filtr můžete nastavit tak, jak je znázorněno na obrázku obrazovky.
-> Oznamujeme, že knihovna DLL **System. ValueTuple** není umístěná ve složce v mezipaměti GAC nebo v adresáři *c:\Program Files\microsoft Integration Runtime\4.0\Gateway*nebo ve složce *c:\Program Files\Microsoft integr Runtime\4.0\Shared* .
-> V zásadě platí, že se soubor DLL nejprve načítá ze složky *GAC*, pak ze složky *Shared* a nakonec ze složky *Gateway*. Proto můžete soubor DLL umístit do libovolné složky, což může být užitečné.
+> Oznamujeme, že knihovna DLL **System. ValueTuple** není umístěná ve složce v mezipaměti GAC nebo v adresáři *c:\Program Files\microsoft Integration Runtime\4.0\Gateway* nebo ve složce *c:\Program Files\Microsoft integr Runtime\4.0\Shared* .
+> V zásadě platí, že se soubor DLL nejprve načítá ze složky *GAC* , pak ze složky *Shared* a nakonec ze složky *Gateway* . Proto můžete soubor DLL umístit do libovolné složky, což může být užitečné.
 
 ![Nastavení filtrů](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
@@ -179,7 +179,7 @@ Stejným způsobem můžete vyřešit i další problémy s chybějícími soubo
 
 Důvodem, proč vidíte System.ValueTuple.dll pod *%windir%\Microsoft.NET\assembly* a *%windir%\assembly* je to, že se jedná o chování rozhraní .NET. 
 
-Z chyby níže můžete zřetelně zobrazit *systém sestavení. ValueTuple* není. Takže k tomuto problému dochází, když se aplikace pokusí ověřit *System.ValueTuple.dll*sestavení.
+Z chyby níže můžete zřetelně zobrazit *systém sestavení. ValueTuple* není. Takže k tomuto problému dochází, když se aplikace pokusí ověřit *System.ValueTuple.dll* sestavení.
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
@@ -201,7 +201,7 @@ Místní prostředí Integration Runtime bez klíče náhle přejde do režimu o
 
 #### <a name="resolution"></a>Řešení
 
-Pokud se nepoužijí žádné z výše uvedených příčin, můžete přejít do složky: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway*a ověřit, zda je soubor s názvem **Konfigurace** odstraněn. Pokud je odstraněný, podle [těchto](https://www.netwrix.com/how_to_detect_who_deleted_file.html) pokynů proveďte audit a zjistěte, kdo soubor odstranil.
+Pokud se nepoužijí žádné z výše uvedených příčin, můžete přejít do složky: *%ProgramData%\Microsoft\Data Transfer\DataManagementGateway* a ověřit, zda je soubor s názvem **Konfigurace** odstraněn. Pokud je odstraněný, podle [těchto](https://www.netwrix.com/how_to_detect_who_deleted_file.html) pokynů proveďte audit a zjistěte, kdo soubor odstranil.
 
 ![Ověřit soubor konfigurací](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +210,7 @@ Pokud se nepoužijí žádné z výše uvedených příčin, můžete přejít d
 
 #### <a name="symptoms"></a>Příznaky
 
-Po vytvoření místních prostředí IR pro zdrojové i cílové úložiště dat chcete tato dvě prostředí IR propojit a dokončit kopírování. Pokud jsou úložiště dat nakonfigurovaná v různých virtuální sítě nebo nemůžou pochopit mechanismus brány, dojde k chybám, jako je: *ovladač zdroje nejde najít v cíli IR*; k *zdroji není přistupující cílovým IR*.
+Po vytvoření místních prostředí IR pro zdrojové i cílové úložiště dat chcete tato dvě prostředí IR propojit a dokončit kopírování. Pokud jsou úložiště dat nakonfigurovaná v různých virtuální sítě nebo nemůžou pochopit mechanismus brány, dojde k chybám, jako je: *ovladač zdroje nejde najít v cíli IR* ; k *zdroji není přistupující cílovým IR* .
  
 #### <a name="cause"></a>Příčina
 
@@ -288,14 +288,14 @@ Chcete-li zjistit chybu, vyhledejte v protokolu událostí Integration Runtime.
 
 ![Protokol událostí IR](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-Pokud se chyba zobrazí jako výše *UnauthorizedAccessException*, postupujte podle následujících pokynů:
+Pokud se chyba zobrazí jako výše *UnauthorizedAccessException* , postupujte podle následujících pokynů:
 
 
 1. Ověřte účet přihlašovací služby *DIAHostService* na panelu služby systému Windows.
 
     ![Účet přihlašovací služby](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. Ověřte, zda má účet přihlašovací služby oprávnění R/W pro složku: *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway*.
+2. Ověřte, zda má účet přihlašovací služby oprávnění R/W pro složku: *%ProgramData%\Microsoft\DataTransfer\DataManagementGateway* .
 
     - Ve výchozím nastavení platí, že pokud se účet přihlášení služby nezměnil, měl by mít oprávnění k R/W.
 
@@ -305,7 +305,7 @@ Pokud se chyba zobrazí jako výše *UnauthorizedAccessException*, postupujte po
         1. Vyčistit odinstalujte aktuálně místně hostovaný IR.
         1. Nainstalujte prostředí IR pro místní hostování.
         1. Chcete-li změnit účet služby, postupujte podle pokynů níže: 
-            1. Přejděte do složky selfhosted IR pro instalaci, přejděte do složky: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Přejděte do složky selfhosted IR pro instalaci, přejděte do složky: *Microsoft Integration Runtime\4.0\Shared* .
             1. Spusťte příkazový řádek s oprávněním vyšší úrovně. Nahraďte *\<user>* a *\<password>* vlastním uživatelským jménem a heslem a pak spusťte následující příkaz:
                        
                 ```
@@ -325,7 +325,7 @@ Pokud se chyba zobrazí jako výše *UnauthorizedAccessException*, postupujte po
             1. Pro přihlašovací účet služby IR můžete použít místní/doménový uživatel.            
         1. Zaregistrujte Integration Runtime.
 
-Pokud se chyba zobrazí jako: *služba Integration runtime služby (DIAHostService) se nepodařilo spustit. Ověřte, zda máte dostatečná oprávnění pro spouštění systémových služeb*, postupujte podle následujících pokynů:
+Pokud se chyba zobrazí jako: *služba Integration runtime služby (DIAHostService) se nepodařilo spustit. Ověřte, zda máte dostatečná oprávnění pro spouštění systémových služeb* , postupujte podle následujících pokynů:
 
 1. Ověřte účet přihlašovací služby *DIAHostService* na panelu služby systému Windows.
    
@@ -351,7 +351,7 @@ Tlačítko **zaregistrovat** nebylo v uživatelském rozhraní Configuration Man
 
 #### <a name="cause"></a>Příčina
 
-Od vydání *Integration Runtime 3,0*se odebralo tlačítko **registrace** na existujícím uzlu Integration runtime, aby se povolilo čištění a bezpečnější prostředí. Pokud je uzel zaregistrovaný k nějakému modulu runtime integrace (bez ohledu na to, jestli je online) a chcete ho znovu zaregistrovat k jinému modulu runtime integrace, musíte předchozí uzel odinstalovat a pak nainstalovat a zaregistrovat nový uzel.
+Od vydání *Integration Runtime 3,0* se odebralo tlačítko **registrace** na existujícím uzlu Integration runtime, aby se povolilo čištění a bezpečnější prostředí. Pokud je uzel zaregistrovaný k nějakému modulu runtime integrace (bez ohledu na to, jestli je online) a chcete ho znovu zaregistrovat k jinému modulu runtime integrace, musíte předchozí uzel odinstalovat a pak nainstalovat a zaregistrovat nový uzel.
 
 #### <a name="resolution"></a>Řešení
 
@@ -431,7 +431,7 @@ Místní prostředí Integration runtime se nemůže připojit ke službě Data 
     ```
         
    > [!NOTE]     
-   > Adresa URL služby se může lišit v závislosti na umístění Data Factory. Adresu URL služby najdete v části připojení k **uživatelským rozhraním ADF**  >  **Connections**  >  **Integration modul runtime**upravit uzly v místním prostředí  >  **IR**  >  **Nodes**  >  **Zobrazit adresy URL služby**.
+   > Adresa URL služby se může lišit v závislosti na umístění Data Factory. Adresu URL služby najdete v části připojení k **uživatelským rozhraním ADF**  >  **Connections**  >  **Integration modul runtime** upravit uzly v místním prostředí  >  **IR**  >  **Nodes**  >  **Zobrazit adresy URL služby** .
             
     Očekává se následující odpověď:
             
@@ -484,7 +484,7 @@ K tomuto chování dochází, když uzly nemůžou vzájemně komunikovat.
 
 #### <a name="resolution"></a>Řešení
 
-1. Přihlaste se k virtuálnímu počítači hostovanému na uzlu. V části **protokoly aplikací a služeb**  >  **Integration runtime**otevřete Prohlížeč událostí a vyfiltrujte všechny protokoly chyb.
+1. Přihlaste se k virtuálnímu počítači hostovanému na uzlu. V části **protokoly aplikací a služeb**  >  **Integration runtime** otevřete Prohlížeč událostí a vyfiltrujte všechny protokoly chyb.
 
 1. Zkontroluje, jestli protokol chyb obsahuje tuto chybu: 
     
@@ -569,7 +569,7 @@ Netmon trasování a proveďte další analýzu.
  
     *Síťový balíček ze systému Linux A s hodnotou TTL 64-> B TTL 64 minus 1 = 63-> C TTL 63 minus 1 = 62-> TTL 62 minus 1 = 61 v místním prostředí IR*
 
-- V ideálním případě bude hodnota TTL 128, což znamená, že systém Windows spouští naši Data Factory. Jak je znázorněno v následujícím příkladu, *128 – 107 = 21 směrování*, což znamená, že 21 směrování pro balíček bylo odesláno z Data Factory do místního prostředí IR během ověřování TCP 3.
+- V ideálním případě bude hodnota TTL 128, což znamená, že systém Windows spouští naši Data Factory. Jak je znázorněno v následujícím příkladu, *128 – 107 = 21 směrování* , což znamená, že 21 směrování pro balíček bylo odesláno z Data Factory do místního prostředí IR během ověřování TCP 3.
  
     ![HODNOTA TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,11 +587,11 @@ Když se pokusíte o **8.8.8.8 888** s shromažďovaným trasováním Netmon, zo
 ![Netmon trasování 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-To znamená, že nemůžete na straně serveru **8.8.8.8** vytvořit připojení TCP na základě portu **888**, takže uvidíte dva další balíčky **SynReTransmit** . Vzhledem k tomu, že source **hostitel2** se nepovedlo vytvořit připojení k **8.8.8.8** v prvním balíčku, zůstane při vytváření připojení.
+To znamená, že nemůžete na straně serveru **8.8.8.8** vytvořit připojení TCP na základě portu **888** , takže uvidíte dva další balíčky **SynReTransmit** . Vzhledem k tomu, že source **hostitel2** se nepovedlo vytvořit připojení k **8.8.8.8** v prvním balíčku, zůstane při vytváření připojení.
 
 > [!TIP]
-> - Můžete kliknout na možnost **Load Filter**  ->  **Standard Filter**  ->  **adresy**  ->  **IPv4**.
-> - Zadejte **IPv4. Address = = 8.8.8.8** as Filter a klikněte na **použít**. Pak se zobrazí jenom komunikace z místního počítače do cílového **8.8.8.8**.
+> - Můžete kliknout na možnost **Load Filter**  ->  **Standard Filter**  ->  **adresy**  ->  **IPv4** .
+> - Zadejte **IPv4. Address = = 8.8.8.8** as Filter a klikněte na **použít** . Pak se zobrazí jenom komunikace z místního počítače do cílového **8.8.8.8** .
 
 ![filtrovat adresy 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         
@@ -630,7 +630,7 @@ Toto oznámení má vliv na následující scénáře:
 ##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>Scénář 1: odchozí komunikace z Integration Runtime v místním prostředí, která běží místně za podnikovou bránou firewall
 Jak zjistit, jestli máte vliv na:
 - Nebudete mít vliv na definování pravidel brány firewall na základě názvů plně kvalifikovaného názvu domény pomocí přístupu popsaného v tomto dokumentu: [Konfigurace brány firewall a nastavení povolených seznamů pro IP adresu](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
-- Pokud jste ale výslovně do seznamu povolených IP adres ve vaší podnikové bráně firewall, budete mít vliv na něj.
+- Pokud jste ale výslovně povolili seznam povolených IP adres pro odchozí IP adresy na podnikové bráně firewall, budete ovlivněni.
 
 Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval konfiguraci sítě tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
 
@@ -639,16 +639,55 @@ Jak zjistit, jestli máte vliv na:
 - Ověřte, jestli máte v privátní síti žádná odchozí pravidla NSG, která obsahují Integration Runtime v místním prostředí. Pokud neexistují žádná odchozí omezení, nebude to mít žádný vliv.
 - Pokud máte omezení odchozího pravidla, ověřte, zda používáte značku služby nebo ne. Pokud používáte značku služby, nemusíte nic měnit ani přidávat, protože nové rozsahy IP adres se nacházejí v rámci existující značky služby. 
  ![Kontrolu cíle](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
-- Pokud jste ale výslovně do nastavení pravidel NSG ve službě Azure Virtual Network výslovně přiřadíte odchozí IP adresy, budete ovlivněni.
+- Pokud jste ale výslovně povolili seznam povolených IP adres v nastavení pravidel NSG ve službě Azure Virtual Network, budete ovlivněni.
 
 Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval pravidla NSG v konfiguraci virtuální sítě Azure tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Scénář 3: odchozí komunikace z SSIS Integration Runtime ve službě Azure Virtual Network spravované zákazníkem
 - Ověřte, jestli máte v privátní síti žádná odchozí pravidla NSG, která obsahují SSIS Integration Runtime. Pokud neexistují žádná odchozí omezení, nebude to mít žádný vliv.
 - Pokud máte omezení odchozího pravidla, ověřte, zda používáte značku služby nebo ne. Pokud používáte značku služby, nemusíte nic měnit ani přidávat, protože nové rozsahy IP adres se nacházejí v rámci existující značky služby.
-- Pokud jste ale výslovně do nastavení pravidel NSG ve virtuální síti Azure výslovně přiřadíte odchozí IP adresy, budete ovlivněni.
+- Pokud jste ale výslovně povolili seznam povolených adres pro odchozí IP adresy v nastavení pravidel NSG ve virtuální síti Azure, budete ovlivněni.
 
 Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval pravidla NSG v konfiguraci virtuální sítě Azure tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
+
+### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Nepovedlo se vytvořit vztah důvěryhodnosti pro zabezpečený kanál SSLTLS. 
+
+#### <a name="symptoms"></a>Příznaky
+
+Místní prostředí IR se nemůže připojit ke službě ADF.
+
+Když zkontrolujete protokol událostí SHIR nebo protokoly oznámení klienta v tabulce CustomLogEvent, bude nalezena následující chybová zpráva:
+
+`The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
+
+Jak ověřit certifikát serveru služby ADF:
+
+Nejjednodušší způsob je otevřít adresu URL služby ADF v prohlížeči, třeba otevřít https://eu.frontend.clouddatahub.net/ na počítači, kde je nainstalovaný SHIR, a pak zobrazit informace o certifikátu serveru:
+
+  ![Zkontroluje certifikát serveru služby ADF.](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+
+  ![Ověřit cestu k certifikátu serveru](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+
+#### <a name="cause"></a>Příčina
+
+Dva možné příčiny tohoto problému:
+
+- Kořenová certifikační autorita certifikátu serveru služby ADF není v počítači, kde je nainstalován SHIR, důvěryhodná. 
+- Ve svém prostředí používáte proxy server a certifikát serveru služby ADF je nahrazen proxy serverem, zatímco certifikát nahrazeného serveru není důvěryhodný pro počítač, na kterém je nainstalovaný SHIR.
+
+#### <a name="solution"></a>Řešení
+
+- Z důvodu 1 se ujistěte, že je certifikát serveru ADF a jeho řetěz certifikátů důvěryhodný pro počítač, na kterém je nainstalovaný SHIR.
+- Z důvodu 2 buď důvěřujete nahrazené kořenové certifikační autoritě na SHIR počítači, nebo nakonfigurujte proxy server tak, aby nahradil certifikát serveru ADF.
+
+Podrobnosti o důvěřování certifikátu ve Windows najdete v [tomto článku](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) .
+
+#### <a name="additional-info"></a>Další informace
+Zavádíme nový certifikát SSL, který je podepsaný z DigiCert, zkontrolujte prosím, jestli je globální kořen DigiCertu G2 v důvěryhodné kořenové certifikační autoritě.
+
+  ![Globální kořenový adresář G2 DigiCert](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+
+Pokud ne, [Stáhněte si ho odsud.](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ) 
 
 ## <a name="self-hosted-ir-sharing"></a>Sdílení místního prostředí IR
 

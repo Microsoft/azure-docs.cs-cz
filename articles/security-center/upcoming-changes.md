@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/26/2020
 ms.author: memildin
-ms.openlocfilehash: bf89135d3b5d33936d0b5d4142e966fa3f8f52b9
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: ba0c68589f7ea4b32970e3ad81fea5175b998dc7
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92559041"
+ms.locfileid: "92629149"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Důležité nadcházející změny Azure Security Center
 
@@ -78,7 +78,7 @@ Doporučení pro verzi Preview negenerují prostředek v pořádku a nejsou zahr
 
 Související odkazy:
 
-- [Další informace o srovnávacím testu zabezpečení Azure](../security/benchmarks/introduction.md)
+- [Další informace o testu zabezpečení Azure](../security/benchmarks/introduction.md)
 - [Další informace o Azure API Apps](../app-service/app-service-web-tutorial-rest-api.md)
 - [Další informace o aplikacích Azure Function App](../azure-functions/functions-overview.md)
 - [Další informace o službě Azure Web Apps](../app-service/overview.md)
@@ -88,4 +88,4 @@ Související odkazy:
 
 ## <a name="next-steps"></a>Další kroky
 
-Všechny nedávné změny v produktu najdete v tématu [co je nového v Azure Security Center](release-notes.md).
+Všechny nedávné změny v produktu najdete v tématu [co je nového v Azure Security Center?](release-notes.md).

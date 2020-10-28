@@ -7,31 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544881"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628979"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>Šifrování IPSec při přenosu pro Azure HDInsight
 
 Tento článek popisuje implementaci šifrování při přenosu pro komunikaci mezi uzly clusteru Azure HDInsight.
 
 > [!Note]
-> Šifrování v přenosech je aktuálně povolené pro následující oblasti: Východní USA, Střed USA – jih, západ USA 2. 
+> Šifrování v přenosech je aktuálně povolené pro následující oblasti: Východní USA, Střed USA – jih, západ USA 2.
 
 ## <a name="background"></a>Pozadí
 
 Azure HDInsight nabízí celou řadu funkcí zabezpečení pro zabezpečení podnikových dat. Tato řešení se seskupují pod pilíři zabezpečení hraničního zabezpečení, ověřování, autorizace, auditování, šifrování a dodržování předpisů. Šifrování se dá použít pro data v klidovém režimu i při přenosu.
 
-Šifrování v klidovém prostředí se zabývá šifrováním na straně serveru na účtech Azure Storage a šifrováním disků na virtuálních počítačích Azure, které jsou součástí clusteru HDInsight.
+Šifrování v klidovém prostředí se zabývá šifrováním na straně serveru na účtech Azure Storage a šifrováním disku na virtuálních počítačích Azure, které jsou součástí clusteru HDInsight.
 
-Šifrování dat při přenosu v HDInsight se dosahuje pomocí [TLS (Transport Layer Security)](../transport-layer-security.md) pro accssing brány clusteru a [zabezpečení protokolu Internet Protocol (IPSec)](https://en.wikipedia.org/wiki/IPsec) mezi uzly clusteru. Protokol IPSec může být volitelně povolen mezi všemi hlavními uzly, pracovními uzly, hraničními uzly a Zookeeper uzly. Není povolený provoz mezi uzly brány nebo [zprostředkovatele ID](./identity-broker.md) , které jsou virtuální počítače založené na Windows a jiné uzly na bázi Linux v clusteru.
+Šifrování dat při přenosu v HDInsight se dosahuje pomocí [protokolu TLS (Transport Layer Security)](../transport-layer-security.md) pro přístup ke branám clusteru a [Internet Protocol zabezpečení (IPSec)](https://wikipedia.org/wiki/IPsec) mezi uzly clusteru. Protokol IPSec může být volitelně povolen mezi všemi hlavními uzly, pracovními uzly, hraničními uzly a Zookeeper uzly. Není povolený provoz mezi uzly brány nebo [zprostředkovatele ID](./identity-broker.md) , které jsou virtuální počítače založené na Windows a jiné uzly na bázi Linux v clusteru.
 
 ## <a name="enable-encryption-in-transit"></a>Povolit šifrování při přenosu
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomocí Azure Portal, proveďte následující kroky:
 
@@ -40,7 +40,7 @@ Chcete-li vytvořit nový cluster se šifrováním při přenosu povoleno pomoc�
 
     :::image type="content" source="media/encryption-in-transit/create-cluster-security-networking-tab.png" alt-text="Vytvoření clusteru – karta zabezpečení a sítě.":::
 
-1. Na kartě **zabezpečení a sítě** klikněte na zaškrtávací políčko **Povolit šifrování v cestě** .
+1. Na kartě **zabezpečení a sítě** zaškrtněte políčko **Povolit šifrování v cestě** .
 
     :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="Vytvoření clusteru – karta zabezpečení a sítě.":::
 

@@ -127,7 +127,7 @@ Unstructured_data_path, která vytváří cestu k datům, může být absolutní
  Určuje cestu v rámci úložiště, která odkazuje na složku nebo soubor, který chcete číst. Pokud cesta odkazuje na kontejner nebo složku, všechny soubory budou načteny z konkrétního kontejneru nebo složky. Soubory v podsložkách nebudou zahrnuty. 
 
  Můžete použít zástupné znaky k zacílení na více souborů nebo složek. Je povoleno použití více zástupných znaků nejdoucích po sobě.
-Níže je příklad, který čte všechny soubory *CSV* počínaje *plněním* ze všech složek začínajících na */CSV/Population*:  
+Níže je příklad, který čte všechny soubory *CSV* počínaje *plněním* ze všech složek začínajících na */CSV/Population* :  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Pokud zadáte unstructured_data_path jako složku, dotaz na vyžádání SQL načte soubory z této složky. 
@@ -170,7 +170,7 @@ WITH (
 
 FIELDTERMINATOR = ' field_terminator '
 
-Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka ("**,**").
+Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka (" **,** ").
 
 ROWTERMINATOR = ' row_terminator ' '
 

@@ -28,7 +28,7 @@ V tomto článku načtete data z `hivesampletable` tabulky podregistru do Power 
 
 Tyto informace platí také pro nový typ clusteru [interaktivních dotazů](../interactive-query/apache-interactive-query-get-started.md) . Informace o tom, jak se připojit k interaktivnímu dotazu HDInsight pomocí přímých dotazů, najdete v tématu [vizualizace interaktivního dotazování dat v rámci služby Microsoft Power BI pomocí přímého dotazování ve službě Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před provedením tohoto článku musíte mít následující položky:
 

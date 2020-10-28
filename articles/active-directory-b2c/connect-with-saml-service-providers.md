@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998103"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628843"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -41,7 +41,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
 | Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu Security Assertion Markup Language (SAML).
@@ -51,7 +51,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 
 V tomto scénáři jsou vyžadovány tři hlavní komponenty:
 
-* **Poskytovatel služeb** SAML s možností ODESÍLAT požadavky SAML a přijímat, dekódovat a reagovat na kontrolní výrazy saml z Azure AD B2C. Tato skutečnost se označuje také jako předávající strana.
+* **Poskytovatel služeb** SAML s možností ODESÍLAT požadavky SAML a přijímat, dekódovat a reagovat na kontrolní výrazy saml z Azure AD B2C. Poskytovatel služeb se označuje také jako aplikace předávající strany.
 * Veřejně dostupný **koncový bod METADAT** SAML pro vašeho poskytovatele služeb.
 * [Tenant Azure AD B2C](tutorial-create-tenant.md)
 
@@ -99,13 +99,13 @@ Pokud ještě certifikát nemáte, můžete pro tento kurz použít certifikát 
 Potom do Azure AD B2C nahrajte kontrolní výraz SAML a podpisový certifikát odpovědi.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyhledejte Azure AD B2C tenanta.
-1. V části **zásady**vyberte možnost **Architektura prostředí identity** a pak **klíče zásad**.
-1. Vyberte **Přidat**a pak vybrat **Možnosti**  >  **nahrát**.
-1. Zadejte **název**, například *SamlIdpCert*. *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
+1. V části **zásady** vyberte možnost **Architektura prostředí identity** a pak **klíče zásad** .
+1. Vyberte **Přidat** a pak vybrat **Možnosti**  >  **nahrát** .
+1. Zadejte **název** , například *SamlIdpCert* . *B2C_1A_* předpony se automaticky přidají do názvu vašeho klíče.
 1. Nahrajte certifikát pomocí ovládacího prvku nahrát soubor.
 1. Zadejte heslo certifikátu.
-1. Vyberte **Vytvořit**.
-1. Ověřte, že se klíč zobrazuje podle očekávání. Například *B2C_1A_SamlIdpCert*.
+1. Vyberte **Vytvořit** .
+1. Ověřte, že se klíč zobrazuje podle očekávání. Například *B2C_1A_SamlIdpCert* .
 
 ## <a name="2-prepare-your-policy"></a>2. Příprava zásad
 
@@ -159,7 +159,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 Vytvoření zásady registrace nebo přihlašování
 
-1. Vytvořte kopii souboru *SignUpOrSignin.xml* v pracovním adresáři úvodní Pack a uložte ho s novým názvem. Například *SignUpOrSigninSAML.xml*. Toto je soubor zásad předávající strany.
+1. Vytvořte kopii souboru *SignUpOrSignin.xml* v pracovním adresáři úvodní Pack a uložte ho s novým názvem. Například *SignUpOrSigninSAML.xml* . Toto je soubor zásad předávající strany.
 
 1. Otevřete soubor *SignUpOrSigninSAML.xml* v upřednostňovaném editoru.
 
@@ -208,7 +208,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
 
 1. Aktualizujte `tenant-name` název vašeho tenanta Azure AD B2C.
 
-Konečný soubor zásad předávající strany by měl vypadat takto:
+Konečný soubor zásad předávající strany by měl vypadat jako následující kód XML:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -270,25 +270,25 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
-1. Zadejte **název** aplikace. Například *SAMLApp1*.
-1. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři** .
-1. V části **identifikátor URI pro přesměrování**vyberte **Web**a potom zadejte `https://localhost` . Tuto hodnotu upravíte později v manifestu registrace aplikace.
-1. Vyberte **Zaregistrovat**.
+1. V nabídce vlevo vyberte **Azure AD B2C** . Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C** .
+1. Vyberte **Registrace aplikací** a pak vyberte **Nová registrace** .
+1. Zadejte **název** aplikace. Například *SAMLApp1* .
+1. V části **podporované typy účtů** vyberte **účty jenom v tomto organizačním adresáři** .
+1. V části **identifikátor URI pro přesměrování** vyberte **Web** a potom zadejte `https://localhost` . Tuto hodnotu upravíte později v manifestu registrace aplikace.
+1. Vyberte **Zaregistrovat** .
 
 ### <a name="42-update-the-app-manifest"></a>4,2 aktualizace manifestu aplikace
 
 Pro aplikace SAML existuje několik vlastností, které je třeba nakonfigurovat v manifestu registrace aplikace.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte k registraci aplikace, kterou jste vytvořili v předchozí části.
-1. V části **Spravovat**vyberte **manifest** a otevřete tak editor manifestu. V následujících oddílech upravíte několik vlastností.
+1. V části **Spravovat** vyberte **manifest** a otevřete tak editor manifestu. V následujících oddílech upravíte několik vlastností.
 
 #### <a name="identifieruris"></a>identifierUris
 
-`identifierUris`Je kolekce řetězců obsahující uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího Azure AD B2C tenanta. Váš poskytovatel služeb musí tuto hodnotu nastavit v `Issuer` elementu požadavku SAML.
+`identifierUris`Je kolekce řetězců obsahující uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího Azure AD B2C tenanta. Identifikátor URI se musí shodovat s názvem požadavku SAML `Issuer` . Uživatelem definovaná hodnota identifikátoru URI je obvykle stejná jako metadata poskytovatele služby `entityID` .
 
 #### <a name="samlmetadataurl"></a>samlMetadataUrl
 
@@ -296,7 +296,7 @@ Tato vlastnost představuje adresu URL veřejně dostupných metadat poskytovate
 
 Metadata jsou informace, které se používají v protokolu SAML k vystavení konfigurace večírku SAML, jako je například poskytovatel služeb. Metadata definují umístění služeb, jako je přihlášení a odhlášení, certifikáty, metoda přihlašování a další. Azure AD B2C čte metadata poskytovatele služby a funguje odpovídajícím způsobem. Metadata se nevyžadují. Můžete také zadat některé atributy, jako je identifikátor URI odpovědi, a identifikátor URI odhlášení přímo v manifestu aplikace.
 
-Pokud jsou v adrese URL metadat *SAML i v* manifestu registrace aplikace zadány vlastnosti, budou **sloučeny**. Vlastnosti zadané v adrese URL metadat jsou zpracovávány jako první a mají přednost.
+Pokud jsou v adrese URL metadat *SAML i v* manifestu registrace aplikace zadány vlastnosti, budou **sloučeny** . Vlastnosti zadané v adrese URL metadat jsou zpracovávány jako první a mají přednost.
 
 Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte následující hodnotu pro `samlMetadataUrl` :
 
@@ -335,12 +335,14 @@ Pro účely tohoto kurzu, který používá testovací aplikaci SAML, nechejte `
 
 Posledním krokem je povolení Azure AD B2C IdP jako SAML v aplikaci předávající strany SAML. Každá aplikace je odlišná a postup se liší. Podrobnosti najdete v dokumentaci k vaší aplikaci.
 
+Metadata můžete nakonfigurovat ve vašem poskytovateli služeb jako "statická metadata" nebo "dynamická metadata". Ve statickém režimu zkopírujte všechna nebo část metadat z metadat zásad Azure AD B2C. V dynamickém režimu můžete nastavit adresu URL na metadata a nechat si aplikaci dynamicky číst metadata.
+
 Obvykle jsou potřeba některé z těchto možností:
 
-* **Metadata**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Vystavitel**: použijte entityID v souboru metadat.
-* **Adresa URL pro přihlášení/koncový bod SAML/adresa URL SAML**: ověřte hodnotu v souboru metadat.
-* **Certifikát**: toto je *B2C_1A_SamlIdpCert*, ale bez privátního klíče. Získání veřejného klíče certifikátu:
+* **Metadata** : `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Vystavitel** : hodnota požadavku SAML se `issuer` musí shodovat s jedním z identifikátorů URI nakonfigurovaných v `identifierUris` elementu manifestu registrace aplikace. Pokud název požadavku SAML `issuer` v `identifierUris` elementu neexistuje, [přidejte ho do manifestu registrace aplikace](#identifieruris). Například, `https://contoso.onmicrosoft.com/app-name`. 
+* **Přihlašovací adresa URL/koncový bod SAML/adresa URL SAML** : ověřte hodnotu v souboru metadat zásad Azure AD B2C SAML pro `<SingleSignOnService>` element XML.
+* **Certifikát** : toto je *B2C_1A_SamlIdpCert* , ale bez privátního klíče. Získání veřejného klíče certifikátu:
 
     1. Přejít na adresu URL metadat uvedenou výše.
     1. Zkopírujte hodnotu v `<X509Certificate>` elementu.
@@ -353,7 +355,7 @@ K dokončení tohoto kurzu použijte naši [aplikaci testu SAML][samltest]:
 
 * Aktualizovat název tenanta
 * Název zásad aktualizace, například *B2C_1A_signup_signin_saml*
-* Zadejte tento identifikátor URI vystavitele: `https://contoso.onmicrosoft.com/app-name`
+* Zadejte tento identifikátor URI vystavitele. Použijte jeden z identifikátorů URI nalezených v `identifierUris` elementu v manifestu registrace aplikace, například `https://contoso.onmicrosoft.com/app-name` .
 
 Vyberte **přihlašovací údaje** , které byste měli mít k dispozici na přihlašovací obrazovce uživatele. Po přihlášení je kontrolní výraz SAML vydán zpět do ukázkové aplikace.
 
@@ -361,7 +363,7 @@ Vyberte **přihlašovací údaje** , které byste měli mít k dispozici na při
 
 Chcete-li zašifrovat kontrolní výrazy SAML odeslané zpět poskytovateli služeb, Azure AD B2C použijí certifikát veřejného klíče poskytovatele služby. Veřejný klíč musí existovat v metadatech SAML popsaných výše v [části "samlMetadataUrl"](#samlmetadataurl) jako popisovač klíče s použitím šifrování.
 
-Následuje příklad popisovače šifry metadat SAML s použitím nastavení šifrování:
+Následující kód XML je příkladem popisovače šifr metadat SAML s použitím nastaveného na šifrování:
 
 ```xml
 <KeyDescriptor use="encryption">
@@ -391,7 +393,9 @@ Pokud chcete povolit Azure AD B2C odesílat šifrované kontrolní výrazy, nast
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Povolit tok iniciované zprostředkovatelem identity (volitelné)
 
-V toku iniciované zprostředkovatelem identity se proces přihlášení iniciuje zprostředkovatelem identity (Azure AD B2C), který pošle nevyžádaný odpověď SAML poskytovateli služby (vaší aplikace předávající strany). Pokud chcete povolit tok iniciované zprostředkovatelem identity, nastavte položku metadat **IdpInitiatedProfileEnabled** na `true` v [technickém profilu předávající strany](relyingparty.md#technicalprofile).
+V toku iniciované zprostředkovatelem identity se proces přihlášení iniciuje zprostředkovatelem identity (Azure AD B2C), který pošle nevyžádaný odpověď SAML poskytovateli služby (vaší aplikace předávající strany). V současné době nepodporujeme scénáře, ve kterých je poskytovatel iniciující identity externím poskytovatelem identity, například [AD-FS](identity-provider-adfs2016-custom.md)nebo [Salesforce](identity-provider-salesforce-custom.md).
+
+Pokud chcete povolit tok spuštěného zprostředkovatele identity (Azure AD B2C), **IdpInitiatedProfileEnabled** nastavte `true` v [technickém profilu předávající strany](relyingparty.md#technicalprofile)položku metadat IdpInitiatedProfileEnabled.
 
 ```xml
 <RelyingParty>
@@ -410,14 +414,14 @@ V toku iniciované zprostředkovatelem identity se proces přihlášení iniciuj
 Pokud se chcete přihlásit nebo zaregistrovat uživatele prostřednictvím toku iniciované zprostředkovatelem identity, použijte tuto adresu URL:
 
 ```
-https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login?EntityId=app-identifier-uri 
 ```
 
 Nahraďte následující hodnoty:
 
 * **název tenanta** s názvem tenanta
 * **název zásady** s názvem zásady předávající strany SAML
-
+* identifikátor **App-Identifier-URI** s `identifierUris` v souboru metadat, jako je například`https://contoso.onmicrosoft.com/app-name`
 ## <a name="sample-policy"></a>Ukázková zásada
 
 Poskytujeme kompletní ukázkovou zásadu, kterou můžete použít pro testování pomocí testovací aplikace SAML.
@@ -435,22 +439,19 @@ Následující scénáře předávající strany SAML (RP) jsou podporovány pro
 * Zadejte šifrovací klíč tokenu v objektu aplikace nebo instančního objektu.
 * Zprostředkovatel identity inicioval přihlášení, kde je poskytovatel identity Azure AD B2C.
 
-V současné době nejsou podporovány následující scénáře předávající strany SAML (RP):
-* Zprostředkovatel identity inicioval přihlášení, kde poskytovatel identity je externí zprostředkovatel identity, například ADFS.
-
 ## <a name="saml-token"></a>Token SAML
 
 Token SAML je token zabezpečení, který je vydaný Azure AD B2C po úspěšném přihlášení. Obsahuje informace o uživateli, poskytovateli služeb, pro který je token určen, signatura a doba platnosti. Následující tabulka obsahuje seznam deklarací a vlastností, které můžete očekávat v tokenu SAML vydaném Azure AD B2C.
 
-|Prvek  |Vlastnost  |Poznámky  |
+|Prvek  |Vlastnost  |Poznámky  |
 |---------|---------|---------|
 |`<Response>`| `ID` | Automaticky generovaný jedinečný identifikátor odpovědi. | 
 |`<Response>`| `InResponseTo` | ID požadavku SAML, na který je tato zpráva odezva. | 
-|`<Response>` | `IssueInstant` | Doba, po kterou se má odpověď vydávat. Hodnota Time je kódována v UTC.Pokud chcete změnit nastavení pro životnost tokenu, nastavte `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) technického profilu vystavitele tokenu SAML. | 
+|`<Response>` | `IssueInstant` | Doba, po kterou se má odpověď vydávat. Hodnota Time je kódována v UTC.  Pokud chcete změnit nastavení pro životnost tokenu, nastavte `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) technického profilu vystavitele tokenu SAML. | 
 |`<Response>` | `Destination`| Odkaz na identifikátor URI označující adresu, na kterou byla tato odpověď odeslána. Hodnota je shodná s požadavkem SAML `AssertionConsumerServiceURL` . | 
-|`<Response>` `<Issuer>` | |Identifikuje vystavitele tokenu. Toto je libovolný identifikátor URI definovaný `IssuerUri` [metadaty](saml-issuer-technical-profile.md#metadata) problému tokenu SAML.     |
-|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Objekt zabezpečení, o kterém token vyhodnotí informace, například ID objektu uživatele. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři.|
-|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Odkaz na identifikátor URI představující klasifikaci informací o identifikátoru založeném na řetězci. Ve výchozím nastavení je tato vlastnost vynechána. Nastavením [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) předávající strany můžete určit `NameID` formát, například `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
+|`<Response>` `<Issuer>` | |Identifikuje vystavitele tokenu. Toto je libovolný identifikátor URI definovaný `IssuerUri` [metadaty](saml-issuer-technical-profile.md#metadata) problému tokenu SAML.     |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Objekt zabezpečení, o kterém token vyhodnotí informace, například ID objektu uživatele. Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Dá se použít k bezpečnému provádění kontrol autorizace, například když se token používá pro přístup k prostředku. Ve výchozím nastavení se deklarace identity subjektu naplní s ID objektu uživatele v adresáři.|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | Odkaz na identifikátor URI představující klasifikaci informací o identifikátoru založeném na řetězci. Ve výchozím nastavení je tato vlastnost vynechána. Nastavením [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) předávající strany můžete určit `NameID` formát, například `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Čas, kdy bude token platný. Hodnota Time je kódována v UTC. Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Pokud chcete změnit nastavení pro životnosti tokenů, nastavte `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) technického profilu problému s tokenem SAML. |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Čas, kdy se token stal neplatným Vaše aplikace by měla tuto deklaraci identity použít k ověření platnosti životnosti tokenu. Hodnota je 15 minut po `NotBefore` a nelze ji změnit.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Odkaz na identifikátor URI, který identifikuje zamýšlenou cílovou skupinu. Identifikuje zamýšleného příjemce tokenu. Hodnota je shodná s požadavkem SAML `AssertionConsumerServiceURL` .|

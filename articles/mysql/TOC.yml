@@ -102,10 +102,10 @@
         - name: Sestavení webové aplikace v PHP pomocí MySQL
           items:
             - name: Wordpress v kontejnerech s využitím MySQL
-              href: ../app-service/containers/tutorial-multi-container-app.md
+              href: ../app-service/tutorial-multi-container-app.md
               maintainContext: true
             - name: PHP s MySQL
-              href: ../app-service/app-service-web-tutorial-php-mysql.md
+              href: ../app-service/tutorial-php-mysql-app.md
               maintainContext: true
     - name: ukázky
       items:
@@ -114,7 +114,7 @@
         - name: Sdružování připojení v Javě
           href: sample-scripts-java-connection-pooling.md
         - name: Integrované služby Azure Policy
-          href: ./policy-samples.md
+          href: ./policy-reference.md
     - name: Koncepty
       items:
         - name: Servery
@@ -224,7 +224,7 @@
               displayName: 'manage, reset password, scale'
             - name: Pravidla brány firewall
               items:
-                - name: portál Azure
+                - name: Azure Portal
                   href: howto-manage-firewall-using-portal.md
                   displayName: firewall
                 - name: Azure CLI
@@ -240,7 +240,7 @@
               displayName: 'managed identity, msi'
         - name: Obnovení serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-restore-server-portal.md
               displayName: 'restore server,backup'
             - name: Azure CLI
@@ -271,7 +271,7 @@
               displayName: 'development, redirection , php'
         - name: Konfigurace parametrů serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-server-parameters.md
               displayName: server parameters
             - name: Azure CLI
@@ -286,7 +286,7 @@
               href: how-to-stop-start-server.md
         - name: Automatické zvětšení úložiště
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'storage, business continuity , downtime, portal'
             - name: Azure CLI
@@ -297,7 +297,7 @@
               displayName: 'storage, business continuity , downtime, powershell'
         - name: Protokoly pomalých dotazů
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
               displayName: 'debug, slow query log , performance'
             - name: Azure CLI
@@ -305,7 +305,7 @@
               displayName: 'debug, slow query log , performance'
         - name: Protokoly auditu
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-configure-audit-logs-portal.md
               displayName: 'debug, audit log'
             - name: Azure CLI
@@ -357,7 +357,7 @@
               displayName: 'atp, advanced thread, security'
             - name: Virtual Network
               items:
-                - name: portál Azure
+                - name: Azure Portal
                   href: howto-manage-vnet-using-portal.md
                   displayName: 'vnet, virtual network, service endpoint'
                 - name: Azure CLI
@@ -394,7 +394,7 @@
               displayName: 'security, public access'
         - name: Restartování serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: howto-restart-server-portal.md
               displayName: restart
             - name: Azure CLI
@@ -427,6 +427,7 @@
             - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: Šablona ARM
+              displayName: Resource Manager
               href: flexible-server/quickstart-create-arm-template.md
         - name: Připojení a dotazování
           items:
@@ -517,7 +518,7 @@
                   href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurace parametrů serveru
           items:
-            - name: portál Azure
+            - name: Azure Portal
               href: flexible-server/how-to-configure-server-parameters-portal.md
               displayName: server parameters
             - name: Azure CLI
@@ -558,7 +559,7 @@
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mysql.html'
+      href: /answers/topics/azure-database-mysql.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: Videa

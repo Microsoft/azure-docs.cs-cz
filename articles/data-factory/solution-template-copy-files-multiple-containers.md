@@ -11,36 +11,38 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 73560c49e10ab96c934d4dd3cea9395093a26420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f78d0b02c9790234a63ef64200dcab72bc64c033
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82629044"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629421"
 ---
-# <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopírování souborů z více kontejnerů pomocí Azure Data Factory
+# <a name="copy-multiple-folders-with-azure-data-factory"></a>Kopírování více složek pomocí Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento článek popisuje šablonu řešení, kterou můžete použít ke kopírování souborů z více kontejnerů mezi úložišti souborů. Můžete ho například použít k migraci Data Lake z AWS S3 na Azure Data Lake Store. Nebo můžete použít šablonu k replikaci všeho z jednoho účtu služby Azure Blob Storage do jiného.
+Tento článek popisuje šablonu řešení, kterou můžete použít k kopírování kontejnerů nebo složek mezi úložišti založené na souborech pomocí více aktivit kopírování, kde každá aktivita kopírování má zkopírovat jeden kontejner nebo složku. 
 
 > [!NOTE]
 > Pokud chcete kopírovat soubory z jednoho kontejneru, je efektivnější použít [nástroj kopírování dat](copy-data-tool.md) k vytvoření kanálu s jednou aktivitou kopírování. Šablona v tomto článku je více, než kolik jich v jednoduchém scénáři potřebujete.
 
 ## <a name="about-this-solution-template"></a>O této šabloně řešení
 
-Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiště. Pak tyto kontejnery zkopíruje do cílového úložiště.
+Tato šablona vypíše složky z dané nadřazené složky ve zdrojovém úložišti úložiště. Pak zkopíruje každou složku do cílového úložiště.
 
 Šablona obsahuje tři aktivity:
-- **GetMetadata** prověří úložiště zdrojového úložiště a získá seznam kontejnerů.
-- **Foreach** získá seznam kontejnerů z aktivity **GetMetadata** a pak projde seznam a předá do aktivity kopírování každý kontejner.
-- **Kopírovat** zkopíruje každý kontejner ze zdrojového úložiště úložiště do cílového úložiště.
+- **GetMetadata** prověří úložiště zdrojového úložiště a získá seznam podsložek z dané nadřazené složky.
+- **Foreach** získá seznam podsložek z aktivity **GetMetadata** a pak projde seznam a předá každou složku aktivitě kopírování.
+- **Kopírovat** zkopíruje všechny složky ze zdrojového úložiště úložiště do cílového úložiště.
 
 Šablona definuje následující parametry:
-- *SourceFileFolder* je cesta ke složce úložiště zdrojů dat, kde můžete získat seznam kontejnerů. Cesta je kořenový adresář, který obsahuje více složek kontejnerů. Výchozí hodnota tohoto parametru je `sourcefolder` .
-- *SourceFileDirectory* je cesta k podsložce v kořenovém adresáři úložiště zdrojů dat. Výchozí hodnota tohoto parametru je `subfolder` .
-- *DestinationFileFolder* je cesta ke složce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `destinationfolder` .
-- *DestinationFileDirectory* je cesta k podsložce, do které se zkopírují soubory do cílového úložiště. Výchozí hodnota tohoto parametru je `subfolder` .
+- *SourceFileFolder* je součástí cesty k nadřazené složce vašeho úložiště zdrojů dat: *SourceFileFolder/SourceFileDirectory* , kde můžete získat seznam podsložek. 
+- *SourceFileDirectory* je součástí cesty k nadřazené složce vašeho úložiště zdrojů dat: *SourceFileFolder/SourceFileDirectory* , kde můžete získat seznam podsložek. 
+- *DestinationFileFolder* je součástí cesty k nadřazené složce: *DestinationFileFolder/DestinationFileDirectory* , kde budou soubory zkopírovány do cílového úložiště. 
+- *DestinationFileDirectory* je součástí cesty k nadřazené složce: *DestinationFileFolder/DestinationFileDirectory* , kde budou soubory zkopírovány do cílového úložiště. 
+
+Pokud chcete kopírovat více kontejnerů v rámci kořenových složek mezi úložišti úložiště, můžete zadat všechny čtyři parametry jako */* . Provedete to tak, že provedete replikaci všeho mezi úložišti úložiště.
 
 ## <a name="how-to-use-this-solution-template"></a>Jak používat tuto šablonu řešení
 
@@ -52,7 +54,7 @@ Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiš
 
     ![Vytvoří nové připojení k cíli.](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Vyberte **Použít tuto šablonu**.
+3. Vyberte **Použít tuto šablonu** .
 
     ![Použít tuto šablonu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
@@ -60,7 +62,7 @@ Tato šablona vytvoří výčet kontejnerů z úložiště zdrojového úložiš
 
     ![Zobrazení kanálu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. Vyberte **ladit**, zadejte **parametry**a pak vyberte **Dokončit**.
+5. Vyberte **ladit** , zadejte **parametry** a pak vyberte **Dokončit** .
 
     ![Spuštění kanálu](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 

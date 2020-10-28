@@ -137,7 +137,7 @@
                 - name: Instalace vlastních aplikací
                   href: hdinsight-apps-install-custom-applications.md
                 - name: Použití REST k instalací aplikací
-                  href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+                  href: /rest/api/hdinsight/hdinsight-application
                 - name: Publikování aplikací HDInsight na Azure Marketplace
                   href: hdinsight-apps-publish-applications.md
         - name: Zabezpečení
@@ -301,7 +301,7 @@
         - name: Povolení výpisů paměti haldy pro služby Apache Hadoop
           href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
         - name: Získání pomoci na stránce s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-hdinsight.html'
+          href: /answers/topics/azure-hdinsight.html
         - name: Cenová kalkulačka
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Nástroje Windows pro HDInsight
@@ -433,8 +433,6 @@
                   href: ./spark/apache-spark-use-with-data-lake-store.md
                 - name: Připojení k Azure SQL Database
                   href: ./spark/apache-spark-connect-to-sql-database.md
-                - name: Implementace architektury lambda pomocí Apache Sparku a Cosmos DB
-                  href: ../cosmos-db/lambda-architecture.md
                 - name: Spuštění úloh Azure ML pomocí AutoML
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Řešení potíží
