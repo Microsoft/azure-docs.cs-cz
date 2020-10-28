@@ -7,22 +7,22 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: 55fff7e4e36f066ba8ae5734e483df393fbd72cd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e20733cb4b93fcfac7606895746645727f12d6c8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488652"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783823"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Průvodce správou verzí objektů BLOB Průzkumník služby Azure Storage
 
-Průzkumník služby Microsoft Azure Storage poskytuje snadný přístup a správu verzí objektů BLOB. Tato příručka vám pomůže pochopit, jak funguje Správa verzí objektů BLOB v Průzkumník služby Storage. Než budete pokračovat, doporučujeme si přečíst další informace o [verzích objektů BLOB](/azure/storage/blobs/versioning-overview).
+Průzkumník služby Microsoft Azure Storage poskytuje snadný přístup a správu verzí objektů BLOB. Tato příručka vám pomůže pochopit, jak funguje Správa verzí objektů BLOB v Průzkumník služby Storage. Než budete pokračovat, doporučujeme si přečíst další informace o [verzích objektů BLOB](../blobs/versioning-overview.md).
 
 ## <a name="terminology"></a>Terminologie
 
 V této části najdete některé definice, které vám pomůžou pochopit jejich použití v tomto článku.
 
-- Obnovitelné odstranění: alternativní funkce automatické ochrany dat. Další informace o obnovitelném odstranění najdete [tady](/azure/storage/blobs/soft-delete-blob-overview).
+- Obnovitelné odstranění: alternativní funkce automatické ochrany dat. Další informace o obnovitelném odstranění najdete [tady](../blobs/soft-delete-blob-overview.md).
 - Aktivní objekt BLOB: v aktivním stavu je vytvořená verze objektu BLOB nebo BLOB. Můžete pracovat jenom s objekty blob nebo verze objektů BLOB v aktivním stavu.
 - Měkký odstraněný objekt BLOB: verze objektu BLOB nebo BLOB s označením příznakem Soft-Deleted. Obnovitelné odstraněné objekty BLOB se uchovávají jenom po dobu uchování.
 - Verze objektu BLOB: objekt BLOB vytvořený s povoleným správou verzí objektů BLOB. Každá verze objektu BLOB je přidružená k ID verze.
@@ -117,5 +117,5 @@ Každá verze objektu BLOB má svou vlastní úroveň přístupu. Pokud chcete z
 
 ## <a name="see-also"></a>Viz také
 
-* [Správa verzí objektů BLOB](/azure/storage/blobs/versioning-overview)
-* [Obnovitelné odstranění pro objekty blob](/azure/storage/blobs/soft-delete-blob-overview)
+* [Správa verzí objektů BLOB](../blobs/versioning-overview.md)
+* [Obnovitelné odstranění pro objekty blob](../blobs/soft-delete-blob-overview.md)

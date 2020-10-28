@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa295c0c0d30cb0797820baaf2a4b03a1b7c99
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513275"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783449"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
 
@@ -33,13 +33,13 @@ Použití privátních koncových bodů pro váš účet úložiště vám umož
 
 Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší [Virtual Network](../../virtual-network/virtual-networks-overview.md) (virtuální síť). Když vytvoříte privátní koncový bod pro svůj účet úložiště, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším úložištěm. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou úložiště používá zabezpečený privátní odkaz.
 
-Aplikace ve virtuální síti se můžou bez problémů připojit k službě úložiště přes soukromý koncový bod **pomocí stejných připojovacích řetězců a mechanismů autorizace, které by jinak používaly**. Soukromé koncové body lze použít se všemi protokoly podporovanými účtem úložiště, včetně REST a protokolu SMB.
+Aplikace ve virtuální síti se můžou bez problémů připojit k službě úložiště přes soukromý koncový bod **pomocí stejných připojovacích řetězců a mechanismů autorizace, které by jinak používaly** . Soukromé koncové body lze použít se všemi protokoly podporovanými účtem úložiště, včetně REST a protokolu SMB.
 
 V podsítích, které používají [koncové body služby](../../virtual-network/virtual-network-service-endpoints-overview.md), lze vytvořit privátní koncové body. Klienti v podsíti se proto mohou připojit k jednomu účtu úložiště pomocí privátního koncového bodu a při použití koncových bodů služby k přístupu k ostatním.
 
 Když pro službu úložiště ve své virtuální síti vytvoříte privátní koncový bod, vlastníkovi účtu úložiště se odešle ke schválení žádost o vyjádření souhlasu. Pokud je uživatel žádající o vytvoření privátního koncového bodu také vlastníkem účtu úložiště, bude tato žádost o přijetí souhlasu automaticky schválena.
 
-Vlastníci účtu úložiště můžou spravovat žádosti o souhlas a soukromé koncové body přes kartu*privátní koncové body*pro účet úložiště v [Azure Portal](https://portal.azure.com).
+Vlastníci účtu úložiště můžou spravovat žádosti o souhlas a soukromé koncové body přes kartu *privátní koncové body* pro účet úložiště v [Azure Portal](https://portal.azure.com).
 
 > [!TIP]
 > Pokud chcete omezit přístup k účtu úložiště jenom prostřednictvím privátního koncového bodu, nakonfigurujte bránu firewall úložiště tak, aby odepřela nebo řízení přístupu prostřednictvím veřejného koncového bodu.
@@ -53,11 +53,11 @@ Při vytváření privátního koncového bodu musíte zadat účet úložiště
 > [!TIP]
 > Vytvořte samostatný privátní koncový bod pro sekundární instanci služby úložiště pro lepší výkon při čtení účtů RA-GRS.
 
-Pro přístup pro čtení do sekundární oblasti s účtem úložiště nakonfigurovaným pro geograficky redundantní úložiště musíte oddělit soukromé koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání**. Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci. Další informace o možnostech redundance úložiště najdete v tématu [Azure Storage redundance](storage-redundancy.md).
+Pro přístup pro čtení do sekundární oblasti s účtem úložiště nakonfigurovaným pro geograficky redundantní úložiště musíte oddělit soukromé koncové body pro primární i sekundární instance služby. Nemusíte vytvářet privátní koncový bod pro sekundární instanci pro **převzetí služeb při selhání** . Po převzetí služeb při selhání se privátní koncový bod automaticky připojí k nové primární instanci. Další informace o možnostech redundance úložiště najdete v tématu [Azure Storage redundance](storage-redundancy.md).
 
 Podrobnější informace o vytvoření privátního koncového bodu pro účet úložiště najdete v následujících článcích:
 
-- [Připojte soukromě k účtu úložiště z prostředí účtu úložiště v Azure Portal](../../private-link/create-private-endpoint-storage-portal.md)
+- [Připojte soukromě k účtu úložiště z prostředí účtu úložiště v Azure Portal](../../private-link/tutorial-private-endpoint-storage-portal.md)
 - [Vytvoření privátního koncového bodu pomocí centra privátního spojení v Azure Portal](../../private-link/create-private-endpoint-portal.md)
 - [Vytvoření privátního koncového bodu pomocí Azure CLI](../../private-link/create-private-endpoint-cli.md)
 - [Vytvoření privátního koncového bodu pomocí Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
@@ -67,13 +67,13 @@ Podrobnější informace o vytvoření privátního koncového bodu pro účet �
 Klienti ve virtuální síti s použitím privátního koncového bodu by měli použít stejný připojovací řetězec pro účet úložiště, jak se klienti připojují k veřejnému koncovému bodu. Pro automatické směrování připojení z virtuální sítě do účtu úložiště prostřednictvím privátního propojení spoléháme na překlad DNS.
 
 > [!IMPORTANT]
-> Použijte stejný připojovací řetězec pro připojení k účtu úložiště pomocí privátních koncových bodů, protože byste mohli jinak použít. Nepřipojujte se prosím k účtu úložiště pomocí adresy URL subdomény*privatelink*.
+> Použijte stejný připojovací řetězec pro připojení k účtu úložiště pomocí privátních koncových bodů, protože byste mohli jinak použít. Nepřipojujte se prosím k účtu úložiště pomocí adresy URL subdomény *privatelink* .
 
 Ve výchozím nastavení vytvoříme [privátní ZÓNU DNS](../../dns/private-dns-overview.md) připojenou k virtuální síti s nezbytnými aktualizacemi pro privátní koncové body. Pokud ale používáte vlastní server DNS, možná budete muset provést další změny v konfiguraci DNS. Oddíl o [změnách DNS](#dns-changes-for-private-endpoints) níže popisuje aktualizace vyžadované pro soukromé koncové body.
 
 ## <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
 
-Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro účet úložiště aktualizuje na alias v subdoméně s předponou '*privatelink*'. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](../../dns/private-dns-overview.md), která odpovídá subdoméně*privatelink*, a záznamy prostředků DNS pro privátní koncové body.
+Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro účet úložiště aktualizuje na alias v subdoméně s předponou ' *privatelink* '. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](../../dns/private-dns-overview.md), která odpovídá subdoméně *privatelink* , a záznamy prostředků DNS pro privátní koncové body.
 
 Při překladu adresy URL koncového bodu úložiště mimo virtuální síť s privátním koncovým bodem se přeloží na veřejný koncový bod služby úložiště. Při překladu z virtuální sítě hostující soukromý koncový bod se adresa URL koncového bodu úložiště přeloží na IP adresu privátního koncového bodu.
 
@@ -96,7 +96,7 @@ Záznamy prostředků DNS pro StorageAccountA, když je klient ve virtuální s�
 
 Tento přístup umožňuje přístup k účtu úložiště **pomocí stejného připojovacího řetězce** pro klienty ve virtuální síti, která je hostitelem privátních koncových bodů, a taky klientů mimo virtuální síť.
 
-Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény pro koncový bod účtu úložiště na IP adresu privátního koncového bodu. Server DNS byste měli nakonfigurovat tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť, nebo můžete nakonfigurovat záznamy pro*StorageAccountA.privatelink.blob.Core.Windows.NET*s IP adresou privátního koncového bodu.
+Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény pro koncový bod účtu úložiště na IP adresu privátního koncového bodu. Server DNS byste měli nakonfigurovat tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť, nebo můžete nakonfigurovat záznamy pro *StorageAccountA.privatelink.blob.Core.Windows.NET* s IP adresou privátního koncového bodu.
 
 > [!TIP]
 > Pokud používáte vlastní nebo místní server DNS, měli byste server DNS nakonfigurovat tak, aby přeložil název účtu úložiště v subdoméně privatelink na IP adresu privátního koncového bodu. Můžete to udělat tak, že delegujete subdoménu privatelink do privátní zóny DNS virtuální sítě nebo nakonfigurujete zónu DNS na serveru DNS a přidáte záznamy DNS a.
@@ -114,8 +114,8 @@ Doporučené názvy zón DNS pro privátní koncové body služby Storage jsou:
 
 Další informace o konfiguraci vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
 
-- [Překlad názvů pro prostředky ve virtuálních sítích Azure](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [Konfigurace DNS pro privátní koncové body](/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Překlad názvů pro prostředky ve virtuálních sítích Azure](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [Konfigurace DNS pro privátní koncové body](../../private-link/private-endpoint-overview.md#dns-configuration)
 
 ## <a name="pricing"></a>Ceny
 
@@ -137,7 +137,7 @@ Toto omezení je výsledkem změn DNS provedených při vytváření privátníh
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Pravidla skupin zabezpečení sítě pro podsítě s privátními koncovými body
 
-V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) a trasy definované uživatelem pro privátní koncové body. Pravidla NSG použitá pro podsíť hostující soukromý koncový bod se aplikují jenom na jiné koncové body (například síťové adaptéry) než privátní koncový bod. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.
+V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) (NSG) a trasy definované uživatelem pro privátní koncové body. Pravidla NSG použitá pro podsíť hostující soukromý koncový bod se aplikují jenom na jiné koncové body (například síťové adaptéry) než privátní koncový bod. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.
 
 ## <a name="next-steps"></a>Další kroky
 

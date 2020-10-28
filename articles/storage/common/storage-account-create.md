@@ -10,12 +10,12 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488890"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784350"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -76,7 +76,7 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Přihlaste se na [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +98,7 @@ az login
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -199,7 +199,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možno
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-K nasazení Správce prostředků šablony pro vytvoření účtu úložiště můžete použít buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Šablona použitá v tomto článku s návody je od [Azure Resource Manager šablon pro rychlý Start](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Chcete-li spustit skripty, vyberte příkaz **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**.
+K nasazení Správce prostředků šablony pro vytvoření účtu úložiště můžete použít buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Šablona použitá v tomto článku s návody je od [Azure Resource Manager šablon pro rychlý Start](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Chcete-li spustit skripty, vyberte příkaz **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit** .
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -223,7 +223,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 Informace o tom, jak upravit tuto šablonu nebo vytvořit nové, najdete v těchto tématech:
 
-- [Azure Resource Manager dokumentaci](/azure/azure-resource-manager/).
+- [Azure Resource Manager dokumentaci](../../azure-resource-manager/index.yml).
 - [Odkaz na šablonu účtu úložiště](/azure/templates/microsoft.storage/allversions)
 - [Další ukázky šablon účtu úložiště](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)
 
@@ -236,7 +236,7 @@ Odstranění účtu úložiště odstraní celý účet včetně všech dat v ú
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na účet úložiště.
-1. Klikněte na **Odstranit**.
+1. Klikněte na **Odstranit** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -279,7 +279,7 @@ Alternativně můžete odstranit skupinu prostředků, která odstraní účet �
 > [!WARNING]
 > Odstraněný účet úložiště není možné obnovit ani není možné načíst žádný obsah, který byl součástí účtu před jeho odstraněním. Nezapomeňte si před odstraněním účtu zazálohovat všechno, co chcete uložit. To platí také pro všechny prostředky v rámci účtu – po odstranění jsou objekt blob, tabulka, fronta nebo soubor odstraněny trvale.
 >
-> Pokud se pokusíte odstranit účet úložiště, který je přidružený virtuálnímu počítači Azure, můžete obdržet chybu, že se účet úložiště stále používá. Pomoc při řešení této chyby najdete v tématu [řešení chyb při odstraňování účtů úložiště](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+> Pokud se pokusíte odstranit účet úložiště, který je přidružený virtuálnímu počítači Azure, můžete obdržet chybu, že se účet úložiště stále používá. Pomoc při řešení této chyby najdete v tématu [řešení chyb při odstraňování účtů úložiště](../../virtual-machines/troubleshooting/index.yml).
 
 ## <a name="next-steps"></a>Další kroky
 

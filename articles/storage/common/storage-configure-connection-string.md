@@ -10,12 +10,12 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091606"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783874"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Nakonfigurování připojovacích řetězců Azure Storage
 
@@ -35,7 +35,7 @@ Vaše aplikace potřebuje přístup k připojovacímu řetězci za běhu, aby by
 
 * Připojovací řetězec můžete uložit do proměnné prostředí.
 * Aplikace spuštěná na ploše nebo v zařízení může uložit připojovací řetězec do souboru **app.config** nebo **web.config** . Přidejte připojovací řetězec do oddílu **appSettings** v těchto souborech.
-* Aplikace, která běží v cloudové službě Azure, může uložit připojovací řetězec do [souboru schématu konfigurace služby Azure (. cscfg)](https://msdn.microsoft.com/library/ee758710.aspx). Přidejte připojovací řetězec do části **ConfigurationSettings** konfiguračního souboru služby.
+* Aplikace, která běží v cloudové službě Azure, může uložit připojovací řetězec do [souboru schématu konfigurace služby Azure (. cscfg)](/previous-versions/azure/reference/ee758710(v=azure.100)). Přidejte připojovací řetězec do části **ConfigurationSettings** konfiguračního souboru služby.
 
 Uložení připojovacího řetězce do konfiguračního souboru usnadňuje aktualizaci připojovacího řetězce pro přepínání mezi [emulátorem úložiště Azurite](../common/storage-use-azurite.md) a účtem služby Azure Storage v cloudu. Musíte upravit připojovací řetězec tak, aby odkazoval na cílové prostředí.
 
@@ -57,7 +57,7 @@ Například váš připojovací řetězec může vypadat podobně jako:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-I když Azure Storage podporuje HTTP i HTTPS v připojovacím řetězci, *důrazně se doporučuje protokol HTTPS*.
+I když Azure Storage podporuje HTTP i HTTPS v připojovacím řetězci, *důrazně se doporučuje protokol HTTPS* .
 
 > [!TIP]
 > Připojovací řetězce účtu úložiště najdete v [Azure Portal](https://portal.azure.com). V okně nabídky účtu úložiště přejděte na **Nastavení**  >  **přístupové klíče** a zobrazte připojovací řetězce pro primární i sekundární přístupový klíč.

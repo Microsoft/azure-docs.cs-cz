@@ -8,12 +8,12 @@ ms.date: 09/10/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9b9f68737ca714c0661ffb008347149235886c68
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6be3c0f3b7ff8e44bd9dda089c803a27e883383
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90015020"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783432"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro jazyk Java
 
@@ -33,14 +33,14 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/java/api/overview/azure/storage-queue-readme)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 * [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-* [ukázky](/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Ukázky](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * [Java Development Kit (JDK)](/java/azure/jdk/) verze 8 nebo vyšší
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](/azure/storage/common/storage-quickstart-create-account)
+* Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -48,9 +48,9 @@ Tato část vás provede přípravou projektu pro práci s klientskou knihovnou 
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci Java s názvem *Queues-Start-V12*.
+Vytvořte aplikaci Java s názvem *Queues-Start-V12* .
 
-1. V okně konzoly (například cmd, PowerShell nebo bash) použijte Maven k vytvoření nové konzolové aplikace s názvem *fronty – rychlý Start-V12*. Zadáním následujícího příkazu **MVN** vytvořte "Hello World!" Projekt Java.
+1. V okně konzoly (například cmd, PowerShell nebo bash) použijte Maven k vytvoření nové konzolové aplikace s názvem *fronty – rychlý Start-V12* . Zadáním následujícího příkazu **MVN** vytvořte "Hello World!" Projekt Java.
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \

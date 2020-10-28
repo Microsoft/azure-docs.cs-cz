@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 047bfac9179fd10383fc91155c7cb6e737fda516
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 78eb7ae9a73217bfe7b9ef58cb46a70cc312c481
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558699"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784367"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -37,6 +37,7 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 - [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Přidala se Azure Firewall doporučení (Preview).](#azure-firewall-recommendation-added-preview)
 - [Pro doporučení služby Kubernetes Services, které se aktualizovaly pomocí rychlé opravy, by se měly definovat povolené rozsahy IP](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
+- [Řídicí panel dodržování předpisů teď obsahuje možnost odebrání standardů.](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
 - [Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)
@@ -75,6 +76,15 @@ Přečtěte si další informace o [Azure firewall](https://azure.microsoft.com/
 Další podrobnosti o tomto doporučení a všech dalších Security Center doporučeních najdete v tématu [doporučení zabezpečení – referenční příručka](recommendations-reference.md).
 
 :::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="Pro doporučení služby Kubernetes Services s možností Rychlá oprava by se měly definovat rozsahy autorizovaných IP adres.":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>Řídicí panel dodržování předpisů teď obsahuje možnost odebrání standardů.
+
+Řídicí panel dodržování legislativních předpisů Security Center poskytuje přehledy o dodržování předpisů v závislosti na tom, jak splňujete konkrétní kontrolu a požadavky na dodržování předpisů.
+
+Řídicí panel obsahuje výchozí sadu regulativních standardů. Pokud některé z uvedených standardů nejsou pro vaši organizaci důležité, je teď jednoduchý proces, který je jednoduše odebral z uživatelského rozhraní pro předplatné. Standardy je možné odebrat jenom na úrovni *předplatného* . Nejedná se o obor skupiny pro správu.
+
+Další informace najdete v [Odebrání standardu z řídicího panelu](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard).
 
 
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Tabulka Microsoft. Security/securityStatuses se odebrala z Azure Resource graphu (ARG).
@@ -669,7 +679,7 @@ Zásady najdete v části zásady Azure:
 
 Začínáme se [šablonami automatizace pracovních postupů](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 
-Přečtěte si další informace o tom, jak pomocí těchto dvou zásad exportu [průběžně exportovat Azure Security Center upozornění a doporučení prostřednictvím zásad](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745).
+Přečtěte si další informace o použití těchto dvou zásad exportu v [části Konfigurace automatizace pracovního postupu ve velkém měřítku pomocí zadaných zásad](workflow-automation.md#configure-workflow-automation-at-scale-using-the-supplied-policies) a [Nastavení průběžného exportu](continuous-export.md#set-up-a-continuous-export).
 
 
 ### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>Nové doporučení pro použití skupin zabezpečení sítě k ochraně virtuálních počítačů, které nejsou přístupné pro Internet

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 13d2633576454ea6445deb4d2b0b11c2bbb1514e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: de97640ab462ac8ea7342d235d0fad802c232179
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478367"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783364"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -42,7 +42,7 @@ Příkaz synchronizovat se v několika ohledech liší od příkazu pro kopírov
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-### <a name="advanced"></a>Pokročilý
+### <a name="advanced"></a>Upřesnit
 
 Pokud nezadáte příponu souboru, AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
 
@@ -159,7 +159,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--rekurzivní** `True` ve výchozím nastavení se při synchronizaci mezi adresáři vyhledávají rekurzivně v podadresářích.     (výchozí `True` ). 
 
-**--S2S-Preserve-úroveň přístupu**  Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí `true` ). 
+**--S2S-Preserve-úroveň přístupu**  Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md) . V případech, kdy se nastavení úrovně přístupu nepodporuje, použijte s2sPreserveAccessTier = false, aby se přenechá kopírování úrovně přístupu. (výchozí `true` ). 
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
@@ -167,7 +167,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
-|--Trusted – řetězec Microsoft-přípony   |Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.|
+|--Trusted – řetězec Microsoft-přípony   |Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;* . core.chinacloudapi.cn; *. Core.cloudapi.de;* . core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.|
 
 ## <a name="see-also"></a>Viz také
 

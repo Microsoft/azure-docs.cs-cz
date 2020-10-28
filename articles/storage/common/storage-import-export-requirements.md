@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d17b9cdebf06e7d754a23a7224bbe3dba1a2832c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276393"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783602"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -50,7 +50,7 @@ Další informace o účtech úložiště najdete v tématu [Přehled účtů Az
 Každou úlohu můžete použít k přenosu dat do nebo z jednoho účtu úložiště. Jinými slovy, jedna úloha importu/exportu nemůže být rozložená mezi několik účtů úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-account-create.md).
 
 > [!IMPORTANT]
-> U účtů úložiště, kde je povolená funkce [koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)   , použijte nastavení **Povolit důvěryhodné služby společnosti Microsoft...** , aby služba [Import/export](/azure/storage/common/storage-network-security) mohla provádět import/export dat do a z Azure.
+> U účtů úložiště, kde je povolená funkce [koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md) , použijte nastavení **Povolit důvěryhodné služby společnosti Microsoft...** , aby služba [Import/export](./storage-network-security.md) mohla provádět import/export dat do a z Azure.
 
 ## <a name="supported-storage-types"></a>Podporované typy úložiště
 
@@ -59,7 +59,7 @@ Služba Azure import/export podporuje následující seznam typů úložišť.
 
 |Úloha  |Služba úložiště |Podporováno  |Nepodporováno  |
 |---------|---------|---------|---------|
-|Importovat     |  Azure Blob Storage <br><br> Azure File Storage       | Podporované objekty blob bloku a objekty blob stránky <br><br> Podporované soubory          |
+|Import     |  Azure Blob Storage <br><br> Azure File Storage       | Podporované objekty blob bloku a objekty blob stránky <br><br> Podporované soubory          |
 |Export     |   Azure Blob Storage       | Podporované objekty blob bloku, objekty blob stránky a doplňovací objekty blob         | Soubory Azure nejsou podporované
 
 
@@ -94,4 +94,4 @@ Když připravujete pevné disky a kopírujete data pomocí nástroje WAImportEx
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
+* [Přenos dat pomocí nástroje příkazového řádku AzCopy](./storage-use-azcopy-v10.md)

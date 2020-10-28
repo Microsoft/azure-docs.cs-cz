@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 83b71d46c3d6b1612728b2bd81c6acede6d0559b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488618"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783789"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumníkem služby Azure Storage
 
@@ -23,7 +23,7 @@ Tato příručka shrnuje řešení problémů, které se běžně zobrazují v P
 
 ## <a name="azure-rbac-permissions-issues"></a>Problémy s oprávněními Azure RBAC
 
-Řízení přístupu na základě role Azure [RBAC Azure](/azure/role-based-access-control/overview) umožňuje vysoce detailní správu přístupu prostředků Azure tím, že kombinuje sady oprávnění s _rolemi_. Tady jsou některé strategie pro optimální fungování Azure RBAC v Průzkumník služby Storage.
+Řízení přístupu na základě role Azure [RBAC Azure](../../role-based-access-control/overview.md) umožňuje vysoce detailní správu přístupu prostředků Azure tím, že kombinuje sady oprávnění s _rolemi_ . Tady jsou některé strategie pro optimální fungování Azure RBAC v Průzkumník služby Storage.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Návody přistupovat k prostředkům v Průzkumník služby Storage?
 
@@ -46,7 +46,7 @@ Musíte mít přiřazenou aspoň jednu roli, která uděluje přístup ke čten�
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Proč potřebuji roli vrstvy správy, aby se zobrazily moje prostředky v Průzkumník služby Storage?
 
-Azure Storage má dvě vrstvy přístupu: _správu_ a _data_. K předplatným a účtům úložiště se dostanete prostřednictvím vrstvy správy. K kontejnerům, objektům blob a dalším datovým prostředkům se dostanete přes datovou vrstvu. Pokud například chcete získat seznam účtů úložiště z Azure, odešlete žádost do koncového bodu správy. Pokud chcete v účtu vytvořit seznam kontejnerů objektů blob, odešlete požadavek na příslušný koncový bod služby.
+Azure Storage má dvě vrstvy přístupu: _správu_ a _data_ . K předplatným a účtům úložiště se dostanete prostřednictvím vrstvy správy. K kontejnerům, objektům blob a dalším datovým prostředkům se dostanete přes datovou vrstvu. Pokud například chcete získat seznam účtů úložiště z Azure, odešlete žádost do koncového bodu správy. Pokud chcete v účtu vytvořit seznam kontejnerů objektů blob, odešlete požadavek na příslušný koncový bod služby.
 
 Role Azure vám můžou udělit oprávnění pro správu nebo přístup k datové vrstvě. Role čtenář například uděluje přístup jen pro čtení k prostředkům vrstvy správy.
 
@@ -65,30 +65,30 @@ Pokud chcete získat přístup k kontejnerům nebo frontám objektů blob, můž
 3. Vyberte uživatelský účet a tenanta přidružený k prostředku, ke kterému se připojujete. Klikněte na Další.
 4. Vyberte typ prostředku, zadejte adresu URL prostředku a zadejte jedinečný zobrazovaný název pro připojení. Klikněte na Další. Klikněte na Připojit.
 
-U jiných typů prostředků momentálně nepoužíváme řešení související se službou Azure RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+U jiných typů prostředků momentálně nepoužíváme řešení související se službou Azure RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Doporučené předdefinované role Azure
 
 K dispozici je několik předdefinovaných rolí Azure, které mohou poskytnout oprávnění potřebná k použití Průzkumník služby Storage. Některé z těchto rolí:
-- [Vlastník](/azure/role-based-access-control/built-in-roles#owner): Správa všeho, včetně přístupu k prostředkům. **Poznámka**: Tato role vám poskytne přístup k klíčům.
-- [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor): umožňuje spravovat všechno, kromě přístupu k prostředkům. **Poznámka**: Tato role vám poskytne přístup k klíčům.
-- [Čtenář](/azure/role-based-access-control/built-in-roles#reader): čtení a výpis prostředků
-- [Přispěvatel účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-contributor): plná Správa účtů úložiště. **Poznámka**: Tato role vám poskytne přístup k klíčům.
-- [Vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): úplný přístup k Azure Storage kontejnerů a dat objektů BLOB.
-- [Přispěvatel dat objektu BLOB služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): číst, zapisovat a odstraňovat Azure Storage kontejnery a objekty blob.
-- [Čtečka dat objektů BLOB služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): čtení a výpis Azure Storage kontejnerů a objektů BLOB.
+- [Vlastník](../../role-based-access-control/built-in-roles.md#owner): Správa všeho, včetně přístupu k prostředkům. **Poznámka** : Tato role vám poskytne přístup k klíčům.
+- [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor): umožňuje spravovat všechno, kromě přístupu k prostředkům. **Poznámka** : Tato role vám poskytne přístup k klíčům.
+- [Čtenář](../../role-based-access-control/built-in-roles.md#reader): čtení a výpis prostředků
+- [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor): plná Správa účtů úložiště. **Poznámka** : Tato role vám poskytne přístup k klíčům.
+- [Vlastník dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): úplný přístup k Azure Storage kontejnerů a dat objektů BLOB.
+- [Přispěvatel dat objektu BLOB služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): číst, zapisovat a odstraňovat Azure Storage kontejnery a objekty blob.
+- [Čtečka dat objektů BLOB služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): čtení a výpis Azure Storage kontejnerů a objektů BLOB.
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Chyba: certifikát podepsaný svým držitelem v řetězu certifikátů (a podobné chyby)
 
 K chybám certifikátu obvykle dochází v jedné z následujících situací:
 
-- Aplikace je propojená pomocí _transparentního proxy serveru_. To znamená, že server (například server vaší společnosti) zachycuje provoz HTTPS, dešifruje ho a pak ho šifruje pomocí certifikátu podepsaného svým držitelem.
+- Aplikace je propojená pomocí _transparentního proxy serveru_ . To znamená, že server (například server vaší společnosti) zachycuje provoz HTTPS, dešifruje ho a pak ho šifruje pomocí certifikátu podepsaného svým držitelem.
 - Máte spuštěnou aplikaci, která vkládá certifikát TLS/SSL podepsaný svým držitelem do zpráv HTTPS, které obdržíte. Mezi aplikace, které vkládají certifikáty, patří software pro kontrolu antivirového a síťového provozu.
 
 Když Průzkumník služby Storage uvidí certifikát podepsaný svým držitelem nebo nedůvěryhodný, už nebude vědět, jestli se přijatá zpráva HTTPS změnila. Pokud máte kopii certifikátu podepsaného svým držitelem, můžete mu dát Průzkumník služby Storage, aby mu důvěřovali pomocí následujících kroků:
 
 1. Získejte kopii certifikátu X. 509 (. cer) s kódováním Base-64.
-2. Přejít na **Upravit**  >  **certifikáty SSL**  >  **Import certifikátů**a potom pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor. cer.
+2. Přejít na **Upravit**  >  **certifikáty SSL**  >  **Import certifikátů** a potom pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubor. cer.
 
 K tomuto problému může dojít také v případě, že existuje více certifikátů (root a zprostředkující). Chcete-li tuto chybu opravit, je nutné přidat oba certifikáty.
 
@@ -98,12 +98,12 @@ Pokud si nejste jistí, odkud certifikát pochází, postupujte podle těchto kr
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html): všechny verze světla by měly být dostatečné.
     * Mac a Linux: měla by být součástí vašeho operačního systému.
 2. Spusťte OpenSSL.
-    * Windows: otevřete instalační adresář, vyberte **/bin/** a potom poklikejte na **openssl.exe**.
+    * Windows: otevřete instalační adresář, vyberte **/bin/** a potom poklikejte na **openssl.exe** .
     * Mac a Linux: Spusťte `openssl` z terminálu.
 3. Spusťte `s_client -showcerts -connect microsoft.com:443`.
 4. Vyhledejte certifikáty podepsané svým držitelem. Pokud si nejste jistí, které certifikáty jsou podepsané svým držitelem, poznamenejte si, jestli je předmět `("s:")` a vydavatel `("i:")` stejné.
 5. Když najdete certifikáty podepsané svým držitelem, můžete pro každý z nich zkopírovat a vložit všechno z (a včetně `-----BEGIN CERTIFICATE-----` ) `-----END CERTIFICATE-----` do nového souboru. cer.
-6. Otevřete Průzkumník služby Storage a pokračujte v **úpravách**  >  **certifikátů SSL**  >  **Import certifikátů**. Pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
+6. Otevřete Průzkumník služby Storage a pokračujte v **úpravách**  >  **certifikátů SSL**  >  **Import certifikátů** . Pak pomocí nástroje pro výběr souborů vyhledejte, vyberte a otevřete soubory. CER, které jste vytvořili.
 
 Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomocí následujících kroků, kontaktujte nás prostřednictvím nástroje pro zpětnou vazbu. Můžete také otevřít Průzkumník služby Storage z příkazového řádku pomocí `--ignore-certificate-errors` příznaku. Po otevření s tímto příznakem Průzkumník služby Storage ignoruje chyby certifikátu.
 
@@ -113,10 +113,10 @@ Pokud nemůžete najít žádné certifikáty podepsané svým držitelem pomoc�
 
 Prázdné přihlašovací dialogová okna se nejčastěji vyskytují, když Active Directory Federation Services (AD FS) (AD FS) vyzývá Průzkumník služby Storage k provedení přesměrování, které nepodporuje elektronicky. Pokud chcete tento problém obejít, můžete zkusit použít tok kódu zařízení pro přihlášení. To můžete provést pomocí těchto kroků:
 
-1. Na levém svislém panelu nástrojů otevřete **Nastavení**. Na panelu nastavení přejdete na přihlášení **aplikace**  >  **Sign in**. Povolit **používání přihlášení k toku kódu zařízení**
+1. Na levém svislém panelu nástrojů otevřete **Nastavení** . Na panelu nastavení přejdete na přihlášení **aplikace**  >  **Sign in** . Povolit **používání přihlášení k toku kódu zařízení**
 2. Otevřete dialogové okno **připojit** (buď prostřednictvím ikony plug-in na levé straně, nebo vyberte **Přidat účet** na panelu účet).
 3. Vyberte prostředí, ke kterému se chcete přihlásit.
-4. Vyberte **Přihlásit se**.
+4. Vyberte **Přihlásit se** .
 5. Postupujte podle pokynů na dalším panelu.
 
 Pokud se nemůžete přihlásit k účtu, který chcete použít, protože váš výchozí prohlížeč je už přihlášený k jinému účtu, udělejte jednu z těchto akcí:
@@ -130,7 +130,7 @@ Pokud jste ve smyčce opakovaného ověřování nebo jste změnili hlavní náz
 
 1. Odeberte všechny účty a pak Průzkumník služby Storage zavřete.
 2. Odstraňte. IdentityService složku z počítače. Ve Windows se složka nachází na adrese `C:\users\<username>\AppData\Local` . V případě systémů Mac a Linux můžete složku najít v kořenovém adresáři adresáře uživatele.
-3. Pokud používáte systém Mac nebo Linux, budete také muset odstranit položku Microsoft. Developer. IdentityService z úložiště klíčů operačního systému. V počítači Mac je úložiště *klíčů aplikací GNOME* . V systému Linux se aplikace obvykle nazývá _Správce klíčů_, ale název se může lišit v závislosti na vaší distribuci.
+3. Pokud používáte systém Mac nebo Linux, budete také muset odstranit položku Microsoft. Developer. IdentityService z úložiště klíčů operačního systému. V počítači Mac je úložiště *klíčů aplikací GNOME* . V systému Linux se aplikace obvykle nazývá _Správce klíčů_ , ale název se může lišit v závislosti na vaší distribuci.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
 
@@ -141,7 +141,7 @@ Z důvodu omezení v knihovně Azure AD, kterou používá Průzkumník služby 
 MacOS řetězec klíčů může někdy zadat stav, který způsobuje problémy v knihovně ověřování Průzkumník služby Storage. Chcete-li získat z tohoto stavu řetězce klíčů, postupujte následovně:
 
 1. Zavřete Průzkumník služby Storage.
-2. Otevřete řetězec klíčů (stiskněte příkaz + mezerník, zadejte **řetězec klíčů**a stiskněte klávesu ENTER).
+2. Otevřete řetězec klíčů (stiskněte příkaz + mezerník, zadejte **řetězec klíčů** a stiskněte klávesu ENTER).
 3. Vyberte řetězec "login".
 4. Vyberte ikonu visacího zámku nezobrazuje pro uzamčení řetězce klíčů. (Visacího zámku nezobrazuje se po dokončení procesu zobrazí jako zamčené. V závislosti na tom, jaké aplikace jste otevřeli, může trvat několik sekund.
 
@@ -230,7 +230,7 @@ Pokud jste připojení k Azure prostřednictvím proxy serveru, ověřte správn
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>Připojovací řetězec nemá kompletní konfigurační nastavení.
 
-Pokud se zobrazí tato chybová zpráva, je možné, že nemáte potřebná oprávnění k získání klíčů pro váš účet úložiště. Pokud chcete potvrdit, že se jedná o tento případ, přejděte na portál a Najděte svůj účet úložiště. To můžete provést tak, že kliknete pravým tlačítkem na uzel svého účtu úložiště a vyberete **otevřít na portálu**. Pak přejděte do okna **přístupové klíče** . Pokud nemáte oprávnění k zobrazení klíčů, zobrazí se zpráva, že nemáte přístup. Pokud chcete tento problém obejít, můžete buď získat klíč účtu od někoho jiného a připojit se přes jméno a klíč, nebo můžete požádat někoho o SAS k účtu úložiště a použít ho k připojení účtu úložiště.
+Pokud se zobrazí tato chybová zpráva, je možné, že nemáte potřebná oprávnění k získání klíčů pro váš účet úložiště. Pokud chcete potvrdit, že se jedná o tento případ, přejděte na portál a Najděte svůj účet úložiště. To můžete provést tak, že kliknete pravým tlačítkem na uzel svého účtu úložiště a vyberete **otevřít na portálu** . Pak přejděte do okna **přístupové klíče** . Pokud nemáte oprávnění k zobrazení klíčů, zobrazí se zpráva, že nemáte přístup. Pokud chcete tento problém obejít, můžete buď získat klíč účtu od někoho jiného a připojit se přes jméno a klíč, nebo můžete požádat někoho o SAS k účtu úložiště a použít ho k připojení účtu úložiště.
 
 Pokud vidíte klíče účtu, založte problém do GitHubu, abychom vám mohli problém vyřešit.
 
@@ -238,8 +238,8 @@ Pokud vidíte klíče účtu, založte problém do GitHubu, abychom vám mohli p
 
 Pokud se zobrazí tato chybová zpráva, když se pokusíte přidat vlastní připojení, může dojít k poškození dat připojení uložených v místním Správci přihlašovacích údajů. Pokud chcete tento problém obejít, zkuste odstranit vaše poškozená místní připojení a pak je znovu přidat:
 
-1. Spusťte Průzkumník služby Storage. V nabídce přejděte na příkaz **help**  >  **Toggle vývojářské nástroje**.
-2. V otevřeném okně na kartě **aplikace** přejdete do **místního úložiště** (levé straně) > **File://**.
+1. Spusťte Průzkumník služby Storage. V nabídce přejděte na příkaz **help**  >  **Toggle vývojářské nástroje** .
+2. V otevřeném okně na kartě **aplikace** přejdete do **místního úložiště** (levé straně) > **File://** .
 3. V závislosti na typu připojení, se kterým máte potíže, vyhledejte jeho klíč a zkopírujte jeho hodnotu do textového editoru. Hodnota je pole vlastních názvů připojení, například následující:
     * Účty úložiště
         * `StorageExplorer_CustomConnections_Accounts_v1`
@@ -265,13 +265,13 @@ Po prozatím všech připojeních, u všech názvů připojení, která nejsou p
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 1. V nabídce **Start** vyhledejte **Správce přihlašovacích údajů** a otevřete ho.
-2. Přejít na **přihlašovací údaje systému Windows**.
-3. V části **Obecné přihlašovací údaje**vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
+2. Přejít na **přihlašovací údaje systému Windows** .
+3. V části **Obecné přihlašovací údaje** vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Odstraňte tyto položky a přidejte připojení znovu.
 
 # <a name="macos"></a>[macOS](#tab/macOS)
 
-1. Otevřete Spotlight (Command + mezerník) a vyhledejte **přístup k řetězci klíčů**.
+1. Otevřete Spotlight (Command + mezerník) a vyhledejte **přístup k řetězci klíčů** .
 2. Vyhledejte položky, které mají `<connection_type_key>/<corrupted_connection_name>` klíč (například `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 3. Odstraňte tyto položky a přidejte připojení znovu.
 

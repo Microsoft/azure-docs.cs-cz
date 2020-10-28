@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 08f677c23cce6eb840a1caee15dcddf6c8311517
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 11ea9c759bdb4bb2b837028407ce6e83f6e25a8c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488686"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784044"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Výběr řešení Azure pro přenos dat
 
@@ -71,14 +71,14 @@ Můžete také přejít na účet Azure Storage v Azure Portal a vybrat funkci p
 ## <a name="next-steps"></a>Další kroky
 
 - Seznámení [se Průzkumník služby Azure Storage](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
-- [Přečtěte si přehled AzCopy](/azure/storage/common/storage-use-azcopy-v10).
+- [Přečtěte si přehled AzCopy](./storage-use-azcopy-v10.md).
 - [Rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí PowerShellu](../blobs/storage-quickstart-blobs-powershell.md)
 - [Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 - Projdeme si tyto možnosti:
 
-    - [Azure Data box, Azure Data box disk a Azure Data box Heavy pro offline přenosy](/azure/databox/).
-    - [Azure Data box Gateway a Azure Stack Edge pro online přenosy](/azure/databox-online/).
-- [Přečtěte si, co je Azure Data Factory](/azure/data-factory/copy-activity-overview).
+    - [Azure Data box, Azure Data box disk a Azure Data box Heavy pro offline přenosy](../../databox/index.yml).
+    - [Azure Data box Gateway a Azure Stack Edge pro online přenosy](../../databox-online/index.yml).
+- [Přečtěte si, co je Azure Data Factory](../../data-factory/copy-activity-overview.md).
 - Použití rozhraní REST API k přenosu dat
 
     - [V .NET](/dotnet/api/overview/azure/storage)

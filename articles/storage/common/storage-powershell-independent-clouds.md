@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b610a5537d110a4046bd42ac86f5c938aeafe953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072944"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783568"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Správa úložiště v nezávislých cloudech Azure pomocí PowerShellu
 
@@ -51,7 +51,7 @@ Přihlaste se ke svému účtu, který má přístup ke cloudu, ke kterému se c
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-Pro přístup k čínskému cloudu použijte prostředí **AzureChinaCloud**. Pokud chcete získat přístup k německému cloudu, použijte **AzureGermanCloud**.
+Pro přístup k čínskému cloudu použijte prostředí **AzureChinaCloud** . Pokud chcete získat přístup k německému cloudu, použijte **AzureGermanCloud** .
 
 Pokud v tomto okamžiku potřebujete seznam umístění pro vytvoření účtu úložiště nebo jiného prostředku, můžete zadat dotaz na umístění dostupná pro vybraný Cloud pomocí příkazu [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
 
@@ -69,7 +69,7 @@ V následující tabulce jsou uvedena umístění, která jsou vrácena pro něm
 
 ## <a name="endpoint-suffix"></a>Přípona koncového bodu
 
-Přípona koncového bodu pro každé z těchto prostředí se liší od veřejného koncového bodu Azure. Například přípona koncového bodu objektu BLOB pro Azure Public je **BLOB.Core.Windows.NET**. V případě cloudu pro státní správu je přípona koncového bodu objektu BLOB **BLOB.Core.usgovcloudapi.NET**.
+Přípona koncového bodu pro každé z těchto prostředí se liší od veřejného koncového bodu Azure. Například přípona koncového bodu objektu BLOB pro Azure Public je **BLOB.Core.Windows.NET** . V případě cloudu pro státní správu je přípona koncového bodu objektu BLOB **BLOB.Core.usgovcloudapi.NET** .
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Získat koncový bod pomocí Get-AzEnvironment
 
@@ -85,7 +85,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Tento příkaz vrátí následující výsledky.
 
-| Name| StorageEndpointSuffix|
+| Název| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -167,7 +167,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>Další kroky
 
 * [Zachování přihlášení uživatele napříč relacemi PowerShellu](/powershell/azure/context-persistence)
-* [Azure Government úložiště](../../azure-government/documentation-government-services-storage.md)
+* [Azure Government úložiště](../../azure-government/compare-azure-government-global-azure.md)
 * [Microsoft Azure Government příručka pro vývojáře](../../azure-government/documentation-government-developer-guide.md)
 * [Poznámky pro vývojáře pro aplikace Azure Čína 21Vianet](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Dokumentace ke službě Azure Německo](../../germany/germany-welcome.md)

@@ -11,12 +11,12 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac54282135759f14f17ed16b9779013f849bd8d7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b83a8bfbc79af344c4d158ee65134034db714e9c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488669"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783959"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Správa souběžnosti v Microsoft Azure Storage
 
@@ -85,7 +85,7 @@ catch (StorageException ex)
 }
 ```
 
-Azure Storage taky zahrnuje podporu pro podmíněná záhlaví, jako je například **If-Modified-od**, **Pokud-unmodified-od**, **If-None-matched**a kombinace těchto hlaviček. Další informace najdete v tématu [určení podmíněných hlaviček pro operace služby BLOB Service](https://msdn.microsoft.com/library/azure/dd179371.aspx).
+Azure Storage taky zahrnuje podporu pro podmíněná záhlaví, jako je například **If-Modified-od** , **Pokud-unmodified-od** , **If-None-matched** a kombinace těchto hlaviček. Další informace najdete v tématu [určení podmíněných hlaviček pro operace služby BLOB Service](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations).
 
 Následující tabulka shrnuje operace kontejneru, které přijímají podmíněná záhlaví, například **If-Match** v žádosti a vrací hodnotu ETag v odpovědi.
 
@@ -128,9 +128,9 @@ Následující tabulka shrnuje operace objektů blob, které přijímají podmí
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>Pesimistická souběžnost pro objekty blob
 
-Pokud chcete objekt BLOB uzamknout pro výhradní použití, Získejte na něm [zapůjčení](https://msdn.microsoft.com/library/azure/ee691972.aspx) . Po získání zapůjčení zadáte časové období pro zapůjčení. Časové období je v rozsahu od 15 do 60 sekund nebo nekonečné, což se vyhodnotí jako výhradní zámek. Obnovte konečnou zapůjčenou adresu pro její rozšiřování. Uvolněte zapůjčení, až budete s ním hotovi. Blob Storage automaticky uvolňuje konečná zapůjčení, pokud vyprší jejich platnost.
+Pokud chcete objekt BLOB uzamknout pro výhradní použití, Získejte na něm [zapůjčení](/rest/api/storageservices/Lease-Blob) . Po získání zapůjčení zadáte časové období pro zapůjčení. Časové období je v rozsahu od 15 do 60 sekund nebo nekonečné, což se vyhodnotí jako výhradní zámek. Obnovte konečnou zapůjčenou adresu pro její rozšiřování. Uvolněte zapůjčení, až budete s ním hotovi. Blob Storage automaticky uvolňuje konečná zapůjčení, pokud vyprší jejich platnost.
 
-Zapůjčení umožňují podporovat různé strategie synchronizace. Mezi strategie patří *exkluzivní zápis/sdílení čtení*, *exkluzivní zápis/výhradní čtení*a *sdílený zápis/výhradní čtení*. Pokud existuje zapůjčení, Azure Storage vynutí exkluzivní zápisy (operace PUT, set a Delete). zajištění výhradních operací čtení ale vyžaduje, aby vývojář zajistil, že všechny klientské aplikace používají ID zapůjčení a že v jednom okamžiku má k dispozici pouze jeden klient s platným ID zapůjčení. Výsledkem operací čtení, které neobsahují ID zapůjčení, je sdílení čtení.
+Zapůjčení umožňují podporovat různé strategie synchronizace. Mezi strategie patří *exkluzivní zápis/sdílení čtení* , *exkluzivní zápis/výhradní čtení* a *sdílený zápis/výhradní čtení* . Pokud existuje zapůjčení, Azure Storage vynutí exkluzivní zápisy (operace PUT, set a Delete). zajištění výhradních operací čtení ale vyžaduje, aby vývojář zajistil, že všechny klientské aplikace používají ID zapůjčení a že v jednom okamžiku má k dispozici pouze jeden klient s platným ID zapůjčení. Výsledkem operací čtení, které neobsahují ID zapůjčení, je sdílení čtení.
 
 Následující fragment kódu jazyka C# ukazuje příklad získání exkluzivního zapůjčení po dobu 30 sekund v objektu blob, aktualizaci obsahu objektu BLOB a uvolnění zapůjčení. Pokud při pokusu o získání nového zapůjčení již existuje platné zapůjčení objektu blob, Blob service vrátí výsledek stavu konflikt HTTP (409). Následující fragment kódu používá objekt **AccessCondition** k zapouzdření informací o zapůjčení, když odešle požadavek na aktualizaci objektu BLOB ve službě úložiště.  Úplnou ukázku si můžete stáhnout tady: [Správa souběžnosti pomocí Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
@@ -161,7 +161,7 @@ catch (StorageException ex)
 }
 ```
 
-Pokud se pokusíte o operaci zápisu u pronajatého objektu BLOB bez předání ID zapůjčení, požadavek se nezdaří a zobrazí se chyba 412. Pokud platnost zapůjčení vyprší před voláním metody **UploadText** , ale přesto PŘEdáte ID zapůjčení, požadavek se také nezdařil s **412** chybou. Další informace o správě časů vypršení platnosti zapůjčení a ID zapůjčení najdete v dokumentaci k [zapůjčení objektu BLOB](https://msdn.microsoft.com/library/azure/ee691972.aspx) REST.
+Pokud se pokusíte o operaci zápisu u pronajatého objektu BLOB bez předání ID zapůjčení, požadavek se nezdaří a zobrazí se chyba 412. Pokud platnost zapůjčení vyprší před voláním metody **UploadText** , ale přesto PŘEdáte ID zapůjčení, požadavek se také nezdařil s **412** chybou. Další informace o správě časů vypršení platnosti zapůjčení a ID zapůjčení najdete v dokumentaci k [zapůjčení objektu BLOB](/rest/api/storageservices/Lease-Blob) REST.
 
 Následující operace objektů BLOB můžou použít zapůjčení ke správě pesimistické souběžnosti:
 
@@ -184,7 +184,7 @@ Následující operace objektů BLOB můžou použít zapůjčení ke správě p
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pesimistická souběžnost pro kontejnery
 
-Zapůjčení u kontejnerů umožňuje, aby byly stejné strategie synchronizace jako u objektů BLOB (*exkluzivní zápis/sdílení čtení*, *exkluzivní zápis/výhradní čtení*a *sdílené zápisy/výhradní čtení*), na rozdíl od objektů blob, ale služba úložiště vynutila výhradně výhradní operace odstranění. Aby mohl klient odstranit kontejner s aktivním zapůjčením, musí do žádosti o odstranění zahrnout aktivní ID zapůjčení. Všechny ostatní operace kontejneru jsou úspěšné na pronajatém kontejneru bez zahrnutí ID zapůjčení, v takovém případě se jedná o sdílené operace. Pokud je vyžadováno právo na aktualizaci (Put nebo Set) nebo operace čtení, vývojáři by měli zajistit, aby všichni klienti používali ID zapůjčení a aby měl pouze jeden klient v jednom okamžiku platné ID zapůjčení.
+Zapůjčení u kontejnerů umožňuje, aby byly stejné strategie synchronizace jako u objektů BLOB ( *exkluzivní zápis/sdílení čtení* , *exkluzivní zápis/výhradní čtení* a *sdílené zápisy/výhradní čtení* ), na rozdíl od objektů blob, ale služba úložiště vynutila výhradně výhradní operace odstranění. Aby mohl klient odstranit kontejner s aktivním zapůjčením, musí do žádosti o odstranění zahrnout aktivní ID zapůjčení. Všechny ostatní operace kontejneru jsou úspěšné na pronajatém kontejneru bez zahrnutí ID zapůjčení, v takovém případě se jedná o sdílené operace. Pokud je vyžadováno právo na aktualizaci (Put nebo Set) nebo operace čtení, vývojáři by měli zajistit, aby všichni klienti používali ID zapůjčení a aby měl pouze jeden klient v jednom okamžiku platné ID zapůjčení.
 
 Následující operace kontejneru můžou použít zapůjčení ke správě pesimistické souběžnosti:
 
@@ -198,9 +198,9 @@ Následující operace kontejneru můžou použít zapůjčení ke správě pesi
 
 Další informace naleznete v tématech:
 
-* [Určení hlaviček podmínek pro operace Blob service](https://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Kontejner zapůjčení](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Operace Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Určení hlaviček podmínek pro operace Blob service](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations)
+* [Kontejner zapůjčení](/rest/api/storageservices/Lease-Container)
+* [Operace Lease Blob](/rest/api/storageservices/Lease-Blob)
 
 ## <a name="managing-concurrency-in-table-storage"></a>Správa souběžnosti v úložišti tabulek
 
@@ -259,7 +259,7 @@ Obecně platí, že vývojáři používající tabulky by měli spoléhat na op
 
 Další informace naleznete v tématech:
 
-* [Operace s entitami](https://msdn.microsoft.com/library/azure/dd179375.aspx)
+* [Operace s entitami](/rest/api/storageservices/Operations-on-Entities)
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>Správa souběžnosti ve službě front
 
@@ -269,8 +269,8 @@ Služba front nemá podporu pro optimistickou ani pesimistickou souběžnost a z
 
 Další informace naleznete v tématech:
 
-* [Rozhraní REST API služby Queue Service](https://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Získat zprávy](https://msdn.microsoft.com/library/azure/dd179474.aspx)
+* [Rozhraní REST API služby Queue Service](/rest/api/storageservices/Queue-Service-REST-API)
+* [Získat zprávy](/rest/api/storageservices/Get-Messages)
 
 ## <a name="managing-concurrency-in-azure-files"></a>Správa souběžnosti v souborech Azure
 
@@ -280,7 +280,7 @@ Když klient SMB otevře soubor pro odstranění, označí soubor jako nedokonč
 
 Další informace naleznete v tématech:
 
-* [Správa zámků souborů](https://msdn.microsoft.com/library/azure/dn194265.aspx)
+* [Správa zámků souborů](/rest/api/storageservices/Managing-File-Locks)
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -292,5 +292,5 @@ Další informace o Azure Storage najdete v tématech:
 
 * [Microsoft Azure Storage domovskou stránku](https://azure.microsoft.com/services/storage/)
 * [Seznámení se službou Azure Storage](storage-introduction.md)
-* Začínáme úložiště pro objekty [BLOB](../blobs/storage-dotnet-how-to-use-blobs.md), [tabulky](../../cosmos-db/table-storage-how-to-use-dotnet.md),  [fronty](../storage-dotnet-how-to-use-queues.md)a [soubory](../storage-dotnet-how-to-use-files.md)
+* Začínáme úložiště pro objekty [BLOB](../blobs/storage-quickstart-blobs-dotnet.md), [tabulky](../../cosmos-db/tutorial-develop-table-dotnet.md),  [fronty](../queues/storage-dotnet-how-to-use-queues.md)a [soubory](../files/storage-dotnet-how-to-use-files.md)
 * Architektura úložiště – [Azure Storage: vysoce dostupná služba cloudového úložiště s silnou konzistencí](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)

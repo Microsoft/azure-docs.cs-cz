@@ -5,18 +5,18 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282072"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785251"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Čtení z kanálu změn služby Azure Cosmos DB
 
-S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo modelu Pull. Při použití modelu nabízeného oznámení Server (procesor změn kanálu) přenáší práci do klienta, který má obchodní logiku pro zpracování této práce. Složitá kontrola práce a ukládání stavu pro poslední zpracovávanou práci se však zpracovává na serveru.
+S kanálem pro změnu Azure Cosmos DB můžete pracovat pomocí modelu push nebo modelu Pull. V případě modelu push přenáší procesor změn na klienta, který má obchodní logiku pro zpracování této práce. Složitá kontrola práce a ukládání stavu pro poslední zpracovávanou práci je ale zpracována v rámci procesoru Change feed.
 
 U modelu Pull musí klient vyžádat si práci ze serveru. Klient, v tomto případě má nejen obchodní logiku pro zpracování práce, ale také ukládá stav pro poslední zpracovávanou práci, zpracovává vyrovnávání zatížení mezi více klienty zpracovávajících práci paralelně a zpracovává chyby.
 
@@ -68,7 +68,7 @@ Můžete paralelizovat zpracování změn napříč více klienty, stejně jako 
 Pro model Pull není k dispozici žádná předdefinovaná "záruka na doručení" alespoň jednou ". Model pro vyžádání obsahu poskytuje řízení nízké úrovně pro rozhodování o tom, jakým způsobem chcete zpracovávat chyby.
 
 > [!NOTE]
-> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
+> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Změna kanálu rozhraní API pro Cassandra a MongoDB
 

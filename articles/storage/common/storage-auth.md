@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 806222fc522c548fd58935812d705e12c9b3cee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d86f862dcf7973ef3e7c42b069d6734ac95274a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714423"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784078"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autorizace přístupu k datům v Azure Storage
 
@@ -25,7 +25,7 @@ Následující tabulka popisuje možnosti, které Azure Storage nabídky pro aut
 
 | Artefakt Azure | Sdílený klíč (klíč účtu úložiště) | Sdílený přístupový podpis (SAS) | Azure Active Directory (Azure AD) | Místní Active Directory Domain Services (Preview) | Anonymní veřejný přístup pro čtení |
 | -------------- | -------------------------------- | ----------------------------- | --------------------------------- | ------------------------------------------------------ | ---------------------------- |
-|Objekty blob Azure     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporováno](storage-sas-overview.md)         |[Podporováno](storage-auth-aad.md)         |Nepodporováno|[Podporováno](../blobs/storage-manage-access-to-resources.md)         |
+|Objekty blob Azure     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporováno](storage-sas-overview.md)         |[Podporováno](storage-auth-aad.md)         |Nepodporováno|[Podporováno](../blobs/anonymous-read-access-configure.md)         |
 |Soubory Azure (SMB)     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |Nepodporováno         |[Podporováno, pouze s doménovou službou AAD](../files/storage-files-active-directory-overview.md)         |[Podporuje se přihlašovací údaje musí synchronizovat do Azure AD.](../files/storage-files-active-directory-overview.md)|Nepodporováno         |
 |Soubory Azure (REST)     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporováno](storage-sas-overview.md)         |Nepodporováno         |Nepodporováno |Nepodporováno         |
 |Fronty Azure     |[Podporováno](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporováno](storage-sas-overview.md)         |[Podporováno](storage-auth-aad.md)         |Nepodporuje se | Nepodporováno         |
@@ -41,7 +41,7 @@ Každá možnost autorizace je stručně popsána níže:
 
 - **Autorizace sdíleného klíče** pro objekty blob, soubory, fronty a tabulky. Klient používající sdílený klíč projde hlavičkou každý požadavek, který je podepsaný pomocí přístupového klíče účtu úložiště. Další informace najdete v tématu [autorizace pomocí sdíleného klíče](/rest/api/storageservices/authorize-with-shared-key/).
 - **Sdílené přístupové podpisy** pro objekty blob, soubory, fronty a tabulky. Sdílené přístupové podpisy (SAS) poskytují omezený delegovaný přístup k prostředkům v účtu úložiště. Přidání omezení v časovém intervalu, pro který je podpis platný, nebo na oprávnění, která uděluje, poskytují flexibilitu při správě přístupu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).
-- **Anonymní veřejný přístup pro čtení** pro kontejnery a objekty blob. Autorizace se nevyžaduje. Další informace najdete v tématu [Správa anonymního přístupu pro čtení do kontejnerů a objektů BLOB](../blobs/storage-manage-access-to-resources.md).  
+- **Anonymní veřejný přístup pro čtení** pro kontejnery a objekty blob. Autorizace se nevyžaduje. Další informace najdete v tématu [Správa anonymního přístupu pro čtení do kontejnerů a objektů BLOB](../blobs/anonymous-read-access-configure.md).  
 
 Ve výchozím nastavení jsou všechny prostředky v Azure Storage zabezpečené a jsou dostupné jenom pro vlastníka účtu. I když můžete použít kteroukoli strategii autorizace uvedenou výše a udělit klientům přístup k prostředkům ve vašem účtu úložiště, Microsoft doporučuje používat Azure AD, pokud je to možné, pro zajištění maximálního zabezpečení a snadného použití.
 

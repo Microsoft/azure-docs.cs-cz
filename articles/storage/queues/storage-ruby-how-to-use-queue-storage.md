@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: bb7619500cc142eca52ca0a1a6e0b670e6b8f51a
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7270ea589d82c09081aec5d81d1cd0b50b1b8a9f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425470"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785574"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Používání úložiště Queue z Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -22,14 +22,14 @@ ms.locfileid: "92425470"
 
 ## <a name="overview"></a>Přehled
 V této příručce se dozvíte, jak provádět běžné scénáře pomocí služby Microsoft Azure Queue Storage. Ukázky se napíší pomocí rozhraní API Ruby Azure.
-Mezi zahrnuté scénáře patří **vkládání**, **prohlížení**, **získávání**a **odstraňování** zpráv fronty a **vytváření a odstraňování front**.
+Mezi zahrnuté scénáře patří **vkládání** , **prohlížení** , **získávání** a **odstraňování** zpráv fronty a **vytváření a odstraňování front** .
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Vytvoření aplikace v Ruby
-Vytvořte aplikaci v Ruby. Pokyny najdete v tématu [Vytvoření aplikace v Ruby v App Service v systému Linux](/azure/app-service/quickstart-ruby).
+Vytvořte aplikaci v Ruby. Pokyny najdete v tématu [Vytvoření aplikace v Ruby v App Service v systému Linux](../../app-service/quickstart-ruby.md).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurace aplikace pro přístup k úložišti
 Pokud chcete používat službu Azure Storage, musíte si stáhnout a použít balíček Ruby Azure, který zahrnuje sadu praktických knihoven, které komunikují se službou REST (Storage).
@@ -57,7 +57,7 @@ Získání těchto hodnot z klasického účtu úložiště nebo účtu úloži�
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Přejděte k účtu úložiště, který chcete použít.
-3. V okně Nastavení na pravé straně klikněte na **Přístupové klíče**.
+3. V okně Nastavení na pravé straně klikněte na **Přístupové klíče** .
 4. V okně Přístupové klíče, které se zobrazí, uvidíte přístupový klíč 1 a přístupový klíč 2. Můžete použít libovolný z nich. 
 5. Kliknutím na ikonu kopírování zkopírujte klíč do schránky. 
 
@@ -96,8 +96,8 @@ result = azure_queue_service.peek_messages("test-queue",
 ## <a name="how-to-dequeue-the-next-message"></a>Postupy: vyřazení další zprávy z fronty
 Můžete odebrat zprávu z fronty ve dvou krocích.
 
-1. Když zavoláte ** \_ zprávy seznamu ()**, ve výchozím nastavení se ve frontě zobrazí další zpráva. Můžete také zadat, kolik zpráv chcete získat. Zprávy vrácené ze **seznamu \_ zpráv ()** se budou zobrazovat neviditelnému jinému kódu, který čte zprávy z této fronty. Jako parametr předáte časový limit viditelnosti v sekundách.
-2. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat **delete_message ()**.
+1. Když zavoláte **\_ zprávy seznamu ()** , ve výchozím nastavení se ve frontě zobrazí další zpráva. Můžete také zadat, kolik zpráv chcete získat. Zprávy vrácené ze **seznamu \_ zpráv ()** se budou zobrazovat neviditelnému jinému kódu, který čte zprávy z této fronty. Jako parametr předáte časový limit viditelnosti v sekundách.
+2. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat **delete_message ()** .
 
 Tento dvoustupňový proces odebrání zprávy zaručuje, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a zkusit to znovu. Kód volá **Odstranit \_ zprávu ()** hned po zpracování zprávy.
 

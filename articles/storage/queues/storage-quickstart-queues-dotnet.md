@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ea413c3879f61f735290717d06a132048169971
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426701"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783466"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET
 
@@ -34,12 +34,12 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/dotnet/api/azure.storage.queues)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [ukázky](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Ukázky](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](/azure/storage/common/storage-quickstart-create-account)
+* Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
 * Aktuální [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) pro váš operační systém. Ujistěte se, že jste získali sadu SDK a ne modul runtime.
 
 ## <a name="setting-up"></a>Nastavení
@@ -48,9 +48,9 @@ Tato část vás provede přípravou projektu pro práci s klientskou knihovnou 
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci .NET Core s názvem *QueuesQuickstartV12*.
+Vytvořte aplikaci .NET Core s názvem *QueuesQuickstartV12* .
 
-1. V okně konzoly (například cmd, PowerShell nebo bash) pomocí `dotnet new` příkazu vytvořte novou konzolovou aplikaci s názvem *QueuesQuickstartV12*. Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs*.
+1. V okně konzoly (například cmd, PowerShell nebo bash) pomocí `dotnet new` příkazu vytvořte novou konzolovou aplikaci s názvem *QueuesQuickstartV12* . Tento příkaz vytvoří jednoduchý projekt C# "Hello World" s jedním zdrojovým souborem: *program.cs* .
 
    ```console
    dotnet new console -n QueuesQuickstartV12

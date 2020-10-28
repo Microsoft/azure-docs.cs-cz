@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 6c29fd00a19c930995d748027b2ec04eaa12a5ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480645"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785591"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Řešení potíží s latencí s využitím protokolů Analýzy úložiště
 
@@ -27,7 +27,7 @@ Následující kroky ukazují, jak identifikovat a řešit potíže s latencí p
 
 ## <a name="recommended-steps"></a>Doporučené kroky
 
-1. Stáhněte si [protokoly analýza úložiště](/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data).
+1. Stáhněte si [protokoly analýza úložiště](./storage-analytics-logging.md#download-storage-logging-log-data).
 
 2. Pomocí následujícího skriptu PowerShellu převeďte protokoly nezpracovaných formátů do tabulkového formátu:
 
@@ -114,7 +114,7 @@ Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený p
 * Server-Latency
 * Client-Latency
 
-Pokud v **operaci getblob** s **stavem žádosti = Success**dojde k **překročení maximální doby** v **latenci klienta**, znamená to, že Azure Storage stráví velkou dobu zápisu dat do klienta. Toto zpoždění indikuje Client-Side problém.
+Pokud v **operaci getblob** s **stavem žádosti = Success** dojde k **překročení maximální doby** v **latenci klienta** , znamená to, že Azure Storage stráví velkou dobu zápisu dat do klienta. Toto zpoždění indikuje Client-Side problém.
 
 **Základě**
 
@@ -129,7 +129,7 @@ Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený p
 * Server-Latency
 * Client-Latency
 
-Pokud je v **operaci getblob** s **stavem žádosti = (SAS) NetworkError** **Maximální doba** strávená v **latenci klienta**, Nejběžnějším problémem je to, že se klient odpojí před vypršením časového limitu ve službě úložiště.
+Pokud je v **operaci getblob** s **stavem žádosti = (SAS) NetworkError** **Maximální doba** strávená v **latenci klienta** , Nejběžnějším problémem je to, že se klient odpojí před vypršením časového limitu ve službě úložiště.
 
 **Základě**
 
@@ -144,7 +144,7 @@ Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený p
 * Server-Latency
 * Client-Latency
 
-Pokud je v **operaci Put** s **stavem žádosti = Success**vyčerpána **Maximální doba** v **latenci klienta**, znamená to, že klient trvá déle, než pošle data do Azure Storage. Toto zpoždění indikuje Client-Side problém.
+Pokud je v **operaci Put** s **stavem žádosti = Success** vyčerpána **Maximální doba** v **latenci klienta** , znamená to, že klient trvá déle, než pošle data do Azure Storage. Toto zpoždění indikuje Client-Side problém.
 
 **Základě**
 
@@ -159,10 +159,9 @@ Ověřte následující hodnoty, jak je uvedeno v kroku 5 části doporučený p
 * Server-Latency
 * Client-Latency
 
-Pokud je v **operaci PutBlob** s **NetworkErrorem stavem žádosti = (SAS)**, je-li **Maximální doba** strávena při **latenci klienta**, Nejběžnějším problémem je, že se klient odpojí, než vyprší časový limit ve službě úložiště.
+Pokud je v **operaci PutBlob** s **NetworkErrorem stavem žádosti = (SAS)** , je-li **Maximální doba** strávena při **latenci klienta** , Nejběžnějším problémem je, že se klient odpojí, než vyprší časový limit ve službě úložiště.
 
 **Základě**
 
 * Prozkoumejte kód ve vašem klientovi, abyste zjistili, proč a kdy se klient odpojí od služby úložiště.
 * K prozkoumání problémů s připojením k síti od klienta použijte Nástroj Wireshark, Microsoft Message Analyzer nebo Tcping.
-

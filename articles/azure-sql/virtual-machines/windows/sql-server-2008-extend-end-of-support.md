@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84668742"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784860"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,9 +40,9 @@ Zákazníci, kteří jsou v SQL Server 2008, budou muset buď provést samoobslu
 Image nasazené prostřednictvím Azure Marketplace se dodávají s předinstalovaným rozšířením SQL IaaS. Rozšíření SQL IaaS je požadavek flexibilního licencování a automatizované opravy. Zákazníci, kteří nasazují sami instalované virtuální počítače, budou muset ručně nainstalovat rozšíření SQL IaaS. Rozšíření SQL IaaS není podporováno v systému Windows Server 2008.
 
 > [!NOTE]
-> I když se SQL Server **vytvářet** a **Spravovat** okna, budou v Azure Portal fungovat s imagí SQL Server 2008 R2, nejsou _podporovány_následující funkce: automatické zálohování, Integrace Azure Key Vault, služby R a konfigurace úložiště.
+> I když se SQL Server **vytvářet** a **Spravovat** okna, budou v Azure Portal fungovat s imagí SQL Server 2008 R2, nejsou _podporovány_ následující funkce: automatické zálohování, Integrace Azure Key Vault, služby R a konfigurace úložiště.
 
-## <a name="licensing"></a>Licensing
+## <a name="licensing"></a>Licencování
 Nasazení s průběžnými platbami SQL Server 2008 R2 se dá převést na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Pokud chcete převést licenci na základě programu Software Assurance (SA) na průběžné platby, měli by se zákazníci zaregistrovat u [poskytovatele prostředků](sql-vm-resource-provider-register.md)virtuálního počítače SQL. Po této registraci se typ licence SQL zamění mezi Zvýhodněné hybridní využití Azure a průběžnými platbami.
@@ -54,21 +54,21 @@ Instance EOS SQL Server můžete migrovat do virtuálního počítače Azure pom
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Pro hromadné migrace doporučujeme službu [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) . Díky Azure Site Recovery můžou zákazníci replikovat celý virtuální počítač včetně SQL Server z místního prostředí do virtuálního počítače Azure.
+Pro hromadné migrace doporučujeme službu [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) . Díky Azure Site Recovery můžou zákazníci replikovat celý virtuální počítač včetně SQL Server z místního prostředí do virtuálního počítače Azure.
 
 SQL Server vyžaduje pro zajištění obnovení Azure Site Recovery snímky konzistentní vzhledem k aplikacím. Azure Site Recovery podporuje snímky konzistentní vzhledem k aplikacím s minimálním intervalem 1 hodiny. Minimální cíl bodu obnovení (RPO), který je možné SQL Server s Azure Site Recovery migracemi, je 1 hodina. Plánovaná doba obnovení (RTO) je 2 hodiny plus SQL Server doba obnovení.
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-[Azure Database Migration Service](/azure/dms/dms-overview) je možnost pro zákazníky, pokud se migrují z místního prostředí do virtuálního počítače Azure upgradem SQL Server na verzi 2012 nebo novější.
+[Azure Database Migration Service](../../../dms/dms-overview.md) je možnost pro zákazníky, pokud se migrují z místního prostředí do virtuálního počítače Azure upgradem SQL Server na verzi 2012 nebo novější.
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii
 
 Řešení zotavení po havárii pro EOS SQL Server na virtuálním počítači Azure jsou následující:
 
-- **SQL Server zálohy**: pomocí Azure Backup můžete chránit EOS SQL Server 2008 a 2008 R2 proti ransomwarem, náhodnému odstranění a poškození s 15-min. RPO a obnovením k bodu v čase. Další podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support).
-- **Přesouvání protokolu**: můžete vytvořit repliku přenosu protokolů v jiné zóně nebo oblasti Azure s průběžným obnovením, abyste snížili RTO. Je nutné ručně nakonfigurovat přesouvání protokolu.
-- **Azure Site Recovery**: virtuální počítač můžete replikovat mezi zónami a oblastmi prostřednictvím replikace Azure Site Recovery. SQL Server vyžaduje, aby se snímky konzistentní vzhledem k aplikacím zaručily v případě havárie. Azure Site Recovery nabízí minimální 1 hodinu RPO a 2 hodinu (plus SQL Server čas obnovení) RTO pro zotavení po havárii EOS SQL Server.
+- **SQL Server zálohy** : pomocí Azure Backup můžete chránit EOS SQL Server 2008 a 2008 R2 proti ransomwarem, náhodnému odstranění a poškození s 15-min. RPO a obnovením k bodu v čase. Další podrobnosti najdete v [tomto článku](../../../backup/sql-support-matrix.md#scenario-support).
+- **Přesouvání protokolu** : můžete vytvořit repliku přenosu protokolů v jiné zóně nebo oblasti Azure s průběžným obnovením, abyste snížili RTO. Je nutné ručně nakonfigurovat přesouvání protokolu.
+- **Azure Site Recovery** : virtuální počítač můžete replikovat mezi zónami a oblastmi prostřednictvím replikace Azure Site Recovery. SQL Server vyžaduje, aby se snímky konzistentní vzhledem k aplikacím zaručily v případě havárie. Azure Site Recovery nabízí minimální 1 hodinu RPO a 2 hodinu (plus SQL Server čas obnovení) RTO pro zotavení po havárii EOS SQL Server.
 
 ## <a name="security-patching"></a>Opravy zabezpečení
 Rozšířené aktualizace zabezpečení pro SQL Server virtuálních počítačů se doručí prostřednictvím kanálů Microsoft Update po registraci SQL Server virtuálního počítače u [poskytovatele prostředků](sql-vm-resource-provider-register.md)virtuálního počítače SQL. Opravy lze stáhnout ručně nebo automaticky.

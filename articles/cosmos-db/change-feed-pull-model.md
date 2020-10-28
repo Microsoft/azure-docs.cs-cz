@@ -6,21 +6,21 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 59f1231e2edf3277898ff57d8e6f8da42ee057ca
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: aa0586ab2a0ff21e3187bba070dd4be7ef325288
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276980"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784673"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Změna modelu vyžádání obsahu kanálu v Azure Cosmos DB
 
 Pomocí modelu vyžádání změny kanálu můžete využívat Azure Cosmos DB změnového kanálu vlastním tempem. Jak už můžete s [procesorem Change feed](change-feed-processor.md)pracovat, můžete použít model vyžádání změny kanálu, který paralelizovat zpracování změn napříč několika spotřebiteli kanálu změn.
 
 > [!NOTE]
-> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
+> Model Pull pro změnu kanálu je momentálně ve [verzi Preview v sadě Azure Cosmos DB .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview) . Verze Preview není ještě dostupná pro jiné verze sady SDK.
 
 ## <a name="comparing-with-change-feed-processor"></a>Porovnání s procesorem Change feed
 
@@ -39,14 +39,18 @@ Měli byste zvážit použití modelu vyžádání obsahu v těchto scénáříc
 
 Tady jsou některé klíčové rozdíly mezi procesorem Change feed a modelem Pull:
 
-|Funkce  | Procesor kanálu změn| Model vyžádání |
+|Doporučené  | Procesor kanálu změn| Model vyžádání |
 | --- | --- | --- |
 | Udržování přehledu o aktuálním bodu ve zpracování kanálu změn | Zapůjčení (uložené v kontejneru Azure Cosmos DB) | Token pro pokračování (uložený v paměti nebo ručně trvalý) |
 | Možnost Přehrát minulé změny | Ano, s modelem push | Ano, s modelem pull|
 | Cyklické dotazování pro budoucí změny | Automaticky kontroluje změny na základě zadaného uživatele. `WithPollInterval` | Ruční |
+| Chování při nežádných nových změnách | Automaticky počkat `WithPollInterval` a znovu ověřit | Musí zachytit výjimku a ručně znovu ověřit |
 | Zpracovat změny z celého kontejneru | Ano a automaticky paralelně napříč několika vlákny nebo počítači, které jsou náročné ze stejného kontejneru| Ano a ručně paralelně s využitím FeedTokens |
 | Zpracovat změny jenom z jednoho klíče oddílu | Nepodporováno | Ano|
 | Úroveň podpory | Obecná dostupnost | Preview |
+
+> [!NOTE]
+> Na rozdíl od při čtení pomocí procesoru změny kanálu musíte explicitně zpracovat případy, kdy žádné nové změny neexistují. 
 
 ## <a name="consuming-an-entire-containers-changes"></a>Spotřebovávání změn celého kontejneru
 
@@ -75,14 +79,22 @@ FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterat
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorForTheEntireContainer.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorForTheEntireContainer.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
+
+Vzhledem k tomu, že kanál změn je efektivně nekonečný seznam položek zahrnujících všechny budoucí zápisy a aktualizace, hodnota `HasMoreResults` je vždycky true. Když se pokusíte přečíst kanál změn a nejsou k dispozici žádné nové změny, obdržíte výjimku. Ve výše uvedeném příkladu je výjimka zpracována čekáním na 5 sekund, než se znovu zkontrolují změny.
 
 ## <a name="consuming-a-partition-keys-changes"></a>Spotřebovávání změn klíče oddílu
 
@@ -93,11 +105,17 @@ FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<Use
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorForThePartitionKey.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorForThePartitionKey.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -129,11 +147,17 @@ Počítač 1:
 FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorA.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorA.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -144,11 +168,17 @@ Počítač 2:
 FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorB.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorA.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -164,13 +194,19 @@ string continuation = null;
 
 while (iterator.HasMoreResults)
 {
-   FeedResponse<User> users = await iterator.ReadNextAsync();
-   continuation = users.ContinuationToken;
+   try { 
+        FeedResponse<User> users = await iterator.ReadNextAsync();
+        continuation = users.ContinuationToken;
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
-    }
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+   }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
+    }   
 }
 
 // Some time later

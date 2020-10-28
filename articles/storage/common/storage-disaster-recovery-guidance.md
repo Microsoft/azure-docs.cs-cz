@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276920"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783976"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště
 
@@ -54,9 +54,9 @@ Je důležité navrhnout aplikaci pro zajištění vysoké dostupnosti od začá
 Kromě toho mějte na paměti tyto osvědčené postupy pro udržení vysoké dostupnosti dat Azure Storage:
 
 - **Disky:** Použijte [Azure Backup](https://azure.microsoft.com/services/backup/) k zálohování disků virtuálních počítačů využívaných virtuálními počítači Azure. Zvažte také použití [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) k ochraně vašich virtuálních počítačů v případě regionálních havárií.
-- **Objekty blob bloku:** Zapněte [obnovitelné odstranění](../blobs/storage-blob-soft-delete.md) pro ochranu proti odstranění na úrovni objektu a přepsání nebo zkopírujte objekty blob bloku do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)nebo [knihovny pro přesun dat Azure](storage-use-data-movement-library.md).
-- **Soubory:** Pomocí [AzCopy](storage-use-azcopy.md) nebo [Azure PowerShell](/powershell/module/az.storage/) zkopírujte soubory do jiného účtu úložiště v jiné oblasti.
-- **Tabulky:** pomocí [AzCopy](storage-use-azcopy.md) můžete exportovat data tabulky do jiného účtu úložiště v jiné oblasti.
+- **Objekty blob bloku:** Zapněte [obnovitelné odstranění](../blobs/soft-delete-blob-overview.md) pro ochranu proti odstranění na úrovni objektu a přepsání nebo zkopírujte objekty blob bloku do jiného účtu úložiště v jiné oblasti pomocí [AzCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)nebo [knihovny pro přesun dat Azure](storage-use-data-movement-library.md).
+- **Soubory:** Pomocí [AzCopy](./storage-use-azcopy-v10.md) nebo [Azure PowerShell](/powershell/module/az.storage/) zkopírujte soubory do jiného účtu úložiště v jiné oblasti.
+- **Tabulky:** pomocí [AzCopy](./storage-use-azcopy-v10.md) můžete exportovat data tabulky do jiného účtu úložiště v jiné oblasti.
 
 ## <a name="track-outages"></a>Sledovat výpadky
 
@@ -132,7 +132,7 @@ Vzhledem k tomu, že poskytovatel prostředků Azure Storage převezme služby p
 
 ### <a name="azure-virtual-machines"></a>Virtuální počítače Azure
 
-Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. K převzetí služeb při selhání účtu taky může dojít ke ztrátě dat. Microsoft doporučuje následující pokyny pro [vysokou dostupnost](../../virtual-machines/windows/manage-availability.md) a [zotavení po havárii](../../virtual-machines/windows/backup-recovery.md) , které jsou specifické pro virtuální počítače v Azure.
+Virtuální počítače Azure při převzetí služeb při selhání v rámci účtu převezmou služby při selhání. Pokud primární region přestane být k dispozici a převezmete služby při selhání do sekundární oblasti, budete muset po převzetí služeb při selhání znovu vytvořit všechny virtuální počítače. K převzetí služeb při selhání účtu taky může dojít ke ztrátě dat. Microsoft doporučuje následující pokyny pro [vysokou dostupnost](../../virtual-machines/manage-availability.md) a [zotavení po havárii](../../virtual-machines/backup-recovery.md) , které jsou specifické pro virtuální počítače v Azure.
 
 ### <a name="azure-unmanaged-disks"></a>Nespravované disky Azure
 
@@ -162,7 +162,7 @@ Pro převzetí služeb při selhání účtu se nepodporují následující funk
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Kopírování dat jako alternativa k převzetí služeb při selhání
 
-Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení sekundárního, můžete aplikaci navrhnout tak, aby se načetla ze sekundárního koncového bodu. Pokud v případě výpadku v primární oblasti nechcete převzít služby při selhání, můžete pomocí nástrojů, jako jsou [AzCopy](storage-use-azcopy.md), [Azure PowerShell](/powershell/module/az.storage/)nebo [knihovny pro přesun dat Azure](../common/storage-use-data-movement-library.md) , kopírovat data z účtu úložiště v sekundární oblasti do jiného účtu úložiště v neovlivněné oblasti. Pak můžete své aplikace nasměrovat na tento účet úložiště pro čtení i zápis.
+Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení sekundárního, můžete aplikaci navrhnout tak, aby se načetla ze sekundárního koncového bodu. Pokud v případě výpadku v primární oblasti nechcete převzít služby při selhání, můžete pomocí nástrojů, jako jsou [AzCopy](./storage-use-azcopy-v10.md), [Azure PowerShell](/powershell/module/az.storage/)nebo [knihovny pro přesun dat Azure](../common/storage-use-data-movement-library.md) , kopírovat data z účtu úložiště v sekundární oblasti do jiného účtu úložiště v neovlivněné oblasti. Pak můžete své aplikace nasměrovat na tento účet úložiště pro čtení i zápis.
 
 > [!CAUTION]
 > Převzetí služeb při selhání účtu by se nemělo používat jako součást vaší strategie migrace dat.

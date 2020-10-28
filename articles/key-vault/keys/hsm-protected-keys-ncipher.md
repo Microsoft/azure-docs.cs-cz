@@ -10,18 +10,18 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: de14cf8cc79b4e1387950a2ae048da41738f5db1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589924"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784656"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Import klíčů chráněných HSM pro Key Vault (podpůrný software nCipher)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pro zvýšení zabezpečení při použití Azure Key Vault můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy nezanechají hranici HSM. Tento scénář se často označuje jako *bring your own key * (použití vlastního klíče) nebo BYOK. Azure Key Vault používá hardwarového nshieldou rodinu HSM (FIPS 140-2 Level 2) k ochraně vašich klíčů.
+Pro zvýšení zabezpečení při použití Azure Key Vault můžete importovat nebo generovat klíče v modulech hardwarového zabezpečení (HSM), které nikdy nezanechají hranici HSM. Tento scénář se často označuje jako *bring your own key* (použití vlastního klíče) nebo BYOK. Azure Key Vault používá hardwarového nshieldou rodinu HSM (FIPS 140-2 Level 2) k ochraně vašich klíčů.
 
 > [!NOTE]
 > Metoda importu klíče HSM popsaná v tomto dokumentu funguje jenom s podpůrný software nCipher hardwarového nShield rodina HSM. Pro import klíčů HSM-Keys z jiných HSM [najdete tady](hsm-protected-keys-byok.md).
@@ -231,7 +231,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 ---
 
 
-K ověření integrity stažené sady nástrojů BYOK z relace Azure PowerShell použijte rutinu [Get-hash](https://technet.microsoft.com/library/dn520872.aspx) .
+K ověření integrity stažené sady nástrojů BYOK z relace Azure PowerShell použijte rutinu [Get-hash](/powershell/module/microsoft.powershell.utility/get-filehash) .
 
    ```powershell
    Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -255,7 +255,7 @@ Pro tento druhý krok proveďte následující postupy na pracovní stanici, kte
 
 Nainstalujte software podpory podpůrný software nCipher do počítače se systémem Windows a potom k tomuto počítači Připojte modul HARDWAROVÉho zabezpečení podpůrný software nCipher hardwarového nShield.
 
-Ujistěte se, že jsou nástroje podpůrný software nCipher ve vaší cestě (**% nfast_home% \ bin**). Zadejte například tento příkaz:
+Ujistěte se, že jsou nástroje podpůrný software nCipher ve vaší cestě ( **% nfast_home% \ bin** ). Zadejte například tento příkaz:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -416,7 +416,7 @@ Ověření staženého balíčku:
      >
 2. Potvrďte, že se zobrazí následující informace, které indikují úspěšné ověření: **výsledek: úspěch**
 
-Tento skript ověří řetěz podepisování až do kořenového klíče hardwarového nShield. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a měla by mít hodnotu **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Tuto hodnotu můžete také potvrdit samostatně návštěvou [webu podpůrný software nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
+Tento skript ověří řetěz podepisování až do kořenového klíče hardwarového nShield. Hodnota hash tohoto kořenového klíče je vložená ve skriptu a měla by mít hodnotu **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** . Tuto hodnotu můžete také potvrdit samostatně návštěvou [webu podpůrný software nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
 
 Nyní jste připraveni vytvořit nový klíč.
 
@@ -432,11 +432,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 Při spouštění tohoto příkazu použijte tyto pokyny:
 
-* Parametr *protect* musí být nastavený na hodnotu **module**, jak je vidět na obrázku. Vytvoří se tím klíč chráněný modulem. Sada nástrojů funkce BYOK nepodporuje klíče chráněné OCS.
+* Parametr *protect* musí být nastavený na hodnotu **module** , jak je vidět na obrázku. Vytvoří se tím klíč chráněný modulem. Sada nástrojů funkce BYOK nepodporuje klíče chráněné OCS.
 * Hodnotu *contosokey* nahraďte hodnotou **ident** a hodnotu **plainname** nahraďte jakoukoli řetězcovou hodnotou. Pro minimalizaci administrativních režijních a snížení rizik chyb doporučujeme použít stejnou hodnotu pro obojí. Hodnota **Ident** musí obsahovat jenom čísla, pomlčky a malá písmena.
 * Parametr pubexp je v tomto příkladě prázdný (výchozí nastavení), můžete ale zadat konkrétní hodnoty. Další informace najdete v [dokumentaci k podpůrný software nCipher.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
 
-Tento příkaz vytvoří soubor klíčového klíče ve složce% NFAST_KMDATA% \ s názvem začínajícím na **key_simple_** a následovaný **Ident** , který byl zadán v příkazu. Například: **key_simple_contosokey**. Tento soubor obsahuje šifrovaný klíč.
+Tento příkaz vytvoří soubor klíčového klíče ve složce% NFAST_KMDATA% \ s názvem začínajícím na **key_simple_** a následovaný **Ident** , který byl zadán v příkazu. Například: **key_simple_contosokey** . Tento soubor obsahuje šifrovaný klíč.
 
 Tento soubor tokenizovaného klíče zálohujte do bezpečného umístění.
 
@@ -668,7 +668,7 @@ Při spouštění tohoto příkazu použijte tyto pokyny:
 * Položku *SubscriptionId* NAHRAĎte ID předplatného Azure, které obsahuje váš Trezor klíčů. Tuto hodnotu jste dříve získali v **kroku 1,2: získání ID předplatného Azure** z kroku [Příprava pracovní stanice připojené k Internetu](#step-1-prepare-your-internet-connected-workstation) .
 * Nahraďte *ContosoFirstHSMKey* názvem, který se používá pro název výstupního souboru.
 
-Po úspěšném dokončení se zobrazí **výsledek: úspěch** a v aktuální složce je nový soubor s následujícím názvem: KeyTransferPackage-*ContosoFirstHSMkey*. BYOK
+Po úspěšném dokončení se zobrazí **výsledek: úspěch** a v aktuální složce je nový soubor s následujícím názvem: KeyTransferPackage- *ContosoFirstHSMkey* . BYOK
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Krok 4,3: zkopírování balíčku pro přenos klíčů na pracovní stanici připojenou k Internetu
 

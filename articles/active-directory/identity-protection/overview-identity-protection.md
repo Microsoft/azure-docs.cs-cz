@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996527"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783177"
 ---
 # <a name="what-is-identity-protection"></a>Co je ochrana identit?
 
@@ -39,15 +39,15 @@ V jeho [blogovém příspěvku v říjnu od 2018](https://techcommunity.microsof
 >
 > V Ignite minulý rok jsem na konci prvních 3 útoků na naše systémy identit. Toto je poslední objem těchto útoků.
 >   
->   - Opětovné **přehrání porušení**: 4.6 BN útoky zjištěné v květnu 2018
->   - **Sprej hesla**: 350K v dubnu 2018
->   - **Phishing**: těžko se naprosto kvantifikovat, ale v březnu 2018 jsme 23M rizikové události, mnoho z nich je v relaci phishing.
+>   - Opětovné **přehrání porušení** : 4.6 BN útoky zjištěné v květnu 2018
+>   - **Sprej hesla** : 350K v dubnu 2018
+>   - **Phishing** : těžko se naprosto kvantifikovat, ale v březnu 2018 jsme 23M rizikové události, mnoho z nich je v relaci phishing.
 
 ## <a name="risk-detection-and-remediation"></a>Detekce rizik a náprava
 
 Identity Protection identifikuje rizika v následujících klasifikacích:
 
-| Typ detekce rizika | Description |
+| Typ detekce rizika | Popis |
 | --- | --- |
 | Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN). |
@@ -104,15 +104,15 @@ Správci podmíněného přístupu můžou také vytvářet zásady, které při
 
 | Schopnost | Podrobnosti  | Aplikace Azure AD Free/Microsoft 365 | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | No | No |Yes | 
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | No |  No |Yes |
-| Sestavy zabezpečení | Přehled |  No | No |Yes |
-| Sestavy zabezpečení | Rizikoví uživatelé  | Omezené informace | Omezené informace | Full access|
-| Sestavy zabezpečení | Riziková přihlášení  | Omezené informace | Omezené informace | Full access|
-| Sestavy zabezpečení | Detekce rizik   | No | Omezené informace| Full access|
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | No | No |Yes |
-| Oznámení | Týdenní výtah| No | No | Yes | 
-| | Zásady registrace MFA | No | No | Yes |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection)  | Ne | Ne |Ano | 
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup)  | Ne |  Ne |Ano |
+| Sestavy zabezpečení | Přehled |  Ne | Ne |Ano |
+| Sestavy zabezpečení | Rizikoví uživatelé  | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Omezené informace. Zobrazují se jenom uživatelé se středním a vysokým rizikem. Není k dispozici zásobník podrobností ani historie rizik. | Full access|
+| Sestavy zabezpečení | Riziková přihlášení  | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Omezené informace. Nezobrazuje se žádné podrobnosti o riziku ani úroveň rizika. | Full access|
+| Sestavy zabezpečení | Detekce rizik   | Ne | Omezené informace. Žádný zásobník podrobností| Full access|
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky  | Ne | Ne |Ano |
+| Oznámení | Týdenní výtah| Ne | Ne | Ano | 
+| | Zásady registrace MFA | Ne | Ne | Ano |
 
 Další informace o těchto propracovaných sestavách najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 

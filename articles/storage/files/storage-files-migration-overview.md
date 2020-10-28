@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654255"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785608"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrace do sdílených složek Azure
 
@@ -34,11 +34,11 @@ Při přesunu souborů z aktuálního umístění úložiště do Azure je klí�
 
 Tady jsou dvě základní komponenty souboru:
 
-- **Datový proud**: datový proud souboru uchovává obsah souboru.
-- **Metadata souboru**: metadata souboru mají tyto dílčí součásti:
+- **Datový proud** : datový proud souboru uchovává obsah souboru.
+- **Metadata souboru** : metadata souboru mají tyto dílčí součásti:
    * Atributy souboru jako jen pro čtení
    * Oprávnění k souborům, která se můžou označovat jako *oprávnění systému souborů NTFS* nebo *seznamy ACL souborů a složek*
-   * Časová razítka, zejména vytváření a naposledy upravená časová razítka
+   * Časová razítka, hlavně vytváření a časová razítka naposledy upravených
    * Alternativní datový proud, což je prostor pro ukládání většího množství nestandardních vlastností
 
 Přesnost souborů v migraci je možné definovat jako schopnost:
@@ -111,7 +111,7 @@ Je k dispozici několik nástrojů pro kopírování souborů od Microsoftu a da
 
     Při prvním spuštění nástroje kopíruje Hromadná data. Tento počáteční běh může poslední chvíli trvat. Často trvá déle, než budete chtít převést zdroj dat do režimu offline pro vaše obchodní procesy.
 
-    Zrcadlením zdroje na cíl (stejně jako u nástroje **Robocopy/Mir**) můžete znovu spustit nástroj na stejném zdroji a cíli. Běh je mnohem rychlejší, protože potřebuje přenést pouze změny zdrojového kódu, ke kterým dojde po předchozím spuštění. Tento způsob, jakým se nástroj pro kopírování znovu spustí, může výrazně snížit prostoje.
+    Zrcadlením zdroje na cíl (stejně jako u nástroje **Robocopy/Mir** ) můžete znovu spustit nástroj na stejném zdroji a cíli. Běh je mnohem rychlejší, protože potřebuje přenést pouze změny zdrojového kódu, ke kterým dojde po předchozím spuštění. Tento způsob, jakým se nástroj pro kopírování znovu spustí, může výrazně snížit prostoje.
 
 Následující tabulka klasifikuje nástroje Microsoftu a jejich aktuální vhodnost pro sdílené složky Azure:
 
@@ -121,7 +121,7 @@ Následující tabulka klasifikuje nástroje Microsoftu a jejich aktuální vhod
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Synchronizace souborů Azure | Nativně integrovaná do sdílených složek Azure. | Plná přesnost. * |
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Služba migrace úložiště | Nepřímo podporováno. Sdílené složky Azure je možné na cílových serverech SMS připojit jako síťové jednotky. | Plná přesnost. * |
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, verze 10,4 nebo novější| Podporuje se. | Plná přesnost. * |
-|![Nedoporučuje se úplně](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Podporuje se. | Nekopíruje metadata. [Data box lze použít s Azure File Sync](storage-sync-offline-data-transfer.md). |
+|![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | Podporuje se. | DataBox nyní plně podporuje metadata. [Data box lze také použít v kombinaci s Azure File Sync](storage-sync-offline-data-transfer.md). |
 |![Nedoporučuje se úplně](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Průzkumník služby Azure Storage verze 1,14 | Podporuje se. | Nekopíruje seznamy ACL. Podporuje časová razítka.  |
 |![Nedoporučuje se](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Podporuje se. | Nekopíruje metadata. |
 |||||

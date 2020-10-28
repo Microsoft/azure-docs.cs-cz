@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: 02b589eebb716f5a69b4db9f00faf12401b8de7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fdbf3bf1d9f740654fa694de03315b876116429
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619001"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784877"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database
 
@@ -28,21 +28,21 @@ Většina funkcí Transact-SQL, které aplikace používá, je plně podporovan�
 
 Kromě toho existují některé funkce a syntaxe, které nejsou vůbec podporovány, protože Azure SQL Database jsou určeny k izolaci funkcí ze závislostí v hlavní databázi a v operačním systému. Proto většina aktivit na úrovni serveru není pro SQL Database vhodná. Příkazy T-SQL a možnosti nejsou k dispozici, pokud konfigurují možnosti na úrovni serveru, součásti operačního systému nebo určují konfiguraci systému souborů. Pokud jsou tyto možnosti požadovány, je vhodná alternativa často k dispozici jiným způsobem než SQL Database nebo z jiné funkce nebo služby Azure.
 
-Například vysoká dostupnost je integrována do Azure SQL Database s využitím technologie podobně jako u [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Příkazy T-SQL související se skupinami dostupnosti nejsou podporovány nástrojem SQL Database a zobrazení dynamické správy související se skupinami dostupnosti Always On nejsou také podporována.
+Například vysoká dostupnost je integrována do Azure SQL Database s využitím technologie podobně jako u [skupin dostupnosti Always On](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Příkazy T-SQL související se skupinami dostupnosti nejsou podporovány nástrojem SQL Database a zobrazení dynamické správy související se skupinami dostupnosti Always On nejsou také podporována.
 
-Seznam funkcí, které jsou v SQL Database podporované a nepodporované, najdete v článku [porovnání funkcí Azure SQL Database](features-comparison.md). Seznam na této stránce doplňuje pokyny a funkce článku a zaměřuje se na příkazy jazyka Transact-SQL.
+Seznam funkcí, které jsou v SQL Database podporované a nepodporované, najdete v článku [porovnání funkcí Azure SQL Database](features-comparison.md). Seznam na této stránce doplňuje pokyny a funkce článku a zaměřuje se na příkazy jazyka Transact-SQL.
 
 ## <a name="transact-sql-syntax-statements-with-partial-differences"></a>Příkazy syntaxe jazyka Transact-SQL s částečnými rozdíly
 
 Základní příkazy DDL (Data Definition Language) jsou k dispozici, ale některé příkazy DDL mají rozšíření související s umístěním na disku a nepodporovanými funkcemi.
 
-- Příkazy CREATE a ALTER databáze mají více než tři desítkové možnosti. Příkazy zahrnují možnosti umístění souborů, FILESTREAM a Service Broker, které platí pouze pro SQL Server. To může být bez ohledu na to, jestli vytváříte databáze před migrací, ale pokud migrujete kód T-SQL, který vytváří databáze, měli byste porovnat [databázi CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) se syntaxí SQL Server v [create Database (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) , abyste měli jistotu, že se podporují všechny možnosti, které používáte. Vytvoření databáze pro Azure SQL Database má také možnosti cíle služby a elastického škálování, které se vztahují pouze na SQL Database.
+- Příkazy CREATE a ALTER databáze mají více než tři desítkové možnosti. Příkazy zahrnují možnosti umístění souborů, FILESTREAM a Service Broker, které platí pouze pro SQL Server. To může být bez ohledu na to, jestli vytváříte databáze před migrací, ale pokud migrujete kód T-SQL, který vytváří databáze, měli byste porovnat [databázi CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql) se syntaxí SQL Server v [create Database (SQL Server Transact-SQL)](/sql/t-sql/statements/create-database-transact-sql) , abyste měli jistotu, že se podporují všechny možnosti, které používáte. Vytvoření databáze pro Azure SQL Database má také možnosti cíle služby a elastického škálování, které se vztahují pouze na SQL Database.
 - Příkazy CREATE a ALTER TABLE mají možnosti FileTable, které nelze použít na SQL Database, protože FILESTREAM není podporován.
-- Příkazy CREATE a ALTER LOGIN jsou podporovány, ale SQL Database nenabízí všechny možnosti. Aby byla databáze lépe přenosná, SQL Database doporučuje používat uživatele databáze s omezením místo přihlášení, kdykoli je to možné. Další informace najdete v tématu [Vytvoření a změna přihlašovacích](https://docs.microsoft.com/sql/t-sql/statements/alter-login-transact-sql) údajů a [Správa přihlášení a uživatelů](logins-create-manage.md).
+- Příkazy CREATE a ALTER LOGIN jsou podporovány, ale SQL Database nenabízí všechny možnosti. Aby byla databáze lépe přenosná, SQL Database doporučuje používat uživatele databáze s omezením místo přihlášení, kdykoli je to možné. Další informace najdete v tématu [Vytvoření a změna přihlašovacích](/sql/t-sql/statements/alter-login-transact-sql) údajů a [Správa přihlášení a uživatelů](logins-create-manage.md).
 
 ## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>V Azure SQL Database není podporovaná syntaxe jazyka Transact-SQL.
 
-Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funkcemi popsanými v [Azure SQL Database porovnání funkcí](features-comparison.md), nejsou podporovány následující příkazy a skupiny příkazů. Pokud vaše databáze, která má být migrována, používá některou z následujících funkcí, proveďte znovu analýzu jazyka T-SQL pro odstranění těchto funkcí a příkazů T-SQL.
+Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funkcemi popsanými v [Azure SQL Database porovnání funkcí](features-comparison.md), nejsou podporovány následující příkazy a skupiny příkazů. Pokud vaše databáze, která má být migrována, používá některou z následujících funkcí, proveďte znovu analýzu jazyka T-SQL pro odstranění těchto funkcí a příkazů T-SQL.
 
 - Kolace systémových objektů
 - Související s připojením: příkazy Endpoint. SQL Database nepodporuje ověřování systému Windows, ale podporuje podobné ověřování Azure Active Directory. Některé typy ověřování vyžadují nejnovější verzi SQL Server Management Studia (SSMS). Další informace najdete v tématu [připojení k SQL Database nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse) pomocí Azure Active Directoryho ověřování](authentication-aad-overview.md).
@@ -60,12 +60,12 @@ Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funk
 - `OPENQUERY``OPENROWSET` `OPENDATASOURCE` názvy čtyř částí,, a
 - .NET Framework: Integrace modulu CLR s SQL Server
 - Sémantické vyhledávání
-- Přihlašovací údaje serveru: místo toho použijte [přihlašovací údaje v oboru databáze](https://msdn.microsoft.com/library/mt270260.aspx) .
+- Přihlašovací údaje serveru: místo toho použijte [přihlašovací údaje v oboru databáze](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) .
 - Položky na úrovni serveru: role serveru, `sys.login_token` . `GRANT``REVOKE`a oprávnění na `DENY` úrovni serveru nejsou k dispozici, i když některé jsou nahrazené oprávněními na úrovni databáze. Některá praktická serverová zobrazení dynamických zpráv (DMV) mají odpovídající databázová zobrazení dynamických zpráv.
 - `SET REMOTE_PROC_TRANSACTIONS`
 - `SHUTDOWN`
 - `sp_addmessage`
-- Možnosti `sp_configure` a `RECONFIGURE`. Některé možnosti jsou dostupné prostřednictvím příkazu [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
+- Možnosti `sp_configure` a `RECONFIGURE`. Některé možnosti jsou dostupné prostřednictvím příkazu [ALTER DATABASE SCOPED CONFIGURATION](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql).
 - `sp_helpuser`
 - `sp_migrate_user_to_contained`
 - SQL Server Agent: syntaxe, která spoléhá na agenta SQL Server nebo databázi MSDB: výstrahy, operátory a servery centrální správy. Použijte raději skriptování, například v Azure PowerShellu.
@@ -78,14 +78,14 @@ Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funk
 
 ## <a name="full-transact-sql-reference"></a>Kompletní reference k jazyku Transact-SQL
 
-Další informace o gramatikě, použití a příkladech jazyka Transact-SQL najdete v tématu [Referenční dokumentace jazyka Transact-SQL (databázový stroj)](https://msdn.microsoft.com/library/bb510741.aspx)   v SQL Server Books Online.
+Další informace o syntaxi a používání jazyka Transact-SQL, včetně příkladů, najdete v tématu [Reference k jazyku Transact-SQL (databázový stroj)](/sql/t-sql/language-reference) v dokumentaci SQL Server Books Online.
 
 ### <a name="about-the-applies-to-tags"></a>Informace o značkách „Platí pro“
 
-Odkaz v jazyce Transact-SQL zahrnuje články týkající se SQL Server verzí 2008 pro stávající. Pod nadpisem článku najdete panel ikon, seznam čtyř SQL Server platforem a indikace použitelnosti. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012. Článek [vytvořit skupinu dostupnosti](https://msdn.microsoft.com/library/ff878399.aspx)   označuje, že se příkaz vztahuje na **SQL Server (počínaje 2012)**. Příkaz se nevztahuje na SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure Azure synapse Analytics (dříve SQL Data Warehouse) nebo paralelní datový sklad.
+Odkaz v jazyce Transact-SQL zahrnuje články týkající se SQL Server verzí 2008 pro stávající. Pod nadpisem článku najdete panel ikon, seznam čtyř SQL Server platforem a indikace použitelnosti. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012. Článek [vytvořit skupinu dostupnosti](/sql/t-sql/statements/create-availability-group-transact-sql) označuje, že se příkaz vztahuje na **SQL Server (počínaje 2012)** . Příkaz se nevztahuje na SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure Azure synapse Analytics (dříve SQL Data Warehouse) nebo paralelní datový sklad.
 
 V některých případech je možné v produktu použít obecný předmět článku, ale existují drobné rozdíly mezi produkty. Rozdíly jsou podle potřeby uvedeny v různých umístěních v článku. V některých případech je možné v produktu použít obecný předmět článku, ale existují drobné rozdíly mezi produkty. Rozdíly jsou podle potřeby uvedeny v různých umístěních v článku. Například článek vytvořit aktivační událost je k dispozici v SQL Database. Ale možnost **všechny servery** pro aktivační události na úrovni serveru označuje, že triggery na úrovni serveru nejde v SQL Database použít. Místo toho použijte triggery na úrovni databáze.
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznam funkcí, které jsou v SQL Database podporované a nepodporované, najdete v článku [porovnání funkcí Azure SQL Database](features-comparison.md). Seznam na této stránce doplňuje pokyny a funkce článku a zaměřuje se na příkazy jazyka Transact-SQL.
+Seznam funkcí, které jsou v SQL Database podporované a nepodporované, najdete v článku [porovnání funkcí Azure SQL Database](features-comparison.md). Seznam na této stránce doplňuje pokyny a funkce článku a zaměřuje se na příkazy jazyka Transact-SQL.

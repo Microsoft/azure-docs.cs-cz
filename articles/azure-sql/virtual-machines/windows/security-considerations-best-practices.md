@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 04634a6efb6c17a823532a29ec273b088a4ad843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272391"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785064"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Důležité informace o zabezpečení pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,13 +41,13 @@ V následujících částech jsou uvedeny návrhy na promyšlení těchto bodů.
 
 ## <a name="secure-connections"></a>Zabezpečená připojení
 
-Když vytvoříte virtuální počítač s SQL Server s imagí galerie, možnost **připojení SQL Server** vám umožní vybrat **místní (uvnitř virtuálního počítače)**, **privátní (v rámci Virtual Network)** nebo **veřejné (Internet)**.
+Když vytvoříte virtuální počítač s SQL Server s imagí galerie, možnost **připojení SQL Server** vám umožní vybrat **místní (uvnitř virtuálního počítače)** , **privátní (v rámci Virtual Network)** nebo **veřejné (Internet)** .
 
 ![SQL Server připojení](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
 Pro zajištění nejlepšího zabezpečení vyberte nejvíce omezující možnost pro váš scénář. Například pokud používáte aplikaci, která přistupuje k SQL Server na stejném virtuálním počítači, pak je **místní** volba nejbezpečnější. Pokud používáte aplikaci Azure, která vyžaduje přístup k SQL Server, pak **soukromá** zabezpečená komunikace s SQL Server jenom v rámci zadané [virtuální sítě Azure](../../../virtual-network/virtual-networks-overview.md). Pokud požadujete **veřejný** přístup k virtuálnímu počítači s SQL Server (Internet), nezapomeňte podle dalších osvědčených postupů v tomto tématu snížit prostor pro útoky.
 
-Vybrané možnosti portálu používají pravidla zabezpečení příchozí pro [skupinu zabezpečení sítě](../../../active-directory/identity-protection/security-overview.md) (NSG) virtuálního počítače a povolují nebo zakazují síťový provoz na virtuálním počítači. Můžete upravit nebo vytvořit nová příchozí pravidla NSG, která povolí provoz na port SQL Server (standardně 1433). Můžete také zadat konkrétní IP adresy, které můžou komunikovat přes tento port.
+Vybrané možnosti portálu používají pravidla zabezpečení příchozí pro [skupinu zabezpečení sítě](../../../active-directory/identity-protection/concept-identity-protection-security-overview.md) (NSG) virtuálního počítače a povolují nebo zakazují síťový provoz na virtuálním počítači. Můžete upravit nebo vytvořit nová příchozí pravidla NSG, která povolí provoz na port SQL Server (standardně 1433). Můžete také zadat konkrétní IP adresy, které můžou komunikovat přes tento port.
 
 ![Pravidla skupiny zabezpečení sítě](./media/security-considerations-best-practices/sql-vm-network-security-group-rules.png)
 
@@ -55,11 +55,11 @@ Kromě pravidel NSG, jak omezit síťový provoz, můžete také použít bránu
 
 Pokud používáte koncové body s modelem nasazení Classic, odeberte všechny koncové body na virtuálním počítači, pokud je nepoužíváte. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [Správa seznamu ACL na koncovém bodu](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). To není nutné pro virtuální počítače, které používají Azure Resource Manager.
 
-Nakonec zvažte povolení šifrovaných připojení pro instanci databázového stroje SQL Server na virtuálním počítači Azure. Nakonfigurujte instanci systému SQL Server s podepsaným certifikátem. Další informace najdete v tématu [Povolení šifrovaných připojení k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) a [syntaxi připojovacího řetězce](https://msdn.microsoft.com/library/ms254500.aspx).
+Nakonec zvažte povolení šifrovaných připojení pro instanci databázového stroje SQL Server na virtuálním počítači Azure. Nakonfigurujte instanci systému SQL Server s podepsaným certifikátem. Další informace najdete v tématu [Povolení šifrovaných připojení k databázovému stroji](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) a [syntaxi připojovacího řetězce](/dotnet/framework/data/adonet/connection-string-syntax).
 
 ## <a name="encryption"></a>Šifrování
 
-Spravované disky nabízejí Server-Side šifrování a Azure Disk Encryption. [Šifrování na straně serveru](/azure/virtual-machines/windows/disk-encryption) poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) používá technologii Bitlocker nebo DM-Crypt a integruje se s Azure Key Vault k šifrování disků s operačním systémem a datovými disky. 
+Spravované disky nabízejí Server-Side šifrování a Azure Disk Encryption. [Šifrování na straně serveru](../../../virtual-machines/windows/disk-encryption.md) poskytuje šifrování v klidovém prostředí a chrání vaše data, aby splňovala závazky zabezpečení vaší organizace a dodržování předpisů. [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) používá technologii Bitlocker nebo DM-Crypt a integruje se s Azure Key Vault k šifrování disků s operačním systémem a datovými disky. 
 
 ## <a name="use-a-non-default-port"></a>Použít jiný než výchozí port
 
@@ -73,7 +73,7 @@ Pokud to chcete nakonfigurovat po zřízení, máte dvě možnosti:
 
   ![Změna portu TCP na portálu](./media/security-considerations-best-practices/sql-vm-change-tcp-port.png)
 
-- U klasických virtuálních počítačů nebo u SQL Server virtuálních počítačů, které nebyly zřízené s portálem, můžete port ručně nakonfigurovat připojením k virtuálnímu počítači. Postup konfigurace najdete v tématu [Konfigurace serveru pro naslouchání na specifickém portu TCP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port). Používáte-li tuto ruční techniku, je také nutné přidat pravidlo brány Windows Firewall, které povoluje příchozí přenosy na daném portu TCP.
+- U klasických virtuálních počítačů nebo u SQL Server virtuálních počítačů, které nebyly zřízené s portálem, můžete port ručně nakonfigurovat připojením k virtuálnímu počítači. Postup konfigurace najdete v tématu [Konfigurace serveru pro naslouchání na specifickém portu TCP](/sql/database-engine/configure-windows/configure-a-server-to-listen-on-a-specific-tcp-port). Používáte-li tuto ruční techniku, je také nutné přidat pravidlo brány Windows Firewall, které povoluje příchozí přenosy na daném portu TCP.
 
 > [!IMPORTANT]
 > Pokud je port SQL Server otevřený pro veřejná internetová připojení, je vhodné zadat jiný než výchozí port.
@@ -84,7 +84,7 @@ Pokud SQL Server naslouchá na portu, který není výchozí, je nutné při př
 
 Nechcete, aby útočníci mohli snadno uhodnout názvy účtů nebo hesla. Následující tipy vám pomůžou:
 
-- Vytvořte jedinečný účet místního správce, který se nejmenuje jako **správce**.
+- Vytvořte jedinečný účet místního správce, který se nejmenuje jako **správce** .
 
 - Používejte složitá silná hesla pro všechny vaše účty. Další informace o tom, jak vytvořit silné heslo, najdete v článku o [vytvoření silného](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password) hesla.
 
@@ -93,7 +93,7 @@ Nechcete, aby útočníci mohli snadno uhodnout názvy účtů nebo hesla. Násl
   - Vytvořte účet SQL s jedinečným názvem, který má členství **sysadmin** . To můžete provést z portálu povolením **ověřování SQL** během zřizování.
 
     > [!TIP] 
-    > Pokud během zřizování nepovolíte ověřování SQL, musíte ručně změnit režim ověřování na **SQL Server a režim ověřování systému Windows**. Další informace najdete v tématu [Změna režimu ověřování serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode).
+    > Pokud během zřizování nepovolíte ověřování SQL, musíte ručně změnit režim ověřování na **SQL Server a režim ověřování systému Windows** . Další informace najdete v tématu [Změna režimu ověřování serveru](/sql/database-engine/configure-windows/change-server-authentication-mode).
 
   - Pokud musíte použít přihlašovací jméno **SA** , povolte přihlašovací údaje po zřízení a přiřaďte nové silné heslo.
 
@@ -103,7 +103,7 @@ Kromě postupů popsaných v tomto tématu doporučujeme, abyste provedli kontro
 
 Další informace o místních postupech zabezpečení najdete v tématu požadavky na [zabezpečení pro instalaci SQL Server](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) a [služby Security Center](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database). 
 
-Další informace o zabezpečení virtuálních počítačů najdete v tématu [Přehled zabezpečení virtuálních počítačů](/azure/security/fundamentals/virtual-machines-overview).
+Další informace o zabezpečení virtuálních počítačů najdete v tématu [Přehled zabezpečení virtuálních počítačů](../../../security/fundamentals/virtual-machines-overview.md).
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -111,4 +111,3 @@ Další informace o zabezpečení virtuálních počítačů najdete v tématu [
 Pokud vás zajímá i osvědčené postupy týkající se výkonu, přečtěte si téma [osvědčené postupy výkonu pro SQL Server v Azure Virtual Machines](performance-guidelines-best-practices.md).
 
 Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server na azure Virtual Machines přehled](sql-server-on-azure-vm-iaas-what-is-overview.md). Pokud máte dotazy k virtuálním počítačům s SQL Serverem, přečtěte si [Nejčastější dotazy](frequently-asked-questions-faq.md).
-

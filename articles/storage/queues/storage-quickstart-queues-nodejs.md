@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: f174ba30251757182866f9f446eefb10588618e9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1446b501b9d91c94c12c82755d0e31f361f8cd8f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428097"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783415"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro JavaScript
 
@@ -34,12 +34,12 @@ Další prostředky:
 * [Referenční dokumentace k rozhraní API](/javascript/api/@azure/storage-queue/)
 * [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
 * [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-queue)
-* [ukázky](/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [Ukázky](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](/azure/storage/common/storage-quickstart-create-account)
+* Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
 * Aktuální [Node.js](https://nodejs.org/en/download/) pro váš operační systém.
 
 ## <a name="setting-up"></a>Nastavení
@@ -48,7 +48,7 @@ Tato část vás provede přípravou projektu pro práci s klientskou knihovnou 
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci Node.js s názvem *Queues-Started-V12*.
+Vytvořte aplikaci Node.js s názvem *Queues-Started-V12* .
 
 1. V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro projekt.
 
@@ -62,7 +62,7 @@ Vytvořte aplikaci Node.js s názvem *Queues-Started-V12*.
     cd queues-quickstart-v12
     ```
 
-1. Vytvořte nový textový soubor s názvem *package.jsv*. Tento soubor definuje projekt Node.js. Uložte tento soubor v adresáři *Queues-Starter-V12* . Tady je obsah souboru:
+1. Vytvořte nový textový soubor s názvem *package.jsv* . Tento soubor definuje projekt Node.js. Uložte tento soubor v adresáři *Queues-Starter-V12* . Tady je obsah souboru:
 
     ```json
     {

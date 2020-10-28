@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: 3273324044f5d99a2400eee5325d3adb20f4ac0c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f98927e71a675cc6264c413ba07b3cf689b91560
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631372"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784282"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Upozornění zabezpečení – Referenční příručka
 
@@ -25,7 +25,7 @@ V tomto článku jsou uvedené výstrahy zabezpečení, které můžete získat 
 
 Informace o tom, jak reagovat na tyto výstrahy, najdete v tématu [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md).
 
-Informace o tom, jak exportovat výstrahy (a doporučení), najdete v tématu [Export výstrah zabezpečení a doporučení (Preview)](continuous-export.md).
+Informace o tom, jak exportovat výstrahy (a doporučení), najdete v článku [průběžné exportování Security Center dat](continuous-export.md).
 
 V dolní části této stránky je k dispozici Tabulka popisující Azure Security Center dezaktivační řetězec, který slouží k kategorizaci záměrů těchto výstrah. 
 
@@ -462,4 +462,4 @@ Další informace o výstrahách najdete v následujících tématech:
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
 - [Správa a reakce na upozornění zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
-- [Exportovat výstrahy a doporučení zabezpečení (Preview)](continuous-export.md)
+- [Průběžný export Security Center dat](continuous-export.md)

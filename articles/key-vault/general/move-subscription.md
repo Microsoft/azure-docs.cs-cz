@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c92671028f851a456b3222100e33958c9e26466a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042401"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785319"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesunutí Azure Key Vault do jiného předplatného
 
@@ -54,7 +54,7 @@ Máte aplikaci připojenou k trezoru klíčů, která vytváří certifikáty pl
 
 Ujistěte se, že přejdete na stránku Azure Policy na Azure Portal a Prohlédněte si přiřazení zásad pro vaše aktuální předplatné a předplatné, na které se přesouváte, a zajistěte, aby nedocházelo k žádnému neshodě.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 * Přístup na úrovni přispěvatele nebo vyšší pro aktuální předplatné, ve kterém existuje Trezor klíčů.
 * Přístup na úrovni přispěvatele nebo vyšší pro předplatné, ve kterém chcete Trezor klíčů přesunout.
@@ -80,7 +80,7 @@ Pokud jste Trezor klíčů přesunuli do předplatného v novém tenantovi, bude
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
 $vaultResourceId = (Get-AzKeyVault -VaultName myvault).ResourceId          # Get your key vault's Resource ID 
-$vault = Get-AzResource –ResourceId $vaultResourceId -ExpandProperties     # Get the properties for your key vault
+$vault = Get-AzResource -ResourceId $vaultResourceId -ExpandProperties     # Get the properties for your key vault
 $vault.Properties.TenantId = (Get-AzContext).Tenant.TenantId               # Change the Tenant that your key vault resides in
 $vault.Properties.AccessPolicies = @()                                     # Access policies can be updated with real
                                                                            # applications/users/rights so that it does not need to be                             # done after this whole activity. Here we are not setting 

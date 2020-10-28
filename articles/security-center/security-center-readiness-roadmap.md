@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 38e1fc7f062908f8c4a4b9aa903ca09dd7fb9ea5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342327"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784163"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Plán připravenosti na Azure Security Center
 Tento dokument vám poskytne plány připravenosti, které vám pomůžou zahájit používání služby Azure Security Center.
@@ -78,7 +78,7 @@ Videa
 
 Články    
 * [Využití Azure Security Center při reakci na incidenty](./tutorial-security-incident.md)
-* [Automatizace reakce díky automatizaci pracovního postupu](workflow-automation.md)
+* [Reakce na Security Center triggery pomocí automatizace](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Pokročilá obrana cloudu
 
