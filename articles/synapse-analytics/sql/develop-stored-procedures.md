@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279066"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737849"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Použití uložených procedur v synapse SQL
 
@@ -24,6 +24,9 @@ Tipy pro implementaci uložených procedur v synapse fondu SQL pro vývoj řeše
 ## <a name="what-to-expect"></a>Co očekávat
 
 Synapse SQL podporuje mnoho funkcí T-SQL, které se používají v SQL Server. Důležitější je, že existují určité funkce škálované na více instancí, které můžete použít k maximalizaci výkonu řešení.
+
+> [!NOTE]
+> V těle procedury můžete použít pouze funkce, které jsou podporovány v oblasti synapse SQL Surface. Přečtěte si [Tento článek](overview-features.md) a Identifikujte objekty, příkazy, které lze použít v uložených procedurách. V příkladech těchto článků se používají obecné funkce, které jsou dostupné v oblasti bez serveru i zřízené plochy.
 
 Aby bylo možné zachovat rozsah a výkon fondu SQL, existují také některé funkce a funkce, které mají rozdíly v chování a jiné, které nejsou podporovány.
 

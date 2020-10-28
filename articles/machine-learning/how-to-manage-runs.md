@@ -11,13 +11,13 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 53e759b973a5d912474dd754876c5279cfb7bdab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: bce02917acb05c06b8f506871c1f3b8500622d61
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596463"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735516"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 
@@ -30,11 +30,11 @@ Tento článek ukazuje příklady následujících úloh:
 * Vytvoření podřízených spuštění.
 * Označení a hledání spuštění.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat následující položky:
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 

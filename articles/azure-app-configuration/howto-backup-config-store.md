@@ -6,16 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074851"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737084"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>Zálohování úložišť konfigurací aplikací automaticky
 
@@ -37,7 +37,7 @@ Motivace za zálohováním úložišť konfigurací aplikací je použití něko
 
 V tomto kurzu vytvoříte sekundární úložiště v `centralus` oblasti a všech dalších prostředcích v `westus` oblasti.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/). 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou vývoje Azure.
@@ -62,7 +62,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>Vytvoření úložišť konfigurací aplikací
 
 Vytvořte si úložiště konfigurací primární a sekundární aplikace v různých oblastech.
-Nahraďte  `<primary_appconfig_name>` a `<secondary_appconfig_name>` jedinečnými názvy pro úložiště konfigurací. Každý název úložiště musí být jedinečný, protože se používá jako název DNS.
+Nahraďte `<primary_appconfig_name>` a `<secondary_appconfig_name>` jedinečnými názvy pro úložiště konfigurací. Každý název úložiště musí být jedinečný, protože se používá jako název DNS.
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"
@@ -213,7 +213,7 @@ Chcete-li otestovat, zda vše funguje, můžete vytvořit, aktualizovat nebo ods
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-Aktivovali jste událost. Za chvíli Event Grid odešle oznámení události do fronty. *Po dalším naplánovaném spuštění funkce*zobrazte nastavení konfigurace v sekundárním úložišti, abyste viděli, jestli obsahuje aktualizovanou hodnotu klíče z primárního úložiště.
+Aktivovali jste událost. Za chvíli Event Grid odešle oznámení události do fronty. *Po dalším naplánovaném spuštění funkce* zobrazte nastavení konfigurace v sekundárním úložišti, abyste viděli, jestli obsahuje aktualizovanou hodnotu klíče z primárního úložiště.
 
 > [!NOTE]
 > [Svou funkci můžete aktivovat ručně](../azure-functions/functions-manually-run-non-http.md) během testování a řešení potíží bez čekání na naplánovanou aktivační událost časovače.

@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092949"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735593"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Rychlý Start: sestavování a nasazování aplikací do jarního cloudu Azure
 
@@ -162,7 +162,7 @@ K otestování aplikace odešlete požadavek HTTP GET do `solar-system-weather` 
 
 ## <a name="test-the-application"></a>Testování aplikace
 
-Odeslat požadavek GET do `solar-system-weather` aplikace V prohlížeči přejděte na veřejnou adresu URL, která se `/weatherforecast` připojí ke konci. Například:
+Odeslat požadavek GET do `solar-system-weather` aplikace V prohlížeči přejděte na veřejnou adresu URL, která se `/weatherforecast` připojí ke konci. Příklad:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -222,7 +222,7 @@ Kompilace projektu trvá přibližně 5 minut. Po dokončení byste měli mít j
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Vytvářejte mikroslužby jarních cloudů Azure pomocí souborů JAR vytvořených v předchozím kroku. Vytvoříte tři aplikace: **Brána**, **ověřovací služba**a **služba účtu**.
+1. Vytvářejte mikroslužby jarních cloudů Azure pomocí souborů JAR vytvořených v předchozím kroku. Vytvoříte tři aplikace: **Brána** , **ověřovací služba** a **služba účtu** .
 
     ```azurecli
     az spring-cloud app create --name gateway
@@ -306,23 +306,23 @@ Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlíže�
 ### <a name="deploy-gateway-app-to-azure-spring-cloud"></a>Nasazení aplikace brány do jarního cloudu Azure
 Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účtu Azure pomocí Azure Toolkit for IntelliJ a zvolit své předplatné. Podrobnosti o přihlášení najdete v tématu [instalace a přihlášení](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. V Project Exploreru klikněte pravým tlačítkem na projekt a vyberte **Azure**  ->  **Deploy do Azure jaře Cloud**.
+1. V Project Exploreru klikněte pravým tlačítkem na projekt a vyberte **Azure**  ->  **Deploy do Azure jaře Cloud** .
 
     ![Nasazení do Azure 1](media/spring-cloud-intellij-howto/revision-deploy-to-azure-1.png)
 
-1. Do pole **název** přidejte *: Brána* k existujícímu **názvu**.
-1. V textovém poli **artefaktu** vyberte *com. piggymetrics: Gateway: 1.0-Snapshot*.
+1. Do pole **název** přidejte *: Brána* k existujícímu **názvu** .
+1. V textovém poli **artefaktu** vyberte *com. piggymetrics: Gateway: 1.0-Snapshot* .
 1. V textovém poli **odběr** ověřte své předplatné.
 1. V textovém poli pole **jarního cloudu** vyberte instanci služby Azure jaře Cloud, kterou jste vytvořili v části [zřízení instance cloudové služby Azure jaře](./spring-cloud-quickstart-provision-service-instance.md).
-1. Nastavte **veřejný koncový bod** , který se má *Povolit*.
-1. V poli **aplikace:** textové pole vyberte **vytvořit aplikaci...**.
-1. Zadejte *bránu*a pak klikněte na **OK**.
+1. Nastavte **veřejný koncový bod** , který se má *Povolit* .
+1. V poli **aplikace:** textové pole vyberte **vytvořit aplikaci...** .
+1. Zadejte *bránu* a pak klikněte na **OK** .
 
     ![Nasadit do Azure v pořádku](media/spring-cloud-intellij-howto/revision-deploy-to-azure-2.png)
 
-1. V části **před spuštěním** klikněte dvakrát na možnost *Spustit Maven cíl*.
+1. V části **před spuštěním** klikněte dvakrát na možnost *Spustit Maven cíl* .
 1. V textovém poli **pracovní adresář** přejděte do složky *piggymetrics/Gateway* .
-1. Do textového pole **příkazový řádek** zadejte *Package-DskipTests*. Klikněte na **OK**.
+1. Do textového pole **příkazový řádek** zadejte *Package-DskipTests* . Klikněte na **OK** .
 1. Spusťte nasazení kliknutím na tlačítko **Spustit** v dolní části dialogového okna **nasadit Azure jarní cloudovou aplikaci** . Modul plug-in spustí příkaz `mvn package` v `gateway` aplikaci a nasadí jar vygenerované `package` příkazem.
 
 ### <a name="deploy-auth-service-and-account-service-apps-to-azure-spring-cloud"></a>Nasazení aplikací ověřování – služba a účet – aplikace do jarního cloudu Azure
@@ -330,7 +330,7 @@ Zopakováním výše uvedených kroků můžete nasadit `auth-service` a `accoun
 
 1. Upravte **název** a **artefakt** pro identifikaci `auth-service` aplikace.
 1. V textovém poli **aplikace:** vyberte **vytvořit aplikaci...** a vytvořte `auth-service` aplikace.
-1. Ověřte, jestli je možnost **veřejný koncový bod** nastavená na *disabled (zakázáno*).
+1. Ověřte, jestli je možnost **veřejný koncový bod** nastavená na *disabled (zakázáno* ).
 1. V části **před spuštěním** v dialogovém okně přepněte **pracovní adresář** do složky *piggymetrics/auth-Service* .
 1. Spusťte nasazení kliknutím na tlačítko **Spustit** v dolní části dialogového okna **nasadit Azure jarní cloudovou aplikaci** . 
 1. Opakujte tyto postupy pro konfiguraci a nasazení `account-service` .

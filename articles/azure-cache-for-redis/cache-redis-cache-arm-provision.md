@@ -7,14 +7,14 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: fdfa8c767757aa17983a28d0d586698551326fe4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545323"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735971"
 ---
-# <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>Vytvoření mezipaměti Azure pro Redis pomocí šablony ARM
+# <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Rychlý Start: vytvoření mezipaměti Azure pro Redis pomocí šablony ARM
 
 Naučte se vytvořit šablonu Azure Resource Manager (šablonu ARM), která nasadí mezipaměť Azure pro Redis. Mezipaměť lze použít s existujícím účtem úložiště pro zachování diagnostických dat. Naučíte se také, jak definovat, které prostředky jsou nasazeny a jak definovat parametry, které jsou zadány při spuštění nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky. V současné době se nastavení diagnostiky sdílí pro všechny mezipaměti ve stejné oblasti pro předplatné. Aktualizace jedné mezipaměti v oblasti má vliv na všechny ostatní mezipaměti v oblasti.
 

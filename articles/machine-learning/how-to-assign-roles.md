@@ -10,13 +10,13 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
-ms.custom: how-to, seodec18
-ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, seodec18, devx-track-azurecli
+ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425645"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736609"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru služby Azure Machine Learning
 
@@ -45,7 +45,7 @@ Pokud jste vlastníkem pracovního prostoru, můžete přidat a odebrat role pro
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Šablony Azure Resource Manageru](/azure/role-based-access-control/role-assignments-template)
+- [Šablony Azure Resource Manager](/azure/role-based-access-control/role-assignments-template)
 
 Pokud jste nainstalovali [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), můžete k přiřazení rolí uživatelům použít příkazy rozhraní příkazového řádku:
 
@@ -173,7 +173,7 @@ V současnosti nepublikujeme [předdefinované role Azure](/azure/role-based-acc
 
 Tady je několik běžných scénářů s vlastními navrhovanými definicemi rolí, které můžete použít jako základ k definování vlastních rolí:
 
-* Odborník na __data – vlastní__: umožňuje, aby datový vědecký pracovník prováděl všechny operace v pracovním prostoru **s výjimkou**:
+* Odborník na __data – vlastní__ : umožňuje, aby datový vědecký pracovník prováděl všechny operace v pracovním prostoru **s výjimkou** :
 
     * Vytváření výpočetních prostředků
     * Nasazení modelů do provozního clusteru AKS
@@ -209,7 +209,7 @@ Tady je několik běžných scénářů s vlastními navrhovanými definicemi ro
     }
     ```
 
-* __Vlastní omezení pro datový vědecký pracovník__: v povolených akcích není k většímu omezení definice role bez zástupných znaků. Může provádět všechny operace v pracovním prostoru **s výjimkou**:
+* __Vlastní omezení pro datový vědecký pracovník__ : v povolených akcích není k většímu omezení definice role bez zástupných znaků. Může provádět všechny operace v pracovním prostoru **s výjimkou** :
 
     * Vytváření výpočetních prostředků
     * Nasazení modelů do provozního clusteru AKS
@@ -270,7 +270,7 @@ Tady je několik běžných scénářů s vlastními navrhovanými definicemi ro
     }
     ```
      
-* __MLflow data vědecký vědecký pracovník__: umožňuje, aby datový vědecký pracovník provedl všechny operace s podporou MLflow AzureML **s výjimkou**:
+* __MLflow data vědecký vědecký pracovník__ : umožňuje, aby datový vědecký pracovník provedl všechny operace s podporou MLflow AzureML **s výjimkou** :
 
    * Vytváření výpočetních prostředků
    * Nasazení modelů do provozního clusteru AKS
@@ -310,7 +310,7 @@ Tady je několik běžných scénářů s vlastními navrhovanými definicemi ro
     }
     ```   
 
-* __MLOps vlastní__: slouží k přiřazení role k instančnímu objektu a k automatizaci kanálů MLOps. Například pro odeslání spuštění proti již publikovanému kanálu:
+* __MLOps vlastní__ : slouží k přiřazení role k instančnímu objektu a k automatizaci kanálů MLOps. Například pro odeslání spuštění proti již publikovanému kanálu:
 
     `mlops_custom_role.json` :
     ```json
@@ -351,7 +351,7 @@ Tady je několik běžných scénářů s vlastními navrhovanými definicemi ro
     }
     ```
 
-* __Správce pracovního prostoru__: umožňuje provádět všechny operace v rámci oboru pracovního prostoru, **s výjimkou**:
+* __Správce pracovního prostoru__ : umožňuje provádět všechny operace v rámci oboru pracovního prostoru, **s výjimkou** :
 
     * Vytváří se nový pracovní prostor.
     * Přiřazení kvót na úrovni předplatného nebo pracovního prostoru
@@ -381,7 +381,7 @@ Tady je několik běžných scénářů s vlastními navrhovanými definicemi ro
     ```
 
 <a name="labeler"></a>
-* __Customer Label__: umožňuje definovat obor role pouze k označení dat popisků:
+* __Customer Label__ : umožňuje definovat obor role pouze k označení dat popisků:
 
     `labeler_custom_role.json` :
     ```json

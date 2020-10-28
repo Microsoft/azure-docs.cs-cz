@@ -6,16 +6,16 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 05/01/2020
+ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893080"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738749"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a Správa poznámkových bloků synapse Studio (Preview) v Azure synapse Analytics
 
@@ -32,7 +32,7 @@ Tento článek popisuje, jak používat notebooky v Azure synapse Studio.
 
 ## <a name="create-a-notebook"></a>Vytvoření poznámkového bloku
 
-Existují dva způsoby, jak vytvořit Poznámkový blok. Můžete vytvořit nový Poznámkový blok nebo importovat existující Poznámkový blok do pracovního prostoru Azure synapse z **Průzkumník objektů**. Poznámkové bloky Azure synapse Studio můžou rozpoznávat standardní soubory Jupyter Notebook IPYNB.
+Existují dva způsoby, jak vytvořit Poznámkový blok. Můžete vytvořit nový Poznámkový blok nebo importovat existující Poznámkový blok do pracovního prostoru Azure synapse z **Průzkumník objektů** . Poznámkové bloky Azure synapse Studio můžou rozpoznávat standardní soubory Jupyter Notebook IPYNB.
 
 ![vytvoření poznámkového bloku pro import](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
@@ -44,11 +44,11 @@ Poznámkové bloky se skládají z buněk, což jsou jednotlivé bloky kódu neb
 
 Existuje několik způsobů, jak přidat novou buňku do poznámkového bloku.
 
-1. Rozbalte tlačítko horní levý **+ buňka** a vyberte **Přidat znaková buňka** nebo **Přidat textovou buňku**.
+1. Rozbalte tlačítko horní levý **+ buňka** a vyberte **Přidat znaková buňka** nebo **Přidat textovou buňku** .
 
     ![Přidání buňky s tlačítkem do buňky](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
-2. Najeďte myší na místo mezi dvěma buňkami a vyberte **přidat kód** nebo **Přidat text**.
+2. Najeďte myší na místo mezi dvěma buňkami a vyberte **přidat kód** nebo **Přidat text** .
 
     ![přidávání buněk mezi místy](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
@@ -71,7 +71,7 @@ V rozevíracím seznamu na horním panelu příkazů můžete nastavit primárn�
 
 V jednom poznámkovém bloku můžete použít více jazyků zadáním správného příkazu jazyka Magic na začátku buňky. V následující tabulce jsou uvedeny příkazy Magic pro přepínání jazyků buněk.
 
-|Magic – příkaz |Jazyk | Description |  
+|Magic – příkaz |Jazyk | Popis |  
 |---|------|-----|
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  
@@ -116,10 +116,10 @@ Funkce IntelliSense mají různé úrovně splatnosti pro různé jazyky. Pomoc�
 
 |Jazyky| Zvýrazňování syntaxe | Značka chyby syntaxe  | Dokončování kódu syntaxe | Dokončování kódu proměnné| Dokončování kódu systémové funkce| Dokončování kódu uživatelské funkce| Inteligentní odsazení | Skládání kódu|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Spark (Scala)|Yes|Yes|Yes|Yes|-|-|-|Yes|
-|SparkSQL|Yes|Yes|-|-|-|-|-|-|
-|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
+|PySpark (Python)|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Spark (Scala)|Ano|Ano|Ano|Ano|-|-|-|Ano|
+|SparkSQL|Ano|Ano|-|-|-|-|-|-|
+|.NET for Spark (C#)|Ano|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formátování textové buňky pomocí tlačítek panelu nástrojů
 
@@ -142,7 +142,7 @@ Vyberte tři tečky (...) pro přístup k nabídce Další akce buňky úplně v
 
 ### <a name="delete-a-cell"></a>Odstranění buňky
 
-Pokud chcete odstranit buňku, vyberte tři tečky (...) pro přístup k nabídce Další akce buňky úplně vpravo a pak vyberte **Odstranit buňku**. 
+Pokud chcete odstranit buňku, vyberte tři tečky (...) pro přístup k nabídce Další akce buňky úplně vpravo a pak vyberte **Odstranit buňku** . 
 
 [V režimu příkazu](#shortcut-keys-under-command-mode)můžete také použít klávesové zkratky. Aktuální buňku odstraníte stisknutím klávesy **d, d** .
   
@@ -167,12 +167,12 @@ Buňky kódu můžete na svém poznámkovém bloku spustit jednotlivě nebo naje
 
 Existuje několik způsobů, jak kód spustit v buňce.
 
-1. Najeďte myší na buňku, kterou chcete spustit, a vyberte tlačítko **Spustit buňku** nebo stiskněte klávesy **CTRL + ENTER**.
+1. Najeďte myší na buňku, kterou chcete spustit, a vyberte tlačítko **Spustit buňku** nebo stiskněte klávesy **CTRL + ENTER** .
 
    ![spustit – buňka-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
 
-2. Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyberte tři tečky (**...**). Pak vyberte **Spustit buňku**.
+2. Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyberte tři tečky ( **...** ). Pak vyberte **Spustit buňku** .
 
    ![spustit – buňka 2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
@@ -186,7 +186,7 @@ Kliknutím na tlačítko **Spustit vše** spustíte všechny buňky v aktuální
 
 ### <a name="run-all-cells-above-or-below"></a>Spustit všechny buňky výše nebo níže
 
-Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyberte tři tečky (**...**). Pak vyberte **Spustit buňky výše** a spusťte tak všechny buňky nad aktuální sekvencí. Vyberte **Spustit buňky níže** , aby se spouštěly všechny buňky pod aktuálním pořadím.
+Chcete-li získat přístup k nabídce Další akce v buňce úplně vpravo, vyberte tři tečky ( **...** ). Pak vyberte **Spustit buňky výše** a spusťte tak všechny buňky nad aktuální sekvencí. Vyberte **Spustit buňky níže** , aby se spouštěly všechny buňky pod aktuálním pořadím.
 
    ![Run-Cells-nad nebo – níže](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -211,7 +211,7 @@ Počet úloh na každou úlohu nebo fázi vám pomůžou identifikovat paraleln�
 
 ### <a name="spark-session-config"></a>Konfigurace relace Spark
 
-Můžete zadat dobu trvání, číslo a velikost prováděcích modulů, které se mají přiřadit aktuální relaci Sparku v části **konfigurovat relaci**. Restartujte relaci Spark, aby se projevily změny v konfiguraci. Všechny proměnné poznámkového bloku uložené v mezipaměti jsou vymazány.
+Můžete zadat dobu trvání, číslo a velikost prováděcích modulů, které se mají přiřadit aktuální relaci Sparku v části **konfigurovat relaci** . Restartujte relaci Spark, aby se projevily změny v konfiguraci. Všechny proměnné poznámkového bloku uložené v mezipaměti jsou vymazány.
 
 [![Správa relací](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
 
@@ -275,7 +275,7 @@ K datům v primárním účtu úložiště můžete přistupovat přímo. Není 
 
 ### <a name="produce-rendered-table-view"></a>Vygenerovat zobrazení vykreslené tabulky
 
-Zobrazení tabelárních výsledků je k dispozici s možností vytvoření pruhového grafu, spojnicového grafu, výsečového grafu, bodového grafu a plošného grafu. Data můžete vizualizovat bez nutnosti psát kód. Grafy je možné přizpůsobit v **možnostech grafu**. 
+Zobrazení tabelárních výsledků je k dispozici s možností vytvoření pruhového grafu, spojnicového grafu, výsečového grafu, bodového grafu a plošného grafu. Data můžete vizualizovat bez nutnosti psát kód. Grafy je možné přizpůsobit v **možnostech grafu** . 
 
 V zobrazení vykreslené tabulky je ve výchozím nastavení zobrazen výstup příkazů **%%** Magic. Můžete zavolat <code>display(df)</code> na datové rámce Spark, PANDAS Dataframes, list nebo odolné distribuované datové sady (RDD), aby se vytvořilo zobrazení vykreslené tabulky.
 
@@ -294,9 +294,9 @@ Můžete použít <code>display(df, summary = True)</code> ke kontrole souhrnu s
 
 ### <a name="render-html-or-interactive-libraries"></a>Vykreslování HTML nebo interaktivních knihoven
 
-Můžete vykreslit kód HTML, včetně JavaScript, CSS, D3 nebo interaktivních knihoven, jako je **rozostření**, pomocí **displayHTML ()**.
+Můžete vykreslit kód HTML, včetně JavaScript, CSS, D3 nebo interaktivních knihoven, jako je **rozostření** , pomocí **displayHTML ()** .
 
-Následující obrázek je příkladem vykreslení glyfů přes mapu pomocí **rozostření**.
+Následující obrázek je příkladem vykreslení glyfů přes mapu pomocí **rozostření** .
 
    ![rozostření – příklad](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
    
@@ -357,7 +357,7 @@ Dostupné Magic linky: [% lsmagic](https://ipython.readthedocs.io/en/stable/inte
 Dostupné buňky Magic: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%% WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% CSharp](#use-multiple-languages)
 
 
-## <a name="orchestrate-notebook"></a>Orchestrace poznámkového bloku
+## <a name="integrate-a-notebook"></a>Integrace poznámkového bloku
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>Přidání poznámkového bloku do kanálu
 

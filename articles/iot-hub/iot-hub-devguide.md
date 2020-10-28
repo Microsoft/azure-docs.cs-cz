@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81728819"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735926"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Příručka pro vývojáře Azure IoT Hub
 
@@ -52,7 +52,7 @@ Tento IoT Hub příručka pro vývojáře obsahuje následující články:
 
 * [Nahrání souborů ze zařízení](iot-hub-devguide-file-upload.md) popisuje, jak můžete nahrávat soubory ze zařízení. Článek obsahuje také informace o tématech, jako jsou oznámení, která může proces nahrávání odeslat.
 
-* [Správa identit zařízení v IoT Hub](iot-hub-devguide-identity-registry.md)popisuje informace o úložištích registru identit v centru IoT Hub. Tento článek také popisuje, jak k němu můžete přistupovat a jak ho upravovat.
+* [Správa identit zařízení v IoT Hub](iot-hub-devguide-identity-registry.md) popisuje informace o úložištích registru identit v centru IoT Hub. Tento článek také popisuje, jak k němu můžete přistupovat a jak ho upravovat.
 
 * [Řízení přístupu k IoT Hub](iot-hub-devguide-security.md) popisuje model zabezpečení, který se používá k udělení přístupu k funkcím IoT Hub pro zařízení i cloudové komponenty. Tento článek obsahuje informace o používání tokenů a certifikátů X. 509 a podrobnosti o oprávněních, která můžete udělit.
 

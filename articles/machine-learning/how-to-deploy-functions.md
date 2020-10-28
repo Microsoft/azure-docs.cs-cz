@@ -10,13 +10,13 @@ author: vaidya-s
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
-ms.custom: how-to, racking-python
-ms.openlocfilehash: cc5bc5b2c9f78854909b965487f7b4299f3a1579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, racking-python, devx-track-azurecli
+ms.openlocfilehash: e93db23b09e933b58d6338646e7fff6fa30bc68e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567447"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736556"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Nasazení modelu Machine Learning do Azure Functions (Preview)
 
@@ -28,7 +28,7 @@ Naučte se, jak nasadit model z Azure Machine Learning jako aplikace Function Ap
 
 Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích modelů strojového učení. Azure Machine Learning teď má funkce Preview k sestavování těchto modelů strojového učení do aplikací Function App, které se dají [nasadit do Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
@@ -47,7 +47,7 @@ Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích mo
 
 Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako webové služby. Následující seznam popisuje základní položky potřebné pro nasazení:
 
-* __Vstupní skript__. Tento skript přijímá požadavky, vyhodnotí požadavek pomocí modelu a vrátí výsledky.
+* __Vstupní skript__ . Tento skript přijímá požadavky, vyhodnotí požadavek pomocí modelu a vrátí výsledky.
 
     > [!IMPORTANT]
     > Vstupní skript je specifický pro váš model; musí pochopit formát příchozích dat požadavků, formát dat očekávaných modelem a formát dat vrácených klientům.
@@ -58,9 +58,9 @@ Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako we
 
 Další informace o vstupním skriptu najdete v tématu [Definování kódu bodování](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script) .
 
-* **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
+* **Závislosti** , například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
 
-Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
+Tyto entity jsou zapouzdřeny do __Konfigurace odvození__ . Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
 
 > [!IMPORTANT]
 > Při vytváření odvozených konfigurací pro použití s Azure Functions je nutné použít objekt [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) . Počítejte s tím, že pokud definujete vlastní prostředí, musíte přidat AzureML-Defaults s Version >= 1.0.45 jako závislost v PIP. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby. Následující příklad ukazuje vytvoření objektu prostředí a jeho použití s odvozenou konfigurací:
@@ -84,7 +84,7 @@ Další informace o prostředích najdete v tématu [vytváření a Správa pros
 Další informace o konfiguraci odvození najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
-> Při nasazování do funkcí není nutné vytvářet __konfiguraci nasazení__.
+> Při nasazování do funkcí není nutné vytvářet __konfiguraci nasazení__ .
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>Instalace balíčku sady SDK Preview pro podporu funkcí
 
@@ -144,7 +144,7 @@ print(blob.location)
     }
     ```
 
-    Uložte hodnotu pro __uživatelské jméno__ a jedno z __hesel__.
+    Uložte hodnotu pro __uživatelské jméno__ a jedno z __hesel__ .
 
 1. Pokud ještě nemáte skupinu prostředků nebo plán služby App Service pro nasazení služby, následující příkazy ukazují, jak vytvořit obojí:
 

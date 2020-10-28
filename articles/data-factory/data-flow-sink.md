@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: 81ce3fae74a14c91db23c991ab0b53accd6568a6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 5845ab6419d6914b9221df1ae1280d31aba0ae7a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107704"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737532"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -26,19 +26,19 @@ Každá transformace jímky je přidružená k přesně jednomu Azure Data Facto
 
 ## <a name="inline-datasets"></a>Vložené datové sady
 
-Při vytváření transformace jímky vyberte, zda jsou informace jímky definovány v objektu DataSet nebo v rámci transformace jímky. Většina formátů je k dispozici pouze v jednom nebo druhém. Pokud se chcete dozvědět, jak používat konkrétní konektor, použijte prosím odkaz na příslušný dokument konektoru.
+Když vytvoříte transformaci jímky, vyberte, zda jsou informace o jímky definovány v objektu DataSet nebo v rámci transformace jímky. Většina formátů je k dispozici pouze v jedné nebo druhé. Informace o použití konkrétního konektoru najdete v dokumentu příslušného konektoru.
 
-Pokud je pro vložené i v objektu DataSet podporován formát, existují výhody obou. Objekty datové sady jsou opakovaně použitelné entity, které lze využít v jiných datových tocích a aktivitách, jako je například kopírování. To je užitečné hlavně při použití zpřísněného schématu. Datové sady nejsou založené na Sparku a občas možná budete muset v transformaci jímky přepsat určitá nastavení nebo projekce schématu.
+Pokud je pro vložené i v objektu DataSet podporován formát, existují výhody obou. Objekty datové sady jsou opakovaně použitelné entity, které lze použít v jiných datových tocích a aktivitách, jako je například kopírování. Tyto opakovaně použitelné entity jsou obzvláště užitečné při použití posíleného schématu. Datové sady nejsou založené na Sparku. Občas může být nutné přepsat určitá nastavení nebo projekce schématu v transformaci jímky.
 
-Vložené datové sady jsou doporučeny při použití flexibilních schémat, instancí jednorázové jímky nebo parametrizovaných umyvadel. Pokud je vaše jímka silně Parametrizovaná, vložené datové sady vám umožní vytvořit "fiktivní" objekt. Vložené datové sady jsou založené na Sparku a jejich vlastnosti jsou nativní pro tok dat.
+Vložené datové sady jsou doporučeny při použití flexibilních schémat, instancí jedné instance jímky nebo parametrizovaných umyvadel. Pokud je vaše jímka silně Parametrizovaná, vložené datové sady vám umožní vytvořit "fiktivní" objekt. Vložené datové sady jsou založené na Sparku a jejich vlastnosti jsou nativní pro tok dat.
 
-Chcete-li použít vloženou datovou sadu, vyberte požadovaný formát v selektoru **typu jímky** . Místo výběru datové sady jímky vyberete propojenou službu, ke které se chcete připojit.
+Pokud chcete použít vloženou datovou sadu, vyberte požadovaný formát v selektoru **typu jímky** . Místo výběru datové sady jímky vyberete propojenou službu, ke které se chcete připojit.
 
-![Vložená datová sada](media/data-flow/inline-selector.png "Vložená datová sada")
+![Snímek obrazovky, který zobrazuje vybrané vložené.](media/data-flow/inline-selector.png "Snímek obrazovky, který zobrazuje vybrané vložené.")
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Podporované typy jímky
 
-Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (ELT) a pracuje s *přípravnými* datovými sadami, které jsou všechny v Azure. V současné době je možné v transformaci zdroje použít následující datové sady:
+Mapování toku dat sleduje přístup k extrakci, načítání a transformaci (ELT) a pracuje s *pracovními* datovými sadami, které jsou všechny v Azure. V současné době lze v transformaci zdroje použít následující datové sady.
 
 | Konektor | Formát | Sada dat/vložené |
 | --------- | ------ | -------------- |
@@ -48,38 +48,38 @@ Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (EL
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Spravovaná instance Azure SQL (Preview)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
-Nastavení specifická pro tyto konektory jsou umístěna na kartě **Nastavení** . Příklady skriptu informace a toku dat v těchto nastaveních se nachází v dokumentaci konektoru. 
+Nastavení specifická pro tyto konektory jsou umístěna na kartě **Nastavení** . Příklady skriptu informace a toku dat v těchto nastaveních se nachází v dokumentaci konektoru.
 
 Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Chcete-li zapsat data do těchto jiných zdrojů z datového toku, použijte aktivitu kopírování a načtěte tato data z podporované jímky.
 
 ## <a name="sink-settings"></a>Nastavení jímky
 
-Po přidání jímky proveďte konfiguraci přes kartu **jímka** . Tady můžete vybrat nebo vytvořit datovou sadu, do které zapisuje jímka. Hodnoty vývoje pro parametry datové sady lze konfigurovat v [nastavení ladění](concepts-data-flow-debug-mode.md) (vyžaduje zapnutí režimu ladění).
+Po přidání jímky proveďte konfiguraci přes kartu **jímka** . Tady můžete vybrat nebo vytvořit datovou sadu, do které zapisuje jímka. Hodnoty vývoje pro parametry datové sady lze konfigurovat v [nastavení ladění](concepts-data-flow-debug-mode.md). (Režim ladění musí být zapnutý.)
 
-Níže je video vysvětlující řadu různých možností jímky pro typy souborů s oddělovači textu:
+Následující video vysvětluje řadu různých možností jímky pro typy souborů s oddělovači textu.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
-![Nastavení jímky](media/data-flow/sink-settings.png "Nastavení jímky")
+![Snímek obrazovky, který zobrazuje nastavení jímky.](media/data-flow/sink-settings.png "Snímek obrazovky, který zobrazuje nastavení jímky.")
 
-**Posun schématu:** [posun schématu](concepts-data-flow-schema-drift.md) je schopnost objektu pro vytváření dat nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců. Povolit možnost **Povolit posun schématu** pro zápis dalších sloupců nad to, co je definováno ve schématu dat jímky.
+**Posun schématu** : [posun schématu](concepts-data-flow-schema-drift.md) je schopnost Data Factory nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců. Povolit možnost **Povolit posun schématu** pro zápis dalších sloupců nad to, co je definováno ve schématu dat jímky.
 
-**Ověřit schéma:** Pokud je vybraná možnost ověřit schéma, tok dat selže, pokud se ve zdrojové projekci nenalezne libovolný sloupec schématu příchozích zdrojů, nebo pokud se datové typy neshodují. Pomocí tohoto nastavení můžete vynutilit, aby zdrojová data splňovala kontrakt vaší definované projekce. Je velmi užitečné ve scénářích zdroje databáze k signalizaci, že se změnily názvy nebo typy sloupců.
+**Ověřit schéma** : Pokud je vybraná možnost ověřit schéma, tok dat selže, pokud se ve zdrojové projekci nenajde žádný sloupec pro příchozí zdrojové schéma, nebo pokud se datové typy neshodují. Pomocí tohoto nastavení můžete vynutilit, aby zdrojová data splňovala kontrakt vaší definované projekce. To je užitečné ve scénářích zdrojové databáze k signalizaci, že se změnily názvy nebo typy sloupců.
 
 ## <a name="field-mapping"></a>Mapování pole
 
-Podobně jako u transformace Select se můžete rozhodnout, které příchozí sloupce budou zapsány na kartě **mapování** jímky. Ve výchozím nastavení jsou namapovány všechny vstupní sloupce, včetně unášených sloupců. Toto je známé jako **automatické mapování**.
+Podobně jako u transformace Select se můžete rozhodnout, které příchozí sloupce se budou zapisovat, na kartě **mapování** jímky. Ve výchozím nastavení jsou namapovány všechny vstupní sloupce, včetně unášených sloupců. Toto chování se označuje jako *automapping* .
 
-Když automatické mapování vypnete, budete mít možnost přidat buď pevná mapování na sloupce, nebo mapování na základě pravidel. Mapování na základě pravidel umožňují psát výrazy s porovnáváním vzorů, zatímco pevné mapování bude mapovat logické a fyzické názvy sloupců. Další informace o mapování na základě pravidel najdete v tématu [vzory sloupců v části mapování toku dat](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+Po vypnutí automatického mapování můžete přidat buď pevná mapování na základě sloupců, nebo mapování na základě pravidel. Pomocí mapování založeného na pravidlech můžete psát výrazy s porovnáváním vzorů. Pevné mapování mapuje logické a fyzické názvy sloupců. Další informace o mapování na základě pravidel najdete v tématu [vzory sloupců v části mapování toku dat](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
 
 ## <a name="custom-sink-ordering"></a>Vlastní řazení jímky
 
-Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterministickém pořadí. Spouštěcí modul zapisuje data paralelně, protože je dokončena transformace logiky a řazení jímky se může u každého spuštění lišit. Chcete-li zadat a přesné řazení jímky, povolte **vlastní řazení jímky** na kartě Obecné v toku dat. Pokud je povoleno, jímky budou zapisovány postupně ve vzestupném pořadí.
+Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterministickém pořadí. Spouštěcí modul zapisuje data paralelně jako logiku transformace a řazení jímky se může u každého spuštění lišit. Chcete-li určit přesné řazení jímky, povolte **vlastní řazení jímky** na kartě **Obecné** v toku dat. Pokud je tato možnost povolena, jsou jímky zapisovány postupně ve vzestupném pořadí.
 
-![Vlastní řazení jímky](media/data-flow/custom-sink-ordering.png "Vlastní řazení jímky")
+![Snímek obrazovky, který ukazuje vlastní řazení jímky.](media/data-flow/custom-sink-ordering.png "Snímek obrazovky, který ukazuje vlastní řazení jímky.")
 
 ## <a name="data-preview-in-sink"></a>Náhled dat v jímky
 

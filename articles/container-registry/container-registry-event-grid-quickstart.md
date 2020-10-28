@@ -3,13 +3,13 @@ title: Rychlý Start – odeslání událostí do Event Grid
 description: V tomto rychlém startu povolíte Event Grid události pro registr kontejnerů a potom zadáte události pro vložení a odstranění image kontejneru do ukázkové aplikace.
 ms.topic: article
 ms.date: 08/23/2018
-ms.custom: seodec18
-ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 3e9e9a7d6016f53225c1b2f31fb8eef91e202c7a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78403232"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736853"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý Start: odeslání událostí z privátního registru kontejneru do Event Grid
 
@@ -19,7 +19,7 @@ Po dokončení kroků v tomto článku se v ukázkové webové aplikaci zobrazí
 
 ![Webový prohlížeč, který vykresluje ukázkovou webovou aplikaci se třemi přijatými událostmi][sample-app-01]
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet][azure-account].
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -200,13 +200,13 @@ Na následujícím snímku obrazovky vidíte ukázkovou aplikaci se třemi udál
 
 ![Webový prohlížeč, který zobrazuje ukázkovou aplikaci s ImagePushed a ImageDeletedmi událostmi][sample-app-03]
 
-Blahopřejeme! Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
+Blahopřejeme vám. Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Jakmile budete hotovi s prostředky, které jste vytvořili v rámci tohoto rychlého startu, můžete je odstranit pomocí následujícího příkazu rozhraní příkazového řádku Azure CLI. Když odstraníte skupinu prostředků, všechny prostředky, které obsahuje, se trvale odstraní.
 
-**Upozornění**: Tato operace je nevratná. Před spuštěním příkazu se ujistěte, že už ve skupině nepotřebujete žádné prostředky.
+**Upozornění** : Tato operace je nevratná. Před spuštěním příkazu se ujistěte, že už ve skupině nepotřebujete žádné prostředky.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3c2b2ce5bd9af60d6d1fd4ac066681ee8473521
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249446"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738283"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Spravovaná identita v pracovním prostoru Azure synapse (Preview)
 
@@ -32,7 +32,7 @@ Při vytváření pracovního prostoru se vytvoří spravovaná identita přiřa
 >[!NOTE]
 >Tato identita spravovaná pracovním prostorem se bude v ostatních částech tohoto dokumentu označovat jako spravovaná identita.
 
-Azure synapse používá spravovanou identitu k orchestraci kanálů. Životní cyklus spravované identity je přímo vázaný na pracovní prostor Azure synapse. Pokud pracovní prostor Azure synapse odstraníte, vyčistí se i spravovaná identita.
+Azure synapse používá spravovanou identitu k integraci kanálů. Životní cyklus spravované identity je přímo vázaný na pracovní prostor Azure synapse. Pokud pracovní prostor Azure synapse odstraníte, vyčistí se i spravovaná identita.
 
 Identita spravovaná pracovním prostorem potřebuje oprávnění k provádění operací v kanálech. K vyhledání spravované identity při udělování oprávnění můžete použít ID objektu nebo název vašeho pracovního prostoru Azure synapse.
 
@@ -48,11 +48,11 @@ Spusťte **Azure synapse Studio** a v levém navigačním panelu vyberte kartu *
 
 ![Vytvoření propojené služby 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-V okně **Nová propojená služba** zadejte *Azure Data Lake Storage Gen2*. V níže uvedeném seznamu vyberte typ prostředku **Azure Data Lake Storage Gen2** a zvolte **pokračovat**.
+V okně **Nová propojená služba** zadejte *Azure Data Lake Storage Gen2* . V níže uvedeném seznamu vyberte typ prostředku **Azure Data Lake Storage Gen2** a zvolte **pokračovat** .
 
 ![Vytvoření propojené služby 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 
-V dalším okně vyberte možnost **spravovaná identita** pro **metodu ověřování**. Zobrazí se **název** spravované identity a **ID objektu**.
+V dalším okně vyberte možnost **spravovaná identita** pro **metodu ověřování** . Zobrazí se **název** spravované identity a **ID objektu** .
 
 ![Vytvoření propojené služby 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826726"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737992"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
@@ -58,7 +58,7 @@ Instalace knihoven do fondu Spark (ve verzi Preview) během vytváření fondu:
    
 3. Nahrajte konfigurační soubor prostředí pomocí voliče souborů v části **Packages (balíčky** ) na stránce. 
    
-![Přidání knihoven Pythonu během vytváření fondu](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Přidat knihovny Pythonu")
+    ![Přidání knihoven Pythonu během vytváření fondu](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "Přidat knihovny Pythonu")
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Instalace balíčků z pracovního prostoru synapse
@@ -68,11 +68,11 @@ Aktualizace nebo přidání dalších knihoven do fondu Spark (Preview) na port�
    
 2.  Spusťte pracovní prostor Azure synapse Analytics z Azure Portal.
 
-3.  V hlavním navigačním panelu vyberte **Spravovat** a pak vyberte **fondy Apache Spark**.
+3.  V hlavním navigačním panelu vyberte **Spravovat** a pak vyberte **fondy Apache Spark** .
    
 4. Vyberte jeden fond Spark a nahrajte konfigurační soubor prostředí pomocí voliče souborů v části  **Packages (balíčky** ) stránky.
 
-![Přidání knihoven Pythonu v synapse](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png "Přidat knihovny Pythonu")
+    ![Přidání knihoven Pythonu v synapse](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Instalovat balíčky z Azure Portal
 Postup instalace knihovny do fondu Spark (ve verzi Preview) přímo z Azure Portal:
@@ -85,7 +85,7 @@ Postup instalace knihovny do fondu Spark (ve verzi Preview) přímo z Azure Port
 
  4. Nahrajte konfigurační soubor prostředí pomocí voliče souborů.
 
-![Snímek obrazovky, který zvýrazní tlačítko pro konfiguraci souboru pro nahrání prostředí.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Přidat knihovny Pythonu")
+    ![Snímek obrazovky, který zvýrazní tlačítko pro konfiguraci souboru pro nahrání prostředí.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Přidat knihovny Pythonu")
 
 ### <a name="verify-installed-libraries"></a>Ověřit nainstalované knihovny
 
@@ -106,13 +106,13 @@ Aktualizace nebo odinstalace knihovny:
 
 3. Přejděte do části **Packages (balíčky** ) a nahrajte nový soubor konfigurace prostředí.
    
-4. Po uložení změn bude nutné ukončit aktivní relace a nechat fond restartovat. Volitelně můžete aktivní relace vynutit tak, že zaškrtnutím políčka **vynutíte nová nastavení**.
+4. Po uložení změn bude nutné ukončit aktivní relace a nechat fond restartovat. Volitelně můžete aktivní relace vynutit tak, že zaškrtnutím políčka **vynutíte nová nastavení** .
 
-![Přidat knihovny Pythonu](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Přidat knihovny Pythonu")
+    ![Přidat knihovny Pythonu](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Přidat knihovny Pythonu")
    
 
 > [!IMPORTANT]
-> Když vyberete možnost pro **vynucení nových nastavení**, ukončí se všechny aktuální relace pro vybraný fond Spark. Po ukončení relace budete muset počkat na restartování fondu. 
+> Když vyberete možnost pro **vynucení nových nastavení** , ukončí se všechny aktuální relace pro vybraný fond Spark. Po ukončení relace budete muset počkat na restartování fondu. 
 >
 > Pokud je toto nastavení nezaškrtnuté, budete muset počkat, až aktuální relace Spark ukončí nebo zastaví ručně. Po ukončení relace budete muset povolit restart fondu. 
 

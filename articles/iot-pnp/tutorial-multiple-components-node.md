@@ -7,13 +7,13 @@ ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-js
-ms.openlocfilehash: ea7b1ba159aa5d11a20ff565390ce0b24e38c1d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 2f0bf3b4b6e7091222b98e1743f0fb4f431fdd12
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577182"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736051"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>Kurz: připojení ukázkové aplikace IoT technologie Plug and Play více aplikací zařízení k IoT Hub (Node.js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91577182"
 
 V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná pro Node.js a je obsažená v sadě SDK pro zařízení Azure IoT Hub pro Node.js. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -105,7 +105,7 @@ Otevřete soubor *pnpTemperatureController.js* v editoru kódu dle vašeho výb�
 
   - Nástroj používá `desiredPropertyPatchListener` k naslouchání aktualizacím vlastností.
 
-  - Zakáže všechny naslouchací procesy a úlohy a ukončí smyčku po stisknutí **q** nebo **q**.
+  - Zakáže všechny naslouchací procesy a úlohy a ukončí smyčku po stisknutí **q** nebo **q** .
 
 [!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 

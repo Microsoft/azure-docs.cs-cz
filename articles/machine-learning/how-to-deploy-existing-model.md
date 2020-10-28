@@ -10,13 +10,13 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 64180320ab57996984f5e886639dfd4977ae5e7c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: e8f789819c762702061465e01cf1e64b349c3344
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999064"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735546"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Nasazení stávajícího modelu pomocí Azure Machine Learning
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak zaregistrovat a nasadit model strojového uče
 
 Další informace o konceptech a pojmech v tomto článku najdete v tématu [Správa, nasazení a monitorování modelů strojového učení](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
   + V příkladech Pythonu se předpokládá, že `ws` je proměnná nastavená na váš pracovní prostor Azure Machine Learning. Další informace o tom, jak se připojit k pracovnímu prostoru, najdete v [dokumentaci k sadě Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace).

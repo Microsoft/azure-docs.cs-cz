@@ -8,12 +8,13 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+- devx-track-azurecli
+ms.openlocfilehash: 7efcff5709995898a6ec950dfea6450f7e0dd48d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490743"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736808"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -47,14 +48,14 @@ V plánu Premium můžete mít aplikaci vždycky připravenou na zadaný počet 
 > [!NOTE]
 > U každého plánu Premium bude vždy aspoň jedna aktivní (fakturovaná) instance.
 
-Počet vždy připravených instancí můžete v Azure Portal nakonfigurovat tak, že vyberete svoji **Function App**a kliknete na kartu **funkce platformy** a vyberete možnosti **horizontálního** navýšení kapacity. V okně pro úpravu aplikace Function App jsou vždy připravené instance specifické pro danou aplikaci.
+Počet vždy připravených instancí můžete v Azure Portal nakonfigurovat tak, že vyberete svoji **Function App** a kliknete na kartu **funkce platformy** a vyberete možnosti **horizontálního** navýšení kapacity. V okně pro úpravu aplikace Function App jsou vždy připravené instance specifické pro danou aplikaci.
 
 ![Nastavení elastického škálování](./media/functions-premium-plan/scale-out.png)
 
 Pro aplikaci můžete pomocí Azure CLI nakonfigurovat i vždy připravené instance.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="pre-warmed-instances"></a>Předem zahřívání instance
@@ -68,7 +69,7 @@ Jakmile se první Trigger dostane do, stanou se pět instancí vždy připraveno
 Počet předem zavedených instancí aplikace můžete upravit pomocí Azure CLI.
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="maximum-instances-for-an-app"></a>Maximální počet instancí aplikace
@@ -99,7 +100,7 @@ Při vytváření plánu jsou k dispozici dvě nastavení velikosti plánu: mini
 
 Pokud vaše aplikace vyžaduje instance mimo instance Always Ready, může pokračovat horizontální navýšení kapacity, dokud počet instancí nedosáhne maximálního limitu shlukování.  Účtují se za instance přesahující váš plán jenom v době, kdy jsou spuštěné a přidělují se vám za sekundu.  Díky omezení velikosti vaší aplikace na vymezený maximální limit dosáhneme úsilí.
 
-Velikost plánu a maximum v Azure Portal můžete nakonfigurovat výběrem možností **horizontálního** navýšení kapacity v plánu nebo aplikace Function App nasazené do tohoto plánu (v části **funkce platformy**).
+Velikost plánu a maximum v Azure Portal můžete nakonfigurovat výběrem možností **horizontálního** navýšení kapacity v plánu nebo aplikace Function App nasazené do tohoto plánu (v části **funkce platformy** ).
 
 Můžete taky zvýšit maximální limit shluku z Azure CLI:
 
@@ -122,9 +123,9 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ### <a name="available-instance-skus"></a>Dostupné skladové položky instance
 
-Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a zřízených paměti za sekundu, které jsou pro každou instanci přiděleny.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
+Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a zřízených paměti za sekundu, které jsou pro každou instanci přiděleny.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.
 
-|Skladová položka|Cores|Paměť|Storage|
+|Skladová položka|Cores|Paměť|Úložiště|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -146,18 +147,18 @@ Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azu
 |Austrálie – střed| 100 | Není k dispozici |
 |Austrálie – střed 2| 100 | Není k dispozici |
 |Austrálie – východ| 100 | 20 |
-|Austrálie – jihovýchod | 100 | 20 |
+|Australia Southeast | 100 | 20 |
 |Brazil South| 100 | 20 |
 |Střední Kanada| 100 | 20 |
 |Střední USA| 100 | 20 |
 |Čína – východ 2| 100 | 20 |
 |Čína – sever 2| 100 | 20 |
 |Východní Asie| 100 | 20 |
-|USA – východ | 100 | 20 |
+|East US | 100 | 20 |
 |USA – východ 2| 100 | 20 |
 |Francie – střed| 100 | 20 |
 |Německo – středozápad| 100 | Není k dispozici |
-|Japonsko – východ| 100 | 20 |
+|Japan East| 100 | 20 |
 |Japonsko – západ| 100 | 20 |
 |Jižní Korea – střed| 100 | 20 |
 |Jižní Korea – jih| Není k dispozici | 20 |

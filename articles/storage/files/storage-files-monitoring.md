@@ -6,16 +6,16 @@ services: storage
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfc554a57e99fa4ccd66b1bbeec0be46e463988f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772664"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738645"
 ---
 # <a name="monitoring-azure-files"></a>Monitorování souborů Azure
 
@@ -51,20 +51,9 @@ Metriky a protokoly v Azure Monitor podporují jenom účty úložiště Azure R
 
 ## <a name="collection-and-routing"></a>Shromažďování a směrování
 
-Metriky platforem a protokol aktivit jsou shromažďovány automaticky, ale mohou být směrovány do jiných umístění pomocí diagnostického nastavení. Je nutné vytvořit nastavení diagnostiky pro shromáždění protokolů prostředků. 
+Metriky platforem a protokol aktivit jsou shromažďovány automaticky, ale mohou být směrovány do jiných umístění pomocí diagnostického nastavení. 
 
-> [!NOTE]
-> Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [tuto stránku](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Tato verze Preview umožňuje protokoly pro objekty BLOB (včetně Azure Data Lake Storage Gen2), soubory, fronty, tabulky, účty Premium Storage pro obecné účely V1 a účty úložiště pro obecné účely v2. Klasické účty úložiště se nepodporují.
-
-Pokud chcete vytvořit nastavení diagnostiky pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu, přečtěte si téma [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../../azure-monitor/platform/diagnostic-settings.md). 
-
-Chcete-li zobrazit šablonu Azure Resource Manager, která vytvoří nastavení diagnostiky, přečtěte si téma [nastavení diagnostiky pro Azure Storage](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
-
-Při vytváření nastavení diagnostiky vyberte typ úložiště, pro které chcete povolit protokoly, jako je například objekt blob, fronta, tabulka nebo soubor. V případě služby soubory Azure vyberte **soubor**. 
-
-Pokud vytvoříte nastavení diagnostiky v Azure Portal, můžete prostředek vybrat ze seznamu. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure, musíte použít ID prostředku koncového bodu služby soubory Azure. ID prostředku můžete najít v Azure Portal tak, že otevřete stránku **vlastností** svého účtu úložiště.
-
-Musíte také zadat jednu z následujících kategorií operací, pro které chcete shromažďovat protokoly. 
+Chcete-li shromáždit protokoly prostředků, je nutné vytvořit nastavení diagnostiky. Když vytvoříte nastavení, vyberte **soubor** jako typ úložiště, pro který chcete povolit protokoly. Pak zadejte jednu z následujících kategorií operací, pro které chcete shromažďovat protokoly. 
 
 | Kategorie | Popis |
 |:---|:---|
@@ -73,6 +62,191 @@ Musíte také zadat jednu z následujících kategorií operací, pro které chc
 | StorageDelete | Odstraní operace s objekty. |
 
 Seznam operací SMB a REST, které se protokolují, najdete v článku o [operacích protokolovaných úložiště a o stavových zprávách](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) a referenčních informacích k [datům monitorování Azure Files](storage-files-monitoring-reference.md).
+
+## <a name="creating-a-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
+
+Nastavení diagnostiky můžete vytvořit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo šablony Azure Resource Manager. 
+
+Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../../azure-monitor/platform/diagnostic-settings.md).
+
+### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. Přihlaste se k webu Azure Portal.
+
+2. Přejděte na svůj účet úložiště.
+
+3. V části **monitorování** klikněte na **nastavení diagnostiky (Preview)** .
+
+   > [!div class="mx-imgBorder"]
+   > ![portál – diagnostické protokoly](media/storage-files-monitoring/diagnostic-logs-settings-pane.png)   
+
+4. Jako typ úložiště, pro který chcete povolit protokoly, vyberte **soubor** .
+
+5. Klikněte na **Přidat nastavení diagnostiky** .
+
+   > [!div class="mx-imgBorder"]
+   > ![portál – protokoly prostředků – přidání nastavení diagnostiky](media/storage-files-monitoring/diagnostic-logs-settings-pane-2.png)
+
+   Zobrazí se stránka **nastavení diagnostiky** .
+
+   > [!div class="mx-imgBorder"]
+   > ![Stránka protokoly prostředků](media/storage-files-monitoring/diagnostic-logs-page.png)
+
+6. Do pole **název** na stránce zadejte název pro toto nastavení protokolu prostředků. Pak vyberte, které operace chcete protokolovat (operace čtení, zápisu a odstranění) a kam chcete protokoly odeslat.
+
+#### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
+
+1. Zaškrtněte políčko **archivovat do účtu úložiště** a pak klikněte na tlačítko **Konfigurovat** .
+
+   > [!div class="mx-imgBorder"]   
+   > ![Archivní úložiště stránky nastavení diagnostiky](media/storage-files-monitoring/diagnostic-logs-settings-pane-archive-storage.png)
+
+2. V rozevíracím seznamu **účet úložiště** vyberte účet úložiště, do kterého chcete archivovat protokoly, klikněte na tlačítko **OK** a potom klikněte na tlačítko **Uložit** .
+
+   > [!NOTE]
+   > Než zvolíte účet úložiště jako cíl exportu, přečtěte si téma [archivace protokolů prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage) a pochopení požadavků v účtu úložiště.
+
+#### <a name="stream-logs-to-azure-event-hubs"></a>Streamování protokolů do Azure Event Hubs
+
+1. Zaškrtněte políčko **datový proud do centra událostí** a pak klikněte na tlačítko **Konfigurovat** .
+
+2. V podokně **Vyberte centrum událostí** zvolte obor názvů, název a název zásady centra událostí, do kterého chcete protokoly streamovat. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Centrum událostí stránky nastavení diagnostiky](media/storage-files-monitoring/diagnostic-logs-settings-pane-event-hub.png)
+
+3. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **Uložit** .
+
+#### <a name="send-logs-to-azure-log-analytics"></a>Odeslat protokoly do Azure Log Analytics
+
+1. Zaškrtněte políčko **Odeslat do Log Analytics** , vyberte pracovní prostor Log Analytics a pak klikněte na tlačítko **Uložit** .
+
+   > [!div class="mx-imgBorder"]   
+   > ![Stránka nastavení diagnostiky Log Analytics](media/storage-files-monitoring/diagnostic-logs-settings-pane-log-analytics.png)
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Otevřete příkazové okno prostředí Windows PowerShell a přihlaste se k předplatnému Azure pomocí `Connect-AzAccount` příkazu. Pak postupujte podle pokynů na obrazovce.
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+2. Nastavte aktivní předplatné na předplatné účtu úložiště, pro který chcete povolit protokolování.
+
+   ```powershell
+   Set-AzContext -SubscriptionId <subscription-id>
+   ```
+
+#### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
+
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell spolu s `StorageAccountId` parametrem.
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+`<storage-service-resource--id>`V tomto fragmentu kódu nahraďte zástupný symbol ID prostředku souborové služby Azure. ID prostředku můžete najít v Azure Portal tak, že otevřete stránku **vlastností** svého účtu úložiště.
+
+Můžete použít `StorageRead` , `StorageWrite` a `StorageDelete` pro hodnotu parametru **kategorie** .
+
+Tady je příklad:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
+
+Popis jednotlivých parametrů najdete v tématu [archivace protokolů prostředků Azure prostřednictvím Azure PowerShell](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell).
+
+#### <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
+
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `EventHubAuthorizationRuleId` parametrem.
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+Tady je příklad:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
+
+Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs pomocí rutin PowerShellu](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets).
+
+#### <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
+
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `WorkspaceId` parametrem.
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+Tady je příklad:
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
+
+Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. Nejdřív otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](https://docs.microsoft.com/cli/azure/install-azure-cli) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
+
+2. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště, pro který chcete povolit protokoly.
+
+   ```azurecli-interactive
+   az account set --subscription <subscription-id>
+   ```
+
+   Nahraďte `<subscription-id>` hodnotu zástupného symbolu číslem ID vašeho předplatného.
+
+#### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
+
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+```
+
+`<storage-service-resource--id>`Zástupný symbol v tomto fragmentu textu nahraďte službou úložiště objektů BLOB ID prostředku. ID prostředku můžete najít v Azure Portal tak, že otevřete stránku **vlastností** svého účtu úložiště.
+
+Můžete použít `StorageRead` , `StorageWrite` a `StorageDelete` pro hodnotu parametru **kategorie** .
+
+Tady je příklad:
+
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+
+Popis jednotlivých parametrů najdete v tématu [archivní protokoly prostředků přes Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli).
+
+#### <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
+
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+```
+
+Tady je příklad:
+
+`az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
+
+Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs přes rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli).
+
+#### <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
+
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
+```
+
+Tady je příklad:
+
+`az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
+
+ Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+
+### <a name="template"></a>[Šablona](#tab/template)
+
+Chcete-li zobrazit šablonu Azure Resource Manager, která vytvoří nastavení diagnostiky, přečtěte si téma [nastavení diagnostiky pro Azure Storage](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
+
+---
 
 ## <a name="analyzing-metrics"></a>Analýza metrik
 
@@ -132,7 +306,7 @@ Můžete si přečíst hodnoty metrik účtu úložiště nebo služby soubory A
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
 
-### <a name="net"></a>[.NET](#tab/dotnet)
+### <a name="net"></a>[.NET](#tab/azure-portal)
 
 Azure Monitor poskytuje [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) pro čtení definice metrik a hodnot. [Vzorový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje, jak použít sadu SDK s různými parametry. `0.18.0-preview`Pro metriky úložiště je nutné použít nebo novější verzi.
  
@@ -272,6 +446,10 @@ Následující příklad ukazuje, jak číst data metriky v metrikě podporujíc
 
 ```
 
+# <a name="template"></a>[Šablona](#tab/template)
+
+Není k dispozici.
+
 ---
 
 ## <a name="analyzing-logs"></a>Analýza protokolů
@@ -283,7 +461,7 @@ Seznam operací SMB a REST, které se protokolují, najdete v článku o [operac
 > [!NOTE]
 > Protokoly Azure Storage v Azure Monitor jsou ve verzi Public Preview a jsou dostupné pro testování ve verzi Preview ve všech oblastech veřejného cloudu. Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [tuto stránku](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Tato verze Preview umožňuje protokoly pro objekty BLOB (včetně Azure Data Lake Storage Gen2), soubory, fronty, tabulky, účty Premium Storage pro obecné účely V1 a účty úložiště pro obecné účely v2. Klasické účty úložiště se nepodporují.
 
-Položky protokolu jsou vytvořeny pouze v případě, že jsou zadány požadavky na koncový bod služby. Pokud například účet úložiště obsahuje aktivitu v koncovém bodu souboru, ale ne ve svých koncových bodech tabulky nebo fronty, vytvoří se pouze protokoly, které se týkají této souborové služby. Protokoly Azure Storage obsahují podrobné informace o úspěšných a neúspěšných požadavcích služby úložiště. Tyto informace je možné použít k monitorování jednotlivých požadavků a diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí.
+Položky protokolu jsou vytvořeny pouze v případě, že jsou zadány požadavky na koncový bod služby. Pokud například účet úložiště obsahuje aktivitu v koncovém bodu souboru, ale ne ve svých koncových bodech tabulky nebo fronty, vytvoří se pouze protokoly, které se týkají služby Azure File Service. Protokoly Azure Storage obsahují podrobné informace o úspěšných a neúspěšných požadavcích služby úložiště. Tyto informace je možné použít k monitorování jednotlivých požadavků a diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí.
 
 ### <a name="log-authenticated-requests"></a>Protokolovat ověřené požadavky
 
@@ -393,11 +571,11 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 
 ### <a name="how-to-create-alerts-for-azure-files"></a>Jak vytvořit výstrahy pro soubory Azure
 
-1. V **Azure Portal**přejít na svůj **účet úložiště** . 
+1. V **Azure Portal** přejít na svůj **účet úložiště** . 
 
-2. Klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy**.
+2. Klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy** .
 
-3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** a pak klikněte na **Hotovo**. 
+3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** a pak klikněte na **Hotovo** . 
 
 4. Klikněte na **vybrat podmínku** a zadejte pro tuto výstrahu následující informace: 
 
@@ -407,7 +585,7 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 
 5. Klikněte na **Vybrat skupinu akcí** a přidejte do ní skupinu akcí (E-mail, SMS atd.), a to buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
 
-6. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis**a **závažnost**.
+6. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , **Popis** a **závažnost** .
 
 7. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
@@ -416,69 +594,69 @@ V následující tabulce jsou uvedeny příklady scénářů, které je třeba m
 
 ### <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Postup vytvoření výstrahy, pokud je sdílená složka omezená
 
-1. V **Azure Portal**přejít na svůj **účet úložiště** .
-2. V části **monitorování** klikněte na **výstrahy**a pak klikněte na **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
+1. V **Azure Portal** přejít na svůj **účet úložiště** .
+2. V části **monitorování** klikněte na **výstrahy** a pak klikněte na **+ nové pravidlo výstrahy** .
+3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo** . Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
 4. Kliknutím na **vybrat podmínku** přidáte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, vyberte metriku **transakcí** .
-6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **typ odpovědi**.
+6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **typ odpovědi** .
 7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte **SUCCESSWITHTHROTTLING** (pro SMB) nebo **ClientThrottlingError** (pro REST).
 
    > [!NOTE]
-   > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte na tlačítko **Přidat vlastní hodnotu** vedle rozevíracího seznamu **hodnoty dimenzí** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError**, klikněte na tlačítko **OK** a poté opakujte krok #7.
+   > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte na tlačítko **Přidat vlastní hodnotu** vedle rozevíracího seznamu **hodnoty dimenzí** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError** , klikněte na tlačítko **OK** a poté opakujte krok #7.
 
-8. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
+8. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů** .
 9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty** . Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
-10. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
+10. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo** .
 
     > [!TIP]
     > Pokud používáte statickou prahovou hodnotu, graf metriky může pomoci určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, v grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
 
 11. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, * * popis a **závažnost**.
+12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , * * popis a **závažnost** .
 13. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-size-is-80-of-capacity"></a>Jak vytvořit výstrahu, pokud je velikost sdílené složky Azure 80% kapacity
 
-1. V **Azure Portal**přejít na svůj **účet úložiště** .
-2. V části **monitorování** klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
+1. V **Azure Portal** přejít na svůj **účet úložiště** .
+2. V části **monitorování** klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy** .
+3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo** . Pokud je třeba název účtu úložiště `contoso` , vyberte `contoso/file` prostředek.
 4. Kliknutím na **vybrat podmínku** přidáte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte metriku **kapacity souboru** .
-6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
+6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů** .
 7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy pro standardní sdílení souborů jsou založené na všech sdílených složkách v účtu úložiště. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty** . Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy pro standardní sdílení souborů jsou založené na všech sdílených složkách v účtu úložiště. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
 8. Zadejte **prahovou hodnotu** v bajtech. Pokud je například velikost sdílené složky 100 TiB a chcete dostat upozornění, když je velikost sdílené složky 80% kapacity, prahová hodnota v bajtech je 87960930222080.
-9. Definujte zbytek **parametrů výstrahy** (členitost agregace a četnost vyhodnocení) a klikněte na **Hotovo**.
+9. Definujte zbytek **parametrů výstrahy** (členitost agregace a četnost vyhodnocení) a klikněte na **Hotovo** .
 10. Kliknutím na vybrat skupinu akcí přidejte skupinu akcí (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-11. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, * * popis a **závažnost**.
+11. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , * * popis a **závažnost** .
 12. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
 ### <a name="how-to-create-an-alert-if-the-azure-file-share-egress-has-exceeded-500-gib-in-a-day"></a>Jak vytvořit výstrahu v případě, že výstup Azure File Share přesáhl 500 GiB za den
 
-1. V **Azure Portal**přejít na svůj **účet úložiště** .
-2. V části monitorování klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
+1. V **Azure Portal** přejít na svůj **účet úložiště** .
+2. V části monitorování klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy** .
+3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo** . Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
 4. Kliknutím na **vybrat podmínku** přidáte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte **výstupní** metriku.
-6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
+6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů** .
 7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 
    > [!NOTE]
-   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy pro standardní sdílení souborů jsou založené na všech sdílených složkách v účtu úložiště. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty** . Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy pro standardní sdílení souborů jsou založené na všech sdílených složkách v účtu úložiště. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
 8. Jako prahovou hodnotu zadejte **536870912000** bajtů. 
-9. Klikněte na rozevírací seznam **členitosti agregace** a vyberte **24 hodin**.
-10. Vyberte **frekvenci hodnocení** a **klikněte na Hotovo**.
+9. Klikněte na rozevírací seznam **členitosti agregace** a vyberte **24 hodin** .
+10. Vyberte **frekvenci hodnocení** a **klikněte na Hotovo** .
 11. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, * * popis a **závažnost**.
+12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , * * popis a **závažnost** .
 13. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
 ## <a name="next-steps"></a>Další kroky

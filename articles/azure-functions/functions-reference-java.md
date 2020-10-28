@@ -3,13 +3,13 @@ title: Referenční dokumentace pro vývojáře v jazyce Java pro Azure Function
 description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.custom: devx-track-java
-ms.openlocfilehash: 2dfd00484e84f4b2c31e52392df43bb07a800f73
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519618"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736689"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -45,7 +45,7 @@ Výše uvedené odkazy na články ukazují, jak vytvořit své první funkce po
 
 ### <a name="project-scaffolding"></a>Generování uživatelského rozhraní pro projekt
 
-Pokud dáváte přednost vývoji příkazového řádku od terminálu, nejjednodušší způsob, jak vygenerovat projekty funkcí založených na jazyce Java, je použít `Apache Maven` archetypes. Java Maven Archetype pro Azure Functions se publikuje v rámci následujícího _identifikátoru GroupID_:_artifactId_: [com. Microsoft. Azure: Azure-Functions-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Pokud dáváte přednost vývoji příkazového řádku od terminálu, nejjednodušší způsob, jak vygenerovat projekty funkcí založených na jazyce Java, je použít `Apache Maven` archetypes. Java Maven Archetype pro Azure Functions se publikuje v rámci následujícího _identifikátoru GroupID_ : _artifactId_ : [com. Microsoft. Azure: Azure-Functions-Archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
 Následující příkaz vytvoří nový projekt funkce jazyka Java pomocí tohoto archetype:
 
@@ -202,7 +202,7 @@ Další argumenty můžete zadat v nastavení aplikace s názvem `JAVA_OPTS` . D
 > [!IMPORTANT]  
 > V plánu spotřeby musíte také přidat nastavení WEBSITE_USE_PLACEHOLDER s hodnotou 0, aby přizpůsobení fungovalo. Toto nastavení zvyšuje dobu studeného startu pro funkce jazyka Java.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 V [Azure Portal](https://portal.azure.com)přidejte nastavení pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) `JAVA_OPTS` .
 

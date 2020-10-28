@@ -9,13 +9,13 @@ author: lobrien
 ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: d31dffe6ee4190e72f413444621eb9f10791d4fc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: troubleshooting, devx-track-python, contperfq2
+ms.openlocfilehash: ce32871620cc0a471e56a5b65191834d7c23b88d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370266"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735715"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 

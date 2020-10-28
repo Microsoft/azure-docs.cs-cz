@@ -3,13 +3,13 @@ title: Vytvoření clusteru se systémem Linux Service Fabric v Azure
 description: Naučte se nasadit cluster Service Fabric s Linuxem do existující virtuální sítě Azure s použitím rozhraní příkazového řádku Azure.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.custom: mvc
-ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586916"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738966"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru se systémem Linux Service Fabric do virtuální sítě Azure
 
@@ -75,7 +75,7 @@ V prostředku **Microsoft.Network/loadBalancers** dochází ke konfiguraci nást
 
 ### <a name="virtual-network-and-subnet"></a>Virtuální síť a podsíť
 
-Názvy virtuální sítě a podsítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks**:
+Názvy virtuální sítě a podsítě jsou deklarované v parametrech šablony.  Adresní prostory virtuální sítě a podsítě se taky deklarují v parametrech šablony a konfigurují v prostředku **Microsoft.Network/virtualNetworks** :
 
 * adresní prostory virtuální sítě: 10.0.0.0/16
 * adresní prostor podsítě Service Fabric: 10.0.2.0/24

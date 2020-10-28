@@ -10,13 +10,13 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b56824e386709bd330339f1f6acfd2812e040de
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: d7d66e247c6a6240bd6fde08612b8eb770bd3b92
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150921"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737550"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Kurz: rozpoznání loga služeb Azure v obrázcích fotoaparátu
 
@@ -154,7 +154,7 @@ Pomocí těchto kroků spusťte aplikaci:
 1. Na první obrazovce zadejte ID klienta instančního objektu, ID tenanta a heslo. Vyberte tlačítko pro **přihlášení** .
 
     > [!NOTE]
-    > V některých emulátorech se v tomto kroku nemusí aktivovat tlačítko pro **přihlášení** . Pokud k tomu dojde, zastavte aplikaci, otevřete soubor *source/VisualProvision/Pages/LoginPage. XAML* , najděte `Button` element s označením **Login**, odeberte následující řádek a pak znovu spusťte aplikaci.
+    > V některých emulátorech se v tomto kroku nemusí aktivovat tlačítko pro **přihlášení** . Pokud k tomu dojde, zastavte aplikaci, otevřete soubor *source/VisualProvision/Pages/LoginPage. XAML* , najděte `Button` element s označením **Login** , odeberte následující řádek a pak znovu spusťte aplikaci.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```
@@ -176,7 +176,7 @@ Pomocí těchto kroků spusťte aplikaci:
 
 Pokud jste postupovali podle všech kroků v tomto scénáři a použili jste aplikaci k nasazení služeb Azure do svého účtu, pokračujte na [Azure Portal](https://ms.portal.azure.com/). Tam můžete zrušit služby, které nechcete používat.
 
-Pokud plánujete vytvořit vlastní projekt rozpoznávání objektů pomocí Custom Vision, možná budete chtít odstranit projekt detekce loga, který jste vytvořili v tomto kurzu. Bezplatné předplatné pro Custom Vision umožňuje pouze dva projekty. Pokud chcete odstranit projekt zjišťování loga, na [webu Custom Vision](https://customvision.ai)otevřete **projekty** a potom vyberte ikonu odpadkového koše v části **můj nový projekt**.
+Pokud plánujete vytvořit vlastní projekt rozpoznávání objektů pomocí Custom Vision, možná budete chtít odstranit projekt detekce loga, který jste vytvořili v tomto kurzu. Bezplatné předplatné pro Custom Vision umožňuje pouze dva projekty. Pokud chcete odstranit projekt zjišťování loga, na [webu Custom Vision](https://customvision.ai)otevřete **projekty** a potom vyberte ikonu odpadkového koše v části **můj nový projekt** .
 
 ## <a name="next-steps"></a>Další kroky
 

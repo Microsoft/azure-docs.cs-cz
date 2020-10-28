@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, devx-track-azurecli
 author: palma21
-ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6907ac659b94494472a327ff0b47e630ed89a0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570375"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735583"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -29,17 +29,17 @@ Odchozí závislosti AKS jsou téměř zcela definovány s plně kvalifikovaným
 Ve výchozím nastavení mají clustery AKS neomezený odchozí (výstupní) přístup k Internetu. Tato úroveň přístupu k síti umožňuje uzlům a službám, které spouštíte pro přístup k externím prostředkům, podle potřeby. Pokud chcete omezit výstupní přenos dat, musí být k dispozici omezený počet portů a adres, aby bylo možné udržovat v pořádku úlohy údržby clusteru. Nejjednodušším řešením pro zabezpečení odchozích adres je použití zařízení brány firewall, které může řídit odchozí přenosy na základě názvů domén. Azure Firewall například může omezit odchozí přenosy HTTP a HTTPS na základě plně kvalifikovaného názvu domény cílového umístění. Můžete taky nakonfigurovat upřednostňovanou bránu firewall a pravidla zabezpečení, abyste tyto požadované porty a adresy povolili.
 
 > [!IMPORTANT]
-> Tento dokument popisuje pouze to, jak uzamknout provoz opustí AKS podsíť. AKS ve výchozím nastavení nemá žádné požadavky na příchozí přenosy.  Blokování **provozu interní podsítě** pomocí skupin zabezpečení sítě (skupin zabezpečení sítě) a brány firewall se nepodporuje. K řízení a blokování provozu v rámci clusteru použijte [***zásady sítě***][network-policy].
+> Tento dokument popisuje pouze to, jak uzamknout provoz opustí AKS podsíť. AKS ve výchozím nastavení nemá žádné požadavky na příchozí přenosy.  Blokování **provozu interní podsítě** pomocí skupin zabezpečení sítě (skupin zabezpečení sítě) a brány firewall se nepodporuje. K řízení a blokování provozu v rámci clusteru použijte [ * *_zásady sítě_* _][network-policy].
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>Požadovaná odchozí síťová pravidla a plně kvalifikované názvy domény pro clustery AKS
 
 Pro cluster AKS se vyžadují následující pravidla sítě a plně kvalifikovaného názvu domény nebo aplikace, která můžete použít, pokud chcete nakonfigurovat řešení jiné než Azure Firewall.
 
-* Závislosti IP adres pro přenos bez HTTP/S (provoz TCP i UDP)
+_ Závislosti IP adres pro přenos bez HTTP/S (provoz TCP i UDP)
 * Do zařízení brány firewall lze umístit koncové body s plně kvalifikovaným názvem domény (FQDN) HTTP/HTTPS.
 * Koncové body HTTP/HTTPS se zástupnými znaky jsou závislosti, které se můžou u vašeho clusteru AKS lišit, a to na základě řady kvalifikátorů.
 * AKS pomocí kontroleru pro přístup vloží plně kvalifikovaný název domény jako proměnnou prostředí do všech nasazení v rámci Kube systému a serveru gatekeeper. tím zajistíte, aby veškerá systémová komunikace mezi uzly a serverem API používala plně kvalifikovaný název domény serveru API a ne IP Server API. 
-* Pokud máte aplikaci nebo řešení, které potřebuje komunikovat se serverem rozhraní API, je nutné přidat **Další** síťové pravidlo, které umožní *komunikaci TCP s portem 443 IP serveru rozhraní API*.
+* Pokud máte aplikaci nebo řešení, které potřebuje komunikovat se serverem rozhraní API, je nutné přidat **Další** síťové pravidlo, které umožní *komunikaci TCP s portem 443 IP serveru rozhraní API* .
 * Ve výjimečných případech, pokud existuje operace údržby, vaše IP adresa serveru API se může změnit. Plánované operace údržby, které můžou měnit IP adresy serveru API, se vždycky sdělují předem.
 
 

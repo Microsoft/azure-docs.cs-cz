@@ -3,13 +3,13 @@ title: Kurz – nasazení skupiny více kontejnerů – šablona
 description: V tomto kurzu se naučíte, jak nasadit skupinu kontejnerů s více kontejnery v Azure Container Instances pomocí Azure Resource Manager šablony pomocí Azure CLI.
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: cb085112c6e6458d897f52f19988e6301d4ae6e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 5238d16af31e30a4ae3a7d4cc01fbbd93373cfeb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259579"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737578"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Kurz: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků
 

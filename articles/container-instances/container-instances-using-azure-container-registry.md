@@ -4,23 +4,23 @@ description: Naučte se nasazovat kontejnery v Azure Container Instances tím, �
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cca1001f0f84f4e4fc87df233f872fc1efdb3267
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173645"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736724"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení ze služby Azure Container Registry do služby Azure Container Instances
 
 [Azure Container Registry](../container-registry/container-registry-intro.md) je spravovaná služba registru kontejnerů založená na Azure, která slouží k ukládání privátních imagí kontejneru Docker. Tento článek popisuje, jak načítat image kontejneru uložené v Azure Container Registry při nasazení do Azure Container Instances. Doporučeným způsobem, jak nakonfigurovat přístup k registru, je vytvořit Azure Active Directory instanční objekt a heslo a přihlašovací údaje uložit v trezoru klíčů Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-**Azure Container Registry**: potřebujete službu Azure Container Registry, a alespoň jednu Image kontejneru v registru, abyste mohli dokončit kroky v tomto článku. Pokud potřebujete registr, přečtěte si téma [Vytvoření registru kontejnerů pomocí Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
+**Azure Container Registry** : potřebujete službu Azure Container Registry, a alespoň jednu Image kontejneru v registru, abyste mohli dokončit kroky v tomto článku. Pokud potřebujete registr, přečtěte si téma [Vytvoření registru kontejnerů pomocí Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
 
-**Azure CLI**: Příklady příkazového řádku v tomto článku používají [Azure CLI](/cli/azure/) a jsou naformátované pro prostředí bash. [Azure CLI můžete nainstalovat](/cli/azure/install-azure-cli) místně nebo použít [Azure Cloud Shell][cloud-shell-bash].
+**Azure CLI** : Příklady příkazového řádku v tomto článku používají [Azure CLI](/cli/azure/) a jsou naformátované pro prostředí bash. [Azure CLI můžete nainstalovat](/cli/azure/install-azure-cli) místně nebo použít [Azure Cloud Shell][cloud-shell-bash].
 
 ## <a name="limitations"></a>Omezení
 
@@ -70,7 +70,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-`--role`Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
+`--role`Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush* .
 
 Dále do trezoru uložte identifikátor *appId* objektu služby, což je **uživatelské jméno** , které jste předali Azure Container Registry k ověřování.
 
@@ -147,9 +147,9 @@ Pokud udržujete image kontejnerů ve službě Azure Container Registry, můžet
 
 1. V Azure Portal přejděte do registru kontejneru.
 
-1. Pokud chcete potvrdit, že je účet správce povolený, vyberte **přístupové klíče**a v části **uživatel s oprávněními** vyberte **Povolit**.
+1. Pokud chcete potvrdit, že je účet správce povolený, vyberte **přístupové klíče** a v části **uživatel s oprávněními** vyberte **Povolit** .
 
-1. Vyberte úložiště a pak vyberte úložiště, ze kterého chcete nasadit, klikněte pravým tlačítkem na značku pro Image **kontejneru, kterou**chcete nasadit, a vyberte **spustit instanci**.
+1. Vyberte úložiště a pak vyberte úložiště, ze kterého chcete nasadit, klikněte pravým tlačítkem na značku pro Image **kontejneru, kterou** chcete nasadit, a vyberte **spustit instanci** .
 
     !["Run instance" v Azure Container Registry Azure Portal][acr-runinstance-contextmenu]
 

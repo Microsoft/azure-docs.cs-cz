@@ -8,27 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 53d41b5024b29a8c6c394d65a3ce36f8bb878fc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b82edf39185067e4c761c7598b159a655dfc370c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524976"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735408"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Nastavte adresy URL pro přesměrování na b2clogin.com pro Azure Active Directory B2C
 
-Když nastavíte poskytovatele identity pro registraci a přihlášení do aplikace Azure Active Directory B2C (Azure AD B2C), musíte zadat adresu URL pro přesměrování. Neměli byste už v aplikacích a rozhraních API odkazovat na *Login.microsoftonline.com* k ověřování uživatelů pomocí Azure AD B2C. Místo toho použijte *b2clogin.com* pro všechny nové aplikace a Migrujte stávající aplikace z *Login.microsoftonline.com* do *b2clogin.com*.
+Když nastavíte poskytovatele identity pro registraci a přihlášení do aplikace Azure Active Directory B2C (Azure AD B2C), musíte zadat adresu URL pro přesměrování. Neměli byste už v aplikacích a rozhraních API odkazovat na *Login.microsoftonline.com* k ověřování uživatelů pomocí Azure AD B2C. Místo toho použijte *b2clogin.com* pro všechny nové aplikace a Migrujte stávající aplikace z *Login.microsoftonline.com* do *b2clogin.com* .
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Vyřazení login.microsoftonline.com
 
-Od 04. prosince 2019 jsme oznámili plánované vyřazení podpory login.microsoftonline.com v Azure AD B2C dne **04 2020**:
+**Aktualizace z října 2020:** Rozšiřujeme období odkladu pro klienty, kteří nemůžou splňovat původně ohlášené datum vyřazení ze 4. prosince 2020. K vyřazení login.microsoftonline.com se teď dojde dřív než **14. ledna 2021.**
 
-[Azure Active Directory B2C nepoužívá login.microsoftonline.com.](https://azure.microsoft.com/updates/b2c-deprecate-msol/)
-
-Vyřazení login.microsoftonline.com se projeví pro všechny klienty Azure AD B2C v 04. prosince 2020, což poskytuje stávajícím tenantům jeden (1) rok k migraci na b2clogin.com. Noví klienti vytvoření po 04. prosinci 2019 nebudou přijímat požadavky od login.microsoftonline.com. Všechny funkce zůstávají stejné na koncovém bodu b2clogin.com.
+Na **pozadí** : od 04 do 4. prosince 2019 jsme původně [oznámili](https://azure.microsoft.com/updates/b2c-deprecate-msol/) plánované vyřazení podpory Login.microsoftonline.com v Azure AD B2C dne 04 2020. To poskytuje existujícím klientům jeden (1) rok migrace na b2clogin.com. Noví klienti vytvoření po 04. prosinci 2019 nebudou přijímat požadavky od login.microsoftonline.com. Všechny funkce zůstávají stejné na koncovém bodu b2clogin.com.
 
 Vyřazení login.microsoftonline.com nemá vliv na Azure Active Directory klienty. Touto změnou jsou ovlivněny pouze Azure Active Directory B2C klienti.
 
@@ -47,7 +45,7 @@ Alternativně `<policy-name>` může být předán jako parametr dotazu:
 > [!IMPORTANT]
 > Koncové body, které používají parametr Policy, musí být aktualizované a také [adresy URL pro přesměrování zprostředkovatele identity](#change-identity-provider-redirect-urls).
 
-Někteří Azure AD B2C zákazníci používají sdílené funkce tenantů Azure AD Enterprise, jako je například grantový tok udělení přihlašovacích údajů klienta OAuth 2,0. K těmto funkcím se dostanete pomocí koncových bodů login.microsoftonline.com Azure AD, *které neobsahují parametr zásad*. __Tyto koncové body nejsou ovlivněny__.
+Někteří Azure AD B2C zákazníci používají sdílené funkce tenantů Azure AD Enterprise, jako je například grantový tok udělení přihlašovacích údajů klienta OAuth 2,0. K těmto funkcím se dostanete pomocí koncových bodů login.microsoftonline.com Azure AD, *které neobsahují parametr zásad* . __Tyto koncové body nejsou ovlivněny__ .
 
 ## <a name="benefits-of-b2clogincom"></a>Výhody b2clogin.com
 
@@ -55,13 +53,13 @@ Když jako adresu URL pro přesměrování použijete *b2clogin.com* :
 
 * Místo spotřebované v hlavičce souboru cookie od služby společnosti Microsoft se sníží.
 * Vaše adresy URL pro přesměrování už nemusejí zahrnovat odkaz na Microsoft.
-* JavaScriptový kód na straně klienta je podporován (aktuálně ve [verzi Preview](user-flow-javascript-overview.md)) v přizpůsobených stránkách. Z důvodu omezení zabezpečení jsou kódy JavaScriptu a prvky formuláře HTML odebrány z vlastních stránek, pokud použijete *Login.microsoftonline.com*.
+* JavaScriptový kód na straně klienta je podporován (aktuálně ve [verzi Preview](user-flow-javascript-overview.md)) v přizpůsobených stránkách. Z důvodu omezení zabezpečení jsou kódy JavaScriptu a prvky formuláře HTML odebrány z vlastních stránek, pokud použijete *Login.microsoftonline.com* .
 
 ## <a name="overview-of-required-changes"></a>Přehled požadovaných změn
 
-Je možné, že budete muset provést několik úprav, abyste mohli migrovat své aplikace na *b2clogin.com*:
+Je možné, že budete muset provést několik úprav, abyste mohli migrovat své aplikace na *b2clogin.com* :
 
-* Změňte adresu URL pro přesměrování v aplikacích poskytovatele identity na odkaz na *b2clogin.com*.
+* Změňte adresu URL pro přesměrování v aplikacích poskytovatele identity na odkaz na *b2clogin.com* .
 * Aktualizujte své aplikace Azure AD B2C tak, aby používaly *b2clogin.com* v uživatelském toku a odkazy na koncový bod tokenu. To může zahrnovat aktualizaci používání knihovny ověřování, jako je Microsoft Authentication Library (MSAL).
 * Aktualizujte všechny **Povolené zdroje** , které jste definovali v nastavení CORS pro [přizpůsobení uživatelského rozhraní](custom-policy-ui-customization.md).
 
@@ -74,7 +72,7 @@ Odpovídající aktualizovaný koncový bod by vypadal takto:
 
 ## <a name="change-identity-provider-redirect-urls"></a>Změna adres URL pro přesměrování zprostředkovatele identity
 
-Na webu každého zprostředkovatele identity, na kterém jste vytvořili aplikaci, změňte všechny důvěryhodné adresy URL tak, aby se přesměrovaly na `your-tenant-name.b2clogin.com` místo *Login.microsoftonline.com*.
+Na webu každého zprostředkovatele identity, na kterém jste vytvořili aplikaci, změňte všechny důvěryhodné adresy URL tak, aby se přesměrovaly na `your-tenant-name.b2clogin.com` místo *Login.microsoftonline.com* .
 
 Pro adresy URL pro přesměrování b2clogin.com můžete použít dva formáty. První z nich přináší výhody, proč se "Microsoft" zobrazuje kdekoli v adrese URL pomocí ID tenanta (GUID) místo názvu domény klienta:
 
@@ -82,7 +80,7 @@ Pro adresy URL pro přesměrování b2clogin.com můžete použít dva formáty.
 https://{your-tenant-name}.b2clogin.com/{your-tenant-id}/oauth2/authresp
 ```
 
-Druhá možnost používá název domény tenanta ve formátu `your-tenant-name.onmicrosoft.com` . Například:
+Druhá možnost používá název domény tenanta ve formátu `your-tenant-name.onmicrosoft.com` . Příklad:
 
 ```
 https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp
@@ -115,7 +113,7 @@ Informace o migraci rozhraní API služby Azure API Management chráněných pom
 
 ### <a name="msalnet-validateauthority-property"></a>Vlastnost MSAL.NET ValidateAuthority
 
-Pokud používáte [MSAL.NET][msal-dotnet] v2 nebo starší, nastavte vlastnost **ValidateAuthority** na `false` instanci klienta tak, aby umožňovala přesměrování na *b2clogin.com*. Nastavení této hodnoty na `false` není vyžadováno pro MSAL.NET v3 a novější.
+Pokud používáte [MSAL.NET][msal-dotnet] v2 nebo starší, nastavte vlastnost **ValidateAuthority** na `false` instanci klienta tak, aby umožňovala přesměrování na *b2clogin.com* . Nastavení této hodnoty na `false` není vyžadováno pro MSAL.NET v3 a novější.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

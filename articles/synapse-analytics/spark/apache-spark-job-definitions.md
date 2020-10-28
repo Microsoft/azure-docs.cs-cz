@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
-ms.date: 04/15/2020
-ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: f942525f1360a134f58f18e0ec76a84b0ceee50b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260270"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738186"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Kurz: vytvoření definice úlohy Apache Spark v synapse studiu
 
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími úkony:
 > - Odeslání definice úlohy Apache Spark jako úlohy služby Batch
 > - Přidání definice úlohy Apache Spark do kanálu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
@@ -43,11 +43,11 @@ V této části vytvoříte definici úlohy Apache Spark pro PySpark (Python).
 
 1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
-2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) a stáhnout tak **ukázkové soubory pro python.zip**, rozbalit komprimovaný balíček a extrahovat soubory **WORDCOUNT.py** a **shakespeare.txt** . 
+2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) a stáhnout tak **ukázkové soubory pro python.zip** , rozbalit komprimovaný balíček a extrahovat soubory **WORDCOUNT.py** a **shakespeare.txt** . 
 
      ![ukázkové soubory](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Vyberte **data**   ->  **propojená**   ->  **Azure Data Lake Storage Gen2**a do svého adls Gen2 systému souborů nahrajte **WORDCOUNT.py**   a **shakespeare.txt** . 
+3. Vyberte **data**  ->  **propojená**  ->  **Azure Data Lake Storage Gen2** a do svého adls Gen2 systému souborů nahrajte **WORDCOUNT.py** a **shakespeare.txt** . 
 
      ![nahrát soubor Pythonu](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -85,15 +85,15 @@ V této části vytvoříte definici úlohy Apache Spark pro Apache Spark (Scala
 
  1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
- 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) a stáhnout tak **ukázkové soubory pro scala.zip**, rozbalit komprimovaný balíček a extrahovat soubory **WORDCOUNT. jar** a **shakespeare.txt** . 
+ 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala) a stáhnout tak **ukázkové soubory pro scala.zip** , rozbalit komprimovaný balíček a extrahovat soubory **WORDCOUNT. jar** a **shakespeare.txt** . 
  
      ![ukázkové soubory Scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. Vyberte **data**   ->  **propojená**   ->  **Azure Data Lake Storage Gen2**a do svého adls Gen2 systému souborů nahrajte **WORDCOUNT. jar**   a **shakespeare.txt** .
+ 3. Vyberte **data**  ->  **propojená**  ->  **Azure Data Lake Storage Gen2** a do svého adls Gen2 systému souborů nahrajte **WORDCOUNT. jar** a **shakespeare.txt** .
  
      ![Příprava struktury Scala](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. Vyberte **vytvořit** centrum, vyberte ikonu + a výběrem **definice úlohy Spark** vytvořte novou definici úlohy Spark. (Vzorová Image je stejná jako v kroku 4 **Vytvoření definice Apache Spark úlohy (Python) pro PySpark**.)
+ 4. Vyberte **vytvořit** centrum, vyberte ikonu + a výběrem **definice úlohy Spark** vytvořte novou definici úlohy Spark. (Vzorová Image je stejná jako v kroku 4 **Vytvoření definice Apache Spark úlohy (Python) pro PySpark** .)
 
  5. V rozevíracím seznamu jazyk v hlavním okně Definice úlohy Apache Spark vyberte **Spark (Scala)** .
 
@@ -125,15 +125,15 @@ V této části vytvoříte definici úlohy Apache Spark pro Apache Spark (Scala
 V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#/F #).
  1. Otevřete [Azure synapse Studio](https://web.azuresynapse.net/).
 
- 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) a stáhnout tak **ukázkové soubory pro dotnet.zip**, rozbalit komprimovaný balíček a extrahovat soubory **wordcount.zip** a **shakespeare.txt** . 
+ 2. Můžete přejít na [ukázkové soubory pro vytvoření Apache Spark definice úloh](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) a stáhnout tak **ukázkové soubory pro dotnet.zip** , rozbalit komprimovaný balíček a extrahovat soubory **wordcount.zip** a **shakespeare.txt** . 
 
      ![Ukázka dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Vyberte **data**   ->  **propojená**   ->  **Azure Data Lake Storage Gen2**a do adls Gen2 systému souborů nahrajte **wordcount.zip**   a **shakespeare.txt** .
+ 3. Vyberte **data**  ->  **propojená**  ->  **Azure Data Lake Storage Gen2** a do adls Gen2 systému souborů nahrajte **wordcount.zip** a **shakespeare.txt** .
  
      ![Příprava struktury dotnet](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. Vyberte **vytvořit** centrum, vyberte ikonu + a výběrem **definice úlohy Spark** vytvořte novou definici úlohy Spark. (Vzorová Image je stejná jako v kroku 4 **Vytvoření definice Apache Spark úlohy (Python) pro PySpark**.)
+ 4. Vyberte **vytvořit** centrum, vyberte ikonu + a výběrem **definice úlohy Spark** vytvořte novou definici úlohy Spark. (Vzorová Image je stejná jako v kroku 4 **Vytvoření definice Apache Spark úlohy (Python) pro PySpark** .)
 
  5. V rozevíracím seznamu jazyk v hlavním okně Definice úlohy Apache Spark vyberte **.NET Spark (C#/f #)** .
 
@@ -177,7 +177,7 @@ Po vytvoření Apache Spark definice úlohy ji můžete odeslat do fondu Apache 
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>Scénář 2: zobrazení průběhu úlohy Apache Spark běhu
 
- 1. Vyberte **monitorování**a pak vyberte možnost **Apache Spark aplikace** . Můžete najít odeslanou aplikaci Apache Spark.
+ 1. Vyberte **monitorování** a pak vyberte možnost **Apache Spark aplikace** . Můžete najít odeslanou aplikaci Apache Spark.
 
      ![Zobrazit aplikaci Spark](./media/apache-spark-job-definitions/view-spark-application.png)
 
@@ -197,7 +197,7 @@ V této části přidáte do kanálu definici úlohy Apache Spark.
 
  1. Otevřete existující definici úlohy Apache Spark.
 
- 2. Vyberte ikonu v pravém horním rohu definice úlohy Apache Spark, zvolte **existující kanál**nebo **Nový kanál**. Další informace najdete na stránce kanálu.
+ 2. Vyberte ikonu v pravém horním rohu definice úlohy Apache Spark, zvolte **existující kanál** nebo **Nový kanál** . Další informace najdete na stránce kanálu.
 
      ![Přidat do pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 

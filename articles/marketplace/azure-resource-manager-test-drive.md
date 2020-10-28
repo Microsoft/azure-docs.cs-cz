@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287941"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735603"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
@@ -35,6 +35,9 @@ Informace o **hostované** nebo testovací jednotce **Aplikace logiky** najdete 
   - **Studená** – tento typ instance představuje celkový počet instancí, které mohou být nasazeny v jednotlivých oblastech. Studené instance vyžadují pro nasazení celé testovací jednotky Správce prostředků šablonu, když zákazník požádá o testovací verzi, takže *studené* instance budou mnohem pomalejší, než se dosadí *za horké* instance. Kompromisy je, že je nutné platit jenom za dobu trvání testovacích jednotek *, ale v* předplatném Azure není vždycky spuštěná jako s *horkou* instancí.
 
 - **Test drive Azure Resource Manager šablona** – nahrajte soubor. zip obsahující šablonu Azure Resource Manager. Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+
+    > [!note]
+    > Pro úspěšné publikování je důležité ověřit formátování šablony ARM. Existují dva způsoby, jak to provést (1) pomocí [Nástroje pro online rozhraní API](https://docs.microsoft.com/rest/api/resources/deployments/validate) nebo (2) s [testovacím nasazením](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
 
 - **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní. Testovací jednotka se po skončení tohoto časového období ukončí automaticky. Používejte pouze celá čísla (například "2" hodiny jsou platné, "1,5" není).
 
@@ -70,12 +73,12 @@ Pro parametry můžete použít libovolný platný název; testovací jednotka r
 
 ### <a name="accepted-parameter-metadata-types"></a>Přijaté typy metadat parametrů
 
-| Typ metadat   | Typ parametru  | Description     | Ukázková hodnota    |
+| Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
 |---|---|---|---|
-| **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
-| **jmen**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
+| **identifikátor**     | string          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **jmen**    | string          | Nové náhodné uživatelské jméno.| admin68876      |
 | **heslo**    | zabezpečený řetězec    | Nové náhodné heslo | LP! ACS \^ 2kH     |
-| **ID relace**   | řetězec          | Jedinečný identifikátor relace testovacích jednotek (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **ID relace**   | string          | Jedinečný identifikátor relace testovacích jednotek (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="baseuri"></a>identifikátor
 
@@ -293,11 +296,11 @@ Poslední část, která se má dokončit, je umožnit automatické nasazení te
 
 ![Podrobnosti o předplatném nasazení testovacích jednotek](media/test-drive/deployment-subscription-details.png)
 
-1. Získejte **ID předplatného Azure**. Tím se udělí přístup ke službám Azure a Azure Portal. Předplatné je místo, kde se oznamuje využití prostředků, a účtují se služby. Pokud ještě nemáte samostatné předplatné Azure pro testovací disky, udělejte ho. ID předplatných Azure (například) můžete najít `1a83645ac-1234-5ab6-6789-1h234g764ghty1` tak, že se přihlásíte Azure Portal a vyberete **odběry** z nabídky vlevo a navigovat.
+1. Získejte **ID předplatného Azure** . Tím se udělí přístup ke službám Azure a Azure Portal. Předplatné je místo, kde se oznamuje využití prostředků, a účtují se služby. Pokud ještě nemáte samostatné předplatné Azure pro testovací disky, udělejte ho. ID předplatných Azure (například) můžete najít `1a83645ac-1234-5ab6-6789-1h234g764ghty1` tak, že se přihlásíte Azure Portal a vyberete **odběry** z nabídky vlevo a navigovat.
 
    ![Předplatná Azure](media/test-drive/azure-subscriptions.png)
 
-2. Získejte **ID tenanta Azure AD**. Pokud už máte ID tenanta k dispozici, najdete ho v **Azure Active Directory**  >  **vlastnosti**  >  **ID adresáře**:
+2. Získejte **ID tenanta Azure AD** . Pokud už máte ID tenanta k dispozici, najdete ho v **Azure Active Directory**  >  **vlastnosti**  >  **ID adresáře** :
 
    ![Vlastnosti Azure Active Directory](media/test-drive/azure-active-directory-properties.png)
 
@@ -306,14 +309,14 @@ Poslední část, která se má dokončit, je umožnit automatické nasazení te
 3. **ID aplikace Azure AD** – vytvořte a zaregistrujte novou aplikaci. Tuto aplikaci použijeme k provádění operací s instancí testovacích jednotek.
 
    1. Přejděte do nově vytvořeného adresáře nebo již existujícího adresáře a v podokně filtru vyberte Azure Active Directory.
-   2. Vyhledejte **Registrace aplikací** a vyberte **Přidat**.
+   2. Vyhledejte **Registrace aplikací** a vyberte **Přidat** .
    3. Zadejte název aplikace.
-   4. Vyberte **typ** **webové aplikace nebo rozhraní API**.
+   4. Vyberte **typ** **webové aplikace nebo rozhraní API** .
    5. Zadejte libovolnou hodnotu v přihlašovací adrese URL, toto pole se nepoužije.
-   6. Vyberte **Vytvořit**.
-   7. Po vytvoření aplikace vyberte možnost **vlastnosti**  >  **nastavit aplikaci jako více tenantů** a pak akci **uložte**.
+   6. Vyberte **Vytvořit** .
+   7. Po vytvoření aplikace vyberte možnost **vlastnosti**  >  **nastavit aplikaci jako více tenantů** a pak akci **uložte** .
 
-4. Vyberte **Uložit**.
+4. Vyberte **Uložit** .
 
 5. Zkopírujte ID aplikace pro tuto registrovanou aplikaci a vložte ji do pole testovací jednotka.
 
@@ -323,7 +326,7 @@ Poslední část, která se má dokončit, je umožnit automatické nasazení te
 
    1. Vyberte typ **předplatného** , které používáte pro testovací jednotku.
    1. Vyberte **Řízení přístupu (IAM)** .
-   1. Vyberte kartu **přiřazení rolí** a pak **Přidat přiřazení role**.
+   1. Vyberte kartu **přiřazení rolí** a pak **Přidat přiřazení role** .
 
       ![Přidat nový objekt zabezpečení Access Control](media/test-drive/access-control-principal.jpg)
 
@@ -331,9 +334,9 @@ Poslední část, která se má dokončit, je umožnit automatické nasazení te
 
       ![Přidat oprávnění](media/test-drive/access-control-permissions.jpg)
 
-   1. Vyberte **Uložit**.
+   1. Vyberte **Uložit** .
 
-7. Vygenerujte **aplikace Azure AD** ověřovací klíč. V části **klíče**přidejte **Popis klíče**, nastavte dobu trvání na bez **platnosti** (v případě, že vypršela platnost testovací jednotky v produkčním prostředí) a pak vyberte **Uložit**. Zkopírujte tuto hodnotu a vložte ji do pole požadovaných testovacích jednotek.
+7. Vygenerujte **aplikace Azure AD** ověřovací klíč. V části **klíče** přidejte **Popis klíče** , nastavte dobu trvání na bez **platnosti** (v případě, že vypršela platnost testovací jednotky v produkčním prostředí) a pak vyberte **Uložit** . Zkopírujte tuto hodnotu a vložte ji do pole požadovaných testovacích jednotek.
 
 ![Zobrazuje klíče pro aplikaci Azure AD.](media/test-drive/azure-ad-app-keys.png)
 
@@ -345,11 +348,11 @@ Teď, když jsou všechna vaše pole testovacích jednotek dokončená, **znovu 
 1. V Azure Portal otevřete své předplatné Azure.
 1. Ověřte, zda je správně nasazování testovacích jednotek.
 
-   ![portál Azure](media/test-drive/azure-portal.png)
+   ![Azure Portal](media/test-drive/azure-portal.png)
 
 Neodstraňujte žádné instance testovacích jednotek zřízené pro vaše zákazníky. Služba Test Drive po dokončení práce s ní automaticky vyčistí tyto skupiny prostředků.
 
-Jakmile budete spokojeni s vaší nabídkou Preview, je čas **začít**. K dispozici je finální proces kontroly, který umožňuje dvakrát zkontrolovat celé prostředí. Pokud nabídku zamítneme, pošleme e-mail technickému kontaktu pro vaši nabídku s vysvětlením, co je potřeba opravit.
+Jakmile budete spokojeni s vaší nabídkou Preview, je čas **začít** . K dispozici je finální proces kontroly, který umožňuje dvakrát zkontrolovat celé prostředí. Pokud nabídku zamítneme, pošleme e-mail technickému kontaktu pro vaši nabídku s vysvětlením, co je potřeba opravit.
 
 ## <a name="next-steps"></a>Další kroky
 

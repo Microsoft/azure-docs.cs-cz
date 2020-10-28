@@ -9,17 +9,17 @@ keywords: IPv6, Azure Load Balancer, duální zásobník, veřejná IP adresa, n
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001569"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735907"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného nástroje pro vyrovnávání zatížení s protokolem IPv6 pomocí Azure CLI
 
@@ -48,11 +48,11 @@ Následující kroky ukazují, jak vytvořit veřejný Nástroj pro vyrovnáván
 
 Pokud chcete nasadit nástroj pro vyrovnávání zatížení, vytvořte a nakonfigurujte následující objekty:
 
-* **Konfigurace front-ENDOVÉ IP**adresy: obsahuje veřejné IP adresy pro příchozí síťový provoz.
-* **Fond back-endové adresy**: obsahuje síťová rozhraní (nic) pro virtuální počítače pro příjem síťového provozu z nástroje pro vyrovnávání zatížení.
-* **Pravidla vyrovnávání zatížení**: obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back-end adres.
-* **Pravidla příchozího překladu adres**(NAT): obsahuje pravidla překladu síťových adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port pro konkrétní virtuální počítač v rámci fondu back-end adres.
-* **Sondy**: obsahuje sondy stavu, které slouží ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back-end adres.
+* **Konfigurace front-ENDOVÉ IP** adresy: obsahuje veřejné IP adresy pro příchozí síťový provoz.
+* **Fond back-endové adresy** : obsahuje síťová rozhraní (nic) pro virtuální počítače pro příjem síťového provozu z nástroje pro vyrovnávání zatížení.
+* **Pravidla vyrovnávání zatížení** : obsahuje pravidla, která mapují veřejný port v nástroji pro vyrovnávání zatížení na port ve fondu back-end adres.
+* **Pravidla příchozího překladu adres** (NAT): obsahuje pravidla překladu síťových adres (NAT), která mapují veřejný port v nástroji pro vyrovnávání zatížení na port pro konkrétní virtuální počítač v rámci fondu back-end adres.
+* **Sondy** : obsahuje sondy stavu, které slouží ke kontrole dostupnosti instancí virtuálních počítačů ve fondu back-end adres.
 
 ## <a name="set-up-azure-cli"></a>Nastavení Azure CLI
 
@@ -122,7 +122,7 @@ V tomto příkladu spustíte nástroje rozhraní příkazového řádku Azure CL
     > [!IMPORTANT]
     > Nástroj pro vyrovnávání zatížení používá označení domény veřejné IP adresy jako plně kvalifikovaného názvu domény (FQDN). Tím se změní nastavení klasického nasazení, které jako plně kvalifikovaný název domény nástroje pro vyrovnávání zatížení používá název cloudové služby.
     >
-    > V tomto příkladu je plně kvalifikovaný název domény *contoso09152016.southcentralus.cloudapp.Azure.com*.
+    > V tomto příkladu je plně kvalifikovaný název domény *contoso09152016.southcentralus.cloudapp.Azure.com* .
 
 ## <a name="create-front-end-and-back-end-pools"></a>Vytvoření front-endové a back-endové fondy
 

@@ -3,13 +3,13 @@ title: Balení a nasazení kontejnerů
 description: V tomto kurzu se dozvíte, jak pomocí Yeomanu vygenerovat definici aplikace Azure Service Fabric a jak aplikaci zabalit.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539873"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738854"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric pomocí Yeomanu
 
@@ -23,7 +23,7 @@ Tento kurz je druhá část série. V tomto kurzu je pomocí nástroje Yeoman na
 > * Nasadit a spustit aplikaci
 > * Vyčistit aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Použijeme image kontejneru odeslané do služby Azure Container Registry, které jsme vytvořili v [části 1](service-fabric-tutorial-create-container-images.md) tohoto kurzu.
 * Musí být [nastavené](service-fabric-tutorial-create-container-images.md) linuxové vývojové prostředí.
@@ -80,7 +80,7 @@ Následující kód zobrazuje vstup a výstup spuštění příkazu yo:
 
 Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pomocí Yeomanu, proveďte následující kroky:
 
-1. Změňte adresář o jednu úroveň nad adresářem **TestContainer**, například *./TestContainer*.
+1. Změňte adresář o jednu úroveň nad adresářem **TestContainer** , například *./TestContainer* .
 2. Spuštěním příkazu `yo azuresfcontainer:AddService`
 3. Službu pojmenujte azurevoteback.
 4. Zadejte cestu k imagi kontejneru pro Redis – alpine:redis.
@@ -99,7 +99,7 @@ Zobrazí se všechny položky pro přidání použité služby:
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-Ve zbývající části tohoto kurzu budeme pracovat v adresáři **TestContainer**. Například *./TestContainer/TestContainer*. Obsah tohoto adresáře by měl vypadat takto:
+Ve zbývající části tohoto kurzu budeme pracovat v adresáři **TestContainer** . Například *./TestContainer/TestContainer* . Obsah tohoto adresáře by měl vypadat takto:
 
 ```bash
 $ ls
@@ -108,9 +108,9 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 ## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>Konfigurace manifestu aplikace s přihlašovacími údaji pro Azure Container Registry
 
-Aby mohla služba Service Fabric načítat image kontejneru z Azure Container Registry, je potřeba zadat přihlašovací údaje v souboru **ApplicationManifest.xml**.
+Aby mohla služba Service Fabric načítat image kontejneru z Azure Container Registry, je potřeba zadat přihlašovací údaje v souboru **ApplicationManifest.xml** .
 
-Přihlaste se k instanci ACR. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
+Přihlaste se k instanci ACR. Dokončete operaci pomocí příkazu **az acr login** . Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
 ```azurecli
 az acr login --name <acrName>
@@ -138,7 +138,7 @@ V souboru **ApplicationManifest.xml** přidejte do elementu **ServiceManifestImp
 
 ### <a name="configure-communication-port"></a>Konfigurace komunikačního portu
 
-Nakonfigurujte koncový bod HTTP, aby klienti mohli komunikovat s vaší službou. Otevřete soubor *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* a v elementu **ServiceManifest** deklarujte prostředek koncového bodu.  Přidejte protokol, port a název. Pro účely tohoto kurzu služba naslouchá na portu 80. Následující fragment kódu je umístěný v prostředku pod tagem *ServiceManifest*.
+Nakonfigurujte koncový bod HTTP, aby klienti mohli komunikovat s vaší službou. Otevřete soubor *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* a v elementu **ServiceManifest** deklarujte prostředek koncového bodu.  Přidejte protokol, port a název. Pro účely tohoto kurzu služba naslouchá na portu 80. Následující fragment kódu je umístěný v prostředku pod tagem *ServiceManifest* .
 
 ```xml
 <Resources>
@@ -152,7 +152,7 @@ Nakonfigurujte koncový bod HTTP, aby klienti mohli komunikovat s vaší službo
 
 ```
 
-Podobně upravte také element Service Manifest pro back-endovou službu. Otevřete soubor *./TestContainer/azurevotebackPkg/ServiceManifest.xml* a v elementu **ServiceManifest** deklarujte prostředek koncového bodu. V tomto kurzu zůstává zachovaná výchozí hodnota pro redis 6379. Následující fragment kódu je umístěný v prostředku pod tagem *ServiceManifest*.
+Podobně upravte také element Service Manifest pro back-endovou službu. Otevřete soubor *./TestContainer/azurevotebackPkg/ServiceManifest.xml* a v elementu **ServiceManifest** deklarujte prostředek koncového bodu. V tomto kurzu zůstává zachovaná výchozí hodnota pro redis 6379. Následující fragment kódu je umístěný v prostředku pod tagem *ServiceManifest* .
 
 ```xml
 <Resources>
@@ -165,11 +165,11 @@ Podobně upravte také element Service Manifest pro back-endovou službu. Otevř
 </Resources>
 ```
 
-Pokud zadáte **UriScheme**, koncový bod kontejneru se automaticky zaregistruje ve službě pojmenování Service Fabric, aby byl zjistitelný. Úplný ukázkový soubor ServiceManifest.xml pro back-endovou službu najdete jako příklad na konci tohoto článku.
+Pokud zadáte **UriScheme** , koncový bod kontejneru se automaticky zaregistruje ve službě pojmenování Service Fabric, aby byl zjistitelný. Úplný ukázkový soubor ServiceManifest.xml pro back-endovou službu najdete jako příklad na konci tohoto článku.
 
 ### <a name="map-container-ports-to-a-service"></a>Mapování portů kontejneru na službu
 
-Aby bylo možné zveřejnit kontejnery v clusteru, je také potřeba vytvořit v souboru ApplicationManifest.xml vazbu na port. Zásada **PortBinding** odkazuje na **koncové body**, které jsme definovali v souborech **ServiceManifest.xml**. Příchozí žádosti na tyto koncové body se namapují na porty kontejneru, které se tady otevřou a vytvoří se na ně vazba. Do souboru **ApplicationManifest.xml** přidejte následující kód k vytvoření vazby mezi porty 80 a 6379 a koncovými body. Úplný soubor **ApplicationManifest.xml** je k dispozici na konci tohoto dokumentu.
+Aby bylo možné zveřejnit kontejnery v clusteru, je také potřeba vytvořit v souboru ApplicationManifest.xml vazbu na port. Zásada **PortBinding** odkazuje na **koncové body** , které jsme definovali v souborech **ServiceManifest.xml** . Příchozí žádosti na tyto koncové body se namapují na porty kontejneru, které se tady otevřou a vytvoří se na ně vazba. Do souboru **ApplicationManifest.xml** přidejte následující kód k vytvoření vazby mezi porty 80 a 6379 a koncovými body. Úplný soubor **ApplicationManifest.xml** je k dispozici na konci tohoto dokumentu.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">
@@ -185,7 +185,7 @@ Aby bylo možné zveřejnit kontejnery v clusteru, je také potřeba vytvořit v
 
 ### <a name="add-a-dns-name-to-the-backend-service"></a>Přidání názvu DNS do back-endové služby
 
-Aby mohla služba Service Fabric tento název DNS přiřadit back-endové službě, je potřeba zadat ho v souboru **ApplicationManifest.xml**. Podle následující ukázky přidejte do elementu **Service** atribut **ServiceDnsName**:
+Aby mohla služba Service Fabric tento název DNS přiřadit back-endové službě, je potřeba zadat ho v souboru **ApplicationManifest.xml** . Podle následující ukázky přidejte do elementu **Service** atribut **ServiceDnsName** :
 
 ```xml
 <Service Name="azurevoteback" ServiceDnsName="redisbackend.testapp">
@@ -264,7 +264,7 @@ Připojte se ke clusteru Service Fabric v Azure. Ukázkový koncový bod nahraď
 sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
 ```
 
-Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContainer**, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
+Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContainer** , zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
 
 ```bash
 ./install.sh
