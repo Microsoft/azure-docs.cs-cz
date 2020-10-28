@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2020
-ms.openlocfilehash: 5845ab6419d6914b9221df1ae1280d31aba0ae7a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/27/2020
+ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737532"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891346"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -68,6 +68,10 @@ Následující video vysvětluje řadu různých možností jímky pro typy soub
 **Posun schématu** : [posun schématu](concepts-data-flow-schema-drift.md) je schopnost Data Factory nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců. Povolit možnost **Povolit posun schématu** pro zápis dalších sloupců nad to, co je definováno ve schématu dat jímky.
 
 **Ověřit schéma** : Pokud je vybraná možnost ověřit schéma, tok dat selže, pokud se ve zdrojové projekci nenajde žádný sloupec pro příchozí zdrojové schéma, nebo pokud se datové typy neshodují. Pomocí tohoto nastavení můžete vynutilit, aby zdrojová data splňovala kontrakt vaší definované projekce. To je užitečné ve scénářích zdrojové databáze k signalizaci, že se změnily názvy nebo typy sloupců.
+
+**Použít databázi tempdb:** Ve výchozím nastavení Data Factory použije globální dočasnou tabulku k ukládání dat v rámci procesu načítání. Případně můžete zrušit možnost použít databázi TempDB a místo toho požádat Data Factory uložit dočasnou tabulku do uživatelské databáze nacházející se v databázi, která se používá pro tuto jímku.
+
+![Databáze](media/data-flow/tempdb.png "Databáze")
 
 ## <a name="field-mapping"></a>Mapování pole
 

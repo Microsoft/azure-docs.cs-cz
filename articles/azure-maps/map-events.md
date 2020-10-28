@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0621e0ecfbb91d151e3cc78d3b345ab92133695c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310369"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890781"
 ---
 # <a name="interact-with-the-map"></a>Interakce s mapou
 
-V tomto článku se dozvíte, jak používat [třídu událostí mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events). Vlastnost zvýrazní události na mapě a v různých vrstvách mapy. Můžete také zvýraznit události při interakci se značkou HTML.
+V tomto článku se dozvíte, jak používat [třídu událostí mapy](/javascript/api/azure-maps-control/atlas.map#events). Vlastnost zvýrazní události na mapě a v různých vrstvách mapy. Můžete také zvýraznit události při interakci se značkou HTML.
 
 ## <a name="interact-with-the-map"></a>Interakce s mapou
 
@@ -49,7 +49,7 @@ Následující kód přidá události mapy JavaScriptu do značky HTML. Také zv
 
 V následující tabulce jsou uvedeny všechny podporované události třídy map.
 
-| Událost               | Description |
+| Událost               | Popis |
 |---------------------|-------------|
 | `boxzoomend`        | Je aktivována při ukončení interakce "box zoom".|
 | `boxzoomstart`      | Je aktivována, když se spustí interakce "box zoom".|
@@ -117,4 +117,4 @@ V následující tabulce jsou uvedeny všechny podporované události třídy ma
 > [Použití modulu služby Azure Maps Services](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

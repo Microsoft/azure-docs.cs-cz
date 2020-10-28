@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519652"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891498"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
 
@@ -44,11 +44,13 @@ Před tím, než se pokusíte povolit službu Azure na virtuálních počítač�
 - Jenom virtuální počítače s Windows serverem
 - Musí být spuštěny virtuální počítače.
 - Virtuální počítače musí být v podporované oblasti.
-- Uživatel musí mít správná oprávnění.
-- Virtuální počítače nesmí odkazovat na pracovní prostor Log Analytics v jiném předplatném.
+- Uživatel musí mít správná oprávnění (viz odstavec níže).
 - Automanage v tuto chvíli nepodporuje odběry izolovaného prostoru (sandbox).
 
-Abyste mohli povolit autosprávu pomocí stávajícího účtu pro správu, musíte mít roli **Přispěvatel** . Pokud povolujete možnost autospráva pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
+Abyste mohli povolit autosprávu na virtuálních počítačích pomocí stávajícího účtu pro správu, musíte mít ve skupině prostředků, která obsahuje vaše virtuální počítače, roli **Přispěvatel** . Pokud povolujete autosprávu pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění k vašemu předplatnému: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** . 
+
+> [!NOTE]
+> Pokud chcete použít automanage na virtuálním počítači, který je připojený k pracovnímu prostoru v jiném předplatném, musíte mít oprávnění popsaná výše v každém předplatném.
 
 Je také důležité si uvědomit, že automanage podporuje jenom virtuální počítače s Windows, které jsou v následujících oblastech: Západní Evropa, Východní USA, Západní USA 2, Kanada – střed, Středozápadní USA.
 
@@ -67,7 +69,7 @@ Pro všechny tyto služby budeme automaticky připínat, automaticky konfigurova
 
 V Azure Portal můžete povolit automanage na existujícím virtuálním počítači nebo při vytváření nového virtuálního počítače. Stručné kroky tohoto procesu najdete v [rychlém startu pro automatizované správy virtuálních počítačů](quick-create-virtual-machines-portal.md).
 
-Pokud pro virtuální počítač používáte službu automanage poprvé, můžete hledat v Azure Portal pro možnost **automanage – osvědčené postupy pro virtuální počítače Azure**. Klikněte na **Povolit na existujícím virtuálním počítači**, vyberte virtuální počítače, které chcete připojit, klikněte na **Vybrat**, klikněte na **Povolit**a Vy jste hotovi.
+Pokud pro virtuální počítač používáte službu automanage poprvé, můžete hledat v Azure Portal pro možnost **automanage – osvědčené postupy pro virtuální počítače Azure** . Klikněte na **Povolit na existujícím virtuálním počítači** , vyberte virtuální počítače, které chcete připojit, klikněte na **Vybrat** , klikněte na **Povolit** a Vy jste hotovi.
 
 Jediná doba, kterou možná budete potřebovat k interakci s tímto virtuálním počítačem za účelem správy těchto služeb, je v události, kterou jsme se pokusili opravit váš virtuální počítač, ale to se nepovedlo. Pokud jsme váš virtuální počítač úspěšně napravili, převedeme ho zpátky do dodržování předpisů, aniž by vás upozornili na vás.
 
@@ -105,7 +107,7 @@ Nastavení výchozího konfiguračního profilu můžete upravit pomocí předvo
 V prostředí Azure Portal máte při povolování funkce automanage na vašich virtuálních počítačích pokročilý rozevírací seznam v okně **Povolit osvědčené postupy pro virtuální počítače Azure** , které vám umožní přiřadit nebo ručně vytvořit účet pro správu.
 
 > [!NOTE]
-> Abyste mohli povolit autosprávu pomocí stávajícího účtu pro správu, musíte mít roli **Přispěvatel** . Pokud povolujete možnost autospráva pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
+> Musíte mít roli **Přispěvatel** ve skupině prostředků, která obsahuje vaše virtuální počítače, aby bylo možné na virtuálních počítačích povolit autosprávu pomocí stávajícího účtu pro správu. Pokud povolujete autosprávu pomocí nového účtu pro autosprávu, budete potřebovat následující oprávnění k vašemu předplatnému: role **vlastníka** nebo **přispěvatele** spolu s rolemi **Správce přístupu uživatele** .
 
 
 ## <a name="status-of-vms"></a>Stav virtuálních počítačů
@@ -121,7 +123,7 @@ Sloupec **Status (stav** ) může zobrazit následující stavy:
 - *Nakonfigurováno* – virtuální počítač je nakonfigurovaný a nezjistil se žádný posun.
 - *Selhalo* – virtuální počítač se ztratil a nedokázali jsme ho opravit.
 
-Pokud se **stav** zobrazuje jako *neúspěšný*, můžete řešit problémy s nasazením prostřednictvím skupiny prostředků, ve které se váš virtuální počítač nachází. Přejděte na **skupiny prostředků**, vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
+Pokud se **stav** zobrazuje jako *neúspěšný* , můžete řešit problémy s nasazením prostřednictvím skupiny prostředků, ve které se váš virtuální počítač nachází. Přejděte na **skupiny prostředků** , vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
 
 
 ## <a name="disabling-automanage-for-vms"></a>Zakázání automanage pro virtuální počítače
@@ -132,7 +134,7 @@ Pokud to chcete udělat v Azure Portal, přečtěte si stránku s **osvědčený
 
 :::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Inteligentně zaregistrované služby.":::
 
-Než se odsouhlaste s **zakázáním**, důkladně si přečtěte zprávy ve výsledném okně.
+Než se odsouhlaste s **zakázáním** , důkladně si přečtěte zprávy ve výsledném okně.
 
 > [!NOTE]
 > Zakázáním funkce automanagement ve virtuálním počítači dojde k následujícímu chování:

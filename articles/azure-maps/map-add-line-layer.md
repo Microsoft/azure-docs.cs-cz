@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: c1968df19ebc62d47da77b0338d93ceb5f49f2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310522"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891155"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Přidat řádkovou vrstvu do mapy
 
@@ -23,7 +23,7 @@ Spojnicová vrstva se dá použít k vykreslování `LineString` a zobrazování
 > [!TIP]
 > Vrstvy čar ve výchozím nastavení vykreslí souřadnice mnohoúhelníků a také čáry ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykresluje pouze funkce LineString, nastavte `filter` vlastnost vrstvy na `['==', ['geometry-type'], 'LineString']` nebo, `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` Pokud chcete zahrnout také funkce MultiLineString.
 
-Následující kód ukazuje, jak vytvořit řádek. Přidejte čáru ke zdroji dat a potom ji vykreslete s vrstvou čáry pomocí třídy [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) .
+Následující kód ukazuje, jak vytvořit řádek. Přidejte čáru ke zdroji dat a potom ji vykreslete s vrstvou čáry pomocí třídy [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) .
 
 ```javascript
 //Create a data source and add it to the map.
@@ -88,7 +88,7 @@ Spojnicová vrstva má několik možností stylů. Tady je nástroj pro jejich v
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) 
+> [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) 
 
 > [!div class="nextstepaction"]
 > [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)

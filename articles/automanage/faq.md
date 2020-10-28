@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ad5c2b973a74bc9fa0f6ca2f59f92a26b666e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714961"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891455"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Nejčastější dotazy k Azure automanage pro virtuální počítače
 
 Tento článek obsahuje odpovědi na některé nejběžnější dotazy týkající se [služby Azure automanage pro virtuální počítače](automanage-virtual-machines.md).
 
-Pokud váš problém s Azure není v tomto článku řešen, navštivte fóra Azure na [webu MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Svůj problém můžete vystavit na těchto fórech nebo odeslat na [ @AzureSupport Twitter](https://twitter.com/AzureSupport). Můžete také odeslat žádost o podporu Azure. Pokud chcete odeslat žádost o podporu, vyberte na [stránce podpory Azure](https://azure.microsoft.com/support/options/)možnost **získat podporu**.
+Pokud váš problém s Azure není v tomto článku řešen, navštivte fóra Azure na [webu MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Svůj problém můžete vystavit na těchto fórech nebo odeslat na [ @AzureSupport Twitter](https://twitter.com/AzureSupport). Můžete také odeslat žádost o podporu Azure. Pokud chcete odeslat žádost o podporu, vyberte na [stránce podpory Azure](https://azure.microsoft.com/support/options/)možnost **získat podporu** .
 
 
 ## <a name="azure-automanage-for-virtual-machines"></a>Azure automanage pro virtuální počítače
@@ -32,7 +32,6 @@ Níže jsou uvedené předpoklady pro povolení služby Azure automanage:
 - Virtuální počítače musí být v podporované oblasti.
 - Uživatel musí mít správná oprávnění.
 - Jenom virtuální počítače bez škálování
-- Virtuální počítače nesmí odkazovat na pracovní prostor Log Analytics v jiném předplatném.
 - Automanage v tuto chvíli nepodporuje odběry izolovaného prostoru (sandbox).
 
 **Jaká oprávnění Azure RBAC je potřeba k povolení automanage?**
@@ -106,7 +105,7 @@ Ne, automanage ji nebude znovu konfigurovat. Začneme monitorovat prostředky p�
 
 **Proč je můj virtuální počítač v portálu pro správu, který je na webu pro správu, stav neúspěchu?**
 
-Pokud se stav zobrazuje jako *neúspěšný*, můžete řešit problémy s nasazením prostřednictvím skupiny prostředků, ve které se váš virtuální počítač nachází. Přejděte na **skupiny prostředků**, vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
+Pokud se stav zobrazuje jako *neúspěšný* , můžete řešit problémy s nasazením prostřednictvím skupiny prostředků, ve které se váš virtuální počítač nachází. Přejděte na **skupiny prostředků** , vyberte svoji skupinu prostředků, klikněte na **nasazení** a v části stav *selhání se* zobrazí podrobnosti o chybě.
 
 **Jak můžu získat podporu při řešení potíží pro autosprávu?**
 

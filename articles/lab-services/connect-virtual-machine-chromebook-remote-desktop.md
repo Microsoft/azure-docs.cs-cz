@@ -6,18 +6,18 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: d2a936a6acb6491c57cb1460c83ec0253561b102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae2bc6e87f0b694e949057280233c19e0b98132c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445657"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892226"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>Připojení k virtuálnímu počítači pomocí protokol RDP (Remote Desktop Protocol) Chromebook
 V této části se dozvíte, jak se student může připojit k virtuálnímu počítači učeben Labs z Chromebook pomocí protokolu RDP.
 
 ## <a name="install-microsoft-remote-desktop-on-a-chromebook"></a>Instalace Vzdálená plocha Microsoft na Chromebook
-1. Otevřete App Store na Chromebook a vyhledejte **Vzdálená plocha Microsoft**.
+1. Otevřete App Store na Chromebook a vyhledejte **Vzdálená plocha Microsoft** .
 
     ![Vzdálená plocha Microsoft](./media/how-to-use-classroom-lab/install-ms-remote-desktop-chromebook.png)
 1. Nainstalujte nejnovější verzi Vzdálená plocha Microsoft. 
@@ -28,7 +28,7 @@ V této části se dozvíte, jak se student může připojit k virtuálnímu po�
     ![Připojení k virtuálnímu počítači](./media/how-to-use-classroom-lab/connect-vm-chromebook.png)
 
 1. Po zobrazení výzvy zadejte svoje heslo.
-    ![Připojení k virtuálnímu počítači](./media/how-to-use-classroom-lab/password-chromebook.png)
+    ![Snímek obrazovky zobrazující přihlašovací obrazovku, kde můžete zadat uživatelské jméno a heslo.](./media/how-to-use-classroom-lab/password-chromebook.png)
 
 
 1. Pokud se zobrazí následující upozornění, vyberte **pokračovat** . 

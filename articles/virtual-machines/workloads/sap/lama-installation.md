@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be7cfef5c7121d918c375dae216d293d9d56526b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361360"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890475"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -181,7 +181,7 @@ Vytvořte nový virtuální počítač s jedním z podporovaných operačních s
 
 Databáze Oracle potřebuje disky pro/Oracle,/Home/oraod1 a/Home/Oracle.
 
-![Oracle Database v systému Linux](media/lama/sap-lama-db-ora-lnx.png)
+![Diagram, který zobrazuje databázi Oracle v systému Linux a potřebné disky.](media/lama/sap-lama-db-ora-lnx.png)
 
 #### <a name="manual-deployment-for-microsoft-sql-server"></a>Ruční nasazení pro Microsoft SQL Server
 
@@ -274,7 +274,7 @@ Než začnete se správcem SAP software Provisioning Manager (SWPM), musíte př
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-Spusťte SWPM a pro *název hostitele instance ASCS*použijte *ah1-ASCS* .
+Spusťte SWPM a pro *název hostitele instance ASCS* použijte *ah1-ASCS* .
 
 ![Logo Linux.][Logo_Linux] Linux  
 Do profilu agenta hostitele SAP, který se nachází na adrese/usr/SAP/hostctrl/exe/host_profile, přidejte následující parametr profilu. Další informace najdete v tématu SAP Note [2628497].
@@ -319,7 +319,7 @@ V rámci účtu NetApp rozsah kapacity určuje velikost a typ disků pro každý
 
 ![Fond kapacit SAP LaMa NetApp se vytvořil. ](media/lama/sap-lama-capacitypool-list.png)
 
-Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení: */sapmnt/ \<SID\> *, */usr/SAP/ \<SID\> *a */Home/ \<sid\> ADM*. Volitelně se */usr/SAP/trans* potřebuje pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
+Svazky NFS se teď dají definovat. Vzhledem k tomu, že budou existovat svazky pro více systémů v jednom fondu, je třeba zvolit schéma pojmenování na základě sebe. Přidáním identifikátoru zabezpečení (SID) lze seskupit související svazky dohromady. Pro ASCS a instanci as jsou potřeba následující připojení: */sapmnt/ \<SID\>* , */usr/SAP/ \<SID\>* a */Home/ \<sid\> ADM* . Volitelně se */usr/SAP/trans* potřebuje pro adresář centrálního přenosu, který se aspoň používá pro všechny systémy na jednom místě.
 
 > [!NOTE]
 > Během fáze BETA verze musí být názvy svazků v rámci předplatného jedinečné.
@@ -381,7 +381,7 @@ Přidejte další virtuální název hostitele a IP adresu pro název, který po
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-Spusťte instalaci instance databáze SWPM na virtuálním počítači aplikačního serveru, ne na virtuálním počítači HANA. Použijte *ah1-DB* pro *hostitele databáze* v dialogovém okně *databáze pro systém SAP*.
+Spusťte instalaci instance databáze SWPM na virtuálním počítači aplikačního serveru, ne na virtuálním počítači HANA. Použijte *ah1-DB* pro *hostitele databáze* v dialogovém okně *databáze pro systém SAP* .
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>Instalace aplikačního serveru SAP NetWeaver pro SAP HANA
 
@@ -417,7 +417,7 @@ Pokud ho nastavíte ručně, budete také muset vytvořit nové položky userSto
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru*použijte *ah1-di-0* .
+Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru* použijte *ah1-di-0* .
 
 #### <a name="post-installation-steps-for-sap-hana"></a>Kroky po instalaci pro SAP HANA
 
@@ -436,7 +436,7 @@ Než začnete se správcem SAP software Provisioning Manager (SWPM), musíte př
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-Spusťte SWPM a pro *název hostitele instance ASCS*použijte *AS1-ASCS* .
+Spusťte SWPM a pro *název hostitele instance ASCS* použijte *AS1-ASCS* .
 
 #### <a name="install-sql-server"></a>Instalace SQL Serveru
 
@@ -447,9 +447,9 @@ Musíte přidat IP adresu virtuálního hostitele databáze do síťového rozhr
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-Spusťte instalaci instance databáze SWPM na virtuálním počítači SQL serveru. Pomocí SAPINST_USE_HOSTNAME =*AS1-DB* přepište název hostitele, který se používá pro připojení k SQL Server. Pokud jste virtuální počítač nasadili pomocí šablony Azure Resource Manager, ujistěte se, že jste nastavili adresář, který se používá pro datové soubory databáze, do *C:\sql\data* a soubor protokolu databáze na *C:\SQL\LOG*.
+Spusťte instalaci instance databáze SWPM na virtuálním počítači SQL serveru. Pomocí SAPINST_USE_HOSTNAME = *AS1-DB* přepište název hostitele, který se používá pro připojení k SQL Server. Pokud jste virtuální počítač nasadili pomocí šablony Azure Resource Manager, ujistěte se, že jste nastavili adresář, který se používá pro datové soubory databáze, do *C:\sql\data* a soubor protokolu databáze na *C:\SQL\LOG* .
 
-Ujistěte se, že uživatel *NT AUTHORITY\SYSTEM* má přístup k SQL Server a má roli role serveru *sysadmin*. Další informace najdete v tématu SAP Note [1877727] a [2562184].
+Ujistěte se, že uživatel *NT AUTHORITY\SYSTEM* má přístup k SQL Server a má roli role serveru *sysadmin* . Další informace najdete v tématu SAP Note [1877727] a [2562184].
 
 #### <a name="install-sap-netweaver-application-server"></a>Instalace aplikačního serveru SAP NetWeaver
 
@@ -460,7 +460,7 @@ Před spuštěním Správce SAP software Provisioning (SWPM) musíte připojit I
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru*použijte *AS1-di-0* .
+Pro *název hostitele instance služby pas* v dialogu *instance primárního aplikačního serveru* použijte *AS1-di-0* .
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b40dbd91357038d1e98b04628bd866ebb336381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328883"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890628"
 ---
 # <a name="use-the-drawing-tools-module"></a>Použití modulu nástrojů pro kreslení
 
-Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení*. Tento modul usnadňuje vykreslování a úpravu obrazců na mapě pomocí vstupního zařízení, jako je například myš nebo dotyková obrazovka. Základní třídou tohoto modulu je [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Správce kreslení poskytuje všechny schopnosti potřebné k vykreslování a úpravám obrazců na mapě. Dá se použít přímo a je integrovaný do vlastního uživatelského rozhraní panelu nástrojů. Můžete také použít integrovanou třídu nástrojů pro [Kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) . 
+Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení* . Tento modul usnadňuje vykreslování a úpravu obrazců na mapě pomocí vstupního zařízení, jako je například myš nebo dotyková obrazovka. Základní třídou tohoto modulu je [Správce výkresu](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Správce kreslení poskytuje všechny schopnosti potřebné k vykreslování a úpravám obrazců na mapě. Dá se použít přímo a je integrovaný do vlastního uživatelského rozhraní panelu nástrojů. Můžete také použít integrovanou třídu nástrojů pro [Kreslení](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) . 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>Načtení modulu nástrojů pro kreslení na webové stránce
 
-1. Vytvořte nový soubor HTML a [implementujte mapování obvyklým způsobem](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+1. Vytvořte nový soubor HTML a [implementujte mapování obvyklým způsobem](./how-to-use-map-control.md).
 2. Načtěte modul nástrojů Azure Maps Drawing Tools. Můžete ho načíst jedním ze dvou způsobů:
     - Použijte globálně hostovanou verzi Content Delivery Network služby Azure Maps Services v rámci Azure. Do prvku souboru přidejte odkaz na šablonu stylů JavaScript a CSS `<head>` :
 
@@ -44,7 +44,7 @@ Sada Azure Maps Web SDK poskytuje *modul nástrojů pro kreslení*. Tento modul 
 
 ## <a name="use-the-drawing-manager-directly"></a>Použití Správce kreslení přímo
 
-Po načtení modulu nástrojů pro kreslení do aplikace můžete povolit možnosti kreslení a úprav pomocí [správce kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Můžete zadat možnosti pro správce kreslení při vytváření instance nebo `drawingManager.setOptions()` funkci nebo funkci použít.
+Po načtení modulu nástrojů pro kreslení do aplikace můžete povolit možnosti kreslení a úprav pomocí [správce kreslení](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-). Můžete zadat možnosti pro správce kreslení při vytváření instance nebo `drawingManager.setOptions()` funkci nebo funkci použít.
 
 ### <a name="set-the-drawing-mode"></a>Nastavení režimu kreslení
 
@@ -122,10 +122,10 @@ Naučte se používat další funkce modulu nástrojů pro kreslení:
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapa](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [Správce výkresu](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Panel nástrojů kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [Panel nástrojů kreslení](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

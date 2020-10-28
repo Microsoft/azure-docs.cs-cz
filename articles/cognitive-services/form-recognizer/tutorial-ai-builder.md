@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 124c8fca569365a4b892dc325518f45c7f98900c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 90e6c41ad9f6b3d13f29e76d053287395eb88aed
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675913"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889897"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Předpoklady
 
 * Sada alespoň pěti forem stejného typu, která se má použít pro data školení a testování. Tipy a možnosti pro vložení sady školicích dat najdete v tématu [Vytvoření školicích dat](./build-training-data-set.md) . Pro účely tohoto rychlého startu můžete použít soubory ve složce **výuka** [ukázkové sady dat](https://go.microsoft.com/fwlink/?linkid=2128080).
-* Power apps nebo Power automatizuje License – viz [Průvodce licencováním](https://go.microsoft.com/fwlink/?linkid=2085130). Licence musí zahrnovat [Common data Service](https://powerplatform.microsoft.com/en-us/common-data-service/).
+* Power apps nebo Power automatizuje License – viz [Průvodce licencováním](https://go.microsoft.com/fwlink/?linkid=2085130). Licence musí zahrnovat [Common data Service](https://powerplatform.microsoft.com/common-data-service/).
 * [Doplněk nebo zkušební verze](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)tvůrce AI.
 
 

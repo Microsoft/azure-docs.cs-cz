@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: a67fad5d0980730eb73f4219f12eaf3a7b9ec7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 903574a8c8696f10d9903a685bab8d12b3e6395f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310471"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891032"
 ---
 # <a name="add-a-popup-to-the-map"></a>Přidat místní nabídku na mapu
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak přidat místní nabídku do bodu na mapě.
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Následující kód přidá funkci Point, která má `name` a `description` vlastnosti, na mapu pomocí vrstvy symbolů. Instance [automaticky otevírané třídy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) je vytvořena, ale není zobrazena. Události myši se přidají do vrstvy symbolů, které aktivují otevírání a zavírání automaticky otevíraného okna. Je-li symbol značky umístěn na místě, je vlastnost automaticky otevíraná okna `position` aktualizována pozicí značky a `content` možnost je aktualizována pomocí kódu HTML, který zabalí  `name` `description` vlastnosti a funkce bodu, které jsou ponechány. Automaticky otevíraná okna se pak zobrazí na mapě pomocí `open` funkce.
+Následující kód přidá funkci Point, která má `name` a `description` vlastnosti, na mapu pomocí vrstvy symbolů. Instance [automaticky otevírané třídy](/javascript/api/azure-maps-control/atlas.popup) je vytvořena, ale není zobrazena. Události myši se přidají do vrstvy symbolů, které aktivují otevírání a zavírání automaticky otevíraného okna. Je-li symbol značky umístěn na místě, je vlastnost automaticky otevíraná okna `position` aktualizována pozicí značky a `content` možnost je aktualizována pomocí kódu HTML, který zabalí  `name` `description` vlastnosti a funkce bodu, které jsou ponechány. Automaticky otevíraná okna se pak zobrazí na mapě pomocí `open` funkce.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -279,13 +279,13 @@ V CodePen ( <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>Popup events</a> 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Překryvný](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Překryvný](/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+> [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 > [!div class="nextstepaction"]
-> [PopupTemplate](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
+> [PopupTemplate](/javascript/api/azure-maps-control/atlas.popuptemplate)
 
 Úplné ukázky kódu najdete v následujících skvělých článcích:
 

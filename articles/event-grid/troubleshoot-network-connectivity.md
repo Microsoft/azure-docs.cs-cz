@@ -5,16 +5,16 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119000"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892311"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Řešení potíží s připojením – Azure Event Grid
 
-K dispozici jsou různé důvody pro klientské aplikace, které se nemohou připojit k Event Gridmu tématu nebo doméně. Problémy s připojením mohou být trvalé nebo přechodné. Pokud se problém projeví i po celou dobu (trvalý), můžete chtít ověřit nastavení brány firewall vaší organizace, nastavení brány firewall protokolu IP, značky služeb, privátní koncové body a další. V případě přechodných problémů se spouštěním příkazů pro kontrolu zrušených paketů a získání trasování sítě může pomáhat při řešení problémů.
+K dispozici jsou různé důvody pro klientské aplikace, které se nemohou připojit k Event Gridmu tématu nebo doméně. Problémy s připojením mohou být trvalé nebo přechodné. Pokud se problém projeví i po celou dobu (trvalý), možná budete chtít ověřit nastavení brány firewall vaší organizace, nastavení brány firewall protokolu IP, značky služeb, privátní koncové body a další. V případě přechodných problémů se spouštěním příkazů pro kontrolu zrušených paketů a získání trasování sítě může pomáhat při řešení problémů.
 
 Tento článek poskytuje tipy pro řešení potíží s připojením pomocí Azure Event Grid.
 
@@ -22,7 +22,7 @@ Tento článek poskytuje tipy pro řešení potíží s připojením pomocí Azu
 
 Pokud se aplikace nebude moci připojit ke službě Event Grid vůbec, postupujte podle kroků v této části a odstraňte problém.
 
-### <a name="check-if-there-is-a-service-outage"></a>Zkontroluje, jestli nedochází k výpadku služby.
+### <a name="check-if-theres-a-service-outage"></a>Podívejte se, jestli nedochází k výpadku služby.
 
 Podívejte se na výpadek služby Azure Event Grid v [lokalitě stav služby Azure](https://azure.microsoft.com/status/).
 
@@ -50,12 +50,14 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Když pracujete s Azure, někdy je potřeba, abyste v podnikové bráně firewall nebo proxy povolili konkrétní rozsahy IP adres nebo adresy URL pro přístup ke všem službám Azure, které používáte nebo se pokoušíte použít. Ověřte, jestli je povolený provoz na IP adresách, které používá Event Grid. Pro IP adresy, které používá Azure Event Grid: Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519) a [značka služby – AzureEventGrid](network-security.md#service-tags).
 
+V dokumentu [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519) uvádí také IP adresy **podle oblasti** . Rozsahy adres pro **oblast tématu** a **spárované oblasti** ve vaší podnikové bráně firewall nebo proxy serveru můžete použít. V případě spárované oblasti pro oblast si přečtěte téma [provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure](/azure/best-practices-availability-paired-regions). 
+
 > [!NOTE]
 > Do značky služby AzureEventGrid se přidaly nové IP adresy, i když to není obvyklé. Proto je vhodné provést týdenní kontrolu značek služeb.
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Ověřte, že ve skupinách zabezpečení sítě je povolený tag služby AzureEventGrid.
 
-Pokud je vaše aplikace spuštěná v podsíti a máte přidruženou skupinu zabezpečení sítě, zkontrolujte, jestli je povolený buď internetový odchozí, nebo je povolená značka služby AzureEventGrid. Podívejte se prosím na [značky služeb](../virtual-network/service-tags-overview.md) .
+Pokud je vaše aplikace spuštěná v podsíti a má přidruženou skupinu zabezpečení sítě, zkontrolujte, jestli je povolený buď internetový odchozí, nebo je povolená značka služby AzureEventGrid. Zobrazit [značky služeb](../virtual-network/service-tags-overview.md)
 
 ### <a name="check-the-ip-firewall-settings-for-your-topicdomain"></a>Ověřte nastavení brány firewall protokolu IP pro vaše téma nebo doménu.
 
@@ -83,7 +85,7 @@ Povolit diagnostické protokoly pro Event Grid téma/doména [Povolit diagnostic
 
 ### <a name="check-if-the-eventgrid-topicdomain-can-be-accessed-using-only-a-private-endpoint"></a>Ověřte, jestli se k tématu nebo doméně EventGrid dá přistup jenom pomocí privátního koncového bodu.
 
-Pokud je v Event Grid téma/doména dostupná jenom přes privátní koncový bod, zkontrolujte, jestli klientská aplikace přistupuje k tématu nebo doméně přes soukromý koncový bod. Potvrďte to tak, že zkontrolujete, jestli klientská aplikace běží v podsíti a že je v této podsíti privátní koncový bod pro Event Grid téma nebo doménu.
+Pokud je v Event Grid téma/doména dostupná jenom přes privátní koncový bod, zkontrolujte, jestli klientská aplikace přistupuje k tématu nebo doméně přes soukromý koncový bod. Pokud ho chcete potvrdit, zkontrolujte, jestli je klientská aplikace spuštěná v podsíti a jestli je v této podsíti privátní koncový bod pro Event Grid téma nebo doménu.
 
 [Služba privátního propojení Azure](../private-link/private-link-overview.md) umožňuje přístup k Azure Event Grid přes **privátní koncový bod** ve vaší virtuální síti. Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě využívající privátní propojení Azure. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně ho přinášejí do vaší virtuální sítě. Veškerý provoz do služby se dá směrovat prostřednictvím privátního koncového bodu, takže se nevyžadují žádné brány, zařízení NAT, ExpressRoute, připojení VPN ani veřejné IP adresy. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Můžete se připojit k instanci prostředku Azure, která poskytuje nejvyšší úroveň členitosti v řízení přístupu.
 
@@ -91,7 +93,7 @@ Další informace najdete v tématu [Konfigurace privátních koncových bodů](
 
 ## <a name="troubleshoot-transient-connectivity-issues"></a>Řešení potíží s přechodným připojením
 
-Pokud se setkáváte s přerušovanými problémy s připojením, přečtěte si následující části, kde najdete tipy k odstraňování potíží.
+Pokud máte občasné problémy s připojením, přečtěte si následující části Tipy pro řešení potíží.
 
 ### <a name="run-the-command-to-check-dropped-packets"></a>Spuštění příkazu pro kontrolu zrušených paketů
 

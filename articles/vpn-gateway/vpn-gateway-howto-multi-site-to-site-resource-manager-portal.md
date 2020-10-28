@@ -1,41 +1,33 @@
 ---
-title: 'Přidání více připojení typu Site-to-site k virtuální síti VPN Gateway do virtuální sítě: Azure Portal'
+title: 'Přidání více připojení Site-to-site k síti VPN Gateway do virtuální sítě: Azure Portal'
 description: Přidání připojení S2S s více lokalitami k bráně VPN, která má existující připojení
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.workload: infrastructure-services
-ms.date: 09/02/2020
+ms.date: 10/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "89401193"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890144"
 ---
-# <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením služby VPN Gateway
+# <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>Přidání dalších připojení S2S k virtuální síti: Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (Classic)](vpn-gateway-multi-site.md)
 >
-> 
 
-Tento článek vám pomůže přidat připojení typu Site-to-Site (S2S) k bráně VPN, která má existující připojení pomocí Azure Portal. Tento typ připojení se často označuje jako konfigurace s více lokalitami. Můžete přidat připojení S2S k virtuální síti, která už má připojení S2S, připojení typu Point-to-site nebo připojení typu VNet-to-VNet. Při přidávání připojení platí určitá omezení. Před zahájením konfigurace zkontrolujte, jestli je v tomto článku oddíl [než začnete](#before) . 
+Tento článek vám pomůže přidat další připojení typu Site-to-Site (S2S) k bráně VPN, která má existující připojení. Tato architektura se často označuje jako konfigurace s více lokalitami. Můžete přidat připojení S2S k virtuální síti, která už má připojení S2S, připojení typu Point-to-site nebo připojení typu VNet-to-VNet. Při přidávání připojení platí určitá omezení. Před zahájením konfigurace si přečtěte část [požadavky](#before) v tomto článku.
 
 Tento článek se týká Správce prostředků virtuální sítě, která má RouteBased bránu VPN. Tyto kroky se nevztahují na nové konfigurace souběžného připojení ExpressRoute/site-to-site. Pokud však přidáváte pouze nové připojení VPN k již existující konfiguraci s jednou konfigurací současně, můžete použít tento postup. Informace o současných připojeních najdete v tématu [koexistující připojení ExpressRoute/S2S](../expressroute/expressroute-howto-coexist-resource-manager.md) .
 
-### <a name="deployment-models-and-methods"></a>Modely a metody nasazení
-[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+## <a name="prerequisites"></a><a name="before"></a>Předpoklady
 
-Tuto tabulku aktualizujeme, protože nové články a další nástroje budou k dispozici pro tuto konfiguraci. Když je článek k dispozici, odkazujeme přímo na něj z této tabulky.
-
-[!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
-
-## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 Ověřte následující položky:
 
 * Nekonfigurujete novou koexistující konfiguraci ExpressRoute a VPN Gateway.
@@ -45,47 +37,49 @@ Ověřte následující položky:
 * Máte kompatibilní zařízení VPN a někoho, kdo ho může nakonfigurovat. Viz [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md). Pokud nevíte, jak nakonfigurovat zařízení VPN, nebo neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže.
 * Máte veřejnou IP adresu pro vaše zařízení VPN.
 
-## <a name="part-1---configure-a-connection"></a><a name="part1"></a>Část 1 – Konfigurace připojení
+## <a name="configure-a-connection"></a><a name="configure"></a>Konfigurace připojení
+
 1. V prohlížeči přejděte na portál [Azure Portal](https://portal.azure.com) a v případě potřeby se přihlaste pomocí účtu Azure.
-2. Klikněte na **všechny prostředky** a vyhledejte **bránu virtuální sítě** ze seznamu prostředků a klikněte na ni.
-3. Na stránce **Brána virtuální sítě** klikněte na **připojení**.
-   
-    ![Stránka připojení](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Stránka připojení")<br>
-4. Na stránce **připojení** klikněte na **+ Přidat**.
-   
-    ![Tlačítko Přidat připojení](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Tlačítko Přidat připojení")<br>
-5. Na stránce **Přidat připojení** vyplňte následující pole:
-   
+1. Vyberte **všechny prostředky** a vyhledejte **bránu virtuální sítě** ze seznamu prostředků a vyberte ji.
+1. Na stránce **Brána virtuální sítě** vyberte **připojení** .
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connections.png" alt-text="Připojení brány VPN Gateway":::
+1. Na stránce **připojení** vyberte **+ Přidat** .
+1. Tím otevřete stránku **Přidat připojení** .
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/add-connection.png" alt-text="Připojení brány VPN Gateway":::
+1. Na stránce **Přidat připojení** vyplňte následující pole:
+
    * **Název:** Název, který chcete přidělit k lokalitě, ke které vytváříte připojení.
-   * **Typ připojení:** Vyberte **site-to-Site (IPSec)**.
-     
-     ![Přidat stránku připojení](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Přidat stránku připojení")<br>
+   * **Typ připojení:** Vyberte **site-to-Site (IPSec)** .
 
-## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>Část 2 – Přidání brány místní sítě
-1. Klikněte na **Brána místní sítě** zvolit bránu ** _místní sítě_*_. Tím otevřete _* vyberte stránku brána místní sítě** .
-   
-    ![Zvolit bránu místní sítě](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Zvolit bránu místní sítě")<br>
-2. Kliknutím na **vytvořit nový** otevřete stránku **vytvořit bránu místní sítě** .
-   
-    ![Stránka vytvořit bránu místní sítě](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Vytvořit bránu místní sítě")<br>
-3. Na stránce **vytvořit bránu místní sítě** vyplňte následující pole:
-   
+## <a name="add-a-local-network-gateway"></a><a name="local"></a>Přidat bránu místní sítě
+
+1. V poli **Brána místní sítě** vyberte **_zvolit bránu místní sítě_*_. Otevře se okno _* zvolit bránu místní sítě** .
+1. Výběrem **+ vytvořit nové** otevřete stránku **vytvořit bránu místní sítě** .
+
+   :::image type="content" source="./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/create-local-network-gateway.png" alt-text="Připojení brány VPN Gateway":::
+1. Na stránce **vytvořit bránu místní sítě** vyplňte následující pole:
+
    * **Název:** Název, který chcete přidělit prostředku brány místní sítě.
-   * **IP adresa:** Veřejná IP adresa zařízení VPN na lokalitě, ke které se chcete připojit.
+   * **Koncový bod:** Veřejná IP adresa zařízení VPN na lokalitě, ke které se chcete připojit, nebo plně kvalifikovaný název domény koncového bodu.
    * **Adresní prostor:** Adresní prostor, který chcete směrovat do nové místní síťové lokality.
-4. Uložte změny kliknutím na tlačítko **OK** na stránce **vytvořit bránu místní sítě** .
+1. V případě, že chcete změny uložit, vyberte na stránce **vytvořit bránu místní sítě** možnost **OK** .
 
-## <a name="part-3---add-the-shared-key-and-create-the-connection"></a><a name="part3"></a>Část 3 – přidání sdíleného klíče a vytvoření připojení
-1. Na stránce **Přidat připojení** přidejte sdílený klíč, který chcete použít k vytvoření připojení. Můžete buď získat sdílený klíč ze zařízení VPN, nebo ho vytvořit tady a potom nakonfigurovat zařízení VPN tak, aby používalo stejný sdílený klíč. Důležité je, že klíče jsou přesně stejné.
-   
-    ![Sdílený klíč](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Sdílený klíč")<br>
-2. V dolní části stránky vytvořte připojení kliknutím na tlačítko **OK** .
+## <a name="add-the-shared-key"></a><a name="part3"></a>Přidat sdílený klíč
 
-## <a name="part-4---verify-the-vpn-connection"></a><a name="part4"></a>Část 4 – ověření připojení VPN
+1. Po vytvoření brány místní sítě se vraťte na stránku **Přidat připojení** .
+1. Vyplňte zbývající pole. Pro **sdílený klíč (PSK)** můžete buď získat sdílený klíč ze zařízení VPN, nebo ho vytvořit tady a potom nakonfigurovat zařízení VPN tak, aby používalo stejný sdílený klíč. Důležité je, že klíče jsou přesně stejné.
 
+## <a name="create-the-connection"></a><a name="create"></a>Vytvoření připojení
 
-[!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+1. V dolní části stránky vyberte **OK** a vytvořte připojení. Připojení začne okamžitě vytvářet.
+1. Jakmile se připojení dokončí, můžete si ho prohlédnout a ověřit.
+
+## <a name="view-and-verify-the-vpn-connection"></a><a name="verify"></a>Zobrazení a ověření připojení k síti VPN
+
+[!INCLUDE [Verify the connection](../../includes/vpn-gateway-verify-connection-portal-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu věnovaném [cestě k virtuálním počítačům](/learn/paths/deploy-a-website-with-azure-virtual-machines/) .
+Po dokončení připojení můžete do virtuálních sítí přidávat virtuální počítače. Další informace najdete v tématu věnovaném [studijním cestám virtuálních počítačů](/learn/paths/deploy-a-website-with-azure-virtual-machines/).

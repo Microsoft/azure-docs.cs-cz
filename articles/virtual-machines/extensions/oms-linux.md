@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 1193bfe74e8b5e20d2189c143f6ca0cb09abfd49
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: fc9c5e1f5922543ea14b13e3e5b424190dbbfb7a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329640"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892192"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Rozšíření Log Analytics pro virtuální počítače pro Linux
 
@@ -105,17 +105,20 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad |
+| Název | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
 | typ | OmsAgentForLinux |
-| typeHandlerVersion | 1,7 |
+| typeHandlerVersion | 1.13 |
 | ID pracovního prostoru (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
 
 ## <a name="template-deployment"></a>Nasazení šablon
+
+>[!NOTE]
+>Některé součásti rozšíření virtuálního počítače Log Analytics jsou také dodány v [rozšíření Diagnostika virtuálního počítače](./diagnostics-linux.md). Z důvodu této architektury mohou konflikty nastat, pokud jsou obě rozšíření vytvořena ve stejné šabloně ARM. Aby se tyto konflikty při instalaci nezobrazovaly, použijte [ `dependsOn` direktivu](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) , abyste zajistili, že se rozšíření nainstalují sekvenčně. Rozšíření lze instalovat v libovolném pořadí.
 
 Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení, jako je připojování k Azure Monitor protokolů. Ukázková Správce prostředků Šablona obsahující rozšíření virtuálního počítače Log Analytics agenta najdete v [galerii rychlý Start Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
@@ -135,7 +138,7 @@ Následující příklad předpokládá, že rozšíření virtuálního počít
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -160,7 +163,7 @@ Při umístění JSON rozšíření v kořenovém adresáři šablony obsahuje n
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -173,7 +176,7 @@ Při umístění JSON rozšíření v kořenovém adresáři šablony obsahuje n
 
 ## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
-Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření virtuálního počítače agenta Log Analytics do existujícího virtuálního počítače. Hodnotu *myworkspacekey svým* níže nahraďte klíčem pracovního prostoru a hodnotou *MYWORKSPACEID* s vaším ID pracovního prostoru. Tyto hodnoty najdete v pracovním prostoru Log Analytics v Azure Portal v části *Upřesnit nastavení*. 
+Pomocí rozhraní příkazového řádku Azure můžete nasadit rozšíření virtuálního počítače agenta Log Analytics do existujícího virtuálního počítače. Hodnotu *myworkspacekey svým* níže nahraďte klíčem pracovního prostoru a hodnotou *MYWORKSPACEID* s vaším ID pracovního prostoru. Tyto hodnoty najdete v pracovním prostoru Log Analytics v Azure Portal v části *Upřesnit nastavení* . 
 
 ```azurecli
 az vm extension set \
@@ -181,13 +184,13 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.10.1 --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
+  --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
   --settings '{"workspaceId":"myWorkspaceId"}'
 ```
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 

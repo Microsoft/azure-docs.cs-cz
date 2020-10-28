@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 584db064bf6f6a6b99e6e2d09f6046912cfcd1bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335241"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890662"
 ---
 # <a name="show-traffic-on-the-map"></a>Zobrazit provoz na mapě
 
@@ -80,10 +80,10 @@ Prohlédněte si <a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>ovládací p
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapa](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)
+> [TrafficOptions](/javascript/api/azure-maps-control/atlas.trafficoptions)
 
 Vylepšete uživatelské prostředí:
 

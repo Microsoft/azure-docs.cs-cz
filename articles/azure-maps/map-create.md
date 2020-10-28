@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 62aa8f966126d95af003478e7f43d3ccea2b48cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310403"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890917"
 ---
 # <a name="create-a-map"></a>Vytvoření mapy
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak vytvořit mapu a animovat mapu.
 
 ## <a name="loading-a-map"></a>Načítání mapy
 
-Chcete-li načíst mapu, vytvořte novou instanci [třídy map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map). Při inicializaci mapy předejte ID elementu DIV pro vykreslení mapy a předání sady možností pro použití při načítání mapy. Pokud v oboru názvů nejsou zadány výchozí informace o ověřování `atlas` , bude nutné tyto informace při načítání mapy zadat v možnostech mapování. Mapa načítá několik zdrojů asynchronně pro výkon. V takovém případě po vytvoření instance mapy připojte `ready` `load` událost nebo k mapě a pak přidejte jakýkoliv další kód, který komunikuje s mapou, do obslužné rutiny události. `ready`Událost se aktivuje, jakmile bude mít mapa dostatek prostředků, aby je bylo možné používat programově. `load`Událost je aktivována po úplném načtení počátečního zobrazení mapy. 
+Chcete-li načíst mapu, vytvořte novou instanci [třídy map](/javascript/api/azure-maps-control/atlas.map). Při inicializaci mapy předejte ID elementu DIV pro vykreslení mapy a předání sady možností pro použití při načítání mapy. Pokud v oboru názvů nejsou zadány výchozí informace o ověřování `atlas` , bude nutné tyto informace při načítání mapy zadat v možnostech mapování. Mapa načítá několik zdrojů asynchronně pro výkon. V takovém případě po vytvoření instance mapy připojte `ready` `load` událost nebo k mapě a pak přidejte jakýkoliv další kód, který komunikuje s mapou, do obslužné rutiny události. `ready`Událost se aktivuje, jakmile bude mít mapa dostatek prostředků, aby je bylo možné používat programově. `load`Událost je aktivována po úplném načtení počátečního zobrazení mapy. 
 
 <br/>
 
@@ -48,10 +48,10 @@ Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderW
 
 Při vytváření mapy je k dispozici několik různých typů možností, které mohou být předány, aby bylo možné přizpůsobit, jak mapa funguje, jak je uvedeno níže.
 
-- [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) a [CameraBoundOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions) se používají k určení oblasti, kterou má mapa zobrazovat.
-- [ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) slouží k určení, jak má mapa spolupracovat se službami, které mapu nasazuje.
-- [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) se používají k určení mapování, které by mělo být ve stylu a vykreslené.
-- [UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) slouží k určení způsobu, jakým má mapování dosáhnout při interakci uživatele s mapou. 
+- [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) a [CameraBoundOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions) se používají k určení oblasti, kterou má mapa zobrazovat.
+- [ServiceOptions](/javascript/api/azure-maps-control/atlas.serviceoptions) slouží k určení, jak má mapa spolupracovat se službami, které mapu nasazuje.
+- [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions) se používají k určení mapování, které by mělo být ve stylu a vykreslené.
+- [UserInteractionOptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) slouží k určení způsobu, jakým má mapování dosáhnout při interakci uživatele s mapou. 
 
 Tyto možnosti lze také aktualizovat poté, co byla mapa načtena pomocí `setCamera` funkcí, `setServiceOptions` , `setStyle` a `setUserInteraction` . 
 
@@ -81,7 +81,7 @@ map.setCamera({
 });
 ```
 
-V následujícím kódu je vytvořen [objekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) a jsou nastaveny možnosti centrování a přiblížení. Vlastnosti mapy, jako je například střed a úroveň přiblížení, jsou součástí [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions).
+V následujícím kódu je vytvořen [objekt mapy](/javascript/api/azure-maps-control/atlas.map) a jsou nastaveny možnosti centrování a přiblížení. Vlastnosti mapy, jako je například střed a úroveň přiblížení, jsou součástí [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions).
 
 <br/>
 
@@ -101,7 +101,7 @@ map.setCamera({
 });
 ```
 
-V následujícím kódu je [objekt mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) vytvořen pomocí `new atlas.Map()` . Vlastnosti mapy, jako je například, `CameraBoundsOptions` lze definovat prostřednictvím funkce [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) třídy map. Vlastnosti bounds a odsazení jsou nastaveny pomocí `setCamera` .
+V následujícím kódu je [objekt mapy](/javascript/api/azure-maps-control/atlas.map) vytvořen pomocí `new atlas.Map()` . Vlastnosti mapy, jako je například, `CameraBoundsOptions` lze definovat prostřednictvím funkce [SetCamera](/javascript/api/azure-maps-control/atlas.map) třídy map. Vlastnosti bounds a odsazení jsou nastaveny pomocí `setCamera` .
 
 <br/>
 
@@ -110,7 +110,7 @@ V následujícím kódu je [objekt mapy](https://docs.microsoft.com/javascript/a
 
 ### <a name="animate-map-view"></a>Animovat zobrazení mapy
 
-Při nastavování možností kamery mapy lze nastavit také [Možnosti animace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions) . Tyto možnosti určují typ animace a doby trvání, kterou by měl trvat při přesunu kamery.
+Při nastavování možností kamery mapy lze nastavit také [Možnosti animace](/javascript/api/azure-maps-control/atlas.animationoptions) . Tyto možnosti určují typ animace a doby trvání, kterou by měl trvat při přesunu kamery.
 
 ```javascript
 map.setCamera({
@@ -130,12 +130,12 @@ V následujícím kódu vytvoří první blok kódu mapu a nastaví styly pro vl
 
 ## <a name="request-transforms"></a>Transformace požadavků
 
-Někdy je vhodné, aby bylo možné upravovat požadavky HTTP provedené mapovým ovládacím prvkem. Například:
+Někdy je vhodné, aby bylo možné upravovat požadavky HTTP provedené mapovým ovládacím prvkem. Příklad:
 
 - Přidejte další záhlaví do požadavků dlaždic. To se často provádí pro služby chráněné heslem.
 - Upravte adresy URL tak, aby se spouštěly požadavky prostřednictvím proxy služby.
 
-[Možnosti služby](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) mapy mají a `transformRequest` , které lze použít k úpravě všech požadavků, které jsou provedeny v mapě před jejich provedením. `transformRequest`Možnost je funkce, která přijímá dva parametry, adresu URL řetězce a typ prostředku řetězec, který označuje, k čemu je požadavek použit. Tato funkce musí vracet [requestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters) výsledek.
+[Možnosti služby](/javascript/api/azure-maps-control/atlas.serviceoptions) mapy mají a `transformRequest` , které lze použít k úpravě všech požadavků, které jsou provedeny v mapě před jejich provedením. `transformRequest`Možnost je funkce, která přijímá dva parametry, adresu URL řetězce a typ prostředku řetězec, který označuje, k čemu je požadavek použit. Tato funkce musí vracet [requestParameters](/javascript/api/azure-maps-control/atlas.requestparameters) výsledek.
 
 ```JavaScript
 transformRequest: (url: string, resourceType: string) => RequestParameters
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>Vyzkoušejte si kód
 
-Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kartě js** a zobrazit změny zobrazení mapy na **kartě výsledek**. Můžete také kliknout na **Upravit v CodePen**, v pravém horním rohu a upravit kód v CodePen.
+Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kartě js** a zobrazit změny zobrazení mapy na **kartě výsledek** . Můžete také kliknout na **Upravit v CodePen** , v pravém horním rohu a upravit kód v CodePen.
 
 <a id="relatedReference"></a>
 
@@ -180,7 +180,7 @@ Podívejte se na ukázky kódu. Kód jazyka JavaScript můžete upravit na **kar
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapa](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
@@ -197,4 +197,4 @@ Další funkce pro přidání funkcí do aplikace najdete v příkladech kódu:
 > [Přidání ovládacích prvků do mapy](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

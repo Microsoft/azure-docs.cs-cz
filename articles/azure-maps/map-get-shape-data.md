@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: ecefac68a4348eeae23860d542f949b1c7ff23a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddb8009e544ede82d1c56d112950ff247a87380c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310200"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890696"
 ---
 # <a name="get-shape-data"></a>Získání dat tvaru
 
-V tomto článku se dozvíte, jak získat data tvarů vykreslených na mapě. Používáme funkci **drawingManager. GetSource ()** uvnitř [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#getsource--). K dispozici jsou různé scénáře, kdy chcete extrahovat data o nesprávném formátu JSON vykresleného obrazce a použít ho jinde.  
+V tomto článku se dozvíte, jak získat data tvarů vykreslených na mapě. Používáme funkci **drawingManager. GetSource ()** uvnitř [Správce výkresu](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#getsource--). K dispozici jsou různé scénáře, kdy chcete extrahovat data o nesprávném formátu JSON vykresleného obrazce a použít ho jinde.  
 
 
 ## <a name="get-data-from-drawn-shape"></a>Získat data z vykresleného obrazce
@@ -54,10 +54,10 @@ Naučte se používat další funkce modulu nástrojů pro kreslení:
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapa](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [Správce výkresu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [Správce výkresu](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [Panel nástrojů kreslení](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [Panel nástrojů kreslení](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47ec082daa6eee4ab593fdb5523087f9eb5b038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eccbbb22814788aaf06fa6fd10d8c376203c1d49
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274142"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892447"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
@@ -110,5 +110,5 @@ V současné době nelze zásady přihlašování založené na rizicích použ�
 Přečtěte si následující články o spolupráci Azure AD B2B:
 
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-* [Licencování spolupráce B2B ve službě Azure AD](licensing-guidance.md)
+* [Externí identity – ceny](external-identities-pricing.md)
 * [Nejčastější dotazy týkající se spolupráce Azure Active Directory s B2B](faq.md)

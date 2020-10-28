@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 858bf042593045059c988ae1b2796b063b33bb6e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047569"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890238"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Co je poradce pro metriky (Preview)? 
 
@@ -53,16 +53,14 @@ Analyzujte anomálie zjištěné u multidimenzionálních metrik a vygenerujte [
 Pracovní postup je jednoduchý: po připojení dat můžete vyladit detekci anomálií a vytvořit konfigurace, které odpovídají vašemu scénáři.
 
 1. [Vytvořte prostředek Azure](../cognitive-services-apis-create-account.md) pro poradce metrik. 
-2. Vyzkoušejte si ukázkový web a podívejte se na ukázkovou instanci služby Advisor metriky s předem nakonfigurovanými ukázkovými daty. 
-3. Sestavte své první monitorování pomocí webového portálu.
+2. Sestavte své první monitorování pomocí webového portálu.
     1. Onboarding dat
     2. Vyladit detekci anomálií
     3. Přihlášení k odběru upozornění
     4. Zobrazit diagnostické přehledy
-1. K přizpůsobení instance použijte REST API.
+3. K přizpůsobení instance použijte REST API.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vyzkoušejte si [ukázkový web](quickstarts/explore-demo.md).
 * Prozkoumejte rychlý Start: [monitorování první metriky na webu](quickstarts/web-portal.md).
 * Prozkoumejte rychlý Start: [k přizpůsobení řešení použijte rozhraní REST API](quickstarts/rest-api.md).

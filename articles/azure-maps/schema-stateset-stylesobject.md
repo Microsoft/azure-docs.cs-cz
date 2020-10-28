@@ -8,16 +8,16 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4b085fbc6e330d38b59fce0c494f672b00c712b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb4e49e6c0e3f011015d40b8eca036d5218674c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85120514"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891695"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>Referenční příručka schématu StylesObject pro dynamická mapování
 
-Tento článek představuje referenční příručku ke schématu a syntaxi JSON pro `StylesObject` . `StylesObject`Je `StyleObject` pole reprezentující styly stateset. Pomocí [služby stavu funkce](https://docs.microsoft.com/rest/api/maps/featurestate) Azure Maps Creator můžete použít styly stateset pro funkce dat mapy v interiéru. Jakmile vytvoříte styly stateset a přidružíte je k funkcím vnitřních map, můžete je použít k vytvoření dynamické mapy vnitřních oken. Další informace o vytváření dynamických map vnitřníchy najdete v tématu [Implementace dynamického stylu pro mapy vnitřních vnitřních](indoor-map-dynamic-styling.md)přípon.
+Tento článek představuje referenční příručku ke schématu a syntaxi JSON pro `StylesObject` . `StylesObject`Je `StyleObject` pole reprezentující styly stateset. Pomocí [služby stavu funkce](/rest/api/maps/featurestate) Azure Maps Creator můžete použít styly stateset pro funkce dat mapy v interiéru. Jakmile vytvoříte styly stateset a přidružíte je k funkcím vnitřních map, můžete je použít k vytvoření dynamické mapy vnitřních oken. Další informace o vytváření dynamických map vnitřníchy najdete v tématu [Implementace dynamického stylu pro mapy vnitřních vnitřních](indoor-map-dynamic-styling.md)přípon.
 
 ## <a name="styleobject"></a>StyleObject
 
@@ -103,7 +103,7 @@ V následujícím příkladu JSON budou oba rozsahy platit, pokud je hodnota *st
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject) definuje sadu logických podmínek rozsahu, které v případě `true` změny barvy zobrazení *stavu* na barvu určenou `color` vlastností. Pokud `range` parametr není zadán, bude vždy použita barva definovaná ve `color` Vlastnosti.   | No |
+| `range` | [RangeObject](#rangeobject) | [RangeObject](#rangeobject) definuje sadu logických podmínek rozsahu, které v případě `true` změny barvy zobrazení *stavu* na barvu určenou `color` vlastností. Pokud `range` parametr není zadán, bude vždy použita barva definovaná ve `color` Vlastnosti.   | Ne |
 | `color` | řetězec | Barva, která se má použít, pokud hodnota stavu spadá do rozsahu. `color`Vlastnost je řetězec formátu JSON v jednom z následujících formátů: <ul><li> Šestnáctkové hodnoty ve stylu HTML </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100; 50%; 50%; 1)")</li><li> Předdefinované názvy barev HTML, jako je žlutá a modrá.</li></ul> | Ano |
 
 ### <a name="rangeobject"></a>RangeObject
@@ -112,10 +112,10 @@ V následujícím příkladu JSON budou oba rozsahy platit, pokud je hodnota *st
 
 | Vlastnost | Typ | Popis | Povinné |
 |-----------|----------|-------------|-------------|
-| `minimum` | double | Celé číslo x, které x ≥ `minimum` .| No |
-| `maximum` | double | Vše číslo x, které x ≤ `maximum` . | No |
-| `exclusiveMinimum` | double | Číslo x > `exclusiveMinimum` .| No |
-| `exclusiveMaximum` | double | Číslo x < `exclusiveMaximum` .| No |
+| `minimum` | double | Celé číslo x, které x ≥ `minimum` .| Ne |
+| `maximum` | double | Vše číslo x, které x ≤ `maximum` . | Ne |
+| `exclusiveMinimum` | double | Číslo x > `exclusiveMinimum` .| Ne |
+| `exclusiveMaximum` | double | Číslo x < `exclusiveMaximum` .| Ne |
 
 ### <a name="example-of-numerictypestylerule"></a>Příklad NumericTypeStyleRule
 

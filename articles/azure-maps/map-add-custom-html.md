@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 25ed41be53c114c258e5c63437ff2b5df875af75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c4367e2a649f4e239e2dab374afc4fb867e517b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310726"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891189"
 ---
 # <a name="add-html-markers-to-the-map"></a>Přidání značek HTML do mapy
 
 V tomto článku se dozvíte, jak přidat vlastní kód HTML, jako je například soubor obrázku, na mapu jako značku HTML.
 
 > [!NOTE]
-> Značky HTML se nepřipojují ke zdrojům dat. Místo toho se informace o poloze přidávají přímo do značky a značka se přidá do vlastnosti Maps, `markers` která je [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager).
+> Značky HTML se nepřipojují ke zdrojům dat. Místo toho se informace o poloze přidávají přímo do značky a značka se přidá do vlastnosti Maps, `markers` která je [HtmlMarkerManager](/javascript/api/azure-maps-control/atlas.htmlmarkermanager).
 
 > [!IMPORTANT]
 > Na rozdíl od většiny vrstev ve webovém ovládacím prvku Azure Maps, které používají WebGL pro vykreslování, používají značky HTML tradiční prvky DOM pro vykreslování. V takovém případě je více značek HTML přidaných na stránku, další prvky modelu DOM, které jsou k dispozici. Výkon se může snížit po přidání několika stovek značek HTML. U větších datových sad zvažte buď vytvoření clusterů dat, nebo použití symbolu nebo bublinové vrstvy.
 
 ## <a name="add-an-html-marker"></a>Přidat značku HTML
 
-Třída [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker) má výchozí styl. Značku lze přizpůsobit nastavením možnosti barva a text značky. Výchozí styl třídy značek HTML je šablona SVG, která má `{color}` `{text}` zástupný symbol a. Nastavte vlastnosti barva a text v možnostech značek HTML pro rychlé přizpůsobení. 
+Třída [HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker) má výchozí styl. Značku lze přizpůsobit nastavením možnosti barva a text značky. Výchozí styl třídy značek HTML je šablona SVG, která má `{color}` `{text}` zástupný symbol a. Nastavte vlastnosti barva a text v možnostech značek HTML pro rychlé přizpůsobení. 
 
 Následující kód vytvoří značku HTML a nastaví vlastnost Color na "DodgerBlue" a vlastnost text na "10". Automaticky otevíraná okna jsou připojena k této značce a `click` událost slouží k přepnutí viditelnosti místní nabídky.
 
@@ -103,13 +103,13 @@ Tyto ukázky ukazují, jak přidat události myší a přetáhnout je do značky
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HtmlMarker](/javascript/api/azure-maps-control/atlas.htmlmarker)
 
 > [!div class="nextstepaction"]
-> [HtmlMarkerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+> [HtmlMarkerOptions](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 > [!div class="nextstepaction"]
-> [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager)
+> [HtmlMarkerManager](/javascript/api/azure-maps-control/atlas.htmlmarkermanager)
 
 Další příklady kódu pro přidání do map najdete v následujících článcích:
 

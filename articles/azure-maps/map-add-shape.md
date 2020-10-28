@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 74c8ba4ed1f228b9b3ba90b46c47f538d71ff409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96553e75d4b982cfe67d03961d4356a3844f253c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310454"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890993"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Přidat mnohoúhelníkovou vrstvu k mapě
 
-V tomto článku se dozvíte, jak vykreslovat oblasti `Polygon` a `MultiPolygon` funkce geometrií na mapě pomocí mnohoúhelníkové vrstvy. Sada Azure Maps Web SDK také podporuje vytváření geometrií kroužků, jak je definováno v [rozšířeném schématu pro stanovení biojson](extend-geojson.md#circle). Tyto kružnice jsou transformované na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií se dají snadno aktualizovat při zabalení do nástroje [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape)
+V tomto článku se dozvíte, jak vykreslovat oblasti `Polygon` a `MultiPolygon` funkce geometrií na mapě pomocí mnohoúhelníkové vrstvy. Sada Azure Maps Web SDK také podporuje vytváření geometrií kroužků, jak je definováno v [rozšířeném schématu pro stanovení biojson](extend-geojson.md#circle). Tyto kružnice jsou transformované na mnohoúhelníky při vykreslování na mapě. Všechny funkce geometrií se dají snadno aktualizovat při zabalení do nástroje [Atlas. Třída Shape](/javascript/api/azure-maps-control/atlas.shape)
 
 ## <a name="use-a-polygon-layer"></a>Použít mnohoúhelníkovou vrstvu 
 
-Když je mnohoúhelníková vrstva připojená ke zdroji dat a načte se na mapě, vykreslí oblast s `Polygon` funkcemi a `MultiPolygon` . Chcete-li vytvořit mnohoúhelník, přidejte ho do zdroje dat a vykreslete ho pomocí mnohoúhelníkové vrstvy pomocí třídy [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer) .
+Když je mnohoúhelníková vrstva připojená ke zdroji dat a načte se na mapě, vykreslí oblast s `Polygon` funkcemi a `MultiPolygon` . Chcete-li vytvořit mnohoúhelník, přidejte ho do zdroje dat a vykreslete ho pomocí mnohoúhelníkové vrstvy pomocí třídy [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer) .
 
 ```javascript
 //Create a data source and add it to the map.
@@ -115,7 +115,7 @@ Rozhraní Azure Maps Web SDK tyto `Point` funkce převede na `Polygon` funkce. T
 
 ## <a name="make-a-geometry-easy-to-update"></a>Usnadnění aktualizace geometrie
 
-`Shape`Třída obaluje [geometrii](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry) nebo [funkci](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature) a usnadňuje aktualizaci a údržbu těchto funkcí. Chcete-li vytvořit instanci proměnné tvaru, předejte geometrii nebo sadu vlastností konstruktoru tvaru.
+`Shape`Třída obaluje [geometrii](/javascript/api/azure-maps-control/atlas.data.geometry) nebo [funkci](/javascript/api/azure-maps-control/atlas.data.feature) a usnadňuje aktualizaci a údržbu těchto funkcí. Chcete-li vytvořit instanci proměnné tvaru, předejte geometrii nebo sadu vlastností konstruktoru tvaru.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -137,10 +137,10 @@ Následující ukázka kódu ukazuje, jak zabalit objekt informující o středn
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mnohoúhelník](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [Mnohoúhelník](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
+> [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
 
 > [!div class="nextstepaction"]
 > [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)

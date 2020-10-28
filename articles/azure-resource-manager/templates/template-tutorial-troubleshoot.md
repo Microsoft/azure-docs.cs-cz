@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119340"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891801"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Kurz: řešení potíží s nasazeními šablon ARM
 
@@ -33,7 +33,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -43,7 +43,7 @@ K dokončení tohoto článku potřebujete:
 
 Otevřete šablonu s názvem [Vytvoření standardního účtu úložiště](https://azure.microsoft.com/resources/templates/101-storage-account-create/) ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/)a nastavte dvě problémy se šablonou.
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor** .
 2. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -72,9 +72,9 @@ Z prostředí se zobrazí chyba, která bude vypadat přibližně takto:
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Chybová zpráva indikuje, že se jedná o problém s **apiVersion1**.
+Chybová zpráva indikuje, že se jedná o problém s **apiVersion1** .
 
-K opravě problému použijte Visual Studio Code změňte **apiVersion1** na **apiVersion**a pak šablonu uložte.
+K opravě problému použijte Visual Studio Code změňte **apiVersion1** na **apiVersion** a pak šablonu uložte.
 
 ## <a name="troubleshoot-the-deployment-error"></a>Řešení potíží s chybami nasazení
 
@@ -93,22 +93,22 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 Chybu nasazení najdete v Azure Portal pomocí následujícího postupu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Otevřete skupinu prostředků tak, že vyberete **skupiny prostředků** a potom název skupiny prostředků. V rámci **nasazení**se zobrazí **1 chyba** .
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Otevřete skupinu prostředků tak, že vyberete **skupiny prostředků** a potom název skupiny prostředků. V rámci **nasazení** se zobrazí **1 chyba** .
 
-    ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
-3. Vyberte **Podrobnosti o chybě**.
+    ![Snímek obrazovky, který zvýrazní neúspěšné nasazení.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+3. Vyberte **Podrobnosti o chybě** .
 
-    ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![Snímek obrazovky, který zvýrazní odkaz Podrobnosti o chybě.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
     Chybová zpráva je stejná jako ta, která se zobrazila dříve:
 
-    ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![Snímek obrazovky zobrazující podrobnosti o chybě](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
 Chybu můžete najít také v protokolech aktivit:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **monitorování**  >  **protokolu aktivit**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Vyberte **monitorování**  >  **protokolu aktivit** .
 3. K vyhledání protokolu použijte filtry.
 
     ![Řešení potíží s Správce prostředků kurzu](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)

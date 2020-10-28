@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 6d0cb0c6a9cc3080ec4b2fbd2c4b707a52a88319
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ecde4cb0c8a3bfe3dd8fb2edb59423838e0751c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285107"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889863"
 ---
 # <a name="clustering-point-data"></a>Data bodu clusteringu
 
@@ -48,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 Tady jsou další metody, které `DataSource` Třída poskytuje pro clusteringu:
 
-| Metoda | Návratový typ | Description |
+| Metoda | Návratový typ | Popis |
 |--------|-------------|-------------|
 | getClusterChildren (clusterId: Number) | &lt;Geometrie funkce pole promise &lt; &lt; , libovolný &gt; \| tvar&gt;&gt; | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené položky mohou být kombinací tvarů a podclusterů. Podclustery budou funkcemi s vlastnostmi, které odpovídají ClusteredProperties. |
 | getClusterExpansionZoom (clusterId: Number) | Číslo promise &lt;&gt; | Vypočítá úroveň přiblížení, při které se cluster začne zvětšovat nebo rozdělovat. |
@@ -92,7 +92,7 @@ Podívejte se na CodePen () na () <a href='https://codepen.io/azuremaps/pen/VRJr
 
 Pokud dojde k událostem myši na vrstvě, která obsahuje seskupené datové body, vrátí se clusterový datový bod do události jako objekt funkce bodu injson. Tato funkce Point bude mít následující vlastnosti:
 
-| Název vlastnosti             | Typ    | Description   |
+| Název vlastnosti             | Typ    | Popis   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Indikuje, že funkce představuje cluster. |
 | `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s `getClusterExpansionZoom` `getClusterChildren` metodami DataSource, a `getClusterLeaves` . |
@@ -132,13 +132,13 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>agregace clu
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [DataSource – třída](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
+> [DataSource – třída](/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
-> [Objekt DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)
+> [Objekt DataSourceOptions](/javascript/api/azure-maps-control/atlas.datasourceoptions)
 
 > [!div class="nextstepaction"]
-> [Atlas. Math – obor názvů](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)
+> [Atlas. Math – obor názvů](/javascript/api/azure-maps-control/atlas.math)
 
 Další funkce pro přidání funkcí do aplikace najdete v příkladech kódu:
 

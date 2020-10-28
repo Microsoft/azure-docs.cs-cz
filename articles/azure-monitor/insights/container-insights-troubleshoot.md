@@ -3,14 +3,14 @@ title: Řešení potíží s Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak můžete řešit problémy a řešit problémy s Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: fcd799c63e4afb68d96f67d1c03016a4d3b10f34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092826"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890356"
 ---
-# <a name="troubleshooting-azure-monitor-for-containers"></a>Řešení potíží s Azure Monitor pro kontejnery
+# <a name="troubleshooting-azure-monitor-for-containers"></a>Řešení potíží se službou Azure Monitor pro kontejnery
 
 Když nakonfigurujete monitorování clusteru Azure Kubernetes Service (AKS) s Azure Monitor pro kontejnery, může dojít k potížím s ochranou stavu shromažďování dat nebo vytváření sestav. Tento článek podrobně popisuje některé běžné problémy a postup řešení potíží.
 
@@ -22,10 +22,10 @@ Při připojování nebo aktualizaci se u prostředku clusteru pokusy o přiřaz
 
 Tuto roli můžete také ručně udělit z Azure Portal provedením následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-2. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Kubernetes**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure Kubernetes**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby** . V seznamu prostředků zadejte **Kubernetes** . Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Azure Kubernetes** .
 3. V seznamu clusterů Kubernetes vyberte jeden ze seznamu.
-2. V nabídce na levé straně klikněte na **řízení přístupu (IAM)**.
+2. V nabídce na levé straně klikněte na **řízení přístupu (IAM)** .
 3. Vyberte **+ Přidat** , chcete-li přidat přiřazení role a vybrat roli **vydavatele metrik monitorování** a v poli **Vybrat** **AKS** zadejte příkaz pro filtrování výsledků jenom v clusterových objektech definovaných v předplatném. Vyberte jednu ze seznamu, která je specifická pro daný cluster.
 4. Kliknutím na **Uložit** dokončete přiřazení role.
 
@@ -92,7 +92,7 @@ Následující tabulka shrnuje známé chyby, se kterými se můžete setkat př
 | Chybová zpráva `Error retrieving data` | I když je cluster služby Azure Kubernetes nastaven pro monitorování stavu a výkonu, připojení mezi clusterem a pracovním prostorem Azure Log Analytics je navázáno. Pracovní prostor Log Analytics slouží k ukládání všech dat monitorování pro váš cluster. K této chybě může dojít, když byl pracovní prostor Log Analytics odstraněn. Kontrola, zda byl pracovní prostor odstraněn a v případě potřeby bude nutné znovu povolit monitorování clusteru pomocí Azure Monitor pro kontejnery a zadat existující nebo vytvořit nový pracovní prostor. Pokud ho chcete znovu povolit, budete muset [Zakázat](container-insights-optout.md) monitorování clusteru a [Povolit](container-insights-enable-new-cluster.md) Azure monitor pro kontejnery znovu. |
 | `Error retrieving data` Po přidání Azure Monitor pro kontejnery pomocí AZ AKS CLI | Pokud povolíte monitorování pomocí `az aks cli` , Azure monitor pro kontejnery pravděpodobně nebudou správně nasazeny. Ověřte, zda je řešení nasazeno. Pokud to chcete ověřit, přejděte do pracovního prostoru Log Analytics a podívejte se, jestli je řešení dostupné, a to tak, že v podokně na levé straně vyberete **řešení** . Chcete-li tento problém vyřešit, budete muset řešení znovu nasadit podle pokynů pro [nasazení Azure monitor pro kontejnery](container-insights-onboard.md) . |
 
-Abychom vám pomohli diagnostikovat problém, máme [tady](https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/troubleshoot/TroubleshootError_nonAzureK8s.ps1)k dispozici skript pro řešení potíží.
+Abychom vám pomohli diagnostikovat problém, máme k dispozici [skript pro odstraňování potíží](https://aka.ms/troubleshooting-script).
 
 ## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Azure Monitor pro kontejnery agentů ReplicaSet se neplánují na Kubernetes cluster mimo Azure.
 
@@ -112,7 +112,7 @@ Azure Monitor for Containers agent lusky pomocí koncového bodu cAdvisor v agen
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Cluster s Kubernetes, který není v Azure, se v Azure Monitor pro kontejnery nezobrazuje.
 
-Pokud chcete zobrazit cluster Kubernetes mimo Azure v Azure Monitor for Containers, vyžaduje se v pracovním prostoru Log Analytics přístup pro čtení, který podporuje tento přehled a v ContainerInsights prostředků řešení Container Insights **(*pracovní prostor*)**.
+Pokud chcete zobrazit cluster Kubernetes mimo Azure v Azure Monitor for Containers, vyžaduje se v pracovním prostoru Log Analytics přístup pro čtení, který podporuje tento přehled a v ContainerInsights prostředků řešení Container Insights **( *pracovní prostor* )** .
 
 ## <a name="next-steps"></a>Další kroky
 

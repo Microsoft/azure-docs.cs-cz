@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905877"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892481"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: použití PowerShellu k hromadnému pozvání uživatelů spolupráce Azure AD B2B
 
@@ -29,7 +29,7 @@ Pokud k práci se svými externími partnery používáte spolupráci B2B služb
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="install-the-latest-azureadpreview-module"></a>Instalace nejnovějšího modulu AzureADPreview
 
@@ -77,7 +77,7 @@ List vytvořte například v následujícím formátu:
 
 ![Výstup PowerShellu zobrazující zatím neschválené pozvání uživatele](media/tutorial-bulk-invite/AddUsersExcel.png)
 
-Soubor uložte jako **C:\BulkInvite\Invitations.csv**. 
+Soubor uložte jako **C:\BulkInvite\Invitations.csv** . 
 
 Pokud nemáte Excel, můžete soubor CSV vytvořit v libovolném textovém editoru, jako je například Poznámkový blok. Každou hodnotu oddělte čárkou a každý řádek novým řádkem. 
 
@@ -116,7 +116,7 @@ foreach ($email in $invitations)
 
 Tento skript odešle pozvánku e-mailovým adresám v souboru Invitations.csv. Zobrazený výstup by měl u každého uživatele vypadat přibližně takto:
 
-![Výstup PowerShellu zobrazující zatím neschválené pozvání uživatele](media/tutorial-bulk-invite/B2BBulkImport.png)
+![Snímek obrazovky zobrazující výstup prostředí PowerShell, který obsahuje nedokončené přijetí uživatele.](media/tutorial-bulk-invite/B2BBulkImport.png)
 
 ## <a name="verify-users-exist-in-the-directory"></a>Ověření existence uživatelů v adresáři
 
@@ -126,7 +126,7 @@ Pokud chcete ověřit, zda se uživatelé do Azure AD přidali, spusťte násled
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-Měli byste vidět uživatele, které jste pozvali v seznamu, s hlavním názvem uživatele (UPN) ve formátu *emailaddress*#EXT # \@ *Domain*. Například *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
+Měli byste vidět uživatele, které jste pozvali v seznamu, s hlavním názvem uživatele (UPN) ve formátu *emailaddress* #EXT # \@ *Domain* . Například *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com* , kde contoso.onmicrosoft.com je organizace, ze které jste pozvánky odeslali.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

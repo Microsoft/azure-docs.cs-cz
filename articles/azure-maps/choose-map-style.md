@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285158"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889795"
 ---
 # <a name="change-the-style-of-the-map"></a>Změna stylu mapy
 
-Mapový ovládací prvek podporuje několik různých [možností stylu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) mapy a [základní styly mapy](supported-map-styles.md). Všechny styly lze nastavit při inicializaci mapového ovládacího prvku. Nebo můžete nastavit styly pomocí funkce mapového ovládacího prvku `setStyle` . V tomto článku se dozvíte, jak pomocí těchto možností stylu přizpůsobit vzhled mapy. Naučíte se také, jak implementovat ovládací prvek výběru stylu na mapě. Ovládací prvek pro výběr stylu umožňuje uživateli přepínat mezi různými základními styly.
+Mapový ovládací prvek podporuje několik různých [možností stylu](/javascript/api/azure-maps-control/atlas.styleoptions) mapy a [základní styly mapy](supported-map-styles.md). Všechny styly lze nastavit při inicializaci mapového ovládacího prvku. Nebo můžete nastavit styly pomocí funkce mapového ovládacího prvku `setStyle` . V tomto článku se dozvíte, jak pomocí těchto možností stylu přizpůsobit vzhled mapy. Naučíte se také, jak implementovat ovládací prvek výběru stylu na mapě. Ovládací prvek pro výběr stylu umožňuje uživateli přepínat mezi různými základními styly.
 
 ## <a name="set-map-style-options"></a>Nastavení možností stylu mapy
 
-Možnosti stylu lze nastavit při inicializaci webového ovládacího prvku. Nebo můžete aktualizovat možnosti stylu voláním funkce mapového ovládacího prvku `setStyle` . Chcete-li zobrazit všechny dostupné možnosti stylu, přečtěte si téma [Možnosti stylu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions).
+Možnosti stylu lze nastavit při inicializaci webového ovládacího prvku. Nebo můžete aktualizovat možnosti stylu voláním funkce mapového ovládacího prvku `setStyle` . Chcete-li zobrazit všechny dostupné možnosti stylu, přečtěte si téma [Možnosti stylu](/javascript/api/azure-maps-control/atlas.styleoptions).
 
 ```javascript
 //Set the style options when creating the map.
@@ -82,7 +82,7 @@ Základní styl mapy lze aktualizovat pomocí `setStyle` funkce a nastavením `s
 map.setStyle({ style: 'satellite' });
 ```
 
-V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `grayscale_dark` na k `satellite` použití funkce [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) .
+V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `grayscale_dark` na k `satellite` použití funkce [setStyle](/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) .
 
 <br/>
 
@@ -93,7 +93,7 @@ V následujícím kódu po načtení instance mapy je styl mapy aktualizován z 
 
 Ovládací prvek pro výběr stylu poskytuje snadné použití tlačítka s panelem s plovoucím panelem, který může koncový uživatel použít k přepínání mezi základními styly.
 
-Výběr stylu má dvě různé možnosti rozložení: `icon` a `list` . Výběr stylu také umožňuje zvolit dvě různé možnosti ovládacího prvku pro výběr stylu `style` : `light` a `dark` . V tomto příkladu výběr stylu používá `icon` rozložení a v podobě ikon zobrazuje seznam stylů základní mapy. Výběr ovládacího prvku stylu obsahuje následující základní sadu stylů: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . Další informace o možnostech ovládacího prvku Výběr stylu naleznete v tématu [možnosti ovládacího prvku stylu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions).
+Výběr stylu má dvě různé možnosti rozložení: `icon` a `list` . Výběr stylu také umožňuje zvolit dvě různé možnosti ovládacího prvku pro výběr stylu `style` : `light` a `dark` . V tomto příkladu výběr stylu používá `icon` rozložení a v podobě ikon zobrazuje seznam stylů základní mapy. Výběr ovládacího prvku stylu obsahuje následující základní sadu stylů: `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` . Další informace o možnostech ovládacího prvku Výběr stylu naleznete v tématu [možnosti ovládacího prvku stylu](/javascript/api/azure-maps-control/atlas.stylecontroloptions).
 
 Následující obrázek ukazuje ovládací prvek pro výběr stylu zobrazený v `icon` rozložení.
 
@@ -118,16 +118,16 @@ Následující kód ukazuje, jak přepsat výchozí `mapStyles` seznam základn�
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapa](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
+> [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)
 
 > [!div class="nextstepaction"]
-> [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol)
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)
 
 > [!div class="nextstepaction"]
-> [StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)
+> [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
 Přidejte ovládací prvky do svých map:
 

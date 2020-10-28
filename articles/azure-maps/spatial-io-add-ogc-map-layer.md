@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d94a681fa987a4b23dbcda744c2f8516da4437a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87128552"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891661"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Přidat vrstvu mapy z Open Geospatial Consortium (OGC)
 
@@ -28,7 +28,7 @@ Následující části popisují funkce služby webové mapy, které jsou podpor
 - GetFeatureInfo vyžaduje, aby služba podporovala `EPSG:4326` nebo zpracovala reprojekce. 
 - Podporované operace:
 
-    | Operace | Description |
+    | Operace | Popis |
     | :-- | :-- |
     | GetCapabilities | Načte metadata služby s podporovanými možnostmi. |
     | GetMap | Načte obrázek mapy pro zadanou oblast. |
@@ -42,7 +42,7 @@ Následující části popisují funkce služby webové mapy, které jsou podpor
 - Identifikátor TileMatrix musí být celočíselná hodnota, která odpovídá úrovni přiblížení na mapě. V mapě Azure je úroveň přiblížení hodnota mezi `"0"` a `"22"` . Takže se `"0"` podporuje, ale nepodporuje se `"00"` .
 - Podporované operace:
 
-    | Operace | Description |
+    | Operace | Popis |
     | :-- | :-- |
     | GetCapabilities | Načte podporované operace a funkce. |
     | Getdlaždice | Načte z konkrétní dlaždice obrázek. |
@@ -83,10 +83,10 @@ Můžete také zadat nastavení mapování pro použití proxy služby. Služba 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [OgcMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
+> [OgcMapLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
 
 > [!div class="nextstepaction"]
-> [OgcMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
+> [OgcMapLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
 
 Podívejte se na následující články, které obsahují ukázky kódu, které byste mohli přidat do svých map:
 
