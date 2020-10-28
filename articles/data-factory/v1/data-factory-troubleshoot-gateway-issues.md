@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319063"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896561"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek poskytuje informace o řešení potíží s používáním Správa dat brány.
@@ -86,7 +86,7 @@ Při registraci brány se může zobrazit následující chybová zpráva.
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![Klíč brány je neplatný nebo prázdný.](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+![Snímek obrazovky, který zvýrazní chybovou zprávu, která indikuje, že klíč brány je neplatný nebo prázdný.](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
 
 #### <a name="cause"></a>Příčina
 Klíč brány se znovu vygeneroval nebo se brána v Azure Portal odstranila. K tomu může dojít také v případě, že instalace brány Správa dat není nejnovější.
@@ -107,14 +107,14 @@ Při registraci brány se může zobrazit následující chybová zpráva.
 K této chybě může dojít, protože brána byla odstraněna nebo byl znovu vygenerován příslušný klíč brány.
 
 #### <a name="resolution"></a>Řešení
-Pokud byla brána odstraněna, znovu ji vytvořte z portálu, klikněte na **zaregistrovat**, zkopírujte klíč z portálu, vložte ho a zkuste zaregistrovat bránu.
+Pokud byla brána odstraněna, znovu ji vytvořte z portálu, klikněte na **zaregistrovat** , zkopírujte klíč z portálu, vložte ho a zkuste zaregistrovat bránu.
 
 Pokud brána stále existuje, ale její klíč se znovu vygeneroval, zaregistrujte bránu pomocí nového klíče. Pokud klíč nemáte, znovu vygenerujte klíč z portálu.
 
 ### <a name="7-problem"></a>7. problém
 Když zaregistrujete bránu, možná budete muset zadat cestu a heslo pro certifikát.
 
-![Zadat certifikát](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+![Snímek obrazovky, který ukazuje, kde zadáváte cestu a heslo pro certifikát.](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
 
 #### <a name="cause"></a>Příčina
 Brána byla zaregistrována na jiných počítačích před. Během prvotní registrace brány byl k bráně přidružen šifrovací certifikát. Certifikát může být buď vygenerovaný automaticky bránou, nebo poskytnutý uživatelem.  Tento certifikát slouží k šifrování přihlašovacích údajů úložiště dat (propojených služeb).  
@@ -204,7 +204,7 @@ Může dojít ke ztrátě certifikátu TLS/SSL na počítači brány. Počítač
 Problém můžete vyřešit pomocí těchto kroků:
 
 1. Spusťte Správa dat Configuration Manager brány.
-2. Přepněte na kartu **Nastavení**.  
+2. Přepněte na kartu **Nastavení** .  
 3. Chcete-li změnit certifikát TLS/SSL, klikněte na tlačítko **změnit** .
 
    ![Tlačítko změnit certifikát](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
@@ -233,7 +233,7 @@ Pokud se zobrazí chyby související s připojením nebo ovladačem úložišt�
 
 1. Spusťte Správa dat Configuration Manager brány na počítači brány.
 2. Přepněte na kartu **Diagnostika** .
-3. V části **Test připojení**přidejte hodnoty skupiny brány.
+3. V části **Test připojení** přidejte hodnoty skupiny brány.
 4. Kliknutím na **test** zjistíte, jestli se můžete připojit k místnímu zdroji dat z počítače brány pomocí informací o připojení a přihlašovacích údajů. Pokud se testovací připojení nepodaří ani po instalaci ovladače, restartujte bránu, aby se získaly nejnovější změny.
 
 ![Test připojení na kartě Diagnostika](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
@@ -252,7 +252,7 @@ Když kontaktujete podpora Microsoftu a získáte pomoc s řešením problémů 
 4. Volitelné Kliknutím na **Ochrana osobních údajů** zkontrolujte prohlášení o zásadách ochrany osobních údajů v Microsoft Web Services.
 5. Až budete spokojeni s tím, co se chystáte nahrát, klikněte na **Odeslat protokoly** a ve skutečnosti odešlete protokoly za posledních 7 dní do Microsoftu pro řešení potíží. Měl by se zobrazit stav operace Odeslat protokoly, jak je znázorněno na následujícím snímku obrazovky.
 
-    ![Stav odesílání protokolů služby Správa dat Gateway](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    ![Snímek obrazovky, který ukazuje, kde zobrazit stav operace Odeslat protokoly](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
 6. Po dokončení operace se zobrazí dialogové okno, jak je znázorněno na následujícím snímku obrazovky.
 
     ![Stav odesílání protokolů služby Správa dat Gateway](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
@@ -278,7 +278,7 @@ Kliknutím na odkaz **Archivovat protokoly brány** můžete archivovat a uklád
 ### <a name="locate-gateway-logs"></a>Vyhledání protokolů brány
 Podrobné informace protokolu brány najdete v protokolech událostí systému Windows.
 
-1. Spusťte Windows **Prohlížeč událostí**.
+1. Spusťte Windows **Prohlížeč událostí** .
 2. Vyhledejte protokoly ve složce **Application and Services log**  >  **Správa dat Gateway** .
 
    Když řešíte problémy související s bránou, hledejte události na úrovni chyb v prohlížeči událostí.

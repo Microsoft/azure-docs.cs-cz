@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ab4b4e0ab7d0474dc4fe7692cfe3c46835095f45
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873740"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897003"
 ---
 # <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Kurz – migrace z map Bingu na Azure Maps
 
@@ -69,7 +69,7 @@ Tady je několik prostředků souvisejících s licencováním pro Azure Maps:
 -   [Stránka s cenami Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/)
 -   [Cenová kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 -   [Azure Maps podmínky použití](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (zahrnuté do podmínek služby Microsoft Online Services)
--   [Výběr správné cenové úrovně v Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+-   [Výběr správné cenové úrovně v Azure Maps](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>Navrhovaný plán migrace
 
@@ -77,7 +77,7 @@ Následuje plán migrace na vysoké úrovni.
 
 1.  Seznamte se s využitím sad SDK a služeb Bing Maps, které vaše aplikace používá, a ověřte, že Azure Maps poskytuje alternativní sady SDK a služby, na které můžete migrovat.
 2.  Vytvořte si předplatné Azure (pokud ho ještě nemáte) na adrese <https://azure.com> .
-3.  Vytvořte účet Azure Maps ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) a ověřovací klíč nebo Azure Active Directory ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
+3.  Vytvořte účet Azure Maps ([dokumentace](./how-to-manage-account-keys.md)) a ověřovací klíč nebo Azure Active Directory ([dokumentace](./how-to-manage-authentication.md)).
 4.  Migrujte kód aplikace.
 5.  Otestujte migrovaná aplikace.
 6.  Nasaďte migrovaná aplikace do produkčního prostředí.
@@ -86,10 +86,10 @@ Následuje plán migrace na vysoké úrovni.
 
 Pokud chcete vytvořit účet Azure Maps a získat přístup k platformě Azure Maps, postupujte podle těchto kroků:
 
-1. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
-2. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
-3. Vytvořte [účet Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
-4. [Získejte Azure Maps klíč předplatného](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) nebo nastavte Azure Active Directory ověřování pro rozšířené zabezpečení.
+1. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
+2. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+3. Vytvořte [účet Azure Maps](./how-to-manage-account-keys.md). 
+4. [Získejte Azure Maps klíč předplatného](./how-to-manage-authentication.md#view-authentication-details) nebo nastavte Azure Active Directory ověřování pro rozšířené zabezpečení.
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps technické prostředky
 
@@ -105,7 +105,7 @@ Tady je seznam užitečných technických prostředků pro Azure Maps.
 
 ## <a name="migration-support"></a>Podpora migrace
 
-Vývojáři můžou vyhledat podporu migrace prostřednictvím [fór](https://aka.ms/AzureMapsForums) nebo pomocí jedné z mnoha možností podpory Azure: <https://azure.microsoft.com/support/options/>
+Vývojáři můžou vyhledat podporu migrace prostřednictvím [fór](/answers/topics/azure-maps.html) nebo pomocí jedné z mnoha možností podpory Azure: <https://azure.microsoft.com/support/options/>
 
 ## <a name="new-terminology"></a>Nová terminologie 
 

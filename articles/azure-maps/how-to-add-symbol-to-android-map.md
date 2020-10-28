@@ -8,20 +8,20 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311270"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897105"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Přidání vrstvy symbolů na mapu pomocí Azure Maps Android SDK
 
 V tomto článku se dozvíte, jak vykreslovat data bodů ze zdroje dat jako vrstvu symbolů na mapě pomocí Android SDK Azure Maps.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Chcete-li provést úplné provedení kroků v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) , aby se načetla mapa.
+Chcete-li provést úplné provedení kroků v tomto článku, je nutné nainstalovat [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) , aby se načetla mapa.
 
 ## <a name="add-a-symbol-layer"></a>Přidání vrstvy symbolů
 
@@ -180,7 +180,7 @@ V tomto okamžiku, pokud spouštíte aplikaci, měla by se zobrazit značka na m
 Chcete-li přidat k mapě další věci, přečtěte si:
 
 > [!div class="nextstepaction"]
-> [Přidání obrazců na mapu pro Android](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Přidání obrazců na mapu pro Android](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [Zobrazení informací o funkci](display-feature-information-android.md)

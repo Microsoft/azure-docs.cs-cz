@@ -12,25 +12,25 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f92b95e38dea6555ca881d56ccf1cf2d68783e53
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441840"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896085"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Nejčastější dotazy k Azure Active Directory spolupráci B2B
 
 Tyto nejčastější dotazy týkající se spolupráce B2B (Business-to-Business) Azure Active Directory (Azure AD) se pravidelně aktualizují, aby obsahovaly nová témata.
 
    > [!IMPORTANT]
-   > **Od 31. března 2021**přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > **Od 31. března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Můžeme přizpůsobit naši přihlašovací stránku, aby byla intuitivnější pro naše uživatele typu Host pro spolupráci B2B?
 Samozřejmě. Další informace najdete v našem [blogovém příspěvku o této funkci](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Další informace o tom, jak přizpůsobit přihlašovací stránku vaší organizace, najdete v tématu [Přidání firemního brandingu pro přihlášení a přístup ke stránkám na panelu](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Můžou uživatelé spolupráce B2B přistupovat k SharePointu Online a OneDrivu?
-Ano. Možnost hledání stávajících uživatelů typu Host v SharePointu Online pomocí výběru osob je ale ve výchozím nastavení **vypnutá** . Pokud chcete zapnout možnost hledání stávajících uživatelů typu Host, nastavte **ShowPeoplePickerSuggestionsForGuestUsers** na **zapnuto**. Toto nastavení můžete zapnout buď na úrovni tenanta, nebo na úrovni kolekce webů. Toto nastavení můžete změnit pomocí rutin Set-SPOTenant a Set-SPOSite. Pomocí těchto rutin můžou členové vyhledat všechny existující uživatele typu Host v adresáři. Změny v oboru tenanta neovlivňují online weby SharePointu, které již byly zřízeny.
+Ano. Možnost hledání stávajících uživatelů typu Host v SharePointu Online pomocí výběru osob je ale ve výchozím nastavení **vypnutá** . Pokud chcete zapnout možnost hledání stávajících uživatelů typu Host, nastavte **ShowPeoplePickerSuggestionsForGuestUsers** na **zapnuto** . Toto nastavení můžete zapnout buď na úrovni tenanta, nebo na úrovni kolekce webů. Toto nastavení můžete změnit pomocí rutin Set-SPOTenant a Set-SPOSite. Pomocí těchto rutin můžou členové vyhledat všechny existující uživatele typu Host v adresáři. Změny v oboru tenanta neovlivňují online weby SharePointu, které již byly zřízeny.
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>Je funkce nahrávání CSV pořád podporovaná?
 Ano. Další informace o použití funkce nahrání souboru. CSV najdete v [této ukázce PowerShellu](code-samples.md).
@@ -64,17 +64,17 @@ Pokud uživatel nemá přiřazenou roli omezeného správce, nebudou uživatelé
 Ano! Můžete vytvořit zásadu podmíněného přístupu, která zablokuje všem uživatelům typu Host a externím uživatelům přístup k Azure Portal. Při konfiguraci této zásady buďte opatrní, abyste se vyhnuli nechtěnému blokování přístupu ke členům a správcům.
 
 1. Přihlaste se k vašemu [Azure Portal](https://portal.azure.com/) jako správce zabezpečení nebo správce podmíněného přístupu.
-2. V Azure Portal vyberte **Azure Active Directory**. 
-3. V části **Spravovat**vyberte **zabezpečení**.
-4. V části **chránit**vyberte **podmíněný přístup**. Vyberte **nové zásady**.
+2. V Azure Portal vyberte **Azure Active Directory** . 
+3. V části **Spravovat** vyberte **zabezpečení** .
+4. V části **chránit** vyberte **podmíněný přístup** . Vyberte **nové zásady** .
 5. Na **nové** stránce zadejte do textového pole **název** název zásady (například zablokovat hostům přístup k portálu).
-6. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
-7. Na kartě **Zahrnout** zvolte **Vybrat uživatele a skupiny**a pak vyberte **Všichni uživatelé typu Host a externí uživatelé (Preview)**.
-9. Vyberte **Hotovo**.
-10. Na **nové** stránce v části **přiřazení** vyberte **cloudové aplikace nebo akce**.
-11. Na stránce **cloudové aplikace nebo akce** zvolte **vybrat aplikace**a pak zvolte **Vybrat**.
-12. Na stránce **Vybrat** zvolte **Microsoft Azure Management** a potom zvolte **Vybrat**.
-13. Na stránce **cloudové aplikace nebo akce** vyberte **Hotovo**.
+6. V části **Přiřazení** vyberte **Uživatelé a skupiny** .
+7. Na kartě **Zahrnout** zvolte **Vybrat uživatele a skupiny** a pak vyberte **Všichni uživatelé typu Host a externí uživatelé (Preview)** .
+9. Vyberte **Hotovo** .
+10. Na **nové** stránce v části **přiřazení** vyberte **cloudové aplikace nebo akce** .
+11. Na stránce **cloudové aplikace nebo akce** zvolte **vybrat aplikace** a pak zvolte **Vybrat** .
+12. Na stránce **Vybrat** zvolte **Microsoft Azure Management** a potom zvolte **Vybrat** .
+13. Na stránce **cloudové aplikace nebo akce** vyberte **Hotovo** .
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Podporuje spolupráce Azure AD B2B službu Multi-Factor Authentication a e-mailové účty uživatelů?
 Ano. Služba Multi-Factor Authentication a e-mailové e-mailové účty se podporují pro spolupráci Azure AD B2B.
@@ -130,7 +130,7 @@ Ano. Další informace najdete v tématu [podmíněný přístup pro uživatele 
 Ano. Spolupráce B2B Azure AD podporuje seznamy povolených a zakázaných seznamů. 
 
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Jaké licence potřebujeme k používání Azure AD B2B?
-Informace o tom, jaké licence vaše organizace potřebuje k používání Azure AD B2B, najdete v článku [pokyny k licencování spolupráce v b2b Azure Active Directory](licensing-guidance.md).
+Informace o tom, jaké licence vaše organizace potřebuje k používání Azure AD B2B, najdete v tématu [ceny externích identit](external-identities-pricing.md).
 
 ### <a name="next-steps"></a>Další kroky
 

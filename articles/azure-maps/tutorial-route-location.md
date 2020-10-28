@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321709"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896676"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Kurz: jak zobrazit směry tras pomocí služby Azure Maps Route Service a mapového ovládacího prvku
 
-V tomto kurzu se dozvíte, jak pomocí [rozhraní Azure Maps Route Service API](https://docs.microsoft.com/rest/api/maps/route) a [mapového ovládacího prvku](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) zobrazit směr směrování z počátečního na koncový bod. V tomto kurzu se naučíte:
+V tomto kurzu se dozvíte, jak pomocí [rozhraní Azure Maps Route Service API](/rest/api/maps/route) a [mapového ovládacího prvku](./how-to-use-map-control.md) zobrazit směr směrování z počátečního na koncový bod. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření a zobrazení mapového ovládacího prvku na webové stránce. 
 > * Definujte vykreslení zobrazení trasy definováním [vrstev symbolů](map-add-pin.md) a [vrstev čáry](map-add-line-layer.md).
 > * Vytvořte a přidejte objekty injson do mapy tak, aby představovaly počáteční a koncové body.
-> * Získejte směr směrování z počátečního a koncového bodu pomocí [rozhraní API pro získání tras](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+> * Získejte směr směrování z počátečního a koncového bodu pomocí [rozhraní API pro získání tras](/rest/api/maps/route/getroutedirections).
 
 Úplný zdrojový kód pro ukázku můžete získat [zde](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html). Ukázku najdete [tady](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination).
 
@@ -39,7 +39,7 @@ V tomto kurzu se dozvíte, jak pomocí [rozhraní Azure Maps Route Service API](
 
 Následující kroky ukazují, jak vytvořit a zobrazit mapový ovládací prvek na webové stránce.
 
-1. Na místním počítači vytvořte nový soubor s názvem **MapRoute.html**.
+1. Na místním počítači vytvořte nový soubor s názvem **MapRoute.html** .
 2. Zkopírujte nebo vložte následující kód HTML do souboru.
 
     ```HTML
@@ -170,7 +170,7 @@ V tomto kurzu vykreslíme trasu pomocí čárové vrstvy. Počáteční a koncov
 
     Tento kód vytvoří dva [objekty typu bodový kód](https://en.wikipedia.org/wiki/GeoJSON) pro zobrazení dat, které představují počáteční a koncové body, které jsou poté přidány do zdroje dat. 
 
-    Poslední blok kódu nastaví zobrazení kamery pomocí zeměpisné šířky a délky počátečního a koncového bodu. Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Toto ohraničovací pole slouží k nastavení zobrazení mapy kamer přes celou trasu pomocí `map.setCamera` funkce. Je přidáno odsazení, které umožňuje kompenzovat rozměry ikon symbolů v pixelech. Další informace o vlastnosti setCamera mapového ovládacího prvku naleznete v tématu [setCamera (CameraOptions | Vlastnost CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) .
+    Poslední blok kódu nastaví zobrazení kamery pomocí zeměpisné šířky a délky počátečního a koncového bodu. Počáteční a koncový bod se přidají ke zdroji dat. Ohraničující rámeček pro počáteční a koncový bod se vypočítá pomocí funkce `atlas.data.BoundingBox.fromData`. Toto ohraničovací pole slouží k nastavení zobrazení mapy kamer přes celou trasu pomocí `map.setCamera` funkce. Je přidáno odsazení, které umožňuje kompenzovat rozměry ikon symbolů v pixelech. Další informace o vlastnosti setCamera mapového ovládacího prvku naleznete v tématu [setCamera (CameraOptions | Vlastnost CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) .
 
 3. Uložte **MapRoute.html** a aktualizujte prohlížeč. Mapa se teď nacentruje na střed Seattle. Modrý kód pro 15kolíkový označí počáteční bod. Kulatě modrý kód PIN označuje koncový bod.
 
@@ -183,7 +183,7 @@ V tomto kurzu vykreslíme trasu pomocí čárové vrstvy. Počáteční a koncov
 V této části se dozvíte, jak používat rozhraní API pro Azure Maps trasy k získání směrných tras a odhadované doby doručení od jednoho bodu k druhému.
 
 >[!TIP]
->Služba Azure Maps Route Services nabízí rozhraní API k plánování tras na základě různých typů tras, jako jsou *nejrychlejší*, nejkratší *, kandidát*nebo *Thrilling* trasy založené na vzdálenosti, přenosných podmínkách a způsobu využití přenosu. *shortest* Tato služba také umožňuje uživatelům plánovat budoucí trasy na základě historických přenosových podmínek. Uživatelé mohou zobrazit předpovědi trvání tras pro určitou dobu. Další informace najdete v tématu [získání rozhraní API pro směr směrování](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+>Služba Azure Maps Route Services nabízí rozhraní API k plánování tras na základě různých typů tras, jako jsou *nejrychlejší* , nejkratší *, kandidát* nebo *Thrilling* trasy založené na vzdálenosti, přenosných podmínkách a způsobu využití přenosu. *shortest* Tato služba také umožňuje uživatelům plánovat budoucí trasy na základě historických přenosových podmínek. Uživatelé mohou zobrazit předpovědi trvání tras pro určitou dobu. Další informace najdete v tématu [získání rozhraní API pro směr směrování](/rest/api/maps/route/getroutedirections).
 
 1. Do `GetMap` funkce uvnitř `ready` obslužné rutiny události ovládacího prvku přidejte následující kód jazyka JavaScript.
 
@@ -198,7 +198,7 @@ V této části se dozvíte, jak používat rozhraní API pro Azure Maps trasy k
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential`Vytvoří a `SubscriptionKeyCredentialPolicy` OVĚŘÍ požadavky HTTP, které se mají Azure Maps pomocí klíče předplatného. `atlas.service.MapsURL.newPipeline()`Zásada převezme `SubscriptionKeyCredential` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) . `routeURL`Představuje adresu URL pro Azure Maps operací [Směrování](https://docs.microsoft.com/rest/api/maps/route) .
+   `SubscriptionKeyCredential`Vytvoří a `SubscriptionKeyCredentialPolicy` OVĚŘÍ požadavky HTTP, které se mají Azure Maps pomocí klíče předplatného. `atlas.service.MapsURL.newPipeline()`Zásada převezme `SubscriptionKeyCredential` a vytvoří instanci [kanálu](/javascript/api/azure-maps-rest/atlas.service.pipeline) . `routeURL`Představuje adresu URL pro Azure Maps operací [Směrování](/rest/api/maps/route) .
 
 2. Po nastavení přihlašovacích údajů a adresy URL přidejte následující kód do `ready` obslužné rutiny události ovládacího prvku. Tento kód vytvoří trasu od počátečního bodu do koncového bodu. `routeURL`Vyžádá rozhraní API služby Azure Maps Route k výpočtu směrů tras. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí `geojson.getFeatures()` metody a přidána do zdroje dat.
 

@@ -1,18 +1,17 @@
 ---
 title: zahrnout soubor
-description: zahrnout soubor
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116784"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897825"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem imagí. Galerie sdílených imagí poskytují:
 
@@ -46,7 +45,7 @@ Funkce Galerie sdílených imagí má více typů prostředků:
 
 Definice obrázků jsou logické seskupení pro verze image. Definice image obsahuje informace o tom, proč se image vytvořila, jaký operační systém je k dispozici, a další informace o použití image. Definice obrázku je jako plán pro všechny podrobnosti o vytváření konkrétní image. Virtuální počítač nebudete nasazovat z definice image, ale z verzí imagí vytvořených z definice.
 
-Existují tři parametry pro každou definici obrázku, které jsou používány v kombinaci – **Vydavatel**, **Nabídka** a **SKU**. Slouží k vyhledání konkrétní definice obrázku. Můžete mít verze bitové kopie, které sdílejí jednu nebo dvě, ale ne všechny tři hodnoty.  Tady jsou například tři definice obrázků a jejich hodnoty:
+Existují tři parametry pro každou definici obrázku, které jsou používány v kombinaci – **Vydavatel** , **Nabídka** a **SKU** . Slouží k vyhledání konkrétní definice obrázku. Můžete mít verze bitové kopie, které sdílejí jednu nebo dvě, ale ne všechny tři hodnoty.  Tady jsou například tři definice obrázků a jejich hodnoty:
 
 |Definice image|Publisher|Nabídka|Skladová jednotka (SKU)|
 |---|---|---|---|
@@ -116,7 +115,7 @@ Další informace najdete v tématu o tom, jak kontrolovat [využití prostředk
 ## <a name="scaling"></a>Škálování
 Galerie sdílených imagí umožňuje zadat počet replik, které má Azure uchovávat pro image. To pomáhá scénářům nasazení ve více virtuálních počítačích, protože nasazení virtuálních počítačů je možné rozložit do různých replik, které omezují nutnost zpracování vytváření instancí z důvodu přetížení jedné repliky.
 
-Pomocí Galerie sdílených imagí teď můžete nasadit až 1 000 instancí virtuálních počítačů v rámci sady škálování virtuálních počítačů (od 600 do spravovaných imagí). Repliky imagí poskytují lepší výkon, spolehlivost a konzistenci nasazení. V každé cílové oblasti můžete nastavit jiný počet replik, a to na základě rozsahu potřeb pro oblast. Vzhledem k tomu, že každá replika je hluboká kopie vaší image, pomáhá škálovat vaše nasazení lineárně pomocí každé další repliky. I když nerozumíme, že žádné dva obrázky nebo oblasti jsou stejné, tady je naše obecné pokyny k používání replik v oblasti:
+Pomocí Galerie sdílených imagí teď můžete nasadit až 1 000 instancí virtuálních počítačů v rámci sady škálování virtuálních počítačů (od 600 do spravovaných imagí). Repliky imagí poskytují lepší výkon, spolehlivost a konzistenci nasazení.  V každé cílové oblasti můžete nastavit jiný počet replik, a to na základě rozsahu potřeb pro oblast. Vzhledem k tomu, že každá replika je hluboká kopie vaší image, pomáhá škálovat vaše nasazení lineárně pomocí každé další repliky. I když nerozumíme, že žádné dva obrázky nebo oblasti jsou stejné, tady je naše obecné pokyny k používání replik v oblasti:
 
 - U nasazení VMSS (Virtual Machine Scale set) – pro každé 20 virtuálních počítačů, které vytvoříte souběžně, doporučujeme zachovat jednu repliku. Pokud například vytváříte virtuální počítače 120 souběžně pomocí stejné image v oblasti, doporučujeme, abyste zachovali aspoň 6 replik vaší image. 
 - Pro nasazení VMSS (Virtual Machine Scale set) – pro každé nasazení sady škálování s až 600 instancemi Doporučujeme zachovat aspoň jednu repliku. Pokud například vytváříte 5 sad škálování souběžně, každý s 600 instancemi virtuálních počítačů pomocí stejné image v jedné oblasti, doporučujeme, abyste zachovali aspoň 5 replik vaší image. 
@@ -140,7 +139,7 @@ Oblasti, do kterých se replikuje verze sdíleného obrázku, se dá po vytvoře
 
 ![Obrázek znázorňující, jak můžete replikovat image](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Přístup
 
 Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze image, všechny prostředky, můžou se sdílet pomocí integrovaných nativních ovládacích prvků Azure RBAC. Pomocí RBAC můžete tyto prostředky sdílet ostatním uživatelům, instančním objektům a skupinám. Můžete dokonce sdílet přístup jednotlivcům mimo klienta, kterého vytvořili v rámci. Jakmile má uživatel přístup ke sdílené imagi verze, může nasadit virtuální počítač nebo sadu škálování virtuálního počítače.  Tady je tabulka sdílení, která pomáhá pochopit, k čemu uživatel přistupuje:
 
@@ -155,8 +154,11 @@ Image je také možné sdílet, ve velkém měřítku, a to i v rámci klientů 
 
 ## <a name="billing"></a>Fakturace
 Za používání služby Galerie sdílených imagí se neúčtují žádné další poplatky. Budou se vám účtovat tyto prostředky:
-- Náklady na úložiště pro ukládání verzí sdílených imagí Náklady závisí na počtu replik verze image a na počtu oblastí, na které se má verze replikovat. Pokud máte například 2 bitové kopie a obě jsou replikovány do 3 oblastí, bude vám účtováno 6 spravovaných disků na základě jejich velikosti. Další informace najdete v tématu [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/).
-- Poplatky za síťové přenosy za replikaci první verze image ze zdrojové oblasti do replikovaných oblastí. Další repliky se zpracovávají v rámci této oblasti, takže se neúčtují žádné další poplatky. 
+-   Náklady na úložiště při ukládání každé repliky. Náklady na úložiště se účtují jako snímek a vycházejí z obsazené velikosti image, počtu replik verze image a počtu oblastí, do kterých se má verze replikovat. 
+-   Poplatky za síťové přenosy za replikaci první verze image ze zdrojové oblasti do replikovaných oblastí. Další repliky se zpracovávají v rámci této oblasti, takže se neúčtují žádné další poplatky. 
+
+Řekněme například, že máte image 127 GB disku s operačním systémem, který zabírá jenom 10 GB úložiště a jeden prázdný datový disk o velikosti 32 GB. Obsazená velikost každého obrázku by měla být jenom 10 GB. Bitová kopie se replikuje do 3 oblastí a každá oblast obsahuje dvě repliky. K dispozici bude šest celkových snímků, z nichž každý využívá 10 GB. Za každý snímek se vám budou účtovat náklady na úložiště na základě obsazené velikosti 10 GB. Za každou z následujících dvou oblastí platíte poplatky za výstup do sítě, které se mají zkopírovat. Další informace o cenách snímků v jednotlivých oblastech najdete v tématu ceny za [spravované disky](https://azure.microsoft.com/pricing/details/managed-disks/). Další informace o odchozím přenosu v síti najdete v tématu [ceny šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
+
 
 ## <a name="updating-resources"></a>Aktualizace prostředků
 
@@ -220,9 +222,9 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte přístup v Azure Portal, postupujte podle následujících kroků:
 
 1. Otevřete web [Azure Portal](https://portal.azure.com).
-1. Posuňte se dolů na stránku a vyberte **všechny prostředky**.
+1. Posuňte se dolů na stránku a vyberte **všechny prostředky** .
 1. Vyberte všechna předplatná, pod kterými chcete zobrazit seznam všech prostředků.
-1. Vyhledejte prostředky pro galerii typu **sdílená image**.
+1. Vyhledejte prostředky pro galerii typu **sdílená image** .
   
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte oprávnění, použijte následující příkaz v rozhraní příkazového řádku Azure CLI:
 
@@ -234,7 +236,7 @@ Další informace najdete v tématu **Správa prostředků Galerie** pomocí [Az
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Můžu existující image přesunout do galerie sdílených imagí?
  
-Yes. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
+Ano. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
 
  Scénář 1: Pokud máte spravovanou bitovou kopii, můžete z ní vytvořit definici image a její verzi. Další informace najdete v tématu **migrace ze spravované image na verzi image** pomocí [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) nebo [PowerShellu](../articles/virtual-machines/image-version-managed-image-powershell.md).
 

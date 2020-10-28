@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84169daa28fc394254ddce211a96d4a462f78cbd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441857"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896462"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Udělení přístupu k místním aplikacím uživatelům B2B v Azure AD
 
@@ -39,8 +39,8 @@ Je nutné provést následující akce:
 
 Aby uživatelé B2B poskytovali přístup k místním aplikacím zabezpečeným pomocí integrovaného ověřování systému Windows a vynuceným delegováním protokolu Kerberos, budete potřebovat následující komponenty:
 
-- **Ověřování prostřednictvím služby Azure proxy aplikací služby AD**. Uživatelé B2B musí být schopni ověřit místní aplikaci. K tomu je potřeba publikovat místní aplikaci prostřednictvím Proxy aplikací služby AD Azure. Další informace najdete v tématech [Začínáme s proxy aplikací a instalace konektoru](../manage-apps/application-proxy-add-on-premises-application.md) a [publikování aplikací pomocí Azure proxy aplikací služby AD](../manage-apps/application-proxy-add-on-premises-application.md).
-- **Autorizace prostřednictvím objektu uživatele B2B v místním adresáři**. Aplikace musí být schopná provádět kontroly přístupu uživatele a udělit přístup ke správným prostředkům. IWA a KCD vyžadují pro dokončení této autorizace objekt uživatele v místní službě Windows Server Active Directory. Jak je popsáno v tématu [jak jednotné přihlašování s KCD funguje](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), vyžaduje proxy aplikace tento objekt uživatele pro zosobnění uživatele a získání tokenu Kerberos do aplikace. 
+- **Ověřování prostřednictvím služby Azure proxy aplikací služby AD** . Uživatelé B2B musí být schopni ověřit místní aplikaci. K tomu je potřeba publikovat místní aplikaci prostřednictvím Proxy aplikací služby AD Azure. Další informace najdete v tématu [kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace](../manage-apps/application-proxy-add-on-premises-application.md).
+- **Autorizace prostřednictvím objektu uživatele B2B v místním adresáři** . Aplikace musí být schopná provádět kontroly přístupu uživatele a udělit přístup ke správným prostředkům. IWA a KCD vyžadují pro dokončení této autorizace objekt uživatele v místní službě Windows Server Active Directory. Jak je popsáno v tématu [jak jednotné přihlašování s KCD funguje](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), vyžaduje proxy aplikace tento objekt uživatele pro zosobnění uživatele a získání tokenu Kerberos do aplikace. 
 
    > [!NOTE]
    > Když nakonfigurujete Proxy aplikací služby AD Azure, ujistěte se, že **Identita delegovaného přihlášení** je nastavená na **hlavní název uživatele** (výchozí) v konfiguraci jednotného přihlašování pro integrované ověřování systému Windows (IWA).

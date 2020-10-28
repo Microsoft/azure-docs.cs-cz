@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3e80ff90e47f45655761abd4c7e8fa9ed04b61ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518887"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896340"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Kurz – migrace webové služby z Google Maps
 
@@ -40,15 +40,15 @@ V tabulce jsou uvedena rozhraní API služby Azure Maps, která mají podobnou f
 
 | Rozhraní API služby Google Maps | Rozhraní API služby Azure Maps                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Pokyny              | [Cestě](https://docs.microsoft.com/rest/api/maps/route)                                     |
-| Matice vzdáleností         | [Matice směrování](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
-| Geokódování               | [Hledání](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Hledání míst           | [Hledání](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| Umístit automatické dokončování      | [Hledání](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Pokyny              | [Trasa](/rest/api/maps/route)                                     |
+| Matice vzdáleností         | [Matice směrování](/rest/api/maps/route/postroutematrixpreview)       |
+| Geokódování               | [Hledání](/rest/api/maps/search)                                   |
+| Hledání míst           | [Hledání](/rest/api/maps/search)                                   |
+| Umístit automatické dokončování      | [Hledání](/rest/api/maps/search)                                   |
 | Přichycení k cestám            | Viz část [Výpočet tras a pokynů](#calculate-routes-and-directions) .            |
 | Omezení rychlosti            | Přečtěte si oddíl [Reverse INCODE a souřadnice](#reverse-geocode-a-coordinate) .                  |
-| Statická mapa              | [Vykreslování](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
-| Časové pásmo               | [Časové pásmo](https://docs.microsoft.com/rest/api/maps/timezone)                              |
+| Statická mapa              | [Vykreslování](/rest/api/maps/render/getmapimage)                       |
+| Časové pásmo               | [Časové pásmo](/rest/api/maps/timezone)                              |
 
 Následující rozhraní API služby nejsou v tuto chvíli k dispozici v Azure Maps:
 
@@ -62,12 +62,12 @@ Následující rozhraní API služby nejsou v tuto chvíli k dispozici v Azure M
 
 Azure Maps má několik dalších webových služeb REST, které mohou být zajímavé:
 
-- [Prostorové operace](https://docs.microsoft.com/rest/api/maps/spatial): přesměrování složitých prostorových výpočtů a operací, jako je monitorování geografických zón, do služby.
-- [Provoz](https://docs.microsoft.com/rest/api/maps/traffic): přístup k datům o toku provozu a incidentu v reálném čase.
+- [Prostorové operace](/rest/api/maps/spatial): přesměrování složitých prostorových výpočtů a operací, jako je monitorování geografických zón, do služby.
+- [Provoz](/rest/api/maps/traffic): přístup k datům o toku provozu a incidentu v reálném čase.
 
 ## <a name="prerequisites"></a>Předpoklady 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -77,11 +77,11 @@ Geografické kódování je proces převodu adresy na souřadnici. Například "
 
 Azure Maps poskytuje několik metod pro adresy geografického kódování:
 
-- [**Geografické kódování adresy volného formátu**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress): zadejte jednu adresu řetězce a okamžitě zpracuje požadavek. "1 Microsoft Way, Redmond, WA" je příklad jednoho adresového řetězce. Toto rozhraní API se doporučuje v případě, že potřebujete jednotlivé adresy snadno kódovat.
-- [**Geografické označování strukturovaných adres**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured): Určete části jedné adresy, jako je název ulice, město, země/oblast a poštovní směrovací číslo a okamžitě zpracujte požadavek. Toto rozhraní API se doporučuje, pokud potřebujete rychle identifikovat jednotlivé adresy a data už se analyzují na jednotlivé části adres.
-- [**Geografické kódování adresy Batch**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview): vytvořte žádost obsahující až 10 000 adres a požádejte je o zpracování v časovém intervalu. Všechny adresy budou na serveru paralelně zavedeny a po dokončení bude možné stáhnout úplnou sadu výsledků. Tento postup je doporučený pro geografické sady velkých datových sad.
-- [**Hledání přibližných**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)hodnot: Toto rozhraní API kombinuje geografické kódování s bodem hledání z hlediska zájmu. Toto rozhraní API přebírá řetězec ve volném formátu. Tento řetězec může být adresa, místo, orientační bod, bod zájmu nebo kategorie zájmu. Toto rozhraní API zpracovává žádost téměř v reálném čase. Toto rozhraní API se doporučuje pro aplikace, kde uživatelé hledají adresy nebo body zájmu ve stejném textovém poli.
-- [**Nepřibližné dávkové vyhledávání**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): vytvoření žádosti obsahující až 10 000 adres, míst, orientačních bodů nebo bodů zájmu a jejich zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru a po dokončení bude možné stáhnout úplnou sadu výsledků.
+- [**Geografické kódování adresy volného formátu**](/rest/api/maps/search/getsearchaddress): zadejte jednu adresu řetězce a okamžitě zpracuje požadavek. "1 Microsoft Way, Redmond, WA" je příklad jednoho adresového řetězce. Toto rozhraní API se doporučuje v případě, že potřebujete jednotlivé adresy snadno kódovat.
+- [**Geografické označování strukturovaných adres**](/rest/api/maps/search/getsearchaddressstructured): Určete části jedné adresy, jako je název ulice, město, země/oblast a poštovní směrovací číslo a okamžitě zpracujte požadavek. Toto rozhraní API se doporučuje, pokud potřebujete rychle identifikovat jednotlivé adresy a data už se analyzují na jednotlivé části adres.
+- [**Geografické kódování adresy Batch**](/rest/api/maps/search/postsearchaddressbatchpreview): vytvořte žádost obsahující až 10 000 adres a požádejte je o zpracování v časovém intervalu. Všechny adresy budou na serveru paralelně zavedeny a po dokončení bude možné stáhnout úplnou sadu výsledků. Tento postup je doporučený pro geografické sady velkých datových sad.
+- [**Hledání přibližných**](/rest/api/maps/search/getsearchfuzzy)hodnot: Toto rozhraní API kombinuje geografické kódování s bodem hledání z hlediska zájmu. Toto rozhraní API přebírá řetězec ve volném formátu. Tento řetězec může být adresa, místo, orientační bod, bod zájmu nebo kategorie zájmu. Toto rozhraní API zpracovává žádost téměř v reálném čase. Toto rozhraní API se doporučuje pro aplikace, kde uživatelé hledají adresy nebo body zájmu ve stejném textovém poli.
+- [**Nepřibližné dávkové vyhledávání**](/rest/api/maps/search/postsearchfuzzybatchpreview): vytvoření žádosti obsahující až 10 000 adres, míst, orientačních bodů nebo bodů zájmu a jejich zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru a po dokončení bude možné stáhnout úplnou sadu výsledků.
 
 Následující tabulka odkazuje na parametry rozhraní API Google Maps pomocí srovnatelných parametrů rozhraní API v Azure Maps.
 
@@ -105,9 +105,9 @@ Opačné geografické kódování je proces převodu geografických souřadnic n
 
 Azure Maps poskytuje několik metod reverzního geografického kódování:
 
-- [**Adresa reverzního INCODE pro zpětný**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)přístup: zadejte jednu geografickou souřadnici, která bude mít přibližnou adresu odpovídající této souřadnici. Zpracuje požadavek téměř v reálném čase.
-- Informující o [**zpětném vyhledávání meziulici**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet): Určete jednu geografickou souřadnici, která bude dostávat informace o sousedních oblastech, a okamžitě zpracovat požadavek. Můžete například obdržet následující meziulic 1. a Main St.
-- [**Adresa dávkového reverzního příznaku zpětného vyhledávání**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatchpreview): vytvořte žádost obsahující až 10 000 souřadnic a požádejte je o zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru. Po dokončení žádosti si můžete stáhnout celou sadu výsledků.
+- [**Adresa reverzního INCODE pro zpětný**](/rest/api/maps/search/getsearchaddressreverse)přístup: zadejte jednu geografickou souřadnici, která bude mít přibližnou adresu odpovídající této souřadnici. Zpracuje požadavek téměř v reálném čase.
+- Informující o [**zpětném vyhledávání meziulici**](/rest/api/maps/search/getsearchaddressreversecrossstreet): Určete jednu geografickou souřadnici, která bude dostávat informace o sousedních oblastech, a okamžitě zpracovat požadavek. Můžete například obdržet následující meziulic 1. a Main St.
+- [**Adresa dávkového reverzního příznaku zpětného vyhledávání**](/rest/api/maps/search/postsearchaddressreversebatchpreview): vytvořte žádost obsahující až 10 000 souřadnic a požádejte je o zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru. Po dokončení žádosti si můžete stáhnout celou sadu výsledků.
 
 Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps s podobnými parametry rozhraní API v Azure Maps.
 
@@ -116,7 +116,7 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 | `key`                       | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *–*     |
+| `location_type`             | *Není k dispozici*     |
 | `result_type`               | `entityType`    |
 
 Projděte si [osvědčené postupy pro hledání](how-to-use-best-practices-for-search.md).
@@ -132,18 +132,18 @@ Rozhraní API pro invertování geografického kódování Azure Maps obsahuje n
 Data z bodu zájmu můžete vyhledávat ve službě Google Maps pomocí rozhraní API pro vyhledávání míst. Toto rozhraní API nabízí tři různé způsoby hledání bodů zájmu:
 
 - **Najít místo z textu:** Vyhledá bod zájmu na základě jeho názvu, adresy nebo telefonního čísla.
-- **Nejbližší hledání**: vyhledá body zájmů, které spadají do určité vzdálenosti.
+- **Nejbližší hledání** : vyhledá body zájmů, které spadají do určité vzdálenosti.
 - **Hledání textu:** Vyhledá místa pomocí bezplatného textu, který obsahuje bod zájmu a informace o poloze. Například "pizza in Praha" nebo "restaurace poblíž Main St".
 
 Azure Maps poskytuje několik rozhraní API pro hledání bodů zájmu:
 
-- [**Hledání POI**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi): vyhledejte body zájmů podle jména. Například "Starbucks".
-- [**Hledání kategorií POI**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory): vyhledejte body zájmu podle kategorie. Například "restaurace".
-- [**Nejbližší hledání**](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby): vyhledá body zájmů, které spadají do určité vzdálenosti.
-- [**Hledání přibližných**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)hodnot: Toto rozhraní API kombinuje geografické kódování s bodem hledání z hlediska zájmu. Toto rozhraní API přebírá řetězec ve volném formátu, který může být adresami, místem, orientačními body, bodem zájmu nebo kategorií zájmu. Tento požadavek zpracovává téměř v reálném čase. Toto rozhraní API se doporučuje pro aplikace, kde uživatelé hledají adresy nebo body zájmu ve stejném textovém poli.
-- [**Hledání v geometrii**](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry): hledání bodů zájmů v zadané geometrii. Můžete například vyhledat bod zájmu v rámci mnohoúhelníku.
-- [**Hledání v cestě**](https://docs.microsoft.com/rest/api/maps/search/postsearchalongroute): vyhledejte body, které jsou podél zadané cesty trasy.
-- [**Nepřibližné dávkové vyhledávání**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview): vytvořte žádost obsahující až 10 000 adres, míst, orientačních bodů nebo bodů zájmu. Žádost se zpracovala v časovém intervalu. Všechna data budou zpracována paralelně na serveru. Po dokončení zpracování žádosti si můžete stáhnout celou sadu výsledků.
+- [**Hledání POI**](/rest/api/maps/search/getsearchpoi): vyhledejte body zájmů podle jména. Například "Starbucks".
+- [**Hledání kategorií POI**](/rest/api/maps/search/getsearchpoicategory): vyhledejte body zájmu podle kategorie. Například "restaurace".
+- [**Nejbližší hledání**](/rest/api/maps/search/getsearchnearby): vyhledá body zájmů, které spadají do určité vzdálenosti.
+- [**Hledání přibližných**](/rest/api/maps/search/getsearchfuzzy)hodnot: Toto rozhraní API kombinuje geografické kódování s bodem hledání z hlediska zájmu. Toto rozhraní API přebírá řetězec ve volném formátu, který může být adresami, místem, orientačními body, bodem zájmu nebo kategorií zájmu. Tento požadavek zpracovává téměř v reálném čase. Toto rozhraní API se doporučuje pro aplikace, kde uživatelé hledají adresy nebo body zájmu ve stejném textovém poli.
+- [**Hledání v geometrii**](/rest/api/maps/search/postsearchinsidegeometry): hledání bodů zájmů v zadané geometrii. Můžete například vyhledat bod zájmu v rámci mnohoúhelníku.
+- [**Hledání v cestě**](/rest/api/maps/search/postsearchalongroute): vyhledejte body, které jsou podél zadané cesty trasy.
+- [**Nepřibližné dávkové vyhledávání**](/rest/api/maps/search/postsearchfuzzybatchpreview): vytvořte žádost obsahující až 10 000 adres, míst, orientačních bodů nebo bodů zájmu. Žádost se zpracovala v časovém intervalu. Všechna data budou zpracována paralelně na serveru. Po dokončení zpracování žádosti si můžete stáhnout celou sadu výsledků.
 
 V současné době Azure Maps nemá srovnatelné rozhraní API pro rozhraní API pro vyhledávání textu ve službě Google Maps.
 
@@ -154,22 +154,22 @@ Projděte si [osvědčené postupy pro dokumentaci pro hledání](how-to-use-bes
 
 ### <a name="find-place-from-text"></a>Najít místo z textu
 
-Pomocí Azure Maps [POI hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) a [přibližného vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) můžete hledat body zájmů podle jména nebo adresy.
+Pomocí Azure Maps [POI hledání](/rest/api/maps/search/getsearchpoi) a [přibližného vyhledávání](/rest/api/maps/search/getsearchfuzzy) můžete hledat body zájmů podle jména nebo adresy.
 
 Tabulka křížově odkazuje na parametry rozhraní API Google Maps pomocí srovnatelných parametrů Azure Maps rozhraní API.
 
 | Parametr rozhraní API pro Google Maps | Srovnatelný parametr Azure Maps rozhraní API |
 |---------------------------|-------------------------------------|
-| `fields`                  | *–*                               |
+| `fields`                  | *Není k dispozici*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *–*                               |
+| `inputtype`               | *Není k dispozici*                               |
 | `key`                     | `subscription-key` – Viz také [ověřování pomocí Azure Maps](azure-maps-authentication.md) dokumentaci. |
 | `language`                | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `locationbias`            | `lat``lon`a`radius`<br/>`topLeft` a `btmRight`<br/>`countrySet`  |
 
 ### <a name="nearby-search"></a>Okolní hledání
 
-Pomocí rozhraní API pro [hledání v okolí](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) načtěte v Azure Maps okolní body zájmů.
+Pomocí rozhraní API pro [hledání v okolí](/rest/api/maps/search/getsearchnearby) načtěte v Azure Maps okolní body zájmů.
 
 V tabulce jsou uvedeny parametry rozhraní API služby Google Maps s podobnými parametry Azure Maps rozhraní API.
 
@@ -179,13 +179,13 @@ V tabulce jsou uvedeny parametry rozhraní API služby Google Maps s podobnými 
 | `keyword`                   | `categorySet` a `brandSet`        |
 | `language`                  | `language` – Viz dokumentace k [podporovaným jazykům](supported-languages.md) .  |
 | `location`                  | `lat` a `lon`                     |
-| `maxprice`                  | *–*                               |
-| `minprice`                  | *–*                               |
+| `maxprice`                  | *Není k dispozici*                               |
+| `minprice`                  | *Není k dispozici*                               |
 | `name`                      | `categorySet` a `brandSet`        |
-| `opennow`                   | *–*                               |
+| `opennow`                   | *Není k dispozici*                               |
 | `pagetoken`                 | `ofs` a `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *–*                               |
+| `rankby`                    | *Není k dispozici*                               |
 | `type`                      | `categorySet –` Viz dokumentace k [kategoriím hledání podporované](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Vypočítat trasy a směry
@@ -201,9 +201,9 @@ Vypočítejte trasy a pokyny pomocí Azure Maps. Azure Maps má mnoho stejných 
 
 Služba směrování Azure Maps poskytuje následující rozhraní API pro výpočet tras:
 
-- [**Vypočítat trasu**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): Vypočítejte trasu a ihned zpracuje požadavek. Toto rozhraní API podporuje žádosti GET i POST. Žádosti POST se doporučují při zadání velkého počtu Waypoints nebo při použití spousty možností směrování, abyste zajistili, že se požadavek na adresu URL nestane příliš dlouhý a způsobuje problémy. Směr následné trasy v Azure Maps má možnost přebírat tisíce [pomocných bodů](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) a bude je používat k opětovnému vytvoření cesty logické trasy mezi nimi (přichycení k cestě). 
-- [**Dávková trasa**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): vytvořte žádost obsahující až 1 000 žádosti o trasu a požádejte ji o zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru a po dokončení bude možné stáhnout úplnou sadu výsledků.
-- [**Služby mobility**](https://docs.microsoft.com/rest/api/maps/mobility): Vypočítejte trasy a směry pomocí veřejného přenosu.
+- [**Vypočítat trasu**](/rest/api/maps/route/getroutedirections): Vypočítejte trasu a ihned zpracuje požadavek. Toto rozhraní API podporuje žádosti GET i POST. Žádosti POST se doporučují při zadání velkého počtu Waypoints nebo při použití spousty možností směrování, abyste zajistili, že se požadavek na adresu URL nestane příliš dlouhý a způsobuje problémy. Směr následné trasy v Azure Maps má možnost přebírat tisíce [pomocných bodů](/rest/api/maps/route/postroutedirections#supportingpoints) a bude je používat k opětovnému vytvoření cesty logické trasy mezi nimi (přichycení k cestě). 
+- [**Dávková trasa**](/rest/api/maps/route/postroutedirectionsbatchpreview): vytvořte žádost obsahující až 1 000 žádosti o trasu a požádejte ji o zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru a po dokončení bude možné stáhnout úplnou sadu výsledků.
+- [**Služby mobility**](/rest/api/maps/mobility): Vypočítejte trasy a směry pomocí veřejného přenosu.
 
 Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými parametry rozhraní API v Azure Maps.
 
@@ -221,8 +221,8 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | `origin`                       | `query`                            |
 | `region`                       | Není *k dispozici* – Tato funkce se týká geografického kódování. Při použití Azure Maps rozhraní API pro geografické kódování použijte parametr *countrySet* .  |
 | `traffic_model`               | Není *k dispozici* – dá se zadat jenom v případě, že se mají použít data přenosů s parametrem *provozu* . |
-| `transit_mode`                | Viz [dokumentace ke službě mobility](https://docs.microsoft.com/rest/api/maps/mobility) |
-| `transit_routing_preference` | Viz [dokumentace ke službě mobility](https://docs.microsoft.com/rest/api/maps/mobility) |
+| `transit_mode`                | Viz [dokumentace ke službě mobility](/rest/api/maps/mobility) |
+| `transit_routing_preference` | Viz [dokumentace ke službě mobility](/rest/api/maps/mobility) |
 | `units`                        | Není *k dispozici* – Azure Maps používá pouze systém metrik.  |
 | `waypoints`                    | `query`                            |
 
@@ -242,13 +242,13 @@ Rozhraní API pro směrování Azure Maps má další funkce, které nejsou dost
 - Podporuje parametry směrování komerčních vozidel. Jako jsou například rozměry vozidla, váhy, počet Axels a typ nákladu.
 - Zadejte maximální rychlost vozidla.
 
-Kromě toho služba Směrování v Azure Maps podporuje [výpočet rozsahů směrování](https://docs.microsoft.com/rest/api/maps/route/getrouterange). Výpočet rozsahů směrování se označuje také jako izochronů. Zahrnuje generování mnohoúhelníku, který pokrývá oblast, na kterou se dá cestovat v libovolném směru od počátečního bodu. V rámci stanoveného množství času nebo objemu paliva nebo poplatků.
+Kromě toho služba Směrování v Azure Maps podporuje [výpočet rozsahů směrování](/rest/api/maps/route/getrouterange). Výpočet rozsahů směrování se označuje také jako izochronů. Zahrnuje generování mnohoúhelníku, který pokrývá oblast, na kterou se dá cestovat v libovolném směru od počátečního bodu. V rámci stanoveného množství času nebo objemu paliva nebo poplatků.
 
 Projděte si [osvědčené postupy pro](how-to-use-best-practices-for-routing.md) dokumentaci ke směrování.
 
 ## <a name="retrieve-a-map-image"></a>Načtení obrázku mapy
 
-Azure Maps poskytuje rozhraní API pro vykreslování statických imagí map s překrývajícími se daty. Rozhraní API pro [vykreslování obrázků map](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) v Azure Maps je SROVNATELNÉ s rozhraním API statické mapy v Mapách Google Maps.
+Azure Maps poskytuje rozhraní API pro vykreslování statických imagí map s překrývajícími se daty. Rozhraní API pro [vykreslování obrázků map](/rest/api/maps/render/getmapimagerytile) v Azure Maps je SROVNATELNÉ s rozhraním API statické mapy v Mapách Google Maps.
 
 > [!NOTE]
 > Azure Maps vyžaduje, aby bylo uprostřed, všechna značka a umístění cesty souřadnice ve formátu "Zeměpisná šířka". Vzhledem k tomu, že Google Maps používá formát Zeměpisná šířka, zeměpisná délka. Adresy musí být nejprve v INCODE.
@@ -265,10 +265,10 @@ Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | Není *k dispozici* – jedná se o funkci související s geografické kódování. Použijte `countrySet` parametr při použití Azure Maps rozhraní API pro geografické kódování.  |
-| `scale`                     | *–*                              |
+| `scale`                     | *Není k dispozici*                              |
 | `size`                      | `width` a `height` – může mít velikost až 8192x8192. |
-| `style`                     | *–*                              |
-| `visible`                   | *–*                              |
+| `style`                     | *Není k dispozici*                              |
+| `visible`                   | *Není k dispozici*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -278,8 +278,8 @@ Další informace najdete v příručce k [rozhraní API pro vykreslování obr�
 
 Kromě toho, že je možné vygenerovat statický obrázek mapy, služba Azure Maps rendering poskytuje možnost přímý přístup k dlaždicím mapy v rastrovém formátu (PNG) a ve vektorovém formátu:
 
-- [**Dlaždice mapy**](https://docs.microsoft.com/rest/api/maps/render/getmaptile): načíst rastrový obrázek (PNG) a vektorové dlaždice pro základní mapy (cesty, hranice, pozadí).
-- [**Dlaždice map snímků**](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)– obrázek: načtení dlaždic satelitních a satelitních snímků
+- [**Dlaždice mapy**](/rest/api/maps/render/getmaptile): načíst rastrový obrázek (PNG) a vektorové dlaždice pro základní mapy (cesty, hranice, pozadí).
+- [**Dlaždice map snímků**](/rest/api/maps/render/getmapimagerytile)– obrázek: načtení dlaždic satelitních a satelitních snímků
 
 > [!TIP]
 > Řada aplikací pro Google Maps, kde se před několika lety přepne z interaktivního mapového prostředí do statických imagí. To bylo provedeno jako metoda úspory nákladů. V Azure Maps je obvykle cenově výhodnější používat ovládací prvek interaktivní mapování v sadě web SDK. Interaktivní ovládací prvky mapy se účtují podle počtu načtených dlaždic. Mapové dlaždice v Azure Maps jsou velké. Často trvá pouze několik dlaždic pro opětovné vytvoření stejného zobrazení mapy jako statické mapy. Mapové dlaždice jsou automaticky ukládány v prohlížeči. V takovém případě interaktivní ovládací prvek mapování často generuje zlomek transakce při reprodukci statického zobrazení mapy. Posouvání a přiblížení načte další dlaždice. Nicméně existují možnosti v mapovém ovládacím prvku pro zakázání tohoto chování. Interaktivní ovládací prvek mapy také nabízí mnohem více možností vizualizace než statické mapové služby.
@@ -337,7 +337,7 @@ V Azure Maps musí být umístění kódu PIN ve formátu "Zeměpisná šířka"
 - `custom` – Určuje vlastní ikonu, která se má použít. Adresa URL ukazující na obrázek ikony může být přidána na konec `pins` parametru za informace o umístění kódu PIN.
 - `{udid}` – Jedinečné ID dat (UDID) pro ikonu uloženou v Azure Maps platformě úložiště dat.
 
-Přidejte styly kódu PIN ve `optionNameValue` formátu. Oddělte více stylů znaky svislé čáry ( \| ). Například: `iconType|optionName1Value1|optionName2Value2`. Hodnoty a názvy možností nejsou oddělené. Pro značky stylu použijte následující názvy možností stylu:
+Přidejte styly kódu PIN ve `optionNameValue` formátu. Oddělte více stylů znaky svislé čáry ( \| ). Příklad: `iconType|optionName1Value1|optionName2Value2`. Hodnoty a názvy možností nejsou oddělené. Pro značky stylu použijte následující názvy možností stylu:
 
 - `al` – Určuje neprůhlednost (alfa) značky. Vyberte číslo mezi 0 a 1.
 - `an` – Určuje kotvu PIN. Zadejte hodnoty X a y pixelů ve formátu "X y".
@@ -426,7 +426,7 @@ V parametru URL přidejte neprůhlednost červené čáry a tloušťku pixelů m
 
 Azure Maps poskytuje rozhraní API pro matici Distance. Pomocí tohoto rozhraní API můžete vypočítat dobu trvání cesty a vzdálenosti mezi sadou umístění s maticí s vzdáleností. Je srovnatelná s rozhraním API služby Distance v Google Maps.
 
-- [**Matice směrování**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview): asynchronně vypočítá dobu trvání cesty a vzdálenosti pro sadu míst původu a místa. Podporuje až 700 buněk na žádost. To je počet původních vynásobený počtem cílů. S tímto omezením je třeba mít příklady možných dimenzí matice: 700x1, 50x10, 10x10, 28x25, 10x70.
+- [**Matice směrování**](/rest/api/maps/route/postroutematrixpreview): asynchronně vypočítá dobu trvání cesty a vzdálenosti pro sadu míst původu a místa. Podporuje až 700 buněk na žádost. To je počet původních vynásobený počtem cílů. S tímto omezením je třeba mít příklady možných dimenzí matice: 700x1, 50x10, 10x10, 28x25, 10x70.
 
 > [!NOTE]
 > Požadavek na rozhraní API na dálku se dá vytvořit jenom pomocí žádosti POST s informacemi o původu a cíli v těle žádosti. Azure Maps navíc vyžaduje, aby všechny zdroje a cíle byly souřadnice. Adresy musí být nejprve v INCODE.
@@ -458,7 +458,7 @@ Projděte si [osvědčené postupy pro](how-to-use-best-practices-for-routing.md
 
 Azure Maps poskytuje rozhraní API pro načtení časového pásma souřadnic. Rozhraní API pro časové pásmo Azure Maps je srovnatelné s rozhraním API pro časové pásmo v Google Maps:
 
-- [**Časové pásmo podle souřadnic**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates): Určete souřadnici a přijímají podrobnosti o časovém pásmu pro souřadnici.
+- [**Časové pásmo podle souřadnic**](/rest/api/maps/timezone/gettimezonebycoordinates): Určete souřadnici a přijímají podrobnosti o časovém pásmu pro souřadnici.
 
 Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps s podobnými parametry rozhraní API v Azure Maps.
 
@@ -471,11 +471,11 @@ Tato tabulka křížově odkazuje na parametry rozhraní API služby Google Maps
 
 Kromě tohoto rozhraní API Azure Maps poskytuje řadu rozhraní API pro časové pásmo. Tato rozhraní API převádějí čas na základě názvů nebo ID časového pásma:
 
-- [**Časové pásmo podle ID**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid): vrátí aktuální, historické a budoucí informace o časovém pásmu pro zadané ID časového pásma IANA.
-- Identifikátor [**úřadu pro vyčíslení časového pásma**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana): vrátí úplný seznam ID časových pásem IANA. Aktualizace služby IANA se v systému projeví v rámci jednoho dne.
-- [**Okna výčtu časových pásem**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows): vrátí úplný seznam ID časových pásem systému Windows.
-- [**Verze IANA časového pásma**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion): vrátí aktuální číslo verze iana používané Azure Maps.
-- [**Časová pásma Windows to IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonewindowstoiana): vrátí odpovídající ID IANA, které má přidělené platné ID časového pásma systému Windows. Pro jedno ID systému Windows může být vráceno více ID IANA.
+- [**Časové pásmo podle ID**](/rest/api/maps/timezone/gettimezonebyid): vrátí aktuální, historické a budoucí informace o časovém pásmu pro zadané ID časového pásma IANA.
+- Identifikátor [**úřadu pro vyčíslení časového pásma**](/rest/api/maps/timezone/gettimezoneenumiana): vrátí úplný seznam ID časových pásem IANA. Aktualizace služby IANA se v systému projeví v rámci jednoho dne.
+- [**Okna výčtu časových pásem**](/rest/api/maps/timezone/gettimezoneenumwindows): vrátí úplný seznam ID časových pásem systému Windows.
+- [**Verze IANA časového pásma**](/rest/api/maps/timezone/gettimezoneianaversion): vrátí aktuální číslo verze iana používané Azure Maps.
+- [**Časová pásma Windows to IANA**](/rest/api/maps/timezone/gettimezonewindowstoiana): vrátí odpovídající ID IANA, které má přidělené platné ID časového pásma systému Windows. Pro jedno ID systému Windows může být vráceno více ID IANA.
 
 ## <a name="client-libraries"></a>Klientské knihovny
 

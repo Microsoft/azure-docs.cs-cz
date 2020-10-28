@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 136676b46df6e32f98dca99fccba19d4aa369dbe
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288162"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896272"
 ---
 # <a name="add-a-bar-chart-layer"></a>Přidání vrstvy pruhového grafu
 
@@ -71,7 +71,7 @@ Přidat k mapě další kontext:
 Přizpůsobení vizuálu:
 
 > [!div class="nextstepaction"]
-> [Tipy a triky pro formátování barev v Power BI](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Tipy a triky pro formátování barev v Power BI](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení názvů, pozadí a legend vizualizací](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [Přizpůsobení názvů, pozadí a legend vizualizací](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

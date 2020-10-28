@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 168b3d51b66078b3d4c2e113711d3124820dd6bd
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677797"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897139"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Kurz – migrace webové aplikace z map Bing
 
 Webové aplikace, které používají mapy Bing, často používají sadu SDK služby Bing Maps V8 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy s vlastním obsahem a pomocí obrázků pro zobrazení ve vašich webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK.
 
-Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapa, například cesium, leták a OpenLayers. Pokud je to a chcete, aby se tato knihovna dál používala, můžete ji připojit ke službám Azure Maps dlaždice ([cesty](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [satelitních](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)bloků). Odkazy níže poskytují podrobné informace o tom, jak používat Azure Maps v některých běžně používaných Open Source knihovnách ovládacích prvků.
+Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapa, například cesium, leták a OpenLayers. Pokud je to a chcete, aby se tato knihovna dál používala, můžete ji připojit ke službám Azure Maps dlaždice ([cesty](/rest/api/maps/render/getmaptile) \| [satelitních](/rest/api/maps/render/getmapimagerytile)bloků). Odkazy níže poskytují podrobné informace o tom, jak používat Azure Maps v některých běžně používaných Open Source knihovnách ovládacích prvků.
 
 -   Cesium – ovládací prvek 3D mapy pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentace](https://cesiumjs.org/)
 -   Leták – zjednodušený 2D mapový ovládací prvek pro web. [Ukázka kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentace](https://leafletjs.com/)
@@ -46,8 +46,8 @@ V následující tabulce jsou uvedeny klíčové funkce API ve službě Bing Map
 | Heat mapy                | ✓                                                                                      |
 | Vrstvy dlaždic              | ✓                                                                                      |
 | KML vrstva                | ✓                                                                                      |
-| Vrstva obrysu            | [Ukázky](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| Vrstva binningu dat       | [Ukázky](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| Vrstva obrysu            | [ukázky](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
+| Vrstva binningu dat       | [ukázky](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
 | Animovaná vrstva dlaždice      | Zahrnutý v modulu Open Source Azure Maps [Animation](https://github.com/Azure-Samples/azure-maps-animations) |
 | Nástroje pro kreslení            | ✓                                                                                      |
 | Služba pro INCODE         | ✓                                                                                      |
@@ -68,7 +68,7 @@ Azure Maps také obsahuje mnoho dalších [Open Source modulů pro webovou sadu 
 
 Níže jsou uvedeny některé z klíčových rozdílů mezi mapami Bing a Azure Maps Web SDK, na kterých je třeba vědět:
 
--   Kromě poskytování hostovaného koncového bodu pro přístup k Azure Maps webové sadě SDK je k dispozici také balíček NPM pro vložení webové sady SDK do aplikací, pokud jsou preferované. Další informace najdete v této [dokumentaci](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) , kde najdete další informace. Tento balíček obsahuje také definice TypeScript.
+-   Kromě poskytování hostovaného koncového bodu pro přístup k Azure Maps webové sadě SDK je k dispozici také balíček NPM pro vložení webové sady SDK do aplikací, pokud jsou preferované. Další informace najdete v této [dokumentaci](./how-to-use-map-control.md) , kde najdete další informace. Tento balíček obsahuje také definice TypeScript.
 -   Mapy Bing poskytují dvě hostované větve své sady SDK. Vydávat a experimentovat. Experimentální větev může obdržet několik aktualizací za den, kdy dojde k vývoji nového vývoje. Azure Maps pouze hostitelskou větev verze, ale experimentální funkce jsou vytvořeny jako vlastní moduly v projektu ukázek Open-Source Azure Maps kódu. Mapy Bing používaly k dispozici zmrazenou větev, která byla aktualizována méně často, čímž se snížilo riziko zásadních změn z důvodu vydání verze. V Azure Maps můžete použít modul NPM a nasměrovat ho na předchozí verzi dílčí verze.
 
 > [!TIP]
@@ -78,20 +78,20 @@ Níže jsou uvedeny některé z klíčových rozdílů mezi mapami Bing a Azure 
 -   Obě platformy pro základní mapy používají podobný systém dlaždic, ale dlaždice v mapách Bing jsou v dimenzi 256 pixelů, zatímco dlaždice v Azure Maps jsou v dimenzi 512 pixelů. Aby bylo možné získat stejné zobrazení mapy jako v Azure Maps jako mapy Bing, je třeba v Azure Maps použít úroveň přiblížení ve službě Mapy Bing o jednu odchylku.
 -   Souřadnice v mapách Bing se označují jako `latitude, longitude` při použití Azure Maps `longitude, latitude` . Tento formát se zarovnává se standardem `[x, y]` , který následuje po většině platforem GIS.
 
--   Tvary v sadě Azure Maps Web SDK jsou založené na schématu geometrického kódu. Pomocné třídy jsou zpřístupněny prostřednictvím [oboru názvů Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data). Je to také [Atlas. Třída Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) , která se dá použít ke zalamování objektů a jejich snadné aktualizace a udržování v datové vazbě.
+-   Tvary v sadě Azure Maps Web SDK jsou založené na schématu geometrického kódu. Pomocné třídy jsou zpřístupněny prostřednictvím [oboru názvů Atlas. data](/javascript/api/azure-maps-control/atlas.data). Je to také [Atlas. Třída Shape](/javascript/api/azure-maps-control/atlas.shape) , která se dá použít ke zalamování objektů a jejich snadné aktualizace a udržování v datové vazbě.
 -   Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]` nebo `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
-> Třída Position má statickou pomocnou funkci pro import souřadnic, které jsou ve `latitude, longitude` formátu. Funkce [Atlas. data. Position. fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position)může často nahradit `new Microsoft.Maps.Location` funkci v kódu služby mapy Bing.
+> Třída Position má statickou pomocnou funkci pro import souřadnic, které jsou ve `latitude, longitude` formátu. Funkce [Atlas. data. Position. fromLatLng](/javascript/api/azure-maps-control/atlas.data.position)může často nahradit `new Microsoft.Maps.Location` funkci v kódu služby mapy Bing.
 
 -   Namísto zadání informací o stylech na každém obrazci, který je přidán k mapě, Azure Maps odděluje styly od dat. Data jsou uložena ve zdrojích dat a jsou připojena k vykreslovacím vrstvám, které Azure Maps kód používá k vykreslování dat. Tento přístup poskytuje vyšší výhody výkonu. Kromě toho mnoho vrstev podporuje styly řízené daty, kde obchodní logika může být přidána do možností stylu vrstvy, které změní způsob, jakým se jednotlivé tvary vykreslují v rámci vrstvy na základě vlastností definovaných v prvku Shape.
 -   Azure Maps poskytuje spoustu užitečných matematických funkcí v `atlas.math` oboru názvů, ale liší se od těch, které jsou v prostorovém matematickém modulu mapy Bing. Hlavní rozdíl spočívá v tom, že Azure Maps neposkytuje integrované funkce pro binární operace, jako je například sjednocení a průnik, protože Azure Maps je založena na geografickém JSON, které je otevřený standard, je k dispozici celá řada Open Source knihoven. Jedna oblíbená možnost, která dobře funguje s Azure Maps a poskytuje spoustu prostorových matematických funkcí je [Turf js](http://turfjs.org/).
 
-Viz také [glosář Azure Maps](https://docs.microsoft.com/azure/azure-maps/glossary) pro podrobný seznam terminologie přidružených k Azure Maps.
+Viz také [glosář Azure Maps](./glossary.md) pro podrobný seznam terminologie přidružených k Azure Maps.
 
 ## <a name="web-sdk-side-by-side-examples"></a>Webové sady SDK vedle sebe – příklady
 
-Následuje kolekce ukázek kódu pro každou platformu, která se vztahuje na běžné případy použití, které vám pomůžou při migraci webové aplikace ze služby Bing Maps V8 JavaScript SDK do Azure Maps webové sady SDK. Ukázky kódu související s webovými aplikacemi jsou k dispozici v JavaScriptu. Azure Maps ale také poskytuje definice TypeScript jako další možnost prostřednictvím [modulu npm](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+Následuje kolekce ukázek kódu pro každou platformu, která se vztahuje na běžné případy použití, které vám pomůžou při migraci webové aplikace ze služby Bing Maps V8 JavaScript SDK do Azure Maps webové sady SDK. Ukázky kódu související s webovými aplikacemi jsou k dispozici v JavaScriptu. Azure Maps ale také poskytuje definice TypeScript jako další možnost prostřednictvím [modulu npm](./how-to-use-map-control.md).
 
 **Témata**
 
@@ -230,14 +230,14 @@ Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na n
 
 ![Mapa Azure Maps](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
 
-Podrobná dokumentace k nastavení a použití mapového ovládacího prvku Azure Maps ve webové aplikaci najdete [tady](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+Podrobná dokumentace k nastavení a použití mapového ovládacího prvku Azure Maps ve webové aplikaci najdete [tady](./how-to-use-map-control.md).
 
 > [!TIP]
 > Azure Maps zveřejňuje minifikovaného i unminified verze sady SDK. Odeberte `.min` z názvů souborů. Verze unminified je užitečná při ladění problémů, ale nezapomeňte použít verzi minifikovaného v produkčním prostředí, abyste mohli využít menší velikost souboru.
 
 **Další materiály**
 
--   Azure Maps také poskytuje navigační ovládací prvky pro otočení a rozteč zobrazení mapy, jak je popsáno [zde](https://docs.microsoft.com/azure/azure-maps/map-add-controls).
+-   Azure Maps také poskytuje navigační ovládací prvky pro otočení a rozteč zobrazení mapy, jak je popsáno [zde](./map-add-controls.md).
 
 ### <a name="localizing-the-map"></a>Lokalizace mapy
 
@@ -281,7 +281,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> Pomocí Azure Maps je možné načíst více instancí mapy na stejné stránce s jiným nastavením jazyka a oblasti. Kromě toho je také možné aktualizovat Tato nastavení v mapě po jeho načtení. Podrobný seznam podporovaných jazyků v Azure Maps najdete [tady](https://docs.microsoft.com/azure/azure-maps/supported-languages).
+> Pomocí Azure Maps je možné načíst více instancí mapy na stejné stránce s jiným nastavením jazyka a oblasti. Kromě toho je také možné aktualizovat Tato nastavení v mapě po jeho načtení. Podrobný seznam podporovaných jazyků v Azure Maps najdete [tady](./supported-languages.md).
 
 Tady je příklad Azure Maps s jazykem nastaveným na "fr" a oblastí uživatele nastavenou na "fr-FR".
 
@@ -333,8 +333,8 @@ map.setStyle({
 
 **Další materiály**
 
--   [Výběr stylu mapy](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
--   [Podporované styly map](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)
+-   [Výběr stylu mapy](./choose-map-style.md)
+-   [Podporované styly map](./supported-map-styles.md)
 
 ### <a name="adding-a-pushpin"></a>Přidání připínáček
 
@@ -462,16 +462,16 @@ Při použití vrstvy symbolů musí být data přidána ke zdroji dat a zdroji 
 
 **Další materiály**
 
--   [Vytvoření zdroje dat](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [Přidat vrstvu symbolů](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [Přidat bublinovou vrstvu](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [Data bodů clusteru](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [Přidat značky HTML](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [Použití výrazů pro styly založené na datech](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [Možnosti ikony vrstvy symbolů](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [Možnost textu vrstvy symbolu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [Třída značek HTML](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [Možnosti značky HTML](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [Vytvoření zdroje dat](./create-data-source-web-sdk.md)
+-   [Přidat vrstvu symbolů](./map-add-pin.md)
+-   [Přidat bublinovou vrstvu](./map-add-bubble-layer.md)
+-   [Data bodů clusteru](./clustering-point-data-web-sdk.md)
+-   [Přidat značky HTML](./map-add-custom-html.md)
+-   [Použití výrazů pro styly založené na datech](./data-driven-style-expressions-web-sdk.md)
+-   [Možnosti ikony vrstvy symbolů](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [Možnost textu vrstvy symbolu](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [Třída značek HTML](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [Možnosti značky HTML](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-pushpin"></a>Přidání vlastního připínáček
 
@@ -593,14 +593,14 @@ Vrstvy symbolů v Azure Maps podporují i vlastní image, ale image se nejdřív
 
 **Další materiály**
 
--   [Vytvoření zdroje dat](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [Přidat vrstvu symbolů](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [Přidat značky HTML](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [Použití výrazů pro styly založené na datech](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [Možnosti ikony vrstvy symbolů](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [Možnost textu vrstvy symbolu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [Třída značek HTML](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [Možnosti značky HTML](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [Vytvoření zdroje dat](./create-data-source-web-sdk.md)
+-   [Přidat vrstvu symbolů](./map-add-pin.md)
+-   [Přidat značky HTML](./map-add-custom-html.md)
+-   [Použití výrazů pro styly založené na datech](./data-driven-style-expressions-web-sdk.md)
+-   [Možnosti ikony vrstvy symbolů](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [Možnost textu vrstvy symbolu](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [Třída značek HTML](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [Možnosti značky HTML](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>Přidání lomené čáry
 
@@ -668,9 +668,9 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **Další materiály**
 
--   [Přidat řádky do mapy](https://docs.microsoft.com/azure/azure-maps/map-add-line-layer)
--   [Možnosti vrstvy čáry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [Použití výrazů pro styly založené na datech](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Přidat řádky do mapy](./map-add-line-layer.md)
+-   [Možnosti vrstvy čáry](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [Použití výrazů pro styly založené na datech](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>Přidání mnohoúhelníku
 
@@ -744,11 +744,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **Další materiály**
 
--   [Přidat mnohoúhelník k mapě](https://docs.microsoft.com/azure/azure-maps/map-add-shape#use-a-polygon-layer)
--   [Přidání kruhu k mapě](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-circle-to-the-map)
--   [Možnosti vrstvy mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
--   [Možnosti vrstvy čáry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [Použití výrazů pro styly založené na datech](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Přidat mnohoúhelník k mapě](./map-add-shape.md#use-a-polygon-layer)
+-   [Přidání kruhu k mapě](./map-add-shape.md#add-a-circle-to-the-map)
+-   [Možnosti vrstvy mnohoúhelníku](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+-   [Možnosti vrstvy čáry](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [Použití výrazů pro styly založené na datech](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-infobox"></a>Zobrazit Infobox
 
@@ -820,12 +820,12 @@ map.events.add('click', marker, function () {
 
 **Další materiály**
 
--   [Přidání místního okna](https://docs.microsoft.com/azure/azure-maps/map-add-popup)
+-   [Přidání místního okna](./map-add-popup.md)
 -   [Automaticky otevírané okno s mediálním obsahem](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
 -   [Automaticky otevíraná okna v obrazcích](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
 -   [Opakované použití automaticky otevíraného okna s více PIN kódy](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
--   [Automaticky otevíraná třída](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
--   [Možnosti místního okna](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+-   [Automaticky otevíraná třída](/javascript/api/azure-maps-control/atlas.popup)
+-   [Možnosti místního okna](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="pushpin-clustering"></a>Clustering připínáček
 
@@ -935,9 +935,9 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 | Název vlastnosti               | Typ    | Popis                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Indikuje, že funkce představuje cluster.     |
-| `cluster_id`                | string  | Jedinečné ID clusteru, které lze použít se `DataSource` třídami `getClusterExpansionZoom` , `getClusterChildren` a `getClusterLeaves` . |
+| `cluster_id`                | řetězec  | Jedinečné ID clusteru, které lze použít se `DataSource` třídami `getClusterExpansionZoom` , `getClusterChildren` a `getClusterLeaves` . |
 | `point_count`               | číslo  | Počet bodů, které cluster obsahuje.     |
-| `point_count_abbreviated`   | string  | Řetězec, který zkracuje hodnotu, `point_count` Pokud je Long. (například 4 000 se bude 4K) |
+| `point_count_abbreviated`   | řetězec  | Řetězec, který zkracuje hodnotu, `point_count` Pokud je Long. (například 4 000 se bude 4K) |
 
 `DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
@@ -947,7 +947,7 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Vypočítá úroveň přiblížení, kterou cluster začne rozšiřovat nebo se může rozdělovat.    |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | `Promise<Feature<Geometry, any> | Shape>` | Načte všechny body v clusteru. Nastavte, `limit` aby se vracela podmnožina bodů, a použijte `offset` stránku k v bodech.    |
 
-Při vykreslování clusterovaných dat na mapě je často nejjednodušší použít dvě nebo více vrstev. Následující příklad používá tři vrstvy, bublinovou vrstvu pro kreslení barevných paprsků škálované na základě velikosti clusterů, vrstvy symbolů pro vykreslení velikosti clusteru jako textu a druhé vrstvy symbolů pro vykreslování neclusterovaných bodů. Existuje mnoho dalších způsobů, jak vykreslovat data v clusterech v Azure Maps zvýrazněná v dokumentaci k [datům bodu clusteru](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk) .
+Při vykreslování clusterovaných dat na mapě je často nejjednodušší použít dvě nebo více vrstev. Následující příklad používá tři vrstvy, bublinovou vrstvu pro kreslení barevných paprsků škálované na základě velikosti clusterů, vrstvy symbolů pro vykreslení velikosti clusteru jako textu a druhé vrstvy symbolů pro vykreslování neclusterovaných bodů. Existuje mnoho dalších způsobů, jak vykreslovat data v clusterech v Azure Maps zvýrazněná v dokumentaci k [datům bodu clusteru](./clustering-point-data-web-sdk.md) .
 
 Data o úrovni injson je možné přímo importovat v Azure Maps pomocí `importDataFromUrl` funkce `DataSource` třídy.
 
@@ -1051,10 +1051,10 @@ Data o úrovni injson je možné přímo importovat v Azure Maps pomocí `import
 
 **Další materiály**
 
--   [Přidat vrstvu symbolů](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [Přidat bublinovou vrstvu](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [Data bodů clusteru](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [Použití výrazů pro styly založené na datech](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Přidat vrstvu symbolů](./map-add-pin.md)
+-   [Přidat bublinovou vrstvu](./map-add-bubble-layer.md)
+-   [Data bodů clusteru](./clustering-point-data-web-sdk.md)
+-   [Použití výrazů pro styly založené na datech](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>Přidat Heat mapu
 
@@ -1183,10 +1183,10 @@ V Azure Maps načtěte data o úrovni injson do zdroje dat a propojte zdroj dat 
 
 **Další materiály**
 
--   [Přidání vrstvy heat mapy](https://docs.microsoft.com/azure/azure-maps/map-add-heat-map-layer)
--   [Třída vrstvy tepelné mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
--   [Možnosti vrstvy tepelné mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
--   [Použití výrazů pro styly založené na datech](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [Přidání vrstvy heat mapy](./map-add-heat-map-layer.md)
+-   [Třída vrstvy tepelné mapy](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+-   [Možnosti vrstvy tepelné mapy](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+-   [Použití výrazů pro styly založené na datech](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>Překrytí vrstvy dlaždice
 
@@ -1238,9 +1238,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 **Další materiály**
 
--   [Přidání vrstev dlaždic](https://docs.microsoft.com/azure/azure-maps/map-add-tile-layer)
--   [Třída dlaždic vrstev](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
--   [Možnosti vrstvy dlaždic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+-   [Přidání vrstev dlaždic](./map-add-tile-layer.md)
+-   [Třída dlaždic vrstev](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+-   [Možnosti vrstvy dlaždic](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>Zobrazení provozních dat
 
@@ -1284,7 +1284,7 @@ Pokud kliknete na jednu z ikon přenosů v Azure Maps, zobrazí se další infor
 
 **Další materiály**
 
--   [Zobrazit provoz na mapě](https://docs.microsoft.com/azure/azure-maps/map-show-traffic)
+-   [Zobrazit provoz na mapě](./map-show-traffic.md)
 -   [Možnosti překrytí provozu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 -   [Řízení provozu](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
 
@@ -1344,7 +1344,7 @@ Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na n
 V Azure Maps mohou být neodkazované obrázky překryty pomocí `atlas.layer.ImageLayer` třídy. Tato třída vyžaduje adresu URL obrázku a sadu souřadnic pro čtyři rohy obrázku. Bitová kopie musí být hostována buď ve stejné doméně, nebo musí mít povolenou CORs.
 
 > [!TIP]
-> Pokud máte jenom informace o Severní, Jižní, východní, západní a rotační oblasti a ne souřadnice pro každý roh obrázku, můžete použít funkci static [Atlas. Layer. ImageLayer. getCoordinatesFromEdges](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) .
+> Pokud máte jenom informace o Severní, Jižní, východní, západní a rotační oblasti a ne souřadnice pro každý roh obrázku, můžete použít funkci static [Atlas. Layer. ImageLayer. getCoordinatesFromEdges](/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) .
 
 ```html
 <!DOCTYPE html>
@@ -1404,8 +1404,8 @@ V Azure Maps mohou být neodkazované obrázky překryty pomocí `atlas.layer.Im
 
 **Další materiály**
 
--   [Překryv obrázku](https://docs.microsoft.com/azure/azure-maps/map-add-image-layer)
--   [Třída image Layer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+-   [Překryv obrázku](./map-add-image-layer.md)
+-   [Třída image Layer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>Přidání dat KML do mapy
 
@@ -1467,7 +1467,7 @@ Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na n
 
 **Po: Azure Maps**
 
-V Azure Maps je pro informating data ve webové sadě v angličtině hlavní formát dat, další formáty prostorových dat je možné snadno integrovat pomocí [modulu pro prostorové vstupně-výstupní operace](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/). Tento modul obsahuje funkce pro čtení i zápis prostorových dat a také obsahuje jednoduchou datovou vrstvu, která umožňuje snadno vykreslovat data z libovolného z těchto formátů prostorových dat. Chcete-li číst data v souboru prostorových dat, předejte adresu URL nebo nezpracovaná data jako řetězec nebo objekt blob do `atlas.io.read` funkce. Tato akce vrátí všechna Analyzovaná data ze souboru, který lze přidat do mapy. KML je trochu složitější než většina formátů prostorových dat, protože obsahuje mnoho dalších informací o stylu. `SpatialDataLayer`Třída podporuje vykreslování většiny těchto stylů, ale před načtením dat funkce musí být obrázky napřed načteny do mapy a základní překrytí musí být přidány jako vrstvy do mapy samostatně. Při načítání dat prostřednictvím adresy URL by se měla hostovat na koncovém bodu s povoleným CORs nebo by měla být proxy služba předána jako možnost funkce Read.
+V Azure Maps je pro informating data ve webové sadě v angličtině hlavní formát dat, další formáty prostorových dat je možné snadno integrovat pomocí [modulu pro prostorové vstupně-výstupní operace](/javascript/api/azure-maps-spatial-io/). Tento modul obsahuje funkce pro čtení i zápis prostorových dat a také obsahuje jednoduchou datovou vrstvu, která umožňuje snadno vykreslovat data z libovolného z těchto formátů prostorových dat. Chcete-li číst data v souboru prostorových dat, předejte adresu URL nebo nezpracovaná data jako řetězec nebo objekt blob do `atlas.io.read` funkce. Tato akce vrátí všechna Analyzovaná data ze souboru, který lze přidat do mapy. KML je trochu složitější než většina formátů prostorových dat, protože obsahuje mnoho dalších informací o stylu. `SpatialDataLayer`Třída podporuje vykreslování většiny těchto stylů, ale před načtením dat funkce musí být obrázky napřed načteny do mapy a základní překrytí musí být přidány jako vrstvy do mapy samostatně. Při načítání dat prostřednictvím adresy URL by se měla hostovat na koncovém bodu s povoleným CORs nebo by měla být proxy služba předána jako možnost funkce Read.
 
 ```html
 <!DOCTYPE html>
@@ -1564,9 +1564,9 @@ V Azure Maps je pro informating data ve webové sadě v angličtině hlavní for
 
 **Další materiály**
 
--   [Atlas. IO. Read – funkce](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
--   [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
--   [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+-   [Atlas. IO. Read – funkce](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+-   [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+-   [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ### <a name="add-drawing-tools"></a>Přidat nástroje pro kreslení
 
@@ -1683,7 +1683,7 @@ V Azure Maps modul nástrojů pro kreslení musí být načten načtením soubor
 
 **Další materiály**
 
--   [Dokumentace](https://docs.microsoft.com/azure/azure-maps/set-drawing-options)
+-   [Dokumentace](./set-drawing-options.md)
 -   [Ukázky kódu](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
 ## <a name="next-steps"></a>Další kroky
@@ -1703,16 +1703,16 @@ Přečtěte si ukázky kódu související s migrací dalších funkcí map Bing
 **Služby**
 
 > [!div class="nextstepaction"]
-> [Použití modulu služby Azure Maps Services](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [Použití modulu služby Azure Maps Services](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Hledání bodů zájmu](https://docs.microsoft.com/azure/azure-maps/map-search-location)
+> [Hledání bodů zájmu](./map-search-location.md)
 
 > [!div class="nextstepaction"]
-> [Získat informace ze souřadnice (zpětného zobrazení kódu)](https://docs.microsoft.com/azure/azure-maps/map-get-information-from-coordinate)
+> [Získat informace ze souřadnice (zpětného zobrazení kódu)](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazení pokynů pro trasu z A do B](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [Zobrazení pokynů pro trasu z A do B](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Vyhledat automatické návrhy pomocí uživatelského rozhraní JQuery](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
@@ -1729,7 +1729,7 @@ Přečtěte si další informace o Azure Maps Web SDK.
 > [Jak používat modul nástrojů pro kreslení](set-drawing-options.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace k rozhraní API služby Azure Maps Web SDK](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+> [Referenční dokumentace k rozhraní API služby Azure Maps Web SDK](/javascript/api/azure-maps-control/)

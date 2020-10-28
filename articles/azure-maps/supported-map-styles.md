@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4a50a9d6d4a485f7d8e63adb9ae5032f49edc261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310352"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896935"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure Maps podporují předdefinované styly map.
 
@@ -27,8 +27,8 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty. Zobrazuje také přir
 
 **Platná rozhraní API:**
 
-* [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Obrázek mapy](/rest/api/maps/render/getmapimage)
+* [Dlaždice mapy](/rest/api/maps/render/getmaptile)
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
 * Vizuál Power BI
@@ -52,7 +52,7 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty. Zobrazuje také přir
 
 **Platná rozhraní API:**
 
-* [Satelitní dlaždice](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* [Satelitní dlaždice](/rest/api/maps/render/getmapimagerytilepreview)
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
 * Vizuál Power BI
@@ -77,8 +77,8 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 
 **Platná rozhraní API:**
 
-* [Obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Obrázek mapy](/rest/api/maps/render/getmapimage)
+* [Dlaždice mapy](/rest/api/maps/render/getmaptile)
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
 * Vizuál Power BI
@@ -114,7 +114,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 
 **Platná rozhraní API:**
 
-* [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [Dlaždice mapy](/rest/api/maps/render/getmaptile)
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
 * Vizuál Power BI
@@ -134,4 +134,4 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 
 Přečtěte si, jak nastavit styl mapy v Azure Maps:
 
-[Výběr stylu mapy](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+[Výběr stylu mapy](./choose-map-style.md)

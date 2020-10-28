@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3ece62e671caa0838bbf4713c0ad4a74f19fd6cb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518870"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896323"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Kurz – migrace z Google Maps na Azure Maps
 
@@ -28,7 +28,7 @@ Tento článek poskytuje přehledy o tom, jak migrovat webové a mobilní aplika
 
 ## <a name="prerequisites"></a>Předpoklady 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -50,19 +50,19 @@ Tabulka poskytuje seznam Azure Mapsch funkcí, které odpovídají funkcím slu�
 | Matice vzdáleností             | ✓                                      |
 | Zvýšení oprávnění                   | Plánováno                                |
 | Geografické kódování (přesměrné/obrácené) | ✓                                      |
-| Geografická poloha                 | –                                    |
+| Geografická poloha                 | Není k dispozici                                    |
 | Nejbližší silnice               | ✓                                      |
 | Hledání míst               | ✓                                      |
 | Podrobnosti o místech              | Není k dispozici – web & telefonní číslo. |
-| Místo fotek               | –                                    |
+| Místo fotek               | Není k dispozici                                    |
 | Umístit automatické dokončování          | ✓                                      |
 | Přichycení k cestám                | ✓                                      |
 | Omezení rychlosti                | ✓                                      |
 | Statické mapy                 | ✓                                      |
-| Statické zobrazení ulice          | –                                    |
+| Statické zobrazení ulice          | Není k dispozici                                    |
 | Časové pásmo                   | ✓                                      |
-| Rozhraní API pro mapování Embedded           | –                                    |
-| Mapování adres URL                    | –                                    |
+| Rozhraní API pro mapování Embedded           | Není k dispozici                                    |
+| Mapování adres URL                    | Není k dispozici                                    |
 
 Google Maps poskytuje základní ověřování založené na klíčích. Azure Maps poskytuje jak základní ověřování založené na klíčích, tak ověřování Azure Active Directory. Ověřování Azure Active Directory poskytuje více funkcí zabezpečení oproti základnímu ověřování založenému na klíčích.
 
@@ -79,7 +79,7 @@ Tady je několik souvisejících prostředků pro Azure Maps:
 - [Stránka s cenami Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/)
 - [Cenová kalkulačka Azure](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 - [Azure Maps podmínky použití](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (zahrnuté do podmínek služby Microsoft Online Services)
-- [Výběr správné cenové úrovně v Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+- [Výběr správné cenové úrovně v Azure Maps](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>Navrhovaný plán migrace
 
@@ -87,7 +87,7 @@ Následuje plán migrace na vysoké úrovni.
 
 1. Využijte inventarizaci sad SDK a služeb Google Maps, které vaše aplikace používá. Ověřte, že Azure Maps poskytuje alternativní sady SDK a služby.
 2. Pokud ho ještě nemáte, vytvořte si předplatné Azure na adrese [https://azure.com](https://azure.com) .
-3. Vytvořte účet Azure Maps ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) a ověřovací klíč nebo Azure Active Directory ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
+3. Vytvořte účet Azure Maps ([dokumentace](./how-to-manage-account-keys.md)) a ověřovací klíč nebo Azure Active Directory ([dokumentace](./how-to-manage-authentication.md)).
 4. Migrujte kód aplikace.
 5. Otestujte migrovaná aplikace.
 6. Nasaďte migrovaná aplikace do produkčního prostředí.
@@ -96,19 +96,19 @@ Následuje plán migrace na vysoké úrovni.
 
 Pokud chcete vytvořit účet Azure Maps a získat přístup k platformě Azure Maps, postupujte podle těchto kroků:
 
-1. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 2. Přihlaste se na [Azure Portal](https://portal.azure.com/).
-3. Vytvořte [účet Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys). 
-4. [Získejte Azure Maps klíč předplatného](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details) nebo nastavte Azure Active Directory ověřování pro rozšířené zabezpečení.
+3. Vytvořte [účet Azure Maps](./how-to-manage-account-keys.md). 
+4. [Získejte Azure Maps klíč předplatného](./how-to-manage-authentication.md#view-authentication-details) nebo nastavte Azure Active Directory ověřování pro rozšířené zabezpečení.
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps technické prostředky
 
 Tady je seznam užitečných technických prostředků pro Azure Maps.
 
 - Přehled [https://azure.com/maps](https://azure.com/maps)
-- Nápovědě [https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
+- Nápovědě [https://aka.ms/AzureMapsDocs](./index.yml)
 - Ukázky kódu pro web SDK: [https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
-- Fóra pro vývojáře: [https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
+- Fóra pro vývojáře: [https://aka.ms/AzureMapsForums](/answers/topics/azure-maps.html)
 - Videa [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - Webový [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - Technický blog: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
@@ -117,7 +117,7 @@ Tady je seznam užitečných technických prostředků pro Azure Maps.
 
 ## <a name="migration-support"></a>Podpora migrace
 
-Vývojáři můžou vyhledat podporu migrace prostřednictvím [fór](https://aka.ms/AzureMapsForums) nebo pomocí jedné z mnoha možností podpory Azure: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
+Vývojáři můžou vyhledat podporu migrace prostřednictvím [fór](/answers/topics/azure-maps.html) nebo pomocí jedné z mnoha možností podpory Azure: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
 ## <a name="next-steps"></a>Další kroky
 

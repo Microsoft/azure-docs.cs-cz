@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d61cc94ee1b3c5d23135c033b1068aa7411761d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12548b04e5fb967572e17f1be88369b9950661c3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033253"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896289"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Pokrytí Azure Maps mobility
 
-Služba Azure Maps [mobility](https://aka.ms/AzureMapsMobilityService) vylepšuje dobu vývoje pro aplikace s funkcemi veřejného přenosu, jako je například směrování přenosu a hledání v blízkosti veřejného přenosu. Uživatelé můžou získat podrobné informace o zastavení, řádcích a plánech přenosu. Služba mobility taky umožňuje uživatelům načítat geometrií a line, výstrahy na zastávky, řádky a oblasti služeb a oznámení o doručení veřejných dat v reálném čase a upozornění služby. Služba mobility navíc poskytuje možnosti směrování s možnostmi plánování služby Multimodal Trip. Plánování cest Multimodal zahrnuje možnosti procházení, cyklistice a veřejného přenosu, a to vše na jednu cestu. Uživatelé také mohou získat přístup k podrobným Multimodal krok za krokem cesty. 
+Služba Azure Maps [mobility](/rest/api/maps/mobility) vylepšuje dobu vývoje pro aplikace s funkcemi veřejného přenosu, jako je například směrování přenosu a hledání v blízkosti veřejného přenosu. Uživatelé můžou získat podrobné informace o zastavení, řádcích a plánech přenosu. Služba mobility taky umožňuje uživatelům načítat geometrií a line, výstrahy na zastávky, řádky a oblasti služeb a oznámení o doručení veřejných dat v reálném čase a upozornění služby. Služba mobility navíc poskytuje možnosti směrování s možnostmi plánování služby Multimodal Trip. Plánování cest Multimodal zahrnuje možnosti procházení, cyklistice a veřejného přenosu, a to vše na jednu cestu. Uživatelé také mohou získat přístup k podrobným Multimodal krok za krokem cesty. 
 
 Azure Maps neposkytuje stejnou úroveň informací a přesnost pro všechna města a země nebo oblasti. Možnost volat veřejné tranzitní údaje závisí na oblasti metro. Kromě toho data mapy nemusí zahrnovat všechny možnosti veřejných přenosů a organizace, které obsluhují oblast Metro.
 
@@ -159,4 +159,4 @@ Informace o tom, jak vyžádat data v reálném čase pomocí služby mobility:
 Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility
 
 > [!div class="nextstepaction"]
-> [Dokumentace k rozhraní API služby mobility](https://aka.ms/AzureMapsMobilityService)
+> [Dokumentace k rozhraní API služby mobility](/rest/api/maps/mobility)

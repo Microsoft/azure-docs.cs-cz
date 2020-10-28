@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e75edad9f2e473d27d81c73fc784c568c4e404c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888091"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896136"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Vytvoření úlohy streamování dat ve službě Azure SQL Edge 
 
@@ -36,10 +36,10 @@ Pokud se navíc jako výstupní datový proud používá Azure SQL Edge, SQL Ser
 
 Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy a výstupy streamu.
 
-| Typ zdroje dat | Vstup | Výstup | Description |
+| Typ zdroje dat | Vstup | Výstup | Popis |
 |------------------|-------|--------|------------------|
 | Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| SQL Database | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| Databáze SQL | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
 | Kafka | Y | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je v tuto chvíli dostupný jenom pro verze Intel nebo AMD serveru Azure SQL Edge. Není k dispozici pro verzi ARM64 serveru Azure SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Příklad: vytvoření objektu vstupu/výstupu externího datového proudu pro Azure IoT Edge hub
@@ -103,7 +103,7 @@ Následující příklad vytvoří objekt externího datového proudu pro místn
 
 3. Vytvořte externí zdroj dat pomocí vytvoření externího zdroje dat. Následující příklad:
 
-    * Vytvoří externí zdroj dat s názvem *LocalSQLOutput*.
+    * Vytvoří externí zdroj dat s názvem *LocalSQLOutput* .
     * Určuje externí zdroj dat (umístění = ' <vendor> :// <server> [: <port> ] '). V tomto příkladu odkazuje na místní instanci Azure SQL Edge.
     * Používá dříve vytvořené přihlašovací údaje.
 
@@ -117,7 +117,7 @@ Následující příklad vytvoří objekt externího datového proudu pro místn
     go
     ```
 
-4. Vytvořte objekt externího streamu. Následující příklad vytvoří objekt externího datového proudu odkazující na tabulku *dbo. TemperatureMeasurements*v *MySQLDatabase*databáze.
+4. Vytvořte objekt externího streamu. Následující příklad vytvoří objekt externího datového proudu odkazující na tabulku *dbo. TemperatureMeasurements* v *MySQLDatabase* databáze.
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -233,7 +233,8 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 (
        (
        name nvarchar(256),
-       status nvarchar(256)
+       status nvarchar(256),
+       error nvarchar(256)
        )
 )
 ```

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f72c255ddac1889131234fefd7d6b014b453d417
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441721"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896102"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Samoobslužná registrace pro spolupráci služby Azure AD B2B
 
@@ -33,5 +33,5 @@ Organizace můžou používat [rozhraní API pro Microsoft Graph pro správce po
 ## <a name="next-steps"></a>Další kroky
 
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-* [Licencování spolupráce B2B ve službě Azure AD](licensing-guidance.md)
+* [Externí identity – ceny](external-identities-pricing.md)
 * [Nejčastější dotazy týkající se spolupráce Azure Active Directory s B2B](faq.md)

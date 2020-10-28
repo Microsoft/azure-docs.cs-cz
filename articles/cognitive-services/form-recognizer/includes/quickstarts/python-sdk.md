@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: a9aa51e46595c7c65b1f83776eb72caca13e0180
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5ff9c95e51f63de77ca20dee965718687daae5f4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755805"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897746"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -109,10 +109,12 @@ Budete muset přidat odkazy na adresy URL pro školení a testování dat.
 
 Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model.
 
-Pro rozpoznání obsahu souboru v dané adrese URL použijte `begin_recognize_content` metodu. Vrácená hodnota je kolekce `FormPage` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód projde tyto objekty a vytiskne extrahované páry klíč/hodnota a data tabulky.
+Pro rozpoznání obsahu souboru v dané adrese URL použijte `begin_recognize_content_from_url` metodu. Vrácená hodnota je kolekce `FormPage` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód projde tyto objekty a vytiskne extrahované páry klíč/hodnota a data tabulky.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_getcontent)]
 
+> [!TIP]
+> Můžete také získat obsah z místních imagí. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_content` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -144,6 +146,8 @@ V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příj
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
 
+> [!TIP]
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_receipts` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -272,6 +276,9 @@ Použijete `begin_recognize_custom_forms_from_url` metodu. Vrácená hodnota je 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_analyze)]
 
+> [!TIP]
+> Můžete také analyzovat místní image. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) , jako je například `begin_recognize_custom_forms` . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) , kde najdete scénáře týkající se místních imagí.
+
 
 ### <a name="output"></a>Výstup
 
@@ -379,7 +386,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 
 Klientská knihovna pro rozpoznávání formulářů vyvolá výjimky definované v [Azure Core](https://aka.ms/azsdk-python-azure-core).
 
-### <a name="logging"></a>protokolování
+### <a name="logging"></a>Protokolování
 
 Tato knihovna používá [standardní knihovnu protokolování](https://docs.python.org/3/library/logging.html) pro protokolování. Základní informace o relacích HTTP (adresy URL, hlavičky atd.) se zaznamenávají na úrovni informací.
 

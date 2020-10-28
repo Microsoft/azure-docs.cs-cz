@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310182"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896918"
 ---
 # <a name="web-sdk-supported-browsers"></a>Podporované prohlížeče pro sadu Web SDK
 
-Sada Azure Maps Web SDK poskytuje pomocnou funkci nazvanou [Atlas. podporuje](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-). Tato funkce zjistí, zda má webový prohlížeč minimální sadu funkcí WebGL potřebných pro podporu načítání a vykreslování mapového ovládacího prvku. Tady je příklad použití funkce:
+Sada Azure Maps Web SDK poskytuje pomocnou funkci nazvanou [Atlas. podporuje](/javascript/api/azure-maps-control/atlas#issupported-boolean-). Tato funkce zjistí, zda má webový prohlížeč minimální sadu funkcí WebGL potřebných pro podporu načítání a vykreslování mapového ovládacího prvku. Tady je příklad použití funkce:
 
 ```JavaScript
 if (!atlas.isSupported()) {

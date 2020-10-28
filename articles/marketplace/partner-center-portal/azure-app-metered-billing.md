@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 52ae961a813b6d14592953fdf8662cbaecf662e1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b82478338603750a76718da956d74e23d242692e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280455"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896530"
 ---
 # <a name="managed-application-metered-billing"></a>Spravovaná fakturace podle objemu spravované aplikace 
 
@@ -56,11 +56,11 @@ Zákazník Azure, který se přihlásí k odběru služby CoA, může analyzovat
 
 Fakturační dimenze se používají ke komunikaci se zákazníkem podle toho, jak se budou fakturovat za použití softwaru.  Tyto dimenze se také používají ke komunikaci mezi událostmi využití společnosti Microsoft. Jsou definovány takto:
 
-* **Identifikátor dimenze**: neproměnlivý identifikátor, na který se odkazuje při generování událostí využití.
-* **Název dimenze**: zobrazovaný název přidružený k dimenzi, například "odeslané textové zprávy".
-* Měrná **jednotka**: Popis fakturační jednotky, například zpráva "na textovou zprávu" nebo "za 100 e-mailů".
-* **Cena za jednotku**: cena za jednu jednotku dimenze.
-* **Zahrnuté množství pro měsíční podmínky**: Počet zahrnutých dimenzí za měsíc pro zákazníky, kteří platí pro opakovaný měsíční poplatek, musí být celé číslo.
+* **Identifikátor dimenze** : neproměnlivý identifikátor, na který se odkazuje při generování událostí využití.
+* **Název dimenze** : zobrazovaný název přidružený k dimenzi, například "odeslané textové zprávy".
+* Měrná **jednotka** : Popis fakturační jednotky, například zpráva "na textovou zprávu" nebo "za 100 e-mailů".
+* **Cena za jednotku** : cena za jednu jednotku dimenze.
+* **Zahrnuté množství pro měsíční podmínky** : Počet zahrnutých dimenzí za měsíc pro zákazníky, kteří platí pro opakovaný měsíční poplatek, musí být celé číslo.
 
 Fakturační dimenze se sdílejí napříč všemi plány nabídky. Některé atributy platí pro dimenzi napříč všemi plány a další atributy jsou specifické pro plán.
 
@@ -79,7 +79,7 @@ Ostatní atributy dimenze jsou specifické pro každý plán a můžou mít růz
 Dimenze mají také dvě speciální pojmy "povolené" a "nekonečné":
 
 * **Povoleno** znamená, že se tento plán účastní v této dimenzi.  Tuto možnost můžete nechat beze změny zrušit, pokud vytváříte nový plán, který neposílá události využití založené na této dimenzi. Také všechny nové dimenze přidané po prvním publikování plánu budou v již publikovaném plánu zobrazovat stav "Nepovoleno".  Zakázaná dimenze se nezobrazí v žádných seznamech dimenzí pro plán, který si zákazníci uvidí.
-* **Nekonečno**, reprezentované symbolem nekonečno "∞", označuje, že se tento plán účastní v této dimenzi, bez měření využití na tuto dimenzi. Pokud chcete zákazníkům označovat, že funkce reprezentované touto dimenzí jsou zahrnuté v plánu, ale bez omezení využití.  Dimenze s nekonečným využitím se zobrazí v seznamech dimenzí pro plán, který si zákazníci uvidí.  Tento plán se nikdy nebude účtovat.
+* **Nekonečno** , reprezentované symbolem nekonečno "∞", označuje, že se tento plán účastní v této dimenzi, bez měření využití na tuto dimenzi. Pokud chcete zákazníkům označovat, že funkce reprezentované touto dimenzí jsou zahrnuté v plánu, ale bez omezení využití.  Dimenze s nekonečným využitím se zobrazí v seznamech dimenzí pro plán, který si zákazníci uvidí.  Tento plán se nikdy nebude účtovat.
 
 >[!Note] 
 >Následující scénáře jsou explicitně podporovány:  <br> – Novou dimenzi můžete přidat do nového plánu.  Nová dimenze nebude povolena pro žádné z již publikovaných plánů. <br> – Plán můžete publikovat s pevným měsíčním poplatkem a bez dimenzí a pak přidat nový plán a nakonfigurovat novou dimenzi pro tento plán. Nová dimenze nebude povolena pro již publikované plány.
@@ -107,7 +107,7 @@ Po publikování plánu se podrobnosti na úrovni plánu už nedají změnit:
 
 ### <a name="upper-limits"></a>Horní meze
 
-Maximální počet dimenzí, které lze konfigurovat pro jednu nabídku, je 18 jedinečných dimenzí.
+Maximální počet dimenzí, které lze konfigurovat pro jednu nabídku, je 30 jedinečných dimenzí.
 
 ## <a name="get-support"></a>Získání podpory
 

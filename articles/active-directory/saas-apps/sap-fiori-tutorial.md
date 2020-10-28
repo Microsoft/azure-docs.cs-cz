@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: b1776518816a9b01ce803edfb39e147136dba08d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675454"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897292"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí SAP Fiori
 
@@ -272,11 +272,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     1. V části SAP v části **Podrobnosti o formátu NameId "Neurčeno"** si všimněte podrobností:
 
-        ![Dialogové okno Podrobnosti o nespecifikovaném formátu NameID v SAP](./media/sapfiori-tutorial/nameiddetails.png)
+        ![Snímek obrazovky, který zobrazuje dialogové okno Podrobnosti o nespecifikovaném formátu NameID v S A P](./media/sapfiori-tutorial/nameiddetails.png)
 
     1. V Azure Portal si v části **atributy uživatelů & deklarace identity** poznamenejte požadované deklarace identity z Azure AD.
 
-        ![Dialogové okno atributy uživatele & deklarace v Azure Portal](./media/sapfiori-tutorial/claimsaad1.png)
+        ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele & deklarace identity.](./media/sapfiori-tutorial/claimsaad1.png)
 
     **Scénář 2** : vyberte ID uživatele SAP na základě konfigurované e-mailové adresy v SU01. V takovém případě by se mělo ID e-mailu nakonfigurovat v SU01 pro každého uživatele, který vyžaduje jednotné přihlašování.
 
@@ -316,7 +316,7 @@ V této části vytvoříte uživatele s názvem Britta Simon v SAP Fiori. Pokud
 
 1. Pokud se zobrazí výzva k zadání uživatelského jména a hesla, povolte trasování, které vám pomůžou problém diagnostikovat. Pro trasování použijte následující adresu URL: https: \/ / \<sapurl\> /SAP/BC/WebDynpro/SAP/sec_diag_tool? SAP-Client = 122&SAP-Language = en #.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

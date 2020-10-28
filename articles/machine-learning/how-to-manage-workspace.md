@@ -10,15 +10,14 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 733a5c899e72809d979dfeeb60e4157c0d587bcf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633701"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897156"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning 
-
 
 V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning pracovní prostory**](concept-workspace.md) pro [Azure Machine Learning](overview-what-is-azure-ml.md)pomocí Azure Portal nebo [sady SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) .
 
@@ -33,48 +32,82 @@ Jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete tak�
 
 # <a name="python"></a>[Python](#tab/python)
 
-Tento první příklad vyžaduje jenom minimální specifikaci a všechny závislé prostředky, stejně jako skupina prostředků, se vytvoří automaticky.
+* **Výchozí specifikace.** Ve výchozím nastavení se automaticky vytvoří závislé prostředky i skupina prostředků. Tento kód vytvoří pracovní prostor s názvem `myworkspace` a skupinu prostředků s názvem `myresourcegroup` v `eastus2` .
+    
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.create(name='myworkspace',
+                   subscription_id='<azure-subscription-id>',
+                   resource_group='myresourcegroup',
+                   create_resource_group=True,
+                   location='eastus2'
+                   )
+    ```
+    Nastavte `create_resource_group` na hodnotu false, pokud máte existující skupinu prostředků Azure, kterou chcete použít pro pracovní prostor.
 
-```python
-from azureml.core import Workspace
-   ws = Workspace.create(name='myworkspace',
-               subscription_id='<azure-subscription-id>',
-               resource_group='myresourcegroup',
-               create_resource_group=True,
-               location='eastus2'
-               )
-```
-Nastavte `create_resource_group` na hodnotu false, pokud máte existující skupinu prostředků Azure, kterou chcete použít pro pracovní prostor.
+* <a name="create-multi-tenant"></a>**Více tenantů.**  Pokud máte více účtů, přidejte ID tenanta Azure Active Directory, který chcete použít.  Vyhledejte ID tenanta z [Azure Portal](https://portal.azure.com) v části **Azure Active Directory, externí identity** .
 
-Můžete také vytvořit pracovní prostor, který používá existující prostředky Azure s formátem ID prostředku Azure. V Azure Portal nebo v sadě SDK najdete konkrétní ID prostředků Azure. Tento příklad předpokládá, že skupina prostředků, účet úložiště, Trezor klíčů, App Insights a Registry kontejneru již existují.
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
 
-```python
-import os
+* **[Svrchovaný Cloud](reference-machine-learning-cloud-parity.md)** . Pokud pracujete v rámci svrchovaného cloudu, budete potřebovat další kód pro ověření v Azure.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
+
+* **Použijte existující prostředky Azure** .  Můžete také vytvořit pracovní prostor, který používá existující prostředky Azure s formátem ID prostředku Azure. V Azure Portal nebo v sadě SDK najdete konkrétní ID prostředků Azure. Tento příklad předpokládá, že skupina prostředků, účet úložiště, Trezor klíčů, App Insights a Registry kontejneru již existují.
+
+   ```python
+   import os
    from azureml.core import Workspace
    from azureml.core.authentication import ServicePrincipalAuthentication
 
    service_principal_password = os.environ.get("AZUREML_PASSWORD")
 
    service_principal_auth = ServicePrincipalAuthentication(
-       tenant_id="<tenant-id>",
-       username="<application-id>",
-       password=service_principal_password)
+      tenant_id="<tenant-id>",
+      username="<application-id>",
+      password=service_principal_password)
 
-   ws = Workspace.create(name='myworkspace',
-                         auth=service_principal_auth,
-                         subscription_id='<azure-subscription-id>',
-                         resource_group='myresourcegroup',
-                         create_resource_group=False,
-                         location='eastus2',
-                         friendly_name='My workspace',
-                         storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
-                         key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
-                         app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
-                         container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
-                         exist_ok=False)
-```
+                        auth=service_principal_auth,
+                             subscription_id='<azure-subscription-id>',
+                             resource_group='myresourcegroup',
+                             create_resource_group=False,
+                             location='eastus2',
+                             friendly_name='My workspace',
+                             storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
+                             key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
+                             app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
+                             container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
+                             exist_ok=False)
+   ```
 
-Další informace najdete v tématu [referenční informace k sadě SDK pracovního prostoru](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)
+Další informace najdete v tématu [referenční informace k sadě SDK pracovního prostoru](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true).
+
+Pokud máte problémy s přístupem k předplatnému, přečtěte si téma [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy a](how-to-setup-authentication.md)také [ověřování v](https://aka.ms/aml-notebook-auth) poznámkovém bloku Azure Machine Learning.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -237,6 +270,37 @@ Pokud máte v úmyslu používat v místním prostředí kód, který odkazuje n
 
 Soubor umístěte do struktury adresáře pomocí skriptů Pythonu nebo poznámkových bloků Jupyter. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML* nebo v nadřazeném adresáři. Při vytváření výpočetní instance se tento soubor přidá do správného adresáře na virtuálním počítači za vás.
 
+## <a name="connect-to-a-workspace"></a>Připojení k pracovnímu prostoru
+
+V kódu Pythonu vytvoříte objekt pracovního prostoru pro připojení k vašemu pracovnímu prostoru.  Tento kód přečte obsah konfiguračního souboru a zjistí váš pracovní prostor.  Zobrazí se výzva, abyste se přihlásili, pokud ještě nejste ověřeni.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+* <a name="connect-multi-tenant"></a>**Více tenantů.**  Pokud máte více účtů, přidejte ID tenanta Azure Active Directory, který chcete použít.  Vyhledejte ID tenanta z [Azure Portal](https://portal.azure.com) v části **Azure Active Directory, externí identity** .
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+
+* **[Svrchovaný Cloud](reference-machine-learning-cloud-parity.md)** . Pokud pracujete v rámci svrchovaného cloudu, budete potřebovat další kód pro ověření v Azure.
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+    
+Pokud máte problémy s přístupem k předplatnému, přečtěte si téma [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy a](how-to-setup-authentication.md)také [ověřování v](https://aka.ms/aml-notebook-auth) poznámkovém bloku Azure Machine Learning.
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Najít pracovní prostor
 
@@ -254,7 +318,7 @@ Workspace.list('<subscription-id>')
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. Do pole nejvyšší hledání zadejte **Machine Learning** .  
 

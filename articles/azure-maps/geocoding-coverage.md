@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037435"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897207"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps pokrytí geografické kódování
 
-Služba Azure Maps [Search](https://docs.microsoft.com/rest/api/maps/search) podporuje geografické kódování, což znamená, že vaše žádost o rozhraní API může mít hledané výrazy, jako je adresa nebo název místa, a výsledek vrátí jako souřadnice zeměpisné šířky a délky. Například [rozhraní API pro hledání adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) v Azure Maps obdrží dotazy, které obsahují informace o poloze, a vrátí výsledky jako souřadnice zeměpisné šířky a délky.
+Služba Azure Maps [Search](/rest/api/maps/search) podporuje geografické kódování, což znamená, že vaše žádost o rozhraní API může mít hledané výrazy, jako je adresa nebo název místa, a výsledek vrátí jako souřadnice zeměpisné šířky a délky. Například [rozhraní API pro hledání adres](/rest/api/maps/search/getsearchaddress) v Azure Maps obdrží dotazy, které obsahují informace o poloze, a vrátí výsledky jako souřadnice zeměpisné šířky a délky.
 
-[Služba Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search) však nemá stejnou úroveň informací a přesnost pro všechny oblasti a země. V tomto článku zjistíte, jaký druh umístění můžete spolehlivě Hledat v každé oblasti.
+[Služba Azure Maps Search](/rest/api/maps/search) však nemá stejnou úroveň informací a přesnost pro všechny oblasti a země. V tomto článku zjistíte, jaký druh umístění můžete spolehlivě Hledat v každé oblasti.
 
 Schopnost geografického kódu v zemi nebo oblasti závisí na rozsahu dat a přesnosti geografického kódování ve službě geografické kódování. Následující kategorizace se používají k určení úrovně podpory geografického kódování v každé zemi nebo oblasti.
 
@@ -301,4 +301,4 @@ Schopnost geografického kódu v zemi nebo oblasti závisí na rozsahu dat a př
 
 Další informace o Azure Maps geografické kódování:
 > [!div class="nextstepaction"]
-> [Služba Azure Maps Search](https://docs.microsoft.com/rest/api/maps/search)
+> [Služba Azure Maps Search](/rest/api/maps/search)

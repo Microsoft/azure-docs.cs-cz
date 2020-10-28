@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119306"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896986"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Kurz: použití podmínky v šablonách ARM
 
@@ -37,7 +37,7 @@ Tento kurz se zabývá pouze základním scénářem použití podmínek. Dalš�
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -54,7 +54,7 @@ K dokončení tohoto článku potřebujete:
 
 Šablony pro rychlý Start Azure jsou úložiště pro šablony ARM. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows).
 
-1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor**.
+1. Z Visual Studio Code vyberte **soubor** > **otevřít soubor** .
 1. Do pole **File name** (Název souboru) vložte následující adresu URL:
 
     ```url
@@ -73,22 +73,22 @@ K dokončení tohoto článku potřebujete:
 
     Před přizpůsobením šablony je vhodné si projít odkaz na šablonu.
 
-1. Vyberte **soubor** > **Uložit jako** a uložte kopii souboru do místního počítače s názvem **azuredeploy.js**.
+1. Vyberte **soubor** > **Uložit jako** a uložte kopii souboru do místního počítače s názvem **azuredeploy.js** .
 
 ## <a name="modify-the-template"></a>Úprava šablony
 
 Ve stávající šabloně proveďte dvě změny:
 
 * Přidejte parametr názvu účtu úložiště. Uživatelé můžou zadat buď název nového účtu úložiště, nebo název existujícího účtu úložiště.
-* Přidejte nový parametr **newOrExisting**. Nasazení používá tento parametr k určení toho, jestli se má vytvořit nový účet úložiště, nebo použít existující účet úložiště.
+* Přidejte nový parametr **newOrExisting** . Nasazení používá tento parametr k určení toho, jestli se má vytvořit nový účet úložiště, nebo použít existující účet úložiště.
 
 Tady je postup, jak tyto změny provést:
 
-1. Ve Visual Studio Code otevřete soubor **azuredeploy.json**.
+1. Ve Visual Studio Code otevřete soubor **azuredeploy.json** .
 1. Nahraďte tři **proměnné (' storageAccountName ')** **parametry (' storageAccountName ')** v celé šabloně.
 1. Odeberte definici následující proměnné:
 
-    ![Diagram podmínky použití šablony Správce prostředků](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![Snímek obrazovky, který zvýrazní definice proměnných, které je třeba odebrat.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. Do začátku oddílu Parameters přidejte následující dva parametry:
 
@@ -117,11 +117,11 @@ Tady je postup, jak tyto změny provést:
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    Podmínka zkontroluje hodnotu parametru **newOrExisting**. Pokud je hodnota parametru **new**, nasazení vytvoří účet úložiště.
+    Podmínka zkontroluje hodnotu parametru **newOrExisting** . Pokud je hodnota parametru **new** , nasazení vytvoří účet úložiště.
 
     Aktualizovaná definice účtu úložiště vypadá takto:
 
-    ![Resource Manager – použití podmínky](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+    ![Snímek obrazovky zobrazující aktualizovanou definici účtu úložiště](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
 1. Aktualizujte vlastnost **storageUri** definice prostředku virtuálního počítače na následující hodnotu:
 
     ```json
@@ -140,7 +140,7 @@ Tady je postup, jak tyto změny provést:
 
     ![Azure Portal Cloud Shell nahrát soubor](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**. Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
+1. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát** . Viz předchozí snímek obrazovky. Vyberte soubor, který jste uložili v předchozí části. Po nahrání souboru můžete pomocí příkazu **ls** a příkazu **Cat** ověřit, jestli se soubor úspěšně nahrál.
 
 1. Spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
 
@@ -172,13 +172,13 @@ Tady je postup, jak tyto změny provést:
     ```
 
     > [!NOTE]
-    > Pokud má parametr **newOrExisting** hodnotu **new**, ale účet úložiště se zadaným názvem již existuje, nasazení selže.
+    > Pokud má parametr **newOrExisting** hodnotu **new** , ale účet úložiště se zadaným názvem již existuje, nasazení selže.
 
 Zkuste provést jiné nasazení s **newOrExisting** nastavenou na "existující" a zadat existující účet úložiště. Pokud chcete vytvořit účet úložiště předem, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Pokud chcete odstranit skupinu prostředků, vyberte **zkusit** pro otevření Cloud Shell. Skript PowerShellu vložíte tak, že kliknete pravým tlačítkem na podokno prostředí a pak vyberete **Vložit**.
+Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Pokud chcete odstranit skupinu prostředků, vyberte **zkusit** pro otevření Cloud Shell. Skript PowerShellu vložíte tak, že kliknete pravým tlačítkem na podokno prostředí a pak vyberete **Vložit** .
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: jeedes
-ms.openlocfilehash: feb65d11c525b396e272c8a43ad9619d10a010d8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9b244d5e6aa9dd732aa670fd645b6bbc266c9535
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671196"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897275"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Kurz: Azure Active Directory integrace jednotného přihlašování s SAP cloudem pro zákazníky
 
@@ -86,13 +86,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Aplikace SAP Cloud for Customer očekává kontrolní výrazy SAML v konkrétním formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele se zvolenou ikonou upravit](common/edit-attribute.png)
 
 1. V části **atributy uživatele** v dialogovém okně **atributy uživatele & deklarací** proveďte následující kroky:
 
     a. Kliknutím na **ikonu Upravit** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
+    ![Snímek obrazovky, který zobrazuje "atributy uživatele & deklarací identity" s vybranou ikonou "Upravit".](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
@@ -149,11 +149,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. V levé části nabídky klikněte na **poskytovatelé identit**  >  **podnikové identity**  >  **Přidat** a v automaticky otevíraném okně Přidat název zprostředkovatele identity, jako je **Azure AD** , klikněte na **Uložit** a pak klikněte na **Konfigurace SAML 2,0** .
 
-    ![Konfigurace SAP](./media/sap-customer-cloud-tutorial/configure01.png)
+    ![Snímek obrazovky zobrazující stránku zprostředkovatelé identit se zvýrazněným dialogovým oknem přidat zprostředkovatele identity a vybraným tlačítkem Uložit.](./media/sap-customer-cloud-tutorial/configure01.png)
 
 3. V části **Konfigurace SAML 2,0** proveďte následující kroky:
 
-    ![Konfigurace SAP](./media/sap-customer-cloud-tutorial/configure02.png)
+    ![Snímek obrazovky zobrazující konfiguraci S A M L 2,0 s vybraným tlačítkem Procházet.](./media/sap-customer-cloud-tutorial/configure02.png)
 
     a. Klikněte na **Procházet** a nahrajte soubor XML federačních metadat, který jste stáhli z Azure Portal.
 
@@ -169,7 +169,7 @@ Aby se uživatelé Azure AD mohli přihlašovat ke službě SAP Cloud pro zákaz
 
 2. Na levé straně nabídky klikněte na **uživatele & autorizaci**  >  **Správa uživatelů**  >  **Přidat uživatele** .
 
-    ![Konfigurace SAP](./media/sap-customer-cloud-tutorial/configure03.png)
+    ![Snímek obrazovky zobrazující stránku Správa uživatelů s vybraným tlačítkem Přidat uživatele](./media/sap-customer-cloud-tutorial/configure03.png)
 
 3. V části **Přidat nového uživatele** proveďte následující kroky:
 
@@ -193,7 +193,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici SAP Cloud for Customer na přístupovém panelu byste měli být automaticky přihlášení ke cloudu SAP pro zákazníka, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

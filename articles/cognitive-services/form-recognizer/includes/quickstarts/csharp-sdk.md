@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 06b56566108bb482109d02d8d4f9db66dc2a6995
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9e0bdbc9cc197deb5028848731f031ff19d5ebf7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755554"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897727"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -91,6 +91,9 @@ Do třídy **programu** aplikace vytvořte proměnné pro klíč a koncový bod 
 
 V metodě **Main** aplikace přidejte volání asynchronního úkolu, který se používá v rámci tohoto rychlého startu. Později ji budete implementovat.
 
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+
+
 ## <a name="object-model"></a>Objektový model 
 
 Pomocí nástroje pro rozpoznávání formulářů můžete vytvořit dva různé typy klientů. První `FormRecognizerClient` slouží k dotazování služby na rozpoznaná pole a obsah formuláře. Druhá možnost slouží `FormTrainingClient` k vytváření a správě vlastních modelů, které můžete použít ke zlepšení rozpoznávání. 
@@ -143,16 +146,11 @@ Pod **Hlavní** vytvořte novou metodu s názvem `AuthenticateClient` . Tento po
 
 ## <a name="get-assets-for-testing"></a>Získat prostředky pro testování 
 
-Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Pokud místo toho chcete zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) a [ukázkách](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
-
 Také budete muset přidat odkazy na adresy URL pro školení a testování dat. Přidejte je do kořenové složky vaší třídy **programu** .
 
 * Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis** . Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit** . Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Pak použijte výše uvedené kroky a získejte adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB.
 * Nakonec uložte adresu URL ukázkového snímku oznámení, který je zahrnutý v následujících ukázkách (k dispozici také na [GitHubu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms). 
-
-> [!NOTE]
-> Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Chcete-li místo toho zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
 
@@ -161,9 +159,12 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 
 Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model. Vrácená hodnota je kolekce objektů **FormPage** : jedna pro každou stránku v odeslaném dokumentu. 
 
-Pro rozpoznání obsahu souboru v daném identifikátoru URI použijte `StartRecognizeContentFromUri` metodu.
+Pro rozpoznání obsahu souboru v dané adrese URL použijte `StartRecognizeContentFromUri` metodu.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
+
+> [!TIP]
+> Můžete také získat obsah z místního souboru. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeContent** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Zbývající část tohoto úkolu vytiskne informace o obsahu do konzoly.
 
@@ -208,10 +209,12 @@ Table 0 has 2 rows and 6 columns.
 
 V této části se dozvíte, jak rozpoznat a extrahovat společná pole z příjmů z USA pomocí předem připraveného modelu příjemů.
 
-Chcete-li rozpoznat potvrzení z identifikátoru URI, použijte `StartRecognizeReceiptsFromUri` metodu. 
+Chcete-li rozpoznat účtenky z adresy URL, použijte `StartRecognizeReceiptsFromUri` metodu. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
+> [!TIP]
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeReceipts** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
 
 Vrácená hodnota je kolekce `RecognizedReceipt` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód zpracuje příjem na daném identifikátoru URI a vytiskne hlavní pole a hodnoty do konzoly.
 
@@ -401,12 +404,14 @@ V této části se dozvíte, jak extrahovat informace o klíčích a hodnotách 
 > [!IMPORTANT]
 > Aby bylo možné tento scénář implementovat, je nutné již vyškolet model, abyste mohli předat jeho ID do níže uvedené metody.
 
-Použijete `StartRecognizeCustomFormsFromUri` metodu. Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou stránku v odeslaném dokumentu. 
-
+Použijete `StartRecognizeCustomFormsFromUri` metodu. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
-Následující kód vytiskne výsledky analýzy do konzoly. Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
+> [!TIP]
+> Můžete také analyzovat místní soubor. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) , jako je například **StartRecognizeCustomForms** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) , kde najdete scénáře týkající se místních imagí.
+
+Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou stránku v odeslaném dokumentu. Následující kód vytiskne výsledky analýzy do konzoly. Vytiskne všechna rozpoznaná pole a odpovídající hodnotu spolu s hodnocením spolehlivosti.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
 

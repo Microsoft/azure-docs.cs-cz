@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321692"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896656"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Kurz: hledání okolních bodů zájmu pomocí Azure Maps
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 <a id="createaccount"></a>
 <a id="getkey"></a>
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 2. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -41,7 +41,7 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 
 Rozhraní Ovládací prvek Mapa API je praktická Klientská knihovna. Toto rozhraní API umožňuje snadno integrovat mapy do vaší webové aplikace. Skrývá složitost úplného volání služby REST a zvyšuje produktivitu díky přizpůsobitelným součástem. Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
 
-1. Na místním počítači vytvořte nový soubor s názvem **MapSearch.html**.
+1. Na místním počítači vytvořte nový soubor s názvem **MapSearch.html** .
 2. Přidejte do souboru následující součásti HTML:
 
    ```HTML
@@ -139,7 +139,7 @@ Rozhraní Ovládací prvek Mapa API je praktická Klientská knihovna. Toto rozh
 
 ## <a name="add-search-capabilities"></a>Přidání možností vyhledávání
 
-V této části se dozvíte, jak pomocí [rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/maps/search) map najít na mapě bod zájmu. Jedná se o rozhraní RESTful API navržené pro vývojáře, kterým umožňuje hledat adresy, body zájmu a další geografické informace. Služba Search přiřazuje k zadané adrese informace o zeměpisné délce a šířce. **Modul služeb** popsaný dál slouží k vyhledání polohy pomocí rozhraní API Maps Search.
+V této části se dozvíte, jak pomocí [rozhraní API pro vyhledávání](/rest/api/maps/search) map najít na mapě bod zájmu. Jedná se o rozhraní RESTful API navržené pro vývojáře, kterým umožňuje hledat adresy, body zájmu a další geografické informace. Služba Search přiřazuje k zadané adrese informace o zeměpisné délce a šířce. **Modul služeb** popsaný dál slouží k vyhledání polohy pomocí rozhraní API Maps Search.
 
 ### <a name="service-module"></a>Modul služeb
 
@@ -156,7 +156,7 @@ V této části se dozvíte, jak pomocí [rozhraní API pro vyhledávání](http
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   `SubscriptionKeyCredential`Vytvoří a `SubscriptionKeyCredentialPolicy` OVĚŘÍ požadavky HTTP, které se mají Azure Maps pomocí klíče předplatného. `atlas.service.MapsURL.newPipeline()`Zásada převezme `SubscriptionKeyCredential` a vytvoří instanci [kanálu](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline) . `searchURL`Představuje adresu URL pro Azure Maps [vyhledávacích](https://docs.microsoft.com/rest/api/maps/search) operací.
+   `SubscriptionKeyCredential`Vytvoří a `SubscriptionKeyCredentialPolicy` OVĚŘÍ požadavky HTTP, které se mají Azure Maps pomocí klíče předplatného. `atlas.service.MapsURL.newPipeline()`Zásada převezme `SubscriptionKeyCredential` a vytvoří instanci [kanálu](/javascript/api/azure-maps-rest/atlas.service.pipeline) . `searchURL`Představuje adresu URL pro Azure Maps [vyhledávacích](/rest/api/maps/search) operací.
 
 2. Dále přidejte následující blok skriptu pro sestavení vyhledávacího dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, jako jsou adresy, místa a body zájmu. Tento kód vyhledá okolí benzinových stanic v rámci zadaného poloměru poskytnuté zeměpisné šířky a délky. Kolekce funkcí pro injson z odpovědi je pak extrahována pomocí `geojson.getFeatures()` metody a přidána do zdroje dat, což automaticky vede k vykreslování dat na mapě prostřednictvím vrstvy symbolů. Poslední část skriptu pomocí vlastnosti mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) nastaví zobrazení kamery mapy s použitím ohraničujícího rámečku výsledků.
 

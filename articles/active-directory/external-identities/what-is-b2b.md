@@ -12,19 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7104040e73679b6563b02aba47698b8eac2b7a56
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d10eb3334154f4915aa0bddd488ddc78bde06805
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441381"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897258"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
 Spolupráce B2B (Business-to-Business) Azure Active Directory (Azure AD) je funkce v rámci externích identit, která umožňuje pozvat uživatele typu Host, aby mohli spolupracovat s vaší organizací. Díky spolupráci B2B můžete bezpečně sdílet aplikace a služby společnosti s uživateli typu host z jakékoli jiné organizace a přitom zachovat kontrolu nad vašimi podnikovými daty. Spolupracujte bezpečně s velkými i malými externími partnery, i když nemají Azure AD ani oddělení IT. Díky jednoduchému postupu založenému na pozvánce a jejím uplatnění můžou partneři, kteří přistupují k vašim firemním prostředkům, používat vlastní přihlašovací údaje. Vývojáři můžou v rozhraní API pro spolupráci B2B v Azure AD přizpůsobit postup pozvání nebo napsat aplikace, jako jsou portály pro samoobslužnou registraci. Informace o licencování a cenách souvisejících s uživateli typu Host najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).  
 
    > [!IMPORTANT]
-   > **Od 31. března 2021**přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > **Od 31. března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Spolupráce s partnery s využitím jejich vlastních identit
 
@@ -95,6 +95,6 @@ Pomocí samoobslužného uživatelského toku registrace můžete vytvořit pros
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Pokyny k licencování spolupráce B2B v Azure AD](licensing-guidance.md)
+- [Externí identity – ceny](external-identities-pricing.md)
 - [Přidání uživatelů typu host na portálu pro spolupráci B2B](add-users-administrator.md)
 - [Vysvětlení postupu při uplatnění pozvánky](redemption-experience.md)

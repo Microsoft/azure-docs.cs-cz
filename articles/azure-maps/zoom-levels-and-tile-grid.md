@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d15f78c19b5f142f8879d54a1ae32e229ce7f50
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825295"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896578"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Úrovně přiblížení a mřížka dlaždic
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Vzhledem k tomu, že se šířka a výška mapy liší v každé úrovni přiblížení, jsou souřadnice v pixelech. Pixel v levém horním rohu mapy má vždy souřadnice pixelu (0, 0). Pixel v pravém dolním rohu mapy má souřadnice pixelu *(Width-1, Height-1)* nebo odkazující na rovnice v předchozí části *(vlastnost TileSize \* 2<sup>zoom</sup>– 1, vlastnost TileSize \* 2<sup>zoom</sup>-1)*. Pokud například použijete 512 čtvercových dlaždic na úrovni 2, souřadnicový pixel rozsah od (0, 0) do (2047, 2047), například:
+Vzhledem k tomu, že se šířka a výška mapy liší v každé úrovni přiblížení, jsou souřadnice v pixelech. Pixel v levém horním rohu mapy má vždy souřadnice pixelu (0, 0). Pixel v pravém dolním rohu mapy má souřadnice pixelu *(Width-1, Height-1)* nebo odkazující na rovnice v předchozí části *(vlastnost TileSize \* 2 <sup>zoom</sup>– 1, vlastnost TileSize \* 2 <sup>zoom</sup>-1)* . Pokud například použijete 512 čtvercových dlaždic na úrovni 2, souřadnicový pixel rozsah od (0, 0) do (2047, 2047), například:
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Dlaždice světové mapy":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-Na každé dlaždici se v pravém dolním rohu předávají souřadnice XY od (0, 0) vlevo nahoře *(2<sup>přiblížení</sup>– 1, 2<sup>přiblížení</sup>– 1)* . Například na úrovni přiblížení 3 je dlaždice v rozsahu od (0, 0) do (7, 7) následujícím způsobem:
+Na každé dlaždici se v pravém dolním rohu předávají souřadnice XY od (0, 0) vlevo nahoře *(2 <sup>přiblížení</sup>– 1, 2 <sup>přiblížení</sup>– 1)* . Například na úrovni přiblížení 3 je dlaždice v rozsahu od (0, 0) do (7, 7) následujícím způsobem:
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Dlaždice světové mapy":::
 
@@ -933,20 +933,20 @@ module AzureMaps {
 
 > [!NOTE]
 > Ovládací prvky interaktivní mapy v sadě Azure Maps SDK mají pomocné funkce pro převod mezi geoprostorové pozice a pixely zobrazení. 
-> - [Webová sada SDK: mapování obrazových bodů a umístění](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Webová sada SDK: mapování obrazových bodů a umístění](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Další kroky
 
 Přímý přístup k dlaždicím mapy ze služby Azure Maps REST:
 
 > [!div class="nextstepaction"]
-> [Získat dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [Získat dlaždice mapy](/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [Získat dlaždice toku provozu](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [Získat dlaždice toku provozu](/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [Získat dlaždice incidentů provozu](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [Získat dlaždice incidentů provozu](/rest/api/maps/traffic/gettrafficincidenttile)
 
 Další informace o geoprostorových principech:
 

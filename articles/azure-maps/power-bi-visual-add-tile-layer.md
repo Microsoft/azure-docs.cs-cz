@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8a0d930d1c0fd30c48d97b0d1d4b94548077fbca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261755"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896204"
 ---
 # <a name="add-a-tile-layer"></a>Přidání vrstvy dlaždic
 
@@ -57,11 +57,11 @@ Adresa URL dlaždice obsahuje adresu URL HTTPS pro šablonu adresy URL dlaždice
 -   `{quadkey}` – `quadkey` Identifikátor dlaždice založený na konvenci pojmenování systému dlaždice mapy Bing
 -   `{bbox-epsg-3857}` – Řetězec ohraničujícího pole ve formátu `{west},{south},{east},{north}` v prostorovém referenčním systému EPSG 3857.
 
-Následuje příklad, ve kterém je naformátovaná adresa URL dlaždice pro [službu počasí paprsků](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) v Azure Maps. Všimněte si, že `[subscription-key]` je zástupný symbol pro váš Azure Maps klíč předplatného.
+Následuje příklad, ve kterém je naformátovaná adresa URL dlaždice pro [službu počasí paprsků](/rest/api/maps/renderv2/getmaptilepreview) v Azure Maps. Všimněte si, že `[subscription-key]` je zástupný symbol pro váš Azure Maps klíč předplatného.
 
 > `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
 
-Další informace o Azure Maps systému skládání naleznete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
+Další informace o Azure Maps systému skládání naleznete v tématu [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261752"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896221"
 ---
 # <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
@@ -51,13 +51,13 @@ Pokud se pole předává do kontejneru **Velikost** v podokně **pole** , bublin
 | Maximální velikost            | Maximální velikost bublin při škálování dat|
 | Size – metoda škálování | Algoritmus škálování používaný k určení relativní velikosti bublin.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Lineární rozsah vstupních dat lineárně mapovaných na minimum a maximální velikost. (výchozí)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Log – rozsah vstupních datových logarithmically mapovaných na minimum a maximální velikost.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Cubic-Bezier – zadáním hodnot x1, Y1, X2, Y2 Cubic-Bezier křivky vytvořte vlastní metodu škálování. |
 
-Když je **Metoda škálování velikosti** nastavená na **protokol**, zpřístupní se následující možnosti.
+Když je **Metoda škálování velikosti** nastavená na **protokol** , zpřístupní se následující možnosti.
 
 | Nastavení   | Popis      |
 |-----------|------------------|
 | Škálování protokolu | Logaritmické měřítko, které má být použito při výpočtu velikosti bublin. |
 
-Pokud je **Metoda škálování velikosti** nastavená na **krychlové**, budou k dispozici následující možnosti pro přizpůsobení křivky škálování.
+Pokud je **Metoda škálování velikosti** nastavená na **krychlové** , budou k dispozici následující možnosti pro přizpůsobení křivky škálování.
 
 | Nastavení | Popis                           |
 |---------|---------------------------------------|
@@ -90,7 +90,7 @@ Přidat k mapě další kontext:
 Přizpůsobení vizuálu:
 
 > [!div class="nextstepaction"]
-> [Tipy a triky pro formátování barev v Power BI](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Tipy a triky pro formátování barev v Power BI](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [Přizpůsobení názvů, pozadí a legend vizualizací](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [Přizpůsobení názvů, pozadí a legend vizualizací](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

@@ -1,15 +1,16 @@
 ---
 title: Možnosti sítí Azure Functions
 description: Přehled všech možností sítě, které jsou k dispozici v Azure Functions.
+author: jeffhollan
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.author: jehollan
+ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530080"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897071"
 ---
 # <a name="azure-functions-networking-options"></a>Možnosti sítí Azure Functions
 
@@ -66,11 +67,30 @@ Pokud chcete zajistit vyšší úroveň zabezpečení, můžete omezit počet sl
 
 Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Omezení účtu úložiště na virtuální síť
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Omezení účtu úložiště na virtuální síť (Preview)
 
-Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage. V tuto chvíli nemůžete u tohoto účtu použít žádná omezení virtuální sítě. Pokud nakonfigurujete koncový bod služby virtuální sítě v účtu úložiště, který používáte pro aplikaci Function App, tato konfigurace aplikaci pozastaví.
+Když vytváříte aplikaci Function App, musíte vytvořit nebo propojit s účtem Azure Storage pro obecné účely, který podporuje objekty blob, Queue a Table Storage.  Tento účet úložiště můžete nahradit takovým, který je zabezpečený pomocí koncových bodů služby nebo privátního koncového bodu.  Tato funkce Preview v současnosti funguje jenom s plány Windows Premium v Západní Evropa.  Nastavení funkce s účtem úložiště omezeným na soukromou síť:
 
-Další informace najdete v tématu [požadavky na účet úložiště](./functions-create-function-app-portal.md#storage-account-requirements).
+> [!NOTE]
+> Omezení účtu úložiště aktuálně funguje na prémiových funkcích pomocí Windows v Západní Evropa
+
+1. Vytvořte funkci s účtem úložiště bez povolených koncových bodů služby.
+1. Nakonfigurujte funkci pro připojení k vaší virtuální síti.
+1. Vytvořte nebo nakonfigurujte jiný účet úložiště.  Toto je účet úložiště, který se zabezpečuje s koncovými body služby a spojíme naši funkci.
+1. [Vytvořte sdílenou složku](../storage/files/storage-how-to-create-file-share.md#create-file-share) v účtu zabezpečeného úložiště.
+1. Povolte koncové body služby nebo privátní koncový bod pro účet úložiště.  
+    * Pokud používáte koncový bod služby, ujistěte se, že jste povolili podsíť vyhrazenou pro vaše aplikace Function App.
+    * Nezapomeňte vytvořit záznam DNS a nakonfigurovat aplikaci tak, aby [fungovala s koncovými body privátního koncového bodu](#azure-dns-private-zones) , pokud používáte privátní koncový bod.  Účet úložiště bude potřebovat privátní koncový bod pro `file` `blob` dílčí prostředky a.  Pokud používáte určité možnosti, jako je Durable Functions budete potřebovat `queue` a `table` přístup přes připojení privátního koncového bodu.
+1. Volitelné Zkopírujte soubor a obsah objektu BLOB z účtu úložiště Function App do zabezpečeného účtu úložiště a sdílené složky.
+1. Zkopírujte připojovací řetězec pro tento účet úložiště.
+1. Aktualizujte **nastavení aplikace** v části **Konfigurace** pro aplikaci Function App na následující:
+    - `AzureWebJobsStorage` do připojovacího řetězce pro zabezpečený účet úložiště.
+    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` do připojovacího řetězce pro zabezpečený účet úložiště.
+    - `WEBSITE_CONTENTSHARE` na název sdílené složky vytvořené v zabezpečeném účtu úložiště.
+    - Vytvořte nové nastavení s názvem `WEBSITE_CONTENTOVERVNET` a hodnotou `1` .
+1. Uložte nastavení aplikace.  
+
+Aplikace Function App se restartuje a bude teď připojená k zabezpečenému účtu úložiště.
 
 ## <a name="use-key-vault-references"></a>Použití odkazů na službu Key Vault
 
@@ -87,7 +107,7 @@ V současné době můžete v rámci virtuální sítě použít funkce triggeru
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Plán Premium s triggery virtuální sítě
 
-Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **monitorování škály běhového prostředí** najdete v [Azure Portal](https://portal.azure.com) v **Configuration**části  >  **nastavení modulu runtime konfigurační funkce**.
+Když spustíte plán Premium, můžete připojit funkce triggeru jiného typu než HTTP ke službám, které běží ve virtuální síti. K tomu musíte povolit podporu triggeru virtuální sítě pro vaši aplikaci Function App. Nastavení **monitorování škály běhového prostředí** najdete v [Azure Portal](https://portal.azure.com) v **Configuration** části  >  **nastavení modulu runtime konfigurační funkce** .
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -99,7 +119,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Aktivační události virtuální sítě se podporují ve verzi 2. x a novějších modulech runtime Functions. Jsou podporovány následující typy triggerů bez protokolu HTTP.
 
-| Linka | Minimální verze |
+| Rozšíření | Minimální verze |
 |-----------|---------| 
 |[Microsoft. Azure. WebJobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 nebo vyšší |
 |[Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 nebo vyšší|
@@ -136,8 +156,8 @@ Když integrujete aplikaci funkcí v plánu Premium nebo App Service plánu s vi
 ## <a name="automation"></a>Automation
 Následující rozhraní API vám umožní programově spravovat integrace místní virtuální sítě:
 
-+ **Azure CLI**: použijte [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazy k přidání, výpisu nebo odebrání integrace místní virtuální sítě.  
-+ **Šablony ARM**: integraci regionální virtuální sítě lze povolit pomocí šablony Azure Resource Manager. Úplný příklad najdete v tématu [Šablona pro rychlý Start pro funkce](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
++ **Azure CLI** : použijte [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) příkazy k přidání, výpisu nebo odebrání integrace místní virtuální sítě.  
++ **Šablony ARM** : integraci regionální virtuální sítě lze povolit pomocí šablony Azure Resource Manager. Úplný příklad najdete v tématu [Šablona pro rychlý Start pro funkce](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

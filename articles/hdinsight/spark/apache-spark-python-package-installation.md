@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: dc1da641ba628cef92250549c1c6b6482cf18b51
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a0f9f9f972ec42987d6152c16e4377e399cdba5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547329"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896408"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
 HDInsight obsahuje dvě vestavěné Instalace Pythonu v clusteru Spark, Anaconda Python 2,7 a Python 3,5. Zákazníci možná budou muset přizpůsobit prostředí Pythonu, jako je instalace externích balíčků Pythonu. Tady uvádíme osvědčený postup pro bezpečnou správu prostředí Pythonu pro Apache Spark clustery v HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md). Pokud ještě nemáte cluster Spark ve službě HDInsight, můžete spustit akce skriptu během vytváření clusteru. Podívejte se na dokumentaci, [Jak používat akce vlastního skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -129,6 +129,24 @@ Cluster HDInsight závisí na integrovaném prostředí Pythonu, Python 2,7 a Py
     4. Uložte změny a restartujte ovlivněné služby. Tyto změny vyžadují restartování služby Spark2. Uživatelské rozhraní Ambari vás vyzve k vyžadovanámu restartování, kliknutím na restartovat restartujte všechny ovlivněné služby.
 
         ![Restartovat služby](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+
+    5. Nastavte dvě vlastnosti relace Sparku, aby se zajistilo, že úloha odkazuje na aktualizovanou konfiguraci Sparku: `spark.yarn.appMasterEnv.PYSPARK_PYTHON` a `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` . 
+
+        Pomocí terminálu nebo poznámkového bloku použijte `spark.conf.set` funkci.
+
+        ```spark
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        ```
+
+        Pokud používáte Livy, přidejte do textu žádosti následující vlastnosti:
+
+        ```
+        “conf” : {
+        “spark.yarn.appMasterEnv.PYSPARK_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”,
+        “spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”
+        }
+        ```
 
 4. Pokud chcete použít nové vytvořené virtuální prostředí v Jupyter. Změňte konfigurace Jupyter a restartujte Jupyter. Spusťte akce skriptu na všech uzlech hlaviček pomocí příkazu níže, aby odkazovaly Jupyter na nové vytvořené virtuální prostředí. Nezapomeňte upravit cestu k předponě, kterou jste zadali pro vaše virtuální prostředí. Po spuštění této akce skriptu restartujte službu Jupyter prostřednictvím uživatelského rozhraní Ambari, aby tato změna byla dostupná.
 

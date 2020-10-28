@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 5383309143302e0f3fb2052b47e4c497d9a21bf8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e529e44f48343027457f18ba503e4bbb5930f1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976890"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896612"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
 
-Tento článek poskytuje informace o pokrytí Azure Maps [povětrnostní služby](https://aka.ms/AzureMapsWeatherService). Azure Maps datové služby počasí vrací podrobné informace, jako jsou například paprskové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
+Tento článek poskytuje informace o pokrytí Azure Maps [povětrnostní služby](/rest/api/maps/weather). Azure Maps datové služby počasí vrací podrobné informace, jako jsou například paprskové dlaždice, aktuální povětrnostní podmínky, předpovědi počasí a počasí na trase.
 
 Azure Maps nemá stejnou úroveň informací a přesnost pro všechny země a oblasti.
 
@@ -299,4 +299,4 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Turecko                 | ✓ |   | | ✓| 
 | Ukrajina                | ✓ |   | | ✓| 
 | Spojené království         | ✓ | ✓ | ✓| ✓| 
-| Vatikán           | ✓ |   |✓ | ✓| 
+| Vatikán           | ✓ |   |✓ | ✓|

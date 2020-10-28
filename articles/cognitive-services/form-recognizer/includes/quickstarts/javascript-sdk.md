@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b839d35c27e86a754c19faff65039d350a66c6bd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 28fb3cb02d978c0a64884771727f33d01d8a4ceb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755507"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897777"
 ---
 > [!IMPORTANT]
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Další informace najdete v referenční dokumentaci níže. 
@@ -123,14 +123,16 @@ Také budete muset přidat odkazy na adresy URL pro školení a testování dat.
 * Pokud chcete načíst adresu URL SAS pro vlastní model data školení, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis** . Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit** . Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Použijte ukázku z a příjem fotografií, které jsou uvedené v následujících ukázkách (k dispozici na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)), nebo můžete pomocí výše uvedeného postupu získat adresu URL SAS jednotlivého dokumentu v úložišti objektů BLOB. 
 
-> [!NOTE]
-> Fragmenty kódu v této příručce používají vzdálené formuláře, ke kterým přistupovali pomocí adres URL. Pokud místo toho chcete zpracovat dokumenty v místním formuláři, přečtěte si související metody v [referenční dokumentaci](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/) a [ukázkách](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples).
 
 ## <a name="recognize-form-content"></a>Rozpoznávání obsahu formuláře
 
 Nástroj pro rozpoznávání formulářů můžete použít k rozpoznávání tabulek, řádků a slov v dokumentech, aniž byste museli proškolit model. Pro rozpoznání obsahu souboru v daném identifikátoru URI použijte `beginRecognizeContentFromUrl` metodu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
+
+
+> [!TIP]
+> Můžete také získat obsah z místního souboru. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeContent** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -156,6 +158,8 @@ Chcete-li rozpoznat potvrzení z identifikátoru URI, použijte `beginRecognizeR
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
 
+> [!TIP]
+> Můžete také rozpoznat místní obrázky pro příjem. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeReceipts** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="output"></a>Výstup
 
@@ -273,6 +277,9 @@ V této části se dozvíte, jak extrahovat informace o klíčích a hodnotách 
 Použijete `beginRecognizeCustomFormsFromUrl` metodu. Vrácená hodnota je kolekce `RecognizedForm` objektů: jedna pro každou stránku v odeslaném dokumentu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_analyze)]
+
+> [!TIP]
+> Můžete také analyzovat místní soubory. Podívejte se na metody [FormRecognizerClient](https://docs.microsoft.com/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-latest) , jako je například **beginRecognizeCustomForms** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) , kde najdete scénáře týkající se místních imagí.
 
 
 ### <a name="output"></a>Výstup

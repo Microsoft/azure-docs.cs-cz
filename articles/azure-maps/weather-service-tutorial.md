@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 5499402e94cad8673da597afd68571b77047192a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f020f3d9e23b9f834fd203f6d030656581fb4416
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677690"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896595"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
@@ -23,11 +23,11 @@ Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliv
 V tomto kurzu:
 
 > [!div class="checklist"]
-> * Pracujte s datovými soubory v [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) v cloudu.
+> * Pracujte s datovými soubory v [Azure Notebooks](../notebooks/index.yml) v cloudu.
 > * Načíst ukázková data ze souboru
 > * V Pythonu volejte Azure Maps rozhraní REST API.
 > * Vykreslení dat umístění na mapě.
-> * Obohacení ukázkových dat o data počasí v Azure Maps [denní předpovědi](https://aka.ms/AzureMapsWeatherDailyForecast) .
+> * Obohacení ukázkových dat o data počasí v Azure Maps [denní předpovědi](/rest/api/maps/weather/getdailyforecastpreview) .
 > * Vykreslí data prognózy v grafech.
 
 
@@ -41,7 +41,7 @@ K dokončení tohoto kurzu je nutné nejprve provést tyto kroky:
 
 Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
-Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, postupujte podle pokynů v tématu [vytvoření poznámkového bloku Azure](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebooks-project).
+Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, postupujte podle pokynů v tématu [vytvoření poznámkového bloku Azure](./tutorial-ev-routing.md#create-an-azure-notebooks-project).
 
 > [!Note]
 > Soubor poznámkového bloku Jupyter pro tento projekt se dá stáhnout z [úložiště poznámkových bloků Jupyter mapy počasí](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Požadovat data denní předpovědi
 
-V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API pro denní předpověď](https://aka.ms/AzureMapsWeatherDailyForecast) počasí služby Azure Maps počasí. Toto rozhraní API vrátí předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
+V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API pro denní předpověď](/rest/api/maps/weather/getdailyforecastpreview) počasí služby Azure Maps počasí. Toto rozhraní API vrátí předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
 
 
 ```python
@@ -107,7 +107,7 @@ for i in range(0, len(coords), 2):
 await session.close()
 ```
 
-Skript níže vykreslí umístění turbín na mapě voláním Azure Maps [získat image mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage).
+Skript níže vykreslí umístění turbín na mapě voláním Azure Maps [získat image mapy](/rest/api/maps/render/getmapimage).
 
 ```python
 # Render the turbine locations on the map by calling the Azure Maps Get Map Image service
@@ -184,18 +184,18 @@ Níže uvedené grafy vizualizují data předpovědi. Změnu rychlosti větru na
 
 V tomto kurzu jste se naučili, jak volat Azure Maps rozhraní REST API, abyste získali data předpovědi počasí. Zjistili jste také, jak vizualizovat data v grafech.
 
-Další informace o tom, jak volat Azure Maps rozhraní REST API v Azure Notebooks, najdete v tématu [Směrování EV pomocí Azure Notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
+Další informace o tom, jak volat Azure Maps rozhraní REST API v Azure Notebooks, najdete v tématu [Směrování EV pomocí Azure Notebooks](./tutorial-ev-routing.md).
 
 Pokud chcete prozkoumat rozhraní API Azure Maps používaná v tomto kurzu, přečtěte si téma:
 
-* [Denní prognóza](https://aka.ms/AzureMapsWeatherDailyForecast)
-* [Vykreslení – získat obrázek mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Denní prognóza](/rest/api/maps/weather/getdailyforecastpreview)
+* [Vykreslení – získat obrázek mapy](/rest/api/maps/render/getmapimage)
 
-Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model).
+Úplný seznam Azure Maps rozhraní REST API najdete v tématu [Azure Maps REST API](./consumption-model.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure Notebooks najdete v tématu.
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)
+> [Azure Notebooks](../notebooks/index.yml)
