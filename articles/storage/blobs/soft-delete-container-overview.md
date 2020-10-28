@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions
-ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 1ebfa137357e60a1f462ef90c6430cbf0cb5b968
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460794"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746590"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Obnovitelné odstranění pro kontejnery (Preview)
 
@@ -57,7 +57,7 @@ Obnovitelné odstranění kontejneru je k dispozici pro následující typy úč
 - Zablokovat účty úložiště objektů BLOB
 - Účty úložiště Blob
 
-Pokud je váš účet úložiště účet pro obecné účely V1, použijte Azure Portal k upgradu na účet pro obecné účely v2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
+Pokud je váš účet úložiště účet pro obecné účely V1, použijte Azure Portal k upgradu na účet pro obecné účely v2. Další informace o účtech úložiště najdete v tématu [Přehled účtu Azure Storage](../common/storage-account-overview.md).
 
 Podporují se taky účty úložiště s hierarchickým oborem názvů povoleným pro použití s Azure Data Lake Storage Gen2.
 

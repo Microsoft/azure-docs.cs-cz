@@ -4,17 +4,17 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/17/2020
-ms.custom: references_regions
-ms.openlocfilehash: adc621f932462422202d9f16fd539f5ecc7c3d8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 3ac72360db5fb3d075b4caa3208f372f22441c7b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87336888"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755760"
 ---
 ## <a name="prepare-an-iot-hub"></a>Příprava služby IoT Hub
 
-Abyste mohli dokončit kroky v tomto článku, potřebujete ve svém předplatném Azure službu Azure IoT Hub. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Abyste mohli dokončit kroky v tomto článku, potřebujete ve svém předplatném Azure službu Azure IoT Hub. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 Pokud používáte Azure CLI místně, přihlaste se ke svému předplatnému Azure pomocí `az login` . Pokud tyto příkazy spouštíte v Azure Cloud Shell, jste přihlášeni automaticky.
 

@@ -12,13 +12,14 @@ ms.custom:
 - mvc
 - mqtt
 - 'Role: Cloud Development'
+- devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: 1b3b8382c81015e3278954dd0443ba44520e2e3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d2f6d858275ca5a51ea7d8ef6edc23b741cc2466
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87315134"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747554"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (.NET)
 
@@ -34,7 +35,7 @@ Rychlý start používá dvě předem vytvořené aplikace .NET:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -60,7 +61,7 @@ Pokud jste to ještě neudělali, Stáhněte si ukázky pro Azure IoT C# z webu 
 
 Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-dotnet.md), můžete tento krok přeskočit.
 
@@ -74,9 +75,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
-   **MyDotnetDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyDotnetDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
+   **MyDotnetDevice** : Toto je název zařízení, které registrujete. Doporučuje se používat **MyDotnetDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -85,7 +86,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -118,11 +119,11 @@ Tuto hodnotu použijete později v tomto rychlém startu. Tento připojovací ř
 
 Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení po provedení přímé metody pošle potvrzení zpátky do vašeho centra.
 
-1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
+1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2** .
 
-2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
+2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs** .
 
-    Nahraďte hodnotu `s_connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.cs**.
+    Nahraďte hodnotu `s_connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.cs** .
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované balíčky pro aplikaci simulovaného zařízení:
 
@@ -144,11 +145,11 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace umožňuje přímé volání metod do zařízení prostřednictvím služby IoT Hub a naslouchá potvrzením. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
 
-1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
+1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu jazyka C#. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application** .
 
-2. V libovolném textovém editoru otevřete soubor **BackEndApplication.cs**.
+2. V libovolném textovém editoru otevřete soubor **BackEndApplication.cs** .
 
-    Nahraďte hodnotu `s_connectionString` proměnné připojovacím řetězcem služby, který jste si poznamenali v předchozím kroku. Pak změny uložte do **BackEndApplication.cs**.
+    Nahraďte hodnotu `s_connectionString` proměnné připojovacím řetězcem služby, který jste si poznamenali v předchozím kroku. Pak změny uložte do **BackEndApplication.cs** .
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny pro back-endovou aplikaci:
 

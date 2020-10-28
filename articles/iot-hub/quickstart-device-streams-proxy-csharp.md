@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e53937122b8721aff5db435ac447b686ea16643
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80586593"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748692"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud zařízení IoT Hub pomocí aplikace proxy v jazyce C# (Preview)
 
@@ -45,13 +45,13 @@ Následující obrázek ukazuje, jak jsou v této ukázce místní aplikace prox
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-  * USA – střed
+  * Střední USA
   * Střed USA EUAP
   * Southeast Asia
   * Severní Evropa
@@ -81,7 +81,7 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 * Platný uživatelský účet a přihlašovací údaje v zařízení (Windows nebo Linux) používané k ověření uživatele.
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -195,7 +195,7 @@ Výstup na konzole na straně služby (místní proxy aplikace služby naslouch�
 
 ![Výstup místní proxy aplikace služby](./media/quickstart-device-streams-proxy-csharp/service-console-output.png)
 
-Výstup na konzole v aplikaci proxy místní zařízení, která se připojí k procesu démon SSH na *IP_address: 22*:
+Výstup na konzole v aplikaci proxy místní zařízení, která se připojí k procesu démon SSH na *IP_address: 22* :
 
 ![Výstup aplikace pro místní proxy zařízení](./media/quickstart-device-streams-proxy-csharp/device-console-output.png)
 

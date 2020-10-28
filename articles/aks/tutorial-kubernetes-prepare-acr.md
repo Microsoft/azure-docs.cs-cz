@@ -4,13 +4,13 @@ description: V tomto kurzu Azure Kubernetes Service (AKS) vytvoříte instanci s
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: bf2ea5c7ea0c2f3ae90f9d98d8009915d5ced6f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576277"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747073"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 
@@ -34,7 +34,7 @@ Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Ve
 
 Pokud chcete vytvořit službu Azure Container Registry, potřebujete nejprve skupinu prostředků. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*:
+Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus* :
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -74,13 +74,13 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 Pokud chcete použít image kontejneru *azure-vote-front* s ACR, musí být image označená pomocí adresy přihlašovacího serveru vašeho registru. Tato značka se používá pro směrování při nahrávání imagí kontejneru do registru imagí.
 
-Pokud chcete získat adresu přihlašovacího serveru, následujícím způsobem použijte příkaz [az acr list][az-acr-list] a odešlete dotaz na *loginServer*:
+Pokud chcete získat adresu přihlašovacího serveru, následujícím způsobem použijte příkaz [az acr list][az-acr-list] a odešlete dotaz na *loginServer* :
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Teď si označíte svůj místní obrázek *Azure-hlasování* s adresou *acrLoginServer* registru kontejneru. Na konec názvu image přidejte *:v1*, abyste označili číslo verze image:
+Teď si označíte svůj místní obrázek *Azure-hlasování* s adresou *acrLoginServer* registru kontejneru. Na konec názvu image přidejte *:v1* , abyste označili číslo verze image:
 
 ```console
 docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
@@ -104,7 +104,7 @@ tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863
 
 ## <a name="push-images-to-registry"></a>Nahrávání imagí do registru
 
-Když jste vytvořili a označili obrázek, nahrajte do instance ACR obrázek *hlasování Azure* . Následujícím způsobem použijte příkaz [docker push][docker-push] a jako název image zadejte vlastní adresu *acrLoginServer*:
+Když jste vytvořili a označili obrázek, nahrajte do instance ACR obrázek *hlasování Azure* . Následujícím způsobem použijte příkaz [docker push][docker-push] a jako název image zadejte vlastní adresu *acrLoginServer* :
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -120,7 +120,7 @@ Pokud chcete vrátit seznam imagí, které se odeslaly do vaší instance ACR, p
 az acr repository list --name <acrName> --output table
 ```
 
-Následující příklad výstupu jako dostupnou image v registru uvádí *azure-vote-front*:
+Následující příklad výstupu jako dostupnou image v registru uvádí *azure-vote-front* :
 
 ```
 Result

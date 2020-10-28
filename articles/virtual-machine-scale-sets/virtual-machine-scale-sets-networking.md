@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: c93f8e50b0437f9ac1569b8abe19bd0b5174ea8d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 234834af4fcf4ad809f548d171a4c1c406d85895
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363959"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747828"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
 
@@ -23,7 +23,7 @@ Když nasadíte škálovací sadu virtuálních počítačů Azure prostřednict
 Všechny funkce popsané v tomto článku můžete nakonfigurovat pomocí šablon Azure Resource Manageru. Pro vybrané funkce jsou zahrnuté také příklady Azure CLI a PowerShellu.
 
 ## <a name="accelerated-networking"></a>Akcelerované síťové služby
-Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virtuálním počítači povolují rozhraní SR-IOV (single-root I/O virtualization). Další informace o akcelerovaných síťových službách najdete v tématech věnovaných akcelerovaným síťovým službám pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [Linux](../virtual-network/create-vm-accelerated-networking-cli.md). Pokud chcete používat akcelerované síťové služby se škálovacími sadami, v nastavení networkInterfaceConfigurations vaší škálovací sady nastavte enableAcceleratedNetworking na hodnotu **true**. Příklad:
+Akcelerované síťové služby Azure zlepšují výkon sítě tím, že na virtuálním počítači povolují rozhraní SR-IOV (single-root I/O virtualization). Další informace o akcelerovaných síťových službách najdete v tématech věnovaných akcelerovaným síťovým službám pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) nebo [Linux](../virtual-network/create-vm-accelerated-networking-cli.md). Pokud chcete používat akcelerované síťové služby se škálovacími sadami, v nastavení networkInterfaceConfigurations vaší škálovací sady nastavte enableAcceleratedNetworking na hodnotu **true** . Příklad:
 
 ```json
 "networkProfile": {
@@ -130,9 +130,9 @@ Obecně platí, že virtuální počítače Azure ve škálovací sadě nevyžad
 Některé scénáře však vyžadují, aby virtuální počítače ve škálovací sadě měly vlastní veřejné IP adresy. Příkladem jsou hry, kdy konzola potřebuje navázat přímé připojení ke cloudovému virtuálnímu počítači, který provádí zpracování herní fyziky. Dalším příkladem je situace, kdy virtuální počítače mezi sebou potřebují vytvořit externí připojení napříč oblastmi v distribuované databázi.
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Vytvoření škálovací sady s veřejnou IP adresou na virtuální počítač
-Pokud chcete pomocí rozhraní příkazového řádku vytvořit škálovací sadu, která každému virtuálnímu počítači přiřadí veřejnou IP adresu, přidejte do příkazu **vmss create** parametr **--public-ip-per-vm**. 
+Pokud chcete pomocí rozhraní příkazového řádku vytvořit škálovací sadu, která každému virtuálnímu počítači přiřadí veřejnou IP adresu, přidejte do příkazu **vmss create** parametr **--public-ip-per-vm** . 
 
-Pokud chcete vytvořit sadu škálování pomocí šablony Azure, ujistěte se, že je verze API prostředku Microsoft. COMPUTE/virtualMachineScaleSets aspoň **2017-03-30**, a přidejte do oddílu IPConfiguration sady škálování **publicIpAddressConfiguration** vlastnost JSON. Příklad:
+Pokud chcete vytvořit sadu škálování pomocí šablony Azure, ujistěte se, že je verze API prostředku Microsoft. COMPUTE/virtualMachineScaleSets aspoň **2017-03-30** , a přidejte do oddílu IPConfiguration sady škálování **publicIpAddressConfiguration** vlastnost JSON. Příklad:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -146,7 +146,7 @@ Pokud chcete vytvořit sadu škálování pomocí šablony Azure, ujistěte se, 
 Ukázková šablona: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Dotazování veřejných IP adres virtuálních počítačů ve škálovací sadě
-Pokud chcete zobrazit seznam veřejných IP adres přiřazených k virtuálním počítačům ve škálovací sadě pomocí rozhraní příkazového řádku, použijte příkaz **az vmss list-instance-public-ips**.
+Pokud chcete zobrazit seznam veřejných IP adres přiřazených k virtuálním počítačům ve škálovací sadě pomocí rozhraní příkazového řádku, použijte příkaz **az vmss list-instance-public-ips** .
 
 Pokud chcete zobrazit seznam veřejných IP adres sady škálování pomocí PowerShellu, použijte příkaz _Get-AzPublicIpAddress_ . Příklad:
 
@@ -169,10 +169,10 @@ Dotazování [Azure Resource Exploreru:](https://resources.azure.com)
 1. Rozbalte své předplatné.
 1. Rozbalte svou skupinu prostředků.
 1. Rozbalte *providers* (Poskytovatelé).
-1. Rozbalte *Microsoft.Compute*.
-1. Rozbalte *virtualMachineScaleSets*.
+1. Rozbalte položku *Microsoft. COMPUTE* .
+1. Rozbalte *virtualMachineScaleSets* .
 1. Rozbalte svou škálovací sadu.
-1. Klikněte na *publicipaddresses*.
+1. Klikněte na *publicipaddresses* .
 
 Dotazování rozhraní Azure REST API:
 

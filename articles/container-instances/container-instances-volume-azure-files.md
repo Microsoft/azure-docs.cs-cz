@@ -3,13 +3,13 @@ title: Připojení svazku souborů Azure ke skupině kontejnerů
 description: Naučte se, jak připojit svazek souborů Azure k trvalému stavu pomocí Azure Container Instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259478"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746867"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky ve službě Azure Container Instances
 
@@ -235,7 +235,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 
 Chcete-li připojit více svazků v instanci kontejneru, je nutné nasadit pomocí [šablony Azure Resource Manager](/azure/templates/microsoft.containerinstance/containergroups), souboru YAML nebo jiné programové metody. Chcete-li použít šablonu nebo soubor YAML, zadejte podrobnosti o sdílené složce a definujte svazky naplněním `volumes` pole v `properties` části souboru. 
 
-Pokud jste například vytvořili dvě sdílené složky Azure Files s názvem *share1* a *share2* v účtu úložiště *myStorageAccount*, `volumes` pole v šabloně správce prostředků by vypadalo podobně jako v následujícím příkladu:
+Pokud jste například vytvořili dvě sdílené složky Azure Files s názvem *share1* a *share2* v účtu úložiště *myStorageAccount* , `volumes` pole v šabloně správce prostředků by vypadalo podobně jako v následujícím příkladu:
 
 ```JSON
 "volumes": [{
@@ -256,7 +256,7 @@ Pokud jste například vytvořili dvě sdílené složky Azure Files s názvem *
 }]
 ```
 
-Dále pro každý kontejner ve skupině kontejnerů, do kterého chcete svazky připojit, vyplňte `volumeMounts` pole v `properties` části definice kontejneru. Například to připojí dva svazky, *myvolume1* a *myvolume2*, dříve definované:
+Dále pro každý kontejner ve skupině kontejnerů, do kterého chcete svazky připojit, vyplňte `volumeMounts` pole v `properties` části definice kontejneru. Například to připojí dva svazky, *myvolume1* a *myvolume2* , dříve definované:
 
 ```JSON
 "volumeMounts": [{

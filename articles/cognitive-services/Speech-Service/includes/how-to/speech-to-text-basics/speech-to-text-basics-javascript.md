@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: afe6562357f1d5558fdb2ac8cb0eb53cd3422d48
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e5792f63025c0be4d9f67a6971707618f12cc8ce
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499200"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756049"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -41,15 +41,7 @@ Stáhněte a extrahujte <a href="https://aka.ms/csspeech/jsbrowserpackage" targe
 ```
 
 > [!TIP]
-> Pokud cílíte na webový prohlížeč a použijete `<script>` značku; `sdk` Předpona není nutná. `sdk`Předpona je alias použitý k pojmenování `require` modulu.
-
-# <a name="import"></a>[importovat](#tab/import)
-
-```javascript
-import * from "microsoft-cognitiveservices-speech-sdk";
-```
-
-Další informace o najdete v `import` tématu <a href="https://javascript.info/import-export" target="_blank">Export a import <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+> Pokud cílíte na webový prohlížeč a použijete `<script>` značku; `sdk` při odkazování na třídy není nutná předpona. `sdk`Předpona je alias použitý k pojmenování `require` modulu.
 
 # <a name="require"></a>[žádá](#tab/require)
 
@@ -66,7 +58,7 @@ Další informace o najdete v `require` tématu <a href="https://nodejs.org/en/k
 Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token. Vytvořte [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
 
 ```javascript
-const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) :
@@ -83,45 +75,85 @@ Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig
 Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, vytvořte `AudioConfig` pomocí `fromDefaultMicrophoneInput()` . Pak inicializujte [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) a, předejte své `speechConfig` a `audioConfig` .
 
 ```javascript
-const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
-const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
-console.log('Speak into your microphone.');
-recognizer.recognizeOnceAsync(result => {
-    console.log(`RECOGNIZED: Text=${result.text}`);
-});
+function fromMic() {
+    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    
+    console.log('Speak into your microphone.');
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+    });
+}
+fromMic();
 ```
 
 Pokud chcete použít *konkrétní* vstupní zvukové zařízení, je nutné zadat ID zařízení v `AudioConfig` . Přečtěte si, [Jak získat ID zařízení](../../../how-to-select-audio-input-devices.md) pro vstupní zvukové zařízení.
 
-## <a name="recognize-from-file-nodejs-only"></a>Rozpoznat ze souboru (jenom Node.js)
+## <a name="recognize-from-file"></a>Rozpoznat ze souboru 
 
-Pokud chcete rozpoznávat řeč ze zvukového souboru místo pomocí mikrofonu, musíte zadat `AudioConfig` . Pokud však vytvoříte [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) místo volání, `fromDefaultMicrophoneInput()` zavoláte `fromWavFileInput()` a předáte cestu k souboru.
+# <a name="browser"></a>[Prohlížeč](#tab/browser)
 
-```javascript
-const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
-const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-
-recognizer.recognizeOnceAsync(result => {
-    console.log(`RECOGNIZED: Text=${result.text}`);
-});
-```
-
-## <a name="recognize-speech"></a>Rozpoznávání řeči
-
-[Třída pro rozpoznávání](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) pro sadu Speech SDK pro JavaScript zpřístupňuje několik metod, které můžete použít pro rozpoznávání řeči.
-
-### <a name="single-shot-recognition"></a>Rozpoznávání s jedním záběrem
-
-Samostatné rozpoznávání asynchronně rozpoznává jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku. Tady je příklad asynchronního samostatného rozpoznávání pomocí [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync) :
+Pro rozpoznávání řeči ze zvukového souboru v prostředí JavaScript založeném na prohlížeči použijte `fromWavFileInput()` funkci k vytvoření [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) . Funkce `fromWavFileInput()` očekává [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) jako parametr objekt JavaScript.
 
 ```javascript
-recognizer.recognizeOnceAsync(result => {
-    // Interact with result
-});
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
+function fromFile() {
+    // wavByteContent should be a byte array of the raw wav content
+    let file = new File([wavByteContent]);
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(file);
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+    });
+}
+fromFile();
 ```
 
-Pro zpracování výsledku budete muset napsat nějaký kód. Tato ukázka vyhodnocuje [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest&preserve-view=true#reason) :
+# <a name="nodejs"></a>[Node.js](#tab/node)
+
+Pro rozpoznávání řeči ze zvukového souboru v Node.js musí být použit alternativní návrhový vzor pomocí datového proudu push, protože objekt jazyka JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) nelze použít v modulu Node.js runtime. Následující kód:
+
+* Vytvoří Stream push pomocí. `createPushStream()`
+* Otevře `.wav` soubor vytvořením streamu pro čtení a zapíše ho do datového proudu push.
+* Vytvoří konfiguraci zvuku pomocí datového proudu push.
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
+function fromFile() {
+    let pushStream = sdk.AudioInputStream.createPushStream();
+
+    fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
+        pushStream.write(arrayBuffer.slice());
+    }).on('end', function() {
+        pushStream.close();
+    });
+ 
+    let audioConfig = sdk.AudioConfig.fromStreamInput(pushStream);
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+Použití datového proudu push jako vstupu předpokládá, že pozice datového proudu souboru je nastavená na *začátek dat* a přeskočí hlavičky. Rozhraní API bude v některých případech fungovat i v případě, že hlavička nebyla vynechána, ale pro dosažení nejlepších výsledků zvažte implementaci logiky pro čtení hlaviček a nastavení pozice na začátek zvukového data.
+
+---
+
+## <a name="error-handling"></a>Zpracování chyb
+
+Předchozí příklady jednoduše získají rozpoznaný text z `result.text` , ale pro zpracování chyb a dalších odpovědí, budete muset napsat kód pro zpracování výsledku. Následující kód vyhodnocuje [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest&preserve-view=true#reason) vlastnost a:
 
 * Vytiskne výsledek rozpoznávání: `ResultReason.RecognizedSpeech`
 * Pokud se neshodují žádné rozpoznávání, informujte uživatele: `ResultReason.NoMatch`
@@ -131,7 +163,6 @@ Pro zpracování výsledku budete muset napsat nějaký kód. Tato ukázka vyhod
 switch (result.reason) {
     case ResultReason.RecognizedSpeech:
         console.log(`RECOGNIZED: Text=${result.text}`);
-        console.log("    Intent not recognized.");
         break;
     case ResultReason.NoMatch:
         console.log("NOMATCH: Speech could not be recognized.");
@@ -149,17 +180,19 @@ switch (result.reason) {
     }
 ```
 
-### <a name="continuous-recognition"></a>Průběžné rozpoznávání
+## <a name="continuous-recognition"></a>Průběžné rozpoznávání
 
-Průběžné rozpoznávání je trochu větší než rozpoznávání s jedním prostřelou. Pro získání výsledků rozpoznávání se vyžaduje přihlášení k odběru `Recognizing` `Recognized` událostí, a `Canceled` . Chcete-li zastavit rozpoznávání, je nutné zavolat [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) . Tady je příklad toho, jak se provádí nepřetržité rozpoznávání na vstupním souboru zvuku.
+V předchozích příkladech se používá rozpoznávání pomocí jediného snímku, které rozpoznává jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku.
 
-Pojďme začít definováním vstupu a inicializací [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) :
+Naopak se průběžné rozpoznávání používá, pokud chcete **určit** , kdy se má zastavit rozpoznávání. Pro získání výsledků rozpoznávání se vyžaduje přihlášení k odběru `Recognizing` `Recognized` událostí, a `Canceled` . Chcete-li zastavit rozpoznávání, je nutné zavolat [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync) . Tady je příklad toho, jak se provádí nepřetržité rozpoznávání na vstupním souboru zvuku.
+
+Začněte definováním vstupu a inicializací [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) :
 
 ```javascript
-const recognizer = new SpeechRecognizer(speechConfig);
+const recognizer = new sdk.SpeechRecognizer(speechConfig);
 ```
 
-Přihlásíme se k odběru událostí odeslaných z [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) .
+Potom se přihlaste k odběru událostí odeslaných z [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) .
 
 * [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizing): Signál pro události obsahující mezilehlé výsledky rozpoznávání.
 * [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognized): Signál pro události obsahující konečné výsledky rozpoznávání (indikující úspěšný pokus o uznání).
@@ -198,13 +231,12 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-S nastavením všeho můžeme zavolat [`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync) .
+Když se všechno nastaví, zavolejte [`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync) na zahájit rozpoznávání.
 
 ```javascript
-// Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
 recognizer.startContinuousRecognitionAsync();
 
-// Something later can call, stops recognition.
+// make the following call at some point to stop recognition.
 // recognizer.StopContinuousRecognitionAsync();
 ```
 
@@ -240,7 +272,7 @@ Chcete-li použít seznam frází, nejprve vytvořte [`PhraseListGrammar`](https
 Všechny změny se projeví [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest&preserve-view=true) při příštím rozpoznávání nebo po opětovném připojení ke službě Speech.
 
 ```javascript
-const phraseList = PhraseListGrammar.fromRecognizer(recognizer);
+const phraseList = sdk.PhraseListGrammar.fromRecognizer(recognizer);
 phraseList.addPhrase("Supercalifragilisticexpialidocious");
 ```
 

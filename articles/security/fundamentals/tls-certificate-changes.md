@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9337349914748a38152b97cab50e15afbab3040e
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 45cad20a2e32640cabf4c57ce6411fcd5ab67da3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495870"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748221"
 ---
 # <a name="azure-tls-certificate-changes"></a>Změny certifikátu Azure TLS  
 
@@ -27,7 +27,7 @@ Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jin�
 - Stávající koncové body Azure se budou postupně přecházet ve fázi od 13. srpna 2020.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) a [DPS](/azure/iot-dps/) zůstanou v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. [Kliknutím sem](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)zobrazíte podrobnosti.
 - [Azure Storage](/azure/storage) zůstane v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. [Kliknutím sem](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)zobrazíte podrobnosti.
-
+- [Mezipaměť Azure pro Redis](/azure/azure-cache-for-redis) zůstane v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autorita se změní. [Kliknutím sem](../../azure-cache-for-redis/cache-whats-new.md)zobrazíte podrobnosti.
 > [!IMPORTANT]
 > Zákazníci možná budou muset po této změně aktualizovat své aplikace, aby se předešlo chybám připojení při pokusu o připojení ke službám Azure.
 
@@ -67,11 +67,11 @@ Tady je několik způsobů, jak zjistit, jestli je vaše aplikace ovlivněná:
 - Pokud máte aplikaci, která se integruje s rozhraními API Azure nebo jinými službami Azure, a nejste si jistí, jestli používá připnutí certifikátů, obraťte se na dodavatele aplikace.
 
 - Různé operační systémy a jazykové moduly runtime, které komunikují se službami Azure, můžou vyžadovat další kroky pro správné sestavení řetězce certifikátů s těmito novými kořeny:
-    - **Linux**: řada distribucí vyžaduje, abyste do/etc/SSL/certs. přidali certifikační autority. Konkrétní pokyny najdete v dokumentaci k distribuci.
-    - **Java**: Ujistěte se, že úložiště klíčů Java obsahuje výše uvedené CAS.
-    - **Windows spuštěné v odpojených prostředích**: systémy běžící v odpojených prostředích budou muset mít do úložiště důvěryhodných kořenových certifikačních autorit přidané nové kořeny a do úložiště zprostředkujících certifikačních autorit se přidaly zprostředkující.
-    - **Android**: Projděte si dokumentaci k vašemu zařízení a verzi Androidu.
-    - **Další hardwarová zařízení, zejména IoT**: obraťte se na výrobce zařízení.
+    - **Linux** : řada distribucí vyžaduje, abyste do/etc/SSL/certs. přidali certifikační autority. Konkrétní pokyny najdete v dokumentaci k distribuci.
+    - **Java** : Ujistěte se, že úložiště klíčů Java obsahuje výše uvedené CAS.
+    - **Windows spuštěné v odpojených prostředích** : systémy běžící v odpojených prostředích budou muset mít do úložiště důvěryhodných kořenových certifikačních autorit přidané nové kořeny a do úložiště zprostředkujících certifikačních autorit se přidaly zprostředkující.
+    - **Android** : Projděte si dokumentaci k vašemu zařízení a verzi Androidu.
+    - **Další hardwarová zařízení, zejména IoT** : obraťte se na výrobce zařízení.
 
 - Pokud máte prostředí, ve kterém jsou pravidla brány firewall nastavená tak, aby umožňovala odchozí volání jenom na určitý seznam odvolaných certifikátů (CRL) stáhnout a/nebo online ověřovací umístění protokolu OCSP (Online Certificate Status Protocol). Bude potřeba, abyste povolili následující seznam CRL a adresy URL protokolu OCSP:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127041"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748652"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (Intel NUC)
 
@@ -117,7 +117,7 @@ Nakonfigurujte IoT Edge k registraci a připojení k aplikaci IoT Central:
 
 1. Nahraďte `{scope_id}` **rozsahem ID** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu.
 
-1. Nahraďte `{registration_id}` *lva-Gateway-001*a zařízením, které jste vytvořili v předchozím kurzu.
+1. Nahraďte `{registration_id}` *lva-Gateway-001* a zařízením, které jste vytvořili v předchozím kurzu.
 
 1. Nahraďte `{symmetric_key}` **primárním klíčem** pro zařízení **lva-Gateway-001** , na které jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu.
 
@@ -140,7 +140,7 @@ Nakonfigurujte IoT Edge k registraci a připojení k aplikaci IoT Central:
 
 Pokud se moduly IoT Edge nespustí správně, přečtěte si téma [řešení potíží se zařízením IoT Edge](../../iot-edge/troubleshoot.md).
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>Shromažďovat datový proud RSTP z fotoaparátu
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>Shromažďovat datový proud RTSP z kamery
 
 Identifikujte adresy URL datového proudu RTSP pro kamery připojené k vašemu IoT Edge zařízení, například:
 

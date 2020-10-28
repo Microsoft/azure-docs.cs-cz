@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c879b890f9527ea0eee3d702db6f04a38432aa00
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2af9608006eac37ccdfe76d66e619d5a64cad9f1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093051"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746645"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>Rychlý Start: monitorování jarních cloudových aplikací Azure díky protokolům, metrikám a trasování
 
@@ -63,7 +63,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. V Azure Portal přejdete do **služby | **Na stránce Přehled a v části **monitorování** vyberte **protokoly** . Vyberte **Spustit** na jednom z ukázkových dotazů pro jarní cloud Azure.
+1. V Azure Portal přejdete do **služby |** Na stránce Přehled a v části **monitorování** vyberte **protokoly** . Vyberte **Spustit** na jednom z ukázkových dotazů pro jarní cloud Azure.
 
    [![Položka ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) Log Analytics](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -75,7 +75,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
 ## <a name="metrics"></a>Metriky
 
-1. V Azure Portal přejdete do **služby | **Na stránce Přehled a v části **monitorování** vyberte **metriky** . První metriku přidejte tak, že v rozevíracím seznamu **metrika** vyberete jednu z metrik **.NET nebo v** rozevíracím seznamu **žádost (.NET)** , a `Avg` pro **agregaci** Zobrazte časovou osu této metriky.
+1. V Azure Portal přejdete do **služby |** Na stránce Přehled a v části **monitorování** vyberte **metriky** . První metriku přidejte tak, že v rozevíracím seznamu **metrika** vyberete jednu z metrik **.NET nebo v** rozevíracím seznamu **žádost (.NET)** , a `Avg` pro **agregaci** Zobrazte časovou osu této metriky.
 
    [![Vstup metrik – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
     
@@ -83,13 +83,13 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
    [![Použití filtru v metrikách – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
 
-1. Zrušte filtr vytvořený v předchozím kroku, vyberte **použít rozdělení**a vyberte `App` **hodnoty** pro zobrazení využití CPU různými aplikacemi.
+1. Zrušte filtr vytvořený v předchozím kroku, vyberte **použít rozdělení** a vyberte `App` **hodnoty** pro zobrazení využití CPU různými aplikacemi.
 
    [![Použití rozdělení v metrikách – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png)](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-split-steeltoe.png#lightbox)
 
 ## <a name="distributed-tracing"></a>Distribuované trasování
 
-1. V Azure Portal přejdete do **služby | **Na stránce Přehled a v části **monitorování** vyberte **distribuované trasování** . Pak na pravé straně vyberte kartu **Zobrazit mapu aplikací** .
+1. V Azure Portal přejdete do **služby |** Na stránce Přehled a v části **monitorování** vyberte **distribuované trasování** . Pak na pravé straně vyberte kartu **Zobrazit mapu aplikací** .
 
    [![Položka distribuované trasování – Steeltoe ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png)](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 
@@ -142,7 +142,7 @@ Zobrazí se protokoly takto:
 
 Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
-1. Vyberte **Azure Explorer**a pak **jarní Cloud**.
+1. Vyberte **Azure Explorer** a pak **jarní Cloud** .
 
 1. Klikněte pravým tlačítkem na spuštěnou aplikaci.
 
@@ -150,7 +150,7 @@ Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
    ![Výběr protokolů streamování](media/spring-cloud-intellij-howto/streaming-logs.png)
     
-1. Vyberte **instanci**.
+1. Vyberte **instanci** .
 
    ![Vybrat instanci](media/spring-cloud-intellij-howto/select-instance.png)
     
@@ -161,7 +161,7 @@ Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 ---
 ### <a name="log-analytics"></a>Log Analytics
 
-1. Přejít ke **službě | **Na stránce Přehled a v části **monitorování** vyberte **protokoly** . Klikněte na **Spustit** v některém z ukázkových dotazů pro jarní cloud Azure. 
+1. Přejít ke **službě |** Na stránce Přehled a v části **monitorování** vyberte **protokoly** . Klikněte na **Spustit** v některém z ukázkových dotazů pro jarní cloud Azure. 
 
    [![Položka ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) Log Analytics](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
     
@@ -171,7 +171,7 @@ Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
 ## <a name="metrics"></a>Metriky
 
-1. Přejít ke **službě | **Na stránce Přehled a v části **monitorování** vyberte **metriky** . Přidejte svoji první metriku výběrem `system.cpu.usage` možnosti **metrika** a `Avg` **agregace** , abyste viděli časovou osu celkového využití CPU.
+1. Přejít ke **službě |** Na stránce Přehled a v části **monitorování** vyberte **metriky** . Přidejte svoji první metriku výběrem `system.cpu.usage` možnosti **metrika** a `Avg` **agregace** , abyste viděli časovou osu celkového využití CPU.
 
    [![Položka ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png) metriky](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu.png#lightbox)
     
@@ -185,7 +185,7 @@ Postup získání protokolů pomocí Azure Toolkit for IntelliJ:
 
 ## <a name="distributed-tracing"></a>Distribuované trasování
 
-1. Přejít ke **službě | **Na stránce Přehled a v části **monitorování** vyberte **distribuované trasování** . Pak na pravé straně klikněte na kartu **Zobrazit mapu aplikací** .
+1. Přejít ke **službě |** Na stránce Přehled a v části **monitorování** vyberte **distribuované trasování** . Pak na pravé straně klikněte na kartu **Zobrazit mapu aplikací** .
 
    [![Položka ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png) distribuované trasování](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 

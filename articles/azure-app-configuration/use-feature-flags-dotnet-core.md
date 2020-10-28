@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6da2aa645549920cce2f5c0cfe8a32c98dc04708
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078897"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746132"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Kurz: používání příznaků funkcí v aplikaci ASP.NET Core
 
@@ -107,7 +107,7 @@ Nejjednodušší způsob, jak připojit aplikaci ASP.NET Core ke konfiguraci apl
               .UseStartup<Startup>();
    ```
 
-2. Otevřete *Startup.cs* a aktualizujte `Configure` metodu tak, aby bylo možné přidat middleware, aby se hodnoty příznaku funkce aktualizovaly v opakovaných intervalech, zatímco ASP.NET Core webová aplikace dál přijímala požadavky.
+2. Otevřete *Startup.cs* a aktualizujte `Configure` metodu tak, aby se přidal vestavěný middleware s názvem `UseAzureAppConfiguration` . Tento middleware umožňuje aktualizovat hodnoty příznaků funkcí v opakovaném intervalu, zatímco ASP.NET Core webová aplikace nadále přijímá požadavky.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -132,7 +132,7 @@ config.AddAzureAppConfiguration(options => {
 
 Každý příznak funkce má dvě části: název a seznam jednoho nebo více filtrů, které se používají k vyhodnocení, zda je stav funkce *zapnut* (tj. je-li jeho hodnota `True` ). Filtr definuje případ použití, kdy má být funkce zapnuta.
 
-Pokud má příznak funkce více filtrů, seznam filtrů se prochází v pořadí, dokud jeden z filtrů neurčí, že by měla být funkce povolená. V tomto okamžiku je příznak funkce *zapnutý*a všechny zbývající výsledky filtru se přeskočí. Pokud žádný filtr neindikuje, že by měla být funkce povolená, příznak funkce je *vypnutý*.
+Pokud má příznak funkce více filtrů, seznam filtrů se prochází v pořadí, dokud jeden z filtrů neurčí, že by měla být funkce povolená. V tomto okamžiku je příznak funkce *zapnutý* a všechny zbývající výsledky filtru se přeskočí. Pokud žádný filtr neindikuje, že by měla být funkce povolená, příznak funkce je *vypnutý* .
 
 Správce funkcí podporuje *appsettings.js* jako zdroj konfigurace pro příznaky funkcí. Následující příklad ukazuje, jak nastavit příznaky funkcí v souboru JSON:
 
@@ -155,9 +155,9 @@ Správce funkcí podporuje *appsettings.js* jako zdroj konfigurace pro příznak
 
 Podle konvence se `FeatureManagement` oddíl tohoto dokumentu JSON používá pro nastavení příznaku funkce. Předchozí příklad ukazuje tři příznaky funkcí s jejich filtry definovanými ve `EnabledFor` vlastnosti:
 
-* `FeatureA` je *zapnuto*.
-* `FeatureB` je *vypnutý*.
-* `FeatureC` Určuje filtr s názvem `Percentage` s `Parameters` vlastností. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určujeme pravděpodobnost 50-Percent pro příznak, `FeatureC` který má být *zapnut*.
+* `FeatureA` je *zapnuto* .
+* `FeatureB` je *vypnutý* .
+* `FeatureC` Určuje filtr s názvem `Percentage` s `Parameters` vlastností. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určujeme pravděpodobnost 50-Percent pro příznak, `FeatureC` který má být *zapnut* .
 
 ## <a name="feature-flag-references"></a>Odkazy na příznak funkce
 
@@ -174,7 +174,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
-Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Například:
+Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto* . V takovém případě správce funkcí spustí akce, které funkce obsahuje. Příklad:
 
 ```csharp
 IFeatureManager featureManager;
@@ -227,7 +227,7 @@ public IActionResult Index()
 }
 ```
 
-Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, `IDisabledFeaturesHandler` zavolá se registrované rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
+Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý* , `IDisabledFeaturesHandler` zavolá se registrované rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
 
 ## <a name="mvc-views"></a>Zobrazení MVC
 

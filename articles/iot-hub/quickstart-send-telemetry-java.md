@@ -14,13 +14,14 @@ ms.custom:
 - seo-java-september2019
 - mqtt
 - devx-track-java
+- devx-track-azurecli
 ms.date: 05/26/2020
-ms.openlocfilehash: 53f20f5f909e8b24ba7279dabfb421053d5c5449
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 663c79ffb5f5ca9cca8e1df77fc2ccd73d9e4bac
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150644"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748598"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Rychlý Start: odeslání telemetrie do služby Azure IoT Hub a její čtení pomocí aplikace Java
 
@@ -32,7 +33,7 @@ V tomto rychlém startu odešlete telemetrii do Azure IoT Hub a přečtete ji po
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/?view=azure-java-stable)v části **Dlouhodobá podpora**vyberte **Java 8**.
+* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/?view=azure-java-stable)v části **Dlouhodobá podpora** vyberte **Java 8** .
 
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
@@ -74,9 +75,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
-   **MyJavaDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyJavaDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
+   **MyJavaDevice** : Toto je název zařízení, které registrujete. Doporučuje se používat **MyJavaDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyJavaDevice
@@ -84,7 +85,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu v Azure Cloud Shell Získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+    **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -96,9 +97,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v rychlém startu.
 
-3. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+3. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_ , _cestu kompatibilní s Event Hubs_ a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
-     **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+     **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -114,11 +115,11 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
 
-1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu Java. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
+1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu Java. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device** .
 
-2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
+2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** .
 
-    Nahraďte hodnotu `connString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice. Java**.
+    Nahraďte hodnotu `connString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice. Java** .
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a sestavte aplikaci simulovaného zařízení:
 
@@ -140,9 +141,9 @@ Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho cent
 
 Back-endová aplikace se připojí ke koncovému bodu **Events** na straně služby ve vašem centru IoT. Aplikace přijímá zprávy typu zařízení-cloud odeslané ze simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
-1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages**.
+1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages** .
 
-2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java**. Aktualizujte následující proměnné a uložte provedené změny souboru.
+2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** . Aktualizujte následující proměnné a uložte provedené změny souboru.
 
     | Proměnná | Hodnota |
     | -------- | ----------- |

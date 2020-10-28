@@ -7,13 +7,13 @@ ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: d06d7b328525f9d6329f17a10dea9c89a753d533
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: a5ba1699e082741db851ee2af3eb688ea8aa7843
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017263"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748059"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientské knihovny certifikátů pro Python
 
@@ -21,7 +21,7 @@ Začněte s klientskou knihovnou certifikátů Azure Key Vault pro Python. Postu
 
 [Referenční dokumentace k](/python/api/overview/azure/keyvault-certificates-readme)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault-certificates)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + nebo 3.5.3 +](https://docs.microsoft.com/azure/developer/python/configure-local-development-environment)
@@ -136,7 +136,7 @@ print(" done.")
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Ujistěte se, že kód v předchozí části je v souboru s názvem *kv_certificates. py*. Pak spusťte kód pomocí následujícího příkazu:
+Ujistěte se, že kód v předchozí části je v souboru s názvem *kv_certificates. py* . Pak spusťte kód pomocí následujícího příkazu:
 
 ```terminal
 python kv_certificates.py

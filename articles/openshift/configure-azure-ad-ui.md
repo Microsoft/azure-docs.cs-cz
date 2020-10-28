@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: 4eab701d22f579a816aa95bd43a74fd9ea07d9e4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 1b9e4d1f1b989caa317384292d013af255530f11
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490233"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748075"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>Konfigurace ověřování Azure Active Directory pro cluster Azure Red Hat OpenShift 4 (portál)
 
@@ -36,7 +36,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 Přihlaste se k Azure Portal a přejděte do okna [Registrace aplikací](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)a pak klikněte na **Nová registrace** a vytvořte novou aplikaci.
 
-Zadejte název aplikace, například **ARO – azuread-auth**, a zadejte **identifikátor URI pro přesměrování** pomocí hodnoty adresy URL zpětného volání OAuth, kterou jste načetli dříve.
+Zadejte název aplikace, například **ARO – azuread-auth** , a zadejte **identifikátor URI pro přesměrování** pomocí hodnoty adresy URL zpětného volání OAuth, kterou jste načetli dříve.
 
 ![Registrace nové aplikace](media/aro4-ad-registerapp.png)
 
@@ -44,7 +44,7 @@ Přejděte na **certifikáty & tajných** kódů a klikněte na **nový tajný k
 
 ![Vytvoření tajného klíče](media/aro4-ad-clientsecret.png)
 
-Přejděte na **Přehled** a poznamenejte si **ID aplikace (klienta)** a **ID adresáře (tenant)**. Budete je potřebovat v pozdější fázi.
+Přejděte na **Přehled** a poznamenejte si **ID aplikace (klienta)** a **ID adresáře (tenant)** . Budete je potřebovat v pozdější fázi.
 
 ![Načtení ID aplikace (klienta) a adresáře (tenant)](media/aro4-ad-ids.png)
 
@@ -60,7 +60,7 @@ Volitelné deklarace identity můžete použít k těmto akcím:
 
 OpenShift nakonfigurujeme tak, aby používala `email` deklaraci identity, a vraťte se k `upn` nastavení preferovaného uživatelského jména tak, že přidáte `upn` jako součást tokenu ID vráceného Azure Active Directory.
 
-Přejděte na **Konfigurace tokenu (Preview)** a klikněte na **přidat volitelnou deklaraci identity**. Vyberte **ID** a pak zkontrolujte deklarace **e-mailu** a **UPN** .
+Přejděte na **Konfigurace tokenu (Preview)** a klikněte na **přidat volitelnou deklaraci identity** . Vyberte **ID** a pak zkontrolujte deklarace **e-mailu** a **UPN** .
 
 ![Snímek obrazovky zobrazující přidávané deklarace e-mailu a UPN](media/aro4-ad-tokens.png)
 
@@ -100,12 +100,12 @@ Adresu URL konzoly clusteru můžete najít spuštěním následujícího přík
 
 V prohlížeči spusťte adresu URL konzoly a přihlaste se pomocí `kubeadmin` přihlašovacích údajů.
 
-Přejděte na **Správa**, klikněte na **Nastavení clusteru**a pak vyberte kartu **globální konfigurace** . Posuňte se na výběr **OAuth**.
+Přejděte na **Správa** , klikněte na **Nastavení clusteru** a pak vyberte kartu **globální konfigurace** . Posuňte se na výběr **OAuth** .
 
-Posuňte se dolů a vyberte **Přidat** pod **zprostředkovateli identity** a vyberte **OpenID připojit**.
+Posuňte se dolů a vyberte **Přidat** pod **zprostředkovateli identity** a vyberte **OpenID připojit** .
 ![V rozevíracím seznamu zprostředkovatelé identity vyberte OpenID připojit.](media/aro4-oauth-idpdrop.png)
 
-Zadejte název jako **AAD**, **ID klienta** jako **ID aplikace** a **tajný klíč klienta**. **Adresa URL vystavitele** je formátována takto: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Nahraďte zástupný symbol ID tenanta, který jste získali dříve.
+Zadejte název jako **AAD** , **ID klienta** jako **ID aplikace** a **tajný klíč klienta** . **Adresa URL vystavitele** je formátována takto: `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` . Nahraďte zástupný symbol ID tenanta, který jste získali dříve.
 
 ![Vyplnit podrobnosti OAuth](media/aro4-oauth-idp-1.png)
 
@@ -115,6 +115,6 @@ Posuňte se dolů k části **deklarace identity** a aktualizujte **preferované
 
 ## <a name="verify-login-through-azure-active-directory"></a>Ověření přihlašovacích údajů prostřednictvím Azure Active Directory
 
-Pokud se teď odhlásíte do webové konzoly OpenShift a zkusíte se znovu přihlásit, zobrazí se nová možnost přihlášení pomocí **AAD**. Možná budete muset několik minut počkat.
+Pokud se teď odhlásíte do webové konzoly OpenShift a zkusíte se znovu přihlásit, zobrazí se nová možnost přihlášení pomocí **AAD** . Možná budete muset několik minut počkat.
 
 ![Přihlašovací obrazovka s možností Azure Active Directory](media/aro4-login-2.png)

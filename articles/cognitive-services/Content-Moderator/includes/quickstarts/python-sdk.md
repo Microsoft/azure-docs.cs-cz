@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: bea422514b109f446ee30633b0074730f9b89af0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 64a9143e7a425b35e37f23b233c91b8e7bb70169
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91332550"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755985"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro Python. Pomocí těchto kroků nainstalujete balíček PiPy a vyzkoušíte ukázkový kód pro základní úlohy. 
 
@@ -24,11 +24,11 @@ Content Moderator je služba AI, která umožňuje zpracovávat obsah, který je
 
 Použití klientské knihovny Content Moderator pro Python pro:
 
-* [Střední text](#moderate-text)
-* [Použití vlastního seznamu podmínek](#use-a-custom-terms-list)
-* [Střední obrázky](#moderate-images)
-* [Použití vlastního seznamu obrázků](#use-a-custom-image-list)
-* [Vytvořit recenzi](#create-a-review)
+* Střední text
+* Použití vlastního seznamu podmínek
+* Střední obrázky
+* Použití vlastního seznamu obrázků
+* Vytvořit recenzi
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
@@ -36,35 +36,38 @@ Použití klientské knihovny Content Moderator pro Python pro:
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Python 3.x](https://www.python.org/)
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" vytvořte prostředek Content moderator vytvoření prostředku "  target="_blank"> Content Moderator <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    * K připojení aplikace k Content Moderator budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="create-a-content-moderator-resource"></a>Vytvoření prostředku Content Moderator
 
-Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro Content Moderator pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. Můžete také:
+## <a name="setting-up"></a>Nastavení
 
-* Zobrazení prostředku na [Azure Portal](https://portal.azure.com/)
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč a adresu URL koncového bodu s názvem `CONTENT_MODERATOR_SUBSCRIPTION_KEY` a `CONTENT_MODERATOR_ENDPOINT` , v uvedeném pořadí.
- 
-## <a name="create-a-new-python-script"></a>Vytvoření nového skriptu Pythonu
+Po instalaci Pythonu můžete nainstalovat knihovnu klienta Content Moderator pomocí následujícího příkazu:
+
+```console
+pip install --upgrade azure-cognitiveservices-vision-contentmoderator
+```
+
+### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
 Vytvořte nový skript Pythonu a otevřete ho v preferovaném editoru nebo integrovaném vývojovém prostředí (IDE). Pak na `import` začátek souboru přidejte následující příkazy.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imports)]
 
-Dále vytvořte proměnné pro umístění a klíč koncového bodu prostředku jako proměnné prostředí. 
+> [!TIP]
+> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py), který obsahuje příklady kódu v tomto rychlém startu.
+
+Dále vytvořte proměnné pro umístění a klíč koncového bodu prostředku.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_vars)]
 
-> [!NOTE]
-> Pokud jste po spuštění aplikace vytvořili proměnné prostředí, budete muset zavřít a znovu otevřít Editor, rozhraní IDE nebo prostředí, na kterém je spuštěný, abyste měli přístup k proměnným.
-
-## <a name="install-the-client-library"></a>Instalace klientské knihovny
-
-Klientskou knihovnu Content Moderator můžete nainstalovat pomocí následujícího příkazu:
-
-```console
-pip install --upgrade azure-cognitiveservices-vision-contentmoderator
-```
+> [!IMPORTANT]
+> Přejděte na Azure Portal. Pokud se prostředek Content Moderator, který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . 
+>
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Například [Trezor klíčů Azure](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 ## <a name="object-model"></a>Objektový model
 
@@ -89,9 +92,6 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Cont
 * [Vytvořit recenzi](#create-a-review)
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
-
-> [!NOTE]
-> V tomto rychlém startu se předpokládá, že jste pro svůj Content Moderator klíč a koncový bod [vytvořili proměnné prostředí](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) .
 
 Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) .
 

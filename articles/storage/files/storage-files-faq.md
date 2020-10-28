@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563688"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746835"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) a [protokol NFS (Network File System](https://en.wikipedia.org/wiki/Network_File_System) ) (verze Preview). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -22,7 +22,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 1. Část s poznámkami tohoto článku.
 2. [Microsoft Q&stránku s otázkou pro Azure Storage](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
 3. [Soubory Azure ve službě UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. podpora Microsoftu. Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu**.
+4. podpora Microsoftu. Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu** .
 
 ## <a name="general"></a>Obecné
 * <a id="why-files-useful"></a>
@@ -107,7 +107,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
     Výkon se bude lišit v závislosti na nastaveních prostředí, konfiguraci a na tom, jestli se jedná o počáteční nebo trvalou synchronizaci. Další informace najdete v tématu [Azure File Sync metriky výkonu](storage-files-scale-targets.md#azure-file-sync-performance-metrics) .
 
 * <a id="afs-conflict-resolution"></a>**Pokud se stejný soubor na dvou serverech změní přibližně na stejný čas, co se stane?**  
-    Azure File Sync používá jednoduchou strategii řešení konfliktů: obě změny souborů, které se ve dvou koncových bodech změnily současně. Poslední zapsaná změna zachovává původní název souboru. Starší soubor (určený parametrem LastWriteTime) má název koncového bodu a číslo konfliktu připojené k názvu souboru. V případě koncových bodů serveru je názvem koncového bodu název serveru. V případě koncových bodů cloudu je název koncového bodu **Cloud**. Název následuje po této taxonomii: 
+    Azure File Sync používá jednoduchou strategii řešení konfliktů: obě změny souborů, které se ve dvou koncových bodech změnily současně. Poslední zapsaná změna zachovává původní název souboru. Starší soubor (určený parametrem LastWriteTime) má název koncového bodu a číslo konfliktu připojené k názvu souboru. V případě koncových bodů serveru je názvem koncového bodu název serveru. V případě koncových bodů cloudu je název koncového bodu **Cloud** . Název následuje po této taxonomii: 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -257,7 +257,25 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="ad-multiple-forest"></a>
 **Podporuje místní ověřování služba AD DS pro sdílené složky Azure integraci s služba AD DS prostředím pomocí více doménových struktur?**    
 
-    Místní služba AD DS ověřování souborů Azure se integruje jenom s doménovou strukturou doménové služby, ke které je účet úložiště zaregistrovaný. Aby bylo možné podporovat ověřování z jiné doménové struktury, musí mít vaše prostředí správně nakonfigurovaný vztah důvěryhodnosti doménové struktury. Způsob registrace souborů Azure v služba AD DS téměř stejný jako běžný souborový server, kde se v služba AD DS vytvoří identita (účet pro přihlášení k počítači nebo službě) v rámci ověřování. Jediným rozdílem je, že registrovaný hlavní název služby (SPN) účtu úložiště končí řetězcem "file.core.windows.net", který se neshoduje s příponou domény. Projděte si správce domény a zjistěte, jestli je pro povolení více doménových struktur v důsledku jiné přípony domény potřeba nějaká aktualizace zásad směrování DNS.
+    Místní služba AD DS ověřování souborů Azure se integruje jenom s doménovou strukturou doménové služby, ke které je účet úložiště zaregistrovaný. Aby bylo možné podporovat ověřování z jiné doménové struktury, musí mít vaše prostředí správně nakonfigurovaný vztah důvěryhodnosti doménové struktury. Způsob registrace souborů Azure v služba AD DS téměř stejný jako běžný souborový server, kde se v služba AD DS vytvoří identita (účet pro přihlášení k počítači nebo službě) v rámci ověřování. Jediným rozdílem je, že registrovaný hlavní název služby (SPN) účtu úložiště končí řetězcem "file.core.windows.net", který se neshoduje s příponou domény. Projděte si správce domény a zjistěte, jestli je pro povolení více doménových struktur v důsledku jiné přípony domény potřeba nějaká aktualizace zásad Směrování přípon. Níže uvádíme příklad konfigurace zásad Směrování přípon.
+    
+    Příklad: Pokud mají uživatelé v doménové struktuře doménu, kde se má připojit ke sdílené složce s účtem úložiště registrovaným pro doménu v doménové struktuře B, nebude tato akce automaticky fungovat, protože instanční objekt účtu úložiště nemá příponu odpovídající příponě jakékoli domény v doménové struktuře A. Tento problém můžeme vyřešit ruční konfigurací pravidla směrování přípon z doménové struktury A na doménovou strukturu B pro vlastní příponu "file.core.windows.net".
+    Nejdřív je nutné přidat novou vlastní příponu do doménové struktury B. Ujistěte se, že máte příslušná oprávnění správce ke změně konfigurace, a pak postupujte podle těchto kroků:   
+    1. Přihlášení k doméně počítače připojené k doménové struktuře B
+    2.  Otevřete konzolu domény a vztahy důvěryhodnosti služby Active Directory.
+    3.  Klikněte pravým tlačítkem na domény a vztahy důvěryhodnosti služby Active Directory.
+    4.  Klikněte na vlastnosti.
+    5.  Klikněte na Přidat.
+    6.  Přidat "file.core.windows.net" jako přípony hlavního názvu uživatele (UPN)
+    7.  Kliknutím na tlačítko použít a pak na OK zavřete průvodce.
+    
+    Dále přidejte pravidlo Směrování přípon na doménovou strukturu A, aby se přesměroval na doménovou strukturu B.
+    1.  Přihlášení k doméně počítače připojené k doménové struktuře A
+    2.  Otevřete konzolu domény a vztahy důvěryhodnosti služby Active Directory.
+    3.  Klikněte pravým tlačítkem na doménu, ke které chcete získat přístup ke sdílené složce, a pak klikněte na kartu důvěry a vyberte doménu doménové struktury B z odchozích vztahů důvěryhodnosti. Pokud jste nenakonfigurovali důvěryhodnost mezi dvěma doménovými strukturami, musíte nejdřív nastavit vztah důvěryhodnosti.
+    4.  Klikněte na vlastnosti... pak "Směrování přípon názvů"
+    5.  Ověřte, zda se zobrazuje "*. file.core.windows.net" surffix. Pokud ne, klikněte na aktualizovat.
+    6.  Vyberte *. file.core.windows.net a pak klikněte na povolit a použít.
 
 * <a id=""></a>
 **Jaké oblasti jsou k dispozici pro soubory Azure služba AD DS ověřování?**

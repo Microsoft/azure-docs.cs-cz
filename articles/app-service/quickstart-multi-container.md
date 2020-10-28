@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 562185697f8f80fc52b06be80a9f15271f16c0a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: c67d4dbb68048d273b1f9acd83a8460447e5abe4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961416"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748907"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Vytvoření aplikace s více kontejnery (Preview) pomocí konfigurace Docker Compose
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
+V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih* . Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard** , spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -129,7 +129,7 @@ Přejděte do nasazené aplikace na adrese `http://<app_name>.azurewebsites.net`
 
 ![Ukázková vícekontejnerová aplikace ve službě Web App for Containers][1]
 
-**Blahopřejeme**, vytvořili jste vícekontejnerovou aplikaci ve službě Web App for Containers.
+**Blahopřejeme** , vytvořili jste vícekontejnerovou aplikaci ve službě Web App for Containers.
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
 

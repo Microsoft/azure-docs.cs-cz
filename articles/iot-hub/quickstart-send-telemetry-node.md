@@ -14,13 +14,14 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - devx-track-js
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 07508046e1689c3b8c2a3bb323a98994d10df8a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0452e117b733d4e5363fe4a6d6a94ee45c34d57d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334119"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748576"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich čtení pomocí back-endové aplikace (Node.js)
 
@@ -56,7 +57,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -66,9 +67,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
-   **MyNodeDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyNodeDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
+   **MyNodeDevice** : Toto je název zařízení, které registrujete. Doporučuje se používat **MyNodeDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyNodeDevice
@@ -76,7 +77,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell Získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
@@ -88,9 +89,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v rychlém startu.
 
-1. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+1. K povolení back-endové aplikace pro připojení ke službě IoT Hub a k načtení zpráv budete potřebovat taky _koncový bod kompatibilní s Event Hubs_ , _cestu kompatibilní s Event Hubs_ a _primární klíč služby_ z vašeho centra IoT. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -106,11 +107,11 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho centra IoT pro konkrétní zařízení a odesílá simulovaná telemetrická data o teplotě a vlhkosti vzduchu.
 
-1. Otevřete okno místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
+1. Otevřete okno místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device** .
 
-1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.js**.
+1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.js** .
 
-    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.js**.
+    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.js** .
 
 1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení:
 
@@ -127,9 +128,9 @@ Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho cent
 
 Back-endová aplikace se připojí ke koncovému bodu **Events** na straně služby ve vašem centru IoT. Aplikace přijímá zprávy typu zařízení-cloud odeslané ze simulovaného zařízení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu, aby mohla přijímat a zpracovávat zprávy typu zařízení-cloud.
 
-1. Otevřete další okno místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages**.
+1. Otevřete další okno místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages** .
 
-1. V libovolném textovém editoru otevřete soubor **ReadDeviceToCloudMessages.js**. Aktualizujte následující proměnné a uložte provedené změny souboru.
+1. V libovolném textovém editoru otevřete soubor **ReadDeviceToCloudMessages.js** . Aktualizujte následující proměnné a uložte provedené změny souboru.
 
     | Proměnná | Hodnota |
     | -------- | ----------- |

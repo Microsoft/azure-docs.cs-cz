@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 44796fd3330d1f5670eb47589a34158464f0202d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5b39e1988a798adde8a07a39d7724f50d7a4f851
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678269"
+ms.locfileid: "92755746"
 ---
 Začněte s knihovnou klienta Custom Vision pro Python. Pomocí těchto kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro vytvoření modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -114,7 +114,7 @@ Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vlož�
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_tags)]
 
 > [!NOTE]
-> Budete muset změnit cestu k obrázkům na základě místa, kde jste dříve stáhli sadu Cognitive Services Python SDK Samples úložiště.
+> Budete muset změnit cestu k obrázkům na základě toho, kam jste stáhli úložiště ukázek sady SDK Cognitive Services Pythonu.
 
 ## <a name="train-the-project"></a>Výuka projektu
 

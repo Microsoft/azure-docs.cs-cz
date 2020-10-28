@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI
-ms.custom: mvc
-ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469418"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748031"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Konfigurace ověřování Azure Active Directory pro cluster Azure Red Hat OpenShift 4 (CLI)
 
@@ -21,7 +21,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 Načtěte adresy URL pro konkrétní clustery, které se budou používat ke konfiguraci aplikace Azure Active Directory.
 
-Vytvořte adresu URL zpětného volání OAuth clusteru a uložte ji do proměnné **oauthCallbackURL**. Nezapomeňte nahradit položku **ARO – RG** pomocí názvu skupiny prostředků a **ARO – cluster** s názvem vašeho clusteru.
+Vytvořte adresu URL zpětného volání OAuth clusteru a uložte ji do proměnné **oauthCallbackURL** . Nezapomeňte nahradit položku **ARO – RG** pomocí názvu skupiny prostředků a **ARO – cluster** s názvem vašeho clusteru.
 
 > [!NOTE]
 > `AAD`Oddíl v adrese URL zpětného volání OAuth by se měl shodovat s názvem zprostředkovatele identity OAuth, který nastavíte později.
@@ -210,6 +210,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>Ověření přihlašovacích údajů prostřednictvím Azure Active Directory
 
-Pokud se teď odhlásíte do webové konzoly OpenShift a zkusíte se znovu přihlásit, zobrazí se nová možnost přihlášení pomocí **AAD**. Možná budete muset několik minut počkat.
+Pokud se teď odhlásíte do webové konzoly OpenShift a zkusíte se znovu přihlásit, zobrazí se nová možnost přihlášení pomocí **AAD** . Možná budete muset několik minut počkat.
 
 ![Přihlašovací obrazovka s možností Azure Active Directory](media/aro4-login-2.png)

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: cc32a67ab681341fd8320b9445f4e00013f2aa51
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 57d077e1631fa89058d67ba54d72e7713db17371
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170267"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747379"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Porozumění změnám v kořenové CA se mění Azure Database for MySQL
 
@@ -52,11 +52,11 @@ Pokud se chcete vyhnout přerušení dostupnosti vaší aplikace z důvodu neoč
 *   Vygenerujte kombinované úložiště certifikátů certifikační autority s certifikáty **BaltimoreCyberTrustRoot** i **DigiCertGlobalRootG2** .
     *   Pro uživatele Java (MySQL Connector/J) spusťte:
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MySQLServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MySQLServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 
@@ -150,7 +150,7 @@ Pokud pro připojení k Azure Database for MySQL používáte [replikaci dat](co
 Chcete-li ověřit, zda používáte připojení SSL pro připojení k serveru, postupujte podle tématu [ověřování SSL](howto-configure-ssl.md#step-4-verify-the-ssl-connection).
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. je vyžadována akce, pokud již mám v souboru certifikátu DigiCertGlobalRootG2?
-Ne. Pokud soubor certifikátu již má **DigiCertGlobalRootG2**, není nutná žádná akce.
+Ne. Pokud soubor certifikátu již má **DigiCertGlobalRootG2** , není nutná žádná akce.
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. co když mám další dotazy?
 Pokud máte nějaké otázky, Získejte odpovědi od expertů komunity v [Microsoft Q&A](mailto:AzureDatabaseforMySQL@service.microsoft.com). Pokud máte plán podpory a potřebujete technickou pomoc, [kontaktujte nás](mailto:AzureDatabaseforMySQL@service.microsoft.com).

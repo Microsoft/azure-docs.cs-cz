@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: d94b0815ebe7660d6daef97db0c2a1bef7977ed8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 06b56566108bb482109d02d8d4f9db66dc2a6995
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548215"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755554"
 ---
 > [!IMPORTANT]
 > Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti.
@@ -63,6 +63,7 @@ Build succeeded.
  0 Error(s)
 ...
 ```
+---
 
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny 
 
@@ -71,8 +72,6 @@ V adresáři aplikace nainstalujte klientskou knihovnu [název produktu] pro roz
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
-
----
 
 > [!TIP]
 > Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md), který obsahuje příklady kódu v tomto rychlém startu.

@@ -3,13 +3,13 @@ title: Rychlý Start – vytvoření registru na portálu
 description: Rychle se naučíte, jak vytvořit privátní službu Azure Container Registry pomocí Azure Portal.
 ms.topic: quickstart
 ms.date: 08/04/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: f4f16506a36acfe8845e85caf2d337f992f0f332
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031774"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746672"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Container Registry pomocí Azure Portal
 
@@ -25,15 +25,15 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
-Vyberte **vytvořit**  >  **kontejnery**prostředků  >  **Container Registry**.
+Vyberte **vytvořit**  >  **kontejnery** prostředků  >  **Container Registry** .
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-01.png" alt-text="Přejít na registr kontejnerů na portálu":::
 
-Na kartě **základy** zadejte hodnoty pro **skupinu prostředků** a **název registru**. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `myResourceGroup` v umístění `West US` a jako **skladovou položku** vyberte Basic.
+Na kartě **základy** zadejte hodnoty pro **skupinu prostředků** a **název registru** . Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Pro účely tohoto rychlého startu vytvořte novou skupinu prostředků `myResourceGroup` v umístění `West US` a jako **skladovou položku** vyberte Basic.
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Přejít na registr kontejnerů na portálu":::
 
-Přijměte výchozí hodnoty pro zbývající nastavení. Pak vyberte **zkontrolovat + vytvořit**. Po zkontrolování nastavení vyberte **vytvořit**.
+Přijměte výchozí hodnoty pro zbývající nastavení. Pak vyberte **zkontrolovat + vytvořit** . Po zkontrolování nastavení vyberte **vytvořit** .
 
 V tomto rychlém startu vytvoříte *základní* registr, což je výhodná možnost pro vývojáře, kteří se naučí o Azure Container Registry. Podrobnosti o dostupných úrovních služby (SKU) najdete v tématu [úrovně služby registru kontejnerů][container-registry-skus].
 
@@ -41,7 +41,7 @@ Po zobrazení zprávy o **úspěšném nasazení** vyberte v portálu registr ko
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Přejít na registr kontejnerů na portálu":::
 
-Poznamenejte si název registru a hodnotu **přihlašovacího serveru**. Tyto hodnoty použijete v následujících krocích při doručování a vyžádání imagí pomocí Docker.
+Poznamenejte si název registru a hodnotu **přihlašovacího serveru** . Tyto hodnoty použijete v následujících krocích při doručování a vyžádání imagí pomocí Docker.
 
 ## <a name="log-in-to-registry"></a>Přihlášení k registru
 
@@ -63,11 +63,11 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="list-container-images"></a>Výpis imagí kontejnerů
 
-Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr **a vyberte úložiště a pak**vyberte úložiště  **Hello** , které jste vytvořili pomocí `docker push` .
+Pokud chcete zobrazit seznam imagí v registru, přejděte na portálu na svůj registr **a vyberte úložiště a pak** vyberte úložiště  **Hello** , které jste vytvořili pomocí `docker push` .
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Přejít na registr kontejnerů na portálu":::
 
-Výběrem úložiště **Hello-World** se v `v1` části **značky**zobrazí obrázek označený příznakem.
+Výběrem úložiště **Hello-World** se v `v1` části **značky** zobrazí obrázek označený příznakem.
 
 [!INCLUDE [container-registry-quickstart-docker-pull](../../includes/container-registry-quickstart-docker-pull.md)]
 

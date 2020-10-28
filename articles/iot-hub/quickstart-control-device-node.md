@@ -15,13 +15,14 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - devx-track-js
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 13baface2bce9e98f08e37b8a16ba1e2b435205a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52b4ec2ed7b05dfb905d490cf1bf11aed25ea562
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91281571"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747503"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Rychlý Start: použití Node.js k řízení zařízení připojeného ke službě Azure IoT Hub
 
@@ -57,7 +58,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 
@@ -71,9 +72,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
-   **MyNodeDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyNodeDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
+   **MyNodeDevice** : Toto je název zařízení, které registrujete. Doporučuje se používat **MyNodeDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -82,7 +83,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+    **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -97,9 +98,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v tomto rychlém startu.
 
-3. Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
+3. Potřebujete také _připojovací řetězec služby_ , který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
-    **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+    **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -117,11 +118,11 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení po provedení přímé metody pošle potvrzení zpátky do vašeho centra.
 
-1. V okně místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
+1. V okně místního terminálu a přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2** .
 
-2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.js**.
+2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.js** .
 
-    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.js**.
+    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice.js** .
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení:
 
@@ -138,11 +139,11 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace umožňuje přímé volání metod do zařízení prostřednictvím služby IoT Hub a naslouchá potvrzením. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
 
-1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
+1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Node.js. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application** .
 
-2. V libovolném textovém editoru otevřete soubor **BackEndApplication.js**.
+2. V libovolném textovém editoru otevřete soubor **BackEndApplication.js** .
 
-    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem služby, který jste si poznamenali v předchozím kroku. Pak změny uložte do **BackEndApplication.js**.
+    Nahraďte hodnotu `connectionString` proměnné připojovacím řetězcem služby, který jste si poznamenali v předchozím kroku. Pak změny uložte do **BackEndApplication.js** .
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte back-endovou aplikaci:
 

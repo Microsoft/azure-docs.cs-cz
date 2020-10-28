@@ -8,13 +8,13 @@ ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: ee267bda44cde77cf5d3434cd75eecaf34bd5264
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3328fa7d71138ba75fac0c2aed11d7a85081d03a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978845"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748723"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rychlý Start: nasazení prvního modulu IoT Edge do virtuálního zařízení se systémem Linux
 
@@ -55,7 +55,7 @@ Cloudové prostředky:
    az group create --name IoTEdgeResources --location westus2
    ```
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Začněte s rychlým startem vytvořením služby IoT Hub pomocí Azure CLI.
 
@@ -63,13 +63,13 @@ Začněte s rychlým startem vytvořením služby IoT Hub pomocí Azure CLI.
 
 Pro tento rychlý start můžete použít bezplatnou úroveň IoT Hubu. Pokud jste v minulosti používali IoT Hub a už máte vytvořeného centra, můžete použít toto centrum IoT.
 
-Následující kód vytvoří bezplatný rozbočovač **F1** ve skupině prostředků **IoTEdgeResources**. Nahraďte `{hub_name}` jedinečným názvem vašeho centra IoT. Vytvoření IoT Hub může trvat několik minut.
+Následující kód vytvoří bezplatný rozbočovač **F1** ve skupině prostředků **IoTEdgeResources** . Nahraďte `{hub_name}` jedinečným názvem vašeho centra IoT. Vytvoření IoT Hub může trvat několik minut.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   Pokud dojde k chybě kvůli tomu, že vaše předplatné již jedno bezplatné centrum obsahuje, změňte skladovou položku na **S1**. V každém předplatném může být jenom jeden bezplatný IoT Hub. Pokud se zobrazí chyba, že název IoT Hub není k dispozici, znamená to, že někdo jiný již má centrum s tímto názvem. Zkuste nový název.
+   Pokud dojde k chybě kvůli tomu, že vaše předplatné již jedno bezplatné centrum obsahuje, změňte skladovou položku na **S1** . V každém předplatném může být jenom jeden bezplatný IoT Hub. Pokud se zobrazí chyba, že název IoT Hub není k dispozici, znamená to, že někdo jiný již má centrum s tímto názvem. Zkuste nový název.
 
 ## <a name="register-an-iot-edge-device"></a>Zaregistrovat zařízení IoT Edge
 
@@ -141,7 +141,7 @@ Tato šablona používá následující parametry:
 | **dnsLabelPrefix** | Řetězec, který se použije k vytvoření názvu hostitele virtuálního počítače. Použijte příklad **My Edge-VM** nebo zadejte nový řetězec. |
 | **adminUsername** | Uživatelské jméno pro účet správce virtuálního počítače. Použijte vzorový **azureUser** nebo zadejte nové uživatelské jméno. |
 | **deviceConnectionString** | Připojovací řetězec z identity zařízení v IoT Hub, který se používá ke konfiguraci modulu runtime IoT Edge na virtuálním počítači. Příkaz CLI v rámci tohoto parametru přiřadí připojovací řetězec za vás. Zástupný text nahraďte názvem služby IoT Hub. |
-| **authenticationType** | Metoda ověřování pro účet správce. V tomto rychlém startu se používá ověřování **hesla** , ale můžete tento parametr nastavit i na **sshPublicKey**. |
+| **authenticationType** | Metoda ověřování pro účet správce. V tomto rychlém startu se používá ověřování **hesla** , ale můžete tento parametr nastavit i na **sshPublicKey** . |
 | **adminPasswordOrKey** | Heslo nebo hodnota klíče SSH pro účet správce. Zástupný text nahraďte zabezpečeným heslem. Heslo musí mít aspoň 12 znaků a musí obsahovat tři ze čtyř z následujících znaků: malá písmena, Velká písmena, číslice a speciální znaky. |
 
 Po dokončení nasazení byste měli v rozhraní příkazového řádku (CLI) zobrazit výstup ve formátu JSON, který obsahuje informace SSH pro připojení k virtuálnímu počítači. Zkopírujte hodnotu **veřejné položky SSH** v části **výstupy** :
@@ -175,7 +175,7 @@ Po připojení k virtuálnímu počítači ověřte, že modul runtime byl úsp�
    journalctl -u iotedge
    ```
 
-3. Zobrazte všechny moduly spuštěné na vašem zařízení IoT Edge. Vzhledem k tomu, že jde o první spuštění služby, měl by se zobrazit pouze spuštěný modul **edgeAgent**. Ve výchozím nastavení se spustí modul edgeAgent a pomůže vám nainstalovat a spustit všechny další moduly, které nasadíte do svého zařízení.
+3. Zobrazte všechny moduly spuštěné na vašem zařízení IoT Edge. Vzhledem k tomu, že jde o první spuštění služby, měl by se zobrazit pouze spuštěný modul **edgeAgent** . Ve výchozím nastavení se spustí modul edgeAgent a pomůže vám nainstalovat a spustit všechny další moduly, které nasadíte do svého zařízení.
 
    ```bash
    sudo iotedge list
@@ -229,7 +229,7 @@ Pokud jste virtuální počítač a centrum IoT vytvořili v nové skupině pros
 > [!IMPORTANT]
 > Odstranění skupiny prostředků je nevratné.
 
-Odeberte skupinu **IoTEdgeResources**. Odstranění skupiny prostředků může trvat několik minut.
+Odeberte skupinu **IoTEdgeResources** . Odstranění skupiny prostředků může trvat několik minut.
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources

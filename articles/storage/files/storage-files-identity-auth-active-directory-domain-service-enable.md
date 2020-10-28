@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: contperfq1
-ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq1, devx-track-azurecli
+ms.openlocfilehash: 906ec80ecc198675fdb5b163403267be1d13de00
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500313"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746854"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
@@ -25,7 +25,7 @@ Pokud se sdílenými složkami Azure teprve začínáte, doporučujeme si přeč
 > Soubory Azure podporují ověřování pomocí protokolu Kerberos s Azure služba AD DS s šifrováním RC4-HMAC. Šifrování AES Kerberos ještě není podporované.
 > Služba soubory Azure podporuje ověřování pro Azure služba AD DS s plnou synchronizací s Azure AD. Pokud jste povolili synchronizaci s vymezeným oborem v Azure služba AD DS, že se jenom synchronizuje omezená sada identit z Azure AD, ověřování a autorizace se nepodporuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než povolíte Azure AD přes SMB pro sdílené složky Azure, ujistěte se, že jste dokončili následující požadavky:
 
@@ -39,7 +39,7 @@ Než povolíte Azure AD přes SMB pro sdílené složky Azure, ujistěte se, že
 
     Aby bylo možné podporovat ověřování pomocí přihlašovacích údajů Azure AD, musíte Azure AD Domain Services pro vašeho tenanta Azure AD povolit. Pokud nejste správcem tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů, které vám [umožní Azure Active Directory Domain Services používání Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
 
-    Dokončení nasazení Azure služba AD DS obvykle trvá přibližně 15 minut. Než přejdete k dalšímu kroku, ověřte, že se stav služby Azure služba AD DS zobrazuje jako **spuštěný**a povolená synchronizace hodnot hash hesel.
+    Dokončení nasazení Azure služba AD DS obvykle trvá přibližně 15 minut. Než přejdete k dalšímu kroku, ověřte, že se stav služby Azure služba AD DS zobrazuje jako **spuštěný** a povolená synchronizace hodnot hash hesel.
 
 1.  **Doména: připojení virtuálního počítače Azure s Azure služba AD DS.**
 
@@ -87,9 +87,9 @@ Mějte na paměti, že můžete povolit ověřování Azure služba AD DS přes 
 Pokud chcete povolit ověřování pomocí služby Azure služba AD DS přes protokol SMB s [Azure Portal](https://portal.azure.com), postupujte podle následujících kroků:
 
 1. V Azure Portal navštivte svůj existující účet úložiště nebo [vytvořte účet úložiště](../common/storage-account-create.md).
-1. V části **Nastavení** vyberte **Konfigurace**.
-1. V části **přístup založený na identitě pro sdílené složky** přepněte přepínač pro **službu Azure Active Directory Domain Service (AAD DS)** na **povolenou**.
-1. Vyberte **Uložit**.
+1. V části **Nastavení** vyberte **Konfigurace** .
+1. V části **přístup založený na identitě pro sdílené složky** přepněte přepínač pro **službu Azure Active Directory Domain Service (AAD DS)** na **povolenou** .
+1. Vyberte **Uložit** .
 
 Následující obrázek ukazuje, jak povolit Azure služba AD DS ověřování pomocí protokolu SMB pro váš účet úložiště.
 
@@ -99,7 +99,7 @@ Následující obrázek ukazuje, jak povolit Azure služba AD DS ověřování p
 
 Pokud chcete povolit ověřování Azure služba AD DS přes protokol SMB s Azure PowerShell, nainstalujte nejnovější modul AZ Module (2,4 nebo novější) nebo modul AZ. Storage (1,5 nebo novější). Další informace o instalaci PowerShellu najdete v tématu [instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Pokud chcete vytvořit nový účet úložiště, zavolejte [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)a pak nastavte parametr **EnableAzureActiveDirectoryDomainServicesForFile** na **true**. V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, parametr pro povolení funkce je **EnableAzureFilesAadIntegrationForSMB**.)
+Pokud chcete vytvořit nový účet úložiště, zavolejte [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)a pak nastavte parametr **EnableAzureActiveDirectoryDomainServicesForFile** na **true** . V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, parametr pro povolení funkce je **EnableAzureFilesAadIntegrationForSMB** .)
 
 ```powershell
 # Create a new storage account
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 Pokud chcete povolit ověřování Azure AD přes protokol SMB pomocí Azure CLI, nainstalujte nejnovější verzi rozhraní příkazového řádku (verze 2.0.70 nebo novější). Další informace o instalaci rozhraní příkazového řádku Azure najdete v tématu [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Chcete-li vytvořit nový účet úložiště, zavolejte příkaz [AZ Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)a nastavte `--enable-files-aadds` vlastnost na **hodnotu true**. V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, je parametr pro povolení funkce **File-AAD**.)
+Chcete-li vytvořit nový účet úložiště, zavolejte příkaz [AZ Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)a nastavte `--enable-files-aadds` vlastnost na **hodnotu true** . V následujícím příkladu Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. (Pokud jste používali předchozí modul Preview, je parametr pro povolení funkce **File-AAD** .)
 
 ```azurecli-interactive
 # Create a new storage account

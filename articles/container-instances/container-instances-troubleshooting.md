@@ -3,13 +3,13 @@ title: Řešení běžných potíží
 description: Naučte se řešit běžné problémy při nasazení, spuštění nebo správě Azure Container Instances
 ms.topic: article
 ms.date: 06/25/2020
-ms.custom: mvc
-ms.openlocfilehash: b31f29cdc9cd15ebf3ba88769095bfd0ef2628d2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148613"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746911"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží se službou Azure Container Instances
 
@@ -99,7 +99,7 @@ Tato chyba označuje, že kvůli vysokému zatížení v oblasti, ve které se p
 ## <a name="issues-during-container-group-runtime"></a>Problémy při běhu skupiny kontejnerů
 ### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontejner se průběžně zastavuje a restartuje (bez dlouhotrvajícího procesu)
 
-Skupiny kontejnerů jsou standardně nastavené na [zásady restartování](container-instances-restart-policy.md) **vždy**, takže kontejnery ve skupině kontejnerů se po spuštění po dokončení vždy restartují. Je možné, že tuto změnu budete muset změnit na **neúspěšné** nebo **nikdy** , pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **chybu** a stále se zobrazuje nepřetržité restartování, může se jednat o problém s aplikací nebo skriptem provedeným ve vašem kontejneru.
+Skupiny kontejnerů jsou standardně nastavené na [zásady restartování](container-instances-restart-policy.md) **vždy** , takže kontejnery ve skupině kontejnerů se po spuštění po dokončení vždy restartují. Je možné, že tuto změnu budete muset změnit na **neúspěšné** nebo **nikdy** , pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **chybu** a stále se zobrazuje nepřetržité restartování, může se jednat o problém s aplikací nebo skriptem provedeným ve vašem kontejneru.
 
 Pokud spouštíte skupiny kontejnerů bez dlouhotrvajících procesů, můžete se setkat se opakovanými ukončeními a restarty s obrázky, jako je Ubuntu nebo Alpine. Připojení přes [exec](container-instances-exec.md) nebude fungovat, protože kontejner nemá žádný proces, který ho udržuje aktivní. Chcete-li tento problém vyřešit, zahrňte do nasazení skupiny kontejnerů příkaz Start podobný tomuto:, aby byl kontejner spuštěný.
 
@@ -213,7 +213,7 @@ Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu,
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Ve výstupu příkazu vyhledejte IP adresu skupiny kontejnerů `az container create` . Vyhledejte hodnotu **IP**. 
+1. Ve výstupu příkazu vyhledejte IP adresu skupiny kontejnerů `az container create` . Vyhledejte hodnotu **IP** . 
 1. Po úspěšném zřízení kontejneru přejděte na adresu IP a port aplikace kontejneru v prohlížeči, například: `192.0.2.0:9000` . 
 
     Měla by se zobrazit zpráva "Vítá vás Azure Container Instances!" zpráva zobrazená webovou aplikací

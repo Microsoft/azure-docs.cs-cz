@@ -7,13 +7,13 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-ms.custom: mvc
-ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 91e4e7de73d820c345b2973896d07d3479e49f9e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91297143"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748093"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Rychlý Start: nastavení IoT Hub Device Provisioning Service pomocí šablony Azure Resource Manager
 

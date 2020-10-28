@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e6e53755d9231008d0f48c755ff9da297d7305d7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499547"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747178"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Rychlý Start: vytváření a Správa aplikací logiky pomocí Azure CLI
 
 V tomto rychlém startu se dozvíte, jak vytvářet a spravovat Logic Apps pomocí [rozšíření Azure CLI Logic Apps](/cli/azure/ext/logic/logic?view=azure-cli-latest) ( `az logic` ). Z příkazového řádku můžete vytvořit aplikaci logiky pomocí souboru JSON pro definici pracovního postupu aplikace logiky. Aplikaci logiky pak můžete spravovat spuštěním operací, jako například `list` , `show` ( `get` ), `update` a `delete` z příkazového řádku.
 
 > [!WARNING]
-> Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou*. Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
+> Rozšíření Azure CLI Logic Apps v současné době *experimentální* a nezabývá se *zákaznickou podporou* . Toto rozšíření CLI používejte opatrně, zejména pokud se rozhodnete použít rozšíření v produkčním prostředí.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -61,7 +61,7 @@ Výstup ukazuje, `provisioningState` Jak `Succeeded` se vaše skupina prostředk
 
 ## <a name="workflow-definition"></a>Definice pracovního postupu
 
-Než [vytvoříte novou aplikaci logiky](#create-logic-apps-from-cli) nebo [aktualizujete existující aplikaci logiky](#update-logic-apps-from-cli) pomocí rozhraní příkazového řádku Azure, budete potřebovat definici pracovního postupu pro vaši aplikaci logiky. V Azure Portal můžete zobrazit definici zdrojové pracovní postup aplikace logiky ve formátu JSON přepnutím ze zobrazení **Návrháře** do **zobrazení kódu**.
+Než [vytvoříte novou aplikaci logiky](#create-logic-apps-from-cli) nebo [aktualizujete existující aplikaci logiky](#update-logic-apps-from-cli) pomocí rozhraní příkazového řádku Azure, budete potřebovat definici pracovního postupu pro vaši aplikaci logiky. V Azure Portal můžete zobrazit definici zdrojové pracovní postup aplikace logiky ve formátu JSON přepnutím ze zobrazení **Návrháře** do **zobrazení kódu** .
 
 Když spustíte příkazy pro vytvoření nebo aktualizaci aplikace logiky, vaše definice pracovního postupu se nahraje jako požadovaný parametr ( `--definition` ). Definici pracovního postupu musíte vytvořit jako soubor JSON, který následuje po [schématu jazyka definice pracovního postupu](./logic-apps-workflow-definition-language.md).
 
@@ -90,7 +90,7 @@ Váš příkaz musí zahrnovat tyto [povinné parametry](/cli/azure/ext/logic/lo
 | --------- | ----- | ----------- |
 | Definice pracovního postupu | `--definition` | Soubor JSON s [definicí pracovního postupu](#workflow-definition)vaší aplikace logiky |
 | Umístění | `--location -l` | Oblast Azure, ve které se nachází vaše aplikace logiky |
-| Name | `--name -n` | Název vaší aplikace logiky Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `()` ) a tečky ( `.` ). Název musí být také v různých oblastech jedinečný. |
+| Název | `--name -n` | Název vaší aplikace logiky Název může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `()` ) a tečky ( `.` ). Název musí být také v různých oblastech jedinečný. |
 | Název skupiny prostředků | `--resource-group -g` | [Skupina prostředků Azure](../azure-resource-manager/management/overview.md) , ve které chcete vytvořit aplikaci logiky. Než začnete, [vytvořte skupinu prostředků](#example---create-resource-group) , pokud ji ještě nemáte k dispozici pro vaši aplikaci logiky. |
 
 Můžete také zahrnout další [volitelné parametry](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters) pro konfiguraci ovládacích prvků přístupu aplikace logiky, koncových bodů, účtu integrace, prostředí integrační služby, stavu a značek prostředků.
@@ -221,7 +221,7 @@ Výsledky můžete filtrovat podle následujících [volitelných parametrů](/c
 | --------- | ----- | ----------- |
 | Název skupiny prostředků | `--resource-group -g` | Název skupiny prostředků, podle které chcete filtrovat výsledky. |
 | Počet položek | `--top` | Počet položek, které jsou součástí vašich výsledků. |
-| Filtr | `--filter` | Typ filtru, který používáte v seznamu. Můžete filtrovat podle stavu ( `State` ), triggeru ( `Trigger` ) a identifikátoru odkazovaného prostředku ( `ReferencedResourceId` ). |
+| Filtrovat | `--filter` | Typ filtru, který používáte v seznamu. Můžete filtrovat podle stavu ( `State` ), triggeru ( `Trigger` ) a identifikátoru odkazovaného prostředku ( `ReferencedResourceId` ). |
 
 ```azurecli
 
@@ -241,7 +241,7 @@ az logic workflow list --resource-group "testResourceGroup" --filter "(State eq 
 
 ```
 
-## <a name="errors"></a>chyby
+## <a name="errors"></a>Chyby
 
 Následující chyba znamená, že rozšíření rozhraní příkazového řádku Azure Logic Apps není nainstalováno. Podle pokynů v části požadavky [nainstalujte Logic Apps rozšíření](#prerequisites) na svém počítači.
 
@@ -268,7 +268,7 @@ K vašim příkazům můžete použít následující volitelné parametry glob�
 | Výstupní formát | `--output -o` | Změňte [výstupní formát](/cli/azure/format-output-azure-cli?view=azure-cli-latest) z výchozího formátu JSON. |
 | Zobrazit pouze chyby | `--only-show-errors` | Potlačí upozornění a zobrazí pouze chyby. |
 | Verbose | `--verbose` | Zobrazit podrobné protokoly. |
-| Ladit | `--debug` | Zobrazí všechny protokoly ladění. |
+| Ladění | `--debug` | Zobrazí všechny protokoly ladění. |
 | Zpráva o nápovědě | `--help -h` | Zobrazit dialogové okno help. |
 | Dotaz | `--query` | Nastavte řetězec dotazu JMESPath pro výstup JSON. |
 

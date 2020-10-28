@@ -6,14 +6,14 @@ ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 173c6ff8bb4bcee7ecc40f9f277fae0e4cb8dd13
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c8542bfe3d1393917a63e4a1feae7d6dfc223031
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152351"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746177"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rychlý Start: Vytvoření aplikace App Service pomocí šablony ARM
 
@@ -21,13 +21,13 @@ Začněte s [Azure App Service](overview.md) nasazením aplikace do cloudu pomoc
 
  [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
-K nasazení na **Linux**použijte následující tlačítko:
+K nasazení na **Linux** použijte následující tlačítko:
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-linux%2Fazuredeploy.json)
 
-K nasazení v **systému Windows**použijte následující tlačítko:
+K nasazení v **systému Windows** použijte následující tlačítko:
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-service-docs-windows%2Fazuredeploy.json)
 
@@ -51,12 +51,12 @@ Tato šablona obsahuje několik parametrů, které jsou předdefinované pro va�
 
 | Parametry | Typ    | Výchozí hodnota                | Popis |
 |------------|---------|------------------------------|-------------|
-| webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
-| location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
-| skladové        | řetězec  | Kláves                         | Velikost instance (F1 = Free úrovně) |
-| language   | řetězec  | platformy                       | Sada programovacích jazyků (.NET, php, Node, HTML) |
+| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
+| location   | string  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
+| skladové        | string  | Kláves                         | Velikost instance (F1 = Free úrovně) |
+| language   | string  | platformy                       | Sada programovacích jazyků (.NET, php, Node, HTML) |
 | Hell | boolean | Nepravda                        | True = nasadit aplikaci Hello World |
-| relijte    | řetězec  | " "                          | Externí úložiště Git (volitelné) |
+| relijte    | string  | " "                          | Externí úložiště Git (volitelné) |
 ::: zone-end
 ::: zone pivot="platform-linux"
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-app-service-docs-linux). Nasadí App Service plán a App Service aplikaci v systému Linux. Je kompatibilní se všemi podporovanými programovacími jazyky na App Service.
@@ -72,11 +72,11 @@ Tato šablona obsahuje několik parametrů, které jsou předdefinované pro va�
 
 | Parametry | Typ    | Výchozí hodnota                | Popis |
 |------------|---------|------------------------------|-------------|
-| webAppName | řetězec  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
-| location   | řetězec  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
-| skladové        | řetězec  | Kláves                         | Velikost instance (F1 = Free úrovně) |
-| linuxFxVersion   | řetězec  | "DOTNETCORE&#124;3,0        | "&#124; verze zásobníku programovacího jazyka" |
-| relijte    | řetězec  | " "                          | Externí úložiště Git (volitelné) |
+| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Název aplikace |
+| location   | string  | "[[resourceName (). Location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Oblast aplikace |
+| skladové        | string  | Kláves                         | Velikost instance (F1 = Free úrovně) |
+| linuxFxVersion   | string  | "DOTNETCORE&#124;3,0        | "&#124; verze zásobníku programovacího jazyka" |
+| relijte    | string  | " "                          | Externí úložiště Git (volitelné) |
 
 ---
 ::: zone-end
@@ -133,19 +133,19 @@ Pokud už je nepotřebujete, [odstraňte skupinu prostředků](../azure-resource
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nasazení z místního Gitu](deploy-local-git.md)
+> [Nasazení z místního Gitu](deploy-local-git.md)
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core s SQL Database](tutorial-dotnetcore-sqldb-app.md)
+> [ASP.NET Core s SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [Python s Postgresem](tutorial-python-postgresql-app.md)
+> [Python s Postgresem](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [PHP s MySQL](tutorial-php-mysql-app.md)
+> [PHP s MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Připojení ke službě Azure SQL Database pomocí jazyka Java](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
+> [Připojení ke službě Azure SQL Database pomocí jazyka Java](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)
+> [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)

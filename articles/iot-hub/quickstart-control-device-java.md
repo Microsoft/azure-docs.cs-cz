@@ -14,13 +14,14 @@ ms.custom:
 - seo-java-september2019
 - mqtt
 - devx-track-java
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 2865d0fc082244e1b135275ecda58edc5649d82b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 915199a619ff7596596b92362de38338bda03029
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150719"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747544"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Rychlý Start: řízení zařízení připojeného ke službě Azure IoT Hub pomocí jazyka Java
 
@@ -32,7 +33,7 @@ V tomto rychlém startu použijete přímou metodu k řízení simulovaného za�
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/?view=azure-java-stable)v části **Dlouhodobá podpora**vyberte **Java 8**.
+* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/?view=azure-java-stable)v části **Dlouhodobá podpora** vyberte **Java 8** .
 
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
@@ -78,9 +79,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Spuštěním následujícího příkazu v Azure Cloud Shell vytvořte identitu zařízení.
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
-   **MyJavaDevice**: Toto je název zařízení, které registrujete. Doporučuje se používat **MyJavaDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
+   **MyJavaDevice** : Toto je název zařízení, které registrujete. Doporučuje se používat **MyJavaDevice** , jak je znázorněno na obrázku. Pokud pro vaše zařízení zvolíte jiný název, budete ho muset použít i v celém rámci tohoto článku a před jeho spuštěním aktualizovat název zařízení v ukázkových aplikacích.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -89,7 +90,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-   **YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
+   **YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který zvolíte pro Centrum IoT.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -106,9 +107,9 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="retrieve-the-service-connection-string"></a>Načtení připojovacího řetězce služby
 
-Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
+Potřebujete také _připojovací řetězec služby_ , který back-endové aplikaci umožní připojení k vašemu centru IoT a načtení zpráv. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
 
-**YourIoTHubName**: níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
+**YourIoTHubName** : níže uvedený zástupný symbol nahraďte názvem, který jste zvolili pro Centrum IoT.
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -124,11 +125,11 @@ Tuto hodnotu použijete později v tomto rychlém startu. Tento připojovací ř
 
 Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení po provedení přímé metody pošle potvrzení zpátky do vašeho centra.
 
-1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
+1. V okně místního terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2** .
 
-2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
+2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** .
 
-    Nahraďte hodnotu `connString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice. Java**.
+    Nahraďte hodnotu `connString` proměnné připojovacím řetězcem zařízení, který jste si poznamenali dříve. Pak změny uložte do **SimulatedDevice. Java** .
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a sestavte aplikaci simulovaného zařízení:
 
@@ -150,11 +151,11 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace umožňuje přímé volání metod do zařízení prostřednictvím služby IoT Hub a naslouchá potvrzením. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
 
-1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
+1. V jiném okně místního terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application** .
 
-2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java**.
+2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** .
 
-    Nahraďte hodnotu `iotHubConnectionString` proměnné připojovacím řetězcem služby, který jste si poznamenali v předchozím kroku. Pak změny uložte do **BackEndApplication. Java**.
+    Nahraďte hodnotu `iotHubConnectionString` proměnné připojovacím řetězcem služby, který jste si poznamenali v předchozím kroku. Pak změny uložte do **BackEndApplication. Java** .
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a sestavte back-endovou aplikaci:
 

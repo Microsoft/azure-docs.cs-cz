@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630504"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747906"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
@@ -44,25 +44,25 @@ Případně bude tato instalace existovat, pokud používáte virtuální počí
 
 ## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
-Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. Pomocí následujících pokynů můžete zlepšit konfiguraci zabezpečení počítače:  [zabezpečený virtuální počítač v Azure](../virtual-machines/security-policy.md), [osvědčené postupy pro zabezpečení sítě](../security/fundamentals/network-best-practices.md).
+Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. Pomocí následujících pokynů můžete zlepšit konfiguraci zabezpečení počítače:  [zabezpečený virtuální počítač v Azure](../virtual-machines/security-policy.md), [osvědčené postupy pro zabezpečení sítě](../security/fundamentals/network-best-practices.md).
 
 Pokud chcete používat komunikaci TLS mezi zdrojem syslog a službou pro předávání syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že počítač se systémem Linux, který používáte jako proxy, používá jeden z následujících operačních systémů:
 
 - 64bitová
   - CentOS 7 a dílčí verze a vyšší (ne 6)
   - Amazon Linux 2017,09
-  - Oracle Linux 6 a 7
+  - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 a dílčí verze a vyšší (ne 6)
   - Debian GNU/Linux 8 a 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
   - SUSE Linux Enterprise Server 12
 - 32bitová
    - CentOS 7
-   - Oracle Linux 6
+   - Oracle Linux 7
    - Red Hat Enterprise Linux Server 7
    - Debian GNU/Linux 8 a 9
    - Ubuntu Linux 14,04 LTS a 16,04 LTS
@@ -79,7 +79,7 @@ Ujistěte se, že váš počítač splňuje i následující požadavky:
 - Oprávnění
     - Na počítači musíte mít zvýšená oprávnění (sudo). 
 - Požadavky na software
-    - Ujistěte se, že máte v počítači spuštěný Python (2,7 nebo vyšší).
+    - Ujistěte se, že je v počítači spuštěný Python 2,7.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f6cd943e381d53c36867ce960cd99552f3aea6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650761"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746519"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Omezení propustnosti příjmu streamování
 
@@ -28,9 +28,9 @@ Omezení příchozího přenosu dat v Azure Time Series Insights Gen2 jsou pops�
 
 Míry příchozího přenosu dat se zobrazují jako faktor počtu zařízení, která jsou ve vaší organizaci, četnosti emisí událostí a velikosti jednotlivých událostí:
 
-* **Počet zařízení** × **četnost měření událostí** × **Velikost každé události**.
+* **Počet zařízení** × **četnost měření událostí** × **Velikost každé události** .
 
-Ve výchozím nastavení Azure Time Series Insights Gen2 může ingestovat příchozí data rychlostí **až 1 MB za sekundu (MB/s) na Azure Time Series Insights prostředí Gen2**. Existují další omezení [na oddíl centra](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits).
+Ve výchozím nastavení Azure Time Series Insights Gen2 může ingestovat příchozí data rychlostí **až 1 MB za sekundu (MB/s) na Azure Time Series Insights prostředí Gen2** . Existují další omezení [na oddíl centra](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits).
 
 > [!TIP]
 >
@@ -41,7 +41,7 @@ Ve výchozím nastavení Azure Time Series Insights Gen2 může ingestovat pří
 
     Při expedici společnosti Contoso je 100 000 zařízení, která generují události třikrát za minutu. Velikost události je 200 bajtů. Používají IoT Hub se čtyřmi oddíly jako se zdrojem událostí Azure Time Series Insights Gen2.
 
-  * Rychlost příjmu pro své Azure Time Series Insights prostředí Gen2 by byla: **100 000 zařízení * 200 bajtů/událost * (3/60 události/s) = 1 MB/s**.
+  * Rychlost příjmu pro své Azure Time Series Insights prostředí Gen2 by byla: **100 000 zařízení * 200 bajtů/událost * (3/60 události/s) = 1 MB/s** .
     * Za předpokladu rovnováhy oddílů by byla míra přijímání dat na oddíl 0,25 MB/s.
     * Míra ingestování společnosti Contoso by byla v rámci omezení škálování.
 
@@ -66,7 +66,7 @@ Při plánování Azure Time Series Insightsho prostředí Gen2 je důležité z
 
 Bez ohledu na to, jestli vytváříte nové centrum pro prostředí Azure Time Series Insights Gen2 nebo použijete stávající, budete muset vypočítat sazbu ingestování na oddíly, abyste zjistili, jestli je v rámci omezení.
 
-Azure Time Series Insights Gen2 v současné době má **omezení na oddíly 0,5 MB/s**.
+Azure Time Series Insights Gen2 v současné době má **omezení na oddíly 0,5 MB/s** .
 
 ### <a name="iot-hub-specific-considerations"></a>Předpoklady týkající se IoT Hub
 
@@ -74,7 +74,7 @@ Při vytvoření zařízení v IoT Hub se trvale přiřadí k oddílu. V takové
 
 Pevné přiřazení oddílu má vliv také na Azure Time Series Insights instance Gen2, které ingestují data odesílaná z IoT Hub pro příjem dat. Když se zprávy z více zařízení předají do centra pomocí stejného ID zařízení brány, můžou dorazit do stejného oddílu ve stejnou dobu, než je omezení škálování na oddíly.
 
-**Dopad**:
+**Dopad** :
 
 * Pokud se v jednom oddílu udržuje nepřetržitá míra přijímání na limit, je možné, že Azure Time Series Insights Gen2 nebude synchronizovat všechny telemetrie zařízení před tím, než se překročila IoT Hub období uchovávání dat. V důsledku toho může dojít ke ztrátě odeslaných dat v případě, že dojde k trvalému překročení limitů pro přijímání.
 

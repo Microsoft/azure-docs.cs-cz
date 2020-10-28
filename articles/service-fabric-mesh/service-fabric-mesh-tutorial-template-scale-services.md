@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: aad0da53dc667039a62d2115c1afe4e2c6662bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: df28083a0522178b7327d9f6d24029d303e417a1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840162"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747862"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Kurz: Škálování aplikace spuštěné ve službě Service Fabric Mesh
 
@@ -32,7 +32,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -56,7 +56,7 @@ Pokud chcete zobrazit počet spuštěných replik pro službu ToDoService, spus�
 az mesh service show --resource-group myResourceGroup --name ToDoService --app-name todolistapp --query "replicaCount"
 ```
 
-V šabloně nasazení pro prostředek aplikace má každá služba vlastnost *replicaCount*, kterou můžete použít k nastavení toho, kolikrát chcete tuto službu nasadit. Aplikace se může skládat z několika služeb, z nichž každá má jedinečný počet *replicaCount* a které jsou společně nasazovány a spravovány. Pokud chcete škálovat počet replik služby, upravte hodnotu *replicaCount* pro každou službu, kterou chcete škálovat, v šabloně nasazení nebo souboru parametrů.  Potom aplikaci upgradujte.
+V šabloně nasazení pro prostředek aplikace má každá služba vlastnost *replicaCount* , kterou můžete použít k nastavení toho, kolikrát chcete tuto službu nasadit. Aplikace se může skládat z několika služeb, z nichž každá má jedinečný počet *replicaCount* a které jsou společně nasazovány a spravovány. Pokud chcete škálovat počet replik služby, upravte hodnotu *replicaCount* pro každou službu, kterou chcete škálovat, v šabloně nasazení nebo souboru parametrů.  Potom aplikaci upgradujte.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Úprava parametrů šablony nasazení
 
@@ -88,7 +88,7 @@ Uložte provedené změny souboru parametrů.  Parametry *frontEndReplicaCount* 
     }
 ```
 
-Vlastnost *replicaCount* služby WebFrontEnd odkazuje na parametr *frontEndReplicaCount* a vlastnost *replicaCount* služby ToDoService odkazuje na parametr *serviceReplicaCount*:
+Vlastnost *replicaCount* služby WebFrontEnd odkazuje na parametr *frontEndReplicaCount* a vlastnost *replicaCount* služby ToDoService odkazuje na parametr *serviceReplicaCount* :
 
 ```json
     "services": [

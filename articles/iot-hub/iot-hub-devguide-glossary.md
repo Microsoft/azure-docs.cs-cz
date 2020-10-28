@@ -11,12 +11,13 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 30ce2247207b34ab63df5b32b2a96f27256afdbb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+- devx-track-azurecli
+ms.openlocfilehash: 3a75b3622ebc2085dac898e2a06e09f16466cbf5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547788"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746607"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář IoT Hubch podmínek
 
@@ -58,7 +59,7 @@ K dispozici jsou sady _SDK služeb_ pro několik jazyků, které umožňují vyt
 
 [Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) jsou open source rozšíření Visual Studio Code pro různé platformy, které pomáhá spravovat IoT Hub a zařízení Azure v vs Code. Pomocí nástrojů Azure IoT můžou vývojáři IoT vyvíjet projekt IoT v VS Code snadno.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 [Portál Microsoft Azure](https://portal.azure.com) je centrální místo, kde můžete zřídit a spravovat prostředky Azure. Uspořádává svůj _obsah pomocí oken_ .
 

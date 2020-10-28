@@ -13,13 +13,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
-ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 3cdb7796f3f8c877f130f47b971dc66c113c4d36
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070108"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748852"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Kurz: použití odkazů Key Vault v aplikaci Java pružiny
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
 > * Přístup k hodnotě tohoto klíče z jarní aplikace Java.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Podporovaná [sada Java Development Kit (JDK)](/java/azure/jdk) s verzí 8.
@@ -52,16 +52,16 @@ V tomto kurzu se naučíte:
 1. V levém horním rohu Azure Portal vyberte možnost **vytvořit prostředek** :
 
     ![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/search-services.png)
-1. Do vyhledávacího pole zadejte **Key Vault**.
+1. Do vyhledávacího pole zadejte **Key Vault** .
 1. V seznamu výsledků vyberte na levé straně **trezory klíčů** .
-1. V **trezorech klíčů**vyberte **Přidat**.
-1. Na pravé straně v části **Vytvoření trezoru klíčů**zadejte následující informace:
+1. V **trezorech klíčů** vyberte **Přidat** .
+1. Na pravé straně v části **Vytvoření trezoru klíčů** zadejte následující informace:
     * Vyberte **předplatné** a zvolte předplatné.
-    * V případě **skupiny prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
-    * V **názvu trezoru klíčů**je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2**.
+    * V případě **skupiny prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    * V **názvu trezoru klíčů** je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2** .
     * V rozevíracím seznamu **oblast** vyberte umístění.
 1. Ostatní možnosti **Vytvoření trezoru klíčů** ponechte výchozí hodnoty.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
 V tomto okamžiku je váš účet Azure jediným autorizovaným oprávněním pro přístup k tomuto novému trezoru.
 
@@ -69,28 +69,28 @@ V tomto okamžiku je váš účet Azure jediným autorizovaným oprávněním pr
 
 ## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
 
-Pokud chcete do trezoru přidat tajný klíč, musíte provést několik dalších kroků. V takovém případě přidejte zprávu, kterou můžete použít k otestování Key Vault načítání. Zpráva se nazývá **zpráva**a v ní uložíte hodnotu Hello z Key Vault.
+Pokud chcete do trezoru přidat tajný klíč, musíte provést několik dalších kroků. V takovém případě přidejte zprávu, kterou můžete použít k otestování Key Vault načítání. Zpráva se nazývá **zpráva** a v ní uložíte hodnotu Hello z Key Vault.
 
-1. Na stránkách vlastností Key Vault vyberte **tajné klíče**.
-1. Vyberte **Generovat/importovat**.
+1. Na stránkách vlastností Key Vault vyberte **tajné klíče** .
+1. Vyberte **Generovat/importovat** .
 1. V podokně **vytvořit tajný klíč** zadejte následující hodnoty:
-    * **Možnosti nahrání**: zadejte **Ruční**.
-    * **Název**: zadejte **zprávu**.
-    * **Hodnota**: zadejte **hello z Key Vault**.
+    * **Možnosti nahrání** : zadejte **Ruční** .
+    * **Název** : zadejte **zprávu** .
+    * **Hodnota** : zadejte **hello z Key Vault** .
 1. Ponechte druhé **vytvořit vlastnosti tajného klíče** s výchozími hodnotami.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
-1. Vyberte **Průzkumník konfigurace**.
+1. Vyberte **Průzkumník konfigurace** .
 
-1. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
-    * **Klíč**: vyberte **/Application/config.keyvaultmessage**
-    * **Popisek**: Nechte tuto hodnotu prázdnou.
-    * **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající hodnotám v trezoru klíčů, který jste vytvořili v předchozí části.
-    * **Tajný kód**: vyberte tajný kód s názvem **zpráva** , kterou jste vytvořili v předchozí části.
+1. Vyberte **+ vytvořit**  >  **odkaz na Trezor klíčů** a pak zadejte následující hodnoty:
+    * **Klíč** : vyberte **/Application/config.keyvaultmessage**
+    * **Popisek** : Nechte tuto hodnotu prázdnou.
+    * **Předplatné** , **Skupina prostředků** a **Trezor klíčů** : zadejte hodnoty odpovídající hodnotám v trezoru klíčů, který jste vytvořili v předchozí části.
+    * **Tajný kód** : vyberte tajný kód s názvem **zpráva** , kterou jste vytvořili v předchozí části.
 
 ## <a name="connect-to-key-vault"></a>Připojení k Key Vault
 
@@ -129,7 +129,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Vytvořte proměnné prostředí **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET**a **AZURE_TENANT_ID**. Použijte hodnoty pro instanční objekt, který byl zobrazen v předchozích krocích. Na příkazovém řádku spusťte následující příkazy a restartujte příkazový řádek, aby se změna projevila:
+1. Vytvořte proměnné prostředí **AZURE_CLIENT_ID** , **AZURE_CLIENT_SECRET** a **AZURE_TENANT_ID** . Použijte hodnoty pro instanční objekt, který byl zobrazen v předchozích krocích. Na příkazovém řádku spusťte následující příkazy a restartujte příkazový řádek, aby se změna projevila:
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -159,7 +159,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualizace kódu pro použití odkazu na Key Vault
 
-1. Vytvořte proměnnou prostředí s názvem **APP_CONFIGURATION_ENDPOINT**. Nastavte jeho hodnotu na koncový bod úložiště konfigurace aplikace. Koncový bod najdete v okně **přístupové klíče** v Azure Portal. Restartováním příkazového řádku umožníte, aby se změna projevila. 
+1. Vytvořte proměnnou prostředí s názvem **APP_CONFIGURATION_ENDPOINT** . Nastavte jeho hodnotu na koncový bod úložiště konfigurace aplikace. Koncový bod najdete v okně **přístupové klíče** v Azure Portal. Restartováním příkazového řádku umožníte, aby se změna projevila. 
 
 
 1. Otevřete *rutinu Bootstrap. Properties* ve složce *Resources* . Aktualizujte tento soubor, aby se použila hodnota **APP_CONFIGURATION_ENDPOINT** . Odebere všechny odkazy na připojovací řetězec v tomto souboru. 
@@ -168,7 +168,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
     ```
 
-1. Otevřete *MessageProperties. Java*. Přidejte novou proměnnou s názvem *keyVaultMessage*:
+1. Otevřete *MessageProperties. Java* . Přidejte novou proměnnou s názvem *keyVaultMessage* :
 
     ```java
     private String keyVaultMessage;
@@ -182,7 +182,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     }
     ```
 
-1. Otevřete *HelloController. Java*. Aktualizujte metodu *GetMessage* tak, aby zahrnovala zprávu načtenou z Key Vault.
+1. Otevřete *HelloController. Java* . Aktualizujte metodu *GetMessage* tak, aby zahrnovala zprávu načtenou z Key Vault.
 
     ```java
     @GetMapping
@@ -220,7 +220,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     }
     ```
 
-1. Vytvořte nový soubor s názvem *AppConfiguration. Java*. A níže přidejte kód.
+1. Vytvořte nový soubor s názvem *AppConfiguration. Java* . A níže přidejte kód.
 
     ```java
     package com.example.demo;

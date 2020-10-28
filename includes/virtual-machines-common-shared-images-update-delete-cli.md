@@ -7,25 +7,25 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
-ms.custom: include file
-ms.openlocfilehash: 213fec9e7d9da56d34f79fee7e677b0e6bbd7a63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: c4dcc0d578df5dbd693f4f2a05f3e531bb509838
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89304092"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755345"
 ---
 ## <a name="update-resources"></a>Aktualizace prostředků
 
 Existují určitá omezení, která je možné aktualizovat. Následující položky lze aktualizovat: 
 
 Galerie sdílených imagí:
-- Description
+- Popis
 
 Definice Image:
 - Doporučené vCPU
 - Doporučená paměť
-- Description
+- Popis
 - Datum konce životnosti
 
 Verze Image:

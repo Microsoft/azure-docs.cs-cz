@@ -3,13 +3,13 @@ title: Použití Azure Event Grid s událostmi ve schématu CloudEvents
 description: Popisuje, jak používat CloudEvents schéma pro události v Azure Event Grid. Služba podporuje události v implementaci JSON cloudových událostí.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 4e8f4c62221e5782ad04695fba172c0aefb62454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 51e3f5477cad39b48b441122cf17599f7d25ccf8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324191"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747283"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Použití schématu CloudEvents v 1.0 s Event Grid
 Kromě [výchozího schématu událostí](event-schema.md)Azure Event Grid nativně podporuje události v [implementaci JSON pro vazby protokolu CloudEvents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) a [http](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md). [CloudEvents](https://cloudevents.io/) je [otevřená specifikace](https://github.com/cloudevents/spec/blob/v1.0/spec.md) popisující data události.

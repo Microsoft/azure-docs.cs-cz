@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Naučte se nakonfigurovat Azure Dev Spaces k použití vlastního kontroleru NGINX příchozího přenosu dat a konfiguraci HTTPS pomocí tohoto kontroleru příchozího přenosu dat.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.custom: devx-track-js
-ms.openlocfilehash: 1ef462171199ce818b6146efbe705cca30b24564
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: e1918b5ce9c0fdba81174f0b36fd1ce51d0df70a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973080"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748817"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Použití vlastního kontroleru NGINX příchozího přenosu dat a konfigurace HTTPS
 
@@ -58,7 +58,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> Výše uvedený příklad vytvoří veřejný koncový bod pro váš kontroler příchozího přenosu dat. Pokud pro svůj kontroler příchozího přenosu dat potřebujete místo toho použít privátní koncový bod, přidejte *--set Controller. Service. anotace. Service \\ . beta \\ . Kubernetes \\ . IO/Azure-Load-vyrovnávání zatížení – interní parametr "= true"* pro příkaz *Helm Install* . Například:
+> Výše uvedený příklad vytvoří veřejný koncový bod pro váš kontroler příchozího přenosu dat. Pokud pro svůj kontroler příchozího přenosu dat potřebujete místo toho použít privátní koncový bod, přidejte *--set Controller. Service. anotace. Service \\ . beta \\ . Kubernetes \\ . IO/Azure-Load-vyrovnávání zatížení – interní parametr "= true"* pro příkaz *Helm Install* . Příklad:
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
@@ -100,8 +100,8 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Otevřete [hodnoty. yaml][values-yaml] a proveďte následující aktualizace:
-* Nahradí všechny výskyty *<REPLACE_ME_WITH_HOST_SUFFIX>* pomocí *Nginx. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN*. 
-* Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: Nginx # Custom*příchozí příchozí přenos dat. 
+* Nahradí všechny výskyty *<REPLACE_ME_WITH_HOST_SUFFIX>* pomocí *Nginx. MY_CUSTOM_DOMAIN* používání vaší domény pro *MY_CUSTOM_DOMAIN* . 
+* Nahraďte *Kubernetes.IO/Ingress.Class: traefik-azds # dev Spaces-Specific* to *Kubernetes.IO/Ingress.Class: Nginx # Custom* příchozí příchozí přenos dat. 
 
 Níže je příklad aktualizovaného `values.yaml` souboru:
 
@@ -210,7 +210,7 @@ spec:
 ```
 
 > [!NOTE]
-> Pro účely testování je k dispozici také [přípravný Server][letsencrypt-staging-issuer] , který můžete použít pro *ClusterIssuer*.
+> Pro účely testování je k dispozici také [přípravný Server][letsencrypt-staging-issuer] , který můžete použít pro *ClusterIssuer* .
 
 Použijte `kubectl` k použití `letsencrypt-clusterissuer.yaml` .
 
@@ -255,7 +255,7 @@ Upgradujte ukázkovou aplikaci pomocí `helm` :
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-Přejděte do ukázkové aplikace v podřízeném prostoru pro *vývoj/azureuser1* a Všimněte si, že budete přesměrováni na používání protokolu HTTPS. Všimněte si také, že se stránka načítá, ale v prohlížeči se zobrazují nějaké chyby. Otevřením konzoly prohlížeče se zobrazí chyba vztahující se ke stránce HTTPS, která se pokouší načíst prostředky HTTP. Například:
+Přejděte do ukázkové aplikace v podřízeném prostoru pro *vývoj/azureuser1* a Všimněte si, že budete přesměrováni na používání protokolu HTTPS. Všimněte si také, že se stránka načítá, ale v prohlížeči se zobrazují nějaké chyby. Otevřením konzoly prohlížeče se zobrazí chyba vztahující se ke stránce HTTPS, která se pokouší načíst prostředky HTTP. Příklad:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.

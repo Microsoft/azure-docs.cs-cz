@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, devx-track-js
+ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c54a112a85ad930dde524ba4293a3ad0b700a22f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 86b5c1dc396a755d898f0c3c332ab59933236afe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91302974"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747440"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí proxy aplikace Node.js (Preview)
 
@@ -43,7 +43,7 @@ Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve
 > [!IMPORTANT]
 > Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 >
-> * USA – střed
+> * Střední USA
 > * Střed USA EUAP
 > * Severní Evropa
 > * Jihovýchodní Asie
@@ -60,7 +60,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="create-an-iot-hub"></a>Vytvoření centra IoT (neboli IoT Hubu)
+## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md), můžete tento krok přeskočit.
 
@@ -82,7 +82,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-1. Pokud chcete aplikaci pro back-end povolit připojení ke službě IoT Hub a načíst zprávy, budete potřebovat také *připojovací řetězec služby*. Následující příkaz načte řetězec pro Centrum IoT:
+1. Pokud chcete aplikaci pro back-end povolit připojení ke službě IoT Hub a načíst zprávy, budete potřebovat také *připojovací řetězec služby* . Následující příkaz načte řetězec pro Centrum IoT:
 
    > [!NOTE]
    > Zástupný text *YourIoTHubName* nahraďte názvem, který jste zvolili pro Centrum IoT.

@@ -7,13 +7,13 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: b381c5ad8fd81cd9b7411e1f4679b3f5214e6de9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 2b2c2a8f471aba36592f76caf46b7d26d7e3bb31
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67174848"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756033"
 ---
 ### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>Úprava předpon IP adres místní síťové brány – žádné připojení brány
 

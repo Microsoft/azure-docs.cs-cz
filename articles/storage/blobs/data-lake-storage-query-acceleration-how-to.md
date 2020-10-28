@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659876"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746419"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak pomocí akcelerace dotazů načíst podmnožin
 
 Zrychlení dotazů umožňuje aplikacím a analytickým architekturám významně optimalizovat zpracování dat tím, že načte jenom data, která potřebují k provedení dané operace. Další informace najdete v tématu [Azure Data Lake Storage zrychlení dotazů](data-lake-storage-query-acceleration.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě předplatné nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

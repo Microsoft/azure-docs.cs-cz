@@ -3,13 +3,13 @@ title: Kurz – obnovení virtuálního počítače pomocí Azure CLI
 description: Zjistěte, jak obnovit disk a vytvořit obnovený virtuální počítač v Azure pomocí služeb Backup a Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 2d8ce7ab6d5a3ab244d0292ffe52847f18ea8795
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324977"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746743"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Obnovení virtuálního počítače s využitím Azure CLI
 
@@ -74,7 +74,7 @@ Pokud má zálohovaný virtuální počítač spravované disky a záměr obnovo
         --sku Standard_LRS
     ```
 
-2. Obnovte disk z bodu obnovení pomocí příkazu [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks). Nahraďte *mystorageaccount* názvem účtu úložiště, který jste vytvořili v předchozím příkazu. Nahraďte *myrecoverypointname názvem* názvem bodu obnovení, který jste získali ve výstupu z předchozího příkazu [AZ Backup RecoveryPoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) . ***Zadejte taky cílovou skupinu prostředků, do které se budou spravované disky obnovují***.
+2. Obnovte disk z bodu obnovení pomocí příkazu [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks). Nahraďte *mystorageaccount* názvem účtu úložiště, který jste vytvořili v předchozím příkazu. Nahraďte *myrecoverypointname názvem* názvem bodu obnovení, který jste získali ve výstupu z předchozího příkazu [AZ Backup RecoveryPoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) . ***Zadejte taky cílovou skupinu prostředků, do které se spravované disky obnoví** .
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,7 +88,7 @@ Pokud má zálohovaný virtuální počítač spravované disky a záměr obnovo
     ```
 
     > [!WARNING]
-    > Pokud není zadaná **cílová skupina prostředků** , pak se spravované disky obnoví jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Výhody okamžitého obnovení získáte jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, Neposkytněte parametr **target-Resource-Group** a místo toho zadejte parametr **Restore-as-unmanaged-disk** , jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
+    > Pokud není k dispozici příkaz _ *target-Resource-Group* *, budou spravované disky obnoveny jako nespravované disky do daného účtu úložiště. To bude mít významné důsledky k době obnovení, protože doba potřebná k obnovení disků zcela závisí na daném účtu úložiště. Výhody okamžitého obnovení získáte jenom v případě, že je zadaný parametr Target-Resource-Group. Pokud je záměrem obnovit spravované disky jako nespravované, Neposkytněte parametr **target-Resource-Group** a místo toho zadejte parametr **Restore-as-unmanaged-disk** , jak je uvedeno níže. Tento parametr je k dispozici z AZ 3.4.0 a dál.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -164,7 +164,7 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Po dokončení *stavu* sestav úlohy obnovení budou v *Completed*účtu úložiště obnoveny potřebné informace (konfigurace virtuálních počítačů a šablona nasazení).
+Po dokončení *stavu* sestav úlohy obnovení budou v *Completed* účtu úložiště obnoveny potřebné informace (konfigurace virtuálních počítačů a šablona nasazení).
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Vytvoření virtuálního počítače z obnoveného disku
 

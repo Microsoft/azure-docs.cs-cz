@@ -3,20 +3,20 @@ title: Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru 
 description: Použijte šablony ARM k vytvoření pracovního prostoru Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do protokolů Azure Monitor.
 ms.subservice: logs
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: abcaee8cffd36e22c918b9d82f37370df1d61c26
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631847"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747032"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>Rychlý Start: odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí šablony ARM
 
-Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. To zahrnuje informace, jako je například změna prostředku nebo spuštění virtuálního počítače. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí šablon Azure Resource Manager (šablony ARM) vytvořit pracovní prostor Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../platform/workbooks-overview.md) [protokolu](../platform/alerts-log-query.md) .
+Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o událostech na úrovni předplatného. Obsahuje například informace o úpravách prostředků nebo spouštění virtuálních počítačů. Protokol aktivit můžete zobrazit v Azure Portal nebo načíst položky pomocí PowerShellu a rozhraní příkazového řádku. V tomto rychlém startu se dozvíte, jak pomocí šablon Azure Resource Manager (šablony ARM) vytvořit pracovní prostor Log Analytics a nastavení diagnostiky pro odeslání protokolu aktivit do Azure Monitor protokolů, kde je můžete analyzovat pomocí [dotazů protokolu](../log-query/log-query-overview.md) a povolit další funkce, jako jsou například výstrahy a [sešity](../platform/workbooks-overview.md) [protokolu](../platform/alerts-log-query.md) .
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,7 +29,7 @@ Protokol aktivit je protokol platformy v Azure, který poskytuje přehled o udá
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Následující šablona vytvoří prázdný pracovní prostor Log Analytics. Tuto šablonu uložte jako *CreateWorkspace.jsna*.
+Následující šablona vytvoří prázdný pracovní prostor Log Analytics. Tuto šablonu uložte jako *CreateWorkspace.jsna* .
 
 ```json
 {
@@ -134,7 +134,7 @@ Tato šablona definuje jeden prostředek:
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasaďte šablonu pomocí libovolné standardní metody pro [nasazení šablony ARM](../../azure-resource-manager/templates/deploy-portal.md) , jako jsou následující příklady, pomocí rozhraní příkazového řádku a PowerShellu. Nahraďte ukázkové hodnoty pro **skupinu prostředků**, **pracovní prostor**a **umístění** odpovídajícími hodnotami pro vaše prostředí. Název pracovního prostoru musí být jedinečný mezi všemi předplatnými Azure.
+Nasaďte šablonu pomocí libovolné standardní metody pro [nasazení šablony ARM](../../azure-resource-manager/templates/deploy-portal.md) , jako jsou následující příklady, pomocí rozhraní příkazového řádku a PowerShellu. Nahraďte ukázkové hodnoty pro **skupinu prostředků** , **pracovní prostor** a **umístění** odpovídajícími hodnotami pro vaše prostředí. Název pracovního prostoru musí být jedinečný mezi všemi předplatnými Azure.
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
@@ -180,7 +180,7 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Následující šablona vytvoří nastavení diagnostiky, které odesílá protokol aktivit do Log Analytics pracovního prostoru. Tuto šablonu uložte jako *CreateDiagnosticSetting.jsna*.
+Následující šablona vytvoří nastavení diagnostiky, které odesílá protokol aktivit do Log Analytics pracovního prostoru. Tuto šablonu uložte jako *CreateDiagnosticSetting.jsna* .
 
 ```json
 {
@@ -248,7 +248,7 @@ Tato šablona definuje jeden prostředek:
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasaďte šablonu pomocí libovolné standardní metody pro [nasazení šablony ARM](../../azure-resource-manager/templates/deploy-portal.md) , jako jsou následující příklady, pomocí rozhraní příkazového řádku a PowerShellu. Nahraďte ukázkové hodnoty pro **skupinu prostředků**, **pracovní prostor**a **umístění** odpovídajícími hodnotami pro vaše prostředí. Název pracovního prostoru musí být jedinečný mezi všemi předplatnými Azure.
+Nasaďte šablonu pomocí libovolné standardní metody pro [nasazení šablony ARM](../../azure-resource-manager/templates/deploy-portal.md) , jako jsou následující příklady, pomocí rozhraní příkazového řádku a PowerShellu. Nahraďte ukázkové hodnoty pro **skupinu prostředků** , **pracovní prostor** a **umístění** odpovídajícími hodnotami pro vaše prostředí. Název pracovního prostoru musí být jedinečný mezi všemi předplatnými Azure.
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
@@ -281,15 +281,15 @@ Do pracovního prostoru Log Analytics se odešlou jenom nové položky protokolu
 
 ## <a name="retrieve-data-with-a-log-query"></a>Načtení dat pomocí dotazu protokolu
 
-Pomocí Azure Portal můžete pomocí Log Analytics načíst data z pracovního prostoru. V Azure Portal vyhledejte a pak vyberte **monitor**.
+Pomocí Azure Portal můžete pomocí Log Analytics načíst data z pracovního prostoru. V Azure Portal vyhledejte a pak vyberte **monitor** .
 
-![portál Azure](media/quick-collect-activity-log/azure-portal-monitor.png)
+![Azure Portal](media/quick-collect-activity-log/azure-portal-monitor.png)
 
 V nabídce **Azure monitor** vyberte **protokoly** . Zavřete stránku **příklady dotazů** . Pokud obor není nastavený na pracovní prostor, který jste vytvořili, klikněte na **Vybrat obor** a vyhledejte ho.
 
 ![Rozsah Log Analytics](media/quick-collect-activity-log/log-analytics-scope.png)
 
-V okně dotazu zadejte `AzureActivity` a klikněte na **Spustit**. Jedná se o jednoduchý dotaz, který vrátí všechny záznamy v tabulce *AzureActivity* , která obsahuje všechny záznamy odeslané z protokolu aktivit.
+V okně dotazu zadejte `AzureActivity` a klikněte na **Spustit** . Jedná se o jednoduchý dotaz, který vrátí všechny záznamy v tabulce *AzureActivity* , která obsahuje všechny záznamy odeslané z protokolu aktivit.
 
 ![Jednoduchý dotaz](media/quick-collect-activity-log/query-01.png)
 

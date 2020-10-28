@@ -3,13 +3,13 @@ title: Kurz – Příprava registru kontejnerů k nasazení bitové kopie
 description: Azure Container Instances kurz 2 ze 3 – Příprava služby Azure Container registry a vložení image
 ms.topic: tutorial
 ms.date: 12/18/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 44a7f21c067897b046413851ef5a2c73bfccc24f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 2eda960c53fc7ba851ffcfbe96bd8e9a48844910
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708032"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746945"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Kurz: vytvoření služby Azure Container registry a vložení image kontejneru
 
@@ -40,7 +40,7 @@ Nejprve získejte úplný název přihlašovacího serveru pro svůj registr kon
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-Pokud se například váš registr jmenuje *mycontainerregistry082*, bude příkaz vypadat takto:
+Pokud se například váš registr jmenuje *mycontainerregistry082* , bude příkaz vypadat takto:
 
 ```azurecli
 az acr show --name mycontainerregistry082 --query loginServer --output table
@@ -58,7 +58,7 @@ Nyní zobrazte seznam místních imagí pomocí příkazu [docker images][docker
 docker images
 ```
 
-Kromě ostatních imagí, které máte na svém počítači, byste měli vidět image *aci-tutorial-app*, které jste vytvořili v [předchozím kurzu](container-instances-tutorial-prepare-app.md):
+Kromě ostatních imagí, které máte na svém počítači, byste měli vidět image *aci-tutorial-app* , které jste vytvořili v [předchozím kurzu](container-instances-tutorial-prepare-app.md):
 
 ```console
 $ docker images
@@ -111,7 +111,7 @@ Pokud si chcete ověřit, že image, kterou jste právě odeslali, se skutečně
 az acr repository list --name <acrName> --output table
 ```
 
-Například:
+Příklad:
 
 ```azurecli
 az acr repository list --name mycontainerregistry082 --output table

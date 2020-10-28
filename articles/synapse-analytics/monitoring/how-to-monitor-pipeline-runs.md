@@ -6,19 +6,19 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 04/15/2020
+ms.date: 10/27/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61d860def7209908e65e9456a4bcde87eed522fc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387315"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746366"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Použití synapse studia ke sledování spuštění kanálu pracovního prostoru
 
-Pomocí služby Azure synapse Analytics můžete vytvářet komplexní kanály, které mohou automatizovat a orchestrovat přesun dat, transformaci dat a výpočetní aktivity ve vašem řešení. Tyto kanály můžete vytvářet a monitorovat pomocí synapse studia (Preview).
+Pomocí služby Azure synapse Analytics můžete vytvářet komplexní kanály, které mohou automatizovat a integrovat přesun dat, transformaci dat a výpočetní aktivity v rámci vašeho řešení. Tyto kanály můžete vytvářet a monitorovat pomocí synapse studia (Preview).
 
 Tento článek vysvětluje, jak monitorovat spuštění vašeho kanálu, což vám umožní sledovat nejnovější stav, problémy a průběh vašich kanálů.
 

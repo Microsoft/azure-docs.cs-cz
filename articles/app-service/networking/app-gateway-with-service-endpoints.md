@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
-ms.custom: seodec18
-ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 837a57ee6ce836fb781f5bf5d5362d7c56cba31e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958929"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746195"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Integrace Application Gateway s koncovými body služby
 Existují tři variace App Service, které vyžadují mírně odlišnou konfiguraci integrace s Azure Application Gateway. Mezi varianty patří běžné App Service – také označované jako víceklientské, interní Load Balancer (interního nástroje) App Service Environment (pomocného mechanismu) a externí pomocný modul pro čtení. Tento článek vás seznámí s postupem, jak ho nakonfigurovat App Service (multi-tenant) a diskuze o požadavcích na interního nástroje a externím pomocném mechanismem.

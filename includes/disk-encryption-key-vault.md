@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file
-ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 489ee630deb56aef6c004067f29779053fbcd3e7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989469"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755427"
 ---
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -63,8 +63,8 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 
 Trezor klíčů můžete vytvořit také pomocí [šablony Správce prostředků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
-1. V šabloně pro rychlý Start Azure klikněte na **nasadit do Azure**.
-2. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, Key Vault název, ID objektu, právních podmínek a smlouvy, a pak klikněte na **koupit**. 
+1. V šabloně pro rychlý Start Azure klikněte na **nasadit do Azure** .
+2. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, Key Vault název, ID objektu, právních podmínek a smlouvy, a pak klikněte na **koupit** . 
 
 
 ##  <a name="set-key-vault-advanced-access-policies"></a>Nastavte pokročilé zásady přístupu trezoru klíčů.
@@ -115,12 +115,12 @@ K povolení šifrování disku pro Trezor klíčů použijte [AZ Key trezor Upda
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
-1. Vyberte svůj Trezor klíčů, přejděte na **zásady přístupu**a **kliknutím zobrazte zásady pokročilého přístupu**.
-2. Zaškrtněte políčko s názvem **Povolit přístup k Azure Disk Encryption pro šifrování svazku**.
-3. V případě potřeby vyberte **Povolit přístup k Azure Virtual Machines pro nasazení** nebo **povolit přístup k Azure Resource Manager pro nasazení šablony**. 
-4. Klikněte na **Uložit**.
+1. Vyberte svůj Trezor klíčů, přejděte na **zásady přístupu** a **kliknutím zobrazte zásady pokročilého přístupu** .
+2. Zaškrtněte políčko s názvem **Povolit přístup k Azure Disk Encryption pro šifrování svazku** .
+3. V případě potřeby vyberte **Povolit přístup k Azure Virtual Machines pro nasazení** nebo **povolit přístup k Azure Resource Manager pro nasazení šablony** . 
+4. Klikněte na **Uložit** .
 
     ![Zásady rozšířeného přístupu ke službě Azure Key trezor](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 

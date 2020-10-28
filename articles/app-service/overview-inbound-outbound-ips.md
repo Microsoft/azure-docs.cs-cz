@@ -3,13 +3,13 @@ title: Příchozí/odchozí IP adresy
 description: Přečtěte si, jak se příchozí a odchozí IP adresy používají v Azure App Service, když se mění a jak najít adresy pro vaši aplikaci.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050688"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746144"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy v Azure App Service
 
@@ -51,7 +51,7 @@ Sada odchozích IP adres vaší aplikace se změní, když provedete jednu z ná
 
 - Odstraňte aplikaci a znovu ji vytvořte v jiné skupině prostředků (jednotka nasazení se může změnit).
 - Odstraní poslední aplikaci v kombinaci skupiny prostředků _a_ oblasti a znovu ji vytvoří (jednotka nasazení se může změnit).
-- Škálujte svoji aplikaci mezi nižšími úrovněmi (**Basic**, **Standard**a **Premium**) a úrovní **Premium v2** (IP adresy se můžou přičíst nebo odvolávat ze sady).
+- Škálujte svoji aplikaci mezi nižšími úrovněmi ( **Basic** , **Standard** a **Premium** ) a úrovní **Premium v2** (IP adresy se můžou přičíst nebo odvolávat ze sady).
 
 Můžete najít sadu všech možných odchozích IP adres, které vaše aplikace může používat, a to bez ohledu na cenové úrovně, a to tak, že vyhledáte `possibleOutboundIpAddresses` vlastnost nebo v poli **Další odchozí IP adresy** v okně **vlastnosti** Azure Portal. Viz [Najít odchozí IP adresy](#find-outbound-ips).
 

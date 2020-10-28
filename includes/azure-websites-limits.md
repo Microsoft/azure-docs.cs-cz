@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 800dc50f82fa47228f1a88a143c5b515168812a6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91745522"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755375"
 ---
 | Prostředek | Free | Shared | Basic | Standard | Premium (V3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -32,6 +32,7 @@ ms.locfileid: "91745522"
 | Hybridní připojení | | | 5 podle plánu | 25 na plán | 200 na aplikaci | 200 na aplikaci |
 | [Integrace Virtual Network](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Integrovaný nástroj pro vyrovnávání zatížení | |X |X |X |X |X<sup>10</sup> |
+| [Omezení přístupu](../articles/app-service/networking-features.md#access-restrictions) | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci | pravidla 512 na aplikaci |
 | [Vždy zapnuto](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Naplánovaná zálohování](../articles/app-service/manage-backup.md) | | | | Naplánované zálohy každé 2 hodiny, maximálně 12 záloh za den (ruční + naplánované) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) | Naplánované zálohy každou hodinu, maximálně 50 zálohování za den (ruční + plánovaná) |
 | [Automatické škálování](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
@@ -43,7 +44,7 @@ ms.locfileid: "91745522"
 | Kudu | X | X | X | X | X | X |
 | [Ověřování a autorizace](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
 | [App Service spravované certifikáty (Public Preview)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | X | X | X | X |
-| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
+| SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
 
 <sup>1</sup> Pokud není uvedeno jinak, jsou aplikace a kvóty úložiště podle App Serviceho plánu.  
 <sup>2</sup> . Skutečný počet aplikací, které můžete hostovat na těchto počítačích, závisí na aktivitách aplikací, velikosti instancí počítačů a na odpovídajícím využití prostředků.  

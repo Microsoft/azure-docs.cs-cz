@@ -9,15 +9,15 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: aca3c9c52260d3ea2ab8def37566377fa67e712d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ca74c5f54cfb513f4611fafc40d34378707ff949
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88705924"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746498"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Rychlý Start: vytvoření profilu Azure CDN a šablony koncového bodu – ARM
 
@@ -25,7 +25,7 @@ Začínáme s Azure Content Delivery Network (CDN) pomocí šablony Azure Resour
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
 
@@ -84,7 +84,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. V levém podokně vyberte **skupiny prostředků** .
 
@@ -115,7 +115,7 @@ Remove-AzResourceGroup -Name myResourceGroupCDN
 
 ### <a name="portal"></a>Portál
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, profil CDN a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupCDN** , která obsahuje profil a koncový bod CDN, a pak vyberte **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, profil CDN a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupCDN** , která obsahuje profil a koncový bod CDN, a pak vyberte **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 

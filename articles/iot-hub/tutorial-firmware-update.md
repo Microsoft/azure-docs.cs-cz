@@ -14,18 +14,19 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: a1410b9e8287b34c8b40e841ff513de784e1730a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150550"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748528"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Kurz: Implementace procesu aktualizace firmwaru zařízení
 
 U zařízení připojených k centru IoT možná budete potřebovat aktualizovat firmware. Například můžete do firmwaru chtít přidat nové funkce nebo implementovat opravy zabezpečení. V řadě scénářů IoT je nepraktické být fyzicky u zařízení a pak na ně ručně instalovat aktualizace firmwaru. Tento kurz ukazuje, jak můžete začít a vzdáleně monitorovat proces aktualizace firmwaru prostřednictvím back-endové aplikace připojené k centru.
 
-Za účelem vytvoření a monitorování procesu aktualizace firmwaru back-endová aplikace v tomto kurzu vytvoří _konfiguraci_ ve vašem centru IoT. IoT Hub [Automatická správa zařízení](./iot-hub-automatic-device-management.md) používá tuto konfiguraci k aktualizaci sady zařízení, které jsou na všech zařízeních s chladicími zařízeními typu _vlákna_ . Požadované vlastnosti určují podrobnosti o nutné aktualizaci firmwaru. Chladící zařízení během procesu aktualizace firmwaru hlásí svůj stav do back-endové aplikace pomocí _ohlášených vlastností dvojčete zařízení_. Back-endová aplikace může pomocí konfigurace monitorovat ohlášené vlastnosti odesílané ze zařízení a sledovat proces aktualizace firmwaru až do konce:
+Za účelem vytvoření a monitorování procesu aktualizace firmwaru back-endová aplikace v tomto kurzu vytvoří _konfiguraci_ ve vašem centru IoT. IoT Hub [Automatická správa zařízení](./iot-hub-automatic-device-management.md) používá tuto konfiguraci k aktualizaci sady zařízení, které jsou na všech zařízeních s chladicími zařízeními typu _vlákna_ . Požadované vlastnosti určují podrobnosti o nutné aktualizaci firmwaru. Chladící zařízení během procesu aktualizace firmwaru hlásí svůj stav do back-endové aplikace pomocí _ohlášených vlastností dvojčete zařízení_ . Back-endová aplikace může pomocí konfigurace monitorovat ohlášené vlastnosti odesílané ze zařízení a sledovat proces aktualizace firmwaru až do konce:
 
 ![Proces aktualizace firmwaru](media/tutorial-firmware-update/Process.png)
 
@@ -61,7 +62,7 @@ Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízen�
 
 Abyste mohli dokončit tento kurz, musí vaše předplatné Azure obsahovat centrum IoT se zařízením přidaným do registru identit zařízení. Záznam v registru identit zařízení umožňuje připojení simulovaného zařízení, které v tomto kurzu spustíte, do vašeho centra.
 
-Pokud zatím ve svém předplatném nemáte centrum IoT nastavené, můžete jej nastavit pomocí následujícího skriptu rozhraní příkazového řádku. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci pro připojení k centru IoT:
+Pokud zatím ve svém předplatném nemáte centrum IoT nastavené, můžete jej nastavit pomocí následujícího skriptu rozhraní příkazového řádku. Skript používá pro centrum IoT název **tutorial-iot-hub** . Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed** , kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci pro připojení k centru IoT:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -81,7 +82,7 @@ az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
-V tomto kurzu se používá simulované zařízení **MyFirmwareUpdateDevice**. Následující skript přidá toto zařízení do registru identit zařízení, nastaví hodnotu značky a načte jeho připojovací řetězec:
+V tomto kurzu se používá simulované zařízení **MyFirmwareUpdateDevice** . Následující skript přidá toto zařízení do registru identit zařízení, nastaví hodnotu značky a načte jeho připojovací řetězec:
 
 ```azurecli-interactive
 # Set the name of your IoT hub
@@ -110,7 +111,7 @@ V back-endové aplikaci vytvoříte [automatickou konfiguraci správy zařízen�
 
 ### <a name="use-desired-properties-to-start-the-firmware-upgrade-from-the-back-end-application"></a>Spuštění upgradu firmwaru z back-endové aplikace s využitím požadovaných vlastností
 
-Pokud si chcete prohlédnout kód back-endové aplikace, který vytvoří konfiguraci, v ukázkovém projektu Node.js, který jste si stáhli, přejděte do složky **iot-hub/Tutorials/FirmwareUpdate**. Poté otevřete soubor ServiceClient.js v libovolném textovém editoru.
+Pokud si chcete prohlédnout kód back-endové aplikace, který vytvoří konfiguraci, v ukázkovém projektu Node.js, který jste si stáhli, přejděte do složky **iot-hub/Tutorials/FirmwareUpdate** . Poté otevřete soubor ServiceClient.js v libovolném textovém editoru.
 
 Back-endová aplikace vytvoří následující konfiguraci:
 
@@ -138,7 +139,7 @@ Konfigurace hlásí dva typy metrik:
 
 ### <a name="respond-to-the-firmware-upgrade-request-on-the-device"></a>Reakce na žádost o upgrade firmwaru na zařízení
 
-Pokud si chcete prohlédnout kód simulovaného zařízení, který zpracovává požadované vlastnosti firmwaru odesílané z back-endové aplikace, v ukázkovém projektu Node.js, který jste si stáhli, přejděte do složky **iot-hub/Tutorials/FirmwareUpdate**. Poté otevřete soubor SimulatedDevice.js v libovolném textovém editoru.
+Pokud si chcete prohlédnout kód simulovaného zařízení, který zpracovává požadované vlastnosti firmwaru odesílané z back-endové aplikace, v ukázkovém projektu Node.js, který jste si stáhli, přejděte do složky **iot-hub/Tutorials/FirmwareUpdate** . Poté otevřete soubor SimulatedDevice.js v libovolném textovém editoru.
 
 Aplikace simulovaného zařízení vytvoří obslužnou rutinu pro aktualizace požadovaných vlastností **properties.desired.firmware** ve dvojčeti zařízení. V obslužné události se provádí několik základních kontrol požadovaných vlastností před spuštěním procesu aktualizace:
 
@@ -164,14 +165,14 @@ V této části spustíte dvě ukázkové aplikace a budete sledovat, jak back-e
 
 Ke spuštění aplikace simulovaného zařízení a back-endové aplikace potřebujete připojovací řetězce zařízení a služby. Tyto řetězce jste si poznamenali, když jste na začátku tohoto kurzu vytvářeli příslušné prostředky.
 
-Spusťte aplikaci simulovaného zařízení tak, že otevřete okno prostředí nebo příkazového řádku a přejdete v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/FirmwareUpdate**. Potom spusťte následující příkazy:
+Spusťte aplikaci simulovaného zařízení tak, že otevřete okno prostředí nebo příkazového řádku a přejdete v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/FirmwareUpdate** . Potom spusťte následující příkazy:
 
 ```cmd/sh
 npm install
 node SimulatedDevice.js "{your device connection string}"
 ```
 
-Back-endovou aplikaci spusťte tak, že otevřete další okno prostředí nebo příkazového řádku. Pak přejděte v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/FirmwareUpdate**. Potom spusťte následující příkazy:
+Back-endovou aplikaci spusťte tak, že otevřete další okno prostředí nebo příkazového řádku. Pak přejděte v projektu Node.js, který jste si stáhli, do složky **iot-hub/Tutorials/FirmwareUpdate** . Potom spusťte následující příkazy:
 
 ```cmd/sh
 npm install
@@ -198,7 +199,7 @@ Vzhledem k tomu, že automatické konfigurace zařízení běží v době vytvá
 
 Pokud si chcete projít další kurz, zachovejte skupinu prostředků a centrum IoT pro pozdější použití.
 
-Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **tutorial-iot-hub-rg**, která obsahuje vaše centrum IoT, a kliknutím na **Odstranit**.
+Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **tutorial-iot-hub-rg** , která obsahuje vaše centrum IoT, a kliknutím na **Odstranit** .
 
 Můžete použít také rozhraní příkazového řádku:
 

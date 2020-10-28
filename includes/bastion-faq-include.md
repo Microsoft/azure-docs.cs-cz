@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/04/2020
+ms.date: 10/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86276106"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755948"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Které oblasti jsou k dispozici?
 
@@ -45,6 +45,10 @@ Protokol RDP i SSH jsou protokolem založeným na využití. Vysoké využití r
 
 V současné době se podporuje pouze kopírování a vkládání textu. Funkce, jako je kopírování souborů, se nepodporují. O své názory na nové funkce se můžete podělit na [stránce pro názory na službu Azure Bastion](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
+### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>Podporuje bastionu posílení práce s virtuálními počítači připojenými k rozšíření virtuálních počítačů AADJ?
+
+Tato funkce nefunguje s počítači připojenými k rozšíření virtuálních počítačů s AADJ pomocí uživatelů Azure AD. Další informace najdete v tématu [virtuální počítače s Windows Azure a Azure AD](../articles/active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#requirements).
+
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Které prohlížeče se podporují?
 
 Použijte prohlížeč Microsoft Edge nebo Google Chrome ve Windows. Pro Apple Mac použijte prohlížeč Google Chrome. Microsoft Edge chrom se podporuje i v obou oknech i v počítačích Mac.
@@ -66,7 +70,7 @@ Aby bylo možné vytvořit připojení, jsou vyžadovány následující role:
 Další informace najdete na [stránce s cenami](https://aka.ms/BastionHostPricing).
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Vyžaduje Azure bastionu licenci VP CAL pro účely správy na virtuálních počítačích hostovaných v Azure?
-Ne, přístup k virtuálním počítačům s Windows serverem pomocí Azure bastionu nevyžaduje oprávnění [VP CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , pokud se používá výhradně pro účely správy.
+Ne, přístup k virtuálním počítačům s Windows serverem pomocí Azure bastionu nevyžaduje oprávnění [VP CAL](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , pokud se používá výhradně pro účely správy.
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Jaká rozložení klávesnice jsou podporovaná během vzdálené relace bastionu?
 

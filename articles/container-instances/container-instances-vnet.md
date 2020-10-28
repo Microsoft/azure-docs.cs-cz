@@ -3,13 +3,13 @@ title: Nasazení skupiny kontejnerů do služby Azure Virtual Network
 description: Naučte se, jak nasadit skupinu kontejnerů do nové nebo existující virtuální sítě Azure pomocí rozhraní příkazového řádku Azure.
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: f8f61bc74f79c1712c3c662be66384c5ef689eb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518122"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746893"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do virtuální sítě Azure
 
@@ -69,7 +69,7 @@ Nasazení skupiny kontejnerů do existující virtuální sítě:
 
 Následující příklad nasadí druhou skupinu kontejnerů do stejné podsítě vytvořené dříve a ověří komunikaci mezi dvěma instancemi kontejneru.
 
-Nejdřív Získejte IP adresu první skupiny kontejnerů, kterou jste nasadili, a *kontejneru AppContainer*:
+Nejdřív Získejte IP adresu první skupiny kontejnerů, kterou jste nasadili, a *kontejneru AppContainer* :
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -77,13 +77,13 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Například:
+Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Příklad:
 
 ```console
 10.0.0.4
 ```
 
-Nyní nastavte `CONTAINER_GROUP_IP` na IP adresu, kterou jste načetli pomocí `az container show` příkazu, a spusťte následující `az container create` příkaz. Tento druhý kontejner *commchecker*spustí bitovou kopii systému Alpine Linux a provede se s `wget` první IP adresou privátní podsítě pro skupinu kontejnerů.
+Nyní nastavte `CONTAINER_GROUP_IP` na IP adresu, kterou jste načetli pomocí `az container show` příkazu, a spusťte následující `az container create` příkaz. Tento druhý kontejner *commchecker* spustí bitovou kopii systému Alpine Linux a provede se s `wget` první IP adresou privátní podsítě pro skupinu kontejnerů.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-address>
@@ -139,7 +139,7 @@ Ukázkový výstup:
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Jakmile budete mít ID profilu sítě, zkopírujte následující YAML do nového souboru s názvem *VNet-Deploy-ACI. yaml*. V části `networkProfile` nahraďte `id` hodnotu hodnotou ID, kterou jste právě načetli, a pak soubor uložte. Tento YAML vytvoří ve vaší virtuální síti skupinu kontejnerů s názvem *appcontaineryaml* .
+Jakmile budete mít ID profilu sítě, zkopírujte následující YAML do nového souboru s názvem *VNet-Deploy-ACI. yaml* . V části `networkProfile` nahraďte `id` hodnotu hodnotou ID, kterou jste právě načetli, a pak soubor uložte. Tento YAML vytvoří ve vaší virtuální síti skupinu kontejnerů s názvem *appcontaineryaml* .
 
 ```YAML
 apiVersion: '2019-12-01'
@@ -204,7 +204,7 @@ Tato funkce v současnosti vyžaduje několik dalších příkazů k odstraněn�
 Před spuštěním skriptu nastavte `RES_GROUP` proměnnou na název skupiny prostředků obsahující virtuální síť a podsíť, kterou chcete odstranit. Pokud jste nepoužili dříve navržený název, aktualizujte název virtuální sítě `aci-vnet` . Skript je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit proměnnou přiřazení a přistupující objekty.
 
 > [!WARNING]
-> Tento skript odstraní prostředky. Odstraní virtuální síť a všechny podsítě, které obsahuje. Ujistěte se, že už nepotřebujete *žádné* prostředky ve virtuální síti, včetně všech podsítí, které obsahuje, před spuštěním tohoto skriptu. Po odstranění se **tyto prostředky neobnoví**.
+> Tento skript odstraní prostředky. Odstraní virtuální síť a všechny podsítě, které obsahuje. Ujistěte se, že už nepotřebujete *žádné* prostředky ve virtuální síti, včetně všech podsítí, které obsahuje, před spuštěním tohoto skriptu. Po odstranění se **tyto prostředky neobnoví** .
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group

@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 08/13/2020
 ms.author: danlep
-ms.custom: include file
-ms.openlocfilehash: 2b1d9b7f9ff07a3e0c7745191decc3e82181553e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 173c9156f253e43111299b53287e97ab7b2c0aa5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708015"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746950"
 ---
 ## <a name="create-azure-container-registry"></a>Vytvoření registru kontejneru Azure
 
-Než vytvoříte registr kontejneru, budete potřebovat *skupinu prostředků*, do které ho budete moct nasadit. Skupina prostředků je logická kolekce, ve které se nasazují a spravují všech prostředky Azure.
+Než vytvoříte registr kontejneru, budete potřebovat *skupinu prostředků* , do které ho budete moct nasadit. Skupina prostředků je logická kolekce, ve které se nasazují a spravují všech prostředky Azure.
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus*:
+Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-create]. V následujícím příkladu se vytvoří skupina prostředků s názvem *myResourceGroup* v oblasti *eastus* :
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -31,7 +31,7 @@ Jakmile vytvoříte skupinu prostředků, vytvořte registr kontejneru Azure pom
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-Tady je částečný výstup nového registru kontejneru Azure s názvem *mycontainerregistry082*:
+Tady je částečný výstup nového registru kontejneru Azure s názvem *mycontainerregistry082* :
 
 ```output
 {
@@ -63,7 +63,7 @@ Před nahráváním imagí do instance služby Azure Container Registry se k ní
 az acr login --name <acrName>
 ```
 
-Například:
+Příklad:
 
 ```azurecli
 az acr login --name mycontainerregistry082

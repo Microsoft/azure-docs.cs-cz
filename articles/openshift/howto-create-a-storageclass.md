@@ -1,5 +1,5 @@
 ---
-title: Vytvoření Azure Files StorageClass na Azure Red Hat OpenShift 4
+title: Vytvoření třídy Azure Files Storage v Azure Red Hat OpenShiftu 4
 description: Zjistěte, jak vytvořit Azure Files StorageClass v Azure Red Hat OpenShift
 ms.service: container-service
 ms.topic: article
@@ -8,14 +8,14 @@ author: grantomation
 ms.author: b-grodel
 keywords: ARO, OpenShift, AZ ARO, Red Hat, CLI, Azure File
 ms.custom: mvc
-ms.openlocfilehash: c0d809324baa095b2ce8262170289e0dfec8bfd1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a7415a481b133c2f528ba4636c0297ce5cfa23a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428840"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747893"
 ---
-# <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Vytvoření Azure Files StorageClass na Azure Red Hat OpenShift 4
+# <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Vytvoření třídy Azure Files Storage v Azure Red Hat OpenShiftu 4
 
 V tomto článku vytvoříte StorageClass pro Azure Red Hat OpenShift 4, který dynamicky zřídí úložiště ReadWriteMany (RWX) pomocí služby soubory Azure. Co se naučíte:
 
@@ -32,7 +32,7 @@ Nasazení clusteru Azure Red Hat OpenShift 4 do předplatného najdete v tématu
 
 ### <a name="set-up-azure-storage-account"></a>Nastavení účtu Azure Storage
 
-V tomto kroku se vytvoří skupina prostředků mimo skupinu prostředků clusteru Azure Red Hat OpenShift. Tato skupina prostředků bude obsahovat sdílené složky Azure Files, které vytvořil dynamický zřizovací modul Azure Red Hat OpenShift.
+V tomto kroku se vytvoří skupina prostředků mimo skupinu prostředků clusteru Azure Red Hat OpenShift (ARO). Tato skupina prostředků bude obsahovat sdílené složky Azure Files, které vytvořil dynamický zřizovací modul Azure Red Hat OpenShift.
 
 ```bash
 AZURE_FILES_RESOURCE_GROUP=aro_azure_files

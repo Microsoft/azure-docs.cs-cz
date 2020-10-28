@@ -4,13 +4,13 @@ description: V tomto kurzu Azure Kubernetes Service (AKS) vytvoříte cluster a 
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: e78dcb3b7ba503011ec83058d9ad765815ef66a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 55af44f498492136b2ae03c7e23fce3676aa8e22
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576349"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747078"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Kurz: Nasazení clusteru Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Ve
 
 Clustery AKS můžou používat Kubernetes řízení přístupu na základě role (RBAC). Toto řízení umožňuje definovat přístup k prostředkům na základě rolí přiřazených uživatelům. Oprávnění jsou kombinována, pokud je uživateli přiřazena více rolí a oprávnění mohou být vymezena buď na jeden obor názvů, nebo v celém clusteru. Ve výchozím nastavení Azure CLI automaticky povolí řízení přístupu na základě role při vytvoření clusteru AKS.
 
-Vytvořte cluster AKS pomocí příkazu [az aks create][]. Následující příklad vytvoří cluster *myAKSCluster* ve skupině prostředků *myResourceGroup*. Tato skupina prostředků se vytvořila v [předchozím kurzu][aks-tutorial-prepare-acr] v oblasti *eastus* . Následující příklad neurčuje oblast, takže cluster AKS je také vytvořen v oblasti *eastus* . Další informace o omezeních prostředků a dostupnosti oblastí pro AKS najdete [v tématu kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)][quotas-skus-regions] .
+Vytvořte cluster AKS pomocí příkazu [az aks create][]. Následující příklad vytvoří cluster *myAKSCluster* ve skupině prostředků *myResourceGroup* . Tato skupina prostředků se vytvořila v [předchozím kurzu][aks-tutorial-prepare-acr] v oblasti *eastus* . Následující příklad neurčuje oblast, takže cluster AKS je také vytvořen v oblasti *eastus* . Další informace o omezeních prostředků a dostupnosti oblastí pro AKS najdete [v tématu kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)][quotas-skus-regions] .
 
 Aby mohl cluster AKS komunikovat s dalšími prostředky Azure, automaticky se vytvoří Azure Active Directory instančního objektu, protože jste ho neurčili. V tomto případě se tomuto instančnímu objektu [uděluje právo na vyžádání imagí][container-registry-integration] z instance Azure Container Registry (ACR), kterou jste vytvořili v předchozím kurzu. Všimněte si, že ke snazší správě můžete použít [spravovanou identitu](use-managed-identity.md) místo instančního objektu.
 
@@ -65,7 +65,7 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>Připojení ke clusteru pomocí kubectl
 
-Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *myAKSCluster* v *myResourceGroup*:
+Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *myAKSCluster* v *myResourceGroup* :
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 3bbe704e6223bb04a17af7109c61875ca3b21bf9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214138"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748188"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Aktivační událost Azure Event Grid pro Azure Functions
 
@@ -307,7 +307,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.js* v souboru. Nejsou k dispozici žádné parametry konstruktoru nebo vlastnosti, které by bylo možné nastavit v `EventGridTrigger` atributu.
 
-|function.jsvlastnost |Description|
+|function.jsvlastnost |Popis|
 |---------|---------|
 | **textový** | Požadováno – musí být nastavené na `eventGridTrigger` . |
 | **směr** | Požadováno – musí být nastavené na `in` . |
@@ -399,9 +399,9 @@ Vysvětlení běžných vlastností a specifických pro události naleznete v t�
 
 Pokud chcete začít přijímat Event Grid požadavky HTTP, vytvořte Event Grid předplatné, které určuje adresu URL koncového bodu, která funkci vyvolá.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
-U funkcí, které vyvíjíte v Azure Portal pomocí triggeru Event Grid vyberte možnost **integrace** a potom vyberte **aktivační událost Event Grid** a vyberte **vytvořit Event Grid předplatné**.
+U funkcí, které vyvíjíte v Azure Portal pomocí triggeru Event Grid vyberte možnost **integrace** a potom vyberte **aktivační událost Event Grid** a vyberte **vytvořit Event Grid předplatné** .
 
 :::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="Připojte nové předplatné události, které se aktivuje na portálu.":::
 

@@ -2,32 +2,57 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 09/15/2020
+ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b0dc5553828b9dd31b297df076857332e9cbd881
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7bbbb823cd62b8004a6681005add60037b023031
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327441"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756070"
 ---
 Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro Node.js sestavení modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
 > [!NOTE]
 > Pokud chcete sestavit a vytvořit model detekce objektu _bez_ psaní kódu, Projděte si [pokyny na základě prohlížeče](../../get-started-build-detector.md) .
 
+Pomocí klientské knihovny Custom Vision pro .NET:
+
+* Vytvoření nového projektu Custom Vision
+* Přidat do projektu značky
+* Nahrávání a označování obrázků
+* Výuka projektu
+* Publikovat aktuální iteraci
+* Testování koncového bodu předpovědi
+
+Referenční dokumentace [(školení)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(předpověď)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Zdrojový kód knihovny [(školení)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(předpověď)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Ukázky balíčku (npm) ( [školení](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) ) [(předpovědi)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [Samples](https://docs.microsoft.com/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+
+
 ## <a name="prerequisites"></a>Předpoklady
 
-- Je nainstalovaná [Node.js 8](https://www.nodejs.org/en/download/) nebo novější.
-- [npm](https://www.npmjs.com/) je nainstalovaný.
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Aktuální verze [Node.js](https://nodejs.org/)
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision"  title=" vytvořte prostředek Custom Vision vytvoření prostředku "  target="_blank"> Custom Vision <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste vytvořili prostředek pro školení a předpověď a získali své klíče a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    * K připojení aplikace k Custom Vision budete potřebovat klíč a koncový bod z prostředků, které vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
+## <a name="setting-up"></a>Nastavení
 
-[!INCLUDE [node-get-images](../../includes/node-get-images.md)]
+### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
 
-## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
+```console
+mkdir myapp && cd myapp
+```
+
+Spuštěním `npm init` příkazu vytvořte aplikaci uzlu se `package.json` souborem. 
+
+```console
+npm init
+```
+
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
 K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro Node.js budete potřebovat balíčky Custom Vision NPM. Pokud je chcete nainstalovat, spusťte v PowerShellu následující příkaz:
 
@@ -36,197 +61,124 @@ npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
 
-## <a name="add-the-code"></a>Přidání kódu
+Soubor vaší aplikace `package.json` bude aktualizován pomocí závislostí.
 
-V upřednostňovaném adresáři projektu vytvořte nový soubor s názvem *sample.js* .
+Vytvořte soubor s názvem `index.js` a importujte následující knihovny:
 
-## <a name="create-the-custom-vision-project"></a>Vytvoření projektu Custom Vision
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_imports)]
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do příslušných definic vložte klíče předplatného a nastavte hodnotu cesty sampleDataRoot na cestu ke složce imagí. Ujistěte se, že hodnota koncového bodu odpovídá koncovým bodům školení a předpovědi, které jste vytvořili v [Customvision.AI](https://www.customvision.ai/). Všimněte si, že rozdíl mezi vytvořením projektu detekce objektu a klasifikace obrázků je doména zadaná ve volání **createProject** .
+> [!TIP]
+> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js), který obsahuje příklady kódu v tomto rychlém startu.
 
-```javascript
-const fs = require('fs');
-const util = require('util');
-const TrainingApi = require("@azure/cognitiveservices-customvision-training");
-const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");
-const msRest = require("@azure/ms-rest-js");
+Vytvořte proměnné pro koncový bod a klíče Azure prostředku. 
 
-const setTimeoutPromise = util.promisify(setTimeout);
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_creds)]
 
-const trainingKey = "<your training key>";
-const predictionKey = "<your prediction key>";
-const predictionResourceId = "<your prediction resource id>";
-const sampleDataRoot = "<path to image files>";
+> [!IMPORTANT]
+> Přejděte na Azure Portal. Pokud prostředek [název produktu], který jste vytvořili v části **předpoklady** , se úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíč a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . 
+>
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
 
-const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
+Pro asynchronní volání přidejte také pole pro název projektu a parametr Timeout.
 
-const publishIterationName = "detectModel";
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_vars)]
 
-const credentials = new msRest.ApiKeyCredentials({ inHeader: { "Training-key": trainingKey } });
-const trainer = new TrainingApi.TrainingAPIClient(credentials, endPoint);
+## <a name="object-model"></a>Objektový model
 
-/* Helper function to let us use await inside a forEach loop.
- * This lets us insert delays between image uploads to accommodate the rate limit.
- */
-async function asyncForEach (array, callback) {
-    for (let i = 0; i < array.length; i++) {
-        await callback(array[i], i, array);
-    }
-}
+|Název|Popis|
+|---|---|
+|[TrainingAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
+|[PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| Tato třída zpracovává dotazování vašich modelů pro detekci objektů předpovědi.|
+|[Předpověď](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| Toto rozhraní definuje jednu předpověď na jednom obrázku. Obsahuje vlastnosti pro ID a název objektu a hodnocení spolehlivosti.|
 
-(async () => {
-    console.log("Creating project...");
-    const domains = await trainer.getDomains()
-    const objDetectDomain = domains.find(domain => domain.type === "ObjectDetection");
-    const sampleProject = await trainer.createProject("Sample Obj Detection Project", { domainId: objDetectDomain.id });
-```
+## <a name="code-examples"></a>Příklady kódu
 
-## <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Custom Vision klientské knihovny pro JavaScript:
 
-Chcete-li vytvořit klasifikační značky pro projekt, přidejte následující kód na konec *sample.js*:
+* [Ověření klienta](#authenticate-the-client)
+* [Vytvoření nového projektu Custom Vision](#create-a-new-custom-vision-project)
+* [Přidat do projektu značky](#add-tags-to-the-project)
+* [Nahrávání a označování obrázků](#upload-and-tag-images)
+* [Výuka projektu](#train-the-project)
+* [Publikovat aktuální iteraci](#publish-the-current-iteration)
+* [Testování koncového bodu předpovědi](#test-the-prediction-endpoint)
 
-```javascript
-    const forkTag = await trainer.createTag(sampleProject.id, "Fork");
-    const scissorsTag = await trainer.createTag(sampleProject.id, "Scissors");
-```
+## <a name="authenticate-the-client"></a>Ověření klienta
+
+Vytvořte instanci objektů klienta s vaším koncovým bodem a klíčem. Vytvořte objekt **ApiKeyCredentials** s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [TrainingAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) a [PredictionAPIClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) .
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_auth)]
+
+## <a name="add-helper-function"></a>Přidat pomocnou funkci
+
+Přidejte následující funkci, která usnadňuje více asynchronních volání. Použijete ho později v.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_auth)]
+
+## <a name="create-a-new-custom-vision-project"></a>Vytvoření nového projektu Custom Vision
+
+Spusťte novou funkci, která bude obsahovat všechna vaše volání funkcí Custom Vision. Přidejte následující kód k vytvoření nového projektu Custom Vision služby.
+
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_create)]
+
+## <a name="create-a-new-custom-vision-project"></a>Vytvoření nového projektu Custom Vision
+
+Spusťte novou funkci, která bude obsahovat všechna vaše volání funkcí Custom Vision. Přidejte následující kód k vytvoření nového projektu Custom Vision služby.
+
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_create)]
 
 ## <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
-Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic. 
+Nejdřív Stáhněte ukázkové image pro tento projekt. Uložte obsah [složky Sample images](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ObjectDetection/Images) do místního zařízení.
+
+Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Když označíte obrázky v projektech detekce objektů, je nutné zadat oblast každého tagovaného objektu pomocí normalizovaných souřadnic. Pro tento kurz jsou oblasti pevně zakódované vložené s kódem. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška. Do jedné dávky můžete nahrát až 64 imagí.
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_upload)]
+
+
+> [!IMPORTANT]
+> Budete muset změnit cestu k obrázkům () na základě toho, `sampleDataRoot` kam jste stáhli úložiště ukázek sady Cognitive Services Python SDK.
 
 > [!NOTE]
 > Pokud nemáte k označení souřadnic oblastí k dispozici nástroj pro kliknutí a přetažení, můžete použít webové uživatelské rozhraní na adrese [Customvision.AI](https://www.customvision.ai/). V tomto příkladu jsou souřadnice již poskytovány.
 
-Obrázky, značky a oblasti do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Všimněte si, že pro účely tohoto kurzu jsou oblasti pevně vloženy v kódu. Oblasti určují ohraničující rámeček s normalizovanými souřadnicemi, které jsou v tomto pořadí: vlevo, nahoře, šířka, výška. Do jedné dávky můžete nahrát až 64 imagí.
 
-```javascript
-const forkImageRegions = {
-    "fork_1.jpg": [0.145833328, 0.3509314, 0.5894608, 0.238562092],
-    "fork_2.jpg": [0.294117659, 0.216944471, 0.534313738, 0.5980392],
-    "fork_3.jpg": [0.09191177, 0.0682516545, 0.757352948, 0.6143791],
-    "fork_4.jpg": [0.254901975, 0.185898721, 0.5232843, 0.594771266],
-    "fork_5.jpg": [0.2365196, 0.128709182, 0.5845588, 0.71405226],
-    "fork_6.jpg": [0.115196079, 0.133611143, 0.676470637, 0.6993464],
-    "fork_7.jpg": [0.164215669, 0.31008172, 0.767156839, 0.410130739],
-    "fork_8.jpg": [0.118872553, 0.318251669, 0.817401946, 0.225490168],
-    "fork_9.jpg": [0.18259804, 0.2136765, 0.6335784, 0.643790841],
-    "fork_10.jpg": [0.05269608, 0.282303959, 0.8088235, 0.452614367],
-    "fork_11.jpg": [0.05759804, 0.0894935, 0.9007353, 0.3251634],
-    "fork_12.jpg": [0.3345588, 0.07315363, 0.375, 0.9150327],
-    "fork_13.jpg": [0.269607842, 0.194068655, 0.4093137, 0.6732026],
-    "fork_14.jpg": [0.143382356, 0.218578458, 0.7977941, 0.295751631],
-    "fork_15.jpg": [0.19240196, 0.0633497, 0.5710784, 0.8398692],
-    "fork_16.jpg": [0.140931368, 0.480016381, 0.6838235, 0.240196079],
-    "fork_17.jpg": [0.305147052, 0.2512582, 0.4791667, 0.5408496],
-    "fork_18.jpg": [0.234068632, 0.445702642, 0.6127451, 0.344771236],
-    "fork_19.jpg": [0.219362751, 0.141781077, 0.5919118, 0.6683006],
-    "fork_20.jpg": [0.180147052, 0.239820287, 0.6887255, 0.235294119]
-};
+## <a name="train-the-project"></a>Výuka projektu
 
-const scissorsImageRegions = {
-    "scissors_1.jpg": [0.4007353, 0.194068655, 0.259803921, 0.6617647],
-    "scissors_2.jpg": [0.426470578, 0.185898721, 0.172794119, 0.5539216],
-    "scissors_3.jpg": [0.289215684, 0.259428144, 0.403186262, 0.421568632],
-    "scissors_4.jpg": [0.343137264, 0.105833367, 0.332107842, 0.8055556],
-    "scissors_5.jpg": [0.3125, 0.09766343, 0.435049027, 0.71405226],
-    "scissors_6.jpg": [0.379901975, 0.24308826, 0.32107842, 0.5718954],
-    "scissors_7.jpg": [0.341911763, 0.20714055, 0.3137255, 0.6356209],
-    "scissors_8.jpg": [0.231617644, 0.08459154, 0.504901946, 0.8480392],
-    "scissors_9.jpg": [0.170343131, 0.332957536, 0.767156839, 0.403594762],
-    "scissors_10.jpg": [0.204656869, 0.120539248, 0.5245098, 0.743464053],
-    "scissors_11.jpg": [0.05514706, 0.159754932, 0.799019635, 0.730392158],
-    "scissors_12.jpg": [0.265931368, 0.169558853, 0.5061275, 0.606209159],
-    "scissors_13.jpg": [0.241421565, 0.184264734, 0.448529422, 0.6830065],
-    "scissors_14.jpg": [0.05759804, 0.05027781, 0.75, 0.882352948],
-    "scissors_15.jpg": [0.191176474, 0.169558853, 0.6936275, 0.6748366],
-    "scissors_16.jpg": [0.1004902, 0.279036, 0.6911765, 0.477124184],
-    "scissors_17.jpg": [0.2720588, 0.131977156, 0.4987745, 0.6911765],
-    "scissors_18.jpg": [0.180147052, 0.112369314, 0.6262255, 0.6666667],
-    "scissors_19.jpg": [0.333333343, 0.0274019931, 0.443627447, 0.852941155],
-    "scissors_20.jpg": [0.158088237, 0.04047389, 0.6691176, 0.843137264]
-};
+Tento kód vytvoří první iteraci modelu předpovědi. 
 
-console.log("Adding images...");
-let fileUploadPromises = [];
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_train)]
 
-const forkDir = `${sampleDataRoot}/Fork`;
-const forkFiles = fs.readdirSync(forkDir);
 
-await asyncForEach(forkFiles, async (file) => {
-    const region = { tagId : forkTag.id, left : forkImageRegions[file][0], top : forkImageRegions[file][1], width : forkImageRegions[file][2], height : forkImageRegions[file][3] };
-    const entry = { name : file, contents : fs.readFileSync(`${forkDir}/${file}`), regions : [region] };
-    const batch = { images : [entry] };
-    // Wait one second to accommodate rate limit.
-    await setTimeoutPromise(1000, null);
-    fileUploadPromises.push(trainer.createImagesFromFiles(sampleProject.id, batch));
-});
+## <a name="publish-the-current-iteration"></a>Publikovat aktuální iteraci
 
-const scissorsDir = `${sampleDataRoot}/Scissors`;
-const scissorsFiles = fs.readdirSync(scissorsDir);
+Tento kód publikuje vyškolenou iteraci na koncový bod předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
-await asyncForEach(scissorsFiles, async (file) => {
-    const region = { tagId : scissorsTag.id, left : scissorsImageRegions[file][0], top : scissorsImageRegions[file][1], width : scissorsImageRegions[file][2], height : scissorsImageRegions[file][3] };
-    const entry = { name : file, contents : fs.readFileSync(`${scissorsDir}/${file}`), regions : [region] };
-    const batch = { images : [entry] };
-    // Wait one second to accommodate rate limit.
-    await setTimeoutPromise(1000, null);
-    fileUploadPromises.push(trainer.createImagesFromFiles(sampleProject.id, batch));
-});
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_publish)]
 
-await Promise.all(fileUploadPromises);
-```
 
-## <a name="train-and-publish-the-project"></a>Školení a publikování projektu
+## <a name="test-the-prediction-endpoint"></a>Testování koncového bodu předpovědi
 
-Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
+Chcete-li odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte do funkce následující kód. 
 
-```javascript
-console.log("Training...");
-let trainingIteration = await trainer.trainProject(sampleProject.id);
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_test)]
 
-// Wait for training to complete
-console.log("Training started...");
-while (trainingIteration.status == "Training") {
-    console.log("Training status: " + trainingIteration.status);
-    // wait for one second
-    await setTimeoutPromise(1000, null);
-    trainingIteration = await trainer.getIteration(sampleProject.id, trainingIteration.id)
-}
-console.log("Training status: " + trainingIteration.status);
+Potom zavřete funkci Custom Vision a zavolejte ji.
 
-// Publish the iteration to the end point
-await trainer.publishIteration(sampleProject.id, trainingIteration.id, publishIterationName, predictionResourceId);
-```
-
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>Získání a použití publikované iterace na koncovém bodu předpovědi
-
-Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
-
-```javascript
-    const predictor_credentials = new msRest.ApiKeyCredentials({ inHeader: { "Prediction-key": predictionKey } });
-    const predictor = new PredictionApi.PredictionAPIClient(predictor_credentials, endPoint);
-
-    const testFile = fs.readFileSync(`${sampleDataRoot}/Test/test_od_image.jpg`);
-
-    const results = await predictor.detectImage(sampleProject.id, publishIterationName, testFile)
-
-    // Show results
-    console.log("Results:");
-    results.predictions.forEach(predictedResult => {
-        console.log(`\t ${predictedResult.tagName}: ${(predictedResult.probability * 100.0).toFixed(2)}% ${predictedResult.boundingBox.left},${predictedResult.boundingBox.top},${predictedResult.boundingBox.width},${predictedResult.boundingBox.height}`);
-    });
-})()
-```
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_function_close)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte *sample.js*.
+Spusťte aplikaci pomocí `node` příkazu v souboru rychlého startu.
 
 ```shell
-node sample.js
+node index.js
 ```
 
-V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné označení testovacího obrázku (ve složce **samples/vision/images/Test**) a správnost oblasti detekce.
+V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit, zda je testovací obrázek (nalezen v **<sampleDataRoot> /test/** ) správně označen a zda je oblast detekce správná. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
+
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
@@ -238,5 +190,6 @@ Nyní jste provedli všechny kroky procesu detekce objektů v kódu. Tato ukázk
 > [Testování a přetrénování modelu](../../test-your-model.md)
 
 * [Co je Custom Vision?](../../overview.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js) .
 * [Referenční dokumentace k sadě SDK (školení)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
 * [Referenční dokumentace k sadě SDK (předpovědi)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)

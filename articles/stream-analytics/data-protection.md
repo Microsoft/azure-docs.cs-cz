@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812858"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746410"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
 
@@ -59,24 +59,20 @@ Další informace o [nabídkách dodržování předpisů Microsoftu](https://ga
 
 Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro soukromé datové prostředky. Tato konfigurace se provádí z vaší Stream Analytics úlohy, nikoli z vašeho účtu úložiště.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**. 
+1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** . 
 
-1.  **Analytics**   > V seznamu výsledků vyberte **úlohu Stream Analytics**analýzy   . 
+1.  **Analytics**   > V seznamu výsledků vyberte **úlohu Stream Analytics** analýzy   . 
 
 1. Vyplňte stránku úlohy Stream Analytics s potřebnými podrobnostmi, jako je název, oblast a škálování. 
 
-1. Zaškrtněte políčko, které uvádí *zabezpečení všech privátních datových assetů, které tato úloha potřebuje v účtu úložiště*.
+1. Zaškrtněte políčko, které uvádí *zabezpečení všech privátních datových assetů, které tato úloha potřebuje v účtu úložiště* .
 
 1. Vyberte účet úložiště z vašeho předplatného. Všimněte si, že toto nastavení nelze upravovat v průběhu životního cyklu úlohy. 
 
    ![Nastavení účtu úložiště privátních dat](./media/data-protection/storage-account-create.png)
 
-
-
-### <a name="known-issues"></a>Známé problémy
-V současné době existuje známé omezení, kde úloha používající kód spravovaný zákazníkem spustí chyby při použití spravované identity k ověření pro jakékoli vstupy nebo výstupy.
 
 ## <a name="next-steps"></a>Další kroky
 

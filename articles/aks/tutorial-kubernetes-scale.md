@@ -4,13 +4,13 @@ description: V tomto kurzu Azure Kubernetes Service (AKS) zjistíte, jak škálo
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: a9a8a73e2208f7efe01f43fa87e196ffd8c64f14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e700934a965f836456458cb33dc46125bef4ab72
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576298"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747008"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -45,7 +45,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Pokud chcete ručně změnit počet podů v nasazení *azure-vote-front*, použijte příkaz [kubectl scale][kubectl-scale]. Následující příklad zvýší počet podů front-endu na *5*:
+Pokud chcete ručně změnit počet podů v nasazení *azure-vote-front* , použijte příkaz [kubectl scale][kubectl-scale]. Následující příklad zvýší počet podů front-endu na *5* :
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -74,7 +74,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> Pokud je váš cluster AKS menší než *1,10*, server metriky se neinstaluje automaticky. Manifesty instalace serveru metriky jsou k dispozici jako `components.yaml` prostředek na vydaných verzích serveru metriky, což znamená, že je můžete nainstalovat přes adresu URL. Další informace o těchto definicích YAML najdete v části věnované [nasazení][metrics-server-github] v souboru Readme.
+> Pokud je váš cluster AKS menší než *1,10* , server metriky se neinstaluje automaticky. Manifesty instalace serveru metriky jsou k dispozici jako `components.yaml` prostředek na vydaných verzích serveru metriky, což znamená, že je můžete nainstalovat přes adresu URL. Další informace o těchto definicích YAML najdete v části věnované [nasazení][metrics-server-github] v souboru Readme.
 > 
 > Příklad instalace:
 > ```console
@@ -91,7 +91,7 @@ resources:
      cpu: 500m
 ```
 
-Následující příklad využívá příkaz [kubectl autoscale][kubectl-autoscale] k automatickému škálování počtu podů v nasazení *azure-vote-front*. Pokud průměrné využití procesoru napříč všemi lusky překročí 50% jejich vyžádaného využití, přizpůsobuje se automatické škálování až do maximálního počtu *10* instancí. Pro nasazení je pak definováno minimálně *3* instance:
+Následující příklad využívá příkaz [kubectl autoscale][kubectl-autoscale] k automatickému škálování počtu podů v nasazení *azure-vote-front* . Pokud průměrné využití procesoru napříč všemi lusky překročí 50% jejich vyžádaného využití, přizpůsobuje se automatické škálování až do maximálního počtu *10* instancí. Pro nasazení je pak definováno minimálně *3* instance:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10

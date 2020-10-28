@@ -6,13 +6,13 @@ ms.topic: conceptual
 description: Revize a testování změn z žádosti o přijetí změn přímo ve službě Azure Kubernetes pomocí akcí GitHubu a Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, akce GitHubu, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.custom: devx-track-js
-ms.openlocfilehash: 8c11150105db7a7bb48d20992dcc259cb5d87752
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973100"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748138"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Akce GitHubu & službě Azure Kubernetes (Preview)
 
@@ -53,7 +53,7 @@ Uložte hodnotu *loginServer* z výstupu, protože se používá v pozdějším 
 
 ## <a name="create-a-service-principal-for-authentication"></a>Vytvoření instančního objektu pro ověřování
 
-K vytvoření instančního objektu použijte [příkaz AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Například:
+K vytvoření instančního objektu použijte [příkaz AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Příklad:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -88,31 +88,31 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!IMPORTANT]
 > Musíte mít povolené akce GitHubu pro vaše úložiště. Pokud chcete pro své úložiště povolit akce GitHubu, přejděte do úložiště na GitHubu, klikněte na kartu akce a vyberte, pokud chcete povolit akce pro toto úložiště.
 
-Přejděte do rozvětvené úložiště a klikněte na *Nastavení*. Na levém bočním panelu klikněte na *tajná klíčová* okna. Kliknutím na *Přidat nový tajný klíč* přidejte všechny nové tajné klíče:
+Přejděte do rozvětvené úložiště a klikněte na *Nastavení* . Na levém bočním panelu klikněte na *tajná klíčová* okna. Kliknutím na *Přidat nový tajný klíč* přidejte všechny nové tajné klíče:
 
-1. *AZURE_CREDENTIALS*: celý výstup z vytváření instančního objektu.
-1. *RESOURCE_GROUP*: Skupina prostředků pro cluster AKS, což je v tomto příkladu *MyResourceGroup*.
-1. *CLUSTER_NAME*: název clusteru AKS, který je v tomto příkladu *MyAKS*.
-1. *CONTAINER_REGISTRY*: *loginServer* pro ACR.
-1. *Hostitel*: hostitel pro vývojové místo, který má formu *<MASTER_SPACE>. <APP_NAME>. <HOST_SUFFIX>*, který v tomto příkladu je *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
-1. *IMAGE_PULL_SECRET*: název tajného klíče, který chcete použít, například *ukázkový tajný klíč*.
-1. *MASTER_SPACE*: název vašeho nadřazeného vývojového prostoru, který je v tomto příkladu *vývojem*.
-1. *REGISTRY_USERNAME*: *CLIENTID* z výstupu JSON z vytváření objektu služby.
-1. *REGISTRY_PASSWORD*: *CLIENTSECRET* z výstupu JSON z vytváření instančního objektu.
+1. *AZURE_CREDENTIALS* : celý výstup z vytváření instančního objektu.
+1. *RESOURCE_GROUP* : Skupina prostředků pro cluster AKS, což je v tomto příkladu *MyResourceGroup* .
+1. *CLUSTER_NAME* : název clusteru AKS, který je v tomto příkladu *MyAKS* .
+1. *CONTAINER_REGISTRY* : *loginServer* pro ACR.
+1. *Hostitel* : hostitel pro vývojové místo, který má formu *<MASTER_SPACE>. <APP_NAME>. <HOST_SUFFIX>* , který v tomto příkladu je *dev.bikesharingweb.fedcab0987.EUS.azds.IO* .
+1. *IMAGE_PULL_SECRET* : název tajného klíče, který chcete použít, například *ukázkový tajný klíč* .
+1. *MASTER_SPACE* : název vašeho nadřazeného vývojového prostoru, který je v tomto příkladu *vývojem* .
+1. *REGISTRY_USERNAME* : *CLIENTID* z výstupu JSON z vytváření objektu služby.
+1. *REGISTRY_PASSWORD* : *CLIENTSECRET* z výstupu JSON z vytváření instančního objektu.
 
 > [!NOTE]
 > Všechny tyto tajné kódy používá akce GitHub a jsou nakonfigurované v [. GitHub/Workflows/Bikes. yml][github-action-yaml].
 
-Případně, pokud chcete aktualizovat hlavní prostor po sloučení žádosti o přijetí změn, přidejte *GATEWAY_HOST* tajný klíč, který má formu *<MASTER_SPACE>. brána. <* HOST_SUFFIX>, který v tomto příkladu je *dev.Gateway.fedcab0987.EUS.azds.IO*. Po sloučení změn do hlavní větve ve vašem rozvětvení se spustí další akce, která znovu sestaví a spustí celou aplikaci v hlavním vývojovém prostoru. V tomto příkladu je hlavním místem *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
+Případně, pokud chcete aktualizovat hlavní prostor po sloučení žádosti o přijetí změn, přidejte *GATEWAY_HOST* tajný klíč, který má formu *<MASTER_SPACE>. brána. <* HOST_SUFFIX>, který v tomto příkladu je *dev.Gateway.fedcab0987.EUS.azds.IO* . Po sloučení změn do hlavní větve ve vašem rozvětvení se spustí další akce, která znovu sestaví a spustí celou aplikaci v hlavním vývojovém prostoru. V tomto příkladu je hlavním místem *vývoj* . Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
-Kromě toho, pokud chcete, aby se změny v žádosti o přijetí změn spouštěly na místě, aktualizujte *MASTER_SPACE* a tajné klíče *hostitele* . Například pokud vaše aplikace běží ve *vývoji s* podřízeným prostorem pro *vývoj/azureuser1*, aby se žádost o přijetí změn spouštěla v podřízeném prostoru pro *vývoj/azureuser1*:
+Kromě toho, pokud chcete, aby se změny v žádosti o přijetí změn spouštěly na místě, aktualizujte *MASTER_SPACE* a tajné klíče *hostitele* . Například pokud vaše aplikace běží ve *vývoji s* podřízeným prostorem pro *vývoj/azureuser1* , aby se žádost o přijetí změn spouštěla v podřízeném prostoru pro *vývoj/azureuser1* :
 
-* Aktualizujte *MASTER_SPACE* na podřízený prostor, který chcete jako nadřazený prostor, v tomto příkladu *azureuser1*.
-* Aktualizujte *hostitele* na *<GRANDPARENT_SPACE>. <APP_NAME>. <HOST_SUFFIX>*, v tomto příkladu se *dev.bikesharingweb.fedcab0987.EUS.azds.IO*.
+* Aktualizujte *MASTER_SPACE* na podřízený prostor, který chcete jako nadřazený prostor, v tomto příkladu *azureuser1* .
+* Aktualizujte *hostitele* na *<GRANDPARENT_SPACE>. <APP_NAME>. <HOST_SUFFIX>* , v tomto příkladu se *dev.bikesharingweb.fedcab0987.EUS.azds.IO* .
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Vytvořit novou větev pro změny kódu
 
-Přejděte na `BikeSharingApp/` a vytvořte novou větev s názvem *Bikes-images*.
+Přejděte na `BikeSharingApp/` a vytvořte novou větev s názvem *Bikes-images* .
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
@@ -162,7 +162,7 @@ Po dokončení akce se zobrazí komentář s adresou URL nového podřízeného 
 
 Přejděte do služby *bikesharingweb* tak, že otevřete adresu URL z komentáře. Jako uživatel vyberte *Aurelia Briggs (zákazník)* a pak vyberte kolo k pronajmutí. Ověřte, že se už nezobrazuje zástupný obrázek pro kolo.
 
-Pokud vaše změny sloučíte do *Hlavní* větve ve svém rozvětvení, spustí se další akce, která znovu sestaví a spustí celou aplikaci v nadřazeném vývojovém prostoru. V tomto příkladu je nadřazená oblast určena pro *vývoj*. Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
+Pokud vaše změny sloučíte do *Hlavní* větve ve svém rozvětvení, spustí se další akce, která znovu sestaví a spustí celou aplikaci v nadřazeném vývojovém prostoru. V tomto příkladu je nadřazená oblast určena pro *vývoj* . Tato akce je nakonfigurovaná ve [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 ## <a name="clean-up-your-azure-resources"></a>Vyčištění prostředků Azure
 
