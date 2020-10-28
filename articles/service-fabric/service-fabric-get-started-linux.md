@@ -4,12 +4,12 @@ description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojov
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f8639287ea65347319cb438a5ff6e8c96c8279e1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168405"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675269"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -17,9 +17,9 @@ ms.locfileid: "92168405"
 > * [Linux](service-fabric-get-started-linux.md)
 > * [Mac OS X](service-fabric-get-started-mac.md)
 
-Pokud chcete nasadit a spustit (Azure Service Fabric aplikace) [Service-Fabric-Application-model.md] na vývojovém počítači se systémem Linux, nainstalujte modul runtime a běžnou sadu SDK. Můžete také nainstalovat volitelné sady SDK pro vývoj v Javě a .NET Core. 
+Pokud chcete sestavovat a spouštět [aplikace Azure Service Fabric](service-fabric-application-model.md) na vývojovém počítači s Linuxem, musíte nainstalovat modul runtime a běžnou sadu SDK. Můžete také nainstalovat volitelné sady SDK pro vývoj v Javě a .NET Core. 
 
-V krocích v tomto článku se předpokládá, že nakonfigurujete nativní instalaci v systému Linux nebo použijete (Service Fabric image kontejneru OneBox) [ https://hub.docker.com/_/microsoft-service-fabric-onebox ], tj. `mcr.microsoft.com/service-fabric/onebox:u18` .
+Kroky v tomto článku předpokládají, že nakonfigurujete nativně na Linux nebo použijete [Image kontejneru Service Fabric OneBox](https://hub.docker.com/_/microsoft-service-fabric-onebox), tj. `mcr.microsoft.com/service-fabric/onebox:u18` .
 
 Service Fabric entit hostovaných v cloudu nebo v místním prostředí můžete spravovat pomocí rozhraní příkazového řádku (CLI) Azure Service Fabric. Informace o instalaci rozhraní příkazového řádku najdete v tématu [Nastavení rozhraní příkazového řádku Service Fabric](./service-fabric-cli.md).
 
@@ -50,7 +50,7 @@ Pokud chcete nainstalovat sadu SDK a přidružený balíček modulu runtime pomo
 
 ## <a name="script-installation"></a>Instalace skriptem
 
-Pro usnadnění práce je k dispozici skript pro instalaci Service Fabric runtime a Service Fabric společnou sadu SDK společně s rozhraním příkazového [řádku **sfctl** ](service-fabric-cli.md). Spuštěním skriptu se předpokládá, že souhlasíte s licencemi pro veškerý instalovaný software. Případně můžete spustit kroky [Ruční instalace](#manual-installation) v další části, kde se budou vyskytovat přidružené licence a také součásti, které jsou nainstalovány.
+Pro usnadnění práce je k dispozici skript pro instalaci Service Fabric runtime a Service Fabric společnou sadu SDK společně s rozhraním příkazového [řádku **sfctl**](service-fabric-cli.md). Spuštěním skriptu se předpokládá, že souhlasíte s licencemi pro veškerý instalovaný software. Případně můžete spustit kroky [Ruční instalace](#manual-installation) v další části, kde se budou vyskytovat přidružené licence a také součásti, které jsou nainstalovány.
 
 Po úspěšném spuštění skriptu můžete přeskočit k [Nastavení místního clusteru](#set-up-a-local-cluster).
 
@@ -298,13 +298,13 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 > 
 > V Ubuntu doporučujeme provést instalaci přímo z webu Eclipse, a nepoužívat instalační program balíčků (`apt` nebo `apt-get`). Tím zajistíte, že budete mít nejnovější verzi Eclipse. Můžete nainstalovat integrované vývojové prostředí Eclipse pro vývojáře v Javě nebo v Javě EE.
 
-1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujete tak, že vyberete **nápovědu**  >  **o**  >  **podrobnostech instalace**na zatmění. Buildship můžete aktualizovat pomocí pokynů v článku [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Moduly plug-in Eclipse pro Gradle).
+1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujete tak, že vyberete **nápovědu**  >  **o**  >  **podrobnostech instalace** na zatmění. Buildship můžete aktualizovat pomocí pokynů v článku [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Moduly plug-in Eclipse pro Gradle).
 
-2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **help**  >  **instalovat nový software**.
+2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **help**  >  **instalovat nový software** .
 
-3. Do pole **work with (pracovat s** ) zadejte **https: \/ /dl.Microsoft.com/Eclipse**.
+3. Do pole **work with (pracovat s** ) zadejte **https: \/ /dl.Microsoft.com/Eclipse** .
 
-4. Vyberte **Přidat**.
+4. Vyberte **Přidat** .
 
     ![Stránka Available Software (Dostupný software)][sf-eclipse-plugin]
 
@@ -312,7 +312,7 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 
 6. Proveďte kroky instalace. Potom přijměte licenční smlouvu s koncovým uživatelem.
 
-Pokud už máte modul plug-in Service Fabric Eclipse nainstalovaný, ověřte, že používáte nejnovější verzi. Vyberte **nápovědu**  >  **o**  >  **podrobnostech instalace**zatmění. Pak vyhledejte Service Fabric v seznamu nainstalovaných modulů plug-in. Pokud je k dispozici novější verze, vyberte **aktualizovat** .
+Pokud už máte modul plug-in Service Fabric Eclipse nainstalovaný, ověřte, že používáte nejnovější verzi. Vyberte **nápovědu**  >  **o**  >  **podrobnostech instalace** zatmění. Pak vyhledejte Service Fabric v seznamu nainstalovaných modulů plug-in. Pokud je k dispozici novější verze, vyberte **aktualizovat** .
 
 Další informace najdete v tématu [Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě](service-fabric-get-started-eclipse.md).
 

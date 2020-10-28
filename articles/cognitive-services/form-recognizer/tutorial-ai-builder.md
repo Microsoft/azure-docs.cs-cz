@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 0261c495ad08000f9041390658e0f19954b71669
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 124c8fca569365a4b892dc325518f45c7f98900c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517017"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675913"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI
 
@@ -40,10 +40,10 @@ V tomto kurzu se naučíte:
 ## <a name="create-a-form-processing-project"></a>Vytvořit projekt zpracování formuláře
 
 1. Přejít na [Power Apps](https://make.powerapps.com/) nebo [Power Automatizujte](https://flow.microsoft.com/signin)a přihlaste se pomocí účtu organizace.
-1. V levém podokně vyberte sestavení pro **Tvůrce AI**  >  **Build**.
+1. V levém podokně vyberte sestavení pro **Tvůrce AI**  >  **Build** .
 1. Vyberte kartu pro **zpracování formuláře** .
 1. Zadejte název pro svůj model.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
 ## <a name="upload-and-analyze-documents"></a>Nahrání a analýza dokumentů
 
@@ -61,15 +61,15 @@ Na stránce **Přidat dokumenty** musíte poskytnout ukázkové dokumenty, kter�
 
 ### <a name="upload-your-documents"></a>Nahrání dokumentů
 
-1. Vyberte **Přidat dokumenty**, vyberte aspoň pět dokumentů a pak vyberte **Nahrát**.
-1. Po dokončení nahrávání vyberte **Zavřít**.
-1. Pak vyberte **analyzovat**.
+1. Vyberte **Přidat dokumenty** , vyberte aspoň pět dokumentů a pak vyberte **Nahrát** .
+1. Po dokončení nahrávání vyberte **Zavřít** .
+1. Pak vyberte **analyzovat** .
 
 > [!NOTE] 
 > Po nahrání dokumentů můžete některé z nich odebrat nebo nahrát další.
 
 > [!div class="mx-imgBorder"]
-> ![Přidat stránku dokumentů](./media/tutorial-ai-builder/add-documents-page.png)
+> ![Snímek obrazovky, který zvýrazní tlačítko Přidat dokumenty](./media/tutorial-ai-builder/add-documents-page.png)
 
 ### <a name="analyze-your-documents"></a>Analýza dokumentů
 
@@ -89,8 +89,8 @@ Na stránce Výběr polí vyberte pole, která vás zajímají:
 
     Po kliknutí na zjištěné pole se zobrazí následující informace:
 
-    - **Název pole**: název popisku zjištěného pole.
-    - **Hodnota pole**: hodnota zjištěného pole.
+    - **Název pole** : název popisku zjištěného pole.
+    - **Hodnota pole** : hodnota zjištěného pole.
 
 > [!div class="mx-imgBorder"]
 > ![Stránka označování](./media/tutorial-ai-builder/select-fields-page.png)
@@ -101,16 +101,16 @@ Pokud pole, které chcete označit popiskem, nebylo automaticky zjištěno model
 
 ## <a name="train-your-model"></a>Trénování modelu
 
-1. Vyberte **Další**, abyste zkontrolovali vybraná pole formuláře. Pokud vše vypadá dobře, vyberte **Trénovat** k trénování modelu.
+1. Vyberte **Další** , abyste zkontrolovali vybraná pole formuláře. Pokud vše vypadá dobře, vyberte **Trénovat** k trénování modelu.
 
     > [!div class="mx-imgBorder"]
     > ![Stránka školení](./media/tutorial-ai-builder/summary-train-page.png)
-1. Po dokončení trénování vyberte **Přejít na stránku s podrobnostmi** na obrazovce **Trénování dokončeno**.
+1. Po dokončení trénování vyberte **Přejít na stránku s podrobnostmi** na obrazovce **Trénování dokončeno** .
 ## <a name="quick-test-your-model"></a>Rychlé otestování modelu
 
 Stránka s podrobnostmi vám umožní otestovat model před jeho publikováním nebo použitím:
 
-1. Na stránce s podrobnostmi vyberte **Rychlý test**.
+1. Na stránce s podrobnostmi vyberte **Rychlý test** .
 2. Můžete buď přetáhnout dokument, nebo vybrat **Odeslat ze zařízení** a nahrát testovací soubor. Rychlý test by měl výsledky zobrazit během pár sekund.
 3. Můžete vybrat možnost **začít znovu** a spustit další test nebo **Zavřít** , pokud jste hotovi.
 
@@ -120,7 +120,7 @@ Pokud pro určitá pole vyzkoušíte špatné výsledky nebo nízkou spolehlivos
 
 - Přeučení pomocí formulářů s různými hodnotami v každém poli.
 - Přeučení s využitím větší sady školicích dokumentů. Další dokumenty, které označíte, se seznámí s tím, jak lépe rozpoznávat pole.
-- Soubory PDF můžete optimalizovat tak, že vyberete jenom určité stránky, se kterými se naučíte. Pokud **Print**  >  chcete vybrat určité stránky v dokumentu, použijte možnost Tisk**Tisk do PDF** .
+- Soubory PDF můžete optimalizovat tak, že vyberete jenom určité stránky, se kterými se naučíte. Pokud **Print**  >  chcete vybrat určité stránky v dokumentu, použijte možnost Tisk **Tisk do PDF** .
 
 ## <a name="publish-your-model"></a>Publikování modelu
 

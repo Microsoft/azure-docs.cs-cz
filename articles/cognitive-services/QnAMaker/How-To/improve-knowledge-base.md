@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776489"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678371"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí dotazů na aktivní učení ve znalostní bázi Knowledge Base
 
@@ -22,15 +22,15 @@ Aktivní učení mění znalostní bázi nebo Search Service, když schválíte 
 
 ## <a name="turn-on-active-learning"></a>Aktivace aktivního učení
 
-Chcete-li zobrazit navrhované otázky, je nutné [zapnout službu Active Learning](use-active-learning.md) pro váš QnA maker prostředek.
+Chcete-li zobrazit navrhované otázky, je nutné [zapnout službu Active Learning](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions) pro váš QnA maker prostředek.
 
 ## <a name="view-suggested-questions"></a>Zobrazit navrhované otázky
 
-1. Chcete-li zobrazit navrhované otázky, na stránce **Upravit** znalostní bázi vyberte možnost **Zobrazit možnosti**a pak vyberte možnost **Zobrazit návrhy aktivního učení**.
+1. Chcete-li zobrazit navrhované otázky, na stránce **Upravit** znalostní bázi vyberte možnost **Zobrazit možnosti** a pak vyberte možnost **Zobrazit návrhy aktivního učení** .
 
     [![V části Upravit na portálu vyberte možnost Zobrazit návrhy, aby se zobrazily nové alternativy otázek aktivního učení.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. Vyfiltrujte znalostní bázi dvojice otázek a odpovědí, abyste zobrazili jenom návrhy, a to tak, že vyberete **filtrovat podle návrhů**.
+1. Vyfiltrujte znalostní bázi dvojice otázek a odpovědí, abyste zobrazili jenom návrhy, a to tak, že vyberete **filtrovat podle návrhů** .
 
     [![Pomocí přepínače filtrovat podle návrhů můžete zobrazit jenom navrhované alternativní otázky pro aktivní učení.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -132,10 +132,10 @@ Content-Type: application/json
 
 |Vlastnost požadavku HTTP|Název|Typ|Účel|
 |--|--|--|--|
-|Parametr trasy adresy URL|ID znalostní báze|řetězec|Identifikátor GUID znalostní báze|
-|Vlastní subdoména|Název prostředku Qnamakerem|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host` .|
-|Záhlaví|Typ obsahu|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je: `application/json`|
-|Záhlaví|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Parametr trasy adresy URL|ID znalostní báze|string|Identifikátor GUID znalostní báze|
+|Vlastní subdoména|Název prostředku Qnamakerem|string|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host` .|
+|Záhlaví|Typ obsahu|string|Typ média těla odesílaného do rozhraní API Výchozí hodnota je: `application/json`|
+|Záhlaví|Autorizace|string|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo příspěvku|Objekt JSON|JSON|Váš názor na školení|
 
 Tělo JSON má několik nastavení:
@@ -143,8 +143,8 @@ Tělo JSON má několik nastavení:
 |Vlastnost těla zprávy JSON|Typ|Účel|
 |--|--|--|--|
 |`feedbackRecords`|array|Seznam zpětné vazby|
-|`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Nepovinný parametr.|
-|`userQuestion`|řetězec|Přesný text dotazu uživatele. Povinná hodnota.|
+|`userId`|string|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Nepovinný parametr.|
+|`userQuestion`|string|Přesný text dotazu uživatele. Povinná hodnota.|
 |`qnaID`|číslo|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
 
 Ukázkový text JSON vypadá takto:

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 168b3d51b66078b3d4c2e113711d3124820dd6bd
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876511"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677797"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Kurz – migrace webové aplikace z map Bing
 
@@ -46,8 +46,8 @@ V následující tabulce jsou uvedeny klíčové funkce API ve službě Bing Map
 | Heat mapy                | ✓                                                                                      |
 | Vrstvy dlaždic              | ✓                                                                                      |
 | KML vrstva                | ✓                                                                                      |
-| Vrstva obrysu            | [ukázky](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
-| Vrstva binningu dat       | [ukázky](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
+| Vrstva obrysu            | [Ukázky](https://azuremapscodesamples.azurewebsites.net/?search=contour)              |
+| Vrstva binningu dat       | [Ukázky](https://azuremapscodesamples.azurewebsites.net/?search=data%20binning)       |
 | Animovaná vrstva dlaždice      | Zahrnutý v modulu Open Source Azure Maps [Animation](https://github.com/Azure-Samples/azure-maps-animations) |
 | Nástroje pro kreslení            | ✓                                                                                      |
 | Služba pro INCODE         | ✓                                                                                      |
@@ -668,7 +668,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **Další materiály**
 
--   [Přidat řádky do mapy](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-lines-to-the-map)
+-   [Přidat řádky do mapy](https://docs.microsoft.com/azure/azure-maps/map-add-line-layer)
 -   [Možnosti vrstvy čáry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
 -   [Použití výrazů pro styly založené na datech](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
 
@@ -744,7 +744,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **Další materiály**
 
--   [Přidat mnohoúhelník k mapě](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-polygon-to-the-map)
+-   [Přidat mnohoúhelník k mapě](https://docs.microsoft.com/azure/azure-maps/map-add-shape#use-a-polygon-layer)
 -   [Přidání kruhu k mapě](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-circle-to-the-map)
 -   [Možnosti vrstvy mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 -   [Možnosti vrstvy čáry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
@@ -932,16 +932,16 @@ V Azure Maps se data přidávají a spravují zdrojem dat. Vrstvy se připojují
 
 Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskupené datové body do vrstev pro vykreslování. Zdroj dat je schopný clusterovat stovky tisíc datových bodů. Clusterovaný datový bod má následující vlastnosti:
 
-| Název vlastnosti               | Typ    | Description                                    |
+| Název vlastnosti               | Typ    | Popis                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Indikuje, že funkce představuje cluster.     |
-| `cluster_id`                | řetězec  | Jedinečné ID clusteru, které lze použít se `DataSource` třídami `getClusterExpansionZoom` , `getClusterChildren` a `getClusterLeaves` . |
+| `cluster_id`                | string  | Jedinečné ID clusteru, které lze použít se `DataSource` třídami `getClusterExpansionZoom` , `getClusterChildren` a `getClusterLeaves` . |
 | `point_count`               | číslo  | Počet bodů, které cluster obsahuje.     |
-| `point_count_abbreviated`   | řetězec  | Řetězec, který zkracuje hodnotu, `point_count` Pokud je Long. (například 4 000 se bude 4K) |
+| `point_count_abbreviated`   | string  | Řetězec, který zkracuje hodnotu, `point_count` Pokud je Long. (například 4 000 se bude 4K) |
 
 `DataSource`Třída má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id` .
 
-| Funkce       | Návratový typ        | Description     |
+| Function       | Návratový typ        | Popis     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | Načte podřízené objekty daného clusteru na další úrovni přiblížení. Tyto podřízené objekty můžou být kombinací tvarů a podclusterů. Dílčí clustery budou funkcemi s vlastnostmi, které odpovídají vlastnostem clusteru. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Vypočítá úroveň přiblížení, kterou cluster začne rozšiřovat nebo se může rozdělovat.    |
@@ -1467,7 +1467,7 @@ Spuštění tohoto kódu v prohlížeči zobrazí mapu, která vypadá jako na n
 
 **Po: Azure Maps**
 
-V Azure Maps je pro informating data ve webové sadě v angličtině hlavní formát dat, další formáty prostorových dat je možné snadno integrovat pomocí [modulu pro prostorové vstupně-výstupní operace](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/). Tento modul obsahuje funkce pro čtení i zápis prostorových dat a také obsahuje jednoduchou datovou vrstvu, která umožňuje snadno vykreslovat data z libovolného z těchto formátů prostorových dat. Chcete-li číst data v souboru prostorových dat, předejte adresu URL nebo nezpracovaná data jako řetězec nebo objekt blob do  `atlas.io.read`   funkce. Tato akce vrátí všechna Analyzovaná data ze souboru, který lze přidat do mapy. KML je trochu složitější než většina formátů prostorových dat, protože obsahuje mnoho dalších informací o stylu.  `SpatialDataLayer`   Třída podporuje vykreslování většiny těchto stylů, ale před načtením dat funkce musí být obrázky napřed načteny do mapy a základní překrytí musí být přidány jako vrstvy do mapy samostatně. Při načítání dat prostřednictvím adresy URL by se měla hostovat na koncovém bodu s povoleným CORs nebo by měla být proxy služba předána jako možnost funkce Read.
+V Azure Maps je pro informating data ve webové sadě v angličtině hlavní formát dat, další formáty prostorových dat je možné snadno integrovat pomocí [modulu pro prostorové vstupně-výstupní operace](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/). Tento modul obsahuje funkce pro čtení i zápis prostorových dat a také obsahuje jednoduchou datovou vrstvu, která umožňuje snadno vykreslovat data z libovolného z těchto formátů prostorových dat. Chcete-li číst data v souboru prostorových dat, předejte adresu URL nebo nezpracovaná data jako řetězec nebo objekt blob do `atlas.io.read` funkce. Tato akce vrátí všechna Analyzovaná data ze souboru, který lze přidat do mapy. KML je trochu složitější než většina formátů prostorových dat, protože obsahuje mnoho dalších informací o stylu. `SpatialDataLayer`Třída podporuje vykreslování většiny těchto stylů, ale před načtením dat funkce musí být obrázky napřed načteny do mapy a základní překrytí musí být přidány jako vrstvy do mapy samostatně. Při načítání dat prostřednictvím adresy URL by se měla hostovat na koncovém bodu s povoleným CORs nebo by měla být proxy služba předána jako možnost funkce Read.
 
 ```html
 <!DOCTYPE html>

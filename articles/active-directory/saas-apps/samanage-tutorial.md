@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab720430af0341f3a42d9f4d4dc19b9469872211
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707573"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Kurz: Azure Active Directory integrace se službou SolarWinds Service Desk (dříve Samanage)
 
@@ -27,10 +27,10 @@ Integrace SolarWinds s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k SolarWinds (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s SolarWinds Service Desk (dříve Samanage) potřebujete následující položky:
 
@@ -61,13 +61,13 @@ Pokud chcete nakonfigurovat integraci SolarWinds do služby Azure AD, musíte p�
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SolarWinds**, vyberte **SolarWinds** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SolarWinds** , vyberte **SolarWinds** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![SolarWinds v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí SolarWinds na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí SolarWinds na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SolarWinds.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí SolarWinds, musíte dokončit tyto stavební bloky:
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SolarWinds, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SolarWinds** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **SolarWinds** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -132,7 +132,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SolarWin
    
     ![Řídicí panel](./media/samanage-tutorial/tutorial_samanage_001.png "Řídicí panel")
 
-3. Klikněte na **jednotné přihlašování**.
+3. Klikněte na **jednotné přihlašování** .
    
     ![Jednotné přihlašování](./media/samanage-tutorial/tutorial_samanage_002.png "Jednotné přihlašování")
 
@@ -140,7 +140,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SolarWin
    
     ![Přihlášení pomocí SAML](./media/samanage-tutorial/tutorial_samanage_003.png "Přihlášení pomocí SAML")
  
-    a. Klikněte na **Povolit jednu Sign-On s SAML**.  
+    a. Klikněte na **Povolit jednu Sign-On s SAML** .  
  
     b. Do textového pole **Adresa URL poskytovatele identity** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.    
  
@@ -152,15 +152,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SolarWin
  
     f. Otevřete v programu Poznámkový blok certifikát s kódováním Base-64, který jste stáhli z Azure Portal, zkopírujte jeho obsah do schránky a vložte ho do pole **Vložit poskytovatele identity x. 509 pod** textovým polem.
  
-    například **Pokud v SolarWinds neexistují**, klikněte na vytvořit uživatele.
+    například **Pokud v SolarWinds neexistují** , klikněte na vytvořit uživatele.
  
-    h. Klikněte na **Aktualizovat**.
+    h. Klikněte na **Aktualizovat** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -172,26 +172,26 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k SolarWinds.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **SolarWinds**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **SolarWinds** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **SolarWinds**.
+2. V seznamu aplikace vyberte **SolarWinds** .
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -222,11 +222,11 @@ V případě SolarWinds je zřizování ručním úkolem.
    
     ![Uživatelé](./media/samanage-tutorial/tutorial_samanage_006.png "Uživatelé")
 
-4. Klikněte na **Nový uživatel**.
+4. Klikněte na **Nový uživatel** .
    
     ![Nový uživatel](./media/samanage-tutorial/tutorial_samanage_007.png "Nový uživatel")
 
-5. Zadejte **jméno** a **e-mailovou adresu** účtu Azure Active Directory, který chcete zřídit, a klikněte na **vytvořit uživatele**.
+5. Zadejte **jméno** a **e-mailovou adresu** účtu Azure Active Directory, který chcete zřídit, a klikněte na **vytvořit uživatele** .
    
     ![Vytvořit uživatele](./media/samanage-tutorial/tutorial_samanage_008.png "Vytvořit uživatele")
    
@@ -237,13 +237,12 @@ V případě SolarWinds je zřizování ručním úkolem.
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici SolarWinds, měli byste se automaticky přihlásit k SolarWinds, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici SolarWinds, měli byste se automaticky přihlásit k SolarWinds, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

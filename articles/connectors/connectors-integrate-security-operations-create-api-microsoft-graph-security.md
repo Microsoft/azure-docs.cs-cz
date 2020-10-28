@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: a5842c5f3130b39f75b5339274b84feb2e0f283f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0f121caddc6b629920479a34bef7b284dea117a4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547091"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677494"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 
@@ -30,13 +30,13 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a konektoru [za
 
 Pracovní postup vaší aplikace logiky může používat akce, které získávají odpovědi z konektoru zabezpečení Microsoft Graph a zpřístupňují výstup ostatním akcím v pracovním postupu. V pracovním postupu můžete mít také další akce, které používají výstup z akcí Microsoft Graph Security Connector. Pokud například obdržíte upozornění s vysokou závažností prostřednictvím konektoru zabezpečení Microsoft Graph, můžete tyto výstrahy odeslat v e-mailové zprávě pomocí konektoru aplikace Outlook. 
 
-Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled rozhraní API pro Microsoft Graph zabezpečení](https://aka.ms/graphsecuritydocs). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Pokud hledáte Microsoft Flow nebo PowerApps, přečtěte si téma [co je Flow?](https://flow.microsoft.com/) nebo [co je PowerApps?](https://powerapps.microsoft.com/)
+Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled rozhraní API pro Microsoft Graph zabezpečení](/graph/security-concept-overview). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Pokud hledáte Microsoft Flow nebo PowerApps, přečtěte si téma [co je Flow?](https://flow.microsoft.com/) nebo [co je PowerApps?](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Abyste mohli používat konektor pro Microsoft Graph Security, musí vám být *explicitně udělen* souhlas správce tenanta Azure Active Directory (AD). To je součástí [požadavků na ověřování v Microsoft Graph Security](https://aka.ms/graphsecurityauth). Tento souhlas vyžaduje ID a název aplikace konektoru zabezpečení Microsoft Graph, které můžete také najít v [Azure Portal](https://portal.azure.com):
+* Abyste mohli používat konektor pro Microsoft Graph Security, musí vám být *explicitně udělen* souhlas správce tenanta Azure Active Directory (AD). To je součástí [požadavků na ověřování v Microsoft Graph Security](/graph/security-authorization). Tento souhlas vyžaduje ID a název aplikace konektoru zabezpečení Microsoft Graph, které můžete také najít v [Azure Portal](https://portal.azure.com):
 
   | Vlastnost | Hodnota |
   |----------|-------|
@@ -159,9 +159,8 @@ Další informace o dotazech, které můžete použít s tímto konektorem, najd
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](https://aka.ms/graphsecurityconnectorreference)konektoru.
+Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/microsoftgraphsecurity/)konektoru.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
-

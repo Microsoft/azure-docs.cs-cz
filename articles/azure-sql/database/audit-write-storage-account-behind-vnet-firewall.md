@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444534"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677255"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Zápis auditu do účtu úložiště za virtuální sítí a branou firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,7 +33,7 @@ Další informace o konceptech virtuální sítě, osvědčených postupech a mn
 
 Další informace o tom, jak vytvořit virtuální síť, najdete v tématu [rychlý Start: vytvoření virtuální sítě pomocí Azure Portal](../../virtual-network/quick-create-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby mohl audit zapisovat do účtu úložiště za virtuální sítí nebo bránou firewall, vyžadují se tyto požadavky:
 
@@ -41,16 +41,16 @@ Aby mohl audit zapisovat do účtu úložiště za virtuální sítí nebo brán
 >
 > * Účet úložiště pro obecné účely v2. Pokud máte účet úložiště pro obecné účely v1 nebo blob, [upgradujte na účet úložiště pro obecné účely v2](../../storage/common/storage-account-upgrade.md). Další informace najdete v tématu [typy účtů úložiště](../../storage/common/storage-account-overview.md#types-of-storage-accounts).
 > * Účet úložiště musí být ve stejném předplatném a ve stejném umístění jako [logický SQL Server](logical-servers.md).
-> * Účet Azure Storage vyžaduje `Allow trusted Microsoft services to access this storage account` . Nastavte tuto hodnotu na **brány firewall a virtuální sítě**v účtu úložiště.
+> * Účet Azure Storage vyžaduje `Allow trusted Microsoft services to access this storage account` . Nastavte tuto hodnotu na **brány firewall a virtuální sítě** v účtu úložiště.
 > * Musíte mít `Microsoft.Authorization/roleAssignments/write` oprávnění pro vybraný účet úložiště. Další informace najdete v tématu [Předdefinované role v Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Konfigurace na webu Azure Portal
 
 Připojte se k [Azure Portal](https://portal.azure.com) k vašemu předplatnému. Přejděte do skupiny prostředků a na server.
 
-1. V záhlaví zabezpečení klikněte na **auditování** . Vyberte **zapnuto**.
+1. V záhlaví zabezpečení klikněte na **auditování** . Vyberte **zapnuto** .
 
-2. Vyberte **úložiště**. Vyberte účet úložiště, do kterého se budou ukládat protokoly. Účet úložiště musí splňovat požadavky uvedené v části [požadavky](#prerequisites).
+2. Vyberte **úložiště** . Vyberte účet úložiště, do kterého se budou ukládat protokoly. Účet úložiště musí splňovat požadavky uvedené v části [požadavky](#prerequisites).
 
 3. Otevřít **Podrobnosti o úložišti**
 
@@ -61,7 +61,7 @@ Připojte se k [Azure Portal](https://portal.azure.com) k vašemu předplatnému
   >
   >Pokud se tato zpráva nezobrazuje, účet úložiště není za virtuální sítí.
 
-4. Vyberte počet dní pro dobu uchování. Pak klikněte na **OK**. Protokoly starší než doba uchování se odstraní.
+4. Vyberte počet dní pro dobu uchování. Pak klikněte na **OK** . Protokoly starší než doba uchování se odstraní.
 
 5. V nastavení auditování vyberte **Uložit** .
 
@@ -93,7 +93,7 @@ Konfigurace auditu SQL pro zápis událostí do účtu úložiště za virtuáln
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
 
-   [**REST API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate):
+   [**REST API**](/rest/api/sql/servers/createorupdate):
 
    Ukázková žádost
 
@@ -117,12 +117,12 @@ Konfigurace auditu SQL pro zápis událostí do účtu úložiště za virtuáln
    }
    ```
 
-2. Otevřete [Azure Portal](https://portal.azure.com). Přejděte na svůj účet úložiště. Vyhledejte **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem databáze, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD) jako v předchozím kroku.
+2. Otevřete [Azure Portal](https://portal.azure.com). Přejděte na svůj účet úložiště. Vyhledejte **Access Control (IAM)** a klikněte na **Přidat přiřazení role** . Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem databáze, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD) jako v předchozím kroku.
 
    > [!NOTE]
    > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete [v tématu předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
-3. Nakonfigurujte [zásady auditování objektů BLOB serveru](/rest/api/sql/server%20auditing%20settings/createorupdate)bez zadání *storageAccountAccessKey*:
+3. Nakonfigurujte [zásady auditování objektů BLOB serveru](/rest/api/sql/server%20auditing%20settings/createorupdate)bez zadání *storageAccountAccessKey* :
 
    Ukázková žádost
 

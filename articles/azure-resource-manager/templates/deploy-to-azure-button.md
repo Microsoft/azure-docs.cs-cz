@@ -2,17 +2,24 @@
 title: Tlačítko pro nasazení do Azure
 description: Pomocí tlačítka nasaďte Azure Resource Manager šablony z úložiště GitHub.
 ms.topic: conceptual
-ms.date: 07/20/2020
-ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079457"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675402"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Použití tlačítka nasazení k nasazení šablon z úložiště GitHub
 
-Tento článek popisuje, jak pomocí tlačítka **nasadit do Azure** nasazovat šablony z úložiště GitHub. Tlačítko můžete přidat přímo do souboru README.md v úložišti GitHub nebo na webovou stránku, která odkazuje na úložiště. Tato metoda podporuje jenom nasazení na úrovni skupiny prostředků.
+Tento článek popisuje, jak pomocí tlačítka **nasadit do Azure** nasazovat šablony z úložiště GitHub. Tlačítko můžete přidat přímo do souboru README.md v úložišti GitHub. Nebo můžete přidat tlačítko na webovou stránku, která odkazuje na úložiště.
+
+Rozsah nasazení je určen schématem šablony. Další informace naleznete v tématech:
+
+* [skupiny prostředků](deploy-to-resource-group.md)
+* [odběru](deploy-to-subscription.md)
+* [skupiny pro správu](deploy-to-management-group.md)
+* [klienti](deploy-to-tenant.md).
 
 ## <a name="use-common-image"></a>Použít běžný obrázek
 
@@ -28,7 +35,7 @@ Obrázek se zobrazí jako:
 
 ## <a name="create-url-for-deploying-template"></a>Vytvořit adresu URL pro nasazení šablony
 
-Pokud chcete vytvořit adresu URL pro vaši šablonu, začněte s nezpracovanými adresami URL šablony v úložišti. Pokud chcete zobrazit neupravenou adresu URL, vyberte **Nezpracovaná**.
+Pokud chcete vytvořit adresu URL pro vaši šablonu, začněte s nezpracovanými adresami URL šablony v úložišti. Pokud chcete zobrazit neupravenou adresu URL, vyberte **Nezpracovaná** .
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="vybrat nezpracované":::
 
@@ -38,7 +45,7 @@ Formát adresy URL je:
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Pak je adresa URL zakóduje. Můžete použít online kodér nebo spustit příkaz. Následující příklad PowerShellu ukazuje, jak adresa URL kóduje hodnotu.
+Pak převeďte adresu URL na hodnotu kódovanou pomocí adresy URL. Můžete použít online kodér nebo spustit příkaz. Následující příklad PowerShellu ukazuje, jak adresa URL kóduje hodnotu.
 
 ```powershell
 [uri]::EscapeDataString($url)

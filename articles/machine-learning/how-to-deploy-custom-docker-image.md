@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: eb3acc9b30b9016ae33f223911cc01cbf8daea47
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 6aa08f91a9289984d15beac5fb215d112a5558da
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999108"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676032"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 
@@ -39,9 +39,9 @@ Tento dokument je rozdělen do dvou částí:
 * Vytvoření vlastní základní Image: poskytuje informace správcům a DevOpsům při vytváření vlastní image a konfiguraci ověřování pro Azure Container Registry pomocí rozhraní příkazového řádku Azure CLI a Machine Learning CLI.
 * Nasazení modelu pomocí vlastní základní Image: poskytuje informace pro odborníky na data a inženýry DevOps/ML na používání vlastních imagí při nasazení vyučeného modelu ze sady Python SDK nebo ML CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Pracovní skupina Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
+* Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 * [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
 * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
 * [Rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
@@ -54,12 +54,12 @@ Informace v této části předpokládají, že používáte Azure Container Reg
 
 * Použijete Azure Container Registry vytvořenou pro Azure Machine Learning pracovní prostor nebo samostatný Azure Container Registry?
 
-    Při použití imagí uložených v __registru kontejnerů pro pracovní prostor__není nutné provádět ověřování v registru. Ověřování je zpracováváno pracovním prostorem.
+    Při použití imagí uložených v __registru kontejnerů pro pracovní prostor__ není nutné provádět ověřování v registru. Ověřování je zpracováváno pracovním prostorem.
 
     > [!WARNING]
     > Azure Container Registry pro váš pracovní prostor se __vytvoří při prvním spuštění modelu nebo nasazení modelu__ pomocí pracovního prostoru. Pokud jste vytvořili nový pracovní prostor, ale nevyškolený nebo nevytvořil model, nebude pro tento pracovní prostor existovat žádná Azure Container Registry.
 
-    Při použití imagí uložených v __samostatném registru kontejnerů__budete muset nakonfigurovat instanční objekt, který má alespoň přístup pro čtení. Pak zadáte ID objektu služby (Username) a heslo všem, kdo používá image z registru. Výjimkou je případ, kdy je v registru kontejnerů zpřístupněný veřejně přístupný.
+    Při použití imagí uložených v __samostatném registru kontejnerů__ budete muset nakonfigurovat instanční objekt, který má alespoň přístup pro čtení. Pak zadáte ID objektu služby (Username) a heslo všem, kdo používá image z registru. Výjimkou je případ, kdy je v registru kontejnerů zpřístupněný veřejně přístupný.
 
     Informace o vytváření privátních Azure Container Registry najdete v tématu [vytvoření soukromého registru kontejnerů](/azure/container-registry/container-registry-get-started-azure-cli).
 
@@ -202,9 +202,9 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
     > [!IMPORTANT]
     > U vlastních imagí, které jste vytvořili, nezapomeňte zahrnout všechny značky, které se s imagí používaly. Například pokud se vaše image vytvořila s konkrétní značkou, jako je například `:v1` . Pokud jste při vytváření image nepoužili konkrétní značku, `:latest` použila se značka.
 
-* Pokud je obrázek v __privátním úložišti__, budete potřebovat následující informace:
+* Pokud je obrázek v __privátním úložišti__ , budete potřebovat následující informace:
 
-    * __Adresa__registru. Například, `myregistry.azureecr.io`.
+    * __Adresa__ registru. Například, `myregistry.azureecr.io`.
     * __Uživatelské jméno__ a __heslo__ instančního objektu, které mají přístup pro čtení k registru.
 
     Pokud tyto informace nemáte, obraťte se na správce Azure Container Registry, který obsahuje vaši image.
@@ -213,7 +213,7 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 
 Společnost Microsoft poskytuje několik imagí Docker pro veřejně dostupné úložiště, které je možné použít s kroky v této části:
 
-| Image | Description |
+| Image | Popis |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Základní obrázek pro Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Obsahuje ONNX runtime pro PROCESORové Inferencing |
@@ -231,7 +231,7 @@ Další informace najdete v tématu [Azure Machine Learning úložiště kontejn
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Použití obrázku s Azure Machine Learning SDK
 
-Pokud chcete použít image uloženou v **Azure Container registry pro váš pracovní prostor**nebo **kontejner kontejneru, který je veřejně přístupný**, nastavte následující atributy [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) :
+Pokud chcete použít image uloženou v **Azure Container registry pro váš pracovní prostor** nebo **kontejner kontejneru, který je veřejně přístupný** , nastavte následující atributy [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) :
 
 + `docker.enabled=True`
 + `docker.base_image`: Nastavte na registr a cestu k imagi.

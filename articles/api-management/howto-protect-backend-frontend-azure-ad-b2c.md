@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
-ms.custom: fasttrack-new
-ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: fasttrack-new, devx-track-js
+ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253690"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676026"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
 
@@ -31,7 +31,7 @@ Zjistíme, jak se dá API Management použít ve zjednodušeném scénáři s Az
 
 Pro důkladnou obranu pak používáme EasyAuth k ověření tokenu v back-endu rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 * Účet úložiště Azure (StorageV2) Pro obecné účely v2 pro hostování jednostránkové aplikace front-end JS
 * Instance Azure API Management 
@@ -180,7 +180,7 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
    > Rozhraní API funkcí by teď nemělo být možné volat odkudkoli, než prostřednictvím služby API Management, nebo vaší adresy.
    
 ## <a name="import-the-function-app-definition"></a>Import definice aplikace Function App
-1. Otevřete okno *API Management*a pak otevřete *vaši instanci*.
+1. Otevřete okno *API Management* a pak otevřete *vaši instanci* .
 1. V části API Management vaší instance vyberte okno rozhraní API.
 1. V podokně Přidat nové rozhraní API zvolte Function App a pak v horní části automaticky otevíraného okna vyberte plná.
 1. Klikněte na Procházet, vyberte aplikaci Function App, do které rozhraní API hostuje, a klikněte na vybrat.

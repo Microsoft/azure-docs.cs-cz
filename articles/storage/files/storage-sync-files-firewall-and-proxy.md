@@ -4,15 +4,15 @@ description: Pochopte Azure File Sync místní proxy a nastavení brány firewal
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/24/2019
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69fdfea6768a895db1f85df4c2936936a2ffd3f5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903710"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675789"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
 Azure File Sync propojuje vaše místní servery se soubory Azure a povoluje funkce synchronizace více lokalit a vrstvení cloudu. V takovém případě musí být místní server připojený k Internetu. Správce IT musí určit nejlepší cestu pro server, který bude mít přístup k Azure Cloud Services.
@@ -111,31 +111,33 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 
 | Cloud  | Oblast | Adresa URL primárního koncového bodu | Spárovaná oblast | Adresa URL zjišťování |
 |--------|--------|----------------------|---------------|---------------|
-| Public |Austrálie – východ | https: \/ /australiaeast01.AFS.Azure.NET<br>https: \/ /kailani-Aue.One.Microsoft.com | Australia Southeast | https: \/ /TM-australiaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani-Aue.One.Microsoft.com |
-| Public |Australia Southeast | https: \/ /australiasoutheast01.AFS.Azure.NET<br>https: \/ /kailani-AUS.One.Microsoft.com | Austrálie – východ | https: \/ /TM-australiasoutheast01.AFS.Azure.NET<br>https: \/ /TM-kailani-AUS.One.Microsoft.com |
-| Public | Brazil South | https: \/ /brazilsouth01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-brazilsouth01.AFS.Azure.NET |
-| Public | Střední Kanada | https: \/ /canadacentral01.AFS.Azure.NET<br>https: \/ /kailani-CAC.One.Microsoft.com | Kanada – východ | https: \/ /TM-canadacentral01.AFS.Azure.NET<br>https: \/ /TM-kailani-CAC.One.Microsoft.com |
-| Public | Kanada – východ | https: \/ /canadaeast01.AFS.Azure.NET<br>https: \/ /kailani-CAE.One.Microsoft.com | Střední Kanada | https: \/ /TM-canadaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani.CAE.One.Microsoft.com |
-| Public | Indie – střed | https: \/ /centralindia01.AFS.Azure.NET<br>https: \/ /kailani-CIN.One.Microsoft.com | Indie – jih | https: \/ /TM-centralindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-CIN.One.Microsoft.com |
-| Public | Střední USA | https: \/ /centralus01.AFS.Azure.NET<br>https: \/ /kailani-CUS.One.Microsoft.com | USA – východ 2 | https: \/ /TM-centralus01.AFS.Azure.NET<br>https: \/ /TM-kailani-CUS.One.Microsoft.com |
-| Public | Východní Asie | https: \/ /eastasia01.AFS.Azure.NET<br>https: \/ /kailani11.One.Microsoft.com | Southeast Asia | https: \/ /TM-eastasia01.AFS.Azure.NET<br>https: \/ /TM-kailani11.One.Microsoft.com |
-| Public | East US | https: \/ /eastus01.AFS.Azure.NET<br>https: \/ /kailani1.One.Microsoft.com | USA – západ | https: \/ /TM-eastus01.AFS.Azure.NET<br>https: \/ /TM-kailani1.One.Microsoft.com |
-| Public | USA – východ 2 | https: \/ /eastus201.AFS.Azure.NET<br>https: \/ /kailani-ESS.One.Microsoft.com | Střední USA | https: \/ /TM-eastus201.AFS.Azure.NET<br>https: \/ /TM-kailani-ESS.One.Microsoft.com |
-| Public | Japan East | https: \/ /japaneast01.AFS.Azure.NET | Japonsko – západ | https: \/ /TM-japaneast01.AFS.Azure.NET |
-| Public | Japonsko – západ | https: \/ /japanwest01.AFS.Azure.NET | Japan East | https: \/ /TM-japanwest01.AFS.Azure.NET |
-| Public | Jižní Korea – střed | https: \/ /koreacentral01.AFS.Azure.NET/ | Jižní Korea – jih | https: \/ /TM-koreacentral01.AFS.Azure.NET/ |
-| Public | Jižní Korea – jih | https: \/ /koreasouth01.AFS.Azure.NET/ | Jižní Korea – střed | https: \/ /TM-koreasouth01.AFS.Azure.NET/ |
-| Public | USA – středosever | https: \/ /northcentralus01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-northcentralus01.AFS.Azure.NET |
-| Public | Severní Evropa | https: \/ /northeurope01.AFS.Azure.NET<br>https: \/ /kailani7.One.Microsoft.com | West Europe | https: \/ /TM-northeurope01.AFS.Azure.NET<br>https: \/ /TM-kailani7.One.Microsoft.com |
-| Public | Středojižní USA | https: \/ /southcentralus01.AFS.Azure.NET | USA – středosever | https: \/ /TM-southcentralus01.AFS.Azure.NET |
-| Public | Indie – jih | https: \/ /southindia01.AFS.Azure.NET<br>https: \/ /kailani-Sin.One.Microsoft.com | Indie – střed | https: \/ /TM-southindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-Sin.One.Microsoft.com |
-| Public | Southeast Asia | https: \/ /southeastasia01.AFS.Azure.NET<br>https: \/ /kailani10.One.Microsoft.com | Východní Asie | https: \/ /TM-southeastasia01.AFS.Azure.NET<br>https: \/ /TM-kailani10.One.Microsoft.com |
-| Public | Spojené království – jih | https: \/ /uksouth01.AFS.Azure.NET<br>https: \/ /kailani-UKS.One.Microsoft.com | Spojené království – západ | https: \/ /TM-uksouth01.AFS.Azure.NET<br>https: \/ /TM-kailani-UKS.One.Microsoft.com |
-| Public | Spojené království – západ | https: \/ /ukwest01.AFS.Azure.NET<br>https: \/ /kailani-UKW.One.Microsoft.com | Spojené království – jih | https: \/ /TM-ukwest01.AFS.Azure.NET<br>https: \/ /TM-kailani-UKW.One.Microsoft.com |
-| Public | USA – středozápad | https: \/ /westcentralus01.AFS.Azure.NET | Západní USA 2 | https: \/ /TM-westcentralus01.AFS.Azure.NET |
-| Public | West Europe | https: \/ /westeurope01.AFS.Azure.NET<br>https: \/ /kailani6.One.Microsoft.com | Severní Evropa | https: \/ /TM-westeurope01.AFS.Azure.NET<br>https: \/ /TM-kailani6.One.Microsoft.com |
-| Public | USA – západ | https: \/ /westus01.AFS.Azure.NET<br>https: \/ /kailani.One.Microsoft.com | East US | https: \/ /TM-westus01.AFS.Azure.NET<br>https: \/ /TM-kailani.One.Microsoft.com |
-| Public | Západní USA 2 | https: \/ /westus201.AFS.Azure.NET | USA – středozápad | https: \/ /TM-westus201.AFS.Azure.NET |
+| Veřejná |Austrálie – východ | https: \/ /australiaeast01.AFS.Azure.NET<br>https: \/ /kailani-Aue.One.Microsoft.com | Australia Southeast | https: \/ /TM-australiaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani-Aue.One.Microsoft.com |
+| Veřejná |Australia Southeast | https: \/ /australiasoutheast01.AFS.Azure.NET<br>https: \/ /kailani-AUS.One.Microsoft.com | Austrálie – východ | https: \/ /TM-australiasoutheast01.AFS.Azure.NET<br>https: \/ /TM-kailani-AUS.One.Microsoft.com |
+| Veřejná | Brazil South | https: \/ /brazilsouth01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-brazilsouth01.AFS.Azure.NET |
+| Veřejná | Střední Kanada | https: \/ /canadacentral01.AFS.Azure.NET<br>https: \/ /kailani-CAC.One.Microsoft.com | Kanada – východ | https: \/ /TM-canadacentral01.AFS.Azure.NET<br>https: \/ /TM-kailani-CAC.One.Microsoft.com |
+| Veřejná | Kanada – východ | https: \/ /canadaeast01.AFS.Azure.NET<br>https: \/ /kailani-CAE.One.Microsoft.com | Střední Kanada | https: \/ /TM-canadaeast01.AFS.Azure.NET<br>https: \/ /TM-kailani.CAE.One.Microsoft.com |
+| Veřejná | Indie – střed | https: \/ /centralindia01.AFS.Azure.NET<br>https: \/ /kailani-CIN.One.Microsoft.com | Indie – jih | https: \/ /TM-centralindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-CIN.One.Microsoft.com |
+| Veřejná | Střední USA | https: \/ /centralus01.AFS.Azure.NET<br>https: \/ /kailani-CUS.One.Microsoft.com | USA – východ 2 | https: \/ /TM-centralus01.AFS.Azure.NET<br>https: \/ /TM-kailani-CUS.One.Microsoft.com |
+| Veřejná | Východní Asie | https: \/ /eastasia01.AFS.Azure.NET<br>https: \/ /kailani11.One.Microsoft.com | Southeast Asia | https: \/ /TM-eastasia01.AFS.Azure.NET<br>https: \/ /TM-kailani11.One.Microsoft.com |
+| Veřejná | East US | https: \/ /eastus01.AFS.Azure.NET<br>https: \/ /kailani1.One.Microsoft.com | USA – západ | https: \/ /TM-eastus01.AFS.Azure.NET<br>https: \/ /TM-kailani1.One.Microsoft.com |
+| Veřejná | USA – východ 2 | https: \/ /eastus201.AFS.Azure.NET<br>https: \/ /kailani-ESS.One.Microsoft.com | Střední USA | https: \/ /TM-eastus201.AFS.Azure.NET<br>https: \/ /TM-kailani-ESS.One.Microsoft.com |
+| Veřejná | Německo – sever | https: \/ /germanynorth01.AFS.Azure.NET | Německo – středozápad | https: \/ /TM-germanywestcentral01.AFS.Azure.NET |
+| Veřejná | Německo – středozápad | https: \/ /germanywestcentral01.AFS.Azure.NET | Německo – sever | https: \/ /TM-germanynorth01.AFS.Azure.NET |
+| Veřejná | Japan East | https: \/ /japaneast01.AFS.Azure.NET | Japonsko – západ | https: \/ /TM-japaneast01.AFS.Azure.NET |
+| Veřejná | Japonsko – západ | https: \/ /japanwest01.AFS.Azure.NET | Japan East | https: \/ /TM-japanwest01.AFS.Azure.NET |
+| Veřejná | Jižní Korea – střed | https: \/ /koreacentral01.AFS.Azure.NET/ | Jižní Korea – jih | https: \/ /TM-koreacentral01.AFS.Azure.NET/ |
+| Veřejná | Jižní Korea – jih | https: \/ /koreasouth01.AFS.Azure.NET/ | Jižní Korea – střed | https: \/ /TM-koreasouth01.AFS.Azure.NET/ |
+| Veřejná | USA – středosever | https: \/ /northcentralus01.AFS.Azure.NET | Středojižní USA | https: \/ /TM-northcentralus01.AFS.Azure.NET |
+| Veřejná | Severní Evropa | https: \/ /northeurope01.AFS.Azure.NET<br>https: \/ /kailani7.One.Microsoft.com | West Europe | https: \/ /TM-northeurope01.AFS.Azure.NET<br>https: \/ /TM-kailani7.One.Microsoft.com |
+| Veřejná | Středojižní USA | https: \/ /southcentralus01.AFS.Azure.NET | USA – středosever | https: \/ /TM-southcentralus01.AFS.Azure.NET |
+| Veřejná | Indie – jih | https: \/ /southindia01.AFS.Azure.NET<br>https: \/ /kailani-Sin.One.Microsoft.com | Indie – střed | https: \/ /TM-southindia01.AFS.Azure.NET<br>https: \/ /TM-kailani-Sin.One.Microsoft.com |
+| Veřejná | Southeast Asia | https: \/ /southeastasia01.AFS.Azure.NET<br>https: \/ /kailani10.One.Microsoft.com | Východní Asie | https: \/ /TM-southeastasia01.AFS.Azure.NET<br>https: \/ /TM-kailani10.One.Microsoft.com |
+| Veřejná | Spojené království – jih | https: \/ /uksouth01.AFS.Azure.NET<br>https: \/ /kailani-UKS.One.Microsoft.com | Spojené království – západ | https: \/ /TM-uksouth01.AFS.Azure.NET<br>https: \/ /TM-kailani-UKS.One.Microsoft.com |
+| Veřejná | Spojené království – západ | https: \/ /ukwest01.AFS.Azure.NET<br>https: \/ /kailani-UKW.One.Microsoft.com | Spojené království – jih | https: \/ /TM-ukwest01.AFS.Azure.NET<br>https: \/ /TM-kailani-UKW.One.Microsoft.com |
+| Veřejná | USA – středozápad | https: \/ /westcentralus01.AFS.Azure.NET | Západní USA 2 | https: \/ /TM-westcentralus01.AFS.Azure.NET |
+| Veřejná | West Europe | https: \/ /westeurope01.AFS.Azure.NET<br>https: \/ /kailani6.One.Microsoft.com | Severní Evropa | https: \/ /TM-westeurope01.AFS.Azure.NET<br>https: \/ /TM-kailani6.One.Microsoft.com |
+| Veřejná | USA – západ | https: \/ /westus01.AFS.Azure.NET<br>https: \/ /kailani.One.Microsoft.com | East US | https: \/ /TM-westus01.AFS.Azure.NET<br>https: \/ /TM-kailani.One.Microsoft.com |
+| Veřejná | Západní USA 2 | https: \/ /westus201.AFS.Azure.NET | USA – středozápad | https: \/ /TM-westus201.AFS.Azure.NET |
 | Státní správa | USA (Gov) – Arizona | https: \/ /usgovarizona01.AFS.Azure.us | USA (Gov) – Texas | https: \/ /TM-usgovarizona01.AFS.Azure.us |
 | Státní správa | USA (Gov) – Texas | https: \/ /usgovtexas01.AFS.Azure.us | USA (Gov) – Arizona | https: \/ /TM-usgovtexas01.AFS.Azure.us |
 

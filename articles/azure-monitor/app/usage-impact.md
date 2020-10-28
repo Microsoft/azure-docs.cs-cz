@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fffb83fe680572c2448323a61b767a401c9a4834
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7393c36099795bbc989ae4b690100284d53f08e5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323702"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678384"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Analýza dopadu pomocí Application Insights
 
-Dopad analyzuje způsob, jakým doba načítání a další vlastnosti ovlivňují přepočítací poměry pro různé části aplikace. Chcete-li přesněji umístit, zjistí, jak **libovolná dimenze** **zobrazení stránky**, **vlastní událost**nebo **žádost** ovlivňuje použití jiného **zobrazení stránky** nebo **vlastní události**. 
+Dopad analyzuje způsob, jakým doba načítání a další vlastnosti ovlivňují přepočítací poměry pro různé části aplikace. Chcete-li přesněji umístit, zjistí, jak **libovolná dimenze** **zobrazení stránky** , **vlastní událost** nebo **žádost** ovlivňuje použití jiného **zobrazení stránky** nebo **vlastní události** . 
 
 ![Dopad – nástroj](./media/usage-impact/0001-impact.png)
 
@@ -36,10 +36,10 @@ Ale Analýza výkonu je jenom podmnožinou možností dopadu. Vzhledem k tomu, �
 
 Chcete-li začít s odpovědí na dotazy pomocí nástroje dopad, vyberte počáteční zobrazení stránky, vlastní událost nebo žádost.
 
-![Dopad – nástroj](./media/usage-impact/0002-dropdown.png)
+![Snímek obrazovky, který ukazuje, kde zvolit úvodní zobrazení stránky, vlastní událost nebo požadavek.](./media/usage-impact/0002-dropdown.png)
 
 1. V rozevíracím seznamu **zobrazení stránky** vyberte zobrazení stránky.
-2. Ponechte možnost **analyzovat způsob, jakým** má rozevírací seznam výchozí výběr **doby trvání** (v **tomto kontextu je** alias pro **dobu načtení stránky**).
+2. Ponechte možnost **analyzovat způsob, jakým** má rozevírací seznam výchozí výběr **doby trvání** (v **tomto kontextu je** alias pro **dobu načtení stránky** ).
 3. Pro **vliv na použití** rozevíracího seznamu vyberte vlastní událost. Tato událost by měla odpovídat prvku uživatelského rozhraní v zobrazení stránky, které jste vybrali v kroku 1.
 
 ![Snímek obrazovky s výsledky](./media/usage-impact/0003-results.png)
@@ -65,18 +65,18 @@ V rámci digestoře nástroj dopady spoléhá na [korelační koeficient Pearson
 
 Základní rozpis toho, jak analýza dopadů funguje, je následující:
 
-Nechť _A_ = hlavní zobrazení stránky/vlastní událost/požadavek, který jste vybrali v prvním rozevíracím seznamu. (**Pro zobrazení stránky**).
+Nechť _A_ = hlavní zobrazení stránky/vlastní událost/požadavek, který jste vybrali v prvním rozevíracím seznamu. ( **Pro zobrazení stránky** ).
 
-Nechť _B_ = sekundární zobrazení stránky a vlastní událost, kterou vyberete (**ovlivňuje použití**).
+Nechť _B_ = sekundární zobrazení stránky a vlastní událost, kterou vyberete ( **ovlivňuje použití** ).
 
 Dopad na ukázku všech relací od uživatelů ve vybraném časovém rozsahu. Pro každou relaci vyhledá všechny výskyty _._
 
 Relace se pak rozdělí do dvou různých druhů _podrelací_ na základě jedné ze dvou podmínek:
 
-- Převedená subrelace se skládá z relace končící na událost _B_ a _zahrnuje všechny události, ke kterým_ dojde před _B_.
-- K nepřevedené podrelaci dojde, když _se_objeví vše bez terminálu _B_.
+- Převedená subrelace se skládá z relace končící na událost _B_ a _zahrnuje všechny události, ke kterým_ dojde před _B_ .
+- K nepřevedené podrelaci dojde, když _se_ objeví vše bez terminálu _B_ .
 
-Způsob, jakým se nakonec počítá dopad, se liší podle toho, jestli analyzujeme podle metriky nebo podle dimenze. Pro metriky jsou _A_v podrelaci průměrně. Vzhledem k tomu, že pro dimenze je hodnota každé _a_ přispívá _1/N_ do hodnoty přiřazené hodnotě _B_ , kde _N_ je _číslo v_podrelaci.
+Způsob, jakým se nakonec počítá dopad, se liší podle toho, jestli analyzujeme podle metriky nebo podle dimenze. Pro metriky jsou _A_ v podrelaci průměrně. Vzhledem k tomu, že pro dimenze je hodnota každé _a_ přispívá _1/N_ do hodnoty přiřazené hodnotě _B_ , kde _N_ je _číslo v_ podrelaci.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -84,7 +84,7 @@ Způsob, jakým se nakonec počítá dopad, se liší podle toho, jestli analyzu
 - Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Trychtýře](usage-funnels.md)
     - [Uchovávání](usage-retention.md)
-    - [Toky uživatelů](usage-flows.md)
+    - [Toky uživatele](usage-flows.md)
     - [Workbooks](../platform/workbooks-overview.md)
     - [Přidat kontext uživatele](usage-send-user-context.md)
 

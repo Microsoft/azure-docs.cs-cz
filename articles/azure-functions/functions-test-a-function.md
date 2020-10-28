@@ -3,15 +3,15 @@ title: Testování Azure Functions
 description: Vytváření automatizovaných testů pro funkci jazyka C# v aplikaci Visual Studio a funkce JavaScriptu v VS Code
 author: craigshoemaker
 ms.topic: conceptual
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ff70c14310dd81a051ac27c1d6d59bb3d1deb7b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212898"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677599"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie testování kódu ve službě Azure Functions
 
@@ -37,11 +37,11 @@ Následující příklad popisuje, jak vytvořit aplikaci funkcí jazyka C# v ap
 Pokud chcete nastavit prostředí, vytvořte funkci a otestujte aplikaci. Následující kroky vám pomůžou vytvořit aplikace a funkce, které jsou potřeba pro podporu testů:
 
 1. [Vytvoření nové aplikace Functions](./functions-create-first-azure-function.md) a pojmenování IT **funkcí**
-2. [Vytvořte funkci http ze šablony](./functions-create-first-azure-function.md) a pojmenujte ji **MyHttpTrigger**.
-3. [Vytvořte funkci časovače ze šablony](./functions-create-scheduled-function.md) a pojmenujte ji **MyTimerTrigger**.
-4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) a pojmenujte ji **Functions. Tests**.
+2. [Vytvořte funkci http ze šablony](./functions-create-first-azure-function.md) a pojmenujte ji **MyHttpTrigger** .
+3. [Vytvořte funkci časovače ze šablony](./functions-create-scheduled-function.md) a pojmenujte ji **MyTimerTrigger** .
+4. [Vytvořte v řešení aplikaci XUnit test](https://xunit.github.io/docs/getting-started-dotnet-core) a pojmenujte ji **Functions. Tests** .
 5. Pomocí NuGet přidejte odkaz z testovací aplikace do [Microsoft. AspNetCore. Mvc.](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Odkázat na aplikaci *Functions* ](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
+6. [Odkázat na aplikaci *Functions*](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) v aplikaci *Functions. Tests* .
 
 ### <a name="create-test-classes"></a>Vytváření testovacích tříd
 
@@ -107,11 +107,11 @@ namespace Functions.Tests
 
 `ListLogger`Třída implementuje následující členy, které jsou vynásobené `ILogger` rozhraním:
 
-- **BeginScope**: obory přidávají kontext do svého protokolování. V tomto případě test pouze odkazuje na statickou instanci `NullScope` třídy, aby test mohl fungovat.
+- **BeginScope** : obory přidávají kontext do svého protokolování. V tomto případě test pouze odkazuje na statickou instanci `NullScope` třídy, aby test mohl fungovat.
 
-- **Povoleno**: je k dispozici výchozí hodnota `false` .
+- **Povoleno** : je k dispozici výchozí hodnota `false` .
 
-- **Log**: Tato metoda používá `formatter` k formátování zprávy poskytnutou funkci a následně do kolekce přidá výsledný text `Logs` .
+- **Log** : Tato metoda používá `formatter` k formátování zprávy poskytnutou funkci a následně do kolekce přidá výsledný text `Logs` .
 
 `Logs`Kolekce je instancí `List<string>` a je inicializována v konstruktoru.
 
@@ -193,13 +193,13 @@ namespace Functions.Tests
 
 `TestFactory`Třída implementuje následující členy:
 
-- **Data**: Tato vlastnost vrací kolekci [IEnumerable](/dotnet/api/system.collections.ienumerable) vzorových dat. Páry klíč-hodnota představují hodnoty, které jsou předány do řetězce dotazu.
+- **Data** : Tato vlastnost vrací kolekci [IEnumerable](/dotnet/api/system.collections.ienumerable) vzorových dat. Páry klíč-hodnota představují hodnoty, které jsou předány do řetězce dotazu.
 
-- **CreateDictionary –**: Tato metoda přijímá dvojici klíč/hodnota jako argumenty a vrátí novou hodnotu `Dictionary` použitou k vytvoření `QueryCollection` pro reprezentaci hodnot řetězce dotazu.
+- **CreateDictionary –** : Tato metoda přijímá dvojici klíč/hodnota jako argumenty a vrátí novou hodnotu `Dictionary` použitou k vytvoření `QueryCollection` pro reprezentaci hodnot řetězce dotazu.
 
-- **CreateHttpRequest**: Tato metoda vytvoří požadavek HTTP inicializovaný pomocí daných parametrů řetězce dotazu.
+- **CreateHttpRequest** : Tato metoda vytvoří požadavek HTTP inicializovaný pomocí daných parametrů řetězce dotazu.
 
-- **CreateLogger**: v závislosti na typu protokolovacího nástroje Tato metoda vrátí třídu protokolovacího nástroje použitou pro testování. `ListLogger`Uchovává záznam protokolovaných zpráv, které jsou k dispozici pro vyhodnocení v testech.
+- **CreateLogger** : v závislosti na typu protokolovacího nástroje Tato metoda vrátí třídu protokolovacího nástroje použitou pro testování. `ListLogger`Uchovává záznam protokolovaných zpráv, které jsou k dispozici pro vyhodnocení v testech.
 
 Nakonec vytvořte novou třídu v projektu *Functions. Tests* s názvem **FunctionsTests.cs** a zadejte následující kód:
 
@@ -245,23 +245,23 @@ namespace Functions.Tests
 
 Členy implementované v této třídě jsou:
 
-- **Http_trigger_should_return_known_string**: Tento test vytváří požadavek s hodnotami řetězce dotazu `name=Bill` na funkci http a kontroluje, zda je vrácena očekávaná odpověď.
+- **Http_trigger_should_return_known_string** : Tento test vytváří požadavek s hodnotami řetězce dotazu `name=Bill` na funkci http a kontroluje, zda je vrácena očekávaná odpověď.
 
-- **Http_trigger_should_return_string_from_member_data**: Tento test používá atributy xUnit k poskytování ukázkových dat funkci http.
+- **Http_trigger_should_return_string_from_member_data** : Tento test používá atributy xUnit k poskytování ukázkových dat funkci http.
 
-- **Timer_should_log_message**: Tento test vytvoří instanci třídy `ListLogger` a předá ji funkcím časovače. Po spuštění funkce se zkontroluje protokol, aby se zajistilo, že je k dispozici očekávaná zpráva.
+- **Timer_should_log_message** : Tento test vytvoří instanci třídy `ListLogger` a předá ji funkcím časovače. Po spuštění funkce se zkontroluje protokol, aby se zajistilo, že je k dispozici očekávaná zpráva.
 
 Chcete-li získat přístup k nastavení aplikace v testech, můžete použít [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
 ### <a name="run-tests"></a>Spouštění testů
 
-Chcete-li spustit testy, přejděte do **Průzkumníka testů** a klikněte na možnost **Spustit vše**.
+Chcete-li spustit testy, přejděte do **Průzkumníka testů** a klikněte na možnost **Spustit vše** .
 
 ![Testování Azure Functions pomocí jazyka C# v aplikaci Visual Studio](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>Ladit testy
 
-Chcete-li ladit testy, nastavte zarážku na test, přejděte do **Průzkumníka testů** a klikněte na tlačítko **Spustit > poslední spuštění ladění**.
+Chcete-li ladit testy, nastavte zarážku na test, přejděte do **Průzkumníka testů** a klikněte na tlačítko **Spustit > poslední spuštění ladění** .
 
 ## <a name="javascript-in-vs-code"></a>JavaScript v VS Code
 
@@ -295,7 +295,7 @@ Nyní aktualizujte _package.jsna_ a nahraďte stávající testovací příkaz n
 
 V případě inicializovaného projektu můžete vytvořit moduly používané pro spuštění automatizovaných testů. Začněte vytvořením nové složky s názvem *testování* , která bude obsahovat moduly podpory.
 
-Ve složce *testování* přidejte nový soubor, pojmenujte ho **defaultContext.js**a přidejte následující kód:
+Ve složce *testování* přidejte nový soubor, pojmenujte ho **defaultContext.js** a přidejte následující kód:
 
 ```javascript
 module.exports = {
@@ -305,7 +305,7 @@ module.exports = {
 
 Tento modul nakládá funkce *protokolu* tak, aby reprezentovala výchozí kontext spuštění.
 
-Dále přidejte nový soubor, pojmenujte ho **defaultTimer.js**a přidejte následující kód:
+Dále přidejte nový soubor, pojmenujte ho **defaultTimer.js** a přidejte následující kód:
 
 ```javascript
 module.exports = {
@@ -315,7 +315,7 @@ module.exports = {
 
 Tento modul implementuje `IsPastDue` vlastnost jako nefalešnou instanci časovače. Konfigurace časovače, jako jsou výrazy NCRONTAB, zde nejsou požadovány, protože testovací svazek je pouhým voláním funkce přímo k otestování výsledku.
 
-Dále pomocí rozšíření VS Code Functions [vytvořte novou funkci http jazyka JavaScript](/azure/developer/javascript/tutorial-vscode-serverless-node-01) a pojmenujte ji *HttpTrigger*. Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js**a přidejte následující kód:
+Dále pomocí rozšíření VS Code Functions [vytvořte novou funkci http jazyka JavaScript](/azure/developer/javascript/tutorial-vscode-serverless-node-01) a pojmenujte ji *HttpTrigger* . Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js** a přidejte následující kód:
 
 ```javascript
 const httpFunction = require('./index');
@@ -336,7 +336,7 @@ test('Http trigger should return known text', async () => {
 
 Funkce HTTP ze šablony vrací řetězec "Hello" zřetězený s názvem zadaným v řetězci dotazu. Tento test vytvoří falešnou instanci požadavku a předá ji funkci HTTP. Test ověří, zda je metoda *protokolu* volána jednou a vrácený text se rovná "Hello Bill".
 
-Potom pomocí rozšíření VS Code Functions vytvořte novou funkci časovače JavaScriptu a pojmenujte ji *TimerTrigger*. Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js**a přidejte následující kód:
+Potom pomocí rozšíření VS Code Functions vytvořte novou funkci časovače JavaScriptu a pojmenujte ji *TimerTrigger* . Po vytvoření funkce přidejte nový soubor do stejné složky s názvem **index.test.js** a přidejte následující kód:
 
 ```javascript
 const timerFunction = require('./index');
@@ -379,7 +379,7 @@ Chcete-li ladit testy, přidejte do souboru *launch.js* následující konfigura
 }
 ```
 
-Dále nastavte zarážku v testu a stiskněte klávesu **F5**.
+Dále nastavte zarážku v testu a stiskněte klávesu **F5** .
 
 ## <a name="next-steps"></a>Další kroky
 

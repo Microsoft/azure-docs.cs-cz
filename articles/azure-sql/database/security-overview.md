@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
-ms.date: 09/21/2020
-ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: bb9e17a4befcdcf1a322734c6cc5d75d653f23e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321420"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676148"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -41,7 +41,7 @@ Pravidla brány firewall protokolu IP udělují přístup k databázím na zákl
 [Pravidla virtuální sítě](vnet-service-endpoint-rule-overview.md) umožňují Azure SQL Database přijímat jenom komunikace, které se odesílají z vybraných podsítí v rámci virtuální sítě.
 
 > [!NOTE]
-> Řízení přístupu pomocí pravidel brány firewall *se nevztahuje* na **spravovanou instanci SQL**. Další informace o potřebné konfiguraci sítě najdete v tématu [připojení ke spravované instanci](../managed-instance/connect-application-instance.md) .
+> Řízení přístupu pomocí pravidel brány firewall *se nevztahuje* na **spravovanou instanci SQL** . Další informace o potřebné konfiguraci sítě najdete v tématu [připojení ke spravované instanci](../managed-instance/connect-application-instance.md) .
 
 ## <a name="access-management"></a>Správa přístupu
 
@@ -52,11 +52,11 @@ Pravidla brány firewall protokolu IP udělují přístup k databázím na zákl
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database a spravovaná instance SQL podporují dva typy ověřování:
 
-- **Ověřování SQL**:
+- **Ověřování SQL** :
 
     Ověřování SQL odkazuje na ověření uživatele při připojení k Azure SQL Database nebo spravované instanci Azure SQL pomocí uživatelského jména a hesla. Při vytváření serveru je nutné zadat přihlašovací jméno **Správce serveru** s uživatelským jménem a heslem. Pomocí těchto přihlašovacích údajů se může **Správce serveru** ověřit u jakékoli databáze na daném serveru nebo v instanci jako vlastník databáze. Potom může správce serveru vytvořit další přihlášení a uživatele SQL, která uživatelům umožňují připojit se pomocí uživatelského jména a hesla.
 
-- **Ověřování Azure Active Directory**:
+- **Ověřování Azure Active Directory** :
 
     Ověřování Azure Active Directory je mechanismus připojení [Azure SQL Database](sql-database-paas-overview.md), [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) a [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit v Azure Active Directory (Azure AD). Ověřování Azure AD umožňuje správcům centrálně spravovat identity a oprávnění uživatelů databáze spolu s dalšími službami Azure v jednom centrálním umístění. To zahrnuje minimalizaci úložiště hesel a umožňuje centralizované zásady rotace hesel.
 
@@ -65,7 +65,7 @@ Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Da
     K dispozici jsou další možnosti ověřování Azure AD, které jsou [univerzálním ověřováním služby Active Directory pro SQL Server Management Studio](authentication-mfa-ssms-overview.md) připojení včetně [Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) a [podmíněného přístupu](conditional-access-configure.md).
 
 > [!IMPORTANT]
-> Správa databází a serverů v Azure je řízena přiřazeními rolí uživatelského účtu portálu. Další informace o tomto článku najdete v tématu [řízení přístupu na základě role v Azure Portal](../../role-based-access-control/overview.md). Řízení přístupu pomocí pravidel brány firewall *se nevztahuje* na **spravovanou instanci SQL**. Další informace o potřebné konfiguraci sítě najdete v následujícím článku o [připojení ke spravované instanci](../managed-instance/connect-application-instance.md) .
+> Správa databází a serverů v Azure je řízena přiřazeními rolí uživatelského účtu portálu. Další informace o tomto článku najdete v tématu [řízení přístupu na základě role v Azure Portal](../../role-based-access-control/overview.md). Řízení přístupu pomocí pravidel brány firewall *se nevztahuje* na **spravovanou instanci SQL** . Další informace o potřebné konfiguraci sítě najdete v následujícím článku o [připojení ke spravované instanci](../managed-instance/connect-application-instance.md) .
 
 ## <a name="authorization"></a>Autorizace
 
@@ -73,7 +73,7 @@ Autorizace odkazuje na oprávnění přiřazená uživateli v rámci databáze v
 
 Osvědčeným postupem je v případě potřeby vytvořit vlastní role. Přidejte uživatele do role s nejnižšími oprávněními potřebnými k provedení jejich pracovní funkce. Nepřiřazujte oprávnění přímo uživatelům. Účet správce serveru je členem předdefinované role db_owner, která má rozsáhlá oprávnění a měla by být udělována pouze malým uživatelům s administrativními cly. Pro aplikace použijte příkaz [Spustit jako](/sql/t-sql/statements/execute-as-clause-transact-sql) a určete kontext spuštění volaného modulu nebo použijte [aplikační role](/sql/relational-databases/security/authentication-access/application-roles) s omezenými oprávněními. Tento postup zajišťuje, že aplikace, která se připojuje k databázi, má nejnižší oprávnění, která aplikace potřebuje. Tyto osvědčené postupy také podporují oddělení povinností.
 
-### <a name="row-level-security"></a>Zabezpečení na úrovni řádků
+### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
 
 Row-Level Security umožňuje zákazníkům řídit přístup k řádkům v databázové tabulce na základě charakteristik uživatele, který spouští dotaz (například členství ve skupině nebo kontext spuštění). Row-Level zabezpečení lze také použít k implementaci vlastních konceptů zabezpečení na základě popisků. Další informace najdete v tématu [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security).
 
@@ -97,13 +97,13 @@ Rozšířená ochrana před internetovými útoky analyzuje protokoly a detekuje
 
 ### <a name="transport-layer-security-encryption-in-transit"></a>Transport Layer Security (šifrování při přenosu)
 
-SQL Database a SQL spravované instance zabezpečují data zákazníků tím, že šifrují data v pohybu pomocí [protokolu TLS (Transport Layer Security)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
+SQL Database, Managed instance SQL a služba Azure synapse Analytics zabezpečují zákaznická data tím, že šifrují data v pohybu pomocí [protokolu TLS (Transport Layer Security)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
-SQL Database a SQL Managed instance pro všechna připojení vynutila šifrování (SSL/TLS). Tím se zajistí, že všechna data budou zašifrovaná mezi klientem a serverem, a to bez ohledu na nastavení **šifrování** nebo **TrustServerCertificate** v připojovacím řetězci.
+SQL Database, Managed instance SQL a Azure synapse vynutila šifrování (SSL/TLS) pro všechna připojení neustále. Tím se zajistí, že všechna data budou zašifrovaná mezi klientem a serverem, a to bez ohledu na nastavení **šifrování** nebo **TrustServerCertificate** v připojovacím řetězci.
 
 V rámci osvědčeného postupu doporučujeme, abyste v připojovacím řetězci, který používá aplikaci, zadali šifrované _**připojení a**_ nedůvěřujete certifikátu serveru. Tím se aplikace vynutí ověřit certifikát serveru, a tím zabrání v ohrožení vaší aplikace muž při útokech středního typu.
 
-Například při použití ovladače ADO.NET se dosáhnete pomocí  **Encrypt = true** a **TrustServerCertificate = false**. Pokud získáte připojovací řetězec z Azure Portal, bude mít správné nastavení.
+Například při použití ovladače ADO.NET se dosáhnete pomocí  **Encrypt = true** a **TrustServerCertificate = false** . Pokud získáte připojovací řetězec z Azure Portal, bude mít správné nastavení.
 
 > [!IMPORTANT]
 > Všimněte si, že některé ovladače od jiných výrobců nemůžou ve výchozím nastavení používat protokol TLS, nebo se musí spoléhat na starší verzi TLS (<1,2), aby fungovala. V takovém případě server stále umožňuje připojení k vaší databázi. Doporučujeme však vyhodnotit rizika zabezpečení, která umožňují, aby se tyto ovladače a aplikace připojovaly k SQL Database, zejména pokud ukládáte citlivá data.
@@ -112,7 +112,7 @@ Například při použití ovladače ADO.NET se dosáhnete pomocí  **Encrypt = 
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Transparentní šifrování dat (šifrování v klidovém umístění)
 
-[Transparentní šifrování dat (TDE) pro Azure SQL Database a SQL Managed instance](transparent-data-encryption-tde-overview.md) přidá vrstvu zabezpečení, která vám umožní chránit neaktivní data před neoprávněným přístupem nebo offline přístupem k nezpracovaným souborům nebo zálohám. Mezi běžné scénáře patří krádež datového centra nebo nezabezpečené vyřazení hardwaru nebo médií, jako jsou diskové jednotky a záložní pásky.TDE šifruje celou databázi pomocí šifrovacího algoritmu AES, který nepožaduje, aby vývojáři aplikací provedli změny v existujících aplikacích.
+[Transparentní šifrování dat (TDE) pro SQL Database, spravovaná instance SQL a Azure synapse Analytics](transparent-data-encryption-tde-overview.md) přináší úroveň zabezpečení, která vám umožní chránit neaktivní data před neoprávněným přístupem nebo offline přístupem k nezpracovaným souborům nebo zálohám. Mezi běžné scénáře patří krádež datového centra nebo nezabezpečené vyřazení hardwaru nebo médií, jako jsou diskové jednotky a záložní pásky.TDE šifruje celou databázi pomocí šifrovacího algoritmu AES, který nepožaduje, aby vývojáři aplikací provedli změny v existujících aplikacích.
 
 V Azure se všechny nově vytvořené databáze šifrují ve výchozím nastavení a šifrovací klíč databáze je chráněný integrovaným certifikátem serveru.  Údržba a rotace certifikátů spravuje služba a nevyžaduje od uživatele žádné vstupy. Zákazníci, kteří chtějí převzít kontrolu nad šifrovacími klíči, mohou spravovat klíče v [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md).
 

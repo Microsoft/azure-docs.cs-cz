@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: e5a7984cd868e7fbac08ec80f92fe28ad13d84e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a76e4007965c263671554bbcd937dbf3b4b0a6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308091"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676209"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Vytvoření testu pomocí rozhraní příkazového řádku (Preview) pro Internet Analyzer
 
@@ -37,7 +37,7 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
 
 ## <a name="profile-and-test-creation"></a>Vytváření profilů a testů
 1. Získat přístup k aplikaci Internet Analyzer Preview pomocí **návody se účastní verze Preview?** pokyny najdete v tématu [Nejčastější dotazy k Azure Internet Analyzer](internet-analyzer-faq.md).
-2. [Nainstalujte rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+2. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 3. Spuštěním `login` příkazu spusťte relaci CLI:
     ```azurecli-interactive
     az login
@@ -50,9 +50,9 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
 
 5. Vyberte ID předplatného, kterému bylo uděleno oprávnění k přístupu k Internet Analyzer Public Preview.
 
-    Po přihlášení se zobrazí seznam předplatných přidružených k vašemu účtu Azure. Informace o předplatném s `isDefault: true` je aktuálně aktivované předplatné po přihlášení. Pokud chcete vybrat jiné předplatné, přejděte k přepínači pomocí příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/account#az-account-set) s ID předplatného. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Po přihlášení se zobrazí seznam předplatných přidružených k vašemu účtu Azure. Informace o předplatném s `isDefault: true` je aktuálně aktivované předplatné po přihlášení. Pokud chcete vybrat jiné předplatné, přejděte k přepínači pomocí příkazu [AZ Account set](/cli/azure/account#az-account-set) s ID předplatného. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
-    Existují i způsoby, jak se přihlásit neinteraktivně. Ty jsou podrobně popsané v tématu [Přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+    Existují i způsoby, jak se přihlásit neinteraktivně. Ty jsou podrobně popsané v tématu [Přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
 6. **[Nepovinné]** Vytvořte novou skupinu prostředků Azure:
     ```azurecli-interactive
@@ -132,6 +132,6 @@ Rozhraní příkazového řádku pro Internet Analyzer zpřístupňuje následuj
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplný seznam podporovaných příkazů a příkladů použití najdete v [referenčních informacích](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) k rozhraní příkazového řádku Internet Analyzer.
+* Úplný seznam podporovaných příkazů a příkladů použití najdete v [referenčních informacích](/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) k rozhraní příkazového řádku Internet Analyzer.
 * Přečtěte si [Nejčastější dotazy k Internet Analyzer](internet-analyzer-faq.md).
-* Přečtěte si další informace o vložení [klienta Internet Analyzer](internet-analyzer-embed-client.md) a vytvoření [vlastního koncového bodu](internet-analyzer-custom-endpoint.md). 
+* Přečtěte si další informace o vložení [klienta Internet Analyzer](internet-analyzer-embed-client.md) a vytvoření [vlastního koncového bodu](internet-analyzer-custom-endpoint.md).

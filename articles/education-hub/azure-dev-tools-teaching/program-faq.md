@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89567805"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675704"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Nejčastější dotazy týkající se Centrum Education
 
@@ -46,7 +46,7 @@ Vaše předplatné Azure for Students vám poskytne přístup k určitým vývoj
 
 ### <a name="what-is-microsoft-learn"></a>Co je Microsoft Learn?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) je bezplatná online výuková platforma, která vám umožní naučit se technologie Azure vaším vlastním tempem. Výukové cesty kombinují moduly, které vám umožňují začít základy a pak přejít k pokročilým metodám, které řeší problémy reálného světa.
+[Microsoft Learn](/learn/) je bezplatná online výuková platforma, která vám umožní naučit se technologie Azure vaším vlastním tempem. Výukové cesty kombinují moduly, které vám umožňují začít základy a pak přejít k pokročilým metodám, které řeší problémy reálného světa.
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>Dá se Azure for Students používat pro produkční prostředí, nebo jenom pro vývoj?
 
@@ -97,7 +97,7 @@ Tento software si můžete stáhnout v [centrum Education](https://ms.portal.azu
 
 ### <a name="what-is-microsoft-learn"></a>Co je Microsoft Learn?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) je bezplatná online platforma pro učení, která vám umožní naučit se technologie Azure vlastním tempem. Výukové cesty spojují moduly, které vám umožní začít se základy a pak přejít k pokročilým metodám, které řeší problémy reálného světa.
+[Microsoft Learn](/learn/) je bezplatná online platforma pro učení, která vám umožní naučit se technologie Azure vlastním tempem. Výukové cesty spojují moduly, které vám umožní začít se základy a pak přejít k pokročilým metodám, které řeší problémy reálného světa.
 
 ## <a name="azure-academic-grant"></a>Azure – akademická podpora
 
@@ -172,7 +172,7 @@ Machine Learning Server (dřív R Server)<br>
 Hyper-V Server<br>
 Microsoft Project<br>
 Remote Tools for Visual Studio<br>
-SharePoint Designer<br>
+SharePoint Server<br>
 Server Skypu pro firmy<br>
    :::column-end:::
    :::column span="":::
@@ -252,8 +252,8 @@ Pokud se stále nemůžete přihlásit, obraťte se na správce předplatného. 
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>Návody najít ID předplatitele?
 
-- **Při prvním přihlášení do programu**: vaše číslo ID předplatitele je v uvítacím e-mailu předplatného, které obdržíte.
-- **Pokud jste si obnovili předplatné**: vaše ID předplatitele je v e-mailu pro obnovení, který správce předplatného přijal.
+- **Při prvním přihlášení do programu** : vaše číslo ID předplatitele je v uvítacím e-mailu předplatného, které obdržíte.
+- **Pokud jste si obnovili předplatné** : vaše ID předplatitele je v e-mailu pro obnovení, který správce předplatného přijal.
 
 Vaše ID předplatitele je také na portálu Visual Studio Subscription. Až se přihlásíte, na stránce **můj účet** se podívejte na **Moje předplatné** .
 
@@ -282,7 +282,7 @@ Pokud tyto e-maily s připomenutím neobdržíte a máte obavy, že vaše předp
 
 Alternativně můžete přejít na [stránku Azure dev Tools for vyučující – obnovit](https://portal.azureforeducation.microsoft.com/)a dokončit proces obnovení.
 
-Pokud chcete zkontrolovat datum vypršení platnosti vašeho předplatného, navštivte [portál pro vývoj pro Azure pro vzdělávání](https://azureforeducation.microsoft.com/account/Subscriptions)a podívejte se na **předplatné**.
+Pokud chcete zkontrolovat datum vypršení platnosti vašeho předplatného, navštivte [portál pro vývoj pro Azure pro vzdělávání](https://azureforeducation.microsoft.com/account/Subscriptions)a podívejte se na **předplatné** .
 
 ### <a name="what-if-i-need-more-help"></a>Co když potřebuji další podrobnější informace?
 

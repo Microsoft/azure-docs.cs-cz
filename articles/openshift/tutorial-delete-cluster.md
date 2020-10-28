@@ -7,12 +7,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: ae2c1072b9490931609dd61f1cac2a47f1cffef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 254a9737b805aeeae2008923a8178cd971602132
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469945"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677751"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>Kurz: odstranění clusteru Azure Red Hat OpenShift 4
 
@@ -44,13 +44,13 @@ V předchozích kurzech byly nastaveny následující proměnné.
 
 ```bash
 CLUSTER=yourclustername
-RESOURCE_GROUP=yourresourcegroup
+RESOURCEGROUP=yourresourcegroup
 ```
 
 Pomocí těchto hodnot odstraňte cluster:
 
 ```bash
-az aro delete --resource-group $RESOURCE_GROUP --name $CLUSTER
+az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
 ```
 
 Pak se zobrazí výzva k potvrzení, jestli chcete cluster odstranit. Po potvrzení v nástroji `y` bude trvat několik minut, než se cluster odstraní. Po dokončení příkazu se odstraní celá skupina prostředků a všechny prostředky uvnitř ní, včetně clusteru –.

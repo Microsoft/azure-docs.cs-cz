@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 7de9de7e1ba8028cbdb24744775294a4890afe40
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c40f1762ea7c87ea73ec20e47b0398e0d3e364b4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547737"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677154"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -32,7 +32,7 @@ Podporují se tyto ITSM produkty nebo služby. Výběrem produktu zobrazíte pod
 
 Následující části obsahují podrobné informace o tom, jak připojit System Center Service Manager produkt k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -182,7 +182,7 @@ Následující vzorový obrázek ukazuje podrobné informace o úspěšném při
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow k ITSMC v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Ujistěte se, že jsou splněné následující předpoklady:
 - ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - Podporované verze ServiceNow: Orlandu, New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
@@ -311,7 +311,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 > Od 1. října 2020 inITSM inprov-s výstrahou Azure už nebude pro nové zákazníky povolená. Nová připojení ITSM se nepodporují. 
 > Existující připojení ITSM budou podporována.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
@@ -350,7 +350,7 @@ Pomocí následujícího postupu vytvořte připojení k prokázání:
 | **Synchronizovat data** | Zadejte počet uplynulých dní, z nichž mají být data. **Maximální limit** : 120 dní. |
 | **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvořit položky konfigurace v produktu ITSM. Pokud je tato možnost vybrána, ITSMC vytvoří v podporovaném systému ITSM v případě neexistujícího systému služby CI ovlivněné položky konfigurace. **Výchozí** : zakázáno.|
 
-![Připojení k přikázání](media/itsmc-connections/itsm-connections-provance-latest.png)
+![Snímek obrazovky, který zvýrazní název připojení a seznam partnerských typů.](media/itsmc-connections/itsm-connections-provance-latest.png)
 
 **Po úspěšném připojení a synchronizaci** :
 
@@ -369,7 +369,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 > Od 1. října 2020 Cherwell ITSM Integration s Azure Alert nebude už pro nové zákazníky povolený. Nová připojení ITSM se nepodporují. 
 > Existující připojení ITSM budou podporována.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jsou splněné následující předpoklady:
 

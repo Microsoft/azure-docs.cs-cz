@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/09/2020
 ms.author: duau
-ms.custom: seodec18
-ms.openlocfilehash: 292f50877fe40127e5aea95e395109bc76e1f75d
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 7a482e268137946222f1c8b427424598bd78f935
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940867"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735100"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Kurz: vytvoření a úprava partnerského vztahu pro okruh ExpressRoute pomocí rozhraní příkazového řádku
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > - Konfigurace, aktualizace a odstranění partnerského vztahu Microsoftu pro okruh
 > - Konfigurace, aktualizace a odstranění privátního partnerského vztahu Azure pro okruh
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Než začnete, nainstalujte si nejnovější verzi příkazů rozhraní příkazového řádku (2.0 nebo novější). Informace o instalaci příkazů rozhraní příkazového řádku najdete v tématu [Instalace Azure CLI](/cli/azure/install-azure-cli).
 * Než začnete s konfigurací, ujistěte [se,](expressroute-prerequisites.md)že jste zkontrolovali požadavky, [požadavky na směrování](expressroute-routing.md)a stránky [pracovního postupu](expressroute-workflows.md) .
@@ -44,7 +44,7 @@ Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb nabízejí
 
 Pro okruh ExpressRoute můžete nakonfigurovat privátní partnerské vztahy a partnerské vztahy Microsoftu. Partnerské vztahy se dají konfigurovat v libovolném pořadí, ve kterém si zvolíte. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. Další informace o doménách směrování a partnerských vztazích najdete v tématu věnovaném [doménám směrování ExpressRoute](expressroute-circuit-peerings.md).
 
-## <a name="microsoft-peering"></a><a name="msft"></a>Partnerský vztah Microsoftu
+## <a name="microsoft-peering"></a><a name="msft"></a>Partnerský vztah s Microsoftem
 
 Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfiguraci partnerského vztahu Microsoftu pro okruh ExpressRoute.
 
@@ -185,7 +185,7 @@ az network express-route peering update --circuit-name MyCircuit -g ExpressRoute
 az network express-route peering update -g ExpressRouteResourceGroup --circuit-name MyCircuit --peering-type MicrosoftPeering --ip-version ipv6 --primary-peer-subnet 2002:db00::/126 --secondary-peer-subnet 2003:db00::/126 --advertised-public-prefixes 2002:db00::/126
 ```
 
-## <a name="azure-private-peering"></a><a name="private"></a>Privátní partnerský vztah Azure
+## <a name="azure-private-peering"></a><a name="private"></a>Privátní partnerský vztah s Azure
 
 Tato část vám pomůže vytvořit, získat, aktualizovat a odstranit konfiguraci privátního partnerského vztahu Azure pro okruh ExpressRoute.
 

@@ -3,13 +3,13 @@ title: 'Rychlý Start: Vytvoření skupiny pro správu pomocí JavaScriptu'
 description: V tomto rychlém startu pomocí JavaScriptu vytvoříte skupinu pro správu, která slouží k uspořádání prostředků do hierarchie prostředků.
 ms.date: 09/30/2020
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7a234a6619eafd650451ae5d6bce37388c824f33
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: devx-track-js
+ms.openlocfilehash: 965e4b8f81a26cab8f6e34cab3e51d6a97f5a6a6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91604667"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676229"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>Rychlý Start: Vytvoření skupiny pro správu pomocí JavaScriptu
 
@@ -90,7 +90,7 @@ Aby bylo možné povolit jazyk JavaScript dotazování na Azure Resource Graph, 
    node index.js --groupID "<NEW_MG_GROUP_ID>" --displayName "<NEW_MG_FRIENDLY_NAME>"
    ```
 
-   Nezapomeňte nahradit každý `<>` zástupný symbol tokenu _identifikátorem skupiny pro správu_ a _popisným názvem skupiny pro správu_v uvedeném pořadí.
+   Nezapomeňte nahradit každý `<>` zástupný symbol tokenu _identifikátorem skupiny pro správu_ a _popisným názvem skupiny pro správu_ v uvedeném pořadí.
 
    Při pokusu o ověření skriptu se v terminálu zobrazí zpráva podobná následující zprávě:
 

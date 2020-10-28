@@ -1,159 +1,151 @@
 ---
-author: areddish
-ms.author: areddish
+author: PatrickFarley
+ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 09/15/2020
-ms.openlocfilehash: a091222b01669c6b83c599787c61dcd6b62b05d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/25/2020
+ms.openlocfilehash: 44796fd3330d1f5670eb47589a34158464f0202d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90604951"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678269"
 ---
-Tato příručka poskytuje pokyny a ukázkový kód, který vám pomůže začít používat Custom Vision klientské knihovny pro Python k sestavení modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
+Začněte s knihovnou klienta Custom Vision pro Python. Pomocí těchto kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro vytvoření modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
 > [!NOTE]
 > Pokud chcete sestavit model klasifikace _bez_ psaní kódu, prostudujte si místo toho doprovodné materiály pro [prohlížeč](../../getting-started-build-a-classifier.md) .
 
+Použití klientské knihovny Custom Vision pro Python pro:
+
+* Vytvoření nového projektu Custom Vision
+* Přidat do projektu značky
+* Nahrávání a označování obrázků
+* Výuka projektu
+* Publikovat aktuální iteraci
+* Testování koncového bodu předpovědi
+
+[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-customvision/azure/cognitiveservices/vision/customvision)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-vision-customvision/)  |  [Ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=vision&terms=vision&languages=python)
+
 ## <a name="prerequisites"></a>Předpoklady
 
-- [Python 2.7+ nebo 3.5+](https://www.python.org/downloads/)
-- Nástroj [pip](https://pip.pypa.io/en/stable/installing/)
-- [!INCLUDE [create-resources](../../includes/create-resources.md)]
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* [Python 3.x](https://www.python.org/)
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" vytvořte prostředek Custom Vision vytvoření prostředku "  target="_blank"> Custom Vision <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste vytvořili prostředek pro školení a předpověď a získali své klíče a koncový bod. Počkejte na nasazení a klikněte na tlačítko **Přejít k prostředku** .
+    * K připojení aplikace k Custom Vision budete potřebovat klíč a koncový bod z prostředků, které vytvoříte. Vaše klíče a koncový bod budete vkládat do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
-## <a name="install-the-custom-vision-client-library"></a>Instalace klientské knihovny Custom Vision
+## <a name="setting-up"></a>Nastavení
 
-K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro Python budete potřebovat klientskou knihovnu Custom Vision. Spusťte následující příkaz v PowerShellu:
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
+
+K napsání aplikace pro analýzu obrázků pomocí Custom Vision pro Python budete potřebovat klientskou knihovnu Custom Vision. Po instalaci Pythonu spusťte následující příkaz v PowerShellu nebo okně konzoly:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
-[!INCLUDE [get-keys](../../includes/get-keys.md)]
+### <a name="create-a-new-python-application"></a>Vytvoření nové aplikace v Pythonu
 
-[!INCLUDE [python-get-images](../../includes/python-get-images.md)]
+Vytvořte nový soubor Pythonu a importujte následující knihovny.
 
-## <a name="add-the-code"></a>Přidání kódu
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_imports)]
 
-V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
+> [!TIP]
+> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.cs), který obsahuje příklady kódu v tomto rychlém startu.
 
-## <a name="create-the-custom-vision-project"></a>Vytvoření projektu Custom Vision
+Vytvořte proměnné pro koncový bod a klíč předplatného prostředku Azure.
 
-Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Adresu URL koncového bodu si také můžete stáhnout ze stránky nastavení na webu Custom Vision.
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_creds)]
+
+> [!IMPORTANT]
+> Přejděte na Azure Portal. Pokud Custom Vision prostředky, které jste vytvořili v části **předpoklady** , se úspěšně nasadily, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče a koncový bod můžete najít na stránce **klíčů a koncových bodů** prostředků v části **Správa prostředků** . Budete muset získat jak klíče pro školení, tak pro předpověď.
+>
+> Hodnotu ID prostředku předpovědi najdete na kartě **Přehled** prostředku, která je uvedená jako **ID předplatného** .
+>
+> Nezapomeňte odebrat klíče z kódu, až budete hotovi, a nikdy je nezveřejňujte. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
+
+## <a name="object-model"></a>Objektový model
+
+|Název|Popis|
+|---|---|
+|[CustomVisionTrainingClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) | Tato třída zpracovává vytváření, školení a publikování vašich modelů. |
+|[CustomVisionPredictionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python)| Tato třída zpracovává dotazování vašich modelů pro klasifikaci imagí předpovědi.|
+|[ImagePrediction](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-python)| Tato třída definuje jednu předpověď objektu na jednom obrázku. Obsahuje vlastnosti pro ID objektu a název, umístění ohraničovacího rámečku objektu a hodnocení spolehlivosti.|
+
+## <a name="code-examples"></a>Příklady kódu
+
+Tyto fragmenty kódu ukazují, jak pomocí Custom Vision klientské knihovny pro Python provést následující akce:
+
+* [Ověření klienta](#authenticate-the-client)
+* [Vytvoření nového projektu Custom Vision](#create-a-new-custom-vision-project)
+* [Přidat do projektu značky](#add-tags-to-the-project)
+* [Nahrávání a označování obrázků](#upload-and-tag-images)
+* [Výuka projektu](#train-the-project)
+* [Publikovat aktuální iteraci](#publish-the-current-iteration)
+* [Testování koncového bodu předpovědi](#test-the-prediction-endpoint)
+
+## <a name="authenticate-the-client"></a>Ověření klienta
+
+Vytvořte instanci školení a předpovědi klienta s vaším koncovým bodem a klíči. Vytvořte objekty **ApiKeyServiceClientCredentials** pomocí vašich klíčů a použijte je u svého koncového bodu k vytvoření objektu [CustomVisionTrainingClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) a [CustomVisionPredictionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python) .
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_auth)]
+
+## <a name="create-a-new-custom-vision-project"></a>Vytvoření nového projektu Custom Vision
+
+Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. 
 
 Chcete-li určit další možnosti při vytváření projektu, podívejte se do metody [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config-) (vysvětleno v průvodci [vytvořením](../../getting-started-build-a-classifier.md) webového portálu třídění).  
 
-```Python
-from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateBatch, ImageFileCreateEntry
-from msrest.authentication import ApiKeyCredentials
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_create)]
 
-ENDPOINT = "<your API endpoint>"
+## <a name="add-tags-to-the-project"></a>Přidat do projektu značky
 
-# Replace with a valid key
-training_key = "<your training key>"
-prediction_key = "<your prediction key>"
-prediction_resource_id = "<your prediction resource id>"
+Chcete-li do projektu přidat klasifikační značky, přidejte následující kód:
 
-publish_iteration_name = "classifyModel"
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_tags)]
 
-credentials = ApiKeyCredentials(in_headers={"Training-key": training_key})
-trainer = CustomVisionTrainingClient(ENDPOINT, credentials)
-
-# Create a new project
-print ("Creating project...")
-project = trainer.create_project("My New Project")
-```
-
-## <a name="create-tags-in-the-project"></a>Vytvoření značek v projektu
-
-Pokud chcete pro svůj projekt vytvořit klasifikační značky, přidejte na konec souboru *sample.py* následující kód:
-
-```Python
-# Make two tags in the new project
-hemlock_tag = trainer.create_tag(project.id, "Hemlock")
-cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
-```
 
 ## <a name="upload-and-tag-images"></a>Nahrávání a označování obrázků
 
+Nejdřív Stáhněte ukázkové image pro tento projekt. Uložte obsah [složky Sample images](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) do místního zařízení.
+
 Ukázkové obrázky do projektu přidáte tak, že po vytvoření značky vložíte následující kód. Tento kód nahraje jednotlivé obrázky s odpovídající značkou. Do jedné dávky můžete nahrát až 64 imagí.
+
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_tags)]
 
 > [!NOTE]
 > Budete muset změnit cestu k obrázkům na základě místa, kde jste dříve stáhli sadu Cognitive Services Python SDK Samples úložiště.
 
-```Python
-base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
+## <a name="train-the-project"></a>Výuka projektu
 
-print("Adding images...")
+Tento kód vytvoří první iteraci modelu předpovědi. 
 
-image_list = []
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_train)]
 
-for image_num in range(1, 11):
-    file_name = "hemlock_{}.jpg".format(image_num)
-    with open(base_image_url + "images/Hemlock/" + file_name, "rb") as image_contents:
-        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[hemlock_tag.id]))
+> [!TIP]
+> Výuka s vybranými značkami
+>
+> Volitelně můžete naučit pouze podmnožinu použitých značek. Můžete to chtít udělat, pokud jste ještě nepoužili dostatek určitých značek, ale máte dost dalších. Ve **[train_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#train-project-project-id--training-type-none--reserved-budget-in-hours-0--force-train-false--notification-email-address-none--selected-tags-none--custom-headers-none--raw-false----operation-config-&preserve-view=true)** volání nastavte volitelný parametr *selected_tags* na seznam řetězců ID značek, které chcete použít. Model bude vlakem rozpoznávat pouze značky v tomto seznamu.
 
-for image_num in range(1, 11):
-    file_name = "japanese_cherry_{}.jpg".format(image_num)
-    with open(base_image_url + "images/Japanese Cherry/" + file_name, "rb") as image_contents:
-        image_list.append(ImageFileCreateEntry(name=file_name, contents=image_contents.read(), tag_ids=[cherry_tag.id]))
+## <a name="publish-the-current-iteration"></a>Publikovat aktuální iteraci
 
-upload_result = trainer.create_images_from_files(project.id, ImageFileCreateBatch(images=image_list))
-if not upload_result.is_batch_successful:
-    print("Image batch upload failed.")
-    for image in upload_result.images:
-        print("Image status: ", image.status)
-    exit(-1)
-```
+Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována. Následující kód provede aktuální iteraci modelu, který je k dispozici pro dotazování. 
 
-## <a name="train-and-publish-the-project"></a>Školení a publikování projektu
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_publish)]
 
-Tento kód vytvoří první iteraci modelu předpovědi a pak tuto iteraci publikuje do koncového bodu předpovědi. Název zadaný pro publikovanou iteraci lze použít k odeslání požadavků předpovědi. Iterace není v koncovém bodu předpovědi k dispozici, dokud není publikována.
 
-```Python
-import time
-
-print ("Training...")
-iteration = trainer.train_project(project.id)
-while (iteration.status != "Completed"):
-    iteration = trainer.get_iteration(project.id, iteration.id)
-    print ("Training status: " + iteration.status)
-    time.sleep(1)
-
-# The iteration is now trained. Publish it to the project endpoint
-trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, prediction_resource_id)
-print ("Done!")
-```
-
-## <a name="use-the-prediction-endpoint"></a>Použití koncového bodu předpovědi
+## <a name="test-the-prediction-endpoint"></a>Testování koncového bodu předpovědi
 
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
-```python
-from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
-from msrest.authentication import ApiKeyCredentials
-
-# Now there is a trained endpoint that can be used to make a prediction
-prediction_credentials = ApiKeyCredentials(in_headers={"Prediction-key": prediction_key})
-predictor = CustomVisionPredictionClient(ENDPOINT, prediction_credentials)
-
-with open(base_image_url + "images/Test/test_image.jpg", "rb") as image_contents:
-    results = predictor.classify_image(
-        project.id, publish_iteration_name, image_contents.read())
-
-    # Display the results.
-    for prediction in results.predictions:
-        print("\t" + prediction.tag_name +
-              ": {0:.2f}%".format(prediction.probability * 100))
-```
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_test)]
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte soubor *sample.py*.
+Spusťte *CustomVisionQuickstart.py* .
 
 ```powershell
-python sample.py
+python CustomVisionQuickstart.py
 ```
 
 Výstup aplikace by se měl podobat následujícímu textu:
@@ -169,16 +161,17 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Pak můžete ověřit, zda je testovací obrázek (nalezen v **<base_image_url>image/test/**) správně označen. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
+Pak můžete ověřit, zda je testovací obrázek (nalezen v **<base_image_location>/images/test/** ) správně označen. Můžete se také vrátit na [web služby Custom Vision](https://customvision.ai) a zobrazit aktuální stav nově vytvořeného projektu.
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste viděli, jak se každý krok procesu detekce objektů dá provést v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější.
+Nyní jste viděli, jak se každý krok procesu klasifikace obrázků dá provést v kódu. Tato ukázka provádí jednu výukovou iteraci, ale často je potřeba, abyste model provedli a otestovali několikrát, aby bylo přesnější.
 
 > [!div class="nextstepaction"]
 > [Testování a přetrénování modelu](../../test-your-model.md)
 
 * [Co je Custom Vision?](../../overview.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.cs) .
 * [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

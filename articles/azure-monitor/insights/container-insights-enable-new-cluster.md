@@ -3,13 +3,13 @@ title: Monitorování nového clusteru Azure Kubernetes Service (AKS) | Microsof
 description: Naučte se, jak povolit monitorování pro nový cluster Azure Kubernetes Service (AKS) s předplatným Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320319"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735075"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Povolit monitorování nového clusteru Azure Kubernetes Service (AKS)
 
@@ -34,12 +34,12 @@ Pokud [nasazujete nový cluster AKS pomocí terraformu](/azure/developer/terrafo
 >[!NOTE]
 >Pokud se rozhodnete používat Terraformu, musíte mít spuštěného poskytovatele Terraformu Azure RM verze 1.17.0 nebo vyšší.
 
-Chcete-li přidat Azure Monitor pro kontejnery do pracovního prostoru, přečtěte si téma [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a dokončete profil zahrnutím [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) a zadáním **oms_agent**. 
+Chcete-li přidat Azure Monitor pro kontejnery do pracovního prostoru, přečtěte si téma [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a dokončete profil zahrnutím [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) a zadáním **oms_agent** . 
 
 Jakmile povolíte monitorování a všechny úlohy konfigurace budou úspěšně dokončeny, můžete monitorovat výkon clusteru jedním ze dvou způsobů:
 
 * Přímo v clusteru AKS výběrem možnosti **stav** v levém podokně.
-* Výběrem dlaždice **monitorovat službu Container Insights** na stránce clusteru AKS pro vybraný cluster. V Azure Monitor v levém podokně vyberte **stav**. 
+* Výběrem dlaždice **monitorovat službu Container Insights** na stránce clusteru AKS pro vybraný cluster. V Azure Monitor v levém podokně vyberte **stav** . 
 
   ![Možnosti výběru Azure Monitor pro kontejnery v AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89280175"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678168"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory předávací ověřování: rychlý Start
 
@@ -72,9 +72,9 @@ Ujistěte se, že jsou splněné následující požadavky.
      | **8080** (volitelné) | Agenti ověřování hlásí svůj stav každých deset minut přes port 8080, pokud není k dispozici port 443. Tento stav se zobrazuje na portálu Azure AD. Port _8080 se nepoužívá pro_ přihlášení uživatelů. |
      
      Pokud brána firewall vynutila pravidla podle prvotních uživatelů, otevřete tyto porty pro provoz ze služeb systému Windows, které jsou spuštěny jako síťová služba.
-   - Pokud brána firewall nebo proxy umožňuje přidávání do seznamu povolených serverů DNS, přidejte připojení do souborů ** \* . msappproxy.NET** a ** \* . ServiceBus.Windows.NET**. V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
+   - Pokud brána firewall nebo proxy umožňuje přidávání do seznamu povolených serverů DNS, přidejte připojení do souborů **\* . msappproxy.NET** a **\* . ServiceBus.Windows.NET** . V takovém případě povolte přístup k [rozsahům IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které se aktualizují týdně.
    - Vaše agenti ověřování potřebují pro počáteční registraci přístup k **Login.Windows.NET** a **Login.microsoftonline.com** . Otevřete taky bránu firewall pro tyto adresy URL.
-   - Pro ověření certifikátu Odblokujte následující adresy URL: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**a **www \. Microsoft.com:80**. Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
+    - Pro ověření certifikátu Odblokujte následující adresy URL: **crl3.DigiCert.com:80** , **crl4.DigiCert.com:80** , **ocsp.digicert.com:80** , **www \. d-trust.net:80** , **root-C3-CA2-2009.OCSP.d-Trust.NET:80** , **CRL.Microsoft.com:80** , **oneocsp.Microsoft.com:80** a **OCSP.msocsp.com:80** . Vzhledem k tomu, že se tyto adresy URL používají pro ověřování certifikátů s jinými produkty Microsoftu, tyto adresy URL už možná máte odblokované.
 
 ### <a name="azure-government-cloud-prerequisite"></a>Cloudová součást Azure Government
 Před povolením předávacího ověřování prostřednictvím Azure AD Connect v kroku 2 si stáhněte nejnovější verzi agenta PTA z Azure Portal.  Musíte zajistit, aby byl váš Agent 1.5.1742.0 verze **.** nebo novější.  Postup ověření agenta najdete v tématu [Upgrade agentů ověřování](how-to-connect-pta-upgrade-preview-authentication-agents.md) .
@@ -88,11 +88,11 @@ Povolení předávacího ověřování prostřednictvím [Azure AD Connect](what
 >[!IMPORTANT]
 >Předávací ověřování můžete povolit na Azure AD Connect primárním nebo přípravném serveru. Důrazně doporučujeme povolit ho z primárního serveru. Pokud v budoucnu nastavujete Azure AD Connect přípravný Server, **musíte** pro možnost přihlášení dál zvolit předávací ověřování. Když vyberete jinou možnost, **zakážete** předávací ověřování u tenanta a přepíšete nastavení na primárním serveru.
 
-Pokud Azure AD Connect instalujete poprvé, vyberte [vlastní cestu instalace](how-to-connect-install-custom.md). Na **přihlašovací stránce uživatele** jako **způsob přihlašování**vyberte **předávací ověřování** . Po úspěšném dokončení se do stejného serveru, jako je Azure AD Connect, nainstaluje agent předávacího ověřování. Kromě toho je ve vašem tenantovi povolená funkce předávacího ověřování.
+Pokud Azure AD Connect instalujete poprvé, vyberte [vlastní cestu instalace](how-to-connect-install-custom.md). Na **přihlašovací stránce uživatele** jako **způsob přihlašování** vyberte **předávací ověřování** . Po úspěšném dokončení se do stejného serveru, jako je Azure AD Connect, nainstaluje agent předávacího ověřování. Kromě toho je ve vašem tenantovi povolená funkce předávacího ověřování.
 
 ![Azure AD Connect: přihlášení uživatele](./media/how-to-connect-pta-quick-start/sso3.png)
 
-Pokud jste už Azure AD Connect nainstalovali pomocí [Expresní instalace](how-to-connect-install-express.md) nebo [vlastní instalační](how-to-connect-install-custom.md) cesty, vyberte v Azure AD Connect úkol **změnit přihlašování uživatelů** a pak vyberte **Další**. Pak jako metodu přihlašování vyberte **předávací ověřování** . Po úspěšném dokončení se do stejného serveru nainstaluje agent s průchozím ověřováním, který je Azure AD Connect a ve vašem tenantovi je povolená funkce.
+Pokud jste už Azure AD Connect nainstalovali pomocí [Expresní instalace](how-to-connect-install-express.md) nebo [vlastní instalační](how-to-connect-install-custom.md) cesty, vyberte v Azure AD Connect úkol **změnit přihlašování uživatelů** a pak vyberte **Další** . Pak jako metodu přihlašování vyberte **předávací ověřování** . Po úspěšném dokončení se do stejného serveru nainstaluje agent s průchozím ověřováním, který je Azure AD Connect a ve vašem tenantovi je povolená funkce.
 
 ![Azure AD Connect: Změna přihlášení uživatele](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
@@ -105,9 +105,9 @@ Postupujte podle těchto pokynů a ověřte, zda jste správně povolili předá
 
 1. Přihlaste se k [centru pro správu Azure Active Directory](https://aad.portal.azure.com) pomocí přihlašovacích údajů globálního správce vašeho tenanta.
 2. V levém podokně vyberte **Azure Active Directory** .
-3. Vyberte **Azure AD Connect**.
-4. Ověřte, že je funkce **předávacího ověřování** zobrazená jako **povolená**.
-5. Vyberte **předávací ověřování**. V podokně **předávací ověřování** se zobrazí seznam serverů, na kterých jsou nainstalované vaše agenty ověřování.
+3. Vyberte **Azure AD Connect** .
+4. Ověřte, že je funkce **předávacího ověřování** zobrazená jako **povolená** .
+5. Vyberte **předávací ověřování** . V podokně **předávací ověřování** se zobrazí seznam serverů, na kterých jsou nainstalované vaše agenty ověřování.
 
 ![Centrum pro správu Azure Active Directory: Azure AD Connect podokno](./media/how-to-connect-pta-quick-start/pta7.png)
 
@@ -134,7 +134,7 @@ Chcete-li začít, postupujte podle těchto pokynů a stáhněte software ověř
 
 1. Pokud si chcete stáhnout nejnovější verzi ověřovacího agenta (verze 1.5.193.0 nebo novější), přihlaste se do [centra pro správu Azure Active Directory](https://aad.portal.azure.com) s přihlašovacími údaji globálního správce vašeho tenanta.
 2. V levém podokně vyberte **Azure Active Directory** .
-3. Vyberte **Azure AD Connect**, vyberte **předávací ověřování**a pak vyberte **Stáhnout agenta**.
+3. Vyberte **Azure AD Connect** , vyberte **předávací ověřování** a pak vyberte **Stáhnout agenta** .
 4. Vyberte tlačítko **přijmout podmínky & stáhnout** .
 
 ![Centrum pro správu Azure Active Directory: tlačítko Stáhnout ověřovacího agenta](./media/how-to-connect-pta-quick-start/pta9.png)
@@ -166,7 +166,7 @@ Za druhé můžete vytvořit a spustit skript bezobslužného nasazení. To je u
   ```
 
 >[!IMPORTANT]
->Pokud je na virtuálním počítači nainstalovaný agent ověřování, nemůžete naklonovat virtuální počítač a nastavit jiného ověřovacího agenta. Tato metoda není **podporována**.
+>Pokud je na virtuálním počítači nainstalovaný agent ověřování, nemůžete naklonovat virtuální počítač a nastavit jiného ověřovacího agenta. Tato metoda není **podporována** .
 
 ## <a name="step-5-configure-smart-lockout-capability"></a>Krok 5: Konfigurace funkce inteligentního uzamčení
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fb177afa804788632f22d24bbd376d64cbe1c9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81e60e3bb7a1b0f34a29ccd9cebf3d82279027e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250687"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676646"
 ---
 # <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Sledování experimentů a nasazení modelů ML pomocí MLflow a Azure Machine Learning (Preview)
 
@@ -50,7 +50,7 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 
  MLflow Tracking nabízí funkce protokolování metrik a úložiště artefaktů, které jsou k dispozici pouze v případě, že jsou k dispozici pouze v [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
 
-| Schopnost | MLflow sledování & nasazení | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
+| Schopnost | MLflow sledování & nasazení | Azure Machine Learning Python SDK |  Rozhraní CLI služby Azure Machine Learning | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Spravovat pracovní prostor |   | ✓ | ✓ | ✓ |
 | Použití úložišť dat  |   | ✓ | ✓ | |
@@ -62,7 +62,7 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 |Monitorování výkonu modelu||✓|  |   |
 | Zjišťování odchylek dat |   | ✓ |   | ✓ |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte balíček `azureml-mlflow`. 
     * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
@@ -347,19 +347,22 @@ Nasazení služby může trvat několik minut.
 
 Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prostoru, možnost jejich odstranění je momentálně nedostupná. Místo toho odstraňte skupinu prostředků, která obsahuje účet úložiště a pracovní prostor, takže se vám neúčtují žádné poplatky:
 
-1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků**.
+1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků** .
 
    ![Odstranit v Azure Portal](./media/how-to-use-mlflow/delete-resources.png)
 
 1. V seznamu vyberte skupinu prostředků, kterou jste vytvořili.
 
-1. Vyberte **Odstranit skupinu prostředků**.
+1. Vyberte **Odstranit skupinu prostředků** .
 
-1. Zadejte název skupiny prostředků. Vyberte **Odstranit**.
+1. Zadejte název skupiny prostředků. Vyberte **Odstranit** .
 
 ## <a name="example-notebooks"></a>Příklady poznámkových bloků
 
 [MLflow s poznámkovým blokům Azure ml](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) ukazují a rozšiřují koncepty prezentované v tomto článku.
+
+> [!NOTE]
+> Úložiště příkladů založené na komunitě s použitím mlflow najdete na adrese https://github.com/Azure/azureml-examples .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,12 +4,12 @@ description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro L
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9d80ae44e5cc34ec3b3378f8ed4a68cc02464216
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b072a615cfc31f250d1a605a20e1628d601bb25
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542892"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676631"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
@@ -116,6 +116,9 @@ Uložte tento soubor s názvem `linux-path.rb` do nové složky s názvem v `con
 Nakonec vytvořte konfiguraci, importujte modul prostředků **PSDesiredStateConfiguration** a zkompilujte konfiguraci.
 
 ```powershell
+# import PSDesiredStateConfiguration module
+import-module PSDesiredStateConfiguration
+
 # Define the configuration and import GuestConfiguration
 Configuration AuditFilePathExists
 {
@@ -131,7 +134,6 @@ Configuration AuditFilePathExists
 }
 
 # Compile the configuration to create the MOF files
-import-module PSDesiredStateConfiguration
 AuditFilePathExists -out ./Config
 ```
 
@@ -146,7 +148,7 @@ Nyní byste měli mít strukturu projektu, jak je uvedeno níže:
     / Config
         AuditFilePathExists.mof
     / linux-path
-        linux-path.yml
+        inspec.yml
         / controls
             linux-path.rb 
 ```
@@ -237,7 +239,7 @@ K provedení příkazu Publikovat budete potřebovat přístup k vytváření z�
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
-  -Path '.\policyDefinitions'
+  -Path './policies'
 ```
 
  `Publish-GuestConfigurationPolicy`Rutina akceptuje cestu z kanálu PowerShellu. Tato funkce znamená, že můžete vytvořit soubory zásad a publikovat je v jedné sadě příkazů s použitím kanálu.

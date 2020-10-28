@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 4d0be745ef076ececbc5719a221f49b69d46c2ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cc345eda8a8d51fb61cbbbd5cf0bf84633ccf0b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443923"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676092"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Články Azure SQL Database a Azure SQL Managed instance Connect a dotazy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,10 +26,10 @@ Následující dokument obsahuje odkazy na příklady Azure, které ukazují, ja
 
 ## <a name="quickstarts"></a>Rychlé starty
 
-| Rychlé zprovoznění | Description |
+| Rychlý start | Popis |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|Tento rychlý Start ukazuje použití SSMS pro připojení k databázi a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
-|[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|Tento rychlý Start ukazuje, jak použít Azure Data Studio pro připojení k databázi a následné použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření databáze tutorialdb používaného v Azure Data Studioch kurzech.|
+|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)|Tento rychlý Start ukazuje, jak použít Azure Data Studio pro připojení k databázi a následné použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření databáze tutorialdb používaného v Azure Data Studioch kurzech.|
 |[Azure Portal](connect-query-portal.md)|Tento rychlý Start ukazuje použití Editoru dotazů pro připojení k databázi (pouze Azure SQL Database) a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[Visual Studio Code](connect-query-vscode.md)|Tento rychlý Start ukazuje, jak použít Visual Studio Code pro připojení k databázi a následné použití příkazů jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi.|
 |[.NET se sadou Visual Studio](connect-query-dotnet-visual-studio.md)|Tento rychlý Start ukazuje použití rozhraní .NET Framework k vytvoření programu v jazyce C# se sadou Visual Studio pro připojení k databázi a použití příkazů jazyka Transact-SQL k dotazování dat.|
@@ -62,11 +62,11 @@ K připojení k Azure SQL Database nebo spravované instanci SQL Azure můžete 
 
 Následující tabulka obsahuje seznam knihoven nebo *ovladačů* připojení, které klientské aplikace mohou používat z různých jazyků pro připojení a používání SQL Server v místním prostředí nebo v cloudu. Můžete je používat v systémech Linux, Windows nebo Docker a používat je k připojení k Azure SQL Database, spravované instanci SQL Azure a analýze Azure synapse Analytics (dřív SQL Data Warehouse).
 
-| Jazyk | Platforma | Další zdroje | Stáhnout | Začínáme |
+| Jazyk | Platforma | Další zdroje informací | Stáhnout | Začínáme |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows, Linux, macOS | [Microsoft ADO.NET pro SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [Stáhnout](https://www.microsoft.com/net/download/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [Ovladač Microsoft JDBC pro SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [Stáhnout](https://go.microsoft.com/fwlink/?linkid=852460) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows, Linux, macOS| [Ovladač PHP SQL pro SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Stáhnout](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
+| PHP | Windows, Linux, macOS| [Ovladač PHP SQL pro SQL Server](/sql/connect/php/microsoft-php-driver-for-sql-server) | [Stáhnout](/sql/connect/php/download-drivers-php-sql-server) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows, Linux, macOS | [Node.js ovladače pro SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server/) | [Instalace](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Ovladač Python SQL](/sql/connect/python/python-driver-for-sql-server/) | Možnosti instalace: <br/> \*[pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \*[pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows, Linux, macOS | [Ovladač Ruby pro SQL Server](/sql/connect/ruby/ruby-driver-for-sql-server/) | [Instalace](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) | [Začínáme](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedeny příklady rozhraní a webové architektur
 
 | Jazyk | Platforma | ORM (y) |
 | :-- | :-- | :-- |
-| C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
+| C# | Windows, Linux, macOS | [Entity Framework](/ef)<br>[Entity Framework Core](/ef/core/index) |
 | Java | Windows, Linux, macOS |[ORM – hibernace](https://hibernate.org/orm)|
 | PHP | Windows, Linux, macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
 | Node.js | Windows, Linux, macOS | [Sequelize ORM](https://sequelize.org/) |
@@ -101,6 +101,6 @@ V následující tabulce jsou uvedeny příklady rozhraní a webové architektur
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+[step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php

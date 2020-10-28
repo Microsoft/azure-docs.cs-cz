@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a9a8f3fe7422468ff2c8886dff7415322cf70f0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087930"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676877"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>Ruční oprava problémů s synchronizací ServiceNow
 
@@ -23,16 +23,16 @@ K opětovné aktivaci připojení a aktualizaci tokenu použijte následující 
 
 1. Vyhledejte řešení v horním banneru hledání a pak vyberte relevantní řešení.
 
-    ![Nové připojení](media/itsmc-resync-servicenow/solution-search-8bit.png)
+    ![Snímek obrazovky, který zobrazuje horní hlavičku hledání a kde vybrat relevantní řešení.](media/itsmc-resync-servicenow/solution-search-8bit.png)
 
 1. Na obrazovce řešení zvolte v filtru předplatného možnost Vybrat vše a potom filtr podle "partnera".
 
-    ![Nové připojení](media/itsmc-resync-servicenow/solutions-list-8bit.png)
+    ![Snímek obrazovky, který ukazuje, kde vybrat vše a kde filtrovat podle partnera](media/itsmc-resync-servicenow/solutions-list-8bit.png)
 
 1. Vyberte řešení pro připojení ITSM.
 1. V nápisu vlevo vyberte připojení ITSM.
 
-    ![Nové připojení](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
+    ![Snímek obrazovky, který ukazuje, kde vybrat připojení ITSM](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
 
 1. Vyberte jednotlivé konektory ze seznamu. 
     1. Klikněte na název konektoru, aby se nakonfiguroval.
@@ -42,7 +42,7 @@ K opětovné aktivaci připojení a aktualizaci tokenu použijte následující 
 
     1. Klikněte na synchronizovat.
 
-       ![Nové připojení](media/itsmc-resync-servicenow/resync-8bit2.png)
+       ![Snímek obrazovky, který zvýrazní tlačítko synchronizovat.](media/itsmc-resync-servicenow/resync-8bit2.png)
 
     1. Klikněte na Uložit.
 

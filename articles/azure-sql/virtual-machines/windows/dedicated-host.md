@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669099"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677668"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Spuštění SQL Server virtuálního počítače na vyhrazeném hostiteli Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,15 +30,14 @@ Tento článek podrobně popisuje konkrétní informace o použití SQL Serverho
 
 ## <a name="limitations"></a>Omezení
 
-- Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
-- Podporují se tyto řady virtuálních počítačů: DSv3 a ESv3. 
+- Ne všechny řady virtuálních počítačů jsou na vyhrazených hostitelích podporované a dostupnost řady virtuálních počítačů se v jednotlivých oblastech liší. Další informace najdete v tématu [Přehled vyhrazených hostitelů Azure](../../../virtual-machines/dedicated-hosts.md).
 
-## <a name="licensing"></a>Licensing
+## <a name="licensing"></a>Licencování
 
 Při umísťování SQL Server virtuálního počítače do vyhrazeného hostitele Azure si můžete vybrat mezi dvěma různými možnostmi licencování. 
 
-  - **Licencování virtuálních počítačů SQL**: Jedná se o existující možnost licencování, kde platíte za každou SQL Server licenci virtuálních počítačů jednotlivě. 
-  - **Licencování vyhrazených hostitelů**: nový licenční model dostupný pro vyhrazeného hostitele Azure, kde SQL Server licence jsou zabalené a placené pro na úrovni hostitele. 
+  - **Licencování virtuálních počítačů SQL** : Jedná se o existující možnost licencování, kde platíte za každou SQL Server licenci virtuálních počítačů jednotlivě. 
+  - **Licencování vyhrazených hostitelů** : nový licenční model dostupný pro vyhrazeného hostitele Azure, kde SQL Server licence jsou zabalené a placené pro na úrovni hostitele. 
 
 
 Možnosti na úrovni hostitele pro používání stávajících licencí SQL Server: 
@@ -65,7 +64,7 @@ Jednou z výhod vyhrazeného hostitele je neomezená virtualizace. Například m
 
 Vzhledem k tomu, že je to váš hostitel, máte nárok na nastavení virtualizace s poměrem 1:2. 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka: jak Zvýhodněné hybridní využití Azure fungují pro licence Windows Server/SQL Server na vyhrazeném hostiteli Azure?**
 

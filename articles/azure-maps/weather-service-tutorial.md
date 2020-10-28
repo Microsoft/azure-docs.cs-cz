@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5499402e94cad8673da597afd68571b77047192a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310097"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677690"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
 Větrná energie je jedním z alternativních zdrojů energie pro fosilní paliva v boji proti změnám klimatu. Vzhledem k tomu, že vítr není konzistentní vzhledem k povaze, je potřeba, aby operátoři napájení větru sestavili modely strojového učení (ML) pro předpověď kapacity výkonu větru. Tato předpověď je nutná k tomu, aby splňovala požadavky na elektřinu a zajistila stabilitu mřížky. V tomto kurzu se naučíme, jak Azure Maps data předpovědi počasí kombinovat s ukázkovými daty pro čtení počasí. Data předpovědi počasí jsou požadována voláním Azure Maps služby počasí.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Pracujte s datovými soubory v [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) v cloudu.
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující:
 > * Vykreslí data prognózy v grafech.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu je nutné nejprve provést tyto kroky:
 
@@ -41,7 +41,7 @@ K dokončení tohoto kurzu je nutné nejprve provést tyto kroky:
 
 Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
-Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, postupujte podle pokynů v tématu [vytvoření poznámkového bloku Azure](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook).
+Chcete-li se seznámit s poznámkovým blokům Azure a vědět, jak začít, postupujte podle pokynů v tématu [vytvoření poznámkového bloku Azure](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebooks-project).
 
 > [!Note]
 > Soubor poznámkového bloku Jupyter pro tento projekt se dá stáhnout z [úložiště poznámkových bloků Jupyter mapy počasí](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).

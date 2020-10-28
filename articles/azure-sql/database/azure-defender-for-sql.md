@@ -1,5 +1,5 @@
 ---
-title: Azure Defender for SQL
+title: Azure Defender pro SQL
 description: Přečtěte si o funkcích pro správu chyb zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly znamenat hrozbu pro vaši databázi v Azure SQL Database, spravované instanci Azure SQL nebo Azure synapse.
 services: sql-database
 ms.service: sql-db-mi
@@ -12,14 +12,14 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 09/21/2020
-ms.openlocfilehash: d567876e0210c025fa34c5b82791eafe4cdff561
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d147303df43c4f86843df518c71316e6a97b6671
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372149"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678081"
 ---
-# <a name="azure-defender-for-sql"></a>Azure Defender for SQL
+# <a name="azure-defender-for-sql"></a>Azure Defender pro SQL
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 
@@ -31,7 +31,7 @@ Azure Defender poskytuje sadu pokročilých funkcí zabezpečení SQL, včetně 
 - [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno nakonfigurovaná služba, která může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje akční kroky pro řešení problémů se zabezpečením a vylepšení fortifications databáze.
 - [Advanced Threat Protection](threat-detection-overview.md) zjišťuje nezvyklé aktivity, které mohou ukazovat na neobvyklé a potenciálně škodlivé pokusy o přístup k vaší databázi nebo jejímu zneužití. Nepřetržitě monitoruje vaši databázi pro podezřelé aktivity a poskytuje okamžité výstrahy zabezpečení při potenciálních ohroženích zabezpečení, útocích prostřednictvím injektáže Azure SQL a neobvyklé vzory přístupu k databázi. Upozornění služby Advanced Threat Protection obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
 
-Povolte službu Azure Defender pro SQL jednou, abyste povolili všechny tyto zahrnuté funkce. Jedním kliknutím můžete povolit Azure Defender pro všechny databáze na [serveru](logical-servers.md) v Azure nebo ve spravované instanci SQL. Povolení nebo Správa nastavení v programu Azure Defender vyžaduje, aby patřila do role [Správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) nebo jedna z rolí správce databáze nebo serveru.
+Povolením nástroje Azure Defender pro SQL můžete všechny tyto funkce povolit najednou. Jedním kliknutím můžete povolit Azure Defender pro všechny databáze na [serveru](logical-servers.md) v Azure nebo ve spravované instanci SQL. Povolení nebo Správa nastavení v programu Azure Defender vyžaduje, aby patřila do role [Správce zabezpečení SQL](../../role-based-access-control/built-in-roles.md#sql-security-manager) nebo jedna z rolí správce databáze nebo serveru.
 
 Další informace o cenách Azure Defenderu pro SQL najdete na [stránce s cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -62,10 +62,10 @@ Pokud chcete přepsat nastavení Azure Defenderu pro určitou databázi, zaškrt
 
 Po zaškrtnutí políčka můžete nakonfigurovat relevantní nastavení pro tuto databázi.
 
-Nastavení Azure Defenderu pro SQL Server nebo spravovanou instanci se dá získat taky z podokna databáze v Azure Defenderu. V hlavním podokně Azure Defender klikněte na **Nastavení** a pak klikněte na **Zobrazit Azure Defender pro nastavení SQL serveru**.
+Nastavení Azure Defenderu pro SQL Server nebo spravovanou instanci se dá získat taky z podokna databáze v Azure Defenderu. V hlavním podokně Azure Defender klikněte na **Nastavení** a pak klikněte na **Zobrazit Azure Defender pro nastavení SQL serveru** .
 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o [posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md)
 - Další informace o [Rozšířené ochraně před internetovými útoky](threat-detection-configure.md)
-- Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Další informace o [Azure Security Center](../../security-center/security-center-introduction.md)

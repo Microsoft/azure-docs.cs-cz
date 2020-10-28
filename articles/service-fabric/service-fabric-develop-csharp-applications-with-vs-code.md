@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614519"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678334"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Vývoj aplikací Service Fabric C# pomocí Visual Studio Code
 
@@ -18,7 +18,7 @@ ms.locfileid: "75614519"
 
 V tomto článku se dozvíte, jak sestavit, nasadit a ladit aplikaci Service Fabric .NET Core pomocí Visual Studio Code.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už nainstalovali VS Code, Service Fabric Reliable Services rozšíření pro VS Code a všechny závislosti, které jsou pro vaše vývojové prostředí potřeba. Další informace najdete v tématu [Začínáme](./service-fabric-get-started-vs-code.md#prerequisites).
 
@@ -34,7 +34,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-st
 ## <a name="open-the-application-in-vs-code"></a>Otevřete aplikaci v VS Code
 
 ### <a name="windows"></a>Windows
-V nabídce Start klikněte pravým tlačítkem myši na ikonu VS Code a vyberte **Spustit jako správce**. Chcete-li připojit ladicí program k vašim službám, je třeba spustit VS Code jako správce.
+V nabídce Start klikněte pravým tlačítkem myši na ikonu VS Code a vyberte **Spustit jako správce** . Chcete-li připojit ladicí program k vašim službám, je třeba spustit VS Code jako správce.
 
 ### <a name="linux"></a>Linux
 Pomocí terminálu přejděte do cesty/service-fabric-dotnet-core-getting-started/Services/CounterService z adresáře, do kterého byla aplikace naklonována místně.
@@ -57,7 +57,7 @@ Aplikace by se teď měla zobrazit v pracovním prostoru VS Code.
 ## <a name="deploy-the-application-to-the-local-cluster"></a>Nasazení aplikace do místního clusteru
 Po vytvoření aplikace ji můžete nasadit do místního clusteru. 
 
-1. Z **palety příkazů**vyberte **příkaz Service Fabric: nasadit aplikaci (localhost)**. Výstup procesu instalace se pošle do integrovaného terminálu.
+1. Z **palety příkazů** vyberte **příkaz Service Fabric: nasadit aplikaci (localhost)** . Výstup procesu instalace se pošle do integrovaného terminálu.
 
    ![Příkaz nasadit aplikaci v VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
@@ -74,7 +74,7 @@ Společně s nasazením aplikace do místního clusteru můžete také publikova
 
 1. Ujistěte se, že jste sestavili aplikaci pomocí výše uvedených pokynů. Aktualizujte vygenerovaný konfigurační soubor `Cloud.json` s podrobnostmi o vzdáleném clusteru, do kterého chcete publikovat.
 
-2. Z **palety příkazů**vyberte **příkaz Service Fabric: publikování aplikace**. Výstup procesu instalace se pošle do integrovaného terminálu.
+2. Z **palety příkazů** vyberte **příkaz Service Fabric: publikování aplikace** . Výstup procesu instalace se pošle do integrovaného terminálu.
 
    ![Příkaz publikování aplikace v VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
@@ -91,7 +91,7 @@ Chcete-li nastavit zarážku a ladit, proveďte následující kroky:
 
 2. V nabídce konfigurace ladění vyberte **.NET Core připojit** .
 
-   ![Ikona ladění v pracovním prostoru VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
+   ![Snímek obrazovky, který zobrazuje připojení .NET Core vybrané v nabídce konfigurace ladění.](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
 3. Otevřete Service Fabric Explorer v prohlížeči: http: \/ /localhost: 19080/Explorer. Klikněte na **aplikace** a přejděte k podrobnostem a určete primární uzel, na kterém je spuštěný CounterService. Na obrázku pod primárním uzlem pro CounterService je uzel 0.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 2d0b53581bbc2211df156b90326fc73d0c2ae091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46f93dffe0a998f29ff7157a2866b52d13482834
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548705"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676519"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s ověřováním identity Cloud platformou SAP
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat ověřování identity cloudových pla
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k ověřování identity cloudové platformy SAP pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Ověřování identity cloudové platformy SAP podporuje **aktualizace SP** a **IDP** , které iniciovaly jednotné přihlašování
-* Po nakonfigurování ověřování identity cloudové platformy SAP můžete vyhovět ovládacím prvkům relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po nakonfigurování ověřování identity cloudové platformy SAP můžete vyhovět ovládacím prvkům relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 Než se podrobně k technickým podrobnostem, je důležité pochopit koncepty, na které se chystáte se podívat. Ověřování identity a Active Directory Federation Services (AD FS) pro cloudovou platformu SAP umožňuje implementovat jednotné přihlašování napříč aplikacemi nebo službami, které jsou chráněné službou Azure AD (jako IdP), s aplikacemi a službami SAP chráněnými ověřováním identity cloudové platformy SAP.
 
@@ -67,15 +67,15 @@ Pokud chcete nakonfigurovat integraci ověřování identity cloudové platformy
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **ověřování identity cloudové platformy SAP** .
 1. Na panelu výsledků vyberte možnost **ověřování identity cloudové platformy SAP** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-cloud-platform-identity-authentication"></a>Konfigurace a testování jednotného přihlašování Azure AD pro ověřování identity v cloudové platformě SAP
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ověřování identity cloudové platformy SAP pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v ověřování identity v cloudové platformě SAP.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ověřování identity cloudové platformy SAP pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v ověřování identity v cloudové platformě SAP.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ověřování identity cloudové platformy SAP, dokončete následující stavební bloky:
 
@@ -90,13 +90,13 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **ověřování identity cloudové platformy SAP** najděte část **Správa** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **ověřování identity cloudové platformy SAP** najděte část **Správa** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **základní konfigurační oddíl SAML** , pokud chcete nakonfigurovat v režimu iniciované **IDP**proveďte následující kroky:
+4. V části **základní konfigurační oddíl SAML** , pokud chcete nakonfigurovat v režimu iniciované **IDP** proveďte následující kroky:
 
     ![Informace o jednotném přihlašování k doméně a adresám URL ověřování identity cloudové platformy SAP](common/idp-intiated.png)
 
@@ -107,7 +107,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta podpory pro ověřování identity cloudové platformy SAP](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) . Pokud nerozumíte hodnotě identifikátoru, přečtěte si dokumentaci k ověřování identity cloudové platformy SAP týkající se [Konfigurace klienta SAML 2,0](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
 
-5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované pomocí **SP**:
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované pomocí **SP** :
 
     ![Informace o jednotném přihlašování k doméně a adresám URL ověřování identity cloudové platformy SAP](common/metadata-upload-additional-signon.png)
 
@@ -144,25 +144,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k ověřování identity cloudové platformy SAP.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **SAP Cloud Platform ověřování identity ověřování**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **SAP Cloud Platform ověřování identity ověřování** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -176,9 +176,9 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 2. V Azure Portal klikněte na tlačítko **Uložit** .
 
-3. Pokračujte následujícími možnostmi pouze v případě, že chcete přidat a povolit jednotné přihlašování pro jinou aplikaci SAP. Opakujte kroky uvedené v části **Přidání ověřování identity cloudové platformy SAP z Galerie**.
+3. Pokračujte následujícími možnostmi pouze v případě, že chcete přidat a povolit jednotné přihlašování pro jinou aplikaci SAP. Opakujte kroky uvedené v části **Přidání ověřování identity cloudové platformy SAP z Galerie** .
 
-4. V Azure Portal na stránce integrace aplikace **ověřování identity cloudové platformy SAP** vyberte možnost **propojené přihlašování**.
+4. V Azure Portal na stránce integrace aplikace **ověřování identity cloudové platformy SAP** vyberte možnost **propojené přihlašování** .
 
     ![Konfigurace propojených Sign-On](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
 
@@ -201,18 +201,18 @@ Další informace o tom, jak povolit nebo zakázat federaci identity pomocí ov�
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici ověřování identity cloudové platformy SAP na přístupovém panelu byste měli být automaticky přihlášeni k ověřování identity cloudové platformy SAP, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici ověřování identity cloudové platformy SAP na přístupovém panelu byste měli být automaticky přihlášeni k ověřování identity cloudové platformy SAP, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si ověřování identity cloudové platformy SAP pomocí Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
 
-- [Jak chránit ověřování identity v cloudové platformě SAP pomocí pokročilých viditelností a ovládacích prvků](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Jak chránit ověřování identity v cloudové platformě SAP pomocí pokročilých viditelností a ovládacích prvků](/cloud-app-security/proxy-intro-aad)

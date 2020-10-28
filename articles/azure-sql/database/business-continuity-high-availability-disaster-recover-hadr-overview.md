@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: a69332f1534e32a85ce084289dd00533612cc282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327557"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678049"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ SQL Database a SQL Managed instance také poskytují několik funkcí provozní 
 
 - [Dočasné tabulky](../temporal-tables.md) umožňují obnovit verze řádků z jakéhokoli bodu v čase.
 - [Integrované automatické zálohování](automated-backups-overview.md) a obnovení k určitému [bodu v čase](recovery-using-backups.md#point-in-time-restore) umožňují obnovení kompletní databáze k určitému časovému okamžiku v rámci nakonfigurované doby uchování až do 35 dnů.
-- [Odstraněnou databázi můžete obnovit](recovery-using-backups.md#deleted-database-restore) do bodu, ve kterém byla odstraněna, pokud nebyl **Server odstraněn**.
+- [Odstraněnou databázi můžete obnovit](recovery-using-backups.md#deleted-database-restore) do bodu, ve kterém byla odstraněna, pokud nebyl **Server odstraněn** .
 - [Dlouhodobé uchovávání záloh](long-term-retention-overview.md) umožňuje uchovávat zálohy až po dobu 10 let. Toto je omezená verze Public Preview pro spravovanou instanci SQL.
 - [Aktivní geografická replikace](active-geo-replication-overview.md) umožňuje vytvářet čitelné repliky a ručně převzetí služeb při selhání pro všechny repliky v případě výpadku datového centra nebo upgradu aplikace.
 - [Skupina automatického převzetí služeb při selhání](auto-failover-group-overview.md#terminology-and-capabilities) umožňuje aplikaci automaticky obnovit v případě výpadku datového centra.
@@ -65,13 +65,13 @@ Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k u
 
 |                                              | Geografická replikace | Skupiny převzetí služeb při selhání  |
 |:---------------------------------------------| :-------------- | :----------------|
-| **Automatické převzetí služeb při selhání**                          |     No          |      Yes         |
-| **Převzetí služeb při selhání více databází současně**  |     No          |      Yes         |
-| **Uživatel musí po převzetí služeb při selhání aktualizovat připojovací řetězec**      |     Yes         |      No          |
-| **Podpora SQL Managed Instance**                   |     No          |      Yes         |
-| **Může být ve stejné oblasti jako primární**             |     Yes         |      No          |
-| **Více replik**                            |     Yes         |      No          |
-| **Podporuje škálování čtení**                          |     Yes         |      Yes         |
+| **Automatické převzetí služeb při selhání**                          |     Ne          |      Ano         |
+| **Převzetí služeb při selhání více databází současně**  |     Ne          |      Ano         |
+| **Uživatel musí po převzetí služeb při selhání aktualizovat připojovací řetězec**      |     Ano         |      Ne          |
+| **Podpora SQL Managed Instance**                   |     Ne          |      Ano         |
+| **Může být ve stejné oblasti jako primární**             |     Ano         |      Ne          |
+| **Více replik**                            |     Ano         |      Ne          |
+| **Podporuje škálování čtení**                          |     Ano         |      Ano         |
 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Obnovení databáze na existujícím serveru
@@ -141,7 +141,7 @@ Po obnovení s použitím libovolného mechanismu musíte provést následujíc�
 
 - Přesměrujte klienty a klientské aplikace na nový server a obnovenou databázi.
 - Zajistěte, aby se pro uživatele připojovala příslušná pravidla brány firewall na úrovni serveru, aby je bylo možné povolit, aby mohli používat [brány firewall na úrovni databáze](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
-- Zajistěte, aby byla k dismístě příslušná přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [omezení uživatelů](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
+- Zajistěte, aby byla k dismístě příslušná přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [omezení uživatelů](/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
 - Podle potřeby nakonfigurujte auditování.
 - Podle potřeby nakonfigurujte výstrahy.
 

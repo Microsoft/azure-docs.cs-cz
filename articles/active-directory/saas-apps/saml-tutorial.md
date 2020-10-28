@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 51c794d3e121b06f7eafc7f59f1fb8912e9d1f08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b15d560e2678772cefdf3d87c047013b24ed467
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543427"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675486"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Kurz: Azure Active Directory integrace s povolenou aplikací obchodní aplikace s tokenem SAML 1,1
 
@@ -27,10 +27,10 @@ Integrace obchodní aplikace s povoleným tokenem SAML 1,1 s Azure AD poskytuje 
 * Uživatelům můžete povolit, aby se automaticky přihlásili k obchodní aplikaci s povoleným tokenem SAML 1,1 (jednotné přihlašování) se svými účty Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K nakonfigurování integrace služby Azure AD pomocí obchodní aplikace s povoleným tokenem SAML 1,1 potřebujete následující položky:
 
@@ -61,13 +61,13 @@ Pokud chcete nakonfigurovat integraci obchodní aplikace s povoleným tokenem SA
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte obchodní **aplikaci s povoleným tokenem saml 1,1**, vyberte obchodní **aplikaci s podporou tokenů 1,1 SAML** z panelu výsledků a kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte obchodní **aplikaci s povoleným tokenem saml 1,1** , vyberte obchodní **aplikaci s podporou tokenů 1,1 SAML** z panelu výsledků a kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Aplikace LOB s povoleným tokenem SAML 1,1 v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí aplikace LOB s povoleným tokenem SAML 1,1 na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí aplikace LOB s povoleným tokenem SAML 1,1 na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí být navázán odkaz na odkaz mezi uživatelem služby Azure AD a souvisejícím uživatelem v obchodní aplikaci s povoleným tokenem SAML 1,1.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí obchodní aplikace s povoleným tokenem SAML 1,1, je potřeba, abyste dokončili tyto stavební bloky:
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí obchodní aplikace s povoleným tokenem SAML 1,1, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **LOB s povoleným tokenem SAML 1,1** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **LOB s povoleným tokenem SAML 1,1** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Chcete-li nakonfigurovat jednotné přihlašování na straně obchodní **aplik
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -142,28 +142,28 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k aplikaci LOB s povoleným tokenem SAML 1,1.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte obchodní **aplikaci s podporou tokenu SAML 1,1**.
+1. V Azure Portal vyberte možnost **podnikové aplikace** , vyberte možnost **všechny aplikace** a pak vyberte obchodní **aplikaci s podporou tokenu SAML 1,1** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace zadejte a vyberte obchodní **aplikaci s podporou tokenu SAML 1,1**.
+2. V seznamu aplikace zadejte a vyberte obchodní **aplikaci s podporou tokenu SAML 1,1** .
 
     ![Odkaz na aplikaci LOB s povoleným tokenem SAML 1,1 v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -185,13 +185,12 @@ V této části vytvoříte uživatele s názvem Britta Simon v obchodní aplika
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici aplikace LOB s povoleným tokenem SAML 1,1 na přístupovém panelu, měli byste se automaticky přihlásit k obchodní aplikaci s povoleným tokenem SAML 1,1, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici aplikace LOB s povoleným tokenem SAML 1,1 na přístupovém panelu, měli byste se automaticky přihlásit k obchodní aplikaci s povoleným tokenem SAML 1,1, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

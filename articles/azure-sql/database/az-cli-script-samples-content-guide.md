@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 893ea607b322c2f9b2d8a4e8b5b087e21c476d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f28d8f82796f54002312514b1a34e3dd8b666a3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497167"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675251"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Ukázky v Azure CLI pro Azure SQL Database a SQL Managed instance 
  
@@ -35,7 +35,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro správu databází s jedním a sdruženým fondem v Azure SQL Database. 
 
-|Oblast|Popis|
+|Plošný|Popis|
 |---|---|
 |**Vytváření databází v Azure SQL Database**||
 | [Vytvoření izolované databáze a konfigurace pravidla brány firewall](scripts/create-and-configure-database-cli.md) | Vytvoří SQL Database a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
@@ -63,7 +63,7 @@ Přečtěte si další informace o [rozhraní Azure CLI API pro jednu databázi]
 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro spravovanou instanci Azure SQL.
 
-|Oblast|Popis|
+|Plošný|Popis|
 |---|---|
 | **Vytvoření spravované instance SQL**||
 | [Vytvoření spravované instance SQL](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| Vytvoří spravovanou instanci SQL. |
@@ -73,7 +73,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro sprav
 | [Konfigurace skupiny převzetí služeb při selhání pro spravovanou instanci SQL](../../sql-database/scripts/sql-database-add-managed-instance-to-failover-group-cli.md) | Vytvoří dvě instance spravované instance SQL, přidá je do skupiny převzetí služeb při selhání a pak otestuje převzetí služeb při selhání z primární spravované instance SQL do sekundární spravované instance SQL. |
 |||
 
-Další příklady spravované instance SQL najdete v tématu [Vytvoření](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/), [aktualizace](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/), [Přesunutí databáze](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)a [práce se](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) skripty.
+Další příklady spravované instance SQL najdete v tématu [Vytvoření](/archive/blogs/sqlserverstorageengine/create-azure-sql-managed-instance-using-azure-cli), [aktualizace](/archive/blogs/sqlserverstorageengine/modify-azure-sql-database-managed-instance-using-azure-cli), [Přesunutí databáze](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance)a [práce se](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) skripty.
 
 Přečtěte si další informace o [rozhraní Azure CLI API spravované instance SQL](../managed-instance/api-references-create-manage-instance.md#azure-cli-create-and-configure-managed-instances).
 

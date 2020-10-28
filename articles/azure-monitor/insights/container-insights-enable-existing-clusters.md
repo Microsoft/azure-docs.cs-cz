@@ -3,13 +3,13 @@ title: Monitorování nasazeného clusteru AKS (Azure Kubernetes Service) | Micr
 description: Naučte se, jak povolit monitorování clusteru Azure Kubernetes Service (AKS) s Azure Monitor pro kontejnery, které jsou už ve vašem předplatném nasazené.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 9f3b9240bc10f4eaa4c9967d8c7bbb956eeab4e1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165396"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735133"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
 
@@ -24,11 +24,11 @@ Můžete povolit monitorování clusteru AKS, který je už nasazený, pomocí j
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Povolení pomocí Azure CLI
 
-Následující krok umožňuje monitorovat cluster AKS pomocí Azure CLI. V tomto příkladu není nutné předem vytvořit nebo zadat existující pracovní prostor. Tento příkaz zjednodušuje proces vytvořením výchozího pracovního prostoru ve výchozí skupině prostředků v rámci předplatného clusteru AKS, pokud ještě neexistuje v oblasti.  Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<GUID> - \<Region> *.
+Následující krok umožňuje monitorovat cluster AKS pomocí Azure CLI. V tomto příkladu není nutné předem vytvořit nebo zadat existující pracovní prostor. Tento příkaz zjednodušuje proces vytvořením výchozího pracovního prostoru ve výchozí skupině prostředků v rámci předplatného clusteru AKS, pokud ještě neexistuje v oblasti.  Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<GUID> - \<Region>* .
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -58,7 +58,7 @@ Pokud místo toho budete chtít provést integraci s existujícím pracovním pr
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
-    Zkopírujte hodnotu pro **SubscriptionId**.
+    Zkopírujte hodnotu pro **SubscriptionId** .
 
 2. Přepněte do předplatného hostujícího Log Analytics pracovní prostor pomocí následujícího příkazu:
 
@@ -72,7 +72,7 @@ Pokud místo toho budete chtít provést integraci s existujícím pracovním pr
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID**pole.
+    Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID** pole.
 
 4. Spuštěním následujícího příkazu povolte doplněk monitorování a nahraďte hodnotu `--workspace-resource-id` parametru. Řetězcová hodnota musí být v uvozovkách:
 
@@ -105,13 +105,13 @@ Pokud místo toho budete chtít provést integraci s existujícím pracovním pr
 
 Pokud chcete povolit monitorování clusteru AKS v Azure Portal z Azure Monitor, udělejte toto:
 
-1. V Azure Portal vyberte **monitorovat**.
+1. V Azure Portal vyberte **monitorovat** .
 
 2. V seznamu vyberte **kontejnery** .
 
-3. Na stránce **monitor – kontejnery** vyberte **nemonitorované clustery**.
+3. Na stránce **monitor – kontejnery** vyberte **nemonitorované clustery** .
 
-4. V seznamu nemonitorovaných clusterů Najděte kontejner v seznamu a klikněte na **Povolit**.
+4. V seznamu nemonitorovaných clusterů Najděte kontejner v seznamu a klikněte na **Povolit** .
 
 5. Pokud máte existující pracovní prostor Log Analytics v rámci stejného předplatného jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .
     Seznam předchází výchozí pracovní prostor a umístění, do kterého je kontejner AKS nasazený v rámci předplatného.
@@ -127,15 +127,15 @@ Po povolení monitorování může trvat přibližně 15 minut, než budete moct
 
 Pokud chcete monitorování povolit přímo z jednoho z clusterů AKS v Azure Portal, udělejte toto:
 
-1. V Azure Portal vyberte **všechny služby**.
+1. V Azure Portal vyberte **všechny služby** .
 
-2. V seznamu prostředků začněte psát **kontejnery**.  Seznam se filtruje podle vašeho zadání.
+2. V seznamu prostředků začněte psát **kontejnery** .  Seznam se filtruje podle vašeho zadání.
 
-3. Vyberte **Kubernetes Services**.
+3. Vyberte **Kubernetes Services** .
     
 4. V seznamu služeb Kubernetes vyberte službu.
 
-5. Na stránce Přehled služby Kubernetes vyberte **monitorování – přehledy**.
+5. Na stránce Přehled služby Kubernetes vyberte **monitorování – přehledy** .
 
 6. Pokud máte existující pracovní prostor Log Analytics ve stejném předplatném jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .
     Seznam předchází výchozí pracovní prostor a umístění, do kterého je kontejner AKS nasazený v rámci předplatného.

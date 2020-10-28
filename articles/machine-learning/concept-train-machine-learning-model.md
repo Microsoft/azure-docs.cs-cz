@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 4394cc4cb21b288215c75e484cb6446f0321158b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d34748a2b9f46bde187b4f003e210ffdaecd93e2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079067"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675688"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -26,14 +26,14 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
     | Způsob školení | Popis |
     | ----- | ----- |
     | [Konfigurace spuštění](#run-configuration) | **Typický způsob, jak naučit modely** , je použít školicí skript a spustit konfiguraci. Konfigurace spuštění poskytuje informace potřebné ke konfiguraci školicího prostředí používaného pro výuku modelu. V konfiguraci spuštění můžete zadat školicí skript, cíl výpočtů a prostředí Azure ML a spustit školicí úlohu. |
-    | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
-    | [Kanál strojového učení](#machine-learning-pipeline) | Kanály nejsou jinou výukovou metodou, ale **způsob definování pracovního postupu pomocí modulárních a opakovaně použitelných kroků**, které můžou zahrnovat školení jako součást pracovního postupu. Kanály strojového učení podporují pomocí automatizovaného strojového učení a spouštějí konfiguraci k výuce modelů. Vzhledem k tomu, že se kanály nezaměřují konkrétně na školení, jsou důvody pro použití kanálu různorodější než jiné metody školení. Obecně platí, že můžete použít kanál v těchto případech:<br>* Chcete **naplánovat bezobslužné procesy** , jako je například dlouho běžící školicí úlohy nebo Příprava dat.<br>* Použijte **více kroků** , které jsou koordinovány napříč heterogenními výpočetními prostředky a umístěními úložiště.<br>* Kanál použijte jako **opakovaně použitelnou šablonu** pro konkrétní scénáře, jako je například přeškolení nebo dávkové vyhodnocování.<br>* **Sledování a verze zdrojů dat, vstupů a výstupů** pro váš pracovní postup.<br>* Pracovní postup je **implementován různými týmy, které pracují podle konkrétních kroků nezávisle**. Kroky je pak možné spojit společně v kanálu pro implementaci pracovního postupu. |
+    | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování** . Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
+    | [Kanál strojového učení](#machine-learning-pipeline) | Kanály nejsou jinou výukovou metodou, ale **způsob definování pracovního postupu pomocí modulárních a opakovaně použitelných kroků** , které můžou zahrnovat školení jako součást pracovního postupu. Kanály strojového učení podporují pomocí automatizovaného strojového učení a spouštějí konfiguraci k výuce modelů. Vzhledem k tomu, že se kanály nezaměřují konkrétně na školení, jsou důvody pro použití kanálu různorodější než jiné metody školení. Obecně platí, že můžete použít kanál v těchto případech:<br>* Chcete **naplánovat bezobslužné procesy** , jako je například dlouho běžící školicí úlohy nebo Příprava dat.<br>* Použijte **více kroků** , které jsou koordinovány napříč heterogenními výpočetními prostředky a umístěními úložiště.<br>* Kanál použijte jako **opakovaně použitelnou šablonu** pro konkrétní scénáře, jako je například přeškolení nebo dávkové vyhodnocování.<br>* **Sledování a verze zdrojů dat, vstupů a výstupů** pro váš pracovní postup.<br>* Pracovní postup je **implementován různými týmy, které pracují podle konkrétních kroků nezávisle** . Kroky je pak možné spojit společně v kanálu pro implementaci pracovního postupu. |
 
 + Sada [sdk Azure Machine Learning pro r (Preview)](#r-sdk-preview): sada SDK pro jazyk r používá balíček reticulate k vytvoření vazby na sadu Azure Machine Learning SDK pro Python. To umožňuje přístup k základním objektům a metodám implementovaným v sadě Python SDK z jakéhokoli prostředí jazyka R.
 
-+ **Návrhář**: Azure Machine Learning Designer poskytuje snadnou vstupní bod do strojového učení pro vytváření důkazů konceptů nebo pro uživatele s malým prostředím kódování. Umožňuje naučit modely pomocí webového uživatelského rozhraní přetažení. V rámci návrhu můžete použít kód Pythonu nebo modely výuky bez psaní kódu.
++ **Návrhář** : Azure Machine Learning Designer poskytuje snadnou vstupní bod do strojového učení pro vytváření důkazů konceptů nebo pro uživatele s malým prostředím kódování. Umožňuje naučit modely pomocí webového uživatelského rozhraní přetažení. V rámci návrhu můžete použít kód Pythonu nebo modely výuky bez psaní kódu.
 
-+ **CLI**: rozhraní příkazového řádku Machine Learning poskytuje příkazy pro běžné úlohy s Azure Machine Learning a často se používá pro **skriptování a automatizaci úloh**. Když jste například vytvořili školicí skript nebo kanál, můžete použít rozhraní příkazového řádku ke spuštění školicího programu podle plánu nebo při aktualizaci datových souborů použitých pro školení. Pro školicí modely poskytuje příkazy, které odesílají školicí úlohy. Může odesílat úlohy pomocí konfigurací spuštění nebo kanálů.
++ **CLI** : rozhraní příkazového řádku Machine Learning poskytuje příkazy pro běžné úlohy s Azure Machine Learning a často se používá pro **skriptování a automatizaci úloh** . Když jste například vytvořili školicí skript nebo kanál, můžete použít rozhraní příkazového řádku ke spuštění školicího programu podle plánu nebo při aktualizaci datových souborů použitých pro školení. Pro školicí modely poskytuje příkazy, které odesílají školicí úlohy. Může odesílat úlohy pomocí konfigurací spuštění nebo kanálů.
 
 Každá z těchto metod školení může pro školení použít různé typy výpočetních prostředků. Souhrnně se tyto prostředky označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.
 
@@ -53,7 +53,7 @@ Můžete začít s konfigurací spuštění pro místní počítač a pak v př�
 
 * [Co je konfigurace spuštění?](concept-azure-machine-learning-architecture.md#run-configurations)
 * [Kurz: analýza prvního modelu ML](tutorial-1st-experiment-sdk-train.md)
-* [Příklady: Jupyter Notebook příklady modelů školení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
+* [Příklady: příklady školicích modelů Jupyter Notebook a Pythonu](https://github.com/Azure/azureml-examples)
 * [Postupy: konfigurace spuštění školení](how-to-set-up-training-targets.md)
 
 ### <a name="automated-machine-learning"></a>Automatizované strojové učení
@@ -64,8 +64,8 @@ Definujte iterace, nastavení parametrů, featurization a další nastavení. B�
 > Kromě sady Python SDK můžete také používat automatizované ML prostřednictvím [Azure Machine Learning studia](https://ml.azure.com).
 
 * [Co je automatizované strojové učení?](concept-automated-ml.md)
-* [Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení](tutorial-first-experiment-automated-ml.md)
-* [Kurz: Použití automatizovaného strojového učení k předvídání taxislužby tarifů](tutorial-auto-train-models.md)
+* [Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení](tutorial-first-experiment-automated-ml.md)
+* [Kurz: Využití automatizovaného strojového učení k predikci ceny jízdy taxíkem](tutorial-auto-train-models.md)
 * [Příklady: příklady Jupyter Notebook pro automatizované strojové učení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [Postupy: Konfigurace automatizovaných experimentů ML v Pythonu](how-to-configure-auto-train.md)
 * [Postupy: autovýuka modelu prognózy časových řad](how-to-auto-train-forecast.md)
@@ -131,7 +131,7 @@ Například vytvoření modelu __pro každou instanci nebo jednotlivce__ v násl
 
 Další informace najdete v tématu o [mnoha modelech řešení modelů](https://aka.ms/many-models) na GitHubu.
 
-## <a name="cli"></a>Rozhraní příkazového řádku
+## <a name="cli"></a>CLI
 
 Machine Learning CLI je rozšířením rozhraní příkazového řádku Azure CLI. Poskytuje příkazy rozhraní příkazového řádku pro různé platformy pro práci s Azure Machine Learning. Typicky k automatizaci úloh, jako je například školení modelu strojového učení, použijete rozhraní příkazového řádku.
 

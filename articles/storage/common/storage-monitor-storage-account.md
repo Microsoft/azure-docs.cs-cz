@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14edb8db945a9b69ba77d56cd19a4524876ede03
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034664"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676803"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na webu Azure Portal
 
@@ -34,12 +34,12 @@ Doporučujeme, abyste zkontrolovali [Azure monitor pro úložiště](../../azure
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>Konfigurace monitorování pro účet úložiště
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **účty úložiště**a potom název účtu úložiště otevřete řídicí panel účtu.
+1. V [Azure Portal](https://portal.azure.com)vyberte **účty úložiště** a potom název účtu úložiště otevřete řídicí panel účtu.
 1. V části **monitorování** okna nabídky vyberte **Diagnostika** .
 
-    ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
+    ![Snímek obrazovky, který zvýrazní možnost nastavení diagnostiky (Classic) v části monitorování (Classic).](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. Vyberte **typ** dat metriky pro každou **službu** , kterou chcete monitorovat, a **zásady uchovávání** dat. Monitorování můžete také zakázat nastavením **stav** na **vypnuto**.
+1. Vyberte **typ** dat metriky pro každou **službu** , kterou chcete monitorovat, a **zásady uchovávání** dat. Monitorování můžete také zakázat nastavením **stav** na **vypnuto** .
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
@@ -49,11 +49,11 @@ Doporučujeme, abyste zkontrolovali [Azure monitor pro úložiště](../../azure
    > Účtují se vám poplatky za ruční odstranění dat metriky. Data zastaralých analýz (data starší než vaše zásady uchovávání) se systémem odpouštějí bez jakýchkoli nákladů. Doporučujeme nastavit zásady uchovávání informací v závislosti na tom, jak dlouho chcete uchovávat data analýzy úložiště pro váš účet. Další informace najdete v tématu [fakturace na metrikách úložiště](storage-analytics-metrics.md#billing-on-storage-metrics) .
    >
 
-1. Po dokončení konfigurace monitorování vyberte **Uložit**.
+1. Po dokončení konfigurace monitorování vyberte **Uložit** .
 
 Výchozí sada metrik se zobrazí v grafech v okně účet úložiště a také na jednotlivých oknech služby (objekt blob, fronta, tabulka a soubor). Jakmile u služby povolíte metriky, může trvat až hodinu, než se data zobrazí ve svých grafech. Můžete vybrat **Upravit** v libovolném grafu metriky a nakonfigurovat, které metriky se zobrazí v grafu.
 
-Shromažďování a protokolování metrik můžete zakázat nastavením **stav** na **vypnuto**.
+Shromažďování a protokolování metrik můžete zakázat nastavením **stav** na **vypnuto** .
 
 > [!NOTE]
 > Azure Storage využívá [úložiště tabulek](storage-introduction.md#table-storage) k ukládání metrik pro váš účet úložiště a ukládá metriky v tabulkách ve vašem účtu. Další informace najdete v tématech: [Jak jsou uloženy metriky](storage-analytics-metrics.md#how-metrics-are-stored).
@@ -65,7 +65,7 @@ Pomocí následujícího postupu můžete zvolit metriky úložiště, které se
 
 1. Začněte zobrazením grafu metriky úložiště v Azure Portal. Grafy můžete najít v okně **účet úložiště** a v okně **metriky** pro jednotlivé služby (objekt blob, fronta, tabulka, soubor).
 
-   V tomto příkladu používáme následující graf, který se zobrazí v okně **účet úložiště**:
+   V tomto příkladu používáme následující graf, který se zobrazí v okně **účet úložiště** :
 
    ![Výběr grafu v Azure Portal](./media/storage-monitor-storage-account/stg-customize-chart-00.png)
 
@@ -75,7 +75,7 @@ Pomocí následujícího postupu můžete zvolit metriky úložiště, které se
 
    ![Časový rozsah a výběr služby v okně Upravit graf](./media/storage-monitor-storage-account/storage-edit-metric-time-range.png)
 
-1. Vyberte jednotlivé **metriky** , které chcete zobrazit v grafu, a pak klikněte na **OK**.
+1. Vyberte jednotlivé **metriky** , které chcete zobrazit v grafu, a pak klikněte na **OK** .
 
    ![Výběr jednotlivých metrik v okně Upravit graf](./media/storage-monitor-storage-account/storage-edit-metric-selections.png)
 
@@ -98,11 +98,11 @@ Metriky, které jste vybrali v části **Diagnostika** , určují řešení metr
 
 Můžete vytvářet výstrahy, které vás upozorní, když budou dosaženy prahové hodnoty pro metriky prostředků úložiště.
 
-1. Chcete-li otevřít okno **pravidla výstrah**, přejděte dolů k části **monitorování** v okně **nabídky** a vyberte možnost **výstrahy (klasické)**.
+1. Chcete-li otevřít okno **pravidla výstrah** , přejděte dolů k části **monitorování** v okně **nabídky** a vyberte možnost **výstrahy (klasické)** .
 2. Výběrem **Přidat upozornění metriky (Classic)** otevřete okno **Přidat pravidlo výstrahy** .
 3. Zadejte **název** a **Popis** nového pravidla výstrahy.
-4. Vyberte **metriku** , pro kterou chcete přidat výstrahu, **podmínku**upozornění a **prahovou hodnotu**. Typ prahové jednotky se změní v závislosti na zvolené metrikě. Například "Count" je typ jednotky pro *ContainerCount*, zatímco jednotka pro metriku *PercentNetworkError* je procento.
-5. Vyberte **období**. Metrika, která dosahuje nebo překračuje prahovou hodnotu v období aktivuje výstrahu.
+4. Vyberte **metriku** , pro kterou chcete přidat výstrahu, **podmínku** upozornění a **prahovou hodnotu** . Typ prahové jednotky se změní v závislosti na zvolené metrikě. Například "Count" je typ jednotky pro *ContainerCount* , zatímco jednotka pro metriku *PercentNetworkError* je procento.
+5. Vyberte **období** . Metrika, která dosahuje nebo překračuje prahovou hodnotu v období aktivuje výstrahu.
 6. Volitelné Konfigurace oznámení **e-mailem** a **webhookem** Další informace o webhookech najdete v tématu [Konfigurace Webhooku na upozornění metriky Azure](../../azure-monitor/platform/alerts-webhooks.md). Pokud neprovedete konfiguraci oznámení e-mailu nebo Webhooku, výstrahy se zobrazí jenom v Azure Portal.
 
 ![Okno Přidat pravidlo výstrahy do Azure Portal](./media/storage-monitor-storage-account/add-alert-rule.png)
@@ -112,10 +112,10 @@ Můžete vytvářet výstrahy, které vás upozorní, když budou dosaženy prah
 Do řídicího panelu portálu můžete přidat grafy Azure Storage metriky pro libovolný účet úložiště.
 
 1. Vyberte možnost **Upravit řídicí panel** při prohlížení řídicího panelu v [Azure Portal](https://portal.azure.com).
-1. V **galerii dlaždic**vyberte **najít dlaždice podle**  >  **typu**.
-1. Vyberte **typ**  >  **účty úložiště**.
-1. V části **prostředky**vyberte účet úložiště, jehož metriky chcete přidat na řídicí panel.
-1. Vyberte **Categories**možnost  >  **monitorování**kategorií.
+1. V **galerii dlaždic** vyberte **najít dlaždice podle**  >  **typu** .
+1. Vyberte **typ**  >  **účty úložiště** .
+1. V části **prostředky** vyberte účet úložiště, jehož metriky chcete přidat na řídicí panel.
+1. Vyberte **Categories** možnost  >  **monitorování** kategorií.
 1. Přetáhněte dlaždici grafu na řídicí panel, aby se zobrazila metrika, kterou chcete zobrazit. Opakujte pro všechny metriky, které byste chtěli zobrazit na řídicím panelu. Na následujícím obrázku je jako příklad zvýrazněný graf objekty blob – celkový počet požadavků, ale všechny grafy jsou k dispozici pro umístění na řídicím panelu.
 
    ![Galerie dlaždic v Azure Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
@@ -131,15 +131,15 @@ Můžete dát Azure Storage k uložení protokolů diagnostiky pro požadavky na
 > Soubory Azure aktuálně podporuje Analýza úložiště metriky, ale zatím nepodporují protokolování.
 >
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **účty úložiště**a potom název účtu úložiště otevřete okno účtu úložiště.
+1. V [Azure Portal](https://portal.azure.com)vyberte **účty úložiště** a potom název účtu úložiště otevřete okno účtu úložiště.
 1. V části **monitorování (Classic)** v okně nabídky vyberte **nastavení diagnostiky (Classic** ).
 
     ![Položka nabídky Diagnostika v části sledování v Azure Portal.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. Zajistěte, aby byl **stav** nastaven **na zapnuto**, a vyberte **služby** , pro které chcete povolit protokolování.
+1. Zajistěte, aby byl **stav** nastaven **na zapnuto** , a vyberte **služby** , pro které chcete povolit protokolování.
 
     ![Nakonfigurujte protokolování v Azure Portal.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. Klikněte na **Uložit**.
+1. Klikněte na **Uložit** .
 
 Diagnostické protokoly se ukládají do kontejneru objektů BLOB s názvem *$logs* ve vašem účtu úložiště. Data protokolu můžete zobrazit pomocí Průzkumníka služby Storage, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com), nebo programově pomocí klientské knihovny pro úložiště nebo PowerShellu.
 

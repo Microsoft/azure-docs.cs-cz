@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 14b4e7217b6e902023e5e82f8dbd404e43b36ef0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973117"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676163"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrace na přečtené kontejnery OCR v3. x
 
@@ -29,21 +29,11 @@ Pokud používáte verzi 2 Počítačové zpracování obrazu čtení kontejneru
 
 ## <a name="api-changes"></a>Změny rozhraní API
 
-Kontejnery v3. x používají verzi 3 rozhraní API pro počítačové zpracování obrazu a mají následující koncové body:
-
-#### <a name="version-31-preview"></a>[Verze 3,1-Preview](#tab/version-3-1)
+Kontejner Reada v 3.1 používá verzi 3 rozhraní API pro počítačové zpracování obrazu a má následující koncové body:
 
 * `/vision/v3.1-preview.2/read/analyzeResults/{operationId}`
 * `/vision/v3.1-preview.2/read/analyze`
 * `/vision/v3.1-preview.2/read/syncAnalyze`
-
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
-
-* `/vision/v3.0/read/analyzeResults/{operationId}`
-* `/vision/v3.0/read/analyze`
-* `/vision/v3.0/read/syncAnalyze`
-
----
 
 Podrobné informace o aktualizaci aplikací pro použití verze 3 cloudového rozhraní API pro čtení najdete v [Průvodci migrací REST API počítačové zpracování obrazu V3](https://docs.microsoft.com/azure/cognitive-services/computer-vision/upgrade-api-versions) . Tyto informace platí i pro kontejner. Pamatujte, že operace synchronizace jsou podporované jenom v kontejnerech.
 
@@ -53,8 +43,7 @@ Požadavky a doporučení jsou založené na srovnávacích testech s jednou ž�
 
 |Kontejner  |Minimum | Doporučeno  |
 |---------|---------|------|
-|Přečíst 3,0 – Preview     | 8 jader, 16 GB paměti         | 8 jader, 24 GB paměti
-|Přečíst 3,1 – Preview | 8 jader, 16 GB paměti         | 8 jader, 24 GB paměti
+|Přečíst 3,1 – Preview | 8 jader, 16 GB paměti         | 8 jader, 24 GB paměti |
 
 Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
 ms.author: barclayn
-ms.openlocfilehash: 64ff2a2a7ad6f07aac959422eadec7f24b210d88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19f88da6a678221cde66bf61668d16ba9ab998a4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505815"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677309"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Použití zásad správného řízení identity Azure Active Directory (Azure AD) ke kontrole a odebírání externích uživatelů, kteří už nemají přístup k prostředkům
 
@@ -67,11 +67,11 @@ Po dokončení kontroly se na stránce **výsledky** zobrazí přehled odpovědi
 
 ## <a name="disable-and-delete-external-identities-with-azure-ad-access-reviews-preview"></a>Zakázání a odstranění externích identit pomocí kontrol přístupu Azure AD (Preview)
 
-Kromě možnosti odebrání nežádoucích externích identit z prostředků, jako jsou skupiny nebo aplikace, můžou kontroly přístupu Azure AD blokovat externí identity přihlášení k vašemu tenantovi a odstranit externí identity z vašeho tenanta po uplynutí 30 dnů.
+Kromě možnosti odebrání nežádoucích externích identit z prostředků, jako jsou skupiny nebo aplikace, můžou kontroly přístupu Azure AD blokovat externí identity přihlášení k vašemu tenantovi a odstranit externí identity z vašeho tenanta po uplynutí 30 dnů. Jakmile vyberete možnost **zablokovat uživatele v přihlášení po dobu 30 dnů, pak uživatele z klienta odeberete** , kontrola zůstane ve stavu "používá se" po dobu 30 dnů. Během tohoto období nebude možné zobrazit ani konfigurovat nastavení, výsledky, kontrolory nebo protokoly auditu v rámci aktuální revize. 
 
 ![nastavení po dokončení](media/access-reviews-external-users/upon-completion-settings.png)
 
-Při vytváření nové kontroly přístupu v části nastavení po dokončení pro **akci, která se má použít u odepřených uživatelů** , můžete určit, že **Uživatelé budou přihlášení zablokovat po dobu 30 dnů, a pak z tenanta odebrat uživatele**.
+Při vytváření nové kontroly přístupu v části nastavení po dokončení pro **akci, která se má použít u odepřených uživatelů** , můžete určit, že **Uživatelé budou přihlášení zablokovat po dobu 30 dnů, a pak z tenanta odebrat uživatele** .
 Toto nastavení, které je v současnosti ve verzi Preview, umožňuje identifikovat, blokovat a odstraňovat externí identity z vašeho tenanta Azure AD. Externí identity, které se kontrolují a zakázaly pokračování přístupu kontrolorem, se zablokují a odstraní bez ohledu na přístup k prostředkům nebo jejich členství ve skupině. Toto nastavení se nejlépe používá jako poslední krok poté, co ověříte, že už neprobíhá přístup k prostředkům, a můžete ho bezpečně odebrat z vašeho tenanta, nebo pokud se chcete ujistit, že jsou odebrané, bez ohledu na jejich stálý přístup. Funkce zakázat a odstranit nejprve blokuje externího uživatele a odhlašuje jejich schopnost přihlašovat se k vašemu tenantovi a přistupovat k prostředkům. Přístup k prostředkům není v této fázi odvolán a pro případ, že byste chtěli znovu vytvořit instanci externího uživatele, jejich schopnost přihlášení lze překonfigurovat. Po uplynutí žádné další akce se zablokovaná externí identita odstraní z adresáře po 30 dnech a odebere účet i jeho přístup.
 
 ## <a name="next-steps"></a>Další kroky

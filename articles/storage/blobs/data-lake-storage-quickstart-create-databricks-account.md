@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 482d703689ca6cfc34dd5d78574ae52e4def2b1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 908bf21d2fe101731b11e3a8ad783f17728c8ed3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86109769"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677333"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Rychlý Start: Analýza dat pomocí datacihlů
 
@@ -25,7 +25,7 @@ V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k
 
 * Název vašeho účtu úložiště Azure Data Lake Gen2 [Vytvořte účet úložiště Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
 
-* ID tenanta, ID aplikace a heslo instančního objektu Azure s přiřazenou rolí **přispěvatele dat objektu BLOB služby Storage**. [Vytvoření instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md).
+* ID tenanta, ID aplikace a heslo instančního objektu Azure s přiřazenou rolí **přispěvatele dat objektu BLOB služby Storage** . [Vytvoření instančního objektu](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   > [!IMPORTANT]
   > Přiřaďte roli v oboru účtu úložiště Data Lake Storage Gen2. K nadřazené skupině prostředků nebo předplatnému můžete přiřadit roli, ale chyby související s oprávněními obdržíte, dokud tato přiřazení role nerozšíříte do účtu úložiště.
@@ -34,7 +34,7 @@ V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks** .
 
     ![Datacihly na Azure Portal](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -49,18 +49,18 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
-    |**Umístění**     | Vyberte **USA – západ 2**. Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
-    |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Umístění**     | Vyberte **USA – západ 2** . Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
+    |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium** . Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
 3. Vytvoření účtu trvá několik minut. Chcete-li monitorovat stav operace, zobrazte indikátor průběhu v horní části.
 
-4. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit**.
+4. Vyberte **Připnout na řídicí panel** a potom vyberte **Vytvořit** .
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
-1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor**.
+1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a vyberte **Spustit pracovní prostor** .
 
-2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový**  >  **cluster**.
+2. Budete přesměrováni na portál Azure Databricks. Na portálu vyberte **Nový**  >  **cluster** .
 
     ![Datacihly v Azure](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Datacihly v Azure")
 
@@ -74,7 +74,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
      
     - Nezapomeňte zaškrtnout políčko **Terminate after 120 minutes of inactivity** (Ukončit po 120 minutách nečinnosti). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
-4. Vyberte **vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
+4. Vyberte **vytvořit cluster** . Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
 Další informace o vytváření clusterů najdete v tématu [Vytvoření clusteru Spark v Azure Databricks](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
 
@@ -82,17 +82,17 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 
 V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, kterými nakonfigurujete účet úložiště.
 
-1. Na portálu [Azure Portal](https://portal.azure.com) přejděte do vytvořeného pracovního prostoru Azure Databricks a vyberte **Spustit pracovní prostor**.
+1. Na portálu [Azure Portal](https://portal.azure.com) přejděte do vytvořeného pracovního prostoru Azure Databricks a vyberte **Spustit pracovní prostor** .
 
-2. V levém podokně vyberte **Pracovní prostor**. V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok**.
+2. V levém podokně vyberte **Pracovní prostor** . V rozevíracím seznamu **Pracovní prostor** vyberte **Vytvořit** > **Poznámkový blok** .
 
-    ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Vytvoření poznámkového bloku v datacihlech")
+    ![Snímek obrazovky, který ukazuje, jak vytvořit Poznámkový blok v datacihlech a zvýraznit možnost nabídky vytvořit > Poznámkový blok.](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Vytvoření poznámkového bloku v datacihlech")
 
 3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Vyberte jazyk **Scala** a vyberte cluster Spark, který jste vytvořili v předchozí části.
 
     ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
-    Vyberte **Vytvořit**.
+    Vyberte **Vytvořit** .
 
 4. Zkopírujte následující blok kódu a vložte ho do první buňky, ale tento kód ještě nespouštějte.
 
@@ -135,7 +135,7 @@ V buňce stiskněte **SHIFT + ENTER** a kód se spustí.
 
 Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
-1. Spuštěním příkazu SQL vytvořte dočasnou tabulku pomocí dat z ukázkového datového souboru JSON **small_radio_json.json**. V následujícím fragmentu kódu nahraďte zástupné hodnoty názvem vašeho kontejneru a názvem účtu úložiště. Vytvořený poznámkový blok použijte k vložení fragmentu do nové buňky kódu v poznámkovém bloku a stiskněte SHIFT+ENTER.
+1. Spuštěním příkazu SQL vytvořte dočasnou tabulku pomocí dat z ukázkového datového souboru JSON **small_radio_json.json** . V následujícím fragmentu kódu nahraďte zástupné hodnoty názvem vašeho kontejneru a názvem účtu úložiště. Vytvořený poznámkový blok použijte k vložení fragmentu do nové buňky kódu v poznámkovém bloku a stiskněte SHIFT+ENTER.
 
     ```sql
     %sql
@@ -151,7 +151,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
     Magický příkaz jazyka `%sql` umožňuje spustit z poznámkového bloku kód SQL, i když je poznámkový blok jiného typu. Další informace najdete v článku [Kombinování jazyků v poznámkovém bloku](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook).
 
-2. Podívejme se na snímek ukázkových dat JSON, abyste lépe pochopili dotaz, který spouštíte. Vložte do buňky kódu následující fragment kódu a stiskněte klávesy **SHIFT + ENTER**.
+2. Podívejme se na snímek ukázkových dat JSON, abyste lépe pochopili dotaz, který spouštíte. Vložte do buňky kódu následující fragment kódu a stiskněte klávesy **SHIFT + ENTER** .
 
     ```sql
     %sql
@@ -162,7 +162,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
     ![Ukázková data JSON](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "Ukázková data JSON")
 
-    Kromě dalších podrobností vzorová data zachycují pohlaví posluchačů rádiového kanálu (název sloupce, **pohlaví**) a zda je jejich předplatné bezplatné nebo placené (název sloupce, **úroveň**).
+    Kromě dalších podrobností vzorová data zachycují pohlaví posluchačů rádiového kanálu (název sloupce, **pohlaví** ) a zda je jejich předplatné bezplatné nebo placené (název sloupce, **úroveň** ).
 
 4. Teď vytvoříte vizuální reprezentaci těchto dat, která bude znázorňovat, kolik uživatelů obou pohlaví má bezplatné účty a kolik je platících předplatitelů. Ve spodní části tabulkového výstupu klikněte na ikonu **Bar chart** (Pruhový graf) ikonu a potom na **Plot Options** (Možnosti grafu).
 
@@ -170,14 +170,14 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
 5. V části **Customize Plot** (Přizpůsobit graf) přetáhněte hodnoty, jak ukazuje snímek obrazovky.
 
-    ![Přizpůsobení pruhového grafu](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Přizpůsobení pruhového grafu")
+    ![Snímek obrazovky, na kterém se zobrazuje obrazovka pro přizpůsobení a hodnoty, které můžete přetáhnout](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Přizpůsobení pruhového grafu")
 
     - V poli **Keys** (Klíče) nastavte hodnotu **gender** (Pohlaví).
     - V poli **Seskupení sérií** nastavte hodnotu **level** (Úroveň).
     - V poli **Values** (Hodnoty) nastavte hodnotu **level** (Úroveň).
     - V poli **Aggregation** (Agregace) vyberte možnost **COUNT** (Počet).
 
-6. Klikněte na **Použít**.
+6. Klikněte na **Použít** .
 
 7. Výstup bude obsahovat vizuální reprezentaci znázorněnou na následujícím snímku obrazovky:
 

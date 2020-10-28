@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 8aeb44c6cbcb18bcd18408142bdfdeccffbbe055
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 96f2c96e7770ec7acc690a1d057fef16db5b88ed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454835"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>Kurz: Integrace Azure Active Directory s využitím stupňů
 
@@ -30,7 +30,7 @@ Integrace ve stupních Azure AD poskytuje následující výhody:
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete nakonfigurovat integraci Azure AD s využitím úrovně, budete potřebovat následující položky:
 
@@ -56,14 +56,14 @@ Pokud chcete nakonfigurovat integraci do služby Azure AD, musíte přidat do se
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Rozsah** .
 1. Vyberte možnost **Rozstupný** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s rozsahem na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s rozsahem na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí být navázán odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v závislosti na úrovni.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s využitím úrovně, je nutné dokončit následující stavební bloky:
@@ -79,8 +79,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s vy
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce věnované integraci **aplikací Najděte** část **Správa** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce věnované integraci **aplikací Najděte** část **Správa** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -116,25 +116,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. V horní části obrazovky vyberte **Nový uživatel**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **název** zadejte **B. Simon**.  
-   1. Do pole **uživatelské jméno** zadejte `<username>@<companydomain>.<extension>` . Například: `B.Simon@contoso.com`.
+   1. Do pole **název** zadejte **B. Simon** .  
+   1. Do pole **uživatelské jméno** zadejte `<username>@<companydomain>.<extension>` . Příklad: `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
-   1. Vyberte **Vytvořit**.
+   1. Vyberte **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k tomuto stupni.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte možnost na stejné **úrovni**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte možnost na stejné **úrovni** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -144,7 +144,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="configure-degreed-sso"></a>Konfigurace na úrovni jednotného přihlašování
 
-Chcete-li konfigurovat jednotné přihlašování na základě **úrovně** , je třeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal na [tým podpory ve stupních](mailto:admin@degreed.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li konfigurovat jednotné přihlašování na základě **úrovně** , je třeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal na [tým podpory ve stupních](mailto:sso@degreed.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-degreed-test-user"></a>Vytvořit testovacího uživatele se stejným stupněm
 
@@ -153,7 +153,7 @@ Cílem této části je vytvořit uživatele s názvem Britta Simon ve stejném 
 V této části není žádná položka akce. Nový uživatel se vytvoří během pokusu o přístup ve stupních, pokud ještě neexistuje.
 
 > [!NOTE]
-> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory ve stupních](mailto:admin@degreed.com).
+> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory ve stupních](mailto:sso@degreed.com).
 
 
 ## <a name="test-sso"></a>Test SSO

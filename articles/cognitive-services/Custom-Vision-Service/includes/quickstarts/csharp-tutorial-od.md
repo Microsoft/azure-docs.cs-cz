@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: a641e4cd1203fb5c110b4c9ea85ce5fd518cb199
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 319d7d1b96bd71a83592cf560cd5e30b011cf247
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548204"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678236"
 ---
 Začněte s klientskou knihovnou Custom Vision pro .NET. Pomocí těchto kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro vytvoření modelu detekce objektu. Vytvoříte projekt, přidáte značky, provedete projekt na ukázkových obrázcích a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -220,4 +220,5 @@ Nyní jste provedli všechny kroky procesu detekce objektů v kódu. Tato ukázk
 > [Testování a přetrénování modelu](../../test-your-model.md)
 
 * [Co je Custom Vision?](../../overview.md)
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs) .
 * [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet)

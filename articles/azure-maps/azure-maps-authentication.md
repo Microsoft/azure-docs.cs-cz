@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ecbbb9580a9a79ae52320ea53a4831ac8ef57f8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091402"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678183"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
@@ -104,7 +104,7 @@ Některé Azure Maps služby mohou vyžadovat zvýšená oprávnění k provád�
 | tvůrce            | Přispěvatel dat Azure Maps |
 | Prostorové            | Přispěvatel dat Azure Maps |
 
-Informace o zobrazení nastavení služby Azure RBAC najdete v tématu [Konfigurace služby Azure RBAC pro Azure Maps](https://aka.ms/amrbac).
+Informace o zobrazení nastavení služby Azure RBAC najdete v tématu [Konfigurace služby Azure RBAC pro Azure Maps](./how-to-manage-authentication.md).
 
 #### <a name="custom-role-definitions"></a>Definice vlastních rolí
 

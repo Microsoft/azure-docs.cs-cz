@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: jeedes
-ms.openlocfilehash: b864f4204fa546fa1f06e50550376a8a899d5b8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9512287f656c6c64399cb8749b7451a5a780bba8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348400"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677644"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsara"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Samsara
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat Samsara s Azure Active Directory (Azur
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k Samsara svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -49,11 +49,11 @@ Pokud chcete nakonfigurovat integraci Samsara do služby Azure AD, musíte přid
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
     
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
@@ -66,7 +66,7 @@ Pokud chcete nakonfigurovat integraci Samsara do služby Azure AD, musíte přid
 
 ## <a name="configure-and-test-azure-ad-sso-for-samsara"></a>Konfigurace a testování jednotného přihlašování Azure AD pro Samsara
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Samsara pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Samsara.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Samsara pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Samsara.
 
 K nakonfigurování a testování jednotného přihlašování Azure AD pomocí Samsara postupujte takto:
 
@@ -81,11 +81,11 @@ K nakonfigurování a testování jednotného přihlašování Azure AD pomocí 
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V Azure Portal na stránce integrace aplikací **Samsara** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **Samsara** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 
     ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
@@ -102,7 +102,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://samsara-dev.auth0.com/login/callback?connection=samlp-orgid-<ORGID>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta Samsara](mailto:support@samsara.com) , nebo v Samsara v části **Nastavení**  >  **jednotného přihlašování**pro  >  **nové připojení SAML** získáte \<ORGID\> . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, adresy URL odpovědi a identifikátoru. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klienta Samsara](mailto:support@samsara.com) , nebo v Samsara v části **Nastavení**  >  **jednotného přihlašování** pro  >  **nové připojení SAML** získáte \<ORGID\> . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -116,22 +116,22 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Samsara.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **Samsara**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **Samsara** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
@@ -152,11 +152,9 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 2. Přejít na adresu URL pro přihlášení k Samsara přímo a zahájit tok přihlášení.
 
-3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Samsara na přístupovém panelu se tato akce přesměruje na přihlašovací adresu Samsara. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Samsara na přístupovém panelu se tato akce přesměruje na přihlašovací adresu Samsara. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování Samsara můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Po nakonfigurování Samsara můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

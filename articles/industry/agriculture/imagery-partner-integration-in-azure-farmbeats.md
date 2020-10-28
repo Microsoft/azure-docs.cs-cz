@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82613281"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675940"
 ---
 # <a name="imagery-partner-integration"></a>Integrace partnerských řešení pro snímky
 
@@ -43,9 +43,9 @@ Rozhraní API obsahují technickou dokumentaci k Swagger. Informace o rozhraníc
 
 ## <a name="authentication"></a>Authentication
 
-FarmBeats používá Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
+FarmBeats používá Microsoft Azure [Active Directory](../../app-service/overview-authentication-authorization.md) (Azure AD). Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
 
-Další informace o Azure AD najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
+Další informace o Azure AD najdete v tématu [Azure Active Directory](../../app-service/overview-authentication-authorization.md).   
 
 FarmBeats DataHub používá ověřování pomocí nosiče, které potřebuje následující přihlašovací údaje:
 
@@ -138,10 +138,10 @@ Po tom, co partner získá přihlašovací údaje pro připojení k FarmBeats Da
 
 1.  Vytvořte nový rozšířený typ pro následující pole v souladu s typem ukládaného textu, který se má nahrát:
 
-    - **Zdroj scény**: například drone_partner_name
-    - **Typ scény**: například pomocí dronů
-    - **Typ souboru scény**: například index Chlorophyll
-    - **Typ obsahu souboru scény**: například Image/TIFF
+    - **Zdroj scény** : například drone_partner_name
+    - **Typ scény** : například pomocí dronů
+    - **Typ souboru scény** : například index Chlorophyll
+    - **Typ obsahu souboru scény** : například Image/TIFF
 
 2.  Voláním rozhraní/Farms API získáte seznam farem v rámci systému Azure FarmBeats.
 3.  Poskytněte zákazníkovi možnost zvolit jednu farmu ze seznamu Farm.

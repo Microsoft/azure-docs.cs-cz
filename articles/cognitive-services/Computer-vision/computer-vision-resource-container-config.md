@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5094bd4aa5ac68c24f284cfb74e410fbdf089af7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536235"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677183"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>Konfigurace čtení kontejnerů Docker pro rozpoznávání OCR
 
@@ -31,14 +31,14 @@ Pomocí argumentů příkazu můžete nakonfigurovat Počítačové zpracování
 
 Kontejner také obsahuje následující nastavení konfigurace specifické pro kontejner:
 
-|Vyžadováno|Nastavení|Účel|
+|Povinné|Nastavení|Účel|
 |--|--|--|
-|No|ReadEngineConfig:ResultExpirationPeriod| pouze kontejnery v 2.0. Doba vypršení platnosti výsledku v hodinách Výchozí hodnota je 48 hodin. Nastavení určuje, kdy má systém vymazat výsledky rozpoznávání. Například pokud `resultExpirationPeriod=1` systém vymaže výsledek rozpoznávání 1 hodina po procesu. Pokud `resultExpirationPeriod=0` systém vymaže výsledek rozpoznávání po načtení výsledku.|
-|No|Mezipaměť: Redis| pouze kontejnery v 2.0. Povoluje úložiště Redis pro ukládání výsledků. Mezipaměť je *vyžadována* , pokud je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
-|No|Fronta: RabbitMQ|pouze kontejnery v 2.0. Povoluje RabbitMQ pro odesílání úloh. Toto nastavení je užitečné, když je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
-|No|Fronta: Azure: QueueVisibilityTimeoutInMilliseconds | pouze kontejnery v3. x. Čas, kdy bude zpráva viditelná, když ji jiný pracovník zpracovává. |
-|No|Storage::D ocumentStore:: MongoDB|pouze kontejnery v 2.0. Povoluje MongoDB pro trvalé úložiště výsledků. |
-|No|Storage: ObjectStore: Azureblobu: ConnectionString| pouze kontejnery v3. x. Připojovací řetězec služby Azure Blob Storage. |
+|Ne|ReadEngineConfig:ResultExpirationPeriod| pouze kontejnery v 2.0. Doba vypršení platnosti výsledku v hodinách Výchozí hodnota je 48 hodin. Nastavení určuje, kdy má systém vymazat výsledky rozpoznávání. Například pokud `resultExpirationPeriod=1` systém vymaže výsledek rozpoznávání 1 hodina po procesu. Pokud `resultExpirationPeriod=0` systém vymaže výsledek rozpoznávání po načtení výsledku.|
+|Ne|Mezipaměť: Redis| pouze kontejnery v 2.0. Povoluje úložiště Redis pro ukládání výsledků. Mezipaměť je *vyžadována* , pokud je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
+|Ne|Fronta: RabbitMQ|pouze kontejnery v 2.0. Povoluje RabbitMQ pro odesílání úloh. Toto nastavení je užitečné, když je za nástroj pro vyrovnávání zatížení umístěno více kontejnerů pro čtení.|
+|Ne|Fronta: Azure: QueueVisibilityTimeoutInMilliseconds | pouze kontejnery v3. x. Čas, kdy bude zpráva viditelná, když ji jiný pracovník zpracovává. |
+|Ne|Storage::D ocumentStore:: MongoDB|pouze kontejnery v 2.0. Povoluje MongoDB pro trvalé úložiště výsledků. |
+|Ne|Storage: ObjectStore: Azureblobu: ConnectionString| pouze kontejnery v3. x. Připojovací řetězec služby Azure Blob Storage. |
 
 ## <a name="apikey-configuration-setting"></a>Nastavení konfigurace ApiKey
 
@@ -62,7 +62,7 @@ Toto nastavení najdete na následujícím místě:
 
 Nezapomeňte přidat `vision/v1.0` směrování k identifikátoru URI koncového bodu, jak je znázorněno v následující tabulce. 
 
-|Vyžadováno| Name | Datový typ | Popis |
+|Povinné| Název | Datový typ | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -90,7 +90,7 @@ Kontejnery Počítačové zpracování obrazu nepoužívají k ukládání dat �
 
 Přesná syntaxe umístění hostitelského připojení se liší v závislosti na hostitelském operačním systému. Kromě toho je možné, že umístění pro připojení k [hostitelskému počítači](computer-vision-how-to-install-containers.md#the-host-computer)není přístupné z důvodu konfliktu mezi oprávněními používanými účtem služby Docker a oprávněním pro umístění připojení hostitele. 
 
-|Volitelné| Name | Datový typ | Popis |
+|Volitelné| Název | Datový typ | Popis |
 |-------|------|-----------|-------------|
 |Nepovolené| `Input` | Řetězec | Kontejnery Počítačové zpracování obrazu nepoužívají.|
 |Volitelné| `Output` | Řetězec | Cíl připojení pro výstup. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje protokoly kontejnerů. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -99,10 +99,10 @@ Přesná syntaxe umístění hostitelského připojení se liší v závislosti 
 
 Následující příklady používají konfigurační nastavení k ilustraci, jak psát a používat `docker run` příkazy.  Po spuštění bude kontejner dál běžet, dokud ho [nezastavíte](computer-vision-how-to-install-containers.md#stop-the-container) .
 
-* **Znak pro pokračování řádku**: příkazy Docker v následujících částech používají zpětné lomítko, `\` jako znak pro pokračování řádku. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. 
-* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
+* **Znak pro pokračování řádku** : příkazy Docker v následujících částech používají zpětné lomítko, `\` jako znak pro pokračování řádku. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. 
+* **Pořadí argumentů** : Neměňte pořadí argumentů, pokud neznáte kontejnery Docker.
 
-Nahradit {_argument_name_} vlastními hodnotami:
+Nahradit { _argument_name_ } vlastními hodnotami:
 
 | Zástupný symbol | Hodnota | Formát nebo příklad |
 |-------------|-------|---|
@@ -138,29 +138,6 @@ ApiKey={API_KEY}
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
 mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-Logging:Console:LogLevel:Default=Information
-```
-
-# <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
-
-### <a name="basic-example"></a>Základní příklad
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-### <a name="logging-example"></a>Příklad protokolování 
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

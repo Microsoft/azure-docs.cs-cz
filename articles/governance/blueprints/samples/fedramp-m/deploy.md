@@ -1,14 +1,14 @@
 ---
 title: Příklad nasazení FedRAMP pro střední plán
 description: Nasaďte kroky pro ukázku FedRAMP pro střední plán včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 07/31/2020
+ms.date: 10/26/2020
 ms.topic: sample
-ms.openlocfilehash: 5fb8855f82b16a149e2ab8091a1722236f115171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21da37b66626b3591fc0c4053cb194486273fc22
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495824"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675869"
 ---
 # <a name="deploy-the-fedramp-moderate-blueprint-sample"></a>Nasazení ukázky FedRAMP pro střední plán
 
@@ -16,7 +16,7 @@ K nasazení ukázky Azure modrotisky FedRAMP pro střední plán je potřeba pro
 
 > [!div class="checklist"]
 > - Vytvořte nový podrobný plán z ukázky.
-> - Kopii ukázky si označte jako **publikovanou**.
+> - Kopii ukázky si označte jako **publikovanou** .
 > - Přiřaďte kopii podrobného plánu k existujícímu předplatnému.
 
 Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free).
@@ -25,50 +25,50 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte nový podrobný plán ve svém prostředí.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
+1. V levém podokně vyberte **Všechny služby** . Vyhledejte a vyberte **Podrobné plány** .
 
-1. Vlevo na stránce **Začínáme** vyberte tlačítko **Vytvořit** v části _Vytvořit podrobný plán_.
+1. Vlevo na stránce **Začínáme** vyberte tlačítko **Vytvořit** v části _Vytvořit podrobný plán_ .
 
-1. V části _Další ukázky_ Najděte vzorek **FedRAMP mírná** podrobný plán a vyberte **použít tuto ukázku**.
+1. V části _Další ukázky_ Najděte vzorek **FedRAMP mírná** podrobný plán a vyberte **použít tuto ukázku** .
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky FedRAMP pro střední plán.
-   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky FedRAMP pro střední plán.
+   - **Umístění definice** : použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
 
-1. Projděte si seznam artefaktů, které tvoří ukázku podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Až skončíte s kontrolou ukázky podrobného plánu, vyberte **Uložit koncept**.
+1. Projděte si seznam artefaktů, které tvoří ukázku podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Až skončíte s kontrolou ukázky podrobného plánu, vyberte **Uložit koncept** .
 
 ## <a name="publish-the-sample-copy"></a>Publikování kopie ukázky
 
-V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je vytvořená v režimu **Koncept** a než ji budete muset přiřadit a nasadit, musí být **publikovaná**. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo zarovnání s FedRAMP středními ovládacími prvky.
+V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je vytvořená v režimu **Koncept** a než ji budete muset přiřadit a nasadit, musí být **publikovaná** . Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo zarovnání s FedRAMP středními ovládacími prvky.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
+1. V levém podokně vyberte **Všechny služby** . Vyhledejte a vyberte **Podrobné plány** .
 
 1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. Nahoře na stránce vyberte **Publikovat podrobný plán**. Napravo na nové stránce zadejte **verzi** kopie ukázky podrobného plánu. Tato vlastnost je užitečná, protože umožňuje pozdější úpravy. Zadejte **poznámky ke změnám** , jako je například první verze publikovaná z ukázky FedRAMP pro střední plán. Na konci stránky pak vyberte **Publikovat**.
+1. Nahoře na stránce vyberte **Publikovat podrobný plán** . Napravo na nové stránce zadejte **verzi** kopie ukázky podrobného plánu. Tato vlastnost je užitečná, protože umožňuje pozdější úpravy. Zadejte **poznámky ke změnám** , jako je například první verze publikovaná z ukázky FedRAMP pro střední plán. Na konci stránky pak vyberte **Publikovat** .
 
 ## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
+Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
+1. V levém podokně vyberte **Všechny služby** . Vyhledejte a vyberte **Podrobné plány** .
 
 1. Vyberte stránku **Definice podrobných plánů** vlevo. Pomocí filtrů najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. V horní části stránky definice podrobného plánu vyberte **Přiřadit podrobný plán**.
+1. V horní části stránky definice podrobného plánu vyberte **Přiřadit podrobný plán** .
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - Základy
 
-     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
+     - **Předplatná** : vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení** : název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Umístění** : Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 
@@ -85,7 +85,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 1. Po zadání všech parametrů vyberte **Přiřadit** v dolní části stránky. Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
 
 > [!WARNING]
-> Služba Azure Blueprints a integrované ukázky podrobného plánu jsou **bezplatné**. U prostředků Azure se [cena stanovuje podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
+> Služba Azure Blueprints a integrované ukázky podrobného plánu jsou **bezplatné** . U prostředků Azure se [cena stanovuje podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
 
 ## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
 

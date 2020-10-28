@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.custom: devx-track-ansible
-ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-ansible, devx-track-azurecli
+ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373568"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735115"
 ---
 # <a name="post-deployment-tasks"></a>Úkoly po nasazení
 
@@ -70,23 +70,23 @@ Poznamenejte si vlastnost appId vrácenou z příkazu pro pozdější krok.
 
 Na webu Azure Portal:
 
-1. Vyberte **Azure Active Directory**  >  **registraci aplikace**.
+1. Vyberte **Azure Active Directory**  >  **registraci aplikace** .
 2. Vyhledejte registraci vaší aplikace (například OCPAzureAD).
 3. Ve výsledcích klikněte na registrace aplikace.
-4. V části **Nastavení**vyberte **požadovaná oprávnění**.
-5. V části **požadovaná oprávnění**vyberte **Přidat**.
+4. V části **Nastavení** vyberte **požadovaná oprávnění** .
+5. V části **požadovaná oprávnění** vyberte **Přidat** .
 
    ![Registrace aplikace](media/openshift-post-deployment/app-registration.png)
 
-6. Klikněte na krok 1: Vyberte rozhraní API a pak klikněte na **Windows Azure Active Directory (Microsoft. Azure. Active Directory)**. V dolní části klikněte na **Vybrat** .
+6. Klikněte na krok 1: Vyberte rozhraní API a pak klikněte na **Windows Azure Active Directory (Microsoft. Azure. Active Directory)** . V dolní části klikněte na **Vybrat** .
 
    ![Registrace aplikace – výběr rozhraní API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. V kroku 2: vyberte oprávnění vyberte možnost **Přihlásit se a číst profil uživatele** v části **delegovaná oprávnění**a pak klikněte na **Vybrat**.
+7. V kroku 2: vyberte oprávnění vyberte možnost **Přihlásit se a číst profil uživatele** v části **delegovaná oprávnění** a pak klikněte na **Vybrat** .
 
    ![Přístup k registraci aplikace](media/openshift-post-deployment/app-registration-access.png)
 
-8. Vyberte **Hotovo**.
+8. Vyberte **Hotovo** .
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Konfigurace OpenShift pro ověřování Azure AD
 

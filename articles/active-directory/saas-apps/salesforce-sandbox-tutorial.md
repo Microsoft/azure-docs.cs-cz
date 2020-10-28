@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 277acbc84ab435ce1076c30a1e49f6ffdd2a0586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc27b1fea97471e9ca1991467902e666c1451605
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543704"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s izolovaným prostorem Salesforce
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat izolovaný prostor Salesforce s Azure 
 * Umožněte uživatelům, aby se automaticky přihlásili do izolovaného prostoru Salesforce pomocí svých účtů Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -42,7 +42,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 * Izolovaný prostor Salesforce podporuje **aktualizace SP a IDP** .
 * Izolovaný prostor Salesforce podporuje zřizování uživatelů **jenom v čase**
 * Izolovaný prostor Salesforce podporuje [ **automatizované** zřizování uživatelů](salesforce-sandbox-provisioning-tutorial.md)
-* Jakmile nakonfigurujete izolovaný prostor Salesforce, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Jakmile nakonfigurujete izolovaný prostor Salesforce, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-sandbox-from-the-gallery"></a>Přidání izolovaného prostoru Salesforce z Galerie
 
@@ -50,15 +50,15 @@ Pokud chcete nakonfigurovat integraci izolovaného prostoru Salesforce do Azure 
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **Sandbox typu Salesforce** .
 1. Vyberte **izolovaný prostor Salesforce** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-salesforce-sandbox"></a>Konfigurace a testování jednotného přihlašování Azure AD pro izolovaný prostor Salesforce
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD s izolovaným prostorem Salesforce pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v izolovaném prostoru Salesforce.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s izolovaným prostorem Salesforce pomocí testovacího uživatele s názvem **B. Simon** . Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v izolovaném prostoru Salesforce.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s izolovaným prostorem Salesforce, dokončete následující stavební bloky:
 
@@ -73,19 +73,19 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s iz
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **izolovaného prostoru Salesforce** najděte část **Správa** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **izolovaného prostoru Salesforce** najděte část **Správa** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
 4. Pokud v **základním oddílu konfigurace SAML** máte **soubor metadat Service Provider** a chcete ho nakonfigurovat v režimu iniciované **IDP** , proveďte následující kroky:
 
-    a. Klikněte na **nahrát soubor metadat**.
+    a. Klikněte na **nahrát soubor metadat** .
 
     ![Nahrát soubor metadat](common/upload-metadata.png)
 
-    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát**.
+    b. Kliknutím na **logo složky** vyberte soubor metadat a klikněte na **nahrát** .
 
     ![zvolit soubor metadat](common/browse-upload-metadata.png)
 
@@ -117,25 +117,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k izolovanému prostoru Salesforce.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **izolovaný prostor Salesforce**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **izolovaný prostor Salesforce** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -151,7 +151,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure1.png)
 
-3. Posuňte se dolů k **Nastavení** v levém navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **Nastavení jednoho Sign-On**.
+3. Posuňte se dolů k **Nastavení** v levém navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **Nastavení jednoho Sign-On** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
@@ -159,15 +159,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure3.png)
 
-5. Vyberte možnost **SAML povolena**a pak klikněte na tlačítko **Uložit**.
+5. Vyberte možnost **SAML povolena** a pak klikněte na tlačítko **Uložit** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-6. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat**.
+6. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-7. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty, který jste stáhli z Azure Portal, a kliknete na **vytvořit**.
+7. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty, který jste stáhli z Azure Portal, a kliknete na **vytvořit** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
@@ -204,7 +204,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure1.png)
 
-14. Posuňte se dolů k **Nastavení** v levém navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **Nastavení jednoho Sign-On**.
+14. Posuňte se dolů k **Nastavení** v levém navigačním podokně a kliknutím na **Identita** rozbalte související část. Pak klikněte na **Nastavení jednoho Sign-On** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
@@ -212,19 +212,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure3.png)
 
-16. Vyberte možnost **SAML povolena**a pak klikněte na tlačítko **Uložit**.
+16. Vyberte možnost **SAML povolena** a pak klikněte na tlačítko **Uložit** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-17. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat**.
+17. Pokud chcete nakonfigurovat nastavení jednotného přihlašování SAML, klikněte na **Nový ze souboru metadat** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-18. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty a kliknete na **vytvořit**.
+18. Kliknutím na **zvolit soubor** odešlete soubor XML s metadaty a kliknete na **vytvořit** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-19. Na stránce **Nastavení jednoduchého Sign-On SAML** se automaticky naplní pole, do textového pole **název** zadejte název konfigurace (například: *SPSSOWAAD_Test*) a klikněte na Uložit.
+19. Na stránce **Nastavení jednoduchého Sign-On SAML** se automaticky naplní pole, do textového pole **název** zadejte název konfigurace (například: *SPSSOWAAD_Test* ) a klikněte na Uložit.
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
@@ -233,15 +233,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     > [!NOTE]
     > Než povolíte doménu, musíte ji vytvořit v izolovaném prostoru (sandbox) Salesforce. Další informace najdete v tématu [Definování názvu domény](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US). Po vytvoření domény se ujistěte, že je správně nakonfigurovaná.
 
-21. V levém navigačním podokně v izolovaném prostoru Salesforce klikněte na **nastavení společnosti** a rozbalte související část a potom klikněte na **moje doména**.
+21. V levém navigačním podokně v izolovaném prostoru Salesforce klikněte na **nastavení společnosti** a rozbalte související část a potom klikněte na **moje doména** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-my-domain.png)
 
-22. V části **Konfigurace ověřování** klikněte na **Upravit**.
+22. V části **Konfigurace ověřování** klikněte na **Upravit** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
-23. V části **Konfigurace ověřování** jako **ověřovací služba**vyberte název nastavení Single Sign-On SAML, které jste nastavili během konfigurace jednotného přihlašování v izolovaném prostoru Salesforce, a klikněte na **Uložit**.
+23. V části **Konfigurace ověřování** jako **ověřovací služba** vyberte název nastavení Single Sign-On SAML, které jste nastavili během konfigurace jednotného přihlašování v izolovaném prostoru Salesforce, a klikněte na **Uložit** .
 
     ![Konfigurace jednoho Sign-On](./media/salesforce-sandbox-tutorial/configure2.png)
 
@@ -253,20 +253,20 @@ V této části se v izolovaném prostoru Salesforce vytvoří uživatel s názv
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici izolovaného prostoru (sandbox) na přístupovém panelu byste měli být automaticky přihlášení do izolovaného prostoru Salesforce, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici izolovaného prostoru (sandbox) na přístupovém panelu byste měli být automaticky přihlášení do izolovaného prostoru Salesforce, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
 
 - [Vyzkoušejte si Sandbox Salesforce s Azure AD](https://aad.portal.azure.com/)
 
-- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+- [Co je řízení relace v Microsoft Cloud App Security?](/cloud-app-security/protect-salesforce)
 
 - [Konfigurace zřizování uživatelů](salesforce-sandbox-provisioning-tutorial.md)
 
-- [Postup ochrany izolovaného prostoru Salesforce s pokročilými viditelnostmi a ovládacími prvky](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Postup ochrany izolovaného prostoru Salesforce s pokročilými viditelnostmi a ovládacími prvky](/cloud-app-security/proxy-intro-aad)

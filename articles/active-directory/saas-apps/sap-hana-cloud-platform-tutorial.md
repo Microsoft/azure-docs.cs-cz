@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be3634ea051c99acf7b706da266179c93a1be861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546759"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Kurz: Azure Active Directory integrace s cloudovou platformou SAP
 
@@ -27,17 +27,17 @@ Integrace cloudové platformy SAP s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k platformě SAP Cloud Platform (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s cloudovou platformou SAP potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
 * Odběr povoleného jednotného přihlašování pro cloudovou platformu SAP
 
-Po dokončení tohoto kurzu se uživatelé Azure AD, které jste přiřadili ke cloudové platformě SAP, budou moci přihlásit k aplikaci jediným přihlašovat pomocí [přístupového panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po dokončení tohoto kurzu se uživatelé Azure AD, které jste přiřadili ke cloudové platformě SAP, budou moci přihlásit k aplikaci jediným přihlašovat pomocí [přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
 >[!IMPORTANT]
 >Abyste mohli testovat jednotné přihlašování, musíte nasadit vlastní aplikaci nebo se přihlásit k odběru aplikace na účtu cloudové platformy SAP. V tomto kurzu se v účtu nasadí aplikace.
@@ -67,13 +67,13 @@ Pokud chcete nakonfigurovat integraci cloudové platformy SAP do Azure AD, musí
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SAP Cloud Platform**, vyberte možnost **SAP Cloud Platform** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SAP Cloud Platform** , vyberte možnost **SAP Cloud Platform** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Cloudová platforma SAP v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s cloudovou platformou SAP na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s cloudovou platformou SAP na základě testovacího uživatele s názvem **Britta Simon** .
 Aby se jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v cloudové platformě SAP.
 
 Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí cloudové platformy SAP, musíte dokončit tyto stavební bloky:
@@ -91,7 +91,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudové platformy SAP, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací pro **cloudovou platformu SAP** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací pro **cloudovou platformu SAP** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -148,35 +148,35 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudov�
    
     ![Důvěryhodnost](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Důvěryhodnost")
 
-3. V části Správa důvěryhodnosti v části **místní poskytovatel služeb**proveďte následující kroky:
+3. V části Správa důvěryhodnosti v části **místní poskytovatel služeb** proveďte následující kroky:
 
     ![Správa důvěryhodnosti](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Správa důvěryhodnosti")
    
-    a. Klikněte na **Upravit**.
+    a. Klikněte na **Upravit** .
 
-    b. Jako **typ konfigurace**vyberte **vlastní**.
+    b. Jako **typ konfigurace** vyberte **vlastní** .
 
-    c. Jako **název místního poskytovatele**ponechte výchozí hodnotu. Zkopírujte tuto hodnotu a vložte ji do pole **identifikátor** v konfiguraci Azure AD pro cloudovou platformu SAP.
+    c. Jako **název místního poskytovatele** ponechte výchozí hodnotu. Zkopírujte tuto hodnotu a vložte ji do pole **identifikátor** v konfiguraci Azure AD pro cloudovou platformu SAP.
 
-    d. Pokud chcete vygenerovat **podpisový klíč** a dvojici klíčů **podpisového certifikátu** , klikněte na **vygenerovat pár klíčů**.
+    d. Pokud chcete vygenerovat **podpisový klíč** a dvojici klíčů **podpisového certifikátu** , klikněte na **vygenerovat pár klíčů** .
 
-    e. Jako **rozšíření objektu zabezpečení**vyberte **zakázáno**.
+    e. Jako **rozšíření objektu zabezpečení** vyberte **zakázáno** .
 
-    f. Jako **Vynutit ověřování**vyberte **zakázáno**.
+    f. Jako **Vynutit ověřování** vyberte **zakázáno** .
 
-    například Klikněte na **Uložit**.
+    například Klikněte na **Uložit** .
 
 4. Po uložení nastavení **místních zprostředkovatelů služeb** proveďte následující kroky, abyste získali adresu URL odpovědi:
    
     ![Získat metadata](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Získat metadata")
 
-    a. Stáhněte soubor metadat pro cloudovou platformu SAP kliknutím na **získat metadata**.
+    a. Stáhněte soubor metadat pro cloudovou platformu SAP kliknutím na **získat metadata** .
 
     b. Otevřete stažený soubor XML s metadaty pro cloudovou platformu SAP a vyhledejte značku **NS3: AssertionConsumerService** .
  
     c. Zkopírujte hodnotu atributu **Location** a pak ji vložte do pole **Adresa URL odpovědi** v konfiguraci Azure AD pro cloudovou platformu SAP.
 
-5. Klikněte na kartu **důvěryhodný poskytovatel identity** a pak klikněte na **Přidat důvěryhodného zprostředkovatele identity**.
+5. Klikněte na kartu **důvěryhodný poskytovatel identity** a pak klikněte na **Přidat důvěryhodného zprostředkovatele identity** .
    
     ![Správa důvěryhodnosti](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Správa důvěryhodnosti")
    
@@ -190,16 +190,16 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudov�
     ![Správa důvěryhodnosti](./media/sap-hana-cloud-platform-tutorial/ic793932.png "Správa důvěryhodnosti")
     
     >[!NOTE]
-    >Po nahrání souboru metadat se automaticky načtou hodnoty **adresy URL jednotného přihlašování**, **adresy URL jednotného odhlášení**a **podpisového certifikátu** .
+    >Po nahrání souboru metadat se automaticky načtou hodnoty **adresy URL jednotného přihlašování** , **adresy URL jednotného odhlášení** a **podpisového certifikátu** .
     > 
      
-7. Klikněte na kartu **Atributy**.
+7. Klikněte na kartu **Atributy** .
 
 8. Na kartě **atributy** proveďte následující krok:
     
     ![Atributy](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Atributy") 
 
-    a. Klikněte na tlačítko **přidat Assertion-Based atribut**a přidejte následující atributy založené na kontrolním výrazu:
+    a. Klikněte na tlačítko **přidat Assertion-Based atribut** a přidejte následující atributy založené na kontrolním výrazu:
        
     | Atribut kontrolního výrazu | Atribut objektu zabezpečení |
     | --- | --- |
@@ -221,15 +221,15 @@ Jako volitelný krok můžete nakonfigurovat skupiny založené na kontrolních 
 
 Použití skupin na cloudové platformě SAP umožňuje dynamicky přiřadit jednoho nebo více uživatelů k jedné nebo více rolím v aplikacích pro cloudovou platformu SAP, které určí hodnoty atributů v kontrolním výrazu SAML 2,0. 
 
-Pokud například kontrolní výraz obsahuje atribut "*kontrakt = dočasná*", můžete chtít, aby všechny ovlivněné uživatele byly přidány do skupiny "*dočasné*". Skupina "*dočasné*" může obsahovat jednu nebo více rolí z jedné nebo více aplikací nasazených ve vašem účtu cloudové platformy SAP.
+Pokud například kontrolní výraz obsahuje atribut " *kontrakt = dočasná* ", můžete chtít, aby všechny ovlivněné uživatele byly přidány do skupiny " *dočasné* ". Skupina " *dočasné* " může obsahovat jednu nebo více rolí z jedné nebo více aplikací nasazených ve vašem účtu cloudové platformy SAP.
  
-Použijte skupiny založené na kontrolních výrazech, pokud chcete současně přiřadit mnoho uživatelů k jedné nebo více rolím aplikací v účtu cloudové platformy SAP. Pokud chcete určitým rolím přiřadit jenom jeden nebo malý počet uživatelů, doporučujeme je přiřadit přímo na kartě "**autorizace**" v řídicím panelu pro cloudovou platformu SAP.
+Použijte skupiny založené na kontrolních výrazech, pokud chcete současně přiřadit mnoho uživatelů k jedné nebo více rolím aplikací v účtu cloudové platformy SAP. Pokud chcete určitým rolím přiřadit jenom jeden nebo malý počet uživatelů, doporučujeme je přiřadit přímo na kartě " **autorizace** " v řídicím panelu pro cloudovou platformu SAP.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -241,28 +241,28 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k cloudové platformě SAP.
 
-1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **SAP Cloud Platform**.
+1. V Azure Portal vyberte možnost **podnikové aplikace** , vyberte možnost **všechny aplikace** a pak vyberte možnost **SAP Cloud Platform** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace zadejte a vyberte možnost **SAP Cloud Platform**.
+2. V seznamu aplikace zadejte a vyberte možnost **SAP Cloud Platform** .
 
     ![Odkaz na cloudovou platformu SAP v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -288,7 +288,7 @@ Aby se uživatelé Azure AD mohli přihlásit k platformě SAP Cloud Platform, m
    
     ![Autorizace](./media/sap-hana-cloud-platform-tutorial/ic790805.png "Autorizace")
    
-    a. Klikněte na **autorizace**.
+    a. Klikněte na **autorizace** .
 
     b. Klikněte na kartu **Uživatelé** .
 
@@ -296,19 +296,18 @@ Aby se uživatelé Azure AD mohli přihlásit k platformě SAP Cloud Platform, m
 
     d. Kliknutím na **přiřadit** přiřaďte uživatele k roli.
 
-    e. Klikněte na **Uložit**.
+    e. Klikněte na **Uložit** .
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici cloudová platforma SAP na přístupovém panelu, měli byste se automaticky přihlásit ke cloudové platformě SAP, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici cloudová platforma SAP na přístupovém panelu, měli byste se automaticky přihlásit ke cloudové platformě SAP, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

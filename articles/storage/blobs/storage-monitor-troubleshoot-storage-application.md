@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83652157"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676780"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorování a řešení potíží s aplikací cloudového úložiště
 
@@ -37,13 +37,13 @@ Přihlášení k [Azure Portal](https://portal.azure.com)
 
 ## <a name="turn-on-logging-and-metrics"></a>Zapnutí protokolování a metrik
 
-V nabídce vlevo vyberte **Skupiny prostředků**, pak **myResourceGroup** a v seznamu prostředků pak vyberte svůj účet úložiště.
+V nabídce vlevo vyberte **Skupiny prostředků** , pak **myResourceGroup** a v seznamu prostředků pak vyberte svůj účet úložiště.
 
-V části **Nastavení diagnostiky (klasické)** u položky **Stav** vyberte **Zapnuto**. Přesvědčte se, že všechny možnosti v části **Vlastnosti objektu blob** jsou povolené.
+V části **Nastavení diagnostiky (klasické)** u položky **Stav** vyberte **Zapnuto** . Přesvědčte se, že všechny možnosti v části **Vlastnosti objektu blob** jsou povolené.
 
 Po dokončení klikněte na **Uložit** .
 
-![Podokno Diagnostika](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
+![Snímek obrazovky, který zvýrazní oddíl obsahující nastavení konfigurace pro zapnutí protokolování a metriky.](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>Povolení upozornění
 
@@ -51,9 +51,9 @@ Upozornění představují způsob, jak na základě prahové hodnoty nebo poru�
 
 ### <a name="navigate-to-the-storage-account-in-the-azure-portal"></a>Přechod k účtu úložiště na webu Azure Portal
 
-V části **Monitorování** vyberte **Upozornění (klasická)**.
+V části **Monitorování** vyberte **Upozornění (klasická)** .
 
-Vyberte **Přidat upozornění metriky (klasické)** a zadejte požadované údaje do formuláře **Přidat pravidlo**. V rozevíracím seznamu **Metrika** vyberte `SASClientOtherError`. Pokud chcete, aby se upozornění aktivovalo při první chybě, v rozevíracím seznamu **Podmínka** vyberte **Větší než nebo rovno**.
+Vyberte **Přidat upozornění metriky (klasické)** a zadejte požadované údaje do formuláře **Přidat pravidlo** . V rozevíracím seznamu **Metrika** vyberte `SASClientOtherError`. Pokud chcete, aby se upozornění aktivovalo při první chybě, v rozevíracím seznamu **Podmínka** vyberte **Větší než nebo rovno** .
 
 ![Podokno Diagnostika](media/storage-monitor-troubleshoot-storage-application/add-alert-rule.png)
 
@@ -81,7 +81,7 @@ Následující obrázek představuje příklad upozornění založeného na simu
 
 ## <a name="download-and-view-logs"></a>Stažení a zobrazení protokolů
 
-Protokoly úložiště ukládají data ve vašem účtu úložiště v sadě objektů blob v kontejneru objektů blob s názvem **$logs**. Tento kontejner se nezobrazí při výpisu všech kontejnerů objektů blob ve vašem účtu, ale pokud k němu přistoupíte přímo, můžete zobrazit jeho obsah.
+Protokoly úložiště ukládají data ve vašem účtu úložiště v sadě objektů blob v kontejneru objektů blob s názvem **$logs** . Tento kontejner se nezobrazí při výpisu všech kontejnerů objektů blob ve vašem účtu, ale pokud k němu přistoupíte přímo, můžete zobrazit jeho obsah.
 
 V tomto scénáři použijete k práci se svým účtem úložiště Azure aplikaci [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx).
 
@@ -89,15 +89,15 @@ V tomto scénáři použijete k práci se svým účtem úložiště Azure aplik
 
 Stáhněte a nainstalujte aplikaci [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer).
 
-Spusťte aplikaci a vyberte **soubor**  >  **otevřít**  >  **z jiných zdrojů souborů**.
+Spusťte aplikaci a vyberte **soubor**  >  **otevřít**  >  **z jiných zdrojů souborů** .
 
-V dialogovém okně **File Selector** (Selektor souborů) vyberte **+ Add Azure Connection** (+ Přidat připojení k Azure). Zadejte **název účtu úložiště** a **klíč účtu** a pak klikněte na **OK**.
+V dialogovém okně **File Selector** (Selektor souborů) vyberte **+ Add Azure Connection** (+ Přidat připojení k Azure). Zadejte **název účtu úložiště** a **klíč účtu** a pak klikněte na **OK** .
 
 ![Microsoft Message Analyzer – Dialogové okno Add Azure Storage Connection (Přidat připojení k účtu úložiště Azure)](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
-Po připojení rozbalte kontejnery ve stromovém zobrazení úložiště a zobrazte objekty blob protokolů. Vyberte nejnovější protokol a klikněte na **OK**.
+Po připojení rozbalte kontejnery ve stromovém zobrazení úložiště a zobrazte objekty blob protokolů. Vyberte nejnovější protokol a klikněte na **OK** .
 
-![Microsoft Message Analyzer – Dialogové okno Add Azure Storage Connection (Přidat připojení k účtu úložiště Azure)](media/storage-monitor-troubleshoot-storage-application/figure4.png)
+![Snímek obrazovky, který zobrazuje analyzátor zpráv Microsoft a zvýrazňuje vybraný soubor protokolu.](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
 V dialogovém okně **New Session** (Nová relace) kliknutím na **Start** (Spustit) zobrazte protokol.
 

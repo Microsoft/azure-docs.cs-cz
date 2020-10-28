@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: e22511717b6a86f9e0cf53986152c4d6bab68780
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a18984c441f5fe47f6ffd54cccff8c37cb57a038
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101762"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676743"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
 
@@ -31,13 +31,13 @@ Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 > [!IMPORTANT]
 > Pokud používáte zkušební účet Salesforce.com, nebudete moct nakonfigurovat automatizované zřizování uživatelů. Zkušební účty nemají povolený přístup k rozhraní API, dokud se nezakoupí. Toto omezení můžete obejít pomocí bezplatného [vývojářského účtu](https://developer.salesforce.com/signup) k dokončení tohoto kurzu.
 
-Pokud používáte prostředí izolovaného prostoru (sandbox) Salesforce, přečtěte si [kurz integrace služby Salesforce Sandbox](https://go.microsoft.com/fwLink/?LinkID=521879).
+Pokud používáte prostředí izolovaného prostoru (sandbox) Salesforce, přečtěte si [kurz integrace služby Salesforce Sandbox](./salesforce-sandbox-tutorial.md).
 
 ## <a name="assigning-users-to-salesforce"></a>Přiřazování uživatelů k Salesforce
 
 Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
 
-Než nakonfigurujete a povolíte službu zřizování, musíte určit, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k vaší aplikaci Salesforce. Po provedení tohoto rozhodnutí můžete těmto uživatelům přiřadit aplikaci Salesforce podle pokynů v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) .
+Než nakonfigurujete a povolíte službu zřizování, musíte určit, kteří uživatelé nebo skupiny ve službě Azure AD potřebují přístup k vaší aplikaci Salesforce. Po provedení tohoto rozhodnutí můžete těmto uživatelům přiřadit aplikaci Salesforce podle pokynů v tématu [přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md) .
 
 ### <a name="important-tips-for-assigning-users-to-salesforce"></a>Důležité tipy pro přiřazení uživatelů k Salesforce
 
@@ -65,7 +65,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 3. Vyberte instanci Salesforce a pak vyberte kartu **zřizování** .
 
-4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky** .
 
     ![Snímek obrazovky se stránkou zřizování Salesforce s režimem zřizování nastaveným na automatické a jiné hodnoty, které můžete nastavit.](./media/salesforce-provisioning-tutorial/provisioning.png)
 
@@ -75,11 +75,11 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
     b. Do textového pole **heslo správce** zadejte heslo pro tento účet.
 
-6. Pokud chcete získat token zabezpečení Salesforce, otevřete novou kartu a přihlaste se ke stejnému účtu správce Salesforce. V pravém horním rohu stránky klikněte na své jméno a pak klikněte na **Nastavení**.
+6. Pokud chcete získat token zabezpečení Salesforce, otevřete novou kartu a přihlaste se ke stejnému účtu správce Salesforce. V pravém horním rohu stránky klikněte na své jméno a pak klikněte na **Nastavení** .
 
     ![Snímek obrazovky se zobrazuje vybraný odkaz nastavení.](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Povolit automatické zřizování uživatelů")
 
-7. V levém navigačním podokně klikněte na **osobní informace** a rozbalte související část a potom klikněte na **resetovat můj token zabezpečení**.
+7. V levém navigačním podokně klikněte na **osobní informace** a rozbalte související část a potom klikněte na **resetovat můj token zabezpečení** .
   
     ![Snímek obrazovky s vybraným osobním údajem resetování tokenu zabezpečení](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Povolit automatické zřizování uživatelů")
 
@@ -122,7 +122,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Služba zřizování Azure AD podporuje zřizování jazyka, národního prostředí a časového pásma pro uživatele. Tyto atributy jsou v mapování výchozích atributů, ale nemají výchozí zdrojový atribut. Ujistěte se, že jste vybrali výchozí zdrojový atribut a že zdrojový atribut je ve formátu očekávaném službou SalesForce. Například localeSidKey pro angličtinu (USA) je en_US. Pro určení správného formátu localeSidKey si Projděte [zde](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) uvedené pokyny. Formáty languageLocaleKey najdete [tady](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5). Kromě toho, že je správný formát, možná budete muset zajistit, aby byl jazyk povolený pro vaše uživatele, jak je popsáno [zde](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5). 
 * **SalesforceLicenseLimitExceeded:** V cílové aplikaci nelze vytvořit uživatele, protože pro tohoto uživatele nejsou k dispozici žádné licence. Buď si zajistěte další licence pro cílovou aplikaci, nebo zkontrolujte přiřazení uživatelů a konfiguraci mapování atributů, abyste se ujistili, že správným uživatelům jsou přiřazeny správné atributy.
 * **SalesforceDuplicateUserName:** Uživatele nelze zřídit, protože má Salesforce.com "username", které je duplikováno v jiném tenantovi Salesforce.com.V Salesforce.com musí být hodnoty pro atribut UserName jedinečné ve všech klientech Salesforce.com.Ve výchozím nastavení se hodnota userPrincipalName uživatele v Azure Active Directory v Salesforce.com stala "username".Máte dvě možnosti.Jednou z možností je vyhledat a přejmenovat uživatele s duplicitním názvem username v jiném tenantovi Salesforce.com, pokud spravujete i tohoto jiného tenanta.Druhou možností je odebrat přístup z Azure Active Directoryho uživatele do tenanta Salesforce.com, se kterým je adresář integrovaný. Tato operace se při dalším pokusu o synchronizaci zopakuje. 
-* **SalesforceRequiredFieldMissing:** Salesforce vyžaduje, aby uživatel mohl v případě úspěšného vytvoření nebo aktualizace uživatele zobrazit určité atributy. Tomuto uživateli chybí jeden z požadovaných atributů. Zajistěte, aby se atributy jako e-mail a alias naplnily všemi uživateli, které chcete zřídit v Salesforce. Můžete nastavit obor pro uživatele, kteří nemají tyto atributy, pomocí [filtrů oborů založeného na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* **SalesforceRequiredFieldMissing:** Salesforce vyžaduje, aby uživatel mohl v případě úspěšného vytvoření nebo aktualizace uživatele zobrazit určité atributy. Tomuto uživateli chybí jeden z požadovaných atributů. Zajistěte, aby se atributy jako e-mail a alias naplnily všemi uživateli, které chcete zřídit v Salesforce. Můžete nastavit obor pro uživatele, kteří nemají tyto atributy, pomocí [filtrů oborů založeného na atributech](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 * Výchozí mapování atributů pro zřizování na Salesforce zahrnuje výraz SingleAppRoleAssignments pro mapování appRoleAssignments ve službě Azure AD na profilaci v Salesforce. Ujistěte se, že uživatelé nemají ve službě Azure AD přiřazení více rolí aplikace, protože mapování atributů podporuje zřizování pouze jedné role. 
 * Salesforce vyžaduje, aby se aktualizace e-mailu před změnou schválily ručně. V důsledku toho se může stát, že v protokolech zřizování dojde k aktualizaci e-mailu uživatele na více položkách (dokud se neschválí změna e-mailu).
 
@@ -131,4 +131,4 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurace jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-tutorial)
+* [Konfigurace jednotného přihlašování](./salesforce-tutorial.md)

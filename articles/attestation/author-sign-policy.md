@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a3afb12ac831d87b03d0bb16d1b7ef553f1bb906
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90006815"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675994"
 ---
 # <a name="how-to-author-and-sign-an-attestation-policy"></a>Jak vytvářet a podepisovat zásady ověření identity
 
@@ -36,7 +36,7 @@ issuancerules
  
 Soubor zásad má tři segmenty, jak vidíte výše:
 
-- **Version (verze**): verze je číslo verze gramatiky, která je následována. 
+- **Version (verze** ): verze je číslo verze gramatiky, která je následována. 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ Soubor zásad má tři segmenty, jak vidíte výše:
 
     V současné době je podporována pouze verze 1,0.
 
-- **autorizačních pravidel**: Zajistěte si kolekci pravidel deklarací identity, která se zkontrolují jako první, abyste zjistili, jestli by ověřování Azure mělo pokračovat na **issuancerules**. Pravidla deklarace identity platí v pořadí, ve kterém jsou definována.
+- **autorizačních pravidel** : Zajistěte si kolekci pravidel deklarací identity, která se zkontrolují jako první, abyste zjistili, jestli by ověřování Azure mělo pokračovat na **issuancerules** . Pravidla deklarace identity platí v pořadí, ve kterém jsou definována.
 
-- **issuancerules**: kolekce pravidel deklarací identity, která se vyhodnotí, aby se do výsledku ověřování přidaly Další informace, jak jsou definované v zásadách. Pravidla deklarace identity platí v pořadí, ve kterém jsou definována a jsou také volitelná.
+- **issuancerules** : kolekce pravidel deklarací identity, která se vyhodnotí, aby se do výsledku ověřování přidaly Další informace, jak jsou definované v zásadách. Pravidla deklarace identity platí v pořadí, ve kterém jsou definována a jsou také volitelná.
 
 Další informace najdete v tématu [deklarace identity a deklarace identity](claim-rule-grammar.md) .
    
@@ -54,7 +54,7 @@ Další informace najdete v tématu [deklarace identity a deklarace identity](cl
 
 1. Vytvoří nový soubor.
 1. Přidejte do souboru verzi.
-1. Přidejte oddíly pro **autorizačních pravidel** a **issuancerules**.
+1. Přidejte oddíly pro **autorizačních pravidel** a **issuancerules** .
 
   ```
   version=1.0;
@@ -84,9 +84,9 @@ Další informace najdete v tématu [deklarace identity a deklarace identity](cl
   };
   ```
 
-  Pokud příchozí deklarace identity obsahuje deklaraci identity, která odpovídá typu, hodnotě a vystaviteli, akce povolit () upozorní modul zásad, aby zpracoval **issuancerules**.
+  Pokud příchozí deklarace identity obsahuje deklaraci identity, která odpovídá typu, hodnotě a vystaviteli, akce povolit () upozorní modul zásad, aby zpracoval **issuancerules** .
   
-5. Přidejte do **issuancerules**pravidla deklarace identity.
+5. Přidejte do **issuancerules** pravidla deklarace identity.
 
   ```
   version=1.0;
@@ -128,8 +128,8 @@ Po vytvoření souboru zásad pro nahrání zásady ve formátu JWS postupujte p
      ```
 
 2. Volitelné Podepište zásadu. Azure Attestation podporuje následující algoritmy:
-     - **Žádné**: nepodepisujte datovou část zásad.
-     - **RS256**: podporovaný algoritmus pro podepsání datové části zásad
+     - **Žádné** : nepodepisujte datovou část zásad.
+     - **RS256** : podporovaný algoritmus pro podepsání datové části zásad
 
 3. Nahrajte JWS a ověřte zásady.
      - Pokud soubor zásad neobsahuje chyby syntaxe, je soubor zásad přijatý službou.
@@ -172,4 +172,4 @@ print(encoded.decode('utf-8'))
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavení ověření Azure pomocí PowerShellu](quickstart-powershell.md)
-- [Ověření SGX enklávy pomocí ukázek kódu](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [Ověření SGX enklávy pomocí ukázek kódu](/samples/browse/?expanded=azure&terms=attestation)

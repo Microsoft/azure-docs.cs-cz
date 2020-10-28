@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: fa4e91a087c7dcfce247cacc2dff83458bc87f64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c35ce5e4b420b7f203b33b640a3175ba4c2739b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079978"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677663"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>Kurz: integrace sansan s Azure Active Directory
 
@@ -26,9 +26,9 @@ V tomto kurzu se dozvíte, jak integrovat sansan s Azure Active Directory (Azure
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k sansan svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -39,7 +39,7 @@ Chcete-li začít, potřebujete následující položky:
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 * Sansan podporuje jednotné přihlašování iniciované v **SP** .
-* Po nakonfigurování sansan můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování sansan můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-sansan-from-the-gallery"></a>Přidání sansan z Galerie
 
@@ -47,14 +47,14 @@ Pokud chcete nakonfigurovat integraci sansan do služby Azure AD, musíte přida
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace** .
 1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **sansan** .
 1. Na panelu výsledků vyberte **sansan** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí sansan pomocí testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v sansan.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí sansan pomocí testovacího uživatele s názvem **Britta Simon** . Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v sansan.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí sansan, dokončete následující stavební bloky:
 
@@ -69,8 +69,8 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **sansan** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
-1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **sansan** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování** .
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML** .
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
    ![Upravit základní konfiguraci SAML](common/edit-urls.png)
@@ -92,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
       | Smartphone Web |`https://ap.sansan.com/s/saml2/<company name>/acs` |
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Ověřte skutečné hodnoty **Nastavení správce sansan**.
+    > Tyto hodnoty nejsou reálné. Ověřte skutečné hodnoty **Nastavení správce sansan** .
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML v části **podpisový certifikát SAML** Najděte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte si certifikát a uložte ho do svého počítače.
 
@@ -106,25 +106,25 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `BrittaSimon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k sansan.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **sansan**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace** .
+1. V seznamu aplikace vyberte **sansan** .
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny** .
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
@@ -147,12 +147,12 @@ V této části vytvoříte uživatele s názvem Britta Simon v sansan. Další 
 
 ## <a name="test-sso"></a>Test SSO
 
-Když na přístupovém panelu vyberete dlaždici sansan, měli byste se automaticky přihlásit k sansan, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici sansan, měli byste se automaticky přihlásit k sansan, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

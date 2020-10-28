@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 83ae2fdea2ffe586a626f8a45cba74a22c07ae7b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3151da4375c440bec44523711448149f51440d5c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87101972"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676530"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>Nastavení přístupu pro vývojářské nástroje Azure
 
@@ -30,7 +30,7 @@ Pokud chcete požádat o přístup k vašemu Visual Studio Subscription, můžet
 ## <a name="for-students-faculty-and-administrators"></a>Pro studenty, vyučující a správce
 Studences přístup k vývojářským nástrojům Azure prostřednictvím [centrum Education](https://aka.ms/devtoolsforteaching).
 
-Studenti a vyučující můžou získat přístup ke všem výhodám stažení softwaru prostřednictvím Centrum Education. Centrum Education je sestaven v rámci Azure Portal a poskytuje studentům snadný přístup k celému katalogu softwaru a také k přístupu k celému katalogu [Microsoft Learn](https://docs.microsoft.com/learn/) .
+Studenti a vyučující můžou získat přístup ke všem výhodám stažení softwaru prostřednictvím Centrum Education. Centrum Education je sestaven v rámci Azure Portal a poskytuje studentům snadný přístup k celému katalogu softwaru a také k přístupu k celému katalogu [Microsoft Learn](/learn/) .
 
 ## <a name="next-steps"></a>Další kroky
 - [Správa účtů studenta](manage-students.md)

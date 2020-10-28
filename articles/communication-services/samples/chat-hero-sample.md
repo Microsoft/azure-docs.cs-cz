@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9be94183fc34c2dbee3503d21e2e643d5296a82b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461120"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677409"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Začínáme s příkladem skupiny Hero chat
 
@@ -52,13 +52,13 @@ Jakmile nakonfigurujete své zobrazované jméno a Emoji, můžete se připojit 
 
 Součásti hlavní obrazovky chatu:
 
-- **Hlavní oblast chatu**: Toto je základní prostředí pro chat, kde mohou uživatelé odesílat a přijímat zprávy. Chcete-li odesílat zprávy, můžete použít vstupní oblast a stisknout klávesu ENTER (nebo použít tlačítko Odeslat). Přijaté zprávy chatu jsou zařazeny do kategorie odesílatelem se správným názvem a emoji. V oblasti chatu se zobrazí dva typy oznámení: 1) psaní oznámení, když uživatel zadá a 2) odesílá a čte oznámení pro zprávy.
-- **Záhlaví**: uživateli se zobrazí název konverzačního vlákna a ovládací prvky pro přepnutí účastníků a nastavení a tlačítko opustit k ukončení relace chatu.
-- **Boční panel**: v tomto případě se zobrazí účastníci a informace o nastavení při přepínání pomocí ovládacích prvků v záhlaví. Boční panel účastníci obsahuje seznam účastníků v chatu a odkaz pro pozvání účastníků do relace chatu. Postranní panel nastavení vám umožní nakonfigurovat název vlákna chatu. 
+- **Hlavní oblast chatu** : Toto je základní prostředí pro chat, kde mohou uživatelé odesílat a přijímat zprávy. Chcete-li odesílat zprávy, můžete použít vstupní oblast a stisknout klávesu ENTER (nebo použít tlačítko Odeslat). Přijaté zprávy chatu jsou zařazeny do kategorie odesílatelem se správným názvem a emoji. V oblasti chatu se zobrazí dva typy oznámení: 1) psaní oznámení, když uživatel zadá a 2) odesílá a čte oznámení pro zprávy.
+- **Záhlaví** : uživateli se zobrazí název konverzačního vlákna a ovládací prvky pro přepnutí účastníků a nastavení a tlačítko opustit k ukončení relace chatu.
+- **Boční panel** : v tomto případě se zobrazí účastníci a informace o nastavení při přepínání pomocí ovládacích prvků v záhlaví. Boční panel účastníci obsahuje seznam účastníků v chatu a odkaz pro pozvání účastníků do relace chatu. Postranní panel nastavení vám umožní nakonfigurovat název vlákna chatu. 
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vytvořte si účet Azure s aktivním předplatným. Podrobnosti najdete v článku o [Vytvoření účtu zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js (8.11.2 a vyšší)](https://nodejs.org/en/download/)
@@ -77,7 +77,7 @@ Ukázku můžete otestovat místně tak, že otevřete několik relací prohlí�
 ## <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
 
 1. Otevřete instanci PowerShellu, Windows Terminal, Command Prompt nebo ekvivalentní a přejděte do adresáře, do kterého chcete ukázku naklonovat.
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
 3. Získat `Connection String` z Azure Portal. Další informace o připojovacích řetězcích najdete v tématu [vytvoření prostředků komunikace Azure](../quickstarts/create-communication-resource.md) .
 4. Jakmile získáte `Connection String` připojovací řetězec, přidejte ho do souboru **chat nebo appsettings.js** , který se nachází ve složce chat. Zadejte připojovací řetězec do proměnné: `ResourceConnectionString` .
 

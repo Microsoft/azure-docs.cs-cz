@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444910"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675145"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Vytváření upozornění pro Azure SQL Database a Azure synapse Analytics pomocí Azure Portal
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -45,7 +45,7 @@ Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí
 * [Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Rozhraní příkazového řádku (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Rozhraní REST API služby Azure Monitor](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě s Azure Portal
 
@@ -57,14 +57,14 @@ Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí
 3. Kliknutím na tlačítko **nové pravidlo výstrahy** otevřete stránku **vytvořit pravidlo** .
   ![Vytvořit pravidlo](./media/alerts-insights-configure-portal/create-rule.png)
 
-4. V části **Podmínka** klikněte na **Přidat**.
+4. V části **Podmínka** klikněte na **Přidat** .
   ![Definovat podmínku](./media/alerts-insights-configure-portal/create-rule.png)
 5. Na stránce **Konfigurovat logiku signálu** vyberte signál.
   ![Vybrat signál](./media/alerts-insights-configure-portal/select-signal.png)
-6. Po výběru signálu, jako je **Procento procesoru**, se zobrazí stránka **Konfigurovat logiku signálu** .
+6. Po výběru signálu, jako je **Procento procesoru** , se zobrazí stránka **Konfigurovat logiku signálu** .
   ![Konfigurace logiky signálů](./media/alerts-insights-configure-portal/configure-signal-logic.png)
-7. Na této stránce nakonfigurujte tento typ prahové hodnoty, operátor, typ agregace, prahovou hodnotu, členitost agregace a frekvenci vyhodnocení. Pak klikněte na **Hotovo**.
-8. V poli **vytvořit pravidlo**vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Skupina akcí umožňuje definovat akci, která má být provedena při výskytu výstrahy.
+7. Na této stránce nakonfigurujte tento typ prahové hodnoty, operátor, typ agregace, prahovou hodnotu, členitost agregace a frekvenci vyhodnocení. Pak klikněte na **Hotovo** .
+8. V poli **vytvořit pravidlo** vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Skupina akcí umožňuje definovat akci, která má být provedena při výskytu výstrahy.
   ![Definovat skupinu akcí](./media/alerts-insights-configure-portal/action-group.png)
 
 9. Definujte název pravidla, zadejte volitelný popis, zvolte úroveň závažnosti pro pravidlo, zvolte, jestli se má pravidlo Povolit při vytváření pravidla, a pak klikněte na **vytvořit výstrahu pravidla** a vytvořte výstrahu pravidla metriky.

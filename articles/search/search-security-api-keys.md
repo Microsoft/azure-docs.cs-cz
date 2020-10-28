@@ -7,17 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 918ba128eca8ebf8b452c0f1126e4b7e611542d8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/22/2020
+ms.openlocfilehash: 5935bc3f59585b19fc3b45bdfd567bb1f9404234
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514465"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675584"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Vytváření a Správa klíčů rozhraní API pro službu Azure Kognitivní hledání
 
-Všechny požadavky na vyhledávací službu potřebují klíč rozhraní API jen pro čtení, který se vygeneroval speciálně pro vaši službu. Klíč rozhraní API je jediným mechanismem pro ověřování přístupu ke koncovému bodu vyhledávací služby a musí být součástí každého požadavku. V [řešeních REST](search-get-started-postman.md)je klíč rozhraní API obvykle určený v hlavičce požadavku. V [řešeních .NET](search-howto-dotnet-sdk.md#core-scenarios)se klíč často určuje jako konfigurační nastavení a pak se předává jako [přihlašovací údaje](/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (klíč správce) nebo [SearchCredentials](/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (klíč dotazu) na [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient).
+Všechny požadavky na vyhledávací službu potřebují jen pro čtení `api-key` , které byly vygenerovány speciálně pro vaši službu. `api-key`Je jediným mechanismem pro ověření přístupu ke koncovému bodu služby Search a musí se zahrnout do každého požadavku. 
+
++ V [řešeních REST](search-get-started-postman.md)se klíč rozhraní API obvykle určuje v hlavičce požadavku.
+
++ V [řešeních .NET](search-howto-dotnet-sdk.md)je klíč často určen jako nastavení konfigurace a pak předán jako [AzureKeyCredential](/dotnet/api/azure.azurekeycredential)
 
 Při zřizování služby se pomocí vyhledávací služby vytvoří klíče. Můžete zobrazit a získat klíčové hodnoty v [Azure Portal](https://portal.azure.com).
 
@@ -43,7 +47,7 @@ Pro přístup k vaší vyhledávací službě se používají dva typy klíčů:
 
 Přístupové klíče můžete získat na portálu nebo prostřednictvím [REST API pro správu](/rest/api/searchmanagement/). Další informace najdete v tématu [Správa klíčů rozhraní API pro správu a dotazy](search-security-api-keys.md).
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vypíše [služby vyhledávání](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  pro vaše předplatné.
 3. Vyberte službu a na stránce Přehled klikněte na možnost klíče **Nastavení**  > **Keys** . zobrazí se klíče pro správu a dotazy.
 
@@ -55,10 +59,10 @@ Klíče dotazů jsou používány pro přístup jen pro čtení k dokumentům v 
 
 Omezení přístupu a operací v klientských aplikacích je nezbytné pro zabezpečení prostředků vyhledávání ve vaší službě. Vždy používejte klíč dotazu spíše než klíč správce pro jakýkoli dotaz pocházející z klientské aplikace.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vypíše [služby vyhledávání](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  pro vaše předplatné.
-3. Vyberte službu a na stránce Přehled klikněte na **Nastavení**  > **klíče**.
-4. Klikněte na **Správa klíčů dotazů**.
+3. Vyberte službu a na stránce Přehled klikněte na **Nastavení**  > **klíče** .
+4. Klikněte na **Správa klíčů dotazů** .
 5. Použijte klíč dotazu, který jste už vygenerovali pro vaši službu, nebo vytvořte až 50 nových klíčů dotazů. Výchozí klíč dotazu není pojmenován, ale další klíče dotazu lze pojmenovat pro spravovatelnost.
 
    :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Stránka portálu, načíst nastavení, oddíl klíče" border="false":::

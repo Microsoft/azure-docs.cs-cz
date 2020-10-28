@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537714"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675810"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Typy dotazů a jejich složení v Azure Kognitivní hledání
 
@@ -59,9 +59,9 @@ Pokud jste postupovali podle tohoto rychlého startu a [vytvořili ukázkový in
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak index povoluje operace dotazů
 
-Návrh indexu a návrh dotazu jsou úzce spojeny v Azure Kognitivní hledání. Základní fakt, jak předem zjistit, je, že *schéma indexu*s atributy v jednotlivých polích určuje druh dotazu, který můžete sestavit. 
+Návrh indexu a návrh dotazu jsou úzce spojeny v Azure Kognitivní hledání. Základní fakt, jak předem zjistit, je, že *schéma indexu* s atributy v jednotlivých polích určuje druh dotazu, který můžete sestavit. 
 
-Atributy indexu v poli nastavily povolené operace – určuje, jestli je pole možné *Prohledávat* v indexu, *získat ve výsledcích* , *seřaditelné*, *filtrovatelné*a tak dále. V příkladu řetězce dotazu `"$orderby": "Rating"` funguje pouze to, protože pole hodnocení je ve schématu indexu označeno jako *seřaditelné* . 
+Atributy indexu v poli nastavily povolené operace – určuje, jestli je pole možné *Prohledávat* v indexu, *získat ve výsledcích* , *seřaditelné* , *filtrovatelné* a tak dále. V příkladu řetězce dotazu `"$orderby": "Rating"` funguje pouze to, protože pole hodnocení je ve schématu indexu označeno jako *seřaditelné* . 
 
 ![Definice indexu pro ukázku hotelu](./media/search-query-overview/hotel-sample-index-definition.png "Definice indexu pro ukázku hotelu")
 
@@ -78,8 +78,8 @@ Požadované prvky pro požadavek na dotaz obsahují následující komponenty:
 
 + Kolekce koncových dokumentů a dokumentů v rámci služby vyjádřené jako adresa URL obsahující pevné a uživatelem definované komponenty: **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (Pouze REST) je nutné, protože je vždy k dispozici více než jedna verze rozhraní API. 
-+ **`api-key`**, buď dotaz nebo rozhraní API pro správu – klíč ověří požadavek vaší služby.
-+ **`queryType`**, a to buď jednoduché, nebo úplné, což může být vynecháno, pokud používáte vestavěnou výchozí jednoduchou syntaxi.
++ **`api-key`** , buď dotaz nebo rozhraní API pro správu – klíč ověří požadavek vaší služby.
++ **`queryType`** , a to buď jednoduché, nebo úplné, což může být vynecháno, pokud používáte vestavěnou výchozí jednoduchou syntaxi.
 + **`search`** nebo **`filter`** poskytuje kritéria shody, která je možné neurčit, pokud chcete provést prázdné vyhledávání. Oba typy dotazů jsou popsány v souvislosti s jednoduchým analyzátorem, ale i pokročilé dotazy vyžadují pro předávání složitých výrazů dotazů parametr Search.
 
 Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů najdete v tématu [vytvoření indexu (REST)](/rest/api/searchservice/create-index). Bližší informace o tom, jak se používají parametry během zpracování, najdete [v tématu Jak funguje fulltextové vyhledávání v Azure kognitivní hledání](search-lucene-query-architecture.md).
@@ -88,11 +88,11 @@ Všechny ostatní parametry hledání jsou volitelné. Úplný seznam atributů 
 
 Následující tabulka uvádí rozhraní API a postupy založené na nástrojích pro odesílání dotazů.
 
-| Metodologie | Description |
+| Metodologie | Popis |
 |-------------|-------------|
 | [Průzkumník vyhledávání (portál)](search-explorer.md) | Poskytuje panel hledání a možnosti pro indexování a výběry verzí rozhraní API. Výsledky se vrátí jako dokumenty JSON. Doporučuje se pro zkoumání, testování a ověřování. <br/>[Další informace](search-get-started-portal.md#query-index) | 
 | [Post nebo jiné nástroje REST](search-get-started-postman.md) | Nástroje pro testování webu jsou vynikající volbou pro formulování volání REST. REST API podporuje všechny možné operace v Azure Kognitivní hledání. V tomto článku se dozvíte, jak nastavit hlavičku a text požadavku HTTP pro odesílání požadavků do Azure Kognitivní hledání.  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | Klient, který se dá použít k dotazování indexu služby Azure Kognitivní hledání.  <br/>[Další informace](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Klient, který se dá použít k dotazování indexu služby Azure Kognitivní hledání.  <br/>[Další informace](search-howto-dotnet-sdk.md)  |
 | [Hledat dokumenty (REST API)](/rest/api/searchservice/search-documents) | Metoda GET nebo POST pro index s použitím parametrů dotazu pro další vstup.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Zvolit analyzátor: jednoduché | kompletní
@@ -159,7 +159,7 @@ Další informace o výsledcích hledání stránkování najdete v článku [ja
 ### <a name="ordering-results"></a>Řazení výsledků
 Při přijímání výsledků vyhledávacího dotazu můžete požádat, aby služba Azure Kognitivní hledání mohla sloužit k výsledkům seřazeným podle hodnot v konkrétním poli. Ve výchozím nastavení služba Azure Kognitivní hledání řadí výsledky hledání na základě pořadí hledání v jednotlivých dokumentech, které je odvozeno od [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Pokud chcete, aby služba Azure Kognitivní hledání vracela výsledky seřazené podle jiné hodnoty než skóre vyhledávání, můžete použít **`orderby`** parametr Search. Můžete zadat hodnotu **`orderby`** parametru pro zahrnutí názvů polí a volání [** `geo.distance()` funkce**](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může následovat za `asc` účelem indikace, že výsledky jsou požadovány ve vzestupném pořadí a **`desc`** označují, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
+Pokud chcete, aby služba Azure Kognitivní hledání vracela výsledky seřazené podle jiné hodnoty než skóre vyhledávání, můžete použít **`orderby`** parametr Search. Můžete zadat hodnotu **`orderby`** parametru pro zahrnutí názvů polí a volání [**`geo.distance()` funkce**](query-odata-filter-orderby-syntax.md) pro geoprostorové hodnoty. Každý výraz může následovat za `asc` účelem indikace, že výsledky jsou požadovány ve vzestupném pořadí a **`desc`** označují, že výsledky jsou požadovány v sestupném pořadí. Ve výchozím nastavení se používá vzestupné pořadí.
 
 
 ### <a name="hit-highlighting"></a>Zvýrazňování položek

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 3ab5462cc2b368bd1518606b03c8ec1027bc31c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a441f677687789729b96011f8bf98606418ca659
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397180"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677188"
 ---
 > [!NOTE]
 > Požadavky a doporučení jsou založené na srovnávacích testech s jednou žádostí za sekundu pomocí 8 MB naskenovaného obchodního dopisu obsahujícího 29 řádků a celkem 803 znaků.
@@ -23,7 +23,6 @@ Následující tabulka popisuje minimální a doporučené přidělení prostře
 | Kontejner | Minimum | Doporučeno |
 |-----------|---------|-------------|
 | Přečíst 2,0 – Preview | 1 jádro, 8 GB paměti |  8 jader, 16 GB paměti |
-| Přečíst 3,0 – Preview | 8 jader, 16 GB paměti | 8 jader, 24 GB paměti |
 | Přečíst 3,1 – Preview | 8 jader, 16 GB paměti | 8 jader, 24 GB paměti |
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 11444fc599b46ceff90eda562d2fd557bcaf53b2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9d9a9c878c96c7f5a38466c494e4b90287c984da
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961336"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92734948"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Správa dostupnosti virtuálních počítačů s Linuxem
 
@@ -34,7 +34,7 @@ Existují tři scénáře, které mohou vést k ovlivnění virtuálního počí
 
 Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým událostem, doporučujeme pro vaše virtuální počítače následující osvědčené postupy z hlediska vysoké dostupnosti:
 
-* Použití zón Availabiilty k ochraně před selháními datových center
+* Ochrana před selháním Datacenter pomocí Zóny dostupnosti
 * Konfigurace více virtuálních počítačů ve skupině dostupnosti pro zajištění redundance
 * Použití spravovaných disků pro virtuální počítače ve skupině dostupnosti
 * Použití naplánovaných událostí k proaktivní reakci na události s vlivem na virtuální počítače
@@ -46,7 +46,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 
 [Zóny dostupnosti](../availability-zones/az-overview.md) rozšiřují úroveň řízení, kterou máte k dispozici, abyste zachovali dostupnost aplikací a dat na vašich virtuálních počítačích. Zóny dostupnosti jsou jedinečná fyzická umístění uvnitř oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč Zóny dostupnosti, aby se chránily před jednotlivými chybami.
 
-Zóna dostupnosti v oblasti Azure je kombinací **domény selhání** a **aktualizační domény**. Pokud například vytvoříte tři nebo více virtuálních počítačů ve třech zónách v oblasti Azure, budou vaše virtuální počítače efektivně distribuovány mezi tři domény selhání a tři aktualizační domény. Platforma Azure tuto distribuci rozpoznává mezi aktualizačními doménami, aby se zajistilo, že se virtuální počítače v různých zónách neaktualizují současně.
+Zóna dostupnosti v oblasti Azure je kombinací **domény selhání** a **aktualizační domény** . Pokud například vytvoříte tři nebo více virtuálních počítačů ve třech zónách v oblasti Azure, budou vaše virtuální počítače efektivně distribuovány mezi tři domény selhání a tři aktualizační domény. Platforma Azure tuto distribuci rozpoznává mezi aktualizačními doménami, aby se zajistilo, že se virtuální počítače v různých zónách neaktualizují současně.
 
 Díky Zóny dostupnosti Azure nabízí nejlepší smlouvu SLA 99,99% provozu virtuálního počítače. Díky navrhování vašich řešení pro použití replikovaných virtuálních počítačů v zónách můžete chránit aplikace a data před ztrátou datacentra. Pokud dojde k ohrožení jedné zóny, replikované aplikace a data jsou okamžitě k dispozici v jiné zóně.
 

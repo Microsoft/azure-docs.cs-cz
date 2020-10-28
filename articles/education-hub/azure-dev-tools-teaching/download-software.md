@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: dbfb2d32b6aab7660f4fc11865122ad44e9732fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d556956a4e123d65a5725b56db57b3ce6cbb7aaf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096860"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675347"
 ---
 # <a name="help-students-download-software-developer-tools-from-the-azure-education-hub"></a>Pomáhat studentům stahovat nástroje pro vývojáře softwaru z Azure Centrum Education
 
@@ -26,7 +26,7 @@ Pořiďte si své studenty pomocí tohoto postupu a Stáhněte si nástroje pro 
 1. Přihlaste se pomocí přihlašovacích údajů předplatného Azure for Students.
 1. Vyberte kterýkoli z vývojářských nástrojů softwaru v Centrum Education otevřete podokno stahování.
 1. Přečtěte si informace o softwaru a ujistěte se, že je software kompatibilní s vaším počítačovým systémem.
-1. Po potvrzení, že je software kompatibilní s vaším systémem, vyberte **Stáhnout**.
+1. Po potvrzení, že je software kompatibilní s vaším systémem, vyberte **Stáhnout** .
 1. Postupujte podle pokynů na obrazovce a stáhněte a nainstalujte software.
 
    Azure for Students vám poskytne $100 kredit na 12 měsíců. Zahrnuje přístup k více než 25 bezplatným službám, včetně výpočetních prostředků, sítě, úložiště a databází. Veškeré poplatky vzniklé během tohoto období se odečtou z kreditu. 
@@ -36,5 +36,5 @@ Pořiďte si své studenty pomocí tohoto postupu a Stáhněte si nástroje pro 
 - [Získat nápovědu k chybám přihlášení](troubleshoot-login.md)
 - [Azure for Students](azure-students-program.md)
 - [Azure for Students Starter](azure-students-starter-program.md)
-- [Microsoft Learn: bezplatná online výuková platforma](https://docs.microsoft.com/learn/)
+- [Microsoft Learn: bezplatná online výuková platforma](/learn/)
 - [Nejčastější dotazy](program-faq.md#azure-for-students)

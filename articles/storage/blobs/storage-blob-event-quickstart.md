@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c670c011f911e9b27f1280800508124d32e696cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19a9abe3a03a384a69950a8ed9b63353e6e36588
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489839"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676265"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Rychlý Start: směrování událostí úložiště do webového koncového bodu pomocí Azure CLI
 
@@ -24,7 +24,7 @@ Obvykle odesíláte události do koncového bodu, který data události zpracuje
 
 Po dokončení kroků popsaných v tomto článku uvidíte, že se data události odeslala do webové aplikace.
 
-![Zobrazení události odběru](./media/storage-blob-event-quickstart/view-results.png)
+![Snímek obrazovky prohlížeče Azure Event Grid, který zobrazuje data událostí, která byla odeslána do webové aplikace.](./media/storage-blob-event-quickstart/view-results.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,7 +40,7 @@ Témata služby Event Grid jsou prostředky Azure a musí být umístěné ve sk
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). 
 
-Následující příklad vytvoří skupinu prostředků `<resource_group_name>` v umístění *westcentralus*.  Nahraďte `<resource_group_name>` jedinečným názvem vaší skupiny prostředků.
+Následující příklad vytvoří skupinu prostředků `<resource_group_name>` v umístění *westcentralus* .  Nahraďte `<resource_group_name>` jedinečným názvem vaší skupiny prostředků.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westcentralus

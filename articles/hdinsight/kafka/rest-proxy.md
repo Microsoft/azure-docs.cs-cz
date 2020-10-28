@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: a99c6412650cac565414817c91752ae85b8ad37d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8447eae4ea7234a7f47219cc81441650121b84ae
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539594"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676168"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interakce s Apache Kafka clustery ve službě Azure HDInsight pomocí proxy REST
 
-Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes protokol HTTP. Tato akce znamená, že klienti Kafka můžou být mimo vaši virtuální síť. Klienti můžou provádět jednoduché volání HTTP do clusteru Kafka a nemusí se spoléhat na knihovny Kafka. Tento článek vám ukáže, jak vytvořit cluster Kafka s povoleným proxy serverem REST. Obsahuje také vzorový kód, který ukazuje, jak volat proxy REST.
+Kafka REST proxy umožňuje komunikovat s clusterem Kafka prostřednictvím REST API přes HTTPS. Tato akce znamená, že klienti Kafka můžou být mimo vaši virtuální síť. Klienti můžou provádět jednoduché zabezpečené volání HTTPS do clusteru Kafka a nemusíte přitom spoléhat na Kafka knihovny. Tento článek vám ukáže, jak vytvořit cluster Kafka s povoleným proxy serverem REST. Obsahuje také vzorový kód, který ukazuje, jak volat proxy REST.
 
 ## <a name="rest-api-reference"></a>REST API – referenční informace
 
@@ -37,7 +37,7 @@ Vytvoření clusteru HDInsight Kafka pomocí proxy REST vytvoří nový veřejn�
 
 Přístup k proxy Kafka REST se spravuje pomocí skupin zabezpečení Azure Active Directory. Při vytváření clusteru Kafka zadejte skupinu zabezpečení Azure AD s přístupem ke koncovému bodu REST. Kafka klienti, kteří potřebují přístup k proxy REST, by měli být k této skupině zaregistrovaní vlastníkem skupiny. Vlastník skupiny se může zaregistrovat prostřednictvím portálu nebo pomocí PowerShellu.
 
-V případě požadavků koncových bodů proxy REST by klientské aplikace měly získat token OAuth. Token slouží k ověření členství ve skupině zabezpečení. Níže najdete [ukázku klientské aplikace](#client-application-sample) , která ukazuje, jak získat token OAuth. Klientská aplikace předá token OAuth v požadavku HTTP na proxy REST.
+V případě požadavků koncových bodů proxy REST by klientské aplikace měly získat token OAuth. Token slouží k ověření členství ve skupině zabezpečení. Níže najdete [ukázku klientské aplikace](#client-application-sample) , která ukazuje, jak získat token OAuth. Klientská aplikace předá token OAuth v požadavku HTTPS proxy REST.
 
 > [!NOTE]
 > Další informace o skupinách zabezpečení AAD najdete v tématu [Správa přístupu k aplikacím a prostředkům pomocí skupin Azure Active Directory](../../active-directory/fundamentals/active-directory-manage-groups.md). Další informace o tom, jak tokeny OAuth fungují, najdete v tématu [autorizace přístupu k Azure Active Directory webových aplikací pomocí toku udělení kódu oauth 2,0](../../active-directory/azuread-dev/v1-protocols-oauth-code.md).

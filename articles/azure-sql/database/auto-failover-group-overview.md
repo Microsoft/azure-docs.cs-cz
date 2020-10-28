@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627221"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675290"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -243,7 +243,7 @@ Vzhledem k tomu, že každá instance je izolovaná ve své vlastní virtuální
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Vytvoření skupiny převzetí služeb při selhání mezi spravovanými instancemi v různých předplatných
 
-Skupinu převzetí služeb při selhání můžete vytvořit mezi spravovanými instancemi SQL ve dvou různých předplatných, pokud jsou předplatná přidružená ke stejnému [Azure Active Directory tenantovi](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Při použití rozhraní API PowerShellu to můžete provést zadáním `PartnerSubscriptionId` parametru pro sekundární SQL spravovanou instanci. Při použití REST API může mít každé ID instance obsažené v `properties.managedInstancePairs` parametru vlastní subscriptionID.
+Skupinu převzetí služeb při selhání můžete vytvořit mezi spravovanými instancemi SQL ve dvou různých předplatných, pokud jsou předplatná přidružená ke stejnému [Azure Active Directory tenantovi](../../active-directory/fundamentals/active-directory-whatis.md#terminology). Při použití rozhraní API PowerShellu to můžete provést zadáním `PartnerSubscriptionId` parametru pro sekundární SQL spravovanou instanci. Při použití REST API může mít každé ID instance obsažené v `properties.managedInstancePairs` parametru vlastní subscriptionID.
   
 > [!IMPORTANT]
 > Azure Portal nepodporuje vytváření skupin převzetí služeb při selhání v různých předplatných. Pro existující skupiny převzetí služeb při selhání v různých předplatných nebo skupinách prostředků se převzetí služeb při selhání nedá iniciovat ručně prostřednictvím portálu z primární spravované instance SQL. Místo toho ji můžete zahájit z instance v sekundární geografické oblasti.
@@ -341,8 +341,8 @@ Pokud váš plán provozní kontinuity vyžaduje převzetí služeb při selhán
 1. [Vytvoření veřejné IP adresy](../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 2. [Vytvořte veřejný Nástroj pro vyrovnávání zatížení](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) a přiřaďte k němu veřejnou IP adresu.
 3. [Vytvoření virtuální sítě a virtuálních počítačů](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) pro součásti front-endu
-4. [Vytvořte skupinu zabezpečení sítě](../../virtual-network/security-overview.md) a nakonfigurujte příchozí připojení.
-5. Ujistěte se, že jsou odchozí připojení otevřená pro Azure SQL Database pomocí [značky služby](../../virtual-network/security-overview.md#service-tags)SQL.
+4. [Vytvořte skupinu zabezpečení sítě](../../virtual-network/network-security-groups-overview.md) a nakonfigurujte příchozí připojení.
+5. Ujistěte se, že jsou odchozí připojení otevřená pro Azure SQL Database pomocí [značky služby](../../virtual-network/network-security-groups-overview.md#service-tags)SQL.
 6. Vytvořte [SQL Database pravidlo brány firewall](firewall-configure.md) , které povolí příchozí provoz z veřejné IP adresy, kterou jste vytvořili v kroku 1.
 
 Další informace o konfiguraci odchozího přístupu a o tom, jaká IP adresa se má použít v pravidlech brány firewall, najdete v tématu [odchozí připojení nástroje pro vyrovnávání zatížení](../../load-balancer/load-balancer-outbound-connections.md).
@@ -362,7 +362,7 @@ Při nastavování skupiny převzetí služeb při selhání mezi primárními a
 - Virtuální sítě používané instancemi spravované instance SQL musí být připojené prostřednictvím [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Pokud jsou tyto dvě virtuální sítě propojené prostřednictvím místní sítě, ujistěte se, že žádné pravidlo firewallu neblokuje porty 5022 a 11000–11999. Globální partnerský vztah virtuálních sítí se podporuje s omezením popsaným v níže uvedené poznámce.
 
    > [!IMPORTANT]
-   > [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
+   > [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
 
 - Dvě spravované instance SQL virtuální sítě nemůžou mít překrývající se IP adresy.
 - Je potřeba nastavit skupiny zabezpečení sítě (NSG) tak, aby porty 5022 a 11000–12000 byly otevřené pro příchozí i odchozí připojení z podsítě druhé spravované instance. Důvodem je umožnit provoz replikace mezi instancemi.
@@ -406,7 +406,7 @@ Mějte na paměti následující omezení:
 
 ## <a name="programmatically-managing-failover-groups"></a>Programová správa skupin převzetí služeb při selhání
 
-Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při selhání a aktivní geografická replikace je také možné spravovat programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě rolí (RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
+Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při selhání a aktivní geografická replikace je také možné spravovat programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](/rest/api/sql/) a [Azure PowerShell](/powershell/azure/). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě rolí (RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>Správa převzetí služeb při selhání SQL Database
 
@@ -435,13 +435,13 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 | Rozhraní API | Popis |
 | --- | --- |
-| [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
-| [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
-| [Převzetí služeb při selhání (plánováno)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Aktivuje převzetí služeb při selhání z aktuálního primárního serveru na sekundární server s plnou synchronizací dat.|
-| [Vynucené převzetí služeb při selhání umožňuje ztrátu dat](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Aktivuje převzetí služeb při selhání z aktuálního primárního serveru na sekundární server bez synchronizace dat. Tato operace může způsobit ztrátu dat. |
-| [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Načte konfiguraci skupiny převzetí služeb při selhání. |
-| [Vypsat skupiny převzetí služeb při selhání podle serveru](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Vypíše skupiny převzetí služeb při selhání na serveru. |
-| [Aktualizace skupiny převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Aktualizuje konfiguraci skupiny převzetí služeb při selhání. |
+| [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](/rest/api/sql/failovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
+| [Odstranit skupinu převzetí služeb při selhání](/rest/api/sql/failovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
+| [Převzetí služeb při selhání (plánováno)](/rest/api/sql/failovergroups/failover) | Aktivuje převzetí služeb při selhání z aktuálního primárního serveru na sekundární server s plnou synchronizací dat.|
+| [Vynucené převzetí služeb při selhání umožňuje ztrátu dat](/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Aktivuje převzetí služeb při selhání z aktuálního primárního serveru na sekundární server bez synchronizace dat. Tato operace může způsobit ztrátu dat. |
+| [Získat skupinu převzetí služeb při selhání](/rest/api/sql/failovergroups/get) | Načte konfiguraci skupiny převzetí služeb při selhání. |
+| [Vypsat skupiny převzetí služeb při selhání podle serveru](/rest/api/sql/failovergroups/listbyserver) | Vypíše skupiny převzetí služeb při selhání na serveru. |
+| [Aktualizace skupiny převzetí služeb při selhání](/rest/api/sql/failovergroups/update) | Aktualizuje konfiguraci skupiny převzetí služeb při selhání. |
 
 ---
 
@@ -473,12 +473,12 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 | Rozhraní API | Popis |
 | --- | --- |
-| [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Vytvoří nebo aktualizuje konfiguraci skupiny převzetí služeb při selhání. |
-| [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání z instance. |
-| [Převzetí služeb při selhání (plánováno)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Aktivuje převzetí služeb při selhání z aktuální primární instance do této instance s úplnou synchronizací dat. |
-| [Vynucené převzetí služeb při selhání umožňuje ztrátu dat](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Aktivuje převzetí služeb při selhání z aktuální primární instance do sekundární instance bez synchronizace dat. Tato operace může způsobit ztrátu dat. |
-| [Získat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Načte konfiguraci skupiny převzetí služeb při selhání. |
-| [Seznam skupin převzetí služeb při selhání – seznam podle umístění](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Vypíše skupiny převzetí služeb při selhání v umístění. |
+| [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](/rest/api/sql/instancefailovergroups/createorupdate) | Vytvoří nebo aktualizuje konfiguraci skupiny převzetí služeb při selhání. |
+| [Odstranit skupinu převzetí služeb při selhání](/rest/api/sql/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání z instance. |
+| [Převzetí služeb při selhání (plánováno)](/rest/api/sql/instancefailovergroups/failover) | Aktivuje převzetí služeb při selhání z aktuální primární instance do této instance s úplnou synchronizací dat. |
+| [Vynucené převzetí služeb při selhání umožňuje ztrátu dat](/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Aktivuje převzetí služeb při selhání z aktuální primární instance do sekundární instance bez synchronizace dat. Tato operace může způsobit ztrátu dat. |
+| [Získat skupinu převzetí služeb při selhání](/rest/api/sql/instancefailovergroups/get) | Načte konfiguraci skupiny převzetí služeb při selhání. |
+| [Seznam skupin převzetí služeb při selhání – seznam podle umístění](/rest/api/sql/instancefailovergroups/listbylocation) | Vypíše skupiny převzetí služeb při selhání v umístění. |
 
 ---
 

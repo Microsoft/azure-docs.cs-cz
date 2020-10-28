@@ -6,26 +6,21 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: 26943971eeee96ed831c5d524868a2342891d594
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108401"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677575"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení Alert Management v Azure Log Analytics
 
 ![Ikona Alert Management](media/alert-management-solution/icon.png)
 
-> [!NOTE]
->  Azure Monitor teď podporuje vylepšené funkce pro [správu výstrah ve velkém měřítku](./alerts-overview.md), včetně těch, které vygenerovaly [Nástroje pro monitorování, jako je System Center Operations Manager, Zabbix nebo Nagios](./alerts-managing-nagios-zabbix-scom.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
->  
-
-
 Řešení Alert Management vám pomůže analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy můžou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořených Log Analytics](./alerts-overview.md) nebo [importovaných z Nagios nebo Zabbix](../learn/quick-collect-linux-computer.md). Řešení také importuje výstrahy ze všech [připojených skupin pro správu System Center Operations Manager](./om-agents.md).
 
 ## <a name="prerequisites"></a>Předpoklady
-Řešení funguje se všemi záznamy v úložišti Log Analytics s typem **výstrahy**, takže musíte provést jakoukoli konfiguraci, která je nutná ke shromáždění těchto záznamů.
+Řešení funguje se všemi záznamy v úložišti Log Analytics s typem **výstrahy** , takže musíte provést jakoukoli konfiguraci, která je nutná ke shromáždění těchto záznamů.
 
 - Pro výstrahy Log Analytics [vytvořte pravidla upozornění](./alerts-overview.md) pro vytváření záznamů výstrah přímo v úložišti.
 - U upozornění Nagios a Zabbix [nakonfigurujte tyto servery](../learn/quick-collect-linux-computer.md) tak, aby odesílaly výstrahy Log Analytics.
@@ -68,7 +63,7 @@ Kliknutím na dlaždici **Alert Management** otevřete řídicí panel **Alert M
 | Kritické výstrahy |Všechny výstrahy se závažností kritické seskupené podle názvu výstrahy.  Kliknutím na název výstrahy spustíte hledání v protokolu, které vrátí všechny záznamy pro tuto výstrahu. |
 | Varovné výstrahy |Všechny výstrahy se závažností upozornění seskupené podle názvu výstrahy.  Kliknutím na název výstrahy spustíte hledání v protokolu, které vrátí všechny záznamy pro tuto výstrahu. |
 | Výstrahy Active System Center Operations Manager |Všechny výstrahy shromážděné z Operations Manager s jakýmkoli jiným stavem než *uzavřeným* seskupeným podle zdroje, který výstrahu vygeneroval. |
-| Všechny aktivní výstrahy |Všechny výstrahy s libovolnou závažností seskupené podle názvu výstrahy. Zahrnuje jenom Operations Manager výstrahy se stavem jiný než *Uzavřeno*. |
+| Všechny aktivní výstrahy |Všechny výstrahy s libovolnou závažností seskupené podle názvu výstrahy. Zahrnuje jenom Operations Manager výstrahy se stavem jiný než *Uzavřeno* . |
 
 Pokud se posunete napravo, řídicí panel obsahuje několik běžných dotazů, na které můžete kliknout a provést [prohledávání protokolu](../log-query/log-query-overview.md) pro data výstrah.
 
@@ -76,9 +71,9 @@ Pokud se posunete napravo, řídicí panel obsahuje několik běžných dotazů,
 
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
-Řešení Alert Management analyzuje libovolný záznam s typem **výstrahy**.  Výstrahy vytvořené Log Analytics nebo shromážděné z Nagios nebo Zabbix nejsou tímto řešením přímo shromažďovány.
+Řešení Alert Management analyzuje libovolný záznam s typem **výstrahy** .  Výstrahy vytvořené Log Analytics nebo shromážděné z Nagios nebo Zabbix nejsou tímto řešením přímo shromažďovány.
 
-Řešení importuje výstrahy z System Center Operations Manager a vytvoří odpovídající záznam pro každý s typem **výstrahy** a SourceSystem **OpsManager**.  Tyto záznamy mají vlastnosti v následující tabulce:  
+Řešení importuje výstrahy z System Center Operations Manager a vytvoří odpovídající záznam pro každý s typem **výstrahy** a SourceSystem **OpsManager** .  Tyto záznamy mají vlastnosti v následující tabulce:  
 
 | Vlastnost | Popis |
 |:--- |:--- |

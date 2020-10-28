@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284077"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677723"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Vytváření a správa objektů BLOB v Azure Blob Storage pomocí Azure Logic Apps
 
@@ -29,15 +29,15 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
 ## <a name="limits"></a>Omezení
 
-* Ve výchozím nastavení můžou akce Azure Blob Storage číst nebo zapisovat soubory o *velikosti 50 MB nebo menší*. Aby bylo možné zpracovat soubory větší než 50 MB, ale až 1024 MB, akce Azure Blob Storage podporují vytváření [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). Akce **získat obsah objektu BLOB** implicitně používá bloky dat.
+* Ve výchozím nastavení můžou akce Azure Blob Storage číst nebo zapisovat soubory o *velikosti 50 MB nebo menší* . Aby bylo možné zpracovat soubory větší než 50 MB, ale až 1024 MB, akce Azure Blob Storage podporují vytváření [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md). Akce **získat obsah objektu BLOB** implicitně používá bloky dat.
 
 * Aktivační události Azure Blob Storage nepodporují vytváření bloků dat. Při vyžádání obsahu souboru triggery vyberou pouze soubory, které jsou 50 MB nebo menší. Pokud chcete získat soubory větší než 50 MB, postupujte podle tohoto vzoru:
 
-  * Použijte Trigger Blob Storage služby Azure, který vrátí vlastnosti souboru, například **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)**.
+  * Použijte Trigger Blob Storage služby Azure, který vrátí vlastnosti souboru, například **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)** .
 
   * Postupujte podle triggeru s akcí Azure Blob Storage **získat obsah objektu BLOB** , který načte kompletní soubor a implicitně použije bloky dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -73,7 +73,7 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky s
 
    3. Vyberte interval a frekvenci, jak často chcete, aby Trigger kontroloval změny ve složce.
 
-4. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit**.
+4. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit** .
 
 5. Nyní pokračujte v přidávání jedné nebo více akcí do aplikace logiky pro úlohy, které chcete provést s výsledky triggeru.
 
@@ -85,11 +85,11 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
 1. V [Azure Portal](https://portal.azure.com) nebo Visual Studiu otevřete aplikaci logiky v návrháři aplikace logiky. V tomto příkladu se používá Azure Portal.
 
-2. V návrháři aplikace logiky pod triggerem nebo akcí vyberte **Nový krok**.
+2. V návrháři aplikace logiky pod triggerem nebo akcí vyberte **Nový krok** .
 
    ![Přidat nový krok do pracovního postupu aplikace logiky](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Zvolte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci**.
+   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Zvolte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci** .
 
 3. Do vyhledávacího pole zadejte jako filtr "Azure Blob". V seznamu akce vyberte akci, kterou chcete.
 
@@ -108,7 +108,7 @@ Nebo, pokud připojení již existuje, zadejte potřebné informace pro akci.
 
    2. Vyhledejte a vyberte požadovaný soubor na základě čísla **ID** objektu BLOB. Toto **identifikační** číslo můžete najít v metadatech objektu blob, která jsou vrácená dříve popsanou triggerem služby Blob Storage.
 
-5. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit**.
+5. Až budete hotovi, na panelu nástrojů návrháře klikněte na **Uložit** .
 Pokud chcete otestovat aplikaci logiky, ujistěte se, že vybraná složka obsahuje objekt BLOB.
 
 V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah, přidejte další akci, která vytvoří soubor s objektem BLOB pomocí jiného konektoru. Přidejte například akci OneDrivu, která vytvoří soubor na základě obsahu objektu BLOB.
@@ -123,11 +123,11 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název připojení** | Yes | <*název připojení*> | Název, který se má pro připojení vytvořit |
-   | **Účet úložiště** | Yes | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
+   | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
+   | **Účet úložiště** | Ano | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |
    ||||
 
-   Například:
+   Příklad:
 
    ![Vytvoření připojení účtu služby Azure Blob Storage](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
@@ -183,9 +183,9 @@ Chcete-li udělit přístup k účtu úložiště prostřednictvím brány firew
 
 Pokud chcete nastavit výjimku a podporu spravovaných identit, postupujte podle následujících obecných kroků:
 
-1. V účtu úložiště v části **Nastavení**vyberte **brány firewall a virtuální sítě**. V části **Povolení přístupu z**vyberte možnost **vybrané sítě** , aby se zobrazila související nastavení.
+1. V účtu úložiště v části **Nastavení** vyberte **brány firewall a virtuální sítě** . V části **Povolení přístupu z** vyberte možnost **vybrané sítě** , aby se zobrazila související nastavení.
 
-1. V části **výjimky**vyberte možnost **povoluje přístup k tomuto účtu úložiště důvěryhodným službám Microsoftu**a pak vyberte **Uložit**.
+1. V části **výjimky** vyberte možnost **povoluje přístup k tomuto účtu úložiště důvěryhodným službám Microsoftu** a pak vyberte **Uložit** .
 
    ![Vyberte výjimku, která umožňuje důvěryhodné služby společnosti Microsoft.](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
 
@@ -202,9 +202,8 @@ Pokud chcete nastavit výjimku a podporu spravovaných identit, postupujte podle
 
 ### <a name="access-storage-accounts-through-azure-api-management"></a>Přístup k účtům úložiště prostřednictvím Azure API Management
 
-Pokud pro [API Management](../api-management/api-management-key-concepts.md)použijete vyhrazenou vrstvu, můžete rozhraní API úložiště před tím, že použijete API Management a povolíte jeho IP adresy prostřednictvím brány firewall. V podstatě přidejte virtuální síť Azure, kterou používá API Management, do nastavení brány firewall účtu úložiště. Pak můžete použít akci API Management nebo akci protokolu HTTP pro volání rozhraní API Azure Storage. Pokud však zvolíte tuto možnost, musíte proces ověřování zpracovat sami. Další informace najdete v tématu [Jednoduchá architektura podnikové integrace](https://aka.ms/aisarch).
+Pokud pro [API Management](../api-management/api-management-key-concepts.md)použijete vyhrazenou vrstvu, můžete rozhraní API úložiště před tím, že použijete API Management a povolíte jeho IP adresy prostřednictvím brány firewall. V podstatě přidejte virtuální síť Azure, kterou používá API Management, do nastavení brány firewall účtu úložiště. Pak můžete použít akci API Management nebo akci protokolu HTTP pro volání rozhraní API Azure Storage. Pokud však zvolíte tuto možnost, musíte proces ověřování zpracovat sami. Další informace najdete v tématu [Jednoduchá architektura podnikové integrace](/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)
-

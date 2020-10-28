@@ -5,7 +5,7 @@ description: V tomto článku se dozvíte, jak pomocí skriptu R s Azure SQL Dat
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: python
 ms.topic: quickstart
 author: garyericson
@@ -14,12 +14,12 @@ ms.reviewer: davidph, sstein
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3a939c816cac44ed85802ecfa591564effc1ee73
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 62f1015bc945b5c01f719d7e96e6446c49ac8b8a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328828"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675159"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>Rychlý Start: použití R s Azure SQL Database Machine Learning Services (Preview) k dotazování databáze 
 
@@ -33,7 +33,7 @@ V tomto rychlém startu použijete R se Azure SQL Database Machine Learning Serv
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Azure SQL Database](single-database-create-quickstart.md)
-- [Machine Learning Services](machine-learning-services-overview.md) s povoleným R.
+- [Machine Learning Services](../managed-instance/machine-learning-services-overview.md) s povoleným R.
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
@@ -45,7 +45,7 @@ Machine Learning Services s R je funkce Azure SQL Database používaná ke spou�
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
@@ -57,7 +57,7 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
    Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze v Azure SQL Database](connect-query-ssms.md).
 
-1. Předejte kompletní skript R do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
+1. Předejte kompletní skript R do uložené procedury [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
 
    Skript se předává přes `@script` argument. Vše uvnitř `@script` argumentu musí být platný kód R.
    
@@ -76,12 +76,12 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. Spusťte uloženou proceduru [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
+1. Spusťte uloženou proceduru [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
 
 1. Ověřte, zda je v okně **zprávy** vráceno prvních 20 řádků kategorie/produktu.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Návrh první databáze v Azure SQL Database](design-first-database-tutorial.md)
-- [Azure SQL Database Machine Learning Services (s R)](machine-learning-services-overview.md)
-- [Vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)](r-script-create-quickstart.md)
+- [Azure SQL Database Machine Learning Services (s R)](../managed-instance/machine-learning-services-overview.md)
+- [Vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context)

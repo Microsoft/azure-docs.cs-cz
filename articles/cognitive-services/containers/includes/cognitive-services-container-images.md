@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: d514460f3cd80b5b85604251743abbbbcd1adc8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2611c9535b9721cccadf35e56bdd21a3020257
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906994"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677428"
 ---
 ### <a name="container-repositories-and-images"></a>Úložiště kontejnerů a obrázky
 
@@ -87,7 +87,7 @@ Dříve byly do úložiště hostované kontejnery ověřovaného náhledu `cont
 
 | Služba | Kontejner | Název Container Registry/úložiště/image |
 |--|--|--|
-| [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Číst v 3.0 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
+| [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Číst v 2.0 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | [Počítačové zpracování obrazu](../../Computer-vision/computer-vision-how-to-install-containers.md) | Čtení v 3.1 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 | [Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container) | Prostorová analýza | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
 | [Rozhraní API služby Speech](../../speech-service/speech-container-howto.md?tab=ctts) | Vlastní převod textu na řeč | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` |

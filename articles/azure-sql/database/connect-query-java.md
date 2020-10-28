@@ -10,24 +10,24 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 829a106a643c10626a65855152375c349cd76f9a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d00caa91e7b6a19edbb6ac2d38fcea1e2a0d5f05
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833585"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676861"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>Použití jazyků Java a JDBC s Azure SQL Database
 
-Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/).
+Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure SQL Database](/azure/sql-database/).
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
-- Podporovaná [sada Java Development Kit](https://aka.ms/azure-jdks), verze 8 (obsažená v Azure Cloud Shell).
+- [Azure Cloud Shell](../../cloud-shell/quickstart.md) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
+- Podporovaná [sada Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), verze 8 (obsažená v Azure Cloud Shell).
 - Nástroj pro sestavení [Apache Maven](https://maven.apache.org/)
 
 ## <a name="prepare-the-working-environment"></a>Příprava pracovního prostředí
@@ -69,7 +69,7 @@ az group create \
 První věc, kterou vytvoříme, je spravovaný server Azure SQL Database.
 
 > [!NOTE]
-> Podrobnější informace o vytváření Azure SQL Databasech serverů najdete v tématu [rychlý Start: vytvoření databáze Azure SQL Database s jedinou databází](/azure/sql-database/sql-database-single-database-get-started).
+> Podrobnější informace o vytváření Azure SQL Databasech serverů najdete v tématu [rychlý Start: vytvoření databáze Azure SQL Database s jedinou databází](./single-database-create-quickstart.md).
 
 V [Azure Cloud Shell](https://shell.azure.com/)spusťte následující příkaz:
 
@@ -484,7 +484,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 
 ## <a name="conclusion-and-resources-clean-up"></a>Vyčištění závěrů a prostředků
 
-Blahopřejeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat ze služby Azure SQL Database.
+Blahopřejeme vám. Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat ze služby Azure SQL Database.
 
 Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
 
@@ -498,4 +498,4 @@ az group delete \
 
 - [Návrh první databáze v Azure SQL Database](design-first-database-tutorial.md)  
 - [Ovladač Microsoft JDBC pro SQL Server](https://github.com/microsoft/mssql-jdbc)  
-- [Hlášení problémů / kladení dotazů](https://github.com/microsoft/mssql-jdbc/issues)  
+- [Hlášení problémů / kladení dotazů](https://github.com/microsoft/mssql-jdbc/issues)

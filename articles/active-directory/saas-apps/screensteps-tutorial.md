@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 8f23f9763d25d5edfebd0e4cff7f3b7772ef1554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf43875be0088f9f9c8c8f209f97c8443bd305bb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543342"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676607"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Kurz: Azure Active Directory integrace s ScreenSteps
 
@@ -27,10 +27,10 @@ Integrace ScreenSteps s Azure AD poskytuje následující výhody:
 * Můžete povolit, aby se vaši uživatelé automaticky přihlásili k ScreenSteps (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s ScreenSteps potřebujete následující položky:
 
@@ -61,13 +61,13 @@ Pokud chcete nakonfigurovat integraci ScreenSteps do služby Azure AD, musíte p
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **ScreenSteps**, vyberte **ScreenSteps** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **ScreenSteps** , vyberte **ScreenSteps** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![ScreenSteps v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí ScreenSteps na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí ScreenSteps na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v ScreenSteps.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ScreenSteps, musíte dokončit tyto stavební bloky:
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ScreenSteps, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **ScreenSteps** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **ScreenSteps** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -124,15 +124,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ScreenSt
 
 1. V jiném okně webového prohlížeče se přihlaste k webu ScreenSteps společnosti jako správce.
 
-1. Klikněte na **Nastavení účtu**.
+1. Klikněte na **Nastavení účtu** .
 
     ![Správa účtů](./media/screensteps-tutorial/ic778523.png "Správa účtů")
 
-1. Klikněte na **jednotné přihlašování**.
+1. Klikněte na **jednotné přihlašování** .
 
     ![Vzdálené ověřování](./media/screensteps-tutorial/ic778524.png "Vzdálené ověřování")
 
-1. Klikněte na **vytvořit koncový bod jednotného přihlašování**.
+1. Klikněte na **vytvořit koncový bod jednotného přihlašování** .
 
     ![Vzdálené ověřování](./media/screensteps-tutorial/ic778525.png "Vzdálené ověřování")
 
@@ -142,9 +142,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ScreenSt
 
     a. Do textového pole **název** zadejte název.
 
-    b. V seznamu **režim** vyberte **SAML**.
+    b. V seznamu **režim** vyberte **SAML** .
 
-    c. Klikněte na **Vytvořit**.
+    c. Klikněte na **Vytvořit** .
 
 1. **Upravte** nový koncový bod.
 
@@ -154,7 +154,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ScreenSt
 
     ![Koncový bod vzdáleného ověřování](./media/screensteps-tutorial/ic778527.png "Koncový bod vzdáleného ověřování")
 
-    a. Klikněte na **nahrát nový soubor certifikátu SAML**a pak Nahrajte certifikát, který jste si stáhli z Azure Portal.
+    a. Klikněte na **nahrát nový soubor certifikátu SAML** a pak Nahrajte certifikát, který jste si stáhli z Azure Portal.
 
     b. Vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal do pole **vzdálené přihlášení URL** .
 
@@ -162,19 +162,19 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ScreenSt
 
     d. Vyberte **skupinu** , do které chcete přiřadit uživatele při jejich zřízení.
 
-    e. Klikněte na **Aktualizovat**.
+    e. Klikněte na **Aktualizovat** .
 
     f. Zkopírujte **adresu URL příjemce SAML** do schránky a vložte ji do TEXTOVÉHO pole **URL pro přihlášení** v základní části **Konfigurace SAML** v Azure Portal.
 
-    například Vraťte se do **koncového bodu pro úpravu jednotného přihlašování**.
+    například Vraťte se do **koncového bodu pro úpravu jednotného přihlašování** .
 
-    h. Klikněte na tlačítko **nastavit výchozí pro účet** pro použití tohoto koncového bodu pro všechny uživatele, kteří se přihlásí k ScreenSteps. Případně můžete kliknout na tlačítko **Přidat do webu** a použít tento koncový bod pro konkrétní weby v **ScreenSteps**.
+    h. Klikněte na tlačítko **nastavit výchozí pro účet** pro použití tohoto koncového bodu pro všechny uživatele, kteří se přihlásí k ScreenSteps. Případně můžete kliknout na tlačítko **Přidat do webu** a použít tento koncový bod pro konkrétní weby v **ScreenSteps** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -186,28 +186,28 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole typ **uživatelského jména****brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ScreenSteps.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **ScreenSteps**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **ScreenSteps** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **ScreenSteps**.
+2. V seznamu aplikace vyberte **ScreenSteps** .
 
     ![Odkaz ScreenSteps v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -223,18 +223,18 @@ V této části povolíte Britta Simon pro použití jednotného přihlašován�
 
 ### <a name="create-screensteps-test-user"></a>Vytvořit testovacího uživatele ScreenSteps
 
-V této části vytvoříte uživatele s názvem Britta Simon v ScreenSteps. Pokud chcete přidat uživatele na platformě ScreenSteps, pracujte s [týmem podpory klienta ScreenSteps](https://www.screensteps.com/contact)   . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v ScreenSteps. Pokud chcete přidat uživatele na platformě ScreenSteps, pracujte s [týmem podpory klienta ScreenSteps](https://www.screensteps.com/contact) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když na přístupovém panelu kliknete na dlaždici ScreenSteps, měli byste se automaticky přihlásit k ScreenSteps, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici ScreenSteps, měli byste se automaticky přihlásit k ScreenSteps, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)

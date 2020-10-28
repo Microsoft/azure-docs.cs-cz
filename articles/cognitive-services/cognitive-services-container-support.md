@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 keywords: místní, Docker, kontejner, Kubernetes
-ms.openlocfilehash: cf0ea6339de1ba6aca93a1a71990515d296f2e3a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e6a01192068617dcdb52e6160ffcf633d099bdf1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999699"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677449"
 ---
 # <a name="azure-cognitive-services-containers"></a>Kontejnery Azure Cognitive Services
 
@@ -45,32 +45,32 @@ Cognitive Services prostředky jsou k dispozici v [Microsoft Azure](https://azur
 
 ## <a name="features-and-benefits"></a>Funkce a výhody
 
-- **Neměnná infrastruktura**: umožňuje týmům DevOps využívat konzistentní a spolehlivé sady známých systémových parametrů a může se tak přizpůsobit. Kontejnery poskytují flexibilitu pro Pivot v předvídatelném ekosystému a nepoužívejte přitom posun konfigurace.
-- **Kontrola nad daty**: Určete, kam se budou data zpracovávat pomocí Cognitive Services. To může být nezbytné v případě, že nemůžete odesílat data do cloudu, ale potřebujete přístup k rozhraní API služeb Cognitive Services. Podpora konzistence v hybridních prostředích – napříč daty, správou, identitou a zabezpečením.
-- **Řízení aktualizací modelů**: flexibilita při vytváření verzí a aktualizaci modelů nasazených ve svých řešeních.
-- **Přenosná architektura**: umožňuje vytvořit přenosnou architekturu aplikace, která se dá nasadit v Azure, místně i na hraničních zařízeních. Kontejnery se dají nasadit přímo do [služby Azure Kubernetes](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml)nebo do clusteru [Kubernetes](https://kubernetes.io/) nasazeného do [Azure Stack](/azure-stack/operator). Další informace najdete v tématu [nasazení Kubernetes do Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Vysoká propustnost/nízká latence**: Poskytněte zákazníkům možnost škálování pro zajištění vysoké propustnosti a nízké latence tím, že umožníte, aby Cognitive Services běžet fyzicky blízko jejich aplikační logiky a dat. Kontejnery nemění počet transakcí za sekundu (TPS) a dají se škálovat na maximum i na kapacitu, pokud zadáte potřebné hardwarové prostředky.
-- **Škálovatelnost**: s neustále rostoucím oblíbenkou pro kontejnery a software orchestrace kontejnerů, jako je Kubernetes; škálovatelnost je k dispozici na Forefrontu technologických předběžných. Sestavování s škálovatelnou Clusterovou nadací aplikace pro vývoj aplikací pro vysokou dostupnost.
+- **Neměnná infrastruktura** : umožňuje týmům DevOps využívat konzistentní a spolehlivé sady známých systémových parametrů a může se tak přizpůsobit. Kontejnery poskytují flexibilitu pro Pivot v předvídatelném ekosystému a nepoužívejte přitom posun konfigurace.
+- **Kontrola nad daty** : Určete, kam se budou data zpracovávat pomocí Cognitive Services. To může být nezbytné v případě, že nemůžete odesílat data do cloudu, ale potřebujete přístup k rozhraní API služeb Cognitive Services. Podpora konzistence v hybridních prostředích – napříč daty, správou, identitou a zabezpečením.
+- **Řízení aktualizací modelů** : flexibilita při vytváření verzí a aktualizaci modelů nasazených ve svých řešeních.
+- **Přenosná architektura** : umožňuje vytvořit přenosnou architekturu aplikace, která se dá nasadit v Azure, místně i na hraničních zařízeních. Kontejnery se dají nasadit přímo do [služby Azure Kubernetes](../aks/index.yml), [Azure Container Instances](../container-instances/index.yml)nebo do clusteru [Kubernetes](https://kubernetes.io/) nasazeného do [Azure Stack](/azure-stack/operator). Další informace najdete v tématu [nasazení Kubernetes do Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+- **Vysoká propustnost/nízká latence** : Poskytněte zákazníkům možnost škálování pro zajištění vysoké propustnosti a nízké latence tím, že umožníte, aby Cognitive Services běžet fyzicky blízko jejich aplikační logiky a dat. Kontejnery nemění počet transakcí za sekundu (TPS) a dají se škálovat na maximum i na kapacitu, pokud zadáte potřebné hardwarové prostředky.
+- **Škálovatelnost** : s neustále rostoucím oblíbenkou pro kontejnery a software orchestrace kontejnerů, jako je Kubernetes; škálovatelnost je k dispozici na Forefrontu technologických předběžných. Sestavování s škálovatelnou Clusterovou nadací aplikace pro vývoj aplikací pro vysokou dostupnost.
 
 ## <a name="containers-in-azure-cognitive-services"></a>Kontejnery v Azure Cognitive Services
 
 Kontejnery Azure Cognitive Services poskytují následující sadu kontejnerů Docker, z nichž každá obsahuje podmnožinu funkcí ze služeb v Azure Cognitive Services:
 
-| Služba | Podporovaná cenová úroveň | Kontejner | Description |
+| Služba | Podporovaná cenová úroveň | Kontejner | Popis |
 |--|--|--|--|
-| [Detektor anomálií][ad-containers] | F0, S0 | **Anomálie-detektor** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup][request-access] |
-| [Počítačové zpracování obrazu][cv-containers] | F0, S1 | **Číst** Optické rozpoznávání znaků ([Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Kontejner OCR pro čtení umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](./computer-vision/concept-recognizing-text.md).<br>[Vyžádání přístup][request-access] |
+| [Detektor anomálií][ad-containers] | F0, S0 | **Anomálie-detektor** ( [Obrázek](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Rozhraní API pro detekci anomálií umožňuje monitorovat a zjišťovat anomálie v datech časových řad pomocí strojového učení.<br>[Vyžádání přístup][request-access] |
+| [Počítačové zpracování obrazu][cv-containers] | F0, S1 | **Číst** Optické rozpoznávání znaků ( [Obrázek](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Kontejner OCR pro čtení umožňuje extrahovat vytištěný a rukou psaný text z obrázků a dokumentů s podporou formátů souborů JPEG, PNG, BMP, PDF a TIFF. Další informace najdete v [dokumentaci k rozhraní API pro čtení](./computer-vision/concept-recognizing-text.md).<br>[Vyžádání přístup][request-access] |
 | [Rozpoznávání tváře][fa-containers] | F0, S0 | **Rozpoznávání tváře** | Detekuje lidské obličeje na obrázcích a identifikuje atributy, včetně orientačních bodů (jako jsou nos a oči), pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli se dvě plošky ve stejné imagi nebo různých obrázcích shodují s použitím skóre spolehlivosti, nebo porovnávat plošky s databází, abyste viděli, jestli už existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností. |
 | [Nástroj pro rozpoznávání formulářů][fr-containers] | F0, S0 | **Rozpoznávání formulářů** | Porozumění formuláře používá technologii strojového učení k identifikaci a extrakci párů klíč-hodnota a tabulek z formulářů. |
-| [LUIS][lu-containers] | F0, S0 | **Luis** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Načte vyškolený nebo publikovaný Language Understanding model, označovaný také jako aplikace LUIS, do kontejneru Docker a poskytuje přístup k předpovědi dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky na [portál Luis](https://www.luis.ai) , aby se zlepšila přesnost předpovědi aplikace. |
-| [Rozhraní API služby Speech][sp-containers-stt] | F0, S0 | **Převod řeči na text** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Přepisuje plynulou řeč v reálném čase do textové podoby. |
-| [Rozhraní API služby Speech][sp-containers-cstt] | F0, S0 | **Custom Speech k textu** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Transcribes průběžné rozpoznávání řeči v reálném čase na text pomocí vlastního modelu. |
-| [Rozhraní API služby Speech][sp-containers-tts] | F0, S0 | **Převod textu na řeč** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Převádí text do přirozeně znějící řeči. |
-| [Rozhraní API služby Speech][sp-containers-ctts] | F0, S0 | **Vlastní převod textu na řeč** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Převede text na přirozený zvuk řeči pomocí vlastního modelu. |
-| [Rozhraní API služby Speech][sp-containers-ntts] | F0, S0 | **Neuronové převodu textu na řeč** ([Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. |
-| [Analýza textu][ta-containers-keyphrase] | F0, S | **Extrakce klíčových frází** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahuje klíčové fráze k identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
-| [Analýza textu][ta-containers-language] | F0, S | **Rozpoznávání jazyka** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Pro až 120 jazyků rozpozná, který jazyk je vstupní text napsán, a nahlaste jeden kód jazyka pro každý dokument odeslaný na žádost. Kód jazyka spárovaný se skóre označuje sílu skóre. |
-| [Analýza textu][ta-containers-sentiment] | F0, S | **Analýza mínění V3** ([Obrázek](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyzuje nezpracovaný text pro potvrzení o kladné nebo záporné mínění. Tato verze analýzy mínění vrací popisky mínění (například *kladné* nebo *záporné*) pro každý dokument a větu v něm. |
+| [LUIS][lu-containers] | F0, S0 | **Luis** ( [Obrázek](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Načte vyškolený nebo publikovaný Language Understanding model, označovaný také jako aplikace LUIS, do kontejneru Docker a poskytuje přístup k předpovědi dotazů z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrajte je zpátky na [portál Luis](https://www.luis.ai) , aby se zlepšila přesnost předpovědi aplikace. |
+| [Rozhraní API služby Speech][sp-containers-stt] | F0, S0 | **Převod řeči na text** ( [Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Přepisuje plynulou řeč v reálném čase do textové podoby. |
+| [Rozhraní API služby Speech][sp-containers-cstt] | F0, S0 | **Custom Speech k textu** ( [Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Transcribes průběžné rozpoznávání řeči v reálném čase na text pomocí vlastního modelu. |
+| [Rozhraní API služby Speech][sp-containers-tts] | F0, S0 | **Převod textu na řeč** ( [Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-text-to-speech)) | Převádí text do přirozeně znějící řeči. |
+| [Rozhraní API služby Speech][sp-containers-ctts] | F0, S0 | **Vlastní převod textu na řeč** ( [Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-text-to-speech)) | Převede text na přirozený zvuk řeči pomocí vlastního modelu. |
+| [Rozhraní API služby Speech][sp-containers-ntts] | F0, S0 | **Neuronové převodu textu na řeč** ( [Obrázek](https://hub.docker.com/_/azure-cognitive-services-speechservices-neural-text-to-speech)) | Převede text na přirozený zvuk hlasu pomocí vysoce neuronové síťové technologie a umožní vám tak více přirozeného řeči. |
+| [Analýza textu][ta-containers-keyphrase] | F0, S | **Extrakce klíčových frází** ( [Obrázek](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahuje klíčové fráze k identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
+| [Analýza textu][ta-containers-language] | F0, S | **Rozpoznávání jazyka** ( [Obrázek](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Pro až 120 jazyků rozpozná, který jazyk je vstupní text napsán, a nahlaste jeden kód jazyka pro každý dokument odeslaný na žádost. Kód jazyka spárovaný se skóre označuje sílu skóre. |
+| [Analýza textu][ta-containers-sentiment] | F0, S | **Analýza mínění V3** ( [Obrázek](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analyzuje nezpracovaný text pro potvrzení o kladné nebo záporné mínění. Tato verze analýzy mínění vrací popisky mínění (například *kladné* nebo *záporné* ) pro každý dokument a větu v něm. |
 | [Analýza textu][ta-containers-health] | F0, S | **Analýza textu pro stav** | Extrakce a označení lékařských informací z nestrukturovaného klinického textu. |
 | [Prostorová analýza][spa-containers] | S0 | **Prostorová analýza** | Analyzuje video streamování v reálném čase, které vám pomůže pochopit prostorové vztahy mezi lidmi, jejich pohybem a interakcemi s objekty ve fyzických prostředích. |
 
@@ -91,15 +91,15 @@ Kontejnery Azure Cognitive Services jsou veřejně dostupné prostřednictvím v
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete používat kontejnery Cognitive Services Azure, musíte splnit následující předpoklady:
 
-**Modul Docker**: musíte mít místně nainstalovaný modul Docker. Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms)a [Windows](https://docs.docker.com/docker-for-windows/). V systému Windows musí být Docker nakonfigurovaný tak, aby podporoval kontejnery Linux. Kontejnery Docker je také možné nasadit přímo do [služby Azure Kubernetes](../aks/index.yml) nebo [Azure Container Instances](../container-instances/index.yml).
+**Modul Docker** : musíte mít místně nainstalovaný modul Docker. Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms)a [Windows](https://docs.docker.com/docker-for-windows/). V systému Windows musí být Docker nakonfigurovaný tak, aby podporoval kontejnery Linux. Kontejnery Docker je také možné nasadit přímo do [služby Azure Kubernetes](../aks/index.yml) nebo [Azure Container Instances](../container-instances/index.yml).
 
 Docker musí být nakonfigurovaný tak, aby umožňoval kontejnerům připojit se a odeslat fakturační data do Azure.
 
-Seznamte **se s microsoft Container registry a Docker**: měli byste mít základní znalosti konceptů Microsoft Container registry a Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.
+Seznamte **se s microsoft Container registry a Docker** : měli byste mít základní znalosti konceptů Microsoft Container registry a Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů.
 
 Základní informace o Dockeru a kontejnerech najdete v článku [Docker Overview](https://docs.docker.com/engine/docker-overview/) (Přehled Dockeru).
 
