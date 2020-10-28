@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167946"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786424"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Osvědčené postupy pro konfiguraci clusteru (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Nakonfigurujte sdílený disk Azure jako určující disk.
 Informace o tom, jak začít, najdete v tématu [Konfigurace určujícího disku](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Podporovaný operační systém**: vše   
+**Podporovaný operační systém** : vše   
 
 
 ### <a name="cloud-witness"></a>Disk s kopií cloudu
@@ -66,7 +66,7 @@ Určující Cloud je typ určujícího disku kvora clusteru s podporou převzet�
 Informace o tom, jak začít, najdete v tématu [Konfigurace určujícího cloudu](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp).
 
 
-**Podporovaný operační systém**: Windows Server 2016 a novější   
+**Podporovaný operační systém** : Windows Server 2016 a novější   
 
 
 ### <a name="file-share-witness"></a>Určující sdílená složka
@@ -78,9 +78,9 @@ Pokud budete používat sdílenou složku Azure, můžete ji připojit ke stejn�
 Informace o tom, jak začít, najdete v tématu [Konfigurace určující sdílené složky](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Podporovaný operační systém**: Windows Server 2012 a novější   
+**Podporovaný operační systém** : Windows Server 2012 a novější   
 
-## <a name="connectivity"></a>Připojení
+## <a name="connectivity"></a>Možnosti připojení
 
 V tradičních místních síťových prostředích se SQL Server instance clusteru s podporou převzetí služeb při selhání jeví jako jediná instance SQL Server spuštěná v jednom počítači. Vzhledem k tomu, že instance clusteru s podporou převzetí služeb při selhání převezme služby při selhání z uzlu na uzel, název virtuální sítě (VNN) pro instanci poskytuje jednotný spojovací bod a umožňuje aplikacím připojit se k instanci SQL Server bez vědomí, který uzel je aktuálně aktivní. Když dojde k převzetí služeb při selhání, název virtuální sítě se zaregistruje do nového aktivního uzlu po jeho spuštění. Tento proces je transparentní pro klienta nebo aplikaci, které se připojují k SQL Server. tím se minimalizuje prostoje, ke kterým klient nebo aplikace při selhání dojde. Naslouchací proces skupiny dostupnosti také používá VNN ke směrování provozu do příslušné repliky. 
 
@@ -89,7 +89,7 @@ Použijte VNN s Azure Load Balancer nebo název distribuované sítě (DNN) ke s
 
 Následující tabulka porovnává podporu připojení HADR: 
 
-| |**Název virtuální sítě (VNN)**  |**Název distribuované sítě (DNN)**  |
+| |**Název Virtual Network (VNN)**  |**Název distribuované sítě (DNN)**  |
 |---------|---------|---------|
 |**Minimální verze operačního systému**| Vše | Windows Server 2016 |
 |**Minimální verze SQL Server** |Vše |SQL Server 2019 CU2 (pro FCI)<br/> SQL Server 2019 CU8 (pro AG)|
@@ -104,9 +104,9 @@ Při použití nástroje pro vyrovnávání zatížení existuje mírné zpožd�
 
 Pokud chcete začít, přečtěte si, jak nakonfigurovat Azure Load Balancer pro [instanci clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-vnn-azure-load-balancer-configure.md) nebo [skupinu dostupnosti](availability-group-vnn-azure-load-balancer-configure.md) .
 
-**Podporovaný operační systém**: vše   
-**Podporovaná verze SQL**: vše   
-**Podporované řešení hadr**: instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
+**Podporovaný operační systém** : vše   
+**Podporovaná verze SQL** : vše   
+**Podporované řešení hadr** : instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
 
 
 ### <a name="distributed-network-name-dnn"></a>Název distribuované sítě (DNN)
@@ -124,9 +124,9 @@ Většina funkcí SQL Server při použití DNN transparentně spolupracuje s FC
 
 Začněte tím, že se seznámíte s konfigurací prostředku názvu distribuované sítě pro [instanci clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-distributed-network-name-dnn-configure.md) nebo [skupinu dostupnosti](availability-group-distributed-network-name-dnn-listener-configure.md) .
 
-**Podporovaný operační systém**: Windows Server 2016 a novější   
-**Podporovaná verze SQL**: SQL Server 2019 CU2 (FCI) a SQL Server 2019 CU8 (AG)   
-**Podporované řešení hadr**: instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
+**Podporovaný operační systém** : Windows Server 2016 a novější   
+**Podporovaná verze SQL** : SQL Server 2019 CU2 (FCI) a SQL Server 2019 CU8 (AG)   
+**Podporované řešení hadr** : instance clusteru s podporou převzetí služeb při selhání a skupina dostupnosti   
 
 
 ## <a name="limitations"></a>Omezení
@@ -135,7 +135,7 @@ Při práci s FCI nebo skupinami dostupnosti a SQL Server v Azure Virtual Machin
 
 ### <a name="msdtc"></a>NÁSTROJE 
 
-Azure Virtual Machines podporuje Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm na sdílených svazcích clusteru (CSV) a [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) nebo na SQL Server virtuálních počítačích, které používají sdílené disky Azure. 
+Azure Virtual Machines podporuje Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm na sdílených svazcích clusteru (CSV) a [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) nebo na SQL Server virtuálních počítačích, které používají sdílené disky Azure. 
 
 V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 2016 nebo starší se sdílenými svazky clusteru, protože:
 
@@ -145,5 +145,4 @@ V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 201
 
 ## <a name="next-steps"></a>Další kroky
 
-Až zjistíte vhodné osvědčené postupy pro vaše řešení, začněte tím, že [připravíte SQL Server virtuální počítač pro FCI](failover-cluster-instance-prepare-vm.md) nebo vytvoříte skupinu dostupnosti pomocí [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShellu](availability-group-az-cli-configure.md)nebo [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md). 
-
+Až zjistíte vhodné osvědčené postupy pro vaše řešení, začněte tím, že [připravíte SQL Server virtuální počítač pro FCI](failover-cluster-instance-prepare-vm.md) nebo vytvoříte skupinu dostupnosti pomocí [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShellu](./availability-group-az-commandline-configure.md)nebo [šablon Azure pro rychlý Start](availability-group-quickstart-template-configure.md).

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443466"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787138"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrace existujících databází pro horizontální navýšení kapacity
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -72,7 +72,7 @@ V případě modelu s jedním nájemcem vytvořte **mapování seznamu mapován�
 
 ![Mapování seznamu][1]
 
-Model víceklientské aplikace přiřadí několik tenantů jednotlivým databázím (a můžete distribuovat skupiny klientů do více databází). Tento model použijte, pokud očekáváte, že každý tenant bude mít malé datové potřeby. V tomto modelu přiřaďte k databázi rozsah klientů pomocí **mapování rozsahu**.
+Model víceklientské aplikace přiřadí několik tenantů jednotlivým databázím (a můžete distribuovat skupiny klientů do více databází). Tento model použijte, pokud očekáváte, že každý tenant bude mít malé datové potřeby. V tomto modelu přiřaďte k databázi rozsah klientů pomocí **mapování rozsahu** .
 
 ![Mapování rozsahu][2]
 
@@ -150,7 +150,7 @@ Get-Shards -ShardMap $ShardMap
 Get-Mappings -ShardMap $ShardMap
 ```
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 Po dokončení instalace můžete začít používat klientskou knihovnu Elastic Database. Můžete také použít [Směrování závislé na datech](elastic-scale-data-dependent-routing.md) a [dotaz multi-horizontálních oddílů](elastic-scale-multishard-querying.md).
 
@@ -162,13 +162,13 @@ Nástroje jsou také na GitHubu: [Azure nebo elastické databáze-Tools](https:/
 
 Pomocí nástroje pro dělení k přesunu dat do nebo z modelu více tenantů na jeden model tenanta. Viz [Nástroj rozdělit sloučení](elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](saas-tenancy-app-design-patterns.md).
 
 ## <a name="questions-and-feature-requests"></a>Dotazy a žádosti o funkce
 
-V případě otázek použijte [stránku s otázkou Microsoft Q&SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) a pro žádosti o funkce, přidejte je do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
+V případě otázek použijte [stránku s otázkou Microsoft Q&SQL Database](/answers/topics/azure-sql-database.html) a pro žádosti o funkce, přidejte je do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png

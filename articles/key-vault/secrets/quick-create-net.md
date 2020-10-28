@@ -7,13 +7,13 @@ ms.date: 09/23/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 8d60c604ecde8607c0da8a125108e13683bdf6c8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 20974367b9d4b75bb9746cd065bc7490011f37ad
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058535"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786152"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Rychlý Start: Klientská knihovna Azure Key Vault tajných klíčů pro .NET (SDK v4)
 
@@ -21,7 +21,7 @@ Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro .NET Po
 
 [Referenční dokumentace k](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet&preserve-view=true)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/dotnet) .
 * [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core)
@@ -31,7 +31,7 @@ Tento rychlý Start používá `dotnet` a Azure CLI
 
 ## <a name="setup"></a>Nastavení
 
-Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
+Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](/dotnet/api/overview/azure/identity-readme#authenticate-the-client&preserve-view=true).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -122,7 +122,7 @@ Klientská knihovna Azure Key Vault tajných klíčů pro .NET umožňuje správ
 
 ### <a name="add-directives"></a>Přidat direktivy
 
-Do horní části *program.cs*přidejte následující direktivy:
+Do horní části *program.cs* přidejte následující direktivy:
 
 [!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 
@@ -149,7 +149,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValue | ConvertFrom-SecureString -AsPlainText
 ```
 
 ### <a name="retrieve-a-secret"></a>Načtení tajného kódu
@@ -177,7 +177,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
 ```azurepowershell
-(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValue | ConvertFrom-SecureString -AsPlainText
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

@@ -10,19 +10,19 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619980"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788277"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Veřejný koncový bod pro [spravovanou instanci](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) umožňuje přístup k datům ze spravované instance mimo [virtuální síť](../../virtual-network/virtual-networks-overview.md). K spravované instanci máte přístup z více tenantů služeb Azure, jako je Power BI, Azure App Service nebo místní síť. Pomocí veřejného koncového bodu na spravované instanci nemusíte používat síť VPN, která může pomoci vyhnout se problémům s propustností sítě VPN.
+Veřejný koncový bod pro [spravovanou instanci](./sql-managed-instance-paas-overview.md) umožňuje přístup k datům ze spravované instance mimo [virtuální síť](../../virtual-network/virtual-networks-overview.md). K spravované instanci máte přístup z více tenantů služeb Azure, jako je Power BI, Azure App Service nebo místní síť. Pomocí veřejného koncového bodu na spravované instanci nemusíte používat síť VPN, která může pomoci vyhnout se problémům s propustností sítě VPN.
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 > [!div class="checklist"]
 >
@@ -98,7 +98,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Zdroj**     |Jakákoli IP adresa nebo značka služby         |<ul><li>U služeb Azure, jako je Power BI, vyberte značku cloudová služba Azure.</li> <li>Pro váš počítač nebo virtuální počítač Azure použijte IP adresu překladu adres (NAT).</li></ul> |
     |**Rozsahy zdrojových portů**     |* |Nechte to * (any), protože zdrojové porty se obvykle dynamicky přiřazují a jako nepředvídatelné. |
-    |**Cíl**     |Všechny         |Ponechání cíle jako pro povolení provozu do podsítě spravované instance |
+    |**Cíl**     |Libovolná         |Ponechání cíle jako pro povolení provozu do podsítě spravované instance |
     |**Rozsahy cílových portů**     |3342         |Rozsah cílového portu na 3342, který je veřejným koncovým bodem spravované instance TDS |
     |**Protokol**     |TCP         |Spravovaná instance SQL používá protokol TCP pro TDS. |
     |**Akce**     |Povolit         |Povolit příchozí provoz do spravované instance prostřednictvím veřejného koncového bodu |
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Získání připojovacího řetězce veřejného koncového bodu spravované instance
 
 1. Přejděte na stránku konfigurace spravované instance, která je povolená pro veřejný koncový bod. V části konfigurace **Nastavení** vyberte kartu **připojovací řetězce** .
-1. Všimněte si, že název hostitele veřejného koncového bodu se nachází ve formátu <mi_name>. **Public**. <dns_zone>. Database.Windows.NET a port používaný pro připojení je 3342.
+1. Všimněte si, že název hostitele veřejného koncového bodu se nachází ve formátu <mi_name>. **Public** . <dns_zone>. Database.Windows.NET a port používaný pro připojení je 3342.
 
     ![Snímek obrazovky zobrazuje připojovací řetězce pro veřejné a privátní koncové body.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

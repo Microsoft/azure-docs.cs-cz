@@ -7,21 +7,21 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-js
-ms.openlocfilehash: 045589d3b1f0e376eaf854562d271a4483702997
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 35713a2e854cf65054d162ce0191bf2dfde4e90b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047892"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786135"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-javascript-v4"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro JavaScript (v4)
 
 Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro JavaScript Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
 
-[Referenční dokumentace k](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[Referenční dokumentace k](/javascript/api/overview/azure/key-vault-index)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Aktuální [Node.js](https://nodejs.org) pro váš operační systém.
@@ -30,7 +30,7 @@ Začínáme s klientskou knihovnou Azure Key Vault tajných klíčů pro JavaScr
 V tomto rychlém startu se předpokládá, že používáte rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) v okně terminálu Linux.
 
 ## <a name="setting-up"></a>Nastavení
-Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme).
+Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](/javascript/api/overview/azure/identity-readme).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

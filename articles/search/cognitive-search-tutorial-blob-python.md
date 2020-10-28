@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530999"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788077"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití Pythonu a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
@@ -32,7 +32,7 @@ Tento kurz používá Python a [rozhraní REST API pro vyhledávání](/rest/api
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
 + [Anaconda 3,7](https://www.anaconda.com/distribution/#download-section)
@@ -45,7 +45,7 @@ Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https
 
 1. Otevřete tuto [složku OneDrive](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) a v levém horním rohu klikněte na **Stáhnout** a zkopírujte soubory do počítače. 
 
-1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše**. Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
+1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše** . Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
 
 ## <a name="1---create-services"></a>1. vytvoření služeb
 
@@ -55,7 +55,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 ### <a name="start-with-azure-storage"></a>Začínáme s Azure Storage
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek**.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek** .
 
 1. Vyhledejte *účet úložiště* a vyberte nabídku účtu úložiště od Microsoftu.
 
@@ -63,13 +63,13 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Na kartě základy jsou vyžadovány následující položky. Přijměte výchozí hodnoty pro všechno ostatní.
 
-   + **Skupina prostředků**. Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
+   + **Skupina prostředků** . Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
 
-   + **Název účtu úložiště:** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus*. 
+   + **Název účtu úložiště:** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus* . 
 
    + **Umístění:** Pokud je to možné, vyberte stejné umístění, které se používá pro Azure Kognitivní hledání a Cognitive Services. Jediné místo má za vyrušení poplatky za šířku pásma.
 
-   + **Druh účtu**. Vyberte výchozí *StorageV2 (obecné účely v2)*.
+   + **Druh účtu** . Vyberte výchozí *StorageV2 (obecné účely v2)* .
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** službu vytvořte.
 
@@ -77,7 +77,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Klikněte na služba **BLOB** Service.
 
-1. Kliknutím na **+ kontejner** vytvořte kontejner a pojmenujte ho *ozubeného kola-Search-demo*.
+1. Kliknutím na **+ kontejner** vytvořte kontejner a pojmenujte ho *ozubeného kola-Search-demo* .
 
 1. Vyberte *ozubeného kola-Search-demo* a potom kliknutím na **Odeslat** otevřete složku, kam jste uložili soubory ke stažení. Vyberte všechny soubory bez imagí. Měli byste mít 7 souborů. Kliknutím na tlačítko **OK** nahrajte.
 
@@ -113,11 +113,11 @@ Stejně jako u služby Azure Blob Storage si pro získání přístupového klí
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla adresa URL koncového bodu `https://mydemo.search.windows.net` , název vaší služby by byl `mydemo` .
 
-2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Vytvořit účet úložiště" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Vytvořit účet úložiště" border="false":::
 
 Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech požadavků odeslaných službě. Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
@@ -194,7 +194,7 @@ V Azure Portal na stránce řídicí panel služby vyhledávání ověřte, že 
 
 ### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 
-V tomto kroku definujete sadu kroků obohacení, které se použijí na vaše data. Jednotlivým krokům rozšiřování se říká *dovednosti*, zatímco sada kroků rozšiřování je *sada dovedností*. V tomto kurzu se používá integrovaný program pro [rozpoznávání hlasu](cognitive-search-predefined-skills.md) pro dovednosti:
+V tomto kroku definujete sadu kroků obohacení, které se použijí na vaše data. Jednotlivým krokům rozšiřování se říká *dovednosti* , zatímco sada kroků rozšiřování je *sada dovedností* . V tomto kurzu se používá integrovaný program pro [rozpoznávání hlasu](cognitive-search-predefined-skills.md) pro dovednosti:
 
 + [Rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pro extrahování názvů organizací z obsahu v kontejneru objektů BLOB.
 

@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 661622b296a7a81a8d4c203e86a7c8d61c386e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 0da0a56a64aa9b4500d36da2f6c86fc4c07f4c0f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843222"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786050"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatizace rotace tajného klíče pro prostředky, které používají jednu sadu ověřovacích přihlašovacích údajů
 
@@ -34,7 +34,7 @@ V tomto kurzu se dozvíte, jak automatizovat pravidelnou rotaci tajných kódů 
 > [!NOTE]
 > Mezi kroky 3 a 4 by mohlo dojít k prodlevě. Během této doby se tajný kód v Key Vault nebude moci ověřit pro SQL Server. V případě selhání některého z kroků Event Grid opakování po dvou hodinách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault
@@ -44,10 +44,10 @@ Pokud nemáte existující Key Vault a SQL Server, můžete použít odkaz pod n
 
 [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. V části **Skupina prostředků**vyberte **vytvořit novou**. Pojmenujte skupinu **akvrotation**.
-1. V části **přihlášení správce SQL**zadejte přihlašovací jméno správce SQL. 
-1. Vyberte **Zkontrolovat a vytvořit**.
-1. Vyberte **Vytvořit**.
+1. V části **Skupina prostředků** vyberte **vytvořit novou** . Pojmenujte skupinu **akvrotation** .
+1. V části **přihlášení správce SQL** zadejte přihlašovací jméno správce SQL. 
+1. Vyberte **Zkontrolovat a vytvořit** .
+1. Vyberte **Vytvořit** .
 
     ![Vytvoření skupiny prostředků](../media/rotate-2.png)
 
@@ -84,14 +84,14 @@ Aplikace Function App vyžaduje tyto komponenty:
 
    [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
-1. V seznamu **Skupina prostředků** vyberte **akvrotation**.
-1. Do pole **název SQL serveru**zadejte název SQL serveru s heslem pro otočení.
-1. Do **Key Vault název**zadejte název trezoru klíčů.
-1. Do **Function App název**zadejte název aplikace Function App.
-1. Do **název tajného klíče**zadejte tajný název, kde bude uloženo heslo.
-1. Do pole **Adresa URL úložiště**zadejte umístění GitHubu pro kód funkce umístění ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git** ).
-1. Vyberte **Zkontrolovat a vytvořit**.
-1. Vyberte **Vytvořit**.
+1. V seznamu **Skupina prostředků** vyberte **akvrotation** .
+1. Do pole **název SQL serveru** zadejte název SQL serveru s heslem pro otočení.
+1. Do **Key Vault název** zadejte název trezoru klíčů.
+1. Do **Function App název** zadejte název aplikace Function App.
+1. Do **název tajného klíče** zadejte tajný název, kde bude uloženo heslo.
+1. Do pole **Adresa URL úložiště** zadejte umístění GitHubu pro kód funkce umístění ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git** ).
+1. Vyberte **Zkontrolovat a vytvořit** .
+1. Vyberte **Vytvořit** .
 
    ![Vybrat kontrolu + vytvořit](../media/rotate-3.png)
 
@@ -115,7 +115,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-Informace o tom, jak vytvořit aplikaci funkcí a použít spravovanou identitu pro přístup k Key Vault, najdete v tématu [Vytvoření aplikace Function App z Azure Portal](/azure/azure-functions/functions-create-function-app-portal), [použití spravované identity pro App Service a Azure Functions](/azure/app-service/overview-managed-identity)a [přiřazení zásad Key Vault přístupu pomocí Azure Portal](../general/assign-access-policy-portal.md).
+Informace o tom, jak vytvořit aplikaci funkcí a použít spravovanou identitu pro přístup k Key Vault, najdete v tématu [Vytvoření aplikace Function App z Azure Portal](../../azure-functions/functions-create-function-app-portal.md), [použití spravované identity pro App Service a Azure Functions](../../app-service/overview-managed-identity.md)a [přiřazení zásad Key Vault přístupu pomocí Azure Portal](../general/assign-access-policy-portal.md).
 
 ### <a name="rotation-function"></a>Funkce rotace
 Funkce nasazená v předchozím kroku používá událost k aktivaci rotace tajného kódu aktualizací Key Vault a SQL Database. 
@@ -207,7 +207,7 @@ Vytvoření tajného klíče s krátkým datem vypršení platnosti způsobí pu
 
 ## <a name="test-and-verify"></a>Testování a ověření
 
-Chcete-li ověřit, zda byl tajný klíč otočen, použijte **Key Vault**  >  **tajných klíčů**:
+Chcete-li ověřit, zda byl tajný klíč otočen, použijte **Key Vault**  >  **tajných klíčů** :
 
 ![Přejít k tajným klíčům](../media/rotate-8.png)
 
@@ -228,12 +228,12 @@ Webová aplikace vyžaduje tyto komponenty:
    [![Obrázek znázorňující tlačítko s názvem "nasadit do Azure".](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
 
 1. Vyberte skupinu prostředků **akvrotation** .
-1. Do pole **název SQL serveru**zadejte název SQL serveru s heslem pro otočení.
-1. Do **Key Vault název**zadejte název trezoru klíčů.
-1. Do **název tajného klíče**zadejte tajný název, kde je uložené heslo.
-1. Do pole **Adresa URL úložiště**zadejte umístění GitHubu pro kód webové aplikace ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** ).
-1. Vyberte **Zkontrolovat a vytvořit**.
-1. Vyberte **Vytvořit**.
+1. Do pole **název SQL serveru** zadejte název SQL serveru s heslem pro otočení.
+1. Do **Key Vault název** zadejte název trezoru klíčů.
+1. Do **název tajného klíče** zadejte tajný název, kde je uložené heslo.
+1. Do pole **Adresa URL úložiště** zadejte umístění GitHubu pro kód webové aplikace ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** ).
+1. Vyberte **Zkontrolovat a vytvořit** .
+1. Vyberte **Vytvořit** .
 
 
 ### <a name="open-the-web-app"></a>Otevření webové aplikace
@@ -242,7 +242,7 @@ Přejít na adresu URL nasazené aplikace:
  
 https://akvrotation-app.azurewebsites.net/
 
-Po otevření aplikace v prohlížeči se zobrazí **vygenerovaná tajná hodnota** a hodnota je **připojená k databázi** *true*.
+Po otevření aplikace v prohlížeči se zobrazí **vygenerovaná tajná hodnota** a hodnota je **připojená k databázi** *true* .
 
 ## <a name="learn-more"></a>Další informace
 

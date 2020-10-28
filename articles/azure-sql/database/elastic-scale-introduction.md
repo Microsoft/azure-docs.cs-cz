@@ -9,12 +9,12 @@ ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 1ec9884dbb8c3d02caaa7d8621905a32e7b1e36a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eb7984097b4edf34ed2f0214e1453246e12916f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84047542"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786747"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontální navýšení kapacity s Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Pomocí nástrojů **elastic Database** můžete snadno škálovat databáze v A
 * [Elastic Database Nástroj pro dělení a slučování](elastic-scale-overview-split-and-merge.md): přesouvá data mezi databázemi horizontálně dělené. Tento nástroj je užitečný pro přesun dat z víceklientské databáze do databáze s jedním tenanta (nebo naopak). Viz [kurz k nástroji elastické databáze Split-Merge](elastic-scale-configure-deploy-split-and-merge.md).
 * [Úlohy elastické databáze](elastic-jobs-overview.md): pomocí úloh můžete spravovat velký počet databází v Azure SQL Database. Pomocí úloh můžete snadno provádět operace správy, jako jsou změny schématu, Správa přihlašovacích údajů, aktualizace referenčních dat, shromažďování dat výkonu nebo shromažďování telemetrie klienta (zákazníka).
 * [Elastic Database dotaz](elastic-query-overview.md) (Preview): umožňuje spustit dotaz Transact-SQL, který zahrnuje více databází. To umožňuje připojení k nástrojům pro vytváření sestav, jako je Excel, Power BI, Tableau atd.
-* [Elastické transakce](elastic-transactions-overview.md): Tato funkce umožňuje spouštět transakce, které přesahují několik databází. Transakce elastické databáze jsou k dispozici pro aplikace .NET s využitím rozhraní ADO .NET a jsou integrovány se známým programovacím prostředím pomocí [tříd System. Transaction](https://msdn.microsoft.com/library/system.transactions.aspx).
+* [Elastické transakce](elastic-transactions-overview.md): Tato funkce umožňuje spouštět transakce, které přesahují několik databází. Transakce elastické databáze jsou k dispozici pro aplikace .NET s využitím rozhraní ADO .NET a jsou integrovány se známým programovacím prostředím pomocí [tříd System. Transaction](/dotnet/api/system.transactions).
 
 Následující obrázek ukazuje architekturu, která obsahuje **funkce elastic Database** ve vztahu ke kolekci databází.
 
@@ -33,7 +33,7 @@ V tomto obrázku barvy databáze reprezentují schémata. Databáze se stejnou b
 
 1. Sada **databází SQL** je hostovaná v Azure pomocí architektury horizontálního dělení.
 2. **Klientská knihovna elastic Database** se používá ke správě horizontálních oddílů sady.
-3. Podmnožina databází je vložena do **elastického fondu**. (Podívejte [se, co je to fond?](elastic-pool-overview.md)).
+3. Podmnožina databází je vložena do **elastického fondu** . (Podívejte [se, co je to fond?](elastic-pool-overview.md)).
 4. **Úloha elastic Database** spouští naplánované nebo ad hoc skripty T-SQL pro všechny databáze.
 5. **Nástroj pro dělení na sloučení** se používá k přesunu dat z jednoho horizontálních oddílů do jiného.
 6. **Dotaz elastic Database** umožňuje napsat dotaz, který zahrnuje všechny databáze ve horizontálních oddílů sadě.
@@ -104,4 +104,3 @@ Pokud chcete zobrazit konkrétní informace o elastickém fondu, Projděte si t�
 [2]:./media/elastic-scale-introduction/h_versus_vert.png
 [3]:./media/elastic-scale-introduction/overview.png
 [4]:./media/elastic-scale-introduction/single_v_multi_tenant.png
-

@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597969"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786067"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>Vytvoření definice SAS a načtení tokenů sdíleného přístupového podpisu v kódu
 
@@ -23,7 +23,7 @@ Svůj účet úložiště můžete spravovat pomocí tokenů sdíleného příst
 > [!NOTE]
 > Pro zabezpečení účtu úložiště doporučujeme použít [Access Control na základě rolí (RBAC)](../../storage/common/storage-auth-aad.md) a zajistit tak lepší zabezpečení a snadné použití při autorizaci pomocí sdíleného klíče.
 
-Tento článek poskytuje ukázky kódu .NET, který vytváří definici SAS a načítá tokeny SAS. Úplné podrobnosti najdete v našem příkladu [ShareLink](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/share-link/) , včetně vygenerovaného klienta pro účty úložiště spravované Key Vault. Informace o tom, jak vytvářet a ukládat tokeny SAS, najdete v tématech [Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI](overview-storage-keys.md) nebo [Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell](overview-storage-keys-powershell.md).
+Tento článek poskytuje ukázky kódu .NET, který vytváří definici SAS a načítá tokeny SAS. Úplné podrobnosti najdete v našem příkladu [ShareLink](/samples/azure/azure-sdk-for-net/share-link/) , včetně vygenerovaného klienta pro účty úložiště spravované Key Vault. Informace o tom, jak vytvářet a ukládat tokeny SAS, najdete v tématech [Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI](overview-storage-keys.md) nebo [Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Ukázky kódů
 
@@ -41,7 +41,7 @@ Po vytvoření definice SAS můžete načíst tokeny SAS jako tajné klíče pom
 
 Pokud se brzo vyprší platnost tokenu sdíleného přístupového podpisu, můžete znovu načíst stejný tajný klíč, abyste vygenerovali nový.
 
-Návod, jak použít načtený z Key Vault token SAS pro přístup ke službám Azure Storage, najdete v tématu [použití SAS účtu pro přístup k BLOB Service](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+Návod, jak použít načtený z Key Vault token SAS pro přístup ke službám Azure Storage, najdete v tématu [použití SAS účtu pro přístup k BLOB Service](../../storage/common/storage-account-sas-create-dotnet.md#use-an-account-sas-from-a-client)
 
 > [!NOTE]
 > Vaše aplikace musí být připravená na aktualizaci SAS, pokud získá 403 z úložiště, abyste mohli zpracovat případ, kdy byl klíč napadený, a potřebujete ho otočit rychleji než normální období rotace. 

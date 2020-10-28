@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84defa0704c44bb0ed4564195725f7dd1c42312c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936006"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788056"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití REST a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
@@ -30,7 +30,7 @@ V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](/rest
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
 + [Desktopová aplikace Postman](https://www.getpostman.com/)
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https
 
 1. Otevřete tuto [složku OneDrive](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) a v levém horním rohu klikněte na **Stáhnout** a zkopírujte soubory do počítače. 
 
-1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše**. Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
+1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše** . Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
 
 ## <a name="1---create-services"></a>1. vytvoření služeb
 
@@ -53,7 +53,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 ### <a name="start-with-azure-storage"></a>Začínáme s Azure Storage
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek**.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek** .
 
 1. Vyhledejte *účet úložiště* a vyberte nabídku účtu úložiště od Microsoftu.
 
@@ -61,13 +61,13 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Na kartě základy jsou vyžadovány následující položky. Přijměte výchozí hodnoty pro všechno ostatní.
 
-   + **Skupina prostředků**. Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
+   + **Skupina prostředků** . Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
 
-   + **Název účtu úložiště:** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus*. 
+   + **Název účtu úložiště:** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus* . 
 
    + **Umístění:** Pokud je to možné, vyberte stejné umístění, které se používá pro Azure Kognitivní hledání a Cognitive Services. Jediné místo má za vyrušení poplatky za šířku pásma.
 
-   + **Druh účtu**. Vyberte výchozí *StorageV2 (obecné účely v2)*.
+   + **Druh účtu** . Vyberte výchozí *StorageV2 (obecné účely v2)* .
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** službu vytvořte.
 
@@ -75,7 +75,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Klikněte na služba **BLOB** Service.
 
-1. Kliknutím na **+ kontejner** vytvořte kontejner a pojmenujte ho *ozubeného kola-Search-demo*.
+1. Kliknutím na **+ kontejner** vytvořte kontejner a pojmenujte ho *ozubeného kola-Search-demo* .
 
 1. Vyberte *ozubeného kola-Search-demo* a potom kliknutím na **Odeslat** otevřete složku, kam jste uložili soubory ke stažení. Vyberte všechny soubory bez imagí. Měli byste mít 7 souborů. Kliknutím na tlačítko **OK** nahrajte.
 
@@ -111,11 +111,11 @@ Stejně jako u služby Azure Blob Storage si pro získání přístupového klí
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla adresa URL koncového bodu `https://mydemo.search.windows.net` , název vaší služby by byl `mydemo` .
 
-2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-javascript/service-name-and-keys.png)
 
 Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech požadavků odeslaných službě. Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
@@ -123,7 +123,7 @@ Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech poža
 
 Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumání rozhraní REST API služby Azure kognitivní hledání pomocí služby post](search-get-started-postman.md).
 
-Metody žádosti použité v tomto kurzu jsou **post**, **Put**a **Get**. Tyto metody použijete k vytvoření čtyř volání rozhraní API vaší vyhledávací služby: vytvořit zdroj dat, dovednosti, index a indexer.
+Metody žádosti použité v tomto kurzu jsou **post** , **Put** a **Get** . Tyto metody použijete k vytvoření čtyř volání rozhraní API vaší vyhledávací služby: vytvořit zdroj dat, dovednosti, index a indexer.
 
 V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `api-key` na klíč rozhraní API pro správu služby Azure kognitivní hledání. Po nastavení hlaviček je můžete použít pro každý požadavek v tomto cvičení.
 
@@ -143,7 +143,7 @@ Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování
    https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
-1. V **textu**žádosti zkopírujte následující definici JSON a nahraďte ji `connectionString` skutečným připojením svého účtu úložiště. 
+1. V **textu** žádosti zkopírujte následující definici JSON a nahraďte ji `connectionString` skutečným připojením svého účtu úložiště. 
 
    Nezapomeňte také upravit název kontejneru. Navrhl (a) "ozubeného kola-Search-demo" pro název kontejneru v předchozím kroku.
 
@@ -173,7 +173,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
     https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
-1. Do **textu**žádosti ZKOPÍRUJTE definici JSON níže. Tento dovednosti se skládá z následujících integrovaných dovedností.
+1. Do **textu** žádosti ZKOPÍRUJTE definici JSON níže. Tento dovednosti se skládá z následujících integrovaných dovedností.
 
    | Tuhle                 | Popis    |
    |-----------------------|----------------|
@@ -258,7 +258,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
-1. Do **textu**žádosti zkopírujte následující definici JSON. Pole slouží k `content` uložení samotného dokumentu. Další pole pro `languageCode` , `keyPhrases` a `organizations` reprezentují nové informace (pole a hodnoty) vytvořené pomocí dovednosti.
+1. Do **textu** žádosti zkopírujte následující definici JSON. Pole slouží k `content` uložení samotného dokumentu. Další pole pro `languageCode` , `keyPhrases` a `organizations` reprezentují nové informace (pole a hodnoty) vytvořené pomocí dovednosti.
 
     ```json
     {
@@ -342,7 +342,7 @@ Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v konco
    https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
-1. Do **textu**žádosti ZKOPÍRUJTE definici JSON níže. Všimněte si elementů mapování polí; Tato mapování jsou důležitá, protože definují tok dat. 
+1. Do **textu** žádosti ZKOPÍRUJTE definici JSON níže. Všimněte si elementů mapování polí; Tato mapování jsou důležitá, protože definují tok dat. 
 
    Je `fieldMappings` zpracována před dovednosti a odesílá obsah ze zdroje dat do cílových polí v indexu. K odeslání existujícího nezměněného obsahu do indexu budete používat mapování polí. Pokud jsou názvy polí a typy na obou koncích stejné, není nutné žádné mapování.
 

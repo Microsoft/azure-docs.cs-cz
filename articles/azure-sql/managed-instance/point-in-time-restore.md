@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 9b4d0fadf157ce1eef6821ccbc32f5725aea611f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31be497d017cb60de6f46d7657889c9c1fabef4a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616512"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788345"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze ve spravované instanci Azure SQL k předchozímu bodu v čase
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,9 +46,9 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 |           |Obnovení existující databáze na stejnou instanci spravované instance SQL| Obnovit existující databázi do jiné spravované instance SQL|Obnovit vyřazenou databázi do stejné spravované instance SQL|Obnovit vyřazenou databázi do jiné spravované instance SQL|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Yes|No |Yes|No|
-|**Azure CLI**|Yes |Yes |No|No|
-|**PowerShell**| Yes|Yes |Yes|Yes|
+|**Azure Portal**| Ano|Ne |Ano|Ne|
+|**Azure CLI**|Ano |Ano |Ne|Ne|
+|**PowerShell**| Ano|Ano |Ano|Ano|
 
 ## <a name="restore-an-existing-database"></a>Obnovení existující databáze
 
@@ -56,7 +56,7 @@ Obnovte stávající databázi na stejnou spravovanou instanci SQL pomocí Azure
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. Přejít do spravované instance SQL a vybrat databázi, kterou chcete obnovit.
 3. Na stránce databáze vyberte **obnovit** :
 
@@ -67,7 +67,7 @@ Obnovte stávající databázi na stejnou spravovanou instanci SQL pomocí Azure
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokud ještě nemáte nainstalované Azure PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud ještě nemáte nainstalované Azure PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 Chcete-li obnovit databázi pomocí prostředí PowerShell, zadejte hodnoty pro parametry v následujícím příkazu. Pak spusťte příkaz:
 
@@ -106,7 +106,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceName $targetInstanceName 
 ```
 
-Podrobnosti najdete v tématu [Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase).
+Podrobnosti najdete v tématu [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-Podrobné vysvětlení dostupných parametrů naleznete v dokumentaci k rozhraní [příkazového řádku pro obnovení databáze ve spravované instanci SQL](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore).
+Podrobné vysvětlení dostupných parametrů naleznete v dokumentaci k rozhraní [příkazového řádku pro obnovení databáze ve spravované instanci SQL](/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore).
 
 ---
 
@@ -139,7 +139,7 @@ Obnovení odstraněné databáze se dá provést pomocí PowerShellu nebo Azure 
 ### <a name="portal"></a>Portál 
 
 
-Chcete-li obnovit spravovanou databázi pomocí Azure Portal, otevřete stránku Přehled spravované instance SQL a vyberte **odstraněné databáze**. Vyberte odstraněnou databázi, kterou chcete obnovit, a zadejte název nové databáze, která bude vytvořena s daty obnovenými ze zálohy.
+Chcete-li obnovit spravovanou databázi pomocí Azure Portal, otevřete stránku Přehled spravované instance SQL a vyberte **odstraněné databáze** . Vyberte odstraněnou databázi, kterou chcete obnovit, a zadejte název nové databáze, která bude vytvořena s daty obnovenými ze zálohy.
 
   ![Snímek obrazovky obnovení odstraněné databáze Azure SQL instance](./media/point-in-time-restore/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -205,13 +205,13 @@ DROP DATABASE WorldWideImporters;
 
 Pomocí jedné z následujících metod se připojte k databázi ve spravované instanci SQL:
 
-- [SSMS/Azure Data Studio přes virtuální počítač Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Připojení typu point-to-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Veřejný koncový bod](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [SSMS/Azure Data Studio přes virtuální počítač Azure](./connect-vm-instance-configure.md)
+- [Připojení typu point-to-site](./point-to-site-p2s-configure.md)
+- [Veřejný koncový bod](./public-endpoint-configure.md)
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-V Azure Portal vyberte databázi ze spravované instance SQL a pak vyberte **Odstranit**.
+V Azure Portal vyberte databázi ze spravované instance SQL a pak vyberte **Odstranit** .
 
    ![Odstranění databáze pomocí Azure Portal](./media/point-in-time-restore/delete-database-from-mi.png)
 
@@ -247,9 +247,9 @@ ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 
 Pro připojení k databázi ve spravované instanci SQL použijte jednu z následujících metod:
 
-- [Virtuální počítač Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [Připojení typu point-to-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Veřejný koncový bod](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Virtuální počítač Azure](./connect-vm-instance-configure.md)
+- [Připojení typu point-to-site](./point-to-site-p2s-configure.md)
+- [Veřejný koncový bod](./public-endpoint-configure.md)
 
 ## <a name="next-steps"></a>Další kroky
 

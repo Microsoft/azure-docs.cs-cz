@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 36c15907c0f45befacf35389652f6d91c0ab1958
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341239"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787903"
 ---
 # <a name="planning-and-operations-guide"></a>Průvodce plánováním a provozem
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -207,9 +207,9 @@ I když tento článek nemá záměr, který vám pomůže vytvořit vlastní pl
 
 Výstrahy služby Security Center můžete použít během následujících fází:
 
-* **Detekce**: Identifikace podezřelé aktivity v jednom nebo několika prostředcích.
-* **Posouzení**: Počáteční zhodnocení a získávání dalších informací o podezřelé aktivitě.
-* **Diagnóza**: Technické vyřešení problému podle nápravných kroků.
+* **Detekce** : Identifikace podezřelé aktivity v jednom nebo několika prostředcích.
+* **Posouzení** : Počáteční zhodnocení a získávání dalších informací o podezřelé aktivitě.
+* **Diagnóza** : Technické vyřešení problému podle nápravných kroků.
 
 Každá výstraha zabezpečení poskytuje informace, které umožňují lepší pochopení povahy útoku a navrhují možné kroky ke zmírnění dopadu. Některé výstrahy obsahují i odkazy na další informace nebo další zdroje informací v Azure. Poskytnuté informace můžete využít k dalšímu výzkumu a nápravným krokům. Můžete také prohledávat data související se zabezpečením, která jsou uložena ve vašem pracovním prostoru.
 

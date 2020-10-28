@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 340cdd97e7097a9fe6f0653d9f50f5a5cc41f890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740922"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787954"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Kurz: prohledávatelný obsah generovaný AI z objektů blob Azure pomocí sady .NET SDK
 
@@ -36,7 +36,7 @@ V tomto kurzu se používá C# a Klientská knihovna **Azure.Search.Documents** 
 
 Dovednosti využívá integrované dovednosti založené na rozhraní API služeb Cognitive Services. Mezi kroky v kanálu patří optické rozpoznávání znaků (OCR) na obrázcích, rozpoznávání jazyka na textu, extrakce klíčových frází a rozpoznávání entit (organizace). Nové informace jsou uloženy v nových polích, která lze využít v dotazech, omezujících vlastnostech a filtrech.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * [ Balíček NuGetAzure.Search.Documents 11. x](https://www.nuget.org/packages/Azure.Search.Documents) 
@@ -52,7 +52,7 @@ Ukázková data se skládají ze 14 souborů smíšeného obsahu, které v pozd�
 
 1. Otevřete tuto [složku OneDrive](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) a v levém horním rohu klikněte na **Stáhnout** a zkopírujte soubory do počítače. 
 
-1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše**. Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
+1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše** . Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
 
 Můžete si také stáhnout zdrojový kód pro tento kurz. Zdrojový kód je ve složce **tutorial-AI-obohacení/V11** v úložišti [Azure-Search-dotnet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) .
 
@@ -64,7 +64,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 ### <a name="start-with-azure-storage"></a>Začínáme s Azure Storage
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek**.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek** .
 
 1. Vyhledejte *účet úložiště* a vyberte nabídku účtu úložiště od Microsoftu.
 
@@ -72,13 +72,13 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Na kartě základy jsou vyžadovány následující položky. Přijměte výchozí hodnoty pro všechno ostatní.
 
-   * **Skupina prostředků**. Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
+   * **Skupina prostředků** . Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
 
-   * **Název účtu úložiště:** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus*. 
+   * **Název účtu úložiště:** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus* . 
 
    * **Umístění:** Pokud je to možné, vyberte stejné umístění, které se používá pro Azure Kognitivní hledání a Cognitive Services. Jediné místo má za vyrušení poplatky za šířku pásma.
 
-   * **Druh účtu**. Vyberte výchozí *StorageV2 (obecné účely v2)*.
+   * **Druh účtu** . Vyberte výchozí *StorageV2 (obecné účely v2)* .
 
 1. Kliknutím na tlačítko **zkontrolovat + vytvořit** službu vytvořte.
 
@@ -86,7 +86,7 @@ Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pr
 
 1. Klikněte na služba **BLOB** Service.
 
-1. Kliknutím na **+ kontejner** vytvořte kontejner a pojmenujte ho *ozubeného kola-Search-demo*.
+1. Kliknutím na **+ kontejner** vytvořte kontejner a pojmenujte ho *ozubeného kola-Search-demo* .
 
 1. Vyberte *ozubeného kola-Search-demo* a potom kliknutím na **Odeslat** otevřete složku, kam jste uložili soubory ke stažení. Vyberte všechny čtrnáct souborů a kliknutím na **OK** nahrávání nahrajte.
 
@@ -124,11 +124,11 @@ Abyste mohli komunikovat se službou Azure Kognitivní hledání, budete potřeb
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **Nastavení**  >  **klíče**Zkopírujte klíč správce pro plná práva ke službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **Nastavení**  >  **klíče** Zkopírujte klíč správce pro plná práva ke službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-javascript/service-name-and-keys.png)
 
 Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -146,7 +146,7 @@ Pro tento projekt nainstalujte verzi 11 nebo novější z `Azure.Search.Document
 
 1. Vyhledejte [Azure.Search.Document](https://www.nuget.org/packages/Azure.Search.Documents).
 
-1. Vyberte nejnovější verzi a pak klikněte na **nainstalovat**.
+1. Vyberte nejnovější verzi a pak klikněte na **nainstalovat** .
 
 1. Zopakováním předchozích kroků nainstalujte [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) a [Microsoft.Extensions.Configuration.Jsna](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json).
 
@@ -154,11 +154,11 @@ Pro tento projekt nainstalujte verzi 11 nebo novější z `Azure.Search.Document
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **Přidat**  >  **novou položku...** 
 
-1. Zadejte název souboru `appsettings.json` a vyberte **Přidat**. 
+1. Zadejte název souboru `appsettings.json` a vyberte **Přidat** . 
 
 1. Zahrnout tento soubor do výstupního adresáře.
-    1. Klikněte pravým tlačítkem na `appsettings.json` a vyberte **vlastnosti**. 
-    1. Změňte hodnotu **Kopírovat do výstupního adresáře** na **Kopírovat, pokud je novější**.
+    1. Klikněte pravým tlačítkem na `appsettings.json` a vyberte **vlastnosti** . 
+    1. Změňte hodnotu **Kopírovat do výstupního adresáře** na **Kopírovat, pokud je novější** .
 
 1. Zkopírujte následující kód JSON do nového souboru JSON.
 
@@ -173,7 +173,7 @@ Pro tento projekt nainstalujte verzi 11 nebo novější z `Azure.Search.Document
 
 Přidejte službu Search a informace o účtu úložiště objektů BLOB. Odvolání, že tyto informace můžete získat z kroků zřizování služby, které jsou uvedené v předchozí části.
 
-Pro **SearchServiceUri**zadejte úplnou adresu URL.
+Pro **SearchServiceUri** zadejte úplnou adresu URL.
 
 ### <a name="add-namespaces"></a>Přidat obory názvů
 
@@ -285,7 +285,7 @@ Sestavte a spusťte řešení. Vzhledem k tomu, že se jedná o váš první po�
 
 ### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 
-V této části definujete sadu kroků obohacení, které chcete použít pro vaše data. Každý krok obohacení se nazývá *dovednost* a sada kroků rozšíření *dovednosti*. V tomto kurzu se používá integrovaný program pro [rozpoznávání hlasu](cognitive-search-predefined-skills.md) pro dovednosti:
+V této části definujete sadu kroků obohacení, které chcete použít pro vaše data. Každý krok obohacení se nazývá *dovednost* a sada kroků rozšíření *dovednosti* . V tomto kurzu se používá integrovaný program pro [rozpoznávání hlasu](cognitive-search-predefined-skills.md) pro dovednosti:
 
 * [Optické rozpoznávání znaků](cognitive-search-skill-ocr.md) pro rozpoznávání vytištěného a rukopisného textu v souborech obrázků.
 
@@ -580,7 +580,7 @@ V tomto cvičení použijeme následující pole a jejich typy:
 
 Pole pro tento index jsou definována pomocí třídy modelu. Každá vlastnost třídy modelu má atributy, které určují chování odpovídajícího pole indexu při vyhledávání. 
 
-Přidáme třídu modelu do nového souboru jazyka C#. Klikněte pravým tlačítkem na projekt a vyberte **Přidat**  >  **novou položku...**, vyberte "třídu" a pojmenujte soubor a `DemoIndex.cs` pak vyberte **Přidat**.
+Přidáme třídu modelu do nového souboru jazyka C#. Klikněte pravým tlačítkem na projekt a vyberte **Přidat**  >  **novou položku...** , vyberte "třídu" a pojmenujte soubor a `DemoIndex.cs` pak vyberte **Přidat** .
 
 Nezapomeňte určit, že chcete použít typy z `Azure.Search.Documents.Indexes` `System.Text.Json.Serialization` oboru názvů a.
 
@@ -826,13 +826,13 @@ V rámci služby Azure Kognitivní hledání tutorial konzolové aplikace typick
 
 Nejjednodušší možnost je [Průzkumník vyhledávání](search-explorer.md) na portálu. Nejdřív můžete spustit prázdný dotaz, který vrátí všechny dokumenty, nebo cílené hledání, které vrátí nový obsah pole vytvořený kanálem. 
 
-1. V Azure Portal na stránce Přehled hledání vyberte **indexy**.
+1. V Azure Portal na stránce Přehled hledání vyberte **indexy** .
 
 1. **`demoindex`** V seznamu vyhledejte. Měl by obsahovat 14 dokumentů. Pokud je počet dokumentů nulový, indexer je buď stále spuštěný, nebo se stránka ještě neaktualizovala. 
 
-1. Vyberte **`demoindex`**. První karta je Průzkumník vyhledávání.
+1. Vyberte **`demoindex`** . První karta je Průzkumník vyhledávání.
 
-1. Obsah lze prohledávat ihned po načtení prvního dokumentu. Chcete-li ověřit existenci obsahu, spusťte nespecifikovaný dotaz kliknutím na tlačítko **Hledat**. Tento dotaz vrátí všechny aktuálně indexované dokumenty a poskytne vám představu o tom, co index obsahuje.
+1. Obsah lze prohledávat ihned po načtení prvního dokumentu. Chcete-li ověřit existenci obsahu, spusťte nespecifikovaný dotaz kliknutím na tlačítko **Hledat** . Tento dotaz vrátí všechny aktuálně indexované dokumenty a poskytne vám představu o tom, co index obsahuje.
 
 1. V dalším kroku vložte následující řetězec pro více spravovatelných výsledků: `search=*&$select=id, languageCode, organizations`
 

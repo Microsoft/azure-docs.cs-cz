@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 26e1852058383ef1e4cc4b3b604e1bdc79d60e14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612179"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786271"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI
 
@@ -32,13 +32,13 @@ Když použijete funkci klíče spravovaného účtu úložiště, vezměte v ú
 
 Doporučujeme používat Azure Storage integraci s Azure Active Directory (Azure AD), což je cloudová služba pro správu identit a přístupu od Microsoftu. Integrace Azure AD je k dispozici pro [objekty BLOB a fronty Azure](../../storage/common/storage-auth-aad.md)a poskytuje přístup založený na tokenech OAuth2 k Azure Storage (stejně jako Azure Key Vault).
 
-Azure AD umožňuje ověřování klientské aplikace pomocí identity aplikace nebo uživatele místo přihlašovacích údajů k účtu úložiště. Při spuštění v Azure můžete použít [spravovanou identitu Azure AD](/azure/active-directory/managed-identities-azure-resources/) . Spravované identity odstraňují nutnost ověřování klientů a ukládání přihlašovacích údajů do aplikace nebo s vaší aplikací.
+Azure AD umožňuje ověřování klientské aplikace pomocí identity aplikace nebo uživatele místo přihlašovacích údajů k účtu úložiště. Při spuštění v Azure můžete použít [spravovanou identitu Azure AD](../../active-directory/managed-identities-azure-resources/index.yml) . Spravované identity odstraňují nutnost ověřování klientů a ukládání přihlašovacích údajů do aplikace nebo s vaší aplikací.
 
 Azure AD používá řízení přístupu na základě role (RBAC) ke správě autorizací, která je taky podporovaná Key Vault.
 
 ## <a name="service-principal-application-id"></a>ID aplikace instančního objektu
 
-Tenant služby Azure AD poskytuje každou registrovanou aplikaci s [instančním objektem](/azure/active-directory/develop/developer-glossary#service-principal-object). Instanční objekt slouží jako ID aplikace, které se během autorizačního nastavení používá pro přístup k jiným prostředkům Azure prostřednictvím RBAC.
+Tenant služby Azure AD poskytuje každou registrovanou aplikaci s [instančním objektem](../../active-directory/develop/developer-glossary.md#service-principal-object). Instanční objekt slouží jako ID aplikace, které se během autorizačního nastavení používá pro přístup k jiným prostředkům Azure prostřednictvím RBAC.
 
 Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klientech Azure AD. Key Vault je zaregistrované pod stejným ID aplikace v každém cloudu Azure.
 
@@ -46,14 +46,14 @@ Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejný Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Jiné  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Ostatní  | Libovolná | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li dokončit tuto příručku, je třeba nejprve provést následující akce:
 
 - [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
-- [Vytvoření trezoru klíčů](quick-create-cli.md)
+- [Vytvořte trezor klíčů.](quick-create-cli.md)
 - [Vytvořte účet úložiště Azure](../../storage/common/storage-account-create.md?tabs=azure-cli). Název účtu úložiště musí obsahovat jenom malá písmena a číslice. Název musí mít délku 3 až 24 znaků.
       
 ## <a name="manage-storage-account-keys"></a>Správa klíčů účtu úložiště
@@ -163,6 +163,6 @@ Výstup tohoto příkazu zobrazí řetězec definice SAS jako `value` .
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [klíčích, tajných klíčích a certifikátech](https://docs.microsoft.com/rest/api/keyvault/).
-- Projděte si články na [blogu Azure Key Vault týmu](https://blogs.technet.microsoft.com/kv/).
-- Viz Referenční dokumentace k [úložišti klíčů AZ klíčů trezor](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) .
+- Přečtěte si další informace o [klíčích, tajných klíčích a certifikátech](/rest/api/keyvault/).
+- Projděte si články na [blogu Azure Key Vault týmu](/archive/blogs/kv/).
+- Viz Referenční dokumentace k [úložišti klíčů AZ klíčů trezor](/cli/azure/keyvault/storage?view=azure-cli-latest) .

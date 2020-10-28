@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 8998f03fa44529a5f006936a01f711a279178245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e15a8dc5e9f918c630397d6d6593f5bf561755
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84045680"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786900"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Nejčastější dotazy k nástrojům elastické databáze (FAQ)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,11 @@ Nepoužívejte přihlašovací údaje ve formátu "User ID = username@servername
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Potřebuji vytvořit správce map horizontálních oddílů a naplnit horizontálních oddílů při každém spuštění aplikací
 
-Ne – vytvoření správce map horizontálních oddílů (například [ShardMapManagerFactory. CreateSqlShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) je jednorázová operace.  Vaše aplikace by měla při spuštění aplikace použít volání [ShardMapManagerFactory. TryGetSqlShardMapManager ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) .  Každé doméně aplikace by mělo být pouze jedno takové volání.
+Ne – vytvoření správce map horizontálních oddílů (například [ShardMapManagerFactory. CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)) je jednorázová operace.  Vaše aplikace by měla při spuštění aplikace použít volání [ShardMapManagerFactory. TryGetSqlShardMapManager ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager) .  Každé doméně aplikace by mělo být pouze jedno takové volání.
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Mám dotazy týkající se používání nástrojů elastické databáze, jak se jim zobrazí odpovědi
 
-Pokud chcete SQL Database, obraťte se na nás na [stránce s dotazem na Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
+Pokud chcete SQL Database, obraťte se na nás na [stránce s dotazem na Microsoft Q&](/answers/topics/azure-sql-database.html).
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Když získám připojení k databázi pomocí horizontálního dělení klíče, pořád se dají dotazovat na data dalších klíčů horizontálního dělení na stejném horizontálních oddílů.  Je to záměrné
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40afce24fad6bd793a625b11dc5a84f1f021ace
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566988"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786492"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Nejčastější dotazy k SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > SQL Server na virtuálních počítačích Azure, včetně těch, které se nasazují z vlastních zobecněných imagí, by mělo být [zaregistrované u poskytovatele prostředků virtuálního počítače SQL](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) , aby splnil požadavky na dodržování předpisů a využili volitelné funkce, jako jsou automatické opravy a automatické zálohování. Poskytovatel prostředků taky umožňuje [zadat typ licence](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) pro každý virtuální počítač SQL Server.
+   > SQL Server na virtuálních počítačích Azure, včetně těch, které se nasazují z vlastních zobecněných imagí, by mělo být [zaregistrované u poskytovatele prostředků virtuálního počítače SQL](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash) , aby splnil požadavky na dodržování předpisů a využili volitelné funkce, jako jsou automatické opravy a automatické zálohování. Poskytovatel prostředků taky umožňuje [zadat typ licence](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal) pro každý virtuální počítač SQL Server.
 
 1. **Můžu pomocí vlastního virtuálního pevného disku nasadit SQL Server virtuální počítač?**
 
@@ -85,7 +85,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
    Nejdřív vytvořte virtuální počítač Azure s instancí SQL Server. Pak migrujte své místní databáze do této instance. Informace o strategiích migrace dat najdete v tématu [migrace databáze SQL Server pro SQL Server na virtuálním počítači Azure](migrate-to-vm-from-sql-server.md).
 
-## <a name="licensing"></a>Licensing
+## <a name="licensing"></a>Licencování
 
 1. **Jak můžu na virtuální počítač Azure nainstalovat licencovanou kopii SQL Serveru?**
 
@@ -145,11 +145,11 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
  
    Ano, pokud byl virtuální počítač SQL Server nasazený ve veřejném cloudu pomocí modelu Správce prostředků, a ne klasického modelu. Všichni ostatní zákazníci se můžou zaregistrovat u nového poskytovatele prostředků virtuálního počítače SQL Server. Vlastní licenci ale můžou používat jenom zákazníci s výhodou [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3) , a to aktivací [zvýhodněné hybridní využití Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) na SQL serverm virtuálním počítači. 
 
-1. **Co se stane s prostředkem poskytovatele prostředků (_Microsoft. SqlVirtualMachine_), pokud je prostředek virtuálního počítače přesunutý nebo vyřazený?** 
+1. **Co se stane s prostředkem poskytovatele prostředků ( _Microsoft. SqlVirtualMachine_ ), pokud je prostředek virtuálního počítače přesunutý nebo vyřazený?** 
 
    Po vyřazení nebo přesunutí prostředku Microsoft. COMPUTE/VirtualMachine je přidružený prostředek Microsoft. SqlVirtualMachine upozorněn na asynchronní replikaci operace.
 
-1. **Co se stane s virtuálním počítačem, pokud je prostředek poskytovatele prostředků (_Microsoft. SqlVirtualMachine_) vyřazený?**
+1. **Co se stane s virtuálním počítačem, pokud je prostředek poskytovatele prostředků ( _Microsoft. SqlVirtualMachine_ ) vyřazený?**
 
     Prostředek Microsoft. COMPUTE/VirtualMachine nemá vliv na vyřazení prostředku Microsoft. SqlVirtualMachine. Změny licencí se ale nastaví jako výchozí zpátky na původní zdroj bitové kopie. 
 
@@ -169,13 +169,13 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Můžu odinstalovat výchozí instanci SQL Serveru?**
 
-   Ano, měli byste však vzít v úvahu několik skutečností. V závislosti na modelu licence pro virtuální počítač se může dál vyskytnout SQL Server – fakturace přidružená k. Za druhé, jak je uvedeno v předchozí odpovědi, jsou k dispozici funkce, které spoléhají na [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud odinstalujete výchozí instanci bez odebrání rozšíření IaaS, rozšíření bude i nadále hledat výchozí instanci a může generovat chyby protokolu událostí. Tyto chyby jsou z následujících dvou zdrojů: **Microsoft SQL Server Správa přihlašovacích údajů** a **Agent Microsoft SQL Server IaaS**. Následuje příklad jedné z chyb:
+   Ano, měli byste však vzít v úvahu několik skutečností. V závislosti na modelu licence pro virtuální počítač se může dál vyskytnout SQL Server – fakturace přidružená k. Za druhé, jak je uvedeno v předchozí odpovědi, jsou k dispozici funkce, které spoléhají na [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud odinstalujete výchozí instanci bez odebrání rozšíření IaaS, rozšíření bude i nadále hledat výchozí instanci a může generovat chyby protokolu událostí. Tyto chyby jsou z následujících dvou zdrojů: **Microsoft SQL Server Správa přihlašovacích údajů** a **Agent Microsoft SQL Server IaaS** . Následuje příklad jedné z chyb:
 
       Při navazování připojení k SQL Serveru došlo k chybě související se sítí nebo konkrétní instancí. Server se nenašel nebo nebyl dostupný.
 
    Pokud se rozhodnete odinstalovat výchozí instanci, odinstalujte taky [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md) . 
 
-1. Můžu **použít pojmenovanou instanci SQL Server s rozšířením IaaS**?
+1. Můžu **použít pojmenovanou instanci SQL Server s rozšířením IaaS** ?
    
    Ano, pokud je pojmenovaná instance jedinou instancí na SQL Server a v případě, že původní výchozí instance byla [správně odinstalována](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance). Pokud není k dispozici žádná výchozí instance a na jednom virtuálním počítači SQL Server existuje více pojmenovaných instancí, rozšíření agenta SQL Server IaaS se nepodaří nainstalovat. 
 
@@ -210,7 +210,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Můžu upgradovat SQL Server 2008/2008 R2 po registraci pomocí poskytovatele prostředků SQL Server virtuálního počítače?**
 
-   Ano. K upgradu verze a edice SQL Server můžete použít libovolné instalační médium a pak můžete upgradovat [IaaS režim rozšíření SQL](sql-vm-resource-provider-register.md#management-modes), a to z _žádného agenta_ na _úplný_. Díky tomu budete mít přístup ke všem výhodám rozšíření SQL IaaS, jako je Správa portálu, automatizované zálohování a automatizované opravy. 
+   Ano. K upgradu verze a edice SQL Server můžete použít libovolné instalační médium a pak můžete upgradovat [IaaS režim rozšíření SQL](sql-vm-resource-provider-register.md#management-modes), a to z _žádného agenta_ na _úplný_ . Díky tomu budete mít přístup ke všem výhodám rozšíření SQL IaaS, jako je Správa portálu, automatizované zálohování a automatizované opravy. 
 
 1. **Jak získám bezplatné rozšířené aktualizace zabezpečení pro instance SQL Serveru 2008 a SQL Serveru 2008 R2 na konci podpory?**
 
@@ -241,7 +241,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-**Virtuální počítače s Windows**:
+**Virtuální počítače s Windows** :
 
 * [Přehled SQL Server na virtuálním počítači s Windows](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Zřízení SQL Server na virtuálním počítači s Windows](create-sql-vm-portal.md)
@@ -250,9 +250,9 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 * [Osvědčené postupy výkonu pro SQL Server v Azure Virtual Machines](performance-guidelines-best-practices.md)
 * [Modely aplikací a vývojové strategie pro SQL Server v Azure Virtual Machines](application-patterns-development-strategies.md)
 
-**Virtuální počítače se systémem Linux**:
+**Virtuální počítače se systémem Linux** :
 
 * [Přehled SQL Server na virtuálním počítači se systémem Linux](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Zřízení SQL Server na virtuálním počítači se systémem Linux](../linux/sql-vm-create-portal-quickstart.md)
 * [Nejčastější dotazy (Linux)](../linux/frequently-asked-questions-faq.md)
-* [Dokumentace k SQL Server on Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Dokumentace k SQL Server on Linux](/sql/linux/sql-server-linux-overview)

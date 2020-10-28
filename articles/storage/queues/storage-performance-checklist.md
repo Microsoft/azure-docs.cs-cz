@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89008399"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787376"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště Queue
 
@@ -52,7 +52,7 @@ Tento článek organizuje osvědčené postupy pro výkon do kontrolního seznam
 
 Pokud vaše aplikace přistupuje k některým cílům škálovatelnosti nebo překročí, může dojít ke zvýšené latenci transakcí nebo omezování. Když aplikace Azure Storage omezí vaši aplikaci, začne služba vracet kódy chyb 503 (zaneprázdněný serverem) nebo 500 (časový limit operace). Zamezení těchto chyb zachováním omezení cílů škálovatelnosti je důležitou součástí zvýšení výkonu aplikace.
 
-Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
+Další informace o cílech škálovatelnosti pro Služba front najdete v tématu [Azure Storage cíle škálovatelnosti a výkonu](./scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximální počet účtů úložiště
 
@@ -128,7 +128,7 @@ Před otevřením připojení nastavte limit připojení.
 
 Další programovací jazyky najdete v dokumentaci k příslušnému jazyku, kde zjistíte, jak nastavit limit připojení.  
 
-Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>Zvýšení minimálního počtu vláken
 
@@ -146,7 +146,7 @@ I když paralelismus může být ideální pro výkon, buďte opatrní v použí
 
 ## <a name="client-libraries-and-tools"></a>Klientské knihovny a nástroje
 
-Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu. Další informace najdete v [dokumentaci Azure Storage reference](/azure/storage/#reference).
+Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu. Další informace najdete v [dokumentaci Azure Storage reference](./reference.md).
 
 ## <a name="handle-service-errors"></a>Zpracování chyb služby
 

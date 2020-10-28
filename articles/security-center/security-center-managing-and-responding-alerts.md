@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e17c7d6618d67d66c89875696c5c529af3a85ea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440557"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785914"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Správa a reakce na upozornění zabezpečení ve službě Azure Security Center
 
@@ -46,7 +46,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
    ![Výstrahy zabezpečení ve službě Security Center](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-1. Chcete-li filtrovat zobrazené výstrahy, klikněte na tlačítko **Filtr**a v okně **filtru** , které se otevře, vyberte možnosti filtru, které chcete použít. Seznam se aktualizuje podle vybraného filtru. Filtrování může být velmi užitečné. Například můžete chtít zabývat se výstrahami zabezpečení, k nimž došlo v posledních 24 hodinách, protože zjišťujete případný průnik do systému.
+1. Chcete-li filtrovat zobrazené výstrahy, klikněte na tlačítko **Filtr** a v okně **filtru** , které se otevře, vyberte možnosti filtru, které chcete použít. Seznam se aktualizuje podle vybraného filtru. Filtrování může být velmi užitečné. Například můžete chtít zabývat se výstrahami zabezpečení, k nimž došlo v posledních 24 hodinách, protože zjišťujete případný průnik do systému.
 
     ![Filtrování výstrah ve službě Security Center](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
 
@@ -80,4 +80,4 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 V tomto dokumentu jste zjistili, jak zobrazit výstrahy zabezpečení. Související materiály najdete na následujících stránkách:
 
 - [Konfigurace pravidel potlačení výstrah](alerts-suppression-rules.md)
-- [Automatizace odpovědí na výstrahy a doporučení pomocí automatizace pracovních postupů](workflow-automation.md)
+- [Automatizace odpovědí na triggery Security Center](workflow-automation.md)

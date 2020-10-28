@@ -4,14 +4,14 @@ description: Přečtěte si, jak nakonfigurovat vlastní kontejner v Azure App S
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264571"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787053"
 ---
-# <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru pro Azure App Service
+# <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurace vlastního kontejneru pro službu Azure App Service
 
 V tomto článku se dozvíte, jak nakonfigurovat vlastní kontejner pro spuštění v Azure App Service.
 
@@ -212,7 +212,7 @@ Existuje několik způsobů, jak získat přístup k protokolům Docker:
 
 ### <a name="in-azure-portal"></a>V Azure Portal
 
-Protokoly Docker se zobrazují na portálu na stránce **nastavení kontejneru** v aplikaci. Protokoly jsou zkráceny, ale můžete stáhnout všechny protokoly kliknutím na tlačítko **Stáhnout**. 
+Protokoly Docker se zobrazují na portálu na stránce **nastavení kontejneru** v aplikaci. Protokoly jsou zkráceny, ale můžete stáhnout všechny protokoly kliknutím na tlačítko **Stáhnout** . 
 
 ### <a name="from-the-kudu-console"></a>Z konzoly Kudu
 
@@ -272,7 +272,7 @@ Procesory můžou být vícejádrovými procesory nebo procesory s vlákny. Info
 
 ## <a name="customize-health-ping-behavior"></a>Přizpůsobení chování při testu stavu
 
-App Service předpokládá, že kontejner bude úspěšně spuštěn při spuštění kontejneru a reaguje na příkazy HTTP HTTP. Požadavek na test stavu, který je hlavičkou, je kontejnerem `User-Agent= "App Service Hyper-V Container Availability Check"` . Pokud se kontejner spustí, ale po uplynutí určité doby nereaguje na příkaz if, App Service zaznamená událost do protokolu Docker, že se kontejner nespustil. 
+App Service předpokládá, že kontejner bude úspěšně spuštěn při spuštění kontejneru a reaguje na příkazy HTTP HTTP. Požadavek na test stavu obsahuje hlavičku `User-Agent= "App Service Hyper-V Container Availability Check"` . Pokud se kontejner spustí, ale po uplynutí určité doby nereaguje na příkaz if, App Service zaznamená událost do protokolu Docker, že se kontejner nespustil. 
 
 Pokud je vaše aplikace náročná na prostředky, kontejner nemusí v čase reagovat na příkaz HTTP test. Chcete-li řídit akce při selhání příkazového testu HTTP, nastavte `CONTAINER_AVAILABILITY_CHECK_MODE` nastavení aplikace. Můžete ho nastavit přes [Cloud Shell](https://shell.azure.com). V bash:
 
@@ -365,7 +365,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 V souboru *Docker-Compose. yml* namapujte `volumes` možnost na `${WEBAPP_STORAGE_HOME}` . 
 
-`WEBAPP_STORAGE_HOME` je proměnná prostředí ve službě App Service, která je namapovaná na trvalé úložiště vaší aplikace. Například:
+`WEBAPP_STORAGE_HOME` je proměnná prostředí ve službě App Service, která je namapovaná na trvalé úložiště vaší aplikace. Příklad:
 
 ```yaml
 wordpress:

@@ -2,18 +2,18 @@
 title: Rychlý Start – Azure Key Vault klientskou knihovnu pro Java
 description: Poskytuje kritéria formátování a obsahu pro psaní rychlých startů pro klientské knihovny Azure SDK.
 author: msmbaldwin
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f4008b43c487f9dd1c8cfe5e5b67a250ff849daf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019626"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786203"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Rychlý Start: Azure Key Vaulta tajná Klientská knihovna pro Java
 
@@ -24,9 +24,9 @@ Další prostředky:
 * [Zdrojový kód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault)
 * [Referenční dokumentace k rozhraní API](https://azure.github.io/azure-sdk-for-java)
 * [Produktová dokumentace](index.yml)
-* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+* [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/) verze 8 nebo vyšší
@@ -37,7 +37,7 @@ V tomto rychlém startu se předpokládá, že používáte [Azure CLI](/cli/azu
 
 ## <a name="setting-up"></a>Nastavení
 
-Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](https://docs.microsoft.com/java/api/overview/azure/identity-readme) .
+Tento rychlý Start používá Azure identity Library s Azure CLI k ověřování uživatele ve službách Azure. Vývojáři můžou k ověřování hovorů použít taky Visual Studio nebo Visual Studio Code, další informace najdete v tématu [ověření klienta pomocí klientské knihovny Azure identity](/java/api/overview/azure/identity-readme) .
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

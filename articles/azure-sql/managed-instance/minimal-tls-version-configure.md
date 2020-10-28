@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 2dbd4b9af3db122703a7f2b4e0140ec3305f1c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620048"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788396"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Konfigurace minimální verze protokolu TLS ve spravované instanci Azure SQL
 Nastavení verze [protokolu TLS (minimální přenosná vrstva zabezpečení)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) umožňuje zákazníkům řídit verzi TLS, kterou používá jejich spravovaná instance SQL Azure.
@@ -37,7 +37,7 @@ Login failed with invalid TLS version
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Následující skript vyžaduje [modul Azure PowerShell](/powershell/azure/install-az-ps).
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Následující skript vyžaduje [modul Azure PowerShell](/powershell/azure/install-az-ps).
 
 Následující skript prostředí PowerShell ukazuje, jak `Get` a `Set` vlastnost **Minimální verze protokolu TLS** na úrovni instance:
 
@@ -52,7 +52,7 @@ Set-AzSqlInstance -Name sql-instance-name -ResourceGroupName resource-group -Min
 ## <a name="set-minimal-tls-version-via-azure-cli"></a>Nastavení minimální verze protokolu TLS prostřednictvím rozhraní příkazového řádku Azure
 
 > [!IMPORTANT]
-> Všechny skripty v této části vyžadují rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+> Všechny skripty v této části vyžadují rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Rozhraní příkazového řádku Azure v prostředí bash
 

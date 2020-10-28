@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92358994"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787155"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Kurz: třídění, zkoumání a reakce na výstrahy zabezpečení
 Security Center průběžně analyzuje úlohy hybridního cloudu pomocí pokročilých analýz a analýzy hrozeb, které vás upozorní na potenciálně škodlivé aktivity v cloudových prostředcích. Do Security Center také můžete integrovat výstrahy z dalších produktů a služeb zabezpečení. Po vyvolání výstrahy je potřeba k prozkoumání a nápravě potenciálního problému se zabezpečením použít akci SWIFT. 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte, jak:
 > * Prověření výstrahy zabezpečení a určení hlavní příčiny
 > * Reakce na výstrahu zabezpečení a zmírnění této hlavní příčiny
 
-Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 Pro krokování s funkcemi popsanými v tomto kurzu musíte mít povolený Azure Defender. Azure Defender si můžete vyzkoušet bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Rychlý Start [Začínáme s Security Center](security-center-get-started.md) vás provede upgradem.
@@ -49,7 +49,7 @@ Pomocí této stránky můžete zkontrolovat aktivní výstrahy zabezpečení ve
 Při třídění výstrah zabezpečení Stanovujte výstrahy na základě závažnosti výstrahy tím, že nejprve vyřešíte výstrahy s vyšší závažností. Další informace o závažnosti výstrah v tématu [jak jsou výstrahy klasifikovány?](security-center-alerts-overview.md#how-are-alerts-classified).
 
 > [!TIP]
-> Azure Security Center můžete propojit s nejoblíbenějšími řešeními SIEM, včetně Azure Sentinel a využívat výstrahy z vašeho nástroje podle vlastního výběru. Další informace najdete v [exportu výstrah do Siem](continuous-export.md).
+> Azure Security Center můžete propojit s nejoblíbenějšími řešeními SIEM, včetně Azure Sentinel a využívat výstrahy z vašeho nástroje podle vlastního výběru. Další informace o [výstrahách služby streamování pro Siem, společnosti nebo řešení správy služeb](export-to-siem.md)v oddělení IT.
 
 
 ## <a name="investigate-a-security-alert"></a>Prozkoumat výstrahu zabezpečení
@@ -87,14 +87,14 @@ Po prozkoumání výstrahy a porozumění jejímu oboru můžete reagovat na vý
 1.  Chcete-li aktivovat aplikaci logiky pomocí automatizovaných kroků odezvy, použijte část **Automatická odpověď triggeru** .
 1.  Pokud zjištěná aktivita *není* škodlivá, můžete potlačit budoucí výstrahy tohoto druhu pomocí oddílu **potlačit podobné výstrahy** .
 
-1.  Až se dokončí šetření výstrahy a odpovídajícím způsobem odpovíte, změňte stav na **neúspěšné**.
+1.  Až se dokončí šetření výstrahy a odpovídajícím způsobem odpovíte, změňte stav na **neúspěšné** .
 
     :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="Stránka seznam výstrah zabezpečení":::
 
     Tím se výstraha z hlavního seznamu výstrah odstraní. Pomocí filtru ze stránky seznam výstrah můžete zobrazit všechny výstrahy se stavem **odeslané** .
 
 1.  Doporučujeme vám poskytnout zpětnou vazbu k této výstraze Microsoftu:
-    1. Označení výstrahy jako **užitečné** nebo **neužitečné**.
+    1. Označení výstrahy jako **užitečné** nebo **neužitečné** .
     1. Vyberte důvod a přidejte komentář.
 
         :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="Stránka seznam výstrah zabezpečení":::
@@ -108,11 +108,11 @@ Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého st
 
 Pokud pokračovat nechcete, nebo pokud chcete zakázat některou z těchto funkcí:
 
-1. Vraťte se do hlavní nabídky Security Center a vyberte **ceny a nastavení**.
+1. Vraťte se do hlavní nabídky Security Center a vyberte **ceny a nastavení** .
 1. Vyberte příslušné předplatné.
-1. Pokud chcete downgradovat, vyberte **Azure Defender vypnuto**.
-1. Pokud chcete zakázat Automatické zřizování, otevřete stránku **shromažďování dat** a nastavte **Automatické zřizování** na **vypnuto**.
-4. Vyberte **Uložit**.
+1. Pokud chcete downgradovat, vyberte **Azure Defender vypnuto** .
+1. Pokud chcete zakázat Automatické zřizování, otevřete stránku **shromažďování dat** a nastavte **Automatické zřizování** na **vypnuto** .
+4. Vyberte **Uložit** .
 
 >[!NOTE]
 > Zakázání automatického zřizování neodebere agenta Log Analytics z virtuálních počítačů Azure, které už mají agenta. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.

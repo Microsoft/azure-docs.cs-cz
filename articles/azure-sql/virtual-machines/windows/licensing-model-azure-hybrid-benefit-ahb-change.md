@@ -13,18 +13,18 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b09d808201d58b571b2fe5ceb2e228d4e1c21d11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28ab0a158507e3f29ecfdc026203d92d71877633
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316949"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786509"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Změna licenčního modelu virtuálního počítače SQL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 
-Tento článek popisuje, jak změnit model licencí pro SQL Server virtuální počítač (VM) v Azure pomocí nového poskytovatele prostředků SQL Server virtuálního počítače, **Microsoft. SqlVirtualMachine**.
+Tento článek popisuje, jak změnit model licencí pro SQL Server virtuální počítač (VM) v Azure pomocí nového poskytovatele prostředků SQL Server virtuálního počítače, **Microsoft. SqlVirtualMachine** .
 
 Existují tři licenční modely pro virtuální počítač, který je hostitelem SQL Server: průběžné platby, Zvýhodněné hybridní využití Azure (AHB) a zotavení po havárii (DR). Model licencí vašeho SQL Server virtuálního počítače můžete upravit pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu. 
 
@@ -44,12 +44,12 @@ Chcete-li určit použití Zvýhodněné hybridní využití Azure pro SQL Serve
 
 Typ licence SQL Server se dá nakonfigurovat při zřizování virtuálního počítače, nebo kdykoli později. Přepínání modelů licencí nepředstavuje žádné výpadky, nerestartuje virtuální počítač ani službu SQL Server, nepřidá žádné další náklady a okamžitě se projeví. Aktivace Zvýhodněné hybridní využití Azure *snižuje* náklady.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Změna modelu licencování virtuálního počítače s SQL Server má následující požadavky: 
 
 - [Předplatné Azure](https://azure.microsoft.com/free/)
-- [SQL Server virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) zaregistrovaný u [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).
+- [SQL Server virtuální počítač](./create-sql-vm-portal.md) zaregistrovaný u [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).
 - [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) je požadavek na využití [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). 
 
 
@@ -62,7 +62,7 @@ Změna modelu licencování virtuálního počítače s SQL Server má následuj
 Licenční model můžete změnit přímo z portálu: 
 
 1. Otevřete [Azure Portal](https://portal.azure.com) a otevřete [prostředek virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) pro váš virtuální počítač s SQL Server. 
-1. V části **Nastavení**vyberte **Konfigurovat** . 
+1. V části **Nastavení** vyberte **Konfigurovat** . 
 1. Vyberte možnost **zvýhodněné hybridní využití Azure** a zaškrtnutím políčka potvrďte, že máte licenci SQL Server se Software Assurance. 
 1. V dolní části stránky **Konfigurace** vyberte **použít** . 
 
@@ -83,7 +83,7 @@ Ke změně modelu licence můžete použít rozhraní příkazového řádku Azu
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-**Průběžné platby**: 
+**Průběžné platby** : 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -180,5 +180,3 @@ Další informace najdete v následujících článcích:
 * [Nejčastější dotazy k SQL Server na virtuálním počítači s Windows](frequently-asked-questions-faq.md)
 * [Doprovodné materiály k cenách pro SQL Server na virtuálním počítači s Windows](pricing-guidance.md)
 * [Poznámky k verzi pro SQL Server na virtuálním počítači s Windows](../../database/doc-changes-updates-release-notes.md)
-
-

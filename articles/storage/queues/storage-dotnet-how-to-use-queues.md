@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855918"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787461"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 
@@ -30,7 +30,7 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 
 **Odhadovaný čas dokončení:** 45 minut
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - [Účet úložiště Azure](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
@@ -39,7 +39,7 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
+## <a name="set-up-your-development-environment"></a>Nastavíte vývojové prostředí
 
 Potom si nastavte vývojové prostředí v sadě Visual Studio, abyste byli připraveni vyzkoušet příklady kódů z této příručky.
 
@@ -50,9 +50,9 @@ V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následuj
 1. Vybrat **soubor**  >  **Nový**  >  **projekt**
 2. Vybrat **Platform**  >  **okna** platformy
 3. Vybrat **konzolovou aplikaci (.NET Framework)**
-4. Vyberte **Další**.
+4. Vyberte **Další** .
 5. Do pole **název projektu** zadejte název vaší aplikace.
-6. Vyberte **Vytvořit**.
+6. Vyberte **Vytvořit** .
 
 Všechny příklady kódu v tomto kurzu můžete přidat do metody **Main ()** souboru **program.cs** vaší konzolové aplikace.
 
@@ -69,9 +69,9 @@ Abyste mohli dokončit tento kurz, musíte odkazovat na následující čtyři b
 - [Knihovna front Azure Storage pro .NET](https://www.nuget.org/packages/Azure.Storage.Queues/): Tento balíček umožňuje pracovat s Služba frontem Azure Storage pro ukládání zpráv, ke kterým může klient přicházet.
 - [Knihovna Configuration Manager pro .NET](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/): Tento balíček poskytuje přístup ke konfiguračním souborům pro klientské aplikace.
 
-K získání těchto balíčků můžete použít NuGet. Postupujte takto:
+K získání těchto balíčků můžete použít NuGet. Postupujte následovně:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet** .
 1. Vyberte **Procházet** .
 1. Vyhledejte v online režimu "Azure. Storage. Queues" a vyberte **nainstalovat** a nainstalujte tak knihovnu klienta úložiště a její závislosti. Tím se také nainstalují knihovny Azure. Storage. Common a Azure. Core, které jsou závislé na knihovně fronty.
 1. Hledejte online System.Configuration.ConfigurationManager a vyberte **nainstalovat** a nainstalujte Configuration Manager.
@@ -84,9 +84,9 @@ Abyste mohli dokončit tento kurz, musíte odkazovat na následující tři bal�
 - [Knihovna Microsoft Azure Storage Queue Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Tato Klientská knihovna umožňuje pracovat s služba front Microsoft Azure Storage pro ukládání zpráv, ke kterým může klient přicházet.
 - [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
-K získání těchto balíčků můžete použít NuGet. Postupujte takto:
+K získání těchto balíčků můžete použít NuGet. Postupujte následovně:
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet** .
 1. Vyberte **Procházet** .
 1. Online vyhledejte "Microsoft. Azure. Storage. Queue" a vyberte **nainstalovat** a nainstalujte tak knihovnu klienta úložiště a její závislosti. Tím se nainstaluje také knihovna Microsoft. Azure. Storage. Common, což je závislost knihovny front.
 1. Hledejte online Microsoft.Azure.ConfigurationManager a vyberte **nainstalovat** a nainstalujte Configuration Manager Azure.
@@ -113,7 +113,7 @@ Ukázkový kód potřebuje autorizovat přístup k vašemu účtu úložiště. 
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Vyhledejte svůj účet úložiště.
-3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**. Zobrazí se přístupové klíče vašeho účtu a také úplný připojovací řetězec pro jednotlivé klíče.
+3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče** . Zobrazí se přístupové klíče vašeho účtu a také úplný připojovací řetězec pro jednotlivé klíče.
 4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a kliknutím na tlačítko **Kopírovat** zkopírujte připojovací řetězec. V dalším kroku přidáte hodnotu připojovacího řetězce do proměnné prostředí.
 
     ![Snímek obrazovky ukazující zkopírování připojovacího řetězce z webu Azure Portal](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
@@ -286,7 +286,7 @@ Console.WriteLine(peekedMessage.AsString);
 
 ## <a name="change-the-contents-of-a-queued-message"></a>Změna obsahu zpráv zařazených ve frontě
 
-Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Následující kód aktualizuje zprávy ve frontě o nový obsah a prodlouží časový limit viditelnosti na 60 sekund. Uloží se tím stav práce spojený se zprávou a klient získá další minutu, aby mohl pokračovat ve zpracování zprávy. Tímto způsobem může sledovat vícekrokového pracovní postupy pro zprávy ve frontě, aniž by bylo nutné v případě, že krok zpracování z důvodu selhání hardwaru nebo softwaru selže, začít znovu od začátku. Obvykle byste udržovali také hodnotu počtu opakování, a pokud by se pokus o zpracování zprávy opakoval více než *n*krát, odstranili byste ji. Je to ochrana proti tomu, aby zpráva při každém pokusu o zpracování nevyvolala chyby aplikace.
+Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Následující kód aktualizuje zprávy ve frontě o nový obsah a prodlouží časový limit viditelnosti na 60 sekund. Uloží se tím stav práce spojený se zprávou a klient získá další minutu, aby mohl pokračovat ve zpracování zprávy. Tímto způsobem může sledovat vícekrokového pracovní postupy pro zprávy ve frontě, aniž by bylo nutné v případě, že krok zpracování z důvodu selhání hardwaru nebo softwaru selže, začít znovu od začátku. Obvykle byste udržovali také hodnotu počtu opakování, a pokud by se pokus o zpracování zprávy opakoval více než *n* krát, odstranili byste ji. Je to ochrana proti tomu, aby zpráva při každém pokusu o zpracování nevyvolala chyby aplikace.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -349,7 +349,7 @@ queue.DeleteMessage(retrievedMessage);
 
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>Použití vzoru Async-Await s běžnými rozhraním API Queue Storage
 
-Tento příklad ukazuje způsob použití vzoru Async-Await s běžnými rozhraním API Queue Storage. Ukázka volá asynchronní verzi každé z daných metod, jak indikuje přípona *Async* každé metody. Při použití asynchronní metody pozastaví vzor async-await místní provádění kódu až do dokončení volání. Toto chování umožňuje aktuálnímu vláknu provádět další činnosti, což pomáhá zabránit vzniku kritických bodů z hlediska výkonu a zlepšuje celkovou rychlost reakce aplikace. Další podrobnosti o použití vzoru Async-Await v rozhraní .NET najdete v tématu [Async a Await (C# a Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
+Tento příklad ukazuje způsob použití vzoru Async-Await s běžnými rozhraním API Queue Storage. Ukázka volá asynchronní verzi každé z daných metod, jak indikuje přípona *Async* každé metody. Při použití asynchronní metody pozastaví vzor async-await místní provádění kódu až do dokončení volání. Toto chování umožňuje aktuálnímu vláknu provádět další činnosti, což pomáhá zabránit vzniku kritických bodů z hlediska výkonu a zlepšuje celkovou rychlost reakce aplikace. Další podrobnosti o použití vzoru Async-Await v rozhraní .NET najdete v tématu [Async a Await (C# a Visual Basic)](/previous-versions/hh191443(v=vs.140)).
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -489,10 +489,10 @@ queue.Delete();
 Teď, když jste se naučili základy používání služby Queue Storage, podívejte se na následujících odkazech na další informace o složitějších úlohách úložiště.
 
 - Projděte si referenční dokumentaci ke Službě front, kde najdete úplné podrobnosti o dostupných rozhraních API:
-  - [Klientská knihovna pro úložiště – referenční informace pro .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST API – referenční informace](https://msdn.microsoft.com/library/azure/dd179355)
+  - [Klientská knihovna pro úložiště – referenční informace pro .NET](/dotnet/api/overview/azure/storage)
+  - [REST API – referenční informace](/rest/api/storageservices/)
 - Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
-  - [Začínáme s Azure Table Storage pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) pro ukládání strukturovaných dat
-  - [Začínáme s Azure Blob Storage pomocí rozhraní .NET](../blobs/storage-dotnet-how-to-use-blobs.md) pro ukládání nestrukturovaných dat
+  - [Začínáme s Azure Table Storage pomocí rozhraní .NET](../../cosmos-db/tutorial-develop-table-dotnet.md) pro ukládání strukturovaných dat
+  - [Začínáme s Azure Blob Storage pomocí rozhraní .NET](../blobs/storage-quickstart-blobs-dotnet.md) pro ukládání nestrukturovaných dat
   - [Připojení k SQL Database s použitím rozhraní .NET (C#)](../../azure-sql/database/connect-query-dotnet-core.md) pro uložení relačních dat
 - Naučte se, jak zjednodušit psaní kódu pro práci s Azure Storage pomocí [sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
