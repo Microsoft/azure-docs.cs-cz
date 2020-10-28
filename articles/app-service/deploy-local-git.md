@@ -5,19 +5,19 @@ ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
-ms.custom: seodec18
-ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 9650633e1eaffdb588b3a31cd5a2f305c36e7a25
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77152988"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741308"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
 
 V této příručce se dozvíte, jak nasadit aplikaci pro [Azure App Service](overview.md) z úložiště Git na místním počítači.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup je popsaný v tomto návodu:
 
@@ -100,26 +100,26 @@ Pokud má váš účet potřebná oprávnění, můžete nastavit Azure Pipeline
 
 Povolení místního nasazení Git pro vaši aplikaci pomocí Azure Pipelines (Preview):
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **App Services**. 
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **App Services** . 
 
 1. Vyberte svou aplikaci Azure App Service a v levé nabídce vyberte **centrum nasazení** .
    
-1. Na stránce **centrum nasazení** vyberte **místní Git**a pak vyberte **pokračovat**. 
+1. Na stránce **centrum nasazení** vyberte **místní Git** a pak vyberte **pokračovat** . 
    
    ![Vyberte místní Git a pak vyberte pokračovat.](media/app-service-deploy-local-git/portal-enable.png)
    
-1. Na stránce **poskytovatel sestavení** vyberte možnost **Azure Pipelines (Preview)** a pak vyberte **pokračovat**. 
+1. Na stránce **poskytovatel sestavení** vyberte možnost **Azure Pipelines (Preview)** a pak vyberte **pokračovat** . 
    
    ![Vyberte Azure Pipelines (Preview) a pak vyberte pokračovat.](media/app-service-deploy-local-git/pipeline-builds.png)
 
-1. Na stránce **Konfigurace** nakonfigurujte novou organizaci Azure DevOps nebo zadejte existující organizaci a pak vyberte **pokračovat**.
+1. Na stránce **Konfigurace** nakonfigurujte novou organizaci Azure DevOps nebo zadejte existující organizaci a pak vyberte **pokračovat** .
    
    > [!NOTE]
    > Pokud vaše stávající organizace Azure DevOps není v seznamu uvedená, budete ji muset propojit s vaším předplatným Azure. Další informace najdete v tématu [definice kanálu verze CD](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd).
    
-1. V závislosti na [cenové úrovni](https://azure.microsoft.com/pricing/details/app-service/plans/)plánu App Service se může zobrazit stránka **nasazení na přípravu** . Zvolte, jestli se mají [Povolit sloty nasazení](deploy-staging-slots.md), a pak vyberte **pokračovat**.
+1. V závislosti na [cenové úrovni](https://azure.microsoft.com/pricing/details/app-service/plans/)plánu App Service se může zobrazit stránka **nasazení na přípravu** . Zvolte, jestli se mají [Povolit sloty nasazení](deploy-staging-slots.md), a pak vyberte **pokračovat** .
    
-1. Na stránce **Souhrn** zkontrolujte nastavení a pak vyberte **Dokončit**.
+1. Na stránce **Souhrn** zkontrolujte nastavení a pak vyberte **Dokončit** .
    
 1. Až bude kanál Azure připravený, zkopírujte adresu URL úložiště Git ze stránky **centra nasazení** , která se použije v dalším kroku. 
    
@@ -151,10 +151,10 @@ Když použijete Git k publikování App Service aplikace v Azure, může se zob
 |`Couldn't resolve host 'hostname'`|Informace o adrese pro vzdálené úložiště Azure jsou nesprávné.|Pomocí `git remote -v` příkazu můžete vypsat všechny vzdálené části společně s přidruženou adresou URL. Ověřte, jestli je adresa URL vzdáleného webu Azure správná. V případě potřeby tento vzdálený příkaz odeberte a znovu vytvořte pomocí správné adresy URL.|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Nezadali jste větev během `git push` nebo jste nenastavili `push.default` hodnotu v `.gitconfig` .|Spusťte `git push` znovu a určete hlavní větev: `git push azure master` .|
 |`src refspec [branchname] does not match any.`|Pokusili jste se odeslat do jiné jiné než hlavní větve na vzdáleném Azure.|Spusťte `git push` znovu a určete hlavní větev: `git push azure master` .|
-|`RPC failed; result=22, HTTP code = 5xx.`|K této chybě může dojít, pokud se pokusíte odeslat velké úložiště Git přes HTTPS.|Změňte konfiguraci Gitu na místním počítači, aby byla `postBuffer` větší. Například: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node.js s _package.jsv_ souboru, který určuje další požadované moduly.|`npm ERR!`Před touto chybou zkontrolujte chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a odpovídající `npm ERR!` zprávy:<br /><br />**Nesprávně vytvořený package.jsv souboru**: `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />– nebo – <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`RPC failed; result=22, HTTP code = 5xx.`|K této chybě může dojít, pokud se pokusíte odeslat velké úložiště Git přes HTTPS.|Změňte konfiguraci Gitu na místním počítači, aby byla `postBuffer` větší. Příklad: `git config --global http.postBuffer 524288000`.|
+|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node.js s _package.jsv_ souboru, který určuje další požadované moduly.|`npm ERR!`Před touto chybou zkontrolujte chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a odpovídající `npm ERR!` zprávy:<br /><br />**Nesprávně vytvořený package.jsv souboru** : `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci** :<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />nebo <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Dokumentace k Project Kudu](https://github.com/projectkudu/kudu/wiki)
 - [Průběžné nasazování do Azure App Service](deploy-continuous-deployment.md)

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
-ms.openlocfilehash: 4757ebc61f980a0d035a248940cba0d1824cf153
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547856"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741614"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace vlastních aplikací Apache Hadoop ve službě Azure HDInsight
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak nainstalovat aplikaci [Apache Hadoop](https://
 
 An HDInsight aplikace je aplikace, kterou uživatelé můžou instalovat v clusteru HDInsight.  Tyto aplikace mohou být vytvořeny společností Microsoft, nezávislými dodavateli softwaru (ISV) nebo vámi samotnými.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete instalovat aplikace HDInsight na stávající cluster HDInsight, musí mít cluster služby HDInsight. Chcete-li jeden vytvořit, prostudujte si část [Tvorba clusterů](hadoop/apache-hadoop-linux-tutorial-get-started.md). Aplikace HDInsight můžete také nainstalovat při vytváření clusteru HDInsight.
 
@@ -75,7 +75,7 @@ Stav aplikace můžete zkontrolovat na portálu Azure a ověřit tak instalaci a
 
 Pro **odstín** můžete použít následující kroky:
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.
@@ -123,7 +123,7 @@ Pokud se instalace aplikace nezdařila, můžete zobrazit chybové zprávy a inf
 
 ## <a name="remove-hdinsight-applications"></a>Odstranění aplikací HDInsight
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyberte cluster, do kterého jste nainstalovali aplikaci.

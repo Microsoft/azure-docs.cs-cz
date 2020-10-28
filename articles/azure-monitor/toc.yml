@@ -224,7 +224,7 @@
               href: log-query/query-audit.md
             - name: Optimalizace dotazů
               href: log-query/query-optimization.md
-            - name: Funkce
+            - name: Functions
               href: log-query/functions.md
             - name: Analýza textových dat
               href: log-query/parse-text.md
@@ -556,8 +556,6 @@
               href: platform/alerts-managing-smart-groups.md
             - name: Správa stavů inteligentních skupin a upozornění
               href: platform/alerts-managing-alert-states.md
-            - name: Správa upozornění z ostatních služeb monitorování
-              href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Rozhraní API pro výstrahy
           href: platform/api-alerts.md
         - name: Řešení výstrah
@@ -576,8 +574,6 @@
               href: platform/itsmc-service-manager-script.md
             - name: Řešení problémů se synchronizací ITSM pro ServiceNow
               href: platform/itsmc-resync-servicenow.md
-        - name: Řešení Alert Managementu
-          href: platform/alert-management-solution.md
         - name: Migrace klasických pravidel upozornění
           items:
             - name: Informace o klasických upozorněních
@@ -1138,6 +1134,8 @@
               href: insights/vmware.md
             - name: Řešení Wire Data
               href: insights/wire-data.md
+            - name: Řešení Alert Managementu
+              href: platform/alert-management-solution.md
     - name: Workbooks
       items:
         - name: Přehled

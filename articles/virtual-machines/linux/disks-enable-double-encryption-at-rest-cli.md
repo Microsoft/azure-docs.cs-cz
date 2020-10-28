@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 76e5ab49e354faac085be533fed1ff16c0315a5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 1b2773b1d860126748e0dd05134d778073478d9f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816826"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741683"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>Použití rozhraní příkazového řádku Azure pro povolení dvojitého šifrování v klidovém umístění pro spravované disky
 
@@ -23,7 +23,7 @@ Azure Disk Storage podporuje dvojité šifrování v klidovém umístění pro s
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Nainstalujte si nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlaste se k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 

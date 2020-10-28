@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: a1bd93931f8a94f598952b28fc3db23d33e5783f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 195c334500c8c540d819e949353b34bea65b3d4f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329767"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741896"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -36,11 +36,11 @@ Tento článek vám ukáže, jak:
 > Vylepšené prostředí pro předávání dočasných dat mezi jednotlivými kroky kanálu a uchování dat po spuštění kanálu jsou k dispozici ve třídách veřejné verze Preview  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) a [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Tyto třídy jsou [experimentální](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) funkce ve verzi Preview a můžou se kdykoli změnit.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat:
 
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
@@ -101,6 +101,9 @@ train_step = PythonScriptStep(
 )
 ```
 
+> [!NOTE]
+> Je potřeba nahradit hodnoty všech těchto argumentů (tj.,, `"train_data"` `"train.py"` `cluster` a `iris_dataset` ) vlastními daty. Výše uvedený fragment kódu pouze ukazuje formu volání a není součástí ukázky společnosti Microsoft. 
+
 Můžete také použít metody, jako jsou `random_split()` a, a `take_sample()` vytvořit několik vstupů nebo snížit množství dat předávaných do vašeho kroku kanálu:
 
 ```python
@@ -150,6 +153,9 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
+> [!NOTE]
+> Předchozí fragmenty kódu zobrazují formu volání a nejsou součástí ukázky společnosti Microsoft. Je nutné nahradit různé argumenty hodnotami z vlastního projektu.
+
 ## <a name="use-pipelinedata-for-intermediate-data"></a>Použít `PipelineData` pro mezilehlé data
 
 Zatímco `Dataset` objekty představují trvalá data, objekty [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) se používají pro dočasná data, která jsou v režimu výstupu z kroků kanálu. Vzhledem k tomu, že životnost `PipelineData` objektu je delší než jeden krok kanálu, je třeba je definovat ve skriptu definice kanálu. Při vytváření objektu je `PipelineData` nutné zadat název a úložiště dat, na kterém budou data umístěna. Předání `PipelineData` objektů do vaší `PythonScriptStep` pomocí _both_ `arguments` `outputs` argumentů a:
@@ -175,6 +181,9 @@ Můžete se rozhodnout vytvořit `PipelineData` objekt pomocí režimu přístup
 ```python
 PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
 ```
+
+> [!NOTE]
+> Předchozí fragmenty kódu zobrazují formu volání a nejsou součástí ukázky společnosti Microsoft. Je nutné nahradit různé argumenty hodnotami z vlastního projektu.
 
 > [!TIP]
 > Vylepšené prostředí pro předávání mezilehlých dat mezi kroky kanálu je k dispozici s třídou Public Preview [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Příklad kódu, který používá `OutputFileDatasetConfig` , najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
@@ -226,6 +235,9 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
 Hodnota `PipelineData` vstupu je cesta k předchozímu výstupu. 
+
+> [!NOTE]
+> Předchozí fragmenty kódu zobrazují formu volání a nejsou součástí ukázky společnosti Microsoft. Je nutné nahradit různé argumenty hodnotami z vlastního projektu.
 
 > [!TIP]
 > Vylepšené prostředí pro předávání mezilehlých dat mezi kroky kanálu je k dispozici s třídou Public Preview [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Příklad kódu, který používá `OutputFileDatasetConfig` , najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).

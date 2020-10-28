@@ -9,13 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 77845a91ed2d185c0fe05e2f40e53b2edf3d1ca7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336679"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741388"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Kurz: použití spravované identity pro připojení Key Vault k webové aplikaci Azure pomocí .NET
 
@@ -23,7 +23,7 @@ Azure Key Vault poskytuje způsob, jak bezpečně ukládat přihlašovací údaj
 
 V tomto kurzu se používá spravovaná identita k ověření webové aplikace Azure pomocí Azure Key Vault. I když postup používá [klientskou knihovnu Azure Key Vault v4 pro .NET](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) a [Azure CLI](/cli/azure/get-started-with-azure-cli), platí stejné základní zásady i při použití vývojového jazyka dle vašeho výběru, Azure PowerShell nebo Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -85,7 +85,7 @@ Ze vzorové aplikace zobrazené na stránce se zobrazí zpráva **Hello World** 
 
 ### <a name="initialize-the-git-repository"></a>Inicializovat úložiště Git
 
-V okně terminálu ukončete webový server stisknutím **Ctrl + C**.  Inicializujte úložiště Git pro projekt .NET Core.
+V okně terminálu ukončete webový server stisknutím **Ctrl + C** .  Inicializujte úložiště Git pro projekt .NET Core.
 
 ```bash
 git init
@@ -95,7 +95,7 @@ git commit -m "first commit"
 
 ### <a name="configure-a-deployment-user"></a>Konfigurace uživatele nasazení
 
-FTP a místní Git se můžou nasadit do webové aplikace Azure pomocí *uživatele nasazení*. Jakmile nakonfigurujete uživatele nasazení, můžete ho použít pro všechna nasazení Azure. Uživatelské jméno a heslo nasazení na úrovni účtu se liší od přihlašovacích údajů předplatného Azure. 
+FTP a místní Git se můžou nasadit do webové aplikace Azure pomocí *uživatele nasazení* . Jakmile nakonfigurujete uživatele nasazení, můžete ho použít pro všechna nasazení Azure. Uživatelské jméno a heslo nasazení na úrovni účtu se liší od přihlašovacích údajů předplatného Azure. 
 
 Pokud chcete nakonfigurovat uživatele nasazení, spusťte příkaz [AZ WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Vyberte uživatelské jméno a heslo, které dodržuje tyto pokyny: 
 
@@ -173,7 +173,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 
 Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git`. Tuto adresu URL uložte, jak ji budete potřebovat později.
 
-Přejděte k nově vytvořené aplikaci. Název vaší aplikace nahraďte parametrem _ &lt; -WebApp-Name>_ .
+Přejděte k nově vytvořené aplikaci. Název vaší aplikace nahraďte parametrem _&lt; -WebApp-Name>_ .
 
 ```bash
 https://<your-webapp-name>.azurewebsites.net
@@ -323,7 +323,7 @@ git push azure master
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-Místo, kde jste viděli **Hello World**, by se teď měla zobrazit hodnota zobrazeného tajného kódu: **úspěch!**
+Místo, kde jste viděli **Hello World** , by se teď měla zobrazit hodnota zobrazeného tajného kódu: **úspěch!**
 
 ## <a name="next-steps"></a>Další kroky
 

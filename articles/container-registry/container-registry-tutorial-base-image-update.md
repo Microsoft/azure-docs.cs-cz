@@ -3,13 +3,13 @@ title: Kurz – spuštění image sestavení při aktualizaci základního obrá
 description: V tomto kurzu se naučíte konfigurovat úlohu Azure Container Registry pro automatické spouštění sestavení imagí kontejneru v cloudu, když se ve stejném registru aktualizuje základní image.
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: seodec18, mvc, devx-track-js
-ms.openlocfilehash: 0b87f4ca138e0da76efd184e87f12bec32e3960e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: f6dfc5b6cfe3312f2b3b4663ab5211cc60309eb6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262242"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741122"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Kurz: automatizace sestavení imagí kontejneru při aktualizaci základní image ve službě Azure Container Registry 
 
@@ -30,7 +30,7 @@ V tomto kurzu:
 
 Pokud chcete Azure CLI používat místně, musíte mít nainstalovanou verzi Azure CLI **2.0.46** nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku (CLI), přečtěte si téma [Instalace Azure CLI][azure-cli].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="complete-the-previous-tutorials"></a>Dokončení předchozích kurzů
 
@@ -76,7 +76,7 @@ V tomto kurzu vaše úloha ACR sestaví a nahraje image kontejneru aplikace zada
 
 ## <a name="build-the-base-image"></a>Sestavit základní image
 
-Začněte vytvořením základní Image pomocí *rychlého úkolu*ACR Tasks pomocí [AZ ACR Build][az-acr-build]. Jak je popsáno v [prvním kurzu](container-registry-tutorial-quick-task.md) série, tímto postupem se nejen sestaví image, ale v případě úspěšného sestavení se odešle do registru kontejneru.
+Začněte vytvořením základní Image pomocí *rychlého úkolu* ACR Tasks pomocí [AZ ACR Build][az-acr-build]. Jak je popsáno v [prvním kurzu](container-registry-tutorial-quick-task.md) série, tímto postupem se nejen sestaví image, ale v případě úspěšného sestavení se odešle do registru kontejneru.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
@@ -215,7 +215,7 @@ V prohlížeči přejděte na http://localhost:8081. Měli byste vidět aktualiz
 
 ![Snímek obrazovky ukázkové aplikace vykreslené v prohlížeči][base-update-02]
 
-Důležité je uvědomit si, že jste aktualizovali **základní** image s novým číslem verze, ale novou verzi zobrazuje poslední sestavená image **aplikace**. Služba ACR Tasks převzala změnu základní image a automaticky znovu sestavila image aplikace.
+Důležité je uvědomit si, že jste aktualizovali **základní** image s novým číslem verze, ale novou verzi zobrazuje poslední sestavená image **aplikace** . Služba ACR Tasks převzala změnu základní image a automaticky znovu sestavila image aplikace.
 
 Chcete-li zastavit a odebrat kontejner, spusťte následující příkaz:
 

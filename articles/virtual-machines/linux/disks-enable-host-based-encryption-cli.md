@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: ff56654981ef69648b1fa7ad11a8681c887289f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 6b523ac306feef2e4c82b3739096b26158c55fc3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816962"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741724"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Použití rozhraní příkazového řádku Azure k povolení kompletního šifrování pomocí šifrování na hostiteli
 
@@ -33,7 +33,7 @@ Pokud povolíte šifrování na hostiteli, data uložená na hostiteli virtuáln
 
 Velikosti virtuálních počítačů můžete zjistit také programově. Informace o tom, jak je načíst programově, najdete v části [hledání podporovaných velikostí virtuálních počítačů](#finding-supported-vm-sizes) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby bylo možné používat šifrování na hostiteli pro vaše virtuální počítače nebo služby Virtual Machine Scale Sets, musíte ve svém předplatném mít povolenou funkci. Odesláním e-mailu encryptionAtHost@microsoft.com s ID předplatného získáte funkci povolenou pro vaše předplatná.
 
@@ -187,7 +187,7 @@ az vmss show -n $vmssName \
 
 Starší verze virtuálních počítačů se nepodporují. Seznam podporovaných velikostí virtuálních počítačů najdete v těchto verzích:
 
-Volání [rozhraní API SKU prostředku](/rest/api/compute/resourceskus/list) a kontrola, zda `EncryptionAtHostSupported` je funkce nastavena na **hodnotu true**.
+Volání [rozhraní API SKU prostředku](/rest/api/compute/resourceskus/list) a kontrola, zda `EncryptionAtHostSupported` je funkce nastavena na **hodnotu true** .
 
 ```json
     {

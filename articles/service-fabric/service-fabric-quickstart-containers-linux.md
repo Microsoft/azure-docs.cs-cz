@@ -3,13 +3,13 @@ title: Vytvoření aplikace typu kontejner pro Linux v Service Fabric v Azure
 description: V tomto rychlém startu sestavíte image Dockeru s vaší aplikací, nahrajete image do registru kontejneru a pak nasadíte kontejner do clusteru Service Fabric.
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 27a21a685d8dc4aa92585ce49b21d1986a54209f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91541505"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741914"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Linuxu do Service Fabric
 
@@ -89,7 +89,7 @@ Service Fabric poskytuje několik nástrojů, pomocí kterých můžete spravova
 
 V tomto rychlém startu použijete Service Fabric CLI a Service Fabric Explorer (nástroj založený na webu). Chcete-li použít Service Fabric Explorer, je nutné importovat soubor PFX certifikátu do prohlížeče. Ve výchozím nastavení nemá soubor PFX žádné heslo.
 
-Mozilla Firefox je výchozím prohlížečem v Ubuntu 16,04. Pokud chcete certifikát importovat do prohlížeče Firefox, klikněte na tlačítko nabídky v pravém horním rohu prohlížeče a pak klikněte na **Možnosti**. Na stránce **Předvolby** pomocí vyhledávacího pole vyhledejte „certifikáty“. Klikněte na **Zobrazit certifikáty**, vyberte kartu **Osobní**, klikněte na **Importovat** a podle zobrazených výzev importujte certifikát.
+Mozilla Firefox je výchozím prohlížečem v Ubuntu 16,04. Pokud chcete certifikát importovat do prohlížeče Firefox, klikněte na tlačítko nabídky v pravém horním rohu prohlížeče a pak klikněte na **Možnosti** . Na stránce **Předvolby** pomocí vyhledávacího pole vyhledejte „certifikáty“. Klikněte na **Zobrazit certifikáty** , vyberte kartu **Osobní** , klikněte na **Importovat** a podle zobrazených výzev importujte certifikát.
 
    ![Instalace certifikátu v prohlížeči Firefox](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -107,7 +107,7 @@ Mozilla Firefox je výchozím prohlížečem v Ubuntu 16,04. Pokud chcete certif
     ./install.sh
     ```
 
-3. Otevřete webový prohlížeč a přejděte na koncový bod Service Fabric Exploreru pro váš cluster. Koncový bod má následující formát:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; například `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
+3. Otevřete webový prohlížeč a přejděte na koncový bod Service Fabric Exploreru pro váš cluster. Koncový bod má následující formát:  **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer** ; například `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Rozbalením uzlu **aplikace** zjistíte, že nyní existuje položka pro typ hlasovací aplikace a instanci, kterou jste vytvořili.
 
@@ -131,7 +131,7 @@ Pokud chcete převzít služby při selhání front-end kontejneru, proveďte n�
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`.
 2. Ve stromovém zobrazení klikněte na uzel **fabric:/Voting/azurevotefront** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID). Všimněte si názvu uzlu ve stromovém zobrazení, které zobrazuje uzly, na kterých je kontejner právě spuštěný – například `_nodetype_1`.
-3. Ve stromovém zobrazení rozbalte uzel **Uzly**. Klikněte na tři tečky (...) vedle uzlu, na kterém je kontejner spuštěný.
+3. Ve stromovém zobrazení rozbalte uzel **Uzly** . Klikněte na tři tečky (...) vedle uzlu, na kterém je kontejner spuštěný.
 4. Pokud chcete tento uzel restartovat, zvolte **Restartovat** a potvrďte akci restartování. Restartování způsobí převzetí služeb při selhání kontejneru do jiného uzlu v clusteru.
 
     ![Zobrazení uzlu v Service Fabric Exploreru][sfxquickstartshownodetype]
@@ -143,13 +143,13 @@ Služby Service Fabric je možné snadno škálovat napříč clusterem a vyře�
 Pokud chcete škálovat webovou front-end službu, proveďte následující kroky:
 
 1. Otevřete ve vašem clusteru Service Fabric Explorer – například `https://containertestcluster.eastus.cloudapp.azure.com:19080`.
-2. Ve stromovém zobrazení klikněte na tři tečky (...) vedle uzlu **fabric:/Voting/azurevotefront** a zvolte **Škálovat službu**.
+2. Ve stromovém zobrazení klikněte na tři tečky (...) vedle uzlu **fabric:/Voting/azurevotefront** a zvolte **Škálovat službu** .
 
     ![Service Fabric Explorer – zahájení škálování služby][containersquickstartscale]
 
     Teď můžete škálovat počet instancí webové front-end služby.
 
-3. Změňte počet na **2** a klikněte na **Škálovat službu**.
+3. Změňte počet na **2** a klikněte na **Škálovat službu** .
 4. Ve stromovém zobrazení klikněte na uzel **fabric:/Voting/azurevotefront** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).
 
     ![Service Fabric Explorer – dokončení škálování služby][containersquickstartscaledone]
@@ -178,7 +178,7 @@ az group delete --name $ResourceGroupName
 ```
 
 Pokud už jste dokončili práci se svým clusterem, můžete odebrat certifikát ze svého úložiště certifikátů. Příklad:
-- Windows: Použijte [modul snap-in Certifikáty v konzole MMC](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet**. Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
+- Windows: Použijte [modul snap-in Certifikáty v konzole MMC](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet** . Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
 - Mac: Použijte aplikaci Klíčenka.
 - Ubuntu: Postupujte podle kroků, pomocí kterých jste zobrazili certifikáty a odebrali certifikát.
 

@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 069c290de0278202b2e20d67f0ce792a0a79c345
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368226"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741063"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -120,7 +120,7 @@ Pokud jste při vytváření přiřazení role nedávno pozvali uživatele, tent
 
 Nicméně pokud tento objekt zabezpečení není nedávno pozvaníný uživatel, může se jednat o odstraněný objekt zabezpečení. Pokud přiřadíte roli objektu zabezpečení a později odstraníte tento objekt zabezpečení bez prvotního odebrání přiřazení role, bude objekt zabezpečení uveden jako **Identita nebyl nalezen** a je **neznámého** typu.
 
-Pokud toto přiřazení role vypíšete pomocí Azure PowerShell, může se zobrazit prázdná `DisplayName` a je `ObjectType` nastavená na **Neznámý**. Například [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) vrátí přiřazení role, které je podobné následujícímu výstupu:
+Pokud toto přiřazení role vypíšete pomocí Azure PowerShell, může se zobrazit prázdná `DisplayName` a je `ObjectType` nastavená na **Neznámý** . Například [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) vrátí přiřazení role, které je podobné následujícímu výstupu:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -222,14 +222,14 @@ Podobně jako u Web Apps vyžadují některé funkce v okně virtuálního poč�
 
 Virtuální počítače se týkají názvů domén, virtuálních sítí, účtů úložiště a pravidel výstrah.
 
-Tyto položky vyžadují pro **virtuální počítač**přístup pro **zápis** :
+Tyto položky vyžadují pro **virtuální počítač** přístup pro **zápis** :
 
 * Koncové body  
 * IP adresy  
 * Disky  
 * Rozšíření  
 
-Tyto požadavky vyžadují přístup pro **zápis** k **virtuálnímu počítači**a **skupině prostředků** (spolu s názvem domény), ve kterém se nachází:  
+Tyto požadavky vyžadují přístup pro **zápis** k **virtuálnímu počítači** a **skupině prostředků** (spolu s názvem domény), ve kterém se nachází:  
 
 * Skupina dostupnosti  
 * Sada s vyrovnáváním zatížení  
@@ -239,7 +239,7 @@ Pokud nemůžete získat přístup k žádné z těchto dlaždic, požádejte sp
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions a přístup pro zápis
 
-Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vyžadují přístup pro zápis. Například pokud je uživateli přiřazena role [čtenáře](built-in-roles.md#reader) , nebude moci zobrazit funkce v rámci aplikace Function App. Portál se zobrazí **(bez přístupu)**.
+Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vyžadují přístup pro zápis. Například pokud je uživateli přiřazena role [čtenáře](built-in-roles.md#reader) , nebude moci zobrazit funkce v rámci aplikace Function App. Portál se zobrazí **(bez přístupu)** .
 
 ![Aplikace Function App bez přístupu](./media/troubleshooting/functionapps-noaccess.png)
 

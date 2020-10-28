@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ad5fa271e3abfaf0c7ee4884881262773a9ad485
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946072"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741485"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Python)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91946072"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s modelem zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí Pythonu připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -80,14 +80,14 @@ V tomto rychlém startu použijete v Pythonu ukázkové řešení IoT, které v�
 1. Otevřete soubor *registry_manager_pnp_sample. py* a Prohlédněte si kód. V této ukázce se dozvíte, jak používat třídu **IoTHubRegistryManager** k interakci se zařízením IoT technologie Plug and Play.
 
 > [!NOTE]
-> Tyto ukázky služeb používají třídu **IoTHubRegistryManager** z **klienta služby IoT Hub**. Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
+> Tyto ukázky služeb používají třídu **IoTHubRegistryManager** z **klienta služby IoT Hub** . Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
 
 ### <a name="get-the-device-twin"></a>Získat zdvojené zařízení
 
 V [části nastavení prostředí pro iot technologie Plug and Play rychlé starty a kurzy](set-up-environment.md) , které jste vytvořili dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub a zařízení:
 
-* **IOTHUB_CONNECTION_STRING**: připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_CONNECTION_STRING** : připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"` .
 
 Pomocí následujícího příkazu v terminálu **služby** spusťte tuto ukázku:
 
@@ -107,7 +107,7 @@ The Model ID for this device is:
 dtmi:com:example:Thermostat;1
 ```
 
-Následující fragment kódu ukazuje vzorový kód z *registry_manager_pnp_sample. py*:
+Následující fragment kódu ukazuje vzorový kód z *registry_manager_pnp_sample. py* :
 
 ```python
     # Create IoTHubRegistryManager

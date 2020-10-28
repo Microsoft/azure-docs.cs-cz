@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dd5d05ff6ed2368308f90f61ea0a6f107e43acd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674910"
+ms.locfileid: "92740773"
 ---
 # <a name="weather-partner-integration"></a>Integrace partnerských řešení pro počasí
 
@@ -180,7 +180,7 @@ Docker konektoru by měl mít možnost odesílat aktualizace metadat. Příklady
 
 ## <a name="weather-data-telemetry-specifications"></a>Specifikace dat počasí (telemetrie)
 
-Data o počasí jsou namapována na kanonickou zprávu, která je vložena do centra událostí Azure ke zpracování. Azure EventHub je služba, která umožňuje přijímání dat v reálném čase z připojených zařízení a aplikací. K odeslání dat o počasí do FarmBeats budete muset vytvořit klienta, který odesílá zprávy do centra událostí v FarmBeats. Další informace o odesílání telemetrie najdete v tématu [odesílání telemetrie do centra událostí](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .
+Data o počasí jsou namapována na kanonickou zprávu, která je vložena do centra událostí Azure ke zpracování. Azure Event Hubs je služba, která umožňuje přijímání dat v reálném čase z připojených zařízení a aplikací. K odeslání dat o počasí do FarmBeats budete muset vytvořit klienta, který odesílá zprávy do centra událostí v FarmBeats. Další informace o odesílání telemetrie najdete v tématu [odesílání telemetrie do centra událostí](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .
 
 Tady je ukázkový kód Pythonu, který odesílá telemetrii jako klienta do zadaného centra událostí.
 

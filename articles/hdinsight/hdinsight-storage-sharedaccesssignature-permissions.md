@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
-ms.openlocfilehash: a2395eb5f5b40a7e3469292ec7faa68d8942dce9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535191"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742057"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Použití sdílených přístupových podpisů Azure Blob Storage k omezení přístupu k datům v HDInsight
 
@@ -86,7 +86,7 @@ Uložte token SAS vytvořený na konci každé metody. Token bude vypadat podobn
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
 ```
 
-### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+### <a name="using-powershell"></a>Použití PowerShellu
 
 `RESOURCEGROUP`Hodnoty, `STORAGEACCOUNT` a nahraďte `STORAGECONTAINER` odpovídajícími hodnotami pro existující kontejner úložiště. Změňte adresář na `hdinsight-dotnet-python-azure-storage-shared-access-signature-master` nebo upravte `-File` parametr tak, aby obsahoval absolutní cestu pro `Set-AzStorageblobcontent` . Zadejte následující příkaz prostředí PowerShell:
 

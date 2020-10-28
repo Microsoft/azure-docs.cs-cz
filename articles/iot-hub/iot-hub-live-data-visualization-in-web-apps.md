@@ -11,12 +11,13 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 35df99d0a30b0952521281fa0d6bb95ce0509695
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146669"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740997"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
@@ -252,7 +253,7 @@ Pokud v této ukázce provedete všechny problémy, zkuste postup v následujíc
 
 ### <a name="azure-app-service-issues"></a>Problémy s Azure App Service
 
-* V Azure Portal přejdete do vaší webové aplikace. V části **monitorování** v levém podokně vyberte **protokoly App Service**. Zapněte **protokolování aplikace (systém souborů)** na zapnuto, nastavte **úroveň** na hodnotu chyba a pak vyberte **Uložit**. Pak otevřete **datový proud protokolu** (pod položkou **monitorování**).
+* V Azure Portal přejdete do vaší webové aplikace. V části **monitorování** v levém podokně vyberte **protokoly App Service** . Zapněte **protokolování aplikace (systém souborů)** na zapnuto, nastavte **úroveň** na hodnotu chyba a pak vyberte **Uložit** . Pak otevřete **datový proud protokolu** (pod položkou **monitorování** ).
 
 * Z vaší webové aplikace v Azure Portal v části **vývojové nástroje**  vyberte  **konzolu** a ověřte verze node a npm pomocí `node -v` a `npm -v` .
 

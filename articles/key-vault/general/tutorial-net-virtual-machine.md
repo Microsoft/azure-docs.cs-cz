@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: e1abc26296b1e3bd16bebf95d3489a4e95595e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: f8e794a51a6789ba58d9475bb1ca78a442d7e315
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336713"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741374"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v .NET
 
@@ -37,7 +37,7 @@ Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)

@@ -5,36 +5,23 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 217ccbcef28545710ea0875a318bcf5b4b555825
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d26354d8c247f0839bb96564c4e004158743bd88
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677711"
+ms.locfileid: "92742199"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
 Update Management v Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače s Windows a Linux v Azure, v místních prostředích a v dalších cloudových prostředích. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
-Update Management pro virtuální počítače můžete povolit následujícími způsoby:
-
-- Z [účtu Azure Automation](enable-from-automation-account.md) pro jeden nebo více počítačů s Azure a mimo Azure.
-
-- Ručně pro počítače mimo Azure, včetně počítačů nebo serverů zaregistrovaných u [serverů s podporou ARC Azure](../../azure-arc/servers/overview.md).
-
-- Pro jeden virtuální počítač Azure ze [stránky virtuálního počítače](enable-from-vm.md) v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy Linux a Windows.
-
-- Pro [více virtuálních počítačů Azure](enable-from-portal.md) je můžete vybrat ze stránky virtuální počítače v Azure Portal.
-
-> [!NOTE]
-> Update Management vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí najdete v tématu [mapování pracovních prostorů Azure](../how-to/region-mappings.md). Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti z účtu Automation.
-
-K dispozici je [šablona Azure Resource Manager](enable-from-template.md) , která vám umožní povolit funkci Update Management v novém nebo existujícím účtu Automation a ve vašem předplatném Log Analytics pracovní prostor. Pomocí této funkce nepovoluje virtuální počítače Azure ani mimo Azure. Tento krok se provádí následně pomocí jedné z výše uvedených metod.
-
 > [!NOTE]
 > Počítač nakonfigurovaný s Update Management nemůžete použít ke spouštění vlastních skriptů z Azure Automation. Tento počítač může spustit pouze skript pro aktualizaci podepsaný společností Microsoft.
 
 K automatickému stažení a instalaci dostupných *důležitých* a *bezpečnostních oprav zabezpečení* na virtuálním počítači Azure si Projděte [Automatické opravy hosta virtuálního počítače](../../virtual-machines/windows/automatic-vm-guest-patching.md) pro virtuální počítače s Windows.
+
+Než nasadíte Update Management a povolíte správu vašich počítačů, ujistěte se, že rozumíte informacím v následujících částech.  
 
 ## <a name="about-update-management"></a>O Update Management
 
@@ -44,6 +31,7 @@ Počítače spravované pomocí Update Management pro vyhodnocení a nasazení a
 * Konfiguraci požadovaného stavu (DSC) PowerShellu pro Linux
 * Funkci Hybrid Runbook Worker služby Automation
 * Microsoft Update nebo Windows Server Update Services (WSUS) pro počítače se systémem Windows
+* Soukromé nebo veřejné úložiště aktualizací pro počítače se systémem Linux
 
 Následující diagram znázorňuje, jak Update Management vyhodnocuje a aplikuje aktualizace zabezpečení na všechny připojené servery se systémem Windows Server a Linux v pracovním prostoru:
 
@@ -79,7 +67,7 @@ Počítač zaregistrovaný pro Update Management ve více než jednom pracovním
 Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací a opravy. Oprava vyžaduje Hybrid Runbook Worker. Informace o požadavcích na Hybrid Runbook Worker najdete v tématu [nasazení Hybrid Runbook Worker Windows](../automation-windows-hrw-install.md) a [nasazení Hybrid Runbook Worker pro Linux](../automation-linux-hrw-install.md).
 
 > [!NOTE]
-> Posouzení aktualizací počítačů se systémem Linux je podporováno pouze v určitých oblastech, které jsou uvedeny v účtu Automation a v [tabulce mapování](../how-to/region-mappings.md#supported-mappings)Log Analytics pracovního prostoru. 
+> Posouzení aktualizací počítačů se systémem Linux je podporováno pouze v určitých oblastech, které jsou uvedeny v účtu Automation a v [tabulce mapování](../how-to/region-mappings.md#supported-mappings)Log Analytics pracovního prostoru.
 
 |Operační systém  |Poznámky  |
 |---------|---------|
@@ -109,7 +97,7 @@ Následující informace popisují požadavky klienta specifické pro operační
 
 #### <a name="windows"></a>Windows
 
-Agenti systému Windows musí být nakonfigurováni pro komunikaci se serverem WSUS nebo vyžadují přístup k Microsoft Update. Informace o tom, jak nainstalovat agenta Log Analytics pro Windows, najdete v tématu [připojení počítačů s Windows k Azure monitor](../../azure-monitor/platform/agent-windows.md). Pro hybridní počítače doporučujeme nainstalovat agenta Log Analytics pro Windows tím, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte [agenta nasazení Log Analytics k](../../governance/policy/samples/built-in-policies.md#monitoring) integrovaným zásadám Windows Azure ARC. Pokud plánujete také monitorování počítačů pomocí Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
+Agenti systému Windows musí být nakonfigurováni pro komunikaci se serverem WSUS nebo vyžadují přístup k Microsoft Update. Informace o agentovi Log Analytics najdete v tématu [Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Pro hybridní počítače doporučujeme nainstalovat agenta Log Analytics pro Windows tím, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte [agenta nasazení Log Analytics k](../../governance/policy/samples/built-in-policies.md#monitoring) integrovaným zásadám Windows Azure ARC. Pokud plánujete také monitorování počítačů pomocí Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
 
 Update Management můžete použít s Microsoft Endpoint Configuration Manager. Další informace o integračních scénářích najdete v tématu věnovaném [integraci Update Management s Windows Endpoint Configuration Manager](mecmintegration.md). Pro Windows servery spravované lokalitami ve vašem Configuration Manager prostředí se vyžaduje [agent Log Analytics pro Windows](../../azure-monitor/platform/agent-windows.md) . 
 
@@ -125,7 +113,7 @@ Pro Linux vyžaduje počítač přístup k úložišti aktualizací, které je b
 > [!NOTE]
 > Posouzení aktualizací počítačů se systémem Linux je podporováno pouze v určitých oblastech. Viz [Tabulka mapování](../how-to/region-mappings.md#supported-mappings)účtu služby Automation a Log Analytics pracovního prostoru.
 
-Informace o tom, jak nainstalovat agenta Log Analytics pro Linux a stáhnout nejnovější verzi, najdete v tématu [Log Analytics Agent pro Linux](../../azure-monitor/platform/agent-linux.md). Pro hybridní počítače doporučujeme nainstalovat agenta Log Analytics pro Windows tím, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte předdefinovanou zásadu pro [nasazení agenta Log Analytics k počítačům](../../governance/policy/samples/built-in-policies.md#monitoring) se systémem Linux. Pokud plánujete taky monitorovat počítače s Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
+Informace o agentovi Log Analytics najdete v tématu [Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Pro hybridní počítače doporučujeme nainstalovat agenta Log Analytics pro Linux, a to tak, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte předdefinovanou zásadu pro [Log Analytics nasadit agenta Azure ARC pro počítače](../../governance/policy/samples/built-in-policies.md#monitoring) se systémem Linux. Pokud plánujete taky monitorovat počítače s Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
 
 Virtuální počítače vytvořené z imagí Red Hat Enterprise Linux na vyžádání (RHEL), které jsou k dispozici v Azure Marketplace, se registrují pro přístup k [infrastruktuře RHUI (Red Hat Update Infrastructure)](../../virtual-machines/workloads/redhat/redhat-rhui.md) , která je nasazená v Azure. Jakákoli jiná distribuce systému Linux musí být aktualizována z online úložiště souborů distribuce pomocí metod podporovaných distribucí.
 
@@ -206,7 +194,7 @@ Pokud vaše zásady zabezpečení IT neumožňují, aby se počítače v síti p
 
 ## <a name="update-classifications"></a>Update classifications
 
-Následující tabulka definuje klasifikace, které Update Management podporuje pro aktualizace pro Windows. 
+Následující tabulka definuje klasifikace, které Update Management podporuje pro aktualizace pro Windows.
 
 |Klasifikace  |Popis  |
 |---------|---------|
@@ -253,14 +241,18 @@ Update Management spoléhá na místně nakonfigurované úložiště aktualizac
 
 ## <a name="enable-update-management"></a>Povolení řešení Update Management
 
-K dispozici je [Šablona Azure správce prostředků](enable-from-template.md) , která vám může pomáhat s nasazením Update Management do nového nebo existujícího účtu Automation a Azure monitor Log Analytics pracovním prostoru v rámci vašeho předplatného. Nekonfiguruje obor počítačů, které by se měly spravovat, to se provádí jako samostatný krok po použití šablony.
-
 Tady jsou způsoby, jak můžete povolit Update Management a vybrat počítače, které se mají spravovat:
 
-* [Z virtuálního počítače Azure](enable-from-vm.md)
-* [Z prohlížení více virtuálních počítačů Azure](enable-from-portal.md)
-* [Z účtu Azure Automation](enable-from-automation-account.md)
-* U serverů s podporou ARC (ve verzi Preview) nebo počítačů mimo Azure nainstalujte [agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) a [Povolte Update Management počítačů v pracovním prostoru](enable-from-automation-account.md#enable-machines-in-the-workspace) .
+- Použití šablony Azure [Správce prostředků](enable-from-template.md) k nasazení Update Management do nového nebo existujícího účtu Automation a Azure monitor pracovního prostoru Log Analytics v rámci vašeho předplatného. Nekonfiguruje obor počítačů, které by se měly spravovat, to se provádí jako samostatný krok po použití šablony.
+
+- Z [účtu Automation](enable-from-automation-account.md) pro jeden nebo víc počítačů Azure a mimo Azure, včetně serverů s podporou ARC.
+
+- Pro [vybraný virtuální počítač Azure](enable-from-vm.md) ze stránky virtuálního počítače v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy Linux a Windows.
+
+- Pro [více virtuálních počítačů Azure](enable-from-portal.md) je můžete vybrat ze stránky virtuální počítače v Azure Portal.
+
+> [!NOTE]
+> Update Management vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí najdete v tématu [mapování pracovních prostorů Azure](../how-to/region-mappings.md). Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti z účtu Automation.
 
 ## <a name="next-steps"></a>Další kroky
 

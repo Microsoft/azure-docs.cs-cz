@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 823f5f90bc1a72b1df87ee21e37cf39fed0b2340
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 452259015cf78234aa6a96194342de20db9a3724
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486153"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740875"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Zřizování propustnosti automatického škálování v databázi nebo kontejneru v Azure Cosmos DB-SQL API
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje, jak zřídit propustnost automatického škálován�
 
 Pokud používáte jiné rozhraní API, přečtěte si téma [rozhraní API pro MongoDB](how-to-provision-throughput-mongodb.md), [rozhraní API Cassandra](how-to-provision-throughput-cassandra.md), články [Gremlin API](how-to-provision-throughput-gremlin.md) pro zajištění propustnosti.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 ### <a name="create-new-database-or-container-with-autoscale"></a>Vytvoření nové databáze nebo kontejneru pomocí automatického škálování
 
@@ -29,11 +29,11 @@ Pokud používáte jiné rozhraní API, přečtěte si téma [rozhraní API pro 
 
 1. Přejděte na účet Azure Cosmos DB a otevřete kartu **Průzkumník dat** .
 
-1. Vyberte **Nový kontejner.** Zadejte název databáze, kontejneru a klíč oddílu. V části **propustnost**vyberte možnost **automatického škálování** a nastavte [maximální propustnost (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) , na kterou se má databáze nebo kontejner škálovat.
+1. Vyberte **Nový kontejner.** Zadejte název databáze, kontejneru a klíč oddílu. V části **propustnost** vyberte možnost **automatického škálování** a nastavte [maximální propustnost (ru/s)](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) , na kterou se má databáze nebo kontejner škálovat.
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Vytvoření kontejneru a konfigurace zřízené propustnosti automatického škálování":::
 
-1. Vyberte **OK**.
+1. Vyberte **OK** .
 
 Pokud chcete zřídit automatické škálování sdílené databáze propustnosti, vyberte při vytváření nové databáze možnost **zřídit propustnost databáze** . 
 
@@ -48,7 +48,7 @@ Pokud chcete zřídit automatické škálování sdílené databáze propustnost
 
 1. Vyberte možnost **škálování a nastavení** pro váš kontejner nebo **Škálujte** pro vaši databázi.
 
-1. V části **škálování**vyberte možnost **automatického škálování** a **uložte**.
+1. V části **škálování** vyberte možnost **automatického škálování** a **uložte** .
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Vytvoření kontejneru a konfigurace zřízené propustnosti automatického škálování":::
 

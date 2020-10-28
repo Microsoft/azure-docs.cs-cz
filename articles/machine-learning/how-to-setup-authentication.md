@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424985"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741886"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 
@@ -25,12 +25,12 @@ Naučte se ověřovat v pracovním prostoru Azure Machine Learning a modelech na
 
 Obecně existují dva typy ověřování, které můžete používat s Azure Machine Learning:
 
-* __Interaktivní__: účet můžete použít v Azure Active Directory k přímému ověření nebo k získání tokenu, který se používá k ověřování. Interaktivní ověřování se používá během experimentů a iterativního vývoje. Nebo kde chcete řídit přístup k prostředkům (například webové službě) na základě jednotlivých uživatelů.
-* __Instanční objekt__: v Azure Active Directory vytvoříte hlavní účet služby a použijete ho k ověření nebo získání tokenu. Instanční objekt se používá v případě, že potřebujete automatizovaný proces ověřování ke službě bez nutnosti zásahu uživatele. Například skript průběžné integrace a nasazení, který na vlaky a testuje model pokaždé, když se kód školení změní. Můžete také použít instanční objekt k získání tokenu pro ověření webové služby, pokud nechcete, aby koncový uživatel služby ověřil. Nebo tam, kde se ověřování koncového uživatele neprovede přímo pomocí Azure Active Directory.
+* __Interaktivní__ : účet můžete použít v Azure Active Directory k přímému ověření nebo k získání tokenu, který se používá k ověřování. Interaktivní ověřování se používá během experimentů a iterativního vývoje. Nebo kde chcete řídit přístup k prostředkům (například webové službě) na základě jednotlivých uživatelů.
+* __Instanční objekt__ : v Azure Active Directory vytvoříte hlavní účet služby a použijete ho k ověření nebo získání tokenu. Instanční objekt se používá v případě, že potřebujete automatizovaný proces ověřování ke službě bez nutnosti zásahu uživatele. Například skript průběžné integrace a nasazení, který na vlaky a testuje model pokaždé, když se kód školení změní. Můžete také použít instanční objekt k získání tokenu pro ověření webové služby, pokud nechcete, aby koncový uživatel služby ověřil. Nebo tam, kde se ověřování koncového uživatele neprovede přímo pomocí Azure Active Directory.
 
 Bez ohledu na použitý typ ověřování se používá řízení přístupu na základě role Azure (Azure RBAC) k určení rozsahu úrovně přístupu k prostředkům. Například účet, který se používá k získání přístupového tokenu pro nasazený model, potřebuje jenom přístup pro čtení k pracovnímu prostoru. Další informace o službě Azure RBAC najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač s Azure Machine Learningm poznámkovým blokem](concept-azure-machine-learning-architecture.md#compute-instance) , který už je nainstalovaný s SDK.
@@ -285,8 +285,8 @@ Použijte `token_response["accessToken"]` k načtení ověřovacího tokenu. Př
 
 Nasazení modelu vytvořená nástrojem Azure Machine Learning poskytují dvě metody ověřování:
 
-* **založené na klíčích**: ke ověřování webové služby se používá statický klíč.
-* **založené na tokenech**: z pracovního prostoru se musí získat dočasný token, který se používá k ověření webové služby. Platnost tohoto tokenu vyprší po uplynutí určité doby a je nutné ji aktualizovat, aby bylo možné pokračovat v práci s webovou službou.
+* **založené na klíčích** : ke ověřování webové služby se používá statický klíč.
+* **založené na tokenech** : z pracovního prostoru se musí získat dočasný token, který se používá k ověření webové služby. Platnost tohoto tokenu vyprší po uplynutí určité doby a je nutné ji aktualizovat, aby bylo možné pokračovat v práci s webovou službou.
 
     > [!NOTE]
     > Ověřování založené na tokenech je dostupné jenom při nasazení do služby Azure Kubernetes.
@@ -319,7 +319,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-Chcete-li načíst klíče ověřování, použijte `aci_service.get_keys()` . Chcete-li znovu vygenerovat klíč, použijte `regen_key()` funkci a předejte ji buď **primární** , nebo **sekundární**.
+Chcete-li načíst klíče ověřování, použijte `aci_service.get_keys()` . Chcete-li znovu vygenerovat klíč, použijte `regen_key()` funkci a předejte ji buď **primární** , nebo **sekundární** .
 
 ```python
 aci_service.regen_key("Primary")
@@ -335,7 +335,7 @@ Pokud povolíte ověřování pomocí tokenu pro webovou službu, uživatelé mu
 
 * Ověřování tokenu je **ve výchozím nastavení** při nasazení do služby Azure Kubernetes zakázané.
 * Ověřování tokenu se při nasazení do Azure Container Instances **nepodporuje** .
-* Ověřování tokenu **nelze použít současně s ověřováním na základě klíčů**.
+* Ověřování tokenu **nelze použít současně s ověřováním na základě klíčů** .
 
 K řízení ověřování tokenu použijte `token_auth_enabled` parametr při vytváření nebo aktualizaci nasazení:
 

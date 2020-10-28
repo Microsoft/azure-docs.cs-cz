@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/26/2019
-ms.openlocfilehash: c4efb8b4835b7dc828caa49eaf6013a2f58bb081
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 66b14e435b777595e23fcf5a98d4820f36d21a1a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534545"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742040"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Použití Apache Kafka v HDInsight s Azure IoT Hub
 
@@ -123,7 +123,7 @@ V rámci připojení SSH k hraničnímu uzlu pomocí následujících kroků nak
     |`bootstrap.servers=localhost:9092`|Nahraďte `localhost:9092` hodnotu hostiteli zprostředkovatele z předchozího kroku.|Nakonfiguruje samostatnou konfiguraci pro hraniční uzel, aby bylo možné najít zprostředkovatele Kafka.|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Tato změna umožňuje testovat pomocí výrobce konzoly, který je součástí Kafka. Pro ostatní výrobce a zákazníky budete možná potřebovat jiné převaděče. Informace o použití jiných hodnot převaděče naleznete v tématu [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Stejné jako výše.|
-    |–|`consumer.max.poll.records=10`|Přidat ke konci souboru Tato změna umožňuje zabránit vypršení časových limitů v konektoru jímky tím, že je omezí na 10 záznamů najednou. Další informace najdete na webu [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
+    |Není k dispozici|`consumer.max.poll.records=10`|Přidat ke konci souboru Tato změna umožňuje zabránit vypršení časových limitů v konektoru jímky tím, že je omezí na 10 záznamů najednou. Další informace najdete na webu [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
 
 1. Pokud chcete soubor uložit, použijte __CTRL + X__ , __Y__ a pak __Zadejte__ .
 

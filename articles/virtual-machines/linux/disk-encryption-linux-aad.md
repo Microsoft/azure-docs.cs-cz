@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: fa01c4a595a08ffdba56d777128431946540eee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: c8228086eb67478d80aa041004e0da3eed71f896
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372667"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741804"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Povolení Azure Disk Encryption s Azure AD na virtuálních počítačích se systémem Linux (předchozí verze)
 
@@ -148,7 +148,7 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 | AADClientSecret | Tajný kód klienta aplikace Azure AD, který má oprávnění k zápisu tajných kódů do trezoru klíčů. |
 | keyVaultName | Název trezoru klíčů, do kterého se má klíč nahrát Můžete ji získat pomocí příkazu rozhraní příkazového řádku Azure CLI `az keyvault show --name "MySecureVault" --query KVresourceGroup` . |
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k zašifrování vygenerovaného klíče. Tento parametr je nepovinný, pokud v rozevíracím seznamu **UseExistingKek** vyberete **nokek** . Pokud v rozevíracím seznamu **UseExistingKek** vyberete možnost **KEK** , musíte zadat hodnotu _keyEncryptionKeyURL_ . |
-| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné podporované hodnoty jsou _OS_ nebo _All_. (Další informace najdete v části Podporované distribuce systému Linux a jejich verze pro operační systémy a datové disky v oddílu požadavky dříve.) |
+| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné podporované hodnoty jsou _OS_ nebo _All_ . (Další informace najdete v části Podporované distribuce systému Linux a jejich verze pro operační systémy a datové disky v oddílu požadavky dříve.) |
 | sequenceVersion | Verze sekvence operace nástroje BitLocker Zvyšte číslo této verze pokaždé, když se na stejném virtuálním počítači provede operace šifrování disku. |
 | vmName | Název virtuálního počítače, na kterém se má operace šifrování provést. |
 | přístupové heslo | Jako šifrovací klíč dat zadejte silné heslo. |
@@ -180,7 +180,7 @@ Pokud chcete použít možnost EncryptFormatAll, použijte libovolnou existujíc
 
 1. Jako příklad použijte [šablonu správce prostředků k šifrování spuštěného virtuálního počítače se systémem Linux IaaS](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm). 
 2. V šabloně pro rychlý Start Azure vyberte **nasadit do Azure** .
-3. Změňte pole **EncryptionOperation** z **EnableEncryption** na **EnableEncryptionFormatAl**.
+3. Změňte pole **EncryptionOperation** z **EnableEncryption** na **EnableEncryptionFormatAl** .
 4. Vyberte předplatné, skupinu prostředků, umístění skupiny prostředků, další parametry, právní výrazy a smlouvy. Vyberte **vytvořit** , pokud chcete povolit šifrování na stávajícím nebo SPUŠTĚNém virtuálním počítači s IaaS.
 
 
@@ -341,7 +341,7 @@ Syntaxe pro hodnotu parametru klíč-šifrovací klíč je úplný identifikáto
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **Zakázat šifrování pomocí šablony Správce prostředků:** Šifrování zakážete tak, že použijete [zakázat šifrování v šabloně virtuálního počítače se systémem Linux](https://aka.ms/decrypt-linuxvm) .
-     1. Vyberte **nasadit do Azure**.
+     1. Vyberte **nasadit do Azure** .
      2. Vyberte předplatné, skupinu prostředků, umístění, virtuální počítač, právní podmínku a smlouvu.
      3. Pokud chcete zakázat šifrování disku na běžícím virtuálním počítači s Windows, vyberte **koupit** . 
 
