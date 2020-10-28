@@ -139,14 +139,16 @@
                   href: azure-vm-create-certification-faq.md
     - name: Konzultační služby
       items:
-        - name: Plánování nabídky konzultačních služeb
-          href: consulting-services.md
-        - name: Vytvoření a publikování nabídky konzultačních služeb
-          items:
-            - name: Požadavky
-              href: partner-center-portal/consulting-service-prerequisites.md
-            - name: Vytvoření nabídky konzultačních služeb
-              href: partner-center-portal/create-consulting-service-offer.md
+        - name: Naplánování nabídky konzultačních služeb
+          href: plan-consulting-service-offer.md
+        - name: Vytvoření nabídky konzultačních služeb
+          href: create-consulting-service-offer.md
+        - name: Konfigurace vlastností konzultačních služeb
+          href: create-consulting-service-offer-properties.md
+        - name: Konfigurace seznamu konzultačních služeb
+          href: create-consulting-service-offer-listing.md
+        - name: Konfigurace ceny a dostupnosti
+          href: create-consulting-service-pricing-availability.md
     - name: Nabídky Dynamics 365
       items:
         - name: Plánování nabídky Dynamics 365

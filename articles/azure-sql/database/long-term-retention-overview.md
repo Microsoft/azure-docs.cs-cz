@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 83d3bb78ef27af377b0a8c5edf75f658a0ca93e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8250fc39fe58168ddc13b7bcf5c040b57d5e92fb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450232"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782616"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Dlouhodobé uchovávání – Azure SQL Database a Azure SQL Managed instance
 
@@ -26,7 +26,7 @@ Mnoho aplikací má zákonné, právní nebo jiné obchodní účely, které vy�
 Je možné povolit dlouhou dobu uchovávání Azure SQL Database a je ve verzi Public Preview pro Azure SQL Managed instance. Tento článek obsahuje koncepční přehled dlouhodobého uchovávání. Pokud chcete nakonfigurovat dlouhodobé uchovávání, přečtěte si téma [konfigurace Azure SQL Database ltr](long-term-backup-retention-configure.md) a [Konfigurace spravované instance Azure SQL ltr](../managed-instance/long-term-backup-retention-configure.md). 
 
 > [!NOTE]
-> Úlohy agenta SQL můžete použít k naplánování [záloh databáze pouze kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternativu k více než 35 dnům.
+> Úlohy agenta SQL můžete použít k naplánování [záloh databáze pouze kopírování](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternativu k více než 35 dnům.
 
 
 ## <a name="how-long-term-retention-works"></a>Jak dlouhodobé uchovávání funguje
@@ -36,7 +36,7 @@ Dlouhodobá doba uchovávání záloh (LTR) využívá úplné zálohy databáze
 Pokud chcete povolit LTR, můžete definovat zásady s použitím kombinace čtyř parametrů: týdenní uchovávání záloh (W), uchovávání měsíčního uchovávání záloh (M), ročního uchovávání záloh (Y) a týdenního roku (WeekOfYear). Pokud zadáte W, bude jedna záloha každý týden zkopírována do dlouhodobého úložiště. Zadáte-li M, bude první záloha každého měsíce zkopírována do dlouhodobého úložiště. Pokud zadáte Y, bude do dlouhodobého úložiště zkopírována jedna záloha během týdne určeného parametrem WeekOfYear. Pokud je zadaný WeekOfYear v minulosti, když je zásada nakonfigurovaná, vytvoří se první záloha LTR v následujícím roce. Každá záloha bude uchována v dlouhodobém úložišti podle parametrů zásad, které jsou konfigurovány při vytvoření zálohy LTR.
 
 > [!NOTE]
-> Jakékoli změny v zásadě LTR se vztahují pouze na budoucí zálohy. Pokud se například upraví týdenní uchovávání záloh (W), měsíční uchovávání záloh (M) nebo roční uchovávání záloh (Y), bude se nové nastavení uchovávání vztahovat jenom na nové zálohy. Uchování stávajících záloh se neupraví. Pokud máte v úmyslu odstranit staré zálohy LTR ještě před uplynutím doby uchování, budete muset [zálohy ručně odstranit](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups).
+> Jakékoli změny v zásadě LTR se vztahují pouze na budoucí zálohy. Pokud se například upraví týdenní uchovávání záloh (W), měsíční uchovávání záloh (M) nebo roční uchovávání záloh (Y), bude se nové nastavení uchovávání vztahovat jenom na nové zálohy. Uchování stávajících záloh se neupraví. Pokud máte v úmyslu odstranit staré zálohy LTR ještě před uplynutím doby uchování, budete muset [zálohy ručně odstranit](./long-term-backup-retention-configure.md#delete-ltr-backups).
 > 
 
 Příklady zásad LTR:
@@ -84,7 +84,7 @@ Použití dlouhodobého uchovávání záloh se spravovanou instancí Azure SQL 
 - **Omezená verze Public Preview** – Tato verze Preview je dostupná jenom pro předplatná EA a CSP a podléhá omezené dostupnosti.  
 - [**Jenom PowerShell**](../managed-instance/long-term-backup-retention-configure.md) – momentálně není dostupná žádná Azure Portal podpora. LTR musí být povoleno pomocí prostředí PowerShell. 
 
-Pokud chcete požádat o registraci, vytvořte [lístek podpory Azure](https://azure.microsoft.com/support/create-ticket/). Pro typ problému vyberte technický problém, u možnosti služba zvolte spravovanou instanci SQL a jako typ problému vyberte **zálohování, obnovení a kontinuitu podnikových/dlouhodobého uchovávání záloh**. Ve vaší žádosti prosím uveďte stav, který chcete zaregistrovat ve verzi Public Preview pro spravovanou instanci SQL s omezením.
+Pokud chcete požádat o registraci, vytvořte [lístek podpory Azure](https://azure.microsoft.com/support/create-ticket/). Pro typ problému vyberte technický problém, u možnosti služba zvolte spravovanou instanci SQL a jako typ problému vyberte **zálohování, obnovení a kontinuitu podnikových/dlouhodobého uchovávání záloh** . Ve vaší žádosti prosím uveďte stav, který chcete zaregistrovat ve verzi Public Preview pro spravovanou instanci SQL s omezením.
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurace dlouhodobého uchovávání záloh
 
@@ -99,4 +99,3 @@ Chcete-li obnovit databázi z úložiště LTR, můžete vybrat konkrétní zál
 ## <a name="next-steps"></a>Další kroky
 
 Vzhledem k tomu, že zálohy databáze chrání data před náhodným poškozením nebo odstraněním, jsou zásadní součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii. Další informace o ostatních řešeních pro provozní kontinuitu SQL Database najdete v tématu [Přehled provozní kontinuity](business-continuity-high-availability-disaster-recover-hadr-overview.md).
- 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362125"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780950"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikace do Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91362125"
 Můžete nakonfigurovat Azure SQL Database jako předplatitele nabízené replikace v jednosměrné topologii transakce nebo replikace snímků.
 
 > [!NOTE]
-> Tento článek popisuje použití [transakční replikace](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) v Azure SQL Database. Nesouvisí s [aktivní geografickou replikací](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication), Azure SQL Database funkcí, která umožňuje vytvářet kompletní čitelné repliky jednotlivých databází.
+> Tento článek popisuje použití [transakční replikace](/sql/relational-databases/replication/transactional/transactional-replication) v Azure SQL Database. Nesouvisí s [aktivní geografickou replikací](./active-geo-replication-overview.md), Azure SQL Database funkcí, která umožňuje vytvářet kompletní čitelné repliky jednotlivých databází.
 
 ## <a name="supported-configurations"></a>Podporované konfigurace
   
@@ -50,16 +50,16 @@ Pokud chcete používat všechny funkce Azure SQL Database, musíte používat n
 
 ### <a name="types-of-replication"></a>Typy replikace
 
-Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
+Existují různé [typy replikace](/sql/relational-databases/replication/types-of-replication):
 
 | Replikace | Azure SQL Database | Spravovaná instance Azure SQL |
 | :----| :------------- | :--------------- |
-| [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Yes | 
-| [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Yes|
-| [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | No | No|
-| [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | No | No|
-| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
-| [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | No | No|
+| [**Standardní transakční**](/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano | 
+| [**Snímek**](/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
+| [**Sloučit replikaci**](/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
+| [**Peer-to-peer**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
+| [**Obousměrné**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
+| [**Odběry, které by možné aktualizovat**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
 | &nbsp; | &nbsp; | &nbsp; |
 
   
@@ -126,14 +126,14 @@ Pro Azure SQL Database odběry nejsou podporovány následující možnosti:
 
 Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématech:
   
-- [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru jako předplatitele (například **N'azuresqldbdns. Database. Windows. NET**) a názvu Azure SQL Database jako cílovou databázi (například **AdventureWorks**).  
+- [Vytvoření publikace](/sql/relational-databases/replication/publish/create-a-publication)
+- [Vytvořte nabízený odběr](/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru jako předplatitele (například **N'azuresqldbdns. Database. Windows. NET** ) a názvu Azure SQL Database jako cílovou databázi (například **AdventureWorks** ).  
 
 ## <a name="see-also"></a>Viz také  
 
 - [Transakční replikace](../managed-instance/replication-transactional-overview.md)
-- [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvoření nabízeného odběru](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Monitorování (replikace)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Inicializovat předplatné](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [Vytvoření publikace](/sql/relational-databases/replication/publish/create-a-publication)
+- [Vytvoření nabízeného odběru](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Typy replikace](/sql/relational-databases/replication/types-of-replication)
+- [Monitorování (replikace)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Inicializovat předplatné](/sql/relational-databases/replication/initialize-a-subscription)

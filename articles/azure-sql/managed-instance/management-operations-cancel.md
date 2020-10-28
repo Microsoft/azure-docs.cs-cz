@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995555"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782497"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Ruší se operace správy spravované instance Azure SQL.
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,14 +38,14 @@ Následující tabulka shrnuje operace správy bez ohledu na to, jestli je můž
 
 Kategorie  |Operace  |Zrušitelný  |Odhadovaná doba trvání zrušení  |
 |---------|---------|---------|---------|
-|Nasazení |Vytvoření instance |Yes |90% dokončených operací za 5 minut. |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |No |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Yes |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Yes |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Yes |90% dokončených operací za 5 minut. |
-|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Yes |90% dokončených operací za 5 minut. |
-|Odstranit |Odstranění instance |No |  |
-|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |No |  |
+|Nasazení |Vytvoření instance |Ano |90% dokončených operací za 5 minut. |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |Ne |  |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Ano |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut. |
+|Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Ano |90% dokončených operací za 5 minut. |
+|Odstranit |Odstranění instance |Ne |  |
+|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |Ne |  |
 
 ## <a name="cancel-management-operation"></a>Zrušit operaci správy
 
@@ -75,7 +75,7 @@ Pokud žádost o zrušení selže nebo pokud není aktivní tlačítko Storno, z
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokud ještě nemáte nainstalované Azure PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud ještě nemáte nainstalované Azure PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 Chcete-li zrušit operaci správy, je nutné zadat název operace správy. Proto nejprve pomocí příkazu Get načtěte seznam operací a pak zrušte konkrétní operaci.
 
@@ -93,7 +93,7 @@ foreach ($mo in $managementOperations ) {
 }
 ```
 
-Podrobné vysvětlení příkazů naleznete v tématu [Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation) a [stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation).
+Podrobné vysvětlení příkazů naleznete v tématu [Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation) a [stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -110,13 +110,13 @@ az sql mi op cancel -g yourResourceGroupName --mi yourInstanceName -n $operation
 done
 ```
 
-Podrobné vysvětlení příkazů najdete v tématu [AZ SQL mi op](https://docs.microsoft.com/cli/azure/sql/mi/op).
+Podrobné vysvětlení příkazů najdete v tématu [AZ SQL mi op](/cli/azure/sql/mi/op).
 
 ---
 
 ## <a name="canceled-deployment-request"></a>Žádost o zrušený nasazení
 
-S rozhraním API verze 2020-02-02, jakmile je požadavek na vytvoření instance přijatý, instance začne existovat jako prostředek bez ohledu na průběh procesu nasazení (stav spravované instance je **zřizování**). Pokud zrušíte požadavek na nasazení instance (vytvoření nové instance), bude spravovaná instance přecházet ze stavu **zřizování** na **FailedToCreate**.
+S rozhraním API verze 2020-02-02, jakmile je požadavek na vytvoření instance přijatý, instance začne existovat jako prostředek bez ohledu na průběh procesu nasazení (stav spravované instance je **zřizování** ). Pokud zrušíte požadavek na nasazení instance (vytvoření nové instance), bude spravovaná instance přecházet ze stavu **zřizování** na **FailedToCreate** .
 
 Instance, které se nepodařilo vytvořit, jsou stále přítomné jako prostředek a: 
 

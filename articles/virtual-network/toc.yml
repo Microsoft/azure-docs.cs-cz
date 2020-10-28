@@ -240,6 +240,8 @@
               href: virtual-network-public-ip-address.md
             - name: Správa předpon veřejných IP adres
               href: manage-public-ip-address-prefix.md
+            - name: Upgrade veřejných IP adres
+              href: virtual-network-public-ip-address-upgrade.md
             - name: Přidání nebo odebrání IP adresy ze síťových karet
               href: virtual-network-network-interface-addresses.md
             - name: Předvolba směrování

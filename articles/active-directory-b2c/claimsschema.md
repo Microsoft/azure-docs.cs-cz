@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201357"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781715"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -75,7 +75,7 @@ Element **DataType** podporuje následující hodnoty:
 |phoneNumber|Představuje telefonní číslo. |
 |int| Představuje číslo mezi-2 147 483 648 a 2 147 483 647.|
 |long| Představuje číslo mezi-9223372036854775808 a 9 223 372 036 854 775 807. |
-|řetězec| Představuje text jako posloupnost jednotek kódu UTF-16.|
+|string| Představuje text jako posloupnost jednotek kódu UTF-16.|
 |Třída StringCollection|Představuje kolekci `string` .|
 |userIdentity| Představuje identitu uživatele.|
 |userIdentityCollection|Představuje kolekci `userIdentity` .|
@@ -109,7 +109,7 @@ V následujícím příkladu, když architektura prostředí identity komunikuje
 </ClaimType>
 ```
 
-Výsledkem je, že token JWT vystavil Azure AD B2C a místo něho vygeneruje `family_name` jméno typu "název **surname**deklarace identity".
+Výsledkem je, že token JWT vystavil Azure AD B2C a místo něho vygeneruje `family_name` jméno typu "název **surname** deklarace identity".
 
 ```json
 {
@@ -128,7 +128,7 @@ Element **Maske** obsahuje následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex` . `Simple`Hodnota označuje, že je použita jednoduchá textová maska pro úvodní část deklarace řetězce. `Regex`Hodnota označuje, že regulární výraz je použit na deklaraci řetězce jako celek.  Pokud `Regex` je zadána hodnota, volitelný atribut musí být také definován s regulárním výrazem, který má být použit. |
-| `Regex` | No | Pokud **`Type`** je nastaven na `Regex` , zadejte regulární výraz, který se má použít.
+| `Regex` | Ne | Pokud **`Type`** je nastaven na `Regex` , zadejte regulární výraz, který se má použít.
 
 Následující příklad konfiguruje deklaraci **PhoneNumber** s `Simple` maskou:
 
@@ -167,7 +167,7 @@ Element **omezení** může obsahovat následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MergeBehavior | No | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. `Prepend`Hodnota je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. `ReplaceAll`Hodnota je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
+| MergeBehavior | Ne | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. `Prepend`Hodnota je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. `ReplaceAll`Hodnota je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
 
 Element **omezení** obsahuje následující prvky:
 
@@ -186,7 +186,7 @@ Prvek **výčtu** obsahuje následující atributy:
 | --------- | -------- | ----------- |
 | Text | Ano | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
 |Hodnota | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
-| SelectByDefault | No | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
+| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
 
 Následující příklad konfiguruje deklaraci identity rozevíracího seznamu **měst** s výchozí hodnotou nastavenou na `New York` :
 
@@ -214,7 +214,7 @@ Prvek **vzoru** může obsahovat následující atributy:
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | RegularExpression | Ano | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
-| HelpText | No | Chybová zpráva pro uživatele, pokud se chyba kontroly regulárního výrazu nezdařila. |
+| HelpText | Ne | Chybová zpráva pro uživatele, pokud se chyba kontroly regulárního výrazu nezdařila. |
 
 V následujícím příkladu je nakonfiguruje deklarace **e-mailu** pomocí ověřování vstupu regulárního výrazu a textu v nápovědě:
 
@@ -228,7 +228,7 @@ V následujícím příkladu je nakonfiguruje deklarace **e-mailu** pomocí ově
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9.!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
     </Restriction>
  </ClaimType>
 ```
@@ -284,7 +284,7 @@ Typ vstupu uživatele **EmailBox** se používá k poskytnutí základního pole
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>EmailBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
   </Restriction>
 </ClaimType>
 ```

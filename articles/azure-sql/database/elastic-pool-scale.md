@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 09/16/2020
-ms.openlocfilehash: 2792a93748600d71c37972058c8e496928543c9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 947d842860452425f8b30fbdaf9558c2a94a89a2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330702"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781205"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Škálování prostředků elastického fondu v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky �
 
 ## <a name="change-compute-resources-vcores-or-dtus"></a>Změna výpočetních prostředků (virtuální jádra nebo DTU)
 
-Po počátečním výběru počtu virtuální jádra nebo eDTU můžete dynamicky škálovat elastický fond na základě aktuálního prostředí pomocí [Azure Portal](elastic-pool-manage.md#azure-portal), [PowerShellu](/powershell/module/az.sql/Get-AzSqlElasticPool), rozhraní příkazového [řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+Po počátečním výběru počtu virtuální jádra nebo eDTU můžete dynamicky škálovat elastický fond na základě aktuálního prostředí pomocí [Azure Portal](elastic-pool-manage.md#azure-portal), [PowerShellu](/powershell/module/az.sql/Get-AzSqlElasticPool), rozhraní příkazového [řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)nebo [REST API](/rest/api/sql/elasticpools/update).
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Dopad změny úrovně služby nebo změna velikosti výpočetní velikosti
 
@@ -57,7 +57,7 @@ Odhadovaná latence změny úrovně služby, škálování výpočetní velikost
 >
 > - V případě změny úrovně služby nebo změně měřítka výpočetních prostředků pro elastický fond je vhodné použít pro výpočet odhadu místo využité ve všech databázích ve fondu.
 > - V případě přesunu databáze do nebo z elastického fondu stačí pouze místo, které databáze používá, vliv na latenci, nikoli na místo využité elastickým fondem.
-> - U elastických fondů Standard a Pro obecné účely je latence přesunu databáze do nebo z elastického fondu nebo mezi elastickými fondy úměrná velikosti databáze, pokud elastický fond používá úložiště[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)(Premium File Share). Pokud chcete zjistit, jestli fond používá úložiště PFS, spusťte následující dotaz v kontextu jakékoli databáze ve fondu. Pokud je hodnota ve sloupci AccountType `PremiumFileStorage` nebo `PremiumFileStorage-ZRS` , fond používá úložiště PFS.
+> - U elastických fondů Standard a Pro obecné účely je latence přesunu databáze do nebo z elastického fondu nebo mezi elastickými fondy úměrná velikosti databáze, pokud elastický fond používá úložiště[PFS](../../storage/files/storage-files-introduction.md)(Premium File Share). Pokud chcete zjistit, jestli fond používá úložiště PFS, spusťte následující dotaz v kontextu jakékoli databáze ve fondu. Pokud je hodnota ve sloupci AccountType `PremiumFileStorage` nebo `PremiumFileStorage-ZRS` , fond používá úložiště PFS.
 
 ```sql
 SELECT s.file_id,
@@ -69,7 +69,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> Informace o monitorování probíhajících operací najdete v tématech: [Správa operací pomocí příkazu SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku, [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Informace o monitorování probíhajících operací najdete v tématech: [Správa operací pomocí příkazu SQL REST API](/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku, [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Další předpoklady při změně úrovně služby nebo změna velikosti výpočetní velikosti
 
@@ -100,7 +100,7 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 ### <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
 - Cena eDTU pro elastický fond zahrnuje určité množství úložiště bez dalších poplatků. Dodatečné úložiště nad rámec zahrnuté částky se dá zřídit za dodatečné náklady až do limitu maximální velikosti v přírůstcích po 250 GB až do 1 TB a potom v přírůstcích po 256 GB po 1 TB. Zahrnuté množství úložišť a omezení maximální velikosti najdete v tématu [elastický fond: velikosti úložiště a velikosti výpočtů](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
-- Dodatečné úložiště pro elastický fond se dá zřídit zvýšením jeho maximální velikosti pomocí [Azure Portal](elastic-pool-manage.md#azure-portal), [PowerShellu](/powershell/module/az.sql/Get-AzSqlElasticPool), rozhraní příkazového [řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+- Dodatečné úložiště pro elastický fond se dá zřídit zvýšením jeho maximální velikosti pomocí [Azure Portal](elastic-pool-manage.md#azure-portal), [PowerShellu](/powershell/module/az.sql/Get-AzSqlElasticPool), rozhraní příkazového [řádku Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)nebo [REST API](/rest/api/sql/elasticpools/update).
 - Cena za dodatečné úložiště pro elastický fond je množství dodatečného úložiště vynásobené dodatečnou jednotkou ceny za službu Storage úrovně služby. Podrobnosti o ceně dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]

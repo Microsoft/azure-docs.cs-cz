@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441710"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782888"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Co je logický SQL Server v Azure SQL Database a Azure synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ Server v SQL Database a Azure synapse:
 - Je nadřazeným prostředkem pro databáze, elastické fondy a datové sklady.
 - Poskytuje obor názvů pro databáze, elastické fondy a databázi datového skladu.
 - Je logický kontejner se silnými sémantikou životního cyklu – odstraní Server a odstraní jeho databáze, elastické fondy a SQK fondy.
-- Podílí se na [řízení přístupu na základě role Azure (Azure RBAC)](/azure/role-based-access-control/overview) – databáze, elastické fondy a databáze datového skladu na serveru dědí přístupová práva ze serveru.
+- Podílí se na [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) – databáze, elastické fondy a databáze datového skladu na serveru dědí přístupová práva ze serveru.
 - Je vysokým prvkem identity databází, elastických fondů a databází datového skladu pro účely správy prostředků Azure (viz schéma adresy URL pro databáze a fondy).
 - Uspořádává prostředky v oblasti.
 - Poskytuje koncový bod připojení pro přístup k databázi (`<serverName>`.database.windows.net).
@@ -83,7 +83,7 @@ Pokud chcete spravovat existující databázi, přejděte na stránku **databáz
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modul je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> PowerShell Azure Resource Manager modul je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 Pokud chcete vytvářet a spravovat servery, databáze a brány firewall pomocí Azure PowerShell, použijte následující rutiny PowerShellu. Pokud potřebujete nainstalovat nebo upgradovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Informace o vytváření a správě elastických fondů najdete v tématu [elastické fondy](elastic-pool-overview.md).
 
@@ -96,7 +96,7 @@ Pokud chcete vytvářet a spravovat servery, databáze a brány firewall pomocí
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|Vytvoří skupinu prostředků.|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|Vytvoří server.|
 |[Get-AzSqlServer](/powershell/module/az.sql/get-azsqlserver)|Vrátí informace o serverech.|
-|[Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|Upraví vlastnosti serveru.|
+|[Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver)|Upraví vlastnosti serveru.|
 |[Remove-AzSqlServer](/powershell/module/az.sql/remove-azsqlserver)|Odebere server.|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|Vytvoří pravidlo brány firewall na úrovni serveru. |
 |[Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|Získá pravidla brány firewall pro server.|
@@ -110,7 +110,7 @@ Pokud chcete vytvářet a spravovat servery, databáze a brány firewall pomocí
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>Správa serverů, databází a bran firewall pomocí Azure CLI
 
-Pokud chcete vytvořit a spravovat servery, databáze a brány firewall pomocí [Azure CLI](/cli/azure), použijte následující příkazy [Azure CLI SQL Database](/cli/azure/sql/db) . Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows. Informace o vytváření a správě elastických fondů najdete v tématu [elastické fondy](elastic-pool-overview.md).
+Pokud chcete vytvořit a spravovat servery, databáze a brány firewall pomocí [Azure CLI](/cli/azure), použijte následující příkazy [Azure CLI SQL Database](/cli/azure/sql/db) . Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](../../cloud-shell/overview.md) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows. Informace o vytváření a správě elastických fondů najdete v tématu [elastické fondy](elastic-pool-overview.md).
 
 | Rutina | Popis |
 | --- | --- |
@@ -150,7 +150,7 @@ Chcete-li vytvořit a spravovat servery, databáze a brány firewall pomocí jaz
 |[VYTVOŘIT databázi (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | Vytvoří novou databázi v Azure SQL Database. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 |[Vytvoření databáze (Azure synapse)](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | Vytvoří novou databázi datového skladu v Azure synapse. Aby bylo možné vytvořit novou databázi, je nutné, abyste byli připojeni k hlavní databázi.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Upraví databázi nebo elastický fond. |
-|[ALTER DATABASE (Azure synapse Analytics)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Upraví databázi datového skladu v Azure synapse.|
+|[ALTER DATABASE (Azure synapse Analytics)](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|Upraví databázi datového skladu v Azure synapse.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí hodnotu edice (úroveň služby), cíl služby (cenová úroveň) a název elastického fondu, pokud existuje, pro databázi. Pokud se přihlásíte k hlavní databázi serveru, vrátí informace na všech databázích. V případě Azure synapse musíte být připojeni k hlavní databázi.|
 |[sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí CPU, vstupně-výstupní operace a spotřebu paměti pro databázi v Azure SQL Database. Jeden řádek existuje každých 15 sekund, a to i v případě, že databáze neobsahuje žádné aktivity.|
@@ -173,22 +173,22 @@ Pokud chcete vytvářet a spravovat servery, databáze a brány firewall, použi
 
 | Příkaz | Popis |
 | --- | --- |
-|[Servery – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Vytvoří nebo aktualizuje nový server.|
-|[Servery – odstranit](https://docs.microsoft.com/rest/api/sql/servers/delete)|Odstraní server.|
-|[Servery – získat](https://docs.microsoft.com/rest/api/sql/servers/get)|Načte server.|
-|[Servery – seznam](https://docs.microsoft.com/rest/api/sql/servers/list)|Vrátí seznam serverů.|
-|[Servery – seznam podle skupiny prostředků](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Vrátí seznam serverů ve skupině prostředků.|
-|[Servery – aktualizace](https://docs.microsoft.com/rest/api/sql/servers/update)|Aktualizuje existující server.|
-|[Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje stávající databázi.|
-|[Databáze – odstranění](https://docs.microsoft.com/rest/api/sql/databases/delete)|Odstraní databázi.|
-|[Databáze – získat](https://docs.microsoft.com/rest/api/sql/databases/get)|Získá databázi.|
-|[Databáze – seznam podle elastického fondu](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
-|[Databáze – seznam podle serveru](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
-|[Databáze – aktualizace](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
-|[Pravidla brány firewall – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Vytvoří nebo aktualizuje pravidlo brány firewall.|
-|[Pravidla brány firewall – odstranit](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Odstraní pravidlo brány firewall.|
-|[Pravidla brány firewall – získat](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Získá pravidlo brány firewall.|
-|[Pravidla brány firewall – seznam podle serveru](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Vrátí seznam pravidel brány firewall.|
+|[Servery – vytvořit nebo aktualizovat](/rest/api/sql/servers/createorupdate)|Vytvoří nebo aktualizuje nový server.|
+|[Servery – odstranit](/rest/api/sql/servers/delete)|Odstraní server.|
+|[Servery – získat](/rest/api/sql/servers/get)|Načte server.|
+|[Servery – seznam](/rest/api/sql/servers/list)|Vrátí seznam serverů.|
+|[Servery – seznam podle skupiny prostředků](/rest/api/sql/servers/listbyresourcegroup)|Vrátí seznam serverů ve skupině prostředků.|
+|[Servery – aktualizace](/rest/api/sql/servers/update)|Aktualizuje existující server.|
+|[Databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje stávající databázi.|
+|[Databáze – odstranění](/rest/api/sql/databases/delete)|Odstraní databázi.|
+|[Databáze – získat](/rest/api/sql/databases/get)|Získá databázi.|
+|[Databáze – seznam podle elastického fondu](/rest/api/sql/databases/listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
+|[Databáze – seznam podle serveru](/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
+|[Databáze – aktualizace](/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
+|[Pravidla brány firewall – vytvořit nebo aktualizovat](/rest/api/sql/firewallrules/createorupdate)|Vytvoří nebo aktualizuje pravidlo brány firewall.|
+|[Pravidla brány firewall – odstranit](/rest/api/sql/firewallrules/delete)|Odstraní pravidlo brány firewall.|
+|[Pravidla brány firewall – získat](/rest/api/sql/firewallrules/get)|Získá pravidlo brány firewall.|
+|[Pravidla brány firewall – seznam podle serveru](/rest/api/sql/firewallrules/listbyserver)|Vrátí seznam pravidel brány firewall.|
 
 ## <a name="next-steps"></a>Další kroky
 

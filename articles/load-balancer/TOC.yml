@@ -110,7 +110,7 @@
         - name: Šablona Azure Resource Manageru
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: Konfigurace časového limitu nečinnosti protokolu TCP nástroje Load Balancer
+    - name: Konfigurace časového limitu nečinnosti a resetování TCP
       href: load-balancer-tcp-idle-timeout.md
     - name: Konfigurace distribučního režimu Load Balanceru
       href: load-balancer-distribution-mode.md

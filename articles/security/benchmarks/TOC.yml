@@ -161,6 +161,8 @@
       href: ../../service-bus-messaging/security-baseline.md
     - name: Standardní hodnoty pro Service Fabric
       href: ../../service-fabric/security-baseline.md
+    - name: Standardní hodnoty pro Site Recovery
+      href: ../../site-recovery/security-baseline.md
     - name: Standardní hodnoty pro Stream Analytics
       href: ../../stream-analytics/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Synapse Analytics

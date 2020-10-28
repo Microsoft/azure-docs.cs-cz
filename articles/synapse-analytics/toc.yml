@@ -20,7 +20,7 @@
           href: get-started-analyze-sql-on-demand.md
         - name: 5. Analýza dat v účtu úložiště
           href: get-started-analyze-storage.md
-        - name: 6. Orchestrace s využitím kanálů
+        - name: 6. Integrace s kanály
           href: get-started-pipelines.md
         - name: 7. Vizualizace pomocí Power BI
           href: get-started-visualize-power-bi.md
@@ -42,7 +42,8 @@
       href: quickstart-create-workspace-cli.md
     - name: Vytvoření pracovního prostoru Synapse s využitím Azure PowerShellu
       href: quickstart-create-workspace-powershell.md
-    - name: Nasazení s využitím šablony
+    - name: Nasazení s využitím šablony ARM
+      displayName: Resource Manager
       href: quickstart-deployment-template-workspaces.md
     - name: Propojení pracovního prostoru Power BI
       href: quickstart-power-bi.md
@@ -168,7 +169,7 @@
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Transparentní šifrování dat s využitím služby Bring Your Own Key
               href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Integrace a orchestrace
+    - name: Integrace
       items:
         - name: Kanál a aktivita
           href: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -558,7 +559,7 @@
               href: ../data-factory/data-flow-unpivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Okno
               href: ../data-factory/data-flow-window.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Integrace a orchestrace
+    - name: Integrace
       items:
         - name: Autor
           items:
@@ -893,8 +894,6 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Řešení potíží s konektory
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Řešení potíží s nástrojem Kopírování dat
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Řešení potíží s místním prostředím Integration Runtime
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Připojení nástrojů k pracovním prostorům Synapse

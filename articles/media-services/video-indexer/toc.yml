@@ -13,7 +13,7 @@
       href: invite-users.md
 - name: Kurzy
   items:
-    - name: Připojení k Azure
+    - name: Vytvoření nového účtu připojeného k Azure
       href: connect-to-azure.md
     - name: Použití rozhraní API Video Indexeru
       href: video-indexer-use-apis.md

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 14edb8db945a9b69ba77d56cd19a4524876ede03
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676803"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782004"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na webu Azure Portal
 
@@ -27,7 +27,7 @@ Doporučujeme, abyste zkontrolovali [Azure monitor pro úložiště](../../azure
 >
 > Soubory Azure aktuálně podporuje Analýza úložiště metriky, ale zatím nepodporují protokolování.
 >
-> Účty úložiště blob bloku úrovně Premium nepodporují analytické metriky úložiště, ale podporují protokolování. Protokolování můžete povolit programově prostřednictvím REST API nebo klientské knihovny. Pokud chcete zobrazit metriky s účty služby Blob Storage BLOB služby Premium Performance, zvažte použití [Azure Storage metriky v Azure monitor](storage-metrics-in-azure-monitor.md).
+> Účty úložiště blob bloku úrovně Premium nepodporují analytické metriky úložiště, ale podporují protokolování. Protokolování můžete povolit programově prostřednictvím REST API nebo klientské knihovny. Pokud chcete zobrazit metriky s účty služby Blob Storage BLOB služby Premium Performance, zvažte použití [Azure Storage metriky v Azure monitor](../blobs/monitor-blob-storage.md).
 >
 > Podrobný návod k používání Analýza úložiště a dalších nástrojů k identifikaci, diagnostice a odstraňování potíží souvisejících s Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 >

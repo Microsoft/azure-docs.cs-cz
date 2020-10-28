@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0991992a6138d263dfb4d200c9555a8d53366d70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219fe82f16dd9bbc887c9b17b067c706230c63dd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994930"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782378"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurace šifrování pomocí klíčů spravovaných zákazníkem uložených v Azure Key Vault
 
@@ -35,15 +35,15 @@ Použití klíčů spravovaných zákazníkem s šifrováním Azure Storage vyž
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal](../../key-vault/general/quick-create-portal.md). Při vytváření trezoru klíčů vyberte **Povolit ochranu vyprázdnění**, jak je znázorněno na následujícím obrázku.
+Informace o tom, jak vytvořit Trezor klíčů pomocí Azure Portal, najdete v tématu [rychlý Start: vytvoření trezoru klíčů pomocí Azure Portal](../../key-vault/general/quick-create-portal.md). Při vytváření trezoru klíčů vyberte **Povolit ochranu vyprázdnění** , jak je znázorněno na následujícím obrázku.
 
 :::image type="content" source="media/customer-managed-keys-configure-key-vault/configure-key-vault-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit ochranu vyprázdnit při vytváření trezoru klíčů":::
 
 Pokud chcete povolit ochranu vyprázdnění pro existující Trezor klíčů, postupujte takto:
 
 1. V Azure Portal přejděte do svého trezoru klíčů.
-1. V části **Nastavení**vyberte **vlastnosti**.
-1. V části **Vymazat ochranu** vyberte možnost **Povolit ochranu vyprázdnění**.
+1. V části **Nastavení** vyberte **vlastnosti** .
+1. V části **Vymazat ochranu** vyberte možnost **Povolit ochranu vyprázdnění** .
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -58,7 +58,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-Informace o tom, jak povolit ochranu vyprázdnění pro existující Trezor klíčů pomocí PowerShellu, najdete v tématu [Použití obnovitelného odstranění pomocí PowerShellu](../../key-vault/general/soft-delete-powershell.md).
+Informace o tom, jak povolit ochranu vyprázdnění pro existující Trezor klíčů pomocí PowerShellu, najdete v tématu [Použití obnovitelného odstranění pomocí PowerShellu](../../key-vault/general/key-vault-recovery.md).
 
 V dalším kroku přiřaďte vašemu účtu úložiště spravovanou identitu přiřazenou systémem. Pomocí této spravované identity udělíte účtu úložiště oprávnění k přístupu k trezoru klíčů. Další informace o spravovaných identitách přiřazených systémem najdete v tématu [co jsou spravované identity pro prostředky Azure?](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -93,7 +93,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Informace o tom, jak povolit ochranu vyprázdnění pro existující Trezor klíčů pomocí Azure CLI, najdete v tématu [Použití obnovitelného odstranění pomocí rozhraní](../../key-vault/general/soft-delete-cli.md)příkazového řádku (CLI).
+Informace o tom, jak povolit ochranu vyprázdnění pro existující Trezor klíčů pomocí Azure CLI, najdete v tématu [Použití obnovitelného odstranění pomocí rozhraní](../../key-vault/general/key-vault-recovery.md)příkazového řádku (CLI).
 
 V dalším kroku přiřaďte k účtu úložiště spravovanou identitu přiřazenou systémem. Pomocí této spravované identity udělíte účtu úložiště oprávnění k přístupu k trezoru klíčů. Další informace o spravovaných identitách přiřazených systémem najdete v tématu [co jsou spravované identity pro prostředky Azure?](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -129,7 +129,7 @@ az keyvault set-policy \
 
 V dalším kroku přidejte klíč do trezoru klíčů.
 
-Šifrování Azure Storage podporuje RSA a klíče RSA-HSM velikostí 2048, 3072 a 4096. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Šifrování Azure Storage podporuje RSA a klíče RSA-HSM velikostí 2048, 3072 a 4096. Další informace o klíčích najdete v tématu [o klíčích](../../key-vault/keys/about-keys.md).
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -175,12 +175,12 @@ Azure Storage může automaticky aktualizovat klíč spravovaný zákazníkem, k
 Pokud chcete konfigurovat klíče spravované zákazníkem pomocí automatických aktualizací verze klíče v Azure Portal, postupujte takto:
 
 1. Přejděte na svůj účet úložiště.
-1. V okně **Nastavení** pro účet úložiště klikněte na **šifrování**. Vyberte možnost **spravované klíče zákazníka** , jak je znázorněno na následujícím obrázku.
+1. V okně **Nastavení** pro účet úložiště klikněte na **šifrování** . Vyberte možnost **spravované klíče zákazníka** , jak je znázorněno na následujícím obrázku.
 
     ![Snímek obrazovky portálu ukazující možnost šifrování](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
 1. Zvolte možnost **vybrat z Key Vault** .
-1. Vyberte **možnost vyberte Trezor klíčů a klíč**.
+1. Vyberte **možnost vyberte Trezor klíčů a klíč** .
 1. Vyberte Trezor klíčů obsahující klíč, který chcete použít.
 1. Vyberte klíč z trezoru klíčů.
 

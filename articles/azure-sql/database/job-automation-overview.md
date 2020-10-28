@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ecd7e847a91847db8f57c640a374dc329fce7ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450343"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782939"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatizace úloh správy pomocí databázových úloh
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -173,7 +173,7 @@ Některé funkce agenta SQL, které jsou k dispozici v SQL Server, nejsou ve spr
 - Proxy servery nejsou podporovány.
 - Protokol událostí není podporován.
 
-Informace o agentovi SQL Server najdete v tématu [agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+Informace o agentovi SQL Server najdete v tématu [agent SQL Server](/sql/ssms/agent/sql-server-agent).
 
 ## <a name="elastic-database-jobs-preview"></a>Úlohy Elastic Database (Preview)
 
@@ -210,11 +210,11 @@ Pro aktuální verzi Preview se k vytvoření agenta elastické úlohy vyžaduje
 
 *Databáze úloh* nemusí být v některých případech nová, ale měla by to být čistý, prázdný, S0 nebo vyšší cíl služby. Doporučený cíl služby *databáze úloh* je S1 nebo vyšší, ale optimální volba závisí na potřebách výkonu vaší úlohy: počet kroků úlohy, počet cílů úlohy a četnost spouštění úloh. Například databáze S0 může být dostatečná pro agenta úloh, který spouští několik úloh, které cílí na méně než deset databází, ale spuštění úlohy každou minutu nemusí být dostatečně rychlé s databází S0 a vyšší úroveň služby může být lepší.
 
-Pokud jsou operace s databází úloh pomalejší, než se čekalo, [Sledujte](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) výkon databáze a využití prostředků v databázi úloh během období pomalé míry pomocí Azure Portal nebo [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. Pokud se využití prostředku, jako je například CPU, datový vstup/výstup nebo zápis do protokolu, blíží 100% a koreluje s periodami zpomalení, zvažte možnost přírůstkového škálování databáze na vyšší cíle služby (buď v [modelu DTU](service-tiers-dtu.md) , nebo v [modelu Vcore](service-tiers-vcore.md)), dokud nebude dostatečně vylepšen výkon databáze úloh.
+Pokud jsou operace s databází úloh pomalejší, než se čekalo, [Sledujte](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) výkon databáze a využití prostředků v databázi úloh během období pomalé míry pomocí Azure Portal nebo [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV. Pokud se využití prostředku, jako je například CPU, datový vstup/výstup nebo zápis do protokolu, blíží 100% a koreluje s periodami zpomalení, zvažte možnost přírůstkového škálování databáze na vyšší cíle služby (buď v [modelu DTU](service-tiers-dtu.md) , nebo v [modelu Vcore](service-tiers-vcore.md)), dokud nebude dostatečně vylepšen výkon databáze úloh.
 
 ##### <a name="job-database-permissions"></a>Oprávnění k databázi úloh
 
-Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky a role *jobs_reader*. Tato role se vytvoří s následujícími oprávněními a je určená k tomu, aby správcům poskytovala podrobnější řízení přístupu pro účely monitorování úloh:
+Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky a role *jobs_reader* . Tato role se vytvoří s následujícími oprávněními a je určená k tomu, aby správcům poskytovala podrobnější řízení přístupu pro účely monitorování úloh:
 
 |Název role |Oprávnění ke schématu jobs |Oprávnění ke schématu jobs_internal |
 |---------|---------|---------|
@@ -233,7 +233,7 @@ Při vytváření agenta úloh se v *databázi úloh* vytvoří schéma, tabulky
 - **Mapa horizontálních oddílů** – databáze mapy horizontálních oddílů.
 
 > [!TIP]
-> V okamžiku spuštění úlohy *dynamický výčet* znovu vyhodnotí sadu databází v cílových skupinách, které zahrnují servery nebo fondy. Dynamický výčet zajišťuje, že se **úlohy spustí pro všechny databáze, které existují na serveru nebo ve fondu v době spuštění úlohy**. Opětovné vyhodnocení seznamu databází za běhu je zejména užitečné pro scénáře, kdy se členství ve fondu nebo na serveru často mění.
+> V okamžiku spuštění úlohy *dynamický výčet* znovu vyhodnotí sadu databází v cílových skupinách, které zahrnují servery nebo fondy. Dynamický výčet zajišťuje, že se **úlohy spustí pro všechny databáze, které existují na serveru nebo ve fondu v době spuštění úlohy** . Opětovné vyhodnocení seznamu databází za běhu je zejména užitečné pro scénáře, kdy se členství ve fondu nebo na serveru často mění.
 
 Fondy a izolované databáze je možné zahrnout do skupiny nebo je z ní vyloučit. Díky tomu můžete vytvořit cílovou skupinu s jakoukoli kombinací databází. Do cílové skupiny například můžete přidat server, ale vyloučit z ní konkrétní databáze v elastickém fondu (nebo vyloučit celý fond).
 
@@ -245,7 +245,7 @@ Následující příklady ukazují, jak se při spuštění úlohy dynamicky zji
 
 **Příklad 1** ukazuje cílovou skupinu, která se skládá ze seznamu jednotlivých databází. Když se spustí krok úlohy s použitím této cílové skupiny, akce kroku úlohy se provede ve všech těchto databázích.<br>
 **Příklad 2** ukazuje cílovou skupinu, která obsahuje server jako cíl. Když se spustí krok úlohy s použitím této cílové skupiny, automaticky se zjistí server a určí se seznam databází, které se aktuálně na serveru nacházejí. Akce kroku úlohy se provede ve všech těchto databázích.<br>
-**Příklad 3** ukazuje podobnou cílovou skupinu jako *příklad 2*, ale s jednou výslovně vyloučenou databází. Akce kroku úlohy se ve vyloučené databázi *neprovede*.<br>
+**Příklad 3** ukazuje podobnou cílovou skupinu jako *příklad 2* , ale s jednou výslovně vyloučenou databází. Akce kroku úlohy se ve vyloučené databázi *neprovede* .<br>
 **Příklad 4** ukazuje cílovou skupinu, která jako cíl obsahuje elastický fond. Podobně jako v *příkladu 2* se fond automaticky zjistí za běhu úlohy a určí se seznam databází ve fondu.
 <br><br>
 
@@ -260,7 +260,7 @@ Následující příklady ukazují, jak se při spuštění úlohy dynamicky zji
 
 #### <a name="job"></a>Úloha
 
-*Úloha* je pracovní jednotka, která se spouští podle plánu nebo jako jednorázová úloha. Úloha se skládá z jednoho nebo několika *kroků úlohy*.
+*Úloha* je pracovní jednotka, která se spouští podle plánu nebo jako jednorázová úloha. Úloha se skládá z jednoho nebo několika *kroků úlohy* .
 
 ##### <a name="job-step"></a>Krok úlohy
 
@@ -272,7 +272,7 @@ Výstupy kroků úloh pro každou cílovou databázi se podrobně zaznamenávaj�
 
 #### <a name="job-history"></a>Historie úlohy
 
-Historie spouštění úloh se ukládá do *databáze úloh*. Úloha vyčištění systému vyprázdní historii spouštění starší než 45 dnů. Pokud chcete odebrat historii mladší než 45 dnů, zavolejte v *databázi úloh* uloženou proceduru **sp_purge_history**.
+Historie spouštění úloh se ukládá do *databáze úloh* . Úloha vyčištění systému vyprázdní historii spouštění starší než 45 dnů. Pokud chcete odebrat historii mladší než 45 dnů, zavolejte v *databázi úloh* uloženou proceduru **sp_purge_history** .
 
 ### <a name="agent-performance-capacity-and-limitations"></a>Výkon, kapacita a omezení agenta
 
@@ -288,7 +288,7 @@ Pokud chcete zajistit, aby při spouštění úloh pro databáze v elastickém f
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co je Agent SQL Server](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- [Co je Agent SQL Server](/sql/ssms/agent/sql-server-agent)
 - [Jak vytvářet a spravovat elastické úlohy](elastic-jobs-overview.md)
 - [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell-create.md)
 - [Vytváření a správa elastických úloh pomocí Transact-SQL (T-SQL)](elastic-jobs-tsql-create-manage.md)

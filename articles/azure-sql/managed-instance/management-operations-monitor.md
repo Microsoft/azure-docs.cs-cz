@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995356"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782446"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Monitorování operací správy spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,7 +46,7 @@ Následující tabulka porovnává možnosti monitorování operací správy:
 | Možnost | Uchovávání | Podporuje zrušení | Vytvořit | Aktualizace | Odstranit | Zrušit | Postup |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Nasazení skupiny prostředků | Neomezený<sup>1</sup> | Ne<sup>2</sup> | Viditelné | Viditelné | Neviditelné | Viditelné | Neviditelné |
-| Protokol aktivit | 90 dnů | No | Viditelné | Viditelné | Viditelné | Viditelné |  Neviditelné |
+| Protokol aktivit | 90 dnů | Ne | Viditelné | Viditelné | Viditelné | Viditelné |  Neviditelné |
 | Rozhraní API pro Operations Managed instance | 24 hodin | [Ano](management-operations-cancel.md) | Viditelné | Viditelné | Viditelné | Viditelné | Viditelné |
 |  |  |  |  |  |  |  | |
 
@@ -62,9 +62,9 @@ Rozhraní API:
 
 | Příkaz | Popis |
 | --- | --- |
-|[Operace spravované instance – získání](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|Načte operaci správy na spravované instanci.|
-|[Operace spravované instance – zrušit](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|Zruší asynchronní operaci na spravované instanci.|
-|[Operace spravované instance – seznam podle spravované instance](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Načte seznam operací provedených na spravované instanci.|
+|[Operace spravované instance – získání](/rest/api/sql/managedinstanceoperations/get)|Načte operaci správy na spravované instanci.|
+|[Operace spravované instance – zrušit](/rest/api/sql/managedinstanceoperations/cancel)|Zruší asynchronní operaci na spravované instanci.|
+|[Operace spravované instance – seznam podle spravované instance](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Načte seznam operací provedených na spravované instanci.|
 
 > [!NOTE]
 > K zobrazení operace vytvoření spravované instance v seznamu operací použijte rozhraní API verze 2020-02-02. Toto je výchozí verze používaná v Azure Portal a nejnovější balíčky PowerShellu a rozhraní příkazového řádku Azure CLI.
@@ -98,7 +98,7 @@ $managementOperations = Get-AzSqlInstanceOperation `
     -ManagedInstanceName $managedInstance  -ResourceGroupName $resourceGroup
 ```
 
-Podrobné vysvětlení příkazů naleznete v tématu [Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation).
+Podrobné vysvětlení příkazů naleznete v tématu [Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -108,7 +108,7 @@ Seznam AZ SQL mi op získá seznam operací provedených na spravované instanci
 az sql mi op list -g yourResourceGroupName --mi yourInstanceName 
 ```
 
-Podrobné vysvětlení příkazů najdete v tématu [AZ SQL mi op](https://docs.microsoft.com/cli/azure/sql/mi/op).
+Podrobné vysvětlení příkazů najdete v tématu [AZ SQL mi op](/cli/azure/sql/mi/op).
 
 ---
 

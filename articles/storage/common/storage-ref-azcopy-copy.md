@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: f3d691692553a8201b3e3eccfaead82a2cbb9ca0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479693"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781732"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -41,7 +41,7 @@ Další informace najdete v části Příklady tohoto článku.
 - [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Pokročilý
+## <a name="advanced"></a>Upřesnit
 
 AzCopy automaticky detekuje typ obsahu souborů při jejich nahrávání z místního disku. AzCopy detekuje typ obsahu na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
 
@@ -292,7 +292,7 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--S2S-Handle-neplatný-řetězec metadat** určuje, jak se zpracovávají neplatné klíče metadat. Dostupné možnosti: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (výchozí `ExcludeIfInvalid` ). (výchozí "ExcludeIfInvalid")
 
-**--S2S-Preserve-úroveň přístupu**   Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](/azure/storage/blobs/storage-blob-storage-tiers) . V případech, kdy nastavení úrovně přístupu není podporované, použijte s2sPreserveAccessTier = false, aby se vynechá kopírování úrovně přístupu. (výchozí `true` ).  (výchozí hodnota true)
+**--S2S-Preserve-úroveň přístupu**   Zachovat úroveň přístupu během kopírování z provozu do služby Pokud chcete zajistit, aby cílový účet úložiště podporoval nastavení úrovně přístupu, přečtěte si téma [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md) . V případech, kdy nastavení úrovně přístupu není podporované, použijte s2sPreserveAccessTier = false, aby se vynechá kopírování úrovně přístupu. (výchozí `true` ).  (výchozí hodnota true)
 
 **--S2S-Preserve-Properties**   Zachovat úplné vlastnosti během kopírování Service to Service. V případě nesamostatného zdroje souborů AWS S3 a Azure File nevrátí operace list úplné vlastnosti objektů a souborů. Aby bylo možné zachovat úplné vlastnosti, AzCopy potřebuje odeslat jednu další žádost na jeden objekt nebo soubor. (výchozí hodnota true)
 

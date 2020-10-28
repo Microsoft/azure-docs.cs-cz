@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578219"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782225"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Klíče spravované zákazníkem pro šifrování Azure Storage
 
@@ -65,7 +65,7 @@ Informace o tom, jak nakonfigurovat šifrování Azure Storage pomocí klíčů 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem spoléhají na spravované identity prostředků Azure, což je funkce služby Azure AD. Spravované identity v současné době nepodporují scénáře pro více adresářů. Když v Azure Portal konfigurujete klíče spravované zákazníkem, automaticky se k vašemu účtu úložiště přiřadí spravovaná identita v rámci pokrývání. Pokud později přesunete předplatné, skupinu prostředků nebo účet úložiště z jednoho adresáře služby Azure AD do jiného, nepřesune se do nového tenanta spravovaná identita přidružená k účtu úložiště, takže klíče spravované zákazníkem už možná nebudou fungovat. Další informace najdete v tématu **přenos předplatného mezi adresáři služby Azure AD** v [nejčastějších dotazech a známých potížích se spravovanými identitami pro prostředky Azure](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).  
 
-Šifrování úložiště Azure podporuje klíče RSA a RSA-HSM velikostí 2048, 3072 a 4096. Další informace o klíčích najdete v tématu **Key Vault Keys** v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+Šifrování úložiště Azure podporuje klíče RSA a RSA-HSM velikostí 2048, 3072 a 4096. Další informace o klíčích najdete v tématu [o klíčích](../../key-vault/keys/about-keys.md).
 
 Pomocí trezoru klíčů nebo spravovaného modulu HARDWAROVÉho zabezpečení jsou přiřazeny náklady. Další informace najdete v tématu [Key Vault ceny](https://azure.microsoft.com/pricing/details/key-vault/).
 
@@ -109,7 +109,7 @@ Chcete-li tyto operace volat znovu, obnovte přístup k klíči spravovanému z�
 
 Všechny operace s daty, které nejsou uvedené v této části, můžou pokračovat až po odvolání klíčů spravovaných zákazníkem nebo zakázání nebo odstranění klíče.
 
-K odvolání přístupu ke klíčům spravovaným zákazníkem použijte [PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) nebo [Azure CLI](storage-encryption-keys-cli.md#revoke-customer-managed-keys).
+K odvolání přístupu ke klíčům spravovaným zákazníkem použijte [PowerShell](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys) nebo [Azure CLI](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys).
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Klíče spravované zákazníkem pro Azure Managed disks
 

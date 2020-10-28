@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bf88782cf771c01a6a167d4584ad86dc69795c59
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069870"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781477"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -90,7 +90,7 @@ Vybraný počet aplikací, například ServiceNow, box a G Suite, podporuje mož
 
 ![Příklad ukazuje ServiceNow se zřízené objekty skupiny a uživatele.](./media/customize-application-attributes/24.png)
 
-Zřizování skupin se dá volitelně zapnout nebo vypnout tak, že v části **mapování**vyberete mapování skupiny a na obrazovce **mapování atributů** **povolíte** požadované možnosti.
+Zřizování skupin se dá volitelně zapnout nebo vypnout tak, že v části **mapování** vyberete mapování skupiny a na obrazovce **mapování atributů** **povolíte** požadované možnosti.
 
 Atributy zřízené jako součást objektů skupiny lze přizpůsobit stejným způsobem jako objekty uživatele popsané dříve. 
 
@@ -107,9 +107,12 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 
 - Salesforce
 - ServiceNow
-- Workday
+- Pracovní den do Azure Active Directory služby Active Directory/pracovní den
+- SuccessFactors se ke službě Active Directory/SuccessFactors pro Azure Active Directory
 - Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře)
 - Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643), ve kterých je potřeba přidat atributy definované ve [schématu Core](https://tools.ietf.org/html/rfc7643)
+- Pro Azure Active Directory zpětný zápis do Workday nebo SuccessFactors se podporuje aktualizace relevantních metadat pro podporované atributy (XPATH a JSONPath), ale není podporováno přidávání nových atributů Workday nebo SuccessFactors nad rámec těch, které jsou zahrnuté ve výchozím schématu.
+
 
 > [!NOTE]
 > Úpravy seznamu podporovaných atributů se doporučují jenom správcům, kteří přizpůsobili schéma svých aplikací a systémů, a mají první znalosti o tom, jak jsou vlastní atributy definované. To někdy vyžaduje znalost rozhraní API a vývojářských nástrojů poskytovaných aplikací nebo systémem.
@@ -133,16 +136,16 @@ Při úpravách seznamu podporovaných atributů jsou k dispozici následující
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Zřízení vlastního rozšíření atributu pro aplikaci vyhovující SCIM
 SCIM RFC definuje základní schéma uživatelů a skupin a zároveň umožňuje rozšíření schématu, aby splňovala potřeby vaší aplikace. Přidání vlastního atributu do aplikace SCIM:
-   1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com), vyberte **podnikové aplikace**, vyberte svou aplikaci a pak vyberte **zřizování**.
-   2. V části **mapování**vyberte objekt (uživatele nebo skupinu), pro který chcete přidat vlastní atribut.
-   3. V dolní části stránky vyberte **Zobrazit upřesňující možnosti**.
-   4. Vyberte možnost **Upravit seznam atributů pro AppName**.
-   5. V dolní části seznamu atributů zadejte informace o vlastním atributu v zadaných polích. Pak vyberte **Přidat atribut**.
+   1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com), vyberte **podnikové aplikace** , vyberte svou aplikaci a pak vyberte **zřizování** .
+   2. V části **mapování** vyberte objekt (uživatele nebo skupinu), pro který chcete přidat vlastní atribut.
+   3. V dolní části stránky vyberte **Zobrazit upřesňující možnosti** .
+   4. Vyberte možnost **Upravit seznam atributů pro AppName** .
+   5. V dolní části seznamu atributů zadejte informace o vlastním atributu v zadaných polích. Pak vyberte **Přidat atribut** .
 
 Pro SCIM aplikace musí název atributu odpovídat vzoru, který je znázorněn v následujícím příkladu. "CustomExtensionName" a "CustomAttribute" lze přizpůsobit podle požadavků vaší aplikace, například:  
  * urn: IETF: parametry: SCIM: schémata: rozšíření: CustomExtensionName: 2.0: uživatel: Atribut CustomAttribute 
  * urn: IETF: parametry: SCIM: schémata: rozšíření: 2.0: CustomExtensionName: CustomAttribute  
- * urn: IETF: parametry: SCIM: schemas: rozšíření: CustomExtensionName: 2.0: User. CustomAttributeName: Value
+ * urn: IETF: parametry: SCIM: schémata: rozšíření: CustomExtensionName: 2.0: uživatel: CustomAttributeName: hodnota
 
 Tyto pokyny platí pouze pro aplikace s podporou SCIM. Aplikace jako ServiceNow a Salesforce nejsou integrovány se službou Azure AD pomocí SCIM, a proto při přidávání vlastního atributu nevyžadují tento konkrétní obor názvů.
 
@@ -174,7 +177,7 @@ Vlastní atributy nemůžou být referenční atributy ani atributy s více hodn
        "displayName": "John Smith"
      }
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "CustomAttribute": "701984",
    },
    "meta": {

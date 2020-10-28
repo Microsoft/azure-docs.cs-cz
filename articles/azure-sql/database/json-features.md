@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 53428a542bb8d8d546e68f63aaf80ee40f2b0874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4258c60335a13a6c0f27588aac1c6cdb185fcf6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450246"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782795"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database-and-azure-sql-managed-instance"></a>Začínáme s funkcemi JSON v Azure SQL Database a Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,6 +196,4 @@ Kolekce objednávek naformátovaných jako pole JSON a poskytované jako paramet
 
 Informace o tom, jak do své aplikace integrovat JSON, najdete v těchto zdrojích:
 
-Další informace o různých scénářích pro integraci formátu JSON do vaší aplikace najdete v ukázkách v tomto [videu kanálu 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) nebo v článku Najděte scénář, který odpovídá případu použití v [příspěvcích blogu JSON](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases).
-
-
+Další informace o různých scénářích pro integraci formátu JSON do vaší aplikace najdete v ukázkách v tomto [videu kanálu 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) nebo v článku Najděte scénář, který odpovídá případu použití v [příspěvcích blogu JSON](/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases).

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8110b98c055a211203fb937990e860fc8dea74f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc8c944e1eb665f3f0bc83e28e1e5469d2da501a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88520458"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781987"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úloh služby Azure Import/Export
 
@@ -28,15 +28,15 @@ Stav úloh importu nebo exportu můžete sledovat z Azure Portal tak, že vybere
 
 V závislosti na tom, kde se jednotka právě nachází, se zobrazí jedna z následujících stavů úlohy.
 
-| Stav úlohy | Description |
+| Stav úlohy | Popis |
 |:--- |:--- |
-| Vytváření | Po vytvoření úlohy se její stav nastaví na **vytvořit**. Když je úloha ve stavu **vytváření** , služba import/export předpokládá, že se jednotky nedodaly do datového centra. Úloha může zůstat v tomto stavu po dobu až dvou týdnů, po jejímž uplynutí je služba automaticky odstranila. |
+| Vytváření | Po vytvoření úlohy se její stav nastaví na **vytvořit** . Když je úloha ve stavu **vytváření** , služba import/export předpokládá, že se jednotky nedodaly do datového centra. Úloha může zůstat v tomto stavu po dobu až dvou týdnů, po jejímž uplynutí je služba automaticky odstranila. |
 | Expedice | Po odeslání balíčku byste měli aktualizovat informace o sledování v Azure Portal.  Tím se úloha zapíná do stavu **expedice** . Úloha zůstane ve stavu **expedice** po dobu až dvou týdnů. 
-| Přijato | Po přijetí všech jednotek v datovém centru se stav úlohy nastaví na **přijato**. |
-| Probíhá přenos | Po zahájení zpracování aspoň jedné jednotky se stav úlohy nastaví na **přenos**. Další informace najdete v informacích o [stavu jednotky](#view-drive-status). |
+| Přijato | Po přijetí všech jednotek v datovém centru se stav úlohy nastaví na **přijato** . |
+| Probíhá přenos | Po zahájení zpracování aspoň jedné jednotky se stav úlohy nastaví na **přenos** . Další informace najdete v informacích o [stavu jednotky](#view-drive-status). |
 | Balení | Po dokončení zpracování všech jednotek se úloha umístí do stavu **balení** , dokud se jednotky nevrátí zpět. |
-| Dokončeno | Po odeslání všech jednotek zpět do vás, pokud byla úloha dokončena bez chyb, je úloha nastavena na **dokončeno**. Tato úloha se automaticky odstraní po 90 dnech v **dokončeném** stavu. |
-| Uzavřená | Po odeslání všech jednotek zpět, pokud došlo k nějakým chybám během zpracování úlohy, je úloha nastavena na **Uzavřeno**. Tato úloha se automaticky odstraní po 90 dnech v **zavřeném** stavu. |
+| Dokončeno | Po odeslání všech jednotek zpět do vás, pokud byla úloha dokončena bez chyb, je úloha nastavena na **dokončeno** . Tato úloha se automaticky odstraní po 90 dnech v **dokončeném** stavu. |
+| Uzavřená | Po odeslání všech jednotek zpět, pokud došlo k nějakým chybám během zpracování úlohy, je úloha nastavena na **Uzavřeno** . Tato úloha se automaticky odstraní po 90 dnech v **zavřeném** stavu. |
 
 ## <a name="view-drive-status"></a>Zobrazení stavu jednotky
 
@@ -44,9 +44,9 @@ Následující tabulka popisuje životní cyklus jednotlivé jednotky při přec
 
 V následující tabulce jsou popsány všechny stavy, které mohou jednotlivé jednotky v úloze Procházet.
 
-| Stav jednotky | Description |
+| Stav jednotky | Popis |
 |:--- |:--- |
-| Dané | Při vytvoření úlohy z Azure Portal se pro úlohu importu **zadá**počáteční stav jednotky. V případě úlohy exportu, protože při vytvoření úlohy není zadána žádná jednotka, je **přijat**počáteční stav jednotky. |
+| Dané | Při vytvoření úlohy z Azure Portal se pro úlohu importu **zadá** počáteční stav jednotky. V případě úlohy exportu, protože při vytvoření úlohy není zadána žádná jednotka, je **přijat** počáteční stav jednotky. |
 | Přijato | Pokud služba import/export zpracovává jednotky, které byly přijaty od společnosti pro expedici pro úlohu importu, přejde do stavu **přijato** . V případě úlohy exportu je počáteční stav jednotky stav **přijato** . |
 | NeverReceived | Jednotka se přesune do stavu **NeverReceived** , když dorazí balíček pro úlohu, ale balíček disk neobsahuje. Jednotka se také přesune do tohoto stavu, pokud datacentrum ještě nedostalo balíček a služba obdržela informace o expedici alespoň dva týdny. |
 | Probíhá přenos | Jednotka se přesune do stavu **přenosu** , když služba začne přenášet data z jednotky na Azure Storage. |
@@ -62,7 +62,7 @@ Následující tabulka popisuje stavy selhání jednotek a akce prováděné pro
 
 | Stav jednotky | Událost | Řešení/další krok |
 |:--- |:--- |:--- |
-| NeverReceived | Jednotka označená jako **NeverReceived** (protože nebyla přijata jako součást dodávky úlohy) přijde do jiné dodávky. | Provozní tým přesune jednotku k **přijetí**. |
+| NeverReceived | Jednotka označená jako **NeverReceived** (protože nebyla přijata jako součást dodávky úlohy) přijde do jiné dodávky. | Provozní tým přesune jednotku k **přijetí** . |
 | Není k dispozici | Jednotka, která není součástí žádné úlohy, přijde v datovém centru jako součást jiné úlohy. | Jednotka je označena jako dodatečná jednotka. Po dokončení úlohy přidružené k původnímu balíčku se vám vrátí. |
 
 ## <a name="time-to-process-job"></a>Čas zpracování úlohy
@@ -78,5 +78,5 @@ Služba import/export nemá smlouvu SLA, ale služba se snaží dokončit kopír
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
+* [Přenos dat pomocí nástroje příkazového řádku AzCopy](./storage-use-azcopy-v10.md)
 * [Ukázka REST API exportu pro import do Azure](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

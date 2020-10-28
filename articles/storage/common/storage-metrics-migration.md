@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c1dc0c7f37dc848ecd361848934cbcc5640afc66
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4a4624a94a27f00201c55a320f1745783b06d169
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490760"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781919"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Přechod na metriky v Azure Monitor
 
@@ -35,7 +35,7 @@ Pro přechod na metriky v Azure Monitor doporučujeme následující postup.
    > [!NOTE]
    > Metriky ve Azure Monitor jsou ve výchozím nastavení povolené, takže nemusíte nic dělat, abyste začali zachytávání metrik. Pokud ale chcete zobrazit tyto metriky, musíte vytvořit grafy nebo řídicí panely. 
  
-5. Pokud jste vytvořili pravidla výstrah založená na klasických metrikách úložiště, [vytvořte pravidla výstrah](/azure/azure-monitor/platform/alerts-overview) založená na metrikách v Azure monitor. 
+5. Pokud jste vytvořili pravidla výstrah založená na klasických metrikách úložiště, [vytvořte pravidla výstrah](../../azure-monitor/platform/alerts-overview.md) založená na metrikách v Azure monitor. 
 
 6. Až budete moct zobrazit všechny metriky v Azure Monitor, můžete vypnout klasické protokolování. 
 
@@ -53,7 +53,7 @@ V případě podpory metrik nabízí klasická metrika metriky **kapacity** pouz
 
 Pokud aktivita ve vašem účtu neaktivuje metriku, pro klasickou metriku se pro tuto metriku zobrazí hodnota nula (0). Metriky v Azure Monitor budou data zcela vynechat, což vede k čištění sestav. Například u klasických metrik, pokud nejsou hlášeny žádné chyby časového limitu serveru, pak `ServerTimeoutError` je hodnota v tabulce metrik nastavena na 0. Azure Monitor nevrátí žádná data při dotazování na hodnotu metriky `Transactions` s dimenzí `ResponseType` Equal `ServerTimeoutError` . 
 
-Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](/azure/azure-monitor/platform/data-platform-metrics).
+Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azure monitor](../../azure-monitor/platform/data-platform-metrics.md).
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 
@@ -70,7 +70,7 @@ Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azur
 | `ContainerCount`      | `ContainerCount` |
 
 > [!NOTE]
-> K dispozici je také několik nových metrik kapacity, které nebyly k dispozici jako klasické metriky. Seznam kompletních zobrazení najdete v tématu [metriky](../common/monitor-storage-reference.md#metrics).
+> K dispozici je také několik nových metrik kapacity, které nebyly k dispozici jako klasické metriky. Seznam kompletních zobrazení najdete v tématu [metriky](../blobs/monitor-blob-storage-reference.md#metrics).
 
 **Metriky transakcí**
 
@@ -117,5 +117,4 @@ Další informace o metrikách v Azure Monitor najdete v tématu [metriky v Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
-
+* [Azure Monitor](../../azure-monitor/overview.md)

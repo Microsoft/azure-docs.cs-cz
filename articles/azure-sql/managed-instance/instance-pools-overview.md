@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325160"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782650"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Co je fond spravovaných instancí Azure SQL (Preview)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Fondy instancí navíc podporují nativní integraci virtuální sítě, takže 
 
 Fondy instancí poskytují následující výhody:
 
-1. Možnost hostování 2-vCore instancí. * \* Pouze pro instance ve fondech instancí*.
+1. Možnost hostování 2-vCore instancí. *\* Pouze pro instance ve fondech instancí* .
 2. Předvídatelný a rychlý čas nasazení instance (až 5 minut).
 3. Minimální přidělení IP adresy.
 
@@ -59,9 +59,9 @@ Následující seznam poskytuje hlavní případy použití, ve kterých by se m
 
 ## <a name="architecture"></a>Architektura
 
-Fondy instancí mají podobnou architekturu pro běžné (*samostatné*) spravované instance. Aby bylo možné podporovat [nasazení v rámci virtuálních sítí Azure](../../virtual-network/virtual-network-for-azure-services.md)   a poskytovat izolaci a zabezpečení pro zákazníky, využívají fondy instancí také [virtuální clustery](connectivity-architecture-overview.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
+Fondy instancí mají podobnou architekturu pro běžné ( *samostatné* ) spravované instance. Aby bylo možné podporovat [nasazení v rámci virtuálních sítí Azure](../../virtual-network/virtual-network-for-azure-services.md) a poskytovat izolaci a zabezpečení pro zákazníky, využívají fondy instancí také [virtuální clustery](connectivity-architecture-overview.md#high-level-connectivity-architecture). Virtuální clustery reprezentují vyhrazenou sadu izolovaných virtuálních počítačů nasazených v podsíti virtuální sítě zákazníka.
 
-Hlavním rozdílem mezi těmito dvěma modely nasazení je, že fondy instancí povolují nasazení více SQL Server procesů ve stejném uzlu virtuálního počítače, který je prostředkem, který se řídí pomocí [objektů úloh systému Windows](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy pouze v uzlu virtuálního počítače.
+Hlavním rozdílem mezi těmito dvěma modely nasazení je, že fondy instancí povolují nasazení více SQL Server procesů ve stejném uzlu virtuálního počítače, který je prostředkem, který se řídí pomocí [objektů úloh systému Windows](/windows/desktop/ProcThread/job-objects), zatímco jednotlivé instance jsou vždy pouze v uzlu virtuálního počítače.
 
 Následující diagram znázorňuje fond instancí a dvě jednotlivé instance nasazené ve stejné podsíti a ilustrují hlavní informace o architektuře pro oba modely nasazení:
 
@@ -76,7 +76,7 @@ Na fondy instancí a instance v rámci fondů se vztahuje několik omezení pros
 - Fondy instancí jsou k dispozici pouze na Gen5 hardwaru.
 - Spravované instance v rámci fondu mají vyhrazený procesor a paměť RAM, takže agregovaný počet virtuální jádra napříč všemi instancemi musí být menší nebo roven počtu virtuální jádra přidělených fondu.
 - Všechny [limity na úrovni instance](resource-limits.md#service-tier-characteristics) se vztahují na instance vytvořené v rámci fondu.
-- Kromě omezení na úrovni instance platí také dvě omezení *na úrovni fondu instancí*:
+- Kromě omezení na úrovni instance platí také dvě omezení *na úrovni fondu instancí* :
   - Celková velikost úložiště na fond (8 TB).
   - Celkový počet databází na fond (100).
 - Správce AAD nelze nastavit pro instance nasazené uvnitř fondu instancí, nelze proto použít ověřování AAD.
@@ -137,8 +137,8 @@ vCore cena za fond se účtuje bez ohledu na to, kolik instancí se v daném fon
 
 Pro cenu za výpočetní výkon (měřenou v virtuální jádra) jsou k dispozici dvě cenové možnosti:
 
-  1. *Licence zahrnuje*: cena za licence SQL Server. Pro zákazníky, kteří se rozhodnou používat stávající licence SQL Server se Software Assurance.
-  2. *Zvýhodněné hybridní využití Azure*: snížená cena, která zahrnuje zvýhodněné hybridní využití Azure SQL Server. Zákazníci se můžou k této ceně přihlédnout pomocí svých stávajících licencí SQL Server se Software Assurance. Informace o způsobilosti a dalších podrobnostech najdete v tématu [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
+  1. *Licence zahrnuje* : cena za licence SQL Server. Pro zákazníky, kteří se rozhodnou používat stávající licence SQL Server se Software Assurance.
+  2. *Zvýhodněné hybridní využití Azure* : snížená cena, která zahrnuje zvýhodněné hybridní využití Azure SQL Server. Zákazníci se můžou k této ceně přihlédnout pomocí svých stávajících licencí SQL Server se Software Assurance. Informace o způsobilosti a dalších podrobnostech najdete v tématu [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Nastavení různých cenových možností není možné pro jednotlivé instance ve fondu. Všechny instance v nadřazeném fondu musí být buď v ceně zahrnuté v licenci, nebo v Zvýhodněné hybridní využití Azure ceně. Licenční model fondu se dá po vytvoření fondu změnit.
 

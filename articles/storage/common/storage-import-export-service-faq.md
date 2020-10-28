@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d2e50502c8c3e37c5d48359079e2e72c13feea4a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 17a29621d3d70d56745d2e51e0ce80974876a9ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487870"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782157"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba import/export v Azure: nejčastější dotazy
 
@@ -55,13 +55,13 @@ Ne. Libovolná jednotka používaná k importu dat musí být připravená pomoc
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Potřebuji při vytváření úlohy exportu provést přípravu na disk?
 
-Ne. Doporučuje se provést několik předkontrol. Pokud chcete zjistit počet požadovaných disků, použijte příkaz PreviewExport nástroje WAImportExport. Další informace najdete v tématu [zobrazení náhledu využití jednotky u úlohy exportu](https://msdn.microsoft.com/library/azure/dn722414.aspx). Příkaz vám pomůže zobrazit náhled využití jednotky pro vybrané objekty blob, a to na základě velikosti jednotek, které budete používat. Také ověřte, zda můžete číst a zapisovat na pevný disk, který je dodán pro úlohu exportu.
+Ne. Doporučuje se provést několik předkontrol. Pokud chcete zjistit počet požadovaných disků, použijte příkaz PreviewExport nástroje WAImportExport. Další informace najdete v tématu [zobrazení náhledu využití jednotky u úlohy exportu](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1). Příkaz vám pomůže zobrazit náhled využití jednotky pro vybrané objekty blob, a to na základě velikosti jednotek, které budete používat. Také ověřte, zda můžete číst a zapisovat na pevný disk, který je dodán pro úlohu exportu.
 
 ## <a name="importexport-jobs"></a>Úlohy importu/exportu
 
 ### <a name="can-i-cancel-my-job"></a>Můžu tuto úlohu zrušit?
 
-Ano. Při **vytváření** nebo **přesouvání**stavu můžete úlohu zrušit. Mimo tyto fáze nelze úlohu zrušit a pokračuje do konečné fáze.
+Ano. Při **vytváření** nebo **přesouvání** stavu můžete úlohu zrušit. Mimo tyto fáze nelze úlohu zrušit a pokračuje do konečné fáze.
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>Jak dlouho můžu zobrazit stav dokončených úloh v Azure Portal?
 
@@ -132,7 +132,7 @@ Ne. Všechny jednotky jsou šifrovány pomocí nástroje BitLocker.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Jak mohu získat přístup k datům, která jsou importována touto službou?
 
-Pro přístup k datům v rámci vašeho účtu úložiště Azure použijte Azure Portal nebo [Průzkumník služby Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer) .  
+Pro přístup k datům v rámci vašeho účtu úložiště Azure použijte Azure Portal nebo [Průzkumník služby Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md) .  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>Jak budou data po dokončení importu vypadat jako v účtu úložiště? Je moje hierarchie adresáře zachovaná?
 
@@ -144,7 +144,7 @@ Závislosti. Při přípravě jednotky můžete určit, jestli se mají cílové
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Je nástroj WAImportExport kompatibilní s 32 operačními systémy?
 
-Ne. Nástroj WAImportExport je kompatibilní jenom s 64 operačními systémy Windows. Úplný seznam podporovaného operačního systému najdete v části [podporované operační systémy](/azure/storage/common/storage-import-export-requirements).
+Ne. Nástroj WAImportExport je kompatibilní jenom s 64 operačními systémy Windows. Úplný seznam podporovaného operačního systému najdete v části [podporované operační systémy](./storage-import-export-requirements.md).
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaký je maximální velikost objektů blob bloku a velikosti objektu blob stránky podporované službou Azure import/export?
 

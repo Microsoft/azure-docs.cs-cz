@@ -107,7 +107,7 @@
           href: how-to-integrate-maps.md
         - name: Integrace se službou Azure Time Series Insights
           href: how-to-integrate-time-series-insights.md
-    - name: Řešení potíží
+    - name: Monitorování a odstraňování potíží
       items:
         - name: Zobrazení metrik v Azure Monitoru
           href: troubleshoot-metrics.md
@@ -115,6 +115,8 @@
           href: troubleshoot-diagnostics.md
         - name: Povolení upozornění
           href: troubleshoot-alerts.md
+        - name: Vysvětlení stavu prostředků
+          href: troubleshoot-resource-health.md
         - name: Známé problémy
           href: troubleshoot-known-issues.md
         - name: Řešení problémů
@@ -144,7 +146,7 @@
             - name: Java SDK – referenční informace
               href: /java/api/overview/azure/digitaltwins/management?view=azure-java-preview
             - name: Java SDK – zdroj
-              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
             - name: JavaScript SDK
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
             - name: JavaScript SDK – zdroj
@@ -152,9 +154,11 @@
             - name: Python SDK
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
             - name: Python SDK – zdroj
-              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+            - name: Go – zdroj
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: Rovina dat
           items:
             - name: Swagger

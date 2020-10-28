@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 5eacd84d2ff37c10702896127adcb67f5459b6be
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1cd1145411fbf4ec4441d612f9552997704f9e5e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461664"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782395"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby Soubory Azure pomocí služby Azure Import/Export
 
@@ -21,7 +21,7 @@ Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu
 
 Služba import/export podporuje pouze import souborů Azure do Azure Storage. Export souborů Azure se nepodporuje.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před vytvořením úlohy importu pro přenos dat do souborů Azure pečlivě zkontrolujte a dokončete následující seznam požadovaných součástí. Musíte:
 
@@ -50,14 +50,14 @@ K přípravě jednotek proveďte následující kroky.
 2. Na každé jednotce vytvořte jeden svazek NTFS. Přiřaďte ke svazku písmeno jednotky. Nepoužívejte mountpoints.
 3. Upravte soubor *dataset.csv* v kořenové složce, ve které se nástroj nachází. V závislosti na tom, jestli chcete importovat soubor nebo složku nebo obojí, přidejte do souboru *dataset.csv* položky podobné následujícím příkladům.  
 
-   - **Import souboru**: v následujícím příkladu se data ke zkopírování nacházejí v jednotce F:. Soubor *MyFile1.txt*  je zkopírován do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachována.
+   - **Import souboru** : v následujícím příkladu se data ke zkopírování nacházejí v jednotce F:. Soubor *MyFile1.txt*  je zkopírován do kořenového adresáře *MyAzureFileshare1* . Pokud *MyAzureFileshare1* neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachována.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
 
        ```
-   - **Import složky**: všechny soubory a složky v *MyFolder2* jsou rekurzivně zkopírovány do sdílení souborů. Struktura složek je zachována.
+   - **Import složky** : všechny soubory a složky v *MyFolder2* jsou rekurzivně zkopírovány do sdílení souborů. Struktura složek je zachována.
 
        ```
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
@@ -70,28 +70,28 @@ K přípravě jednotek proveďte následující kroky.
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
 
        ```
-     Přečtěte si další informace o [přípravě souboru CSV datové sady](storage-import-export-tool-preparing-hard-drives-import.md).
+     Přečtěte si další informace o [přípravě souboru CSV datové sady](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import).
 
 
 4. Upravte soubor *driveset.csv* v kořenové složce, ve které se nástroj nachází. Přidejte položky do souboru *driveset.csv* podobně jako v následujících příkladech. Soubor driveset obsahuje seznam disků a odpovídajících písmen jednotek, aby nástroj mohl správně vybrat seznam disků, které mají být připraveny.
 
     V tomto příkladu se předpokládá, že jsou připojené dva disky a základní svazky NTFS G:\ a H:\ jsou vytvořeny. H:\is není zašifrováno, zatímco G: je již zašifrováno. Nástroj formátuje a šifruje disk, který je hostitelem H:\ pouze (a ne G: \) .
 
-   - **Pro disk, který není zašifrovaný**: Určete *šifrování* , aby se na disku povolilo šifrování bitlockerem.
+   - **Pro disk, který není zašifrovaný** : Určete *šifrování* , aby se na disku povolilo šifrování bitlockerem.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
 
-   - **Pro disk, který je už zašifrovaný**: zadejte *AlreadyEncrypted* a zadejte klíč BitLockeru.
+   - **Pro disk, který je už zašifrovaný** : zadejte *AlreadyEncrypted* a zadejte klíč BitLockeru.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
        ```
 
-     Ve stejném souboru, který odpovídá více jednotkám, lze vytvořit více položek. Přečtěte si další informace o [přípravě souboru CSV driveset](storage-import-export-tool-preparing-hard-drives-import.md).
+     Ve stejném souboru, který odpovídá více jednotkám, lze vytvořit více položek. Přečtěte si další informace o [přípravě souboru CSV driveset](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import).
 
 5. Použijte `PrepImport` možnost kopírování a Příprava dat na diskovou jednotku. Pro první relaci kopírování pro kopírování adresářů nebo souborů s novou relací kopírování spusťte následující příkaz:
 
@@ -118,17 +118,17 @@ Další ukázky najdete v [ukázkách pro soubory deníku](#samples-for-journal-
 
 Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 1. Přihlaste se k https://portal.azure.com/ .
-2. **> úlohy import/export přejít na všechny služby > úložiště**.
+2. **> úlohy import/export přejít na všechny služby > úložiště** .
 
     ![Přejít na import/export](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Klikněte na **vytvořit úlohu importu/exportu**.
+3. Klikněte na **vytvořit úlohu importu/exportu** .
 
     ![Klikněte na úloha importu/exportu.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. **Základní informace**:
+4. **Základní informace** :
 
-    - Vyberte **importovat do Azure**.
+    - Vyberte **importovat do Azure** .
     - Zadejte popisný název úlohy importu. Pomocí tohoto názvu můžete sledovat vaše úlohy, když probíhá, a až se dokončí.
         -  Tento název může obsahovat jenom malá písmena, číslice, spojovníky a podtržítka.
         -  Název musí začínat písmenem a nesmí obsahovat mezery.
@@ -137,7 +137,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
         ![Vytvořit úlohu importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. V **podrobnostech úlohy**:
+3. V **podrobnostech úlohy** :
 
     - Nahrajte soubory deníku, které jste vytvořili v předchozím [kroku 1: Příprava jednotek](#step-1-prepare-the-drives).
     - Vyberte účet úložiště, do kterého se budou data importovat.
@@ -145,7 +145,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
        ![Vytvoření úlohy importu – krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. V **informace o expedici zpět**:
+4. V **informace o expedici zpět** :
 
     - V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým `adbops@microsoft.com`  s informacemi, které se týkají přepravce, kterého plánujete použít.
     - Zadejte platné číslo účtu dopravce, který jste vytvořili pomocí tohoto dopravce. Společnost Microsoft používá tento účet k dodávání jednotek zpátky po dokončení úlohy importu.
@@ -157,7 +157,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
        ![Vytvořit úlohu importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
 
-5. V **souhrnu**:
+5. V **souhrnu** :
 
     - Poskytněte dodací adresu datacentra Azure pro expedici disků zpátky do Azure. Ujistěte se, že název úlohy a úplná adresa jsou uvedené na štítku pro expedici.
     - Vytvoření úlohy importu dokončíte kliknutím na **OK** .
@@ -258,9 +258,9 @@ Sledujte úlohu k dokončení. Po dokončení úlohy ověřte, že se data nahr�
 
 ## <a name="samples-for-journal-files"></a>Ukázky pro soubory deníku
 
-Chcete-li **Přidat další jednotky**, vytvořte nový soubor driveset a spusťte příkaz následujícím způsobem.
+Chcete-li **Přidat další jednotky** , vytvořte nový soubor driveset a spusťte příkaz následujícím způsobem.
 
-Pro následné relace kopírování na jiné diskové jednotky, než je určeno v souboru *InitialDriveset. csv* , zadejte nový soubor driveset *. csv* a poskytněte ho jako hodnotu parametru `AdditionalDriveSet` . Použijte **stejný název souboru deníku** a zadejte **nové ID relace**. Formát souboru CSV AdditionalDriveset je stejný jako formát InitialDriveSet.
+Pro následné relace kopírování na jiné diskové jednotky, než je určeno v souboru *InitialDriveset. csv* , zadejte nový soubor driveset *. csv* a poskytněte ho jako hodnotu parametru `AdditionalDriveSet` . Použijte **stejný název souboru deníku** a zadejte **nové ID relace** . Formát souboru CSV AdditionalDriveset je stejný jako formát InitialDriveSet.
 
 ```cmd
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -275,7 +275,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDrive
 
 Chcete-li přidat další data do stejného driveset, použijte příkaz PrepImport pro následné relace kopírování ke zkopírování dalších souborů/adresářů.
 
-Pro následné relace kopírování na stejné jednotky pevného disku zadané v souboru *InitialDriveset.csv* zadejte **stejný název souboru deníku** a zadejte **nové ID relace**. není nutné zadávat klíč účtu úložiště.
+Pro následné relace kopírování na stejné jednotky pevného disku zadané v souboru *InitialDriveset.csv* zadejte **stejný název souboru deníku** a zadejte **nové ID relace** . není nutné zadávat klíč účtu úložiště.
 
 ```cmd
 WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
