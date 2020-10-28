@@ -6,17 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: d6c29cb41d38e5473a9b24dbc89fd99d3e19c16f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9a70dcbabea9bc55703a5e9875df05b534eb372a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638325"
+ms.locfileid: "92674752"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Monitorování stavu Log Analytics pracovního prostoru v Azure Monitor
 Chcete-li zachovat výkon a dostupnost vašeho pracovního prostoru Log Analytics v Azure Monitor, je nutné být schopni aktivně detekovat všechny problémy, které vznikají. Tento článek popisuje, jak monitorovat stav Log Analytics pracovního prostoru pomocí dat v tabulce [Operations](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) . Tato tabulka je zahrnutá v každém pracovním prostoru Log Analytics a obsahuje chyby a varování, ke kterým dochází ve vašem pracovním prostoru. Tato data byste měli pravidelně kontrolovat a vytvářet výstrahy, které se budou aktivně informovat v případě, že v pracovním prostoru existují důležité incidenty.
 
 ## <a name="_logoperation-function"></a>_LogOperation funkce
+
 Protokoly Azure Monitor odesílají podrobnosti o všech problémech v tabulce [operace](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) v pracovním prostoru, kde došlo k problému. Funkce systému **_LogOperation** je založena na tabulce **operace** a poskytuje zjednodušenou sadu informací pro analýzu a upozorňování.
 
 ## <a name="columns"></a>Sloupce
@@ -36,6 +37,7 @@ Funkce **_LogOperation** vrátí sloupce v následující tabulce.
 
 
 ## <a name="categories"></a>Kategorie
+
 Následující tabulka popisuje kategorie z funkce _LogOperation. 
 
 | Kategorie | Popis |

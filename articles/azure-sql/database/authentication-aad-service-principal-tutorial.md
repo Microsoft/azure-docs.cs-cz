@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: a666acbcd2aed168bd1d871c0ef0fb8c3205fd05
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479135"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675031"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Kurz: vytvoření uživatelů Azure AD pomocí aplikací Azure AD
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 > [!NOTE]
-> Tento článek je ve **verzi Public Preview**. Další informace najdete v tématu [Azure Active Directory instančního objektu se službou Azure SQL](authentication-aad-service-principal.md). Tento článek bude používat Azure SQL Database k předvedení nezbytných kroků kurzu, ale může se obdobně použít pro [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md).
+> Tento článek je ve **verzi Public Preview** . Další informace najdete v tématu [Azure Active Directory instančního objektu se službou Azure SQL](authentication-aad-service-principal.md). Tento článek bude používat Azure SQL Database k předvedení nezbytných kroků kurzu, ale může se obdobně použít pro [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md).
 
 Tento článek vás provede procesem vytvoření uživatelů Azure AD v Azure SQL Database pomocí instančních objektů Azure (aplikace Azure AD). Tato funkce už ve spravované instanci SQL Azure existuje, ale teď se zavádí v Azure SQL Database a Azure synapse Analytics. Pro podporu tohoto scénáře musí být identita Azure AD vygenerovaná a přiřazená k logickému serveru Azure SQL.
 
@@ -44,9 +44,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="assign-an-identity-to-the-azure-sql-logical-server"></a>Přiřazení identity k logickému serveru Azure SQL
 
-1. Připojte se k vašemu Azure Active Directory. Bude nutné najít ID tenanta. Dá se najít tak, že do [Azure Portal](https://portal.azure.com)zařadíte do svého prostředku **Azure Active Directory** . V podokně **Přehled** by se mělo zobrazit vaše **ID tenanta**. Spusťte následující příkaz PowerShellu:
+1. Připojte se k vašemu Azure Active Directory. Bude nutné najít ID tenanta. Dá se najít tak, že do [Azure Portal](https://portal.azure.com)zařadíte do svého prostředku **Azure Active Directory** . V podokně **Přehled** by se mělo zobrazit vaše **ID tenanta** . Spusťte následující příkaz PowerShellu:
 
-    - Nahraďte `<TenantId>` **ID tenanta**.
+    - Nahraďte `<TenantId>` **ID tenanta** .
 
     ```powershell
     Connect-AzAccount -Tenant <TenantId>
@@ -62,12 +62,12 @@ V tomto kurzu se naučíte:
     Set-AzSqlServer -ResourceGroupName <resource group> -ServerName <server name> -AssignIdentity
     ```
 
-    Další informace najdete v příkazu [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) .
+    Další informace najdete v příkazu [set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) .
 
     > [!IMPORTANT]
     > Pokud je pro logický Server Azure SQL nastavená identita Azure AD, musí být oprávnění [**čtenářům adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) udělená identitě. Provedeme vás tento krok v následující části. Tento krok **nepřeskakujte** , protože ověřování Azure AD přestane fungovat.
 
-    - Pokud jste v minulosti použili příkaz [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) s parametrem `AssignIdentity` pro nové vytvoření SQL serveru, budete muset příkaz [set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) spustit později jako samostatný příkaz, který tuto vlastnost povolí v prostředcích infrastruktury Azure.
+    - Pokud jste v minulosti použili příkaz [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) s parametrem `AssignIdentity` pro nové vytvoření SQL serveru, budete muset příkaz [set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) spustit později jako samostatný příkaz, který tuto vlastnost povolí v prostředcích infrastruktury Azure.
 
 1. Ověření identity serveru bylo úspěšně přiřazeno. Spusťte následující příkaz prostředí PowerShell:
 
@@ -82,7 +82,7 @@ V tomto kurzu se naučíte:
 
 1. Identitu můžete také ověřit tak, že na [Azure Portal](https://portal.azure.com)kliknete.
 
-    - V části prostředek **Azure Active Directory** přejít na **podnikové aplikace**. Zadejte název logického serveru SQL. Uvidíte, že obsahuje **ID objektu** připojené k prostředku.
+    - V části prostředek **Azure Active Directory** přejít na **podnikové aplikace** . Zadejte název logického serveru SQL. Uvidíte, že obsahuje **ID objektu** připojené k prostředku.
     
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="ID objektu":::
 
@@ -95,7 +95,7 @@ Pokud chcete toto požadované oprávnění udělit, spusťte následující skr
 > [!NOTE] 
 > Tento skript musí být spuštěný pomocí Azure AD `Global Administrator` nebo `Privileged Roles Administrator` .
 >
-> Ve **verzi Public Preview**můžete tuto roli přiřadit `Directory Readers` ke skupině ve službě Azure AD. Vlastníci skupiny pak můžou přidat spravovanou identitu jako člena této skupiny, což by obejít potřebu `Global Administrator` nebo `Privileged Roles Administrator` pro udělení této `Directory Readers` role. Další informace o této funkci najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
+> Ve **verzi Public Preview** můžete tuto roli přiřadit `Directory Readers` ke skupině ve službě Azure AD. Vlastníci skupiny pak můžou přidat spravovanou identitu jako člena této skupiny, což by obejít potřebu `Global Administrator` nebo `Privileged Roles Administrator` pro udělení této `Directory Readers` role. Další informace o této funkci najdete v tématu [role čtečky adresářů v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md).
 
 - Nahraďte `<TenantId>` `TenantId` dříve shromážděnými.
 - Nahraďte `<server name>` názvem logického serveru SQL. Pokud je název vašeho serveru `myserver.database.windows.net` , nahraďte parametr `<server name>` `myserver` .
@@ -161,7 +161,7 @@ Podobný přístup k nastavení oprávnění **čtenářů adresáře** pro SPRA
 
 1. Pokud chcete [svoji aplikaci zaregistrovat a nastavit oprávnění](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions), postupujte podle pokynů v příručce.
 
-    Nezapomeňte přidat **oprávnění aplikace** i **delegovaná oprávnění**.
+    Nezapomeňte přidat **oprávnění aplikace** i **delegovaná oprávnění** .
 
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="ID objektu":::
 
@@ -173,7 +173,7 @@ Podobný přístup k nastavení oprávnění **čtenářů adresáře** pro SPRA
     - **ID aplikace**
     - **ID tenanta** – mělo by to být stejné jako před
 
-V tomto kurzu budeme používat *AppSP* jako hlavní instanční objekt a *Mojeapl* jako druhý uživatel instančního objektu, který se vytvoří v Azure SQL pomocí *AppSP*. Budete muset vytvořit dvě aplikace, *AppSP* a *MyApp*.
+V tomto kurzu budeme používat *AppSP* jako hlavní instanční objekt a *Mojeapl* jako druhý uživatel instančního objektu, který se vytvoří v Azure SQL pomocí *AppSP* . Budete muset vytvořit dvě aplikace, *AppSP* a *MyApp* .
 
 Další informace o tom, jak vytvořit aplikaci Azure AD, najdete v článku [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -199,14 +199,14 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
     GO
     ```
 
-2. Udělte `db_owner` oprávnění *AppSP*, která umožňuje uživateli vytvářet v databázi další uživatele Azure AD.
+2. Udělte `db_owner` oprávnění *AppSP* , která umožňuje uživateli vytvářet v databázi další uživatele Azure AD.
 
     ```sql
     EXEC sp_addrolemember 'db_owner', [AppSP]
     GO
     ```
 
-    Další informace najdete v tématu [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)
+    Další informace najdete v tématu [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)
 
     Alternativně `ALTER ANY USER` lze místo poskytování role udělit oprávnění `db_owner` . Tato akce umožní instančnímu objektu přidat další uživatele služby Azure AD.
 
@@ -223,7 +223,7 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
 > [!IMPORTANT]
 > Instanční objekt použitý k přihlášení do SQL Database musí mít tajný klíč klienta. Pokud to ještě nemáte, postupujte podle pokynů v části [Vytvoření instančního objektu (aplikace Azure AD) ve službě Azure AD](#create-a-service-principal-an-azure-ad-application-in-azure-ad). Tento tajný klíč klienta je nutné přidat jako vstupní parametr ve skriptu níže.
 
-1. Pomocí následujícího skriptu vytvořte uživatele instančního objektu služby Azure AD *Mojeapl* pomocí instančního objektu *AppSP*.
+1. Pomocí následujícího skriptu vytvořte uživatele instančního objektu služby Azure AD *Mojeapl* pomocí instančního objektu *AppSP* .
 
     - Nahraďte `<TenantId>` `TenantId` dříve shromážděnými.
     - Nahraďte `<ClientId>` `ClientId` dříve shromážděnými.
@@ -311,5 +311,5 @@ Po vytvoření instančního objektu ve službě Azure AD vytvořte uživatele v
 - [Použití spravovaných identit pro App Service a Azure Functions](../../app-service/overview-managed-identity.md)
 - [Ověřování instančního objektu služby Azure AD do SQL DB – ukázka kódu](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Instanční objekty aplikace a služby v Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
-- [Vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)
 - [Role čtenáři adresáře v Azure Active Directory pro Azure SQL](authentication-aad-directory-readers-role.md)

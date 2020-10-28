@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536568"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674514"
 ---
 # <a name="azure-farmbeats-apis"></a>Rozhraní API Azure FarmBeats
 
@@ -29,7 +29,7 @@ Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Informace o 
 
 V následující tabulce najdete souhrn všech objektů a prostředků v FarmBeats DataHub:
 
-| Objekty a prostředky | Description
+| Objekty a prostředky | Popis
 --- | ---|
 Sdílených | Farma odpovídá fyzickému umístění zájmu v rámci systému FarmBeats. Každá farma má název farmy a jedinečné ID farmy. |
 Zařízení  | Zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné. Každé zařízení má jedinečné ID zařízení. Zařízení je obvykle zřízené pro farmu s ID farmy.
@@ -107,7 +107,7 @@ Například při dotazování na seznam zařízení (získat hovor v/Device) lze
 
 Rozhraní API služby Azure FarmBeats DataHub vrací standardní chyby protokolu HTTP. Nejběžnější kódy chyb jsou následující:
 
- |Kód chyby             | Description |
+ |Kód chyby             | Popis |
  |---                    | --- |
  |200                    | Success |
  |201                    | Vytvoření (post) úspěšné |
@@ -143,23 +143,23 @@ V tomto příkladu se při vytvoření farmy ve vstupní datové části nezadal
 
 K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registrace aplikace v Azure Active Directory. Pokud chcete vytvořit registraci aplikace v Azure Active Directory, postupujte takto:
 
-1. Přejít na [Azure Portal](https://portal.azure.com)a vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **nové registrace**. Případně můžete použít existující účet.
+1. Přejít na [Azure Portal](https://portal.azure.com)a vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **nové registrace** . Případně můžete použít existující účet.
 2. Pro nový účet udělejte toto:
 
     - Zadejte název.
-    - Vyberte **účty jenom v tomto organizačním adresáři (jeden tenant)**.
+    - Vyberte **účty jenom v tomto organizačním adresáři (jeden tenant)** .
     - Použijte výchozí hodnoty ve zbývajících polích.
-    - Vyberte **Zaregistrovat**.
+    - Vyberte **Zaregistrovat** .
 
 3. V podokně s **přehledem** nové a existující registrace aplikace proveďte tento postup:
 
-    - Zachyťte **ID klienta** a **ID tenanta**.
-    - Pokud chcete vygenerovat nový tajný klíč klienta a zachytit si **tajný klíč klienta**, přečtěte si **certifikáty a tajné** kódy.
-    - Vraťte se zpět na **Přehled**a vyberte odkaz vedle **možnosti spravovat aplikaci v místním adresáři**.
-    - Přejít na **vlastnosti** a zachytit **ID objektu**.
+    - Zachyťte **ID klienta** a **ID tenanta** .
+    - Pokud chcete vygenerovat nový tajný klíč klienta a zachytit si **tajný klíč klienta** , přečtěte si **certifikáty a tajné** kódy.
+    - Vraťte se zpět na **Přehled** a vyberte odkaz vedle **možnosti spravovat aplikaci v místním adresáři** .
+    - Přejít na **vlastnosti** a zachytit **ID objektu** .
 
 4. Přejít do DataHub Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) a proveďte následující kroky:
-    - Přejít na **rozhraní RoleAssignment API**.
+    - Přejít na **rozhraní RoleAssignment API** .
     - Proveďte příspěvek pro vytvoření objektu **RoleAssignment** pro **ID objektu** , který jste právě vytvořili.
  
 ```json
@@ -172,7 +172,7 @@ K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registra
 ```
 
   > [!NOTE]
-  > Další informace o tom, jak přidat uživatele a registraci služby Active Directory, najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+  > Další informace o tom, jak přidat uživatele a registraci služby Active Directory, najdete v tématu [Azure Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 Po dokončení předchozích kroků může registrace vaší aplikace (klienta) volat rozhraní API Azure FarmBeats pomocí přístupového tokenu prostřednictvím ověření identity.
 

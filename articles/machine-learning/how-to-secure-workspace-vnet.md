@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 3001b8829660f2891cb051269026bf7100a8f938
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460987"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672856"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho pracovního prostoru pomocí virtuálních sítí
 
@@ -37,7 +37,7 @@ V tomto článku se dozvíte, jak povolit následující prostředky v pracovní
 > - Azure Key Vault
 > - Azure Container Registry
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Přečtěte si článek [Přehled zabezpečení sítě](how-to-network-security-overview.md) , který vám pomůže pochopit běžné scénáře virtuální sítě a celkovou architekturu virtuální sítě.
 
@@ -74,23 +74,28 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 
    [![Úložiště, které je připojené k pracovnímu prostoru Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. Na stránce účet služby úložiště vyberte __brány firewall a virtuální sítě__.
+1. Na stránce účet služby úložiště vyberte __brány firewall a virtuální sítě__ .
 
    ![Oblast brány firewall a virtuální sítě na stránce Azure Storage v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
 1. Na stránce __brány firewall a virtuální sítě__ proveďte následující akce:
-    1. Vyberte __Vybrané sítě__.
-    1. V části __virtuální sítě__vyberte odkaz __Přidat existující virtuální síť__ . Tato akce přidá virtuální síť, ve které se nachází vaše výpočetní výkon (viz krok 1).
+    1. Vyberte __Vybrané sítě__ .
+    1. V části __virtuální sítě__ vyberte odkaz __Přidat existující virtuální síť__ . Tato akce přidá virtuální síť, ve které se nachází vaše výpočetní výkon (viz krok 1).
 
         > [!IMPORTANT]
         > Účet úložiště musí být ve stejné virtuální síti a podsíti jako výpočetní instance nebo clustery používané pro školení nebo odvození.
 
-    1. Zaškrtněte políčko __pro přístup k tomuto účtu úložiště udělit důvěryhodné služby Microsoftu__ .
+    1. Zaškrtněte políčko __pro přístup k tomuto účtu úložiště udělit důvěryhodné služby Microsoftu__ . To nedává všem službám Azure přístup k vašemu účtu úložiště.
+    
+        * Prostředky některých služeb, které jsou **zaregistrované ve vašem předplatném** , můžou mít přístup k účtu úložiště **ve stejném předplatném** pro vybrané operace. Například zápis protokolů nebo vytváření záloh.
+        * Prostředkům některých služeb lze udělit explicitní přístup k účtu úložiště tím, že __přiřadíte roli Azure__ ke spravované identitě přiřazené systémem.
+
+        Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).
 
     > [!IMPORTANT]
     > Při práci s Azure Machine Learning SDK musí být vaše vývojové prostředí schopné se připojit k účtu Azure Storage. Pokud je účet úložiště ve virtuální síti, musí brána firewall umožňovat přístup z IP adresy vývojového prostředí.
     >
-    > Pokud chcete povolit přístup k účtu úložiště, přejděte na téma __brány firewall a virtuální sítě__ pro účet úložiště *z webového prohlížeče ve vývojovém klientovi*. Pak pomocí zaškrtávacího políčka __Přidat IP adresu klienta__ přidejte IP adresu klienta do __rozsahu adres__. Můžete také použít pole __Rozsah adres__ k ručnímu zadání IP adresy vývojového prostředí. Po přidání IP adresy pro klienta bude mít přístup k účtu úložiště pomocí sady SDK.
+    > Pokud chcete povolit přístup k účtu úložiště, přejděte na téma __brány firewall a virtuální sítě__ pro účet úložiště *z webového prohlížeče ve vývojovém klientovi* . Pak pomocí zaškrtávacího políčka __Přidat IP adresu klienta__ přidejte IP adresu klienta do __rozsahu adres__ . Můžete také použít pole __Rozsah adres__ k ručnímu zadání IP adresy vývojového prostředí. Po přidání IP adresy pro klienta bude mít přístup k účtu úložiště pomocí sady SDK.
 
    [![Podokno brány firewall a virtuální sítě v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -123,7 +128,7 @@ Ve výchozím nastavení Azure Machine Learning provádí kontrolu platnosti dat
 - Azure Blob Storage
 - Sdílená složka Azure
 - PostgreSQL
-- Azure SQL Database
+- Databáze Azure SQL
 
 Následující ukázka kódu vytvoří nové úložiště a sady dat objektů BLOB v Azure `skip_validation=True` .
 
@@ -170,12 +175,12 @@ Pokud chcete používat Azure Machine Learning možnosti experimentování s Azu
 
 1. Přejít na Key Vault, která je přidružená k pracovnímu prostoru.
 
-1. Na stránce __Key Vault__ v levém podokně vyberte __síť__.
+1. Na stránce __Key Vault__ v levém podokně vyberte __síť__ .
 
 1. Na kartě __brány firewall a virtuální sítě__ proveďte následující akce:
-    1. V části __povolený přístup ze__vyberte __privátní koncový bod a vybrané sítě__.
-    1. V části __virtuální sítě__vyberte __Přidat existující virtuální sítě__ a přidejte tak virtuální síť, ve které se nachází vaše výpočetní služby experimentování.
-    1. V části __umožněte důvěryhodným službám Microsoftu obejít tuto bránu firewall?__ vyberte __Ano__.
+    1. V části __povolený přístup ze__ vyberte __privátní koncový bod a vybrané sítě__ .
+    1. V části __virtuální sítě__ vyberte __Přidat existující virtuální sítě__ a přidejte tak virtuální síť, ve které se nachází vaše výpočetní služby experimentování.
+    1. V části __umožněte důvěryhodným službám Microsoftu obejít tuto bránu firewall?__ vyberte __Ano__ .
 
    [![Část "brány firewall a virtuální sítě" v podokně Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 

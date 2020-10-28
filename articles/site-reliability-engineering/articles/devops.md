@@ -8,12 +8,12 @@ ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62872443c386c45d9821053dc901ad8e0055b74f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090325"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674273"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>Nejčastější dotazy: Jaký je vztah mezi SRE a DevOps?
 
@@ -50,7 +50,7 @@ Pokud použijeme tuto definici SRE z centra pro [technickou spolehlivost webu](.
 
 v takovém případě by bylo snadné vyslovit slovo pro SRE "spolehlivost". Napravo od jejího názvu také nabízí skvělé důkazy pro tuto deklaraci identity.
 
-Pokud používáme tuto definici DevOps z [centra zdrojů Azure DevOps](https://docs.microsoft.com/azure/devops/learn/):
+Pokud používáme tuto definici DevOps z [centra zdrojů Azure DevOps](/azure/devops/learn/):
 
 > DevOps je spojení lidí, procesů a produktů, které má koncovým uživatelům průběžně doručovat hodnotu.
 
@@ -80,4 +80,4 @@ Doufáme, že předchozí odpovědi nabízejí několik nápadů, jak se tyto dv
 
 ## <a name="next-steps"></a>Další kroky
 
-Zajímá vás další informace o sledování spolehlivosti a DevOps webů? Podívejte se na naše centrum pro [spolehlivost](../index.yml) a [centrum prostředků Azure DevOps](https://docs.microsoft.com/azure/devops/learn/).
+Zajímá vás další informace o sledování spolehlivosti a DevOps webů? Podívejte se na naše centrum pro [spolehlivost](../index.yml) a [centrum prostředků Azure DevOps](/azure/devops/learn/).

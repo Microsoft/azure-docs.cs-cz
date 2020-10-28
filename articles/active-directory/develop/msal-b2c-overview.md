@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442248"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673508"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro jazyk JavaScript pro práci s Azure AD B2C
 
@@ -32,7 +32,7 @@ Následující části ukazují, jak:
 - Podpora přihlašování v aplikaci s jednou stránkou (SPA) *a volání* chráněného webového rozhraní API
 - Povolit podporu resetování hesel
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud jste to ještě neudělali, vytvořte [tenanta Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md).
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>Krok 3: Konfigurace ověřování
 
-1. Otevřete `config.json` soubor v ukázce.
+1. Otevřete *config.js* v souboru v ukázce.
 
 2. Nakonfigurujte ukázku pomocí přihlašovacích údajů aplikace, které jste získali dříve při registraci aplikace. Změňte následující řádky kódu nahrazením hodnot názvem vašeho tenanta, ID klienta a názvem zásady.
 
@@ -169,7 +169,7 @@ V následujících krocích se předpokládá, že jste už provedli kroky uvede
 
 ### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>Krok 2: zachycení a zpracování chyb ověřování v metodě přihlášení
 
-Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kterou byste měli zachytit ve svém kódu, a pak ji zpracovat tak, že prezentuje příslušný tok uživatele. V tomto případě je to `b2c_1_reset` tok resetování hesla.
+Když uživatel vybere **zapomenuté heslo** , vaše aplikace vyvolá chybu, kterou byste měli zachytit ve svém kódu, a pak ji zpracovat tak, že prezentuje příslušný tok uživatele. V tomto případě je to `b2c_1_reset` tok resetování hesla.
 
 1. Metodu přihlašování rozšíříte takto:
 

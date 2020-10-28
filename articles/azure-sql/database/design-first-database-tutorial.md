@@ -10,18 +10,18 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 1e0ab1d6c1266b37dfcba461fbbdc373fc526783
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362159"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674880"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Kurz: návrh relační databáze v Azure SQL Database pomocí SSMS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 
-Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud (Azure). V tomto kurzu se naučíte používat web Azure Portal a aplikaci [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS), když chcete:
+Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud (Azure). V tomto kurzu se naučíte používat web Azure Portal a aplikaci [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS), když chcete:
 
 > [!div class="checklist"]
 >
@@ -35,7 +35,7 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!TIP]
-> Následující Microsoft Learn modul vám pomůže naučit se zdarma, jak [vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje na Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), včetně vytvoření jednoduché databáze.
+> Následující Microsoft Learn modul vám pomůže naučit se zdarma, jak [vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje na Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/), včetně vytvoření jednoduché databáze.
 > [!NOTE]
 > Pro účely tohoto kurzu používáme Azure SQL Database. Můžete použít také databázi ve fondu v elastickém fondu nebo v spravované instanci SQL. Informace o připojení ke spravované instanci SQL najdete v těchto rychlých startech spravované instance SQL: [rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci Azure SQL](../managed-instance/connect-vm-instance-configure.md) a [rychlé zprovoznění: Konfigurace připojení typu Point-to-site k spravované instanci Azure SQL z místního](../managed-instance/point-to-site-p2s-configure.md)prostředí.
 
@@ -43,12 +43,12 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 
 Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
-- [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (nejnovější verze)
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (nejnovější verze)
 - [BCP a Sqlcmd](https://www.microsoft.com/download/details.aspx?id=36433) (nejnovější verze)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>Vytvoření prázdné databáze v Azure SQL Database
 
@@ -56,8 +56,8 @@ Databáze v Azure SQL Database se vytvoří s definovanou sadou výpočetních p
 
 Pomocí těchto kroků vytvořte prázdnou databázi.
 
-1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek**.
-2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
+1. V nabídce webu Azure Portal nebo na **domovské stránce** vyberte **Vytvořit prostředek** .
+2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database** .
 
    ![Vytvoření prázdné databáze](./media/design-first-database-tutorial/create-empty-database.png)
 
@@ -81,10 +81,10 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
     ![create database-server](./media/design-first-database-tutorial/create-database-server.png)
 
-5. Klikněte na **Vybrat**.
+5. Klikněte na **Vybrat** .
 6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Můžete prozkoumat možnosti pro počet DTU/virtuální jádra a úložiště, které máte k dispozici pro jednotlivé úrovně služeb.
 
-    Po výběru úrovně služby, počtu DTU nebo virtuální jádra a velikosti úložiště klikněte na **použít**.
+    Po výběru úrovně služby, počtu DTU nebo virtuální jádra a velikosti úložiště klikněte na **použít** .
 
 7. Zadejte **kolaci** pro prázdnou databázi (pro tento kurz použijte výchozí hodnotu). Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
 
@@ -109,15 +109,15 @@ Azure SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. Ta
 
 1. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a databázím z SQL Server Management Studio.
 
-1. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru**. Otevře se stránka **nastavení brány firewall** pro server.
+1. Na panelu nástrojů klikněte na **Nastavit bránu firewall serveru** . Otevře se stránka **nastavení brány firewall** pro server.
 
    ![pravidlo brány firewall protokolu IP na úrovni serveru](./media/design-first-database-tutorial/server-firewall-rule.png)
 
 1. Kliknutím na **Přidat IP adresu klienta** na panelu nástrojů přidejte svoji aktuální IP adresu do nového pravidla brány firewall protokolu IP. Pravidlo brány firewall protokolu IP může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-1. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru.
+1. Klikněte na **Uložit** . Vytvoří se pravidlo brány firewall protokolu IP na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru.
 
-1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
+1. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall** .
 
 Vaše IP adresa teď může projít bránou firewall protokolu IP. Nyní se můžete připojit k databázi pomocí SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Ujistěte se, že používáte účet správce serveru, který jste předtím vytvořili.
 
@@ -134,20 +134,20 @@ K navázání připojení k databázi použijte [SQL Server Management Studio](/
    | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Typ serveru** | Databázový stroj | Tato hodnota se vyžaduje. |
-   | **Název serveru** | Plně kvalifikovaný název serveru | Například *yourserver.Database.Windows.NET*. |
+   | **Název serveru** | Plně kvalifikovaný název serveru | Například *yourserver.Database.Windows.NET* . |
    | **Authentication** | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který jsme nakonfigurovali v tomto kurzu. |
-   | **Přihlásit** | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
+   | **Přihlášení** | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
    | **Heslo** | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
 
    ![Připojení k serveru](./media/design-first-database-tutorial/connect.png)
 
-3. Klikněte na **Možnosti** v dialogovém okně **Připojit k serveru**. V části **připojit k databázi** zadejte *yourDatabase* pro připojení k této databázi.
+3. Klikněte na **Možnosti** v dialogovém okně **Připojit k serveru** . V části **připojit k databázi** zadejte *yourDatabase* pro připojení k této databázi.
 
     ![připojení k databázi na serveru](./media/design-first-database-tutorial/options-connect-to-db.png)  
 
-4. Klikněte na **Připojit**. Okno **Průzkumník objektů** se otevře v SSMS.
+4. Klikněte na **Připojit** . Okno **Průzkumník objektů** se otevře v SSMS.
 
-5. V **Průzkumník objektů**rozbalte **databáze** a potom rozbalte *yourDatabase* a zobrazte objekty v ukázkové databázi.
+5. V **Průzkumník objektů** rozbalte **databáze** a potom rozbalte *yourDatabase* a zobrazte objekty v ukázkové databázi.
 
    ![databázové objekty](./media/design-first-database-tutorial/connected.png)  
 
@@ -160,14 +160,14 @@ Vytvořte schéma databáze se čtyřmi tabulkami, které modelují systém spr�
 - Student
 - Kredit
 
-Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisejí. Některé z těchto tabulek odkazují na sloupce v jiných tabulkách. Například tabulka *student* odkazuje na sloupec *PersonId* v tabulce *Person (osoba* ). Prohlédněte si diagram, abyste pochopili, jak spolu tabulky v tomto kurzu souvisejí. Podrobný rozbor toho, jak vytvářet efektivní databázové tabulky, najdete v tématu [Vytváření efektivních databázových tabulek](https://msdn.microsoft.com/library/cc505842.aspx). Informace o výběru datových typů najdete v tématu [Datové typy](/sql/t-sql/data-types/data-types-transact-sql).
+Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisejí. Některé z těchto tabulek odkazují na sloupce v jiných tabulkách. Například tabulka *student* odkazuje na sloupec *PersonId* v tabulce *Person (osoba* ). Prohlédněte si diagram, abyste pochopili, jak spolu tabulky v tomto kurzu souvisejí. Podrobný rozbor toho, jak vytvářet efektivní databázové tabulky, najdete v tématu [Vytváření efektivních databázových tabulek](/previous-versions/tn-archive/cc505842(v=technet.10)). Informace o výběru datových typů najdete v tématu [Datové typy](/sql/t-sql/data-types/data-types-transact-sql).
 
 > [!NOTE]
 > Tabulky můžete také vytvářet a navrhovat pomocí [Návrháře tabulky v aplikaci SQL Server Management Studio](/sql/ssms/visual-db-tools/design-database-diagrams-visual-database-tools).
 
 ![Vztahy mezi tabulkami](./media/design-first-database-tutorial/tutorial-database-tables.png)
 
-1. V **Průzkumník objektů**klikněte pravým tlačítkem na *YourDatabase* a vyberte **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vaší databázi.
+1. V **Průzkumník objektů** klikněte pravým tlačítkem na *YourDatabase* a vyberte **Nový dotaz** . Otevře se prázdné okno dotazu připojené k vaší databázi.
 
 2. V okně dotazu vytvořte v databázi čtyři tabulky spuštěním následujícího dotazu:
 
@@ -231,7 +231,7 @@ Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisej�
 
 3. Otevřete okno příkazového řádku a přejděte do složky *sampleData* .
 
-4. Spuštěním následujících příkazů vložte ukázková data do tabulek, které nahradí hodnoty pro *Server*, *databázi*, *uživatele*a *heslo* hodnotami pro vaše prostředí.
+4. Spuštěním následujících příkazů vložte ukázková data do tabulek, které nahradí hodnoty pro *Server* , *databázi* , *uživatele* a *heslo* hodnotami pro vaše prostředí.
 
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","
@@ -244,7 +244,7 @@ Teď jste načetli ukázková data do tabulek, které jste předtím vytvořili.
 
 ## <a name="query-data"></a>Dotazování dat
 
-Informace z databázových tabulek můžete načíst spuštěním následujících dotazů. Další informace o psaní dotazů SQL najdete v tématu popisujícím [zápis dotazů SQL](https://technet.microsoft.com/library/bb264565.aspx) . První dotaz spojí všechny čtyři tabulky a vyhledá studenty, které jsou na Dominick Pope, kteří mají třídu vyšší než 75%. Druhý dotaz spojí všechny čtyři tabulky a vyhledá kurzy, ve kterých se někdy zaregistrovala možnost "Noe Coleman".
+Informace z databázových tabulek můžete načíst spuštěním následujících dotazů. Další informace o psaní dotazů SQL najdete v tématu popisujícím [zápis dotazů SQL](/previous-versions/sql/sql-server-2005/express-administrator/bb264565(v=sql.90)) . První dotaz spojí všechny čtyři tabulky a vyhledá studenty, které jsou na Dominick Pope, kteří mají třídu vyšší než 75%. Druhý dotaz spojí všechny čtyři tabulky a vyhledá kurzy, ve kterých se někdy zaregistrovala možnost "Noe Coleman".
 
 1. V okně dotazu aplikace SQL Server Management Studio spusťte následující dotaz:
 

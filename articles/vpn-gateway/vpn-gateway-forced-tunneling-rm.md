@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e9444291c40ef504a674ee18351ba581695d1dd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00f98a5086b9a9bf21054138cf01d26a550338da
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394513"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673841"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manageru
 
@@ -53,6 +53,7 @@ Vynucené tunelování v Azure se konfiguruje prostřednictvím uživatelsky def
 * Tento postup používá uživatelem definované trasy (UDR) k vytvoření směrovací tabulky pro přidání výchozí trasy a následné přidružení směrovací tabulky k vašim virtuálním podsítím, aby bylo možné v těchto podsítích povolit vynucené tunelové propojení.
 * Vynucené tunelování musí být přidružené k virtuální síti, která má bránu sítě VPN založenou na trasách. Musíte nastavit výchozí lokalitu mezi místními lokalitami, které jsou připojené k virtuální síti. Místní zařízení VPN musí být také nakonfigurováno s použitím 0.0.0.0/0 jako selektorů provozu. 
 * Vynucené tunelování ExpressRoute není nakonfigurované prostřednictvím tohoto mechanismu, ale místo toho je povolené inzerováním výchozí trasy prostřednictvím relací partnerských vztahů protokolu BGP ExpressRoute. Další informace najdete v [dokumentaci k ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
+* Pokud je ve stejné virtuální síti nasazená Brána VPN Gateway i ExpressRoute, trasy definované uživatelem (UDR) už nejsou potřeba, protože ExpressRoute brána bude inzerovat nakonfigurovaný výchozí web do virtuální sítě.
 
 ## <a name="configuration-overview"></a>Přehled konfigurace
 

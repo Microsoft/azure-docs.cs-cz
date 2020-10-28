@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: d90cc76da20861ae9eca7aaf59a49e5f3e866c92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444428"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675092"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Použití ověřování Azure Active Directory
 
@@ -153,21 +153,21 @@ Pro objekty zabezpečení serveru Azure AD (přihlášení) se podporují násle
   - Přidání objektů zabezpečení serveru Azure AD (přihlášení) pro spravovanou instanci SQL umožňuje vytvořit více objektů zabezpečení serveru Azure AD (přihlášení), které je možné do `sysadmin` role přidat.
 - Pouze správce Azure AD pro server se může zpočátku připojit k serveru nebo spravované instanci pomocí účtu Azure Active Directory. Správce služby Active Directory může nakonfigurovat další uživatele databáze služby Azure AD.
 - Doporučujeme nastavit časový limit připojení na 30 sekund.
-- SQL Server 2016 Management Studio a SQL Server Data Tools for Visual Studio 2015 (verze 14.0.60311.1 Duben 2016 nebo novější) podporují Azure Active Directory ověřování. (Ověřování Azure AD podporuje **.NET Framework Zprostředkovatel dat pro SQLServer**; minimálně verze .NET Framework 4,6). Proto můžou nejnovější verze těchto nástrojů a aplikací na datové vrstvě (DAC a BACPAC) používat ověřování Azure AD.
+- SQL Server 2016 Management Studio a SQL Server Data Tools for Visual Studio 2015 (verze 14.0.60311.1 Duben 2016 nebo novější) podporují Azure Active Directory ověřování. (Ověřování Azure AD podporuje **.NET Framework Zprostředkovatel dat pro SQLServer** ; minimálně verze .NET Framework 4,6). Proto můžou nejnovější verze těchto nástrojů a aplikací na datové vrstvě (DAC a BACPAC) používat ověřování Azure AD.
 - Od verze 15.0.1 [Nástroj Sqlcmd Utility](/sql/tools/sqlcmd-utility) a [BCP](/sql/tools/bcp-utility) podporuje interaktivní ověřování služby Active Directory s Multi-Factor Authentication.
-- Nástroj SQL Server Data Tools for Visual Studio 2015 vyžaduje alespoň 2016 verze nástrojů Data Tools (verze 14.0.60311.1) z dubna. V současné době se uživatelé Azure AD nezobrazí v SSDT Průzkumník objektů. Alternativním řešením je zobrazit uživatele v [Sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+- Nástroj SQL Server Data Tools for Visual Studio 2015 vyžaduje alespoň 2016 verze nástrojů Data Tools (verze 14.0.60311.1) z dubna. V současné době se uživatelé Azure AD nezobrazí v SSDT Průzkumník objektů. Alternativním řešením je zobrazit uživatele v [Sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 - [Microsoft JDBC Driver 6,0 pro SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) podporuje ověřování Azure AD. Viz také [Nastavení vlastností připojení](/sql/connect/jdbc/setting-the-connection-properties).
 - Základ se nedá ověřit pomocí ověřování Azure AD.
 - Ověřování Azure AD se podporuje pro Azure SQL Database a Azure synapse pomocí Azure Portal **importovat databáze** a **exportovat databáze** . Import a export pomocí ověřování Azure AD se taky podporuje z příkazu PowerShellu.
-- Ověřování Azure AD se podporuje pro SQL Database, spravovanou instanci SQL a Azure synapse s použitím rozhraní příkazového řádku. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure AD pomocí SQL Database nebo Azure synapse](authentication-aad-configure.md) a [SQL Server-AZ SQL Server](https://docs.microsoft.com/cli/azure/sql/server).
+- Ověřování Azure AD se podporuje pro SQL Database, spravovanou instanci SQL a Azure synapse s použitím rozhraní příkazového řádku. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure AD pomocí SQL Database nebo Azure synapse](authentication-aad-configure.md) a [SQL Server-AZ SQL Server](/cli/azure/sql/server).
 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o tom, jak vytvořit a naplnit instanci Azure AD a jak ji nakonfigurovat pomocí Azure SQL Database, spravované instance SQL nebo Azure synapse, najdete v tématu [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL Database, spravované instance SQL nebo Azure synapse](authentication-aad-configure.md).
 - Kurz použití objektů zabezpečení serveru Azure AD (přihlášení) se službou SQL Managed instance najdete v tématu [objekty zabezpečení serveru Azure AD (přihlášení) pomocí spravované instance SQL](../managed-instance/aad-security-configure-tutorial.md) .
 - Přehled přihlašovacích údajů, uživatelů, databázových rolí a oprávnění v SQL Database najdete v tématu [přihlášení, uživatelé, databázové role a oprávnění](logins-create-manage.md).
-- Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx).
-- Další informace o databázových rolích najdete v tématu věnovaném [databázovým rolím](https://msdn.microsoft.com/library/ms189121.aspx).
+- Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](/sql/relational-databases/security/authentication-access/principals-database-engine).
+- Další informace o databázových rolích najdete v tématu věnovaném [databázovým rolím](/sql/relational-databases/security/authentication-access/database-level-roles).
 - Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) pro spravovanou instanci SQL najdete v tématu  [Vytvoření přihlašovacích](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)údajů.
 - Další informace o pravidlech brány firewall pro SQL Database najdete v tématu [Pravidla brány firewall služby SQL Database](firewall-configure.md).
 

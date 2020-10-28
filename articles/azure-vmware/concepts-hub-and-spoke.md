@@ -1,18 +1,18 @@
 ---
 title: Koncept – integrace nasazení řešení Azure VMware v architektuře hub a paprsků
-description: Přečtěte si o doporučeních pro integraci nasazení řešení Azure VMware do existující nebo nové architektury hub a paprsků v Azure.
+description: Přečtěte si o integraci nasazení řešení Azure VMware v architektuře hub a paprsků v Azure.
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 66c6cc4841b4b36775fda89b29dc588100c3ad87
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/26/2020
+ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058467"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674678"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrace řešení Azure VMware v architektuře hub a paprsků
 
-V tomto článku poskytujeme doporučení pro integraci nasazení řešení Azure VMware do existující nebo nové [architektury hub a paprsků](/azure/architecture/reference-architectures/hybrid-networking/shared-services) v Azure. 
+Tento článek poskytuje doporučení pro integraci nasazení řešení Azure VMware do existující nebo nové [architektury hub a paprsků](/azure/architecture/reference-architectures/hybrid-networking/shared-services) v Azure. 
 
 
 Scénář centra a paprsků předpokládá hybridní cloudové prostředí s úlohami na:
@@ -46,7 +46,7 @@ Architektura má následující hlavní součásti:
 
 
   > [!NOTE]
-  > **Předpoklady S2S VPN:** Pro nasazení v produkčním prostředí Azure VMware se Azure S2S VPN nepodporuje kvůli požadavkům sítě pro VMware HCX. Dá se ale použít pro nasazení podle ověření koncepce.
+  > **Předpoklady S2S VPN:** Pro nasazení v produkčním prostředí Azure VMware se Azure S2S VPN nepodporuje kvůli požadavkům sítě pro VMware HCX. Můžete ho ale použít pro nasazení podle ověření koncepce.
 
 
 -   **Virtuální síť centra:** Funguje jako centrální bod připojení k vaší místní síti a privátnímu cloudu řešení Azure VMware.
@@ -81,9 +81,9 @@ Další podrobnosti o sítích řešení Azure VMware a konceptech připojení n
 
 ### <a name="traffic-segmentation"></a>Segmentace provozu
 
-[Azure firewall](../firewall/index.yml) je střední část topologie hub a paprsků, která je nasazená ve virtuální síti rozbočovače. Pomocí Azure Firewall nebo jiného síťového virtuálního zařízení s podporou Azure navažte pravidla provozu a segmentujte komunikaci mezi různými paprsky a úlohami řešení Azure VMware.
+[Azure firewall](../firewall/index.yml) je centrální část topologie rozbočovače a paprsků, která je nasazená ve virtuální síti rozbočovače. Pomocí Azure Firewall nebo jiného síťového virtuálního zařízení s podporou Azure navažte pravidla provozu a segmentujte komunikaci mezi různými paprsky a úlohami řešení Azure VMware.
 
-Vytvořte směrovací tabulky a nasměrujte provoz na Azure Firewall.  U virtuálních sítí paprsků vytvořte trasu, která nastaví výchozí trasu k internímu rozhraní Azure Firewall. Tento způsob, kdy zatížení v Virtual Network potřebuje přístup k adresnímu prostoru řešení Azure VMware, ho může Brána firewall vyhodnotit a použít odpovídající pravidlo provozu pro povolení nebo zamítnutí.  
+Vytvořte směrovací tabulky a nasměrujte provoz na Azure Firewall.  Pro virtuální sítě paprsků vytvořte trasu, která nastaví výchozí trasu na interní rozhraní Azure Firewall. Tímto způsobem platí, že pokud je potřeba, aby zatížení v Virtual Network dosáhlo adresního prostoru řešení Azure VMware, firewall ho může vyhodnotit a použít odpovídající přenosové pravidlo, aby ho povolil nebo zakázal.  
 
 :::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
@@ -91,20 +91,20 @@ Vytvořte směrovací tabulky a nasměrujte provoz na Azure Firewall.  U virtuá
 > [!IMPORTANT]
 > Trasa s předponou adresy 0.0.0.0/0 není v nastavení **GatewaySubnet** podporována.
 
-Nastavte trasy pro konkrétní sítě v odpovídající směrovací tabulce. Například trasy pro přístup ke správě řešení Azure VMware a úlohám předpony IP adres z úloh paprsků a naopak.
+Nastavte trasy pro konkrétní sítě v odpovídající směrovací tabulce. Například trasy pro přístup ke správě řešení Azure VMware a úlohám z úloh paprsků a jiným způsobem.
 
 :::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
 Druhá úroveň segmentace přenosu dat pomocí skupin zabezpečení sítě v Paprskech a v centru pro vytváření podrobnějších přenosových zásad.
 
 > [!NOTE]
-> **Řešení provozu z místního prostředí do Azure VMware:** Provoz mezi místními úlohami, ať už vSphere nebo jinými, je povolený Global Reach, ale přenos neprojde Azure Firewall na rozbočovači. V tomto scénáři musíte implementovat mechanismy segmentace provozu buď místně, nebo v řešení Azure VMware.
+> **Řešení provozu z místního prostředí do Azure VMware:** Provoz mezi místními úlohami, ať už vSphere nebo jinými, je povolený Global Reach, ale přenos neprojde Azure Firewall na rozbočovači. V tomto scénáři musíte implementovat mechanismy segmentace provozu, a to buď místně, nebo v řešení Azure VMware.
 
 ### <a name="application-gateway"></a>Application Gateway
 
 Azure Application Gateway V1 a v2 byly testovány pomocí webových aplikací, které běží na virtuálních počítačích řešení VMware Azure jako fond back-end. Application Gateway je aktuálně jedinou podporovanou metodou pro vystavení webových aplikací běžících na virtuálních počítačích řešení VMware Azure na internetu. Můžou aplikace bezpečně zveřejnit i pro interní uživatele.
 
-Podrobnosti a požadavky najdete v článku týkajícím se řešení Azure VMware pro [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) .
+Podrobnosti a požadavky najdete v článku týkajícím se [Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) pro řešení Azure VMware.
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="Nasazení integrace centra řešení a paprsků Azure VMware" border="false":::
 
@@ -127,7 +127,7 @@ Z hlediska zabezpečení je nejvhodnější nasadit službu [Microsoft Azure bas
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS – požadavky na řešení
 
-Pro řešení Azure DNS jsou k dispozici dvě možnosti:
+Pro Azure DNS rozlišení jsou k dispozici dvě možnosti:
 
 -   Použijte řadiče domény Azure Active Directory (Azure AD) nasazené v centru (popsané v tématu [požadavky na identitu](#identity-considerations)) jako názvové servery.
 
@@ -137,7 +137,7 @@ Nejlepším způsobem, jak zajistit spolehlivé rozlišení názvů pro řešen�
 
 Jako obecné doporučení k návrhu použijte stávající infrastrukturu Azure DNS (v tomto případě službu DNS integrovanou službou Active Directory) nasazenou do aspoň dvou virtuálních počítačů Azure nasazených ve virtuální síti centrální sítě a nakonfigurované ve virtuálních sítích s paprsky tak, aby používaly servery Azure DNS v nastavení DNS.
 
-Azure Privátní DNS se pořád používá tam, kde je zóna Azure Privátní DNS propojená s virtuálními sítěmi a servery DNS se používají jako hybridní překladače s podmíněným předáváním do místního nebo Azure VMware, které používají DNS s využitím zákaznické infrastruktury Azure Privátní DNS.
+Můžete použít Azure Privátní DNS, kde se zóna Azure Privátní DNS odkazuje na virtuální síť.  Servery DNS se používají jako hybridní překladače s podmíněným předáváním do místního prostředí nebo řešení Azure VMware se systémem DNS s využitím zákaznické infrastruktury Azure Privátní DNS. 
 
 Je potřeba vzít v úvahu několik důležitých Azure DNS privátních zón:
 
@@ -149,7 +149,7 @@ Místní a servery řešení Azure VMware je možné nakonfigurovat s použitím
 
 ## <a name="identity-considerations"></a>Požadavky na identitu
 
-Pro účely identity je nejlepší přístup k nasazení aspoň jednoho řadiče domény služby Active Directory v centru pomocí podsítě sdílené služby, která je v ideálním případě dvě v rámci distribuované zóny nebo skupiny dostupnosti virtuálního počítače. Další informace najdete v tématu [cetrum architektury Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain) pro rozšíření místní domény AD do Azure.
+Pro účely identity je nejlepším přístupem nasazení aspoň jednoho řadiče domény služby AD v centru. Použijte dvě podsítě sdílené služby v rámci distribuované zóny nebo skupiny dostupnosti virtuálních počítačů. Další informace najdete v tématu [cetrum architektury Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain) pro rozšíření místní domény AD do Azure.
 
 Navíc můžete nasadit jiný řadič domény na straně řešení Azure VMware, aby fungoval jako identita a zdroj DNS v prostředí vSphere.
 

@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 0f9b6e0250acb53899ab0443a62db7c9cc51f992
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2374b1fb7f355b336c713a8a3240eacc8b1f188c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370096"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675075"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Role čtenáři adresáře v Azure Active Directory pro Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 > [!NOTE]
-> Tato funkce je v tomto článku ve **verzi Public Preview**.
+> Tato funkce je v tomto článku ve **verzi Public Preview** .
 
 Služba Azure Active Directory (Azure AD) zavedla [použití cloudových skupin pro správu přiřazení rolí v Azure Active Directory (Preview)](../../active-directory/roles/groups-concept.md). Díky tomu můžou být role Azure AD přiřazené skupinám.
 
@@ -31,7 +31,7 @@ Role **čtenáři adresáře** je nutná pro:
 
 - Vytvoření přihlášení Azure AD pro spravovanou instanci SQL
 - Zosobnění uživatelů Azure AD v Azure SQL
-- Migrace SQL Server uživatelů, kteří používají ověřování systému Windows, do spravované instance SQL pomocí ověřování Azure AD (pomocí příkazu [ALTER User (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) )
+- Migrace SQL Server uživatelů, kteří používají ověřování systému Windows, do spravované instance SQL pomocí ověřování Azure AD (pomocí příkazu [ALTER User (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) )
 - Změna správce Azure AD pro spravovanou instanci SQL
 - Umožňuje [instančním objektům (aplikacím)](authentication-aad-service-principal.md) vytvářet uživatele Azure AD v Azure SQL.
 
@@ -45,7 +45,7 @@ Přiřazení role **čtenáři adresáře** k identitě serveru není vyžadová
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>Udělení role čtenáři adresáře pro skupinu Azure AD
 
-V současné době ve **verzi Public Preview**teď můžete mít správce [globálních správců](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) nebo [privilegovaných rolí](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) vytvořit skupinu Azure AD a přiřadit oprávnění [**čtenářům adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) ke skupině. Tím se umožní přístup k Graph API Azure AD pro členy této skupiny. Kromě toho můžou uživatelé Azure AD, kteří jsou vlastníky této skupiny, přiřadit nové členy této skupiny, včetně identit logických serverů Azure SQL.
+V současné době ve **verzi Public Preview** teď můžete mít správce [globálních správců](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) nebo [privilegovaných rolí](../../active-directory/roles/permissions-reference.md#privileged-role-administrator) vytvořit skupinu Azure AD a přiřadit oprávnění [**čtenářům adresáře**](../../active-directory/roles/permissions-reference.md#directory-readers) ke skupině. Tím se umožní přístup k Graph API Azure AD pro členy této skupiny. Kromě toho můžou uživatelé Azure AD, kteří jsou vlastníky této skupiny, přiřadit nové členy této skupiny, včetně identit logických serverů Azure SQL.
 
 Toto řešení ještě vyžaduje uživatele s vysokou úrovní oprávnění (správce globálního správce nebo privilegované role), aby mohl vytvořit skupinu a přiřazovat uživatele jako jednorázovou aktivitu, ale vlastníci skupiny Azure AD budou moci přiřadit další členy, kteří budou přesměrováni. Tím se eliminuje nutnost zahrnovat uživatele s vysokými oprávněními v budoucnu, aby se nakonfigurovaly všechny databáze SQL, spravované instance SQL nebo servery Azure synapse ve svém tenantovi Azure AD.
 

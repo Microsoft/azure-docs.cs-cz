@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577505"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675106"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +28,7 @@ V tomto tématu se naučíte, jak nakonfigurovat [skupinu automatického převze
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal nebo PowerShellu.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Vezměte v úvahu následující požadavky:
 
@@ -40,7 +40,7 @@ Vezměte v úvahu následující požadavky:
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání.
 1. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
 
@@ -50,9 +50,9 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
 
    ![Přidat novou skupinu převzetí služeb při selhání](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit**.
+1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit** .
 
-   - **Databáze v rámci této skupiny**: Vyberte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace.
+   - **Databáze v rámci této skupiny** : Vyberte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání. Když přidáte databázi do skupiny převzetí služeb při selhání, automaticky se spustí proces geografické replikace.
 
    ![Přidat SQL Database do skupiny převzetí služeb při selhání](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -115,7 +115,7 @@ Otestujte převzetí služeb při selhání ve skupině převzetí služeb při 
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte "Azure SQL". Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a do vyhledávacího pole zadejte "Azure SQL". Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte databázi, kterou chcete přidat do skupiny převzetí služeb při selhání.
 
    ![Otevřít server pro jednu databázi](./media/auto-failover-group-configure/open-sql-db-server.png)
@@ -196,7 +196,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal nebo PowerShellu.  
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Vezměte v úvahu následující požadavky:
 
@@ -210,7 +210,7 @@ Vytvořte skupinu převzetí služeb při selhání pro elastický fond pomocí 
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte "Azure SQL". Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a do vyhledávacího pole zadejte "Azure SQL". Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte elastický fond, který chcete přidat do skupiny převzetí služeb při selhání.
 1. V podokně **Přehled** vyberte název serveru v části **název serveru** a otevřete tak nastavení serveru.
   
@@ -220,7 +220,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastick�
 
    ![Přidat novou skupinu převzetí služeb při selhání](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit**. Buď vytvořte nový sekundární server, nebo vyberte existující sekundární server.
+1. Na stránce **Skupina převzetí služeb při selhání** zadejte nebo vyberte požadované hodnoty a pak vyberte **vytvořit** . Buď vytvořte nový sekundární server, nebo vyberte existující sekundární server.
 
 1. **V rámci skupiny vyberte databáze** a pak zvolte elastický fond, který chcete přidat do skupiny převzetí služeb při selhání. Pokud elastický fond na sekundárním serveru ještě neexistuje, zobrazí se upozornění s výzvou k vytvoření elastického fondu na sekundárním serveru. Vyberte upozornění a pak vyberte **OK** a vytvořte elastický fond na sekundárním serveru.
 
@@ -282,7 +282,7 @@ Testovací převzetí služeb při selhání vašeho elastického fondu pomocí 
 
 Převzetí služeb při selhání pro skupinu převezmete do sekundárního serveru a pak navrácení služeb po obnovení pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte "Azure SQL". Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a do vyhledávacího pole zadejte "Azure SQL". Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte elastický fond, který chcete přidat do skupiny převzetí služeb při selhání.
 1. V podokně **Přehled** vyberte název serveru v části **název serveru** a otevřete tak nastavení serveru.
 
@@ -350,7 +350,7 @@ Budete muset buď nakonfigurovat [ExpressRoute](../../expressroute/expressroute-
 
 Nasaďte spravované instance do [spárovaných oblastí](../../best-practices-availability-paired-regions.md) z důvodů výkonu. Spravované instance nacházející se v geograficky spárované oblasti mají mnohem lepší výkon v porovnání s nespárovanými oblastmi. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Vezměte v úvahu následující požadavky:
 
@@ -371,11 +371,11 @@ Pokud jste nenakonfigurovali [ExpressRoute](../../expressroute/expressroute-howt
 Vytvořte primární bránu virtuální sítě pomocí Azure Portal.
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků a vyberete prostředek **virtuální sítě** pro vaši primární spravovanou instanci.
-1. V části **Nastavení** vyberte **podsítě** a pak vyberte, pokud chcete přidat novou **podsíť brány**. Ponechte výchozí hodnoty.
+1. V části **Nastavení** vyberte **podsítě** a pak vyberte, pokud chcete přidat novou **podsíť brány** . Ponechte výchozí hodnoty.
 
    ![Přidat bránu pro primární spravovanou instanci](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
-1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom `Virtual network gateway` do vyhledávacího pole zadejte. Vyberte prostředek **brány virtuální sítě** publikovaný **Microsoftem**.
+1. Po vytvoření brány podsítě v levém navigačním podokně vyberte **vytvořit prostředek** a potom `Virtual network gateway` do vyhledávacího pole zadejte. Vyberte prostředek **brány virtuální sítě** publikovaný **Microsoftem** .
 
    ![Vytvořit novou bránu virtuální sítě](./media/auto-failover-group-configure/create-virtual-network-gateway.png)
 
@@ -388,7 +388,7 @@ Vytvořte primární bránu virtuální sítě pomocí Azure Portal.
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
     | **Název** | Název brány virtuální sítě. |
     | **Oblast** | Oblast, ve které je vaše primární spravovaná instance. |
-    | **Typ brány** | Vyberte **VPN**. |
+    | **Typ brány** | Vyberte **VPN** . |
     | **Typ sítě VPN** | Vybrat **na základě trasy** |
     | **Skladová jednotka (SKU)**| Ponechte výchozí hodnotu `VpnGw1` . |
     | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
@@ -450,7 +450,7 @@ V následující tabulce jsou uvedeny hodnoty nutné pro bránu sekundární spr
    | **Předplatné** |  Předplatné, ve kterém je vaše sekundární spravovaná instance. |
    | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway` . |
    | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
-   | **Typ brány** | Vyberte **VPN**. |
+   | **Typ brány** | Vyberte **VPN** . |
    | **Typ sítě VPN** | Vybrat **na základě trasy** |
    | **Skladová jednotka (SKU)**| Ponechte výchozí hodnotu `VpnGw1` . |
    | **Umístění**| Umístění, kde je sekundární spravovaná instance a sekundární virtuální síť.   |
@@ -509,15 +509,15 @@ Vytvořte připojení mezi dvěma branami pomocí Azure Portal.
 1. Vyberte **vytvořit prostředek** z [Azure Portal](https://portal.azure.com).
 1. Do `connection` vyhledávacího pole zadejte a stiskněte klávesu ENTER pro hledání, které vás přesměruje do prostředku **připojení** publikovaného společností Microsoft.
 1. Vyberte **vytvořit** a vytvořte připojení.
-1. Na kartě **základy** vyberte následující hodnoty a pak vyberte **OK**.
-    1. Jako `VNet-to-VNet` **Typ připojení**vyberte.
+1. Na kartě **základy** vyberte následující hodnoty a pak vyberte **OK** .
+    1. Jako `VNet-to-VNet` **Typ připojení** vyberte.
     1. Vyberte vaše předplatné z rozevíracího seznamu.
     1. V rozevíracím seznamu vyberte skupinu prostředků pro spravovanou instanci.
     1. Z rozevíracího seznamu vyberte umístění vaší primární spravované instance.
-1. Na kartě **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK**:
-    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě**, například `Primary-Gateway` .  
-    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě**, například `Secondary-Gateway` .
-    1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení**.
+1. Na kartě **Nastavení** vyberte nebo zadejte následující hodnoty a pak vyberte **OK** :
+    1. Vyberte bránu primárního síťového rozhraní pro **první bránu virtuální sítě** , například `Primary-Gateway` .  
+    1. Vyberte bránu sekundární sítě pro **druhou bránu virtuální sítě** , například `Secondary-Gateway` .
+    1. Zaškrtněte políčko vedle možnosti **navázat obousměrné připojení** .
     1. Buď ponechte výchozí název primárního připojení, nebo ho přejmenujte na hodnotu podle vašeho výběru.
     1. Zadejte **sdílený klíč (PSK)** pro připojení, například `mi1m2psk` .
 
@@ -564,9 +564,9 @@ Vytvořte skupinu převzetí služeb při selhání pro spravované instance pom
 
 Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance SQL pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte primární spravovanou instanci, kterou chcete přidat do skupiny převzetí služeb při selhání.  
-1. V části **Nastavení**přejděte na **instance skupiny převzetí služeb při selhání** a pak zvolte **Přidat skupinu** a otevřete stránku **skupiny převzetí služeb při selhání instance** .
+1. V části **Nastavení** přejděte na **instance skupiny převzetí služeb při selhání** a pak zvolte **Přidat skupinu** a otevřete stránku **skupiny převzetí služeb při selhání instance** .
 
    ![Přidat skupinu převzetí služeb při selhání](./media/auto-failover-group-configure/add-failover-group.png)
 
@@ -665,7 +665,7 @@ Pomocí privátního odkazu můžete přidružit logický Server ke konkrétní 
 
 Pokud chcete pro skupinu převzetí služeb při selhání použít privátní odkaz, udělejte toto:
 
-1. Ujistěte se, že primární a sekundární servery jsou v [spárované oblasti](/azure/best-practices-availability-paired-regions). 
+1. Ujistěte se, že primární a sekundární servery jsou v [spárované oblasti](../../best-practices-availability-paired-regions.md). 
 1. Vytvořte virtuální síť a podsíť v každé oblasti pro hostování privátních koncových bodů primárních a sekundárních serverů tak, aby nepřesahoval adresní prostory IP adres. Například překrývají se rozsah adres primárního virtuálního síťového rozsahu 10.0.0.0/16 a rozsah adres sekundární virtuální sítě s adresou 10.0.0.1/16. Další informace o rozsahu adres virtuální sítě najdete v blogu [navrhování virtuálních sítí Azure](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/).
 1. Vytvoření [privátního koncového bodu a zóny Azure privátní DNS pro primární server](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint). 
 1. Vytvořte také privátní koncový bod pro sekundární server, ale tentokrát se rozhodnete znovu použít stejnou zónu Privátní DNS vytvořenou pro primární server. 

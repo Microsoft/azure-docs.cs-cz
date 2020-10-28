@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556243"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674954"
 ---
 # <a name="msix-app-attach-glossary"></a>Glosář připojení aplikace MSIX
 
@@ -25,7 +25,7 @@ Kontejner MSIX je místo, kde se spouštějí aplikace MSIX. Další informace n
 
 ## <a name="msix-application"></a>Aplikace MSIX 
 
-Aplikace uložená v souboru MSIX.
+Aplikace uložená v. Soubor MSIX
 
 ## <a name="msix-package"></a>Balíček MSIX 
 
@@ -35,13 +35,17 @@ Balíček MSIX je soubor nebo aplikace MSIX.
 
 Sdílená složka MSIX je sdílená síťová složka, která obsahuje rozšířené balíčky MSIX. Sdílené složky MSIX podporují protokol SMB 3 nebo novější. Aplikace se připravené z této sdílené složky MSIX bez nutnosti přesunout soubory aplikace na systémovou jednotku.
 
+## <a name="msix-image"></a>Obrázek MSIX
+
+MSIX Image je soubor VHD, VHDx nebo CIM, který obsahuje jednu nebo více zabalených aplikací MSIX. Každá aplikace je dodávána v imagi MSIX pomocí nástroje MSIXMGR.
+
 ## <a name="repackage"></a>Znovu zabalit
 
 Opětovné sbalení přebírá aplikaci, která není MSIX, a převede ji na MSIX pomocí nástroje pro sbalení MSIX (MPT). Další informace najdete v tématu [Přehled nástrojů pro MSIX balení](/windows/msix/packaging-tool/tool-overview).
 
-## <a name="expand"></a>Rozbalit
+## <a name="expand-an-msix-package"></a>Rozbalení balíčku MSIX
 
-Rozbalování balíčku MSIX je proces s více kroky. Převezme soubor MSIX a umístí jeho obsah do souboru VHD (x) nebo CIM. 
+Rozbalení balíčku MSIX je proces s více kroky. Rozšíření vezme soubor MSIX a vloží jeho obsah do souboru VHD (x) nebo CIM. 
 
 Postup rozšíření balíčku MSIX:
 
@@ -63,11 +67,11 @@ Nahrání balíčku MSIX zahrnuje nahrávání VHD (x) nebo [CIM](#cim) , který
 
 Na virtuálním počítači s Windows se nahrávají pro každou sdílenou složku MSIX. Po nahrání balíčku se na něj můžou odkazovat všechny fondy hostitelů ve stejném předplatném.
 
-## <a name="publish-an-msix-package"></a>Publikování balíčku MSIX
+## <a name="add-an-msix-package"></a>Přidání balíčku MSIX
 
-Při publikování balíčku MSIX na virtuálním počítači ve Windows se vytvoří odkaz na vzdálenou aplikaci nebo Desktop.
+Na virtuálním počítači s Windows se přidá balíček MSIX, který ho propojí s fondem hostitelů.
 
-## <a name="assign-an-msix-package"></a>Přiřazení balíčku MSIX 
+## <a name="publish-an-msix-package"></a>Publikování balíčku MSIX 
 
 Na virtuálním počítači s Windows musí být publikovaný balíček MSIX přiřazený uživateli služby Doména služby Active Directory (služba AD DS) nebo skupině uživatelů Azure Active Directory (Azure AD).
 
@@ -118,4 +122,3 @@ Následující tabulka představuje porovnání výkonu mezi VHD a CimFS. Tato �
 ## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět víc o připojení aplikace MSIX, podívejte se na náš [Přehled](what-is-app-attach.md) a [Nejčastější dotazy](app-attach-faq.md). V opačném případě začněte s [nastavením připojit k aplikaci](app-attach.md).
-

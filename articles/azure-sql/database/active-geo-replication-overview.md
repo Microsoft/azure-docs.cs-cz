@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426319"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672988"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Aktivní geografická replikace je funkce Azure SQL Database, která umožňuje 
 Aktivní geografická replikace je navržená jako řešení pro provozní kontinuitu, které umožňuje aplikaci provádět rychlé zotavení po havárii jednotlivých databází v případě regionálních havárií nebo výpadku velkého rozsahu. Pokud je geografická replikace povolená, může aplikace iniciovat převzetí služeb při selhání sekundární databází v jiné oblasti Azure. Ve stejných nebo různých oblastech se podporuje až čtyři sekundární databáze a sekundární je taky možné použít pro dotazy přístupu jen pro čtení. Převzetí služeb při selhání je nutné iniciovat ručně aplikací nebo uživatelem. Po převzetí služeb při selhání má nový primární server jiný koncový bod připojení.
 
 > [!NOTE]
-> Aktivní geografická replikace replikuje změny v protokolu transakcí databáze streamování. Nesouvisí s [transakční replikací](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication), která replikuje změny spuštěním příkazů DML (vložení, aktualizace, odstranění).
+> Aktivní geografická replikace replikuje změny v protokolu transakcí databáze streamování. Nesouvisí s [transakční replikací](/sql/relational-databases/replication/transactional/transactional-replication), která replikuje změny spuštěním příkazů DML (vložení, aktualizace, odstranění).
 
 Následující diagram znázorňuje typickou konfiguraci geograficky redundantní cloudové aplikace pomocí aktivní geografické replikace.
 
@@ -46,15 +46,15 @@ Replikaci a převzetí služeb při selhání jednotlivé databáze nebo sady da
 - [PowerShell: izolovaná databáze](scripts/setup-geodr-and-failover-database-powershell.md)
 - [PowerShell: elastický fond](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
 - [Transact-SQL: jedna databáze nebo elastický fond](/sql/t-sql/statements/alter-database-azure-sql-database)
-- [REST API: izolovaná databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks)
+- [REST API: izolovaná databáze](/rest/api/sql/replicationlinks)
 
-Aktivní geografická replikace využívá technologii [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) databázového stroje k asynchronní replikaci potvrzených transakcí v primární databázi do sekundární databáze pomocí izolace snímků. Skupiny s automatickým převzetím služeb při selhání poskytují sémantiku skupiny nad aktivní geografickou replikací, ale používá se stejný mechanismus asynchronní replikace. V kterémkoli okamžiku může být sekundární databáze za primární databází mírně nepatrná, takže sekundární data jsou zaručena tak, aby nikdy nepoužívala částečné transakce. Redundance mezi jednotlivými oblastmi umožňuje aplikacím rychle se zotavit z trvalé ztráty celého datového centra nebo částí datacentra, které způsobují přírodní katastrofy, závažné lidské chyby nebo škodlivé činy. Konkrétní data bodu obnovení najdete v článku [Přehled provozní kontinuity](business-continuity-high-availability-disaster-recover-hadr-overview.md).
+Aktivní geografická replikace využívá technologii [skupin dostupnosti Always On](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) databázového stroje k asynchronní replikaci potvrzených transakcí v primární databázi do sekundární databáze pomocí izolace snímků. Skupiny s automatickým převzetím služeb při selhání poskytují sémantiku skupiny nad aktivní geografickou replikací, ale používá se stejný mechanismus asynchronní replikace. V kterémkoli okamžiku může být sekundární databáze za primární databází mírně nepatrná, takže sekundární data jsou zaručena tak, aby nikdy nepoužívala částečné transakce. Redundance mezi jednotlivými oblastmi umožňuje aplikacím rychle se zotavit z trvalé ztráty celého datového centra nebo částí datacentra, které způsobují přírodní katastrofy, závažné lidské chyby nebo škodlivé činy. Konkrétní data bodu obnovení najdete v článku [Přehled provozní kontinuity](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 
 > [!NOTE]
 > Pokud dojde k selhání sítě mezi dvěma oblastmi, opakujeme každých 10 sekund, než se znovu naváže připojení.
 
 > [!IMPORTANT]
-> Aby bylo zaručeno, že před převzetím služeb při selhání bude kritická Změna primární databáze replikována na sekundární, můžete vynutit synchronizaci, aby se zajistila replikace kritických změn (například aktualizace hesla). Vynucená synchronizace má vliv na výkon, protože blokuje volající vlákno, dokud nebudou všechny potvrzené transakce replikovány. Podrobnosti najdete v tématu [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Pokud chcete monitorovat prodlevu replikace mezi primární databází a geograficky sekundárním, přečtěte si téma [Sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+> Aby bylo zaručeno, že před převzetím služeb při selhání bude kritická Změna primární databáze replikována na sekundární, můžete vynutit synchronizaci, aby se zajistila replikace kritických změn (například aktualizace hesla). Vynucená synchronizace má vliv na výkon, protože blokuje volající vlákno, dokud nebudou všechny potvrzené transakce replikovány. Podrobnosti najdete v tématu [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Pokud chcete monitorovat prodlevu replikace mezi primární databází a geograficky sekundárním, přečtěte si téma [Sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
 
 Následující obrázek ukazuje příklad aktivní geografické replikace nakonfigurované s primárním umístěním v Střed USA – sever oblasti a sekundární v Střed USA – jih oblasti.
 
@@ -64,8 +64,8 @@ Vzhledem k tomu, že jsou sekundární databáze čitelné, lze je použít k p�
 
 Kromě zotavení po havárii aktivní geografická replikace může být použita v následujících scénářích:
 
-- **Migrace databáze**: můžete použít aktivní geografickou replikaci k migraci databáze z jednoho serveru na jiný online s minimálními výpadky.
-- **Upgrady aplikací**: během upgradování aplikace můžete vytvořit další sekundární kopii jako back-mailové kopie.
+- **Migrace databáze** : můžete použít aktivní geografickou replikaci k migraci databáze z jednoho serveru na jiný online s minimálními výpadky.
+- **Upgrady aplikací** : během upgradování aplikace můžete vytvořit další sekundární kopii jako back-mailové kopie.
 
 Aby bylo možné dosáhnout reálné provozní kontinuity, Přidání redundance databáze mezi datacentry je pouze součástí řešení. Kompletní obnovení aplikace (služby) po závažných chybách vyžaduje obnovení všech součástí, které tvoří službu a všechny závislé služby. Mezi tyto komponenty patří klientský software (například prohlížeč s vlastním JavaScriptem), webové front-endy, úložiště a DNS. Je velmi důležité, aby všechny součásti byly odolné vůči stejnou selhání a byly k dispozici v rámci plánované doby obnovení (RTO) vaší aplikace. Proto je potřeba identifikovat všechny závislé služby a porozumět zárukám a funkcím, které poskytují. Pak musíte provést vhodné kroky, abyste zajistili, že vaše služba funguje při převzetí služeb při selhání služeb, na kterých závisí. Další informace o návrhu řešení pro zotavení po havárii najdete v tématu [navrhování cloudových řešení pro zotavení po havárii pomocí aktivní geografické replikace](designing-cloud-solutions-for-disaster-recovery.md).
 
@@ -244,7 +244,7 @@ Chcete-li změřit prodlevu s ohledem na změny primární databáze, které byl
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programová správa aktivní geografické replikace
 
-Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě rolí (RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
+Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky programově pomocí Azure PowerShell a REST API. V následujících tabulkách jsou popsány sady příkazů, které jsou k dispozici. Aktivní geografická replikace obsahuje sadu Azure Resource Manager rozhraní API pro správu, včetně rutin [Azure SQL Database REST API](/rest/api/sql/) a [Azure PowerShell](/powershell/azure/). Tato rozhraní API vyžadují použití skupin prostředků a podporují zabezpečení na základě rolí (RBAC). Další informace o tom, jak implementovat role přístupu, najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Správa převzetí služeb při selhání pro jednotlivé a sdružené databáze
 
@@ -253,9 +253,9 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 
 | Příkaz | Popis |
 | --- | --- |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Pro vytvoření sekundární databáze pro existující databázi a spuštění replikace dat použijte argument přidat sekundární na SERVER. |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Použití převzetí služeb při selhání nebo FORCE_FAILOVER_ALLOW_DATA_LOSS k přepnutí sekundární databáze na primární pro zahájení převzetí služeb při selhání |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true) |Pomocí odebrat sekundární na serveru ukončete replikaci dat mezi SQL Database a zadanou sekundární databází. |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Pro vytvoření sekundární databáze pro existující databázi a spuštění replikace dat použijte argument přidat sekundární na SERVER. |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Použití převzetí služeb při selhání nebo FORCE_FAILOVER_ALLOW_DATA_LOSS k přepnutí sekundární databáze na primární pro zahájení převzetí služeb při selhání |
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-current) |Pomocí odebrat sekundární na serveru ukončete replikaci dat mezi SQL Database a zadanou sekundární databází. |
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všech stávajících odkazech replikace pro každou databázi na serveru. |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi. |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav všech databázových operací, včetně stavu replikačních odkazů. |
@@ -266,15 +266,15 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 | Rutina | Popis |
 | --- | --- |
-| [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Získá jednu nebo více databází. |
-| [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Vytvoří sekundární databázi pro existující databázi a spustí replikaci dat. |
-| [Set-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesecondary) |Přepne sekundární databázi na primární a zahájí tak převzetí služeb při selhání. |
-| [Remove-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesecondary) |Ukončí replikaci dat mezi službou SQL Database a zadanou sekundární databází. |
-| [Get-AzSqlDatabaseReplicationLink](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Získá odkazy na geografickou replikaci mezi Azure SQL Database a skupinou prostředků nebo logickým SQL serverem. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |Získá jednu nebo více databází. |
+| [New-AzSqlDatabaseSecondary](/powershell/module/az.sql/new-azsqldatabasesecondary) |Vytvoří sekundární databázi pro existující databázi a spustí replikaci dat. |
+| [Set-AzSqlDatabaseSecondary](/powershell/module/az.sql/set-azsqldatabasesecondary) |Přepne sekundární databázi na primární a zahájí tak převzetí služeb při selhání. |
+| [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) |Ukončí replikaci dat mezi službou SQL Database a zadanou sekundární databází. |
+| [Get-AzSqlDatabaseReplicationLink](/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Získá odkazy na geografickou replikaci mezi Azure SQL Database a skupinou prostředků nebo logickým SQL serverem. |
 |  | |
 
 > [!IMPORTANT]
@@ -284,13 +284,13 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 
 | Rozhraní API | Popis |
 | --- | --- |
-| [Vytvořit nebo aktualizovat databázi (createMode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vytvoří, aktualizuje nebo obnoví primární nebo sekundární databázi. |
-| [Získat stav databáze pro vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |
-| [Nastavit sekundární databázi jako primární (plánované převzetí služeb při selhání)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Nastaví, která sekundární databáze je primární databází převzetím služeb při selhání z aktuální primární databáze. **Tato možnost není pro spravovanou instanci SQL podporována.**|
-| [Nastavit sekundární databázi jako primární (neplánované převzetí služeb při selhání)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Nastaví, která sekundární databáze je primární databází převzetím služeb při selhání z aktuální primární databáze. Tato operace může způsobit ztrátu dat. **Tato možnost není pro spravovanou instanci SQL podporována.**|
-| [Získat odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Získá konkrétní odkaz replikace pro danou databázi v rámci partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys.geo_replication_links. **Tato možnost není pro spravovanou instanci SQL podporována.**|
-| [Odkazy replikace – seznam podle databáze](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Získá všechny odkazy replikace pro danou databázi v rámci partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys.geo_replication_links. |
-| [Odstranit odkaz replikace](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Odstraní odkaz replikace databáze. Nejde provést během převzetí služeb při selhání. |
+| [Vytvořit nebo aktualizovat databázi (createMode = Restore)](/rest/api/sql/databases/createorupdate) |Vytvoří, aktualizuje nebo obnoví primární nebo sekundární databázi. |
+| [Získat stav databáze pro vytvoření nebo aktualizaci](/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |
+| [Nastavit sekundární databázi jako primární (plánované převzetí služeb při selhání)](/rest/api/sql/replicationlinks/failover) |Nastaví, která sekundární databáze je primární databází převzetím služeb při selhání z aktuální primární databáze. **Tato možnost není pro spravovanou instanci SQL podporována.**|
+| [Nastavit sekundární databázi jako primární (neplánované převzetí služeb při selhání)](/rest/api/sql/replicationlinks/failoverallowdataloss) |Nastaví, která sekundární databáze je primární databází převzetím služeb při selhání z aktuální primární databáze. Tato operace může způsobit ztrátu dat. **Tato možnost není pro spravovanou instanci SQL podporována.**|
+| [Získat odkaz replikace](/rest/api/sql/replicationlinks/get) |Získá konkrétní odkaz replikace pro danou databázi v rámci partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys.geo_replication_links. **Tato možnost není pro spravovanou instanci SQL podporována.**|
+| [Odkazy replikace – seznam podle databáze](/rest/api/sql/replicationlinks/listbydatabase) | Získá všechny odkazy replikace pro danou databázi v rámci partnerství geografické replikace. Načte informace viditelné v zobrazení katalogu sys.geo_replication_links. |
+| [Odstranit odkaz replikace](/rest/api/sql/replicationlinks/delete) | Odstraní odkaz replikace databáze. Nejde provést během převzetí služeb při selhání. |
 |  | |
 
 ## <a name="next-steps"></a>Další kroky

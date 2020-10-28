@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443659"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674757"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Ujistěte se, že máte následující položky:
 
 * Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). Chcete-li sestavit a spustit tuto ukázku, je nutné nainstalovat komponenty jazyka C++.
-* [Vývoj pro Linux v systému Visual Studio](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Pokud vyvíjíte v systému Linux, je nutné také nainstalovat rozšíření sady Visual Studio Linux.
+* [Vývoj pro Linux v systému Visual Studio](/cpp/linux/?view=vs-2019). Pokud vyvíjíte v systému Linux, je nutné také nainstalovat rozšíření sady Visual Studio Linux.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database a SQL Server na virtuálních počítačích
 
@@ -39,7 +39,7 @@ Azure má v současné době pro hostování úloh SQL serveru dvě možnosti: A
 
 ## <a name="data-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>Technologie pro přístup k datům: ODBC a OLE DB
 
-Připojení k Azure SQL Database není jiné a v současné době existují dva způsoby, jak se připojit k databázím: rozhraní ODBC (Open Database Connectivity) a OLE DB (objekt propojování a vkládání databáze). V posledních letech společnost Microsoft zarovnala [rozhraní ODBC pro nativní přístup k relačním datům](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/). Rozhraní ODBC je relativně jednoduché a také mnohem rychlejší než OLE DB. Jediným aspektem upozornění je, že rozhraní ODBC používá staré rozhraní API ve stylu jazyka C.
+Připojení k Azure SQL Database není jiné a v současné době existují dva způsoby, jak se připojit k databázím: rozhraní ODBC (Open Database Connectivity) a OLE DB (objekt propojování a vkládání databáze). V posledních letech společnost Microsoft zarovnala [rozhraní ODBC pro nativní přístup k relačním datům](/archive/blogs/sqlnativeclient/microsoft-is-aligning-with-odbc-for-native-relational-data-access). Rozhraní ODBC je relativně jednoduché a také mnohem rychlejší než OLE DB. Jediným aspektem upozornění je, že rozhraní ODBC používá staré rozhraní API ve stylu jazyka C.
 
 ## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>Krok 1: vytvoření Azure SQL Database
 
@@ -81,7 +81,7 @@ Případně můžete vytvořit soubor DSN pomocí průvodce, který se spustí, 
 
 ![Vytvořit soubor DSN](./media/develop-cplusplus-simple/datasource.png)
 
-Gratulujeme! Úspěšně jste se připojili k Azure SQL pomocí C++ a ODBC ve Windows. Můžete pokračovat v čtení, aby to bylo stejné i pro Linux Platform.
+Blahopřejeme vám. Úspěšně jste se připojili k Azure SQL pomocí C++ a ODBC ve Windows. Můžete pokračovat v čtení, aby to bylo stejné i pro Linux Platform.
 
 ## <a name="step-5-connecting-from-a-linux-cc-application"></a><a id="Linux"></a>Krok 5: připojení z linuxové aplikace C/C++
 
@@ -131,7 +131,7 @@ Pokud bylo připojení úspěšné, měl by se teď zobrazit aktuální název d
 
 ![Výstup okna konzoly pro Linux](./media/develop-cplusplus-simple/linuxconsolewindow.png)
 
-Gratulujeme! Úspěšně jste dokončili kurz a můžete se teď připojit k Azure SQL Database z C++ na platformách Windows a Linux.
+Blahopřejeme vám. Úspěšně jste dokončili kurz a můžete se teď připojit k Azure SQL Database z C++ na platformách Windows a Linux.
 
 ## <a name="get-the-complete-cc-tutorial-solution"></a><a id="GetSolution"></a>Získání kompletního řešení kurzu pro C/C++
 
@@ -143,9 +143,9 @@ Gratulujeme! Úspěšně jste dokončili kurz a můžete se teď připojit k Azu
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si téma [Přehled vývoje SQL Database](develop-overview.md) .
-* Další informace o [referenci rozhraní API ODBC](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
+* Další informace o [referenci rozhraní API ODBC](/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Vzory návrhu pro aplikace SaaS s více tenanty využívající Azure SQL Database](saas-tenancy-app-design-patterns.md)
 * Prozkoumejte všechny [schopnosti služby SQL Database](https://azure.microsoft.com/services/sql-database/).

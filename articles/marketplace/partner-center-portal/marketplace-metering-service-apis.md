@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278014"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674634"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Rozhraní API pro fakturaci měření na webu Marketplace
 
@@ -34,7 +34,7 @@ Pro každou hodinu kalendářního dne se dá vygenerovat jenom jedna událost p
 
 Pro každou hodinu kalendářního dne a prostředku se dá vygenerovat jenom jedna událost použití. Pokud se více než jedna jednotka spotřebovává za hodinu, pak se nashromáždí všechny spotřebované jednotky za hodinu a pak se vygeneruje v jedné události. Události využívání se dají vygenerovat jenom za posledních 24 hodin. Pokud událost využití vygenerujete kdykoli mezi 8:00 a 8:59:59 (a je přijata) a poslat další událost pro stejný den mezi 8:00 a 8:59:59, bude odmítnuta jako duplicitní.
 
-**Příspěvek**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Příspěvek** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Parametry dotazu:*
 
@@ -67,7 +67,7 @@ Pro každou hodinu kalendářního dne a prostředku se dá vygenerovat jenom je
 >[!NOTE]
 >`resourceId` má různý význam pro SaaS aplikaci a pro spravovanou aplikaci, která vysílá vlastní měřič. 
 
-V případě plánů aplikací spravovaných aplikacemi Azure se `resourceId` nachází v `resourceUsageId` rámci `billingDetails` objektu metadat spravované aplikace. Ukázkový skript pro načtení najdete v [části použití tokenu identity spravovaného službou Azure](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
+Pro plány aplikací spravovaných aplikací Azure `resourceId` je to spravovaná aplikace `resource group Id` . Ukázkový skript pro načtení najdete v [části použití tokenu identity spravovaného službou Azure](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
 V případě nabídek SaaS `resourceId` je to ID předplatného SaaS. Další podrobnosti o předplatných SaaS najdete v tématu [seznam předplatných](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 
@@ -191,7 +191,7 @@ Rozhraní API události využití dávky umožňuje generovat události využit�
 >[!NOTE]
 >`resourceId` má různý význam pro SaaS aplikaci a pro spravovanou aplikaci, která vysílá vlastní měřič. 
 
-V případě plánů aplikací spravovaných aplikacemi Azure se `resourceId` nachází v `resourceUsageId` rámci `billingDetails` objektu metadat spravované aplikace. Ukázkový skript pro načtení najdete v [části použití tokenu identity spravovaného službou Azure](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
+Pro plány aplikací spravovaných aplikací Azure `resourceId` je to spravovaná aplikace `resource group Id` . Ukázkový skript pro načtení najdete v [části použití tokenu identity spravovaného službou Azure](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
 V případě nabídek SaaS `resourceId` je to ID předplatného SaaS. Další podrobnosti o předplatných SaaS najdete v tématu [seznam předplatných](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
 
