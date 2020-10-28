@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b5170f1c2e6c72c684cb1afcf1bf9bf8d3ef6fff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284355"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672105"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Database Advisor doporučení k výkonu pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,10 +29,10 @@ Přehled výkonu poskytuje souhrn výkonu vaší databáze a pomáhá s optimali
 
 ![Přehled výkonu pro Azure SQL Database](./media/database-advisor-implement-performance-recommendations/performance-overview-annotated.png)
 
-- Dlaždice **doporučení** obsahuje rozpis doporučení pro ladění pro vaši databázi (pokud existuje více), zobrazí se v nich více hlavních tří doporučení. Kliknutím na tuto dlaždici přejdete na **[Možnosti doporučení pro výkon](database-advisor-find-recommendations-portal.md#viewing-recommendations)**.
+- Dlaždice **doporučení** obsahuje rozpis doporučení pro ladění pro vaši databázi (pokud existuje více), zobrazí se v nich více hlavních tří doporučení. Kliknutím na tuto dlaždici přejdete na **[Možnosti doporučení pro výkon](database-advisor-find-recommendations-portal.md#viewing-recommendations)** .
 - Dlaždice **aktivity ladění** poskytuje shrnutí probíhajících a dokončených akcí optimalizace pro vaši databázi, takže získáte rychlý přehled o historii aktivity ladění. Kliknutím na tuto dlaždici přejdete k úplnému zobrazení Historie ladění pro vaši databázi.
 - Dlaždice **automatického ladění** zobrazuje **[konfiguraci automatického ladění](automatic-tuning-enable.md)** pro vaši databázi (možnosti ladění, které se automaticky aplikují na vaši databázi). Kliknutím na tuto dlaždici otevřete dialogové okno Konfigurace automatizace.
-- Dlaždice **dotazy databáze** zobrazuje souhrn výkonu dotazů pro vaši databázi (celkové využití DTU a nejčastější dotazy týkající se využívání prostředků). Kliknutím na tuto dlaždici přejdete na **[Query Performance Insight](query-performance-insight-use.md)**.
+- Dlaždice **dotazy databáze** zobrazuje souhrn výkonu dotazů pro vaši databázi (celkové využití DTU a nejčastější dotazy týkající se využívání prostředků). Kliknutím na tuto dlaždici přejdete na **[Query Performance Insight](query-performance-insight-use.md)** .
 
 ## <a name="performance-recommendation-options"></a>Možnosti doporučení výkonu
 
@@ -40,10 +40,10 @@ Možnosti pro doporučení výkonu dostupné v Azure SQL Database jsou:
 
 | Doporučení pro výkon | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
 | :----------------------------- | ----- | ----- |
-| **Vytvoření doporučení indexu** – doporučuje vytváření indexů, které můžou zlepšit výkon vašich úloh. | Yes | No |
-| **Vyřazení doporučení indexu** – doporučuje, abyste každý den odebrali redundantní a duplicitní indexy, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Yes | No |
-| **Parametrizovat dotazy doporučení (Preview)** – doporučuje vynucené Parametrizace v případech, kdy máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. | Yes | No |
-| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se vyskytují ve vaší databázi. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Yes | No |
+| **Vytvoření doporučení indexu** – doporučuje vytváření indexů, které můžou zlepšit výkon vašich úloh. | Ano | Ne |
+| **Vyřazení doporučení indexu** – doporučuje, abyste každý den odebrali redundantní a duplicitní indexy, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Ano | Ne |
+| **Parametrizovat dotazy doporučení (Preview)** – doporučuje vynucené Parametrizace v případech, kdy máte jeden nebo více dotazů, které jsou neustále znovu kompilovány, ale končí stejným plánem spuštění dotazu. | Ano | Ne |
+| **Opravit doporučení pro problémy se schématy (Preview)** – doporučení pro korekci schématu se zobrazí, když Azure SQL Database vydává upozornění na anomálii v počtu chyb SQL souvisejících se schématy, které se vyskytují ve vaší databázi. Microsoft momentálně nepoužívá doporučení "opravit problém schématu". | Ano | Ne |
 
 ![Doporučení k výkonu pro Azure SQL Database](./media/database-advisor-implement-performance-recommendations/performance-recommendations-annotated.png)
 
@@ -55,9 +55,9 @@ Můžete také najít úplnou historii akcí optimalizace, které byly v minulos
 
 Azure SQL Database nepřetržitě monitoruje spuštěné dotazy a identifikuje indexy, které by mohly zvýšit výkon. Po dostatečné jistotě, že chybí určitý index, se vytvoří nové doporučení **Create index** .
 
-Azure SQL Database se zastavuje tak, že se odhaduje zvýšení výkonu, které by index přinesl v čase. V závislosti na odhadovaném nárůstu výkonu jsou doporučení zařazená do kategorií vysoká, střední nebo nízká.
+Azure SQL Database se zastavuje tak, že se odhaduje zvýšení výkonu, které by index přinesl v čase. Doporučení se řadí do tří kategorií podle odhadovaného nárůstu výkonu: vysoký, střední a nízký.
 
-Indexy vytvořené pomocí doporučení jsou vždy označeny jako automaticky vytvořené indexy. Automatické vytváření indexů můžete zobrazit v [zobrazení sys. indexy](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql). Automaticky vytvořené indexy neblokují příkazy ALTER/Rename.
+Indexy vytvořené pomocí doporučení jsou vždy označeny jako automaticky vytvořené indexy. Automatické vytváření indexů můžete zobrazit v [zobrazení sys. indexy](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql). Automaticky vytvořené indexy neblokují příkazy ALTER/Rename.
 
 Pokud se pokusíte odstranit sloupec, který obsahuje automaticky vytvořený index, příkaz projde. Automaticky vytvořený index se zahodí i s příkazem. Pravidelné indexy zablokují příkaz ALTER/rename pro sloupce, které jsou indexované.
 
@@ -105,7 +105,7 @@ Doporučení "Oprava potíží se schématem" se zobrazí, když Azure SQL Datab
 
 | Kód chyby SQL | Zpráva |
 | --- | --- |
-| 201 |Procedura nebo funkce*očekává parametr*, který nebyl zadán. |
+| 201 |Procedura nebo funkce *očekává parametr* , který nebyl zadán. |
 | 207 |Neplatný název sloupce * |
 | 208 |Neplatný název objektu * |
 | 213 |Název sloupce nebo počet zadaných hodnot se neshodují s definicí tabulky. |
@@ -114,7 +114,7 @@ Doporučení "Oprava potíží se schématem" se zobrazí, když Azure SQL Datab
 
 ## <a name="custom-applications"></a>Vlastní aplikace
 
-Vývojáři mohou zvážit vývoj vlastních aplikací s využitím doporučení o výkonu pro Azure SQL Database. Všechna doporučení uvedená na portálu pro databázi jsou přístupná prostřednictvím rozhraní [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API.
+Vývojáři mohou zvážit vývoj vlastních aplikací s využitím doporučení o výkonu pro Azure SQL Database. Všechna doporučení uvedená na portálu pro databázi jsou přístupná prostřednictvím rozhraní [Get-AzSqlDatabaseRecommendedAction](/powershell/module/az.sql/get-azsqldatabaserecommendedaction) API.
 
 ## <a name="next-steps"></a>Další kroky
 

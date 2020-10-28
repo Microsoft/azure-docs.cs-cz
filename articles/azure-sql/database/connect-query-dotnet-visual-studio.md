@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 30cf90f6020ecd4eb560ac0fe2886ff03c552d13
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825570"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669716"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET a C# v aplikaci Visual Studio k připojení a dotazování databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,19 +64,19 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
 1. V aplikaci Visual Studio vytvořte nový projekt. 
    
-1. V dialogovém okně **Nový projekt** vyberte **Visual C#**, **Konzolová aplikace (.NET Framework)**.
+1. V dialogovém okně **Nový projekt** vyberte **Visual C#** , **Konzolová aplikace (.NET Framework)** .
    
-1. Jako název projektu zadejte *sqltest* a pak vyberte **OK**. Vytvoří se nový projekt. 
+1. Jako název projektu zadejte *sqltest* a pak vyberte **OK** . Vytvoří se nový projekt. 
    
-1. Vyberte **projekt**  >  **Spravovat balíčky NuGet**. 
+1. Vyberte **projekt**  >  **Spravovat balíčky NuGet** . 
    
-1. Ve **Správci balíčků NuGet**vyberte kartu **Procházet** , vyhledejte a vyberte **Microsoft. data. SqlClient**.
+1. Ve **Správci balíčků NuGet** vyberte kartu **Procházet** , vyhledejte a vyberte **Microsoft. data. SqlClient** .
    
-1. Na stránce **Microsoft. data. SqlClient** vyberte **instalovat**. 
+1. Na stránce **Microsoft. data. SqlClient** vyberte **instalovat** . 
    - Pokud se zobrazí výzva, vyberte **OK** a pokračujte v instalaci. 
-   - Pokud se zobrazí okno pro **přijetí licence** , vyberte **Souhlasím**.
+   - Pokud se zobrazí okno pro **přijetí licence** , vyberte **Souhlasím** .
    
-1. Po dokončení instalace můžete zavřít **Správce balíčků NuGet**. 
+1. Po dokončení instalace můžete zavřít **Správce balíčků NuGet** . 
    
 1. V editoru kódu nahraďte obsah **program.cs** následujícím kódem. Nahraďte své hodnoty pro `<your_server>` , `<your_username>` , a `<your_password>` `<your_database>` .
    
@@ -139,7 +139,7 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. Pokud chcete aplikaci spustit, vyberte **ladění**  >  **Spustit ladění**nebo na panelu nástrojů vyberte **Spustit** nebo stiskněte klávesu **F5**.
+1. Pokud chcete aplikaci spustit, vyberte **ladění**  >  **Spustit ladění** nebo na panelu nástrojů vyberte **Spustit** nebo stiskněte klávesu **F5** .
 1. Ověřte, že se vrátí prvních 20 řádků/produktů z vaší databáze, a pak okno aplikace zavřete.
 
 ## <a name="next-steps"></a>Další kroky
@@ -147,11 +147,10 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 - Naučte se [připojit a dotazovat databázi v Azure SQL Database pomocí .NET Core](connect-query-dotnet-core.md) v systému Windows, Linux nebo MacOS.  
 - Informace o tom, [jak začít s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
 - Naučte se, jak [navrhnout první databázi v Azure SQL Database pomocí SSMS](design-first-database-tutorial.md) nebo [navrhnout svou první databázi v Azure SQL Database pomocí .NET](design-first-database-csharp-tutorial.md).
-- Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).
+- Další informace o .NET najdete v [dokumentaci rozhraní .NET](/dotnet/).
 - Příklad logiky opakování: [odolné připojení k Azure SQL pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
-
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net

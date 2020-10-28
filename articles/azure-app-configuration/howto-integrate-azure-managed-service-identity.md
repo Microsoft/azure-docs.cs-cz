@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078166"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671597"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Použití spravovaných identit pro přístup ke službě App Configuration
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Nakonfigurujte svou aplikaci tak, aby používala spravovanou identitu, když se připojíte ke konfiguraci aplikace.
 > * Volitelně můžete aplikaci nakonfigurovat tak, aby používala spravovanou identitu, když se k Key Vault připojíte prostřednictvím konfigurace aplikace Key Vault odkazem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -49,9 +49,9 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Vytvořte instanci App Services v [Azure Portal](https://portal.azure.com) běžným způsobem. Přejít na něj na portálu.
 
-1. Přejděte dolů do skupiny **Nastavení** v levém podokně a vyberte možnost **Identita**.
+1. Přejděte dolů do skupiny **Nastavení** v levém podokně a vyberte možnost **Identita** .
 
-1. Na kartě **přiřazené systémem** přepněte **stav** na **zapnuto** a vyberte **Uložit**.
+1. Na kartě **přiřazené systémem** přepněte **stav** na **zapnuto** a vyberte **Uložit** .
 
 1. Pokud se zobrazí výzva k povolení spravované identity přiřazené systémem, odpovězte na **Ano** .
 
@@ -65,11 +65,11 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Na kartě **kontrolovat přístup** vyberte **Přidat** v uživatelském rozhraní karty **Přidat přiřazení role** .
 
-1. V části **role**vyberte **čtečka konfiguračních dat aplikace**. V části **přiřadit přístup k**vyberte **App Service** v části **spravovaná identita přiřazená systémem**.
+1. V části **role** vyberte **čtečka konfiguračních dat aplikace** . V části **přiřadit přístup k** vyberte **App Service** v části **spravovaná identita přiřazená systémem** .
 
-1. V části **předplatné**vyberte své předplatné Azure. Vyberte prostředek App Service pro vaši aplikaci.
+1. V části **předplatné** vyberte své předplatné Azure. Vyberte prostředek App Service pro vaši aplikaci.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Uložit** .
 
     ![Přidat spravovanou identitu](./media/add-managed-identity.png)
 
@@ -85,7 +85,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Najděte koncový bod do úložiště konfigurace aplikace. Tato adresa URL je uvedena na kartě **přístupové klíče** pro úložiště v Azure Portal.
 
-1. Otevřete *appsettings.jsna*a přidejte následující skript. Nahraďte *\<service_endpoint>* včetně závorek adresou URL vašeho úložiště konfigurace aplikace.
+1. Otevřete *appsettings.jsna* a přidejte následující skript. Nahraďte *\<service_endpoint>* včetně závorek adresou URL vašeho úložiště konfigurace aplikace.
 
     ```json
     "AppConfig": {
@@ -93,7 +93,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     }
     ```
 
-1. Otevřete *program.cs*a přidejte odkaz na `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` obory názvů a:
+1. Otevřete *program.cs* a přidejte odkaz na `Azure.Identity` `Microsoft.Azure.Services.AppAuthentication` obory názvů a:
 
     ```csharp-interactive
     using Azure.Identity;
@@ -107,30 +107,32 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   config.AddAzureAppConfiguration(options =>
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+               })
+               .UseStartup<Startup>();
     ```
 
     ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
             {
-                var settings = config.Build();
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
                     config.AddAzureAppConfiguration(options =>
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>());
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
@@ -139,46 +141,48 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
-            public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-                WebHost.CreateDefaultBuilder(args)
-                    .ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>();
+                   config.AddAzureAppConfiguration(options =>
+                   {
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                           .ConfigureKeyVault(kv =>
+                           {
+                              kv.SetCredential(credentials);
+                           });
+                   });
+               })
+               .UseStartup<Startup>();
     ```
 
     ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+            {
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>());
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(credentials);
+                            });
+                    });
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
@@ -222,7 +226,7 @@ Tento příkaz vám poskytne něco podobného následujícímu výstupu:
 
 ### <a name="deploy-your-project"></a>Nasazení projektu
 
-V _okně místního terminálu_přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _\<url>_ adresou URL vzdáleného úložiště Git, kterou jste získali v části [Povolení místního Gitu pomocí Kudu](#enable-local-git-with-kudu).
+V _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _\<url>_ adresou URL vzdáleného úložiště Git, kterou jste získali v části [Povolení místního Gitu pomocí Kudu](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>

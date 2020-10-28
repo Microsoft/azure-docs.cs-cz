@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: cd08b02cb3b67ce615ffa1003ee1e4441a281c17
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92285134"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669756"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>Použití akcí GitHubu pro připojení k Azure SQL Database
 
@@ -26,7 +26,7 @@ Budete potřebovat:
 - Úložiště GitHub s balíčkem DACPAC ( `Database.dacpac` ). Pokud nemáte účet GitHubu, [Zaregistrujte se zdarma](https://github.com/join).  
 - Azure SQL Database.
     - [Rychlý Start: vytvoření samostatné databáze Azure SQL Database](single-database-create-quickstart.md)
-    - [Jak vytvořit balíček DACPAC z vaší stávající databáze SQL Server](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+    - [Jak vytvořit balíček DACPAC z vaší stávající databáze SQL Server](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 
 ## <a name="workflow-file-overview"></a>Přehled souboru pracovního postupu
 
@@ -68,7 +68,7 @@ Výstupem je objekt JSON s přihlašovacími údaji přiřazení role, které po
 
 ## <a name="copy-the-sql-connection-string"></a>Zkopírování připojovacího řetězce SQL 
 
-V Azure Portal přejdete do Azure SQL Database a otevřete **Nastavení**  >  **připojovací řetězce**. Zkopírujte připojovací řetězec pro **ADO.NET**. Nahraďte zástupné hodnoty pro `your_database` a `your_password` . Připojovací řetězec bude vypadat podobně jako tento výstup. 
+V Azure Portal přejdete do Azure SQL Database a otevřete **Nastavení**  >  **připojovací řetězce** . Zkopírujte připojovací řetězec pro **ADO.NET** . Nahraďte zástupné hodnoty pro `your_database` a `your_password` . Připojovací řetězec bude vypadat podobně jako tento výstup. 
 
 ```output
     Server=tcp:my-sql-server.database.windows.net,1433;Initial Catalog={your-database};Persist Security Info=False;User ID={admin-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -80,7 +80,7 @@ Připojovací řetězec použijete jako tajný klíč GitHubu.
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště.
 
-1. Vyberte **nastavení > tajných klíčů > nový tajný kód**.
+1. Vyberte **nastavení > tajných klíčů > nový tajný kód** .
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
@@ -101,7 +101,7 @@ Připojovací řetězec použijete jako tajný klíč GitHubu.
 
 1. Přejít na **Akce** pro úložiště GitHub. 
 
-2. Vyberte **nastavit pracovní postup sami**. 
+2. Vyberte **nastavit pracovní postup sami** . 
 
 2. Odstraňte vše po `on:` části souboru pracovního postupu. Zbývající pracovní postup může vypadat například takto: 
 
@@ -194,4 +194,4 @@ Pokud už vaše databáze SQL a úložiště Azure nepotřebujete, vyčistěte p
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o integraci Azure a GitHubu](https://docs.microsoft.com/azure/developer/github/)
+> [Další informace o integraci Azure a GitHubu](/azure/developer/github/)

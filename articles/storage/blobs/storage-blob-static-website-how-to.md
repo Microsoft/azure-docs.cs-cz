@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2359c762c9ad653ee2eed294709ad7bf6b2a31c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289867"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671110"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
@@ -38,15 +38,15 @@ Hostování statického webu je funkce, kterou musíte povolit v účtu úloži�
 
 4. Vyberte **povoleno** , pokud chcete povolit statické hostování webů pro účet úložiště.
 
-5. V poli **název dokumentu indexu** zadejte výchozí stránku indexu (například: *index.html*). 
+5. V poli **název dokumentu indexu** zadejte výchozí stránku indexu (například: *index.html* ). 
 
    Výchozí stránka indexu se zobrazí, když uživatel přejde do kořenového adresáře vašeho statického webu.  
 
-6. V poli **cesta k chybovému dokumentu** zadejte výchozí chybovou stránku (například: *404.html*). 
+6. V poli **cesta k chybovému dokumentu** zadejte výchozí chybovou stránku (například: *404.html* ). 
 
    Výchozí chybová stránka se zobrazí, když se uživatel pokusí přejít na stránku, která na vašem statickém webu neexistuje.
 
-7. Klikněte na **Uložit**. Azure Portal teď zobrazuje váš koncový bod statického webu. 
+7. Klikněte na **Uložit** . Azure Portal teď zobrazuje váš koncový bod statického webu. 
 
     ![Povolení hostování statických webů pro účet úložiště](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -138,7 +138,7 @@ Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
 
 V těchto pokynech se dozvíte, jak nahrávat soubory pomocí verze Průzkumník služby Storage, která se zobrazí v Azure Portal. Můžete ale také použít verzi [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) , která se spouští mimo Azure Portal. Můžete použít [AzCopy](../common/storage-use-azcopy-v10.md), POWERSHELL, CLI nebo jakoukoli vlastní aplikaci, která může nahrávat soubory do kontejneru **$Web** svého účtu. Podrobný kurz, který nahrává soubory pomocí sady Visual Studio Code, najdete v tématu [kurz: hostování statického webu na BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
 
-1. Vyberte **Průzkumník služby Storage (Preview)**.
+1. Vyberte **Průzkumník služby Storage (Preview)** .
 
 2. Rozbalte uzel **kontejnery objektů BLOB** a potom vyberte kontejner **$Web** .
 
@@ -151,7 +151,7 @@ V těchto pokynech se dozvíte, jak nahrávat soubory pomocí verze Průzkumník
    ![Kontrolovat typy obsahu](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
 
    >[!NOTE]
-   > Průzkumník služby Storage automaticky nastaví tuto vlastnost na `text/html` pro běžně rozpoznaná rozšíření, jako je například `.html` . V některých případech je však budete muset nastavit sami. Pokud tuto vlastnost nenastavíte na `text/html` , prohlížeč vyzve uživatele ke stažení souboru místo vykreslování obsahu. Tuto vlastnost nastavíte tak, že kliknete pravým tlačítkem na soubor a potom kliknete na **vlastnosti**.
+   > Průzkumník služby Storage automaticky nastaví tuto vlastnost na `text/html` pro běžně rozpoznaná rozšíření, jako je například `.html` . V některých případech je však budete muset nastavit sami. Pokud tuto vlastnost nenastavíte na `text/html` , prohlížeč vyzve uživatele ke stažení souboru místo vykreslování obsahu. Tuto vlastnost nastavíte tak, že kliknete pravým tlačítkem na soubor a potom kliknete na **vlastnosti** .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -204,7 +204,7 @@ Stránky vaší lokality můžete zobrazit v prohlížeči pomocí veřejné adr
 
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-V podokně, které se zobrazí vedle stránky přehled účtu úložiště, vyberte možnost **statický web**. Adresa URL vašeho webu se zobrazí v poli **primární koncový bod** .
+V podokně, které se zobrazí vedle stránky přehled účtu úložiště, vyberte možnost **statický web** . Adresa URL vašeho webu se zobrazí v poli **primární koncový bod** .
 
 ![Metrika metriky Azure Storage statických webů](./media/storage-blob-static-website/storage-blob-static-website-url.png)
 
@@ -249,7 +249,7 @@ Po povolení metrik se na řídicím panelu metriky nahlásí Statistiky provozu
    > [!NOTE]
    > Data metrik se generují zapojováním do různých rozhraní API metrik. Portál zobrazí pouze členy rozhraní API používané v daném časovém rámci, aby bylo možné se zaměřit pouze na členy, kteří vracejí data. Aby bylo zajištěno, že budete moci vybrat potřebného člena rozhraní API, je prvním krokem rozšíření časového rámce.
 
-2. Klikněte na tlačítko časový rámec, zvolte časový rámec a pak klikněte na **použít**.
+2. Klikněte na tlačítko časový rámec, zvolte časový rámec a pak klikněte na **použít** .
 
    ![Časový rozsah metrik Azure Storage statických webů](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
@@ -259,7 +259,7 @@ Po povolení metrik se na řídicím panelu metriky nahlásí Statistiky provozu
 
 4. Pak vyberte metriku **odchozího** přenosu dat.
 
-   ![Metrika metriky Azure Storage statických webů](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![Snímek obrazovky zobrazující neAzure Storageou výstupní metriku statického webu websites](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. V selektoru *agregace* vyberte **Sum** .
 

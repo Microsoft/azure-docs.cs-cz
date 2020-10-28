@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096211"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670127"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu s vlastním uplatněním v Azure Active Directory B2C vlastní zásady
 
@@ -53,7 +53,7 @@ V technickém profilu s vlastním oceněním můžete použít prvky **InputClai
 
 ## <a name="display-claims"></a>Zobrazit deklarace
 
-Funkce Zobrazit deklarace identity je aktuálně ve **verzi Preview**.
+Funkce Zobrazit deklarace identity je aktuálně ve **verzi Preview** .
 
 Element **DisplayClaims** obsahuje seznam deklarací, které mají být zobrazeny na obrazovce pro shromažďování dat od uživatele. Chcete-li předem naplnit hodnoty pro zobrazení deklarací identity, použijte vstupní deklarace, které byly dříve popsány. Element může obsahovat také výchozí hodnotu.
 
@@ -114,7 +114,7 @@ Pokud koncová zásada, která dědí tuto základnu, následně určí `officeN
 </TechnicalProfile>
 ```
 
-`age`Deklarace identity v základních zásadách už není na obrazovce k dispozici uživateli – je to efektivně "skryté". Pokud chcete zobrazit `age` deklaraci identity a shromažďovat věkovou hodnotu od uživatele, musíte přidat `age` **DisplayClaim**.
+`age`Deklarace identity v základních zásadách už není na obrazovce k dispozici uživateli – je to efektivně "skryté". Pokud chcete zobrazit `age` deklaraci identity a shromažďovat věkovou hodnotu od uživatele, musíte přidat `age` **DisplayClaim** .
 
 ## <a name="output-claims"></a>Deklarace výstupů
 
@@ -133,10 +133,10 @@ V technickém profilu s vlastním výkonem vrátí kolekce deklarací identity n
 
 Použijte výstupní deklarace identity v těchto případech:
 
-- **Deklarace identity jsou výstupní transformací deklarací výstupů**.
+- **Deklarace identity jsou výstupní transformací deklarací výstupů** .
 - **Nastavení výchozí hodnoty ve výstupní deklaraci** , aniž by bylo potřeba shromažďovat data od uživatele nebo vracet data z technického profilu ověření. `LocalAccountSignUpWithLogonEmail`Technický profil s vlastním uplatněním nastavuje deklaraci **spuštěnou na SelfAsserted-Input** na `true` .
 - **Technický profil ověření vrací deklarace identity** – váš technický profil může zavolat technický profil ověření, který vrací některé deklarace identity. Je možné, že budete chtít deklarace identity a vrátit je k dalším krokům orchestrace v cestě uživatele. Například když se přihlašujete pomocí místního účtu, technický profil s vlastním uplatněním s názvem `SelfAsserted-LocalAccountSignin-Email` volá technický profil ověření s názvem `login-NonInteractive` . Tento technický profil ověří přihlašovací údaje uživatele a také vrátí profil uživatele. Například "userPrincipalName", "DisplayName", "dodaný" a "příjmení".
-- **Ovládací prvek zobrazení vrací výstupní deklarace** – váš technický profil může mít odkaz na [ovládací prvek zobrazení](display-controls.md). Ovládací prvek zobrazení vrátí některé deklarace identity, například ověřenou e-mailovou adresu. Je možné, že budete chtít deklarace identity a vrátit je k dalším krokům orchestrace v cestě uživatele. Funkce řízení zobrazení je nyní ve **verzi Preview**.
+- **Ovládací prvek zobrazení vrací výstupní deklarace** – váš technický profil může mít odkaz na [ovládací prvek zobrazení](display-controls.md). Ovládací prvek zobrazení vrátí některé deklarace identity, například ověřenou e-mailovou adresu. Je možné, že budete chtít deklarace identity a vrátit je k dalším krokům orchestrace v cestě uživatele. Funkce řízení zobrazení je nyní ve **verzi Preview** .
 
 Následující příklad ukazuje použití technického profilu s vlastním uplatněním, který používá zobrazení deklarací identity a výstupní deklarace identity.
 
@@ -175,6 +175,14 @@ Následující příklad ukazuje použití technického profilu s vlastním upla
 </TechnicalProfile>
 ```
 
+### <a name="output-claims-sign-up-or-sign-in-page"></a>Výstupní stránka pro registraci a přihlášení deklarací identity
+
+Na stránce s kombinovaným registrací a přihlášením si všimněte následujícího při použití prvku definice obsahu [DataUri](contentdefinitions.md#datauri) , který určuje `unifiedssp` `unifiedssd` typ stránky nebo:
+
+- Vykreslí se jenom deklarace identity uživatelského jména a hesla.
+- První dvě výstupní deklarace identity musí být uživatelské jméno a heslo (v tomto pořadí). 
+- Žádné další deklarace identity se nevykreslují. u těchto deklarací musíte nastavit `defaultValue` nebo vyvolat technický profil ověření formuláře deklarací identity. 
+
 ## <a name="persist-claims"></a>Zachovat deklarace identity
 
 Element PersistedClaims se nepoužívá. Technický profil s vlastním uplatněním neuchovává data Azure AD B2C. Místo toho je provedeno volání na technický profil ověření, který je zodpovědný za uchování dat. Například zásada registrace používá `LocalAccountSignUpWithLogonEmail` ke shromáždění nového profilu uživatele technický profil s vlastním uplatněním. `LocalAccountSignUpWithLogonEmail`Technický profil volá technický profil ověření pro vytvoření účtu v Azure AD B2C.
@@ -203,7 +211,7 @@ Pomocí obchodní logiky můžete také volat REST API technický profil, přeps
 | nastavení. forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky nebo `None` odebere odkaz zapomenuté heslo.|
 | nastavení. enableRememberMe <sup>2</sup>| Ne| Zobrazí zaškrtávací políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . Možné hodnoty: `true` , nebo `false` (výchozí). |
 | nastavení. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Ne| Zlepšuje činnost koncového uživatele čekáním, až uživatel přestane psát, a pak hodnotu ověří. Výchozí hodnota je 2000 milisekund. |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 
 Poznámky:
 1. K dispozici pro [DataUri](contentdefinitions.md#datauri) typ definice obsahu `unifiedssp` nebo `unifiedssd` .

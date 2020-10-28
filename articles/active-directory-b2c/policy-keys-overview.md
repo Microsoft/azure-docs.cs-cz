@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8019c049d830df0c2f3301a450eed60145c8eab3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89570445"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670113"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Přehled klíčů zásad v Azure Active Directory B2C
 
@@ -34,13 +34,13 @@ Tajné klíče a certifikáty pro vytvoření vztahu důvěryhodnosti mezi služ
 
 ## <a name="policy-keyset-and-keys"></a>Sada klíčů a klíče zásad
 
-Prostředek nejvyšší úrovně pro klíče zásad v Azure AD B2C je kontejner sady **klíčů** . Každá sada klíčů obsahuje alespoň jeden **klíč**. Klíč má následující atributy:
+Prostředek nejvyšší úrovně pro klíče zásad v Azure AD B2C je kontejner sady **klíčů** . Každá sada klíčů obsahuje alespoň jeden **klíč** . Klíč má následující atributy:
 
-| Atribut |  Vyžadováno | Poznámky |
+| Atribut |  Povinné | Poznámky |
 | --- | --- |--- |
-| `use` | Yes | Použití: identifikuje zamýšlené použití veřejného klíče. Šifrování dat `enc` nebo ověřování signatury dat `sig` .|
-| `nbf`| No | Datum a čas aktivace. |
-| `exp`| No | Datum a čas vypršení platnosti. |
+| `use` | Ano | Použití: identifikuje zamýšlené použití veřejného klíče. Šifrování dat `enc` nebo ověřování signatury dat `sig` .|
+| `nbf`| Ne | Datum a čas aktivace. |
+| `exp`| Ne | Datum a čas vypršení platnosti. |
 
 Doporučujeme nastavit hodnoty aktivace klíče a vypršení platnosti podle vašich standardů infrastruktury veřejných klíčů. Tyto certifikáty možná budete muset pravidelně otáčet z důvodů zabezpečení nebo zásad. Můžete mít například zásadu pro otočení všech certifikátů každý rok.
 
@@ -58,7 +58,7 @@ Z bezpečnostních důvodů může Azure AD B2C v případě nouze pravidelně p
 
 Pokud má Azure AD B2Cá sada klíčů více klíčů, bude v jednom okamžiku aktivní jenom jeden z klíčů, a to na základě následujících kritérií:
 
-- Aktivace klíče vychází z **data aktivace**.
+- Aktivace klíče vychází z **data aktivace** .
   - Klíče jsou seřazené podle data aktivace ve vzestupném pořadí. Klíče s daty aktivace v budoucnu se zobrazí v seznamu níže. Klíče bez data aktivace jsou umístěné na konci seznamu.
   - Když je aktuální datum a čas delší než datum aktivace klíče, Azure AD B2C aktivuje klíč a přestane používat předchozí aktivní klíč.
 - Když uplynul čas vypršení platnosti aktuálního *klíče a kontejner* klíčů obsahuje nový klíč s platným časem a časem *vypršení platnosti* , nový klíč se automaticky aktivuje.
@@ -71,13 +71,20 @@ Pokud chcete získat aktuální aktivní klíč v rámci kontejneru klíčů, po
 
 Postup přidání nebo odstranění podpisových a šifrovacích klíčů:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
-1. Na stránce Přehled v části **zásady**vyberte **Architektura prostředí identity**.
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C** .
+1. Na stránce Přehled v části **zásady** vyberte **Architektura prostředí identity** .
 1. Vybrat **klíče zásad** 
-    1. Pokud chcete přidat nový klíč, vyberte **Přidat**.
-    1. Chcete-li odebrat nový klíč, vyberte klíč a pak vyberte **Odstranit**. Pokud chcete odstranit klíč, zadejte název kontejneru klíčů, který se má odstranit. Azure AD B2C odstraní klíč a vytvoří kopii klíče s příponou. bak.
+    1. Pokud chcete přidat nový klíč, vyberte **Přidat** .
+    1. Chcete-li odebrat nový klíč, vyberte klíč a pak vyberte **Odstranit** . Pokud chcete odstranit klíč, zadejte název kontejneru klíčů, který se má odstranit. Azure AD B2C odstraní klíč a vytvoří kopii klíče s příponou. bak.
+
+### <a name="replace-a-key"></a>Nahradit klíč
+
+Klíče v rámci sady klíčů není nahraditelný nebo vyměnitelná. Pokud potřebujete změnit existující klíč:
+
+- Doporučujeme přidat nový klíč s nastaveným **datem aktivace** na aktuální datum a čas. Azure AD B2C bude nový klíč aktivovat a přestane používat předchozí aktivní klíč.
+- Případně můžete vytvořit novou sadu klíčů se správnými klíči. Aktualizujte zásady tak, aby používaly novou sadu klíčů, a pak odeberte starou sadu klíčů. 
 
 ## <a name="next-steps"></a>Další kroky
 

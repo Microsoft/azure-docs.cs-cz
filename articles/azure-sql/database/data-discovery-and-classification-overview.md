@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886506"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672081"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Vaše nejvíc citlivá data můžou zahrnovat obchodní, finanční, zdravotní 
 - Řízení přístupu a posílení zabezpečení databází, které obsahují vysoce citlivá data.
 
 > [!NOTE]
-> Informace o SQL Server v místním prostředí najdete v tématu [klasifikace & data Discovery pro SQL](https://go.microsoft.com/fwlink/?linkid=866999).
+> Informace o SQL Server v místním prostředí najdete v tématu [klasifikace & data Discovery pro SQL](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Co je klasifikace & data Discovery?
 
@@ -55,18 +55,18 @@ Tato část popisuje kroky pro:
 
 Klasifikace obsahuje dva atributy metadat:
 
-- **Labels**: hlavní atributy klasifikace, které slouží k definování úrovně citlivosti dat uložených ve sloupci.  
-- **Typy informací**: atributy, které poskytují podrobnější informace o typu dat uložených ve sloupci.
+- **Labels** : hlavní atributy klasifikace, které slouží k definování úrovně citlivosti dat uložených ve sloupci.  
+- **Typy informací** : atributy, které poskytují podrobnější informace o typu dat uložených ve sloupci.
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>Definování a přizpůsobení taxonomie klasifikace
 
 Klasifikace data Discovery & obsahuje integrovanou sadu popisků citlivosti a integrovanou sadu typů informací a logiku zjišťování. Tuto taxonomii si teď můžete přizpůsobit a definovat sadu klasifikačních konstruktorů (včetně hodnocení) na míru pro vaše prostředí.
 
-Na jednom centrálním místě pro celou organizaci Azure definujete a přizpůsobíte svou taxonomii klasifikace. Toto umístění je v [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)jako součást vašich zásad zabezpečení. Tuto úlohu může provést jenom osoba, která má oprávnění správce pro kořenovou skupinu pro správu organizace.
+Na jednom centrálním místě pro celou organizaci Azure definujete a přizpůsobíte svou taxonomii klasifikace. Toto umístění je v [Azure Security Center](../../security-center/security-center-introduction.md)jako součást vašich zásad zabezpečení. Tuto úlohu může provést jenom osoba, která má oprávnění správce pro kořenovou skupinu pro správu organizace.
 
 V rámci správy zásad pro ochranu informací můžete definovat vlastní popisky, seřadit je a přidružit je k vybrané sadě typů informací. Můžete také přidat vlastní typy informací a nakonfigurovat je pomocí vzorů řetězce. Do logiky zjišťování jsou přidány vzorce pro identifikaci tohoto typu dat ve vašich databázích.
 
-Další informace najdete v tématu [přizpůsobení zásad služby SQL Information Protection v Azure Security Center (Preview)](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+Další informace najdete v tématu [přizpůsobení zásad služby SQL Information Protection v Azure Security Center (Preview)](../../security-center/security-center-info-protection-policy.md).
 
 Po definování zásad v rámci organizace můžete dál klasifikovat jednotlivé databáze pomocí vlastních zásad.
 
@@ -91,7 +91,7 @@ Po definování zásad v rámci organizace můžete dál klasifikovat jednotliv�
 
    - Chcete-li přijmout doporučení pro určitý sloupec, zaškrtněte políčko v levém sloupci příslušného řádku. Pokud chcete všechna doporučení označit jako přijato, zaškrtněte políčko vlevo v záhlaví tabulky doporučení.
 
-   - Chcete-li použít vybraná doporučení, vyberte možnost **přijmout vybraná doporučení**.
+   - Chcete-li použít vybraná doporučení, vyberte možnost **přijmout vybraná doporučení** .
 
 1. Sloupce můžete také klasifikovat ručně, jako alternativu nebo kromě klasifikace založené na doporučeních:
 
@@ -125,7 +125,7 @@ Tyto předdefinované role mohou změnit klasifikaci dat databáze:
 - Přispěvatel
 - Správce zabezpečení SQL
 
-Další informace o oprávněních založených na rolích najdete v [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Další informace o oprávněních založených na rolích najdete v [Azure RBAC](../../role-based-access-control/overview.md).
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>Spravovat klasifikace
 
@@ -140,42 +140,42 @@ K přidání nebo odebrání klasifikací sloupců a k načtení všech klasifik
 
 Informace o použití T-SQL pro klasifikace naleznete v následujících odkazech:
 
-- Přidání nebo aktualizace klasifikace jednoho nebo více sloupců: [Přidání klasifikace citlivosti](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Odebrání klasifikace z jednoho nebo více sloupců: [klasifikace citlivosti přetažení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- Zobrazení všech klasifikací v databázi: [Sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Přidání nebo aktualizace klasifikace jednoho nebo více sloupců: [Přidání klasifikace citlivosti](/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Odebrání klasifikace z jednoho nebo více sloupců: [klasifikace citlivosti přetažení](/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Zobrazení všech klasifikací v databázi: [Sys.sensitivity_classifications](/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="use-powershell-cmdlets"></a>Použití rutin PowerShell
 Spravujte klasifikace a doporučení pro Azure SQL Database a Azure SQL Managed instance pomocí prostředí PowerShell.
 
 #### <a name="powershell-cmdlets-for-azure-sql-database"></a>Rutiny PowerShellu pro Azure SQL Database
 
-- [Get-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
-- [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
-- [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
-- [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
-- [Enable – AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
-- [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
+- [Get-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [Set-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [Remove-AzSqlDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [Get-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [Enable – AzSqlDatabaSesensitivityRecommendation](/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [Disable-AzSqlDatabaseSensitivityRecommendation](/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
 #### <a name="powershell-cmdlets-for-azure-sql-managed-instance"></a>Rutiny PowerShellu pro spravovanou instanci Azure SQL
 
-- [Get-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
-- [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
-- [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
-- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
-- [Enable – AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
-- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
+- [Get-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [Set-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [Remove-AzSqlInstanceDatabaseSensitivityClassification](/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [Get-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+- [Enable – AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 ### <a name="use-the-rest-api"></a>Použití rozhraní REST API
 
 Pomocí REST API můžete programově spravovat klasifikace a doporučení. Publikovaný REST API podporuje následující operace:
 
-- [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
-- [Odstranit](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): odstraní popisek citlivosti pro zadaný sloupec.
-- [Zakázat doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): zakáže doporučení citlivosti na zadaném sloupci.
-- [Povolit doporučení](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): povoluje u zadaného sloupce doporučení citlivosti. (Doporučení jsou ve výchozím nastavení povolená pro všechny sloupce.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): Získá popisek citlivosti určeného sloupce.
-- [Vypsat aktuální podle databáze](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Získá aktuální popisky citlivosti zadané databáze.
-- [Seznam doporučený databází](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Získá doporučené citlivosti citlivosti zadané databáze.
+- [Vytvořit nebo aktualizovat](/rest/api/sql/sensitivitylabels/createorupdate): vytvoří nebo aktualizuje popisek citlivosti pro zadaný sloupec.
+- [Odstranit](/rest/api/sql/sensitivitylabels/delete): odstraní popisek citlivosti pro zadaný sloupec.
+- [Zakázat doporučení](/rest/api/sql/sensitivitylabels/disablerecommendation): zakáže doporučení citlivosti na zadaném sloupci.
+- [Povolit doporučení](/rest/api/sql/sensitivitylabels/enablerecommendation): povoluje u zadaného sloupce doporučení citlivosti. (Doporučení jsou ve výchozím nastavení povolená pro všechny sloupce.)
+- [Get](/rest/api/sql/sensitivitylabels/get): Získá popisek citlivosti určeného sloupce.
+- [Vypsat aktuální podle databáze](/rest/api/sql/sensitivitylabels/listcurrentbydatabase): Získá aktuální popisky citlivosti zadané databáze.
+- [Seznam doporučený databází](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): Získá doporučené citlivosti citlivosti zadané databáze.
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Další kroky
 

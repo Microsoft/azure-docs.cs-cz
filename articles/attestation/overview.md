@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90032992"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670524"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Preview)
 
@@ -73,7 +73,7 @@ Ověření identity Azure je upřednostňovanou volbou pro ověřování TEEs, p
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>Podpora pro provozní kontinuitu a zotavení po havárii (BCDR)
 
-Provozní [kontinuita a zotavení po havárii](/azure/best-practices-availability-paired-regions) (BCDR) pro Azure Attestation umožňuje zmírnit přerušení služeb vyplývající z významných problémů s dostupností nebo událostí po havárii v oblasti.
+Provozní [kontinuita a zotavení po havárii](../best-practices-availability-paired-regions.md) (BCDR) pro Azure Attestation umožňuje zmírnit přerušení služeb vyplývající z významných problémů s dostupností nebo událostí po havárii v oblasti.
 
 Níže jsou uvedené oblasti, které aktuálně podporuje BCDR.
 - Východní USA 2 => spárována s Střed USA.
@@ -91,4 +91,3 @@ Clustery nasazené ve dvou oblastech budou za běžných okolností fungovat nez
 - Seznamte se se [základními koncepty Azure Attestation](basic-concepts.md)
 - [Jak vytvářet a podepisovat zásady ověření identity](author-sign-policy.md)
 - [Nastavení ověření Azure pomocí PowerShellu](quickstart-powershell.md)
-

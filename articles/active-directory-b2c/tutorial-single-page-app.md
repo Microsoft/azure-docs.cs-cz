@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e485065588fefa95868df9865f317de54e6ef020
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 3a3eb77315953c3791e09c4326af7cc3e3231a69
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628775"
+ms.locfileid: "92670034"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Kurz: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C
 
@@ -117,13 +117,13 @@ Teď, když jste získali ukázku, aktualizujte kód pomocí Azure AD B2C název
     };
     ```
 
-1. Otevřete `authConfig.js` soubor ve složce *JavaScriptSPA* .
+1. Otevřete soubor *authConfig.js* ve složce *JavaScriptSPA* .
 1. V `msalConfig` objektu aktualizujte:
     * `clientId` s **ID aplikace (klienta)** , které jste si poznamenali v dřívějším kroku
     * `authority` Identifikátor URI s vaším Azure AD B2Cm jménem tenanta a názvem uživatelského toku pro registraci a přihlašování, který jste vytvořili jako součást požadavků (například *B2C_1_signupsignin1* )
-1. Otevřete soubor `policies.js`.
+1. Otevřete soubor *policies.js* .
 1. Vyhledejte položky pro `names` a `authorities` a nahraďte je podle názvů zásad, které jste vytvořili v kroku 2. Nahraďte `fabrikamb2c.onmicrosoft.com` názvem vašeho tenanta Azure AD B2C, například `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>` .
-1. Otevřete soubor `apiConfig.js`.
+1. Otevřete soubor *apiConfig.js* .
 1. Vyhledejte přiřazení pro obory `b2cScopes` a adresu URL nahraďte adresou URL oboru, kterou jste vytvořili pro webové rozhraní API, například `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]` .
 1. Vyhledejte přiřazení adresy URL rozhraní API `webApi` a nahraďte aktuální adresu URL adresou URL, na které jste nasadili webové rozhraní API v kroku 4, například `webApi: http://localhost:5000/hello` .
 

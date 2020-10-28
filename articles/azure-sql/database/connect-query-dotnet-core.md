@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: f1908e243b7cb1def2eac8a1d46d5f087a25f8c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32ea1dd2141a8df1fb495af64848f87e9f152328
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936397"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669740"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze v Azure SQL Database nebo spravované instanci SQL Azure
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "88936397"
 V tomto rychlém startu použijete k připojení k databázi kód [.NET Core](https://www.microsoft.com/net/) a C#. Pak spustíte příkaz Transact-SQL k dotazování dat.
 
 > [!TIP]
-> Následující Microsoft Learn modul vám pomůže naučit se zdarma [, jak vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje databáze v Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+> Následující Microsoft Learn modul vám pomůže naučit se zdarma [, jak vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje databáze v Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/)
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -57,7 +57,7 @@ Co budete potřebovat k dokončení tohoto rychlého startu:
 
 Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
@@ -68,9 +68,9 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
 ## <a name="get-adonet-connection-information-optional---sql-database-only"></a>Získat informace o připojení ADO.NET (jenom volitelné SQL Database)
 
-1. Přejděte na stránku **mySampleDatabase** a v části **Nastavení**vyberte **připojovací řetězce**.
+1. Přejděte na stránku **mySampleDatabase** a v části **Nastavení** vyberte **připojovací řetězce** .
 
-2. Zkontrolujte úplný připojovací řetězec **ADO.NET**.
+2. Zkontrolujte úplný připojovací řetězec **ADO.NET** .
 
     ![Připojovací řetězec pro ADO.NET](./media/connect-query-dotnet-core/adonet-connection-string2.png)
 
@@ -78,13 +78,13 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
   
 ## <a name="create-a-new-net-core-project"></a>Vytvoření nového projektu .NET Core
 
-1. Otevřete příkazový řádek a vytvořte složku **sqltest**. Přejděte do této složky a spusťte tento příkaz.
+1. Otevřete příkazový řádek a vytvořte složku **sqltest** . Přejděte do této složky a spusťte tento příkaz.
 
     ```cmd
     dotnet new console
     ```
 
-    Tento příkaz vytvoří nové soubory projektu aplikace, včetně počátečního souboru kódu jazyka C# (**program.cs**), konfiguračního souboru XML (**sqltest. csproj**) a potřebných binárních souborů.
+    Tento příkaz vytvoří nové soubory projektu aplikace, včetně počátečního souboru kódu jazyka C# ( **program.cs** ), konfiguračního souboru XML ( **sqltest. csproj** ) a potřebných binárních souborů.
 
 2. V textovém editoru otevřete soubor **sqltest. csproj** a vložte mezi značky následující kód XML `<Project>` . Tento kód XML `System.Data.SqlClient` se přidá jako závislost.
 
@@ -96,7 +96,7 @@ Získejte informace o připojení, které potřebujete pro připojení k databá
 
 ## <a name="insert-code-to-query-the-database-in-azure-sql-database"></a>Vložení kódu pro dotazování databáze v Azure SQL Database
 
-1. V textovém editoru otevřete **program.cs**.
+1. V textovém editoru otevřete **program.cs** .
 
 2. Nahraďte obsah následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatelské jméno a heslo.
 
@@ -207,4 +207,4 @@ namespace sqltest
 - [Začínáme s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
 - Naučte se [připojit a dotazovat Azure SQL Database nebo spravované instance Azure SQL pomocí .NET Framework a sady Visual Studio](connect-query-dotnet-visual-studio.md).  
 - Přečtěte si, jak [navrhnout první databázi pomocí SSMS](design-first-database-tutorial.md) nebo [navrhnout databázi a jak se připojit pomocí C# a ADO.NET](design-first-database-csharp-tutorial.md).
-- Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).
+- Další informace o .NET najdete v [dokumentaci rozhraní .NET](/dotnet/).

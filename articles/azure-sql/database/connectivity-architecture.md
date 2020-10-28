@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479081"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672499"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Architektura připojení Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92479081"
 Tento článek vysvětluje architekturu různých komponent, které směrují síťový provoz na server v Azure SQL Database nebo Azure synapse Analytics. Vysvětluje taky různé zásady připojení a jejich dopad na klienty připojující se z Azure a klienty, kteří se připojují mimo Azure.
 
 > [!IMPORTANT]
-> Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure**. [Pro spravovanou instanci se podívejte na architekturu připojení](../managed-instance/connectivity-architecture-overview.md).
+> Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure** . [Pro spravovanou instanci se podívejte na architekturu připojení](../managed-instance/connectivity-architecture-overview.md).
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
 
@@ -51,7 +51,7 @@ Servery v SQL Database a Azure synapse podporují následující tři možnosti 
 
 - **Výchozí:** Toto je zásada připojení platná pro všechny servery po vytvoření, pokud zásadu připojení explicitně neupravíte na buď `Proxy` nebo `Redirect` . Výchozí zásady jsou `Redirect` pro všechna připojení klientů pocházející z Azure (například z virtuálního počítače Azure) a `Proxy` pro všechna klientská připojení, která pocházejí mimo (například připojení z místní pracovní stanice).
 
-`Redirect` `Proxy` Pro nejnižší latenci a nejvyšší propustnost důrazně doporučujeme zásady připojení oproti zásadám připojení. Budete ale muset splnit další požadavky na povolení síťového provozu, jak je uvedeno výše. Pokud se jedná o virtuální počítač Azure, můžete to udělat pomocí skupin zabezpečení sítě (NSG) s [visačkami služby](../../virtual-network/security-overview.md#service-tags). Pokud se klient připojuje z místní pracovní stanice, možná budete muset spolupracovat se správcem sítě a zapnout síťový provoz přes bránu firewall vaší firmy.
+`Redirect` `Proxy` Pro nejnižší latenci a nejvyšší propustnost důrazně doporučujeme zásady připojení oproti zásadám připojení. Budete ale muset splnit další požadavky na povolení síťového provozu, jak je uvedeno výše. Pokud se jedná o virtuální počítač Azure, můžete to udělat pomocí skupin zabezpečení sítě (NSG) s [visačkami služby](../../virtual-network/network-security-groups-overview.md#service-tags). Pokud se klient připojuje z místní pracovní stanice, možná budete muset spolupracovat se správcem sítě a zapnout síťový provoz přes bránu firewall vaší firmy.
 
 ## <a name="connectivity-from-within-azure"></a>Konektivita uvnitř Azure
 
@@ -66,7 +66,7 @@ Pokud se připojujete z oblasti mimo Azure, připojení mají `Proxy` ve výchoz
 ![Diagram znázorňující, jak se vytváří relace protokolu TCP prostřednictvím Azure SQL Database brány a všech následných paketů v toku prostřednictvím brány.](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Kromě toho otevřete porty TCP 1434 a 14000-14999, abyste umožnili [připojení pomocí DAC](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) .
+> Kromě toho otevřete porty TCP 1434 a 14000-14999, abyste umožnili [připojení pomocí DAC](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) .
 
 ## <a name="gateway-ip-addresses"></a>IP adresy brány
 
@@ -89,7 +89,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Čína – sever          | 139.219.15.17      |
 | Čína – sever 2        | 40.73.50.0         |
 | Východní Asie            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| USA – východ              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| East US              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
 | USA – východ 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 |
 | Francie – střed       | 40.79.137.0, 40.79.129.1 |
 | Německo – střed      | 51.4.144.100       |
@@ -98,7 +98,7 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 | Indie – střed        | 104.211.96.159     |
 | Indie – jih          | 104.211.224.146    |
 | Indie – západ           | 104.211.160.80     |
-| Japonsko – východ           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
+| Japan East           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 |
 | Japonsko – západ           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 |
 | Jižní Korea – střed        | 52.231.32.42       |
 | Jižní Korea – jih          | 52.231.200.86      |
@@ -124,6 +124,6 @@ Podrobnosti o tom, jak se bude provoz migrovat na nové brány v konkrétních o
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak změnit zásady Azure SQL Databaseho připojení pro server, najdete v části Connection [-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- Informace o tom, jak změnit zásady Azure SQL Databaseho připojení pro server, najdete v části Connection [-Policy](/cli/azure/sql/server/conn-policy).
 - Informace o chování připojení Azure SQL Database pro klienty, kteří používají verzi ADO.NET 4,5 nebo novější, najdete v části [porty kromě 1433 pro ADO.NET 4,5](adonet-v12-develop-direct-route-ports.md).
 - Obecné informace o vývoji aplikací naleznete v tématu [SQL Database Application Development Overview](develop-overview.md).

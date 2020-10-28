@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c5fa326fa05a34ae5b51054b867a766489b85c16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474899"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670694"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB ve fondu SQL bez serveru v odkazu Azure synapse (Preview)
 
@@ -23,6 +23,9 @@ Synapse fond SQL bez serveru (dříve SQL na vyžádání) umožňuje analyzovat
 Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) plochy prostřednictvím funkce [OpenRowset](develop-openrowset.md) , včetně většiny [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand). V současné době nemůžete ukládat výsledky dotazu fondu SQL bez serveru do Azure Cosmos DB pomocí [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
 V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, který bude dotazovat data z Azure Cosmos DB kontejnerů s povoleným odkazem synapse. Pak si můžete přečíst další informace o vytváření zobrazení fondu SQL bez serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto](./tutorial-data-analyst.md) kurzu. 
+
+> [!IMPORTANT]
+> V tomto kurzu se používá kontejner s [Azure Cosmos DB schématem definovaného schématu](../../cosmos-db/analytical-store-introduction.md#schema-representation) , které poskytuje možnosti dotazování, které budou v budoucnu podporovány. Dotazování fondu SQL bez serveru poskytuje [Azure Cosmos DB úplných schémat přesnosti](#full-fidelity-schema) je dočasné chování, které se změní v závislosti na zpětné vazbě ve verzi Preview. Nespoléhá se na schéma, které `OPENROWSET` funkce poskytuje pro kontejnery s plnou přesností ve verzi Public Preview, protože dotaz experinece může být změněn a zarovnán pomocí dobře definovaného schématu. Pokud chcete poskytnout zpětnou vazbu, kontaktujte [produktový tým synapse Link](mailto:cosmosdbsynapselink@microsoft.com) .
 
 ## <a name="overview"></a>Přehled
 
@@ -253,16 +256,81 @@ Azure Cosmos DB účty rozhraní API SQL (Core) API podporují typy vlastností 
 | Null | `any SQL type` 
 | Vnořený objekt nebo pole | varchar (max) (kolace databáze UTF8), serializovaná jako text JSON |
 
+## <a name="full-fidelity-schema"></a>Schéma s úplnými kvalitami
+
+Azure Cosmos DB plné schéma přesnosti zaznamenává obě hodnoty a jejich nejlepší typy shod pro každou vlastnost v kontejneru.
+`OPENROWSET` funkce na kontejneru s schématem s plnou přesností poskytuje jak typ, tak skutečnou hodnotu v každé buňce. Řekněme, že následující dotaz čte položky z kontejneru se schématem s úplnými věrností:
+
+```sql
+SELECT *
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) as rows
+```
+
+Výsledek tohoto dotazu bude vracet typy a hodnoty formátované jako text JSON: 
+
+| date_rep | věcech | geo_id |
+| --- | --- | --- |
+| {"date": "2020-08-13"} | {"Int32": "254"} | {"String": "RS"} |
+| {"date": "2020-08-12"} | {"Int32": "235"}| {"String": "RS"} |
+| {"date": "2020-08-11"} | {"Int32": "316"} | {"String": "RS"} |
+| {"date": "2020-08-10"} | {"Int32": "281"} | {"String": "RS"} |
+| {"date": "2020-08-09"} | {"Int32": "295"} | {"String": "RS"} |
+| {"String": "2020/08/08"} | {"Int32": "312"} | {"String": "RS"} |
+| {"date": "2020-08-07"} | {"float64": "339.0"} | {"String": "RS"} |
+
+U každé hodnoty vidíte typ identifikovaný v Cosmos DB položka kontejneru. Většina hodnot `date_rep` vlastnosti obsahuje `date` hodnoty, ale některé z nich jsou nesprávně uloženy jako řetězce v Cosmos DB. Schéma s úplnou věrností vrátí správně zadané `date` hodnoty a nesprávně naformátované `string` hodnoty.
+Počet případů je informace uložená jako `int32` hodnota, ale jedna hodnota je zadána jako desetinné číslo. Tato hodnota je `float64` typu. Pokud existují některé hodnoty, které překračují největší `int32` číslo, budou uloženy jako `int64` typ. Všechny `geo_id` hodnoty v tomto příkladu jsou uloženy jako `string` typy.
+
+> [!IMPORTANT]
+> Schéma plné přesnosti zpřístupňuje obě hodnoty s očekávanými typy a hodnotami s nesprávně zadanými typy.
+> Měli byste vyčistit hodnoty, které mají nesprávné typy v kontejneru Azure Cosmos DB, aby bylo možné použít korect v plném analytickém úložišti s přesností. 
+
 Pro dotazování Azure Cosmos DBch účtů typu rozhraní API služby Mongo DB můžete získat další informace o úplném vyjádření schématu přesnosti v analytickém úložišti a o rozšířených názvech vlastností, které se [tady](../../cosmos-db/analytical-store-introduction.md#analytical-schema)mají použít.
+
+Při dotazování schématu na celé přesnosti musíte explicitně zadat typ SQL a očekávaný Cosmos DB typ vlastnosti v `WITH` klauzuli. V následujícím příkladu se předpokládá, že `string` je správný typ pro `geo_id` vlastnost a `int32` správný typ pro `cases` vlastnost:
+
+```sql
+SELECT geo_id, cases = SUM(cases)
+FROM OPENROWSET(
+      'CosmosDB'
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
+             cases INT '$.cases.int32'
+    ) as rows
+GROUP BY geo_id
+```
+
+Hodnoty s jinými typy nebudou vráceny ve `geo_id` `cases` sloupcích a a dotaz bude `NULL` v těchto buňkách vracet hodnotu. Tento dotaz bude odkazovat pouze na `cases` zadaný typ ve výrazu ( `cases.int32` ). Pokud máte hodnoty s jinými typy ( `cases.int64` , `cases.float64` ), které reprezentují nemůžou být vyčištěny v Cosmos DB kontejneru, bude nutné explicitně odkazovat na ně `WITH` klauzule in a kombinovat výsledky. Následující dotaz agreguje a `int32` `int64` `float64` ukládá do `cases` sloupce:
+
+```sql
+SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
+             cases_int INT '$.cases.int32',
+             cases_bigint BIGINT '$.cases.int64',
+             cases_float FLOAT '$.cases.float64'
+    ) as rows
+GROUP BY geo_id
+```
+
+V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo `float64` hodnoty a všechny hodnoty musí být extrahovány, aby bylo možné vypočítat počet případů na zemi. 
 
 ## <a name="known-issues"></a>Známé problémy
 
 - Po funkci **musí** být zadán alias `OPENROWSET` (například `OPENROWSET (...) AS function_alias` ). Vynechání aliasu může způsobit potíže s připojením a koncový bod SQL synapse bez serveru možná nebude dočasně k dispozici. Tento problém bude vyřešen v listopadu 2020.
-- Bezserverový fond SQL momentálně nepodporuje [Azure Cosmos DB úplným schématem přesnosti](../../cosmos-db/analytical-store-introduction.md#schema-representation). Používejte fond SQL bez serveru jenom pro přístup Cosmos DB dobře definované schéma.
+- Dotaz na možnosti, že fond SQL bez serveru poskytuje [Azure Cosmos DB úplných schémat přesnosti](#full-fidelity-schema) je dočasné chování, které se změní na základě zpětné vazby ve verzi Preview. Nespoléhá se na schéma, které `OPENROWSET` funkce poskytuje během veřejné verze Preview, protože prostředí dotazů může být zarovnané podle dobře definovaného schématu. Pokud chcete poskytnout zpětnou vazbu, kontaktujte [produktový tým synapse Link](mailto:cosmosdbsynapselink@microsoft.com) .
 
 Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce:
 
-| Chyba | Původní příčina |
+| Chybová | Původní příčina |
 | --- | --- |
 | Chyby syntaxe:<br/> – Nesprávná syntaxe v blízkosti položky OpenRowset<br/> - `...` není rozpoznaná možnost HROMADNÉho poskytovatele OPENROWSET.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny<br/> -Nepoužívá se jako první parametr ' CosmosDB ',<br/> -Použití řetězcového literálu místo identifikátoru ve třetím parametru<br/> -Nespecifikuje se třetí parametr (název kontejneru). |
 | V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze, klíč není zadaný. <br/> -V připojovacím řetězci existuje možnost, která není rozpoznána.<br/> – Středník `;` je umístěný na konci připojovacího řetězce. |

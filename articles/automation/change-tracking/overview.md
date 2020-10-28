@@ -3,14 +3,14 @@ title: Přehled Azure Automation Change Tracking a inventáře
 description: Tento článek popisuje funkci Change Tracking a inventáře, která vám pomůže identifikovat změny softwaru a služeb Microsoftu ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9654529723b5b69c15358be9e06db4f8cbed35e3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209822"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670731"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -48,7 +48,7 @@ Change Tracking a inventář nepodporují nebo mají následující omezení:
 - Rekurze pro sledování registru Windows
 - Síťové systémy souborů
 - Různé metody instalace
-- *soubory **. exe** uložené ve Windows
+- *soubory *_. exe_* uložené ve Windows
 - Sloupec **maximální velikost souboru** a hodnoty jsou v aktuální implementaci nepoužitelné.
 - Pokud se pokusíte shromáždit více než 2500 souborů v cyklu shromažďování, Change Tracking a výkon inventáře může být snížený.
 - Pokud je síťový provoz vysoký, může zobrazení změn záznamů trvat až šest hodin.
@@ -73,17 +73,19 @@ Následující adresy jsou vyžadovány konkrétně pro Change Tracking a invent
 |*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
 |*.azure-automation.net | *. azure-automation.us|
 
-Když vytvoříte pravidla zabezpečení skupiny sítě nebo nakonfigurujete Azure Firewall, aby povolovala přenosy do služby Automation Service a do pracovního prostoru Log Analytics, použijte [tag Service](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** a **AzureMonitor**. Tím se zjednoduší průběžná správa pravidel zabezpečení sítě. Pokud se chcete připojit ke službě Automation z vašich virtuálních počítačů Azure bezpečně a soukromě, přečtěte si téma [použití privátního odkazu Azure](../how-to/private-link-security.md). Pokud chcete získat aktuální informace o značce služby a rozsahu, které mají být zahrnuty v rámci místních konfigurací brány firewall, přečtěte si téma [Stažení souborů JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Když vytvoříte pravidla zabezpečení skupiny sítě nebo nakonfigurujete Azure Firewall, aby povolovala přenosy do služby Automation Service a do pracovního prostoru Log Analytics, použijte [tag Service](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** a **AzureMonitor** . Tím se zjednoduší průběžná správa pravidel zabezpečení sítě. Pokud se chcete připojit ke službě Automation z vašich virtuálních počítačů Azure bezpečně a soukromě, přečtěte si téma [použití privátního odkazu Azure](../how-to/private-link-security.md). Pokud chcete získat aktuální informace o značce služby a rozsahu, které mají být zahrnuty v rámci místních konfigurací brány firewall, přečtěte si téma [Stažení souborů JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
-Tady jsou způsoby, jak můžete povolit Change Tracking a inventář a vybrat počítače, které se mají spravovat:
+Change Tracking a inventář můžete povolit následujícími způsoby:
 
-* [Z virtuálního počítače Azure](enable-from-vm.md).
-* [Z prohlížení několika virtuálních počítačů Azure](enable-from-portal.md).
-* [Z účtu Azure Automation](enable-from-automation-account.md).
-* U serverů s podporou ARC nebo počítačů mimo Azure nainstalujte agenta Log Analytics ze serverů s podporou ARC Azure pomocí [rozšíření virtuálního počítače](../../azure-arc/servers/manage-vm-extensions.md) a potom [Povolte počítače v pracovním prostoru](enable-from-automation-account.md#enable-machines-in-the-workspace) pro Change Tracking a inventář.
-* [Pomocí Runbooku služby Automation](enable-from-runbook.md).
+- Z [účtu Automation](enable-from-automation-account.md) pro jeden nebo víc počítačů Azure a mimo Azure.
+
+- Ručně pro počítače mimo Azure, včetně počítačů nebo serverů zaregistrovaných u [serverů s podporou ARC Azure](../../azure-arc/servers/overview.md). Pro hybridní počítače doporučujeme nainstalovat agenta Log Analytics pro Windows tím, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte předdefinované zásady pro [nasazení agenta Log Analytics k počítačům se systémem *Linux* nebo *Windows* Azure ARC](../../governance/policy/samples/built-in-policies.md#monitoring) . Pokud plánujete taky monitorovat počítače s Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
+
+- Pro jeden virtuální počítač Azure ze [stránky virtuálního počítače](enable-from-vm.md) v Azure Portal. Tento scénář je k dispozici pro virtuální počítače se systémy Linux a Windows.
+
+- Pro [více virtuálních počítačů Azure](enable-from-portal.md) je můžete vybrat ze stránky virtuální počítače v Azure Portal.
 
 ## <a name="tracking-file-changes"></a>Sledování změn souborů
 
@@ -106,8 +108,8 @@ Change Tracking a inventář umožňuje sledovat změny klíčů registru Window
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Monitoruje skripty, které se spouštějí při vypnutí.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Sleduje klíče, které jsou načteny před přihlášením uživatele k účtu systému Windows. Klíč se používá pro 32 aplikace běžící na 64 počítačích.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Monitoruje změny nastavení aplikace.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Monitoruje obslužné rutiny místní nabídky, které se připojovat přímo do Průzkumníka Windows, a obvykle spouštějí v procesu **explorer.exe**.
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Monitoruje obslužné rutiny kopírovacího zavěšení, které se připojovat přímo do Průzkumníka Windows, a obvykle spouštějí v procesu **explorer.exe**.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Monitoruje obslužné rutiny místní nabídky, které se připojovat přímo do Průzkumníka Windows, a obvykle spouštějí v procesu **explorer.exe** .
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Monitoruje obslužné rutiny kopírovacího zavěšení, které se připojovat přímo do Průzkumníka Windows, a obvykle spouštějí v procesu **explorer.exe** .
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitory pro registraci obslužné rutiny překrytí ikon
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Monitory pro registraci obslužné rutiny překrytí ikon pro 32 aplikace běžící na 64 počítačích.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Monitory pro nové objekty pomocníka pro prohlížeč pro Internet Explorer. Slouží k přístupu k model DOM (Document Object Model) (DOM) aktuální stránky a k ovládání navigace.
@@ -117,7 +119,7 @@ Change Tracking a inventář umožňuje sledovat změny klíčů registru Window
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Monitoruje 32 ovladačů přidružených k wavemapper, wave1 a wave2, MSACM. imaadpcm,. msadpcm,. msgsm610 a vidc. Podobně jako oddíl [Drivers] v souboru **system.ini** .
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Monitoruje 32 ovladačů přidružených k wavemapper, wave1 a wave2, MSACM. imaadpcm,. msadpcm,. msgsm610 a vidc pro 32 aplikace spuštěné v počítačích s 64--bit. Podobně jako oddíl [Drivers] v souboru **system.ini** .
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Monitoruje seznam známých nebo běžně používaných systémových knihoven DLL. Monitorování brání lidem v zneužití slabých oprávnění adresáře aplikace tím, že vyřadí verze systémových knihoven DLL pro trojského koně.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Monitoruje seznam balíčků, které mohou přijímat oznámení o událostech z **winlogon.exe**, což je model podpory interaktivního přihlašování pro systém Windows.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Monitoruje seznam balíčků, které mohou přijímat oznámení o událostech z **winlogon.exe** , což je model podpory interaktivního přihlašování pro systém Windows.
 
 ## <a name="recursion-support"></a>Podpora rekurze
 
@@ -125,7 +127,7 @@ Change Tracking a inventář podporuje rekurzi, která umožňuje určit zástup
 
 - Pro sledování více souborů jsou vyžadovány zástupné znaky.
 
-- Zástupné znaky můžete použít jenom v posledním segmentu cesty k souboru, například **c:\folder \\ File*** nebo **/etc/*. conf**.
+- Zástupné znaky můžete použít jenom v posledním segmentu cesty k souboru, například **c:\folder \\ File** _ nebo _ */etc/* . conf * *.
 
 - Pokud proměnná prostředí má neplatnou cestu, ověřování je úspěšné, ale cesta během provádění selže.
 
@@ -150,7 +152,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 | **Prostředek** | **Počtu** |
 |---|---|---|
 |Soubor|500|
-|Registry|250|
+|Registr|250|
 |Software Windows (nezahrnuje opravy hotfix) |250|
 |Balíčky Linux|1250|
 |Služby|250|
@@ -160,7 +162,7 @@ Průměrné využití dat Log Analytics počítači pomocí Change Tracking a in
 
 ### <a name="microsoft-service-data"></a>Data služby společnosti Microsoft
 
-Výchozí četnost shromažďování pro služby společnosti Microsoft je 30 minut. Frekvenci můžete nakonfigurovat pomocí posuvníku na kartě **služby společnosti Microsoft** v části **Upravit nastavení**.
+Výchozí četnost shromažďování pro služby společnosti Microsoft je 30 minut. Frekvenci můžete nakonfigurovat pomocí posuvníku na kartě **služby společnosti Microsoft** v části **Upravit nastavení** .
 
 ![Posuvník služeb Microsoftu](./media/overview/windowservices.png)
 

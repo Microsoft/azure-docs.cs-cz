@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86515049"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672487"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rychlý Start: použití Visual Studio Code k připojení a dotazování 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,13 +45,13 @@ ms.locfileid: "86515049"
 
 ## <a name="install-visual-studio-code"></a>Instalace nástroje Visual Studio Code
 
-Ujistěte se, že máte nainstalovanou nejnovější [Visual Studio Code](https://code.visualstudio.com/Download) a načetli jste [rozšíření MSSQL](https://aka.ms/mssql-marketplace). Pokyny k instalaci rozšíření MSSQL najdete v tématu [instalace Visual Studio Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) a [MSSQL pro Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
+Ujistěte se, že máte nainstalovanou nejnovější [Visual Studio Code](https://code.visualstudio.com/Download) a načetli jste [rozšíření MSSQL](https://aka.ms/mssql-marketplace). Pokyny k instalaci rozšíření MSSQL najdete v tématu [instalace Visual Studio Code](/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) a [MSSQL pro Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql).
 
 ## <a name="configure-visual-studio-code"></a>Konfigurace editoru Visual Studio Code
 
 ### <a name="macos"></a>**macOS**
 
-Pro macOS musíte nainstalovat OpenSSL, což je předpoklad pro .NET Core, který rozšíření MSSQL používá. Otevřete terminál a zadejte následující příkazy, abyste nainstalovali **brew** a **OpenSSL**.
+Pro macOS musíte nainstalovat OpenSSL, což je předpoklad pro .NET Core, který rozšíření MSSQL používá. Otevřete terminál a zadejte následující příkazy, abyste nainstalovali **brew** a **OpenSSL** .
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -74,7 +74,7 @@ Není potřeba žádná zvláštní konfigurace.
 
 Získejte informace o připojení, které potřebujete pro připojení k Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL**  nebo **spravované instance SQL** .
 
@@ -86,11 +86,11 @@ V Visual Studio Code nastavte jazykový režim na **SQL**  , aby se povolily př
 
 1. Otevřete nové okno nástroje Visual Studio Code.
 
-2. Stiskněte klávesu **CTRL** + **N**. Otevře se nový soubor s prostým textem.
+2. Stiskněte klávesu **CTRL** + **N** . Otevře se nový soubor s prostým textem.
 
 3. V pravém dolním rohu stavového řádku vyberte **prostý text** .
 
-4. V rozevírací nabídce **Vybrat režim jazyka** vyberte **SQL**.
+4. V rozevírací nabídce **Vybrat režim jazyka** vyberte **SQL** .
 
 ## <a name="connect-to-your-database"></a>Připojení k databázi
 
@@ -99,17 +99,17 @@ K navázání připojení k serveru použijte Visual Studio Code.
 > [!IMPORTANT]
 > Než budete pokračovat, ujistěte se, že máte server a že se přihlásíte k informacím. Když začnete zadávat informace o profilu připojení, budete muset při změně fokusu z Visual Studio Code znovu vytvořit profil.
 
-1. V Visual Studio Code stisknutím **kombinace kláves CTRL + SHIFT + P** (nebo **F1**) otevřete paletu příkazů.
+1. V Visual Studio Code stisknutím **kombinace kláves CTRL + SHIFT + P** (nebo **F1** ) otevřete paletu příkazů.
 
-2. Vyberte **MS SQL: Connect** a zvolte **ENTER**.
+2. Vyberte **MS SQL: Connect** a zvolte **ENTER** .
 
-3. Vyberte **vytvořit profil připojení**.
+3. Vyberte **vytvořit profil připojení** .
 
 4. Podle pokynů zadejte vlastnosti připojení nového profilu. Po zadání všech hodnot vyberte **ENTER** a pokračujte.
 
    | Vlastnost       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **mynewserver20170313.Database.Windows.NET**. |
+   | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **mynewserver20170313.Database.Windows.NET** . |
    | **Název databáze** | mySampleDatabase | Databáze, ke které se chcete připojit |
    | **Authentication** | Přihlášení k SQL| V tomto kurzu se používá ověřování SQL. |
    | **Uživatelské jméno** | Uživatelské jméno | Uživatelské jméno účtu správce serveru použitého k vytvoření serveru. |
@@ -121,7 +121,7 @@ K navázání připojení k serveru použijte Visual Studio Code.
 
 ## <a name="query-data"></a>Dotazování dat
 
-Spusťte [následující příkaz](https://msdn.microsoft.com/library/ms189499.aspx) jazyka Transact-SQL pro dotaz na prvních 20 produktů podle kategorie.
+Spusťte [následující příkaz](/sql/t-sql/queries/select-transact-sql) jazyka Transact-SQL pro dotaz na prvních 20 produktů podle kategorie.
 
 1. V okně editoru vložte následující dotaz SQL.
 
@@ -138,7 +138,7 @@ Spusťte [následující příkaz](https://msdn.microsoft.com/library/ms189499.a
 
 ## <a name="insert-data"></a>Vložení dat
 
-Spuštěním následujícího příkazu [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) -SQL přidejte do tabulky nový produkt `SalesLT.Product` .
+Spuštěním následujícího příkazu [INSERT](/sql/t-sql/statements/insert-transact-sql) -SQL přidejte do tabulky nový produkt `SalesLT.Product` .
 
 1. Nahraďte předchozí dotaz tímto.
 
@@ -166,7 +166,7 @@ Spuštěním následujícího příkazu [INSERT](https://msdn.microsoft.com/libr
 
 ## <a name="update-data"></a>Aktualizace dat
 
-Pokud chcete aktualizovat přidaný produkt, spusťte následující příkaz Transact-SQL [Update](https://msdn.microsoft.com/library/ms177523.aspx) .
+Pokud chcete aktualizovat přidaný produkt, spusťte následující příkaz Transact-SQL [Update](/sql/t-sql/queries/update-transact-sql) .
 
 1. Nahraďte předchozí dotaz jedním z těchto:
 
@@ -180,7 +180,7 @@ Pokud chcete aktualizovat přidaný produkt, spusťte následující příkaz Tr
 
 ## <a name="delete-data"></a>Odstranění dat
 
-Pokud chcete nový produkt odebrat, spusťte následující příkaz Transact-SQL [Delete](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) .
+Pokud chcete nový produkt odebrat, spusťte následující příkaz Transact-SQL [Delete](/sql/t-sql/statements/delete-transact-sql) .
 
 1. Nahraďte předchozí dotaz jedním z těchto:
 
@@ -195,4 +195,4 @@ Pokud chcete nový produkt odebrat, spusťte následující příkaz Transact-SQ
 
 - Informace o připojení a dotazování pomocí SQL Server Management Studio najdete v tématu [rychlý Start: použití SQL Server Management Studio k připojení k databázi v Azure SQL Database a dotazování na data](connect-query-ssms.md).
 - Informace o připojení a dotazování pomocí Azure Portal najdete v tématu [rychlý Start: použití Editoru dotazů SQL v Azure Portal k připojení a dotazování dat](connect-query-portal.md).
-- Článek z časopisu MSDN o použití editoru Visual Studio Code najdete v blogovém příspěvku [Vytvoření databáze IDE s rozšířením MSSQL](https://msdn.microsoft.com/magazine/mt809115).
+- Článek z časopisu MSDN o použití editoru Visual Studio Code najdete v blogovém příspěvku [Vytvoření databáze IDE s rozšířením MSSQL](/archive/msdn-magazine/2017/june/data-points-visual-studio-code-create-a-database-ide-with-mssql-extension).

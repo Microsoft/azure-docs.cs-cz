@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282298"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669631"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -165,8 +165,7 @@ Překladatel detekuje následující jazyky pro překlad a převod.
 |Paštština|    `ps`    |
 |Perština|   `fa`    |
 |Polština|    `pl`    |
-|Portugalština (Brazílie)|   `pt-br` |
-|portugalština (Portugalsko)| `pt-pt` |
+|Portugalština|    `pt`    |
 |Rumunština|  `ro`    |
 |Ruština|   `ru`    |
 |Srbština (cyrilice)|    `sr-Cyrl`|

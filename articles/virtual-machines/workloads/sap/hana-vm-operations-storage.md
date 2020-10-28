@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 10/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9194b461cdceab889e1dfd20e3e70f3f69cb4369
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978250"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670670"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -44,9 +44,9 @@ Minimální SAP HANA certifikované podmínky pro různé typy úložišť:
 
 - Služba Azure Premium Storage podporuje službu Azure Premium Storage – **/hana/log** [akcelerátor zápisu](../../how-to-enable-write-accelerator.md). Svazek **/Hana/data** může být umístěný na Premium Storage bez použití Azure akcelerátor zápisu nebo na disku Ultra.
 - Azure Ultra disk alespoň pro svazek **/Hana/log** . Svazek **/Hana/data** můžete umístit do úložiště Premium Storage bez použití Azure akcelerátor zápisu nebo za účelem dosažení rychlejšího restartování Ultra disk
-- Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files **/Hana/log a/Hana/data**. Svazek/Hana/Shared může používat protokol NFS v3 nebo NFS verze 4.1.
+- Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files **/Hana/log a/Hana/data** . Svazek/Hana/Shared může používat protokol NFS v3 nebo NFS verze 4.1.
 
-Některé typy úložišť lze kombinovat. Například je možné umístit **/Hana/data** do služby Premium Storage a **/Hana/log** je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Pokud používáte svazek založený na ANF pro **/Hana/data**, musí být  **/Hana/log** svazek založen na systému souborů NFS nad ANF. Použití systému souborů NFS nad ANF pro jeden ze svazků (jako je/Hana/data) a Azure Premium Storage nebo Ultra disk pro ostatní svazky (jako **/Hana/log** **) se nepodporuje.**
+Některé typy úložišť lze kombinovat. Například je možné umístit **/Hana/data** do služby Premium Storage a **/Hana/log** je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Pokud používáte svazek založený na ANF pro **/Hana/data** , musí být  **/Hana/log** svazek založen na systému souborů NFS nad ANF. Použití systému souborů NFS nad ANF pro jeden ze svazků (jako je/Hana/data) a Azure Premium Storage nebo Ultra disk pro ostatní svazky (jako **/Hana/log** **) se nepodporuje.**
 
 V místním světě se zřídka postará o subsystémech I/O a jeho schopnosti. Důvodem je, že dodavatel zařízení musí zajistit, aby byly splněny minimální požadavky na úložiště pro SAP HANA. Při sestavování infrastruktury Azure byste si měli být vědomi některých z těchto požadavků na vydaných SAP. Některé z minimálních vlastností propustnosti, které SAP doporučuje, jsou:
 
@@ -93,7 +93,7 @@ Doporučení pro ukládání do mezipaměti pro disky Azure Premium níže jsou 
 - **Disk s operačním systémem** – neměňte výchozí ukládání do mezipaměti, které se nastavuje v Azure v době vytváření virtuálního počítače.
 
 
-Pokud používáte LVM nebo mdadm k sestavování sad Stripe Sets na několika discích Azure Premium, je potřeba definovat velikosti pruhů. Tyto velikosti se liší mezi **/Hana/data** a **/Hana/log**. **Doporučení: jako velikost pruhů se má doporučení použít:**
+Pokud používáte LVM nebo mdadm k sestavování sad Stripe Sets na několika discích Azure Premium, je potřeba definovat velikosti pruhů. Tyto velikosti se liší mezi **/Hana/data** a **/Hana/log** . **Doporučení: jako velikost pruhů se má doporučení použít:**
 
 - 256 KB pro **/Hana/data**
 - 64 KB pro **/Hana/log**
@@ -143,36 +143,36 @@ Obzvláště na menších systémech DBMS, kde vaše úloha zpracovává jenom n
 
 Konfigurace pro svazek SAP **/Hana/data** :
 
-| Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /hana/data | Maximální propustnost shluku | IOPS | Shlukový IOPS |
+| Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /hana/data | Zřízená propustnost | Maximální propustnost shluku | IOPS | Shlukový IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MB/s | 4 x P6 | 680 MB/s | 960 | 14 000 |
-| M32ls | 256 GB | 500 MB/s | 4 x P6 | 680 MB/s | 960 | 14 000 |
-| M64ls | 512 GiB | 1 000 MB/s | 4 x P10 |  680 MB/s | 2 000 | 14 000 |
-| M64s | 1 000 GiB | 1 000 MB/s | 4 x P15 | 680 MB/s | 4 400 | 14 000 |
-| M64ms | 1 750 GiB | 1 000 MB/s | 4 x P20 | 680 MB/s | 9 200 | 14 000 |  
-| M128s | 2 000 GiB | 2 000 MB/s | 4 x P20 | 680 MB/s | 9 200| 14 000 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 4 x P30 | 800 MB/s (zřízené) | 20 000 | bez shluku | 
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 x P30 | 800 MB/s (zřízené) | 20 000| bez shluku | 
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 4 x P40 | 1 000 MB/s (zřízené) | 25 000 | bez shluku |
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 4 x P40 | 1 000 MB/s (zřízené) | 25 000 | bez shluku |
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 4 x P50 | 2 000 MB/s (zřízené) | 25 000 | bez shluku |
+| M32ts | 192 GiB | 500 MB/s | 4 x P6 | 200 MB/s | 680 MB/s | 960 | 14 000 |
+| M32ls | 256 GB | 500 MB/s | 4 x P6 | 200 MB/s | 680 MB/s | 960 | 14 000 |
+| M64ls | 512 GiB | 1 000 MB/s | 4 x P10 | 400 MB/s | 680 MB/s | 2 000 | 14 000 |
+| M64s | 1 000 GiB | 1 000 MB/s | 4 x P15 | 500 MB/s | 680 MB/s | 4 400 | 14 000 |
+| M64ms | 1 750 GiB | 1 000 MB/s | 4 x P20 | 600 MB/s | 680 MB/s | 9 200 | 14 000 |  
+| M128s | 2 000 GiB | 2 000 MB/s | 4 x P20 | 600 MB/s | 680 MB/s | 9 200| 14 000 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 4 x P30 | 800 MB/s | bez shlukování | 20 000 | bez shlukování | 
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 x P30 | 800 MB/s | bez shlukování | 20 000| bez shlukování | 
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 4 x P40 | 1 000 MB/s | bez shlukování | 30 000 | bez shlukování |
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 4 x P40 | 1 000 MB/s | bez shlukování | 30 000 | bez shlukování |
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 4 x P50 | 2 000 MB/s | bez shlukování | 30 000 | bez shlukování |
 
 
 Pro svazek **/Hana/log** . konfigurace by vypadala takto:
 
-| Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | **/Hana/log** svazek | Maximální propustnost shluku | IOPS | Shlukový IOPS |
+| Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | **/Hana/log** svazek | Zřízená propustnost | Maximální propustnost shluku | IOPS | Shlukový IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
-| M32ts | 192 GiB | 500 MB/s | 3 x P10 | 510 MB/s | 1 500 | 10 500 | 
-| M32ls | 256 GB | 500 MB/s | 3 x P10 | 510 MB/s | 1 500 | 10 500 | 
-| M64ls | 512 GiB | 1 000 MB/s | 3 x P10 | 510 MB/s | 1 500 | 10 500 | 
-| M64s | 1 000 GiB | 1 000 MB/s | 3 x P15 | 510 MB/s | 3 300 | 10 500 | 
-| M64ms | 1 750 GiB | 1 000 MB/s | 3 x P15 | 510 MB/s | 3 300 | 10 500 |  
-| M128s | 2 000 GiB | 2 000 MB/s | 3 x P15 | 510 MB/s | 3 300 | 10 500|  
-| M128ms | 3 800 GiB | 2 000 MB/s | 3 x P15 | 510 MB/s | 3 300 | 10 500 | 
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 x P15 | 510 MB/s | 3 300 | 10 500 |  
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 3 x P15 | 510 MB/s | 3 300 | 10 500 |  
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 3 x P15 | 510 MB/s | 3 300 | 10 500 |  
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 3 x P15 | 510 MB/s | 3 300 | 10 500 | 
+| M32ts | 192 GiB | 500 MB/s | 3 x P10 | 300 MB/s | 510 MB/s | 1 500 | 10 500 | 
+| M32ls | 256 GB | 500 MB/s | 3 x P10 | 300 MB/s | 510 MB/s | 1 500 | 10 500 | 
+| M64ls | 512 GiB | 1 000 MB/s | 3 x P10 | 300 MB/s | 510 MB/s | 1 500 | 10 500 | 
+| M64s | 1 000 GiB | 1 000 MB/s | 3 x P15 | 375 MB/s | 510 MB/s | 3 300 | 10 500 | 
+| M64ms | 1 750 GiB | 1 000 MB/s | 3 x P15 | 375 MB/s | 510 MB/s | 3 300 | 10 500 |  
+| M128s | 2 000 GiB | 2 000 MB/s | 3 x P15 | 375 MB/s | 510 MB/s | 3 300 | 10 500|  
+| M128ms | 3 800 GiB | 2 000 MB/s | 3 x P15 | 375 MB/s | 510 MB/s | 3 300 | 10 500 | 
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 x P15 | 375 MB/s | 510 MB/s | 3 300 | 10 500 |  
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 3 x P15 | 375 MB/s | 510 MB/s | 3 300 | 10 500 |  
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 3 x P15 | 375 MB/s | 510 MB/s | 3 300 | 10 500 |  
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 3 x P15 | 375 MB/s | 510 MB/s | 3 300 | 10 500 | 
 
 
 U ostatních svazků by konfigurace vypadala takto:
@@ -192,19 +192,19 @@ U ostatních svazků by konfigurace vypadala takto:
 | M416ms_v2 | 11 400 GiB | 2 000 MB/s | 1 × P30 | 1 × P10 | 1 × P6 | 
 
 
-Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log**, je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure.
+Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log** , je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure.
 
 Azure Akcelerátor zápisu funguje jenom ve spojení se službou [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Proto musí být alespoň disky Azure Premium Storage, které tvoří **/Hana/log** svazek, nasazeny jako spravované disky. Podrobnější pokyny a omezení služby Azure Akcelerátor zápisu najdete v článku [akcelerátor zápisu](../../how-to-enable-write-accelerator.md).
 
 Pro virtuální počítače s certifikací HANA řady Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) a [EDSV4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)je nutné ANF pro **/Hana/data** a **/Hana/log** svazek. Nebo potřebujete místo Azure Premium Storage využívat službu Azure Ultra disk Storage jenom pro svazek **/Hana/log** . V důsledku toho by konfigurace pro **/Hana/data** svazek v Azure Premium Storage vypadala takto:
 
-| Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /hana/data | Maximální propustnost shluku | IOPS | Shlukový IOPS |
+| Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /hana/data | Zřízená propustnost | Maximální propustnost shluku | IOPS | Shlukový IOPS |
 | --- | --- | --- | --- | --- | --- | --- |
-| E20ds_v4 | 160 GiB | 480 MB/s | 3 x P10 | 510 MB/s | 1 500 | 10 500 |
-| E32ds_v4 | 256 GB | 768 MB/s | 3 x P10 |  510 MB/s | 1 500 | 10 500|
-| E48ds_v4 | 384 GiB | 1 152 MB/s | 3 x P15 |  510 MB/s | 3 300  | 10 500 | 
-| E64ds_v4 | 504 GiB | 1 200 MB/s | 3 x P15 |  510 MB/s | 3 300 | 10 500 | 
-| E64s_v3 | 432 GiB | 1 200 MB/s | 3 x P15 |  510 MB/s | 3 300 | 10 500 | 
+| E20ds_v4 | 160 GiB | 480 MB/s | 3 x P10 | 300 MB/s | 510 MB/s | 1 500 | 10 500 |
+| E32ds_v4 | 256 GB | 768 MB/s | 3 x P10 |  300 MB/s | 510 MB/s | 1 500 | 10 500|
+| E48ds_v4 | 384 GiB | 1 152 MB/s | 3 x P15 |  375 MB/s |510 MB/s | 3 300  | 10 500 | 
+| E64ds_v4 | 504 GiB | 1 200 MB/s | 3 x P15 |  375 MB/s | 510 MB/s | 3 300 | 10 500 | 
+| E64s_v3 | 432 GiB | 1 200 MB/s | 3 x P15 |  375 MB/s | 510 MB/s | 3 300 | 10 500 | 
 
 U ostatních svazků, včetně **/Hana/log** na disku Ultra, může konfigurace vypadat takto:
 
