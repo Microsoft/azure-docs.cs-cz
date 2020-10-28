@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: fcf06c280a93489b2e958b9baff2e132da37c005
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 81a735966b2a0ebdd7c8fcd9e9aa467d68aac354
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426460"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792748"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -111,11 +111,12 @@ Existují čtyři aspekty, které je třeba vzít v úvahu při použití odchoz
 
 Povolte přístup k následujícím adresám URL:
 
-| URL | Jak se používá |
-| --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
-| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>www.d-trust.net<br>root-c3-ca2-2009.ocsp.d-trust.net<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | Konektor používá tyto adresy URL k ověření certifikátů. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.NET <br> *. msauthimages.net<br>*. msecnd.NET <br> *. msftauth.net<br>*. msftauthimages.NET <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Konektor tyto adresy URL používá během procesu registrace. |
+| URL | Port |  Jak se používá |
+| --- | --- | --- |
+| &ast;. msappproxy.net<br>&ast;. servicebus.windows.net | 443/HTTPS | Komunikace mezi konektorem a cloudovou službou proxy aplikací |
+| crl3.digicert.com<br>crl4.digicert.com<br>ocsp.digicert.com<br>crl.microsoft.com<br>oneocsp.microsoft.com<br>ocsp.msocsp.com<br> | 80/HTTP | Konektor používá tyto adresy URL k ověření certifikátů. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS | Konektor tyto adresy URL používá během procesu registrace. |
+| ctldl.windowsupdate.com | 80/HTTP | Konektor používá tuto adresu URL během procesu registrace. |
 
 Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete povolit připojení k \* příponám. msappproxy.NET a \* . ServiceBus.Windows.NET.
 
@@ -178,7 +179,7 @@ Při prvotním řešení potíží proveďte následující kroky:
    ![Služba konektoru Azure Proxy aplikací služby AD v Services. msc](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
 1. Spusťte analyzátor zpráv jako správce.
-1. Vyberte **Spustit místní trasování**.
+1. Vyberte **Spustit místní trasování** .
 1. Spusťte službu konektoru Azure Proxy aplikací služby AD.
 1. Zastavte síťové zachycení.
 
@@ -188,7 +189,7 @@ Při prvotním řešení potíží proveďte následující kroky:
 
 Pokud jste proxy server aplikace nakonfigurovali tak, aby se nepoužívaly proxy servery a připojili se přímo k proxy službě aplikace, chcete se podívat na síťové zachycení pro neúspěšné pokusy o připojení TCP.
 
-Tyto pokusy Identifikujte pomocí filtru analyzátoru zpráv. `property.TCPSynRetransmit`Do pole Filtr zadejte a vyberte **použít**.
+Tyto pokusy Identifikujte pomocí filtru analyzátoru zpráv. `property.TCPSynRetransmit`Do pole Filtr zadejte a vyberte **použít** .
 
 Paket SYN je první paket odeslaný k navázání připojení TCP. Pokud tento paket nevrátí odpověď, dojde k pokusu o SYN. K zobrazení všech přenesených SYNs můžete použít předchozí filtr. Pak můžete ověřit, zda tyto SYNs odpovídají jakýmkoli přenosům spojeným s konektorem.
 

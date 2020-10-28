@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 67d1979ccbfbffc17ba450600e605a96911c8331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35738db5b7bd4a1ac7aaf94e2dc5f1d26a075cdf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056335"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791830"
 ---
 # <a name="repairing-an-export-job"></a>Oprava úlohy exportu
 Po dokončení úlohy exportu můžete spustit nástroj Microsoft Azure Import/Export místně a:  
@@ -24,11 +24,11 @@ Po dokončení úlohy exportu můžete spustit nástroj Microsoft Azure Import/E
   
 Abyste mohli tuto funkci používat, musíte mít připojení k Azure Storage.  
   
-Příkaz pro opravu úlohy importu je **RepairExport**.
+Příkaz pro opravu úlohy importu je **RepairExport** .
 
 ## <a name="repairexport-parameters"></a>Parametry RepairExport
 
-Pomocí **RepairExport**lze zadat následující parametry:  
+Pomocí **RepairExport** lze zadat následující parametry:  
   
 |Parametr|Popis|  
 |---------------|-----------------|  
@@ -81,7 +81,7 @@ Soubor protokolu kopírování indikuje, že došlo k chybě, když služba Wind
 ## <a name="using-repairexport-to-validate-drive-contents"></a>Ověření obsahu jednotky pomocí RepairExport  
 K ověření, jestli je obsah na disku správný, můžete taky použít Azure import/export s možností **RepairExport** . Soubor manifestu na každé jednotce pro export obsahuje MD5s pro obsah jednotky.  
   
-Služba import/export v Azure může také ukládat soubory manifestu do účtu úložiště během procesu exportu. Umístění souborů manifestu je k dispozici prostřednictvím operace [získat úlohu](/rest/api/storageimportexport/jobs) po dokončení úlohy. Další informace o formátu souboru manifestu jednotky najdete v tématu [Formát souboru manifestu služby Import/export](storage-import-export-file-format-metadata-and-properties.md).  
+Služba import/export v Azure může také ukládat soubory manifestu do účtu úložiště během procesu exportu. Umístění souborů manifestu je k dispozici prostřednictvím operace [získat úlohu](/rest/api/storageimportexport/jobs) po dokončení úlohy. Další informace o formátu souboru manifestu jednotky najdete v tématu [Formát souboru manifestu služby Import/export](/previous-versions/azure/storage/common/storage-import-export-file-format-metadata-and-properties).  
   
 Následující příklad ukazuje, jak spustit nástroj pro import/export Azure s parametry **/MANIFESTFILE** a **/CopyLogFile** :  
   
@@ -153,6 +153,6 @@ Všechny součásti, které selžou ověření, budou staženy nástrojem a pře
 ## <a name="next-steps"></a>Další kroky
  
 * [Nastavení nástroje Azure pro import/export](storage-import-export-tool-setup-v1.md)   
-* [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Příprava pevných disků pro úlohu importu](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Oprava úlohy importu](storage-import-export-tool-repairing-an-import-job-v1.md)

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 63b93db314701d281f3f4fff195671f43cdb9dbc
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: dd4a7537e01c9e97997be64bb478e86a64f4325b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340882"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792255"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Další ochrana před hrozbami v Azure Security Center
 I integrované [ochrany v Azure defenderu](azure-defender.md)Azure Security Center taky nabízí následující možnosti ochrany před hrozbami.
@@ -48,10 +48,10 @@ Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce
 >[!NOTE]
 > Některé z předchozích analýz jsou napájené z Microsoft Cloud App Security. Pokud chcete tyto analýzy využít, musíte aktivovat licenci Cloud App Security. Pokud máte licenci Cloud App Security, jsou tyto výstrahy ve výchozím nastavení povolené. Zakázání výstrah:
 >
-> 1. V nabídce Security Center vyberte **cenové & nastavení**.
+> 1. V nabídce Security Center vyberte **cenové & nastavení** .
 > 1. Vyberte předplatné, které chcete změnit.
-> 1. Vyberte **detekci hrozeb**.
-> 1. Zrušte zaškrtnutí políčka **Allow Microsoft Cloud App Security pro přístup k datům**a vyberte **Uložit**.
+> 1. Vyberte **detekci hrozeb** .
+> 1. Zrušte zaškrtnutí políčka **Allow Microsoft Cloud App Security pro přístup k datům** a vyberte **Uložit** .
 
 
 >[!NOTE]
@@ -59,7 +59,7 @@ Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce
 
 1. Nastavte pracovní prostor, do kterého instalujete agenta. Ujistěte se, že je pracovní prostor ve stejném předplatném, které používáte v Security Center a máte oprávnění ke čtení a zápisu v pracovním prostoru.
 
-1. Povolte **Azure Defender**a vyberte **Uložit**.
+1. Povolte **Azure Defender** a vyberte **Uložit** .
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Ochrana před hrozbami pro Azure Cosmos DB (Preview)<a name="cosmos-db"></a>
@@ -101,4 +101,4 @@ Další informace o výstrahách zabezpečení z těchto funkcí ochrany před h
 * [Referenční tabulka pro všechny výstrahy Azure Security Center](alerts-reference.md)
 * [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
 * [Správa a reakce na upozornění zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Exportovat výstrahy a doporučení zabezpečení (Preview)](continuous-export.md)
+* [Průběžný export Security Center dat](continuous-export.md)

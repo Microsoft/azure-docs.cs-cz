@@ -4,19 +4,19 @@ description: Vytvořte v Azure SQL Database izolovanou databázi pomocí Azure P
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: contperfq1
+ms.custom: contperfq1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 6a0d81cc9954f934395bc275785bda34c55c35bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab920a05f255e38905f9ff79f08f2bfa0c6540b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91263398"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791507"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rychlý Start: vytvoření samostatné databáze Azure SQL Database
 
@@ -37,24 +37,24 @@ V tomto rychlém startu se vytvoří jedna databáze na [výpočetní úrovni be
 Pokud chcete v Azure Portal vytvořit izolovanou databázi, spustí se v tomto rychlém startu na stránce Azure SQL.
 
 1. Přejděte na stránku [možnost vybrat nasazení systému SQL](https://portal.azure.com/#create/Microsoft.AzureSQL) .
-1. V části **databáze SQL**ponechte **typ prostředku** nastavený na izolovaná **databáze**a vyberte **vytvořit**.
+1. V části **databáze SQL** ponechte **typ prostředku** nastavený na izolovaná **databáze** a vyberte **vytvořit** .
 
    ![Přidat do Azure SQL](./media/single-database-create-quickstart/select-deployment.png)
 
-1. Na kartě **základy** formuláře **vytvořit SQL Database** v části **Project Details (podrobnosti projektu**) vyberte požadované **předplatné**Azure.
-1. V případě **skupiny prostředků**vyberte **vytvořit novou**, zadejte *myResourceGroup*a vyberte **OK**.
-1. Jako **název databáze** zadejte *mySampleDatabase*.
-1. Pro možnost **Server**vyberte **vytvořit novou**a vyplňte formulář **nového serveru** následujícími hodnotami:
-   - **Název serveru**: zadejte *MySQLServer*a přidejte některé znaky pro jedinečnost. Nemůžeme zadat přesný název serveru, protože názvy serverů musí být globálně jedinečné pro všechny servery v Azure, ne jen jedinečné v rámci předplatného. Zadejte tak něco jako mysqlserver12345 a portál vám umožní zjistit, jestli je k dispozici, nebo ne.
-   - **Přihlašovací jméno správce serveru**: zadejte *azureuser*.
-   - **Heslo**: zadejte heslo, které splňuje požadavky, a znovu ho zadejte do pole **Potvrdit heslo** .
-   - **Umístění**: v rozevíracím seznamu vyberte umístění.
+1. Na kartě **základy** formuláře **vytvořit SQL Database** v části **Project Details (podrobnosti projektu** ) vyberte požadované **předplatné** Azure.
+1. V případě **skupiny prostředků** vyberte **vytvořit novou** , zadejte *myResourceGroup* a vyberte **OK** .
+1. Jako **název databáze** zadejte *mySampleDatabase* .
+1. Pro možnost **Server** vyberte **vytvořit novou** a vyplňte formulář **nového serveru** následujícími hodnotami:
+   - **Název serveru** : zadejte *MySQLServer* a přidejte některé znaky pro jedinečnost. Nemůžeme zadat přesný název serveru, protože názvy serverů musí být globálně jedinečné pro všechny servery v Azure, ne jen jedinečné v rámci předplatného. Zadejte tak něco jako mysqlserver12345 a portál vám umožní zjistit, jestli je k dispozici, nebo ne.
+   - **Přihlašovací jméno správce serveru** : zadejte *azureuser* .
+   - **Heslo** : zadejte heslo, které splňuje požadavky, a znovu ho zadejte do pole **Potvrdit heslo** .
+   - **Umístění** : v rozevíracím seznamu vyberte umístění.
 
-   Vyberte **OK**.
+   Vyberte **OK** .
 
-1. Nechte **použít elastický fond SQL** nastavený na **ne**.
-1. V části **Výpočty + úložiště** vyberte **Konfigurovat databázi**.
-1. V tomto rychlém startu se používá databáze bez serveru, vyberte možnost bez **serveru**a pak vyberte **použít**. 
+1. Nechte **použít elastický fond SQL** nastavený na **ne** .
+1. V části **Výpočty + úložiště** vyberte **Konfigurovat databázi** .
+1. V tomto rychlém startu se používá databáze bez serveru, vyberte možnost bez **serveru** a pak vyberte **použít** . 
 
       ![Konfigurace databáze bez serveru](./media/single-database-create-quickstart/configure-database.png)
 
@@ -62,19 +62,19 @@ Pokud chcete v Azure Portal vytvořit izolovanou databázi, spustí se v tomto r
 
    ![Nová databáze SQL – karta Basic](./media/single-database-create-quickstart/new-sql-database-basics.png)
 
-1. Na kartě **sítě** pro **metodu připojení**vyberte **veřejný koncový bod**.
-1. Pro **pravidla brány firewall**nastavte **Přidat aktuální IP adresu klienta** na **Ano**. Nechejte **službám a prostředkům Azure přístup k tomuto serveru** nastavenému na **ne**.
+1. Na kartě **sítě** pro **metodu připojení** vyberte **veřejný koncový bod** .
+1. Pro **pravidla brány firewall** nastavte **Přidat aktuální IP adresu klienta** na **Ano** . Nechejte **službám a prostředkům Azure přístup k tomuto serveru** nastavenému na **ne** .
 1. Vyberte **Další: Další nastavení** v dolní části stránky.
 
    ![Karta sítě](./media/single-database-create-quickstart/networking.png)
   
 
-1. Na kartě **Další nastavení** v části **zdroj dat** pro možnost **použít existující data**vyberte **Ukázka**. Tím se vytvoří ukázková databáze AdventureWorksLT, aby byly k dispozici některé tabulky a data pro dotazování a experimentování s, a to na rozdíl od prázdné prázdné databáze.
+1. Na kartě **Další nastavení** v části **zdroj dat** pro možnost **použít existující data** vyberte **Ukázka** . Tím se vytvoří ukázková databáze AdventureWorksLT, aby byly k dispozici některé tabulky a data pro dotazování a experimentování s, a to na rozdíl od prázdné prázdné databáze.
 1. V dolní části stránky vyberte **zkontrolovat + vytvořit** :
 
    ![Karta Další nastavení](./media/single-database-create-quickstart/additional-settings.png)
 
-1. Po kontrole vyberte na stránce **Revize + vytvořit** možnost **vytvořit**.
+1. Po kontrole vyberte na stránce **Revize + vytvořit** možnost **vytvořit** .
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -171,7 +171,7 @@ Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém ho
 
 ## <a name="set-parameter-values"></a>Nastavení hodnot parametrů
 
-Následující hodnoty se používají v dalších příkazech k vytvoření databáze a požadovaných prostředků. Názvy serverů musí být globálně jedinečné ve všech verzích Azure, aby bylo možné vytvořit název serveru pomocí rutiny Get-Random. Nahraďte hodnoty 0.0.0.0 v rozsahu IP adres tak, aby odpovídaly vašemu konkrétnímu prostředí.
+Následující hodnoty se používají v dalších příkazech k vytvoření databáze a požadovaných prostředků. Názvy serverů musí být globálně jedinečné napříč všemi Azure, aby se k vytvoření názvu serveru použila rutina Get-Random. Nahraďte hodnoty 0.0.0.0 v rozsahu IP adres tak, aby odpovídaly vašemu konkrétnímu prostředí.
 
 ```azurepowershell-interactive
    # Set variables for your server and database
@@ -256,9 +256,9 @@ Vytvořte izolovanou databázi pomocí rutiny [New-AzSqlDatabase](/powershell/mo
 
 Po vytvoření databáze můžete použít **Editor dotazů (Preview)** v Azure Portal pro připojení k databázi a dotazování na data.
 
-1. Na portálu vyhledejte a vyberte **databáze SQL**a pak ze seznamu vyberte svou databázi.
+1. Na portálu vyhledejte a vyberte **databáze SQL** a pak ze seznamu vyberte svou databázi.
 1. Na stránce databáze v levé nabídce vyberte **Editor dotazů (Preview)** .
-1. Zadejte přihlašovací údaje správce serveru a vyberte **OK**.
+1. Zadejte přihlašovací údaje správce serveru a vyberte **OK** .
 
    ![Přihlášení k editoru dotazů](./media/single-database-create-quickstart/query-editor-login.png)
 
@@ -271,7 +271,7 @@ Po vytvoření databáze můžete použít **Editor dotazů (Preview)** v Azure 
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-1. Vyberte **Spustit**a potom zkontrolujte výsledky dotazu v podokně **výsledků** .
+1. Vyberte **Spustit** a potom v podokně **Výsledky** zkontrolujte výsledky dotazu.
 
    ![Výsledky editoru dotazů](./media/single-database-create-quickstart/query-editor-results.png)
 
@@ -287,9 +287,9 @@ Po dokončení používání těchto prostředků můžete odstranit vytvořenou
 
 Chcete-li odstranit **myResourceGroup** a všechny jeho prostředky pomocí Azure Portal:
 
-1. Na portálu vyhledejte a vyberte **skupiny prostředků**a v seznamu vyberte **myResourceGroup** .
-1. Na stránce skupina prostředků vyberte **Odstranit skupinu prostředků**.
-1. V části **Zadejte název skupiny prostředků**zadejte *myResourceGroup*a pak vyberte **Odstranit**.
+1. Na portálu vyhledejte a vyberte **skupiny prostředků** a v seznamu vyberte **myResourceGroup** .
+1. Na stránce skupina prostředků vyberte **Odstranit skupinu prostředků** .
+1. V části **Zadejte název skupiny prostředků** zadejte *myResourceGroup* a pak vyberte **Odstranit** .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -320,4 +320,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Chcete optimalizovat a uložit své útraty do cloudu?
 
 > [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Zahájení analýzy nákladů pomocí Cost Management](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

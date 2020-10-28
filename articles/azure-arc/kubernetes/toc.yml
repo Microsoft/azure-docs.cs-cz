@@ -33,3 +33,7 @@
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: Zdroje a prostředky
+  items:
+    - name: Rychlé zprovoznění služby Azure Arc
+      href: 'https://github.com/microsoft/azure_arc'

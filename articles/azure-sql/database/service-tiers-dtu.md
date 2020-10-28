@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102995"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793173"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -54,7 +54,7 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 >
 
 > [!TIP]
-> Pokud chcete zobrazit skutečná omezení [zásad správného řízení prostředků](resource-limits-logical-server.md#resource-governance) pro databázi nebo elastický fond, Dotazujte zobrazení [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) .
+> Pokud chcete zobrazit skutečná omezení [zásad správného řízení prostředků](resource-limits-logical-server.md#resource-governance) pro databázi nebo elastický fond, Dotazujte zobrazení [Sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) .
 
 > [!NOTE]
 > Pokud chcete prozkoumat Azure, můžete získat bezplatnou databázi v Azure SQL Database v základní úrovni služby ve spojení s bezplatným účtem Azure. Informace najdete v tématu [Vytvoření spravované cloudové databáze pomocí bezplatného účtu Azure](https://azure.microsoft.com/free/services/sql-database/).
@@ -73,7 +73,7 @@ Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (D
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Omezení eDTU elastického fondu, úložiště a databáze ve fondu
 
-|| **Basic** | **Standard** | **Premium** |
+|| **Basic** | **Standard** | **Nárok** |
 | :-- | --: | --: | --: |
 | **Maximální velikost úložiště na databázi**  | 2 GB | 1 TB | 1 TB |
 | **Maximální velikost úložiště na fond** | 156 GB | 4 TB | 4 TB |
@@ -176,7 +176,7 @@ Klíčové metriky v srovnávacím testu jsou propustnost a doba odezvy.
 | Třída služby | Míra propustnosti | Doba odezvy – požadavek |
 | --- | --- | --- |
 | Premium |Transakcí za sekundu |95. percentil v 0,5 sekundách |
-| Standard |Transakcí za minutu |90. percentil v 1,0 sekundách |
+| Standardní |Transakcí za minutu |90. percentil v 1,0 sekundách |
 | Základní |Transakcí za hodinu |80th percentil v 2,0 sekundách |
 
 ## <a name="next-steps"></a>Další kroky

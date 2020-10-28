@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e44fe44285a6693583c1b16645ad0d023428c72b
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494639"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792425"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -41,11 +41,11 @@ Co je potřeba začít:
 
 Až budete připraveni přejít na instanci digitálního vlákna Azure, začněte nastavovat projekt klientské aplikace. 
 
-V počítači otevřete příkazový řádek nebo jiné okno konzoly a vytvořte prázdný adresář projektu, do kterého chcete během tohoto kurzu uložit práci. Pojmenujte adresář libovolným způsobem, který chcete (například *DigitalTwinsCodeTutorial*).
+V počítači otevřete příkazový řádek nebo jiné okno konzoly a vytvořte prázdný adresář projektu, do kterého chcete během tohoto kurzu uložit práci. Pojmenujte adresář libovolným způsobem, který chcete (například *DigitalTwinsCodeTutorial* ).
 
 Přejděte do nového adresáře.
 
-Jednou v adresáři projektu vytvořte prázdný projekt konzolové aplikace .NET. V příkazovém okně spusťte následující příkaz pro vytvoření minimálního projektu C# pro konzolu:
+Jednou v adresáři projektu **vytvořte prázdný projekt konzolové aplikace .NET** . V okně příkazového řádku můžete spuštěním následujícího příkazu vytvořit projekt minimálního C# pro konzolu:
 
 ```cmd/sh
 dotnet new console
@@ -53,16 +53,11 @@ dotnet new console
 
 Tím se vytvoří několik souborů v adresáři, včetně jednoho s názvem *program.cs* , kde budete psát většinu kódu.
 
-Dále přidejte dvě nezbytné závislosti pro práci s digitálními úkoly Azure:
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
-```
-
-První závislost je [sada Azure Digital dependencypropertys SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). Druhá závislost poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
-
 Nechejte příkazové okno otevřené, jak ho budete dál používat v průběhu tohoto kurzu.
+
+V dalším kroku **přidejte do projektu dvě závislosti** , které budete potřebovat pro práci s digitálními úkoly Azure pomocí digitálních vláken. Pomocí níže uvedených odkazů můžete přejít k balíčkům v NuGet, kde můžete najít příkazy konzoly (včetně rozhraní .NET CLI) a přidat do projektu nejnovější verzi.
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Toto je balíček pro [sadu Azure Digital Revlákens SDK pro .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true). 
+* [**Azure. identity**](https://www.nuget.org/packages/Azure.Identity). Tato knihovna poskytuje nástroje, které vám pomůžou s ověřováním v Azure.
 
 ## <a name="get-started-with-project-code"></a>Začínáme s kódem projektu
 
@@ -108,7 +103,7 @@ První věc, kterou bude vaše aplikace muset udělat, je ověřování vůči s
 
 Aby bylo možné ověřit, potřebujete *název hostitele* instance digitálního vlákna Azure.
 
-Do *program.cs*vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele*instance digitálního vlákna Azure.
+Do *program.cs* vložte následující kód pod text "Hello, World!". čára tisku v `Main` metodě Nastavte hodnotu `adtInstanceUrl` na *název hostitele* instance digitálního vlákna Azure.
 
 ```csharp
 string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
@@ -126,16 +121,16 @@ dotnet run
 ```
 
 Tato akce obnoví závislosti při prvním spuštění a pak program spustí. 
-* Pokud nedojde k žádné chybě, program vytiskne *klienta služby, který je vytvořený a připravený k přechodu*.
+* Pokud nedojde k žádné chybě, program vytiskne *klienta služby, který je vytvořený a připravený k přechodu* .
 * Vzhledem k tomu, že v tomto projektu není žádná manipulace s chybami, v případě chyby se zobrazí výjimka, která je vyvolána kódem.
 
 ### <a name="upload-a-model"></a>Nahrání modelu
 
-Digitální vlákna Azure nemá žádný vnitřní slovník domény. Typy prvků v prostředí, které můžete reprezentovat v rámci digitálních vláken Azure, jsou definovány pomocí **modelů**. [Modely](concepts-models.md) jsou podobné třídám v objektově orientovaném programovacím jazyce; poskytují uživatelsky definované šablony pro [digitální vlákna](concepts-twins-graph.md) , které budou následovat a vytvoří se později. Jsou napsané v jazyce podobném formátu JSON, který se nazývá **Digital DTDL (digitální vlákna Definition Language)**.
+Digitální vlákna Azure nemá žádný vnitřní slovník domény. Typy prvků v prostředí, které můžete reprezentovat v rámci digitálních vláken Azure, jsou definovány pomocí **modelů** . [Modely](concepts-models.md) jsou podobné třídám v objektově orientovaném programovacím jazyce; poskytují uživatelsky definované šablony pro [digitální vlákna](concepts-twins-graph.md) , které budou následovat a vytvoří se později. Jsou napsané v jazyce podobném formátu JSON, který se nazývá **Digital DTDL (digitální vlákna Definition Language)** .
 
 Prvním krokem při vytváření řešení digitálních vláken Azure je definování alespoň jednoho modelu v souboru DTDL.
 
-V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON* s názvem *SampleModel.jsv*. Vložte do následujícího textu souboru: 
+V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON* s názvem *SampleModel.jsv* . Vložte do následujícího textu souboru: 
 
 ```json
 {
@@ -158,7 +153,7 @@ V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON
 ```
 
 > [!TIP]
-> Pokud pro tento kurz používáte sadu Visual Studio, možná budete chtít vybrat nově vytvořený soubor JSON a nastavit vlastnost *Kopírovat do výstupního adresáře* v inspektoru vlastností na hodnotu *Kopírovat, pokud* je vždycky novější nebo *Kopírovat*. To umožní aplikaci Visual Studio najít soubor JSON s výchozí cestou při spuštění programu s klávesou **F5** během zbývající části kurzu.
+> Pokud pro tento kurz používáte sadu Visual Studio, možná budete chtít vybrat nově vytvořený soubor JSON a nastavit vlastnost *Kopírovat do výstupního adresáře* v inspektoru vlastností na hodnotu *Kopírovat, pokud* je vždycky novější nebo *Kopírovat* . To umožní aplikaci Visual Studio najít soubor JSON s výchozí cestou při spuštění programu s klávesou **F5** během zbývající části kurzu.
 
 > [!TIP] 
 > Je k dispozici [Ukázka validátoru](/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-parse-models.md).
@@ -263,7 +258,7 @@ Od tohoto okamžiku se v kurzu zabalí všechna volání metod služby v obsluž
 
 ### <a name="create-digital-twins"></a>Vytváření digitálních vláken
 
-Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytváření **digitálních vláken**použít tuto definici modelu. [Digitální vlákna](concepts-twins-graph.md) jsou instance modelu a představují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. Tato část vytvoří několik digitálních vláken na základě modelu, který jste nahráli dříve.
+Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytváření **digitálních vláken** použít tuto definici modelu. [Digitální vlákna](concepts-twins-graph.md) jsou instance modelu a představují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. Tato část vytvoří několik digitálních vláken na základě modelu, který jste nahráli dříve.
 
 Tyto nové příkazy přidejte v `using` horní části, protože tato ukázka kódu používá integrovaný serializátor .NET JSON v nástroji `System.Text.Json` a `Serialization` obor názvů z [sady SDK digitálních vláken Azure pro .NET (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) [Link MODIFIED for Preview]:
 
@@ -304,7 +299,7 @@ Všimněte si, že není vyvolána žádná chyba při druhém vytvoření vlák
 
 ### <a name="create-relationships"></a>Vytvoření relací
 
-V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými podmnožinami a propojit je s **dvojitým grafem**. K reprezentaci celého prostředí se používají [Dvojitá grafu](concepts-twins-graph.md) .
+V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými podmnožinami a propojit je s **dvojitým grafem** . K reprezentaci celého prostředí se používají [Dvojitá grafu](concepts-twins-graph.md) .
 
 Pro usnadnění vytváření relací používá tato ukázka kódu `Azure.DigitalTwins.Core.Serialization` obor názvů. Toto jste přidali do projektu dříve v části [*vytvořit digitální vlákna*](#create-digital-twins) .
 

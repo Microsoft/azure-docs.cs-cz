@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/16/2020
-ms.openlocfilehash: 41760eb91d2a8406d4deb52cd8e247731239e2b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d24143a440c0d30c3abcd6eb5efd454033b8f71c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309859"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791473"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování prostředků jednoúčelové databáze ve službě Azure SQL Database
 
 Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro Azure SQL Database v zřízené výpočetní úrovni. [Výpočetní úroveň bez serveru](serverless-tier-overview.md) navíc poskytuje výpočetní automatické škálování a účtuje se za sekundu za použití výpočtů.
 
-Po počátečním výběru počtu virtuální jádra nebo DTU můžete dynamicky škálovat jednu databázi na základě aktuálního prostředí pomocí [Azure Portal](single-database-manage.md#the-azure-portal), [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+Po počátečním výběru počtu virtuální jádra nebo DTU můžete dynamicky škálovat jednu databázi na základě aktuálního prostředí pomocí [Azure Portal](single-database-manage.md#the-azure-portal), [jazyka Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](/rest/api/sql/databases/update).
 
 Následující video ukazuje dynamicky se měnící úroveň služby a výpočetní velikost, aby se zvýšila dostupnost DTU pro izolovanou databázi.
 
@@ -58,7 +58,7 @@ Odhadovaná latence změny úrovně služby, škálování výpočetní velikost
 |**Hyperškálování**|N/A|N/A|N/A|&bull;&nbsp;Konstantní latence v čase nezávisle na využitém prostoru</br>&bull;&nbsp;Obvykle méně než 2 minuty|
 
 > [!NOTE]
-> Pro Standard (S2-S12) a Pro obecné účely databáze je navíc latence pro přesun databáze do elastického fondu nebo mezi elastickými fondy úměrná velikosti databáze, pokud databáze používá úložiště[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)(Premium File Share).
+> Pro Standard (S2-S12) a Pro obecné účely databáze je navíc latence pro přesun databáze do elastického fondu nebo mezi elastickými fondy úměrná velikosti databáze, pokud databáze používá úložiště[PFS](../../storage/files/storage-files-introduction.md)(Premium File Share).
 >
 > Pokud chcete zjistit, jestli databáze používá úložiště PFS, spusťte v kontextu databáze následující dotaz. Pokud je hodnota ve sloupci AccountType `PremiumFileStorage` nebo `PremiumFileStorage-ZRS` , databáze používá úložiště PFS.
  
@@ -72,7 +72,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ```
 
 > [!TIP]
-> Informace o monitorování probíhajících operací najdete v tématech: [Správa operací pomocí příkazu SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku, [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Informace o monitorování probíhajících operací najdete v tématech: [Správa operací pomocí příkazu SQL REST API](/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku, [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ## <a name="cancelling-changes"></a>Rušení změn
 
@@ -84,7 +84,7 @@ V okně Přehled databáze přejděte na **oznámení** a klikněte na dlaždici
 
 ![Probíhající operace](./media/single-database-scale/ongoing-operations.png)
 
-Potom klikněte na tlačítko s popiskem **zrušit tuto operaci**.
+Potom klikněte na tlačítko s popiskem **zrušit tuto operaci** .
 
 ![Zrušit probíhající operaci](./media/single-database-scale/cancel-ongoing-operation.png)
 
@@ -122,7 +122,7 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 ### <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
 - Úložiště se dá zřídit až do limitu maximální velikosti úložiště dat s použitím přírůstku o velikosti 1 GB. Minimální konfigurovatelné úložiště dat je 1 GB. Pro jednotlivé [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md) pro omezení maximální velikosti úložiště dat v každém cíli služby viz stránky dokumentace k omezením prostředků.
-- Úložiště dat pro izolovanou databázi je možné zřídit zvýšením nebo snížením jeho maximální velikosti pomocí [Azure Portal](https://portal.azure.com), [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update). Pokud je hodnota maximální velikosti zadána v bajtech, musí být násobkem 1 GB (1073741824 bajtů).
+- Úložiště dat pro izolovanou databázi je možné zřídit zvýšením nebo snížením jeho maximální velikosti pomocí [Azure Portal](https://portal.azure.com), [jazyka Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](/rest/api/sql/databases/update). Pokud je hodnota maximální velikosti zadána v bajtech, musí být násobkem 1 GB (1073741824 bajtů).
 - Množství dat, které lze uložit v datových souborech databáze, je omezeno nakonfigurovanou maximální velikostí úložiště dat. Kromě tohoto úložiště Azure SQL Database automaticky přiděluje 30% větší úložiště, které se má použít pro transakční protokol.
 - Azure SQL Database pro databázi automaticky přiděluje 32 GB za vCore `tempdb` . `tempdb` se nachází v místním úložišti SSD ve všech úrovních služby.
 - Cena za úložiště pro izolovanou databázi nebo elastický fond je součtem hodnot úložiště dat a objemů transakčního protokolu vynásobené jednotkou ceny za službu úložiště ve vrstvě služeb. `tempdb`Cena za je zahrnutá v ceně. Podrobnosti o cenách za úložiště najdete v článku [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
@@ -133,7 +133,7 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 ### <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
 - Cena DTU pro jednu databázi zahrnuje určité množství úložiště bez dalších poplatků. Dodatečné úložiště nad rámec zahrnuté částky se dá zřídit za dodatečné náklady až do limitu maximální velikosti v přírůstcích po 250 GB až do 1 TB a potom v přírůstcích po 256 GB po 1 TB. Zahrnuté množství úložišť a omezení maximální velikosti najdete v tématu izolovaná [databáze: velikosti úložiště a výpočetní velikosti](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Dodatečné úložiště pro izolovanou databázi lze zřídit zvýšením jeho maximální velikosti pomocí Azure Portal, [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+- Dodatečné úložiště pro izolovanou databázi lze zřídit zvýšením jeho maximální velikosti pomocí Azure Portal, [jazyka Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](/rest/api/sql/databases/update).
 - Cena za dodatečné úložiště pro izolovanou databázi je dodatečná hodnota úložiště vynásobená dodatečnou jednotkou ceny za službu Storage úrovně služby. Podrobnosti o ceně dodatečného úložiště najdete v tématu [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
@@ -156,4 +156,3 @@ Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na ú
 ## <a name="next-steps"></a>Další kroky
 
 Celkové omezení prostředků najdete v tématu [Azure SQL Database omezení prostředků na základě Vcore – izolované databáze](resource-limits-vcore-single-databases.md) a [Azure SQL Database omezení prostředků na bázi DTU – jednotlivé databáze](resource-limits-dtu-single-databases.md).
- 

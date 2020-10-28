@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 93e9ad28b14a51432fd9ccd32d1a155eaff2e190
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c616ba1971fcbb0674a42583b30c25f6ccda6874
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427119"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791779"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -63,7 +63,7 @@ Redundantní verze architektury vysoké dostupnosti pro úroveň služby pro obe
 > Aktuální informace o oblastech, které podporují redundantní databáze zóny, najdete v tématu [Podpora služeb v jednotlivých oblastech](../../availability-zones/az-region.md). Redundantní konfigurace zóny je dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Tato funkce není k dispozici ve spravované instanci SQL.
 
 > [!NOTE]
-> Pro obecné účely databází s velikostí 80 Vcore může dojít ke snížení výkonu s redundantní konfigurací zóny. Operace, jako je zálohování, obnovení, kopírování databáze a nastavení vztahů geografického DR, můžou mít pomalejší výkon pro izolované databáze větší než 1 TB. 
+> Pro obecné účely databází s velikostí 80 Vcore může dojít ke snížení výkonu s redundantní konfigurací zóny. Kromě toho můžou mít operace, jako je zálohování, obnovení, kopírování databáze a nastavení vztahů geografického DR, pomalejší výkon pro všechny izolované databáze větší než 1 TB. 
 
 ## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Úroveň služeb Premium a Pro důležité obchodní informace místně redundantní dostupnost
 
@@ -71,7 +71,7 @@ Redundantní verze architektury vysoké dostupnosti pro úroveň služby pro obe
 
 ![Cluster uzlů databázového stroje](./media/high-availability-sla/business-critical-service-tier.png)
 
-Podkladové soubory databáze (. mdf/. ldf) jsou umístěné v připojeném úložišti SSD, aby bylo možné zajistit velmi nízkou latenci v/v pro vaše zatížení. Vysoká dostupnost se implementuje pomocí technologie podobné SQL Server [skupinám dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Cluster obsahuje jednu primární repliku, která je přístupná pro úlohy zákazníka pro čtení i zápis, a to až ze tří sekundárních replik (výpočetní výkon a úložiště), které obsahují kopie dat. Primární uzel průběžně přenáší změny do sekundárních uzlů v pořadí a před potvrzením každé transakce zajišťuje, aby byla data synchronizována do alespoň jedné sekundární repliky. Tento postup zaručuje, že pokud dojde k selhání primárního uzlu z jakéhokoli důvodu, je vždy plně synchronizovaný uzel, který převezme služby při selhání. Převzetí služeb při selhání iniciuje Service Fabric Azure. Jakmile se sekundární replika pokusí o nový primární uzel, vytvoří se další sekundární replika, která zajistí, že cluster má dostatek uzlů (sada kvora). Po dokončení převzetí služeb při selhání se připojení Azure SQL automaticky přesměrují do nového primárního uzlu.
+Podkladové soubory databáze (. mdf/. ldf) jsou umístěné v připojeném úložišti SSD, aby bylo možné zajistit velmi nízkou latenci v/v pro vaše zatížení. Vysoká dostupnost se implementuje pomocí technologie podobné SQL Server [skupinám dostupnosti Always On](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Cluster obsahuje jednu primární repliku, která je přístupná pro úlohy zákazníka pro čtení i zápis, a to až ze tří sekundárních replik (výpočetní výkon a úložiště), které obsahují kopie dat. Primární uzel průběžně přenáší změny do sekundárních uzlů v pořadí a před potvrzením každé transakce zajišťuje, aby byla data synchronizována do alespoň jedné sekundární repliky. Tento postup zaručuje, že pokud dojde k selhání primárního uzlu z jakéhokoli důvodu, je vždy plně synchronizovaný uzel, který převezme služby při selhání. Převzetí služeb při selhání iniciuje Service Fabric Azure. Jakmile se sekundární replika pokusí o nový primární uzel, vytvoří se další sekundární replika, která zajistí, že cluster má dostatek uzlů (sada kvora). Po dokončení převzetí služeb při selhání se připojení Azure SQL automaticky přesměrují do nového primárního uzlu.
 
 Model dostupnosti Premium navíc nabízí možnost přesměrovat připojení Azure SQL, která jsou jen pro čtení, na jednu ze sekundárních replik. Tato funkce se nazývá horizontální navýšení [kapacity čtení](read-scale-out.md). Poskytuje 100% dodatečnou výpočetní kapacitu bez dalších poplatků za vypínání operací jen pro čtení, jako jsou analytické úlohy, z primární repliky.
 
@@ -82,7 +82,7 @@ Ve výchozím nastavení se cluster uzlů pro model dostupnosti Premium vytvoř�
 Vzhledem k tomu, že redundantní databáze zóny mají v různých datových centrech repliky s určitou vzdáleností, zvýšení latence sítě může zvýšit dobu potvrzení a tím ovlivnit výkon některých OLTP úloh. Do konfigurace s jednou zónou se můžete kdykoli vrátit tím, že zakážete nastavení redundance zóny. Tento proces je online operace podobná standardnímu upgradu vrstvy služeb. Na konci procesu je databáze nebo fond migrován z zóny redundantního vyzvánění do jediného okruhu zóny nebo naopak.
 
 > [!IMPORTANT]
-> Redundantní databáze zóny a elastické fondy se momentálně podporují jenom v úrovních služby Premium a Pro důležité obchodní informace ve vybraných oblastech. Při použití Pro důležité obchodní informace úrovně je redundantní konfigurace zóny dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Aktuální informace o oblastech, které podporují redundantní databáze zóny, najdete v tématu [Podpora služeb v jednotlivých oblastech](../../availability-zones/az-region.md).
+> Při použití Pro důležité obchodní informace úrovně je redundantní konfigurace zóny dostupná jenom v případě, že je vybraný Gen5 výpočetní hardware. Aktuální informace o oblastech, které podporují redundantní databáze zóny, najdete v tématu [Podpora služeb v jednotlivých oblastech](../../availability-zones/az-region.md).
 
 > [!NOTE]
 > Tato funkce není k dispozici ve spravované instanci SQL.
@@ -122,9 +122,9 @@ Převzetí služeb při selhání se dá iniciovat pomocí PowerShellu, REST API
 
 |Typ nasazení|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|databáze|[Invoke – AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Převzetí služeb při selhání databáze](/rest/api/sql/databases(failover)/failover/)|[AZ REST](https://docs.microsoft.com/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
-|Elastický fond|[Invoke – AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Převzetí služeb při selhání elastického fondu](/rest/api/sql/elasticpools(failover)/failover/)|[AZ REST](https://docs.microsoft.com/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
-|MI|[Invoke – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Spravované instance – převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[AZ SQL mi Failover převzetí služeb při selhání](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|Databáze|[Invoke – AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Převzetí služeb při selhání databáze](/rest/api/sql/databases(failover)/failover/)|[AZ REST](/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
+|Elastický fond|[Invoke – AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Převzetí služeb při selhání elastického fondu](/rest/api/sql/elasticpools(failover)/failover/)|[AZ REST](/cli/azure/reference-index#az-rest) se dá použít k vyvolání volání REST API z Azure CLI.|
+|MI|[Invoke – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Spravované instance – převzetí služeb při selhání](/rest/api/sql/managed%20instances%20-%20failover/failover)|[AZ SQL mi Failover převzetí služeb při selhání](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
 > Příkaz pro převzetí služeb při selhání není k dispozici pro čitelné sekundární repliky databází v rámci škálování.

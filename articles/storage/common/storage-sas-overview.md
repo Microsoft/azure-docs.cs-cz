@@ -10,12 +10,12 @@ ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 218946fcfbf2268ff3b06eab839d69e6b370e891
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6c6ac3e6ab6a27e0aca1aa2bebecb86cc1eb3f87
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367903"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792969"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
@@ -127,7 +127,7 @@ Následující doporučení pro použití sdílených přístupových podpisů p
 - **Seznamte se s tím, že se Váš účet bude účtovat podle veškerého využití, včetně SAS.** Pokud zadáte přístup pro zápis do objektu blob, uživatel se může rozhodnout nahrát objekt BLOB 200 GB. Pokud jste jim udělili oprávnění ke čtení, můžou si ho stáhnout desetkrát, což za vás bude mít 2 TB za cenu. Znovu poskytněte omezená oprávnění, která pomáhají zmírnit potenciální akce uživatelů se zlými úmysly. Používejte krátkodobé SAS k omezení této hrozby (ale zaměříte se tak na konci času).
 - **Ověří data zapsaná pomocí SAS.** Když klientská aplikace zapisuje data do svého účtu úložiště, mějte na paměti, že k těmto datům mohou nastat problémy. Pokud vaše aplikace vyžaduje, aby byla data ověřena nebo autorizována před tím, než je připravena k použití, měli byste toto ověření provést po zápisu dat a předtím, než je aplikace používá. Tento postup také chrání před poškozenými nebo škodlivými daty zapsanými na váš účet, a to buď uživatelem, který ho správně získal, nebo uživatelem, který zneužití nevráceného SAS.
 - **Zjistěte, kdy nepoužívat SAS.** Někdy se může stát, že rizika spojená s určitou operací s vaším účtem úložiště převažují nad výhodami používání SAS. U takových operací vytvořte službu střední vrstvy, která po ověření obchodního pravidla, ověřování a auditování zapíše do účtu úložiště. Někdy je také jednodušší spravovat přístup jiným způsobem. Například pokud chcete, aby všechny objekty BLOB v kontejneru byly veřejně čitelné, můžete místo poskytování SAS každému klientovi pro přístup vytvořit kontejner jako veřejný.
-- **K monitorování aplikace použijte protokoly Azure Monitor a Azure Storage.** Pomocí Azure Monitor a protokolování služby Storage Analytics můžete sledovat jakékoli špičky v případě výpadků autorizace z důvodu výpadku služby poskytovatele SAS nebo neúmyslného odebrání uložených zásad přístupu. Další informace najdete v tématu [Azure Storage metriky v Azure monitor](monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) a [protokolování analýza úložiště Azure](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+- **K monitorování aplikace použijte protokoly Azure Monitor a Azure Storage.** Pomocí Azure Monitor a protokolování služby Storage Analytics můžete sledovat jakékoli špičky v případě výpadků autorizace z důvodu výpadku služby poskytovatele SAS nebo neúmyslného odebrání uložených zásad přístupu. Další informace najdete v tématu [Azure Storage metriky v Azure monitor](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) a [protokolování analýza úložiště Azure](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="get-started-with-sas"></a>Začínáme s SAS
 

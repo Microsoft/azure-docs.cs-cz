@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: af6db76a5d752396ca965c5ed98682ebcab7da6a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9c0ed50cc0f7ef3580d1441fe2f361065e6f8524
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755938"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886509"
 ---
 <a name="HOLTop"></a>
 
@@ -107,7 +107,7 @@ Pak definujte funkci `computerVision` a deklarujte asynchronní řadu s primárn
 Kód v této části analyzuje vzdálené image pro extrakci různých vizuálních funkcí. Tyto operace můžete provádět jako součást metody **analyzeImage** objektu klienta, nebo je můžete volat pomocí individuálních metod. Podrobnosti najdete v [referenční dokumentaci](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) .
 
 > [!NOTE]
-> Můžete také analyzovat místní bitovou kopii. Scénáře týkající se místních imagí najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) .
+> Můžete také analyzovat místní bitovou kopii. Podívejte se na metody [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) , jako je například **analyzeImageInStream** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="get-image-description"></a>Získat popis obrázku
 
@@ -219,14 +219,14 @@ Definujte pomocnou funkci `describeType` :
 
 Počítačové zpracování obrazu může viditelný text extrahovat v obrázku a převést jej na datový proud. Tato ukázka používá operace čtení.
 
-> [!NOTE]
-> Můžete si také přečíst text z místní image. Scénáře týkající se místních imagí najdete v ukázkovém kódu na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) .
-
 ### <a name="set-up-test-images"></a>Nastavení testovacích imagí
 
 Uložte odkaz na adresu URL obrázků, ze kterých chcete extrahovat text.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
+
+> [!NOTE]
+> Můžete si také přečíst text z místní image. Podívejte se na metody [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) , jako je například **readInStream** . Nebo si přečtěte ukázkový kód na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) , kde najdete scénáře týkající se místních imagí.
 
 ### <a name="call-the-read-api"></a>Volání rozhraní API pro čtení
 
@@ -235,11 +235,11 @@ Definujte následující pole ve funkci, aby se načetly hodnoty stavu volání 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_statuses)]
 
 
-Přidejte následující kód, který zavolá `readTextFromURL` funkce a `readTextFromFile` pro dané obrázky.
+Přidejte následující kód, který volá `readTextFromURL` funkci pro dané obrázky.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Definujte `readTextFromURL` funkce a `readTextFromFile` . Tyto volají metody **Read** a **readInStream** v objektu klienta, které vracejí ID operace a spustí asynchronní proces pro čtení obsahu obrázku. Poté pomocí ID operace zkontroluje stav operace, dokud nebudou vráceny výsledky. Pak vrátí extrahované výsledky.
+Definujte `readTextFromURL` funkci. Tato metoda volá metodu **Read** THES objektu klienta, která vrací ID operace a spustí asynchronní proces pro čtení obsahu obrázku. Pak pomocí ID operace zkontroluje stav operace, dokud nebudou vráceny výsledky. Vrátí extrahované výsledky.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 

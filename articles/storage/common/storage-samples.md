@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d537ba74dad55ea1cb980ea04d20fd0c8494ed0b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: de587483f5dc15b17fa32e044b569ef9d7f007f7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479438"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792952"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 
@@ -60,7 +60,7 @@ Chcete-li prozkoumat ukázky jazyka C++, Získejte [Azure Storage klientskou kni
 Pokud chcete prozkoumat ukázky Azure CLI, nejdřív [nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 * [Začínáme s Azure CLI](/cli/azure/get-started-with-azure-cli)
-* [Ukázky Azure Storage pomocí Azure CLI](/azure/storage/blobs/storage-samples-blobs-cli)
+* [Ukázky Azure Storage pomocí Azure CLI](../blobs/storage-samples-blobs-cli.md)
 * [Oblíbené články o používání rozhraní příkazového řádku Azure s Azure Storage](/cli/azure/popular-articles-using-the-azure-cli#storage)
 
 ## <a name="api-reference-and-source-code"></a>Reference k rozhraní API a zdrojový kód
@@ -83,4 +83,4 @@ Následující články indexují každou ze vzorků podle služby (objekt blob,
 * [Ukázky Azure Storage pomocí JavaScriptu](storage-samples-javascript.md)
 * [Ukázky Azure Storage pomocí Pythonu](storage-samples-python.md)
 * [Ukázky Azure Storage pomocí jazyka C++](storage-samples-c-plus-plus.md)
-* [Ukázky Azure Storage pomocí Azure CLI](/azure/storage/blobs/storage-samples-blobs-cli)
+* [Ukázky Azure Storage pomocí Azure CLI](../blobs/storage-samples-blobs-cli.md)

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3330b4d5df366a5e886157e875f40d7e370c7442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91543035"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791983"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Indexování šifrovaných objektů BLOB pomocí indexerů objektů BLOB a dovednosti v Azure Kognitivní hledání
 
@@ -31,7 +31,7 @@ Tato příručka používá post a rozhraní API REST pro vyhledávání k prov�
 
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto příkladu se předpokládá, že jste už soubory nahráli do Azure Blob Storage a jste je zašifroval v procesu. Pokud potřebujete pomáhat s tím, jak se nahrávají a zašifrují vaše soubory, přečtěte si [Tento kurz](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) .
 
@@ -56,7 +56,7 @@ V provozu DecryptBlobFile dovednost přebírá adresu URL a token SAS pro každ�
 
 1. Vyberte **předplatné, kde existuje vaše instance Azure Key Vault** (Tato příručka nebude fungovat, pokud vyberete jiné předplatné) a buď vyberte existující skupinu prostředků, nebo vytvořte novou. (Pokud vytvoříte novou, budete taky muset vybrat oblast, do které se má nasadit).
 
-1. Vyberte **zkontrolovat + vytvořit**, ujistěte se, že souhlasíte s podmínkami, a pak vyberte **vytvořit** a nasaďte funkci Azure Functions.
+1. Vyberte **zkontrolovat + vytvořit** , ujistěte se, že souhlasíte s podmínkami, a pak vyberte **vytvořit** a nasaďte funkci Azure Functions.
 
     ![Šablona ARM na portálu](media/indexing-encrypted-blob-files/arm-template.jpg "Šablona ARM na portálu")
 
@@ -64,13 +64,13 @@ V provozu DecryptBlobFile dovednost přebírá adresu URL a token SAS pro každ�
 
 1. Na portálu přejděte na svou instanci Azure Key Vault. [Vytvořte v Azure Key Vault zásady přístupu](../key-vault/general/assign-access-policy-portal.md) , které přidělí klíč k vlastní dovednosti.
  
-    1. V části **Nastavení**vyberte **zásady přístupu**a pak vyberte **Přidat zásady přístupu** .
+    1. V části **Nastavení** vyberte **zásady přístupu** a pak vyberte **Přidat zásady přístupu** .
      
        ![Přidání zásad přístupu k trezoru klíčů](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Zásady přístupu trezoru klíčů")
 
-    1. V části **Konfigurovat ze šablony**vyberte **Azure Data Lake Storage nebo Azure Storage**.
+    1. V části **Konfigurovat ze šablony** vyberte **Azure Data Lake Storage nebo Azure Storage** .
 
-    1. Jako objekt zabezpečení vyberte instanci funkce Azure, kterou jste nasadili. Můžete ho vyhledat pomocí předpony prostředků, která se použila k jeho vytvoření v kroku 2, který má výchozí hodnotu předpony **psdbf-Function-App**.
+    1. Jako objekt zabezpečení vyberte instanci funkce Azure, kterou jste nasadili. Můžete ho vyhledat pomocí předpony prostředků, která se použila k jeho vytvoření v kroku 2, který má výchozí hodnotu předpony **psdbf-Function-App** .
 
     1. Pro možnost autorizované aplikace nevybírejte vše.
      
@@ -86,7 +86,7 @@ V provozu DecryptBlobFile dovednost přebírá adresu URL a token SAS pro každ�
     
         ![Adresa URL funkce](media/indexing-encrypted-blob-files/function-uri.jpg "Kde najít adresu URL funkce Azure")
 
-    1. Kód klíče hostitele, který můžete najít tak, že přejdete na **klíče aplikace**, kliknete na Zobrazit **výchozí** klíč a zkopírujete hodnotu.
+    1. Kód klíče hostitele, který můžete najít tak, že přejdete na **klíče aplikace** , kliknete na Zobrazit **výchozí** klíč a zkopírujete hodnotu.
      
         ![Kód klíče hostitele funkce](media/indexing-encrypted-blob-files/function-host-key.jpg "Kde najít kód klíče hostitele funkce Azure Functions")
 
@@ -106,9 +106,9 @@ Stejně jako u funkce Azure Functions si počkejte, než se shromáždí klíč 
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla adresa URL koncového bodu `https://mydemo.search.windows.net` , název vaší služby by byl `mydemo` .
 
-2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-javascript/service-name-and-keys.png)
 
 Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech požadavků odeslaných službě. Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
@@ -121,7 +121,7 @@ Nainstalujte a nastavte post.
 1. Stáhněte [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json).
 1. Vyberte **File**  >  **importovat** soubor a importujte zdrojový kód do metody post.
 1. Vyberte kartu **kolekce** a pak klikněte na tlačítko **...** (tři tečky).
-1. Vyberte **Upravit**. 
+1. Vyberte **Upravit** . 
    
    ![Pozálohovací aplikace ukazující navigaci](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Přejít do nabídky upravit v poli post")
 1. V dialogovém okně **Upravit** vyberte kartu **proměnné** . 
@@ -137,24 +137,24 @@ Pokud chcete získat hodnotu pro `admin-key` , použijte klíč rozhraní API pr
 |-------------|-----------------|
 | `admin-key` | Na stránce **klíče** služby Azure kognitivní hledání.  |
 | `search-service-name` | Název služby Azure Kognitivní hledání. Adresa URL je `https://{{search-service-name}}.search.windows.net` . | 
-| `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte **key1**  >  **připojovací řetězec**klíč1. | 
+| `storage-connection-string` | V účtu úložiště na kartě **přístupové klíče** vyberte **key1**  >  **připojovací řetězec** klíč1. | 
 | `storage-container-name` | Název kontejneru objektů blob, který obsahuje šifrované soubory, které mají být indexovány. | 
 | `function-uri` |  Ve funkci Azure v části **základy** na hlavní stránce. | 
-| `function-code` | V Azure Functions přejděte na **klíče aplikace**, kliknutím zobrazíte **výchozí** klíč a zkopírujete hodnotu. | 
-| `api-version` | Nechejte jako **2020-06-30**. |
-| `datasource-name` | Ponechte jako **šifrované – objekty blob-DS**. | 
-| `index-name` | Ponechte jako **šifrované – objekty blob-IDX**. | 
-| `skillset-name` | Ponechte jako **šifrované – objekty blob – SS**. | 
-| `indexer-name` | Ponechte jako **šifrované – objekty blob – IXR**. | 
+| `function-code` | V Azure Functions přejděte na **klíče aplikace** , kliknutím zobrazíte **výchozí** klíč a zkopírujete hodnotu. | 
+| `api-version` | Nechejte jako **2020-06-30** . |
+| `datasource-name` | Ponechte jako **šifrované – objekty blob-DS** . | 
+| `index-name` | Ponechte jako **šifrované – objekty blob-IDX** . | 
+| `skillset-name` | Ponechte jako **šifrované – objekty blob – SS** . | 
+| `indexer-name` | Ponechte jako **šifrované – objekty blob – IXR** . | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Kontrola kolekce požadavků v poli pro odeslání
 
 Po spuštění této příručky musíte vydat čtyři požadavky HTTP: 
 
-- **Vložit požadavek na vytvoření indexu**: Tento index obsahuje data, která Azure kognitivní hledání používá a vrací.
-- **Post – požadavek na vytvoření zdroje dat**: Tento zdroj dat připojí vaši službu Azure kognitivní hledání k vašemu účtu úložiště, a proto zašifrované soubory objektů BLOB. 
-- **Put dovednosti**: dovednosti určuje vlastní definici dovedností pro funkci Azure, která dešifruje data souboru objektu blob, a [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) pro extrakci textu z každého dokumentu po jeho dešifrování.
-- **Vložit požadavek na vytvoření indexeru**: když spustíte indexer, načte data, použije dovednosti a výsledky uloží. Tuto žádost musíte spustit jako poslední.
+- **Vložit požadavek na vytvoření indexu** : Tento index obsahuje data, která Azure kognitivní hledání používá a vrací.
+- **Post – požadavek na vytvoření zdroje dat** : Tento zdroj dat připojí vaši službu Azure kognitivní hledání k vašemu účtu úložiště, a proto zašifrované soubory objektů BLOB. 
+- **Put dovednosti** : dovednosti určuje vlastní definici dovedností pro funkci Azure, která dešifruje data souboru objektu blob, a [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) pro extrakci textu z každého dokumentu po jeho dešifrování.
+- **Vložit požadavek na vytvoření indexeru** : když spustíte indexer, načte data, použije dovednosti a výsledky uloží. Tuto žádost musíte spustit jako poslední.
 
 [Zdrojový kód](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json) obsahuje kolekci post, která obsahuje čtyři požadavky, a také některé užitečné následné požadavky. Chcete-li vydat požadavky, vyberte v poli post kartu požadavků a pro každou z nich vyberte **Odeslat** .
 

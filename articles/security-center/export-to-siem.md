@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: b4458a2b37a3da83591e101344d08c3090868696
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 6ffb6ced6fc828733dd627943a3d4b54e8293ad2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341800"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791898"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Streamování výstrah do řešení pro správu služeb SIEM, společnosti nebo IT
 
@@ -63,14 +63,14 @@ Toto rozhraní API můžete použít ke streamování výstrah z **celého tenan
 - **Power BI**  -  [Připojení k rozhraní API zabezpečení Microsoft Graph v Power BI Desktop](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**  -  [Podle pokynů nainstalujte a nakonfigurujte aplikaci Microsoft Graph Security API z úložiště ServiceNow](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar**  -  [Modul podpory zařízení IBM pro Azure Security Center přes rozhraní API Microsoft Graph](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
-- **Palo Alto Networks**, **anomálie**, pro **hledání**, **inspark**a další [Microsoft Graph rozhraní API pro zabezpečení](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji) .
+- **Palo Alto Networks** , **anomálie** , pro **hledání** , **inspark** a další [Microsoft Graph rozhraní API pro zabezpečení](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji) .
 
 [Přečtěte si další informace o rozhraní API pro Microsoft Graph zabezpečení](https://www.microsoft.com/security/business/graph-security-api).
 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>Streamování výstrah pomocí Azure Monitor 
 
-Pro streamování výstrah do **ArcSight**, **Splunk**, **SumoLogic**, serverů syslog, **LogRhythm**, **LOGZ.IO platformy pro pozorování cloudu**a dalších řešení monitorování. připojení Security Center ke službě Azure monitor prostřednictvím Azure Event Hubs:
+Pro streamování výstrah do **ArcSight** , **Splunk** , **SumoLogic** , serverů syslog, **LogRhythm** , **LOGZ.IO platformy pro pozorování cloudu** a dalších řešení monitorování. připojení Security Center ke službě Azure monitor prostřednictvím Azure Event Hubs:
 
 1. Umožněte [průběžný export](continuous-export.md) pro streamování Security Center výstrahy do vyhrazeného centra událostí Azure na úrovni předplatného. 
     > [!TIP]
@@ -90,4 +90,4 @@ Tato stránka vysvětluje, jak zajistit, aby byla data výstrah Azure Security C
 
 - [Co je Azure Sentinel?](../sentinel/overview.md)
 - [Ověřování výstrah v Azure Security Center](security-center-alert-validation.md) – ověřte, jestli jsou vaše výstrahy správně nakonfigurované.
-- [Průběžně exportovat výstrahy a doporučení zabezpečení](continuous-export.md)
+- [Průběžný export Security Center dat](continuous-export.md)

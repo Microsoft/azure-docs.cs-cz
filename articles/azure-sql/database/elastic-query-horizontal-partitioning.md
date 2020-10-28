@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443118"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792102"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč cloudových databází s horizontálním škálováním (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Rychlé zprovoznění najdete v tématu [vytváření sestav napříč cloudový
 
 Pro databáze jiné než horizontálně dělené se podívejte na téma [dotazování napříč cloudovou databází s různými schématy](elastic-query-vertical-partitioning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte mapu horizontálních oddílů pomocí klientské knihovny elastické databáze. viz [Správa mapování horizontálních oddílů](elastic-scale-shard-map-management.md). Nebo použijte ukázkovou aplikaci v části [Začínáme s nástroji elastické databáze](elastic-scale-get-started.md).
 * Další informace najdete v tématu [migrace existujících databází do databází s horizontálním](elastic-convert-to-use-elastic-tools.md)navýšení kapacity.
@@ -40,10 +40,10 @@ Pro databáze jiné než horizontálně dělené se podívejte na téma [dotazov
 
 Tyto příkazy vytvoří reprezentace metadat vaší úrovně dat horizontálně dělené v elastické databázi dotazů.
 
-1. [VYTVOŘIT HLAVNÍ KLÍČ](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [VYTVOŘIT DATABÁZI S ROZSAHEM POVĚŘENÍ](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [VYTVOŘIT EXTERNÍ ZDROJ DAT](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [VYTVOŘIT EXTERNÍ TABULKU](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [VYTVOŘIT HLAVNÍ KLÍČ](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [VYTVOŘIT DATABÁZI S ROZSAHEM POVĚŘENÍ](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [VYTVOŘIT EXTERNÍ ZDROJ DAT](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1,1 Vytvoření hlavního klíče a přihlašovacích údajů v oboru databáze
 
@@ -161,9 +161,9 @@ Klauzule distribuce určuje distribuci dat použitou pro tuto tabulku. Procesor 
 
 1. **Horizontálně dělené** znamená, že data jsou horizontálně rozdělená mezi databáze. Klíč rozdělení do oddílů pro distribuci dat je parametr **<sharding_column_name>** .
 2. **Replikovaný** znamená, že se v každé databázi nacházejí identické kopie tabulky. Je vaší zodpovědností zajistit, aby byly repliky identické napříč databázemi.
-3. Kulatá kolečka ** \_ DOTAZování** znamená, že je tabulka horizontálně rozdělená pomocí metody distribuce závislé na aplikaci.
+3. Kulatá kolečka **\_ DOTAZování** znamená, že je tabulka horizontálně rozdělená pomocí metody distribuce závislé na aplikaci.
 
-**Odkaz na datovou vrstvu**: instance DDL externí tabulky odkazuje na externí zdroj dat. Externí zdroj dat určuje mapu horizontálních oddílů, která poskytuje externí tabulku s informacemi potřebnými k vyhledání všech databází v datové vrstvě.
+**Odkaz na datovou vrstvu** : instance DDL externí tabulky odkazuje na externí zdroj dat. Externí zdroj dat určuje mapu horizontálních oddílů, která poskytuje externí tabulku s informacemi potřebnými k vyhledání všech databází v datové vrstvě.
 
 ### <a name="security-considerations"></a>Důležité informace o zabezpečení
 
@@ -194,7 +194,7 @@ Následující dotaz provádí tři způsoby spojení mezi datovými sklady, obj
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Uložená procedura pro vzdálené spuštění T-SQL: SP \_ execute_remote
 
-Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý přístup k horizontálních oddílů. Uložená procedura se nazývá [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) a dá se použít ke spouštění vzdálených uložených procedur nebo kódu T-SQL na vzdálených databázích. Má následující parametry:
+Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý přístup k horizontálních oddílů. Uložená procedura se nazývá [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) a dá se použít ke spouštění vzdálených uložených procedur nebo kódu T-SQL na vzdálených databázích. Má následující parametry:
 
 * Název zdroje dat (nvarchar): název externího zdroje dat typu RDBMS.
 * Dotaz (nvarchar): dotaz T-SQL, který se má provést na každém horizontálních oddílů.
@@ -228,7 +228,7 @@ Pomocí regulárních připojovacích řetězců SQL Server připojte k databáz
 * Kurz pro vertikální dělení najdete v tématu [Začínáme s mezidatabázovým dotazem (vertikální dělení)](elastic-query-getting-started-vertical.md).
 * Syntaxe a ukázkové dotazy pro vertikálně dělená data najdete v tématu [dotazování na vertikálně dělená data](elastic-query-vertical-partitioning.md) .
 * Kurz horizontálního dělení na oddíly (horizontálního dělení) najdete v tématu [Začínáme s elastickým dotazem pro horizontální dělení na oddíly (horizontálního dělení)](elastic-query-getting-started.md).
-* V tématu [SP \_ Execute \_ Remote](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
+* V tématu [SP \_ Execute \_ Remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) pro uloženou proceduru, která provádí příkaz Transact-SQL na jednom vzdáleném Azure SQL Database nebo sadě databází, která slouží jako horizontálních oddílů ve vodorovném schématu dělení.
 
 <!--Image references-->
 [1]: ./media/elastic-query-horizontal-partitioning/horizontalpartitioning.png

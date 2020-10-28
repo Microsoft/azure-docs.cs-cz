@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 10/26/2020
+ms.openlocfilehash: c66845a801b93db4ba718bc0aba5c39eabdd24b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537962"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791966"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -36,9 +36,6 @@ Běžným scénářem je, aby úlohy BI a analýzy používaly jako zdroj dat pr
 Vzhledem k tomu, že repliky jsou jen pro čtení, nesnižují přímo na hlavní úrovni zátěže s kapacitou pro zápis. Tato funkce není určená pro úlohy, které jsou náročné na zápis.
 
 Funkce replika čtení používá asynchronní replikaci MySQL. Tato funkce není určena pro scénáře synchronní replikace. Mezi zdrojem a replikou bude měřitelná prodleva. Data v replice nakonec budou konzistentní s daty v hlavní databázi. Tato funkce se používá pro úlohy, které můžou toto zpoždění obsloužit.
-
-> [!IMPORTANT]
-> Azure Database for MySQL využívá binární protokolování založené na **řádcích** . Pokud ve vaší tabulce chybí primární klíč, pro operace DML se prohledávají všechny řádky v tabulce. To vede k vyšší prodlevě replikace. Aby se zajistilo, že replika dokáže držet krok se změnami na zdrojovém serveru, obecně doporučujeme před vytvořením serveru repliky nebo opětovným vytvořením serveru repliky, pokud už nějaký máte, přidat do tabulek na zdrojovém serveru primární klíč.
 
 ## <a name="cross-region-replication"></a>Replikace mezi oblastmi
 Repliku pro čtení můžete vytvořit v jiné oblasti ze zdrojového serveru. Replikace mezi oblastmi může být užitečná pro scénáře, jako je plánování zotavení po havárii, nebo pro uživatele přiblížit data.
@@ -95,7 +92,7 @@ Na příkazovém řádku zadejte heslo pro uživatelský účet.
 
 Azure Database for MySQL poskytuje metriku **prodlevy replikace v sekundách** v Azure monitor. Tato metrika je k dispozici pouze pro repliky. Tato metrika se počítá pomocí `seconds_behind_master` metriky dostupné v `SHOW SLAVE STATUS` příkazu MySQL. Nastavte výstrahu, která vás informuje, když prodleva replikace dosáhne hodnoty, která není pro vaše zatížení přijatelná.
 
-Pokud se vám zobrazuje zvýšené zpoždění replikace, přečtěte si téma [řešení potíží s latencí replikace](howto-troubleshoot-replication-latency.md) k řešení potíží a pochopení možných příčin.
+Pokud se zobrazí zvýšené zpoždění replikace, přečtěte si téma [řešení potíží s latencí replikace](howto-troubleshoot-replication-latency.md) k řešení potíží a pochopení možných příčin.
 
 ## <a name="stop-replication"></a>Zastavení replikace
 
@@ -208,7 +205,7 @@ GTID je ve výchozím nastavení VYPNUTá. Jakmile je GTID povolené, nejde ho z
 
 Pokud je na zdrojovém serveru povolená možnost GTID, budou mít nově vytvořené repliky taky povolený GTID a budou používat replikaci GTID. Pokud chcete zachovat konzistenci replikace, nemůžete aktualizovat `gtid_mode` na zdrojovém nebo replikačním serveru.
 
-### <a name="other"></a>Další
+### <a name="other"></a>Ostatní
 
 - Vytvoření repliky repliky není podporováno.
 - Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) .

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c54da3621df1e5d49e7269781e6ae33fc9c0923
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675650"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791949"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>Jak používat Azure.Search.Documents v aplikaci C# .NET
 
@@ -23,7 +23,7 @@ Tento článek vysvětluje, jak vytvořit a spravovat vyhledávací objekty pomo
 
 ## <a name="about-version-11"></a>Přibližně verze 11
 
-Sada Azure SDK pro .NET přidá novou klientskou knihovnu z týmu Azure SDK, která je funkčně ekvivalentní s [Microsoft. Azure. hledejte](/dotnet/api/overview/azure/search/client10) klientské knihovny, ale využívá běžné přístupy a konvence, pokud je to možné. Mezi příklady patří [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) ověřování klíče a [System.Text.Js. Serializace](/dotnet/api/system.text.json.serialization) pro serializaci JSON
+Sada Azure SDK pro .NET přidá novou [**Azure.Search.Doc**](/dotnet/api/overview/azure/search) klientskou knihovnu uments z týmu Azure SDK, která je funkčně ekvivalentní s [Microsoft. Azure. hledejte](/dotnet/api/overview/azure/search/client10) klientské knihovny, ale využívá běžné přístupy a konvence tam, kde je to možné. Mezi příklady patří [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) ověřování klíče a [System.Text.Js. Serializace](/dotnet/api/system.text.json.serialization) pro serializaci JSON
 
 Stejně jako v předchozích verzích můžete tuto knihovnu použít k těmto akcím:
 

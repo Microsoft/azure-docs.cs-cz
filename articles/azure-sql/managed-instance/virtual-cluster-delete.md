@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 0b8ceee1260e4209420778d7f327d771b858a899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed8f6dc90debddd17282f8f96962ffd78055030
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617719"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791660"
 ---
 # <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>Odstranění podsítě po odstranění spravované instance spravované instance SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,7 +29,7 @@ Pokud nechcete čekat 12 hodin a chcete před tím, než budete virtuální clus
 
 > [!IMPORTANT]
 > - Virtuální cluster by neměl obsahovat žádné spravované instance, aby bylo odstranění úspěšné. 
-> - Odstranění virtuálního clusteru je dlouhodobě běžící operace trvající přibližně 1,5 hodin (viz [operace správy spravované instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) pro aktuální čas odstranění virtuálního clusteru). Virtuální cluster bude na portálu stále viditelný, dokud tento proces nebude dokončen.
+> - Odstranění virtuálního clusteru je dlouhodobě běžící operace trvající přibližně 1,5 hodin (viz [operace správy spravované instance](./sql-managed-instance-paas-overview.md#management-operations) pro aktuální čas odstranění virtuálního clusteru). Virtuální cluster bude na portálu stále viditelný, dokud tento proces nebude dokončen.
 
 ## <a name="delete-a-virtual-cluster-from-the-azure-portal"></a>Odstranění virtuálního clusteru z Azure Portal
 
@@ -37,7 +37,7 @@ Pokud chcete virtuální cluster odstranit pomocí Azure Portal, vyhledejte pros
 
 ![Snímek obrazovky Azure Portal se zvýrazněným polem hledání](./media/virtual-cluster-delete/virtual-clusters-search.png)
 
-Až vyhledáte virtuální cluster, který chcete odstranit, vyberte tento prostředek a vyberte **Odstranit**. Budete vyzváni k potvrzení odstranění virtuálního clusteru.
+Až vyhledáte virtuální cluster, který chcete odstranit, vyberte tento prostředek a vyberte **Odstranit** . Budete vyzváni k potvrzení odstranění virtuálního clusteru.
 
 ![Snímek obrazovky řídicího panelu virtuálních clusterů Azure Portal s zvýrazněnou možností odstranit](./media/virtual-cluster-delete/virtual-clusters-delete.png)
 
@@ -48,7 +48,7 @@ Oznámení o Azure Portal vám ukáže potvrzení, že žádost o odstranění v
 
 ## <a name="delete-a-virtual-cluster-by-using-the-api"></a>Odstranění virtuálního clusteru pomocí rozhraní API
 
-Pokud chcete virtuální cluster odstranit přes rozhraní API, použijte parametry identifikátoru URI zadané v [metodě odstranit virtuální clustery](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete).
+Pokud chcete virtuální cluster odstranit přes rozhraní API, použijte parametry identifikátoru URI zadané v [metodě odstranit virtuální clustery](/rest/api/sql/virtualclusters/delete).
 
 ## <a name="next-steps"></a>Další kroky
 

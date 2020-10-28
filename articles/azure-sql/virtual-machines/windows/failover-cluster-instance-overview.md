@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165228"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792476"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,8 +30,8 @@ SQL Server na virtuálních počítačích Azure používá funkci služby Windo
 
 Zbytek článku se zaměřuje na rozdíly v instancích clusteru s podporou převzetí služeb při selhání, když se používají s SQL Server na virtuálních počítačích Azure. Další informace o technologii clusteringu s podporou převzetí služeb při selhání najdete v těchto tématech: 
 
-- [Technologie clusterů Windows](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server instancí clusteru s podporou převzetí služeb při selhání](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
 ## <a name="quorum"></a>Umožněn
 
@@ -40,7 +40,7 @@ Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Az
 Další informace najdete v tématu [osvědčené postupy pro kvorum s SQL Servermi virtuálními počítači v Azure](hadr-cluster-best-practices.md#quorum). 
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 V tradičních místních clusterovaných prostředích používá cluster s podporou převzetí služeb při selhání systému Windows síť SAN (Storage Area Network), která je přístupná v obou uzlech jako sdílené úložiště. SQL Server soubory jsou hostované na sdíleném úložišti a přístup k souborům je možné jenom v aktivním uzlu. 
 
@@ -60,10 +60,10 @@ Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností 
 
 [Sdílené disky Azure](../../../virtual-machines/windows/disks-shared.md) jsou funkcí služby [Azure Managed disks](../../../virtual-machines/managed-disks-overview.md). Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje použití sdílených disků Azure s instancí clusteru s podporou převzetí 
 
-**Podporovaný operační systém**: vše   
-**Podporovaná verze SQL**: vše     
+**Podporovaný operační systém** : vše   
+**Podporovaná verze SQL** : vše     
 
-**Výhody**: 
+**Výhody** : 
 - Užitečné pro aplikace, které se chtějí migrovat do Azure a současně zachovat jejich architekturu s vysokou dostupností a zotavení po havárii (HADR). 
 - Může migrovat clusterové aplikace do Azure, protože je to kvůli podpoře trvalých rezervací SCSI (SCSI PR). 
 - Podporuje sdílené SSD úrovně Premium Azure a úložiště Azure Ultra disk.
@@ -71,7 +71,7 @@ Zbytek této části obsahuje seznam výhod a omezení jednotlivých možností 
 - Podporuje FileStream.
 
 
-**Omezení**: 
+**Omezení** : 
 - Virtuální počítače musí být umístěné ve stejné skupině dostupnosti a skupině umístění blízkosti.
 - Zóny dostupnosti se nepodporují.
 - Mezipaměť SSD úrovně Premium disku není podporována.
@@ -82,8 +82,8 @@ Pokud chcete začít, přečtěte si téma [SQL Server instance clusteru s podpo
 
 [Prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) je funkce Windows serveru, která je podporovaná s clusteringem s podporou převzetí služeb při selhání ve službě Azure Virtual Machines. Poskytuje softwarovou virtuální síť SAN.
 
-**Podporovaný operační systém**: Windows Server 2016 a novější   
-**Podporovaná verze SQL**: SQL Server 2016 a novější   
+**Podporovaný operační systém** : Windows Server 2016 a novější   
+**Podporovaná verze SQL** : SQL Server 2016 a novější   
 
 
 **Výhodnější** 
@@ -104,8 +104,8 @@ Chcete-li začít, přečtěte si téma [SQL Server prostory úložiště s př�
 
 [Sdílené složky Premium](../../../storage/files/storage-how-to-create-premium-fileshare.md) jsou funkcí služby [soubory Azure](../../../storage/files/index.yml). Soubory úrovně Premium jsou back-SSD a mají konzistentně nízkou latenci. Jsou plně podporované pro použití s instancemi clusteru s podporou převzetí služeb při selhání pro SQL Server 2012 nebo novější v systému Windows Server 2012 nebo novějším. Prémiové sdílené složky poskytují větší flexibilitu, protože je možné změnit velikost sdílené složky a škálovat ji bez výpadků.
 
-**Podporovaný operační systém**: Windows Server 2012 a novější   
-**Podporovaná verze SQL**: SQL Server 2012 a novější   
+**Podporovaný operační systém** : Windows Server 2012 a novější   
+**Podporovaná verze SQL** : SQL Server 2012 a novější   
 
 **Výhodnější** 
 - Jenom sdílené řešení úložiště pro virtuální počítače se šíří přes několik zón dostupnosti. 
@@ -122,8 +122,8 @@ Pokud chcete začít, přečtěte si téma [SQL Server instance clusteru s podpo
 
 Existují řešení partnerských clusterů s podporovaným úložištěm. 
 
-**Podporovaný operační systém**: vše   
-**Podporovaná verze SQL**: vše   
+**Podporovaný operační systém** : vše   
+**Podporovaná verze SQL** : vše   
 
 V jednom příkladu se jako úložiště používá s datakeep. Další informace najdete v tématu [Clustering s podporou převzetí služeb při selhání](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)v záznamech blogu a s datakeeping.
 
@@ -131,14 +131,14 @@ V jednom příkladu se jako úložiště používá s datakeep. Další informac
 
 Pomocí Azure ExpressRoute můžete také zveřejnit úložiště sdíleného bloku cíle iSCSI. 
 
-**Podporovaný operační systém**: vše   
-**Podporovaná verze SQL**: vše   
+**Podporovaný operační systém** : vše   
+**Podporovaná verze SQL** : vše   
 
 Například NetApp Private Storage (NPS) zveřejňuje cíl iSCSI prostřednictvím ExpressRoute s Equinix do virtuálních počítačů Azure.
 
 Pro řešení sdíleného úložiště a replikace dat od partnerů Microsoftu se obraťte na dodavatele s případnými problémy souvisejícími s přístupem k datům při převzetí služeb při selhání.
 
-## <a name="connectivity"></a>Připojení
+## <a name="connectivity"></a>Možnosti připojení
 
 Instance clusterů s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines použít [název distribuované sítě (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) nebo [název virtuální sítě (VNN) s Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) ke směrování provozu do SQL Server instance bez ohledu na to, který uzel aktuálně vlastní clusterované prostředky. Při použití určitých funkcí a DNN s SQL Server FCI existují další okolnosti. Další informace najdete v tématu [interoperabilita DNN s SQL Server FCI](failover-cluster-instance-dnn-interoperability.md) . 
 
@@ -155,7 +155,7 @@ V současné době se SQL Server instance clusterů s podporou převzetí služe
 
 ### <a name="msdtc"></a>NÁSTROJE 
 
-Azure Virtual Machines podporuje Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm na sdílených svazcích clusteru (CSV) a [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) nebo na SQL Server virtuálních počítačích, které používají sdílené disky Azure. 
+Azure Virtual Machines podporuje Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) na Windows serveru 2019 s úložištěm na sdílených svazcích clusteru (CSV) a [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) nebo na SQL Server virtuálních počítačích, které používají sdílené disky Azure. 
 
 V Azure Virtual Machines není služba MSDTC podporovaná pro Windows Server 2016 nebo starší se sdílenými svazky clusteru, protože:
 
@@ -171,4 +171,3 @@ Další informace naleznete v tématech:
 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
-

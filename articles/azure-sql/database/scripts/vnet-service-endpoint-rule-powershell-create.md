@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.date: 04/17/2019
 ms.custom: sqldbrb=1
 tags: azure-synapse
-ms.openlocfilehash: ae92d2000bb2c0dfd7e7a42c6070c143e5b787e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f32599c9d289c8fc5e86eb8c7b0574d9703a6dd4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84170864"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792663"
 ---
 # <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>PowerShell: Vytvoření koncového bodu virtuální služby a pravidla virtuální sítě pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84170864"
 Tento článek ukazuje skript prostředí PowerShell, který provede následující akce:
 
 1. Vytvoří ve vaší podsíti *koncový bod virtuální služby* Microsoft Azure.
-2. Přidá koncový bod do brány firewall serveru pro vytvoření *pravidla virtuální sítě*.
+2. Přidá koncový bod do brány firewall serveru pro vytvoření *pravidla virtuální sítě* .
 
 Další informace najdete v tématu [virtuální koncové body služby pro Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
 
@@ -40,20 +40,20 @@ Další informace najdete v tématu [virtuální koncové body služby pro Azure
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Modul Azure Resource Manager PowerShellu se pořád podporuje v Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro [ `Az.Sql` rutiny](/powershell/module/az.sql). Starší modul naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> Modul Azure Resource Manager PowerShellu se pořád podporuje v Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro [ `Az.Sql` rutiny](/powershell/module/az.sql). Starší modul naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 ## <a name="major-cmdlets"></a>Hlavní rutiny
 
-Tento článek zvýrazňuje [rutinu **New-AzSqlServerVirtualNetworkRule** ](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) , která přidá koncový bod podsítě do seznamu řízení přístupu (ACL) vašeho serveru a vytvoří tak pravidlo.
+Tento článek zvýrazňuje [rutinu **New-AzSqlServerVirtualNetworkRule**](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule) , která přidá koncový bod podsítě do seznamu řízení přístupu (ACL) vašeho serveru a vytvoří tak pravidlo.
 
-Následující seznam obsahuje posloupnost dalších *hlavních* rutin, které je třeba spustit pro přípravu volání rutiny **New-AzSqlServerVirtualNetworkRule**. V tomto článku se tato volání vyskytují ve [skriptu 3 "pravidlo virtuální sítě"](#a-script-30):
+Následující seznam obsahuje posloupnost dalších *hlavních* rutin, které je třeba spustit pro přípravu volání rutiny **New-AzSqlServerVirtualNetworkRule** . V tomto článku se tato volání vyskytují ve [skriptu 3 "pravidlo virtuální sítě"](#a-script-30):
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): vytvoří objekt podsítě.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): vytvoří virtuální síť a tím ji přidělí podsíti.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): přiřadí ke své podsíti koncový bod virtuální služby.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): zachovává aktualizace provedené ve vaší virtuální síti.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): Jakmile je podsíť koncovým bodem, přidá vaši podsíť jako pravidlo virtuální sítě do seznamu ACL serveru.
-   - Tato rutina nabízí parametr **-IgnoreMissingVNetServiceEndpoint**počínaje modulem Azure RM PowerShell verze 5.1.1.
+1. [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig): vytvoří objekt podsítě.
+2. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork): vytvoří virtuální síť a tím ji přidělí podsíti.
+3. [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): přiřadí ke své podsíti koncový bod virtuální služby.
+4. [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork): zachovává aktualizace provedené ve vaší virtuální síti.
+5. [New-AzSqlServerVirtualNetworkRule](/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): Jakmile je podsíť koncovým bodem, přidá vaši podsíť jako pravidlo virtuální sítě do seznamu ACL serveru.
+   - Tato rutina nabízí parametr **-IgnoreMissingVNetServiceEndpoint** počínaje modulem Azure RM PowerShell verze 5.1.1.
 
 ## <a name="prerequisites-for-running-powershell"></a>Předpoklady pro spuštění PowerShellu
 
@@ -382,7 +382,7 @@ Nebo si možná nejste jisti, jestli má vaše podsíť název typu **Microsoft.
 
 1. Zjistíte, jestli má vaše podsíť název typu **Microsoft. SQL** .
 2. Volitelně můžete přiřadit název typu, pokud chybí.
-    - Skript vás vyzve k *potvrzení*, než použije chybějící název typu.
+    - Skript vás vyzve k *potvrzení* , než použije chybějící název typu.
 
 ### <a name="phases-of-the-script"></a>Fáze skriptu
 
@@ -391,7 +391,7 @@ Tady jsou fáze skriptu PowerShellu:
 1. Přihlaste se k účtu Azure, který je potřeba jenom jednou pro každou relaci PS.  Přiřaďte proměnné.
 2. Vyhledejte svou virtuální síť a potom pro vaši podsíť.
 3. Je vaše podsíť označená jako typ serveru **Microsoft. SQL** Endpoint?
-4. Do podsítě přidejte koncový bod virtuální služby typu name **Microsoft. SQL**.
+4. Do podsítě přidejte koncový bod virtuální služby typu name **Microsoft. SQL** .
 
 > [!IMPORTANT]
 > Před spuštěním tohoto skriptu musíte upravit hodnoty přiřazené k proměnným $-v horní části skriptu.

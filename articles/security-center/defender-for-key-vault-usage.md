@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a40ffab652a6ae8671d6cd1c0dd9336764ce2c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448322"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791932"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Reakce na upozornění Azure Defenderu pro Key Vault
 Když obdržíte výstrahu od Azure Defenderu pro Key Vault, doporučujeme, abyste si vyšetřili a odpověděli na výstrahu, jak je popsáno níže. Azure Defender pro Key Vault chrání aplikace a přihlašovací údaje, takže i v případě, že jste obeznámeni s aplikací nebo uživatelem, který výstrahu aktivoval, je důležité ověřit situaci okolní s každou výstrahou.  
@@ -72,4 +72,4 @@ Tato stránka vysvětluje proces reakce na výstrahu z Azure Defenderu pro Key V
 
 - [Seznámení s Azure Defenderem pro Key Vault](defender-for-key-vault-introduction.md)
 - [Potlačit výstrahy z Azure Defenderu](alerts-suppression-rules.md)
-- [Exportovat výstrahy zabezpečení](continuous-export.md)
+- [Průběžný export Security Center dat](continuous-export.md)

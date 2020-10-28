@@ -7,18 +7,18 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 958402e61f6dc81a3e6618dbcd4df4c8dd6b9ced
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042792"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793054"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Jak připojit ukázku služby IoT technologie Plug and Play Bridge běžící v systému Linux nebo Windows do IoT Hub
 
 V tomto postupu se dozvíte, jak vytvořit ukázkový adaptér pro Cloud technologie Plug and Play mostu pro službu IoT, připojit ho ke službě IoT Hub a použít nástroj Azure IoT Explorer k zobrazení telemetrie, kterou posílá. IoT technologie Plug and Play most je napsaný v jazyce C a obsahuje sadu SDK pro zařízení Azure IoT pro jazyk C. Na konci tohoto kurzu byste měli být schopni spustit most IoT technologie Plug and Play a zobrazit telemetrii sestav IT v Azure IoT Explorer: :::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-explorer-telemetry.png" alt-text="snímek obrazovky znázorňující Azure IoT Explorer s tabulkou ohlášené telemetrie (vlhkost, teplota) z mostu iot technologie Plug and Play.":::
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Tento rychlý Start můžete spustit v systému Linux nebo Windows. Příkazy prostředí v tomto průvodci postupy postupují podle konvence pro oddělovače cest v systému Windows `\` , pokud sledujete na Linux, nezapomeňte tyto oddělovače pro použít `/` .
 
@@ -30,14 +30,14 @@ V tomto rychlém startu se předpokládá, že používáte Ubuntu Linux. Kroky 
 
 K dokončení tohoto rychlého startu v systému Linux nainstalujte následující software do svého místního prostředí Linux:
 
-Pomocí příkazu nainstalujte **RSZ**, **Git**, **cmake**a všechny požadované závislosti `apt-get` :
+Pomocí příkazu nainstalujte **RSZ** , **Git** , **cmake** a všechny požadované závislosti `apt-get` :
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Ověřte, že verze nástroje `cmake` je nad **2.8.12** a verze **RSZ** je vyšší než **4.4.7**.
+Ověřte, že verze nástroje `cmake` je nad **2.8.12** a verze **RSZ** je vyšší než **4.4.7** .
 
 ```sh
 cmake --version
@@ -107,9 +107,13 @@ Očekává se, že dokončení této operace trvá několik minut.
 
 Po klonování úložiště IoT technologie Plug and Play mostu na váš počítač přejděte do `pnpbridge/docs/schema` adresáře klonovaného úložiště, kde najdete [konfigurační kód JSON](https://aka.ms/iot-pnp-bridge-env-config) nebo `config.json` Ukázka pro senzor životního prostředí tohoto mostu. Další informace o konfiguračních souborech najdete v [dokumentu koncepty technologie Plug and Play mostu IoT](concepts-iot-pnp-bridge.md).
 
-Pro `root-_interface_model_id` pole budete potřebovat zkopírovat ID modelu IoT technologie Plug and Play, které identifikuje model pro vaše zařízení. V tomto příkladu je to `dtmi:com:example:SampleDevice;1`. Upravte následující parametry v části **pnp_bridge_parameters** Node v `config.json` souboru v:
+Pro `root-_interface_model_id` pole budete potřebovat zkopírovat ID modelu IoT technologie Plug and Play, které identifikuje model pro vaše zařízení. V tomto příkladu je to `dtmi:com:example:SampleDevice;1`. V části **pnp_bridge_parameters** Node v souboru upravte následující parametry `config.json` :
 
-  Použití připojovacího řetězce (Poznámka: symmetric_key musí odpovídat klíči SAS v připojovacím řetězci):
+* connection_string 
+* symmetric_key 
+
+>[!NOTE]
+> Symmetric_key musí odpovídat klíči SAS v připojovacím řetězci.
 
   ```JSON
     {
@@ -126,7 +130,7 @@ Pro `root-_interface_model_id` pole budete potřebovat zkopírovat ID modelu IoT
   }
   ```
 
- Jakmile se soubor vyplní, `config.json` měl by vypadat přibližně takto:
+ Po vyplnění `config.json` by soubor měl vypadat takto:
 
    ```JSON
     {

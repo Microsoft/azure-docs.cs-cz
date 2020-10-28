@@ -118,7 +118,7 @@
             - name: Užitečné přehledy
               href: database/intelligent-insights-overview.md
             - name: SQL Analytics
-              href: /azure/log-analytics/log-analytics-azure-sql?toc=/azure/azure-sql/toc.json
+              href: ../azure-monitor/insights/azure-sql.md?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: Automatické ladění
               href: database/automatic-tuning-overview.md
             - name: OLTP v paměti
@@ -202,15 +202,15 @@
             - name: Použití konektoru Spark
               href: database/spark-connector.md
             - name: Použití služby ASP.NET App Service
-              href: /azure/app-service/app-service-web-tutorial-dotnet-sqldatabase?toc=/azure/azure-sql/toc.json
+              href: ../app-service/app-service-web-tutorial-dotnet-sqldatabase.md?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: Použití Azure Functions
-              href: /azure/azure-functions/functions-scenario-database-table-cleanup?toc=/azure/azure-sql/toc.json
+              href: ../azure-functions/functions-scenario-database-table-cleanup.md?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: Použití Azure Logic Apps
-              href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/azure-sql/toc.json
+              href: ../connectors/connectors-create-api-sqlazure.md?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: Index s využitím kognitivního hledání Azure
-              href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/azure-sql/toc.json
+              href: ../search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: Integrace CLR/.NET na straně serveru
-              href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
+              href: /sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: Java
               items:
                 - name: Použití Javy a JDBC
@@ -727,25 +727,25 @@
                 - name: Python
                   items:
                     - name: Spouštění skriptů Pythonu
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Datové struktury a objekty
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-data-structures?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/tutorials/quickstart-python-data-structures?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Funkce Pythonu
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/tutorials/quickstart-python-functions?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Trénování a hodnocení modelu
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/tutorials/quickstart-python-train-score-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Nasazování modelů ONNX
-                      href: /azure/azure-sql-edge/deploy-onnx?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true
+                      href: ../azure-sql-edge/deploy-onnx.md?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                 - name: R
                   items:
                     - name: Spouštění skriptů jazyka R
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Datové typy a objekty
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Funkce jazyka R
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/tutorials/quickstart-r-functions?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Trénování a hodnocení modelu
-                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/tutorials/quickstart-r-train-score-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
             - name: Kurzy
               items:
                 - name: Python
@@ -753,69 +753,69 @@
                     - name: Půjčovna lyží (lineární regrese)
                       items:
                         - name: 1. Úvod
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 2. Příprava dat
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 3. Trénování modelu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 4. Nasazení modelu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Kategorizace zákazníků (clustering K-Means)
                       items:
                         - name: 1. Úvod
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-clustering-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 2. Příprava dat
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 3. Vytvoření modelu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-clustering-model-build?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 4. Nasazení modelu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-clustering-model-deploy?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Spropitné v newyorské taxislužbě (klasifikace)
                       items:
                         - name: 1. Úvod
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-taxi-classification-introduction?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 2. Zkoumání dat
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-taxi-classification-explore-data?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 3. Návrh funkcí
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-taxi-classification-create-features?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 4. Trénování a nasazení
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-taxi-classification-train-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 5. Predikce
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/python-taxi-classification-deploy-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                 - name: R
                   items:
                     - name: Půjčovna lyží (rozhodovací strom)
                       items:
                         - name: 1. Úvod
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-predictive-model-introduction?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 2. Příprava dat
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 3. Trénování modelu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-train?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-predictive-model-train?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 4. Nasazení modelu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-predictive-model-deploy?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Kategorizace zákazníků (clustering K-Means)
                       items:
                         - name: 1. Úvod
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-clustering-model-introduction?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 2. Příprava dat
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 3. Vytvoření modelu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-clustering-model-build?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 4. Nasazení modelu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-clustering-model-deploy?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Spropitné v newyorské taxislužbě (klasifikace)
                       items:
                         - name: 1. Úvod
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-taxi-classification-introduction?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 2. Zkoumání dat
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-taxi-classification-explore-data?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 3. Návrh funkcí
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-taxi-classification-create-features?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 4. Trénování a nasazení
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-taxi-classification-train-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: 5. Predikce
-                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
             - name: Postup
               items:
                 - name: Zkoumání a modelování dat
@@ -823,73 +823,73 @@
                     - name: Python
                       items:
                         - name: Vykreslení histogramu v Pythonu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-plot-histogram?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/data-exploration/python-plot-histogram?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: Import dat do datového rámce pandas
-                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-pandas?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/data-exploration/python-dataframe-pandas?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: Vložení datového rámce do SQL
-                          href: 'https://docs.microsoft.com/sql/machine-learning/data-exploration/python-dataframe-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/data-exploration/python-dataframe-sql-server?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                 - name: Převody datových typů
                   items:
                     - name: Python na SQL
-                      href: 'https://docs.microsoft.com/sql/machine-learning/python/python-libraries-and-data-types?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/python/python-libraries-and-data-types?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: R na SQL
-                      href: 'https://docs.microsoft.com/sql/machine-learning/r/r-libraries-and-data-types?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/r/r-libraries-and-data-types?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                 - name: Nasazení
                   items:
                     - name: Zprovoznění s využitím uložených procedur
-                      href: 'https://docs.microsoft.com/sql/machine-learning/r/operationalizing-your-r-code?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/r/operationalizing-your-r-code?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Převod kódu R pro SQL Server
-                      href: 'https://docs.microsoft.com/sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Vytvoření uložené procedury s využitím sqlrutils
-                      href: 'https://docs.microsoft.com/sql/machine-learning/r/how-to-create-a-stored-procedure-using-sqlrutils?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/r/how-to-create-a-stored-procedure-using-sqlrutils?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                 - name: Predikce
                   items:
                     - name: Nativní bodování s využitím PREDICT T-SQL
-                      href: 'https://docs.microsoft.com/sql/machine-learning/predictions/native-scoring-predict-transact-sql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/predictions/native-scoring-predict-transact-sql?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                 - name: Správa balíčků
                   items:
                     - name: Instalace nových balíčků Pythonu
                       items:
                         - name: Získání informací o balíčku Pythonu
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/package-management/python-package-information?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: Instalace pomocí sqlmlutils
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: Instalace nových balíčků R
                       items:
                         - name: Získání informací o balíčku jazyka R
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/package-management/r-package-information?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: Instalace pomocí sqlmlutils
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: Vytvoření úložiště miniCRAN
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: Tipy pro použití balíčků jazyka R
-                          href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/package-management/tips-for-using-r-packages?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                 - name: Správa
                   items:
                     - name: Monitorování
                       items:
                         - name: Monitorování s využitím sestav SSMS
-                          href: 'https://docs.microsoft.com/sql/machine-learning/administration/monitor-sql-server-machine-learning-services-using-custom-reports-management-studio?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/administration/monitor-sql-server-machine-learning-services-using-custom-reports-management-studio?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: Monitorování s využitím zobrazení dynamické správy
-                          href: 'https://docs.microsoft.com/sql/machine-learning/administration/monitor-sql-server-machine-learning-services-using-dynamic-management-views?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                          href: /sql/machine-learning/administration/monitor-sql-server-machine-learning-services-using-dynamic-management-views?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                         - name: Rozšířené události
                           items:
                             - name: Monitorování s využitím rozšířených událostí
-                              href: 'https://docs.microsoft.com/sql/machine-learning/administration/extended-events?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                              href: /sql/machine-learning/administration/extended-events?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                             - name: Monitorování PREDICT T-SQL
-                              href: 'https://docs.microsoft.com/sql/machine-learning/administration/extended-events-predict-tsql?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                              href: /sql/machine-learning/administration/extended-events-predict-tsql?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
                 - name: Zabezpečení
                   items:
                     - name: Udělení uživatelských oprávnění
-                      href: 'https://docs.microsoft.com/sql/machine-learning/security/user-permission?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true'
+                      href: /sql/machine-learning/security/user-permission?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&preserve-view=true&view=azuresqldb-mi-current
         - name: Funkce
           items:
             - name: Propojené servery
-              href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/azure-sql/toc.json'
+              href: /sql/relational-databases/linked-servers/linked-servers-database-engine?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: Service Broker
-              href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
+              href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%252fazure%252fazure-sql%252ftoc.json
             - name: Databázový e-mail
-              href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
+              href: /sql/relational-databases/database-mail/database-mail?toc=%252fazure%252fazure-sql%252ftoc.json
         - name: Zabezpečení
           items:
             - name: Zabezpečení veřejných koncových bodů
@@ -1115,9 +1115,9 @@
             - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
-              href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+              href: /sql/t-sql/language-reference
             - name: Ovladače SQL Serveru
-              href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
+              href: /sql/connect/sql-connection-libraries
             - name: REST
               href: /rest/api/
             - name: Integrované služby Azure Policy
@@ -1132,11 +1132,11 @@
             - name: Dokumentace k archivovaným klasickým RM
               href: /previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-create
             - name: SQL Server Data Tools (SSDT)
-              href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+              href: //sql/ssdt/download-sql-server-data-tools-ssdt
             - name: SQL Server Management Studio (SSMS)
-              href: 'https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms'
+              href: /sql/ssms/download-sql-server-management-studio-ssms
             - name: Nástroje SQL Serveru
-              href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+              href: /sql/tools/overview-sql-tools
             - name: Plány Azure do budoucna
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: Fórum MSDN
@@ -1164,11 +1164,11 @@
             - name: Nejčastější dotazy
               href: virtual-machines/linux/frequently-asked-questions-faq.md
             - name: Dokumentace k SQL Serveru na Linuxu
-              href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
+              href: /sql/linux/sql-server-linux-overview
             - name: SQL Server Data Tools (SSDT)
-              href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+              href: /sql/ssdt/download-sql-server-data-tools-ssdt
             - name: Nástroje SQL Serveru
-              href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+              href: /sql/tools/overview-sql-tools
             - name: Plány Azure do budoucna
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: Stack Overflow
@@ -1201,7 +1201,7 @@
     - name: SQLCMD
       href: /sql/tools/sqlcmd-utility
     - name: SqlPackage
-      href: 'https://docs.microsoft.com/sql/tools/sqlpackage?toc=/azure/azure-sql/toc.json'
+      href: /sql/tools/sqlpackage?toc=%252fazure%252fazure-sql%252ftoc.json
     - name: Balíček knihoven pro správu SQL Database
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Sql'
     - name: Ovladače připojení SQL

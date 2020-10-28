@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: c88da1c7fba5d7cb51863a580ae420eb6b3298a2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 962bb7a4484f28d52ffd4f0cae985140ec2f0d28
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491270"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792918"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Přenos dat rozsáhlých datových sad se střední až velkou šířkou pásma sítě
  
@@ -95,16 +95,16 @@ Pokud používáte online přenos dat, použijte tabulku v následující část
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přečtěte si, jak přenést data pomocí importu a exportu](/azure/storage/common/storage-import-export-data-to-blobs).
+- [Přečtěte si, jak přenést data pomocí importu a exportu](./storage-import-export-data-to-blobs.md).
 - Informace o tom, jak
 
-    - [Přenos dat pomocí data box disk](/azure/databox/data-box-disk-quickstart-portal).
-    - [Přenos dat pomocí data box](/azure/databox/data-box-quickstart-portal).
-- [Přenos dat pomocí AzCopy](/azure/storage/common/storage-use-azcopy-v10).
+    - [Přenos dat pomocí data box disk](../../databox/data-box-disk-quickstart-portal.md).
+    - [Přenos dat pomocí data box](../../databox/data-box-quickstart-portal.md).
+- [Přenos dat pomocí AzCopy](./storage-use-azcopy-v10.md).
 - Informace o tom, jak:
-    - [Přenos dat pomocí data box Gateway](/azure/databox-online/data-box-gateway-deploy-add-shares).
-    - [Umožňuje transformovat data pomocí data box Edge před odesláním do Azure](/azure/databox-online/data-box-edge-deploy-configure-compute).
-- [Naučte se, jak přenést data pomocí Azure Data Factory](/azure/data-factory/quickstart-create-data-factory-portal).
+    - [Přenos dat pomocí data box Gateway](../../databox-online/data-box-gateway-deploy-add-shares.md).
+    - [Umožňuje transformovat data pomocí data box Edge před odesláním do Azure](../../databox-online/azure-stack-edge-deploy-configure-compute.md).
+- [Naučte se, jak přenést data pomocí Azure Data Factory](../../data-factory/quickstart-create-data-factory-portal.md).
 - Použití rozhraní REST API k přenosu dat
 
     - [V .NET](/dotnet/api/overview/azure/storage)

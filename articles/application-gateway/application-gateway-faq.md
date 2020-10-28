@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 11b41f4dcffad2c98ea5d1f70346ba150fd18c17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 492041e39cf3e7be256bc783afc82fc756e17bf4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278630"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791541"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -69,7 +69,7 @@ Podívejte se na [pořadí zpracování naslouchacího procesu](https://docs.mic
 
 Pokud jako koncový bod používáte veřejnou IP adresu, najdete informace o IP adrese a DNS na prostředku veřejné IP adresy. Můžete ji také najít na portálu na stránce Přehled pro aplikační bránu. Pokud používáte interní IP adresy, vyhledejte informace na stránce Přehled.
 
-V případě SKU verze V2 otevřete prostředek veřejné IP adresy a vyberte **Konfigurace**. K dispozici je pole **popisek názvu DNS (volitelné)** pro konfiguraci názvu DNS.
+V případě SKU verze V2 otevřete prostředek veřejné IP adresy a vyberte **Konfigurace** . K dispozici je pole **popisek názvu DNS (volitelné)** pro konfiguraci názvu DNS.
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Jaká jsou nastavení časového limitu Keep-Alive a vypršení časového limitu nečinnosti protokolu TCP?
 
@@ -138,7 +138,7 @@ Ne. Application Gateway v2 nepodporuje proxy požadavky s ověřováním NTLM je
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Podporuje soubor cookie spřažení Application Gateway atribut SameSite?
 Ano, [v80](https://chromiumdash.appspot.com/schedule) v [prohlížeči chrom](https://www.chromium.org/Home) představila v souborech cookie protokolu HTTP pověření bez SameSite atributu, aby bylo považováno za SameSite = Lax. To znamená, že prohlížeč nebude odesílat soubory cookie spřažení Application Gateway v kontextu třetí strany. 
 
-Pro podporu tohoto scénáře Application Gateway vloží další soubor cookie s názvem *ApplicationGatewayAffinityCORS* spolu s existujícím souborem cookie *ApplicationGatewayAffinity* .  Tyto soubory cookie jsou podobné, ale soubor cookie *ApplicationGatewayAffinityCORS* má přidané dva další atributy: *SameSite = None; Zabezpečení*. Tyto atributy udržují rychlé relace i pro žádosti o více zdrojů. Další informace najdete v [části spřažení na základě souborů cookie](configuration-http-settings.md#cookie-based-affinity) .
+Pro podporu tohoto scénáře Application Gateway vloží další soubor cookie s názvem *ApplicationGatewayAffinityCORS* spolu s existujícím souborem cookie *ApplicationGatewayAffinity* .  Tyto soubory cookie jsou podobné, ale soubor cookie *ApplicationGatewayAffinityCORS* má přidané dva další atributy: *SameSite = None; Zabezpečení* . Tyto atributy udržují rychlé relace i pro žádosti o více zdrojů. Další informace najdete v [části spřažení na základě souborů cookie](configuration-http-settings.md#cookie-based-affinity) .
 
 ## <a name="performance"></a>Výkon
 
@@ -249,7 +249,7 @@ Pokud ale chcete použít Application Gateway v2 jenom s privátní IP adresou, 
 2. Nevytvářejte žádné naslouchací procesy pro veřejnou IP adresu front-endu. Application Gateway nebude naslouchat jakémukoli provozu na veřejné IP adrese, pokud pro něj nebudou vytvořeny žádné naslouchací procesy.
 3. Vytvořte a připojte [skupinu zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview) pro Application Gateway podsíť s následující konfigurací v pořadí podle priority:
     
-    a. Povolte provoz ze zdroje jako značky služby **GatewayManager** a cíle jako **libovolný** a cílový port jako **65200-65535**. Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (jsou uzamčené) pomocí ověření certifikátu. Externí entity, včetně správců uživatelů brány, nemůžou iniciovat změny těchto koncových bodů bez příslušných certifikátů.
+    a. Povolte provoz ze zdroje jako značky služby **GatewayManager** a cíle jako **libovolný** a cílový port jako **65200-65535** . Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (jsou uzamčené) pomocí ověření certifikátu. Externí entity, včetně správců uživatelů brány, nemůžou iniciovat změny těchto koncových bodů bez příslušných certifikátů.
     
     b. Povolení provozu ze zdroje jako značky služby **AzureLoadBalancer** a cílového a cílového portu jako **libovolného**
     
@@ -350,7 +350,7 @@ Prohlížeč certifikační autority (CA) Členové prohlížeče nedávno publi
 * [Chyba 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [Chyba 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-Podle požadavků na dodržování předpisů v oboru můžou dodavatelé CA odvolat certifikační autority, které nedodržují předpisy, a vydávat odpovídající certifikační autority, které vyžadují, aby se jejich certifikáty znovu vystavily pro zákazníky.Společnost Microsoft úzce spolupracuje s těmito dodavateli, aby minimalizovala potenciální dopad na služby Azure, **ale vaše vlastní certifikáty nebo certifikáty, které se používají ve scénářích "Přineste si vlastní certifikát" (BYOC), jsou stále ohroženy tím, že se neočekávaně odvolají**.
+Podle požadavků na dodržování předpisů v oboru můžou dodavatelé CA odvolat certifikační autority, které nedodržují předpisy, a vydávat odpovídající certifikační autority, které vyžadují, aby se jejich certifikáty znovu vystavily pro zákazníky.Společnost Microsoft úzce spolupracuje s těmito dodavateli, aby minimalizovala potenciální dopad na služby Azure, **ale vaše vlastní certifikáty nebo certifikáty, které se používají ve scénářích "Přineste si vlastní certifikát" (BYOC), jsou stále ohroženy tím, že se neočekávaně odvolají** .
 
 Chcete-li zjistit, zda certifikáty využívané vaší aplikací byly odvolány z oznámení referenčního [DigiCert](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) a [sledování odvolaných certifikátů](https://misissued.com/#revoked). Pokud vaše certifikáty byly odvolány nebo budou odvolány, budete muset požádat dodavatele CA o nové certifikáty využívané ve svých aplikacích. Aby nedošlo k přerušení dostupnosti vaší aplikace z důvodu neočekávaného odvolání certifikátů, nebo pokud chcete aktualizovat certifikát, který byl odvolán, přečtěte si následující příspěvek v našich aktualizacích Azure, kde najdete odkazy na nápravy různých služeb Azure, které podporují BYOC: https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -434,9 +434,9 @@ Ne, doplněk AGIC je spravovaná služba, která znamená, že Microsoft bude au
 
 Application Gateway poskytuje tři protokoly: 
 
-* **ApplicationGatewayAccessLog**: protokol Access obsahuje všechny požadavky odeslané do front-endu služby Application Gateway. Mezi tato data patří IP adresa volajícího, požadovaná adresa URL, latence odezvy, návratový kód a bajtů. Obsahuje jeden záznam na aplikační bránu.
-* **ApplicationGatewayPerformanceLog**: protokol výkonu zachycuje informace o výkonu pro každou bránu aplikace. Informace zahrnují propustnost v bajtech, celkový počet zpracovaných požadavků, počet neúspěšných požadavků a stav back-endu, který není v pořádku.
-* **ApplicationGatewayFirewallLog**: pro brány aplikací, které nakonfigurujete pomocí WAF, obsahuje protokol brány firewall požadavky, které se protokolují buď v režimu detekce, nebo v režimu prevence.
+* **ApplicationGatewayAccessLog** : protokol Access obsahuje všechny požadavky odeslané do front-endu služby Application Gateway. Mezi tato data patří IP adresa volajícího, požadovaná adresa URL, latence odezvy, návratový kód a bajtů. Obsahuje jeden záznam na aplikační bránu.
+* **ApplicationGatewayPerformanceLog** : protokol výkonu zachycuje informace o výkonu pro každou bránu aplikace. Informace zahrnují propustnost v bajtech, celkový počet zpracovaných požadavků, počet neúspěšných požadavků a stav back-endu, který není v pořádku.
+* **ApplicationGatewayFirewallLog** : pro brány aplikací, které nakonfigurujete pomocí WAF, obsahuje protokol brány firewall požadavky, které se protokolují buď v režimu detekce, nebo v režimu prevence.
 
 Všechny protokoly se shromažďují každých 60 sekund. Další informace najdete v tématu [stav back-endu, diagnostické protokoly a metriky pro Application Gateway](application-gateway-diagnostics.md).
 
@@ -472,6 +472,10 @@ Ano. Pokud vaše konfigurace odpovídá následujícímu scénáři, neuvidíte 
 - Nasadili jste Application Gateway v2
 - Máte NSGu v podsíti služby Application Gateway.
 - Povolili jste protokoly toku NSG na těchto NSG.
+
+### <a name="does-application-gateway-store-customer-data"></a>Ukládá Application Gateway zákaznická data?
+
+Ne, Application Gateway neukládá zákaznická data.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/14/2020
-ms.openlocfilehash: 9b151e566f0cc3e086277c101a796e7dde059ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19cec1deeef344ea5897061db0fec88066b90b05
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442562"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791762"
 ---
 # <a name="configure-and-manage-content-reference---azure-sql-database"></a>Konfigurace a Správa odkazu na obsah-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,7 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 
 - [Ruční ladění](performance-guidance.md)
 - [Monitorování výkonu pomocí zobrazení dynamické správy](monitoring-with-dmvs.md)
-- [Monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [Monitorování výkonu pomocí úložiště dotazů](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Povolením automatického ladění](automatic-tuning-enable.md) umožníte Azure SQL Database optimalizovat výkon svého zatížení.
 - [Povolením e-mailových oznámení pro automatické ladění](automatic-tuning-email-notifications-configure.md) získáte informace o doporučeních pro ladění.
 - [Použijte doporučení k výkonu](database-advisor-find-recommendations-portal.md) a optimalizujte databázi.
@@ -84,7 +84,7 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 - [Synchronizace dat SQL](sql-data-sync-data-sql-server-sql-database.md)
 - [Agent synchronizace dat](sql-data-sync-agent-overview.md)
 - [Replikace změn schématu](sql-data-sync-update-sync-schema.md)
-- [Monitorování pomocí OMS](sql-data-sync-monitor-sync.md)
+- [Monitorování pomocí OMS](./monitor-tune-overview.md)
 - [Osvědčené postupy pro synchronizaci dat](sql-data-sync-best-practices.md)
 - [Řešení potíží se synchronizací dat](sql-data-sync-troubleshoot.md)
 

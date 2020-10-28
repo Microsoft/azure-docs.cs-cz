@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
-ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614423"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793139"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro d�
 |-|**Obecné použití**|**Pro důležité obchodní informace**|**Hyperškálování**|
 |---|---|---|---|
 |Nejvhodnější pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště. |Nabízí podnikovým aplikacím nejvyšší odolnost proti chybám pomocí několika izolovaných replik a poskytuje nejvyšší výkon vstupně-výstupních operací na jednu repliku databáze.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.  Nabízí vyšší odolnost proti chybám tím, že umožňuje konfiguraci více než jedné repliky izolované databáze. |
-|Storage|Používá vzdálené úložiště.<br/>**SQL Database zřízené výpočetní**prostředky:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance SQL**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>**SQL Database zřízené výpočetní**prostředky:<br/>5 GB – 4 TB<br/>**Spravovaná instance SQL**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
-|IOPS a propustnost (přibližná)|**SQL Database**: Přečtěte si o omezeních prostředků pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).<br/>**Spravovaná instance SQL**: Přečtěte si téma [Přehled omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md#service-tier-characteristics).|Viz omezení prostředků pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS a propustnosti budou záviset na zatížení.|
+|Úložiště|Používá vzdálené úložiště.<br/>**SQL Database zřízené výpočetní** prostředky:<br/>5 GB – 4 TB<br/>**Výpočetní** prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance SQL** : 32 GB až 8 TB |Používá místní úložiště SSD.<br/>**SQL Database zřízené výpočetní** prostředky:<br/>5 GB – 4 TB<br/>**Spravovaná instance SQL** :<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
+|IOPS a propustnost (přibližná)|**SQL Database** : Přečtěte si o omezeních prostředků pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).<br/>**Spravovaná instance SQL** : Přečtěte si téma [Přehled omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md#service-tier-characteristics).|Viz omezení prostředků pro izolované [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md).|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS a propustnosti budou záviset na zatížení.|
 |Dostupnost|1 replika, žádné repliky na úrovni čtení|3 repliky, 1 [replika pro čtení a škálování](read-scale-out.md)<br/>zóna – redundantní vysoká dostupnost (HA)|1 replika pro čtení i zápis a 0-4 replik v režimu [čtení a škálování](read-scale-out.md)|
 |Zálohování|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../../storage/common/geo-redundant-design.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
 |V paměti|Nepodporováno|Podporováno|Nepodporováno|
@@ -111,7 +111,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 |Řada Fsv2     |– Procesory Intel® 8168 (Skylake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit až 72 virtuální jádra (1 vCore = 1 Hyper-thread)|-1,9 GB na vCore<br>– Zřídit až 136 GB|
 |Řada M     |– Intel® E7-8890 V3 2,5 GHz a Intel® 8280M 2,7 GHz (Cascade Lake) procesory<br>-Zřídit až 128 virtuální jádra (1 vCore = 1 Hyper-thread)|– 29 GB na vCore<br>– Zřídit až 3,7 TB|
 
-\* V zobrazení dynamické správy [Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) se generování hardwaru pro databáze používající procesory Intel® SP-8160 (Skylake) zobrazuje jako Gen6, zatímco generování hardwaru pro databáze pomocí technologie Intel® 8272CL (Cascade Lake) se zobrazuje jako Gen7. Omezení prostředků pro všechny databáze Gen5 jsou stejná bez ohledu na typ procesoru (Broadwell, Skylake nebo Cascade Lake).
+\* V zobrazení dynamické správy [Sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) se generování hardwaru pro databáze používající procesory Intel® SP-8160 (Skylake) zobrazuje jako Gen6, zatímco generování hardwaru pro databáze pomocí technologie Intel® 8272CL (Cascade Lake) se zobrazuje jako Gen7. Omezení prostředků pro všechny databáze Gen5 jsou stejná bez ohledu na typ procesoru (Broadwell, Skylake nebo Cascade Lake).
 
 Další informace o omezeních prostředků najdete v tématech [omezení prostředků pro izolované databáze (Vcore)](resource-limits-vcore-single-databases.md)nebo [omezení prostředků pro elastické fondy (Vcore)](resource-limits-vcore-elastic-pools.md).
 
@@ -138,7 +138,7 @@ V případě databáze klikněte na stránce Přehled na odkaz **cenová úrove�
 
   ![Změna hardwaru](./media/service-tiers-vcore/change-hardware.png)
 
-U fondu na stránce Přehled vyberte **Konfigurovat**.
+U fondu na stránce Přehled vyberte **Konfigurovat** .
 
 Použijte postup změny konfigurace a vyberte generaci hardwaru, jak je popsáno v předchozích krocích.
 
@@ -168,7 +168,7 @@ Použijte následující skript PowerShellu:
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Další podrobnosti najdete v příkazu [set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) .
+Další podrobnosti najdete v příkazu [set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) .
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -178,7 +178,7 @@ Použijte následující příkaz CLI:
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-Další podrobnosti najdete v příkazu [AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) Command.
+Další podrobnosti najdete v příkazu [AZ SQL mi Update](/cli/azure/sql/mi#az-sql-mi-update) Command.
 
 ---
 
@@ -238,5 +238,4 @@ Podrobnosti o specifických úložištích a velikostech úložiště dostupnýc
 
 - [omezení prostředků založené na Vcore pro Azure SQL Database](resource-limits-vcore-single-databases.md).
 - [omezení prostředků založené na Vcore pro fond Azure SQL Database](resource-limits-vcore-elastic-pools.md).
-- [omezení prostředků založené na Vcore pro spravovanou instanci Azure SQL](../managed-instance/resource-limits.md) 
-
+- [omezení prostředků založené na Vcore pro spravovanou instanci Azure SQL](../managed-instance/resource-limits.md)

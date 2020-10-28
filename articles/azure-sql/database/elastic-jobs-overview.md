@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409577"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792170"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>Vytváření, konfigurace a Správa elastických úloh (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -50,11 +50,11 @@ Pokud jste elastické úlohy nepoužívali, [Přečtěte si další informace o 
 
 Nastavení správných přihlašovacích údajů pro spuštění úlohy může být trochu matoucí, proto mějte na paměti následující body:
 
-- V *databázi úloh*se musí vytvořit přihlašovací údaje v oboru databáze.
-- **Všechny cílové databáze musí mít přihlašovací údaje s [dostatečným oprávněním](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) , aby se úloha úspěšně dokončila** ( `jobuser` v diagramu níže).
+- V *databázi úloh* se musí vytvořit přihlašovací údaje v oboru databáze.
+- **Všechny cílové databáze musí mít přihlašovací údaje s [dostatečným oprávněním](/sql/relational-databases/security/permissions-database-engine) , aby se úloha úspěšně dokončila** ( `jobuser` v diagramu níže).
 - Přihlašovací údaje je možné opakovaně používat napříč úlohami a hesla přihlašovacích údajů jsou šifrovaná a zabezpečená uživatelům, kteří mají k objektům úlohy přístup jen pro čtení.
 
-Následující obrázek by vám měl pomoct porozumět přihlašovacím údajům úloh a správně je nastavit. **Nezapomeňte vytvořit příslušného uživatele v každé databázi (ve všech *cílových uživatelských databázích*), ve které se má úloha spouštět**.
+Následující obrázek by vám měl pomoct porozumět přihlašovacím údajům úloh a správně je nastavit. **Nezapomeňte vytvořit příslušného uživatele v každé databázi (ve všech *cílových uživatelských databázích* ), ve které se má úloha spouštět** .
 
 ![Přihlašovací údaje k elastickým úlohám](./media/elastic-jobs-overview/job-credentials.png)
 
@@ -63,7 +63,7 @@ Následující obrázek by vám měl pomoct porozumět přihlašovacím údajům
 Tady je několik osvědčených postupů, které byste při práci s elastickými úlohami měli brát v úvahu:
 
 - Omezte možnost používat rozhraní API na důvěryhodné osoby.
-- Přihlašovací údaje by měly mít nejnižší úroveň oprávnění nezbytnou k provedení daného kroku úlohy. Další informace najdete v tématu [autorizace a oprávnění](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
+- Přihlašovací údaje by měly mít nejnižší úroveň oprávnění nezbytnou k provedení daného kroku úlohy. Další informace najdete v tématu [autorizace a oprávnění](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server).
 - Při použití členu cílové skupiny serveru nebo fondu je důrazně navrženo vytvoření samostatného pověření s právy k hlavní databázi k zobrazení nebo zobrazení seznamu databází, které se používají k rozšíření seznamů databáze serverů a/nebo fondů před provedením úlohy.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Výkon, kapacita a omezení agenta

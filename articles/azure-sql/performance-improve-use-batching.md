@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840485"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792595"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Jak používat dávkování ke zlepšování Azure SQL Database a výkonu aplikací spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ První část tohoto článku prověřuje různé techniky dávkování pro apli
 ### <a name="note-about-timing-results-in-this-article"></a>Poznámka o výsledcích časování v tomto článku
 
 > [!NOTE]
-> Výsledky nejsou srovnávacími testy, ale mají za následek zobrazení **relativního výkonu**. Časování jsou založena na průměru alespoň 10 testovacích běhů. Operace jsou vloženy do prázdné tabulky. Tyto testy byly měřeny před V12 a nemusí nutně odpovídat propustnosti, ke které může dojít v databázi V12 pomocí nových [úrovní služeb DTU](database/service-tiers-dtu.md) nebo [úrovní služeb Vcore](database/service-tiers-vcore.md). Relativní výhoda techniky dávkování by měla být podobná.
+> Výsledky nejsou srovnávacími testy, ale mají za následek zobrazení **relativního výkonu** . Časování jsou založena na průměru alespoň 10 testovacích běhů. Operace jsou vloženy do prázdné tabulky. Tyto testy byly měřeny před V12 a nemusí nutně odpovídat propustnosti, ke které může dojít v databázi V12 pomocí nových [úrovní služeb DTU](database/service-tiers-dtu.md) nebo [úrovní služeb Vcore](database/service-tiers-vcore.md). Relativní výhoda techniky dávkování by měla být podobná.
 
 ### <a name="transactions"></a>Transakce
 
@@ -93,11 +93,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Transakce jsou ve skutečnosti používány v obou těchto příkladech. V prvním příkladu je každé jednotlivá volání implicitní transakce. V druhém příkladu explicitní transakce balí všechna volání. Na dokumentaci pro [protokol transakcí zápisu na úrovni](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)služby jsou záznamy protokolu po potvrzení transakce vyprázdněny na disk. Takže v transakci může zápis do transakčního protokolu zpozdit až do potvrzení transakce. V důsledku toho povolíte dávkování pro zápisy do transakčního protokolu serveru.
+Transakce jsou ve skutečnosti používány v obou těchto příkladech. V prvním příkladu je každé jednotlivá volání implicitní transakce. V druhém příkladu explicitní transakce balí všechna volání. Na dokumentaci pro [protokol transakcí zápisu na úrovni](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)služby jsou záznamy protokolu po potvrzení transakce vyprázdněny na disk. Takže v transakci může zápis do transakčního protokolu zpozdit až do potvrzení transakce. V důsledku toho povolíte dávkování pro zápisy do transakčního protokolu serveru.
 
 Následující tabulka uvádí některé výsledky ad hoc testování. Testy prováděly stejné sekvenční vložení s transakcemi a bez nich. Pro další perspektivu se první sada testů vzdáleně spustila z přenosného počítače do databáze v Microsoft Azure. Druhá sada testů běžela z cloudové služby a databáze, která se nachází v rámci stejného Microsoft Azure datacentra (Západní USA). Následující tabulka ukazuje dobu v milisekundách sekvenčních vkládání s transakcemi a bez nich.
 
-**Z místního prostředí do Azure**:
+**Z místního prostředí do Azure** :
 
 | Operace | Bez transakce (MS) | Transakce (MS) |
 | --- | --- | --- |
@@ -106,7 +106,7 @@ Následující tabulka uvádí některé výsledky ad hoc testování. Testy pro
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-Z **Azure do Azure (stejné datacentrum)**:
+Z **Azure do Azure (stejné datacentrum)** :
 
 | Operace | Bez transakce (MS) | Transakce (MS) |
 | --- | --- | --- |
@@ -120,15 +120,15 @@ Z **Azure do Azure (stejné datacentrum)**:
 
 Na základě předchozích výsledků testů zabalení jediné operace v transakci ve skutečnosti snižuje výkon. Ale při zvyšování počtu operací v rámci jedné transakce se zvýšení výkonu bude označeno příznakem. Rozdíl mezi výkonem je také více patrné, pokud se všechny operace vyskytují v rámci Microsoft Azure datacentra. Zvýšení latence při použití Azure SQL Database nebo spravované instance Azure SQL z vnějšku služby Microsoft Azure Datacenter má za to, že se zvyšuje výkon při použití transakcí.
 
-I když použití transakcí může zvýšit výkon, i nadále [sledovat osvědčené postupy pro transakce a připojení](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105)). Udržujte transakce co nejkratší a po dokončení práce zavřete připojení k databázi. Příkaz using v předchozím příkladu zajišťuje, aby bylo připojení uzavřeno po dokončení následného bloku kódu.
+I když použití transakcí může zvýšit výkon, i nadále [sledovat osvědčené postupy pro transakce a připojení](/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105)). Udržujte transakce co nejkratší a po dokončení práce zavřete připojení k databázi. Příkaz using v předchozím příkladu zajišťuje, aby bylo připojení uzavřeno po dokončení následného bloku kódu.
 
 Předchozí příklad ukazuje, že můžete přidat místní transakci do libovolného ADO.NET kódu pomocí dvou řádků. Transakce nabízí rychlý způsob, jak vylepšit výkon kódu, který provádí operace sekvenčního vkládání, aktualizace a odstranění. Pro nejrychlejší výkon ale zvažte možnost změny kódu dále, aby bylo možné využít dávkování na straně klienta, jako jsou například parametry s hodnotou tabulky.
 
 Další informace o transakcích v ADO.NET naleznete v tématu [místní transakce v ADO.NET](/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>Parametry s hodnotou tabulky
+### <a name="table-valued-parameters"></a>Parametry vracející tabulku
 
-Parametry s hodnotou tabulky podporují uživatelsky definované typy tabulek jako parametry v příkazech jazyka Transact-SQL, uložených procedurách a funkcích. Tato metoda dávkování na straně klienta umožňuje odeslat více řádků dat v rámci parametru s hodnotou tabulky. Chcete-li použít parametry s hodnotou tabulky, nejprve Definujte typ tabulky. Následující příkaz Transact-SQL vytvoří typ tabulky s názvem **MyTableType**.
+Parametry s hodnotou tabulky podporují uživatelsky definované typy tabulek jako parametry v příkazech jazyka Transact-SQL, uložených procedurách a funkcích. Tato metoda dávkování na straně klienta umožňuje odeslat více řádků dat v rámci parametru s hodnotou tabulky. Chcete-li použít parametry s hodnotou tabulky, nejprve Definujte typ tabulky. Následující příkaz Transact-SQL vytvoří typ tabulky s názvem **MyTableType** .
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-V předchozím příkladu objekt **SqlCommand** vloží řádky z parametru s hodnotou tabulky ** \@ TestTvp**. Dříve vytvořený objekt **DataTable** je přiřazen tomuto parametru pomocí metody **SqlCommand. Parameters. Add** . Dávkování vkládání v jednom volání významně zvyšuje výkon při sekvenčních vkládáních.
+V předchozím příkladu objekt **SqlCommand** vloží řádky z parametru s hodnotou tabulky **\@ TestTvp** . Dříve vytvořený objekt **DataTable** je přiřazen tomuto parametru pomocí metody **SqlCommand. Parameters. Add** . Dávkování vkládání v jednom volání významně zvyšuje výkon při sekvenčních vkládáních.
 
 Pro zlepšení předchozího příkladu použijte namísto textového příkazu uloženou proceduru. Následující příkaz Transact-SQL vytvoří uloženou proceduru, která převezme parametr s hodnotou tabulky **SimpleTestTableType** .
 
@@ -212,7 +212,7 @@ Další informace o parametrech s hodnotou tabulky najdete v tématu [parametry 
 
 ### <a name="sql-bulk-copy"></a>Hromadné kopírování SQL
 
-Hromadné kopírování SQL je dalším způsobem, jak vložit velké objemy dat do cílové databáze. Aplikace .NET můžou k provádění hromadných operací vložení použít třídu **SqlBulkCopy** . **SqlBulkCopy** je obdobou funkcí nástroje příkazového řádku, **Bcp.exe**nebo příkazu jazyka Transact-SQL **Bulk INSERT**. Následující příklad kódu ukazuje, jak hromadně zkopírovat řádky ve zdrojovém **objektu DataTable**, tabulce, do cílové tabulky myTable.
+Hromadné kopírování SQL je dalším způsobem, jak vložit velké objemy dat do cílové databáze. Aplikace .NET můžou k provádění hromadných operací vložení použít třídu **SqlBulkCopy** . **SqlBulkCopy** je obdobou funkcí nástroje příkazového řádku, **Bcp.exe** nebo příkazu jazyka Transact-SQL **Bulk INSERT** . Následující příklad kódu ukazuje, jak hromadně zkopírovat řádky ve zdrojovém **objektu DataTable** , tabulce, do cílové tabulky myTable.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -293,7 +293,7 @@ Třída **DataAdapter** umožňuje upravit objekt **DataSet** a následně odesl
 
 ### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) podporuje dávkování.
+[Entity Framework Core](/ef/efcore-and-ef6/#saving-data) podporuje dávkování.
 
 ### <a name="xml"></a>XML
 
@@ -380,7 +380,7 @@ I když existují některé scénáře, které jsou pro dávkování zjevné kan
 
 Představte si třeba webovou aplikaci, která sleduje historii navigace jednotlivých uživatelů. Na každý požadavek na stránku může aplikace provést volání databáze pro záznam zobrazení stránky uživatele. Vyšší výkon a škálovatelnost se ale dají dosáhnout ukládáním do vyrovnávací paměti pro navigační aktivity uživatelů a odesláním těchto dat do databáze v dávkách. Aktualizaci databáze můžete aktivovat podle uplynulého času nebo velikosti vyrovnávací paměti. Pravidlo může například určovat, že by měla být dávka zpracována po 20 sekundách nebo když vyrovnávací paměť dosáhne 1000 položek.
 
-Následující příklad kódu používá [reaktivní rozšíření – RX](https://docs.microsoft.com/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) pro zpracování událostí vyrovnávací paměti vyvolaných třídou monitorování. Při vyplňování vyrovnávací paměti nebo vypršení časového limitu se dávka uživatelských dat pošle do databáze s parametrem s hodnotou tabulky.
+Následující příklad kódu používá [reaktivní rozšíření – RX](/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) pro zpracování událostí vyrovnávací paměti vyvolaných třídou monitorování. Při vyplňování vyrovnávací paměti nebo vypršení časového limitu se dávka uživatelských dat pošle do databáze s parametrem s hodnotou tabulky.
 
 Následující třídy NavHistoryData modelují podrobnosti o navigaci uživatele. Obsahuje základní informace, jako je identifikátor uživatele, přístup k adrese URL a doba přístupu.
 

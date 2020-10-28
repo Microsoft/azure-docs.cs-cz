@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 60b322cc0c1a50df7f8946fa1047bdc58ea92d77
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8afedec224fed55f617340af512485726ff44326
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488533"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792935"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Přenos dat rozsáhlých datových sad s malou nebo žádnou šířkou pásma sítě
  
@@ -66,6 +66,6 @@ Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
 - Informace o tom, jak
 
-    - [Přenos dat pomocí data box disk](/azure/databox/data-box-disk-quickstart-portal).
-    - [Přenos dat pomocí data box](/azure/databox/data-box-quickstart-portal).
-    - [Přeneste data pomocí importu/exportu](/azure/storage/common/storage-import-export-data-to-blobs).
+    - [Přenos dat pomocí data box disk](../../databox/data-box-disk-quickstart-portal.md).
+    - [Přenos dat pomocí data box](../../databox/data-box-quickstart-portal.md).
+    - [Přeneste data pomocí importu/exportu](./storage-import-export-data-to-blobs.md).

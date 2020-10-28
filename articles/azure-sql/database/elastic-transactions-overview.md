@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058042"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793343"
 ---
 # <a name="distributed-transactions-across-cloud-databases-preview"></a>Distribuované transakce v cloudových databázích (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Transakce elastické databáze pro Azure SQL Database a Azure SQL Managed instance umožňují spouštět transakce, které přesahují několik databází. Transakce elastické databáze jsou k dispozici pro aplikace .NET využívající ADO.NET a integrují se se známým programovacím prostředím pomocí tříd [System. Transactions](https://msdn.microsoft.com/library/system.transactions.aspx) . Pokud chcete získat knihovnu, přečtěte si téma [.NET Framework 4.6.1 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=49981).
-Pro distribuované transakce spravované instance jsou navíc k dispozici v [jazyce Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql).
+Transakce elastické databáze pro Azure SQL Database a Azure SQL Managed instance umožňují spouštět transakce, které přesahují několik databází. Transakce elastické databáze jsou k dispozici pro aplikace .NET využívající ADO.NET a integrují se se známým programovacím prostředím pomocí tříd [System. Transactions](/dotnet/api/system.transactions) . Pokud chcete získat knihovnu, přečtěte si téma [.NET Framework 4.6.1 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=49981).
+Pro distribuované transakce spravované instance jsou navíc k dispozici v [jazyce Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql).
 
 V místním prostředí takový scénář obvykle vyžaduje spuštění Microsoft DTC (Distributed Transaction Coordinator) (MSDTC). Vzhledem k tomu, že Služba MSDTC není k dispozici pro aplikaci typu platforma jako služba v Azure, možnost koordinace distribuovaných transakcí je teď přímo integrovaná do SQL Database nebo spravované instance. Aplikace se mohou připojit k libovolné databázi a spustit distribuované transakce a jedna z databází nebo serverů bude transparentně koordinovat distribuovanou transakci, jak je znázorněno na následujícím obrázku.
 
@@ -32,7 +32,7 @@ V tomto dokumentu se termínem "distribuované transakce" a "transakce elastick�
 
 ## <a name="common-scenarios"></a>Typické scénáře
 
-Transakce elastické databáze umožňují aplikacím provádět atomické změny dat uložených v několika různých databázích. Verze Preview se zaměřuje na prostředí vývoje na straně klienta v jazycích C# a .NET. Prostředí na straně serveru (kód napsaný v uložených procedurách nebo skriptech na straně serveru) pomocí [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) je k dispozici pouze pro spravovanou instanci.
+Transakce elastické databáze umožňují aplikacím provádět atomické změny dat uložených v několika různých databázích. Verze Preview se zaměřuje na prostředí vývoje na straně klienta v jazycích C# a .NET. Prostředí na straně serveru (kód napsaný v uložených procedurách nebo skriptech na straně serveru) pomocí [jazyka Transact-SQL](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) je k dispozici pouze pro spravovanou instanci.
 > [!IMPORTANT]
 > Ve verzi Preview se v současnosti nepodporuje spouštění transakcí elastické databáze mezi Azure SQL Database a spravovanou instancí Azure SQL. Transakce elastické databáze může být rozložená jenom na celou sadu databází SQL nebo sadu spravovaných instancí.
 
@@ -136,9 +136,9 @@ Tento přístup je znázorněn v následujícím příkladu kódu. Předpoklád�
 
 ## <a name="transact-sql-development-experience"></a>Prostředí pro vývoj v jazyce Transact-SQL
 
-Distribuované transakce na straně serveru pomocí jazyka Transact-SQL jsou k dispozici pouze pro spravovanou instanci Azure SQL. Distribuované transakce se dají provádět jenom mezi spravovanými instancemi, které patří do stejné [skupiny důvěryhodných serverů](https://aka.ms/mitrusted-groups). V tomto scénáři musí spravované instance pomocí [odkazovaného serveru](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) odkazovat na sebe navzájem.
+Distribuované transakce na straně serveru pomocí jazyka Transact-SQL jsou k dispozici pouze pro spravovanou instanci Azure SQL. Distribuované transakce se dají provádět jenom mezi spravovanými instancemi, které patří do stejné [skupiny důvěryhodných serverů](../managed-instance/server-trust-group-overview.md). V tomto scénáři musí spravované instance pomocí [odkazovaného serveru](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) odkazovat na sebe navzájem.
 
-Následující vzorový kód Transact-SQL používá ke spuštění distribuované transakce [počáteční distribuovanou transakci](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) .
+Následující vzorový kód Transact-SQL používá ke spuštění distribuované transakce [počáteční distribuovanou transakci](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) .
 
 ```Transact-SQL
 
@@ -192,7 +192,7 @@ Zde je příklad, kde transakce je explicitně povýšena na distribuovanou tran
             Helper.ExecuteNonQueryOnOpenConnection(conn, "BEGIN DISTRIBUTED TRAN");
             // ...
         }
-     
+     
         using (SqlConnection conn2 = new SqlConnection(DB1_ConnectionString)
         {
             conn2.Open();
@@ -232,19 +232,19 @@ Následující příklad ukazuje transakci, která je implicitně povýšena na 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 Transakce elastické databáze jsou podporovány napříč různými servery v Azure SQL Database. Když transakce přesahující hranice serveru, je potřeba, aby se zúčastněné servery nejdřív zadaly do vzájemně se komunikačních vztahů. Po navázání komunikačního vztahu se všechny databáze na všech dvou serverech můžou účastnit elastických transakcí s databázemi z druhého serveru. S transakcemi, které jsou na více než dvou serverech, je nutné, aby se pro všechny dvojice serverů nauskutečnil komunikační vztah.
 
 Pomocí následujících rutin PowerShellu můžete spravovat vztahy komunikace mezi servery pro transakce elastické databáze:
 
-* **New-AzSqlServerCommunicationLink**: pomocí této rutiny můžete vytvořit nový vztah komunikace mezi dvěma servery v Azure SQL Database. Vztah je symetrický, což znamená, že oba servery mohou iniciovat transakce s jiným serverem.
-* **Get-AzSqlServerCommunicationLink**: tuto rutinu použijte k načtení existujících komunikačních vztahů a jejich vlastností.
-* **Remove-AzSqlServerCommunicationLink**: pomocí této rutiny můžete odebrat existující komunikační vztah.
+* **New-AzSqlServerCommunicationLink** : pomocí této rutiny můžete vytvořit nový vztah komunikace mezi dvěma servery v Azure SQL Database. Vztah je symetrický, což znamená, že oba servery mohou iniciovat transakce s jiným serverem.
+* **Get-AzSqlServerCommunicationLink** : tuto rutinu použijte k načtení existujících komunikačních vztahů a jejich vlastností.
+* **Remove-AzSqlServerCommunicationLink** : pomocí této rutiny můžete odebrat existující komunikační vztah.
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>Transakce napříč několika servery pro spravovanou instanci Azure SQL
 
-Distribuované transakce jsou podporované napříč různými servery ve spravované instanci Azure SQL. Při transakcích, které překračují hranice spravované instance, je nutné, aby se zúčastněné instance nacházely do vzájemného vztahu zabezpečení a komunikace. K tomu je potřeba vytvořit [skupinu důvěryhodných serverů](https://aka.ms/mitrusted-groups), kterou je možné provést Azure Portal. Pokud spravované instance nejsou ve stejné virtuální síti, je potřeba nastavit [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) a příchozí a odchozí pravidla skupiny zabezpečení sítě musí povolit porty 5024 a 11000-12000 ve všech zúčastněných virtuálních sítích.
+Distribuované transakce jsou podporované napříč různými servery ve spravované instanci Azure SQL. Při transakcích, které překračují hranice spravované instance, je nutné, aby se zúčastněné instance nacházely do vzájemného vztahu zabezpečení a komunikace. K tomu je potřeba vytvořit [skupinu důvěryhodných serverů](../managed-instance/server-trust-group-overview.md), kterou je možné provést Azure Portal. Pokud spravované instance nejsou ve stejné virtuální síti, je potřeba nastavit [partnerský vztah virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md) a příchozí a odchozí pravidla skupiny zabezpečení sítě musí povolit porty 5024 a 11000-12000 ve všech zúčastněných virtuálních sítích.
 
   ![Skupiny důvěryhodných serverů na webu Azure Portal][3]
 
@@ -254,13 +254,13 @@ Následující diagram znázorňuje skupinu důvěryhodných serverů se spravov
 
 ## <a name="monitoring-transaction-status"></a>Stav transakce monitorování
 
-Pomocí zobrazení dynamické správy (zobrazení dynamické správy) můžete monitorovat stav a průběh probíhajících transakcí elastické databáze. Všechny zobrazení dynamické správy vztahující se k transakcím jsou relevantní pro distribuované transakce v SQL Database a ve spravované instanci. Odpovídající seznam zobrazení dynamické správy můžete najít tady: [zobrazení a funkce dynamické správy související s transakcemi (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Pomocí zobrazení dynamické správy (zobrazení dynamické správy) můžete monitorovat stav a průběh probíhajících transakcí elastické databáze. Všechny zobrazení dynamické správy vztahující se k transakcím jsou relevantní pro distribuované transakce v SQL Database a ve spravované instanci. Odpovídající seznam zobrazení dynamické správy můžete najít tady: [zobrazení a funkce dynamické správy související s transakcemi (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql).
 
 Tyto zobrazení dynamické správy jsou zvláště užitečné:
 
-* **Sys.DM \_ Tran \_ Active \_ Transactions**: vypíše aktuálně aktivní transakce a jejich stav. Sloupec UOW (jednotka práce) může identifikovat různé podřízené transakce, které patří do stejné distribuované transakce. Všechny transakce v rámci stejné distribuované transakce mají stejnou hodnotu UOW. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms174302.aspx).
-* ** \_ \_ \_ transakce sys.DM Tran Database**: poskytuje další informace o transakcích, jako je umístění transakce v protokolu. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms186957.aspx).
-* **Sys.DM \_ Tran \_ zámky**: poskytuje informace o zámkech, které jsou aktuálně uchovávány v probíhajících transakcích. Další informace najdete v [dokumentaci k DMV](https://msdn.microsoft.com/library/ms190345.aspx).
+* **Sys.DM \_ Tran \_ Active \_ Transactions** : vypíše aktuálně aktivní transakce a jejich stav. Sloupec UOW (jednotka práce) může identifikovat různé podřízené transakce, které patří do stejné distribuované transakce. Všechny transakce v rámci stejné distribuované transakce mají stejnou hodnotu UOW. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql).
+* **\_ \_ \_ transakce sys.DM Tran Database** : poskytuje další informace o transakcích, jako je umístění transakce v protokolu. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql).
+* **Sys.DM \_ Tran \_ zámky** : poskytuje informace o zámkech, které jsou aktuálně uchovávány v probíhajících transakcích. Další informace najdete v [dokumentaci k DMV](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
 
 ## <a name="limitations"></a>Omezení
 
@@ -268,19 +268,19 @@ Následující omezení se aktuálně vztahují na transakce elastické databáz
 
 * Podporují se jenom transakce napříč databázemi v SQL Database. Jiní poskytovatelé prostředků a databáze [XA](https://en.wikipedia.org/wiki/X/Open_XA) , kteří nejsou SQL Database, se nemůžou zúčastnit transakcí elastické databáze. To znamená, že transakce elastické databáze se nemůžou roztahovat mezi místními SQL Server a Azure SQL Database. U distribuovaných transakcí v místním prostředí používejte MSDTC.
 * Jsou podporovány pouze transakce, které jsou koordinovány klientem z aplikace .NET. Podpora na straně serveru pro T-SQL, jako je BEGIN DISTRIBUTed TRANSACTIONed, je plánovaná, ale ještě není dostupná.
-* Transakce napříč službami WCF se nepodporují. Například máte metodu služby WCF, která provádí transakci. Uzavření volání do oboru transakce se nezdaří jako [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
+* Transakce napříč službami WCF se nepodporují. Například máte metodu služby WCF, která provádí transakci. Uzavření volání do oboru transakce se nezdaří jako [System. ServiceModel. ProtocolException](/dotnet/api/system.servicemodel.protocolexception).
 
 Následující omezení se aktuálně vztahují na distribuované transakce ve spravované instanci:
 
 * Podporují se jenom transakce napříč databázemi ve spravované instanci. Jiní zprostředkovatelé prostředků [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) a databáze mimo SPRAVOVANOU instanci SQL Azure se nemůžou účastnit distribuovaných transakcí. To znamená, že distribuované transakce se nemůžou roztahovat mezi místními SQL Server a Azure SQL Managed instance. U distribuovaných transakcí v místním prostředí používejte MSDTC.
-* Transakce napříč službami WCF se nepodporují. Například máte metodu služby WCF, která provádí transakci. Uzavření volání do oboru transakce se nezdaří jako [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
-* Spravovaná instance Azure SQL musí být součástí [skupiny důvěryhodných serverů](https://aka.ms/mitrusted-groups) , aby se mohla účastnit distribuované transakce.
-* Omezení [skupin vztahů důvěryhodnosti serveru](https://aka.ms/mitrusted-groups) mají vliv na distribuované transakce.
+* Transakce napříč službami WCF se nepodporují. Například máte metodu služby WCF, která provádí transakci. Uzavření volání do oboru transakce se nezdaří jako [System. ServiceModel. ProtocolException](/dotnet/api/system.servicemodel.protocolexception).
+* Spravovaná instance Azure SQL musí být součástí [skupiny důvěryhodných serverů](../managed-instance/server-trust-group-overview.md) , aby se mohla účastnit distribuované transakce.
+* Omezení [skupin vztahů důvěryhodnosti serveru](../managed-instance/server-trust-group-overview.md) mají vliv na distribuované transakce.
 * Spravované instance, které se účastní distribuovaných transakcí, musí mít připojení prostřednictvím privátních koncových bodů (pomocí privátní IP adresy z virtuální sítě, ve které jsou nasazené) a musí se vzájemně odkazovat pomocí privátních plně kvalifikovaných názvů domén. Klientské aplikace mohou používat distribuované transakce u privátních koncových bodů. V případech, kdy Transact-SQL využívá propojené servery odkazující na soukromé koncové body, mohou navíc klientské aplikace používat také distribuované transakce ve veřejných koncových bodech. Toto omezení je vysvětleno v následujícím diagramu.
   ![Omezení připojení privátního koncového bodu][4]
 ## <a name="next-steps"></a>Další kroky
 
-* V případě otázek nás na [stránce s dotazem na Microsoft Q&SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html).
+* V případě otázek nás na [stránce s dotazem na Microsoft Q&SQL Database](/answers/topics/azure-sql-database.html).
 * V případě žádostí o funkce je přidejte do [fóra SQL Database Fórum](https://feedback.azure.com/forums/217321-sql-database/) nebo [spravované instance](https://feedback.azure.com/forums/915676-sql-managed-instance).
 
 
@@ -290,4 +290,3 @@ Následující omezení se aktuálně vztahují na distribuované transakce ve s
 [2]: ./media/elastic-transactions-overview/sql-mi-distributed-transactions.png
 [3]: ./media/elastic-transactions-overview/server-trust-groups-azure-portal.png
 [4]: ./media/elastic-transactions-overview/managed-instance-distributed-transactions-private-endpoint-limitations.png
- 

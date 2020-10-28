@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 57cda5104551f8b62d157e443a42c5e3c75e4ddf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372051"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792408"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložit nastavení tajné aplikace pro webovou aplikaci
 
@@ -30,7 +30,7 @@ Chcete-li zajistit, aby byl proces vývoje zabezpečený, jsou vytvořeny knihov
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET a .NET Core – aplikace
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Uložit nastavení tajného klíče v úložišti tajného uživatele, které je mimo složku správy zdrojového kódu
-Pokud provádíte rychlý prototyp nebo nemáte přístup k Internetu, začněte s přesunutím nastavení tajného klíče mimo složku správy zdrojového kódu do úložiště tajného klíče uživatele. Úložiště tajného uživatele je soubor uložený ve složce Profiler uživatele, takže tajné klíče nejsou vráceny se změnami do správy zdrojového kódu. Následující obrázek ukazuje, jak funguje [tajný klíč uživatele](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) .
+Pokud provádíte rychlý prototyp nebo nemáte přístup k Internetu, začněte s přesunutím nastavení tajného klíče mimo složku správy zdrojového kódu do úložiště tajného klíče uživatele. Úložiště tajného uživatele je soubor uložený ve složce Profiler uživatele, takže tajné klíče nejsou vráceny se změnami do správy zdrojového kódu. Následující obrázek ukazuje, jak funguje [tajný klíč uživatele](/aspnet/core/security/app-secrets?tabs=visual-studio) .
 
 ![Tajný klíč uživatele uchovává nastavení tajného klíče mimo správu zdrojového kódu.](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -43,7 +43,7 @@ Pokud vyvíjíte projekt a potřebujete bezpečně sdílet zdrojový kód, použ
 
     ![Vytvořit Azure Key Vault](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Udělte vám a členům vašeho týmu přístup k Key Vault. Máte-li velký tým, můžete vytvořit [skupinu Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md) a přidat tuto skupinu zabezpečení k Key Vault. V rozevíracím seznamu *oprávnění tajného klíče* zaškrtněte *získat* a *seznam* v části *operace správy tajných*kódů.
+2. Udělte vám a členům vašeho týmu přístup k Key Vault. Máte-li velký tým, můžete vytvořit [skupinu Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) a přidat tuto skupinu zabezpečení k Key Vault. V rozevíracím seznamu *oprávnění tajného klíče* zaškrtněte *získat* a *seznam* v části *operace správy tajných* kódů.
 Pokud již máte vytvořenou webovou aplikaci, udělte webové aplikaci přístup k Key Vault, aby mohla přistupovat k trezoru klíčů bez uložení konfigurace tajného klíče do nastavení aplikace nebo souborů. Vyhledejte svou webovou aplikaci podle jejího názvu a přidejte ji stejným způsobem, jakým udělíte přístup uživatelům.
 
     ![Přidat zásady přístupu Key Vault](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
@@ -103,7 +103,7 @@ Pokud chcete pokračovat, [Stáhněte si .NET 4.7.1](https://www.microsoft.com/d
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Uložit nastavení tajného klíče do tajného souboru, který je mimo složku správy zdrojového kódu
 Pokud píšete rychlý prototyp a nechcete zřizovat prostředky Azure, Projděte si tuto možnost.
 
-1. Klikněte pravým tlačítkem na projekt a vyberte **Správa uživatelských tajných klíčů**. Tím se nainstaluje balíček NuGet **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , vytvořte soubor pro uložení nastavení tajného klíče mimo web.config soubor a přidejte do souboru web.config oddíl **ConfigBuilders** .
+1. Klikněte pravým tlačítkem na projekt a vyberte **Správa uživatelských tajných klíčů** . Tím se nainstaluje balíček NuGet **Microsoft.Configuration.ConfigurationBuilders. UserSecrets** , vytvořte soubor pro uložení nastavení tajného klíče mimo web.config soubor a přidejte do souboru web.config oddíl **ConfigBuilders** .
 
 2. Vložte nastavení tajného klíče do kořenového elementu. Níže je příklad
 

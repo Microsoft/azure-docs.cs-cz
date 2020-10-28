@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: a95361dda74c145e435a7e122339fb5945fed0f6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491219"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792901"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Přenos dat malých datových sad s malou až střední šířkou pásma sítě
  
@@ -49,7 +49,7 @@ V tomto scénáři jsou doporučené tyto možnosti:
 
 Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
-| Funkce | Azure Storage Explorer | portál Azure | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
+| Doporučené | Průzkumník služby Azure Storage | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Rozhraní REST API nebo sady SDK pro Azure Storage |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Dostupnost | Stažení a instalace <br>Samostatný nástroj | Webové nástroje pro průzkum v Azure Portal | Nástroj příkazového řádku |Programovatelné rozhraní v jazycích .NET, Java, Python, JavaScript, C++, přejít, Ruby a PHP |
 | Grafické rozhraní | Ano | Ano | Ne | Ne |
@@ -63,6 +63,5 @@ Následující tabulka shrnuje rozdíly v klíčových funkcích.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak [přenést data pomocí Průzkumník služby Azure Storage](/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
-- [Přenos dat pomocí nástroje AzCopy](/azure/storage/common/storage-use-azcopy-v10)
-
+- Naučte se, jak [přenést data pomocí Průzkumník služby Azure Storage](../../machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer.md).
+- [Přenos dat pomocí nástroje AzCopy](./storage-use-azcopy-v10.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 429883a1bd9bc4df270e6a9f2965087fa3fba2dc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488856"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793003"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -60,7 +60,7 @@ Ve většině případů byste měli používat účty pro obecné účely v2. �
 
 - Vaše aplikace jsou náročné na transakce nebo využívají značnou šířku pásma geografické replikace, ale nevyžadují velkou kapacitu. V tomto případě může být obecným účelem v1 největší ekonomická volba.
 
-- Používáte verzi [REST API služby úložiště](https://msdn.microsoft.com/library/azure/dd894041.aspx) , která je starší než 2014-02-14 nebo Klientská knihovna s verzí nižší než 4. x. Nemůžete upgradovat svoji aplikaci.
+- Používáte verzi [REST API služby úložiště](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) , která je starší než 2014-02-14 nebo Klientská knihovna s verzí nižší než 4. x. Nemůžete upgradovat svoji aplikaci.
 
 ### <a name="blockblobstorage-accounts"></a>Účty BlockBlobStorage
 
@@ -127,18 +127,18 @@ Všechna data v účtu úložiště se šifrují na straně služby. Další inf
 
 Účet úložiště poskytuje jedinečný obor názvů v Azure pro vaše data. Každý objekt, který je uložen v Azure Storage má adresu, která obsahuje jedinečný název účtu. Kombinace názvu účtu a koncového bodu služby Azure Storage tvoří koncové body pro váš účet úložiště.
 
-Pokud má například účet úložiště pro obecné účely název *mystorageaccount*, výchozí koncové body tohoto účtu jsou následující:
+Pokud má například účet úložiště pro obecné účely název *mystorageaccount* , výchozí koncové body tohoto účtu jsou následující:
 
 - Úložiště objektů BLOB: `https://*mystorageaccount*.blob.core.windows.net`
 - Úložiště tabulek: `https://*mystorageaccount*.table.core.windows.net`
 - Úložiště fronty: `https://*mystorageaccount*.queue.core.windows.net`
 - Soubory Azure: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (používá [ovladač ABFS optimalizovaný speciálně pro velké](/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)objemy dat.)
+- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (používá [ovladač ABFS optimalizovaný speciálně pro velké](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)objemy dat.)
 
 > [!NOTE]
 > Objekty blob bloku a účty BLOB Storage zpřístupňují jenom Blob service koncový bod.
 
-Vytvořte adresu URL pro přístup k objektu v účtu úložiště připojením umístění objektu v účtu úložiště ke koncovému bodu. Například adresa účtu pro objekty blob může mít tento formát: http://*můj_účet_úložiště*.blob.core.windows.net/*můj_kontejner*/*můj_objekt_blob*.
+Vytvořte adresu URL pro přístup k objektu v účtu úložiště připojením umístění objektu v účtu úložiště ke koncovému bodu. Například adresa účtu pro objekty blob může mít tento formát: http:// *můj_účet_úložiště* .blob.core.windows.net/ *můj_kontejner*/*můj_objekt_blob* .
 
 Svůj účet úložiště můžete také nakonfigurovat tak, aby používal vlastní doménu pro objekty blob. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro účet Azure Storage](../blobs/storage-custom-domain-name.md).  
 
@@ -167,7 +167,7 @@ Při upgradu na účet pro obecné účely v2 z obecného účtu úložiště v1
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy je nástroj Windows, který se spouští z příkazového řádku a který je určený pro vysoce výkonné kopírování dat do Azure Storage a z Azure Storage. Pomocí AzCopy můžete kopírovat data do účtu BLOB Storage z existujícího účtu úložiště pro obecné účely nebo nahrávat data z místních úložných zařízení. Další informace najdete v tématu [Přenos dat pomocí nástroje příkazového řádku AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+AzCopy je nástroj Windows, který se spouští z příkazového řádku a který je určený pro vysoce výkonné kopírování dat do Azure Storage a z Azure Storage. Pomocí AzCopy můžete kopírovat data do účtu BLOB Storage z existujícího účtu úložiště pro obecné účely nebo nahrávat data z místních úložných zařízení. Další informace najdete v tématu [Přenos dat pomocí nástroje příkazového řádku AzCopy](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json).
 
 ### <a name="data-movement-library"></a>Knihovna pro přesun dat
 

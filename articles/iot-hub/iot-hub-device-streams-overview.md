@@ -11,12 +11,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152165"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792459"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Datové proudy zařízení IoT Hub (Preview)
 
@@ -56,7 +57,7 @@ Programové vytvoření datového proudu zařízení pomocí sady SDK zahrnuje n
 
 1. Aplikace zařízení zaregistruje zpětné volání předem, aby bylo upozorněno na to, kdy je do zařízení inicializován nový datový proud zařízení. Tento krok se obvykle provádí při spuštění zařízení a připojení k IoT Hub.
 
-2. Program na straně služby inicializuje datový proud zařízení v případě potřeby tím, že poskytuje ID zařízení (_nikoli_ IP adresu).
+2. Program na straně služby inicializuje datový proud zařízení v případě potřeby tím, že poskytuje ID zařízení ( _nikoli_ IP adresu).
 
 3. Služba IoT Hub upozorní program na straně zařízení vyvoláním zpětného volání registrovaného v kroku 1. Zařízení může přijmout nebo odmítnout požadavek na spuštění streamu. Tato logika může být specifická pro váš scénář aplikace. Pokud zařízení požadavek datového proudu odmítne, služba IoT Hub odpovídajícím způsobem informují. v opačném případě následují následující kroky.
 
@@ -103,7 +104,7 @@ Výstupem je objekt JSON všech koncových bodů, ke kterým se musí zařízen�
 ```
 
 > [!NOTE]
-> Ujistěte se, že máte nainstalovanou verzi rozhraní příkazového řádku Azure CLI 2.0.57 nebo novější. Nejnovější verzi si můžete stáhnout ze stránky [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) .
+> Ujistěte se, že máte nainstalovanou verzi rozhraní příkazového řádku Azure CLI 2.0.57 nebo novější. Nejnovější verzi si můžete stáhnout ze stránky [instalace Azure CLI](/cli/azure/install-azure-cli) .
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>Povolení odchozího připojení k koncovým bodům streamování zařízení
@@ -119,30 +120,30 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> Ujistěte se, že máte nainstalovanou verzi rozhraní příkazového řádku Azure CLI 2.0.57 nebo novější. Nejnovější verzi si můžete stáhnout ze stránky [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) .
+> Ujistěte se, že máte nainstalovanou verzi rozhraní příkazového řádku Azure CLI 2.0.57 nebo novější. Nejnovější verzi si můžete stáhnout ze stránky [instalace Azure CLI](/cli/azure/install-azure-cli) .
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>Řešení potíží prostřednictvím protokolů aktivit datových proudů zařízení
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>Řešení potíží prostřednictvím protokolů zdrojů datových proudů zařízení
 
-Můžete nastavit protokoly Azure Monitor pro shromáždění protokolu aktivit datových proudů zařízení v IoT Hub. To může být velmi užitečné při řešení potíží.
+Můžete nastavit Azure Monitor pro shromažďování [protokolů prostředků pro datové proudy zařízení](monitor-iot-hub-reference.md#device-streams-preview) vysílané vaším IoT Hub. To může být velmi užitečné při řešení potíží.
 
-Pomocí následujících kroků Nakonfigurujte protokoly Azure Monitor pro aktivity streamu zařízení IoT Hub:
+Pomocí následujících kroků vytvořte nastavení diagnostiky pro odesílání protokolů datových proudů zařízení pro vaši IoT Hub do protokolů Azure Monitor:
 
-1. V IoT Hub přejděte na kartu *nastavení diagnostiky* a klikněte na zapnout odkaz *zapnout diagnostiku* .
+1. V Azure Portal přejděte do služby IoT Hub. V levém podokně v části **monitorování** vyberte **nastavení diagnostiky** . Pak vyberte **Přidat nastavení diagnostiky** .
 
-   ![Povolení diagnostických protokolů](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+2. Zadejte název pro nastavení diagnostiky a v seznamu protokolů vyberte **DeviceStreams** . Pak vyberte **Odeslat do Log Analytics** . Průvodce vám umožní zvolit existující Log Analytics pracovní prostor nebo vytvořit nový.
 
-2. Zadejte název pro nastavení diagnostiky a vyberte možnost *Odeslat do Log Analytics* . Průvodce vám umožní zvolit existující prostředek pracovního prostoru Log Analytics nebo vytvořit nový. Dále si prohlédněte *DeviceStreams* ze seznamu.
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="Povolit protokoly datových proudů zařízení":::
 
-    ![Povolit protokoly datových proudů zařízení](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
-
-3. Teď máte přístup k protokolům datových proudů zařízení na kartě *protokoly* na portálu IoT Hub. Protokoly aktivit datových proudů zařízení se zobrazí v `AzureDiagnostics` tabulce a mají `Category=DeviceStreams` .
+3. Po vytvoření nastavení diagnostiky pro odeslání protokolů datových proudů zařízení do Log Analyticsho pracovního prostoru můžete získat přístup k protokolům tak, že **v levém** podokně služby IoT hub v Azure Portal vyberete **protokoly** . V tabulce se zobrazí protokoly datových proudů zařízení `AzureDiagnostics` `Category=DeviceStreams` . Mějte na paměti, že může trvat několik minut, než se v tabulce objeví protokoly.
 
    Jak vidíte níže, identita cílového zařízení a výsledek operace je také k dispozici v protokolech.
 
    !["Přístup k protokolům datových proudů zařízení"](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
 
-## <a name="regional-availability"></a>Dostupnost podle oblastí
+Další informace o použití Azure Monitor s IoT Hub najdete v tématu [monitorování IoT Hub](monitor-iot-hub.md). Informace o všech protokolech prostředků, metrikách a tabulkách dostupných pro IoT Hub najdete v tématu [monitorování Azure IoT Hub data reference](monitor-iot-hub-reference.md).
+
+## <a name="regional-availability"></a>Regionální dostupnost
 
 Během veřejné verze Preview jsou IoT Hub datové proudy zařízení dostupné v oblastech Střed USA, Střed USA EUAP, Severní Evropa a jihovýchodní Asie. Ujistěte se prosím, že jste vytvořili centrum v jedné z těchto oblastí.
 
@@ -182,7 +183,7 @@ Ukázka místního proxy serveru demonstruje způsob, jak povolit tunelování p
 
 Tato část popisuje použití datových proudů zařízení k tomu, aby uživatel mohl na zařízení přes datové proudy zařízení používat protokol RDP (případ protokolu RDP nebo jiná aplikace klienta/serveru je podobný pomocí odpovídajícího portu protokolu).
 
-Instalační program využívá dva *místní proxy* programy uvedené na následujícím obrázku, konkrétně *proxy servery* a *místní proxy služby*. Místní proxy programy zodpovídají za provádění [metody handshake iniciace datového proudu zařízení](#device-stream-creation-flow) pomocí IoT Hub a interakce s klientem SSH a démonem SSH pomocí běžných soketů klientů a serverů.
+Instalační program využívá dva *místní proxy* programy uvedené na následujícím obrázku, konkrétně *proxy servery* a *místní proxy služby* . Místní proxy programy zodpovídají za provádění [metody handshake iniciace datového proudu zařízení](#device-stream-creation-flow) pomocí IoT Hub a interakce s klientem SSH a démonem SSH pomocí běžných soketů klientů a serverů.
 
 !["Nastavení proxy streamu zařízení pro SSH/RDP"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

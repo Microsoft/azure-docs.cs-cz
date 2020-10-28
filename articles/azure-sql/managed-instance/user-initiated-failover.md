@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617753"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791626"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Uživatelsky iniciované ruční převzetí služeb při selhání na spravované instanci SQL
 
@@ -46,7 +46,7 @@ Uživatel, který iniciuje převzetí služeb při selhání, bude muset mít je
 - Vlastní role s následujícím oprávněním:
   - `Microsoft.Sql/managedInstances/failover/action`
 
-### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+### <a name="using-powershell"></a>Použití PowerShellu
 
 Minimální verze AZ. SQL musí být [v 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0). Zvažte použití [Azure Cloud Shell](../../cloud-shell/overview.md) z Azure Portal, které mají vždy k dispozici nejnovější verzi prostředí PowerShell. 
 
@@ -62,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-Pomocí příkazu PowerShellu [Invoke-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) s následujícím příkladem můžete iniciovat převzetí služeb při selhání primárního uzlu, které platí pro úroveň služby BC a GP.
+Pomocí příkazu PowerShellu [Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) s následujícím příkladem můžete iniciovat převzetí služeb při selhání primárního uzlu, které platí pro úroveň služby BC a GP.
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -96,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>S využitím rozhraní REST API
 
-Pokročilým uživatelům, kteří by museli potřebovat automatizovat převzetí služeb při selhání svých spravovaných instancí SQL pro účely implementace kanálu nepřetržitého testování nebo automatizovaného zmírnění výkonu, je možné tuto funkci provést prostřednictvím volání rozhraní API při inicializaci převzetí služeb při selhání. Podrobnosti najdete v tématu [spravované instance – převzetí služeb při selhání REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) .
+Pokročilým uživatelům, kteří by museli potřebovat automatizovat převzetí služeb při selhání svých spravovaných instancí SQL pro účely implementace kanálu nepřetržitého testování nebo automatizovaného zmírnění výkonu, je možné tuto funkci provést prostřednictvím volání rozhraní API při inicializaci převzetí služeb při selhání. Podrobnosti najdete v tématu [spravované instance – převzetí služeb při selhání REST API](/rest/api/sql/managed%20instances%20-%20failover/failover) .
 
 Pokud chcete spustit převzetí služeb při selhání pomocí REST API volání, nejdřív vygenerujte ověřovací token pomocí klienta rozhraní API podle vašeho výběru. Vygenerovaný ověřovací token se používá jako vlastnost Authorization v hlavičce požadavku rozhraní API a je povinný.
 
@@ -140,7 +140,7 @@ Nebudete moct zobrazit stejný výstup s úrovní služeb GP, jak je uvedeno vý
 
 > [!IMPORTANT]
 > Funkční omezení uživatelsky iniciované ruční převzetí služeb při selhání:
-> - Každých **30 minut**může nacházet jedna (1) převzetí služeb při selhání spuštěné ve stejné spravované instanci.
+> - Každých **30 minut** může nacházet jedna (1) převzetí služeb při selhání spuštěné ve stejné spravované instanci.
 > - Pro instance BC musí existovat kvorum replik pro požadavek převzetí služeb při selhání, které se má přijmout.
 > - U instancí BC není možné určit, která čitelná sekundární replika má iniciovat převzetí služeb při selhání.
 

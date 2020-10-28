@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: a2e371ea49b9b2a0e7bd14e91a0b80c54f6c21ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e92f3e36b3dd7c407b9c490151f9b32446145771
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321465"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792765"
 ---
 # <a name="use-powershell-to-sync-data-between-multiple-databases-in-azure-sql-database"></a>Synchronizace dat mezi několika databázemi v Azure SQL Database pomocí PowerShellu
 
@@ -35,7 +35,7 @@ Přehled Synchronizace dat SQL najdete v tématu [synchronizace dat napříč n�
 > [!IMPORTANT]
 > Synchronizace dat SQL v tuto chvíli nepodporuje spravovanou instanci SQL Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vytvoří databázi v Azure SQL Database z ukázkové databáze AdventureWorksLT jako databáze centra.
 - Vytvořte databázi v Azure SQL Database ve stejné oblasti jako databáze synchronizace.
@@ -281,7 +281,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  Získejte všechny informace o agentovi synchronizace. |
 | [New-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Přidejte nového člena do skupiny synchronizace. |
 | [Update – AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Aktualizuje informace o schématu databáze. |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  Získejte informace o schématu databáze. |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/Get-azSqlSyncSchema) |  Získejte informace o schématu databáze. |
 | [Update – AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  Aktualizuje skupinu synchronizace. |
 | [Spustit – AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Aktivuje synchronizaci. |
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  Kontroluje protokol synchronizace. |
@@ -301,7 +301,7 @@ Další informace o Synchronizace dat SQL najdete v tématech:
     - Použití PowerShellu – [použití PowerShellu k synchronizaci dat mezi databází v Azure SQL Database a SQL Server](sql-data-sync-sync-data-between-azure-onprem.md)
 - Agent synchronizace dat – [Agent synchronizace dat pro synchronizace dat SQL v Azure](../sql-data-sync-agent-overview.md)
 - Osvědčené postupy – [osvědčené postupy pro synchronizace dat SQL v Azure](../sql-data-sync-best-practices.md)
-- Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](../sql-data-sync-monitor-sync.md)
+- Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](../monitor-tune-overview.md)
 - Řešení potíží – [řešení potíží s synchronizace dat SQL v Azure](../sql-data-sync-troubleshoot.md)
 - Aktualizace schématu synchronizace
     - Použití jazyka Transact-SQL – [Automatizace replikace změn schématu v synchronizace dat SQL v Azure](../sql-data-sync-update-sync-schema.md)
@@ -310,4 +310,4 @@ Další informace o Synchronizace dat SQL najdete v tématech:
 Další informace o SQL Database najdete v tématech:
 
 - [Přehled SQL Database](../sql-database-paas-overview.md)
-- [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)
+- [Správa životního cyklu databáze](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

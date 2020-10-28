@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: dd92e1529b889671bc29939f7e9611eceac7ee20
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a815295c4f2ab78cbd3aff82949d7c28197afd82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370504"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791915"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Seznámení s Azure Defenderem pro Kubernetes
 
@@ -20,7 +20,7 @@ Služba Azure Kubernetes Service (AKS) je spravovaná služba Microsoftu pro vý
 
 Azure Security Center a AKS tvoří nejlepší nabídku Kubernetes zabezpečení cloudu a společně poskytují posílení zabezpečení prostředí, ochranu úloh a ochranu za běhu, jak je uvedeno níže.
 
-Pro detekci hrozeb pro clustery Kubernetes povolte **Azure Defender pro Kubernetes**.
+Pro detekci hrozeb pro clustery Kubernetes povolte **Azure Defender pro Kubernetes** .
 
 Detekce hrozeb na úrovni hostitele pro uzly se systémem Linux AKS je k dispozici, pokud povolíte [Azure Defender pro servery](defender-for-servers-introduction.md).
 
@@ -72,7 +72,7 @@ Můžete vidět, že položky přijaté a analyzované pomocí Security Center z
 - protokoly auditu ze serveru rozhraní API
 - nezpracované události zabezpečení od agenta Log Analytics
 - informace o konfiguraci clusteru z clusteru AKS
-- Konfigurace úlohy z Azure Policy (prostřednictvím **Azure Policy doplňku pro Kubernetes**). [Další informace o osvědčených postupech ochrany úloh pomocí řízení přístupu Kubernetes](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
+- Konfigurace úlohy z Azure Policy (prostřednictvím **Azure Policy doplňku pro Kubernetes** ). [Další informace o osvědčených postupech ochrany úloh pomocí řízení přístupu Kubernetes](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
 :::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Architektura interakce mezi Azure Security Center, službou Azure Kubernetes a Azure Policy" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
 
@@ -114,5 +114,5 @@ V tomto článku jste se dozvěděli o ochraně Security Center Kubernetes, vče
 Související materiály najdete v následujících článcích: 
 
 - [Povolit Azure Defender](security-center-pricing.md)
-- [Exportovat výstrahy do Azure Sentinel nebo SIEM třetí strany](continuous-export.md)
+- [Streamování výstrah do řešení pro správu služeb SIEM, společnosti nebo IT](export-to-siem.md)
 - [Referenční tabulka výstrah](alerts-reference.md)

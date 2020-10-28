@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617430"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793105"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Nasazení spravované instance Azure SQL do fondu instancí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,18 +30,18 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
-|Vytvoření fondu instancí|No|Yes|
-|Aktualizace fondu instancí (omezený počet vlastností)|No |Yes |
-|Ověření využití fondu instancí a vlastností|No|Yes |
-|Odstranění fondu instancí|No|Yes|
-|Vytvoření spravované instance v rámci fondu instancí|No|Yes|
-|Aktualizace využití prostředků pro spravovanou instanci|Yes |Yes|
-|Zkontroluje využití a vlastnosti spravované instance.|Yes|Yes|
-|Odstranění spravované instance z fondu|Yes|Yes|
-|Vytvoření databáze v instanci v rámci fondu|Yes|Yes|
-|Odstranění databáze z spravované instance SQL|Yes|Yes|
+|Vytvoření fondu instancí|Ne|Ano|
+|Aktualizace fondu instancí (omezený počet vlastností)|Ne |Ano |
+|Ověření využití fondu instancí a vlastností|Ne|Ano |
+|Odstranění fondu instancí|Ne|Ano|
+|Vytvoření spravované instance v rámci fondu instancí|Ne|Ano|
+|Aktualizace využití prostředků pro spravovanou instanci|Ano |Ano|
+|Zkontroluje využití a vlastnosti spravované instance.|Ano|Ano|
+|Odstranění spravované instance z fondu|Ano|Ano|
+|Vytvoření databáze v instanci v rámci fondu|Ano|Ano|
+|Odstranění databáze z spravované instance SQL|Ano|Ano|
 
-Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/):
+Dostupné [Příkazy prostředí PowerShell](/powershell/module/az.sql/):
 
 |Rutina |Popis |
 |:---|:---|
@@ -52,7 +52,7 @@ Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershe
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Vrátí informace o využití fondu spravované instance SQL. |
 
 
-Pokud chcete použít PowerShell, [nainstalujte nejnovější verzi prostředí PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)a postupujte podle pokynů pro [instalaci modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Pokud chcete použít PowerShell, [nainstalujte nejnovější verzi prostředí PowerShell Core](/powershell/scripting/install/installing-powershell#powershell)a postupujte podle pokynů pro [instalaci modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
 V případě operací souvisejících s instancemi v rámci fondů i s jednou instancí použijte [příkazy standardní spravované instance](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances), ale při použití těchto příkazů pro instanci ve fondu musí být naplněna vlastnost *název fondu instancí* .
 

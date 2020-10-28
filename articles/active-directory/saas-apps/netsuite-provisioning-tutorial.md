@@ -10,16 +10,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: faf66b9a261fd4e8f63779b3d254de4c44d1d731
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8406ee5647d02cc917a0fdb1daf2355611bb781d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513898"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792204"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace NetSuite pro Automatické zřizování uživatelů
 
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést v NetSuite OneWorld a Azure AD a automaticky zřizovat a zrušit zřizování uživatelských účtů z Azure AD až po NetSuite.
+
+> [!NOTE]
+> Tato integrace se aktuálně ověřuje pomocí základního ověřování (uživatelské jméno a heslo). NetSuite implementoval požadavek služby Multi-Factor Authentication, který zákazníkům brání v použití této integrace, pokud nezískají výjimku z tohoto požadavku. Spolupracujeme s NetSuite a aktualizujeme tuto integraci na novější metodu ověřování, která zákazníkům umožňuje bez výjimky ho znovu použít. Tento dokument aktualizujeme, jakmile bude k dispozici ETA.
+
+Doporučená akce: Počkejte prosím, než uvolníme aktualizaci chování ověřování pro tuto integraci, nebo se přihlaste k podpoře NetSuite, aby se dotazoval na výjimku pro požadavek služby Multi-Factor Authentication.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -28,7 +33,7 @@ Scénář popsaný v tomto kurzu předpokládá, že již máte následující:
 *   Tenant Azure Active Directory.
 *   Předplatné NetSuite OneWorld. Všimněte si, že Automatické zřizování uživatelů je v současné době podporováno pouze pomocí NetSuite OneWorld.
 *   Uživatelský účet v NetSuite s oprávněními správce.
-*   Integrace se službou Azure AD vyžaduje výjimku 2FA. Pro tuto výjimku se prosím obraťte na tým podpory NetSuite.
+*   Integrace se službou Azure AD vyžaduje výjimku 2FA. Pokud si chcete vyžádat tuto výjimku, obraťte se na tým podpory pro NetSuite.
 
 ## <a name="assigning-users-to-netsuite-oneworld"></a>Přiřazení uživatelů k NetSuite OneWorld
 
@@ -49,11 +54,11 @@ Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co
 V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v NetSuite na základě přiřazení uživatelů a skupin ve službě Azure AD.
 
 > [!TIP] 
-> Můžete se také rozhodnout povolit pro Netsuite jednu Sign-On založenou na SAML, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
+> Můžete se také rozhodnout povolit pro NetSuite jednu Sign-On založenou na SAML, a to podle pokynů uvedených v [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
 
 ### <a name="to-configure-user-account-provisioning"></a>Konfigurace zřizování uživatelských účtů:
 
-Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživatelských účtů služby Active Directory pro Netsuite.
+Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživatelských účtů služby Active Directory pro NetSuite.
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
 
@@ -61,7 +66,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 1. Vyberte svou instanci NetSuite a pak vyberte kartu **zřizování** .
 
-1. Nastavte **Režim zřizování** na hodnotu **Automaticky**. 
+1. Nastavte **Režim zřizování** na hodnotu **Automaticky** . 
 
     ![Snímek obrazovky se zobrazí stránka zřizování NetSuite s režimem zřizování nastaveným na automatické a jiné hodnoty, které můžete nastavit.](./media/netsuite-provisioning-tutorial/provisioning.png)
 
@@ -81,7 +86,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do NetSuite. Všimněte si, že atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v NetSuite pro operace aktualizace. Výběrem tlačítka Uložit potvrďte provedené změny.
 
-1. Pokud chcete povolit službu Azure AD Provisioning pro Netsuite, změňte **stav zřizování** na **zapnuto** v části nastavení.
+1. Pokud chcete povolit službu Azure AD Provisioning pro NetSuite, změňte **stav zřizování** na **zapnuto** v části nastavení.
 
 1. Klikněte na **Uložit.**
 
@@ -89,7 +94,7 @@ Spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazenýc
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

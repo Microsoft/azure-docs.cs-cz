@@ -6,23 +6,23 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: cade5a4329cdfc11c1b256ba01e9764f60a476a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667856"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792000"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
 Azure Machine Learning můžou nasazovat školicí modely strojového učení do služby Azure Kubernetes. Musíte ale nejdřív __vytvořit__ cluster Azure Kubernetes Service (AKS) z pracovního prostoru Azure ml nebo __připojit__ existující cluster AKS. Tento článek poskytuje informace o tom, jak vytvořit a připojit cluster.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -34,7 +34,7 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
 
 - Pokud v clusteru potřebujete nasadit **Standard Load Balancer (SLB)** místo základního Load BALANCER (BLB), vytvořte cluster na portálu AKS/CLI/SDK a pak ho **Připojte** k pracovnímu prostoru AML.
 
-- Pokud máte Azure Policy, která omezuje vytváření veřejných IP adres, vytvoření clusteru AKS se nezdaří. AKS vyžaduje veřejnou IP adresu pro [odchozí přenosy](/azure/aks/limit-egress-traffic). Článek o tom, jak je k dispozici, poskytuje také pokyny k uzamknutí odchozího provozu z clusteru prostřednictvím veřejné IP adresy, s výjimkou několika plně kvalifikovaných názvů domén. Existují dva způsoby, jak povolit veřejnou IP adresu:
+- Pokud máte Azure Policy, která omezuje vytváření veřejných IP adres, vytvoření clusteru AKS se nezdaří. AKS vyžaduje veřejnou IP adresu pro [odchozí přenosy](/azure/aks/limit-egress-traffic). Článek o odchozím provozu taky poskytuje pokyny pro uzamknutí odchozího provozu z clusteru prostřednictvím veřejné IP adresy s výjimkou několika plně kvalifikovaných názvů domén. Existují dva způsoby, jak povolit veřejnou IP adresu:
     - Cluster může používat veřejnou IP adresu vytvořenou ve výchozím nastavení s BLB nebo SLB nebo
     - Cluster se dá vytvořit bez veřejné IP adresy a pak je u veřejné IP adresy nakonfigurovaná brána firewall s trasou definovanou uživatelem. Další informace najdete v tématu [přizpůsobení výstupů clusteru pomocí uživatelsky definovaného postupu](/azure/aks/egress-outboundtype).
     
@@ -54,12 +54,12 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
    
  - Pokud chcete nasadit modely do uzlů **GPU** nebo **FPGAch** uzlů (nebo jakékoli konkrétní SKU), musíte vytvořit cluster s konkrétní SKU. Neexistuje žádná podpora pro vytváření fondu sekundárních uzlů v existujícím clusteru a nasazování modelů do fondu sekundárních uzlů.
  
-- Při vytváření nebo připojování clusteru můžete vybrat, jestli se má cluster vytvořit pro __vývoj a testování__ nebo pro __produkční__prostředí. Pokud chcete vytvořit cluster AKS pro __vývoj__, __ověřování__a __testování__ namísto produkčního prostředí, nastavte __účel clusteru__ na __dev-test__. Pokud neurčíte účel clusteru, vytvoří se __produkční__ cluster. 
+- Při vytváření nebo připojování clusteru můžete vybrat, jestli se má cluster vytvořit pro __vývoj a testování__ nebo pro __produkční__ prostředí. Pokud chcete vytvořit cluster AKS pro __vývoj__ , __ověřování__ a __testování__ namísto produkčního prostředí, nastavte __účel clusteru__ na __dev-test__ . Pokud neurčíte účel clusteru, vytvoří se __produkční__ cluster. 
 
     > [!IMPORTANT]
     > Cluster pro __vývoj a testování__ není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
 
-- Pokud se cluster bude používat pro __produkční__prostředí, musí mít při vytváření nebo připojení clusteru aspoň 12 __virtuálních procesorů__. Počet virtuálních procesorů se dá vypočítat vynásobením __počtu uzlů__ v clusteru __počtem jader__ poskytovaných vybranou velikostí virtuálního počítače. Pokud například použijete velikost virtuálního počítače "Standard_D3_v2", který má 4 virtuální jádra, měli byste vybrat 3 nebo vyšší jako počet uzlů.
+- Pokud se cluster bude používat pro __produkční__ prostředí, musí mít při vytváření nebo připojení clusteru aspoň 12 __virtuálních procesorů__ . Počet virtuálních procesorů se dá vypočítat vynásobením __počtu uzlů__ v clusteru __počtem jader__ poskytovaných vybranou velikostí virtuálního počítače. Pokud například použijete velikost virtuálního počítače "Standard_D3_v2", který má 4 virtuální jádra, měli byste vybrat 3 nebo vyšší jako počet uzlů.
 
     V případě clusteru pro __vývoj a testování__ budeme znovu zadarmo aspoň 2 virtuální procesory.
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-Pokud byste chtěli **programově kontrolovat dostupné verze**, použijte [orchestraci seznamu klient-seznam klienta služby Container Service](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API. Pokud chcete zjistit dostupné verze, podívejte se na položky, kde `orchestratorType` je `Kubernetes` . Přidružené `orchestrationVersion` položky obsahují dostupné verze, které je možné **připojit** k vašemu pracovnímu prostoru.
+Pokud byste chtěli **programově kontrolovat dostupné verze** , použijte [orchestraci seznamu klient-seznam klienta služby Container Service](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API. Pokud chcete zjistit dostupné verze, podívejte se na položky, kde `orchestratorType` je `Kubernetes` . Přidružené `orchestrationVersion` položky obsahují dostupné verze, které je možné **připojit** k vašemu pracovnímu prostoru.
 
 Pokud chcete najít výchozí verzi, která se používá při **vytváření** clusteru prostřednictvím Azure Machine Learning, Najděte položku, kde `orchestratorType` je `Kubernetes` a `default` `true` . Přidružená `orchestratorVersion` hodnota je výchozí verze. Následující fragment kódu JSON ukazuje příklad položky:
 
@@ -147,7 +147,7 @@ Pokud chcete najít výchozí verzi, která se používá při **vytváření** 
 
 ## <a name="create-a-new-aks-cluster"></a>Vytvoření nového clusteru AKS
 
-**Časový odhad**: přibližně 10 minut.
+**Časový odhad** : přibližně 10 minut.
 
 Vytvoření nebo připojení clusteru AKS je jednorázový proces pro váš pracovní prostor. Tento cluster můžete použít pro více nasazení. Pokud odstraníte cluster nebo skupinu prostředků, která ho obsahuje, musíte při příštím nasazení vytvořit nový cluster. K vašemu pracovnímu prostoru můžete připojit více clusterů AKS.
 
@@ -284,7 +284,7 @@ Informace o připojení clusteru AKS na portálu najdete v tématu [Vytvoření 
 Pokud chcete odpojit cluster od pracovního prostoru, použijte jednu z následujících metod:
 
 > [!WARNING]
-> Pomocí sady Azure Machine Learning Studio, sady SDK nebo rozšíření Azure CLI pro Machine Learning k odpojení clusteru AKS **neodstraňujte cluster AKS**. Pokud chcete cluster odstranit, přečtěte si téma [použití Azure CLI se službou AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+> Pomocí sady Azure Machine Learning Studio, sady SDK nebo rozšíření Azure CLI pro Machine Learning k odpojení clusteru AKS **neodstraňujte cluster AKS** . Pokud chcete cluster odstranit, přečtěte si téma [použití Azure CLI se službou AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -302,7 +302,7 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-V Azure Machine Learning Studiu vyberte __výpočetní__prostředí, __odvození clusterů__a cluster, který chcete odebrat. K odpojení clusteru použijte odkaz __Odpojit__ .
+V Azure Machine Learning Studiu vyberte __výpočetní__ prostředí, __odvození clusterů__ a cluster, který chcete odebrat. K odpojení clusteru použijte odkaz __Odpojit__ .
 
 ## <a name="next-steps"></a>Další kroky
 

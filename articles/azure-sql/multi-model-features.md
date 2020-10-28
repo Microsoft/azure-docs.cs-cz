@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073307"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791643"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Možnosti více modelů Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ Měli byste zvážit použití možností více modelů v produktech SQL Azure v
 - [Páry klíč-hodnota](#key-value-pairs) nejsou explicitně podporovány jako speciální funkce, protože páry klíč-hodnota lze nativně modelovat jako tabulky se dvěma sloupci.
 
   > [!Note]
-  > Pro přístup k datům, která jste uložili v databázi, můžete použít výraz cesty JSON, výrazy XQuery/XPath, prostorové funkce a výrazy dotazu Transact-SQL ve stejném dotazu Transact-SQL. Také jakýkoli nástroj nebo programovací jazyk, který může spouštět dotazy Transact-SQL, může také použít toto rozhraní dotazu pro přístup k datům s více modely. Jedná se o klíčový rozdíl v porovnání s databázemi s více modely, jako je například [Azure Cosmos DB](/azure/cosmos-db/) , která poskytuje specializované rozhraní API pro různé datové modely.
+  > Pro přístup k datům, která jste uložili v databázi, můžete použít výraz cesty JSON, výrazy XQuery/XPath, prostorové funkce a výrazy dotazu Transact-SQL ve stejném dotazu Transact-SQL. Také jakýkoli nástroj nebo programovací jazyk, který může spouštět dotazy Transact-SQL, může také použít toto rozhraní dotazu pro přístup k datům s více modely. Jedná se o klíčový rozdíl v porovnání s databázemi s více modely, jako je například [Azure Cosmos DB](../cosmos-db/index.yml) , která poskytuje specializované rozhraní API pro různé datové modely.
 
 V následujících částech se dozvíte o nejdůležitějších funkcích pro více modelů v řadě produktů SQL Azure.
 
@@ -142,7 +142,7 @@ CREATE TABLE Collection (
 
 Tuto strukturu klíč-hodnota můžete přizpůsobit tak, aby vyhovovala vašim potřebám bez jakýchkoli omezení. Jako příklad může být hodnota dokumentu XML namísto `nvarchar(max)` typu, pokud je hodnota dokument JSON, můžete vložit `CHECK` omezení, které ověří platnost obsahu JSON. V dalších sloupcích můžete zadat libovolný počet hodnot, které se vztahují k jednomu klíči, Přidat vypočítané sloupce a indexy pro zjednodušení a optimalizaci přístupu k datům, definovat tabulku jako paměť/optimalizované tabulky pouze pro zajištění lepšího výkonu atd.
 
-Podívejte se, [jak BWin používá In-Memory OLTP k dosažení nedřívějšího výkonu a škálování](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) pro své řešení ASP.NET pro ukládání do mezipaměti, které dosáhlo 1.200.000 dávek za sekundu, jako příklad, jak se relační model dá efektivně použít jako řešení páru klíč-hodnota v praxi.
+Podívejte se, [jak BWin používá In-Memory OLTP k dosažení nedřívějšího výkonu a škálování](/archive/blogs/sqlcat/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale) pro své řešení ASP.NET pro ukládání do mezipaměti, které dosáhlo 1.200.000 dávek za sekundu, jako příklad, jak se relační model dá efektivně použít jako řešení páru klíč-hodnota v praxi.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c9f5972cdd2690b86610ea585bdd82d736ed163
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803853"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792136"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Vytvoření a správa úloh Elastic Database pomocí jazyka Transact-SQL (T-SQL) (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -73,7 +73,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 
 ## <a name="exclude-an-individual-database"></a>Vyloučení individuální databáze
 
-Následující příklad ukazuje, jak spustit úlohu se všemi databázemi na serveru s výjimkou databáze s názvem *MappingDB*.  
+Následující příklad ukazuje, jak spustit úlohu se všemi databázemi na serveru s výjimkou databáze s názvem *MappingDB* .  
 Připojte se k [*databázi úloh*](job-automation-overview.md#job-database) a spusťte následující příkaz:
 
 ```sql
@@ -179,7 +179,7 @@ Chcete-li například seskupit všechny výsledky ze stejného spuštění úloh
 
 Následující příklad vytvoří novou úlohu pro shromažďování údajů o výkonu z více databází.
 
-Ve výchozím nastavení vytvoří Agent úlohy výstupní tabulku pro uložení vrácených výsledků. Proto musí objekt zabezpečení databáze přidružený k výstupnímu přihlašovacímu údaji splňovat alespoň následující oprávnění: `CREATE TABLE` v databázi,,, `ALTER` `SELECT` `INSERT` , `DELETE` ve výstupní tabulce nebo schématu a `SELECT` v zobrazení katalogu [Sys. indexs](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) .
+Ve výchozím nastavení vytvoří Agent úlohy výstupní tabulku pro uložení vrácených výsledků. Proto musí objekt zabezpečení databáze přidružený k výstupnímu přihlašovacímu údaji splňovat alespoň následující oprávnění: `CREATE TABLE` v databázi,,, `ALTER` `SELECT` `INSERT` , `DELETE` ve výstupní tabulce nebo schématu a `SELECT` v zobrazení katalogu [Sys. indexs](/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) .
 
 Pokud chcete tabulku vytvořit znovu před časem, musí mít následující vlastnosti:
 
@@ -389,7 +389,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 Následující uložené procedury jsou v [databázi Jobs](job-automation-overview.md#job-database).
 
-|Uložená procedura  |Description  |
+|Uložená procedura  |Popis  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Přidá novou úlohu.    |
 |[sp_update_job](#sp_update_job)    |      Aktualizuje existující úlohu.   |
@@ -424,16 +424,16 @@ Přidá novou úlohu.
 
 #### <a name="arguments"></a>Argumenty  
 
-[ ** \@ job_name =** ] ' job_name '  
+[ **\@ job_name =** ] ' job_name '  
 Název úlohy. Název musí být jedinečný a nesmí obsahovat procenta (%). optické. job_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ Description =** ] ' Description '  
+[ **\@ Description =** ] ' Description '  
 Popis úlohy Description je nvarchar (512) s výchozí hodnotou NULL. Pokud je popis vynechán, je použit prázdný řetězec.
 
-[ ** \@ Enabled =** ] povoleno  
+[ **\@ Enabled =** ] povoleno  
 Určuje, jestli je plán úlohy povolený. Enabled je bit s výchozí hodnotou 0 (zakázáno). Pokud je 0, úloha není povolená a neběží podle jejího plánu. dá se ale spustit ručně. Pokud je nastavená na 1, úloha se spustí podle plánu a dá se spustit taky ručně.
 
-[ ** \@ schedule_interval_type =**] schedule_interval_type  
+[ **\@ schedule_interval_type =** ] schedule_interval_type  
 Hodnota označuje, kdy má být úloha spuštěna. schedule_interval_type je nvarchar (50), má výchozí hodnotu jednou a může to být jedna z následujících hodnot:
 
 - ' Jednou ',
@@ -443,16 +443,16 @@ Hodnota označuje, kdy má být úloha spuštěna. schedule_interval_type je nva
 - ' Týdny ',
 - Měsíci
 
-[ ** \@ schedule_interval_count =** ] schedule_interval_count  
+[ **\@ schedule_interval_count =** ] schedule_interval_count  
 Počet schedule_interval_count období mezi jednotlivými spuštěními úlohy. schedule_interval_count je int, výchozí hodnota je 1. Hodnota musí být větší než nebo rovna 1.
 
-[ ** \@ schedule_start_time =** ] schedule_start_time  
+[ **\@ schedule_start_time =** ] schedule_start_time  
 Datum, kdy může spuštění úlohy začít. schedule_start_time je DATETIME2, výchozí hodnota je 0001-01-01 00:00:00.0000000.
 
-[ ** \@ schedule_end_time =** ] schedule_end_time  
+[ **\@ schedule_end_time =** ] schedule_end_time  
 Datum, kdy se může zastavit spuštění úlohy. schedule_end_time je DATETIME2, výchozí hodnota je 9999-12-31 11:59:59.0000000.
 
-[ ** \@ job_id =** ] výstup job_id  
+[ **\@ job_id =** ] výstup job_id  
 Identifikační číslo úlohy přiřazené úloze, pokud bylo úspěšně vytvořeno. job_id je výstupní proměnná typu uniqueidentifier.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -491,19 +491,19 @@ Aktualizuje existující úlohu.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ job_name =** ] ' job_name '  
+[ **\@ job_name =** ] ' job_name '  
 Název úlohy, která se má aktualizovat. job_name je nvarchar (128).
 
-[ ** \@ new_name =** ] ' new_name '  
+[ **\@ new_name =** ] ' new_name '  
 Nový název úlohy. new_name je nvarchar (128).
 
-[ ** \@ Description =** ] ' Description '  
+[ **\@ Description =** ] ' Description '  
 Popis úlohy Popis je nvarchar (512).
 
-[ ** \@ Enabled =** ] povoleno  
+[ **\@ Enabled =** ] povoleno  
 Určuje, jestli je plán úlohy povolený (1) nebo není povolený (0). Povoleno je bit.
 
-[ ** \@ schedule_interval_type =** ] schedule_interval_type  
+[ **\@ schedule_interval_type =** ] schedule_interval_type  
 Hodnota označuje, kdy má být úloha spuštěna. schedule_interval_type je nvarchar (50) a může to být jedna z následujících hodnot:
 
 - ' Jednou ',
@@ -513,13 +513,13 @@ Hodnota označuje, kdy má být úloha spuštěna. schedule_interval_type je nva
 - ' Týdny ',
 - Měsíci
 
-[ ** \@ schedule_interval_count =** ] schedule_interval_count  
+[ **\@ schedule_interval_count =** ] schedule_interval_count  
 Počet schedule_interval_count období mezi jednotlivými spuštěními úlohy. schedule_interval_count je int, výchozí hodnota je 1. Hodnota musí být větší než nebo rovna 1.
 
-[ ** \@ schedule_start_time =** ] schedule_start_time  
+[ **\@ schedule_start_time =** ] schedule_start_time  
 Datum, kdy může spuštění úlohy začít. schedule_start_time je DATETIME2, výchozí hodnota je 0001-01-01 00:00:00.0000000.
 
-[ ** \@ schedule_end_time =** ] schedule_end_time  
+[ **\@ schedule_end_time =** ] schedule_end_time  
 Datum, kdy se může zastavit spuštění úlohy. schedule_end_time je DATETIME2, výchozí hodnota je 9999-12-31 11:59:59.0000000.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -551,10 +551,10 @@ Odstraní existující úlohu.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ job_name =** ] ' job_name '  
+[ **\@ job_name =** ] ' job_name '  
 Název úlohy, která se má odstranit job_name je nvarchar (128).
 
-[ ** \@ Force =** ] Force  
+[ **\@ Force =** ] Force  
 Určuje, jestli se má odstranit v případě, že úloha obsahuje nějaké probíhající úlohy, a zrušte všechny probíhající úlohy (1) nebo selže, pokud dojde k probíhajícímu provádění úloh (0). síla je bit.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -607,79 +607,79 @@ Přidá krok do úlohy.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ job_name =** ] ' job_name '  
+[ **\@ job_name =** ] ' job_name '  
 Název úlohy, do které chcete krok přidat. job_name je nvarchar (128).
 
-[ ** \@ step_id =** ] step_id  
+[ **\@ step_id =** ] step_id  
 Identifikační číslo sekvence pro krok úlohy Identifikační čísla kroků začínají 1 a se zvětšují bez mezer. Pokud již existuje stávající krok s tímto ID, pak tento krok a všechny následující kroky budou mít své ID zvýšeny, aby tento nový krok mohl být vložen do sekvence. Pokud není zadaný, step_id se v pořadí kroků automaticky přiřadí k poslednímu. step_id je int.
 
-[ ** \@ STEP_NAME =** ] STEP_NAME  
+[ **\@ STEP_NAME =** ] STEP_NAME  
 Název kroku. Musí být zadáno, s výjimkou prvního kroku úlohy, která (pro usnadnění) má výchozí název "JobStep". step_name je nvarchar (128).
 
-[ ** \@ command_type =** ] ' command_type '  
+[ **\@ command_type =** ] ' command_type '  
 Typ příkazu, který je proveden tímto jobstep. command_type je nvarchar (50) s výchozí hodnotou TSql, což znamená, že hodnota @command_type parametru je skript T-SQL.
 
 Je-li tento parametr zadán, musí být hodnota TSql.
 
-[ ** \@ command_source =** ] ' command_source '  
+[ **\@ command_source =** ] ' command_source '  
 Typ umístění, kde je příkaz uložen. command_source je nvarchar (50) s výchozí hodnotou inline, což znamená, že hodnota @command_source parametru je literálový text příkazu.
 
 Je-li tento parametr zadán, musí být vložena hodnota.
 
-[ ** \@ Command =** ] – příkaz  
+[ **\@ Command =** ] – příkaz  
 Příkaz musí být platný skript T-SQL, který pak provede tento krok úlohy. příkaz má hodnotu nvarchar (max), která má výchozí hodnotu NULL.
 
-[ ** \@ credential_name =** ] ' credential_name '  
+[ **\@ credential_name =** ] ' credential_name '  
 Název databáze s rozsahem přihlašovacích údajů uložených v této databázi řízení úloh, která se používá pro připojení ke každé z cílových databází v cílové skupině v případě provedení tohoto kroku. credential_name je nvarchar (128).
 
-[ ** \@ target_group_name =** ] ' Target-group_name '  
+[ **\@ target_group_name =** ] ' Target-group_name '  
 Název cílové skupiny, která obsahuje cílové databáze, na kterých se spustí krok úlohy. target_group_name je nvarchar (128).
 
-[ ** \@ initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[ **\@ initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 Zpoždění před prvním pokusem, pokud se krok úlohy nezdaří při prvotním pokusu o spuštění. initial_retry_interval_seconds je int s výchozí hodnotou 1.
 
-[ ** \@ maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[ **\@ maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Maximální prodleva mezi opakovanými pokusy. Pokud by zpoždění mezi opakovanými pokusy růst větší než tato hodnota, je místo toho omezené na tuto hodnotu. maximum_retry_interval_seconds je int s výchozí hodnotou 120.
 
-[ ** \@ retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@ retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Násobitel, který se má použít u zpoždění při opakování, pokud se několik pokusů o spuštění kroku úlohy nezdaří. Například pokud první pokus má zpoždění 5 sekund a násobitel omezení rychlosti je 2,0, pak druhé opakování bude mít zpoždění 10 sekund a třetí opakování bude mít zpoždění 20 sekund. retry_interval_backoff_multiplier je reálné, má výchozí hodnotu 2,0.
 
-[ ** \@ retry_attempts =** ] retry_attempts  
+[ **\@ retry_attempts =** ] retry_attempts  
 Počet pokusů o opakování provedení, pokud se počáteční pokus nezdaří Pokud má například retry_attempts hodnotu 10, bude se jednat o 1 počáteční pokus a 10 opakovaných pokusů, což bude mít celkem 11 pokusů. Pokud se poslední pokus o opakování nezdaří, spuštění úlohy skončí s neúspěšným životním cyklem. retry_attempts je int s výchozí hodnotou 10.
 
-[ ** \@ step_timeout_seconds =** ] step_timeout_seconds  
+[ **\@ step_timeout_seconds =** ] step_timeout_seconds  
 Maximální doba, po kterou je možné krok provést. V případě překročení tohoto času se provádění úlohy ukončí s časovým limitem vypršení časového limitu. step_timeout_seconds je int, přičemž výchozí hodnota je 43 200 sekund (12 hodin).
 
-[ ** \@ output_type =** ] ' output_type '  
+[ **\@ output_type =** ] ' output_type '  
 Pokud hodnota není null, typ cíle, na který je první sada výsledků příkazu zapisována. output_type je nvarchar (50) s výchozí hodnotou NULL.
 
 Je-li tento parametr zadán, musí být hodnota SqlDatabase.
 
-[ ** \@ output_credential_name =** ] ' output_credential_name '  
+[ **\@ output_credential_name =** ] ' output_credential_name '  
 Pokud není null, název databáze s rozsahem pověření, která se používá pro připojení k výstupní cílové databázi. Je nutné zadat, pokud output_type rovná SqlDatabase. output_credential_name je nvarchar (128), přičemž výchozí hodnota je NULL.
 
-[ ** \@ output_subscription_id =** ] ' output_subscription_id '  
+[ **\@ output_subscription_id =** ] ' output_subscription_id '  
 Vyžaduje popis.
 
-[ ** \@ output_resource_group_name =** ] ' output_resource_group_name '  
+[ **\@ output_resource_group_name =** ] ' output_resource_group_name '  
 Vyžaduje popis.
 
-[ ** \@ output_server_name =** ] ' output_server_name '  
+[ **\@ output_server_name =** ] ' output_server_name '  
 Pokud hodnota není null, plně kvalifikovaný název DNS serveru, který obsahuje výstupní cílovou databázi. Je nutné zadat, pokud output_type rovná SqlDatabase. output_server_name je nvarchar (256), má výchozí hodnotu NULL.
 
-[ ** \@ output_database_name =** ] ' output_database_name '  
+[ **\@ output_database_name =** ] ' output_database_name '  
 Pokud hodnota není null, název databáze obsahující výstupní cílovou tabulku. Je nutné zadat, pokud output_type rovná SqlDatabase. output_database_name je nvarchar (128), přičemž výchozí hodnota je NULL.
 
-[ ** \@ output_schema_name =** ] ' output_schema_name '  
+[ **\@ output_schema_name =** ] ' output_schema_name '  
 Pokud není null, název schématu SQL obsahující výstupní cílovou tabulku. Pokud output_type rovná SqlDatabase, výchozí hodnota je dbo. output_schema_name je nvarchar (128).
 
-[ ** \@ output_table_name =** ] ' output_table_name '  
+[ **\@ output_table_name =** ] ' output_table_name '  
 Pokud hodnota není null, název tabulky, do které bude první sada výsledků příkazu zapisován. Pokud tabulka ještě neexistuje, vytvoří se na základě schématu vrácení sady výsledků. Je nutné zadat, pokud output_type rovná SqlDatabase. output_table_name je nvarchar (128), přičemž výchozí hodnota je NULL.
 
-[ ** \@ job_version =** ] výstup job_version  
+[ **\@ job_version =** ] výstup job_version  
 Výstupní parametr, kterému bude přiřazeno nové číslo verze úlohy job_version je int.
 
-[ ** \@ max_parallelism =** ] výstup max_parallelism  
+[ **\@ max_parallelism =** ] výstup max_parallelism  
 Maximální úroveň paralelismu na elastický fond. Když se nastaví, krok úlohy se omezí tak, aby se spouštěl jenom z maximálního počtu databází na elastický fond. To platí pro každý elastický fond, který je buď přímo součástí cílové skupiny, nebo se nachází uvnitř serveru, který je součástí cílové skupiny. max_parallelism je int.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -732,79 +732,79 @@ Aktualizuje krok úlohy.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ job_name =** ] ' job_name '  
+[ **\@ job_name =** ] ' job_name '  
 Název úlohy, ke které krok patří job_name je nvarchar (128).
 
-[ ** \@ step_id =** ] step_id  
+[ **\@ step_id =** ] step_id  
 Identifikační číslo pro krok úlohy, který se má upravit. Musí být zadán buď step_id, nebo step_name. step_id je int.
 
-[ ** \@ STEP_NAME =** ] ' STEP_NAME '  
+[ **\@ STEP_NAME =** ] ' STEP_NAME '  
 Název kroku, který má být upraven. Musí být zadán buď step_id, nebo step_name. step_name je nvarchar (128).
 
-[ ** \@ new_id =** ] new_id  
+[ **\@ new_id =** ] new_id  
 Nové identifikační číslo sekvence pro krok úlohy. Identifikační čísla kroků začínají 1 a se zvětšují bez mezer. Pokud se změní pořadí kroků, automaticky se přečíslují i další kroky.
 
-[ ** \@ new_name =** ] ' new_name '  
+[ **\@ new_name =** ] ' new_name '  
 Nový název kroku. new_name je nvarchar (128).
 
-[ ** \@ command_type =** ] ' command_type '  
+[ **\@ command_type =** ] ' command_type '  
 Typ příkazu, který je proveden tímto jobstep. command_type je nvarchar (50) s výchozí hodnotou TSql, což znamená, že hodnota @command_type parametru je skript T-SQL.
 
 Je-li tento parametr zadán, musí být hodnota TSql.
 
-[ ** \@ command_source =** ] ' command_source '  
+[ **\@ command_source =** ] ' command_source '  
 Typ umístění, kde je příkaz uložen. command_source je nvarchar (50) s výchozí hodnotou inline, což znamená, že hodnota @command_source parametru je literálový text příkazu.
 
 Je-li tento parametr zadán, musí být vložena hodnota.
 
-[ ** \@ Command =** ] – příkaz  
+[ **\@ Command =** ] – příkaz  
 Příkazy musí být platný skript T-SQL a pak se spustí tímto krokem úlohy. příkaz má hodnotu nvarchar (max), která má výchozí hodnotu NULL.
 
-[ ** \@ credential_name =** ] ' credential_name '  
+[ **\@ credential_name =** ] ' credential_name '  
 Název databáze s rozsahem přihlašovacích údajů uložených v této databázi řízení úloh, která se používá pro připojení ke každé z cílových databází v cílové skupině v případě provedení tohoto kroku. credential_name je nvarchar (128).
 
-[ ** \@ target_group_name =** ] ' Target-group_name '  
+[ **\@ target_group_name =** ] ' Target-group_name '  
 Název cílové skupiny, která obsahuje cílové databáze, na kterých se spustí krok úlohy. target_group_name je nvarchar (128).
 
-[ ** \@ initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[ **\@ initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 Zpoždění před prvním pokusem, pokud se krok úlohy nezdaří při prvotním pokusu o spuštění. initial_retry_interval_seconds je int s výchozí hodnotou 1.
 
-[ ** \@ maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[ **\@ maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Maximální prodleva mezi opakovanými pokusy. Pokud by zpoždění mezi opakovanými pokusy růst větší než tato hodnota, je místo toho omezené na tuto hodnotu. maximum_retry_interval_seconds je int s výchozí hodnotou 120.
 
-[ ** \@ retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@ retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 Násobitel, který se má použít u zpoždění při opakování, pokud se několik pokusů o spuštění kroku úlohy nezdaří. Například pokud první pokus má zpoždění 5 sekund a násobitel omezení rychlosti je 2,0, pak druhé opakování bude mít zpoždění 10 sekund a třetí opakování bude mít zpoždění 20 sekund. retry_interval_backoff_multiplier je reálné, má výchozí hodnotu 2,0.
 
-[ ** \@ retry_attempts =** ] retry_attempts  
+[ **\@ retry_attempts =** ] retry_attempts  
 Počet pokusů o opakování provedení, pokud se počáteční pokus nezdaří Pokud má například retry_attempts hodnotu 10, bude se jednat o 1 počáteční pokus a 10 opakovaných pokusů, což bude mít celkem 11 pokusů. Pokud se poslední pokus o opakování nezdaří, spuštění úlohy skončí s neúspěšným životním cyklem. retry_attempts je int s výchozí hodnotou 10.
 
-[ ** \@ step_timeout_seconds =** ] step_timeout_seconds  
+[ **\@ step_timeout_seconds =** ] step_timeout_seconds  
 Maximální doba, po kterou je možné krok provést. V případě překročení tohoto času se provádění úlohy ukončí s časovým limitem vypršení časového limitu. step_timeout_seconds je int, přičemž výchozí hodnota je 43 200 sekund (12 hodin).
 
-[ ** \@ output_type =** ] ' output_type '  
+[ **\@ output_type =** ] ' output_type '  
 Pokud hodnota není null, typ cíle, na který je první sada výsledků příkazu zapisována. Chcete-li obnovit hodnotu output_type zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_type je nvarchar (50) s výchozí hodnotou NULL.
 
 Je-li tento parametr zadán, musí být hodnota SqlDatabase.
 
-[ ** \@ output_credential_name =** ] ' output_credential_name '  
+[ **\@ output_credential_name =** ] ' output_credential_name '  
 Pokud není null, název databáze s rozsahem pověření, která se používá pro připojení k výstupní cílové databázi. Je nutné zadat, pokud output_type rovná SqlDatabase. Chcete-li obnovit hodnotu output_credential_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_credential_name je nvarchar (128), přičemž výchozí hodnota je NULL.
 
-[ ** \@ output_server_name =** ] ' output_server_name '  
+[ **\@ output_server_name =** ] ' output_server_name '  
 Pokud hodnota není null, plně kvalifikovaný název DNS serveru, který obsahuje výstupní cílovou databázi. Je nutné zadat, pokud output_type rovná SqlDatabase. Chcete-li obnovit hodnotu output_server_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_server_name je nvarchar (256), má výchozí hodnotu NULL.
 
-[ ** \@ output_database_name =** ] ' output_database_name '  
+[ **\@ output_database_name =** ] ' output_database_name '  
 Pokud hodnota není null, název databáze obsahující výstupní cílovou tabulku. Je nutné zadat, pokud output_type rovná SqlDatabase. Chcete-li obnovit hodnotu output_database_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_database_name je nvarchar (128), přičemž výchozí hodnota je NULL.
 
-[ ** \@ output_schema_name =** ] ' output_schema_name '  
+[ **\@ output_schema_name =** ] ' output_schema_name '  
 Pokud není null, název schématu SQL obsahující výstupní cílovou tabulku. Pokud output_type rovná SqlDatabase, výchozí hodnota je dbo. Chcete-li obnovit hodnotu output_schema_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_schema_name je nvarchar (128).
 
-[ ** \@ output_table_name =** ] ' output_table_name '  
+[ **\@ output_table_name =** ] ' output_table_name '  
 Pokud hodnota není null, název tabulky, do které bude první sada výsledků příkazu zapisován. Pokud tabulka ještě neexistuje, vytvoří se na základě schématu vrácení sady výsledků. Je nutné zadat, pokud output_type rovná SqlDatabase. Chcete-li obnovit hodnotu output_server_name zpět na hodnotu NULL, nastavte hodnotu parametru na ' ' (prázdný řetězec). output_table_name je nvarchar (128), přičemž výchozí hodnota je NULL.
 
-[ ** \@ job_version =** ] výstup job_version  
+[ **\@ job_version =** ] výstup job_version  
 Výstupní parametr, kterému bude přiřazeno nové číslo verze úlohy job_version je int.
 
-[ ** \@ max_parallelism =** ] výstup max_parallelism  
+[ **\@ max_parallelism =** ] výstup max_parallelism  
 Maximální úroveň paralelismu na elastický fond. Když se nastaví, krok úlohy se omezí tak, aby se spouštěl jenom z maximálního počtu databází na elastický fond. To platí pro každý elastický fond, který je buď přímo součástí cílové skupiny, nebo se nachází uvnitř serveru, který je součástí cílové skupiny. Chcete-li obnovit hodnotu max_parallelism zpět na hodnotu null, nastavte tento parametr na hodnotu-1. max_parallelism je int.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -838,16 +838,16 @@ Odebere krok úlohy z úlohy.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ job_name =** ] ' job_name '  
+[ **\@ job_name =** ] ' job_name '  
 Název úlohy, ze které se bude krok odebrat job_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ step_id =** ] step_id  
+[ **\@ step_id =** ] step_id  
 Identifikační číslo pro krok úlohy, který se má odstranit Musí být zadán buď step_id, nebo step_name. step_id je int.
 
-[ ** \@ STEP_NAME =** ] ' STEP_NAME '  
+[ **\@ STEP_NAME =** ] ' STEP_NAME '  
 Název kroku, který se má odstranit Musí být zadán buď step_id, nebo step_name. step_name je nvarchar (128).
 
-[ ** \@ job_version =** ] výstup job_version  
+[ **\@ job_version =** ] výstup job_version  
 Výstupní parametr, kterému bude přiřazeno nové číslo verze úlohy job_version je int.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -881,10 +881,10 @@ Spustí provádění úlohy.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ job_name =** ] ' job_name '  
+[ **\@ job_name =** ] ' job_name '  
 Název úlohy, ze které se bude krok odebrat job_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ job_execution_id =** ] výstup job_execution_id  
+[ **\@ job_execution_id =** ] výstup job_execution_id  
 Výstupní parametr, kterému bude přiřazeno ID spuštění úlohy. job_version je typ uniqueidentifier.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -915,7 +915,7 @@ Zastaví provádění úlohy.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ job_execution_id =** ] job_execution_id  
+[ **\@ job_execution_id =** ] job_execution_id  
 Identifikační číslo spuštění úlohy, které se má zastavit. job_execution_id je uniqueidentifier a má výchozí hodnotu NULL.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -947,10 +947,10 @@ Přidá cílovou skupinu.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ target_group_name =** ] ' target_group_name '  
+[ **\@ target_group_name =** ] ' target_group_name '  
 Název cílové skupiny, která se má vytvořit. target_group_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ target_group_id =** ] target_group_id výstup identifikačního čísla cílové skupiny přiřazeného k úloze v případě úspěšného vytvoření. target_group_id je výstupní proměnná typu uniqueidentifier s výchozí hodnotou NULL.
+[ **\@ target_group_id =** ] target_group_id výstup identifikačního čísla cílové skupiny přiřazeného k úloze v případě úspěšného vytvoření. target_group_id je výstupní proměnná typu uniqueidentifier s výchozí hodnotou NULL.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
 
@@ -980,7 +980,7 @@ Odstraní cílovou skupinu.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ target_group_name =** ] ' target_group_name '  
+[ **\@ target_group_name =** ] ' target_group_name '  
 Název cílové skupiny, která se má odstranit target_group_name je nvarchar (128) bez výchozího nastavení.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -1019,31 +1019,31 @@ Přidá databázi nebo skupinu databází do cílové skupiny.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ target_group_name =** ] ' target_group_name '  
+[ **\@ target_group_name =** ] ' target_group_name '  
 Název cílové skupiny, do které bude člen přidán. target_group_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ membership_type =** ] ' membership_type '  
+[ **\@ membership_type =** ] ' membership_type '  
 Určuje, jestli bude cílový člen skupiny zahrnutý nebo vyloučený. target_group_name je nvarchar (128) s výchozím nastavením include. Platné hodnoty pro membership_type jsou include nebo Exclude.
 
-[ ** \@ target_type =** ] ' target_type '  
+[ **\@ target_type =** ] ' target_type '  
 Typ cílové databáze nebo kolekce databází včetně všech databází na serveru, všech databází v elastickém fondu, všech databází v mapě horizontálních oddílů nebo jednotlivé databáze. target_type je nvarchar (128) bez výchozího nastavení. Platné hodnoty pro target_type jsou "SqlServer", "SqlElasticPool", "SqlDatabase" nebo "SqlShardMap".
 
-[ ** \@ refresh_credential_name =** ] ' refresh_credential_name '  
+[ **\@ refresh_credential_name =** ] ' refresh_credential_name '  
 Název databáze s rozsahem pověření. refresh_credential_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ server_name =** ] ' server_name '  
+[ **\@ server_name =** ] ' server_name '  
 Název serveru, který má být přidán do zadané cílové skupiny. Pokud target_type je SqlServer, měla by se zadat server_name. server_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ database_name =** ] ' database_name '  
+[ **\@ database_name =** ] ' database_name '  
 Název databáze, která se má přidat do zadané cílové skupiny. Pokud je target_type ' SqlDatabase ', je třeba zadat database_name. database_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ elastic_pool_name =** ] ' elastic_pool_name '  
+[ **\@ elastic_pool_name =** ] ' elastic_pool_name '  
 Název elastického fondu, který má být přidán do zadané cílové skupiny. Pokud je target_type ' SqlElasticPool ', je třeba zadat elastic_pool_name. elastic_pool_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ shard_map_name =** ] ' shard_map_name '  
+[ **\@ shard_map_name =** ] ' shard_map_name '  
 Název fondu mapování horizontálních oddílů, který se má přidat do zadané cílové skupiny. Pokud je target_type ' SqlShardMap ', je třeba zadat elastic_pool_name. shard_map_name je nvarchar (128) bez výchozího nastavení.
 
-[ ** \@ target_id =** ] výstup target_group_id  
+[ **\@ target_id =** ] výstup target_group_id  
 Cílové identifikační číslo přiřazené k cílovému členu skupiny, pokud je vytvořeno do cílové skupiny. target_id je výstupní proměnná typu uniqueidentifier s výchozí hodnotou NULL.
 Hodnoty návratového kódu 0 (úspěch) nebo 1 (chyba)
 
@@ -1162,13 +1162,13 @@ Odebere záznamy historie pro úlohu.
 
 #### <a name="arguments"></a>Argumenty
 
-[ ** \@ job_name =** ] ' job_name '  
+[ **\@ job_name =** ] ' job_name '  
 Název úlohy, pro kterou chcete odstranit záznamy historie. job_name je nvarchar (128), přičemž výchozí hodnota je NULL. Musí být zadán buď job_id, nebo job_name, ale nelze zadat obě.
 
-[ ** \@ job_id =** ] job_id  
+[ **\@ job_id =** ] job_id  
  Identifikační číslo úlohy pro záznamy, které mají být odstraněny. job_id je uniqueidentifier a má výchozí hodnotu NULL. Musí být zadán buď job_id, nebo job_name, ale nelze zadat obě.
 
-[ ** \@ oldest_date =** ] oldest_date  
+[ **\@ oldest_date =** ] oldest_date  
  Nejstarší záznam, který se uchová v historii. oldest_date je DATETIME2 s výchozí hodnotou NULL. Když se zadá oldest_date, sp_purge_jobhistory odebere jenom záznamy, které jsou starší než zadaná hodnota.
 
 #### <a name="return-code-values"></a>Hodnoty návratového kódu
@@ -1204,7 +1204,7 @@ GO
 
 V [databázi Jobs](job-automation-overview.md#job-database)jsou k dispozici následující zobrazení.
 
-|Zobrazit  |Description  |
+|Zobrazit  |Popis  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Zobrazuje historii spuštění úlohy.      |
 |[úlohy](#jobs-view)     |   Zobrazí všechny úlohy.      |
@@ -1344,9 +1344,9 @@ Zobrazí všechny členy všech cílových skupin.
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-- ![Ikona odkazu na téma](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Ikona odkazu na téma") [– konvence syntaxe Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+- ![Ikona odkazu na téma](/sql/database-engine/configure-windows/media/topic-link.gif "Ikona odkazu na téma") [– konvence syntaxe Transact-SQL](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell-create.md)
-- [Autorizace a oprávnění](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
+- [Autorizace a oprávnění](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

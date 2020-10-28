@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 24c850b9a5302fd0ac684df6e6f1cc319118a75d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 294adce3dc312003d72336bd0752ba3aba5eaace
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488516"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792850"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Přenos dat pomocí AzCopy a BLOB Storage
 
@@ -31,7 +31,7 @@ V článku Začínáme [s AzCopy](storage-use-azcopy-v10.md) si můžete stáhno
 >
 > Pokud místo toho chcete použít token SAS k autorizaci přístupu k datům objektu blob, můžete tento token připojit k adrese URL prostředku v každém příkazu AzCopy.
 >
-> Například: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Příklad: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
@@ -260,7 +260,7 @@ Podrobné informace najdete v referenčních dokumentech ke [kopírování AzCop
 
 Pokud jste povolili [správu verzí objektů BLOB](../blobs/versioning-enable.md), můžete stáhnout jednu nebo více předchozích verzí objektu BLOB. 
 
-Nejdřív vytvořte textový soubor, který obsahuje seznam [ID verzí](../blobs/versioning-overview.md). Každé ID verze se musí nacházet na samostatném řádku. Například: 
+Nejdřív vytvořte textový soubor, který obsahuje seznam [ID verzí](../blobs/versioning-overview.md). Každé ID verze se musí nacházet na samostatném řádku. Příklad: 
 
 ```
 2020-08-17T05:50:34.2199403Z
@@ -363,7 +363,7 @@ Příkaz [synchronizovat](storage-ref-azcopy-sync.md) porovná názvy souborů a
 Pokud jste příznak nastavili `--delete-destination` tak, aby `true` AzCopy odstranit soubory bez zadání výzvy. Pokud chcete, aby se zobrazila výzva před tím, než AzCopy odstraní soubor, nastavte `--delete-destination` příznak na `prompt` .
 
 > [!NOTE]
-> Chcete-li zabránit nechtěnému odstranění, před použitím příznaku zajistěte, aby byla funkce [obnovitelného odstranění](/azure/storage/blobs/storage-blob-soft-delete) povolena `--delete-destination=prompt|true` .
+> Chcete-li zabránit nechtěnému odstranění, před použitím příznaku zajistěte, aby byla funkce [obnovitelného odstranění](../blobs/soft-delete-blob-overview.md) povolena `--delete-destination=prompt|true` .
 
 > [!TIP]
 > Operaci synchronizace můžete upravit pomocí volitelných příznaků. Tady je několik příkladů.

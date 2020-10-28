@@ -6,15 +6,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/08/2020
-ms.openlocfilehash: cb02b29c100da7b8d63f214acc78906a757344c0
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.date: 10/25/2020
+ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096092"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791575"
 ---
-# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Řešení potíží s latencí replikace v Azure Database for MySQL
+# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Řešení potíží s latencí replikace ve službě Azure Database for MySQL
+
+[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
 Funkce [replika čtení](concepts-read-replicas.md) umožňuje replikovat data z Azure Database for MySQL serveru do serveru repliky jen pro čtení. Můžete škálovat úlohy směrováním dotazů čtení a vytváření sestav z aplikace na servery repliky. Toto nastavení snižuje tlak na zdrojovém serveru. Zvyšuje také celkový výkon a latenci aplikace při škálování. 
 
@@ -31,9 +33,9 @@ V tomto článku se dozvíte, jak řešit latenci replikace v Azure Database for
 
 ## <a name="replication-concepts"></a>Koncepty replikace
 
-Když je povolený binární protokol, zdrojový server zapíše potvrzené transakce do binárního protokolu. Binární protokol se používá pro replikaci. Tato možnost je ve výchozím nastavení zapnutá pro všechny nově zřízené servery, které podporují až 16 TB úložiště. Na serverech repliky se na každém serveru repliky spouštějí dvě vlákna. Jedno vlákno je *vstupně-výstupní podproces*a druhý je *vlákno SQL*:
+Když je povolený binární protokol, zdrojový server zapíše potvrzené transakce do binárního protokolu. Binární protokol se používá pro replikaci. Tato možnost je ve výchozím nastavení zapnutá pro všechny nově zřízené servery, které podporují až 16 TB úložiště. Na serverech repliky se na každém serveru repliky spouštějí dvě vlákna. Jedno vlákno je *vstupně-výstupní podproces* a druhý je *vlákno SQL* :
 
-- Vlákno v/v se připojuje ke zdrojovému serveru a žádá o aktualizované binární protokoly. Toto vlákno přijímá binární aktualizace protokolů. Tyto aktualizace se ukládají na server repliky v místním protokolu, který se nazývá *protokol přenosu*.
+- Vlákno v/v se připojuje ke zdrojovému serveru a žádá o aktualizované binární protokoly. Toto vlákno přijímá binární aktualizace protokolů. Tyto aktualizace se ukládají na server repliky v místním protokolu, který se nazývá *protokol přenosu* .
 - Vlákno SQL přečte protokol Relay a pak použije změny dat na serverech repliky.
 
 ## <a name="monitoring-replication-latency"></a>Monitorování latence replikace

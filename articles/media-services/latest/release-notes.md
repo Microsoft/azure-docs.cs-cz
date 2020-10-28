@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514482"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791592"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -46,6 +46,16 @@ Přednastavení zvukové analýzy teď obsahuje cenovou úroveň základního re
 Zákazníci, kteří používají indexer V1 a indexer v2, by měli migrovat na základní předvolby analýzy zvuku.
 
 Další informace o režimu základní zvukové analyzátory najdete v tématu [Analýza videosouborů a zvukových souborů](analyzing-video-audio-files-concept.md).  Pokud se chcete dozvědět, jak použít režim základní zvukové analyzátory s REST API, přečtěte si téma [jak vytvořit základní transformaci zvuku](how-to-create-basic-audio-transform.md).
+
+## <a name="live-events"></a>Živé události
+
+Po zastavení živých událostí jsou nyní povoleny aktualizace většiny vlastností. Kromě toho můžou uživatelé zadat předponu pro statický název hostitele pro vstupní a náhledové adresy URL pro aktivní událost. VanityUrl je nyní volána `useStaticHostName` pro lepší reflektování záměru vlastnosti.
+
+Živé události teď mají pohotovostní stav.  Podívejte [se na živé události a živé výstupy v Media Services](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept).
+
+Živá událost podporuje příjem různých vstupních poměrů stran. Režim Stretch umožňuje zákazníkům určit chování roztažení výstupu.
+
+Live Encoding teď přidává schopnost zasílat fragmenty intervalu pevného snímku s pevným klíčem mezi 0,5 až 20 sekund.
 
 ## <a name="august-2020"></a>Srpen 2020
 
@@ -99,7 +109,7 @@ Do [dokumentace k Azure](../azure-media-player/azure-media-player-overview.md)by
 
 ### <a name="azure-government-cloud-updates"></a>Azure Government aktualizace cloudu
 
-Media Services GA'ed v následujících Azure Government oblastech: *USGov Arizona* a *USGov Texas*.
+Media Services GA'ed v následujících Azure Government oblastech: *USGov Arizona* a *USGov Texas* .
 
 ## <a name="december-2019"></a>Prosinec 2019
 
@@ -163,7 +173,7 @@ Media Services V3 oznamuje verzi Preview 24 hodin x 365 dní živého lineární
 
 #### <a name="deprecation-of-media-processors"></a>Vyřazení procesorů médií
 
-Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview*. Data o vyřazení najdete v článku  [starší verze součástí](../previous/legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
+Oznamujeme vyřazení *Azure Media Indexer* a *Azure Media Indexer 2 ve verzi Preview* . Data o vyřazení najdete v článku  [starší verze součástí](../previous/legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) nahrazuje tyto starší verze procesorů médií.
 
 Další informace najdete v tématu [migrace z Azure Media Indexer a Azure Media Indexer 2 na Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -265,10 +275,10 @@ Soubor MPI byste neměli upravovat ani odebírat nebo v rámci služby nemusíte
 
 Mezi verze V3 rozhraní API pro aktualizace od verze GA patří:
        
-* Pro **filtry prostředků** a **filtry účtu**se už nevyžadují vlastnosti **PresentationTimeRange** . 
+* Pro **filtry prostředků** a **filtry účtu** se už nevyžadují vlastnosti **PresentationTimeRange** . 
 * Možnosti $top a $skip dotazu pro **úlohy** a **transformace** byly odebrány a $OrderBy byly přidány. V rámci přidávání nové funkce řazení bylo zjištěno, že $top a $skip možnosti byly omylem vystaveny dříve, i když nejsou implementovány.
 * Rozšiřitelnost výčtu byla znovu povolena. Tato funkce byla povolená ve verzi Preview sady SDK a v rámci verze GA se nechtěně vypnula.
-* Dva předdefinované zásady streamování se přejmenovaly. **SecureStreaming** je teď **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** je nyní **Predefined_MultiDrmStreaming**.
+* Dva předdefinované zásady streamování se přejmenovaly. **SecureStreaming** je teď **MultiDrmCencStreaming** . **SecureStreamingWithFairPlay** je nyní **Predefined_MultiDrmStreaming** .
 
 ## <a name="november-2018"></a>Listopad 2018
 

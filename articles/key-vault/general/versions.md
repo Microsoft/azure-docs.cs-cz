@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86230821"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792374"
 ---
 # <a name="key-vault-versions"></a>Verze Key Vaultu
 
@@ -33,7 +33,7 @@ Soukromé koncové body jsou nyní k dispozici ve verzi Preview. Služba privát
 ## <a name="2019"></a>2019
 
 - Vydání Azure Key Vault sad SDK nové generace. Příklady jejich použití najdete v tématu rychlý Start Azure Key Vault tajných kódů pro [Python](../secrets/quick-create-python.md), [.NET](../secrets/quick-create-net.md), [Java](../secrets/quick-create-java.md)a [Node.js](../secrets/quick-create-node.md)
-- Nové zásady Azure pro správu certifikátů trezoru klíčů. Přečtěte si [Azure Policy předdefinované definice pro Key Vault](../policy-samples.md).
+- Nové zásady Azure pro správu certifikátů trezoru klíčů. Přečtěte si [Azure Policy předdefinované definice pro Key Vault](../policy-reference.md).
 - Rozšíření virtuálního počítače Azure Key Vault je teď všeobecně dostupné.  Viz [Key Vault rozšíření pro virtuální počítače pro Linux](../../virtual-machines/extensions/key-vault-linux.md) a [rozšíření virtuálního počítače Key Vault pro Windows](../../virtual-machines/extensions/key-vault-windows.md).
 - Správa tajných kódů řízených událostmi pro Azure Key Vault nyní k dispozici v Azure Event Grid. Další informace najdete v tématu [schéma Event Grid pro události v Azure Key Vault] (.. /.. /Event-Grid/Event-Schema-Key-Vault.MD] a Naučte se, jak [přijímat a reagovat na oznámení o trezoru klíčů pomocí Azure Event Grid](event-grid-tutorial.md).
 
@@ -49,8 +49,8 @@ Nové funkce a integrace vydané tento rok:
 
 Nové funkce vydané tento rok:
 
-- Spravované klíče účtu úložiště. Funkce klíčů účtu úložiště přidala snazší integraci s Azure Storage. Další informace najdete v tématu Přehled – [Přehled klíčů spravovaného účtu úložiště](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys).
-- Obnovitelné odstranění. Funkce obnovitelného odstranění vylepšuje ochranu dat vašich trezorů klíčů a objektů trezoru klíčů. Další informace najdete v tématu Přehled – [Přehled o tichém odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete).
+- Spravované klíče účtu úložiště. Funkce klíčů účtu úložiště přidala snazší integraci s Azure Storage. Další informace najdete v tématu Přehled – [Přehled klíčů spravovaného účtu úložiště](../secrets/overview-storage-keys.md).
+- Obnovitelné odstranění. Funkce obnovitelného odstranění vylepšuje ochranu dat vašich trezorů klíčů a objektů trezoru klíčů. Další informace najdete v tématu Přehled – [Přehled o tichém odstranění](./soft-delete-overview.md).
 
 ## <a name="2015"></a>2015
 
@@ -64,7 +64,7 @@ Obecná dostupnost (verze 2015-06-01) byla oznámena 24. června 2015. V této v
 - Obnoví klíč – pole použít se odebralo.     
 - Byl změněn "RSA_OAEP" na "RSA-výplně OAEP" pro algoritmy RSA. Přečtěte si [o klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md).    
  
-Verze Second Preview (verze 2015-02-01-Preview) byla oznámena 20. dubna 2015. Další informace najdete v příspěvku na blogu [REST API Update](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) . Následující úkoly byly aktualizovány:
+Verze Second Preview (verze 2015-02-01-Preview) byla oznámena 20. dubna 2015. Další informace najdete v příspěvku na blogu [REST API Update](/archive/blogs/kv/rest-api-update) . Následující úkoly byly aktualizovány:
  
 - Výpis klíčů v trezoru – Podpora stránkování je přidána do provozu.
 - Vypíše verze operace přidané klíčovým seznamem verzí klíče.  

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d67046f799e60db3101dfeb27dee10f92f9aad79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0454e7bcc81c71cdffcddcd859bb6d335cc8aef2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052422"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791813"
 ---
 # <a name="repairing-an-import-job"></a>Oprava úlohy importu
 Ve službě Microsoft Azure Import/Export může dojít k selhání při kopírování některých souborů nebo částí souborů do služby Windows Azure Blob service. Mezi některé z příčin selhání patří:  
@@ -28,19 +28,19 @@ Nástroj pro Microsoft Azure Import/Export můžete spustit pomocí souborů pro
   
 ## <a name="repairimport-parameters"></a>Parametry RepairImport
 
-Pomocí **RepairImport**lze zadat následující parametry: 
+Pomocí **RepairImport** lze zadat následující parametry: 
   
 |||  
 |-|-|  
-|**/r:**<RepairFile\>|**Požadovanou.** Cesta k souboru opravy, který sleduje průběh opravy a umožňuje obnovit přerušenou opravu. Každá jednotka musí mít jeden a jenom jeden opravný soubor. Když zahájíte opravu dané jednotky, předejte cestu k souboru opravy, který ještě neexistuje. Chcete-li obnovit přerušenou opravu, měli byste předat název existujícího opravného souboru. Vždy zadejte soubor opravy odpovídající cílové jednotce.|  
-|**/logdir:**<LogDirectory\>|**Volitelné.** Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud není zadaný žádný adresář protokolu, použije se jako adresář protokolu aktuální adresář.|  
-|**/d:**<TargetDirectories\>|**Požadovanou.** Jeden nebo více středníkem oddělených adresářů, které obsahují původní importované soubory. Pokud jsou k dispozici alternativní umístění původních souborů, může se také použít importovaná jednotka, ale není nutná.|  
-|**/BK:**<BitLockerKey\>|**Volitelné.** Pokud chcete, aby nástroj Odemkl šifrovanou jednotku, kde jsou k dispozici původní soubory, zadejte klíč BitLockeru.|  
-|**/sn:**<StorageAccountName\>|**Požadovanou.** Název účtu úložiště pro úlohu importu.|  
-|**/SK:**<StorageAccountKey\>|**Vyžaduje** se, pokud a jenom v případě, že není zadané SAS kontejneru. Klíč účtu pro účet úložiště pro úlohu importu|  
-|**/csas:**<ContainerSas\>|**Vyžaduje** se jenom v případě, že není zadaný klíč účtu úložiště. SAS kontejneru pro přístup k objektům blob přidruženým k úloze importu.|  
-|**/CopyLogFile:**<DriveCopyLogFile\>|**Požadovanou.** Cesta k souboru protokolu pro kopírování jednotek (buď podrobný protokol, nebo protokol chyb). Soubor vygeneruje služba Windows Azure pro import/export a dá se stáhnout z úložiště objektů BLOB přidruženého k úloze. Soubor protokolu kopírování obsahuje informace o neúspěšných objektech blob nebo souborech, které se mají opravit.|  
-|**/PathMapFile:**<DrivePathMapFile\>|**Volitelné.** Cesta k textovému souboru, který se používá k vyřešení nejednoznačnosti, pokud máte více souborů se stejným názvem, které jste importovali do stejné úlohy. Při prvním spuštění nástroje může tento soubor naplnit všechny dvojznačné názvy. Pozdější spuštění nástroje tento soubor použijte k vyřešení nejednoznačnosti.|  
+|**/r:** <RepairFile\>|**Požadovanou.** Cesta k souboru opravy, který sleduje průběh opravy a umožňuje obnovit přerušenou opravu. Každá jednotka musí mít jeden a jenom jeden opravný soubor. Když zahájíte opravu dané jednotky, předejte cestu k souboru opravy, který ještě neexistuje. Chcete-li obnovit přerušenou opravu, měli byste předat název existujícího opravného souboru. Vždy zadejte soubor opravy odpovídající cílové jednotce.|  
+|**/logdir:** <LogDirectory\>|**Volitelné.** Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud není zadaný žádný adresář protokolu, použije se jako adresář protokolu aktuální adresář.|  
+|**/d:** <TargetDirectories\>|**Požadovanou.** Jeden nebo více středníkem oddělených adresářů, které obsahují původní importované soubory. Pokud jsou k dispozici alternativní umístění původních souborů, může se také použít importovaná jednotka, ale není nutná.|  
+|**/BK:** <BitLockerKey\>|**Volitelné.** Pokud chcete, aby nástroj Odemkl šifrovanou jednotku, kde jsou k dispozici původní soubory, zadejte klíč BitLockeru.|  
+|**/sn:** <StorageAccountName\>|**Požadovanou.** Název účtu úložiště pro úlohu importu.|  
+|**/SK:** <StorageAccountKey\>|**Vyžaduje** se, pokud a jenom v případě, že není zadané SAS kontejneru. Klíč účtu pro účet úložiště pro úlohu importu|  
+|**/csas:** <ContainerSas\>|**Vyžaduje** se jenom v případě, že není zadaný klíč účtu úložiště. SAS kontejneru pro přístup k objektům blob přidruženým k úloze importu.|  
+|**/CopyLogFile:** <DriveCopyLogFile\>|**Požadovanou.** Cesta k souboru protokolu pro kopírování jednotek (buď podrobný protokol, nebo protokol chyb). Soubor vygeneruje služba Windows Azure pro import/export a dá se stáhnout z úložiště objektů BLOB přidruženého k úloze. Soubor protokolu kopírování obsahuje informace o neúspěšných objektech blob nebo souborech, které se mají opravit.|  
+|**/PathMapFile:** <DrivePathMapFile\>|**Volitelné.** Cesta k textovému souboru, který se používá k vyřešení nejednoznačnosti, pokud máte více souborů se stejným názvem, které jste importovali do stejné úlohy. Při prvním spuštění nástroje může tento soubor naplnit všechny dvojznačné názvy. Pozdější spuštění nástroje tento soubor použijte k vyřešení nejednoznačnosti.|  
   
 ## <a name="using-the-repairimport-command"></a>Použití příkazu RepairImport  
 Chcete-li opravit importovaná data streamovaná daty přes síť, je nutné zadat adresáře obsahující původní soubory, které jste importovali pomocí `/d` parametru. Zadejte také soubor protokolu pro kopírování, který jste si stáhli z účtu úložiště. Typický příkazový řádek, který umožňuje opravit úlohu importu s částečnými chybami, vypadá takto:  
@@ -100,6 +100,6 @@ Po zpřístupnění potřebných souborů pro nástroj nebo aktualizaci souboru 
 ## <a name="next-steps"></a>Další kroky
  
 * [Nastavení nástroje Azure pro import/export](storage-import-export-tool-setup-v1.md)   
-* [Příprava pevných disků pro úlohu importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [Příprava pevných disků pro úlohu importu](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
 * [Kontrola stavu úlohy s použitím kopií souborů protokolu](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [Oprava úlohy exportu](../storage-import-export-tool-repairing-an-export-job-v1.md)
+* [Oprava úlohy exportu](./storage-import-export-tool-repairing-an-export-job-v1.md)
