@@ -4,16 +4,16 @@ description: Naučte se používat Java a JDBC s databází Azure Database for M
 author: jdubois
 ms.author: judubois
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 793cab8b37872788da259e45148e314faa00ea15
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545136"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745269"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>Použití jazyků Java a JDBC s Azure Database for MySQL
 
@@ -495,7 +495,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 
 ## <a name="conclusion-and-resources-clean-up"></a>Vyčištění závěrů a prostředků
 
-Blahopřejeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for MySQL.
+Blahopřejeme vám. Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for MySQL.
 
 Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
 

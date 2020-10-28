@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: d6b9ebd8401151d57f103e639e70dd213bde6e33
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 82cb8da1a83e5b1e5430ebecf40f5152c824f6aa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152075"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742501"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -33,17 +33,17 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 1. Vytvořte aplikaci na portálu obvyklým způsobem. Přejděte na portál na portálu.
 
-2. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy**. U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
+2. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy** . U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
 
-3. Vyberte **Identita**.
+3. Vyberte **Identita** .
 
-4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto**. Klikněte na **Uložit**.
+4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto** . Klikněte na **Uložit** .
 
     ![Spravovaná identita v App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
-> Pokud chcete najít spravovanou identitu pro vaši webovou aplikaci nebo aplikaci slotu v Azure Portal v části **podnikové aplikace**, podívejte se do části **uživatelská nastavení** . Název slotu je obvykle podobný `<app name>/slots/<slot name>` .
+> Pokud chcete najít spravovanou identitu pro vaši webovou aplikaci nebo aplikaci slotu v Azure Portal v části **podnikové aplikace** , podívejte se do části **uživatelská nastavení** . Název slotu je obvykle podobný `<app name>/slots/<slot name>` .
 
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
@@ -198,13 +198,13 @@ Nejdřív budete muset vytvořit prostředek identity přiřazené uživatelem.
 
 2. Vytvořte aplikaci na portálu obvyklým způsobem. Přejděte na portál na portálu.
 
-3. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy**. U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
+3. Pokud používáte aplikaci Function App, přejděte k **funkcím platformy** . U ostatních typů aplikací se posuňte dolů ke skupině **Nastavení** v levém navigačním panelu.
 
-4. Vyberte **Identita**.
+4. Vyberte **Identita** .
 
-5. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat**.
+5. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat** .
 
-6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na **Přidat**.
+6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na **Přidat** .
 
     ![Spravovaná identita v App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -395,7 +395,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
         uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,

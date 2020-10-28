@@ -3,12 +3,12 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: c68810e0fd9ee3593aa014243c3f75fb8a63a7fd
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: bbe4d43fde3746e6c992b7f03927f081d3814597
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494530"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745763"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -57,12 +57,12 @@ AKS se sestavuje na několika prostředcích infrastruktury Azure, včetně slu�
 
 Pro povolení této architektury zahrnuje každé nasazení AKS dvě skupiny prostředků:
 
-1. Vytvoříte první skupinu prostředků. Tato skupina obsahuje pouze prostředek služby Kubernetes. Poskytovatel prostředků AKS během nasazování automaticky vytvoří druhou skupinu prostředků. Příkladem druhé skupiny prostředků je *MC_myResourceGroup_myAKSCluster_eastus*. Informace o tom, jak zadat název této druhé skupiny prostředků, najdete v další části.
-1. Druhá skupina prostředků, označovaná jako *Skupina prostředků uzlu*, obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Mezi tyto prostředky patří virtuální počítače uzlu Kubernetes, virtuální síť a úložiště. Ve výchozím nastavení má skupina prostředků uzlu název, jako *MC_myResourceGroup_myAKSCluster_eastus*. AKS automaticky odstraní prostředek uzlu, když se cluster odstraní, takže by se měl používat jenom pro prostředky, které sdílejí životní cyklus clusteru.
+1. Vytvoříte první skupinu prostředků. Tato skupina obsahuje pouze prostředek služby Kubernetes. Poskytovatel prostředků AKS během nasazování automaticky vytvoří druhou skupinu prostředků. Příkladem druhé skupiny prostředků je *MC_myResourceGroup_myAKSCluster_eastus* . Informace o tom, jak zadat název této druhé skupiny prostředků, najdete v další části.
+1. Druhá skupina prostředků, označovaná jako *Skupina prostředků uzlu* , obsahuje všechny prostředky infrastruktury přidružené ke clusteru. Mezi tyto prostředky patří virtuální počítače uzlu Kubernetes, virtuální síť a úložiště. Ve výchozím nastavení má skupina prostředků uzlu název, jako *MC_myResourceGroup_myAKSCluster_eastus* . AKS automaticky odstraní prostředek uzlu, když se cluster odstraní, takže by se měl používat jenom pro prostředky, které sdílejí životní cyklus clusteru.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>Můžu pro skupinu prostředků uzlu AKS zadat vlastní název?
 
-Ano. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location*, ale můžete také zadat vlastní název.
+Ano. Ve výchozím nastavení AKS pojmenuje skupinu prostředků uzlu *MC_resourcegroupname_clustername_location* , ale můžete také zadat vlastní název.
 
 Pokud chcete zadat vlastní název skupiny prostředků, nainstalujte rozšíření Azure CLI [AKS-Preview][aks-preview-cli] verze *0.3.2* nebo novější. Při vytváření clusteru AKS pomocí příkazu [AZ AKS Create][az-aks-create] použijte parametr *--Node-Resource-Group* a zadejte název skupiny prostředků. Pokud k nasazení clusteru AKS [použijete šablonu Azure Resource Manager][aks-rm-template] , můžete definovat název skupiny prostředků pomocí vlastnosti *nodeResourceGroup* .
 
@@ -95,6 +95,9 @@ AKS podporuje následující [řadiče pro přístup][admission-controllers]:
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
+- *PodNodeSelector*
+- *PodTolerationRestriction*
+- *ExtendedResourceToleration*
 
 V současné době nemůžete upravit seznam řadičů pro příjem v AKS.
 
@@ -109,9 +112,11 @@ namespaceSelector:
       operator: DoesNotExist
 ```
 
+AKS brány firewall odchozího serveru rozhraní API, abyste měli k dispozici Webhooky kontroléru, které musí být v rámci clusteru dostupné.
+
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>Můžou Webhooky řadiče pro přístup ovlivnit Kube obory názvů System a Internal AKS?
 
-Za účelem ochrany stability systému a zabránění vlastním řadičům přístupu z důvodu ovlivnění interních služeb v Kube oboru názvů AKS má modul pro **přijímání**, který automaticky vylučuje Kube-systém a AKS interní obory názvů. Tato služba zajišťuje, že vlastní řadiče pro přijímání neovlivňují služby běžící v Kube-System.
+Za účelem ochrany stability systému a zabránění vlastním řadičům přístupu z důvodu ovlivnění interních služeb v Kube oboru názvů AKS má modul pro **přijímání** , který automaticky vylučuje Kube-systém a AKS interní obory názvů. Tato služba zajišťuje, že vlastní řadiče pro přijímání neovlivňují služby běžící v Kube-System.
 
 Pokud máte důležitý případ použití nástroje, který je nasazený v systému Kube (nedoporučuje se), který vyžadujete, aby se přidal do svého vlastního Webhooku, můžete přidat následující popisek nebo anotaci, aby se přístup vynuceně ignoroval.
 

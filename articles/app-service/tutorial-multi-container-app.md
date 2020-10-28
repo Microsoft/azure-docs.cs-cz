@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: cli-validate
-ms.openlocfilehash: 9c984daa380f1d4f0a7b067604ab66ba14a0b70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cli-validate, devx-track-azurecli
+ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88084445"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743450"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (verze Preview) ve službě Web App for Containers
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete zkušenosti s [Docker Compose](https://docs.docker.com/compose/).
 
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
+V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih* . Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard** , spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -138,7 +138,7 @@ Přejděte do nasazené aplikace na adrese `http://<app-name>.azurewebsites.net`
 
 ![Ukázková vícekontejnerová aplikace ve službě Web App for Containers][1]
 
-**Blahopřejeme**, vytvořili jste vícekontejnerovou aplikaci ve službě Web App for Containers. Dále aplikaci nakonfigurujete tak, aby používala službu Azure Database for MySQL. Tentokrát nebudete instalovat WordPress.
+**Blahopřejeme** , vytvořili jste vícekontejnerovou aplikaci ve službě Web App for Containers. Dále aplikaci nakonfigurujete tak, aby používala službu Azure Database for MySQL. Tentokrát nebudete instalovat WordPress.
 
 ## <a name="connect-to-production-database"></a>Připojení k produkční databázi
 
@@ -148,7 +148,7 @@ Kontejnery databáze se nedoporučuje používat v produkčním prostředí. Mí
 
 Pomocí příkazu vytvořte server Azure Database for MySQL [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) .
 
-V následujícím příkazu nahraďte název serveru MySQL, kde se zobrazí zástupný symbol _ &lt; MySQL-Server-Name>_ (platné znaky jsou `a-z` , `0-9` a `-` ). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
+V následujícím příkazu nahraďte název serveru MySQL, kde se zobrazí zástupný symbol _&lt; MySQL-Server-Name>_ (platné znaky jsou `a-z` , `0-9` a `-` ). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -413,7 +413,7 @@ services:
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
-Abyste mohli použít Redis, povolíte ve službě App Service nastavení `WP_REDIS_HOST`. Jde o *povinné nastavení*, které WordPressu umožňuje komunikovat s hostitelem Redis. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
+Abyste mohli použít Redis, povolíte ve službě App Service nastavení `WP_REDIS_HOST`. Jde o *povinné nastavení* , které WordPressu umožňuje komunikovat s hostitelem Redis. K provedení této změny použijte příkaz [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) ve službě Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WP_REDIS_HOST="redis"
@@ -464,17 +464,17 @@ Dokončete tento postup a nainstalujte WordPress.
 
 ### <a name="connect-wordpress-to-redis"></a>Připojení WordPressu k Redis
 
-Přihlaste se ke Správci WordPress. V levém navigačním panelu vyberte **moduly plug**-in a pak vyberte **nainstalované moduly plug-in**.
+Přihlaste se ke Správci WordPress. V levém navigačním panelu vyberte **moduly plug** -in a pak vyberte **nainstalované moduly plug-in** .
 
 ![Výběr modulů plug-in pro WordPress][2]
 
 Zobrazí se všechny moduly plug-in.
 
-Na stránce s moduly plug-in najděte **Mezipaměť objektů Redis** a klikněte na **Aktivovat**.
+Na stránce s moduly plug-in najděte **Mezipaměť objektů Redis** a klikněte na **Aktivovat** .
 
 ![Aktivace Redis][3]
 
-Klikněte na **Nastavení**.
+Klikněte na **Nastavení** .
 
 ![Kliknutí na Nastavení][4]
 
@@ -486,7 +486,7 @@ WordPress se připojí k serveru Redis. Na stejné stránce se zobrazí **stav**
 
 ![WordPress se připojí k serveru Redis. Na stejné stránce se zobrazí **stav** připojení.][6]
 
-**Blahopřejeme**, připojili jste WordPress k Redis. Aplikace připravená do produkce teď používá službu **Azure Database for MySQL, trvalé úložiště a Redis**. Kapacitu plánu služby App Service teď můžete horizontálně navýšit na více instancí.
+**Blahopřejeme** , připojili jste WordPress k Redis. Aplikace připravená do produkce teď používá službu **Azure Database for MySQL, trvalé úložiště a Redis** . Kapacitu plánu služby App Service teď můžete horizontálně navýšit na více instancí.
 
 ## <a name="find-docker-container-logs"></a>Nalezení protokolů kontejneru Dockeru
 

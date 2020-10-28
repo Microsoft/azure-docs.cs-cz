@@ -2,15 +2,15 @@
 title: Použití zón dostupnosti ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak vytvořit cluster, který distribuuje uzly napříč zónami dostupnosti ve službě Azure Kubernetes Service (AKS).
 services: container-service
-ms.custom: fasttrack-edit, references_regions
+ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 5d2c670bc862dadf289171fbf53318e876eff3d3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165804"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745804"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak vytvořit cluster AKS a distribuovat součást
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ## <a name="limitations-and-region-availability"></a>Omezení a dostupnost oblasti
 
@@ -56,11 +56,11 @@ Pokud musíte spustit stavové úlohy, použijte k seskupení pod plánováním 
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Přehled zón dostupnosti pro clustery AKS
 
-Zóny dostupnosti jsou nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóny jsou jedinečné fyzické umístění v oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech oblastech povolených v zóně. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháním datacenter.
+Zóny dostupnosti jsou nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóny jsou jedinečné fyzické umístění v oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje ve všech oblastech povolených v zóně vždycky více než jedna zóna. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháním datacenter.
 
 Další informace najdete v tématu [co jsou zóny dostupnosti v Azure?][az-overview].
 
-Clustery AKS, které jsou nasazené pomocí zón dostupnosti, můžou distribuovat uzly napříč několika zónami v rámci jedné oblasti. Například cluster v oblasti *východní USA 2*   může vytvářet uzly ve všech třech zónách dostupnosti v *východní USA 2*. Tato distribuce prostředků clusteru AKS vylepšuje dostupnost clusteru, protože je odolná vůči selhání konkrétní zóny.
+Clustery AKS, které jsou nasazené pomocí zón dostupnosti, můžou distribuovat uzly napříč několika zónami v rámci jedné oblasti. Například cluster v oblasti  *východní USA 2*   může vytvářet uzly ve všech třech zónách dostupnosti v *východní USA 2* . Tato distribuce prostředků clusteru AKS vylepšuje dostupnost clusteru, protože je odolná vůči selhání konkrétní zóny.
 
 ![Distribuce uzlů AKS napříč zónami dostupnosti](media/availability-zones/aks-availability-zones.png)
 
@@ -68,11 +68,11 @@ Pokud se jedna zóna stane nedostupnou, aplikace se budou spouštět i v přípa
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Vytvoření clusteru AKS napříč zónami dostupnosti
 
-Když vytvoříte cluster pomocí příkazu [AZ AKS Create][az-aks-create] , `--zones` určí parametr, do kterého se nasadí uzly agenta. Komponenty roviny ovládacího prvku, například etcd, jsou rozloženy do tří zón, pokud definujete `--zones` parametr v době vytváření clusteru. Konkrétní zóny, které jsou rozloženy mezi komponenty roviny ovládacího prvku, jsou nezávisle na tom, jaké explicitní zóny jsou vybrány pro počáteční fond uzlů.
+Když vytvoříte cluster pomocí příkazu [AZ AKS Create][az-aks-create] , `--zones` určí parametr, do kterého se nasadí uzly agenta. Komponenty roviny ovládacího prvku, jako je etcd nebo rozhraní API, jsou rozloženy mezi dostupné zóny v oblasti, pokud definujete `--zones` parametr v době vytváření clusteru. Konkrétní zóny, které jsou rozloženy mezi komponenty roviny ovládacího prvku, jsou nezávisle na tom, jaké explicitní zóny jsou vybrány pro počáteční fond uzlů.
 
 Pokud při vytváření clusteru AKS nedefinujete žádné zóny pro výchozí fond agentů, není zaručeno rozprostření komponent řídicí plochy mezi zónami dostupnosti. Další fondy uzlů můžete přidat pomocí příkazu [AZ AKS nodepool Add][az-aks-nodepool-add] a zadat `--zones` pro nové uzly, ale nezmění se způsob rozložení roviny ovládacího prvku mezi zónami. Nastavení zóny dostupnosti se dá definovat jenom v době vytváření clusteru nebo fondu uzlů.
 
-Následující příklad vytvoří cluster AKS s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*. Vytvoří se celkem *3* uzlů – jeden agent v zóně *1*, jeden v *2*a potom jeden ve *3*.
+Následující příklad vytvoří cluster AKS s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup* . Vytvoří se celkem *3* uzlů – jeden agent v zóně *1* , jeden v *2* a potom jeden ve *3* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2

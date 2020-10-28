@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029293"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745820"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Úprava škálovací sady virtuálních počítačů
 
@@ -354,7 +354,7 @@ Některé vlastnosti mohou být změněny, s výjimkami v závislosti na aktuál
 ### <a name="properties-that-require-deallocation-to-change"></a>Vlastnosti, které vyžadují změnu navracení
 Některé vlastnosti lze změnit pouze na určité hodnoty, pokud jsou virtuální počítače v sadě škálování navráceny. Mezi tyto vlastnosti patří:
 
-- **Název SKU**– Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md).
+- **Název SKU** – Pokud se nová SKU virtuálního počítače nepodporuje na hardwaru, na kterém je sada škálování aktuálně zapnutá, musíte zrušit přidělení virtuálních počítačů v sadě škálování, než UPRAVÍTE název SKU. Další informace najdete v tématu [Změna velikosti virtuálního počítače Azure](../virtual-machines/windows/resize-vm.md).
 
 
 ## <a name="vm-specific-updates"></a>Aktualizace specifické pro virtuální počítače
@@ -364,7 +364,7 @@ Některé úpravy se můžou použít na konkrétní virtuální počítače mí
 ## <a name="scenarios"></a>Scénáře
 
 ### <a name="application-updates"></a>Aktualizace aplikace
-Pokud se aplikace nasadí do sady škálování prostřednictvím rozšíření, aktualizace konfigurace rozšíření způsobí, že se aplikace aktualizuje v souladu se zásadami upgradu. Například pokud máte novou verzi skriptu, která se má spustit ve vlastním rozšíření skriptu, můžete vlastnost *identifikátorů URI* aktualizovat tak, aby odkazovala na nový skript. V některých případech můžete chtít vynutit aktualizaci i v případě, že konfigurace rozšíření zůstane beze změny (například jste aktualizovali skript bez změny identifikátoru URI skriptu). V těchto případech můžete upravit *forceUpdateTag* pro vynucení aktualizace. Platforma Azure tuto vlastnost neinterpretuje. Změníte-li hodnotu, nebude to mít žádný vliv na to, jak se rozšíření spouští. Změna jednoduše vynutí opětovné spuštění rozšíření. Další informace o *forceUpdateTag*najdete v [dokumentaci k REST API pro rozšíření](/rest/api/compute/virtualmachineextensions/createorupdate). Všimněte si, že *forceUpdateTag* lze použít se všemi příponami, nikoli pouze s rozšířením vlastních skriptů.
+Pokud se aplikace nasadí do sady škálování prostřednictvím rozšíření, aktualizace konfigurace rozšíření způsobí, že se aplikace aktualizuje v souladu se zásadami upgradu. Například pokud máte novou verzi skriptu, která se má spustit ve vlastním rozšíření skriptu, můžete vlastnost *identifikátorů URI* aktualizovat tak, aby odkazovala na nový skript. V některých případech můžete chtít vynutit aktualizaci i v případě, že konfigurace rozšíření zůstane beze změny (například jste aktualizovali skript bez změny identifikátoru URI skriptu). V těchto případech můžete upravit *forceUpdateTag* pro vynucení aktualizace. Platforma Azure tuto vlastnost neinterpretuje. Změníte-li hodnotu, nebude to mít žádný vliv na to, jak se rozšíření spouští. Změna jednoduše vynutí opětovné spuštění rozšíření. Další informace o *forceUpdateTag* najdete v [dokumentaci k REST API pro rozšíření](/rest/api/compute/virtualmachineextensions/createorupdate). Všimněte si, že *forceUpdateTag* lze použít se všemi příponami, nikoli pouze s rozšířením vlastních skriptů.
 
 Je taky běžné, že se aplikace nasazují pomocí vlastní image. Tento scénář je popsaný v následující části.
 
@@ -379,7 +379,7 @@ Pokud používáte vlastní image, můžete bitovou kopii aktualizovat aktualiza
 ## <a name="examples"></a>Příklady
 
 ### <a name="update-the-os-image-for-your-scale-set"></a>Aktualizace image operačního systému pro sadu škálování
-Můžete mít sadu škálování, která spouští starou verzi Ubuntu LTS 16,04. Chcete aktualizovat na novější verzi Ubuntu LTS 16,04, jako je například verze *16.04.201801090*. Vlastnost verze odkazu na obrázek není součástí seznamu, takže můžete tyto vlastnosti přímo upravit pomocí jednoho z následujících příkazů:
+Můžete mít sadu škálování, která spouští starou verzi Ubuntu LTS 16,04. Chcete aktualizovat na novější verzi Ubuntu LTS 16,04, jako je například verze *16.04.201801090* . Vlastnost verze odkazu na obrázek není součástí seznamu, takže můžete tyto vlastnosti přímo upravit pomocí jednoho z následujících příkazů:
 
 - Azure PowerShell s [Update-AzVmss](/powershell/module/az.compute/update-azvmss) následujícím způsobem:
 
@@ -447,7 +447,7 @@ Alternativně můžete chtít změnit obrázek, který sada škálování použ�
     ```
 
 >[!NOTE]
-> U těchto příkazů se předpokládá, že je v sadě škálování jenom jedna konfigurace protokolu IP a nástroj pro vyrovnávání zatížení. Pokud existuje více, možná budete muset použít index seznamu jiný než *0*.
+> U těchto příkazů se předpokládá, že je v sadě škálování jenom jedna konfigurace protokolu IP a nástroj pro vyrovnávání zatížení. Pokud existuje více, možná budete muset použít index seznamu jiný než *0* .
 
 
 ## <a name="next-steps"></a>Další kroky

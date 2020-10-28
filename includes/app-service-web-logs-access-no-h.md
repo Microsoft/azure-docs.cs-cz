@@ -7,13 +7,13 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 7803ac9009af1657e7f162d656898492a694e28f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84905863"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743532"
 ---
 Pokud chcete získat přístup k protokolům konzoly vygenerovaným v rámci kódu aplikace ve službě App Service, zapněte protokolování diagnostiky spuštěním následujícího příkazu v [Cloud Shellu](https://shell.azure.com):
 

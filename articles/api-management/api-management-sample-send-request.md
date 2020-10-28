@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 54985cbd874f6a8a3dd0db08df3ceb4b53c72cac
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2f4bd040d7e5858fd561444f56dbce7b3f940d9a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093272"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742399"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
 Zásady, které jsou dostupné ve službě Azure API Management, můžou provádět nejrůznější práci založenou čistě na příchozím požadavku, odchozí odpovědi a základní informace o konfiguraci. Je ale možné pracovat s externími službami ze zásad API Management otevírá mnoho dalších příležitostí.
@@ -286,5 +286,5 @@ Kompletní zásada vypadá následovně:
 
 V konfiguraci operace zástupných znaků můžete nakonfigurovat prostředek řídicího panelu tak, aby se ukládal do mezipaměti alespoň po dobu 1 hodiny. 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Služba Azure API Management poskytuje flexibilní zásady, které je možné selektivně použít pro přenosy HTTP, a umožňuje složení back-end služeb. Bez ohledu na to, jestli chcete bránu API vylepšit pomocí funkcí upozorňování, ověřování, možností ověřování nebo vytvářet nové složené prostředky založené na více službách back-end, se v `send-request` souvisejících zásadách otevře celosvětový svět možností.

@@ -5,13 +5,13 @@ author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356881"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744751"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
 
@@ -205,7 +205,7 @@ Chcete-li vytvořit absolutní identifikátor URI artefaktu, upřednostňovanou 
 }
 ```
 
-S tímto přístupem můžete všechny artefakty nasazení, včetně konfiguračních skriptů, ukládat ve stejném umístění se šablonou samotné. Chcete-li změnit umístění všech odkazů, stačí zadat jinou základní adresu URL pro _parametry artifactsLocation_.
+S tímto přístupem můžete všechny artefakty nasazení, včetně konfiguračních skriptů, ukládat ve stejném umístění se šablonou samotné. Chcete-li změnit umístění všech odkazů, stačí zadat jinou základní adresu URL pro _parametry artifactsLocation_ .
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Faktor lišící se různými možnostmi regionálního výkonu
 
@@ -487,7 +487,7 @@ Pokud chcete načíst seznam dostupných imagí virtuálních počítačů v ně
 az vm image list -all
 ```
 
-Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Například:
+Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Příklad:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -590,7 +590,7 @@ Pokud chcete načíst seznam rozšíření virtuálních počítačů, které js
 az vm extension image list --location myLocation
 ```
 
-Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Například:
+Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Příklad:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -641,7 +641,7 @@ Každé konkrétní rozšíření je také ve verzi. Tato verze je zobrazená ve
         ...
 ```
 
-Pokud chcete načíst seznam dostupných verzí pro konkrétní rozšíření virtuálního počítače, použijte rutinu [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . Následující příklad načte dostupné verze rozšíření VM DSC (Konfigurace požadovaného stavu) z **myLocation**:
+Pokud chcete načíst seznam dostupných verzí pro konkrétní rozšíření virtuálního počítače, použijte rutinu [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . Následující příklad načte dostupné verze rozšíření VM DSC (Konfigurace požadovaného stavu) z **myLocation** :
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

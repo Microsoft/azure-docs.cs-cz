@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 986db4edbf7b8856a12067fb66a370627642e970
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078353"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745800"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Použití ovladačů rozhraní pro kontejnerové úložiště Azure Files ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -33,13 +33,13 @@ Další informace o Kubernetes svazcích najdete v tématu [Možnosti úložišt
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Dynamické vytváření PVs souborů Azure pomocí integrovaných tříd úložiště
 
-Třída úložiště se používá k definování, jak se vytvoří sdílená složka souborů Azure. Účet úložiště se automaticky vytvoří ve [skupině prostředků uzlu][node-resource-group] pro použití s třídou úložiště pro ukládání sdílených složek Azure Files. Pro *skuName*vyberte jednu z následujících [SKU Azure Storage pro redundanci][storage-skus] :
+Třída úložiště se používá k definování, jak se vytvoří sdílená složka souborů Azure. Účet úložiště se automaticky vytvoří ve [skupině prostředků uzlu][node-resource-group] pro použití s třídou úložiště pro ukládání sdílených složek Azure Files. Pro *skuName* vyberte jednu z následujících [SKU Azure Storage pro redundanci][storage-skus] :
 
-* **Standard_LRS**: standardní místně redundantní úložiště
-* **Standard_GRS**: standardní geograficky redundantní úložiště
-* **Standard_ZRS**: standardní zóna – redundantní úložiště
-* **Standard_RAGRS**: standardní geograficky redundantní úložiště s přístupem pro čtení
-* **Premium_LRS**: místně redundantní úložiště úrovně Premium
+* **Standard_LRS** : standardní místně redundantní úložiště
+* **Standard_GRS** : standardní geograficky redundantní úložiště
+* **Standard_ZRS** : standardní zóna – redundantní úložiště
+* **Standard_RAGRS** : standardní geograficky redundantní úložiště s přístupem pro čtení
+* **Premium_LRS** : místně redundantní úložiště úrovně Premium
 
 > [!NOTE]
 > Azure Files podporuje Azure Premium Storage. Minimální sdílená složka Premium je 100 GB.
@@ -212,7 +212,7 @@ Příznak funkce Zaregistrujte `AllowNfsFileShares` pomocí příkazu [AZ Featur
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 ```
 
-Zobrazení stavu v *registraci*trvá několik minut. Pomocí příkazu [AZ Feature list][az-feature-list] ověřte stav registrace:
+Zobrazení stavu v *registraci* trvá několik minut. Pomocí příkazu [AZ Feature list][az-feature-list] ověřte stav registrace:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
@@ -259,7 +259,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 Můžete nasadit ukázkovou [stavovou sadu](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) , která uloží časová razítka do souboru `data.txt` nasazením následujícího příkazu pomocí příkazu [kubectl Apply][kubectl-apply] :
 
  ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

@@ -7,13 +7,13 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: df71f0804b62eb4b17ff8d2f652b076b5c64c959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: e2c5794e5ce6e23b60bff513562f69c9333d6e34
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822789"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743799"
 ---
 Můžete přistupovat k protokolům konzoly generovaným zevnitř kontejneru.
 
@@ -33,6 +33,6 @@ az webapp log tail --name <app-name> --resource-group <resource-group-name>
 
 Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
 
-Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C**.
+Pokud chcete streamování protokolů kdykoli zastavit, zadejte **CTRL** + **C** .
 
 Můžete také zkontrolovat soubory protokolu v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .

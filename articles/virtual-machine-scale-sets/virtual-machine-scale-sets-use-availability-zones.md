@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611918"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745843"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Vytvoření sady škálování virtuálních počítačů, která používá Zóny dostupnosti
 
@@ -22,28 +22,28 @@ Pokud chcete ochránit vaše služby Virtual Machine Scale Sets před selháním
 
 ## <a name="availability-considerations"></a>Aspekty dostupnosti
 
-Když nasadíte škálu regionů (mimo oblast) do jedné nebo více zón jako rozhraní API verze *2017-12-01*, máte následující možnosti dostupnosti:
+Když nasadíte škálu regionů (mimo oblast) do jedné nebo více zón jako rozhraní API verze *2017-12-01* , máte následující možnosti dostupnosti:
 - Maximální rozprostření (platformFaultDomainCount = 1)
 - Statické pevné rozprostření (platformFaultDomainCount = 5)
 - Rozprostření zarovnané k doménám selhání disků úložiště (platforFaultDomainCount = 2 nebo 3)
 
 Díky maximálnímu rozprostření sada škálování rozšiřuje vaše virtuální počítače napříč tolik domén selhání v rámci každé zóny. Toto rozprostření může být v rozmezí větší nebo menší než pět domén selhání na zónu. Při statickém pevném rozprostření sada škálování rozšíří vaše virtuální počítače napříč přesně pět domén selhání na zónu. Pokud sada škálování nemůže najít pět jedinečných domén selhání na zónu, aby splňovala požadavek na přidělení, požadavek selže.
 
-Doporučujeme, abyste nasadili **maximální rozprostření pro většinu úloh**, protože tento přístup ve většině případů poskytuje nejlepší rozprostření. Pokud potřebujete, aby byly repliky rozloženy v rámci různých jednotek izolace hardwaru, doporučujeme rozprostření napříč Zóny dostupnosti a využití maximálního rozprostření v rámci každé zóny.
+Doporučujeme, abyste nasadili **maximální rozprostření pro většinu úloh** , protože tento přístup ve většině případů poskytuje nejlepší rozprostření. Pokud potřebujete, aby byly repliky rozloženy v rámci různých jednotek izolace hardwaru, doporučujeme rozprostření napříč Zóny dostupnosti a využití maximálního rozprostření v rámci každé zóny.
 
 > [!NOTE]
 > Při maximálním rozprostření se v zobrazení instance virtuálního počítače sady škálování a v metadatech instance zobrazí jenom jedna doména selhání, a to bez ohledu na to, kolik domén selhání jsou virtuální počítače rozdělené napříč. Rozprostření v rámci každé zóny je implicitní.
 
 ### <a name="placement-groups"></a>Skupiny umístění
 
-Když nasadíte sadu škálování, máte také možnost nasazení s jedinou [skupinou umístění](./virtual-machine-scale-sets-placement-groups.md) na jednu zónu dostupnosti nebo s více než jednou zónou. Pro škálované sady oblastí (mimo oblast) je volba jedinou skupinou umístění v oblasti nebo má více v oblasti. Pro většinu úloh doporučujeme více skupin umístění, které umožňují větší škálování. V rozhraní API verze *2017-12-01*sada škálování nastaví jako výchozí více skupin umístění pro sadu škálování s jednou zónou a mezi zónami, ale jako výchozí nastaví jednu skupinu umístění pro oblastní sady škálování (mimo oblast).
+Když nasadíte sadu škálování, máte také možnost nasazení s jedinou [skupinou umístění](./virtual-machine-scale-sets-placement-groups.md) na jednu zónu dostupnosti nebo s více než jednou zónou. Pro škálované sady oblastí (mimo oblast) je volba jedinou skupinou umístění v oblasti nebo má více v oblasti. Pro většinu úloh doporučujeme více skupin umístění, které umožňují větší škálování. V rozhraní API verze *2017-12-01* sada škálování nastaví jako výchozí více skupin umístění pro sadu škálování s jednou zónou a mezi zónami, ale jako výchozí nastaví jednu skupinu umístění pro oblastní sady škálování (mimo oblast).
 
 > [!NOTE]
 > Použijete-li maximální rozprostření, je nutné použít více skupin umístění.
 
 ### <a name="zone-balancing"></a>Vyrovnávání zóny
 
-Pro škálované sady nasazené napříč několika zónami máte také možnost zvolit "nejlepší bilance zóny" nebo "striktní bilance zóny". Sada škálování se považuje za vyváženou, pokud každá zóna má stejný počet virtuálních počítačů nebo \\ virtuálních počítačů +-1 ve všech ostatních zónách pro sadu škálování. Například:
+Pro škálované sady nasazené napříč několika zónami máte také možnost zvolit "nejlepší bilance zóny" nebo "striktní bilance zóny". Sada škálování se považuje za vyváženou, pokud každá zóna má stejný počet virtuálních počítačů nebo \\ virtuálních počítačů +-1 ve všech ostatních zónách pro sadu škálování. Příklad:
 
 - Sada škálování se dvěma virtuálními počítači v zóně 1, 3 virtuálními počítači v zóně 2 a 3 virtuálními počítači v zóně 3 je považována za vyváženou. Existuje pouze jedna zóna s jiným počtem virtuálních počítačů a je pouze 1 méně než ostatní zóny. 
 - Sada škálování s 1 virtuálním počítačem v zóně 1, 3 virtuálními počítači v zóně 2 a 3 virtuálními počítači v zóně 3 se považují za nevyvážené. Zóna 1 má 2 méně virtuálních počítačů než zóny 2 a 3.
@@ -52,7 +52,7 @@ Je možné, že se virtuální počítače v sadě škálování úspěšně vyt
 
 S využitím rovnováhy zón se sada škálování při zachování rovnováhy pokusí škálovat a zmenšit. Nicméně pokud z nějakého důvodu to není možné (například pokud jedna zóna přestane fungovat, sada škálování nemůže v této zóně vytvořit nový virtuální počítač), sada škálování umožňuje dočasnou nerovnováhu mezi tím, aby bylo možné úspěšně škálovat nebo snížit kapacitu. Při následném pokusu o horizontální navýšení kapacity přidá sada škálování virtuální počítače do zón, které potřebují pro vyvážení sady škálování víc virtuálních počítačů. Podobně při následném pokusu o škálování zruší sada škálování virtuální počítače ze zón, které potřebují méně virtuálních počítačů pro vyvážení sady škálování. V případě striktního vyrovnávání zóny se v sadě škálování nezdařily žádné pokusy o změnu nebo zmenšení, pokud by to vedlo k vyvážení.
 
-Pokud chcete použít bilanci zóny, nastavte *zoneBalance* na *false*. Toto nastavení je výchozí v rozhraní API verze *2017-12-01*. Pokud chcete použít striktní rovnováhu mezi zónami, nastavte *zoneBalance* na *true*.
+Pokud chcete použít bilanci zóny, nastavte *zoneBalance* na *false* . Toto nastavení je výchozí v rozhraní API verze *2017-12-01* . Pokud chcete použít striktní rovnováhu mezi zónami, nastavte *zoneBalance* na *true* .
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Sady škálování s jednou zónou a zónou – redundantní sady
 
@@ -65,7 +65,7 @@ Pokud chcete použít Zóny dostupnosti, musí být vaše sada škálování vyt
 - [Azure Portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Šablony Azure Resource Manageru](#use-azure-resource-manager-templates)
+- [Šablony Azure Resource Manager](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -79,7 +79,7 @@ Sada škálování a podpůrné prostředky, jako je Azure Load Balancer a veře
 
 Proces vytvoření sady škálování, která používá zónu dostupnosti, je stejný, jak je popsáno v [článku Začínáme](quick-create-cli.md). Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure.
 
-Přidejte `--zones` parametr do příkazu [AZ VMSS Create](/cli/azure/vmss) a určete, která zóna se má použít (například zóna *1*, *2*nebo *3*). V následujícím příkladu se vytvoří sada škálování s jednou zónou s názvem *myScaleSet* v zóně *1*:
+Přidejte `--zones` parametr do příkazu [AZ VMSS Create](/cli/azure/vmss) a určete, která zóna se má použít (například zóna *1* , *2* nebo *3* ). V následujícím příkladu se vytvoří sada škálování s jednou zónou s názvem *myScaleSet* v zóně *1* :
 
 ```azurecli
 az vmss create \
@@ -98,7 +98,7 @@ az vmss create \
 
 Chcete-li vytvořit zónu s redundantní sadou škálování, použijte veřejnou IP adresu *standardní* SKU a nástroj pro vyrovnávání zatížení. Pro zajištění rozšířené redundance vytvoří *standardní* SKU síťové prostředky redundantní v zóně. Další informace najdete v tématu [přehled Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md) a [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
 
-Chcete-li vytvořit zónu s redundantní sadou škálování, určete více zón s `--zones` parametrem. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč zónami *1, 2, 3*:
+Chcete-li vytvořit zónu s redundantní sadou škálování, určete více zón s `--zones` parametrem. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč zónami *1, 2, 3* :
 
 ```azurecli
 az vmss create \
@@ -113,11 +113,11 @@ az vmss create \
 
 Vytvoření a konfigurace všech prostředků sady škálování a virtuálních počítačů v zónách, které zadáte, trvá několik minut. Úplný příklad redundantní sady škálování a síťových prostředků v zóně najdete v [tomto ukázkovém skriptu CLI](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh) .
 
-## <a name="use-azure-powershell"></a>Použití Azure Powershell
+## <a name="use-azure-powershell"></a>Použití Azure PowerShellu
 
-Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure. Přidejte `-Zone` parametr do příkazu [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) a určete, která zóna se má použít (například zóna *1*, *2*nebo *3*).
+Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure. Přidejte `-Zone` parametr do příkazu [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) a určete, která zóna se má použít (například zóna *1* , *2* nebo *3* ).
 
-Následující příklad vytvoří sadu škálování s jednou zónou s názvem *myScaleSet* v *východní USA 2* zóně *1*. Automaticky se vytvoří síťové prostředky Azure pro virtuální síť, veřejná IP adresa a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
+Následující příklad vytvoří sadu škálování s jednou zónou s názvem *myScaleSet* v *východní USA 2* zóně *1* . Automaticky se vytvoří síťové prostředky Azure pro virtuální síť, veřejná IP adresa a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
 ```powershell
 New-AzVmss `
@@ -134,7 +134,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>Sada škálování s redundantní zónou
 
-Chcete-li vytvořit zónu s redundantní sadou škálování, určete více zón s `-Zone` parametrem. Následující příklad vytvoří v zóně redundantní sadu škálování s názvem *myScaleSet* napříč *východní USA 2* zónami *1, 2, 3*. Automaticky se vytvoří zóna redundantní síťové prostředky Azure pro virtuální síť, veřejnou IP adresu a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
+Chcete-li vytvořit zónu s redundantní sadou škálování, určete více zón s `-Zone` parametrem. Následující příklad vytvoří v zóně redundantní sadu škálování s názvem *myScaleSet* napříč *východní USA 2* zónami *1, 2, 3* . Automaticky se vytvoří zóna redundantní síťové prostředky Azure pro virtuální síť, veřejnou IP adresu a nástroj pro vyrovnávání zatížení. Po zobrazení výzvy zadejte požadované přihlašovací údaje pro správu instancí virtuálních počítačů ve škálovací sadě:
 
 ```powershell
 New-AzVmss `
@@ -151,9 +151,9 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
 
-Proces vytvoření sady škálování, která používá zónu dostupnosti, je stejný, jak je popsáno v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure. Přidejte `zones` vlastnost do typu prostředku *Microsoft. COMPUTE/virtualMachineScaleSets* ve vaší šabloně a určete, která zóna se má použít (například zóna *1*, *2*nebo *3*).
+Proces vytvoření sady škálování, která používá zónu dostupnosti, je stejný, jak je popsáno v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). Pokud chcete použít Zóny dostupnosti, musíte vytvořit sadu škálování v podporované oblasti Azure. Přidejte `zones` vlastnost do typu prostředku *Microsoft. COMPUTE/virtualMachineScaleSets* ve vaší šabloně a určete, která zóna se má použít (například zóna *1* , *2* nebo *3* ).
 
-Následující příklad vytvoří sadu škálování s jednou zónou s názvem *myScaleSet* v *východní USA 2* zóně *1*:
+Následující příklad vytvoří sadu škálování s jednou zónou s názvem *myScaleSet* v *východní USA 2* zóně *1* :
 
 ```json
 {
@@ -197,7 +197,7 @@ Následující příklad vytvoří sadu škálování s jednou zónou s názvem 
 
 ### <a name="zone-redundant-scale-set"></a>Sada škálování s redundantní zónou
 
-Chcete-li vytvořit zónu s redundantní sadou škálování, zadejte ve `zones` vlastnosti pro typ prostředku *Microsoft. COMPUTE/virtualMachineScaleSets* více hodnot. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč *východní USA 2* zónami *1, 2, 3*:
+Chcete-li vytvořit zónu s redundantní sadou škálování, zadejte ve `zones` vlastnosti pro typ prostředku *Microsoft. COMPUTE/virtualMachineScaleSets* více hodnot. Následující příklad vytvoří zónu redundantní sady škálování s názvem *myScaleSet* napříč *východní USA 2* zónami *1, 2, 3* :
 
 ```json
 {

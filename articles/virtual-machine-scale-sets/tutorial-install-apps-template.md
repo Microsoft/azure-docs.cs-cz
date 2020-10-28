@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: 19eb5ae89598a0ebe040f1ffda5afd2b9e3d5e7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 357d3aaa9cf9e324f8dd27636b9f34f503f566de
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87059256"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746023"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Kurz: Instalace aplikací ve škálovacích sadách virtuálních počítačů pomocí šablony Azure
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. V předchozím kurzu jste zjistili, jak vytvořit a použít vlastní image virtuálního počítače k nasazení instancí virtuálních počítačů. Tato vlastní image zahrnovala ruční instalaci a konfiguraci aplikací. Můžete automatizovat také instalaci aplikací do škálovací sady po nasazení všech instancí virtuálních počítačů nebo aktualizaci aplikace, která je již ve škálovací sadě spuštěná. Co se v tomto kurzu naučíte:
@@ -40,9 +40,9 @@ Pokud se chcete podívat na rozšíření vlastních skriptů v akci, vytvořte 
 
 
 ## <a name="create-custom-script-extension-definition"></a>Vytvoření definice rozšíření vlastních skriptů
-Pokud definujete škálovací sadu virtuálních počítačů pomocí šablony Azure, poskytovatel prostředků *Microsoft.Compute/virtualMachineScaleSets* může obsahovat část věnovanou rozšířením. *extensionsProfile* obsahuje podrobné informace o tom, co se na instance virtuálních počítačů ve škálovací sadě použije. Pokud chcete použít rozšíření vlastních skriptů, zadejte vydavatele *Microsoft.Azure.Extensions* a typ *CustomScript*.
+Pokud definujete škálovací sadu virtuálních počítačů pomocí šablony Azure, poskytovatel prostředků *Microsoft.Compute/virtualMachineScaleSets* může obsahovat část věnovanou rozšířením. *extensionsProfile* obsahuje podrobné informace o tom, co se na instance virtuálních počítačů ve škálovací sadě použije. Pokud chcete použít rozšíření vlastních skriptů, zadejte vydavatele *Microsoft.Azure.Extensions* a typ *CustomScript* .
 
-Vlastnost *fileUris* slouží k definici zdrojových instalačních skriptů nebo balíčků. Požadované skripty pro spuštění procesu instalace jsou definované v části *commandToExecute*. Následující příklad definuje ukázkový skript z GitHubu, který nainstaluje a nakonfiguruje webový server NGINX:
+Vlastnost *fileUris* slouží k definici zdrojových instalačních skriptů nebo balíčků. Požadované skripty pro spuštění procesu instalace jsou definované v části *commandToExecute* . Následující příklad definuje ukázkový skript z GitHubu, který nainstaluje a nakonfiguruje webový server NGINX:
 
 ```json
 "extensionProfile": {
@@ -108,9 +108,9 @@ Nechte webový prohlížeč otevřený, abyste v dalším kroku viděli aktualiz
 
 
 ## <a name="update-app-deployment"></a>Aktualizace nasazení aplikace
-V průběhu životního cyklu škálovací sady možná budete potřebovat nasadit aktualizovanou verzi své aplikace. Díky rozšíření vlastních skriptů můžete přidat odkaz na aktualizovaný skript nasazení a pak znovu použít rozšíření na škálovací sadu. Když byla sada škálování vytvořená v předchozím kroku, *upgradePolicy* byla nastavena na hodnotu *automaticky*. Toto nastavení umožňuje instancím virtuálních počítačů ve škálovací sadě automaticky aktualizovat a používat nejnovější verzi vaší aplikace.
+V průběhu životního cyklu škálovací sady možná budete potřebovat nasadit aktualizovanou verzi své aplikace. Díky rozšíření vlastních skriptů můžete přidat odkaz na aktualizovaný skript nasazení a pak znovu použít rozšíření na škálovací sadu. Když byla sada škálování vytvořená v předchozím kroku, *upgradePolicy* byla nastavena na hodnotu *automaticky* . Toto nastavení umožňuje instancím virtuálních počítačů ve škálovací sadě automaticky aktualizovat a používat nejnovější verzi vaší aplikace.
 
-Pokud chcete aktualizovat definici rozšíření vlastních skriptů, upravte svou šablonu tak, aby odkazovala na nový instalační skript. Je potřeba použít nový název souboru, aby rozšíření vlastních skriptů tuto změnu rozpoznalo. Rozšíření vlastních skriptů nezkoumá obsah skriptu, aby rozpoznalo případné změny. Následující definice používá aktualizovaný instalační skript, k jehož názvu je připojený řetězec *_v2*:
+Pokud chcete aktualizovat definici rozšíření vlastních skriptů, upravte svou šablonu tak, aby odkazovala na nový instalační skript. Je potřeba použít nový název souboru, aby rozšíření vlastních skriptů tuto změnu rozpoznalo. Rozšíření vlastních skriptů nezkoumá obsah skriptu, aby rozpoznalo případné změny. Následující definice používá aktualizovaný instalační skript, k jehož názvu je připojený řetězec *_v2* :
 
 ```json
 "extensionProfile": {

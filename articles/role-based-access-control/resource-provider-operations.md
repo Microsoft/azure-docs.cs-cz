@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 955e80f31cf08dd703f089d26a03b7f97242eab0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 905bdf95222a03514b5c5e76e18330cf27da0d3d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631100"
+ms.locfileid: "92745123"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -158,6 +158,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft.Intune](#microsoftintune) |
 | **Jiné** |
 | [Microsoft. BingMaps](#microsoftbingmaps) |
+| [Microsoft. DigitalTwins](#microsoftdigitaltwins) |
 
 
 ## <a name="general"></a>Obecné
@@ -9663,6 +9664,45 @@ Služba Azure: [mapy Bing](https://docs.microsoft.com/BingMaps/)
 > | Microsoft. BingMaps/mapApis/listSecrets/Action | Výpis tajných kódů pro Microsoft. BingMaps/mapApis |
 > | Microsoft. BingMaps/mapApis/listUsageMetrics/Action | Vypíše metriky pro Microsoft. BingMaps/mapApis. |
 > | Microsoft. BingMaps/Operations/Read | Výpis operací pro Microsoft. BingMaps |
+
+### <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
+
+Služba Azure: [digitální vlákna Azure](../digital-twins/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Akce | Popis |
+> | --- | --- |
+> | Microsoft. DigitalTwins/Register/Action | Zaregistrujte předplatné pro poskytovatele prostředků digitálních vláken a povolte vytváření instancí digitálních vláken. |
+> | Microsoft. DigitalTwins/zrušit registraci/akce | Zrušení registrace předplatného pro poskytovatele prostředků digitálních vláken |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/Read | Číst libovolný prostředek Microsoft. DigitalTwins/digitalTwinsInstances |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/Write | Vytvořit nebo aktualizovat jakýkoliv prostředek Microsoft. DigitalTwins/digitalTwinsInstances |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/DELETE | Odstranění prostředku Microsoft. DigitalTwins/digitalTwinsInstances |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/diagnosticSettings/Read | Získá nastavení diagnostiky pro prostředek. |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/diagnosticSettings/Write | Nastaví nastavení diagnostiky pro prostředek. |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/Endpoints/DELETE | Odstranění libovolného koncového bodu prostředku digitálního vlákna |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/Endpoints/Read | Čtení libovolného koncového bodu prostředku digitálního vlákna |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/Endpoints/Write | Vytvoření nebo aktualizace libovolného koncového bodu prostředku digitálního vlákna |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/logDefinitions/Read | Získá nastavení protokolu pro Azure Monitor prostředku. |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/metricDefinitions/Read | Získá nastavení metriky pro Azure Monitor prostředku. |
+> | Microsoft. DigitalTwins/digitalTwinsInstances/operationsResults/Read | Přečíst výsledek operace |
+> | Microsoft. DigitalTwins/Locations/checkNameAvailability/Action | Zkontroluje dostupnost názvu prostředku v poskytovateli prostředků digitálních vláken. |
+> | Microsoft. DigitalTwins/Locations/operationsResults/Read | Přečíst výsledek operace |
+> | Microsoft. DigitalTwins/Operations/Read | Čtení všech operací |
+> | **Akce dataaction** | **Popis** |
+> | Microsoft. DigitalTwins/dotaz/akce | Dotazování libovolného grafu digitálních vláken |
+> | Microsoft. DigitalTwins/DigitalTwins/Read | Čtení jakýchkoli digitálních vláken |
+> | Microsoft. DigitalTwins/DigitalTwins/Write | Vytvořit nebo aktualizovat jakékoli digitální vlákna |
+> | Microsoft. DigitalTwins/DigitalTwins/DELETE | Odstranit všechny digitální vlákna |
+> | Microsoft. DigitalTwins/DigitalTwins/Commands/Action | Vyvolání libovolného příkazu u digitálního vlákna |
+> | Microsoft. DigitalTwins/DigitalTwins/Relationships/Read | Čtení všech digitálních zdvojených vztahů |
+> | Microsoft. DigitalTwins/DigitalTwins/Relationships/Write | Vytvořit nebo aktualizovat všechny vztahy s digitálním podzdvojením |
+> | Microsoft. DigitalTwins/DigitalTwins/Relationships/DELETE | Odstranit všechny digitální zdvojené relace |
+> | Microsoft. DigitalTwins/eventroutes/Read | Čtení libovolné trasy události |
+> | Microsoft. DigitalTwins/eventroutes/DELETE | Odstranění jakékoli trasy události |
+> | Microsoft. DigitalTwins/eventroutes/Write | Vytvořit nebo aktualizovat jakoukoli trasu události |
+> | Microsoft. DigitalTwins/modely/číst | Číst libovolný model |
+> | Microsoft. DigitalTwins/modely/Write | Vytvořit nebo aktualizovat libovolný model |
+> | Microsoft. DigitalTwins/modely/DELETE | Odstranit libovolný model |
 
 ## <a name="next-steps"></a>Další kroky
 

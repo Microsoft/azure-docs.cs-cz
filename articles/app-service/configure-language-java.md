@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
-ms.custom: seodec18, devx-track-java
+ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171568"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744141"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurace aplikace Java pro Azure App Service
 
@@ -330,29 +330,29 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 ::: zone pivot="platform-windows"
 
 1. Vytvoření účtu NewRelic na [NewRelic.com](https://newrelic.com/signup)
-2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip*.
+2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip* .
 3. Zkopírujte licenční klíč, budete ho potřebovat ke konfiguraci agenta později.
-4. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
-5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic*.
+4. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM* .
+5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM* . Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic* .
 6. Upravte soubor YAML na */Home/site/wwwroot/APM/NewRelic/NewRelic.yml* a nahraďte hodnotu licence zástupného symbolu vlastním licenčním klíčem.
 7. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
 
     - Pro aplikace **Java se** Vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
-    - Pro **Tomcat**Vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - Pro **Tomcat** Vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
 1. Vytvoření účtu NewRelic na [NewRelic.com](https://newrelic.com/signup)
-2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip*.
+2. Stáhněte si agenta Java ze NewRelic, bude mít název souboru podobný *newrelic-java-x.x.x.zip* .
 3. Zkopírujte licenční klíč, budete ho potřebovat ke konfiguraci agenta později.
-4. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
-5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic*.
+4. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM* .
+5. Nahrajte nebalené soubory NewRelic Java do adresáře pod */Home/site/wwwroot/APM* . Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/NewRelic* .
 6. Upravte soubor YAML na */Home/site/wwwroot/APM/NewRelic/NewRelic.yml* a nahraďte hodnotu licence zástupného symbolu vlastním licenčním klíčem.
 7. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
    
     - Pro aplikace **Java se** Vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
-    - Pro **Tomcat**Vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
+    - Pro **Tomcat** Vytvořte proměnnou prostředí s názvem `CATALINA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` .
 
 ::: zone-end
 
@@ -364,8 +364,8 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 1. Vytvoření účtu AppDynamics na [AppDynamics.com](https://www.appdynamics.com/community/register/)
 2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný *AppServerAgent-x.x.x.xxxxx.zip*
-3. Pomocí [konzoly Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) vytvořte nový adresář */Home/site/wwwroot/APM*.
-4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics*.
+3. Pomocí [konzoly Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) vytvořte nový adresář */Home/site/wwwroot/APM* .
+4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM* . Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics* .
 5. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
 
    - Pro aplikace **Java se** Vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
@@ -376,8 +376,8 @@ V této části se dozvíte, jak připojit aplikace Java nasazené na Azure App 
 
 1. Vytvoření účtu AppDynamics na [AppDynamics.com](https://www.appdynamics.com/community/register/)
 2. Stáhněte si agenta Java z webu AppDynamics, název souboru bude podobný *AppServerAgent-x.x.x.xxxxx.zip*
-3. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM*.
-4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM*. Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics*.
+3. [Do své instance App Service](configure-linux-open-ssh-session.md) a vytvořte nový adresář */Home/site/wwwroot/APM* .
+4. Nahrajte soubory agenta Java do adresáře pod */Home/site/wwwroot/APM* . Soubory pro vašeho agenta by měly být v */Home/site/wwwroot/APM/AppDynamics* .
 5. V Azure Portal přejděte do aplikace v App Service a vytvořte nové nastavení aplikace.
 
    - Pro aplikace **Java se** Vytvořte proměnnou prostředí s názvem `JAVA_OPTS` s hodnotou `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` , kde `<app-name>` je váš App Service název.
@@ -437,7 +437,7 @@ Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro v�
 
 1. Vytvořte soubor *context.xml* v adresáři *META-INF nebo* v adresáři vašeho projektu. Pokud neexistuje, vytvořte *soubor META-INF nebo* s adresářem.
 
-2. V *context.xml*přidejte `Context` prvek pro propojení zdroje dat s adresou JNDI. `driverClassName`Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
+2. V *context.xml* přidejte `Context` prvek pro propojení zdroje dat s adresou JNDI. `driverClassName`Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
 
     ```xml
     <Context>
@@ -515,7 +515,7 @@ Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro v�
 
 1. Vytvořte soubor *context.xml* v adresáři *META-INF nebo* v adresáři vašeho projektu. Pokud neexistuje, vytvořte *soubor META-INF nebo* s adresářem.
 
-2. V *context.xml*přidejte `Context` prvek pro propojení zdroje dat s adresou JNDI. `driverClassName`Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
+2. V *context.xml* přidejte `Context` prvek pro propojení zdroje dat s adresou JNDI. `driverClassName`Zástupný symbol nahraďte názvem třídy vašeho ovladače z tabulky výše.
 
     ```xml
     <Context>
@@ -541,16 +541,16 @@ Dále určete, zda má být zdroj dat k dispozici pro jednu aplikaci nebo pro v�
 
 #### <a name="shared-server-level-resources"></a>Sdílené prostředky na úrovni serveru
 
-Přidání sdíleného zdroje dat na úrovni serveru bude vyžadovat, abyste upravili server.xml Tomcat. Nejdřív nahrajte [spouštěcí skript](faq-app-service-linux.md#built-in-images) a nastavte cestu ke skriptu v příkazu **Konfigurace**  >  **při spuštění**. Spouštěcí skript můžete nahrát pomocí [FTP](deploy-ftp.md).
+Přidání sdíleného zdroje dat na úrovni serveru bude vyžadovat, abyste upravili server.xml Tomcat. Nejdřív nahrajte [spouštěcí skript](faq-app-service-linux.md#built-in-images) a nastavte cestu ke skriptu v příkazu **Konfigurace**  >  **při spuštění** . Spouštěcí skript můžete nahrát pomocí [FTP](deploy-ftp.md).
 
 Spouštěcí skript vytvoří [transformaci XSL](https://www.w3schools.com/xml/xsl_intro.asp) do souboru server.xml a výstup výsledného souboru XML do `/usr/local/tomcat/conf/server.xml` . Spouštěcí skript by měl nainstalovat libxslt přes APK. Soubor XSL a spouštěcí skript je možné nahrávat prostřednictvím FTP. Níže je příklad spouštěcího skriptu.
 
 ```sh
-# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
 apk add --update libxslt
 
-# Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Příklad souboru XSL je uveden níže. Vzorový soubor XSL přidá nový uzel konektoru do Tomcat server.xml.
@@ -678,7 +678,7 @@ Existují tři základní kroky při [registraci zdroje dat pomocí protokolu JB
     ```
 
 1. Pomocí klienta FTP dle vašeho výběru nahrajte ovladač JDBC,, `jboss-cli-commands.cli` `startup_script.sh` a definice modulu do nástroje `/site/deployments/tools/` .
-2. Nakonfigurujte, aby se váš web spouštěl `startup_script.sh` při spuštění kontejneru. Na webu Azure Portal přejděte do části **Konfigurace**  >  **Obecné nastavení**  >  **spouštěcí příkaz**. Nastavte pole spouštěcí příkaz na `/home/site/deployments/tools/startup_script.sh` . **Uložte** změny.
+2. Nakonfigurujte, aby se váš web spouštěl `startup_script.sh` při spuštění kontejneru. Na webu Azure Portal přejděte do části **Konfigurace**  >  **Obecné nastavení**  >  **spouštěcí příkaz** . Nastavte pole spouštěcí příkaz na `/home/site/deployments/tools/startup_script.sh` . **Uložte** změny.
 
 Pokud chcete potvrdit, že se zdroj dat přidal do serveru JBoss, připojte se ke svému WebApp a spusťte příkaz SSH `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Po připojení k JBoss spusťte `/subsystem=datasources:read-resource` a vytiskněte seznam zdrojů dat.
 

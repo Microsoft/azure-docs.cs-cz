@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631490"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742844"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
 
 V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který přepošle protokoly z řešení zabezpečení do vašeho pracovního prostoru služby Azure Sentinel. Tento počítač může být fyzickým nebo virtuálním počítačem v místním prostředí, VIRTUÁLNÍm počítači Azure nebo VIRTUÁLNÍm počítači v jiném cloudu. Pomocí zadaného odkazu spustíte skript na určeném počítači, který provede následující úlohy:
+
 - Nainstaluje agenta Log Analytics pro Linux (označuje se také jako agent OMS) a nakonfiguruje ho pro následující účely:
     - poslouchání zpráv CEF z integrovaného démona systému Linux syslog na portu TCP 25226
     - zabezpečená posílání zpráv přes protokol TLS do vašeho pracovního prostoru Sentinel Azure, kde se analyzují a obohaceny
@@ -33,21 +34,28 @@ V tomto kroku určíte a nakonfigurujete počítač se systémem Linux, který p
     - naslouchání zpráv syslog z řešení zabezpečení na portu TCP 514
     - předávání pouze zpráv, které identifikuje jako CEF agenta Log Analytics na localhost pomocí portu TCP 25226
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Na určeném počítači se systémem Linux musíte mít zvýšená oprávnění (sudo).
-- Je nutné, aby byl v počítači se systémem Linux nainstalován Python.<br>Použijte `python -version` příkaz pro kontrolu.
+
+- Je nutné, aby byl v počítači se systémem Linux nainstalován **python 2,7** .<br>Použijte `python -version` příkaz pro kontrolu.
+
 - Před instalací agenta Log Analytics nesmí být počítač se systémem Linux připojen k žádnému pracovnímu prostoru Azure.
+
+- V určitém okamžiku tohoto procesu možná budete potřebovat ID pracovního prostoru a primární klíč pracovního prostoru. Můžete je najít v prostředku pracovního prostoru v části **Správa agentů** .
 
 ## <a name="run-the-deployment-script"></a>Spuštění zaváděcího skriptu
  
-1. V navigační nabídce Azure Sentinel klikněte na **datové konektory**. V seznamu konektorů klikněte na dlaždici **CEF (Common Event Format)** a pak na tlačítko **otevřít konektor** na pravé straně. 
+1. V navigační nabídce Azure Sentinel klikněte na **datové konektory** . V seznamu konektorů klikněte na dlaždici **CEF (Common Event Format)** a pak na tlačítko **otevřít konektor** na pravé straně. 
 
-1. V části **1,2 instalace kolekce CEF na počítači se systémem Linux**zkopírujte odkaz, který je k dispozici v části **spuštění následujícího skriptu pro instalaci a použití kolekce CEF**, nebo z následujícího textu:
+1. V části **1,2 instalace kolekce CEF na počítači se systémem Linux** zkopírujte odkaz, který je k dispozici v části **spuštění následujícího skriptu pro instalaci a použití kolekce CEF** , nebo z následujícího textu (místo zástupných symbolů použijte ID pracovního prostoru a primární klíč):
 
-     `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    ```
 
 1. Když je skript spuštěný, zkontrolujte, že nezískáváte žádné chybové zprávy ani upozornění.
+    - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s mapováním pole *počítač* . Podrobnosti najdete v tématu věnovaném [vysvětlení ve skriptu nasazení](#mapping-command) .
 
 > [!NOTE]
 > **Použití stejného počítače pro přeposílání prostých zpráv syslog *a* CEF**
@@ -122,12 +130,15 @@ Zvolením démona syslog zobrazíte příslušný popis.
 
 1. **Ověřování mapování pole *počítače* podle očekávání:**
 
-    - Zajišťuje, aby pole *počítač* ve zdroji syslog bylo správně namapováno v agentovi Log Analytics spuštěním tohoto příkazu a restartováním agenta.
+    - Zajišťuje, aby pole *počítač* ve zdroji syslog bylo správně namapováno v agentu Log Analytics pomocí následujícího příkazu: 
 
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
+        ```
+    - <a name="mapping-command"></a>Pokud dojde k potížím s mapováním, skript vytvoří chybovou zprávu s přímým přístupem k **ručnímu spuštění následujícího příkazu** (místo zástupného symbolu použije ID pracovního prostoru). Příkaz ověří správné mapování a restartuje agenta.
+    
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
 # <a name="syslog-ng-daemon"></a>[démon procesu syslog-ng](#tab/syslogng)
@@ -187,15 +198,16 @@ Zvolením démona syslog zobrazíte příslušný popis.
 
 1. **Ověřování mapování pole *počítače* podle očekávání:**
 
-    - Zajišťuje, aby pole *počítač* ve zdroji syslog bylo správně namapováno v agentovi Log Analytics spuštěním tohoto příkazu a restartováním agenta.
+    - Zajišťuje, aby pole *počítač* ve zdroji syslog bylo správně namapováno v agentu Log Analytics pomocí následujícího příkazu: 
 
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
         ```
-
-
+    - <a name="mapping-command"></a>Pokud dojde k potížím s mapováním, skript vytvoří chybovou zprávu s přímým přístupem k **ručnímu spuštění následujícího příkazu** (místo zástupného symbolu použije ID pracovního prostoru). Příkaz ověří správné mapování a restartuje agenta.
+    
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak nasadit agenta Log Analytics pro připojení zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:

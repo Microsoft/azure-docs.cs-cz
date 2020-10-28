@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842865"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744723"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Preview: Automatické opravy hosta virtuálního počítače pro virtuální počítače s Windows v Azure
 
@@ -80,17 +80,20 @@ Virtuální počítače s Windows v Azure teď podporují následující režimy
 
 **AutomaticByPlatform:**
 - Tento režim umožňuje automatickou opravu hosta virtuálního počítače pro virtuální počítač s Windows a instalaci následné opravy provádí orchestrace Azure.
+- Tento režim se vyžaduje pro dostupnost – první oprava.
 - Nastavení tohoto režimu také zakáže nativní automatické aktualizace na virtuálním počítači s Windows, aby nedocházelo k duplicitám.
 - Tento režim se podporuje jenom pro virtuální počítače, které jsou vytvořené pomocí podporovaných imagí platformy operačního systému výše.
 - Chcete-li použít tento režim, nastavte vlastnost `osProfile.windowsConfiguration.enableAutomaticUpdates=true` a nastavte vlastnost  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` v šabloně virtuálního počítače.
 
 **AutomaticByOS:**
 - Tento režim umožňuje automatické aktualizace na virtuálním počítači s Windows a opravy se na virtuálním počítači instalují prostřednictvím automatických aktualizací.
+- Tento režim nepodporuje dostupnost – první oprava.
 - Tento režim je nastaven ve výchozím nastavení, pokud není zadán žádný jiný režim opravy.
 - Chcete-li použít tento režim, nastavte vlastnost `osProfile.windowsConfiguration.enableAutomaticUpdates=true` a nastavte vlastnost  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByOS` v šabloně virtuálního počítače.
 
 **Zásah**
 - Tento režim zakáže automatické aktualizace na virtuálním počítači s Windows.
+- Tento režim nepodporuje dostupnost – první oprava.
 - Tento režim by měl být nastaven při použití vlastních řešení oprav.
 - Chcete-li použít tento režim, nastavte vlastnost `osProfile.windowsConfiguration.enableAutomaticUpdates=false` a nastavte vlastnost  `osProfile.windowsConfiguration.patchSettings.patchMode=Manual` v šabloně virtuálního počítače.
 
@@ -196,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) můžete povolit automatické opravy hosta virtuálního počítače při vytváření nového virtuálního počítače. Následující příklad konfiguruje automatickou opravu hosta virtuálního počítače pro virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup*:
+Pomocí [AZ VM Create](/cli/azure/vm#az-vm-create) můžete povolit automatické opravy hosta virtuálního počítače při vytváření nového virtuálního počítače. Následující příklad konfiguruje automatickou opravu hosta virtuálního počítače pro virtuální počítač s názvem *myVM* ve skupině prostředků s názvem *myResourceGroup* :
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform

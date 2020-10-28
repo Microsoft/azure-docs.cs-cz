@@ -3,13 +3,13 @@ title: Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 description: Vlastní fondy imagí představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605188"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745528"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
@@ -33,7 +33,7 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 - **Lepší výkon než použití jenom spravované Image jako vlastní image.** U vlastního fondu imagí sdílené Image je čas na dosažení stabilního stavu rychlejší až 25% a latence nečinnosti virtuálního počítače je kratší než 30%.
 - **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení imagí obsahuje informace o tom, proč se image vytvořila, v jakém operačním systému je, a informace o použití image. Seskupení imagí umožňuje snazší správu imagí. Další informace najdete v tématu [definice imagí](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!NOTE]
 > Musíte se ověřit pomocí Azure AD. Pokud používáte ověřování Shared-Key-Authentication, zobrazí se chyba ověřování.  
@@ -208,9 +208,9 @@ Pomocí následujících kroků můžete vytvořit fond ze sdílené image v Azu
 1. Otevřete web [Azure Portal](https://portal.azure.com).
 1. Přejít na **účty Batch** a vyberte svůj účet.
 1. Vyberte **fondy** a potom **Přidat** a vytvořte nový fond.
-1. V části **typ obrázku** vyberte **sdílená Galerie imagí**.
+1. V části **typ obrázku** vyberte **sdílená Galerie imagí** .
 1. Dokončete zbývající části s informacemi o spravované imagi.
-1. Vyberte **OK**.
+1. Vyberte **OK** .
 
 ![Vytvořte fond se ze sdílené image s portálem.](media/batch-sig-images/create-custom-pool.png)
 

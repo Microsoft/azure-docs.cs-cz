@@ -8,13 +8,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
-ms.date: 04/15/2020
-ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/16/2020
+ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91651713"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742566"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -41,15 +41,16 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 Poznámkový blok je interaktivní prostředí, které podporuje různé programovací jazyky. Poznámkový blok vám umožní pracovat s daty, kombinovat kód s Markdownu, textem a provádět jednoduché vizualizace.
 
-1. V zobrazení Azure Portal pracovního prostoru Azure synapse, který chcete použít, vyberte **Spustit synapse Studio**.
-2. Po spuštění synapse studia vyberte **vývoj**. Pak umístěte ukazatel myši na položku **poznámkových bloků** . Vyberte tři tečky (**...**).
-3. Odtud vyberte **Nový Poznámkový blok**. Vytvoří se nový Poznámkový blok, který se otevře s automaticky generovaným názvem.
-  ![Nový Poznámkový blok](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Nový Poznámkový blok")
+1. V zobrazení Azure Portal pracovního prostoru Azure synapse, který chcete použít, vyberte **Spustit synapse Studio** .
+2. Po spuštění synapse studia vyberte **vývoj** . Pak vyberte **+** ikonu pro přidání nového prostředku.
+3. Odtud vyberte **Poznámkový blok** . Vytvoří se nový Poznámkový blok, který se otevře s automaticky generovaným názvem.
+ 
+     ![Nový Poznámkový blok](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Nový Poznámkový blok")
 
 4. V okně **vlastnosti** zadejte název poznámkového bloku.
-5. Na panelu nástrojů klikněte na **publikovat**.
+5. Na panelu nástrojů klikněte na **publikovat** .
 6. Pokud je ve vašem pracovním prostoru jenom jeden Apache Spark fond, pak je vybraný ve výchozím nastavení. Pomocí rozevíracího seznamu vyberte správný fond Apache Spark, pokud není vybraný žádný.
-7. Klikněte na **přidat kód**. Výchozí jazyk je `Pyspark` . Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná. Další podporované jazyky jsou Scala a .NET pro Spark.
+7. Klikněte na **přidat kód** . Výchozí jazyk je `Pyspark` . Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná. Další podporované jazyky jsou Scala a .NET pro Spark.
 8. Dále vytvoříte jednoduchý objekt Spark dataframe pro manipulaci. V tomto případě jej vytvoříte z kódu. Existují tři řádky a tři sloupce:
 
    ```python
@@ -60,15 +61,15 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
 
 9. Nyní spusťte buňku pomocí jedné z následujících metod:
 
-   - Stiskněte **SHIFT + ENTER**.
+   - Stiskněte **SHIFT + ENTER** .
    - Vyberte modrou ikonu přehrávání vlevo od buňky.
    - Na panelu nástrojů vyberte tlačítko **Spustit vše** .
 
-   ![Vytvořit objekt datového rámce](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Výstup z úlohy Spark")
+       ![Vytvořit objekt datového rámce](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png)
 
 10. Pokud instance fondu Apache Spark ještě není spuštěná, spustí se automaticky. Stav instance Apache Spark fondu můžete zobrazit pod buňkou, kterou používáte, a také na panelu stavu v dolní části poznámkového bloku. V závislosti na velikosti fondu by se měla začít trvat 2-5 minut. Po skončení běhu kódu se zobrazí informace pod buňkou, která ukazuje, jak dlouho trvalo spuštění a jeho spuštění. V buňce Output (výstup) uvidíte výstup.
 
-    ![Výstup z provádění buňky](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Výstup z úlohy Spark")
+    ![Výstup z provádění buňky](./media/quickstart-apache-spark-notebook/run-cell-with-output.png)
 
 11. Data nyní existují v datovém snímku. data můžete použít mnoha různými způsoby. Budete ho potřebovat v různých formátech pro zbytek tohoto rychlého startu.
 12. Níže zadejte kód v jiné buňce a spusťte jej. tím se vytvoří tabulka Spark, sdílený svazek clusteru a soubor Parquet s kopiemi dat:
@@ -113,13 +114,13 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
 
     ![Dotaz na výstup v Azure synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Dotaz na výstup v Azure synapse Spark")
 
-3. V přepínači **zobrazení** vyberte možnost **graf**.
+3. V přepínači **zobrazení** vyberte možnost **graf** .
 4. Vyberte ikonu **Možnosti zobrazení** ze zcela pravé strany.
 5. V poli **typ grafu** vyberte "pruhový graf".
 6. V poli sloupce osy X vyberte "State" (stav).
 7. V poli sloupce osy Y vyberte "mzda".
 8. V poli **agregace** vyberte "AVG".
-9. Vyberte **Apply** (Použít).
+9. Vyberte **Použít** .
 
    ![Výstup grafu ve službě Azure synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Výstup grafu ve službě Azure synapse Spark")
 
@@ -129,7 +130,7 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. Každá z dříve spuštěných buněk měla možnost přejít na **Server historie** a **monitorovat**. Kliknutím na odkazy přejdete do různých částí uživatelského prostředí.
+11. Každá z dříve spuštěných buněk měla možnost přejít na **Server historie** a **monitorovat** . Kliknutím na odkazy přejdete do různých částí uživatelského prostředí.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

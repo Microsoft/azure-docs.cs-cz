@@ -14,33 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631626"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744209"
 ---
 # <a name="step-3-validate-connectivity"></a>Krok 3: ověření připojení
 
 Po nasazení služby pro přeposílání protokolů (v kroku 1) a konfiguraci řešení zabezpečení pro posílání zpráv CEF (v kroku 2) postupujte podle těchto pokynů, abyste ověřili konektivitu mezi vaším řešením zabezpečení a službou Azure Sentinel. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - V počítači pro překládání protokolů musíte mít zvýšená oprávnění (sudo).
 
-- V počítači se systémem pro překládání protokolů musíte mít nainstalovaný Python.<br>
+- V počítači se systémem pro překládání protokolů musíte mít nainstalovanou **python 2,7** .<br>
 Použijte `python –version` příkaz pro kontrolu.
+
+- V určitém okamžiku tohoto procesu možná budete potřebovat ID pracovního prostoru a primární klíč pracovního prostoru. Můžete je najít v prostředku pracovního prostoru v části **Správa agentů** .
 
 ## <a name="how-to-validate-connectivity"></a>Jak ověřit připojení
 
-1. V nabídce navigace v Azure Sentinel otevřete **protokoly**. Spusťte dotaz pomocí schématu **CommonSecurityLog** a zjistěte, jestli přijímáte protokoly z řešení zabezpečení.<br>
-Počítejte s tím, že může trvat přibližně 20 minut, než se vaše protokoly začnou zobrazovat v **Log Analytics**. 
+1. V nabídce navigace v Azure Sentinel otevřete **protokoly** . Spusťte dotaz pomocí schématu **CommonSecurityLog** a zjistěte, jestli přijímáte protokoly z řešení zabezpečení.<br>
+Počítejte s tím, že může trvat přibližně 20 minut, než se vaše protokoly začnou zobrazovat v **Log Analytics** . 
 
 1. Pokud nevidíte žádné výsledky z dotazu, ověřte, že se události generují z řešení zabezpečení, nebo zkuste některé z nich vygenerovat a ověřte, že jsou předávány do počítače pro přeposílání syslog, který jste určili. 
 
-1. Spusťte následující skript na serveru pro přeposílání protokolů, abyste zkontrolovali konektivitu mezi řešením zabezpečení, serverem pro přeposílání protokolů a službou Azure Sentinel. Tento skript kontroluje, že démon naslouchá na správných portech, že předávání je správně nakonfigurované a že nic neblokuje komunikaci mezi démonem a agentem Log Analytics. Také pošle zprávy typu "TestCommonEventFormat" ke kontrole komplexního připojení. <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
+1. Spusťte následující skript na serveru pro přeposílání protokolů (použití ID pracovního prostoru místo zástupného symbolu), abyste zkontrolovali možnosti připojení mezi řešením zabezpečení, serverem pro přeposílání protokolů a službou Azure Sentinel. Tento skript kontroluje, že démon naslouchá na správných portech, že předávání je správně nakonfigurované a že nic neblokuje komunikaci mezi démonem a agentem Log Analytics. Také pošle zprávy typu "TestCommonEventFormat" ke kontrole komplexního připojení. <br>
+
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    ```
+
+   - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s **mapováním pole *počítač*** . Podrobnosti najdete [v popisu v ověřovacím skriptu](#mapping-command) .
+
+    - Může se vám zobrazit zpráva s přímým spuštěním příkazu pro opravu problému s **analýzou protokolů brány firewall Cisco ASA** . Podrobnosti najdete [v popisu v ověřovacím skriptu](#parsing-command) .
 
 ## <a name="validation-script-explained"></a>Vysvětlený skript pro ověření
 
@@ -72,21 +81,31 @@ Ověřovací skript provede následující kontroly:
     </filter>
     ```
 
-1. Kontroluje, zda je analýza Cisco ASA pro události brány firewall nakonfigurovaná podle očekávání:
+1. Kontroluje, jestli je analýza událostí firewallu Cisco ASA nakonfigurovaná podle očekávání, pomocí následujícího příkazu: 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Kontroluje, zda je pole *počítač* ve zdroji syslog správně mapováno v agentovi Log Analytics:
+    - <a name="parsing-command"></a>Pokud dojde k potížím s analýzou, skript vytvoří chybovou zprávu, která vás přesměruje na **Ruční spuštění následujícího příkazu** (místo zástupného symbolu použije ID pracovního prostoru). Příkaz zajistí správné analýzy a restart agenta.
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. Kontroluje, zda je pole *počítač* ve zdroji syslog správně mapováno v agentovi Log Analytics pomocí následujícího příkazu: 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>Pokud dojde k potížím s mapováním, skript vytvoří chybovou zprávu s přímým přístupem k **ručnímu spuštění následujícího příkazu** (místo zástupného symbolu použije ID pracovního prostoru). Příkaz ověří správné mapování a restartuje agenta.
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. Kontroluje, jestli jsou na počítači nějaká vylepšení zabezpečení, která by mohla blokovat síťový provoz (například hostitelskou bránu firewall).
 
@@ -155,21 +174,31 @@ Ověřovací skript provede následující kontroly:
     </filter>
     ```
 
-1. Kontroluje, zda je analýza Cisco ASA pro události brány firewall nakonfigurovaná podle očekávání:
+1. Kontroluje, jestli je analýza událostí firewallu Cisco ASA nakonfigurovaná podle očekávání, pomocí následujícího příkazu: 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. Kontroluje, zda je pole *počítač* ve zdroji syslog správně mapováno v agentovi Log Analytics:
+    - <a name="parsing-command"></a>Pokud dojde k potížím s analýzou, skript vytvoří chybovou zprávu, která vás přesměruje na **Ruční spuštění následujícího příkazu** (místo zástupného symbolu použije ID pracovního prostoru). Příkaz zajistí správné analýzy a restart agenta.
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. Kontroluje, zda je pole *počítač* ve zdroji syslog správně mapováno v agentovi Log Analytics pomocí následujícího příkazu: 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>Pokud dojde k potížím s mapováním, skript vytvoří chybovou zprávu s přímým přístupem k **ručnímu spuštění následujícího příkazu** (místo zástupného symbolu použije ID pracovního prostoru). Příkaz ověří správné mapování a restartuje agenta.
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. Kontroluje, jestli jsou na počítači nějaká vylepšení zabezpečení, která by mohla blokovat síťový provoz (například hostitelskou bránu firewall).
 

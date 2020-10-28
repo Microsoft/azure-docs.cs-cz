@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842525"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745974"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
 
@@ -34,7 +34,7 @@ V této sérii kurzů se naučíte:
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem:
 
@@ -61,7 +61,7 @@ az account set --subscription "<subscriptionName>"
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pomocí následujícího příkazu vytvořte skupinu prostředků *myResourceGroup* v umístění *eastus*.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pomocí následujícího příkazu vytvořte skupinu prostředků *myResourceGroup* v umístění *eastus* .
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -69,7 +69,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-the-container-registry"></a>Vytvoření registru kontejneru
 
-Pomocí příkazu `az acr create` vytvořte instanci služby ACR. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá název *myContainerRegistry*. Pokud dojde k chybě kvůli tomu, že se název registru už používá, zvolte jiný název.
+Pomocí příkazu `az acr create` vytvořte instanci služby ACR. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá název *myContainerRegistry* . Pokud dojde k chybě kvůli tomu, že se název registru už používá, zvolte jiný název.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry --sku Basic
@@ -156,7 +156,7 @@ seabreeze/azure-mesh-todo-webfrontend
 seabreeze/azure-mesh-todo-service
 ```
 
-Následující příklad vypíše značky v úložišti **azure-mesh-todo-service**.
+Následující příklad vypíše značky v úložišti **azure-mesh-todo-service** .
 
 ```azurecli
 az acr repository show-tags --name myContainerRegistry --repository seabreeze/azure-mesh-todo-service --output table
@@ -196,9 +196,9 @@ Aplikace Service Fabric Mesh je prostředek Azure, který můžete nasadit a spr
 V tomto kurzu se jako příklad používá ukázka Seznam úkolů.  Místo vytváření nové šablony a souborů parametrů si stáhněte[šablonu nasazení mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) a soubory [parametrů mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json).
 
 ### <a name="parameters"></a>Parametry
-Pokud jsou v šabloně hodnoty, které plánujete po nasazení aplikace změnit, nebo které byste chtěli mít možnost změnit pro každé nasazení (pokud plánujete opakované použití této šablony pro další nasazení), je vhodné tyto hodnoty parametrizovat. Správným způsobem, jak to provést, je vytvořit na začátku šablony nasazení část parameters, kde zadáte názvy a vlastnosti parametrů, na které se pak bude odkazovat ve zbytku šablony nasazení. Každá definice parametru obsahuje hodnoty *type* a *defaultValue* a volitelnou část *metadata* s hodnotou *description*.
+Pokud jsou v šabloně hodnoty, které plánujete po nasazení aplikace změnit, nebo které byste chtěli mít možnost změnit pro každé nasazení (pokud plánujete opakované použití této šablony pro další nasazení), je vhodné tyto hodnoty parametrizovat. Správným způsobem, jak to provést, je vytvořit na začátku šablony nasazení část parameters, kde zadáte názvy a vlastnosti parametrů, na které se pak bude odkazovat ve zbytku šablony nasazení. Každá definice parametru obsahuje hodnoty *type* a *defaultValue* a volitelnou část *metadata* s hodnotou *description* .
 
-Část parameters se definuje na začátku šablony nasazení přímo před částí *resources*:
+Část parameters se definuje na začátku šablony nasazení přímo před částí *resources* :
 
 ```json
 {

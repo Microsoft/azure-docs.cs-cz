@@ -5,14 +5,14 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.custom: mvc, cli-validate, seodec18, devx-track-js
+ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4fc79f8508f46f5003b99289d725b303feef78aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c204a07e3c5edff028342af1c88b15ebac0754b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312001"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743653"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Kurz: Vytvoření aplikace Node.js a MongoDB v Azure
 
@@ -186,7 +186,7 @@ Zkopírujte hodnotu `primaryMasterKey`. Tyto informace budete potřebovat v dal
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Konfigurace připojovacího řetězce v aplikaci Node.js
 
-V místním úložišti MEAN.js ve složce _config/env/_ vytvořte soubor _local-production.js_. _přípona. gitignore_ je už nakonfigurovaná, aby se tento soubor zachoval mimo úložiště. 
+V místním úložišti MEAN.js ve složce _config/env/_ vytvořte soubor _local-production.js_ . _přípona. gitignore_ je už nakonfigurovaná, aby se tento soubor zachoval mimo úložiště. 
 
 Zkopírujte do něj následující kód. Nezapomeňte nahradit tyto dva *\<cosmosdb-name>* zástupné symboly názvem vaší Cosmos DB databáze a zástupný symbol nahraďte *\<primary-master-key>* klíčem, který jste zkopírovali v předchozím kroku.
 
@@ -210,7 +210,7 @@ V místním okně terminálu spusťte následující příkaz, který minimalizu
 gulp prod
 ```
 
-V místním okně terminálu spusťte následující příkaz, který použije připojovací řetězec nakonfigurovaný v souboru _config/env/local-production.js_. Chybu certifikátu a upozornění config.domain ignorujte.
+V místním okně terminálu spusťte následující příkaz, který použije připojovací řetězec nakonfigurovaný v souboru _config/env/local-production.js_ . Chybu certifikátu a upozornění config.domain ignorujte.
 
 ```bash
 # Bash
@@ -287,7 +287,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 V Node.js kódu získáte [přístup k tomuto nastavení aplikace](configure-language-nodejs.md#access-environment-variables) pomocí nástroje `process.env.MONGODB_URI` stejně, jako byste měli přístup k libovolné proměnné prostředí. 
 
-V místním úložišti MEAN.js otevřete soubor _config/env/production.js_ (ne _config/env/local-production.js_), který obsahuje konfiguraci specifickou pro produkční prostředí. Výchozí aplikace MEAN.js je již nakonfigurovaná tak, aby používala proměnnou prostředí `MONGODB_URI`, kterou jste vytvořili.
+V místním úložišti MEAN.js otevřete soubor _config/env/production.js_ (ne _config/env/local-production.js_ ), který obsahuje konfiguraci specifickou pro produkční prostředí. Výchozí aplikace MEAN.js je již nakonfigurovaná tak, aby používala proměnnou prostředí `MONGODB_URI`, kterou jste vytvořili.
 
 ```javascript
 db: {
@@ -317,7 +317,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 </pre>
 
 Můžete si všimnout, že proces nasazení po příkazu `npm install` spustí [Gulp](https://gulpjs.com/). Služba App Service během nasazení nespouští úlohy Gulp ani Grunt, takže toto ukázkové úložiště obsahuje v kořenovém adresáři dva další soubory, které je povolují: 
@@ -351,7 +351,7 @@ V tomto kroku změníte datový model `article` a publikujete provedené změny 
 
 ### <a name="update-the-data-model"></a>Aktualizace datového modelu
 
-V místním úložišti MEAN.js otevřete soubor _modules/articles/server/models/article.server.model.js_.
+V místním úložišti MEAN.js otevřete soubor _modules/articles/server/models/article.server.model.js_ .
 
 Do `ArticleSchema` přidejte typ `String` s názvem `comment`. Až skončíte, měl by váš kód schématu vypadat takto:
 
@@ -376,7 +376,7 @@ Aktualizujte zbytek kódu `articles` tak, aby používal `comment`.
 
 Je potřeba upravit pět souborů: kontroler serveru a čtyři zobrazení klienta. 
 
-Otevřete soubor _modules/articles/server/controllers/articles.server.controller.js_.
+Otevřete soubor _modules/articles/server/controllers/articles.server.controller.js_ .
 
 Do funkce `update` přidejte přiřazení pro `article.comment`. Následující kód ukazuje dokončenou funkci `update`:
 
@@ -392,7 +392,7 @@ exports.update = function (req, res) {
 };
 ```
 
-Otevřete soubor _modules/articles/client/views/view-article.client.view.html_.
+Otevřete soubor _modules/articles/client/views/view-article.client.view.html_ .
 
 Přímo nad uzavírací značku `</section>` přidejte následující řádek, který spolu se zbývajícími daty článku zobrazí i `comment`:
 
@@ -400,7 +400,7 @@ Přímo nad uzavírací značku `</section>` přidejte následující řádek, k
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
-Otevřete soubor _modules/articles/client/views/list-articles.client.view.html_.
+Otevřete soubor _modules/articles/client/views/list-articles.client.view.html_ .
 
 Přímo nad uzavírací značku `</a>` přidejte následující řádek, který spolu se zbývajícími daty článku zobrazí i `comment`:
 
@@ -408,7 +408,7 @@ Přímo nad uzavírací značku `</a>` přidejte následující řádek, který 
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
-Otevřete soubor _modules/articles/client/views/admin/list-articles.client.view.html_.
+Otevřete soubor _modules/articles/client/views/admin/list-articles.client.view.html_ .
 
 Uvnitř prvku `<div class="list-group">` a přímo nad uzavírací značku `</a>` přidejte následující řádek, který spolu se zbývajícími daty článku zobrazí i `comment`:
 
@@ -416,7 +416,7 @@ Uvnitř prvku `<div class="list-group">` a přímo nad uzavírací značku `</a>
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
-Otevřete soubor _modules/articles/client/views/admin/form-article.client.view.html_.
+Otevřete soubor _modules/articles/client/views/admin/form-article.client.view.html_ .
 
 Vyhledejte prvek `<div class="form-group">` obsahující tlačítko pro odeslání, který vypadá přibližně takto:
 
@@ -505,7 +505,7 @@ Streamování můžete kdykoli zastavit zadáním `Ctrl+C`.
 
 Pokud si chcete zobrazit aplikaci, kterou jste vytvořili, přejděte na [Azure Portal](https://portal.azure.com) .
 
-V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
+V nabídce vlevo klikněte na **App Services** a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 

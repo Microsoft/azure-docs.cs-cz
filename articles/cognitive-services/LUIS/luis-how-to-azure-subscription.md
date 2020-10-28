@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eecc93558625d3ae891ca589424aec218036adae
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151588"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744709"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -29,7 +29,7 @@ LUIS umožňuje tři typy prostředků Azure a jeden jiný prostředek než Azur
 
 |Prostředek|Účel|Služba rozpoznávání `kind`|Služba rozpoznávání `type`|
 |--|--|--|--|
-|Vytváření prostředku|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Pokud máte v úmyslu vytvářet aplikace LUIS programtically nebo na portálu LUIS, [vytvořte prostředek pro vytváření Luis](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Aby bylo možné propojit prostředky Azure authroring s vaší aplikací, je třeba nejprve [migrovat účet Luis](luis-migration-authoring.md#what-is-migration) . Oprávnění k vytváření prostředků můžete řídit přiřazením osob k [roli Přispěvatel](#contributions-from-other-authors). <br><br> Pro prostředek pro vytváření LUIS je k dispozici jedna vrstva avialable:<br> * **Bezplatný F0 vytváření prostředků** , který vám poskytne nemilion transakcí vytváření a 1000 bezplatné požadavky koncového bodu předpovědi testování měsíčně. |`LUIS.Authoring`|`Cognitive Services`|
+|Vytváření prostředku|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Pokud máte v úmyslu vytvářet aplikace LUIS programtically nebo na portálu LUIS, [vytvořte prostředek pro vytváření Luis](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal) . Musíte nejdřív [migrovat svůj účet Luis](luis-migration-authoring.md#what-is-migration) , aby bylo možné propojit prostředky pro vytváření obsahu Azure s vaší aplikací. Oprávnění k vytváření prostředků můžete řídit přiřazením osob k [roli Přispěvatel](#contributions-from-other-authors). <br><br> Pro prostředek pro vytváření LUIS je k dispozici jedna úroveň:<br> * **Bezplatný F0 vytváření prostředků** , který vám poskytne nemilion transakcí vytváření a 1000 bezplatné požadavky koncového bodu předpovědi testování měsíčně. |`LUIS.Authoring`|`Cognitive Services`|
 |Prostředek předpovědi| Po publikování aplikace LUIS použijte k vyřízení požadavků na koncový bod předpovědi pro dotazování prostředku nebo klíče předpovědi. Vytvořte LUIS předpověď prostředku předtím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytuje vytváření nebo spouštěcí prostředek. <br><br> Pro prostředek předpovědi jsou avialble dvě úrovně:<br> * **F0 předpověď Free** , který vám dává 10 000 bezplatné požadavky na koncový bod předpovědi měsíčně<br> * **Prostředek předpovědi úrovně Standard S0** , což je placená úroveň. [Další informace o cenách najdete v podrobnostech.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |Zdroj počáteční/zkušební verze|Umožňuje vytváření, správu, výuku, testování a publikování aplikací. Tato funkce se vytvoří pomocí výchozí, pokud při prvním přihlášení k LUIS TP zvolíte možnost prostředek Starter. Spouštěcí klíč bude ale nakonec zastaralý a všichni LUIS uživatelé budou muset [migrovat své účty](luis-migration-authoring.md#what-is-migration) a propojit své Luis aplikace s prostředky pro vytváření obsahu. Tento prostředek vám neuděluje oprávnění k řízení přístupu na základě role Azure, jako je prostředek pro vytváření obsahu. <br><br> Stejně jako u zdrojového prostředku vám počáteční zdroj poskytuje nemilion transakcí vytváření a 1000 požadavků na koncový bod předpovědi bezplatného testování.|-|Nejedná se o prostředek Azure.|
 |[Klíč prostředku více služeb pro službu rozpoznávání](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Požadavky koncového bodu předpovědi dotazu sdílené s LUIS a dalšími podporovanými Cognitive Services.|`CognitiveServices`|`Cognitive Services`|
@@ -196,14 +196,14 @@ Prostředek `kind` :
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Vytvořte **prostředek koncového bodu předpovědi Luis**typu `LUIS` s názvem `my-luis-prediction-resource` ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast. Pokud chcete vyšší propustnost, než je úroveň Free, změňte `F0` na `S0` . Přečtěte si další informace o [cenových úrovních a propustnosti](luis-limits.md#key-limits).
+1. Vytvořte **prostředek koncového bodu předpovědi Luis** typu `LUIS` s názvem `my-luis-prediction-resource` ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast. Pokud chcete vyšší propustnost, než je úroveň Free, změňte `F0` na `S0` . Přečtěte si další informace o [cenových úrovních a propustnosti](luis-limits.md#key-limits).
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note]
-    > Tento klíč **nepoužívá portál** Luis, dokud se nepřiřazují na portálu Luis v **prostředcích Azure manage->**.
+    > Tento klíč **nepoužívá portál** Luis, dokud se nepřiřazují na portálu Luis v **prostředcích Azure manage->** .
 
 <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
 
@@ -212,8 +212,8 @@ Prostředek `kind` :
 Můžete přiřadit prostředek pro vytváření obsahu pro jednu aplikaci nebo pro všechny aplikace v LUIS. Následující postup přiřadí všechny aplikace k jednomu prostředku pro vytváření.
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai).
-1. V horním navigačním panelu úplně vpravo vyberte svůj uživatelský účet a pak vyberte **Nastavení**.
-1. Na stránce **nastavení uživatele** vyberte **Přidat prostředek pro vytváření** a pak vyberte existující prostředek pro vytváření. Vyberte **Uložit**.
+1. V horním navigačním panelu úplně vpravo vyberte svůj uživatelský účet a pak vyberte **Nastavení** .
+1. Na stránce **nastavení uživatele** vyberte **Přidat prostředek pro vytváření** a pak vyberte existující prostředek pro vytváření. Vyberte **Uložit** .
 
 ## <a name="assign-a-resource-to-an-app"></a>Přiřazení prostředku k aplikaci
 
@@ -292,7 +292,7 @@ Informace o tom, jaká data se při odstranění účtu odstraňují, najdete v 
 ## <a name="viewing-azure-resource-metrics"></a>Zobrazení metrik prostředků Azure
 
 ### <a name="viewing-azure-resource-summary-usage"></a>Zobrazení souhrnu využití prostředků Azure
-Informace o použití LUIS můžete zobrazit v Azure. Na stránce **Přehled** jsou uvedeny nedávné souhrnné informace, včetně volání a chyb. Pokud provedete požadavek na koncový bod LUIS, potom hned Sledujte **stránku Přehled**, aby se použití zobrazilo až pět minut.
+Informace o použití LUIS můžete zobrazit v Azure. Na stránce **Přehled** jsou uvedeny nedávné souhrnné informace, včetně volání a chyb. Pokud provedete požadavek na koncový bod LUIS, potom hned Sledujte **stránku Přehled** , aby se použití zobrazilo až pět minut.
 
 ![Zobrazení souhrnného využití](./media/luis-usage-tiers/overview.png)
 

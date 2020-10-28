@@ -4,14 +4,14 @@ description: Naučte se, jak získat aplikaci .NET Core pracující v Azure App 
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
+ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b83dfbd715a6b27491fd5f5efd41213210092325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 305137cf371d7a9e3d336d8142ef9a03eb38421f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982878"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743703"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Kurz: Vytvoření aplikace ASP.NET Core a Azure SQL Database v Azure App Service
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -75,7 +75,7 @@ dotnet ef database update
 dotnet run
 ```
 
-V prohlížeči přejděte na `http://localhost:5000`. Vyberte odkaz **Vytvořit nový** a vytvořte několik položek _úkolů_.
+V prohlížeči přejděte na `http://localhost:5000`. Vyberte odkaz **Vytvořit nový** a vytvořte několik položek _úkolů_ .
 
 ![úspěšné připojení k databázi SQL](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
@@ -214,7 +214,7 @@ Teď, když jsou migrace databáze spuštěné v provozní databázi, otestujte 
 dotnet run
 ```
 
-V prohlížeči přejděte na `http://localhost:5000`. Vyberte odkaz **Vytvořit nový** a vytvořte několik položek _úkolů_. Vaše aplikace teď čte a zapisuje data do provozní databáze.
+V prohlížeči přejděte na `http://localhost:5000`. Vyberte odkaz **Vytvořit nový** a vytvořte několik položek _úkolů_ . Vaše aplikace teď čte a zapisuje data do provozní databáze.
 
 Potvrďte své místní změny a pak je potvrďte do úložiště Git. 
 
@@ -269,7 +269,7 @@ K nastavení připojovacích řetězců pro aplikaci Azure použijte [`az webapp
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
-V ASP.NET Core můžete použít tento pojmenovaný připojovací řetězec ( `MyDbConnection` ) pomocí standardního vzoru, jako je libovolný připojovací řetězec zadaný v *appsettings.js*. V tomto případě `MyDbConnection` je také definováno v *appsettings.js*v. Při spuštění v App Service má připojovací řetězec definovaný v App Service přednost před připojovacím řetězcem definovaným v *appsettings.js*. Kód používá *appsettings.jsna* hodnotu během místního vývoje a stejný kód používá hodnotu App Service při nasazení.
+V ASP.NET Core můžete použít tento pojmenovaný připojovací řetězec ( `MyDbConnection` ) pomocí standardního vzoru, jako je libovolný připojovací řetězec zadaný v *appsettings.js* . V tomto případě `MyDbConnection` je také definováno v *appsettings.js* v. Při spuštění v App Service má připojovací řetězec definovaný v App Service přednost před připojovacím řetězcem definovaným v *appsettings.js* . Kód používá *appsettings.jsna* hodnotu během místního vývoje a stejný kód používá hodnotu App Service při nasazení.
 
 Pokud chcete zjistit, jak se na připojovací řetězec odkazuje v kódu, přečtěte si téma [Konfigurace aplikace pro připojení k provozní databázi](#configure-app-to-connect-to-production-database).
 
@@ -385,7 +385,7 @@ dotnet ef database update
 
 Proveďte v kódu několik změn, aby aplikace využívala vlastnost `Done`. Pro zjednodušení budete v tomto kurzu měnit jen zobrazení `Index` a `Create`, aby se vlastnost projevila v praxi.
 
-Otevřete _Controllers/TodosController. cs_.
+Otevřete _Controllers/TodosController. cs_ .
 
 Najděte metodu `Create([Bind("ID,Description,CreatedDate")] Todo todo)` a přidejte vlastnosti `Done` do seznamu vlastností v atributu `Bind`. Po dokončení bude podpis vaší metody `Create()` vypadat podobně jako následující kód:
 
@@ -393,7 +393,7 @@ Najděte metodu `Create([Bind("ID,Description,CreatedDate")] Todo todo)` a přid
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-Otevřete _zobrazení/TODO/vytvořit. cshtml_.
+Otevřete _zobrazení/TODO/vytvořit. cshtml_ .
 
 V kódu Razor byste měli vidět prvek `<div class="form-group">` pro `Description`a pak další prvek `<div class="form-group">` pro `CreatedDate`. Přímo za tyto dva prvky přidejte další prvek `<div class="form-group">` pro `Done`:
 
@@ -407,7 +407,7 @@ V kódu Razor byste měli vidět prvek `<div class="form-group">` pro `Descripti
 </div>
 ```
 
-Otevřete _zobrazení/todoe/index. cshtml_.
+Otevřete _zobrazení/todoe/index. cshtml_ .
 
 Vyhledejte prázdný prvek `<th></th>`. Přímo nad tento prvek přidejte následující kód Razor:
 
@@ -439,7 +439,7 @@ dotnet run
 > Pokud otevřete nové okno terminálu, budete muset připojovací řetězec nastavit na provozní databázi v terminálu, stejně jako při [spuštění migrace databáze do provozní databáze](#run-database-migrations-to-the-production-database).
 >
 
-V prohlížeči přejděte na adresu `http://localhost:5000/`. Teď můžete přidat položku úkolu a zaškrtnout možnost **Hotovo**. Položka by se měla zobrazit na domovské stránce jako dokončená. Nezapomeňte, že v zobrazení `Edit` se pole `Done` nezobrazí, protože jste zobrazení `Edit` nezměnili.
+V prohlížeči přejděte na adresu `http://localhost:5000/`. Teď můžete přidat položku úkolu a zaškrtnout možnost **Hotovo** . Položka by se měla zobrazit na domovské stránce jako dokončená. Nezapomeňte, že v zobrazení `Edit` se pole `Done` nezobrazí, protože jste zobrazení `Edit` nezměnili.
 
 ### <a name="publish-changes-to-azure"></a>Publikování změn v Azure
 
@@ -449,7 +449,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Až `git push` to bude hotové, přejděte do aplikace App Service a zkuste přidat položku úkoly a vrátit se k ní **Done**.
+Až `git push` to bude hotové, přejděte do aplikace App Service a zkuste přidat položku úkoly a vrátit se k ní **Done** .
 
 ![Aplikace Azure po Code First migraci](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
@@ -461,8 +461,8 @@ I když je aplikace ASP.NET Core spuštěná v Azure App Service, můžete získ
 
 Vzorový projekt již postupuje podle pokynů [ASP.NET Core protokolování v Azure](/aspnet/core/fundamentals/logging#azure-app-service-provider) se dvěma změnami konfigurace:
 
-- Obsahuje odkaz na `Microsoft.Extensions.Logging.AzureAppServices` v *DotNetCoreSqlDb. csproj*.
-- Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *program.cs*.
+- Obsahuje odkaz na `Microsoft.Extensions.Logging.AzureAppServices` v *DotNetCoreSqlDb. csproj* .
+- Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *program.cs* .
 
 Chcete-li nastavit [úroveň protokolu](/aspnet/core/fundamentals/logging#log-level) ASP.NET Core v App Service na `Information` z výchozí úrovně `Error` , použijte [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) příkaz v Cloud Shell.
 
@@ -471,7 +471,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 ```
 
 > [!NOTE]
-> Úroveň protokolu projektu je již `Information` v *appsettings.jsnastavena na*.
+> Úroveň protokolu projektu je již `Information` v *appsettings.jsnastavena na* .
 > 
 
 Chcete-li spustit streamování protokolů, použijte [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) příkaz v Cloud Shell.
@@ -488,7 +488,7 @@ Další informace o přizpůsobení protokolů ASP.NET Core najdete v tématu v�
 
 ## <a name="manage-your-azure-app"></a>Správa aplikace Azure
 
-Aplikaci, kterou jste vytvořili, zobrazíte tak, že v [Azure Portal](https://portal.azure.com)vyhledáte a vyberete **App Services**.
+Aplikaci, kterou jste vytvořili, zobrazíte tak, že v [Azure Portal](https://portal.azure.com)vyhledáte a vyberete **App Services** .
 
 ![Vyberte App Services v Azure Portal](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
 

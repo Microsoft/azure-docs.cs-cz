@@ -2,14 +2,14 @@
 title: Rychlý Start k vytvoření trezoru služby Azure Recovery Services pomocí šablony Azure Resource Manager
 description: V tomto rychlém startu se dozvíte, jak vytvořit trezor služby Azure Recovery Services pomocí šablony Azure Resource Manager (šablona ARM).
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/29/2020
-ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c1c6d625c67130a4e3608cee6134b8c81404c01b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88684112"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745883"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Rychlý Start: vytvoření trezoru Recovery Services pomocí šablony ARM
 
@@ -17,7 +17,7 @@ V tomto rychlém startu se dozvíte, jak nastavit trezor Recovery Services pomoc
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
@@ -42,7 +42,7 @@ Další šablony Recovery Services pro Azure najdete v tématu [šablony rychlý
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Aby bylo možné šablonu nasadit, je nutné zadat **předplatné**, **skupinu prostředků**a **název trezoru** .
+Aby bylo možné šablonu nasadit, je nutné zadat **předplatné** , **skupinu prostředků** a **název trezoru** .
 
 1. Pokud se chcete přihlásit k Azure a otevřít šablonu, vyberte Image **nasadit do Azure** .
 
@@ -52,14 +52,14 @@ Aby bylo možné šablonu nasadit, je nutné zadat **předplatné**, **skupinu p
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Šablona pro vytvoření trezoru Recovery Services.":::
 
-   - **Předplatné**: vyberte své předplatné Azure.
-   - **Skupina prostředků**: Vyberte existující skupinu nebo vyberte **vytvořit novou** a přidejte skupinu.
-   - **Umístění**: ve výchozím nastavení je umístění skupiny prostředků a po výběru skupiny prostředků nebude k dispozici.
-   - **Název trezoru**: zadejte název trezoru.
-   - **Změnit typ úložiště**: výchozí hodnota je **false**. Vyberte **true** jenom v případě, že potřebujete změnit typ úložiště trezoru.
-   - **Typ úložiště trezoru**: výchozí hodnota je **GloballyRedundant**. Pokud je typ úložiště nastavený na **true**, vyberte **LocallyRedundant**.
-   - **Umístění**: ve `[resourceGroup().location]` výchozím nastavení funkce je umístění skupiny prostředků. Chcete-li změnit umístění, zadejte hodnotu, například **westus**.
-   - Zaškrtněte políčko Souhlasím **s podmínkami a ujednáními uvedenými nahoře**.
+   - **Předplatné** : vyberte své předplatné Azure.
+   - **Skupina prostředků** : Vyberte existující skupinu nebo vyberte **vytvořit novou** a přidejte skupinu.
+   - **Umístění** : ve výchozím nastavení je umístění skupiny prostředků a po výběru skupiny prostředků nebude k dispozici.
+   - **Název trezoru** : zadejte název trezoru.
+   - **Změnit typ úložiště** : výchozí hodnota je **false** . Vyberte **true** jenom v případě, že potřebujete změnit typ úložiště trezoru.
+   - **Typ úložiště trezoru** : výchozí hodnota je **GloballyRedundant** . Pokud je typ úložiště nastavený na **true** , vyberte **LocallyRedundant** .
+   - **Umístění** : ve `[resourceGroup().location]` výchozím nastavení funkce je umístění skupiny prostředků. Chcete-li změnit umístění, zadejte hodnotu, například **westus** .
+   - Zaškrtněte políčko Souhlasím **s podmínkami a ujednáními uvedenými nahoře** .
 
 1. Nasazení trezoru spustíte tak, že vyberete tlačítko **koupit** . Po úspěšném nasazení se zobrazí oznámení.
 

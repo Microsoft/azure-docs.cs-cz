@@ -10,13 +10,13 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 09/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 40d8d4596e7d93b589e44f2dde2d1cb453566d71
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: 2642af3490cd69a3e793f020c193d83d2966e1ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999238"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744629"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 
@@ -311,13 +311,13 @@ Během nasazování modelu se může zobrazit Změna stavu služby během plnéh
 
 Následující tabulka popisuje různé stavy služby:
 
-| Stav WebService | Description | Konečný stav?
+| Stav WebService | Popis | Konečný stav?
 | ----- | ----- | ----- |
-| Přechod | Služba je v procesu nasazení. | No |
-| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
-| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
-| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Yes |
-| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Yes |
+| Přechod | Služba je v procesu nasazení. | Ne |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
+| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
+| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
 
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> Odvození dávky

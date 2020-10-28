@@ -84,6 +84,8 @@
       href: concepts/logging-and-diagnostics.md
     - name: Metriky
       href: concepts/metrics.md
+    - name: Řešení potíží
+      href: concepts/troubleshooting-info.md
 - name: Ukázky
   items:
     - name: Ukázka pro skupinové hovory
@@ -105,4 +107,4 @@
 - name: Zdroje a prostředky
   items:
     - name: "Poznámky k\_verzi"
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a248699b47cf99980c9490bf16c10e7196ee6ecf
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091079"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742704"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>Rychlý Start: zřízení služby pro jarní cloudovou službu Azure
 
@@ -103,25 +103,25 @@ Následující postup vytvoří instanci Azure jarního cloudu pomocí Azure Por
 
 1. Na nové kartě otevřete [Azure Portal](https://ms.portal.azure.com/). 
 
-2. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud**.
+2. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud** .
 
 3. Z výsledků vyberte **Azure jaře Cloud** .
 
     ![Ikona ASC – začátek](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Na stránce jarní cloud Azure klikněte na **+ Přidat**.
+4. Na stránce jarní cloud Azure klikněte na **+ Přidat** .
 
     ![Ikona ASC přidat](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
-    - **Předplatné**: vyberte předplatné, které chcete pro tento prostředek fakturovat.
-    - **Skupina prostředků**: vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem. Všimněte si, že se použije v pozdějších krocích jako **\<resource group name\>** .
-    - **Podrobnosti o službě/název**: zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
-    - **Umístění**: vyberte umístění pro instanci služby.
+    - **Předplatné** : vyberte předplatné, které chcete pro tento prostředek fakturovat.
+    - **Skupina prostředků** : vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem. Všimněte si, že se použije v pozdějších krocích jako **\<resource group name\>** .
+    - **Podrobnosti o službě/název** : zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+    - **Umístění** : vyberte umístění pro instanci služby.
 
     ![Začátek portálu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. Klikněte na **Zkontrolovat a vytvořit**.
+6. Klikněte na **Zkontrolovat a vytvořit** .
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

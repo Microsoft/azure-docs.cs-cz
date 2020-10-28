@@ -3,13 +3,13 @@ title: Nasazení šablon Správce prostředků pomocí akcí GitHubu
 description: Popisuje způsob nasazení Azure Resource Manager šablon pomocí akcí GitHubu.
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure,subject-armqs
-ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.custom: github-actions-azure
+ms.openlocfilehash: 69974a8db30f12b255a4bab57ebfa32ba78f67ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282849"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746105"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Nasazení šablon Azure Resource Manager pomocí akcí GitHubu
 
@@ -75,7 +75,7 @@ Musíte vytvořit tajné kódy pro přihlašovací údaje Azure, skupinu prostř
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště.
 
-1. Vyberte **nastavení > tajných klíčů > nový tajný kód**.
+1. Vyberte **nastavení > tajných klíčů > nový tajný kód** .
 
 1. Do pole hodnota tajného klíče vložte celý výstup JSON z příkazu Azure CLI. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
@@ -91,17 +91,17 @@ Přidejte šablonu Správce prostředků do úložiště GitHub. Tato šablona v
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Soubor můžete umístit kamkoli do úložiště. Ukázka pracovního postupu v další části předpokládá, že se soubor šablony jmenuje **azuredeploy.jsv**a je uložený v kořenovém adresáři úložiště.
+Soubor můžete umístit kamkoli do úložiště. Ukázka pracovního postupu v další části předpokládá, že se soubor šablony jmenuje **azuredeploy.jsv** a je uložený v kořenovém adresáři úložiště.
 
-## <a name="create-workflow"></a>Vytvořit pracovní postup
+## <a name="create-workflow"></a>Vytvoření pracovního postupu
 
-Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows** v kořenovém adresáři úložiště. Přípona souboru pracovního postupu může být buď **. yml** nebo **. yaml**.
+Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows** v kořenovém adresáři úložiště. Přípona souboru pracovního postupu může být buď **. yml** nebo **. yaml** .
 
 1. Z vašeho úložiště GitHub v horní nabídce vyberte **Akce** .
-1. Vyberte **nový pracovní postup**.
-1. Vyberte **nastavit pracovní postup sami**.
-1. Pokud upřednostňujete jiný název než **Main. yml**, přejmenujte soubor pracovního postupu. Příklad: **deployStorageAccount. yml**.
-1. Obsah souboru YML nahraďte následujícím:
+1. Vyberte **nový pracovní postup** .
+1. Vyberte **nastavit pracovní postup sami** .
+1. Pokud upřednostňujete jiný název než **Main. yml** , přejmenujte soubor pracovního postupu. Příklad: **deployStorageAccount. yml** .
+1. Obsah souboru YML nahraďte následujícím kódem:
 
     ```yml
     on: [push]
@@ -136,12 +136,12 @@ Soubor pracovního postupu musí být uložený ve složce **. GitHub/Workflows*
 
     První část souboru pracovního postupu obsahuje:
 
-    - **Name (název**): název pracovního postupu.
-    - **zapnuto**: název událostí GitHubu, které aktivují pracovní postup. Pracovní postup se aktivuje, když je v hlavní větvi událost push, která upravuje aspoň jeden ze dvou zadaných souborů. Tyto dva soubory jsou pracovní postup a soubor šablony.
+    - **Name (název** ): název pracovního postupu.
+    - **zapnuto** : název událostí GitHubu, které aktivují pracovní postup. Pracovní postup se aktivuje, když je v hlavní větvi událost push, která upravuje aspoň jeden ze dvou zadaných souborů. Tyto dva soubory jsou pracovní postup a soubor šablony.
 
-1. Vyberte **Spustit potvrzení**.
-1. Vyberte **potvrdit přímo do hlavní větve**.
-1. Vyberte **Potvrdit nový soubor** (nebo **potvrďte změny**).
+1. Vyberte **Spustit potvrzení** .
+1. Vyberte **potvrdit přímo do hlavní větve** .
+1. Vyberte **Potvrdit nový soubor** (nebo **potvrďte změny** ).
 
 Vzhledem k tomu, že pracovní postup je nakonfigurován tak, aby se aktivoval buď pomocí souboru pracovního postupu, nebo aktualizovaného souboru šablony, pracovní postup se spustí hned po potvrzení změn.
 

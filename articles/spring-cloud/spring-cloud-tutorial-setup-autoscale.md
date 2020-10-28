@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091062"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742668"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Kurz: nastavení automatického škálování pro aplikace mikroslužeb
 
@@ -30,11 +30,11 @@ Chcete-li provést tyto postupy, potřebujete:
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Přejít na stránku automatického škálování v Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Přejít na stránku **přehledu** jarního cloudu Azure.
 3. Vyberte skupinu prostředků, která obsahuje vaši službu.
 4. V nabídce **Nastavení** v levém navigačním podokně vyberte kartu **aplikace** .
-5. Vyberte aplikaci, pro kterou chcete nastavit automatické škálování. V tomto příkladu vyberte aplikaci s názvem **demo**. Měla by se zobrazit Stránka s **přehledem** aplikace.
+5. Vyberte aplikaci, pro kterou chcete nastavit automatické škálování. V tomto příkladu vyberte aplikaci s názvem **demo** . Měla by se zobrazit Stránka s **přehledem** aplikace.
 6. V nabídce **Nastavení** v levém navigačním podokně přejděte na kartu horizontální navýšení **kapacity** .
 7. Vyberte nasazení, pro které chcete nastavit automatické škálování. Měli byste vidět možnosti automatického škálování zobrazené v následující části.
 

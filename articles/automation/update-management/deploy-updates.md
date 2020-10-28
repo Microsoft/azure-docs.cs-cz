@@ -3,14 +3,14 @@ title: Postup vytvoření nasazení aktualizací pro Azure Automation Update Man
 description: Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat jejich stav.
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 10/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637594"
+ms.locfileid: "92742294"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Jak nasadit aktualizace a zkontrolovat výsledky
 
@@ -75,9 +75,6 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
 
    > [!NOTE]
    > Aktualizace, které se nahradily, se nedají zadat, aby se zahrnuly do nasazení aktualizace.
-
-   > [!IMPORTANT]
-   > V případě Red Hat Enterprise se aktualizace jádra zobrazují také jako balíčky v YUMU. Pokud nevylučujete aktualizace, které zahrnují upgrady jádra, Update Management tyto aktualizace použít.
 
 9. Vyberte **Nastavení plánu** . Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 
